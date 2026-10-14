@@ -7,13 +7,15 @@
   ],
   "files": {
     "CAPACITY.md": "3607811ac4c844bb0ee78ebc6237c0b9389193fccbf52f0e8baa56350c4b04ce",
+    "COHERENT_CONTINUATION.md": "93cd8876e7972c61e53ecbade8d5c8212945ae956c90c4c2dfbe56476d4a2c57",
     "DERIVATION.md": "2c0a0f6eae158c91938b7f6014c524738a226380e89d519df78d3b3a8e9c228c",
     "QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
-    "README.md": "c55730ad5676f29eb8e692b0a41fde2a1274c5ed388911030c04e32b14b0f4a3",
+    "README.md": "6f975d5bfe512e605556125a91843cbc59922d5d3f49960151fe43f1b3e26333",
     "RECORD_RECOVERY.md": "2ccc526b67c821eb90cc973cf4055d2ab7d4868052b3e6ff08f5647a2b353ba8",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
     "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
+    "coherent_continuation.py": "616be5935f2537664e1fd7a0f6101ba928fbe67a107c0ce971567adf90131377",
     "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
     "quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
@@ -23,11 +25,13 @@
     "record_recovery_schedule.py": "36354c11e95503a6adbce8baf27576374cbcd662aa8284d42b711f79ab8681fe",
     "record_recovery_source.py": "073f177533cf35d6eda9aeffb72205575e9acd80d226ad61f6a6542d48fe371d",
     "results/capacity.json": "373c6558dda5bef7250170876f28aba091c264479db6ef754b23e109b3140680",
+    "results/coherent_continuation.json": "4fe218568b11c999b39b2bbf7e22e306c6deba68253b43a65b271a134f9f5f2c",
     "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
     "results/quantum_mixing.json": "8f2e18b461437b76b4aa10a653d0c8fa2510b6cf1f66b59f64785be4d0356f30",
     "results/record_recovery.json": "38b15a2ee62941974ad784e5a2add28f2e9204e40aba8420187508a349ea8de0",
     "results/run.json": "88aa066539b197c1c070a58d1b2c4900b64bc4ff71bc674ca375a5771dd55c4f",
     "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
+    "test_coherent_continuation.py": "ecb946be3f7046c54bbe7309a7c024a254cd2c0b3773a22f1ba218d80b364206",
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
     "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7",
@@ -46,7 +50,8 @@
     "python3 -m model.observer run --trials 20000 --seed 20261012 --check model/observer/results/run.json",
     "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v",
     "python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json",
-    "python3 -m model.observer.record_recovery_receipt --check model/observer/results/record_recovery.json"
+    "python3 -m model.observer.record_recovery_receipt --check model/observer/results/record_recovery.json",
+    "python3 -m model.observer.coherent_continuation --check model/observer/results/coherent_continuation.json"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }

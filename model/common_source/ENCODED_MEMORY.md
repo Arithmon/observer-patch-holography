@@ -75,6 +75,11 @@ image with the desired address. Distinct desired images ensure earlier fixed
 assignments stay fixed. No target state is substituted into execution: these
 swaps are compiled to Gray-path controlled flips, using the source macro and
 phase convention of [native routing](native_routing.py).
+The [current Walsh/Gray synthesis](QUANTUM_NATIVE.md#exact-gray-parity-synthesis)
+reduces each nine-bit flip from 11,782 to 2,044 source pulses. It preserves
+the entire chosen 512-dimensional permutation, including its complement
+extension; it does not replace that extension by a different encoder that
+only agrees on the two logical input columns.
 
 Define `U_h=P_h B_(k_h)`. Likewise define `U_V=P_V B_2`, where
 `P_V` maps `0,2,1,3` to `2,73,74,1`, respectively. Then
@@ -335,6 +340,28 @@ copy, no unknown-state reset, and no erasure of the existing record archive.
 The receipt's three known logical phase settings additionally charge three
 source preparation pulses. The supplied-unknown-input interface omits that
 preparation; applying it to the unknown qubit would change the channel.
+
+The current compiled schedule has the following exact source counts. The
+previous column uses the original separately expanded Walsh factors; each
+replacement preserves its full endpoint operator and retains all records.
+
+| Operation | Previous native pulses | Current native pulses |
+| --- | --- | --- |
+| Initial encoder or terminal decoder | 164,967 | 28,635 |
+| Maximum first `(0,1)` recovery | 259,231 | 44,995 |
+| Maximum `(2,3)` recovery | 306,367 | 53,179 |
+| Protected C history, `d=2`, 512 temporal steps | 4,936,767 | 1,158,423 |
+| Protected C history, `d=4`, 512 temporal steps | 8,342,311 | 4,563,967 |
+
+The encoder pays for fourteen macros, eighteen conjugating X pulses and
+one mixing pulse: `14*2044+18+1=28635`. The full protected-path maxima
+include source preparation, both repairs and recoveries, the continuing
+work history, the selected route and terminal decode/read. E adds six pulses
+to each displayed complete-history maximum. Every pulse still requires one
+proper-code load and one export. Fewer requests introduce no additional
+quantum blanks or physical services and establish no physical error bound.
+Endpoint equality does not identify the intermediate states or control
+histories of the two source words.
 
 This construction implements a finite active memory service inside the
 observer model. It does not establish fault-tolerant physical memory, a

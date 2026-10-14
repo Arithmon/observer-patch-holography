@@ -154,7 +154,37 @@ def permutation_edges(images, *, inverse=False):
 
 
 def _canonical_word(inverse=False):
-    word = circuit.controlled_flip_word(QUBITS, QUBITS-1, 0)
+    """Phase-exact controlled flip, sharing the commuting Walsh parities.
+
+    With target q=QUBITS-1, P=|2**q><2**q|, the diagonal reflection
+    exp(-i*pi*P) becomes the requested controlled X under the two target
+    Y rotations. Expand P=2**(-QUBITS) sum_S (-1)**[q in S] Z_S,
+    including its scalar term. For each greatest support bit, one cyclic
+    Gray walk shares the lower-bit parity rather than loading and unloading
+    it around every Walsh factor. Each walk returns its parity to zero.
+
+    This emits 2**QUBITS phase pulses, 2**QUBITS-2 phase-exact CNOTs
+    and two target rotations: 4*2**QUBITS-4=2044 source pulses, with no
+    extra qubits. It acts on the entire register, including native padding.
+    The original generic compiler remains an independent comparison word.
+    """
+    target = QUBITS-1
+    angle = -math.pi/SIZE
+    word = [compiler.pulse('Y', math.pi/4, [target]),
+            compiler.pulse('I', angle, [0])]
+    for pivot in range(QUBITS):
+        count = 1 << pivot
+        for index in range(count):
+            gray = index ^ (index >> 1)
+            # Every mask in this group has pivot as its greatest bit.
+            sign = -1 if pivot == target else 1
+            word.append(compiler.pulse('Z', sign*angle, [pivot]))
+            following = (index+1) % count
+            next_gray = following ^ (following >> 1)
+            difference = gray ^ next_gray
+            if difference:
+                word.extend(compiler.cnot(difference.bit_length()-1, pivot))
+    word.append(compiler.pulse('Y', -math.pi/4, [target]))
     return compiler.inverse(word) if inverse else word
 
 

@@ -125,7 +125,9 @@ def test_encoder_and_record_recovery_costs_charge_source_calls_without_fresh_qua
     assert decoding['blank_code_qubits'] == 0 and decoding['output_rows_retained'] == 512
     for key in routing.COUNT_KEYS:
         assert encoding[key] == decoding[key]
-    assert encoding['native_pulses'] > 11782
+    # Fourteen full-register macros, eighteen source X conjugations and
+    # one mixing rotation; every invocation is charged despite caching.
+    assert encoding['native_pulses'] == 14*2044+18+1 == 28635
     for law in ('C', 'E'):
         for seam in routing.SEAMS:
             for coin in (0, 1):

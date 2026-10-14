@@ -3,54 +3,54 @@
     {
       "coherence_witness": {
         "executed_phase_contrasts": {
-          "C": 0.34915327798844153,
-          "E": 1.8041124150158794e-14
+          "C": 0.34915327798869344,
+          "E": 4.207745263329343e-14
         },
         "executed_settings": {
           "C": {
             "phase_0": {
-              "abort_probability": 4.7700554263104416e-29,
+              "abort_probability": 8.270749367154989e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.5498758097268732,
-              "probability_mass": 0.9999999999990938
+              "plus_code_zero_probability": 0.5498758097272529,
+              "probability_mass": 0.9999999999998211
             },
             "phase_pi": {
-              "abort_probability": 4.638280283023916e-29,
+              "abort_probability": 7.957558443434524e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.20072253173843171,
-              "probability_mass": 0.9999999999990371
+              "plus_code_zero_probability": 0.2007225317385595,
+              "probability_mass": 0.9999999999996896
             },
             "phase_pi_over_2": {
-              "abort_probability": 4.645788058333793e-29,
+              "abort_probability": 8.037452586829233e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.37529917073265157,
-              "probability_mass": 0.9999999999990664
+              "plus_code_zero_probability": 0.3752991707329002,
+              "probability_mass": 0.9999999999997379
             }
           },
           "E": {
             "phase_0": {
-              "abort_probability": 1.5306212918469323e-28,
+              "abort_probability": 2.17099232074363e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.37529917073264757,
-              "probability_mass": 0.99999999999909
+              "plus_code_zero_probability": 0.3752991707329038,
+              "probability_mass": 0.999999999999791
             },
             "phase_pi": {
-              "abort_probability": 1.0630212809396306e-28,
+              "abort_probability": 2.2551072380723382e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.37529917073262953,
-              "probability_mass": 0.9999999999990453
+              "plus_code_zero_probability": 0.37529917073286173,
+              "probability_mass": 0.9999999999996881
             },
             "phase_pi_over_2": {
-              "abort_probability": 1.446577395422456e-28,
+              "abort_probability": 2.622109782497501e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.3752991707326392,
-              "probability_mass": 0.9999999999990686
+              "plus_code_zero_probability": 0.37529917073287783,
+              "probability_mass": 0.9999999999997254
             }
           }
         },
-        "independent_C_phase_contrast_formula": 0.3491532779887755,
+        "independent_C_phase_contrast_formula": 0.34915327798873697,
         "same_classical_load_law_selects_unique_quantum_instrument": false,
-        "second_smooth_plus_probability_at_current_zero": 0.3966131119551019
+        "second_smooth_plus_probability_at_current_zero": 0.39661311195494786
       },
       "dimension": 2,
       "ideal_prepared_work_budget": {
@@ -271,28 +271,28 @@
       },
       "law_audits": {
         "C": {
-          "complete_stacked_map_frobenius_error_upper": 5.920362519608736e-11,
+          "complete_stacked_map_frobenius_error_upper": 1.2201799550732845e-10,
           "final_abort_outcome_count": 192,
           "first_abort_outcome_count": 2,
           "full_outcome_count_including_abort": 770,
-          "maximally_mixed_native_abort_probability": 3.936774175759008e-29,
-          "maximally_mixed_native_padding_probability": 7.398262973761546e-27,
-          "maximum_native_map_frobenius_error": 2.820215149683579e-12,
-          "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-          "prepared_complete_stacked_map_error_upper": 1.4787552985578798e-11,
-          "prepared_native_input_completeness_operator_error": 1.1368631420273058e-12
+          "maximally_mixed_native_abort_probability": 7.027429441538218e-28,
+          "maximally_mixed_native_padding_probability": 2.6956769865564974e-24,
+          "maximum_native_map_frobenius_error": 1.1894342295061025e-11,
+          "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+          "prepared_complete_stacked_map_error_upper": 3.0288303724536315e-11,
+          "prepared_native_input_completeness_operator_error": 3.9090291899590473e-13
         },
         "E": {
-          "complete_stacked_map_frobenius_error_upper": 5.909482910923144e-11,
+          "complete_stacked_map_frobenius_error_upper": 1.3716525005861726e-10,
           "final_abort_outcome_count": 960,
           "first_abort_outcome_count": 6,
           "full_outcome_count_including_abort": 2566,
-          "maximally_mixed_native_abort_probability": 8.628870786043056e-29,
-          "maximally_mixed_native_padding_probability": 6.767057734631222e-27,
-          "maximum_native_map_frobenius_error": 2.558408388276194e-12,
-          "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-          "prepared_complete_stacked_map_error_upper": 1.476117513362293e-11,
-          "prepared_native_input_completeness_operator_error": 1.1295183115401286e-12
+          "maximally_mixed_native_abort_probability": 1.460627872420879e-27,
+          "maximally_mixed_native_padding_probability": 4.12623014093135e-24,
+          "maximum_native_map_frobenius_error": 1.014093273316552e-11,
+          "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+          "prepared_complete_stacked_map_error_upper": 3.388128786168358e-11,
+          "prepared_native_input_completeness_operator_error": 4.11705693586981e-13
         }
       },
       "physical_service_coverage": {
@@ -381,10 +381,10 @@
           },
           "fixed_width_terminal_record_bits_including_two_status_bits": 21,
           "host_tree_storage_or_physical_durations_counted": false,
-          "maximum_native_pulses_per_attempt": 2555735,
-          "maximum_proper_code_export_events_per_attempt": 2555735,
-          "maximum_proper_code_load_events_per_attempt": 2555735,
-          "maximum_proper_code_service_events_per_attempt": 5111470,
+          "maximum_native_pulses_per_attempt": 744467,
+          "maximum_proper_code_export_events_per_attempt": 744467,
+          "maximum_proper_code_load_events_per_attempt": 744467,
+          "maximum_proper_code_service_events_per_attempt": 1488934,
           "native_classical_readout_registers": 5,
           "native_coin_initializations": 2,
           "native_input_qubits": 9,
@@ -396,16 +396,16 @@
             "classical_readout_registers": 2,
             "identity_phase_pulses": 201,
             "native_input_preparations": 0,
-            "native_pulses": 2198007,
-            "pair_code_pulses": 668466,
+            "native_pulses": 386739,
+            "pair_code_pulses": 96330,
             "peak_live_code_qubits": 11,
             "physical_initialization_storage_readout_costs_included": false,
-            "proper_code_export_events": 2198007,
-            "proper_code_load_events": 2198007,
-            "proper_code_service_events": 4396014,
+            "proper_code_export_events": 386739,
+            "proper_code_load_events": 386739,
+            "proper_code_service_events": 773478,
             "retained_classical_bits": 3,
             "route_directions_per_path": 2,
-            "single_code_pulses": 1529541,
+            "single_code_pulses": 290409,
             "six_level_processor_additional": true
           }
         },
@@ -444,10 +444,10 @@
           },
           "fixed_width_terminal_record_bits_including_two_status_bits": 23,
           "host_tree_storage_or_physical_durations_counted": false,
-          "maximum_native_pulses_per_attempt": 2555741,
-          "maximum_proper_code_export_events_per_attempt": 2555741,
-          "maximum_proper_code_load_events_per_attempt": 2555741,
-          "maximum_proper_code_service_events_per_attempt": 5111482,
+          "maximum_native_pulses_per_attempt": 744473,
+          "maximum_proper_code_export_events_per_attempt": 744473,
+          "maximum_proper_code_load_events_per_attempt": 744473,
+          "maximum_proper_code_service_events_per_attempt": 1488946,
           "native_classical_readout_registers": 5,
           "native_coin_initializations": 2,
           "native_input_qubits": 9,
@@ -459,16 +459,16 @@
             "classical_readout_registers": 2,
             "identity_phase_pulses": 201,
             "native_input_preparations": 0,
-            "native_pulses": 2198010,
-            "pair_code_pulses": 668467,
+            "native_pulses": 386742,
+            "pair_code_pulses": 96331,
             "peak_live_code_qubits": 12,
             "physical_initialization_storage_readout_costs_included": false,
-            "proper_code_export_events": 2198010,
-            "proper_code_load_events": 2198010,
-            "proper_code_service_events": 4396020,
+            "proper_code_export_events": 386742,
+            "proper_code_load_events": 386742,
+            "proper_code_service_events": 773484,
             "retained_classical_bits": 4,
             "route_directions_per_path": 2,
-            "single_code_pulses": 1529543,
+            "single_code_pulses": 290411,
             "six_level_processor_additional": true
           }
         }
@@ -477,54 +477,54 @@
     {
       "coherence_witness": {
         "executed_phase_contrasts": {
-          "C": 0.35135102806840557,
-          "E": 1.8041124150158794e-14
+          "C": 0.35135102806832785,
+          "E": 4.207745263329343e-14
         },
         "executed_settings": {
           "C": {
             "phase_0": {
-              "abort_probability": 4.7644555179138445e-29,
+              "abort_probability": 8.262031844724765e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.5509120130254237,
-              "probability_mass": 0.9999999999991566
+              "plus_code_zero_probability": 0.5509120130255346,
+              "probability_mass": 0.9999999999995767
             },
             "phase_pi": {
-              "abort_probability": 4.633125347033102e-29,
+              "abort_probability": 7.94989849009745e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.19956098495701816,
-              "probability_mass": 0.9999999999991
+              "plus_code_zero_probability": 0.19956098495720676,
+              "probability_mass": 0.9999999999994456
             },
             "phase_pi_over_2": {
-              "abort_probability": 4.64060777042335e-29,
+              "abort_probability": 8.029522850524715e-28,
               "complete_outcome_count": 295106,
-              "plus_code_zero_probability": 0.37523649899121997,
-              "probability_mass": 0.9999999999991293
+              "plus_code_zero_probability": 0.37523649899136474,
+              "probability_mass": 0.9999999999994936
             }
           },
           "E": {
             "phase_0": {
-              "abort_probability": 1.5280738614968677e-28,
+              "abort_probability": 2.1665085142327453e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.37523649899121614,
-              "probability_mass": 0.9999999999991528
+              "plus_code_zero_probability": 0.37523649899136835,
+              "probability_mass": 0.9999999999995468
             },
             "phase_pi": {
-              "abort_probability": 1.0604738505895664e-28,
+              "abort_probability": 2.2506234315614543e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.3752364989911981,
-              "probability_mass": 0.9999999999991082
+              "plus_code_zero_probability": 0.3752364989913263,
+              "probability_mass": 0.9999999999994439
             },
             "phase_pi_over_2": {
-              "abort_probability": 1.4440299650723916e-28,
+              "abort_probability": 2.6176259759866173e-27,
               "complete_outcome_count": 820166,
-              "plus_code_zero_probability": 0.37523649899120776,
-              "probability_mass": 0.9999999999991315
+              "plus_code_zero_probability": 0.37523649899134237,
+              "probability_mass": 0.9999999999994813
             }
           }
         },
-        "independent_C_phase_contrast_formula": 0.35135102806871943,
+        "independent_C_phase_contrast_formula": 0.3513510280684199,
         "same_classical_load_law_selects_unique_quantum_instrument": false,
-        "second_smooth_plus_probability_at_current_zero": 0.4054041122748778
+        "second_smooth_plus_probability_at_current_zero": 0.4054041122736795
       },
       "dimension": 4,
       "ideal_prepared_work_budget": {
@@ -745,28 +745,28 @@
       },
       "law_audits": {
         "C": {
-          "complete_stacked_map_frobenius_error_upper": 4.1868564567754314e-10,
+          "complete_stacked_map_frobenius_error_upper": 5.551502441780822e-10,
           "final_abort_outcome_count": 192,
           "first_abort_outcome_count": 2,
           "full_outcome_count_including_abort": 770,
-          "maximally_mixed_native_abort_probability": 3.939309566937468e-29,
-          "maximally_mixed_native_padding_probability": 7.503491706143693e-27,
-          "maximum_native_map_frobenius_error": 2.820215149683579e-12,
-          "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-          "prepared_complete_stacked_map_error_upper": 4.389076314641817e-11,
-          "prepared_native_input_completeness_operator_error": 9.854342083172273e-13
+          "maximally_mixed_native_abort_probability": 7.031195374476778e-28,
+          "maximally_mixed_native_padding_probability": 2.7018066706149267e-24,
+          "maximum_native_map_frobenius_error": 1.1894342295061025e-11,
+          "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+          "prepared_complete_stacked_map_error_upper": 8.755457758324661e-11,
+          "prepared_native_input_completeness_operator_error": 6.089194670178445e-13
         },
         "E": {
-          "complete_stacked_map_frobenius_error_upper": 4.1845556219111716e-10,
+          "complete_stacked_map_frobenius_error_upper": 5.818846357146146e-10,
           "final_abort_outcome_count": 960,
           "first_abort_outcome_count": 6,
           "full_outcome_count_including_abort": 2566,
-          "maximally_mixed_native_abort_probability": 8.644040518093705e-29,
-          "maximally_mixed_native_padding_probability": 6.869394845462672e-27,
-          "maximum_native_map_frobenius_error": 2.558408388276194e-12,
-          "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-          "prepared_complete_stacked_map_error_upper": 4.3863423401048745e-11,
-          "prepared_native_input_completeness_operator_error": 9.795067730369983e-13
+          "maximally_mixed_native_abort_probability": 1.4632935150243355e-27,
+          "maximally_mixed_native_padding_probability": 4.126661395852848e-24,
+          "maximum_native_map_frobenius_error": 1.014093273316552e-11,
+          "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+          "prepared_complete_stacked_map_error_upper": 9.03839573499988e-11,
+          "prepared_native_input_completeness_operator_error": 6.115983148244807e-13
         }
       },
       "physical_service_coverage": {
@@ -855,10 +855,10 @@
           },
           "fixed_width_terminal_record_bits_including_two_status_bits": 21,
           "host_tree_storage_or_physical_durations_counted": false,
-          "maximum_native_pulses_per_attempt": 5961279,
-          "maximum_proper_code_export_events_per_attempt": 5961279,
-          "maximum_proper_code_load_events_per_attempt": 5961279,
-          "maximum_proper_code_service_events_per_attempt": 11922558,
+          "maximum_native_pulses_per_attempt": 4150011,
+          "maximum_proper_code_export_events_per_attempt": 4150011,
+          "maximum_proper_code_load_events_per_attempt": 4150011,
+          "maximum_proper_code_service_events_per_attempt": 8300022,
           "native_classical_readout_registers": 5,
           "native_coin_initializations": 2,
           "native_input_qubits": 9,
@@ -870,16 +870,16 @@
             "classical_readout_registers": 2,
             "identity_phase_pulses": 201,
             "native_input_preparations": 0,
-            "native_pulses": 2198007,
-            "pair_code_pulses": 668466,
+            "native_pulses": 386739,
+            "pair_code_pulses": 96330,
             "peak_live_code_qubits": 11,
             "physical_initialization_storage_readout_costs_included": false,
-            "proper_code_export_events": 2198007,
-            "proper_code_load_events": 2198007,
-            "proper_code_service_events": 4396014,
+            "proper_code_export_events": 386739,
+            "proper_code_load_events": 386739,
+            "proper_code_service_events": 773478,
             "retained_classical_bits": 3,
             "route_directions_per_path": 2,
-            "single_code_pulses": 1529541,
+            "single_code_pulses": 290409,
             "six_level_processor_additional": true
           }
         },
@@ -918,10 +918,10 @@
           },
           "fixed_width_terminal_record_bits_including_two_status_bits": 23,
           "host_tree_storage_or_physical_durations_counted": false,
-          "maximum_native_pulses_per_attempt": 5961285,
-          "maximum_proper_code_export_events_per_attempt": 5961285,
-          "maximum_proper_code_load_events_per_attempt": 5961285,
-          "maximum_proper_code_service_events_per_attempt": 11922570,
+          "maximum_native_pulses_per_attempt": 4150017,
+          "maximum_proper_code_export_events_per_attempt": 4150017,
+          "maximum_proper_code_load_events_per_attempt": 4150017,
+          "maximum_proper_code_service_events_per_attempt": 8300034,
           "native_classical_readout_registers": 5,
           "native_coin_initializations": 2,
           "native_input_qubits": 9,
@@ -933,16 +933,16 @@
             "classical_readout_registers": 2,
             "identity_phase_pulses": 201,
             "native_input_preparations": 0,
-            "native_pulses": 2198010,
-            "pair_code_pulses": 668467,
+            "native_pulses": 386742,
+            "pair_code_pulses": 96331,
             "peak_live_code_qubits": 12,
             "physical_initialization_storage_readout_costs_included": false,
-            "proper_code_export_events": 2198010,
-            "proper_code_load_events": 2198010,
-            "proper_code_service_events": 4396020,
+            "proper_code_export_events": 386742,
+            "proper_code_load_events": 386742,
+            "proper_code_service_events": 773484,
             "retained_classical_bits": 4,
             "route_directions_per_path": 2,
-            "single_code_pulses": 1529543,
+            "single_code_pulses": 290411,
             "six_level_processor_additional": true
           }
         }
@@ -950,8 +950,8 @@
     }
   ],
   "routing": {
-    "canonical_controlled_flip_native_pulses": 11782,
-    "canonical_controlled_flip_word_sha256": "7a159e6ea9f2e6bef1d080c2729f1f9492ee35ffdb6647a9a745b4f94d4af666",
+    "canonical_controlled_flip_native_pulses": 2044,
+    "canonical_controlled_flip_word_sha256": "bfa43a9dbae6c36c07aaf2e1e3e6a1076f385108dc05c52a00551bef4ba64e42",
     "conjugating_source_x_pulses_per_direction": 592,
     "controlled_flip_invocations_per_direction": 93,
     "disjoint_transpositions": 11,
@@ -967,12 +967,12 @@
     "physical_services_or_roundoff_certified": false,
     "resources_per_direction": {
       "identity_phase_pulses": 93,
-      "native_pulses": 1096318,
-      "pair_code_pulses": 333498,
-      "proper_code_export_events": 1096318,
-      "proper_code_load_events": 1096318,
-      "proper_code_service_events": 2192636,
-      "single_code_pulses": 762820
+      "native_pulses": 190684,
+      "pair_code_pulses": 47430,
+      "proper_code_export_events": 190684,
+      "proper_code_load_events": 190684,
+      "proper_code_service_events": 381368,
+      "single_code_pulses": 143254
     },
     "tensor_chart_is_fixed_wire_addressing": true
   },
@@ -981,57 +981,57 @@
     "forward": {
       "macro": {
         "dimension": 512,
-        "exact_polar_distance_formula_evaluated": 1.225545731324869e-12,
+        "exact_polar_distance_formula_evaluated": 9.884545695427753e-14,
         "maximum_projection_change": 5.1e-11,
         "maximum_raw_unitarity_defect": 1e-10,
         "maximum_restored_unitarity_defect": 2e-13,
         "method": "guarded polar projection of the executed source-word matrix",
         "physical_error_certificate": false,
-        "projection_change": 1.2265378895611973e-12,
-        "raw_unitarity_defect": 2.451091462648236e-12,
-        "restored_unitarity_defect": 8.340790817523949e-15
+        "projection_change": 9.930729757148315e-14,
+        "raw_unitarity_defect": 1.9769091390854526e-13,
+        "restored_unitarity_defect": 8.339014608788136e-15
       },
       "route": {
         "dimension": 512,
-        "exact_polar_distance_formula_evaluated": 9.337678088577475e-14,
+        "exact_polar_distance_formula_evaluated": 1.8409031761470338e-13,
         "maximum_projection_change": 5.1e-11,
         "maximum_raw_unitarity_defect": 1e-10,
         "maximum_restored_unitarity_defect": 2e-13,
         "method": "guarded polar projection of the executed source-word matrix",
         "physical_error_certificate": false,
-        "projection_change": 9.242610393234201e-14,
-        "raw_unitarity_defect": 1.867535617715408e-13,
-        "restored_unitarity_defect": 6.8071032479154145e-15
+        "projection_change": 1.8312922457176026e-13,
+        "raw_unitarity_defect": 3.681806352293729e-13,
+        "restored_unitarity_defect": 8.15308977036395e-15
       }
     },
     "full_512_columns_executed": true,
     "inverse": {
       "macro": {
         "dimension": 512,
-        "exact_polar_distance_formula_evaluated": 1.2286056252430262e-12,
+        "exact_polar_distance_formula_evaluated": 1.0084008028231821e-13,
         "maximum_projection_change": 5.1e-11,
         "maximum_raw_unitarity_defect": 1e-10,
         "maximum_restored_unitarity_defect": 2e-13,
         "method": "guarded polar projection of the executed source-word matrix",
         "physical_error_certificate": false,
-        "projection_change": 1.2296495984283133e-12,
-        "raw_unitarity_defect": 2.4572112504845426e-12,
-        "restored_unitarity_defect": 7.190514355260716e-15
+        "projection_change": 1.0131681770771533e-13,
+        "raw_unitarity_defect": 2.0168016056462625e-13,
+        "restored_unitarity_defect": 7.633519674828403e-15
       },
       "route": {
         "dimension": 512,
-        "exact_polar_distance_formula_evaluated": 7.450738628446707e-14,
+        "exact_polar_distance_formula_evaluated": 1.7747206321089217e-13,
         "maximum_projection_change": 5.1e-11,
         "maximum_raw_unitarity_defect": 1e-10,
         "maximum_restored_unitarity_defect": 2e-13,
         "method": "guarded polar projection of the executed source-word matrix",
         "physical_error_certificate": false,
-        "projection_change": 7.464622977295652e-14,
-        "raw_unitarity_defect": 1.490147725689286e-13,
-        "restored_unitarity_defect": 6.978002823215059e-15
+        "projection_change": 1.7743008162596268e-13,
+        "raw_unitarity_defect": 3.5494412642175284e-13,
+        "restored_unitarity_defect": 8.221378199770957e-15
       }
     },
-    "inverse_composition_operator_error": 5.682820316692037e-13,
+    "inverse_composition_operator_error": 2.477970812585288e-13,
     "padding_projection_applied": false
   },
   "schema": "oph.common_source.quantum_native.v1",
