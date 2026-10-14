@@ -8,7 +8,7 @@ its actual interfaces while preserving the demonstrated behavior.
 The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
 selection work on the carrier architecture, observer interface and its
 implementation, and complete repair rule. Observable effective physics must
-follow from that same process. The latest tests distinguish phases invisible
+follow from that same process. The tests distinguish phases invisible
 to committed records from phases measurable through coherent record access;
 proper carrier symmetry alone does not select the coherent continuation.
 
