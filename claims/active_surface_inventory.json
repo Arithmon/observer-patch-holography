@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 551,
+  "surface_count": 552,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1337,6 +1337,11 @@
     },
     {
       "path": "model/observer/CAPACITY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer/COHERENT_CONTINUATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

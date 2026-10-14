@@ -1723,7 +1723,7 @@
           "declared_common_source_active_encoded_native_memory"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "83174cf004518b3a5a6aa03dfae5f475de866cc4bb21804a696ad5208ddbd709"
+        "original_claim_sha256": "ba1999c8791d02c8c3c0e2bb2edf475e97d9f65c822326d40cafe217aecb1509"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
