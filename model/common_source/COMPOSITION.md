@@ -42,6 +42,14 @@ is rejected by this occupation certificate. The moment premise needed for
 continued evolution after that read has not been proved by replacing it with
 a different smooth instrument.
 
+The separate [prepared-history certificate](SMOOTH_HISTORY.md) compares this
+canonical 16-output history at d=2,4 with its infinite counterpart, for all
+three native currents. It retains later feedback, evolution and the gauge
+probe, with the blank-gauge and scalar-vacuum preparation fixed. This
+state-specific comparison supplements the uniform moment bound, which is
+one at these cutoffs; it does not cover arbitrary initial work states or
+certify floating execution and physical services.
+
 ## Execute the complete observer
 
 The [coherent native attachment](QUANTUM_NATIVE.md) surrounds this same

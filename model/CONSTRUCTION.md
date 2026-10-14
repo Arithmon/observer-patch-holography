@@ -83,6 +83,13 @@ budgets. Both cutoffs d=2,4 execute all 4,224 joint native/quantum outcomes.
 This closes the smooth-read continuation and later model-time probe join;
 it does not transfer smooth moment bounds to the sharp detector.
 
+A separate [smooth-history certificate](common_source/SMOOTH_HISTORY.md)
+bounds the complete 16-output ideal finite/infinite comparison at d=2,4 for
+all three native currents, including the later feedback and gauge probe.
+It fixes the blank-gauge and scalar-vacuum preparation. Complete native and
+protected-memory attachments inherit that comparison under this preparation
+contract; arbitrary joint work inputs and physical service errors are outside it.
+
 The [coherent native attachment](common_source/QUANTUM_NATIVE.md) implements
 the surrounding full-carrier C/E repairs with those source controls and
 executes the port permutation needed by the final selected seam. The
@@ -170,7 +177,8 @@ The separate [smooth Ramsey instrument](common_source/SMOOTH_REFINEMENT.md)
 supplies a full interacting occupation error rate and finite measurement
 energy on this declared two-site action. It changes the scalar detector's
 meaning from sign to `(I +/- sin(Q0))/2`; the sharp-history clock is not
-inherited. Small executed cutoffs have vacuous occupation error bounds.
+inherited. Its uniform moment bound is vacuous at the small executed cutoffs;
+the prepared-history certificate above has a narrower input domain.
 Larger cutoffs are covered analytically, with source compilation beyond
 dimensions 2 and 4 remaining open.
 
@@ -583,7 +591,7 @@ finite software run.
 | --- | --- | --- |
 | Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, finite temporal and occupation bounds, exact sharp-readout contrasts, state-specific complete-output cutoff enclosures and unavoidable occupation-code output errors | Spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process; post-sharp clock continuation needs its own error analysis |
 | Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
-| Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound and finite-energy backreaction | Different instrument and bit dictionary; small executed-cutoff bounds are vacuous, and the sharp-history clock does not transfer |
+| Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound, finite-energy backreaction and a separate prepared four-read history certificate | Different instrument and bit dictionary; the uniform moment bound is vacuous at small executed cutoffs, and the sharp-history clock does not transfer |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
@@ -664,8 +672,9 @@ the common-model target. Source compilation establishes that the declared
 controls can implement the chosen action and instruments; it does not select
 that action or show that its observations describe nature. Increasing the
 occupation cutoff of two sites supplies no spatial refinement. The executed
-d=2,4 complete-output occupation budgets are one, despite their useful exact
-finite-channel and logical-memory identities.
+d=2,4 uniform moment-based occupation budgets are one. The separate
+prepared-history certificate retains its narrower state contract; neither
+comparison certifies numerical or physical service errors.
 
 A discriminating next attachment should connect propagation, a retained
 quantum observable and an operational clock on the same extending family,

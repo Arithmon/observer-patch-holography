@@ -33,6 +33,7 @@ REPLAYS = (
      "model/observer/source_discrimination/results.json"),
     ("model.common_source", None, "model/common_source/results.json"),
     ("model.common_source.composition", None, "model/common_source/composition_results.json"),
+    ("model.common_source.smooth_history", None, "model/common_source/smooth_history_results.json"),
     ("model.common_source.quantum_native", None, "model/common_source/quantum_native_results.json"),
     ("model.common_source.encoded_observer", None, "model/common_source/encoded_observer_results.json"),
     ("model.common_source.infinite_history", None, "model/common_source/infinite_results.json"),

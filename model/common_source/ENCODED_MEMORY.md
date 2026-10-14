@@ -316,6 +316,14 @@ occupation errors need not be added: the work-independent identity above
 already compares that marginal exactly. Native encoding/correction/decoding
 faults retain their own distinct error obligations.
 
+The [prepared smooth-history certificate](SMOOTH_HISTORY.md) supplies a
+separate complete-output comparison at d=2,4 for all three native currents.
+Its maximum lifts through either encoded mode with arbitrary logical/reference
+input and the independently prepared blank-gauge/vacuum work state. It does
+not cover arbitrary logical/work correlations or change the exact ideal
+memory-marginal identity above. The encoded receipt retains the broader
+uniform analytic budget as a separate comparison.
+
 For an additional conditional service budget, each complete implemented stage
 must have a specified input/reference-uniform bound on its relevant domain.
 If a corrected stage is only certified on the code, a valid telescoping proof

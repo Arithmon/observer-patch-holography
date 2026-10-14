@@ -340,6 +340,14 @@ execution remains at `d=2,4`. This is a state-family occupation estimate, not
 an arbitrary-scalar-input diamond bound. A supplied scalar state generally
 needs a new preparation-tail and moment certificate.
 
+The separate [smooth-history certificate](SMOOTH_HISTORY.md) bounds the
+canonical blank-gauge/vacuum work history for each current at d=2,4. Taking
+the maximum of those three complete-output bounds permits arbitrary admitted
+native/reference inputs with that independently prepared work state; later
+complete native channels preserve the bound by contractivity. This narrower
+comparison does not cover arbitrary initial gauge states or joint native/work
+inputs. The uniform analytic budget in the native receipt retains its scope.
+
 ## Supplied services and retained scope
 
 The construction supplies finite source words, a complete recorded matrix
