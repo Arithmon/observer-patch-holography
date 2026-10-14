@@ -2593,7 +2593,7 @@ construction requirement.
 \section{Reproducibility}
 \label{sec:repro}
 
-Every result has a replayable receipt. The eight packages bind 215 source,
+Every result has a replayable receipt. At the baseline model revision, the eight packages bind 215 source,
 document and receipt artifacts by SHA-256; the four top-level model documents
 and the verification entry point are fixed by the cited revision only. The
 repository's verification entry point recomputes all hashes,
@@ -2601,7 +2601,8 @@ replays the twenty-four retained receipts and compares canonical bytes. Exact
 certificates must match exactly, and floating diagnostics carry declared
 replay tolerances. Independent test suites check the executable statements
 against separately written oracles, including adversarial mutations of the
-receipts. The construction, its documents and its receipts are public at the cited model revision of the OPH repository; the flagship synthesis, the basis document and the generated premise map are cited on its main branch \cite{ophrepo}.
+receipts. Later extensions have separate revisions cited with their results.
+The construction, its documents and its receipts are public at these revisions of the OPH repository; the flagship synthesis, the basis document and the generated premise map are cited on its main branch \cite{ophrepo}.
 
 \section*{Statements and declarations}
 
@@ -2618,7 +2619,7 @@ no other competing interests.
 \noindent\textbf{Data availability.}
 The model documents, executable sources, retained receipts and claim records
 supporting this study are available in the public OPH repository at the
-cited revision \cite{ophrepo}.
+baseline revision \cite{ophrepo} and the revisions cited with individual results.
 
 \noindent\textbf{Corresponding author.}
 Correspondence should be addressed to Bernhard Mueller,
