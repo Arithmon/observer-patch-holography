@@ -81,7 +81,8 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
         'declared_common_source_smooth_ramsey_instrument',
         'declared_common_source_thermal_reference',
         'declared_common_source_finite_record_program',
-        'declared_common_source_coherent_native_attachment'}
+        'declared_common_source_coherent_native_attachment',
+        'declared_common_source_active_encoded_native_memory'}
     links = {edge['from']: edge['role'] for edge in downstream['links'] if edge['to'] == name}
     assert set(links) == {'OPH-SOURCE-COHERENT-CODE-COMPLETION',
                           'OPH-MODEL-SCALAR-RESPONSE-EXECUTION'}

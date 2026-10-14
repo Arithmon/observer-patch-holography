@@ -26,7 +26,7 @@ from .experiment import COUNT_KEYS
 
 QUBITS = circuit.SOURCE_QUBITS
 SIZE = 1 << QUBITS
-SEAMS = ((0, 1), (0, 5))
+SEAMS = ((0, 1), (0, 5), (2, 3))
 
 
 def _immutable(value):
@@ -37,7 +37,7 @@ def _immutable(value):
 def _seam(seam):
     if (type(seam) is not tuple or len(seam) != 2
             or any(type(port) is not int for port in seam) or seam not in SEAMS):
-        raise ValueError('the implemented native seam is (0,1) or (0,5)')
+        raise ValueError('the implemented native seam is (0,1), (0,5) or (2,3)')
     return seam
 
 
@@ -70,12 +70,15 @@ def _state(value):
     return result
 
 
-def routing_pairs():
-    """Disjoint code transpositions for the port-label swap; padding is fixed."""
+def routing_pairs(seam=(0, 5)):
+    """Disjoint code transpositions for the selected port map; padding is fixed."""
+    seam = _seam(seam)
+    swaps = () if seam == (0, 1) else ((1, 5),) if seam == (0, 5) else ((0, 2), (1, 3))
     seen, pairs = set(), []
     for state in native.states():
         routed = list(state)
-        routed[1], routed[5] = routed[5], routed[1]
+        for left, right in swaps:
+            routed[left], routed[right] = routed[right], routed[left]
         routed = tuple(routed)
         if state != routed and state not in seen:
             pairs.append((circuit.encode(state), circuit.encode(routed)))
@@ -83,12 +86,9 @@ def routing_pairs():
     return tuple(pairs)
 
 
-def routing_edges(*, inverse=False):
-    """Chronological Gray-neighbor swaps, each (target_bit, control_pattern)."""
-    if type(inverse) is not bool:
-        raise ValueError('inverse must be an explicit Boolean')
+def _transposition_edges(pairs):
     edges = []
-    for left, right in routing_pairs():
+    for left, right in pairs:
         path = [left]
         for bit in range(QUBITS):
             if (left ^ right) >> bit & 1:
@@ -97,7 +97,60 @@ def routing_edges(*, inverse=False):
         for a, b in (*adjacent, *adjacent[-2::-1]):
             target = (a ^ b).bit_length()-1
             edges.append((target, a & ~(1 << target)))
+    return tuple(edges)
+
+
+def routing_edges(*, inverse=False, seam=(0, 5)):
+    """Chronological Gray-neighbor swaps, each (target_bit, control_pattern)."""
+    if type(inverse) is not bool:
+        raise ValueError('inverse must be an explicit Boolean')
+    edges = _transposition_edges(routing_pairs(seam))
     return tuple(reversed(edges)) if inverse else tuple(edges)
+
+
+def _permutation(images):
+    if (type(images) is not tuple or len(images) != SIZE
+            or any(type(value) is not int for value in images)
+            or set(images) != set(range(SIZE))):
+        raise ValueError('an immutable permutation of every integer address 0 through 511 required')
+    return images
+
+
+def complete_permutation(assignments):
+    """Extend distinct input/output assignments to a deterministic full permutation."""
+    if (type(assignments) is not tuple
+            or any(type(pair) is not tuple or len(pair) != 2 for pair in assignments)
+            or any(type(value) is not int or not 0 <= value < SIZE
+                   for pair in assignments for value in pair)
+            or len({pair[0] for pair in assignments}) != len(assignments)
+            or len({pair[1] for pair in assignments}) != len(assignments)):
+        raise ValueError('distinct integer source and target assignments required')
+    images = list(range(SIZE))
+    locations = list(range(SIZE))
+    for source, target in assignments:
+        other, previous = locations[target], images[source]
+        images[source], images[other] = target, previous
+        locations[target], locations[previous] = source, other
+    return tuple(images)
+
+
+def permutation_edges(images, *, inverse=False):
+    """Full-register source schedule, with phase-exact Gray transpositions."""
+    images = _permutation(images)
+    if type(inverse) is not bool:
+        raise ValueError('inverse must be an explicit Boolean')
+    seen, pairs = set(), []
+    for start in range(SIZE):
+        if start in seen:
+            continue
+        cycle, current = [], start
+        while current not in seen:
+            seen.add(current)
+            cycle.append(current)
+            current = images[current]
+        pairs.extend((start, other) for other in cycle[1:])
+    edges = _transposition_edges(pairs)
+    return tuple(reversed(edges)) if inverse else edges
 
 
 def _canonical_word(inverse=False):
@@ -129,12 +182,11 @@ def _conjugation_word(pattern):
             for bit in range(QUBITS) if pattern >> bit & 1]
 
 
-@lru_cache(maxsize=2)
-def _executed_route(inverse):
+def _execute_edges(edges, inverse):
     macro, macro_guard = _executed_macro(inverse)
     charts = {target: _chart(macro, target) for target in range(QUBITS)}
     result = np.eye(SIZE, dtype=complex)
-    for target, pattern in routing_edges(inverse=inverse):
+    for target, pattern in edges:
         before = _conjugation_word(pattern)
         result = compiler.execute(before, QUBITS, result)
         result = charts[target]@result
@@ -145,29 +197,72 @@ def _executed_route(inverse):
     return _immutable(result), {'macro': macro_guard, 'route': route_guard}
 
 
-def routing_unitary(*, inverse=False):
+@lru_cache(maxsize=6)
+def _executed_route(inverse, seam=(0, 5)):
+    return _execute_edges(routing_edges(inverse=inverse, seam=seam), inverse)
+
+
+@lru_cache(maxsize=48)
+def _executed_permutation(images, inverse):
+    return _execute_edges(permutation_edges(images, inverse=inverse), inverse)
+
+
+def permutation_unitary(images, *, inverse=False):
+    """Execute all 512 columns; target matrices are never used for execution."""
+    images = _permutation(images)
+    if type(inverse) is not bool:
+        raise ValueError('inverse must be an explicit Boolean')
+    return _executed_permutation(images, inverse)[0]
+
+
+def permutation_diagnostics(images, *, inverse=False):
+    images = _permutation(images)
+    if type(inverse) is not bool:
+        raise ValueError('inverse must be an explicit Boolean')
+    return deepcopy(_executed_permutation(images, inverse)[1])
+
+
+def routing_unitary(*, inverse=False, seam=(0, 5)):
     """Immutable full source-executed matrix, including every padding column."""
     if type(inverse) is not bool:
         raise ValueError('inverse must be an explicit Boolean')
-    return _executed_route(inverse)[0]
+    seam = _seam(seam)
+    return _executed_route(inverse, seam)[0]
 
 
-def routing_word_summary():
+def _edge_resources(edges):
+    macro = compiler.resources(_canonical_word())
+    conjugations = 2*sum(pattern.bit_count() for _, pattern in edges)
+    one_x = compiler.resources([compiler.pulse('X', math.pi/2, [0])])
+    counts = {key: len(edges)*macro[key]+conjugations*one_x[key] for key in COUNT_KEYS}
+    return counts, conjugations
+
+
+def permutation_resources(images):
+    """Counts every macro invocation, independently of numerical cache reuse."""
+    edges = permutation_edges(images)
+    counts, conjugations = _edge_resources(edges)
+    return {**counts, 'controlled_flip_invocations': len(edges),
+            'conjugating_source_x_pulses': conjugations,
+            'whole_register_dimension': SIZE}
+
+
+def routing_word_summary(seam=(0, 5)):
     """Compact exact schedule and source-word resource counts for each route.
 
     Matrix caches reduce host work only. Every repeated native pulse, load
     and export remains charged in each physical source-word invocation.
     """
+    seam = _seam(seam)
     word = _canonical_word()
     macro = compiler.resources(word)
-    edges = routing_edges()
-    conjugations = 2*sum(pattern.bit_count() for _, pattern in edges)
-    one_x = compiler.resources([compiler.pulse('X', math.pi/2, [0])])
-    counts = {key: len(edges)*macro[key]+conjugations*one_x[key] for key in COUNT_KEYS}
+    edges = routing_edges(seam=seam)
+    counts, conjugations = _edge_resources(edges)
     serialized = json.dumps(word, sort_keys=True, separators=(',', ':'), allow_nan=False)
-    return {'physical_port_permutation': [1, 5], 'native_carrier_dimension': 78,
+    ports = [1, 5] if seam == (0, 5) else [[0, 2], [1, 3]] if seam == (2, 3) else []
+    return {'physical_port_permutation': ports, 'native_carrier_dimension': 78,
             'executed_register_dimension': SIZE, 'native_code_qubits': QUBITS,
-            'padding_columns_retained': SIZE-78, 'disjoint_transpositions': len(routing_pairs()),
+            'padding_columns_retained': SIZE-78, 'disjoint_transpositions': len(routing_pairs(seam)),
             'controlled_flip_invocations_per_direction': len(edges),
             'canonical_controlled_flip_native_pulses': macro['native_pulses'],
             'canonical_controlled_flip_word_sha256': hashlib.sha256(serialized.encode()).hexdigest(),
@@ -189,7 +284,7 @@ def routing_execution_diagnostics():
 
 
 def routed_repair_branches(candidate, seam, state):
-    """Complete source-recorded repair on the two implemented physical seams.
+    """Complete source-recorded repair on the three implemented physical seams.
 
     Input/output arrays have 512 rows and may have arbitrary reference columns;
     unnormalized inputs remain unnormalized. Every raw record, including an
@@ -198,13 +293,14 @@ def routed_repair_branches(candidate, seam, state):
     The native interpretation concerns the 78-dimensional input code only.
     """
     candidate, seam, value = _candidate(candidate), _seam(seam), _state(state)
-    if seam == (0, 5):
-        value = routing_unitary()@value
+    if seam != (0, 1):
+        value = (routing_unitary() if seam == (0, 5) else routing_unitary(seam=seam))@value
     branches = recorded.repair_branches(candidate, value)
     for branch in branches:
         amplitude = branch['amplitude']
-        if seam == (0, 5):
-            amplitude = routing_unitary(inverse=True)@amplitude
+        if seam != (0, 1):
+            matrix = routing_unitary(inverse=True) if seam == (0, 5) else routing_unitary(inverse=True, seam=seam)
+            amplitude = matrix@amplitude
         branch['amplitude'] = _immutable(amplitude)
         branch['seam'] = seam
     return branches
@@ -222,9 +318,9 @@ def routed_repair_resources(candidate, seam):
     if any(coins[0][key] != coins[1][key] for key in COUNT_KEYS):
         raise ArithmeticError('native repair branches no longer have common path costs')
     coin = compiler.resources([compiler.pulse('Y', -math.pi/4, [0])])
-    route = routing_word_summary()['resources_per_direction'] if seam == (0, 5) else dict.fromkeys(COUNT_KEYS, 0)
+    route = routing_word_summary(seam)['resources_per_direction'] if seam != (0, 1) else dict.fromkeys(COUNT_KEYS, 0)
     counts = {key: coins[0][key]+coin[key]+2*route[key] for key in COUNT_KEYS}
-    return {**counts, 'route_directions_per_path': 2 if seam == (0, 5) else 0,
+    return {**counts, 'route_directions_per_path': 2 if seam != (0, 1) else 0,
             'retained_classical_bits': 1+circuit.RECORD_BITS[candidate],
             'blank_register_initializations': 2, 'classical_readout_registers': 2,
             'native_input_preparations': 0,

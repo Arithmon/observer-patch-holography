@@ -92,6 +92,14 @@ raw padding and abort outcomes. Its supplied encoding, preparation, coherent
 services and physical calibration remain separate from this finite execution.
 The earlier classical native histories and their counts retain their scope.
 
+The [active encoded variant](common_source/ENCODED_MEMORY.md) compiles
+record-conditioned recovery after both native events, retaining the same
+work state between them. It protects the existing four-configuration logical
+qubit, including its reference correlations, and uses a matched passive
+schedule to test the need for recovery. This additional intervention has its
+own source cost. It neither restores arbitrary full-carrier coherence nor
+establishes noisy physical memory or the passive geometry/clock calibration.
+
 The [common interacting source](common_source/README.md) joins quantum
 electric flux, a charged CAR pair and two neutral scalar sites on the same
 work register. Native source words implement their noncommuting evolution,
