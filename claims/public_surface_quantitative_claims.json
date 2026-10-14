@@ -639,6 +639,94 @@
           "role": "conditional_branch"
         }
       ]
+    },
+    {
+      "path": "model/spatial_interaction/README.md",
+      "heading": "## Retained results",
+      "label_column": "Sites",
+      "comparison_column": "Source/reference history TV",
+      "rows": [
+        {
+          "label": "27",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION"
+          }
+        },
+        {
+          "label": "125",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION"
+          }
+        },
+        {
+          "label": "343",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION"
+          }
+        }
+      ]
+    },
+    {
+      "path": "model/scalar_observations/README.md",
+      "heading": "## What is bounded",
+      "label_column": "Comparison",
+      "comparison_column": "Target and scope",
+      "rows": [
+        {
+          "label": "Source execution at fixed occupation",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS"
+          }
+        },
+        {
+          "label": "Seven unrestricted interacting oscillators",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS"
+          }
+        },
+        {
+          "label": "Finite occupation to unrestricted observations",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS"
+          }
+        }
+      ]
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/README.md",
+      "heading": "## Retained result",
+      "label_column": "Comparison on 100 withheld complex points",
+      "comparison_column": "RMSE per real spin mean",
+      "rows": [
+        {
+          "label": "Prediction from the two measured axes",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        },
+        {
+          "label": "Zero-response diagnostic baseline",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        }
+      ]
     }
   ]
 }

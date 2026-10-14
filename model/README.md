@@ -33,13 +33,64 @@ on arbitrary native/reference inputs and retains padding and abort outputs.
 This extends the earlier classical native attachment; the source encoding
 and physical services remain declared.
 
-Its [encoded memory variant](common_source/ENCODED_MEMORY.md) compiles active
+The [shared scalar observations](scalar_observations/README.md) give a fixed
+physical field smearing the same meaning across interacting spatial grids.
+Both outcomes and continued feedback are source-executed. The finite-code
+observation law has spatial and temporal error bounds; a separate finite-energy
+theorem controls spatial refinement through both unrestricted measurements.
+An [occupation certificate](scalar_observations/OCCUPATION_DERIVATION.md)
+connects the principal four-level source execution to the complete classical
+record law of seven unrestricted oscillators, with ideal total-variation
+error below 0.054. Its [separate receipt](scalar_observations/occupation_results.json)
+preserves the original refinement and stress results. Auxiliary calculations
+also certify a positive interaction-dependent record response beyond their
+error budgets; they are not additional source executions. The seven-mode
+band and scalar action remain supplied. Native law and parameter identification,
+declared calibration and predictions for withheld physical responses are the
+next dynamical observational tasks on this construction. An initial
+[published oscillator readout comparison](scalar_observations/experimental_readout/README.md)
+uses 21 complex axis responses to predict 100 withheld responses, with
+per-spin-mean RMSE 0.07639. It tests the Gaussian preparation/detector relation;
+the experimental postselection, coordinate ambiguity and conditional sampling
+scope are retained. Agreement of the seven-mode dynamics with nature remains open.
+
+A separate [executable readout comparison](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
+calibrates a physical displaced-thermal preparation using two parameters and
+executes the 100 reserved readouts through native source words at 64 occupation
+levels. It retains both detector outcomes and an unrestricted-oscillator
+occupation bound. Its primary per-spin-mean RMSE is 0.06647, with ideal
+occupation probability error below 3.82e-7 at the fitted preparation.
+This is a calibrated, retrospective prediction within a
+supplied oscillator and apparatus model; selection of that model by OPH and
+the interacting dynamical comparison remain open.
+
+The [canonical scalar regulator](relativistic_scalar/README.md) executes a
+three-dimensional eight-site field with number-changing quartic interactions.
+Complete source-word histories have exact comparisons to eight unrestricted
+oscillators, including both retained measurements and feedback. An analytic
+bounded instrument detects the quartic term with a positive margin. Strong
+convexity supplies a gap bound for the untruncated finite-volume target, while
+free spatial refinement approaches Klein--Gordon with an explicit error.
+The interacting relativistic comparison, physical calibration and action
+selection are not established; the mass, geometry and action are supplied.
+
+The [spatial interacting family](spatial_interaction/README.md) executes a
+repulsive Bose field over 27, 125 and 343 sites with the same source controls,
+complete retained measurements and feedback. Exact bounds control its
+evolution splitting and infinite-volume observation laws; a matched
+interaction-deletion witness has a positive volume-uniform margin. This is
+a supplied nonrelativistic action at fixed lattice spacing. Its full-Fock
+vacuum gap is supplied by the mass parameter and is not measured by the
+executed two-particle histories. A relativistic continuum, physical clock
+and selection of that action remain open.
+
+The [encoded memory variant](common_source/ENCODED_MEMORY.md) compiles active
 recovery of a supplied native logical qubit around the same field history.
 A matched passive control separates recovery from record retention. The
 logical-code and physical-service boundaries remain explicit.
 
-The [common interacting source](common_source/README.md) contains
-quantum electric flux, charged CAR matter and a scalar field share one
+The [common interacting source](common_source/README.md) joins
+quantum electric flux, charged CAR matter and a scalar field on one
 evolving register, with complete measurements, retained records and native
 feedback. For zero native preparation current, its scalar response has an
 [exact nonzero infinite-occupation interval](common_source/INFINITE_HISTORY.md), including the actual
@@ -214,12 +265,16 @@ python3 -m model.observer.source_scalar --check model/observer/source_scalar/res
 python3 -m model.predictions --check model/predictions/results.json
 python3 -m model.observer.source_discrimination --check model/observer/source_discrimination/results.json
 python3 -m model.common_source --check model/common_source/results.json
+python3 -m model.spatial_interaction --check model/spatial_interaction/results.json
 ```
 
 ## What is implemented
 
 | Component | Result and entry point |
 | --- | --- |
+| Spatial interacting observer family | [Growing cubic Bose field](spatial_interaction/README.md): 27/125/343 sites, source-compiled local operations, complete recorded feedback, uniform temporal and infinite-volume bounds, positive interaction witness; fixed spacing and nonrelativistic action supplied |
+| Canonical scalar regulator | [Eight-site quartic field](relativistic_scalar/README.md): source execution with particle creation, exact complete-record occupation bounds, bounded interaction witness, untruncated finite-volume gap and separate free Klein--Gordon comparison; interacting relativistic validity domain remains open |
+| Shared scalar observations | [Fixed physical field detector](scalar_observations/README.md): interacting spatial comparisons, complete-record occupation certificate and positive unrestricted interaction witness; principal ideal source-to-target TV below 0.054, seven-mode band and action supplied, native identification and empirical calibration open |
 | Common interacting source | [Gauge/matter/scalar observer](common_source/README.md): actual source words, operator Gauss, two committed bits, all 1,056 native/quantum paths and a certified finite feedback response; declared action and services |
 | Observer Hilbert space, modular clock and regions | [Same-history readouts](common_source/OBSERVER_READOUTS.md): GNS pairings, nontrivial local modular flow, complete source-compiled clock branches and CP regional maps; access, schedule and localization declared |
 | Timeless history and native rank-three carrier | [Local history repair](common_source/HISTORY_REPAIR.md) and [geometric readouts](common_source/SLOW_GEOMETRY.md): schedule-independent completed branching law and record-readable displacements, including an executed three-direction controller |

@@ -72,6 +72,82 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [shared scalar observations](scalar_observations/README.md) compare
+the same smeared-field detector, preparation, feedback and Hamiltonian model
+times across interacting spatial refinements. A fixed physical torus and
+seven-mode band give identical quartic interactions from grid size five;
+only the spatial gradient approximation changes. The four-level source law
+at grid size 65 has ideal TV error below 0.001427 relative to the same code
+with exact gradients. A separate finite-energy theorem proves unrestricted
+fixed-band spatial convergence through both measurements and feedback.
+The additional [occupation proof](scalar_observations/OCCUPATION_DERIVATION.md)
+and [receipt](scalar_observations/occupation_results.json) bound the
+principal four-level source's complete classical record law against the
+same seven unrestricted modes: ideal total-variation error is below 0.054,
+including spatial and temporal approximation. Numerical and physical service
+errors remain separate. The original refinement results and stronger-detector
+stress test are preserved; the latter's cutoff sensitivity exceeds its
+interaction contrast.
+
+For the supplied interacting and free actions, an auxiliary comparison uses
+six occupation levels in the unmeasured modes and twelve in the measured
+mode, with an exact factorization of the free spectators. It proves that
+the event "the two bits differ" changes in probability by more than 0.00008
+under the positive-current preparation, after both error budgets. That
+preparation has native probability 5/66, so the corresponding joint event
+also has a strictly positive difference with every native outcome retained.
+These auxiliary proofs are not larger source executions or empirical evidence.
+The band, action, clock units and physical parameter identification remain
+supplied or open under their stated contracts.
+
+The [physical readout attachment](scalar_observations/experimental_readout/README.md)
+compares the same characteristic-function detector family with published
+zero-duration trapped-ion observations. Axes calibrate a Gaussian response
+relation and 100 off-axis points test it; per-spin-mean RMSE is 0.07639.
+The underlying files, mirrored-point exclusions, coordinate metadata conflict
+and all nominal conventions are retained. This is a retrospective component
+comparison on a postselected preparation, with conditional statistical
+coverage; it establishes no seven-mode dynamics, calibrated physical clock
+or OPH-specific empirical distinction.
+
+The subsequent [executable readout](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
+uses only two fitted preparation parameters, then actually contracts native
+preparation, rotation and smooth-detector words to emit the reserved binary
+probabilities. Its separate receipt retains both published coordinate scales
+and a rational 64-level occupation certificate for the complete measurement.
+Calibration uncertainty, source floating error and physical apparatus error
+are distinct. This supplies a direct source prediction under a declared
+laboratory model, without selecting that model's physical law from OPH.
+
+The [canonical scalar regulator](relativistic_scalar/README.md) advances the
+relativistic-field candidate to an eight-site three-dimensional quartic
+action with unrestricted-oscillator comparison. Its occupation approximations
+allow particle creation, execute source-compiled local operations and retain
+all 1,056 native/quantum histories at each cutoff. Exact factorial-weighted
+polynomial certificates bound the complete occupation error through both
+measurements and feedback. At 131,072 finite amplitudes and 32 temporal steps,
+the ideal source-to-untruncated record TV bound is below 0.000928. A separate
+bounded interaction witness has a strictly positive analytic margin.
+Strong convexity gives gap >= m for every untruncated finite spatial box,
+with m supplied; the observation protocol does not measure that gap.
+The free spatial family has a controlled Klein--Gordon limit. Matching
+interacting observation laws over a relativistic validity domain
+requires spatial/energy control and parameter matching, and is not closed
+by the free comparison or the finite-cell witness.
+
+The [spatial interacting branch](spatial_interaction/README.md) extends one
+supplied repulsive Bose action over growing three-dimensional boxes, with
+local source-compiled propagation, retained Ramsey records and feedback.
+Its 27-, 125- and 343-site executions use the exact two-particle sector.
+Uniform splitting and boundary estimates bound complete observation laws,
+and an analytic interaction-deletion witness survives infinite volume with
+a positive margin. The full-Fock extension has gap m because the action
+contains the supplied positive mN term; the fixed-number histories do not
+measure it. This closes a spatial interaction/control milestone at fixed
+lattice spacing, not the relativistic continuum or common charged-field
+construction. Its source-to-infinite-history TV bound at 343 sites is below
+0.010183 before numerical and physical service errors.
+
 The [finite executable specification](common_source/COMPOSITION.md)
 connects the common source's preparation, complete instruments, retained
 records, feedback, continuation and occupation refinement through one
@@ -644,6 +720,11 @@ that connection. Physical completion follows the acceptance criteria above
 and additionally needs the compatible interacting and gravitational
 interfaces and independent comparisons below:
 
+- Identify the native law and physical parameters using the existing
+  observable family. Declare calibration data, permitted fits and the
+  physical clock/unit map, then fix predictions and rejection rules for
+  withheld physical responses. Preserve the distinction between supplied
+  action coefficients, native restrictions and measured quantities.
 - Extend the executed four-read continuation and active logical memory to
   repeated operation with bounded record storage, reset, service errors and
   resources. Preserve the complete outcomes and reference correlations of
@@ -670,6 +751,11 @@ finite-channel and logical-memory identities.
 A discriminating next attachment should connect propagation, a retained
 quantum observable and an operational clock on the same extending family,
 with an explicit comparison to the existing native mean-diffusion control.
+The spatial Bose branch supplies interacting propagation and retained
+quantum observations with controlled growing-volume error. Connecting an
+operational clock, relativistic/EFT interpretation and the charged common
+action remains separate; increasing volume at fixed spacing does not
+remove the spatial regulator.
 The [native field analysis](common_source/NATIVE_FIELDS.md) excludes an
 undamped wave law for that fixed mean-load readout and uniform attempt
 schedule; it does not exclude other recorded quantum observables or an

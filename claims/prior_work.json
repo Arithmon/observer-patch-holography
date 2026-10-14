@@ -251,6 +251,16 @@
       "note": "No DOI located; multivariate least squares, partial covariances and Schur complements."
     },
     {
+      "key": "andrews2010fundamental",
+      "type": "misc",
+      "author": "Andrews, Ben and Clutterbuck, Julie",
+      "title": "Proof of the fundamental gap conjecture",
+      "year": "2010",
+      "eprint": "1006.1686",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1006.1686"
+    },
+    {
       "key": "aoki2026flag",
       "type": "article",
       "author": "Aoki, Y. and Blum, T. and Collins, S. and Del Debbio, L. and Della Morte, M. and Dimopoulos, P. and Feng, X. and Golterman, M. and Gottlieb, Steven and Gupta, R. and Herdoíza, G. and Hernandez, P. and Jüttner, A. and Kaneko, T. and Lunghi, E. and Meinel, S. and Monahan, C. and Nicholson, A. and Onogi, T. and Petreczky, P. and Portelli, A. and Ramos, A. and Sharpe, S. R. and Simone, J. N. and Sint, S. and Sommer, R. and Tantalo, N. and Van de Water, R. and Vaquero, A. and Wenger, U. and Wittig, H.",
@@ -3813,6 +3823,20 @@
       "note": "Component: unbiased cross-replicate (U-statistic) estimators"
     },
     {
+      "key": "hoeffding1963probability",
+      "type": "article",
+      "author": "Hoeffding, Wassily",
+      "title": "Probability Inequalities for Sums of Bounded Random Variables",
+      "journal": "Journal of the American Statistical Association",
+      "volume": "58",
+      "number": "301",
+      "pages": "13--30",
+      "year": "1963",
+      "doi": "10.1080/01621459.1963.10500830",
+      "verified": true,
+      "verification_source": "https://www.tandfonline.com/doi/abs/10.1080/01621459.1963.10500830"
+    },
+    {
       "key": "hofbauer1989termination",
       "type": "incollection",
       "author": "Hofbauer, Dieter and Lautemann, Clemens",
@@ -4162,6 +4186,20 @@
       "note": "Error bounds for symmetric (Strang) splittings."
     },
     {
+      "key": "jaksch1998cold",
+      "type": "article",
+      "author": "Jaksch, Dieter and Bruder, Christoph and Cirac, J. Ignacio and Gardiner, Crispin W. and Zoller, Peter",
+      "title": "Cold bosonic atoms in optical lattices",
+      "journal": "Physical Review Letters",
+      "volume": "81",
+      "pages": "3108",
+      "year": "1998",
+      "doi": "10.1103/PhysRevLett.81.3108",
+      "eprint": "cond-mat/9805329",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/cond-mat/9805329"
+    },
+    {
       "key": "james2001measurement",
       "type": "article",
       "author": "James, Daniel F. V. and Kwiat, Paul G. and Munro, William J. and White, Andrew G.",
@@ -4257,6 +4295,19 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1007/BF01331938",
       "note": "Original canonical anticommutation relations"
+    },
+    {
+      "key": "jordan2014quantum",
+      "type": "article",
+      "author": "Jordan, Stephen P. and Lee, Keith S. M. and Preskill, John",
+      "title": "Quantum Computation of Scattering in Scalar Quantum Field Theories",
+      "journal": "Quantum Information and Computation",
+      "volume": "14",
+      "pages": "1014--1080",
+      "year": "2014",
+      "eprint": "1112.4833",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1112.4833"
     },
     {
       "key": "joyal1991introduction",
@@ -5657,6 +5708,17 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1093/oso/9780198794899.001.0001",
       "note": "Linear symplectic and compatible complex structures"
+    },
+    {
+      "key": "mcgarry2026programmable",
+      "type": "misc",
+      "author": "McGarry, Cameron and Chalermpusitarak, Teerawat and Schwennicke, Kai and Scuccimarra, Frank and Millican, Maverick J. and Matsos, Vassili G. and Valahu, Christophe H. and Nagpal, Prachi and Chan, Hon-Kwan and Nourse, Henry L. and Kassal, Ivan and Tan, Ting Rei",
+      "title": "Programmable quantum simulation of anharmonic dynamics",
+      "year": "2026",
+      "eprint": "2603.04744v1",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/2603.04744v1",
+      "note": "The deposited zero-duration aggregate observations are retained under DOI 10.5281/zenodo.18752287 with separate file provenance."
     },
     {
       "key": "mcgaugh2016radial",

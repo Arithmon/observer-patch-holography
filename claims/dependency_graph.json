@@ -332,7 +332,11 @@
     "OPH-MODEL-P-RESPONSE-EXECUTION",
     "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE",
     "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
-    "OPH-MODEL-COMMON-SOURCE-EXECUTION"
+    "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+    "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION",
+    "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+    "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
   ],
   "edges": [
     {
@@ -2924,6 +2928,36 @@
       "from": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
       "to": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
       "role": "Reuses the source-compiled two-site scalar action, physical occupation projection, preparation compiler and independent matrix checks. The added matter interaction has its own finite temporal certificate; the free Gaussian occupation and separate spatial continuum bounds are not inherited."
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "to": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+      "role": "extends the supplied scalar construction to one shared fixed-band observation contract"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+      "to": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "role": "inherits the smooth detector family, not a claimed experimental test of its seven-mode dynamics"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     }
   ]
 }
