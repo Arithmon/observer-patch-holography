@@ -43,7 +43,10 @@ intemporelle et les horloges qu’elle contient.
   change ce qui est mesuré : l’occupation finale passe de 1/6 à 35/264. Un
   seul processus quantique fini réunit le flux électrique, la matière chargée
   et un champ scalaire sur un même registre, et un calcul exact certifie que
-  sa rétroaction enregistrée modifie la réponse mesurée.
+  sa rétroaction enregistrée modifie la réponse mesurée. Son protocole
+  continu à mesure lisse exécute quatre lectures du même état perturbé,
+  compile les deux réparations quantiques natives et protège un qubit codé
+  par une récupération commandée par les registres, sous des services déclarés.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de

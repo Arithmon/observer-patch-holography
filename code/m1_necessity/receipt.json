@@ -1717,10 +1717,13 @@
           "declared_common_history_constraint_repair",
           "declared_native_slow_geometry_readout",
           "declared_common_source_smooth_ramsey_instrument",
-          "declared_common_source_thermal_reference"
+          "declared_common_source_thermal_reference",
+          "declared_common_source_finite_record_program",
+          "declared_common_source_coherent_native_attachment",
+          "declared_common_source_active_encoded_native_memory"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "4fd6ddf110f360deb9cbb74e3755fb585d7e1a191e7a3620a3fe2fd7a8009962"
+        "original_claim_sha256": "83174cf004518b3a5a6aa03dfae5f475de866cc4bb21804a696ad5208ddbd709"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
@@ -3855,7 +3858,7 @@
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
     "code/m1_necessity/downstream.json": "5f6fae73f0bdd4e3a93b45dd2b0840afe2415998f3eac766cab096650cc9ea1c",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "ba30f86167d3400a809cd88bab20de47c421550e5f6f65702b3adb925398e43b",
+    "code/m1_necessity/test_necessity.py": "7c11beb410f0b5b2e053bd21a2e8d6a1cef3e33e541e7a1f310d781067682338",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

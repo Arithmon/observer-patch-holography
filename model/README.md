@@ -5,7 +5,33 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
-The newest step is the [common interacting source](common_source/README.md):
+The [finite executable specification](common_source/COMPOSITION.md) gives
+the common interacting observer one validated operation grammar, state and
+record algebra, preparation, controller, checkpoint and refinement contract.
+Its [runtime](common_source/protocol.py) also executes the existing sharp and
+smooth histories. The [continued observer](common_source/composition.py)
+keeps one preparation through two scalar reads, later feedback and a clock
+probe, then completes the native actuation. Its 4,224 joint outcomes at each
+executed cutoff retain the disturbed quantum state and every record. The
+same-history occupation bound includes those later operations.
+
+```sh
+python -m model.common_source.composition --check model/common_source/composition_results.json
+```
+
+The [coherent native interface](common_source/QUANTUM_NATIVE.md) also executes
+the surrounding C/E repairs through the same source controls, including the
+port routing used by final feedback. Its complete recorded instrument acts
+on arbitrary native/reference inputs and retains padding and abort outputs.
+This extends the earlier classical native attachment; the source encoding
+and physical services remain declared.
+
+Its [encoded memory variant](common_source/ENCODED_MEMORY.md) compiles active
+recovery of a supplied native logical qubit around the same field history.
+A matched passive control separates recovery from record retention. The
+logical-code and physical-service boundaries remain explicit.
+
+The [common interacting source](common_source/README.md) contains
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
 feedback. For zero native preparation current, its scalar response has an

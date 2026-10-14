@@ -646,6 +646,10 @@ infinite-occupation response and explicitly corrects the readout comparison.
 
 ## Native observation, interacting quantum response and native feedback
 
+This section retains the earlier sharp-history attachment. The separate
+[coherent native interface](QUANTUM_NATIVE.md) executes the surrounding
+native maps for the four-read smooth continuation, including port routing.
+
 The common experiment uses one declared state space for the native loads,
 the gauge/scalar quantum work registers and the committed history. The native
 integer-load repair is its existing instrument primitive. Gauge, scalar,
@@ -786,9 +790,12 @@ through another sharp field read and further evolution follows here. The
 [smooth instrument](SMOOTH_REFINEMENT.md) instead preserves the energy form
 domain and has unconditional infinite-model energy increment `1/8`; its
 full occupation error includes the pointer interaction. That is a different
-binary instrument, with bit zero denoting `(I+sin(Q0))/2`. None of these
-occupation results includes either the local-reference or fixed-Gibbs-reference
-clock continuation, or establishes their physical duration.
+binary instrument, with bit zero denoting `(I+sin(Q0))/2`. Those occupation
+results do not cover the earlier local-reference or post-sharp
+fixed-Gibbs-reference probes. The [smooth continuation](COMPOSITION.md)
+separately bounds the complete gauge-probe instrument after repeated smooth
+reads. It establishes neither a limit of Gibbs modular data nor physical
+clock calibration.
 
 ## Compatible theorem use and open physical connections
 
@@ -802,9 +809,9 @@ clock continuation, or establishes their physical duration.
 | Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | Finite code and ideal source services; numerical and physical service errors are separate |
 | Interacting occupation refinement | [Exponential-moment bound](OCCUPATION.md) through matter read/feedback, [strong sharp-readout limit](OCCUPATION_REFINEMENT.md) and [complete-output cutoff certificate](READOUT.md#complete-comparisons-with-the-actual-finite-pointer) | Fixed scalar preparation; the complete-output certificate uses zero native current; no spatial field limit or post-sharp clock continuation |
 | Infinite sharp-readout response | [Exact nonzero contrast and complete-output approximation bound](INFINITE_HISTORY.md) using the infinite half-line instrument | Zero native preparation current and declared two-site action; this signal enclosure alone supplies no finite-sign comparison, spatial limit or physical calibration |
-| Smooth binary instrument | [Complete-output occupation rate and finite-energy backreaction](SMOOTH_REFINEMENT.md) for the Ramsey detector | Different bit dictionary and quantum instrument; no sharp-detector rate or modular-clock limit |
+| Smooth binary instrument | [Complete-output occupation rate and finite-energy backreaction](SMOOTH_REFINEMENT.md) for the Ramsey detector; [continued-history bound](COMPOSITION.md) through later evolution and gauge probes | Different bit dictionary and quantum instrument; no sharp-detector rate or convergence of Gibbs modular data |
 | Observer representation and modular flow | [GNS and modular readouts](OBSERVER_READOUTS.md) of the actual observation state; emitted clock probe retains all records | Quantum algebra and access supplied; full conditioned scalar states may be nonfaithful; physical clock calibration open |
-| Fixed-reference modular correspondence | [Faithful full-work Gibbs reference](THERMAL_CLOCK.md) gives `t=-beta s` for continuous Hamiltonian segments, with source-executed clock continuations | Chosen reference differs from the actual state and earlier local reference; interventions need not preserve it; no reference selection by repair, clock occupation limit or physical calibration |
+| Fixed-reference modular correspondence | [Faithful full-work Gibbs reference](THERMAL_CLOCK.md) gives `t=-beta s` for continuous Hamiltonian segments, with source-executed clock continuations | Chosen reference differs from the actual state and earlier local reference; interventions need not preserve it; no reference selection by repair, post-sharp probe limit, Gibbs modular-data limit or physical calibration |
 | Quantum regional restriction | CP conditional expectations and Hamiltonian-derived interaction support on the same carrier | Supplied factorization; no multiplicative restriction, metric or growing spatial family |
 
 The [model–theorem premise map](../PREMISES.md) retains the broader

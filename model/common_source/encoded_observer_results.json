@@ -1,0 +1,1371 @@
+{
+  "cutoffs": [
+    {
+      "dimension": 2,
+      "ideal_complete_work_output_budget": {
+        "complete_classical_history_tv_error_upper": "1",
+        "complete_ideal_product_to_infinite_instrument_error_upper": "1",
+        "dimension": 2,
+        "floating_execution_or_physical_service_error_included": false,
+        "ideal_temporal_instrument_error_upper": "402519488230067544291302680677033992823678619487729/402653184000000000000000000000000000000000000000000000",
+        "ideal_temporal_segment_certificates": [
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "36592680748187958571936607334275817529425329044339/50331648000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "36592680748187958571936607334275817529425329044339/50331648000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1",
+            "operation_index": 0,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "33199489742783179/4000000000000000",
+            "unclipped_operator_error_upper": "36592680748187958571936607334275817529425329044339/50331648000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 3,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "33199489742783179/4000000000000000",
+            "unclipped_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 5,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "33199489742783179/4000000000000000",
+            "unclipped_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 8,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "33199489742783179/4000000000000000",
+            "unclipped_operator_error_upper": "36592680748187958571936607334275817529425329044339/402653184000000000000000000000000000000000000000000000"
+          }
+        ],
+        "nonvacuous_combined_bound": false,
+        "occupation_certificate": {
+          "all_unnormalized_branches_and_quantum_outputs_retained": true,
+          "bound_is_an_arbitrary_input_diamond_norm_claim": false,
+          "committed_binary_records": 4,
+          "complete_classical_history_tv_error_upper": "1",
+          "complete_instrument_trace_distance_upper": "1",
+          "complete_stinespring_vector_error_upper": "650852713830058283643600037747589929/4096000000000000000000000000000000",
+          "coupling_exact": "1/4",
+          "dimension": 2,
+          "each_bounded_effect_probability_error_upper": "1",
+          "final_fourth_number_moment_upper": "54294374821042930265784131440610148222853913992238424269577014477365594729/16777216000000000000000000000000000000000000000000000000000000000000",
+          "final_outside_vector_norm_upper": "7368471674712669360346124458986011027/65536000000000000000000000000000000",
+          "final_projected_history_vector_error_upper": "114978762564889781000324889146103289/1024000000000000000000000000000000",
+          "initial_fourth_number_moment_exact": "143748821/8192000",
+          "preparation_omitted_probability_upper": "1/160",
+          "preparation_tail_rounded_outward": true,
+          "preparation_vector_error_upper": "228973360895978464912299383678083/2048000000000000000000000000000000",
+          "same_history_evolution_after_smooth_reads_included": true,
+          "schema": "oph.common_source.smooth_continuation_occupation.v1",
+          "scope": "declared vacuum family, fixed two-site Hamiltonian and fixed finite smooth protocol",
+          "sharp_detector_or_state_dependent_modular_flow_included": false,
+          "smooth_pointer_count": 2,
+          "source_splitting_floating_or_physical_service_error_included": false,
+          "spatial_continuum_or_physical_clock_calibration_claimed": false,
+          "stages": [
+            {
+              "committed_binary_records": 0,
+              "incoming_sqrt_fourth_moment_upper": "4289504527098671800631283478274807/1024000000000000000000000000000000",
+              "index": 0,
+              "integrated_sqrt_fourth_moment_upper": "672861420130360161729006078054585306845471516389457276813940363/64000000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "874719846169468210247707901470961/819200000000000000000000000000000",
+              "projected_history_vector_error_upper": "4831545952639297981063138274710971/4096000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2539209518590040557244374479017/500000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "index": 1,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "gauge_read",
+              "outgoing_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "4831545952639297981063138274710971/4096000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "index": 2,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "feedback",
+              "outgoing_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "4831545952639297981063138274710971/4096000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "871356058019521440223417660307761/40960000000000000000000000000000",
+              "index": 3,
+              "integrated_sqrt_fourth_moment_upper": "8402116390588007750733518523008733999840467365861108798682271/512000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "98181559439798122390938753414944821/2048000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "6826719567352756297470983799944597/4096000000000000000000000000000000",
+              "projected_history_vector_error_upper": "728641594999503392408382629665973/256000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 2,
+              "incoming_sqrt_fourth_moment_upper": "98181559439798122390938753414944821/2048000000000000000000000000000000",
+              "index": 4,
+              "integrated_sqrt_fourth_moment_upper": "168703589475176750753952155083439004228011719855742398118113212813/2048000000000000000000000000000000000000000000000000000000000000",
+              "kind": "smooth_read",
+              "outgoing_sqrt_fourth_moment_upper": "533770297829949746289781816996767651/4096000000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "5271987171099273461061004846357469/1024000000000000000000000000000000",
+              "projected_history_vector_error_upper": "8186553551097287030694535365021361/1024000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2718281828459045235360287471353/1000000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 2,
+              "incoming_sqrt_fourth_moment_upper": "533770297829949746289781816996767651/4096000000000000000000000000000000",
+              "index": 5,
+              "integrated_sqrt_fourth_moment_upper": "5146920282392284660957334617827561577720416592548106600430522061/51200000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "1202869934540946752214235317314350657/4096000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "20909363647218656435139171884924469/2048000000000000000000000000000000",
+              "projected_history_vector_error_upper": "37282470749413230496528242614967191/2048000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "1202869934540946752214235317314350657/4096000000000000000000000000000000",
+              "index": 6,
+              "integrated_sqrt_fourth_moment_upper": "2066869550521430038454501794732039257318711358420664372229684228921/4096000000000000000000000000000000000000000000000000000000000000",
+              "kind": "smooth_read",
+              "outgoing_sqrt_fourth_moment_upper": "653947897012475358133747422409277983/819200000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "64589673453794688701703181085376227/2048000000000000000000000000000000",
+              "projected_history_vector_error_upper": "50936072101603959599115711850171709/1024000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2718281828459045235360287471353/1000000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "653947897012475358133747422409277983/819200000000000000000000000000000",
+              "index": 7,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "feedback",
+              "outgoing_sqrt_fourth_moment_upper": "653947897012475358133747422409277983/819200000000000000000000000000000",
+              "parameter_exact": "2",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "50936072101603959599115711850171709/1024000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "653947897012475358133747422409277983/819200000000000000000000000000000",
+              "index": 8,
+              "integrated_sqrt_fourth_moment_upper": "6305741830231219337965211302984032479937968474446659953869578513/10240000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "7368471674712669360346124458986011027/4096000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "3202134523164291070060458864796579/51200000000000000000000000000000",
+              "projected_history_vector_error_upper": "114978762564889781000324889146103289/1024000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 4,
+              "incoming_sqrt_fourth_moment_upper": "7368471674712669360346124458986011027/4096000000000000000000000000000000",
+              "index": 9,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "gauge_read",
+              "outgoing_sqrt_fourth_moment_upper": "7368471674712669360346124458986011027/4096000000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "114978762564889781000324889146103289/1024000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            }
+          ],
+          "total_hamiltonian_model_time": "5/2",
+          "total_pointer_auxiliary_parameter": "2",
+          "trace_distance_convention": "one half of the trace norm"
+        },
+        "schema": "oph.common_source.smooth_continuation_budget.v1",
+        "scope": "same complete smooth continuation, including all later Hamiltonian segments and gauge reads",
+        "source_compiler_available_at_this_dimension": true,
+        "steps_per_segment": 512
+      },
+      "laws": {
+        "C": {
+          "complete_channel_audits": {
+            "passive_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 9.88835724385848e-12,
+              "final_abort_outcome_count": 192,
+              "first_abort_outcome_count": 2,
+              "full_outcome_count_including_abort": 770,
+              "maximally_mixed_native_abort_probability": 1.4420321240641814e-28,
+              "maximally_mixed_native_padding_probability": 1.8129445385839216e-26,
+              "maximum_native_map_frobenius_error": 3.880130932898045e-13,
+              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
+              "prepared_complete_stacked_map_error_upper": 2.481221945295449e-12,
+              "prepared_native_input_completeness_operator_error": 1.0635120572662905e-12
+            },
+            "protected_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 9.966673671427911e-12,
+              "final_abort_outcome_count": 192,
+              "first_abort_outcome_count": 2,
+              "full_outcome_count_including_abort": 770,
+              "maximally_mixed_native_abort_probability": 1.4230256418808036e-28,
+              "maximally_mixed_native_padding_probability": 3.3046184775340656e-26,
+              "maximum_native_map_frobenius_error": 2.9455809797989885e-13,
+              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
+              "prepared_complete_stacked_map_error_upper": 2.500097481761128e-12,
+              "prepared_native_input_completeness_operator_error": 1.0669085706383771e-12
+            }
+          },
+          "memory_witness": {
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999989533,
+            "complete_pre_read_logical_phase_distances_diagnostic": {
+              "active": 0.9999999999989538,
+              "passive": 0.5640792327646491
+            },
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.2179603836176474,
+            "exact_uniform_passive_obstruction": {
+              "infinite_occupation_uniform_lower_bound_claimed": false,
+              "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
+              "uniform_passive_worst_case_decoder_error_lower_exact": "1/16",
+              "uniform_second_smooth_plus_lower_exact": "1/8"
+            },
+            "logical_memory_is_assessed_before_terminal_read": true,
+            "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
+            "passive_distance_formula": "1 - q_bar",
+            "prepared_second_smooth_plus_probability_diagnostic": 0.4359207672352948,
+            "source_decoded_complete_terminal_reads": {
+              "phase_0": {
+                "abort_probability": 1.4260483718353653e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 0.999999999998933,
+                "probability_mass": 0.999999999998933
+              },
+              "phase_pi": {
+                "abort_probability": 1.4200029119262416e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 2.0108277423538962e-27,
+                "probability_mass": 0.9999999999989746
+              },
+              "phase_pi_over_2": {
+                "abort_probability": 1.4230256418808054e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 0.49999999999945277,
+                "probability_mass": 0.9999999999989544
+              }
+            },
+            "terminal_read_is_destructive": true
+          },
+          "resources": {
+            "passive_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 21,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 0,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 0,
+              "maximum_last_recovery_native_pulses": 0,
+              "maximum_native_pulses_per_attempt": 4371169,
+              "maximum_proper_code_export_events_per_attempt": 4371169,
+              "maximum_proper_code_load_events_per_attempt": 4371169,
+              "maximum_proper_code_service_events_per_attempt": 8742338,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 15,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            },
+            "protected_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 21,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 1,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 259231,
+              "maximum_last_recovery_native_pulses": 306367,
+              "maximum_native_pulses_per_attempt": 4936767,
+              "maximum_proper_code_export_events_per_attempt": 4936767,
+              "maximum_proper_code_load_events_per_attempt": 4936767,
+              "maximum_proper_code_service_events_per_attempt": 9873534,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 15,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            }
+          }
+        },
+        "E": {
+          "complete_channel_audits": {
+            "passive_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 9.854120226503405e-12,
+              "final_abort_outcome_count": 960,
+              "first_abort_outcome_count": 6,
+              "full_outcome_count_including_abort": 2566,
+              "maximally_mixed_native_abort_probability": 2.5891748078310425e-28,
+              "maximally_mixed_native_padding_probability": 1.8133444210944614e-26,
+              "maximum_native_map_frobenius_error": 3.8821646706627363e-13,
+              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
+              "prepared_complete_stacked_map_error_upper": 2.4733425608942384e-12,
+              "prepared_native_input_completeness_operator_error": 1.062062626499283e-12
+            },
+            "protected_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 9.909840835139623e-12,
+              "final_abort_outcome_count": 960,
+              "first_abort_outcome_count": 6,
+              "full_outcome_count_including_abort": 2566,
+              "maximally_mixed_native_abort_probability": 2.588679388061692e-28,
+              "maximally_mixed_native_padding_probability": 2.7331829028622923e-26,
+              "maximum_native_map_frobenius_error": 2.942939486001743e-13,
+              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
+              "prepared_complete_stacked_map_error_upper": 2.486797525528563e-12,
+              "prepared_native_input_completeness_operator_error": 1.0654333631634796e-12
+            }
+          },
+          "memory_witness": {
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999989543,
+            "complete_pre_read_logical_phase_distances_diagnostic": {
+              "active": 0.9999999999989548,
+              "passive": 0.5640792327646204
+            },
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.2179603836176474,
+            "exact_uniform_passive_obstruction": {
+              "infinite_occupation_uniform_lower_bound_claimed": false,
+              "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
+              "uniform_passive_worst_case_decoder_error_lower_exact": "1/16",
+              "uniform_second_smooth_plus_lower_exact": "1/8"
+            },
+            "logical_memory_is_assessed_before_terminal_read": true,
+            "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
+            "passive_distance_formula": "1 - q_bar",
+            "prepared_second_smooth_plus_probability_diagnostic": 0.4359207672352948,
+            "source_decoded_complete_terminal_reads": {
+              "phase_0": {
+                "abort_probability": 2.6725505883670634e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 0.9999999999989345,
+                "probability_mass": 0.9999999999989345
+              },
+              "phase_pi": {
+                "abort_probability": 2.5048081877563225e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 2.0077764393846554e-27,
+                "probability_mass": 0.999999999998975
+              },
+              "phase_pi_over_2": {
+                "abort_probability": 2.588679388061691e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 0.49999999999945355,
+                "probability_mass": 0.9999999999989554
+              }
+            },
+            "terminal_read_is_destructive": true
+          },
+          "resources": {
+            "passive_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 23,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 0,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 0,
+              "maximum_last_recovery_native_pulses": 0,
+              "maximum_native_pulses_per_attempt": 4371175,
+              "maximum_proper_code_export_events_per_attempt": 4371175,
+              "maximum_proper_code_load_events_per_attempt": 4371175,
+              "maximum_proper_code_service_events_per_attempt": 8742350,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 16,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            },
+            "protected_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 23,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 1,
+                "first_raw": 4,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 4,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 259231,
+              "maximum_last_recovery_native_pulses": 306367,
+              "maximum_native_pulses_per_attempt": 4936773,
+              "maximum_proper_code_export_events_per_attempt": 4936773,
+              "maximum_proper_code_load_events_per_attempt": 4936773,
+              "maximum_proper_code_service_events_per_attempt": 9873546,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 16,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            }
+          }
+        }
+      },
+      "physical_service_coverage": {
+        "complete_service_key_coverage": false,
+        "conditional_complete_error_upper": null,
+        "ideal_instrument_error_upper": "1",
+        "missing_service_stage_keys": [
+          "preparation",
+          "operation_0:evolve",
+          "operation_1:gauge_read",
+          "operation_2:feedback",
+          "operation_3:evolve",
+          "operation_4:smooth_read",
+          "operation_5:evolve",
+          "operation_6:smooth_read",
+          "operation_7:feedback",
+          "operation_8:evolve",
+          "operation_9:gauge_read",
+          "storage",
+          "logical_input_preparation",
+          "native_encoder",
+          "native_logical_storage_through_work",
+          "first_native_coin_and_recorded_repair",
+          "first_native_recovery",
+          "last_native_coin_and_recorded_routed_repair",
+          "last_native_recovery",
+          "native_terminal_decoder_rotation_and_readout"
+        ],
+        "required_service_stage_keys": [
+          "preparation",
+          "operation_0:evolve",
+          "operation_1:gauge_read",
+          "operation_2:feedback",
+          "operation_3:evolve",
+          "operation_4:smooth_read",
+          "operation_5:evolve",
+          "operation_6:smooth_read",
+          "operation_7:feedback",
+          "operation_8:evolve",
+          "operation_9:gauge_read",
+          "storage",
+          "logical_input_preparation",
+          "native_encoder",
+          "native_logical_storage_through_work",
+          "first_native_coin_and_recorded_repair",
+          "first_native_recovery",
+          "last_native_coin_and_recorded_routed_repair",
+          "last_native_recovery",
+          "native_terminal_decoder_rotation_and_readout"
+        ],
+        "scope": "conditional arithmetic; preparation and all implemented stages must be covered to assert a complete error bound",
+        "service_bounds_independently_established_by_this_function": false,
+        "service_bounds_supplied": false,
+        "sum_of_supplied_service_error_bounds": "0",
+        "supplied_service_error_bounds": {}
+      }
+    },
+    {
+      "dimension": 4,
+      "ideal_complete_work_output_budget": {
+        "complete_classical_history_tv_error_upper": "1",
+        "complete_ideal_product_to_infinite_instrument_error_upper": "1",
+        "dimension": 4,
+        "floating_execution_or_physical_service_error_included": false,
+        "ideal_temporal_instrument_error_upper": "289514888593500750532443365580190183553457636142721/50331648000000000000000000000000000000000000000000000",
+        "ideal_temporal_segment_certificates": [
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "26319535326681886412040305961835471232132512376611/6291456000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "26319535326681886412040305961835471232132512376611/6291456000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1",
+            "operation_index": 0,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "29745828693386971/2000000000000000",
+            "unclipped_operator_error_upper": "26319535326681886412040305961835471232132512376611/6291456000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 3,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "29745828693386971/2000000000000000",
+            "unclipped_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 5,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "29745828693386971/2000000000000000",
+            "unclipped_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000"
+          },
+          {
+            "coupling_exact": "1/4",
+            "floating_execution_or_physical_error_included": false,
+            "ideal_channel_half_diamond_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "ideal_split_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000",
+            "method": "palindromic degree-two agreement, integral Taylor remainder and unitary telescoping",
+            "model_time_exact": "1/2",
+            "operation_index": 8,
+            "spatial_or_occupation_error_included": false,
+            "steps": 512,
+            "sum_generator_norms_upper": "29745828693386971/2000000000000000",
+            "unclipped_operator_error_upper": "26319535326681886412040305961835471232132512376611/50331648000000000000000000000000000000000000000000000"
+          }
+        ],
+        "nonvacuous_combined_bound": false,
+        "occupation_certificate": {
+          "all_unnormalized_branches_and_quantum_outputs_retained": true,
+          "bound_is_an_arbitrary_input_diamond_norm_claim": false,
+          "committed_binary_records": 4,
+          "complete_classical_history_tv_error_upper": "1",
+          "complete_instrument_trace_distance_upper": "1",
+          "complete_stinespring_vector_error_upper": "489620098856158481093633213487086311/5832000000000000000000000000000000",
+          "coupling_exact": "1/4",
+          "dimension": 4,
+          "each_bounded_effect_probability_error_upper": "1",
+          "final_fourth_number_moment_upper": "440281018818204893545205453444355706731021993583927307671970663493295144561/136048896000000000000000000000000000000000000000000000000000000000000",
+          "final_outside_vector_norm_upper": "20982874417443499858173143478909382169/419904000000000000000000000000000000",
+          "final_projected_history_vector_error_upper": "3147540897826815644876551702429916731/46656000000000000000000000000000000",
+          "initial_fourth_number_moment_exact": "143748821/8192000",
+          "preparation_omitted_probability_upper": "1/17280",
+          "preparation_tail_rounded_outward": true,
+          "preparation_vector_error_upper": "501938641668481228319232795811799/46656000000000000000000000000000000",
+          "same_history_evolution_after_smooth_reads_included": true,
+          "schema": "oph.common_source.smooth_continuation_occupation.v1",
+          "scope": "declared vacuum family, fixed two-site Hamiltonian and fixed finite smooth protocol",
+          "sharp_detector_or_state_dependent_modular_flow_included": false,
+          "smooth_pointer_count": 2,
+          "source_splitting_floating_or_physical_service_error_included": false,
+          "spatial_continuum_or_physical_clock_calibration_claimed": false,
+          "stages": [
+            {
+              "committed_binary_records": 0,
+              "incoming_sqrt_fourth_moment_upper": "65146850005311077972087617826298629/15552000000000000000000000000000000",
+              "index": 0,
+              "integrated_sqrt_fourth_moment_upper": "1135453646469982772917697756717112664996844194680980191994327929/108000000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "3481864724702121152602202789125733/5184000000000000000000000000000000",
+              "projected_history_vector_error_upper": "7959680290996892900434764474485849/11664000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2539209518590040557244374479017/500000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "index": 1,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "gauge_read",
+              "outgoing_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "7959680290996892900434764474485849/11664000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "index": 2,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "feedback",
+              "outgoing_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "7959680290996892900434764474485849/11664000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 1,
+              "incoming_sqrt_fourth_moment_upper": "496264504918930570252243339347154489/23328000000000000000000000000000000",
+              "index": 3,
+              "integrated_sqrt_fourth_moment_upper": "1595089283525692096428316407102439287326318516389831862067142493/97200000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "2236698650987900975718573476234211623/46656000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "12228339585514977521724409674214331/11664000000000000000000000000000000",
+              "projected_history_vector_error_upper": "1009400993825593521107958707435009/583200000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 2,
+              "incoming_sqrt_fourth_moment_upper": "2236698650987900975718573476234211623/46656000000000000000000000000000000",
+              "index": 4,
+              "integrated_sqrt_fourth_moment_upper": "1281092882577123451037824177664864892302931241142841850480050711973/15552000000000000000000000000000000000000000000000000000000000000",
+              "kind": "smooth_read",
+              "outgoing_sqrt_fourth_moment_upper": "20266590995730904429440153364096021/155520000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "65375497404691631345325368413254217/23328000000000000000000000000000000",
+              "projected_history_vector_error_upper": "35250512385905124063214572236884859/7776000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2718281828459045235360287471353/1000000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 2,
+              "incoming_sqrt_fourth_moment_upper": "20266590995730904429440153364096021/155520000000000000000000000000000",
+              "index": 5,
+              "integrated_sqrt_fourth_moment_upper": "65140709824027352740241266256880073810895723175355020835902377/648000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "1712680043516308949930034270160471867/5832000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "19975376395458501129882266700588481/3110400000000000000000000000000000",
+              "projected_history_vector_error_upper": "56792635583034251258613492658904041/5184000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "1712680043516308949930034270160471867/5832000000000000000000000000000000",
+              "index": 6,
+              "integrated_sqrt_fourth_moment_upper": "980955665579506834657117062734151407420471635120884338498241642017/1944000000000000000000000000000000000000000000000000000000000000",
+              "kind": "smooth_read",
+              "outgoing_sqrt_fourth_moment_upper": "7448875264407727126242216733380681743/9331200000000000000000000000000000",
+              "parameter_exact": "1",
+              "projected_duhamel_increment_upper": "266982315662449718832878610424065631/15552000000000000000000000000000000",
+              "projected_history_vector_error_upper": "218680111205776236304359544200388877/7776000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "2718281828459045235360287471353/1000000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "7448875264407727126242216733380681743/9331200000000000000000000000000000",
+              "index": 7,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "feedback",
+              "outgoing_sqrt_fourth_moment_upper": "7448875264407727126242216733380681743/9331200000000000000000000000000000",
+              "parameter_exact": "2",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "218680111205776236304359544200388877/7776000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            },
+            {
+              "committed_binary_records": 3,
+              "incoming_sqrt_fourth_moment_upper": "7448875264407727126242216733380681743/9331200000000000000000000000000000",
+              "index": 8,
+              "integrated_sqrt_fourth_moment_upper": "23942113511659160923836661666017497415510844919424266283217441291/38880000000000000000000000000000000000000000000000000000000000",
+              "kind": "evolve",
+              "outgoing_sqrt_fourth_moment_upper": "20982874417443499858173143478909382169/11664000000000000000000000000000000",
+              "parameter_exact": "1/2",
+              "projected_duhamel_increment_upper": "1835460230592158227050394437227583469/46656000000000000000000000000000000",
+              "projected_history_vector_error_upper": "3147540897826815644876551702429916731/46656000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "225353478721320854485733107843/100000000000000000000000000000"
+            },
+            {
+              "committed_binary_records": 4,
+              "incoming_sqrt_fourth_moment_upper": "20982874417443499858173143478909382169/11664000000000000000000000000000000",
+              "index": 9,
+              "integrated_sqrt_fourth_moment_upper": "0",
+              "kind": "gauge_read",
+              "outgoing_sqrt_fourth_moment_upper": "20982874417443499858173143478909382169/11664000000000000000000000000000000",
+              "parameter_exact": "0",
+              "projected_duhamel_increment_upper": "0",
+              "projected_history_vector_error_upper": "3147540897826815644876551702429916731/46656000000000000000000000000000000",
+              "sqrt_moment_growth_factor_upper": "1"
+            }
+          ],
+          "total_hamiltonian_model_time": "5/2",
+          "total_pointer_auxiliary_parameter": "2",
+          "trace_distance_convention": "one half of the trace norm"
+        },
+        "schema": "oph.common_source.smooth_continuation_budget.v1",
+        "scope": "same complete smooth continuation, including all later Hamiltonian segments and gauge reads",
+        "source_compiler_available_at_this_dimension": true,
+        "steps_per_segment": 512
+      },
+      "laws": {
+        "C": {
+          "complete_channel_audits": {
+            "passive_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 6.785401260963036e-11,
+              "final_abort_outcome_count": 192,
+              "first_abort_outcome_count": 2,
+              "full_outcome_count_including_abort": 770,
+              "maximally_mixed_native_abort_probability": 1.439183486145969e-28,
+              "maximally_mixed_native_padding_probability": 1.8256661372459693e-26,
+              "maximum_native_map_frobenius_error": 3.880130932898045e-13,
+              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
+              "prepared_complete_stacked_map_error_upper": 7.257685847321615e-12,
+              "prepared_native_input_completeness_operator_error": 9.057689319146649e-13
+            },
+            "protected_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 6.800922598557822e-11,
+              "final_abort_outcome_count": 192,
+              "first_abort_outcome_count": 2,
+              "full_outcome_count_including_abort": 770,
+              "maximally_mixed_native_abort_probability": 1.4230256418809144e-28,
+              "maximally_mixed_native_padding_probability": 3.3191744516155585e-26,
+              "maximum_native_map_frobenius_error": 2.9455809797989885e-13,
+              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
+              "prepared_complete_stacked_map_error_upper": 7.276207579960914e-12,
+              "prepared_native_input_completeness_operator_error": 9.094042041337069e-13
+            }
+          },
+          "memory_witness": {
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999991108,
+            "complete_pre_read_logical_phase_distances_diagnostic": {
+              "active": 0.9999999999991115,
+              "passive": 0.5610368898929168
+            },
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.21948155505339503,
+            "exact_uniform_passive_obstruction": {
+              "infinite_occupation_uniform_lower_bound_claimed": false,
+              "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
+              "uniform_passive_worst_case_decoder_error_lower_exact": "1/3072",
+              "uniform_second_smooth_plus_lower_exact": "1/1536"
+            },
+            "logical_memory_is_assessed_before_terminal_read": true,
+            "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
+            "passive_distance_formula": "1 - q_bar",
+            "prepared_second_smooth_plus_probability_diagnostic": 0.43896311010679007,
+            "source_decoded_complete_terminal_reads": {
+              "phase_0": {
+                "abort_probability": 1.4260483718354776e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 0.9999999999990906,
+                "probability_mass": 0.9999999999990906
+              },
+              "phase_pi": {
+                "abort_probability": 1.4200029119263534e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 2.013827360604246e-27,
+                "probability_mass": 0.9999999999991321
+              },
+              "phase_pi_over_2": {
+                "abort_probability": 1.4230256418809175e-28,
+                "complete_outcome_count": 295106,
+                "plus_code_zero_probability": 0.49999999999953154,
+                "probability_mass": 0.999999999999112
+              }
+            },
+            "terminal_read_is_destructive": true
+          },
+          "resources": {
+            "passive_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 21,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 0,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 0,
+              "maximum_last_recovery_native_pulses": 0,
+              "maximum_native_pulses_per_attempt": 7776713,
+              "maximum_proper_code_export_events_per_attempt": 7776713,
+              "maximum_proper_code_load_events_per_attempt": 7776713,
+              "maximum_proper_code_service_events_per_attempt": 15553426,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 17,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            },
+            "protected_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 21,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 1,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 259231,
+              "maximum_last_recovery_native_pulses": 306367,
+              "maximum_native_pulses_per_attempt": 8342311,
+              "maximum_proper_code_export_events_per_attempt": 8342311,
+              "maximum_proper_code_load_events_per_attempt": 8342311,
+              "maximum_proper_code_service_events_per_attempt": 16684622,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 17,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            }
+          }
+        },
+        "E": {
+          "complete_channel_audits": {
+            "passive_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 6.77718177112347e-11,
+              "final_abort_outcome_count": 960,
+              "first_abort_outcome_count": 6,
+              "full_outcome_count_including_abort": 2566,
+              "maximally_mixed_native_abort_probability": 2.589100555714161e-28,
+              "maximally_mixed_native_padding_probability": 1.8260129597818995e-26,
+              "maximum_native_map_frobenius_error": 3.8821646706627363e-13,
+              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
+              "prepared_complete_stacked_map_error_upper": 7.248435758918411e-12,
+              "prepared_native_input_completeness_operator_error": 9.048312913748306e-13
+            },
+            "protected_qubit": {
+              "complete_stacked_map_frobenius_error_upper": 6.787463645170472e-11,
+              "final_abort_outcome_count": 960,
+              "first_abort_outcome_count": 6,
+              "full_outcome_count_including_abort": 2566,
+              "maximally_mixed_native_abort_probability": 2.588679388061897e-28,
+              "maximally_mixed_native_padding_probability": 2.746385160013797e-26,
+              "maximum_native_map_frobenius_error": 2.942939486001743e-13,
+              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
+              "prepared_complete_stacked_map_error_upper": 7.260896431959906e-12,
+              "prepared_native_input_completeness_operator_error": 9.080634633289808e-13
+            }
+          },
+          "memory_witness": {
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999991118,
+            "complete_pre_read_logical_phase_distances_diagnostic": {
+              "active": 0.9999999999991125,
+              "passive": 0.5610368898928878
+            },
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.21948155505339503,
+            "exact_uniform_passive_obstruction": {
+              "infinite_occupation_uniform_lower_bound_claimed": false,
+              "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
+              "uniform_passive_worst_case_decoder_error_lower_exact": "1/3072",
+              "uniform_second_smooth_plus_lower_exact": "1/1536"
+            },
+            "logical_memory_is_assessed_before_terminal_read": true,
+            "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
+            "passive_distance_formula": "1 - q_bar",
+            "prepared_second_smooth_plus_probability_diagnostic": 0.43896311010679007,
+            "source_decoded_complete_terminal_reads": {
+              "phase_0": {
+                "abort_probability": 2.6725505883672737e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 0.9999999999990921,
+                "probability_mass": 0.9999999999990921
+              },
+              "phase_pi": {
+                "abort_probability": 2.50480818775652e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 2.010505834007645e-27,
+                "probability_mass": 0.9999999999991327
+              },
+              "phase_pi_over_2": {
+                "abort_probability": 2.588679388061895e-28,
+                "complete_outcome_count": 820166,
+                "plus_code_zero_probability": 0.4999999999995323,
+                "probability_mass": 0.999999999999113
+              }
+            },
+            "terminal_read_is_destructive": true
+          },
+          "resources": {
+            "passive_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 23,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 0,
+                "first_raw": 0,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 0,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 0,
+              "maximum_last_recovery_native_pulses": 0,
+              "maximum_native_pulses_per_attempt": 7776719,
+              "maximum_proper_code_export_events_per_attempt": 7776719,
+              "maximum_proper_code_load_events_per_attempt": 7776719,
+              "maximum_proper_code_service_events_per_attempt": 15553438,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 18,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            },
+            "protected_qubit": {
+              "archive_record_rewrites_during_recovery": 0,
+              "blank_quantum_qubits_added_during_recovery": 0,
+              "encoder": {
+                "blank_code_qubits": 8,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "pair_code_pulses": 50204,
+                "physical_initialization_error_included": false,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "supplied_logical_qubits": 1
+              },
+              "field_pointer_initializations_and_reads": 4,
+              "field_preparations": 1,
+              "fixed_width_terminal_record_bits_including_two_status_bits": 23,
+              "initial_blank_native_code_qubits": 8,
+              "logical_input_preparation_pulses": 3,
+              "maximizing_scheduled_record": {
+                "final_seam": [
+                  2,
+                  3
+                ],
+                "first_coin": 1,
+                "first_raw": 4,
+                "last_abort": false,
+                "last_coin": 0,
+                "last_raw": 4,
+                "work_record": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "maximum_first_recovery_native_pulses": 259231,
+              "maximum_last_recovery_native_pulses": 306367,
+              "maximum_native_pulses_per_attempt": 8342317,
+              "maximum_proper_code_export_events_per_attempt": 8342317,
+              "maximum_proper_code_load_events_per_attempt": 8342317,
+              "maximum_proper_code_service_events_per_attempt": 16684634,
+              "native_classical_readout_registers": 5,
+              "native_coin_initializations": 2,
+              "native_input_qubits": 9,
+              "native_record_initializations": 2,
+              "peak_code_qubits_excluding_six_level_processor": 18,
+              "physical_services_or_host_tree_storage_counted": false,
+              "source_word_counts_include_all_repeated_invocations": true,
+              "supplied_logical_qubits": 1,
+              "terminal_decoder": {
+                "blank_code_qubits": 0,
+                "identity_phase_pulses": 14,
+                "native_pulses": 164967,
+                "new_classical_records": 0,
+                "output_rows_retained": 512,
+                "pair_code_pulses": 50204,
+                "proper_code_export_events": 164967,
+                "proper_code_load_events": 164967,
+                "proper_code_service_events": 329934,
+                "single_code_pulses": 114763,
+                "syndrome_postselection_applied": false
+              }
+            }
+          }
+        }
+      },
+      "physical_service_coverage": {
+        "complete_service_key_coverage": false,
+        "conditional_complete_error_upper": null,
+        "ideal_instrument_error_upper": "1",
+        "missing_service_stage_keys": [
+          "preparation",
+          "operation_0:evolve",
+          "operation_1:gauge_read",
+          "operation_2:feedback",
+          "operation_3:evolve",
+          "operation_4:smooth_read",
+          "operation_5:evolve",
+          "operation_6:smooth_read",
+          "operation_7:feedback",
+          "operation_8:evolve",
+          "operation_9:gauge_read",
+          "storage",
+          "logical_input_preparation",
+          "native_encoder",
+          "native_logical_storage_through_work",
+          "first_native_coin_and_recorded_repair",
+          "first_native_recovery",
+          "last_native_coin_and_recorded_routed_repair",
+          "last_native_recovery",
+          "native_terminal_decoder_rotation_and_readout"
+        ],
+        "required_service_stage_keys": [
+          "preparation",
+          "operation_0:evolve",
+          "operation_1:gauge_read",
+          "operation_2:feedback",
+          "operation_3:evolve",
+          "operation_4:smooth_read",
+          "operation_5:evolve",
+          "operation_6:smooth_read",
+          "operation_7:feedback",
+          "operation_8:evolve",
+          "operation_9:gauge_read",
+          "storage",
+          "logical_input_preparation",
+          "native_encoder",
+          "native_logical_storage_through_work",
+          "first_native_coin_and_recorded_repair",
+          "first_native_recovery",
+          "last_native_coin_and_recorded_routed_repair",
+          "last_native_recovery",
+          "native_terminal_decoder_rotation_and_readout"
+        ],
+        "scope": "conditional arithmetic; preparation and all implemented stages must be covered to assert a complete error bound",
+        "service_bounds_independently_established_by_this_function": false,
+        "service_bounds_supplied": false,
+        "sum_of_supplied_service_error_bounds": "0",
+        "supplied_service_error_bounds": {}
+      }
+    }
+  ],
+  "schema": "oph.common_source.encoded_observer.v1",
+  "scope": {
+    "arbitrary_erased_full_carrier_coherence_recovered": false,
+    "canonical_runtime": "quantum_native.JointHistory with explicit native_mode",
+    "encoded_interventions_added_to_native_law": true,
+    "logical_input_dimension": 2,
+    "logical_memory_requires_scalar_continuum_limit": false,
+    "native_output_rows_retained": 512,
+    "physical_clock_calibration_established": false,
+    "record_fault_tolerance_or_physical_service_accuracy_established": false,
+    "unknown_quantum_memory_reconstructed_from_classical_tape": false
+  },
+  "steps": 512
+}

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from functools import lru_cache
+from fractions import Fraction as F
 import math
 
 import numpy as np
@@ -112,29 +113,37 @@ def history(d, steps=512, coupling=.25, feedback=True, native_current=0):
     if type(native_current) is not int or native_current not in (-1, 0, 1):
         raise ValueError('native current -1, 0 or 1 required')
     coupling = scalar._real(coupling, 'coupling')
-    prepared, prepare_meta = scalar.preparation(d)
+    from . import protocol
+    _, prepare_meta = scalar.preparation(d)
     kick_word = [c.pulse('X', -native_current*e.FEEDBACK_ANGLE, [0])]
-    kick, kick_guard = c.stabilize_executed_unitary(c.execute(kick_word, qubits))
-    initial = kick@prepared
+    _, kick_guard = c.stabilize_executed_unitary(c.execute(kick_word, qubits))
     kick_meta = {'guard': kick_guard, 'resources': e._word_resources(kick_word),
                  'native_current': native_current}
-    first, first_meta = scalar.source_unitary(d, steps, time=1., coupling=coupling)
-    second, second_meta = scalar.source_unitary(d, steps, time=.5, coupling=coupling)
-    read_a, a_meta = e.pointer(d, 0)
+    _, first_meta = scalar.source_unitary(d, steps, time=1., coupling=coupling)
+    _, second_meta = scalar.source_unitary(d, steps, time=.5, coupling=coupling)
+    _, a_meta = e.pointer(d, 0)
     read_b, b_meta = pointer(d)
     ideal_b = ideal_kraus(d)
     independent_first = scalar.independent_split_unitary(d, steps, time=1., coupling=coupling)
     independent_second = scalar.independent_split_unitary(d, steps, time=.5, coupling=coupling)
+    # One canonical execution supplies every disturbed prefix and terminal
+    # state. The retained energy ledger and independent oracle use those
+    # states; they do not run a second production history.
+    program = protocol.smooth_program(d, steps, native_current=native_current,
+                                      feedback=feedback, coupling=F(coupling))
+    prefixes = protocol.execution_prefixes(program)
+    prepared = prefixes[0].initial_state[:, 0]
+    initial = prefixes[0].branches[0].state[:, 0]
+    ensemble = lambda cursor: [(b.record, b.state[:, 0]) for b in prefixes[cursor].branches]
+    terminal = {branch.record: branch for branch in prefixes[-1].branches}
     target = np.kron(field.vacuum_vector(d)[0], np.array([1., 0., 0., 0.]))
     x0 = np.zeros((size, size))
     for index in range(size):
         x0[index ^ 1, index] = 1
     target = expm(-1j*native_current*e.FEEDBACK_ANGLE*x0)@target
     h = scalar.ideal_hamiltonian(d, coupling)
-    prefix = first@initial
-    first_ensemble = [((), prefix)]
-    read_ensemble = [((a,), read_a[a]@prefix) for a in (0, 1)]
-    feedback_ensemble, second_ensemble, terminal_ensemble = [], [], []
+    first_ensemble, read_ensemble = ensemble(1), ensemble(2)
+    feedback_ensemble, second_ensemble, terminal_ensemble = ensemble(3), ensemble(4), ensemble(5)
     first_margin = [float(np.vdot(v, v).real) for _, v in read_ensemble]
     q = coordinate(d)
     sinq = (expm(1j*q)-expm(-1j*q))/(2j)
@@ -142,22 +151,18 @@ def history(d, steps=512, coupling=.25, feedback=True, native_current=0):
     record_errors, independent_errors, law_errors = [], [], []
     branches, conditional, control_meta = [], [], []
     for a in (0, 1):
-        control, metadata = e.feedback(d, a, feedback)
+        _, metadata = e.feedback(d, a, feedback)
         control_meta.append(metadata)
         oracle_control = e._independent_feedback(size, a, feedback)
-        controlled = control@read_ensemble[a][1]
-        before_b = second@controlled
-        feedback_ensemble.append(((a,), controlled))
-        second_ensemble.append(((a,), before_b))
-        prefix_map = read_a[a]@first
+        before_b = second_ensemble[a][1]
+        prefix_map = prefixes[2].branches[a].kraus
         effects = np.zeros((size, size), complex)
         marginal = float(np.vdot(before_b, before_b).real)
         signal = float(np.vdot(before_b, sinq@before_b).real)
         actual_probabilities = []
         for b in (0, 1):
-            k = read_b[b]@second@control@prefix_map
-            state = read_b[b]@before_b
-            terminal_ensemble.append(((a, b), state))
+            k = terminal[a, b].kraus
+            state = terminal[a, b].state[:, 0]
             oracle = (ideal_b[b]@independent_second@oracle_control
                       @e.projector(size, 0, a)@independent_first@target)
             independent_errors.append(float(np.linalg.norm(state-oracle)))

@@ -29,6 +29,7 @@ SOURCE_PATHS = (
     "model/common_source/infinite_history.py",
     "model/common_source/finite_signal.py",
     "model/common_source/experiment.py",
+    "model/common_source/protocol.py",
     "model/common_source/scalar_coupling.py",
     "model/common_source/gauge_matter.py",
     "model/common_source/occupation.py",

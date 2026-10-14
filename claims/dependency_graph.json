@@ -2913,7 +2913,7 @@
     {
       "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
       "to": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
-      "role": "Supplies the existing M78 current-record instrument, native branch law and committed-bit-controlled continuation for the joint history. The whole native repair channel is retained as a declared primitive, without claiming an M6 compilation."
+      "role": "Supplies the existing M78 C/E recorded instruments, native branch law, source-compiled local circuits and current-sign controller. The earlier classical attachment uses the integer primitive; the coherent attachment composes the complete encoded source instruments with executed port routing. Physical load-to-code identification and code-service accuracy remain supplied. Its separate one-event Knill-Laflamme code supplies the logical subspace for the active memory variant; intervening recovery is an additional source-controlled operation and does not inherit the passive full-history recovery or geometry/clock claims."
     },
     {
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",

@@ -9,6 +9,39 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The canonical finite [executable specification](COMPOSITION.md) and
+[program runtime](protocol.py) now compose these operations on retained
+states. Both original sharp and smooth histories use this engine. The new
+[four-read continuation](composition.py) adds a second smooth field read,
+record-controlled feedback and a later gauge clock probe to the same
+preparation. Its complete native attachment retains all 4,224 joint outcomes
+at d=2 and d=4. The smooth occupation theorem now covers those later reads
+and evolution, including their quantum output rather than only probabilities.
+
+```sh
+python -m model.common_source.composition --check model/common_source/composition_results.json
+```
+
+The [coherent native attachment](QUANTUM_NATIVE.md) executes the native
+repairs around that same continuation with the existing source controls.
+It accepts the full 78-state native carrier with arbitrary reference
+coherence, retains every raw outcome, and uses an executed port permutation
+for the final record-selected seam. C and E remain distinct quantum record
+laws. Its [runtime](quantum_native.py) and
+[receipt](quantum_native_results.json) keep initialization, code services,
+storage and physical calibration as explicit inputs. The earlier classical
+native benchmark remains available with its original scope and counts.
+
+The [encoded memory variant](ENCODED_MEMORY.md) uses
+`native_mode='protected_qubit'` to recover the existing four-configuration
+logical qubit after each native event. The same field continues through its
+four reads; the `passive_qubit` control uses the same encoded input and seam
+policy without recovery. This is active correction under the existing
+coherent services, with a separate contract from full-carrier recovery or
+physical memory calibration. The [producer](encoded_observer.py) and
+[receipt](encoded_observer_results.json) compare the active and passive
+complete instruments, including their source costs.
+
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
 representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and
@@ -62,8 +95,10 @@ Source-executed clock probes retain the earlier records. The reference is
 constructed from the supplied action; its selection by repair and a physical
 time calibration remain unproved. The earlier local-clock construction and
 the failed identification using the local post-measurement state are retained.
-Neither clock continuation is included in the infinite sharp-readout
-certificate or transferred to the smooth detector.
+The earlier clock probes appended to the sharp history are outside its
+infinite-readout certificate. The [smooth continuation](COMPOSITION.md)
+separately controls the actual gauge-probe instrument after two smooth reads;
+it supplies no Gibbs-reference limit or physical clock calibration.
 
 The [native propagation check](CAUSALITY.md) verifies exact dependency cones
 for fixed seam schedules on all 78 admitted load states. Concrete paired
@@ -151,11 +186,12 @@ The complete experiment proceeds as follows:
    and commits bit b. Only b selects the next native repair seam.
 
 All quantum preparations, evolution factors, pointer gates and controlled
-pulses execute through the inherited twelve-port source compiler. The
-native integer-repair channel remains the existing declared primitive in
-the joint instrument. Its entire 78-dimensional channel is not compiled
-into the six-dimensional processor here. Coherent code transfer, blank
-preparation, storage and readout remain supplied services.
+pulses execute through the inherited twelve-port source compiler. In this
+earlier sharp-history benchmark the native integer-repair channel remains
+the declared primitive. The separate [coherent attachment](QUANTUM_NATIVE.md)
+executes the full native interface around the four-read smooth continuation.
+Coherent code transfer, blank preparation, storage and readout remain
+supplied services in both constructions.
 
 At 512 steps per interval, the quantum protocol uses the following emitted
 resources per realized history, including preparation, both pointers,
@@ -295,8 +331,10 @@ small cutoffs does not certify continuum precision. The joint ideal limit
 uses `n(d)=d^2` temporal steps; floating execution and physical service errors
 remain separate.
 
-The local-reference and fixed-Gibbs-reference clock continuations have no
-proved occupation limit in either detector analysis.
+The earlier local-reference and post-sharp fixed-Gibbs-reference probes have
+no proved occupation limit in those detector analyses. The separate
+[continued smooth program](COMPOSITION.md) bounds its later gauge probe on
+the retained state, without asserting convergence of Gibbs modular data.
 
 ## What this establishes and what remains
 
