@@ -91,6 +91,58 @@ reuse this matrix for the other control patterns. Inverse source words are
 executed independently. These contractions avoid repeating host work; they do
 not remove any repeated pulse from the source schedule.
 
+### Exact Gray parity synthesis
+
+The current nine-bit macro uses the established ancilla-free Walsh/Gray
+synthesis of [Welch, Greenbaum, Mostame and Aspuru-Guzik,
+*New Journal of Physics* **16**, 033040 (2014)](https://doi.org/10.1088/1367-2630/16/3/033040)
+([author manuscript](https://arxiv.org/abs/1306.3991)). The contribution here
+is its phase-exact attachment to the existing source controls and the complete
+observer register, together with checked resource accounting; the synthesis
+method itself is not new.
+
+For `n` bits with target `q=n-1`, write `Z_S=prod_(j in S) Z_j`, including
+`Z_empty=I`. The single-address projector is
+
+\[
+ P=|2^q\rangle\langle2^q|
+   =2^{-n}\sum_{S\subseteq\{0,\ldots,n-1\}}
+        (-1)^{\mathbf1_{q\in S}}Z_S.
+\]
+
+All these terms commute. Thus `D=exp(-i pi P)` has phase `-1` only at
+address `2^q` and fixes every other address. Source pulses
+`Y_q(+pi/4)`, then `D`, then `Y_q(-pi/4)` exchange addresses `0,2^q`
+with phase `+1`; they fix the other addresses. For each nonempty `S`, group
+by `p=max(S)`. A cyclic Gray walk over the subsets of `{0,...,p-1}`
+conjugates `Z_p` into each required `Z_S` with one CNOT per changed bit,
+then restores the original wiring. Each CNOT is the existing three-pulse,
+phase-exact source word. The scalar Walsh factor is an emitted source
+`I` pulse, so no common phase has been discarded.
+
+The construction uses `2^n` phase pulses, `2^n-2` CNOTs and two target
+rotations: exactly `4*2^n-4` native pulses, with no additional qubits.
+At `n=9` this is **2,044 rather than 11,782 pulses**, a reduction of 9,738
+per macro invocation. The generic original Walsh compiler remains available
+as an independent literal source-word comparison. The exact emitted-word
+test follows all 512 integer addresses and phases; separate source replays
+compare the original word, shorter word and independently executed inverse
+on all complex matrix columns and arbitrary reference inputs.
+
+| Executed route, one direction | Previous native pulses | Current native pulses |
+| --- | --- | --- |
+| `(0,5)`: 93 flips and 592 conjugating X pulses | 1,096,318 | 190,684 |
+| `(2,3)`: 156 flips and 1,076 conjugating X pulses | 1,839,068 | 319,940 |
+
+The `(2,3)` route serves the [encoded-memory variant](ENCODED_MEMORY.md).
+A path containing `m` such macros saves exactly `9,738 m` pulse requests,
+and twice that many load/export service events. These are source-word counts,
+not host-time or physical-duration bounds. The equality preserves the full
+macro endpoint operator and the specified recorded instruments, including
+padding and reference coherence; reordered source pulses need not have the
+same intermediate quantum states or control history. Physical initialization,
+load/export, precision, storage and readout services remain supplied.
+
 The numerical calculation keeps all 512 native amplitudes and every raw
 record code, including abort labels. An invalid first record has no decoded
 current and ends in an explicit abort block. It is not assigned current zero
@@ -321,8 +373,8 @@ storing a redundant dense history tape.
 
 | Onsite dimension | C phase contrast | E phase contrast | Maximum C native pulses per attempted history |
 | --- | --- | --- | --- |
-| 2 | 0.349153278 | numerically below 2e-14 | 2,555,735 |
-| 4 | 0.351351028 | numerically below 2e-14 | 5,961,279 |
+| 2 | 0.349153278 | numerically below 5e-14 | 744,467 |
+| 4 | 0.351351028 | numerically below 5e-14 | 4,150,011 |
 
 The exact ideal E contrast is zero; the displayed nonzero residual is
 floating execution error. C's exact contrast lies in `[1/4,1/2]` by the
@@ -335,7 +387,7 @@ their unexecuted continuations as actual events.
 
 ```sh
 python -m model.common_source.quantum_native --check model/common_source/quantum_native_results.json
-python -m pytest -q -W error model/common_source/test_native_routing.py model/common_source/test_quantum_native.py model/common_source/test_quantum_native_theorem.py model/common_source/test_quantum_native_adversarial.py
+python -m pytest -q -W error model/common_source/test_native_gray_synthesis.py model/common_source/test_native_routing.py model/common_source/test_quantum_native.py model/common_source/test_quantum_native_theorem.py model/common_source/test_quantum_native_adversarial.py
 ```
 
 The verifier compares every factored branch map with independent endpoint

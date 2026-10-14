@@ -678,12 +678,48 @@ comparison target, with the extra restriction contributed by the repair
 process stated separately. This construction work and independently
 calibrated tests of the fixed instruments can proceed in parallel.
 
+The [binary native coherent continuation](observer/COHERENT_CONTINUATION.md)
+checks a reversible 3,960-arc lift of the actual N1 events and an exact
+compressed-amplitude recurrence. A continuation phase changes second-step
+Ramsey probabilities despite the same first coherent event; scalar phases
+invisible to complete committed C/E instruments change the coherent spectrum.
+This supplies concrete selection tests, not a selected wave law. The next
+restriction must constrain cross-record phases and continuation, or identify
+an observable independent of that freedom. The classical mean-load control
+is unchanged, and the same-domain reversal fails on collision states.
+
+The current native routing and encoded recovery share a Gray parity compiler:
+the full nine-bit controlled flip costs 2,044 source pulses instead of
+11,782, with identical endpoint action on every code and padding column.
+This reduces declared control resources; it removes no physical service.
+
 The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
 governs reuse: define compatibility independently of the update, map the
 actual domain and scheduler to the nearest theorem, and identify what is new.
 Complete history, instantaneous fixed state, stationary distribution and
 continuing operation remain different claims. A history-level self-consistent
 structure can contain changing records and interventions.
+
+## Source selection: the three primitive obligations
+
+The [source-selection guide](SOURCE_SELECTION.md) organizes the next work
+around carrier architecture, observer interface and implementation, and the
+complete repair rule. Action, state, scheduling and control choices require
+explicit derivations or declared status within these objects; renaming a
+supplied input does not discharge it. The existing finite field programs
+retain their comparison scope.
+
+Selection is up to the observations admitted by the interface. Scalar phases
+on committed Kraus branches cancel through every finite adaptive recorded
+history. They become observable when uncommitted record interference is
+admitted. The existing source words execute a fixed read with `3/4` versus
+`1/4` plus probability for two phase implementations of the same committed
+C/E instrument; the commit-first control gives `1/2` for both. The distinct
+record dictionary is explicit. Coherent continuation alternatives also
+survive all proper carrier rotations, real orthogonality, native support and
+a common algebraic time reversal. The next source criterion must exclude an
+actual alternative under the relevant interface, rather than infer a
+preferred wave from these shared structural properties.
 
 ## Work ownership and claim accounting
 

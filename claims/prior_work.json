@@ -3774,6 +3774,18 @@
       "note": "Finite-precision error propagation"
     },
     {
+      "key": "higuchi2016spectral",
+      "type": "misc",
+      "author": "Higuchi, Yusuke and Segawa, Etsuo and Suzuki, Akito",
+      "title": "Spectral mapping theorem of an abstract quantum walk",
+      "year": "2016",
+      "howpublished": "arXiv preprint, version 2",
+      "eprint": "1506.06457",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1506.06457",
+      "note": "Coisometry and unitary involution spectral mapping; the native application identifies d_A=A* and the discriminant with its actual binary kernel."
+    },
+    {
       "key": "hodges1993model",
       "type": "book",
       "author": "Hodges, Wilfrid",
@@ -7541,6 +7553,18 @@
       "note": "Component: hierarchy problem"
     },
     {
+      "key": "szegedy2004spectra",
+      "type": "misc",
+      "author": "Szegedy, Mario",
+      "title": "Spectra of Quantized Walks and a sqrt(delta epsilon) rule",
+      "year": "2004",
+      "howpublished": "arXiv preprint",
+      "eprint": "quant-ph/0401053",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/quant-ph/0401053",
+      "note": "Product of reflections; corresponds to the square of the involution-reflection walk used in the binary native attachment."
+    },
+    {
       "key": "szego1939orthogonal",
       "type": "book",
       "author": "Szegő, Gábor",
@@ -8058,6 +8082,21 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1017/CBO9781139644174",
       "note": "Chapter 15 derives the general gauge kinetic term: a positive Ad-invariant form with one coupling per simple factor plus U(1) factors. Volume II (Modern Applications): the Crossref record carries ISBN 0-521-55002-5 and date 1996; Volumes I and III have DOIs ending 644167 and 644198."
+    },
+    {
+      "key": "welch2014efficient",
+      "type": "article",
+      "author": "Welch, Jonathan and Greenbaum, Daniel and Mostame, Sarah and Aspuru-Guzik, Alán",
+      "title": "Efficient quantum circuits for diagonal unitaries without ancillas",
+      "journal": "New Journal of Physics",
+      "volume": "16",
+      "pages": "033040",
+      "year": "2014",
+      "doi": "10.1088/1367-2630/16/3/033040",
+      "eprint": "1306.3991",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1306.3991",
+      "note": "Walsh diagonal decomposition and Gray ordering reused for the phase-exact nine-bit controlled flip."
     },
     {
       "key": "werner1989quantum",

@@ -2,7 +2,7 @@
 
 **Find the simplest shared repair rule that satisfies the known constraints.**
 
-Candidate register: **12 October 2026**. Earlier law-comparison baseline:
+Candidate register: **14 October 2026**. Earlier law-comparison baseline:
 [`39366529`](https://github.com/FloatingPragma/observer-patch-holography/commit/393665297e551f2023fb07a2853188a589ad7c33).
 This page owns the concise comparison of active laws. The
 [model search](CONSTRUCTION.md) supplies derivations and test summaries; the
@@ -51,6 +51,11 @@ on the same process. They impose no preferred universal clock; supplied shared
 benchmark times retain their stated scope. See the
 [clock convention](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
 
+The [three-obligation selection guide](SOURCE_SELECTION.md) states the current
+priority: derive the carrier, observer interface and complete repair rule as
+one source construction, comparing candidates up to admitted observations.
+Finite implementation and source selection are separate milestones.
+
 ## Candidates and priorities
 
 | ID | Concrete law | Role | Strongest established property | Principal missing connection |
@@ -70,6 +75,14 @@ field benchmarks; its dynamics are not identified with these microscopic laws.
 Common refinement, physical time, interactions, gravitational premises and
 observational discrimination must be joined on one process before a complete
 physical model can be claimed.
+
+The [coherent native continuation](observer/COHERENT_CONTINUATION.md) is a
+selection experiment on N1's binary shell, with coherent event preparation
+and unread records. Its reflection choice gives a wave recurrence for
+compressed amplitudes. Two continuations with the same first coherent event,
+and a separate phase control invisible to committed C/E instruments, give
+different coherent predictions. These exact countercontrols constrain future
+selection arguments; they do not promote an additional law to the baseline.
 
 ## Runnable observer protocols on N1
 

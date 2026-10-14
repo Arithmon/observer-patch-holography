@@ -981,6 +981,81 @@ arbitrary coherence lost across record groups. The source encoder and active
 recovery of Section~\ref{sec:continued-native} instead preserve the stated
 logical qubit between events; they do not invert the whole bare-load channel.
 
+\subsection{A coherent continuation and its selection boundary}
+\label{sec:coherent-continuation}
+
+An exact finite experiment attaches a reflection walk to the binary native
+branches, with coherent event access in place of a committed tape
+\cite{oCOHERENT}. For each binary configuration $x$, seam $e$ and coin $c$,
+let $(y,j)$ be the native output and current. On the $66\cdot60=3960$ arc
+basis vectors define
+\[
+ S\ket{x,e,c}=\ket{y,e,c'},\qquad
+ c'=\begin{cases}c,&j=0,\\1-c,&j\ne0,\end{cases}
+ \qquad A\ket{x}=\frac1{\sqrt{60}}\sum_{e,c}\ket{x,e,c}.
+\]
+Every arc is checked: $S^2=I$, with 300 exchanged pairs and 3360 fixed
+arcs. The outgoing native record $(y,e,c,j)$ is recovered bijectively from
+the reversed arc. Thus $A^\dagger A=I$ and $A^\dagger SA=K$, where $K$ is
+the actual symmetric native transition kernel. With $\Pi=AA^\dagger$ and
+$W=S(2\Pi-I)$, these are the hypotheses of the abstract quantum-walk
+spectral mapping theorem: $d_A=A^\dagger$, its discriminant is $K$, and its
+unitary is $W$ \cite{pwhiguchi2016spectral}. Szegedy's corresponding
+product of two reflections is $W^2$, whose eigenphase has twice the value
+\cite{pwszegedy2004spectra}.
+
+The standard identity $A^\dagger W^nA=T_n(K)$, with $T_n$ the Chebyshev
+polynomial, attaches to the centered native loads $X_{x,p}=x_p-1/6$:
+\[
+ KX=X(I-L/60),\qquad
+ U_{n+1}-2U_n+U_{n-1}=-U_nL/30,
+ \qquad U_n=A^\dagger W^nAX.
+\]
+These are compressed amplitudes, not probabilities or measured mean loads.
+The parameter $n$ counts the supplied coherent continuation, with no
+identification as physical duration. The binary domain is essential:
+$(2,0,\ldots)\mapsto(1,1,\ldots)$ on the full 78-state carrier has no
+native reverse event. Its asymmetric kernel cannot equal $A^\dagger SA$
+for an involutive unitary. This excludes that same-domain construction,
+not a larger history-space dilation.
+
+Two exact controls isolate the selection problem. For $|z|=1$, the unitary
+$W_z=S[\Pi+z(I-\Pi)]$ has the same first coherent event $W_zA=SA$, but
+\[
+ A^\dagger W_z^2A=K^2+z(I-K^2).
+\]
+For a fixed basis input, a complete added Ramsey read gives two-step plus
+probability $1$ for $z=1$ and $113/150$ for $z=-1$, retaining both quantum
+outputs. Separately, multiplying each coherent record branch on seam
+$(0,1)$ with current $+1$ by $-1$ preserves every committed $\Cn$ and
+$\En$ CP branch, including on arbitrary references. Its twisted embedding
+$A_\eta$ nevertheless gives
+$\Tr[(A_\eta^\dagger SA_\eta)^3]-\Tr(K^3)=-1/900$.
+Both real continuations conserve load, respect all sixty proper carrier
+rotations, fix the uniform coherent state and admit the same algebraic time
+reversal $\Theta=S\,\mathrm{conjugation}$. Their coins preserve
+$\|(I-\Pi)v\|$. Under the additional hypothesis of full event-permutation
+covariance, real orthogonal coins fixing the uniform vector are identity or reflection. A separate sign change
+on every moving arc preserves proper covariance and the committed
+instruments, but its discriminant $D=2\operatorname{diag}(K)-K$ satisfies
+$\Tr(D^3)-\Tr(K^3)=-1/90$ and does not fix the uniform coherent ket.
+These are restrictions on selection, not proofs of A1--A3 source admission.
+
+Scalar record phases cancel throughout finite adaptive committed-record
+histories, including arbitrary references. A source-executed interface test
+instead reads the low unread record bit in the fixed $X$ basis and the
+others in $Z$ \cite{oSOURCESELECT}. For the same preparation, its complete
+$X$-plus probabilities are $3/4$ and $1/4$; committing first gives $1/2$ for both.
+Both outcomes of the fair coin and every output are retained. The coherent
+protocol does not retain a native-current record alongside the complementary read.
+The identity $K'_{c,r}=(-1)^{r\bmod2}K_{c,r}$ holds on the full
+512-dimensional encoded carrier, including padding and arbitrary references;
+executed matrix residuals are numerical diagnostics. Each attempt uses
+5380 C or 5383 E source pulses. The two phase-service pulses have zero
+angles in the control; the summed absolute source-pulse angles differ by $\pi$.
+Coherent access and its implementation are supplied interface obligations;
+the test selects no phase and supplies no physical calibration or data.
+
 \subsection{The local event clock}
 \label{sec:local-tick}
 
@@ -1834,6 +1909,16 @@ Its C phase contrast is approximately $0.349153278$ at $d=2$ and
 $0.351351028$ at $d=4$, versus ideal zero for E. These distinguish two
 specified quantum instruments and are not independent empirical data.
 
+The routing and memory decoder share a nine-qubit controlled-flip macro.
+Cyclic Gray ordering shares the commuting Walsh parities, reducing its
+source pulse count from $11{,}782$ to $2{,}044$: 512 phase pulses, 510
+phase-exact CNOTs of three pulses each, and two target rotations. The scalar
+phase is retained and each parity ladder is restored. Exact parity checks
+and source replay preserve the entire 512-dimensional operator, including
+global phase, inverse and padding. This reduces the charged load/export
+events with no added qubits; it changes neither native repair nor the
+declared service assumptions \cite{pwwelch2014efficient,csQNATIVE,csMEMORY}.
+
 \paragraph{Active encoded memory.}
 Use the existing code
 \[
@@ -2419,10 +2504,14 @@ premise, and equal equilibrium configurations do not select the kinetic law.
 \section{Open connections}
 \label{sec:open}
 
-The finite components above are completed under their contracts. The
-connections below join them into the target of Section~\ref{sec:target}; they
-can advance in parallel, and none requires a uniqueness theorem for the
-chosen design.
+The primitive selection obligations are the carrier architecture, the
+observer interface and its implementation, and the complete repair rule
+\cite{oSOURCESELECT}. Effective fields, transport, clock relations and
+interactions must follow from that same process. The scalar and matter
+actions supply conditional comparison constructions; placing a target
+physical law inside an interface or update would not derive it. The
+connections below test the target of Section~\ref{sec:target} without
+requiring a uniqueness theorem for the chosen design.
 
 \paragraph{A spatially refining family.} A family of source programs that
 refines in space, carries the charges, interactions and instruments of
@@ -2615,6 +2704,16 @@ FloatingPragma (2026). \emph{Recovery with complete native records}. Model
 document.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/196b271021967927bc2626283b6cf7955972a4b2/model/observer/RECORD_RECOVERY.md}
 
+\bibitem{oCOHERENT}
+FloatingPragma (2026). \emph{Coherent continuation: native attachment and
+nonselection}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/3d1846b017a109525902c42a35134dcbad826277/model/observer/COHERENT_CONTINUATION.md}
+
+\bibitem{oSOURCESELECT}
+FloatingPragma (2026). \emph{Selecting one source, interface and repair law}.
+Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/3d1846b017a109525902c42a35134dcbad826277/model/SOURCE_SELECTION.md}
+
 \bibitem{pREADME}
 FloatingPragma (2026). \emph{P-dependent electromagnetic observation and native
 feedback}. Model document.
@@ -2733,11 +2832,11 @@ FloatingPragma (2026). The finite executable observer specification.
 
 \bibitem{csQNATIVE}
 FloatingPragma (2026). Coherent native repairs around one continuing quantum history.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/196b271021967927bc2626283b6cf7955972a4b2/model/common_source/QUANTUM_NATIVE.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/a59cc5e5640a7d34ee93a8a122241964074acac5/model/common_source/QUANTUM_NATIVE.md}
 
 \bibitem{csMEMORY}
 FloatingPragma (2026). Active encoded memory in the continuing observer.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/196b271021967927bc2626283b6cf7955972a4b2/model/common_source/ENCODED_MEMORY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/a59cc5e5640a7d34ee93a8a122241964074acac5/model/common_source/ENCODED_MEMORY.md}
 
 \bibitem{csOBS}
 FloatingPragma (2026). \emph{Hilbert space, modular clocks and operational

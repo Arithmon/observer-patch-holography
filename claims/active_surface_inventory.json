@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 552,
+  "surface_count": 554,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1246,6 +1246,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/SOURCE_SELECTION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/CALIBRATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1342,6 +1347,11 @@
     },
     {
       "path": "model/observer/CAPACITY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer/COHERENT_CONTINUATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

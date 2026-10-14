@@ -5,6 +5,13 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
+selection work on the carrier architecture, observer interface and its
+implementation, and complete repair rule. Observable effective physics must
+follow from that same process. The tests distinguish phases invisible
+to committed records from phases measurable through coherent record access;
+proper carrier symmetry alone does not select the coherent continuation.
+
 The [finite executable specification](common_source/COMPOSITION.md) gives
 the common interacting observer one validated operation grammar, state and
 record algebra, preparation, controller, checkpoint and refinement contract.
@@ -92,6 +99,14 @@ continuity and conditional current laws to those same recorded transfers.
 The existing uniform-seam calibration gives a closed graph diffusion law
 for the mean load. Its decaying modes do not supply an undamped wave law;
 coherent field dynamics remain a separate construction obligation.
+
+The [coherent native experiment](observer/COHERENT_CONTINUATION.md) attaches
+a reversible arc walk to the actual binary repairs and obtains an exact
+compressed-amplitude recurrence. Matched phase controls show why the native
+instrument alone does not select that continuation. Its added coherent
+controls are declared, and the mean-load diffusion result is unchanged.
+The native routing and recovery compiler also uses a shorter exact Gray
+word: 2,044 pulses per controlled flip, with full-register preservation.
 
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics

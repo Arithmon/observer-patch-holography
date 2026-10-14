@@ -111,10 +111,10 @@ def test_controlled_flip_tensor_chart_agrees_with_explicit_source_wire_remapping
 
 def test_route_resources_charge_both_directions_and_every_cached_macro_use():
     summary = r.routing_word_summary()
-    assert summary['canonical_controlled_flip_native_pulses'] == 11782
+    assert summary['canonical_controlled_flip_native_pulses'] == 2044
     assert summary['controlled_flip_invocations_per_direction'] == 93
     costs = summary['resources_per_direction']
-    assert costs['native_pulses'] == 93*11782+summary['conjugating_source_x_pulses_per_direction']
+    assert costs['native_pulses'] == 93*2044+summary['conjugating_source_x_pulses_per_direction']
     assert costs['proper_code_service_events'] == 2*costs['native_pulses']
     for candidate in ('C', 'E'):
         direct = r.routed_repair_resources(candidate, (0, 1))

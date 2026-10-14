@@ -22,7 +22,7 @@ from numbers import Integral, Real
 from pathlib import Path
 
 import numpy as np
-from scipy.linalg import expm
+from scipy.linalg import expm, svd as scipy_svd
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -493,7 +493,15 @@ def stabilize_executed_unitary(matrix):
     defect = float(np.linalg.norm(raw.conj().T@raw-identity, 2))
     if not math.isfinite(defect) or defect > input_limit:
         raise ArithmeticError("executed-unitary defect exceeds the fixed rounding guard")
-    left, _, right = np.linalg.svd(raw, full_matrices=False)
+    try:
+        left, _, right = np.linalg.svd(raw, full_matrices=False)
+    except np.linalg.LinAlgError:
+        # Some LAPACK builds fail to converge in the divide-and-conquer
+        # driver on these almost exactly degenerate singular values. Use
+        # the independent QR driver on the same executed matrix. The input,
+        # correction and output guards are identical for either backend.
+        left, _, right = scipy_svd(raw, full_matrices=False,
+                                   lapack_driver="gesvd", check_finite=False)
     corrected = left@right
     correction = float(np.linalg.norm(corrected-raw, 2))
     restored = float(np.linalg.norm(corrected.conj().T@corrected-identity, 2))
