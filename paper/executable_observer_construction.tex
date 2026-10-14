@@ -1884,9 +1884,36 @@ dilation supplies its moment growth. Only at the final stage is the outside
 tail added, giving $E_d=[e^2+A^2/(d+2)^4]^{1/2}$. Thus the complete output
 distance is at most $\min(1,E_d+\sum_i\delta_i)$, where $\delta_i$ is the
 all-input temporal bound for interval $i$. At any fixed finite smooth
-protocol, $n(d)=d^2$ makes this $O(1/d)$. The executed $d=2,4$ occupation
-bounds remain vacuous. Arbitrary scalar inputs and post-sharp continuations
+protocol, $n(d)=d^2$ makes this $O(1/d)$. The uniform moment bounds at the
+executed $d=2,4$ remain vacuous. Arbitrary scalar inputs and post-sharp continuations
 do not inherit this vacuum-family certificate.
+
+A separate state-specific certificate retains all sixteen outputs for the
+blank-gauge and coupled scalar-vacuum preparation, for each current
+$j\in\{-1,0,1\}$, including both smooth reads, later feedback and the gauge
+probe \cite{csSMOOTHHISTORY}. For finite and infinite polynomial branch
+approximants $u_r,v_r$, each divided by its initial preparation norm,
+put $a_r=\lVert u_r\rVert^2$,
+$b_r=\lVert v_r\rVert^2$ and $c_r=\langle u_r,v_r\rangle$. The rank-one
+trace-norm identity and complete-channel contractivity give
+\[
+ D_{d,j}^{\mathrm{ideal\ product},\infty}
+ \le \frac12\sum_{r\in\{0,1\}^4}
+       \sqrt{(a_r+b_r)^2-4|c_r|^2}
+       +\epsilon_d+\epsilon_\infty+\sum_i\delta_i,
+\]
+where the $\epsilon$ terms bound complete preparation and polynomial-output
+errors, and the $\delta_i$ terms charge finite temporal splitting once.
+Directed rational evaluation at 512 splits per interval gives
+\[
+ \max_{j\in\{-1,0,1\}}D_{d,j}^{\mathrm{ideal\ product},\infty}
+ <\begin{cases}0.264092,&d=2,\\0.053956,&d=4.\end{cases}
+\]
+The maximum transfers through the complete native and protected-memory
+attachments for arbitrary admitted native/reference inputs with this
+independently prepared work state. It is not an arbitrary work-input bound,
+and it excludes floating execution and physical service errors. The exact
+ideal logical-memory marginal below does not require this occupation bound.
 
 \paragraph{Coherent native attachment.}
 Let $L_h^{A,e}$ be the compiled native Kraus operator for law $A\in\{\Cn,\En\}$,
@@ -2831,6 +2858,10 @@ error bound}. Model document.
 \bibitem{csCOMPOSE}
 FloatingPragma (2026). The finite executable observer specification.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/196b271021967927bc2626283b6cf7955972a4b2/model/common_source/COMPOSITION.md}
+
+\bibitem{csSMOOTHHISTORY}
+FloatingPragma (2026). Complete-output certificate for the continued smooth history.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/901b337f7fe689bea22112f23e73600842ba6f7e/model/common_source/SMOOTH_HISTORY.md}
 
 \bibitem{csQNATIVE}
 FloatingPragma (2026). Coherent native repairs around one continuing quantum history.

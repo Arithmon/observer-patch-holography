@@ -28,7 +28,8 @@ under their declared services and inputs:
   quantum-native repairs and feedback, and source-compiled active correction
   preserving one encoded qubit with its reference correlations; the smooth
   continuation has a vacuum-specific occupation bound, and the two executed
-  cutoffs have vacuous complete-output occupation budgets;
+  cutoffs have vacuous uniform moment-based occupation budgets; a separate
+  exact prepared-history comparison gives useful complete-output bounds;
 - exact results on what the native records keep: the quantum mixing gap, the
   entanglement-breaking boundary and the optimal recovery fidelity;
 - a frozen instrument comparison between the two native repair laws with a
