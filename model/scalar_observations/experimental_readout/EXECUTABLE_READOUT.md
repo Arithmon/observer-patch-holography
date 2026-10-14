@@ -88,14 +88,17 @@ SciPy targets continue to check the executed operations. Fixed arithmetic
 defines replayable words, not an interval accuracy or physical-service claim.
 The receipt counts the full word at every measurement and binds its hash.
 Independent finite-matrix targets check execution; they do not replace the
-executed operations. The existing small polar numerical stabilization and
-its unchanged error guards remain explicit in the ledger.
+executed operations.
 The million-pulse operations use fixed blocks of at most 4,096 native pulses
-for host contraction, with the same guard on every block and on the final
-corrected product. Both raw and corrected complete products retain their
-phase-sensitive target checks. The receipt reports accumulated numerical
-corrections and raw drift without changing the original word or resource
-counts; these diagnostics are not outward roundoff or physical-error bounds.
+for host contraction. The shared compiler's polar thresholds are unchanged:
+they apply to every executed block and to the product of the corrected blocks.
+The former whole-word raw defect cap of `1e-10` and polar correction cap of
+`5.1e-11` no longer constrain the complete raw product or its total correction.
+Both the complete raw product and the final corrected product must pass the
+`2e-10` phase-sensitive target gate. The receipt reports accumulated numerical
+corrections and raw drift. Blocking preserves the requested source word and
+its pulse/service counts; these diagnostics are not outward roundoff or
+physical-error bounds.
 The [derivation](EXECUTABLE_DERIVATION.md#long-source-word-contraction) gives
 the exact matrix-product telescoping identity and its floating-evaluation scope.
 
@@ -151,6 +154,9 @@ python3 -m model.verify --hashes-only
 ```
 
 Replay is offline and can take tens of minutes because the full dense source
-words are executed. The original dataset, protocol, Gaussian-product receipt
-and seven-mode receipts remain unchanged. Dataset authorship, CC BY 4.0
+words are executed. The original dataset, Gaussian-product protocol and receipt,
+and seven-mode receipts remain unchanged. The executable protocol and receipt
+were revised for this numerical replay policy; the
+[original executable receipt at `df89a7e5`](https://github.com/FloatingPragma/observer-patch-holography/blob/df89a7e5/model/scalar_observations/experimental_readout/executable_results.json)
+remains available in repository history. Dataset authorship, CC BY 4.0
 license and original-file checksums are recorded in [provenance](provenance.json).

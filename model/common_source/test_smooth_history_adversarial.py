@@ -492,3 +492,74 @@ def test_execution_join_requires_each_actual_backend_role(finite_enclosure, monk
                         lambda supplied, backend='source': histories[backend])
     with pytest.raises((ValueError, ArithmeticError)):
         s._execution_check(finite_enclosure, temporal)
+
+
+@pytest.mark.parametrize(('field', 'value'), [
+    ('native_current', 2), ('native_current', True),
+    ('dimension', 3), ('steps', 0),
+])
+def test_program_fields_are_revalidated_before_preparation(monkeypatch, field, value):
+    program = protocol.Program()
+    program.__dict__[field] = value
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError('invalid program reached polynomial preparation')
+
+    monkeypatch.setattr(s.ih, '_initial', forbidden)
+    with pytest.raises(ValueError):
+        s.enclose(program, resolution=FAST)
+
+
+@pytest.mark.parametrize('operations', [
+    [], [protocol.Operation('gauge_read')], None, 'gauge_read',
+    ({'kind': 'gauge_read'},), (object(),),
+    (protocol.Operation('evolve'),)*(protocol.MAX_OPERATIONS+1),
+])
+def test_program_requires_its_original_immutable_typed_sequence(monkeypatch, operations):
+    program = protocol.Program()
+    program.__dict__['operations'] = operations
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError('invalid operation sequence reached polynomial preparation')
+
+    monkeypatch.setattr(s.ih, '_initial', forbidden)
+    with pytest.raises(ValueError):
+        s.enclose(program, dimension=2, resolution=FAST)
+
+
+@pytest.mark.parametrize(('kind', 'field', 'value'), [
+    ('evolve', 'time', F(-1)), ('evolve', 'time', .5),
+    ('evolve', 'time', True), ('evolve', 'kind', 'unknown'),
+    ('gauge_read', 'time', F(1)), ('gauge_read', 'enabled', False),
+    ('feedback', 'record', -1), ('feedback', 'record', 1),
+    ('feedback', 'record', True), ('feedback', 'record', '0'),
+    ('feedback', 'enabled', 1),
+])
+def test_nested_operation_fields_are_revalidated_before_preparation(monkeypatch, kind, field, value):
+    operation = (protocol.Operation(kind, record=0) if kind == 'feedback'
+                 else protocol.Operation(kind))
+    prefix = (protocol.Operation('gauge_read'),) if kind == 'feedback' else ()
+    program = protocol.Program(operations=(*prefix, operation))
+    operation.__dict__[field] = value
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError('invalid operation reached polynomial preparation')
+
+    monkeypatch.setattr(s.ih, '_initial', forbidden)
+    with pytest.raises(ValueError):
+        s.enclose(program, dimension=2, resolution=FAST)
+
+
+@pytest.mark.parametrize('component', ['program', 'operation'])
+def test_caller_owned_program_cannot_change_completed_enclosure(component):
+    operation = protocol.Operation('gauge_read')
+    program = protocol.Program(operations=(operation,))
+    enclosure = s.enclose(program, dimension=2, resolution=FAST)
+    original = s.summary(enclosure)
+    specification = deepcopy(enclosure.program.specification())
+    if component == 'program':
+        program.__dict__['native_current'] = 1
+    else:
+        operation.__dict__['kind'] = 'smooth_read'
+    assert enclosure.program.specification() == specification
+    assert s.summary(enclosure) == original

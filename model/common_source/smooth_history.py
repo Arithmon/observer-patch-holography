@@ -210,8 +210,14 @@ def enclose(program, *, dimension=None, resolution=None):
         resolution = Resolution()
     if type(program) is not protocol.Program or type(resolution) is not Resolution:
         raise ValueError('typed canonical Program and certificate Resolution required')
-    # Revalidate and detach even a caller-owned frozen dataclass: its backing
-    # dictionary can be changed, and completed evidence must retain its inputs.
+    # Revalidate and detach caller-owned frozen dataclasses: their backing
+    # dictionaries can change, including those of nested operations.
+    operations = program.operations
+    if type(operations) is not tuple or len(operations) > protocol.MAX_OPERATIONS:
+        raise ValueError('a bounded immutable tuple of program operations required')
+    if any(type(operation) is not protocol.Operation for operation in operations):
+        raise ValueError('every program entry must be a canonical Operation')
+    program = replace(program, operations=tuple(replace(operation) for operation in operations))
     resolution = replace(resolution)
     if program.coupling != F(1, 4):
         raise ValueError('the exact common Hamiltonian requires coupling 1/4')

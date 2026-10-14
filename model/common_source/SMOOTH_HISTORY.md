@@ -216,8 +216,11 @@ also remains distinct from this approximation of the full observer output.
 An `Enclosure` is an in-process proof object whose digest detects accidental
 mutation. The digest is public and is not evidence for externally supplied
 error claims. Published evidence is checked by exact recomputation.
-Resolution settings are revalidated and copied on entry, and exported
-summaries are detached from the proof object. The occupation-support counter
+The program, its nested operations and resolution settings are revalidated
+and copied on entry, and exported summaries are detached from the proof
+object. A mutated typed input cannot bypass the native-current, operation
+or scheduling restrictions or later redefine a completed certificate.
+The occupation-support counter
 includes the initial polynomial and intermediate generator/pointer powers,
 including histories with no evolution and finite pointer parity oscillations.
 Independent tests cover the factorial generator metric, finite compression
