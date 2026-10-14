@@ -9,16 +9,18 @@ set_option relaxedAutoImplicit false
 # Which data determine the inertia
 
 Consider `H = (pᵀ T p + qᵀ V q)/2` with inverse inertia `T` and potential `V` (units `ℏ = 1`).
-A centred Gaussian `exp(−qᵀ G q / 2)` is an eigenfunction of `H` exactly when `G T G = V`
+For real symmetric positive-definite `G`, `T` and `V`, the centred Gaussian
+`exp(−qᵀ G q / 2)` is an eigenfunction of `H` exactly when `G T G = V`
 (a standard computation, not mechanized here and not written out in the companion note); its
 position covariance is `C = (2G)⁻¹`. Below, "vacuum `G`" names this Gaussian; the Lean statements
 concern only the relation `G T G = V` (`groundRel`) and do not assume that `G` is positive definite
 or that the Gaussian is an eigenfunction. This file proves the algebra of an identification
 ladder:
 
-* `config_cov_indep`: for `β ≠ 0` and invertible `V`, the configuration marginal of the classical
-  Gibbs law of `H` has covariance `(βV)⁻¹` for every invertible `T`, so configuration data do
-  not determine the inertia.
+* `config_cov_indep`: for `β ≠ 0` and invertible `V` and `T`, the configuration block of the
+  inverse block-diagonal precision is `(βV)⁻¹`. For the classical Gibbs interpretation over
+  the reals, additionally require `β > 0` and symmetric positive-definite `V` and `T`; then
+  configuration covariance does not determine the inertia.
 * `groundRel_compatible`: every inverse inertia `T` is compatible with a given vacuum `G`
   (with `V = G T G`), so the vacuum alone does not determine the inertia.
 * `inverse_inertia_unique`, `inverse_inertia_formula`: for an invertible vacuum `G`, the vacuum

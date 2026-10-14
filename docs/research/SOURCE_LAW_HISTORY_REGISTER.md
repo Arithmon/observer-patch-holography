@@ -54,13 +54,22 @@ is the mean repair generator, the sum over register seams of OPH's capacity-weig
 declared grounds (`repairGenerator_apply`, `register_drift`); its Lyapunov equation has the unique
 solution $`\hbar P^{-1}`$ (`lyapunov_stationary`, `lyapunov_unique`, `register_stationary_unique`);
 for $`J=M`$ the stationary chain with the register's interior precision has transfer eigenvalues
-$`r(\lambda)`$ and equal-time covariance $`C_0=c_0(A)`$ with $`A=M^{-1/2}VM^{-1/2}`$
+$`r(\lambda)`$ and capacity-whitened, unit-$`\hbar`$ equal-time covariance $`C_0=c_0(A)`$
+with $`A=M^{-1/2}VM^{-1/2}`$
 (`transferEig_add_inv`, `equalTimeVar_closed`, `chain_covariance_row`, `contact_identity_mode`,
 `transferMat_add_inv`, `equalTimeCov_mul_one_sub`), its covariance is bond reflection positive
 (`chain_bond_rp`, `block_bond_rp`), and the coefficients of the Hamiltonian reconstructed from it
 tend, mode by mode, to those of OPH's canonical completion as $`\Delta\tau\to0`$
 (`latticeFreq_tendsto`, `kineticCoeff_tendsto`, `potentialCoeff_tendsto`; the reconstruction itself
 is the standard lattice Osterwalder–Schrader construction with Mehler's formula).
+
+Throughout the transfer and two-time reader statements, correlations are normalized by the
+supplied $`\hbar>0`$ (equivalently, those statements use $`\hbar=1`$). In the original carrier
+coordinates, the raw equal-time covariance is $`\hbar M^{-1/2}C_0M^{-1/2}`$. If
+$`\widetilde C_j=\hbar C_j`$ are raw stationary-chain correlations in the reader's coordinates,
+its calibrated formula is
+$`\hbar\Delta\tau(\widetilde C_0\widetilde C_1^{-1}\widetilde C_0-\widetilde C_1)^{-1}=J`$.
+Without the factor $`\hbar`$, applying that reader to raw correlations returns $`J/\hbar`$.
 
 With uniform capacities, seam rates $`1/N`$ for $`N`$ seams and no grounds, the mean repair
 generator is $`L_s/(2N)`$ for the seam Laplacian $`L_s`$ (the corresponding case of
@@ -72,7 +81,8 @@ and, partly through `native_decide`, the diffusion kernel of the twelve-port rep
 ([`Lean/Screen/PortGramRepairCovariance.lean`](../../Lean/Screen/PortGramRepairCovariance.lean)).
 
 Write a quadratic Hamiltonian as $`\tfrac12(p^\top\mathcal{T}p+q^\top Vq)`$ with inverse inertia
-$`\mathcal{T}`$ and potential $`V`$; for $`\hbar=1`$ a centred Gaussian $`\exp(-q^\top Gq/2)`$ is
+$`\mathcal{T}`$ and potential $`V`$; for real symmetric positive-definite $`G,\mathcal{T},V`$
+and $`\hbar=1`$, a centred Gaussian $`\exp(-q^\top Gq/2)`$ is
 its ground state exactly when $`G\mathcal{T}G=V`$ (a standard computation outside Lean), and its
 position covariance is $`C=(2G)^{-1}`$. The Lean statements about $`G`$ concern only the relation
 $`G\mathcal{T}G=V`$.
@@ -196,6 +206,7 @@ those of the chain as the window grows, while the first slab keeps the limit $`C
 | Input | Status |
 |---|---|
 | Capacities $`M`$ | calibration |
+| Correlations divided by the supplied positive action scale $`\hbar`$ before applying the reader | supplied normalization; not inferred from the reader |
 | Small-step admissibility (p2), a matrix-level condition of this work | candidate hypothesis |
 | Time-seam rate $`2/\Delta\tau`$ (p3) | shared layer parameter; calibration |
 | Time conductances, the common rate scale | target-exposed choice |
@@ -346,8 +357,9 @@ Gaussian with covariance $`\hbar P_T^{-1}`$; for a general initial law the chara
 of the Ornstein–Uhlenbeck transition gives weak convergence [R1]. For positive definite $`G`$ the
 Gaussian $`\psi(q)\propto\exp(-q^\top Gq/2\hbar)`$ solves the eigenvalue equation of
 $`\tfrac12\Pi^\top M^{-1}\Pi+\tfrac12q^\top Vq`$ exactly when $`GM^{-1}G=V`$; it is then the ground
-state (it has no node), its position covariance is $`\hbar(2G)^{-1}`$, and among real Gaussian
-states it is fixed by that covariance. The ground state of the reconstructed Hamiltonian at slab
+state (it has no node), its position covariance is $`\hbar(2G)^{-1}`$, and among centred pure
+Gaussian wavefunctions with no position-dependent phase it is fixed by that covariance, up to
+an overall phase. The ground state of the reconstructed Hamiltonian at slab
 thickness $`\Delta\tau`$ has, per whitened mode, fidelity $`2\sqrt{\gamma}/(1+\gamma)`$ with the
 canonical one, $`\gamma=\sqrt{1+\Delta\tau^2\lambda/4}`$ (a one-mode Gaussian overlap).
 

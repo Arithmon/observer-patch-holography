@@ -28,7 +28,11 @@ Main results:
   node-local exactly when `ε = 0`, so these two-time correlations separate `ε = 0` from every
   `ε > 0`.
 
-The two correlations `lagW0`, `lagW1` are defined as the whitened stationary chain's covariances
+The two correlations `lagW0`, `lagW1` use unit-`ℏ` normalization. For raw correlations
+`C̃j = ℏ Cj` with supplied `ℏ > 0`, divide by `ℏ` before using the reader; equivalently,
+the raw-correlation reader must be multiplied by `ℏ` to return the coupling.
+
+These correlations are defined as the whitened stationary chain's covariances
 conjugated by `W^{-1/2}`; this file does not prove that they are the covariances of a history
 register with coupling `W`. For a diagonal coupling `W = diag M`, `declared_register_window`
 shows that the precision of the declared register with time coupling `M`, plus an end-slab term,

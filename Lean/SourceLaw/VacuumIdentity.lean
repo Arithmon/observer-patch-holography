@@ -7,7 +7,7 @@ set_option autoImplicit false
 set_option relaxedAutoImplicit false
 
 /-!
-# The reference state reached by the declared dynamics is the reconstructed vacuum
+# The iterated reference covariance agrees with the canonical vacuum position covariance
 
 Three limits compose on the register of a seam graph with capacities `M` (time coupling `M`, open
 ends, `T + 1` slabs). In sample time `s → ∞` the covariance flow of the declared law takes every
