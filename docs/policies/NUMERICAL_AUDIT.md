@@ -153,6 +153,13 @@ not a domain argument.
   Passing original inputs to a repaired scalar routine does not repair a
   wrapper's separate pairings: exercise a small linear component alongside
   an ordinary quadratic response, as well as a completely small receipt.
+  Reject nonfinite diagnostics at the scientific acceptance gate itself;
+  a later JSON serialization failure does not make an earlier `all_pass`
+  result valid. For continuing quantum instruments, include wrong-but-CPTP
+  controls (wrong tensor order, feedback or hidden-draw correlation), not
+  just trace preservation. Check complete reference/record allocation before
+  executing source services, and test mutable checkpoint envelopes as well
+  as their array buffers.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto

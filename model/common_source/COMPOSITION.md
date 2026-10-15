@@ -13,6 +13,13 @@ below. The construction guide defines the broader physical completion target.
 The [existing premise map](../PREMISES.md) remains the complete theorem-family
 navigation; the instantiated connections here have the narrower scopes below.
 
+The [mixed-state extension](OPEN_HISTORY.md) uses this same program grammar
+when unobserved finite environment operations are inserted at declared
+boundaries. It retains one density block per visible record, composes the
+existing noise and memory results, and preserves the preparation, feedback,
+clock and continuation contracts below. It introduces no second operation
+language or physical noise calibration.
+
 The new quantitative occupation result covers this entire finite sequence.
 It follows a fourth-number moment through each smooth pointer and uses that
 larger moment in every later evolution estimate. It does not restart a fresh

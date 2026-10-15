@@ -9,6 +9,14 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The [complete noisy observer](OPEN_HISTORY.md) now executes the existing
+finite source phase channel between operations of the same continuing
+history. It retains mixed quantum/reference outputs, committed records,
+feedback and replayable checkpoints, and attaches corrected C/E native
+memory with a passive control. Its compact [receipt](open_observer_results.json)
+recomputes complete output comparisons and separate ideal error/resource
+budgets; it does not supply a physical noise rate or hardware error bound.
+
 The canonical finite [executable specification](COMPOSITION.md) and
 [program runtime](protocol.py) now compose these operations on retained
 states. Both original sharp and smooth histories use this engine. The new

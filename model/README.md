@@ -22,6 +22,13 @@ probe, then completes the native actuation. Its 4,224 joint outcomes at each
 executed cutoff retain the disturbed quantum state and every record. The
 same-history occupation bound includes those later operations.
 
+The [mixed-state continuation](common_source/OPEN_HISTORY.md) connects that
+same grammar to the finite source environment added by the anharmonic
+transfer work. Fresh unobserved phase operations now compose with all four
+reads and native memory recovery. Its complete mixed outputs, continuation,
+independent noise controls and error/resource ledgers are executable; the
+laboratory calibration of the separate transfer package is not imported.
+
 The separate [smooth-history certificate](common_source/SMOOTH_HISTORY.md)
 compares all 16 ideal finite work outputs at d=2,4 with the corresponding
 infinite history for each native current. It uses the canonical blank-gauge
