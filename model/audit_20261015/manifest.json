@@ -1,0 +1,21 @@
+{
+  "baseline_commit": "93e59bfb8de1501174c08c800912635159ae8615",
+  "description": "Independent retrospective audit with exact architecture counterexamples, empirical comparator, theorem mappings and native matrix probes.",
+  "files": {
+    "ARCHITECTURE.md": "e32ab86c222b399bec20118e6b24ed84cb1b36cfc4a08a536c0c9fac5f8dc8ba",
+    "EMPIRICAL.md": "bb9f88b5f236a898df8399cf34c794a41d360f4c633f20e0ef6ffe9af6cc6612",
+    "MATH.md": "77e33bc5f2e37aac99449b37287b911142947366440b420fc9cc78c66d5911c9",
+    "README.md": "33ea735773d3d22991897fb343e30ebb840afbbb854c93eab54b166ba0716596",
+    "architecture_counterexamples.py": "26752ef0d6d2f44da2754958c2be1df7e936548efab0c9c07a275150c7babacc",
+    "architecture_results.json": "f9233c80b26cc8bb3a8215ea0ca7f9000a5305a07eb1d59b8741e923ae4c5a72",
+    "empirical_probe.json": "94a665d6155ee6f6f7f90a6947126acac841c8f983ccfb1a6e646d0a6dda35c2",
+    "empirical_probe.py": "8a92da79ec40cb340163b57719e4eb6defc23c5ffe6d7be2bab61c916ad5ce75",
+    "test_audit_receipts.py": "52c42d1d0107890807647d7cf31a1936fcd4d7721d331971eee0e5f1e838b960",
+    "test_math_probes.py": "644152fec56cce2e41abac28b11ad78113e36f993c21bee458939d2b2fe13dce"
+  },
+  "reproduce": [
+    "python -m pytest -q -W error model/audit_20261015",
+    "python -m model.verify --hashes-only"
+  ],
+  "schema": "oph.approach_audit.manifest.v1"
+}

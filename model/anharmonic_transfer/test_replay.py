@@ -1,6 +1,7 @@
 """Exact local seals, independently validated certificates, portable floats."""
 from copy import deepcopy
 from fractions import Fraction
+import math
 
 import pytest
 
@@ -41,11 +42,37 @@ def test_portable_acceptance_revalidates_derived_exact_rationals(receipt):
     replay.compare_receipt(receipt, other)
 
 
-def test_numerical_prediction_roundoff_can_change_local_seal(receipt):
+def test_numerical_prediction_roundoff_can_change_local_seal(receipt, monkeypatch):
     other = deepcopy(receipt)
     other['prediction']['runs'][0]['predictions'][0]['predicted_spin_mean'] += 1e-13
-    reseal(other)
+    monkeypatch.setattr(experiment, 'load_validation', synthetic_observations)
+    other = experiment.evaluate(other['prediction'])
     replay.compare_receipt(receipt, other)
+
+
+def test_refinement_summary_propagates_individual_prediction_tolerance(receipt, monkeypatch):
+    other = deepcopy(receipt)
+    for run, change in ((other['prediction']['runs'][1], -9e-11),
+                        (other['prediction']['runs'][2], 9e-11)):
+        row = run['predictions'][0]
+        row['predicted_spin_mean'] += change
+        row['predicted_position_estimator'] += change/(math.sqrt(2)*.4)
+        row['predicted_detector_probabilities'][0] += change/2
+        row['predicted_detector_probabilities'][1] -= change/2
+        row['spin_detector_joint_probabilities'][0][0] += .75*change/2
+        row['spin_detector_joint_probabilities'][0][1] -= .75*change/2
+    monkeypatch.setattr(experiment, 'load_validation', synthetic_observations)
+    other = experiment.evaluate(other['prediction'])
+    assert other['numerical_refinements']['occupation']['maximum_position_estimator_change'] > 2e-10
+    replay.compare_receipt(receipt, other)
+
+
+@pytest.mark.parametrize('field', ['maximum_binary_probability_change', 'maximum_position_estimator_change'])
+def test_refinement_summary_cannot_be_changed_independently(receipt, field):
+    other = deepcopy(receipt)
+    other['numerical_refinements']['occupation'][field] += 1e-13
+    with pytest.raises(ValueError, match='Refinement summary'):
+        replay.compare_receipt(receipt, other)
 
 
 @pytest.mark.parametrize('mutation', ['stale_seal', 'conditional_fraction', 'unconditional_fraction',
