@@ -1,0 +1,17 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "Pinned model/requirements.txt",
+    "Source and theorem bindings in results.json"
+  ],
+  "description": "Exact native current counter, marked three-state reduction, waiting/count laws and complete CQ execution.",
+  "files": {
+    "README.md": "ab46218ed9e848f509e8285981161a868e1cafcbd2a70a97ccf63335a359b72f",
+    "__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
+    "__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
+    "clock.py": "e4e5780d549ad0972e5d9cb6f5c6b980d96c9a5090954b37599d073f20d02f99",
+    "results.json": "af2f91885ff4de791f26c31af1bdf47b5a4e08be059464d255361a4c43e03c7c",
+    "test_clock.py": "a0b0986eddc91ff57c6c22aa2608eb9e1f64aee4dd1f3597a0b9591f7b6b672b"
+  },
+  "schema": "oph.model.packet.v1"
+}

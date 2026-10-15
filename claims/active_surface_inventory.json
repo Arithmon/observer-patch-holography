@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 596,
+  "surface_count": 601,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1436,6 +1436,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/empirical_diagnostics/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/identification_design/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1457,6 +1462,26 @@
     },
     {
       "path": "model/local_tick/SPEC.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_clock/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_fluctuations/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_quantum_history/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_relational_readout/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

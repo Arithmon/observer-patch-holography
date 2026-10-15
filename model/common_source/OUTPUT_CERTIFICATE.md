@@ -54,6 +54,9 @@ certification. A digest can detect accidental changes, but is not proof that
 an externally supplied error claim or state was produced by the executor.
 Published execution claims require the actual source run and independently
 recomputed certificate, with their source and program provenance.
+The retained source bindings include both JSON inputs actually consumed by
+the native compiler: its twelve generators and its exact control-coefficient
+receipt, as well as the code that validates and executes them.
 
 ## Exact embedding of the polynomial output
 

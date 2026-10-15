@@ -7,6 +7,11 @@ import pytest
 from . import exact_output, output_certificate as c, protocol, smooth_history
 
 
+def test_source_bindings_include_the_executed_compilers_data_inputs():
+    from ..observer.source_scalar import compiler
+    assert {compiler.RESPONSE, compiler.CONTROL_RECEIPT} <= set(c.SOURCE_PATHS)
+
+
 @pytest.mark.parametrize('value', [F(0), F(1, 3), F(-1, 3), F(1, 10**400), F(-1, 10**400)])
 def test_report_rounding_is_directed_from_exact_values(value):
     low, high = F(c.outward(value, upper=False)), F(c.outward(value))

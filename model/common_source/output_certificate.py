@@ -22,7 +22,9 @@ GRID = 10**6
 MASS_GATE = F(1, 10**8)
 SOURCE_PATHS = tuple(sorted(set((*open_observer.SOURCE_PATHS,
     'model/common_source/exact_output.py',
-    'model/common_source/output_certificate.py'))))
+    'model/common_source/output_certificate.py',
+    'code/source_selection_model/response.json',
+    'code/m1_source_realization/receipt.json'))))
 
 
 def outward(value, *, upper=True):
