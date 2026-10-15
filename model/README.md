@@ -123,7 +123,7 @@ rank-three coordinate Gram, mass, coupling and frequencies, then predicts
 withheld detector settings. Exact occupation bounds control the ideal
 normal-mode code; a source-executed ordered field loop tests the noncommuting
 phase. Separate exact native-current records recover the carrier response
-Gram. The two geometries are not identified, and the field action,
+Gram. Identification of the two geometries is open; the field action,
 vacuum, coherent services and clock calibration remain supplied. This is
 finite operational identification, not an interacting spacetime limit.
 

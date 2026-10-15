@@ -337,8 +337,8 @@
     "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
     "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
     "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
-    "OPH-MODEL-ANHARMONIC-TRANSFER",
-    "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
+    "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+    "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
   ],
   "edges": [
     {
@@ -2962,23 +2962,23 @@
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     },
     {
-      "from": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
-      "to": "OPH-MODEL-ANHARMONIC-TRANSFER",
-      "role": "inherits the source preparation/readout family and retrospective data discipline, not its zero-duration empirical scope"
+      "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+      "role": "inherits the supplied canonical quartic action, oscillator codes and evolution executor, not a physical identification of its parameters"
     },
     {
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
-      "to": "OPH-MODEL-ANHARMONIC-TRANSFER",
+      "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     },
     {
-      "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
-      "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION",
-      "role": "inherits the supplied canonical action and complete two-read comparison, not physical action selection or a continuum inference"
+      "from": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
+      "role": "inherits the native preparation and pointer readout words, not its zero-duration calibration as evidence for changed-potential dynamics"
     },
     {
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
-      "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     }
   ]

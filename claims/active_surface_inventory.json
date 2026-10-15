@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 588,
+  "surface_count": 585,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1362,21 +1362,6 @@
     },
     {
       "path": "model/common_source/OCCUPATION_REFINEMENT.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/common_source/OPEN_ENVIRONMENT.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/common_source/OPEN_HISTORY.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/common_source/OPEN_NATIVE.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

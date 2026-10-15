@@ -93,12 +93,12 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
 
 
 @pytest.mark.parametrize('name,protocol', [
-    ('OPH-MODEL-ANHARMONIC-TRANSFER', 'declared_anharmonic_transfer_apparatus_protocol'),
     ('OPH-MODEL-CANONICAL-SCALAR-EXECUTION', 'declared_canonical_scalar_observation_protocol'),
-    ('OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION', 'declared_complete_field_reconstruction_protocol'),
     ('OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT', 'declared_published_oscillator_readout_protocol'),
     ('OPH-MODEL-SHARED-SCALAR-OBSERVATIONS', 'declared_fixed_band_scalar_observation_protocol'),
     ('OPH-MODEL-SPATIAL-INTERACTION-EXECUTION', 'declared_spatial_bose_observation_protocol'),
+    ('OPH-MODEL-COUPLED-INTERACTION-RECOVERY', 'declared_coupled_quartic_identification_protocol'),
+    ('OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON', 'declared_changed_potential_transfer_protocol'),
 ])
 def test_scalar_descendants_retain_their_declared_protocols_without_m1_transfer(name, protocol):
     downstream = audit.downstream_audit()

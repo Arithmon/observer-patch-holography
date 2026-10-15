@@ -38,7 +38,7 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | Model criteria represented | 12/12 |
 | Registered claims | 338 |
 | Unique ordinary `assumptions` names | 812 |
-| Unique `imported_results` names | 885 |
+| Unique `imported_results` names | 886 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 32 |
 | Claims explicitly linked by optional group fields | 17 |

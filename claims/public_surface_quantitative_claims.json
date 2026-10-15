@@ -729,6 +729,38 @@
       ]
     },
     {
+      "path": "model/coupled_reconstruction/README.md",
+      "heading": "## Retained result",
+      "label_column": "Complete two-read comparison",
+      "comparison_column": "8 × 2⁷ levels",
+      "rows": [
+        {
+          "label": "Numerical prediction/execution TV",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY"
+          }
+        },
+        {
+          "label": "Ideal coefficient + evolution-splitting TV bound",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY"
+          }
+        },
+        {
+          "label": "Matched quartic-deletion discrepancy",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY"
+          }
+        }
+      ]
+    },
+    {
       "path": "model/anharmonic_transfer/README.md",
       "heading": "## Results and analysis",
       "label_column": "Fixed comparison",
@@ -739,7 +771,7 @@
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER"
+            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
           }
         },
         {
@@ -747,7 +779,7 @@
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER"
+            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
           }
         },
         {
@@ -755,7 +787,7 @@
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER"
+            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
           }
         },
         {
@@ -763,7 +795,7 @@
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER"
+            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
           }
         },
         {
@@ -771,39 +803,7 @@
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER"
-          }
-        }
-      ]
-    },
-    {
-      "path": "model/coupled_reconstruction/README.md",
-      "heading": "## Retained result",
-      "label_column": "Complete two-read comparison",
-      "comparison_column": "8 × 4⁷ levels",
-      "rows": [
-        {
-          "label": "Numerical prediction/execution TV",
-          "role": "conditional_branch",
-          "lane": {
-            "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
-          }
-        },
-        {
-          "label": "Ideal coefficient + evolution-splitting TV bound",
-          "role": "conditional_branch",
-          "lane": {
-            "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
-          }
-        },
-        {
-          "label": "Matched quartic-deletion discrepancy",
-          "role": "conditional_branch",
-          "lane": {
-            "kind": "registry_claim",
-            "claim_id": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
+            "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
           }
         }
       ]
