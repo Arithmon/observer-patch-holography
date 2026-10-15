@@ -1,0 +1,23 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "Pinned model/requirements.txt",
+    "Native clock, work source and exact enclosure bindings in results.json"
+  ],
+  "description": "Native first-current stopping of the continuing interacting common observer, with complete finite output and resource certificates.",
+  "files": {
+    "README.md": "1d2bfcf5621ff09aba33e5aebc010ed9d0175d769df7b8236479b3f7d5f88a7a",
+    "__init__.py": "1ef4bc61efad0793e35d3442723bb4c81f1211cbb4d25abda0bf0274a23b0023",
+    "__main__.py": "90dea21a02f0e0f8db494e1448d3428296a4b4fc44c79571895cd9de0c23c9dc",
+    "clock.py": "cededd05dabd8aecea472690a3e5d7f494236dda8fb90e349fe87b4ef6f0e079",
+    "construction.py": "0fdba7a31f7c4462baba86ac54d5446e027cb53f703033a372347cc0fde7a6b9",
+    "experiment.py": "1a80023950b6d5145c91c661a93e5d338805d503c4baad96f41e4b7592410bd2",
+    "results.json": "872164f8be21d1035c98c483c8a202e9e8d011829c66a272488baa80b1dc2f37",
+    "test_clock.py": "990e98aeaed5a4acac94707f8e3a574ab01fd7c0a0ef25347a2e32d52e3d0d3d",
+    "test_construction_audit.py": "8c0a6b1181dbe65c744b772223160dd7e38260ed333b45c62b82e4ce589cd965",
+    "test_experiment.py": "b3b5ce8306513fe06c8227ab7e243dc326a689036c0e00f7035b6bb93cf83b8e",
+    "test_work_bounds.py": "9a61e3a14d088002d661b0df7a0935ad918235839a9a3c99e5a85ff90e833c1f",
+    "work_bounds.py": "a21e944ee51c02b879a99d7ec34f3f6d8d312356825312eadb612acd7f7a727d"
+  },
+  "schema": "oph.model.packet.v1"
+}

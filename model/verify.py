@@ -24,7 +24,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_quantum_history", "model/native_clock",
            "model/native_fluctuations", "model/empirical_diagnostics",
            "model/native_relational_readout", "model/native_circulation",
-           "model/native_interface", "model/measurement_bounds")
+           "model/native_interface", "model/measurement_bounds", "model/clocked_common_observer")
 REPLAYS = (
     ("model.native_circulation", None, "model/native_circulation/results.json"),
     ("model.native_interface", None, "model/native_interface/results.json"),
@@ -82,6 +82,7 @@ REPLAYS = (
     ("model.common_source.causality", None, "model/common_source/causality_results.json"),
     ("model.common_source.native_fields", None, "model/common_source/native_fields_results.json"),
     ("model.observer.record_recovery_receipt", None, "model/observer/results/record_recovery.json"),
+    ("model.clocked_common_observer", None, "model/clocked_common_observer/results.json"),
 )
 
 
