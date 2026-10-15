@@ -67,9 +67,9 @@ parameters. Host runtime has no physical-clock interpretation.
 **This is an independent semantic evaluator and error certificate.** It does
 not execute native observer source words. The apparatus, preparation family,
 quantum structure, noise and clock remain supplied. Source-derived action
-selection is unchanged. The existing native receipts stay frozen. For
-orientation, its case-`a` final estimator differs from the corresponding
-frozen finite prediction by about `2.4e-7` at both cutoffs; that numerical
+selection is unchanged. This packet does not replace native execution
+receipts. For orientation, its case-`a` final estimator differs from the
+corresponding historical finite prediction by about `2.4e-7` at both cutoffs; that numerical
 agreement is separate from the error certificate.
 
 ## Guarantee and assumptions
