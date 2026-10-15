@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==141
+    assert actual['downstream_claims']==143
 
 
 def test_dark_source_context_does_not_transfer_dense_m1_or_physical_admission():
@@ -93,7 +93,9 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
 
 
 @pytest.mark.parametrize('name,protocol', [
+    ('OPH-MODEL-ANHARMONIC-TRANSFER', 'declared_anharmonic_transfer_apparatus_protocol'),
     ('OPH-MODEL-CANONICAL-SCALAR-EXECUTION', 'declared_canonical_scalar_observation_protocol'),
+    ('OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION', 'declared_complete_field_reconstruction_protocol'),
     ('OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT', 'declared_published_oscillator_readout_protocol'),
     ('OPH-MODEL-SHARED-SCALAR-OBSERVATIONS', 'declared_fixed_band_scalar_observation_protocol'),
     ('OPH-MODEL-SPATIAL-INTERACTION-EXECUTION', 'declared_spatial_bose_observation_protocol'),

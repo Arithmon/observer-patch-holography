@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 567,
+  "surface_count": 584,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1251,6 +1251,46 @@
       "allowlisted": false
     },
     {
+      "path": "model/anharmonic_observations/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_observations/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_observations/data/SOURCE_README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_transfer/DERIVATION_BOUNDS.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_transfer/DERIVATION_ENVIRONMENT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_transfer/DERIVATION_SOURCE.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_transfer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/anharmonic_transfer/data/SOURCE_README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/CALIBRATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1306,6 +1346,21 @@
       "allowlisted": false
     },
     {
+      "path": "model/common_source/OPEN_ENVIRONMENT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/OPEN_HISTORY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/OPEN_NATIVE.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/QUANTUM_NATIVE.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1337,6 +1392,26 @@
     },
     {
       "path": "model/common_source/THERMAL_CLOCK.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/coupled_reconstruction/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/coupled_reconstruction/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/interacting_reconstruction/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/interacting_reconstruction/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1437,6 +1512,16 @@
     },
     {
       "path": "model/observer/source_scalar/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer_reconstruction/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer_reconstruction/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

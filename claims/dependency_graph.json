@@ -336,7 +336,9 @@
     "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION",
     "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
     "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
-    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+    "OPH-MODEL-ANHARMONIC-TRANSFER",
+    "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
   ],
   "edges": [
     {
@@ -2957,6 +2959,26 @@
     {
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
       "to": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER",
+      "role": "inherits the source preparation/readout family and retrospective data discipline, not its zero-duration empirical scope"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION",
+      "role": "inherits the supplied canonical action and complete two-read comparison, not physical action selection or a continuum inference"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION",
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     }
   ]

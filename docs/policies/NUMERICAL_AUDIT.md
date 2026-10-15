@@ -160,6 +160,9 @@ not a domain argument.
   just trace preservation. Check complete reference/record allocation before
   executing source services, and test mutable checkpoint envelopes as well
   as their array buffers.
+  Round-trip actual producer outputs through the strict JSON comparator;
+  a CLI test returning an already serialized fixture misses runtime type
+  mismatches such as tuples becoming lists.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
