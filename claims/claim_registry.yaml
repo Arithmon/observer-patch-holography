@@ -15004,6 +15004,92 @@
         "boundary": [],
         "rationale": "This readout attachment supplies the single-oscillator family, thermal mixture, code services and apparatus map, calibrates two parameters on published axes, and reports a retrospective reserved-point discrepancy. Its occupation bound is mathematical at the fitted point. It does not consume or discharge the canonical physical-selection, clock, continuum or empirical-completion premises."
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+      "statement": "The retained source execution identifies the supplied local canonical quartic action on eight four-level sites while every onsite and bond term participates in every calibration trial. From 176 complete binary detector laws at two separately read clock intervals, with opaque labels and a hidden channel permutation, the inverse recovers all twelve edges, the rank-three cube Gram, bare mass squared 1.00000000064, unit bond weight and quartic coupling 0.04166666655 against the target 1/24, conditional on the unit-edge convention and topology-separation premise. A two-duration Richardson combination acts on the complete product schedule under a declared centered factor-generator norm cap of 96; the backend audit verifies a sum below 87. At both withheld occupation cutoffs the predicted complete two-read feedback histories match their source executions within numerical TV below 2.7e-13, with ideal coefficient and evolution-splitting TV bounds below 2.97e-6 and 2.14e-5 and a matched quartic-deletion discrepancy above 3.90e-5; that contrast is not certified after occupation removal. The action family, number preparations, pair instruments, schedule and clock calibration are supplied, the inference is host arithmetic on accessible records, and no finite-shot experiment, measured interacting gap, empirical agreement or continuum construction is claimed.",
+      "owner_paper": "model/coupled_reconstruction/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_coupled_quartic_identification_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "canonical_lattice_scalar_quantum_simulation",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "Richardson_extrapolation",
+        "finite_Kraus_Stinespring_construction",
+        "trace_distance_contraction_and_unitary_channel_composition"
+      ],
+      "oph_specific_delta": "Removes generator isolation from the preceding interaction identification: the source executes the complete product field step in every calibration trial, and the inverse reads only complete detector laws, opaque labels, protocol declarations and separately executed clock probabilities before predicting withheld feedback histories.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/coupled_reconstruction/README.md",
+        "model/coupled_reconstruction/DERIVATION.md",
+        "model/coupled_reconstruction/experiment.py",
+        "model/coupled_reconstruction/source.py",
+        "model/coupled_reconstruction/recovery.py",
+        "model/coupled_reconstruction/bounds.py",
+        "model/coupled_reconstruction/results.json"
+      ],
+      "falsifier": "A calibration trial omits an onsite or bond factor or substitutes an isolated law; the inverse reads hidden coefficients, labels or the channel permutation; the two durations use different step counts; the product-norm cap fails for the executed schedule; a recovered edge, Gram or coefficient disagrees with the post-prediction audit; a predicted history branch is omitted or differs from its execution beyond the declared budgets; or canonical replay disagrees.",
+      "scope_if_false": "The supplied coupled identification benchmark or its comparison certificate fails; no verdict about observed physics or the entire OPH programme follows.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This packet supplies the local canonical quartic family, number preparations, pair instruments, ordered schedule, unit-edge convention and an independently calibrated clock. It identifies coefficients of that supplied action from executed detector laws without consuming or discharging a canonical physical identification, clock or continuum premise."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
+      "statement": "The retained retrospective comparison executes the supplied detuned spin-oscillator pulse sequence of McGarry et al. for all five changed-potential and changed-preparation cases, with a finite phase-noise channel of sixteen source-executed rotations, and seals every prediction before loading the 125 positive-time derived position estimates. Without refitting, the transferred preparation has aggregate RMSE 0.287643 in two-point position-estimator units, against 0.912970 for the frozen control and 0.924344 for harmonic evolution, and beats both controls in each case; a separately declared five-value zero-time displacement adjustment worsens it to 0.344304, and the instantaneous-carrier control gives 0.300623. The ideal finite-model bound on the selected readout is at most 0.00151687 estimator units, step refinement changes an estimator by at most 2.46691e-7 and occupation refinement by at most 0.00449740, all small relative to the empirical residuals, the largest of which is 1.082258. The Hamiltonian, preparation family, apparatus, noise law and durations are supplied; the probe normalization and carrier-phase convention are unresolved, raw shot counts are unavailable, and the comparison does not distinguish OPH from ordinary quantum mechanics.",
+      "owner_paper": "model/anharmonic_transfer/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_changed_potential_transfer_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "published_trapped_ion_anharmonic_dynamics",
+        "finite_Lindblad_master_equation",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "Gauss_Hermite_quadrature_remainder",
+        "binary_Kraus_Stinespring_instrument"
+      ],
+      "oph_specific_delta": "Replaces the analytic dephasing multiplier of the preceding observation test with a finite environment channel whose every phase rotation is contracted from native source words, and transfers the zero-time calibration to changed potentials and preparations under a sealed pre-scoring prediction with a finite-model splitting certificate.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/anharmonic_transfer/README.md",
+        "model/anharmonic_transfer/DERIVATION_SOURCE.md",
+        "model/anharmonic_transfer/DERIVATION_ENVIRONMENT.md",
+        "model/anharmonic_transfer/DERIVATION_BOUNDS.md",
+        "model/anharmonic_transfer/protocol.json",
+        "model/anharmonic_transfer/provenance.json",
+        "model/anharmonic_transfer/experiment.py",
+        "model/anharmonic_transfer/source.py",
+        "model/anharmonic_transfer/environment.py",
+        "model/anharmonic_transfer/bounds.py",
+        "model/anharmonic_transfer/results.json"
+      ],
+      "falsifier": "Positive-time observations enter a prediction or calibration before the pre-scoring seal; a case, control, refinement or observation is dropped or refit; an environment branch substitutes an analytic multiplier for executed source words; the case mapping or executor sign is chosen from trajectories; data, protocol or source hashes fail; the finite-model splitting or quadrature certificate fails; or canonical replay disagrees.",
+      "scope_if_false": "The stated retrospective changed-potential transfer or its implementation fails. Neither its agreement nor failure alone establishes or excludes OPH, and no statistical significance verdict is claimed.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This retrospective comparison supplies the single-mode anharmonic Hamiltonian, displaced-thermal preparation family, apparatus timings, Gaussian phase-noise law and published durations, and transfers an earlier zero-time calibration. It does not consume or discharge the canonical physical-selection, clock, continuum or empirical-completion premises."
+      }
     }
   ],
   "claim_context": {
@@ -27270,6 +27356,122 @@
         {
           "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
           "role": "inherits the smooth detector family, not a claimed experimental test of its seven-mode dynamics"
+        },
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
+    },
+    "OPH-MODEL-COUPLED-INTERACTION-RECOVERY": {
+      "prior_work": {
+        "summary": "Canonical lattice scalar simulation, symmetric product formulas, Richardson extrapolation and finite quantum instruments supply the target and identification methods.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "canonical_lattice_scalar_quantum_simulation; symmetric_product_formula_integral_Taylor_remainder; Richardson_extrapolation; finite_Kraus_Stinespring_construction; trace_distance_contraction_and_unitary_channel_composition",
+        "citations": [
+          {
+            "work": "canonical_lattice_scalar_quantum_simulation",
+            "keys": [
+              "jordan2014quantum"
+            ]
+          },
+          {
+            "work": "symmetric_product_formula_integral_Taylor_remainder",
+            "keys": [
+              "jahnke2000error",
+              "childs2021theory"
+            ]
+          },
+          {
+            "work": "Richardson_extrapolation",
+            "keys": [
+              "stoer2002introduction"
+            ]
+          },
+          {
+            "work": "finite_Kraus_Stinespring_construction",
+            "keys": [
+              "stinespring1955positive",
+              "kraus1971general"
+            ]
+          },
+          {
+            "work": "trace_distance_contraction_and_unitary_channel_composition",
+            "keys": [
+              "ruskai1994beyond",
+              "nielsen2010quantum"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/coupled_reconstruction/README.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The supplied coupled identification benchmark or its comparison certificate fails; no verdict about observed physics or the entire OPH programme follows."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+          "role": "inherits the supplied canonical quartic action, oscillator codes and evolution executor, not a physical identification of its parameters"
+        },
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
+    },
+    "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON": {
+      "prior_work": {
+        "summary": "McGarry et al. supply the experiment, pulse parameters and deposited derived observations; finite Lindblad dynamics, product formulas and Gaussian quadrature supply the evolution and error methods. The existing OPH source compiler supplies the finite implementation.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "published_trapped_ion_anharmonic_dynamics; finite_Lindblad_master_equation; symmetric_product_formula_integral_Taylor_remainder; Gauss_Hermite_quadrature_remainder; binary_Kraus_Stinespring_instrument",
+        "citations": [
+          {
+            "work": "published_trapped_ion_anharmonic_dynamics",
+            "keys": [
+              "mcgarry2026programmable"
+            ]
+          },
+          {
+            "work": "finite_Lindblad_master_equation",
+            "keys": [
+              "gorini1976completely",
+              "lindblad1976generators"
+            ]
+          },
+          {
+            "work": "symmetric_product_formula_integral_Taylor_remainder",
+            "keys": [
+              "jahnke2000error",
+              "childs2021theory"
+            ]
+          },
+          {
+            "work": "Gauss_Hermite_quadrature_remainder",
+            "keys": [
+              "szego1939orthogonal",
+              "olver2010nist"
+            ]
+          },
+          {
+            "work": "binary_Kraus_Stinespring_instrument",
+            "keys": [
+              "kraus1983states",
+              "stinespring1955positive",
+              "ozawa1984quantum"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/anharmonic_transfer/README.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The stated retrospective changed-potential transfer or its implementation fails. Neither its agreement nor failure alone establishes or excludes OPH, and no statistical significance verdict is claimed."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+          "role": "inherits the native preparation and pointer readout words, not its zero-duration calibration as evidence for changed-potential dynamics"
         },
         {
           "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
