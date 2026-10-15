@@ -3,18 +3,23 @@
 The seal binds one exact pre-scoring floating payload. Different valid runs
 may have different seals because their numerical diagnostics differ in the
 last bits. Each seal is independently checked; only that top-level seal is
-then removed for the existing 2e-10 numerical comparison. Source word hashes,
-protocol/data bindings, integer counts, and all other strings remain exact.
+then removed for the numerical comparison. Source word hashes, protocol/data
+bindings, integer counts, and all other strings remain exact.
+
+Fresh Linux and Windows executions of the macOS receipt differ from it by
+about 1.6e-10 on one runner and by more than 2e-10 at the same derived
+position on another, so floats compare within ``PORTABLE_REPLAY_TOLERANCE``.
+It is not a physical or floating-point error certificate.
 """
 from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
 import json
+import math
 
-from ..observer.scalar_response.experiment import compare_receipt as _compare
 
-
+PORTABLE_REPLAY_TOLERANCE = 2e-9
 SEAL_KEY = 'prediction_payload_sha256_before_scoring'
 SCORING_FIELDS = frozenset({SEAL_KEY, 'numerical_refinements',
                            'independent_zero_duration_position_check', 'checks',
@@ -46,6 +51,27 @@ def prediction_payload(receipt):
     except (KeyError, TypeError) as error:
         raise ValueError('Cannot reconstruct complete pre-scoring prediction payload') from error
     return result
+
+
+def _compare(expected, actual, path='root'):
+    if type(expected) is not type(actual):
+        raise ValueError(f'Receipt type mismatch at {path}')
+    if isinstance(expected, dict):
+        if expected.keys() != actual.keys():
+            raise ValueError(f'Receipt keys mismatch at {path}')
+        for key in expected:
+            _compare(expected[key], actual[key], f'{path}.{key}')
+    elif isinstance(expected, list):
+        if len(expected) != len(actual):
+            raise ValueError(f'Receipt length mismatch at {path}')
+        for i, (a, b) in enumerate(zip(expected, actual)):
+            _compare(a, b, f'{path}[{i}]')
+    elif isinstance(expected, float):
+        if (not math.isfinite(expected) or not math.isfinite(actual)
+                or abs(expected-actual) > PORTABLE_REPLAY_TOLERANCE):
+            raise ValueError(f'Floating replay mismatch at {path}')
+    elif expected != actual:
+        raise ValueError(f'Receipt mismatch at {path}')
 
 
 def validate_prediction_seal(receipt):

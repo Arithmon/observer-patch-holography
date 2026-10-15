@@ -159,7 +159,10 @@ license, byte counts and published checksums are retained in
 [provenance](provenance.json). All earlier evidence packets remain unchanged.
 
 Replay checks each receipt's own exact pre-scoring prediction hash, then
-compares floating diagnostics with tolerance `2e-10`. Source words, protocol
-and data hashes, counts and other strings remain exact. The hash of a full
+compares floating diagnostics with tolerance `2e-9`. Fresh Linux and Windows
+executions of the macOS receipt differ from it by about `1.6e-10` on one
+runner and by more than `2e-10` on another; the tolerance is not a physical
+error bound. Source words, protocol and data hashes, counts and other strings
+remain exact. The hash of a full
 floating payload can differ between valid platform runs; it is validated
 individually rather than used as a cross-platform numerical equality test.

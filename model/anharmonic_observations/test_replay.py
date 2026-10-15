@@ -65,6 +65,19 @@ def test_replay_accepts_last_bit_difference_only_after_own_seal_validation():
     compare_receipt(expected, actual)
 
 
+@pytest.mark.parametrize('change, accepted', [(5e-10, True), (5e-9, False)])
+def test_portable_tolerance_covers_measured_platform_drift_only(change, accepted):
+    expected = _receipt()
+    actual = deepcopy(expected)
+    actual['runs'][0]['comparison']['position']['rows'][0]['predicted_mean'] += change
+    _seal(actual)
+    if accepted:
+        compare_receipt(expected, actual)
+    else:
+        with pytest.raises(ValueError, match='Floating replay'):
+            compare_receipt(expected, actual)
+
+
 @pytest.mark.parametrize('side', ['expected', 'actual'])
 def test_both_receipts_must_have_a_valid_pre_scoring_seal(side):
     receipts = {'expected': _receipt(), 'actual': _receipt()}
