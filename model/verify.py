@@ -15,8 +15,10 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/predictions", "model/observer/source_discrimination",
            "model/common_source", "model/spatial_interaction", "model/relativistic_scalar",
            "model/scalar_observations", "model/observer_reconstruction",
-           "model/interacting_reconstruction", "model/coupled_reconstruction")
+           "model/interacting_reconstruction", "model/coupled_reconstruction",
+           "model/anharmonic_observations")
 REPLAYS = (
+    ("model.anharmonic_observations", None, "model/anharmonic_observations/results.json"),
     ("model.coupled_reconstruction", None, "model/coupled_reconstruction/results.json"),
     ("model.interacting_reconstruction", None, "model/interacting_reconstruction/results.json"),
     ("model.observer_reconstruction", None, "model/observer_reconstruction/results.json"),

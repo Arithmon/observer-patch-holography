@@ -68,7 +68,17 @@ occupation bound. Its primary per-spin-mean RMSE is 0.06647, with ideal
 occupation probability error below 3.82e-7 at the fitted preparation.
 This is a calibrated, retrospective prediction within a
 supplied oscillator and apparatus model; selection of that model by OPH and
-the interacting dynamical comparison remain open.
+the spatial scalar field's empirical comparison remain open.
+
+The [anharmonic evolution comparison](anharmonic_observations/README.md)
+extends the empirical work to a complete driven spin–oscillator history.
+Fifty explicitly labelled zero-duration complex measurements calibrate two
+preparation parameters. Native source gates execute the continuously detuned
+pulse sequence; a supplied dephasing channel and final spin selection precede
+predictions for all 707 positive-duration detector means. Fixed controls and
+occupation/channel refinements are retained. This tests a supplied experimental
+model against real dynamical data; it does not select the action or apparatus
+from OPH, or test the spatially coupled scalar model.
 
 The [canonical scalar regulator](relativistic_scalar/README.md) executes a
 three-dimensional eight-site field with number-changing quartic interactions.
