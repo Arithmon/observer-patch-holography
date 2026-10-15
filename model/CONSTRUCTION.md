@@ -83,6 +83,17 @@ and controls the finite-event C/E difference. The construction does not
 instantiate the full refinement tower or identify a modular parameter with
 physical time. Distinct supplied apparatus programs remain distinct models.
 
+Further attachments derive [full quantum transfer](native_quantum_history/README.md),
+[record-clock laws](native_clock/README.md), their
+[joint first-current phase readout](native_relational_readout/README.md) and,
+under independent stationary replication, a [Gaussian history action](native_fluctuations/README.md) from
+the same binary native process. Complete coherent and signed-current readouts
+execute in the shared runtime. These additions retain their finite source,
+scheduler and interface contracts; a number of replicas is not a spatial
+refinement. The [additional laboratory probes](empirical_diagnostics/README.md)
+test preparation/readout ambiguities with controlled occupation errors, while
+their new observations and the physical calibration remain outstanding.
+
 The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
 finite source environment operations to the existing continuing observer
 and corrected native memory. It executes all visible and raw native records,

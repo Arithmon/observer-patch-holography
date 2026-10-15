@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "model/requirements.txt",
+    "model/primitive_observer/runtime.py and anharmonic.py",
+    "model/occupation_control/experiment.py, solver.py and intervals.py",
+    "model/anharmonic_transfer/data/calibration_receipt.json.gz (frozen preparation)",
+    "model/scalar_observations/experimental_readout/executable_source.py and canonical_source.py",
+    "model/observer/source_scalar/compiler.py",
+    "tools/strict_json.py"
+  ],
+  "description": "Six complete native preparation/readout predictions, an exactly single-probe-blind non-Gaussian control, and independent outward occupation certificates.",
+  "files": {
+    "README.md": "2cbb47d8a02167169bfa448cb8f91921f6100ff00477cb26b1aca2a94aedec5c",
+    "__init__.py": "282d23c35edf3490493c4eb4f87287c9de53290d5dbce6aa73384e968ebb256a",
+    "__main__.py": "8caa8e281b4a538dd70ebf8690b7ba897220f4504a3c6ca18dcc2901fbed14c0",
+    "experiment.py": "5ea1bd428848888d6b1de07b6d33cf9303834cf760346cfa0ab40b2ff6e30262",
+    "protocol.json": "c0629456f3d95acdabbeb43e16e417d27680c0623c1753379e725ef6edc87999",
+    "results.json": "5092bcb733c23103fb18a1199ed8aa45fd36ceda7628d4d3c5c57f5d96092aa4",
+    "test_diagnostics.py": "6d34fd188a5242a9d7729eacceedaf801e8e7d9dd79de1568b3c8e963e2e2a05"
+  },
+  "reproduce": [
+    "python -m model.empirical_diagnostics --check model/empirical_diagnostics/results.json",
+    "python -m pytest -q -W error model/empirical_diagnostics"
+  ],
+  "schema": "oph.empirical_diagnostics.manifest.v1"
+}

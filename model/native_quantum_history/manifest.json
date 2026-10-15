@@ -1,0 +1,22 @@
+{
+  "dependencies": [
+    "model/requirements.txt",
+    "model/observer/native.py",
+    "model/observer/quantum_mixing.py",
+    "model/observer/quantum_memory.py",
+    "model/primitive_observer/runtime.py"
+  ],
+  "files": {
+    "README.md": "1a85438c8be9c3193f2d41b6f1b6e0d43f43c104407228fbcfdbf9949b347f62",
+    "__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
+    "__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
+    "construction.py": "bb8840c091de9d604bea40baccb695b8fddff0f212fddf6fc72132718d16c54e",
+    "results.json": "0b7e29a404d30887a65ceb45313c93c8f4353b7e00f7cfc1bf26ed53603249bc",
+    "test_construction.py": "daf88b77e283b5f86ee4c0f7478acce4224eec803dfb42437ded78ecb12f84a8"
+  },
+  "reproduce": [
+    "python -m model.native_quantum_history --check model/native_quantum_history/results.json",
+    "python -m pytest -q -W error model/native_quantum_history"
+  ],
+  "schema": "oph.native_quantum_history.manifest.v1"
+}

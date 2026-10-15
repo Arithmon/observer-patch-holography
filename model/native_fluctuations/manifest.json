@@ -1,0 +1,22 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "Pinned model/requirements.txt",
+    "Public source bindings in results.json"
+  ],
+  "description": "Native current measurements and conditional Gaussian history action from independent native histories.",
+  "files": {
+    "README.md": "1e38fb6a7f7c213a8b6f23b65dbc03465b68393c9227d7116a703494b5414451",
+    "__init__.py": "e4d72d0ded03e0d89d2eed6305544c8f413343ac9ae2045d35247807fc6a803e",
+    "__main__.py": "143bc389270f4983ff83374b424dcf750de0d4ffacaea01102ff3cc01c4c4aba",
+    "experiment.py": "3e248555159cdd0835d9e4ffd51ad3df8f7e928e8d3a127a905cfba032e2e13f",
+    "results.json": "03ca22bac0c99c0d22884e2199346301315d6c505dd51cb3d512681c1db749ac",
+    "source.py": "963281df213df670acf1d4d0368f71b929b3c97b88d94f696d999f6e8da6c86f",
+    "test_fluctuations.py": "97a6b127c700bde0bad76c1e3c07650481a7dfc103c628c0e2fef20cfe080cc9"
+  },
+  "reproduce": [
+    "python -m model.native_fluctuations --check model/native_fluctuations/results.json",
+    "python -m pytest -q -W error model/native_fluctuations"
+  ],
+  "schema": "oph.native_fluctuations.manifest.v1"
+}

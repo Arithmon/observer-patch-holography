@@ -20,8 +20,16 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/interacting_reconstruction", "model/coupled_reconstruction",
            "model/anharmonic_observations", "model/anharmonic_transfer",
            "model/audit_20261015", "model/occupation_control",
-           "model/identification_design", "model/primitive_observer")
+           "model/identification_design", "model/primitive_observer",
+           "model/native_quantum_history", "model/native_clock",
+           "model/native_fluctuations", "model/empirical_diagnostics",
+           "model/native_relational_readout")
 REPLAYS = (
+    ("model.native_relational_readout", None, "model/native_relational_readout/results.json"),
+    ("model.native_quantum_history", None, "model/native_quantum_history/results.json"),
+    ("model.native_clock", None, "model/native_clock/results.json"),
+    ("model.native_fluctuations", None, "model/native_fluctuations/results.json"),
+    ("model.empirical_diagnostics", None, "model/empirical_diagnostics/results.json"),
     ("model.primitive_observer.transfer", None, "model/primitive_observer/transfer_results.json"),
     ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
     ("model.occupation_control", None, "model/occupation_control/results.json"),
