@@ -22,6 +22,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/audit_20261015", "model/occupation_control",
            "model/identification_design")
 REPLAYS = (
+    ("model.common_source.output_certificate", None, "model/common_source/output_certificate_results.json"),
     ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
     ("model.occupation_control", None, "model/occupation_control/results.json"),
     ("model.identification_design", None, "model/identification_design/results.json"),

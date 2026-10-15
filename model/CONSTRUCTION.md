@@ -72,6 +72,14 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [direct numerical certificate](common_source/OUTPUT_CERTIFICATE.md)
+connects actual source-executed work outputs with the exact prepared-history
+proofs. All sixteen quantum blocks and their exact mass defect enter the
+comparison. It also proves that a fixed feedback intervention changes the
+infinite-history clock probability. This closes a numerical evidence join
+for the declared preparation; physical services, arbitrary-input channel
+errors and numerical certification of the native attachment remain separate.
+
 The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
 finite source environment operations to the existing continuing observer
 and corrected native memory. It executes all visible and raw native records,

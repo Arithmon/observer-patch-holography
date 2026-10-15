@@ -49,6 +49,13 @@ infinite history for each native current. It uses the canonical blank-gauge
 and scalar-vacuum preparation; the broader uniform bound remains a separate
 comparison, and numerical and physical service errors remain additional.
 
+The [direct output certificate](common_source/OUTPUT_CERTIFICATE.md) additionally
+compares the actual returned source arrays with those exact targets using
+rational arithmetic. It closes the numerical output comparison for the
+declared work preparations, including all retained quantum branches, and
+certifies a nonzero feedback response of the final clock record. It does
+not certify physical services or the separate floating native attachment.
+
 ```sh
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```

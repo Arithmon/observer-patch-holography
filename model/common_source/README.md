@@ -9,6 +9,14 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The [numerical output certificate](OUTPUT_CERTIFICATE.md) bounds the actual
+computed work outputs against the exact finite continuous and infinite
+histories, including preparation, source evaluation and time discretization.
+It executes all records, charges their exact mass discrepancy and certifies
+the clock response to a fixed feedback intervention. Mixed numerical outputs
+have a separate comparison to the noiseless target. Physical services and
+the floating native attachment retain their own obligations.
+
 The [complete noisy observer](OPEN_HISTORY.md) now executes the existing
 finite source phase channel between operations of the same continuing
 history. It retains mixed quantum/reference outputs, committed records,
