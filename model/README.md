@@ -5,6 +5,21 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [primitive observer construction](primitive_observer/README.md) provides
+one complete classical/quantum instrument runtime for the native interacting
+observer and the separately supplied laboratory apparatus. It connects
+repair, recorded feedback, protected memory, regional observer algebras,
+GNS representations and checkpoint continuation to actual executed histories.
+The native mean response determines relative action coefficients. A separate
+[native transfer reconstruction](primitive_observer/DERIVATION_TRANSFER.md)
+derives a finite Euclidean Hamiltonian from the native transition law and
+reproduces complete current-bit histories through the same runtime, under a
+declared uniform seam schedule. Exact fixed-seam completion attaches to the
+native rule; the laboratory path
+retains the existing 125-point comparison and its empirical discrepancies.
+These are finite compatible attachments, with action selection and a complete
+physical observer construction subject to the boundaries in that report.
+
 The [15 October approach audit](audit_20261015/README.md) retains exact
 calibration/geometry counterexamples, a stronger empirical comparator and
 concrete theorem mappings. It identifies which further measurements and

@@ -1,4 +1,4 @@
-"""Replay both empirical packets while sharing parameter-keyed source caches.
+"""Replay the three empirical packets with parameter-keyed source caches.
 
 Each existing CLI performs its complete prediction, scoring and receipt check.
 Only the same process's canonical word and executed-operation caches are reused;
@@ -15,6 +15,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 EMPIRICAL_REPLAYS = (
+    ("model.primitive_observer", None, "model/primitive_observer/results.json"),
     ("model.anharmonic_transfer", None, "model/anharmonic_transfer/results.json"),
     ("model.anharmonic_observations", None, "model/anharmonic_observations/results.json"),
 )

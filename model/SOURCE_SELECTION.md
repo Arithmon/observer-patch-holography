@@ -74,6 +74,29 @@ It does not select the retained algebra, record instrument or physical
 interface. Full-carrier E is nonunital, so this binary argument does not
 transfer to all 78 inputs.
 
+The [primitive observer attachment](primitive_observer/README.md#further-conditional-source-restrictions)
+recovers a relative quadratic action directly from the native mean response,
+with normalized capacities `1/12` and seam conductances `1/720` under the
+declared uniform thirty-seam schedule. It checks the actual finite inputs
+before applying symmetrizer uniqueness. A separate attachment constrains the
+compiled projective spin pointer by certain-state invariance. These remove
+independent choices within those contracts. The retained C/E control shows
+that the same mean action permits different quantum observation laws, and
+the exact stationary-load covariance fails the proposed same-capacity
+canonical-vacuum identification even on the mean-free sector. The existing
+history-register theorem requires further hypotheses on that same process.
+
+A [finite native transfer reconstruction](primitive_observer/DERIVATION_TRANSFER.md)
+provides another attachment without importing oscillator coefficients. The
+actual binary transition kernel is positive, and its unique self-adjoint
+logarithm gives `H=-log(K)` in Euclidean native-attempt units. Its marked
+transition correlations reproduce complete coarse current-bit laws and
+their retained runtime outputs. The stationary ground vector is a history
+representation; the runtime prepares the stationary mixture. This derives
+the finite classical-sector transfer Hamiltonian under the native law and
+uniform scheduler, while C/E quantum-instrument selection, real-time
+identification, locality and physical refinement remain open.
+
 ## The native selection tests
 
 The [coherent continuation](observer/COHERENT_CONTINUATION.md) fixes a

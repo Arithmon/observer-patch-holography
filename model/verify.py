@@ -20,12 +20,14 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/interacting_reconstruction", "model/coupled_reconstruction",
            "model/anharmonic_observations", "model/anharmonic_transfer",
            "model/audit_20261015", "model/occupation_control",
-           "model/identification_design")
+           "model/identification_design", "model/primitive_observer")
 REPLAYS = (
     ("model.common_source.output_certificate", None, "model/common_source/output_certificate_results.json"),
+    ("model.primitive_observer.transfer", None, "model/primitive_observer/transfer_results.json"),
     ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
     ("model.occupation_control", None, "model/occupation_control/results.json"),
     ("model.identification_design", None, "model/identification_design/results.json"),
+    ("model.primitive_observer", None, "model/primitive_observer/results.json"),
     ("model.anharmonic_transfer", None, "model/anharmonic_transfer/results.json"),
     ("model.anharmonic_observations", None, "model/anharmonic_observations/results.json"),
     ("model.coupled_reconstruction", None, "model/coupled_reconstruction/results.json"),
@@ -111,7 +113,7 @@ def main():
     index = 0
     while index < len(REPLAYS):
         if REPLAYS[index:index+len(EMPIRICAL_REPLAYS)] == EMPIRICAL_REPLAYS:
-            # Keep both canonical checks, sharing only the expensive source
+            # Keep every canonical check, sharing only the expensive source
             # compilation caches in this one child. Failures still propagate.
             subprocess.run([sys.executable, "-m", "model.replay_empirical"],
                            cwd=ROOT, env=environment, check=True)

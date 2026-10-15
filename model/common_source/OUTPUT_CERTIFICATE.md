@@ -17,6 +17,12 @@ not a hardware error bound, a certificate for every input to the source words,
 or a replacement for their execution. The source program still produces the
 amplitudes; the polynomial method supplies an independent comparison target.
 
+The [primitive observer runtime](../primitive_observer/README.md) shares these
+source maps but executes separate output arrays. The bounds here certify the
+arrays freshly replayed by `protocol` and `open_protocol`; the primitive
+runtime's floating compatibility diagnostics do not transfer this certificate
+to its returned arrays, native transfer reconstruction or laboratory histories.
+
 ## Fixed output and comparison target
 
 For a pure-history execution, let the returned vector for record `r` be
