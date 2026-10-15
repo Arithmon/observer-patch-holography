@@ -1,5 +1,6 @@
 """Check the complete-table event bound and the frozen experiment binding."""
 from fractions import Fraction as F
+import gzip
 
 import pytest
 
@@ -48,12 +49,32 @@ def test_native_event_weight_and_discriminator_do_not_refit_sign():
     assert not reversed_actions['strict_positive_discriminator_established']
 
 
-def test_original_contract_is_hash_bound(tmp_path, monkeypatch):
+@pytest.mark.parametrize('changed', ['protocol', 'receipt', 'compression'])
+def test_original_contract_is_hash_bound(tmp_path, monkeypatch, changed):
     assert occupation.retained_source()['all_pass']
-    for name in ('protocol.py', 'results.json'):
+    for name in ('protocol.py', occupation.SOURCE_RECEIPT):
+        (tmp_path/name).parent.mkdir(parents=True, exist_ok=True)
         (tmp_path/name).write_bytes((occupation.FOLDER/name).read_bytes())
     monkeypatch.setattr(occupation, 'FOLDER', tmp_path)
-    with (tmp_path/'results.json').open('ab') as stream:
-        stream.write(b'\n')
-    with pytest.raises(ValueError, match='binding changed: results.json'):
+    path = tmp_path/occupation.SOURCE_RECEIPT
+    if changed == 'protocol':
+        with (tmp_path/'protocol.py').open('ab') as stream:
+            stream.write(b'\n')
+    elif changed == 'receipt':
+        raw = gzip.decompress(path.read_bytes())
+        path.write_bytes(gzip.compress(raw+b'\n', mtime=0))
+    else:
+        path.write_bytes(path.read_bytes()[:-1])
+    with pytest.raises(ValueError):
         occupation.retained_source()
+
+
+def test_occupation_uses_frozen_input_even_when_live_receipt_changes(tmp_path, monkeypatch):
+    original = occupation.retained_source()
+    for name in ('protocol.py', occupation.SOURCE_RECEIPT):
+        path = tmp_path/name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes((occupation.FOLDER/name).read_bytes())
+    (tmp_path/'results.json').write_text('A later live source receipt is not the frozen certificate input.')
+    monkeypatch.setattr(occupation, 'FOLDER', tmp_path)
+    assert occupation.retained_source() == original
