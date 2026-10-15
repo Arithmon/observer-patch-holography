@@ -177,7 +177,8 @@ The retained feedback control uses `d=4`, current zero, and sets both
 feedback angles to zero. It compares two complete executions with the same
 preparation, current, cutoff, source splitting and record menu. Only the
 declared feedback enable flag changes. Each execution receives its own
-matching continuous and infinite polynomial targets. This is an intervention
+matching infinite polynomial target; the baseline also has a separate finite
+continuous comparison. This is an intervention
 comparison between two programs, not two outcomes selected from one history.
 Checkpoints cannot be transplanted across the changed program identity.
 Each zero-angle source request still executes and is charged as one native
