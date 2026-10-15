@@ -16,7 +16,8 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/common_source", "model/spatial_interaction", "model/relativistic_scalar",
            "model/scalar_observations", "model/observer_reconstruction",
            "model/interacting_reconstruction", "model/coupled_reconstruction",
-           "model/anharmonic_observations", "model/anharmonic_transfer")
+           "model/anharmonic_observations", "model/anharmonic_transfer",
+           "model/audit_20261015")
 REPLAYS = (
     ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
     ("model.anharmonic_transfer", None, "model/anharmonic_transfer/results.json"),

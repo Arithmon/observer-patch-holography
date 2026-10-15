@@ -49,6 +49,24 @@ def test_numerical_prediction_roundoff_can_change_local_seal(receipt):
     replay.compare_receipt(receipt, other)
 
 
+def test_refinement_summary_propagates_individual_prediction_tolerance(receipt):
+    other = deepcopy(receipt)
+    for run, change in ((other['prediction']['runs'][1], -9e-11),
+                        (other['prediction']['runs'][2], 9e-11)):
+        _shift_mean(run['predictions'][0], change)
+    other = experiment.evaluate(other['prediction'])
+    assert other['numerical_refinements']['occupation']['maximum_position_estimator_change'] > 2e-10
+    replay.compare_receipt(receipt, other)
+
+
+@pytest.mark.parametrize('field', ['maximum_binary_probability_change', 'maximum_position_estimator_change'])
+def test_refinement_summary_cannot_be_changed_independently(receipt, field):
+    other = deepcopy(receipt)
+    other['numerical_refinements']['occupation'][field] += 1e-13
+    with pytest.raises(ValueError, match='Derived receipt.*numerical_refinements'):
+        replay.compare_receipt(receipt, other)
+
+
 @pytest.mark.parametrize('mutation', ['stale_seal', 'conditional_fraction', 'unconditional_fraction',
                                     'word_digest', 'integer', 'large_float', 'type', 'nonfinite'])
 def test_replay_rejects_integrity_and_scientific_contract_changes(receipt, mutation):

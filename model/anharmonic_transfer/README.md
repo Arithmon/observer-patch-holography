@@ -8,6 +8,18 @@ observations are retained. The experiment is McGarry et al.,
 [*Programmable quantum simulation of anharmonic dynamics*](https://arxiv.org/html/2603.04744v1),
 with [published data](https://zenodo.org/records/18752287) under CC-BY-4.0.
 
+The [15 October audit](../audit_20261015/README.md) adds a stronger,
+retrospective effective-Hamiltonian comparison and examines the unresolved
+measurement normalization. Its results supplement this frozen prediction.
+The replay checker was corrected to verify derived refinement summaries
+against each run's predictions: subtraction and conversion to position units
+can amplify portable floating differences beyond the single-prediction
+tolerance. Underlying predictions still use the original `2e-10` tolerance;
+the original audit left the protocol, source words and result bytes unchanged.
+The later numerical stability repair described below regenerates the live
+receipt while retaining the same physical source words and frozen calibration.
+The dated audit uses its own immutable snapshot of the original receipt.
+
 ## What changed in the executable model
 
 The previous implementation inserted an analytic number-dephasing multiplier.

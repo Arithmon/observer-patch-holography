@@ -5,6 +5,12 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [15 October approach audit](audit_20261015/README.md) retains exact
+calibration/geometry counterexamples, a stronger empirical comparator and
+concrete theorem mappings. It identifies which further measurements and
+bounds would strengthen physical recovery, alongside exact compilation
+simplifications. Existing prediction receipts remain preserved.
+
 The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
 selection work on the carrier architecture, observer interface and its
 implementation, and complete repair rule. Observable effective physics must
