@@ -11,7 +11,7 @@
   "description": "Executed anharmonic spin-oscillator dynamics compared with all 707 excluded positive-duration physical detector means.",
   "files": {
     "DERIVATION.md": "f9ad4550c6307892623d68dc25984aad2ceac3b98def063241c92c142e930dbf",
-    "README.md": "797d07ee707bc1792d4137156ad4987333af70c7aa7d6f605c1f04eb2518c0c8",
+    "README.md": "b733d319498eada6923155dcf1380f82168d8b30e21ad638fc4591e0bf94f5f4",
     "__init__.py": "ac1b62e833b86a2af02d3d7aff228030fcd7d2ded315eaa9ee47831807cb35d7",
     "__main__.py": "a17f40bccc9fda35064376080efc86be6d48b8f663d3b9121451764e8293bfeb",
     "calibration.py": "04ea5dff89db1f26dbddeb3f89130b82e4fad777d3ddfa43fc411a1ccb323067",
@@ -30,14 +30,14 @@
     "protocol.json": "8167f43c0f3ad523611024368adac7961c7ec473bf88521af8dac22728287c9c",
     "provenance.json": "97f05240ba46b37a809a74931b8f5801775552f3cd4b93db4791517437f207ff",
     "reference.py": "8f77ea8bf969f0ca6de8e24690c3d9d8943a11963dbe05b5a2908dd7aa4fb491",
-    "replay.py": "3528c24613e708a9997d08b893dc80819f5171a60efa5b0673ea35a011def23c",
+    "replay.py": "608bccc16e3976371d3ec7f7d1ab0c5dcdc41c92c09faf87e47b9f75f6235e92",
     "results.json": "80504ae1e92e94de0e5f50484da4a5dbbdb0981389c5733066468b36e961f215",
     "source.py": "b2b2e31725537218f135c194366a2a9f35932fd450ef1279f29acba596b726f2",
     "test_calibration.py": "402f5ed6fec2acc1c933cdff76fdf03a314dd0f7601d0c9d06c9814e891260d1",
     "test_data.py": "27664c0a69c558bab40a13c964130beb4802d0e5e68b52065c9f60ca8c2939ba",
     "test_experiment.py": "0561e7d67cb75b9721820d05e06fa7ef07e50bdda79bc22e8e2da8ad3c8fe922",
     "test_reference.py": "b90c15ee01beeee7b0e0f6a3c9e4eeb2dba1854af22c392ef8101610820488b2",
-    "test_replay.py": "0a394c3e706910ca2065de9126d89ea9b0f5374c11c69ab5f6adc3c81f101d37",
+    "test_replay.py": "72b17ae68fc006ed82c9b1254c776507b8bb72f64ac5e6c163b205ef24e5f518",
     "test_source.py": "7c0190ba0f3ff67f14218e5f9924e7f9ebbfb5e4e050d93b415c77e9ed2318b9"
   },
   "reproduce": [
