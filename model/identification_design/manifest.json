@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "NumPy, SciPy and SymPy from model/requirements.txt",
+    "model/observer/source_scalar/compiler.py",
+    "model/observer/scalar_response/experiment.py",
+    "tools/strict_json.py",
+    "code/source_selection_model/response.json",
+    "code/m1_source_realization/receipt.json"
+  ],
+  "description": "Exact action-response nullspaces and a complete 41-pulse native level-four Ramsey discriminator, with conditional sampling bounds.",
+  "files": {
+    "README.md": "5d40533b6b8fae60e5103b29fd7166664f2d63b8fac8b57ffcbfa3932efd0323",
+    "__init__.py": "0104578a7dbdb1395f6a5f8b792807d2954870271a42699841df1cc5186abf46",
+    "__main__.py": "aa2f03d498cc725c004ab14b17970026c4f7a2ac46666c6bd157372983e213e7",
+    "experiment.py": "2a6fd9ea9a59dcafc09cafd71da18b52d28fca2458e40a86638e4dfc1f267e62",
+    "response.py": "32da504e8355ee2bbac3caf74b617f219a13b8520fae3a38507af55ce837fabb",
+    "results.json": "400bf8803ec13475337c5a9079c711c068e55e0fbb82681b5227469c0570f98b",
+    "source.py": "0d53893e8ff1911433f240d2eb88dfddff5727365b0060fe6a9cdf913ba76e87",
+    "test_design.py": "c2669f35720db5ab3980d98c1245209799843cb6d50c2202c06742125ca35d84"
+  },
+  "reproduce": [
+    "python -m model.identification_design --check model/identification_design/results.json",
+    "python -m pytest -q -W error model/identification_design"
+  ],
+  "schema": "oph.identification_design.manifest.v1"
+}

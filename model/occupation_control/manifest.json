@@ -1,0 +1,26 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "model/requirements.txt",
+    "model/anharmonic_observations/reference.py (independent tests only)"
+  ],
+  "description": "Outward-enclosed full-path occupation and integration control for the supplied spin-oscillator apparatus, including preparation and detector.",
+  "files": {
+    "DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
+    "README.md": "27575bd9264edd8e9563beb22710f92255bcc07d642424d247d9eb72bea32dc2",
+    "__init__.py": "fbe5ce9438a35ba51737471026d78abc5fb5b88582607c244a7ce84efa5dc16c",
+    "__main__.py": "cc436bab72abb98965616f124d2a41f50f3fed6c7b2964332a7ba6e6fc27ad49",
+    "experiment.py": "a3a85a96b2dc79d7e4f435b457dd8e89aa818f04a2871675ecc8314df9b00b67",
+    "intervals.py": "7c11fbde0360e2153fa8d3c154b128a0f238a85b2da1b345ea769b5df4c66bbc",
+    "results.json": "c07df1b9984e2d24a07916712880b09b3e567e60bc6f1f73d52dd07326557316",
+    "solver.py": "4b6255ecf8377bd040b0872c6cbb9a72581c92978578bf8b26b83bd49735f603",
+    "test_control.py": "9c35a1f8d404666a4429639f0c60693f83c5ae2194b5ca4779fc41efae30b50d",
+    "test_mp_enclosure.py": "05187247f81e377e0721de70b60696a58163b4f5ecdc3d74b1463043385ebf50",
+    "test_replay.py": "da458a6c4d6bd021a22e58c5806ba52edde6c9ba93fa374325059975f07a0110"
+  },
+  "reproduce": [
+    "python -m model.occupation_control --check model/occupation_control/results.json",
+    "python -m pytest -q -W error model/occupation_control"
+  ],
+  "schema": "oph.occupation_control.manifest.v1"
+}

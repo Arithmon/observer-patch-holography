@@ -104,6 +104,23 @@ guard. No target matrix replaces an executed word. These ideal algebraic
 identities do not cancel physical service errors, and the floating residuals
 are not interval certificates.
 
+The finite increment representation is unitary in exact arithmetic, but its
+computed matrix can retain a small Hermitian defect. Production therefore
+applies the existing fixed-guard polar representation to that matrix, after
+the mandatory raw and increment checks. Its input-defect, correction and
+restored-defect limits are unchanged; a further guard limits the total
+corrected-versus-raw change to `2e-10`. The corrected full-phase Hamiltonian
+comparison is mandatory too. No evolved state, output probability or target
+matrix enters the polar calculation. All three representations' diagnostics
+remain numerical quantities rather than outward error certificates.
+
+Two source words have exact specialized forms. Writing
+`N=sum_b 2^b*(I-Z_b)/2` yields one scalar and one phase pulse per bit.
+Occupation parity depends only on the least significant bit, so its spin
+control is the existing native `J(-pi)` followed by the scalar `I(pi)`.
+These identities preserve full phases and act on the entire finite code;
+they do not invoke unrestricted oscillator commutation relations.
+
 ## Error scope and execution ledger
 
 Each record composes the exact-rational ideal Gaussian-quadrature radii for

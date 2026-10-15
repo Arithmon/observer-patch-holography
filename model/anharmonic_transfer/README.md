@@ -282,7 +282,25 @@ in the calculation. The twice-applied parity contributes its literal
 retains the original straight-product contraction, checks both forms
 against the independent finite Hamiltonian target, and caps their
 representation difference at the fixed `2e-10` native numerical scale.
-The word hashes, operation stages and physical resource counts are
-unchanged. This is arithmetic for ideal inverse words, not cancellation
-of physical inverse-service errors; the reported correction is a floating
-diagnostic, not an interval or physical precision certificate.
+The final increment matrix also passes the compiler's existing guarded polar
+representation. This prevents its residual nonunitarity from accumulating
+through repeated applications. The raw product and increment checks remain
+mandatory; the corrected matrix is checked against the independent target
+and against the raw product. The correction receives no state or observed
+outcome, and does not replace an operation with its target. The retained
+metadata reports both representation changes and the restored defect.
+These operations represent ideal words numerically; they do not cancel
+physical service errors or certify floating precision.
+
+The audited exact shortcuts are now used in production: controlled occupation
+parity uses two native pulses, including its scalar phase, and number drift
+uses one scalar pulse plus one Z pulse per occupation bit. At dimension 64
+these replace 2,054- and 838-pulse words with 2- and 7-pulse words,
+respectively. Full-matrix tests include the highest occupations and global
+phase. Live word hashes and resource receipts are regenerated; frozen
+calibration and dated-audit input bytes remain unchanged. Dense basis words
+still dominate cold compilation.
+
+The repository-wide verifier shares parameter-keyed source compilation caches
+between the two empirical CLIs. Both execute their full canonical prediction,
+score and receipt checks; no trajectory, result or fitted preparation is reused.

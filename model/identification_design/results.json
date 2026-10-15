@@ -1,0 +1,949 @@
+{
+  "all_pass": true,
+  "checks": {
+    "background_slope_agrees": true,
+    "coherent_read_separates_candidates": true,
+    "commitment_control_erases_separation": true,
+    "complete_native_evolution_matches_independent_H": true,
+    "complete_probability_laws": true,
+    "exact_full_nongauge_rank_after_selected_probes": true,
+    "initial_calibration_has_two_invisible_action_directions": true,
+    "native_reference_agreement": true
+  },
+  "coherent_total_variation": 0.7071067811865461,
+  "committed_total_variation": 3.885780586188049e-16,
+  "derived": [
+    "exact response rank and nullspace, retaining global-energy gauge",
+    "minimum occupation additions within the declared nested family",
+    "complete native and independent reference detector probabilities",
+    "conditional finite-shot discrimination bound"
+  ],
+  "exact_zero_compressions_at_cutoff_four": {
+    "binom(N,4)": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "binom(N,5)": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "independent_reference_laws": [
+    [
+      0.14644660940672585,
+      0.0,
+      0.0,
+      0.0,
+      0.8535533905932737,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.8535533905932731,
+      0.0,
+      0.0,
+      0.0,
+      0.14644660940672646,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "input_sha256": {
+    "code/m1_source_realization/receipt.json": "8696c4e4b5fe5f0abff2307d3a1c6bd5b1adaf5d6a9057b06adef3228a690ba0",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "model/identification_design/experiment.py": "2a6fd9ea9a59dcafc09cafd71da18b52d28fca2458e40a86638e4dfc1f267e62",
+    "model/identification_design/response.py": "32da504e8355ee2bbac3caf74b617f219a13b8520fae3a38507af55ce837fabb",
+    "model/identification_design/source.py": "0d53893e8ff1911433f240d2eb88dfddff5727365b0060fe6a9cdf913ba76e87",
+    "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3"
+  },
+  "maximum_source_reference_probability_errors": [
+    1.4432899320127035e-15,
+    9.992007221626409e-16
+  ],
+  "native_coherent_trials": [
+    {
+      "B_coefficient": 0.0,
+      "committed_before_read": false,
+      "complete_probability_mass": 0.9999999999999978,
+      "complete_read_probabilities": [
+        0.14644660940672544,
+        7.170024439223344e-34,
+        7.901801657801737e-32,
+        1.4379631979839063e-65,
+        0.8535533905932723,
+        2.8369011832396195e-35,
+        5.195568908323502e-31,
+        1.4331582952864304e-65
+      ],
+      "full_phase_evolution_target_residual": 2.9098960232936987e-15,
+      "joint_old_occupation_then_read_code": null,
+      "model_time": 1.5707963267948966,
+      "numerical_residual_is_certificate": false,
+      "outcome_zero_probability": 0.14644660940672544,
+      "resources": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 95.62222639363932,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 3,
+        "native_pulses": 41,
+        "pair_code_pulses": 10,
+        "proper_code_export_events": 41,
+        "proper_code_load_events": 41,
+        "proper_code_service_events": 82,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 31,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "stage_pulses": {
+        "evolve": 38,
+        "prepare": 1,
+        "read": 2
+      },
+      "word_sha256": "21c41d4614e4a58b822a41828c7d24256d211eb02c8771530ab94e214b8cc0c7"
+    },
+    {
+      "B_coefficient": 1.0,
+      "committed_before_read": false,
+      "complete_probability_mass": 0.9999999999999987,
+      "complete_read_probabilities": [
+        0.8535533905932721,
+        0.0,
+        1.1599369535189432e-31,
+        0.0,
+        0.14644660940672657,
+        0.0,
+        6.760608002885184e-31,
+        0.0
+      ],
+      "full_phase_evolution_target_residual": 8.79330833443268e-15,
+      "joint_old_occupation_then_read_code": null,
+      "model_time": 1.5707963267948966,
+      "numerical_residual_is_certificate": false,
+      "outcome_zero_probability": 0.8535533905932721,
+      "resources": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 150.60009783146072,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 3,
+        "native_pulses": 41,
+        "pair_code_pulses": 10,
+        "proper_code_export_events": 41,
+        "proper_code_load_events": 41,
+        "proper_code_service_events": 82,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 31,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "stage_pulses": {
+        "evolve": 38,
+        "prepare": 1,
+        "read": 2
+      },
+      "word_sha256": "babec79b8fa24e3be488ca1990cb50743ff6472c881bffe479b688df8aa79819"
+    }
+  ],
+  "native_committed_controls": [
+    {
+      "B_coefficient": 0.0,
+      "committed_before_read": true,
+      "complete_probability_mass": 0.9999999999999977,
+      "complete_read_probabilities": [
+        0.49999999999999883,
+        3.7268572787736524e-34,
+        2.992874537051838e-31,
+        1.435560746635168e-65,
+        0.49999999999999883,
+        3.7268572787736524e-34,
+        2.992874537051838e-31,
+        1.4355607466351681e-65
+      ],
+      "full_phase_evolution_target_residual": 2.9098960232936987e-15,
+      "joint_old_occupation_then_read_code": [
+        [
+          0.24999999999999906,
+          0.0,
+          0.0,
+          0.0,
+          0.24999999999999914,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.8634286393868273e-34,
+          0.0,
+          0.0,
+          0.0,
+          1.863428639386828e-34,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.4685172497779456e-31,
+          0.0,
+          0.0,
+          0.0,
+          1.468517249777946e-31,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          7.989034563993694e-66,
+          0.0,
+          0.0,
+          0.0,
+          7.989034563993697e-66
+        ],
+        [
+          0.24999999999999978,
+          0.0,
+          0.0,
+          0.0,
+          0.2499999999999997,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.863428639386825e-34,
+          0.0,
+          0.0,
+          0.0,
+          1.8634286393868243e-34,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.5243572872738927e-31,
+          0.0,
+          0.0,
+          0.0,
+          1.5243572872738922e-31,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          6.366572902357986e-66,
+          0.0,
+          0.0,
+          0.0,
+          6.366572902357984e-66
+        ]
+      ],
+      "model_time": 1.5707963267948966,
+      "numerical_residual_is_certificate": false,
+      "outcome_zero_probability": 0.49999999999999883,
+      "resources": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 95.62222639363932,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 3,
+        "native_pulses": 41,
+        "pair_code_pulses": 10,
+        "proper_code_export_events": 41,
+        "proper_code_load_events": 41,
+        "proper_code_service_events": 82,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 31,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "stage_pulses": {
+        "evolve": 38,
+        "prepare": 1,
+        "read": 2
+      },
+      "word_sha256": "21c41d4614e4a58b822a41828c7d24256d211eb02c8771530ab94e214b8cc0c7"
+    },
+    {
+      "B_coefficient": 1.0,
+      "committed_before_read": true,
+      "complete_probability_mass": 0.9999999999999984,
+      "complete_read_probabilities": [
+        0.4999999999999992,
+        0.0,
+        3.960272478202061e-31,
+        0.0,
+        0.4999999999999992,
+        0.0,
+        3.960272478202061e-31,
+        0.0
+      ],
+      "full_phase_evolution_target_residual": 8.79330833443268e-15,
+      "joint_old_occupation_then_read_code": [
+        [
+          0.24999999999999975,
+          0.0,
+          0.0,
+          0.0,
+          0.24999999999999983,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.980136239101034e-31,
+          0.0,
+          0.0,
+          0.0,
+          1.9801362391010348e-31,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.24999999999999944,
+          0.0,
+          0.0,
+          0.0,
+          0.24999999999999936,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.9801362391010273e-31,
+          0.0,
+          0.0,
+          0.0,
+          1.9801362391010264e-31,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "model_time": 1.5707963267948966,
+      "numerical_residual_is_certificate": false,
+      "outcome_zero_probability": 0.4999999999999992,
+      "resources": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 150.60009783146072,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 3,
+        "native_pulses": 41,
+        "pair_code_pulses": 10,
+        "proper_code_export_events": 41,
+        "proper_code_load_events": 41,
+        "proper_code_service_events": 82,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 31,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "stage_pulses": {
+        "evolve": 38,
+        "prepare": 1,
+        "read": 2
+      },
+      "word_sha256": "babec79b8fa24e3be488ca1990cb50743ff6472c881bffe479b688df8aa79819"
+    }
+  ],
+  "noncommuting_background_derivative_check": {
+    "background": "N+Q^4/24 with Q=(a+a_dagger)/sqrt(2), dimension 8",
+    "background_commutes_with_added_term": false,
+    "native_source_execution": false,
+    "records": [
+      {
+        "base_derivative": 0.5624999999999998,
+        "changed_derivative": 0.5624999999999998,
+        "exact_binomial_response": 0,
+        "occupation": 1,
+        "twice_derivative_difference": 0.0
+      },
+      {
+        "base_derivative": 1.1874999999999996,
+        "changed_derivative": 1.1874999999999996,
+        "exact_binomial_response": 0,
+        "occupation": 2,
+        "twice_derivative_difference": 0.0
+      },
+      {
+        "base_derivative": 1.874999999999999,
+        "changed_derivative": 1.874999999999999,
+        "exact_binomial_response": 0,
+        "occupation": 3,
+        "twice_derivative_difference": 0.0
+      },
+      {
+        "base_derivative": 2.6249999999999987,
+        "changed_derivative": 3.1249999999999982,
+        "exact_binomial_response": 1,
+        "occupation": 4,
+        "twice_derivative_difference": 0.9999999999999991
+      },
+      {
+        "base_derivative": 3.437499999999998,
+        "changed_derivative": 5.937499999999998,
+        "exact_binomial_response": 5,
+        "occupation": 5,
+        "twice_derivative_difference": 5.000000000000001
+      }
+    ]
+  },
+  "nonconstant_gap_inverse_exact": [
+    [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "-2",
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "3",
+      "-3",
+      "1",
+      "0",
+      "0"
+    ],
+    [
+      "-4",
+      "6",
+      "-4",
+      "1",
+      "0"
+    ],
+    [
+      "5",
+      "-10",
+      "10",
+      "-5",
+      "1"
+    ]
+  ],
+  "response_design": {
+    "added_occupations": [
+      4,
+      5
+    ],
+    "after": {
+      "columns": [
+        "binom(N,0)",
+        "binom(N,1)",
+        "binom(N,2)",
+        "binom(N,3)",
+        "binom(N,4)",
+        "binom(N,5)"
+      ],
+      "global_energy_gauge_column": 0,
+      "nullspace_exact": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "occupations": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "rank": 5,
+      "response_exact": [
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "2",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "3",
+          "3",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "4",
+          "6",
+          "4",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "5",
+          "10",
+          "10",
+          "5",
+          "1"
+        ]
+      ]
+    },
+    "before": {
+      "columns": [
+        "binom(N,0)",
+        "binom(N,1)",
+        "binom(N,2)",
+        "binom(N,3)",
+        "binom(N,4)",
+        "binom(N,5)"
+      ],
+      "global_energy_gauge_column": 0,
+      "nullspace_exact": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "occupations": [
+        1,
+        2,
+        3
+      ],
+      "rank": 3,
+      "response_exact": [
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "2",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "3",
+          "3",
+          "1",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    "remaining_non_gauge_directions": 0
+  },
+  "sampling_design": {
+    "assumed_probability_error": 0.0,
+    "bound_scope": "ideal or externally bounded Bernoulli probabilities; no numerical roundoff certification",
+    "decision_rule": "choose the higher-probability candidate when the sample mean exceeds 1/2",
+    "energy_difference": 1.0,
+    "fresh_independent_trials": 19,
+    "ideal_binary_tv": 0.7071067811865475,
+    "ideal_probabilities": [
+      0.14644660940672627,
+      0.8535533905932737
+    ],
+    "model_time": 1.5707963267948966,
+    "time_parameter": "supplied model coordinate",
+    "worst_case_one_hypothesis_error_upper": 0.008651695203120641
+  },
+  "sampling_with_assumed_one_percent_probability_error": {
+    "assumed_probability_error": 0.01,
+    "bound_scope": "ideal or externally bounded Bernoulli probabilities; no numerical roundoff certification",
+    "decision_rule": "choose the higher-probability candidate when the sample mean exceeds 1/2",
+    "energy_difference": 1.0,
+    "fresh_independent_trials": 20,
+    "ideal_binary_tv": 0.7071067811865475,
+    "ideal_probabilities": [
+      0.14644660940672627,
+      0.8535533905932737
+    ],
+    "model_time": 1.5707963267948966,
+    "time_parameter": "supplied model coordinate",
+    "worst_case_one_hypothesis_error_upper": 0.008904867091330102
+  },
+  "schema": "oph.identification_design.v1",
+  "scope": "component intervention design for supplied finite action candidates; no empirical observations or source-law selection",
+  "short_time_derivative_sampling_control": {
+    "failure_probability": 0.01,
+    "finite_time_bias_included": false,
+    "fresh_independent_trials": 200,
+    "model_time": 0.0078125,
+    "purpose": "rank does not itself establish finite-shot identification",
+    "time_parameter": "supplied model coordinate",
+    "twice_derivative_sampling_radius": 29.46313488641747
+  },
+  "source_controls": {
+    "H_coefficients": "(X+Z)/sqrt(2)",
+    "coefficient_field": "Q(sqrt(5)); [a,b] means a+b*sqrt(5)",
+    "coherent_code_gluing_supplied": true,
+    "coherent_proper_code_dimensions": [
+      2,
+      4
+    ],
+    "exact_base_coefficients": {
+      "I": [
+        [
+          "5/8",
+          "-1/24"
+        ],
+        [
+          "5/8",
+          "-1/24"
+        ],
+        [
+          "5/8",
+          "-1/24"
+        ],
+        [
+          "5/8",
+          "-1/24"
+        ],
+        [
+          "7/8",
+          "-1/24"
+        ],
+        [
+          "7/8",
+          "-1/24"
+        ],
+        [
+          "7/8",
+          "-1/24"
+        ],
+        [
+          "7/8",
+          "-1/24"
+        ],
+        [
+          "1/2",
+          "1/12"
+        ],
+        [
+          "1/2",
+          "1/12"
+        ],
+        [
+          "1/2",
+          "1/12"
+        ],
+        [
+          "1/2",
+          "1/12"
+        ]
+      ],
+      "J": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "X": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/4",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "-1/4"
+        ],
+        [
+          "1/4",
+          "-1/4"
+        ],
+        [
+          "-1/4",
+          "1/4"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "Y": [
+        [
+          "0",
+          "-1/10"
+        ],
+        [
+          "0",
+          "1/10"
+        ],
+        [
+          "0",
+          "-1/10"
+        ],
+        [
+          "0",
+          "1/10"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/4",
+          "1/20"
+        ],
+        [
+          "-1/4",
+          "1/20"
+        ],
+        [
+          "1/4",
+          "-1/20"
+        ],
+        [
+          "1/4",
+          "-1/20"
+        ]
+      ],
+      "Z": [
+        [
+          "-3/8",
+          "1/8"
+        ],
+        [
+          "-3/8",
+          "1/8"
+        ],
+        [
+          "-3/8",
+          "1/8"
+        ],
+        [
+          "-3/8",
+          "1/8"
+        ],
+        [
+          "1/8",
+          "-1/8"
+        ],
+        [
+          "1/8",
+          "-1/8"
+        ],
+        [
+          "1/8",
+          "-1/8"
+        ],
+        [
+          "1/8",
+          "-1/8"
+        ],
+        [
+          "1/4",
+          "0"
+        ],
+        [
+          "1/4",
+          "0"
+        ],
+        [
+          "1/4",
+          "0"
+        ],
+        [
+          "1/4",
+          "0"
+        ]
+      ]
+    },
+    "exact_control_rows_checked": 10,
+    "full_algebra_transfer_has_retained_failure_outcome": true,
+    "maximum_base_coefficient": 1.0,
+    "native_generator_antihermitian_residual": 0.0,
+    "source_generators": 12,
+    "source_sha256": {
+      "code/m1_source_realization/receipt.json": "8696c4e4b5fe5f0abff2307d3a1c6bd5b1adaf5d6a9057b06adef3228a690ba0",
+      "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053"
+    }
+  },
+  "spatial_metric_selection": "unchanged; the planar cube counterexample remains",
+  "supplied": [
+    "eight-level code and coherent preparation/read services",
+    "known action background and binomial correction family through order five",
+    "calibrated model-coordinate duration",
+    "candidate pair c4=0 versus c4=1 for the locked finite-time witness",
+    "independent fresh trials for the sampling theorem"
+  ]
+}

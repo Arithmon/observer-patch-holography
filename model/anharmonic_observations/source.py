@@ -73,8 +73,13 @@ def spin_rotation(axis, angle):
 
 @lru_cache(maxsize=8)
 def _controlled_parity(dimension):
+    # Occupation parity is the least significant oscillator bit. Retain the
+    # full scalar phase: the native J(-pi) realizes minus controlled Z.
+    dimension = native._dimension(dimension)
+    spin_bit = dimension.bit_length()-1
     phases = np.r_[np.zeros(dimension), math.pi*(np.arange(dimension) % 2)]
-    word = c.compile_diagonal(phases)
+    word = [c.pulse('J', -math.pi, [spin_bit, 0]),
+            c.pulse('I', math.pi, [0])]
     return native._contract(word, dimension.bit_length(), np.diag(np.exp(1j*phases)),
                             name='spin_controlled_oscillator_parity')
 
@@ -146,6 +151,16 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
     change_limit = 2e-10
     if not math.isfinite(change) or change > change_limit:
         raise ArithmeticError('source pulse inverse-word representation change exceeds its fixed guard')
+    # Identity-plus-increment arithmetic removes duration-independent inverse
+    # drift, but independently contracted inverse matrices need not be exact
+    # adjoints. Restore the ideal pulse's unitary representation with the same
+    # fixed polar guard used for every native word. The raw source contraction
+    # and cancellation change have already passed their independent guards;
+    # neither a target matrix nor an evolved state enters this correction.
+    matrix, stabilization = c.stabilize_executed_unitary(matrix)
+    complete_change = float(np.linalg.norm(matrix-raw, 2))
+    if not math.isfinite(complete_change) or complete_change > change_limit:
+        raise ArithmeticError('source pulse complete representation change exceeds its fixed guard')
     residual = float(np.linalg.norm(matrix-target, 2))
     if not math.isfinite(residual) or residual > 3e-10:
         raise ArithmeticError('source pulse failed its complete finite Hamiltonian check')
@@ -158,10 +173,12 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
                     'resources': _counts(stages), 'stages': deepcopy(stages),
                     'full_phase_target_residual': residual,
                     'inverse_word_cancellation': {
-                        'method': 'identity plus executed conjugation increments for ideal inverse source words',
+                        'method': 'identity plus executed conjugation increments, then guarded polar representation',
                         'raw_full_phase_target_residual': raw_residual,
                         'representation_change': change,
                         'representation_change_limit': change_limit,
+                        'complete_representation_change': complete_change,
+                        'post_cancellation_unitary_stabilization': stabilization,
                         'represented_unitarity_defect': defect,
                         'literal_parity_square_retained': True,
                         'all_original_source_stages_and_resources_retained': True,

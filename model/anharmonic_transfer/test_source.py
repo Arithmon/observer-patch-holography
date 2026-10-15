@@ -61,6 +61,18 @@ def test_finite_gap_is_full_spin_and_number_exponential(dimension, angle):
     assert all(stage['word_sha256'] for stage in meta['stages'])
 
 
+@pytest.mark.parametrize('dimension', [2, 8, 32, 64])
+def test_number_gap_uses_one_phase_per_bit_and_retains_global_phase(dimension):
+    actual, meta = s.spin_gap(dimension, -.3, DELTA, CARRIER)
+    duration = .3/CARRIER
+    spin = expm(.15j*np.array([[0., 1.], [1., 0.]]))
+    expected = np.kron(spin, np.diag(np.exp(-1j*DELTA*duration*np.arange(dimension))))
+    assert np.linalg.norm(actual-expected, 2) < 2e-13
+    number_meta = meta['stages'][1]
+    assert number_meta['resources']['native_pulses'] == dimension.bit_length()
+    assert number_meta['resources']['pair_code_pulses'] == 0
+
+
 @pytest.mark.parametrize('finite', [False, True])
 def test_complete_native_history_matches_independent_unsplit_master_equation(finite):
     result = s.run(4, .7, .1, [0, 1, 3], SETTINGS, phi=.2,

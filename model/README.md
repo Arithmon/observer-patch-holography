@@ -11,6 +11,14 @@ concrete theorem mappings. It identifies which further measurements and
 bounds would strengthen physical recovery, alongside exact compilation
 simplifications. Existing prediction receipts remain preserved.
 
+The [implemented follow-up](IMPROVEMENTS_20261015.md) connects continuing
+mixed-state observer histories to a supplied finite environment, adds an
+[occupation-control calculation](occupation_control/README.md), and executes
+[interventions that expose calibration blind directions](identification_design/README.md).
+It also shortens native parity/number-phase words and shares compilation
+caches between complete empirical replays. Supplied laws and physical
+source-selection obligations remain explicit.
+
 The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
 selection work on the carrier architecture, observer interface and its
 implementation, and complete repair rule. Observable effective physics must
