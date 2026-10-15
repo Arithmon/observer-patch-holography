@@ -14,8 +14,10 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/observer/scalar_response", "model/observer/source_scalar",
            "model/predictions", "model/observer/source_discrimination",
            "model/common_source", "model/spatial_interaction", "model/relativistic_scalar",
-           "model/scalar_observations", "model/observer_reconstruction")
+           "model/scalar_observations", "model/observer_reconstruction",
+           "model/interacting_reconstruction")
 REPLAYS = (
+    ("model.interacting_reconstruction", None, "model/interacting_reconstruction/results.json"),
     ("model.observer_reconstruction", None, "model/observer_reconstruction/results.json"),
     ("model.scalar_observations", None, "model/scalar_observations/results.json"),
     ("model.scalar_observations.occupation", None, "model/scalar_observations/occupation_results.json"),

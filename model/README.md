@@ -92,6 +92,17 @@ Gram. The two geometries are not yet identified, and the field action,
 vacuum, coherent services and clock calibration remain supplied. This is
 finite operational identification, not an interacting spacetime limit.
 
+The [interacting reconstruction](interacting_reconstruction/README.md) extends
+that record-only approach to a local quartic action. Executed isolated probes
+identify the interaction coefficient and all pair couplings; the recovered
+action then predicts complete coupled two-read histories, including disturbance
+and feedback, at two occupation cutoffs. A matched quartic-deletion control
+disagrees beyond the finite prediction budget. The inference uses supplied
+isolation controls, oscillator basis, action family and calibrated clock;
+it does not derive that family from native agreement or establish an
+interacting relativistic continuum. Its occupation and sampling limits are
+reported separately from the finite prediction agreement.
+
 The [spatial interacting family](spatial_interaction/README.md) executes a
 repulsive Bose field over 27, 125 and 343 sites with the same source controls,
 complete retained measurements and feedback. Exact bounds control its
