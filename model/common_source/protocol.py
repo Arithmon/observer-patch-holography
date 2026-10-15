@@ -141,6 +141,24 @@ class Program:
                 'clock': 'model durations; fixed Gibbs reference gives t=-beta*s on unitary segments'}
 
 
+def validate_program(program):
+    """Revalidate and detach the complete canonical program before execution.
+
+    Frozen dataclasses still expose mutable backing dictionaries. Rebuilding
+    every operation checks its own contract before Program checks scheduling,
+    and reconstructs Fraction fields instead of retaining caller-owned values.
+    The tuple and operation budgets are checked before traversing its entries.
+    """
+    if type(program) is not Program:
+        raise ValueError('a typed canonical Program required')
+    operations = program.operations
+    if type(operations) is not tuple or len(operations) > MAX_OPERATIONS:
+        raise ValueError('a bounded immutable tuple of program operations required')
+    if any(type(operation) is not Operation for operation in operations):
+        raise ValueError('every program entry must be a canonical Operation')
+    return replace(program, operations=tuple(replace(operation) for operation in operations))
+
+
 def smooth_program(dimension=2, steps=64, *, native_current=0, feedback=True, coupling=F(1, 4)):
     """The existing smooth history as an explicit composable program."""
     return Program(dimension, steps, coupling, native_current, (
@@ -267,9 +285,11 @@ def validate_checkpoint(program, checkpoint, backend='source'):
     This detects accidental or malicious edits to the saved envelope. It is
     not authentication against an actor who also recomputes its public digest.
     """
-    if type(program) is not Program or type(checkpoint) is not History:
+    if type(checkpoint) is not History:
         raise ValueError('a typed program and complete History checkpoint required')
-    if backend not in BACKENDS or checkpoint.backend != backend or checkpoint.program != program:
+    program = validate_program(program)
+    saved_program = validate_program(checkpoint.program)
+    if backend not in BACKENDS or checkpoint.backend != backend or saved_program != program:
         raise ValueError('checkpoint belongs to a different program or backend')
     if type(checkpoint.cursor) is not int or not 0 <= checkpoint.cursor <= len(program.operations):
         raise ValueError('checkpoint cursor is not an admitted program prefix')
@@ -297,7 +317,9 @@ def validate_checkpoint(program, checkpoint, backend='source'):
             or checkpoint.completeness_error > TOLERANCE
             or abs(checkpoint.probability_mass-1) > TOLERANCE):
         raise ValueError('checkpoint is not a complete normalized recorded instrument')
-    return checkpoint
+    # The resumed/exported envelope must not share its program with the
+    # caller's checkpoint, even when no further operation will execute.
+    return replace(checkpoint, program=program)
 
 
 def _original_scalars(value):
@@ -410,7 +432,8 @@ def execute(program, *, backend='source', initial=None, stop_after=None,
     default preparation is counted once, before that instrument. All outcomes,
     including exact zero vectors, remain in lexical record order.
     """
-    if type(program) is not Program or type(backend) is not str or backend not in BACKENDS:
+    program = validate_program(program)
+    if type(backend) is not str or backend not in BACKENDS:
         raise ValueError('a typed program and declared execution backend required')
     if type(max_branches) is not int or not 1 <= max_branches <= 2**MAX_READS:
         raise ValueError('an integer branch allocation budget from 1 through 256 required')
@@ -478,6 +501,7 @@ def prefix_effects(history, length):
 
 def execution_prefixes(program, *, backend='source', initial=None):
     """Execute once while retaining each operation checkpoint for stage audits."""
+    program = validate_program(program)
     history = execute(program, backend=backend, initial=initial, stop_after=0)
     prefixes = [history]
     for cursor in range(1, len(program.operations)+1):
@@ -512,7 +536,7 @@ def _encoded_array(array):
 
 def checkpoint_to_json(history):
     """Canonical simulator checkpoint; no physical quantum transfer is implied."""
-    validate_checkpoint(history.program, history, history.backend)
+    history = validate_checkpoint(history.program, history, history.backend)
     payload = {'schema': 'oph.common_source.checkpoint.v1',
                'program': history.program.specification(), 'backend': history.backend,
                'cursor': history.cursor, 'preparation_mode': history.preparation_mode,
@@ -571,7 +595,8 @@ def checkpoint_from_json(program, payload, *, backend='source'):
     simulator data, not independent experimental provenance or a proof that a
     source device executed it. Mathematical composition is checked separately.
     """
-    if type(program) is not Program or type(payload) is not str:
+    program = validate_program(program)
+    if type(payload) is not str:
         raise ValueError('a typed program and JSON text are required')
     if len(payload) > MAX_CHECKPOINT_BYTES or len(payload.encode()) > MAX_CHECKPOINT_BYTES:
         raise ValueError('checkpoint exceeds the explicit serialization byte budget')
@@ -634,7 +659,7 @@ def checkpoint_from_json(program, payload, *, backend='source'):
                       _decode_cost(value['preparation_resources']),
                       _decode_cost(value['expanded_tree_resources']), tuple(stage_rows),
                       value['preparation_mode'], value['seal'])
-    validate_checkpoint(program, history, backend)
+    history = validate_checkpoint(program, history, backend)
     # Imported JSON is a trust boundary: replay its declared prefix so a
     # consistently forged state/Kraus pair with a recomputed public digest is
     # not accepted as a checkpoint of that program. In-memory resumption keeps
