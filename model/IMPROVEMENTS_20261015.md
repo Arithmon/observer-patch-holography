@@ -60,24 +60,24 @@ probes cannot distinguish those alternatives.
 
 ## Shorter words and stable repeated execution
 
-Production now uses exact finite-code identities: controlled occupation
+Production uses exact finite-code identities: controlled occupation
 parity takes two native pulses including its scalar phase; number drift takes
 one scalar pulse plus one Z pulse per bit. At dimension 64 these replace
 2,054- and 838-pulse generic words with 2 and 7 pulses. They do not use
 unrestricted oscillator commutators at the cutoff. Live word hashes and
-resource receipts are regenerated. Dense basis words still dominate cold
+resource receipts are regenerated. Dense basis words dominate cold
 compilation.
 
 Inverse-word arithmetic left small nonunitarity that accumulated until
 Windows CI rejected a complete detector law. The final ideal pulse matrix
-now receives the fixed-guard polar representation already used by the native
+receives the fixed-guard polar representation used by the native
 library. Raw, increment and corrected target checks remain mandatory, with
 a bound on the total representation change. No state or observation enters
 this correction; the evolving density matrix is not renormalized. Correction
 norms remain numerical diagnostics rather than hardware-error bounds.
 
 The repository verifier executes both empirical canonical CLIs in one child
-process, sharing parameter-keyed source compilation caches. Both still run
+process, sharing parameter-keyed source compilation caches. Both run
 their complete predictions, scores and checks. Every declared receipt remains
 in the inventory, and failure stops execution. Predictions, fitted parameters
 and trajectory states are not reused.
@@ -85,7 +85,7 @@ and trajectory states are not reused.
 ## Remaining attachments
 
 The published measurement normalization and full laboratory timing remain
-unauthenticated. The [paper](https://arxiv.org/abs/2603.04744) still lists only
+unauthenticated. The [paper](https://arxiv.org/abs/2603.04744) lists only
 its original version. Missing raw counts are not inferred and no rescaling
 is selected from residuals. Keep the audit's stronger effective-Hamiltonian
 comparator in future empirical protocol designs.
@@ -93,7 +93,7 @@ comparator in future empirical protocol designs.
 For fixed-band scalar exploration, the existing exact-gradient endpoint is
 `GalerkinParameters(grid=None)`. Larger quadrature grids add no field modes.
 Useful spatial extension needs more modes, matched observation maps and
-controlled omitted-mode effects. The planar cube-graph control still excludes
+controlled omitted-mode effects. The planar cube-graph control excludes
 an inference of physical dimension from adjacency alone.
 
 The new design tool selects informative tests within candidate families.
