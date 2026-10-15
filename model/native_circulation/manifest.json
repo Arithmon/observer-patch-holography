@@ -1,0 +1,16 @@
+{
+  "description": "Exact one-history native circulation and its conditional martingale Gaussian limit.",
+  "files": {
+    "README.md": "76ec1328ae7e5eaabf90729da337e9936877e981b6ccfecf7a30e461374abf61",
+    "__init__.py": "f202d73c2d0428ff7e8d18c2957999d3de107e0c6fea9157b28ad335177a26e1",
+    "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "construction.py": "45df2c535e914f84587de21d78711d4c98e9ae8562361d1141cb155037b4e008",
+    "results.json": "91e8796af657f06434cf209dff1ed80af0a72bd8195aad27b52a724cca074c02",
+    "test_construction.py": "81f7860fd9cdf639ec10df93aaba0ac219c7b2552308750bd30f7d6c8c811f7d"
+  },
+  "reproduce": [
+    "python -m model.native_circulation --check model/native_circulation/results.json",
+    "python -m pytest -q -W error model/native_circulation"
+  ],
+  "schema": "oph.native_circulation.manifest.v1"
+}

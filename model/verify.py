@@ -23,8 +23,12 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/identification_design", "model/primitive_observer",
            "model/native_quantum_history", "model/native_clock",
            "model/native_fluctuations", "model/empirical_diagnostics",
-           "model/native_relational_readout")
+           "model/native_relational_readout", "model/native_circulation",
+           "model/native_interface", "model/measurement_bounds")
 REPLAYS = (
+    ("model.native_circulation", None, "model/native_circulation/results.json"),
+    ("model.native_interface", None, "model/native_interface/results.json"),
+    ("model.measurement_bounds", None, "model/measurement_bounds/results.json"),
     ("model.native_relational_readout", None, "model/native_relational_readout/results.json"),
     ("model.native_quantum_history", None, "model/native_quantum_history/results.json"),
     ("model.native_clock", None, "model/native_clock/results.json"),
@@ -80,6 +84,51 @@ REPLAYS = (
 )
 
 
+def replay_groups(replays=None):
+    """Partition the declaration without splitting the empirical cache worker."""
+    replays = REPLAYS if replays is None else tuple(replays)
+    if len(set(replays)) != len(replays):
+        raise ValueError("Replay declarations must be unique")
+    groups, index, empirical_groups = [], 0, 0
+    while index < len(replays):
+        if replays[index:index+len(EMPIRICAL_REPLAYS)] == EMPIRICAL_REPLAYS:
+            groups.append(EMPIRICAL_REPLAYS)
+            empirical_groups += 1
+            index += len(EMPIRICAL_REPLAYS)
+        else:
+            if replays[index] in EMPIRICAL_REPLAYS:
+                raise ValueError("Empirical replays must remain contiguous and in their canonical order")
+            groups.append((replays[index],))
+            index += 1
+    if empirical_groups != 1:
+        raise ValueError("Exactly one complete empirical replay group is required")
+    return tuple(groups)
+
+
+def selected_replay_groups(shard_index=None, shard_count=None, *, replays=None):
+    """Keep the default order; isolate expensive shared-cache work when sharded.
+
+    Shard zero owns the empirical group. Other groups retain declaration order
+    and are distributed round-robin over the remaining shards. This prevents
+    another costly certificate from joining the dominant empirical worker.
+    Every new declared replay is included automatically.
+    """
+    groups = replay_groups(replays)
+    if shard_index is None and shard_count is None:
+        return groups
+    if (type(shard_index) is not int or type(shard_count) is not int
+            or not 1 <= shard_count <= len(groups)
+            or not 0 <= shard_index < shard_count):
+        raise ValueError(f"Supply both shard arguments: 1 <= count <= {len(groups)}, 0 <= index < count")
+    if shard_count == 1:
+        return groups
+    if shard_index == 0:
+        return (EMPIRICAL_REPLAYS,)
+    remaining = tuple(group for group in groups if group != EMPIRICAL_REPLAYS)
+    return tuple(group for index, group in enumerate(remaining)
+                 if index % (shard_count-1) == shard_index-1)
+
+
 def verify_artifacts():
     covered = set()
     for name in PACKETS:
@@ -109,7 +158,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--hashes-only", action="store_true",
                         help="check artifact integrity without recalculation")
+    parser.add_argument("--shard-index", type=int,
+                        help="zero-based replay shard; requires --shard-count")
+    parser.add_argument("--shard-count", type=int,
+                        help="number of replay shards; every shard checks all artifact hashes")
     args = parser.parse_args()
+    try:
+        groups = selected_replay_groups(args.shard_index, args.shard_count)
+    except ValueError as error:
+        parser.error(str(error))
     count = verify_artifacts()
     print(f"Verified {count} model artifacts", flush=True)
     if args.hashes_only:
@@ -117,24 +174,29 @@ def main():
     environment = dict(os.environ)
     environment.setdefault("OPENBLAS_NUM_THREADS", "1")
     environment.setdefault("OMP_NUM_THREADS", "1")
-    index = 0
-    while index < len(REPLAYS):
-        if REPLAYS[index:index+len(EMPIRICAL_REPLAYS)] == EMPIRICAL_REPLAYS:
+    selected_count = sum(map(len, groups))
+    if args.shard_count is not None:
+        print(f"Replaying shard {args.shard_index+1}/{args.shard_count}: "
+              f"{selected_count} receipts", flush=True)
+    for group in groups:
+        if group == EMPIRICAL_REPLAYS:
             # Keep every canonical check, sharing only the expensive source
             # compilation caches in this one child. Failures still propagate.
             subprocess.run([sys.executable, "-m", "model.replay_empirical"],
                            cwd=ROOT, env=environment, check=True)
-            index += len(EMPIRICAL_REPLAYS)
             continue
-        module, command, receipt = REPLAYS[index]
+        (module, command, receipt), = group
         argv = [sys.executable, "-m", module]
         if command is not None:
             argv.append(command)
         argv.extend(["--check", receipt])
         print(f"Replaying {receipt}", flush=True)
         subprocess.run(argv, cwd=ROOT, env=environment, check=True)
-        index += 1
-    print(f"All {len(REPLAYS)} model receipts reproduced", flush=True)
+    if args.shard_count is None:
+        print(f"All {selected_count} model receipts reproduced", flush=True)
+    else:
+        print(f"All {selected_count} receipts in shard {args.shard_index+1}/{args.shard_count} reproduced",
+              flush=True)
 
 
 if __name__ == "__main__":

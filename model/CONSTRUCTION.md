@@ -94,6 +94,14 @@ refinement. The [additional laboratory probes](empirical_diagnostics/README.md)
 test preparation/readout ambiguities with controlled occupation errors, while
 their new observations and the physical calibration remain outstanding.
 
+The [one-history circulation](native_circulation/README.md) derives an
+additional Gaussian count limit without a product of independent observers.
+The [native interface](native_interface/README.md) reduces the earlier phase
+apparatus to a shared mixer plus native herald/readout records and exposes
+its reachability boundary. The [measurement bounds](measurement_bounds/README.md)
+constrain repeated readouts independently of a Gaussian preparation, while
+retaining calibration, finite-operation and sampling obligations.
+
 The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
 finite source environment operations to the existing continuing observer
 and corrected native memory. It executes all visible and raw native records,

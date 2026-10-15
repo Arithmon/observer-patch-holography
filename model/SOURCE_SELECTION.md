@@ -147,6 +147,34 @@ Gaussian-family inverse has a phase branch and an unresolved probe-scale
 freedom. These are new tests of supplied preparation and detector premises;
 their outcomes remain unavailable, and the old trajectory score is unchanged.
 
+The [single-history circulation construction](native_circulation/README.md)
+removes independent replication for a different observable. Projecting actual
+seam currents onto the graph cycle space gives bounded martingale differences
+with covariance `(I-B^T L^+ B)/198`. Finite-chain ergodicity supplies the
+single-history Gaussian limit under the stated stationary law and uniform
+scheduler. Triangular current counts have exact variance `N/66`; their complete
+finite laws retain non-Gaussian corrections. The associated finite-partition
+increment action is derived in rescaled native-attempt units. It supplies no
+spatial refinement or physical duration.
+
+The [native interface reduction](native_interface/README.md) obtains the earlier
+phase preparation and detector effects from actual coin/current records once
+one shared balanced mixer is admitted. Both moving-current heralds can be used
+with sign-aware classical decoding, with total useful probability `5/33`.
+The native partial-injection grammar preserves diagonal states under every
+finite classical feedback history, establishing an explicit obstruction to
+constructing that mixer within the stated grammar. Matching phase outcome
+probabilities does not identify the detector's retained quantum output with
+the earlier square-root instrument.
+
+The [state-independent measurement bound](measurement_bounds/README.md)
+replaces a preparation-family identity with a necessary positive-state moment
+inequality. It includes outward corrections for the actual compiled detector
+operators and separate null/phase-reversal controls for a stationary classical
+bit channel. Its joint interface premises and sampling errors are explicit;
+passing the test neither selects a physical action nor resolves the absolute
+probe-coordinate scale.
+
 ## The native selection tests
 
 The [coherent continuation](observer/COHERENT_CONTINUATION.md) fixes a

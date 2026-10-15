@@ -51,14 +51,16 @@ permissions:
 
 jobs:
   observer:
-    name: Observer construction (${{ matrix.os }})
+    name: Observer construction (${{ matrix.os }}, shard ${{ matrix.shard }})
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
+        shard: [0, 1, 2]
     runs-on: ${{ matrix.os }}
-    # Keep complete receipt replay independent of the regression job so
-    # each platform exercises both without serial compilation delays.
+    # All shards check every artifact hash. The empirical shared-cache worker
+    # stays atomic on shard zero; the other receipts are split across 1 and 2.
+    # Regression remains complete and independent on each platform.
     timeout-minutes: 90
     env:
       OPENBLAS_NUM_THREADS: '1'
@@ -71,8 +73,9 @@ jobs:
           cache: pip
           cache-dependency-path: model/requirements.txt
       - run: python -m pip install -r model/requirements.txt
-      - run: python -m model.verify
-      - run: python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
+      - run: python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 3
+      - if: matrix.shard == 1
+        run: python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
   regression:
     name: Observer regression (${{ matrix.os }})
     strategy:
