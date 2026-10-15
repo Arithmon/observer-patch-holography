@@ -113,8 +113,19 @@ def _source(law):
 
 
 def source(law):
-    """Actual signed Kraus groups; validate the original label before caching."""
-    return _source(quantum.candidate(law))
+    """Detach actual signed Kraus groups after validating the original label.
+
+    Frozen dataclass envelopes still expose a mutable __dict__, and a
+    read-only ndarray still has mutable shape metadata. Reconstruct the
+    instrument through the existing validator, which takes fresh immutable
+    byte-backed matrix snapshots. Callers never receive a cached envelope
+    or ndarray object; the exact integer tuples can safely remain shared.
+    """
+    cached = _source(quantum.candidate(law))
+    instrument = runtime.Instrument(kraus=cached.instrument.kraus,
+        visible=cached.instrument.visible, resources=cached.instrument.resources,
+        binding=cached.instrument.binding)
+    return SignedSource(cached.law, cached.no_current_counts, cached.moving_maps, instrument)
 
 
 def records(count):

@@ -1,6 +1,7 @@
 """Native clock source execution, exact stopped laws and adverse controls."""
 from fractions import Fraction as F
 from itertools import product
+import warnings
 
 import mpmath
 import numpy as np
@@ -271,3 +272,41 @@ def test_fresh_exact_outputs_cannot_poison_later_targets():
     states = clock.exact_outputs('C', 1)
     states[1, -1].clear()
     assert clock.exact_outputs('C', 1)[1, -1]
+
+
+@pytest.mark.parametrize('law', ('C', 'E'))
+def test_source_envelopes_and_array_metadata_cannot_poison_cached_execution(law):
+    original = clock.source(law)
+    specification = original.instrument.specification()
+    exact = clock.exact_outputs(law, 1)
+    executed = clock.execute_native(law, 1)
+    instrument = original.instrument
+    matrix = instrument.kraus[0][0]
+    assert not matrix.flags.writeable
+    with pytest.raises(ValueError):
+        matrix.flags.writeable = True
+    try:
+        # These bypass frozen-dataclass assignment protection. Read-only
+        # ndarray data also does not protect the ndarray's own shape field.
+        original.__dict__.update(law='wrong', no_current_counts=(), moving_maps=(), instrument=None)
+        instrument.__dict__.update(kraus=(), visible=False, resources=(), binding='{}')
+        # NumPy 2.5 deprecates direct shape assignment, but it still mutates
+        # the returned array envelope and exercises this cache boundary.
+        with warnings.catch_warnings():
+            warnings.filterwarnings('ignore', message='Setting the shape on a NumPy array',
+                                    category=DeprecationWarning)
+            matrix.shape = (matrix.size,)
+        fresh = clock.source(law)
+        assert fresh is not original and fresh.instrument is not instrument
+        assert fresh.instrument.kraus[0][0] is not matrix
+        assert fresh.instrument.specification() == specification
+        assert fresh.law == law
+        assert fresh.instrument.kraus[0][0].shape == (66, 66)
+        assert not fresh.instrument.kraus[0][0].flags.writeable
+        assert clock.exact_outputs(law, 1) == exact
+        for record, density in clock.execute_native(law, 1).items():
+            np.testing.assert_array_equal(density, executed[record])
+    finally:
+        # Keep the regression isolated when replayed against the old buggy
+        # source accessor: its deliberately poisoned cache must not survive.
+        clock._source.cache_clear()
