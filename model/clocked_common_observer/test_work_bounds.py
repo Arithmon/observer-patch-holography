@@ -101,6 +101,30 @@ def test_integer_lanes_preserve_uint64_and_do_not_share_cached_mutable_arrays():
     assert again[0][0, 0] == 2**63+1 and not np.any(again[1])
 
 
+def test_exact_work_boundaries_reject_subclass_that_forges_snapshot_bytes():
+    class HiddenBytes(np.ndarray):
+        def tobytes(self, *args, **kwargs):
+            return bytes(self.nbytes)
+
+    actual = np.eye(16)
+    hidden = actual.view(HiddenBytes)
+    assert w.nuclear_upper(actual) == 16
+    calls = (
+        lambda: w.exact_matrix(hidden),
+        lambda: w.nuclear_upper(hidden),
+        lambda: w.certify_preparation(hidden),
+        lambda: w.exact_product_residual(hidden, actual, actual),
+        lambda: w.exact_product_residual(actual, hidden, actual),
+        lambda: w.exact_product_residual(actual, actual, hidden),
+        lambda: w.exact_density_residual(hidden, (actual,), actual),
+        lambda: w.exact_density_residual(actual, (hidden,), actual),
+        lambda: w.exact_density_residual(actual, (actual,), hidden),
+    )
+    for call in calls:
+        with pytest.raises(ValueError):
+            call()
+
+
 def test_exact_product_residual_includes_imaginary_and_underflow_errors():
     left = np.eye(16, dtype=complex)*(1+1j)/4
     right = np.eye(16, dtype=complex)*(1-1j)/8

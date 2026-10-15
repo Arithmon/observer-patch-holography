@@ -18,6 +18,8 @@ from dataclasses import dataclass
 from fractions import Fraction as F
 from functools import lru_cache
 
+import numpy as np
+
 from ..common_source import exact_output as exact
 from ..native_relational_readout import construction as relational
 from ..native_quantum_history import construction as quantum
@@ -52,6 +54,18 @@ def _activity(value):
 
 def _contract(law, count, sign, activity):
     return quantum.candidate(law), _horizon(count), _phase(sign), _activity(activity)
+
+
+def _array(value, shape):
+    """Snapshot original base arrays before any subclass method dispatch.
+
+    A subclass can override copy, nonzero or tobytes and thereby conceal
+    original entries from an exact comparison. Reject it before the shared
+    dtype/domain validator or any array operation inspects supplied data.
+    """
+    if type(value) is not np.ndarray:
+        raise ValueError('an original base numeric ndarray is required')
+    return exact._array(value, shape)
 
 
 @dataclass(frozen=True)
@@ -255,7 +269,7 @@ def compare_outputs(law, count, arrays, *, sign=1, activity=F(1)):
         raise ValueError('every complete native first-event and timeout original array is required')
     targets, results = exact_outputs(law, count, sign=sign, activity=activity), {}
     for record in menu:
-        array = exact._array(arrays[record], (66, 66))
+        array = _array(arrays[record], (66, 66))
         target, squared = targets[record], F(0)
         # Structural zeros contribute exactly zero, not a numerical cutoff.
         # The union includes every original nonzero, including leakage into

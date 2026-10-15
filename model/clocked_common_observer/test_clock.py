@@ -274,6 +274,45 @@ def test_fresh_exact_outputs_cannot_poison_later_targets():
     assert clock.exact_outputs('C', 1)[1, -1]
 
 
+def test_native_bound_rejects_subclass_that_conceals_original_off_support_entry():
+    class HiddenSupport(np.ndarray):
+        def nonzero(self):
+            return np.array([], dtype=int), np.array([], dtype=int)
+
+    original = clock.execute_native('C', 1)
+    record = (1, -1)
+    target = clock.exact_outputs('C', 1)[record]
+    index = next((i, j) for i in range(66) for j in range(66)
+                 if i != j and (i, j) not in target and original[record][i, j] == 0)
+    changed = original[record].copy()
+    changed[index] = 1
+    # A rank-one error of magnitude one has half nuclear norm 1/2.
+    # A false nonzero() result must never hide its entire contribution.
+    assert np.linalg.svd(changed-original[record], compute_uv=False).sum()/2 == .5
+    checked = clock.compare_outputs('C', 1, {**original, record: changed})
+    assert checked['distance_upper'] >= F(1, 2)
+    with pytest.raises(ValueError):
+        clock.compare_outputs('C', 1, {**original, record: changed.view(HiddenSupport)})
+
+
+@pytest.mark.parametrize('dtype', ('<i8', '>u8', '<f2', '>f4', '<f8', '>c8', '<c16'))
+def test_base_array_snapshot_preserves_dtype_entries_and_strided_storage(dtype):
+    original = np.zeros((132, 132), dtype=dtype)[::2, ::2]
+    original[1, 2] = 1
+    if original.dtype.kind == 'u':
+        original[3, 4] = 2**63+1
+    if original.dtype.kind == 'c':
+        original[3, 4] = 1j/8
+    if original.dtype.kind == 'f':
+        original[3, 4] = np.nextafter(original.dtype.type(0), original.dtype.type(1))
+    snapshot = clock._array(original, (66, 66))
+    assert type(snapshot) is np.ndarray and snapshot.dtype == original.dtype
+    np.testing.assert_array_equal(snapshot, original)
+    assert clock.exact._component(snapshot[3, 4]) == clock.exact._component(original[3, 4])
+    original[1, 2] = 2
+    assert snapshot[1, 2] == 1
+
+
 @pytest.mark.parametrize('law', ('C', 'E'))
 def test_source_envelopes_and_array_metadata_cannot_poison_cached_execution(law):
     original = clock.source(law)

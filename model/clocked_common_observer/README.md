@@ -96,6 +96,8 @@ initial work/reference state throughout. Output iterators snapshot their
 factors before returning. In-process integrity seals do not authenticate
 an entirely fabricated and resealed history; the shared runtime's importer
 replays saved untrusted checkpoints before accepting them.
+Certificate inputs must use base NumPy arrays; array subclasses are refused
+before their methods can alter support, entries or numeric diagnostics.
 
 The native Kraus families are the existing partial injections, split by the
 actual signed current. Their effects sum to the identity on all 66 native
@@ -244,7 +246,9 @@ does not supply.
 
 An independent identity idle, with probability `1-q` in each native slot,
 replaces `T_0` by `(1-q)Id+q*T_0` and `T_j` by `q*T_j`. For the native register
-alone, its unlimited first-current instrument is invariant under this change.
+alone, its unlimited first-current instrument is invariant under this change
+after forgetting the stopping-slot record and retaining the sign and native
+state. The full slot-labelled native instrument changes with `q`.
 Here work still advances by `A_num` in every slot, with exact target `U`.
 Its stopping-time state
 therefore generally changes. The joint observer cannot inherit the

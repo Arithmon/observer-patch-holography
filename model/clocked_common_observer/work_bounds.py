@@ -20,6 +20,7 @@ import numpy as np
 from ..common_source import exact_output as exact
 from ..common_source import infinite_history as ih, protocol, smooth_history as sh
 from ..primitive_observer import common, runtime
+from . import clock
 
 
 DIMENSION = 16
@@ -32,7 +33,7 @@ SOURCE_PATHS = (
 
 
 def _matrix(array):
-    return exact._array(array, (DIMENSION, DIMENSION))
+    return clock._array(array, (DIMENSION, DIMENSION))
 
 
 @lru_cache(maxsize=128)

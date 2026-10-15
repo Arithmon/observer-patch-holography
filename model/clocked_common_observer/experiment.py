@@ -35,6 +35,11 @@ def up(value):
 
 
 def trace(array):
+    """Exact trace of the original entries of a finite base square array."""
+    if (type(array) is not np.ndarray or array.ndim != 2
+            or array.shape[0] != array.shape[1]):
+        raise ValueError('an original base square numeric ndarray is required')
+    array = clock._array(array, array.shape)
     parts = [exact_output._component(x) for x in np.diag(array)]
     return sum((r for r, _ in parts), F(0)), sum((i for _, i in parts), F(0))
 
@@ -141,7 +146,7 @@ def exact_observations(work, native, *, cap, reset=None):
                    or any(type(v) is not int for v in record) for record in native)
             or set(native) != set(clock.records(cap))):
         raise ValueError('a complete executed native/work cap is required')
-    native = {key: exact_output._array(value, (66, 66)) for key, value in native.items()}
+    native = {key: clock._array(value, (66, 66)) for key, value in native.items()}
     if reset is not None:
         if (type(reset) is not dict or set(reset) != {-1, 1}
                 or any(type(j) is not int for j in reset)):

@@ -16,7 +16,7 @@ import math
 import numpy as np
 
 from tools import strict_json
-from ..common_source import exact_output, protocol
+from ..common_source import protocol
 from ..primitive_observer import common, runtime
 from . import clock
 
@@ -188,7 +188,7 @@ def output_rows(work, native_outputs, *, cap=None):
         raise ValueError('all signed stopping outcomes and the timeout are required')
     native = {}
     for record, value in native_outputs.items():
-        snapshot = exact_output._array(value, (66, 66))
+        snapshot = clock._array(value, (66, 66))
         # Check the numerical density domain without using the validator's
         # cast as output: the original finite entries remain unchanged.
         runtime._density(snapshot, 66, normalized=False)

@@ -158,6 +158,32 @@ def test_observations_reject_aliased_native_record_types_and_wrong_original_shap
         e.exact_observations(work, masked, cap=1)
 
 
+def test_original_array_boundary_rejects_subclasses_before_dispatch(small):
+    class NoDispatch(np.ndarray):
+        def __getattribute__(self, name):
+            if name in ('shape', 'dtype', 'ndim', 'copy', 'nonzero', 'tobytes'):
+                raise AssertionError(f'subclass dispatched {name} before type rejection')
+            return super().__getattribute__(name)
+
+        def __array_function__(self, *args, **kwargs):
+            raise AssertionError('subclass dispatched an array function before type rejection')
+
+    work, native, bounds = small
+    bad = {**native, (1, -1): native[1, -1].view(NoDispatch)}
+    for call in (lambda: c.output_rows(work, bad, cap=1),
+                 lambda: c.observations(work, bad, cap=1),
+                 lambda: e.exact_observations(work, bad, cap=1),
+                 lambda: e.joint_certificate(work, bounds, 'C', bad, cap=1),
+                 lambda: e.trace(bad[1, -1]),
+                 lambda: e.probability(bad[1, -1], np.eye(16)),
+                 lambda: e.probability(np.eye(66), np.eye(16).view(NoDispatch))):
+        with pytest.raises(ValueError):
+            call()
+    # The arithmetic helpers retain their generic square-matrix meaning.
+    assert e.trace(np.array([[.5+.25j]])) == (F(1, 2), F(1, 4))
+    assert e.probability(np.array([[.5]]), np.eye(2)) == (F(1), F(0))
+
+
 def test_reset_observation_override_requires_current_specific_reset_source_history(small):
     work, native, bounds = small
     # Valid complete source histories which *include waiting* cannot stand in
