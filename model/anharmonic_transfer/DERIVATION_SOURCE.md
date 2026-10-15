@@ -84,9 +84,10 @@ position expectation is retained separately; these quantities need not agree.
 
 ## Evaluation of short source pulses
 
-Let `B` denote the executed oscillator basis word, `D` its eigenphase word,
+Let `B` denote the ideal oscillator basis word, `D` its eigenphase word,
 `A` the spin-axis word and `P` the twice-applied controlled parity word.
-The ideal inverse-word identities give
+The executor contracts each word and its requested inverse independently.
+For the ideal words, the inverse identities give
 
 \[
  A P(I_2\otimes BDB^{-1})P A^{-1}
@@ -97,12 +98,42 @@ The negative-sign pulse applies the further identity
 `F U F^-1 = I + F (U-I) F^-1`. Evaluating these increments avoids repeating
 the floating mismatch of separately contracted inverse pairs at every short
 step. The literal `P^2-I` term remains, including binary-angle phase error.
-Both forms use the executed source matrices and retain every physical stage.
-The original straight product and the increment form must both pass the
-finite-Hamiltonian comparison, with a separate fixed representation-change
-guard. No target matrix replaces an executed word. These ideal algebraic
-identities do not cancel physical service errors, and the floating residuals
-are not interval certificates.
+Both numerical forms use the executed source matrices and retain every
+physical stage. However, their rounded inverse matrices need not multiply
+exactly to identity. If the executed inverse is `B^dagger+E`, the increment
+contains the extra term `B(D-I)E`; it need not be unitary even when the
+straight product's factors are numerically unitary. Its error can change
+norms as well as phases and accumulate under repeated use. A small
+single-pulse target residual alone does not control the complete process's
+probability mass. Different subpulse durations must be checked: the factor
+`D-I` is much smaller in a finely subdivided history.
+
+The composed increment therefore passes through the existing compiler's
+guarded polar representation of an executed unitary. Its fixed limits are
+`1e-10` for input unitarity defect, `5.1e-11` for polar change and `2e-13`
+for restored defect. The original straight product, the increment before
+polar correction and the final matrix must each pass the unchanged `3e-10`
+full-phase finite-Hamiltonian check. Both the increment-minus-raw and final
+matrix-minus-raw norms must remain below `2e-10`. The receipt records these
+separate residuals, the polar correction and the final unitarity defect.
+An incorrect unitary or global phase cannot be repaired by polar projection;
+the target and complete-change gates remain mandatory.
+
+No target matrix replaces an executed word, and no state, selected branch
+or probability is renormalized. Word hashes, physical stages and resource
+counts are unchanged. These ideal algebraic identities do not cancel
+physical service errors. All reported norms are floating diagnostics, not
+outward intervals or physical precision certificates.
+
+The independent [pulse controls](../anharmonic_observations/test_pulse_stability.py)
+compare complete finite Hamiltonian matrices and repeated evolution of an
+independently constructed energy eigenstate. A nearby unitary inverse with
+a small phase offset exposes accumulated mass loss without the final polar
+step, despite passing the single-pulse target check. Zero-duration and tiny
+nonzero-duration controls also check the retained phase and generator.
+The complete detector-law checks remain unchanged through the actual
+observation and transfer histories; no improved empirical agreement follows
+from repairing this arithmetic.
 
 ## Error scope and execution ledger
 

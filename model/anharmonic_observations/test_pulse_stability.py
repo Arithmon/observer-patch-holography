@@ -61,6 +61,49 @@ def test_representation_change_has_its_own_fixed_guard(monkeypatch):
 
 
 @pytest.mark.parametrize('sign', [-1, 1])
+def test_repeated_inverse_increment_keeps_complete_probability_mass(monkeypatch, sign):
+    # The perturbed inverse is still unitary: its phase is harmless in the
+    # straight product but makes I+B(D-I)Binverse slightly nonunitary.
+    _perturb_inverse(monkeypatch, 2e-11)
+    dimension, duration, repetitions = 4, .00005/8, 1024
+    actual, metadata = s.pulse_unitary(dimension, DELTA, OMEGA, duration, sign)
+    ladder = np.diag(np.sqrt(np.arange(1, dimension)), 1)
+    hamiltonian = DELTA*np.kron(np.eye(2), np.diag(np.arange(dimension)))
+    hamiltonian -= sign*OMEGA/2*np.kron(np.array([[0., 1.], [1., 0.]]), ladder+ladder.T)
+    _, eigenvectors = np.linalg.eigh(hamiltonian)
+    initial = eigenvectors[:, -1]
+    continued = np.linalg.matrix_power(actual, repetitions) @ initial
+    assert abs(float(np.vdot(continued, continued).real)-1.) < 2e-10
+    assert np.linalg.norm(actual-expm(-1j*duration*hamiltonian), 2) < 3e-11
+    assert metadata['inverse_word_cancellation']['representation_change'] < 2e-10
+
+
+@pytest.mark.parametrize('corruption', ['wrong_phase', 'nonfinite', 'over_total_change'])
+def test_final_unitary_restoration_is_checked_against_actual_source(monkeypatch, corruption):
+    # Warm all primitive factors so only the new complete-pulse polar call
+    # receives an adversarial return. The per-word source checks stay live.
+    s.pulse_unitary(4, DELTA, OMEGA, .00005/8, 1)
+    s.pulse_unitary.cache_clear()
+    original = s.c.stabilize_executed_unitary
+    seen = []
+    def manufactured(value):
+        corrected, metadata = original(value)
+        if value.shape == (8, 8):
+            seen.append(True)
+            if corruption == 'nonfinite':
+                corrected = corrected.copy()
+                corrected[0, 0] = float('nan')
+            else:
+                phase = 1e-6 if corruption == 'wrong_phase' else 2.5e-10
+                corrected = corrected*np.exp(1j*phase)
+        return corrected, metadata
+    monkeypatch.setattr(s.c, 'stabilize_executed_unitary', manufactured)
+    with pytest.raises(ArithmeticError, match='source pulse'):
+        s.pulse_unitary(4, DELTA, OMEGA, .00005/8, 1)
+    assert seen
+
+
+@pytest.mark.parametrize('sign', [-1, 1])
 def test_literal_parity_square_is_not_replaced_with_identity(monkeypatch, sign):
     parity, meta = s._controlled_parity(4)
     phase = 2e-11

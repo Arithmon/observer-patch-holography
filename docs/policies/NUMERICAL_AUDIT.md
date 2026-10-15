@@ -81,6 +81,18 @@ not a domain argument.
   accumulated observables: a small unitary phase error can repeat at every
   step. Cancel inverse words only where their source identity is exact;
   retain other phase remainders, raw contractions and correction diagnostics.
+  An affine inverse-word evaluation such as `I+B(D-I)C` can suppress phase
+  cancellation error while introducing norm drift when the rounded `C` is
+  not exactly `B^-1`. Passing a single-operation target-residual check does
+  not guarantee probability conservation after repetition. Test complete
+  process mass and retained output laws at both coarse and fine time steps,
+  including every retained refinement cutoff. When exact source unitarity
+  justifies an operation-level polar representation, retain the raw and
+  corrected phase-sensitive target checks, fixed polar guards and a bound
+  on the total representation change. Do not normalize evolving states or
+  selected outcomes to conceal the defect. Include nearby unitary inverse
+  perturbations that expose accumulated norm drift, and verify that wrong
+  unitary phases fail after restoration.
   A trace-preserving channel can have the wrong action. Check it on
   independent input operators and its reference on each nonzero component's
   own scale. An exactly positive source can have both a computed zero

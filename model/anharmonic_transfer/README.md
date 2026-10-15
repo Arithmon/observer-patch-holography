@@ -279,10 +279,24 @@ source words: `B D B^-1 = I + B (D-I) B^-1`, with the corresponding axis
 and sign conjugations. Both independently executed basis matrices remain
 in the calculation. The twice-applied parity contributes its literal
 `P^2-I` remainder; it is not replaced with an inverse. Each pulse also
-retains the original straight-product contraction, checks both forms
-against the independent finite Hamiltonian target, and caps their
-representation difference at the fixed `2e-10` native numerical scale.
-The word hashes, operation stages and physical resource counts are
-unchanged. This is arithmetic for ideal inverse words, not cancellation
-of physical inverse-service errors; the reported correction is a floating
-diagnostic, not an interval or physical precision certificate.
+retains the original straight-product contraction. Rounded inverse factors
+can make the increment slightly nonunitary, so the composed pulse also
+passes through the compiler's existing guarded polar representation.
+This restores the operation's unitary representation without normalizing
+states or outcome probabilities. The raw product, increment and final
+matrix each retain the `3e-10` full-phase Hamiltonian target check. Both
+the increment and final matrix must differ from the raw product by at most
+`2e-10`; the compiler's input-defect, polar-change and restored-defect
+limits are unchanged. The [source derivation](DERIVATION_SOURCE.md#evaluation-of-short-source-pulses)
+details these guards and their separately reported floating diagnostics.
+
+Independent controls check repeated complete probability mass as well as
+the target operator, including small inverse-phase perturbations, zero and
+nonzero durations, and rejection of incorrect phases or excessive changes.
+The complete selected-detector-law and replay tolerances are unchanged.
+Word hashes, operation stages and physical resource counts are also
+unchanged. The repair can change floating receipt values; it neither refits
+the preparation nor changes the supplied apparatus law. Ideal inverse-word
+arithmetic does not cancel physical inverse-service errors, and neither
+target residuals nor polar corrections are interval or physical precision
+certificates.

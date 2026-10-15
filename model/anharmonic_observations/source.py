@@ -149,6 +149,21 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
     residual = float(np.linalg.norm(matrix-target, 2))
     if not math.isfinite(residual) or residual > 3e-10:
         raise ArithmeticError('source pulse failed its complete finite Hamiltonian check')
+    increment_residual = residual
+    # The affine inverse-word identity is unitary in exact arithmetic. Its
+    # separately executed numerical inverses need not be exact adjoints, so
+    # the represented increment can retain a radial defect that accumulates
+    # across many applications. Reuse the compiler's fixed operation-level
+    # polar guard; never normalize a state or selected outcome.
+    matrix, stabilization = c.stabilize_executed_unitary(matrix)
+    if not np.all(np.isfinite(matrix)):
+        raise ArithmeticError('source pulse has nonfinite stabilized contraction data')
+    residual = float(np.linalg.norm(matrix-target, 2))
+    if not math.isfinite(residual) or residual > 3e-10:
+        raise ArithmeticError('source pulse stabilized contraction failed its complete finite Hamiltonian check')
+    total_change = float(np.linalg.norm(matrix-raw, 2))
+    if not math.isfinite(total_change) or total_change > change_limit:
+        raise ArithmeticError('source pulse stabilized representation change exceeds its fixed guard')
     defect = float(np.linalg.norm(matrix.conj().T @ matrix-identity, 2))
     if not math.isfinite(defect):
         raise ArithmeticError('source pulse has nonfinite unitarity diagnostic')
@@ -162,6 +177,9 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
                         'raw_full_phase_target_residual': raw_residual,
                         'representation_change': change,
                         'representation_change_limit': change_limit,
+                        'increment_full_phase_target_residual': increment_residual,
+                        'complete_representation_change': total_change,
+                        'composed_pulse_stabilization': stabilization,
                         'represented_unitarity_defect': defect,
                         'literal_parity_square_retained': True,
                         'all_original_source_stages_and_resources_retained': True,
