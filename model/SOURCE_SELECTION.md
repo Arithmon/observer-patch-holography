@@ -97,6 +97,56 @@ the finite classical-sector transfer Hamiltonian under the native law and
 uniform scheduler, while C/E quantum-instrument selection, real-time
 identification, locality and physical refinement remain open.
 
+The [full quantum transfer attachment](native_quantum_history/README.md)
+extends that construction to all 4,356 binary matrix units for each declared
+C/E instrument. Its operator-space logarithm predicts the complete executed
+phase experiment, including reference correlations. The binary read attains
+the output-state trace distance for that preparation, with its greatest C/E
+separation at four attempts. A negative population from the functional-calculus
+half-step rules out using either logarithm as a continuous CP-semigroup
+generator; integer native channels remain valid. This derives the transfer
+of a chosen repair candidate without selecting the candidate or coherent
+interface.
+
+The [native record clock](native_clock/README.md) constructs an observable
+counter with exact statistics from the same committed currents.
+Its marked three-state reduction preserves every absolute-current word,
+including no-event tails. Uniform stationary mean current `5/33` survives
+any fixed seam weighting, but event recurrence and correlations do not.
+The single-seam control leaves inactive configurations, so an unchanged
+stationary rate cannot alone justify a working clock. Counts, event-conditioned
+intervals and physically calibrated duration remain distinct quantities.
+
+The [first-current coherent readout](native_relational_readout/README.md)
+joins these constructions in the same executed history. The phase observable
+is read when the first nonzero native current arrives. C and E have identical
+waiting laws but distinct exact plus probabilities, `883/1365` and `5261/8855`.
+The ideal stopped instrument is invariant under independently inserted identity
+idling and needs no supplied attempt count or conversion to seconds. A finite
+six-attempt program retains its unresolved tail; the infinite stopping law is
+summed separately. The phase preparation, detector, logical stopping controller,
+uniform scheduler and candidate law remain supplied. This does not identify
+a laboratory apparatus or remove its physical clock-calibration premise.
+
+The [fluctuation construction](native_fluctuations/README.md) supplies a
+conditional history action beyond the earlier mean-response energy. Independent
+stationary copies of complete native histories have Gaussian finite-dimensional
+limits with `A=I-L/60`, `C=(5/33)(I-J/12)` and innovation covariance
+`D=C-A C A^T`. Their finite-history precision, including its stationary initial
+term, follows from those quantities. An analytic characteristic-function bound
+controls finite replication. Actual signed-current records give the increments
+of that fluctuation field without granting initial configuration access.
+Independence is a product-realization premise; this result does not establish
+the earlier same-capacity canonical-vacuum identification, spatial locality,
+physical clock or interacting field limit.
+
+For the separate laboratory apparatus, the [preparation diagnostic](empirical_diagnostics/README.md)
+provides six additional complete readout predictions and an explicit
+non-Gaussian ambiguity invisible to the old single imaginary probe. The
+Gaussian-family inverse has a phase branch and an unresolved probe-scale
+freedom. These are new tests of supplied preparation and detector premises;
+their outcomes remain unavailable, and the old trajectory score is unchanged.
+
 ## The native selection tests
 
 The [coherent continuation](observer/COHERENT_CONTINUATION.md) fixes a

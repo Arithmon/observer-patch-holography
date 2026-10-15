@@ -20,6 +20,22 @@ retains the existing 125-point comparison and its empirical discrepancies.
 These are finite compatible attachments, with action selection and a complete
 physical observer construction subject to the boundaries in that report.
 
+Further source derivations extend the same native process and give
+additional measurement predictions:
+
+| Construction | New result | Remaining premise or boundary |
+| --- | --- | --- |
+| [Quantum native histories](native_quantum_history/README.md) | The full 4,356-dimensional operator transfer is source-derived for each C/E candidate. An executed coherent read separates them by `0.1210765432` at four native attempts, the best count for that experiment. | Coherent preparation, detector and uniform scheduler are declared. The logarithm does not generate continuous CP evolution. |
+| [Native event clock](native_clock/README.md) | Exact 66-to-3 marked reduction gives complete event and waiting laws. Mean waiting counts are `147/22` from a stationary sample and `33/5` after an event. | These are native attempt counts. Clock intervals are correlated; physical duration is not inferred. |
+| [Readout at the first native current](native_relational_readout/README.md) | The same observer supplies the clock event and coherent readout. Exact first-current plus probabilities are `0.64688645` for C and `0.59412761` for E, despite identical waiting laws. | The six-attempt execution retains its unresolved tail; the ideal stopping law is separately summed exactly. Coherent interfaces and the logical halt controller remain declared. |
+| [Native fluctuation action](native_fluctuations/README.md) | Whole-history independent replication has a controlled Gaussian limit with covariance and action derived from native counts. Executed signed currents have successive-attempt correlation `-1/20`, including zero currents. | Independent stationary product preparation is supplied. The fixed twelve-port history is not a spatial continuum or interacting QFT. |
+| [Preparation and detector probes](empirical_diagnostics/README.md) | Six source-executed probes distinguish preparations invisible to the old single imaginary read; the strongest listed contrast is `0.147181690`. | New probe outcomes are unavailable. Physical coordinate calibration and the old trajectory discrepancies remain unresolved. |
+
+All native clock and fluctuation rates name the attempt/event parameter.
+The laboratory apparatus retains its separate supplied preparation and
+detector interpretation. The additional probes do not improve or replace
+the frozen empirical comparison, whose 125-point RMSE remains `0.2876427868`.
+
 The [15 October approach audit](audit_20261015/README.md) retains exact
 calibration/geometry counterexamples, a stronger empirical comparator and
 concrete theorem mappings. It identifies which further measurements and
