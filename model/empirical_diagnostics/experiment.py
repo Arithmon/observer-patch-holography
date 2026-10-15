@@ -176,7 +176,7 @@ def _source_bindings():
              ROOT/'model/observer/source_scalar/compiler.py', ROOT/'tools/strict_json.py',
              ROOT/'model/requirements.txt', ROOT/'code/source_selection_model/response.json',
              ROOT/'code/m1_source_realization/receipt.json']
-    return {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
+    return {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
 
 
 def produce(*, dimension=None, certificate=True):

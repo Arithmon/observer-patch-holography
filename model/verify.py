@@ -25,7 +25,6 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_fluctuations", "model/empirical_diagnostics",
            "model/native_relational_readout")
 REPLAYS = (
-    ("model.common_source.output_certificate", None, "model/common_source/output_certificate_results.json"),
     ("model.native_relational_readout", None, "model/native_relational_readout/results.json"),
     ("model.native_quantum_history", None, "model/native_quantum_history/results.json"),
     ("model.native_clock", None, "model/native_clock/results.json"),
@@ -68,6 +67,7 @@ REPLAYS = (
     ("model.common_source", None, "model/common_source/results.json"),
     ("model.common_source.composition", None, "model/common_source/composition_results.json"),
     ("model.common_source.smooth_history", None, "model/common_source/smooth_history_results.json"),
+    ("model.common_source.output_certificate", None, "model/common_source/output_certificate_results.json"),
     ("model.common_source.quantum_native", None, "model/common_source/quantum_native_results.json"),
     ("model.common_source.encoded_observer", None, "model/common_source/encoded_observer_results.json"),
     ("model.common_source.infinite_history", None, "model/common_source/infinite_results.json"),

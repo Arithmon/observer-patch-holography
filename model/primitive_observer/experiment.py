@@ -193,7 +193,7 @@ def run(*, progress=None):
     observer = observer_report.run()
     laboratory = evaluate_laboratory(predict_laboratory(progress=progress))
     sources = sorted({*prior.SOURCE_PATHS, *COMMON_SOURCES, *action.SOURCE_PATHS,
-                      *(str(path.relative_to(ROOT)) for path in FOLDER.glob('*.py')
+                      *(path.relative_to(ROOT).as_posix() for path in FOLDER.glob('*.py')
                         if not path.name.startswith('test_')),
                       'model/common_source/protocol.py', 'model/common_source/open_protocol.py',
                       'model/common_source/open_environment.py', 'model/common_source/quantum_native.py',
