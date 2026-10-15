@@ -1,0 +1,46 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "model/requirements.txt",
+    "model/anharmonic_observations",
+    "model/observer/source_scalar/compiler.py",
+    "model/scalar_observations/experimental_readout",
+    "model/relativistic_scalar/exact.py",
+    "Matplotlib (optional plot regeneration)"
+  ],
+  "description": "Fixed changed-potential postdiction of 125 derived observations, finite native environment and ideal finite-dimensional selected-readout certificates.",
+  "files": {
+    "DERIVATION_BOUNDS.md": "f725c46422740307d439dd00867fb84e1bb7d2208eed489262c24709da8ef032",
+    "DERIVATION_ENVIRONMENT.md": "33bbe2cc7ee6a43a873465518423597826f82390dc81c6edd75eae358fd26c6d",
+    "DERIVATION_SOURCE.md": "8710517a7eddfa568bff7a7bd6d6ffd92edc0c2a027f4e1dc587b9648be5c44b",
+    "README.md": "40e2a4427c1141f2c52c229255353edb28f339d3925cc6b60e8131f7e52c8e93",
+    "__init__.py": "2a37d8911ef47c17a261f7d6e361092a4c8f00214d576c9975291d96e559903d",
+    "__main__.py": "0f9c91b8e24602acd9cd807266b8af398480e90a921899514aa1578673cc1d4c",
+    "bounds.py": "ba4182947f13b2fd117cd6e2953f5977eb906cc7982337d9b3ee9d91a7e78098",
+    "calibration.py": "b717ae190f4089f42d237abc584097925fd410d7eb0fda1bbaa1dbf8076292dd",
+    "comparison.png": "9469b1321ebdeda0456d627faaa16c43995da5d318bdc8ffdc391201eb93feeb",
+    "data.py": "e5f3a4f0dfaa5359d176b5c48d47a2a062ce97e15a5ed746287c804c868c674a",
+    "data/SOURCE_README.md": "276d4f978a07266a1bf3c28e74e008b075d1ac3bd022e6e8f49d992837a53fdd",
+    "data/asymmetric_wells_expectation_x.csv": "83cdb519902985b53381e5310894f7f424b2cbbca86b1ed51f2f4015dd7d4624",
+    "environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
+    "experiment.py": "166155887375079d9e5b467e8a960f41b9683af3543e01f4ab031a255db072bd",
+    "plot.py": "d9d5630cbf583d4a9c3e5e116d4b306b69e847766fce6ff2c498de78a6cd001d",
+    "protocol.json": "4f43e9cb3b8136ecf5c2350737cac915d41319481804bf2f5f928e85083262b3",
+    "provenance.json": "011c891e370868876921b532d2d6ba25f0aa5728b5d035c04e9bed6c82f8eeb4",
+    "replay.py": "c9b20cc1ba7e82291122138b3d1204798f3bc787eb26b8ee14a530fcc5d220cc",
+    "results.json": "71403f474c39705d20a6c30dc2f36b7556943dd4f1734a5a1a395184744d2398",
+    "source.py": "d1b35083b8ce119a1cf4235fd376f528302a1d62cf73a80aa4f876cb73c6ed01",
+    "test_bounds.py": "2c244f878ce142d946f5bcc979a95fa51a18c10101af315e28b2b4db1ca662fb",
+    "test_calibration.py": "28fbe7210de8c774d486bb57dc7f36b9010cb04cf6e53345390eb0e87dff5796",
+    "test_data.py": "ef750cfd3e4eda610c6df9acd3a55cdbd7554a2dfba3c0544e26d8946351ee3c",
+    "test_environment.py": "969c88b74f5f54d28eb6b398be76241b5a10f69d1e536da3a15e1dc26f5919ae",
+    "test_experiment.py": "c9b2f9940b7f0f11ce22171a71155760515bdce66e1b8e8b21440c0e5113cd49",
+    "test_replay.py": "300620e040c28730d3f42a30d5a9ea1abcba254f1a75e42594f901e2dc97e4ff",
+    "test_source.py": "00b7cefa5cbfaa827bf66c82ac5cd071f250c7e2fe765ab6b556eeb7313778c9"
+  },
+  "reproduce": [
+    "python -m model.anharmonic_transfer --check model/anharmonic_transfer/results.json",
+    "python -m pytest -q -W error model/anharmonic_transfer"
+  ],
+  "schema": "oph.anharmonic_transfer.manifest.v1"
+}

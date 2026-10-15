@@ -80,6 +80,18 @@ occupation/channel refinements are retained. This tests a supplied experimental
 model against real dynamical data; it does not select the action or apparatus
 from OPH, or test the spatially coupled scalar model.
 
+The [changed-potential transfer](anharmonic_transfer/README.md) tests five
+symmetric/asymmetric preparations against 125 further published derived
+observations, with all later values excluded from calibration. Its finite
+noise environment executes every branch phase through native words; a
+finite-dimensional channel bound controls splitting and terminal selection.
+Finite carrier durations, unchanged-preparation transfer, separately labelled
+zero-time preparation adjustments and metadata ambiguities are retained.
+The primary reduces estimator RMSE by about 69% relative to frozen and
+harmonic controls, with material residuals retained; zero-time displacement
+adjustments worsen its aggregate score. The Gaussian noise law and
+experimental apparatus remain supplied.
+
 The [canonical scalar regulator](relativistic_scalar/README.md) executes a
 three-dimensional eight-site field with number-changing quartic interactions.
 Complete source-word histories have exact comparisons to eight unrestricted
