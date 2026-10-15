@@ -103,6 +103,14 @@ it does not derive that family from native agreement or establish an
 interacting relativistic continuum. Its occupation and sampling limits are
 reported separately from the finite prediction agreement.
 
+The [coupled calibration](coupled_reconstruction/README.md) removes isolated
+generator access: every onsite and bond term participates in every calibration
+trial. Local and pair marginal records recover the same quartic action, then
+predict complete disturbed histories at both cutoffs. A direct bound on the
+scaled source schedule makes one full field step per probe sufficient. Pair
+instruments, preparations and a calibrated clock remain supplied; this reduces
+the access assumptions without establishing an interacting continuum.
+
 The [spatial interacting family](spatial_interaction/README.md) executes a
 repulsive Bose field over 27, 125 and 343 sites with the same source controls,
 complete retained measurements and feedback. Exact bounds control its
