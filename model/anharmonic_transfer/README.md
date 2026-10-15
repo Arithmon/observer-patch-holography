@@ -96,6 +96,13 @@ approximately `[-1.51051, -1.09411, +1.36038, -0.01230, -1.13325]`.
 These five preparation calibrations are disclosed; one datum cannot identify
 thermal occupation or non-Gaussian preparation errors.
 
+The transferred preparation is read from the compressed
+[original calibration receipt](data/calibration_receipt.json.gz). Decompression
+must reproduce the original receipt SHA-256 `80504ae1e92e94de0e5f50484da4a5dbbdb0981389c5733066468b36e961f215`
+before its parameters are read. This frozen input preserves the reviewed fit
+when the live anharmonic receipt is regenerated to refresh source custody;
+it does not replace the live source execution or its current bindings.
+
 Other fixed controls retain the initial state, or remove the anharmonic drive
 while preserving the same elapsed schedule. In the harmonic control the
 opposite carrier rotations cancel, but their durations still advance the
@@ -228,15 +235,42 @@ MPLCONFIGDIR=/tmp/oph-mpl python -m model.anharmonic_transfer.plot
 The [protocol](protocol.json), [source derivation](DERIVATION_SOURCE.md),
 [finite environment derivation](DERIVATION_ENVIRONMENT.md) and
 [byte-level provenance](provenance.json) specify the experiment and its limits.
-Earlier model implementations and retained result receipts remain unchanged.
+Frozen calibration snapshots preserve the exact earlier receipt bytes used
+as preparation inputs; refreshing a live replay does not change those inputs.
+The shared Hamiltonian pulse arithmetic is updated as described below.
 An accompanying maintenance fix checks an existing narrow rational interval
 using high precision instead of platform-dependent binary64 rounding; its
 mathematical certificate is unchanged.
 
 Replay validates each receipt's exact pre-scoring seal and each conditional
-certificate against its own retained acceptance. It then compares numerical
-outputs within `2e-10`, omitting only the five exact-rational strings derived
-from that floating acceptance. Fixed splitting/quadrature certificates,
-source word hashes, data/protocol bindings, counts and all other strings
-remain exact. This permits harmless platform rounding without weakening
-source identity or the ideal mathematical contracts.
+certificate against its own retained acceptance. It also recomputes every
+position estimator from its spin mean and the fixed probe coordinate, and
+every score and refinement from that receipt's complete prediction and the
+fixed comparison data. Those dependent values, their types, and their
+metadata must agree exactly with this recomputation before being omitted
+from the cross-receipt numerical comparison. This avoids applying the same
+dimensionless tolerance again after an estimator conversion amplifies its
+checked inputs.
+
+Primitive spin means, probabilities, and other floating diagnostics retain
+the `2e-10` replay tolerance. The separate exact-position diagnostic is
+compared in units of the rigorous finite operator bound
+`||Q_d|| <= sqrt(2(d-1))`; it is neither dropped nor identified with the
+finite-difference estimator. The five exact-rational strings derived from
+floating acceptance are omitted only after their own-input verification.
+Fixed splitting/quadrature certificates, source word hashes, data/protocol
+bindings, counts and all other strings remain exact. These replay checks
+are numerical consistency controls, not physical precision certificates.
+
+Short Hamiltonian subpulses use a stable evaluation of their ideal inverse
+source words: `B D B^-1 = I + B (D-I) B^-1`, with the corresponding axis
+and sign conjugations. Both independently executed basis matrices remain
+in the calculation. The twice-applied parity contributes its literal
+`P^2-I` remainder; it is not replaced with an inverse. Each pulse also
+retains the original straight-product contraction, checks both forms
+against the independent finite Hamiltonian target, and caps their
+representation difference at the fixed `2e-10` native numerical scale.
+The word hashes, operation stages and physical resource counts are
+unchanged. This is arithmetic for ideal inverse words, not cancellation
+of physical inverse-service errors; the reported correction is a floating
+diagnostic, not an interval or physical precision certificate.

@@ -82,6 +82,28 @@ and `theta=-pi/2`. Its spin mean is `Im chi(i*h)`, and the reported position
 estimator is this mean divided by `sqrt(2)*h`. The exact occupation-space
 position expectation is retained separately; these quantities need not agree.
 
+## Evaluation of short source pulses
+
+Let `B` denote the executed oscillator basis word, `D` its eigenphase word,
+`A` the spin-axis word and `P` the twice-applied controlled parity word.
+The ideal inverse-word identities give
+
+\[
+ A P(I_2\otimes BDB^{-1})P A^{-1}
+ = I+A\left[P^2-I+P(I_2\otimes B(D-I)B^{-1})P\right]A^{-1}.
+\]
+
+The negative-sign pulse applies the further identity
+`F U F^-1 = I + F (U-I) F^-1`. Evaluating these increments avoids repeating
+the floating mismatch of separately contracted inverse pairs at every short
+step. The literal `P^2-I` term remains, including binary-angle phase error.
+Both forms use the executed source matrices and retain every physical stage.
+The original straight product and the increment form must both pass the
+finite-Hamiltonian comparison, with a separate fixed representation-change
+guard. No target matrix replaces an executed word. These ideal algebraic
+identities do not cancel physical service errors, and the floating residuals
+are not interval certificates.
+
 ## Error scope and execution ledger
 
 Each record composes the exact-rational ideal Gaussian-quadrature radii for

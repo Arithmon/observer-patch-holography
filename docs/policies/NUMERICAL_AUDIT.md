@@ -77,6 +77,10 @@ not a domain argument.
   A failed chart is not an intrinsically unresolved span: compare alternate
   exact presentations before attributing an intermediate underflow to the
   source. Check small retained projector entries on their own scale.
+  For repeated near-identity operations, check the zero-duration limit and
+  accumulated observables: a small unitary phase error can repeat at every
+  step. Cancel inverse words only where their source identity is exact;
+  retain other phase remainders, raw contractions and correction diagnostics.
   A trace-preserving channel can have the wrong action. Check it on
   independent input operators and its reference on each nonzero component's
   own scale. An exactly positive source can have both a computed zero
@@ -156,12 +160,12 @@ not a domain argument.
   Reject nonfinite diagnostics at the scientific acceptance gate itself;
   a later JSON serialization failure does not make an earlier `all_pass`
   result valid. For continuing quantum instruments, include wrong-but-CPTP
-  controls (wrong tensor order, feedback or hidden-draw correlation), not
-  just trace preservation. Check complete reference/record allocation before
+  controls (wrong tensor order, feedback or hidden-draw correlation) alongside
+  trace-preservation checks. Check complete reference/record allocation before
   executing source services, and test mutable checkpoint envelopes as well
   as their array buffers.
   Round-trip actual producer outputs through the strict JSON comparator;
-  a CLI test returning an already serialized fixture misses runtime type
+  a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish

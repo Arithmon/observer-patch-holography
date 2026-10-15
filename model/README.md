@@ -24,7 +24,7 @@ same-history occupation bound includes those later operations.
 
 The [mixed-state continuation](common_source/OPEN_HISTORY.md) connects that
 same grammar to the finite source environment added by the anharmonic
-transfer work. Fresh unobserved phase operations now compose with all four
+transfer work. Fresh unobserved phase operations compose with all four
 reads and native memory recovery. Its complete mixed outputs, continuation,
 independent noise controls and error/resource ledgers are executable; the
 laboratory calibration of the separate transfer package is not imported.
@@ -109,7 +109,7 @@ free spatial refinement approaches Klein--Gordon with an explicit error.
 The interacting relativistic comparison, physical calibration and action
 selection are not established; the mass, geometry and action are supplied.
 
-The [record-only reconstruction](observer_reconstruction/README.md) now
+The [record-only reconstruction](observer_reconstruction/README.md)
 identifies a finite free-field description from source-executed detector
 probabilities and separately read clock probabilities. With the Hamiltonian
 and coordinates hidden from its estimator, it recovers a cube's adjacency,
@@ -117,7 +117,7 @@ rank-three coordinate Gram, mass, coupling and frequencies, then predicts
 withheld detector settings. Exact occupation bounds control the ideal
 normal-mode code; a source-executed ordered field loop tests the noncommuting
 phase. Separate exact native-current records recover the carrier response
-Gram. The two geometries are not yet identified, and the field action,
+Gram. The two geometries are not identified, and the field action,
 vacuum, coherent services and clock calibration remain supplied. This is
 finite operational identification, not an interacting spacetime limit.
 

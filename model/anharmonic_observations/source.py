@@ -108,23 +108,66 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
     # In the spin-X eigenbasis the negative-force sector is a parity conjugate.
     single = basis @ diagonal @ inverse
     central = parity @ np.kron(np.eye(2), single) @ parity
-    matrix = np.kron(axis, np.eye(dimension)) @ central @ np.kron(inverse_axis, np.eye(dimension))
+    left_axis = np.kron(axis, np.eye(dimension))
+    right_axis = np.kron(inverse_axis, np.eye(dimension))
+    raw = left_axis @ central @ right_axis
+    # Evaluate the same ideal inverse-word conjugations as identity plus an
+    # increment. Independently contracted B and B^-1 otherwise contribute a
+    # tiny, duration-independent B B^-1-I at every short subpulse. Both actual
+    # contractions remain in this expression and in the raw mandatory check.
+    # Parity is applied twice, not followed by its inverse: retain P^2-I,
+    # including its literal binary-angle phase and contraction roundoff.
+    identity = np.eye(2*dimension)
+    increment = basis @ (diagonal-np.eye(dimension)) @ inverse
+    increment = (parity @ parity-identity
+                 + parity @ np.kron(np.eye(2), increment) @ parity)
+    increment = left_axis @ increment @ right_axis
     stages = [aimeta, pmeta, imeta, dmeta, bmeta, pmeta, ameta]
     if sign == -1:
         flip, fmeta = spin_rotation('Z', math.pi)
         inverse_flip, fimeta = spin_rotation('Z', -math.pi)
-        matrix = np.kron(flip, np.eye(dimension)) @ matrix @ np.kron(inverse_flip, np.eye(dimension))
+        left_flip = np.kron(flip, np.eye(dimension))
+        right_flip = np.kron(inverse_flip, np.eye(dimension))
+        raw = left_flip @ raw @ right_flip
+        increment = left_flip @ increment @ right_flip
         stages = [fimeta] + stages + [fmeta]
+    matrix = identity+increment
     a = native._ladder(dimension)
     hamiltonian = delta*np.kron(np.eye(2), np.diag(np.arange(dimension))) - sign*omega/2*np.kron(X, a+a.T)
-    residual = float(np.linalg.norm(matrix-expm(-1j*duration*hamiltonian), 2))
+    target = expm(-1j*duration*hamiltonian)
+    if not all(np.all(np.isfinite(value)) for value in (raw, matrix, target)):
+        raise ArithmeticError('source pulse has nonfinite contraction data')
+    raw_residual = float(np.linalg.norm(raw-target, 2))
+    if not math.isfinite(raw_residual) or raw_residual > 3e-10:
+        raise ArithmeticError('source pulse raw contraction failed its complete finite Hamiltonian check')
+    change = float(np.linalg.norm(matrix-raw, 2))
+    # The same fixed numerical scale as native word contraction, not a limit
+    # fitted to the observed trajectory or to this pulse's target residual.
+    change_limit = 2e-10
+    if not math.isfinite(change) or change > change_limit:
+        raise ArithmeticError('source pulse inverse-word representation change exceeds its fixed guard')
+    residual = float(np.linalg.norm(matrix-target, 2))
     if not math.isfinite(residual) or residual > 3e-10:
         raise ArithmeticError('source pulse failed its complete finite Hamiltonian check')
+    defect = float(np.linalg.norm(matrix.conj().T @ matrix-identity, 2))
+    if not math.isfinite(defect):
+        raise ArithmeticError('source pulse has nonfinite unitarity diagnostic')
     matrix.flags.writeable = False
     return matrix, {'name': 'continuous_detuned_pulse', 'dimension': dimension,
                     'delta': delta, 'omega': omega, 'duration_seconds': duration, 'sign': sign,
                     'resources': _counts(stages), 'stages': deepcopy(stages),
                     'full_phase_target_residual': residual,
+                    'inverse_word_cancellation': {
+                        'method': 'identity plus executed conjugation increments for ideal inverse source words',
+                        'raw_full_phase_target_residual': raw_residual,
+                        'representation_change': change,
+                        'representation_change_limit': change_limit,
+                        'represented_unitarity_defect': defect,
+                        'literal_parity_square_retained': True,
+                        'all_original_source_stages_and_resources_retained': True,
+                        'physical_inverse_service_errors_cancelled': False,
+                        'outward_roundoff_or_physical_error_certificate': False,
+                    },
                     'matrix_origin': 'contracted_native_source_pulses',
                     'cutoff_CCR_identity_used': False}
 

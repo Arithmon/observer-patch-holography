@@ -1,10 +1,12 @@
 """Transfer the frozen earlier preparation; separately invert zero-time data."""
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import math
 from pathlib import Path
+import zlib
 
 import mpmath as mp
 
@@ -14,6 +16,11 @@ ROOT = Path(__file__).resolve().parents[2]
 def transferred_parameters(protocol):
     path = ROOT/protocol['preparation']['prior_receipt']
     raw = path.read_bytes()
+    if path.suffix == '.gz':
+        try:
+            raw = gzip.decompress(raw)
+        except (OSError, EOFError, zlib.error) as error:
+            raise ValueError('Frozen earlier calibration receipt has invalid gzip data') from error
     if hashlib.sha256(raw).hexdigest() != protocol['preparation']['prior_receipt_sha256']:
         raise ValueError('Frozen earlier calibration receipt changed')
     return json.loads(raw)['calibration']['parameters']
