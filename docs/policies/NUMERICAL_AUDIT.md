@@ -179,6 +179,9 @@ not a domain argument.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.
+  Compare freshly generated source-binding maps with retained receipt maps
+  on each supported platform. Repository-relative keys use `/`; checking
+  existing file hashes alone misses platform-dependent path separators.
   Exercise validation with cold and warm caches. Python cache keys can equate
   Boolean, integer, floating and exact rational values. Validation inside a
   cached function may therefore be skipped for an invalid argument after a
