@@ -248,3 +248,20 @@ def test_cli_cannot_publish_a_failed_contract(monkeypatch, tmp_path, failure):
     with pytest.raises((ValueError, ArithmeticError, SystemExit)):
         cli.main()
     assert not destination.exists()
+
+
+def test_actual_producer_bindings_match_retained_portable_paths(monkeypatch):
+    from . import action, completion_report, observer_report, selection
+
+    retained = e.strict_json.load(e.FOLDER/'results.json')
+    # Isolate expensive numerical components, but exercise run's real source
+    # discovery, path conversion, deduplication and file hashing. On Windows
+    # the former str(relative_path) produced backslashes and duplicate aliases.
+    for module, key in ((action, 'native_action'), (selection, 'pointer_selection'),
+                        (completion_report, 'completion'), (observer_report, 'observer')):
+        monkeypatch.setattr(module, 'run', lambda key=key: deepcopy(retained[key]))
+    monkeypatch.setattr(e, 'predict_laboratory', lambda **_: None)
+    monkeypatch.setattr(e, 'evaluate_laboratory', lambda _: deepcopy(retained['laboratory']))
+    actual = e.run()['source_bindings']
+    assert all('\\' not in path for path in actual)
+    assert actual == retained['source_bindings']

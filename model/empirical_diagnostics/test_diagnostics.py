@@ -15,6 +15,13 @@ PROBES = [
 ]
 
 
+def test_source_bindings_match_retained_portable_paths_and_bytes():
+    receipt = e.strict_json.load(e.FOLDER/'results.json')
+    actual = e._source_bindings()
+    assert all('\\' not in path for path in actual)
+    assert actual == receipt['source_bindings']
+
+
 @pytest.mark.parametrize('alpha,thermal', [(-1.0081292326480422, .13314125172459518),
                                          (0., 0.), (1.8, .7), (-3., .1)])
 def test_both_quadratures_recover_gaussian(alpha, thermal):

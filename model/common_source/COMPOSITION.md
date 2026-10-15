@@ -13,6 +13,14 @@ below. The construction guide defines the broader physical completion target.
 The [existing premise map](../PREMISES.md) remains the complete theorem-family
 navigation; the instantiated connections here have the narrower scopes below.
 
+The [numerical output certificate](OUTPUT_CERTIFICATE.md) connects the actual
+returned source amplitudes to the exact prepared continuous and infinite
+histories. It treats their binary components as exact data, retains all
+records and bounds their complete quantum outputs without renormalization.
+It also certifies a fixed feedback intervention's final clock probability.
+This is a prepared-output comparison, not an all-input source-channel or
+physical service certificate; the operation grammar is unchanged.
+
 The [mixed-state extension](OPEN_HISTORY.md) uses this same program grammar
 when unobserved finite environment operations are inserted at declared
 boundaries. It retains one density block per visible record, composes the

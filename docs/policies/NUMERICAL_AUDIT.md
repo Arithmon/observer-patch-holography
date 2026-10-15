@@ -179,6 +179,14 @@ not a domain argument.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.
+  Compare freshly generated source-binding maps with retained receipt maps
+  on each supported platform. Repository-relative keys use `/`; checking
+  existing file hashes alone misses platform-dependent path separators.
+  Exercise validation with cold and warm caches. Python cache keys can equate
+  Boolean, integer, floating and exact rational values. Validation inside a
+  cached function may therefore be skipped for an invalid argument after a
+  valid equivalent key was stored. Validate original arguments before entering
+  the cache; a passing cold-input refusal does not establish this boundary.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
