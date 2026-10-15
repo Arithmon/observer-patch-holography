@@ -26,11 +26,16 @@ from . import protocol, smooth_history as smooth
 ROOT_BITS = 192
 
 
-@lru_cache(maxsize=256)
 def _sqrt_interval(value):
     """Exact rational endpoints around sqrt(value), including tiny values."""
     if type(value) is not F or value < 0:
         raise ValueError('a nonnegative exact rational radicand is required')
+    return _cached_sqrt_interval(value)
+
+
+@lru_cache(maxsize=256)
+def _cached_sqrt_interval(value):
+    """Memoize only values already checked at the caller boundary."""
     numerator, denominator = math.isqrt(value.numerator), math.isqrt(value.denominator)
     if numerator*numerator == value.numerator and denominator*denominator == value.denominator:
         root = F(numerator, denominator)

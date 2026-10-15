@@ -132,3 +132,16 @@ def test_complete_target_error_is_added_once_without_probability_normalization()
     assert answer['distance_lower'] == max(0, answer['polynomial_distance_lower']-enclosure.output_error)
     assert answer['distance_upper'] == answer['polynomial_distance_upper']+enclosure.output_error
     assert answer['distance_lower'] > 1
+
+
+@pytest.mark.parametrize('value', [True, False, 1, 0, 1., 0.])
+@pytest.mark.parametrize('warm', [False, True])
+def test_square_root_rejects_nonfractions_before_any_cache_hit(value, warm):
+    # Clear the private computation cache, including the pre-fix decorated
+    # public helper, so each cold/warm pair tests the same original input.
+    cached = getattr(output, '_cached_sqrt_interval', output._sqrt_interval)
+    cached.cache_clear()
+    if warm:
+        assert output._sqrt_interval(F(int(value))) == (F(int(value)), F(int(value)))
+    with pytest.raises(ValueError, match='exact rational'):
+        output._sqrt_interval(value)
