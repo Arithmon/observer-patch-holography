@@ -11,6 +11,14 @@ concrete theorem mappings. It identifies which further measurements and
 bounds would strengthen physical recovery, alongside exact compilation
 simplifications. Existing prediction receipts remain preserved.
 
+The [implemented follow-up](IMPROVEMENTS_20261015.md) connects continuing
+mixed-state observer histories to a supplied finite environment, adds an
+[occupation-control calculation](occupation_control/README.md), and executes
+[interventions that expose calibration blind directions](identification_design/README.md).
+It also shortens native parity/number-phase words and shares compilation
+caches between complete empirical replays. Supplied laws and physical
+source-selection obligations remain explicit.
+
 The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
 selection work on the carrier architecture, observer interface and its
 implementation, and complete repair rule. Observable effective physics must
@@ -27,6 +35,13 @@ keeps one preparation through two scalar reads, later feedback and a clock
 probe, then completes the native actuation. Its 4,224 joint outcomes at each
 executed cutoff retain the disturbed quantum state and every record. The
 same-history occupation bound includes those later operations.
+
+The [mixed-state continuation](common_source/OPEN_HISTORY.md) connects that
+same grammar to the finite source environment added by the anharmonic
+transfer work. Fresh unobserved phase operations compose with all four
+reads and native memory recovery. Its complete mixed outputs, continuation,
+independent noise controls and error/resource ledgers are executable; the
+laboratory calibration of the separate transfer package is not imported.
 
 The separate [smooth-history certificate](common_source/SMOOTH_HISTORY.md)
 compares all 16 ideal finite work outputs at d=2,4 with the corresponding

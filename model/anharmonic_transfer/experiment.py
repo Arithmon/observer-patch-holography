@@ -19,7 +19,7 @@ ROOT = FOLDER.parents[1]
 RUN_NAMES = ('primary', 'step_refinement', 'occupation_refinement',
              'preparation_adjusted', 'instantaneous_carrier_control',
              'harmonic_control', 'frozen_control')
-SUPPORTED_PROTOCOL_DIGEST = 'dc74e7adaae5c14895ba9f3eca3ea0b3d7ac49d526fdaa517bc5e765f8d6f63c'
+SUPPORTED_PROTOCOL_DIGEST = '264200659b2f0a41d9448e1fe4de1740f9cc234f96f4394e7d7a0adb5035c235'
 SOURCE_PATHS = tuple('model/anharmonic_transfer/'+name+'.py' for name in
                     ('source', 'environment', 'bounds', 'calibration', 'data', 'experiment')) + (
     'model/anharmonic_observations/source.py',
@@ -63,7 +63,7 @@ def _configuration(protocol):
     if protocol['cases'] != cases or protocol['runs'] != list(RUN_NAMES):
         raise ValueError('Unsupported case mapping or run inventory')
     # Preserve the previously reviewed calibration source, not a later fit.
-    if (protocol['preparation']['prior_receipt'] != 'model/anharmonic_observations/results.json'
+    if (protocol['preparation']['prior_receipt'] != 'model/anharmonic_transfer/data/calibration_receipt.json.gz'
             or protocol['preparation']['prior_receipt_sha256'] !=
             '80504ae1e92e94de0e5f50484da4a5dbbdb0981389c5733066468b36e961f215'):
         raise ValueError('Unsupported preparation calibration source')

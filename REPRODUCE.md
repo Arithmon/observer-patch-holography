@@ -16,7 +16,7 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all 34 retained
+The verifier checks the artifact manifests and replays all 39 retained
 receipts. The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and
@@ -30,6 +30,10 @@ complete sharp-output comparison, the observer readout, smooth-detector and
 thermal-clock bridges, the causal cones and the native field relations.
 Its corrected native-memory history adds a source encoder and recovery,
 complete logical/reference comparisons, and the matched passive failure control.
+The [mixed-state observer](model/common_source/OPEN_HISTORY.md) additionally
+executes the finite source environment through the four-read continuation,
+checks complete quantum outputs and fresh-draw controls, and attaches the
+same corrected/passive native memory with separate error and resource budgets.
 The [smooth-history certificate](model/common_source/SMOOTH_HISTORY.md)
 compares all 16 retained work outputs with the infinite history for each of
 the three native-current preparations, including later feedback and the

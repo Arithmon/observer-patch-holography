@@ -14,7 +14,7 @@
   "mapping_evidence": "Paper Fig.5 caption and prose agree. Deposited README swaps d/e; zero-time row independently identifies d as the centred preparation. Executor phi has the opposite sign to the target potential phase, by the selected small-angle generator. No later trajectory selected this mapping.",
   "preparation": {
     "primary": "Reuse the earlier zero-time complex-scan alpha magnitude and thermal occupation, changing only declared sign or centre. No new fitted parameters.",
-    "prior_receipt": "model/anharmonic_observations/results.json",
+    "prior_receipt": "model/anharmonic_transfer/data/calibration_receipt.json.gz",
     "prior_receipt_sha256": "80504ae1e92e94de0e5f50484da4a5dbbdb0981389c5733066468b36e961f215",
     "secondary": "Five independent zero-time displacement calibrations with the same fixed thermal occupation. Invert x=exp(-(nbar+1/2)*h^2)*sin(2*alpha*h)/(sqrt(2)*h) on its principal branch. The preparation domain is |alpha|<=pi/(4*h). No positive-time datum is used. This is a secondary preparation-adjusted analysis, not the no-new-fit transfer.",
     "uncertainty": "Neither prior preparation covariance nor authenticated zero-time accepted counts are available. Do not assign a statistical confidence region."

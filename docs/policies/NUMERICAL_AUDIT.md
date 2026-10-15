@@ -77,6 +77,22 @@ not a domain argument.
   A failed chart is not an intrinsically unresolved span: compare alternate
   exact presentations before attributing an intermediate underflow to the
   source. Check small retained projector entries on their own scale.
+  For repeated near-identity operations, check the zero-duration limit and
+  accumulated observables: a small unitary phase error can repeat at every
+  step. Cancel inverse words only where their source identity is exact;
+  retain other phase remainders, raw contractions and correction diagnostics.
+  An affine inverse-word evaluation such as `I+B(D-I)C` can suppress phase
+  cancellation error while introducing norm drift when the rounded `C` is
+  not exactly `B^-1`. Passing a single-operation target-residual check does
+  not guarantee probability conservation after repetition. Test complete
+  process mass and retained output laws at both coarse and fine time steps,
+  including every retained refinement cutoff. When exact source unitarity
+  justifies an operation-level polar representation, retain the raw and
+  corrected phase-sensitive target checks, fixed polar guards and a bound
+  on the total representation change. Do not normalize evolving states or
+  selected outcomes to conceal the defect. Include nearby unitary inverse
+  perturbations that expose accumulated norm drift, and verify that wrong
+  unitary phases fail after restoration.
   A trace-preserving channel can have the wrong action. Check it on
   independent input operators and its reference on each nonzero component's
   own scale. An exactly positive source can have both a computed zero
@@ -153,6 +169,16 @@ not a domain argument.
   Passing original inputs to a repaired scalar routine does not repair a
   wrapper's separate pairings: exercise a small linear component alongside
   an ordinary quadratic response, as well as a completely small receipt.
+  Reject nonfinite diagnostics at the scientific acceptance gate itself;
+  a later JSON serialization failure does not make an earlier `all_pass`
+  result valid. For continuing quantum instruments, include wrong-but-CPTP
+  controls (wrong tensor order, feedback or hidden-draw correlation) alongside
+  trace-preservation checks. Check complete reference/record allocation before
+  executing source services, and test mutable checkpoint envelopes as well
+  as their array buffers.
+  Round-trip actual producer outputs through the strict JSON comparator;
+  a CLI test returning a serialized fixture misses runtime type
+  mismatches such as tuples becoming lists.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto

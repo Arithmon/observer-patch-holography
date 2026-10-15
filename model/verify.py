@@ -9,6 +9,8 @@ from pathlib import Path
 import subprocess
 import sys
 
+from .replay_empirical import EMPIRICAL_REPLAYS
+
 ROOT = Path(__file__).resolve().parents[1]
 PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/observer/scalar_response", "model/observer/source_scalar",
@@ -17,8 +19,12 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/scalar_observations", "model/observer_reconstruction",
            "model/interacting_reconstruction", "model/coupled_reconstruction",
            "model/anharmonic_observations", "model/anharmonic_transfer",
-           "model/audit_20261015")
+           "model/audit_20261015", "model/occupation_control",
+           "model/identification_design")
 REPLAYS = (
+    ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
+    ("model.occupation_control", None, "model/occupation_control/results.json"),
+    ("model.identification_design", None, "model/identification_design/results.json"),
     ("model.anharmonic_transfer", None, "model/anharmonic_transfer/results.json"),
     ("model.anharmonic_observations", None, "model/anharmonic_observations/results.json"),
     ("model.coupled_reconstruction", None, "model/coupled_reconstruction/results.json"),
@@ -101,13 +107,23 @@ def main():
     environment = dict(os.environ)
     environment.setdefault("OPENBLAS_NUM_THREADS", "1")
     environment.setdefault("OMP_NUM_THREADS", "1")
-    for module, command, receipt in REPLAYS:
+    index = 0
+    while index < len(REPLAYS):
+        if REPLAYS[index:index+len(EMPIRICAL_REPLAYS)] == EMPIRICAL_REPLAYS:
+            # Keep both canonical checks, sharing only the expensive source
+            # compilation caches in this one child. Failures still propagate.
+            subprocess.run([sys.executable, "-m", "model.replay_empirical"],
+                           cwd=ROOT, env=environment, check=True)
+            index += len(EMPIRICAL_REPLAYS)
+            continue
+        module, command, receipt = REPLAYS[index]
         argv = [sys.executable, "-m", module]
         if command is not None:
             argv.append(command)
         argv.extend(["--check", receipt])
         print(f"Replaying {receipt}", flush=True)
         subprocess.run(argv, cwd=ROOT, env=environment, check=True)
+        index += 1
     print(f"All {len(REPLAYS)} model receipts reproduced", flush=True)
 
 

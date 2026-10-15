@@ -72,6 +72,16 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
+finite source environment operations to the existing continuing observer
+and corrected native memory. It executes all visible and raw native records,
+retains disturbed mixed outputs, preserves earlier record probabilities and
+resumes checked prefixes without resetting work. Temporal, occupation,
+Gaussian-channel and prepared noiseless comparison targets have separate
+explicit budgets. This completes that finite composition; calibrated
+physical services, native memory/record faults and a physical clock remain
+additional obligations.
+
 The [shared scalar observations](scalar_observations/README.md) compare
 the same smeared-field detector, preparation, feedback and Hamiltonian model
 times across interacting spatial refinements. A fixed physical torus and

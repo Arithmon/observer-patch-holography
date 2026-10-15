@@ -13,6 +13,14 @@ neither frozen predictions nor their scores. New diagnostic calculations are
 in [empirical_probe.py](empirical_probe.py), with complete outputs and input
 hashes in [empirical_probe.json](empirical_probe.json).
 
+The transfer input is the [compressed original receipt](data/transfer_receipt_93e59bfb.json.gz)
+from baseline `93e59bfb`. Its decompressed SHA-256 remains
+`71403f474c39705d20a6c30dc2f36b7556943dd4f1734a5a1a395184744d2398`.
+The probe validates that digest before parsing; its `transfer_receipt` input
+hash refers to these original bytes, and the manifest binds the compressed
+artifact. Subsequent live source-custody or numerical replay changes do not
+replace the historical preparation, scores or zero-time residuals used here.
+
 ## 1. The strongest missing simple comparison
 
 Frozen and harmonic controls remove the effect the apparatus was designed to

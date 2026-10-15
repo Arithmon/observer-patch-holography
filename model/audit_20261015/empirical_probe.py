@@ -7,9 +7,11 @@ all observations. No result here is a new excluded-data test.
 """
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from pathlib import Path
+import zlib
 
 import numpy as np
 from scipy.integrate import solve_ivp
@@ -17,6 +19,20 @@ from scipy.linalg import eigh, expm
 
 FOLDER = Path(__file__).resolve().parent
 MODEL = FOLDER.parent
+FROZEN_TRANSFER = FOLDER/'data/transfer_receipt_93e59bfb.json.gz'
+FROZEN_TRANSFER_SHA256 = '71403f474c39705d20a6c30dc2f36b7556943dd4f1734a5a1a395184744d2398'
+
+
+def frozen_transfer_bytes(path):
+    """Read the dated audit's exact original input, independent of live replay."""
+    compressed = path.read_bytes()
+    try:
+        raw = gzip.decompress(compressed)
+    except (OSError, EOFError, zlib.error) as error:
+        raise ValueError('Frozen transfer receipt has invalid gzip data') from error
+    if hashlib.sha256(raw).hexdigest() != FROZEN_TRANSFER_SHA256:
+        raise ValueError('Frozen transfer receipt differs from the audit baseline')
+    return raw
 
 
 def target_law(dimension, alpha, thermal, phase, times):
@@ -51,11 +67,12 @@ def target_law(dimension, alpha, thermal, phase, times):
 
 def run():
     paths = {
-        'transfer_receipt': MODEL / 'anharmonic_transfer/results.json',
+        'transfer_receipt': FROZEN_TRANSFER,
         'transfer_data': MODEL / 'anharmonic_transfer/data/asymmetric_wells_expectation_x.csv',
         'audit_probe': Path(__file__).resolve(),
     }
-    receipt = json.loads(paths['transfer_receipt'].read_text())
+    transfer_bytes = frozen_transfer_bytes(paths['transfer_receipt'])
+    receipt = json.loads(transfer_bytes)
     data = np.genfromtxt(paths['transfer_data'], delimiter=',', skip_header=1)
     times, observations = data[:, 0] / 1000, data[:, 1:]
     parameters = receipt['prediction']['prior_parameters']
@@ -88,7 +105,8 @@ def run():
     return {
         'schema': 'oph.empirical_audit.retrospective.v1',
         'status': 'Already scored outcomes inspected; diagnostic comparison only. No fits.',
-        'input_sha256': {name: hashlib.sha256(path.read_bytes()).hexdigest()
+        'input_sha256': {name: hashlib.sha256(
+            transfer_bytes if name == 'transfer_receipt' else path.read_bytes()).hexdigest()
                          for name, path in paths.items()},
         'fixed_target_model': {
             'hamiltonian': 'delta*N+4000*cos((pi/3)*(a+a_dagger)+potential_phase)',

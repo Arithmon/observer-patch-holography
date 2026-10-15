@@ -12,7 +12,10 @@ Baseline: public model commit `93e59bfb8de1501174c08c800912635159ae8615`.
 Three independent reviews examined mathematics, empirical provenance and
 architecture, with additional inspection of source execution and replay.
 New probes are retrospective diagnostics. The original protocols, source
-words, data and result receipts remain unchanged.
+words, data and result receipts at this baseline are preserved. The empirical
+probe reads a [compressed copy of its original transfer input](data/transfer_receipt_93e59bfb.json.gz),
+verifying its decompressed SHA-256 before use; live receipt regeneration
+does not change this dated audit's input.
 
 ## Findings that affect what we can conclude
 
@@ -156,5 +159,6 @@ recompute both new diagnostic receipts; mathematical probes exercise complete
 matrices and independent generator constructions. The existing transfer
 checker additionally tests amplified summary differences and rejects altered
 summaries inconsistent with their underlying predictions. Its exact protocol,
-word hashes and rational certificates remain enforced. Existing retained
-prediction/result bytes have not been regenerated.
+word hashes and rational certificates remain enforced. The historical input
+bytes remain fixed in the compressed snapshot. Regenerating this diagnostic
+receipt binds the probe implementation while preserving that original input.
