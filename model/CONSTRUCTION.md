@@ -72,6 +72,17 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [primitive observer runtime](primitive_observer/README.md) executes both
+the common interacting observer and the separate laboratory apparatus through
+complete instruments on mixed states and retained records. Its native wrapper
+preserves raw repair outputs and protected-memory controls; observer access,
+GNS embeddings, modular diagnostics and a supported-region forecast use the
+same conditional work history. Its exact fixed-seam completion attachment
+identifies the binary native E channel with the declared entropy completion
+and controls the finite-event C/E difference. The construction does not
+instantiate the full refinement tower or identify a modular parameter with
+physical time. Distinct supplied apparatus programs remain distinct models.
+
 The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
 finite source environment operations to the existing continuing observer
 and corrected native memory. It executes all visible and raw native records,

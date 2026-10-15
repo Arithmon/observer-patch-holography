@@ -1,4 +1,4 @@
-"""Both canonical empirical checks must run, with ordinary failure semantics."""
+"""All canonical empirical checks must run, with ordinary failure semantics."""
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -22,9 +22,12 @@ def test_fixed_worker_invokes_each_canonical_check_and_restores_argv(monkeypatch
 
     monkeypatch.setattr(worker.importlib, "import_module", load)
     worker.main([])
-    assert imported == ["model.anharmonic_transfer.__main__",
+    assert imported == ["model.primitive_observer.__main__",
+                        "model.anharmonic_transfer.__main__",
                         "model.anharmonic_observations.__main__"]
     assert checked == [
+        ["model.primitive_observer", "--check",
+         str(worker.ROOT / "model/primitive_observer/results.json")],
         ["model.anharmonic_transfer", "--check",
          str(worker.ROOT / "model/anharmonic_transfer/results.json")],
         ["model.anharmonic_observations", "--check",
@@ -33,7 +36,7 @@ def test_fixed_worker_invokes_each_canonical_check_and_restores_argv(monkeypatch
     assert sys.argv is original
 
 
-@pytest.mark.parametrize("failed_index", [0, 1])
+@pytest.mark.parametrize("failed_index", [0, 1, 2])
 @pytest.mark.parametrize("failure", [ValueError("replay mismatch"), SystemExit(7)])
 def test_failure_stops_checks_and_restores_argv(monkeypatch, failed_index, failure):
     original = ["parent"]
@@ -69,7 +72,7 @@ def test_worker_rejects_alternate_modules_receipts_and_writes(monkeypatch, argum
 
 def test_verifier_preserves_every_replay_in_order_when_grouping(monkeypatch):
     # Compare the expanded child commands with the entire original declaration,
-    # so grouping cannot silently drop either empirical check or its neighbors.
+    # so grouping cannot silently drop an empirical check or its neighbors.
     monkeypatch.setattr(sys, "argv", ["verify"])
     monkeypatch.setattr(verify, "verify_artifacts", lambda: 1)
     expanded, children = [], []
@@ -88,7 +91,7 @@ def test_verifier_preserves_every_replay_in_order_when_grouping(monkeypatch):
     monkeypatch.setattr(verify.subprocess, "run", run)
     verify.main()
     assert tuple(expanded) == verify.REPLAYS
-    assert len(children) == len(verify.REPLAYS)-1
+    assert len(children) == len(verify.REPLAYS)-len(worker.EMPIRICAL_REPLAYS)+1
     assert sum(argv[-1] == "model.replay_empirical" for argv in children) == 1
 
 
