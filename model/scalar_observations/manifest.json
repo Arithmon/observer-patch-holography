@@ -63,7 +63,7 @@
     "source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
     "test_bounds.py": "dd6ad723f94f787f8edb573e03a00726ac5e1378c36d2eddec85fd99283fe32d",
     "test_lattice.py": "0309a9bb11b6fc741f2eb7643c517c534b4ac0954657c5c2fc4dc72cb202d5f2",
-    "test_occupation_audit.py": "8a5c6eb85bcf34bb2a0add26b298e877202a75df127dc6f538e57d0e02b3b803",
+    "test_occupation_audit.py": "67869c9f3af4e51af07afc162dc40570ff84675d58692afb61128d220d8f757b",
     "test_occupation_receipt.py": "423969534e0e68f936ef14fc175ba8b56a8c37a2eee689443d7d70d9758c3952",
     "test_occupation_validation.py": "b0c8fbfb57438717c7e900b07562159e59bde52f72132e7bed80bd1cf53df4ad",
     "test_protocol.py": "452e0ca59e847281ab29f4ccd6c771e02589080a2c92d3067b5ca8151711b18b",

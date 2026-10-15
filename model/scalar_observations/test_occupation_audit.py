@@ -7,6 +7,7 @@ from fractions import Fraction as F
 from itertools import combinations, product
 from math import factorial, prod, sqrt
 
+import mpmath
 import numpy as np
 import pytest
 from numpy.polynomial.legendre import leggauss
@@ -204,8 +205,15 @@ def test_unrestricted_weyl_elements_match_independent_hermite_quadrature():
         actual = complex(float(real), float(imaginary))*np.exp(-1/8)
         assert actual == pytest.approx(expected, abs=4e-12)
     lower, upper = readout.exp_minus_eighth(12)
-    # Compare at an order whose interval remains visible at float precision.
-    assert float(lower) <= np.exp(-1/8) <= float(upper)
+    # This exact interval is narrower than binary64 spacing. Keep its rational
+    # endpoints exact while checking an independent high-precision exponential;
+    # platform differences in NumPy exp must not masquerade as proof failures.
+    context = mpmath.mp.clone()
+    context.dps = 80
+    lower_mp = context.mpf(lower.numerator)/lower.denominator
+    upper_mp = context.mpf(upper.numerator)/upper.denominator
+    independent = context.exp(-context.mpf(1)/8)
+    assert lower_mp < independent < upper_mp
 
 
 def _readout_quadrature(vector, weight):
