@@ -1,7 +1,6 @@
 """Receipt-level scientific scope and actual offline replay regressions."""
 from copy import deepcopy
 from fractions import Fraction as F
-import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -17,19 +16,14 @@ from ...observer.scalar_response.experiment import compare_receipt
 
 FROZEN_PREVIOUS_ARTIFACTS = {
     'protocol.py': 'b07cd72b87aa73f464ec90b79d53077f8c5da322acced1d58058bcd49a19dc7d',
-    'data/occupation_source_receipt.json.gz': '1c3163dfffa5f19c9b6cb18c96d3d3e47dd378a1bcb0b531369f59c1fa2e65f7',
+    'results.json': '1c3163dfffa5f19c9b6cb18c96d3d3e47dd378a1bcb0b531369f59c1fa2e65f7',
     'occupation_results.json': 'd846be5d7f6cdd79014ebc501048664f5e761d3affcdbd1cb358fd3738cb43ed',
 }
 
 
 def _previous_hashes():
-    result = {}
-    for name in FROZEN_PREVIOUS_ARTIFACTS:
-        raw = (FOLDER.parent/name).read_bytes()
-        if name.endswith('.gz'):
-            raw = gzip.decompress(raw)
-        result[name] = hashlib.sha256(raw).hexdigest()
-    return result
+    return {name: hashlib.sha256((FOLDER.parent/name).read_bytes()).hexdigest()
+            for name in FROZEN_PREVIOUS_ARTIFACTS}
 
 
 @pytest.fixture(scope='module')

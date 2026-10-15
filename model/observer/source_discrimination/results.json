@@ -337,7 +337,7 @@
       },
       "executions": [
         {
-          "abort_probability": 1.384554674956889e-29,
+          "abort_probability": 2.2229682199983724e-28,
           "branches": [
             {
               "abort": false,
@@ -347,7 +347,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 6.648209258694216e-26,
+              "probability": 1.1124371890538177e-25,
               "record_code": 0
             },
             {
@@ -358,7 +358,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.4999999999976865,
+              "probability": 0.499999999999462,
               "record_code": 0
             },
             {
@@ -369,7 +369,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.947916155469537e-30,
+              "probability": 4.562189696271551e-29,
               "record_code": 1
             },
             {
@@ -380,7 +380,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.546213626320602e-30,
+              "probability": 2.800651345886813e-28,
               "record_code": 1
             },
             {
@@ -391,7 +391,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.2276597419371664e-29,
+              "probability": 2.06126549021063e-28,
               "record_code": 2
             },
             {
@@ -402,7 +402,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.1528931636448732e-28,
+              "probability": 1.342221619937593e-27,
               "record_code": 2
             },
             {
@@ -413,7 +413,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.010510117499256e-31,
+              "probability": 4.8952730244529705e-30,
               "record_code": 3
             },
             {
@@ -424,7 +424,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.026291227478323e-31,
+              "probability": 4.509603846089381e-30,
               "record_code": 3
             },
             {
@@ -435,7 +435,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935402,
+              "probability": 0.12499999999971191,
               "record_code": 0
             },
             {
@@ -446,7 +446,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999941887,
+              "probability": 0.12499999999987396,
               "record_code": 0
             },
             {
@@ -457,7 +457,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.0173923522501212e-30,
+              "probability": 2.3621285403700997e-29,
               "record_code": 1
             },
             {
@@ -468,7 +468,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.0301183661887752e-30,
+              "probability": 6.677330701240902e-29,
               "record_code": 1
             },
             {
@@ -479,7 +479,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999870254,
+              "probability": 0.24999999999942035,
               "record_code": 2
             },
             {
@@ -490,7 +490,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.34054398710186e-28,
+              "probability": 3.358668678172601e-27,
               "record_code": 2
             },
             {
@@ -501,7 +501,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.289175990057915e-29,
+              "probability": 2.0421700711735825e-28,
               "record_code": 3
             },
             {
@@ -512,22 +512,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.501067144919794e-31,
+              "probability": 8.674938011936629e-30,
               "record_code": 3
             }
           ],
-          "classical_sampling_mass_correction": 4.838018874409045e-12,
-          "maximum_branch_density_frobenius_error": 2.31385020396421e-12,
-          "maximum_retained_preparation_density_frobenius_error": 2.31385020396421e-12,
-          "plus_probability": 0.6249999999971054,
-          "raw_total_probability": 0.999999999995162,
+          "classical_sampling_mass_correction": 1.5317747070753285e-12,
+          "maximum_branch_density_frobenius_error": 5.83549483951318e-13,
+          "maximum_retained_preparation_density_frobenius_error": 5.83549483951318e-13,
+          "plus_probability": 0.624999999999336,
+          "raw_total_probability": 0.9999999999984682,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61955.34872144431,
             "maximum_live_code_qubits": 11,
-            "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 11,
             "native_pulses": 32006,
             "pair_code_pulses": 9664,
@@ -548,7 +548,7 @@
           "setting": "phase_0"
         },
         {
-          "abort_probability": 1.28332105202437e-29,
+          "abort_probability": 1.9823655457223175e-28,
           "branches": [
             {
               "abort": false,
@@ -558,7 +558,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.49999999999742295,
+              "probability": 0.49999999999882927,
               "record_code": 0
             },
             {
@@ -569,7 +569,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.3286568357865935e-28,
+              "probability": 4.341988441322469e-27,
               "record_code": 0
             },
             {
@@ -580,7 +580,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.7846485416885027e-30,
+              "probability": 3.132326590636561e-28,
               "record_code": 1
             },
             {
@@ -591,7 +591,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.1835806538943166e-30,
+              "probability": 4.839066372322014e-30,
               "record_code": 1
             },
             {
@@ -602,7 +602,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 6.215988790140413e-29,
+              "probability": 1.5216663258775617e-27,
               "record_code": 2
             },
             {
@@ -613,7 +613,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 6.725700675826017e-31,
+              "probability": 4.8766174865797787e-29,
               "record_code": 2
             },
             {
@@ -624,7 +624,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.0209743021777384e-31,
+              "probability": 4.914464179310185e-30,
               "record_code": 3
             },
             {
@@ -635,7 +635,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.015827042799787e-31,
+              "probability": 4.490412691228204e-30,
               "record_code": 3
             },
             {
@@ -646,7 +646,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.1249999999993538,
+              "probability": 0.12499999999970447,
               "record_code": 0
             },
             {
@@ -657,7 +657,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999942003,
+              "probability": 0.12499999999985564,
               "record_code": 0
             },
             {
@@ -668,7 +668,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.59092493225658e-30,
+              "probability": 2.0443325663384486e-29,
               "record_code": 1
             },
             {
@@ -679,7 +679,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.6331310464248456e-31,
+              "probability": 3.937113778948314e-29,
               "record_code": 1
             },
             {
@@ -690,7 +690,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.2499999999987007,
+              "probability": 0.24999999999940092,
               "record_code": 2
             },
             {
@@ -701,7 +701,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.095196126644233e-28,
+              "probability": 3.29268559501676e-27,
               "record_code": 2
             },
             {
@@ -712,7 +712,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.2156440275832779e-29,
+              "probability": 1.8782042056464005e-28,
               "record_code": 3
             },
             {
@@ -723,22 +723,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.7309010991316823e-31,
+              "probability": 1.0112571370532961e-30,
               "record_code": 3
             }
           ],
-          "classical_sampling_mass_correction": 5.102473998874757e-12,
-          "maximum_branch_density_frobenius_error": 2.5773816639828915e-12,
-          "maximum_retained_preparation_density_frobenius_error": 2.5773816639828915e-12,
-          "plus_probability": 0.12499999999942003,
-          "raw_total_probability": 0.9999999999948975,
+          "classical_sampling_mass_correction": 2.209676885911449e-12,
+          "maximum_branch_density_frobenius_error": 1.1786601766810827e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.1786601766810827e-12,
+          "plus_probability": 0.12499999999985564,
+          "raw_total_probability": 0.9999999999977903,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61958.4903140979,
             "maximum_live_code_qubits": 11,
-            "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 11,
             "native_pulses": 32006,
             "pair_code_pulses": 9664,
@@ -759,7 +759,7 @@
           "setting": "phase_pi"
         },
         {
-          "abort_probability": 1.2890887505130448e-29,
+          "abort_probability": 2.04374262629483e-28,
           "branches": [
             {
               "abort": false,
@@ -769,7 +769,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999871142,
+              "probability": 0.24999999999941502,
               "record_code": 0
             },
             {
@@ -780,7 +780,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.2499999999988433,
+              "probability": 0.24999999999972963,
               "record_code": 0
             },
             {
@@ -791,7 +791,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.385351254730691e-30,
+              "probability": 1.5917652298850364e-28,
               "record_code": 1
             },
             {
@@ -802,7 +802,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.718727830630454e-30,
+              "probability": 1.762240023316569e-28,
               "record_code": 1
             },
             {
@@ -813,7 +813,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.638253765012146e-29,
+              "probability": 8.695703298594355e-28,
               "record_code": 2
             },
             {
@@ -824,7 +824,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.42047976462006e-29,
+              "probability": 8.396312302636157e-28,
               "record_code": 2
             },
             {
@@ -835,7 +835,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.823964220009607e-31,
+              "probability": 4.044723314003896e-30,
               "record_code": 3
             },
             {
@@ -846,7 +846,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.212837124967936e-31,
+              "probability": 5.360153556538369e-30,
               "record_code": 3
             },
             {
@@ -857,7 +857,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.1249999999993533,
+              "probability": 0.12499999999970694,
               "record_code": 0
             },
             {
@@ -868,7 +868,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999942026,
+              "probability": 0.12499999999986022,
               "record_code": 0
             },
             {
@@ -879,7 +879,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.990280863997054e-30,
+              "probability": 1.7368237155518896e-29,
               "record_code": 1
             },
             {
@@ -890,7 +890,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.1377381429713135e-30,
+              "probability": 5.916070738587819e-29,
               "record_code": 1
             },
             {
@@ -901,7 +901,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999870254,
+              "probability": 0.24999999999940387,
               "record_code": 2
             },
             {
@@ -912,7 +912,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.25332664157225e-28,
+              "probability": 3.334066102746338e-27,
               "record_code": 2
             },
             {
@@ -923,7 +923,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.2258385699994164e-29,
+              "probability": 1.9216714468397051e-28,
               "record_code": 3
             },
             {
@@ -934,22 +934,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.2882167063853039e-31,
+              "probability": 2.8022410749702514e-30,
               "record_code": 3
             }
           ],
-          "classical_sampling_mass_correction": 4.969247235919738e-12,
-          "maximum_branch_density_frobenius_error": 1.2976246811367984e-12,
-          "maximum_retained_preparation_density_frobenius_error": 1.2976246811367984e-12,
-          "plus_probability": 0.37499999999826356,
-          "raw_total_probability": 0.9999999999950308,
+          "classical_sampling_mass_correction": 1.8842705173938157e-12,
+          "maximum_branch_density_frobenius_error": 6.120456394425155e-13,
+          "maximum_retained_preparation_density_frobenius_error": 6.120456394425155e-13,
+          "plus_probability": 0.3749999999995899,
+          "raw_total_probability": 0.9999999999981157,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61956.91951777111,
             "maximum_live_code_qubits": 11,
-            "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 11,
             "native_pulses": 32006,
             "pair_code_pulses": 9664,
@@ -970,7 +970,7 @@
           "setting": "phase_pi_over_2"
         },
         {
-          "abort_probability": 1.33393786349063e-29,
+          "abort_probability": 2.102666882860345e-28,
           "branches": [
             {
               "abort": false,
@@ -980,7 +980,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 3.324489391631398e-26,
+              "probability": 5.562033769607139e-26,
               "record_code": 0
             },
             {
@@ -991,7 +991,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 0.24999999999884331,
+              "probability": 0.24999999999973105,
               "record_code": 0
             },
             {
@@ -1002,7 +1002,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 2.4739580777347684e-30,
+              "probability": 2.2810948481357755e-29,
               "record_code": 1
             },
             {
@@ -1013,7 +1013,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.773106813160301e-30,
+              "probability": 1.4003256729434058e-28,
               "record_code": 1
             },
             {
@@ -1024,7 +1024,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.1138298709685835e-29,
+              "probability": 1.0306327451053148e-28,
               "record_code": 2
             },
             {
@@ -1035,7 +1035,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 5.764465818224369e-29,
+              "probability": 6.711108099687963e-28,
               "record_code": 2
             },
             {
@@ -1046,7 +1046,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.5052550587496282e-31,
+              "probability": 2.4476365122264852e-30,
               "record_code": 3
             },
             {
@@ -1057,7 +1057,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.013145613739162e-31,
+              "probability": 2.2548019230446913e-30,
               "record_code": 3
             },
             {
@@ -1068,7 +1068,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.06249999999967701,
+              "probability": 0.06249999999985599,
               "record_code": 0
             },
             {
@@ -1079,7 +1079,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 0.06249999999970944,
+              "probability": 0.06249999999993702,
               "record_code": 0
             },
             {
@@ -1090,7 +1090,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.5086961761250603e-30,
+              "probability": 1.1810642701850507e-29,
               "record_code": 1
             },
             {
@@ -1101,7 +1101,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 5.150591830943876e-31,
+              "probability": 3.338665350620451e-29,
               "record_code": 1
             },
             {
@@ -1112,7 +1112,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.1249999999993513,
+              "probability": 0.12499999999971018,
               "record_code": 2
             },
             {
@@ -1123,7 +1123,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.67027199355093e-28,
+              "probability": 1.6793343390863006e-27,
               "record_code": 2
             },
             {
@@ -1134,7 +1134,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 6.445879950289577e-30,
+              "probability": 1.0210850355867915e-28,
               "record_code": 3
             },
             {
@@ -1145,7 +1145,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.250533572459897e-31,
+              "probability": 4.3374690059683144e-30,
               "record_code": 3
             },
             {
@@ -1156,7 +1156,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.2499999999987114,
+              "probability": 0.24999999999941463,
               "record_code": 0
             },
             {
@@ -1167,7 +1167,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 6.724943608574986e-29,
+              "probability": 2.171746737636737e-27,
               "record_code": 0
             },
             {
@@ -1178,7 +1178,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 8.923242708442515e-31,
+              "probability": 1.56616329531828e-28,
               "record_code": 1
             },
             {
@@ -1189,7 +1189,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.0917903269471576e-30,
+              "probability": 2.4195331861610074e-30,
               "record_code": 1
             },
             {
@@ -1200,7 +1200,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 3.107994395070206e-29,
+              "probability": 7.6083316293878075e-28,
               "record_code": 2
             },
             {
@@ -1211,7 +1211,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 3.3628503379130005e-31,
+              "probability": 2.4383087432898865e-29,
               "record_code": 2
             },
             {
@@ -1222,7 +1222,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.5104871510888685e-31,
+              "probability": 2.4572320896550917e-30,
               "record_code": 3
             },
             {
@@ -1233,7 +1233,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.0079135213998931e-31,
+              "probability": 2.2452063456141013e-30,
               "record_code": 3
             },
             {
@@ -1244,7 +1244,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.0624999999996769,
+              "probability": 0.06249999999985222,
               "record_code": 0
             },
             {
@@ -1255,7 +1255,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 0.062499999999709996,
+              "probability": 0.062499999999927836,
               "record_code": 0
             },
             {
@@ -1266,7 +1266,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 7.954624661282899e-31,
+              "probability": 1.0221662831692244e-29,
               "record_code": 1
             },
             {
@@ -1277,7 +1277,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.3165655232124226e-31,
+              "probability": 1.9685568894741565e-29,
               "record_code": 1
             },
             {
@@ -1288,7 +1288,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.12499999999935031,
+              "probability": 0.1249999999997004,
               "record_code": 2
             },
             {
@@ -1299,7 +1299,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 2.5475980633221154e-28,
+              "probability": 1.6463427975083793e-27,
               "record_code": 2
             },
             {
@@ -1310,7 +1310,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 6.078220137916392e-30,
+              "probability": 9.391021028232e-29,
               "record_code": 3
             },
             {
@@ -1321,22 +1321,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 8.654505495658406e-32,
+              "probability": 5.056285685266479e-31,
               "record_code": 3
             }
           ],
-          "classical_sampling_mass_correction": 4.970357458944363e-12,
-          "maximum_branch_density_frobenius_error": 1.2985680462893747e-12,
-          "maximum_retained_preparation_density_frobenius_error": 1.2887740726016206e-12,
-          "plus_probability": 0.3749999999982628,
-          "raw_total_probability": 0.9999999999950296,
+          "classical_sampling_mass_correction": 1.8706147741909263e-12,
+          "maximum_branch_density_frobenius_error": 5.93235068967859e-13,
+          "maximum_retained_preparation_density_frobenius_error": 5.893300883405413e-13,
+          "plus_probability": 0.37499999999959593,
+          "raw_total_probability": 0.9999999999981294,
           "resources": {
             "blank_resets": 5,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61959.2757122613,
             "maximum_live_code_qubits": 11,
-            "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 11,
             "native_pulses": 32007,
             "pair_code_pulses": 9664,
@@ -2023,7 +2023,7 @@
       },
       "executions": [
         {
-          "abort_probability": 9.367052724187056e-29,
+          "abort_probability": 1.1324975878356216e-27,
           "branches": [
             {
               "abort": false,
@@ -2033,7 +2033,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999937006,
+              "probability": 0.12499999999972784,
               "record_code": 0
             },
             {
@@ -2044,7 +2044,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999942542,
+              "probability": 0.12499999999987202,
               "record_code": 0
             },
             {
@@ -2055,7 +2055,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.908012196042369e-30,
+              "probability": 9.366674261984658e-29,
               "record_code": 1
             },
             {
@@ -2066,7 +2066,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.541135053819214e-31,
+              "probability": 6.326817563674603e-29,
               "record_code": 1
             },
             {
@@ -2077,7 +2077,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.591500024240077e-29,
+              "probability": 3.6368432301877115e-28,
               "record_code": 2
             },
             {
@@ -2088,7 +2088,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.565181703225689e-29,
+              "probability": 2.3676604928340106e-28,
               "record_code": 2
             },
             {
@@ -2099,7 +2099,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.945930332064697e-31,
+              "probability": 3.572353308909672e-30,
               "record_code": 3
             },
             {
@@ -2110,7 +2110,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.8903705159221884e-31,
+              "probability": 3.549309195996227e-30,
               "record_code": 3
             },
             {
@@ -2121,7 +2121,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999936275,
+              "probability": 0.12499999999971491,
               "record_code": 4
             },
             {
@@ -2132,7 +2132,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999941776,
+              "probability": 0.1249999999998592,
               "record_code": 4
             },
             {
@@ -2143,7 +2143,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.0526239905785935e-30,
+              "probability": 7.392691994645e-29,
               "record_code": 5
             },
             {
@@ -2154,7 +2154,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.8786105588113992e-30,
+              "probability": 6.894976765310026e-29,
               "record_code": 5
             },
             {
@@ -2165,7 +2165,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.7090259365852293e-29,
+              "probability": 4.5687388218652935e-28,
               "record_code": 6
             },
             {
@@ -2176,7 +2176,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.5474503181760033e-29,
+              "probability": 4.231919452916872e-28,
               "record_code": 6
             },
             {
@@ -2187,7 +2187,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.8063065847220729e-31,
+              "probability": 3.984096946071646e-31,
               "record_code": 7
             },
             {
@@ -2198,7 +2198,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 7.631148164158182e-34,
+              "probability": 1.7261234919016017e-32,
               "record_code": 7
             },
             {
@@ -2209,7 +2209,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935524,
+              "probability": 0.12499999999970997,
               "record_code": 0
             },
             {
@@ -2220,7 +2220,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999941903,
+              "probability": 0.12499999999987169,
               "record_code": 0
             },
             {
@@ -2231,7 +2231,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.5498275224294086e-30,
+              "probability": 5.3601354516548894e-30,
               "record_code": 1
             },
             {
@@ -2242,7 +2242,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.724155988175779e-31,
+              "probability": 7.610122112576141e-29,
               "record_code": 1
             },
             {
@@ -2253,7 +2253,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.264756834423042e-30,
+              "probability": 7.064652572528994e-29,
               "record_code": 2
             },
             {
@@ -2264,7 +2264,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.599748181329194e-29,
+              "probability": 3.1649607251196933e-28,
               "record_code": 2
             },
             {
@@ -2275,7 +2275,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 6.5582752123163695e-31,
+              "probability": 9.980175085722767e-30,
               "record_code": 3
             },
             {
@@ -2286,7 +2286,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.890184568109154e-31,
+              "probability": 8.735100643080131e-30,
               "record_code": 3
             },
             {
@@ -2297,7 +2297,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 8.975899561368424e-30,
+              "probability": 4.036580361243791e-28,
               "record_code": 4
             },
             {
@@ -2308,7 +2308,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.638203412836608e-32,
+              "probability": 7.758260434833381e-32,
               "record_code": 4
             },
             {
@@ -2319,7 +2319,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.1748738281143594e-30,
+              "probability": 1.7438805532977682e-29,
               "record_code": 5
             },
             {
@@ -2330,7 +2330,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.5067293323118337e-57,
+              "probability": 2.1706810326695956e-55,
               "record_code": 5
             },
             {
@@ -2341,7 +2341,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999870215,
+              "probability": 0.24999999999941847,
               "record_code": 6
             },
             {
@@ -2352,7 +2352,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.040339810767367e-28,
+              "probability": 3.0667639221794924e-27,
               "record_code": 6
             },
             {
@@ -2363,7 +2363,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.7821021030014004e-29,
+              "probability": 2.0874034566119244e-28,
               "record_code": 7
             },
             {
@@ -2374,22 +2374,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.5012198353840073e-56,
+              "probability": 2.5223721226804222e-54,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 4.947597886939548e-12,
-          "maximum_branch_density_frobenius_error": 1.2980123336150545e-12,
-          "maximum_retained_preparation_density_frobenius_error": 1.2980123336150545e-12,
-          "plus_probability": 0.3749999999982622,
-          "raw_total_probability": 0.9999999999950524,
+          "classical_sampling_mass_correction": 1.8258727862985324e-12,
+          "maximum_branch_density_frobenius_error": 5.854286361575775e-13,
+          "maximum_retained_preparation_density_frobenius_error": 5.854286361575775e-13,
+          "plus_probability": 0.37499999999960293,
+          "raw_total_probability": 0.9999999999981741,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61961.63190675149,
             "maximum_live_code_qubits": 12,
-            "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 12,
             "native_pulses": 32009,
             "pair_code_pulses": 9665,
@@ -2410,7 +2410,7 @@
           "setting": "phase_0"
         },
         {
-          "abort_probability": 4.6910526151339614e-29,
+          "abort_probability": 1.21661250516431e-27,
           "branches": [
             {
               "abort": false,
@@ -2420,7 +2420,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935926,
+              "probability": 0.12499999999971238,
               "record_code": 0
             },
             {
@@ -2431,7 +2431,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999941484,
+              "probability": 0.12499999999985667,
               "record_code": 0
             },
             {
@@ -2442,7 +2442,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.5624852297487935e-30,
+              "probability": 9.046971352279297e-29,
               "record_code": 1
             },
             {
@@ -2453,7 +2453,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 6.2842961422552034e-31,
+              "probability": 5.329995465281e-29,
               "record_code": 1
             },
             {
@@ -2464,7 +2464,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.254432508229765e-29,
+              "probability": 3.5556104058562555e-28,
               "record_code": 2
             },
             {
@@ -2475,7 +2475,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 9.105932988806535e-30,
+              "probability": 2.3657304795258936e-28,
               "record_code": 2
             },
             {
@@ -2486,7 +2486,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.945930332064836e-31,
+              "probability": 3.572353308908115e-30,
               "record_code": 3
             },
             {
@@ -2497,7 +2497,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.8903705159223434e-31,
+              "probability": 3.5493091959946635e-30,
               "record_code": 3
             },
             {
@@ -2508,7 +2508,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935178,
+              "probability": 0.12499999999970025,
               "record_code": 4
             },
             {
@@ -2519,7 +2519,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999940696,
+              "probability": 0.12499999999984443,
               "record_code": 4
             },
             {
@@ -2530,7 +2530,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.955691995660456e-31,
+              "probability": 7.810896453732946e-29,
               "record_code": 5
             },
             {
@@ -2541,7 +2541,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.2155576779816674e-31,
+              "probability": 7.313181224398512e-29,
               "record_code": 5
             },
             {
@@ -2552,7 +2552,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.455837998992366e-29,
+              "probability": 5.136041017804147e-28,
               "record_code": 6
             },
             {
@@ -2563,7 +2563,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.293589020345984e-29,
+              "probability": 4.799221648856413e-28,
               "record_code": 6
             },
             {
@@ -2574,7 +2574,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.80630658472208e-31,
+              "probability": 3.9840969460716335e-31,
               "record_code": 7
             },
             {
@@ -2585,7 +2585,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 7.631148164139357e-34,
+              "probability": 1.7261234919084976e-32,
               "record_code": 7
             },
             {
@@ -2596,7 +2596,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935471,
+              "probability": 0.12499999999970308,
               "record_code": 0
             },
             {
@@ -2607,7 +2607,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.1249999999994199,
+              "probability": 0.12499999999985548,
               "record_code": 0
             },
             {
@@ -2618,7 +2618,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.1330346701311493e-30,
+              "probability": 7.151636796779218e-30,
               "record_code": 1
             },
             {
@@ -2629,7 +2629,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.2820775422762225e-31,
+              "probability": 5.142971102487156e-29,
               "record_code": 1
             },
             {
@@ -2640,7 +2640,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.0449779030182615e-29,
+              "probability": 3.410398420668443e-29,
               "record_code": 2
             },
             {
@@ -2651,7 +2651,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 6.021876002303898e-30,
+              "probability": 1.7073830081649134e-28,
               "record_code": 2
             },
             {
@@ -2662,7 +2662,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.0527423887453284e-31,
+              "probability": 1.2502612223331034e-30,
               "record_code": 3
             },
             {
@@ -2673,7 +2673,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.7868288556274288e-31,
+              "probability": 1.766545511863828e-30,
               "record_code": 3
             },
             {
@@ -2684,7 +2684,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.5542378770354636e-29,
+              "probability": 3.572855152969955e-28,
               "record_code": 4
             },
             {
@@ -2695,7 +2695,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.6382034128366553e-32,
+              "probability": 7.758260434832401e-32,
               "record_code": 4
             },
             {
@@ -2706,7 +2706,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 8.420575883910882e-31,
+              "probability": 1.2769246105182074e-29,
               "record_code": 5
             },
             {
@@ -2717,7 +2717,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.683615177228875e-57,
+              "probability": 1.5640398525471738e-55,
               "record_code": 5
             },
             {
@@ -2728,7 +2728,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999870015,
+              "probability": 0.24999999999939893,
               "record_code": 6
             },
             {
@@ -2739,7 +2739,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.040339810767334e-28,
+              "probability": 3.066763922179248e-27,
               "record_code": 6
             },
             {
@@ -2750,7 +2750,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.732521738704041e-29,
+              "probability": 1.9976285222444602e-28,
               "record_code": 7
             },
             {
@@ -2761,22 +2761,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.413085522610987e-56,
+              "probability": 2.4145280375297892e-54,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 4.9923398748319414e-12,
-          "maximum_branch_density_frobenius_error": 1.3000101603554986e-12,
-          "maximum_retained_preparation_density_frobenius_error": 1.3000101603554986e-12,
-          "plus_probability": 0.3749999999982417,
-          "raw_total_probability": 0.9999999999950077,
+          "classical_sampling_mass_correction": 1.9287904606812845e-12,
+          "maximum_branch_density_frobenius_error": 6.048251049197121e-13,
+          "maximum_retained_preparation_density_frobenius_error": 6.048251049197121e-13,
+          "plus_probability": 0.3749999999995566,
+          "raw_total_probability": 0.9999999999980712,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61964.77349940508,
             "maximum_live_code_qubits": 12,
-            "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 12,
             "native_pulses": 32009,
             "pair_code_pulses": 9665,
@@ -2797,7 +2797,7 @@
           "setting": "phase_pi"
         },
         {
-          "abort_probability": 8.526613759945961e-29,
+          "abort_probability": 1.5836150495888855e-27,
           "branches": [
             {
               "abort": false,
@@ -2807,7 +2807,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999936492,
+              "probability": 0.1249999999997209,
               "record_code": 0
             },
             {
@@ -2818,7 +2818,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999942034,
+              "probability": 0.12499999999986519,
               "record_code": 0
             },
             {
@@ -2829,7 +2829,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.390131250606506e-30,
+              "probability": 6.554863336056502e-29,
               "record_code": 1
             },
             {
@@ -2840,7 +2840,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.1569296641734952e-30,
+              "probability": 2.2776650039162967e-29,
               "record_code": 1
             },
             {
@@ -2851,7 +2851,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.2487953931862865e-29,
+              "probability": 2.0975572401205527e-28,
               "record_code": 2
             },
             {
@@ -2862,7 +2862,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.04548956634271e-29,
+              "probability": 8.723194537312352e-29,
               "record_code": 2
             },
             {
@@ -2873,7 +2873,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.945930332064714e-31,
+              "probability": 3.572353308909316e-30,
               "record_code": 3
             },
             {
@@ -2884,7 +2884,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.8903705159222155e-31,
+              "probability": 3.549309195995872e-30,
               "record_code": 3
             },
             {
@@ -2895,7 +2895,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935678,
+              "probability": 0.12499999999970639,
               "record_code": 4
             },
             {
@@ -2906,7 +2906,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999941218,
+              "probability": 0.12499999999985023,
               "record_code": 4
             },
             {
@@ -2917,7 +2917,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.6169643961990183e-30,
+              "probability": 1.0987823301108133e-28,
               "record_code": 5
             },
             {
@@ -2928,7 +2928,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.4429509644316332e-30,
+              "probability": 1.0490108071777315e-28,
               "record_code": 5
             },
             {
@@ -2939,7 +2939,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.379391571618e-29,
+              "probability": 6.952510505935804e-28,
               "record_code": 6
             },
             {
@@ -2950,7 +2950,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.219001472674627e-29,
+              "probability": 6.615691136990139e-28,
               "record_code": 6
             },
             {
@@ -2961,7 +2961,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.806306584722074e-31,
+              "probability": 3.984096946071928e-31,
               "record_code": 7
             },
             {
@@ -2972,7 +2972,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 7.631148164148257e-34,
+              "probability": 1.7261234919077696e-32,
               "record_code": 7
             },
             {
@@ -2983,7 +2983,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999935446,
+              "probability": 0.12499999999970528,
               "record_code": 0
             },
             {
@@ -2994,7 +2994,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999942031,
+              "probability": 0.12499999999985884,
               "record_code": 0
             },
             {
@@ -3005,7 +3005,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.846898194221653e-30,
+              "probability": 4.568311366590283e-30,
               "record_code": 1
             },
             {
@@ -3016,7 +3016,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.3511067122109705e-31,
+              "probability": 7.136691044212151e-29,
               "record_code": 1
             },
             {
@@ -3027,7 +3027,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.852720558145306e-30,
+              "probability": 1.153628312952612e-29,
               "record_code": 2
             },
             {
@@ -3038,7 +3038,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.8007418953141216e-29,
+              "probability": 2.4474326441036917e-28,
               "record_code": 2
             },
             {
@@ -3049,7 +3049,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.4575060301499107e-31,
+              "probability": 3.376357591911064e-30,
               "record_code": 3
             },
             {
@@ -3060,7 +3060,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.1869131667344002e-31,
+              "probability": 2.8338861076589207e-30,
               "record_code": 3
             },
             {
@@ -3071,7 +3071,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.289087998167821e-29,
+              "probability": 3.586161182221804e-28,
               "record_code": 4
             },
             {
@@ -3082,7 +3082,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.638203412836651e-32,
+              "probability": 7.758260434832537e-32,
               "record_code": 4
             },
             {
@@ -3093,7 +3093,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 5.67693587754632e-31,
+              "probability": 1.1229437240508465e-29,
               "record_code": 5
             },
             {
@@ -3104,7 +3104,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.2142483450461687e-57,
+              "probability": 1.3996817345712429e-55,
               "record_code": 5
             },
             {
@@ -3115,7 +3115,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.24999999999870204,
+              "probability": 0.24999999999940187,
               "record_code": 6
             },
             {
@@ -3126,7 +3126,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.040339810767366e-28,
+              "probability": 3.0667639221792882e-27,
               "record_code": 6
             },
             {
@@ -3137,7 +3137,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.7285047791002955e-29,
+              "probability": 2.0181787092178122e-28,
               "record_code": 7
             },
             {
@@ -3148,22 +3148,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.3951850856758615e-56,
+              "probability": 2.437465701599102e-54,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 4.968914169012351e-12,
-          "maximum_branch_density_frobenius_error": 1.298123413139754e-12,
-          "maximum_retained_preparation_density_frobenius_error": 1.298123413139754e-12,
-          "plus_probability": 0.37499999999825284,
-          "raw_total_probability": 0.9999999999950311,
+          "classical_sampling_mass_correction": 1.891264922448954e-12,
+          "maximum_branch_density_frobenius_error": 6.019266648774111e-13,
+          "maximum_retained_preparation_density_frobenius_error": 6.019266648774111e-13,
+          "plus_probability": 0.3749999999995743,
+          "raw_total_probability": 0.9999999999981087,
           "resources": {
             "blank_resets": 4,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61963.202703078285,
             "maximum_live_code_qubits": 12,
-            "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 12,
             "native_pulses": 32009,
             "pair_code_pulses": 9665,
@@ -3184,7 +3184,7 @@
           "setting": "phase_pi_over_2"
         },
         {
-          "abort_probability": 7.02905266966051e-29,
+          "abort_probability": 1.1745550464999658e-27,
           "branches": [
             {
               "abort": false,
@@ -3194,7 +3194,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.06249999999968506,
+              "probability": 0.06249999999986394,
               "record_code": 0
             },
             {
@@ -3205,7 +3205,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 0.062499999999712744,
+              "probability": 0.06249999999993602,
               "record_code": 0
             },
             {
@@ -3216,7 +3216,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.9540060980211857e-30,
+              "probability": 4.6833371309923294e-29,
               "record_code": 1
             },
             {
@@ -3227,7 +3227,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.770567526909607e-31,
+              "probability": 3.1634087818373017e-29,
               "record_code": 1
             },
             {
@@ -3238,7 +3238,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 2.2957500121200402e-29,
+              "probability": 1.8184216150938553e-28,
               "record_code": 2
             },
             {
@@ -3249,7 +3249,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.2825908516128444e-29,
+              "probability": 1.1838302464170053e-28,
               "record_code": 2
             },
             {
@@ -3260,7 +3260,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.9729651660323495e-31,
+              "probability": 1.7861766544548365e-30,
               "record_code": 3
             },
             {
@@ -3271,7 +3271,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.945185257961095e-31,
+              "probability": 1.7746545979981137e-30,
               "record_code": 3
             },
             {
@@ -3282,7 +3282,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.06249999999968135,
+              "probability": 0.06249999999985746,
               "record_code": 4
             },
             {
@@ -3293,7 +3293,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 0.062499999999708865,
+              "probability": 0.06249999999992961,
               "record_code": 4
             },
             {
@@ -3304,7 +3304,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.026311995289297e-30,
+              "probability": 3.696345997322501e-29,
               "record_code": 5
             },
             {
@@ -3315,7 +3315,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 9.393052794056998e-31,
+              "probability": 3.4474883826550137e-29,
               "record_code": 5
             },
             {
@@ -3326,7 +3326,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.8545129682926152e-29,
+              "probability": 2.2843694109326468e-28,
               "record_code": 6
             },
             {
@@ -3337,7 +3337,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.7737251590880028e-29,
+              "probability": 2.1159597264584366e-28,
               "record_code": 6
             },
             {
@@ -3348,7 +3348,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 9.031532923610367e-32,
+              "probability": 1.9920484730358233e-31,
               "record_code": 7
             },
             {
@@ -3359,7 +3359,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 3.8155740820790903e-34,
+              "probability": 8.630617459508011e-33,
               "record_code": 7
             },
             {
@@ -3370,7 +3370,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.06249999999967764,
+              "probability": 0.06249999999985499,
               "record_code": 0
             },
             {
@@ -3381,7 +3381,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 0.062499999999709524,
+              "probability": 0.06249999999993586,
               "record_code": 0
             },
             {
@@ -3392,7 +3392,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 7.749137612147044e-31,
+              "probability": 2.6800677258274464e-30,
               "record_code": 1
             },
             {
@@ -3403,7 +3403,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.8620779940878892e-31,
+              "probability": 3.8050610562880705e-29,
               "record_code": 1
             },
             {
@@ -3414,7 +3414,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 2.132378417211521e-30,
+              "probability": 3.532326286264497e-29,
               "record_code": 2
             },
             {
@@ -3425,7 +3425,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.299874090664597e-29,
+              "probability": 1.5824803625598467e-28,
               "record_code": 2
             },
             {
@@ -3436,7 +3436,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 3.2791376061581856e-31,
+              "probability": 4.990087542861383e-30,
               "record_code": 3
             },
             {
@@ -3447,7 +3447,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.4450922840545775e-31,
+              "probability": 4.3675503215400664e-30,
               "record_code": 3
             },
             {
@@ -3458,7 +3458,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 4.487949780684212e-30,
+              "probability": 2.0182901806218955e-28,
               "record_code": 4
             },
             {
@@ -3469,7 +3469,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.3191017064183047e-32,
+              "probability": 3.87913021741669e-32,
               "record_code": 4
             },
             {
@@ -3480,7 +3480,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 5.8743691405718015e-31,
+              "probability": 8.719402766488847e-30,
               "record_code": 5
             },
             {
@@ -3491,7 +3491,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.2533646661559177e-57,
+              "probability": 1.0853405163347984e-55,
               "record_code": 5
             },
             {
@@ -3502,7 +3502,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.1249999999993511,
+              "probability": 0.12499999999970927,
               "record_code": 6
             },
             {
@@ -3513,7 +3513,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 2.5201699053836833e-28,
+              "probability": 1.5333819610897464e-27,
               "record_code": 6
             },
             {
@@ -3524,7 +3524,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 8.910510515007002e-30,
+              "probability": 1.0437017283059627e-28,
               "record_code": 7
             },
             {
@@ -3535,7 +3535,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 1.750609917692003e-56,
+              "probability": 1.2611860613402117e-54,
               "record_code": 7
             },
             {
@@ -3546,7 +3546,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.06249999999967962,
+              "probability": 0.062499999999856184,
               "record_code": 0
             },
             {
@@ -3557,7 +3557,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 0.06249999999970739,
+              "probability": 0.06249999999992835,
               "record_code": 0
             },
             {
@@ -3568,7 +3568,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.2812426148743966e-30,
+              "probability": 4.523485676139647e-29,
               "record_code": 1
             },
             {
@@ -3579,7 +3579,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 3.142148071127601e-31,
+              "probability": 2.664997732640498e-29,
               "record_code": 1
             },
             {
@@ -3590,7 +3590,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.627216254114882e-29,
+              "probability": 1.7778052029281277e-28,
               "record_code": 2
             },
             {
@@ -3601,7 +3601,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 4.5529664944032674e-30,
+              "probability": 1.182865239762947e-28,
               "record_code": 2
             },
             {
@@ -3612,7 +3612,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.972965166032418e-31,
+              "probability": 1.7861766544540574e-30,
               "record_code": 3
             },
             {
@@ -3623,7 +3623,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.9451852579611726e-31,
+              "probability": 1.7746545979973317e-30,
               "record_code": 3
             },
             {
@@ -3634,7 +3634,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.062499999999675884,
+              "probability": 0.062499999999850106,
               "record_code": 4
             },
             {
@@ -3645,7 +3645,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 0.062499999999703466,
+              "probability": 0.062499999999922215,
               "record_code": 4
             },
             {
@@ -3656,7 +3656,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 2.4778459978302273e-31,
+              "probability": 3.905448226866472e-29,
               "record_code": 5
             },
             {
@@ -3667,7 +3667,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.6077788389908326e-31,
+              "probability": 3.6565906121992544e-29,
               "record_code": 5
             },
             {
@@ -3678,7 +3678,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 7.279189994961827e-30,
+              "probability": 2.5680205089020725e-28,
               "record_code": 6
             },
             {
@@ -3689,7 +3689,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 6.467945101729918e-30,
+              "probability": 2.3996108244282058e-28,
               "record_code": 6
             },
             {
@@ -3700,7 +3700,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 9.031532923610398e-32,
+              "probability": 1.992048473035816e-31,
               "record_code": 7
             },
             {
@@ -3711,7 +3711,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 3.815574082069677e-34,
+              "probability": 8.630617459542484e-33,
               "record_code": 7
             },
             {
@@ -3722,7 +3722,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.06249999999967734,
+              "probability": 0.062499999999851535,
               "record_code": 0
             },
             {
@@ -3733,7 +3733,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 0.06249999999970993,
+              "probability": 0.06249999999992774,
               "record_code": 0
             },
             {
@@ -3744,7 +3744,7 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 5.665173350655746e-31,
+              "probability": 3.575818398389606e-30,
               "record_code": 1
             },
             {
@@ -3755,7 +3755,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.141038771138111e-31,
+              "probability": 2.571485551243579e-29,
               "record_code": 1
             },
             {
@@ -3766,7 +3766,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 5.2248895150913095e-30,
+              "probability": 1.7051992103342212e-29,
               "record_code": 2
             },
             {
@@ -3777,7 +3777,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 3.0109380011519494e-30,
+              "probability": 8.536915040824564e-29,
               "record_code": 2
             },
             {
@@ -3788,7 +3788,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 5.263711943726638e-32,
+              "probability": 6.251306111665516e-31,
               "record_code": 3
             },
             {
@@ -3799,7 +3799,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 8.934144278137141e-32,
+              "probability": 8.832727559319137e-31,
               "record_code": 3
             },
             {
@@ -3810,7 +3810,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 7.771189385177317e-30,
+              "probability": 1.7864275764849775e-28,
               "record_code": 4
             },
             {
@@ -3821,7 +3821,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 2.319101706418327e-32,
+              "probability": 3.8791302174162005e-32,
               "record_code": 4
             },
             {
@@ -3832,7 +3832,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 4.210287941955441e-31,
+              "probability": 6.38462305259104e-30,
               "record_code": 5
             },
             {
@@ -3843,7 +3843,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 8.418075886144376e-58,
+              "probability": 7.82019926273587e-56,
               "record_code": 5
             },
             {
@@ -3854,7 +3854,7 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.12499999999935008,
+              "probability": 0.12499999999969946,
               "record_code": 6
             },
             {
@@ -3865,7 +3865,7 @@
               "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 2.5201699053836667e-28,
+              "probability": 1.5333819610896237e-27,
               "record_code": 6
             },
             {
@@ -3876,7 +3876,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 8.662608693520203e-30,
+              "probability": 9.988142611222301e-29,
               "record_code": 7
             },
             {
@@ -3887,22 +3887,22 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.706542761305493e-56,
+              "probability": 1.2072640187648943e-54,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 4.970024392036976e-12,
-          "maximum_branch_density_frobenius_error": 1.2989834255308877e-12,
-          "maximum_retained_preparation_density_frobenius_error": 6.500050801777493e-13,
-          "plus_probability": 0.3749999999982519,
-          "raw_total_probability": 0.99999999999503,
+          "classical_sampling_mass_correction": 1.877276112338677e-12,
+          "maximum_branch_density_frobenius_error": 5.950695318155811e-13,
+          "maximum_retained_preparation_density_frobenius_error": 3.0241255245985604e-13,
+          "plus_probability": 0.3749999999995798,
+          "raw_total_probability": 0.9999999999981227,
           "resources": {
             "blank_resets": 5,
             "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
             "integrated_processor_norm_upper": 61965.55889756848,
             "maximum_live_code_qubits": 12,
-            "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
+            "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
             "maximum_work_qubits": 12,
             "native_pulses": 32010,
             "pair_code_pulses": 9665,
@@ -4588,7 +4588,7 @@
     "native_generator_antihermitian_residual": 0.0,
     "source_generators": 12,
     "source_sha256": {
-      "code/m1_source_realization/receipt.json": "8696c4e4b5fe5f0abff2307d3a1c6bd5b1adaf5d6a9057b06adef3228a690ba0",
+      "code/m1_source_realization/receipt.json": "7cf300fc822dc3cc89eec76b275c3b6d87d2eebfa28170de966d8a0c29938a09",
       "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053"
     }
   },

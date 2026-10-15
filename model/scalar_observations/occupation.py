@@ -9,11 +9,9 @@ from __future__ import annotations
 
 import argparse
 from fractions import Fraction as F
-import gzip
 import hashlib
 import json
 from pathlib import Path
-import zlib
 
 from ..observer import native
 from ..observer.scalar_response.experiment import canonical, compare_receipt
@@ -24,7 +22,6 @@ from .occupation_readout import terminal_probabilities
 
 
 FOLDER = Path(__file__).resolve().parent
-SOURCE_RECEIPT = 'data/occupation_source_receipt.json.gz'
 SOURCE_RECEIPT_SHA256 = '1c3163dfffa5f19c9b6cb18c96d3d3e47dd378a1bcb0b531369f59c1fa2e65f7'
 PROTOCOL_SHA256 = 'b07cd72b87aa73f464ec90b79d53077f8c5da322acced1d58058bcd49a19dc7d'
 DEGREE = 6
@@ -35,15 +32,10 @@ EVENT = ((0, 1), (1, 0))
 
 
 def retained_source():
-    if hashlib.sha256((FOLDER/'protocol.py').read_bytes()).hexdigest() != PROTOCOL_SHA256:
-        raise ValueError('Original observation contract binding changed: protocol.py')
-    try:
-        raw = gzip.decompress((FOLDER/SOURCE_RECEIPT).read_bytes())
-    except (OSError, EOFError, zlib.error) as error:
-        raise ValueError('Original observation receipt has invalid gzip data') from error
-    if hashlib.sha256(raw).hexdigest() != SOURCE_RECEIPT_SHA256:
-        raise ValueError('Original observation contract binding changed: results.json')
-    result = json.loads(raw)
+    for name, digest in (('results.json', SOURCE_RECEIPT_SHA256), ('protocol.py', PROTOCOL_SHA256)):
+        if hashlib.sha256((FOLDER/name).read_bytes()).hexdigest() != digest:
+            raise ValueError(f'Original observation contract binding changed: {name}')
+    result = json.loads((FOLDER/'results.json').read_text(encoding='utf-8'))
     if not result['all_pass'] or result['physical_meaning']['intervals_in_hamiltonian_model_time'] != ['1/8', '1/8']:
         raise ValueError('The retained source history does not match this certificate')
     return result

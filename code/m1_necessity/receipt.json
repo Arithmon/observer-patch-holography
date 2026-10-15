@@ -1705,13 +1705,13 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "7e0b03a718d283d25a4a11df6c3de8a1de3368327a5ab56d7c79cd3505be7adc"
       },
-      "OPH-MODEL-ANHARMONIC-TRANSFER": {
+      "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON": {
         "assumptions": [
-          "declared_anharmonic_transfer_apparatus_protocol",
+          "declared_changed_potential_transfer_protocol",
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "38ebcb74f181d31047fa07227f63eeb243a069072811a71dd1de741900aeb12c"
+        "original_claim_sha256": "bb45c3ce326a2df4d4bbae7b976183d32e2a3cf469be58fd4e9f9d502bb3d0a0"
       },
       "OPH-MODEL-CANONICAL-SCALAR-EXECUTION": {
         "assumptions": [
@@ -1741,13 +1741,13 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "947da53635293c0714efada3325ff495bab3ac9b0ea622ab54557c396fdb3f2b"
       },
-      "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION": {
+      "OPH-MODEL-COUPLED-INTERACTION-RECOVERY": {
         "assumptions": [
-          "declared_complete_field_reconstruction_protocol",
+          "declared_coupled_quartic_identification_protocol",
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "06b1b4ccc427678bbdd2c5978571686be8aea225c03cfdd12aeef3a57b99ab3a"
+        "original_claim_sha256": "a5a31588d7cd6203d0b3b846a4a5bd720e27e45221999313628650b5dc5695b2"
       },
       "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
         "assumptions": [
@@ -2932,8 +2932,8 @@
       },
       {
         "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
-        "role": "inherits the supplied canonical action and complete two-read comparison, not physical action selection or a continuum inference",
-        "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
+        "role": "inherits the supplied canonical quartic action, oscillator codes and evolution executor, not a physical identification of its parameters",
+        "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY"
       },
       {
         "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
@@ -2943,7 +2943,7 @@
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
         "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification",
-        "to": "OPH-MODEL-ANHARMONIC-TRANSFER"
+        "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
       },
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
@@ -2953,7 +2953,7 @@
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
         "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification",
-        "to": "OPH-MODEL-COUPLED-ACTION-RECONSTRUCTION"
+        "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY"
       },
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
@@ -2972,8 +2972,8 @@
       },
       {
         "from": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
-        "role": "inherits the source preparation/readout family and retrospective data discipline, not its zero-duration empirical scope",
-        "to": "OPH-MODEL-ANHARMONIC-TRANSFER"
+        "role": "inherits the native preparation and pointer readout words, not its zero-duration calibration as evidence for changed-potential dynamics",
+        "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
       },
       {
         "from": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
@@ -3954,9 +3954,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "3e9fdf29221c002f3f6648164b0ee7d24393c8f69024310013404cdc736721cd",
+    "code/m1_necessity/downstream.json": "60742abd926aa4982aba301d6d4373f26ed6f9fbea6c9fbd2774de6de9389e7e",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "81cf33f1be1f1ebb14965a33f38dadb9dc504933ad6c1401a999e32737fb56ac",
+    "code/m1_necessity/test_necessity.py": "82a4bae29338c17ce741b6afab51f60052dce1ece4ddab8eeada655ae4726a97",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

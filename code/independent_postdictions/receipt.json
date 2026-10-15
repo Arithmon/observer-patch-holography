@@ -179,7 +179,7 @@
   },
   "schema": "oph-independent-postdictions-v1",
   "sources": {
-    ".gitattributes": "a2b5311c8c81101afec5b63ef3371417e966c5949adb04efda3d5c710e109314",
+    ".gitattributes": "6e183699c4fd7b701e27930eb9c19c20f253de786a24c3ae7e734a5fde1462a2",
     ".github/workflows/independent-postdictions.yml": "470451e7866c4d67f74582686f1413659135ac494f39352a088a9db716d1c26c",
     "code/P_derivation/codata_2022_alpha_fixture.json": "e5a967c2895c51ce11574da0d5fda9630b05d9162335a1e9e06da12cfecc9930",
     "code/P_derivation/paper_math.py": "bda031185dca55e54f4c6c0c020e9fac2e2ba5db5193998135f294898af620b8",

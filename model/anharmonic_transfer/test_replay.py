@@ -49,6 +49,19 @@ def test_numerical_prediction_roundoff_can_change_local_seal(receipt):
     replay.compare_receipt(receipt, other)
 
 
+@pytest.mark.parametrize('change, accepted', [
+    (1.9e-10, True), (2.1e-10, False), (5e-9, False), (5e-8, False)])
+def test_portable_tolerance_remains_bounded_after_source_arithmetic_repair(receipt, change, accepted):
+    other = deepcopy(receipt)
+    _shift_mean(other['prediction']['runs'][0]['predictions'][0], change)
+    other = experiment.evaluate(other['prediction'])
+    if accepted:
+        replay.compare_receipt(receipt, other)
+    else:
+        with pytest.raises(ValueError, match='Floating replay mismatch'):
+            replay.compare_receipt(receipt, other)
+
+
 def test_refinement_summary_propagates_individual_prediction_tolerance(receipt):
     other = deepcopy(receipt)
     for run, change in ((other['prediction']['runs'][1], -9e-11),

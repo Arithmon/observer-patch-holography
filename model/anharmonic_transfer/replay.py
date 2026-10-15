@@ -1,4 +1,13 @@
-"""Validate exact within-run prediction seals and portable numerical replay."""
+"""Validate exact within-run prediction seals and portable numerical replay.
+
+The historical 2e-8 replay policy accommodated accumulated numerical drift
+in the original source contractions. The repaired inverse-word arithmetic
+and guarded final unitary representation use refreshed receipts and retain
+the shared 2e-10 primitive comparison. Derived fields must reproduce their
+own inputs exactly before the portable comparison. Neither replay tolerance
+nor operation-level correction is a physical or floating-point certificate.
+Structure, counts, hashes and exact certificate strings compare exactly.
+"""
 from copy import deepcopy
 from fractions import Fraction
 import math

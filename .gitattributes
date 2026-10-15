@@ -28,8 +28,3 @@ evidence/support_wiring_776/trace/*.npz -text -eol -diff
 code/source_read_routing/controls/*.tape -text -eol -diff
 code/source_read_routing/controls/*.input -text -eol -diff
 code/source_routing_refinement/controls/*.tape -text -eol -diff
-
-# Published detector data retain their original bytes, including CRLF and
-# whitespace, so Zenodo's checksums verify on every checkout platform.
-model/anharmonic_observations/data/** -text -eol -diff
-model/anharmonic_transfer/data/** -text -eol -diff

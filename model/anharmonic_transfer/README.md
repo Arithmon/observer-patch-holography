@@ -11,14 +11,14 @@ with [published data](https://zenodo.org/records/18752287) under CC-BY-4.0.
 The [15 October audit](../audit_20261015/README.md) adds a stronger,
 retrospective effective-Hamiltonian comparison and examines the unresolved
 measurement normalization. Its results supplement this frozen prediction.
-The replay checker was corrected to verify derived refinement summaries
-against each run's predictions: subtraction and conversion to position units
-can amplify portable floating differences beyond the single-prediction
-tolerance. Underlying predictions still use the original `2e-10` tolerance;
-the original audit left the protocol, source words and result bytes unchanged.
-The later numerical stability repair described below regenerates the live
-receipt while retaining the same physical source words and frozen calibration.
-The dated audit uses its own immutable snapshot of the original receipt.
+The replay checker validates derived summaries against each receipt's own
+predictions. The original retained receipt accumulated cross-platform drift
+up to `4.3e-9`, for which main's CI repair used a `2e-8` comparison tolerance.
+The source arithmetic repair described below removes repeated inverse-word
+bias and guards the composed pulse's unitarity. Its regenerated receipts
+use the stricter `2e-10` primitive tolerance, with exact own-input checks for
+derived values. The same physical source words and frozen calibration are
+retained. The dated audit uses an immutable snapshot of the original receipt.
 
 ## What changed in the executable model
 
