@@ -13,6 +13,16 @@ from ..scalar_observations.experimental_readout import executable_source as nati
 DELTA, OMEGA = 2*math.pi*500, math.pi/.000150
 
 
+@pytest.mark.parametrize('dimension', [2, 4, 8, 32, 64])
+def test_production_controlled_parity_is_two_pulses_with_full_phase(dimension):
+    actual, metadata = s._controlled_parity(dimension)
+    wanted = np.diag(np.r_[np.ones(dimension), (-1.)**np.arange(dimension)])
+    assert np.linalg.norm(actual-wanted, 2) < 2e-14
+    assert np.linalg.norm(actual@actual-np.eye(2*dimension), 2) < 3e-14
+    assert metadata['resources']['native_pulses'] == 2
+    assert metadata['resources']['pair_code_pulses'] == 1
+
+
 @pytest.fixture(autouse=True)
 def separate_pulse_cache():
     s.pulse_unitary.cache_clear()
@@ -52,6 +62,44 @@ def test_tiny_pulses_keep_their_actual_generator_after_inverse_cancellation(monk
     target = expm(-1j*duration*repetitions*hamiltonian)
     assert np.linalg.norm(np.linalg.matrix_power(actual, repetitions)-target, 2) < 5e-11
     assert np.linalg.norm(target-np.eye(8), 2) > 1e-4
+
+
+def _scale_inverse(monkeypatch, excess):
+    original = s._forced_basis
+    def nearby(*args):
+        values, basis, inverse, forward_meta, inverse_meta = original(*args)
+        return values, basis, (1+excess)*inverse, forward_meta, inverse_meta
+    monkeypatch.setattr(s, '_forced_basis', nearby)
+
+
+def test_guarded_polar_representation_removes_accumulating_nonunitary_drift(monkeypatch):
+    # Independently contracted inverse words can leave a small Hermitian
+    # defect after cancellation even when both source target guards pass.
+    # Correct the pulse representation once, without normalizing any state.
+    _, baseline = s.pulse_unitary(4, DELTA, OMEGA, .00005, 1)
+    s.pulse_unitary.cache_clear()
+    _scale_inverse(monkeypatch, 2e-11)
+    actual, metadata = s.pulse_unitary(4, DELTA, OMEGA, .00005, 1)
+    diagnostics = metadata['inverse_word_cancellation']
+    guard = diagnostics['post_cancellation_unitary_stabilization']
+    assert 1e-11 < guard['raw_unitarity_defect'] < 1e-10
+    assert 1e-12 < guard['projection_change'] <= guard['maximum_projection_change']
+    assert guard['restored_unitarity_defect'] < 1e-13
+    assert diagnostics['complete_representation_change'] <= diagnostics['representation_change_limit']
+    assert not guard['physical_error_certificate']
+    repeated = np.linalg.matrix_power(actual, 10000)
+    assert np.linalg.norm(repeated.conj().T@repeated-np.eye(8), 2) < 1e-10
+    assert metadata['resources'] == baseline['resources']
+    assert [stage['word_sha256'] for stage in metadata['stages']] == [
+        stage['word_sha256'] for stage in baseline['stages']]
+
+
+def test_polar_representation_does_not_hide_excessive_nonunitary_drift(monkeypatch):
+    # This still passes the raw 3e-10 target guard, but violates the existing
+    # fixed 1e-10 polar-input defect limit. The limit is not enlarged.
+    _scale_inverse(monkeypatch, 1e-10)
+    with pytest.raises(ArithmeticError, match='executed-unitary defect'):
+        s.pulse_unitary(4, DELTA, OMEGA, .00005, 1)
 
 
 def test_representation_change_has_its_own_fixed_guard(monkeypatch):

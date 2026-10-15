@@ -120,8 +120,8 @@ An incorrect unitary or global phase cannot be repaired by polar projection;
 the target and complete-change gates remain mandatory.
 
 No target matrix replaces an executed word, and no state, selected branch
-or probability is renormalized. Word hashes, physical stages and resource
-counts are unchanged. These ideal algebraic identities do not cancel
+or probability is renormalized. This arithmetic correction preserves word
+hashes, physical stages and resource counts. These ideal identities do not cancel
 physical service errors. All reported norms are floating diagnostics, not
 outward intervals or physical precision certificates.
 
@@ -134,6 +134,13 @@ nonzero-duration controls also check the retained phase and generator.
 The complete detector-law checks remain unchanged through the actual
 observation and transfer histories; no improved empirical agreement follows
 from repairing this arithmetic.
+
+Two source words have exact specialized forms. Writing
+`N=sum_b 2^b*(I-Z_b)/2` yields one scalar and one phase pulse per bit.
+Occupation parity depends only on the least significant bit, so its spin
+control is the existing native `J(-pi)` followed by the scalar `I(pi)`.
+These identities preserve full phases and act on the entire finite code;
+they do not invoke unrestricted oscillator commutation relations.
 
 ## Error scope and execution ledger
 

@@ -11,14 +11,13 @@ with [published data](https://zenodo.org/records/18752287) under CC-BY-4.0.
 The [15 October audit](../audit_20261015/README.md) adds a stronger,
 retrospective effective-Hamiltonian comparison and examines the unresolved
 measurement normalization. Its results supplement this frozen prediction.
-The replay checker validates derived summaries against each receipt's own
-predictions. The original retained receipt accumulated cross-platform drift
-up to `4.3e-9`, for which main's CI repair used a `2e-8` comparison tolerance.
-The source arithmetic repair described below removes repeated inverse-word
-bias and guards the composed pulse's unitarity. Its regenerated receipts
-use the stricter `2e-10` primitive tolerance, with exact own-input checks for
-derived values. The same physical source words and frozen calibration are
-retained. The dated audit uses an immutable snapshot of the original receipt.
+The replay checker verifies derived refinement summaries against each run's
+predictions: subtraction and conversion to position units can amplify portable
+floating differences beyond the single-prediction tolerance. Underlying
+predictions use the original `2e-10` tolerance. The numerical stability repair
+and exact shorter source words described below regenerate the live receipt
+while retaining the apparatus law and frozen calibration. The dated audit
+uses its own immutable snapshot of the original receipt.
 
 ## What changed in the executable model
 
@@ -279,24 +278,28 @@ source words: `B D B^-1 = I + B (D-I) B^-1`, with the corresponding axis
 and sign conjugations. Both independently executed basis matrices remain
 in the calculation. The twice-applied parity contributes its literal
 `P^2-I` remainder; it is not replaced with an inverse. Each pulse also
-retains the original straight-product contraction. Rounded inverse factors
-can make the increment slightly nonunitary, so the composed pulse also
-passes through the compiler's existing guarded polar representation.
-This restores the operation's unitary representation without normalizing
-states or outcome probabilities. The raw product, increment and final
-matrix each retain the `3e-10` full-phase Hamiltonian target check. Both
-the increment and final matrix must differ from the raw product by at most
-`2e-10`; the compiler's input-defect, polar-change and restored-defect
-limits are unchanged. The [source derivation](DERIVATION_SOURCE.md#evaluation-of-short-source-pulses)
-details these guards and their separately reported floating diagnostics.
+retains the original straight-product contraction, checks both forms
+against the independent finite Hamiltonian target, and caps their
+representation difference at the fixed `2e-10` native numerical scale.
+The final increment matrix also passes the compiler's existing guarded polar
+representation. This prevents its residual nonunitarity from accumulating
+through repeated applications. The raw product and increment checks remain
+mandatory; the corrected matrix is checked against the independent target
+and against the raw product. The correction receives no state or observed
+outcome, and does not replace an operation with its target. The retained
+metadata reports both representation changes and the restored defect.
+These operations represent ideal words numerically; they do not cancel
+physical service errors or certify floating precision.
 
-Independent controls check repeated complete probability mass as well as
-the target operator, including small inverse-phase perturbations, zero and
-nonzero durations, and rejection of incorrect phases or excessive changes.
-The complete selected-detector-law and replay tolerances are unchanged.
-Word hashes, operation stages and physical resource counts are also
-unchanged. The repair can change floating receipt values; it neither refits
-the preparation nor changes the supplied apparatus law. Ideal inverse-word
-arithmetic does not cancel physical inverse-service errors, and neither
-target residuals nor polar corrections are interval or physical precision
-certificates.
+The audited exact shortcuts are now used in production: controlled occupation
+parity uses two native pulses, including its scalar phase, and number drift
+uses one scalar pulse plus one Z pulse per occupation bit. At dimension 64
+these replace 2,054- and 838-pulse words with 2- and 7-pulse words,
+respectively. Full-matrix tests include the highest occupations and global
+phase. Live word hashes and resource receipts are regenerated; frozen
+calibration and dated-audit input bytes remain unchanged. Dense basis words
+still dominate cold compilation.
+
+The repository-wide verifier shares parameter-keyed source compilation caches
+between the two empirical CLIs. Both execute their full canonical prediction,
+score and receipt checks; no trajectory, result or fitted preparation is reused.

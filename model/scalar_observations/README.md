@@ -164,9 +164,12 @@ python3 -m model.verify --hashes-only
 
 [results.json](results.json) retains the complete classical laws, local
 full-phase source residuals, rational error budgets and labelled controls.
-Its bytes and the original protocol are frozen and hash-bound by the separate
-[occupation receipt](occupation_results.json); their numerical cutoff
-diagnostics retain their original scope. The new receipt retains exact
+The [original receipt bytes](data/occupation_source_receipt.json.gz) are retained
+in a compressed snapshot; their decompressed SHA-256 and the original protocol
+are frozen and hash-bound by the separate [occupation receipt](occupation_results.json).
+The live receipt can therefore refresh source custody without changing this
+certificate's input. Their numerical cutoff diagnostics retain their original
+scope. The occupation receipt retains exact
 complete-history budgets and the unrestricted interaction event intervals.
 The larger occupation diagnostics use independent sparse reference evolution;
 they are explicitly not source executions. The primary two- and four-level

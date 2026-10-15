@@ -73,8 +73,13 @@ def spin_rotation(axis, angle):
 
 @lru_cache(maxsize=8)
 def _controlled_parity(dimension):
+    # Occupation parity is the least significant oscillator bit. Retain the
+    # full scalar phase: the native J(-pi) realizes minus controlled Z.
+    dimension = native._dimension(dimension)
+    spin_bit = dimension.bit_length()-1
     phases = np.r_[np.zeros(dimension), math.pi*(np.arange(dimension) % 2)]
-    word = c.compile_diagonal(phases)
+    word = [c.pulse('J', -math.pi, [spin_bit, 0]),
+            c.pulse('I', math.pi, [0])]
     return native._contract(word, dimension.bit_length(), np.diag(np.exp(1j*phases)),
                             name='spin_controlled_oscillator_parity')
 
@@ -146,24 +151,24 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
     change_limit = 2e-10
     if not math.isfinite(change) or change > change_limit:
         raise ArithmeticError('source pulse inverse-word representation change exceeds its fixed guard')
-    residual = float(np.linalg.norm(matrix-target, 2))
-    if not math.isfinite(residual) or residual > 3e-10:
-        raise ArithmeticError('source pulse failed its complete finite Hamiltonian check')
-    increment_residual = residual
-    # The affine inverse-word identity is unitary in exact arithmetic. Its
-    # separately executed numerical inverses need not be exact adjoints, so
-    # the represented increment can retain a radial defect that accumulates
-    # across many applications. Reuse the compiler's fixed operation-level
-    # polar guard; never normalize a state or selected outcome.
+    increment_residual = float(np.linalg.norm(matrix-target, 2))
+    if not math.isfinite(increment_residual) or increment_residual > 3e-10:
+        raise ArithmeticError('source pulse increment failed its complete finite Hamiltonian check')
+    # Identity-plus-increment arithmetic removes duration-independent inverse
+    # drift, but independently contracted inverse matrices need not be exact
+    # adjoints. Restore the ideal pulse's unitary representation with the same
+    # fixed polar guard used for every native word. The raw source contraction
+    # and cancellation change have already passed their independent guards;
+    # neither a target matrix nor an evolved state enters this correction.
     matrix, stabilization = c.stabilize_executed_unitary(matrix)
     if not np.all(np.isfinite(matrix)):
         raise ArithmeticError('source pulse has nonfinite stabilized contraction data')
+    complete_change = float(np.linalg.norm(matrix-raw, 2))
+    if not math.isfinite(complete_change) or complete_change > change_limit:
+        raise ArithmeticError('source pulse complete representation change exceeds its fixed guard')
     residual = float(np.linalg.norm(matrix-target, 2))
     if not math.isfinite(residual) or residual > 3e-10:
-        raise ArithmeticError('source pulse stabilized contraction failed its complete finite Hamiltonian check')
-    total_change = float(np.linalg.norm(matrix-raw, 2))
-    if not math.isfinite(total_change) or total_change > change_limit:
-        raise ArithmeticError('source pulse stabilized representation change exceeds its fixed guard')
+        raise ArithmeticError('source pulse failed its complete finite Hamiltonian check')
     defect = float(np.linalg.norm(matrix.conj().T @ matrix-identity, 2))
     if not math.isfinite(defect):
         raise ArithmeticError('source pulse has nonfinite unitarity diagnostic')
@@ -173,13 +178,13 @@ def pulse_unitary(dimension, delta, omega, duration, sign=1):
                     'resources': _counts(stages), 'stages': deepcopy(stages),
                     'full_phase_target_residual': residual,
                     'inverse_word_cancellation': {
-                        'method': 'identity plus executed conjugation increments for ideal inverse source words',
+                        'method': 'identity plus executed conjugation increments, then guarded polar representation',
                         'raw_full_phase_target_residual': raw_residual,
+                        'increment_full_phase_target_residual': increment_residual,
                         'representation_change': change,
                         'representation_change_limit': change_limit,
-                        'increment_full_phase_target_residual': increment_residual,
-                        'complete_representation_change': total_change,
-                        'composed_pulse_stabilization': stabilization,
+                        'complete_representation_change': complete_change,
+                        'post_cancellation_unitary_stabilization': stabilization,
                         'represented_unitarity_defect': defect,
                         'literal_parity_square_retained': True,
                         'all_original_source_stages_and_resources_retained': True,

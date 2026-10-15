@@ -50,8 +50,11 @@ def spin_gap(dimension, angle, delta, omega_carrier, finite_spin_duration=True):
     context = canonical._context()
     phase = (canonical._parameter(context, delta, 'delta')
              * canonical._parameter(context, duration, 'gap duration'))
-    phases = [-phase*number for number in range(dimension)]
-    word = canonical._diagonal_word(context, phases)
+    # N=sum_b 2^b*(I-Z_b)/2; the scalar pulse preserves the full phase.
+    # This exact identity avoids a generic Walsh expansion of a linear phase.
+    word = [c.pulse('I', float(-phase*(dimension-1)/2), [0])]
+    word.extend(c.pulse('Z', float(phase*2**bit/2), [bit])
+                for bit in range(dimension.bit_length()-1))
     target = np.diag(np.exp(-1j*delta*duration*np.arange(dimension)))
     free, free_meta = native._contract(word, dimension.bit_length()-1, target,
                                       name='spin_gap_free_number_phase')

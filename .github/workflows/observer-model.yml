@@ -57,9 +57,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    # Spatial/scalar receipts, dense native readout compilation and the
-    # complete regression suite run sequentially. Allow Windows headroom
-    # while retaining every replay and source-level recovery control.
+    # Keep complete receipt replay independent of the regression job so
+    # each platform exercises both without serial compilation delays.
     timeout-minutes: 90
     env:
       OPENBLAS_NUM_THREADS: '1'
@@ -74,4 +73,23 @@ jobs:
       - run: python -m pip install -r model/requirements.txt
       - run: python -m model.verify
       - run: python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
+  regression:
+    name: Observer regression (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: model/requirements.txt
+      - run: python -m pip install -r model/requirements.txt
       - run: python -m pytest -q -W error model
