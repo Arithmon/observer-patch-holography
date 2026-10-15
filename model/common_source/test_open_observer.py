@@ -119,6 +119,20 @@ def test_cli_check_recomputes_before_accepting_saved_receipt(monkeypatch, tmp_pa
     assert calls == [True]
 
 
+def test_actual_producer_payload_has_exact_json_replay_types(monkeypatch):
+    # Only the independent exact-polynomial calculation is replaced to keep
+    # this schema regression short. Every work/native source calculation,
+    # returned budget/resource report and producer assembly remains real.
+    # model.verify performs the complete expensive certificate replay.
+    monkeypatch.setattr(observer.smooth_history, 'enclose', lambda *a, **k: None)
+    monkeypatch.setattr(observer, '_prepared_noiseless_bound', lambda *a: F(1))
+    actual = observer.run()
+    saved = strict_json.loads(observer.canonical(actual))
+    observer.compare_receipt(saved, actual)
+    assert len(actual['work_histories']) == 6
+    assert len(actual['native_attachments']) == 4
+
+
 def test_cli_rejects_duplicate_json_before_recomputation(monkeypatch, tmp_path):
     path = tmp_path/'bad.json'
     path.write_text('{"all_pass":true,"all_pass":true}', encoding='utf-8', newline='\n')

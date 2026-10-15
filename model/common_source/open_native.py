@@ -353,7 +353,8 @@ def resources(history):
         if witness is None or costs['native_pulses'] > maxima['native_pulses']:
             witness = b.record
         maxima = {key: max(maxima[key], costs[key]) for key in keys}
-    return {'maximum_realized_path_resources': maxima, 'native_pulse_maximizing_record': witness,
+    recorded_witness = [witness[0], witness[1], list(witness[2]), witness[3], witness[4]]
+    return {'maximum_realized_path_resources': maxima, 'native_pulse_maximizing_record': recorded_witness,
             'maximum_resources_are_componentwise_over_compatible_paths': True,
             'native_input_qubits': 9,
             'supplied_unknown_logical_qubits': int(history.native_mode != 'full_carrier'),

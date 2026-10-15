@@ -2,6 +2,7 @@
 from dataclasses import replace
 from fractions import Fraction as F
 from itertools import product
+import json
 import math
 
 import numpy as np
@@ -233,6 +234,19 @@ def test_resources_pay_every_noise_invocation_but_no_diagnostic_read(histories):
     assert resources['diagnostic_input_preparation_and_terminal_read_pulses'] == 0
     assert resources['retained_classical_bits_including_two_status_bits'] == (12 if h.law == 'C' else 14)
     assert resources['environment_draws_are_observer_records'] is False
+
+
+def test_actual_native_reports_roundtrip_through_strict_receipt_comparison(histories):
+    active, passive = histories
+    # Compare genuinely produced values with their wire representation. A
+    # JSON-loaded fixture on both sides would hide tuple/list mismatches.
+    actual = {'active_resources': joint.resources(active),
+              'passive_resources': joint.resources(passive),
+              'active_audit': joint.audit(active),
+              'passive_audit': joint.audit(passive),
+              'memory_witness': joint.memory_witness(active, passive)}
+    saved = json.loads(pure.canonical(actual))
+    pure.compare_receipt(saved, actual)
 
 
 @pytest.mark.parametrize('mutation', ('omit_abort', 'duplicate', 'relabel', 'phase',
