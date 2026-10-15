@@ -7,6 +7,14 @@ Their states, interactions and physical interpretations remain separately
 declared programs. Sharing an interpreter establishes a common operational
 interface; agreement with nature has to be measured for each physical model.
 
+The [complete numerical certificate](COMPLETE_CERTIFICATE.md) now bounds the
+shared runtime's native/work output against its exact finite and infinite
+prepared-history targets. It covers both native laws, active and passive
+logical memory, all raw records and arbitrary logical/reference inputs.
+The comparison includes the computed encoder, repair and recovery maps;
+physical service errors and initially correlated native/work states remain
+outside this prepared-work contract.
+
 The retained comparison covers all **125 positive-time observations and five
 zero-time endpoints** of the existing anharmonic experiment. Its position
 estimator RMSE is **0.2876427868**, preserving the earlier prediction and its
@@ -324,6 +332,7 @@ python -m pytest -q model/primitive_observer
 python -m model.primitive_observer --write /tmp/primitive-observer-results.json
 python -m model.primitive_observer --check model/primitive_observer/results.json
 python -m model.primitive_observer.transfer --check model/primitive_observer/transfer_results.json
+python -m model.primitive_observer.complete_certificate --check model/primitive_observer/complete_certificate_results.json
 ```
 
 `--write` requires a new output file. Failed finite contracts raise before

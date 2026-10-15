@@ -88,7 +88,10 @@ compares the actual returned source arrays with those exact targets using
 rational arithmetic. It closes the numerical output comparison for the
 declared work preparations, including all retained quantum branches, and
 certifies a nonzero feedback response of the final clock record. It does
-not certify physical services or the separate floating native attachment.
+not certify physical services. The subsequent
+[complete observer certificate](primitive_observer/COMPLETE_CERTIFICATE.md)
+also certifies the computed native attachment around the shared runtime's
+work matrices for arbitrary logical/reference inputs and independent work.
 
 ```sh
 python -m model.common_source.composition --check model/common_source/composition_results.json

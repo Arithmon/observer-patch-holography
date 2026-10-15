@@ -76,9 +76,13 @@ The [direct numerical certificate](common_source/OUTPUT_CERTIFICATE.md)
 connects actual source-executed work outputs with the exact prepared-history
 proofs. All sixteen quantum blocks and their exact mass defect enter the
 comparison. It also proves that a fixed feedback intervention changes the
-infinite-history clock probability. This closes a numerical evidence join
-for the declared preparation; physical services, arbitrary-input channel
-errors and numerical certification of the native attachment remain separate.
+infinite-history clock probability. The subsequent
+[complete observer certificate](primitive_observer/COMPLETE_CERTIFICATE.md)
+also bounds the shared runtime's computed native encoder, repairs and recovery
+around its actual work matrices. Both C/E laws and active/passive memory retain
+all raw outcomes; the bound is uniform over logical/reference input states.
+Work is independently prepared. Physical services and arbitrary-work-input
+channel errors remain separate.
 
 The [primitive observer runtime](primitive_observer/README.md) executes both
 the common interacting observer and the separate laboratory apparatus through
