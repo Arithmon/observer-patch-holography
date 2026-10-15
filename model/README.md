@@ -108,7 +108,7 @@ free spatial refinement approaches Klein--Gordon with an explicit error.
 The interacting relativistic comparison, physical calibration and action
 selection are not established; the mass, geometry and action are supplied.
 
-The [record-only reconstruction](observer_reconstruction/README.md) now
+The [record-only reconstruction](observer_reconstruction/README.md)
 identifies a finite free-field description from source-executed detector
 probabilities and separately read clock probabilities. With the Hamiltonian
 and coordinates hidden from its estimator, it recovers a cube's adjacency,
@@ -116,7 +116,7 @@ rank-three coordinate Gram, mass, coupling and frequencies, then predicts
 withheld detector settings. Exact occupation bounds control the ideal
 normal-mode code; a source-executed ordered field loop tests the noncommuting
 phase. Separate exact native-current records recover the carrier response
-Gram. The two geometries are not yet identified, and the field action,
+Gram. Identification of the two geometries is open; the field action,
 vacuum, coherent services and clock calibration remain supplied. This is
 finite operational identification, not an interacting spacetime limit.
 

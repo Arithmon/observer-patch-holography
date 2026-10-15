@@ -336,7 +336,9 @@
     "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION",
     "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
     "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
-    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+    "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+    "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON"
   ],
   "edges": [
     {
@@ -2957,6 +2959,26 @@
     {
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
       "to": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+      "role": "inherits the supplied canonical quartic action, oscillator codes and evolution executor, not a physical identification of its parameters"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
+      "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
+      "role": "inherits the native preparation and pointer readout words, not its zero-duration calibration as evidence for changed-potential dynamics"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
     }
   ]

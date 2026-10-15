@@ -1,12 +1,22 @@
-"""Validate exact within-run prediction seals and portable numerical replay."""
+"""Validate exact within-run prediction seals and portable numerical replay.
+
+Executed trajectories contract thousands of native steps, so last-bit
+differences between linear-algebra libraries accumulate. Fresh Linux and
+Windows executions of the macOS receipt differ by at most 4.3e-9 (in the
+dimension-64 occupation refinement) and by up to 3.8e-10 in the primary run,
+while the unevolved frozen control differs by 2e-13. Floats therefore compare
+within ``PORTABLE_REPLAY_TOLERANCE``. It is not a physical or floating-point
+error certificate. Structure, counts, hashes and exact certificate strings
+compare exactly.
+"""
 from copy import deepcopy
 from fractions import Fraction
 import math
 
-from ..observer.scalar_response.experiment import compare_receipt as _compare
 from .bounds import conditional_readout_bound
 from .experiment import digest
 
+PORTABLE_REPLAY_TOLERANCE = 2e-8
 SEAL = 'prediction_payload_sha256_before_scoring'
 ACCEPTANCE_DEPENDENT_EXACT_FIELDS = (
     'exact_selected_probability_or_lower_bound',
@@ -51,6 +61,27 @@ def _selected_budgets(receipt):
             yield row['acceptance_probability'], row['ideal_finite_model_error']
 
 
+def _compare(expected, actual, path='root'):
+    if type(expected) is not type(actual):
+        raise ValueError(f'Receipt type mismatch at {path}')
+    if isinstance(expected, dict):
+        if expected.keys() != actual.keys():
+            raise ValueError(f'Receipt keys mismatch at {path}')
+        for key in expected:
+            _compare(expected[key], actual[key], f'{path}.{key}')
+    elif isinstance(expected, list):
+        if len(expected) != len(actual):
+            raise ValueError(f'Receipt length mismatch at {path}')
+        for i, (a, b) in enumerate(zip(expected, actual)):
+            _compare(a, b, f'{path}[{i}]')
+    elif isinstance(expected, float):
+        if (not math.isfinite(expected) or not math.isfinite(actual)
+                or abs(expected-actual) > PORTABLE_REPLAY_TOLERANCE):
+            raise ValueError(f'Floating replay mismatch at {path}')
+    elif expected != actual:
+        raise ValueError(f'Receipt mismatch at {path}')
+
+
 def validate_prediction_seal(receipt):
     if (receipt.get('schema') != 'oph.anharmonic_transfer.results.v1'
             or receipt.get(SEAL) != digest(receipt.get('prediction'))):
@@ -71,7 +102,7 @@ def compare_receipt(expected, actual):
     del left[SEAL], right[SEAL]
     for receipt in (left, right):
         # These are verified above, not ignored. All underlying predictions
-        # still undergo the unchanged 2e-10 portable numerical comparison.
+        # still undergo the portable numerical comparison.
         for summary in receipt['numerical_refinements'].values():
             del summary['maximum_binary_probability_change']
             del summary['maximum_position_estimator_change']

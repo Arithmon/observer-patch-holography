@@ -50,6 +50,20 @@ def test_numerical_prediction_roundoff_can_change_local_seal(receipt, monkeypatc
     replay.compare_receipt(receipt, other)
 
 
+@pytest.mark.parametrize('change, accepted', [(5e-9, True), (5e-8, False)])
+def test_portable_tolerance_covers_measured_platform_drift_only(receipt, monkeypatch,
+                                                                change, accepted):
+    other = deepcopy(receipt)
+    other['prediction']['runs'][0]['predictions'][0]['predicted_spin_mean'] += change
+    monkeypatch.setattr(experiment, 'load_validation', synthetic_observations)
+    other = experiment.evaluate(other['prediction'])
+    if accepted:
+        replay.compare_receipt(receipt, other)
+    else:
+        with pytest.raises(ValueError, match='Floating replay mismatch'):
+            replay.compare_receipt(receipt, other)
+
+
 def test_refinement_summary_propagates_individual_prediction_tolerance(receipt, monkeypatch):
     other = deepcopy(receipt)
     for run, change in ((other['prediction']['runs'][1], -9e-11),

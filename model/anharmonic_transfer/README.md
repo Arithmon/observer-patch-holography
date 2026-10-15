@@ -11,11 +11,14 @@ with [published data](https://zenodo.org/records/18752287) under CC-BY-4.0.
 The [15 October audit](../audit_20261015/README.md) adds a stronger,
 retrospective effective-Hamiltonian comparison and examines the unresolved
 measurement normalization. Its results supplement this frozen prediction.
-The replay checker was corrected to verify derived refinement summaries
-against each run's predictions: subtraction and conversion to position units
-can amplify portable floating differences beyond the single-prediction
-tolerance. Underlying predictions still use the original `2e-10` tolerance;
-the protocol, source words and retained result bytes are unchanged.
+The replay checker verifies derived refinement summaries against each run's
+predictions: subtraction and conversion to position units can amplify
+portable floating differences beyond the single-prediction tolerance.
+Underlying predictions compare within `2e-8`, because executed trajectories
+accumulate last-bit differences over thousands of contracted steps: fresh
+Linux and Windows executions of the retained macOS receipt differ from it by
+at most `4.3e-9`. The protocol, source words and retained result bytes are
+unchanged.
 
 ## What changed in the executable model
 
@@ -244,8 +247,11 @@ mathematical certificate is unchanged.
 
 Replay validates each receipt's exact pre-scoring seal and each conditional
 certificate against its own retained acceptance. It then compares numerical
-outputs within `2e-10`, omitting only the five exact-rational strings derived
+outputs within `2e-8`, omitting only the five exact-rational strings derived
 from that floating acceptance. Fixed splitting/quadrature certificates,
 source word hashes, data/protocol bindings, counts and all other strings
-remain exact. This permits harmless platform rounding without weakening
-source identity or the ideal mathematical contracts.
+remain exact. The tolerance is about five times the largest measured
+cross-platform difference and below the smallest reported refinement change
+(`6.98e-8` in binary probability); it is not a physical or floating-point
+error bound. This permits platform rounding without weakening source
+identity or the ideal mathematical contracts.
