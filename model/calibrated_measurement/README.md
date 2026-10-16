@@ -4,12 +4,12 @@ This packet closes the calibration and finite-sampling gap identified in
 [measurement bounds](../measurement_bounds/README.md). It gives a conditional
 confidence test for the same preparation-independent moment relation using
 **six measured settings**, and can predict the last two settings from the
-first four. The calculation now charges finite instrument completeness,
+first four. The calculation charges finite instrument completeness,
 imperfect null controls, calibration uncertainty and declared apparatus
 errors together. It uses exact rational scalar arithmetic and outward square
 root/logarithm bounds.
 
-No new laboratory outcomes are available. The old anharmonic comparison,
+No new laboratory outcomes are available. The anharmonic comparison,
 its unresolved coordinate provenance and its RMSE remain unchanged. The new
 result is a usable prospective calculation, not a resolution of that discrepancy
 or an empirical distinction between OPH and ordinary quantum mechanics.
@@ -33,11 +33,11 @@ All four joint outcomes are counted; summing the spin rows is a marginal,
 not postselection. Fixed trial budgets are required; optional stopping or
 selecting the most favorable probe after seeing counts needs another bound.
 
-The earlier three imaginary-null/phase-reversal controls remain useful checks
+The three imaginary-null/phase-reversal controls remain useful checks
 on stationarity. They are not required for the six-setting implication, and
 omitting them does not establish stationarity. The producer still compiles
 their operators to reuse the existing nine-setting operator certificate;
-only six settings enter the new measurement family or its trial budget.
+only six settings enter this measurement family or its trial budget.
 
 As a concrete illustration, rounding the unchanged native baseline's means
 to a **software count fixture** at 20,000 trials per setting gives:
@@ -130,7 +130,7 @@ enter through a justified additional observed-mean bound `beta_s`.
 A complete-output total-variation bound `epsilon_s` can supply
 `beta_s=2 epsilon_s`; missing bounds remain `null`, never zero.
 
-The producer also executes the earlier baseline preparation and the six
+The producer also executes the baseline preparation and the six
 complete readouts in the shared primitive runtime. Its floating expectations
 are retained as **diagnostics only**, used to make clearly labeled rounded
 count fixtures. No floating propagation result enters the confidence theorem.
@@ -143,7 +143,7 @@ comparison in its service bounds; this packet does not supply one.
 
 The finite positive state expectation in
 [`StateExpectation.lean`](../../Lean/EventAlgebra/StateExpectation.lean)
-and Gram Cauchy-Schwarz give the earlier moment bound. For the actual binary
+and Gram Cauchy-Schwarz give the moment bound. For the actual binary
 operators, with `z=<A>`, `w=<B>` and the defect bound `d` above,
 
 ```text
@@ -152,7 +152,7 @@ operators, with `z=<A>`, `w=<B>` and the defect bound `d` above,
 
 The complete Kraus interface in
 [`ChoiCPTP.lean`](../../Lean/Dynamics/ChoiCPTP.lean)
-provides the compatible finite instrument contract. The new contribution is
+provides the compatible finite instrument contract. The attachment is
 the explicit completion/calibration/sampling error chain for this concrete
 source interface. The spectral estimate and scalar argument here are direct
 mathematics checked by executable controls, not new Lean theorems.

@@ -1,7 +1,7 @@
 {
   "description": "Complete quantum field histories with exact memory, two local source clocks and event-boundary closure.",
   "files": {
-    "README.md": "90a2209f3d5a2489e1edfaacd20551d9ce4c095b9e2b236490b37d93285badc6",
+    "README.md": "3e96222cccc1eb529a9a4c48ce3d9886b33bc49203a235d021d3c1241864425c",
     "__init__.py": "13b69474ddd119f4142d66f6a6f84490a0d8461499b8d71eb406c5bf1a9780a6",
     "__main__.py": "de8ff7b93b02b78b0bce8413d4a3ae53c700578aa16cbedcb841b65a4c581381",
     "construction.py": "1a1d16012aef1bfb2f6230212f7410e32c2278e808a9b44353366a873fe22ca5",

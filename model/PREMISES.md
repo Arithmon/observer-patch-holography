@@ -804,7 +804,7 @@ Sources:
 - [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
 - [Live observer and repair-law implementation](../model/README.md).
 - [Reproducible package receipt and source verification](../model/verify.py).
-- [Four retained audit controls and surviving constructions](../model/CONSTRUCTION.md); exact source anchor: ` ## Retained audit controls `.
+- [Counterexamples, identifiability and compatible constructions](../model/CONSTRUCTION.md); exact source anchor: ` ## Counterexamples and identifiability `.
 - [Executed scalar detector and native feedback contract](../model/observer/scalar_response/README.md).
 - [Binary instrument, history law and inherited refinement bound](../model/observer/scalar_response/DERIVATION.md).
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).

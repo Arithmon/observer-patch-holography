@@ -1,29 +1,42 @@
 # Observer-relative time, fields and shared records
 
-This construction connects four finite parts of the runnable observer: the
-native repair process, its accessible field records, modular flow on a closed
-protocol algebra, and a quantum description reconstructed from native history
-correlations. The intended physical time is observer-relative. Fields and
+The executable model connects native repair, field observations, local clock
+records, modular descriptions and controlled interventions within specified
+finite experiments. It derives conditional observation laws and identifies
+which reductions require memory. Full interacting relativistic spacetime
+recovery and an OPH-specific empirical confirmation remain open. Fields and
 spacetimes are effective descriptions of observations; no fundamental field
-or preferred universal clock is required.
+or preferred universal physical clock is required.
 
-The additions close specific finite compatibility and implementation gaps.
-They do not establish a four-dimensional interacting spacetime limit or a new
-empirical match. The supplied carrier, schedule, preparation and coherent
-services remain named premises. The old experimental comparison is preserved.
+## What the inputs supply
 
-## One source, connected constructions
+Architecture, observer implementation and the complete repair law define an
+instance. Their consequences need not be supplied again for each prediction.
+Deriving those consequences does not select the instance from all alternatives
+allowed by the broader proposal. [Source selection](SOURCE_SELECTION.md)
+records that separate obligation.
 
-| Connection | Executable result | Scope |
+| Item | Status in the executed instance | Remaining obligation |
 | --- | --- | --- |
-| Native rule to field generator | [Native effective fields](native_effective_fields/README.md) identifies the exact hard-core occupation/exchange operator `G=60(I-K)`. | Fixed binary total-two sector on the thirty seams. |
-| Field generator to effective Hamiltonian | The same packet computes exact rational `H_m=sum_(k=1..m)(G/60)^k/k`, with `0<=H-H_m<=I/[2(m+1)3^m]` for `H=-logK`. | Finite Euclidean transfer and unitary reconstruction; the logarithm includes longer-range configuration terms. |
-| Current records to local fields | [Relative observer geometry](relative_observer_geometry/README.md) reconstructs local occupations from initial local labels and incident currents, checking all 3,960 native branches. | Known diagonal preparation and complete incident records; no hidden occupation oracle. |
-| Local records to a common description | Regional views agree and glue on their actual shared history; finite public-record GNS norms are preserved. | Value gluing does not determine a joint law from marginals. |
-| Native event histories to modular access | [Relative modular dynamics](relative_modular_dynamics/README.md) identifies an invariant 86-dimensional protocol algebra. | The compiled phase realizes its full Palm modular action; event evolution and modular flow are distinct operations. |
-| Native correlations to an executable effective clock | [Transfer modular probe](transfer_modular_probe/README.md) derives two frequencies from the minimal three-state record transfer and executes X/Y reads and a two-read continuation. | Reconstructed effective algebra, coherent service contract and selected modular intervals. |
+| Elementary ports, native occupation domain and S2 federation routing | Fixed by the retained architecture; all graph/coupling calls are source bound. | Physical identification of this instance; no claim that routing uniquely follows from A1 alone. |
+| Native local instrument, fair coin and uniform seam schedule | Specified by the complete C or E instance. | Choosing C versus E and proving applicability to a physical apparatus. The production adaptive schedule is a different instance. |
+| Exchange generator, density and coherence coefficients | Derived from the native Kraus branches and actual seams. | No extra oscillator or relativistic action follows just from these coefficients. |
+| Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
+| Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
+| Coherent preparation, phase interventions and readout | Declared observer services, with source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
+| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed. | Unique operational reference selection and its relation to continuing native events remain open. The stationary tracial state's modular flow is trivial. |
+| Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
 
-## Native fields and predictions
+The [equilibration attachment](native_equilibration/README.md) reuses the
+existing weighted-graph quantum mixing theorem and checks its hypotheses on
+the actual federations. On the elementary total-two sector, 374 discarded
+attempts suffice for trace distance at most `33/131072` from the stationary
+state, uniformly including an untouched reference. Every subsequent common
+complete observation protocol inherits that error. The larger federation
+budgets are conservative mathematical certificates, not executed trillion-step
+preparations or a uniform continuum mixing result.
+
+## Source-derived fields and actions
 
 For a seam `(a,b)`, the finite generator term is
 
@@ -37,7 +50,7 @@ This is exactly identity minus the endpoint swap on each seam, restricted to
 the native binary sector. The coefficients follow the enumerated repair law.
 Deleting the density interaction while keeping hopping fixed destroys its
 stochastic transfer normalization. The interpretation is a finite hard-core
-exchange field, rather than a supplied oscillator benchmark.
+exchange field, with coefficients fixed by the native law.
 
 Four successive observer reads retain the signed local occupation increments.
 They execute the actual native rule-C instruments and preserve all 81 words
@@ -50,19 +63,108 @@ and full terminal states. The connected four-point correlations are
 | `(0,3,0,3)` | `-4537/20323353600` |
 
 A Gaussian record law with those same two-point covariances predicts zero.
-These results therefore distinguish descriptions of the specified native
-records. Their non-Gaussianity does not alone establish quantum interaction,
+These results distinguish descriptions of the specified native records.
+Their non-Gaussianity does not alone establish quantum interaction,
 relativistic dynamics or agreement with measurements in our Universe.
 
-Absolute occupations require additional access. The exact identity
+Absolute occupations require additional access.
+[Relative observer geometry](relative_observer_geometry/README.md) checks
+all 3,960 native branches and gives the exact identity
 `n_i(N)=n_i(0)+sum_k j_k(1[i=b_k]-1[i=a_k])` gives a local observer a readback
 from its disclosed preparation and incident records. Boundary currents must
 be included. Two overlapping observers can agree on that same continuing
 history without a global clock. The counterexample with hidden initial
 occupations shows why current records alone do not determine the absolute
-field.
+field. Regional record views glue on their actual common history with public
+GNS norms preserved; that does not determine a joint law from marginals.
 
-## Two modular descriptions, with their meanings preserved
+The [native effective-field construction](native_effective_fields/README.md)
+identifies this population transfer and gives rational approximants
+`H_m=sum_(k=1..m)(G/60)^k/k`, with
+`0<=H-H_m<=I/[2(m+1)3^m]` for `H=-log K`. The logarithm is a finite Euclidean
+transfer reconstruction and includes longer-range configuration terms.
+
+The [native quantum action](native_action/README.md) instead acts on the full
+binary operator algebra. For specified seam channels `Phi_e`,
+`H_native=sum_e(I-Phi_e)` has positive local terms, exclusion coupling and
+C/E coherence-killing coefficients fixed by the source. The actual uniform
+discrete transfer is `Phi=I-H_native/M`, where `M` is the number of seams.
+Independent rate-one Poisson attempts on each seam give `exp(-s H_native)`
+exactly, with auxiliary expected-attempt parameter `s` per seam. This is a
+local Liouville action, not a state-vector Hamiltonian or Lorentzian action.
+Poissonization is a scheduler extension, not an inferred physical clock.
+
+## Local clocks and complete quantum memory
+
+The [local event construction](relational_event_clock/README.md) ticks on an
+actual change at one observer port. Remote repairs continue between ticks, so
+its no-tick channel is not a scalar holding probability. A resolvent gives
+the completed event instrument; finite executions retain timeout states.
+Independently inserted identity holds cancel from completed event laws,
+while relative seam weights and finite-cap costs can matter. Native
+attempt count, local event count, modular parameter and calibrated duration
+remain distinct.
+
+[Event circulation](event_circulation/README.md) derives circulation statistics
+from movement records in one continuing history. Its event-stationary Palm
+law is `mu(x)=d(x)/600`, with 30 configurations of moving degree 8 and 36 of
+degree 10. An actual movement herald retains failure probability `28/33`;
+longer event-counter laws are conditional on success. Triangular circulation
+has exact variance `N/10` after `N` recorded movements, with cycle covariance
+`P/30`. Its finite-partition Brownian increment action has coefficient 15 in
+rescaled event count, versus 99 in native-attempt count. This removes an
+independently inserted identity-holding frequency from that observable; it
+does not identify event count with modular flow or recover spacetime.
+
+The [joint clock process](joint_clock_process/README.md) gives a full quantum
+memory identity for every retained outcome word, intervening instrument and
+untouched reference. Its accessible two-level field algebra is a declared
+factorization of a four-port, one-particle cross-carrier experiment. Two native
+preparations with the same reduced field state have disjoint first-event laws.
+Retaining the initial hidden operator and exact history-dependent kernel
+restores every reduced quantum output. This is a finite operator identity,
+not an assumed Markov closure or a proven finite memory window.
+
+For this particular pair of clock instruments, each completed signed event
+has a rank-one work output. Four signed marks predict subsequent work records
+at event boundaries; conditional reference operators and any controller
+memory remain necessary for complete outputs. The stationary probability
+that consecutive union events use different clocks is `1/6`. C and E have
+the same completed clock chain, while three-attempt phase probes give `35/54`
+and `14/27`. Coherence survives in unresolved waits and is destroyed by this
+particular completed-event instrument. All 250 records, timeout flags and
+terminal states remain in the execution. This sector-specific result does
+not identify a dissipative channel with a modular automorphism.
+
+## Positive effective fields in an incident clock
+
+The [incident-clock field connection](observer_time_fields/README.md) counts
+every scheduled repair meeting an observer region, including zero-current
+attempts. For the remote/incident source split `P=A+B`, the stopped transfer
+`K=B(I-A)^-1` is similar to the positive
+`T=(I-A)^-1/2 B (I-A)^-1/2`. Local occupation reads and internal native
+interventions commute with this similarity. Every complete stationary
+field/intervention word therefore has exactly the same probability, with
+the disclosed initial labels included.
+
+Strict source bounds make `H=-log T` finite in incident-clock units. The
+elementary 66-state calculation retains all 64 four-read field records;
+record-controlled feedback changes their law by total variation `5/99`.
+On the actual 240-port federation, directed integer propagation retains all
+28,680 two-particle configurations and 124 labelled success/timeout outcomes.
+Complete L1 arithmetic errors are below `1.59e-8` and `1.69e-8` for the two
+protocols; their exact timeout probability is below `3.13e-12`. The currents
+reconstruct the fields, every remote repair acts on the continuing state,
+and the extra feedback repair is charged as an additional incident tick.
+
+This is a configuration-space Euclidean transfer, distinct from the full
+quantum Liouville action and a physically executed real-time unitary. A
+movement-only clock alternates its port occupation and has eigenvalue `-1`,
+which obstructs this positive-transfer logarithm. Cap/precision refinement
+is bounded; joint spatial refinement or comparison of distinct observer
+regions requires a common record map and an observational bound.
+
+## Modular references and operational access
 
 The native event-conditioned Palm reference is `diag(d(x)/600)`. Ten
 orientation pairs and 46 remaining scalar blocks form the native protocol
@@ -70,8 +172,8 @@ algebra `(direct_sum_10 M2) direct_sum C46`, of dimension 86. Its invariance
 under the event channel and modular flow supports continuing native
 experiments. The active phase circuit also implements the full modular
 automorphism of this algebra: omitted phases occur only in scalar blocks
-and cancel there. This refines the earlier active-corner implementation
-statement without claiming the full `M66` unitary.
+and cancel there. This identifies the protocol-algebra action without claiming the full
+`M66` unitary.
 
 The reconstructed transfer description uses a different algebra and
 reference. Positivity of `K` gives `sigma_K=K/TrK`, with
@@ -101,7 +203,152 @@ that native waiting follows the unitary continuation. The native protocol
 experiment supplies an explicit measurable failure of commuting event and
 modular operations, making that boundary testable.
 
-## Existing theorems reused
+The [native-reference readout](native_modular_reference/README.md) makes the
+Palm frequency `log(5/4)` observable on the known orientation corner:
+`P(match|herald;s)=4/5+cos(s log(5/4))/5`. Phases `0, pi/2, pi, 2*pi` give
+conditional probabilities `1, 4/5, 3/5, 1`. Both herald signs and failures
+remain in the source execution. Reference and probe preparation are different
+states; coherent services and phase settings are apparatus choices. Ensemble
+frequencies can define a candidate reading on a declared monotone interval,
+with phase and period aliases outside it.
+
+The [single-port event reference](relational_event_clock/README.md) is faithful
+on a separate 51-state matrix corner, with weights `1/100`, `2/100`, `4/100`
+and `5/100`. An exact coherence transition changes modular weight ratio from
+`5/4` to `1/2`, proving noncovariance of that stopped native channel with its
+corner modular flow. No-tick states can leave the corner, so the full
+66-dimensional state must remain available while waiting.
+
+For supplied work dynamics, the
+[thermal-reference construction](common_source/THERMAL_CLOCK.md) gives
+`s=-t/beta` under its faithful Gibbs reference and preserves committed record
+projectors between interventions. Choosing that reference from the supplied
+Hamiltonian does not derive either input. Measurement and feedback remain
+their actual instruments. None of these constructions selects a unique
+operational reference or requires universal synchronization.
+
+## Coherent interfaces and joint work observations
+
+The [compiled native interface](compiled_native_interface/README.md) uses the
+coherent source-code construction for a 34-pulse balanced mixer; the generic
+compiler uses 1,046 pulses for the same target. One additional source pulse
+accesses the imaginary quadrature. Committed native partial injections
+preserve diagonal states under classical feedback, so coherent code access
+remains a substantive interface premise.
+
+The [joint phase/work readout](clocked_quantum_readout/README.md) starts from
+the stationary native diagonal state and an independently prepared work
+vacuum. A fixed-seam repair herald retains failure and both useful signs.
+The mixer prepares the signed phase mixture, and native currents evolve
+alongside the interacting work. At the first signed current, the work
+performs its supplied kick, four reads and feedback. The native register
+uses the same mixer and actual coin/current pointer. Nothing is reset at
+the stopping event.
+
+At cap 64, the unconditional C/E phase contrast is approximately `0.00799376`.
+The complete law retains 8,195 records, herald failure `28/33`
+and ideal unresolved mass approximately `7.16142e-6`. The ideal-service
+finite-output allowance is `3e-6`; the source-mixer comparison is charged
+separately on all 512 encoded addresses. For the event “phase matches
+preparation and final gauge bit is one,” full-source record-weight intervals
+are `C:[0.063408,0.063420]` and `E:[0.058245,0.058257]`, with difference
+`[0.005151,0.005175]`. Raw binary source maps can have small normalization
+defects, so these are record weights, not silently normalized probabilities.
+Padding can remain unresolved; unlimited stopping belongs to the ideal
+invariant-sector target. Work-only marginals agree between C and E; phase
+access supplies the discriminator.
+
+The [quantum federation experiment](federated_quantum_sector/README.md)
+retains individual local outcomes and full quantum histories across carriers.
+Its four-attempt probe gives `5/8` for C and `1/2` for E; a first-record
+controlled phase changes C to `3/8` while E stays `1/2`. Coherent preparation
+and detector operations are specified services. These conditional model
+predictions have no identified laboratory implementation here.
+
+## Federations, locality and spacetime obligations
+
+Larger systems are federations of the same twelve-port elementary observers.
+The [screen construction](federated_observer/README.md) executes 20-, 80- and
+320-observer instances with exact cross-carrier current correlations and
+uniform transfer positivity. Actual parent/child restrictions fail the
+assumption that geometric refinement automatically intertwines dynamics.
+The [coarse density memory law](federated_observer/MEMORY.md) reproduces finite
+mean-density evolution using its history and declared unresolved initial
+profile. The joint quantum memory identity covers complete instruments on
+its specified finite support. Neither establishes uniform convergence across
+the screen refinements.
+
+The [native action locality bound](native_action/README.md) controls complete
+quantum, record and reference output, including finite or locally finite,
+well-posed feedback within a fixed observed region `A`. For maximum degree
+`Delta`, truncation to radius `R` has trace-distance allowance
+`min(1,|A| (Delta*s)^(R+1)/(R+1)!)` in per-edge Poisson parameter `s`.
+The fixed-count version retains omitted attempts as identity holds under
+the original global scheduler. The joint-clock experiment's coherent field
+gates and record collector require all four active ports in `A`; global
+access cannot be hidden inside a supposedly local controller.
+
+On a fixed bounded-degree infinite graph, consistent initial restrictions,
+source instruments and access maps give a continuing quantum process by
+finite-ball limits at bounded `s`. Independent-increment coupling gives
+CP dynamics on the quasilocal algebra. This is not an autonomous Markov law
+on each reduced observer algebra or a uniform global seam choice on an
+infinite graph. The pinned screen refinements have not been shown to meet
+those compatibility hypotheses.
+
+A finite screen can alternatively support effective spacetime on a specified
+observational domain with controlled errors. In either approach, joint field,
+clock and intervention laws must be preserved. The elementary response rank
+three does not establish three physical dimensions; record order and affine
+clock comparison do not establish a Lorentz metric. Native relaxation
+dispersion cannot be replaced by the Gaussian slab theorem's square-root
+dispersion without a matching model correspondence. An applicable continuum
+or bounded effective regime needs compatible states, access maps, locality,
+modular descriptions and observable dynamics. No fundamental field or
+universal clock is required by that target.
+
+## Prediction protocols and empirical status
+
+The [closed native-law protocol](closed_prediction_protocol/README.md)
+derives finite preparation and sequential error control on one continuing
+carrier. It requires neither exact stationary resets nor actual IID trials.
+The locked design uses 379 preparation attempts before each of 3,927 trials,
+with exact-source wrong-candidate probability at most `3/400`. Failure
+records count as trials. Its worst-case budget is 1,507,968 native attempts,
+267,036 source pulses and 534,072 load/export events; these are distinct
+resources, not a duration. The retained execution verifies two complete
+trials per law with all 36 joint records. The full trial budget is prospective.
+Physical error allowances need separate authentication; compiled-array
+bounds do not certify an apparatus.
+
+For laboratory data, the [readout-control construction](readout_controls/README.md) compares
+zero-displacement and opposite-probe observations with state/action-independent
+detector identities. Their residuals cannot be corrected by changing only
+the effective action. This diagnoses the comparison, not dataset unreliability.
+The retained 125-point anharmonic RMSE is **0.2876427868**.
+
+[Calibrated measurement](calibrated_measurement/README.md) uses two null
+settings to constrain a stationary detector's gain and offset, then two
+quadratures at `h` to constrain the two at `2h` by positivity. Complete count
+analysis includes calibration, finite instrument comparison, service errors
+and simultaneous sampling error; missing apparatus bounds remain unresolved.
+Its illustrative 20,000-trial software fixture predicts the `2h_imag` mean
+in `[-0.853255,-0.034184]` under the declared 99% family guarantee. Those
+are simulated counts, not laboratory observations. The detector's numerical
+stabilization and returned-array certificate do not authenticate physical
+pulse-product errors.
+
+[Two-order characteristic positivity](characteristic_constraints/README.md)
+uses both noncommuting product orders without assuming Gaussian preparation
+or an evolution law. Both unresolved coordinate extents remain in the public
+data analysis. Some plug-in means violate exact normalized-state Gram
+positivity by certified deterministic amounts, so they cannot all be treated
+as exact expectations. This is neither a statistical rejection nor source
+selection. Accepted counts or raw trials, coordinate calibration and physical
+instrument-error bounds are needed for a statistical test. No OPH-specific
+empirical confirmation follows from these diagnostics.
+
+## Reused mathematical contracts
 
 The construction uses the existing native transfer positivity and cylinder
 reflection argument, marked strong lumping, finite inner modular flow,
@@ -113,194 +360,15 @@ unmet geometric hypotheses. The per-packet notes name those theorem files
 and distinguish exact executable checks, analytic arguments, numerical
 diagnostics and formally checked general statements.
 
-The reduction to three record states and to the 86-dimensional protocol
-algebra avoids duplicating the full native operator problem when the declared
-observations require less. No new general convergence framework is introduced.
+The three-state record reduction, invariant 86-dimensional protocol algebra
+and four-mark event closure use the smallest established descriptions for
+their specified observations; their domains must remain explicit.
 
-## What remains for effective spacetime
-
-The elementary carrier stays twelve-port; larger systems are federations of
-those same observers. The [federation construction](federated_observer/README.md)
-executes the retained screen hierarchy with 20, 80 and 320 elementary
-observers. It joins cross-carrier records to exact current correlations,
-uniform transfer positivity and a finite-parameter density propagation bound.
-It also checks actual parent/child restrictions instead of assuming that
-geometric refinement intertwines the dynamics.
-
-Coarse block records do not automatically have Markovian dynamics. The
-derived [memory law](federated_observer/MEMORY.md) resolves this for their
-finite mean-density predictions: it exactly reproduces the fine evolution
-using coarse history and the declared initial unresolved profile. It does
-not supply every joint record law or a uniform scaling limit.
-The native density transfer also retains its own dispersion under modular
-reconstruction. The Gaussian slab theorem's
-square-root frequencies cannot be attached by changing that dispersion.
-These are not general impossibility results for OPH; they constrain the
-observable sector that can support a relativistic description.
-
-A mathematical family of federations can control an approximation without
-requiring a literally infinite physical screen. Alternatively, a finite
-screen can support an effective spacetime over a specified observational
-domain if its errors are bounded. In either case the effective description
-must reproduce joint observations and interventions. The elementary carrier's
-response rank three does not establish three physical dimensions. Record
-order and an affine clock fit do not establish a Lorentz metric.
-
-The existing conditional continuum and geometry theorems can be attached only
-when their domains, refinement maps, state compatibility, locality and clock
-hypotheses are provided by that family. Native record clocks, modular probes
-and effective evolution must have compatible correlation and intervention
-responses over their stated domain. This requires neither universal
-synchronization nor conversion to SI seconds as a foundational assumption.
-
-Independent measurements must then test predictions fixed before seeing
-their outcomes. This pass adds richer model predictions and finite
-connections, with no new experimental counts. The retained 125-point
-anharmonic RMSE remains **0.2876427868**.
-
-## What the inputs supply
-
-The subsequent federation/time/prediction pass treats the declared architecture,
-observer implementation and complete repair law as inputs to a conditional
-physical model. Consequences fixed by those inputs need not be supplied again.
-They also do not select those inputs from every alternative permitted by the
-broader OPH proposal. This distinction avoids both inventing missing premises
-and treating arbitrary target dynamics as architecture.
-
-| Item | Status in the executed instance | Remaining obligation |
-| --- | --- | --- |
-| Elementary ports, native occupation domain and S2 federation routing | Fixed by the retained architecture; all graph/coupling calls are source bound. | Physical identification of this instance; no claim that routing uniquely follows from A1 alone. |
-| Native local instrument, fair coin and uniform seam schedule | Specified by the complete C or E instance. | Choosing C versus E and proving applicability to a physical apparatus. The production adaptive schedule is a different instance. |
-| Exchange generator, density and coherence coefficients | Derived from the native Kraus branches and actual seams. | No extra oscillator or relativistic action follows just from these coefficients. |
-| Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
-| Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
-| Coherent preparation, phase interventions and readout | Declared observer services, with existing source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
-| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed. | Unique operational reference selection and its relation to continuing native events remain open. The stationary tracial state's modular flow is trivial. |
-| Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
-
-The [equilibration attachment](native_equilibration/README.md) reuses the
-existing weighted-graph quantum mixing theorem and checks its hypotheses on
-the actual federations. On the elementary total-two sector, 374 discarded
-attempts suffice for trace distance at most `33/131072` from the stationary
-state, uniformly including an untouched reference. Every subsequent common
-complete observation protocol inherits that error. The larger federation
-budgets are conservative mathematical certificates, not executed trillion-step
-preparations or a uniform continuum mixing result.
-
-The [quantum federation packet](federated_quantum_sector/README.md) extends
-the signed-difference decomposition to actual local outcomes, so it retains
-complete quantum histories instead of only density means. Its four-attempt
-cross-carrier probe predicts plus probabilities `5/8` for C and `1/2` for E.
-A first-record-controlled phase changes C to `3/8` while E stays `1/2`.
-These values use the specified coherent services; native current records
-alone cannot distinguish the two laws on the same diagonal history.
-
-The [local event construction](relational_event_clock/README.md) uses changes
-at one observer port as its tick. Remote repairs continue between ticks, so
-the no-tick kernel is not a scalar holding factor. Its stopped law removes
-an arbitrary independently inserted identity-holding frequency without
-claiming invariance under all scheduler changes. This joins the field
-measurement to a readable local clock, while preserving the distinction
-between that clock and modular automorphism.
-Its local event-conditioned state is faithful on a matrix corner acting on
-51 native states, with weights `1/100`, `2/100`, `4/100` and `5/100`; the modular flow
-is therefore defined there. An exact coherence transition changes the modular
-weight ratio from `5/4` to `1/2`, proving that the stopped native channel does
-not commute with that flow. No-tick states can leave the corner, so the full
-66-dimensional state is retained while waiting. This is a concrete domain
-and correspondence check, not a failure caused solely by zero weights in the
-larger algebra.
-
-The [measurement audit](observer_prediction_audit/README.md) compares public
-zero-displacement and opposite-probe controls with state/action-independent
-detector identities. Such residuals cannot be corrected by changing only
-the effective action. This diagnoses the observational comparison and
-does not establish that the dataset is unreliable. Its supplied laboratory
-apparatus model remains separate from the native-field construction.
-
-The [incident-clock field connection](observer_time_fields/README.md) closes
-one such finite joint-law attachment. For the remote/incident source split
-`P=A+B`, the stopped transfer `K=B(I-A)^-1` is similar to the positive
-`T=(I-A)^-1/2 B (I-A)^-1/2`. Local occupation readouts and internal native
-interventions commute with the similarity, so every complete stationary
-field/intervention word has exactly the same probability. Strict source
-bounds make `H=-log T` finite in the actual incident-clock unit. The executed
-four-read protocols retain initial labels, current-based readback, continuing
-states and feedback ticks. Directed integer arithmetic bounds the full
-240-port two-particle federation's capped output; cap/precision refinement
-has an explicit complete-law bound. No separate per-attempt duration enters.
-
-This incident clock includes zero-current repair attempts. It differs from
-the movement clock above, whose alternating occupation has an eigenvalue
-`-1` and therefore cannot use the same positive-transfer logarithm. The
-effective Euclidean field transfer is also distinct from the native quantum
-channel or a physically executed real-time modular flow.
-
-Full interacting relativistic spacetime recovery remains open. The remaining
-joint-law task includes relating spatial refinements or distinct observer
-regions through a common record map; cap/precision convergence on one graph
-does not accomplish that spatial comparison. None of these finite results
-warrants replacing the native relaxation
-dispersion with a desired relativistic dispersion. No universal clock or
-fundamental field is required by that target.
-
-
-## Joint quantum clocks, local action and continuing predictions
-
-The [joint clock process](joint_clock_process/README.md) extends the existing
-coarse memory identity from density means to every retained quantum outcome
-word, including intervening instruments and untouched references. Its declared
-accessible two-level field algebra comes from a factorization of a four-port,
-one-particle cross-carrier experiment. Two source states with the same reduced
-field state have disjoint first-event laws. Thus that instantaneous reduced
-state is insufficient; the exact history-dependent memory restores complete
-field/clock probabilities without selecting a new field action.
-
-For this particular pair of local clock instruments, each completed signed
-event has a rank-one work output. Four signed marks predict subsequent work-register
-records at event boundaries; conditional reference operators and any controller
-memory remain necessary for more general outputs. Between ticks, remote repairs
-continue and quantum coherence matters. The completed clock chain is identical
-for C and E, while a three-attempt phase probe gives `35/54` versus `14/27`.
-This is an explicit correspondence and limitation, not an identification of
-a dissipative event channel with a modular automorphism. It requires no
-global physical clock. The three-attempt cap and all timeouts remain visible.
-
-The [native action](native_action/README.md) reuses the full signed-difference
-quantum theorem to obtain `H_native=sum_e(I-Phi_e)` on the operator Hilbert
-space. Its positive local terms, exclusion coupling and coherence-killing
-coefficients are fixed by the declared native instrument. The actual discrete
-transfer is `I-H_native/M`. Optional independent per-seam Poisson attempts
-produce `exp(-s H_native)` exactly, where `s` is an auxiliary expected-attempt
-parameter, not an inferred physical duration. This derives a local Liouville
-action; it supplies neither a state-vector Hamiltonian nor a Lorentzian action.
-
-The same endpoint locality gives a bound on the observer's **complete quantum,
-record and reference output** after truncating distant ports. It covers finite
-local feedback protocols under a state-independent scheduler. The bound is
-uniform in federation size and yields a continuing local quantum process on
-a fixed bounded-degree infinite federation when neighborhoods, initial states,
-instruments and access maps are compatible. The existing screen refinements
-have not been proved to satisfy those hypotheses. Their source-derived joint
-observable limit and an emergent relativistic interpretation therefore remain
-open; this conditional construction does not silently discharge them.
-
-The [closed prediction protocol](closed_prediction_protocol/README.md)
-uses finite native preparation on the continuing carrier rather than resetting
-it to a supplied exact stationary state. Uniform reference-aware mixing and
-sequential coupling replace actual trial independence. The locked design uses
-379 preparation attempts before each of 3,927 trials and has exact-source
-wrong-candidate probability at most `3/400`. Physical control, storage and
-readout errors need their separate conditional allowance; the compiler's
-numerical-array bound does not certify an apparatus. Only two complete trials
-per law are executed by the retained verification, with all 36 joint records;
-the full trial budget is a prospective mathematical guarantee.
-
-Finally, [two-order characteristic positivity](characteristic_constraints/README.md)
-provides a public-data check without assuming Gaussian preparation or dynamics.
-Both unresolved coordinate extents and both noncommuting product orders are
-retained. Some noisy plug-in means violate the exact normalized-state Gram
-constraint by certified deterministic amounts. This diagnoses the limits of
-treating the table as exact expectations. It is not a statistical rejection,
-source selection or new OPH-specific empirical confirmation. Raw accepted
-counts, coordinate calibration and physical instrument errors are needed.
+The [Green–Kubo identities](../Lean/Thermodynamics/GreenKubo.lean) and native
+circulation argument apply to the marked jump chain and Palm law. Movement
+counts reuse [source recurrence](../Lean/QFT/SourceRecurrenceClock.lean)
+without importing its separate two-state return law. Coherent code access
+and the [phase-lift bridge](../Lean/QFT/SourcePhaseLiftBridge.lean) attach on
+known active supports. Detector constraints use
+[positive state expectations](../Lean/EventAlgebra/StateExpectation.lean)
+and [complete Kraus instruments](../Lean/Dynamics/ChoiCPTP.lean).

@@ -1,4 +1,4 @@
-"""Independent algebra probes for the 15 October audit; no packet is changed."""
+"""Independent algebra probes for finite oscillator bounds and source words."""
 from fractions import Fraction
 import math
 

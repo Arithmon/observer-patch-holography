@@ -1,4 +1,4 @@
-"""Retrospective empirical audit; no fitting and no replacement predictions.
+"""Retrospective empirical comparison; no fitting and no replacement predictions.
 
 Run from the repository root with single-threaded BLAS. This probe reads the
 already scored observations. It evaluates a deliberately simpler, supplied
@@ -19,19 +19,19 @@ from scipy.linalg import eigh, expm
 
 FOLDER = Path(__file__).resolve().parent
 MODEL = FOLDER.parent
-FROZEN_TRANSFER = FOLDER/'data/transfer_receipt_93e59bfb.json.gz'
+FROZEN_TRANSFER = FOLDER/'data/transfer_reference.json.gz'
 FROZEN_TRANSFER_SHA256 = '71403f474c39705d20a6c30dc2f36b7556943dd4f1734a5a1a395184744d2398'
 
 
 def frozen_transfer_bytes(path):
-    """Read the dated audit's exact original input, independent of live replay."""
+    """Read the fixed reference input independently of live replay."""
     compressed = path.read_bytes()
     try:
         raw = gzip.decompress(compressed)
     except (OSError, EOFError, zlib.error) as error:
         raise ValueError('Frozen transfer receipt has invalid gzip data') from error
     if hashlib.sha256(raw).hexdigest() != FROZEN_TRANSFER_SHA256:
-        raise ValueError('Frozen transfer receipt differs from the audit baseline')
+        raise ValueError('Frozen transfer receipt differs from the authenticated reference')
     return raw
 
 

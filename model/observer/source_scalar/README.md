@@ -6,7 +6,7 @@ prepares an entangled field, applies the first native current as a momentum
 impulse, evolves the field, reads a quantum pointer and passes its committed
 bit to native repair. Both conditional field states are retained.
 
-The new connection is an **emitted and executed finite source program** for
+The construction is an **emitted and executed finite source program** for
 the field apparatus. Its scalar action, site interpretation, coherent code
 services and model clock are supplied construction choices. This is a
 completed finite software construction, with no claim that the action was
@@ -108,7 +108,7 @@ outcomes have zero probability in exact arithmetic. Coherent transport,
 reset, storage, routing and readout remain specified apparatus services;
 their physical implementation and noise budget are not established here.
 
-## Error boundaries and next connection
+## Error boundaries
 
 [DERIVATION.md](DERIVATION.md) proves the finite target, complete ideal
 occupation-history bound, pointer law and uniform splitting bound.
@@ -152,7 +152,7 @@ the specified apparatus, with no claim that it identifies a measurement in
 nature.
 
 A field comparison additionally needs a spatial refinement family for the
-same implementation. The earlier [scalar continuum adapter](../scalar_response/README.md)
+same implementation. The [scalar continuum adapter](../scalar_response/README.md)
 uses a different spatial construction; its bounds do not automatically
 apply to these two sites. An empirical prediction additionally needs a
 physical identification and calibration with independent comparison data.

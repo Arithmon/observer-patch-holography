@@ -7,8 +7,9 @@ relations and interactions must follow from this same process. The existing
 scalar and matter Hamiltonians are comparison constructions under declared
 inputs until such a derivation attaches them to that process.
 
-This guide organizes the current selection work. It adds no core axiom or
-new scientific ledger. The claim registry and the generated
+This guide separates conditional derivation from selection of the underlying
+instance. It adds no core axiom or scientific ledger. The claim registry and
+the generated
 [premise map](PREMISES.md) retain their existing ownership and statuses.
 
 ## What each primitive must specify
@@ -36,9 +37,8 @@ not select one initial state of the Universe. Every claimed prediction must
 name which of these quantifiers it uses.
 
 For a declared instance, architecture, implemented interface and complete
-repair law are legitimate inputs, rather than premises that must be derived
-again inside each prediction. The
-[current input assessment](OBSERVER_RELATIVE_RECOVERY.md#what-the-inputs-supply)
+repair law are legitimate inputs to conditional predictions. The
+[conditional input assessment](OBSERVER_RELATIVE_RECOVERY.md#what-the-inputs-supply)
 records their derived consequences. In particular, the existing graph quantum
 mixing theorem supplies a [finite preparation procedure](native_equilibration/README.md)
 for the unique stationary state in each connected fixed-total native sector,
@@ -47,7 +47,7 @@ neither the conserved total nor a nontrivial modular reference; these are
 different questions from whether the supplied instance has a well-defined
 conditional observation law.
 
-## Selection is relative to accessible observations
+## Operational equivalence and interface contracts
 
 For a fixed architecture and interface, two presentations are operationally
 equivalent when every admitted intervention history has the same complete
@@ -86,6 +86,8 @@ It does not select the retained algebra, record instrument or physical
 interface. Full-carrier E is nonunital, so this binary argument does not
 transfer to all 78 inputs.
 
+## Consequences of the declared native law
+
 The [primitive observer attachment](primitive_observer/README.md#further-conditional-source-restrictions)
 recovers a relative quadratic action directly from the native mean response,
 with normalized capacities `1/12` and seam conductances `1/720` under the
@@ -106,8 +108,8 @@ transition correlations reproduce complete coarse current-bit laws and
 their retained runtime outputs. The stationary ground vector is a history
 representation; the runtime prepares the stationary mixture. This derives
 the finite classical-sector transfer Hamiltonian under the native law and
-uniform scheduler, while C/E quantum-instrument selection, real-time
-identification, locality and physical refinement remain open.
+uniform scheduler, while C/E quantum-instrument selection, physical-time
+identification, relativistic locality and physical refinement remain open.
 
 The [full quantum transfer attachment](native_quantum_history/README.md)
 extends that construction to all 4,356 binary matrix units for each declared
@@ -119,6 +121,67 @@ half-step rules out using either logarithm as a continuous CP-semigroup
 generator; integer native channels remain valid. This derives the transfer
 of a chosen repair candidate without selecting the candidate or coherent
 interface.
+
+The [fluctuation construction](native_fluctuations/README.md) supplies a
+conditional history action beyond the mean-response energy. Independent
+stationary copies of complete native histories have Gaussian finite-dimensional
+limits with `A=I-L/60`, `C=(5/33)(I-J/12)` and innovation covariance
+`D=C-A C A^T`. Their finite-history precision, including its stationary initial
+term, follows from those quantities. An analytic characteristic-function bound
+controls finite replication. Actual signed-current records give the increments
+of that fluctuation field without granting initial configuration access.
+Independence is a product-realization premise; this result does not establish
+the same-capacity canonical-vacuum identification, spatial locality,
+physical clock or interacting field limit.
+
+The [single-history circulation construction](native_circulation/README.md)
+removes independent replication for a different observable. Projecting actual
+seam currents onto the graph cycle space gives bounded martingale differences
+with covariance `(I-B^T L^+ B)/198`. Finite-chain ergodicity supplies the
+single-history Gaussian limit under the stated stationary law and uniform
+scheduler. Triangular current counts have exact variance `N/66`; their complete
+finite laws retain non-Gaussian corrections. The associated finite-partition
+increment action is derived in rescaled native-attempt units. It supplies no
+spatial refinement or physical duration.
+
+The [native quantum action](native_action/README.md) fixes the local
+Liouville operator `H_native=sum_e(I-Phi_e)` from the complete candidate
+instrument. Its positive endpoint terms, exclusion interaction and
+coherence-killing coefficients require no fitted field coupling. The actual
+discrete transfer is `I-H_native/M`. Optional independent rate-one attempts
+per seam give `exp(-s H_native)` in auxiliary Poisson parameter `s`; that
+scheduler extension does not derive a physical duration or turn the local
+operator into a state-vector Hamiltonian. The operator logarithm of a finite
+transfer and this local Liouville sum are distinct constructions.
+
+The [federated quantum implementation](federated_quantum_sector/README.md)
+checks individual outcomes on actual cross-carrier supports and preserves
+complete quantum histories with untouched references. These inputs derive
+exchange and coherence laws, including distinct C/E predictions. They do
+not select the native instrument, coherent access contract or laboratory
+identification.
+
+The [native equilibration construction](native_equilibration/README.md)
+derives finite approach to the stationary state in each connected binary
+fixed-total sector, uniformly with an untouched reference. Conserved total
+and sector mixture remain initial or boundary data. A tracial stationary
+state also has trivial modular flow; preparation does not select a
+nontrivial clock reference.
+
+## Observer-relative clocks and effective descriptions
+
+The [observer-relative recovery connection](OBSERVER_RELATIVE_RECOVERY.md)
+identifies the fixed-carrier native generator as a hard-core exchange field
+and derives controlled logarithm approximants from its actual transfer.
+That positive transfer also supplies a faithful reference whose modular flow
+matches the reconstructed finite Hamiltonian. The reduced three-mode
+description has an executed coherent modular probe; the native Palm flow
+acts on a separately verified invariant protocol algebra. These are concrete
+connections between source records, effective actions and modular descriptions,
+with different algebras and access contracts kept explicit. They do not select
+a unique reference, replace dissipative repair by unitary evolution or derive
+a relativistic continuum. Compatible regional field counters require known
+local preparation and complete incident-current records.
 
 The [native record clock](native_clock/README.md) constructs an observable
 counter with exact statistics from the same committed currents.
@@ -139,79 +202,6 @@ six-attempt program retains its unresolved tail; the infinite stopping law is
 summed separately. The phase preparation, detector, logical stopping controller,
 uniform scheduler and candidate law remain supplied. This does not identify
 a laboratory apparatus or remove its physical clock-calibration premise.
-
-The [fluctuation construction](native_fluctuations/README.md) supplies a
-conditional history action beyond the earlier mean-response energy. Independent
-stationary copies of complete native histories have Gaussian finite-dimensional
-limits with `A=I-L/60`, `C=(5/33)(I-J/12)` and innovation covariance
-`D=C-A C A^T`. Their finite-history precision, including its stationary initial
-term, follows from those quantities. An analytic characteristic-function bound
-controls finite replication. Actual signed-current records give the increments
-of that fluctuation field without granting initial configuration access.
-Independence is a product-realization premise; this result does not establish
-the earlier same-capacity canonical-vacuum identification, spatial locality,
-physical clock or interacting field limit.
-
-For the separate laboratory apparatus, the [preparation diagnostic](empirical_diagnostics/README.md)
-provides six additional complete readout predictions and an explicit
-non-Gaussian ambiguity invisible to the old single imaginary probe. The
-Gaussian-family inverse has a phase branch and an unresolved probe-scale
-freedom. These are new tests of supplied preparation and detector premises;
-their outcomes remain unavailable, and the old trajectory score is unchanged.
-
-The [single-history circulation construction](native_circulation/README.md)
-removes independent replication for a different observable. Projecting actual
-seam currents onto the graph cycle space gives bounded martingale differences
-with covariance `(I-B^T L^+ B)/198`. Finite-chain ergodicity supplies the
-single-history Gaussian limit under the stated stationary law and uniform
-scheduler. Triangular current counts have exact variance `N/66`; their complete
-finite laws retain non-Gaussian corrections. The associated finite-partition
-increment action is derived in rescaled native-attempt units. It supplies no
-spatial refinement or physical duration.
-
-The [native interface reduction](native_interface/README.md) obtains the earlier
-phase preparation and detector effects from actual coin/current records once
-one shared balanced mixer is admitted. Both moving-current heralds can be used
-with sign-aware classical decoding, with total useful probability `5/33`.
-The native partial-injection grammar preserves diagonal states under every
-finite classical feedback history, establishing an explicit obstruction to
-constructing that mixer within the stated grammar. Matching phase outcome
-probabilities does not identify the detector's retained quantum output with
-the earlier square-root instrument.
-
-The [state-independent measurement bound](measurement_bounds/README.md)
-replaces a preparation-family identity with a necessary positive-state moment
-inequality. It includes outward corrections for the actual compiled detector
-operators and separate null/phase-reversal controls for a stationary classical
-bit channel. Its joint interface premises and sampling errors are explicit;
-passing the test neither selects a physical action nor resolves the absolute
-probe-coordinate scale.
-
-## The native selection tests
-
-The [observer-relative recovery connection](OBSERVER_RELATIVE_RECOVERY.md)
-identifies the fixed-carrier native generator as a hard-core exchange field
-and derives controlled logarithm approximants from its actual transfer.
-That positive transfer also supplies a faithful reference whose modular flow
-matches the reconstructed finite Hamiltonian. The reduced three-mode
-description has an executed coherent modular probe; the native Palm flow
-acts on a separately verified invariant protocol algebra. These are concrete
-connections between source records, effective actions and modular descriptions,
-with different algebras and access contracts kept explicit. They do not select
-a unique reference, replace dissipative repair by unitary evolution or derive
-a relativistic continuum. Compatible regional field counters require known
-local preparation and complete incident-current records.
-
-The [16 October connection pass](SOURCE_CONNECTIONS_20261016.md) joins these
-attachments without introducing a new repair law. The existing coherent code
-compiler implements the shared native mixer and the missing imaginary
-quadrature; the clocked work history admits a complete joint native phase
-read. The circulation theorem can be expressed in recorded movement events,
-removing identity-holding frequency from that observable. The calibration
-packet turns the positive-state moment bound into a prospective count test.
-These are implementation and observable reductions within stated contracts,
-not selection of the carrier, coherent service contract or interacting work
-action.
 
 The intended field action is an **effective description of observer
 statistics**, and time is relative to the observer's algebra, state and
@@ -234,6 +224,61 @@ native waiting process and interacting work evolution have not been shown
 to follow that flow. Neither this reference choice nor the modular
 automorphism theorem alone selects the complete repair instrument.
 
+[Event circulation](event_circulation/README.md) expresses one-history cycle
+statistics in recorded movement events. Its Palm reference, exact triangular
+variance `N/10`, covariance `P/30` and limiting increment-action coefficient
+15 follow under the declared uniform scheduler and event preparation.
+Independent identity-holding frequency disappears from those event laws.
+This gives a readable parameter for that observable, not an identification
+of event count with modular flow or physical spacetime.
+
+The [joint clock process](joint_clock_process/README.md) derives complete
+field/clock instrument laws with an exact record-dependent memory kernel.
+Two preparations with the same reduced field state can have disjoint
+first-event laws, so selecting an effective field algebra does not justify
+an autonomous Markov model on it. Its four-mark completed-event closure is
+specific to the one-particle source experiment; full reference outputs keep
+the conditional reference operators. Unresolved waits retain coherence and
+all finite-cap timeouts. Neither memory elimination nor event-boundary
+closure identifies native repair with a modular automorphism.
+
+The [complete quantum locality bound](native_action/README.md) controls
+truncation of distant ports under the specified state-independent scheduler
+and strictly local record access. A fixed bounded-degree infinite graph
+admits a conditional quasilocal quantum process in per-edge Poisson
+parameter when neighborhoods, initial restrictions and instruments agree.
+The screen-refinement family has not been shown to meet these compatibility
+hypotheses. A reduced observer algebra can require memory; this limit
+does not imply autonomous local Markov evolution, Lorentz symmetry or a
+universal physical clock.
+
+## Coherent access and selection counterexamples
+
+The [native interface reduction](native_interface/README.md) obtains the native
+phase preparation and detector effects from actual coin/current records once
+one shared balanced mixer is admitted. Both moving-current heralds can be used
+with sign-aware classical decoding, with total useful probability `5/33`.
+The native partial-injection grammar preserves diagonal states under every
+finite classical feedback history, establishing an explicit obstruction to
+constructing that mixer within the stated grammar. Matching phase outcome
+probabilities does not identify the detector's retained quantum output with
+the square-root comparison instrument.
+
+The [compiled phase interface](compiled_native_interface/README.md) supplies
+the balanced mixer as a 34-pulse source word on the known native encoding;
+one additional pulse gives the imaginary quadrature. The generic compiler's
+1,046-pulse word is a comparator for the same target. The coherent loading,
+control and export contract remains an interface input. Compiling the
+service does not derive its availability from committed classical records.
+
+The [joint phase/work readout](clocked_quantum_readout/README.md) combines
+that interface with continuing work evolution, keeping both herald signs,
+failure, signed stopping records, four work bits and native phase. Its cap-64
+execution retains 8,195 complete records and the finite error budgets. The
+work-only marginals agree for C and E; phase access provides the discriminator.
+The separate work preparation and action remain supplied benchmarks. Complete
+record-weight bounds on raw source arrays do not certify physical apparatus
+fidelity or make numerical padding irrelevant to unlimited stopping.
 The [coherent continuation](observer/COHERENT_CONTINUATION.md) fixes a
 3,960-arc experimental architecture, uniform coherent event embedding `A`,
 native reversal `S`, and complete Ramsey interface. Both `S` and
@@ -271,11 +316,60 @@ has complete plus probabilities `3/4` and `1/4`, with both fair native coins
 retained. Conditional on coin zero, plus probabilities are `1` and `0`;
 conditional on coin one, both are `1/2`. Each coin has probability `1/2`.
 Committing the record before that read gives `1/2` for both.
-The complementary outcome is a new record-basis result, not a native
-current label. Its supplied source code services and calibration obligations
-are unchanged; these values are model predictions without experimental data.
+The complementary outcome is a distinct record-basis result, not a native
+current label. Source-code services and calibration remain premises; these
+values are model predictions without experimental data.
 
-## What would advance selection
+## Measurement premises and discriminating predictions
+
+For the separate laboratory apparatus, the [preparation diagnostic](empirical_diagnostics/README.md)
+provides six additional complete readout predictions and an explicit
+non-Gaussian ambiguity invisible to a single imaginary probe. The
+Gaussian-family inverse has a phase branch and an unresolved probe-scale
+freedom. These are tests of supplied preparation and detector premises;
+their outcomes remain unavailable.
+
+The [state-independent measurement bound](measurement_bounds/README.md)
+replaces a preparation-family identity with a necessary positive-state moment
+inequality. It includes outward corrections for the actual compiled detector
+operators and separate null/phase-reversal controls for a stationary classical
+bit channel. Its joint interface premises and sampling errors are explicit;
+passing the test neither selects a physical action nor resolves the absolute
+probe-coordinate scale.
+
+[Calibrated measurement](calibrated_measurement/README.md) consumes complete
+joint spin/detector counts. Null settings constrain a stationary detector's
+gain and offset; two quadratures at `h` constrain the two at `2h` without a
+Gaussian preparation assumption. Calibration, finite instrument comparison,
+service errors and simultaneous sampling error remain explicit. Its software
+fixtures are not empirical counts. Missing apparatus bounds leave the physical
+test unresolved; no zero-error default is justified.
+
+The [readout-control construction](readout_controls/README.md) applies
+action-independent origin and opposite-probe identities to deposited
+oscillator means.
+[Two-order characteristic constraints](characteristic_constraints/README.md)
+retain both noncommuting orders and both unresolved coordinate extents.
+Their deterministic Gram-positivity residuals diagnose treating noisy means
+as exact expectations; they neither reject a model statistically nor prove
+the dataset unreliable. The finite compiled probes do not implement the
+continuous oscillator Weyl relations exactly. Those laboratory instruments,
+accepted counts, coordinate calibration and physical error bounds remain
+necessary premises. The 125-point anharmonic RMSE is `0.2876427868`.
+
+The [closed native-law protocol](closed_prediction_protocol/README.md)
+provides a separate prospective discriminator under the actual declared
+native C/E laws. Finite preparation on the same continuing carrier replaces
+exact stationary resets, and sequential coupling replaces an assumption of
+actual IID trials. Its locked design uses 379 preparation attempts before
+each of 3,927 trials and bounds exact-source decision error by `3/400`.
+The retained runtime checks two trials per law with all 36 joint records;
+the complete trial budget is prospective. Physical service errors require a
+separate uniform conditional bound. No deposited laboratory dataset is
+identified with this native protocol, and a compiler's numerical-array
+certificate does not provide that correspondence.
+
+## Open selection obligations
 
 An admissible selection argument must identify which existing source or
 observer-agreement constraint excludes an alternative, exhibit the actual
@@ -285,11 +379,18 @@ chart holonomy is not an established identification of native configuration
 loops with identity chart loops; imposing a preferred loop phase would need
 that attachment.
 
-The immediate task is to derive which phase-sensitive observations and
-agreement constraints the observer interface admits, then apply the existing
-completion or channel-fidelity results to those actual objects. Comparisons
+Selection requires a derivation of which phase-sensitive observations and
+agreement constraints the observer interface admits, with the completion
+or channel-fidelity theorems applied to those actual objects. Comparisons
 with observed propagation may reject complete candidates, but choosing the
 reflection because it produces a desired wave is not a source derivation.
 Effective physical claims additionally need one compatible extending family,
 controlled errors and independent observations, with the time parameter of
 each rate stated explicitly.
+[Identifiability checks](identifiability_checks/README.md) retain explicit
+counterexamples and comparison controls. A simplifying reduction must preserve
+the admitted complete observation and intervention laws, including initial
+hidden data, reference correlations and timeout outcomes. Successful finite
+execution establishes those conditional laws; choosing the physically
+realized source requires a justified selection argument or independent
+discriminating observations.

@@ -2,78 +2,62 @@
 
 **Find the simplest shared repair rule that satisfies the known constraints.**
 
-Candidate register: **14 October 2026**. Earlier law-comparison baseline:
-[`39366529`](https://github.com/FloatingPragma/observer-patch-holography/commit/393665297e551f2023fb07a2853188a589ad7c33).
-This page owns the concise comparison of active laws. The
-[model search](CONSTRUCTION.md) supplies derivations and test summaries; the
-[premise map](PREMISES.md) tracks their connections to existing
-theorems. These are research candidates, with no physical selection claimed.
+This page compares the [runnable model’s](README.md) active laws and their
+observational distinctions. The
+[construction guide](CONSTRUCTION.md) describes the executable models, and
+the [premise map](PREMISES.md) connects them to existing theorems. A declared
+architecture, observer interface or repair law may supply an implementation
+premise. Its consequences must be checked on that construction; physical
+selection among compatible candidates is a separate question.
 
-The [runnable model](README.md) includes two finite observer protocols on
-N1: the [native record/controller](observer/README.md) and its
-[P-dependent binary detector](observer/p_response/README.md). These are
-explicit implementations under declared premises; construction completion
-does not require proving that their design is the unique possible law.
+The native C/E instruments have executable federation, local action,
+observer-relative event clocks and quantum field-history reductions. Their
+[continuing prediction protocol](closed_prediction_protocol/README.md)
+uses finite native preparation and bounds dependent trial records. These
+connections do not require a fundamental field or preferred global clock.
+They do require the specified sector, schedule, record access and coherent
+services. Their conditional predictions are not laboratory observations.
 
-The [common interacting source](common_source/README.md) extends this
-construction through one quantum register carrying charged matter, electric
-flux and a neutral scalar. Its source-executed matter measurement controls
-feedback before a scalar measurement controls native continuation. It
-retains all 1,056 joint paths and certifies a nonzero finite scalar response.
-This binds compatible finite interfaces; its action, state, service and
-clock inputs remain declared, with interacting spatial refinement and
-physical identification open. It does not identify N1's integer averaging
-with that Hamiltonian or combine incompatible candidate hypotheses.
+The [common interacting source](common_source/README.md) and scalar models
+provide complementary benchmarks with declared Hamiltonians, states and
+clock parameters. Their compilation, complete-instrument errors and
+[observer readouts](common_source/OBSERVER_READOUTS.md) establish finite
+operational connections. They do not identify integer averaging with those
+Hamiltonians or transfer one instrument's error bound to another.
 
-Its [observer readouts](common_source/OBSERVER_READOUTS.md) attach GNS
-representations, modular flow, a source-programmed clock and quantum regional
-maps to the same recorded state. Its interacting occupation limit retains
-the fixed two-site apparatus; it supplies neither a spatial field limit
-nor physical clock calibration. A theorem's hypotheses have to be
-checked on the chosen candidate before transferring its conclusion.
+Each candidate follows the
+[mathematical reuse contract](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md):
+define its agreement target independently of the update, state its domain,
+scheduler and fault assumptions, and map each theorem to its actual objects.
+N1/N1-E and N2/N3/N4 have finite channel results; S1 uses the stated linear
+overlap structure. A heat-flow theorem does not turn arbitrary quantum
+instruments or conservative evolution into that heat flow.
 
-The separately executed smooth-detector variant adds a complete interacting
-occupation error bound and an explicit model-energy balance. Its Ramsey
-outcomes have a different meaning from the sharp-sign records. Its finite
-energy identity and convergence theorem do not provide physical calibration
-or transfer the original modular-clock attachment.
-
-Each candidate uses the
-[established-mathematics contract](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md): define
-its agreement target independently, state its execution and fault assumptions,
-and map any imported convergence or extension theorem to its actual objects.
-N1/N1-E and N2/N3/N4 retain their finite channel proofs; S1 uses the declared
-linear overlap structure where applicable. A sheaf heat-flow theorem does not
-turn their quantum instruments or conservative evolution into that heat flow.
-
-Clock obligations concern observer-local readings and compatible comparisons
-on the same process. They impose no preferred universal clock; supplied shared
-benchmark times retain their stated scope. See the
-[clock convention](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
-
-The [three-obligation selection guide](SOURCE_SELECTION.md) states the current
-priority: derive the carrier, observer interface and complete repair rule as
-one source construction, comparing candidates up to admitted observations.
-Finite implementation and source selection are separate milestones.
+The [source-selection contract](SOURCE_SELECTION.md) distinguishes supplied
+instance inputs, derived consequences and physical selection up to admitted
+observations. The [observer-relative recovery contract](OBSERVER_RELATIVE_RECOVERY.md)
+requires compatible joint field, clock and intervention laws. It imposes no
+preferred universal clock. Controlled relativistic spacetime recovery and
+independent empirical identification require additional evidence.
 
 ## Candidates and priorities
 
 | ID | Concrete law | Role | Strongest established property | Principal missing connection |
 | --- | --- | --- | --- | --- |
-| **N1** | Nearest-integer seam repair with current record, channel C | Microscopic baseline and executable observer source | One recorded process supplies conservative load repair, a finite slow geometry readout and dimensionless clock relations. Finite record-only feedback and a designed P-dependent binary response run on this instrument. | Physical realization, clock and refinement; the quantum instrument, charge assignment and detector apparatus are declared hypotheses/design choices. |
-| **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion of C on one seam; a conditional expectation on the binary shell. | Source selection of the retained algebra and record instrument. |
+| **N1** | Nearest-integer seam repair with current record, channel C | Microscopic baseline and executable observer source | The source supplies conserved currents, exact quantum blocks, a local Liouville action, federation instruments and local event-clock laws. Continuing measurement trials have a uniform preparation and dependence bound. | Physical realization and compatible observation/refinement maps; the quantum instrument, sector, schedule, coherent apparatus and physical calibration are declared inputs. |
+| **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion on one seam and a conditional expectation on the binary shell; shares C’s population laws but has distinct coherent readouts. | Source selection of the retained algebra and record instrument. |
 | **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
 | **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment with abstract central-port attachment | Private preparations change bare load probabilities. Twelve central addresses preserve its quantum channel in a complete abstract scalar-seam source grammar. It retains normalized port geometry but exhibits memory beyond a rescaled native heat law at the same full quantum reference. | Physical realization, preparation/readout, retained-record service and clock comparison; j is not a bare-load current. |
 | **S1** | Minimal canonical inertial completion of weighted scalar agreement | Conditional field model with executed observer adapter | Explicit Hamiltonian, controlled free-field continuum, and a native-current preparation/binary field detector/native feedback protocol. | Derivation or physical identification of inertia, quantum state, controls and model time on the same microscopic process. |
 
 N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
-extension examined after a one-term obstruction, using the same state factors.
+extension examined consistent with the one-term obstruction, using the same state factors.
 It is an experiment, not a preferred law by default. A fixed coefficient ratio
 is an assumption even without an extra fitted parameter. S1 supplies useful
 field benchmarks; its dynamics are not identified with these microscopic laws.
-Common refinement, physical time, interactions, gravitational premises and
-observational discrimination must be joined on one process before a complete
+Common refinement, observer-relative clock comparisons, interactions,
+gravitational premises and observational discrimination must be joined on one process before a complete
 physical model can be claimed.
 
 The [coherent native continuation](observer/COHERENT_CONTINUATION.md) is a
@@ -212,6 +196,53 @@ the native geometry/current dictionary. Intermediate quantum correction,
 additional response registers and coherent uncommitted records are different
 process contracts; no physical law or programme-wide obstruction is inferred.
 
+## Native action, fields, clocks and continuing tests
+
+The [local action](native_action/README.md) follows from the actual endpoint
+instruments: `H_native=sum_e(I-Phi_e)`. Its blocks consist of exclusion on
+common occupations and an explicitly fixed C/E coherence-killing term. The
+native discrete transfer is `I-H_native/M`; `exp(-s H_native)` describes an
+optional per-edge Poisson scheduler. The two are distinct predictions.
+Neither construction identifies this positive operator on operator space
+with a relativistic state-vector Hamiltonian.
+
+[Quantum federations](federated_quantum_sector/README.md) preserve the local
+Kraus operations, noncommuting field readouts and arbitrary references on
+joined elementary carriers. Complete local observation errors can be bounded
+when distant ports are omitted, including locally controlled interventions.
+The corresponding infinite-federation process requires a fixed bounded-degree
+graph with compatible local data. The selected screen refinements have not
+been shown to satisfy that condition, and no continuum dimension follows
+from a finite graph's rank or drawing.
+
+The [local event clock](relational_event_clock/README.md) and
+[joint clock process](joint_clock_process/README.md) retain the native
+repairs that occur between clock events. The joint experiment has an exact
+quantum memory recurrence for its accessible field algebra. At completed
+events its work state has an exact four-mark measure-and-prepare closure;
+conditional reference operators remain necessary. C and E share that
+completed event instrument while differing in unresolved waiting coherences.
+After three declared attempts the complete field-plus probabilities are
+`35/54` for C and `14/27` for E. No physical clock or laboratory mapping is
+claimed for these conditional source predictions.
+
+[Native equilibration](native_equilibration/README.md) supplies finite
+preparation in a fixed-number sector, uniformly over untouched references.
+The [continuing discrimination protocol](closed_prediction_protocol/README.md)
+uses 379 discarded repairs before each of 3,927 trials and keeps the actual
+terminal state between trials. The exact-source wrong-candidate bound is
+0.75%, without an IID or exact-reset premise. A separate, unauthenticated
+complete-trial physical allowance would suffice for a 1% target. The source
+mixer and classical record services remain explicit implementation inputs.
+
+The [readout controls](readout_controls/README.md) compare action-independent
+measurement identities with the public oscillator data. Those controls can
+locate apparatus or interpretation discrepancies, but cannot select a native
+repair law. The [identifiability checks](identifiability_checks/README.md)
+and [probe design](identification_design/README.md) specify which added
+measurements can separate declared action families. A family-specific
+separation is not selection from OPH axioms.
+
 ## N2: repair current drives endpoint response
 
 Supply one private six-level factor at each port, together with the existing
@@ -246,16 +277,16 @@ direction: attaching D_b−D_a does not derive the full gauge structure or a
 physical gauge field. Loop memory alone does not establish non-Abelian
 curvature; a commuting-matrix control produces loop memory too.
 
-**Evidence:** 268 fixed checks and one identical isolated replay cover native
-source binding, covariance, locality, completion and a full three-event
-comparison with N3. Numerical matrix checks supplement the analytic
-identities; there is no native hardware execution. The
+**Result:** exact native source binding, covariance, locality and completion
+identities have finite matrix checks and a complete three-event comparison
+with N3. The numerical checks supplement the analytic identities; there is
+no native hardware execution. The
 [detailed join](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
 states preparations and controls.
 
-**Next decisive work:** characterize the protected/common algebra and test
-the smallest reciprocal extension compatible with local repair. A reciprocal
-extension must relax exact preservation of C on specified internal inputs;
+**Open connection:** characterize the full protected/common algebra and
+identify observations separating N2 from the flat and reciprocal alternatives.
+A reciprocal extension must relax exact preservation of C on specified internal inputs;
 requiring it for every input rules out that feedback. Check the enlarged
 source's complete event grammar before importing the gauge theorem.
 
@@ -277,18 +308,17 @@ for N2. There is no response-to-load feedback.
 **Simplest tested discriminator:** one local six-level state, one seam attempt
 and one local two-outcome effect distinguish N2 and N3 with probability
 difference **0.049095 at θ=1/8**, including both fair coin outcomes. No entangled
-reference or retained history is required. All 67 fixed checks and an
-identical isolated replay passed. Preparation, effect and coupling are
+reference or retained history is required. Preparation, effect and coupling are
 supplied; see the [local readout](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
 
-The earlier declared reference-assisted input, retaining all
+The declared reference-assisted input, retaining all
 eight coin outcomes of the three-event history gives N2 versus N3 trace
 distance about **0.137390 at θ=1/8**, about **0.069358 at θ=1/16**, and zero at
 θ=0. No outcome is postselected. These are finite model comparisons using
 supplied quantum references and seams, not measured physical predictions.
 See the [alternative and fixed tests](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
 
-**Next decisive work:** realize that local preparation/readout in the admitted
+**Open connection:** realize that local preparation/readout in the admitted
 source grammar and connect it to a physical comparison. Preservation and
 convergence alone cannot select N2 over this simpler alternative.
 
@@ -328,15 +358,14 @@ binary-network convergence transfer by conjugacy. Its full common algebra
 and absolute gap are uncomputed. The candidate is restricted to the binary
 shell; full integer-pile relaxation is not established.
 
-**Evidence:** with fixed bare load I_2/2, supplied private preparations change
+**Result:** with fixed bare load I_2/2, supplied private preparations change
 endpoint occupation probability from **0.482020673 to 0.517979327 at θ=1/8**.
-The one-term controls give 1/2. All 187 fixed checks and an identical isolated
-replay passed. The
+The one-term controls give 1/2. The
 [derivation and tests](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
 give independent source and small-coupling controls without claiming an
 interval bound at finite θ.
 
-**Main cost:** the old record label j refers to the conjugated occupation,
+**Main cost:** the record label j refers to the conjugated occupation,
 not to a measured change of bare load. N1's current-derived geometry and
 clock identities cannot simply be imported. The
 [shared bare-occupation protocol](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
@@ -381,7 +410,7 @@ completion. It oscillates rather than asymptotically settling. The
 reuses the existing free scalar continuum and quantum-instrument results
 under supplied canonical quantum representation, state, controls and clock.
 
-**Evidence:** an eight-site construction composes preparation and retained
+**Result:** an eight-site construction composes preparation and retained
 observations on one finite code with mathematical trace-distance error
 **<0.001237**, before physical service errors. A direct Gaussian simulator
 evaluates the same quadratic benchmark; a finite compiler simplifies its
@@ -411,7 +440,7 @@ four-, eight- and sixteen-level site codes and retains both pointer outcomes bef
 native feedback. Exact bounds cover the complete ideal occupation history
 and temporal splitting for the same finite Hamiltonian. Spatial refinement,
 coherent service errors and physical identification require further evidence;
-this does not upgrade the earlier eight-site or golden-grid execution claims.
+the eight-site and golden-grid constructions retain their separate execution scopes.
 
 The [C/E interference experiment](predictions/README.md) holds the native
 endpoint map and diagonal preparation weights fixed while changing the
@@ -431,9 +460,9 @@ The contrast law E is precisely C followed by recording seam-total parity,
 the minimal extra binary refinement of the coin/current labels. Both use
 the same repair circuit; one three-pulse CNOT supplies their difference.
 
-**Next decisive work:** connect the inertia and Hamiltonian time to the same
-microscopic events as N1/N2, and execute a complete preparation/readout history
-within one service budget. Equal equilibrium configurations do not select
+**Open connection:** identify inertia and the Hamiltonian model parameter
+with observations and compatible observer-relative clock readings from the
+same microscopic process, retaining a complete preparation/readout budget. Equal equilibrium configurations do not select
 the kinetic law; the retained [kinetic alternatives](CONSTRUCTION.md#retained-scalar-and-entropy-constructions)
 provide dynamical discriminators.
 
@@ -450,12 +479,13 @@ not an exact pathwise equality retraction.
 The N2 variant with **one shared six-level processor** preserves the load
 channel but fails disjoint-seam commutation. It is rejected under the declared
 locality requirement. The local endpoint construction is retained instead.
-Other superseded routes and their reasons are collected in
-[retired approaches](CONSTRUCTION.md#remaining-construction-work).
+The [identifiability checks](identifiability_checks/README.md) and
+[construction counterexamples](CONSTRUCTION.md#retained-audit-controls)
+state the domains excluded by additional exact controls.
 
-## Keeping this register useful
+## Maintaining candidate scope
 
-Follow the [general search findings](CONSTRUCTION.md#remaining-construction-work):
+Follow the [construction obligations](CONSTRUCTION.md#remaining-construction-work):
 use discriminating requirements, test deletion controls, count independent
 assumptions and try the smallest diagnostic first. A shorter rewritten
 formula does not by itself reduce the law's physical inputs.
@@ -465,7 +495,7 @@ record policy or physical interpretation changes. Preserve the candidate ID
 and record the changed version in Git history; create a separate ID when a
 scientifically distinct alternative must be compared. Promote results only
 with their scope, added assumptions, discriminator and evidence reference.
-Keep exploratory logs and private contributions outside this register.
+Keep this register focused on current model definitions and their evidence.
 
 For each claimed recovery or agreement result, record the legitimate set,
 preserved data, perturbation domain, schedule class, nearest primary theorem,

@@ -204,11 +204,9 @@ the product of the `Q_k`. The raw product uses this fixed block grouping,
 so its floating entries need not equal a monolithic pulse-by-pulse product.
 The raw product and final corrected product must each pass the unchanged
 `2e-10` full-phase target gate. The corrected product also passes the existing
-final polar guard. This changes where the polar guards apply: the complete
-raw product is no longer subject to the former whole-word `1e-10` raw-unitarity
-defect cap or `5.1e-11` polar correction cap. Those shared compiler thresholds
-remain unchanged for each block and for the product of the corrected blocks;
-they are not caps on the accumulated correction. The retained complete raw
+final polar guard. The `1e-10` raw-defect and `5.1e-11` polar-correction guards apply to each
+block and the product of corrected blocks. They do not bound the complete
+raw-word defect or accumulated correction. The retained complete raw
 defect reaches approximately `1.996e-10`, and the complete correction reaches
 approximately `9.978e-11`. Both are reported numerical diagnostics, not new
 certified error allowances. An incorrect unitary or global phase is not

@@ -165,7 +165,7 @@ factor and a displacement coordinate are also different apparatus quantities.
 
 The [primary experiment](https://arxiv.org/html/2603.04744v1) describes
 characteristic-function readout and two-point position estimation. The
-[apparatus audit](../audit_20261015/EMPIRICAL.md) records why its printed
+[measurement provenance analysis](../identifiability_checks/README.md#measurement-provenance-and-interpretation) records why its printed
 formula and the deposited derived values have not yet been authenticated as
 one complete measurement protocol.
 

@@ -3,15 +3,15 @@
 This packet separates two questions: which deposited residuals cannot be
 removed by changing the oscillator action, and which fresh measurement
 could distinguish the native C and E channels without fitting either
-candidate. It executes both readouts, preserves the earlier empirical
-scores, and reports no new OPH-specific laboratory confirmation.
+candidate. It executes both readouts, retains the separate empirical
+scores, and provides no OPH-specific laboratory confirmation.
 
 ## An action-independent empirical comparison
 
 The [McGarry experiment](https://arxiv.org/html/2603.04744v1), Section II.2.3,
 identifies its binary spin means with real and imaginary characteristic
 components. The [public deposit](https://zenodo.org/records/18752287) supplies
-the aggregate measurements. This audit uses the existing authenticated local
+the aggregate measurements. This comparison uses authenticated local
 copies of its two one-dimensional scans and their
 [provenance](../anharmonic_observations/provenance.json). Appendix E describes
 the characteristic scans and their nominal sampling. Accepted trial counts
@@ -56,7 +56,7 @@ values and residuals are in [the receipt](results.json).
 | --- | --- |
 | Origin measurements, spin-mean RMSE | `0.05008124` |
 | Real-origin opposite-outcome frequencies at 0, 2 and 4 ms | `0.002`, `0`, `0.006` |
-| Minimum probability RMSE across the earlier 707 positive-duration means, from origin identities alone | `0.00629129` |
+| Minimum probability RMSE across the 707 positive-duration means, from origin identities alone | `0.00629129` |
 | Additional nominal opposite-probe constraints included | `0.03419381` |
 
 These are **descriptive sample residuals**, not estimates of a hardware-error
@@ -64,7 +64,7 @@ rate or statistical rejection. A fair imaginary-origin detector has sampling
 noise even when it is ideal. The nonzero real-origin frequencies are
 incompatible with a noiseless deterministic detector *if* these entries
 are literal raw frequencies; they cannot identify which apparatus or
-processing step differs. The audit does not reconstruct raw counts from
+processing step differs. The comparison does not reconstruct raw counts from
 printed values or assign unauthenticated standard errors.
 
 The lower bound follows without solving a dynamics model. For two measured
@@ -85,7 +85,7 @@ roundoff. The origin-only floor does not need this pairing premise.
 This explains a part of the residual structure that action changes cannot
 remove under the declared readout model. It does not explain the remaining
 trajectory mismatch, prove that the dataset is unreliable, or justify
-subtracting its residuals from the earlier score. A contemporaneous null
+subtracting its residuals from the dynamical-model score. A contemporaneous null
 and phase-reversal calibration, retaining accepted and rejected counts,
 is a concrete next laboratory requirement.
 
@@ -120,7 +120,7 @@ Each herald sign contributes half the useful mass. The impossible
 `(failed,1)` record remains present with zero probability. The total
 variation distance of the two complete distributions is
 `12259/668250`, about `0.018345`. These probabilities were derived in the
-earlier interface packet; the added result is a fixed-trial discrimination
+interface construction; the result is a fixed-trial discrimination
 rule and certified sample budget that counts every failed trial.
 
 Let `P,Q` denote these six probabilities and
@@ -142,10 +142,14 @@ native operations as CPTP maps on the padding and retains a failed record
 there. Raw rounded source matrices are not assumed exactly trace preserving.
 The statistical design applies to the exact ideal candidate laws, while
 source representation diagnostics and physical implementation errors remain
-separate. A trace-preserving physical trial law within total variation
-`epsilon` of its candidate would give the conservative bound
-`0.01 + 3579*epsilon` by product-law telescoping. No such laboratory
-`epsilon` is supplied here.
+separate. For independent physical trials, a trace-preserving trial law within
+total variation `epsilon` of its candidate gives the conservative bound
+`0.01 + 3579*epsilon`. The same bound holds without independence if every
+actual conditional trial law, given its past, is uniformly within `epsilon`
+of the ideal candidate law. Marginal per-trial closeness alone is insufficient.
+No such laboratory `epsilon` is supplied here. The
+[continuing-carrier protocol](../closed_prediction_protocol/README.md) gives
+finite preparation and sequential conditional-law accounting.
 
 The coherent proper-code service, stationary preparation and uniform seam
 schedule are declared apparatus premises. A working simulation of this
@@ -158,8 +162,8 @@ would not close that gap.
 ## Reproduce
 
 ```sh
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.observer_prediction_audit --check model/observer_prediction_audit/results.json
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/observer_prediction_audit
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.readout_controls --check model/readout_controls/results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/readout_controls
 ```
 
 The packet runs offline. Source files, protocol, original data and existing

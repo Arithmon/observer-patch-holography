@@ -3,7 +3,7 @@
 This packet supplies an exact finite correspondence between native repair
 histories and a declared observer's effective field, two local clocks and
 interventions. It preserves complete outcome probabilities and conditional
-quantum outputs, including an untouched reference. It extends the earlier
+quantum outputs, including an untouched reference. It extends the
 [first-moment memory identity](../federated_observer/MEMORY.md) to quantum
 instruments. It also finds a simpler, exact description at this experiment's
 completed clock events: a four-mark classical predictor, together with the

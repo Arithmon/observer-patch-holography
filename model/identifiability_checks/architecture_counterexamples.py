@@ -1,7 +1,7 @@
 """Audit controls for what the existing finite records can identify.
 
 Run from the repository root with ``python -m
-model.audit_20261015.architecture_counterexamples``.  These are independent
+model.identifiability_checks.architecture_counterexamples``.  These are independent
 mathematical/reference calculations, not additional native source executions.
 The occupation ambiguity is an exact identity; the continued-history contrast
 is an ordinary floating sparse-Hamiltonian diagnostic, not an interval proof.

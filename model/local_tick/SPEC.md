@@ -1,7 +1,6 @@
 # N4 occupation memory at observer-local ticks
 
-Bounded calculation, 12 October 2026. This protocol was fixed before
-the retained numerical validation. It extends the existing finite N4 memory
+This protocol is locked for the retained numerical validation. It extends the existing finite N4 memory
 result to a different stopping instrument; no candidate law is changed.
 
 Use the source chart, binary total-two load shell, twelve six-dimensional

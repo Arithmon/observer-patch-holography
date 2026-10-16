@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 631,
+  "surface_count": 626,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1236,11 +1236,6 @@
       "allowlisted": false
     },
     {
-      "path": "model/IMPROVEMENTS_20261015.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "model/OBSERVER_RELATIVE_RECOVERY.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1252,11 +1247,6 @@
     },
     {
       "path": "model/README.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/SOURCE_CONNECTIONS_20261016.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1302,26 +1292,6 @@
     },
     {
       "path": "model/anharmonic_transfer/data/SOURCE_README.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/audit_20261015/ARCHITECTURE.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/audit_20261015/EMPIRICAL.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/audit_20261015/MATH.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "model/audit_20261015/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1511,6 +1481,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/identifiability_checks/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/identification_design/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1686,11 +1661,6 @@
       "allowlisted": false
     },
     {
-      "path": "model/observer_prediction_audit/README.md",
-      "glob": "model/**/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "model/observer_reconstruction/DERIVATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1747,6 +1717,11 @@
     },
     {
       "path": "model/primitive_observer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/readout_controls/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

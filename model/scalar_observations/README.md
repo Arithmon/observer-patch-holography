@@ -100,8 +100,8 @@ They are not certified distances to unrestricted oscillators. The settings
 were chosen after internal numerical exploration, without experimental data;
 this is not a preregistered empirical prediction.
 
-The new [occupation receipt](occupation_results.json) supplies the previously
-missing certificate for this same principal history. Finite Hermite polynomial
+The [occupation receipt](occupation_results.json) certifies this principal
+history. Finite Hermite polynomial
 curves are checked against the full unbounded Hamiltonian and coordinate
 operators using exact rational residuals. This bounds all occupation boundary
 terms, temporal polynomial error and actual coefficient rounding, without
@@ -127,20 +127,19 @@ signal: it does not by itself certify that signal. The separate event
 calculation proves it directly for the unrestricted target. The torus, seven
 modes and action are still supplied, and no measured physical data is used.
 
-The [published oscillator comparison](experimental_readout/README.md) now
-adds an initial physical readout attachment: 21 complex axis observations
+The [published oscillator comparison](experimental_readout/README.md) provides a physical readout test: 21 complex axis observations
 calibrate the Gaussian response relation, which predicts 100 withheld complex
 observations with per-spin-mean RMSE 0.07639. The original data and alternate
 coordinate conventions are retained. This retrospective, postselected
 preparation/readout test does not identify the seven-mode dynamics or clock.
 
 The separate [executable comparison](experimental_readout/EXECUTABLE_READOUT.md)
-now prepares a calibrated displaced thermal state and emits those reserved
+prepares a calibrated displaced thermal state and emits those reserved
 readouts through native source operations. A two-parameter axis fit supplies
 the preparation; the full 64-level detector supplies the predicted binary
 probabilities. Its occupation certificate covers finite preparation and both
 measurement outcomes, while statistical calibration and apparatus errors
-remain separate. This direct execution preserves the earlier factorization
+remain separate. This direct execution has a separate factorization
 analysis and its distinct uncertainty calculation.
 
 The next dynamical observation obligation is parameter identification on

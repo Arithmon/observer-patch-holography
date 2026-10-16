@@ -46,9 +46,9 @@ The source apparatus supplies an eight-site canonical quadratic action
 `H=(pᵀp+qᵀKq)/2`, where `K=m²I+κL` and `L` is the open-cube graph
 Laplacian. Site names are permuted before the records are produced. This
 is the free member of the existing [canonical scalar](../relativistic_scalar/README.md)
-action. Its new occupation regulator retains eight or sixteen levels **per
-normal mode**, rather than the earlier code's levels per local site. No
-earlier local-site cutoff certificate is silently transferred to this code.
+action. Its occupation regulator retains eight or sixteen levels **per normal mode**.
+Local-site cutoff certificates concern a different regulator and do not
+automatically apply to these normal-mode levels.
 
 For each setting, [source.py](source.py) performs the following computation:
 

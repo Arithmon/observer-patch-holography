@@ -1,5 +1,5 @@
 {
-  "schema": "oph.observer_prediction_audit.protocol.v1",
+  "schema": "oph.readout_controls.protocol.v1",
   "status": "Retrospective readout audit of previously inspected public measurements; prospective C/E experiment design has no acquired outcomes.",
   "paper": "https://arxiv.org/html/2603.04744v1",
   "dataset_doi": "10.5281/zenodo.18752287",

@@ -11,7 +11,7 @@
   ],
   "description": "Six-setting calibrated count certificates with complete finite instruments, exact confidence arithmetic and explicit physical service obligations.",
   "files": {
-    "README.md": "81bf5db4c244f865e4e9b845f577b4a3eef22ed5530a4b8d245a26054ebb9d33",
+    "README.md": "3ac0fc1eeccfb61ec32e2cbf99bfccf21a44b7e13482ca6986be648e52f250a0",
     "__init__.py": "2d6202da14c69a38d3a5603f1cc90c3d2878f7637464d7bd3fd39ddc8efa0cec",
     "__main__.py": "46d40a31a21350a18436b9e22c5839b8922c0fd94c731efd34e7d981767b2d4a",
     "bounds.py": "fec098d950cff3ce03a0035ba25d847fd7623d7935f333f261ea796696422580",

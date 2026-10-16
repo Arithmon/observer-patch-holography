@@ -17,7 +17,7 @@ the clock response to a fixed feedback intervention. Mixed numerical outputs
 have a separate comparison to the noiseless target. Physical services and
 the floating native attachment retain their own obligations.
 
-The [complete noisy observer](OPEN_HISTORY.md) now executes the existing
+The [complete noisy observer](OPEN_HISTORY.md) executes the existing
 finite source phase channel between operations of the same continuing
 history. It retains mixed quantum/reference outputs, committed records,
 feedback and replayable checkpoints, and attaches corrected C/E native
@@ -26,12 +26,12 @@ recomputes complete output comparisons and separate ideal error/resource
 budgets; it does not supply a physical noise rate or hardware error bound.
 
 The canonical finite [executable specification](COMPOSITION.md) and
-[program runtime](protocol.py) now compose these operations on retained
+[program runtime](protocol.py) compose these operations on retained
 states. Both original sharp and smooth histories use this engine. The new
 [four-read continuation](composition.py) adds a second smooth field read,
 record-controlled feedback and a later gauge clock probe to the same
 preparation. Its complete native attachment retains all 4,224 joint outcomes
-at d=2 and d=4. The smooth occupation theorem now covers those later reads
+at d=2 and d=4. The smooth occupation theorem covers those later reads
 and evolution, including their quantum output rather than only probabilities.
 
 ```sh
@@ -53,7 +53,7 @@ coherence, retains every raw outcome, and uses an executed port permutation
 for the final record-selected seam. C and E remain distinct quantum record
 laws. Its [runtime](quantum_native.py) and
 [receipt](quantum_native_results.json) keep initialization, code services,
-storage and physical calibration as explicit inputs. The earlier classical
+storage and physical calibration as explicit inputs. The classical
 native benchmark remains available with its original scope and counts.
 
 The [encoded memory variant](ENCODED_MEMORY.md) uses
@@ -70,7 +70,7 @@ The [current source synthesis](QUANTUM_NATIVE.md#exact-gray-parity-synthesis)
 uses the established Walsh/Gray parity method to reduce each recurring
 nine-bit controlled flip from 11,782 to 2,044 native pulses. It preserves
 the complete 512-dimensional endpoint operator, including padding and
-reference coherence, with no extra qubits. The encoder now uses 28,635
+reference coherence, with no extra qubits. The encoder uses 28,635
 pulses; the `d=2` protected C history uses at most 1,158,423. These counts
 include every repeated source request. Physical services remain supplied,
 and the shorter words need not preserve intermediate source states.
@@ -126,9 +126,9 @@ Choosing a faithful Gibbs reference for the existing full Hamiltonian makes
 its continuous between-event dynamics modular, with `t=-beta s`.
 Source-executed clock probes retain the earlier records. The reference is
 constructed from the supplied action; its selection by repair and a physical
-time calibration remain unproved. The earlier local-clock construction and
+time calibration remain unproved. The local-clock construction and
 the failed identification using the local post-measurement state are retained.
-The earlier clock probes appended to the sharp history are outside its
+The clock probes appended to the sharp history are outside its
 infinite-readout certificate. The [smooth continuation](COMPOSITION.md)
 separately controls the actual gauge-probe instrument after two smooth reads;
 it supplies no Gibbs-reference limit or physical clock calibration.
@@ -220,7 +220,7 @@ The complete experiment proceeds as follows:
 
 All quantum preparations, evolution factors, pointer gates and controlled
 pulses execute through the inherited twelve-port source compiler. In this
-earlier sharp-history benchmark the native integer-repair channel remains
+sharp-history benchmark the native integer-repair channel remains
 the declared primitive. The separate [coherent attachment](QUANTUM_NATIVE.md)
 executes the full native interface around the four-read smooth continuation.
 Coherent code transfer, blank preparation, storage and readout remain
@@ -303,8 +303,8 @@ polynomials can be regenerated with `--polynomials --write PATH.json`.
 The [readout audit](READOUT.md) also identifies a necessary distinction:
 the sign projector of a truncated coordinate is not the compression of the
 infinite sign projector. Their operator difference already has norm about
-0.101058 at d=2. The previous finite signal remains valid for its detector;
-the new certificate uses the actual infinite detector, including its
+0.101058 at d=2. The finite signal belongs to its finite detector;
+the occupation certificate uses the actual infinite detector, including its
 postmeasurement tails.
 
 A separate [occupation theorem](OCCUPATION.md) bounds the rectangular
@@ -317,7 +317,7 @@ the separate readout treatment above. The independent
 pre-readout bound and proves strong convergence of the complete sharp
 history for all three native currents, including its native continuation.
 Neither pre-readout estimate alone bounds the final sharp detector. The
-separate complete-output calculation now adds the missing projector
+separate complete-output calculation includes the projector
 comparison for the zero-current preparation, with every quantum branch
 retained. It gives finite error enclosures at d=32,64,128 and a direct d=2
 comparison including the ideal source splitting budget. These mathematical
@@ -364,7 +364,7 @@ small cutoffs does not certify continuum precision. The joint ideal limit
 uses `n(d)=d^2` temporal steps; floating execution and physical service errors
 remain separate.
 
-The earlier local-reference and post-sharp fixed-Gibbs-reference probes have
+The local-reference and post-sharp fixed-Gibbs-reference probes have
 no proved occupation limit in those detector analyses. The separate
 [continued smooth program](COMPOSITION.md) bounds its later gauge probe on
 the retained state, without asserting convergence of Gibbs modular data.

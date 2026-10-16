@@ -1,7 +1,7 @@
 {
   "description": "Source-derived local Liouville action and complete quantum observation locality with finite native executions.",
   "files": {
-    "README.md": "a898aacdafd185647eec815a4e19289cd4a50654c69ee45e5a642aaf83ba6f21",
+    "README.md": "cc59a1e14515c9b8084e7327e72df65af82b39052d5fc5bddf3c9e146585411b",
     "__init__.py": "fb3c52e07daa664dd0a0c44ee06fa93f9cfceb0c572f3924478cb198a5a5c9c8",
     "__main__.py": "1b2b18ba571b8699fe93296b7991f074c5103c8f1a8bd1edc30341a2e2f6325d",
     "construction.py": "b05c885a104f36f1bf68b288a58d6c16d86678a19ae8867e544df5c22d82039c",

@@ -12,7 +12,7 @@
   "description": "Source-executed local quartic identification and complete coupled-history prediction with explicit finite, clock and sampling scope.",
   "files": {
     "DERIVATION.md": "681dbb381f4d78054ad594eb410943c74023236d43cbd52df6141abe00e587c6",
-    "README.md": "4bc67737ba68d203129a870c440c56bfe3884f73fbc54b5d98f34988da5c2c30",
+    "README.md": "c7443f85573c65569267a144767a0c89b734896d18e29577816bcc804d76d928",
     "__init__.py": "812108a65370293399712d10c49d93d499a61d3d1e95a5bab8354852d0c17161",
     "__main__.py": "6ed1e1c7673f37e2f91e7622487e5be48ee077ee1be1574540edd8fa0c392d04",
     "bounds.py": "31caf94ca8e3bca7f703a086a7d42b634b6eda2d8c7015d9673686fb609ddb0f",

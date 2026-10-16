@@ -4,12 +4,12 @@ The native repair source determines a positive effective transfer that
 preserves **complete local field histories**, including a declared family of
 record-controlled local interventions, when time is counted by incident
 repair attempts. No duration per repair, oscillator action, or fitted
-Hamiltonian enters this construction. This connects the earlier
+Hamiltonian enters this construction. This connects the
 [incident-clock resolvent](../local_tick/README.md) and
 [source exchange field](../native_effective_fields/README.md) at the level of
 joint record laws, rather than identifying their separate two-point spectra.
 
-The newer [joint clock process](../joint_clock_process/README.md) already
+The [joint clock process](../joint_clock_process/README.md)
 preserves complete quantum histories through explicit memory on a controlled
 four-port experiment. The [native action](../native_action/README.md) derives
 a local Liouville generator in global attempt or auxiliary Poisson units.
@@ -157,7 +157,7 @@ the eliminated remote waiting histories.
 The mathematical continuation `exp(-i s H)` exists, but the native repairs
 are stochastic operations, not that unitary. This packet neither supplies
 an experimental coherent implementation of the new Hamiltonian nor
-identifies its real continuation with physical native waiting. The earlier
+identifies its real continuation with physical native waiting. The
 [compiled transfer probe](../transfer_modular_probe/README.md) illustrates
 how such a separate coherent apparatus contract can be specified.
 
@@ -221,7 +221,7 @@ it establishes neither quantum dynamics nor an empirical interaction.
 
 ## What this completes, and what remains
 
-The common source now has an exact connection from its repair law to
+The common source has an exact connection from its repair law to
 observer-relative incident time and complete effective local field laws,
 with compatible feedback and executable finite approximations. The full
 federation demonstration tests exclusion and cross-carrier records together.

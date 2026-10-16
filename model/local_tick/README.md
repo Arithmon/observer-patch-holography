@@ -1,8 +1,7 @@
 # N4 memory survives the observer's local tick clock
 
-Finite result, 12 October 2026. The earlier single-port memory test
-counted global attempts. This packet derives the corrected test when the
-observer counts only its own incident attempts, while remote repairs continue.
+This construction derives the occupation-memory test when the observer counts
+its own incident attempts, while remote repairs continue.
 **The N4 distinction remains strictly positive at the two certified couplings.**
 Neither a preferred global physical clock nor a full-network matrix is needed
 for this calculation. The event schedule, preparation and readout are supplied.

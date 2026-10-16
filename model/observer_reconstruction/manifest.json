@@ -14,7 +14,7 @@
   "description": "Executed record-only identification of a finite free-field description, with native response geometry and explicit completion boundaries.",
   "files": {
     "DERIVATION.md": "0a6f985ed0432864c1d4223ff5de8306fc1b50d474faf25fe059b49aac2a2fa9",
-    "README.md": "19115a6b365f5d89966bf9f1cb4ca37594876dde801c7baf08803018518b426c",
+    "README.md": "3cc0702ec3475fd7474541ee7f55c2e415c11713dc78ebaa8168ebd806d1bbf6",
     "__init__.py": "56826b3217ce1e18df3c5dbdbcb8ba7c2482be087a68de6f14e5440bce090a0f",
     "__main__.py": "332af86e572ef7b9b59d1c3355fbb4d727958243a3879a46eb585b68cf9d2311",
     "bounds.py": "4ccabaabd9952c89b6c7dcdea839374918f020465492f7e6b8cdf64b5c450f39",

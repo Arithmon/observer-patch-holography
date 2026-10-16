@@ -159,12 +159,11 @@ conservative calculation makes the limitation of a very short-time,
 exact-probability estimator visible; it is not an efficient experimental
 proposal. Clock and systematic control errors would need their own budgets.
 
-## What this advances, and next steps
+## Scope and remaining requirements
 
-The recovered description now includes a number-changing local interaction,
+The recovered description includes a number-changing local interaction,
 spatial connectivity, a calibrated model-coordinate duration, and a prediction
-for a continuing measured field. The free Gaussian reconstruction alone did
-not establish that combination. The compatibility target is fixed in advance:
+for a continuing measured field. The free Gaussian reconstruction has a narrower action family. The compatibility target is fixed in advance:
 agreement of all withheld bit-history probabilities within declared budgets,
 with supplied preparation, instruments and feedback held fixed.
 

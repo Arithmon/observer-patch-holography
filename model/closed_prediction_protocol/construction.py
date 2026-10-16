@@ -20,7 +20,7 @@ from tools import strict_json
 from ..compiled_native_interface import construction as compiled
 from ..native_interface import construction as interface
 from ..native_quantum_history import construction as quantum
-from ..observer_prediction_audit import prospective
+from ..readout_controls import prospective
 from ..primitive_observer import runtime
 from ..observer.scalar_response.experiment import compare_receipt
 
@@ -30,7 +30,7 @@ RECORDS = tuple(product(range(3), range(2)))
 SOURCE_PATHS = tuple(sorted(set((*compiled.SOURCE_PATHS,
     'model/native_equilibration/construction.py',
     'model/native_equilibration/README.md',
-    'model/observer_prediction_audit/prospective.py',
+    'model/readout_controls/prospective.py',
     'model/calibrated_measurement/bounds.py',
     'model/closed_prediction_protocol/__init__.py',
     'model/closed_prediction_protocol/__main__.py',

@@ -2,7 +2,7 @@
   "description": "Positive source-derived incident-clock field transfer, complete fixed-two federation histories and directed error budgets.",
   "files": {
     "AUDIT.md": "50928e0dc4cf1955052cb2f39ba9d9320a6451fc597ac44cc94ee86a360edc9b",
-    "README.md": "e3414053c2469f34c1969f84d273dbb71915752d9bc15b5f41e35bb074c485e0",
+    "README.md": "9937a04d78ed694bc3c6adbacac3b424a038466e6790d0f5bb284c228070fed1",
     "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
     "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
     "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
