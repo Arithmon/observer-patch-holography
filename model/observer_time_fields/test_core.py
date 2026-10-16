@@ -133,9 +133,13 @@ def test_full_adaptive_cylinder_dictionary_matches_the_symmetric_effective_model
     exact = c.field_law(feedback=feedback)
     native = _independent_cylinders(native_kernel, exact.read_ports, feedback)
     effective = _independent_cylinders(transfer, exact.read_ports, feedback)
+    # This is a floating-point cross-check of the exact rational field law.
+    # Bound accumulated 66-coordinate matrix-product roundoff over the full
+    # observed clock; the exact source identities remain checked separately.
+    allowance = len(exact.read_ports)*8*transfer.shape[0]*np.finfo(float).eps
     for record, expected in exact.probabilities().items():
-        assert abs(native[record].sum()-float(expected)) < 4e-15
-        assert abs(effective[record].sum()-float(expected)) < 4e-15
+        assert abs(native[record].sum()-float(expected)) <= allowance
+        assert abs(effective[record].sum()-float(expected)) <= allowance
     # The equality concerns observable cylinder laws. It is not equality of
     # hidden native and reconstructed terminal configuration distributions.
     assert max(np.linalg.norm(native[key]-effective[key]) for key in native) > 1e-4
