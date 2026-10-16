@@ -807,6 +807,46 @@
           }
         }
       ]
+    },
+    {
+      "path": "model/observer_prediction_audit/README.md",
+      "heading": "## An action-independent empirical comparison",
+      "label_column": "Fixed comparison",
+      "comparison_column": "Result",
+      "rows": [
+        {
+          "label": "Origin measurements, spin-mean RMSE",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        },
+        {
+          "label": "Real-origin opposite-outcome frequencies at 0, 2 and 4 ms",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        },
+        {
+          "label": "Minimum probability RMSE across the earlier 707 positive-duration means, from origin identities alone",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        },
+        {
+          "label": "Additional nominal opposite-probe constraints included",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
+        }
+      ]
     }
   ]
 }
