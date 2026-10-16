@@ -126,8 +126,10 @@ class RandomizedTests(unittest.TestCase):
         # Errors exceeding a budget are not swallowed by floating replay tolerance.
         changed = [tuple(k.copy() for k in maps) for maps in operators]
         changed[-1][0][0, 0] += 1e-11
-        with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):
+        with self.assertRaisesRegex(ArithmeticError, 'raw_positive_square: exact upper') as failure:
             s.execution_certificate(design, matrices, changed, roots)
+        self.assertIn('conditional_score: exact upper', str(failure.exception))
+        self.assertIn('> budget 1/10000000000000', str(failure.exception))
         altered_roots = list(roots)
         altered_roots[0] = np.nextafter(altered_roots[0], np.inf)
         with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):

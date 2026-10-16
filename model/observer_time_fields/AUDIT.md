@@ -99,11 +99,12 @@ mutations were caught; this is a targeted check, not mutation completeness.
 The audit followed [the numerical evidence procedure](../../docs/policies/NUMERICAL_AUDIT.md).
 Integration with main's clock conversion and finite screen comparison also
 exposed an overly restrictive component allocation in its randomized
-measurement replay. Its raw and completion allowances are allocated within
-the unchanged total conditional-score budget `1e-13`. Exact checks still
-reject excessive component errors, including a raw-only error below the
-total budget. This repair changes the component certificate and live source
-bindings, not the total score guarantee or empirical predictions.
+measurement replay. Main independently corrected that allocation in
+`416c9951`; this branch retains its implementation, diagnostics and receipt.
+The raw and completion allowances sum to the unchanged total conditional-score
+budget `1e-13`. An additional exact negative control rejects a raw-only
+error below the total budget. No extra change to that score guarantee or
+its empirical predictions is introduced here.
 No frozen evidence, paper, empirical fit or existing claim-registry row is
 reclassified. The source-derived clock/field result is an analytic finite
 proof with exact and bounded executable instances, not a new Lean proof or
