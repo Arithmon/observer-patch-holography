@@ -29,8 +29,9 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/calibrated_measurement", "model/clocked_quantum_readout",
            "model/native_modular_reference", "model/native_effective_fields",
            "model/relative_observer_geometry", "model/relative_modular_dynamics",
-           "model/transfer_modular_probe")
+           "model/transfer_modular_probe", "model/federated_observer")
 REPLAYS = (
+    ("model.federated_observer", None, "model/federated_observer/results.json"),
     ("model.native_effective_fields", None, "model/native_effective_fields/results.json"),
     ("model.relative_observer_geometry", None, "model/relative_observer_geometry/results.json"),
     ("model.relative_modular_dynamics", None, "model/relative_modular_dynamics/results.json"),

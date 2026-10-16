@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 617,
+  "surface_count": 621,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1472,6 +1472,26 @@
     },
     {
       "path": "model/event_circulation/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/federated_observer/MEMORY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/federated_observer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/federated_observer/REFINEMENT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/federated_observer/SCALING.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

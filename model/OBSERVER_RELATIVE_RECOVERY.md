@@ -119,12 +119,32 @@ observations require less. No new general convergence framework is introduced.
 
 ## What remains for effective spacetime
 
-The next connection must preserve these operational meanings while enlarging
-the system. A controlled family of coupled carriers needs compatible local
-observations, propagation estimates and a limit in which the effective field
-description has the required spatial and temporal structure. The finite
-carrier's response rank three does not establish three physical dimensions.
-Record order and an affine clock fit do not establish a Lorentz metric.
+The elementary carrier stays twelve-port; larger systems are federations of
+those same observers. The [federation construction](federated_observer/README.md)
+executes the retained screen hierarchy with 20, 80 and 320 elementary
+observers. It joins cross-carrier records to exact current correlations,
+uniform transfer positivity and a finite-parameter density propagation bound.
+It also checks actual parent/child restrictions instead of assuming that
+geometric refinement intertwines the dynamics.
+
+Coarse block records do not automatically have Markovian dynamics. The
+derived [memory law](federated_observer/MEMORY.md) resolves this for their
+finite mean-density predictions: it exactly reproduces the fine evolution
+using coarse history and the declared initial unresolved profile. It does
+not supply every joint record law or a uniform scaling limit.
+The native density transfer also retains its own dispersion under modular
+reconstruction. The Gaussian slab theorem's
+square-root frequencies cannot be attached by changing that dispersion.
+These are not general impossibility results for OPH; they constrain the
+observable sector that can support a relativistic description.
+
+A mathematical family of federations can control an approximation without
+requiring a literally infinite physical screen. Alternatively, a finite
+screen can support an effective spacetime over a specified observational
+domain if its errors are bounded. In either case the effective description
+must reproduce joint observations and interventions. The elementary carrier's
+response rank three does not establish three physical dimensions. Record
+order and an affine clock fit do not establish a Lorentz metric.
 
 The existing conditional continuum and geometry theorems can be attached only
 when their domains, refinement maps, state compatibility, locality and clock
