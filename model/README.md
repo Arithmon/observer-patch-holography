@@ -113,7 +113,12 @@ identifies source-port neighborhoods at levels 1/3, 2/4 and 3/5. For the
 15,360- and 245,760-port screens, matched radius-nine initial restrictions
 give complete root-observer output distance below `0.000382` at auxiliary
 per-seam parameter `s=1/4`. A fixed-total preparation can add a separate
-state mismatch. All-level routing compatibility, Lorentz symmetry and an
+state mismatch. The [incident-clock comparison](native_action/INCIDENT_REFINEMENT.md)
+also gives a complete-output distance below `6.656e-9` after four local
+incident attempts, with no auxiliary time coordinate. At fixed density
+`1/3`, a certified two-time field covariance remains above `0.15332581621`;
+full-source histories execute native feedback and checkpoint continuation.
+All-level routing compatibility, Lorentz symmetry and an
 interacting spacetime scaling limit remain open.
 
 ## Native measurement predictions

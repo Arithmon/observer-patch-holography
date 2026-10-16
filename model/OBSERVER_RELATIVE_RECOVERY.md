@@ -291,6 +291,18 @@ on each reduced observer algebra or a uniform global seam choice on an
 infinite graph. The pinned screen refinements have not been shown to meet
 all of those hypotheses across unbounded levels.
 
+The [incident-clock refinement theorem](native_action/INCIDENT_REFINEMENT.md)
+also bounds complete local histories stopped at the kth incident repair
+opportunity, including zero-current attempts. Direct counting of stopped
+causal seam words removes the auxiliary scheduler parameter. For the actual
+levels-three/five source pair, the four-tick complete-output allowance is
+below `6.656e-9` at matching local preparations. A supplied density-`1/3`
+product family yields a certified nonzero two-time field covariance on both
+full screens. Full-source histories execute local native feedback and
+serialized continuation; their external caps have separate timeout budgets.
+This finite result connects local clocks to screen comparison without
+identifying a tick with physical duration or claiming an all-level limit.
+
 Finite compatibility is established on the actual source screens. Rooted
 port neighborhoods at levels 1/3, 2/4 and 3/5 agree through radii 3, 6 and 9,
 respectively, with every local port label and induced seam preserved. Their

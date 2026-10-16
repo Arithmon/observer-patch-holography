@@ -358,6 +358,26 @@ mean-density observation prediction under supplied preparation and final
 occupation readout. It does not control the complete quantum history, assign
 one `Q` step to one native global attempt, or compare with laboratory data.
 
+### Comparing fields in the observer's own incident clock
+
+The [incident-clock construction](INCIDENT_REFINEMENT.md) removes the auxiliary
+Poisson parameter from the finite source-screen comparison. It counts ordered
+causal seam words before the observer's kth incident attempt, including
+zero-current attempts. Actual boundary-walk counts yield a complete local
+quantum and retained-record output distance below `6.656e-9` after four ticks
+and `4.296e-7` after eight ticks between levels three and five. The observation
+support includes all fifteen endpoints of the root's 33 incident seams.
+
+At Bernoulli density `1/3`, the same stopped source has a nonzero, certified
+two-time root-field covariance after four ticks in
+`[0.15332581621, 0.15332582288]` on either full screen. Directed integer
+propagation charges both unresolved waits and arithmetic losses. Executed
+full-screen histories retain native feedback, all clock marks, external-cap
+timeouts and serialized continuation. Separate exact C/E instrument controls
+check every four-port matrix unit and an entangled reference. These domains
+are distinguished in the shared contract; a first-moment density reduction
+does not replace a quantum history.
+
 ### What is still required for a limit
 
 The nearest [tower theorem](../../Lean/Tower/ConsensusTower.lean) requires
@@ -375,5 +395,6 @@ continuum limit, emergent physical dimension or relativistic spacetime.
 ```sh
 python -m model.native_action --check model/native_action/results.json
 python -m model.native_action.screen_compatibility --check model/native_action/screen_results.json
+python -m model.native_action.incident_refinement --check model/native_action/incident_results.json
 python -m pytest -q -W error model/native_action
 ```
