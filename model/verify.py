@@ -26,6 +26,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_relational_readout", "model/native_circulation",
            "model/native_interface", "model/measurement_bounds")
 REPLAYS = (
+    ("model.primitive_observer.complete_certificate", None, "model/primitive_observer/complete_certificate_results.json"),
     ("model.native_circulation", None, "model/native_circulation/results.json"),
     ("model.native_interface", None, "model/native_interface/results.json"),
     ("model.measurement_bounds", None, "model/measurement_bounds/results.json"),
