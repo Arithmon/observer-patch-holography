@@ -705,8 +705,7 @@ def refinement_metric_bridge():
             'intercarrier_seams': federation.inter_count,
             'antipodal_consistent_pairs': receipt['antipodal_consistent_pairs'],
             'antipodal_consistent_fraction_exact': str(F(
-                receipt['antipodal_consistent_pairs'], federation.inter_count)),
-            'local_frame_hash': receipt['local_frame_hash']})
+                receipt['antipodal_consistent_pairs'], federation.inter_count))})
     return {
         'source_levels': list(levels),
         'root_cells': [ball.root for ball in balls],
@@ -740,7 +739,7 @@ def refinement_metric_bridge():
             'two_candidate_squared_link_lengths': [
                 '2-2/sqrt(5)', '2-2/sqrt(5)'],
             'max_local_gram_residual_diagnostic': local_gram_residual,
-            'max_cross_carrier_gram_entry_difference_diagnostic': cross_block_difference,
+            'cross_carrier_gram_entries_differ_between_candidates': cross_block_difference > 1e-3,
             'same_local_gram_and_same_link_length_leave_relative_frame_underdetermined': True},
         'operational_readout': 'exact native seam-hop neighborhoods plus an exact finite Euclidean metric within each root carrier',
         'physical_global_space_or_continuum_recovered': False,

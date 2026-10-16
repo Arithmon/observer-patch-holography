@@ -101,6 +101,14 @@ finite dimensionless distance data, with roughly quadratic growth over part of
 the tested range, but this does not establish a three-dimensional physical
 bulk or path-independent global frames; continuum spacetime remains open.
 
+The [native causal-cone check](common_source/CAUSALITY.md) adds one exact
+space/time relation at this finite level: for a fixed seam schedule and shared
+local coins, dependence can cross at most one seam per ordered repair event,
+and retained signal witnesses attain that bound. This is a speed bound in graph
+hops per native event. Native event counts, local event-clock readouts and the
+modular parameter have not been identified with one another; the result gives
+no laboratory speed or continuum light cone.
+
 [Local event clocks](relational_event_clock/README.md) tick on actual
 occupation changes at an observer port while remote repairs continue. Their
 completed quantum instruments sum the unresolved waiting process, with
