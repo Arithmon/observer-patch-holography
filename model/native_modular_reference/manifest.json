@@ -1,0 +1,16 @@
+{
+  "description": "Native Palm reference, active-corner modular phase, complete source-map bounds and retained observer readouts.",
+  "files": {
+    "README.md": "9796082c837dc4b91f206397b6dba33f75bd1abe0c8de8e15bcbc1f87937b45c",
+    "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
+    "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
+    "results.json": "4927e45f2ad4f0f4cee881c57c1e93adb2c6db19015b9fa3e8e761de871f1a10",
+    "test_construction.py": "4fb2e8b1c5b3600946f7dad84f7b206fc3b7884a0ca40b96ddeb29611d45b9ef"
+  },
+  "reproduce": [
+    "python -m model.native_modular_reference --check model/native_modular_reference/results.json",
+    "python -m pytest -q -W error model/native_modular_reference"
+  ],
+  "schema": "oph.native_modular_reference.manifest.v1"
+}

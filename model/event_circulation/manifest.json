@@ -1,0 +1,16 @@
+{
+  "description": "Exact marked event circulation, Palm preparation and source-derived event-count action.",
+  "files": {
+    "README.md": "81dabe90f33d4e6a172a2a919fb014160d31a60f561b552de7c6c5b843eee678",
+    "__init__.py": "d65a8cf85671e0bebddd416d7efc65fca572c81f8b79f7a503ab32e963bb795c",
+    "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "construction.py": "b3a53c02034fab7a24e77a35313257bc321dda1c4a52ef2a25f9b70616edf2ba",
+    "results.json": "e842595c15cb666565cbd82deb0091be444dddd653bae098348d5b950c5e17be",
+    "test_construction.py": "6609ddf3f4edf47f0e61907c72495e98b4d3afc810c08a7f9bfc6dbc782ce7ba"
+  },
+  "reproduce": [
+    "python -m model.event_circulation --check model/event_circulation/results.json",
+    "python -m pytest -q -W error model/event_circulation"
+  ],
+  "schema": "oph.event_circulation.manifest.v1"
+}

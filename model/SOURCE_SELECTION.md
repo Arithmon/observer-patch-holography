@@ -177,6 +177,38 @@ probe-coordinate scale.
 
 ## The native selection tests
 
+The [16 October connection pass](SOURCE_CONNECTIONS_20261016.md) joins these
+attachments without introducing a new repair law. The existing coherent code
+compiler implements the shared native mixer and the missing imaginary
+quadrature; the clocked work history admits a complete joint native phase
+read. The circulation theorem can be expressed in recorded movement events,
+removing identity-holding frequency from that observable. The calibration
+packet turns the positive-state moment bound into a prospective count test.
+These are implementation and observable reductions within stated contracts,
+not selection of the carrier, coherent service contract or interacting work
+action.
+
+The intended field action is an **effective description of observer
+statistics**, and time is relative to the observer's algebra, state and
+readable clock records. No fundamental field or preferred global clock is
+required. An available modular automorphism group needs a concrete
+attachment to those records and intervention responses. The existing
+[thermal reference bridge](common_source/THERMAL_CLOCK.md) identifies modular
+flow with the supplied work evolution for a declared Gibbs reference; it
+does not derive that reference from the repair process. Event-count
+normalization and a programmed modular probe establish different parts of
+this operational correspondence.
+
+The [native-reference modular readout](native_modular_reference/README.md)
+uses the event-conditioned state `diag(d(x)/600)`, giving frequency `log(5/4)`
+without first choosing a Gibbs reference from a supplied Hamiltonian. Its
+source program implements that modular action on the known orientation
+corner and retains all preparation failures. The experiment defines a
+candidate observer-relative clock through ensemble phase statistics; the
+native waiting process and interacting work evolution have not been shown
+to follow that flow. Neither this reference choice nor the modular
+automorphism theorem alone selects the complete repair instrument.
+
 The [coherent continuation](observer/COHERENT_CONTINUATION.md) fixes a
 3,960-arc experimental architecture, uniform coherent event embedding `A`,
 native reversal `S`, and complete Ramsey interface. Both `S` and

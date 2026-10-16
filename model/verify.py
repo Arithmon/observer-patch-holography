@@ -24,8 +24,16 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_quantum_history", "model/native_clock",
            "model/native_fluctuations", "model/empirical_diagnostics",
            "model/native_relational_readout", "model/native_circulation",
-           "model/native_interface", "model/measurement_bounds", "model/clocked_common_observer")
+           "model/native_interface", "model/measurement_bounds", "model/clocked_common_observer",
+           "model/event_circulation", "model/compiled_native_interface",
+           "model/calibrated_measurement", "model/clocked_quantum_readout",
+           "model/native_modular_reference")
 REPLAYS = (
+    ("model.native_modular_reference", None, "model/native_modular_reference/results.json"),
+    ("model.event_circulation", None, "model/event_circulation/results.json"),
+    ("model.compiled_native_interface", None, "model/compiled_native_interface/results.json"),
+    ("model.calibrated_measurement", None, "model/calibrated_measurement/results.json"),
+    ("model.clocked_quantum_readout", None, "model/clocked_quantum_readout/results.json"),
     ("model.primitive_observer.complete_certificate", None, "model/primitive_observer/complete_certificate_results.json"),
     ("model.native_circulation", None, "model/native_circulation/results.json"),
     ("model.native_interface", None, "model/native_interface/results.json"),

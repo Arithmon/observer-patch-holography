@@ -1,0 +1,18 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "Pinned model/requirements.txt",
+    "Source bindings retained in results.json"
+  ],
+  "description": "Complete heralded native phase reads on the same stopped interacting work history, with finite source-mixer transfer and all failure/timeout outcomes.",
+  "files": {
+    "README.md": "a6a4c944feff7927bbdf0880573cbff84e0f7a7a8f81c35951cc777a64323090",
+    "__init__.py": "603fe319ffb33cc662740554256525024f8bb77e1672bc5c2171b4724a08382f",
+    "__main__.py": "b7ddceb079d4f5ecbe90fb2cda3eeed11a1a98eed0f164d1767f7c94395fe503",
+    "construction.py": "67bb290df90818bf002c1838cdae5428602712a4db3d5d8566975c2485dc995d",
+    "experiment.py": "852d26766546816b339c9f84c836eb7710cf1d35f6061810b741c9634e444016",
+    "results.json": "58e86dba58c607f974d1b0aed40b232a2a3b61913aabbc8fcb8a9ab88d91ee07",
+    "test_construction.py": "dd24e150216be209d6cc6cd9595962beb4def0ae9bea72a3872522e1026e3849"
+  },
+  "schema": "oph.model.packet.v1"
+}
