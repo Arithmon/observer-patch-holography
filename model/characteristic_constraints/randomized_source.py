@@ -106,10 +106,17 @@ def execution_certificate(design, matrices, operators, roots):
     budgets = {'raw': F(1, 10**14), 'mass': F(1, 10**14),
                'completion': F(8, 10**14), 'score': F(1, 10**13),
                'choice_mass': F(1, 10**15)}
-    if (raw > budgets['raw'] or any(value > budgets['mass'] for value in masses)
-            or completion > budgets['completion'] or total > budgets['score']
-            or abs(mass-1) > budgets['choice_mass'] or choice_bias != 0):
-        raise ArithmeticError('fresh exact source-array bound exceeds the portable certificate envelope')
+    checks = [('raw_positive_square', raw, budgets['raw']),
+              *((f'setting_mass[{i}]', value, budgets['mass']) for i, value in enumerate(masses)),
+              ('weighted_completion', completion, budgets['completion']),
+              ('conditional_score', total, budgets['score']),
+              ('randomizer_mass', abs(mass-1), budgets['choice_mass']),
+              ('completed_randomizer_score', choice_bias, F(0))]
+    failures = [f'{name}: exact upper {value} ({float(value):.17g}) > budget {budget}'
+                for name, value, budget in checks if value > budget]
+    if failures:
+        raise ArithmeticError('fresh exact source-array bound exceeds the portable certificate envelope; '
+                              + '; '.join(failures))
     # Every inequality above compares Fractions exactly. These constants are
     # conservative conclusions of those checks, not tolerated replay errors.
     return {'raw_positive_square_comparison_error_upper': str(budgets['raw']),
