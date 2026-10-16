@@ -16,6 +16,7 @@ import numpy as np
 
 from tools import strict_json
 from ..observer import native
+from ..common_source import slow_geometry
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -24,7 +25,35 @@ SOURCE_PATHS = (
     'model/observer/native.py',
     'model/observer/scalar_response/experiment.py',
     'tools/strict_json.py',
+    'model/common_source/slow_geometry.py',
+    'evidence/native_geometric_source_20260925/spec.json',
+    'evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py',
+    'evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py',
 )
+
+
+def carrier_embedding():
+    """Embed local tensor ports 0,1,2 into an actual native carrier triangle."""
+    ports = (0, 1, 5)
+    seams = tuple(slow_geometry.source().seams())
+    local_seams = ((0, 1), (0, 2), (1, 2))
+    if any((ports[a], ports[b]) not in seams for a, b in local_seams):
+        raise ArithmeticError('the history support is not a native carrier triangle')
+    branches = 0
+    for mask in range(8):
+        local = tuple((mask >> p) & 1 for p in range(3))
+        loads = tuple(local[ports.index(p)] if p in ports else 0 for p in range(12))
+        for seam, coin in product(local_seams, (0, 1)):
+            expected, record = native.native(local, seam, coin)
+            output, source_record = native.native(loads, tuple(ports[p] for p in seam), coin)
+            if (tuple(output[p] for p in ports) != expected or source_record != record
+                    or any(output[p] for p in range(12) if p not in ports)):
+                raise ArithmeticError('carrier restriction changed an endpoint or record')
+            branches += 1
+    return {'local_tensor_ports': [0, 1, 2], 'native_carrier_ports': list(ports),
+            'native_seams': [[ports[a], ports[b]] for a, b in local_seams],
+            'endpoint_and_record_restrictions_checked': branches,
+            'other_ports_are_untouched': True}
 
 
 def _domain(law, seam, ports):
@@ -180,6 +209,7 @@ def run():
         })
     return {
         'schema': 'oph.native_action.history_action.v1',
+        'native_carrier_embedding': carrier_embedding(),
         'native_instrument_history_actions': rows,
         'interpolation_nonuniqueness': {
             'comparison': 'A_0 and A_2 are positive and have identical native endpoints',

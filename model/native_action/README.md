@@ -134,7 +134,10 @@ would change the contract. No protocol may gain access to those hidden labels
 merely because a representation stores them.
 
 The execution checks a two-repair protocol on three ports: the first current
-chooses the next seam and a local phase operation. All 64 input matrix units
+chooses the next seam and a local phase operation. Local tensor addresses
+`(0,1,2)` map to native carrier ports `(0,1,5)`. All three edges belong to
+the source seam list, and all 48 local state/seam/coin branches agree with
+their twelve-port restriction. All 64 input matrix units
 and every complete current word agree exactly with a separate floor/ceiling
 recursion. The shared runtime also reproduces the full terminal states with
 an entangled untouched reference and a serialized checkpoint. Thus the

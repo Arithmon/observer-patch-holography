@@ -10,6 +10,13 @@ from . import history_action as h
 from ..primitive_observer import runtime
 
 
+def test_history_tensor_addresses_embed_in_actual_native_seams():
+    result = h.carrier_embedding()
+    assert result['native_carrier_ports'] == [0, 1, 5]
+    assert result['native_seams'] == [[0, 1], [0, 5], [1, 5]]
+    assert result['endpoint_and_record_restrictions_checked'] == 48
+
+
 @pytest.mark.parametrize('law', ('C', 'E'))
 def test_exact_completion_is_unitary_and_keeps_the_source_isometry(law):
     _, w, d = h.completion_blocks(law)
