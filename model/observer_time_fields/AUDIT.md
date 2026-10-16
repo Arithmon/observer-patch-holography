@@ -137,3 +137,11 @@ and real CLI reject changed probability intervals, omitted records, type
 aliases and erased error budgets. Exported lower-mass deficits are computed
 after outward row rounding. Mathematical convergence at unbounded precision
 is distinguished from the bounded signed-integer evaluator's finite budget.
+
+The final adversarial pass found that a returned density could alias the
+default `Fraction`. Although fractions present a value interface, their
+protected numerator/denominator slots are writable: changing a returned
+density could alter subsequent default preparations. The producer snapshots
+the validated density before using or retaining it. Regression controls
+mutate both caller-supplied and returned density objects, check that other
+source laws retain their original preparation, and reject the forged law.

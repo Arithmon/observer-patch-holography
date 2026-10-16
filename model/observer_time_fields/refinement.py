@@ -140,6 +140,9 @@ def law(ports, edges, incident, *, ticks=4, cap=512, bits=52, rho=F(1, 3), feedb
     _integer(ticks, 2, 8); _integer(cap, 1, 2048); _integer(bits, 8, 52)
     if type(rho) is not F or not 0 < rho < 1 or type(feedback) is not bool:
         raise ValueError('an exact interior density and Boolean feedback policy are required')
+    # Fraction exposes writable protected slots. Do not let returned laws
+    # alias the default preparation or a caller-owned density object.
+    rho = F(rho.numerator, rho.denominator)
     # Validate original geometry before the coefficient cache can equate keys.
     dual.build(ports, edges, incident, degree=1)
     if (not {0, 1} <= set(ports) or (0, 1) not in incident

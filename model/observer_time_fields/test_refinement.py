@@ -174,6 +174,45 @@ def test_public_law_rejects_numeric_aliases_before_cached_production(changed):
         _production(PATH, **dict(kwargs, **changed))
 
 
+def test_returned_density_cannot_change_future_default_preparation(monkeypatch):
+    from . import refinement
+    graph = ((0, 1), ((0, 1),), ((0, 1),))
+    kwargs = dict(ticks=2, cap=1, bits=16)
+    returned = refinement.law(*graph, **kwargs)
+    expected = refinement.law(*graph, **kwargs, rho=F(1, 3))
+    assert refinement.validate(returned) == expected
+    # Fraction's protected slots are writable. Always restore them, including
+    # on the old implementation where this object is the callable's default.
+    with monkeypatch.context() as patch:
+        patch.setattr(returned.rho, '_numerator', 2)
+        with pytest.raises(ValueError):
+            refinement.validate(returned)
+        following = refinement.law(*graph, **kwargs)
+        marginal = sum((mass for record, mass in zip(following.records, following.lower_mass)
+                        if record[0][0]), F())
+        assert marginal == F(1, 3)
+        assert refinement.validate(following) == expected
+    assert refinement.validate(returned) == expected
+
+
+def test_supplied_density_mutation_cannot_change_a_retained_law(monkeypatch):
+    from . import refinement
+    graph = ((0, 1), ((0, 1),), ((0, 1),))
+    kwargs = dict(ticks=2, cap=1, bits=16)
+    supplied = F(1, 3)
+    returned = refinement.law(*graph, **kwargs, rho=supplied)
+    expected = refinement.law(*graph, **kwargs, rho=F(1, 3))
+    with monkeypatch.context() as patch:
+        patch.setattr(supplied, '_numerator', 2)
+        marginal = sum((mass for record, mass in zip(returned.records, returned.lower_mass)
+                        if record[0][0]), F())
+        assert returned.rho == marginal == F(1, 3)
+        assert refinement.validate(returned) == expected
+        with pytest.raises(ValueError):
+            refinement.validate(returned._replace(rho=supplied))
+    assert refinement.validate(returned) == expected
+
+
 def test_undisclosed_remote_changes_to_a_read_port_cannot_claim_the_local_dictionary():
     # Removing (1,2) from the clock would hide genuine changes of read port1.
     # A generic hidden-state measurement law is not this current-record observer.
