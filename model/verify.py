@@ -36,6 +36,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_action", "model/joint_clock_process",
            "model/closed_prediction_protocol", "model/characteristic_constraints")
 REPLAYS = (
+    ("model.observer_time_fields.refinement", None, "model/observer_time_fields/refinement_results.json"),
     ("model.observer_time_fields", None, "model/observer_time_fields/results.json"),
     ("model.native_action.incident_refinement", None, "model/native_action/incident_results.json"),
     ("model.native_action.screen_compatibility", None, "model/native_action/screen_results.json"),

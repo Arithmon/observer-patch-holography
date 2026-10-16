@@ -119,6 +119,17 @@ retain the actual seam scheduler, current records, feedback repair costs,
 timeouts and serialized continuation. This closes the finite clock/refinement
 connection; the all-level physical interpretation obligations remain separate.
 
+The [finite-density field attachment](observer_time_fields/REFINEMENT.md)
+uses that same preparation, root clock, current support and native feedback
+to certify a complete four-bit field law, including every finite-cap timeout
+prefix. The positive incident transfer preserves this law with the Bernoulli
+stationary boundary. Its exact degree-two exclusion dual avoids enumerating
+the full binary configuration space without factorizing correlations.
+Feedback reverses the sign of the certified connected four-field statistic
+on both actual screens. Two field counters and the controller memory survive
+serialized source continuation; arithmetic, cutoff and spatial errors are
+accounted separately. This completes their finite joint time/field domain.
+
 The [local event clock](relational_event_clock/README.md) counts actual
 occupation changes at one observer port. Its stopped instrument retains
 remote repairs during the wait, finite timeouts and conditional quantum

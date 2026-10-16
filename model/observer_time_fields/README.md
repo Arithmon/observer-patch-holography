@@ -24,6 +24,18 @@ two-particle configurations. The latter retains remote repairs, exclusion,
 cross-carrier feedback, every initial readout label and finite-cap timeout.
 It does not use a one-particle or mean-density closure for higher moments.
 
+The [finite-density screen extension](REFINEMENT.md) now connects this positive
+field transfer to the actual levels-three/five incident-clock comparison.
+At Bernoulli density `1/3`, an exact degree-two exclusion dual certifies the
+complete four-bit readout and every timeout prefix on the common source
+ball. The same nonzero density persists on both full screens. Native
+feedback reverses the sign of the connected four-field statistic and raises
+the final field mean by an amount in `[0.0836900722,0.0836900880]`, including
+the spatial allowance. Full-source histories retain both field counters
+through serialization and continuation. This is a separate preparation and
+root-carrier protocol; the fixed-total-two executions below retain their
+original meaning.
+
 ## The common observer contract
 
 This is a classical recorded branch of the
@@ -244,16 +256,15 @@ are separate experiments on the same source rule. The incident-attempt
 parameter is not converted into distance or observer modular time by this
 finite metric.
 
-The architecture, seam scheduler, initial particle sector and record access
-remain the stated source-instance inputs. The
-[source screen comparison](../native_action/README.md#compatible-neighborhoods-of-the-actual-screen)
-supplies finite port maps and complete local quantum-output bounds in
-auxiliary per-seam time, with compatible initial restrictions. This packet's
-crossing-seam clock records require enlarging that observation support. Uniform
-fixed-total-two preparations on growing screens have different local
-restrictions and approach local vacuum; their mismatch must be charged.
-Those results do not yet compare this packet's stopped incident-clock laws
-across spatial refinements or observer regions. The
+The architecture, seam scheduler, preparation and record access remain
+stated source-instance inputs. The [finite-density extension](REFINEMENT.md)
+uses the existing stopped-clock screen comparison with fifteen-port current
+support to bound the complete declared field law across actual levels three
+and five. Its Bernoulli restrictions match exactly. Uniform fixed-total-two
+preparations instead dilute locally on growing screens; this extension does
+not remove their preparation mismatch or identify their different clock
+region. All-level routing and comparison of distinct observer regions remain
+separate obligations. The
 [coarse memory result](../federated_observer/MEMORY.md) supplies mean dynamics,
 not those complete laws. No Lorentzian continuum, universal synchronization,
 physical time calibration, C/E selection or new empirical observation is
@@ -263,5 +274,6 @@ Reproduce the complete packet with:
 
 ```sh
 python -m model.observer_time_fields --check model/observer_time_fields/results.json
+python -m model.observer_time_fields.refinement --check model/observer_time_fields/refinement_results.json
 python -m pytest -q -W error model/observer_time_fields
 ```
