@@ -55,6 +55,85 @@ coin gives `E[j] = d/2` and `Var(j) = r/4`. The expected transfer therefore
 opposes the endpoint load difference. Individual odd-sum events are rounded
 integer repairs, not exact equal-endpoint scalar averaging.
 
+## Exact local minimization, and what “action” it does not give
+
+For the selected pair, write its conserved load as `s = x_a+x_b`. Among
+nonnegative integer pairs with this sum, the local quadratic cost
+`x_a'^2+x_b'^2` is minimized exactly when the output difference has the
+smallest possible magnitude: zero for even `s`, one for odd `s`. From the
+executed update,
+
+```text
+x'_a - x'_b = d - 2j = (2c-1)r,
+|x'_a - x'_b| = r = s mod 2.
+```
+
+So every native event reaches a minimizer of that pair cost; for odd `s`,
+the fair placement coin selects uniformly between the two tied minimizers.
+The global quadratic potential `V(x)=||x||^2/2` drops by exactly
+`(d^2-r)/4` in that event. This is an executable local variational law and
+a Lyapunov function for the load update. It is not a path action: it gives
+no time derivative or stationary-path condition, and it does not assign a
+physical interpretation to load.
+
+Under the separately declared uniform all-seam calibration, the mean update
+is also exact gradient descent for the graph disagreement functional
+`E(m)=m^T L m/2`:
+
+```text
+m_(k+1) = m_k - (1/60) grad E(m_k),    grad E(m)=L m.
+```
+
+Here `k` is the calibration's native attempt count. This identifies an
+algorithmic discrete gradient flow in that calibration, not a reversible
+field equation or a continuum Lagrangian. The production two-event
+feedback protocol has a different seam schedule, as the retained control
+below shows.
+
+## Exact conditional path surprisal
+
+The same finite kernel also defines a local stochastic path cost. For a
+state path `x_0,...,x_n`, with `x_0` conditioned on, let `m(x,y)` count the
+seam-and-coin branches taking `x` to `y`. The exact formulas are
+
+```text
+K(x,y) = m(x,y)/60,
+S_cond[x_0,...,x_n] = -log P(x_1,...,x_n | x_0)
+                     = sum_(k=0)^(n-1) log(60/m(x_k,x_(k+1))) nats.
+```
+
+The start prior is a separate boundary term: a supplied prior `pi` adds
+`-log pi(x_0)`. Across all 78 states, the nonzero transition multiplicities
+are `m=1` (600 entries), `m=2` (60), `m=50` (48), and `m=52` (30). Thus the
+state-only local costs are exactly `log 60`, `log 30`, `log(6/5)`, and
+`log(15/13)` nats. At the fully labeled seam-and-coin level every primitive
+branch instead has probability `1/60`, so its cost is the constant `log 60`
+per event. The state-only values arise after forgetting which primitive
+branches led to the same next state.
+
+This is a valid source-derived *dimensionless stochastic path cost*, but it
+is not the quadratic repair cost or the mean field generator. For example,
+from `(2,0,...,0)` to `(1,0,...,0,1)`, `K=1/30`, the surprisal is `log 30`,
+and `V=||x||^2/2` drops by one. From `(1,1,0,...,0)`, both the self-transition
+and a move to `(0,1,0,...,0,1)` have zero quadratic-potential drop, yet their
+probabilities are `13/15` and `1/60`; their costs are `log(15/13)` and
+`log 60`. Therefore no coefficient converts these local surprisal terms
+into the quadratic potential decrement. The graph mean law still comes
+from the conditional-current expectation, `m_(k+1)=(I-L/60)m_k`; entrywise
+path costs are not the matrix logarithm of `K` and do not supply that law.
+The distinction also appears in one step: from `(1,1,0,...,0)`, the
+most-likely next state is the unchanged state with probability `13/15`,
+while the conditional mean is
+`(14/15,14/15,0,0,0,1/30,0,1/30,1/60,1/60,1/60,1/60)`.
+Greedy minimization of path surprisal therefore does not reproduce the
+native mean-field update.
+
+The current kernel therefore gives an exact Markov path likelihood once
+its state description and scheduler are fixed. Calling its negative log an
+“action” is conventional statistical language: the value is in nats, its
+state-only form depends on forgetting the seam/coin labels, and no physical
+action unit or space-time variational principle is derived.
+
 ## The existing uniform calibration closes the mean equation
 
 In the uniform all-seam calibration, each seam has probability `1/30`

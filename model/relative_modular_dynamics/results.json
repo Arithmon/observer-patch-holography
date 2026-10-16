@@ -783,6 +783,236 @@
       "single_probability_globally_identifies_phase": false
     }
   ],
+  "modular_lab_time_scale_identifiability": [
+    {
+      "candidate_map_if_calibrated": "s=kappa*t with kappa in modular-parameter units per second",
+      "candidate_rates_are_estimates": false,
+      "illustrative_rescalings": [
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "69/140",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "1",
+          "implied_lab_period_ratio_to_unit_rate": "1",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "1"
+        },
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "69/140",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "2",
+          "implied_lab_period_ratio_to_unit_rate": "1/2",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "1/2"
+        },
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "69/140",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "5/3",
+          "implied_lab_period_ratio_to_unit_rate": "3/5",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "3/5"
+        }
+      ],
+      "matched_public_lab_dataset_identified": false,
+      "minimal_calibration_and_operational_link": "identify a physical implementation of the modular phase operation and pair a nonzero delta-s with an independent lab-time interval; justify constant ds/dt over the tested range. Calibration alone does not supply a native generator for s",
+      "modular_parameter_to_seconds_map_identified": false,
+      "native_attempts_generate_s": false,
+      "reason_no_direct_dataset_test_is_defined": "the current source provides an ideal modular phase service but no physical process mapped to s",
+      "same_internal_response_at_matched_s_for_every_positive_kappa": true,
+      "source_frequency_per_unit_s": "log(5/4)",
+      "source_parameter": "dimensionless modular parameter s"
+    },
+    {
+      "candidate_map_if_calibrated": "s=kappa*t with kappa in modular-parameter units per second",
+      "candidate_rates_are_estimates": false,
+      "illustrative_rescalings": [
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "109/220",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "1",
+          "implied_lab_period_ratio_to_unit_rate": "1",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "1"
+        },
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "109/220",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "2",
+          "implied_lab_period_ratio_to_unit_rate": "1/2",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "1/2"
+        },
+        {
+          "exact_conditional_plus_probability_at_corresponding_quarter_turn": "109/220",
+          "floating_response_residual_diagnostic": 0.0,
+          "illustrative_modular_parameter_rate_per_second": "5/3",
+          "implied_lab_period_ratio_to_unit_rate": "3/5",
+          "quarter_turn_lab_time_ratio_to_unit_rate": "3/5"
+        }
+      ],
+      "matched_public_lab_dataset_identified": false,
+      "minimal_calibration_and_operational_link": "identify a physical implementation of the modular phase operation and pair a nonzero delta-s with an independent lab-time interval; justify constant ds/dt over the tested range. Calibration alone does not supply a native generator for s",
+      "modular_parameter_to_seconds_map_identified": false,
+      "native_attempts_generate_s": false,
+      "reason_no_direct_dataset_test_is_defined": "the current source provides an ideal modular phase service but no physical process mapped to s",
+      "same_internal_response_at_matched_s_for_every_positive_kappa": true,
+      "source_frequency_per_unit_s": "log(5/4)",
+      "source_parameter": "dimensionless modular parameter s"
+    }
+  ],
+  "native_attempt_clock_audits": [
+    {
+      "all_integer_attempt_counts_unbiased_by_real-linearity": true,
+      "conditional_plus_probabilities": [
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 0,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 1,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 2,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 3,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 4,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 5,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 6,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 7,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 8,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        }
+      ],
+      "initial_density_is_exactly_real": true,
+      "initial_state": "existing successful coherent plus branch, mass 5/66",
+      "law": "C",
+      "native_kraus_matrices_are_real": true,
+      "native_repair_generates_modular_phase": false,
+      "parameter": "integer native repair-attempt count n",
+      "physical_duration_or_lab_clock_identified": false,
+      "quarter_modular_turn_conditional_plus_probability": "69/140",
+      "runtime_vs_exact_native_attempt_maximum_frobenius_residual": 2.0529287436227433e-17,
+      "source_step": "exact T0+T1 from native zero-current identity branches and moving partial injections"
+    },
+    {
+      "all_integer_attempt_counts_unbiased_by_real-linearity": true,
+      "conditional_plus_probabilities": [
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 0,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 1,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 2,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 3,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 4,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 5,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 6,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 7,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        },
+        {
+          "conditional_plus_probability": "1/2",
+          "minus_probability_mass": "5/132",
+          "native_attempts": 8,
+          "plus_probability_mass": "5/132",
+          "successful_preparation_mass": "5/66"
+        }
+      ],
+      "initial_density_is_exactly_real": true,
+      "initial_state": "existing successful coherent plus branch, mass 5/66",
+      "law": "E",
+      "native_kraus_matrices_are_real": true,
+      "native_repair_generates_modular_phase": false,
+      "parameter": "integer native repair-attempt count n",
+      "physical_duration_or_lab_clock_identified": false,
+      "quarter_modular_turn_conditional_plus_probability": "109/220",
+      "runtime_vs_exact_native_attempt_maximum_frobenius_residual": 2.0385996776329564e-17,
+      "source_step": "exact T0+T1 from native zero-current identity branches and moving partial injections"
+    }
+  ],
   "ordered_phase_executions": [
     {
       "attempt_cap": 4,
@@ -1733,6 +1963,119 @@
       "law": "E"
     }
   ],
+  "port_factor_audit": {
+    "autonomous_three-port_factor_dynamics_derived": false,
+    "both_native_laws_keep_every_tested_mode_real": true,
+    "carrier_representation": "fixed-total-two load configurations; 66 binary basis states, not 12 independent qubits",
+    "factor_scope": "three-port binary subspace with both loads inside the selected triple; conditional reference only",
+    "local_coherent_modes": [
+      {
+        "Palm_mass_of_local_two-load_condition": "13/300",
+        "coherent_pair_indices": [
+          55,
+          45
+        ],
+        "conditional_Palm_weights": [
+          "5/13",
+          "4/13",
+          "4/13"
+        ],
+        "cross-pair_eigenvalue_ratio": "5/4",
+        "faithful_on_three-state_restricted_algebra": true,
+        "local_binary_two-load_indices": [
+          45,
+          55,
+          65
+        ],
+        "native_attempt_image_is_real_and_stays_in_protocol_algebra": true,
+        "ports": [
+          0,
+          1,
+          11
+        ],
+        "source_modular_frequency": "log(5/4)"
+      },
+      {
+        "Palm_mass_of_local_two-load_condition": "13/300",
+        "coherent_pair_indices": [
+          56,
+          46
+        ],
+        "conditional_Palm_weights": [
+          "5/13",
+          "4/13",
+          "4/13"
+        ],
+        "cross-pair_eigenvalue_ratio": "5/4",
+        "faithful_on_three-state_restricted_algebra": true,
+        "local_binary_two-load_indices": [
+          46,
+          56,
+          65
+        ],
+        "native_attempt_image_is_real_and_stays_in_protocol_algebra": true,
+        "ports": [
+          0,
+          1,
+          10
+        ],
+        "source_modular_frequency": "log(5/4)"
+      },
+      {
+        "Palm_mass_of_local_two-load_condition": "13/300",
+        "coherent_pair_indices": [
+          57,
+          47
+        ],
+        "conditional_Palm_weights": [
+          "4/13",
+          "5/13",
+          "4/13"
+        ],
+        "cross-pair_eigenvalue_ratio": "5/4",
+        "faithful_on_three-state_restricted_algebra": true,
+        "local_binary_two-load_indices": [
+          47,
+          57,
+          65
+        ],
+        "native_attempt_image_is_real_and_stays_in_protocol_algebra": true,
+        "ports": [
+          0,
+          1,
+          9
+        ],
+        "source_modular_frequency": "log(5/4)"
+      },
+      {
+        "Palm_mass_of_local_two-load_condition": "13/300",
+        "coherent_pair_indices": [
+          58,
+          48
+        ],
+        "conditional_Palm_weights": [
+          "4/13",
+          "5/13",
+          "4/13"
+        ],
+        "cross-pair_eigenvalue_ratio": "5/4",
+        "faithful_on_three-state_restricted_algebra": true,
+        "local_binary_two-load_indices": [
+          48,
+          58,
+          65
+        ],
+        "native_attempt_image_is_real_and_stays_in_protocol_algebra": true,
+        "ports": [
+          0,
+          1,
+          8
+        ],
+        "source_modular_frequency": "log(5/4)"
+      }
+    ],
+    "native_repair_generates_any_local_modular_phase": false
+  },
   "schema": "oph.relative_modular_dynamics.v1",
   "scope": {
     "continued_source_channel": "actual first-nonzero-current stopped CP map",
@@ -1801,7 +2144,7 @@
     "model/native_circulation/construction.py": "45df2c535e914f84587de21d78711d4c98e9ae8562361d1141cb155037b4e008",
     "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
-    "model/native_clock/clock.py": "e4e5780d549ad0972e5d9cb6f5c6b980d96c9a5090954b37599d073f20d02f99",
+    "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
     "model/native_interface/__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "model/native_interface/__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",
     "model/native_interface/construction.py": "9406eba34986f27d47f7be10d3a155d6e37e5123854ff3db40c305cf4bc391fb",
@@ -1810,7 +2153,7 @@
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
-    "model/native_quantum_history/construction.py": "bb8840c091de9d604bea40baccb695b8fddff0f212fddf6fc72132718d16c54e",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
     "model/native_relational_readout/__init__.py": "baf460e26918fea66b2b254d60e00b102e7e98577f2f97bdd760e4d946476e70",
     "model/native_relational_readout/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "model/native_relational_readout/construction.py": "3f01d15a3b199ea80957f4894c506f9dfb6cf5520bbe300fdff07c949c0089b8",
@@ -1829,7 +2172,7 @@
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/relative_modular_dynamics/__init__.py": "f201a67b9b7787025793d212236054dca7c9b963153073afedc3b8f53c056673",
     "model/relative_modular_dynamics/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
-    "model/relative_modular_dynamics/construction.py": "5901025228fd2ec2c0387ed9b8143e3cd88a89db65da5dde98b8af3c294e5053",
+    "model/relative_modular_dynamics/construction.py": "edf902afe4a3e06db6210e066b6e143980a4303b9fdb9607973b35db336967fc",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
     "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
     "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",

@@ -148,6 +148,140 @@ def apply(law, state, *, first_at=None, through=None, no_current=None):
     return sparse(result)
 
 
+def native_attempt_apply(law, state):
+    """Exact sum of both outcomes of one actual native repair attempt.
+
+    The no-current branches are identity partial maps whose total coefficient
+    on E_ij is count[i][j]/60. Each moving partial injection contributes
+    1/60 to its mapped matrix unit. This is the native-attempt channel T0+T1,
+    not the first-current stopped map and not modular evolution.
+    """
+    source = marked(law)
+    result = {}
+    for (i, j), value in sparse(state).items():
+        accumulate(result, (i, j), scale(value, F(source.no_current_counts[i][j], 60)))
+        for mapping in source.moving_maps:
+            mapping = dict(mapping)
+            if i in mapping and j in mapping:
+                accumulate(result, (mapping[i], mapping[j]), scale(value, F(1, 60)))
+    return sparse(result)
+
+
+def native_attempt_clock_audit(law, attempts=8):
+    """Test whether native repair generates the existing modular clock hand.
+
+    The declared coherent plus preparation and all native branch matrices are
+    real. Consequently every iterate of their actual CP channel is real, so
+    its Y readout stays unbiased for every integer native-attempt count. The
+    finite execution checks this boundary through ``attempts``; real-linearity
+    of each native Kraus branch proves the same statement for every n.
+    """
+    relational.horizon(attempts, 256)
+    source = marked(law)
+    state = prepared_states(law)[1]
+    if trace(state) != interface.SUCCESS or any(value[1] for value in state.values()):
+        raise ArithmeticError('the existing successful coherent preparation is no longer real')
+    # The source instrument consists exclusively of real partial-injection
+    # matrices. Check the actual arrays used by the bounded runtime as well as
+    # the exact integer-address map used for the all-n argument.
+    if any(np.max(np.abs(matrix.imag)) != 0 for group in source.instrument.kraus for matrix in group):
+        raise ArithmeticError('the committed native repair instrument gained complex amplitudes')
+    actual = dense(state)
+    rows = []
+    maximum_residual = 0.0
+    for n in range(attempts+1):
+        plus = trace(y_read(state, 0))
+        minus = trace(y_read(state, 1))
+        total = trace(state)
+        if plus+minus != total or plus != total/2 or minus != total/2:
+            raise ArithmeticError('native repair generated a Y phase from a real preparation')
+        rows.append({'native_attempts': n, 'successful_preparation_mass': str(total),
+                     'plus_probability_mass': str(plus), 'minus_probability_mass': str(minus),
+                     'conditional_plus_probability': str(plus/total)})
+        if n == attempts:
+            break
+        actual_outcomes = runtime._apply(source.instrument, actual, 1)
+        actual = sum(actual_outcomes, np.zeros((66, 66), dtype=complex))
+        state = native_attempt_apply(law, state)
+        maximum_residual = max(maximum_residual,
+            float(np.linalg.norm(actual-dense(state), 'fro')))
+    quarter_turn = math.pi/(2*math.log(5/4))
+    modular_plus = modular_clock_response(law, quarter_turn)
+    expected_modular_plus = float(F(1, 2)-(F(1, 140) if law == 'C' else F(1, 220)))
+    if abs(modular_plus-expected_modular_plus) > 2e-16 or modular_plus == 0.5:
+        raise ArithmeticError('the ideal modular phase boundary witness changed')
+    return {'law': law, 'parameter': 'integer native repair-attempt count n',
+        'initial_state': 'existing successful coherent plus branch, mass 5/66',
+        'source_step': 'exact T0+T1 from native zero-current identity branches and moving partial injections',
+        'native_kraus_matrices_are_real': True,
+        'initial_density_is_exactly_real': True,
+        'conditional_plus_probabilities': rows,
+        'all_integer_attempt_counts_unbiased_by_real-linearity': True,
+        'runtime_vs_exact_native_attempt_maximum_frobenius_residual': maximum_residual,
+        'quarter_modular_turn_conditional_plus_probability': str(F(1, 2)-(
+            F(1, 140) if law == 'C' else F(1, 220))),
+        'native_repair_generates_modular_phase': False,
+        'physical_duration_or_lab_clock_identified': False}
+
+
+def port_factor_audit():
+    """Identify the source-derived local support of each nonzero frequency.
+
+    The twelve ports label fixed-total-two load configurations, not twelve
+    independent qubit factors in the current 66-state observer. Restricting
+    the Palm state to a triple carrying one of its existing cross-degree
+    coherent pairs gives a faithful three-state conditional reference. This
+    makes the modular frequency local to three port labels without asserting
+    that the triple is an autonomous subsystem of the repair dynamics.
+    """
+    degree, palm, _, _ = events.embedded()
+    states = relational.quantum.STATES
+    rows = []
+    for i, j in PAIRS:
+        if degree[i] == degree[j]:
+            continue
+        left, right = states[i], states[j]
+        ports = tuple(k for k in range(12) if left[k] or right[k])
+        if len(ports) != 3:
+            raise ArithmeticError('a coherent cross-degree mode escaped its three-port support')
+        local = tuple(k for k, state in enumerate(states)
+            if max(state) == 1 and all(state[p] == 0 for p in range(12) if p not in ports))
+        if len(local) != 3 or i not in local or j not in local:
+            raise ArithmeticError('the three-port binary two-load subspace changed')
+        mass = sum((palm[k] for k in local), F(0))
+        weights = tuple(palm[k]/mass for k in local)
+        if (mass != F(13, 300) or min(weights) <= 0
+                or max(weights)/min(weights) != F(5, 4)):
+            raise ArithmeticError('the local Palm restriction lost faithfulness or modular ratio')
+        mode = {(i, j): z(1)}
+        if trace(mode) != 0:
+            raise ArithmeticError('a coherence mode acquired a diagonal component')
+        phased = modular_action(mode)
+        actuals = [native_attempt_apply(law, mode) for law in ('C', 'E')]
+        if any(any(value[1] for value in actual.values()) or any(key not in ALGEBRA for key in actual)
+                for actual in actuals):
+            raise ArithmeticError('a native attempt no longer preserves real protocol coherences')
+        phase_value = phased[i, j]
+        if abs(phase_value[0]) != 0 or abs(phase_value[1]) != 1:
+            raise ArithmeticError('the local source modular quarter turn changed')
+        rows.append({'coherent_pair_indices': [i, j], 'ports': list(ports),
+            'local_binary_two-load_indices': list(local),
+            'conditional_Palm_weights': [str(weight) for weight in weights],
+            'Palm_mass_of_local_two-load_condition': str(mass),
+            'faithful_on_three-state_restricted_algebra': True,
+            'cross-pair_eigenvalue_ratio': '5/4',
+            'source_modular_frequency': 'log(5/4)',
+            'native_attempt_image_is_real_and_stays_in_protocol_algebra': True})
+    if len(rows) != 4:
+        raise ArithmeticError('the native phase preparation no longer has four cross-degree pairs')
+    return {'carrier_representation': 'fixed-total-two load configurations; 66 binary basis states, not 12 independent qubits',
+        'factor_scope': 'three-port binary subspace with both loads inside the selected triple; conditional reference only',
+        'local_coherent_modes': rows,
+        'both_native_laws_keep_every_tested_mode_real': True,
+        'autonomous_three-port_factor_dynamics_derived': False,
+        'native_repair_generates_any_local_modular_phase': False}
+
+
 def diagonal(values):
     return {(i, i): z(value) for i, value in enumerate(values) if value}
 
@@ -251,6 +385,53 @@ def modular_clock_audit(law):
         'native_repair_generates_modular_parameter': False,
         'modular_parameter_to_native_attempt_conversion_derived': False,
         'continuous_modular_gate_and_detector_error_bounded': False,
+    }
+
+
+def modular_lab_scale_audit(law):
+    """Show that the dimensionless modular parameter has no lab-time scale.
+
+    For any positive candidate rate kappa, s=kappa*t gives the same internal
+    response as a function of s, but changes its period and slope in seconds.
+    The candidates are scale witnesses, not fitted clock rates.
+    """
+    law = relational.quantum.candidate(law)
+    amplitude = F(1, 140) if law == 'C' else F(1, 220)
+    base_quarter_time = math.pi/(2*math.log(5/4))
+    candidates = (F(1), F(2), F(5, 3))
+    rows = []
+    expected = float(F(1, 2)-amplitude)
+    for ds_per_second in candidates:
+        lab_time = base_quarter_time/float(ds_per_second)
+        recovered_parameter = float(ds_per_second)*lab_time
+        actual = modular_clock_response(law, recovered_parameter)
+        if abs(actual-expected) > 2e-16:
+            raise ArithmeticError('time-rescaled modular quarter-turn response changed')
+        rows.append({
+            'illustrative_modular_parameter_rate_per_second': str(ds_per_second),
+            'implied_lab_period_ratio_to_unit_rate': str(1/ds_per_second),
+            'quarter_turn_lab_time_ratio_to_unit_rate': str(1/ds_per_second),
+            'exact_conditional_plus_probability_at_corresponding_quarter_turn': str(F(1, 2)-amplitude),
+            'floating_response_residual_diagnostic': abs(actual-expected),
+        })
+    if len({row['implied_lab_period_ratio_to_unit_rate'] for row in rows}) != len(rows):
+        raise ArithmeticError('the modular lab-time rescaling witness lost distinct periods')
+    return {
+        'source_parameter': 'dimensionless modular parameter s',
+        'source_frequency_per_unit_s': 'log(5/4)',
+        'candidate_map_if_calibrated': 's=kappa*t with kappa in modular-parameter units per second',
+        'same_internal_response_at_matched_s_for_every_positive_kappa': True,
+        'candidate_rates_are_estimates': False,
+        'illustrative_rescalings': rows,
+        'modular_parameter_to_seconds_map_identified': False,
+        'native_attempts_generate_s': False,
+        'matched_public_lab_dataset_identified': False,
+        'reason_no_direct_dataset_test_is_defined': (
+            'the current source provides an ideal modular phase service but no physical process mapped to s'),
+        'minimal_calibration_and_operational_link': (
+            'identify a physical implementation of the modular phase operation and pair a nonzero delta-s '
+            'with an independent lab-time interval; justify constant ds/dt over the tested range. '
+            'Calibration alone does not supply a native generator for s'),
     }
 
 
@@ -560,6 +741,9 @@ def run():
         'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
         'algebra_audits': [algebra_audit(law) for law in ('C', 'E')],
         'modular_clock_readouts': [modular_clock_audit(law) for law in ('C', 'E')],
+        'modular_lab_time_scale_identifiability': [modular_lab_scale_audit(law) for law in ('C', 'E')],
+        'native_attempt_clock_audits': [native_attempt_clock_audit(law) for law in ('C', 'E')],
+        'port_factor_audit': port_factor_audit(),
         'exact_predictions': [predictions(law) for law in ('C', 'E')],
         'continuing_degree_executions': [degree_experiment(law) for law in ('C', 'E')],
         'ordered_phase_executions': [covariance_experiment(law, order) for law in ('C', 'E')

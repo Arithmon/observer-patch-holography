@@ -555,6 +555,48 @@
       "start": "palm"
     }
   ],
+  "duration_scale_identifiability": {
+    "candidate_scales_are_estimates": false,
+    "dimensionful_source_quantity_with_seconds_units": false,
+    "illustrative_rescalings": [
+      {
+        "exact_native_one_attempt_record_law": [
+          "28/33",
+          "5/33"
+        ],
+        "illustrative_seconds_per_attempt": "1/100",
+        "implied_Palm_mean_interval_seconds": "33/500",
+        "implied_stationary_event_rate_per_second": "500/33",
+        "implied_stationary_start_wait_seconds": "147/2200"
+      },
+      {
+        "exact_native_one_attempt_record_law": [
+          "28/33",
+          "5/33"
+        ],
+        "illustrative_seconds_per_attempt": "1",
+        "implied_Palm_mean_interval_seconds": "33/5",
+        "implied_stationary_event_rate_per_second": "5/33",
+        "implied_stationary_start_wait_seconds": "147/22"
+      },
+      {
+        "exact_native_one_attempt_record_law": [
+          "28/33",
+          "5/33"
+        ],
+        "illustrative_seconds_per_attempt": "100",
+        "implied_Palm_mean_interval_seconds": "660",
+        "implied_stationary_event_rate_per_second": "1/660",
+        "implied_stationary_start_wait_seconds": "7350/11"
+      }
+    ],
+    "matched_public_lab_dataset_identified": false,
+    "minimal_calibration_if_a_constant_attempt_clock_is_validated": "one nonzero paired native-attempt difference and independently measured lab interval; a single pair fixes only that interval unless constant-rate t=t0+tau*n is justified",
+    "native_parameter": "integer attempt index n",
+    "reason_no_direct_dataset_test_is_defined": "no laboratory apparatus has been operationally mapped to these native attempts and current bits",
+    "same_exact_record_law_for_every_positive_seconds_per_attempt": true,
+    "seconds_per_attempt_identified": false
+  },
   "event_clock": {
     "P_next_1_given_last_1": "23/150",
     "P_next_1_given_last_two_11": "53/345",
@@ -806,7 +848,7 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
-    "model/native_clock/clock.py": "e4e5780d549ad0972e5d9cb6f5c6b980d96c9a5090954b37599d073f20d02f99",
+    "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

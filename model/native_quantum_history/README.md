@@ -143,6 +143,34 @@ reflection axioms or replace the actual CP instrument composition for
 intervening measurements. The new attachment and its scope are analytic
 and executable; no new Lean theorem is claimed.
 
+## The strongest repair-derived quadratic form
+
+Because `H_L=-log(Phi_L)` is positive and self-adjoint, it defines the exact
+positive form
+
+```text
+Q_L[O] = 1/2 <O, H_L O>_HS >= 0.
+```
+
+On the executed first-seam phase probe `S=A+A*`, `||S||_HS^2=20` and the
+native transfer has the exact eigenvalues `5/6` for C and `7/10` for E.
+Thus `Q_C[S]=10 log(6/5)` and `Q_E[S]=10 log(10/7)`. After `n` integer
+native attempts the probe norm squared is multiplied by `(5/6)^(2n)` or
+`(7/10)^(2n)`. The receipt tests this mode directly against the enumerated
+native channel.
+
+This is a positive *transfer-space* form, not a space-time action. The
+strict contraction of `S` proves that the forgotten-record native channel
+is not unitary conjugation on the existing carrier. The exact negative
+half-step population above also proves that its principal logarithm does
+not generate a continuous CP semigroup. These results do not exclude an
+alternative continuous generator, a unitary dilation with additional
+degrees of freedom, or a retained-record evolution; those are not selected
+by the current repair execution. The finite rule therefore supplies exact
+irreversible quadratic attenuation, but no Euler–Lagrange field equation,
+unitary carrier action, or continuum action without an additional
+identification.
+
 ## Exact coherent prediction and discrimination
 
 Choose the first native seam `(u,v)`. With `|uw>` denoting the configuration

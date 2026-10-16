@@ -100,7 +100,7 @@ or changed by these executable records.
 | `OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT` | [Published oscillator readout](../model/scalar_observations/experimental_readout/README.md), retrospective preparation/readout comparison |
 | `OPH-MODEL-COUPLED-INTERACTION-RECOVERY` | [Coupled interaction reconstruction](../model/coupled_reconstruction/README.md), finite source identification under the declared action and clock |
 | `OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON` | [Anharmonic transfer](../model/anharmonic_transfer/README.md), retrospective changed-potential transfer on published records |
-| `OPH-MODEL-NATIVE-PROCESS-RECOVERY` | [Observer-relative recovery](../model/OBSERVER_RELATIVE_RECOVERY.md), including incident-clock fields and the finite two-screen comparison |
+| `OPH-MODEL-NATIVE-PROCESS-RECOVERY` | [Observer-relative recovery](../model/OBSERVER_RELATIVE_RECOVERY.md), including incident-clock fields, source-derived modular readout, local carrier geometry, repair-cost laws, and their calibration/gluing limits |
 
 The detector consumes PR-17 and PR-37. Its separate physical same-quantity
 and Thomson readback attachments are undischarged PR-38 and PR-39. These rows

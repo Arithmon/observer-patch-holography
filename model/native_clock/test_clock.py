@@ -92,6 +92,21 @@ def test_actual_event_palm_law_differs_from_stationary_time_sample(source):
     assert result['stationary_start_wait_mean'] == (result['interval_variance']+mean*mean+mean)/(2*mean)
 
 
+def test_native_attempt_law_has_an_exact_seconds_scale_nonidentifiability_certificate(source):
+    _, reduced = source
+    audit = c.duration_scale_audit(reduced)
+    assert audit['same_exact_record_law_for_every_positive_seconds_per_attempt']
+    assert not audit['dimensionful_source_quantity_with_seconds_units']
+    assert not audit['seconds_per_attempt_identified']
+    assert not audit['matched_public_lab_dataset_identified']
+    rows = audit['illustrative_rescalings']
+    assert [row['illustrative_seconds_per_attempt'] for row in rows] == ['1/100', '1', '100']
+    assert len({tuple(row['exact_native_one_attempt_record_law']) for row in rows}) == 1
+    assert [row['implied_stationary_event_rate_per_second'] for row in rows] == [
+        '500/33', '5/33', '1/660']
+    assert 'one nonzero paired native-attempt difference' in audit['minimal_calibration_if_a_constant_attempt_clock_is_validated']
+
+
 def test_equal_mean_independent_clock_misses_second_order_measurement(source):
     _, reduced = source
     p = F(5, 33)

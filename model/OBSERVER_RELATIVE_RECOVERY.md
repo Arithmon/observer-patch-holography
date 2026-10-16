@@ -25,7 +25,7 @@ records that separate obligation.
 | Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
 | Coherent preparation, phase interventions and readout | Declared observer services, with source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
 | Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed; an existing coherent preparation gives a local modular-phase readout under the ideal reference action. | The phase response is periodic, native repair has not been shown to advance the modular parameter, and the relation to continuing native events remains open. The stationary tracial state's modular flow is trivial. |
-| Finite spatial interpretation | The observer's current records recover an exact unitless rank-three Gram metric on the twelve-port carrier; all thirty native seams form its shortest-distance shell. | This result is a finite carrier geometry, not a length calibration or evidence by itself for physical spatial dimension. |
+| Finite spatial interpretation | The observer's current records recover an exact unitless rank-three Gram metric on the twelve-port carrier; all thirty native seams form its shortest-distance shell. Exact native-hop balls are retained across finite federation levels, with roughly quadratic growth over part of the tested range. | Refinement does not glue local frames: the cell-ancestry map is not record-derived and, at 0→1, sends 74/2,520 fine seams to non-seams and collapses 2; at 1→2, it sends 280/10,080 to non-seams and collapses 4. Existing inter-carrier routing uses supplied cell-centre directions and a local tangent-frame convention (`source_derived: false`); the local carrier Gram is record-derived. These finite, dimensionless graph results do not establish a 3D physical bulk, calibrated distances, or path-independent global frames. |
 | Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
 
 The [equilibration attachment](native_equilibration/README.md) reuses the
@@ -84,7 +84,7 @@ identifies this population transfer and gives rational approximants
 `H_m=sum_(k=1..m)(G/60)^k/k`, with
 `0<=H-H_m<=I/[2(m+1)3^m]` for `H=-log K`. The logarithm is a finite Euclidean
 transfer reconstruction and includes longer-range configuration terms.
-The record-recovered carrier metric now verifies that each native exchange
+The record-recovered carrier metric verifies that each native exchange
 term lies on a shortest-shell edge and that their sum is exactly the finite
 field generator. The metric is reconstructed from a distinct calibration
 preparation, and the logarithm itself can contain longer-range terms.
@@ -109,6 +109,16 @@ Independently inserted identity holds cancel from completed event laws,
 while relative seam weights and finite-cap costs can matter. Native
 attempt count, local event count, modular parameter and calibrated duration
 remain distinct.
+
+These source laws are indexed by discrete attempts or recorded events. For
+every positive scale `tau`, relabelling an attempt index `n` as duration
+`t=tau*n` leaves all source records unchanged; the repair law contains no
+measurement that selects `tau`. It therefore predicts no seconds or hertz,
+and none of the present lab datasets is paired with the native event record
+needed to test a clock conversion. Such a comparison needs an operationally
+matched apparatus, joint event/time records and independently bounded service
+and timing errors. The separate anharmonic-data comparison uses a supplied
+Hamiltonian and does not calibrate this native clock.
 
 [Event circulation](event_circulation/README.md) derives circulation statistics
 from movement records in one continuing history. Its event-stationary Palm
@@ -215,13 +225,25 @@ For the Palm reference, the existing coherent source preparation has only
 the modular frequencies `0` and `+/-log(5/4)`. Applying the ideal reference
 modular action, the actual stopped native channel and the existing Y readout
 gives `P(+|s, herald)=1/2-sin(s log(5/4))/140` for C and the same expression
-with denominator `220` for E. The exact finite readout is locally sensitive
-to modular phase and periodic, so a single value is not a unique time. The
-modular action remains a declared target service: native repair has not been
-shown to generate it, nor is its parameter converted to attempts or physical
-duration. No matching public experimental dataset is currently identified;
-the prediction is conditional on implementing and calibrating that target
-service and readout.
+with denominator `220` for E. Each cross-degree mode is supported on a
+three-port triple; conditioning the Palm reference on both binary loads being
+in that triple gives a faithful three-state restriction with weights
+`(5/13,4/13,4/13)` up to ordering, at Palm mass `13/300`. This identifies the
+source-derived frequency locally, but does not establish an autonomous
+three-port subsystem or three-port dynamics.
+
+The finite readout is locally sensitive to modular phase and periodic, so one
+outcome is not a unique phase or time reading. The current native attempt
+channel has an exact obstruction to generating this phase: the successful
+coherent preparation is real and every native Kraus branch is a real partial
+injection. Therefore every integer-attempt iterate remains real and the Y
+readout stays unbiased, `P(+|herald,n)=1/2`, for all native attempt counts
+`n`. The runtime and exact rational channel agree at `n=0,...,8` for both C
+and E. The ideal modular quarter turn instead predicts `69/140` for C and
+`109/220` for E. Thus the modular action remains a declared target service,
+not an evolution supplied by current repair. Its parameter is not converted
+to attempts, laboratory duration or proper time. No public experimental dataset is matched to this protocol; the prediction is conditional
+on implementing and calibrating that target service and readout.
 
 For the minimal three-state absolute-current description, the transfer
 eigenvalues are `1` and `(25 +/- sqrt(3))/30`. Their negative logarithms fix
