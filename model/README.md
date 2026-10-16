@@ -25,11 +25,13 @@ larger regions, distant interventions and refinement; it is not an additional
 axiom needed to establish each local result.
 
 The useful local test is whether different observations describe the same
-process. A 360-shot native calibration reconstructs the carrier's seams and a
-rank-three slow-response metric without an exact probability oracle. Local clock fluctuations give another
-readout of the same distance shells. A reversible representation of repair
-retains the complete finite instrument history, including its records and
-feedback. The detailed claims and their scope are in the
+process. A current-only calibration reconstructs the rank-three slow-response
+metric using binary preparations in the quantum clocks' state space. Its
+retained execution uses 578 native attempts; a finite cap retains failed
+calibrations with a derived probability bound. Local clock fluctuations give
+another readout of the same distance shells. A reversible representation of
+repair retains complete finite instrument histories, records and feedback.
+The detailed claims and their scope are in the
 [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md).
 
 The twelve-port result does not by itself describe an extended physical
@@ -75,9 +77,12 @@ local recorded events, modular parameters, calibrated observer clocks and
 auxiliary solver counters are distinct. A preferred universal physical
 clock is not required. Their operational correspondences are tested through
 joint observations rather than asserted from a shared name. The source record
-laws are invariant under any positive rescaling of attempt count as duration,
-so seconds and hertz require paired event-time records and independent
-calibration; no such native-to-lab clock attachment is established here.
+laws are invariant under any positive rescaling of attempt count as duration.
+The [host-clock attachment](native_clock/README.md) records actual native calls
+against a monotonic host counter, calibrates one block and tests disjoint
+blocks with another local clock. Its measured timing is an engineered software
+correspondence. Traceable laboratory accuracy, native proper time and modular
+phase are not inferred from the host timer.
 
 ## Native action, local clocks and effective fields
 
@@ -105,6 +110,15 @@ excluded. The same finite kernel yields an exact additive conditional path
 surprisal in nats, with the initial-state prior kept separate. It is not the
 quadratic repair cost or mean-field generator and supplies no physical action
 units.
+
+Native circulation also gives an action in one port's own movement clock.
+For the specified local-tick Palm preparation, triangle-current variance is
+exactly `3m/5` after `m` local ticks. The long-count Gaussian increment action
+has coefficient `5/2` on the carrier's cycle subspace. Finite higher moments
+retain memory and non-Gaussianity; independent replicas and a separate clock
+are unnecessary. Carrier-wide current access, the preparation and scheduler
+remain declared. This fluctuation action does not establish relativistic
+spacetime or an empirical field identification.
 
 The [native quantum transfer](native_quantum_history/README.md) and
 [effective fields](native_effective_fields/README.md) provide finite

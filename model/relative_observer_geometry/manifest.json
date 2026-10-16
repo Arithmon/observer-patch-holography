@@ -1,19 +1,23 @@
 {
   "description": "Exact observer-visible fields, scheduler-normalized single-carrier geometry, response-dimension controls and explicit inter-carrier gluing limits.",
   "files": {
-    "README.md": "464e5618913ee8e43cc3e6566882cc36ca38fc27dfb842acf868988bb2c29abb",
+    "README.md": "6d5cac378e48e12e8bf461a94987db80dec6857c4c489a3859f5ba62b7abd098",
     "__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "binary_dynamics.py": "a5801807eac5518b8f8661ac88effa07390356b9e0caf89c63ff47ba96f17c15",
+    "binary_results.json": "c153ae0902230a3127201edbe66d90e66e8e58aa0ec0aff000b9a7317ab24534",
     "construction.py": "9ca1e81d200451cb704efaf05d5463ebda121cfca4179f95febc8b7ca3dd351d",
     "intrinsic_geometry.py": "9a8731d640260b7fda6e85b0fc84764deeccfc7147a6f26999236c716f116e43",
     "intrinsic_results.json": "7f1cf9f64acb85ca15d8f066e27f88f750306b53c8114f8094da2dd0ce3789a6",
     "results.json": "24d7d78e4090d57634f30e383ed22ec089908de37c177e6e447d23ca9cce9395",
+    "test_binary_dynamics.py": "cfcffdcf865fb0db3b3c6efb81b9a180eed8087aeeacfd771bd4a971178bb442",
     "test_construction.py": "cddc206a4bac54bb728c5fb5ed83d951093dc198ad3ae93a8820c48e6bd67c3c",
     "test_intrinsic_geometry.py": "98cd2f99e40fdc211f8c3eed3ad170a461fa91e77d11ed7d8cd3d24135efd277"
   },
   "reproduce": [
     "python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json",
     "python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json",
+    "python -m model.relative_observer_geometry.binary_dynamics --check model/relative_observer_geometry/binary_results.json",
     "python -m pytest -q -W error model/relative_observer_geometry"
   ],
   "schema": "oph.relative_observer_geometry.manifest.v1"

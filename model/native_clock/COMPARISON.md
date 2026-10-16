@@ -173,8 +173,12 @@ and this calculation does not predict how many movements occur in an arbitrary
 fixed lab-time interval. The existing source rules fix the count statistics;
 the physical correspondence and lab/count relation remain to be established.
 
-No matching apparatus or public dataset is identified here. These are concrete
-candidate tests, not an empirical confirmation or an additional fitted law.
+The [host-clock attachment](HOST_CLOCK.md) implements this measurement shape
+for the software executor: actual native currents and independent host-counter
+readings, one calibration block, three held-out checks and a rate-change control.
+Its scope is an engineered implementation correspondence. No traceably
+calibrated lab apparatus or external physics dataset has been identified with
+these native currents, and no empirical confirmation of OPH is claimed.
 There is also no identification with the Palm modular phase: native currents
 advance the event counts, while the current native maps do not generate that
 modular phase action.

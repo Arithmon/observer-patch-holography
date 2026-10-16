@@ -7,6 +7,11 @@ local quantum and record output** changes when distant ports are omitted.
 The bound includes arbitrary untouched references and interventions controlled
 by the observer's own local records.
 
+On one carrier, it also derives a current fluctuation action in one port's
+recorded movement clock: the coefficient is `5/2`, with no fitted time rate.
+The exact finite current blocks have correlated squares and non-Gaussian
+fourth moments; the quadratic action describes their proved scaling limit.
+
 It also identifies finite compatible neighborhoods of the actual spherical
 screen source, without enlarging the elementary carrier. This adds a quantum
 and complete-history extension to the existing
@@ -173,6 +178,137 @@ the necessary record storage, preparation and control services free. Such a
 physical identification must preserve the declared observation and resource
 contract. The existing nonpositive fractional transfer-step result constrains
 that reduced transfer; it does not prohibit this enlarged history realization.
+
+## A current action in an observer's own recorded clock
+
+The [local-clock construction](current_clock_action.py) connects the existing
+[current martingale](../event_circulation/README.md) directly to a clock made
+from native records. The domain is the same 66-state binary total-two carrier
+with uniform independent seam/coin attempts. The observer retains **all
+carrier current records**, but its clock ticks only when occupation at port
+`v=0` changes. This access is broader than a port seeing only incident records;
+it needs no federation, second clock, independent replica or Poisson schedule.
+It is a declared observation protocol, not a derivation of the source wiring
+or choice of scheduler. The result concerns native record laws without
+intervening controls. C and E share these laws; the result does not select
+between their different coherence rules.
+
+Let `Q0,Q1` be the global-movement transition kernels split according to whether
+that movement leaves port `v` unchanged or ticks it. These are computed from
+the endpoint branches, without fitted transition rates. Write `d(x)` for all
+moving branches and `d_v(x)` for those ticking `v`. The previous global-movement
+Palm law is `mu(x)=d(x)/600`. The local-tick Palm law and stopped kernel are
+
+```text
+nu_v(x) = d_v(x)/100,       F = (I-Q0)^(-1),       R = F Q1,
+nu_v R = nu_v,             nu_v F = 6 mu.
+```
+
+Here Palm means the state law just after a stationary clock tick. The second
+identity is an exact **stopped occupation measure**, stronger than replacing
+random waiting times by their mean. In particular a local tick takes six
+global movements on average under `nu_v`. This preparation is operational:
+from `I66/66`, perform one native attempt and herald a tick at `v`. Its success
+probability is `5/198`; failure `193/198` remains part of the experiment.
+The successful preparation has support 51, so it is not a faithful reference
+on the full 66-state algebra. Starting with an arbitrary configuration or
+waiting for the first tick from a uniform state does not supply this Palm law.
+
+**Exact current moments.** For the source incidence matrix `B`, set
+`P=I-B^T(BB^T)^+B`. Each global-movement cycle current `PJ` has zero conditional
+mean. Let `T` be the next local tick, including its current. Direct enumeration
+gives the uniform bound
+
+```text
+max_x Pr_x(T>3) = 2963/3200 = beta < 1,
+Pr_x(T>3k) <= beta^k.
+```
+
+Thus `T` has moments of every order uniformly in the starting configuration.
+Each stopped current block is bounded in norm by `T`; stopped martingale and
+second-moment identities follow by truncation with this integrable bound.
+The occupation identity `nu_v F=6 mu` then gives the exact block covariance
+`P/5`. The local-tick chain preserves `nu_v`, so for its consecutive current
+blocks `D_l`,
+
+```text
+E[D_l | complete past at preceding local tick] = 0,
+E[D_l D_l^T] = P/5,       E[D_l D_k^T] = 0 for k != l.
+```
+
+For the native triangle `(0,1,5)`, the signed circulation weight has squared
+norm three. Consequently `Var(sum_(l=1)^m triangle_current_l)=3m/5` exactly
+under the declared Palm preparation. These finite covariance statements do
+not depend on exchanging a limit with expectation. Gradient currents still
+telescope to bounded occupation differences at the stopped endpoints.
+
+**Scaling action.** `R` is irreducible on its 51-state support. It has period
+two: each tick flips the occupation at `v`. Ergodic averages of its conditional
+block covariances nevertheless converge; aperiodic pointwise convergence is
+unnecessary. The geometric waiting bound supplies uniformly bounded higher
+moments and hence the martingale Lindeberg condition. The same imported
+martingale functional limit theorem used by the current packet therefore gives
+
+```text
+n^(-1/2) sum_(l<=floor(n*u)) D_l -> W(u),
+Cov(W(u),W(w)) = min(u,w) P/5.
+```
+
+On a fixed partition of rescaled **local tick count** `u`, the limiting
+Gaussian increment density on the cycle subspace has action
+
+```text
+A[y] = (5/2) sum_l ||y(u_l)-y(u_(l-1))||^2/(u_l-u_(l-1)).
+```
+
+The scalar triangle action has coefficient `5/6`. The rank-19 cycle space
+counts current coordinates, not spatial dimensions. This is a finite-partition
+fluctuation action; no differentiable Brownian-path density or finite-count
+Gaussian error estimate is asserted. Local occupation has exact multiplier
+`-1` in this clock because the clock selects flips. This alternation is not
+evidence of a propagating spatial wave and is not a modular phase.
+
+**Finite records retain more information.** The exact resolvent also computes
+the full first four stopped current moments. If `Qb^(r)` marks every branch
+with its triangle score to power `r`, then for a terminal weight `b`,
+
+```text
+M_0 = F Q1 b,
+M_r = F [Q1^(r) b + sum_(k<r) binom(r,k) Q0^(r-k) M_k].
+```
+
+The [retained receipt](current_clock_action_results.json) gives exact rational
+values. A single block's triangle variance is `3/5`, but its fourth cumulant
+is approximately `0.256840`, and the covariance of two consecutive squared
+block currents is approximately `0.020723`. Thus finite blocks are neither
+Gaussian nor independent; their zero signed cross-covariance does not erase
+that dependence.
+
+The same computed `M_2` also predicts nonstationary preparations: for any
+declared initial configuration law `p`, the variance through `m` local ticks
+is exactly `p (I+R+...+R^(m-1)) M_2`. Conditional zero mean removes all
+cross terms. This retains the initial-state correction instead of applying
+`3m/5` to a run that did not start in the local Palm law.
+
+The shared quantum runtime executes the native herald and a **fixed two-attempt
+window** for each C/E candidate, retaining all 98 words, the herald failure,
+full terminal densities and serialized continuation. It continues through the
+second attempt even when the first ticks. Conditional on herald success, the
+probability of no further local tick in that window is exactly `2033/2250`.
+Independent floor/ceiling branch counts check every terminal density. This
+finite execution is not an execution of the infinite stopped quantum channel.
+The classical stopped-current calculation does not replace that channel's
+coherence or waiting-time effects.
+
+A separate 49-word native experiment uses the first signed current to choose
+the second seam. Its complete record law differs from the unchanged uniform
+schedule by total variation `28/5625`; the exact joint generating-function
+value `E[2^(g1+g2) 3^(tick1+tick2)]` is `153281/120000`. This is a controlled
+negative example: stationary action coefficients cannot be carried through
+arbitrary feedback without rechecking its law. Neither this source-derived
+action nor a conversion of tick counts into units establishes laboratory
+seconds, relativistic propagation, a Lorentzian field action or correspondence
+with measured physical fields.
 
 ## Exact path weights and the optional continuous parameter
 

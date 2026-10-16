@@ -16,8 +16,8 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all 39 retained
-receipts. The finite observer contributes the exact native observer, its
+The verifier checks the artifact manifests and replays every receipt declared
+in `model/verify.py`. The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and
 the observer-local incident-tick calculation. The field detectors
@@ -50,6 +50,12 @@ adds executed free-field and clock records, record-only spatial/spectral
 identification, withheld detector predictions and an exact native response
 geometry. Its normal-mode occupation bound and noncommuting-phase control
 retain the supplied-action and finite-identification scope.
+The [binary geometry](model/relative_observer_geometry/README.md) checks a
+current-only calibration, quantum occupation response and finite propagation
+on the clocks' native sector. The [host-clock comparison](model/native_clock/README.md)
+replays actual recorded native calls and recalculates their held-out timing
+tests; reproduction checks the retained measurements rather than requiring
+another machine to reproduce their timestamps.
 The tests independently check endpoint arithmetic,
 all retained histories, classical-record preservation, quantum coherence,
 controls, capacity and

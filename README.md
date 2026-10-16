@@ -97,13 +97,16 @@ counts, and the [construction guide](model/CONSTRUCTION.md) states the
 acceptance criteria and the connections that remain to be built.
 
 One twelve-port carrier also connects spatial and clock observations:
-current-response records recover its local geometry, and correlations between
-local tick counts distinguish the same distance shells. An exact reversible
-representation preserves native repair histories, records and feedback.
+binary current records recover its local geometry within the same state space
+as its quantum clocks, and clock correlations distinguish the distance shells.
+An exact reversible representation preserves native repair histories, records
+and feedback. Current fluctuations have an action in one port's own tick
+count. Recorded executions also compare local ticks with a host clock,
+with separate calibration and validation blocks.
 These finite results need no federation. Joining carriers tests larger regions
 and refinement; the [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md)
-explains why extended relativistic spacetime and a laboratory identification
-require further evidence.
+distinguishes these checks from extended relativistic spacetime and a physical
+laboratory identification.
 
 ## Mathematical results
 

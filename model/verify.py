@@ -36,6 +36,9 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_action", "model/joint_clock_process",
            "model/closed_prediction_protocol", "model/characteristic_constraints")
 REPLAYS = (
+    ("model.relative_observer_geometry.binary_dynamics", None, "model/relative_observer_geometry/binary_results.json"),
+    ("model.native_clock.host_clock", None, "model/native_clock/host_clock_results.json"),
+    ("model.native_action.current_clock_action", None, "model/native_action/current_clock_action_results.json"),
     ("model.native_action.history_action", None, "model/native_action/history_action_results.json"),
     ("model.relative_observer_geometry.intrinsic_geometry", None, "model/relative_observer_geometry/intrinsic_results.json"),
     ("model.native_clock.comparison", None, "model/native_clock/comparison_results.json"),

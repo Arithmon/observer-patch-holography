@@ -252,6 +252,98 @@ and does not by itself close the physical-space obligation. The smallest
 decisive work can therefore remain on one carrier until an extension is
 needed for a stated observable or limiting claim.
 
+### Geometry and propagation on the binary quantum sector
+
+The [binary spatial dynamics](binary_dynamics.py) construction removes the
+need for doubled-load calibration when connecting geometry to the existing
+quantum clocks. Its twelve known preparations are occupied pairs `(0,i)`,
+for `i=1..11`, and `(1,2)`. Their occupation columns form an invertible
+12-by-12 matrix `S`, although every preparation lies in the same 66-state
+binary sector. The estimator receives only those preparation labels, seam
+endpoints and **current records**; the placement coin stays hidden.
+
+For each preparation/seam setting, equal endpoint occupations give current
+zero. Unequal endpoints give current zero or the signed occupation difference,
+each with probability one half under the declared native rule. Freshly
+preparing the same known state and repeating until both current values occur
+therefore identifies that setting's mean exactly. This uses the supplied fair
+coin law; observed frequencies do not establish fairness or estimate the mean.
+Addressed seams, preparation/reset and faithful current access are explicit
+services.
+
+There are 250 deterministic settings and 110 two-outcome settings. The latter
+have a cap of 24 native attempts each. If every fresh coin is fair conditional
+on the past, the probability of any timeout is at most
+`110 * 2^(1-24) = 55/4194304`; at most 2,890 attempts execute. A failed setting
+remains an explicit timeout and supplies no calibrated geometry. The retained
+seeded execution uses **578 attempts**, succeeds, and retains its entire
+current transcript. The seed reproduces software branches; it does not certify
+independent laboratory entropy. The estimator checks current support and
+native consistency, not the authenticity of preparation services or reported
+cap metadata. The execution driver enforces its cap.
+
+The current means give the mean output columns `Y`; exact inversion recovers
+`T=Y S^-1=I-L/60` and the same rank-three structural Gram as the integer-load
+calibration. No exact probability table, target coordinates, doubled loads or
+new quantum extension enter this binary protocol. The family of preparations
+is a collection of reset trials, not one uninterrupted record history.
+
+The operator connection holds on that same quantum carrier. Write
+`N(f)=sum_v f_v N_v` for occupation observables. Each native C or E Kraus
+branch is a partial injection of binary configurations. Its pullback of a
+diagonal occupation has no off-diagonal entries, and complete branch summation
+gives the exact Heisenberg identity
+
+\[
+\Phi^*N(f)=N(Tf).
+\]
+
+Thus the inferred first-moment propagation holds for **every initial binary
+density**, including coherent preparations. This operator identity does not
+grant pathwise hidden occupations for a coherent unknown initial state.
+Known basis preparations and complete incident currents retain the existing
+pathwise occupation readback. The C current instrument supplies the calibration
+records; C and E share this unconditioned first-moment law while their other
+quantum readouts can differ.
+
+On the stationary uniform binary state, the centered occupation GNS inner
+product and all attempt-lag covariances follow from the same source:
+
+\[
+C_0=\frac5{33}Q,\qquad
+C_k=\frac5{33}T^kQ,\qquad Q=I-\mathbf1\mathbf1^T/12.
+\]
+
+The executable verifies the formula by propagating the complete 66-state
+native kernel at lags 0, 1, 2, 4 and 8. The Heisenberg identity proves it for
+every nonnegative integer lag. The constant-free occupation subspace of the
+observer's GNS space has dimension eleven; its slow spectral subspace has
+dimension three and carries the same spatial Gram. The stationary state is
+used to compute this covariance reference, not required by the calibration.
+These are exact source covariances, not a finite-data covariance estimator.
+
+The recovered response also has an exact graph propagation front:
+`(T^k)_ab=0` for `k<distance(a,b)` and is positive at the first allowed hop.
+Every port pair is checked. Individual columns are response-kernel probes,
+not fixed-total preparation interventions. An admissible zero-total contrast uses
+the binary preparations `{0,3}` and `{1,3}`. Their mean occupations at port 2
+differ by `0, 0, 1/1800, 41/27000` after zero through three native attempts;
+independent full-state propagation verifies those numbers. The parameter is
+uniformly scheduled native attempts, and distance is native seam hops.
+Neither quantity is identified with modular phase, local movement count,
+laboratory seconds or physical length by this result.
+
+The same calculation states the remaining dynamical boundary precisely.
+All eleven nonconstant mean modes have positive multipliers below one.
+For example, the stationary GNS squared norm of `N_0-N_1` decreases from
+`10/33` to `1459/5940` in one attempt. A state-preserving automorphism would
+preserve that norm, so it cannot equal this record-forgotten native step on
+these observables. A positive scalar clock rescaling likewise cannot turn
+their decaying means into undamped wave phases. This concerns the direct
+occupation/current readout. It does not rule out a Euclidean transfer
+reconstruction, a larger reversible description with retained records, or
+wave-like observations in a different justified sector.
+
 ### Transport through source refinement
 
 The response-recovered carrier Gram can be transported into the actual level-3
@@ -333,6 +425,7 @@ fixed. These are finite model results without an empirical comparison.
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.binary_dynamics --check model/relative_observer_geometry/binary_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/relative_observer_geometry
 ```
 

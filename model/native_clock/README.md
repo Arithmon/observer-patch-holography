@@ -20,6 +20,14 @@ count covariances recover all three native port-distance shells. These
 unit-independent relations are testable after an operational apparatus
 identification; choosing seconds is a convention, not the missing result.
 
+The [measured host-clock attachment](HOST_CLOCK.md) now records actual native
+execution against a monotonic host counter, calibrates one local clock on
+one block and checks a different clock on three untouched blocks. Their
+duration errors are 6.29%, 2.29% and 7.76% against a declared 25% engineering
+tolerance. A host-workload control preserves every native record and rejects
+that calibration in all four blocks. This is an executable apparatus check;
+it supplies no traceable lab calibration or identification with proper time.
+
 ## Why the model does not predict seconds
 
 The source contains integer attempt counts and dimensionless probabilities,

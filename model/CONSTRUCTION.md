@@ -101,6 +101,16 @@ measurement until such access and evolution are included in the observer
 contract. A valid construction need not be uniquely selected; its advertised
 observations must follow from its declared operations.
 
+The binary current calibration and quantum clocks share the same 66-state
+sector. Native propagation, occupation covariance and the slow spatial Gram
+can therefore be compared without using a doubled-load preparation. A
+separate current-fluctuation action is derived in one port's tick count, with
+an exact Palm-conditioned triangle variance `3m/5`. Actual host-counter
+records test a software clock correspondence with held-out blocks and a
+workload control. These constructions preserve their preparation, observation
+and timing domains; their finite success does not assert a physical spacetime
+or a traceable laboratory realization.
+
 ### Native action, federations and observer-relative clocks
 
 The [quantum federation construction](federated_quantum_sector/README.md)

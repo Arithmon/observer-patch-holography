@@ -20,10 +20,11 @@ construction realizes those domains.
 
 | Bridge | Exact finite result | Scope |
 | --- | --- | --- |
-| Records to spatial structure | One exact native shot per even preparation and seam, 360 shots total, reconstructs the unweighted response and rank-three slow-band Gram. Exposure normalization also recovers it from biased complete laws. | Known even-load preparations, complete records and coverage of every seam are required. Uniform seam weights and fair coins are unnecessary for this structural readout. |
+| Records to spatial structure | Current-only binary calibration reconstructs the response and rank-three slow-band Gram inside the quantum clocks' 66-state sector. A separate 360-shot even-load protocol removes coin fairness for its structural readout. | Binary calibration retains known preparations, resets, addressed seams and the fair native law; finite-cap failures remain recorded. The two protocols have different preparation and scheduling contracts. |
 | Spatial structure to clock records | On the uniform total-two carrier, the long-run covariance of local tick counts distinguishes the three native graph-distance shells. | The result concerns movement-count time and the stated native instrument; it is independent of a choice of seconds. |
 | Repair to history action | Each native endpoint instrument has an explicit unitary completion and a dimensionless Hermitian action whose event-boundary histories reproduce the complete record-conditioned process. | The environment and records are retained. This is an exact representation of the finite instrument, with no autonomous carrier Hamiltonian or relativistic interpolation inferred. |
-| Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. | An independently matched apparatus and paired laboratory records are required for an empirical clock comparison. |
+| Repair to local-clock current action | Native circulating currents have exact covariance `P/5` per tick of one port and a long-count Gaussian increment action with coefficient `5/2`. | Exact finite moments use the derived local-tick Palm preparation and carrier-wide current access. Finite blocks retain non-Gaussianity and dependence; the limit is not a relativistic field action. |
+| Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. Actual host-clock records permit one-block calibration and separate validation. | The measured software timing is an implementation comparison. Traceable lab accuracy and an identification with physical proper time require independent evidence. |
 
 These results make the finite construction more coherent and reduce particular
 input requirements. They do not establish that its observations admit the
@@ -123,15 +124,36 @@ native rule, so 360 executed shots, one per preparation and seam, recover the
 same metric without a probability-law oracle. This exact finite protocol has
 no native sampling error; laboratory preparation and detector errors require
 their own bounds. Port/seam labels disclose the incidence being probed.
-The calibration uses the existing integer-load preparation `2 e_p`, outside
-the binary sector used by the quantum clocks. These results share the native
-load rule and graph; they do not construct one quantum extension across both
-preparation domains. The calibration does not make the actual dynamics independent of its
+The even-load calibration uses `2 e_p`, outside the binary quantum sector.
+The [binary calibration](relative_observer_geometry/README.md) instead uses
+twelve spanning two-occupation preparations within that sector, recording only
+currents on addressed seams. It waits for the allowed current outcomes before
+applying the declared fair-coin probabilities. With cap 24, the 110 stochastic
+settings and 250 deterministic settings require at most 2,890 native attempts;
+the probability of any timeout is at most `55/4194304`. The retained execution
+uses 578 attempts. Successful reconstruction is exact in the specified model;
+preparation/reset access and the fair law are inputs, not conclusions of these
+finite samples. The protocol provides the same Gram within the clocks' domain
+without constructing a quantum extension of the integer-load preparation.
+
+Neither calibration makes the actual dynamics independent of its
 schedule: doubling one seam's weight splits the slowest positive response
 from multiplicity three to two. The inverse of the full unweighted response
 also gives an exact resistance geometry with centered Gram rank eleven.
 Thus the rank-three metric describes the chosen slow-band readout, rather
 than selecting the physical dimension of every possible observation.
+
+On the same binary sector, both C and E give the exact occupation response
+`T=I-L/60` for every initial density, including coherent inputs. With uniform
+stationary preparation the centered occupation covariance at native-attempt
+lag `k` is `(5/33) T^k Q`, with `Q=I-11^T/12` the centered port projection.
+Propagation vanishes before graph-hop distance.
+For preparations `{0,3}` and `{1,3}`, the difference at receiver port 2 is
+`0,0,1/1800,41/27000` at attempts zero through three. This connects spatial
+response and causal propagation in one domain. All nonconstant mean modes
+contract; a positive duration rescaling supplies no oscillatory phase for
+these direct observations. This restriction concerns the specified readout,
+not every quantum or Euclidean reconstruction of the process.
 
 The [native quantum action](native_action/README.md) instead acts on the full
 binary operator algebra. For specified seam channels `Phi_e`,
@@ -203,6 +225,19 @@ preparations, events and interventions realize these source operations.
 Timestamping a software run measures its host execution; it does not by
 itself identify the observer's clock with that of a physical system.
 
+The [host-clock attachment](native_clock/README.md) retains actual timestamps
+for two executions of the same 264,532 native attempts and 40,000 movements.
+One baseline block calibrates port 2; three disjoint blocks use port 3 and
+have duration-prediction errors between 2.3% and 7.8%, within the declared 25%
+engineering tolerance. Host-only work preserves the complete native record
+stream and rejects that same calibration on all four control blocks.
+Replay checks native currents, seeded choices, count boundaries and analysis;
+it cannot authenticate timestamps or establish traceable clock accuracy.
+The pseudorandom execution has no independent-randomness certificate, and
+the tolerance is not a statistical confidence interval. This is a measured
+software clock correspondence with a timing control, not empirical evidence
+that native ticks represent proper time or modular evolution.
+
 [Event circulation](event_circulation/README.md) derives circulation statistics
 from movement records in one continuing history. Its event-stationary Palm
 law is `mu(x)=d(x)/600`, with 30 configurations of moving degree 8 and 36 of
@@ -213,6 +248,27 @@ has exact variance `N/10` after `N` recorded movements, with cycle covariance
 rescaled event count, versus 99 in native-attempt count. This removes an
 independently inserted identity-holding frequency from that observable; it
 does not identify event count with modular flow or recover spacetime.
+
+The [local-clock current action](native_action/README.md) uses one port's actual
+movements as the clock and retains current records across the same carrier.
+Its local-tick Palm preparation is obtained by a specified herald with success
+`5/198` and retained failure `193/198`. Exact stopped occupation identities give
+six carrier movements per local tick on average and cycle-current covariance
+`P/5`, where `P` projects onto the graph's circulation subspace. Triangle
+circulation has mean zero and variance `3m/5` after `m` local ticks, without
+independent blocks or an independent oscillator. A uniform waiting-tail bound
+justifies stopping; finite fourth moments and adjacent squared-current
+dependence exclude an exact independent Gaussian block law.
+
+For the long-count Gaussian limit, a finite partition has increment action
+`(5/2) sum ||delta y||^2/delta u` on that cycle subspace, with `u` the rescaled
+local tick count. The coefficient follows from repair and the observed clock.
+It is a fluctuation action, not a spatially refined relativistic action. The
+execution checks herald failure and a fixed two-attempt observation window;
+the infinite-stop statement is a separate analytic theorem. Record-controlled
+seam selection changes the finite law, so that stationary action is not
+silently reused after feedback. The host-clock capture has a different initial
+preparation and does not test this exact Palm-conditioned variance formula.
 
 The [joint clock process](joint_clock_process/README.md) gives a full quantum
 memory identity for every retained outcome word, intervening instrument and
