@@ -3,15 +3,15 @@
 The balanced mixer used by the [native interface](../native_interface/README.md)
 can be implemented by **34 pulses of the existing source compiler**, using
 three local seam qubits and leaving six spectator qubits untouched. The
-earlier construction no longer needs an independently supplied balanced gate
-once the compiler's coherent proper-code services are admitted. The balanced
+balanced gate is implemented through the compiler's coherent proper-code
+services. The balanced
 angle remains a chosen experimental operation; this does not select it from
 A1--A3 or produce coherence using committed native repairs alone.
 
 One additional source `Z` pulse gives the imaginary phase quadrature. The
 resulting native coin/current read distinguishes two conjugate phase mixtures
-with ideal plus probabilities **one and zero**; the earlier real apparatus
-gave one half for each. These are finite conditional model predictions.
+with ideal plus probabilities **one and zero**; the real-only apparatus
+gives one half for each. These are finite conditional model predictions.
 There are no new laboratory observations in this packet.
 
 ## Why the same source suffices

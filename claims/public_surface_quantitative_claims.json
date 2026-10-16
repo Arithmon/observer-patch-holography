@@ -809,7 +809,7 @@
       ]
     },
     {
-      "path": "model/observer_prediction_audit/README.md",
+      "path": "model/readout_controls/README.md",
       "heading": "## An action-independent empirical comparison",
       "label_column": "Fixed comparison",
       "comparison_column": "Result",
@@ -831,7 +831,7 @@
           }
         },
         {
-          "label": "Minimum probability RMSE across the earlier 707 positive-duration means, from origin identities alone",
+          "label": "Minimum probability RMSE across the 707 positive-duration means, from origin identities alone",
           "role": "structural_non_discriminating",
           "lane": {
             "kind": "registry_claim",

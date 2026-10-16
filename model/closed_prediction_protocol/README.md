@@ -1,13 +1,12 @@
 # A finite sequential native-law prediction protocol
 
-The earlier [native-law test](../observer_prediction_audit/README.md) started
-every trial in exactly `I66/66` and compared independent trial laws. This
-packet replaces those premises with **finite unread native preparation on
-the same continuing carrier**, and bounds the resulting dependent record
-sequence. It uses the existing mixing theorem, native phase interface and
-source mixer. The new attachment is the complete preparation, memory and
-decision-error accounting; the underlying coherence predictions were
-already derived.
+This protocol uses **finite unread native preparation on the same continuing
+carrier** and bounds the resulting dependent record sequence. It combines the
+mixing theorem, native phase interface and source mixer with complete
+preparation, memory and decision-error accounting. Its
+[ideal product-law comparison](../readout_controls/README.md) defines the
+reference likelihoods; the actual trials need neither exact reset states
+nor independence.
 
 The locked design uses **379 discarded native attempts before each of
 3,927 trials**, with three unread attempts inside each useful phase probe.
@@ -131,8 +130,8 @@ The design rule was fixed before any future observations: search unread
 probe counts one through eight and minimize the worst-case total native
 attempt count, including every preparation and failed trial. It selects
 three unread attempts. This is optimal only within that declared finite
-menu, not among all possible observer experiments. The old four-attempt,
-3,579-trial ideal result is unchanged.
+menu, not among all possible observer experiments. The separate four-attempt ideal product-law design requires 3,579 trials;
+it has a different error budget and does not include this preparation cost.
 
 The useful-branch matching probabilities at three attempts are
 `341/432` for C and `1343/2000` for E. The failed-herald probability is
@@ -149,9 +148,9 @@ native cost is 1,494,640; the actual dependent experiment need not have
 exactly that expectation. The certificate executes only the two-trial
 checks described above, not this entire sampled campaign.
 
-## What is now derived, and what remains an input
+## Derived consequences and interface inputs
 
-Exact stationary preparation and exact trial independence are no longer
+Exact stationary preparation and exact trial independence are not
 premises of this finite test. The native repair law supplies a quantitative
 preparation operation, and the continuing-state protocol has a complete
 sequential error bound. The source compiler supplies the chosen mixer once

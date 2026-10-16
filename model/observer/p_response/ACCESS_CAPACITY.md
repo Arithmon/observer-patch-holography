@@ -1,6 +1,6 @@
 # Detector access and the conditional capacity budget
 
-Interface contract, 12 October 2026. This note separates the apparatus
+This interface contract separates the apparatus
 that transcribes a native current, the actuator that consumes its detector
 bit, and the richer audit record.
 

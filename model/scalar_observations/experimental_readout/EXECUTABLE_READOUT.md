@@ -12,7 +12,7 @@ of [McGarry et al.](https://arxiv.org/abs/2603.04744v1), deposited under
 [DOI 10.5281/zenodo.18752287](https://zenodo.org/records/18752287).
 This is an executable, calibrated prediction for physical measurements
 excluded from the parameter fit. The public data had already been examined
-in the earlier [axis-factorization comparison](README.md), so it is a
+in the [axis-factorization comparison](README.md), so it is a
 retrospective test rather than a prospective or blinded prediction.
 
 ## Retained result
@@ -92,8 +92,9 @@ executed operations.
 The million-pulse operations use fixed blocks of at most 4,096 native pulses
 for host contraction. The shared compiler's polar thresholds are unchanged:
 they apply to every executed block and to the product of the corrected blocks.
-The former whole-word raw defect cap of `1e-10` and polar correction cap of
-`5.1e-11` no longer constrain the complete raw product or its total correction.
+The `1e-10` raw-defect and `5.1e-11` polar-correction guards apply to
+individual blocks and the corrected-block product; they do not bound the
+complete raw-word defect or accumulated correction.
 Both the complete raw product and the final corrected product must pass the
 `2e-10` phase-sensitive target gate. The receipt reports accumulated numerical
 corrections and raw drift. Blocking preserves the requested source word and
@@ -125,7 +126,7 @@ direction. The two calibrated models also have different occupation errors.
 
 The RMSE is descriptive. Calibration-parameter uncertainty is not propagated,
 and the deposited aggregate means do not authenticate accepted shot counts
-or apparatus errors. The earlier axis-product confidence calculation does
+or apparatus errors. The axis-product confidence calculation does
 not apply to this different two-parameter fit. The laboratory observations
 remain conditional on its preparation selection, even though this executable
 finite preparation has no discarded branch.

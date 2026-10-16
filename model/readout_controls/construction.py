@@ -14,9 +14,9 @@ FOLDER = Path(__file__).resolve().parent
 SOURCE_PATHS = tuple(sorted(set((*detector_source.source_bindings(), *compiled.SOURCE_PATHS,
     'model/calibrated_measurement/bounds.py', 'model/anharmonic_observations/data.py',
     'model/anharmonic_observations/provenance.json',
-    'model/observer_prediction_audit/__init__.py', 'model/observer_prediction_audit/__main__.py',
-    'model/observer_prediction_audit/construction.py', 'model/observer_prediction_audit/readout.py',
-    'model/observer_prediction_audit/prospective.py', 'model/observer_prediction_audit/protocol.json',
+    'model/readout_controls/__init__.py', 'model/readout_controls/__main__.py',
+    'model/readout_controls/construction.py', 'model/readout_controls/readout.py',
+    'model/readout_controls/prospective.py', 'model/readout_controls/protocol.json',
     *(f'model/anharmonic_observations/data/{name}' for name in readout.data.PUBLISHED_MD5)))))
 
 
@@ -26,7 +26,7 @@ def run():
     discrimination = prospective.execute(protocol['prospective']['native_attempts'])
     # No observed response enters either executable prediction.
     empirical = readout.compare_data()
-    return {'schema': 'oph.observer_prediction_audit.v1',
+    return {'schema': 'oph.readout_controls.v1',
             'source_sha256': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in SOURCE_PATHS},
             'null_source_execution': source, 'empirical_null_comparison': empirical,
             'prospective_native_discrimination': discrimination,

@@ -7,14 +7,13 @@ standard quantum Gram-positivity constraint to the published oscillator
 characteristic measurements. The laboratory attachment assumes the reported
 Weyl displacement instruments and a common normalized preparation.
 
-The new result is a **state-independent constraint and a descriptive
+The result is a **state-independent constraint and a descriptive
 consistency diagnostic**, not a fitted trajectory or an OPH-specific
 empirical success. Both unresolved coordinate extents and both operator
-orders are retained. The previous Gaussian and anharmonic scores are
-unchanged. The input means have sampling and apparatus errors; they are not
+orders are retained. The Gaussian and anharmonic comparisons retain their separate scores. The input means have sampling and apparatus errors; they are not
 asserted to be exact characteristic values.
 
-## The reused theorem and the new attachment
+## Positivity theorem and instrument attachment
 
 For any normalized positive state functional and unitaries `U,V`, write
 `a=<U>`, `b=<V>`. Positivity of the operator Gram matrix gives
@@ -55,7 +54,7 @@ Consequently `chi(u+iv)` lies in the **intersection** of disks centered at
 `exp(+iuv) chi(u)chi(iv)` and `exp(-iuv) chi(u)chi(iv)`, each with the radius
 above. Changing the unresolved coordinate direction swaps the two disks;
 it cannot justify selecting the order giving a smaller residual. This
-extends the earlier [collinear moment disk](../measurement_bounds/README.md)
+extends the [collinear moment disk](../measurement_bounds/README.md)
 to two noncommuting displacement directions. The disks are generally broad;
 they do not determine a unique interior mean.
 
@@ -124,7 +123,7 @@ authenticated accepted counts/raw trials needed to decide that question.
 
 ## What it means and next steps
 
-The preparation-specific Gaussian relation can now be checked alongside a
+The preparation-specific Gaussian relation can be checked alongside a
 weaker constraint applying to every state measured by the declared Weyl
 instruments. This helps separate a failure of Gaussian modeling from a
 failure to interpret noisy means as exact quantum expectations. It does

@@ -11,7 +11,7 @@ This adds a quantum and complete-history extension to the existing
 [density-only propagation bound](../federated_observer/SCALING.md). It reuses
 the [signed-difference theorem](../observer/QUANTUM_MIXING.md) and
 [actual federation instruments](../federated_quantum_sector/README.md);
-the general block formula is not a new result. The new attachment supplies
+the general block formula is reused. The attachment supplies
 a local action representation, an observational truncation theorem and a
 conditional local-limit construction for the full quantum process.
 
@@ -41,13 +41,13 @@ h_e = I-Phi_e,                 H_native = sum_e h_e,
 Phi = I-H_native/M.
 ```
 
-The endpoint audit constructs orthogonal projectors such that
+The endpoint calculation constructs orthogonal projectors such that
 `h_e=P_1+(1/2)P_half` for C and `h_e=P_1` for E. Each term is positive and
 acts only on the two endpoint operator factors. These facts hold on the
 full binary tensor algebra, including coherences between number sectors.
 The identity is a common zero vector, so the local operator is frustration
 free. Its kernel need not be one dimensional: vacuum/full coherence remains
-fixed on the unrestricted algebra. The earlier fixed-number uniqueness
+fixed on the unrestricted algebra. The fixed-number uniqueness
 theorem has a narrower domain.
 
 The signed-difference decomposition makes the action explicit. For a matrix
@@ -241,7 +241,7 @@ This conditional thermodynamic construction does not require a new larger
 elementary carrier. It does require the graph neighborhoods, source
 instruments, initial restrictions and observer access maps to agree. The
 pinned screen refinements have not been shown to obey those hypotheses;
-their earlier coarse-graining obstruction remains. The result supplies no
+their coarse-graining obstruction applies. The result supplies no
 Lorentz symmetry, continuum dimension, or physical identification of `s`.
 Those require a further observational correspondence and scaling argument.
 

@@ -1,6 +1,6 @@
 # P-dependent electromagnetic observation and native feedback
 
-12 October 2026. Conditional hardware design and executable finite protocol.
+Conditional hardware design and executable finite protocol.
 
 **This implements the connection: closure pixel P → electromagnetic
 charge → a recorded binary observation → the next native repair.** P changes

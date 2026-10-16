@@ -7,7 +7,7 @@ Their states, interactions and physical interpretations remain separately
 declared programs. Sharing an interpreter establishes a common operational
 interface; agreement with nature has to be measured for each physical model.
 
-The [complete numerical certificate](COMPLETE_CERTIFICATE.md) now bounds the
+The [complete numerical certificate](COMPLETE_CERTIFICATE.md) bounds the
 shared runtime's native/work output against its exact finite and infinite
 prepared-history targets. It covers both native laws, active and passive
 logical memory, all raw records and arbitrary logical/reference inputs.
@@ -17,9 +17,8 @@ outside this prepared-work contract.
 
 The retained comparison covers all **125 positive-time observations and five
 zero-time endpoints** of the existing anharmonic experiment. Its position
-estimator RMSE is **0.2876427868**, preserving the earlier prediction and its
-discrepancies. The principal gain is a complete executable observer path with
-explicit state, records, access and replay contracts. This result does not
+estimator RMSE is **0.2876427868**, with material empirical discrepancies.
+The runtime provides explicit state, record, access and replay contracts. This result does not
 establish exact empirical agreement, an OPH-specific physical discriminator,
 or completion of the [physical-model target](../CONSTRUCTION.md).
 
@@ -276,7 +275,7 @@ for each supplied preparation and endpoint:
 4. Compute the reported finite-difference position estimator from the
    accepted spin branch, using the detector setting actually executed.
 5. Seal all predictions before loading later experimental response values,
-   then compare them with the deposited table. The earlier executor's
+   then compare them with the deposited table. The `anharmonic_transfer` executor's
    receipt is loaded only afterward as an implementation comparison.
 
 For detector coordinate `h=0.4`, the reported quantity is
@@ -316,7 +315,7 @@ matrices; the compact retained report stores their record laws, masses and
 purity diagnostics rather than those matrices.
 
 The unchanged RMSE does not remove substantial discrepancies in the
-[earlier empirical comparison](../anharmonic_transfer/README.md). The
+[anharmonic empirical comparison](../anharmonic_transfer/README.md). The
 same apparatus law can be described by conventional quantum mechanics, so
 matching its execution does not distinguish OPH from that description.
 The empirical target is a reproducible observation law with controlled

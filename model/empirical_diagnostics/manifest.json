@@ -11,7 +11,7 @@
   ],
   "description": "Six complete native preparation/readout predictions, an exactly single-probe-blind non-Gaussian control, and independent outward occupation certificates.",
   "files": {
-    "README.md": "2cbb47d8a02167169bfa448cb8f91921f6100ff00477cb26b1aca2a94aedec5c",
+    "README.md": "96369f6f11a62058f8f9553ab2ecf7fc755951b7435eb249e75654c42937b243",
     "__init__.py": "282d23c35edf3490493c4eb4f87287c9de53290d5dbce6aa73384e968ebb256a",
     "__main__.py": "8caa8e281b4a538dd70ebf8690b7ba897220f4504a3c6ca18dcc2901fbed14c0",
     "experiment.py": "dff4e5c8de16739026bc0cfdbe70ba64cc30cb725c5c2cac9d2ab157b90a2904",

@@ -1755,7 +1755,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "69a8356b64c5f39809471e9c89ec5ae867605c5fa5efabccd15c2a902e4d1cb7"
+        "original_claim_sha256": "b919a1c1d969e67c3d58428dcbd8bf9e697be3f8a420cfd39ece8921af48cc03"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [

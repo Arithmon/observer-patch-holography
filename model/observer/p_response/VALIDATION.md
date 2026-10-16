@@ -1,6 +1,6 @@
 # Validation of the native-record electromagnetic adapter
 
-Mathematical validation, 12 October 2026. The P-closure output
+The P-closure output
 and availability of designed hardware are explicit inputs. The question
 here is whether their composition gives a real, testable response of the
 declared finite model, with its records and controls kept explicit.

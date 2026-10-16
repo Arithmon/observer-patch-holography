@@ -1,16 +1,15 @@
 # One physical detector across an interacting spatial family
 
-**Status update, 14 October 2026.** The spatial argument below and its original
-[receipt](results.json) retain their original scope. The subsequent
-[occupation derivation](OCCUPATION_DERIVATION.md) and
-[separate receipt](occupation_results.json) supply the comparison left open
-in Section 6 for the principal smooth history, and certify an unrestricted
-interaction-dependent record event. The original spatial bound alone still
+The spatial and occupation comparisons have distinct scopes. The spatial
+[receipt](results.json) bounds the fixed-band spatial discretization.
+The [occupation derivation](OCCUPATION_DERIVATION.md) and its
+[receipt](occupation_results.json) certify the principal smooth history and
+an unrestricted interaction-dependent record event. A spatial bound alone
 does not control occupation error.
 
 This construction fixes the physical region, field band, initial preparation,
 detector smearing, feedback and Hamiltonian model-time intervals before
-comparing spatial grids. Its new result is an interacting comparison of the
+comparing spatial grids. It gives an interacting comparison of the
 **complete observation history** within that common domain. It reuses the
 twelve-port source compiler and the complete smooth-instrument method in
 [the common-source construction](../common_source/SMOOTH_REFINEMENT.md).

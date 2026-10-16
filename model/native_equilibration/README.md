@@ -37,7 +37,7 @@ complete record laws cannot exceed the state trace distance. Conditioning
 on a rare successful herald can amplify that error; the same unconditional
 allowance cannot simply be assigned to the conditional law.
 
-The new attachment verifies the retained federation graph and gives an exact,
+The graph certificate verifies the retained federation graph and gives an exact,
 conservative gap certificate without relying on a numerical eigenvalue.
 If `D` bounds its diameter, the range/path and variance bounds give
 `lambda_1 >= 4/(V D)`. A breadth-first traversal supplies
@@ -72,13 +72,13 @@ matrix arithmetic; its numerical residuals are diagnostics, separate from
 the analytic error certificate. Independent small-graph tests enumerate all
 native matrix units, check the exact spectral identification numerically,
 and propagate an entangled untouched reference. No fresh Lean theorem is
-claimed. The new result is the executable preparation/observation error
-attachment, rather than a new general mixing theorem.
+claimed. The executable attachment supplies preparation/observation error bounds
+using the stated general mixing theorem.
 
 ## What this resolves, and what it does not
 
-Stationarity is no longer an arbitrary state choice **within this connected
-fixed-total unread regime**: the law has a unique attracting state there.
+**Within this connected fixed-total unread regime**, the law has a unique
+attracting stationary state.
 An experiment may prepare it approximately with a declared error budget.
 Exact stationarity at a finite attempt count is not asserted. Disconnected
 graphs, conserved totals, preparation records and adaptive schedules change

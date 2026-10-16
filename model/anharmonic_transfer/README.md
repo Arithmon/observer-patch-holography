@@ -8,20 +8,15 @@ observations are retained. The experiment is McGarry et al.,
 [*Programmable quantum simulation of anharmonic dynamics*](https://arxiv.org/html/2603.04744v1),
 with [published data](https://zenodo.org/records/18752287) under CC-BY-4.0.
 
-The [15 October audit](../audit_20261015/README.md) adds a stronger,
-retrospective effective-Hamiltonian comparison and examines the unresolved
-measurement normalization. Its results supplement this frozen prediction.
-The replay checker verifies derived refinement summaries against each run's
-predictions: subtraction and conversion to position units can amplify portable
-floating differences beyond the single-prediction tolerance. Underlying
-predictions use the original `2e-10` tolerance. The numerical stability repair
-and exact shorter source words described below regenerate the live receipt
-while retaining the apparatus law and frozen calibration. The dated audit
-uses its own immutable snapshot of the original receipt.
+The [identifiability checks](../identifiability_checks/README.md) provide an
+independent effective-Hamiltonian comparison and characterize the unresolved
+measurement normalization. Replay verifies derived summaries against each
+run's predictions and uses the fixed `2e-10` tolerance for primitive floating
+predictions. Calibration inputs are immutable, independently authenticated
+payloads.
 
-## What changed in the executable model
+## Executed environment channel
 
-The previous implementation inserted an analytic number-dephasing multiplier.
 Here a positive finite classical draw selects one of sixteen phase rotations,
 and **every phase rotation is contracted from native source words**. Averaging
 these executed branches yields the finite environment channel. The Gaussian
@@ -31,7 +26,7 @@ infer the laboratory's noise mechanism or correlation time.
 For each requested trial the computation is:
 
 1. Prepare the supplied displaced thermal family through native number and
-   displacement words. The primary uses the earlier zero-time scan's
+   displacement words. The primary uses the separate zero-duration scan's
    `|alpha|=1.0081292326480422`, `nbar=0.13314125172459518`, changing only the
    declared initial side or centre.
 2. Execute the full detuned spin–oscillator pulse sequence, with the selected
@@ -41,7 +36,7 @@ For each requested trial the computation is:
    the native pointer instrument and retain all four joint spin/detector
    probabilities. Only the published comparison conditions on spin down.
 4. Convert the conditional detector mean into the paper-described two-point
-   estimator used for comparison with the deposited values. An earlier snapshot never resets a later trial.
+   estimator used for comparison with the deposited values. Each trial retains its declared preparation and complete selection law.
 5. Seal every prediction, including controls and numerical refinements,
    **before loading positive-time outcomes for scoring**.
 
@@ -246,12 +241,9 @@ MPLCONFIGDIR=/tmp/oph-mpl python -m model.anharmonic_transfer.plot
 The [protocol](protocol.json), [source derivation](DERIVATION_SOURCE.md),
 [finite environment derivation](DERIVATION_ENVIRONMENT.md) and
 [byte-level provenance](provenance.json) specify the experiment and its limits.
-Frozen calibration snapshots preserve the exact earlier receipt bytes used
-as preparation inputs; refreshing a live replay does not change those inputs.
-The shared Hamiltonian pulse arithmetic is updated as described below.
-An accompanying maintenance fix checks an existing narrow rational interval
-using high precision instead of platform-dependent binary64 rounding; its
-mathematical certificate is unchanged.
+Calibration snapshots fix the preparation inputs independently of live replay.
+Narrow rational intervals are checked at high precision. These are numerical
+verification contracts, separate from physical apparatus error.
 
 Replay validates each receipt's exact pre-scoring seal and each conditional
 certificate against its own retained acceptance. It also recomputes every
@@ -291,14 +283,13 @@ metadata reports both representation changes and the restored defect.
 These operations represent ideal words numerically; they do not cancel
 physical service errors or certify floating precision.
 
-The audited exact shortcuts are now used in production: controlled occupation
-parity uses two native pulses, including its scalar phase, and number drift
-uses one scalar pulse plus one Z pulse per occupation bit. At dimension 64
-these replace 2,054- and 838-pulse words with 2- and 7-pulse words,
-respectively. Full-matrix tests include the highest occupations and global
-phase. Live word hashes and resource receipts are regenerated; frozen
-calibration and dated-audit input bytes remain unchanged. Dense basis words
-still dominate cold compilation.
+Controlled occupation parity uses two native pulses, including its scalar
+phase. Number drift uses one scalar pulse plus one Z pulse per occupation bit.
+At dimension 64 these words use 2 and 7 pulses respectively, compared with
+2,054 and 838 for their generic diagonal compilations. Full-matrix checks
+include the highest occupations and global phase. Source hashes and resource
+receipts bind the implemented words; calibration input bytes are fixed.
+Dense basis words dominate cold compilation.
 
 The repository-wide verifier shares parameter-keyed source compilation caches
 between the two empirical CLIs. Both execute their full canonical prediction,

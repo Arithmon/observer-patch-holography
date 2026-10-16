@@ -8,7 +8,7 @@ import pytest
 
 from ..native_interface import construction as interface
 from ..native_quantum_history import construction as quantum
-from ..observer_prediction_audit import prospective
+from ..readout_controls import prospective
 from ..primitive_observer import runtime
 from . import construction as c
 

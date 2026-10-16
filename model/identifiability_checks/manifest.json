@@ -1,0 +1,19 @@
+{
+  "description": "Exact identifiability counterexamples, finite algebra checks and an independent supplied-Hamiltonian empirical comparator.",
+  "files": {
+    "README.md": "62108f6ff6bbcc9ff933b60d653b56be27f22ab59e8b8f186d5575b32a45b6b9",
+    "architecture_counterexamples.py": "ec050d4977115a2f87714ced64735b5312be7c9a4d8ab10d200b483548fdfe72",
+    "architecture_results.json": "f9233c80b26cc8bb3a8215ea0ca7f9000a5305a07eb1d59b8741e923ae4c5a72",
+    "data/transfer_reference.json.gz": "3bb5eff3b40d89a120c1ec9b823a620aa83f63d9d1373fe5273e45b7c4ffd033",
+    "empirical_probe.json": "f68a7b5236fba7b4fe8225dd39bbca75a5a4f0e8c4c9001133c026c7007559fe",
+    "empirical_probe.py": "316e14066183d980b4b1106c4fa651a3ed701bfe7e15806b7f377a304992709b",
+    "test_math_probes.py": "9d0aedfeb050390d3861b9d412ce7472a4f6fb489cd62ff4e5ea013bfb22a2d9",
+    "test_receipts.py": "ee235a3b669aabcc1fe6310f150ab0dc3f31e252405e5087dd61ea970507d9b4"
+  },
+  "reference_input_commit": "93e59bfb8de1501174c08c800912635159ae8615",
+  "reproduce": [
+    "python -m pytest -q -W error model/identifiability_checks",
+    "python -m model.verify --hashes-only"
+  ],
+  "schema": "oph.identifiability_checks.manifest.v1"
+}

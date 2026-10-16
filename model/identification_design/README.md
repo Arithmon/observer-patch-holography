@@ -1,7 +1,7 @@
 # Choose observations that can identify the action
 
-This packet turns the [calibration ambiguity found in the audit](../audit_20261015/ARCHITECTURE.md)
-into an inexpensive executed intervention. The four-level calibration cannot
+This experiment tests the [calibration ambiguity](../identifiability_checks/README.md#action-and-geometry-ambiguities)
+with an executed intervention. The four-level calibration cannot
 see `B(N)=binom(N,4)` at any precision. A coherent preparation involving level
 four, followed by a phase-sensitive read, can see it. The retained native
 witness uses **41 pulses per trial** and separates its two supplied candidate
@@ -24,7 +24,7 @@ Consider a specified finite background `H0` and the enlarged action family
 \]
 
 This is a declared family of diagonal corrections, including a cubic number
-term `binom(N,3)` and the audit's positive local `B(N)`. It is not a
+term `binom(N,3)` and the positive local `B(N)`. It is not a
 parameterization of every interaction or a source derivation of `H0`.
 The number basis and allowed coherent preparation/read services are trusted.
 
@@ -164,7 +164,7 @@ single finite time can alias phase differences: the witness loses all
 separation at `t=2*pi`. Independent times or bounded parameter intervals are
 required for broader identification.
 
-## How this shortens the next step
+## Identification scope and remaining requirements
 
 Use exact response nullspaces to decide which interventions to add before
 running large coupled reconstructions. Explore candidate laws with a checked
@@ -172,7 +172,7 @@ semantic evaluator, then execute source words for locked discriminators.
 The present witness needs neither a large eigenbasis compilation nor another
 high-precision replay of probes whose response is identically zero.
 
-The next coupled-field step is to apply the new coherent local preparations
+Coupled-field identification requires applying the coherent local preparations
 and phase reads while the full supplied field evolves, and compare candidate
 laws at times with controlled bias and sampling cost. The 19-trial guarantee
 above belongs only to the displayed commuting component pair. It cannot be
@@ -183,7 +183,7 @@ This makes the action-selection obligation testable; it does not resolve it
 from A1--A3. A source-derived result still needs a source/interface condition
 that excludes an alternative, with a counterexample when that condition is
 removed. The [native source-selection tests](../SOURCE_SELECTION.md) are the
-appropriate lane for that attachment. The audit's planar cube realization
-also remains a valid metric negative control: the new energy probes do not
+appropriate lane for that attachment. The planar cube realization
+also remains a valid metric negative control: the energy probes do not
 derive three spatial dimensions or identify the physical meaning of graph
-distance. No existing frozen receipt is changed.
+distance. The counterexample and detector laws have distinct scopes.

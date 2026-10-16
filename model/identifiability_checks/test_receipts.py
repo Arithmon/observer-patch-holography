@@ -1,4 +1,4 @@
-"""Replay audit evidence while keeping provenance and structures exact."""
+"""Replay comparison evidence while keeping provenance and structures exact."""
 from __future__ import annotations
 
 from copy import deepcopy
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from model.audit_20261015 import architecture_counterexamples, empirical_probe
+from model.identifiability_checks import architecture_counterexamples, empirical_probe
 
 
 FOLDER = Path(__file__).resolve().parent
@@ -60,7 +60,7 @@ def test_empirical_receipt_binds_probe_and_all_external_inputs():
     paths = {
         'audit_probe': FOLDER/'empirical_probe.py',
         'transfer_data': MODEL/'anharmonic_transfer/data/asymmetric_wells_expectation_x.csv',
-        'transfer_receipt': FOLDER/'data/transfer_receipt_93e59bfb.json.gz',
+        'transfer_receipt': FOLDER/'data/transfer_reference.json.gz',
     }
     expected = _read('empirical_probe.json')['input_sha256']
     assert expected.keys() == paths.keys()
@@ -89,11 +89,11 @@ def test_frozen_transfer_rejects_corruption_and_changed_original_bytes(tmp_path,
         empirical_probe.frozen_transfer_bytes(path)
 
 
-def test_empirical_run_uses_baseline_when_live_transfer_changes(tmp_path, monkeypatch):
+def test_empirical_run_uses_fixed_reference_when_live_transfer_changes(tmp_path, monkeypatch):
     data = tmp_path/'anharmonic_transfer/data/asymmetric_wells_expectation_x.csv'
     data.parent.mkdir(parents=True)
     data.write_bytes((MODEL/'anharmonic_transfer/data/asymmetric_wells_expectation_x.csv').read_bytes())
-    (data.parent.parent/'results.json').write_text('A later live receipt must not replace this dated audit input.')
+    (data.parent.parent/'results.json').write_text('A live receipt must not replace this fixed comparison input.')
     monkeypatch.setattr(empirical_probe, 'MODEL', tmp_path)
     monkeypatch.setattr(empirical_probe, 'target_law',
                         lambda dimension, alpha, thermal, phase, times: ([0.]*len(times), 0.))

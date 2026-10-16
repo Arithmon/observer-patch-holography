@@ -1,10 +1,9 @@
 # OPH model construction from local repair
 
 This is the construction guide for the [live model implementation](README.md).
-It replaces the former model-search ledger with the current contracts,
-results and next connections. The [candidate register](CANDIDATES.md) gives
-law-level comparisons; the generated [premise map](PREMISES.md) connects
-those constructions to the existing theorems.
+The [candidate register](CANDIDATES.md) gives law-level comparisons; the
+generated [premise map](PREMISES.md) connects those constructions to the
+existing theorems.
 
 **Build the simplest shared repair process that satisfies the required
 constraints.** A finite implementation is complete when its declared
@@ -72,364 +71,224 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [primitive observer runtime](primitive_observer/README.md) executes
+complete instruments on mixed states, committed records, feedback and
+untouched references. Source-derived native dynamics and supplied physical
+benchmark programs use this same execution interface. Their preparations,
+clocks, interpretation maps and error budgets remain explicit.
+
+### Native action, federations and observer-relative clocks
+
+The [quantum federation construction](federated_quantum_sector/README.md)
+joins identical elementary carriers using the declared source wiring. Native
+Kraus maps preserve signed-difference operator blocks, including individual
+outcomes and reference correlations. Its complete cross-carrier experiments
+retain coherent interventions, all records and conditional quantum states.
+The [local action](native_action/README.md) is fixed by these instruments:
+`H_native=sum_e(I-Phi_e)`. Its positive local terms reduce to exclusion plus
+coherence killing. The original discrete transfer is `I-H_native/M`; the
+optional per-edge Poisson extension is `exp(-s H_native)`. This is a local
+Liouville action, not a selected relativistic Hamiltonian or physical clock.
+
+The same construction controls truncation of distant ports for complete
+local record, quantum and reference outputs. For an observed region A,
+maximum degree Delta and retained radius R, the Poisson-parameter error is
+at most `min(1, |A|(Delta s)^(R+1)/(R+1)!)`; the fixed-count bound is given
+separately. A conditional infinite-federation process follows on a fixed
+bounded-degree graph with compatible local states and operations. The
+[declared screen refinements](federated_observer/REFINEMENT.md) require
+compatible access and dynamics; graph rank or finite positivity alone does
+not establish a relativistic spacetime limit.
+
+The [local event clock](relational_event_clock/README.md) counts actual
+occupation changes at one observer port. Its stopped instrument retains
+remote repairs during the wait, finite timeouts and conditional quantum
+outputs. The [joint clock process](joint_clock_process/README.md) compares
+two such clocks and an observer-chosen field algebra on the same continuing
+cross-carrier history. Exact elimination of the hidden factor gives a
+record-conditioned quantum memory recurrence, valid with arbitrary untouched
+references. Completed events in this specified experiment admit a four-mark
+measure-and-prepare description; unresolved waits retain quantum information.
+Neither reduction identifies native attempts or event counts with modular
+flow. The [recovery contract](OBSERVER_RELATIVE_RECOVERY.md) specifies the
+remaining observational and clock correspondences.
+
+The [native field identities](common_source/NATIVE_FIELDS.md) derive exact
+continuity, current noise and mean diffusion under the uniform scheduler.
+[Quantum transfer](native_quantum_history/README.md),
+[record-clock laws](native_clock/README.md),
+[joint current/phase readouts](native_relational_readout/README.md),
+[replicated fluctuations](native_fluctuations/README.md) and
+[one-history circulation](native_circulation/README.md) provide additional
+controlled finite or fluctuation descriptions of that source. Their
+scheduler, accessible records and limit hypotheses are distinct. Replication
+is not a spatial refinement, and a Gaussian limit does not select a
+fundamental Gaussian field action.
+
+### Continuing measurement predictions
+
+[Native equilibration](native_equilibration/README.md) replaces an exact
+stationary preparation by a finite sequence of discarded repairs within a
+declared fixed-number sector, uniformly over untouched references. The
+[sequential prediction protocol](closed_prediction_protocol/README.md)
+applies that preparation before each trial on the same continuing carrier.
+It bounds the dependent complete transcript without an IID or exact reset
+premise. The locked design uses 379 discarded attempts before each of 3,927
+trials and three unread attempts in each useful phase probe. Its exact-source
+wrong-candidate probability is at most 0.75%; a separate, unauthenticated
+physical service allowance would suffice for a 1% target. Failed heralds
+remain trials. The producer executes two consecutive trials per candidate
+and reference controls, not the entire proposed experimental campaign.
+
+The [native interface](native_interface/README.md) obtains the coherent
+readout from a source mixer, native herald and native pointer. The
+[compiled interface](compiled_native_interface/README.md) verifies the
+source control against its ideal target, including padding. Source matrix
+comparisons, floating execution diagnostics and physical device errors are
+separate. The [finite-law discriminator](predictions/README.md) and its
+[encoded realization](observer/source_discrimination/README.md) supply
+additional complete protocols under their own preparation and service
+contracts. Mean loads and native classical histories alone cannot select C
+from E. No public laboratory dataset is identified with these native-law
+experiments.
+
+The [measurement bounds](measurement_bounds/README.md),
+[empirical diagnostics](empirical_diagnostics/README.md) and
+[action-independent readout identities](readout_controls/README.md)
+constrain the relation between a declared apparatus and data. They do not
+supply an OPH-specific empirical confirmation. Missing raw counts are not
+inferred, and calibration is not refitted from held-out outcomes.
+
+### Supplied interacting work and quantum continuation
+
+The [common interacting source](common_source/README.md) carries electric
+flux, a charged CAR pair and two neutral scalar sites on one work register.
+Its matter readout controls a feedback operation; the scalar readout controls
+a native repair. The complete history retains 1,056 native/quantum records
+and their terminal states. Nonzero feedback contrasts have finite and
+[infinite-occupation certificates](common_source/INFINITE_HISTORY.md).
+The action, initial state, coherent services and Hamiltonian model time are
+declared inputs; compiling them does not identify native repair with that
+Hamiltonian. The [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)
+state the action and physical identification hypotheses.
+
+The [mixed-state continuation](common_source/OPEN_HISTORY.md) implements
+an explicitly supplied unobserved environment. Discarded phase draws occur
+at declared boundaries; their labels cannot enter feedback or postselection.
+It preserves visible histories, disturbed states, reference correlations and
+checkpoint continuation. Environment variance, scheduling and physical
+service errors remain inputs. The [typed protocol](common_source/COMPOSITION.md) and its
+[runtime](common_source/protocol.py) execute smooth reads and feedback without
+resetting the work register.
+[Quantum native continuation](common_source/QUANTUM_NATIVE.md) and
+[encoded recovery](common_source/ENCODED_MEMORY.md) attach full native
+instruments and active logical memory under explicit code-service contracts.
+
 The [native-clocked common observer](clocked_common_observer/README.md)
-uses a committed native current to trigger the existing interacting work's
-read-and-feedback suffix. Work evolves during the wait and is not prepared
-again at the tick. The 128-slot execution retains all 4,097 stopped/timeout
-outputs, with complete finite-target error at most `0.000019`, including
-the actual binary density arithmetic. All-input work-channel certificates
-justify composition from disturbed work states; an exact native tail
-bounds attempt-cap refinement. Resetting work and idling only the native
-register produce different, certified observation laws. The uniform native
-clock scheduler is distinct from the fixed-seam encoded-memory schedule.
-This connects an operational trigger to the same continuing finite work;
-it does not derive the work duration per attempt, physical services or an
-interacting occupation/spatial limit.
+uses an actual current event to trigger that work's read-and-feedback suffix.
+Work evolves during the wait. Its 128-slot execution retains 4,097 stopped
+and timeout outputs, with complete finite-target error at most 0.000019,
+including the specified binary arithmetic. All-input channel and tail bounds
+control the finite composition. Work duration per attempt, the supplied
+action and physical calibration remain separate inputs.
 
-The [direct numerical certificate](common_source/OUTPUT_CERTIFICATE.md)
-connects actual source-executed work outputs with the exact prepared-history
-proofs. All sixteen quantum blocks and their exact mass defect enter the
-comparison. It also proves that a fixed feedback intervention changes the
-infinite-history clock probability. The subsequent
+The [causality identities](common_source/CAUSALITY.md) control committed
+records and permitted intervention order. Error bounds apply to their stated
+instruments and preparation domains.
+The [complete-output comparison](common_source/READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+shows why agreement of one sign probability need not imply a close quantum
+output: the sharp detector has a long occupation tail. The [occupation refinement](common_source/OCCUPATION_REFINEMENT.md) and
+[smooth-detector refinement](common_source/SMOOTH_REFINEMENT.md) distinguish
+their pointer domains. The
+[smooth-history bound](common_source/SMOOTH_HISTORY.md) has a different
+instrument and a specified preparation contract. The
+[direct numerical certificate](common_source/OUTPUT_CERTIFICATE.md) and
 [complete observer certificate](primitive_observer/COMPLETE_CERTIFICATE.md)
-also bounds the shared runtime's computed native encoder, repairs and recovery
-around its actual work matrices. Both C/E laws and active/passive memory retain
-all raw outcomes; the bound is uniform over logical/reference input states.
-Work is independently prepared. Physical services and arbitrary-work-input
-channel errors remain separate.
+account for their actual executed arrays; neither is a physical service
+certificate. [Observer readouts](common_source/OBSERVER_READOUTS.md) and
+[thermal-clock comparison](common_source/THERMAL_CLOCK.md) retain the
+declared reference state, access and clock assumptions.
 
-The [primitive observer runtime](primitive_observer/README.md) executes both
-the common interacting observer and the separate laboratory apparatus through
-complete instruments on mixed states and retained records. Its native wrapper
-preserves raw repair outputs and protected-memory controls; observer access,
-GNS embeddings, modular diagnostics and a supported-region forecast use the
-same conditional work history. Its exact fixed-seam completion attachment
-identifies the binary native E channel with the declared entropy completion
-and controls the finite-event C/E difference. The construction does not
-instantiate the full refinement tower or identify a modular parameter with
-physical time. Distinct supplied apparatus programs remain distinct models.
+### Effective field benchmarks and empirical readout
 
-Further attachments derive [full quantum transfer](native_quantum_history/README.md),
-[record-clock laws](native_clock/README.md), their
-[joint first-current phase readout](native_relational_readout/README.md) and,
-under independent stationary replication, a [Gaussian history action](native_fluctuations/README.md) from
-the same binary native process. Complete coherent and signed-current readouts
-execute in the shared runtime. These additions retain their finite source,
-scheduler and interface contracts; a number of replicas is not a spatial
-refinement. The [additional laboratory probes](empirical_diagnostics/README.md)
-test preparation/readout ambiguities with controlled occupation errors, while
-their new observations and the physical calibration remain outstanding.
-
-The [one-history circulation](native_circulation/README.md) derives an
-additional Gaussian count limit without a product of independent observers.
-The [native interface](native_interface/README.md) reduces the earlier phase
-apparatus to a shared mixer plus native herald/readout records and exposes
-its reachability boundary. The [measurement bounds](measurement_bounds/README.md)
-constrain repeated readouts independently of a Gaussian preparation, while
-retaining calibration, finite-operation and sampling obligations.
-
-The common [mixed-state observer](common_source/OPEN_HISTORY.md) connects
-finite source environment operations to the existing continuing observer
-and corrected native memory. It executes all visible and raw native records,
-retains disturbed mixed outputs, preserves earlier record probabilities and
-resumes checked prefixes without resetting work. Temporal, occupation,
-Gaussian-channel and prepared noiseless comparison targets have separate
-explicit budgets. This completes that finite composition; calibrated
-physical services, native memory/record faults and a physical clock remain
-additional obligations.
+The [two-site source compiler](observer/source_scalar/README.md) executes
+preparation, evolution and both detector outcomes from source words, with
+complete occupation and splitting bounds. Its separate action and apparatus
+do not inherit another spatial family’s continuum result.
 
 The [shared scalar observations](scalar_observations/README.md) compare
-the same smeared-field detector, preparation, feedback and Hamiltonian model
-times across interacting spatial refinements. A fixed physical torus and
-seven-mode band give identical quartic interactions from grid size five;
-only the spatial gradient approximation changes. The four-level source law
-at grid size 65 has ideal TV error below 0.001427 relative to the same code
-with exact gradients. A separate finite-energy theorem proves unrestricted
-fixed-band spatial convergence through both measurements and feedback.
-The additional [occupation proof](scalar_observations/OCCUPATION_DERIVATION.md)
-and [receipt](scalar_observations/occupation_results.json) bound the
-principal four-level source's complete classical record law against the
-same seven unrestricted modes: ideal total-variation error is below 0.054,
-including spatial and temporal approximation. Numerical and physical service
-errors remain separate. The original refinement results and stronger-detector
-stress test are preserved; the latter's cutoff sensitivity exceeds its
-interaction contrast.
+complete field detector, preparation and feedback laws across a fixed-band
+spatial family. Their [occupation proof](scalar_observations/OCCUPATION_DERIVATION.md)
+and [receipt](scalar_observations/occupation_results.json) control projection
+onto finite source codes. The exact-gradient endpoint is
+`GalerkinParameters(grid=None)`: increasing quadrature resolution does not
+add modes. Extending the field needs additional modes, matched observation
+maps and controlled omitted-mode effects.
 
-For the supplied interacting and free actions, an auxiliary comparison uses
-six occupation levels in the unmeasured modes and twelve in the measured
-mode, with an exact factorization of the free spectators. It proves that
-the event "the two bits differ" changes in probability by more than 0.00008
-under the positive-current preparation, after both error budgets. That
-preparation has native probability 5/66, so the corresponding joint event
-also has a strictly positive difference with every native outcome retained.
-These auxiliary proofs are not larger source executions or empirical evidence.
-The band, action, clock units and physical parameter identification remain
-supplied or open under their stated contracts.
+The [relativistic scalar regulator](relativistic_scalar/README.md) executes
+an eight-site three-dimensional quartic action with an unrestricted-
+oscillator comparison. Its ideal record TV error is below 0.000928 at the
+stated finite parameters. The supplied positive mass gives a finite-box
+gap bound, and the free spatial family has a controlled Klein--Gordon limit.
+An interacting relativistic limit requires additional spatial/energy control
+and parameter matching. The [spatial interaction model](spatial_interaction/README.md)
+has controlled growing-volume observation laws and a nonzero interaction
+witness for a supplied repulsive Bose action. Growing a box at fixed spacing
+does not remove its spatial regulator.
 
-The [physical readout attachment](scalar_observations/experimental_readout/README.md)
-compares the same characteristic-function detector family with published
-zero-duration trapped-ion observations. Axes calibrate a Gaussian response
-relation and 100 off-axis points test it; per-spin-mean RMSE is 0.07639.
-The underlying files, mirrored-point exclusions, coordinate metadata conflict
-and all nominal conventions are retained. This is a retrospective component
-comparison on a postselected preparation, with conditional statistical
-coverage; it establishes no seven-mode dynamics, calibrated physical clock
-or OPH-specific empirical distinction.
+The [observer reconstruction](observer_reconstruction/README.md) recovers
+free propagation and finite geometry from executed detector laws and a
+specified reference-clock readout, with withheld predictions and controlled
+occupation errors. Its quadratic action and mode apparatus are supplied.
+A cube adjacency graph does not by itself determine physical dimension;
+the [identifiability checks](identifiability_checks/README.md) include a
+planar control and alternative actions invisible to a restricted apparatus.
 
-The subsequent [executable readout](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
-uses only two fitted preparation parameters, then actually contracts native
-preparation, rotation and smooth-detector words to emit the reserved binary
-probabilities. Its separate receipt retains both published coordinate scales
-and a rational 64-level occupation certificate for the complete measurement.
-Calibration uncertainty, source floating error and physical apparatus error
-are distinct. This supplies a direct source prediction under a declared
-laboratory model, without selecting that model's physical law from OPH.
+The [published readout comparison](scalar_observations/experimental_readout/README.md)
+calibrates a Gaussian response relation on zero-duration trapped-ion data;
+100 off-axis means test that relation with spin-mean RMSE 0.07639. The
+[executable detector](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
+contracts source preparation, rotation and detector words under the declared
+laboratory model. Published coordinate conflicts, postselection and
+normalization limitations remain explicit. This component postdiction
+establishes neither the seven-mode dynamics nor a physical clock.
 
-The [canonical scalar regulator](relativistic_scalar/README.md) advances the
-relativistic-field candidate to an eight-site three-dimensional quartic
-action with unrestricted-oscillator comparison. Its occupation approximations
-allow particle creation, execute source-compiled local operations and retain
-all 1,056 native/quantum histories at each cutoff. Exact factorial-weighted
-polynomial certificates bound the complete occupation error through both
-measurements and feedback. At 131,072 finite amplitudes and 32 temporal steps,
-the ideal source-to-untruncated record TV bound is below 0.000928. A separate
-bounded interaction witness has a strictly positive analytic margin.
-Strong convexity gives gap >= m for every untruncated finite spatial box,
-with m supplied; the observation protocol does not measure that gap.
-The free spatial family has a controlled Klein--Gordon limit. Matching
-interacting observation laws over a relativistic validity domain
-requires spatial/energy control and parameter matching, and is not closed
-by the free comparison or the finite-cell witness.
+The [occupation-control construction](occupation_control/README.md) bounds
+the continuous polynomial-path defect, occupation boundary, endpoint jumps,
+thermal initialization, displacement and pointer for the supplied pulse
+apparatus. It includes arithmetic under its stated IEEE-754 contract, not
+the separate native compiler or laboratory error. At 64 levels the case-a
+estimator radius is about 9.91e-8 at 0.4 ms, 0.0163 at 2 ms, 0.211 at 5 ms
+and 1.68 at 10 ms; the 32-level conditional bound is unavailable at the last
+two durations. Agreement between cutoffs is not an error certificate.
+The independently controlled unrestricted-versus-exact-finite radius can
+compose with a valid native execution bound.
 
-The [spatial interacting branch](spatial_interaction/README.md) extends one
-supplied repulsive Bose action over growing three-dimensional boxes, with
-local source-compiled propagation, retained Ramsey records and feedback.
-Its 27-, 125- and 343-site executions use the exact two-particle sector.
-Uniform splitting and boundary estimates bound complete observation laws,
-and an analytic interaction-deletion witness survives infinite volume with
-a positive margin. The full-Fock extension has gap m because the action
-contains the supplied positive mN term; the fixed-number histories do not
-measure it. This closes a spatial interaction/control milestone at fixed
-lattice spacing, not the relativistic continuum or common charged-field
-construction. Its source-to-infinite-history TV bound at 343 sites is below
-0.010183 before numerical and physical service errors.
+The [identification design](identification_design/README.md) computes the
+response rank and nullspace for a declared correction family. Four-level
+access cannot detect its `binom(N,4)` term; coherent levels four and five
+expose those directions, apart from the global-energy gauge. A 41-pulse
+source preparation and phase read distinguish two supplied actions, while
+occupation commitment before the read erases the distinction. The efficient
+sequence is to identify blind directions, choose a separating intervention,
+then compile its locked measurement. A component sampling bound does not
+transfer to a noncommuting field model or physical apparatus.
 
-The [finite executable specification](common_source/COMPOSITION.md)
-connects the common source's preparation, complete instruments, retained
-records, feedback, continuation and occupation refinement through one
-[typed runtime](common_source/protocol.py). The old sharp and smooth
-histories are programs of this engine and retain their comparison receipts.
-The new four-read program keeps the field through two smooth observations
-and later clock evolution, with source-word costs and complete-output error
-budgets. Both cutoffs d=2,4 execute all 4,224 joint native/quantum outcomes.
-This closes the smooth-read continuation and later model-time probe join;
-it does not transfer smooth moment bounds to the sharp detector.
+### Source execution and numerical contracts
 
-A separate [smooth-history certificate](common_source/SMOOTH_HISTORY.md)
-bounds the complete 16-output ideal finite/infinite comparison at d=2,4 for
-all three native currents, including the later feedback and gauge probe.
-It fixes the blank-gauge and scalar-vacuum preparation. Complete native and
-protected-memory attachments inherit that comparison under this preparation
-contract; arbitrary joint work inputs and physical service errors are outside it.
+Exact finite-code identities give controlled occupation parity in two native
+pulses and dimension-64 number drift in seven. They do not import unrestricted
+oscillator commutators at a cutoff. Parameter-keyed compilation caches share
+source words, never observed trajectories, fitted parameters or prediction
+outcomes. Canonical verifiers execute every declared calculation and
+fail on any violated contract.
 
-The [coherent native attachment](common_source/QUANTUM_NATIVE.md) implements
-the surrounding full-carrier C/E repairs with those source controls and
-executes the port permutation needed by the final selected seam. The
-first current, disturbed work state and final scalar feedback belong to one
-complete instrument, with arbitrary native/reference coherence and explicit
-raw padding and abort outcomes. Its supplied encoding, preparation, coherent
-services and physical calibration remain separate from this finite execution.
-The earlier classical native histories and their counts retain their scope.
-
-The [active encoded variant](common_source/ENCODED_MEMORY.md) compiles
-record-conditioned recovery after both native events, retaining the same
-work state between them. It protects the existing four-configuration logical
-qubit, including its reference correlations, and uses a matched passive
-schedule to test the need for recovery. This additional intervention has its
-own source cost. It neither restores arbitrary full-carrier coherence nor
-establishes noisy physical memory or the passive geometry/clock calibration.
-
-The [common interacting source](common_source/README.md) joins quantum
-electric flux, a charged CAR pair and two neutral scalar sites on the same
-work register. Native source words implement their noncommuting evolution,
-matter and scalar pointer instruments, and feedback controlled by a
-committed matter bit. The final scalar bit controls the next native repair.
-All 1,056 native/quantum histories retain their terminal quantum states.
-At scalar dimension 2 and 512 temporal steps per interval, an exact
-certificate places the ideal source-word scalar feedback contrast in
-`[-0.033297300667839,-0.030025660061775]`. This is an internal prediction
-of a declared finite model, with numerical and physical service errors
-excluded from the ideal interval. It supplies no independent empirical
-comparison or interacting spatial continuum bound.
-
-The same declared action also has a certified infinite-occupation feedback
-contrast **[−0.024045670143, −0.024043450955]** for zero native preparation
-current. The [infinite-history proof](common_source/INFINITE_HISTORY.md)
-includes the original free vacuum, unbounded interacting evolution, both
-recorded instruments and the listed state-approximation errors. It uses
-the actual coordinate half-line projector: taking the sign of a finite coordinate
-matrix is a different detector. A separate uniform number-moment theorem
-controls the finite-Hamiltonian family before that final read. The
-[complete-output audit](common_source/READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
-supplies certified finite-detector comparisons for the same zero-current
-preparation. At d=2 the full ideal source output is about 0.455 from the
-infinite sharp history in trace distance, despite the much smaller change
-in its single sign probability. Every output confined to the d=256
-occupation code has error above 0.122 for this prepared history.
-This answers the finite-detector comparison question for this preparation,
-with no spatial refinement or physical apparatus identification.
-
-The construction reuses the existing coherent source rather than claiming
-that a common abstract source was absent. Its [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)
-bind CAR, operator Gauss, record persistence and conditional expectations
-to actual finite operations. Writing and preserving records are separate
-interfaces. Exact hardware-inventory refinement and approximate occupation
-cutoffs have different algebraic maps. The declared action, prepared state,
-coupling and model-coordinate schedule remain physical construction inputs.
-
-The [observer readout bridge](common_source/OBSERVER_READOUTS.md)
-constructs the GNS representation of the actual observation state, obtains
-nontrivial modular flow on a specified scalar observer algebra, and
-executes a binary clock probe with that modular frequency. It retains
-every old record and every clock outcome. CP regional restrictions and
-the actual Hamiltonian's interaction graph provide a finite spatial
-interpretation under the declared factorization. The
-[interacting occupation analysis](common_source/OCCUPATION_REFINEMENT.md)
-supplies a moment/Duhamel bound before the final scalar read and a strong
-limit for the complete sharp instrument, including all three declared
-native currents and their native continuation. The separate finite-error
-enclosures including the sharp read use the zero-current preparation and
-both feedback settings; they do not inherit arbitrary-input uniformity.
-A growing spatial family, calibrated physical clocks and the gravitational
-readouts are separate remaining connections. The physical tower must carry these
-maps on one compatible family; its record fields alone do not establish them.
-
-The [fixed-reference bridge](common_source/THERMAL_CLOCK.md) adds a different
-clock protocol: a chosen faithful Gibbs reference on the full work algebra
-identifies continuous Hamiltonian segments with modular flow by `t=-beta s`.
-The actual observation state is unchanged by that reference choice, and
-measurements and feedback remain distinct intervention maps. This preserves
-the earlier local-reference clock and its failed identification with the
-interacting Hamiltonian. Reference selection by repair and physical duration
-calibration remain open. The [native causal cones](common_source/CAUSALITY.md)
-separately bound influence to one graph edge per causal layer for fixed seam
-schedules; they do not relate that causal depth to either clock.
-
-The separate [smooth Ramsey instrument](common_source/SMOOTH_REFINEMENT.md)
-supplies a full interacting occupation error rate and finite measurement
-energy on this declared two-site action. It changes the scalar detector's
-meaning from sign to `(I +/- sin(Q0))/2`; the sharp-history clock is not
-inherited. Its uniform moment bound is vacuous at the small executed cutoffs;
-the prepared-history certificate above has a narrower input domain.
-Larger cutoffs are covered analytically, with source compilation beyond
-dimensions 2 and 4 remaining open.
-
-The sharp instrument need not preserve finite kinetic energy; the smooth
-instrument preserves the energy form domain and has unconditional
-infinite-model energy increment `1/8`. The earlier clock probes appended to
-the sharp history have no occupation limit here. The
-[continued smooth program](common_source/COMPOSITION.md) instead bounds its
-actual later gauge-probe instrument; Gibbs modular-data convergence and
-physical clock calibration remain separate obligations.
-
-The [native observer](observer/README.md) executes two repair events with a
-finite tape. It records the first current, issues a supplied forecast from
-that record, chooses the next seam, records the result and halts. Exhaustive
-checks retain all 264 binary-source paths. A 20,000-trial seeded execution
-reproduces the exact predictions within the reported sample differences.
-
-The [P-dependent detector](observer/p_response/README.md) computes the
-existing P-to-electromagnetic-coupling map, writes a binary detector result
-and lets that bit choose the second repair. All 528 weighted histories are
-retained. A separate 200,000-trial execution agrees with the analytic
-response within its reported sampling uncertainty. Only the detector bit
-reaches the actuator; feedback preserves its committed value.
-
-These are executable finite observation–record–feedback constructions.
-The initial ensemble, tape, forecast table, detector and control protocol
-are explicit design inputs. Two events means two successive repair
-invocations; it does not mean that the source or complete history has only
-two alternatives. The binary detector is an access interface to a richer
-source and record history.
-
-The [scalar-response construction](observer/scalar_response/README.md)
-extends this protocol through the existing scalar field and its bounded
-continuum comparison. The native current sets a local preparation sign;
-the field detector writes the bit that controls the next native event.
-This joins an executed observer to a supplied field model without identifying
-native integer averaging with the field Hamiltonian.
-Its local evolution extension advances that field by neighboring-site
-canonical updates at q=13 and q=34, propagates the detector's vacuum variance,
-and uses the resulting probability in the same native continuation. It
-tests temporal refinement while retaining the existing continuum theorem.
-
-The [source-compiled two-site construction](observer/source_scalar/README.md)
-emits and executes the field apparatus through the existing twelve-port
-controls. Blank registers are transformed into an entangled projected vacuum;
-the first native current supplies an impulse; finite quantum evolution and
-a quantum pointer produce both recorded outcome branches. Only the pointer
-bit controls the next native repair. The four-, eight- and sixteen-level site codes
-run at 64 and 128 steps with exact complete occupation-history and finite
-splitting certificates, independent branch-density checks and retained
-200,000-trial feedback runs per code size. The finest protocol uses nine
-work qubits, 18,612,125 native pulses and 37,224,250 declared proper-code
-service events, evaluated by caching executed subroutine contractions.
-
-This is a separate two-site action, not another member of the earlier
-spatial refinement family. Its physical occupation projection retains the
-boundary terms in both quadratic operators; squaring truncated coordinates
-would implement a different Hamiltonian. The source controls implement
-preparation, evolution and readout under supplied coherent transport,
-reset and storage services. A uniform Gaussian number-tail estimate and
-projected Duhamel comparison bound occupation errors along preparation,
-impulse, propagation and both pointer arms, including terminal quantum
-branches. The state-specific ideal instrument bound is below 0.077171 at
-d=8 and below 0.000196 at the executed d=16 cutoff. At d=16 and 128
-steps, adding finite splitting gives an ideal error below 0.001465. A rational
-reference enclosure then places the ideal plus probability between 0.51495
-and 0.51789, excluding the fair-detector alternative. The
-larger preparation uses a binary amplitude tree and commuting Walsh-Y
-rotations from the same source controls. Spatial refinement,
-numerical execution error, physical service errors and empirical
-identification require further evidence. The earlier continuum
-bounds cannot be transferred merely because both experiments use a scalar field.
-
-The [specified C/E test](predictions/README.md) supplies a separate finite
-discriminator for the native quantum instrument. Both rules have identical
-diagonal classical repair statistics. On a fixed coherent two-state source
-preparation, phase reversal changes the C readout probability from 5/8 to
-1/8; E predicts 3/8 for both. Four fixed settings include common phase and
-incoherent controls. The complete-count evaluator uses 8192 trials per
-setting, an independently established probability-error budget of 1/64 and
-an exact sampling certificate below 1/1000. It rejects malformed or
-incomplete records and reports `no_data` without supplied counts. Synthetic
-controls test the decision rule; they establish no physical verdict.
-
-Its [encoded source implementation](observer/source_discrimination/README.md)
-executes both native channels, the four preparations and a complete Lueders
-readout from the same twelve-port controls. The repair identity holds on all
-78 states and arbitrary source/reference inputs; full terminal-state checks
-also distinguish erroneous phase and overmeasurement. All old records and
-attempted trials are retained. The complete trial has 32,006--32,010 native
-pulse requests, with each load/export charged. A compositional error contract
-specifies sufficient per-operation bounds for the unchanged 1/64 allowance.
-Physical encoding, independent calibration and comparison data remain required.
-This fixed-seam experiment retains its own schedule and error budget.
-The later [quantum-native continuation](common_source/QUANTUM_NATIVE.md)
-compiles both surrounding repairs, including feedback-selected routing,
-around the common four-read smooth history. Its complete native/work/reference
-channel preserves the quantum output within each committed record branch.
-The original sharp history uses the declared classical native adapter;
-the new smooth occupation bound does not extend its post-sharp clocks.
-The [active encoded mode](common_source/ENCODED_MEMORY.md) additionally
-executes record-selected recovery on a supplied logical code. These joins
-retain the physical encoding and source-service obligations.
-
-The [retrospective endpoint audit](predictions/endpoint_audit.py) compares the
-inherited P-response output with its cited low-energy target. Its approximately
-300 ppm inverse-alpha deficit excludes treating that incomplete output as a
-complete zero-correction physical endpoint. It neither supplies the missing
-transport nor rejects all OPH constructions, and uses no target to change P.
+Pulse matrices use the fixed-guard polar representation of the source
+library. Raw, incremental and corrected-target checks bound the representation
+change; no state or measurement outcome chooses that correction. Density
+matrices are not renormalized to repair execution. These numerical controls
+are distinct from physical gate accuracy. Frozen evidence retains its
+original bytes and scope; live receipts reproduce from canonical producers.
 
 ## Native repair and its observer contract
 
@@ -449,7 +308,7 @@ The record is `(c,j)`. Keeping the pre-repair contrast instead gives the
 alternative instrument E, with identical classical transitions but different
 quantum coherences. The classical repair rule alone does not select C or E.
 
-The observer first applies C on `(0,1)`. Its committed first record alone
+The [native observer](observer/README.md) first applies C on `(0,1)`. Its committed first record alone
 selects `(0,5)` when `j1>0`, otherwise `(0,1)`, and supplies the preissued
 forecast of a positive second current. No source loads or future outcomes
 are accessible to that controller. Full simulator checkpoints and external
@@ -457,7 +316,7 @@ occupation audits are distinct from the observer's record access.
 
 The [derivation](observer/DERIVATION.md) gives one fixed CPTP map on the
 phase/tape/source carrier and shows classical-prefix preservation. Genuine
-feedback can reduce coherence between different old record values while
+feedback can reduce coherence between different committed record values while
 preserving their classical probabilities. Halting is an identity operation
 on the terminal sector, not a claim of unlimited continuing memory.
 
@@ -499,7 +358,11 @@ are specified apparatus. This is a software execution of that conditional
 design, not a report of fabricated electromagnetic hardware. The inherited
 source-only α branch retains its documented physical endpoint status;
 executing the adapter does not turn its output into an independent precision
-measurement. P does not alone determine a whole observer's Hilbert dimension,
+measurement. The [endpoint check](predictions/endpoint_audit.py) retains
+the approximately 300 ppm inverse-alpha deficit of that incomplete output;
+a zero-correction precision endpoint is therefore unsupported. It does not
+reject other OPH constructions or fit P to the target. P does not alone
+determine a whole observer's Hilbert dimension,
 local exposure, temperature or event rate.
 
 The [capacity calculation](observer/CAPACITY.md) reuses the existing
@@ -522,8 +385,9 @@ and [N-closure theorem](../paper/tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex).
 
 The native current process supplies a finite port geometry and dimensionless
 clock relation under its declared uniform binary reference and IID seam
-schedule. These are readouts of the same recorded events, without identifying
-a finite port chart with physical space or attempt count with proper time.
+schedule. These are readouts of the same recorded events, with a finite port
+chart and attempt parameter whose physical identification requires an
+independent correspondence.
 The [candidate register](CANDIDATES.md) retains the exact baseline relations.
 
 N2 lets the native current drive the existing local six-level response;
@@ -594,7 +458,9 @@ modular parameter and calibrated observer duration are distinct. The
 [working terms](../docs/INTERPRETATION_AND_TERMS.md) impose no preferred
 universal physical clock.
 
-## Retained scalar and entropy constructions
+<a id="retained-scalar-and-entropy-constructions"></a>
+
+## Scalar and entropy constructions
 
 ### Executed scalar detector and native continuation
 
@@ -656,7 +522,7 @@ field, apparatus, calibration and independently acquired records. The scalar
 action, quantization, vacuum, preparation, Born readout and model clock remain
 explicit inputs; the finite native observer does not select them.
 
-### Retained field and record continuation
+### Field and record continuation
 
 The [continued scalar observer](observer/scalar_response/CONTINUATION.md)
 retains one field through two noncommuting reads at model times `19/20` and
@@ -672,9 +538,9 @@ are separate implementations with separate error bounds.
 The two-site source compiler executes a separate single-read apparatus;
 compiling this two-read history requires its own implementation and bounds.
 
-The new directed rational bound puts the q=233 complete-history TV error
+The directed rational bound puts the q=233 complete-history TV error
 below 0.02571. It includes the zero-current histories, whose two-bit
-correlation is not controlled by the old single-read bias bound. It also
+correlation is not controlled by the single-read bias bound. It also
 certifies a positive second-read disturbance above 0.000022281162 relative
 to omitting the first read on the positive-current preparation. A commuting
 Gaussian control retains ordinary temporal correlation but removes that
@@ -682,7 +548,7 @@ disturbance. Independent state-vector, conditional-field donor, reset and
 record-deletion controls distinguish these mechanisms. The existing supplied
 action, vacuum, instrument and time contract is preserved.
 
-### Scalar action and entropy results retained as inputs
+### Scalar action and entropy premises
 
 The separate scalar benchmark factors weighted agreement into its supplied
 stiffness. If repair capacity also measures inertia, linear dynamics, energy
@@ -734,13 +600,16 @@ finite software run.
 | Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, finite temporal and occupation bounds, exact sharp-readout contrasts, state-specific complete-output cutoff enclosures and unavoidable occupation-code output errors | Spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process; post-sharp clock continuation needs its own error analysis |
 | Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
 | Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound, finite-energy backreaction and a separate prepared four-read history certificate | Different instrument and bit dictionary; the uniform moment bound is vacuous at small executed cutoffs, and the sharp-history clock does not transfer |
-| N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
+| N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Extension of the specified finite observer/federation contracts to the intended access, delivery and refinement family; no full physical `OperationalObserver` realization is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
 | Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
 | Twelve central addresses with binary native/N4 quantum blocks | Full-channel decoding, complete abstract scalar-seam grammar, shared full reference and normalized geometry with distinct finite kinetics | Physical realization, retained-record delivery and compatible apparatus; the address is not an occupation measurement |
 | N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |
 | Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
+| Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
+| Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
+| Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 
 No observation rung or physical premise is discharged merely by putting these
@@ -748,7 +617,9 @@ sources in the same repository. Conversely, the remaining physical joins do
 not reopen the completed finite observer contract. Model maintenance belongs
 here; changes to the broader papers follow their separate review policy.
 
-## Retained audit controls
+<a id="retained-audit-controls"></a>
+
+## Counterexamples and identifiability
 
 The [fixed audit package](../code/programme_obstruction_audit/README.md)
 retains exact author and independent controls for the following boundaries.
@@ -775,111 +646,62 @@ retains all eight prescribed rational cases, including rejection of singular
 
 ## Remaining construction work
 
-The [observer-record reconstruction](observer_reconstruction/README.md)
-adds a finite inverse experiment to the supplied-matrix analyses. It
-recovers free-field propagation, cube geometry and spectral parameters
-using executed binary laws and an independently read reference clock, with
-withheld detector predictions and a separate complete-output occupation
-certificate. Native response geometry is also recovered from committed
-currents rather than source coordinates. The field and native geometries
-remain distinct; normal-mode apparatus and the quadratic action are
-supplied. This closes the estimator's direct access to the target matrix,
-not the native action-selection, interacting spacetime or physical clock
-obligations below.
+The missing joins concern one compatible family of observer observations,
+not an inventory of additional finite theorems:
 
-The finite observer is a completed component to extend and preserve. The
-two-site source program executes preparation, quantum evolution and the
-binary detector under its declared services. The earlier free-field program
-has a quantitative complete-history occupation bound. The interacting sharp
-history has quantitative pre-readout bounds, a strong complete-instrument
-limit, an exact nonzero infinite signal and certified complete-output cutoff
-enclosures for zero native preparation current. The sharp detector's long
-occupation tail forces substantial output error even when its probabilities
-are close; the vacuum control requires occupation dimension of order at
-least the inverse fourth power of the requested trace-distance error.
-The separate smooth detector has a quantitative
-complete-output occupation bound, including the pointer. Connect a spatially
-refining family of source programs to the continuum, retaining their
-records and bounding numerical and physical services. The earlier spatial scalar theorem
-provides a separate comparison family; its bounds do not transfer without
-that connection. Physical completion follows the acceptance criteria above
-and additionally needs the compatible interacting and gravitational
-interfaces and independent comparisons below:
+- Establish compatible federation neighborhoods, states, accessible algebras
+  and instruments across the intended scaling family. The conditional
+  quasilocal quantum construction has these hypotheses; the existing screen
+  refinement does not discharge them.
+- Connect the derived native local action and event-clock histories to an
+  effective interacting field/spacetime description through complete joint
+  observation and intervention laws. Preserve quantum memory where a reduced
+  field is not Markovian. Modular parameters and event records need a checked
+  correspondence on that process, not a preferred universal clock.
+- Identify the physical sector, apparatus and parameters with independently
+  calibrated measurements. Specify data ancestry, permitted fits and units,
+  then lock predictions and rejection rules before comparison. Source control
+  words implement a supplied action without selecting its physical meaning.
+- Realize the native C/E discrimination apparatus, authenticate its full
+  service budget and collect complete records. Finite native preparation and
+  a dependence bound replace exact reset and IID premises; physical
+  controls and a laboratory mapping remain open.
+- Connect interacting matter, conserved stress and responsive geometry to the
+  same observations and observer-relative clock comparisons. Fixed-volume
+  occupation control and growing volume at fixed spacing address different
+  limits; neither alone removes a spatial regulator.
+- Account for long-running record storage, coherent services and fault
+  budgets while preserving finite protocol behavior and references. Checked
+  simulator restoration is not a physical reset or autonomous memory service.
+  N4 additionally requires its stated occupation preparation/readout and
+  event-recognition apparatus.
 
-- Identify the native law and physical parameters using the existing
-  observable family. Declare calibration data, permitted fits and the
-  physical clock/unit map, then fix predictions and rejection rules for
-  withheld physical responses. Preserve the distinction between supplied
-  action coefficients, native restrictions and measured quantities.
-- Extend the executed four-read continuation and active logical memory to
-  repeated operation with bounded record storage, reset, service errors and
-  resources. Preserve the complete outcomes and reference correlations of
-  the finite protocols; simulator checkpoint restoration is not a physical
-  reset or autonomous continuation.
-- Join the N4 preparation, occupation detector and local event counter if
-  claiming its certified memory test as an implemented apparatus.
-- Attach interacting matter, responsive geometry and physical clock
-  calibration to the same state, event law and retained records.
-- Realize the fixed C/E preparation and observable, independently establish
-  the service budget and collect complete records for the declared rejection
-  protocol. A physical model of nature needs further sector-specific
-  predictions. Existing seen-data comparisons remain postdictions.
+Useful tests target actual alternatives. The
+[binary coherent continuation](observer/COHERENT_CONTINUATION.md) implements
+a reversible 3,960-arc lift and a compressed-amplitude recurrence. Different
+continuations or cross-record phases give distinct Ramsey predictions while
+agreeing on the committed native instrument. A selecting restriction must
+constrain that additional interface freedom. The
+[identifiability checks](identifiability_checks/README.md) likewise separate
+apparatus restrictions, unseen action directions and geometry ambiguities.
+The stronger effective-Hamiltonian comparator remains relevant to empirical
+protocol design; missing timing, normalization or raw counts cannot be
+inferred by fitting away residuals.
 
-The four-read, quantum-native and active-memory constructions connect
-separate operations on one finite history. That is progress toward
-the common-model target. Source compilation establishes that the declared
-controls can implement the chosen action and instruments; it does not select
-that action or show that its observations describe nature. Increasing the
-occupation cutoff of two sites supplies no spatial refinement. The executed
-d=2,4 uniform moment-based occupation budgets are one. The separate
-prepared-history certificate retains its narrower state contract; neither
-comparison certifies numerical or physical service errors.
-
-The native-clocked common observer connects finite two-site evolution,
-retained quantum reads and an actual native stopping event. Extending this
-connection to spatial propagation needs a shared refining family and
-an explicit comparison to the existing native mean-diffusion control.
-The spatial Bose branch supplies interacting propagation and retained
-quantum observations with controlled growing-volume error. Connecting an
-operational clock, relativistic/EFT interpretation and the charged common
-action remains separate; increasing volume at fixed spacing does not
-remove the spatial regulator.
-The [native field analysis](common_source/NATIVE_FIELDS.md) excludes an
-undamped wave law for that fixed mean-load readout and uniform attempt
-schedule; it does not exclude other recorded quantum observables or an
-observer-relative modular clock. A supplied Hamiltonian can serve as the
-comparison target, with the extra restriction contributed by the repair
-process stated separately. This construction work and independently
-calibrated tests of the fixed instruments can proceed in parallel.
-
-The [binary native coherent continuation](observer/COHERENT_CONTINUATION.md)
-checks a reversible 3,960-arc lift of the actual N1 events and an exact
-compressed-amplitude recurrence. A continuation phase changes second-step
-Ramsey probabilities despite the same first coherent event; scalar phases
-invisible to complete committed C/E instruments change the coherent spectrum.
-This supplies concrete selection tests, not a selected wave law. The next
-restriction must constrain cross-record phases and continuation, or identify
-an observable independent of that freedom. The classical mean-load control
-is unchanged, and the same-domain reversal fails on collision states.
-
-The current native routing and encoded recovery share a Gray parity compiler:
-the full nine-bit controlled flip costs 2,044 source pulses instead of
-11,782, with identical endpoint action on every code and padding column.
-This reduces declared control resources; it removes no physical service.
-
-The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
-governs reuse: define compatibility independently of the update, map the
-actual domain and scheduler to the nearest theorem, and identify what is new.
-Complete history, instantaneous fixed state, stationary distribution and
-continuing operation remain different claims. A history-level self-consistent
-structure can contain changing records and interventions.
+The [mathematical reuse guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
+requires compatibility defined independently of the update and a mapping of
+the actual domain, records and scheduler to the nearest theorem. Complete
+history, instantaneous fixed state, stationary distribution and continuing
+operation are distinct claims. A self-consistent history can contain changing
+records and interventions.
 
 ## Source selection: the three primitive obligations
 
-The [source-selection guide](SOURCE_SELECTION.md) organizes the next work
+The [source-selection guide](SOURCE_SELECTION.md) organizes source selection
 around carrier architecture, observer interface and implementation, and the
-complete repair rule. Action, state, scheduling and control choices require
-explicit derivations or declared status within these objects; renaming a
+complete repair rule. Architecture, observer implementation and repair law
+may supply the instance inputs. Action, state, scheduling and control consequences require
+explicit derivations from those inputs or a separate declared status; renaming a
 supplied input does not discharge it. The existing finite field programs
 retain their comparison scope.
 
@@ -891,7 +713,7 @@ admitted. The existing source words execute a fixed read with `3/4` versus
 C/E instrument; the commit-first control gives `1/2` for both. The distinct
 record dictionary is explicit. Coherent continuation alternatives also
 survive all proper carrier rotations, real orthogonality, native support and
-a common algebraic time reversal. The next source criterion must exclude an
+a common algebraic time reversal. A source-selection criterion must exclude an
 actual alternative under the relevant interface, rather than infer a
 preferred wave from these shared structural properties.
 
@@ -910,16 +732,16 @@ The connected responsibilities are [common construction #1026](https://github.co
 [correctness #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
 and [obstructions #1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 They are parallel responsibilities, not twelve sequential completion hurdles.
-Finite results stay completed unless new evidence invalidates them; larger
-claims add declared requirements. A negative result rejects its stated family.
+Finite results retain their stated validity unless evidence invalidates
+them; larger claims add declared requirements. A negative result rejects its stated family.
 
 ## Research programme and paper-release hold
 
 Publish tested model code and reproducible results in this directory. The
 [paper set](../docs/PAPER_SET.md) records the model milestone around which
-the prose papers are organized and the role of each paper. **A new paper
+the prose papers are organized and the role of each paper. **A paper
 release follows the owner's approval of a recorded model milestone.**
 Audits, necessary correctness fixes, errata, preview builds and
 reproducibility checks continue between releases. Frozen evidence and
 deposited releases retain their original bytes. Passing CI or publishing the
-model code does not itself release a new paper.
+model code does not itself release a paper.

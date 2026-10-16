@@ -1,8 +1,6 @@
 # Controlled occupation removal for the oscillator apparatus
 
-This packet implements the occupation-error attachment recommended by the
-[mathematical audit](../audit_20261015/MATH.md#3-a-directly-applicable-occupation-truncation-theorem).
-It bounds a continuous, unrestricted oscillator's records using an
+The [occupation-error derivation](DERIVATION.md) bounds a continuous, unrestricted oscillator's records using an
 interval-enclosed finite computation. The bound includes thermal preparation,
 preparation displacement, the complete pulse history, the pointer detector,
 time discretization and evaluator roundoff.
@@ -12,8 +10,7 @@ For case `a` of the supplied [anharmonic apparatus](../anharmonic_transfer/READM
 the retained 64-level run has complete half-trace error below `1.32e-8` at
 0.4 ms and `0.002041` at 2 ms. At 10 ms it is about `0.19946`, too loose to
 justify a precision claim. The 32-level bound exceeds one at 10 ms and does
-not certify that the selected reference branch even has positive mass. Small
-differences between two cutoffs had not established these guarantees.
+not certify that the selected reference branch even has positive mass. Differences between two cutoffs alone do not establish these guarantees.
 
 | Published coordinate | 32-level half-trace radius | 64-level half-trace radius |
 |---|---:|---:|
@@ -40,7 +37,7 @@ amplify error.
 
 ## What runs and what is measured
 
-The evaluator receives the previous, unchanged preparation parameters
+The evaluator receives the fixed preparation parameters
 `alpha=-1.0081292326480422`, `nbar=0.13314125172459518`, and the supplied pulse,
 noise and detector settings. It never reads empirical outcome files. Its
 computation is:
@@ -69,7 +66,7 @@ not execute native observer source words. The apparatus, preparation family,
 quantum structure, noise and clock remain supplied. Source-derived action
 selection is unchanged. This packet does not replace native execution
 receipts. For orientation, its case-`a` final estimator differs from the
-corresponding historical finite prediction by about `2.4e-7` at both cutoffs; that numerical
+corresponding source-executed finite prediction by about `2.4e-7` at both cutoffs; that numerical
 agreement is separate from the error certificate.
 
 ## Guarantee and assumptions
@@ -98,9 +95,9 @@ normalization provenance, preparation-transfer validity, the laboratory's
 unmodeled selection dwell, native compilation error and physical service
 error. It establishes no different empirical score or OPH-specific law.
 
-## Next steps and reproduction
+## Scope and reproduction
 
-Use the early-window bound when testing proposed source laws; there is now
+Use the early-window bound when testing proposed source laws; there is
 an explicit numerical uncertainty to keep below the discriminator size.
 For longer windows, enlarge the retained occupation space adaptively or use
 a tighter boundary-row nuclear-norm enclosure. The current boundary is
