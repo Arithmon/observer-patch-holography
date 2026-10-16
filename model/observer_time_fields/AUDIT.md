@@ -97,7 +97,13 @@ source-column comparison and full terminal-population oracle. All six
 mutations were caught; this is a targeted check, not mutation completeness.
 
 The audit followed [the numerical evidence procedure](../../docs/policies/NUMERICAL_AUDIT.md).
-Only the new finite prediction and its navigation/artifact bindings change.
+Integration with main's clock conversion and finite screen comparison also
+exposed an overly restrictive component allocation in its randomized
+measurement replay. Its raw and completion allowances are allocated within
+the unchanged total conditional-score budget `1e-13`. Exact checks still
+reject excessive component errors, including a raw-only error below the
+total budget. This repair changes the component certificate and live source
+bindings, not the total score guarantee or empirical predictions.
 No frozen evidence, paper, empirical fit or existing claim-registry row is
 reclassified. The source-derived clock/field result is an analytic finite
 proof with exact and bounded executable instances, not a new Lean proof or
