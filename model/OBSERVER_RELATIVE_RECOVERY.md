@@ -24,7 +24,8 @@ records that separate obligation.
 | Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
 | Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
 | Coherent preparation, phase interventions and readout | Declared observer services, with source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
-| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed. | Unique operational reference selection and its relation to continuing native events remain open. The stationary tracial state's modular flow is trivial. |
+| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed; an existing coherent preparation gives a local modular-phase readout under the ideal reference action. | The phase response is periodic, native repair has not been shown to advance the modular parameter, and the relation to continuing native events remains open. The stationary tracial state's modular flow is trivial. |
+| Finite spatial interpretation | The observer's current records recover an exact unitless rank-three Gram metric on the twelve-port carrier; all thirty native seams form its shortest-distance shell. | This result is a finite carrier geometry, not a length calibration or evidence by itself for physical spatial dimension. |
 | Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
 
 The [equilibration attachment](native_equilibration/README.md) reuses the
@@ -83,6 +84,10 @@ identifies this population transfer and gives rational approximants
 `H_m=sum_(k=1..m)(G/60)^k/k`, with
 `0<=H-H_m<=I/[2(m+1)3^m]` for `H=-log K`. The logarithm is a finite Euclidean
 transfer reconstruction and includes longer-range configuration terms.
+The record-recovered carrier metric now verifies that each native exchange
+term lies on a shortest-shell edge and that their sum is exactly the finite
+field generator. The metric is reconstructed from a distinct calibration
+preparation, and the logarithm itself can contain longer-range terms.
 
 The [native quantum action](native_action/README.md) instead acts on the full
 binary operator algebra. For specified seam channels `Phi_e`,
@@ -205,6 +210,18 @@ the same native transfer, without fitting a Gibbs reference to a supplied
 oscillator Hamiltonian. Reference choice is not proved unique. The matrix `K`
 acts on the finite history transfer space; it is not the native quantum
 channel acting on density matrices.
+
+For the Palm reference, the existing coherent source preparation has only
+the modular frequencies `0` and `+/-log(5/4)`. Applying the ideal reference
+modular action, the actual stopped native channel and the existing Y readout
+gives `P(+|s, herald)=1/2-sin(s log(5/4))/140` for C and the same expression
+with denominator `220` for E. The exact finite readout is locally sensitive
+to modular phase and periodic, so a single value is not a unique time. The
+modular action remains a declared target service: native repair has not been
+shown to generate it, nor is its parameter converted to attempts or physical
+duration. No matching public experimental dataset is currently identified;
+the prediction is conditional on implementing and calibrating that target
+service and readout.
 
 For the minimal three-state absolute-current description, the transfer
 eigenvalues are `1` and `(25 +/- sqrt(3))/30`. Their negative logarithms fix
@@ -363,9 +380,10 @@ conditional infinite-graph construction supplies a relativistic scaling.
 
 A finite screen can alternatively support effective spacetime on a specified
 observational domain with controlled errors. In either approach, joint field,
-clock and intervention laws must be preserved. The elementary response rank
-three does not establish three physical dimensions; record order and affine
-clock comparison do not establish a Lorentz metric. Native relaxation
+clock and intervention laws must be preserved. The exact finite Gram gives
+the twelve-port carrier a three-coordinate Euclidean embedding, but does not
+establish three physical dimensions or an extended space. Record order and
+affine clock comparison do not establish a Lorentz metric. Native relaxation
 dispersion cannot be replaced by the Gaussian slab theorem's square-root
 dispersion without a matching model correspondence. An applicable continuum
 or bounded effective regime needs compatible states, access maps, locality,

@@ -234,6 +234,16 @@ federation demonstration tests exclusion and cross-carrier records together.
 This completes a finite clock/field connection missing from the separate
 clock and global-attempt field packets.
 
+For the elementary twelve-port source, the
+[record-reconstructed geometry](../relative_observer_geometry/README.md)
+now assigns an exact unitless finite metric to the same seam carrier, and the
+[effective-field packet](../native_effective_fields/README.md) checks that its
+native exchange terms lie on that metric's shortest shell. The geometric
+calibration preparation and the continuing incident-clock field histories
+are separate experiments on the same source rule. The incident-attempt
+parameter is not converted into distance or observer modular time by this
+finite metric.
+
 The architecture, seam scheduler, initial particle sector and record access
 remain the stated source-instance inputs. The
 [source screen comparison](../native_action/README.md#compatible-neighborhoods-of-the-actual-screen)

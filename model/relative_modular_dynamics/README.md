@@ -80,6 +80,42 @@ time without introducing a universal clock. This construction checks how its
 programmed interventions relate to continuing native records; it does not
 identify their two dynamics.
 
+## An observer-relative modular phase readout
+
+The successful branch of the existing native coherent preparation has
+nonzero coherence between the two eigenspaces of `sigma`; its modular
+frequency support is exactly `0` and `+/-log(5/4)`. The reference `sigma`
+itself remains stationary under its own modular flow. The coherent branch is
+a distinct state and therefore supplies a possible relational clock hand.
+
+Apply the ideal target modular action for parameter `s`, pass that state
+through the existing first-moving-current stopped channel, then use the
+existing Y readout and condition on the original `5/33` herald. The exact
+conditional plus probabilities are
+
+```text
+law C:  P(plus | s, herald) = 1/2 - sin(s log(5/4))/140
+law E:  P(plus | s, herald) = 1/2 - sin(s log(5/4))/220.
+```
+
+The coefficients follow from exact rational evaluation at modular phases
+`0`, `+/-pi/2` and `pi`; the two-eigenspace source has no higher modular
+frequencies, so linearity fixes the whole one-harmonic response. The quarter
+turn points are checked in the producer, including the already-executed
+positive quarter-turn phase-order experiment. `s` has period
+`2*pi/log(5/4)`. The nonzero derivative at `s=0` makes this an observer
+readout of modular phase locally near that point. One probability is periodic
+and globally ambiguous, so it is not a unique absolute timestamp.
+
+This is a concrete bridge from the native observer's coherent preparation and
+readout to a modular parameter. The continuous curve is an exact prediction
+for the ideal modular target, not a continuous native gate execution: the
+repair process has not been shown to generate or advance `s`. The native
+current clock remains an integer count indexed by native attempts, as detailed
+in [`native_clock`](../native_clock/README.md); no conversion between attempts
+and `s`, duration, or proper time follows. Continuous-gate and detector
+implementation errors are not bounded here.
+
 ## The invariant algebra closes the active-corner gap
 
 The ten fixed-seam orientation pairs define the unital protocol algebra

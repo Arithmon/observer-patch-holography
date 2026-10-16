@@ -79,12 +79,12 @@ The GitHub workflow runs the validator on registry changes and on public claim-s
 When a pull request changes paper TeX or the README claim narrative, it must also touch this
 registry/check surface. That rule keeps the registry from becoming a stale snapshot.
 
-## Finite model constructions, 2026-10-12
+## Finite model constructions
 
-Six `emitted_artifact` rows register the runnable model and its retained
+Thirteen `emitted_artifact` rows register the runnable model and its retained
 evidence. Their owners are the self-contained implementation documents under
 `model/`, with `owner_medium: protocol_record`; no paper theorem is promoted
-or changed by these additions.
+or changed by these executable records.
 
 | Claim | Executed scope |
 | --- | --- |
@@ -94,24 +94,30 @@ or changed by these additions.
 | `OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE` | [Incident-attempt memory certificate](../model/local_tick/README.md), with supplied occupation preparation and readout |
 | `OPH-MODEL-SCALAR-RESPONSE-EXECUTION` | [Scalar detector and native continuation](../model/observer/scalar_response/README.md), with supplied field action/vacuum and inherited history refinement control |
 | `OPH-MODEL-COMMON-SOURCE-EXECUTION` | [Common interacting observer](../model/common_source/README.md), complete scalar/matter/flux records and feedback, observer readouts and conditional error bounds |
+| `OPH-MODEL-SPATIAL-INTERACTION-EXECUTION` | [Spatial interaction](../model/spatial_interaction/README.md), finite Bose-Hubbard source histories and separate interaction-deletion control |
+| `OPH-MODEL-CANONICAL-SCALAR-EXECUTION` | [Canonical scalar execution](../model/relativistic_scalar/README.md), finite number-changing scalar histories and supplied-regulator comparison |
+| `OPH-MODEL-SHARED-SCALAR-OBSERVATIONS` | [Shared scalar observations](../model/scalar_observations/README.md), one detector across spatial grids at a fixed mode band |
+| `OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT` | [Published oscillator readout](../model/scalar_observations/experimental_readout/README.md), retrospective preparation/readout comparison |
+| `OPH-MODEL-COUPLED-INTERACTION-RECOVERY` | [Coupled interaction reconstruction](../model/coupled_reconstruction/README.md), finite source identification under the declared action and clock |
+| `OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON` | [Anharmonic transfer](../model/anharmonic_transfer/README.md), retrospective changed-potential transfer on published records |
+| `OPH-MODEL-NATIVE-PROCESS-RECOVERY` | [Observer-relative recovery](../model/OBSERVER_RELATIVE_RECOVERY.md), including incident-clock fields and the finite two-screen comparison |
 
 The detector consumes PR-17 and PR-37. Its separate physical same-quantity
-and Thomson readback attachments are undischarged PR-38 and PR-39. The other
-five rows certify their supplied finite contracts without consuming the
-canonical physical premises. Local tape capacity is not cosmic N closure;
+and Thomson readback attachments are undischarged PR-38 and PR-39. These rows
+retain the declared source, action, preparation, schedule, clock and apparatus
+contracts of their respective constructions. Finite execution and retrospective
+data comparison do not establish a source-selected continuum or physical
+calibration. Local tape capacity is not cosmic N closure;
 the native current recorder does not implement the N4 occupation apparatus.
 Uniqueness of a designed rule is not required for these implementation claims.
-Existing claim payloads, physical statuses and frozen predictions are preserved.
 The scalar adapter's conditional detector protocol is independently testable
 in software. Its scalar action, vacuum, apparatus and model clock remain
 declared; it establishes no new physical prediction or laboratory verdict.
 
-## Continued-observer maintainer audit, 2026-10-14
+## Continuing-observer construction
 
-PRs [#1099](https://github.com/FloatingPragma/observer-patch-holography/pull/1099),
-[#1100](https://github.com/FloatingPragma/observer-patch-holography/pull/1100) and
-[#1101](https://github.com/FloatingPragma/observer-patch-holography/pull/1101)
-extend `OPH-MODEL-COMMON-SOURCE-EXECUTION` in dependency order:
+The common-source observer executes its interacting history and continuations
+on one prepared work state:
 
 - [Composition](../model/common_source/COMPOSITION.md) executes four reads,
   later evolution and a gauge clock probe on one prepared work state; its
@@ -125,17 +131,13 @@ extend `OPH-MODEL-COMMON-SOURCE-EXECUTION` in dependency order:
   its reference correlations before the optional destructive read. This is
   a supplied active protocol, not protection by passive repair dynamics.
 
-The existing claim identity remains an `emitted_artifact`. Its protocol
-records own the detailed statements; the construction and flagship papers
-summarize them in the refactored paper set. Canonical physical-premise
-statuses, frozen prediction bytes and observation dispositions are unchanged.
-The two executed occupation cutoffs have complete-output occupation
-budgets of one. Physical services, observer-clock calibration, interacting
-spatial refinement and independent observations remain open. The old sharp
-history, its infinite signal certificate and its later clock probes keep
-their distinct scopes; the new smooth bound does not certify those probes.
+The two executed occupation cutoffs have complete-output occupation budgets
+of one. Physical services, observer-clock calibration, interacting spatial
+refinement and independent observations remain open. Sharp and smooth
+readouts have different contracts; the smooth bound does not certify the
+sharp-readout clock probes.
 
-## Executable-model premise audit, 2026-10-12
+## Executable-model premise audit
 
 The compact public README summarizes the registered results for agreement,
 quantum observations, carrier geometry, gauge symmetry, thermodynamics,
@@ -147,11 +149,10 @@ statistics and interventions. It does not require an independently existing
 classical world or fundamental fields and spacetime.
 A continuum certificate concerns convergence and controlled errors of those
 operational readouts, without asserting a fundamental continuous substrate.
-The existing input assumptions of `OPH-MODEL-COMMON-SOURCE-EXECUTION` retain
-their names and dependencies. The finite continuation, coherent native
-attachment and active encoded-memory variants add their own explicit
-contracts. The distinction is between consequences
-proved from a construction and inputs selected to define that construction:
+Inputs for `OPH-MODEL-COMMON-SOURCE-EXECUTION` and its finite continuation,
+coherent native and active encoded-memory variants are stated explicitly.
+The distinction is between consequences proved from a construction and inputs
+selected to define that construction:
 
 | Derived or executed consequence | Inputs that the result retains |
 | --- | --- |
@@ -161,12 +162,14 @@ proved from a construction and inputs selected to define that construction:
 | Schedule-independent completed history | Fixed event graph, boundary, source maps and fair constraint-repair schedule |
 | Observer Hilbert representations and modular flow | Specified observer algebra and its state restriction |
 | Alignment of Hamiltonian and modular flow | Chosen full-work Gibbs reference |
+| Incident-clock transfer and complete local field words | Fixed graph, uniform all-seam schedule, observer region, stationary fixed-particle preparation, field dictionary and local record access; incident-attempt units are dimensionless and are not modular time |
+| Cross-screen incident-clock agreement | The actual level-3/5 source pair, matched initial local/reference restrictions, source port maps and local event/controller support; this is one finite comparison, not an all-level limit |
 
 The source-discrimination construction compares two complete finite
 measurement channels and implements their difference as a recorded parity
 bit. Its executed trial counts are synthetic, and coherent preparation,
-readout and load-to-code identification remain declared inputs. This result
-adds no independent physical data or canonical premise disposition.
+readout and load-to-code identification remain declared inputs. It supplies no
+independent physical data and changes no canonical premise disposition.
 
 The consequences in this table are registered conclusions, not extra input
 premises to delete. Stationarity of the uniform binary distribution does not
@@ -175,6 +178,17 @@ unit convention; it does not select the Gibbs reference or derive the
 interacting Hamiltonian. Compiling a chosen apparatus into admitted source
 controls establishes implementation while retaining the chosen action and
 the physical service contract.
+
+The [incident-clock field construction](../model/observer_time_fields/README.md)
+derives a positive effective transfer and a logarithmic generator in the
+declared incident-repair-attempt coordinate, preserving complete local field
+and record laws under its stated interventions. The
+[screen comparison](../model/native_action/INCIDENT_REFINEMENT.md) controls
+complete local outputs across one actual pair of refinement levels. Neither
+result derives the observer region, preparation or scheduler, identifies this
+clock with modular flow or physical duration, or establishes a continuum
+spacetime. Modular flow and the incident-attempt clock remain distinct
+constructions with distinct inputs.
 
 The [native field derivation](../model/common_source/NATIVE_FIELDS.md) excludes
 undamped wave modes for the stated uniform mean readout and forgotten-record

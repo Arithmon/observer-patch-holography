@@ -4,6 +4,7 @@ from fractions import Fraction as F
 import numpy as np
 import pytest
 
+from ..observer_reconstruction import native_geometry
 from . import construction as c
 
 
@@ -117,8 +118,25 @@ def test_record_calibration_graph_is_same_current_interface():
     result = c.geometry_connection()
     assert len(result['recovered_seams']) == 30
     assert result['rank_of_certified_slow_response_Gram'] == 3
+    metric = result['exact_finite_spatial_metric']
+    assert metric['exact_pair_counts'] == {'edge': 30, 'two_edge': 30, 'antipode': 6}
+    assert metric['squared_chord_lengths_qsqrt5'] == {
+        'edge': '2-2*sqrt(5)/5', 'two_edge': '2+2*sqrt(5)/5', 'antipode': '4'}
+    assert metric['native_seams_are_exactly_shortest_shell']
+    assert result['metric_shell_census_covariant_under_port_relabeling']
     assert not result['calibration_sector_is_same_as_binary_history_preparation']
     assert not result['physical_spatial_dimension_inferred']
+
+
+def test_exact_spatial_shell_audit_rejects_a_symmetric_wrong_edge_length():
+    recovered = native_geometry.recover(native_geometry.execute_calibration())
+    gram = [[list(entry) for entry in row] for row in recovered['gram_qsqrt5']]
+    seams = tuple((i, j) for i in range(12) for j in range(i+1, 12)
+                  if F(recovered['laplacian_exact'][i][j]) == -1)
+    # Keep symmetry but move one source edge to the opposite non-edge shell.
+    gram[0][1] = gram[1][0] = ['0', '-1/5']
+    with pytest.raises(ValueError, match='graph-distance shell'):
+        c.spatial_shells(gram, seams)
 
 
 @pytest.mark.parametrize('bad', [((False, 1),), ((1, 0),), ([0, 1],)])

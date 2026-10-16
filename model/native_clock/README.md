@@ -174,6 +174,14 @@ It therefore establishes no spatial dimension, Lorentzian geometry, proper
 time calibration or physical frequency. The supplied carrier, native rule,
 stationary preparation and chosen current observable remain explicit.
 
+The related [`relative_modular_dynamics`](../relative_modular_dynamics/README.md)
+packet derives a periodic Y-readout response to the Palm state's modular
+parameter from an existing coherent preparation. That gives a local modular
+phase readout under the declared ideal phase target. It does not make the
+native current counter an implementation of modular flow: native attempt
+counts and modular parameter remain distinct model readouts, with no derived
+conversion between them.
+
 The new laws are predictions of the executable source model. No laboratory
 measurement has yet been operationally identified with this native current
 record, so this packet makes no new empirical agreement claim and changes no

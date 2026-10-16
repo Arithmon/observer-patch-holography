@@ -37,6 +37,17 @@ def test_source_density_interaction_cannot_be_deleted_at_fixed_hopping():
     assert not result['deleted_density_interaction_constant_vector_is_ground']
 
 
+def test_native_field_terms_are_local_on_record_recovered_finite_metric():
+    result = c.spatial_locality_audit()
+    assert result['rank_three_unit_gram_certified']
+    assert result['native_exchange_terms_checked'] == 30
+    assert result['pair_shell_counts'] == {'edge': 30, 'other': 36}
+    assert result['every_native_exchange_term_is_geometrically_edge_local']
+    assert result['native_generator_is_exact_sum_of_local_edge_terms']
+    assert result['logarithm_can_have_longer_range_terms']
+    assert not result['physical_length_scale_or_continuum_claimed']
+
+
 def test_exact_log_polynomial_against_independent_symbolic_matrix_calculus():
     d = sp.Matrix(c.generator())/60
     direct = d+d*d/2+d*d*d/3

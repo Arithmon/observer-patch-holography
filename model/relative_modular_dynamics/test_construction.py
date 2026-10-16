@@ -1,5 +1,6 @@
 """Independent stopped-map, modular convention and continuing-record controls."""
 from fractions import Fraction as F
+import math
 
 import numpy as np
 import pytest
@@ -78,6 +79,32 @@ def test_modular_dual_state_sign_and_exact_protocol_domain():
     unit = {unequal: c.z(1)}
     assert c.modular_action(unit)[unequal] == c.z(0, 1)
     assert c.modular_action(unit, -1)[unequal] == c.z(0, -1)
+
+
+@pytest.mark.parametrize('law,amplitude', [('C', F(1, 140)), ('E', F(1, 220))])
+def test_existing_coherent_preparation_gives_a_local_periodic_modular_phase_readout(law, amplitude):
+    result = c.modular_clock_audit(law)
+    assert result['input_modular_frequency_support_in_units_of_log_5_over_4'] == [-1, 0, 1]
+    assert result['exact_quarter_turn_conditional_plus_probabilities'] == {
+        '-1': str(F(1, 2)+amplitude), '0': '1/2', '1': str(F(1, 2)-amplitude), '2': '1/2'}
+    assert result['exact_sine_amplitude'] == str(amplitude)
+    assert result['exact_cosine_coefficient'] == '0'
+    assert result['locally_phase_sensitive_near_zero']
+    assert not result['single_probability_globally_identifies_phase']
+    assert not result['native_repair_generates_modular_parameter']
+    assert not result['modular_parameter_to_native_attempt_conversion_derived']
+    quarter_turn = math.pi/(2*math.log(5/4))
+    period = 2*math.pi/math.log(5/4)
+    expected = float(F(1, 2)-amplitude)
+    assert abs(c.modular_clock_response(law, quarter_turn)-expected) < 2e-16
+    assert abs(c.modular_clock_response(law, period)-0.5) < 2e-16
+    assert c.modular_clock_response(law, 0) == 0.5
+
+
+@pytest.mark.parametrize('parameter', [True, float('nan'), float('inf'), '1'])
+def test_modular_clock_response_rejects_ambiguous_or_nonfinite_parameters(parameter):
+    with pytest.raises(ValueError):
+        c.modular_clock_response('C', parameter)
 
 
 def test_full_matrix_kms_boundary_has_inverse_observable_convention():

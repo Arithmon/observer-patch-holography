@@ -383,6 +383,97 @@ def controls():
             'local_state_or_record_marginals_imply_unique_joint_law': False}
 
 
+def spatial_shells(gram_qsqrt5, seams):
+    """Check the exact Euclidean shells encoded by the record-recovered Gram.
+
+    Each entry [a,b] denotes a+b*sqrt(5). This is a finite carrier metric,
+    with no length scale or continuum interpretation attached.
+    """
+    if (type(gram_qsqrt5) is not list or len(gram_qsqrt5) != 12
+            or any(type(row) is not list or len(row) != 12 for row in gram_qsqrt5)
+            or type(seams) not in (tuple, list)):
+        raise ValueError('a complete twelve-port exact Gram and seam list are required')
+    gram = []
+    for row in gram_qsqrt5:
+        converted = []
+        for entry in row:
+            if (type(entry) is not list or len(entry) != 2
+                    or any(type(value) is not str for value in entry)):
+                raise ValueError('Gram entries must be exact rational coefficient pairs')
+            try:
+                converted.append((F(entry[0]), F(entry[1])))
+            except (ValueError, ZeroDivisionError) as error:
+                raise ValueError('Gram coefficients must be exact rationals') from error
+        gram.append(converted)
+    edge_set = set()
+    for edge in seams:
+        if (type(edge) not in (tuple, list) or len(edge) != 2
+                or any(type(port) is not int or not 0 <= port < 12 for port in edge)
+                or edge[0] == edge[1]):
+            raise ValueError('distinct native seam endpoints are required')
+        edge_set.add(tuple(sorted(edge)))
+    if len(edge_set) != 30:
+        raise ValueError('the complete thirty-seam carrier is required')
+    if any(gram[i][j] != gram[j][i] for i in range(12) for j in range(12)):
+        raise ValueError('the recovered Gram must be symmetric')
+    if any(gram[i][i] != (F(1), F(0)) for i in range(12)):
+        raise ValueError('the recovered Gram must have unit diagonal')
+    adjacency = [set() for _ in range(12)]
+    for a, b in edge_set:
+        adjacency[a].add(b); adjacency[b].add(a)
+    if any(len(neighbours) != 5 for neighbours in adjacency):
+        raise ValueError('the recovered carrier graph must be five-regular')
+    graph_distances = []
+    for origin in range(12):
+        distances = {origin: 0}
+        frontier = [origin]
+        while frontier:
+            current = frontier.pop(0)
+            for neighbour in adjacency[current]:
+                if neighbour not in distances:
+                    distances[neighbour] = distances[current]+1
+                    frontier.append(neighbour)
+        if len(distances) != 12 or max(distances.values()) != 3:
+            raise ValueError('the source seam graph must have diameter three')
+        graph_distances.append(distances)
+
+    # Classify pairs directly from the exact Gram, then independently compare
+    # its shortest shell with the executed native seam interface.
+    shell_counts = Counter()
+    squared_distance_by_shell = {}
+    graph_shell = {1: ('edge', (F(0), F(1, 5))),
+                   2: ('two_edge', (F(0), F(-1, 5))),
+                   3: ('antipode', (F(-1), F(0)))}
+    for i in range(12):
+        for j in range(i+1, 12):
+            dot = gram[i][j]
+            squared = (F(2)-2*dot[0], -2*dot[1])
+            distance = graph_distances[i][j]
+            if distance not in graph_shell or dot != graph_shell[distance][1]:
+                raise ValueError('the recovered Gram disagrees with its graph-distance shell')
+            shell = graph_shell[distance][0]
+            if (shell == 'edge') != ((i, j) in edge_set):
+                raise ValueError('native seams must be exactly the shortest Gram shell')
+            shell_counts[shell] += 1
+            if shell in squared_distance_by_shell and squared_distance_by_shell[shell] != squared:
+                raise ArithmeticError('a graph shell has inconsistent exact Euclidean distances')
+            squared_distance_by_shell[shell] = squared
+    expected_counts = {'edge': 30, 'two_edge': 30, 'antipode': 6}
+    expected_distances = {'edge': [F(2), F(-2, 5)],
+                          'two_edge': [F(2), F(2, 5)],
+                          'antipode': [F(4), F(0)]}
+    if dict(shell_counts) != expected_counts or squared_distance_by_shell != {
+            key: tuple(value) for key, value in expected_distances.items()}:
+        raise ArithmeticError('the exact spatial shell census changed')
+    return {'exact_pair_counts': expected_counts,
+            'squared_chord_lengths_qsqrt5': {
+                'edge': '2-2*sqrt(5)/5', 'two_edge': '2+2*sqrt(5)/5',
+                'antipode': '4'},
+            'native_seams_are_exactly_shortest_shell': True,
+            'metric_is_unitless_and_finite': True,
+            'length_calibration_or_continuum_claimed': False}
+
+
 def geometry_connection():
     recovery = native_geometry.recover(native_geometry.execute_calibration())
     laplacian = recovery['laplacian_exact']
@@ -390,10 +481,21 @@ def geometry_connection():
                       if F(laplacian[a][b]) == -1)
     if recovered != source().seams or not recovery['rank_three_unit_gram_recovered']:
         raise ArithmeticError('record-recovered graph does not match counter interface')
+    shells = spatial_shells(recovery['gram_qsqrt5'], recovered)
+    permutation = (7, 2, 10, 0, 5, 11, 8, 4, 1, 9, 3, 6)
+    relabelled_gram = [[None]*12 for _ in range(12)]
+    for i in range(12):
+        for j in range(12):
+            relabelled_gram[permutation[i]][permutation[j]] = recovery['gram_qsqrt5'][i][j]
+    relabelled_seams = tuple(tuple(sorted((permutation[a], permutation[b]))) for a, b in recovered)
+    if spatial_shells(relabelled_gram, relabelled_seams) != shells:
+        raise ArithmeticError('the exact spatial metric shell census is not port-relabeling covariant')
     return {'response_record_count': recovery['record_count'],
             'response_recovered_seams_exactly_match_current_interfaces': True,
             'recovered_seams': [list(x) for x in recovered],
             'rank_of_certified_slow_response_Gram': 3,
+            'exact_finite_spatial_metric': shells,
+            'metric_shell_census_covariant_under_port_relabeling': True,
             'distinct_total_two_calibration_preparations_at_single_ports': 12,
             'calibration_sector_is_same_as_binary_history_preparation': False,
             'physical_spatial_dimension_inferred': False,
@@ -412,6 +514,8 @@ def run():
                 'shared_prefix_is_a_record_cut_not_spacetime_simultaneity': True,
                 'fundamental_global_clock_or_field_assumed': False,
                 'observer_modular_flow_attached_to_these_local_ticks': False,
+            'finite_carrier_spatial_metric_recovered': True,
+            'continuum_spacetime_or_physical_length_calibration': False,
                 'new_physical_prediction_or_empirical_comparison': False}}
 
 

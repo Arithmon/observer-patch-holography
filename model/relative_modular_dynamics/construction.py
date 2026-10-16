@@ -171,6 +171,89 @@ def modular_action(state, quarter=1, *, full=True):
     return sparse(result)
 
 
+def modular_clock_response(law, modular_parameter):
+    """Analytic Y-readout probability for the existing coherent preparation.
+
+    This evaluates the exact one-frequency response derived in
+    ``modular_clock_audit``.  It is a prediction conditional on applying the
+    reference modular action as the existing ideal target service; it does
+    not claim that native repair itself implements that action.
+    """
+    if (type(modular_parameter) not in (int, float)
+            or not math.isfinite(modular_parameter)):
+        raise ValueError('a finite real modular parameter is required')
+    law = relational.quantum.candidate(law)
+    amplitude = 1/140 if law == 'C' else 1/220
+    return 0.5-amplitude*math.sin(float(modular_parameter)*math.log(5/4))
+
+
+def modular_clock_audit(law):
+    """Derive a local, periodic modular-phase readout from existing source data.
+
+    The initial coherent native preparation has only modular frequencies
+    0,+/-log(5/4). The stopped native channel and existing Y read are linear,
+    so the response has one sine/cosine harmonic. Four exact quarter-turn
+    evaluations fix its coefficients; the remaining claims are checked
+    against that harmonic and the source support.
+    """
+    law = relational.quantum.candidate(law)
+    degree, _, _, _ = events.embedded()
+    start = prepared_states(law)[1]
+    if any(key not in ALGEBRA for key in start):
+        raise ArithmeticError('the coherent source preparation left the protocol algebra')
+    frequencies = sorted({int(degree[i] == 8)-int(degree[j] == 8)
+                          for (i, j), value in start.items() if value != ZERO})
+    if frequencies != [-1, 0, 1]:
+        raise ArithmeticError('the source coherent preparation has new modular frequencies')
+    probabilities = {}
+    for quarter in (-1, 0, 1, 2):
+        prepared_phase = modular_action(start, quarter, full=False)
+        if modular_action(start, quarter) != prepared_phase:
+            raise ArithmeticError('the active target is not the full modular action on this state')
+        stopped = apply(law, prepared_phase)
+        if any(key not in ALGEBRA for key in stopped):
+            raise ArithmeticError('the stopped source channel left the protocol algebra')
+        probabilities[quarter] = trace(y_read(stopped, 0))/interface.SUCCESS
+    center = (probabilities[0]+probabilities[2])/2
+    cosine = (probabilities[0]-probabilities[2])/2
+    sine = (probabilities[1]-probabilities[-1])/2
+    expected_amplitude = F(1, 140) if law == 'C' else F(1, 220)
+    if (center, cosine, sine) != (F(1, 2), F(0), -expected_amplitude):
+        raise ArithmeticError('the exact modular phase-response coefficients changed')
+    for quarter, actual in probabilities.items():
+        expected = center+cosine*(0 if quarter % 2 else (-1 if quarter % 4 == 2 else 1))
+        # The sine quadrature is exact on quarter turns; even turns have zero sine.
+        if quarter % 4 == 1:
+            expected += sine
+        elif quarter % 4 == 3:
+            expected -= sine
+        if actual != expected:
+            raise ArithmeticError('quarter-turn phase prediction disagrees with its derived harmonic')
+    return {
+        'law': law,
+        'initial_state': 'existing fixed-seam coherent native preparation, successful plus branch',
+        'phase_service': 'ideal target for the native Palm reference modular action on the protocol algebra',
+        'readout': 'existing Y readout after the actual first-moving-current stopped channel, conditioned on its 5/33 herald',
+        'input_modular_frequency_support_in_units_of_log_5_over_4': frequencies,
+        'exact_quarter_turn_conditional_plus_probabilities': {
+            str(q): str(probabilities[q]) for q in (-1, 0, 1, 2)},
+        'derived_exact_response': (
+            '1/2 - sin(s*log(5/4))/140' if law == 'C'
+            else '1/2 - sin(s*log(5/4))/220'),
+        'exact_sine_amplitude': str(expected_amplitude),
+        'exact_cosine_coefficient': '0',
+        'modular_frequency': 'log(5/4)',
+        'modular_phase_period': '2*pi/log(5/4)',
+        'local_probability_slope_at_s_zero': (
+            '-log(5/4)/140' if law == 'C' else '-log(5/4)/220'),
+        'locally_phase_sensitive_near_zero': True,
+        'single_probability_globally_identifies_phase': False,
+        'native_repair_generates_modular_parameter': False,
+        'modular_parameter_to_native_attempt_conversion_derived': False,
+        'continuous_modular_gate_and_detector_error_bounded': False,
+    }
+
+
 def balanced(state):
     # Reuse the existing exact native block support check, including its
     # rejection of unaccounted irrational cross-corner coefficients.
@@ -476,6 +559,7 @@ def run():
     results = {'schema': 'oph.relative_modular_dynamics.v1', 'all_pass': True,
         'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
         'algebra_audits': [algebra_audit(law) for law in ('C', 'E')],
+        'modular_clock_readouts': [modular_clock_audit(law) for law in ('C', 'E')],
         'exact_predictions': [predictions(law) for law in ('C', 'E')],
         'continuing_degree_executions': [degree_experiment(law) for law in ('C', 'E')],
         'ordered_phase_executions': [covariance_experiment(law, order) for law in ('C', 'E')

@@ -84,6 +84,25 @@ distinct from native completely positive repair. Native attempt count,
 Euclidean parameter, modular parameter and a calibrated physical clock are
 not identified.
 
+## Finite spatial support recovered from observer records
+
+The twelve-port response calibration reconstructs an exact rank-three unit
+Gram matrix from retained native currents; its edge set is the same thirty
+seams used above. In that recovered metric, each source seam has squared
+chord length `2-2 sqrt(5)/5`, and every local exchange term `G_ab` is exactly
+identity minus the port swap on one such shortest-shell edge. The executable
+checks all thirty terms and their exact sum `G`. Thus the hard-core field's
+finite generator is local on the record-reconstructed twelve-point metric.
+
+The logarithm `H=-log K` need not remain local in that metric: its certified
+longer-range witness is already reported above. The rank-three metric is
+unitless and finite; it does not supply calibrated lengths, an extended
+spatial manifold, or a continuum limit. The calibration uses a separately
+declared preparation in the same total-two sector, rather than the stationary
+current-read preparation used by the four-point experiments. See the
+[record reconstruction](../relative_observer_geometry/README.md) for the
+complete shell census and relabeling control.
+
 ## Actual current-only measurement predictions
 
 At each of four successive native attempts, the observer retains the signed

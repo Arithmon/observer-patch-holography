@@ -142,9 +142,32 @@ including its supplied uniform-seam calibration and twelve preparations with
 both loads at one port. Those calibrations live in the larger total-two sector,
 not the binary history sector. They connect two uses of the same endpoint rule
 and labeled interfaces; they are not measurements on these same five-step
-histories. No target coordinate array or spatial dimension enters the counter
-reconstruction. The finite response rank is not a measurement of the dimension
-of physical space.
+histories. No target coordinate array enters the reconstruction. The exact
+unit Gram matrix `X=4P` supplies a finite Euclidean spatial interpretation up
+to orthogonal isometry. Its 66 unordered port pairs fall into exact shells:
+
+| Graph shell | Pair count | Squared chord length in the recovered unit Gram |
+|---|---:|---:|
+| Native seam | 30 | `2 - 2 sqrt(5)/5` |
+| Two seams | 30 | `2 + 2 sqrt(5)/5` |
+| Antipodal | 6 | `4` |
+
+The executable checks every Gram pair against the graph-distance class and
+confirms that all thirty native exchange seams are exactly the shortest
+metric shell. The rank-three projector is symmetric and idempotent, so `X` is
+a positive semidefinite rank-three Gram with unit diagonal and zero row sums.
+Port relabeling preserves the exact shell census; a symmetric change to one
+edge entry is rejected. Together with
+[`native_effective_fields`](../native_effective_fields/README.md), this means
+the source-derived hard-core exchange terms are local on this reconstructed
+finite metric. The logarithm of the transfer can still contain longer-range
+configuration couplings.
+
+This is an exact spatial interpretation of one finite twelve-port carrier,
+not a measurement of the dimension of physical space. It supplies no
+physical length unit, global spacetime, Lorentz cone, signal-speed law or
+continuum limit. The time readouts below remain record parameters, and the
+metric reconstruction uses a separately disclosed calibration preparation.
 
 The source-order/frame packet in
 [`Geometry/SourceOrderFrameCompatibilityPacket`](../../Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean)

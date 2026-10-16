@@ -725,6 +725,64 @@
     "preparation_mixer_operator_error_upper": "1/100000000000",
     "runtime_uses_native_target_surrogates": true
   },
+  "modular_clock_readouts": [
+    {
+      "continuous_modular_gate_and_detector_error_bounded": false,
+      "derived_exact_response": "1/2 - sin(s*log(5/4))/140",
+      "exact_cosine_coefficient": "0",
+      "exact_quarter_turn_conditional_plus_probabilities": {
+        "-1": "71/140",
+        "0": "1/2",
+        "1": "69/140",
+        "2": "1/2"
+      },
+      "exact_sine_amplitude": "1/140",
+      "initial_state": "existing fixed-seam coherent native preparation, successful plus branch",
+      "input_modular_frequency_support_in_units_of_log_5_over_4": [
+        -1,
+        0,
+        1
+      ],
+      "law": "C",
+      "local_probability_slope_at_s_zero": "-log(5/4)/140",
+      "locally_phase_sensitive_near_zero": true,
+      "modular_frequency": "log(5/4)",
+      "modular_parameter_to_native_attempt_conversion_derived": false,
+      "modular_phase_period": "2*pi/log(5/4)",
+      "native_repair_generates_modular_parameter": false,
+      "phase_service": "ideal target for the native Palm reference modular action on the protocol algebra",
+      "readout": "existing Y readout after the actual first-moving-current stopped channel, conditioned on its 5/33 herald",
+      "single_probability_globally_identifies_phase": false
+    },
+    {
+      "continuous_modular_gate_and_detector_error_bounded": false,
+      "derived_exact_response": "1/2 - sin(s*log(5/4))/220",
+      "exact_cosine_coefficient": "0",
+      "exact_quarter_turn_conditional_plus_probabilities": {
+        "-1": "111/220",
+        "0": "1/2",
+        "1": "109/220",
+        "2": "1/2"
+      },
+      "exact_sine_amplitude": "1/220",
+      "initial_state": "existing fixed-seam coherent native preparation, successful plus branch",
+      "input_modular_frequency_support_in_units_of_log_5_over_4": [
+        -1,
+        0,
+        1
+      ],
+      "law": "E",
+      "local_probability_slope_at_s_zero": "-log(5/4)/220",
+      "locally_phase_sensitive_near_zero": true,
+      "modular_frequency": "log(5/4)",
+      "modular_parameter_to_native_attempt_conversion_derived": false,
+      "modular_phase_period": "2*pi/log(5/4)",
+      "native_repair_generates_modular_parameter": false,
+      "phase_service": "ideal target for the native Palm reference modular action on the protocol algebra",
+      "readout": "existing Y readout after the actual first-moving-current stopped channel, conditioned on its 5/33 herald",
+      "single_probability_globally_identifies_phase": false
+    }
+  ],
   "ordered_phase_executions": [
     {
       "attempt_cap": 4,
@@ -1771,7 +1829,7 @@
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/relative_modular_dynamics/__init__.py": "f201a67b9b7787025793d212236054dca7c9b963153073afedc3b8f53c056673",
     "model/relative_modular_dynamics/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
-    "model/relative_modular_dynamics/construction.py": "1baa03ad65c26d00c155db00c7c7cafc72f6307ea27b84342e5ca2faf4987e70",
+    "model/relative_modular_dynamics/construction.py": "5901025228fd2ec2c0387ed9b8143e3cd88a89db65da5dde98b8af3c294e5053",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
     "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
     "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",

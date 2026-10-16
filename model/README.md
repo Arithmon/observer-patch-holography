@@ -68,9 +68,12 @@ The [native quantum transfer](native_quantum_history/README.md) and
 operator reconstruction, non-Gaussian current correlations and controlled
 logarithm comparisons. The [regional field construction](relative_observer_geometry/README.md)
 recovers local occupations from disclosed preparations and incident-current
-records, with compatible overlaps and explicit clock-comparison tests.
-These are observable consequences of the declared native instance; graph
-rank and cycle count do not establish a spatial dimension.
+records, with compatible overlaps and explicit clock-comparison tests. Those
+records also reconstruct an exact, unitless rank-three metric on the twelve
+ports: all thirty native exchange seams are exactly its shortest shell, and
+the native field generator is the sum of exchange terms on those edges. This
+is a finite spatial interpretation of the declared carrier, not a calibrated
+or extended space; a continuum spacetime is still open.
 
 [Local event clocks](relational_event_clock/README.md) tick on actual
 occupation changes at an observer port while remote repairs continue. Their
@@ -109,7 +112,12 @@ flow. Their finite covariance defect shows that these operations cannot
 simply be equated. The [transfer modular probe](transfer_modular_probe/README.md)
 executes a reference-derived modular flow on a reconstructed effective
 algebra. Reference choice, apparatus access and agreement with continuing
-observer records remain part of the physical identification problem.
+observer records remain part of the physical identification problem. An
+existing coherent preparation and Y readout give an exact, periodic response
+to an ideal modular-phase target: `1/2 - sin(s log(5/4))/140` for C and
+`1/2 - sin(s log(5/4))/220` for E. This is locally phase-sensitive but does
+not uniquely timestamp a phase or show that native repair advances it; no
+conversion to native attempts or physical duration is derived.
 
 The [observer federation](federated_observer/README.md) uses screen levels
 with 20, 80 and 320 elementary carriers. Its

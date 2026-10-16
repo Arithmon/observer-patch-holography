@@ -2559,6 +2559,20 @@
     },
     "unitary_continuation_is_native_CPTP_repair": false
   },
+  "finite_spatial_support": {
+    "edge_squared_chord_length": "2-2*sqrt(5)/5 in recovered unit Gram",
+    "every_native_exchange_term_is_geometrically_edge_local": true,
+    "logarithm_can_have_longer_range_terms": true,
+    "metric_record_count": 720,
+    "native_exchange_terms_checked": 30,
+    "native_generator_is_exact_sum_of_local_edge_terms": true,
+    "pair_shell_counts": {
+      "edge": 30,
+      "other": 36
+    },
+    "physical_length_scale_or_continuum_claimed": false,
+    "rank_three_unit_gram_certified": true
+  },
   "four_current_predictions": [
     {
       "Gaussian_matching_two_point_prediction": "84253/20323353600",
@@ -2788,12 +2802,13 @@
     "model/native_clock/clock.py": "e4e5780d549ad0972e5d9cb6f5c6b980d96c9a5090954b37599d073f20d02f99",
     "model/native_effective_fields/__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "model/native_effective_fields/__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
-    "model/native_effective_fields/construction.py": "78a4c71ae924c56cb0c5c7e3cae89382940129ab39f9e8a2a5e61dc8323066bd",
+    "model/native_effective_fields/construction.py": "d9d330ee3ca372e1766ab07e53fc79b9285d44e4c9598fd9b656657e956ddff7",
     "model/native_fluctuations/__main__.py": "143bc389270f4983ff83374b424dcf750de0d4ffacaea01102ff3cc01c4c4aba",
     "model/native_fluctuations/experiment.py": "3e248555159cdd0835d9e4ffd51ad3df8f7e928e8d3a127a905cfba032e2e13f",
     "model/native_fluctuations/source.py": "963281df213df670acf1d4d0368f71b929b3c97b88d94f696d999f6e8da6c86f",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",

@@ -20,12 +20,14 @@ import sympy as sp
 from ..native_clock import clock
 from ..native_fluctuations import experiment as fluctuations
 from ..native_fluctuations import source as currents
+from ..observer_reconstruction import native_geometry
 from ..observer.scalar_response.experiment import canonical
 from ..primitive_observer import runtime, transfer
 
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_PATHS = tuple(sorted(set((*clock.SOURCE_PATHS, *fluctuations.SOURCE_PATHS,
+    'model/observer_reconstruction/native_geometry.py',
     'model/native_effective_fields/__init__.py', 'model/native_effective_fields/__main__.py',
     'model/native_effective_fields/construction.py',
     'Lean/SourceLaw/TransferMatrixLift.lean', 'Lean/Dynamics/PrivateInner.lean'))))
@@ -176,6 +178,57 @@ def logarithm_audit():
         'finite_positive_generator_is_a_relativistic_mass_gap': False}
 
 
+def spatial_locality_audit():
+    """Join the record-recovered finite metric to the native field terms."""
+    geometry = native_geometry.recover(native_geometry.execute_calibration())
+    if not geometry['rank_three_unit_gram_recovered']:
+        raise ArithmeticError('record-recovered rank-three metric is unavailable')
+    encoded = geometry['gram_qsqrt5']
+    kernel = source_kernel()
+    edge_set = {tuple(sorted(edge)) for edge in kernel.seams}
+    shell_counts = {'edge': 0, 'other': 0}
+    for i in range(12):
+        for j in range(i+1, 12):
+            dot = encoded[i][j]
+            if (i, j) in edge_set:
+                if dot != ['0', '1/5'] or encoded[j][i] != ['0', '1/5']:
+                    raise ArithmeticError('a native exchange seam is not a shortest-shell metric pair')
+                shell_counts['edge'] += 1
+            else:
+                if dot not in (['0', '-1/5'], ['-1', '0']) or encoded[j][i] != dot:
+                    raise ArithmeticError('a non-edge is not on a longer recovered spatial shell')
+                shell_counts['other'] += 1
+    if shell_counts != {'edge': 30, 'other': 36}:
+        raise ArithmeticError('the rank-three metric does not separate source edges from other shells')
+    # Independently verify that each local contribution is exactly the
+    # identity-minus-swap term on that geometrically shortest edge.
+    index = {state: i for i, state in enumerate(kernel.states)}
+    identity = np.eye(66, dtype=np.int64)
+    summed = np.zeros((66, 66), dtype=np.int64)
+    for seam in kernel.seams:
+        swap = np.zeros((66, 66), dtype=np.int64)
+        a, b = seam
+        for column, state in enumerate(kernel.states):
+            changed = list(state)
+            changed[a], changed[b] = changed[b], changed[a]
+            swap[index[tuple(changed)], column] = 1
+        term = np.asarray(seam_term(seam), dtype=np.int64)
+        if not np.array_equal(term, identity-swap):
+            raise ArithmeticError('a native local field term escaped its shortest spatial edge')
+        summed += term
+    if not np.array_equal(summed, np.asarray(generator(), dtype=np.int64)):
+        raise ArithmeticError('the full native field generator is not the sum of its metric-edge terms')
+    return {'metric_record_count': geometry['record_count'],
+        'rank_three_unit_gram_certified': True,
+        'edge_squared_chord_length': '2-2*sqrt(5)/5 in recovered unit Gram',
+        'pair_shell_counts': shell_counts,
+        'native_exchange_terms_checked': len(kernel.seams),
+        'every_native_exchange_term_is_geometrically_edge_local': True,
+        'native_generator_is_exact_sum_of_local_edge_terms': True,
+        'logarithm_can_have_longer_range_terms': True,
+        'physical_length_scale_or_continuum_claimed': False}
+
+
 def _ports(ports):
     if (type(ports) is not tuple or not 1 <= len(ports) <= 4
             or any(type(p) is not int or not 0 <= p < 12 for p in ports)):
@@ -323,6 +376,7 @@ def run():
     return {'schema': 'oph.native_effective_fields.v1', 'all_pass': True,
         'source_sha256': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in SOURCE_PATHS},
         'local_source_field': local_field_audit(), 'controlled_logarithm': logarithm_audit(),
+        'finite_spatial_support': spatial_locality_audit(),
         'observer_record_spectral_reduction': record_spectral_reduction(),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],

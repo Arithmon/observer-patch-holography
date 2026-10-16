@@ -119,6 +119,21 @@ measurement are explicit apparatus choices. Both C and E are ordinary
 quantum instruments. Their separation is a test of the chosen record law,
 not a novel prediction distinguishing OPH from quantum mechanics.
 
+Neither new finite result currently has a valid comparison with publicly
+available physical data. The C/E protocol requires a specific coherent
+12-port preparation, native fair-coin repair, committed coin/current record,
+source-projector readout and complete attempted-trial counts; no matching
+dataset or calibrated implementation is supplied. The
+[incident-clock field construction](../observer_time_fields/README.md) predicts
+local laws in dimensionless incident-repair counts, while the
+[screen comparison](../native_action/INCIDENT_REFINEMENT.md) is conditional on
+source port maps, matched initial local/reference states and a particular
+incident-event record interface. There is no physical calibration connecting
+those quantities to published laboratory time, position or field readouts.
+The ideal modular-phase target is a supplied reference in a separate finite
+model, and the CODATA endpoint comparison below is retrospective; neither is
+an empirical test of these incident-clock results or the C/E protocol.
+
 The protocol uses event order: preparation, one repair, then readout. It
 requires no conversion of a solver counter to physical seconds. A laboratory
 implementation must nevertheless implement and calibrate those operations.

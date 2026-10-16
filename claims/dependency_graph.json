@@ -2981,6 +2981,11 @@
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
       "to": "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
       "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+    },
+    {
+      "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "to": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+      "role": "supplies the existing native endpoint repair, fair coin and committed current record semantics; the clock and field protocol adds its own declared schedule and observer region."
     }
   ]
 }
