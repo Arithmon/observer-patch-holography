@@ -53,6 +53,12 @@ normalization or success conditioning supplies these certificates.
 - Caller-owned writable arrays are copied before value/hash validation.
   A deterministic mutation at the former hash/copy boundary is rejected;
   the checked snapshot is exactly the returned snapshot.
+- Nested record types are checked before equality or serialization. A
+  string subclass with the genuine source payload could otherwise relabel
+  the caller's history during comparison while preserving its digest.
+  Statistics and summaries consume the validated snapshot. The retained
+  nonconcurrent exploit is rejected before its callback runs, alongside a
+  valid source-law control; the former reader accepted the wrong interval.
 - Initial field disclosure must include both subsequently read ports. All
   four initial labels, including zero-probability continuations, remain in
   the output. Signed-current readback is checked against source transitions.

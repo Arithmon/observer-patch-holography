@@ -238,3 +238,84 @@ def test_counter_guards_and_original_integer_array_dispatch():
     actual = f.execute(cap=1, ticks=1)
     with pytest.raises(ValueError):
         f.validate_execution(replace(actual, counts=actual.counts.view(DispatchTrap)))
+
+
+def test_status_subclass_cannot_relabel_the_original_history_during_validation():
+    produced = f.execute(cap=1, ticks=1, grid_bits=40, initial=(1, 12))
+    genuine_interval = f.field_statistics(produced)['moments'][(0,)]
+    assert genuine_interval[0] <= F(62, 65) <= genuine_interval[1]
+
+    class RelabelAtComparison(str):
+        calls = 0
+        victim = None
+        replacement = None
+
+        def __eq__(self, other):
+            self.calls += 1
+            self.victim.__dict__['records'] = self.replacement
+            return str.__eq__(self, other)
+
+        __hash__ = str.__hash__
+
+    label, word, original_status = produced.records[0]
+    status = RelabelAtComparison(original_status)
+    declared = ((label, word, status), *produced.records[1:])
+    claimed = replace(produced, records=declared)
+    status.victim = claimed
+    status.replacement = tuple((label, tuple(1-bit for bit in word), state)
+                              if state == 'complete' else (label, word, state)
+                              for label, word, state in produced.records)
+    # JSON encodes the same string payload, so source hashes alone cannot
+    # reject this object. On the old reader the callback relabelled the
+    # caller after budget() validated its copy, producing a wrong field law.
+    assert f._seal(claimed) == produced.seal
+    with pytest.raises(ValueError, match='record'):
+        f.field_statistics(claimed)
+    assert status.calls == 0
+    assert claimed.records is declared
+
+
+@pytest.mark.parametrize('location', ('record', 'label', 'word', 'label_bit', 'word_bit',
+                                     'status', 'seal', 'cap', 'initial'))
+def test_original_record_grammar_and_header_types_reject_callbacks_before_dispatch(location):
+    class TupleTrap(tuple):
+        def __iter__(self):
+            raise AssertionError('tuple subclass iterated before type rejection')
+
+        def __eq__(self, other):
+            raise AssertionError('tuple subclass compared before type rejection')
+
+    class IntTrap(int):
+        def __eq__(self, other):
+            raise AssertionError('integer subclass compared before type rejection')
+
+        def __bool__(self):
+            raise AssertionError('integer subclass tested before type rejection')
+
+    class StringTrap(str):
+        def __eq__(self, other):
+            raise AssertionError('string subclass compared before type rejection')
+
+    original = f.execute(cap=1, ticks=1, grid_bits=40, initial=(1, 12))
+    if location in ('seal', 'cap', 'initial'):
+        changed = {'seal': StringTrap(original.seal), 'cap': IntTrap(original.cap),
+                   'initial': TupleTrap(original.initial)}[location]
+        supplied = replace(original, **{location: changed})
+    else:
+        label, word, status = original.records[-1]
+        if location == 'label':
+            label = TupleTrap(label)
+        elif location == 'word':
+            word = TupleTrap(word)
+        elif location == 'label_bit':
+            label = (IntTrap(label[0]), label[1])
+        elif location == 'word_bit':
+            word = (IntTrap(word[0]),)
+        elif location == 'status':
+            status = StringTrap(status)
+        record = (label, word, status)
+        if location == 'record':
+            record = TupleTrap(record)
+        supplied = replace(original, records=(*original.records[:-1], record))
+    with pytest.raises(ValueError):
+        f.validate_execution(supplied)

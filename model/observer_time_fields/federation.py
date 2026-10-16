@@ -282,7 +282,23 @@ def validate_execution(result):
     # Otherwise a mutation between hashing and copying could evade replay.
     result = replace(result, counts=_immutable_int(result.counts))
     scale = _parameters(result.cap, result.ticks, result.grid_bits, result.feedback, result.initial)
-    if (type(result.records) is not tuple or result.records != records(result.ticks)
+    expected_records = records(result.ticks)
+    if type(result.records) is not tuple or len(result.records) != len(expected_records):
+        raise ValueError('a complete immutable original record menu is required')
+    # Validate every nested original type before equality or JSON encoding.
+    # A str/int/tuple subclass can compare like a source value while executing
+    # callbacks, and JSON may encode its underlying value without that type.
+    for record in result.records:
+        if type(record) is not tuple or len(record) != 3:
+            raise ValueError('original record triples are required')
+        label, word, status = record
+        if (type(label) is not tuple or len(label) != 2
+                or any(type(bit) is not int or bit not in (0, 1) for bit in label)
+                or type(word) is not tuple or len(word) > result.ticks
+                or any(type(bit) is not int or bit not in (0, 1) for bit in word)
+                or type(status) is not str or status not in ('complete', 'timeout')):
+            raise ValueError('original binary record labels, words and status strings are required')
+    if (result.records != expected_records
             or type(result.counts) is not np.ndarray or result.counts.dtype != np.int64
             or result.counts.shape != (len(_source().states), len(result.records))
             or np.any(result.counts < 0) or sum(map(int, result.counts.ravel())) > scale
@@ -333,6 +349,7 @@ def _partitions(items):
 
 def field_statistics(result):
     """Directed eventual moments and cumulant from all complete field words."""
+    result = validate_execution(result)
     proof = budget(result)
     probabilities = {word: F(0) for word in product((0, 1), repeat=result.ticks)}
     for (_, word, status), mass in zip(result.records, proof['per_record_mass_lower'], strict=True):
@@ -501,6 +518,7 @@ def transfer_certificate():
 
 
 def _summary_execution(result):
+    result = validate_execution(result)
     proof = budget(result)
     fields = field_statistics(result)
     data = _source()
