@@ -108,6 +108,17 @@ restrictions are necessary; a uniform global total-two preparation dilutes
 locally as the screen grows. An all-level routing argument and a controlled
 nontrivial physical scaling regime remain open.
 
+The [incident-clock attachment](native_action/INCIDENT_REFINEMENT.md) compares
+these actual screens after the same number of local repair opportunities,
+without supplying a duration per operation. Its stopped-word identity and
+source boundary counts bound the complete quantum and record output, including
+local feedback and untouched references. Four incident ticks give a pair
+allowance below `6.656e-9`. A compatible density-`1/3` preparation supplies a
+certified nonzero two-time field covariance, while full-screen executions
+retain the actual seam scheduler, current records, feedback repair costs,
+timeouts and serialized continuation. This closes the finite clock/refinement
+connection; the all-level physical interpretation obligations remain separate.
+
 The [local event clock](relational_event_clock/README.md) counts actual
 occupation changes at one observer port. Its stopped instrument retains
 remote repairs during the wait, finite timeouts and conditional quantum
