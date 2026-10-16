@@ -433,7 +433,6 @@
       ],
       "exact_timeout_mass": "20/27",
       "external_attempt_cutoff_supplied": true,
-      "fixed_probe_computed_half_nuclear_error_upper_diagnostic": 8.637477307467852e-17,
       "fixed_probe_half_nuclear_error_upper": "1/1000000000000",
       "incident_ticks_required": 2,
       "local_phase_service_supplied": true,
@@ -445,7 +444,7 @@
       "phase_feedback_changes_local_root_output": true,
       "private_terminal_tapes": 25,
       "remote_native_updates_retained": true,
-      "serialized_timeout_continuation_residual_diagnostic": 0.0,
+      "serialized_timeout_continuation_error_upper": "1/1000000000000",
       "untouched_reference_dimension": 2
     },
     {
@@ -881,7 +880,6 @@
       ],
       "exact_timeout_mass": "20/27",
       "external_attempt_cutoff_supplied": true,
-      "fixed_probe_computed_half_nuclear_error_upper_diagnostic": 7.352496954892439e-17,
       "fixed_probe_half_nuclear_error_upper": "1/1000000000000",
       "incident_ticks_required": 2,
       "local_phase_service_supplied": true,
@@ -893,7 +891,7 @@
       "phase_feedback_changes_local_root_output": false,
       "private_terminal_tapes": 25,
       "remote_native_updates_retained": true,
-      "serialized_timeout_continuation_residual_diagnostic": 0.0,
+      "serialized_timeout_continuation_error_upper": "1/1000000000000",
       "untouched_reference_dimension": 2
     }
   ],
@@ -2933,7 +2931,7 @@
     "model/native_action/construction.py": "b05c885a104f36f1bf68b288a58d6c16d86678a19ae8867e544df5c22d82039c",
     "model/native_action/incident_refinement.py": "d0a0923564532bfc166a4d239572e63e41ee8b847dc9b3bf392aeb409a737c54",
     "model/native_action/screen_compatibility.py": "976501acc55afdf07c6a5f2569f4e515c81ba50eafaf0e254ca653b5cffc610c",
-    "model/native_action/stopped_control.py": "77db8453aeb5c90b507fb9770a5da9112c4cc676299e545e83e1b6f1f76cc69b",
+    "model/native_action/stopped_control.py": "d2a3de3f0c841b70656b78df3edf8431e305d126aec0ac7cca57308852791282",
     "model/native_quantum_history/construction.py": "bb8840c091de9d604bea40baccb695b8fddff0f212fddf6fc72132718d16c54e",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",

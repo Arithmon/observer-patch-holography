@@ -120,6 +120,13 @@ def test_receipt_rejects_numerically_normalized_timeout_family(monkeypatch):
         c.run()
 
 
+@pytest.mark.parametrize('bad', (float('nan'), -F(1), F(1, 10**10)))
+def test_nonfinite_negative_or_excessive_continuation_error_cannot_certify(monkeypatch, bad):
+    monkeypatch.setattr(c, 'continuation', lambda law: bad)
+    with pytest.raises(ArithmeticError, match='serialized timeout continuation'):
+        c.run()
+
+
 @pytest.mark.parametrize('value', (True, 0, 5, 3.0, F(3), np.int64(3)))
 def test_original_bounded_cap_required(value):
     with pytest.raises(ValueError):

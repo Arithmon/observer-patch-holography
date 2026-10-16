@@ -141,7 +141,17 @@ def continuation(law):
     full, _ = program(law, (2, 1, 0, 2, 0))
     extended = runtime.branch_experiment(restored, full.events[len(prefix.events):],
         name='incident_timeout_continued', binding={'additional_attempts': 2})
-    return runtime.complete_distance(runtime.execute(full, initial=initial), extended)
+    direct = runtime.execute(full, initial=initial)
+    if direct.records != extended.records:
+        raise ArithmeticError('continuation changed the complete record alphabet')
+    # Sum entrywise absolute real/imaginary differences BEFORE rounding a
+    # subtraction. Each matrix unit has nuclear norm one, so half this sum
+    # is a rigorous complete-output trace-distance upper bound for the two
+    # represented histories, not an eigensolver diagnostic.
+    return sum((abs(F(float(x.real))-F(float(y.real)))
+                +abs(F(float(x.imag))-F(float(y.imag)))
+                for a, b in zip(direct.branches, extended.branches, strict=True)
+                for x, y in zip(a.density.flat, b.density.flat, strict=True)), F(0))/2
 
 
 def run():
@@ -162,15 +172,14 @@ def run():
         if timeout != F(20, 27) or error > F(1, 10**12):
             raise ArithmeticError('complete probe output differs from its exact stopped law')
         resumed = continuation(law)
-        if resumed > 1e-12:
+        if type(resumed) is not F or not 0 <= resumed <= F(1, 10**12):
             raise ArithmeticError('serialized timeout continuation changed the retained output')
         rows.append({'candidate': law, 'cap_global_attempts': 3, 'incident_ticks_required': 2,
             'carrier': 'declared four-port path; uniform scheduler on its three seams only',
             'observer_outcomes': len(outcomes()), 'private_terminal_tapes': len(schedules()),
             'all_input_matrix_units': 256, 'arbitrary_reference_extension': 'linearity of exact CP maps',
             'exact_timeout_mass': str(timeout), 'fixed_probe_half_nuclear_error_upper': '1/1000000000000',
-            'fixed_probe_computed_half_nuclear_error_upper_diagnostic': float(error),
-            'serialized_timeout_continuation_residual_diagnostic': resumed,
+            'serialized_timeout_continuation_error_upper': '1/1000000000000',
             'observer_sees_private_schedule': False, 'remote_native_updates_retained': True,
             'external_attempt_cutoff_supplied': True, 'local_phase_service_supplied': True,
             'phase_feedback_changes_local_root_output': law == 'C',

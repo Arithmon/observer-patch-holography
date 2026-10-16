@@ -196,6 +196,17 @@ def test_retained_rational_receipt_and_material_forgery_rejected():
     actual = c.run()
     retained = strict_json.load(Path(__file__).with_name('incident_results.json'))
     compare_receipt(retained, actual)
+    def exact_types(value):
+        # The shared float-diagnostic tolerance must not certify altered
+        # reported errors above this packet's fixed 1e-12 allowance.
+        assert type(value) in (dict, list, str, int, bool)
+        if type(value) is dict:
+            for item in value.values():
+                exact_types(item)
+        elif type(value) is list:
+            for item in value:
+                exact_types(item)
+    exact_types(actual)
     for mutate in (
         lambda r: r['geometry'].__setitem__('record_and_field_support_ports', 12),
         lambda r: r['complete_stopped_quantum_history_comparison'][2].__setitem__(
@@ -203,6 +214,8 @@ def test_retained_rational_receipt_and_material_forgery_rejected():
         lambda r: r['finite_density_fields']['responses'][3].__setitem__(
             'either_full_screen_connected_field_interval', ['0', '0']),
         lambda r: r['scope'].__setitem__('field_covariance_execution_is_diagonal_sector', 1),
+        lambda r: r['complete_quantum_clock_controls'][0].__setitem__(
+            'fixed_probe_half_nuclear_error_upper', '1/10000000000'),
     ):
         wrong = deepcopy(retained)
         mutate(wrong)
