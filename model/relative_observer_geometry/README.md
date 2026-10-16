@@ -139,11 +139,13 @@ recovered unweighted graph gives exactly the **same thirty seam interfaces**
 used by the field counters; its exact slow response Gram has rank three.
 This reuses [`observer_reconstruction/native_geometry.py`](../observer_reconstruction/native_geometry.py),
 including its supplied uniform-seam calibration and twelve preparations with
-both loads at one port. Those calibrations live in the larger total-two sector,
+both loads at one port. The separate [single-carrier readout](intrinsic_geometry.py)
+removes uniform seam exposure and fair calibration coins as requirements for
+recovering this structural metric, as explained below. Those calibrations live in the larger total-two sector,
 not the binary history sector. They connect two uses of the same endpoint rule
 and labeled interfaces; they are not measurements on these same five-step
-histories. No target coordinate array enters the reconstruction. The exact
-unit Gram matrix `X=4P` supplies a finite Euclidean spatial interpretation up
+histories. No target coordinate array enters the reconstruction. The selected
+slow-band unit Gram matrix `X=4P` supplies a finite Euclidean spatial interpretation up
 to orthogonal isometry. Its 66 unordered port pairs fall into exact shells:
 
 | Graph shell | Pair count | Squared chord length in the recovered unit Gram |
@@ -168,6 +170,87 @@ not a measurement of the dimension of physical space. It supplies no
 physical length unit, global spacetime, Lorentz cone, signal-speed law or
 continuum limit. The time readouts below remain record parameters, and the
 metric reconstruction uses a separately disclosed calibration preparation.
+
+### What one carrier establishes without a federation
+
+One carrier suffices for the finite record algebra, local modular flow,
+current/occupation identities, the exact response Gram and its spatial shells.
+Two regional observers can also be restrictions of that **same carrier**;
+their record agreement does not require a network of carrier copies. None of
+these local results needs the spherical federation construction below.
+
+The independently replayable [single-carrier result](intrinsic_results.json)
+also reduces the calibration premises. Let `w(p,e)>0` be the recorded exposure
+of seam `e=(a,b)` in preparation `2e_p`, and let `j` be its current. Every
+endpoint difference is even, so the native rule gives
+`j=1[p=a]-1[p=b]` for either coin. Dividing the joint record law by `w(p,e)`
+gives the conditional current, and hence
+
+\[
+L_{\cdot p}=\sum_{e=(a,b)}\mathbb E[j\mid p,e](e_a-e_b).
+\]
+
+This reconstructs the same unweighted Laplacian and exact rank-three Gram
+even when each preparation has a different seam schedule and its coins are
+biased or deterministic. The executable runs 540 native branches with such
+protocols and obtains exactly the original Gram. It uses no target coordinates
+or source incidence table in the estimator.
+
+The deterministic calibration current permits a further simplification:
+**one native shot per preparation and seam**, 360 in total, recovers the same
+Gram without probabilities in its input records. Conditional current variance
+is exactly zero for these known even preparations, so empirical exposure
+weights introduce no sampling error in the declared native model. Tests also
+run every setting with coin zero alone and coin one alone, and with unequal
+repetition counts. Known preparations, authenticated records and complete seam
+coverage remain required. A missing seam does not inherit the carrier
+certificate; contradictory currents are rejected. This is a noiseless native
+model result. Laboratory preparation and detector errors need a separate
+error model; no experimental accuracy claim follows from the 360-shot result.
+The seam labels disclose which endpoints interact. This is geometry recovered
+from that accessible interface and its currents; it does not derive the
+carrier architecture or its observation services from self-reference.
+
+This premise reduction concerns the **structural readout**, not the dynamics
+under every scheduler. Doubling the weight of one seam gives the actual mean
+response `T'=I-(L+bbᵀ)/62`, with `b=e_a-e_b`. The correction `bbᵀ` is positive
+and annihilates constants, so it cannot lower the first nonconstant eigenvalue
+`5-sqrt(5)`. Exact elimination over `Q(sqrt(5))` shows that its multiplicity
+falls from three to **two**. The two remaining modes are therefore slowest;
+the normalized long-attempt response has rank two. This is checked for each
+of the thirty possible doubled seams. Thus arbitrary positive exposure does
+not establish a three-dimensional slow response. A native slow-band claim
+needs the spectral certificate for its actual scheduler. Exposure removal
+still recovers the original structural rank-three Gram from those records.
+
+The meaning of “spatial readout” also matters. All modes of the same recovered
+response give the exact inverse-response Gram
+
+\[
+G=(L+\mathbf1\mathbf1^T/12)^{-1}-\mathbf1\mathbf1^T/12,
+\qquad R_{ab}=G_{aa}+G_{bb}-2G_{ab}.
+\]
+
+The executable verifies `LG=I-11ᵀ/12` exactly. Since `L` is positive on the
+eleven-dimensional constant-free subspace, `G` is a positive Gram of rank
+**eleven**. The squared Euclidean distances `R` have shells `11/30`, `7/15`
+and `1/2`, with the same pair counts 30, 30 and 6. Equivalently, solving
+`Lv=e_a-e_b` with zero mean gives `v_a-v_b=R_ab`, checked on every pair.
+This is an alternative response-derived metric, not an executed ruler
+apparatus. It does not contradict the specified slow-band theorem: that
+theorem selects its own spectral readout. It shows why the word “dimension”
+must name the readout, rather than infer a physical bulk dimension from one
+Gram rank.
+
+A continuum claim needs a scale family or another limit construction with
+compatible observable laws, effective locality and controlled errors. It
+does **not** require this particular federation architecture, or even several
+observers at each regulator. A single observer can access an enlarging family
+of regions. The current federation is a conditional way to study extension,
+joint records and boundary effects; it adds supplied inter-carrier routing
+and does not by itself close the physical-space obligation. The smallest
+decisive work can therefore remain on one carrier until an extension is
+needed for a stated observable or limiting claim.
 
 ### Transport through source refinement
 
@@ -236,20 +319,23 @@ limit. Similarly, the finite representation in
 has its own supplied operator extension and flow parameter; record ordering
 does not identify that parameter with these local ticks.
 
-The concrete advance is operational: absolute native fields have an
-observer-visible readback construction under an explicit preparation/access
-contract, compatible local restrictions, complete continuing records, and a
-testable clock comparison domain. This is model-level evidence, not a new
-empirical comparison. The next step is to connect these record-accessible
-fields and clock domains to the model's effective propagation and modular
-descriptions while preserving their joint history and stated premises.
+Absolute native fields have an observer-visible readback construction under
+an explicit preparation/access contract, compatible local restrictions,
+complete continuing records, and a testable clock comparison domain. The
+single-carrier structural Gram is invariant under the admitted changes of
+calibration exposure; the native dynamical slow band need not be. Connecting
+these field and clock readouts to one effective spacetime description remains
+an open obligation, with the joint observable laws and their premises held
+fixed. These are finite model results without an empirical comparison.
 
 ## Reproduce
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/relative_observer_geometry
 ```
 
-`results.json` binds its producer, runtime, native source, response recovery and
-the cited Lean interfaces by SHA-256. `manifest.json` binds every packet file.
+Each result binds its producer and relevant native sources by SHA-256;
+`results.json` also binds its runtime and cited Lean interfaces.
+`manifest.json` binds every packet file.

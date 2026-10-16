@@ -86,6 +86,91 @@ original discrete scheduler, the exact transfer remains `I-H_native/M`;
 replacing it by `exp(-H_native/M)` would change predictions. The logarithm
 of a transfer, when defined, also differs from this local sum.
 
+## An exact action representation of each finite observation history
+
+The source instrument also has a **unitary history representation**, already
+on one elementary carrier. Dissipation of the retained source state does not
+exclude such a representation when its discarded record environment is kept.
+The [exact construction](history_action.py) supplies a dimensionless Hermitian
+action for it. This reuses finite instrument dilation and the composition
+principle of [quantum networks](https://arxiv.org/abs/0904.4483); it is a concrete
+attachment to the C/E endpoint maps, rather than a new general dilation theorem.
+The [existing source compiler](../observer/source_discrimination/README.md)
+separately realizes those committed instruments with charged coherent services.
+
+Write each native seam Kraus operator as `K_alpha=W_alpha/sqrt(2)`, where
+`W_alpha` is an integer matrix computed from the endpoint update and the C/E
+record dictionary. Its label retains the fair coin and the hidden candidate
+record as well as the visible current. Stacking these matrices gives
+`W*W=2I`; therefore `V=W/sqrt(2)` is an isometry. On
+`H_output direct_sum H_input`, set
+
+```text
+D = I-V V*,             U = [[D,V],[V*,0]],
+P_minus = (I-U)/2,       A_0 = pi P_minus.
+```
+
+The exact identities `D*=D`, `D²=D`, `DV=0` and `V*V=I` give
+`U*=U`, `U²=I` and `exp(-i A_0)=U`. An input in the second summand is mapped
+to `V psi` in the first. Reading its current label and tracing the remaining
+label gives exactly the native selective CP map, including its disturbance.
+The completion has dimension 20 for C and 28 for E on the two active binary
+ports. Spectator ports are extended by identity; no federation is required.
+This direct sum is an encoding space, not a derived additional physical sector.
+
+**Complete observation contract.** For an arbitrary density matrix on the
+source and an untouched reference, projection onto each current label and
+partial trace of its hidden label gives
+`sum_(alpha:current=j) (K_alpha tensor I) rho (K_alpha* tensor I)`.
+This is an identity of linear maps, not just of outcome probabilities.
+Suppose complete unnormalized branches agree up to a given event. Apply
+the same next intervention on each accessible record branch, retaining its
+outcomes and any controller memory, and then the same local instrument.
+Linearity gives equality of every resulting branch. Induction proves equality
+of all final records and quantum outputs for every finite adaptive protocol
+using those declared interventions. Fresh hidden labels are retained at each
+event; resetting an old environment without accounting for its information
+would change the contract. No protocol may gain access to those hidden labels
+merely because a representation stores them.
+
+The execution checks a two-repair protocol on three ports: the first current
+chooses the next seam and a local phase operation. All 64 input matrix units
+and every complete current word agree exactly with a separate floor/ceiling
+recursion. The shared runtime also reproduces the full terminal states with
+an entangled untouched reference and a serialized checkpoint. Thus the
+representation preserves sequential observations and feedback, not only one
+unread channel. Arbitrary coherent interference between hidden record labels
+is an additional experiment, outside this equality's accessible-record scope.
+
+**What this action determines.** This construction needs no additional law to
+reproduce the existing native event boundaries. It chooses a completion of
+the source isometry. A finite implementation may choose such a completion;
+uniqueness is not a requirement for implementing the instrument. However,
+intermediate evolution in that completion is not determined by those event
+observations. With `P_plus=(I+U)/2`, every
+`A_m=pi P_minus+2 pi m P_plus`, for integer `m`, has the same endpoint `U`.
+For an initial input-sector vector, the probability of returning to that
+sector at interpolation parameter `theta` is
+
+```text
+[1+cos((pi-2 pi m) theta)]/2.
+```
+
+At `theta=1/3`, the positive actions `A_0` and `A_2` give respectively `3/4`
+and `0`. This discrimination requires an intermediate read of the auxiliary
+completion sector. Every allowed native-boundary observation, including
+adaptive ones, remains identical. The example limits an inference to new
+intermediate readouts; it does not reject a valid chosen implementation.
+
+The dimensionless gate action, local dissipative Liouville form, path
+surprisal and transfer logarithm are different objects. The construction
+supplies no autonomous source Hamiltonian, lab seconds, `hbar` normalization,
+Lorentzian spacetime action or continuum field limit. It also does not make
+the necessary record storage, preparation and control services free. Such a
+physical identification must preserve the declared observation and resource
+contract. The existing nonpositive fractional transfer-step result constrains
+that reduced transfer; it does not prohibit this enlarged history realization.
+
 ## Exact path weights and the optional continuous parameter
 
 An optional bookkeeping construction gives each seam an independent
@@ -394,6 +479,7 @@ continuum limit, emergent physical dimension or relativistic spacetime.
 
 ```sh
 python -m model.native_action --check model/native_action/results.json
+python -m model.native_action.history_action --check model/native_action/history_action_results.json
 python -m model.native_action.screen_compatibility --check model/native_action/screen_results.json
 python -m model.native_action.incident_refinement --check model/native_action/incident_results.json
 python -m pytest -q -W error model/native_action

@@ -8,6 +8,30 @@ recovery and an OPH-specific empirical confirmation remain open. Fields and
 spacetimes are effective descriptions of observations; no fundamental field
 or preferred universal physical clock is required.
 
+## What can be established on one carrier
+
+Federations are not required for local observer, clock or geometry proofs.
+One twelve-port carrier supports the finite contracts below. A federation
+tests how such contracts extend across more carriers; the particular spherical
+wiring is a candidate construction rather than a premise of all observer
+physics. An extended effective spacetime requires compatible observations
+over larger domains and controlled approximation errors, regardless of which
+construction realizes those domains.
+
+| Bridge | Exact finite result | Scope |
+| --- | --- | --- |
+| Records to spatial structure | One exact native shot per even preparation and seam, 360 shots total, reconstructs the unweighted response and rank-three slow-band Gram. Exposure normalization also recovers it from biased complete laws. | Known even-load preparations, complete records and coverage of every seam are required. Uniform seam weights and fair coins are unnecessary for this structural readout. |
+| Spatial structure to clock records | On the uniform total-two carrier, the long-run covariance of local tick counts distinguishes the three native graph-distance shells. | The result concerns movement-count time and the stated native instrument; it is independent of a choice of seconds. |
+| Repair to history action | Each native endpoint instrument has an explicit unitary completion and a dimensionless Hermitian action whose event-boundary histories reproduce the complete record-conditioned process. | The environment and records are retained. This is an exact representation of the finite instrument, with no autonomous carrier Hamiltonian or relativistic interpolation inferred. |
+| Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. | An independently matched apparatus and paired laboratory records are required for an empirical clock comparison. |
+
+These results make the finite construction more coherent and reduce particular
+input requirements. They do not establish that its observations admit the
+measured relativistic field and gravitational descriptions. Unit conventions
+and nonunique representations are legitimate design freedoms. The substantive
+test is whether the chosen observation, intervention, clock and spatial maps
+give compatible measurement laws in the claimed physical regime.
+
 ## What the inputs supply
 
 Architecture, observer implementation and the complete repair law define an
@@ -90,6 +114,25 @@ term lies on a shortest-shell edge and that their sum is exactly the finite
 field generator. The metric is reconstructed from a distinct calibration
 preparation, and the logarithm itself can contain longer-range terms.
 
+The [single-carrier geometry audit](relative_observer_geometry/README.md)
+removes the uniform-exposure premise from structural reconstruction. Dividing
+the current response by each seam's measured positive exposure recovers the
+unweighted Laplacian. Even preparations `2 e_p` also remove the coin-fairness
+requirement for this readout. Their currents are deterministic under the
+native rule, so 360 executed shots, one per preparation and seam, recover the
+same metric without a probability-law oracle. This exact finite protocol has
+no native sampling error; laboratory preparation and detector errors require
+their own bounds. Port/seam labels disclose the incidence being probed.
+The calibration uses the existing integer-load preparation `2 e_p`, outside
+the binary sector used by the quantum clocks. These results share the native
+load rule and graph; they do not construct one quantum extension across both
+preparation domains. The calibration does not make the actual dynamics independent of its
+schedule: doubling one seam's weight splits the slowest positive response
+from multiplicity three to two. The inverse of the full unweighted response
+also gives an exact resistance geometry with centered Gram rank eleven.
+Thus the rank-three metric describes the chosen slow-band readout, rather
+than selecting the physical dimension of every possible observation.
+
 The [native quantum action](native_action/README.md) instead acts on the full
 binary operator algebra. For specified seam channels `Phi_e`,
 `H_native=sum_e(I-Phi_e)` has positive local terms, exclusion coupling and
@@ -99,6 +142,19 @@ Independent rate-one Poisson attempts on each seam give `exp(-s H_native)`
 exactly, with auxiliary expected-attempt parameter `s` per seam. This is a
 local Liouville action, not a state-vector Hamiltonian or Lorentzian action.
 Poissonization is a scheduler extension, not an inferred physical clock.
+
+The [unitary history representation](native_action/README.md) supplies a
+different action directly from each native instrument. Its Kraus isometry has
+an explicit self-adjoint unitary completion `U`; with `P_minus=(I-U)/2`,
+`A_0=pi P_minus` satisfies `exp(-i A_0)=U`. Keeping fresh branch records
+reproduces every finite adaptive instrument history and its untouched
+reference outputs. The source-to-output isometry is fixed by repair; the
+completion on the unused subspace is a representation choice. For example,
+`A_0` and `A_0+4 pi P_plus` give identical native endpoints but different
+auxiliary intermediate-parameter readings. Those extra readings are outside
+the native observation contract. This constructs a dimensionless finite
+history action without deriving a spacetime action or adding intermediate
+physical measurements to the model.
 
 ## Local clocks and complete quantum memory
 
@@ -111,6 +167,24 @@ while relative seam weights and finite-cap costs can matter. Native
 attempt count, local event count, modular parameter and calibrated duration
 remain distinct.
 
+On the full single-carrier total-two sector, count every moving repair as one
+reference event and each change of port `v` as one tick `K_v`. The
+[local-clock comparison](native_clock/README.md) derives
+`K_v(n)/n -> 1/6` from any initial configuration under the uniform seam
+schedule. An exact Poisson-equation correction bounds the finite bias and
+fluctuations. Neither an independent random clock nor an exact stationary
+preparation is supplied. Independently inserted identity holds do not change
+these movement-indexed laws; state-dependent changes of relative seam weights
+fall outside the result.
+
+More strongly, the asymptotic covariance `Cov(K_u(n),K_v(n))/n` has four
+distinct values for graph distances zero through three:
+`357011/1309500`, `11281/261900`, `-98989/1309500`, and
+`-144091/1309500`. Its off-diagonal shells contain 30 adjacent pairs,
+30 distance-two pairs and six antipodal pairs. This connects clock
+fluctuations and the native spatial relation on the same continuing process.
+It is an exact long-run law, not a finite-data estimate of physical distance.
+
 These source laws are indexed by discrete attempts or recorded events. For
 every positive scale `tau`, relabelling an attempt index `n` as duration
 `t=tau*n` leaves all source records unchanged; the repair law contains no
@@ -120,6 +194,14 @@ needed to test a clock conversion. Such a comparison needs an operationally
 matched apparatus, joint event/time records and independently bounded service
 and timing errors. The separate anharmonic-data comparison uses a supplied
 Hamiltonian and does not calibrate this native clock.
+
+Choosing seconds is a unit convention, not a missing dynamical theorem.
+After calibrating one matched clock on separate data, other local tick
+ratios, fluctuations and conditional record laws become tests without a
+second fitted rate. A laboratory attachment must establish which physical
+preparations, events and interventions realize these source operations.
+Timestamping a software run measures its host execution; it does not by
+itself identify the observer's clock with that of a physical system.
 
 [Event circulation](event_circulation/README.md) derives circulation statistics
 from movement records in one continuing history. Its event-stationary Palm

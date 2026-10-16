@@ -3078,7 +3078,7 @@
           "PR-84",
           "PR-85"
         ],
-        "constructed": "Native counting and bounded scheduling results retain their declared reference and fairness/resource classes. The native observer declares its two-event tape and halting rule. The correctable-record evaluator gives 11 reachable terminal words and 16 prefixes under its binary preparation, with a lossless four-bit classical prefix encoding.",
+        "constructed": "Native counting and bounded scheduling results retain their declared reference and fairness/resource classes. The native observer declares its two-event tape and halting rule. The correctable-record evaluator gives 11 reachable terminal words and 16 prefixes under its binary preparation, with a lossless four-bit classical prefix encoding. On one carrier, complete even-load calibration laws reconstruct the unweighted structural response after dividing out each positive seam exposure. This removes uniform scheduling and fair-coin requirements for that structural readout; complete known preparations and full seam exposure remain. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors.",
         "remaining": "Select the scheduler and complete path reference actually used. Adaptive repair, fixed-node attempts and the canonical Hamiltonian are different branches; their resource hypotheses are not automatically interchangeable.",
         "closure": "Declare one branch and prove its fairness, locality and attempt/waste bounds on complete histories, charging all operations.",
         "sources": [
@@ -3102,10 +3102,15 @@
           {
             "path": "model/observer/test_observer_capacity.py",
             "label": "Independent capacity checks"
+          },
+          {
+            "path": "model/relative_observer_geometry/intrinsic_geometry.py",
+            "label": "Single-carrier exposure-normalized geometry and scheduling control"
           }
         ],
         "claims": [
-          "OPH-MODEL-OBSERVER-RECORD-CAPACITY"
+          "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+          "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
         ]
       },
       {
@@ -3256,7 +3261,7 @@
           "PR-45",
           "PR-66"
         ],
-        "constructed": "Same-capacity linear reversible dynamics gives the displayed canonical Hamiltonian. Existing action-to-Hamiltonian and field-clock conversions remain proved under their own hypotheses. Three-mode curvature and an exact distance-two stiffness-response coefficient distinguish the I+epsilon A counterfamily after common clock/mass/speed calibration. For Y=gamma(A+epsilon A^2), Y13=gamma epsilon while actual acceleration is -Yq. The configuration-Gibbs control preserves only the normalized q marginal; its full phase-space reference and quantum vacuum change. A distinct addressed native/N4 counterpair fixes the full quantum reference and collective response while its finite kinetic invariant differs (#1090). The scalar-response adapter propagates the supplied Hamiltonian and original vacuum. Its feedback statistic does not select inertia from native repair or configuration equilibrium.",
+        "constructed": "Same-capacity linear reversible dynamics gives the displayed canonical Hamiltonian. Existing action-to-Hamiltonian and field-clock conversions remain proved under their own hypotheses. Three-mode curvature and an exact distance-two stiffness-response coefficient distinguish the I+epsilon A counterfamily after common clock/mass/speed calibration. For Y=gamma(A+epsilon A^2), Y13=gamma epsilon while actual acceleration is -Yq. The configuration-Gibbs control preserves only the normalized q marginal; its full phase-space reference and quantum vacuum change. A distinct addressed native/N4 counterpair fixes the full quantum reference and collective response while its finite kinetic invariant differs (#1090). The scalar-response adapter propagates the supplied Hamiltonian and original vacuum. Its feedback statistic does not select inertia from native repair or configuration equilibrium. Each native C/E endpoint instrument has an explicit unitary completion and dimensionless Hermitian history action. Keeping hidden branch records reproduces arbitrary finite record-conditioned histories and untouched-reference outputs. The unused completion and logarithm are representation choices: equal native endpoints can have different auxiliary intermediate readouts. This supplies a finite action representation without selecting an autonomous carrier Hamiltonian or physical inertia.",
         "remaining": "Repair capacity equals inertia, velocity reading, linearity, energy and time reversal are candidate premises. Auxiliary oscillator and temporal Maxwell lifts are related alternatives, not consequences of the scalar construction. Neither counterpair violates the canonical same-capacity inertia theorem. The fixed-reference pair is an abstract binary source construction, not two physically identified realizations.",
         "closure": "Derive the kinetic identification from admissible operations or independently constrain dynamical response; exclude the same-equilibrium alternative inertias. Conversion of a supplied action is not its selection.",
         "sources": [
@@ -3293,10 +3298,19 @@
           {
             "path": "model/observer/scalar_response/results.json",
             "label": "Retained scalar-response execution and controls"
+          },
+          {
+            "path": "model/native_action/history_action.py",
+            "label": "Exact native instrument history action and endpoint-equivalent interpolations"
+          },
+          {
+            "path": "model/native_action/history_action_results.json",
+            "label": "Retained finite unitary history certificate"
           }
         ],
         "claims": [
-          "OPH-MODEL-SCALAR-RESPONSE-EXECUTION"
+          "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+          "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
         ]
       },
       {
@@ -4000,8 +4014,8 @@
           "PR-15",
           "PR-22"
         ],
-        "constructed": "Source count and finite execution-cost results retain their declared clock and service domains. Native local event instruments sum actual unresolved repairs, retain remote evolution and include finite-cap timeouts. The joint clock/field process supplies exact reduced-memory identities and a four-mark completed-event closure on its specified one-particle support; conditional reference states and controller memory remain. Equal completed clock statistics need not imply equal phase observations. Independent identity holds cancel from completed stopped laws without fixing a laboratory duration.\n\nA chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates.",
-        "remaining": "No preferred universal clock is required. Relating an observer's records to modular evolution, laboratory durations or effective proper time requires an operational correspondence preserving joint and conditional observations. A common mean rate or affine label comparison does not supply that correspondence. Physical service accuracy, reference preparation and clock calibration remain explicit. The scalar benchmark time and native event parameter cannot be identified merely because they occur in one program; unbounded event protocols need well-posed stopping and complete tail control.",
+        "constructed": "Source count and finite execution-cost results retain their declared clock and service domains. Native local event instruments sum actual unresolved repairs, retain remote evolution and include finite-cap timeouts. The joint clock/field process supplies exact reduced-memory identities and a four-mark completed-event closure on its specified one-particle support; conditional reference states and controller memory remain. Equal completed clock statistics need not imply equal phase observations. Independent identity holds cancel from completed stopped laws without fixing a laboratory duration.\n\nA chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates. On one full twelve-port total-two carrier, actual local movement clocks have asymptotic count rate 1/6 per carrier movement from any initial density. An exact Poisson corrector supplies finite count-error bounds without stationary preparation or an independent clock. Their long-run covariance distinguishes all three graph-distance shells. A positive seconds calibration changes no such dimensionless law; empirical attachment requires a matched source apparatus and held-out paired records.",
+        "remaining": "No preferred universal clock is required. Relating an observer's records to modular evolution, laboratory durations or effective proper time requires an operational correspondence preserving joint and conditional observations. A common mean rate or affine label comparison does not supply that correspondence. Physical service accuracy, reference preparation and clock calibration remain explicit. The scalar benchmark time and native event parameter cannot be identified merely because they occur in one program; unbounded event protocols need well-posed stopping and complete tail control. Choosing seconds is a unit convention. The dynamical obligation is a compatible joint record law and an independently validated apparatus correspondence, rather than an absolute duration derived without calibration.",
         "closure": "Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.",
         "sources": [
           {
@@ -4107,6 +4121,10 @@
           {
             "path": "model/joint_clock_process/clock_change.py",
             "label": "Complete count-generating clock conversion and native stopping oracle"
+          },
+          {
+            "path": "model/native_clock/COMPARISON.md",
+            "label": "Single-carrier clock comparison, spatial covariance and laboratory attachment contract"
           }
         ],
         "claims": [
@@ -4135,8 +4153,8 @@
           "PR-16",
           "PR-52"
         ],
-        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied.",
-        "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature. Uniform calibration and the two-event binary controllers are separate protocols. Finite calibration kernels have eleven nonconstant modes; rank three refers to their slow response quotient. The added controller spans that carrier but establishes no isotropic or autonomous motion. Neither this readout nor the two-scalar interaction graph identifies physical position, momentum, length scale or a spatial continuum.",
+        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied. Exposure-normalized even-load current laws recover the same unweighted rank-three structural Gram without a uniform schedule or fair coins. The actual slowest response under a doubled seam weight has multiplicity two. The full inverse-response Gram instead has rank eleven, so choosing the slow-band metric is an operational readout choice, not a proof of physical bulk dimension. These exact single-carrier constructions require no federation. On the same uniform single carrier, asymptotic local-tick covariance independently recovers the native distance shells from a continuing movement-count history. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors.",
+        "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature. Uniform calibration and the two-event binary controllers are separate protocols. Finite calibration kernels have eleven nonconstant modes; rank three refers to their slow response quotient. The added controller spans that carrier but establishes no isotropic or autonomous motion. Neither this readout nor the two-scalar interaction graph identifies physical position, momentum, length scale or a spatial continuum. The uniform-scheduler premise belongs to the actual slow dynamics; dividing exposure out of exact laws does not remove that premise for motion. A compatible extended family is required for a continuum claim, but the specific spherical federation is optional.",
         "closure": "Construct operational metric and geometric response on the same source and refinement family. Preserve the distinction between action capacity, event-count measure and physical volume.",
         "sources": [
           {
@@ -4162,13 +4180,26 @@
           {
             "path": "model/common_source/NATIVE_FIELDS.md",
             "label": "Exact native continuity, mean transport and their restricted field interpretation"
+          },
+          {
+            "path": "model/relative_observer_geometry/intrinsic_geometry.py",
+            "label": "Exact structural recovery and distinct response-metric domains"
+          },
+          {
+            "path": "model/relative_observer_geometry/intrinsic_results.json",
+            "label": "Single-carrier geometry and scheduler certificates"
+          },
+          {
+            "path": "model/native_clock/COMPARISON.md",
+            "label": "Single-carrier clock comparison, spatial covariance and laboratory attachment contract"
           }
         ],
         "assumptions": [
           "declared_native_slow_geometry_readout"
         ],
         "claims": [
-          "OPH-MODEL-COMMON-SOURCE-EXECUTION"
+          "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
         ]
       },
       {
@@ -4665,7 +4696,7 @@
           "PR-14",
           "PR-15"
         ],
-        "constructed": "The canonical register explicitly distinguishes hadronic empirical payloads and laboratory clock/energy anchors from source deductions. The endpoint audit imports only the cited CODATA 2022 inverse-alpha comparison value and standard uncertainty. It is a known-data retrospective check, with P and the inherited incomplete source branch unchanged, no fitted correction and no empirical validation verdict. A separate C/E apparatus comparison declares independently established coherent preparation/readout errors and fresh-trial independence; its software evaluator does not authenticate those premises.",
+        "constructed": "The canonical register explicitly distinguishes hadronic empirical payloads and laboratory clock/energy anchors from source deductions. The endpoint audit imports only the cited CODATA 2022 inverse-alpha comparison value and standard uncertainty. It is a known-data retrospective check, with P and the inherited incomplete source branch unchanged, no fitted correction and no empirical validation verdict. A separate C/E apparatus comparison declares independently established coherent preparation/readout errors and fresh-trial independence; its software evaluator does not authenticate those premises. The native clock comparison supplies dimensionless count-ratio and covariance predictions plus an explicit paired-record calibration contract. No existing laboratory apparatus or dataset is identified with that native source.",
         "remaining": "Every result using these inputs retains their provenance, uncertainty and transfer contract. Fundamental-input counts do not absorb or erase them. The endpoint residual does not provide the missing physical transport or its theory-error budget; five reported standard uncertainties are a comparison allowance, not a rigorous confidence interval.",
         "closure": "Supply admissible independent calibration/import data, or replace a payload with an independently justified source computation; do not count calibration as a theorem proof.",
         "sources": [
@@ -4684,11 +4715,16 @@
           {
             "path": "model/predictions/protocol.py",
             "label": "Independent calibration and sampling premises of the finite instrument test"
+          },
+          {
+            "path": "model/native_clock/COMPARISON.md",
+            "label": "Single-carrier clock comparison, spatial covariance and laboratory attachment contract"
           }
         ],
         "claims": [
           "OPH-MODEL-P-RESPONSE-EXECUTION",
-          "OPH-MODEL-NATIVE-OBSERVER-EXECUTION"
+          "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+          "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
         ]
       },
       {
