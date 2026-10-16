@@ -100,6 +100,14 @@ bounded-degree graph with compatible local states and operations. The
 compatible access and dynamics; graph rank or finite positivity alone does
 not establish a relativistic spacetime limit.
 
+Actual source neighborhoods are identified at levels 1/3, 2/4 and 3/5,
+with preserved local port labels and explicit complete-output comparison
+bounds. This supplies finite cross-size observation maps rather than assuming
+that parent/child coarse averages intertwine dynamics. Matched initial
+restrictions are necessary; a uniform global total-two preparation dilutes
+locally as the screen grows. An all-level routing argument and a controlled
+nontrivial physical scaling regime remain open.
+
 The [local event clock](relational_event_clock/README.md) counts actual
 occupation changes at one observer port. Its stopped instrument retains
 remote repairs during the wait, finite timeouts and conditional quantum
@@ -109,6 +117,11 @@ cross-carrier history. Exact elimination of the hidden factor gives a
 record-conditioned quantum memory recurrence, valid with arbitrary untouched
 references. Completed events in this specified experiment admit a four-mark
 measure-and-prepare description; unresolved waits retain quantum information.
+Instrument-valued clock conversion also preserves the count of B events
+between A events. Direct native elimination and elimination through the
+joint event instrument agree, including B-triggered field feedback. The
+passive two-A-tick renewal cycle has B-count mean two and variance 16;
+equating mean rates would discard observable clock fluctuations.
 Neither reduction identifies native attempts or event counts with modular
 flow. The [recovery contract](OBSERVER_RELATIVE_RECOVERY.md) specifies the
 remaining observational and clock correspondences.

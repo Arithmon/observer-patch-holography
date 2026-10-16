@@ -14963,13 +14963,14 @@
     },
     {
       "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
-      "statement": "The retained retrospective oscillator comparison uses the zero-simulated-duration McGarry et al. trapped-ion data. Twenty-one complex axis records calibrate preparation/readout and 100 off-axis complex records are excluded from fitting. The original Gaussian axis-product analysis has spin-mean RMSE 0.07639048. The separate executable model fits only real displacement and nonnegative thermal occupation, then contracts native preparation, rotation and pointer words at 64 occupation levels to emit both binary probabilities. Its primary spin-mean RMSE is 0.06647166 and binary-probability RMSE 0.03323583, with an ideal fitted-point occupation probability bound below 3.82e-7. Both published coordinate scales remain in the receipt. The off-axis data had been inspected before this execution was designed, laboratory preparation is postselected, accepted shot counts are unauthenticated, and fit uncertainty and apparatus errors are not certified. This establishes a reproducible supplied-model preparation/readout comparison, not a prospective prediction, interacting dynamics, physical clock calibration, source-selected laboratory law or OPH-specific empirical distinction. A separate action-independent audit of the deposited one-dimensional scans retains 46 origin measurements and 240 nominal opposite-coordinate pairs. Standard normalized-state characteristic identities give an origin spin-mean RMSE of 0.05008124 and descriptive probability-RMSE floors over the earlier 707 positive-duration means of 0.00629129 from origins alone and 0.03419381 when nominal opposite-probe constraints are included. These are sample residuals under the stated readout and pairing premises, not hardware-error estimates, statistical rejections or new OPH-specific empirical confirmation; raw accepted counts remain unavailable. Fresh compiled detector checks and their source-representation limits are retained separately from the empirical comparison. A further retrospective two-order quantum Gram check uses the same 21 axes and 100 complex interior means without Gaussian or evolution assumptions. Keeping both Weyl product orders yields one certified incompatible plug-in Gram at extent 4 and three at extent 5; rational witnesses require at least one of three complex means to change by at least 0.02439 and 0.03129 respectively. These are deterministic table-consistency diagnostics, not statistical rejections or physical bias estimates. Fresh source-compiled noncommuting qubit probes verify the generic unitary instrument relation; exact laboratory Weyl relations and common preparation remain apparatus premises.",
+      "statement": "The retained retrospective oscillator comparison uses the zero-simulated-duration McGarry et al. trapped-ion data. Twenty-one complex axis records calibrate preparation/readout and 100 off-axis complex records are excluded from fitting. The original Gaussian axis-product analysis has spin-mean RMSE 0.07639048. The separate executable model fits only real displacement and nonnegative thermal occupation, then contracts native preparation, rotation and pointer words at 64 occupation levels to emit both binary probabilities. Its primary spin-mean RMSE is 0.06647166 and binary-probability RMSE 0.03323583, with an ideal fitted-point occupation probability bound below 3.82e-7. Both published coordinate scales remain in the receipt. The off-axis data had been inspected before this execution was designed, laboratory preparation is postselected, accepted shot counts are unauthenticated, and fit uncertainty and apparatus errors are not certified. This establishes a reproducible supplied-model preparation/readout comparison, not a prospective prediction, interacting dynamics, physical clock calibration, source-selected laboratory law or OPH-specific empirical distinction. A separate action-independent control of the deposited one-dimensional scans retains 46 origin measurements and 240 nominal opposite-coordinate pairs. Standard normalized-state characteristic identities give an origin spin-mean RMSE of 0.05008124 and descriptive probability-RMSE floors over the 707 positive-duration means of 0.00629129 from origins alone and 0.03419381 when nominal opposite-probe constraints are included. These are sample residuals under the stated readout and pairing premises, not hardware-error estimates, statistical rejections or new OPH-specific empirical confirmation; raw accepted counts remain unavailable. Fresh compiled detector checks and their source-representation limits are retained separately from the empirical comparison. A further retrospective two-order quantum Gram check uses the same 21 axes and 100 complex interior means without Gaussian or evolution assumptions. Keeping both Weyl product orders yields one certified incompatible plug-in Gram at extent 4 and three at extent 5; rational witnesses require at least one of three complex means to change by at least 0.02439 and 0.03129 respectively. These are deterministic table-consistency diagnostics, not statistical rejections or physical bias estimates. Fresh source-compiled noncommuting qubit probes verify the generic unitary instrument relation; exact laboratory Weyl relations and common preparation remain apparatus premises. A separate fixed-horizon randomized Gram-witness protocol permits arbitrary trial-to-trial preparation drift, quantum memory and earlier feedback. The fresh setting must be independent of the joint prepared work/reference state conditional on the past, and conditional detector-error bounds remain explicit. Two continuing source trials retain 100 complete records with reference and checkpoint checks. Exact detector-array arithmetic bounds the conditional score defect below 1.69e-14 relative to mathematical trace-preserving completions; it does not certify the full floating output law or physical services. Public means fix future witnesses: with zero service error, 26103 and 14914 trials suffice to cross the respective thresholds if future mean scores reach their deposited plug-in targets, with alpha=1/200 each. These are conditional threshold budgets, not power guarantees or statistical tests of the deposited aggregates.",
       "owner_paper": "model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md",
       "owner_medium": "protocol_record",
       "tier": "bounded_executed_model_and_comparison_record",
       "assumptions": [
         "declared_published_oscillator_readout_protocol",
-        "declared_coherent_proper_code_services_and_analogue_source_controls"
+        "declared_coherent_proper_code_services_and_analogue_source_controls",
+        "declared_randomized_Gram_witness_protocol"
       ],
       "imported_results": [
         "published_trapped_ion_preparation_and_characteristic_readout",
@@ -14977,7 +14978,8 @@
         "binary_Kraus_Stinespring_instrument",
         "weighted_number_moment_and_projected_Duhamel_cutoff_bounds",
         "Hoeffding_finite_sample_concentration_and_union_bound",
-        "two_unitary_Gram_positivity_and_Weyl_quantum_Bochner_constraint"
+        "two_unitary_Gram_positivity_and_Weyl_quantum_Bochner_constraint",
+        "conditional_Hoeffding_Azuma_concentration_for_randomized_Gram_witnesses"
       ],
       "oph_specific_delta": "Connects an attributed experimental aggregate dataset to a fixed axis/interior split and separately executes native source words to produce the reserved probabilities under a calibrated laboratory model, while retaining analytic checks, alternate metadata conventions and a rational occupation certificate.",
       "novelty_type": "source_executed_model_and_scoped_observation_comparison",
@@ -15002,9 +15004,12 @@
         "model/characteristic_constraints/bounds.py",
         "model/characteristic_constraints/source.py",
         "model/characteristic_constraints/experiment.py",
-        "model/characteristic_constraints/results.json"
+        "model/characteristic_constraints/results.json",
+        "model/characteristic_constraints/randomized.py",
+        "model/characteristic_constraints/randomized_source.py",
+        "model/characteristic_constraints/test_randomized.py"
       ],
-      "falsifier": "Numeric off-axis observations enter the preparation fit or source readout function, analytic reference values replace emitted branch probabilities, mirror copies count as independent observations, a recorded outcome or coordinate convention is dropped, source or data hashes fail, the occupation certificate fails, or canonical replay disagrees.",
+      "falsifier": "Numeric off-axis observations enter the preparation fit or source readout function, analytic reference values replace emitted branch probabilities, mirror copies count as independent observations, a recorded outcome or coordinate convention is dropped, source or data hashes fail, the occupation certificate fails, or canonical replay disagrees. Reject the randomized extension if its coefficients do not arise from the certified Gram vector, the conditional score inequality fails under fresh independent settings, the array-completion bound fails, altered or incomplete scores pass validation, or retrospective aggregate means are assigned its prospective statistical guarantee.",
       "scope_if_false": "The stated retrospective preparation/readout comparison or its implementation fails. Neither its agreement nor failure alone establishes or excludes OPH, and no statistical significance verdict or interacting-field observation is claimed.",
       "status": "retained_execution_and_comparison_under_declared_premises",
       "claim_class": "emitted_artifact",
@@ -15101,6 +15106,61 @@
         "open": [],
         "boundary": [],
         "rationale": "This retrospective comparison supplies the single-mode anharmonic Hamiltonian, displaced-thermal preparation family, apparatus timings, Gaussian phase-noise law and published durations, and transfers an earlier zero-time calibration. It does not consume or discharge the canonical physical-selection, clock, continuum or empirical-completion premises."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+      "statement": "The declared binary C/E endpoint instruments on federations of twelve-port carriers derive a positive local Liouville operator H_native=sum_e(I-Phi_e), including exchange and coherence coefficients. The uniform discrete channel is I-H_native/M; independent rate-one Poisson seam attempts supply the distinct auxiliary semigroup exp(-s H_native). Complete local-output bounds include local records, feedback and untouched references. A compatible fixed bounded-degree graph and initial restrictions give a conditional quasilocal process; this does not identify source-screen refinement with a relativistic limit. The executed four-port one-particle experiment has an exact reduced-field memory identity and a four-mark completed-event predictor, with conditional reference and controller states retained. Equal reduced fields can have disjoint next-clock laws. C and E share its completed union-clock law but predict field-plus probabilities 35/54 and 14/27 at three attempts. Native mixing also supplies finite preparation for the continuing-carrier discriminator: 379 discarded attempts before each of 3927 trials give an exact-source decision-error bound 3/400 without an actual IID trial premise. Its executed two-trial check retains all outcomes and references; the full campaign is a mathematical budget. These are conditional source laws, not a laboratory identification, physical clock calibration or completed spacetime recovery. Actual source-screen levels 1/3, 2/4 and 3/5 have identical port-labelled root neighborhoods through radii 3, 6 and 9. With matching initial radius-nine quantum/reference restrictions, the complete root output distance between the 15360- and 245760-port screens is at most 2187/5734400 at auxiliary per-seam s=1/4. The uniform global total-two preparations have a separate local state mismatch about 0.026892; a nontrivial compatible density family is supplied explicitly. Finite neighborhoods do not prove all-level routing stability or a spacetime limit. Complete instrument-valued conversion between the two local clocks agrees with direct native elimination, including remote-event feedback. Without feedback each two-A-tick cycle has B-count mean two and variance 16. A B-entry field Hadamard changes the A-exit interval mean from 2 to 3/4 and variance from 16 to 35/16. The finite stopped execution retains 106 complete cap-three outputs, including timeouts. Mean clock rates cannot replace these stochastic intervention laws.",
+      "owner_paper": "model/OBSERVER_RELATIVE_RECOVERY.md",
+      "owner_medium": "protocol_record",
+      "tier": "finite_native_execution_and_conditional_local_process_bounds",
+      "assumptions": [
+        "declared_native_binary_federation_instruments",
+        "declared_native_local_access_and_scheduler",
+        "declared_native_clock_field_and_initial_state_contract",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "finite_Kraus_Stinespring_construction",
+        "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+        "trace_distance_contraction_and_unitary_channel_composition",
+        "Poisson_factorial_moments_and_finite_dependency_cones",
+        "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+        "conditional_law_sequential_coupling"
+      ],
+      "oph_specific_delta": "Attaches local action, finite preparation, complete field memory, event clocks and locality bounds to the same endpoint repair instruments and actual elementary-carrier wiring. Restriction and stopping comparisons preserve the declared quantum output, records, feedback and arbitrary references; supplied benchmark actions are not substituted for native dynamics.",
+      "novelty_type": "source_bound_native_process_and_complete_observation_reduction",
+      "evidence": [
+        "model/OBSERVER_RELATIVE_RECOVERY.md",
+        "model/native_action/README.md",
+        "model/native_action/construction.py",
+        "model/native_action/results.json",
+        "model/native_action/test_construction.py",
+        "model/joint_clock_process/README.md",
+        "model/joint_clock_process/construction.py",
+        "model/joint_clock_process/results.json",
+        "model/joint_clock_process/test_construction.py",
+        "model/native_equilibration/README.md",
+        "model/native_equilibration/results.json",
+        "model/closed_prediction_protocol/README.md",
+        "model/closed_prediction_protocol/results.json",
+        "model/native_action/screen_compatibility.py",
+        "model/native_action/screen_results.json",
+        "model/native_action/test_screen_compatibility.py",
+        "model/joint_clock_process/clock_change.py",
+        "model/joint_clock_process/test_clock_change.py"
+      ],
+      "falsifier": "A source endpoint disagrees with a claimed local operator block; a quantum or record branch is omitted; a locality comparison admits external control information or mismatched initial restrictions; stopped-clock elimination disagrees with direct source composition; the reduced memory law loses a reference or intervention response; or the finite preparation and conditional decision budgets fail under their stated hypotheses. Replay and tests must reject altered source bindings and retained output laws. A declared source-neighborhood map fails to preserve an induced seam, native record orientation or local port label; a cross-screen bound omits initial-state mismatch; or an all-level claim is inferred from the finite routing certificates.",
+      "scope_if_false": "The corresponding native action, clock, memory, locality or finite prediction certificate fails. Supplied field benchmarks and other native protocols retain their own domains; no physical or whole-theory verdict follows.",
+      "status": "implemented_and_replayed_under_declared_native_process_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This native process construction specifies binary endpoint instruments, graph wiring, schedule, accessible operations and initial-state domains. Its local action, complete observation laws and conditional process bounds are consequences of those mathematical inputs. It does not identify the process with physical matter, calibrated duration, a Lorentzian spacetime or a laboratory apparatus, and therefore neither consumes nor discharges the canonical physical-attachment premises."
       }
     }
   ],
@@ -27356,6 +27416,13 @@
             "keys": [
               "hoeffding1963probability"
             ]
+          },
+          {
+            "work": "conditional_Hoeffding_Azuma_concentration_for_randomized_Gram_witnesses",
+            "keys": [
+              "hoeffding1963probability",
+              "azuma1967weighted"
+            ]
           }
         ]
       },
@@ -27490,6 +27557,62 @@
           "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
         }
       ]
+    },
+    "OPH-MODEL-NATIVE-PROCESS-RECOVERY": {
+      "prior_work": {
+        "summary": "Finite quantum instruments, graph exclusion gaps, block elimination and locality provide the reusable mathematics. The native endpoint and record semantics determine the model-specific laws.",
+        "overlap": "The local quantum and stochastic methods are established; the construction supplies their actual native operators, restrictions, stopped records and error budgets.",
+        "imported_step": "Complete Kraus composition, excluded-particle gap, stopped resolvent, trace-distance contraction and local dependency-cone estimates under stated scheduling assumptions.",
+        "citations": [
+          {
+            "work": "finite_Kraus_Stinespring_construction",
+            "keys": [
+              "stinespring1955positive",
+              "kraus1971general",
+              "choi1975completely"
+            ]
+          },
+          {
+            "work": "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "keys": [
+              "zhang2005schur",
+              "norris1997markov"
+            ]
+          },
+          {
+            "work": "trace_distance_contraction_and_unitary_channel_composition",
+            "keys": [
+              "ruskai1994beyond",
+              "nielsen2010quantum"
+            ]
+          },
+          {
+            "work": "Poisson_factorial_moments_and_finite_dependency_cones",
+            "keys": [
+              "feller1968introduction",
+              "poulin2010locality"
+            ]
+          },
+          {
+            "work": "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "keys": [
+              "caputo2010aldous"
+            ]
+          },
+          {
+            "work": "conditional_law_sequential_coupling",
+            "keys": [
+              "levin2017markov"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/OBSERVER_RELATIVE_RECOVERY.md: source-derived actions, complete clocks and federation comparisons",
+      "falsifiers": {
+        "physical_identification": "A proposed apparatus or spacetime mapping fails to preserve the declared joint and conditional observation laws within justified errors; no such mapping is established by this artifact.",
+        "phenomenological": "No empirical confirmation is claimed. A future matched apparatus comparison would need complete observations and authenticated calibration/service errors."
+      },
+      "depends_on": []
     }
   }
 }

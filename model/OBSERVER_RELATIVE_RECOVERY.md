@@ -136,6 +136,29 @@ particular completed-event instrument. All 250 records, timeout flags and
 terminal states remain in the execution. This sector-specific result does
 not identify a dissipative channel with a modular automorphism.
 
+The same process gives an instrument-valued conversion between observer
+clocks. With `Q` the no-union-event map and `A,B` the two event maps,
+eliminating native waits and then B events gives the same count-generating
+instrument as direct elimination of `Q+zB`. The exact identity retains
+every B-count coefficient, its conditional field/reference output and
+B-triggered feedback. No deterministic relative clock rate is supplied.
+
+After an A exit, the number of B ticks before the next A tick has generating
+function `(2-z^2)/(3-2z^2)`: zero B ticks have probability `2/3`, and
+`P(B=2k)=(1/9)(2/3)^(k-1)` for `k>=1`. After an A entry, the next A tick
+has no intervening B tick. Each passive two-A-tick renewal cycle therefore
+has B-count mean two and variance 16. A specified field Hadamard at B entry
+changes the A-exit interval's B-count mean to `3/4` and variance to `35/16`.
+The comparison concerns accessible event counts, not elapsed seconds.
+
+The two-event survival effect bounds noncompletion after `2k` union events
+by `(2/3)^k`, uniformly in the initial state and untouched reference, for
+the tested passive and controlled protocols. Finite source executions retain
+106 stopped/timeout records at cap three and check all terminal states.
+Direct and staged elimination agree on all 16 matrix units.
+Independent identity holding leaves completed laws intact;
+attempt costs and finite-cap censoring retain their separate meanings.
+
 ## Modular references and operational access
 
 The native event-conditioned Palm reference is `diag(d(x)/600)`. Ten
@@ -266,7 +289,37 @@ finite-ball limits at bounded `s`. Independent-increment coupling gives
 CP dynamics on the quasilocal algebra. This is not an autonomous Markov law
 on each reduced observer algebra or a uniform global seam choice on an
 infinite graph. The pinned screen refinements have not been shown to meet
-those compatibility hypotheses.
+all of those hypotheses across unbounded levels.
+
+Finite compatibility is established on the actual source screens. Rooted
+port neighborhoods at levels 1/3, 2/4 and 3/5 agree through radii 3, 6 and 9,
+respectively, with every local port label and induced seam preserved. Their
+45-, 114- and 222-port maps give matched local quantum algebras and complete
+native instruments. For levels 3/5, a root elementary observer has complete
+output distance at most `2187/5734400 < 0.000382` at auxiliary per-seam
+`s=1/4`, provided its radius-nine initial restriction, including reference,
+agrees under the map. This compares 15,360 and 245,760 ports. An executed
+root-local protocol may access its quantum state and records of seams wholly
+inside that root; collecting crossing-seam records requires enlarging the
+observed support and recomputing the bound. A separate four-attempt comparison
+retains all 81 record branches and coherent reference outputs under the
+identified seam tapes.
+
+Compatible Bernoulli density `1/3` restrictions supply a nontrivial declared
+state family on the binary tensor domain. In contrast, uniform global
+total-two preparations on these screens differ locally by about `0.026892`
+and tend to local vacuum as the number of ports grows. That discrepancy
+must be added to the locality allowance. Initial density remains boundary
+data; compatibility does not select it. The source density-uniformization
+operator `Q=I-L/12` also gives identical root return kernels through power
+22, with a first difference at power 23. These are density response
+coefficients, not complete quantum histories or global native-attempt steps.
+
+The port-labelled maps fail at the next tested radius; finite matches do
+not establish convergence at every level. The pinned routing generator's
+floating geometric comparisons need a uniform stability argument before
+an all-level source theorem follows. Neither a fixed-radius match nor the
+conditional infinite-graph construction supplies a relativistic scaling.
 
 A finite screen can alternatively support effective spacetime on a specified
 observational domain with controlled errors. In either approach, joint field,
@@ -319,6 +372,23 @@ as exact expectations. This is neither a statistical rejection nor source
 selection. Accepted counts or raw trials, coordinate calibration and physical
 instrument-error bounds are needed for a statistical test. No OPH-specific
 empirical confirmation follows from these diagnostics.
+
+A randomized Gram-witness test removes the need for the same preparation
+on every trial. Conditional positivity survives arbitrary preparation
+drift, quantum memory and earlier feedback when the fresh setting is drawn
+independently of the joint prepared work/reference state. A fixed witness gives a bounded score and
+a conditional Hoeffding error bound; all trials and outcomes must be retained.
+The source demonstration executes two continuing trials with 100 complete
+records and an entangled reference. Its detector-array score certificate
+is separate from physical fidelity and complete floating-output error.
+
+The public means fix future witnesses for both unresolved coordinate
+extents. Under zero service error, 26,103 or 14,914 trials suffice to cross
+the respective fixed-horizon threshold if a future mean is as negative as
+the corresponding deposited plug-in score, with error allowance `1/200`
+per test. These are conditional design budgets, not power guarantees or
+tests of the existing aggregate means. Fresh random-setting records,
+coordinate calibration and conditional detector-error bounds remain needed.
 
 ## Reused mathematical contracts
 

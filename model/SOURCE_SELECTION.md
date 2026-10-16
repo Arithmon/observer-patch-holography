@@ -242,13 +242,26 @@ the conditional reference operators. Unresolved waits retain coherence and
 all finite-cap timeouts. Neither memory elimination nor event-boundary
 closure identifies native repair with a modular automorphism.
 
+The exact instrument-valued clock conversion determines B-event counts
+between A events without postulating a relative clock rate. The passive
+two-A-tick cycle has mean two B ticks and variance 16. Native elimination
+and elimination through the joint event instrument agree on the full
+count-generating map, including conditional quantum outputs and the specified
+B-triggered feedback. This derives a stochastic relation between readable
+clocks; it does not convert either reading into seconds or modular parameter.
+
 The [complete quantum locality bound](native_action/README.md) controls
 truncation of distant ports under the specified state-independent scheduler
 and strictly local record access. A fixed bounded-degree infinite graph
 admits a conditional quasilocal quantum process in per-edge Poisson
 parameter when neighborhoods, initial restrictions and instruments agree.
-The screen-refinement family has not been shown to meet these compatibility
-hypotheses. A reduced observer algebra can require memory; this limit
+Actual source-screen levels 1/3, 2/4 and 3/5 have identified port-labelled
+neighborhoods through radii 3, 6 and 9. Those maps and matched initial
+restrictions supply finite complete-output comparisons. Uniform global
+total-two states instead have a calculable local mismatch and dilute toward
+vacuum as the screen grows; nontrivial compatible density remains boundary
+data. An all-level routing and scaling argument is required.
+A reduced observer algebra can require memory; the conditional limit
 does not imply autonomous local Markov evolution, Lorentz symmetry or a
 universal physical clock.
 
@@ -356,6 +369,14 @@ the dataset unreliable. The finite compiled probes do not implement the
 continuous oscillator Weyl relations exactly. Those laboratory instruments,
 accepted counts, coordinate calibration and physical error bounds remain
 necessary premises. The 125-point anharmonic RMSE is `0.2876427868`.
+
+For a future Gram-witness test, randomizing the setting after preparation
+replaces a common-state/IID premise with conditional positivity. Preparation
+may drift and retain quantum memory; the setting must remain independent
+of the prepared state conditional on the past. Fixed-horizon bounds retain
+every outcome and explicitly charge detector errors. Deposited means select
+candidate witnesses, but lack the fresh random-setting records needed to
+apply this test. Its statistical validity does not select the OPH repair law.
 
 The [closed native-law protocol](closed_prediction_protocol/README.md)
 provides a separate prospective discriminator under the actual declared

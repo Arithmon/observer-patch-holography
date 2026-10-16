@@ -490,10 +490,9 @@ use discriminating requirements, test deletion controls, count independent
 assumptions and try the smallest diagnostic first. A shorter rewritten
 formula does not by itself reduce the law's physical inputs.
 
-Update the relevant card when the law, state space, parameters, schedule,
-record policy or physical interpretation changes. Preserve the candidate ID
-and record the changed version in Git history; create a separate ID when a
-scientifically distinct alternative must be compared. Promote results only
+Keep each card consistent with its law, state space, parameters, schedule,
+record policy and physical interpretation. Use a separate candidate ID when
+a scientifically distinct alternative must be compared. Promote results only
 with their scope, added assumptions, discriminator and evidence reference.
 Keep this register focused on current model definitions and their evidence.
 

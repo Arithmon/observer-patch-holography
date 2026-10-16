@@ -84,6 +84,13 @@ retain coherence that the completed event instrument erases. C and E have
 the same completed clock law here, yet predict field-plus probabilities
 `35/54` and `14/27` after three native attempts under the stated probe.
 
+Clock conversion preserves the full distribution of one observer's ticks
+between another's ticks, including conditional field states and references.
+Without feedback, each two-A-tick cycle has mean two B ticks and variance
+16. Equal mean rates therefore do not imply identical readings. A specified
+B-triggered field intervention changes that law; direct native elimination
+and conversion through the joint event instrument agree exactly.
+
 [Native modular dynamics](relative_modular_dynamics/README.md) identify a
 protocol algebra preserved by both event operations and the chosen modular
 flow. Their finite covariance defect shows that these operations cannot
@@ -100,10 +107,14 @@ cross-carrier coherence probes. Local dependency bounds in the
 [native action construction](native_action/README.md) control the whole
 local quantum and record output under local feedback. They give a
 conditional infinite-graph process when neighborhoods, instruments and
-initial restrictions are compatible. Compatibility of the pinned screen
-refinements is not established, and their coarse Markov obstruction
-requires memory. These results do not establish Lorentz symmetry or an
-interacting spacetime scaling limit.
+initial restrictions are compatible. The
+[screen comparison](native_action/README.md#compatible-neighborhoods-of-the-actual-screen)
+identifies source-port neighborhoods at levels 1/3, 2/4 and 3/5. For the
+15,360- and 245,760-port screens, matched radius-nine initial restrictions
+give complete root-observer output distance below `0.000382` at auxiliary
+per-seam parameter `s=1/4`. A fixed-total preparation can add a separate
+state mismatch. All-level routing compatibility, Lorentz symmetry and an
+interacting spacetime scaling limit remain open.
 
 ## Native measurement predictions
 
@@ -166,6 +177,13 @@ respectively. These are descriptive consistency constraints on noisy means,
 not estimates of detector bias, statistical rejections or OPH-specific
 empirical confirmation. Accepted counts, coordinate calibration and
 apparatus error bounds are needed for a statistical assessment.
+
+A randomized Gram-witness protocol permits preparation drift, feedback and
+quantum memory between trials. Fresh settings, complete outcomes and
+conditional detector-error bounds replace an IID preparation premise. Its
+source demonstration retains 100 two-trial outcomes. The deposited means
+select witnesses for a future test; they do not supply the random-setting
+trial records required to apply its statistical bound.
 
 The [calibrated measurement protocol](calibrated_measurement/README.md)
 provides explicit calibration and sampling bounds for future counts.

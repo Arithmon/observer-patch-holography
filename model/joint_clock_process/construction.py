@@ -29,6 +29,7 @@ SOURCE_PATHS = tuple(sorted(set((*q.SOURCE_PATHS,
     'model/joint_clock_process/__init__.py',
     'model/joint_clock_process/__main__.py',
     'model/joint_clock_process/construction.py',
+    'model/joint_clock_process/clock_change.py',
     'Lean/Time/TimeOrderLedger.lean',
     'Lean/Time/ClockReadout.lean',
     'Lean/Screen/RegionalContinuity.lean'))))
@@ -434,12 +435,14 @@ def memory_witnesses():
 
 
 def run():
+    from .clock_change import run as clock_change_run
     executed = [execute_experiment(law, feedback=feedback)
                 for law, feedback in product(('C', 'E'), (False, True))]
     executed.extend(execute_experiment(law, reference=True, cap=2) for law in ('C', 'E'))
     return {'schema': 'oph.joint_clock_process.v1',
         'event_closure': [event_certificate(law) for law in ('C', 'E')],
         'field_memory_witnesses': memory_witnesses(),
+        'observer_clock_conversion': clock_change_run(),
         'complete_runtime_experiments': executed,
         'scope': {'finite_observer_chosen_field_and_two_local_record_clocks': True,
                   'time_parameter': 'native attempt resource cap and local signed-event counts',
