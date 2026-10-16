@@ -167,10 +167,10 @@ while relative seam weights and finite-cap costs can matter. Native
 attempt count, local event count, modular parameter and calibrated duration
 remain distinct.
 
-On the full single-carrier total-two sector, count every moving repair as one
+On the 66-state binary total-two sector of one carrier, count every moving repair as one
 reference event and each change of port `v` as one tick `K_v`. The
 [local-clock comparison](native_clock/README.md) derives
-`K_v(n)/n -> 1/6` from any initial configuration under the uniform seam
+`K_v(n)/n -> 1/6` from any initial density in that sector under the uniform seam
 schedule. An exact Poisson-equation correction bounds the finite bias and
 fluctuations. Neither an independent random clock nor an exact stationary
 preparation is supplied. Independently inserted identity holds do not change
