@@ -360,6 +360,20 @@
       "note": "Spherical harmonics and Laplacian eigenvalues on spheres."
     },
     {
+      "key": "azuma1967weighted",
+      "type": "article",
+      "author": "Azuma, Kazuoki",
+      "title": "Weighted sums of certain dependent random variables",
+      "journal": "Tohoku Mathematical Journal",
+      "volume": "19",
+      "number": "3",
+      "pages": "357--367",
+      "year": "1967",
+      "doi": "10.2748/tmj/1178243286",
+      "verified": true,
+      "verification_source": "https://www.jstage.jst.go.jp/article/tmj1949/19/3/19_3_357/_article/-char/en"
+    },
+    {
       "key": "baader1998term",
       "type": "book",
       "author": "Baader, Franz and Nipkow, Tobias",
@@ -1420,6 +1434,20 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1016/0550-3213(85)90602-9",
       "note": "Calabi-Yau compactification."
+    },
+    {
+      "key": "caputo2010aldous",
+      "type": "article",
+      "author": "Caputo, Pietro and Liggett, Thomas M. and Richthammer, Thomas",
+      "title": "Proof of Aldous' spectral gap conjecture",
+      "journal": "Journal of the American Mathematical Society",
+      "volume": "23",
+      "pages": "831--851",
+      "year": "2010",
+      "doi": "10.1090/S0894-0347-10-00659-4",
+      "eprint": "0906.1238",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/0906.1238"
     },
     {
       "key": "carroll2001cosmological",
@@ -6583,6 +6611,20 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1145/330249.330250",
       "note": "Component: register lifetime (live-interval) allocation"
+    },
+    {
+      "key": "poulin2010locality",
+      "type": "article",
+      "author": "Poulin, David",
+      "title": "Lieb-Robinson Bound and Locality for General Markovian Quantum Dynamics",
+      "journal": "Physical Review Letters",
+      "volume": "104",
+      "pages": "190401",
+      "year": "2010",
+      "doi": "10.1103/PhysRevLett.104.190401",
+      "eprint": "1003.3675",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1003.3675"
     },
     {
       "key": "prugovecki1977information",

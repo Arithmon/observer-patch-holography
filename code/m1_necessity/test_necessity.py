@@ -103,8 +103,11 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
 def test_scalar_descendants_retain_their_declared_protocols_without_m1_transfer(name, protocol):
     downstream = audit.downstream_audit()
     row = downstream['claims'][name]
-    assert set(row['assumptions']) == {
+    expected = {
         protocol, 'declared_coherent_proper_code_services_and_analogue_source_controls'}
+    if name == 'OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT':
+        expected.add('declared_randomized_Gram_witness_protocol')
+    assert set(row['assumptions']) == expected
     assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
     assert not (set(row['assumptions']) & audit.KEYS)
     links = [edge for edge in downstream['links'] if edge['to'] == name and

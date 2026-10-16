@@ -7,7 +7,10 @@ quantum outputs, including an untouched reference. It extends the
 [first-moment memory identity](../federated_observer/MEMORY.md) to quantum
 instruments. It also finds a simpler, exact description at this experiment's
 completed clock events: a four-mark classical predictor, together with the
-retained conditional reference operators.
+retained conditional reference operators. An instrument-valued change from
+the union clock to the A clock derives their relative count law,
+including feedback, remote transitions and full reference outputs. No assumed
+deterministic rate conversion is needed for this finite comparison.
 
 The construction is a finite operational reduction. It does not establish a
 continuum field theory, a relativistic spacetime, or an identification of native
@@ -112,6 +115,104 @@ a property of this instrument and sector, not a claim about all observer
 clocks. Coherence survives in unresolved waits and can be read before an event;
 discarding those waits would remove the discriminator below.
 
+## A complete change between observer clocks
+
+The [clock conversion](clock_change.py) predicts how many B ticks occur before
+the next A tick, including the conditional field/reference state. Let `Q` be
+the no-union-event map, `A_a` the two native A-event maps, and `B_b` the native
+B-event maps followed by any declared B-triggered intervention. Define
+`B=sum_b B_b` and the completed union maps
+
+```text
+S_Aa = A_a (I-Q)^(-1),       S_B = B (I-Q)^(-1).
+T_Aa(z) = A_a (I-Q-z B)^(-1)
+        = S_Aa (I-z S_B)^(-1).
+```
+
+The coefficient of `z^k` is the CP map for the next signed A tick after
+exactly `k` B ticks. It sums genuine remote transitions, rather than treating
+them as identity holds. The two expressions are equal by factorizing
+`I-Q-zB=(I-zB(I-Q)^(-1))(I-Q)`. The executable checks the symbolic rational
+matrix identity on the full sixteen-dimensional operator space for both
+native laws and both feedback settings. Thus direct elimination of native
+attempts and staged elimination through the union clock preserve the same
+complete count instrument, not just the expected rates. Retaining individual
+B signs uses the ordered products `S_Aa S_Bb_k ... S_Bb_1`; their sum gives
+the coefficient above. Reference systems are untouched identity extensions.
+History-dependent controllers require their classical memory to be included
+in this map; the demonstrated feedback depends only on the current B sign.
+
+The exact effect inequality `(S_B^*)^2(I) <= (2/3) I` holds both without
+feedback and with a field Hadamard after each B entry. Consequently the
+probability that A has not ticked after `2k` union events is at most
+`(2/3)^k`, uniformly over work/reference preparations. This proves completion
+almost surely and gives a complete finite censoring bound. An independent
+identity hold with any fixed activity `0<a<=1` cancels from every completed
+union map and hence every relative-count coefficient. Identity holds still
+change native-attempt caps and resource costs. Changing the relative seam
+weights, allowing evolution during an alleged hold, or timing feedback by
+attempt count is outside this invariance.
+
+An actual A exit leaves the known work state at native port 1; an A entry
+leaves it at port 0. No reset or independently selected hidden state is needed
+to predict from these observed boundaries. Without feedback the B-count
+probability-generating functions are
+
+```text
+after A exit:   g(z) = (2-z^2)/(3-2z^2),
+after A entry:  g(z) = 1.
+
+P(B count=0 | A exit) = 2/3,
+P(B count=2k | A exit) = (1/9)(2/3)^(k-1),  k>=1.
+```
+
+The next A sign alternates in the passive experiment. Starting just after an
+A exit, each two-A-tick cycle returns to that same known work state. Under
+the declared independent Markov scheduler these cycles are independent for
+work-only records, even when an untouched reference is retained. Each cycle
+has mean B count **2** and variance **16**. After `N` cycles the mean ratio
+of B ticks to A ticks is **1**, its variance is **`4/N`**, and the probability
+of having seen no B ticks is **`(2/3)^N`**. Equal average rates do not
+give an exact affine relation between the two finite clock records. The
+expected native resource costs of the two passive local intervals are 18
+and 6 attempts; these are not calibrated durations.
+
+A field Hadamard after a recorded B entry changes the first generating
+function to `(4+z-z^2)/(2(3-z^2))`, with mean B count **`3/4`**, variance
+**`35/16`**, and probability **`1/6`** of exactly one B tick. The feedback can
+change occupation between native ticks; its action is explicitly charged and
+is not itself counted as a native-current tick. The two signed A maps retain
+that changed sign law. C and E still have the same *completed* count
+instrument under this event-triggered feedback. This is a controlled
+prediction about a changed experiment, not a regrading of the same clock.
+
+Finite executions run the actual primitive source instruments until A ticks
+or three native attempts have occurred, then read the field-X detector on
+the continuing state. All **106 physical records**, including timeout, are
+retained. The fixed runtime menu has 250 branches: after completion it repeats
+a cost-free administrative label, executes no further repair and adds no
+clock tick. Impossible menu branches are zero and are removed only by an
+explicit record coarse-graining that sums their full states. The source
+runtime, independent rational stopped-tree oracle, source-bound checkpoint
+and all terminal matrices agree. Two-attempt entangled-reference runs retain
+34 physical records per law and include the B-triggered intervention.
+
+| Capped protocol | A timeout probability | Unconditional field-plus probability, C | Same probability, E |
+| --- | --- | --- | --- |
+| Passive, three native attempts | `85/108` | `35/54` | `14/27` |
+| Hadamard after B entry, three native attempts | `679/864` | `547/864` | `437/864` |
+
+These field-plus probabilities include completed and unresolved A intervals.
+Each completed A branch destroys work coherence in this support; the
+unresolved branches retain the C/E distinction. Replacing the complete
+capped record by the successful-clock subset would discard that information.
+The finite execution starts with the disclosed coherent probe preparation;
+the boundary-based count law applies after any actual A event. Neither
+requires exact stationary preparation, a supplied clock-rate ratio or an
+identification with modular flow. The sector, three-seam schedule, record
+collector and coherent apparatus remain the stated inputs. No laboratory
+data are identified with this clock protocol.
+
 ## Full quantum field histories require memory
 
 Identify the ordered four-dimensional support with `field qubit tensor hidden
@@ -213,8 +314,12 @@ to record-conditioned quantum maps and their complete output states. Its proof
 is the finite substitution above, not a new Lean theorem or an invocation of a
 Gaussian theorem on this non-Gaussian process. The four-mark event closure is
 an additional source-specific simplification checked on the complete operator
-space. This discharges the finite joint-law correspondence for this declared
-experiment. Compatible refinement, controlled continuum limits, physical
+space. The clock-conversion factorization reuses that stopped-instrument
+construction and gives a compatible local-count comparison with explicit
+fluctuations and feedback. It does not instantiate the affine-clock theorem
+by replacing the stochastic comparison with its mean. These identities
+discharge the finite joint-law correspondence for this declared experiment.
+Compatible refinement, controlled continuum limits, physical
 calibration and relativistic spacetime recovery remain separate obligations.
 
 ```sh

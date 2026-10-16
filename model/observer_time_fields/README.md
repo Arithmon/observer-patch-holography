@@ -10,8 +10,9 @@ Hamiltonian enters this construction. This connects the
 joint record laws, rather than identifying their separate two-point spectra.
 
 The [joint clock process](../joint_clock_process/README.md)
-preserves complete quantum histories through explicit memory on a controlled
-four-port experiment. The [native action](../native_action/README.md) derives
+preserves complete quantum histories through explicit memory and derives
+instrument-valued clock conversion on a controlled four-port experiment.
+The [native action](../native_action/README.md) derives
 a local Liouville generator in global attempt or auxiliary Poisson units.
 Here the additional connection is a **positive transfer and its logarithm
 in the incident observer clock**, preserving its local field dictionary.
@@ -234,9 +235,15 @@ This completes a finite clock/field connection missing from the separate
 clock and global-attempt field packets.
 
 The architecture, seam scheduler, initial particle sector and record access
-remain the stated source-instance inputs. Relating different observer
-regions or spatial refinements still requires a shared record map and a
-joint-law comparison; the existing
+remain the stated source-instance inputs. The
+[source screen comparison](../native_action/README.md#compatible-neighborhoods-of-the-actual-screen)
+supplies finite port maps and complete local quantum-output bounds in
+auxiliary per-seam time, with compatible initial restrictions. This packet's
+crossing-seam clock records require enlarging that observation support. Uniform
+fixed-total-two preparations on growing screens have different local
+restrictions and approach local vacuum; their mismatch must be charged.
+Those results do not yet compare this packet's stopped incident-clock laws
+across spatial refinements or observer regions. The
 [coarse memory result](../federated_observer/MEMORY.md) supplies mean dynamics,
 not those complete laws. No Lorentzian continuum, universal synchronization,
 physical time calibration, C/E selection or new empirical observation is

@@ -7,7 +7,9 @@ local quantum and record output** changes when distant ports are omitted.
 The bound includes arbitrary untouched references and interventions controlled
 by the observer's own local records.
 
-This adds a quantum and complete-history extension to the existing
+It also identifies finite compatible neighborhoods of the actual spherical
+screen source, without enlarging the elementary carrier. This adds a quantum
+and complete-history extension to the existing
 [density-only propagation bound](../federated_observer/SCALING.md). It reuses
 the [signed-difference theorem](../observer/QUANTUM_MIXING.md) and
 [actual federation instruments](../federated_quantum_sector/README.md);
@@ -240,12 +242,138 @@ description can retain the memory exhibited by the joint clock process.
 This conditional thermodynamic construction does not require a new larger
 elementary carrier. It does require the graph neighborhoods, source
 instruments, initial restrictions and observer access maps to agree. The
-pinned screen refinements have not been shown to obey those hypotheses;
-their coarse-graining obstruction applies. The result supplies no
+finite screen identifications below supply these hypotheses on their
+declared neighborhoods, but not on an entire infinite sequence. The direct
+parent-map coarse-graining obstruction still applies. The result supplies no
 Lorentz symmetry, continuum dimension, or physical identification of `s`.
 Those require a further observational correspondence and scaling argument.
 
+## Compatible neighborhoods of the actual screen
+
+The [screen computation](screen_compatibility.py) uses the unchanged pinned
+`port_pair` federation builder through level five. A root carrier is the
+central child of face zero at each subdivision, with cell address `4^L-1`.
+It identifies every vertex and induced seam of its port-graph neighborhood,
+preserving local port labels, elementary-carrier membership and native
+instrument semantics. The retained [result](screen_results.json) contains
+the complete source-address maps; agreement of hashes alone is not the test.
+
+| Source levels | Global ports | Matched radius around all twelve root ports | Matched ports |
+| --- | --- | --- | --- |
+| 1 and 3 | 960 and 15,360 | 3 | 45 |
+| 2 and 4 | 3,840 and 61,440 | 6 | 114 |
+| 3 and 5 | 15,360 and 245,760 | 9 | 222 |
+
+These are local observation identifications within the existing spherical
+federations. They are not the coarse cell-parent map and do not make coarse
+counts autonomous. A central subdivision reverses its local orientation;
+adjacent levels do not preserve the same root port labels. The listed
+comparisons use parity subsequences. At the next radius in each comparison,
+the particular fixed-label identification fails, and its explicit differing
+adjacency row is retained. That failure does not exclude a different port-frame
+isomorphism or a controlled approximate comparison.
+
+With matching initial density restrictions on the common ball, including any
+untouched reference, the two complete root-observer output laws differ by at
+most the sum of the two truncation bounds. At levels three and five, for
+per-seam attempt intensity `s=1/4`, this gives
+
+```text
+trace distance <= 2 * 12 * (6/4)^10 / 10!
+               = 2187/5734400 < 0.000382.
+```
+
+This controls the whole local quantum output, all allowed local records and
+their feedback, under the local-access hypotheses above. A record from a seam
+crossing the root's boundary enlarges the observation support and requires
+recomputing the bound. Comparing equal global attempt counts would give
+different per-seam intensities: the two screens have respectively 40,320 and
+645,120 seams. The comparison therefore uses the stated independent per-seam
+Poisson extension; it does not identify this parameter with observer time.
+
+The executable also transports an actual four-seam C/E experiment between
+source paths `(757,756,735,734)` and `(12277,12276,12243,12242)`. It includes an
+entangled reference, a current-controlled local phase operation, all 81
+complete current words and serialized continuation. Source seams are sorted
+global addresses, so signed currents must be reversed where their orientation
+differs from the common path. Independent rational tests compare every visible
+outcome on all 256 four-port matrix units; hence the correspondence extends
+to every input and untouched reference on this support. The runtime checks
+the full branch density matrices. This finite tape holds every unselected
+seam: it tests instrument transport, not a simulation of the full Poisson
+screen process or a replacement for its analytical error bound.
+
+### A nontrivial compatible state domain
+
+Use the already checked full binary tensor algebra, with no separate
+total-two constraint on each elementary carrier. A declared density `0<rho<1`
+gives the faithful product reference
+`sigma_rho = tensor_ports diag(1-rho,rho)`. Its local restrictions agree exactly
+under every retained address map. Every native unread seam map preserves it:
+the reference is scalar within each total-number block, while each map is
+unital and conserves number. The executable checks stationarity at `rho=1/3`
+and branchwise number-charge preservation for both candidates. These
+references have nonzero local fluctuations at every screen size. Their density
+is supplied by preparation, not selected by repair.
+
+On nested finite port sets, the embedding `A -> A tensor I` and restriction
+`identity tensor reference expectation` are state preserving, completely
+positive and compose exactly. This is the tensor-reference instance of the
+paper's [reference multiresolution construction](../../paper/screen_microphysics_and_observer_synchronization.tex)
+and the existing [CP restriction contract](../../Lean/QFT/CPRestrictionNet.lean).
+The modular flow is generated by `log(rho/(1-rho))*N`. Every selective native
+branch commutes with that flow because it preserves number charge; stationarity
+is asserted only for the unread sum. The modular action is trivial on the
+current POVMs and fixed-total observables. It does not furnish observable
+clock ticks or equate modular parameter with Poisson intensity.
+
+An arbitrary matching local preparation, including a root entangled with a
+reference, can replace the product on the matched region. If the initial
+restrictions differ by trace distance `delta`, add `delta` to the output bound.
+The uniform **global total-two** preparations are an important different case:
+their 222-port restrictions at levels three and five differ by exactly
+`831558460593/30921625444352`, about `0.02689`. Their occupation law is
+hypergeometric; for any fixed local region it approaches the vacuum as the
+screen grows. Geometry compatibility alone cannot turn those dilute
+preparations into a nontrivial finite-density limit.
+
+### Exact local density-response predictions
+
+The native first-moment law gives the common density uniformization
+`Q=I-L/12`, where every port degree is at most six. Its root `12 x 12` blocks
+agree exactly between levels three and five through `Q^22`; a root-port
+response first differs at power 23. All integer numerators and the first
+differing entry are retained. The radius-nine identification guarantees
+agreement through power 18 by returning-path support; the larger exact
+agreement range is an executed finite result.
+
+For the Poisson screen scheduler, the actual density response is
+`exp(-s L/2)=exp[6s(Q-I)]`. Thus the common coefficients give a tighter
+bound on this particular readout: after preparing one particle at any root
+port and leaving the other ports empty, its probability of being found at any
+specified root port differs by less than `10^-17` at `s=1/4`. The receipt uses
+the exact rational majorant
+`(3/2)^23 / (23! * (1-(3/2)/24))` for the remaining Poisson tail. This is a
+mean-density observation prediction under supplied preparation and final
+occupation readout. It does not control the complete quantum history, assign
+one `Q` step to one native global attempt, or compare with laboratory data.
+
+### What is still required for a limit
+
+The nearest [tower theorem](../../Lean/Tower/ConsensusTower.lean) requires
+compatible algebras, states and dynamics over its whole domain. Here the
+finite tensor identifications, explicit compatible states, native instrument
+transport and bounded local output comparison are supplied for the listed
+source pairs. An all-level stabilization or approximation theorem is still
+required. A proof would need to control spherical subdivision geometry,
+local port-routing decisions and state restrictions as the radius increases;
+the pinned executable routing uses floating direction scores. Six finite
+levels do not prove such an induction. These certificates therefore establish
+finite source-screen compatibility with quantified observational error, not a
+continuum limit, emergent physical dimension or relativistic spacetime.
+
 ```sh
 python -m model.native_action --check model/native_action/results.json
+python -m model.native_action.screen_compatibility --check model/native_action/screen_results.json
 python -m pytest -q -W error model/native_action
 ```

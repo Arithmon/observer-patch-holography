@@ -14081,6 +14081,114 @@
       }
     }
   },
+  "future_randomized_designs": {
+    "4": {
+      "coordinate_extent": 4,
+      "design": {
+        "Weyl_phase": "4/25",
+        "algebra_error_upper": "1198529/2500000000000000000000000000000000000000000000",
+        "coefficients": [
+          "-1026853/500000",
+          "1574791/500000",
+          "-95614031771/15625000000",
+          "-467232946677/250000000000",
+          "11146759412820800438222983519047913648095395977/5000000000000000000000000000000000000000000000",
+          "-6428910511775904402471597957085354560787607703/2500000000000000000000000000000000000000000000"
+        ],
+        "constant": "74301318461/10000000000",
+        "score_half_range": "89962169536632609243166179433218622769670611383/5000000000000000000000000000000000000000000000",
+        "setting_probabilities": [
+          "10268530000000000000000000000000000000000000000/89962169536632609243166179433218622769670611383",
+          "15747910000000000000000000000000000000000000000/89962169536632609243166179433218622769670611383",
+          "30596490166720000000000000000000000000000000000/89962169536632609243166179433218622769670611383",
+          "9344658933540000000000000000000000000000000000/89962169536632609243166179433218622769670611383",
+          "11146759412820800438222983519047913648095395977/89962169536632609243166179433218622769670611383",
+          "299019093570972297789376649166760677245935242/2092143477596107191701539056586479599294665381"
+        ],
+        "witness_vector": [
+          [
+            "-1026853/1000000",
+            "-1574791/1000000"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1305287/1000000",
+            "1091771/1000000"
+          ]
+        ]
+      },
+      "failure_probability_per_extent": "1/200",
+      "family_failure_probability_for_two_extents": "1/100",
+      "future_mean_must_reach_declared_target": true,
+      "future_zero_service_crossing_trials": 26103,
+      "physical_service_errors_certified": false,
+      "point": [
+        1,
+        1
+      ],
+      "power_guaranteed": false,
+      "product_order_sign": 1,
+      "public_data_statistical_rejection": false,
+      "public_plugin_score": "-36251886887456823485340739968545291532539085837526351904604023/100000000000000000000000000000000000000000000000000000000000000",
+      "public_plugin_score_float": -0.36251886887456825
+    },
+    "5": {
+      "coordinate_extent": 5,
+      "design": {
+        "Weyl_phase": "1/4",
+        "algebra_error_upper": "44249/78125000000000000000000000000000000000000000",
+        "coefficients": [
+          "-143767/62500",
+          "922819/250000",
+          "-2051145916607/250000000000",
+          "-793118584201/250000000000",
+          "12658193548932560551832824495030706270794020569/5000000000000000000000000000000000000000000000",
+          "-3943539389770645074734735269073556524534673457/1250000000000000000000000000000000000000000000"
+        ],
+        "constant": "39278926207/4000000000",
+        "score_half_range": "115275381124175140850771765571324932368932714397/5000000000000000000000000000000000000000000000",
+        "setting_probabilities": [
+          "11501360000000000000000000000000000000000000000/115275381124175140850771765571324932368932714397",
+          "18456380000000000000000000000000000000000000000/115275381124175140850771765571324932368932714397",
+          "41022918332140000000000000000000000000000000000/115275381124175140850771765571324932368932714397",
+          "15862371684020000000000000000000000000000000000/115275381124175140850771765571324932368932714397",
+          "12658193548932560551832824495030706270794020569/115275381124175140850771765571324932368932714397",
+          "15774157559082580298938941076294226098138693828/115275381124175140850771765571324932368932714397"
+        ],
+        "witness_vector": [
+          [
+            "-143767/125000",
+            "-922819/500000"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1616727/1000000",
+            "1215209/1000000"
+          ]
+        ]
+      },
+      "failure_probability_per_extent": "1/200",
+      "family_failure_probability_for_two_extents": "1/100",
+      "future_mean_must_reach_declared_target": true,
+      "future_zero_service_crossing_trials": 14914,
+      "physical_service_errors_certified": false,
+      "point": [
+        1,
+        1
+      ],
+      "power_guaranteed": false,
+      "product_order_sign": 1,
+      "public_data_statistical_rejection": false,
+      "public_plugin_score": "-61455461535904539843705754351354392395094830276493729205979431/100000000000000000000000000000000000000000000000000000000000000",
+      "public_plugin_score_float": -0.6145546153590454
+    }
+  },
   "orientation": {
     "central_line_imaginary_values_preserved": true,
     "coordinate_direction_known": false,
@@ -14090,6 +14198,1473 @@
     "real_coordinate_array_axis": 1
   },
   "prediction_sha256": "269b35fb656e63d78247e3e2be0fad0c22d2a9d1d94ba89a112f436340bfca64",
+  "randomized_continuing_execution": {
+    "complete_two_trial_law": [
+      {
+        "probability": 0.036136826367342,
+        "record": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0018825509907063349,
+        "record": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024146,
+        "record": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01900968867902418,
+        "record": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.03438884987813175,
+        "record": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0036305274799165697,
+        "record": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01900968867902414,
+        "record": [
+          0,
+          0,
+          3,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024164,
+        "record": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024136,
+        "record": [
+          0,
+          0,
+          4,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024164,
+        "record": [
+          0,
+          0,
+          4,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0018825509907063342,
+        "record": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 9.807165124528549e-05,
+        "record": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758078,
+        "record": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758115,
+        "record": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0017914900093671422,
+        "record": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.00018913263258447623,
+        "record": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758087,
+        "record": [
+          0,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758095,
+        "record": [
+          0,
+          1,
+          3,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758095,
+        "record": [
+          0,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758084,
+        "record": [
+          0,
+          1,
+          4,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024146,
+        "record": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758056,
+        "record": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0118825509907063,
+        "record": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.008117449009293653,
+        "record": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374943,
+        "record": [
+          1,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505211,
+        "record": [
+          1,
+          0,
+          2,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999967,
+        "record": [
+          1,
+          0,
+          3,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999978,
+        "record": [
+          1,
+          0,
+          3,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01152301574425878,
+        "record": [
+          1,
+          0,
+          4,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.008476984255741163,
+        "record": [
+          1,
+          0,
+          4,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01900968867902417,
+        "record": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758115,
+        "record": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009418259751094333,
+        "record": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.010581740248905647,
+        "record": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374945,
+        "record": [
+          1,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505229,
+        "record": [
+          1,
+          1,
+          2,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.00999999999999998,
+        "record": [
+          1,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999988,
+        "record": [
+          1,
+          1,
+          3,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.010581740248905628,
+        "record": [
+          1,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.009418259751094338,
+        "record": [
+          1,
+          1,
+          4,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.03438884987813174,
+        "record": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0017914900093671427,
+        "record": [
+          2,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374943,
+        "record": [
+          2,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374945,
+        "record": [
+          2,
+          0,
+          1,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.03272542485937362,
+        "record": [
+          2,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.003454915028125255,
+        "record": [
+          2,
+          0,
+          2,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.018090169943749422,
+        "record": [
+          2,
+          0,
+          3,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374944,
+        "record": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374942,
+        "record": [
+          2,
+          0,
+          4,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.018090169943749432,
+        "record": [
+          2,
+          0,
+          4,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.003630527479916568,
+        "record": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.00018913263258447623,
+        "record": [
+          2,
+          1,
+          0,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505207,
+        "record": [
+          2,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505226,
+        "record": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.003454915028125254,
+        "record": [
+          2,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0003647450843757878,
+        "record": [
+          2,
+          1,
+          2,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505137,
+        "record": [
+          2,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505276,
+        "record": [
+          2,
+          1,
+          3,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505146,
+        "record": [
+          2,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.001909830056250526,
+        "record": [
+          2,
+          1,
+          4,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.01900968867902414,
+        "record": [
+          3,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758087,
+        "record": [
+          3,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999967,
+        "record": [
+          3,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999981,
+        "record": [
+          3,
+          0,
+          1,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.018090169943749422,
+        "record": [
+          3,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505157,
+        "record": [
+          3,
+          0,
+          2,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.012154104286324541,
+        "record": [
+          3,
+          0,
+          3,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.007845895713675397,
+        "record": [
+          3,
+          0,
+          3,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.013112770881589027,
+        "record": [
+          3,
+          0,
+          4,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.006887229118410905,
+        "record": [
+          3,
+          0,
+          4,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024153,
+        "record": [
+          3,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758095,
+        "record": [
+          3,
+          1,
+          0,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.00999999999999997,
+        "record": [
+          3,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009999999999999992,
+        "record": [
+          3,
+          1,
+          1,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374943,
+        "record": [
+          3,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0019098300562505276,
+        "record": [
+          3,
+          1,
+          2,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.006545084971874716,
+        "record": [
+          3,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.013454915028125233,
+        "record": [
+          3,
+          1,
+          3,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.006887229118410906,
+        "record": [
+          3,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01311277088158904,
+        "record": [
+          3,
+          1,
+          4,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024136,
+        "record": [
+          4,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758058,
+        "record": [
+          4,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.011523015744258779,
+        "record": [
+          4,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.00847698425574116,
+        "record": [
+          4,
+          0,
+          1,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.01809016994374942,
+        "record": [
+          4,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.001909830056250518,
+        "record": [
+          4,
+          0,
+          2,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.010768790918798099,
+        "record": [
+          4,
+          0,
+          3,
+          0
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.009231209081201834,
+        "record": [
+          4,
+          0,
+          3,
+          1
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.013386249906130526,
+        "record": [
+          4,
+          0,
+          4,
+          0
+        ],
+        "scores": [
+          -6.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.006613750093869407,
+        "record": [
+          4,
+          0,
+          4,
+          1
+        ],
+        "scores": [
+          -6.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.019009688679024153,
+        "record": [
+          4,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.0009903113209758121,
+        "record": [
+          4,
+          1,
+          0,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.008476984255741159,
+        "record": [
+          4,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.0115230157442588,
+        "record": [
+          4,
+          1,
+          1,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.018090169943749426,
+        "record": [
+          4,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.001909830056250526,
+        "record": [
+          4,
+          1,
+          2,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.006887229118410904,
+        "record": [
+          4,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      },
+      {
+        "probability": 0.013112770881589039,
+        "record": [
+          4,
+          1,
+          3,
+          1
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.006613750093869405,
+        "record": [
+          4,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          14.0,
+          -6.0
+        ]
+      },
+      {
+        "probability": 0.013386249906130533,
+        "record": [
+          4,
+          1,
+          4,
+          1
+        ],
+        "scores": [
+          14.0,
+          14.0
+        ]
+      }
+    ],
+    "conditional_second_scores": [
+      {
+        "first_record": [
+          0,
+          0
+        ],
+        "mass": 0.19009688679024161,
+        "second_score_conditional_mean": 0.5800282754452649
+      },
+      {
+        "first_record": [
+          0,
+          1
+        ],
+        "mass": 0.009903113209758093,
+        "second_score_conditional_mean": 0.5800282754452611
+      },
+      {
+        "first_record": [
+          1,
+          0
+        ],
+        "mass": 0.09999999999999973,
+        "second_score_conditional_mean": 0.6519353247347685
+      },
+      {
+        "first_record": [
+          1,
+          1
+        ],
+        "mass": 0.09999999999999987,
+        "second_score_conditional_mean": 0.3473321758830048
+      },
+      {
+        "first_record": [
+          2,
+          0
+        ],
+        "mass": 0.18090169943749435,
+        "second_score_conditional_mean": 0.5800282754452651
+      },
+      {
+        "first_record": [
+          2,
+          1
+        ],
+        "mass": 0.019098300562505215,
+        "second_score_conditional_mean": 0.5800282754452644
+      },
+      {
+        "first_record": [
+          3,
+          0
+        ],
+        "mass": 0.09999999999999971,
+        "second_score_conditional_mean": 0.3882949563923664
+      },
+      {
+        "first_record": [
+          3,
+          1
+        ],
+        "mass": 0.09999999999999978,
+        "second_score_conditional_mean": 0.5115994461380274
+      },
+      {
+        "first_record": [
+          4,
+          0
+        ],
+        "mass": 0.09999999999999967,
+        "second_score_conditional_mean": 0.3611396268305422
+      },
+      {
+        "first_record": [
+          4,
+          1
+        ],
+        "mass": 0.09999999999999976,
+        "second_score_conditional_mean": 0.3301209315018022
+      }
+    ],
+    "design": {
+      "Weyl_phase": "0",
+      "algebra_error_upper": "0",
+      "coefficients": [
+        "-2",
+        "2",
+        "-2",
+        "2",
+        "0",
+        "-2"
+      ],
+      "constant": "4",
+      "score_half_range": "10",
+      "setting_probabilities": [
+        "1/5",
+        "1/5",
+        "1/5",
+        "1/5",
+        "0",
+        "1/5"
+      ],
+      "witness_vector": [
+        [
+          "-1",
+          "-1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ]
+    },
+    "finite_array_certificate": {
+      "arithmetic": "exact binary-array rational matrix arithmetic and outward rational square root",
+      "bound_uniform_in_state_and_reference": true,
+      "completed_randomizer_score_error_upper": "0",
+      "completion_is_mathematical_comparison_only": true,
+      "conditional_score_defect_including_completed_randomizer_upper": "1/10000000000000",
+      "conditional_score_defect_upper": "1/10000000000000",
+      "conditional_score_defect_upper_float": 1e-13,
+      "fresh_exact_array_bounds_verified_against_fixed_envelopes": true,
+      "per_execution_floating_diagnostics_not_certificate_inputs": {
+        "conditional_score_defect": 1.6800000000000046e-14,
+        "raw_positive_square_comparison_error": 2.338e-15,
+        "raw_randomizer_mass_defect": 5.177941833848279e-17,
+        "setting_effect_sum_errors": [
+          9.33e-16,
+          8.87e-16,
+          1.57e-15,
+          1.766e-15,
+          1.815e-15,
+          2.075e-15
+        ],
+        "weighted_completion_error": 1.4462000000000046e-14
+      },
+      "physical_service_fidelity_certified": false,
+      "raw_positive_square_comparison_error_upper": "1/100000000000000",
+      "raw_randomizer_mass_defect_upper": "1/1000000000000000",
+      "setting_effect_sum_error_upper": [
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000"
+      ],
+      "weighted_completion_error_upper": "1/12500000000000"
+    },
+    "fixed_horizon_theorem_applied_to_laboratory_data": false,
+    "maximum_reference_checkpoint_residual": 0.0,
+    "minimum_conditional_second_score": 0.3301209315018022,
+    "physical_randomizer_independence_certified": false,
+    "preparation_reset_between_trials": false,
+    "quantum_reference_retained": true,
+    "raw_complete_mass_defect": 2.220446049250313e-15,
+    "setting_correlated_preparation_negative_control_mean": -2.832551928156968,
+    "setting_randomness_is_supplied_control_service": true
+  },
   "reported_origin_unchanged": [
     "123/125",
     "11199999999999999/100000000000000000"
@@ -14105,6 +15680,10 @@
     "old_scores_changed": false,
     "oscillator_dynamics_assumed": false,
     "prospective_preregistration": false,
+    "randomized_future_common_state_across_trials_assumed": false,
+    "randomized_future_independent_setting_choice_assumed": true,
+    "randomized_future_independent_trials_assumed": false,
+    "randomized_future_physical_services_certified": false,
     "raw_trials_available": false,
     "statistical_rejection_claimed": false
   },
@@ -14211,11 +15790,14 @@
     "model/anharmonic_transfer/calibration.py": "42bd720c4f05e0990688f395d1a29331a40e481f8f74adf00a765fff16ebf476",
     "model/anharmonic_transfer/data/calibration_receipt.json.gz": "270b8cf8dc3446da3e3eacb5e38e8375f645039509a23f7972e288bf463810bd",
     "model/anharmonic_transfer/protocol.json": "4e9baef6ae1ec1550d39754e0b9627b9cc2da7c6d2500f28de913381e4fa8a4e",
+    "model/calibrated_measurement/bounds.py": "fec098d950cff3ce03a0035ba25d847fd7623d7935f333f261ea796696422580",
     "model/characteristic_constraints/__init__.py": "a89e32575d79b2141517834f671f1f6947d9d259e60b5c10ad94c993047b6a14",
     "model/characteristic_constraints/__main__.py": "f230c991506600dc27dd863ee256a7e4930289afee67569b3cb3d9a8379511a2",
     "model/characteristic_constraints/bounds.py": "af9b874f384e87db42fbe7e4710686b1cc96aa6fc7b579603602ad54bce5343a",
-    "model/characteristic_constraints/experiment.py": "4d419e8b8fd20f73c556f4c306e7d9cdf49aaa3f211c70d5a74130d003ffc396",
-    "model/characteristic_constraints/protocol.json": "f1b3538ef54c09b745c55a0dad9a4a8d75f2aba07e5d8359adaa96246cee5409",
+    "model/characteristic_constraints/experiment.py": "fdbb27bd9931b09c717b1d762eafeca272d51cbc3f9742570a161bae36e518d5",
+    "model/characteristic_constraints/protocol.json": "a36bb54711c0a678e123ee8878c082ab7f3ec6ded3f2d964233aa024150068d7",
+    "model/characteristic_constraints/randomized.py": "c0d1da6d838917aae16a307b2ee32372065cb3955b769cdb0507deb96856ba3b",
+    "model/characteristic_constraints/randomized_source.py": "239aaf10faafe447b484029e27b7abadce99764eee20050d9f6b3fc4389e17a5",
     "model/characteristic_constraints/source.py": "52c6c5ec29f7cdf09bc3c501f3953052f74e31330a512fbcaa3d64f086c9a5d9",
     "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
     "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",

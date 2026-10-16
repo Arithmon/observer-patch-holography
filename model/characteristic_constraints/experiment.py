@@ -10,19 +10,21 @@ import numpy as np
 from ..measurement_bounds import experiment as detector_source
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from ..scalar_observations.experimental_readout import data
-from . import bounds, source
+from . import bounds, source, randomized, randomized_source
 
 ROOT = Path(__file__).resolve().parents[2]
 FOLDER = Path(__file__).resolve().parent
 SOURCE_PATHS = tuple(sorted(set((*detector_source.source_bindings(),
     'model/primitive_observer/runtime.py',
     'model/common_source/open_protocol.py',
+    'model/calibrated_measurement/bounds.py',
     'model/scalar_observations/experimental_readout/data.py',
     'model/scalar_observations/experimental_readout/provenance.json',
     *(f'model/scalar_observations/experimental_readout/data/{name}' for name in
       ('cf_0ms_real.csv', 'cf_0ms_imag.csv', 'SOURCE_README.md')),
     *(f'model/characteristic_constraints/{name}' for name in
-      ('__init__.py', '__main__.py', 'bounds.py', 'source.py', 'experiment.py', 'protocol.json'))))))
+      ('__init__.py', '__main__.py', 'bounds.py', 'source.py', 'randomized.py',
+       'randomized_source.py', 'experiment.py', 'protocol.json'))))))
 
 
 def exact_data():
@@ -94,6 +96,8 @@ def run():
     return {'schema': 'oph.characteristic_constraints.v1',
         'source_sha256': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in SOURCE_PATHS},
         'source_execution': execution, 'orientation': orientation,
+        'randomized_continuing_execution': randomized_source.execute(),
+        'future_randomized_designs': randomized.empirical_designs(scored, axes, interior),
         'prediction_sha256': hashlib.sha256(sealed.encode()).hexdigest(),
         'axis_only_predictions': predictions_by_extent, 'empirical_comparison': scored,
         'reported_origin_unchanged': list(map(str, axes[0, 0])),
@@ -102,7 +106,11 @@ def run():
             'common_normalized_preparation_assumed': True,
             'statistical_rejection_claimed': False, 'OPH_specific_confirmation': False,
             'prospective_preregistration': False, 'raw_trials_available': False,
-            'accepted_counts_available': False, 'old_scores_changed': False}}
+            'accepted_counts_available': False, 'old_scores_changed': False,
+            'randomized_future_common_state_across_trials_assumed': False,
+            'randomized_future_independent_trials_assumed': False,
+            'randomized_future_independent_setting_choice_assumed': True,
+            'randomized_future_physical_services_certified': False}}
 
 
 def compare(expected, actual):
