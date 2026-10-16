@@ -126,6 +126,18 @@ the phase signal. This is an obstruction for the committed finite observer
 implementation, not a theorem that no other OPH construction could generate
 modular evolution.
 
+The real-state obstruction also survives conditioning on any retained native
+record, record-dependent finite stopping and probability mixtures of those
+histories, provided every intervening operation is real in the native basis.
+Each branch maps a real density to a real unnormalized density; normalization
+by a positive real probability preserves that property. A convergent stopped
+CP sum does too. Thus selecting a different native event boundary or a
+nonzero-probability record cannot turn this same Y protocol into a moving
+modular hand. An alternative detector can still read native change: the
+[single-carrier clock comparison](../native_clock/COMPARISON.md) gives actual
+current-count agreement and uncertainty without a federation. Those clocks
+do not require modular phase advancement.
+
 The source does supply a local carrier interpretation for this frequency.
 Each of the four cross-degree coherent modes in the existing phase preparation
 is supported on three named ports. Restricting the Palm reference to the

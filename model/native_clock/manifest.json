@@ -6,12 +6,16 @@
   ],
   "description": "Exact native current counter, marked three-state reduction, waiting/count laws and complete CQ execution.",
   "files": {
-    "README.md": "dd7657da7dd890c8f9981a6b4e01806d843cf94e4c8eac998448a19f96cc52b3",
+    "COMPARISON.md": "883d28a17b0d7e8f7968a4de8bfe8a1e454c65b817463e88ebf9fcc675420025",
+    "README.md": "94e409df88814b06b47454af0de03894d82530133d49026c4493e3f455a07d14",
     "__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
     "clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
+    "comparison.py": "594d32829d5d74df6cc38fd3e7166997526a65b3acc42b04da6ad2edfa731536",
+    "comparison_results.json": "843d05ad61b5b55520cab5fd418461544445efb1bc78fb83cc51dfecac417734",
     "results.json": "78630aa0e319cfb78b43f4ec3931a2ddaf382ae47a0b7a3a75d2d5a0182dac95",
-    "test_clock.py": "06f431f5450f78538084b65637ec4797cf385415267918f9a7cff9335679e577"
+    "test_clock.py": "06f431f5450f78538084b65637ec4797cf385415267918f9a7cff9335679e577",
+    "test_comparison.py": "0d7bd4d1e6c27b14aea73708df4b006ffeff3dd28f16d4c787209f5025c11ea6"
   },
   "schema": "oph.model.packet.v1"
 }

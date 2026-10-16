@@ -77,6 +77,30 @@ untouched references. Source-derived native dynamics and supplied physical
 benchmark programs use this same execution interface. Their preparations,
 clocks, interpretation maps and error budgets remain explicit.
 
+### Local construction and its extension
+
+The local proof obligations start on one twelve-port carrier: specify its
+accessible algebra, derive repair and record laws, compare its local clocks,
+and reconstruct spatial relations from those observations. Observer regions
+may overlap inside the same carrier. A federation is useful for tests involving
+more carriers, larger distances or refinement; none is required merely to
+define an observer or compare two local record views.
+
+An extended spacetime claim requires a compatible family of operational
+domains and an effective regime with controlled errors. The existing
+spherical federation is a candidate for that extension. Its geometry and
+refinement must earn their physical interpretation through observations;
+they are not prerequisites imposed on every finite construction. A single
+carrier can establish a finite contract without establishing that extension.
+
+Action representations also have different domains. The endpoint Kraus
+instrument determines an exact reversible representation of its finite
+histories. Choosing a unitary completion and a Hermitian logarithm is an
+encoding choice. It supplies no prediction for an extra intermediate-time
+measurement until such access and evolution are included in the observer
+contract. A valid construction need not be uniquely selected; its advertised
+observations must follow from its declared operations.
+
 ### Native action, federations and observer-relative clocks
 
 The [quantum federation construction](federated_quantum_sector/README.md)

@@ -13,6 +13,13 @@ Here `n` always means **native attempt count**, including the recorded zero
 currents. A physical duration, proper time or relation to an experimental
 clock has not been identified.
 
+The [single-carrier clock comparison](COMPARISON.md) additionally derives
+relative rates and explicit finite uncertainty for all twelve local current
+clocks, without stationary preparation or a federation. Their asymptotic
+count covariances recover all three native port-distance shells. These
+unit-independent relations are testable after an operational apparatus
+identification; choosing seconds is a convention, not the missing result.
+
 ## Why the model does not predict seconds
 
 The source contains integer attempt counts and dimensionless probabilities,

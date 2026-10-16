@@ -6,7 +6,7 @@ checkpoint continuation. Its finite predictions are computed from declared
 source operations and compared with exact mathematical targets or public
 measurement data under explicit apparatus assumptions.
 
-The construction supports interacting quantum dynamics, local event clocks,
+The construction supports finite interacting quantum observation laws, local event clocks,
 effective field descriptions with memory, and quantitative observation bounds
 across federations of elementary observers. **A physical identification with
 our Universe, including interacting relativistic spacetime, remains open.**
@@ -14,6 +14,31 @@ The [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md) states the current
 results and remaining obligations. The
 [construction specification](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 defines the acceptance criteria.
+
+## Start with one carrier
+
+A federation is optional for the local construction. One twelve-port carrier
+supports the observer algebra, native repair, local event clocks, coherent
+record protocols and a finite spatial readout. Different observer regions can
+overlap within that carrier. Joining elementary carriers is a way to test
+larger regions, distant interventions and refinement; it is not an additional
+axiom needed to establish each local result.
+
+The useful local test is whether different observations describe the same
+process. A 360-shot native calibration reconstructs the carrier's seams and a
+rank-three slow-response metric without an exact probability oracle. Local clock fluctuations give another
+readout of the same distance shells. A reversible representation of repair
+retains the complete finite instrument history, including its records and
+feedback. The detailed claims and their scope are in the
+[recovery assessment](OBSERVER_RELATIVE_RECOVERY.md).
+
+The twelve-port result does not by itself describe an extended physical
+space. That stronger claim needs observations over larger operational domains
+and controlled effective approximations. The existing spherical federation
+is one construction to investigate, not a required architecture or an
+established three-dimensional bulk. Its supplied routes and failed ancestry
+maps are reasons to test its suitability, rather than conditions to impose on
+every local proof.
 
 ## Architecture and execution
 

@@ -2,7 +2,7 @@
 
 **Physics from the records observers can share.**
 
-[Main paper](https://philpapers.org/rec/MUEFOC) · [Executable observer](model/README.md) · [Lean library](Lean/) · [Reproduce](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
+[Main paper](https://philpapers.org/rec/MUEFOC) · [Lean library](Lean/) · [Reproduce](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
 
 [![Mandatory Suite](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml)
 [![Lean CI](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml)
@@ -46,7 +46,7 @@ and the clocks inside it.
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
   and the Tsirelson bound on completed records; a carrier that is
-  three-dimensional on its own; the Standard Model gauge Lie algebra with one
+  three-dimensional in its slow response; the Standard Model gauge Lie algebra with one
   anomaly-free generation; a (1+3)-dimensional causal order in which proper
   time comes from record counts; and the Einstein equation from a realized
   null balance.
@@ -95,6 +95,15 @@ action and the preparation are supplied inputs. The
 instruments and their count-based rejection rule before any independent
 counts, and the [construction guide](model/CONSTRUCTION.md) states the
 acceptance criteria and the connections that remain to be built.
+
+One twelve-port carrier also connects spatial and clock observations:
+current-response records recover its local geometry, and correlations between
+local tick counts distinguish the same distance shells. An exact reversible
+representation preserves native repair histories, records and feedback.
+These finite results need no federation. Joining carriers tests larger regions
+and refinement; the [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md)
+explains why extended relativistic spacetime and a laboratory identification
+require further evidence.
 
 ## Mathematical results
 
