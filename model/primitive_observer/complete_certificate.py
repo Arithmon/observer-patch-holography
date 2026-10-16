@@ -12,6 +12,8 @@ from fractions import Fraction as F
 import hashlib
 from pathlib import Path
 
+import numpy as np
+
 from tools import strict_json
 from ..common_source import continuation_bounds, exact_output, open_observer, protocol, smooth_history
 from ..common_source import output_certificate as report
@@ -29,7 +31,11 @@ SOURCE_PATHS = tuple(sorted(set((*report.SOURCE_PATHS,
 
 def nuclear_upper(array):
     """Directed sqrt(D)*Frobenius upper bound on the original square array."""
-    if (not hasattr(array, 'shape') or len(array.shape) != 2 or array.shape[0] < 1
+    # Check the concrete type before reading metadata or copying entries;
+    # ndarray subclasses may replace either operation with arbitrary code.
+    if type(array) is not np.ndarray:
+        raise ValueError('an original base ndarray is required')
+    if (len(array.shape) != 2 or array.shape[0] < 1
             or array.shape[0] != array.shape[1]):
         raise ValueError('a square original numerical array is required')
     array = exact_output._array(array, array.shape)

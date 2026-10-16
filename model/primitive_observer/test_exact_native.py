@@ -146,6 +146,31 @@ def test_padding_and_abort_mass_never_projected_or_clipped():
     assert result['distance_upper'] == 8
 
 
+def test_native_certificate_rejects_subclass_that_conceals_nonzero_entries():
+    class Concealed(np.ndarray):
+        def copy(self, *args, **kwargs):
+            return np.zeros(self.shape, dtype=self.dtype)
+
+    reported = np.zeros(exact.SHAPE).view(Concealed)
+    reported[0, 0] = 1
+    # Before the concrete-type guard, the overridden copy yielded a false
+    # zero distance, although this map has half-diamond distance exactly 1/2.
+    assert exact.compare_map(np.asarray(reported), {})['distance_upper'] == F(1, 2)
+    with pytest.raises(ValueError, match='base ndarray'):
+        exact.compare_map(reported, {})
+
+
+def test_native_certificate_rejects_subclass_before_metadata_or_copy_dispatch():
+    class Hostile(np.ndarray):
+        def __getattribute__(self, name):
+            if name in ('shape', 'dtype', 'ndim', 'copy'):
+                raise AssertionError('subclass array dispatch reached')
+            return super().__getattribute__(name)
+
+    with pytest.raises(ValueError, match='base ndarray'):
+        exact.compare_map(np.zeros(exact.SHAPE).view(Hostile), {})
+
+
 def test_integer_components_remain_exact_above_binary64_precision():
     reported = np.zeros(exact.SHAPE, np.int64)
     reported[0, 0] = 2**53+1

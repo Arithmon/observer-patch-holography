@@ -15,6 +15,8 @@ from functools import lru_cache
 from itertools import product
 import math
 
+import numpy as np
+
 from ..common_source import exact_output as exact
 from ..common_source import quantum_native as source
 
@@ -144,6 +146,10 @@ def compare_map(array, ideal):
     normalization is used. This is an upper bound, not a distance estimator;
     even a harmless global phase can make it loose.
     """
+    # Subclasses can override copy or array metadata and replace the supplied
+    # entries before exact conversion. Reject them before any array dispatch.
+    if type(array) is not np.ndarray:
+        raise ValueError('an original base ndarray is required')
     array, ideal = exact._array(array, SHAPE), _sparse(ideal)
     entries = tuple(tuple(exact._component(value) for value in row) for row in array)
     reported = sum((real*real+imag*imag for row in entries for real, imag in row), F(0))

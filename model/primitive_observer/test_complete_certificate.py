@@ -123,6 +123,30 @@ def test_nuclear_bound_refuses_invalid_original_arrays(array):
         certificate.nuclear_upper(array)
 
 
+def test_nuclear_bound_rejects_subclass_that_conceals_nonzero_entries():
+    class Concealed(np.ndarray):
+        def copy(self, *args, **kwargs):
+            return np.zeros(self.shape, dtype=self.dtype)
+
+    array = np.eye(2).view(Concealed)
+    # The identity has nuclear norm two; dispatching to Concealed.copy would
+    # replace its entries and falsely certify a zero upper bound.
+    assert certificate.nuclear_upper(np.asarray(array)) == 2
+    with pytest.raises(ValueError, match='base ndarray'):
+        certificate.nuclear_upper(array)
+
+
+def test_nuclear_bound_rejects_subclass_before_metadata_or_copy_dispatch():
+    class Hostile(np.ndarray):
+        def __getattribute__(self, name):
+            if name in ('shape', 'dtype', 'ndim', 'copy'):
+                raise AssertionError('subclass array dispatch reached')
+            return super().__getattribute__(name)
+
+    with pytest.raises(ValueError, match='base ndarray'):
+        certificate.nuclear_upper(np.eye(2).view(Hostile))
+
+
 def test_compiler_inputs_runtime_and_new_proof_sources_are_bound():
     from ..observer.source_scalar import compiler
     required = {compiler.RESPONSE, compiler.CONTROL_RECEIPT,
