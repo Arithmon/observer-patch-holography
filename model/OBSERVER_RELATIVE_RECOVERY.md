@@ -243,3 +243,64 @@ does not accomplish that spatial comparison. None of these finite results
 warrants replacing the native relaxation
 dispersion with a desired relativistic dispersion. No universal clock or
 fundamental field is required by that target.
+
+
+## Joint quantum clocks, local action and continuing predictions
+
+The [joint clock process](joint_clock_process/README.md) extends the existing
+coarse memory identity from density means to every retained quantum outcome
+word, including intervening instruments and untouched references. Its declared
+accessible two-level field algebra comes from a factorization of a four-port,
+one-particle cross-carrier experiment. Two source states with the same reduced
+field state have disjoint first-event laws. Thus that instantaneous reduced
+state is insufficient; the exact history-dependent memory restores complete
+field/clock probabilities without selecting a new field action.
+
+For this particular pair of local clock instruments, each completed signed
+event has a rank-one work output. Four signed marks predict subsequent work-register
+records at event boundaries; conditional reference operators and any controller
+memory remain necessary for more general outputs. Between ticks, remote repairs
+continue and quantum coherence matters. The completed clock chain is identical
+for C and E, while a three-attempt phase probe gives `35/54` versus `14/27`.
+This is an explicit correspondence and limitation, not an identification of
+a dissipative event channel with a modular automorphism. It requires no
+global physical clock. The three-attempt cap and all timeouts remain visible.
+
+The [native action](native_action/README.md) reuses the full signed-difference
+quantum theorem to obtain `H_native=sum_e(I-Phi_e)` on the operator Hilbert
+space. Its positive local terms, exclusion coupling and coherence-killing
+coefficients are fixed by the declared native instrument. The actual discrete
+transfer is `I-H_native/M`. Optional independent per-seam Poisson attempts
+produce `exp(-s H_native)` exactly, where `s` is an auxiliary expected-attempt
+parameter, not an inferred physical duration. This derives a local Liouville
+action; it supplies neither a state-vector Hamiltonian nor a Lorentzian action.
+
+The same endpoint locality gives a bound on the observer's **complete quantum,
+record and reference output** after truncating distant ports. It covers finite
+local feedback protocols under a state-independent scheduler. The bound is
+uniform in federation size and yields a continuing local quantum process on
+a fixed bounded-degree infinite federation when neighborhoods, initial states,
+instruments and access maps are compatible. The existing screen refinements
+have not been proved to satisfy those hypotheses. Their source-derived joint
+observable limit and an emergent relativistic interpretation therefore remain
+open; this conditional construction does not silently discharge them.
+
+The [closed prediction protocol](closed_prediction_protocol/README.md)
+uses finite native preparation on the continuing carrier rather than resetting
+it to a supplied exact stationary state. Uniform reference-aware mixing and
+sequential coupling replace actual trial independence. The locked design uses
+379 preparation attempts before each of 3,927 trials and has exact-source
+wrong-candidate probability at most `3/400`. Physical control, storage and
+readout errors need their separate conditional allowance; the compiler's
+numerical-array bound does not certify an apparatus. Only two complete trials
+per law are executed by the retained verification, with all 36 joint records;
+the full trial budget is a prospective mathematical guarantee.
+
+Finally, [two-order characteristic positivity](characteristic_constraints/README.md)
+provides a public-data check without assuming Gaussian preparation or dynamics.
+Both unresolved coordinate extents and both noncommuting product orders are
+retained. Some noisy plug-in means violate the exact normalized-state Gram
+constraint by certified deterministic amounts. This diagnoses the limits of
+treating the table as exact expectations. It is not a statistical rejection,
+source selection or new OPH-specific empirical confirmation. Raw accepted
+counts, coordinate calibration and physical instrument errors are needed.

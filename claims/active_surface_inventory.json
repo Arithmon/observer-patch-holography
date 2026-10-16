@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 625,
+  "surface_count": 631,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1331,12 +1331,22 @@
       "allowlisted": false
     },
     {
+      "path": "model/characteristic_constraints/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/clocked_common_observer/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
     {
       "path": "model/clocked_quantum_readout/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/closed_prediction_protocol/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1516,6 +1526,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/joint_clock_process/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/local_tick/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1527,6 +1542,11 @@
     },
     {
       "path": "model/measurement_bounds/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_action/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1677,6 +1697,16 @@
     },
     {
       "path": "model/observer_reconstruction/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer_time_fields/AUDIT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer_time_fields/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

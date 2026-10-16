@@ -1,0 +1,11 @@
+{
+  "schema": "oph.characteristic_constraints.protocol.v1",
+  "coordinate_extents": [4, 5],
+  "product_orders": [-1, 1],
+  "axis_records": 21,
+  "interior_complex_records": 100,
+  "mirror_replicas_used": false,
+  "origin_normalization": false,
+  "trial_counts_inferred": false,
+  "status": "Retrospective axis-to-interior constraint; not a preregistration. Both product orders required; coordinate direction swaps them."
+}
