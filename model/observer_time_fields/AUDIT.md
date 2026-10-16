@@ -79,6 +79,14 @@ fails the required dictionary commutator; replacing remote motion by scalar
 holding changes the continuing law. These are retained boundary controls,
 not inconvenient cases removed from the claimed domain.
 
+Windows CI exposed a `5.77e-15` column-sum residual in the independent floating
+eigenvector reconstruction, above its fixed `5e-15` diagnostic tolerance.
+Exact constant-mode identities `D1=p1` and `B1=p1` establish stochasticity
+without that reconstruction. Its diagnostic allowance scales as `8*n*eps`
+and still rejects a `1e-8` uniform mass deficit preserving symmetry and
+positivity. The exact receipt and all other spectral and field-word checks
+are unchanged; this allowance is not used as a scientific error certificate.
+
 Isolated-process mutations were also run against the actual scientific
 assertions. Reversing the elementary resolvent and replacing its remote map
 by scalar holding each failed `K(I-A)=B`; disabling its feedback failed the

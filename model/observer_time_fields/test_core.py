@@ -67,6 +67,11 @@ def test_exact_completed_kernel_retains_remote_evolution_in_the_right_order():
     a = sp.Matrix(data.remote_counts)/data.denominator
     b = sp.Matrix(data.incident_counts)/data.denominator
     k = sp.Matrix(kernel.counts)/kernel.denominator
+    # These exact identities imply T1=1 through the positive spectral
+    # functional calculus. The floating eigensolve below is a cross-check.
+    ones = sp.ones(66, 1)
+    assert (sp.eye(66)-a)*ones == sp.Rational(3, 10)*ones
+    assert b*ones == sp.Rational(3, 10)*ones
     assert k*(sp.eye(66)-a) == b
     assert (sp.eye(66)-a)*k != b
     assert k*sp.ones(66, 1) == sp.ones(66, 1)
@@ -136,6 +141,14 @@ def test_full_adaptive_cylinder_dictionary_matches_the_symmetric_effective_model
     assert max(np.linalg.norm(native[key]-effective[key]) for key in native) > 1e-4
 
 
+def _check_floating_column_mass(transfer):
+    # This eigensolve/product/reduction diagnostic accumulates roundoff over
+    # 66 coordinates; a fixed 5e-15 threshold was below the Windows residual
+    # 5.77e-15. The scientific stochasticity certificate is exact above.
+    allowance = 8*transfer.shape[0]*np.finfo(float).eps
+    np.testing.assert_allclose(transfer.sum(axis=0), 1, atol=allowance, rtol=0)
+
+
 def test_effective_transfer_is_positive_stochastic_with_a_bounded_logarithm(matrices):
     _, _, _, transfer, _ = matrices
     eigenvalues = np.linalg.eigvalsh(transfer)
@@ -143,7 +156,12 @@ def test_effective_transfer_is_positive_stochastic_with_a_bounded_logarithm(matr
     assert eigenvalues.max() <= 1+1e-14
     assert transfer.min() >= -2e-15
     np.testing.assert_allclose(transfer, transfer.T, atol=2e-15, rtol=0)
-    np.testing.assert_allclose(transfer.sum(axis=0), 1, atol=5e-15, rtol=0)
+    _check_floating_column_mass(transfer)
+    # Uniform mass loss preserves symmetry, nonnegativity and positivity;
+    # the normalization check must still detect it independently.
+    wrong_mass = (1-1e-8)*transfer
+    with pytest.raises(AssertionError):
+        _check_floating_column_mass(wrong_mass)
     degree = 128
     polynomial = sum((1-eigenvalues)**j/j for j in range(1, degree+1))
     assert max(abs(-np.log(eigenvalues)-polynomial)) <= float(c.logarithm_remainder(degree))+1e-13
