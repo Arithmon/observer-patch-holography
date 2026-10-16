@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 621,
+  "surface_count": 625,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1496,6 +1496,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/federated_quantum_sector/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/identification_design/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1537,6 +1542,11 @@
     },
     {
       "path": "model/native_effective_fields/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_equilibration/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1656,6 +1666,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/observer_prediction_audit/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/observer_reconstruction/DERIVATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1702,6 +1717,11 @@
     },
     {
       "path": "model/primitive_observer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/relational_event_clock/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

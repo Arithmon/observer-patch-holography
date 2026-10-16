@@ -29,8 +29,14 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/calibrated_measurement", "model/clocked_quantum_readout",
            "model/native_modular_reference", "model/native_effective_fields",
            "model/relative_observer_geometry", "model/relative_modular_dynamics",
-           "model/transfer_modular_probe", "model/federated_observer")
+           "model/transfer_modular_probe", "model/federated_observer",
+           "model/native_equilibration", "model/relational_event_clock",
+           "model/federated_quantum_sector", "model/observer_prediction_audit")
 REPLAYS = (
+    ("model.native_equilibration", None, "model/native_equilibration/results.json"),
+    ("model.relational_event_clock", None, "model/relational_event_clock/results.json"),
+    ("model.federated_quantum_sector", None, "model/federated_quantum_sector/results.json"),
+    ("model.observer_prediction_audit", None, "model/observer_prediction_audit/results.json"),
     ("model.federated_observer", None, "model/federated_observer/results.json"),
     ("model.native_effective_fields", None, "model/native_effective_fields/results.json"),
     ("model.relative_observer_geometry", None, "model/relative_observer_geometry/results.json"),

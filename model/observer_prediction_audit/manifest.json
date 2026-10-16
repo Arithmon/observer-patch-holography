@@ -1,0 +1,19 @@
+{
+  "description": "Source-executed public readout controls and prospective complete-trial C/E discrimination.",
+  "files": {
+    "README.md": "1f7b37b5646c02643cd445493c7524506e8f054030fb90ffd94109a89d5159e4",
+    "__init__.py": "f1485eb7964ab51f21463b9df72c674a1fa4cd909971117e8c4a072c45c968a2",
+    "__main__.py": "d9f884ed270ad62af9fd65e3da791a8409ce7fe6145d0dcfec71227c0d5c68b3",
+    "construction.py": "faac0a613ff20990a37c1233681a4a581f030965f58ef5dc1f1f1faf44509629",
+    "prospective.py": "03db652f5ded543f1783d9eb20ae9c9d8a6925a3b98f84258f1ae6f177d99391",
+    "protocol.json": "d8aca5677918cd8866462b0c6978ed18d5ba5b2e17843c39a208854c28c5a3e0",
+    "readout.py": "fcf0ef38307ef6de34f93f6933f9a8b5e00a3626e8d56333ff2da573fc0f28be",
+    "results.json": "700987b548316ee287941ccd603aaa87b07d2d620915a8b56fcbbc73f14257d5",
+    "test_audit.py": "af79a1df55a9c4b4282f039cae77b52ca21928da87cd012b507139687feb8c92"
+  },
+  "reproduce": [
+    "python -m model.observer_prediction_audit --check model/observer_prediction_audit/results.json",
+    "python -m pytest -q -W error model/observer_prediction_audit"
+  ],
+  "schema": "oph.observer_prediction_audit.manifest.v1"
+}

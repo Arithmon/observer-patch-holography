@@ -35,6 +35,18 @@ through the admitted interface. A family of conditional predictions need
 not select one initial state of the Universe. Every claimed prediction must
 name which of these quantifiers it uses.
 
+For a declared instance, architecture, implemented interface and complete
+repair law are legitimate inputs, rather than premises that must be derived
+again inside each prediction. The
+[current input assessment](OBSERVER_RELATIVE_RECOVERY.md#what-the-inputs-supply)
+records their derived consequences. In particular, the existing graph quantum
+mixing theorem supplies a [finite preparation procedure](native_equilibration/README.md)
+for the unique stationary state in each connected fixed-total native sector,
+with an explicit error inherited by future complete observations. It selects
+neither the conserved total nor a nontrivial modular reference; these are
+different questions from whether the supplied instance has a well-defined
+conditional observation law.
+
 ## Selection is relative to accessible observations
 
 For a fixed architecture and interface, two presentations are operationally

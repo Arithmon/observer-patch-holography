@@ -33,6 +33,17 @@ reuses the finite transfer, marked-lumping, inner-flow and record-gluing
 arguments. The resulting finite predictions have no supplied oscillator
 action; the carrier, scheduler and coherent apparatus contracts remain explicit.
 
+The follow-up joins [finite native preparation](native_equilibration/README.md),
+[local event clocks](relational_event_clock/README.md) and
+[quantum federation histories](federated_quantum_sector/README.md). These
+derive further preparation, stopping and coherence laws from the same source
+operations. A [public-data readout audit](observer_prediction_audit/README.md)
+separates action-independent detector controls from dynamical model errors
+and gives a prospective native-law discrimination protocol. The
+[current premise assessment](OBSERVER_RELATIVE_RECOVERY.md#what-the-inputs-supply)
+distinguishes implemented inputs, derived consequences and the remaining
+physical identifications.
+
 | Construction | New result | Remaining premise or boundary |
 | --- | --- | --- |
 | [Native effective fields](native_effective_fields/README.md) | Exact hard-core seam generator `G=60(I-K)`, controlled logarithm Hamiltonian and three nonzero connected four-current predictions. The absolute-current law has a minimal three-state linear representation. | Fixed twelve-port carrier and binary total-two sector, uniform scheduling; no spatial continuum or relativistic identification. |

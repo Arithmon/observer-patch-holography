@@ -157,3 +157,70 @@ Independent measurements must then test predictions fixed before seeing
 their outcomes. This pass adds richer model predictions and finite
 connections, with no new experimental counts. The retained 125-point
 anharmonic RMSE remains **0.2876427868**.
+
+## What the inputs supply
+
+The subsequent federation/time/prediction pass treats the declared architecture,
+observer implementation and complete repair law as inputs to a conditional
+physical model. Consequences fixed by those inputs need not be supplied again.
+They also do not select those inputs from every alternative permitted by the
+broader OPH proposal. This distinction avoids both inventing missing premises
+and treating arbitrary target dynamics as architecture.
+
+| Item | Status in the executed instance | Remaining obligation |
+| --- | --- | --- |
+| Elementary ports, native occupation domain and S2 federation routing | Fixed by the retained architecture; all graph/coupling calls are source bound. | Physical identification of this instance; no claim that routing uniquely follows from A1 alone. |
+| Native local instrument, fair coin and uniform seam schedule | Specified by the complete C or E instance. | Choosing C versus E and proving applicability to a physical apparatus. The production adaptive schedule is a different instance. |
+| Exchange generator, density and coherence coefficients | Derived from the native Kraus branches and actual seams. | No extra oscillator or relativistic action follows just from these coefficients. |
+| Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
+| Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
+| Coherent preparation, phase interventions and readout | Declared observer services, with existing source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
+| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed. | Unique operational reference selection and its relation to continuing native events remain open. The stationary tracial state's modular flow is trivial. |
+| Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
+
+The [equilibration attachment](native_equilibration/README.md) reuses the
+existing weighted-graph quantum mixing theorem and checks its hypotheses on
+the actual federations. On the elementary total-two sector, 374 discarded
+attempts suffice for trace distance at most `33/131072` from the stationary
+state, uniformly including an untouched reference. Every subsequent common
+complete observation protocol inherits that error. The larger federation
+budgets are conservative mathematical certificates, not executed trillion-step
+preparations or a uniform continuum mixing result.
+
+The [quantum federation packet](federated_quantum_sector/README.md) extends
+the signed-difference decomposition to actual local outcomes, so it retains
+complete quantum histories instead of only density means. Its four-attempt
+cross-carrier probe predicts plus probabilities `5/8` for C and `1/2` for E.
+A first-record-controlled phase changes C to `3/8` while E stays `1/2`.
+These values use the specified coherent services; native current records
+alone cannot distinguish the two laws on the same diagonal history.
+
+The [local event construction](relational_event_clock/README.md) uses changes
+at one observer port as its tick. Remote repairs continue between ticks, so
+the no-tick kernel is not a scalar holding factor. Its stopped law removes
+an arbitrary independently inserted identity-holding frequency without
+claiming invariance under all scheduler changes. This joins the field
+measurement to a readable local clock, while preserving the distinction
+between that clock and modular automorphism.
+Its local event-conditioned state is faithful on a matrix corner acting on
+51 native states, with weights `1/100`, `2/100`, `4/100` and `5/100`; the modular flow
+is therefore defined there. An exact coherence transition changes the modular
+weight ratio from `5/4` to `1/2`, proving that the stopped native channel does
+not commute with that flow. No-tick states can leave the corner, so the full
+66-dimensional state is retained while waiting. This is a concrete domain
+and correspondence check, not a failure caused solely by zero weights in the
+larger algebra.
+
+The [measurement audit](observer_prediction_audit/README.md) compares public
+zero-displacement and opposite-probe controls with state/action-independent
+detector identities. Such residuals cannot be corrected by changing only
+the effective action. This diagnoses the observational comparison and
+does not establish that the dataset is unreliable. Its supplied laboratory
+apparatus model remains separate from the native-field construction.
+
+Full interacting relativistic spacetime recovery remains open. The concrete
+next attachment must preserve the joint field, clock and intervention laws
+of one source under refinement or a bounded observational approximation.
+None of these finite results warrants replacing the native relaxation
+dispersion with a desired relativistic dispersion. No universal clock or
+fundamental field is required by that target.
