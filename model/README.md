@@ -44,6 +44,18 @@ and gives a prospective native-law discrimination protocol. The
 distinguishes implemented inputs, derived consequences and the remaining
 physical identifications.
 
+The next connection pass adds [full joint clock/field histories](joint_clock_process/README.md)
+and a [local native quantum action](native_action/README.md). The former keeps
+word-dependent quantum memory and exposes exactly what completed event clocks
+erase; the latter derives complete local observation bounds and a conditional
+infinite-federation process under compatible neighborhood hypotheses. A
+[continuing-carrier prediction protocol](closed_prediction_protocol/README.md)
+replaces exact reset and trial-independence premises with finite native
+preparation. A [two-order characteristic constraint](characteristic_constraints/README.md)
+tests the public oscillator means without Gaussian preparation or a chosen
+evolution law. These connections preserve the distinction between an effective
+observer description, the declared source instance and its physical identification.
+
 | Construction | New result | Remaining premise or boundary |
 | --- | --- | --- |
 | [Native effective fields](native_effective_fields/README.md) | Exact hard-core seam generator `G=60(I-K)`, controlled logarithm Hamiltonian and three nonzero connected four-current predictions. The absolute-current law has a minimal three-state linear representation. | Fixed twelve-port carrier and binary total-two sector, uniform scheduling; no spatial continuum or relativistic identification. |

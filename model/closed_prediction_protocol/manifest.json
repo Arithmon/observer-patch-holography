@@ -1,0 +1,17 @@
+{
+  "description": "Finite unread preparation, dependent complete-record trials and locked native-law prediction error accounting.",
+  "files": {
+    "README.md": "8d9ee3611f689d48d4c3bf3d77391588fbcf4e4aa41074b9084b6748073e1dd0",
+    "__init__.py": "57066dd3a069ab9cdfce787cfd28f6557177f2fc7b3c52a40e51e358ecf6a7af",
+    "__main__.py": "c4ebe96c67374045fadf071ebf479b19694b96aefa80198b96a6a0d2a2e05dd4",
+    "construction.py": "0c423a8cc1e331618c4799084b39ed3d8f4675838c162906bd48c020b806dd48",
+    "protocol.json": "9587284ff31456cff1e624b984f5a83b2c32c70db8eb27359787fe689a07838b",
+    "results.json": "a275795c7a331a8c85b779606ac2e516c26d25b0e6d149fdc9661a8e055204c2",
+    "test_protocol.py": "7bdd0148839beb8d53d1428f6144aca54c4f174061166754d2164290d6f60be2"
+  },
+  "reproduce": [
+    "python -m model.closed_prediction_protocol --check model/closed_prediction_protocol/results.json",
+    "python -m pytest -q -W error model/closed_prediction_protocol"
+  ],
+  "schema": "oph.closed_prediction_protocol.manifest.v1"
+}

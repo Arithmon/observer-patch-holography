@@ -1,0 +1,16 @@
+{
+  "description": "Source-derived local Liouville action and complete quantum observation locality with finite native executions.",
+  "files": {
+    "README.md": "a898aacdafd185647eec815a4e19289cd4a50654c69ee45e5a642aaf83ba6f21",
+    "__init__.py": "fb3c52e07daa664dd0a0c44ee06fa93f9cfceb0c572f3924478cb198a5a5c9c8",
+    "__main__.py": "1b2b18ba571b8699fe93296b7991f074c5103c8f1a8bd1edc30341a2e2f6325d",
+    "construction.py": "b05c885a104f36f1bf68b288a58d6c16d86678a19ae8867e544df5c22d82039c",
+    "results.json": "87629b7bf7b03a5ddd9b86d2d339d15b3120c297f5fd35cb4d437d39446f71d1",
+    "test_construction.py": "578eb5c60c88d6fb51427571b6171b1633c04992222b72f01a0fe9d75768aa9f"
+  },
+  "reproduce": [
+    "python -m model.native_action --check model/native_action/results.json",
+    "python -m pytest -q -W error model/native_action"
+  ],
+  "schema": "oph.native_action.manifest.v1"
+}
