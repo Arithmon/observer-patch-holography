@@ -91,6 +91,18 @@ Without feedback, each two-A-tick cycle has mean two B ticks and variance
 B-triggered field intervention changes that law; direct native elimination
 and conversion through the joint event instrument agree exactly.
 
+The [incident-clock field connection](observer_time_fields/README.md) counts
+every attempted repair meeting the observer region, including zero currents.
+Its remote/incident split derives a positive effective transfer and a
+controlled logarithm in those clock units. Every stationary local field word
+and compatible recorded intervention has the same probability in the
+reconstructed description. Complete four-read protocols execute on all
+28,680 two-particle states of the 240-port federation, with initial labels,
+remote evolution, feedback ticks and timeouts retained. Arithmetic and
+stopping errors are bounded. Movement-only clocks have a negative mode and
+cannot use that positive-transfer logarithm; no native-unitary or spatial
+refinement identification follows from this finite connection.
+
 [Native modular dynamics](relative_modular_dynamics/README.md) identify a
 protocol algebra preserved by both event operations and the chosen modular
 flow. Their finite covariance defect shows that these operations cannot

@@ -159,6 +159,34 @@ Direct and staged elimination agree on all 16 matrix units.
 Independent identity holding leaves completed laws intact;
 attempt costs and finite-cap censoring retain their separate meanings.
 
+## Positive effective fields in an incident clock
+
+The [incident-clock field connection](observer_time_fields/README.md) counts
+every scheduled repair meeting an observer region, including zero-current
+attempts. For the remote/incident source split `P=A+B`, the stopped transfer
+`K=B(I-A)^-1` is similar to the positive
+`T=(I-A)^-1/2 B (I-A)^-1/2`. Local occupation reads and internal native
+interventions commute with this similarity. Every complete stationary
+field/intervention word therefore has exactly the same probability, with
+the disclosed initial labels included.
+
+Strict source bounds make `H=-log T` finite in incident-clock units. The
+elementary 66-state calculation retains all 64 four-read field records;
+record-controlled feedback changes their law by total variation `5/99`.
+On the actual 240-port federation, directed integer propagation retains all
+28,680 two-particle configurations and 124 labelled success/timeout outcomes.
+Complete L1 arithmetic errors are below `1.59e-8` and `1.69e-8` for the two
+protocols; their exact timeout probability is below `3.13e-12`. The currents
+reconstruct the fields, every remote repair acts on the continuing state,
+and the extra feedback repair is charged as an additional incident tick.
+
+This is a configuration-space Euclidean transfer, distinct from the full
+quantum Liouville action and a physically executed real-time unitary. A
+movement-only clock alternates its port occupation and has eigenvalue `-1`,
+which obstructs this positive-transfer logarithm. Cap/precision refinement
+is bounded; joint spatial refinement or comparison of distinct observer
+regions requires a common record map and an observational bound.
+
 ## Modular references and operational access
 
 The native event-conditioned Palm reference is `diag(d(x)/600)`. Ten

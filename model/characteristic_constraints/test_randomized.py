@@ -105,6 +105,9 @@ class RandomizedTests(unittest.TestCase):
                      for name in ('U', 'V', 'UV') for phase in (0., -np.pi/2)]
         roots = [np.sqrt(float(p)) for p in design.probabilities if p]
         baseline = s.execution_certificate(design, matrices, operators, roots)
+        self.assertEqual(F(baseline['raw_positive_square_comparison_error_upper'])
+                         +F(baseline['weighted_completion_error_upper']),
+                         F(baseline['conditional_score_defect_upper']))
         diagnostic_key = 'per_execution_floating_diagnostics_not_certificate_inputs'
         stable = {key: value for key, value in baseline.items() if key != diagnostic_key}
         for direction in (np.inf, -np.inf):
@@ -131,6 +134,34 @@ class RandomizedTests(unittest.TestCase):
         altered_roots[0] = np.nextafter(altered_roots[0], np.inf)
         with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):
             s.execution_certificate(design, matrices, operators, altered_roots)
+
+    def test_raw_allocation_rejects_wrong_arrays_even_below_total_budget(self):
+        design = r.witness_design(s.VECTOR)
+        identity = np.eye(2, dtype=complex)
+        matrices = {name: identity.copy() for name in ('U', 'V', 'UV')}
+        # Exact binary Kraus arrays: the real read has mean one, the
+        # imaginary read mean zero, and every instrument has exact mass one.
+        real = (identity, np.zeros_like(identity))
+        half = ((1+1j)/2)*identity
+        operators = [real, (half, half)]*3
+        roots = [np.sqrt(float(p)) for p in design.probabilities if p]
+        good = s.finite_certificate(design, matrices, operators)
+        self.assertEqual(F(good['conditional_score_defect_upper']), 0)
+        certificate = s.execution_certificate(design, matrices, operators, roots)
+        # With these fixed detectors, U=(1+delta)I changes A from zero to
+        # delta I. Its exact raw comparison is sqrt(2)*delta**2, with no
+        # completion error. This isolates the raw check from every other cap.
+        delta = 2.**-22
+        matrices['U'] = (1+delta)*identity
+        bad = s.finite_certificate(design, matrices, operators)
+        raw = F(bad['raw_positive_square_comparison_error_upper'])
+        self.assertEqual(F(bad['weighted_completion_error_upper']), 0)
+        self.assertEqual(tuple(map(F, bad['setting_effect_sum_error_upper'])), (F(0),)*6)
+        self.assertGreater(raw, F(certificate['raw_positive_square_comparison_error_upper']))
+        self.assertLess(raw, F(certificate['conditional_score_defect_upper']))
+        self.assertLessEqual(2*F(delta)**4, raw**2)
+        with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):
+            s.execution_certificate(design, matrices, operators, roots)
 
     def test_public_means_select_future_design_not_a_statistical_test(self):
         axes, interior, _ = experiment.exact_data()

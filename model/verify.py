@@ -32,9 +32,11 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/transfer_modular_probe", "model/federated_observer",
            "model/native_equilibration", "model/relational_event_clock",
            "model/federated_quantum_sector", "model/readout_controls",
+           "model/observer_time_fields",
            "model/native_action", "model/joint_clock_process",
            "model/closed_prediction_protocol", "model/characteristic_constraints")
 REPLAYS = (
+    ("model.observer_time_fields", None, "model/observer_time_fields/results.json"),
     ("model.native_action.incident_refinement", None, "model/native_action/incident_results.json"),
     ("model.native_action.screen_compatibility", None, "model/native_action/screen_results.json"),
     ("model.native_action", None, "model/native_action/results.json"),

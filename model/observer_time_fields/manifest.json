@@ -1,0 +1,22 @@
+{
+  "description": "Positive source-derived incident-clock field transfer, complete fixed-two federation histories and directed error budgets.",
+  "files": {
+    "AUDIT.md": "5d05d47cec12497b4abbf3708f743a4a1472184f1cd6ddd4308d3fc138a3f8ea",
+    "README.md": "98867d61b0bce36218e4262b6e2f07393d84fb1f10a97c7c28bdb1c37110aa7a",
+    "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
+    "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
+    "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
+    "federation.py": "300cce61e8de9f43deb048523def82c35ac9d7440e05d097c892a827eb4ed037",
+    "receipt.py": "8b44e8da679b88276bede6b42ccce93bf5a048fb8021395d14b7fdfc85edcfda",
+    "results.json": "dcedf346799be85ce29b2c0ce89bea4bdacb3b5170202877f581a46bcaece039",
+    "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
+    "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
+    "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
+    "test_receipt.py": "57c9bbafa9c0b67c91be42d6391e220cdf56b0e38bfbd2196ba6d938587cb4e9"
+  },
+  "reproduce": [
+    "python -m model.observer_time_fields --check model/observer_time_fields/results.json",
+    "python -m pytest -q -W error model/observer_time_fields"
+  ],
+  "schema": "oph.observer_time_fields.manifest.v1"
+}
