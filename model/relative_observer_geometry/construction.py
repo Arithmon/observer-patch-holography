@@ -18,6 +18,8 @@ import numpy as np
 
 from ..observer import native
 from ..observer_reconstruction import native_geometry
+from ..federated_observer import refinement as observer_refinement
+from ..native_action import screen_compatibility
 from ..primitive_observer import algebra, runtime, transfer
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from tools import strict_json
@@ -31,6 +33,8 @@ SOURCE_PATHS = tuple(dict.fromkeys((
     'model/relative_observer_geometry/__main__.py',
     'model/relative_observer_geometry/construction.py',
     'model/observer_reconstruction/native_geometry.py',
+    *observer_refinement.SOURCE_PATHS,
+    *screen_compatibility.SOURCE_PATHS,
     'model/primitive_observer/algebra.py', 'model/common_source/operational.py',
     *transfer.SOURCE_PATHS,
     'Lean/Time/ClockComparison.lean', 'Lean/QFT/FiniteCausalObserverNet.lean',
@@ -496,10 +500,252 @@ def geometry_connection():
             'rank_of_certified_slow_response_Gram': 3,
             'exact_finite_spatial_metric': shells,
             'metric_shell_census_covariant_under_port_relabeling': True,
+            'source_screen_refinement': refinement_metric_bridge(),
             'distinct_total_two_calibration_preparations_at_single_ports': 12,
             'calibration_sector_is_same_as_binary_history_preparation': False,
             'physical_spatial_dimension_inferred': False,
             'new_spatial_coordinates_or_Lorentz_cones_supplied': False}
+
+
+def _ball_distances(ball):
+    """Exact port-hop distances in a complete finite source ball."""
+    adjacency = dict(ball.adjacency)
+    distance = {port: 0 for port in range(12)}
+    queue = list(range(12))
+    for port in queue:
+        for neighbour in adjacency[port]:
+            if neighbour not in distance:
+                distance[neighbour] = distance[port]+1
+                queue.append(neighbour)
+    return distance
+
+
+def _ball_view(ball, distance, radius):
+    """Restrict a complete ball to a rooted induced sub-ball."""
+    ports = tuple(sorted(port for port, hops in distance.items() if hops <= radius))
+    allowed = set(ports)
+    rows = dict(ball.adjacency)
+    adjacency = tuple((port, tuple(neighbour for neighbour in rows[port]
+                                   if neighbour in allowed)) for port in ports)
+    addresses = tuple(row for row in ball.addresses if row[0] in allowed)
+    return ports, adjacency, addresses
+
+
+def _full_screen_hop_profiles():
+    """Exact port- and carrier-ball volumes on every retained source level."""
+    profiles = []
+    by_level = {}
+    for level in range(6):
+        graph = screen_compatibility.screen(level)
+        root = 4**level-1
+        distance = {port: 0 for port in range(12*root, 12*root+12)}
+        queue = list(distance)
+        for port in queue:
+            for neighbour in graph.graph.neighbour_lists[port]:
+                if neighbour not in distance:
+                    distance[neighbour] = distance[port]+1
+                    queue.append(neighbour)
+        if len(distance) != graph.ports:
+            raise ArithmeticError('native seam graph ball failed to cover its source federation')
+        diameter = max(distance.values())
+        port_spheres = [0]*(diameter+1)
+        carrier_first_hop = {}
+        for port, hops in distance.items():
+            port_spheres[hops] += 1
+            cell = port//12
+            carrier_first_hop[cell] = min(hops, carrier_first_hop.get(cell, hops))
+        carrier_spheres = [0]*(diameter+1)
+        for hops in carrier_first_hop.values():
+            carrier_spheres[hops] += 1
+        port_balls, carrier_balls = [], []
+        port_total = carrier_total = 0
+        for port_count, carrier_count in zip(port_spheres, carrier_spheres, strict=True):
+            port_total += port_count
+            carrier_total += carrier_count
+            port_balls.append(port_total)
+            carrier_balls.append(carrier_total)
+        row = {'level': level, 'root_carrier': root,
+            'carriers': graph.carriers, 'ports': graph.ports,
+            'native_seams': graph.seams,
+            'root_port_eccentricity_in_native_seam_hops': diameter,
+            'port_ball_counts_by_radius': port_balls,
+            'carrier_ball_counts_by_radius': carrier_balls}
+        profiles.append(row)
+        by_level[level] = row
+    doubling = []
+    for level in range(3, 6):
+        profile = by_level[level]
+        for lower in (16, 32, 64, 128, 256):
+            upper = 2*lower
+            if upper < len(profile['port_ball_counts_by_radius']):
+                port_counts = profile['port_ball_counts_by_radius']
+                carrier_counts = profile['carrier_ball_counts_by_radius']
+                doubling.append({'level': level, 'radius_pair': [lower, upper],
+                    'port_ball_growth_ratio': str(F(port_counts[upper], port_counts[lower])),
+                    'carrier_ball_growth_ratio': str(F(carrier_counts[upper], carrier_counts[lower]))})
+    return {'distance': 'unweighted shortest-path count of native repair seams',
+        'profiles': profiles, 'exact_doubling_ratios': doubling,
+        'not_a_calibrated_physical_length_or_asymptotic_dimension': True}
+
+
+def _rotation_between(source_vector, target_vector):
+    """Return an orthogonal matrix sending one unit vector to another."""
+    source_vector = np.asarray(source_vector, dtype=float)
+    target_vector = np.asarray(target_vector, dtype=float)
+    cosine = float(np.dot(source_vector, target_vector))
+    cross = np.cross(source_vector, target_vector)
+    skew = np.array([[0., -cross[2], cross[1]],
+                     [cross[2], 0., -cross[0]],
+                     [-cross[1], cross[0], 0.]])
+    if cosine <= -1.+1e-12:
+        raise ArithmeticError('the selected endpoint alignment is antipodal')
+    return np.eye(3)+skew+skew@skew/(1.+cosine)
+
+
+def refinement_metric_bridge():
+    """Transport the finite carrier metric through the actual source screens.
+
+    Port-hop counts are the dimensionless graph metric of the native seam
+    network.  Only the root carrier has the separately recovered Euclidean
+    Gram metric; this routine checks whether the current construction fixes
+    its frame relative to neighboring carriers.
+    """
+    levels = (3, 5)
+    balls = tuple(screen_compatibility.root_ball(level, 10) for level in levels)
+    distances = tuple(_ball_distances(ball) for ball in balls)
+    views9 = tuple(_ball_view(ball, distance, 9) for ball, distance in zip(balls, distances))
+    views10 = tuple(_ball_view(ball, distance, 10) for ball, distance in zip(balls, distances))
+    if views9[0][:2] != views9[1][:2]:
+        raise ArithmeticError('the declared source screens disagree inside the matched radius-nine ball')
+    if views10[0][1] == views10[1][1]:
+        raise ArithmeticError('the source-screen continuation control no longer distinguishes radius ten')
+
+    recovery = native_geometry.recover(native_geometry.execute_calibration())
+    gram = np.asarray(recovery['gram_numeric'], dtype=float)
+    eigenvalues, eigenvectors = np.linalg.eigh(gram)
+    coordinates = eigenvectors[:, -3:] @ np.diag(np.sqrt(eigenvalues[-3:]))
+    # Select an actual inter-carrier seam at the matched root.  Its endpoint
+    # label supplies no cross-carrier Gram entry or local frame transition.
+    root_cell = balls[0].root
+    graph = screen_compatibility.screen(levels[0]).graph.neighbour_lists
+    cross_edge = next((tuple(sorted((port, neighbour)))
+                       for port in range(12*root_cell, 12*root_cell+12)
+                       for neighbour in graph[port] if neighbour//12 != root_cell))
+    root_endpoint = next(port for port in cross_edge if port//12 == root_cell)
+    neighbour_endpoint = next(port for port in cross_edge if port//12 != root_cell)
+    root_port, neighbour_port = root_endpoint % 12, neighbour_endpoint % 12
+    u, v = coordinates[root_port], coordinates[neighbour_port]
+    # Two relative orientations both put this cross-seam pair in the already
+    # recovered shortest shell.  A free rotation about the aligned endpoint
+    # changes the other cross-carrier Gram entries while preserving both
+    # carriers' complete internal Gram matrices.
+    target_dot = 1./np.sqrt(5.)
+    reference_axis = np.eye(3)[int(np.argmin(np.abs(u)))]
+    tangent = reference_axis-np.dot(reference_axis, u)*u
+    tangent /= np.linalg.norm(tangent)
+    target = target_dot*u+np.sqrt(1.-target_dot**2)*tangent
+    first_rotation = _rotation_between(v, target)
+    angle = np.pi/2
+    cross_target = np.array([[0., -target[2], target[1]],
+                             [target[2], 0., -target[0]],
+                             [-target[1], target[0], 0.]])
+    about_target = (np.cos(angle)*np.eye(3)+(1.-np.cos(angle))*np.outer(target, target)
+                    +np.sin(angle)*cross_target)
+    second_rotation = about_target@first_rotation
+    first_frame = coordinates@first_rotation.T
+    second_frame = coordinates@second_rotation.T
+    local_gram_residual = max(float(np.max(np.abs(coordinates@coordinates.T-gram))),
+                              float(np.max(np.abs(first_frame@first_frame.T-gram))),
+                              float(np.max(np.abs(second_frame@second_frame.T-gram))))
+    first_link_dot = float(np.dot(u, first_frame[neighbour_port]))
+    second_link_dot = float(np.dot(u, second_frame[neighbour_port]))
+    cross_block_difference = float(np.max(np.abs(coordinates@first_frame.T
+                                                 -coordinates@second_frame.T)))
+    if (local_gram_residual > 2e-12
+            or abs(first_link_dot-target_dot) > 2e-12
+            or abs(second_link_dot-target_dot) > 2e-12
+            or cross_block_difference < 1e-3):
+        raise ArithmeticError('the independent-frame gluing control is not discriminating')
+
+    common_ports, common_edges, common_addresses = views9[0]
+    counts = [sum(hops <= radius for hops in distances[0].values()) for radius in range(11)]
+    if counts != [sum(hops <= radius for hops in distances[1].values())
+                  for radius in range(11)]:
+        raise ArithmeticError('finite root graph-hop shells disagree across the two screens')
+    first_rows, second_rows = dict(views10[0][1]), dict(views10[1][1])
+    witness = next(port for port in sorted(first_rows.keys() | second_rows.keys())
+                   if first_rows.get(port) != second_rows.get(port))
+    root_maps = []
+    for ball in balls:
+        address_map = dict(ball.addresses)
+        root_maps.append([address_map[port] for port in range(12)])
+    address_maps = tuple(dict(view[2]) for view in views9)
+    if (set(address_maps[0]) != set(address_maps[1])
+            or any(address_maps[0][port] % 12 != port % 12
+                   or address_maps[1][port] % 12 != port % 12
+                   for port in common_ports)):
+        raise ArithmeticError('a matched screen address changed its native carrier port label')
+    tower_certificates = []
+    for coarse, fine in ((0, 1), (1, 2)):
+        graph_map = observer_refinement.graph_parent_certificate(coarse, fine)
+        defect = observer_refinement.defect_norm(coarse, fine)
+        if graph_map['cell_parent_graph_morphism'] is not True or defect != 1:
+            raise ArithmeticError('the retained cell-ancestry obstruction changed')
+        tower_certificates.append({**graph_map,
+            'uniform_per_edge_laplacian_intertwining_defect_inf': str(defect),
+            'coordinate_frame_or_metric_scaling_derived': False})
+    source_routing = []
+    for level in levels:
+        federation = screen_compatibility.screen(level)
+        receipt = federation.gluing_receipt
+        source_routing.append({'level': level,
+            'routing_mode': receipt['routing_mode'],
+            'source_derived': receipt['source_derived'],
+            'uses_global_cell_centres_and_local_tangent_frame_convention': True,
+            'intercarrier_seams': federation.inter_count,
+            'antipodal_consistent_pairs': receipt['antipodal_consistent_pairs'],
+            'antipodal_consistent_fraction_exact': str(F(
+                receipt['antipodal_consistent_pairs'], federation.inter_count)),
+            'local_frame_hash': receipt['local_frame_hash']})
+    return {
+        'source_levels': list(levels),
+        'root_cells': [ball.root for ball in balls],
+        'root_port_global_addresses': root_maps,
+        'recovered_root_carrier_gram_equal_across_levels': True,
+        'all_matched_source_address_ports_preserved': True,
+        'root_internal_seams_match_the_record_recovered_icosahedral_shell': True,
+        'matched_root_graph_ball': {'radius_in_native_seam_hops': 9,
+            'ports': len(common_ports), 'induced_seams': sum(map(len, (row for _, row in common_edges)))//2,
+            'canonical_address_and_adjacency_equal': True,
+            'root_port_metric_is_exactly_the_same_unitless_chord_metric': True},
+        'root_graph_hop_ball_port_counts_radii_zero_through_ten': counts,
+        'full_federation_native_hop_growth': _full_screen_hop_profiles(),
+        'first_induced_graph_difference': {'radius': 10, 'canonical_port': witness,
+            'source_level_3_neighbours': list(first_rows.get(witness, ())),
+            'source_level_5_neighbours': list(second_rows.get(witness, ()))},
+        'existing_federation_refinement_transport': {
+            'map': 'cell ancestry with the same port label copied to every child',
+            'cell_ancestry_map_record_derived': False,
+            'level_certificates': tower_certificates,
+            'path_independent_port_frame_or_metric_scaling_recovered': False},
+        'existing_intercarrier_routing': {
+            'level_receipts': source_routing,
+            'routing_is_derived_from_native_observer_records': False,
+            'record_derived_path_independent_frame_transition_available': False},
+        'intercarrier_frame_nonuniqueness_control': {
+            'conditional_equal_shortest_shell_length_used_only_as_control': True,
+            'actual_level_3_cross_seam_global_ports_root_then_neighbor': [
+                root_endpoint, neighbour_endpoint],
+            'local_port_labels': [root_port, neighbour_port],
+            'two_candidate_squared_link_lengths': [
+                '2-2/sqrt(5)', '2-2/sqrt(5)'],
+            'max_local_gram_residual_diagnostic': local_gram_residual,
+            'max_cross_carrier_gram_entry_difference_diagnostic': cross_block_difference,
+            'same_local_gram_and_same_link_length_leave_relative_frame_underdetermined': True},
+        'operational_readout': 'exact native seam-hop neighborhoods plus an exact finite Euclidean metric within each root carrier',
+        'physical_global_space_or_continuum_recovered': False,
+        'physical_length_or_intercarrier_frame_calibration_supplied': False,
+    }
 
 
 def run():
@@ -515,6 +761,8 @@ def run():
                 'fundamental_global_clock_or_field_assumed': False,
                 'observer_modular_flow_attached_to_these_local_ticks': False,
             'finite_carrier_spatial_metric_recovered': True,
+            'matched_screen_root_metric_and_native_hop_neighborhoods_certified': True,
+            'intercarrier_frame_gluing_or_physical_continuum_recovered': False,
             'continuum_spacetime_or_physical_length_calibration': False,
                 'new_physical_prediction_or_empirical_comparison': False}}
 

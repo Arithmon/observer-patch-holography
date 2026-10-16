@@ -63,6 +63,47 @@ def test_incidence_factorization_dissipation_and_constant_mean():
         assert sum(evolved) == sum(m)
 
 
+def test_conditional_path_surprisal_is_exact_additive_and_separates_start_prior(result):
+    audit = result["stochastic_action"]
+    assert audit["conditional_path_probability"] == "product_k K[x_k,x_(k+1)]"
+    assert audit["local_surprisal"] == "-log K[x,y]=log(60/m[x,y]) nats"
+    assert "separate boundary term" in audit["start_prior"]
+    assert audit["exact_transition_multiplicity_histogram"] == {"1": 600, "2": 60, "50": 48, "52": 30}
+    assert audit["local_surprisal_classes_nats"] == {
+        "1": "log(60)", "2": "log(30)", "50": "log(6/5)", "52": "log(15/13)"}
+    assert audit["fully_labeled_seam_coin_branch_probability"] == "1/60"
+    assert audit["fully_labeled_branch_surprisal_nats"] == "log(60), constant per event"
+    assert audit["not_proportional_to_quadratic_load_drop"]
+    assert audit["not_the_logarithm_of_the_kernel_as_a_linear_operator"]
+    assert not audit["physical_action_units_derived"]
+    most_likely = audit["one_step_most_likely_vs_mean"]
+    assert most_likely["most_likely_next_state"] == most_likely["initial_state"]
+    assert most_likely["most_likely_transition_probability"] == "13/15"
+    assert most_likely["conditional_mean_after_one_event"] == [
+        "14/15", "14/15", "0", "0", "0", "1/30", "0", "1/30", "1/60", "1/60", "1/60", "1/60"]
+    assert most_likely["greedy_surprisal_path_is_not_the_conditional_mean_update"]
+    examples = audit["state_only_path_examples"]
+    repair = examples["concentration_repair"]["local_terms"][0]
+    assert repair["conditional_probability"] == "1/30"
+    assert repair["surprisal_nats"] == "log(30)"
+    assert repair["quadratic_load_potential_drop"] == "1"
+    stationary = examples["split_state_self_transition"]["local_terms"][0]
+    rearrangement = examples["split_state_zero_drop_move"]["local_terms"][0]
+    assert stationary["quadratic_load_potential_drop"] == rearrangement["quadratic_load_potential_drop"] == "0"
+    assert stationary["surprisal_nats"] == "log(15/13)"
+    assert rearrangement["surprisal_nats"] == "log(60)"
+    assert not examples["split_state_self_transition"]["initial_state_prior_included"]
+
+
+def test_conditional_path_surprisal_rejects_impossible_or_malformed_paths():
+    x = (2,) + (0,) * 11
+    impossible = (0, 2) + (0,) * 10
+    with pytest.raises(ValueError, match="impossible native transition"):
+        f.conditional_path_surprisal((x, impossible))
+    with pytest.raises(ValueError, match="at least two"):
+        f.conditional_path_surprisal((x,))
+
+
 def test_mean_equilibrium_is_not_a_static_native_state(result):
     iteration = result["iteration"]
     assert iteration["uniform_78_mean_is_preserved"]

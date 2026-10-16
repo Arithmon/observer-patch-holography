@@ -101,6 +101,56 @@ def test_existing_coherent_preparation_gives_a_local_periodic_modular_phase_read
     assert c.modular_clock_response(law, 0) == 0.5
 
 
+@pytest.mark.parametrize('law,amplitude', [('C', F(1, 140)), ('E', F(1, 220))])
+def test_modular_parameter_has_no_identified_lab_time_scale(law, amplitude):
+    audit = c.modular_lab_scale_audit(law)
+    assert audit['same_internal_response_at_matched_s_for_every_positive_kappa']
+    assert not audit['modular_parameter_to_seconds_map_identified']
+    assert not audit['native_attempts_generate_s']
+    assert not audit['matched_public_lab_dataset_identified']
+    rows = audit['illustrative_rescalings']
+    assert [row['illustrative_modular_parameter_rate_per_second'] for row in rows] == [
+        '1', '2', '5/3']
+    assert [row['implied_lab_period_ratio_to_unit_rate'] for row in rows] == [
+        '1', '1/2', '3/5']
+    assert all(row['exact_conditional_plus_probability_at_corresponding_quarter_turn']
+               == str(F(1, 2)-amplitude) for row in rows)
+    assert max(row['floating_response_residual_diagnostic'] for row in rows) < 2e-16
+    assert 'physical implementation' in audit['minimal_calibration_and_operational_link']
+
+
+@pytest.mark.parametrize('law,amplitude', [('C', F(1, 140)), ('E', F(1, 220))])
+def test_native_repair_does_not_generate_the_modular_clock_hand(law, amplitude):
+    result = c.native_attempt_clock_audit(law, attempts=8)
+    assert result['native_kraus_matrices_are_real']
+    assert result['initial_density_is_exactly_real']
+    assert result['all_integer_attempt_counts_unbiased_by_real-linearity']
+    assert [row['native_attempts'] for row in result['conditional_plus_probabilities']] == list(range(9))
+    assert all(row['conditional_plus_probability'] == '1/2'
+               for row in result['conditional_plus_probabilities'])
+    assert F(result['quarter_modular_turn_conditional_plus_probability']) == F(1, 2)-amplitude
+    assert not result['native_repair_generates_modular_phase']
+    assert not result['physical_duration_or_lab_clock_identified']
+    assert result['runtime_vs_exact_native_attempt_maximum_frobenius_residual'] < 1e-14
+
+
+def test_existing_12_port_coherences_have_a_faithful_local_palm_restriction_but_no_clock_dynamics():
+    result = c.port_factor_audit()
+    assert len(result['local_coherent_modes']) == 4
+    assert result['both_native_laws_keep_every_tested_mode_real']
+    assert not result['autonomous_three-port_factor_dynamics_derived']
+    assert not result['native_repair_generates_any_local_modular_phase']
+    for row in result['local_coherent_modes']:
+        assert len(row['ports']) == 3
+        assert len(row['local_binary_two-load_indices']) == 3
+        assert row['conditional_Palm_weights'] == ['5/13', '4/13', '4/13'] or \
+               row['conditional_Palm_weights'] == ['4/13', '5/13', '4/13']
+        assert row['Palm_mass_of_local_two-load_condition'] == '13/300'
+        assert row['faithful_on_three-state_restricted_algebra']
+        assert row['cross-pair_eigenvalue_ratio'] == '5/4'
+        assert row['source_modular_frequency'] == 'log(5/4)'
+
+
 @pytest.mark.parametrize('parameter', [True, float('nan'), float('inf'), '1'])
 def test_modular_clock_response_rejects_ambiguous_or_nonfinite_parameters(parameter):
     with pytest.raises(ValueError):

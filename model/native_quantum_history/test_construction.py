@@ -25,6 +25,44 @@ def test_full_operator_log_uses_all_matrix_units_and_exact_positive_bounds(resul
     assert result['operator_transfer']['C']['exact_native_block_sha256'] != result['operator_transfer']['E']['exact_native_block_sha256']
 
 
+def test_repair_derived_operator_quadratic_form_is_dissipative_not_a_physical_action(result):
+    summary = result['operator_space_quadratic_form']
+    assert summary['form'] == 'Q_L[O]=<O,(-log(Phi_L))O>_HS/2 >= 0'
+    assert summary['parameter'] == 'integer Euclidean native repair-attempt count'
+    assert not summary['physical_space_time_action_derived']
+    assert not summary['carrier_unitary_dynamics_derived']
+    assert not summary['principal_log_generates_a_continuous_CP_semigroup']
+    assert not summary['other_continuous_generator_or_environmental_dilation_excluded']
+    for law, rate, log_rate, action in (
+            ('C', F(5, 6), 'log(6/5)', '10*log(6/5)'),
+            ('E', F(7, 10), 'log(10/7)', '10*log(10/7)')):
+        row = summary['phase_mode_results'][law]
+        assert row['hilbert_schmidt_norm_squared'] == 20
+        assert F(row['exact_one_attempt_transfer_eigenvalue']) == rate
+        assert row['operator_log_eigenvalue_per_native_attempt'] == log_rate
+        assert row['positive_quadratic_form_half_H_on_probe'] == action
+        assert row['norm_squared_after_n_native_attempts_over_initial'] == f'({rate})^(2*n)'
+        assert row['unitary_conjugation_excluded_for_forgotten_record_map']
+        assert row['repair_mode_residual_diagnostic'] < 2e-14
+
+
+def test_each_native_integer_repair_minimizes_the_seam_pair_quadratic_cost():
+    for state in q.native.states():
+        for seam in q.mixing.seams():
+            a, b = seam
+            pair_sum = state[a]+state[b]
+            minimum = min(left*left+(pair_sum-left)**2 for left in range(pair_sum+1))
+            for coin in (0, 1):
+                output, record = q.native.native(state, seam, coin)
+                difference = state[a]-state[b]
+                parity = abs(difference) % 2
+                assert output[a]+output[b] == pair_sum
+                assert abs(output[a]-output[b]) == parity
+                assert output[a]**2+output[b]**2 == minimum
+                assert record == (coin, state[a]-output[a])
+                assert sum(x*x for x in state)-sum(x*x for x in output) == (difference**2-parity)//2
+
+
 def test_complete_phase_measurements_execute_exact_laws_and_optimal_readout(result):
     assert len(result['executed_phase_measurements']) == 20
     for row in result['executed_phase_measurements']:

@@ -88,6 +88,103 @@ def mean(distribution):
                  for i in range(12))
 
 
+def conditional_path_surprisal(path):
+    """Exact state-path probability and its additive, dimensionless surprisal.
+
+    The initial state is conditioned on, so no start-prior term is included.
+    A caller who supplies a prior may add -log(pi(x_0)) separately.
+    """
+    path = tuple(tuple(state) for state in path)
+    states = native.states()
+    indices = {state: i for i, state in enumerate(states)}
+    if len(path) < 2 or any(state not in indices for state in path):
+        raise ValueError("a path of at least two valid total-two load states is required")
+    terms, probability = [], F(1)
+    for source, target in zip(path, path[1:], strict=False):
+        row = dict(transition()[indices[source]])
+        edge_probability = row.get(indices[target], F(0))
+        if edge_probability <= 0:
+            raise ValueError("the path contains an impossible native transition")
+        multiplicity = edge_probability * 60
+        if multiplicity.denominator != 1:
+            raise AssertionError("transition probability is not an integer primitive-branch count over 60")
+        ratio = F(1, 1) / edge_probability
+        potential_drop = F(sum(value*value for value in source)
+                           - sum(value*value for value in target), 2)
+        terms.append({"conditional_probability": str(edge_probability),
+                      "primitive_branch_multiplicity": multiplicity.numerator,
+                      "surprisal_nats": f"log({ratio.numerator}/{ratio.denominator})"
+                          if ratio.denominator != 1 else f"log({ratio.numerator})",
+                      "quadratic_load_potential_drop": str(potential_drop)})
+        probability *= edge_probability
+    inverse = F(1, 1) / probability
+    return {"states": [list(state) for state in path],
+            "conditional_path_probability": str(probability),
+            "conditional_path_surprisal_nats":
+                f"log({inverse.numerator}/{inverse.denominator})"
+                if inverse.denominator != 1 else f"log({inverse.numerator})",
+            "initial_state_prior_included": False,
+            "local_terms": terms}
+
+
+def stochastic_action_audit():
+    """Audit Markov path surprisal against the native quadratic repair cost."""
+    multiplicities = Counter()
+    for row in transition():
+        for _, probability in row:
+            count = probability * 60
+            if count.denominator != 1:
+                raise AssertionError("kernel entry is not a primitive branch multiplicity over 60")
+            multiplicities[count.numerator] += 1
+    expected = Counter({1: 600, 2: 60, 50: 48, 52: 30})
+    if multiplicities != expected:
+        raise AssertionError("exact state-kernel multiplicity classes changed")
+    concentrated = (2,) + (0,) * 11
+    concentrated_index = native.states().index(concentrated)
+    concentrated_target = next(native.states()[j] for j, p in transition()[concentrated_index]
+                               if F(sum(a*a for a in concentrated)-sum(a*a for a in native.states()[j]), 2) == 1)
+    split = (1, 1) + (0,) * 10
+    split_index = native.states().index(split)
+    split_zero_drop_target = next(native.states()[j] for j, p in transition()[split_index]
+                                  if native.states()[j] != split
+                                  and F(sum(a*a for a in split)-sum(a*a for a in native.states()[j]), 2) == 0)
+    examples = {
+        "concentration_repair": conditional_path_surprisal((concentrated, concentrated_target)),
+        "split_state_self_transition": conditional_path_surprisal((split, split)),
+        "split_state_zero_drop_move": conditional_path_surprisal((split, split_zero_drop_target)),
+    }
+    split_row = dict(transition()[split_index])
+    most_likely_index = max(split_row, key=split_row.get)
+    most_likely_state = native.states()[most_likely_index]
+    split_mean_after_one = _matvec(mean_operator(), split)
+    if most_likely_state != split or split_mean_after_one == split:
+        raise AssertionError("state surprisal minimization unexpectedly equals the mean-field update")
+    terms = [row["local_terms"][0] for row in examples.values()]
+    if (terms[1]["quadratic_load_potential_drop"] != terms[2]["quadratic_load_potential_drop"]
+            or terms[1]["surprisal_nats"] == terms[2]["surprisal_nats"]):
+        raise AssertionError("the zero-drop transition controls no longer separate surprisal from repair cost")
+    return {"conditional_path_probability": "product_k K[x_k,x_(k+1)]",
+            "local_surprisal": "-log K[x,y]=log(60/m[x,y]) nats",
+            "start_prior": "excluded; a supplied pi(x0) adds the separate boundary term -log pi(x0)",
+            "exact_transition_multiplicity_histogram": {str(k): v for k, v in sorted(multiplicities.items())},
+            "local_surprisal_classes_nats": {str(k): f"log({F(60, k).numerator}/{F(60, k).denominator})"
+                                             if F(60, k).denominator != 1 else f"log({F(60, k).numerator})"
+                                             for k in sorted(multiplicities)},
+            "fully_labeled_seam_coin_branch_probability": "1/60",
+            "fully_labeled_branch_surprisal_nats": "log(60), constant per event",
+            "state_only_path_examples": examples,
+            "one_step_most_likely_vs_mean": {
+                "initial_state": list(split),
+                "most_likely_next_state": list(most_likely_state),
+                "most_likely_transition_probability": str(split_row[most_likely_index]),
+                "conditional_mean_after_one_event": list(map(str, split_mean_after_one)),
+                "greedy_surprisal_path_is_not_the_conditional_mean_update": True},
+            "not_proportional_to_quadratic_load_drop": True,
+            "not_the_logarithm_of_the_kernel_as_a_linear_operator": True,
+            "physical_action_units_derived": False,
+            "all_pass": True}
+
+
 def primitive_audit():
     states, seams, operator = native.states(), geometry.source().seams(), mean_operator()
     branches = 0
@@ -233,7 +330,7 @@ def run():
             "source": {"native_sha256": hashlib.sha256(Path(native.__file__).read_bytes()).hexdigest(),
                        "transition_exact_sha256": hashlib.sha256(json.dumps(kernel, separators=(",", ":")).encode()).hexdigest()},
             "primitive": primitive_audit(), "spectrum": spectral_audit(), "iteration": chain_audit(),
-            "premise_controls": controls(), "all_pass": True,
+            "premise_controls": controls(), "stochastic_action": stochastic_action_audit(), "all_pass": True,
             "assumptions": {"graph": "existing fixed 12-port 30-seam carrier",
                             "protocol": "existing slow_geometry all-seam calibration, iterated",
                             "load_sector": "nonnegative integer total two",

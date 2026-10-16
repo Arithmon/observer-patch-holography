@@ -33,8 +33,8 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
 | Registered claims | 339 |
-| Unique ordinary `assumptions` names | 816 |
-| Unique `imported_results` names | 891 |
+| Unique ordinary `assumptions` names | 818 |
+| Unique `imported_results` names | 895 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 33 |
 | Claims explicitly linked by optional group fields | 18 |

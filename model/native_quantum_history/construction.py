@@ -185,6 +185,48 @@ def fractional_obstruction():
         'integer_native_channels_affected': False}
 
 
+def operator_action_summary():
+    """Evaluate the repair-derived positive quadratic form on a phase mode.
+
+    The form is built from H=-log(Phi) on Hilbert-Schmidt operator space.
+    This summary deliberately distinguishes that transfer-space form from a
+    carrier-ket Hamiltonian or a space-time action.
+    """
+    _, probe, _, _ = phase_apparatus()
+    norm_squared = float(np.vdot(probe, probe).real)
+    if abs(norm_squared-20.) > TOLERANCE:
+        raise ArithmeticError('declared phase probe no longer has Hilbert-Schmidt norm squared 20')
+    rows = {}
+    for law in ('C', 'E'):
+        rate = RATES[law]
+        actual = apply_transfer(probe, law, 1)
+        residual = bounded(float(np.linalg.norm(actual-float(rate)*probe, 'fro')),
+                           'repair phase-mode eigenidentity')
+        if residual > TOLERANCE:
+            raise ArithmeticError('native transfer no longer preserves the declared phase mode')
+        log_rate = {'C': 'log(6/5)', 'E': 'log(10/7)'}[law]
+        rows[law] = {
+            'probe': 'S=A+A* from the declared first-seam phase readout',
+            'hilbert_schmidt_norm_squared': 20,
+            'exact_one_attempt_transfer_eigenvalue': str(rate),
+            'operator_log_eigenvalue_per_native_attempt': log_rate,
+            'positive_quadratic_form_half_H_on_probe': f'10*{log_rate}',
+            'norm_squared_after_n_native_attempts_over_initial': f'({rate})^(2*n)',
+            'unitary_conjugation_excluded_for_forgotten_record_map': True,
+            'repair_mode_residual_diagnostic': residual,
+        }
+    return {
+        'space': 'Hilbert-Schmidt operator space of the 66-state binary carrier',
+        'form': 'Q_L[O]=<O,(-log(Phi_L))O>_HS/2 >= 0',
+        'parameter': 'integer Euclidean native repair-attempt count',
+        'phase_mode_results': rows,
+        'physical_space_time_action_derived': False,
+        'carrier_unitary_dynamics_derived': False,
+        'principal_log_generates_a_continuous_CP_semigroup': False,
+        'other_continuous_generator_or_environmental_dilation_excluded': False,
+    }
+
+
 def apply_transfer(matrix, law, count, *, reference_dimension=1, spectral=False):
     """Independent block action on arbitrary operators, including references."""
     law, count = candidate(law), attempts(count)
@@ -367,6 +409,7 @@ def run():
     return {'schema': 'oph.native_quantum_history.v1', 'all_pass': True,
         'sources': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in SOURCE_PATHS},
         'operator_transfer': candidates, 'executed_phase_measurements': rows,
+        'operator_space_quadratic_form': operator_action_summary(),
         'fractional_channel_obstruction': fractional_obstruction(),
         'discrimination': discrimination,
         'optimal_count_for_declared_phase_pair_experiment': 4,

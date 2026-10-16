@@ -13,6 +13,23 @@ Here `n` always means **native attempt count**, including the recorded zero
 currents. A physical duration, proper time or relation to an experimental
 clock has not been identified.
 
+## Why the model does not predict seconds
+
+The source contains integer attempt counts and dimensionless probabilities,
+but no quantity with units of seconds. The executable
+`duration_scale_identifiability` audit assigns illustrative values of `1/100`,
+`1` and `100` seconds per attempt. They leave the exact one-attempt record law
+`(28/33, 5/33)` unchanged, while implying different event rates per second
+(`500/33`, `5/33` and `1/660`). Thus the native law fixes records per attempt;
+it does not fix an attempt duration or a laboratory event rate.
+
+No laboratory apparatus or public dataset has been operationally matched to
+this current record. Under a separately validated constant attempt-rate map,
+the minimal scale calibration is one nonzero native-attempt difference paired
+with its independently measured lab interval. One pair alone does not justify
+that the same rate holds over other intervals. Without such an apparatus map,
+fitting generic lab event data would not test this model.
+
 ## What runs and what is measured
 
 The program prepares the declared stationary mixture `I66/66` of the native
@@ -177,10 +194,12 @@ stationary preparation and chosen current observable remain explicit.
 The related [`relative_modular_dynamics`](../relative_modular_dynamics/README.md)
 packet derives a periodic Y-readout response to the Palm state's modular
 parameter from an existing coherent preparation. That gives a local modular
-phase readout under the declared ideal phase target. It does not make the
-native current counter an implementation of modular flow: native attempt
-counts and modular parameter remain distinct model readouts, with no derived
-conversion between them.
+phase readout under the declared ideal phase target. Its exact boundary test
+also shows why the current native rule cannot supply that phase evolution:
+real coherent preparation and real repair branches leave the Y readout
+unbiased at every integer native-attempt count. Native attempt counts and the
+modular parameter remain distinct model readouts, with no derived conversion
+between them, and neither specifies physical duration or a lab clock.
 
 The new laws are predictions of the executable source model. No laboratory
 measurement has yet been operationally identified with this native current

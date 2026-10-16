@@ -1,12 +1,12 @@
 {
-  "description": "Exact native current integration into compatible local field histories, shared-event clock comparisons and complete observer continuation.",
+  "description": "Exact observer-visible fields, a finite rank-three carrier metric, source-screen hop geometry and explicit inter-carrier gluing limits.",
   "files": {
-    "README.md": "6eebd8b3cd814aac58cccab653c213843d0a86421b99e29fbd2e79c9012322f9",
+    "README.md": "55e618a779d654cf6eb3b9b19fc692899771bc555091e7c4e28aa035db2b8492",
     "__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
-    "construction.py": "6f05074b3a6926e63c88b034af101c43c3c783613a95ad1db66c3d1a333089f4",
-    "results.json": "19ebafa24690cdae68dc64c0e26bb0eeb57fc6848cca20803c4df103b3ba3727",
-    "test_construction.py": "11d2b8e05dc6d6bdb0e28d2858f887e5e69fcd737e947b5fc0c8be349e969632"
+    "construction.py": "d1034c8b55bafa36a5f3d6d722e140e331bb28d8a95f3c515009e055e268172f",
+    "results.json": "6327c1b299ce594367c8e8d1953dbe384bd9957bd29fd889350aa5a4385d2ad5",
+    "test_construction.py": "1a69f662d28b0906033b2e5c1bd38af44be1e920d8bd5a55caac725e8aea28cb"
   },
   "reproduce": [
     "python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json",

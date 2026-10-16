@@ -169,6 +169,64 @@ physical length unit, global spacetime, Lorentz cone, signal-speed law or
 continuum limit. The time readouts below remain record parameters, and the
 metric reconstruction uses a separately disclosed calibration preparation.
 
+### Transport through source refinement
+
+The response-recovered carrier Gram can be transported into the actual level-3
+and level-5 source screens without changing its twelve root-port labels. The
+screens have exactly the same induced native-seam graph through nine hops from
+the corresponding root carrier: 222 ports and 561 seams. The exact unitless
+chord metric on the root twelve ports is therefore identical in both screens.
+The root graph-hop ball counts at radii zero through ten are
+`12, 15, 30, 45, 54, 84, 114, 132, 186, 222, 243`; the first induced adjacency
+difference appears at radius ten. The separate
+[`native_action` refinement packet](../native_action/INCIDENT_REFINEMENT.md)
+bounds how much this finite boundary difference can affect the complete local
+repair output at a declared incident-event horizon.
+
+An exact breadth-first readout covers every retained federation level, 0
+through 5. The largest root-port distances are 13, 31, 60, 121, 242 and 484
+native seam hops. At level 5, the port-ball counts at radii 16, 32, 64, 128 and
+256 are 576, 2,250, 8,805, 37,224 and 123,926; the corresponding exact
+doubling ratios are `125/32`, `587/150`, `12408/2935` and `5633/1692`. This is
+roughly quadratic growth across part of this finite range, followed by
+saturation on the finite sphere. It is a property of native seam-hop balls,
+not evidence for a calibrated three-dimensional physical volume law. The
+rank-three metric applies to each twelve-port carrier; it has not been glued
+into a bulk metric.
+
+This transports an operational neighborhood and one local metric, not a
+Euclidean coordinate chart over the 222-port ball. The existing federation
+ancestry map, supplied by the source rather than recovered from observer
+records, copies each local port label to every child carrier. It preserves
+the carrier-cell adjacency, but it does not map every fine port seam to a
+coarse port seam: between levels 0 and 1, 74 fine seams map to non-seams and
+two collapse; between levels 1 and 2, 280 map to non-seams and four collapse.
+The exact per-edge Laplacian intertwining defect is one at both steps. Thus
+this map supplies neither a path-independent carrier-frame transport nor a
+scale law for a spatial metric.
+
+The federation builder also has an inter-carrier routing convention: it uses
+the source sphere's cell-centre directions and a declared local tangent-frame
+rule to choose which ports are joined. The builder marks that routing
+`source_derived: false`; it is not inferred from native observer records. At
+levels 3 and 5, respectively, only `113/160` and `5951/7680` of inter-carrier
+endpoint pairs are antipodal-consistent with the common local port labels.
+This convention constructs the seam list, but it does not supply a
+record-derived frame-transition law or a scale factor. No path-independent
+physical coordinates follow from it.
+
+The obstruction is also visible without extrapolating the ancestry map. As a
+non-derivation control, take an actual inter-carrier seam at the level-3 root
+and additionally require its endpoint distance to equal the local
+shortest-shell length. Two independent orientations of its neighboring
+carrier can satisfy that same link-length constraint, preserve both carriers'
+exact internal Gram matrices, and still change other cross-carrier Gram
+entries. This equality is used only in the control; it is not a model input.
+The current repair records identify the seam endpoints but do not record the
+missing cross-carrier inner products. So the substrate supplies exact
+native-hop neighborhoods and a local unitless carrier metric; it does not yet
+supply a global physical space, inter-carrier ruler, or continuum geometry.
+
 The source-order/frame packet in
 [`Geometry/SourceOrderFrameCompatibilityPacket`](../../Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean)
 needs its spatial placement, cone attachment and frame premises. This

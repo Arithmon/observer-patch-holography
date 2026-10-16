@@ -616,6 +616,37 @@
     "strictly_negative_upper_bound": "-4008679803811/42998169600000000"
   },
   "maximum_C_minus_E_plus_probability": "12259/101250",
+  "operator_space_quadratic_form": {
+    "carrier_unitary_dynamics_derived": false,
+    "form": "Q_L[O]=<O,(-log(Phi_L))O>_HS/2 >= 0",
+    "other_continuous_generator_or_environmental_dilation_excluded": false,
+    "parameter": "integer Euclidean native repair-attempt count",
+    "phase_mode_results": {
+      "C": {
+        "exact_one_attempt_transfer_eigenvalue": "5/6",
+        "hilbert_schmidt_norm_squared": 20,
+        "norm_squared_after_n_native_attempts_over_initial": "(5/6)^(2*n)",
+        "operator_log_eigenvalue_per_native_attempt": "log(6/5)",
+        "positive_quadratic_form_half_H_on_probe": "10*log(6/5)",
+        "probe": "S=A+A* from the declared first-seam phase readout",
+        "repair_mode_residual_diagnostic": 6.661338147750939e-16,
+        "unitary_conjugation_excluded_for_forgotten_record_map": true
+      },
+      "E": {
+        "exact_one_attempt_transfer_eigenvalue": "7/10",
+        "hilbert_schmidt_norm_squared": 20,
+        "norm_squared_after_n_native_attempts_over_initial": "(7/10)^(2*n)",
+        "operator_log_eigenvalue_per_native_attempt": "log(10/7)",
+        "positive_quadratic_form_half_H_on_probe": "10*log(10/7)",
+        "probe": "S=A+A* from the declared first-seam phase readout",
+        "repair_mode_residual_diagnostic": 8.308148362110449e-16,
+        "unitary_conjugation_excluded_for_forgotten_record_map": true
+      }
+    },
+    "physical_space_time_action_derived": false,
+    "principal_log_generates_a_continuous_CP_semigroup": false,
+    "space": "Hilbert-Schmidt operator space of the 66-state binary carrier"
+  },
   "operator_transfer": {
     "C": {
       "Hamiltonian": "H_L=-log(Phi_L), acting on Hilbert-Schmidt operator space",
@@ -728,7 +759,7 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
-    "model/native_quantum_history/construction.py": "bb8840c091de9d604bea40baccb695b8fddff0f212fddf6fc72132718d16c54e",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",

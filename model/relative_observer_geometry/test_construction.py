@@ -126,6 +126,45 @@ def test_record_calibration_graph_is_same_current_interface():
     assert result['metric_shell_census_covariant_under_port_relabeling']
     assert not result['calibration_sector_is_same_as_binary_history_preparation']
     assert not result['physical_spatial_dimension_inferred']
+    refinement = result['source_screen_refinement']
+    assert refinement['source_levels'] == [3, 5]
+    assert refinement['matched_root_graph_ball'] == {
+        'radius_in_native_seam_hops': 9, 'ports': 222, 'induced_seams': 561,
+        'canonical_address_and_adjacency_equal': True,
+        'root_port_metric_is_exactly_the_same_unitless_chord_metric': True}
+    assert refinement['root_graph_hop_ball_port_counts_radii_zero_through_ten'] == [
+        12, 15, 30, 45, 54, 84, 114, 132, 186, 222, 243]
+    growth = refinement['full_federation_native_hop_growth']
+    profiles = growth['profiles']
+    assert [row['level'] for row in profiles] == list(range(6))
+    assert [row['root_port_eccentricity_in_native_seam_hops'] for row in profiles] == [
+        13, 31, 60, 121, 242, 484]
+    level5 = profiles[5]
+    assert [level5['port_ball_counts_by_radius'][radius]
+            for radius in (16, 32, 64, 128, 256)] == [576, 2250, 8805, 37224, 123926]
+    assert [row['port_ball_growth_ratio'] for row in growth['exact_doubling_ratios']
+            if row['level'] == 5] == ['125/32', '587/150', '12408/2935', '5633/1692']
+    assert growth['not_a_calibrated_physical_length_or_asymptotic_dimension']
+    assert refinement['first_induced_graph_difference']['radius'] == 10
+    assert refinement['existing_federation_refinement_transport'][
+        'path_independent_port_frame_or_metric_scaling_recovered'] is False
+    for row in refinement['existing_federation_refinement_transport']['level_certificates']:
+        assert row['cell_parent_graph_morphism']
+        assert not row['port_parent_graph_morphism']
+        assert row['uniform_per_edge_laplacian_intertwining_defect_inf'] == '1'
+    routing = refinement['existing_intercarrier_routing']
+    assert not routing['routing_is_derived_from_native_observer_records']
+    assert not routing['record_derived_path_independent_frame_transition_available']
+    assert [row['antipodal_consistent_fraction_exact'] for row in routing['level_receipts']] == [
+        '113/160', '5951/7680']
+    control = refinement['intercarrier_frame_nonuniqueness_control']
+    assert control['conditional_equal_shortest_shell_length_used_only_as_control']
+    assert control['same_local_gram_and_same_link_length_leave_relative_frame_underdetermined']
+    assert control['max_local_gram_residual_diagnostic'] < 2e-12
+    assert control['max_cross_carrier_gram_entry_difference_diagnostic'] > 1e-3
+    assert control['two_candidate_squared_link_lengths'] == [
+        '2-2/sqrt(5)', '2-2/sqrt(5)']
+    assert not refinement['physical_global_space_or_continuum_recovered']
 
 
 def test_exact_spatial_shell_audit_rejects_a_symmetric_wrong_edge_length():

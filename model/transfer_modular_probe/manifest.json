@@ -1,16 +1,16 @@
 {
-  "schema": "oph.transfer_modular_probe.manifest.v1",
   "description": "Source-derived reduced transfer modular flow with complete coherent probes and continuing records.",
   "files": {
     "README.md": "edcfee80f6bd6a30c36481be7799e6537672cc1b13def2512c081189466eb993",
     "__init__.py": "0f8fb297f063296910e781fb1afba9a9c0f7c4c21631003b2fcb088f57528cc6",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "construction.py": "6d879aed3b62bbe0ffcf9610a94832cdf026d332441ad2e68abc1c80d5d00f40",
-    "test_construction.py": "935984455bf0053a38a9db8ed98c0dc2e779db2821b0640ffc2b9e9bd081c71e",
-    "results.json": "9e048694b5d91d8ecfd4ea6483ee6e58be6577d3ae7374b3eb9ac55a88705c9a"
+    "results.json": "32f4fe6d7a9abddc12b1cee14687c52048d750011f8e8e9dc9d60878123c465e",
+    "test_construction.py": "935984455bf0053a38a9db8ed98c0dc2e779db2821b0640ffc2b9e9bd081c71e"
   },
   "reproduce": [
     "python -m model.transfer_modular_probe --check model/transfer_modular_probe/results.json",
     "python -m pytest -q -W error model/transfer_modular_probe"
-  ]
+  ],
+  "schema": "oph.transfer_modular_probe.manifest.v1"
 }

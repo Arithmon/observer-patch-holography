@@ -178,6 +178,45 @@ def interval_statistics(reduction):
             'P_next_1_given_last_two_11': conditional_after_two}
 
 
+def duration_scale_audit(reduction):
+    """Certify that native attempt records contain no seconds scale.
+
+    Candidate seconds-per-attempt values are deliberately hypothetical. Every
+    positive scale assigns different durations and rates to the same exact
+    dimensionless record law; the source supplies no criterion selecting one.
+    """
+    probabilities, mean, _ = count_law(reduction, 1)
+    expected = (F(28, 33), F(5, 33))
+    if probabilities != expected or mean != F(5, 33):
+        raise ArithmeticError('the native one-attempt law changed during scale audit')
+    candidates = (F(1, 100), F(1), F(100))
+    rows = []
+    for seconds_per_attempt in candidates:
+        rows.append({
+            'illustrative_seconds_per_attempt': str(seconds_per_attempt),
+            'implied_stationary_event_rate_per_second': str(F(5, 33)/seconds_per_attempt),
+            'implied_Palm_mean_interval_seconds': str(F(33, 5)*seconds_per_attempt),
+            'implied_stationary_start_wait_seconds': str(F(147, 22)*seconds_per_attempt),
+            'exact_native_one_attempt_record_law': list(map(str, probabilities)),
+        })
+    if len({row['implied_stationary_event_rate_per_second'] for row in rows}) != len(rows):
+        raise ArithmeticError('the duration rescaling witness lost distinct physical rates')
+    return {
+        'native_parameter': 'integer attempt index n',
+        'dimensionful_source_quantity_with_seconds_units': False,
+        'same_exact_record_law_for_every_positive_seconds_per_attempt': True,
+        'candidate_scales_are_estimates': False,
+        'illustrative_rescalings': rows,
+        'seconds_per_attempt_identified': False,
+        'matched_public_lab_dataset_identified': False,
+        'reason_no_direct_dataset_test_is_defined': (
+            'no laboratory apparatus has been operationally mapped to these native attempts and current bits'),
+        'minimal_calibration_if_a_constant_attempt_clock_is_validated': (
+            'one nonzero paired native-attempt difference and independently measured lab interval; '
+            'a single pair fixes only that interval unless constant-rate t=t0+tau*n is justified'),
+    }
+
+
 def weighted_native_marks(kernel, weights, *, activity=F(1)):
     """Actual native branches for a fixed seam law, with optional idle control."""
     transfer.exact_audit(kernel)
@@ -392,6 +431,7 @@ def run():
                 'independent_renewal_intervals': False, 'current_bits_form_a_first_order_Markov_chain': False},
             'complete_finite_horizon_waiting_laws': waited,
             'complete_current_count_laws': count_rows,
+            'duration_scale_identifiability': duration_scale_audit(reduction),
             'scheduler_controls': scheduler_controls(kernel),
             'actual_observer_execution': runtime_checks(kernel, reduction),
             'theorem_attachment': {

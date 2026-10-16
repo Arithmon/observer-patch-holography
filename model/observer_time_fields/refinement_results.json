@@ -1349,7 +1349,7 @@
     "serialized_checkpoint_bytes": 355542,
     "serialized_continuation_preserves_full_states_records_and_rng": true,
     "serialized_two_field_memory_continues_from_suffix_only": true,
-    "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+    "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
   },
   "full_source_external_cutoff_allowance": "110170926340894087/1208925819614629174706176",
   "full_source_histories": [
@@ -1397,7 +1397,7 @@
       "serialized_checkpoint_bytes": 355643,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1443,7 +1443,7 @@
       "serialized_checkpoint_bytes": 355729,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1489,7 +1489,7 @@
       "serialized_checkpoint_bytes": 355582,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1535,7 +1535,7 @@
       "serialized_checkpoint_bytes": 355628,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1581,7 +1581,7 @@
       "serialized_checkpoint_bytes": 355592,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1627,7 +1627,7 @@
       "serialized_checkpoint_bytes": 355652,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1673,7 +1673,7 @@
       "serialized_checkpoint_bytes": 355698,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1719,7 +1719,7 @@
       "serialized_checkpoint_bytes": 355631,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1765,7 +1765,7 @@
       "serialized_checkpoint_bytes": 355642,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1815,7 +1815,7 @@
       "serialized_checkpoint_bytes": 355794,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1861,7 +1861,7 @@
       "serialized_checkpoint_bytes": 355581,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1907,7 +1907,7 @@
       "serialized_checkpoint_bytes": 355627,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -1953,7 +1953,7 @@
       "serialized_checkpoint_bytes": 355591,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -2003,7 +2003,7 @@
       "serialized_checkpoint_bytes": 355719,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -2053,7 +2053,7 @@
       "serialized_checkpoint_bytes": 355767,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     },
     {
       "both_fields_reconstructed_from_initial_bits_and_signed_currents": true,
@@ -2103,7 +2103,7 @@
       "serialized_checkpoint_bytes": 355698,
       "serialized_continuation_preserves_full_states_records_and_rng": true,
       "serialized_two_field_memory_continues_from_suffix_only": true,
-      "source_digest": "2c91292a02c000d809f1367ff71f2c208751e917f5beb463d3f7b2d0068e1c4a"
+      "source_digest": "571f533ae27bf3ebbd2dcd013535efefd36a94593421b55380d7470ab198718d"
     }
   ],
   "one_full_screen_to_common_ball_complete_output_allowance": "2011562756958389/604462909807314587353088",
@@ -2247,7 +2247,7 @@
     "model/native_action/stopped_control.py": "d2a3de3f0c841b70656b78df3edf8431e305d126aec0ac7cca57308852791282",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
-    "model/native_quantum_history/construction.py": "bb8840c091de9d604bea40baccb695b8fddff0f212fddf6fc72132718d16c54e",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
