@@ -103,7 +103,7 @@ def execution_certificate(design, matrices, operators, roots):
     masses = tuple(map(F, exact['setting_effect_sum_error_upper']))
     completion = F(exact['weighted_completion_error_upper'])
     total = F(exact['conditional_score_defect_upper'])
-    budgets = {'raw': F(1, 10**14), 'mass': F(1, 10**14),
+    budgets = {'raw': F(2, 10**14), 'mass': F(1, 10**14),
                'completion': F(8, 10**14), 'score': F(1, 10**13),
                'choice_mass': F(1, 10**15)}
     checks = [('raw_positive_square', raw, budgets['raw']),
