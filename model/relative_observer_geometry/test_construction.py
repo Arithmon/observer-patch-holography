@@ -161,7 +161,7 @@ def test_record_calibration_graph_is_same_current_interface():
     assert control['conditional_equal_shortest_shell_length_used_only_as_control']
     assert control['same_local_gram_and_same_link_length_leave_relative_frame_underdetermined']
     assert control['max_local_gram_residual_diagnostic'] < 2e-12
-    assert control['max_cross_carrier_gram_entry_difference_diagnostic'] > 1e-3
+    assert control['cross_carrier_gram_entries_differ_between_candidates']
     assert control['two_candidate_squared_link_lengths'] == [
         '2-2/sqrt(5)', '2-2/sqrt(5)']
     assert not refinement['physical_global_space_or_continuum_recovered']
