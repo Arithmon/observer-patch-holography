@@ -135,6 +135,10 @@ not a domain argument.
   domain, not by expression-tree equality. Check original scalars in mixed
   numeric containers before a common array dtype erases integer precision,
   Boolean types or missingness; validating the coerced array is too late.
+  Array subclasses can override `copy`, `nonzero` and indexing while retaining
+  ordinary numeric entries. A matrix certificate must reject such subclasses
+  or detach them to a trusted base representation before inspecting support
+  or entries. Test an off-support perturbation hidden by method dispatch.
   Compare against the exact domain's own zero; equality with a Python
   integer is not guaranteed by a canonical representation. Exercise a
   successful case of each exact fallback as well as its refusals.

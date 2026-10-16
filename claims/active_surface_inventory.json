@@ -1316,6 +1316,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/clocked_common_observer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/CALIBRATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false

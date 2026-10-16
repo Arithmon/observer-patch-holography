@@ -72,6 +72,20 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [native-clocked common observer](clocked_common_observer/README.md)
+uses a committed native current to trigger the existing interacting work's
+read-and-feedback suffix. Work evolves during the wait and is not prepared
+again at the tick. The 128-slot execution retains all 4,097 stopped/timeout
+outputs, with complete finite-target error at most `0.000019`, including
+the actual binary density arithmetic. All-input work-channel certificates
+justify composition from disturbed work states; an exact native tail
+bounds attempt-cap refinement. Resetting work and idling only the native
+register produce different, certified observation laws. The uniform native
+clock scheduler is distinct from the fixed-seam encoded-memory schedule.
+This connects an operational trigger to the same continuing finite work;
+it does not derive the work duration per attempt, physical services or an
+interacting occupation/spatial limit.
+
 The [direct numerical certificate](common_source/OUTPUT_CERTIFICATE.md)
 connects actual source-executed work outputs with the exact prepared-history
 proofs. All sixteen quantum blocks and their exact mass defect enter the
@@ -821,9 +835,10 @@ d=2,4 uniform moment-based occupation budgets are one. The separate
 prepared-history certificate retains its narrower state contract; neither
 comparison certifies numerical or physical service errors.
 
-A discriminating next attachment should connect propagation, a retained
-quantum observable and an operational clock on the same extending family,
-with an explicit comparison to the existing native mean-diffusion control.
+The native-clocked common observer connects finite two-site evolution,
+retained quantum reads and an actual native stopping event. Extending this
+connection to spatial propagation needs a shared refining family and
+an explicit comparison to the existing native mean-diffusion control.
 The spatial Bose branch supplies interacting propagation and retained
 quantum observations with controlled growing-volume error. Connecting an
 operational clock, relativistic/EFT interpretation and the charged common
