@@ -275,6 +275,12 @@ def validate_execution(result):
     """
     if type(result) is not Execution:
         raise ValueError('a typed computed federation field execution is required')
+    if type(result.counts) is not np.ndarray or result.counts.dtype != np.int64:
+        raise ValueError('an original integer array is required')
+    # A caller may supply a writable base-array alias. Detach before checking
+    # its values or seal, then inspect exactly the snapshot we will return.
+    # Otherwise a mutation between hashing and copying could evade replay.
+    result = replace(result, counts=_immutable_int(result.counts))
     scale = _parameters(result.cap, result.ticks, result.grid_bits, result.feedback, result.initial)
     if (type(result.records) is not tuple or result.records != records(result.ticks)
             or type(result.counts) is not np.ndarray or result.counts.dtype != np.int64
@@ -282,12 +288,11 @@ def validate_execution(result):
             or np.any(result.counts < 0) or sum(map(int, result.counts.ravel())) > scale
             or type(result.seal) is not str or result.seal != _seal(result)):
         raise ValueError('the complete original integer output or its execution binding changed')
-    checked = replace(result, counts=_immutable_int(result.counts))
-    expected = _compute(cap=checked.cap, ticks=checked.ticks, grid_bits=checked.grid_bits,
-                        feedback=checked.feedback, initial=checked.initial)
-    if checked.seal != expected.seal:
+    expected = _compute(cap=result.cap, ticks=result.ticks, grid_bits=result.grid_bits,
+                        feedback=result.feedback, initial=result.initial)
+    if result.seal != expected.seal:
         raise ValueError('the claimed complete integer law differs from source replay')
-    return checked
+    return result
 
 
 def budget(result):

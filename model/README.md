@@ -56,7 +56,7 @@ tests the public oscillator means without Gaussian preparation or a chosen
 evolution law. These connections preserve the distinction between an effective
 observer description, the declared source instance and its physical identification.
 
-The [local-clock field connection](observer_time_fields/README.md) now derives
+The [local-clock field connection](observer_time_fields/README.md) derives
 a positive effective transfer in incident-repair clock units. It preserves
 complete local field histories and compatible recorded feedback from the
 same source. Exact elementary laws and certified full two-particle federation

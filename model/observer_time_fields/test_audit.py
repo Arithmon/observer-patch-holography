@@ -226,3 +226,20 @@ def test_controller_rejects_aliases_and_unbounded_integer_arithmetic(override):
     arguments.update(override)
     with pytest.raises(ValueError):
         fed.execute(**arguments)
+
+
+def test_replay_validates_the_detached_snapshot_not_a_prior_array_view(monkeypatch):
+    produced = fed.execute(cap=1, ticks=1, grid_bits=40)
+    mutable = produced.counts.copy()
+    claimed = replace(produced, counts=mutable)
+    original_copy = fed._immutable_int
+
+    def mutate_at_copy(array):
+        # Deterministic interleaving at the old hash/copy boundary. An external
+        # owner of a writable alias can change the data at this point.
+        array[0, 0] += 1
+        return original_copy(array)
+
+    monkeypatch.setattr(fed, '_immutable_int', mutate_at_copy)
+    with pytest.raises(ValueError):
+        fed.validate_execution(claimed)

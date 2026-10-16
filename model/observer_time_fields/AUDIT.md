@@ -50,6 +50,9 @@ normalization or success conditioning supplies these certificates.
   federation budget/statistics/resource readers now compare against the
   actual source producer for validated parameters, recomputing on a cold
   cache. Resealed wrong outputs and resealed feedback policies are rejected.
+- Caller-owned writable arrays are copied before value/hash validation.
+  A deterministic mutation at the former hash/copy boundary is rejected;
+  the checked snapshot is exactly the returned snapshot.
 - Initial field disclosure must include both subsequently read ports. All
   four initial labels, including zero-probability continuations, remain in
   the output. Signed-current readback is checked against source transitions.
