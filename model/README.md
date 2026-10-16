@@ -44,8 +44,18 @@ and gives a prospective native-law discrimination protocol. The
 distinguishes implemented inputs, derived consequences and the remaining
 physical identifications.
 
+The [local-clock field connection](observer_time_fields/README.md) now derives
+a positive effective transfer in incident-repair clock units. It preserves
+complete local field histories and compatible recorded feedback from the
+same source. Exact elementary laws and certified full two-particle federation
+histories retain remote evolution, initial labels and finite timeouts. This
+connects observer-relative time and effective fields without supplying a
+duration or a target Hamiltonian; movement-only clocks remain a distinct
+branch with an explicit negative-spectrum obstruction.
+
 | Construction | New result | Remaining premise or boundary |
 | --- | --- | --- |
+| [Fields in the incident clock](observer_time_fields/README.md) | The remote/incident split derives a positive transfer and controlled logarithm preserving all local field cylinders and compatible feedback. Complete four-read histories execute on the actual 240-port, 28,680-state federation with certified arithmetic and stopping error. | Uniform fixed-sector preparation and incident record access; no native-unitary identification, spatial-refinement equivalence or physical service-error certificate. |
 | [Native effective fields](native_effective_fields/README.md) | Exact hard-core seam generator `G=60(I-K)`, controlled logarithm Hamiltonian and three nonzero connected four-current predictions. The absolute-current law has a minimal three-state linear representation. | Fixed twelve-port carrier and binary total-two sector, uniform scheduling; no spatial continuum or relativistic identification. |
 | [Regional observer fields](relative_observer_geometry/README.md) | Signed current records reconstruct local occupations from disclosed preparations, with compatible overlaps and continuing checkpoints. Shared records support explicit successful and failed affine clock comparisons. | Complete incident-current access, initial local labels and common record correspondence; no Lorentz metric or clock-flow identification. |
 | [Continuing native modular algebra](relative_modular_dynamics/README.md) | The native event channel and Palm modular flow preserve an 86-dimensional protocol algebra; the existing phase program implements its full modular action there. Continuing records expose a finite covariance defect between event and modular operations. | Native event evolution remains distinct from modular automorphism; coherent services and reference choice stay explicit. |

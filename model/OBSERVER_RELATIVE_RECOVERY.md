@@ -218,9 +218,28 @@ the effective action. This diagnoses the observational comparison and
 does not establish that the dataset is unreliable. Its supplied laboratory
 apparatus model remains separate from the native-field construction.
 
-Full interacting relativistic spacetime recovery remains open. The concrete
-next attachment must preserve the joint field, clock and intervention laws
-of one source under refinement or a bounded observational approximation.
-None of these finite results warrants replacing the native relaxation
+The [incident-clock field connection](observer_time_fields/README.md) closes
+one such finite joint-law attachment. For the remote/incident source split
+`P=A+B`, the stopped transfer `K=B(I-A)^-1` is similar to the positive
+`T=(I-A)^-1/2 B (I-A)^-1/2`. Local occupation readouts and internal native
+interventions commute with the similarity, so every complete stationary
+field/intervention word has exactly the same probability. Strict source
+bounds make `H=-log T` finite in the actual incident-clock unit. The executed
+four-read protocols retain initial labels, current-based readback, continuing
+states and feedback ticks. Directed integer arithmetic bounds the full
+240-port two-particle federation's capped output; cap/precision refinement
+has an explicit complete-law bound. No separate per-attempt duration enters.
+
+This incident clock includes zero-current repair attempts. It differs from
+the movement clock above, whose alternating occupation has an eigenvalue
+`-1` and therefore cannot use the same positive-transfer logarithm. The
+effective Euclidean field transfer is also distinct from the native quantum
+channel or a physically executed real-time modular flow.
+
+Full interacting relativistic spacetime recovery remains open. The remaining
+joint-law task includes relating spatial refinements or distinct observer
+regions through a common record map; cap/precision convergence on one graph
+does not accomplish that spatial comparison. None of these finite results
+warrants replacing the native relaxation
 dispersion with a desired relativistic dispersion. No universal clock or
 fundamental field is required by that target.
