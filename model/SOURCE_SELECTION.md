@@ -177,6 +177,19 @@ probe-coordinate scale.
 
 ## The native selection tests
 
+The [observer-relative recovery connection](OBSERVER_RELATIVE_RECOVERY.md)
+identifies the fixed-carrier native generator as a hard-core exchange field
+and derives controlled logarithm approximants from its actual transfer.
+That positive transfer also supplies a faithful reference whose modular flow
+matches the reconstructed finite Hamiltonian. The reduced three-mode
+description has an executed coherent modular probe; the native Palm flow
+acts on a separately verified invariant protocol algebra. These are concrete
+connections between source records, effective actions and modular descriptions,
+with different algebras and access contracts kept explicit. They do not select
+a unique reference, replace dissipative repair by unitary evolution or derive
+a relativistic continuum. Compatible regional field counters require known
+local preparation and complete incident-current records.
+
 The [16 October connection pass](SOURCE_CONNECTIONS_20261016.md) joins these
 attachments without introducing a new repair law. The existing coherent code
 compiler implements the shared native mixer and the missing imaginary

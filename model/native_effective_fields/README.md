@@ -1,0 +1,206 @@
+# Native exchange fields and measured four-point correlations
+
+The existing native observer supplies a concrete finite hard-core exchange
+field. Its coefficients follow the native seam rule, and its recorded currents
+have nonzero connected four-point correlations. This packet identifies that
+field, bounds its transfer Hamiltonian by exact rational polynomials, and
+executes three complete four-read experiments. No fitted oscillator, Gaussian
+field assumption or independent replica limit enters these predictions.
+
+This is a field on the supplied twelve-port carrier, in its binary total-two
+sector. It does not establish a spatial continuum, a number of physical spatial
+dimensions, relativistic dynamics, or agreement with a laboratory dataset.
+
+## Which field follows from the native rule
+
+The 66 basis configurations have occupations `x_i in {0,1}` and
+`sum_i x_i=2`. Define `n_i |x> = x_i |x>`. For each source seam `(a,b)`,
+the following operator preserves this sector:
+
+```text
+G_ab = n_a + n_b - 2 n_a n_b
+       - (raise_a lower_b + raise_b lower_a).
+G = sum over the 30 source seams of G_ab.
+K = I - G/60.
+```
+
+Here `raise` and `lower` are the hard-core occupation ladder operators on a
+port. `G_ab` is exactly identity minus the endpoint-swap permutation. It is
+positive with eigenvalues zero and two. Disjoint seam terms commute; terms
+sharing a port need not commute. The implementation compares every entry of
+`G` against the independently enumerated native transition counts. Thus `K`
+is precisely the existing one-attempt transfer, with no choice of coefficients
+left in this identification.
+
+The density interaction matters at fixed hopping. Deleting `-2 n_a n_b`
+changes `G` by twice the adjacent-occupation indicator. The constant vector
+ceases to be a ground vector, and the resulting formal step `I-G_deleted/60`
+takes the uniform probability law to total mass **65/66**. It therefore is
+not a stochastic replacement for the native rule. This is an operator-level
+exclusion interaction; a nonzero fourth cumulant alone would not establish
+quantum interaction.
+
+The scheduler and sector remain premises: uniform independent selection of
+the thirty seams, the native fair placement coin, and the binary total-two
+carrier. These results do not transfer unchanged to the production observer's
+adaptive schedule.
+
+## A controlled effective Hamiltonian, including its longer-range terms
+
+The existing [finite transfer construction](../primitive_observer/DERIVATION_TRANSFER.md)
+establishes `2I/3 <= K <= I`, full-history bond reflection positivity, and
+`H=-log K`. The present addition supplies exact computable approximants:
+
+```text
+D = G/60,                 0 <= D <= I/3,
+H_m = sum_(k=1..m) D^k/k,
+0 <= H-H_m <= r_m I,      r_m = 1/[2(m+1)3^m].
+```
+
+The bound follows by the positive scalar logarithm series and spectral
+calculus: replace each `1/k` in the tail by `1/(m+1)` and sum its geometric
+majorant. All entries of `H_m` are computed as exact fractions. For real
+unitary parameter `t`, the operator error is at most `abs(t) r_m`; for
+nonnegative Euclidean parameter `s`, the semigroup error is at most `s r_m`.
+These are analytic errors of the exact polynomials, not certificates for
+later floating matrix products or physical services.
+
+At order sixteen, `r_16=1/1463588514`. The receipt gives an exact positive
+interval for `H[0,2]` although `G[0,2]=0`. Thus the logarithm contains
+longer-range configuration couplings. The original seam generator is local
+on the declared port graph; its exact discrete-attempt logarithm is not
+restricted to single seam exchanges. Integer Euclidean gaps satisfy
+`K^n=exp(-n H)`. The existing negative-entry witness for `sqrt(K)` prevents
+treating every fractional Euclidean step as a stochastic native step.
+
+The same transfer supplies a faithful mathematical reference `sigma_K=K/56`
+on this 66-dimensional **configuration transfer Hilbert space**. Consequently
+`-log(sigma_K)=H+log(56)I`, so its modular automorphisms use this Hamiltonian.
+With the convention `A -> sigma_K^(is) A sigma_K^(-is)`, the dual state
+action is `rho -> exp(isH) rho exp(-isH)`. This is not the native stationary
+density `I66/66`, an executed native preparation of `sigma_K`, or a proof
+that this reference is uniquely selected. Unitary continuation remains
+distinct from native completely positive repair. Native attempt count,
+Euclidean parameter, modular parameter and a calibrated physical clock are
+not identified.
+
+## Actual current-only measurement predictions
+
+At each of four successive native attempts, the observer retains the signed
+change of occupation at the declared read port. It obtains that change from
+the selected seam and its committed current; it never measures the hidden
+configuration. For seam `(a,b)` with signed current `j`, the record at port
+`i` is `delta n_i=-(1[i=a]-1[i=b])j`, taking values `-1,0,1`.
+
+The preparation is the declared stationary mixture `I66/66`, without disclosure
+of the actual starting configuration. The [producer](construction.py)
+constructs the existing rule-C Kraus maps, including their measurement
+disturbance. The shared observer runtime executes four complete instruments.
+Every one of the **81 record words**, including exact zero outcomes, and its
+full unnormalized 66-dimensional terminal density are checked against an
+independent integer transition calculation. A serialized two-read checkpoint
+is replayed and continued to the same complete output. No successful branch
+is selected and no final state is renormalized.
+
+For four zero-mean recorded currents `J_1,...,J_4`, the connected correlation
+is `kappa4=E[J1 J2 J3 J4]-C12 C34-C13 C24-C14 C23`. The comparison Gaussian
+has exactly the measured two-point covariances, so it predicts zero for this
+connected quantity.
+
+| Four read ports, in source numbering | Exact connected four-point correlation |
+| --- | --- |
+| `(0,0,0,0)`: one port | `-200297/101616768000` |
+| `(0,1,0,1)`: adjacent ports | `-3701/4064670720` |
+| `(0,3,0,3)`: opposite ports | `-4537/20323353600` |
+
+These are predictions of the specified native model, including spatial
+dependence on its finite carrier. They rule out a Gaussian description of
+this complete record family at the same two-point law. They do not imply
+an interacting relativistic QFT or establish a quantum advantage over the
+exact classical transition description of these particular records.
+
+Summing signed currents does not reveal an unknown initial occupation.
+For example, the record `(0,0,0,0)` at port zero remains compatible with
+both initial occupations. Additional initial-state disclosure or a justified
+inference procedure is necessary to turn current integration into a local
+occupation readout.
+
+## The observable transfer has an exact minimal three-state realization
+
+The existing [native clock reduction](../native_clock/README.md) groups the
+two occupied ports by separation: adjacent, distance two, or opposite. Strong
+lumping preserves every finite absolute-current word. In this representation,
+
+```text
+P = [[14/15, 1/15,   0  ],       pi = (5/11, 5/11, 1/11).
+     [ 1/15, 9/10, 1/30],
+     [  0,   1/6,  5/6 ]]
+```
+
+This packet proves that three is also the **minimal linear realization
+dimension** of this stationary record law: the `3x3` Hankel matrix formed
+from probabilities of all-one words has determinant `1/9702990000`. A smaller
+linear representation cannot reproduce all those words. This result concerns
+the chosen observable family, not the full native quantum algebra or every
+terminal state.
+
+Detailed balance makes `S=sqrt(diag(pi)) P sqrt(diag(pi))^(-1)` symmetric.
+Its nonconstant transfer eigenvalues and current spectral weights are
+
+```text
+r_minus, r_plus = (25 - sqrt(3))/30, (25 + sqrt(3))/30,
+w_minus, w_plus = 1/7260 - sqrt(3)/16335, 1/7260 + sqrt(3)/16335.
+```
+
+Both weights are positive. For two moving-current bits with `n` unread
+attempts between their retained events, the exact centered covariance is
+`w_minus r_minus^n + w_plus r_plus^n`. The producer checks the spectral
+recurrence symbolically, not merely a finite fit. This supplies an economical
+two-pole prediction and fixes the associated Euclidean decay parameters.
+The marked matrices inserted at the reads are transition insertions, **not
+POVM effects**: their sum is `P`, and their symmetric moving insertion has a
+negative determinant. A coherent probe of these transfer modes needs its own
+valid preparation, instruments and service contract.
+
+## Existing theorem attachments and remaining scope
+
+The finite bond-positivity argument uses the algebra in
+[`SourceLaw/ReflectionPositivity.lean`](../../Lean/SourceLaw/ReflectionPositivity.lean);
+the native-history factorization is already stated in the transfer derivation.
+The spectral-calculus operations align with
+[`SourceLaw/TransferMatrixLift.lean`](../../Lean/SourceLaw/TransferMatrixLift.lean).
+Its Gaussian covariance hypotheses are not imported into this non-Gaussian
+process. The inner-unitary/modular correspondence uses the finite algebraic
+structure of [`Dynamics/PrivateInner.lean`](../../Lean/Dynamics/PrivateInner.lean).
+None of these general theorems chooses the source scheduler, prepares the
+reference state, or identifies unitary evolution with the native instrument.
+The new native matrix identities and bounds are exact executable/analytic
+attachments; they are not presented as new Lean proofs.
+
+The logical resource charge is four native attempts and four retained signed
+records for each complete history. The program executes native CP semantics;
+it does not emit a physical coherent pulse sequence. Floating propagation
+residuals are diagnostics with an explicit acceptance tolerance, not outward
+roundoff or apparatus error certificates. The exact integer record law and
+rational logarithm remainder are separate from those diagnostics.
+
+The remaining physics bridge is a controlled family of larger carriers,
+operational access and continuation for the relevant fields, and a scaling
+limit with an identified observer clock and local spacetime structure. The
+present finite model gives a concrete interacting generator and richer
+readouts against which such a bridge can be checked.
+
+## Reproduction and API
+
+```sh
+python -m model.native_effective_fields --check model/native_effective_fields/results.json
+python -m pytest -q -W error model/native_effective_fields
+```
+
+`generator()` and `transfer_matrix()` return immutable exact matrices.
+`log_polynomial(m)` and `log_remainder(m)` accept integer orders zero through
+twenty-four. `exact_current_law(ports)` returns all integer terminal counts
+and their common denominator; `current_moments(ports)` derives four-point
+quantities. `record_spectral_reduction()` provides the exact reduced matrices,
+spectral formulas and minimality witness. The manifest binds this packet;
+the receipt separately binds all producer and theorem dependencies.

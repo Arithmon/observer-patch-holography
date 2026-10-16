@@ -1,0 +1,598 @@
+{
+  "all_pass": true,
+  "complete_execution": {
+    "checkpoint_complete_distance_diagnostic": 0.0,
+    "complete_density_max_frobenius_diagnostic": 5.551115123125783e-17,
+    "hidden_n0_audit_expectation": 0.2499999999999999,
+    "initial_preparation_disclosed": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "native_attempts_per_trial": 3,
+    "positive_record_words": 8,
+    "public_n0_expectation": 0.2499999999999999,
+    "retained_record_words": 216,
+    "roundoff_enclosure": false,
+    "zero_probability_record_words": 208
+  },
+  "complete_local_histories": {
+    "GNS_pullback_identity": "sum_h p(h)|f(view(h))|^2=sum_v p(v)|f(v)|^2",
+    "all_local_checkpoint_continuations_exact": true,
+    "all_pathwise_overlaps_and_full_coverage_exact": true,
+    "complete_histories": 2112,
+    "complete_history_sha256": "85ce08a52ec1744c3c877c26e0d417ee4005bc3976592ddb73597f3d874fa473",
+    "declared_tape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "history_probability": "1/2112",
+    "homomorphic_matrix_algebra_retractions_constructed": false,
+    "initial_uniform_binary_label_disclosed_before_execution": true,
+    "joint_records": [
+      {
+        "n0": 0,
+        "n1": 0,
+        "probability": "51/88",
+        "ticks_port0": 0,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "37/2112",
+        "ticks_port0": 0,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "13/2112",
+        "ticks_port0": 0,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 1,
+        "probability": "1/264",
+        "ticks_port0": 0,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 0,
+        "probability": "3/176",
+        "ticks_port0": 1,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "1/264",
+        "ticks_port0": 1,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "3/88",
+        "ticks_port0": 1,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 1,
+        "probability": "1/528",
+        "ticks_port0": 1,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "29/704",
+        "ticks_port0": 1,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "21/704",
+        "ticks_port0": 1,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 0,
+        "n1": 0,
+        "probability": "3/88",
+        "ticks_port0": 2,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "1/2112",
+        "ticks_port0": 2,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "3/704",
+        "ticks_port0": 2,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 1,
+        "n1": 1,
+        "probability": "1/264",
+        "ticks_port0": 2,
+        "ticks_port1": 0
+      },
+      {
+        "n0": 0,
+        "n1": 0,
+        "probability": "3/88",
+        "ticks_port0": 2,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "3/88",
+        "ticks_port0": 2,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "1/264",
+        "ticks_port0": 2,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 1,
+        "n1": 1,
+        "probability": "1/264",
+        "ticks_port0": 2,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "21/704",
+        "ticks_port0": 2,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "29/704",
+        "ticks_port0": 2,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "1/192",
+        "ticks_port0": 3,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "19/2112",
+        "ticks_port0": 3,
+        "ticks_port1": 1
+      },
+      {
+        "n0": 0,
+        "n1": 0,
+        "probability": "3/176",
+        "ticks_port0": 3,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 1,
+        "n1": 1,
+        "probability": "1/528",
+        "ticks_port0": 3,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "13/2112",
+        "ticks_port0": 3,
+        "ticks_port1": 3
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "37/2112",
+        "ticks_port0": 3,
+        "ticks_port1": 3
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "19/2112",
+        "ticks_port0": 4,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "1/192",
+        "ticks_port0": 4,
+        "ticks_port1": 2
+      },
+      {
+        "n0": 0,
+        "n1": 1,
+        "probability": "3/704",
+        "ticks_port0": 5,
+        "ticks_port1": 3
+      },
+      {
+        "n0": 1,
+        "n1": 0,
+        "probability": "1/2112",
+        "ticks_port0": 5,
+        "ticks_port1": 3
+      }
+    ],
+    "local_record_fiber_counts": [
+      928,
+      140
+    ],
+    "overlapping_regions": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "pushforward_probability_mass_exact": true
+  },
+  "exact_continuity": {
+    "boundary_currents_retained": true,
+    "extension_to_every_finite_prefix": "sum the exact one-step identities",
+    "identity": "n_i(k)=n_i(0)+sum_{e<=k} j_e (1[i=b_e]-1[i=a_e])",
+    "native_branches_checked_exactly": 3960
+  },
+  "negative_controls": {
+    "local_state_or_record_marginals_imply_unique_joint_law": false,
+    "omitted_boundary_current": {
+      "correct_n0": 0,
+      "incorrect_n0": 1
+    },
+    "same_disjoint_regional_marginals_different_global_laws": {
+      "E_n0_n10_A": "1/2",
+      "E_n0_n10_B": "0",
+      "configurations_law_A": [
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "configurations_law_B": [
+        [
+          0,
+          11
+        ],
+        [
+          1,
+          10
+        ]
+      ],
+      "probability_per_configuration": "1/2"
+    },
+    "same_record_hidden_preparations": {
+      "possible_initial_n0": [
+        1,
+        0
+      ],
+      "record": [
+        [
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "record_geometry_connection": {
+    "calibration_sector_is_same_as_binary_history_preparation": false,
+    "distinct_total_two_calibration_preparations_at_single_ports": 12,
+    "new_spatial_coordinates_or_Lorentz_cones_supplied": false,
+    "physical_spatial_dimension_inferred": false,
+    "rank_of_certified_slow_response_Gram": 3,
+    "recovered_seams": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        10,
+        11
+      ]
+    ],
+    "response_record_count": 720,
+    "response_recovered_seams_exactly_match_current_interfaces": true
+  },
+  "schema": "oph.relative_observer_geometry.v1",
+  "scope": {
+    "absolute_fields_observer_readable_given_known_initial_local_preparation": true,
+    "fundamental_global_clock_or_field_assumed": false,
+    "hidden_initial_fields_determined_by_current_records_alone": false,
+    "new_physical_prediction_or_empirical_comparison": false,
+    "observer_modular_flow_attached_to_these_local_ticks": false,
+    "shared_prefix_is_a_record_cut_not_spacetime_simultaneity": true,
+    "source_native_rule_carrier_and_record_services_supplied": true
+  },
+  "shared_event_clocks": {
+    "affine_shared_seam_display_pairs": [
+      [
+        1,
+        1,
+        7
+      ],
+      [
+        2,
+        2,
+        9
+      ],
+      [
+        5,
+        3,
+        11
+      ]
+    ],
+    "affine_shared_seam_third_residual": "0",
+    "common_event_identity_and_record_access_supplied": true,
+    "first_two_anchors_affine_slope": "1",
+    "history_probability_given_preparation": "1/32",
+    "local_incident_tick_pairs": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        5,
+        5,
+        3
+      ]
+    ],
+    "offset": "0",
+    "parameter": "integer local nonzero incident movements or shared-seam movements",
+    "physical_time_or_Lorentz_frame_identification": false,
+    "predesignated_third_event_residual": "-2",
+    "record_history": [
+      [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        2,
+        0,
+        1,
+        1,
+        -1
+      ],
+      [
+        3,
+        0,
+        5,
+        0,
+        1
+      ],
+      [
+        4,
+        0,
+        5,
+        1,
+        -1
+      ],
+      [
+        5,
+        0,
+        1,
+        0,
+        1
+      ]
+    ]
+  },
+  "sources": {
+    "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean": "c242294919a3a1b412aa1fe77a97fadf68c918668342d361de664e3c75a378d9",
+    "Lean/QFT/FiniteCausalObserverNet.lean": "d523da22cad68d20f67ab860d165dd7800e1b69892ab7053aaa7d761a617c626",
+    "Lean/QFT/ObserverNetDescent.lean": "43c86c2be90d4db28c40bd1164746e42baa017e9f9c2efed17e33f03f47e2bbe",
+    "Lean/QFT/SourceHistoryGNSDynamics.lean": "316a2d93661497d658f6460d9881636618c5138ccd394c73e22ad2b98000911c",
+    "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
+    "Lean/Time/ClockComparison.lean": "f8d747b5e8e1d5c325d35e53beada923bcdf1a79ff8c3c0b94b1851dedb20c8d",
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
+    "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
+    "model/common_source/operational.py": "d12e5bcf1f3f34e1f3076e7ad74e8eae0d324996d22d47c7f8d0983dd967e0c1",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
+    "model/primitive_observer/algebra.py": "dc409db4dc54923a98ef013d9e19f18da6fa172a772d50b87aba16a09bc9d92c",
+    "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
+    "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
+    "model/relative_observer_geometry/__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
+    "model/relative_observer_geometry/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "model/relative_observer_geometry/construction.py": "9e5b49060dfc816a95ac594d55ae70c24635b67fe568d7f8be7d5d0dfeee958d",
+    "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
+    "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
+  }
+}

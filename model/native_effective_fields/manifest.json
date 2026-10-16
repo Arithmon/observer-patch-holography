@@ -1,0 +1,16 @@
+{
+  "description": "Exact native hard-core fields, controlled logarithm, minimal record spectrum and complete four-current readouts.",
+  "files": {
+    "README.md": "cf6eb935d67c391acebaf62476e4487e9df7d4c6ed7a8325d7f11e0a9f5ff5f9",
+    "__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
+    "__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
+    "construction.py": "78a4c71ae924c56cb0c5c7e3cae89382940129ab39f9e8a2a5e61dc8323066bd",
+    "results.json": "73a3d524f63783843fc34b62d1b915a656f35eb657e71564a31053e545b8ea33",
+    "test_construction.py": "ebd1dc82e48ac5ab9bb444012bbcd3fd339a8f9452a0735faf5a158ca8a9a2ba"
+  },
+  "reproduce": [
+    "python -m model.native_effective_fields --check model/native_effective_fields/results.json",
+    "python -m pytest -q -W error model/native_effective_fields"
+  ],
+  "schema": "oph.native_effective_fields.manifest.v1"
+}

@@ -25,8 +25,20 @@ additional measurement predictions. The [16 October connection pass](SOURCE_CONN
 joins the existing finite results, reduces detector services and separates
 event counts, modular parameters and observer-relative clock comparisons:
 
+The [observer-relative recovery connection](OBSERVER_RELATIVE_RECOVERY.md)
+extends that construction to a native hard-core exchange field, compatible
+regional field records, a modularly closed native protocol algebra, and an
+executable modular probe of the reduced record-transfer description. It
+reuses the finite transfer, marked-lumping, inner-flow and record-gluing
+arguments. The resulting finite predictions have no supplied oscillator
+action; the carrier, scheduler and coherent apparatus contracts remain explicit.
+
 | Construction | New result | Remaining premise or boundary |
 | --- | --- | --- |
+| [Native effective fields](native_effective_fields/README.md) | Exact hard-core seam generator `G=60(I-K)`, controlled logarithm Hamiltonian and three nonzero connected four-current predictions. The absolute-current law has a minimal three-state linear representation. | Fixed twelve-port carrier and binary total-two sector, uniform scheduling; no spatial continuum or relativistic identification. |
+| [Regional observer fields](relative_observer_geometry/README.md) | Signed current records reconstruct local occupations from disclosed preparations, with compatible overlaps and continuing checkpoints. Shared records support explicit successful and failed affine clock comparisons. | Complete incident-current access, initial local labels and common record correspondence; no Lorentz metric or clock-flow identification. |
+| [Continuing native modular algebra](relative_modular_dynamics/README.md) | The native event channel and Palm modular flow preserve an 86-dimensional protocol algebra; the existing phase program implements its full modular action there. Continuing records expose a finite covariance defect between event and modular operations. | Native event evolution remains distinct from modular automorphism; coherent services and reference choice stay explicit. |
+| [Transfer-derived modular probe](transfer_modular_probe/README.md) | Native record-transfer eigenvalues determine an executable effective modular flow and X/Y clock probes, including two continuing reads and complete-code gate allowance `1e-10`. | This acts on the reconstructed three-mode algebra, with declared coherent apparatus; analytic continuation does not identify native waiting with modular time. |
 | [Quantum native histories](native_quantum_history/README.md) | The full 4,356-dimensional operator transfer is source-derived for each C/E candidate. An executed coherent read separates them by `0.1210765432` at four native attempts, the best count for that experiment. | Coherent preparation, detector and uniform scheduler are declared. The logarithm does not generate continuous CP evolution. |
 | [Native event clock](native_clock/README.md) | Exact 66-to-3 marked reduction gives complete event and waiting laws. Mean waiting counts are `147/22` from a stationary sample and `33/5` after an event. | These are native attempt counts. Clock intervals are correlated; physical duration is not inferred. |
 | [Native-clocked common observer](clocked_common_observer/README.md) | The first signed native current triggers the continuing interacting work's four reads and feedback. At 128 slots, all 4,097 outcomes have complete numerical/finite-target error at most `0.000019`; retained-state and native-only-idling controls have certified nonzero effects. | The work duration per slot, preparations and uniform native scheduler remain supplied. This is a finite occupation model and native channel-semantics execution, with physical services unbounded. |

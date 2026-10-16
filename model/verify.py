@@ -27,8 +27,14 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_interface", "model/measurement_bounds", "model/clocked_common_observer",
            "model/event_circulation", "model/compiled_native_interface",
            "model/calibrated_measurement", "model/clocked_quantum_readout",
-           "model/native_modular_reference")
+           "model/native_modular_reference", "model/native_effective_fields",
+           "model/relative_observer_geometry", "model/relative_modular_dynamics",
+           "model/transfer_modular_probe")
 REPLAYS = (
+    ("model.native_effective_fields", None, "model/native_effective_fields/results.json"),
+    ("model.relative_observer_geometry", None, "model/relative_observer_geometry/results.json"),
+    ("model.relative_modular_dynamics", None, "model/relative_modular_dynamics/results.json"),
+    ("model.transfer_modular_probe", None, "model/transfer_modular_probe/results.json"),
     ("model.native_modular_reference", None, "model/native_modular_reference/results.json"),
     ("model.event_circulation", None, "model/event_circulation/results.json"),
     ("model.compiled_native_interface", None, "model/compiled_native_interface/results.json"),

@@ -1,0 +1,16 @@
+{
+  "description": "Native continuing event records, Palm modular reference, invariant protocol algebra and operational covariance tests.",
+  "files": {
+    "README.md": "2a0f0eb13c748b300cfef522dac280974918d7c2e4bf6ebf6714cd323682d1a8",
+    "__init__.py": "f201a67b9b7787025793d212236054dca7c9b963153073afedc3b8f53c056673",
+    "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "construction.py": "1baa03ad65c26d00c155db00c7c7cafc72f6307ea27b84342e5ca2faf4987e70",
+    "results.json": "218dd57f7dd7072d5982a11d581ad0d2fe3f9a1fb32a61535d8484dc8006f456",
+    "test_construction.py": "f48bb0ac8348c00fd5b6a2c8c7589f51318a43b1b805a2dabb539d80b3694ce0"
+  },
+  "reproduce": [
+    "python -m model.relative_modular_dynamics --check model/relative_modular_dynamics/results.json",
+    "python -m pytest -q -W error model/relative_modular_dynamics"
+  ],
+  "schema": "oph.relative_modular_dynamics.manifest.v1"
+}
