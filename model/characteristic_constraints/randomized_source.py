@@ -82,6 +82,57 @@ def finite_certificate(design, matrices, operators):
             'physical_service_fidelity_certified': False}
 
 
+def execution_certificate(design, matrices, operators, roots):
+    """Portable fixed envelopes, proved against fresh exact array bounds.
+
+    Compiler/BLAS last bits may differ between platforms. Their exact binary
+    values are checked here on every run; only invariant enclosing budgets
+    enter certificate strings. Floating diagnostics never authorize a bound.
+    """
+    exact = finite_certificate(design, matrices, operators)
+    active = [i for i, p in enumerate(design.probabilities) if p]
+    if len(roots) != len(active):
+        raise ValueError('one randomizer amplitude per active setting required')
+    weights = [F(float(root))**2 for root in roots]
+    mass = sum(weights, F(0))
+    if mass <= 0:
+        raise ValueError('positive randomizer mass required')
+    choice_bias = design.width*sum((abs(p/mass-design.probabilities[i])
+                                  for i, p in zip(active, weights, strict=True)), F(0))
+    raw = F(exact['raw_positive_square_comparison_error_upper'])
+    masses = tuple(map(F, exact['setting_effect_sum_error_upper']))
+    completion = F(exact['weighted_completion_error_upper'])
+    total = F(exact['conditional_score_defect_upper'])
+    budgets = {'raw': F(1, 10**14), 'mass': F(1, 10**14),
+               'completion': F(8, 10**14), 'score': F(1, 10**13),
+               'choice_mass': F(1, 10**15)}
+    if (raw > budgets['raw'] or any(value > budgets['mass'] for value in masses)
+            or completion > budgets['completion'] or total > budgets['score']
+            or abs(mass-1) > budgets['choice_mass'] or choice_bias != 0):
+        raise ArithmeticError('fresh exact source-array bound exceeds the portable certificate envelope')
+    # Every inequality above compares Fractions exactly. These constants are
+    # conservative conclusions of those checks, not tolerated replay errors.
+    return {'raw_positive_square_comparison_error_upper': str(budgets['raw']),
+            'setting_effect_sum_error_upper': [str(budgets['mass'])]*6,
+            'weighted_completion_error_upper': str(budgets['completion']),
+            'conditional_score_defect_upper': str(budgets['score']),
+            'conditional_score_defect_upper_float': float(budgets['score']),
+            'completed_randomizer_score_error_upper': '0',
+            'raw_randomizer_mass_defect_upper': str(budgets['choice_mass']),
+            'conditional_score_defect_including_completed_randomizer_upper': str(budgets['score']),
+            'fresh_exact_array_bounds_verified_against_fixed_envelopes': True,
+            'arithmetic': exact['arithmetic'],
+            'bound_uniform_in_state_and_reference': True,
+            'completion_is_mathematical_comparison_only': True,
+            'physical_service_fidelity_certified': False,
+            'per_execution_floating_diagnostics_not_certificate_inputs': {
+                'raw_positive_square_comparison_error': float(raw),
+                'setting_effect_sum_errors': list(map(float, masses)),
+                'weighted_completion_error': float(completion),
+                'conditional_score_defect': float(total),
+                'raw_randomizer_mass_defect': float(abs(mass-1))}}
+
+
 def execute():
     design = randomized.witness_design(VECTOR)
     words = source.source_words()
@@ -90,17 +141,9 @@ def execute():
     for name in ('U', 'V', 'UV'):
         for phase in (0., -np.pi/2):
             operators.append(source.ramsey(words[name][1], phase)[0])
-    certificate = finite_certificate(design, matrices, operators)
     active = [i for i, p in enumerate(design.probabilities) if p]
     roots = [np.sqrt(float(design.probabilities[i])) for i in active]
-    raw_choice = [F(float(root))**2 for root in roots]
-    choice_mass = sum(raw_choice, F(0))
-    choice_bias = design.width*sum((abs(p/choice_mass-design.probabilities[i])
-                                  for i, p in zip(active, raw_choice)), F(0))
-    certificate['completed_randomizer_score_error_upper'] = str(choice_bias)
-    certificate['raw_randomizer_mass_defect'] = str(abs(choice_mass-1))
-    certificate['conditional_score_defect_including_completed_randomizer_upper'] = str(
-        F(certificate['conditional_score_defect_upper'])+choice_bias)
+    certificate = execution_certificate(design, matrices, operators, roots)
     choice = runtime.Instrument(kraus=tuple((root*np.eye(2),)
         for root in roots), visible=True, binding={'exact_target_probabilities': [str(design.probabilities[i]) for i in active]})
     probes = tuple(runtime.Instrument(kraus=((operators[i][0],), (operators[i][1],)), visible=True,

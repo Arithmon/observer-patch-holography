@@ -1752,10 +1752,11 @@
       "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
         "assumptions": [
           "declared_published_oscillator_readout_protocol",
-          "declared_coherent_proper_code_services_and_analogue_source_controls"
+          "declared_coherent_proper_code_services_and_analogue_source_controls",
+          "declared_randomized_Gram_witness_protocol"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "b919a1c1d969e67c3d58428dcbd8bf9e697be3f8a420cfd39ece8921af48cc03"
+        "original_claim_sha256": "cd5f6c67db24242264e66cac5d34b3d83bff8b861f44deed878f908b2665963d"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
@@ -3956,7 +3957,7 @@
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
     "code/m1_necessity/downstream.json": "60742abd926aa4982aba301d6d4373f26ed6f9fbea6c9fbd2774de6de9389e7e",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "82a4bae29338c17ce741b6afab51f60052dce1ece4ddab8eeada655ae4726a97",
+    "code/m1_necessity/test_necessity.py": "e8ab3e170b5d57dbe58afbf36c8592458444a4e64045d059a9e7b8e90835a3a9",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

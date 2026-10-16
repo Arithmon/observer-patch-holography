@@ -15624,21 +15624,36 @@
       "bound_uniform_in_state_and_reference": true,
       "completed_randomizer_score_error_upper": "0",
       "completion_is_mathematical_comparison_only": true,
-      "conditional_score_defect_including_completed_randomizer_upper": "494117647058821314863411764708457002470823530648891718485996205962952661022874247905226969/29411764705882140264705882353540306205882352121301600558824073351509182941036436167500250000000000000000",
-      "conditional_score_defect_upper": "494117647058821314863411764708457002470823530648891718485996205962952661022874247905226969/29411764705882140264705882353540306205882352121301600558824073351509182941036436167500250000000000000000",
-      "conditional_score_defect_upper_float": 1.6800000000000046e-14,
+      "conditional_score_defect_including_completed_randomizer_upper": "1/10000000000000",
+      "conditional_score_defect_upper": "1/10000000000000",
+      "conditional_score_defect_upper_float": 1e-13,
+      "fresh_exact_array_bounds_verified_against_fixed_envelopes": true,
+      "per_execution_floating_diagnostics_not_certificate_inputs": {
+        "conditional_score_defect": 1.6800000000000046e-14,
+        "raw_positive_square_comparison_error": 2.338e-15,
+        "raw_randomizer_mass_defect": 5.177941833848279e-17,
+        "setting_effect_sum_errors": [
+          9.33e-16,
+          8.87e-16,
+          1.57e-15,
+          1.766e-15,
+          1.815e-15,
+          2.075e-15
+        ],
+        "weighted_completion_error": 1.4462000000000046e-14
+      },
       "physical_service_fidelity_certified": false,
-      "raw_positive_square_comparison_error_upper": "1169/500000000000000000",
-      "raw_randomizer_mass_defect": "16803381948479051/324518553658426726783156020576256",
+      "raw_positive_square_comparison_error_upper": "1/100000000000000",
+      "raw_randomizer_mass_defect_upper": "1/1000000000000000",
       "setting_effect_sum_error_upper": [
-        "933/1000000000000000000",
-        "887/1000000000000000000",
-        "157/100000000000000000",
-        "883/500000000000000000",
-        "363/200000000000000000",
-        "83/40000000000000000"
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000",
+        "1/100000000000000"
       ],
-      "weighted_completion_error_upper": "850705882352937741849058823531759533122941182778577152758931044934248382613462120291222769/58823529411764280529411764707080612411764704242603201117648146703018365882072872335000500000000000000000"
+      "weighted_completion_error_upper": "1/12500000000000"
     },
     "fixed_horizon_theorem_applied_to_laboratory_data": false,
     "maximum_reference_checkpoint_residual": 0.0,
@@ -15782,7 +15797,7 @@
     "model/characteristic_constraints/experiment.py": "fdbb27bd9931b09c717b1d762eafeca272d51cbc3f9742570a161bae36e518d5",
     "model/characteristic_constraints/protocol.json": "a36bb54711c0a678e123ee8878c082ab7f3ec6ded3f2d964233aa024150068d7",
     "model/characteristic_constraints/randomized.py": "c0d1da6d838917aae16a307b2ee32372065cb3955b769cdb0507deb96856ba3b",
-    "model/characteristic_constraints/randomized_source.py": "e5c6c930793965dda1fc32805405aa7d670084050302450a1ce859ad838d9eef",
+    "model/characteristic_constraints/randomized_source.py": "239aaf10faafe447b484029e27b7abadce99764eee20050d9f6b3fc4389e17a5",
     "model/characteristic_constraints/source.py": "52c6c5ec29f7cdf09bc3c501f3953052f74e31330a512fbcaa3d64f086c9a5d9",
     "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
     "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",

@@ -181,9 +181,13 @@ why fresh setting independence remains a real premise.
 
 The exact binary source detector arrays are additionally compared with a positive
 square `A* A`, where `A = v0 I + v1 U* + v2 V`. Rational matrix
-arithmetic and outward square-root bounds give a uniform score defect below
-**1.69e-14**, including the correction from each raw detector to its
-mathematical trace-preserving completion `K T^(-1/2)`. Execution retains
+arithmetic and outward square-root bounds prove a uniform score defect at most
+**1e-13**, including the correction from each raw detector to its
+mathematical trace-preserving completion `K T^(-1/2)`. Each execution recomputes exact rational bounds from its actual binary
+arrays and fails if they exceed the fixed rational certificate envelopes.
+This permits different compiler/BLAS last bits without comparing exact
+platform-dependent fractions as if they were universal values. Per-run
+floating diagnostics are not inputs to certification. Execution retains
 the raw arrays and reports its roughly **2.22e-15** mass defect; it does not
 silently normalize them. The randomizer uses equal binary amplitudes, so
 its mathematical trace-preserving completion has exactly the declared

@@ -97,6 +97,39 @@ class RandomizedTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             s.finite_certificate(design, matrices, operators[:-1])
 
+    def test_portable_certificate_rechecks_ulp_perturbed_arrays_exactly(self):
+        design = r.witness_design(s.VECTOR)
+        words = s.source.source_words()
+        matrices = {name: s.source.compiler.execute(word, 1) for name, (word, _) in words.items()}
+        operators = [s.source.ramsey(words[name][1], phase)[0]
+                     for name in ('U', 'V', 'UV') for phase in (0., -np.pi/2)]
+        roots = [np.sqrt(float(p)) for p in design.probabilities if p]
+        baseline = s.execution_certificate(design, matrices, operators, roots)
+        diagnostic_key = 'per_execution_floating_diagnostics_not_certificate_inputs'
+        stable = {key: value for key, value in baseline.items() if key != diagnostic_key}
+        for direction in (np.inf, -np.inf):
+            def perturb(array):
+                # Simulate low-level evaluation differences in every component.
+                real = np.nextafter(np.array(array.real), direction)
+                imag = np.nextafter(np.array(array.imag), direction)
+                return real+1j*imag
+            changed_matrices = {name: perturb(value) for name, value in matrices.items()}
+            changed_operators = [tuple(perturb(value) for value in maps) for maps in operators]
+            changed_roots = [np.nextafter(value, direction) for value in roots]
+            result = s.execution_certificate(design, changed_matrices, changed_operators, changed_roots)
+            self.assertEqual({key: value for key, value in result.items() if key != diagnostic_key}, stable)
+            self.assertNotEqual(result[diagnostic_key], baseline[diagnostic_key])
+            self.assertEqual(F(result['conditional_score_defect_upper']), F(1, 10**13))
+        # Errors exceeding a budget are not swallowed by floating replay tolerance.
+        changed = [tuple(k.copy() for k in maps) for maps in operators]
+        changed[-1][0][0, 0] += 1e-11
+        with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):
+            s.execution_certificate(design, matrices, changed, roots)
+        altered_roots = list(roots)
+        altered_roots[0] = np.nextafter(altered_roots[0], np.inf)
+        with self.assertRaisesRegex(ArithmeticError, 'exceeds the portable'):
+            s.execution_certificate(design, matrices, operators, altered_roots)
+
     def test_public_means_select_future_design_not_a_statistical_test(self):
         axes, interior, _ = experiment.exact_data()
         scored = {str(extent): experiment.score(axes, interior, experiment.predictions(axes, extent))
