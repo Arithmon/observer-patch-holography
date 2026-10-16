@@ -59,6 +59,10 @@ normalization or success conditioning supplies these certificates.
 - The feedback repair is an additional incident tick. Its clock coordinate
   and native operation cost are charged explicitly; it is not silently
   counted as an uncontrolled effective-transfer step.
+- The finite cutoff counts global scheduler attempts, including remote
+  attempts. Its supplied counter/timeout service is distinct from the
+  incident clock and unnecessary for the completed law. The reported
+  fourth-cumulant interval is explicitly labelled as the baseline result.
 - Tests cover malformed inputs before cache lookup, ndarray subclasses,
   missing outcomes and modified exact receipt values. The CLI writes a real
   producer receipt, reads it back through strict JSON, and rejects a changed

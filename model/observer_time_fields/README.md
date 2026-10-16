@@ -42,7 +42,7 @@ coherent continuation.
 | Feedback | After the first field read, bit one requests one additional fair native repair on the seam joining the read ports; bit zero requests none. This uses a committed bit, never an inaccessible state. |
 | Clock accounting | The feedback attempt is itself an incident tick. Read times are `(1,2,3,4)` without feedback and `(1,2+b,3+b,4+b)` with first bit `b`. The scheduled gap index is not silently called the complete clock. |
 | Continuation | Every subsequent repair acts on the conditional distribution left by the preceding read and intervention. There is no reset at a tick. |
-| Finite execution | Each scheduled interval has an attempt cap. A timeout terminates that branch with its preceding labels and fields intact. Arithmetic deficits are bounded and never normalized away. |
+| Finite execution | Each scheduled interval has a cap on global scheduler attempts, enforced by a supplied counter/timeout service. A timeout terminates that branch with its preceding labels and fields intact. Arithmetic deficits are bounded and never normalized away. |
 | Refinement | Increasing the attempt cap and integer precision converges to the complete stopped law with explicit error. Spatial carrier refinement is a separate obligation; equal clock units alone do not identify different graphs' laws. |
 
 For the elementary source the clock region is the two read ports. For the
@@ -201,7 +201,12 @@ continuation. A moment or nonlinear cumulant must additionally propagate
 the appropriate complete-law uncertainty; a nonzero floating number alone
 is not a certificate.
 
-The physical protocol uses at most `4h+1` native attempts, four scheduled
+The cap counts remote as well as incident scheduler attempts. It is a supplied
+execution/resource cutoff, not a duration read from the incident clock.
+Implementing the capped protocol requires that global attempt counter and
+timeout service; the completed incident-clock law requires neither.
+
+The capped protocol uses at most `4h+1` native attempts, four scheduled
 field reads, two disclosed initial bits, and at most one feedback attempt.
 Its incident clock uses at most five ticks; remote attempts are still
 charged as source operations. Processing a signed incident current is a
@@ -212,8 +217,8 @@ contracts, not measured hardware service-error estimates.
 At the retained cap 256 and grid precision 51 bits, each protocol has 124
 terminal records and at most 1,025 native operations. The baseline complete
 L1 arithmetic error is below `1.59e-8`; the feedback error is below `1.69e-8`.
-The exact timeout probability is below `3.13e-12`. The eventual connected
-four-field cumulant lies inside `[-0.000027711,-0.000027693]`; the feedback
+The exact timeout probability is below `3.13e-12`. The eventual baseline
+connected four-field cumulant lies inside `[-0.000027711,-0.000027693]`; the feedback
 increase of the second field mean lies inside `[0.00392579,0.00392584]`.
 These decimal intervals are outward summaries of the rational receipt.
 Non-Gaussianity here is a finite classical field-law prediction; by itself
