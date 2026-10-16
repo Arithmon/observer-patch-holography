@@ -312,8 +312,13 @@ Then `mu` includes both unresolved waiting and arithmetic losses. For any
 subset of the four retained bits, summing `ell_z` over records where those
 bits are all one gives a lower indicator moment `l`; its completed moment
 lies in `[l,min(1,l+mu)]`. This charges missing mass once and does not
-condition on success. Increasing the cap and grid precision supplies the
-corresponding convergence procedure.
+condition on success. In the mathematical finite-source model, sending `h`
+to infinity removes the waiting tail; for each fixed finite `h` and `k`,
+an unbounded integer grid makes the directed arithmetic error vanish.
+The retained evaluator supports `2<=k<=8`, `h<=2048` and `bits<=52`,
+subject to its signed-64-bit bound. It certifies the displayed finite
+budgets. Arbitrarily small numerical error would require an arbitrary-precision
+integer implementation or another certified evaluator.
 
 Receipt endpoints may be exported by exact outward rounding to a fixed
 dyadic grid. The complete deficit must then be recomputed from the

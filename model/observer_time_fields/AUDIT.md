@@ -109,3 +109,31 @@ No frozen evidence, paper, empirical fit or existing claim-registry row is
 reclassified. The source-derived clock/field result is an analytic finite
 proof with exact and bounded executable instances, not a new Lean proof or
 a physical service-error certificate.
+
+## Finite-density screen attachment
+
+The [joint time/field extension](REFINEMENT.md) has independent forward
+enumeration of every binary configuration on small native graphs. It checks
+each labelled success and timeout probability against the backward exclusion
+dual, including coarse integer grids and three different product densities.
+A separate exact matrix calculation verifies all 32 adaptive field words
+with a nonuniform Bernoulli boundary. Nonstationary boundaries and remote
+field insertions give explicit nonzero discrepancies outside that theorem.
+
+The integration audit corrected three otherwise incomplete interfaces:
+every edge touching a read port must belong to the incident clock; the
+strict transfer floor must check the actual root's twofold triangle cover;
+and serialized continuation must carry both field counters and the first
+read, then advance from the new record suffix alone. Tests reject forged
+memory and source ancestry on both warm and cold replay caches. The
+independent full-source execution includes both moving and zero-current
+feedback repairs and an externally forced timeout.
+
+Reversed backward chronology changes an off-root coefficient while leaving
+one scalar return check unchanged. Scalar remote holding and omitted
+feedback fail the independent law controls. Removing the triangle-cover
+check fails a graph with the same seam and face counts. The retained receipt
+and real CLI reject changed probability intervals, omitted records, type
+aliases and erased error budgets. Exported lower-mass deficits are computed
+after outward row rounding. Mathematical convergence at unbounded precision
+is distinguished from the bounded signed-integer evaluator's finite budget.
