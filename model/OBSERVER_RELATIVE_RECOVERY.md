@@ -200,7 +200,7 @@ quantum Liouville action and a physically executed real-time unitary. A
 movement-only clock alternates its port occupation and has eigenvalue `-1`,
 which obstructs this positive-transfer logarithm. Cap/precision refinement
 is bounded. The [finite-density extension](observer_time_fields/REFINEMENT.md)
-now instantiates the common record map and spatial bound at levels three and
+instantiates the common record map and spatial bound at levels three and
 five for one root-carrier observer at Bernoulli density `1/3`. Every four-bit
 success outcome and timeout prefix is bounded by exact exclusion-dual
 propagation. On both actual screens the connected four-field statistic is
