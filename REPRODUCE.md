@@ -56,6 +56,18 @@ on the clocks' native sector. The [host-clock comparison](model/native_clock/REA
 replays actual recorded native calls and recalculates their held-out timing
 tests; reproduction checks the retained measurements rather than requiring
 another machine to reproduce their timestamps.
+The [joint clock bridge](model/native_clock/CLOCK_BRIDGE.md) retains zero-hit
+and movement-count correlations, propagates exact finite count uncertainty,
+and preserves the recorded workload-control rejection. The
+[field refinement](model/observer_time_fields/REFINEMENT.md) also evaluates
+canonical fixed-number preparations with their conservation correlations.
+[Temporal records](model/relative_observer_geometry/README.md#temporal-hilbert-space-reconstructed-from-field-records)
+reconstruct an exact elementary cyclic transfer and a separate, bounded
+two-vector compression on the actual screens. Their preparation and clock
+domains remain distinct; these checks do not establish physical time.
+The [Bell-record replay](model/predictions/BELL_RECORDS.md) reproduces a public
+fixed-count comparison against local factorized classical responses. It is
+a retrospective boundary test, not a prospective OPH validation.
 The tests independently check endpoint arithmetic,
 all retained histories, classical-record preservation, quantum coherence,
 controls, capacity and
@@ -71,6 +83,15 @@ The complete smooth-history comparison can also be replayed directly:
 
 ```sh
 python -m model.common_source.smooth_history --check model/common_source/smooth_history_results.json
+```
+
+Focused field, temporal, clock-conversion and public-data replays are:
+
+```sh
+python -m model.observer_time_fields.canonical_sector --check model/observer_time_fields/canonical_sector_results.json
+python -m model.relative_observer_geometry.temporal_records --check model/relative_observer_geometry/temporal_results.json
+python -m model.native_clock.clock_bridge --check model/native_clock/clock_bridge_results.json
+python -m model.predictions.bell_records --check model/predictions/bell_results.json
 ```
 
 The scalar adapter executes the supplied field instrument and its conditional

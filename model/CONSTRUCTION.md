@@ -107,9 +107,12 @@ can therefore be compared without using a doubled-load preparation. A
 separate current-fluctuation action is derived in one port's tick count, with
 an exact Palm-conditioned triangle variance `3m/5`. Actual host-counter
 records test a software clock correspondence with held-out blocks and a
-workload control. These constructions preserve their preparation, observation
-and timing domains; their finite success does not assert a physical spacetime
-or a traceable laboratory realization.
+workload control. The [joint clock bridge](native_clock/CLOCK_BRIDGE.md)
+derives incident-hit/current-count laws and finite conversion errors from any
+initial configuration, including zero hits and a separate feedback-count law.
+Its reanalysis preserves the host calibration and workload rejection. These
+results retain their total-two preparation domain; neither a traceable lab
+clock nor the full-screen field protocol is calibrated by that comparison.
 
 ### Native action, federations and observer-relative clocks
 
@@ -157,12 +160,26 @@ The [finite-density field attachment](observer_time_fields/REFINEMENT.md)
 uses that same preparation, root clock, current support and native feedback
 to certify a complete four-bit field law, including every finite-cap timeout
 prefix. The positive incident transfer preserves this law with the Bernoulli
-stationary boundary. Its exact degree-two exclusion dual avoids enumerating
-the full binary configuration space without factorizing correlations.
-Feedback reverses the sign of the certified connected four-field statistic
-on both actual screens. Two field counters and the controller memory survive
-serialized source continuation; arithmetic, cutoff and spatial errors are
-accounted separately. This completes their finite joint time/field domain.
+stationary boundary or with each screen's own canonical fixed-number
+restriction. The latter removes a product-preparation premise: native
+connected exchange derives the unique diagonal equilibrium conditional on
+the conserved total. Its exact degree-two exclusion dual retains conservation
+correlations without enumerating the full binary space. At density `1/3`,
+feedback reverses the connected four-field statistic on both screens, while
+their complete field laws have a resolved finite-size difference. Two field
+counters and controller memory survive serialized source continuation;
+arithmetic, cutoff, spatial and preparation differences are accounted
+separately. Selecting the conserved density and realizing equilibrium
+preparation remain inputs, with no large-screen mixing-time claim.
+
+The [temporal-record representation](relative_observer_geometry/README.md#temporal-hilbert-space-reconstructed-from-field-records)
+reconstructs a seven-dimensional cyclic positive transfer from exact field
+correlations in the elementary total-two, two-port-clock domain. Exact
+flatness proves its recurrence under the established positive-transfer
+class; ordinary samples do not certify that rank. On the distinct full-screen
+product preparation and twelve-port root clock, bounded correlations certify
+a two-vector temporal subspace and positive transfer compression. Its Ritz
+values are not closed modes or a physical energy/clock identification.
 
 The [local event clock](relational_event_clock/README.md) counts actual
 occupation changes at one observer port. Its stopped instrument retains
@@ -220,6 +237,16 @@ additional complete protocols under their own preparation and service
 contracts. Mean loads and native classical histories alone cannot select C
 from E. No public laboratory dataset is identified with these native-law
 experiments.
+
+The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
+scope of a classical interpretation. The diagonal native branch obeys
+`S<=2` under independent settings and local factorized responses. Replaying
+the deposited Hensen records gives 196 wins in 245 eligible trials and
+`S=2.42250`; the published fixed-count calculation has a tail bound near
+`0.03917`, conditional on its setting calibration and experimental access
+contract. This retrospective null rejection excludes that extension, not
+the full quantum C/E construction, and supplies no lab-clock identification
+or new prospective validation of OPH.
 
 The [measurement bounds](measurement_bounds/README.md),
 [empirical diagnostics](empirical_diagnostics/README.md) and

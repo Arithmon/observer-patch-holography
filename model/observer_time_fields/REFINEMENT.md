@@ -487,3 +487,123 @@ Hamiltonian, and dictionaries not commuting with the remote transfer as
 explicit further obligations. A movement-only clock retains its negative
 eigenvalue obstruction; changing the clock is not a free application of
 the positive-transfer theorem.
+
+## Canonical equilibrium without product preparation
+
+The [canonical-sector construction](canonical_sector.py) removes independent
+Bernoulli occupations as a mandatory preparation for this clock/field
+connection. It reuses the fixed-number native equilibrium and the same
+exclusion dual; its additional result is a complete finite-density field law
+with **exact conservation correlations**, attached separately to each actual
+screen. Nothing is factorized after evolution or conditioned on successful
+completion.
+
+For a connected binary source with `V` ports and conserved occupation `N`,
+every native seam map is the symmetric stochastic projection
+`(I+SWAP)/2`. Adjacent swaps on a connected graph connect every pair of
+binary configurations of total `N`. Every configuration also has a positive
+self-loop. Hence the diagonal process is irreducible and aperiodic in that
+sector, with unique stationary law
+
+```text
+pi_(V,N)(x) = 1/binomial(V,N),     sum_v x_v = N.
+```
+
+This is a finite-chain proof, not an assumption of initially independent
+ports. The producer calls the original two-port rule to check identity plus
+swap and verifies connectivity of all 15,360 and 245,760 source ports.
+The empty and full sectors are the trivial single-state cases. This argument
+concerns the recorded diagonal process; it does not assert a new general
+coherent-state uniqueness theorem.
+
+Repair preserves `N`, so it cannot select the sector or density. The displayed
+non-diluting examples use `N=5120` and `81920`, respectively, giving density
+`1/3` on each screen. The equilibrium law is derived conditional on that
+conserved boundary. Choosing to prepare it is still an operational service.
+An exact sampler uses successive uniform integer choices: with `r` positions
+remaining and `n` occupations left, the next bit is one when a uniform
+integer from `0,...,r-1` is below `n`. Every final `N`-subset has probability
+`1/binomial(V,N)` under the stated random-draw service. No finite relaxation
+time or exact equilibrium after an arbitrary short native run is claimed.
+
+The restriction to the retained ball `Q` is computed, not replaced by a
+fixed number inside that ball:
+
+```text
+pi_Q(x) = binomial(V-|Q|, N-sum(x)) / binomial(V,N).
+```
+
+It is uniform conditional on its local occupation total, but that total
+fluctuates. Its weights depend only on local total number, so every retained
+native seam preserves it. The positive-transfer argument above applies
+with `Omega_Q=sqrt(pi_Q)` and with the full-screen uniform sector boundary.
+Number preservation supplies the required boundary commutation. Independent
+product structure is unnecessary.
+
+Let `(z)_r=z(z-1)...(z-r+1)` denote a falling factorial. For initial disclosed
+bits `(a,b)` with nonzero probability, the exact preparation identities are
+
+```text
+Pr(a,b) = (N)_(a+b) (V-N)_(2-a-b) / (V)_2,
+E[n_X | a,b] = (factors a,b present in X)
+              * (N-a-b)_r / (V-2)_r,
+```
+
+where `r` counts the distinct undisclosed ports in `X`. Replacing the product
+expectation in the existing dual by this identity evaluates the same complete
+44-record protocol. Known coefficient mass still bounds each expectation
+because every monomial lies in `[0,1]`. All directed rounding, timeout,
+cumulant and outward export allowances therefore remain valid. Impossible
+initial disclosures retain explicit zero-mass branches.
+
+The two finite screens have **different** restrictions, despite equal
+density. Distinct initially disclosed ports have covariance
+`-rho(1-rho)/(V-1)`: it is exactly `-2/138231` at level three and
+`-2/2211831` at level five. The producer evaluates each restriction
+separately. The complete-output locality theorem compares each full screen
+to its own exactly restricted common-ball preparation, with the same
+one-screen allowance below `3.328e-9`. It does not assume that the two
+restrictions coincide.
+
+The [retained results](canonical_sector_results.json) certify:
+
+| Full screen | Baseline connected fourth cumulant | Feedback connected fourth cumulant | Feedback increase of final mean |
+| --- | --- | --- | --- |
+| Level 3 | `[0.0008630090,0.0008630675]` | `[-0.0049747133,-0.0049746471]` | `[0.0836955211,0.0836955370]` |
+| Level 5 | `[0.0008637742,0.0008638327]` | `[-0.0049753435,-0.0049752773]` | `[0.0836904127,0.0836904286]` |
+
+These intervals include numerical, stopping and spatial allowances. The
+receipt also bounds total variation between the two normalized completed
+sixteen-word field laws. For each word, its capped interval enlarged by
+the timeout mass encloses its eventual probability. Interval differences
+bound their complete L1 distance; adding the two separate spatial allowances
+then bounds the full-screen distance. Finite-number corrections are retained
+in this comparison rather than absorbed into an assumed identical state.
+The resulting TV interval is `[0.00003106953,0.00003108527]` without feedback
+and `[0.00003102585,0.00003104159]` with it; both resolve a nonzero finite-size
+effect after the locality allowance.
+
+Eight paired seeded executions initialize the actual full screens with their
+exact totals and run the unchanged native repair engine, including remote
+repairs and record-controlled feedback. The initial screen preparations are
+separate; agreement of their local initial configurations is not assumed.
+Both current counters, first-read memory, full states, record histories and
+random-generator continuation survive serialized restart. Moving and
+zero-current feedback occur, and a forced one-slot timeout remains an output.
+These seeded pseudorandom executions test the implementation; their small
+seed ensemble is not statistical evidence for a uniform distribution over
+all configurations. The analytic law uses the specified uniform-draw model.
+
+Independent small-source tests enumerate every fixed-number configuration
+and every native branch. They check all records on both full small graphs
+and restrictions of larger sectors, including empty/full and coarse-grid
+cases. Controls reject replacement by a product law, replacement of the full
+sector by a fixed number in the retained ball, and a disconnected graph's
+claim to a unique global-sector equilibrium. This removes a preparation
+independence premise, while leaving the conserved density, preparation
+service, coherent continuation and physical identification explicit.
+
+```text
+python -m model.observer_time_fields.canonical_sector --check model/observer_time_fields/canonical_sector_results.json
+python -m pytest -q -W error model/observer_time_fields/test_canonical_sector.py
+```

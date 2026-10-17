@@ -28,6 +28,16 @@ tolerance. A host-workload control preserves every native record and rejects
 that calibration in all four blocks. This is an executable apparatus check;
 it supplies no traceable lab calibration or identification with proper time.
 
+The [joint clock bridge](CLOCK_BRIDGE.md) derives how incident interactions,
+including zero currents, convert to local movement counts. Their stationary
+ratio is `33/5`, but their exact correlations and finite uncertainty rule out
+using that mean as a pathwise conversion. The bridge retains field reads and
+extra feedback hits, and replays the existing host capture with its unchanged
+calibration: all three baseline blocks remain inside the propagated interval,
+while the corresponding workload controls reject it. This uses the same
+total-two carrier as the capture, not the full binary preparation of the
+field-refinement protocol.
+
 ## Why the model does not predict seconds
 
 The source contains integer attempt counts and dimensionless probabilities,

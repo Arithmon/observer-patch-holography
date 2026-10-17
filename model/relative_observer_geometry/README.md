@@ -344,6 +344,116 @@ occupation/current readout. It does not rule out a Euclidean transfer
 reconstruction, a larger reversible description with retained records, or
 wave-like observations in a different justified sector.
 
+### Temporal Hilbert space reconstructed from field records
+
+The [temporal-record construction](temporal_records.py) recovers a finite
+effective transfer from observer-accessible occupation correlations. Its
+recovery function accepts only rational correlation values; it does not consult
+the source graph, a hidden state vector, or a supplied Hamiltonian. The source
+calculation separately establishes those exact inputs and checks predictions
+beyond the reconstruction window.
+
+The elementary protocol uses the uniform binary total-two preparation on the
+same 66 configurations. Ports zero and one form the observer region. Each of
+their nine incident seams counts as a tick, including a zero-current attempt;
+remote repairs continue between ticks. Both initial bits are disclosed, and
+their later values are reconstructed from signed incident currents. This is
+the existing [incident-clock field protocol](../observer_time_fields/README.md),
+without feedback. Preparation, independent uniform scheduling and fair native
+coins are supplied services. No physical duration per repair is assigned.
+
+Let `f=n_0-1/6`, and write `c_k=E[f(0)f(k)]`. The established positive-transfer
+dictionary gives `c_k=<f,T^k f>`, with `0<T<=I`. Therefore the matrices
+
+```text
+G_ij = c_(i+j),       J_ij = c_(i+j+1)
+```
+
+are the inner-product and transfer matrices on the span of
+`f,Tf,...,T^(r-1)f`. This is a reflection-time Gram construction from recorded
+correlations. It is not the ordinary covariance matrix of a chronological
+sample sequence, which would use time differences. When `G` is positive
+definite, `R=G^(-1)J` is self-adjoint in its measured inner product. The exact
+checks `J>0` and `G-J>0` make `R` a strict positive contraction.
+
+Correlations at lags zero through fourteen determine a **seven-dimensional
+cyclic field space**. Its eighth-vector Schur remainder is exactly zero. If
+`a=G^(-1)(c_7,...,c_13)^T`, that equality is
+
+```text
+||T^7 f - sum_(j=0)^6 a_j T^j f||^2 = c_14 - a^T G a = 0.
+```
+
+Under the already established positive-transfer representation, this proves
+closure and the recurrence for every later lag. It is stronger than fitting
+a finite window. The reconstructed transfer has characteristic polynomial
+
+```text
+(753 x^3 - 1681 x^2 + 1241 x - 303)
+  * (18147 x^4 - 54265 x^3 + 60655 x^2 - 30039 x + 5562)
+  / 13664691.
+```
+
+Exact real-root isolation and a rational logarithm remainder bound certify all
+seven eigenvalues and `-log(lambda)` values in the
+[receipt](temporal_results.json). The transfer eigenvalues range from about
+`0.633967902` to `0.862715126`; the corresponding effective logarithm values
+range from `0.147670740` to `0.455756954` per incident tick. They are
+dimensionless model predictions, not measured energies in joules or a native
+coherent evolution. Independent propagation of the complete 66-state source
+agrees at every reconstructed lag and at held-out lags fifteen through twenty.
+
+The two readable field combinations `n_0+n_1-1/3` and `n_0-n_1` split this
+space into four symmetric and three antisymmetric modes. An independent
+observability calculation on the twelve-port mean response finds the same
+seven modes. Four of the eleven centered occupation directions are invisible
+to these linear two-field correlations at every lag. This does not make them
+invisible to every possible record protocol. The three antisymmetric temporal
+modes have distinct eigenvalues; they are not the carrier's three-dimensional
+spatial slow band. This result reconstructs the cyclic part seen by a declared
+detector, rather than asserting that it is the full observer algebra or a
+spacetime coordinate system.
+
+Exact laws and finite sampled records have different guarantees. If every
+used correlation has error at most `epsilon`, each `r`-dimensional Hankel
+matrix has operator error at most `r epsilon`. With
+`g=1/tr(G^(-1))<=lambda_min(G)`, the generalized eigenvalues have error at
+most `2r epsilon/(g-r epsilon)` when `r epsilon<g`. This controls the finite
+pencil; a noisy near-zero Schur remainder does not prove exact rank or an
+infinite recurrence. The raw seven-mode Gram has `g` about `5.46e-23`, so
+recovering all seven lines from ordinary sample precision is poorly
+conditioned. The symmetric and antisymmetric Grams have the better certified
+floors `1.09e-12` and `1.03e-6`, respectively, without eliminating their own
+measurement requirements.
+
+A separate execution uses 2,048 independent reset histories for each of lags
+one through four. Later fields use only the actual current counters. All four
+joint-one frequencies fall within `1/16` of their exact predictions; the
+conditional simultaneous Hoeffding failure bound is below `9.01e-7` under
+the declared independent source services. The fixed seed makes the execution
+reproducible and does not certify IID randomness. These are source-model
+finite-lag checks, not experimental validation or seven-line spectroscopy.
+
+### Temporal representation on the actual source screens
+
+The same Gram construction also applies to the distinct finite-density
+[levels-three/five protocol](../observer_time_fields/REFINEMENT.md): Bernoulli
+density `1/3`, the whole twelve-port root region, and 33 incident clock seams.
+Its existing directed source evaluator and complete-output locality bounds
+enclose the root covariance at lags zero through three on either full screen.
+All outward export rounding is included before constructing the pencil.
+
+These intervals certify `G>0`, `J>0` and `G-J>0` on the two-vector space
+`span{f,Tf}`, with `f=n_0-1/3`. The lower Gram bound exceeds `0.0001655` and
+the ordered eigenvalues of the compressed transfer are enclosed near
+`0.88702` and `0.97079`, with error below `0.00002`. Thus a nontrivial local
+temporal Hilbert subspace and its positive effective transfer survive the
+actual finite-screen comparison, including the arithmetic and spatial
+budgets. These two values are **compression eigenvalues**, not claims of two
+isolated spectral lines or closure under later evolution. They do not equal
+the elementary source's seven-mode spectrum. Neither calculation establishes
+an all-level limit, a physical spacetime metric, or a laboratory duration.
+
 ### Transport through source refinement
 
 The response-recovered carrier Gram can be transported into the actual level-3
@@ -426,6 +536,7 @@ fixed. These are finite model results without an empirical comparison.
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.binary_dynamics --check model/relative_observer_geometry/binary_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.temporal_records --check model/relative_observer_geometry/temporal_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/relative_observer_geometry
 ```
 

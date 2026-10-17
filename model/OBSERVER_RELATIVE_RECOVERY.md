@@ -25,6 +25,7 @@ construction realizes those domains.
 | Repair to history action | Each native endpoint instrument has an explicit unitary completion and a dimensionless Hermitian action whose event-boundary histories reproduce the complete record-conditioned process. | The environment and records are retained. This is an exact representation of the finite instrument, with no autonomous carrier Hamiltonian or relativistic interpolation inferred. |
 | Repair to local-clock current action | Native circulating currents have exact covariance `P/5` per tick of one port and a long-count Gaussian increment action with coefficient `5/2`. | Exact finite moments use the derived local-tick Palm preparation and carrier-wide current access. Finite blocks retain non-Gaussianity and dependence; the limit is not a relativistic field action. |
 | Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. Actual host-clock records permit one-block calibration and separate validation. | The measured software timing is an implementation comparison. Traceable lab accuracy and an identification with physical proper time require independent evidence. |
+| Field records to temporal representation | Exact incident-clock correlations reconstruct a seven-mode cyclic Hilbert space on one carrier; actual source-screen correlations also certify a nontrivial two-vector temporal subspace. | The seven-mode result needs exact laws and is ill-conditioned for sampled data. Screen transfer values are compressions, not a closed two-mode dynamics or physical energy calibration. |
 
 These results make the finite construction more coherent and reduce particular
 input requirements. They do not establish that its observations admit the
@@ -62,6 +63,18 @@ state, uniformly including an untouched reference. Every subsequent common
 complete observation protocol inherits that error. The larger federation
 budgets are conservative mathematical certificates, not executed trillion-step
 preparations or a uniform continuum mixing result.
+
+The [canonical-sector field construction](observer_time_fields/REFINEMENT.md)
+removes independently prepared Bernoulli occupations from the actual-screen
+four-bit experiment. Connected native exchanges select the uniform stationary
+law within each conserved number sector. Exact hypergeometric restrictions
+give all success and timeout probabilities at occupations 5,120 of 15,360 and
+81,920 of 245,760 ports. Both screens retain a positive baseline connected
+four-field statistic and a negative statistic under feedback. Their initial
+restrictions differ and are evaluated separately; that difference is not
+hidden inside the locality error. The conserved total remains boundary data,
+and an exact sampling service prepares the executions. No finite mixing-time
+or physical preparation certificate is inferred from stationarity alone.
 
 ## Source-derived fields and actions
 
@@ -238,6 +251,17 @@ the tolerance is not a statistical confidence interval. This is a measured
 software clock correspondence with a timing control, not empirical evidence
 that native ticks represent proper time or modular evolution.
 
+The [joint incident/movement law](native_clock/CLOCK_BRIDGE.md) retains the
+zero-current incident hits omitted by a movement-only clock. At a single
+port, the long-run incident-to-moving count ratio is `33/5`, but finite counts
+are correlated. Exact marked resolvents retain two field reads and an extra
+feedback hit. A Poisson corrector gives a finite conversion-error bound from
+any initial configuration, indexed by a fixed number of carrier movements.
+Applying it to the retained host records preserves baseline acceptance and
+workload-control rejection without refitting the calibration. This explicitly
+accounts for clock conversion uncertainty; it does not calibrate the different
+root-carrier field protocol or provide a physical timing-error certificate.
+
 [Event circulation](event_circulation/README.md) derives circulation statistics
 from movement records in one continuing history. Its event-stationary Palm
 law is `mu(x)=d(x)/600`, with 30 configurations of moving degree 8 and 36 of
@@ -350,6 +374,19 @@ executions continue both saved field counters. Comparison of distinct
 observer regions and an all-level physical scaling limit remain open.
 
 ## Modular references and operational access
+
+The [temporal record reconstruction](relative_observer_geometry/README.md)
+recovers a detector's cyclic Hilbert space from exact incident-clock
+correlations. Fifteen lags determine seven visible modes on the elementary
+total-two carrier, and independent full-state propagation checks later lags.
+The positive-transfer theorem supplies the moment-class hypothesis; exact
+finite rank is not inferred from noisy samples. The seven-mode Gram is very
+ill-conditioned, whereas four finite-lag predictions have separate executed
+sampling controls. For the large-screen product-state protocol, certified
+correlations instead give a nontrivial two-vector temporal subspace with
+compressed transfer values near `0.88702` and `0.97079` and error below
+`2e-5`. Those values are not a closed two-mode spectrum. Neither construction
+identifies these Euclidean transfer energies with laboratory frequencies.
 
 The native event-conditioned Palm reference is `diag(d(x)/600)`. Ten
 orientation pairs and 46 remaining scalar blocks form the native protocol
@@ -560,6 +597,19 @@ modular descriptions and observable dynamics. No fundamental field or
 universal clock is required by that target.
 
 ## Prediction protocols and empirical status
+
+A [public Bell-record replay](predictions/BELL_RECORDS.md) gives a concrete
+boundary for the diagonal field branch. Under independent settings and local
+factorized responses without communication during the trial, every such
+classical recorded process obeys the established CHSH win bound. The authors'
+fixed selection of their deposited data gives 196 wins in 245 trials,
+`S=2.42249987046...` and a calibrated fixed-horizon null tail of
+`0.0391746435588...`, allowing device memory. The replay retains all candidate
+rows and both readout outcomes, and adopts the published setting allowance.
+It does not authenticate experimental locality, setting independence or
+stopping, and supplies no new prospective test. The conditional rejection
+concerns that local-factorized extension; the full quantum OPH observer is
+outside this null, and neither C/E selection nor native lab calibration follows.
 
 The [closed native-law protocol](closed_prediction_protocol/README.md)
 derives finite preparation and sequential error control on one continuing

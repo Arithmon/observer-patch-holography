@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 629,
+  "surface_count": 632,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1536,6 +1536,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/native_clock/CLOCK_BRIDGE.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/native_clock/COMPARISON.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1707,6 +1712,11 @@
     },
     {
       "path": "model/occupation_control/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/predictions/BELL_RECORDS.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

@@ -7,8 +7,11 @@ different probabilities when the source preparation is coherent. The settings,
 sample sizes, error allowances and decision rule are fixed before comparison.
 
 The package also audits the inherited P-dependent electromagnetic endpoint
-against published data. That retrospective calculation and the prospective
-finite-instrument protocol have different evidential roles.
+against published data and replays a [public Bell-record comparison](BELL_RECORDS.md).
+The latter constrains a local-factorized extension of the diagonal recorded
+branch, under the experiment's stated setting and locality contract. These
+retrospective calculations and the prospective finite-instrument protocol
+have different evidential roles.
 
 ## Run
 
@@ -17,6 +20,7 @@ From the repository root:
 ```sh
 # Replay the retained exact predictions, statistical checks and endpoint audit.
 python3 -m model.predictions --check model/predictions/results.json
+python3 -m model.predictions.bell_records --check model/predictions/bell_results.json
 
 # Produce an unfilled count template; the destination must not exist.
 python3 -m model.predictions --template /tmp/observer-counts.json

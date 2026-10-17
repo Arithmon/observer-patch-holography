@@ -96,17 +96,18 @@ instruments and their count-based rejection rule before any independent
 counts, and the [construction guide](model/CONSTRUCTION.md) states the
 acceptance criteria and the connections that remain to be built.
 
-One twelve-port carrier also connects spatial and clock observations:
-binary current records recover its local geometry within the same state space
-as its quantum clocks, and clock correlations distinguish the distance shells.
-An exact reversible representation preserves native repair histories, records
-and feedback. Current fluctuations have an action in one port's own tick
-count. Recorded executions also compare local ticks with a host clock,
-with separate calibration and validation blocks.
-These finite results need no federation. Joining carriers tests larger regions
-and refinement; the [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md)
-distinguishes these checks from extended relativistic spacetime and a physical
-laboratory identification.
+One twelve-port carrier connects spatial and clock observations: current
+records recover local geometry, and exact temporal correlation laws reconstruct
+a detector's cyclic Hilbert space and its visible transfer modes. Repair fixes a
+current-fluctuation action and a probability law relating incident hits to
+moving ticks. Retained executions test that conversion against a host clock.
+On larger source screens, field and feedback predictions also work at fixed
+conserved occupation, without independently prepared Bernoulli occupations.
+The [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md) separates these
+finite results from extended relativistic spacetime and a calibrated laboratory
+identification. A [public Bell-data replay](model/predictions/BELL_RECORDS.md)
+also tests the limit of interpreting the diagonal branch as a complete local
+response model; it does not test the full quantum construction.
 
 ## Mathematical results
 

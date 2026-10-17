@@ -120,11 +120,11 @@ A separate exact matrix calculation verifies all 32 adaptive field words
 with a nonuniform Bernoulli boundary. Nonstationary boundaries and remote
 field insertions give explicit nonzero discrepancies outside that theorem.
 
-The integration audit corrected three otherwise incomplete interfaces:
-every edge touching a read port must belong to the incident clock; the
-strict transfer floor must check the actual root's twofold triangle cover;
-and serialized continuation must carry both field counters and the first
-read, then advance from the new record suffix alone. Tests reject forged
+Three interface checks are required: every edge touching a read port belongs
+to the incident clock; the strict transfer floor checks the actual root's
+twofold triangle cover; and serialized continuation carries both field
+counters and the first read, then advances from the new record suffix alone.
+Tests reject forged
 memory and source ancestry on both warm and cold replay caches. The
 independent full-source execution includes both moving and zero-current
 feedback repairs and an externally forced timeout.
@@ -138,10 +138,9 @@ aliases and erased error budgets. Exported lower-mass deficits are computed
 after outward row rounding. Mathematical convergence at unbounded precision
 is distinguished from the bounded signed-integer evaluator's finite budget.
 
-The final adversarial pass found that a returned density could alias the
-default `Fraction`. Although fractions present a value interface, their
-protected numerator/denominator slots are writable: changing a returned
-density could alter subsequent default preparations. The producer snapshots
-the validated density before using or retaining it. Regression controls
-mutate both caller-supplied and returned density objects, check that other
-source laws retain their original preparation, and reject the forged law.
+Density values are detached from caller and default state. Although fractions
+present a value interface, their protected numerator/denominator slots are
+writable. The producer snapshots the validated density before using or
+retaining it. Controls mutate both caller-supplied and returned density
+objects, check that other source laws retain their original preparation,
+and reject the forged law.

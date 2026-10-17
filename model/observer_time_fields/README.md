@@ -36,6 +36,15 @@ through serialization and continuation. This is a separate preparation and
 root-carrier protocol; the fixed-total-two executions below retain their
 original meaning.
 
+The [canonical-sector extension](REFINEMENT.md#canonical-equilibrium-without-product-preparation)
+also removes independent Bernoulli preparation as a requirement. Connected
+native repairs determine the uniform equilibrium within each conserved
+number sector. Exact hypergeometric initial laws then certify all 44 records
+on both full screens, including their different finite-size correlations,
+and preserve the field/feedback witnesses. The sector total remains a
+declared conserved boundary; the calculation does not claim that repair
+selects its density or reaches exact equilibrium in a measured finite time.
+
 ## The common observer contract
 
 This is a classical recorded branch of the

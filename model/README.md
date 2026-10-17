@@ -82,7 +82,12 @@ The [host-clock attachment](native_clock/README.md) records actual native calls
 against a monotonic host counter, calibrates one block and tests disjoint
 blocks with another local clock. Its measured timing is an engineered software
 correspondence. Traceable laboratory accuracy, native proper time and modular
-phase are not inferred from the host timer.
+phase are not inferred from the host timer. The
+[joint clock bridge](native_clock/CLOCK_BRIDGE.md) derives the incident-hit
+and movement-count distribution, retaining zero currents and finite conversion
+uncertainty from any initial configuration. Reanalysis of the existing host
+records keeps the calibration unchanged: baseline intervals pass and the
+identical-record workload controls reject it.
 
 ## Native action, local clocks and effective fields
 
@@ -182,8 +187,23 @@ positive transfer to the actual levels-three/five stopped-clock comparison:
 its complete four-bit law retains a nonzero connected statistic at density
 `1/3`, and native feedback reverses that statistic's sign. Exact exclusion
 duals, complete timeout records and source executions with serialized field
-counters supply the joint field/refinement certificate. This does not
-identify a physical native unitary or an all-level continuum limit.
+counters supply the joint field/refinement certificate. Its
+[canonical-sector extension](observer_time_fields/REFINEMENT.md#canonical-equilibrium-without-product-preparation)
+removes independent product preparation: the stationary law follows from
+native repair conditional on a conserved total. At totals 5,120 and 81,920,
+the two screens retain density `1/3`, the feedback effect and their distinct
+finite-number correlations. Density selection and a preparation service
+remain inputs; no large-screen relaxation time is inferred.
+
+[Temporal field records](relative_observer_geometry/README.md#temporal-hilbert-space-reconstructed-from-field-records)
+also reconstruct a seven-dimensional cyclic positive transfer from exact
+correlations on the elementary total-two source. Its recurrence predicts
+unused lags, while finite sampled records do not certify the exact rank.
+Separately, the two actual screens with product preparation have a certified
+two-vector temporal Hilbert subspace and positive compressed transfer. Its
+two compression eigenvalues are not closed spectral modes. These results
+keep their different clock regions and preparations explicit; neither
+establishes physical time or an all-level continuum limit.
 
 [Native modular dynamics](relative_modular_dynamics/README.md) identify a
 protocol algebra preserved by both event operations and the chosen modular
@@ -255,6 +275,15 @@ or event parameters are stated individually. No public laboratory dataset
 is identified with these native protocols.
 
 ## Empirical comparisons
+
+The [public Bell-record replay](predictions/BELL_RECORDS.md) gives a concrete
+boundary for the diagonal native branch under local factorized responses.
+The deposited Hensen experiment records reproduce 245 eligible trials,
+196 wins and `S=2.42250`; the published fixed-count analysis gives a tail
+bound near `0.03917` with its setting-calibration allowance. This retrospective
+comparison rejects that local classical extension under the declared
+experimental contract. It does not reject the full quantum construction,
+select C versus E, or constitute a new prospective OPH test.
 
 The public oscillator comparisons execute a **supplied experimental model**
 through the source interface. Their agreement tests that conditional model;
