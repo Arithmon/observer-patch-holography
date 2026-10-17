@@ -7,6 +7,96 @@ They do not select a physical action or establish OPH-specific empirical
 agreement. The [source-selection guide](../SOURCE_SELECTION.md) states the
 corresponding physical obligations.
 
+## Repair and consensus in an empirical comparison
+
+The scored oscillator programs compile a supplied preparation, Hamiltonian,
+environment and detector. Their predictions do not take a native C/E law
+argument. Executing the same program with local history repair can test that
+solver's implementation, but cannot by itself identify a microscopic repair
+instrument. Three controls make the boundary executable.
+
+### What a current-controlled work observer can distinguish
+
+[rule_observability.py](rule_observability.py) checks the actual native maps,
+including every matrix unit of the full 78-state carrier. For a common
+coin/current record, each C Kraus map is a partial injection of load states;
+E splits that same map by an additional contrast label. Extracting the native
+diagonal blocks therefore gives the same unnormalized work/reference state
+for both candidates. This is an operator identity, not an assumption that
+the input is classical or uncorrelated.
+
+Work-only instruments commute with that block extraction. Induction extends
+the equality through any finite protocol whose seam choices, work controls
+and stopping decisions use only common records. Initial native/work/reference
+entanglement is allowed. The complete common-record and work/reference output
+laws agree if the terminal native coherence remains inaccessible. This
+includes work feedback selecting later native seams; merely adding that loop
+cannot make a work-only detector select C or E.
+
+The contract excludes coherent native/work coupling, native coherence reads,
+coherent native recovery and feedback using E's extra label. The existing
+native interference read is a negative control: it gives `5/8` versus `3/8`
+and falls outside the work-only interface. The
+[retained audit](rule_observability_results.json) does not assign a likelihood
+to laboratory records with an unidentified native apparatus map.
+
+### Completing the supplied apparatus history locally
+
+[consensus_observability.py](consensus_observability.py) applies the existing
+[finite acyclic history-repair argument](../common_source/HISTORY_REPAIR.md)
+to unnormalized density operators and the actual anharmonic program. The
+compatibility equations are fixed before solving:
+
+```text
+rho_root = prepared_state
+rho_child = declared_CP_branch(rho_parent).
+```
+
+Each repair reads one parent and writes one child. A fair covering schedule
+recovers the unique compatible branching law; a topological pass suffices.
+Uniqueness concerns that law, not a selected random outcome. Intermediate
+solver assignments are candidate histories, not altered experimental records.
+No measured response or solved terminal state enters the local update.
+
+The [retained execution](consensus_observability_results.json) repairs all
+130 existing primary endpoints, retaining all four spin/detector outcomes at
+each. Each endpoint is a separate prepared experiment; shared unread computed
+prefixes do not turn these into repeated measurements of one evolving state.
+The maximum full output-matrix discrepancy from chronological execution is
+below `1.8e-14`. Scoring the same 125 positive-duration observations gives
+RMSE `0.2876427868` in the declared position-estimator units, with no new fit.
+This is the existing empirical comparison through another solver, not an
+independent dataset or additional empirical confirmation.
+
+At the existing case-a `0.4 ms` endpoint, forward, reverse and shuffled
+covering orders give the same four-outcome law; an unfair schedule does not
+close. The primary and harmonic-control programs both satisfy every
+compatibility equation, but their output laws differ by total variation
+`0.16139288`. Agreement therefore supplies no criterion for choosing the action.
+This is local completion on the supplied event graph, not an implementation
+of the full observer consensus tower or a physical repair-clock calibration.
+Its edges use the source-executed apparatus maps; individual native C/E seam
+events have not been shown to implement the global history solver.
+
+### The laboratory dephasing is not a parity-record rate
+
+The experiment's [Appendix D](https://arxiv.org/html/2603.04744v1) supplies
+number dephasing with `L=sqrt(18 s^-1)*N`. Its decay rates on occupation
+coherences `(0,1)`, `(1,2)` and `(0,2)` are `9`, `9` and `36` per second.
+An extra occupation-parity record leaves the last coherence unchanged.
+Identifying these two noise mechanisms would change the observation model.
+
+[dephasing_observability.py](dephasing_observability.py) checks a stronger
+restriction: nonnegative mixtures of fixed occupation-diagonal binary
+pinching generators obey `Gamma_02 <= Gamma_01 + Gamma_12`. Number diffusion
+violates this inequality. This excludes that direct generator identification,
+including arbitrary positive rates. The smallest possible maximum error among
+these three rates is exactly `6 s^-1`, attained by `(15,15,30)`. This is a
+generator comparison, not a statistical error bar. It does not exclude weak measurements,
+noncommuting operations, hidden-state reductions or an effective emergence
+of number diffusion. The [exact control](dephasing_observability_results.json)
+does not reject either complete native rule using the oscillator data.
+
 ## Action and geometry ambiguities
 
 The compressed four-level calibration is exactly insensitive to
@@ -164,6 +254,9 @@ current finite construction and remaining compatibility obligations.
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.identifiability_checks.architecture_counterexamples
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.identifiability_checks.empirical_probe
+python -m model.identifiability_checks.rule_observability --check model/identifiability_checks/rule_observability_results.json
+python -m model.identifiability_checks.dephasing_observability --check model/identifiability_checks/dephasing_observability_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.identifiability_checks.consensus_observability --check model/identifiability_checks/consensus_observability_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/identifiability_checks
 ```
 

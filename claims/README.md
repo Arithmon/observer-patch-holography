@@ -171,6 +171,15 @@ bit. Its executed trial counts are synthetic, and coherent preparation,
 readout and load-to-code identification remain declared inputs. It supplies no
 independent physical data and changes no canonical premise disposition.
 
+The [repair-observability controls](../model/identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison)
+extend that boundary to correlated native/work inputs and common-record
+feedback: work-only readouts cannot distinguish C/E under the stated access
+contract. Local completion of the supplied anharmonic history reproduces its
+conditional observation law; it does not select the action or instantiate the
+full consensus tower. The exact number-dephasing obstruction excludes a
+specified binary-recording identification, not a native candidate. These
+controls retain the empirical and physical-identification statuses.
+
 The consequences in this table are registered conclusions, not extra input
 premises to delete. Stationarity of the uniform binary distribution does not
 derive its preparation. Setting the thermal scale parameter to one is a

@@ -415,3 +415,15 @@ hidden data, reference correlations and timeout outcomes. Successful finite
 execution establishes those conditional laws; choosing the physically
 realized source requires a justified selection argument or independent
 discriminating observations.
+
+The [repair-observability controls](identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison)
+specify an interface where adding native record feedback cannot select
+C/E: native diagonal blocks intertwine both rules, while the work detector
+accesses only those blocks and the common records. This includes correlated
+inputs and work-record-controlled seam choices. Coherent native access is
+outside that equivalence and needs its own laboratory identification.
+Fair local completion of a supplied apparatus history preserves its detector
+law but does not select its action. The published oscillator number-dephasing
+generator also cannot be equated with a positive mixture of fixed
+occupation-diagonal binary recording generators. These restrictions leave
+the physical interpretation premise open.

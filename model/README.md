@@ -330,8 +330,11 @@ provides explicit calibration and sampling bounds for future counts.
 [Preparation and detector probes](empirical_diagnostics/README.md) identify
 measurements that distinguish otherwise unresolved preparations.
 [Identifiability checks](identifiability_checks/README.md) retain calibration
-and geometry counterexamples and empirical controls. Software fixtures are
-labelled separately from public observations.
+and geometry counterexamples and empirical controls. They also test local
+history completion of the supplied apparatus and show why common-record-only
+feedback cannot distinguish C/E at a work detector. The oscillator's supplied
+number dephasing cannot be identified directly with extra parity recording.
+Software fixtures are labelled separately from public observations.
 
 ## Supplied field models and reconstruction tests
 

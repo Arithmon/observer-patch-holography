@@ -152,6 +152,13 @@ Sources:
 - [Exact binary arc and phase countercontrol receipt](../model/observer/results/coherent_continuation.json).
 - [Three primitive selection obligations and interface-equivalence tests](../model/SOURCE_SELECTION.md).
 
+The [work-observer identifiability control](../model/identifiability_checks/README.md#what-a-current-controlled-work-observer-can-distinguish)
+retains exact native diagonal-block equivalence for C/E, including initial
+native/work/reference correlations and common-record feedback in both
+directions. Work-only instruments cannot expose the discarded native
+coherences. This narrows the physical comparison interface; it does not
+discharge repair-law selection or the native-to-laboratory identification.
+
 <a id="re-02"></a>
 
 ### RE-02: Confluence, acceptance and protected observations
@@ -176,6 +183,8 @@ Sources:
 - [Exact checkpoint and record-controlled instrument adapters](../model/common_source/records.py).
 - [Fixed-history compatibility, local residual descent and fair-schedule proof](../model/common_source/HISTORY_REPAIR.md).
 - [Local constraints using the actual source operators and complete quantum outputs](../model/common_source/history_repair.py).
+- [Local density-history completion of the supplied anharmonic apparatus and its action control](../model/identifiability_checks/consensus_observability.py).
+- [Native/work observational equivalence and the separate number-dephasing obstruction](../model/identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison).
 - [Complete-record recovery, encoded-qubit countercontrol and exact identifying schedules](../model/observer/RECORD_RECOVERY.md).
 - [Source-bound exact history, recovery and stopping replay](../model/observer/results/record_recovery.json).
 - [Complete coherent native/work composition and retained physical boundaries](../model/common_source/QUANTUM_NATIVE.md).

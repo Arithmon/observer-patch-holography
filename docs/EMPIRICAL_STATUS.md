@@ -106,6 +106,39 @@ therefore distinguish the C/E instrument hypotheses only with the relevant
 ancillary/environment records and errors fixed; unrestricted unmodelled
 parity recording can make C look like E.
 
+### Does the empirical pipeline test repair and consensus?
+
+The current oscillator prediction functions have no C/E selector: they execute
+source-compiled controls for a supplied apparatus. Their numerical agreement
+tests that conditional preparation/dynamics/readout model. It does not show
+that changing the native repair instrument would spoil the agreement.
+
+The [repair-observability audit](../model/identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison)
+also excludes a simple attempt to close this gap. Actual C/E operations have
+the same native diagonal-block evolution, even with an entangled work/reference
+input. Common-record-controlled work and work-record-controlled seam choices
+preserve this equality. A detector restricted to work/reference and the common
+records cannot distinguish the two laws. Coherent native access or a different
+coupling must be identified physically before the native distinction reaches
+that detector; adding more of the same classical feedback does not suffice.
+
+The same audit executes local compatibility repair for all 130 existing
+anharmonic endpoints, retaining all four outcomes per endpoint and reproducing
+the existing 125-observation RMSE `0.2876427868`. Preparation calibration and
+apparatus maps are unchanged. Fair orders reproduce the complete chronological
+output law; an unfair order need not close. A changed supplied action can also close
+while giving different observations. This extends the implementation check
+to local history completion, not to autonomous meaning selection or the full
+consensus tower. Native C/E seam events have not been shown to implement the
+global history solver. Its update count is not the apparatus's duration.
+
+Finally, the supplied oscillator number-dephasing channel is not E's extra
+parity recording. An exact three-level rate inequality rules out identifying
+it with positive mixtures of fixed occupation-diagonal binary pinching
+generators. These are finite observational-equivalence and channel-mapping
+results. They add no acquired dataset, new empirical success or native-rule
+verdict to the comparisons above.
+
 ## A discrimination experiment that is ready mathematically
 
 The [fixed interference protocol](../model/predictions/README.md) uses one

@@ -126,6 +126,9 @@ REPLAYS = (
     ("model.common_source.native_fields", None, "model/common_source/native_fields_results.json"),
     ("model.observer.record_recovery_receipt", None, "model/observer/results/record_recovery.json"),
     ("model.clocked_common_observer", None, "model/clocked_common_observer/results.json"),
+    ("model.identifiability_checks.rule_observability", None, "model/identifiability_checks/rule_observability_results.json"),
+    ("model.identifiability_checks.dephasing_observability", None, "model/identifiability_checks/dephasing_observability_results.json"),
+    ("model.identifiability_checks.consensus_observability", None, "model/identifiability_checks/consensus_observability_results.json"),
 )
 
 
