@@ -12,6 +12,14 @@ effective interpretations. It does not require a fundamental spacetime object.
 It does require identifying the same preparation, intervention and readout in
 the model and the experiment before comparing their probabilities.
 
+The strongest integrated result is conditional: **local history repair
+computes the same complete detector laws as the supplied oscillator apparatus**
+and reproduces its existing comparison with measurements. This checks the
+connection between that compatibility solver and the empirical readout. The
+apparatus action, preparation calibration and detector map remain inputs.
+Native C/E selection needs a different, physically identified observation
+interface; common-record feedback alone cannot supply it.
+
 ## How many comparisons?
 
 There are **three broad external comparison families in the executable-model
@@ -113,8 +121,8 @@ source-compiled controls for a supplied apparatus. Their numerical agreement
 tests that conditional preparation/dynamics/readout model. It does not show
 that changing the native repair instrument would spoil the agreement.
 
-The [repair-observability audit](../model/identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison)
-also excludes a simple attempt to close this gap. Actual C/E operations have
+The [repair-observability checks](../model/identifiability_checks/README.md#repair-and-consensus-in-an-empirical-comparison)
+also exclude a simple attempt to close this gap. Actual C/E operations have
 the same native diagonal-block evolution, even with an entangled work/reference
 input. Common-record-controlled work and work-record-controlled seam choices
 preserve this equality. A detector restricted to work/reference and the common
@@ -122,7 +130,14 @@ records cannot distinguish the two laws. Coherent native access or a different
 coupling must be identified physically before the native distinction reaches
 that detector; adding more of the same classical feedback does not suffice.
 
-The same audit executes local compatibility repair for all 130 existing
+The exact replay checks every native matrix unit on all 30 seams
+(`182,520` cases), plus 504 complete adaptive record histories, including
+stopping, zero-probability outcomes and an untouched reference. The retained
+native quantum outputs differ even when every accessible work/reference
+output agrees. Thus the equality is a proved limitation of this observation
+interface, not evidence that the two instruments are identical.
+
+The local compatibility solver executes repair for all 130 existing
 anharmonic endpoints, retaining all four outcomes per endpoint and reproducing
 the existing 125-observation RMSE `0.2876427868`. Preparation calibration and
 apparatus maps are unchanged. Fair orders reproduce the complete chronological
@@ -131,6 +146,20 @@ while giving different observations. This extends the implementation check
 to local history completion, not to autonomous meaning selection or the full
 consensus tower. Native C/E seam events have not been shown to implement the
 global history solver. Its update count is not the apparatus's duration.
+The maximum full output-density discrepancy against the separate chronological
+executor is `1.79e-14`. This is a numerical implementation check; it does not
+reduce the empirical RMSE or certify an apparatus error budget. At the fixed
+schedule-control endpoint, changing the supplied action changes the complete
+four-outcome law by total variation `0.16139288`, although both histories
+satisfy their respective local constraints. Agreement alone does not select
+the action.
+
+| Part of the model | What is tested | What is not established |
+| --- | --- | --- |
+| Supplied oscillator preparation, dynamics and detector | Numerical predictions compared with the reserved measurements | Derivation of those apparatus inputs from native repair |
+| Local history completion | Complete endpoint laws, fair-schedule agreement and unfinished-schedule controls | Full observer-consensus protocol or native implementation of the global solver |
+| Native C/E observation and feedback | Exact equality at the common-record/work interface; different coherent native outputs | A matched laboratory likelihood that distinguishes C/E |
+| Physical repair-law identification | A defined coherent discrimination experiment and explicit channel-mapping exclusions | An empirical winner among the native rules |
 
 Finally, the supplied oscillator number-dephasing channel is not E's extra
 parity recording. An exact three-level rate inequality rules out identifying

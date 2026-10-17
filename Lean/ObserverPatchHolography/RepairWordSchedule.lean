@@ -4,11 +4,11 @@ import Mathlib.Probability.Distributions.Uniform
 /-!
 # Finite repair-word schedule selected by information projection
 
-This file isolates one conditional finite consequence of the proposed A1-R
-and A2-R clauses in `docs/CANONICAL_REPAIR_LAW_RFC.md`.
+This file proves the conditional finite selection result described in
+`docs/AXIOM_REFERENCE.md`, under explicit event and temporal-domain inputs.
 
-Suppose A1-R has produced the complete, quotient-deduplicated type `Move` of
-primitive observer-visible repair attempts. Suppose A2-R has proved temporal
+Suppose the source supplies the complete, quotient-deduplicated type `Move` of
+primitive observer-visible repair attempts, together with temporal
 completeness in the strong finite form that every probability law on every
 word space `Fin k → Move` is feasible. If A3 minimizes Kullback-Leibler
 divergence to source counting measure on that full simplex, Gibbs' equality
@@ -22,8 +22,7 @@ cannot change the law because they are absent from the quotient event type.
 These are ordinary conditional theorems. They do not prove that the current
 three-axiom basis supplies a complete move grammar, that all finite words are
 temporally admissible, or that source counting is the A3 reference. They do
-not adopt A1-R or A2-R, identify a physical clock, or prove refinement
-naturality.
+not add an axiom, identify a physical clock, or prove refinement naturality.
 -/
 
 namespace ObserverPatchHolography.RepairWordSchedule
@@ -56,8 +55,8 @@ instance discreteMeasure_isProbabilityMeasure {α : Type*} (p : PMF α) :
   change @IsProbabilityMeasure α ⊤ (@PMF.toMeasure α ⊤ p)
   infer_instance
 
-/-- A3's finite-word optimization packet after A1-R has fixed the complete
-event identities and A2-R has certified the full word simplex. The universal
+/-- A3's finite-word optimization packet with complete event identities
+and the full word simplex supplied as inputs. The universal
 quantifier in `selected_minimal` is the load-bearing temporal-freedom premise:
 there is no state-dependent deletion or cross-position coupling left in the
 feasible family. -/

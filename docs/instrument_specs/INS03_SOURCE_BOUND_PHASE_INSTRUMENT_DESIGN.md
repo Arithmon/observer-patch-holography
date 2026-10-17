@@ -1,26 +1,23 @@
 # INS-03: source-bound phase-sensitive readout instrument (design)
 
-This is an unfrozen instrument
-design, not a reverse-engineering-reality result document and not a simulator
-receipt.
+**INS-03 is `SPECIFIED` and unfrozen.** The
+[instrument register](../registers/OBSERVATION_LEDGER_V3.md#ins-03-ol-c5-static-phase-fixture-validator-and-future-source-bound-readout-design)
+records an implemented static conformance checker and this mutable design for
+a future authenticated source readout. No seed, freeze event, producer custody,
+raw capture or scientific verdict is registered. OL-C5 remains `partial`.
 
-Status: design only. This document specifies an instrument; it arms none. No
-seed is drawn, no freeze event exists, no run is authorized, no register row
-is written, and no ledger or premise row changes. Execution requires an
-immutable preregistration, a target-blind freeze, and explicit authorization
-under the owning simulation-instrument lane
-[#737](https://github.com/FloatingPragma/observer-patch-holography/issues/737).
+The static v1 checker returns `STATIC_COMMITTED_FIXTURE_CONFORMANT` for its
+valid synthetic fixture and `PRODUCER_AUTHENTICATION_UNIMPLEMENTED` for every
+producer-provenance claim. Neither verdict is `REPLICATED` or `FAILED` and
+neither promotes OL-C5. The prospective clauses below require a separately
+frozen authenticated-v2 preregistration; no numeric placeholder is bound here.
+They do not authorize execution.
 
-Sources of record for every statement below: the deep audit
-the 2026-08-20 post-r2020 deep audit (findings F1, F2, F4,
-the fastest-discriminating-route list, and the residual-limitations list), the
-V3.17 post-r2020 deep-audit correction, the RER Lean modules and
-premise-register rows
-cited by name in each section, the simulator surfaces
-`oph_fpe/quantum/phase_operation.py`, `oph_fpe/qm_observer/DESIGN.md`, and
-`oph_fpe/dynamics/source_operator_inventory.py`, and the campaign record
-the 2026-08-20 simulator alignment record. RER content is read at committed head
-`609f88ad`.
+The interface uses the Lean modules and premise-register rows named below,
+and the simulator surfaces `oph_fpe/quantum/phase_operation.py`,
+`oph_fpe/qm_observer/DESIGN.md`, and
+`oph_fpe/dynamics/source_operator_inventory.py`. The custody section identifies
+the source revision against which this design was specified.
 
 ## A. Identity and scope
 
@@ -34,16 +31,16 @@ the 2026-08-20 simulator alignment record. RER content is read at committed head
   `docs/registers/OBSERVATION_LEDGER_V3.md`). The register binds one instrument to
   exactly one ledger row; INS-03 binds OL-C5 and does not enter the
   OL-A1 lineage.
-- Register status a later step would record: `SPECIFIED`, which the register
-  policy defines as mutable design with no freeze artifacts, no freeze time,
-  and no verdict receipts. This document creates no such row.
-- Lineage predecessors on the register are INS-01 (`FAILED`, controlling for
-  OL-A1) and INS-02 (`SPECIFIED`). INS-03 shares their format and their
-  discipline and supersedes neither.
+- Register status: `SPECIFIED`, a mutable design with no freeze artifacts,
+  no freeze time and no verdict receipts. Its static checker has no scientific
+  promotion authority.
+- INS-03 has no lineage predecessor. INS-01 (`FAILED`, controlling for OL-A1)
+  and INS-02 (`SPECIFIED`) belong to the separate OL-A1 line. INS-03 supersedes
+  neither.
 
 ### Division of labour with the PR-64 Lean instrument
 
-A separate session builds the PR-64 completely-positive instrument in Lean.
+The PR-64 completely-positive instrument is a separate Lean construction.
 INS-03 does not duplicate that construction and states no channel theorem.
 INS-03 specifies the simulator-side export that the PR-64 instrument's checks
 consume. The export contract below is the whole interface obligation of this

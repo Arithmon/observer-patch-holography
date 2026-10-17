@@ -1,41 +1,41 @@
 # Finite-state entropy and the role of sector labels
 
-The [Gibbs response audit](../maxent/GIBBS_RESPONSE_AUDIT.md) distinguishes
+The [Gibbs response contract](../maxent/GIBBS_RESPONSE_AUDIT.md) distinguishes
 resolved binary64 states from resolved weighted responses. State producers
 conservatively reject subnormal thermal populations, including joint sector
 weights. The public MaxEnt covariance retains populations and original
 observable entries in multiprecision until the final response is rounded.
 
-This shared implementation replaces duplicated density-matrix, entropy,
-partial-trace and modular-splitting operations in the MaxEnt, collar-alignment,
+This shared implementation supplies density-matrix, entropy,
+partial-trace and modular-splitting operations to the MaxEnt, collar-alignment,
 null-net and Einstein-closure evidence. It uses natural logarithms and the
 ordinary matrix trace. It implements finite numerical diagnostics, not a
 physical state selection or a proof of exact rank from approximate matrices.
 
-The [entropy-response audit](../geometry/ENTROPY_FIRST_LAW_AUDIT.md) separates
+The [entropy-response identities](../geometry/ENTROPY_FIRST_LAW_AUDIT.md) separate
 tangent first laws from finite entropy changes with relative-entropy
 remainders. `entropy_response` tests independently supplied generators on
 all normalized tangents, supplies central probability-transfer witnesses,
 and computes Gibbs tangent slopes separately from finite secants.
 
-The follow-up [algebra and repair audit](ALGEBRAS_AND_REPAIR.md) fixes regional
-separation and basis normalization, replaces dense standardness matrices with
-reduced spectra, and classifies exactly when finite relative-entropy
-completion is an affine quantum repair. It includes independent recognition
+The [algebra and repair results](ALGEBRAS_AND_REPAIR.md) give regional
+separation and basis normalization through reduced spectra, and classify
+exactly when finite relative-entropy completion is an affine quantum repair.
+They include independent recognition
 of supplied conditional expectations and a noncommuting repair convergence
-proof. Its [operator-span follow-up](ALGEBRAS_AND_REPAIR.md#preserve-the-supplied-span-before-computing-its-action)
-repairs false separation from ill-conditioned basis charts and retains exact
+proof. The [operator-span contract](ALGEBRAS_AND_REPAIR.md#preserve-the-supplied-span-before-computing-its-action)
+distinguishes exact annihilators from ill-conditioned basis artifacts and retains exact
 source intersections before numerical conversion. Independent original-input
 controls also cover valid complex algebras and extreme basis units.
 
-The [recovery audit](RECOVERY_EVIDENCE.md#source-support-square-roots-and-reported-distances)
+The [recovery evidence](RECOVERY_EVIDENCE.md#source-support-square-roots-and-reported-distances)
 preserves original-entry support in square roots and state fidelity, and checks
 Petz action beyond trace preservation. These APIs require exact positivity of
 the supplied Hermitian average; unresolved numerical functions raise instead
 of clipping a spectrum or manufacturing a recovery score. Stage 1 preserves
 independent CMI and acquired counts when recovery is numerically unavailable.
 
-The [fixed-point audit](REPAIR_FIXED_POINTS.md) prevents almost coincident
+The [fixed-point and relaxation results](REPAIR_FIXED_POINTS.md) prevent almost coincident
 repair algebras from manufacturing protected observables and an artificially
 large relaxation gap. Intersections use exact retained input spans; channel
 and gap calculations remain numerical diagnostics. The note derives the
@@ -50,19 +50,19 @@ applies to defect magnitudes divided by it. Unresolved relative gaps, lost
 positive rates, and unrepresentable rescaled generators still raise; a small
 absolute rate alone does not imply poor numerical resolution.
 
-## Audit findings and corrections
+<a id="audit-findings-and-corrections"></a>
 
-The audit used main commit `0f7aa44259f53e4f5a1f4cd4904758039975755e`.
+## Input contracts and independent controls
 
-| Finding in the previous implementation | Correction and retained regression |
+| Input or mathematical distinction | Required implementation behavior |
 | --- | --- |
-| `markov_chain_state(2,2,2,2,[.5,.5],seed=3)` returned an ordinary mixture with `I(A:C\|B)=0.04714088603973687` nats, despite claiming a multi-sector Markov state. The purported central label was absent. | Construct the direct sum and retain its label in the collar. The corrected state has zero CMI to numerical precision. Tracing out that label reproduces the old non-Markov control. |
-| Empty or zero-weight block families could report perfect alignment; NaNs and negative states were not validated. | Require a nonempty normalized block family, finite normalized positive states, and consistent dimensions before any criterion is evaluated. |
-| `takesaki_defect(...,n_probes=0)` returned zero for a nonaligned state whose modular defect exceeded 2.12. Random probes could not justify the claimed all-observable criterion. | Remove the sampling arguments. Test every matrix unit of the left algebra; linearity supplies completeness. |
-| Relative entropy of orthogonal pure states was reported as `690.7755278982137` rather than infinity. A negative density also returned a finite result. | Validate the states and preserve reference zeros. Detected support escape returns infinity. Full-algebra modular logarithms reject singular states. |
-| Gibbs construction silently ignored unmatched constraints, multipliers or central-sector energies; the projection routine could return unconverged parameters or nonunique multipliers. | Validate complete pairings, independent constraints modulo identity, faithful targets, and convergence. Use one common Gibbs energy shift across sectors and reject spectral underflow instead of flooring it. |
+| A multi-sector Markov state requires its central label in the conditioning system. | Construct a labelled direct sum. Its CMI is zero to numerical precision; erasing the label need not preserve that conclusion. |
+| Empty or zero-weight block families, NaNs, negative states and inconsistent dimensions do not establish alignment. | Require a nonempty normalized block family and finite normalized positive states before evaluating the criterion. |
+| An all-observable modular-invariance criterion cannot be certified by random probes. | Test every matrix unit of the left algebra; linearity supplies completeness. |
+| Orthogonal pure states have infinite relative entropy. A negative density is invalid. | Validate the states and preserve reference zeros. Detected support escape returns infinity; full-algebra modular logarithms reject singular states. |
+| Gibbs constraints, multipliers and central-sector energies define one complete optimization problem. | Validate complete pairings, independence modulo identity, faithful targets and convergence. Use one common energy shift across sectors and reject spectral underflow instead of flooring it. |
 
-Positive eigenvalues are no longer discarded below `1e-14` or replaced by a
+Positive eigenvalues are not discarded below `1e-14` or replaced by a
 `1e-300` floor. The shared `1e-12` tolerance only admits floating-point error
 in Hermiticity, normalization and negative eigenvalues. Accepted Hermiticity
 roundoff is symmetrized and negative spectral roundoff is set to zero for
@@ -76,58 +76,55 @@ spectrum directly; explicit positive entries as small as `1e-310` remain
 supported. The exact checks certify these supplied entries, not the ranks
 of arbitrary approximate or physically uncertain matrices.
 
-The follow-up audit of this refactor retains four additional controls:
+Additional controls separate spectral support from numerical resolution:
 
 - A real Hadamard change of basis applied to spectra `(.5,.25,.25,0)` and
   `(.25,.5,.25,0)` preserves common support and gives `D=.25*log(2)`.
-  Kernel roundoff previously returned infinity. The routine now returns the
+  Kernel roundoff cannot justify infinity. The routine returns the
   correct value when support is resolved or raises an explicit support error.
   A companion state with mass in the missing direction must give infinity
   or the same explicit uncertainty error, never a finite divergence.
-- A smallest positive binary64 sector weight multiplying `I_2/2` vanished.
-  Direct sums now reject component underflow; explicit zero sectors and
+- A smallest positive binary64 sector weight multiplying `I_2/2` underflows.
+  Direct sums reject component underflow; explicit zero sectors and
   representable tiny sectors remain valid.
-- Complex central energies or inverse temperatures produced complex weights
-  that were silently cast to real sector probabilities. The scalar validators
-  now reject complex, Boolean, nonfinite and nonscalar inputs, including
-  convergence and alignment tolerances.
+- Complex central energies or inverse temperatures cannot supply real sector
+  probabilities. The scalar validators reject complex, Boolean, nonfinite and
+  nonscalar inputs, including convergence and alignment tolerances.
 - For `H=30 X`, both Gibbs eigenweights are positive, but reconstruction of
   the dense matrix erases the smaller direction. Gibbs states and sector
   blocks validate the reconstructed faithful state. Diagonal controls
   preserve the same small probability when representable. The public
   Duhamel response instead evaluates the original thermal family before
   output rounding; its resolved covariance can be returned without a
-  representable binary64 state. See the [response audit](../maxent/GIBBS_RESPONSE_AUDIT.md).
+  representable binary64 state. See the [response contract](../maxent/GIBBS_RESPONSE_AUDIT.md).
 
 ## Preserve the source before evaluating entropy responses
 
-An audit of `a94a3ac3` found two losses that surviving positive populations
-and a correct derivative ratio did not detect. They affect the supplied
-finite objective and its response, without changing A3 or selecting a
-physical law.
+Surviving positive populations and a correct derivative ratio do not suffice
+to validate a finite entropy response. The source entries, their small
+differences and the final contractions each require their own checks.
 
 For `T = diag(0, 2^-60, 1)` and multiplier 700, subtracting the binary64
-mean from T erased the low-energy doublet splitting. The entropy response
-reported variance `4.929838271879886e-305`; the original scalar partition
-function gives `1.88079096131566e-37`. Both derivative components were wrong
-by the same factor, so `dS/dt = 700` concealed the defect. All three thermal
-populations are normal binary64 values. This is distinct from the subnormal
-population error corrected after review of #1048.
+mean from T can erase the low-energy doublet splitting. The resulting
+variance is `4.929838271879886e-305`, whereas the original scalar partition
+function gives `1.88079096131566e-37`. Both derivative components change by
+the same factor, so `dS/dt = 700` does not detect the error. All three thermal
+populations are normal binary64 values; no population underflow is required.
 
 The entropy-response API shares the original-input spectral machinery with
 the MaxEnt covariance calculation. Supplied entries, energy differences,
-populations and response contractions remain in private multiprecision
+populations and response contractions remain in multiprecision
 arithmetic until output conversion. The returned state also retains small
 real or imaginary coherences from the source eigenprojectors. For this API,
 subnormal populations and unresolved faithful output states are refused;
 the covariance-only API has its separately documented, broader domain.
 Repeated-precision agreement is a numerical control, not an interval proof.
 
-A separate loss occurred in relative entropy. Set `p=2^-40`, `t=2^-538`,
+Relative entropy has a separate range-sensitive control. Set `p=2^-40`, `t=2^-538`,
 `rho=[[p,t],[t,1-p]]` and `sigma=diag(p,1-p)`. These supplied matrices have
 exact trace one and positive determinants. Their divergence rounds to
 `3.5e-323`, but squaring a spectral overlap before multiplying its logarithmic
-factor produced zero. A correct support decision did not prevent this
+factor can produce zero. A correct support decision does not prevent this
 arithmetic error.
 
 Range-sensitive contractions trigger reevaluation from the original
@@ -140,8 +137,8 @@ on the ordinary faithful-reference path; exact positivity is required when
 source-level refinement or support checks are needed. These checks do not certify
 arbitrary floating-point eigensolves. Cancellation against an accepted trace
 offset also triggers reevaluation: `rho=(.5-t^2) I+t X`, `t=2^-27`, against
-`I/2` has positive divergence `2.2597578014143572e-32`; the earlier fast
-calculation returned a negative value. Exact unequal-state cancellations
+`I/2` has positive divergence `2.2597578014143572e-32`; a negative numerical
+value cannot establish equality. Exact unequal-state cancellations
 that the bounded numerical refinement cannot resolve raise explicitly.
 
 Support is checked before classifying a divergence as infinite. For
@@ -154,12 +151,12 @@ Exact kernel containment also retains genuine complex singular examples.
 The finite-balance consumer retains original Hermitian differences for its
 trace and modular pairings as well as its divergence. Otherwise accepted
 one-sided subnormal entries can disappear during symmetrization before the
-repaired calculation is called. A reference whose averaging loses component
+divergence calculation is called. A reference whose averaging loses component
 precision is refused before taking its logarithm; ordinary Hermitian
 roundoff remains admissible. When cancellation makes `D-Tr(rho-sigma)`
 unreliable, that remainder is evaluated before either term is rounded. For
 `rho=(.5+3*2^-53) I` against `I/2`, subtracting correctly rounded terms had
-understated the remainder by one ninth. The logarithm remains a numerical
+understates the remainder by one ninth. The logarithm remains a numerical
 calculation.
 
 Near a subnormal rounding midpoint, two precision levels can agree while
@@ -170,18 +167,16 @@ gate is a numerical safeguard, not a general correct-rounding certificate.
 The relative-entropy fallback uses the same midpoint gate and can increase
 precision to resolve the side. Rational conversion of the final MP value
 avoids a second rounding during conversion to a binary64 subnormal.
-Two high-precision eigensolves increase runtime materially: a warm dimension-12
-response took about 0.48 seconds in the audit environment, compared with
-0.00073 seconds for the previous binary64 calculation. This API serves small
-finite diagnostics, not a cost-equivalent replacement for large dense solves.
+Two high-precision eigensolves increase runtime materially. This API serves
+small finite diagnostics, not a cost-equivalent replacement for large dense solves.
 
 The retained controls independently evaluate scalar partition derivatives
 and qubit characteristic roots. They check variance and both derivatives,
 complex state coherences, opposite signs, changed energy units, exact zeros,
 support boundaries and lost-output refusals. Public MaxEnt and serialized
 finite-entropy-balance consumers exercise the same defects. Existing fixed
-receipt producers remain subject to their numerical tolerances; no frozen
-experimental data or physical claim is promoted by these corrections.
+receipt producers remain subject to their numerical tolerances. These numerical
+checks do not promote an experimental or physical claim.
 
 ## One normal form for the finite A3 objective
 
@@ -261,34 +256,34 @@ and `A=J=C=1`. With J in the collar, `I(A:C|J)=0`. After J is erased,
 difference. In multiple sectors, modular splitting must likewise be tested
 inside each central block; zero CMI does not imply an unconditioned product
 across one globally chosen left/right tensor cut. The numerical cross-lane
-test verifies both assertions on the same corrected state.
+test verifies both assertions on the same labelled state.
 
 The API consequence is explicit: `markov_chain_state(da,dl,dr,dc,weights)`
-now returns tensor dimensions `(da,len(weights)*dl,dr,dc)`, ordered
+returns tensor dimensions `(da,len(weights)*dl,dr,dc)`, ordered
 `A,(sector,bL),bR,C`. The single-sector interface is unchanged. An application
 without access to that sector label must use the erased state and test its
 actual CMI; it cannot assume the label exists as a physical repair.
 
 ## Downstream scope and reproduction
 
-| Existing evidence | Audit outcome |
+| Consumer | Current contract |
 | --- | --- |
-| Null-net standardness, #524 | Fixes the general multi-sector constructor. The published single-sector modular-locality and nonlocal-Gibbs controls still pass. |
-| Collar alignment, #543 | Replaces sampled commutators with a complete basis and rejects vacuous/invalid families. The Bell counterexample remains Markov but not aligned. |
-| MaxEnt closure, #539 | Preserves the multiplier counts, nonclosure example and exact product-subfamily control while enforcing their input and convergence premises. The live receipt is regenerated; its numerical changes are at roundoff scale. |
-| Einstein closure, #526–#528/#503/#578 | Reuses the same central-label entropy identity. The first-law and normalization-countermodel tests still pass. |
+| Null-net standardness | Retains the central label in multi-sector states; single-sector modular-locality and nonlocal-Gibbs controls have their declared domains. |
+| Collar alignment | Uses a complete basis and rejects vacuous or invalid families. The Bell counterexample is Markov but not aligned. |
+| MaxEnt closure | Enforces input and convergence premises for the multiplier counts, nonclosure example and exact product-subfamily control. |
+| Einstein closure | Uses the same central-label entropy identity, with separate first-law and normalization controls. |
 
 The shared helpers are one implementation, not four independent calculations.
-The follow-up [MaxEnt coordinate audit](../maxent/PROJECTION_COORDINATES.md)
-fixes dependence on observable units, basis and scalar energy origins, and
+The [MaxEnt coordinate contract](../maxent/PROJECTION_COORDINATES.md)
+accounts for observable units, basis and scalar energy origins, and
 connects its invariant stopping error to a bound on the true optimum. It
 retains the nonzero coarse-graining closure defect.
 
-The [sector Gibbs audit](../collar_alignment/GIBBS_SECTOR_AUDIT.md) extends
-that energy-origin repair to collars. It shares observable decomposition
+The [sector Gibbs construction](../collar_alignment/GIBBS_SECTOR_AUDIT.md)
+applies the energy-origin contract to collars. It shares observable decomposition
 and thermal diagonalization with MaxEnt, retains relative sector partition
 functions, and prevents a large scalar origin from manufacturing alignment.
-The audit proves the finite interaction/log-state identity and separates
+Its finite interaction/log-state identity separates
 center-probability error from conditional-state error in relative entropy.
 Independent controls use explicit index contraction, scalar closed forms,
 SciPy matrix logarithms, complete classical enumeration and known product/Bell
@@ -302,18 +297,16 @@ From the repository root with the pinned requirements and `PYTHONPATH=code`:
 python -m pytest -q code/quantum_information code/collar_alignment code/geometry code/maxent
 ```
 
-The corrections concern these finite evidence implementations. They do not
-amend A1–A3, prove a physical Markov collar, promote the gravity branch, or
-complete the separate model-selection issues #1025/#1026. Frozen evidence and
-archived simulator copies retain their historical bytes; this shared module
+These finite constructions do not amend A1–A3, prove a physical Markov collar,
+identify gravity or select the physical observer model. This shared module
 governs the live consumers named above.
 
-The [collar information-budget audit](../collar_alignment/INFORMATION_BUDGET.md)
-repairs entropy-subtraction false zeros in mutual and conditional mutual
+The [collar information-budget identities](../collar_alignment/INFORMATION_BUDGET.md)
+exclude entropy-subtraction false zeros in mutual and conditional mutual
 information. Exact reductions, stable classical remainders and guarded
 quantum evaluation preserve small correlations. `is_markov_exact` decides
 zero CMI for the supplied finite matrix using exact relative-modular moments
-when simpler certificates do not suffice. The same audit resolves fixed-cut
+when simpler certificates do not suffice. The same construction resolves fixed-cut
 alignment into four nonnegative terms and proves that their weighted total
 is the relative-entropy projection cost onto the declared aligned family.
 For trace-roundoff inputs, MI uses the homogeneous convention `T I(rho/T)`;

@@ -172,9 +172,10 @@ counts. Compact toy commitments are checked by full replay every time.
 
 ## Scope against the full axioms
 
-The [canonical reference](../../docs/AXIOM_REFERENCE.md) and
-[repair-law RFC](../../docs/CANONICAL_REPAIR_LAW_RFC.md) fix the A1--A3
-clauses against which this package is scoped.
+The [canonical reference](../../docs/AXIOM_REFERENCE.md) states the A1--A3
+clauses against which this package is scoped. The
+[source-selection guide](../../model/SOURCE_SELECTION.md) distinguishes those
+clauses from supplied candidate and interface inputs.
 
 | Required object | What is present | Required for full-axiom promotion |
 | --- | --- | --- |
@@ -187,8 +188,8 @@ clauses against which this package is scoped.
 `CoreAxioms.lean` supplies typed shadows; inhabiting them would not discharge
 the full response, accepted-domain and constraint-completeness clauses. A
 two-word scalar schedule example is likewise not a full-axiom countermodel.
-The support theorem does not silently adopt the RFC's A1-R/A2-R amendments or
-insert the desired metric read menu as an A3 constraint.
+The support theorem does not derive complete primitive or temporal grammars
+from A1--A3 or insert the desired metric read menu as an A3 constraint.
 
 The next selection obligation is specific: derive the complete temporal
 constraint grammar and the actual entropy cover/readout from the source

@@ -107,7 +107,7 @@ Declared repair moves close every covered local mismatch, overlapping moves comp
 
 - Type `structural_rule`; disposition `axiomatize`; consumed by [#728](https://github.com/FloatingPragma/observer-patch-holography/issues/728), [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729), [#730](https://github.com/FloatingPragma/observer-patch-holography/issues/730), [#732](https://github.com/FloatingPragma/observer-patch-holography/issues/732).
 - Evidence: `Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean` (`conditional_consumer`), `Lean/ObservableNormalForms/ObservableNormalForms/Exact.lean` (`statement`), `claims/assumption_dictionary.md` (`statement`).
-- Disposition note: Promotion is a recorded basis amendment of the shape specified in docs/CANONICAL_REPAIR_LAW_RFC.md and requires a basis-wide dependency and countermodel review.
+- Disposition note: Promotion requires an explicit basis amendment and a basis-wide dependency and countermodel review against docs/AXIOM_REFERENCE.md. A conditional realization does not amend the basis.
 
 ### PR-02 algebra-state representation of public records
 

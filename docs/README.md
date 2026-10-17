@@ -26,11 +26,13 @@ physical universe has been reconstructed.
 | [`instrument_specs/`](instrument_specs/) | Instrument designs listed in the instrument register |
 | [`policies/`](policies/) | Data, hardware-evidence and writing policies |
 
-The six canonical references keep fixed paths because verifier receipts, the
-Lean core and frozen custody records cite them by path. Published essays link
-to the common-objections guide at its path in this folder. Records written before
-2026-10-04 cite the other documents at `docs/<NAME>.md` or `extra/<NAME>.md`;
-each file keeps its name in the folders above.
+Keep this directory limited to shared references, scientific registers and
+cross-project research results. Maintain existing pages instead of adding
+individual run reports or duplicate status summaries. Implementation-specific
+mathematics belongs with its owning code. Editorial dates and migration
+narratives do not belong in maintained prose; scientific provenance stays
+with the evidence that requires it. Preserve valid links and source commitments
+when consolidating documents.
 
 ## Three Reading Routes
 
@@ -64,8 +66,8 @@ each file keeps its name in the folders above.
   mathematical fixed points and the different uses of time.
 - [Premise Reference](AXIOM_REFERENCE.md) gives the formal statements of the
   theorem-library premises A1, A2 and A3.
-- [Canonical Repair-Law RFC](CANONICAL_REPAIR_LAW_RFC.md) specifies a proposed
-  strengthening of A1 and A2.
+- [Source and Repair-Law Selection](../model/SOURCE_SELECTION.md) separates
+  the executable candidate inputs, derived consequences and physical identification.
 - [Frozen-Prediction Ladder](FROZEN_PREDICTION_LADDER.md) records tests whose
   conditions are fixed before the comparison data are examined.
 - [Postdiction Ledger](POSTDICTION_LEDGER.md) records comparisons with measured
@@ -143,11 +145,10 @@ and papers ledgers.
 
 ## Research Notes
 
-Each note states a construction, theorem or audit in Markdown; the code
-package named with it verifies the note and pins it by path and SHA-256 in its
-receipt. A change to a note therefore rebuilds that receipt in the same commit.
-New notes go in this folder; `extra/` holds TeX papers only, and the claim
-registry check rejects Markdown notes there.
+Each note states a maintained construction or theorem tied to its verifying
+code package. Source-pinned notes require matching receipt updates when their
+content changes. Consolidate overlapping notes and keep implementation
+contracts beside the code; `extra/` holds TeX papers only.
 
 **Clocks and source realization.** These notes build on one another in this
 order:
@@ -208,9 +209,9 @@ order:
   proves the equivalence between affine full-marginal completion, modular
   compatibility and reference-preserving conditional expectation. It corrects
   regional standardness checks and treats noncommuting primitive repairs.
-- [Neutral-packet projection audit](research/NEUTRAL_PACKET_PROJECTION_AUDIT.md)
-  and [Whitney kinetic audit](research/WHITNEY_KINETIC_AUDIT.md) document the
-  numerical repairs behind the neutral-packet and Whitney kinetic tests.
+- [Whitney numerical methods](../code/electromagnetism/WHITNEY_NUMERICS.md)
+  gives the positive kinetic reduction, exact neutral-packet projection,
+  numerical contracts and independent controls beside their implementation.
 - [Finite null tomography: reconstruction, consistency and resolution](../code/geometry/NULL_TOMOGRAPHY.md)
   repairs incomplete and non-null tensor reconstructions, reuses the proved
   nine-direction inverse, and connects the dependent-family test to angular

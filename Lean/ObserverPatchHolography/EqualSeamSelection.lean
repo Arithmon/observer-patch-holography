@@ -21,8 +21,8 @@ flip repairs.
 The positive theorem then isolates the smallest finite scalar packet that
 does select the equal-seam generator.
 
-* A1-R supplies the complete finite atomic seam alphabet and its endpoints.
-* A2-R makes every completed scalar reconciliation local, endpoint-agreeing,
+* A complete finite atomic seam alphabet and its endpoints are supplied.
+* Every completed scalar reconciliation is assumed local, endpoint-agreeing,
   and endpoint-sum-preserving.  `ScalarSeamRepair` then proves that each move
   is pair averaging.
 * A2 naturality and A3 uniqueness make the selected move distribution
@@ -34,7 +34,7 @@ The selected expected repair is therefore
 `I - graphLaplacian / (2 * seamCount)`.
 
 This is a theorem with ordinary hypotheses, not a new Lean axiom.  The
-canonical basis does not provide the A1-R/A2-R fields.  On a
+canonical basis does not provide the complete scalar grammar fields.  On a
 refined mesh, carrier A5 symmetry alone need not be transitive on all refined
 edges, so an all-level use additionally needs either a proved single move
 orbit or a source-derived unit-counting reference on the complete refined
@@ -125,7 +125,7 @@ theorem canonical_shadow_repair_not_identified :
 variable {ι Move Presentation : Type*}
   [DecidableEq ι] [Fintype Move] [DecidableEq Move]
 
-/-- The finite scalar content of the proposed A1-R/A2-R clauses.  `Move` is
+/-- A supplied complete scalar reconciliation grammar.  `Move` is
 the complete primitive attempt alphabet; each completed move is a linear
 endomorphism on the common scalar workspace.  Local support, agreement, and
 sum preservation are the scalar specialization of completed reconciliation.
@@ -296,7 +296,7 @@ def exactCountingRepair
     (ι → ℝ) →ₗ[ℝ] (ι → ℝ) :=
   ∑ e : Move, selection.selected e • grammar.completed e
 
-/-- A2-R's scalar support, equalizer, and conservation clauses force every
+/-- The supplied scalar support, equalizer, and conservation clauses force every
 completed primitive move to be pair averaging. -/
 theorem completed_eq_pairAverage
     (grammar : CompleteScalarReconciliationGrammar (ι := ι) (Move := Move))

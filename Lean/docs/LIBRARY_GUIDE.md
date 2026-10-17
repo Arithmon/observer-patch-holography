@@ -73,7 +73,7 @@ surface for the OPH consensus layer. Contents:
   the masses of any externally supplied orbit partition, plus prefix
   consistency without a geometric transitivity premise. Completeness of the
   alphabet, its orbit classification, source counting, and temporal freedom
-  remain proposed A1-R/A2-R inputs rather than conclusions of the current
+  remain explicit conditional inputs rather than conclusions of the current
   basis.
 - A sorry-free V2 A1 ontology ledger in `Time/TimeOrderLedger.lean`.
   Universe closure, repair execution order, observer record order, modular

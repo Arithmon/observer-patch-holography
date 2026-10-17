@@ -1711,7 +1711,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "bb45c3ce326a2df4d4bbae7b976183d32e2a3cf469be58fd4e9f9d502bb3d0a0"
+        "original_claim_sha256": "485f63dd4d3d25847ecd469efd428710669fd6fa4c379c95ab50c35448e2cf9c"
       },
       "OPH-MODEL-CANONICAL-SCALAR-EXECUTION": {
         "assumptions": [
@@ -1739,7 +1739,7 @@
           "declared_common_source_active_encoded_native_memory"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "947da53635293c0714efada3325ff495bab3ac9b0ea622ab54557c396fdb3f2b"
+        "original_claim_sha256": "ef892fd4879e17eafa4e8f2251725f8ddf276d75cce8ee43e321c70f8aa3088e"
       },
       "OPH-MODEL-COUPLED-INTERACTION-RECOVERY": {
         "assumptions": [

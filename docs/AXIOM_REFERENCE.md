@@ -481,45 +481,55 @@ all relevant three-axiom models; a named-realization witness proves
 existence and exactness inside that realization, not that the axioms select
 it.
 
-## Canonical repair-law proposal
+## Repair laws and conditional selection
 
-The [canonical repair-law RFC](CANONICAL_REPAIR_LAW_RFC.md) specifies a
-possible strengthening of A1 and A2. A1-R would make the primitive repair
-grammar complete, while A2-R would define a completed reconciliation as the
-reference-preserving conditional expectation onto the corresponding agreement
-algebra. In the scalar twelve-port branch, A1 incidence gives thirty
-primitive seam constraints. Their two parity-complete directed placements
-form one sixty-element orbit under the proper carrier action. Presentation
-invariance and normalization fix \(1/60\) per directed completion,
-equivalently \(1/30\) per seam and \(1/2\) for an unresolved odd-total tie.
-An IID event-string extension additionally requires proposed A1-R free
-composition of reconciliation attempts and an A2-R theorem that the temporal
-constraint grammar is complete and imposes no coupling. A3 then selects the
-uniform law on every finite word space. The arbitrary-length KL theorem in
-`Lean/ObserverPatchHolography/RepairWordSchedule.lean` proves exact product
-factorization and prefix consistency. For any separately supplied orbit
-partition, it fixes each orbit mass from the number of actual event identities
-in that orbit, provided the A1-R alphabet is complete,
-quotient-deduplicated, and carries source counting measure. The theorem does
-not classify the orbits. Canonical A3 alone does not imply Markovity, and the
-current basis does not supply those A1-R/A2-R premises.
+The [executable construction](../model/SOURCE_SELECTION.md) specifies a carrier,
+observer interface and complete repair instrument. These are legitimate inputs
+to a candidate's conditional predictions. A1--A3 constrain the instance;
+they do not select an unrestricted repair algorithm. The distinction between
+an implemented candidate and a law forced by the axioms remains explicit.
 
-The scalar twelve-port specialization is machine checked and gives the
-icosahedral graph-Laplacian repair ray up to one clock scale. Exact
-enumeration covers all nonnegative fixed-total sectors through four and all
-1,352,078 nonnegative total-twelve states. The former one-unit rule has 303
-absorbing total-twelve states; the directed completion law has the all-one
-state as its unique closed class in that sector. The
-common compatible-section repair algebra, noncommutative grammar, checkpoint
-bridge, dual fixed-state theorem, source-defined full self-readback closure,
-probabilistic signed-state hitting theorem, and refinement law remain proof
-obligations. The finite scalar result
-concerns repairable working readings and preserves their sum; it does not
-certify a protected-record or checkpoint instrument. On odd integer totals,
-the directed nearest-balanced process realizes the real pair average only in
-expectation and is not an exact A2 equalizer retraction. A1-R and A2-R are
-substantive basis-amendment proposals and are not part of the canonical
-three-axiom basis stated above.
+For a specified finite retained algebra and faithful reference, the
+[entropy-completion theorem](../code/quantum_information/ALGEBRAS_AND_REPAIR.md#the-complete-finite-completion-theorem)
+identifies a unique reference-preserving conditional expectation exactly when
+the algebra is modular invariant. It does not select the retained algebra or
+the complete record-writing instrument. On the native binary shell, the
+[fixed-seam construction](../model/primitive_observer/DERIVATION_COMPLETION.md)
+identifies E with that expectation. Repeated forgotten-record C events converge
+to the same endpoint while retaining different finite-event coherences.
+Full-carrier E is nonunital, so the binary identification does not extend to
+all 78 native configurations.
+
+Scalar pair averaging gives the exact mean repair step `I-L_ico/60` under the
+declared uniform thirty-seam schedule. On odd integer totals the actual update
+lands in a nearest-balanced shell; only its mean lies in the real equalizer.
+The [finite-word KL theorem](../Lean/ObserverPatchHolography/RepairWordSchedule.lean)
+selects the uniform product law when the complete quotient-visible event
+alphabet, source counting reference and full feasible word simplex are supplied.
+It needs no transitivity hypothesis. Those inputs are not consequences of
+uniform one-event marginals, and A3 alone does not imply temporal independence.
+The parameter here counts native attempts, not calibrated observer duration.
+
+The [repair-response Gram theorem](../Lean/Screen/PortGramRepairBand.lean) and
+[source-load quotient](../Lean/Screen/RepairWordCarrierReadout.lean) give a
+conditional local spatial construction. With the complete equally weighted
+probe census, the normalized asymptotic response selects a rank-three Gram
+form. The signed antipodal load module and its conservative seam-current
+sublattice have the same abstract Euclidean completion in that limiting
+metric. The [proper-action theorem](../Lean/Screen/PortGramA5Isometry.lean)
+transports this construction under the carrier symmetries. Interpreting that
+completion as observer position requires the declared readback and
+operational-distinguishability map; global gluing, physical scale and duration
+do not follow from the finite Gram alone. The nonlinear repair law also needs
+working state and event history beyond the signed quotient.
+
+The [empirical status](EMPIRICAL_STATUS.md) separates these finite results
+from physical identification. Common-record feedback and work-only detectors
+cannot distinguish native C/E even with initial reference correlations.
+Local history repair reproduces the supplied oscillator apparatus's complete
+endpoint laws, but it does not select the apparatus or implement the full
+consensus contract with native seam events. These results add no axiom and
+supply no empirical winner among the native repair rules.
 
 ## Glossary
 

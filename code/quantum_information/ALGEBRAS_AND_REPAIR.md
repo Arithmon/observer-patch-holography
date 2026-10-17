@@ -10,16 +10,14 @@ it is not a fit to selected successful inputs.
 
 The result connects the finite A3 objective, the collar alignment criterion
 and the conditional expectations in the
-[canonical repair proposal](../../docs/CANONICAL_REPAIR_LAW_RFC.md).
+[current source-selection contract](../../model/SOURCE_SELECTION.md).
 It also identifies which premises are doing work. An observable span need
 not be an algebra, a weighted projection need not be positive, and a selected
 reference need not be compatible with a proposed retained algebra.
 These are three different tests.
 
-This note audits the live finite implementations on top of the
-[entropy and sector-label audit](README.md), at predecessor commit
-09170c3f00299bb61ffe62e1166255cb332759da. It uses ordinary matrix trace and
-natural logarithms. The finite mathematical results are proved below;
+The implementation uses the shared [entropy and sector-label conventions](README.md),
+ordinary matrix trace and natural logarithms. The finite mathematical results are proved below;
 the Python checks are floating-point diagnostics supplemented by exact
 rational counterexamples. None of these checks identifies a simulator's
 transition law merely by constructing the desired channel.
@@ -39,7 +37,7 @@ Then
 \]
 
 Consequently the separation modulus with the *ambient Hilbert-Schmidt
-operator norm* used by the legacy helper is
+operator norm* used by the standardness helper is
 
 \[
 \inf_{\|L(a)\|_{\mathrm{HS}}=1}\|L(a)\Omega\|
@@ -67,22 +65,21 @@ It is not generally the least eigenvalue of H divided by one basis norm.
 Orthonormalizing the operator span gives the same calculation without assuming
 orthogonality or equal norms.
 
-| Reproduced old behavior | Correction |
+| Independent control | Required conclusion |
 | --- | --- |
-| For \(\rho=\mathrm{diag}(1/2,0,1/2,0)\), dimensions (2,2), region [1], the helper returned separating. The nonzero operator \(I\otimes|1\rangle\langle1|\) annihilates \(\Omega\). | Use the actual region's partial trace. The A region separates; the B region does not. The reversed example is also tested. |
-| Bases [I,Z] and [I,I+Z] for the same diagonal qubit algebra gave moduli 0.7071067811865474 and 0.43701602444882093 at \(\Omega=(1,1)/\sqrt2\). | Both now give \(1/\sqrt2\), also under unequal rescaling. An independent generalized eigensolver checks the result. |
-| The explicit positive spectrum (1,1.5e-20) gave cyclic but not separating. | Use one resolved spectral-support criterion for both; do not discard small positive eigenvalues at an arbitrary 1e-10 threshold. |
-| Full standardness constructed \(D^2\) dense left-action matrices of size \(D^2\) by \(D^2\). At D=64 their complex entries alone need one tebibyte. | Use the D by D state and its spectrum. A D=64 test disables both dense representation constructors and checks full and noncontiguous regional standardness. |
+| For \(\rho=\mathrm{diag}(1/2,0,1/2,0)\), dimensions (2,2), region [1], the nonzero operator \(I\otimes|1\rangle\langle1|\) annihilates \(\Omega\). | Use the actual region's partial trace. The A region separates; the B region does not. The reversed example is also tested. |
+| Bases [I,Z] and [I,I+Z] span the same diagonal qubit algebra at \(\Omega=(1,1)/\sqrt2\). | Both give \(1/\sqrt2\), also under unequal rescaling. An independent generalized eigensolver checks the result. |
+| The explicit spectrum (1,1.5e-20) is positive. | Cyclicity and separation use the same resolved spectral support; no arbitrary 1e-10 threshold discards a positive eigenvalue. |
+| A dense full-standardness representation requires \(D^2\) left-action matrices of size \(D^2\) by \(D^2\). At D=64 their complex entries alone need one tebibyte. | Use the D by D state and its spectrum. A D=64 test disables both dense representation constructors and checks full and noncontiguous regional standardness. |
 
-The state validator still rejects invalid densities. Dense spectra whose
+The state validator rejects invalid densities. Dense spectra whose
 support cannot be resolved at floating-point precision raise an explicit
 error; a numerical answer does not certify exact rank. Explicit diagonal
 positive entries, including the smallest binary64 subnormal, remain positive.
 
 ## Preserve the supplied span before computing its action
 
-A follow-up audit at `0b111ce904b29a389a596443c4ac2b03605a4220`
-found that ordinary floating-point normalization and QR could change the
+Ordinary floating-point normalization and QR can change the
 operator span while still returning an orthonormal basis. For the exactly
 representable inputs
 
@@ -93,22 +90,21 @@ Omega = (1, 0),
 ```
 
 `B-A` is nonzero and annihilates Omega. The separation modulus is therefore
-exactly zero. The previous implementation returned approximately
-`0.000893982369138`, above the `1e-10` comparison used by the null-net commutant diagnostic.
+exactly zero. A rounded chart can instead give a positive modulus above the
+`1e-10` comparison used by the null-net commutant diagnostic.
 For the same supplied span and `Omega=(0,1)`, the independent generalized
-Gram pencil gives modulus `sqrt(9/14)`, approximately `0.801783725737273`;
-the old answer was approximately `0.801729534186655`. Neither an
-orthonormality check nor a blanket zero result catches both errors.
+Gram pencil gives modulus `sqrt(9/14)`, approximately `0.801783725737273`.
+Neither an orthonormality check nor a blanket zero result catches both errors.
 
-The same defect rejected a valid algebra. With
+The same numerical issue can obscure a valid algebra. With
 `N=[[1,2],[2,-1]]`, the basis `[3I+N, 3I+N+2^-30 I]` spans exactly
 `span{I,N}` and `N^2=5I`, but its numerical chart could fail the identity
 membership check. Complex Hermitian variants also expose loss when an exact
 intersection is rounded before its ill-conditioned presentation is removed.
-Squaring basis entries to find their norms separately caused underflow or
+Squaring basis entries to find their norms separately can cause underflow or
 overflow for finite rescalings of ordinary matrix units.
 
-The shared implementation now treats the **supplied binary64 entries** as
+The shared implementation treats the **supplied binary64 entries** as
 its source. It does not infer a different ideal algebra from a nearby
 rounded presentation:
 
@@ -181,9 +177,8 @@ shears, reordered bases, finite extreme scales, conditional expectations,
 repeated intersections and repair gaps. In particular, nearly aligned
 but distinct algebras still have their actual scalar intersection; an
 unresolved slow gap cannot become a fast gap by inventing a conserved
-observable. The correction changes numerical answers and acceptance for
-these supplied inputs. It does not change the finite completion theorem,
-select a repair law, or alter frozen evidence or physical claim payloads.
+observable. These controls validate calculations on the supplied inputs;
+they do not select a physical repair law.
 
 ## The complete finite completion theorem
 
@@ -334,13 +329,21 @@ exactly how much relative entropy one completed repair removes. Conditional
 expectations and their entropy identities are treated in
 [Bardet, Capel and Rouze, sections 2 and 3](https://link.springer.com/article/10.1007/s00023-021-01088-3).
 
-The earlier audit's labelled direct sum turns the fixed-weight finite A3
+The [labelled direct sum](README.md#one-normal-form-for-the-finite-a3-objective)
+turns the fixed-weight finite A3
 objective into one relative entropy. The present theorem applies to such
 an objective when its feasible set is precisely a complete B-data fiber.
 An arbitrary OPH feasible family K may impose further constraints or lack
 a joint matrix-state realization. This theorem neither removes those
 constraints nor constructs that realization. In particular, the finite
-classification does not adopt the proposed A1-R or A2-R clauses.
+classification does not derive a complete repair grammar, retained algebra or
+reference state from the [canonical premises](../../docs/AXIOM_REFERENCE.md).
+
+The [native fixed-seam attachment](../../model/primitive_observer/DERIVATION_COMPLETION.md)
+identifies E with this expectation on the declared 66-dimensional binary
+shell and tracial reference. C has the same completion endpoint but different
+finite-event coherence. This does not extend the theorem to all carrier
+sectors or select a complete recorded instrument.
 
 ## Three exact controls that distinguish the premises
 
@@ -445,18 +448,17 @@ references, dependent bases, empty families, omitted/zero/negative rates,
 nonfinite matrices, diagnostic overflow and unresolved Gram matrices fail
 explicitly. Validation remains active under optimized Python.
 Vector norms are evaluated in complex128 arithmetic before checking
-normalization. At audit commit df1d99e5, the int64 vector \((2^{32},1)\)
-had a wrapped squared norm of one and was incorrectly accepted; float32
+normalization. The int64 vector \((2^{32},1)\)
+has a wrapped squared norm of one in int64 arithmetic; float32
 could also round the squared norm of \((1,10^{-4})\) to one. Regression
 controls reject both, along with unsigned-integer and complex64 variants.
 These guards are not interval arithmetic: deviations below the declared
 tolerance can pass. Channel conditions and spectral gaps remain numerical
-diagnostics. The [fixed-point audit](REPAIR_FIXED_POINTS.md) replaces the
-old intersection rank threshold with exact elimination on the retained
-supplied spans. It fixes a false dimension-two conserved algebra and
-order-one gap for two distinct, almost parallel qubit repairs. Their true
+diagnostics. The [fixed-point calculation](REPAIR_FIXED_POINTS.md) uses
+exact elimination on the retained supplied spans. Two distinct, almost
+parallel qubit repairs have only a scalar conserved algebra. Their true
 slow mode has rate of order the squared angle and must not be deleted from
-the complement. Unresolved positive gaps still raise. The follow-up derives
+the complement. Unresolved positive gaps still raise. The calculation gives
 the complete finite spectrum and record lifetime, and keeps exact span
 data separate from its numerical basis. A numerical construction is not
 a source-law receipt.
@@ -480,13 +482,12 @@ checks. Dense exact calculations remain more expensive than floating chart
 calculations; their cost depends on both span dimension and integer bit
 length. The full matrix algebra needs no factorization.
 
-At audit base `083afa28`, with \(B=\mathbb C I_4\), \(\rho=I_4/4\) and
-\(X=\operatorname{diag}(2^{56},-2^{56},1,0)\), both the HS projection and
-the validated expectation returned zero instead of \(I_4/4\). The associated
-rate-one repair action also lost its final diagonal response \(1/4\).
-The cancellation happens during numerical evaluation even though the map
-has already passed the complete channel recognizer. Real and imaginary
-controls now retain those responses; finite results also survive overflowing
+With \(B=\mathbb C I_4\), \(\rho=I_4/4\) and
+\(X=\operatorname{diag}(2^{56},-2^{56},1,0)\), the HS projection and
+the expectation must give \(I_4/4\). The associated rate-one repair action
+must retain its final diagonal response \(1/4\). Numerical contraction can
+lose these responses even when the map passes the complete channel recognizer.
+Real and imaginary controls retain them; finite results also survive overflowing
 or underflowing intermediate products.
 
 Distance is computed as \(\sqrt{(x-Px)^*(x-Px)}\), with subtraction and the
@@ -522,24 +523,21 @@ The controls in [test_linear_actions.py](test_linear_actions.py) and
 [test_projection_residuals.py](test_projection_residuals.py) use independent
 rational contractions, analytic projections and high-precision scalar
 norms. They cover mixed scales, complex dual maps, retained intersections,
-and final-range refusals. This repairs evaluation of finite observables
-and diagnostics; it neither selects a physical repair law nor changes
-channel-recognition criteria, spectral support decisions or frozen source receipts.
+and final-range refusals. Observable evaluation, channel recognition and
+spectral support are distinct checks; none selects a physical repair law.
 
-| Existing component | Effect of this audit |
+| Component | Current contract |
 | --- | --- |
-| Null-net standardness, #524 | Fixes actual-region selection, basis normalization, small-eigenvalue inconsistency and dense allocation. Published faithful and single-sector controls remain valid. The legacy full-standardness helper can now raise on unresolved support instead of silently deciding rank. |
-| Collar modular alignment, #543 | Its complete-basis criterion now has a cross-check against existence of the actual finite expectation. Aligned product blocks pass and generic incompatible blocks fail. The independent collar calculation is retained. |
+| Null-net standardness | Uses the actual region, a basis-independent modulus and resolved spectral support. Unresolved support raises instead of silently deciding rank. |
+| Collar modular alignment | Its complete-basis criterion is checked against existence of the finite expectation. Aligned product blocks pass and generic incompatible blocks fail. |
 | Finite MaxEnt/A3 | Identifies exactly which full-marginal problems give affine repair and proves the Pythagorean accounting; arbitrary feasible families retain their own constraints. |
-| Canonical repair RFC | Supplies the finite existence/recognition calculation and noncommuting convergence proof for specified algebras and reference. Protected records, conserved functionals, checkpoint instruments, grammar completeness, refinement and clock selection are additional RFC obligations. |
+| Source selection | Supplies finite existence, recognition and noncommuting convergence for specified algebras and reference. Protected records, conserved functionals, checkpoint instruments, grammar completeness, refinement and clock attachment require their own evidence. |
 | Classical consensus projection | A separately specified row-stochastic three-state transition table reproduces weighted fiber resampling. Replacing stationary weights by uniform weights fails. The existing demand for independent transition extraction is retained. |
 | Source operator-join evidence | Its exact source-specific verifier remains independent. A generic constructed channel does not replace its source identification or Lean proof. |
 
 The one-particle zero-extension helper in the null-net receipts is also a
 different operation from tensor-identity embedding and remains separate.
-The change does not recalculate frozen receipts, amend the paper or promote
-a physical model. It supports the existing-theory audit alongside the
-bounded physical-candidate issues #1025/#1026.
+These finite results do not identify a physical model.
 
 The regression suite uses explicit tensor indices, independent generalized
 Gram eigenvalues, weighted partial traces, independent Choi blocks, SciPy
@@ -549,7 +547,7 @@ and a singular completed marginal, checking (1) against scalar logarithms.
 Separate controls treat a singular marginal whose support does not commute
 with the reference, and noncommuting repairs preserving a complex nontracial
 reference after a global unitary change of coordinates.
-Run the live consumers and the new tests with the pinned requirements:
+Run the live consumers and their tests with the pinned requirements:
 
 ~~~text
 PYTHONPATH=code OPENBLAS_NUM_THREADS=1 python -m pytest -q \

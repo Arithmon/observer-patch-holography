@@ -17,9 +17,15 @@ states of the research.
   "remains partial", and equivalent live-project phrasing. State the
   scientific boundary directly: "the construction supplies no physical clock"
   or "no continuum theorem is proved here."
-- Ledgers, audits, and plans may identify artifact versions, dates, hashes,
-  obligations, and exact classifications. Papers give the theorem, premises,
-  evidence, and nonclaims without narrating project progress.
+- Scientific provenance may identify dataset editions, publication dates,
+  frozen-protocol timestamps, artifact versions and hashes. Maintained guides
+  and research prose omit editorial dates, update stamps and audit chronology.
+  Papers give the theorem, premises, evidence and nonclaims directly.
+- Keep `/docs` small: update the owning page, consolidate overlapping material,
+  and place implementation-specific mathematics beside its code. Do not add
+  individual run reports, duplicate status summaries or migration-only pages.
+  Preserve substantive proofs, counterexamples, evidence and source commitments
+  when consolidating documents.
 - Scientific classifications such as conditional, unproved, refuted, or
   outside the theorem's hypotheses are allowed when they classify a claim
   rather than a work item.

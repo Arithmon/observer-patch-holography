@@ -468,13 +468,16 @@ provide dynamical discriminators.
 
 ## Construction principle and rejected alternatives
 
-The [canonical repair RFC](../docs/CANONICAL_REPAIR_LAW_RFC.md) is a proposed basis
-strengthening, not an adopted microscopic law. Given a complete grammar,
-faithful reference, modular-invariant agreement algebras and schedule, it
-constructs a mixture of conditional expectations. Those premises constrain
-the candidates; the RFC does not supply the missing inputs by itself. In
-particular, an odd-total integer seam reaches a nearest-balanced shell,
-not an exact pathwise equality retraction.
+The [finite entropy-completion theorem](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
+requires a specified retained algebra and faithful modular-compatible reference.
+The [binary native attachment](primitive_observer/DERIVATION_COMPLETION.md)
+identifies E as the resulting tracial expectation. C has the same completion
+endpoint and different finite-event coherences. Thus completion does not
+select the full recorded repair law. An odd-total integer seam reaches a
+nearest-balanced shell rather than exact pathwise equality, and the
+full-carrier channel is not the binary conditional expectation. The
+[source-selection guide](SOURCE_SELECTION.md) owns the remaining construction
+and physical-interface obligations.
 
 The N2 variant with **one shared six-level processor** preserves the load
 channel but fails disjoint-seam commutation. It is rejected under the declared

@@ -20,25 +20,25 @@ term.  Antipodal realization derives reciprocity, and a supplied unit-quadratic
 normalization fixes the remaining overall coefficient.  The candidate is then
 the frozen equal-weight primitive-port operator.
 
-The proposed repair clauses would discharge only part of this packet:
+The construction requires several distinct conditional inputs:
 
-* A1-R clauses 8, 9, and 11 can construct the complete atomic event type,
+* A source theorem must construct the complete atomic event type,
   remove presentation duplicates, and certify its one-to-one port census.
-* A2-R presentation naturality together with A3 uniqueness can construct the
+* Presentation naturality together with A3 uniqueness can construct the
   `NaturalUniqueMoveProjection` on a single transitive move orbit.  The
   source-counting alternative in `RepairWordSchedule` gives the same one-event
   law when its stronger full-simplex premises hold.
-* A1-R grammar completeness and A2-R completed reconciliation can exclude
+* Grammar completeness and completed reconciliation can exclude
   undeclared primitive repair maps on their common repair workspace.  They do
   not by themselves identify that repair generator with the declared spatial
   translation operator; the direct-only equality below remains an explicit
   source-to-translation attachment.
 * Antipodal spatial realization comes from the finite carrier geometry plus
-  the conditional translation adapter, not from A1-R or A2-R alone.
+  the conditional translation adapter, not from grammar completeness alone.
 * Unit quadratic normalization is a separate long-wavelength normalization;
-  neither proposed repair clause fixes it.
+  the repair grammar and reconciliation properties do not fix it.
 
-No theorem here adopts A1-R or A2-R, proves their premises from A1--A3,
+No theorem here adds an axiom, derives these conditional inputs from A1--A3,
 identifies a physical field, chooses a time equation or scale, or excludes
 operators outside the explicitly supplied direct-only realization.
 -/
@@ -46,9 +46,8 @@ operators outside the explicitly supplied direct-only realization.
 universe u v
 
 /-- A complete quotient-visible primitive move census with exactly one move
-    identity per port.  The equivalence is data supplied by the proposed A1-R
-    atomicity, completeness, and deduplication audit; this structure does not
-    derive those clauses. -/
+    identity per port.  The equivalence is supplied atomicity, completeness,
+    and deduplication data; this structure does not derive those properties. -/
 structure CompletePrimitivePortGrammar (Move : Type u) where
   moveToPort : Move ≃ Fin 12
 
@@ -77,7 +76,7 @@ def FixedQuadraticNormalization (normalization a : ℝ) : Prop :=
 
 /-- The unit-quadratic normalization used by the frozen operator converts the
     generic direct-only generator to the existing state-weighted direct-hop
-    operator.  The equality is supplied, not derived from A1-R or A2-R. -/
+    operator.  The equality is supplied, not derived from the repair grammar. -/
 theorem directOnlyGenerator_of_fixed_quadratic_normalization
     (normalization a : ℝ) (u : Fin 12 → Vec3) (w : Fin 12 → ℝ)
     (hquadratic : FixedQuadraticNormalization normalization a) :

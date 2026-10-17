@@ -143,7 +143,7 @@ scalar nodal squared radius through exact-rational invariants and a budgeted
 high-precision evaluation.
 The pointwise projection evaluates the closed form of the circle integral,
 and the legacy `nodes` argument is validated and has no effect. The
-[neutral-packet projection audit](docs/research/NEUTRAL_PACKET_PROJECTION_AUDIT.md)
+[Whitney numerical methods](code/electromagnetism/WHITNEY_NUMERICS.md)
 gives the evaluator, its numerical contract, the independent replay and the
 receipt regeneration commands. The dedicated neutral-packet workflow
 executes these controls on Linux and Windows.

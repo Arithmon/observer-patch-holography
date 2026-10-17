@@ -623,7 +623,7 @@
         "Lean/Screen/PortGramA5Isometry.lean",
         "Lean/Screen/RepairWordCarrierReadout.lean",
         "Lean/Screen/SeamCurrentCarrierQuotient.lean",
-        "docs/CANONICAL_REPAIR_LAW_RFC.md",
+        "docs/AXIOM_REFERENCE.md",
         "https://github.com/muellerberndt/oph-physics-sim/blob/bb92febe38fe0254ab581706300179b005cae929/data/repair_closure/port_gram_completion_bridge_receipt.json"
       ],
       "falsifier": "The exact source-load quotient, D6 seam-current image, response decomposition, strict band order, normalized Gram limit, rank-three radical quotient, integer injection, density, proper-action isometry, or completion theorem fails under the declared inputs; the native_decide table subreceipts are presented as kernel-only; or the physical position conclusion is asserted without the source record and distinguishability premises.",

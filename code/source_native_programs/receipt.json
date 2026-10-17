@@ -1,5 +1,5 @@
 {
-  "controls_sha256": "0a33836d59805dd7d42b977aea5d0021a4c1acb0798b7ab55d44c69c47179f29",
+  "controls_sha256": "7719c4e271902c47dbdbc87a0070e1aff21d4a9aeb445382774f5aafdd0dbdc7",
   "dynamic_writes": "supported_scalar_pair_means_only",
   "evaluated_means": 3238410,
   "grid_bits": 96,
@@ -35,7 +35,7 @@
     "Lean/Geometry/SourceReadSelection.lean": "f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d",
     "Lean/Geometry/SourceReusableBus.lean": "25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2",
     "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
-    "Lean/ObserverPatchHolography/RepairWordSchedule.lean": "7c9b17497684ccb04669bc64d83f590ee926e5fc7993b2246a80bb944afa4bcb",
+    "Lean/ObserverPatchHolography/RepairWordSchedule.lean": "7272e15fbea5a4c1239a76f135c025221ced393a3370df706433d90b0bc6b232",
     "Lean/ObserverPatchHolography/ScalarSeamRepair.lean": "26a8944ff97643cc9b2cf5ac58f6667ff0a443ca9cd81301e94e1cb6b0c9a8ef",
     "Lean/lake-manifest.json": "65c7120947e5a3ad487de7311a46f792f62dd92718e220f82fefbda2d7d3f59d",
     "Lean/lakefile.lean": "f9ff68ca6b60fd1b51d171eabfd683cd3b4e7da76fcd39b4c21f0c8efab566e3",
@@ -57,7 +57,7 @@
     "code/source_read_routing/support_w12_l4.json": "1f074442a16c9003454a7e364bbb27af0a6c8c493472ec91120482f718823869",
     "code/source_read_routing/support_w12_l5.json": "dcaaf081787b1c04622e4375f35aea7b5d5a69c02139d8abff9725b5d1b2b5ef",
     "code/source_routing/support_w12_l3.json": "57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4",
-    "docs/AXIOM_REFERENCE.md": "b4bbc4b702ea1ded22fd81acbe4ed54ed3f95309703efe868cf59dd1a8789345",
+    "docs/AXIOM_REFERENCE.md": "1605ed5d16f90547f8297c228099751fa2b114a57bf5e64f7ccd7c2f5bb33e07",
     "evidence/source_net_causal_poset/build_causal_poset.py": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb",
     "evidence/source_net_causal_poset/carrier_source_net_receipt.json": "755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64"
   },

@@ -777,7 +777,7 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   directions. Ordered history, protected-total restrictions, and repair cost
   remain separate. Equality of observer word actions is equivalent to
   equality of carrier records only under an explicit faithful-action premise;
-  A2-RC selection of the response topology and every physical attachment
+  operational selection of the response topology and every physical attachment
   remain open.
 - Thirty-seam current quotient and completion
   (`Screen/SeamCurrentCarrierQuotient.lean`): sorry-free exact incidence and
@@ -1141,8 +1141,8 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   no additional range or operator term, the port frame realizes antipodes as
   inverse translations, and the overall coefficient has the supplied unit
   quadratic normalization, the candidate equals the frozen equal-weight
-  primitive cosine operator and is unique within that grammar. A1-R and A2-R
-  are proposed premises rather than adopted axioms; the source-to-translation
+  primitive cosine operator and is unique within that grammar. Grammar
+  completeness and move selection are conditional inputs; the source-to-translation
   identification and quadratic normalization remain separate attachments.
 - Directed integer seam completion
   (`ObserverPatchHolography/DirectedSeamRepair.lean`): sorry-free integer and

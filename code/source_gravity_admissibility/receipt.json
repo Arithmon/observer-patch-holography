@@ -17,11 +17,11 @@
     "code/source_gravity_admissibility/test_admissibility.py": "30401577d86e166f13b7f51bd3a69a70b093d237b54ba5c70e79ddaed6e2d805",
     "code/source_gravity_admissibility/verify.py": "981967f976b25dc5378ef3396ee89e7d8dc9975e083df5f74db92e20a6509620",
     "code/source_publication_selection/STATE_SELECTION.md": "7dc5a3955828d2dbf7ce0ac967ccf560451f5cc7c84bd07176eb93495147212a",
-    "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
+    "code/source_selection_model/DERIVATION.md": "e53df3ae59398a6abe2ad3b85f7871ff7ea728e72bd9de073af8bf398a86dcbe",
     "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
-    "docs/AXIOM_REFERENCE.md": "b4bbc4b702ea1ded22fd81acbe4ed54ed3f95309703efe868cf59dd1a8789345",
+    "docs/AXIOM_REFERENCE.md": "1605ed5d16f90547f8297c228099751fa2b114a57bf5e64f7ccd7c2f5bb33e07",
     "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
     "docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md": "ae7728831afce36377d6a879b2bed9d164af51541fe8a43628a74072ca33f77f",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"

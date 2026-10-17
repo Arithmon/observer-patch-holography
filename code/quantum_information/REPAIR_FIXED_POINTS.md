@@ -1,12 +1,13 @@
 # Exact conservation and slow repair are different conclusions
 
-This repair under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
-starts from main `3d848b7f`. It fixes a false conserved-observable verdict
-in the existing finite repair implementation. The associated convergence
-theorem remains valid. The implementation had silently removed its slowest
-decaying mode by classifying that mode as an exact fixed point.
+An observable can retain its value for a long finite interval without being
+exactly conserved. The common fixed algebra decides conservation; the smallest
+positive decay rate decides the longest relaxation scale. A small rate cannot
+be removed from the decaying complement by a numerical rank threshold.
 
-## Reproduction and changed verdict
+<a id="reproduction-and-changed-verdict"></a>
+
+## Finite conservation controls
 
 Let `X,Z` be Pauli matrices, `rho=I/2`, e a real tilt, and take the two observable algebras
 `span(I,Z)` and `span(I,Z+e X)`. Give each reference-preserving expectation
@@ -14,25 +15,21 @@ rate `1/2`. Comparing off-diagonal entries proves that their intersection
 is the scalars for every nonzero `e`. The two-dimensional diagonal algebra
 survives only at `e=0`.
 
-| Input | Previous result | Correct conclusion |
-| --- | --- | --- |
-| `e=1e-12` | Intersection construction rejected the identity | The intersection is exactly `span(I)` |
-| `e=1e-14` | Intersection dimension 2; reported gap approximately 1 | Dimension 1; true gap approximately `2.5e-29` |
-| `e=1e-100` | Intersection dimension 2; reported gap 1 | Dimension 1; true gap approximately `2.5e-201` |
-| Masked algebra, channel or reference entries | Hidden payload could pass validation | Missing evidence must raise |
+| Input | Required conclusion |
+| --- | --- |
+| `e=1e-12` | The intersection is exactly `span(I)` |
+| `e=1e-14` | Intersection dimension 1; true gap approximately `2.5e-29` |
+| `e=1e-100` | Intersection dimension 1; true gap approximately `2.5e-201` |
+| Masked algebra, channel or reference entries | Missing evidence must raise |
 
-Commit `3abccf1e` retains nine failures before the repair. Three additional
-masked-reference failures were reproduced during implementation. The new
-intersection calculation gives the correct dimension down to the smallest
-positive binary64 tilt. The existing gap routine now refuses an unresolved
+The exact intersection calculation resolves the dimension down to the smallest
+positive binary64 tilt. The gap routine refuses an unresolved
 positive mode instead of excluding it and reporting the next eigenvalue.
 It does not replace a supplied rounded channel by an ideal channel.
 
-The maintainer-style audit also reproduced acceptance of the nonunital span
-`span(I+1e-14 X)`, including a repair report with gap approximately one.
-Its nonzero off-diagonal entry proves that it cannot contain I. Commit
-`cf5c37a0` records three failures before adding an exact identity-membership
-check. A nonempty span is insufficient: appending the identity column must
+The nonunital span `span(I+1e-14 X)` supplies a separate control:
+its nonzero off-diagonal entry proves that it cannot contain I.
+A nonempty span is insufficient: appending the identity column must
 leave its exact rank unchanged. A positive control supplies I only as a
 linear combination of columns, so the guard cannot require a literal I.
 
@@ -71,13 +68,13 @@ than a floating singular-value calculation.
 
 This stricter boundary rejects some rounded coordinate changes that still
 pass the numerical expectation diagnostics. A regression retains that
-distinction. The existing nontracial repair and clock-scaling tests now use
+distinction. The nontracial repair and clock-scaling tests use
 an exactly representable entangling complex unitary (controlled phase
 after `H tensor H`) and unrounded source generators. Their spectrum,
 covariance, complete positivity and stationarity assertions are retained.
 No tolerance is enlarged to recover acceptance of the rounded input.
 
-The shared numeric conversion now checks operators and references before
+The shared numeric conversion checks operators and references before
 array coercion. Masks, mixed Boolean entries and lossy conversions cannot
 supply evidence for the conserved algebra. Supplied basis arrays are copied
 and retained read-only so caller mutation cannot change the exact problem
@@ -188,25 +185,20 @@ the complete slow-memory witness above. It is not a new physical law.
 
 ## Impact on OPH evidence
 
-- The common-algebra dimension used by `repair_generator` is now computed
+- The common-algebra dimension used by `repair_generator` is computed
   from the retained exact spans. A small positive mode stays in the
   complement and must pass the existing spectral-resolution check.
-- The finite canonical-repair convergence theorem is unchanged. Its
-  numerical recognizer can no longer infer extra protected observables
-  from almost coincident declared algebras.
+- The finite conditional-expectation convergence theorem uses the exact
+  common algebra. Almost coincident declared algebras do not establish
+  extra protected observables.
 - The exact protected-record/Green-Kubo witness has explicitly preserved
-  fibres and its own rational verifier. Its protected label and published
-  conclusions are unchanged. The counterexample explains why a measured
-  small drift alone would not establish that witness's exact protection.
-- Existing nontracial, complex recharting, clock-unit, collar, regional
-  separation and MaxEnt controls pass. Signatures and ordinary trace
-  conventions are retained. No current committed receipt calls this
-  intersection routine; no pinned data, claim payload, paper, book or
-  frozen registration is regenerated. The mandatory runner is unchanged.
-- Rates and model time remain supplied. This audit does not select a
-  physical clock, realize a simulator law, or satisfy the model-selection
-  tasks #1025/#1026. It corrects an existing finite evidence claim without
-  adding a prerequisite queue.
+  fibres and its own rational verifier. The counterexample explains why a
+  measured small drift alone would not establish that witness's exact protection.
+- Nontracial, complex recharting, clock-unit, collar, regional separation and
+  MaxEnt controls retain their own finite input and numerical contracts.
+- Rates and model time remain supplied. The convergence and memory results
+  do not select a physical clock or identify the repair dynamics with an
+  observed process.
 
 ## Reproduction and hostile controls
 
@@ -214,33 +206,14 @@ the complete slow-memory witness above. It is not a new physical law.
 PYTHONPATH=code python -m pytest -q code/quantum_information code/collar_alignment code/geometry code/maxent -W error
 ```
 
-The PR adds **50 cases**. Independent controls compare all four exact
-superoperator eigenvalues, construct Choi matrices directly from matrix-unit
+Independent controls compare all four exact superoperator eigenvalues,
+construct Choi matrices directly from matrix-unit
 actions, evolve positive states with a separate matrix exponential, and
-check the near-zero lifetime formula at private 80-digit precision.
+check the near-zero lifetime formula at 80-digit precision.
 Other controls cover tensor intersections in every input order, genuinely
 complex common observables, changes of basis units, rational intersections
 whose numerical output cannot be reused as exact input, and missing data.
 
-Full affected suites: **832 passed on Linux; 826 passed on Windows with six
-existing extended-precision skips**, with warnings treated as errors.
-Eleven isolated mutations were rejected by the 50 new cases:
-
-| Deliberate defect | Failing cases |
-| --- | ---: |
-| Restore the old rank-threshold intersection | 16 |
-| Accept a nonempty span without an exact identity | 4 |
-| Ignore the final algebra | 24 |
-| Conjugate the supplied complex span | 1 |
-| Drop entries below `1e-12` | 15 |
-| Conjugate the nullspace coefficients | 3 |
-| Discard exact output before a later intersection | 1 |
-| Strip operator masks and conversion checks | 7 |
-| Strip reference masks | 2 |
-| Infer the kernel by deleting small eigenvalues | 3 |
-| Disable the unresolved positive-gap check | 3 |
-
-Each mutant ran against its own copied source outside the repository import
-path. The retained failures demonstrate false conservation, wrong rates,
-incorrect complex spans and accepted missing evidence; receipt checksums
-alone are not the verification mechanism.
+The controls distinguish false conservation, wrong rates, incorrect complex
+spans and accepted missing evidence. They test the mathematical operations
+directly rather than relying only on receipt checksums.

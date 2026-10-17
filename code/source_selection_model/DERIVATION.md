@@ -411,9 +411,10 @@ interface and is not such a projection.
 
 The conclusion is non-entailment by the stated full A1--A3 clauses, not
 impossibility of M1 in every model and not impossibility on the distinct
-W12 scalar-mean source. Earlier routing constructions remain valid under
-their supplied communication and controller interfaces. The repair-law
-RFC's A1-R/A2-R are not canonical axioms and are not silently included here.
+W12 scalar-mean source. Routing constructions remain valid under
+their supplied communication and controller interfaces. Complete primitive
+grammars and completed-reconciliation conditions are not silently added to
+the canonical axioms here.
 
 The missing structural element is a connection between carrier records
 and inter-carrier operational channels, with a rule selecting which
