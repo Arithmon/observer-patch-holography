@@ -33,6 +33,8 @@
 \newcommand{\Ex}{\mathbb{E}}
 \newcommand{\Cn}{\mathsf{C}}
 \newcommand{\En}{\mathsf{E}}
+\newcommand{\Czero}{\mathsf{C}_0}
+\newcommand{\Tn}{\mathsf{T}}
 \newcommand{\Eflux}{\mathcal{E}}
 \newcommand{\TV}{\operatorname{TV}}
 \newcommand{\dist}{\operatorname{dist}}
@@ -78,8 +80,10 @@ electric flux, charged fermions and a scalar field share one register; for a
 declared preparation its recorded feedback response is certified nonzero at
 infinite oscillator occupation. A four-read continuation retains the disturbed
 field between measurements and joins source-compiled native repairs to active
-recovery of a logical qubit, including its reference entanglement. A fixed count protocol distinguishes two quantum record laws with
-identical classical transitions; no comparison data exist. A premise map
+recovery of a logical qubit, including its reference entanglement. The
+quantum record laws compatible with the native repair form an exactly
+classified convex family, and a fixed count protocol reads the coherence that
+separates its members; no comparison data exist. A premise map
 records which theorem antecedents the construction supplies and which enter
 as inputs. The open connections are spatial refinement, responsive geometry,
 physical clock calibration and independent empirical comparison.
@@ -128,14 +132,15 @@ those antecedents the executable construction supplies on its own finite
 objects.
 
 Section~\ref{sec:spec} states the specification, namely the carrier, the
-native repair law and its contrast-record variant, the finite observer
-algebra, the declared services, the closure inputs and the time parameters.
+native repair law and the family of its quantum record laws, the finite
+observer algebra, the declared services, the closure inputs and the time parameters.
 Section~\ref{sec:target} states the completion target as five obligations
 with their acceptance evidence. Sections~\ref{sec:observer}
 to~\ref{sec:prediction} report the certified components, in turn the finite
 observer and its records, scalar field detectors, a common interacting source in which
 quantum electric flux, charged fermions and a neutral scalar share one
-register, and a fixed count protocol for two quantum record laws.
+register, and a fixed count protocol that reads the coherence separating
+the record laws.
 Section~\ref{sec:premises} gives the premise map together with four retained
 audit controls, Section~\ref{sec:open} the open connections and
 Section~\ref{sec:repro} the reproducibility contract. Every number in the
@@ -198,10 +203,10 @@ their scope. Each record names the evidence files that state the component's sco
 \toprule
 \textbf{Component} & \textbf{Sections} & \textbf{Claim record}\\
 \midrule
-Two-event native observer, quantum mixing of the repair channels, recovery
-from complete records, phase protocol for two record laws and its
+Two-event native observer, classification of record laws, quantum mixing of
+the repair channels, recovery from complete records, phase protocol and its
 source-executed implementation &
-\ref{sec:observer-algebra}, \ref{sec:native-observer}, \ref{sec:mixing},
+\ref{sec:record-laws}, \ref{sec:observer-algebra}, \ref{sec:native-observer}, \ref{sec:mixing},
 \ref{sec:recovery}, \ref{sec:ce-protocol}, \ref{sec:ce-source} &
 \texttt{OPH-MODEL-NATIVE-OBSERVER-EXECUTION}\\
 Correctable record capacity and compact controller &
@@ -262,7 +267,7 @@ support, and a physical current for the complete response algebra are not
 executed; Section~\ref{sec:premises} lists them among the supplied
 antecedents.
 
-\subsection{Native repair and its contrast-record variant}
+\subsection{Native repair and its quantum record laws}
 \label{sec:repair}
 
 Fix an oriented seam $e=(a,b)$ and a fair placement coin $c\in\{0,1\}$. The
@@ -276,7 +281,30 @@ y=x+j\,(\mathbf e_b-\mathbf e_a),
 where $\mathbf e_p$ is the unit load vector of port $p$ and $y$ is the
 repaired configuration. The two endpoint loads become the floor and the
 ceiling of their mean; the coin assigns the ceiling to $a$ when $c=1$; all
-other loads are unchanged. The record is $r=(c,j)$, the coin and the signed
+other loads are unchanged.
+
+\begin{proposition}[The classical seam rule]
+\label{prop:classical-rule}
+Let a stochastic rule on one seam (i) conserve $x_a+x_b$, (ii) end at a
+configuration minimizing $x_a^2+x_b^2$, (iii) break any remaining tie by a
+random choice independent of the loads, and (iv) be invariant under exchange
+of the two endpoints. Then it is \eqref{eq:native} with a fair coin.
+\end{proposition}
+
+\begin{proof}
+By (i) and (ii) the outputs are the floor and the ceiling of the mean. An odd
+total leaves two outputs, and by (iii) endpoint $a$ receives the ceiling with
+a constant probability $q$. Exchange of the endpoints maps $q$ to $1-q$, so
+(iv) gives $q=\tfrac12$.
+\end{proof}
+
+Without (iii), the rule that leaves the extra unit with the endpoint holding
+more satisfies the other three requirements. It fixes every binary
+configuration, so the binary shell carries no motion and the records carry
+no geometry. Requirement (iii) applies the no-outside rule to the tie:
+nothing recovered prefers one endpoint.
+
+The record is $r=(c,j)$, the coin and the signed
 current. Compatibility on a seam is specified independently of the update;
 it requires the two endpoint loads to differ by at most one. On the quantum load space the
 record defines the current instrument $\Cn$ with Kraus operators and
@@ -335,14 +363,95 @@ seams against an independent floor and ceiling rule \cite{oDERIV}.
 
 The current instrument is not a classical coarse-graining of the contrast
 instrument. Grouping the labels of $\En$ sums density operators and cannot
-restore the coherent Kraus sums of $\Cn$. The classical repair rule alone
-selects neither instrument, and Section~\ref{sec:prediction} makes the choice
-observable. The candidate register of the construction also records laws that
+restore the coherent Kraus sums of $\Cn$. Both are members of one family of
+quantum record laws, which Section~\ref{sec:record-laws} classifies. The candidate register of the construction also records laws that
 couple the native current to private six-level response factors at the two
 seam endpoints \cite{mCANDIDATES}. One of them, a reciprocal coherent
 exchange named N4, enters the local-tick certificate of
 Section~\ref{sec:local-tick}; the other components use the native law and its
 contrast variant.
+
+\subsection{Admissible record laws}
+\label{sec:record-laws}
+
+The classical rule fixes the diagonal of a record law and leaves its
+coherences free. For the seam $e=(a,b)$ write $\kappa(x)=(x_a,x_b)$ for the
+seam key and $D=\mathbf e_b-\mathbf e_a$. A channel $\Phi$ on $\Hil_{78}$ is
+an admissible record law for $e$ if it acts as the identity on the ten
+spectator ports, reproduces the classical repair distribution on every
+$\proj x$, commutes with $U_t=\exp(i\sum_pt_pN_p)$ for every $t\in\mathbb
+R^{12}$, and is invariant under the carrier rotation that exchanges $a$ and
+$b$ with the current reversed. The third condition is the quantum form of
+local load conservation: every recorded branch transports one definite load.
+
+\begin{theorem}[Coherence tables]
+\label{thm:record-laws}
+A channel $\Phi$ is an admissible record law if and only if
+\[
+\Phi(\ket x\bra{x'})=\sum_j G_j\bigl(\kappa(x),\kappa(x')\bigr)\,
+\ket{x+jD}\bra{x'+jD}
+\]
+for endpoint-symmetric positive semidefinite matrices $G_j$ on the seam keys
+that can carry the current $j$, with $G_j(\kappa,\kappa)=\Pr(j\mid\kappa)$.
+On $\Hil_{78}$ the free entries are five multipliers: $k$ between the empty
+and the full seam, $g$ between the empty seam and a waiting single load, $h$
+between the full seam and a waiting single load, a real $m$ between the two
+waiting orientations, and $n$ between a moving single load and a moving
+collision. Positivity gives $\lvert g\rvert,\lvert h\rvert,\lvert
+n\rvert\le2^{-1/2}$ and $\lvert m\rvert\le\frac12$, and $k=1$ forces
+$g=h$. Repairing one seam with $(k,g,h,m,n)$ and then with
+$(k',g',h',m',n')$ gives $(kk',gg',hh',mm',n\bar h')$. Exactly two admissible
+laws are idempotent, those with $g=h=m=n=0$ and $k\in\{0,1\}$, and every law
+with $k=1$ converges under repetition to the idempotent law with $k=1$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Covariance places $\Phi(\ket x\bra{x'})$ in the span of units $\ket
+y\bra{y'}$ with $y-y'=x-x'$. Complete positivity confines nonzero Choi
+entries to pairs with nonzero diagonal, which the classical law makes
+$(x,x+jD)$, so both sides carry the same current and the Choi matrix is the
+direct sum of the $G_j$. Trace preservation and the classical law fix the
+diagonals, and spectator invariance makes each $G_j$ a function of the seam
+keys. Under repetition every coherence keeps its seam key, so each multiplier
+applies again; idempotence requires $k,g,h,m\in\{0,1\}$ and $n=n\bar h$, and
+the bounds leave $g=h=m=n=0$. Exact arithmetic in $\mathbb Q(\sqrt2)(i)$
+checks the composition law on every pair of seam keys for 64 ordered pairs
+of tables and on all 6,084 matrix units for two pairs \cite{mRECORDLAWS}.
+\end{proof}
+
+Four members stand out (Table~\ref{tab:record-laws}). They form a ladder:
+$\Cn$ is $\Czero$ followed by a diagonal readout of the coin, $\En$ is $\Cn$
+followed by a readout of the seam parity as in
+Proposition~\ref{prop:native}(v), and $\Tn$ is $\Cn$ followed by a readout of
+the seam total. The completion of $\Cn$ in Proposition~\ref{prop:native}(iv)
+is the case $g=h=n=\frac12$, $m=0$ of the theorem, and $\En$ is the
+idempotent law with $k=1$. A recorder of an endpoint's pre-repair load keeps
+the classical law and fails covariance, because one of its branches carries
+two currents. Each member corresponds to a principle: $\Czero$ records only
+what conservation requires, $\Cn$ records the tie-break as an event, $\En$ is
+the coarsest law for which one repair completes the seam, and $\Tn$ records
+the full seam occupation. None of these principles follows from the theorem
+premises as stated. The construction executes $\Cn$, whose records are
+exactly the classical event data, and compares it with $\En$. All members
+assign the same probabilities to every classical observation, and
+Section~\ref{sec:prediction} reads $g$ in one coherent event.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Four distinguished admissible record laws \cite{mRECORDLAWS}.}
+\label{tab:record-laws}
+\begin{tabular}{@{}lL{0.36\linewidth}cccc@{}}
+\toprule
+Law & Each event records & Values per seam & $k$ & $g=h$ & Idempotent\\
+\midrule
+$\Czero$ & the current & 3 & 1 & $2^{-1/2}$ & no\\
+$\Cn$ & coin and current & 6 & 1 & $1/2$ & no\\
+$\En$ & coin and pre-repair contrast & 10 & 1 & 0 & yes\\
+$\Tn$ & coin and both endpoint loads & 12 & 0 & 0 & yes\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{The finite observer algebra}
 \label{sec:observer-algebra}
@@ -568,7 +677,7 @@ predictions and rejection rules fixed before independent comparison data;
 agreement with the observed statistics, including alternatives and
 distinguishing tests. Reusing a calibration datum is not an independent
 prediction. &
-\textbf{Decision rule fixed; no data.} A fixed count protocol for two record laws, without data (Sections~\ref{sec:ce-protocol}, \ref{sec:ce-source}); a retrospective coupling audit (Section~\ref{sec:endpoint}). The coupling map $P\mapsto\alpha(P)$ is a supplied input.\\
+\textbf{Decision rule fixed; no data.} A fixed count protocol that reads the record-law coherence $g$, without data (Sections~\ref{sec:ce-protocol}, \ref{sec:ce-source}); a retrospective coupling audit (Section~\ref{sec:endpoint}). The coupling map $P\mapsto\alpha(P)$ is a supplied input.\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2202,15 +2311,16 @@ dependency set proves the dependency claim by induction
 \section{A prediction protocol}
 \label{sec:prediction}
 
-\subsection{The phase experiment for two record laws}
+\subsection{The phase experiment}
 \label{sec:ce-protocol}
 
-The classical repair law does not select between the current instrument
-$\Cn$ and the contrast instrument $\En$ (Section~\ref{sec:repair}). A fixed
-interference experiment makes the choice observable, and its count protocol
-is fixed before any data \cite{prREADME,prDERIV}. Both candidates are
-ordinary quantum instruments, so the test separates two record laws and
-makes no claim to separate OPH from quantum mechanics.
+The classical repair law fixes the diagonal of every admissible record law
+and none of its coherences (Theorem~\ref{thm:record-laws}). A fixed
+interference experiment reads the multiplier $g$ that separates the members,
+and its count protocol, which compares the executed laws $\Cn$ and $\En$, is
+fixed before any data \cite{prREADME,prDERIV}. All members are ordinary
+quantum instruments, so the test separates record laws and makes no claim to
+separate OPH from quantum mechanics.
 
 Write $x=\{2,3\}$, $z=\{1,2\}$ and $w=\{0,2\}$ for binary configurations on
 the 78-dimensional carrier. Prepare
@@ -2250,19 +2360,32 @@ by their contrasts. Summing $\Tr(P_+\rho_rP_+)$ over the branches gives (ii)
 \begin{table}[htbp]
 \centering
 \small
-\caption{Plus probabilities of the four fixed settings \cite{prREADME}.}
+\caption{Plus probabilities of the four fixed settings \cite{prREADME,mRECORDLAWS}.}
 \label{tab:ce}
-\begin{tabular}{@{}lcc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-Preparation & $\Cn$ & $\En$\\
+Preparation & $\Czero$ & $\Cn$ & $\En$ & $\Tn$\\
 \midrule
-Phase $0$ & $5/8$ & $3/8$\\
-Phase $\pi$ & $1/8$ & $3/8$\\
-Phase $\pi/2$ & $3/8$ & $3/8$\\
-Incoherent mixture of $x$ and $z$ & $3/8$ & $3/8$\\
+Phase $0$ & $\frac38+\frac{\sqrt2}{4}$ & $5/8$ & $3/8$ & $3/8$\\
+Phase $\pi$ & $\frac38-\frac{\sqrt2}{4}$ & $1/8$ & $3/8$ & $3/8$\\
+Phase $\pi/2$ & $3/8$ & $3/8$ & $3/8$ & $3/8$\\
+Incoherent mixture of $x$ and $z$ & $3/8$ & $3/8$ & $3/8$ & $3/8$\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+For every admissible record law the plus probability is
+\[
+p_\Phi(\theta)=\tfrac38+\tfrac12\operatorname{Re}\bigl(g\,e^{-i\theta}\bigr).
+\]
+The empty seam of $x$ stays in place, and $z$ waits with probability
+$\frac12$ while keeping coherence $g$ with $x$. Proposition~\ref{prop:ce} is
+the case $g=\frac12$ for $\Cn$ and $g=0$ for $\En$. The aggregate plus
+frequencies of the settings $0$, $\pi$ and $\pi/2$ therefore estimate
+$\operatorname{Re}g$ and $\operatorname{Im}g$ for whichever law is realized
+\cite{mRECORDLAWS}. Laws with equal $g$, such as $\En$ and $\Tn$, are
+separated by the same construction with the full seam $\{0,1\}$ in place of
+$z$, which gives $\frac12+\frac12\operatorname{Re}(k\,e^{-i\theta})$.
 
 The count protocol fixes four settings with 8,192 fresh independent attempted
 trials each and no optional stopping. Each attempt contributes to one of
@@ -2304,7 +2427,8 @@ count files unverified, and every result reports empirical confirmation as
 false \cite{prREADME}. If one candidate survives and the other is rejected,
 the counts discriminate the conditional instruments; if both survive, the
 test does not separate them; if both are rejected, neither specified
-apparatus model explains the counts within the declared premises.
+apparatus model explains the counts within the declared premises. In every
+case the same counts bound the realized coherence $g$.
 
 \subsection{The source-executed implementation}
 \label{sec:ce-source}
@@ -2563,7 +2687,9 @@ length and time units and leaves an energy scale free \cite{csCALIB}.
 \paragraph{Physical realization of the phase test.} The test of
 Section~\ref{sec:prediction} needs a realized preparation and observable, an
 independently established service budget, and complete records collected
-under the fixed protocol. A physical model of nature additionally needs
+under the fixed protocol. Its outcome is a measured coherence $g$, which
+locates the realized record law within the family of
+Theorem~\ref{thm:record-laws}. A physical model of nature additionally needs
 sector-specific predictions; comparisons with data seen before a protocol was
 fixed are postdictions.
 
@@ -2690,6 +2816,11 @@ FloatingPragma (2026). \emph{OPH model construction from local repair}.
 Construction guide with completion target, acceptance criteria and audit
 controls.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/196b271021967927bc2626283b6cf7955972a4b2/model/CONSTRUCTION.md}
+
+\bibitem{mRECORDLAWS}
+FloatingPragma (2026). \emph{Admissible record laws for native repair}. Model
+document and exact receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/f2f264de2743d4c5d0194ff93bd792ec6e7708e2/model/record_laws/README.md}
 
 \bibitem{mCANDIDATES}
 FloatingPragma (2026). \emph{Concrete repair-law candidates}. Candidate

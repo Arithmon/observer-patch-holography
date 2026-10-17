@@ -54,7 +54,7 @@ Observers capable of running a repair law act within the history. Recovering an 
 6. Why isn't agreeing with your neighbors enough? Every pair can agree while a loop carries a residue, and a leftover of exactly one survives every repair order.
 7. Why is there no such thing as now? Causal order does not select a preferred universal clock; logical orderings and calibrated local durations are distinct constructions.
 8. Why can strangers agree without a boss? A declared local rule can converge under its schedule and fault assumptions; causal depth and synchronous rounds give different work descriptions.
-9. What move does reality actually make? The scalar pair-repair contract selects the midpoint and preserves the pair sum; selecting a universal physical law is a further problem.
+9. What move does reality actually make? Split the difference and let a fair coin place the odd unit; one interference experiment reads what each repair writes down.
 10. Why doesn't it matter who goes first? The reported finite repairs reach a common terminal record under their tested schedules; stronger schedule independence uses the stated confluence and progress hypotheses.
 11. What does everybody actually end up holding? Within a terminating, confluent repair model, a reachable observable normal form is unique; reconstructing one world from boundary records additionally requires a unique-extension premise.
 12. Why is the world made of relations and not of things? The sourced action is gauge-invariant if and only if the source is conserved.
@@ -80,7 +80,7 @@ Observers capable of running a repair law act within the history. Recovering an 
 32. Why was every open problem the same problem? Every one of them was a consequence of starting with a stage.
 33. Why was Newton right for two hundred years? Redundancy is what makes anything definite, and the layer he wrote down has no motion of its own.
 34. What is anything made of? Ten entries, each a rate, a count, a rank, a cost or a commitment, and no substances.
-35. Why these laws and not others? In the specified fixed-score selection model, the average score rises with score variance. That conditional result does not select a common fundamental physical repair law; the programme has yet to establish one.
+35. Why these laws and not others? In the specified fixed-score selection model, the average score rises with score variance. The selection runs over repair rules, from inside, and never needed an ensemble of worlds.
 36. Why does the loop have no beginning? The proposed complete history is its own intrinsic realization; its closure equation adds no external start or clock.
 37. Why does anything try to persist? No amount of private repair reaches a state that one network update reaches with certainty.
 38. Why is a bacterium freer than an atom? Room to be otherwise increases the further down the tree you go.

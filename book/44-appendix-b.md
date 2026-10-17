@@ -166,13 +166,15 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Record.** Data retained under a specified protection and access contract. Some models preserve earlier entries while appending later ones; some retain only a reduced public record. Repeatability, copyability, persistence and the observer's ability to access it must be stated rather than assumed for every state variable.
 
+**Record law.** What a repair writes down when it acts: how much load crossed the seam, and possibly the coin, the parity of the seam total or the full count at both ends. It fixes which quantum coherences survive the repair. Counting experiments give the same statistics under every record law, and one interference experiment tells them apart.
+
 **Record map.** A declared projection from a model's state to its accessible records. Its fibers express what those records leave unresolved. Other readouts or interventions can refine them; information omitted by this map is not thereby forever inaccessible or conscious.
 
 **Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. The model's space looks smooth for that reason. The smooth version is a limit nobody occupies.
 
 **Relative entropy.** A divergence comparing two probability laws or quantum states. It cannot increase when both are passed through the same stochastic channel, or the same completely positive trace-preserving quantum channel. Arbitrary postselection or different processing of the two states is not covered.
 
-**Repair.** An admissible update intended to restore an independently specified compatibility or legitimate-state condition while preserving protected data. Midpoint averaging is one scalar realization, with its own sum-preservation law. It is not the definition of every OPH candidate dynamics or a selected universal physical law.
+**Repair.** An admissible update intended to restore an independently specified compatibility or legitimate-state condition while preserving protected data. Midpoint averaging is its scalar form, with its own sum-preservation law; on whole-number loads the two ends go to the floor and ceiling of their mean, and a fair coin places the odd unit.
 
 **Repair load.** How much of an observer's state fails to lie along the field its neighbors have written on its boundary. It cannot go below zero and it reaches zero exactly when the two agree, which is the reading a tuner is listening for when the beat disappears.
 

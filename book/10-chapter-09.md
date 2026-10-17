@@ -102,6 +102,16 @@ Watch one of them get out. An observer holding two units sits opposite an observ
 
 Three hundred and two failures out of 1,352,078 arrangements is a failure rate of two in ten thousand, which is why the rule had to be run over every arrangement rather than over a sample of them.
 
+## What a repair writes down
+
+One freedom is left in the completed move. When the two readings add to an odd number, somebody has to end up with the extra unit, and nothing at the seam prefers either end. So the choice is a fair coin. That finishes the rule: nothing lost, the job done in one move, a tie broken by a coin that looks at nothing, and no favorite end. Take the coin away and let the fuller side always keep the spare unit, and the 302 stuck arrangements come straight back. The coin is what lets the surplus walk.
+
+In a quantum world a repair does one more thing. It writes something down. The requirements, the completed move and the coin fix where the units go. They do not fix what the event records, and the record decides how much of the world's quantum coherence survives the repair. A repair can record only how many units crossed the seam. It can record the coin as well. It can add whether the seam's total was odd, or the full count at both ends. Each extra entry is one more fact the world has committed to, and each one erases interference that a leaner record would have kept.
+
+All of these records agree about everything you can learn by counting units. Prepare definite arrangements, repair, read the records, and the statistics come out the same whichever record the world keeps. The difference is in the coherence, and the cleanest place to see it is between an empty seam and a seam holding a single unit, which the coin may leave where it is. Put those two arrangements into superposition, repair once, and ask whether the superposition came back. The chance is three eighths plus half the coherence that survived. A record of the crossing alone gives about 0.73. Adding the coin gives five eighths. Adding the parity of the total gives three eighths, flat, at every phase.
+
+The parity record and the full count share a property the leaner records lack. After either of them, repairing the same seam a second time changes nothing at all: one repair finishes the job, the way a projection does. Every record that keeps an empty seam coherent with a full one ends at the parity record if the same seam is repaired often enough. Which record the world keeps is a question for that one interference experiment, and its answer is a coherence no larger than about seven tenths.
+
 ## Two tellers, one account
 
 An account holds 1,000 and two tellers open it at the same moment. The first takes a deposit of 100, adds it to the 1,000 in front of her, and writes 1,100. The second pays out 200, subtracts it from the 1,000 in front of him, and writes 800. Both did correct arithmetic on the number they were given. The account ends at 800, the depositor's 100 is gone, and no entry anywhere records its disappearance, because every individual entry is right.

@@ -281,7 +281,7 @@ so repair terminates.
 The executable observer runs on one carrier with twelve nonnegative integer
 loads of total two. There are $78$ such configurations, and the $66$ binary
 configurations form an invariant shell. For an oriented seam $(a,b)$ and a
-fair placement coin $c\in\{0,1\}$, the native repair law, called C, moves
+fair placement coin $c\in\{0,1\}$, the native repair law moves
 \begin{equation}
 d=x_a-x_b,\qquad
 j=\tfrac12\bigl[d-(2c-1)(|d|\bmod 2)\bigr],\qquad
@@ -289,13 +289,18 @@ y=x+j\,(e_b-e_a),
 \label{eq:native-repair}
 \end{equation}
 so load is conserved and the signed current $j$ is the native observation.
-Its quantum current instrument has Kraus operators
-$L_{(c,j)}=2^{-1/2}\sum_{x:\,j(x,c)=j}|y(x,c)\rangle\langle x|$. A second
-law, E, is C with one additional seam-parity record. Both laws have the same
-diagonal classical repair statistics, and they differ in the coherence they
-preserve: Section~\ref{sec:empirical} turns that difference into a test.
+Conservation, one-step balance, a tie-break that reads no load and endpoint
+symmetry force this rule. Its quantum version is a record law, and seam
+locality, the classical law and local number-phase covariance leave a convex
+family of them, each a table of five coherence multipliers
+\cite{ophrecordlaws}. The executed law C records coin and current, with Kraus
+operators $L_{(c,j)}=2^{-1/2}\sum_{x:\,j(x,c)=j}|y(x,c)\rangle\langle x|$.
+Dropping the coin record gives the most coherent member; adding the seam
+parity gives E, and E and the seam-total recorder are the only idempotent
+members. All members share every classical statistic, and
+Section~\ref{sec:empirical} reads the coherence that separates them.
 The quantum relaxation of the channels obtained by discarding the source record, the forgotten-source channels, is known exactly.
-Both laws have quantum spectral gap $(5-\sqrt5)/60$ on the binary shell and
+C and E have quantum spectral gap $(5-\sqrt5)/60$ on the binary shell and
 on the full carrier, their slowest binary coherences decay by the sharp factors $5/6$ per attempt
 for C and $7/10$ for E, the binary-shell channel becomes entanglement breaking
 after finitely many attempts ($134$ attempts suffice by an explicit
@@ -352,7 +357,7 @@ one work register. Native source words implement their noncommuting
 evolution, the matter and scalar pointer instruments, and feedback
 controlled by a committed matter bit; the final scalar bit controls the next
 native repair. A smooth extension retains four quantum reads on the same
-disturbed state, compiles both native record laws around it, and actively
+disturbed state, compiles the C and E record laws around it, and actively
 protects a logical qubit with record-controlled recovery. Its complete
 conditional native/work/reference outputs are retained. In the original sharp
 protocol, for zero native preparation current the scalar feedback
@@ -1297,9 +1302,9 @@ $\Delta S_{\mathrm{gen}}^{\max}=\log(1-f)<0$ & finite theorem &
 Isotropy of propagation to angular rank five & The first symmetry-allowed
 anisotropic rank of the carrier class is six, with two frozen rays inside
 one exact band & finite theorem; frozen prospective branch prediction & \S\ref{sec:spin-six}\\
-An instrument comparison fixed before data & C and E repair predict $5/8$,
-$1/8$ and $3/8$ on fixed coherent settings, with a complete-count rejection
-rule & prospectively fixed conditional test & \S\ref{sec:empirical}\\*
+An instrument comparison fixed before data & One coherent event reads the
+record law's coherence; C predicts $5/8$ and $1/8$, E predicts $3/8$, with a
+complete-count rejection rule & prospectively fixed conditional test & \S\ref{sec:empirical}\\*
 \bottomrule
 \end{longtable}
 }
@@ -1814,10 +1819,12 @@ branch forced and exclusive \cite{ophregister}.
 
 \subsection{An instrument test from the executable observer}
 
-The two native repair laws C and E have identical diagonal classical
-statistics and differ in the coherence they preserve. On a fixed coherent
-two-state source preparation, reversing the phase changes the C readout
-probability from $5/8$ to $1/8$, while E predicts $3/8$ for both. Four fixed
+Every admissible record law has the classical statistics of C and E, and
+the laws differ in one coherence $g$ between an empty seam and a waiting
+single load. On a fixed coherent two-state source preparation the readout
+probability is $3/8+\tfrac12\operatorname{Re}(g\,e^{-i\theta})$: reversing
+the phase moves C from $5/8$ to $1/8$, E predicts $3/8$ for both, and the law
+that records only the current predicts $3/8\pm\sqrt2/4$ \cite{ophrecordlaws}. Four fixed
 settings include common-phase and incoherent controls. The complete-count
 evaluator uses $8192$ trials per setting, an independently established
 probability-error budget of $1/64$ and an exact sampling certificate below
@@ -2514,6 +2521,10 @@ Criteria}. Public manuscript.
 FloatingPragma (2026). The runnable OPH model: observer implementation,
 tests, receipts and construction guide.
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/196b271021967927bc2626283b6cf7955972a4b2/model}
+
+\bibitem{ophrecordlaws}
+FloatingPragma (2026). Admissible record laws for native repair.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/f2f264de2743d4c5d0194ff93bd792ec6e7708e2/model/record_laws/README.md}
 
 \bibitem{ophmixing}
 FloatingPragma (2026). Native quantum mixing and the full-carrier memory
