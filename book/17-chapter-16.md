@@ -48,7 +48,7 @@ That is what this midpoint update does to the two readings: it preserves their s
 
 Those two facts fail differently. The acceptance test is a rule about which moves are available, and a rule can in principle be relaxed. The overwriting is arithmetic. Seven into one is a fact about averaging whole numbers, and no amount of relaxing anything recovers the input from the output.
 
-A write can be made reversible on an enlarged state by retaining enough information about its input. The reduced output can then look irreversible while the full map is injective. Resetting used memory under a specified thermal protocol has a separate cost; it does not follow that every commit erases information from the complete universe. Counting commits and counting erased bits are different operations.
+A write can be made reversible on an enlarged state by retaining enough information about its input. Chapter nine's repairs keep such a record: the number of units that crossed the seam, which together with the result returns the input. The reduced output can then look irreversible while the full map is injective. Resetting used memory under a specified thermal protocol has a separate cost; it does not follow that every commit erases information from the complete universe. Counting commits and counting erased bits are different operations.
 
 Order is a relation between two records, checkable by whoever holds both and carrying no units. Direction is a property of a single move, showing up as an arithmetic loss inside that move. Drawing one axis and putting an arrow along it welds the two into a single object. The weld is why people go looking for the arrow in the first instant of the universe.
 

@@ -136,11 +136,11 @@ law. On the total-two carrier five multipliers remain:
 
 | Multiplier | Coherence it keeps | Bound |
 | --- | --- | --- |
-| `k` | empty seam with full seam | `|k| ≤ 1` |
-| `g` | empty seam with a waiting single load | `|g| ≤ 1/√2` |
-| `h` | full seam with a waiting single load | `|h| ≤ 1/√2`; `h=g` when `k=1` |
-| `m` | the two waiting orientations | real, `|m| ≤ 1/2` |
-| `n` | a moving single load with a moving collision | `|n| ≤ 1/√2` |
+| `k` | empty seam with full seam | `\|k\| ≤ 1` |
+| `g` | empty seam with a waiting single load | `\|g\| ≤ 1/√2` |
+| `h` | full seam with a waiting single load | `\|h\| ≤ 1/√2`; `h=g` when `k=1` |
+| `m` | the two waiting orientations | real, `\|m\| ≤ 1/2` |
+| `n` | a moving single load with a moving collision | `\|n\| ≤ 1/√2` |
 
 A law that records the endpoint's pre-repair load, `(c,x_a)`, keeps the
 classical rule exactly and fails covariance: one of its branches carries two

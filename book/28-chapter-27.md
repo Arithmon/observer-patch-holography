@@ -138,6 +138,8 @@ The electron crossed the tube on West Street with no record written anywhere of 
 
 The same reading settles what happens when somebody tries to watch. Put an instrument in the apparatus that succeeds in telling you which route was taken and the bands go. Delicacy buys nothing. No version of the instrument has ever been built gentle enough to report the route and leave the pattern standing, because reporting the route is writing a record, and a record is a commit. What the instrument deletes is every comparison between the two routes, which is where the cancellation lived. An instrument that fails to determine the route deletes nothing and the bands survive, however violently it fails.
 
+A repair is such an instrument. Chapter nine's experiment puts an empty seam and a seam holding a single unit into superposition and lets one repair act. A repair that writes down only how many units crossed leaves most of the comparison standing. One that also writes the parity of the seam deletes it, and the bands go flat at three eighths. How much contrast the bands keep is a reading of what the repair writes.
+
 Duality is a statement about when the record is written. The older question, which of two natures the thing has, carries an unstated variable, and the variable is the depth at which the reading is being taken. Fix the depth and the ambiguity goes. Nothing whatever happens to the electron at the plate. A record gets written, and a record holds a number.
 
 ## The term that cannot be written

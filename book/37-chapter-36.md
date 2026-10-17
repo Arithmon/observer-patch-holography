@@ -164,7 +164,7 @@ The constructed patch-local repair networks compute finite Boolean functions und
 
 Set the two results next to each other.
 
-The first supplies endpoint invariance under a declared projection and progress conditions. The second supplies constructed local networks for finite Boolean functions. Neither result alone identifies every physical observable or establishes that one universal repair law has been selected. Together they provide restricted ingredients for the proposed intrinsically computing world.
+The first supplies endpoint invariance under a declared projection and progress conditions. The second supplies constructed local networks for finite Boolean functions. Neither result alone identifies every physical observable. Together they provide restricted ingredients for the proposed intrinsically computing world.
 
 These results supply two ingredients for the proposed loop. They do not show that a finite record determines the architecture that produced it. Observers can reconstruct and replay the recorded program; identifying the full hardware requires additional observations or restrictions on the allowed structures. Equality between the constructed realization and the inhabited world is the closure hypothesis.
 

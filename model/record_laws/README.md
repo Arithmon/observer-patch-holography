@@ -84,11 +84,11 @@ carrier:
 
 | Multiplier | Coherence it keeps | Bound |
 | --- | --- | --- |
-| `k = G_0((0,0),(1,1))` | empty seam with full seam | `|k| ≤ 1` |
-| `g = G_0((0,0),(0,1))` | empty seam with a waiting single load | `|g| ≤ 1/√2` |
-| `h = G_0((1,1),(0,1))` | full seam with a waiting single load | `|h| ≤ 1/√2` |
-| `m = G_0((1,0),(0,1))` | the two waiting orientations, real | `|m| ≤ 1/2` |
-| `n = G_-1((0,1),(0,2))` | a moving single load with a moving collision | `|n| ≤ 1/√2` |
+| `k = G_0((0,0),(1,1))` | empty seam with full seam | `\|k\| ≤ 1` |
+| `g = G_0((0,0),(0,1))` | empty seam with a waiting single load | `\|g\| ≤ 1/√2` |
+| `h = G_0((1,1),(0,1))` | full seam with a waiting single load | `\|h\| ≤ 1/√2` |
+| `m = G_0((1,0),(0,1))` | the two waiting orientations, real | `\|m\| ≤ 1/2` |
+| `n = G_-1((0,1),(0,2))` | a moving single load with a moving collision | `\|n\| ≤ 1/√2` |
 
 The listed bounds are the two-by-two conditions. The full condition is that
 the four-by-four matrix of the current-zero block is positive. One
