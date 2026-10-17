@@ -54,11 +54,14 @@ validated by replay of their declared prefix.
 
 The native construction uses twelve-port elementary carriers and their
 seam wiring. Federations join those same elementary factors; they do not
-introduce a different kind of larger elementary observer. C and E are two
-specified quantum continuations of the native repair: their configuration
-laws agree, while the records that distinguish their Kraus alternatives
-produce different coherence laws. The
-[candidate register](CANDIDATES.md) describes their domains and interfaces.
+introduce a different kind of larger elementary observer. The classical
+seam rule is forced by four stated requirements. Its quantum record laws form
+one convex family, [classified exactly](record_laws/README.md) by five
+coherence multipliers; the model executes C, which records coin and current,
+and compares it with E, which also records the seam parity. All members share
+every classical observation, and one coherent interference experiment reads
+the coherence that separates them. The [repair-law guide](CANDIDATES.md)
+explains what is forced, what is free and how to tell.
 
 A declared instance supplies its carrier, accessible algebra, instruments,
 repair law, preparation domain and scheduling protocol. Consequences of
@@ -422,7 +425,8 @@ benchmark structure remains a premise until its connection is demonstrated.
   [construction paper](../paper/executable_observer_construction.pdf):
   contracts, acceptance criteria and finite-to-physical theorem routes.
 - [Model–theorem premise map](PREMISES.md): hypotheses and mathematical
-  attachments; [candidate register](CANDIDATES.md): declared alternatives.
+  attachments; [repair-law guide](CANDIDATES.md): what is forced, what is
+  free and how to tell.
 - [Mathematical foundations](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md) and
   [working terms](../docs/INTERPRETATION_AND_TERMS.md): compatibility,
   scheduling, observer access and the distinction between history and state.

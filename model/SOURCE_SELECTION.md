@@ -18,7 +18,7 @@ the generated
 | --- | --- | --- |
 | Carrier architecture | Local state and record carriers; oriented ports and overlaps; composition and refinement maps; presentation equivalence. | A1 declares the twelve-port icosahedral architecture. Its incidence forces axes and symmetry consequences, but does not select that architecture from an unrestricted menu. The finite load and code realizations retain their declared domains. |
 | Observer interface and implementation | Accessible algebra; preparations and interventions; record dictionary and commitment; admissible coherent access; memory, controller and readout; implementations and their resource/error contracts. | The finite observers execute these operations, but tape capacity, preparation, forecast, feedback, halt and coherent code services are declared designs. Agreement in complementary bases can force a specified code-transfer channel to be identity; accepting those observations is an interface premise. |
-| Complete repair rule | Local transition or instrument on every admitted input, including reference correlations; coherent phases when accessible; retained and discarded outputs; event composition and admissible scheduling. | N1 fixes conservative integer repair, C/E fix different quantum instruments, and the finite controller fixes its schedule. A committed instrument alone does not specify a later use of its uncommitted dilation. |
+| Complete repair rule | Local transition or instrument on every admitted input, including reference correlations; coherent phases when accessible; retained and discarded outputs; event composition and admissible scheduling. | Four stated requirements force the conservative integer repair with a fair coin. The admissible quantum record laws form an exactly [classified convex family](record_laws/README.md); C and E are executed members, and the finite controller fixes its schedule. A committed instrument alone does not specify a later use of its uncommitted dilation. |
 
 These are obligations to justify, not three completed selections. Moving an
 arbitrary Hamiltonian, coupling, clock rate or target-fitting table into one
@@ -389,6 +389,21 @@ the complete trial budget is prospective. Physical service errors require a
 separate uniform conditional bound. No deposited laboratory dataset is
 identified with this native protocol, and a compiler's numerical-array
 certificate does not provide that correspondence.
+
+## Record-law selection
+
+The record layer of the repair rule has an exact answer up to one coherent
+measurement. Seam locality, the exact classical law, local number-phase
+covariance and endpoint symmetry admit precisely the coherence tables of the
+[record-law classification](record_laws/README.md). Within that family the
+candidate principles are explicit: recording only what conservation needs
+gives C0, recording the tie-break as an event gives C, requiring one repair
+to complete the seam gives E, and recording the full seam occupation gives T.
+None of these principles follows from A1--A3 as stated. The family's
+coherence `g` is observable in one coherent event, with plus probability
+`3/8 + Re(g e^{-iθ})/2`, and classical records are blind to it. The
+endpoint-prevalue recorder shows that the covariance requirement does
+independent work: it keeps the classical law and fails covariance.
 
 ## Open selection obligations
 

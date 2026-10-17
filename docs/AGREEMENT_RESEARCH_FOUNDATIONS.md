@@ -1,7 +1,7 @@
 # Established mathematics for observer agreement
 
 This guide governs theorem reuse in the
-[model search](../model/CONSTRUCTION.md), [candidate register](../model/CANDIDATES.md), and
+[model search](../model/CONSTRUCTION.md), [repair-law guide](../model/CANDIDATES.md), and
 their existing [premise obligations](../model/PREMISES.md). The target remains
 one physical process with compatible carrier, response, record and clock
 readouts. Established results about distributed recovery and sheaf diffusion

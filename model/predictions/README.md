@@ -68,6 +68,17 @@ classical record values. Fresh preparations supply independent trials.
 The phase-reversal contrast is `1/2` for C and zero for E. All four
 preparations have identical classical load probabilities. Consequently a
 classical endpoint comparison alone cannot distinguish these instruments.
+
+The two columns are special cases of one formula. For every quantum record
+law compatible with the native seam rule, the plus probability is
+`3/8 + Re(g e^{-iθ})/2`, where `g` is the law's coherence between the empty
+seam of `x` and the waiting single load of `z`; C has `g=1/2` and E has
+`g=0`. The [record-law classification](../record_laws/README.md) proves this
+and gives the other distinguished laws: recording only the current gives
+`g=1/√2`, and recording the full seam occupation gives `g=0`. The aggregate
+plus frequencies of the four settings therefore estimate `Re g` and `Im g`
+for any admissible law, while the locked decision rule below compares the two
+executed laws.
 [DERIVATION.md](DERIVATION.md) gives the complete joint law and the exact
 channel calculation.
 

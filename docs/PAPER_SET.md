@@ -32,8 +32,10 @@ under their declared services and inputs:
   exact prepared-history comparison gives useful complete-output bounds;
 - exact results on what the native records keep: the quantum mixing gap, the
   entanglement-breaking boundary and the optimal recovery fidelity;
-- a frozen instrument comparison between the two native repair laws with a
-  complete-count rejection rule and an explicit no-data verdict.
+- an exact classification of the quantum record laws compatible with the
+  native seam rule, and a frozen instrument comparison that reads their
+  distinguishing coherence, with a complete-count rejection rule and an
+  explicit no-data verdict.
 
 The effective quantum-field, classical and gravitational rows and independent
 physical comparison are open. The [construction guide](../model/CONSTRUCTION.md#remaining-construction-work)

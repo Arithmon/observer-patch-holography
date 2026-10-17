@@ -45,7 +45,7 @@ intemporelle et les horloges qu’elle contient.
   et un champ scalaire sur un même registre, et un calcul exact certifie que
   sa rétroaction enregistrée modifie la réponse mesurée. Son protocole
   continu à mesure lisse exécute quatre lectures du même état perturbé,
-  compile les deux réparations quantiques natives et protège un qubit codé
+  compile deux lois d’enregistrement quantiques de la réparation native et protège un qubit codé
   par une récupération commandée par les registres, sous des services déclarés.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
@@ -97,16 +97,21 @@ expérience conjointe la plus forte est le
 le flux électrique quantique, des fermions chargés et un champ scalaire
 partagent un même registre fini avec des instruments complets, des registres
 conservés et une rétroaction native ; l’action du champ et la préparation sont
-des entrées fournies. Le [paquet de prédictions](model/predictions/README.md)
-fixe deux instruments de détection concurrents et leur règle de rejet par
-comptage avant tout comptage indépendant, et le
+des entrées fournies. Le
+[guide des lois de réparation](model/CANDIDATES.md) montre quelles parties de
+la loi de réparation sont imposées et lesquelles restent libres : la règle
+classique découle de quatre exigences, et ses lois d’enregistrement
+quantiques forment une seule famille dont une unique expérience
+d’interférence distingue les membres. Le
+[paquet de prédictions](model/predictions/README.md) fixe cette expérience et
+sa règle de rejet par comptage avant tout comptage indépendant, et le
 [guide de construction](model/CONSTRUCTION.md) énonce les critères
 d’acceptation et les connexions qui restent à construire.
 
 Le [bilan empirique](docs/EMPIRICAL_STATUS.md) distingue les comparaisons
 avec les mesures de la sélection de la règle de réparation native. La réparation
 locale de l’histoire reproduit les lectures de l’appareil oscillateur fourni ;
-les données conservées ne départagent pas C et E.
+les données conservées ne déterminent pas la loi d’enregistrement native.
 
 ## Fondements mathématiques
 
@@ -216,7 +221,7 @@ interventions avec des observations indépendantes. Une équation de champ
 fournie reste une entrée même lorsque sa simulation fonctionne. Les
 contributions doivent résoudre une connexion nommée ou révéler un défaut du
 modèle commun ; le [guide de construction](model/CONSTRUCTION.md), le
-[registre des candidats](model/CANDIDATES.md) et les
+[guide des lois de réparation](model/CANDIDATES.md) et les
 [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 décrivent ce travail. Les publications d’articles suivent la
 [politique de publication](model/CONSTRUCTION.md#research-programme-and-paper-release-hold) ;

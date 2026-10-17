@@ -40,7 +40,7 @@ and the clocks inside it.
   electric flux, charged matter and a scalar field on a single register, and
   an exact calculation certifies that its recorded feedback changes the
   measured response. Its continued smooth protocol executes four reads on
-  one disturbed state, compiles both quantum-native repairs, and preserves
+  one disturbed state, compiles two quantum record laws of the native repair, and preserves
   an encoded qubit through record-selected recovery under declared services.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
@@ -91,10 +91,14 @@ retained results. Its strongest joined experiment is the
 electric flux, charged fermions and a scalar field share one finite register
 with complete instruments, retained records and native feedback; the field
 action and the preparation are supplied inputs. The
-[prediction package](model/predictions/README.md) fixes two competing detector
-instruments and their count-based rejection rule before any independent
-counts, and the [construction guide](model/CONSTRUCTION.md) states the
-acceptance criteria and the connections that remain to be built.
+[repair-law guide](model/CANDIDATES.md) shows which parts of the repair law
+are forced and which are free: the classical rule follows from four
+requirements, and its quantum record laws form one family whose members a
+single interference experiment tells apart. The
+[prediction package](model/predictions/README.md) fixes that experiment and its
+count-based rejection rule before any independent counts, and the
+[construction guide](model/CONSTRUCTION.md) states the acceptance criteria and
+the connections that remain to be built.
 
 One twelve-port carrier connects spatial and clock observations: current
 records recover local geometry, and exact temporal correlation laws reconstruct
@@ -110,7 +114,8 @@ also tests the limit of interpreting the diagonal branch as a complete local
 response model; it does not test the full quantum construction. The
 [empirical status](docs/EMPIRICAL_STATUS.md) distinguishes those comparisons
 from selection of the native repair law. Local history repair reproduces the
-supplied oscillator readout; the retained data do not choose between C and E.
+supplied oscillator readout; the retained data do not determine the native
+record law.
 
 ## Mathematical results
 
@@ -214,7 +219,7 @@ correlations and responses to interventions with independent observations.
 A supplied field equation remains an input even when its simulation works.
 Contributions should resolve a named connection or expose a failure in the
 shared model; the [construction guide](model/CONSTRUCTION.md), the
-[candidate register](model/CANDIDATES.md) and the
+[repair-law guide](model/CANDIDATES.md) and the
 [research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 set out that work. Paper releases follow the
 [release policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold);

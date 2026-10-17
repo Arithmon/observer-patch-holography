@@ -1,112 +1,69 @@
-# Concrete repair-law candidates
+# Repair laws: what is fixed, what is free and how to tell
 
 **Find the simplest shared repair rule that satisfies the known constraints.**
 
-This page compares the [runnable model’s](README.md) active laws and their
-observational distinctions. The
-[construction guide](CONSTRUCTION.md) describes the executable models, and
-the [premise map](PREMISES.md) connects them to existing theorems. A declared
-architecture, observer interface or repair law may supply an implementation
-premise. Its consequences must be checked on that construction; physical
-selection among compatible candidates is a separate question.
+An OPH world is a network of overlapping patches that keep repairing their
+disagreements. The [runnable model](README.md) needs one concrete repair law
+to execute. This page sets out what such a law has to specify, which parts
+the stated requirements force, which parts they leave free, which members of
+the free family the model executes, and which observations can tell the
+members apart. The [construction guide](CONSTRUCTION.md) describes the
+executable model built on the chosen law, and the [premise map](PREMISES.md)
+connects both to the theorem library.
 
-The native C/E instruments have executable federation, local action,
-observer-relative event clocks and quantum field-history reductions. Their
-[continuing prediction protocol](closed_prediction_protocol/README.md)
-uses finite native preparation and bounds dependent trial records. These
-connections do not require a fundamental field or preferred global clock.
-They do require the specified sector, schedule, record access and coherent
-services. Their conditional predictions are not laboratory observations.
+## What a repair law specifies
 
-The [common interacting source](common_source/README.md) and scalar models
-provide complementary benchmarks with declared Hamiltonians, states and
-clock parameters. Their compilation, complete-instrument errors and
-[observer readouts](common_source/OBSERVER_READOUTS.md) establish finite
-operational connections. They do not identify integer averaging with those
-Hamiltonians or transfer one instrument's error bound to another.
+A repair law answers four questions about one event on one seam:
 
-Each candidate follows the
+1. **Where does the load go?** This is the classical seam rule.
+2. **What does the event write down?** This is the record law, a quantum
+   instrument whose outcomes are the records.
+3. **What happens to coherent records that nobody reads?** This is the
+   continuation and record-access contract.
+4. **Does anything besides the load respond?** This is an optional private
+   response factor at each port.
+
+Mathematically, write `H` for the span of the load configurations `|x>`. A
+law assigns to each seam `e` an instrument `{Φ_{e,r}}`, completely positive
+maps indexed by the record `r`, whose sum `Φ_e` is a channel. Its classical
+rule is the diagonal action `Φ_e(|x><x|)`. Its record law is the whole
+instrument. A scheduler chooses the seams. Continuation and access fix which
+further operations may act on unread records, and response extensions enlarge
+`H` by private factors.
+
+| Layer | What it fixes | Status | Section |
+| --- | --- | --- | --- |
+| Carrier | Twelve ports, thirty seams, the total-two load sector | Declared by the architecture premise | [Carrier](#the-carrier) |
+| Classical seam rule | Where the load goes | Forced by four stated requirements | [Classical rule](#the-classical-seam-rule) |
+| Record law | Which coherences survive an event | A convex family with five coherence multipliers; C and E executed | [Record laws](#record-laws) |
+| Continuation and access | What unread records do next | Free beyond the committed instrument; exact countercontrols | [Continuation](#coherent-continuation-and-record-access) |
+| Response | Private factors driven by the current | N2, N3 and N4 compared | [Response](#response-extensions-n2-n3-and-n4) |
+| Field benchmark | A supplied scalar action | Conditional benchmark S1 | [S1](#s1-the-canonical-scalar-benchmark) |
+
+Each layer follows the
 [mathematical reuse contract](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md):
-define its agreement target independently of the update, state its domain,
-scheduler and fault assumptions, and map each theorem to its actual objects.
-N1/N1-E and N2/N3/N4 have finite channel results; S1 uses the stated linear
-overlap structure. A heat-flow theorem does not turn arbitrary quantum
-instruments or conservative evolution into that heat flow.
+define the agreement target independently of the update, state the domain,
+scheduler and fault assumptions, and map each theorem to the actual objects.
+A heat-flow theorem does not turn arbitrary quantum instruments or
+conservative evolution into that heat flow. The
+[source-selection contract](SOURCE_SELECTION.md) separates supplied instance
+inputs, derived consequences and selection up to admitted observations.
 
-The [source-selection contract](SOURCE_SELECTION.md) distinguishes supplied
-instance inputs, derived consequences and physical selection up to admitted
-observations. The [observer-relative recovery contract](OBSERVER_RELATIVE_RECOVERY.md)
-requires compatible joint field, clock and intervention laws. It imposes no
-preferred universal clock. Controlled relativistic spacetime recovery and
-independent empirical identification require additional evidence.
-
-## Candidates and priorities
-
-| ID | Concrete law | Role | Strongest established property | Principal missing connection |
-| --- | --- | --- | --- | --- |
-| **N1** | Nearest-integer seam repair with current record, channel C | Microscopic baseline and executable observer source | The source supplies conserved currents, exact quantum blocks, a local Liouville action, federation instruments and local event-clock laws. Continuing measurement trials have a uniform preparation and dependence bound. | Physical realization and compatible observation/refinement maps; the quantum instrument, sector, schedule, coherent apparatus and physical calibration are declared inputs. |
-| **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion on one seam and a conditional expectation on the binary shell; shares C’s population laws but has distinct coherent readouts. | Source selection of the retained algebra and record instrument. |
-| **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
-| **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
-| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment with abstract central-port attachment | Private preparations change bare load probabilities. Twelve central addresses preserve its quantum channel in a complete abstract scalar-seam source grammar. It retains normalized port geometry but exhibits memory beyond a rescaled native heat law at the same full quantum reference. | Physical realization, preparation/readout, retained-record service and clock comparison; j is not a bare-load current. |
-| **S1** | Minimal canonical inertial completion of weighted scalar agreement | Conditional field model with executed observer adapter | Explicit Hamiltonian, controlled free-field continuum, and a native-current preparation/binary field detector/native feedback protocol. | Derivation or physical identification of inertia, quantum state, controls and model time on the same microscopic process. |
-
-N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
-extension examined consistent with the one-term obstruction, using the same state factors.
-It is an experiment, not a preferred law by default. A fixed coefficient ratio
-is an assumption even without an extra fitted parameter. S1 supplies useful
-field benchmarks; its dynamics are not identified with these microscopic laws.
-Common refinement, observer-relative clock comparisons, interactions,
-gravitational premises and observational discrimination must be joined on one process before a complete
-physical model can be claimed.
-
-The [coherent native continuation](observer/COHERENT_CONTINUATION.md) is a
-selection experiment on N1's binary shell, with coherent event preparation
-and unread records. Its reflection choice gives a wave recurrence for
-compressed amplitudes. Two continuations with the same first coherent event,
-and a separate phase control invisible to committed C/E instruments, give
-different coherent predictions. These exact countercontrols constrain future
-selection arguments; they do not promote an additional law to the baseline.
-
-## Runnable observer protocols on N1
-
-These protocols retain N1's event law and add an explicit finite record tape,
-controller and stopping rule. Their initial domain is the uniform 66-state
-binary total-two source; the native implementation also checks its full
-78-state extension. Two events means two successive repair invocations, not
-two possible complete histories or a two-dimensional source.
-
-The [native observer](observer/README.md) records `(c1,j1)`, issues a supplied
-forecast using that record, chooses seam `(0,5)` when `j1>0` and `(0,1)`
-otherwise, records the second native outcome and halts. All 264 binary-source
-paths are enumerated. Its action choice is binary; its record alphabet is
-richer. The [capacity calculation](observer/CAPACITY.md) gives 11 terminal
-record words and 16 reachable prefixes, allowing a four-bit classical prefix
-encoding. That encoding does not include the complete program or apparatus.
-
-The [electromagnetic detector protocol](observer/p_response/README.md) accepts
-P and N as closure-derived premises and computes the existing source-only
-structured-running `α(P)`. Its chosen charge assignment is
-`Q_v=g(P)N_v`, with `g(P)=sqrt(4π α(P))`. A prepared path qubit and calibrated
-loop exposure χ produce a committed bit
-`Pr(y|j1,P,χ)=[1+y sin(g(P)j1χ)]/2`. Only y reaches the next-seam controller.
-All 528 weighted histories are retained. The response
-`E[g(P)j2]=(5g(P)/264)sin(g(P)χ)` vanishes under disconnected and independently
-shuffled detector controls. The software design runs; charge realization,
-flux source, probe preparation and readout are specified hardware choices.
-
-Both constructions preserve committed classical record values through
-feedback. That condition permits disturbance of coherences between record
-values. Neither finite protocol is an online learner or a complete physical
-universe. The detector reads the N1 current; it is not the bare-occupation
-instrument required by the N4 test below.
-
-## N1 and N1-E: the common native baseline
+## The carrier
 
 Use the twelve ports and thirty seams of the source icosahedron. The tested
 load space is the 78 nonnegative integer configurations with total load two.
-Its 66 binary configurations form an invariant shell. For oriented seam
-e=(a,b), a fair coin c assigns the ceiling to a when c=1:
+Its 66 binary configurations, with at most one load per port, form an
+invariant shell. Total two is the smallest sector in which a single load can
+wait or move and two loads can collide, so the binary shell carries motion
+and the collision states test the integer rule. The architecture, the sector
+and the initial disturbance are supplied. The integer rule leaves an exactly
+balanced configuration fixed; it does not explain the origin of a departure
+from balance.
+
+## The classical seam rule
+
+For an oriented seam `e=(a,b)` and a fair coin `c`:
 
 ```text
 d = x_a − x_b,
@@ -114,142 +71,226 @@ j = [d − (2c−1)(|d| mod 2)]/2,
 y = x + j(unit_b − unit_a).
 ```
 
-Thus the two endpoints become the floor and ceiling of their mean. All other
-loads are unchanged. The operation conserves total load and never increases
-sum_p x_p². A difference of one permits a wait or swap: the binary shell has
-continuing motion, rather than pathwise equal loads. Uniform independent seam
-attempts are the baseline schedule; prescribed seams are diagnostic controls.
-The total-two sector, schedule and initial disturbance are supplied. The
-general integer rule leaves an exactly all-equal configuration fixed; it does
-not explain the origin of a departure from that state.
+The two endpoints become the floor and the ceiling of their mean. When their
+total is odd the coin decides which endpoint receives the extra unit. All
+other loads are unchanged. The operation conserves the total and never
+increases `sum_p x_p²`. A difference of one permits a wait or a swap, so the
+binary shell keeps moving rather than settling pathwise. Uniform independent
+seam attempts are the baseline schedule; prescribed seams are diagnostic
+controls.
 
-N1 keeps the record r=(e,c,j). On the declared quantum load space, its Kraus
-operator and forgotten-record channel are
+**Proposition 1 (the classical rule is forced).** Let a stochastic seam rule
+(i) conserve the seam total, (ii) end at a configuration minimizing
+`x_a² + x_b²`, (iii) break any remaining tie with a random choice that does
+not depend on the loads, and (iv) be symmetric under exchange of the two
+endpoints. Then it is the rule above with a fair coin.
+
+*Proof.* By (i) and (ii) the outputs are the floor and ceiling of the mean.
+An even total has one output. An odd total has two, and by (iii) endpoint
+`a` receives the ceiling with a constant probability `q`. Exchange of the
+endpoints maps `q` to `1−q`, so (iv) gives `q=1/2`. ∎
+
+Each requirement does work. Without (ii), partial moves and idle rules are
+allowed. Without (iii), the rule "the endpoint that has more keeps the extra
+unit" satisfies the others; it freezes every binary configuration,
+so the shell carries no motion and the records carry no geometry. Requirement
+(iii) is the basis rule applied to the tie: nothing recovered prefers one
+endpoint, so the choice is maximally random.
+
+On classical diagonal states the rule is the lazy symmetric simple exclusion
+process with two particles. Its generator per seam attempt is
+`(1/60) Σ_e(S_e−I)`. The exclusion-process corollary of
+[Caputo, Liggett and Richthammer (2010), section 4.1.1](https://arxiv.org/abs/0906.1238)
+gives the exact classical gap `(5−sqrt(5))/60 ≈ 0.046066` on this carrier,
+equal to the one-particle gap. Under uniform binary equilibrium and uniform
+seam attempts the native records recover the carrier Laplacian, its
+rank-three slow Gram and a dimensionless rate relation. Those readouts do not
+identify physical space or proper time. See the
+[native update](CONSTRUCTION.md#native-repair-and-its-observer-contract) and
+[geometry and clock readouts](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
+
+## Record laws
+
+The classical rule fixes where load goes. A quantum event can also keep or
+destroy the coherence between configurations that move the same way, and
+which coherences survive is decided by what the event writes down. Recording
+more destroys more. The [record-law classification](record_laws/README.md)
+works this out exactly on the 78-state carrier.
+
+### The admissible family
+
+Require of a one-seam channel `Φ`: seam locality, the exact classical law,
+local number-phase covariance (`Φ` commutes with `exp(i Σ_p t_p N_p)` for
+every real `t`) and endpoint-swap covariance. Number-phase covariance is the
+quantum form of local load conservation: each recorded branch transports one
+definite load. Then
 
 ```text
-L_r = (1/sqrt(2)) Σ_{x:j(x,c)=j} |y(x,c)><x|,
-C_e(ρ) = Σ_r L_r ρ L_r†.
+Φ(|x><x'|) = Σ_j G_j(κ(x),κ(x')) |x + jD><x' + jD|,
 ```
 
-Each branch is an injective translation, making C a completely positive,
-trace-preserving channel. N1-E instead records (e,c,d), where d is the
-pre-repair contrast. It has the same classical transitions and different
-quantum coherences. C is not obtained by classical coarse-graining of E:
-combining E's labels does not restore C's coherent Kraus sums. The exact
-single-seam relation is
+where `κ(x)=(x_a,x_b)` is the seam key, `D` moves one load from `a` to `b`,
+and each `G_j` is a positive semidefinite matrix whose diagonal is the
+classical probability of current `j`. Every such table defines an admissible
+law. On the total-two carrier five multipliers remain:
+
+| Multiplier | Coherence it keeps | Bound |
+| --- | --- | --- |
+| `k` | empty seam with full seam | `|k| ≤ 1` |
+| `g` | empty seam with a waiting single load | `|g| ≤ 1/√2` |
+| `h` | full seam with a waiting single load | `|h| ≤ 1/√2`; `h=g` when `k=1` |
+| `m` | the two waiting orientations | real, `|m| ≤ 1/2` |
+| `n` | a moving single load with a moving collision | `|n| ≤ 1/√2` |
+
+A law that records the endpoint's pre-repair load, `(c,x_a)`, keeps the
+classical rule exactly and fails covariance: one of its branches carries two
+different currents. The classification retains it as a control.
+
+### Four distinguished laws
+
+| Law | Each event records | Values per seam | `k` | `g` | Idempotent | Principle that singles it out |
+| --- | --- | ---: | ---: | ---: | --- | --- |
+| C0 | the current | 3 | 1 | `1/√2` | no | Record only what conservation requires |
+| C | coin and current | 6 | 1 | `1/2` | no | The tie-break is itself a recorded event; the coarsest such law |
+| E | coin and pre-repair contrast | 10 | 1 | 0 | yes | One repair completes the seam; the coarsest idempotent law |
+| T | coin and both endpoint loads | 12 | 0 | 0 | yes | The seam occupation is recorded in full |
+
+They form a ladder. Each step records one more classical quantity through a
+diagonal readout of the repaired seam:
+
+```text
+C = C0 followed by a readout of the coin,
+E = C followed by a readout of the seam parity,
+T = C followed by a readout of the seam total.
+```
+
+The [encoded source realization](observer/source_discrimination/README.md)
+implements the second step as one three-pulse CNOT after the shared repair
+circuit. Forgetting a label afterwards does not undo its dephasing, so C is
+not a classical coarse-graining of E.
+
+Repeating the repair of one seam multiplies each coherence by its multiplier
+again: after `r` repairs the table is `(k^r, g^r, h^r, m^r, n conj(h)^(r−1))`.
+Hence exactly E and T are idempotent, every law with `k=1` completes to E,
+and every law with `|k|<1` completes to T. For C this is
 
 ```text
 E_e² = E_e,   E_e C_e = C_e E_e = E_e,
 C_e^n = E_e + 2^(1−n)(C_e−E_e),   n ≥ 1.
 ```
 
-The classical repair law alone does not select either quantum instrument.
-On the binary shell, E is a trace-preserving conditional expectation. Full
-uniform seam mixtures of C and E converge to the uniform binary state on the
-load space. Protected external registers require explicit separate factors.
-This ensemble statement does not establish confluence of individual histories.
+On the binary shell E is a trace-preserving conditional expectation. The
+[finite entropy-completion theorem](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
+requires a specified retained algebra and a faithful modular-compatible
+reference, and its [binary native attachment](primitive_observer/DERIVATION_COMPLETION.md)
+identifies E as the resulting tracial expectation. Completion therefore
+explains why E is the endpoint of every coherent-seam law; it does not choose
+the finite-event law.
 
-On classical diagonal states this is the lazy symmetric simple exclusion
-process with two particles. Its generator per seam attempt is
-`(1/60) Σ_e(S_e−I)`. The exclusion-process corollary of
-[Caputo, Liggett and Richthammer (2010), section 4.1.1](https://arxiv.org/abs/0906.1238)
-gives the exact classical gap `(5−sqrt(5))/60 ≈ 0.046066` on this carrier,
-equal to the one-particle gap. This is an application of existing theory.
-The [exact quantum reduction](observer/QUANTUM_MIXING.md) proves that this is
-also the full C/E channel gap, on both the binary shell and all 78 states.
-Every surviving matrix unit keeps its signed load difference, reducing its
-binary block to exclusion on the remaining vertices plus a constant loss.
-The slowest binary coherences decay by `5/6` per attempt for C and `7/10`
-for E, although their classical relaxation and geometry agree.
+### What the executed laws share and where they differ
 
-On the binary shell, both forgotten-record channels are entanglement-breaking
-after at most 134 independent uniform attempts. On the full 78-state carrier,
-a collision/binary input retains provable reference entanglement at every
-finite attempt count, with a signal tending to zero. Thus replacing the
-full carrier by its attracting shell can change an exact finite-time quantum
-property. The rate concerns discarded records and no intervening control;
-it does not erase retained history or cover N2/N4's extra response factors.
+The model executes C as its native law and E as the comparison law. C0 and T
+are classified with exact one-seam predictions; their network rates are not
+computed.
 
-Under uniform binary equilibrium and uniform seam attempts, the same records
-recover the carrier Laplacian, its rank-three slow Gram and a dimensionless
-rate relation. Those readouts do not identify physical space or proper time.
-See the [native update](CONSTRUCTION.md#native-repair-and-its-observer-contract),
-[completion](CONSTRUCTION.md#native-repair-and-its-observer-contract)
-and [geometry/clock readouts](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
+| Quantity | C | E |
+| --- | --- | --- |
+| Classical load laws, histories and geometry | identical | identical |
+| Full channel gap on the shell and all 78 states ([quantum mixing](observer/QUANTUM_MIXING.md)) | `(5−√5)/60` | `(5−√5)/60` |
+| Slowest binary coherence, factor per attempt | `5/6` | `7/10` |
+| Forgotten-record channel entanglement-breaking on the binary shell | by 134 attempts | by 134 attempts |
+| Identify the 78-state input from complete records ([record recovery](observer/RECORD_RECOVERY.md)) | no bounded record-only policy; an almost-surely terminating one | eight prescribed attempts, seven on the shell |
+| Joint clock field-plus probability after three attempts ([joint clocks](joint_clock_process/README.md)) | `35/54` | `14/27` |
+| Amplitude of the modular-phase response ([modular dynamics](relative_modular_dynamics/README.md)) | `1/140` | `1/220` |
+| One-event interference at phases `0` and `π` | `5/8`, `1/8` | `3/8`, `3/8` |
 
-**Selection test:** use a specified coherent preparation and retained-record
-measurement to distinguish C from E. Mean loads and classical histories
-cannot settle this choice. Quantum preparation, readout and finite record
-capacity must be accounted for.
+On the full 78-state carrier both channels retain provable reference
+entanglement at every finite attempt count for a collision/binary input, with
+a signal tending to zero, so replacing the carrier by its attracting shell
+changes an exact finite-time quantum property. Both laws admit an exactly
+correctable encoded qubit after one event. Every surviving matrix unit keeps
+its signed load difference, which reduces each binary block to exclusion on
+the remaining vertices plus a constant loss.
 
-**Complete-record decision:** [optimal native recovery](observer/RECORD_RECOVERY.md)
-separates reconstructing classical loads from restoring an unknown quantum
-input. The retained tape permits exact reversal of every recorded load
-translation, but classical commitment leaves a measurement of the initial
-state. E can fully identify the 78-state input with eight prescribed seam
-attempts (seven on the binary shell). C cannot do so under any bounded
-record-only adaptive seam policy on this carrier, although a supplied
-almost-surely terminating policy does. Both laws admit an exactly correctable
-encoded qubit after one event; the identifying schedules eliminate passive
-exact codes. This resolves a candidate-level memory question while preserving
-the native geometry/current dictionary. Intermediate quantum correction,
-additional response registers and coherent uncommitted records are different
-process contracts; no physical law or programme-wide obstruction is inferred.
+### What observations decide
 
-## Native action, fields, clocks and continuing tests
+**Classical records decide nothing here.** Every admissible law has the same
+diagonal action. For C and E the [observability results](identifiability_checks/README.md)
+prove more: for every load basis state the joint law of coin, current and
+post-repair load agrees once E's extra label is summed out, and the
+equality continues through finite adaptive classical protocols and through
+quantum work controlled by common records. Any admissible classical record
+dataset has likelihood ratio `L_C/L_E=1` wherever defined.
 
-The [local action](native_action/README.md) follows from the actual endpoint
-instruments: `H_native=sum_e(I-Phi_e)`. Its blocks consist of exclusion on
-common occupations and an explicitly fixed C/E coherence-killing term. The
-native discrete transfer is `I-H_native/M`; `exp(-s H_native)` describes an
-optional per-edge Poisson scheduler. The two are distinct predictions.
-Neither construction identifies this positive operator on operator space
-with a relativistic state-vector Hamiltonian.
+**One coherent event reads a multiplier.** Prepare
+`(|X> + e^{iθ}|Z>)/√2`, with loads at ports 2 and 3 in `X` and at ports 1
+and 2 in `Z`, repair seam `(0,1)` once and measure the projector onto
+`(|X>+|Z>)/√2`. Summed over records,
 
-[Quantum federations](federated_quantum_sector/README.md) preserve the local
-Kraus operations, noncommuting field readouts and arbitrary references on
-joined elementary carriers. Complete local observation errors can be bounded
-when distant ports are omitted, including locally controlled interventions.
-The corresponding infinite-federation process requires a fixed bounded-degree
-graph with compatible local data. The selected screen refinements have not
-been shown to satisfy that condition, and no continuum dimension follows
-from a finite graph's rank or drawing.
+```text
+Pr(plus) = 3/8 + Re(g e^{−iθ})/2.
+```
 
-The [local event clock](relational_event_clock/README.md) and
-[joint clock process](joint_clock_process/README.md) retain the native
-repairs that occur between clock events. The joint experiment has an exact
-quantum memory recurrence for its accessible field algebra. At completed
-events its work state has an exact four-mark measure-and-prepare closure;
-conditional reference operators remain necessary. C and E share that
-completed event instrument while differing in unresolved waiting coherences.
-After three declared attempts the complete field-plus probabilities are
-`35/54` for C and `14/27` for E. No physical clock or laboratory mapping is
-claimed for these conditional source predictions.
+| Law | `θ=0` | `θ=π` | `θ=π/2` |
+| --- | ---: | ---: | ---: |
+| C0 | `3/8+√2/4 ≈ 0.729` | `3/8−√2/4 ≈ 0.021` | `3/8` |
+| C | `5/8` | `1/8` | `3/8` |
+| E and T | `3/8` | `3/8` | `3/8` |
 
-[Native equilibration](native_equilibration/README.md) supplies finite
-preparation in a fixed-number sector, uniformly over untouched references.
-The [continuing discrimination protocol](closed_prediction_protocol/README.md)
-uses 379 discarded repairs before each of 3,927 trials and keeps the actual
-terminal state between trials. The exact-source wrong-candidate bound is
-0.75%, without an IID or exact-reset premise. A separate, unauthenticated
-complete-trial physical allowance would suffice for a 1% target. The source
-mixer and classical record services remain explicit implementation inputs.
+The settings `0`, `π` and `π/2` read `Re g` and `Im g`, so the experiment
+measures the coherence of whichever law nature uses. Replacing the empty
+seam's partner by a full seam gives `Pr(plus)=1/2+Re(k e^{−iθ})/2`, which
+separates T from E. The [fixed prediction protocol](predictions/README.md)
+locks the first test with 8,192 attempted trials per setting, every joint
+record bin and an apparatus error budget of `1/64`. The
+[continuing-carrier protocol](closed_prediction_protocol/README.md) runs it
+on one continuing carrier with 379 discarded preparation attempts before
+each of 3,927 trials and an exact-source wrong-choice bound of `3/400`.
 
-The [readout controls](readout_controls/README.md) compare action-independent
-measurement identities with the public oscillator data. Those controls can
-locate apparatus or interpretation discrepancies, but cannot select a native
-repair law. The [identifiability checks](identifiability_checks/README.md)
-and [probe design](identification_design/README.md) specify which added
-measurements can separate declared action families. A family-specific
-separation is not selection from OPH axioms.
+**No retained dataset reads `g`.** The public oscillator and Bell records
+have no identified native apparatus map, so they supply no likelihood for any
+record law; the [empirical status](../docs/EMPIRICAL_STATUS.md) gives the
+details. Choosing among the laws therefore takes either a principle from the
+table above or a measurement of `g`.
 
-## N2: repair current drives endpoint response
+## Coherent continuation and record access
 
-Supply one private six-level factor at each port, together with the existing
-skew-Hermitian response matrices D_p from the
-[source construction](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex).
-The response space is (C⁶)^⊗12. With a supplied real coupling θ, replace each
-N1 branch by
+A committed instrument does not determine what unread coherent records do
+afterwards. The [coherent native continuation](observer/COHERENT_CONTINUATION.md)
+embeds the binary shell's events in a 3,960-arc workspace. Its reflection
+choice gives a wave recurrence for compressed amplitudes, and a second
+continuation with the same first coherent event gives different Ramsey
+predictions. Both survive all sixty proper carrier rotations, real
+orthogonality, native transition support, a fixed uniform coherent state and
+a common algebraic time reversal. A phase on every moving arc preserves every
+committed C/E branch and changes the compressed trace cube by `−1/90`.
+
+The [source-executed record test](observer/source_selection.py) realizes the
+access distinction with existing source words: a complementary read before
+commitment has plus probabilities `3/4` and `1/4` for two phase
+implementations of the same committed instrument, while committing first
+gives `1/2` for both. A selection argument for this layer must constrain the
+cross-record phases and the continuation action; recovering a wave after
+choosing the reflection does not.
+
+## Response extensions: N2, N3 and N4
+
+These candidates keep the native load repair and add a private six-level
+factor at each port, with the existing skew-Hermitian response matrices `D_p`
+from the [source construction](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex).
+The response space is `(C⁶)^⊗12`. The matrices, their incidence-preserving
+port identification, the twelve factors and the coupling `θ` are declared
+inputs.
+
+| ID | Law | Strongest established property | Principal missing connection |
+| --- | --- | --- | --- |
+| **N2** | The native current drives the same local response at both endpoints | Preserves the native load instrument and locality; inherits completion and finite binary-network convergence; protects local block populations | Full source grammar and selection against N3; all-input marginal preservation excludes feedback |
+| **N3** | The current drives opposite, centred endpoint increments | Same preservation and locality; one global change of coordinates reduces it to the native law | A reason to select or reject its trivial closed-loop response |
+| **N4** | One coherent load–response exchange conjugates the binary C/E laws | Private preparations change bare load probabilities; twelve central addresses preserve its quantum channel in a complete abstract scalar-seam grammar | Physical realization, preparation/readout, retained-record service and clock comparison; its label `j` is not a bare-load current |
+
+### N2: the current drives the endpoint response
+
+Replace each native branch by
 
 ```text
 U_(e,j) = exp[θ j(D_b−D_a)],
@@ -257,76 +298,55 @@ K_r = L_r ⊗ U_(e,j)^(a) ⊗ U_(e,j)^(b),
 ```
 
 with identity on the other factors. Both endpoints receive the same unitary.
-The existing matrices, their incidence-preserving port identification, the
-twelve factors and the coupling are declared inputs.
 
 | Property | Established scope |
 | --- | --- |
-| Load and records | For every correlated input, tracing out response preserves C and each classical record block exactly. Coherences between distinct retained records can change. |
+| Load and records | For every correlated input, tracing out the response preserves C and each classical record block exactly. Coherences between distinct retained records can change. |
 | Locality and symmetry | Disjoint seams commute; simultaneous proper port transport and response transport give finite carrier covariance. |
-| Completion | A seam-dependent controlled unitary conjugates the update to C_e tensor identity. The same conjugation transfers N1-E and the exact single-seam completion formula. |
+| Completion | A seam-dependent controlled unitary conjugates the update to C_e tensor identity. The same conjugation transfers E and the exact single-seam completion formula. |
 | Network convergence | On the finite binary shell, fixed positive seam mixtures converge to the conditional expectation onto their common fixed algebra. If γ_C and γ_E are their gaps off that algebra, γ_E/2 ≤ γ_C ≤ γ_E. Its full algebra and absolute gap are uncomputed. |
 | Persistent information | Each local projector diag(1,1,1,0,0,0) is protected. Arbitrary private coherences are not claimed to survive. |
 | Response histories | Closed load loops can leave internal memory. For an input that factors into load and product private states, the record-conditioned response factors across ports and creates no private-to-private entanglement. |
-| Backreaction | None: changing internal response cannot change unconditional native load probabilities. This follows from exact marginal preservation for all inputs. |
+| Backreaction | None: changing the internal response cannot change unconditional native load probabilities, by exact marginal preservation for all inputs. |
 
-The convergence result concerns forgotten-record channels. It does not prove
-convergence of a growing coherent history or provide unlimited record storage.
-Conserved current differences also omit the constant central response
-direction: attaching D_b−D_a does not derive the full gauge structure or a
+The convergence result concerns forgotten-record channels; it does not give
+convergence of a growing coherent history or unlimited record storage.
+Conserved current differences omit the constant central response direction,
+so attaching `D_b−D_a` does not derive the full gauge structure or a
 physical gauge field. Loop memory alone does not establish non-Abelian
-curvature; a commuting-matrix control produces loop memory too.
+curvature: a commuting-matrix control produces loop memory too. Exact native
+source binding, covariance, locality and completion identities have finite
+matrix checks and a complete three-event comparison with N3; see the
+[detailed join](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
+A reciprocal extension must relax exact preservation of C on specified
+internal inputs, because requiring it for every input rules out feedback.
 
-**Result:** exact native source binding, covariance, locality and completion
-identities have finite matrix checks and a complete three-event comparison
-with N3. The numerical checks supplement the analytic identities; there is
-no native hardware execution. The
-[detailed join](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
-states preparations and controls.
+### N3: the local flat alternative
 
-**Open connection:** characterize the full protected/common algebra and
-identify observations separating N2 from the flat and reciprocal alternatives.
-A reciprocal extension must relax exact preservation of C on specified internal inputs;
-requiring it for every input rules out that feedback. Check the enlarged
-source's complete event grammar before importing the gauge theorem.
-
-## N3: the local flat alternative
-
-Keep N1 and the same response factors. Define J=Σ_p D_p and Dbar_p=D_p−J/12.
-Use opposite endpoint increments:
+With `J=Σ_p D_p` and `Dbar_p=D_p−J/12`:
 
 ```text
 K_flat,r = L_r ⊗ exp(−θ j Dbar_a)^(a) ⊗ exp(+θ j Dbar_b)^(b).
 ```
 
-For W(x)=tensor_p exp(θ x_p Dbar_p), the same load-controlled unitary W
-conjugates every seam to C_e tensor identity. Consequently every closed load
-loop has identity response, and the full encoded internal algebra survives.
-Load preservation, classical records, locality and proper covariance hold as
-for N2. There is no response-to-load feedback.
+For `W(x)=⊗_p exp(θ x_p Dbar_p)`, the same load-controlled unitary conjugates
+every seam to C_e tensor identity. Every closed load loop therefore has
+identity response and the full encoded internal algebra survives. Load
+preservation, classical records, locality and proper covariance hold as for
+N2, with no response-to-load feedback.
 
-**Simplest tested discriminator:** one local six-level state, one seam attempt
-and one local two-outcome effect distinguish N2 and N3 with probability
-difference **0.049095 at θ=1/8**, including both fair coin outcomes. No entangled
-reference or retained history is required. Preparation, effect and coupling are
-supplied; see the [local readout](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
+One local six-level state, one seam attempt and one local two-outcome effect
+distinguish N2 and N3 with probability difference **0.049095 at θ=1/8**,
+including both fair coin outcomes. A reference-assisted input that retains
+all eight coin outcomes of a three-event history gives trace distance about
+**0.137390 at θ=1/8**, about **0.069358 at θ=1/16**, and zero at θ=0, with no
+postselection. Preparation, effect and coupling are supplied. Preservation
+and convergence alone cannot select N2 over this simpler alternative.
 
-The declared reference-assisted input, retaining all
-eight coin outcomes of the three-event history gives N2 versus N3 trace
-distance about **0.137390 at θ=1/8**, about **0.069358 at θ=1/16**, and zero at
-θ=0. No outcome is postselected. These are finite model comparisons using
-supplied quantum references and seams, not measured physical predictions.
-See the [alternative and fixed tests](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
+### N4: a reciprocal coherent exchange
 
-**Open connection:** realize that local preparation/readout in the admitted
-source grammar and connect it to a physical comparison. Preservation and
-convergence alone cannot select N2 over this simpler alternative.
-
-## N4: a reciprocal coherent exchange
-
-On the binary shell let S_e swap the endpoint occupations. Use
-`X=S_e(N_a−N_b)²` and `Y=iS_e(N_a−N_b)`, with the same endpoint private
-factors as N2. Define
+On the binary shell let `S_e` swap the endpoint occupations. With
+`X=S_e(N_a−N_b)²`, `Y=iS_e(N_a−N_b)` and the same private factors:
 
 ```text
 g=D_b−D_a, h=D_a+D_b−J/6, J=Σ_p D_p,
@@ -334,183 +354,147 @@ G=g^(a)+g^(b), H=h^(a)+h^(b),
 W_e=exp[θ(Y⊗G+X⊗H)],     K_r=W_e(L_r⊗I)W_e†.
 ```
 
-The exponent also equals `θ(s_+⊗B−s_−⊗B†)`, where
-`s_+=|10><01|` and `B=H−iG`. It is one coherent exchange, with no extra
-state variable beyond N2. θ, the equal relative weighting, exponential law
-and quantum interpretation are supplied choices.
+The exponent equals `θ(s_+⊗B−s_−⊗B†)` with `s_+=|10><01|` and `B=H−iG`: one
+coherent exchange with no state variable beyond N2. The coupling, the equal
+relative weighting, the exponential law and the quantum interpretation are
+supplied. Both response directions omit the constant central generator.
 
-Both response directions omit the constant central generator; this exchange
-does not restore the missing central response.
+**Why test it.** Any single-product conjugation `exp(θ A⊗G)` with local
+number-preserving `A` leaves C's load marginal unchanged, which blocks
+feedback for that whole family. N4 evades this scoped obstruction, and
+neither summand alone has the tested feedback. The independent
+[rational feedback control](CONSTRUCTION.md#retained-audit-controls) gives a
+number-preserving CPTP escape with probability difference `144/625`; its
+scalar-only private commutant excludes every single-product exponential
+representation. N4 is a reciprocity experiment, and its fixed coefficient
+ratio is an assumption even without a fitted parameter.
 
-**Why test it:** any single-product conjugation `exp(θ A⊗G)` with local
-number-preserving A leaves C's load marginal unchanged. Its channel symmetry
-blocks feedback for that whole family. N4 evades this scoped obstruction;
-neither summand alone has the tested feedback. This does not prove universal
-minimality among other possible laws. The independent
-[rational feedback control](CONSTRUCTION.md#retained-audit-controls)
-gives a number-preserving CPTP escape with probability difference `144/625`;
-its scalar-only private commutant excludes every single-product exponential
-representation. It supplies a class-boundary control, not an N4 source proof.
+**Properties and result.** N4 is local, total-occupation conserving and
+proper-carrier covariant, with protected 3+3 block populations. Same-seam
+completion and finite binary-network convergence transfer by conjugacy; its
+full common algebra and absolute gap are uncomputed, and it is restricted to
+the binary shell. With fixed bare load `I_2/2`, supplied private preparations
+change the endpoint occupation probability from **0.482020673 to 0.517979327
+at θ=1/8**; the one-term controls give `1/2`.
 
-**Properties:** local, total-occupation conserving, proper-carrier covariant,
-with protected 3+3 block populations. Same-seam C/E completion and finite
-binary-network convergence transfer by conjugacy. Its full common algebra
-and absolute gap are uncomputed. The candidate is restricted to the binary
-shell; full integer-pile relaxation is not established.
-
-**Result:** with fixed bare load I_2/2, supplied private preparations change
-endpoint occupation probability from **0.482020673 to 0.517979327 at θ=1/8**.
-The one-term controls give 1/2. The
-[derivation and tests](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
-give independent source and small-coupling controls without claiming an
-interval bound at finite θ.
-
-**Main cost:** the record label j refers to the conjugated occupation,
-not to a measured change of bare load. N1's current-derived geometry and
-clock identities cannot simply be imported. The
-[shared bare-occupation protocol](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
-reconstructs `K=αL_ico/396` at the full tracial reference, with `α≥1/9`
-for every coupling. It retains the finite rank-three port geometry and,
-at θ=1/8 and 1/16, certifies nonzero two-attempt memory for every
-nonconstant carrier mode. A change of clock units cannot remove it. No
-additional state factor or interaction is needed for this test. On one seam
-the channel is unitarily equivalent to C; conjugating the observers too
-would change the fixed comparison. The
+**Main cost.** The record label `j` refers to the conjugated occupation, so
+the native current-derived geometry and clock identities cannot simply be
+imported. The [shared bare-occupation protocol](CONSTRUCTION.md#geometry-response-and-local-event-clocks)
+reconstructs `K=αL_ico/396` at the full tracial reference with `α≥1/9` for
+every coupling, retains the rank-three port geometry and certifies nonzero
+two-attempt memory for every nonconstant carrier mode at θ=1/8 and 1/16. A
+change of clock units cannot remove it. The
 [central-address construction](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
 preserves the full native quantum channel in twelve identical quantum blocks
-and supplies a complete abstract scalar-seam grammar on the binary shell.
-Its native/N4 pair shares the full tracial quantum reference, collective
-response and normalized port geometry while its finite kinetics differ.
-Sampling an occupied port has a proved quantum information cost; central
-control addresses and occupation records serve different operations.
-Physical preparation/readout, retained-record services, gauge dynamics and
-an interacting continuum require their own realization.
-
-The [local-tick extension](local_tick/README.md) derives the separate null
-when the observer counts incident attempts and all remote events remain.
-It preserves a strictly positive certified N4 distinction at both couplings.
-This closes the stopping-rule calculation; occupation preparation/readout
-and physical calibration remain separate from the implemented N1 detector.
+and supplies a complete abstract scalar-seam grammar on the binary shell;
+sampling an occupied port has a proved quantum information cost. The
+[local-tick extension](local_tick/README.md) derives the null when the
+observer counts incident attempts with all remote events retained, and keeps
+a strictly positive certified N4 distinction at both couplings.
 
 ## S1: the canonical scalar benchmark
 
 Weighted seam agreement supplies a scalar stiffness. Given positive repair
-capacities M, grounded stiffness K_D, mass m and conjugate momentum Π, the
-tested conservative completion is
+capacities `M`, grounded stiffness `K_D`, mass `m` and conjugate momentum
+`Π`, the tested conservative completion is
 
 ```text
 H = Πᵀ M^−1 Π/2 + fᵀ(K_D+m²M)f/2,
 f_dot = M^−1 Π,       Π_dot = −(K_D+m²M)f.
 ```
 
-Using the same capacity as inertia is a hypothesis. Together with the stated
+Using the same capacity as inertia is a hypothesis. With the stated
 linearity, velocity, energy and time-reversal premises it fixes this
-completion. It oscillates rather than asymptotically settling. The
+completion, which oscillates rather than settling. The
 [construction](CONSTRUCTION.md#retained-scalar-and-entropy-constructions)
-reuses the existing free scalar continuum and quantum-instrument results
-under supplied canonical quantum representation, state, controls and clock.
-
-**Result:** an eight-site construction composes preparation and retained
-observations on one finite code with mathematical trace-distance error
-**<0.001237**, before physical service errors. A direct Gaussian simulator
-evaluates the same quadratic benchmark; a finite compiler simplifies its
-implementation. Neither is an additional physical law or an executed complete
-source history. See the [shared error and resource account](CONSTRUCTION.md#retained-scalar-and-entropy-constructions).
+reuses the free scalar continuum and quantum-instrument results under a
+supplied canonical representation, state, controls and clock. An eight-site
+construction composes preparation and retained observations on one finite
+code with mathematical trace-distance error **<0.001237** before physical
+service errors.
 
 The [configuration-equilibrium control](CONSTRUCTION.md#retained-audit-controls)
 preserves only the normalized classical configuration Gibbs marginal; its
-full phase-space reference and quantum vacuum change. Nonzero kinetic
-deformation violates the canonical theorem's same-capacity inertia premise.
-This control and N4's fixed-full-reference counterpair have different scopes.
-
-The [executed scalar adapter](observer/scalar_response/README.md) lets the
-native first current prepare a signed field displacement, performs a binary
-Weyl read and uses only its result for native feedback. The mean second
-current is `5r_q/132`, where `r_q` is the positive-preparation detector bias.
-The inherited scalar probability error `ε_q` bounds the complete history
-distance by `5ε_q/33` and this mean's error by `5ε_q/132`.
-This is a conditional connection to the supplied scalar family, with explicit
-instrument branches and a [detector prediction](observer/scalar_response/PREDICTION.md);
-it does not derive the Hamiltonian from native averaging.
-
-The [two-site source implementation](observer/source_scalar/README.md)
+full phase-space reference and quantum vacuum change, and nonzero kinetic
+deformation violates the same-capacity inertia premise. The
+[executed scalar adapter](observer/scalar_response/README.md) lets the first
+native current prepare a signed field displacement, performs a binary Weyl
+read and feeds only its result back: the mean second current is `5r_q/132`,
+and the scalar probability error `ε_q` bounds the complete history distance
+by `5ε_q/33`. The [two-site source implementation](observer/source_scalar/README.md)
 compiles and executes a separate finite scalar action on the twelve-port
-processor. It prepares the entangled field from blank registers, evolves
-four-, eight- and sixteen-level site codes and retains both pointer outcomes before
-native feedback. Exact bounds cover the complete ideal occupation history
-and temporal splitting for the same finite Hamiltonian. Spatial refinement,
-coherent service errors and physical identification require further evidence;
-the eight-site and golden-grid constructions retain their separate execution scopes.
-
-The [C/E interference experiment](predictions/README.md) holds the native
-endpoint map and diagonal preparation weights fixed while changing the
-recorded quantum instrument. Its two phase settings predict 5/8 and 1/8 for
-C, versus 3/8 for both under E. The fixed sample plan evaluates complete
-records and outcomes under declared preparation/readout error; no physical
-dataset is supplied. This comparison does not select a unique OPH law.
-
-Both complete quantum instruments and their fixed test have an
-[encoded source-control realization](observer/source_discrimination/README.md).
-The construction preserves arbitrary reference coherence, keeps the full
-minus readout subspace and charges every native pulse and proper-code service.
-Its synthetic comparison therefore tests emitted preparations and channels;
-physical encoding and an independently established apparatus budget remain
-necessary to use the same test on observations.
-The contrast law E is precisely C followed by recording seam-total parity,
-the minimal extra binary refinement of the coin/current labels. Both use
-the same repair circuit; one three-pulse CNOT supplies their difference.
-
-**Open connection:** identify inertia and the Hamiltonian model parameter
-with observations and compatible observer-relative clock readings from the
-same microscopic process, retaining a complete preparation/readout budget. Equal equilibrium configurations do not select
-the kinetic law; the retained [kinetic alternatives](CONSTRUCTION.md#retained-scalar-and-entropy-constructions)
+processor with both pointer outcomes retained. S1 supplies field benchmarks;
+its dynamics are not identified with the native repair. The open connection
+is to identify inertia and the Hamiltonian model parameter with observations
+and compatible observer-relative clock readings from the same microscopic
+process. The retained [kinetic alternatives](CONSTRUCTION.md#retained-scalar-and-entropy-constructions)
 provide dynamical discriminators.
 
-## Construction principle and rejected alternatives
+## Runnable observer protocols
 
-The [finite entropy-completion theorem](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
-requires a specified retained algebra and faithful modular-compatible reference.
-The [binary native attachment](primitive_observer/DERIVATION_COMPLETION.md)
-identifies E as the resulting tracial expectation. C has the same completion
-endpoint and different finite-event coherences. Thus completion does not
-select the full recorded repair law. An odd-total integer seam reaches a
-nearest-balanced shell rather than exact pathwise equality, and the
-full-carrier channel is not the binary conditional expectation. The
-[source-selection guide](SOURCE_SELECTION.md) owns the remaining construction
-and physical-interface obligations.
+These protocols run the native law C with an explicit finite record tape,
+controller and stopping rule on the uniform 66-state binary source, and the
+native implementation also checks the full 78-state extension. Two events
+means two successive repair invocations.
 
-The N2 variant with **one shared six-level processor** preserves the load
-channel but fails disjoint-seam commutation. It is rejected under the declared
-locality requirement. The local endpoint construction is retained instead.
-The [identifiability checks](identifiability_checks/README.md) and
-[construction counterexamples](CONSTRUCTION.md#retained-audit-controls)
-state the domains excluded by additional exact controls.
+The [native observer](observer/README.md) records `(c1,j1)`, issues a
+supplied forecast from that record, chooses seam `(0,5)` when `j1>0` and
+`(0,1)` otherwise, records the second outcome and halts. All 264 binary-source
+paths are enumerated. The [capacity calculation](observer/CAPACITY.md) gives
+11 terminal record words and 16 reachable prefixes, a four-bit classical
+prefix encoding. The observer's action reads only the current, which every
+admissible record law records, so the controller runs unchanged under each
+of them; its forecast also uses the coin.
 
-## Maintaining candidate scope
+The [electromagnetic detector protocol](observer/p_response/README.md)
+accepts the closure coordinates P and N and computes the source-only
+structured-running `α(P)`. Its charge assignment is `Q_v=g(P)N_v` with
+`g(P)=sqrt(4π α(P))`. A prepared path qubit and calibrated loop exposure χ
+produce a committed bit with `Pr(y|j1,P,χ)=[1+y sin(g(P)j1χ)]/2`; only y
+reaches the next-seam controller. All 528 weighted histories are retained.
+The response `E[g(P)j2]=(5g(P)/264)sin(g(P)χ)` vanishes under disconnected
+and independently shuffled detector controls. Charge realization, flux
+source, probe preparation and readout are specified hardware choices.
 
-Follow the [construction obligations](CONSTRUCTION.md#remaining-construction-work):
-use discriminating requirements, test deletion controls, count independent
-assumptions and try the smallest diagnostic first. A shorter rewritten
-formula does not by itself reduce the law's physical inputs.
+Both constructions preserve committed classical record values through
+feedback and permit disturbance of coherences between record values. Neither
+is an online learner or a complete physical universe. The detector reads the
+native current; it is not the bare-occupation instrument that N4 requires.
 
-Keep each card consistent with its law, state space, parameters, schedule,
-record policy and physical interpretation. Use a separate candidate ID when
-a scientifically distinct alternative must be compared. Promote results only
-with their scope, added assumptions, discriminator and evidence reference.
-Keep this register focused on current model definitions and their evidence.
+## Excluded alternatives
 
-For each claimed recovery or agreement result, record the legitimate set,
-preserved data, perturbation domain, schedule class, nearest primary theorem,
-checked premise mapping and remaining physical discriminator. Distinguish
-support extension, probability extension, harmonic residual and uniqueness.
-The [bounded work products](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md#7-work-products-and-scientific-contribution)
-fit the existing owners below; they do not retire successful component evidence.
+| Alternative | Requirement it fails | Evidence |
+| --- | --- | --- |
+| Tie kept by the endpoint that has more | Load-independent tie-break; freezes the binary shell | Proposition 1 |
+| Record of an endpoint's pre-repair load | Local number-phase covariance | [Record-law classification](record_laws/README.md) |
+| N2 with one shared six-level processor | Disjoint-seam commutation | Declared locality requirement |
+| Any single-product exponential response conjugation | Cannot feed internal state back to the load | One-term obstruction and the `144/625` control |
+| Kinetic deformation `I+εA` of S1 | Same-capacity inertia | [Retained audit controls](CONSTRUCTION.md#retained-audit-controls) |
+
+An odd-total integer seam reaches a nearest-balanced shell rather than exact
+pathwise equality, and the full-carrier channel is not the binary conditional
+expectation. The [identifiability checks](identifiability_checks/README.md)
+and [construction counterexamples](CONSTRUCTION.md#retained-audit-controls)
+state further domains excluded by exact controls.
+
+## Maintaining this register
+
+Use discriminating requirements, test deletion controls, count independent
+assumptions and try the smallest diagnostic first, following the
+[construction obligations](CONSTRUCTION.md#remaining-construction-work). A
+shorter rewritten formula does not by itself reduce a law's physical inputs.
+Keep each entry consistent with its law, state space, parameters, schedule,
+record policy and physical interpretation, and give a scientifically distinct
+alternative its own identifier. For each claimed recovery or agreement
+result, record the legitimate set, preserved data, perturbation domain,
+schedule class, nearest primary theorem, checked premise mapping and remaining
+physical discriminator. The [bounded work products](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md#7-work-products-and-scientific-contribution)
+fit the owners below.
 
 [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076)
 owns shared-law selection;
 [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077)
-owns complete source execution. The [premise map](PREMISES.md) and
-claim registry retain their existing roles. No candidate card closes a
-physical premise by renaming it. Completion requires the simplest shared rule
-to satisfy the required constraints on one common model, with discriminating
-evidence for its physical identification.
+owns complete source execution. No entry closes a physical premise by
+renaming it. Completion requires the simplest shared rule to satisfy the
+required constraints on one common model, with discriminating evidence for
+its physical identification.

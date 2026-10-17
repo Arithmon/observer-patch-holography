@@ -1,17 +1,44 @@
 # OPH model construction from local repair
 
-This is the construction guide for the [live model implementation](README.md).
-The [candidate register](CANDIDATES.md) gives law-level comparisons; the
-generated [premise map](PREMISES.md) connects those constructions to the
-existing theorems.
+This is the construction guide for the [model implementation](README.md).
+The [repair-law guide](CANDIDATES.md) explains which parts of the repair law
+are forced and which are free; the generated [premise map](PREMISES.md)
+connects the constructions to the theorem library.
 
 **Build the simplest shared repair process that satisfies the required
-constraints.** A finite implementation is complete when its declared
-observation, record and feedback contract runs and passes its checks.
-Proving that self-consistency uniquely selects that implementation is a
-separate question, not a prerequisite for constructing it. A complete
-physical model additionally needs compatible physical identifications and
-tests on the same process.
+constraints.**
+
+## What is being built
+
+OPH proposes that the physical world is what overlapping observers agree on
+once they have repaired their disagreements. The construction makes that
+proposal executable. It fixes a finite carrier, a local repair law, observers
+that read records and act on them, and the services those observers use. It
+then runs the specification and derives what its observers can measure. The
+aim is a specification whose observers' joint statistics admit standard
+physics as an effective description.
+
+Mathematically, an instance is a tuple
+
+```text
+(carrier H, accessible algebra A, repair instruments {Φ_{e,r}}, scheduler σ,
+ observer instruments and feedback maps, preparation domain, declared services).
+```
+
+Each seam `e` carries an instrument whose outcomes `r` are committed records.
+An observer is a finite tape of such records together with a controller that
+chooses the next operation from the tape alone. Everything an observer can
+report is a probability computed from these maps.
+
+The working method has four steps. Build the simplest instance that meets the
+stated requirements. Derive its consequences exactly. Keep every supplied
+input visible. Find the observations that distinguish it from the
+alternatives the requirements leave open. A finite implementation is complete
+when its declared observation, record and feedback contract runs and passes
+its checks. Proving that self-consistency uniquely selects that
+implementation is a separate question and is not a prerequisite for
+constructing it. A complete physical model additionally needs compatible
+physical identifications and tests on the same process.
 
 ## Completion target and acceptance criteria
 
@@ -55,7 +82,7 @@ force a particular random outcome in an independently repeated experiment.
 Agreement must be constrained by measurements; a consistent world model can
 describe different physics from nature.
 
-Hardware, protocol and implementation choices remain open design variables.
+Hardware, protocol and implementation choices are open design variables.
 No uniqueness theorem for the chosen rule is a prerequisite. For the current
 P/N construction, closure-derived P and N are accepted inputs under their
 declared contracts; that assumption does not discharge the other physical
@@ -67,7 +94,49 @@ software contracts; it does not mark the physical target complete. The
 current native observer, P detector and source-compiled two-site scalar
 apparatus are completed finite components under their stated premises.
 The controlled effective interacting-field and gravitational descriptions
-of the observer statistics, and independent empirical completion, remain open.
+of the observer statistics, and independent empirical completion, are open.
+
+## Why this specification
+
+Every choice below is either forced by a stated requirement, chosen as the
+simplest member of an explicitly classified family, or declared as an input
+with its alternatives kept. The [repair-law guide](CANDIDATES.md) gives the
+law-level arguments in full.
+
+| Choice | What the model uses | Reason | What stays open |
+| --- | --- | --- | --- |
+| Carrier | Twelve ports and thirty seams of the source icosahedron; integer loads with total two | Declared by the architecture premise; total two is the smallest sector where a single load waits or moves and two loads collide | Selection of the architecture from an unrestricted menu; extended carriers and refinement |
+| Classical seam rule | Endpoints become floor and ceiling of their mean; a fair coin breaks ties | Forced by conservation, one-step balance, a tie-break that reads no load, and endpoint symmetry | Nothing on its domain; the four requirements are premises |
+| Record law | C executes; E is the comparison law | C records the classical rule's own random variables, the coin and the current, and nothing more | Which coherence `g` nature keeps; the admissible laws form one convex family |
+| Scheduler | Uniform independent seam attempts | The symmetric baseline; prescribed seams serve as controls | Identification of attempts with a physical clock |
+| Observer | A finite record tape and a controller that reads committed records and chooses the next seam | The smallest object that records, predicts and acts on its own records | Larger observers, record delivery and refinement |
+| Services | Coherent preparation, readout, mixers, record storage and compiled source words | Declared and costed in every error budget | Physical realization and authenticated service errors |
+| Closure inputs | P and N as derived by the closure equations | Accepted under their declared contracts | Physical endpoint corrections |
+| Field benchmarks | Supplied scalar, gauge and matter actions on a common source | Conditional comparisons with explicit errors | Derivation from native repair |
+
+**The record law in one paragraph.** Requiring seam locality, the exact
+classical law, local number-phase covariance and endpoint symmetry leaves a
+convex family of quantum record laws. Each member is a table of five
+coherence multipliers, one positive matrix per transported current. Four
+members stand out: C0 records only the current, C adds the coin, E adds the
+seam parity and T adds the seam total. Exactly E and T are idempotent, and
+every law that keeps an empty seam coherent with a full seam completes to E
+under repetition. All members share every classical observation. One
+coherent interference experiment reads the multiplier `g` directly, with
+predictions `3/8 ± Re(g)/2` at phases `0` and `π`. The model executes C because
+its records are exactly the classical event data. The
+[record-law classification](record_laws/README.md) proves these statements
+on the 78-state carrier and checks them against the executed C and E
+instruments.
+
+**The observer in one paragraph.** An observer here is the smallest system
+that keeps records and uses them. The [native observer](observer/README.md)
+commits the coin and current of one repair, forecasts the next current from
+that record and chooses its next seam from the current alone. Its controller
+sees no hidden load. Because every admissible record law records the current,
+the same controller runs under each of them. Larger observers compose such
+tapes, federations join elementary carriers, and detectors attach to the
+record through declared couplings.
 
 ## Current executable result
 
@@ -143,7 +212,7 @@ bounds. This supplies finite cross-size observation maps rather than assuming
 that parent/child coarse averages intertwine dynamics. Matched initial
 restrictions are necessary; a uniform global total-two preparation dilutes
 locally as the screen grows. An all-level routing argument and a controlled
-nontrivial physical scaling regime remain open.
+nontrivial physical scaling regime are open.
 
 The [incident-clock attachment](native_action/INCIDENT_REFINEMENT.md) compares
 these actual screens after the same number of local repair opportunities,
@@ -234,9 +303,10 @@ comparisons, floating execution diagnostics and physical device errors are
 separate. The [finite-law discriminator](predictions/README.md) and its
 [encoded realization](observer/source_discrimination/README.md) supply
 additional complete protocols under their own preparation and service
-contracts. Mean loads and native classical histories alone cannot select C
-from E. No public laboratory dataset is identified with these native-law
-experiments.
+contracts. Mean loads and native classical histories assign the same
+probabilities under every admissible record law; the discriminator reads the
+coherence `g` that separates them. No public laboratory dataset is
+identified with these native-law experiments.
 
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
 scope of a classical interpretation. The diagonal native branch obeys
@@ -246,7 +316,7 @@ the deposited Hensen records gives 196 wins in 245 eligible trials and
 `0.03917`, conditional on its setting calibration and experimental access
 contract. This retrospective null rejection excludes that extension, not
 the full quantum C/E construction, and supplies no lab-clock identification
-or new prospective validation of OPH.
+or a prospective validation of OPH.
 
 The [measurement bounds](measurement_bounds/README.md),
 [empirical diagnostics](empirical_diagnostics/README.md) and
@@ -400,9 +470,12 @@ y = x + j(unit_b − unit_a).
 
 The load is conserved. Its quantum current instrument has Kraus operators
 `L_(c,j)=(1/sqrt(2)) Σ_(x:j(x,c)=j) |y(x,c)><x|`.
-The record is `(c,j)`. Keeping the pre-repair contrast instead gives the
-alternative instrument E, with identical classical transitions but different
-quantum coherences. The classical repair rule alone does not select C or E.
+The record is `(c,j)`. C is one member of the admissible family in the
+[record-law classification](record_laws/README.md). Keeping the pre-repair
+contrast instead gives E, dropping the coin gives C0, and recording both
+endpoint loads gives T. All of them have identical classical transitions.
+The classical rule fixes the diagonal of every member and none of its
+coherences.
 
 The [native observer](observer/README.md) first applies C on `(0,1)`. Its committed first record alone
 selects `(0,5)` when `j1>0`, otherwise `(0,1)`, and supplies the preissued
@@ -484,7 +557,7 @@ clock relation under its declared uniform binary reference and IID seam
 schedule. These are readouts of the same recorded events, with a finite port
 chart and attempt parameter whose physical identification requires an
 independent correspondence.
-The [candidate register](CANDIDATES.md) retains the exact baseline relations.
+The [repair-law guide](CANDIDATES.md) retains the exact baseline relations.
 
 N2 lets the native current drive the existing local six-level response;
 N3 is its simpler flat alternative. They preserve the full native load
@@ -758,10 +831,11 @@ not an inventory of additional finite theorems:
   calibrated measurements. Specify data ancestry, permitted fits and units,
   then lock predictions and rejection rules before comparison. Source control
   words implement a supplied action without selecting its physical meaning.
-- Realize the native C/E discrimination apparatus, authenticate its full
-  service budget and collect complete records. Finite native preparation and
-  a dependence bound replace exact reset and IID premises; physical
-  controls and a laboratory mapping remain open.
+- Realize the one-event interference apparatus that reads the record law's
+  coherence `g`, authenticate its full service budget and collect complete
+  records. Finite native preparation and a dependence bound replace exact
+  reset and IID premises; physical controls and a laboratory mapping are
+  open.
 - Connect interacting matter, conserved stress and responsive geometry to the
   same observations and observer-relative clock comparisons. Fixed-volume
   occupation control and growing volume at fixed spacing address different
@@ -795,7 +869,12 @@ records and interventions.
 
 The [source-selection guide](SOURCE_SELECTION.md) organizes source selection
 around carrier architecture, observer interface and implementation, and the
-complete repair rule. Architecture, observer implementation and repair law
+complete repair rule. For the repair rule the selection problem is sharp:
+the classical seam rule is forced by four stated requirements, the record law
+ranges over an exactly classified convex family, and one interference
+experiment reads the coherence that separates its members. The
+[repair-law guide](CANDIDATES.md) states the principle that singles out each
+distinguished member. Architecture, observer implementation and repair law
 may supply the instance inputs. Action, state, scheduling and control consequences require
 explicit derivations from those inputs or a separate declared status; renaming a
 supplied input does not discharge it. The existing finite field programs

@@ -1,6 +1,6 @@
 # Empirical status and repair-rule comparison
 
-**No retained laboratory comparison selects native repair rule C or E.**
+**No retained laboratory comparison selects a native record law.**
 The repository contains reproducible comparisons with physical measurements,
 conditional postdictions, hardware implementation tests and executable designs
 for distinguishing repair rules. These have different evidential roles. None
@@ -17,8 +17,8 @@ computes the same complete detector laws as the supplied oscillator apparatus**
 and reproduces its existing comparison with measurements. This checks the
 connection between that compatibility solver and the empirical readout. The
 apparatus action, preparation calibration and detector map remain inputs.
-Native C/E selection needs a different, physically identified observation
-interface; common-record feedback alone cannot supply it.
+Selecting the native record law needs a different, physically identified
+observation interface; common-record feedback alone cannot supply it.
 
 ## How many comparisons?
 
@@ -48,7 +48,7 @@ The values below are retained analysis outputs. RMSEs in different measurement
 coordinates cannot be ranked against one another. A small numerical simulation
 error is not a bound on physical apparatus error.
 
-| Comparison and evidence | Observations and result | Supplied inputs and interpretation | Selects C/E? |
+| Comparison and evidence | Observations and result | Supplied inputs and interpretation | Reads the record law? |
 | --- | --- | --- | --- |
 | [Source-executed Gaussian readout](../model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md) | 21 complex calibration probes determine two preparation parameters; 100 reserved complex probes give 200 spin means. Primary spin-mean RMSE `0.06647166`; alternative coordinate extent gives `0.07178838`. | Supplied oscillator, displaced-thermal preparation family and detector; retrospective calibration/evaluation split. Coordinate conventions and experimental postselection remain unresolved. | No. |
 | [Analytic Gaussian readout](../model/scalar_observations/experimental_readout/README.md) | The same 100 reserved complex probes give RMSE `0.07639048`. No interval violations under the declared sampling model. | Measured-axis factorization predicts interior probes. Its broad sampling intervals assume 250 independent bounded observations per mean; accepted counts are not authenticated. `not_rejected_under_assumed_sampling` is not an empirical validation. | No; same records, another analysis. |
@@ -78,20 +78,27 @@ controls and unfilled count templates are not experimental measurements.
 
 ## What the repair-rule comparison establishes
 
-The [candidate guide](../model/CANDIDATES.md) owns the complete model definitions.
-The labels C and E refer to how the native quantum instrument records an
-event; they are not labels for the alternative fine-structure closure maps.
+The [repair-law guide](../model/CANDIDATES.md) owns the complete model
+definitions. The classical seam rule follows from four stated requirements.
+Its quantum record laws form one convex family, classified exactly in the
+[record-law package](../model/record_laws/README.md): each member is a table
+of five coherence multipliers. C0 records the current, C adds the coin, E adds
+the seam parity and T adds the seam total. The model executes C and E. These
+labels describe how a native event is recorded; they are unrelated to the
+alternative fine-structure closure maps.
 
 | Candidate | Executed distinction | Empirical status |
 | --- | --- | --- |
-| N1 / C: current record | Same load repair as E; retains coherences that its current label does not distinguish. | No matched physical dataset selects it. |
-| N1-E / E: contrast record | Same classical transition law; records extra contrast information and gives different coherent readouts. | No matched physical dataset selects it. |
+| Record laws C0, C, E, T and the rest of the family | One classical law; different coherence multipliers. One coherent event reads the multiplier `g`. | No matched physical dataset reads `g`. |
 | N2: local six-level response | Preserves the native load/record marginal; a declared internal-response assay distinguishes it from N3. | Load/current data alone cannot select it; physical internal-response attachment missing. |
 | N3: flat endpoint response | Preserves the same load/record marginal and has trivial closed-loop response under its global coordinate change. | Same empirical boundary as N2. |
 | N4: reciprocal load–response exchange | Private preparations affect bare-occupation and memory assays. This differs from the N1 current-detector protocol. | No identified physical preparation/readout dataset tests those distinctions. |
 | S1 and supplied field benchmarks | Executed free/interacting field and detector laws with declared inertia, action, state and time. Oscillator comparisons evaluate particular supplied effective models. | Conditional benchmarks; not a selection of C, E or a unique microscopic repair law. |
 
-For every one of the 78 load basis states, the C and E instruments have the
+Every admissible record law has the same diagonal action, so classical
+record data assign the same probabilities under all of them. For C and E the
+statement is proved in its strongest form. For every one of the 78 load
+basis states, the C and E instruments have the
 same joint law of coin, current and post-repair load when E's extra contrast
 label is summed out. The equality continues by induction through finite
 adaptive classical protocols from diagonal preparations with the same
@@ -159,7 +166,7 @@ the action.
 | Supplied oscillator preparation, dynamics and detector | Numerical predictions compared with the reserved measurements | Derivation of those apparatus inputs from native repair |
 | Local history completion | Complete endpoint laws, fair-schedule agreement and unfinished-schedule controls | Full observer-consensus protocol or native implementation of the global solver |
 | Native C/E observation and feedback | Exact equality at the common-record/work interface; different coherent native outputs | A matched laboratory likelihood that distinguishes C/E |
-| Physical repair-law identification | A defined coherent discrimination experiment and explicit channel-mapping exclusions | An empirical winner among the native rules |
+| Physical repair-law identification | A defined coherent experiment that reads the coherence `g`, and explicit channel-mapping exclusions | An empirical winner among the native record laws |
 
 Finally, the supplied oscillator number-dephasing channel is not E's extra
 parity recording. An exact three-level rate inequality rules out identifying
@@ -172,16 +179,21 @@ verdict to the comparisons above.
 
 The [fixed interference protocol](../model/predictions/README.md) uses one
 native repair on seam `(0,1)` after a specified coherent preparation of two
-load configurations. Its shared binary projector gives:
+load configurations, one with an empty seam and one with a single waiting
+load. Its shared binary projector gives `Pr(plus) = 3/8 + Re(g e^{-iθ})/2`,
+where `g` is the record law's coherence between those two configurations:
 
-| Preparation | C: plus probability | E: plus probability |
-| --- | ---: | ---: |
-| Phase 0 | `5/8` | `3/8` |
-| Phase pi | `1/8` | `3/8` |
-| Phase pi/2 | `3/8` | `3/8` |
-| Equal incoherent mixture | `3/8` | `3/8` |
+| Preparation | C0 | C | E and T |
+| --- | ---: | ---: | ---: |
+| Phase 0 | `3/8+√2/4 ≈ 0.729` | `5/8` | `3/8` |
+| Phase pi | `3/8−√2/4 ≈ 0.021` | `1/8` | `3/8` |
+| Phase pi/2 | `3/8` | `3/8` | `3/8` |
+| Equal incoherent mixture | `3/8` | `3/8` | `3/8` |
 
-This is an executable, falsifiable instrument distinction. The fixed design
+This is an executable, falsifiable instrument distinction. Its locked
+decision rule compares C with E; the same complete counts estimate `Re g`
+and `Im g` for any admissible law. A second preparation with an empty and a
+full seam reads the multiplier `k` and separates T from E. The fixed design
 requires 8,192 fresh independent attempted trials at each setting, every joint record bin and
 abort, and an independently established apparatus probability-error budget
 of `1/64`. Its simultaneous sampling-failure bound is below `0.000012606`.
@@ -202,12 +214,12 @@ gate fidelity. The retained two-trial executions are not an experimental
 
 An empirical distinction therefore requires identifying and calibrating that
 coherent preparation/repair/readout operation, then collecting complete records
-under one fixed interpretation for both candidates. It needs no fundamental
+under one fixed interpretation for every candidate compared. It needs no fundamental
 spacetime reconstruction or universal clock. Implementing a chosen C or E
 channel on a quantum computer would test that engineered instrument; selecting
 an unknown natural process additionally requires identifying it independently
 of the candidate being tested. **There is no justified empirical winner among
-the native rules on the retained data.**
+the native record laws on the retained data.**
 
 ## Other empirical comparisons in OPH
 

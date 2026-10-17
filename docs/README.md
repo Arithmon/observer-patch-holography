@@ -96,8 +96,9 @@ maps distributed recovery, sheaf diffusion, boundary extension and contextuality
 to explicit candidate obligations. Its work products govern theorem reuse and
 the distinction between recovery, exact agreement and physical law selection.
 
-[Concrete Repair-Law Candidates](../model/CANDIDATES.md) compares the active
-update rules, tested properties, added assumptions and decisive tests. This
+[Repair Laws](../model/CANDIDATES.md) explains which parts of the repair law
+are forced, which are free, which members of the admissible family the model
+executes, and which tests tell them apart. This
 maintained research summary has a separate role from the generated registers.
 
 [Runnable Model](../model/README.md) is the live home of observer and

@@ -34,7 +34,8 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/federated_quantum_sector", "model/readout_controls",
            "model/observer_time_fields",
            "model/native_action", "model/joint_clock_process",
-           "model/closed_prediction_protocol", "model/characteristic_constraints")
+           "model/closed_prediction_protocol", "model/characteristic_constraints",
+           "model/record_laws")
 REPLAYS = (
     ("model.relative_observer_geometry.temporal_records", None, "model/relative_observer_geometry/temporal_results.json"),
     ("model.native_clock.clock_bridge", None, "model/native_clock/clock_bridge_results.json"),
@@ -129,6 +130,7 @@ REPLAYS = (
     ("model.identifiability_checks.rule_observability", None, "model/identifiability_checks/rule_observability_results.json"),
     ("model.identifiability_checks.dephasing_observability", None, "model/identifiability_checks/dephasing_observability_results.json"),
     ("model.identifiability_checks.consensus_observability", None, "model/identifiability_checks/consensus_observability_results.json"),
+    ("model.record_laws", None, "model/record_laws/results.json"),
 )
 
 
