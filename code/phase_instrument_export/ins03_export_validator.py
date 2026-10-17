@@ -2,7 +2,7 @@
 
 Schema under validation: ``oph.sim.ins03_phase_instrument_export.v1``, the
 simulator-side export specified in section A of
-``docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md``.  In the typed Lean binding interface
+``code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md``.  In the typed Lean binding interface
 ``Lean/EventAlgebra/SourceBoundInstrumentInterface.lean``, the current
 placeholder fields are not determined by the committed objects and do not
 authenticate custody.  A richer in-corpus or external data-bearing

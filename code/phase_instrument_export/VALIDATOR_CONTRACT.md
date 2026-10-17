@@ -2,7 +2,7 @@
 
 Schema under validation: `oph.sim.ins03_phase_instrument_export.v1`, the
 simulator-side export interface specified in section A of
-`docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`.  Validator:
+`code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`.  Validator:
 `code/phase_instrument_export/ins03_export_validator.py`.  Owning lanes:
 issues 730 (OL-C5, quantum) and 737 (instrument register).  The typed Lean
 binding interface `Lean/EventAlgebra/SourceBoundInstrumentInterface.lean` is

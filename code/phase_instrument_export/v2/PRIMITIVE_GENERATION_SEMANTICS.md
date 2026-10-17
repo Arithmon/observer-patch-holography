@@ -20,7 +20,7 @@ is stated in section H, and the missing custody half is specified in
 
 Governing records: the 2026-08-24 post-r2020 deep audit (finding F3 and
 completion item 1), section C.2 (c) of
-`docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md` (source-operation
+`code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md` (source-operation
 origin), and the v1 contract
 `code/phase_instrument_export/VALIDATOR_CONTRACT.md`. The audit's exact
 judgments are load-bearing here and are repeated where they bind:

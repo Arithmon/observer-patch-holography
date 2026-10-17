@@ -53,7 +53,7 @@ def _fixture_row(
         "owning_issue": 737,
         "ledger_row": "OL-A1",
         "status": status,
-        "spec_pointer": "docs/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md",
+        "spec_pointer": "code/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md",
         "decision_rule": FIXTURE_RULE,
         "seeds_policy": "One declared seed and five declared replicate ids.",
         "controls": ["Fixture control: matched-density arm."],
@@ -156,7 +156,7 @@ def test_ins02_design_contract_is_explicit_and_unfrozen() -> None:
     assert row["frozen_utc"] is None
     assert row["verdict_receipts"] == []
     assert row["spec_pointer"] == (
-        "docs/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md"
+        "code/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md"
     )
     assert "16,384; 65,536; 131,072; and 262,144" in row["decision_rule"]
     assert "absolute support sizes 48; 96; and 192" in row["decision_rule"]
@@ -182,7 +182,7 @@ def test_ins03_design_contract_is_explicit_unfrozen_and_nonpromoting() -> None:
     assert row["ledger_row"] == "OL-C5"
     assert row["status"] == "SPECIFIED"
     assert row["spec_pointer"] == (
-        "docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md"
+        "code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md"
     )
     assert row["custody_repository"] is None
     assert row["freeze_artifacts"] == []

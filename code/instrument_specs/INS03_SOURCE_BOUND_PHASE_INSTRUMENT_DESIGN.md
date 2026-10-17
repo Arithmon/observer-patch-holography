@@ -1,7 +1,7 @@
 # INS-03: source-bound phase-sensitive readout instrument (design)
 
 **INS-03 is `SPECIFIED` and unfrozen.** The
-[instrument register](../registers/OBSERVATION_LEDGER_V3.md#ins-03-ol-c5-static-phase-fixture-validator-and-future-source-bound-readout-design)
+[instrument register](../../docs/registers/OBSERVATION_LEDGER_V3.md#ins-03-ol-c5-static-phase-fixture-validator-and-future-source-bound-readout-design)
 records an implemented static conformance checker and this mutable design for
 a future authenticated source readout. No seed, freeze event, producer custody,
 raw capture or scientific verdict is registered. OL-C5 remains `partial`.

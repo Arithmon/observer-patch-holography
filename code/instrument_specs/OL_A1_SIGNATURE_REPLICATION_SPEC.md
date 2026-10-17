@@ -1,7 +1,7 @@
 # OL-A1 signature replication instrument
 
 **INS-01 has status `FAILED` and remains the controlling completed instrument
-for OL-A1.** The [instrument register](../registers/OBSERVATION_LEDGER_V3.md#ins-01-ol-a1-13-signature-replication-instrument)
+for OL-A1.** The [instrument register](../../docs/registers/OBSERVATION_LEDGER_V3.md#ins-01-ol-a1-13-signature-replication-instrument)
 owns its frozen decision rule, seed policy, external artifacts, verdict
 receipts and reproducibility limits. This page summarizes that instrument;
 it does not authorize another execution or alter its frozen protocol.

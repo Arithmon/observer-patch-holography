@@ -106,7 +106,7 @@ def test_ol_a1_failed_control_and_unfrozen_followup_are_exact() -> None:
     # ledger; the row cites it and INS-01 controls the row there.
     assert "tracking/observation_ledger.json" in row["evidence"]
     assert _control(_ledger(), "OL-A1")["controlling_instrument"] == "INS-01"
-    assert "docs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md" not in row["evidence"]
+    assert "code/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md" not in row["evidence"]
     assert "threshold form on two of five" in row["notes"]
     assert "robust reference on one of five" in row["notes"]
     assert "does not prove carrier count is the cause" in row["notes"]

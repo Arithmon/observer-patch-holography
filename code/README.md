@@ -45,6 +45,7 @@ the theorem or physical carrier named by that branch.
 | [`collar_alignment/`](collar_alignment/) | Boundary-collar alignment checks |
 | [`maxent/`](maxent/) | Finite maximum-entropy reconstruction |
 | [`edge_sectors/`](edge_sectors/) | Edge-sector and transport calculations |
+| [`instrument_specs/`](instrument_specs/) | Registered simulation-instrument protocols and their evidence limits |
 
 ## Quick Reproduction
 

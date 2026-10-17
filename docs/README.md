@@ -23,7 +23,6 @@ physical universe has been reconstructed.
 | This folder | The basis, the paper set, canonical references and the common-objections guide |
 | [`registers/`](registers/) | Generated V3 registers and ledgers |
 | [`research/`](research/) | Research notes, each verified by a code lane |
-| [`instrument_specs/`](instrument_specs/) | Instrument designs listed in the instrument register |
 | [`policies/`](policies/) | Data, hardware-evidence and writing policies |
 
 Keep this directory limited to shared references, scientific registers and
@@ -219,9 +218,9 @@ order:
 
 ## Instrument Specifications
 
-- [INS-03 source-bound phase-sensitive readout](instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md)
-- [OL-A1 signature replication](instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md)
-- [OL-A1 carrier count by absolute support size](instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md)
+- [INS-03 source-bound phase-sensitive readout](../code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md)
+- [OL-A1 signature replication](../code/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md)
+- [OL-A1 carrier count by absolute support size](../code/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md)
 
 ## Evidence, Data And Writing Policies
 

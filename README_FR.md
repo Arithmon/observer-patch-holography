@@ -2,7 +2,7 @@
 
 **La physique à partir des registres que les observateurs peuvent partager.**
 
-[Article principal](https://philpapers.org/rec/MUEFOC) · [Observateur exécutable](model/README.md) · [Bibliothèque Lean](Lean/) · [Reproduire](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
+[Article principal](https://philpapers.org/rec/MUEFOC) · [Bibliothèque Lean](Lean/) · [Reproduire](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
 
 [![Mandatory Suite](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml)
 [![Lean CI](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml)
@@ -51,7 +51,7 @@ intemporelle et les horloges qu’elle contient.
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de
   Born, qui fixe les probabilités quantiques, et la borne de Tsirelson sur les
-  registres achevés ; un support tridimensionnel par lui-même ; l’algèbre de
+  registres achevés ; un support tridimensionnel dans sa réponse lente ; l’algèbre de
   Lie de jauge du Modèle standard avec une génération sans anomalies ; un
   ordre causal de dimension (1+3) dont le temps propre vient de comptages de
   registres ; et l’équation d’Einstein issue d’un bilan nul réalisé.
@@ -102,6 +102,11 @@ fixe deux instruments de détection concurrents et leur règle de rejet par
 comptage avant tout comptage indépendant, et le
 [guide de construction](model/CONSTRUCTION.md) énonce les critères
 d’acceptation et les connexions qui restent à construire.
+
+Le [bilan empirique](docs/EMPIRICAL_STATUS.md) distingue les comparaisons
+avec les mesures de la sélection de la règle de réparation native. La réparation
+locale de l’histoire reproduit les lectures de l’appareil oscillateur fourni ;
+les données conservées ne départagent pas C et E.
 
 ## Fondements mathématiques
 
@@ -179,7 +184,8 @@ entrées.
 | [Lean/](Lean/) | La bibliothèque vérifiée par machine |
 | [code/](code/README.md) | Les calculs exacts, les vérificateurs et les reçus derrière les articles |
 | [evidence/](evidence/README.md) | Les paquets de preuves conservés et les enregistrements de garde |
-| [claims/](claims/README.md) | Le registre des énoncés, le registre des prémisses et le registre des prédictions gelées |
+| [claims/](claims/README.md) | Les énoncés établis et leurs dépendances |
+| [tracking/](tracking/) | Les registres des prémisses, observations, prédictions et instruments |
 | [docs/](docs/README.md) | La base, le guide des termes, les politiques et les registres |
 | [book/](book/), [essays/](essays/) | Le livre et les essais |
 

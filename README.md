@@ -107,7 +107,10 @@ The [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md) separates these
 finite results from extended relativistic spacetime and a calibrated laboratory
 identification. A [public Bell-data replay](model/predictions/BELL_RECORDS.md)
 also tests the limit of interpreting the diagonal branch as a complete local
-response model; it does not test the full quantum construction.
+response model; it does not test the full quantum construction. The
+[empirical status](docs/EMPIRICAL_STATUS.md) distinguishes those comparisons
+from selection of the native repair law. Local history repair reproduces the
+supplied oscillator readout; the retained data do not choose between C and E.
 
 ## Mathematical results
 
@@ -180,7 +183,8 @@ specification supplies and which it takes as inputs.
 | [Lean/](Lean/) | The machine-checked library |
 | [code/](code/README.md) | Exact calculations, lane verifiers and receipts behind the papers |
 | [evidence/](evidence/README.md) | Retained evidence packets and custody records |
-| [claims/](claims/README.md) | The claim registry, the premise registry and the frozen-prediction register |
+| [claims/](claims/README.md) | Established claims and their dependency views |
+| [tracking/](tracking/) | Premise, observation, prediction and instrument registers |
 | [docs/](docs/README.md) | The basis, the working terms, policies and registers |
 | [book/](book/), [essays/](essays/) | The book and the essays |
 
