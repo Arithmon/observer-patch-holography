@@ -14,6 +14,7 @@
     "__main__.py": "21a944d38029986b3d73b5667bcd7764cf530fa524cbef371292f6fc498af389",
     "bell_records.py": "7cfc6e19088c90739cf3e93006d7febfd86a4699fdb09ec89e7c948ed8a6c381",
     "bell_results.json": "f85b298594ce113a1dcd80c888cb7fbc971f015f684b40858c7bccb4fc4fede3",
+    "data/.gitattributes": "2e115f5bf30c5de41ad50abc1fc2346d046bd28b959f88ac641f8b211ec0a465",
     "data/hensen2015.txt": "5a6b1853554ad508d35c795415d64922ed9e5bc0469f6052ad222486ad3566ff",
     "endpoint_audit.py": "f362374fe6156ea9ceb4cd17d694fd1091bdb34c2085ef4080ee5dcdfbee90cb",
     "observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
