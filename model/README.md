@@ -176,8 +176,14 @@ reconstructed description. Complete four-read protocols execute on all
 28,680 two-particle states of the 240-port federation, with initial labels,
 remote evolution, feedback ticks and timeouts retained. Arithmetic and
 stopping errors are bounded. Movement-only clocks have a negative mode and
-cannot use that positive-transfer logarithm; no native-unitary or spatial
-refinement identification follows from this finite connection.
+cannot use that positive-transfer logarithm. The
+[finite-density extension](observer_time_fields/REFINEMENT.md) connects the
+positive transfer to the actual levels-three/five stopped-clock comparison:
+its complete four-bit law retains a nonzero connected statistic at density
+`1/3`, and native feedback reverses that statistic's sign. Exact exclusion
+duals, complete timeout records and source executions with serialized field
+counters supply the joint field/refinement certificate. This does not
+identify a physical native unitary or an all-level continuum limit.
 
 [Native modular dynamics](relative_modular_dynamics/README.md) identify a
 protocol algebra preserved by both event operations and the chosen modular

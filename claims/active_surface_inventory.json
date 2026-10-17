@@ -1696,6 +1696,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/observer_time_fields/REFINEMENT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/occupation_control/DERIVATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false

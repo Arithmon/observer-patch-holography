@@ -1,21 +1,28 @@
 {
-  "description": "Positive source-derived incident-clock field transfer, complete fixed-two federation histories and directed error budgets.",
+  "description": "Positive source-derived incident-clock fields, complete fixed-two histories and finite-density screen refinement.",
   "files": {
-    "AUDIT.md": "5d05d47cec12497b4abbf3708f743a4a1472184f1cd6ddd4308d3fc138a3f8ea",
-    "README.md": "7fb9a6daf9c06cb59eafabaa9bf4e3c3c1740a39c462ae986ecf608c6f81aa81",
+    "AUDIT.md": "da6b8607fbbc098e35bd73135815f50ba4c214f26ca4ce5f721a5c02d686831c",
+    "README.md": "74e655171f460c3e4a770736c47110d5830144e908b0172552a2ec8f6509981d",
+    "REFINEMENT.md": "a51c15f301761cefe6e768a45adb78a1234aab83d301eb770f5ea959f0a572f0",
     "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
     "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
     "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
+    "dual.py": "647f69c428e9bf7c8cf0eb72fa7d408eb7758a728861d0202600dc6dc883c548",
     "federation.py": "300cce61e8de9f43deb048523def82c35ac9d7440e05d097c892a827eb4ed037",
     "receipt.py": "8b44e8da679b88276bede6b42ccce93bf5a048fb8021395d14b7fdfc85edcfda",
+    "refinement.py": "7d875b328ae27ade12920dff5c8927b92fcb1b2dc038743f941c3f22b45ad43d",
+    "refinement_results.json": "d76a6dcd99c1c279923f4bf852bb00db8240b1fbd4ae3ab24bf3817fa928e5ca",
     "results.json": "13a000287a74615e7086526584d5f9b025ed1faf4170a757a84f25880a54ab97",
     "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
     "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
+    "test_dual.py": "3aad4050be728668865cce56b7685cd196c39fa2de6c645d9cddfac3cc7c7bee",
     "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
-    "test_receipt.py": "57c9bbafa9c0b67c91be42d6391e220cdf56b0e38bfbd2196ba6d938587cb4e9"
+    "test_receipt.py": "57c9bbafa9c0b67c91be42d6391e220cdf56b0e38bfbd2196ba6d938587cb4e9",
+    "test_refinement.py": "c910378e516369255edc9a0f50358e84ce4d2368e8664839b88727503b5595d9"
   },
   "reproduce": [
     "python -m model.observer_time_fields --check model/observer_time_fields/results.json",
+    "python -m model.observer_time_fields.refinement --check model/observer_time_fields/refinement_results.json",
     "python -m pytest -q -W error model/observer_time_fields"
   ],
   "schema": "oph.observer_time_fields.manifest.v1"

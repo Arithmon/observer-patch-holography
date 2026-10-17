@@ -338,8 +338,16 @@ This is a configuration-space Euclidean transfer, distinct from the full
 quantum Liouville action and a physically executed real-time unitary. A
 movement-only clock alternates its port occupation and has eigenvalue `-1`,
 which obstructs this positive-transfer logarithm. Cap/precision refinement
-is bounded; joint spatial refinement or comparison of distinct observer
-regions requires a common record map and an observational bound.
+is bounded. The [finite-density extension](observer_time_fields/REFINEMENT.md)
+instantiates the common record map and spatial bound at levels three and
+five for one root-carrier observer at Bernoulli density `1/3`. Every four-bit
+success outcome and timeout prefix is bounded by exact exclusion-dual
+propagation. On both actual screens the connected four-field statistic is
+positive without feedback and negative with it; the final mean response is
+in `[0.0836900722,0.0836900880]`. The positive-transfer identity uses this
+same stationary preparation and local intervention, and full-screen
+executions continue both saved field counters. Comparison of distinct
+observer regions and an all-level physical scaling limit remain open.
 
 ## Modular references and operational access
 
