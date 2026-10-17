@@ -70,6 +70,9 @@ each file keeps its name in the folders above.
   conditions are fixed before the comparison data are examined.
 - [Postdiction Ledger](POSTDICTION_LEDGER.md) records comparisons with measured
   values and their input ancestry.
+- [Empirical Status](EMPIRICAL_STATUS.md) inventories laboratory comparisons,
+  reference-value and hardware tests, and what they can decide about the
+  executable repair rules.
 - [OPH Falsification Program](OPH_FALSIFICATION_PROGRAM.md) lists only mature
   mathematical and realized-branch falsifiers.
 - [Programme-wide obstruction search](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
