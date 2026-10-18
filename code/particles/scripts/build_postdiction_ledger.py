@@ -298,6 +298,45 @@ DEFAULT_OUT = RUNS / "status" / "postdiction_ledger.json"
 DEFAULT_MD = REPO / "docs" / "POSTDICTION_LEDGER.md"
 
 
+def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
+    """Project a separately replayed observational receipt without rescoring it."""
+    path = path or CODE / "cosmology/tilt_posterior/results.json"
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    if receipt.get("schema") != "oph.act_dr6.tilt_retrospective.v1":
+        raise SystemExit("unexpected ACT retrospective receipt")
+    policy = receipt["analysis"]
+    if (policy["FZ15_prospective_verdict"] is not None
+            or policy["new_independent_data"] is not False
+            or policy["tail_mass_is_p_value"] is not False
+            or receipt["prediction"]["native_observer_model_derivation_established"] is not False):
+        raise SystemExit("ACT retrospective evidence cannot promote a physical or frozen claim")
+    sources = {
+        "projection_sha256": CODE / "cosmology/tilt_posterior/act_dr6_ns_weight.json.gz",
+        "analysis_source_sha256": CODE / "cosmology/tilt_posterior/audit.py",
+        "quantile_source_sha256": CODE / "cosmology/fixed_capacity_wlaw/official_desi_dr2_chain_audit.py",
+    }
+    for key, source in sources.items():
+        if hashlib.sha256(source.read_bytes()).hexdigest() != receipt["custody"][key]:
+            raise SystemExit(f"ACT retrospective custody mismatch: {key}")
+    pooled = receipt["pooled"]
+    total = Fraction(pooled["total_multiplicity"])
+    for position in pooled["positions"].values():
+        below, equal, above = (Fraction(position[key]) for key in
+            ("weight_strictly_below", "weight_equal", "weight_strictly_above"))
+        if (below + equal + above != total
+                or Fraction(position["posterior_mass_le_target_exact"]) != (below + equal) / total):
+            raise SystemExit("ACT retrospective exact tail accounting mismatch")
+    return {
+        "classification": receipt["classification"],
+        "artifact_ref": "code/cosmology/tilt_posterior/results.json",
+        "artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit",
+        "prediction": receipt["prediction"],
+        "analysis": policy,
+        "pooled": pooled,
+    }
+
+
 def _load(key: str, override: Path | None = None) -> dict[str, Any]:
     path = override or PARENTS[key]
     if not path.exists():
@@ -6803,9 +6842,13 @@ def build(
             {
                 "id": "neutrino_dimensionless_pointer",
                 "statement": (
-                    "dimensionless PMNS and mass-splitting-ratio "
-                    "comparisons are recorded on the results surface; the "
-                    "absolute attachment stays compare-only"
+                    "The target-informed weighted-cycle PMNS candidate is rejected by "
+                    "its declared retrospective NuFIT 6.1 gate in both atmospheric "
+                    "treatments. This rejects that template continuation, not the "
+                    "finite OPH construction. The separate precision candidate lock "
+                    "does not supply a source-only flavor law or an FZ-03 freeze; "
+                    "absolute mass attachment stays compare-only. The results "
+                    "surface records the scored coordinates and correlated-profile boundary"
                 ),
                 "artifact_ref": "code/particles/RESULTS_STATUS.md",
             }
@@ -6838,6 +6881,7 @@ def build(
             "receipt aborts the build"
         ),
         "principal_results": _principal_results(sections),
+        "retrospective_tilt_comparison": _retrospective_tilt_reference(),
         "sections": sections,
     }
     if write:
@@ -6875,6 +6919,52 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "report containment of the compare-only witness; conditional rows carry "
         "their declared premises; chart coordinates keep their NOT_EVALUABLE "
         "physical-comparison status.")
+    add("")
+    add("## Theorem, observer execution and physical comparison")
+    add("")
+    add("An exact finite theorem retains its stated hypotheses and mathematical force. "
+        "An executed observer receipt additionally instantiates a preparation, instrument, "
+        "scheduler, accessible records and error contract. A physical comparison requires "
+        "an explicit correspondence from those same observables to measured quantities. "
+        "Neither a theorem nor a successful software execution alone establishes that "
+        "correspondence; an absent physical attachment does not invalidate the finite theorem.")
+    add("")
+    add("The [native model audit](../model/PHYSICAL_AUDIT.md) connects the single-carrier "
+        "signal/clock, repair-action and clock-calibration results. Federations are "
+        "optional for those local results and become relevant when extending their "
+        "operational domain. The [observed-Universe protocol](research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md) "
+        "sets out comparison against published observations; building an experimental "
+        "realization of the carrier is not a prerequisite. Common states, records, "
+        "spatial and temporal maps, field interpretation and uncertainty bounds are required.")
+    add("")
+    tilt = ledger["retrospective_tilt_comparison"]
+    pooled = tilt["pooled"]
+    add("The [ACT joint-posterior reanalysis](../code/cosmology/tilt_posterior/README.md) "
+        "uses the released P-ACT-LB CAMB chains (Planck plus ACT DR6, CMB lensing "
+        "and DESI 2024 BAO) under baseline Lambda-CDM, after the official per-chain "
+        "50% stored-row burn-in. These observations precede the FZ-01 and FZ-15 "
+        "freezes. This is a retrospective conditional-branch comparison, not an "
+        "eligible prospective adjudication or an independent dataset added to the "
+        "[cosmology ledger](../code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md).")
+    add("")
+    add("| Fixed branch | Scalar tilt | Posterior mass at or below branch |")
+    add("| --- | ---: | ---: |")
+    for key, label in (("edge_center", "Edge-center"),
+                       ("historical_clock_diagnostic", "Historical clock diagnostic")):
+        position = pooled["positions"][key]
+        add(f"| {label} | `{position['target_decimal']:.12f}` | "
+            f"`{position['posterior_mass_le_target_exact']}` |")
+    add("")
+    add(f"The pooled posterior has mean `{pooled['ns_mean']:.9f}` and standard "
+        f"deviation `{pooled['ns_posterior_sd']:.9f}`. The lower-tail positions "
+        "indicate tension for this dataset combination. They are not p-values, "
+        "Bayes factors or probabilities that OPH is true. Per-chain and leave-one-out "
+        "sensitivity does not certify rare-tail effective sample size. The inherited "
+        "alpha-calibrated P and physical primordial embedding remain conditional, "
+        "and no native-observer derivation or frozen verdict follows. "
+        "The [public-data audit](research/PUBLIC_DATA_PREDICTION_AUDIT.md) also "
+        "records the Koide-equivalent tau restriction, incomplete alpha matching, "
+        "and the physical attachments required for dispersion tests.")
     add("")
     add("## Principal results")
     add("")

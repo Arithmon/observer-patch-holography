@@ -62,6 +62,41 @@ def test_all_sections_present(result):
         assert rows
 
 
+def test_retrospective_tilt_keeps_exact_observed_tail_and_no_promotion():
+    comparison = ledger._retrospective_tilt_reference()
+    assert comparison["pooled"]["positions"]["edge_center"][
+        "posterior_mass_le_target_exact"] == "3114/508985"
+    assert comparison["analysis"]["FZ15_prospective_verdict"] is None
+    assert comparison["analysis"]["new_independent_data"] is False
+    assert comparison["prediction"]["native_observer_model_derivation_established"] is False
+
+
+@pytest.mark.parametrize("section,field,value", [
+    ("analysis", "new_independent_data", True),
+    ("analysis", "FZ15_prospective_verdict", "COMPATIBLE"),
+    ("analysis", "tail_mass_is_p_value", True),
+    ("prediction", "native_observer_model_derivation_established", True),
+])
+def test_retrospective_tilt_rejects_promotion(tmp_path, section, field, value):
+    source = ledger.CODE / "cosmology/tilt_posterior/results.json"
+    packet = json.loads(source.read_text())
+    packet[section][field] = value
+    path = tmp_path / "changed-tilt.json"
+    path.write_text(json.dumps(packet))
+    with pytest.raises(SystemExit, match="cannot promote"):
+        ledger._retrospective_tilt_reference(path)
+
+
+def test_retrospective_tilt_rejects_broken_exact_tail(tmp_path):
+    source = ledger.CODE / "cosmology/tilt_posterior/results.json"
+    packet = json.loads(source.read_text())
+    packet["pooled"]["positions"]["edge_center"]["weight_strictly_below"] = "3115"
+    path = tmp_path / "changed-tail.json"
+    path.write_text(json.dumps(packet))
+    with pytest.raises(SystemExit, match="tail accounting mismatch"):
+        ledger._retrospective_tilt_reference(path)
+
+
 def test_quantum_carrier_status_preserves_classical_count_without_promotion(result):
     status = result["sections"]["quantum_carrier_status"]
     assert status["classical_mode_vector_order"] == [

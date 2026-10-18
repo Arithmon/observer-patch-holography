@@ -644,6 +644,19 @@ def render_observations(rows: list[dict]) -> str:
         " status takes partial or owed."
     )
     lines.append("")
+    lines.append(
+        "An attained structural rung certifies the theorem under its registered"
+        " hypotheses; it does not assert an empirical identification of every"
+        " object in that theorem. The [native model audit](../../model/PHYSICAL_AUDIT.md)"
+        " distinguishes finite theorem, executed observer process and physical"
+        " correspondence. Local signal, action and clock results need no federation;"
+        " extension to larger domains needs its own compatibility and error control."
+        " The [public-data audit](../research/PUBLIC_DATA_PREDICTION_AUDIT.md)"
+        " records conditional comparisons with the observed Universe, including"
+        " the retrospective ACT scalar-tilt result. It changes no adequacy rung,"
+        " physical instrument verdict or frozen prediction status."
+    )
+    lines.append("")
     lines.append("## Status labels")
     lines.append("")
     lines.append(

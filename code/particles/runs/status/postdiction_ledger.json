@@ -31,6 +31,71 @@
       "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; scientific owner #736 records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition."
     }
   ],
+  "retrospective_tilt_comparison": {
+    "analysis": {
+      "FZ15_prospective_verdict": null,
+      "burn_in": "discard floor(0.5 * stored_rows) separately in each ordered chain",
+      "joint_calibration_and_observation_uncertainty_propagated": false,
+      "mc_uncertainty": "per-chain and leave-one-out sensitivity only; no tail-ESS or confidence certificate",
+      "new_independent_data": false,
+      "posterior_is_likelihood": false,
+      "posterior_probability_OPH_true": null,
+      "quantiles": "inverse empirical weighted CDF; no interpolation",
+      "tail_arithmetic": "exact rational comparison of original decimal tokens",
+      "tail_mass_is_p_value": false,
+      "weights": "original positive integer Cobaya multiplicities"
+    },
+    "artifact_ref": "code/cosmology/tilt_posterior/results.json",
+    "artifact_sha256": "1a35e8dd5469e05076f113ce3af625f110356b937fada8b6669388a9e956d7b0",
+    "classification": "retrospective conditional-branch posterior-position audit",
+    "pooled": {
+      "distinct_ns_values": 22838,
+      "ns_mean": 0.9742582419612366,
+      "ns_posterior_sd": 0.0033775031447940158,
+      "positions": {
+        "edge_center": {
+          "posterior_mass_gt_target": 0.9938819415110465,
+          "posterior_mass_le_target": 0.006118058488953505,
+          "posterior_mass_le_target_exact": "3114/508985",
+          "target": "463690317905960407/480000000000000000",
+          "target_decimal": 0.9660214956374175,
+          "weight_equal": "0",
+          "weight_strictly_above": "505871",
+          "weight_strictly_below": "3114"
+        },
+        "historical_clock_diagnostic": {
+          "posterior_mass_gt_target": 0.997996011670285,
+          "posterior_mass_le_target": 0.002003988329715021,
+          "posterior_mass_le_target_exact": "204/101797",
+          "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+          "target_decimal": 0.964841143030777,
+          "weight_equal": "0",
+          "weight_strictly_above": "507965",
+          "weight_strictly_below": "1020"
+        }
+      },
+      "step_cdf_quantiles": {
+        "0.001": 0.96392523,
+        "0.025": 0.96775616,
+        "0.160": 0.9708906,
+        "0.500": 0.97424296,
+        "0.840": 0.97757894,
+        "0.975": 0.98105889,
+        "0.999": 0.98453315
+      },
+      "stored_rows": 379175,
+      "total_multiplicity": "508985"
+    },
+    "prediction": {
+      "P_exact": "16309682094039593/10000000000000000",
+      "P_role": "inherited CODATA-alpha-calibrated coordinate",
+      "edge_center_ns_exact": "463690317905960407/480000000000000000",
+      "historical_clock_alternative": "exposed diagnostic; 60-digit evaluation; no branch substitution",
+      "native_observer_model_derivation_established": false,
+      "physical_primordial_embedding": "additional conditional hypothesis"
+    },
+    "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit"
+  },
   "row_class": "compare_only_postdiction_ledger",
   "schema_version": 3,
   "sections": {
@@ -6379,7 +6444,7 @@
       {
         "artifact_ref": "code/particles/RESULTS_STATUS.md",
         "id": "neutrino_dimensionless_pointer",
-        "statement": "dimensionless PMNS and mass-splitting-ratio comparisons are recorded on the results surface; the absolute attachment stays compare-only"
+        "statement": "The target-informed weighted-cycle PMNS candidate is rejected by its declared retrospective NuFIT 6.1 gate in both atmospheric treatments. This rejects that template continuation, not the finite OPH construction. The separate precision candidate lock does not supply a source-only flavor law or an FZ-03 freeze; absolute mass attachment stays compare-only. The results surface records the scored coordinates and correlated-profile boundary"
       }
     ],
     "quantum_carrier_status": {

@@ -4,6 +4,21 @@ Generated deterministically by `code/particles/scripts/build_postdiction_ledger.
 
 Numeric values and measured references on this page are read mechanically from the cited parent artifacts. Structural rows are derived from validated Lean declarations, analytic paper proofs, structured parents, or their combination, and direct algebraic corollaries are identified. The ledger promotes nothing and changes no solve path. Interval rows report containment of the compare-only witness; conditional rows carry their declared premises; chart coordinates keep their NOT_EVALUABLE physical-comparison status.
 
+## Theorem, observer execution and physical comparison
+
+An exact finite theorem retains its stated hypotheses and mathematical force. An executed observer receipt additionally instantiates a preparation, instrument, scheduler, accessible records and error contract. A physical comparison requires an explicit correspondence from those same observables to measured quantities. Neither a theorem nor a successful software execution alone establishes that correspondence; an absent physical attachment does not invalidate the finite theorem.
+
+The [native model audit](../model/PHYSICAL_AUDIT.md) connects the single-carrier signal/clock, repair-action and clock-calibration results. Federations are optional for those local results and become relevant when extending their operational domain. The [observed-Universe protocol](research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md) sets out comparison against published observations; building an experimental realization of the carrier is not a prerequisite. Common states, records, spatial and temporal maps, field interpretation and uncertainty bounds are required.
+
+The [ACT joint-posterior reanalysis](../code/cosmology/tilt_posterior/README.md) uses the released P-ACT-LB CAMB chains (Planck plus ACT DR6, CMB lensing and DESI 2024 BAO) under baseline Lambda-CDM, after the official per-chain 50% stored-row burn-in. These observations precede the FZ-01 and FZ-15 freezes. This is a retrospective conditional-branch comparison, not an eligible prospective adjudication or an independent dataset added to the [cosmology ledger](../code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md).
+
+| Fixed branch | Scalar tilt | Posterior mass at or below branch |
+| --- | ---: | ---: |
+| Edge-center | `0.966021495637` | `3114/508985` |
+| Historical clock diagnostic | `0.964841143031` | `204/101797` |
+
+The pooled posterior has mean `0.974258242` and standard deviation `0.003377503`. The lower-tail positions indicate tension for this dataset combination. They are not p-values, Bayes factors or probabilities that OPH is true. Per-chain and leave-one-out sensitivity does not certify rare-tail effective sample size. The inherited alpha-calibrated P and physical primordial embedding remain conditional, and no native-observer derivation or frozen verdict follows. The [public-data audit](research/PUBLIC_DATA_PREDICTION_AUDIT.md) also records the Koide-equivalent tau restriction, incomplete alpha matching, and the physical attachments required for dispersion tests.
+
 ## Principal results
 
 - The declared twelve-port repair mean selects an intrinsic rank-three Gram quotient as its normalized infinite-response limit. The antipodal-odd integer load quotient is Z^6, the thirty-seam boundary image is the even-sum D6 sublattice, and both signed modules embed densely into the same abstract three-dimensional Euclidean completion. The sixty proper carrier maps act faithfully and isometrically on that completion. This is an exact intrinsic metric completion; physical position, scale, refinement, and gluing are not constructed.
@@ -255,4 +270,4 @@ W/Z rows are running/tree chart coordinates. The strict one-loop consumer has a 
 
 ## Neutrinos
 
-- dimensionless PMNS and mass-splitting-ratio comparisons are recorded on the results surface; the absolute attachment stays compare-only (`code/particles/RESULTS_STATUS.md`).
+- The target-informed weighted-cycle PMNS candidate is rejected by its declared retrospective NuFIT 6.1 gate in both atmospheric treatments. This rejects that template continuation, not the finite OPH construction. The separate precision candidate lock does not supply a source-only flavor law or an FZ-03 freeze; absolute mass attachment stays compare-only. The results surface records the scored coordinates and correlated-profile boundary (`code/particles/RESULTS_STATUS.md`).

@@ -3260,6 +3260,33 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         " bytes remain unchanged."
     )
     lines.append("")
+    lines.append("## Executable model and exposed-data correspondence")
+    lines.append("")
+    lines.append(
+        "The [native model audit](../model/PHYSICAL_AUDIT.md) records exact"
+        " single-carrier signal/clock laws, repair-action decompositions and"
+        " bounded calibration contracts. These are finite mathematical and"
+        " software results under declared laws and preparations. They do not"
+        " identify a physical primordial field, a physical Lorentzian action"
+        " or an observed clock, and require no federation for their local scope."
+        " Their validity is independent of whether an additional physical"
+        " correspondence succeeds."
+    )
+    lines.append("")
+    lines.append(
+        "The [ACT DR6 ordered-chain reanalysis](../code/cosmology/tilt_posterior/README.md)"
+        " evaluates the fixed edge-center tilt and preserves the historical"
+        " clock alternative as a separate diagnostic. The P-ACT-LB data were"
+        " released in 2025, before the FZ-01 and FZ-15 freezes. The result is"
+        " retrospective tension under baseline Lambda-CDM; its posterior tail"
+        " positions are neither p-values nor frozen verdicts. The ordinary"
+        " convergence checkpoint and per-chain sensitivity do not certify"
+        " the FZ-15 tail-ESS requirement. This reanalysis neither substitutes"
+        " an eligible dataset nor changes any registered content, decision rule,"
+        " custody record or status. The [public-data audit](research/PUBLIC_DATA_PREDICTION_AUDIT.md)"
+        " states the additional physical hypotheses and comparison eligibility."
+    )
+    lines.append("")
     lines.append("## Superseded records outside the ladder")
     lines.append("")
     lines.append(

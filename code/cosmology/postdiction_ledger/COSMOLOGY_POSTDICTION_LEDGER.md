@@ -1,6 +1,6 @@
 # Cosmology postdiction ledger
 
-Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `60da1881d0e66f3148c3f8c649c79d00ac2686d36414ba5ab5efc968a0aa274d`, rows digest `e30e256328683ae0576dbcda99c142ccd51403a9ed2b284cdd7d0a008233b933`).
+Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `ae469f538cd6c2703ccac89f31532e595b63cc2f12e47b80d3a6e7837df3bd73`, rows digest `e30e256328683ae0576dbcda99c142ccd51403a9ed2b284cdd7d0a008233b933`).
 
 This ledger promotes nothing. Every comparison is on seen data; no row is a frozen prediction, a score, or evidence for or against OPH. Every number is read mechanically from `public_inputs.json`, `corpus_inputs.json`, or a pinned parent receipt. Sigma distances are signed as theory minus measurement over the quoted one-sigma uncertainty. The fixed verdict rule is: |sigma| < 2 consistent; 2 <= |sigma| < 3 tension; |sigma| >= 3 exceeds_three_sigma_diagnostic; an upper-bound row is consistent exactly when the theory value lies below the bound; rows without a comparison contract are not_evaluable. The (w0, wa) rows use the two-sided normal equivalent of a two-degree-of-freedom Gaussian Mahalanobis distance.
 
@@ -13,6 +13,8 @@ Row classes:
 - `not_evaluable`: no comparison contract
 
 `discriminates` marks the specific n_s value, zero running, and w = -1 against specified nonzero alternatives. It does not assert separation from every member of a model family. The tensor upper limits cannot distinguish exact zero from arbitrarily small slow-roll signals.
+
+The [ordered ACT DR6 posterior audit](../tilt_posterior/README.md) reanalyses the official P-ACT-LB CAMB samples underlying this ledger's rounded ACT joint summary. It retains both exposed tilt branches, original multiplicity weights and per-chain burn-in, and reports exact empirical posterior tail positions and chain sensitivity. It supplies no additional independent dataset or FZ-15 verdict. The [public-data correspondence audit](../../../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) distinguishes these conditional cosmological restrictions from a derivation using native observer records. The scalar tilt is a free primordial input of the baseline model; fixing it is a conditional parameter restriction, not a demonstrated change of the baseline dynamics.
 
 ## Primordial
 

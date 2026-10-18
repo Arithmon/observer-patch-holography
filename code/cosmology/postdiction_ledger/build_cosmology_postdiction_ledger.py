@@ -1321,6 +1321,18 @@ def render_markdown(receipt: dict[str, Any], receipt_sha256: str) -> str:
         "from every member of a model family. The tensor upper limits cannot "
         "distinguish exact zero from arbitrarily small slow-roll signals.",
         "",
+        "The [ordered ACT DR6 posterior audit](../tilt_posterior/README.md) "
+        "reanalyses the official P-ACT-LB CAMB samples underlying this ledger's "
+        "rounded ACT joint summary. It retains both exposed tilt branches, "
+        "original multiplicity weights and per-chain burn-in, and reports exact "
+        "empirical posterior tail positions and chain sensitivity. It supplies "
+        "no additional independent dataset or FZ-15 verdict. The "
+        "[public-data correspondence audit](../../../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) "
+        "distinguishes these conditional cosmological restrictions from a "
+        "derivation using native observer records. The scalar tilt is a free "
+        "primordial input of the baseline model; fixing it is a conditional "
+        "parameter restriction, not a demonstrated change of the baseline dynamics.",
+        "",
     ]
     header = (
         "| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | "

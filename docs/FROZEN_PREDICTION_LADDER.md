@@ -295,6 +295,12 @@ FZ15-R01 FAIL when the fixed n_s lies outside the weighted equal-tail 0.99730020
 
 The local face-curvature action and separate scalar Coulomb minimum strengthen the finite seam-carrier mathematics but do not arm or promote FZ-12: they supply no temporal propagation, physical position/scale/frame, source-to-laboratory field attachment, calibrated readout, or same-operator lower-bound comparison. The triple-observer quantum coupling and ambient-cofinal thermodynamic interface likewise emit no eligible empirical target. No new frozen row is minted by these structural theorems, and all immutable frozen bytes remain unchanged.
 
+## Executable model and exposed-data correspondence
+
+The [native model audit](../model/PHYSICAL_AUDIT.md) records exact single-carrier signal/clock laws, repair-action decompositions and bounded calibration contracts. These are finite mathematical and software results under declared laws and preparations. They do not identify a physical primordial field, a physical Lorentzian action or an observed clock, and require no federation for their local scope. Their validity is independent of whether an additional physical correspondence succeeds.
+
+The [ACT DR6 ordered-chain reanalysis](../code/cosmology/tilt_posterior/README.md) evaluates the fixed edge-center tilt and preserves the historical clock alternative as a separate diagnostic. The P-ACT-LB data were released in 2025, before the FZ-01 and FZ-15 freezes. The result is retrospective tension under baseline Lambda-CDM; its posterior tail positions are neither p-values nor frozen verdicts. The ordinary convergence checkpoint and per-chain sensitivity do not certify the FZ-15 tail-ESS requirement. This reanalysis neither substitutes an eligible dataset nor changes any registered content, decision rule, custody record or status. The [public-data audit](research/PUBLIC_DATA_PREDICTION_AUDIT.md) states the additional physical hypotheses and comparison eligibility.
+
 ## Superseded records outside the ladder
 
 These identifiers preserve attested historical bytes and their current scientific disposition. They are not predictions, freezes, or scoring surfaces.

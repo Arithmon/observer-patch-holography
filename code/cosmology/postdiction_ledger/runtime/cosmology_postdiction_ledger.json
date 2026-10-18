@@ -198,7 +198,7 @@
   },
   "pins": {
     "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
-    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "1e5117a2699749cd314744114f1056da967d6e9bed4eafe242283abbad4cdf2c",
+    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "a1c3a9cb2f8341e2c2e3e70b7fa6576a149abe0d0d69bfcf5d059b413b24bc31",
     "code/cosmology/postdiction_ledger/corpus_inputs.json": "7beba089591dccd9f1cfbc922fbefaaacbe60737dec3bead897f57b4f5266e0b",
     "code/cosmology/postdiction_ledger/public_inputs.json": "22dfe5c393486ac19b4617759fae72bcf1be4c6fae71075206e39b6691e8b47a",
     "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "9115121d2ac490db08f5534633dbe37a632d800dfa46ed7d8a2d044095e02937",
