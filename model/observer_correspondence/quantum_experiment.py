@@ -226,6 +226,15 @@ def binary_output_bound(numerical, exact):
                 or any(type(x) not in (int, F) for x in target.flat)):
             raise ValueError('finite matching complete output matrices required')
         for value, wanted in zip(actual.flat, target.flat, strict=True):
+            if type(wanted) is F:
+                numerator, denominator = wanted.numerator, wanted.denominator
+                # Fraction's protected slots are writable. Its own abs() can
+                # return a negative value for a corrupted negative denominator,
+                # cancelling a genuine matrix error. Validate then detach.
+                if (type(numerator) is not int or type(denominator) is not int
+                        or denominator <= 0 or math.gcd(numerator, denominator) != 1):
+                    raise ValueError('canonical exact rational target entries required')
+                wanted = F(numerator, denominator)
             total += abs(F(float(value.real))-wanted)+abs(F(float(value.imag)))
     return total/2
 

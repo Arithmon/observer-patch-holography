@@ -139,6 +139,10 @@ not a domain argument.
   ordinary numeric entries. A matrix certificate must reject such subclasses
   or detach them to a trusted base representation before inspecting support
   or entries. Test an off-support perturbation hidden by method dispatch.
+  Exact scalar types also need valid internal representations: `Fraction`
+  has writable slots, and a negative stored denominator can make its absolute
+  value negative. Validate or canonicalize before arithmetic; test that a
+  malformed scalar cannot cancel an error between distinct normalized states.
   Compare against the exact domain's own zero; equality with a Python
   integer is not guaranteed by a canonical representation. Exercise a
   successful case of each exact fallback as well as its refusals.

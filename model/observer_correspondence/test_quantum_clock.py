@@ -584,6 +584,48 @@ def test_binary_error_bound_preserves_imaginary_nonhermitian_error_and_missing_r
         experiment.binary_output_bound({}, {(TIMEOUT,): target})
 
 
+@pytest.mark.parametrize('numerator,denominator', (
+    (-1, -1), (1, 0), (1.0, 1), (1, 1.0), (True, 1), (1, True),
+    (_IntAlias(1), 1), (1, _IntAlias(1)), (2, 2), (0, 2)))
+def test_binary_error_bound_rejects_corrupted_original_fraction_internals(numerator, denominator):
+    from . import quantum_experiment as experiment
+
+    value = F(1)
+    value._numerator, value._denominator = numerator, denominator
+    actual = np.zeros((1, 1), dtype=float)
+    target = np.empty((1, 1), dtype=object)
+    target[0, 0] = value
+    with pytest.raises(ValueError):
+        experiment.binary_output_bound({(TIMEOUT,): actual}, {(TIMEOUT,): target})
+
+
+def test_corrupted_fraction_cannot_certify_zero_distance_between_orthogonal_states():
+    from . import quantum_experiment as experiment
+
+    value = F(1)
+    value._numerator, value._denominator = -1, -1
+    actual = np.zeros((12, 12), dtype=float)
+    actual[1, 1] = 1
+    target = np.full((12, 12), F(0), dtype=object)
+    target[0, 0] = value
+    # Both matrices represent normalized positive states. The corrupted
+    # Fraction formerly caused abs(0-value) == -1, cancelling the other
+    # diagonal error and returning zero for trace distance one.
+    assert float(value) == 1
+    assert np.trace(actual) == np.trace(np.array(target, dtype=float)) == 1
+    assert np.linalg.svd(actual-np.array(target, dtype=float), compute_uv=False).sum()/2 == 1
+    with pytest.raises(ValueError):
+        experiment.binary_output_bound({(TIMEOUT,): actual}, {(TIMEOUT,): target})
+
+
+def test_binary_error_bound_accepts_honest_negative_exact_entries():
+    from . import quantum_experiment as experiment
+
+    actual = np.zeros((1, 1), dtype=float)
+    target = np.array([[F(-1)]], dtype=object)
+    assert experiment.binary_output_bound({(TIMEOUT,): actual}, {(TIMEOUT,): target}) == F(1, 2)
+
+
 @pytest.mark.parametrize('candidate,effective', (('C', False), ('E', True)))
 def test_common_runtime_and_serialized_continuation_keep_every_reference_record(candidate, effective):
     from . import quantum_experiment as experiment
@@ -782,6 +824,28 @@ def test_cap_sixteen_C_passive_runtime_preserves_exact_zero_outputs_and_full_mas
     for word, target in result['exact'].items():
         if not np.any(target):
             assert np.linalg.norm(result['outputs'][word], ord='fro') < 1e-13
+
+
+def test_local_correspondence_budget_does_not_bound_the_full_carrier_output():
+    from . import quantum_experiment as experiment
+
+    native_output = experiment.exact_history('C', 16, feedback=True)
+    effective_output = experiment.exact_history('C', 16, effective=True, feedback=True)
+    assert set(native_output) == set(effective_output) and len(native_output) == 81
+    local_bound = F(0)
+    full_occupation_variation = F(0)
+    for word, actual in native_output.items():
+        other = effective_output[word]
+        local = experiment.root_output(actual)-experiment.root_output(other)
+        local_bound += sum(abs(value) for value in local.flat)/2
+        # This fixed measurement retains the whole classical word and reads
+        # occupation on every source port, including inaccessible remote ones.
+        # Its variation lower-bounds the full-source quantum output distance.
+        full_occupation_variation += sum(abs(actual[i, i]-other[i, i]) for i in range(12))/2
+    allowance = 2*(1-(1-F(3, 5)**16)**2)
+    assert 0 < local_bound < F(173432941, 10**15) < allowance
+    assert F(77524324, 10**10) < full_occupation_variation < F(77524325, 10**10)
+    assert full_occupation_variation > allowance
 
 
 @pytest.fixture(scope='module')
