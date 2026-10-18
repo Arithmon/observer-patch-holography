@@ -75,6 +75,16 @@ clock/interference law; matching the clock and detector marginals separately
 fails that comparison. Its phase and mixing operations are declared ideal
 observer apparatus, distinct from the scheduled native repairs.
 
+The [compiled clock history](compiled_clock_history/README.md) implements
+that preparation, intervention and terminal pointer with emitted source
+pulses. Exact rational propagation of the original binary arrays retains
+all 512 code addresses and 1,656 clock, timeout and complement-abort outputs.
+Both intervention settings and a compiled reference-attached preparation
+agree with the complete ideal history within `1e-11`, with source pulse and
+service budgets. This closes the ideal coherent-apparatus gap for that
+finite protocol; the native repair instrument and code services remain its
+declared primitives.
+
 ## Architecture and execution
 
 The [primitive observer runtime](primitive_observer/README.md) executes
