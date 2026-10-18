@@ -1,0 +1,20 @@
+{
+  "schema": "oph.compiled_clock_history.manifest.v1",
+  "description": "Emitted coherent source apparatus joined to exact continuing incident-clock histories, with complete padding/reference outputs and certified error/resource budgets.",
+  "files": {
+    "__init__.py": "f1f8a3faf1ecc7c9a251be4dc66139facd05db3ed4b6edcebdacb096e359e5ce",
+    "__main__.py": "40021dc47e7b8c420e6d27f5a98e2d17a493f9c96d29908eee0ebcbfe8b2b6e9",
+    "history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",
+    "README.md": "4122be930e3979f5c1d19bb3028d979db847103bbaf5eaa225934406921b1c2e",
+    "receipt.py": "f07ce8cea419ba6b702668594bde1d0b1147c45d488d7d1d352989ab083a6230",
+    "results.json": "ff1c32200159730896ed31b2fe3ee89165bfa633eb3b2baeb9aad6094f67bbed",
+    "source.py": "86bef8ce53e02d2474888f5397fab6e8b2a23eed57fd8c0f860637f6ce367d3e",
+    "test_history.py": "a9eb750928d4df8a2e3b6efff329b44f35aec0356740a895533acf35c8b1a664",
+    "test_receipt.py": "f68990aac9a03331276783ff78d04e8e4c6f2ec9f7a98708b5a13bae7f1f77fe",
+    "test_source.py": "e074da4486229bb768d6661667dd2b361ea0d8bf8076b1e7dab5c0f49b9507c0"
+  },
+  "reproduce": [
+    "python -m model.compiled_clock_history --check model/compiled_clock_history/results.json",
+    "python -m pytest -q -W error model/compiled_clock_history"
+  ]
+}

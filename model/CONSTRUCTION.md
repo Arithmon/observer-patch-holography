@@ -336,6 +336,18 @@ fundamental Gaussian field action.
 
 ### Continuing measurement predictions
 
+The [compiled overlapping-clock history](compiled_clock_history/README.md)
+replaces the coherent correspondence's ideal preparation, intervention and
+pointer with emitted source controls. The same continuing native C process
+retains both clocks, feedback, timeouts and all code-complement aborts.
+Its 512-address execution uses exact rational arithmetic on the returned
+binary source arrays and certifies all quantum/reference outputs within
+`1e-11` of the established ideal correspondence. Maximum apparatus costs
+are 51 pulses, or 54 with the compiled Bell preparation, with two code
+load/export services per pulse and at most five native repair attempts.
+This supplies a finite compiler-to-observer connection, with physical code
+services and the separate original scalar benchmark explicit.
+
 [Native equilibration](native_equilibration/README.md) replaces an exact
 stationary preparation by a finite sequence of discarded repairs within a
 declared fixed-number sector, uniformly over untouched references. The

@@ -144,6 +144,18 @@ or physical preparation certificate is inferred from stationarity alone.
 
 ## Source-derived fields and actions
 
+The [compiled clock history](compiled_clock_history/README.md) implements
+the overlapping-observer quantum experiment's preparation, intervention
+and terminal pointer through existing source pulses. Its exact propagation
+retains every binary source component, all 512 code addresses, and all
+1,656 complete/timeout/complement-abort outputs. A reference-uniform
+composition bound connects the emitted apparatus to the ideal clock/field
+correspondence within `1e-11`; four exact executions include both interaction
+settings and a compiled Bell preparation. The joint clock/detector response
+remains nonzero. This removes ideal coherent gate insertion from that
+executor, while retaining native C, encoding, blank initialization and
+physical control accuracy as declared interfaces.
+
 For a seam `(a,b)`, the finite generator term is
 
 ```text

@@ -40,7 +40,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/repair_action_audit", "model/laboratory_clock",
            "model/observer_correspondence",
            "model/quantum_observer_correspondence",
-           "model/interacting_band_extension", "model/repair_identification")
+           "model/interacting_band_extension", "model/repair_identification", "model/compiled_clock_history")
 REPLAYS = (
     ("model.repair_identification", None, "model/repair_identification/results.json"),
     ("model.observer_correspondence", None, "model/observer_correspondence/results.json"),
@@ -48,6 +48,7 @@ REPLAYS = (
     ("model.physical_space_time", None, "model/physical_space_time/results.json"),
     ("model.repair_action_audit", None, "model/repair_action_audit/results.json"),
     ("model.laboratory_clock", None, "model/laboratory_clock/results.json"),
+    ("model.compiled_clock_history", None, "model/compiled_clock_history/results.json"),
     ("model.relative_observer_geometry.temporal_records", None, "model/relative_observer_geometry/temporal_results.json"),
     ("model.native_clock.clock_bridge", None, "model/native_clock/clock_bridge_results.json"),
     ("model.observer_time_fields.canonical_sector", None, "model/observer_time_fields/canonical_sector_results.json"),
