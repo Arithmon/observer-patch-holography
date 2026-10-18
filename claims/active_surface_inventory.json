@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 627,
+  "surface_count": 633,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1171,6 +1171,11 @@
       "allowlisted": false
     },
     {
+      "path": "docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "docs/research/NOISY_SOURCE_RECORDS.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
@@ -1207,6 +1212,11 @@
     },
     {
       "path": "model/OBSERVER_RELATIVE_RECOVERY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/PHYSICAL_AUDIT.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1476,6 +1486,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/laboratory_clock/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/local_tick/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1686,6 +1701,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/physical_space_time/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/predictions/BELL_RECORDS.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1726,6 +1746,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/record_laws/INSTRUMENT_CONTRACT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/record_laws/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1752,6 +1777,11 @@
     },
     {
       "path": "model/relativistic_scalar/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/repair_action_audit/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
