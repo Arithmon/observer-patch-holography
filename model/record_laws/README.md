@@ -3,18 +3,27 @@
 The native seam rule says where load goes when two neighbouring ports repair
 their disagreement. It does not say what the event writes down. That second
 choice, the record law, decides which quantum coherences survive a repair.
-This package classifies every record law that keeps the classical rule, acts
-on one seam and respects local load phases, and it computes what each law
-predicts for the experiments that can tell them apart.
+This package classifies the unread channels that keep the classical rule,
+act on one seam and respect local load phases and endpoint symmetry. It also
+specifies current-record instruments and computes their distinguishing
+experimental predictions.
 
 In short, the admissible laws form one convex family described by
 five coherence multipliers. The executed instruments C and E are two points
 of it. Two more points, C0 and T, complete a ladder of laws that record
 progressively more. Exactly two laws in the whole family, E and T, are
 idempotent, and every law that keeps an empty seam coherent with a full seam
-completes to E when the same seam is repaired repeatedly. Classical record
-data cannot distinguish any two members. A single coherent interference
+completes to E when the same seam is repaired repeatedly. Classical current
+data cannot distinguish any two members under the same current-record
+interface. A single coherent interference
 experiment reads one coherence multiplier directly.
+
+The four requirements below classify unread channels. A complete recorded
+instrument also specifies how the environment is read: channel covariance
+guarantees a definite-current Kraus representation exists, but does not force
+every possible recorded branch to have a definite current. The
+[instrument control](INSTRUMENT_CONTRACT.md) checks this distinction exactly
+without changing the executed C/E instruments or their predictions.
 
 ## Setup
 
@@ -71,8 +80,8 @@ a function of the seam keys alone. ∎
 
 In words: a record law is a table that says, for each pair of seam
 configurations that move the same way, how much of their quantum coherence
-survives. Requirement 3 is the quantum form of the conservation the classical
-rule obeys. A law that records the pre-repair load at one endpoint,
+survives. Requirement 3 is an additional phase-covariance condition; conservation
+of the classical seam total alone does not imply it. A law that records the pre-repair load at one endpoint,
 `(c, x_a)`, keeps the classical rule exactly and fails it: one of its Kraus
 branches carries two different currents, and the receipt retains an explicit
 matrix unit whose load difference changes.
@@ -167,9 +176,12 @@ ends up when a seam is repaired often enough.
 
 ## Theorem 3: what observations read
 
-**Classical records.** Every member has the same action on diagonal states,
-so every protocol that prepares load configurations, reads currents and
-feeds them back assigns the same probabilities under every law. The
+**Classical current records.** Equip each channel with its definite-current
+instrument, whose branch diagonals are the specified `P(j|κ)`. Every protocol
+that prepares load configurations, reads these currents and feeds them back
+then assigns the same probabilities under every law. Unread diagonal-channel
+equality alone does not establish equivalence for arbitrary record bases or
+additional labels; see the [instrument contract](INSTRUMENT_CONTRACT.md). The
 repository's [observability results](../identifiability_checks/README.md)
 extend this to record-controlled quantum work for C and E.
 

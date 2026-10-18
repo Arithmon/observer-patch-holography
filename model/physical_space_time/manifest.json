@@ -1,0 +1,16 @@
+{
+  "description": "Exact single-carrier native first-arrival records, operational passage geometry, and a local-clock causal counterexample with explicit physical acceptance boundaries.",
+  "files": {
+    "README.md": "a1e436cd4a136e273c4354eaf85e09bcf4e9a1b52ea07f1024a54af1a9c93663",
+    "__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
+    "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
+    "results.json": "317c3b8a6446f8a4b0b7ee2fac9fb2b199ca5b71a2f337b51853bab70ebe91c5",
+    "test_construction.py": "4b22e287824d6780a64a5b7c1883518138813a322e7896c7caceaa008c2d6171"
+  },
+  "reproduce": [
+    "python -m model.physical_space_time --check model/physical_space_time/results.json",
+    "python -m pytest -q -W error model/physical_space_time"
+  ],
+  "schema": "oph.physical_space_time.manifest.v1"
+}

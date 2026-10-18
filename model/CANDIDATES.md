@@ -121,9 +121,12 @@ works this out exactly on the 78-state carrier.
 
 Require of a one-seam channel `Φ`: seam locality, the exact classical law,
 local number-phase covariance (`Φ` commutes with `exp(i Σ_p t_p N_p)` for
-every real `t`) and endpoint-swap covariance. Number-phase covariance is the
-quantum form of local load conservation: each recorded branch transports one
-definite load. Then
+every real `t`) and endpoint-swap covariance. Number-phase covariance is an
+additional condition beyond classical conservation. It guarantees an
+unread-channel representation with definite-current Kraus maps. Requiring
+the actually committed records to resolve those currents is a further
+instrument contract, checked by the
+[record-basis control](record_laws/INSTRUMENT_CONTRACT.md). Then
 
 ```text
 Φ(|x><x'|) = Σ_j G_j(κ(x),κ(x')) |x + jD><x' + jD|,

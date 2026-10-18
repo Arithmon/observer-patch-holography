@@ -8,6 +8,13 @@ recovery and an OPH-specific empirical confirmation remain open. Fields and
 spacetimes are effective descriptions of observations; no fundamental field
 or preferred universal physical clock is required.
 
+The [physical audit](PHYSICAL_AUDIT.md) assesses which of these bridges can
+be established on one carrier. Its exact
+[signal/clock controls](physical_space_time/README.md),
+[action-family derivation](repair_action_audit/README.md) and
+[calibration contract](laboratory_clock/README.md) extend the finite results
+without changing the open physical-completion status.
+
 ## What can be established on one carrier
 
 Federations are not required for local observer, clock or geometry proofs.

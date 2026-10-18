@@ -15,6 +15,12 @@ results and remaining obligations. The
 [construction specification](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 defines the acceptance criteria.
 
+The [physical audit](PHYSICAL_AUDIT.md) reviews the recent results, explains
+which claims need larger observer domains, and connects the single-carrier
+[signal/clock](physical_space_time/README.md),
+[action-family](repair_action_audit/README.md) and
+[laboratory calibration](laboratory_clock/README.md) checks.
+
 ## Start with one carrier
 
 A federation is optional for the local construction. One twelve-port carrier
@@ -58,8 +64,10 @@ introduce a different kind of larger elementary observer. The classical
 seam rule is forced by four stated requirements. Its quantum record laws form
 one convex family, [classified exactly](record_laws/README.md) by five
 coherence multipliers; the model executes C, which records coin and current,
-and compares it with E, which also records the seam parity. All members share
-every classical observation, and one coherent interference experiment reads
+and compares it with E, which also records the seam parity. Under a common
+definite-current record interface all members share the classical current
+laws; the unread channel alone does not specify every possible recorded
+instrument. One coherent interference experiment reads
 the coherence that separates them. The [repair-law guide](CANDIDATES.md)
 explains what is forced, what is free and how to tell.
 
@@ -95,7 +103,7 @@ identical-record workload controls reject it.
 ## Native action, local clocks and effective fields
 
 The [local native action](native_action/README.md) is derived directly from
-the endpoint instruments. On operator space,
+the executed C/E endpoint instruments. On binary operator space,
 `H_native = sum_e (I-Phi_e)` is positive and local, with exclusion exchange
 and C/E coherence-killing coefficients fixed by the repair law. It is a
 Liouville operator, not a Hamiltonian on the carrier's state vectors. The

@@ -1,0 +1,19 @@
+{
+  "description": "Exact conditional clock calibration, held-out error-aware tests, native waiting-law conversion, and retained host-time controls.",
+  "files": {
+    "README.md": "efb1dc95f711b0bf78553862b399f26eaca40cb46f533245fcb6076382f4575e",
+    "__init__.py": "ed84862b1b7acf3f1b63feabb8207105b22e99b70c930d79bc5e0c94bd499f94",
+    "__main__.py": "b4b11c8af6e36cacecbb01993030ff377f9ed30cf45a2f2f06d5c72e65f0bb1d",
+    "attachment.py": "fd2391d68e74f5a09c446d7ae20fc7591684a12bb0d66cbd93f4b0832bdd902a",
+    "endpoints_example.json": "aa33932e6482247c2e3a272d98323889a2f84403c58148914f25e751c4098f65",
+    "experiment.py": "775db76d39b1fdee60ba560c89ed716f437a05685c851a4378c89bbc207096f9",
+    "results.json": "509d94f05273f75462fb35a41c92e65e1046288b74767deeaab8a46671bf981b",
+    "test_attachment.py": "3085cab51807236b4e8d8226e4f26118c26037ec0af747e1065af9c6902a4b3e"
+  },
+  "reproduce": [
+    "python -m model.laboratory_clock --check model/laboratory_clock/results.json",
+    "python -m pytest -q -W error model/laboratory_clock",
+    "python -m model.verify --hashes-only"
+  ],
+  "schema": "oph.laboratory_clock.manifest.v1"
+}

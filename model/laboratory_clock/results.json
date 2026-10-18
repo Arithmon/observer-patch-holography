@@ -1,0 +1,611 @@
+{
+  "joint_validation_control": {
+    "calibration": {
+      "bounded_away_from_zero_and_infinity": true,
+      "feasible": true,
+      "seconds_per_attempt_lower": "4/5",
+      "seconds_per_attempt_upper": "6/5",
+      "zero_rate_excluded": true
+    },
+    "calibration_ids": [
+      "c0",
+      "c1"
+    ],
+    "compatibility_scope": "one common affine clock at the exact counter endpoints",
+    "count_bounds_relaxed_to_real_intervals": false,
+    "held_out_ids": [
+      "v0",
+      "v1"
+    ],
+    "held_out_used_in_calibration": false,
+    "integer_count_realization_certified": false,
+    "joint_validation": "incompatible_with_every_calibration",
+    "per_endpoint": [
+      {
+        "compatible_with_calibration": true,
+        "id": "v0",
+        "observed_seconds": [
+          "19",
+          "19"
+        ],
+        "prediction_seconds": [
+          "17",
+          "23"
+        ]
+      },
+      {
+        "compatible_with_calibration": true,
+        "id": "v1",
+        "observed_seconds": [
+          "32",
+          "32"
+        ],
+        "prediction_seconds": [
+          "25",
+          "35"
+        ]
+      }
+    ],
+    "true_count_order_enforced_with_uncertain_counts": false
+  },
+  "missed_event_control": {
+    "no_missing_events": {
+      "calibration": {
+        "bounded_away_from_zero_and_infinity": true,
+        "feasible": true,
+        "seconds_per_attempt_lower": "1/1000",
+        "seconds_per_attempt_upper": "1/1000",
+        "zero_rate_excluded": true
+      },
+      "calibration_ids": [
+        "c0",
+        "c1"
+      ],
+      "compatibility_scope": "one common affine clock at the exact counter endpoints",
+      "count_bounds_relaxed_to_real_intervals": false,
+      "held_out_ids": [
+        "v"
+      ],
+      "held_out_used_in_calibration": false,
+      "integer_count_realization_certified": false,
+      "joint_validation": "incompatible_with_every_calibration",
+      "per_endpoint": [
+        {
+          "compatible_with_calibration": false,
+          "id": "v",
+          "observed_seconds": [
+            "401/200",
+            "401/200"
+          ],
+          "prediction_seconds": [
+            "2",
+            "2"
+          ]
+        }
+      ],
+      "true_count_order_enforced_with_uncertain_counts": false
+    },
+    "up_to_five_missing_events": {
+      "calibration": {
+        "bounded_away_from_zero_and_infinity": true,
+        "feasible": true,
+        "seconds_per_attempt_lower": "1/1000",
+        "seconds_per_attempt_upper": "1/1000",
+        "zero_rate_excluded": true
+      },
+      "calibration_ids": [
+        "c0",
+        "c1"
+      ],
+      "compatibility_scope": "outer feasibility only; integer counts and their joint order are not certified",
+      "count_bounds_relaxed_to_real_intervals": true,
+      "held_out_ids": [
+        "v"
+      ],
+      "held_out_used_in_calibration": false,
+      "integer_count_realization_certified": false,
+      "joint_validation": "compatible_with_some_calibration",
+      "per_endpoint": [
+        {
+          "compatible_with_calibration": true,
+          "id": "v",
+          "observed_seconds": [
+            "401/200",
+            "401/200"
+          ],
+          "prediction_seconds": [
+            "399/200",
+            "401/200"
+          ]
+        }
+      ],
+      "true_count_order_enforced_with_uncertain_counts": false
+    }
+  },
+  "native_waiting_law_attachment": {
+    "all_marked_source_rows_rechecked": true,
+    "carrier_ports": 12,
+    "conditional_deadline_predictions": [
+      {
+        "attempts_completed_bounds": [
+          9,
+          10
+        ],
+        "deadline_seconds": "1/100",
+        "preparation": "stationary",
+        "probability_first_current_after_deadline": [
+          "11618546073733/59049000000000",
+          "5003570198863/21651300000000"
+        ],
+        "uses_mean_wait_as_a_deterministic_conversion": false
+      },
+      {
+        "attempts_completed_bounds": [
+          19,
+          20
+        ],
+        "deadline_seconds": "1/50",
+        "preparation": "stationary",
+        "probability_first_current_after_deadline": [
+          "1401912968931115818514575733/34867844010000000000000000000",
+          "601512361025683722336920863/12784876137000000000000000000"
+        ],
+        "uses_mean_wait_as_a_deterministic_conversion": false
+      },
+      {
+        "attempts_completed_bounds": [
+          9,
+          10
+        ],
+        "deadline_seconds": "1/100",
+        "preparation": "palm",
+        "probability_first_current_after_deadline": [
+          "568436486228627/2952450000000000",
+          "22303099154827/98415000000000"
+        ],
+        "uses_mean_wait_as_a_deterministic_conversion": false
+      },
+      {
+        "attempts_completed_bounds": [
+          19,
+          20
+        ],
+        "deadline_seconds": "1/50",
+        "preparation": "palm",
+        "probability_first_current_after_deadline": [
+          "67141138843606665442131566627/1743392200500000000000000000000",
+          "2624328172528237666447292827/58113073350000000000000000000"
+        ],
+        "uses_mean_wait_as_a_deterministic_conversion": false
+      }
+    ],
+    "native_configurations": 66,
+    "nonaffine_retiming_control": {
+      "lab_time_triggered_feedback_is_outside_this_invariance": true,
+      "linear_seconds": [
+        "0",
+        "1/1000",
+        "1/500",
+        "3/1000",
+        "1/250"
+      ],
+      "quadratic_seconds": [
+        "0",
+        "1/1000",
+        "1/250",
+        "9/1000",
+        "2/125"
+      ],
+      "same_complete_word_law_when_feedback_uses_records_only": true,
+      "same_native_attempt_endpoints": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "parameter": "all native attempts, including zero currents",
+    "scale_nonidentifiability": [
+      {
+        "native_word": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_word_probability": "3701/222750",
+        "seconds_per_attempt": "1/1000",
+        "stationary_moving_events_per_second": "5000/33"
+      },
+      {
+        "native_word": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_word_probability": "3701/222750",
+        "seconds_per_attempt": "1/100",
+        "stationary_moving_events_per_second": "500/33"
+      },
+      {
+        "native_word": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_word_probability": "3701/222750",
+        "seconds_per_attempt": "1",
+        "stationary_moving_events_per_second": "5/33"
+      }
+    ],
+    "synthetic_calibration_seconds_per_attempt": [
+      "499999/500000000",
+      "500001/500000000"
+    ]
+  },
+  "retained_host_attachment": {
+    "actual_host_measurement_with_unsupplied_accuracy": {
+      "counter": "native_attempts_including_zero_currents",
+      "data_kind": "host_measurement",
+      "interpretation": "conditional compatibility test, not an identification of physical time",
+      "laboratory_correspondence_established": false,
+      "numerical_test": null,
+      "provenance": {
+        "detection_bounds": "complete recorded attempt tape, checked against every endpoint",
+        "event_mapping": "replayed original native seam/coin/current tape",
+        "preparation_and_scheduler": "retained native_clock capture policy and seeded software service",
+        "split_precommitment": null,
+        "timestamp_bounds": null,
+        "traceability": null
+      },
+      "provenance_authenticated": false,
+      "unresolved_error_endpoints": [
+        "host_0",
+        "host_1",
+        "host_2",
+        "host_3",
+        "host_4"
+      ],
+      "unresolved_provenance": [
+        "timestamp_bounds",
+        "traceability",
+        "split_precommitment"
+      ]
+    },
+    "all_native_records_replayed": true,
+    "native_attempts_each_run": [
+      264532,
+      264532
+    ],
+    "new_timestamps_acquired": false,
+    "previous_movement_clock_engineering_tolerance_changed": false,
+    "retained_raw_sha256": "8a7590e9cd5aa13c7a703651c1851a46c51dfcffd49b125d072914434890900f",
+    "same_record_tape": true,
+    "zero_error_counterfactual": {
+      "baseline": {
+        "calibration": {
+          "bounded_away_from_zero_and_infinity": true,
+          "feasible": true,
+          "seconds_per_attempt_lower": "5883/11954000000",
+          "seconds_per_attempt_upper": "5883/11954000000",
+          "zero_rate_excluded": true
+        },
+        "calibration_ids": [
+          "baseline_0",
+          "baseline_1"
+        ],
+        "compatibility_scope": "one common affine clock at the exact counter endpoints",
+        "count_bounds_relaxed_to_real_intervals": false,
+        "held_out_ids": [
+          "baseline_2",
+          "baseline_3",
+          "baseline_4"
+        ],
+        "held_out_used_in_calibration": false,
+        "integer_count_realization_certified": false,
+        "joint_validation": "incompatible_with_every_calibration",
+        "per_endpoint": [
+          {
+            "compatible_with_calibration": false,
+            "id": "baseline_2",
+            "observed_seconds": [
+              "127151/2000000",
+              "127151/2000000"
+            ],
+            "prediction_seconds": [
+              "77296737/1195400000",
+              "77296737/1195400000"
+            ]
+          },
+          {
+            "compatible_with_calibration": false,
+            "id": "baseline_3",
+            "observed_seconds": [
+              "381227/4000000",
+              "381227/4000000"
+            ],
+            "prediction_seconds": [
+              "1165075203/11954000000",
+              "1165075203/11954000000"
+            ]
+          },
+          {
+            "compatible_with_calibration": false,
+            "id": "baseline_4",
+            "observed_seconds": [
+              "1013761/8000000",
+              "1013761/8000000"
+            ],
+            "prediction_seconds": [
+              "389060439/2988500000",
+              "389060439/2988500000"
+            ]
+          }
+        ],
+        "true_count_order_enforced_with_uncertain_counts": false
+      },
+      "interpretation": "exact affine cadence fails even for the baseline; zero error is not a measured accuracy bound",
+      "same_record_workload_control": {
+        "calibration": {
+          "bounded_away_from_zero_and_infinity": true,
+          "feasible": true,
+          "seconds_per_attempt_lower": "5883/11954000000",
+          "seconds_per_attempt_upper": "5883/11954000000",
+          "zero_rate_excluded": true
+        },
+        "calibration_ids": [
+          "baseline_0",
+          "baseline_1"
+        ],
+        "compatibility_scope": "one common affine clock at the exact counter endpoints",
+        "count_bounds_relaxed_to_real_intervals": false,
+        "held_out_ids": [
+          "control_1",
+          "control_2",
+          "control_3",
+          "control_4"
+        ],
+        "held_out_used_in_calibration": false,
+        "integer_count_realization_certified": false,
+        "joint_validation": "incompatible_with_every_calibration",
+        "per_endpoint": [
+          {
+            "compatible_with_calibration": false,
+            "id": "control_1",
+            "observed_seconds": [
+              "15364487/62500000",
+              "15364487/62500000"
+            ],
+            "prediction_seconds": [
+              "64713/2000000",
+              "64713/2000000"
+            ]
+          },
+          {
+            "compatible_with_calibration": false,
+            "id": "control_2",
+            "observed_seconds": [
+              "1103870709/1000000000",
+              "1103870709/1000000000"
+            ],
+            "prediction_seconds": [
+              "77296737/1195400000",
+              "77296737/1195400000"
+            ]
+          },
+          {
+            "compatible_with_calibration": false,
+            "id": "control_3",
+            "observed_seconds": [
+              "1554779459/1000000000",
+              "1554779459/1000000000"
+            ],
+            "prediction_seconds": [
+              "1165075203/11954000000",
+              "1165075203/11954000000"
+            ]
+          },
+          {
+            "compatible_with_calibration": false,
+            "id": "control_4",
+            "observed_seconds": [
+              "1935039917/1000000000",
+              "1935039917/1000000000"
+            ],
+            "prediction_seconds": [
+              "389060439/2988500000",
+              "389060439/2988500000"
+            ]
+          }
+        ],
+        "true_count_order_enforced_with_uncertain_counts": false
+      }
+    }
+  },
+  "schema": "oph.laboratory_clock_attachment.v1",
+  "scope": {
+    "conditional_affine_clock_test_complete": true,
+    "federation_required": false,
+    "native_modular_phase_identified_with_attempts": false,
+    "new_laboratory_data": false,
+    "physical_clock_scale_selected_by_repair": false,
+    "physical_proper_time_derived": false,
+    "traceability_authenticated": false
+  },
+  "sources": {
+    "Lean/QFT/SourceRecurrenceClock.lean": "0670b5a254adde9cb3cb2bdadaf13149b462323a9c753bcaf45757c26cf50c33",
+    "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
+    "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
+    "Lean/Time/ClockReadout.lean": "bbe0b9d99047a4de4e2bbc5cf01ec026bfa26e6fb63212702a5be8080053266d",
+    "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
+    "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
+    "model/common_source/protocol.py": "4339a070f39f2ddbc958e83041e9b8935dd8efd50acfca80519c4d92ea6cfac2",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/laboratory_clock/__init__.py": "ed84862b1b7acf3f1b63feabb8207105b22e99b70c930d79bc5e0c94bd499f94",
+    "model/laboratory_clock/__main__.py": "b4b11c8af6e36cacecbb01993030ff377f9ed30cf45a2f2f06d5c72e65f0bb1d",
+    "model/laboratory_clock/attachment.py": "fd2391d68e74f5a09c446d7ae20fc7591684a12bb0d66cbd93f4b0832bdd902a",
+    "model/laboratory_clock/endpoints_example.json": "aa33932e6482247c2e3a272d98323889a2f84403c58148914f25e751c4098f65",
+    "model/laboratory_clock/experiment.py": "775db76d39b1fdee60ba560c89ed716f437a05685c851a4378c89bbc207096f9",
+    "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
+    "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
+    "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
+    "model/native_clock/comparison.py": "594d32829d5d74df6cc38fd3e7166997526a65b3acc42b04da6ad2edfa731536",
+    "model/native_clock/host_clock.py": "84906bc4afb3d70e026c6b7115e1169a901c4d185399a3f4e72576b18c47e23a",
+    "model/native_clock/host_clock_records.json": "8a7590e9cd5aa13c7a703651c1851a46c51dfcffd49b125d072914434890900f",
+    "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
+    "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
+    "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
+    "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
+    "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
+    "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
+  },
+  "synthetic_endpoint_fixture": {
+    "counter": "native_attempts_including_zero_currents",
+    "data_kind": "synthetic_fixture",
+    "interpretation": "conditional compatibility test, not an identification of physical time",
+    "laboratory_correspondence_established": false,
+    "numerical_test": {
+      "calibration": {
+        "bounded_away_from_zero_and_infinity": true,
+        "feasible": true,
+        "seconds_per_attempt_lower": "499999/500000000",
+        "seconds_per_attempt_upper": "500001/500000000",
+        "zero_rate_excluded": true
+      },
+      "calibration_ids": [
+        "c0",
+        "c1"
+      ],
+      "compatibility_scope": "one common affine clock at the exact counter endpoints",
+      "count_bounds_relaxed_to_real_intervals": false,
+      "held_out_ids": [
+        "v0",
+        "v1"
+      ],
+      "held_out_used_in_calibration": false,
+      "integer_count_realization_certified": true,
+      "joint_validation": "compatible_with_some_calibration",
+      "per_endpoint": [
+        {
+          "compatible_with_calibration": true,
+          "id": "v0",
+          "observed_seconds": [
+            "7999999/2000000",
+            "8000003/2000000"
+          ],
+          "prediction_seconds": [
+            "3999997/1000000",
+            "4000003/1000000"
+          ]
+        },
+        {
+          "compatible_with_calibration": true,
+          "id": "v1",
+          "observed_seconds": [
+            "9999997/2000000",
+            "10000001/2000000"
+          ],
+          "prediction_seconds": [
+            "999999/200000",
+            "1000001/200000"
+          ]
+        }
+      ],
+      "true_count_order_enforced_with_uncertain_counts": false
+    },
+    "provenance": {
+      "detection_bounds": "zero missed or extra attempts by fixture construction",
+      "event_mapping": "synthetic native-attempt counter fixture; no physical apparatus",
+      "preparation_and_scheduler": "illustrative uniform-seam binary total-two native source",
+      "split_precommitment": "the first two fixture endpoints define calibration before the last two are tested",
+      "timestamp_bounds": "assigned simultaneous endpoint bounds of 1/1000000 second",
+      "traceability": null
+    },
+    "provenance_authenticated": false,
+    "unresolved_error_endpoints": [],
+    "unresolved_provenance": [
+      "traceability"
+    ]
+  },
+  "synthetic_held_out_rate_change": {
+    "counter": "native_attempts_including_zero_currents",
+    "data_kind": "synthetic_fixture",
+    "interpretation": "conditional compatibility test, not an identification of physical time",
+    "laboratory_correspondence_established": false,
+    "numerical_test": {
+      "calibration": {
+        "bounded_away_from_zero_and_infinity": true,
+        "feasible": true,
+        "seconds_per_attempt_lower": "499999/500000000",
+        "seconds_per_attempt_upper": "500001/500000000",
+        "zero_rate_excluded": true
+      },
+      "calibration_ids": [
+        "c0",
+        "c1"
+      ],
+      "compatibility_scope": "one common affine clock at the exact counter endpoints",
+      "count_bounds_relaxed_to_real_intervals": false,
+      "held_out_ids": [
+        "v0",
+        "v1"
+      ],
+      "held_out_used_in_calibration": false,
+      "integer_count_realization_certified": false,
+      "joint_validation": "incompatible_with_every_calibration",
+      "per_endpoint": [
+        {
+          "compatible_with_calibration": false,
+          "id": "v0",
+          "observed_seconds": [
+            "8199999/2000000",
+            "8200003/2000000"
+          ],
+          "prediction_seconds": [
+            "3999997/1000000",
+            "4000003/1000000"
+          ]
+        },
+        {
+          "compatible_with_calibration": false,
+          "id": "v1",
+          "observed_seconds": [
+            "10199997/2000000",
+            "10200001/2000000"
+          ],
+          "prediction_seconds": [
+            "999999/200000",
+            "1000001/200000"
+          ]
+        }
+      ],
+      "true_count_order_enforced_with_uncertain_counts": false
+    },
+    "provenance": {
+      "detection_bounds": "zero missed or extra attempts by fixture construction",
+      "event_mapping": "synthetic native-attempt counter fixture; no physical apparatus",
+      "preparation_and_scheduler": "illustrative uniform-seam binary total-two native source",
+      "split_precommitment": "the first two fixture endpoints define calibration before the last two are tested",
+      "timestamp_bounds": "assigned simultaneous endpoint bounds of 1/1000000 second",
+      "traceability": null
+    },
+    "provenance_authenticated": false,
+    "unresolved_error_endpoints": [],
+    "unresolved_provenance": [
+      "traceability"
+    ]
+  }
+}
