@@ -125,6 +125,17 @@ experimental outcome is a conditional forecast and cannot validate the
 dictionary. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 keeps the ACT comparison separate from native-observer derivation.
 
+The [quantum incident-clock construction](observer_correspondence/QUANTUM_CLOCK.md)
+now supplies a local instance of this complete-output comparison on the
+native carrier. A positive mixture of actual remote and incident repairs
+produces the effective instrument; the proof includes adaptive local
+interventions and untouched references. Coherent two-tick executions retain
+all 81 outputs, error budgets, service costs and reference correlations.
+The correspondence uses explicit preparation encoding, trivial on the
+retained inputs, and does not identify global source states. This completes
+the stated finite quantum observation contract while leaving the physical
+QFT and calibration obligations above in force.
+
 Hardware, protocol and implementation choices are open design variables.
 No uniqueness theorem for the chosen rule is a prerequisite. For the current
 P/N construction, closure-derived P and N are accepted inputs under their

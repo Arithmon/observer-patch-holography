@@ -67,6 +67,14 @@ relativistic QFT or identify the observations with our Universe.
 
 ## Architecture and execution
 
+The [quantum incident-clock correspondence](observer_correspondence/QUANTUM_CLOCK.md)
+extends local comparison to coherent states, adaptive phase control and an
+untouched quantum reference. An explicit positive mixture of native repairs
+implements the effective instrument. All 81 complete outputs execute in the
+shared runtime and retain their error and resource budgets. Distinct C/E
+phase predictions show why agreeing classical currents do not fix the quantum
+field response. Coherent preparation and readout remain declared services.
+
 The [primitive observer runtime](primitive_observer/README.md) executes
 complete classical/quantum instruments. Each operation acts on a continuing
 quantum state, retains its declared classical outcomes, and may select an

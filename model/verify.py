@@ -39,6 +39,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/repair_action_audit", "model/laboratory_clock",
            "model/observer_correspondence")
 REPLAYS = (
+    ("model.observer_correspondence.quantum_experiment", None, "model/observer_correspondence/quantum_results.json"),
     ("model.observer_correspondence", None, "model/observer_correspondence/results.json"),
     ("model.record_laws.instrument_contract", None, "model/record_laws/instrument_results.json"),
     ("model.physical_space_time", None, "model/physical_space_time/results.json"),

@@ -73,6 +73,19 @@ not its interacting QFT or empirical completion.
 
 ## What the inputs supply
 
+The [quantum extension](observer_correspondence/QUANTUM_CLOCK.md) constructs
+an ordinary CP effective instrument by splitting actual remote waits around
+each incident repair. Its completed local histories agree with the native
+histories for the specified input encoding, arbitrary untouched references
+and compatible adaptive local interventions. On the retained one-particle
+coherent preparations the encoding is the identity. Finite-cap executions
+bound the complete local discrepancy, preserve serialized continuation and
+distinguish the C/E phase responses. The two-particle operator certificate
+also proves strictly positive union-clock transfers for both C and E;
+changing the clock or record law can instead produce zero or negative modes.
+This local quantum result does not identify global source states or provide
+fractional CPTP evolution, a relativistic limit or physical clock calibration.
+
 Architecture, observer implementation and the complete repair law define an
 instance. Their consequences need not be supplied again for each prediction.
 Deriving those consequences does not select the instance from all alternatives
