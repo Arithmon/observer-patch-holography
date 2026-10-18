@@ -15,11 +15,18 @@ results and remaining obligations. The
 [construction specification](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 defines the acceptance criteria.
 
-The [physical audit](PHYSICAL_AUDIT.md) reviews the recent results, explains
+The [physical audit](PHYSICAL_AUDIT.md) reviews the retained results, explains
 which claims need larger observer domains, and connects the single-carrier
 [signal/clock](physical_space_time/README.md),
 [action-family](repair_action_audit/README.md) and
 [laboratory calibration](laboratory_clock/README.md) checks.
+
+The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
+sets out correspondence tests using published observations without requiring a
+laboratory experiment. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+compares the conditional scalar-tilt prediction with ACT DR6 joint posterior
+chains and explains its retrospective status. These phenomenological comparisons
+do not establish a derivation from native observer dynamics.
 
 ## Start with one carrier
 

@@ -2,7 +2,7 @@
 
 Audit baseline: `34d07c5756618cab969a8c8a5c91072f368a68ae` (18 October 2026).
 
-The recent construction makes substantial progress in deriving compatible
+The construction derives compatible
 finite observations from one specified repair process. It has not established
 physical 3+1 spacetime, a selected Lorentzian field action, or a measured
 native-event correspondence with a laboratory clock. The distinction matters
@@ -12,7 +12,7 @@ three obligations by themselves.
 ## Are federations necessary?
 
 **No federation is needed for the present local derivations.** One twelve-port
-carrier already supports overlapping observer regions, the C/E instruments,
+carrier supports overlapping observer regions, the C/E instruments,
 conditional histories, local clocks, response geometry, coherence tests and
 repair-derived actions. Agreement between regions can be tested inside this
 carrier. A proof can quantify over such regions without implementing a
@@ -41,7 +41,7 @@ overturned by successful finite native-carrier calculations or by this audit.
 
 ## What the results establish
 
-| Requested bridge | Achieved mathematical content | Physical obligation still open |
+| Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
 | Space | Current preparations recover the carrier response and a rank-three slow-band Gram; clock correlations distinguish its distance shells. | Selecting that operational metric, a length calibration and an extended domain whose joint observations have the required spatial interpretation. The full inverse-response Gram has rank eleven. |
 | Time | Complete local stopped instruments, finite count uncertainty and same-history clock comparisons; modular actions for specified algebra/reference pairs. | A joint signal/clock correspondence with effective proper duration. The stationary tracial state has trivial modular flow; a chosen nontrivial reference does not prove native events advance its modular parameter. |
@@ -85,7 +85,7 @@ records; it does not manufacture those records or certify traceability from
 a metadata label.
 
 The [instrument control](record_laws/INSTRUMENT_CONTRACT.md) corrects an
-ambiguity in the latest record-law exposition. Its four assumptions classify
+ambiguity in the record-law exposition. Its four assumptions classify
 **unread channels**. A unitary remix of two C Kraus branches preserves that
 channel on all 6,084 carrier matrix units while changing the committed
 outcomes and mixing currents within a record. Current-history claims also
@@ -96,7 +96,7 @@ instruments satisfy that assumption and retain all their existing results.
 ## What does the empirical work decide?
 
 The [identifiability controls](identifiability_checks/README.md) show why
-the oscillator comparisons do not yet select the native C/E law: the
+the oscillator comparisons do not select the native C/E law: the
 compiled apparatus uses supplied preparation, Hamiltonian and detector
 services, and the scored work-only output is blind to the relevant native
 coherence distinction. Compiling it through a consistent repair history
@@ -106,13 +106,13 @@ The [preparation diagnostics](empirical_diagnostics/README.md) retain the
 125-point comparison's RMSE `0.287643` and unresolved readout normalization.
 A constructed alternative preparation reproduces the old read while
 predicting different additional probes. Those new probes are predictions,
-not newly collected measurements. This is useful experimental design and
-an honest limitation on a physical claim.
+not collected measurements. This supports experimental design and
+limits the physical claim.
 
 The native [closed prediction protocol](closed_prediction_protocol/README.md)
-already offers a more direct C/E discriminator with complete failures,
+offers a more direct C/E discriminator with complete failures,
 finite preparation error and explicit apparatus tolerances. Its apparatus
-contract still needs a physical implementation and independent validation.
+contract requires a physical implementation and independent validation.
 Neither a successful fit using a supplied Hamiltonian nor successful CI is
 an OPH-specific experimental confirmation.
 

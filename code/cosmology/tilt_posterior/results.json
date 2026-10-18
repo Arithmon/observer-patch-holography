@@ -1,0 +1,334 @@
+{
+  "analysis": {
+    "FZ15_prospective_verdict": null,
+    "burn_in": "discard floor(0.5 * stored_rows) separately in each ordered chain",
+    "joint_calibration_and_observation_uncertainty_propagated": false,
+    "mc_uncertainty": "per-chain and leave-one-out sensitivity only; no tail-ESS or confidence certificate",
+    "new_independent_data": false,
+    "posterior_is_likelihood": false,
+    "posterior_probability_OPH_true": null,
+    "quantiles": "inverse empirical weighted CDF; no interpolation",
+    "tail_arithmetic": "exact rational comparison of original decimal tokens",
+    "tail_mass_is_p_value": false,
+    "weights": "original positive integer Cobaya multiplicities"
+  },
+  "classification": "retrospective conditional-branch posterior-position audit",
+  "custody": {
+    "analysis_source_sha256": "bd7a68e580bb43c36ab7e4b230396612bf232d43d951be8302cbe1b567a43f03",
+    "projection_sha256": "13dab540b652300bd000cf1ac3b197af55c7c411de215682482ea55993f40485",
+    "quantile_source_sha256": "4c9cbfa58449d6062bc95ce01f300f45df6e0e50860b0e8ff498f9f1c9c09d78"
+  },
+  "leave_one_chain_out": [
+    {
+      "omitted_member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.1.txt",
+      "posterior_mass_le_target": {
+        "edge_center": 0.006292291407056049,
+        "historical_clock_diagnostic": 0.0022242767750666613
+      }
+    },
+    {
+      "omitted_member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.2.txt",
+      "posterior_mass_le_target": {
+        "edge_center": 0.006747715384443512,
+        "historical_clock_diagnostic": 0.0023286817625489385
+      }
+    },
+    {
+      "omitted_member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.3.txt",
+      "posterior_mass_le_target": {
+        "edge_center": 0.006492576639325482,
+        "historical_clock_diagnostic": 0.001936030793199835
+      }
+    },
+    {
+      "omitted_member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.4.txt",
+      "posterior_mass_le_target": {
+        "edge_center": 0.0049996391499866856,
+        "historical_clock_diagnostic": 0.0015329904013896458
+      }
+    }
+  ],
+  "per_chain": [
+    {
+      "discarded_stored_rows": 101494,
+      "member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.1.txt",
+      "ordering_diagnostics": {
+        "contiguous_tail_excursions": {
+          "edge_center": 25,
+          "historical_clock_diagnostic": 8
+        },
+        "effective_sample_size_estimator": false,
+        "ns_changes_between_stored_rows": 6280
+      },
+      "source_sha256": "197d8b6dece708833f51d6b973063bcc6bff3cec7f496d769b0d427eb8521833",
+      "summary": {
+        "distinct_ns_values": 6262,
+        "ns_mean": 0.974209482939704,
+        "ns_posterior_sd": 0.003358583372230731,
+        "positions": {
+          "edge_center": {
+            "posterior_mass_gt_target": 0.9943605978060811,
+            "posterior_mass_le_target": 0.005639402193918869,
+            "posterior_mass_le_target_exact": "383/67915",
+            "target": "463690317905960407/480000000000000000",
+            "target_decimal": 0.9660214956374175,
+            "weight_equal": "0",
+            "weight_strictly_above": "135064",
+            "weight_strictly_below": "766"
+          },
+          "historical_clock_diagnostic": {
+            "posterior_mass_gt_target": 0.9986011926673047,
+            "posterior_mass_le_target": 0.0013988073326952808,
+            "posterior_mass_le_target_exact": "19/13583",
+            "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+            "target_decimal": 0.964841143030777,
+            "weight_equal": "0",
+            "weight_strictly_above": "135640",
+            "weight_strictly_below": "190"
+          }
+        },
+        "step_cdf_quantiles": {
+          "0.001": 0.96481622,
+          "0.025": 0.96769904,
+          "0.160": 0.970853,
+          "0.500": 0.97419103,
+          "0.840": 0.97753076,
+          "0.975": 0.98090272,
+          "0.999": 0.98473211
+        },
+        "stored_rows": 101494,
+        "total_multiplicity": "135830"
+      }
+    },
+    {
+      "discarded_stored_rows": 79180,
+      "member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.2.txt",
+      "ordering_diagnostics": {
+        "contiguous_tail_excursions": {
+          "edge_center": 12,
+          "historical_clock_diagnostic": 3
+        },
+        "effective_sample_size_estimator": false,
+        "ns_changes_between_stored_rows": 4877
+      },
+      "source_sha256": "e402a00c788e188d0506a89ea6c7ccd4ef8d8917306470f72273f398147921e8",
+      "summary": {
+        "distinct_ns_values": 4871,
+        "ns_mean": 0.9741837477336084,
+        "ns_posterior_sd": 0.0032252847480114754,
+        "positions": {
+          "edge_center": {
+            "posterior_mass_gt_target": 0.9962705543312426,
+            "posterior_mass_le_target": 0.0037294456687574167,
+            "posterior_mass_le_target_exact": "22/5899",
+            "target": "463690317905960407/480000000000000000",
+            "target_decimal": 0.9660214956374175,
+            "weight_equal": "0",
+            "weight_strictly_above": "105786",
+            "weight_strictly_below": "396"
+          },
+          "historical_clock_diagnostic": {
+            "posterior_mass_gt_target": 0.9992277410483886,
+            "posterior_mass_le_target": 0.0007722589516113843,
+            "posterior_mass_le_target_exact": "41/53091",
+            "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+            "target_decimal": 0.964841143030777,
+            "weight_equal": "0",
+            "weight_strictly_above": "106100",
+            "weight_strictly_below": "82"
+          }
+        },
+        "step_cdf_quantiles": {
+          "0.001": 0.96489089,
+          "0.025": 0.96798573,
+          "0.160": 0.97089023,
+          "0.500": 0.97421504,
+          "0.840": 0.97740833,
+          "0.975": 0.98037501,
+          "0.999": 0.98431947
+        },
+        "stored_rows": 79180,
+        "total_multiplicity": "106182"
+      }
+    },
+    {
+      "discarded_stored_rows": 118240,
+      "member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.3.txt",
+      "ordering_diagnostics": {
+        "contiguous_tail_excursions": {
+          "edge_center": 24,
+          "historical_clock_diagnostic": 6
+        },
+        "effective_sample_size_estimator": false,
+        "ns_changes_between_stored_rows": 6877
+      },
+      "source_sha256": "89ed05e1f71a2bb4054e528e13b5fc5f061b09b28d07531d0623b9dffdeb8cba",
+      "summary": {
+        "distinct_ns_values": 6861,
+        "ns_mean": 0.9744509271630052,
+        "ns_posterior_sd": 0.003407716929715845,
+        "positions": {
+          "edge_center": {
+            "posterior_mass_gt_target": 0.9947001883404144,
+            "posterior_mass_le_target": 0.0052998116595856515,
+            "posterior_mass_le_target_exact": "121/22831",
+            "target": "463690317905960407/480000000000000000",
+            "target_decimal": 0.9660214956374175,
+            "weight_equal": "0",
+            "weight_strictly_above": "158970",
+            "weight_strictly_below": "847"
+          },
+          "historical_clock_diagnostic": {
+            "posterior_mass_gt_target": 0.9978475381217268,
+            "posterior_mass_le_target": 0.002152461878273275,
+            "posterior_mass_le_target_exact": "344/159817",
+            "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+            "target_decimal": 0.964841143030777,
+            "weight_equal": "0",
+            "weight_strictly_above": "159473",
+            "weight_strictly_below": "344"
+          }
+        },
+        "step_cdf_quantiles": {
+          "0.001": 0.96388019,
+          "0.025": 0.96805596,
+          "0.160": 0.97104924,
+          "0.500": 0.9744301,
+          "0.840": 0.97779456,
+          "0.975": 0.98130443,
+          "0.999": 0.98444228
+        },
+        "stored_rows": 118240,
+        "total_multiplicity": "159817"
+      }
+    },
+    {
+      "discarded_stored_rows": 80261,
+      "member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.4.txt",
+      "ordering_diagnostics": {
+        "contiguous_tail_excursions": {
+          "edge_center": 24,
+          "historical_clock_diagnostic": 9
+        },
+        "effective_sample_size_estimator": false,
+        "ns_changes_between_stored_rows": 5028
+      },
+      "source_sha256": "b6a2f12f9bd9cc3e8ec2ac2a0aa330fb922db0ceb417769001ea6163f9ebc011",
+      "summary": {
+        "distinct_ns_values": 5019,
+        "ns_mean": 0.974106486698645,
+        "ns_posterior_sd": 0.0034888871920172307,
+        "positions": {
+          "edge_center": {
+            "posterior_mass_gt_target": 0.989687931613722,
+            "posterior_mass_le_target": 0.01031206838627795,
+            "posterior_mass_le_target_exact": "1105/107156",
+            "target": "463690317905960407/480000000000000000",
+            "target_decimal": 0.9660214956374175,
+            "weight_equal": "0",
+            "weight_strictly_above": "106051",
+            "weight_strictly_below": "1105"
+          },
+          "historical_clock_diagnostic": {
+            "posterior_mass_gt_target": 0.9962297958117138,
+            "posterior_mass_le_target": 0.003770204188286237,
+            "posterior_mass_le_target_exact": "101/26789",
+            "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+            "target_decimal": 0.964841143030777,
+            "weight_equal": "0",
+            "weight_strictly_above": "106752",
+            "weight_strictly_below": "404"
+          }
+        },
+        "step_cdf_quantiles": {
+          "0.001": 0.96184272,
+          "0.025": 0.96718681,
+          "0.160": 0.9707416,
+          "0.500": 0.9740388,
+          "0.840": 0.9775109,
+          "0.975": 0.98119228,
+          "0.999": 0.98492044
+        },
+        "stored_rows": 80261,
+        "total_multiplicity": "107156"
+      }
+    }
+  ],
+  "pooled": {
+    "distinct_ns_values": 22838,
+    "ns_mean": 0.9742582419612366,
+    "ns_posterior_sd": 0.0033775031447940158,
+    "positions": {
+      "edge_center": {
+        "posterior_mass_gt_target": 0.9938819415110465,
+        "posterior_mass_le_target": 0.006118058488953505,
+        "posterior_mass_le_target_exact": "3114/508985",
+        "target": "463690317905960407/480000000000000000",
+        "target_decimal": 0.9660214956374175,
+        "weight_equal": "0",
+        "weight_strictly_above": "505871",
+        "weight_strictly_below": "3114"
+      },
+      "historical_clock_diagnostic": {
+        "posterior_mass_gt_target": 0.997996011670285,
+        "posterior_mass_le_target": 0.002003988329715021,
+        "posterior_mass_le_target_exact": "204/101797",
+        "target": "120605142878847116747424938808902266588968136633285944972969/125000000000000000000000000000000000000000000000000000000000",
+        "target_decimal": 0.964841143030777,
+        "weight_equal": "0",
+        "weight_strictly_above": "507965",
+        "weight_strictly_below": "1020"
+      }
+    },
+    "step_cdf_quantiles": {
+      "0.001": 0.96392523,
+      "0.025": 0.96775616,
+      "0.160": 0.9708906,
+      "0.500": 0.97424296,
+      "0.840": 0.97757894,
+      "0.975": 0.98105889,
+      "0.999": 0.98453315
+    },
+    "stored_rows": 379175,
+    "total_multiplicity": "508985"
+  },
+  "prediction": {
+    "P_exact": "16309682094039593/10000000000000000",
+    "P_role": "inherited CODATA-alpha-calibrated coordinate",
+    "edge_center_ns_exact": "463690317905960407/480000000000000000",
+    "historical_clock_alternative": "exposed diagnostic; 60-digit evaluation; no branch substitution",
+    "native_observer_model_derivation_established": false,
+    "physical_primordial_embedding": "additional conditional hypothesis"
+  },
+  "schema": "oph.act_dr6.tilt_retrospective.v1",
+  "source": {
+    "archive_bytes": 163494761,
+    "archive_sha256": "8f2801a69663ef1142bb05660e0118ef7b1e0bdf3d05afba434a0569023b98ab",
+    "archive_url": "https://lambda.gsfc.nasa.gov/data/act/chains/lcdm/p-actbase-l-b_lcdm_camb.tar.gz",
+    "burn_in_fraction": "0.5",
+    "burn_in_policy": "Drop floor(0.5 * number_of_rows) rows from the beginning of each ordered chain before applying multiplicity weights.",
+    "burn_in_source_url": "https://portal.nersc.gov/project/act/dr6.02/chains/README_chains.html",
+    "checkpoint": {
+      "Rminus1_last": 0.009799812902692016,
+      "burn_in": 0,
+      "converged": true,
+      "mpi_size": 4
+    },
+    "checkpoint_source": {
+      "member": "p-actbase-l-b_lcdm_camb/p-actbase-l-b_lcdm_camb.checkpoint",
+      "source_sha256": "4ed5968d4d51acf2fe14c5a1b2ed9daecfd04574a559c420996ec3660cb2bccc",
+      "text": "sampler:\n  mcmc:\n    converged: true\n    Rminus1_last: 0.009799812902692016\n    burn_in: 0\n    mpi_size: 4\n"
+    },
+    "columns": [
+      "weight",
+      "ns"
+    ],
+    "mirror_url": "https://portal.nersc.gov/project/act/dr6.02/chains/compressed/lcdm/p-actbase-l-b_lcdm_camb.tar.gz",
+    "row_token_policy": "Original whitespace-delimited ASCII tokens preserved as strings; no thinning or burn-in applied to this projection.",
+    "schema": "oph.act_dr6.ns_projection.v1"
+  },
+  "total_tail_excursions_across_chains": {
+    "edge_center": 85,
+    "historical_clock_diagnostic": 26
+  }
+}

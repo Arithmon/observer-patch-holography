@@ -42,6 +42,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Replay the retrospective ACT tilt posterior and decimal-boundary controls",
+        [sys.executable, "-m", "pytest", "-q", "code/cosmology/tilt_posterior"],
+    ),
+    (
         "Verify proof-domain, sampling, spectrum and radial-inverse counterexamples",
         [
             sys.executable, "-m", "pytest", "-q",
