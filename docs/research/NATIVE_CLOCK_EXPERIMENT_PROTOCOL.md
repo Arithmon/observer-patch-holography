@@ -1,4 +1,140 @@
-# Native clock predictions before laboratory access
+# Observer spacetime and predictions without a laboratory
+
+## Primary objective: identify the observed Universe
+
+The objective is to show that the observations of an OPH world admit the
+spacetime and physical descriptions measured in our Universe. A carrier is
+a mathematical component of the model; constructing a physical carrier or
+an emulator is **not a prerequisite**. A paired native-event/laboratory-clock
+experiment is one optional way to test an implementation. It is not the only
+way to identify emergent physical time, and observing microscopic native
+repair events in nature is not required by the phenomenological route.
+
+The working hypothesis is that our measured records have an effective
+description in the OPH observer statistics. Derive its consequences and
+compare them with existing measurements. Assuming this correspondence is
+useful for developing a candidate; assuming that the comparisons succeed
+would not establish it. The
+[construction target](../../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
+already concerns effective observations, not a fundamental manifold or
+fundamental fields.
+
+### What can be attached to the simulated output now
+
+Use the model's accessible records, rather than host execution time:
+
+- **Time:** one observer's recorded event count supplies an internal clock.
+  Its comparisons with other clocks are stochastic laws, with finite
+  uncertainty, rather than a universal deterministic conversion.
+- **Space:** a declared current-response protocol recovers a dimensionless
+  spatial Gram matrix. For that readout, squared distances are
+  `d(i,j)^2 = G[i,i] + G[j,j] - 2 G[i,j]`. A factorization of the rank-three
+  slow-band Gram supplies three plotting coordinates up to orthogonal frame
+  choice. Selecting that band remains part of the interpretation; the full
+  resistance readout has rank eleven.
+- **Their joint content:** the existing
+  [twelve-clock comparison](../../model/native_clock/COMPARISON.md) uses one
+  continuing total-two history. Local movement counts have a common
+  asymptotic rate, and their cross-covariances distinguish all three native
+  distance shells. No independent oscillator, laboratory timestamp or
+  federation enters this result. Finite-sample inference of those covariance
+  classes still needs its own uncertainty analysis.
+
+Thus records can already carry an observer-relative clock and a finite
+spatial interpretation. An event labelled by a local count and a spatial
+coordinate is an internal chart. The individual clocks' mean rate equality
+does not establish simultaneity, message delivery, a common metric tensor,
+physical bulk dimension or Lorentz transformations. In particular, the
+twelve points in a three-coordinate embedding are not an established
+three-dimensional spatial continuum. A holographic bulk interpretation, if
+used, needs a map to bulk observables rather than equating ports with bulk
+locations.
+
+### The next executable acceptance test
+
+Keep one complete native instrument, sector, continuing-state preparation,
+observer access contract and scheduler fixed. Start with overlapping regions
+inside one carrier. Derive a **joint local spacetime correspondence** for
+clock readings, field correlations and intervention responses:
+
+1. Specify the spatial readout and each observer's clock from accessible
+   records. Retain joint outcomes, hidden-event evolution, memory, failures
+   and the observer's finite record resources. Do not combine results from
+   different sectors as though they were one experiment.
+2. Derive the same-record field response from the repair law. Determine
+   whether an admissible coherent observable has propagating modes and
+   compatible signal/clock relations in the claimed regime. The existing
+   C/E occupation response has contracting real modes; multiplying its time
+   parameter by a positive constant cannot turn those modes into oscillatory
+   waves. This is a restriction on that readout, not a no-go theorem for
+   every coherent, relational or effective OPH description.
+3. Derive an effective action for those very observations and clocks. Check
+   its predicted correlations and intervention responses against the native
+   joint law. A supplied wave equation is a comparison target. A Euclidean
+   transfer reconstruction or unitary dilation requires an observable
+   correspondence before its evolution parameter can be identified with the
+   observers' duration. The phase-dependent repair family supplies further
+   candidates, but the clock statistics alone do not select its phase law.
+4. Test compatibility across overlapping observer descriptions: the same
+   physical event and intervention must have agreeing predicted records in
+   their shared domain. Seek the appropriate local Lorentzian relations,
+   signal propagation and clock comparison, with explicit error bounds and
+   a declared range of scales. A metric assigned after seeing every output
+   is insufficient. Failure rejects the proposed correspondence or candidate
+   law in that domain, rather than requiring an artificial clock fit.
+
+One carrier is enough to test this local proposal and expose contradictions.
+An extended 3+1-dimensional effective description additionally requires a
+compatible family over larger domains and controlled resolution errors.
+That may be established by a theorem on an appropriate family; it does not
+require the current spherical federation architecture or a numerical
+simulation of the whole Universe. A twelve-port calculation alone cannot
+establish that extension. Interacting matter and responsive geometry must
+ultimately obey the same correspondence; they remain part of the completion
+target rather than being discharged by a kinematic chart.
+
+Formally, fix a map from each admitted preparation/intervention protocol to
+an effective physical protocol. Require the complete outcome law predicted
+by OPH to agree, within declared errors, with the effective law for all
+protocols in the claimed domain. Use instrument-level bounds when quantum
+reference outputs are part of that domain. Different incompatible
+measurement settings need no common classical table of predetermined
+outcomes. Coordinate, clock and field maps must serve the same family of
+tests, rather than being chosen independently for each plotted curve.
+
+### Connecting to existing observations and units
+
+An internal clock can first use arbitrary units. Once a derived observable
+is independently identified with a measured physical process, one measured
+frequency or duration can fix the corresponding time scale. Additional
+dimensionless clock ratios, spectra, propagation laws and intervention
+responses then test the identification without a new time fit for each
+observable. State all remaining dimensional scales and fitted dimensionless
+parameters; choosing units does not eliminate those physical freedoms.
+
+In SI, the [second](https://www.bipm.org/en/si-base-units/second) is defined
+through a caesium transition, and the
+[metre](https://www.bipm.org/en/si-base-units/metre) through the speed of light
+and the second. OPH need not predict a different numerical value for those
+unit-defining constants. It must account for the identified clock and signal
+processes and their dimensionless relations. The present model has not
+identified a caesium transition or electromagnetic light merely by naming
+a load change a tick.
+
+Use published measurements once the corresponding model observable exists.
+First recover a constrained measured regime, such as coherent propagation
+and clock comparisons; then test additional observations that were not used
+to choose the interpretation or fit its parameters. Existing data can reject
+or support this route without any new laboratory. Reproducing already known
+relations is a necessary retrospective check; discriminating predictions
+against viable alternatives add evidence. No finite collection of matches
+proves a unique microscopic ontology among empirically equivalent models.
+
+The immediate priority is therefore the joint observer/action/spacetime
+correspondence above. The optional apparatus protocol and illustrative
+millisecond predictions below do not replace it or block it.
+
+## Optional apparatus route and conditional predictions
 
 This protocol develops the [single-carrier audit](../../model/PHYSICAL_AUDIT.md)
 under explicit apparatus assumptions. No experiment has been performed for
