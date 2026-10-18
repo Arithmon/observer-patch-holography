@@ -30,6 +30,16 @@ do not establish a derivation from native observer dynamics.
 
 ## Start with one carrier
 
+The [coherent screen observer](coherent_screen_observer/README.md) joins
+the finite quantum and spatial contracts: a logical qubit with an untouched
+reference evolves through two native incident-clock ticks and local
+record-controlled feedback on the matched source screens. A degree-two
+operator calculation retains all quantum outputs and timeouts, with a
+reference-uniform comparison bound below `7.779e-10` to either full-screen
+completed output. C and E have identical classical records in this protocol
+but different reference coherences. This finite comparison uses declared
+preparation and phase services and does not establish a continuum limit.
+
 A federation is optional for the local construction. One twelve-port carrier
 supports the observer algebra, native repair, local event clocks, coherent
 record protocols and a finite spatial readout. Different observer regions can

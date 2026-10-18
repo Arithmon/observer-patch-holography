@@ -182,6 +182,9 @@ not a domain argument.
   trace-preservation checks. Check complete reference/record allocation before
   executing source services, and test mutable checkpoint envelopes as well
   as their array buffers.
+  Apply the producer's acceptance thresholds to retained numerical diagnostics
+  before any tolerant replay comparison. A comparison tolerance must not accept
+  a stored residual that would fail the execution's own scientific gate.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.

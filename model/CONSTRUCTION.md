@@ -191,6 +191,17 @@ clocks, interpretation maps and error budgets remain explicit.
 
 ### Local construction and its extension
 
+The [coherent screen observer](coherent_screen_observer/README.md) executes
+one quantum extension on the actual matched level-three and level-five
+screens. The input is a logical qubit on two root ports, with any untouched
+reference, and a separate Bernoulli environment. Its two native incident
+ticks, seam-category records, local phase feedback and complete reduced
+quantum output compose without a state reset. A bounded operator dual
+evaluates the common 222-port channel; the existing complete-output locality
+theorem controls its comparison with both full screens. This discharges a
+finite coherent screen comparison under that preparation contract, while
+retaining the all-level and physical interpretation obligations.
+
 The local proof obligations start on one twelve-port carrier: specify its
 accessible algebra, derive repair and record laws, compare its local clocks,
 and reconstruct spatial relations from those observations. Observer regions
