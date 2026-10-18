@@ -190,7 +190,10 @@ def test_static_source_bindings_cover_a_fresh_import_and_execution_profile():
     script = '''
 from pathlib import Path
 import json, sys
+root=Path.cwd().resolve()
+sys.path[:0]=[str(root),str(root/'code'),str(root/'tools')]
 from model.compiled_clock_history import source as s
+assert s.ROOT==root
 for kind, ref, gamma in [('preparation',False,1),('preparation',True,1),
                          ('apparatus',False,0),('apparatus',False,1),('readout',False,1)]:
     s.certify(kind,reference=ref,gamma=gamma)

@@ -230,6 +230,21 @@ distinguishability statement. The coherent interaction remains a chosen
 source-control operation; its successful compilation does not make it the
 Hamiltonian or action selected by native repair.
 
+### Cap refinement and the completed-clock target
+
+The retained receipt uses cap two; the executor accepts caps one through
+four, with cap-one independent controls. The same geometric argument gives
+`s_h=1-(3/5)^h` for every positive finite cap and the composition formula
+above with `s_h` replacing `16/25`. The ideal capped output has total timeout
+mass `delta_h=1-s_h^2`. Comparison with the uncapped completed-clock target
+on an alphabet retaining timeout flags therefore adds `delta_h` to the
+apparatus error. At cap two that allowance is `369/625`. The `1e-11` result
+certifies implementation of the declared capped experiment. The analytic
+timeout allowance tends to zero with the cap; execution at arbitrarily
+large caps, spatial refinement and a physical continuum limit are separate
+claims. Pulse costs stay bounded because there is only one intervention;
+the maximum scheduled-repair cost is `2h`.
+
 ## Resources and remaining obligations
 
 The ideal two-request protocol has at most four scheduled native attempts

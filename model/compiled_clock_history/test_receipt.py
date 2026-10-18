@@ -1,12 +1,40 @@
 """Independent effect, scheduler, composition and receipt rejection checks."""
 from fractions import Fraction as F
 from itertools import product
+import json
+from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 from sympy.polys.domains import QQ_I
 
 from ..observer import quantum_mixing
 from . import history as h, receipt, source
+
+
+def test_whole_producer_imports_have_static_source_custody():
+    root = Path(__file__).resolve().parents[2]
+    script = '''
+import sys,json
+from pathlib import Path
+root=Path.cwd().resolve()
+sys.path[:0]=[str(root),str(root/'code'),str(root/'tools')]
+from model.compiled_clock_history import receipt,history
+history.record_menu()
+paths=[]
+for module in tuple(sys.modules.values()):
+    name=getattr(module,'__file__',None)
+    if not name: continue
+    try: path=Path(name).resolve().relative_to(root).as_posix()
+    except ValueError: continue
+    if path.endswith('.py') and path.startswith(('model/','code/','tools/')):
+        paths.append(path)
+print(json.dumps(sorted(set(paths))))
+'''
+    observed = json.loads(subprocess.check_output([sys.executable, '-c', script], cwd=root, text=True))
+    retained = json.loads((root/'model/compiled_clock_history/results.json').read_text(encoding='utf8'))
+    assert set(observed) <= set(retained['source_sha256'])
 
 
 def _schedules(cap):
