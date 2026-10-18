@@ -224,6 +224,17 @@ def test_serialized_continuation_reuses_the_exact_retained_prefix():
     assert resumed == whole and len(whole) == 1564
 
 
+def test_highest_declared_cap_composes_executor_and_independent_target():
+    actual = h.execute(cap=h.MAX_CAP)
+    target = h.ideal_history(cap=h.MAX_CAP)
+    independently_executed = lift(independent.execute(gamma=1, cap=h.MAX_CAP))
+    assert target == independently_executed
+    assert h.distance_upper(actual, target) < F(1, 10**11)
+    timeout = sum(h.trace(state) for (_, status, _), state in target.items()
+                  if status.startswith('timeout'))
+    assert timeout == 1-(1-F(3, 5)**h.MAX_CAP)**2
+
+
 @pytest.mark.parametrize('mutation', ('state', 'record', 'resource', 'binding', 'reference', 'cap'))
 def test_checkpoint_corruption_is_rejected(mutation):
     stage = h.first_stage(gamma=1, cap=1, reference=True)
@@ -248,7 +259,7 @@ def test_checkpoint_corruption_is_rejected(mutation):
 
 
 @pytest.mark.parametrize('kwargs', ({'gamma': True}, {'gamma': 2}, {'cap': True},
-    {'cap': 0}, {'cap': 5}, {'reference': 1}, {'checkpoint': {}}))
+    {'cap': 0}, {'cap': 4}, {'cap': 5}, {'reference': 1}, {'checkpoint': {}}))
 def test_original_protocol_types_are_checked(kwargs):
     with pytest.raises(ValueError):
         h.execute(**kwargs)

@@ -24,7 +24,7 @@ from . import source
 
 ZERO = QQ_I.zero
 CODE = frozenset(source.codes())
-MAX_CAP = 4
+MAX_CAP = 3
 _GAUSSIAN = type(QQ_I(1))
 _RATIONAL = type(QQ_I(1).x)
 _INTEGER = type(QQ_I(1).x.numerator)
@@ -41,11 +41,13 @@ def conjugate(value):
 
 
 def fraction(value):
+    if type(value) is not _RATIONAL:
+        raise ValueError('a canonical exact rational component is required')
     try:
         numerator, denominator = value.numerator, value.denominator
     except AttributeError as exc:
         raise ValueError('a canonical exact rational component is required') from exc
-    if (type(value) is not _RATIONAL or type(numerator) is not _INTEGER
+    if (type(numerator) is not _INTEGER
             or type(denominator) is not _INTEGER or denominator <= 0
             or math.gcd(int(numerator), int(denominator)) != 1):
         raise ValueError('canonical exact integer numerator and positive denominator required')
@@ -180,7 +182,7 @@ def _arguments(gamma, cap, reference):
     if type(gamma) is not int or gamma not in (0, 1):
         raise ValueError('binary integer interaction switch required')
     if type(cap) is not int or not 1 <= cap <= MAX_CAP:
-        raise ValueError('integer cap between one and four required')
+        raise ValueError('integer cap between one and three required')
     if type(reference) is not bool:
         raise ValueError('Boolean reference choice required')
 
@@ -240,8 +242,7 @@ def execute(*, gamma=1, cap=2, reference=False, checkpoint=None):
         stage['waiting'] = state(payload['waiting'])
         stage['aborts'] = tuple(state(rows) for rows in payload['aborts'])
     result = _finish(stage)
-    validate_history(result, cap=cap, reference=reference)
-    return result
+    return validate_history(result, cap=cap, reference=reference)
 
 
 def record_menu(cap=2):
@@ -271,14 +272,55 @@ def record_menu(cap=2):
     return menu
 
 
-def validate_history(result, *, cap=2, reference=False):
-    """Check the complete alphabet and original exact state representation.
+def _state_snapshot(state, reference_dimension=None):
+    if type(state) is not dict:
+        raise ValueError('original sparse exact state dictionaries required')
+    copied = {}
+    for key, value in state.items():
+        if (type(key) is not tuple or len(key) != 4
+                or any(type(index) is not int for index in key)
+                or not 0 <= key[0] < 512 or not 0 <= key[1] < 512
+                or key[2] < 0 or key[3] < 0
+                or (reference_dimension is not None
+                    and (key[2] >= reference_dimension or key[3] >= reference_dimension))):
+            raise ValueError('original exact source/reference entries required')
+        _gaussian(value)
+        copied[key] = QQ_I(fraction(value.x), fraction(value.y))
+    return copied
+
+
+def _label(value):
+    # Distance comparisons also admit simple string labels for matrix-unit
+    # controls, but never dispatch equality/hash on caller-defined objects.
+    if type(value) in (str, int):
+        return
+    if type(value) is tuple:
+        for item in value:
+            _label(item)
+        return
+    raise ValueError('original tuple/string/integer record fields required')
+
+
+def _snapshot(result):
+    if type(result) is not dict:
+        raise ValueError('an original exact output dictionary is required')
+    snapshot = {}
+    for record, state in result.items():
+        _label(record)
+        snapshot[record] = _state_snapshot(state)
+    return snapshot
+
+
+def validate_history(result, *, cap=2, reference=False, native_target=False):
+    """Validate original fields, then check and return a detached exact copy.
 
     Positivity follows from the executed CP construction, not from this
     structural validator. This is not authentication of a caller's channel.
     """
     _arguments(0, cap, reference)
-    if type(result) is not dict or set(result) != record_menu(cap):
+    if type(native_target) is not bool:
+        raise ValueError('Boolean native-target menu choice required')
+    if type(result) is not dict:
         raise ValueError('the complete clock/timeout/abort record menu is required')
     for key in result:
         if (type(key) is not tuple or len(key) != 3 or type(key[0]) is not tuple
@@ -290,23 +332,23 @@ def validate_history(result, *, cap=2, reference=False):
                     or any(type(part) is not tuple for part in event[1])
                     or any(type(item) is not int for part in event[1] for item in part)):
                 raise ValueError('original integer current/clock marks required')
-    for state in result.values():
-        if type(state) is not dict:
-            raise ValueError('original sparse exact state dictionaries required')
+    # Validate every scalar before any Hermitian comparison can call equality
+    # on its transpose. QQ_I and its rational slots are mutable: retain copies.
+    snapshot = {record: _state_snapshot(state, 1+int(reference))
+                for record, state in result.items()}
+    menu = record_menu(cap)
+    if native_target:
+        menu = {record for record in menu if not record[1].startswith('code_abort')}
+    if set(snapshot) != menu:
+        raise ValueError('the complete clock/timeout/abort record menu is required')
+    for state in snapshot.values():
         for key, value in state.items():
-            if (type(key) is not tuple or len(key) != 4
-                    or any(type(index) is not int for index in key)
-                    or not 0 <= key[0] < 512 or not 0 <= key[1] < 512
-                    or not 0 <= key[2] < 1+int(reference)
-                    or not 0 <= key[3] < 1+int(reference)
-                    or type(value) is not type(QQ_I.one)):
-                raise ValueError('original exact source/reference entries required')
             i, j, r, s = key
             if state.get((j, i, s, r), ZERO) != conjugate(value):
                 raise ValueError('exact output must be Hermitian without repair')
         if trace(state) < 0:
             raise ValueError('output record has negative mass')
-    return result
+    return snapshot
 
 
 def _entries(state):
@@ -343,6 +385,7 @@ def ideal_history(*, gamma=1, cap=2, reference=False):
 
 def distance_upper(actual, target):
     """Exact entrywise nuclear-norm bound, including all missing/abort blocks."""
+    actual, target = _snapshot(actual), _snapshot(target)
     error = F(0)
     for word in set(actual) | set(target):
         a, b = actual.get(word, {}), target.get(word, {})

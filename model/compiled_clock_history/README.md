@@ -189,7 +189,7 @@ It follows that the full returned classical/quantum matrices satisfy
     <= g_r * (G*epsilon_p + s*e_u) + e_r.
 ```
 
-This is a bound on the sum of the nuclear norms of all unnormalized output
+This is a bound on half the sum of the nuclear norms of all unnormalized output
 block differences. It holds for mixed inputs and arbitrary finite reference
 systems whenever the corresponding preparation discrepancy is supplied.
 There is no multiplication by the number of classical words, no successful
@@ -233,7 +233,8 @@ Hamiltonian or action selected by native repair.
 ### Cap refinement and the completed-clock target
 
 The retained receipt uses cap two; the executor accepts caps one through
-four, with cap-one independent controls. The same geometric argument gives
+three, matching the inherited comparison oracle, with independent controls
+at caps one and three. The same geometric argument gives
 `s_h=1-(3/5)^h` for every positive finite cap and the composition formula
 above with `s_h` replacing `16/25`. The ideal capped output has total timeout
 mass `delta_h=1-s_h^2`. Comparison with the uncapped completed-clock target
@@ -267,7 +268,9 @@ and a two-state reference. Exact rational computation carries complete
 conditional quantum matrices rather than replacing them by their traces.
 The terminal pointer uses one additional fresh qubit. A fixed 14-bit record
 buffer holds two four-bit scheduled marks, one two-bit feedback mark, a
-three-bit terminal status and one pointer bit; a reusable two-bit counter
+three-bit terminal status and one pointer bit. The feedback code uses the
+three-outcome menu determined by the saved first mark and its feedback seam;
+it is not a code for the union of both seam menus. A reusable two-bit counter
 enforces each cap. Code-complement checks are declared services before each
 native attempt, with at most five invocations. Their abort does not tick a
 native clock. None of these storage or service counts specifies physical

@@ -19,7 +19,7 @@ def main():
         print('Complete source-compiled clock history reproduced.')
     elif args.write:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:
-            stream.write(canonical(result)+'\n')
+            stream.write(canonical(result))
     else:
         print(canonical(result))
 

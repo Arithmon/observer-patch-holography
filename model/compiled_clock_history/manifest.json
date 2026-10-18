@@ -3,14 +3,14 @@
   "description": "Emitted coherent source apparatus joined to exact continuing incident-clock histories, with complete padding/reference outputs and certified error/resource budgets.",
   "files": {
     "__init__.py": "f1f8a3faf1ecc7c9a251be4dc66139facd05db3ed4b6edcebdacb096e359e5ce",
-    "__main__.py": "a6c4d530cb3264d62a7aa764548d9df5f940a86fab46ce372857abbda66b5b13",
-    "history.py": "e190118a5a679dc40eb87969d69f1ba00b9716a76c6757347bca9152807bd1e4",
-    "README.md": "3d55fee8686538498b95d546c345f6dd506fb4f7b0e65a6a9b1ad177d907e5ce",
-    "receipt.py": "3b0a55b3a4afad9f22be0fa8375cbbb9fa53b8a8b7c0957ddcbef20f106737b0",
-    "results.json": "5b3429c1bc4d160a0f8dc0d594eb16f3d0c8c54036c626ed4933a6a7157b955c",
+    "__main__.py": "40021dc47e7b8c420e6d27f5a98e2d17a493f9c96d29908eee0ebcbfe8b2b6e9",
+    "history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",
+    "README.md": "4122be930e3979f5c1d19bb3028d979db847103bbaf5eaa225934406921b1c2e",
+    "receipt.py": "f07ce8cea419ba6b702668594bde1d0b1147c45d488d7d1d352989ab083a6230",
+    "results.json": "ff1c32200159730896ed31b2fe3ee89165bfa633eb3b2baeb9aad6094f67bbed",
     "source.py": "86bef8ce53e02d2474888f5397fab6e8b2a23eed57fd8c0f860637f6ce367d3e",
-    "test_history.py": "4805886a4890f5cf4a9fbea44a1dbf30c9062220bfd699f63d1f9568d2cda548",
-    "test_receipt.py": "1a20c02f60f67c2d91ab9508354bcb78b73001f6c98ed3a11e2c606f3f3e38bf",
+    "test_history.py": "a9eb750928d4df8a2e3b6efff329b44f35aec0356740a895533acf35c8b1a664",
+    "test_receipt.py": "f68990aac9a03331276783ff78d04e8e4c6f2ec9f7a98708b5a13bae7f1f77fe",
     "test_source.py": "e074da4486229bb768d6661667dd2b361ea0d8bf8076b1e7dab5c0f49b9507c0"
   },
   "reproduce": [

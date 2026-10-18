@@ -75,7 +75,8 @@ def joint(outputs):
 
 
 def audit_output(actual, target, *, cap=2, reference=False):
-    history.validate_history(actual, cap=cap, reference=reference)
+    actual = history.validate_history(actual, cap=cap, reference=reference)
+    target = history.validate_history(target, cap=cap, reference=reference, native_target=True)
     error = history.distance_upper(actual, target)
     mass = sum(map(history.trace, actual.values()), F(0))
     if error > ERROR or abs(mass-1) > 2*ERROR:
