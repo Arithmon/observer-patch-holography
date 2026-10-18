@@ -1,16 +1,20 @@
 {
   "description": "Complete current-instrument tomography, source execution, canonical continuation and reference-uniform evidence budgets.",
   "files": {
-    "README.md": "ddfc12107a2d200094d88c9742e8521e3104c14c4b27d8449ee404de42eae60b",
+    "README.md": "5f03dd135219756ca6376fac567f0417eb2a26d72b0bbe68e9599cd1e1b256fe",
     "__init__.py": "8f437d05b775590a935367956f706e4e1d9bdcdcc224f8790a2a7ff6db1fafa8",
     "__main__.py": "fc9c7ef9688588ca326d80a61df1fad96626d4e1b3cb0a5666474878f981c5e9",
-    "bridge.py": "d04533f95fa97cce852b1a58af8e24b5315935fea5707f24f16c2f3b094266b7",
-    "calibration.py": "c4e4050329cf0b4c4258cd6cdabc0e7e1e7a2a9cddaa64f298472ad7db5f4d44",
+    "bridge.py": "bd6af1fd2039c29209d600e6154ebfae102ae6bf269194a64c8b5a99e44f7afc",
+    "calibration.py": "7f5b9dd6e4a4441d6dd0c92d0da7db7f2a8506dde54ac70f51d90697be1c04c4",
     "core.py": "15b705391cde6a051d5ddeec98b6c0a7712088679be0ebfa88cf168c78205eeb",
-    "experiment.py": "e44d4d9917c1ef3d851cd9e5eba8b10124c697ecae0bee2c6515a473e5611c1a",
-    "results.json": "2baa7f0df6e917783671ff6a34ee5de7bdd623fe888a45d53b1734d551ff02f2",
+    "experiment.py": "97a441a2b81449109d0ea1fb964c9a4b779754827441a75ff18cc2d5298a3370",
+    "results.json": "0cb1f335c012744bc6bb1b297dcb4b35c810f6b7ee2cddb0aeaba2328bc249c6",
     "source.py": "0fa4c00fdf1fb03523779fbcac2479399a705c93ef26704d7a8d3255bd47b67d",
-    "test_identification.py": "1083afbbeff16fe4378c22747825d83a97c94863942c96943fb0258c823014b4"
+    "test_audit.py": "2d57165803a423e5101877628271186f27c065b8bc123dfca21d421107010d53",
+    "test_calibration_design.py": "d4aed15362a46397796656b506edf54da5964dfacf14f2aca532724fdcd6cfd5",
+    "test_full_carrier.py": "7e5757cf39cd0ae9ef05d86e10508eebc347d29c30e684af9dcd6fea7e42105d",
+    "test_identification.py": "b06f5b8beffd1195afa6052879025666d04d51a67745e8b0d583722321b41d7c",
+    "test_probe_audit.py": "27632fd55239145e40fe258a1cd865a161bda1cecf07175805ebb04da4c90265"
   },
   "reproduce": [
     "python -m model.repair_identification --check model/repair_identification/results.json",

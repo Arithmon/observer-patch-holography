@@ -178,7 +178,12 @@ interior and exercise the imaginary quadratures.
 `results.json` binds the implementation and source receipts. It retains all
 seven probabilities for every probe, all 49 public probabilities per history,
 raw outcome counts, complete-state comparison diagnostics and resource
-envelopes. Raw branch costs include every requested pulse (including zero
+envelopes. The producer compares every quantum output block for all 36
+single-event probes as well as the ten continuing histories; matching only
+the selected probability is insufficient. Independent endpoint controls
+also check every emitted repair column on all 78 states and complex
+reference inputs outside the prepared probe chart.
+Raw branch costs include every requested pulse (including zero
 angle), proper-code load/export, coin, record and pointer service, feedback
 and preparation. Resource maxima range over all branches, including zero
 probability outcomes; they are not expected operating costs. Full tapes and
@@ -208,11 +213,20 @@ measured or used for feedback.
 `calibration.analyze_counts` accepts all nine ordered settings with seven
 integer bins each, including aborts, summing to the attempted-trial total.
 Its exact schema and an example row are in [calibration.py](calibration.py).
-Sampling radii and apparatus/service errors must be supplied explicitly.
-Under independent attempts within each setting, the simultaneous sampling
+An immutable `calibration.sampling_design` declares the nine attempted-trial
+counts and sampling radii separately from the observed counts. Each observed
+total must match its declared horizon. The horizons and radii must be chosen
+before, and independently of, all analyzed outcomes; matching the design
+does not establish that chronology. Apparatus/service errors must also be
+supplied explicitly.
+Under this fixed design and independent attempts within each setting, the
+simultaneous sampling
 failure bound is `min(1, sum_i 1/(4 m_i r_i^2))` by the variance bound and
 Chebyshev plus a union bound. It is conservative and does not require
 independence between settings. Counts do not establish these premises.
+Outcome-dependent stopping or choosing a radius after inspecting outcomes
+does not satisfy this guarantee. A retained bounded Bernoulli stopping
+counterexample exceeds the incorrectly reused fixed-sample failure bound.
 The earlier continuing binary C/E classifier does not supply collision
 preparation or this independent-trial guarantee.
 

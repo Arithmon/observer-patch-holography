@@ -5,6 +5,7 @@
       "exact_inverse_matches": true,
       "source_probes": [
         {
+          "abort_probability": 6.179971706873507e-31,
           "complete_outcome_probabilities": [
             5.249389596619434e-29,
             6.629317659316362e-31,
@@ -14,7 +15,9 @@
             1.8417092080768032e-29,
             6.179971706873507e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.422220165399661e-12,
           "executed_joint_probability": 0.9999999999952722,
+          "full_output_projection_bound_numeric": 5.830501199295226e-14,
           "full_probability_mass": 0.9999999999952722,
           "joint_probability_residual": 4.727773728063767e-12,
           "maximum_branch_resources": {
@@ -38,9 +41,11 @@
           },
           "predicted_joint_probability": "1",
           "probe": "k_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 6.81481402166355e-27
         },
         {
+          "abort_probability": 7.503703411164884e-31,
           "complete_outcome_probabilities": [
             9.687493620118474e-29,
             8.961442493675153e-31,
@@ -50,7 +55,9 @@
             1.901863684461674e-29,
             7.503703411164884e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.555536947033424e-12,
           "executed_joint_probability": 0.49999999999763767,
+          "full_output_projection_bound_numeric": 6.979783936742414e-14,
           "full_probability_mass": 0.9999999999950536,
           "joint_probability_residual": 2.362332551797408e-12,
           "maximum_branch_resources": {
@@ -74,9 +81,11 @@
           },
           "predicted_joint_probability": "1/2",
           "probe": "k_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.03345725765802e-27
         },
         {
+          "abort_probability": 1.3845546749629644e-29,
           "complete_outcome_probabilities": [
             0.24999999999870254,
             6.493437150746733e-28,
@@ -86,7 +95,9 @@
             6.576331992509377e-30,
             1.3845546749629644e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.4834615883958573e-12,
           "executed_joint_probability": 0.6249999999971054,
+          "full_output_projection_bound_numeric": 6.138549214282252e-14,
           "full_probability_mass": 0.999999999995162,
           "joint_probability_residual": 2.894573469802708e-12,
           "maximum_branch_resources": {
@@ -110,9 +121,11 @@
           },
           "predicted_joint_probability": "5/8",
           "probe": "g_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.544560248725317e-27
         },
         {
+          "abort_probability": 1.2890887505187108e-29,
           "complete_outcome_probabilities": [
             0.24999999999870254,
             5.795374618034256e-28,
@@ -122,8 +135,10 @@
             5.856465973601768e-30,
             1.2890887505187108e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5569109261835387e-12,
           "executed_joint_probability": 0.37499999999826356,
-          "full_probability_mass": 0.9999999999950309,
+          "full_output_projection_bound_numeric": 6.713190583005771e-14,
+          "full_probability_mass": 0.9999999999950308,
           "joint_probability_residual": 1.736444321664976e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 1,
@@ -146,9 +161,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.653881866722392e-27
         },
         {
+          "abort_probability": 1.2839099796776975e-29,
           "complete_outcome_probabilities": [
             0.24999999999869704,
             5.385891377230796e-28,
@@ -158,7 +175,9 @@
             8.95809023346456e-30,
             1.2839099796776975e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5142304374168014e-12,
           "executed_joint_probability": 0.6249999999970485,
+          "full_output_projection_bound_numeric": 6.138549214281876e-14,
           "full_probability_mass": 0.9999999999951005,
           "joint_probability_residual": 2.9515279109659787e-12,
           "maximum_branch_resources": {
@@ -182,9 +201,11 @@
           },
           "predicted_joint_probability": "5/8",
           "probe": "h_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.544560248724912e-27
         },
         {
+          "abort_probability": 1.277511813365483e-29,
           "complete_outcome_probabilities": [
             0.24999999999869715,
             5.298246168433199e-28,
@@ -194,7 +215,9 @@
             2.0269573111427932e-29,
             1.277511813365483e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5769202021806904e-12,
           "executed_joint_probability": 0.37499999999822964,
+          "full_output_projection_bound_numeric": 6.713190583005468e-14,
           "full_probability_mass": 0.9999999999949908,
           "joint_probability_residual": 1.7703616350672746e-12,
           "maximum_branch_resources": {
@@ -218,9 +241,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.65388186672214e-27
         },
         {
+          "abort_probability": 7.130241859177794e-29,
           "complete_outcome_probabilities": [
             0.12499999999934303,
             0.12499999999939838,
@@ -230,7 +255,9 @@
             0.12499999999940399,
             7.130241859177794e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5696704865162227e-12,
           "executed_joint_probability": 0.2499999999988147,
+          "full_output_projection_bound_numeric": 7.046875713082241e-14,
           "full_probability_mass": 0.999999999995014,
           "joint_probability_residual": 1.1853018566654328e-12,
           "maximum_branch_resources": {
@@ -254,9 +281,11 @@
           },
           "predicted_joint_probability": "1/4",
           "probe": "m_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.113894496922676e-27
         },
         {
+          "abort_probability": 1.5166136925783158e-29,
           "complete_outcome_probabilities": [
             0.12499999999934473,
             0.6249999999969755,
@@ -266,7 +295,9 @@
             1.133682356920507e-30,
             1.5166136925783158e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.543742398802533e-12,
           "executed_joint_probability": 0.6249999999969755,
+          "full_output_projection_bound_numeric": 6.027941787404305e-14,
           "full_probability_mass": 0.9999999999950395,
           "joint_probability_residual": 3.0244695636838514e-12,
           "maximum_branch_resources": {
@@ -290,9 +321,11 @@
           },
           "predicted_joint_probability": "5/8",
           "probe": "n_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.410503552388228e-27
         },
         {
+          "abort_probability": 1.4592714725934837e-29,
           "complete_outcome_probabilities": [
             0.3749999999980247,
             0.3749999999981872,
@@ -302,7 +335,9 @@
             2.363512773620706e-30,
             1.4592714725934837e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.605881376137476e-12,
           "executed_joint_probability": 0.3749999999981872,
+          "full_output_projection_bound_numeric": 6.602583156127837e-14,
           "full_probability_mass": 0.9999999999949307,
           "joint_probability_residual": 1.8128276657591869e-12,
           "maximum_branch_resources": {
@@ -326,7 +361,8 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "n_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.5198251703855686e-27
         }
       ],
       "table": {
@@ -341,6 +377,7 @@
       "exact_inverse_matches": true,
       "source_probes": [
         {
+          "abort_probability": 6.179971706873507e-31,
           "complete_outcome_probabilities": [
             5.249389596619434e-29,
             6.629317659316362e-31,
@@ -350,7 +387,9 @@
             1.8417092080768032e-29,
             6.179971706873507e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.4246351500981248e-12,
           "executed_joint_probability": 0.9999999999952673,
+          "full_output_projection_bound_numeric": 5.830501199295198e-14,
           "full_probability_mass": 0.9999999999952673,
           "joint_probability_residual": 4.732658709372117e-12,
           "maximum_branch_resources": {
@@ -375,9 +414,11 @@
           },
           "predicted_joint_probability": "1",
           "probe": "k_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 6.814814021663517e-27
         },
         {
+          "abort_probability": 7.503703411164884e-31,
           "complete_outcome_probabilities": [
             9.687493620118474e-29,
             8.961442493675153e-31,
@@ -387,7 +428,9 @@
             1.901863684461674e-29,
             7.503703411164884e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5582398796264956e-12,
           "executed_joint_probability": 0.4999999999976348,
+          "full_output_projection_bound_numeric": 6.979783936742376e-14,
           "full_probability_mass": 0.9999999999950482,
           "joint_probability_residual": 2.3652191316614335e-12,
           "maximum_branch_resources": {
@@ -412,9 +455,11 @@
           },
           "predicted_joint_probability": "1/2",
           "probe": "k_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.0334572576579935e-27
         },
         {
+          "abort_probability": 1.3845546749629644e-29,
           "complete_outcome_probabilities": [
             0.24999999999870254,
             6.493437150746733e-28,
@@ -424,7 +469,9 @@
             6.576331992509377e-30,
             1.3845546749629644e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5480286006673033e-12,
           "executed_joint_probability": 0.37499999999825684,
+          "full_output_projection_bound_numeric": 6.71319058300587e-14,
           "full_probability_mass": 0.9999999999950487,
           "joint_probability_residual": 1.7431611709639583e-12,
           "maximum_branch_resources": {
@@ -449,9 +496,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.6538818667224284e-27
         },
         {
+          "abort_probability": 1.2890887505187108e-29,
           "complete_outcome_probabilities": [
             0.24999999999870254,
             5.795374618034256e-28,
@@ -461,8 +510,10 @@
             5.856465973601768e-30,
             1.2890887505187108e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.6037404030620185e-12,
           "executed_joint_probability": 0.12499999999941434,
-          "full_probability_mass": 0.9999999999949165,
+          "full_output_projection_bound_numeric": 6.14300402323523e-14,
+          "full_probability_mass": 0.9999999999949166,
           "joint_probability_residual": 5.856565232775779e-13,
           "maximum_branch_resources": {
             "blank_coin_preparations": 1,
@@ -486,9 +537,11 @@
           },
           "predicted_joint_probability": "1/8",
           "probe": "g_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 3.843640723984366e-27
         },
         {
+          "abort_probability": 1.2839099796776975e-29,
           "complete_outcome_probabilities": [
             0.24999999999869704,
             5.385891377230796e-28,
@@ -498,8 +551,10 @@
             8.95809023346456e-30,
             1.2839099796776975e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.579336001709524e-12,
           "executed_joint_probability": 0.3749999999982275,
-          "full_probability_mass": 0.999999999994986,
+          "full_output_projection_bound_numeric": 6.713190583005434e-14,
+          "full_probability_mass": 0.9999999999949859,
           "joint_probability_residual": 1.7725265699652937e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 1,
@@ -523,9 +578,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.6538818667221156e-27
         },
         {
+          "abort_probability": 1.277511813365483e-29,
           "complete_outcome_probabilities": [
             0.24999999999869715,
             5.298246168433199e-28,
@@ -535,7 +592,9 @@
             2.0269573111427932e-29,
             1.277511813365483e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.6242594606327864e-12,
           "executed_joint_probability": 0.12499999999940949,
+          "full_output_projection_bound_numeric": 6.143004023234977e-14,
           "full_probability_mass": 0.9999999999948755,
           "joint_probability_residual": 5.905137490103129e-13,
           "maximum_branch_resources": {
@@ -560,9 +619,11 @@
           },
           "predicted_joint_probability": "1/8",
           "probe": "h_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 3.84364072398421e-27
         },
         {
+          "abort_probability": 7.130241859177794e-29,
           "complete_outcome_probabilities": [
             0.12499999999934303,
             0.12499999999939838,
@@ -572,7 +633,9 @@
             0.12499999999940399,
             7.130241859177794e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5711139488840794e-12,
           "executed_joint_probability": 0.24999999999881325,
+          "full_output_projection_bound_numeric": 7.046875713082221e-14,
           "full_probability_mass": 0.9999999999950111,
           "joint_probability_residual": 1.1867451465974455e-12,
           "maximum_branch_resources": {
@@ -597,9 +660,11 @@
           },
           "predicted_joint_probability": "1/4",
           "probe": "m_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.113894496922661e-27
         },
         {
+          "abort_probability": 1.5166136925783158e-29,
           "complete_outcome_probabilities": [
             0.12499999999934473,
             0.6249999999969755,
@@ -609,7 +674,9 @@
             1.133682356920507e-30,
             1.5166136925783158e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5444130804480557e-12,
           "executed_joint_probability": 0.6249999999969755,
+          "full_output_projection_bound_numeric": 6.027941787404297e-14,
           "full_probability_mass": 0.9999999999950382,
           "joint_probability_residual": 3.0244695636838514e-12,
           "maximum_branch_resources": {
@@ -634,9 +701,11 @@
           },
           "predicted_joint_probability": "5/8",
           "probe": "n_re",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 5.410503552388224e-27
         },
         {
+          "abort_probability": 1.4592714725934837e-29,
           "complete_outcome_probabilities": [
             0.3749999999980247,
             0.3749999999981872,
@@ -646,7 +715,9 @@
             2.363512773620706e-30,
             1.4592714725934837e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.606540858066933e-12,
           "executed_joint_probability": 0.3749999999981872,
+          "full_output_projection_bound_numeric": 6.602583156127829e-14,
           "full_probability_mass": 0.9999999999949294,
           "joint_probability_residual": 1.8128276657591869e-12,
           "maximum_branch_resources": {
@@ -671,7 +742,8 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "n_im",
-          "raw_outcomes": 14
+          "raw_outcomes": 14,
+          "tail_mass": 4.519825170385565e-27
         }
       ],
       "table": {
@@ -686,6 +758,7 @@
       "exact_inverse_matches": true,
       "source_probes": [
         {
+          "abort_probability": 8.28720310729955e-30,
           "complete_outcome_probabilities": [
             4.467697410566711e-29,
             3.326573890100196e-32,
@@ -695,7 +768,9 @@
             2.291488819236608e-29,
             8.28720310729955e-30
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.420554831242575e-12,
           "executed_joint_probability": 0.9999999999952756,
+          "full_output_projection_bound_numeric": 5.830501199295244e-14,
           "full_probability_mass": 0.9999999999952756,
           "joint_probability_residual": 4.724443058989891e-12,
           "maximum_branch_resources": {
@@ -719,9 +794,11 @@
           },
           "predicted_joint_probability": "1",
           "probe": "k_re",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 6.814814021663573e-27
         },
         {
+          "abort_probability": 8.235904475408976e-30,
           "complete_outcome_probabilities": [
             9.696168848048378e-29,
             2.7409758572216013e-30,
@@ -731,7 +808,9 @@
             1.6768872246722835e-29,
             8.235904475408976e-30
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.553555199262118e-12,
           "executed_joint_probability": 0.49999999999763933,
+          "full_output_projection_bound_numeric": 6.97978393674244e-14,
           "full_probability_mass": 0.9999999999950575,
           "joint_probability_residual": 2.3606672172604704e-12,
           "maximum_branch_resources": {
@@ -755,9 +834,11 @@
           },
           "predicted_joint_probability": "1/2",
           "probe": "k_im",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 5.0334572576580394e-27
         },
         {
+          "abort_probability": 9.367052724226883e-29,
           "complete_outcome_probabilities": [
             0.24999999999870215,
             5.556832799222855e-28,
@@ -767,7 +848,9 @@
             2.8051396630108983e-30,
             9.367052724226883e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5422736459108023e-12,
           "executed_joint_probability": 0.3749999999982622,
+          "full_output_projection_bound_numeric": 6.74673647117596e-14,
           "full_probability_mass": 0.9999999999950524,
           "joint_probability_residual": 1.7377765892945263e-12,
           "maximum_branch_resources": {
@@ -791,9 +874,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_re",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.6941004863548956e-27
         },
         {
+          "abort_probability": 8.526613759982224e-29,
           "complete_outcome_probabilities": [
             0.24999999999870204,
             5.324962956933049e-28,
@@ -803,7 +888,9 @@
             3.1349912998262252e-30,
             8.526613759982224e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.552965979462162e-12,
           "executed_joint_probability": 0.37499999999825284,
+          "full_output_projection_bound_numeric": 6.746736471175813e-14,
           "full_probability_mass": 0.9999999999950311,
           "joint_probability_residual": 1.7471579738526088e-12,
           "maximum_branch_resources": {
@@ -827,9 +914,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_im",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.694100486354791e-27
         },
         {
+          "abort_probability": 6.608428973530866e-29,
           "complete_outcome_probabilities": [
             0.24999999999869665,
             5.06726123729752e-28,
@@ -839,7 +928,9 @@
             1.316550570359856e-29,
             6.608428973530866e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.572332821536234e-12,
           "executed_joint_probability": 0.37499999999823014,
+          "full_output_projection_bound_numeric": 6.746736471175534e-14,
           "full_probability_mass": 0.9999999999949923,
           "joint_probability_residual": 1.7698620347061933e-12,
           "maximum_branch_resources": {
@@ -863,9 +954,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_re",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.694100486354579e-27
         },
         {
+          "abort_probability": 6.559883501515448e-29,
           "complete_outcome_probabilities": [
             0.24999999999869676,
             5.0678443159748775e-28,
@@ -875,7 +968,9 @@
             1.759649674005534e-29,
             6.559883501515448e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5722222866709762e-12,
           "executed_joint_probability": 0.3749999999982314,
+          "full_output_projection_bound_numeric": 6.746736471175539e-14,
           "full_probability_mass": 0.9999999999949926,
           "joint_probability_residual": 1.7685852782278744e-12,
           "maximum_branch_resources": {
@@ -899,9 +994,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_im",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.694100486354585e-27
         },
         {
+          "abort_probability": 1.3362752941837236e-28,
           "complete_outcome_probabilities": [
             0.12499999999934283,
             0.12499999999939819,
@@ -911,7 +1008,9 @@
             0.12499999999940452,
             1.3362752941837236e-28
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5692856633435935e-12,
           "executed_joint_probability": 0.24999999999881511,
+          "full_output_projection_bound_numeric": 7.046875713082248e-14,
           "full_probability_mass": 0.9999999999950147,
           "joint_probability_residual": 1.1848855230311983e-12,
           "maximum_branch_resources": {
@@ -935,9 +1034,11 @@
           },
           "predicted_joint_probability": "1/4",
           "probe": "m_re",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 5.113894496922681e-27
         },
         {
+          "abort_probability": 7.292710301769566e-29,
           "complete_outcome_probabilities": [
             0.3749999999980243,
             0.37499999999818656,
@@ -947,8 +1048,10 @@
             1.829921964894843e-30,
             7.292710301769566e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.602517149173856e-12,
           "executed_joint_probability": 0.37499999999818656,
-          "full_probability_mass": 0.99999999999493,
+          "full_output_projection_bound_numeric": 6.636129044297881e-14,
+          "full_probability_mass": 0.9999999999949298,
           "joint_probability_residual": 1.8134382884227307e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 1,
@@ -971,9 +1074,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "n_re",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.5600437900179906e-27
         },
         {
+          "abort_probability": 7.457105104238662e-29,
           "complete_outcome_probabilities": [
             0.3749999999980248,
             0.37499999999818695,
@@ -983,7 +1088,9 @@
             2.8895317037348518e-30,
             7.457105104238662e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.6022859665884407e-12,
           "executed_joint_probability": 0.37499999999818695,
+          "full_output_projection_bound_numeric": 6.636129044297885e-14,
           "full_probability_mass": 0.9999999999949304,
           "joint_probability_residual": 1.8130497103641119e-12,
           "maximum_branch_resources": {
@@ -1007,7 +1114,8 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "n_im",
-          "raw_outcomes": 26
+          "raw_outcomes": 26,
+          "tail_mass": 4.5600437900179934e-27
         }
       ],
       "table": {
@@ -1022,6 +1130,7 @@
       "exact_inverse_matches": true,
       "source_probes": [
         {
+          "abort_probability": 6.179971706873507e-31,
           "complete_outcome_probabilities": [
             5.249389596619434e-29,
             6.629317659316367e-31,
@@ -1031,7 +1140,9 @@
             1.8417092080768032e-29,
             6.179971706873507e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.4223591936518684e-12,
           "executed_joint_probability": 0.9999999999952719,
+          "full_output_projection_bound_numeric": 5.830501199295225e-14,
           "full_probability_mass": 0.9999999999952719,
           "joint_probability_residual": 4.728106794971154e-12,
           "maximum_branch_resources": {
@@ -1055,9 +1166,11 @@
           },
           "predicted_joint_probability": "1",
           "probe": "k_re",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 6.814814021663547e-27
         },
         {
+          "abort_probability": 7.503703411164884e-31,
           "complete_outcome_probabilities": [
             9.687493620118468e-29,
             8.96144249367516e-31,
@@ -1067,8 +1180,10 @@
             1.901863684461674e-29,
             7.503703411164884e-31
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.555710709960136e-12,
           "executed_joint_probability": 0.4999999999976375,
-          "full_probability_mass": 0.9999999999950533,
+          "full_output_projection_bound_numeric": 6.979783936742412e-14,
+          "full_probability_mass": 0.9999999999950532,
           "joint_probability_residual": 2.362499085251102e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 2,
@@ -1091,9 +1206,11 @@
           },
           "predicted_joint_probability": "1/2",
           "probe": "k_im",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 5.0334572576580186e-27
         },
         {
+          "abort_probability": 1.3845546749629644e-29,
           "complete_outcome_probabilities": [
             0.24999999999870248,
             6.205417085113094e-28,
@@ -1103,8 +1220,10 @@
             5.7648212387588576e-30,
             1.3845546749629644e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.542967222323497e-12,
           "executed_joint_probability": 0.3749999999982619,
-          "full_probability_mass": 0.9999999999950511,
+          "full_output_projection_bound_numeric": 6.746736471175952e-14,
+          "full_probability_mass": 0.999999999995051,
           "joint_probability_residual": 1.7381096562019138e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 2,
@@ -1127,9 +1246,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_re",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.69410048635489e-27
         },
         {
+          "abort_probability": 1.2890887505187108e-29,
           "complete_outcome_probabilities": [
             0.24999999999870248,
             5.71860509406171e-28,
@@ -1139,8 +1260,10 @@
             5.074375427050846e-30,
             1.2890887505187108e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.553452627870681e-12,
           "executed_joint_probability": 0.3749999999982527,
-          "full_probability_mass": 0.9999999999950301,
+          "full_output_projection_bound_numeric": 6.746736471175807e-14,
+          "full_probability_mass": 0.99999999999503,
           "joint_probability_residual": 1.7473245073063026e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 2,
@@ -1163,9 +1286,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "g_im",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.6941004863547865e-27
         },
         {
+          "abort_probability": 1.2839099796776975e-29,
           "complete_outcome_probabilities": [
             0.249999999998697,
             5.337520289253748e-28,
@@ -1175,8 +1300,10 @@
             1.1892757941491622e-29,
             1.2839099796776975e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5736644283001585e-12,
           "executed_joint_probability": 0.37499999999822886,
-          "full_probability_mass": 0.9999999999949897,
+          "full_output_projection_bound_numeric": 6.746736471175515e-14,
+          "full_probability_mass": 0.9999999999949896,
           "joint_probability_residual": 1.7711387911845122e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 2,
@@ -1199,9 +1326,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_re",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.6941004863545655e-27
         },
         {
+          "abort_probability": 1.277511813365483e-29,
           "complete_outcome_probabilities": [
             0.24999999999869713,
             5.288470548752238e-28,
@@ -1211,7 +1340,9 @@
             1.9214922145793261e-29,
             1.277511813365483e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5734702253056752e-12,
           "executed_joint_probability": 0.3749999999982303,
+          "full_output_projection_bound_numeric": 6.74673647117552e-14,
           "full_probability_mass": 0.99999999999499,
           "joint_probability_residual": 1.7696955012524995e-12,
           "maximum_branch_resources": {
@@ -1235,9 +1366,11 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "h_im",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.694100486354572e-27
         },
         {
+          "abort_probability": 7.130241859177794e-29,
           "complete_outcome_probabilities": [
             0.12499999999934301,
             0.12499999999939833,
@@ -1247,7 +1380,9 @@
             0.12499999999940403,
             7.130241859177794e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5698439309596018e-12,
           "executed_joint_probability": 0.24999999999881478,
+          "full_output_projection_bound_numeric": 7.046875713082239e-14,
           "full_probability_mass": 0.9999999999950135,
           "joint_probability_residual": 1.1852185899385859e-12,
           "maximum_branch_resources": {
@@ -1271,9 +1406,11 @@
           },
           "predicted_joint_probability": "1/4",
           "probe": "m_re",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 5.1138944969226746e-27
         },
         {
+          "abort_probability": 1.5166136925783158e-29,
           "complete_outcome_probabilities": [
             0.2499999999986841,
             0.4999999999975809,
@@ -1283,8 +1420,10 @@
             9.892417652261267e-31,
             1.5166136925783158e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.5728825687539024e-12,
           "executed_joint_probability": 0.4999999999975809,
-          "full_probability_mass": 0.9999999999949841,
+          "full_output_projection_bound_numeric": 6.332035415851088e-14,
+          "full_probability_mass": 0.999999999994984,
           "joint_probability_residual": 2.419120459506985e-12,
           "maximum_branch_resources": {
             "blank_coin_preparations": 2,
@@ -1307,9 +1446,11 @@
           },
           "predicted_joint_probability": "1/2",
           "probe": "n_re",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.985273671203108e-27
         },
         {
+          "abort_probability": 1.4592714725934837e-29,
           "complete_outcome_probabilities": [
             0.3749999999980246,
             0.3749999999981871,
@@ -1319,7 +1460,9 @@
             2.3009472429260117e-30,
             1.4592714725934837e-29
           ],
+          "complete_source_to_exact_distance_bound_numeric": 2.6031170790951348e-12,
           "executed_joint_probability": 0.3749999999981871,
+          "full_output_projection_bound_numeric": 6.61935610021286e-14,
           "full_probability_mass": 0.9999999999949304,
           "joint_probability_residual": 1.8128831769104181e-12,
           "maximum_branch_resources": {
@@ -1343,7 +1486,8 @@
           },
           "predicted_joint_probability": "3/8",
           "probe": "n_im",
-          "raw_outcomes": 34
+          "raw_outcomes": 34,
+          "tail_mass": 4.539934480201782e-27
         }
       ],
       "table": {
@@ -3447,10 +3591,10 @@
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/record_laws/family.py": "ac615e49101faa9a7b0b42d07f01ff44f342c20195ea5f6e5f88743bd11b4919",
-    "model/repair_identification/bridge.py": "d04533f95fa97cce852b1a58af8e24b5315935fea5707f24f16c2f3b094266b7",
-    "model/repair_identification/calibration.py": "c4e4050329cf0b4c4258cd6cdabc0e7e1e7a2a9cddaa64f298472ad7db5f4d44",
+    "model/repair_identification/bridge.py": "bd6af1fd2039c29209d600e6154ebfae102ae6bf269194a64c8b5a99e44f7afc",
+    "model/repair_identification/calibration.py": "7f5b9dd6e4a4441d6dd0c92d0da7db7f2a8506dde54ac70f51d90697be1c04c4",
     "model/repair_identification/core.py": "15b705391cde6a051d5ddeec98b6c0a7712088679be0ebfa88cf168c78205eeb",
-    "model/repair_identification/experiment.py": "e44d4d9917c1ef3d851cd9e5eba8b10124c697ecae0bee2c6515a473e5611c1a",
+    "model/repair_identification/experiment.py": "97a441a2b81449109d0ea1fb964c9a4b779754827441a75ff18cc2d5298a3370",
     "model/repair_identification/source.py": "0fa4c00fdf1fb03523779fbcac2479399a705c93ef26704d7a8d3255bd47b67d",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
   }
