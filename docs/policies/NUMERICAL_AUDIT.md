@@ -135,6 +135,8 @@ not a domain argument.
   domain, not by expression-tree equality. Check original scalars in mixed
   numeric containers before a common array dtype erases integer precision,
   Boolean types or missingness; validating the coerced array is too late.
+  Reject unsupported integer matrix arithmetic before Gram products: signed
+  and unsigned overflow can turn a huge leakage amplitude into a zero norm.
   Array subclasses can override `copy`, `nonzero` and indexing while retaining
   ordinary numeric entries. A matrix certificate must reject such subclasses
   or detach them to a trusted base representation before inspecting support
@@ -183,6 +185,9 @@ not a domain argument.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.
+  A complete quantum-output claim needs every output block checked at the
+  producer's acceptance gate. Outcome probabilities alone can miss a wrong
+  relative phase, even when the separate regression suite compares states.
   Compare freshly generated source-binding maps with retained receipt maps
   on each supported platform. Repository-relative keys use `/`; checking
   existing file hashes alone misses platform-dependent path separators.
@@ -195,6 +200,11 @@ not a domain argument.
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
   a preferred state family.
+- **Sampling design:** fixed-sample confidence bounds require horizons and
+  radii chosen independently of the analyzed outcomes. Validate a separately
+  declared design against counts; this checks consistency, not precommitment.
+  Challenge outcome-dependent stopping with an explicit finite counterexample
+  before reusing a fixed-sample guarantee for adaptive acquisition.
 
 ## Verify the repair and its integration
 

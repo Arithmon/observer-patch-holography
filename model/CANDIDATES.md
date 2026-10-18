@@ -262,6 +262,23 @@ record law; the [empirical status](../docs/EMPIRICAL_STATUS.md) gives the
 details. Choosing among the laws therefore takes either a principle from the
 table above or a measurement of `g`.
 
+### Complete current-instrument identification
+
+The [nine-quadrature identification](repair_identification/README.md) extends
+the C/E readout to all five multipliers, including their imaginary parts and
+the collision coherence n. It identifies the entire classified coarse
+current instrument on 78 states and bounds its complete adaptive-history
+error by seven times the largest joint-probability error per repair.
+
+A compiled control with `(k,g,h,m,n)=(1,0,0,0,1/4)` agrees with E on every
+binary-shell input operator, so binary-sector protocols cannot exclude it.
+The collision probe separates it from E with probabilities 1/2 versus 3/8.
+Its extra private coin/parity records and costs differ; the equality concerns
+the common current interface. Exact inversion, all 36 source probes and ten
+continuing histories are reproduced by the packet. Neither successful
+tomography nor synthetic data selects a physical law or its finer record
+access contract.
+
 ## Coherent continuation and record access
 
 A committed instrument does not determine what unread coherent records do

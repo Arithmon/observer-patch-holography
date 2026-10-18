@@ -43,6 +43,16 @@ give compatible measurement laws in the claimed physical regime.
 
 ### One complete joint observer comparison
 
+Repair-law uncertainty has a complete finite interface. The
+[source identification](repair_identification/README.md) determines all nine
+real parameters of the classified current instrument, including collision
+coherences invisible to binary-shell observations. Its reference-uniform
+bound propagates calibration error to joint clock, current and quantum-read
+histories with recorded feedback. Ten source-executed two-event histories
+instantiate that contract and replay through the canonical observer runtime.
+This closes a finite identification/composition gap; it does not establish
+which repair table or physical time/field dictionary describes nature.
+
 The [joint correspondence](observer_correspondence/README.md) uses regions
 `{0,1}` and `{0,5}` on the same binary total-two C process. Their local
 fields follow from disclosed initial occupation bits and signed currents;

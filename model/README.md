@@ -98,6 +98,15 @@ instrument. One coherent interference experiment reads
 the coherence that separates them. The [repair-law guide](CANDIDATES.md)
 explains what is forced, what is free and how to tell.
 
+The [complete repair identification](repair_identification/README.md) reads
+all nine real coordinates of that family with compiled source probes. Its
+collision test separates laws that agree on every binary-shell operator.
+The same calibrated instrument predicts complete feedback histories through
+the canonical runtime, including quantum references and checkpoint replay;
+an explicit bound carries probability uncertainty to their joint clock,
+current and interference records. This identifies an instrument within the
+declared family, without selecting a physical law from synthetic data.
+
 A declared instance supplies its carrier, accessible algebra, instruments,
 repair law, preparation domain and scheduling protocol. Consequences of
 those inputs can be derived without proving that the instance is uniquely
