@@ -44,8 +44,9 @@ def reduction_diagnostics(matrices):
     The reported norms themselves are evaluated in binary64.
     """
     if not matrices or any(type(k) is not np.ndarray or k.shape != (512, 8)
+                           or k.dtype not in (np.dtype('float64'), np.dtype('complex128'))
                            or not np.isfinite(k).all() for k in matrices):
-        raise ValueError('every complete finite emitted 512 by 8 Kraus map is required')
+        raise ValueError('every complete finite float64/complex128 emitted 512 by 8 Kraus map is required')
     full = sum((k.conj().T@k for k in matrices), np.zeros((8, 8), complex))
     active = sum((k[:8].conj().T@k[:8] for k in matrices), np.zeros((8, 8), complex))
     tail = sum((k[8:].conj().T@k[8:] for k in matrices), np.zeros((8, 8), complex))
@@ -131,68 +132,108 @@ def _read(operator, pair, pointer):
     return {key: value for key, value in result.items() if value}
 
 
-def exact_history(table, probe, reference=False):
-    """Exact 78-state sparse oracle, retaining a minor reference factor."""
-    table, descriptor = core.validate_table(table), core._probe(probe)
-    source._flags(reference)
+def _exact_preparation(descriptor, reference):
     left, right = descriptor.input_pair
     phase = family.S(1) if descriptor.phase == 0 else family.S(0, 0, 1)
     amplitudes = {(left, 0): family.S(1), (right, int(reference)): phase}
-    state = {(x, y): a*b.conj()*F(1, 2) for x, a in amplitudes.items() for y, b in amplitudes.items()}
-    branches = {(): state}
-    for step in range(2):
-        output = {}
-        for record, rho in branches.items():
-            if step and MENU[record[0]] == (0, 1):
-                rho = {(x, y): value*((-1)**((circuit.SOURCE_CODES[x[0]]&1)+(circuit.SOURCE_CODES[y[0]]&1)))
-                       for (x, y), value in rho.items()}
-            for current in (-1, 0, 1):
-                moved = {}
-                for r, s in product(range(2 if reference else 1), repeat=2):
-                    work = {(x, y): value for ((x, a), (y, b)), value in rho.items() if (a, b) == (r, s)}
-                    moved.update({((x, r), (y, s)): value
-                                  for (x, y), value in core.apply_current(table, current, work).items()})
-                for pointer in (-1, 1):
-                    output[(*record, outcome(current, pointer))] = _read(moved, descriptor.output_pair, pointer)
-            output[(*record, 6)] = {}
-        branches = output
+    return {(x, y): a*b.conj()*F(1, 2) for x, a in amplitudes.items() for y, b in amplitudes.items()}
+
+
+def _exact_event(table, descriptor, rho, reference):
+    output = {}
+    for current in (-1, 0, 1):
+        moved = {}
+        for r, s in product(range(2 if reference else 1), repeat=2):
+            work = {(x, y): value for ((x, a), (y, b)), value in rho.items() if (a, b) == (r, s)}
+            moved.update({((x, r), (y, s)): value
+                          for (x, y), value in core.apply_current(table, current, work).items()})
+        for pointer in (-1, 1):
+            output[outcome(current, pointer)] = _read(moved, descriptor.output_pair, pointer)
+    output[6] = {}
+    return output
+
+
+def _exact_blocks(branches, reference):
     ref = 2 if reference else 1
     result = {}
     for record, rho in branches.items():
         matrix = np.zeros((8*ref, 8*ref), complex)
         for ((x, r), (y, s)), value in rho.items():
             if max(circuit.SOURCE_CODES[x], circuit.SOURCE_CODES[y]) >= 8:
-                raise ArithmeticError('the exact continuing oracle escaped its active chart')
+                raise ArithmeticError('the exact source oracle escaped its active chart')
             matrix[circuit.SOURCE_CODES[x]*ref+r, circuit.SOURCE_CODES[y]*ref+s] += _complex(value)
         result[record] = matrix
     return result
 
 
-def coarse_raw(history):
-    """Keep all raw mass; bound discarded rows and their coherent cross terms.
+def exact_probe(table, probe):
+    """Complete one-event quantum oracle, including its zero abort block."""
+    table, descriptor = core.validate_table(table), core._probe(probe)
+    state = _exact_preparation(descriptor, False)
+    branches = {(label,): rho for label, rho in _exact_event(table, descriptor, state, False).items()}
+    return _exact_blocks(branches, False)
+
+
+def exact_history(table, probe, reference=False):
+    """Exact 78-state sparse oracle, retaining a minor reference factor."""
+    table, descriptor = core.validate_table(table), core._probe(probe)
+    source._flags(reference)
+    branches = {(): _exact_preparation(descriptor, reference)}
+    for step in range(2):
+        output = {}
+        for record, rho in branches.items():
+            if step and MENU[record[0]] == (0, 1):
+                rho = {(x, y): value*((-1)**((circuit.SOURCE_CODES[x[0]]&1)+(circuit.SOURCE_CODES[y[0]]&1)))
+                       for (x, y), value in rho.items()}
+            output.update({(*record, label): block
+                           for label, block in _exact_event(table, descriptor, rho, reference).items()})
+        branches = output
+    return _exact_blocks(branches, reference)
+
+
+def _coarse_vectors(rows, reference, record_length):
+    """Accumulate validated raw vectors and charge their full discarded rows.
 
     For each unnormalized raw |v>=(a,b), the half trace distance to
     |a><a| embedded in the full space is <=||a||||b||+||b||^2/2.
-    Summing before any record coarsening gives a conservative complete-output
-    bound without allocating 49 dense 1024 by 1024 matrices.
+    Sum this before forgetting any private raw records.
     """
-    validate_raw_history(history)
-    ref = history.reference_dimension
-    result = {record: np.zeros((8*ref, 8*ref), complex) for record in product(range(7), repeat=2)}
+    ref = reference
+    result = {record: np.zeros((8*ref, 8*ref), complex)
+              for record in product(range(7), repeat=record_length)}
     reduction, tail, mass, abort = [], [], [], []
-    for branch in history.branches:
-        labels = tuple(6 if raw is None or current is None else outcome(current, raw[-1])
-                       for current, raw in zip(branch.currents, branch.record, strict=True))
-        value = branch.amplitude.reshape(512, ref)
+    for labels, aborted, amplitude in rows:
+        value = amplitude.reshape(512, ref)
         active = value[:8].ravel()
         small, rest = float(np.vdot(active, active).real), float(np.vdot(value[8:], value[8:]).real)
         result[labels] += np.outer(active, active.conj())
         tail.append(rest); mass.append(small+rest)
-        abort.append(small+rest if branch.abort else 0.)
+        abort.append(small+rest if aborted else 0.)
         reduction.append(math.sqrt(small)*math.sqrt(rest)+rest/2)
     return result, {'full_probability_mass': math.fsum(mass), 'tail_mass': math.fsum(tail),
                     'full_output_projection_bound_numeric': math.fsum(reduction),
-                    'abort_probability': math.fsum(abort), 'raw_history_count': len(history.branches)}
+                    'abort_probability': math.fsum(abort)}
+
+
+def coarse_probe(execution):
+    """Validate and coarsen all seven probe outputs, preserving the tail charge."""
+    if type(execution) is not source.ProbeExecution:
+        raise ValueError('an original complete source probe execution is required')
+    validate_probe_execution(execution, execution.candidate, execution.probe)
+    rows = (((6 if branch.abort else outcome(branch.current, branch.record[-1]),),
+             branch.abort, branch.amplitude) for branch in execution.branches)
+    blocks, diagnostics = _coarse_vectors(rows, 1, 1)
+    return blocks, {**diagnostics, 'raw_outcomes': len(execution.branches)}
+
+
+def coarse_raw(history):
+    """Validate and coarsen a complete history with its full 512-row error charge."""
+    validate_raw_history(history)
+    rows = ((tuple(6 if raw is None or current is None else outcome(current, raw[-1])
+                   for current, raw in zip(branch.currents, branch.record, strict=True)),
+             branch.abort, branch.amplitude) for branch in history.branches)
+    blocks, diagnostics = _coarse_vectors(rows, history.reference_dimension, 2)
+    return blocks, {**diagnostics, 'raw_history_count': len(history.branches)}
 
 
 def distance(first, second):

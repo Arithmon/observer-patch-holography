@@ -39,6 +39,9 @@ def _require(condition, message):
 def _probe(candidate, descriptor, table):
     execution = source.execute_probe(candidate, descriptor.name)
     bridge.validate_probe_execution(execution, candidate, descriptor.name)
+    actual, diagnostics = bridge.coarse_probe(execution)
+    exact = bridge.exact_probe(table, descriptor.name)
+    distance = bridge.distance(actual, exact)+diagnostics['full_output_projection_bound_numeric']
     probabilities = [math.fsum(_mass(branch.amplitude) for branch in execution.branches
         if (None, None) == label and branch.abort or
         not branch.abort and (branch.current, branch.record[-1]) == label) for label in bridge.MENU]
@@ -46,11 +49,12 @@ def _probe(candidate, descriptor, table):
     expected = bridge._complex(core.probability(table, descriptor)).real
     error = abs(observed-expected)
     mass = math.fsum(probabilities)
-    _require(error <= TOLERANCE and abs(mass-1) <= TOLERANCE, 'emitted probe does not match the complete law')
+    _require(max(error, distance, abs(mass-1)) <= TOLERANCE,
+             'emitted probe does not match the complete quantum output law')
     return {'probe': descriptor.name, 'predicted_joint_probability': str(core.probability(table, descriptor)),
             'executed_joint_probability': observed, 'joint_probability_residual': error,
-            'complete_outcome_probabilities': probabilities, 'full_probability_mass': mass,
-            'raw_outcomes': len(execution.branches),
+            'complete_outcome_probabilities': probabilities, **diagnostics,
+            'complete_source_to_exact_distance_bound_numeric': distance,
             'maximum_branch_resources': dict(bridge.maximum_cost(branch.resources for branch in execution.branches))}
 
 
