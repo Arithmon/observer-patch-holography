@@ -152,3 +152,30 @@ def test_run_exports_replayed_structure_without_platform_specific_hashes():
         assert row['checkpoint_replayed'] is True
         assert not {'checkpoint_json', 'checkpoint_bytes', 'checkpoint_sha256'} & row.keys()
         assert abs(row['probability_mass']-1) < 1e-12
+
+
+def test_runtime_rejects_wrong_reduced_reference_state_with_correct_full_output(monkeypatch):
+    original = np.trace
+    phase = np.array([1., -1.]*4)
+
+    def wrong_reduction(value, *args, **kwargs):
+        result = original(value, *args, **kwargs)
+        if (getattr(value, 'ndim', 0) == 4 and kwargs.get('axis1') == 0
+                and kwargs.get('axis2') == 2):
+            # Positive, same-trace output with the opposite reference phase.
+            return result*phase[:, None]*phase[None, :]
+        return result
+
+    monkeypatch.setattr(o.np, 'trace', wrong_reduction)
+    with pytest.raises(ArithmeticError, match='full exact stopped history'):
+        o.execute_history(5, EDGES, incident=INCIDENT, cap=2)
+
+
+@pytest.mark.parametrize('bad', (float('nan'), float('inf'), -1e-10))
+@pytest.mark.parametrize('which', (0, 1))
+def test_runtime_rejects_invalid_full_or_reduced_distance(monkeypatch, bad, which):
+    distances = [0., 0.]
+    distances[which] = bad
+    monkeypatch.setattr(o, '_distance', lambda *_: distances.pop(0))
+    with pytest.raises(ArithmeticError, match='full exact stopped history'):
+        o.execute_history(2, ((0, 1),), cap=1)

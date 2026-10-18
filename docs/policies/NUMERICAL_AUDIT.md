@@ -183,6 +183,9 @@ not a domain argument.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.
+  Apply the producer's acceptance thresholds to retained numerical diagnostics
+  before any tolerant replay comparison. A comparison tolerance must not accept
+  a stored residual that would fail the execution's own scientific gate.
   Compare freshly generated source-binding maps with retained receipt maps
   on each supported platform. Repository-relative keys use `/`; checking
   existing file hashes alone misses platform-dependent path separators.

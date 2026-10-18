@@ -294,10 +294,13 @@ substitutes for that larger calculation.
 
 The tests also reject phase corruption with unchanged probabilities,
 incorrect terminal populations, omitted timeout mass, damaged budgets and
-malformed exact inputs. Cache keys use immutable integer density ratios;
-mutating a returned `Fraction` cannot change the parameters of a cached
-calculation. No receipt is accepted solely because its own producer digest
-matches.
+malformed exact inputs. Retained runtime diagnostics must satisfy the same
+acceptance gates as fresh execution before tolerant replay comparison. An
+independent complex three-dimensional reference control checks the channel
+allowance against the original native Kraus maps. Cache keys use immutable
+integer density ratios; mutating a returned `Fraction` cannot change the
+parameters of a cached calculation. No receipt is accepted solely because
+its own producer digest matches.
 
 ```sh
 python -m model.coherent_screen_observer --check model/coherent_screen_observer/results.json

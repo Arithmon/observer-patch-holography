@@ -8,7 +8,7 @@ from collections import defaultdict
 from fractions import Fraction as F
 import hashlib
 from itertools import product
-from math import gcd, sqrt
+from math import gcd, isfinite, sqrt
 
 import numpy as np
 
@@ -17,6 +17,7 @@ from ..primitive_observer import runtime
 
 RECORDS = (('timeout', ()), *tuple(('timeout', (m,)) for m in range(4)),
            *tuple(('complete', word) for word in product(range(4), repeat=2)))
+OUTPUT_TOLERANCE = 2e-12
 
 
 def _parameters(n, edges, root, incident, law, cap, feedback, rho):
@@ -222,7 +223,10 @@ def execute_history(n, edges, root=(0, 1), *, incident=None, law='C', cap=3,
     error = _distance(full, {key: _matrix(value, 2*size) for key, value in exact.items()})
     reduced_error = _distance(reduced, {key: np.asarray(_reduced(value), dtype=complex)
                                        for key, value in exact.items()})
-    if padding != 0 or error > 2e-12 or abs(whole.probability_mass-1) > 2e-12:
+    if (not all(isfinite(value) for value in (padding, error, reduced_error, whole.probability_mass))
+            or padding != 0 or not 0 <= error <= OUTPUT_TOLERANCE
+            or not 0 <= reduced_error <= OUTPUT_TOLERANCE
+            or abs(whole.probability_mass-1) > OUTPUT_TOLERANCE):
         raise ArithmeticError('native runtime differs from the full exact stopped history')
     q = F(len(edges)-len(incident), len(edges))
     resource_names = {name for branch in whole.branches for name, _ in branch.resources}

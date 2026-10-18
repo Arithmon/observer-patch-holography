@@ -3,8 +3,8 @@ import argparse
 from pathlib import Path
 
 from tools import strict_json
-from ..observer.scalar_response.experiment import canonical, compare_receipt
-from .receipt import run
+from ..observer.scalar_response.experiment import canonical
+from .receipt import compare_receipt, run
 
 
 def main():

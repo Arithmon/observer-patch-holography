@@ -1,15 +1,48 @@
 """Rebuild source neighborhoods, complete channel enclosures and controls."""
 from fractions import Fraction as F
 import hashlib
+from math import isfinite
 from pathlib import Path
 
 from ..native_action import incident_refinement as clocks
-from ..observer.scalar_response.experiment import canonical
+from ..observer.scalar_response.experiment import canonical, compare_receipt as _compare_receipt
 from ..observer_time_fields import dual
 from . import construction as c
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPORT_BITS = 64
+
+
+def _runtime_diagnostics(value):
+    """Retained diagnostics must satisfy the producer's own acceptance gates."""
+    from .oracle import OUTPUT_TOLERANCE
+    try:
+        rows = value['runtime_controls']['executions']
+        if type(rows) is not list or len(rows) != 2:
+            raise ValueError('both complete runtime controls are required')
+        for row in rows:
+            for key in ('full_output_distance_numeric', 'reduced_output_distance_numeric',
+                        'zero_padding_nuclear_norm', 'checkpoint_distance', 'probability_mass'):
+                number = row[key]
+                if type(number) is not float or not isfinite(number):
+                    raise ValueError('finite original floating runtime diagnostics required')
+                if key == 'probability_mass':
+                    valid = abs(number-1) <= OUTPUT_TOLERANCE
+                elif key in ('zero_padding_nuclear_norm', 'checkpoint_distance'):
+                    valid = number == 0
+                else:
+                    valid = 0 <= number <= OUTPUT_TOLERANCE
+                if not valid:
+                    raise ValueError(f'runtime diagnostic exceeds its producer gate: {key}')
+    except (KeyError, TypeError) as error:
+        raise ValueError('complete retained runtime diagnostics required') from error
+
+
+def compare_receipt(expected, actual):
+    """Check scientific diagnostic domains before tolerant numerical replay."""
+    _runtime_diagnostics(expected)
+    _runtime_diagnostics(actual)
+    _compare_receipt(expected, actual)
 
 
 def dyadic(value, upper=False):
