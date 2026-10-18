@@ -450,20 +450,13 @@ Sources:
 
 ### RE-11: Controlled refinement of the selected quantum family
 
-The [coherent screen observer](coherent_screen_observer/README.md) supplies
-an executed finite quantum comparison at native incident-clock count two.
-It computes the complete local channel, including arbitrary logical
-references, mask-controlled phase feedback and timeouts, using a degree-two
-dual on the common 222-port ball. The two completed source-screen channels
-differ by at most `2.731e-10` on the declared logical-qubit/product-environment
-preparation. This instantiates a finite refinement component and preserves
-the remaining-input and closure conditions below.
-
 **Constructed:** The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.
 
 On the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.
 
 For native C/E federations, the complete local-output bound controls retained quantum states, local records, local feedback and untouched references. Compatible restrictions on a fixed bounded-degree graph yield a quasilocal quantum process at bounded auxiliary per-seam Poisson parameter. Actual screen parent/child mean restrictions require memory and do not automatically intertwine dynamics. Each locality or refinement argument must use compatible initial states and access maps on the same source family. Actual source-screen pairs 1/3, 2/4 and 3/5 have native-port-labelled neighborhoods agreeing through radii 3,6 and 9. Matched radius-nine initial restrictions give complete root-output distance at most 2187/5734400 at per-seam s=1/4 between 15360 and 245760 ports. The explicit product-state family is compatible; fixed global total-two preparations have a separately charged local mismatch. Exact mean-density return kernels agree through uniformization power 22 and first differ at 23; this stronger first-moment check is not a complete-history bound. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.
+
+The coherent screen observer executes a complete logical-qubit channel at native incident-clock count two on the actual matched level-three/five screens. A degree-two exclusion dual and fixed signed-difference operator compute all pair/reference populations and coherences, including mask-controlled phase feedback and all 21 capped records. Spatial, cutoff and directed-arithmetic bounds put the computed table within 7.779e-10 of either completed full-screen output, uniformly over logical inputs and untouched references under the independent Bernoulli-environment preparation. The two completed source channels differ by at most 2.731e-10. C and E share the classical record law but have completed Bell-output distance 101/968; an unnormalized retained C block certifies entanglement. Preparation and phase services remain declared, and this finite comparison does not establish an all-level or physical-time limit.
 
 **Remaining input:** A common controlled interacting relativistic observation limit remains open. Growing volume, increasing occupation and reducing a temporal splitting step are different operations. All-level native source-screen compatibility, nontrivial operational scaling and laboratory identification must be established on the actual family. Supplied scalar actions retain their own geometry and preparation inputs; their bounds do not select the native law. Numerical source-array certificates and mathematical ideal limits do not authenticate physical service errors. Postselected output comparisons need their own success-probability control, and infinite stopping needs a tail bound.
 
@@ -528,6 +521,8 @@ Sources:
 - [Exact canonical-sector field law and source execution](../model/observer_time_fields/canonical_sector.py).
 - [Fixed-number full-screen field predictions and finite-size comparison](../model/observer_time_fields/canonical_sector_results.json).
 - [Common clock/field proof and conserved-sector extension](../model/observer_time_fields/REFINEMENT.md).
+- [Complete coherent screen-observer channel, proof and resource budgets](../model/coherent_screen_observer/README.md).
+- [Native coherent screen comparison and independent full-state controls](../model/coherent_screen_observer/results.json).
 
 <a id="re-12"></a>
 
