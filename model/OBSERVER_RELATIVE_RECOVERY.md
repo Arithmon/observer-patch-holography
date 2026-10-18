@@ -610,6 +610,20 @@ serialized continuation; their external caps have separate timeout budgets.
 This finite result connects local clocks to screen comparison without
 identifying a tick with physical duration or claiming an all-level limit.
 
+The [coherent screen observer](coherent_screen_observer/README.md) attaches
+that theorem to a complete logical-qubit channel on the same two screens.
+An independently prepared density-`1/3` environment surrounds a two-port
+input with any untouched reference. Two incident seam-category marks control
+a local phase, with no environment reset. The degree-two exclusion dual and
+fixed signed-difference operator compute every population and coherence in
+all 21 capped record blocks. Spatial, timeout and directed-arithmetic errors
+bound the computed table against either completed source by `7.779e-10`;
+the two completed source channels differ by at most `2.731e-10`. C and E
+have the same classical records but complete Bell-output distance `101/968`
+in the completed protocol. One retained C block remains entangled, verified
+without postselection. This extends the finite quantum observation domain;
+the preparation, ideal phase and physical time interpretation remain explicit.
+
 Finite compatibility is established on the actual source screens. Rooted
 port neighborhoods at levels 1/3, 2/4 and 3/5 agree through radii 3, 6 and 9,
 respectively, with every local port label and induced seam preserved. Their

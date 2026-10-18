@@ -1,0 +1,20 @@
+{
+  "description": "Complete logical-qubit/reference channels in a native incident clock on two matched source screens.",
+  "files": {
+    "README.md": "827cc8be555e76bc8b8f4a518bb7708d7ab7f8046f05f187e712374c6ce95444",
+    "__init__.py": "8d0feaad6ae6080ab411c497dc2b270e2f84f62ff8bdaa4fa7240829d0cf2ae0",
+    "__main__.py": "f94a27a4899ad02f66eee8f93cf7c0b8f65239130788722685f41b8efbaa2aaf",
+    "construction.py": "9746f0e81dedc6cbffe79243b211a6d7d441a441577ee4603017ffb5e67d370a",
+    "oracle.py": "84efa79580ff37332a857d2c0f772784a715ec88d155403e11b34085f939d5b3",
+    "receipt.py": "3608814b718bce87660886a9aa46f1c5fb02c841f2e58e11c9ee8ab769a747b6",
+    "results.json": "b025a1203ac26eb8ab0691994114002e7b2c79a185c15196964f646e646318c3",
+    "test_construction.py": "f32b3c37693891baff8bf1e78d972501dfd085a3782a18c190f32b6eaa72fa37",
+    "test_oracle.py": "3ba37f85de91e68539ad5ddf135d3371a2bc033eb8c70a591bd71d0c40562a06",
+    "test_receipt.py": "0f2834a77b0b6d28bfd9c15afb407cd65f3e5d171d871b271ae5d0c1008352e9"
+  },
+  "reproduce": [
+    "python -m model.coherent_screen_observer --check model/coherent_screen_observer/results.json",
+    "python -m pytest -q -W error model/coherent_screen_observer"
+  ],
+  "schema": "oph.coherent_screen_observer.manifest.v1"
+}

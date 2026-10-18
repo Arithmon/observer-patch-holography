@@ -450,6 +450,15 @@ Sources:
 
 ### RE-11: Controlled refinement of the selected quantum family
 
+The [coherent screen observer](coherent_screen_observer/README.md) supplies
+an executed finite quantum comparison at native incident-clock count two.
+It computes the complete local channel, including arbitrary logical
+references, mask-controlled phase feedback and timeouts, using a degree-two
+dual on the common 222-port ball. The two completed source-screen channels
+differ by at most `2.731e-10` on the declared logical-qubit/product-environment
+preparation. This instantiates a finite refinement component and preserves
+the remaining-input and closure conditions below.
+
 **Constructed:** The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.
 
 On the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.
