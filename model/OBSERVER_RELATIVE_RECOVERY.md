@@ -71,6 +71,25 @@ or quantum references claimed. It supplies a finite instance of the
 [complete-output comparison](CONSTRUCTION.md#the-observable-correspondence-to-establish),
 not its interacting QFT or empirical completion.
 
+The [coherent extension](quantum_observer_correspondence/README.md) removes
+that diagonal-input restriction under a different preparation contract:
+initial occupations are not disclosed. The native C instrument acts on the
+same 66-dimensional carrier. An exact remote resolvent on all 4,356 matrix
+units defines a CPTP encoding, and its inverse decodes the complete output
+on the encoded matrix cone, including arbitrary untouched references.
+The retained experiment checks 1,442 records for each probe setting and
+keeps every timeout and conditional source/reference matrix. Surviving
+reference entanglement provides a control against a classical replacement.
+
+Its [independent clock/response calculation](quantum_observer_correspondence/CLOCK_RESPONSE.md)
+rebuilds the native branches directly. The coherent probe settings have the
+same clock marginal but different joint clock/detector laws. Even a control
+matching all status-conditioned marginals fails the joint comparison.
+These are event-count clocks. The phase, mixer and terminal detector are
+declared ideal interventions; their physical implementation or duration is
+not supplied. The earlier diagonal receipt and its occupation-disclosure
+contract remain unchanged.
+
 ## What the inputs supply
 
 Architecture, observer implementation and the complete repair law define an

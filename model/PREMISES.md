@@ -35,7 +35,7 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
 | Registered claims | 339 |
-| Unique ordinary `assumptions` names | 818 |
+| Unique ordinary `assumptions` names | 819 |
 | Unique `imported_results` names | 896 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 33 |
@@ -772,6 +772,8 @@ Public oscillator comparisons execute a supplied experimental action and apparat
 
 A retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.
 
+A finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map.
+
 **Remaining input:** The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained.
 
 **Closure condition:** Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.
@@ -811,6 +813,7 @@ Sources:
 - [Public-data candidate eligibility and conditional comparison scope](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md).
 - [Actual ACT combined posterior projection and exact weighted comparison](../code/cosmology/tilt_posterior/README.md).
 - [Retained actual-data tilt comparison without a prospective verdict](../code/cosmology/tilt_posterior/results.json).
+- [Controlled finite bandwidth extension and matched low-mode observations](../model/interacting_band_extension/README.md).
 
 <a id="re-23"></a>
 
@@ -879,6 +882,8 @@ Theorem attachment is checked on the actual objects: native signed-difference bl
 
 An executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.
 
+The separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. Ideal phase and mixing interventions remain declared apparatus. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically.
+
 **Remaining input:** Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. Source-screen scaling, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process.
 
 **Closure condition:** For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.
@@ -915,6 +920,8 @@ Sources:
 - [Current finite-to-physical obligations and original scalar milestone scope](../model/SOURCE_SELECTION.md#current-bridge-to-physical-observations).
 - [Single-carrier space, action, clock and federation audit](../model/PHYSICAL_AUDIT.md).
 - [Executed common field/clock/current history and exact effective correspondence](../model/observer_correspondence/README.md).
+- [Controlled finite bandwidth extension and matched low-mode observations](../model/interacting_band_extension/README.md).
+- [Coherent native correspondence with arbitrary references and joint clock controls](../model/quantum_observer_correspondence/README.md).
 
 <a id="re-27"></a>
 

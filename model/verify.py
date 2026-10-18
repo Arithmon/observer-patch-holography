@@ -37,7 +37,9 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/closed_prediction_protocol", "model/characteristic_constraints",
            "model/record_laws", "model/physical_space_time",
            "model/repair_action_audit", "model/laboratory_clock",
-           "model/observer_correspondence")
+           "model/observer_correspondence",
+           "model/quantum_observer_correspondence",
+           "model/interacting_band_extension")
 REPLAYS = (
     ("model.observer_correspondence", None, "model/observer_correspondence/results.json"),
     ("model.record_laws.instrument_contract", None, "model/record_laws/instrument_results.json"),
@@ -138,6 +140,10 @@ REPLAYS = (
     ("model.identifiability_checks.dephasing_observability", None, "model/identifiability_checks/dephasing_observability_results.json"),
     ("model.identifiability_checks.consensus_observability", None, "model/identifiability_checks/consensus_observability_results.json"),
     ("model.record_laws", None, "model/record_laws/results.json"),
+    ("model.quantum_observer_correspondence", None,
+     "model/quantum_observer_correspondence/results.json"),
+    ("model.interacting_band_extension", None,
+     "model/interacting_band_extension/results.json"),
 )
 
 

@@ -5,7 +5,7 @@ Audit baseline: `34d07c5756618cab969a8c8a5c91072f368a68ae` (18 October 2026).
 The construction derives compatible
 finite observations from one specified repair process. It has not established
 physical 3+1 spacetime, a selected Lorentzian field action, or a measured
-native-event correspondence with a laboratory clock. The distinction matters
+clock correspondence with observed physical processes. The distinction matters
 for deciding what to build next: more carriers do not discharge any of these
 three obligations by themselves.
 
@@ -124,13 +124,25 @@ Uniqueness among every possible repair law is not required to test one
 candidate; its instrument, state, controls and clocks do need to be fixed
 before validation.
 
-The next decisive construction should use one declared preparation and
-complete instrument to predict **joint signal, field and clock records**.
-Choose the operational spatial and temporal maps in advance, retain hidden
-events and failures, and establish their error bounds on the domain claimed.
-The native action must predict those same records under the chosen clock
-map, including coherent interventions that can distinguish the remaining
-record-law freedom. Identify these records with physical detector and clock
+The [quantum observer correspondence](quantum_observer_correspondence/README.md)
+compares joint incident-clock records, coherent interventions, all
+timeouts and full conditional source/reference outputs on one carrier.
+Its exact map identity covers arbitrary references under the declared local
+intervention contract. Independent marginal fits fail its joint
+clock/interference control. The coherent apparatus remains an ideal
+intervention, and no Lorentzian interpretation follows from this finite
+change of representation.
+
+The [interacting band extension](interacting_band_extension/README.md)
+addresses a different gap in the supplied scalar branch. It adds two
+actual Fourier modes, derives the resulting low-mode quadratic correction,
+and bounds complete reduced observations with their continuing memory.
+Its finite-code theorem supplies one controlled bandwidth extension.
+It does not identify that scalar branch with native event-clock dynamics
+or remove the remaining high modes.
+
+The next physical join must preserve these distinct state, operation and
+clock contracts. Identify the native records with physical detector and clock
 observables, calibrate the declared unit/parameter freedoms using existing
 measurements, then test unused observation protocols without refitting.
 A physical emulator is an optional implementation test; paired microscopic

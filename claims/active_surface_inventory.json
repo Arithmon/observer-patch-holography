@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 635,
+  "surface_count": 638,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1476,6 +1476,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/interacting_band_extension/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/interacting_reconstruction/DERIVATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1747,6 +1752,16 @@
     },
     {
       "path": "model/primitive_observer/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/quantum_observer_correspondence/CLOCK_RESPONSE.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/quantum_observer_correspondence/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

@@ -1,0 +1,17 @@
+{
+  "description": "One native-executed resonant Fourier-band enlargement with exact mass matching, reduced complete-output bounds, and a positive compiled interaction witness.",
+  "files": {
+    "README.md": "b02f485e339fb33ceeccd316ded43ff5807ce21544606d7452ce4eccfbb52049",
+    "__init__.py": "f3a8f4e46681add759b53f4d4840e670a6d134ea56bec22b38d348b013f84aa1",
+    "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "algebra.py": "768512a0e0131ef764113037f56f997cd01aebbebd6b6302287a0e4e78e65342",
+    "construction.py": "e873a73707974b6109f3e32e3a1605d7e884df426d4324b779ae20c0f6d18ce5",
+    "results.json": "e7f55bc5577bc9068c9944f0df55a9fc44e9bf9a435b04082503558d4c92d800",
+    "test_construction.py": "7221dbcf8e8670e28e1e21697cc78d7a53c498b2af9f7c185589cb94fb292f39"
+  },
+  "reproduce": [
+    "python -m model.interacting_band_extension --check model/interacting_band_extension/results.json",
+    "python -m pytest -q -W error model/interacting_band_extension"
+  ],
+  "schema": "oph.interacting_band_extension.manifest.v1"
+}
