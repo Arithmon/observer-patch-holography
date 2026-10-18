@@ -7,6 +7,10 @@ executes coherent fields and record-controlled phase interventions on the
 same twelve ports, with all timeouts and explicit approximation budgets.
 It removes the transported-cone requirement for this local comparison;
 the exact full-population construction below retains its distinct domain.
+The separate [full quantum correspondence](../quantum_observer_correspondence/README.md)
+extends that transported-cone approach to the entire total-two operator
+domain with exact global decoding. The CP local construction and that
+exact global representation have different comparison contracts.
 
 This package closes a finite integration gap. It compares the **complete same
 experiment** under direct native endpoint execution and a derived effective

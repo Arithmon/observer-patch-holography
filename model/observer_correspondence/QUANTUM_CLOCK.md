@@ -1,11 +1,25 @@
 # A quantum instrument in the observer's incident clock
 
-The [diagonal correspondence](README.md) transports complete finite records
-and terminal populations through a source-derived change of representation.
-The extension here constructs an ordinary completely positive effective
-instrument. It preserves complete local quantum outputs, their correlations
-with an untouched reference, and adaptive local interventions. Its finite
-implementation retains timeouts and has a uniform error and work budget.
+The existing [quantum correspondence](../quantum_observer_correspondence/README.md)
+already preserves coherent histories, entangled references, adaptive local
+controls and finite-cap full-source outputs through a transported matrix
+cone. Its identities cover all 4,356 operator units of the 66-state total-two
+carrier, and its [clock-response replay](../quantum_observer_correspondence/CLOCK_RESPONSE.md)
+independently checks a joint clock and coherent detector law. It extends the
+earlier [diagonal correspondence](README.md); quantum output and reference
+retention are therefore established inputs to this construction.
+
+The addition here is an ordinary completely positive effective instrument
+on the ambient positive matrix cone, including at finite cap. A source-derived
+half-wait channel gives an exact completed correspondence for local quantum
+outputs, references and adaptive local interventions, without an inverse
+decoder. A rational finite implementation retains timeout states and has a
+uniform complete-output error and work budget. Finite capped native and
+effective outputs are compared by that error bound; full-source equality
+is not part of this output contract. The executed coherent histories use
+the twelve-dimensional total-one sector. The separate total-two result
+here certifies a spectral floor, rather than enlarging the earlier coherent
+execution domain.
 
 For the specified C and E laws the unread effective transfer is positive on
 the Hilbert space of operators. A finite logarithm requires a separate
@@ -13,6 +27,12 @@ strict-positivity certificate. That certificate depends on both the chosen
 clock region and the operator domain. A permitted signed record law provides
 an explicit negative-mode obstruction despite identical classical repair
 data. None of these statements selects a physical record law.
+
+The separate [interacting band extension](../interacting_band_extension/README.md)
+controls an enlarged oscillator model with supplied Hamiltonian time.
+The present transfer uses dimensionless source-incident counts. Neither
+result by itself identifies those clocks or supplies a composition theorem
+between the two field contracts.
 
 ## The same source and observation contract
 
@@ -86,6 +106,10 @@ w_n = sqrt(p) c_n r^n,             sum_n w_n = 1.
 This is a half-geometric, or negative-binomial shape-one-half, waiting
 distribution. Its mean number of remote native repairs is `r/(2p)`.
 Its definition uses the source seam fraction, not a fitted time scale.
+The geometric encoding in the existing full quantum correspondence is
+exactly `J^2=p(I-A)^(-1)`. Thus the two representations share the same
+source resolvent; the half-wait factor changes the effective instrument
+and its output contract rather than introducing a different repair law.
 
 The native completed incident instrument and the effective instrument are
 

@@ -207,6 +207,35 @@ def test_full_binary_triangle_floor_matches_independent_native_eigenspaces():
         assert sum(size for _, size in spectrum) == 64
 
 
+def test_total_two_floor_applies_to_upstream_full_quantum_clock_source():
+    from ..quantum_observer_correspondence import construction as upstream
+
+    # The new upstream experiment has different preparation, interventions
+    # and finite effective maps. Its C source split is nevertheless the same
+    # total-two split used by this packet's separate spectral certificate.
+    assert upstream.UNION == q.UNION and upstream.REGIONS == q.REGIONS
+    assert upstream.P == q.source('C').probability == F(2, 5)
+    certificate = q.total_two_certificate()
+    source = upstream.source()
+    assert {(*ticks, increments[0]) for ticks, increments in source['marks']} == set(MARKS)
+    columns = {}
+    for pair in product(range(66), repeat=2):
+        column = defaultdict(int)
+        for marked in source['incidents'].values():
+            for output, count in marked.get(pair, {}).items():
+                assert type(count) is int and count > 0
+                column[output] += count
+        columns[pair] = dict(column)
+    assert len(columns) == certificate['all_matrix_units_per_candidate'] == 4356
+    assert all(columns[output].get(pair, 0) == count
+               for pair, column in columns.items() for output, count in column.items())
+    # Symmetric diagonal dominance proves the lower bound directly on the
+    # upstream source columns, without using our private block construction.
+    floor = min(column.get(pair, 0)-sum(value for output, value in column.items() if output != pair)
+                for pair, column in columns.items())
+    assert F(floor, 60) == certificate['incident_hs_lower']['C'] == F(2, 15)
+
+
 class _IntAlias(int):
     pass
 

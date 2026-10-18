@@ -71,9 +71,26 @@ or quantum references claimed. It supplies a finite instance of the
 [complete-output comparison](CONSTRUCTION.md#the-observable-correspondence-to-establish),
 not its interacting QFT or empirical completion.
 
-## What the inputs supply
+The [coherent extension](quantum_observer_correspondence/README.md) removes
+that diagonal-input restriction under a different preparation contract:
+initial occupations are not disclosed. The native C instrument acts on the
+same 66-dimensional carrier. An exact remote resolvent on all 4,356 matrix
+units defines a CPTP encoding, and its inverse decodes the complete output
+on the encoded matrix cone, including arbitrary untouched references.
+The retained experiment checks 1,442 records for each probe setting and
+keeps every timeout and conditional source/reference matrix. Surviving
+reference entanglement provides a control against a classical replacement.
 
-The [quantum extension](observer_correspondence/QUANTUM_CLOCK.md) constructs
+Its [independent clock/response calculation](quantum_observer_correspondence/CLOCK_RESPONSE.md)
+rebuilds the native branches directly. The coherent probe settings have the
+same clock marginal but different joint clock/detector laws. Even a control
+matching all status-conditioned marginals fails the joint comparison.
+These are event-count clocks. The phase, mixer and terminal detector are
+declared ideal interventions; their physical implementation or duration is
+not supplied. The earlier diagonal receipt and its occupation-disclosure
+contract remain unchanged.
+
+The [CP local-output construction](observer_correspondence/QUANTUM_CLOCK.md) constructs
 an ordinary CP effective instrument by splitting actual remote waits around
 each incident repair. Its completed local histories agree with the native
 histories for the specified input encoding, arbitrary untouched references
@@ -85,6 +102,8 @@ also proves strictly positive union-clock transfers for both C and E;
 changing the clock or record law can instead produce zero or negative modes.
 This local quantum result does not identify global source states or provide
 fractional CPTP evolution, a relativistic limit or physical clock calibration.
+
+## What the inputs supply
 
 Architecture, observer implementation and the complete repair law define an
 instance. Their consequences need not be supplied again for each prediction.

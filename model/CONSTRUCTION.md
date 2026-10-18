@@ -126,8 +126,9 @@ dictionary. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDI
 keeps the ACT comparison separate from native-observer derivation.
 
 The [quantum incident-clock construction](observer_correspondence/QUANTUM_CLOCK.md)
-now supplies a local instance of this complete-output comparison on the
-native carrier. A positive mixture of actual remote and incident repairs
+complements the [exact full-state representation](quantum_observer_correspondence/README.md)
+with an ordinary CP local-output comparison on the native carrier.
+A positive mixture of actual remote and incident repairs
 produces the effective instrument; the proof includes adaptive local
 interventions and untouched references. Coherent two-tick executions retain
 all 81 outputs, error budgets, service costs and reference correlations.
@@ -444,6 +445,17 @@ onto finite source codes. The exact-gradient endpoint is
 `GalerkinParameters(grid=None)`: increasing quadrature resolution does not
 add modes. Extending the field needs additional modes, matched observation
 maps and controlled omitted-mode effects.
+
+The [interacting band extension](interacting_band_extension/README.md)
+performs one such extension, adding the cosine and sine at momentum
+`(3,0,0)`. The common quartic action fixes their new couplings. Averaging
+their specified oscillator blank induces a low-mode mass-squared shift
+`g/4`; the comparison includes that shift instead of equating bare and
+matched parameters. A block-Duhamel bound controls complete low-mode
+observations through measurements and feedback, with the added modes
+retained between reads and traced only at the comparison output. Its
+finite occupation domain and selected anisotropic band remain explicit.
+This does not remove all omitted modes or prove relativistic locality.
 
 The [relativistic scalar regulator](relativistic_scalar/README.md) executes
 an eight-site three-dimensional quartic action with an unrestricted-
@@ -832,6 +844,8 @@ finite software run.
 | Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
+| Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
+| Seven-to-nine-mode interacting scalar extension | Matched low-mode action and a complete reduced-output error bound through continuing observation and feedback | Supplied scalar action, oscillator blanks, finite occupation codes and model-time intervals; further bands, physical parameters and Lorentzian observation laws need additional control |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 

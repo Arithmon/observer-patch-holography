@@ -65,15 +65,25 @@ timeouts. This closes a finite diagonal observation contract. Its effective
 transfer action and local spatial dictionary do not establish a physical
 relativistic QFT or identify the observations with our Universe.
 
-## Architecture and execution
+The [quantum correspondence](quantum_observer_correspondence/README.md)
+extends the representation to coherent source states and untouched quantum
+references. It checks the native remote resolvent on all 4,356 matrix units,
+with complete local clock records, quantum interventions and timeouts.
+The coherent protocol omits the earlier initial occupation disclosure,
+which would disturb its preparation. A separate oracle checks the joint
+clock/interference law; matching the clock and detector marginals separately
+fails that comparison. Its phase and mixing operations are declared ideal
+observer apparatus, distinct from the scheduled native repairs.
 
 The [quantum incident-clock correspondence](observer_correspondence/QUANTUM_CLOCK.md)
-extends local comparison to coherent states, adaptive phase control and an
-untouched quantum reference. An explicit positive mixture of native repairs
-implements the effective instrument. All 81 complete outputs execute in the
-shared runtime and retain their error and resource budgets. Distinct C/E
+complements that exact full-state representation with an ordinary CP
+effective instrument for local outputs. A positive mixture of native repairs
+implements it. Its one-particle coherent/reference experiment retains all 81
+outputs in the shared runtime, with error and resource budgets. Distinct C/E
 phase predictions show why agreeing classical currents do not fix the quantum
 field response. Coherent preparation and readout remain declared services.
+
+## Architecture and execution
 
 The [primitive observer runtime](primitive_observer/README.md) executes
 complete classical/quantum instruments. Each operation acts on a continuing
@@ -394,6 +404,15 @@ observation laws at fixed lattice spacing. The
 number-changing quartic interactions, an untruncated finite-volume gap
 bound and a separate free Klein–Gordon refinement. None selects its mass,
 geometry or interacting relativistic action from native repair.
+
+The [interacting band extension](interacting_band_extension/README.md)
+adds a pair of omitted Fourier modes to the seven-mode scalar family.
+It derives their induced quadratic term and controls their effect on
+complete low-mode observations while their disturbed state continues.
+The comparison traces out the added modes; it does not discard runs in
+which they are excited. This is a controlled finite bandwidth extension,
+with its own occupation code and model-time domain, rather than a claim
+that increasing the sampling grid removes an ultraviolet cutoff.
 
 [Record-only reconstruction](observer_reconstruction/README.md),
 [interacting reconstruction](interacting_reconstruction/README.md), and

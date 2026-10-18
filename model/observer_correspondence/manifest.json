@@ -1,8 +1,8 @@
 {
   "description": "Complete native/effective observer histories: exact diagonal correspondence and CP quantum incident-clock instruments with coherent fields, references, feedback, finite caps and resource budgets.",
   "files": {
-    "QUANTUM_CLOCK.md": "aafda2dcec4109148ca9b21328a485df08d240f013adec2159b105cefcb7b7a2",
-    "README.md": "9870d7b5953c324f8c78308929b8085b4936f98c79df608bb505cd3c52a2fa85",
+    "QUANTUM_CLOCK.md": "b3cf67ee2c3aada23c291ff69161c57bb6678691778a135661dad231723be124",
+    "README.md": "f7beda6fbfacf4e9fae95789745bc87be83b5ef5a5300d33e1a70e64197f6628",
     "__init__.py": "e8b50f98ae2a86890361af1c27bfe3db5ee7b4cbb41fe806431886ed37c11bdc",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "construction.py": "2e3850588f8d87a0bcc0c21cb1be304698a4c01a12b7c16c1aee6e1c7465cb00",
@@ -11,7 +11,7 @@
     "quantum_results.json": "48db8c07b8f0600b3b7de192b6be6994c0c4461242d3fa8db3b2cdf7f149f68b",
     "results.json": "29f78c613267ac2ea32f6f62eaed83b15aa45e4e0c97384dd614021e8f689eeb",
     "test_construction.py": "1180781f18d7e3a87349f6120f02a8c697bff4b8e22ea2a20c1507f50d803893",
-    "test_quantum_clock.py": "49e5c1622ad3143fd52ba636ad081d4d4cf0fbaad29acf287ebed930b7c19eae"
+    "test_quantum_clock.py": "8272870e5c75bb5087809749838018d9c4c10d8eb64cacca95ab71ff752c6a04"
   },
   "reproduce": [
     "python -m model.observer_correspondence --check model/observer_correspondence/results.json",
