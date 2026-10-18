@@ -8,7 +8,7 @@
     "oracle.py": "84efa79580ff37332a857d2c0f772784a715ec88d155403e11b34085f939d5b3",
     "receipt.py": "3608814b718bce87660886a9aa46f1c5fb02c841f2e58e11c9ee8ab769a747b6",
     "results.json": "b025a1203ac26eb8ab0691994114002e7b2c79a185c15196964f646e646318c3",
-    "test_construction.py": "f32b3c37693891baff8bf1e78d972501dfd085a3782a18c190f32b6eaa72fa37",
+    "test_construction.py": "8bf73083e40ce155ed6a8b92dbfb31ed963ac25fc30c95d8bf7dd38b957a802d",
     "test_oracle.py": "3ba37f85de91e68539ad5ddf135d3371a2bc033eb8c70a591bd71d0c40562a06",
     "test_receipt.py": "0f2834a77b0b6d28bfd9c15afb407cd65f3e5d171d871b271ae5d0c1008352e9"
   },

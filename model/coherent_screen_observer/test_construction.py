@@ -282,3 +282,79 @@ def test_missing_fraction_slots_are_rejected_as_invalid_exact_input(field):
             c.bell_blocks(original._replace(coherence=(broken, *original.coherence[1:])))
         else:
             c.bell_blocks(_output()._replace(**{field: broken}))
+
+
+def test_complex_three_dimensional_reference_against_original_native_kraus():
+    # Unequal logical populations and complex, nonorthogonal reference vectors
+    # exercise the reference-uniform allowance beyond the normalized Choi probe.
+    edges = ((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3))
+    incident, cap, size, reference = edges[:-1], 3, 16, 3
+    vector = np.array((np.sqrt(.3/5)*np.array([1, 2j, 0]),
+                       np.sqrt(.7/2)*np.array([1j, 0, 1])))
+    logical = np.outer(vector.ravel(), vector.ravel().conj()).reshape(2, 3, 2, 3)
+    initial = np.zeros((48, 48), complex)
+    for remote in range(4):
+        state = np.zeros(48, complex)
+        for bit in (0, 1):
+            index = reference*((remote << 2) | (1 << bit))
+            state[index:index+reference] = vector[bit]
+        initial += .2**remote.bit_count()*.8**(2-remote.bit_count())*np.outer(state, state.conj())
+    phase = np.kron(np.diag([(-1)**(mask & 1) for mask in range(size)]), np.eye(reference))
+    actual, approximations, allowances = {}, {}, {}
+    for law in ('C', 'E'):
+        operations = []
+        for edge, coin in product(edges, (0, 1)):
+            groups = {}
+            for mask in range(size):
+                loads = tuple((mask >> i) & 1 for i in range(12))
+                outgoing, record = native.native(loads, edge, coin)
+                private = record[1] if law == 'C' else loads[edge[0]]-loads[edge[1]]
+                matrix = groups.setdefault(private, np.zeros((size, size), complex))
+                matrix[sum(value << i for i, value in enumerate(outgoing)), mask] = 1/np.sqrt(12)
+            mark = int(0 in edge)+2*int(1 in edge) if edge in incident else None
+            operations.extend((mark, np.kron(k, np.eye(reference))) for k in groups.values())
+
+        def stopped(state):
+            found, waiting = {m: np.zeros_like(state) for m in range(4)}, state
+            for _ in range(cap):
+                remote = np.zeros_like(state)
+                for mark, kraus in operations:
+                    image = kraus@waiting@kraus.conj().T
+                    if mark is None:
+                        remote += image
+                    else:
+                        found[mark] += image
+                waiting = remote
+            return found, waiting
+
+        first, timeout = stopped(initial)
+        terminal = {('timeout', ()): timeout}
+        for mark, state in first.items():
+            second, timeout = stopped(phase@state@phase if mark == 1 else state)
+            terminal['timeout', (mark,)] = timeout
+            terminal.update({('complete', (mark, following)): state for following, state in second.items()})
+        actual[law] = {record: np.trace(state.reshape(4, 12, 4, 12), axis1=0, axis2=2)
+                       for record, state in terminal.items()}
+        assert len(actual[law]) == 21
+        assert abs(sum(np.trace(state).real for state in actual[law].values())-1) < 1e-14
+        result = c.output(tuple(range(4)), edges, incident, rho=F(1, 5), law=law, cap=cap, bits=12)
+        approximations[law], allowances[law] = {}, float(result.arithmetic_error)
+        for record in result.records:
+            state = np.zeros((12, 12), complex)
+            for z in range(4):
+                state[3*z:3*z+3, 3*z:3*z+3] = sum(
+                    float(sum(result.diagonal_bounds[record][r][z])/2)*logical[r, :, r, :]
+                    for r in (0, 1))
+            state[3:6, 6:9] = float(result.coherences[record])*logical[0, :, 1, :]
+            state[6:9, 3:6] = float(result.coherences[record])*logical[1, :, 0, :]
+            approximations[law][record] = state
+
+    def distance(first, second):
+        return sum(np.linalg.svd(first[r]-second[r], compute_uv=False).sum()/2 for r in first)
+
+    for law in ('C', 'E'):
+        # Numerical oracle diagnostic; the producer's allowance remains exact.
+        assert distance(actual[law], approximations[law]) <= allowances[law]+1e-14
+    # Replacing C by a different complete CPTP map preserves all populations
+    # and probabilities, but its reference disturbance exceeds the allowance.
+    assert distance(actual['E'], approximations['C']) > allowances['C']+.01
