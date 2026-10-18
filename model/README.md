@@ -24,10 +24,14 @@ which claims need larger observer domains, and connects the single-carrier
 The [native occupation field](physical_space_time/OCCUPATION_FIELD.md) derives
 a Gaussian long-average field and its quadratic action from one continuing
 repair history. Incident-clock sampling has a calculable spatial correction.
-On a supplied square-torus family, the limiting Gaussian observations converge
-on every fixed Fourier band to the massless Euclidean free field. The limits
-take observation count first and spatial mesh second; the existing spherical
-screens, Lorentzian dynamics and interacting CFTs remain separate obligations.
+Its projection onto the actual carrier's rank-three band gives exact axial
+and transverse variances in the local incident clock. Eliminating internal
+variables on the existing spherical screens gives a controlled native Green
+operator. Complete endpoint records also give a forward-cone placement in
+the registered response geometry; its cone-to-ancestry converse fails.
+These source-specific results leave the physical continuum, Lorentzian
+symmetry and interacting CFT identification open. The supplied torus is a
+separate free-field comparison example.
 
 The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
 sets out correspondence tests using published observations without requiring a

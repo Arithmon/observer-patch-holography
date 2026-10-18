@@ -76,6 +76,43 @@ def test_mean_clock_conversion_misses_anisotropic_sampling_correction():
         incident['covariance'][1, 1]*attempt['covariance'][0, 0])
 
 
+def test_actual_rank_three_field_uses_the_same_gram_and_history():
+    band = f.carrier_band()
+    p, radial, tangent = band['projector'], band['radial'], band['tangent']
+    assert f._expanded_product(p, p) == p
+    assert p.trace() == 3 and set(p.diagonal()) == {sp.Rational(1, 4)}
+    assert f._expanded_product(radial, tangent) == sp.zeros(12)
+    assert radial.trace() == 1 and tangent.trace() == 2
+    assert f._expanded_product(f.field()['laplacian'], p) == ((5-sp.sqrt(5))*p).applyfunc(sp.expand)
+    assert band['attempt']['radial_variance'] == band['attempt']['tangent_variance']
+    assert sp.simplify(band['incident']['radial_variance']-(5+sp.sqrt(5))/6) == 0
+    assert sp.simplify(band['incident']['tangent_variance']-(115+19*sp.sqrt(5))/132) == 0
+    assert band['incident']['radial_variance'] != band['incident']['tangent_variance']
+
+
+@pytest.mark.parametrize('clock', ['attempt', 'incident'])
+def test_projected_lags_against_full_configuration_process(clock):
+    p = f.carrier_band()['projector']
+    _, _, _, z, _ = f.native_counts()
+    kernel = f.configuration_kernel(clock)
+    for lag in (1, 2):
+        full = f._expanded_product(p, z*(kernel**lag)*z.T/66, p)
+        predicted = f._expanded_product(p, f.field(clock)['kernel']**lag, p)*f.CHI
+        assert full == predicted.applyfunc(sp.expand)
+
+
+def test_incident_projection_needs_eliminated_modes_and_marginal_precision():
+    data = f.carrier_band()
+    p, k = data['projector'], f.field('incident')['kernel']
+    actual = f._expanded_product(p, k, k, p)
+    reduced_twice = f._expanded_product(p, k, p, k, p)
+    assert (actual-reduced_twice).applyfunc(sp.expand) == data['incident']['two_tick_closure_defect']
+    assert data['incident']['two_tick_closure_defect'][0, 0] != 0
+    assert data['attempt']['two_tick_closure_defect'] == sp.zeros(12)
+    conditioned = f._expanded_product(p, f.field('incident')['precision'], p)
+    assert conditioned != data['incident']['precision']
+
+
 def test_local_clock_tape_does_not_disclose_the_remote_field():
     control = f.incomplete_tape_control()
     assert control['identical_incident_record'] == [0, 0]

@@ -338,6 +338,19 @@ a half-nuclear error `epsilon` permits event-weight error `2*epsilon`, or
 `epsilon+abs(trace_defect)/2` when the defect is retained. Neither numerical
 bound authenticates the physical timing hypothesis.
 
+An elapsed forecast need not disclose the hidden attempt counter. The
+[latent-exposure calculation](../../model/laboratory_clock/README.md#what-the-sources-own-records-identify)
+sums its conditional distribution given the existing visible record.
+It also proves a necessary limitation of source self-readout: even arbitrary
+later quantum measurements cannot reconstruct the first hidden wait from
+this interface. At cap two the best total-attempt classification error is
+at least `6/25`, even if subsequent counts are supplied. A concrete identical
+record and final quantum state has four/five-attempt probabilities `5/8,3/8`.
+Under the synthetic calibration its conditional delivery-by-`5.5 ms`
+probability is `5/8`, with unconditional joint mass `9/1000` retained.
+This predicts an additional elapsed observation; it does not assert that
+the existing source records contain an independent physical timestamp.
+
 ## Published evidence available without operating a laboratory
 
 The following are complementary opportunities, not measurements of the

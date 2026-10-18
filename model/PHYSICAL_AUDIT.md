@@ -154,16 +154,27 @@ port's incident events produces an explicit matrix correction, rather than
 a universal scalar conversion between clocks. Exact source-state recursion
 checks finite-count moments independently of the limiting Gaussian theorem.
 
-An explicitly supplied two-dimensional periodic graph family using the
-same local repair rule provides a controlled fixed-Fourier-band massless
-Gaussian limit. Its rational covariance bounds include the incident-clock
-correction. This is an iterated limit: observation count first at each
-finite graph, then spatial refinement. A finite covariance error is not a
-uniform distributional central-limit error. The existing spherical screens
-have not supplied the corresponding Green-convergence and observation maps.
-This construction supplies a Euclidean Gaussian-field route; it does not
-establish an interacting physical CFT, a Lorentzian 3+1 spacetime or their
-identification with measured fields.
+The actual rank-three band has an isotropic attempt-count fluctuation law
+and distinct axial/transverse incident-clock variances. Its projected local
+clock transfer fails a two-tick closure test: eliminating the other modes
+requires memory. On the existing spherical screens, exact block elimination
+gives a Schur Green operator and a uniform approximation bound. The missing
+continuum step is a compatible cross-level observation map and convergence
+of that operator to the claimed target. The supplied square torus establishes
+a separate iterated fixed-band free-field example; it does not settle the
+spherical source's continuum or physical signature.
+
+The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
+Lorentz/celestial role from physical realization. A declared seam-midpoint
+readout in the native rank-three Gram, with time proportional to canonical
+endpoint-dependency height, satisfies the registered forward-cone placement
+conditions. This uses a complete attempted-seam tape and an exogenous
+schedule. The same native source gives a null-cone pair without ancestry,
+so the theorem's converse condition is substantive. Adaptive controller
+edges, local clock calibration and physical frame changes need their own
+bounds. The finite current decoder has only 73 distinct spatial images on
+78 fixed-total states; it is not the signed-control completion proved to be
+three-dimensional in the separate response domain.
 
 ## Physical completion tests
 

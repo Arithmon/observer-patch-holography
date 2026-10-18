@@ -195,3 +195,72 @@ def test_endpoint_detaches_caller_owned_fraction_slots():
     endpoint = r.ResourceEndpoint('detached', 1, 1, value, value)
     value._numerator = 77
     assert endpoint.seconds_lo == endpoint.seconds_hi == F(1, 2)
+
+
+@pytest.mark.parametrize('cap', [1, 2, 3])
+def test_first_hidden_wait_factorizes_from_every_complete_incident_output(cap):
+    control = r.first_wait_obstruction(cap)
+    assert control['supported_matrix_units_checked'] == 9
+    for reference in (False, True):
+        initial = r.oracle.preparation(reference=reference)
+        first, timeout = r._interval(initial, cap)
+        by_mark = {}
+        for count, mark, state in first:
+            normalized = {key: value/(1-r.target.P)**(count-1) for key, value in state.items() if value}
+            if mark in by_mark:
+                assert normalized == by_mark[mark]
+            by_mark[mark] = normalized
+        assert timeout == {key: value*(1-r.target.P)**cap for key, value in initial.items()}
+    if cap == 2:
+        assert control['first_wait_given_success'] == [F(5, 8), F(3, 8)]
+        assert control['total_attempt_classification_error_lower'] == F(6, 25)
+        assert control['total_attempt_squared_error_lower'] == F(3, 20)
+
+
+@pytest.mark.parametrize('gamma', [0, 1])
+def test_visible_exposure_bayes_risks_and_no_hidden_count_service(gamma):
+    result = r.visible_exposure(gamma)
+    assert not result['hidden_counter_readout_added']
+    assert result['ambiguous_record_mass'] == F(16, 25)
+    assert result['minimum_record_only_classification_error'] == F(38, 125)
+    assert result['minimum_record_only_squared_error'] > F(3, 20)
+    # Recover both the unconditional attempt distribution and its Bayes risk
+    # directly from posterior records, including the known first-timeout cost.
+    recovered = {}
+    direct_risk = F(0)
+    for row in result['posterior_rows']:
+        posterior = dict(row['attempt_posterior'])
+        assert sum(posterior.values(), F(0)) == 1
+        for count, mass in posterior.items():
+            recovered[count] = recovered.get(count, F(0))+row['mass']*mass
+        losses = {guess: 1-posterior.get(guess, F(0)) for guess in range(2, 6)}
+        direct_risk += row['mass']*min(losses.values())
+    assert recovered == {2: F(9, 25), 3: F(4, 25), 4: F(42, 125), 5: F(18, 125)}
+    assert direct_risk == result['minimum_record_only_classification_error']
+
+
+def test_equal_quantum_output_blocks_exact_attempt_inference():
+    witness = r.indistinguishable_exposure()
+    assert witness['native_attempt_masses'] == [(4, F(9, 1000)), (5, F(27, 5000))]
+    assert witness['same_terminal_occupied_ports'] == [1, 5]
+    assert not witness['terminal_quantum_measurement_can_identify_the_count']
+    # Arbitrary effects have equal response in the two normalized output
+    # states, so changing the terminal measurement cannot reveal the count.
+    record = witness['visible_record']
+    states = [state for (n, word, status, bit), state in r.counted_history().items()
+              if (word, status, bit) == record and r.oracle.trace(state)]
+    normalized = [{key: value/r.oracle.trace(state) for key, value in state.items()} for state in states]
+    assert normalized[0] == normalized[1]
+
+
+def test_deadline_forecast_marginalizes_latent_cost_without_granting_read_access(calibration):
+    record = r.indistinguishable_exposure()['visible_record']
+    prediction = r.visible_deadline(record, calibration, F(11, 2000), timestamp_error=F(1, 10**6))
+    assert prediction['record_probability'] == F(9, 625)
+    assert prediction['joint_record_and_deadline_probability_bounds'] == [F(9, 1000)]*2
+    assert prediction['deadline_given_record_probability_bounds'] == [F(5, 8)]*2
+    assert prediction['latent_costs_summed_without_counter_readout']
+    assert prediction['elapsed_clock_observation_is_additional_hypothesis']
+    assert prediction['timeouts_retained']
+    with pytest.raises(ValueError, match='positive-probability'):
+        r.visible_deadline(('not-a-record',), calibration, F(1))

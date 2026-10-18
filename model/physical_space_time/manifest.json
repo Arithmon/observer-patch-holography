@@ -1,16 +1,20 @@
 {
-  "description": "Native passage geometry and one-history occupation fluctuation fields, with exact incident-clock corrections and conditional spatial Green convergence.",
+  "description": "Native passage and causal placement, actual rank-three clock-dependent occupation fields, and controlled Green elimination on the existing source screens.",
   "files": {
-    "OCCUPATION_FIELD.md": "2c0a4001e2285234bd6a4c7dc1ec819efd76a5952f9c656c8045f406881f9fd0",
-    "README.md": "c4d030dd9f8405ae56e0ce0d123d2de0f7940a1e2915cb24425a44e7e7a52655",
+    "OCCUPATION_FIELD.md": "0be52eefd5c9ab04a0d836ea95a2f6267a8dfd57977c98920a6dc61e79c104cd",
+    "README.md": "bfea292d3bd3989173bf12f8dcfbfa67aa51fd0d3527f7522882d1b5fc9137c0",
     "__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "causal_placement.py": "840ba19d445cf74f9249a0d851162293dea011a29455277db1bc78ce26818390",
     "construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
-    "occupation_field.py": "61d8b252be706fa2a617681bc829bc28e439f5906eeed2f59e1700e960f75db5",
-    "occupation_field_results.json": "ac9b77c402025596a8297491573b900511e629521f3c06b055bc2633dab52eaa",
+    "occupation_field.py": "8bd6f7558da68a346c99d294405100cb3c0b04a8941380620e5c3397cafd127b",
+    "occupation_field_results.json": "ad97f911c45919d4d1b71ad59e007a04cf4cb4267b7694f277acae5d0ea486d6",
     "results.json": "317c3b8a6446f8a4b0b7ee2fac9fb2b199ca5b71a2f337b51853bab70ebe91c5",
+    "source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
+    "test_causal_placement.py": "98ac2616c1de02ceb8177bd4363b2d55fb2c9729faa2e17b8ee118344a005a7e",
     "test_construction.py": "4b22e287824d6780a64a5b7c1883518138813a322e7896c7caceaa008c2d6171",
-    "test_occupation_field.py": "fb8c70587fbdd78b9f01029da971f52a1a8a081d069d6c69ed88eb2b023b9589"
+    "test_occupation_field.py": "c7de1607c4d610c3f90354e62c5c15f30b48e19e7c91a33c16073c4d7d7626d8",
+    "test_source_green.py": "3c5585e77a78cc2b736e1056cfee0145b082739241b7dc2942e24c832731e45b"
   },
   "reproduce": [
     "python -m model.physical_space_time --check model/physical_space_time/results.json",

@@ -18,12 +18,15 @@ import numpy as np
 import sympy as sp
 
 from . import construction as passage
+from . import source_green
+from . import causal_placement
 from ..observer import native
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from tools import strict_json
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_PATHS = tuple(sorted(set((*passage.SOURCE_PATHS,
+SOURCE_PATHS = tuple(sorted(set((*passage.SOURCE_PATHS, *source_green.SOURCE_PATHS,
+    *causal_placement.SOURCE_PATHS,
     'model/physical_space_time/occupation_field.py',
     'model/observer/scalar_response/experiment.py', 'tools/strict_json.py',
     'model/__init__.py', 'model/common_source/__init__.py',
@@ -217,6 +220,75 @@ def incomplete_tape_control():
             'port_only_tape_determines_the_full_field': False}
 
 
+def _expanded_product(*matrices):
+    answer = matrices[0]
+    for matrix in matrices[1:]:
+        answer = (answer*matrix).applyfunc(sp.expand)
+    return sp.ImmutableMatrix(answer)
+
+
+@lru_cache(maxsize=1)
+def carrier_band():
+    """Joint spatial/clock field on the actual record-recovered rank-three band.
+
+    No coordinate frame is selected. The radial rank-one projector is
+    determined by the observed port zero and the same invariant spatial Gram.
+    """
+    laplacian = field('attempt')['laplacian']
+    checks, encoded = passage.ng._band_certificate(laplacian.tolist())
+    if not all(checks.values()):
+        raise ArithmeticError('record-recovered source band certificate failed')
+    p = sp.ImmutableMatrix([[sp.Rational(a)+sp.sqrt(5)*sp.Rational(b)
+                            for a, b in row] for row in encoded])
+    radial = _expanded_product(4*p[:, 0], p[0, :])
+    tangent = p-radial
+    eigenvalue = 5-sp.sqrt(5)
+    li = laplacian-field('incident')['remote_laplacian']
+    if _expanded_product(p, li, p) != ((3-sp.sqrt(5))*radial/2+tangent/2).applyfunc(sp.expand):
+        raise ArithmeticError('source incident-clock axial decomposition failed')
+    result = {'projector': p, 'radial': radial, 'tangent': tangent,
+              'laplacian_eigenvalue': eigenvalue}
+    for clock in ('attempt', 'incident'):
+        data = field(clock)
+        covariance = _expanded_product(p, data['covariance'], p)
+        radial_value = sp.simplify(sp.trace(covariance*radial))
+        tangent_value = sp.simplify(sp.trace(covariance*tangent)/2)
+        if covariance != (radial_value*radial+tangent_value*tangent).applyfunc(sp.expand):
+            raise ArithmeticError('projected field has an unaccounted spatial component')
+        precision = (radial/radial_value+tangent/tangent_value).applyfunc(sp.radsimp)
+        if _expanded_product(covariance, precision) != p:
+            raise ArithmeticError('projected Gaussian action is not its marginal precision')
+        k = data['kernel']
+        memory = _expanded_product(p, k, sp.eye(12)-p, k, p)
+        result[clock] = MappingProxyType({'covariance': covariance,
+            'precision': sp.ImmutableMatrix(precision),
+            'radial_variance': radial_value, 'tangent_variance': tangent_value,
+            'two_tick_closure_defect': memory})
+    if result['attempt']['two_tick_closure_defect'] != sp.zeros(12):
+        raise ArithmeticError('the native attempt band lost exact temporal closure')
+    if result['incident']['two_tick_closure_defect'] == sp.zeros(12):
+        raise ArithmeticError('the incident memory control lost discrimination')
+    return MappingProxyType(result)
+
+
+def carrier_band_receipt():
+    data = carrier_band()
+    return {'spatial_readout': 'record-recovered unit Gram 4P; P has rank three',
+        'coordinate_frame_selected': False, 'radial_direction': 'P e_0',
+        'laplacian_eigenvalue': str(data['laplacian_eigenvalue']),
+        'same_stationary_native_history_and_access_contract_as_full_field': True,
+        'clock_fields': [{
+            'clock': clock,
+            'radial_variance': str(data[clock]['radial_variance']),
+            'each_tangential_variance': str(data[clock]['tangent_variance']),
+            'marginal_action_radial_precision': str(sp.simplify(1/data[clock]['radial_variance'])),
+            'marginal_action_each_tangential_precision': str(sp.simplify(1/data[clock]['tangent_variance'])),
+            'two_tick_projected_linear_closure_defect_00': str(data[clock]['two_tick_closure_defect'][0, 0]),
+            'projected_linear_transition_closes': clock == 'attempt'}
+            for clock in ('attempt', 'incident')],
+        'three_dimensional_physical_bulk_or_Lorentzian_metric_established': False}
+
+
 def torus_edges(size):
     _integer(size, 4, 256)
     return tuple(sorted({tuple(sorted((size*x+y, size*((x+dx) % size)+(y+dy) % size)))
@@ -352,6 +424,9 @@ def run():
                 'scaled_covariance_difference_11': str(correction[1, 1]),
                 'scaled_covariance_difference_01': str(correction[0, 1])},
             'observer_access_negative_control': incomplete_tape_control(),
+            'actual_carrier_spatial_clock_field': carrier_band_receipt(),
+            'actual_source_screen_Green': source_green.run(),
+            'actual_carrier_causal_placement': causal_placement.run(),
             'finite_history_controls': [scalar_moments(clock, n) for clock, ns in
                 (('attempt', (1, 4, 16, 64)), ('incident', (1, 4, 16))) for n in ns],
             'finite_cap_control': {'requested_incident_ticks': 64,
@@ -363,6 +438,8 @@ def run():
             'declared_torus_green_convergence': [torus_diagnostic(n) for n in (8, 16, 32, 64)],
             'acceptance': {'one_history_Gaussian_field_limit_and_action_proved': True,
                 'actual_incident_clock_correction_derived': True,
+                'actual_rank_three_carrier_marginal_clock_actions_proved': True,
+                'actual_source_screen_Green_elimination_and_uniform_approximation_proved': True,
                 'conditional_graph_Green_convergence_criterion_proved': True,
                 'supplied_torus_fixed_band_iterated_limit_proved': True,
                 'uniform_finite_count_Gaussian_error_bound_proved': False,

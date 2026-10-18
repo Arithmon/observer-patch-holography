@@ -278,6 +278,51 @@ array bounds are not physical service-error certificates. Simultaneous
 coverage of calibration and timestamp bounds must also be justified before
 assigning a statistical rejection level.
 
+### What the source's own records identify
+
+Reading the hidden attempt count requires the extra counter service above;
+predicting an elapsed observation can instead **sum over that latent count**.
+The existing visible word, status and detector bit do not determine it.
+`visible_exposure` computes their exact conditional attempt distributions,
+with no new read access. At cap two, ambiguous records have mass `16/25`.
+The smallest classification error using only those records is `38/125`,
+at either coherent setting. This is an inference risk derived from the
+source law, not an error allowance fitted to observations.
+
+The limitation also survives arbitrary later quantum readout. The initial
+state is supported on the three total-two configurations inside the union.
+Every hidden remote map acts on this subspace as `(3/5)` times the identity
+channel; all nine matrix units are checked. Thus the first successful wait
+`G` has conditional law `(5/8,3/8)` on one or two attempts, independent of
+its complete incident output and all later operations that do not read `G`.
+This identity extends to an arbitrary untouched reference. Even granting
+the exact subsequent repair count and arbitrary terminal measurements leaves
+total-count classification error at least `6/25`, and mean squared error
+at least `3/20` attempts squared, including the first-timeout trials.
+The proof multiplies the first-success probability `16/25` by the optimal
+error or variance of that unresolved two-point distribution. Full remote
+tapes or external elapsed timestamps change the access contract and are
+excluded from this obstruction.
+Incident ticks can themselves serve as an observer clock; this result limits
+reconstruction of a different, hidden attempt parameter. It requires no
+preferred universal physical clock.
+
+An explicit witness has a first scheduled mark with clock increments `(0,1)`
+and zero field changes, followed by feedback increments `(1,1)` and changes
+`(-1,0,1)`, then second-wait timeout and detector one. Four native attempts
+give mass `9/1000`; five give `27/5000`. Both coherent settings leave exactly
+the same normalized final state, with occupied ports one and five. No final
+quantum measurement distinguishes these two possibilities.
+
+Under the same synthetic duration calibration, this visible record has
+probability `9/625`, and its joint probability with delivery by `5.5 ms`
+is `9/1000`, including `1 us` elapsed-reading error. The conditional
+deadline probability is therefore `5/8`. `visible_deadline` obtains this by
+summing latent costs and retains the unconditional selection mass and all
+complementary outcomes. It adds no hidden counter to the observer. The
+external duration model and calibration inputs are hypotheses; this is not
+an executed independent clock measurement or an atomic-clock identification.
+
 ## What the actual retained measurements establish
 
 The replay checks both original host executions: each has 264,532 native

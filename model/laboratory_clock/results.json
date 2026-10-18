@@ -1276,6 +1276,144 @@
       "25700499/6250000000"
     ],
     "joint_resource_clock_detector_setting_response_tv": "1848/15625",
+    "latent_exposure": {
+      "conditional_timed_prediction": {
+        "deadline_given_record_probability_bounds": [
+          "5/8",
+          "5/8"
+        ],
+        "elapsed_clock_observation_is_additional_hypothesis": true,
+        "joint_record_and_deadline_probability_bounds": [
+          "9/1000",
+          "9/1000"
+        ],
+        "latent_costs_summed_without_counter_readout": true,
+        "record_probability": "9/625",
+        "timeouts_retained": true,
+        "visible_record": [
+          [
+            [
+              "scheduled",
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            [
+              "feedback",
+              [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0,
+                  1
+                ]
+              ]
+            ]
+          ],
+          "timeout_second",
+          1
+        ]
+      },
+      "first_wait_obstruction": {
+        "bound_even_if_subsequent_attempt_count_is_disclosed": true,
+        "cap": 2,
+        "first_success_probability": "16/25",
+        "first_wait_given_success": [
+          "5/8",
+          "3/8"
+        ],
+        "later_count_blind_quantum_readouts_are_independent_of_first_wait_given_success": true,
+        "remote_tapes_and_external_timestamps_are_excluded_from_this_readout": true,
+        "supported_matrix_units_checked": 9,
+        "total_attempt_classification_error_lower": "6/25",
+        "total_attempt_squared_error_lower": "3/20"
+      },
+      "indistinguishable_quantum_outputs": {
+        "both_coherent_settings_checked": true,
+        "native_attempt_masses": [
+          [
+            4,
+            "9/1000"
+          ],
+          [
+            5,
+            "27/5000"
+          ]
+        ],
+        "same_terminal_occupied_ports": [
+          1,
+          5
+        ],
+        "terminal_quantum_measurement_can_identify_the_count": false,
+        "visible_record": [
+          [
+            [
+              "scheduled",
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            [
+              "feedback",
+              [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0,
+                  1
+                ]
+              ]
+            ]
+          ],
+          "timeout_second",
+          1
+        ]
+      },
+      "visible_record_inference": [
+        {
+          "ambiguous_record_mass": "16/25",
+          "cap": 2,
+          "complete_ordered_posterior_sha256": "71048edc11353f51695d6174c14890c3288e94f6966d6e64362a1776a42ec027",
+          "gamma": 0,
+          "hidden_counter_readout_added": false,
+          "minimum_record_only_classification_error": "38/125",
+          "minimum_record_only_squared_error": "86377316069233809828966993379882/351128516169340931854386039273375",
+          "positive_visible_records": 243
+        },
+        {
+          "ambiguous_record_mass": "16/25",
+          "cap": 2,
+          "complete_ordered_posterior_sha256": "86c41fb62c750cbd6cab1b5ebe77d9bf059fdb8726bf5bd9ac267aae57787163",
+          "gamma": 1,
+          "hidden_counter_readout_added": false,
+          "minimum_record_only_classification_error": "38/125",
+          "minimum_record_only_squared_error": "86377316069233809828966993379882/351128516169340931854386039273375",
+          "positive_visible_records": 243
+        }
+      ]
+    },
     "mean_native_attempts_including_feedback": "408/125",
     "mean_replacement_negative_control": {
       "exact_cadence_deadline": {
@@ -1807,7 +1945,7 @@
     "model/laboratory_clock/attachment.py": "fd2391d68e74f5a09c446d7ae20fc7591684a12bb0d66cbd93f4b0832bdd902a",
     "model/laboratory_clock/endpoints_example.json": "aa33932e6482247c2e3a272d98323889a2f84403c58148914f25e751c4098f65",
     "model/laboratory_clock/experiment.py": "b59d2cc34ca893ff5a5311e711b107b99bf6e6482b1acb0b69dfe66ab1f443ff",
-    "model/laboratory_clock/resource_clock.py": "d4776e7ac5ad61a78982da67426410b97b38fefed14a7589fc89c89d831c2cee",
+    "model/laboratory_clock/resource_clock.py": "7f21277fab431e9782c2cf98bd08b4a9cd447c1fce9453f211271ded49e09a91",
     "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
     "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",

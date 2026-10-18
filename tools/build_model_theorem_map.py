@@ -440,96 +440,65 @@ def inventory(data: dict, premise_register: dict, claim_registry: dict,
 
 
 def render_contracts(data: dict, counts: dict) -> list[str]:
+    """Render a compact view; retain exhaustive inventories in the checked JSON."""
     coverage = data["contract_coverage"]
     bindings = coverage["bindings"]
     rows = counts["contract_rows"]
-    by_claim = {row["claim_id"]: [b for b in bindings if row["claim_id"] in b["claims"]]
-                for row in rows}
+    bound_claims = {cid for binding in bindings for cid in binding["claims"]}
+    lean_evidence = {path for row in rows for path in row.get("evidence", [])
+                     if path in counts["lean_inventory"]}
     lines = ["", '<a id="finite-contract-coverage"></a>', "",
              "## Finite-contract coverage and compatible model connections", "",
-             "This inventory covers every canonical claim, including non-theorem rows, and",
-             "every tracked Lean source module. This is a deliberate superset of the finite",
-             "contracts; a lexical declaration count does not decide finiteness or proof validity.",
-             "A registry addition or source module addition requires an explicit inventory update.",
-             "The existing Lean builds remain responsible for kernel checks.", "",
-             "A restricted binding below records the named model clause and its source argument.",
-             "It does not instantiate the entire registry row. All that row's assumptions and",
-             "imports remain attached, including inputs outside the restricted clause. Claim",
-             "classifications and consumed/open/boundary roles are preserved without conversion.",
-             "A row with no binding has an open model mapping: realization of its own hypotheses",
-             "and conclusion on this common observer process is not established here. A theorem",
-             "on a different supplied fixture remains a valid theorem on that fixture.", "",
-             "The checker requires exact produced/consumed fact names, a noncircular connection",
-             "graph, and an explicit sourced map for every changed carrier, law, preparation,",
-             "record access, control, clock or regime coordinate. These are machine-checked",
-             "contract and coverage constraints. The source arguments, their mathematical",
-             "entailment and physical relevance require separate review; strings and source",
+             "The complete machine inventory is the `model_supply.contract_coverage` section",
+             "of the [premise register](../tracking/premise_register.json). It retains every",
+             "canonical claim ID and tracked Lean module, all seven domain coordinates, every",
+             "binding's canonical assumptions/imports and every sourced connection map. The",
+             "[claim registry](../claims/claim_registry.yaml) owns statements, evidence and",
+             "premise roles; the [Lean sources](../Lean/) retain their quantified hypotheses.", "",
+             "Coverage includes non-theorem claims and is a superset of finite contracts.",
+             "Lexical declaration counts decide neither finiteness nor proof validity; Lean",
+             "builds remain responsible for kernel checks. Registry or source-module additions",
+             "require explicit inventory updates. All unbound claims have the same status:",
+             "**Open: no same-model instantiation recorded**. This does not invalidate a",
+             "theorem on its own fixture or add a physical premise to an explicit non-consumer.", "",
+             "Each binding is a restricted clause, not discharge of its whole registry row.",
+             "The JSON retains that row's complete assumption/import union, including inputs",
+             "outside the clause. The checker requires exact produced/consumed facts, acyclic",
+             "connections and a sourced map for every changed carrier, law, preparation,",
+             "record access, control, clock or regime coordinate. These are coverage and",
+             "contract checks: mathematical entailment requires review; strings and source",
              "anchors are not proofs. No entry silently discharges a canonical premise.", "",
-             f"Coverage: **{len(rows)} claims**, **{len(counts['lean_inventory'])} Lean source modules**,",
-             f"**{sum(counts['lean_inventory'].values())} public theorem/lemma declarations**;",
-             f"**{len(bindings)} restricted model bindings** and **{len(coverage['connections'])} explicit connections**.", "",
-             "### Named model domains", ""]
-    for name, domain in coverage["domains"].items():
-        lines += [f"**{name}.** " + "; ".join(f"{field}: {domain[field]}" for field in DOMAIN_FACETS) + ".", ""]
+             "| Coverage | Count |", "| --- | ---: |",
+             f"| Canonical claims retained | {len(rows)} |",
+             f"| Claims with restricted bindings | {len(bound_claims)} |",
+             f"| Claims with open common-model mapping | {len(rows)-len(bound_claims)} |",
+             f"| Tracked Lean source modules retained | {len(counts['lean_inventory'])} |",
+             f"| Lean modules referenced by canonical evidence | {len(lean_evidence)} |",
+             f"| Public theorem/lemma declarations | {sum(counts['lean_inventory'].values())} |",
+             f"| Restricted bindings / sourced connections | {len(bindings)} / {len(coverage['connections'])} |", "",
+             "### Restricted model bindings", "",
+             "The domain key resolves to the full seven-coordinate contract in the machine",
+             "inventory. The linked sources give each argument; the boundary column retains",
+             "its principal restrictions. Full assumption names and source anchors are not",
+             "duplicated here.", "",
+             "| Binding and domain | Established clause | Boundary | Sources |",
+             "| --- | --- | --- | --- |"]
     for binding in bindings:
-        lines += [f"### {binding['id']}", "", f"Domain: **{binding['domain']}**. {binding['scope']}", "",
-                  "Established restricted facts: " + "; ".join(_code(x) for x in binding["establishes"]) + ".", "",
-                  "Required connected facts: " + ("; ".join(_code(x) for x in binding["requires"]) or "None") + ".", "",
-                  "Canonical claims: " + ", ".join(_code(x) for x in binding["claims"]) + ".", "",
-                  "Retained ordinary assumptions: " + ", ".join(_code(x) for x in binding["assumptions"]) + ".", "",
-                  "Retained imported results: " + ", ".join(_code(x) for x in binding["imports"]) + ".", "",
-                  "Boundary: " + binding["limitations"], "", "Exact source anchors:", ""]
-        if binding["additional_assumptions"]:
-            lines[-2:-2] = ["Separate retained assumption fields: " + "; ".join(
-                _code(field) + ": " + ", ".join(_code(x) for x in values)
-                for field, values in binding["additional_assumptions"].items()) + ".", ""]
-        lines.extend(f"- [{s['path']}](../{quote(s['path'], safe='/')}); {_code(s['anchor'])}."
-                     for s in binding["sources"])
-        lines.append("")
+        sources = "; ".join(f"[{Path(s['path']).name}](../{quote(s['path'], safe='/')})"
+                            for s in binding["sources"])
+        lines.append("| " + " | ".join(map(_cell, [
+            f"{binding['id']} (`{binding['domain']}`)", binding["scope"],
+            binding["limitations"], sources])) + " |")
     if coverage["connections"]:
-        lines += ["### Sourced domain connections", ""]
+        lines += ["", "### Sourced domain connections", "",
+                  "Every listed changed coordinate has an explicit argument and source anchor",
+                  "in the machine inventory. Omitted coordinates must agree exactly.", "",
+                  "| Producer → consumer | Required fact | Changed coordinates |",
+                  "| --- | --- | --- |"]
     for connection in coverage["connections"]:
-        lines += [f"**{connection['from']} → {connection['to']}** consumes {_code(connection['fact'])}.", ""]
-        if connection["coordinate_maps"]:
-            lines.extend(f"- {field}: {mapping}" for field, mapping in connection["coordinate_maps"].items())
-        else:
-            lines.append("All seven declared domain coordinates agree.")
-        lines += ["", "Source: " + "; ".join(
-            f"[{s['path']}](../{quote(s['path'], safe='/')}) at {_code(s['anchor'])}"
-            for s in connection["sources"]) + ".", ""]
-    lines += ["### Every canonical contract", "",
-              "A/I count ordinary assumption/import names, not independent or unproved premises.",
-              "Each identifier points to its owning evidence; the complete names and statements",
-              "remain in the [canonical registry](../claims/claim_registry.yaml). An open mapping",
-              "does not add an antecedent to an explicit non-consumer theorem.", "",
-              "| Canonical claim | Restricted model mapping | A / I | Original premise roles |",
-              "| --- | --- | ---: | --- |"]
-    for row in rows:
-        cid = row["claim_id"]
-        evidence = row.get("evidence", [])
-        target = evidence[0] if evidence else "claims/claim_registry.yaml"
-        mapping = ", ".join(b["id"] for b in by_claim[cid]) or "Open: no same-model instantiation recorded"
-        roles = "; ".join(role + ": " + ", ".join(row["premise_dependencies"][role])
-                          for role in ROLES if row["premise_dependencies"][role])
-        if not roles:
-            roles = row["premise_dependencies"].get("classification", "No canonical-ID edges")
-        lines.append(f"| [{cid}](../{quote(target, safe='/#')}) | {_cell(mapping)} | {len(row['assumptions'])} / {len(row['imported_results'])} | {_cell(roles)} |")
-    lean_claims: dict[str, list[str]] = {}
-    for row in rows:
-        for evidence in row.get("evidence", []):
-            if evidence.startswith("Lean/") and evidence.endswith(".lean"):
-                lean_claims.setdefault(evidence, []).append(row["claim_id"])
-    lines += ["", "### Every Lean source module", "",
-              "The declaration count uses the existing theorem-count gate's public declaration",
-              "grammar with comments removed. Evidence membership is file-level navigation,",
-              "not an assertion that a registry claim consumes every declaration in that file.",
-              "Modules without a registry evidence edge remain visible. Every declaration in",
-              "a module retains its original quantified hypotheses and proof in the linked source.", "",
-              "| Lean source | Public theorem/lemma declarations | Registered evidence users |",
-              "| --- | ---: | --- |"]
-    for path, number in counts["lean_inventory"].items():
-        users = ", ".join(lean_claims.get(path, [])) or "No claim evidence edge; model mapping open"
-        lines.append(f"| [{path}](../{quote(path, safe='/')}) | {number} | {_cell(users)} |")
+        lines.append("| " + " | ".join(map(_cell, [
+            f"{connection['from']} → {connection['to']}", connection["fact"],
+            ", ".join(connection["coordinate_maps"]) or "None"])) + " |")
     return lines
 
 

@@ -97,8 +97,8 @@ def test_nominal_witness_uses_radius_not_diameter_and_improves_worst_branch(monk
 
 
 def test_raw_non_tp_event_bound_cannot_be_halved_or_capped_at_one(monkeypatch):
-    eps = F(1, 10**12)
-    monkeypatch.setattr(receipt, 'bound', lambda **kwargs: eps)
+    eps = receipt.ERROR
+    monkeypatch.setattr(receipt, 'bound', lambda **kwargs: eps/10)
     bounds = bridge.complete_bound(F(1))
     assert bounds['raw_to_calibrated_ideal_half_trace_upper'] == 1+eps
     assert bounds['raw_event_weight_error_upper'] == 1+2*eps
@@ -106,6 +106,19 @@ def test_raw_non_tp_event_bound_cannot_be_halved_or_capped_at_one(monkeypatch):
     bounds = bridge.complete_bound(F(0))
     assert bounds['raw_event_weight_error_upper'] == 2*eps
     assert bounds['raw_compilation_half_trace_upper'] == eps
+
+
+def test_portable_envelope_still_recertifies_actual_emitted_arrays(monkeypatch):
+    calls = []
+    def certify(**kwargs):
+        calls.append(kwargs)
+        return receipt.ERROR/3
+    monkeypatch.setattr(receipt, 'bound', certify)
+    assert bridge.complete_bound(F(0))['raw_compilation_half_trace_upper'] == receipt.ERROR
+    assert calls == [{'cap': 2, 'gamma': 1, 'reference': False}]
+    monkeypatch.setattr(receipt, 'bound', lambda **kwargs: 2*receipt.ERROR)
+    with pytest.raises(ArithmeticError, match='envelope'):
+        bridge.complete_bound(F(0))
 
 
 def test_conditional_forecasts_charge_rare_selection():

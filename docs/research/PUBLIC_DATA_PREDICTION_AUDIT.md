@@ -142,6 +142,10 @@ coherent settings. It preserves the complete stopping distribution and
 proves that calibration workloads with fixed pulse-to-repair ratio cannot
 identify the two operation durations separately. Its additional attempt
 counter is a declared controller readout, and its timestamps are synthetic.
+An elapsed forecast can instead sum over latent costs without disclosing
+that counter. Equal-record, equal-quantum-state source histories prove that
+the original readout cannot reconstruct every hidden attempt count; the
+duration hypothesis is not supplied by that inference procedure.
 The [protocol](NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md#a-joint-timed-coherent-prediction-with-charged-operations)
 states the exact conditional forecast and the physical correspondence needed
 to use it. It changes no frozen prediction or empirical verdict.

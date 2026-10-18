@@ -9,11 +9,14 @@ these acceptance fields to false even when every mathematical check passes.
 
 The [occupation-field extension](OCCUPATION_FIELD.md) derives a spatial
 Gaussian fluctuation action from long averages of one continuing native
-history. It computes the correction caused by a port's incident clock and
-gives a quantitative Green-convergence criterion. A supplied periodic square
-graph control meets that criterion on every fixed Fourier band after the
-observation-count limit. The existing spherical source screens have not
-met it; the control does not establish physical or Lorentzian spacetime.
+history. On the actual rank-three carrier Gram it derives exact axial and
+transverse clock-dependent variances and a marginal field action. On the
+existing joined source screens it eliminates internal carrier variables to
+obtain a native Green operator, with a level-independent relative error bound
+`1/(2^(p+1)-1)` for its order-`p` approximation. The associated continuum
+criterion requires spatial observations, scales and convergence beyond these
+finite results. A supplied periodic square graph is a separate comparison
+control; it does not identify the actual source's physical spacetime.
 
 This packet makes a concrete connection between geometry, propagation and a
 local clock instead of identifying their parameters by name. It also shows

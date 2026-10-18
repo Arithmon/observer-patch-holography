@@ -8,6 +8,8 @@ from collections import defaultdict
 from dataclasses import dataclass
 from fractions import Fraction as F
 from functools import lru_cache
+import hashlib
+import json
 
 from ..quantum_observer_correspondence import clock_response as oracle
 from ..quantum_observer_correspondence import construction as target
@@ -260,6 +262,120 @@ def deadline(law, points, seconds, *, timestamp_error=F(0), detector=None):
             'timeouts_retained': True, 'raw_compiler_weights_normalized': False}
 
 
+def first_wait_obstruction(cap=2):
+    """Count-blind source readout cannot reveal the first hidden wait.
+
+    Check the complete remote map on every matrix unit in the total-two
+    union-supported subspace. Linearity gives the identity with any reference.
+    This is a statement about the declared clock interface, which omits remote
+    records and elapsed timestamps; disclosed remote tapes are a different
+    interface. No coherent phase or physical time parameter is inferred.
+    """
+    if type(cap) is not int or not 1 <= cap <= 3:
+        raise ValueError('cap one through three required')
+    support = tuple(i for i, state in enumerate(oracle.STATES)
+                    if all(not value or port in target.UNION for port, value in enumerate(state)))
+    p = target.P
+    for i in support:
+        for j in support:
+            unit = {(i, j, 0, 0): F(1)}
+            if oracle.native_step(unit)[None] != {(i, j, 0, 0): 1-p}:
+                raise ArithmeticError('a hidden remote attempt ceased to act as scalar identity')
+    q = 1-(1-p)**cap
+    posterior = tuple(p*(1-p)**(k-1)/q for k in range(1, cap+1))
+    mean = sum((k*mass for k, mass in enumerate(posterior, 1)), F(0))
+    variance = sum((mass*(k-mean)**2 for k, mass in enumerate(posterior, 1)), F(0))
+    return {'cap': cap, 'supported_matrix_units_checked': len(support)**2,
+            'first_success_probability': q,
+            'first_wait_given_success': list(posterior),
+            'later_count_blind_quantum_readouts_are_independent_of_first_wait_given_success': True,
+            'total_attempt_classification_error_lower': q*(1-max(posterior)),
+            'total_attempt_squared_error_lower': q*variance,
+            'bound_even_if_subsequent_attempt_count_is_disclosed': True,
+            'remote_tapes_and_external_timestamps_are_excluded_from_this_readout': True}
+
+
+def visible_exposure(gamma=0, cap=2):
+    """Exact latent attempt posterior given the existing classical output.
+
+    The output word/status/detector does not acquire a new counter record.
+    These Bayes risks concern only this classical output; a separate witness
+    checks identical quantum outputs at different counts.
+    """
+    groups = defaultdict(dict)
+    for (count, word, status, bit), state in counted_history(gamma, cap).items():
+        mass = oracle.trace(state)
+        if mass:
+            groups[word, status, bit][count] = mass
+    rows, error, squared, ambiguous = [], F(0), F(0), F(0)
+    for record, counts in sorted(groups.items()):
+        mass = sum(counts.values(), F(0))
+        posterior = {count: weight/mass for count, weight in counts.items()}
+        mean = sum((count*weight for count, weight in posterior.items()), F(0))
+        variance = sum((weight*(count-mean)**2 for count, weight in posterior.items()), F(0))
+        error += mass-max(counts.values())
+        squared += mass*variance
+        if len(counts) > 1:
+            ambiguous += mass
+        rows.append({'record': record, 'mass': mass,
+                     'attempt_posterior': sorted(posterior.items()),
+                     'posterior_mean': mean, 'posterior_variance': variance})
+    payload = json.dumps(serial(rows), sort_keys=True, separators=(',', ':')).encode()
+    return {'gamma': gamma, 'cap': cap, 'positive_visible_records': len(rows),
+            'ambiguous_record_mass': ambiguous,
+            'minimum_record_only_classification_error': error,
+            'minimum_record_only_squared_error': squared,
+            'complete_ordered_posterior_sha256': hashlib.sha256(payload).hexdigest(),
+            'posterior_rows': rows, 'hidden_counter_readout_added': False}
+
+
+def visible_deadline(record, points, seconds, *, gamma=0, cap=2, timestamp_error=F(0)):
+    """Predict an existing visible record AND elapsed deadline by summing costs.
+
+    Native costs remain latent. The elapsed-duration law is an extra physical
+    hypothesis, not an already executed internal clock read. Every unselected
+    outcome is retained under the complementary Boolean event label.
+    """
+    costs = compiled.costs(cap=cap)
+    law, selected = defaultdict(F), F(0)
+    for (n, word, status, bit), state in counted_history(gamma, cap).items():
+        mass = oracle.trace(state)
+        event = int((word, status, bit) == record)
+        selected += event*mass
+        pulses = costs['preparation_pulses']+costs['terminal_pointer_pulses']
+        if status != 'timeout_first':
+            pulses += costs['conditional_intervention_pulses']
+        ticks = tuple(sum(mark[0][i] for _, mark in word) for i in (0, 1))
+        law[n, pulses, status, *ticks, event] += mass
+    if not selected:
+        raise ValueError('a positive-probability existing visible record is required')
+    result = deadline(dict(law), points, seconds, timestamp_error=timestamp_error, detector=1)
+    lower, upper = result['event_probability_bounds']
+    return {'visible_record': record, 'record_probability': selected,
+            'joint_record_and_deadline_probability_bounds': [lower, upper],
+            'deadline_given_record_probability_bounds': [lower/selected, upper/selected],
+            'latent_costs_summed_without_counter_readout': True,
+            'elapsed_clock_observation_is_additional_hypothesis': True,
+            'timeouts_retained': result['timeouts_retained']}
+
+
+def indistinguishable_exposure():
+    """Two source histories have the same record AND normalized quantum state."""
+    record = ((('scheduled', ((0, 1), (0, 0, 0))),
+               ('feedback', ((1, 1), (-1, 0, 1)))), 'timeout_second', 1)
+    index = oracle.INDEX[tuple(int(port in (1, 5)) for port in range(12))]
+    expected = {4: F(9, 1000), 5: F(27, 5000)}
+    for gamma in (0, 1):
+        states = {n: state for (n, word, status, bit), state in counted_history(gamma).items()
+                  if (word, status, bit) == record and oracle.trace(state)}
+        if states != {n: {(index, index, 0, 0): mass} for n, mass in expected.items()}:
+            raise ArithmeticError('the equal-quantum-state exposure witness changed')
+    return {'visible_record': record, 'native_attempt_masses': sorted(expected.items()),
+            'same_terminal_occupied_ports': [1, 5],
+            'both_coherent_settings_checked': True,
+            'terminal_quantum_measurement_can_identify_the_count': False}
+
+
 def run():
     """Source-derived resource law and explicitly synthetic timing controls."""
     point = ResourceEndpoint
@@ -293,6 +409,8 @@ def run():
     exact = (point('e0', 0, 0, F(0), F(0)), point('e1', 100, 0, F(1, 10), F(1, 10)),
              point('e2', 100, 100, F(51, 500), F(51, 500)))
     response = oracle.total_variation(laws[0], laws[1])
+    latent = [visible_exposure(gamma) for gamma in (0, 1)]
+    witness = indistinguishable_exposure()
     return serial({'schema': 'oph.two_resource_clock.v1',
         'timing_hypothesis': 't=b+tau_native*N+tau_pulse*P; counts include every declared operation',
         'source_duration_selected': False, 'data_kind': 'synthetic_fixture',
@@ -312,6 +430,13 @@ def run():
         'expected_mean_duration_seconds_bounds': actual_mean,
         'independent_marginal_box_mean_duration_seconds_bounds': independent_box,
         'joint_resource_clock_detector_setting_response_tv': response,
+        'latent_exposure': {
+            'first_wait_obstruction': first_wait_obstruction(),
+            'visible_record_inference': [{key: value for key, value in row.items()
+                                         if key != 'posterior_rows'} for row in latent],
+            'indistinguishable_quantum_outputs': witness,
+            'conditional_timed_prediction': visible_deadline(witness['visible_record'],
+                calibration_points, F(11, 2000), timestamp_error=F(1, 10**6))},
         'calibrated_deadline_predictions': [deadline(law, calibration_points, F(9, 2000),
              timestamp_error=F(1, 10**6), detector=bit)
              for law in laws for bit in (None, 1)],

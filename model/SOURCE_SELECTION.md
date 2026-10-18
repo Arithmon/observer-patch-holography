@@ -28,7 +28,7 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [One-history occupation field](physical_space_time/OCCUPATION_FIELD.md) | The fixed native process determines a Gaussian fluctuation covariance and action precision, with an exact incident-clock correction. | Full vector readback needs the initial occupations and complete seam/current tape. A separate supplied torus has an iterated time-then-mesh limit; the source screens and Lorentzian propagation need their own attachments. |
+| [Native spatial fluctuation field](physical_space_time/OCCUPATION_FIELD.md) | The actual rank-three readout has exact clock-dependent covariance and marginal action. Eliminating internal variables on the actual source screens gives a [Schur Green operator](physical_space_time/source_green.py) with uniform comparison and approximation bounds. | Initial occupations and full seam/current readback are supplied. These are finite field/Green results; a physical radial coordinate, target-manifold Green convergence and Lorentzian dynamics require their own attachments. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Paired event/timestamp bounds determine a frozen rate/offset set and a joint held-out test. | Supply independently justified physical event records and clock errors. Software timings and assigned timestamps do not provide them. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
@@ -67,9 +67,9 @@ histories are not executed. This attaches an
 operationally identified law to joint field, detector and clock predictions;
 it does not identify the apparatus or its readings with physical spacetime.
 
-The [complete contract inventory](PREMISES.md#finite-contract-coverage) lists
-every canonical claim and tracked Lean source module, including contracts
-without an established model mapping. Its restricted connections name the
+The [contract coverage summary](PREMISES.md#finite-contract-coverage) links the
+complete machine inventory of every canonical claim and tracked Lean module,
+including contracts without an established model mapping. Its restricted connections name the
 carrier, law, preparation, record access, controls, clock and regime. A
 different coordinate requires an explicit sourced map. These checks prevent
 silent changes of model or forgotten inputs; they do not prove the source
@@ -86,6 +86,71 @@ two-site and common-source histories are substantive completed finite
 protocols; they neither execute that original word nor establish physical
 completion. Their theorem hypotheses and error budgets remain separately
 scoped in [RE-10](PREMISES.md#re-10).
+
+## What the rank-three response and its sphere establish
+
+The record-recovered slow Gram agrees in all 144 entries with the registered
+[Lean port metric](../Lean/Screen/PortFrameGram.lean), under the checked
+[source relabel](common_source/slow_geometry.py). This is an actual theorem
+connection. The [quotient and completion theorem](../Lean/Screen/PrimitivePortFrameQuotient.lean)
+proves that the signed six-axis integer control module, equipped with the
+response-Gram metric, has a dense image and a Euclidean three-dimensional
+completion. Its unit directions form a two-sphere. Taking the cone over
+that sphere constructs a three-ball; allowing unbounded radius gives a
+three-dimensional Euclidean carrier. Those conclusions are conditional on
+the admitted radial/control domain and response topology. They need no
+federation, physical units or Lorentzian interpretation.
+
+The sphere also supplies a precise route to Lorentz geometry. For the round
+conformal two-sphere, orientation-preserving conformal automorphisms form
+`PSL(2,C)`, isomorphic to `SO⁺(1,3)`; its points label future-null directions
+in the celestial construction. [Oblak's derivation](https://arxiv.org/abs/1508.00920)
+makes the correspondence explicit. This correspondence requires conformal structure in addition to
+sphere topology. The twelve-port model has finite icosahedral symmetry;
+extending its observation and repair laws to this continuous action is a
+separate dynamical obligation. A chosen spherical architecture supports
+these geometric constructions without proving Lorentz invariance of its
+native histories, a radial field law or physical spacetime.
+
+The continuing native load process supplies a more restrictive readout.
+For unit port directions `u_p`, continuity makes the decoded sum of currents
+exactly `sum_p (n_p(T)-n_p(0))*u_p`. At total two its endpoint ranges over at
+most 78 configurations, or 66 in the binary sector; the centroid remains
+inside the convex hull of the twelve directions. Repeating native repair
+does not turn that decoder into the dense unbounded control module. This
+leaves room for other source observables and growing constructions; their
+readout and dynamics must be attached explicitly. The all-mode response
+metric has rank eleven, and a doubled-seam scheduler has a rank-two slowest
+band, so selecting one spatial readout is load-bearing.
+
+The [ambient spacetime theorem](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean)
+adjoins an independent real axis and defines `t*t'-G(x,x')`; dimension four
+and signature `(1,3)` follow. The executable
+[midpoint placement](physical_space_time/causal_placement.py) checks a concrete
+forward-cone argument: shared-endpoint seam midpoints differ in squared
+norm by at most `c²=(1+1/sqrt(5))/2`. Endpoint last-use dependency height rises
+on every parent edge, so time `c*height` places every ancestor in the future
+cone. Its four-event native countercontrol has a null-cone pair without
+ancestry. Thus this placement does not give two-way causal faithfulness.
+
+The exact reusable Lean theorem is
+`OPH.SourceDerivedSpacetime.RankSpatialCausalPlacement.generatedBeforeEq_sourceCausalLE`.
+The Python check supplies the geometric argument on a structural endpoint
+DAG; it emits no Lean instance of the authenticated `SemanticEventLog`.
+That interface separately checks written registers, value/version continuity
+and declared causal support. The executable requires a complete attempted-seam
+tape, including remote and zero-current events, and an exogenous schedule.
+Adaptive controller or preparation dependencies require additional edges.
+Midpoint position and dimensionless dependency height are declared readouts,
+not selected physical rods and clocks.
+
+To identify three physical spatial dimensions in a bounded effective regime,
+attach radial and angular records to a common metric and dynamical law with
+controlled errors, then establish their physical observation dictionary.
+A global continuum claim additionally needs the refinement, volume and
+topology clauses of PR-16/PR-52. Their statuses are unchanged. Constructing a
+topological bulk from a screen and identifying it with physical propagation
+are distinct obligations.
 
 ## What each primitive must specify
 

@@ -296,6 +296,8 @@ The raw comparison bounds the executed nominal-C compiler against an
 alternative calibrated ideal history, by the triangle through ideal C.
 It does not execute the raw compiler with the alternative repair law.
 Its independently certified compiled-array discrepancy is added separately.
+Each replay recertifies its emitted arrays against the retained `1e-11`
+envelope; platform-dependent exact residuals are not portable constants.
 Raw maps need not preserve trace exactly: a half trace-norm
 error `epsilon` allows event-weight error `2*epsilon`. Neither a probability
 normalization nor a cap of one is applied to this raw-map error. Conditioning

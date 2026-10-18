@@ -6506,6 +6506,24 @@
           "controls": "ideal union operations with source pulse invocation costs; an additional controller-count record service is admitted",
           "clock": "native attempt count and source pulse count; a separate common affine duration/offset hypothesis may attach timestamps",
           "regime": "finite cap-two ideal history with all timeouts; calibration and disjoint held-out timestamp intervals"
+        },
+        "response_metric_completion": {
+          "carrier": "twelve source ports and the signed integer six-axis control module, completed in its response-Gram metric",
+          "law": "uniform all-seam scalar mean response used to select the slow spectral projector; nonlinear native repair retained separately",
+          "preparation": "complete equally weighted centered calibration census; cumulative signed controls are a separate admitted domain",
+          "records": "disclosed seam/current calibration records and signed control coordinates; operational position uses the response metric",
+          "controls": "declared source-port adapter and its exact source-to-Lean relabel; no arbitrary physical position intervention",
+          "clock": "uniform repair-attempt index for response convergence; no duration needed for the metric completion",
+          "regime": "finite native Gram equality, real quotient and abstract dense-module completion; no cofinal physical gluing or autonomous bulk dynamics"
+        },
+        "native_endpoint_midpoint_placement": {
+          "carrier": "finite native repair events placed at the thirty seam midpoints in the registered rank-three Gram carrier with an added real time coordinate",
+          "law": "native endpoint updates under a predeclared exogenous seam schedule; latest endpoint-use DAG, not a proved complete physical influence relation",
+          "preparation": "arbitrary input for structural bounds; binary total-two input and all sixteen coin branches for the four-event countercontrol",
+          "records": "complete ordered seam tape including remote and zero-current events; local incident records alone are insufficient",
+          "controls": "declared seam-midpoint readout and derived sharp edge coefficient; adaptive controller/preparation dependencies require separate edges",
+          "clock": "canonical latest-endpoint DAG height times sqrt((1+1/sqrt(5))/2); dimensionless and distinct from attempt or incident clocks",
+          "regime": "all finite complete tapes satisfy analytic forward cone inclusion; executed native countercontrol disproves the converse, with no physical continuum inference"
         }
       },
       "bindings": [
@@ -6895,6 +6913,98 @@
               "anchor": "def deadline("
             }
           ]
+        },
+        {
+          "id": "native-response-euclidean-completion",
+          "domain": "response_metric_completion",
+          "claims": [
+            "OPH-GR-PORT-RESPONSE-COMPLETION"
+          ],
+          "establishes": [
+            "native_gram_equals_lean_response_metric",
+            "conditional_signed_module_completion_is_euclidean_three"
+          ],
+          "requires": [],
+          "assumptions": [
+            "certified_echosahedral_carrier_lineage",
+            "complete_equal_port_scalar_repair_response",
+            "cumulative_signed_antipodal_position_module",
+            "declared_signed_event_and_conservative_repair_machine",
+            "response_gram_operational_position_topology"
+          ],
+          "imports": [
+            "finite_dimensional_spectral_decomposition",
+            "irrationality_of_the_golden_ratio",
+            "metric_completion_of_a_dense_subgroup"
+          ],
+          "additional_assumptions": {},
+          "scope": "All 144 native Gram entries match the registered Lean chart. On the declared signed-control module with that metric, the real quotient has dimension three and the dense integer image completes to Euclidean three-space.",
+          "limitations": "The response topology and cumulative control domain are admitted. Native nonlinear repair does not descend to an autonomous quotient law. Rank-three readout, its metric completion and a chosen cone over its unit sphere do not identify physical bulk dimension, rods, clocks or dynamics.",
+          "sources": [
+            {
+              "path": "model/common_source/slow_geometry.py",
+              "anchor": "def registered_binding():"
+            },
+            {
+              "path": "Lean/Screen/PrimitivePortFrameQuotient.lean",
+              "anchor": "theorem frameQuotient_finrank"
+            },
+            {
+              "path": "Lean/Screen/PrimitivePortFrameQuotient.lean",
+              "anchor": "noncomputable def integerCompletionEquivEuclidean3"
+            }
+          ]
+        },
+        {
+          "id": "native-endpoint-forward-placement",
+          "domain": "native_endpoint_midpoint_placement",
+          "claims": [
+            "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM"
+          ],
+          "establishes": [
+            "native_midpoint_forward_cone_and_converse_countercontrol"
+          ],
+          "requires": [
+            "native_gram_equals_lean_response_metric"
+          ],
+          "assumptions": [
+            "authenticated_diamond_count_clock_and_inertial_additivity",
+            "declared_golden_source_population_read_law_clock_and_count_measure",
+            "declared_growing_move_menu_frame_mesh_and_count_measure",
+            "declared_metric_coarsening_voronoi_kernel_scalar_action",
+            "operational_cone_covariance_and_time_orientation",
+            "record_cauchy_and_stable_causality",
+            "source_causal_continuum_certificate"
+          ],
+          "imports": [
+            "Euclidean_ball_packing_compactness_and_Voronoi_partition",
+            "Fibonacci_convergents_equal_cell_quadrature_and_flat_Alexandrov_pair_integral",
+            "Riemann_sum_convergence_on_bounded_boundary_null_regions",
+            "Taylor_remainder_positive_operator_wave_Duhamel_and_local_energy_flux",
+            "causal_order_conformal_reconstruction_under_distinguishing_hypotheses",
+            "causal_set_order_plus_number_and_faithful_embedding_criteria",
+            "finite_dimensional_quadratic_form_classification",
+            "finite_matrix_product_formula_and_invariant_cone_classification",
+            "flat_diamond_volume_and_positive_additive_function_linearity",
+            "thickened_antichain_topology_and_interval_abundance_diagnostics"
+          ],
+          "additional_assumptions": {},
+          "scope": "The 270 shared-endpoint seam pairs verify the sharp squared bound (1+1/sqrt(5))/2. Increasing dependency height and the Gram triangle inequality give forward cone inclusion. Actual native branches on the four-event tape retain a null-cone pair without ancestry.",
+          "limitations": "This reuses the geometric argument of RankSpatialCausalPlacement.generatedBeforeEq_sourceCausalLE. The Python structural DAG is not an emitted Lean SemanticEventLog or kernel-checked theorem instance; authenticated value/version and causal-support obligations remain distinct. Complete tape, exogenous scheduling and midpoint readout are explicit. The converse, physical clock and physical Lorentz covariance are not established.",
+          "sources": [
+            {
+              "path": "model/physical_space_time/causal_placement.py",
+              "anchor": "def run():"
+            },
+            {
+              "path": "model/physical_space_time/causal_placement.py",
+              "anchor": "def dependencies(tape):"
+            },
+            {
+              "path": "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean",
+              "anchor": "theorem generatedBeforeEq_sourceCausalLE"
+            }
+          ]
         }
       ],
       "connections": [
@@ -6987,6 +7097,30 @@
             {
               "path": "model/laboratory_clock/resource_clock.py",
               "anchor": "def resource_law("
+            }
+          ]
+        },
+        {
+          "from": "native-response-euclidean-completion",
+          "to": "native-endpoint-forward-placement",
+          "fact": "native_gram_equals_lean_response_metric",
+          "coordinate_maps": {
+            "carrier": "Use the same registered Gram to place each repair event at the average of its two endpoint directions, then adjoin the time coordinate.",
+            "law": "Reuse only the recovered structural metric; the endpoint DAG is computed from each complete exogenous native tape, independently of the calibration scheduler.",
+            "preparation": "Metric calibration and the finite causal-control preparation have distinct declared roles; no common state or probability law is inferred.",
+            "records": "The placement requires every attempted seam, including remote and zero-current events; this is stronger access than a local incident tape.",
+            "controls": "The midpoint dictionary is declared. Controller or preparation dependencies beyond endpoint updates are excluded from this DAG and need additional bounds.",
+            "clock": "Replace calibration attempt index by canonical endpoint-dependency height and the sharp dimensionless Gram edge coefficient; no physical time is identified.",
+            "regime": "Transport the finite Gram into an analytic forward-placement argument. Do not infer a converse cone relation, semantic-log certificate or continuum."
+          },
+          "sources": [
+            {
+              "path": "model/physical_space_time/causal_placement.py",
+              "anchor": "def gram():"
+            },
+            {
+              "path": "model/physical_space_time/causal_placement.py",
+              "anchor": "def run():"
             }
           ]
         }

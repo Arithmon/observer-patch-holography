@@ -1,13 +1,15 @@
 # A spatial fluctuation field from one native history
 
 Long occupation averages of the native repair process have a Gaussian field
-limit with a calculable spatial action. The same derivation works in a port's
-incident clock, with an explicit correction for its random sampling. On a
-**supplied periodic square graph**, both clocks give the same massless
-Gaussian field on every fixed finite Fourier band after spatial refinement.
-These are two successive limits: observation count first, spatial mesh second.
-The spherical source screens have not met the required Green convergence
-criterion. Neither result identifies native evolution with a relativistic wave.
+limit with a calculable spatial action. On the actual twelve-port carrier,
+this field has an exact projection onto its record-recovered rank-three
+spatial Gram. A port's incident clock gives different axial and transverse
+variances on that same band. On the existing joined spherical screens,
+eliminating internal carrier variables gives a native Green operator with
+a uniform, quantitative approximation bound. Neither construction inserts
+a replacement Hamiltonian or identifies native evolution with a relativistic
+wave. The supplied torus at the end is a comparison example, separate from
+the actual-source results.
 
 This extends the existing [passage geometry](README.md),
 [native replica fluctuations](../native_fluctuations/README.md), and
@@ -136,6 +138,80 @@ exposure, `Sigma_incident/5-Sigma_attempt/30`, has entries
 repairing this discrepancy by a scalar amplitude or clock conversion.
 The action precision at this finite source is not a scalar multiple of `L`.
 
+## The actual rank-three spatial field and its clock
+
+Let `P` be the projector recovered from native current calibration. Its unit
+Gram is `4P`, with `P^2=P`, `rank(P)=3`, `P_ii=1/4`, and
+`LP=lambda P`, `lambda=5-sqrt(5)`. The fluctuation readout is **`P eta` on
+the same continuing history**, with the disclosure contract above. No new
+preparation, observer replica or coordinate frame is introduced. Define
+
+```text
+R = 4 (P e_0)(P e_0)^T,       T = P-R,
+P L_i P = [(3-sqrt(5))/2] R + (1/2) T.
+```
+
+`R` is the axis through port zero in the finite Gram embedding; `T` is its
+two-dimensional transverse plane. This use of an axis does not construct a
+bulk radial coordinate. Exact multiplication and the independent 66-state
+lag calculation give the marginal Gaussian covariances:
+
+| Native clock | Variance on `R` | Variance on each direction of `T` |
+| --- | --- | --- |
+| Every attempt | `(145+30sqrt(5))/33` | `(145+30sqrt(5))/33` |
+| Port-zero incident attempts | `(5+sqrt(5))/6` | `(115+19sqrt(5))/132` |
+
+If these variances are `v_r,v_t`, the marginal action is
+`(1/2)y^T(R/v_r+T/v_t)y` on `range(P)`. Inverting the projected covariance
+is essential: projecting the full precision instead would condition the
+discarded modes and gives a different incident-clock law.
+
+The attempt density transfer preserves this band. The incident transfer
+does not have an autonomous linear three-mode description: its exact
+two-tick defect is `P K^2 P-(P K P)^2`, whose `(0,0)` entry equals
+`893/492840-31sqrt(5)/54760`, a nonzero value. The corresponding attempt
+defect is zero. This proves failure of the proposed projected linear
+transition, not a blanket claim about every nonlinear reduced description.
+
+Rank three specifies the dimension of this finite Euclidean embedding and
+of the selected fluctuation coefficients. A Gaussian distribution over
+three coefficients is not a continuum of spatial sites. These results give
+joint operational spatial, field and clock readouts on the actual carrier;
+they do not alone determine spatial topology, a physical length, or a
+Lorentzian metric.
+
+There is also an exact finite-state boundary. The existing coordinate
+readout has 73 distinct values on all 78 total-two states, and 61 on the
+66 binary states; the six antipodal binary pairs share the zero value.
+All 4,680 native total-two branches satisfy
+`delta(P n)=current * P(e_b-e_a)`. Thus cumulative coordinate displacement
+telescopes to the final minus initial readout for every native history.
+Waiting longer in this fixed domain does not realize the dense additive
+completion of unconstrained port directions. The history-average CLT
+constructs a field distribution, not additional spatial sites.
+
+The [causal-placement control](causal_placement.py) uses the same native
+seams and Gram. Assign each attempt its seam midpoint, and take its parents
+to be the last uses of its two endpoints. For an exogenous scheduler, the
+complete seam tape defines a dependency height `h`: zero for roots and one
+plus the largest parent height otherwise. All 270 ordered pairs of seams
+sharing an endpoint obey the sharp squared-distance bound
+`c^2=(1+1/sqrt(5))/2`. The triangle inequality therefore gives
+`||x_b-x_a|| <= c(h_b-h_a)` whenever `a` is an ancestor of `b`.
+This is an exact forward cone placement with the declared time coordinate
+`t=c h`; it is not a calibrated incident clock.
+
+The converse fails on actual native histories. For the tape
+`A,B,A,A`, with `A=(0,1)` and `B=(2,3)`, event `B` is not an ancestor of
+the final event, but their forward interval is null at height difference
+two. The receipt executes all sixteen coin branches, retaining zero-current
+events. Consequently the derived forward bound does not supply a faithful
+identification of causal order with a Lorentz cone. The endpoint DAG also
+requires extra edges for adaptive controllers or preparation dependencies;
+those are outside this placement certificate. No authenticated semantic-log
+implementation, Lean proof term, physical Lorentz symmetry or continuum
+spacetime is emitted by this test.
+
 ## Finite counts, caps and observation errors
 
 Stationarity and density closure give an exact finite-count covariance:
@@ -163,6 +239,94 @@ complete-output total variation by that probability; expectations of bounded
 characteristic functions differ by at most twice it. Fixed-cap success laws
 must not be renormalized and treated as completed laws. Increasing caps with
 `n(1-m/M)^h -> 0` preserves (2). No auxiliary Poisson clock is required.
+
+## Controlled Green elimination on the actual source screens
+
+The unchanged source builder joins twelve-port carriers on its declared
+spherical cell graph. Write its actual port Laplacian as
+`L=L_0+D D^T`, where `L_0` is the direct sum of internal carrier Laplacians
+and columns of `D` are the oriented cross-seam differences. Every cross-seam
+endpoint is distinct, so `D^T D=2I`. The executable checks this matching
+condition and every full port-Laplacian row on source levels zero, one and
+two: 240, 960 and 3,840 ports. The native two-endpoint exchange identity
+binds these matrices to the occupation process.
+
+Let `U` repeat each cell value divided by `sqrt(12)`, `Q=I-UU^T`, and
+`R=D^T(sqrt(12)U)`. The exact internal gap is `lambda=5-sqrt(5)>2` on
+`range(Q)`. Minimizing the native quadratic energy over those internal
+variables gives
+
+```text
+A = U^T L U = L_cell/12,
+F = I + D^T L_0^+ D,
+S = (1/12) R^T F^(-1) R,
+U^T L^+ U = S^+,
+[lambda/(lambda+2)] A <= S <= A.
+```
+
+The identity for `S` follows by solving the internal normal equation
+`L_0 q + QD D^T(Uu+q)=0`; substituting its solution leaves the matrix `F`.
+The Green identity is block elimination on the global constant-free space.
+Since `0<=L_0^+<=Q/lambda` and `D^T D=2I`,
+`I<=F<2I`. These statements give the uniform Green comparison
+
+```text
+A^+ <= S^+ <= [(lambda+2)/lambda] A^+.
+```
+
+Thus replacing each carrier by its arithmetic mean is a bounded
+approximation, but it is not exact. A fully rational matrix polynomial
+provides arbitrarily small error without discarding the actual routing.
+For `p>=1`, set
+
+```text
+F_p^(-1) = (1/2) sum_(j=0..p) (I-F/2)^j,
+S_p = (1/12) R^T F_p^(-1) R,
+0 <= S_p^+ - S^+ <= S^+/(2^(p+1)-1).
+```
+
+The tail is `F^(-1)(I-F/2)^(p+1)`, bounded by
+`2^(-p-1) F^(-1)`. Sandwiching by `R` and inverting on the mean-free
+cell space proves the bound. At order 16 its relative Green error is at most
+`1/131071`, uniformly over graphs satisfying these source hypotheses.
+The proof bounds exact arithmetic. Floating evaluations at orders 4, 8 and
+16, checked against independent full-port solves, are diagnostics; their
+roundoff is not included in this analytic error budget. An independent
+24-port two-carrier test verifies the elimination exactly over the rationals.
+For a declared cell observation matrix `W`, the covariance error is bounded
+by `||W^T S^+ W||/(2^(p+1)-1)`. The corresponding limiting Gaussian
+characteristic-function error is at most half that bound times `||theta||^2`.
+
+The same history-averaged cell field, divided by `sqrt(4 chi M)`, has
+attempt-clock covariance `S^+-P_cell/(4M)`. The executable also evaluates
+the exact formula (1) for the clock counting the root carrier's 33 incident
+seams, on the disclosed contrast `(N_cell0-N_cell1)/sqrt(24)`. This keeps
+the clock correction and the native Green readout together. These cell
+labels are not asserted to specify the same continuum smearing at different
+levels; no convergence conclusion is drawn from that contrast table.
+
+The local rank-three carrier band and the refining global low band are
+different. For any normalized global eigenvector `L psi=omega psi`,
+positivity gives
+
+```text
+omega = psi^T L psi >= lambda ||Q psi||^2.
+```
+
+Consequently, low global modes concentrate on cell averages as `omega->0`;
+their nonconstant internal weight is at most `omega/lambda`. The internal
+rank-three modes lie at a fixed nonzero carrier energy. The three lowest
+positive eigenvalues on the executed screens are approximately
+`0.04414..0.04455`, `0.01032..0.01046`, and `0.002555..0.002615`.
+Their within-cell nonconstant weights satisfy the bound. These are finite
+spectral diagnostics, not a proof of a target spectrum or physical dimension.
+
+The eliminated operator supplies a controlled actual-source continuum
+candidate. Completing that test requires a record-accessible family
+of spatial smearings and scales, followed by convergence of the resulting
+`S^+` observations and the clock correction. The existing fixed-radius
+screen agreement does not bound these global inverses. The constant-factor
+comparison with `L_cell^+` supplies no vanishing continuum error by itself.
 
 ## A quantitative spatial-limit criterion
 
@@ -194,7 +358,7 @@ uniform finite-count distributional error has been proved. A fixed total
 two on growing graphs has `chi_a -> 0`; its amplitude normalization cannot
 be carried over from the twelve-port value unchanged.
 
-## Constructive control: unchanged repair on a supplied two-dimensional torus
+## Comparison control: unchanged repair on a supplied two-dimensional torus
 
 Choose the `N by N` periodic square graph, a chart of period `2pi` in each
 direction, `s_N=N^2/(4pi^2)`, and canonical total `floor(N^2/3)`. This is a

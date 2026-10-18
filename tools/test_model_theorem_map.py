@@ -332,10 +332,24 @@ class ModelTheoremMapTests(unittest.TestCase):
             "sources": [{"path": "proof.lean", "anchor": "theorem exact_join"}]})
         self.assertIn("circular connection cannot establish its own input", "\n".join(self.errors()))
 
+    def test_compact_view_retains_complete_machine_inventory_without_duplicate_rows(self):
+        self.joined_fixture()
+        before = deepcopy(self.data)
+        text = builder.render_contracts(self.data, builder.inventory(
+            self.data, self.premises, self.claims, self.root))
+        self.assertEqual(self.data, before)
+        joined = "\n".join(text)
+        self.assertIn("model_supply.contract_coverage", joined)
+        self.assertIn("Claims with open common-model mapping | 1", joined)
+        self.assertIn("native-map", joined)
+        self.assertNotIn("Every canonical contract", joined)
+        self.assertNotIn("Every Lean source module", joined)
+        self.assertIn("C-BRANCH", self.data["contract_coverage"]["claim_ids"])
+
     def test_rendered_open_mapping_does_not_invent_a_physical_witness(self):
         self.joined_fixture()
         text = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims, self.root))
-        self.assertIn("C-BRANCH", text)
+        self.assertIn("Claims with open common-model mapping | 1", text)
         self.assertIn("Open: no same-model instantiation recorded", text)
         self.assertIn("strings and source\nanchors are not proofs", text)
         self.assertIn("No entry silently discharges a canonical premise", text)

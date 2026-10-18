@@ -68,7 +68,13 @@ def complete_bound(per_attempt_error, *, cap=2, gamma=1, reference=False):
     error = calibration._probability(per_attempt_error)
     budget = exposure(cap)
     law = min(F(1), budget['native_attempts_mean']*error)
-    compiled = receipt.bound(cap=cap, gamma=gamma, reference=reference)
+    # Emitted floating arrays can differ across supported platforms. Recheck
+    # their exact residual, then retain the shared certified envelope rather
+    # than that platform's residual as a supposedly portable exact constant.
+    actual_compiled = receipt.bound(cap=cap, gamma=gamma, reference=reference)
+    compiled = receipt.ERROR
+    if not 0 <= actual_compiled <= compiled:
+        raise ArithmeticError('emitted arrays exceed the retained compilation envelope')
     return {**budget, 'per_attempt_half_diamond_upper': error,
             'ideal_complete_half_trace_upper': law,
             'worst_branch_ideal_upper': min(F(1), (2*cap+1)*error),

@@ -11,8 +11,9 @@ controls, clock and regime; changing one requires an explicit mapping.
 This checks coverage and source custody, not mathematical entailment. A
 theorem without a checked model instantiation remains an open connection.
 The [physical audit](PHYSICAL_AUDIT.md) gives the current completion status,
-including the native occupation-field action, its conditional torus limit,
-complete-history uncertainty and resource-clock calibration.
+including the actual rank-three occupation-field action, spherical-screen
+Green bounds, endpoint causal placement, complete-history uncertainty and
+resource-clock calibration.
 
 **Build the simplest shared repair process that satisfies the required
 constraints.**
