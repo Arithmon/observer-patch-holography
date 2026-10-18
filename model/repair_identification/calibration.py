@@ -17,8 +17,12 @@ Every attempted trial appears in exactly one of the seven bins. In particular
 the estimate above is 75/100, not 75/95. The omitted rows in this documentation
 example must be supplied; the parser rejects incomplete menus and totals.
 
-analyze_counts requires explicit sampling radii and service-error bounds.
-For independent attempted trials within each setting, Var(mean)<=1/(4m).
+analyze_counts requires a separate sampling design and service-error bounds.
+The fixed attempt counts and sampling radii must be declared before, and
+independently of, all analyzed trial outcomes. Checking the design against
+the counts establishes consistency, not that this premise was obeyed.
+For independent attempted trials within each setting, conditional on this
+design, Var(mean)<=1/(4m).
 Chebyshev and a union bound give simultaneous failure probability at most
 min(1, sum_i 1/(4 m_i radius_i**2)). Cross-setting independence is unnecessary.
 The service bounds must relate the average attempted-trial response to the
@@ -26,6 +30,7 @@ ideal table probabilities. They are supplied assumptions, not calibration
 established by this parser. Arbitrary correlated trial memory is not covered.
 """
 from fractions import Fraction as F
+from typing import NamedTuple
 
 from . import core
 
@@ -35,6 +40,13 @@ OUTCOMES = ('current_-1_plus', 'current_-1_minus',
             'current_0_plus', 'current_0_minus',
             'current_1_plus', 'current_1_minus', 'abort')
 SOURCE_PATHS = (*core.SOURCE_PATHS, 'model/repair_identification/calibration.py')
+
+
+class SamplingDesign(NamedTuple):
+    """Immutable declared horizons and positive rational radii (integer pairs)."""
+
+    planned_attempts: tuple
+    sampling_radii: tuple
 
 
 def _fields(value, expected):
@@ -63,6 +75,33 @@ def _nine(values, *, positive=False):
     if positive and any(value == 0 for value in result):
         raise ValueError('sampling radii must be strictly positive')
     return result
+
+
+def sampling_design(planned_attempts, sampling_radii):
+    """Detach a declared design; this object does not prove its declaration time."""
+    if type(planned_attempts) is not tuple or len(planned_attempts) != len(core.PROBES):
+        raise ValueError('an original tuple of nine planned attempt counts is required')
+    attempted = tuple(_integer(value, positive=True) for value in planned_attempts)
+    radii = _nine(sampling_radii, positive=True)
+    return SamplingDesign(attempted, tuple((value.numerator, value.denominator) for value in radii))
+
+
+def _validate_design(design):
+    if type(design) is not SamplingDesign:
+        raise ValueError('a separate original SamplingDesign is required')
+    if type(design.sampling_radii) is not tuple or len(design.sampling_radii) != len(core.PROBES):
+        raise ValueError('nine original rational radius pairs are required')
+    radii = []
+    for pair in design.sampling_radii:
+        if type(pair) is not tuple or len(pair) != 2:
+            raise ValueError('original numerator/denominator pairs are required')
+        numerator, denominator = (_integer(value, positive=True) for value in pair)
+        radius = F(numerator, denominator)
+        if (radius.numerator, radius.denominator) != pair:
+            raise ValueError('canonical rational radius pairs are required')
+        radii.append(radius)
+    validated = sampling_design(design.planned_attempts, tuple(radii))
+    return validated, tuple(radii)
 
 
 def validate_counts(evidence):
@@ -138,15 +177,19 @@ def analyze_tubes(centers, radii, candidates, call_count):
     }
 
 
-def analyze_counts(evidence, sampling_radii, candidates, call_count, service_errors):
+def analyze_counts(evidence, design, candidates, call_count, service_errors):
     """Conditional finite-sample evidence, with no successful-trial conditioning.
 
     All returned exact numerical quantities are rational strings; counts and
-    schema objects remain ordinary JSON values. Supplied service errors are
-    mandatory, including when the caller explicitly assumes zero error.
+    schema objects remain ordinary JSON values. The separate design must have
+    outcome-independent fixed horizons and radii. This parser checks only its
+    consistency with the observed counts, not its prior declaration. Supplied
+    service errors are mandatory, including an explicit zero-error assumption.
     """
     counts = validate_counts(evidence)
-    sampling_radii = _nine(sampling_radii, positive=True)
+    design, sampling_radii = _validate_design(design)
+    if tuple(attempted for attempted, _ in counts) != design.planned_attempts:
+        raise ValueError('observed attempted counts must match the declared sampling design')
     service_errors = _nine(service_errors)
     centers, targets = [], []
     for probe, (attempted, bins) in zip(core.PROBES, counts, strict=True):
@@ -166,12 +209,19 @@ def analyze_counts(evidence, sampling_radii, candidates, call_count, service_err
         'target_joint_counts': targets,
         'abort_counts': [bins[-1] for _, bins in counts],
         'sampling_radii': [str(value) for value in sampling_radii],
+        'declared_sampling_design': {
+            'planned_attempts': list(design.planned_attempts),
+            'sampling_radii': [str(value) for value in sampling_radii],
+        },
+        'sampling_design_consistent_with_counts': True,
+        'sampling_design_prior_declaration_verified': False,
         'supplied_service_errors': [str(value) for value in service_errors],
         'simultaneous_sampling_failure_bound': str(failure),
         'simultaneous_sampling_coverage_lower_bound': str(1-failure),
         'sampling_method': 'exact rational Chebyshev variance bound and union bound',
         'premises': [
-            'independent attempted trials within each setting; no cross-setting independence needed',
+            'fixed horizons and sampling radii declared before, and independently of, all analyzed trial outcomes',
+            'independent attempted trials within each setting conditional on that design; no cross-setting independence needed',
             'average response differs from the ideal table probability by at most its supplied service error',
             'every attempt, including aborts and other current/readout outcomes, is counted',
         ],

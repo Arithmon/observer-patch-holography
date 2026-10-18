@@ -631,7 +631,8 @@ def _complete_counts(law='C', attempted=65536):
 
 def _analyze_counts(evidence):
     from model.repair_identification import calibration
-    return calibration.analyze_counts(evidence, (F(1, 64),)*9,
+    design = calibration.sampling_design((65536,)*9, (F(1, 64),)*9)
+    return calibration.analyze_counts(evidence, design,
                                       {'C': _table('C'), 'E': _table('E')}, 2, (F(0),)*9)
 
 
@@ -650,7 +651,8 @@ def test_count_interface_uses_all_attempts_and_charges_both_error_sources():
         target = max((key for key in row['counts'] if key != 'abort'), key=row['counts'].get)
         row['counts'][target] -= row['attempted']//8
         row['counts']['abort'] += row['attempted']//8
-    analyzed = calibration.analyze_counts(changed, (F(1, 64),)*9,
+    design = calibration.sampling_design((65536,)*9, (F(1, 64),)*9)
+    analyzed = calibration.analyze_counts(changed, design,
         {'C': _table('C')}, 2, (F(1, 8),)*9)
     assert analyzed['compatible_locked_candidates'] == ['C']
     assert analyzed['count_evidence']['abort_counts'] == [8192]*9
