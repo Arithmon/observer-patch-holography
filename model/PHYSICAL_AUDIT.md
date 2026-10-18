@@ -1,7 +1,5 @@
 # Physical interpretation of the executable model
 
-Audit baseline: `34d07c5756618cab969a8c8a5c91072f368a68ae` (18 October 2026).
-
 The construction derives compatible
 finite observations from one specified repair process. It has not established
 physical 3+1 spacetime, a selected Lorentzian field action, or a measured
@@ -43,10 +41,10 @@ overturned by successful finite native-carrier calculations or by this audit.
 
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
-| Space | Current preparations recover the carrier response and a rank-three slow-band Gram; clock correlations distinguish its distance shells. | Selecting that operational metric, a length calibration and an extended domain whose joint observations have the required spatial interpretation. The full inverse-response Gram has rank eleven. |
+| Space and fields | Current preparations recover the carrier response and a rank-three slow-band Gram. Long observation averages of the actual binary repair process give a Gaussian field with a derived Green covariance and quadratic action. | Selecting the operational metric and length calibration, realizing the observation access, and establishing the physical spatial domain. The full inverse-response Gram has rank eleven. |
 | Time | Complete local stopped instruments, finite count uncertainty and same-history clock comparisons; modular actions for specified algebra/reference pairs. | A joint signal/clock correspondence with effective proper duration. The stationary tracial state has trivial modular flow; a chosen nontrivial reference does not prove native events advance its modular parameter. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
-| Laboratory clock | Actual native software calls have retained host timestamps and a frozen calibration/control comparison. | Paired physical event and clock measurements, independently justified detector/timing uncertainty and calibration provenance. Host performance does not establish native proper time. |
+| Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 
 The [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md) gives the underlying
 identities and domains. Conserved sector, preparation, scheduler, observer
@@ -54,7 +52,7 @@ access and law must agree before combining two results. In particular,
 integer-load calibration, binary quantum evolution and a one-particle probe
 are different preparations even when they use the same repair rule.
 
-## Contributions of this audit
+## Current source constructions
 
 The [space/time calculation](physical_space_time/README.md) adds an exact
 first-arrival construction using the same native carrier and a declared
@@ -116,7 +114,58 @@ contract requires a physical implementation and independent validation.
 Neither a successful fit using a supplied Hamiltonian nor successful CI is
 an OPH-specific experimental confirmation.
 
-## Decision and next acceptance test
+The [calibrated compiled-history bridge](compiled_clock_history/README.md#calibrated-repair-law-and-complete-readout-predictions)
+propagates all nine repair quadratures into the complete two-tick quantum
+history. A common homogeneous seam law, invariant binary carrier,
+preparation, feedback and record access are explicit contracts. At cap two,
+the expected repair exposure is `408/125`, including feedback, so a per-call
+instrument error `delta` gives complete ideal-output error at most
+`min(1,408*delta/125)`. The independently certified compiled-array error is
+added separately to compare the executed nominal-C compiler with an
+alternative ideal history; no raw alternative-law execution is asserted.
+The raw maps are not silently normalized. The fixed
+intervention response remains resolved under the retained probability tubes.
+No measured calibration counts or empirical law selection are supplied.
+
+The [resource clock](laboratory_clock/README.md) refines this same ideal
+history by native-attempt and source-pulse counts. The refined counter is
+an additional declared observer service. A supplied affine operation-timing
+law and its joint calibration region give complete deadline/detector
+predictions, retaining timeouts and correlated parameter uncertainty.
+The numerical seconds are synthetic calibration values. Public optical
+clock measurements require a transition/readout dictionary before they
+can test this source process; matching units or fitting an arbitrary scale
+does not supply that dictionary.
+
+## Gaussian field and continuum scope
+
+The [occupation field](physical_space_time/README.md) is derived from a
+stationary native binary history. Initial occupation disclosure and current
+records reconstruct its commuting field values. The complete field uses the
+full seam/current transcript; a port's own incident tape gives its local
+occupation, not every remote occupation. This preparation/readout domain
+differs from the coherent compiled-control experiment.
+
+On the twelve-port total-two carrier, the long-average field has covariance
+`(5/33)*(120*L^+ - P0)` in native-attempt count, where `L` is the native
+graph Laplacian and `P0` removes the conserved constant mode. Its inverse
+on that subspace is a derived quadratic fluctuation action. Sampling at a
+port's incident events produces an explicit matrix correction, rather than
+a universal scalar conversion between clocks. Exact source-state recursion
+checks finite-count moments independently of the limiting Gaussian theorem.
+
+An explicitly supplied two-dimensional periodic graph family using the
+same local repair rule provides a controlled fixed-Fourier-band massless
+Gaussian limit. Its rational covariance bounds include the incident-clock
+correction. This is an iterated limit: observation count first at each
+finite graph, then spatial refinement. A finite covariance error is not a
+uniform distributional central-limit error. The existing spherical screens
+have not supplied the corresponding Green-convergence and observation maps.
+This construction supplies a Euclidean Gaussian-field route; it does not
+establish an interacting physical CFT, a Lorentzian 3+1 spacetime or their
+identification with measured fields.
+
+## Physical completion tests
 
 Continue the single-carrier route for the immediate physics questions.
 Use federations only when the next test explicitly needs a larger domain.
@@ -129,9 +178,11 @@ compares joint incident-clock records, coherent interventions, all
 timeouts and full conditional source/reference outputs on one carrier.
 Its exact map identity covers arbitrary references under the declared local
 intervention contract. Independent marginal fits fail its joint
-clock/interference control. The coherent apparatus remains an ideal
-intervention, and no Lorentzian interpretation follows from this finite
-change of representation.
+clock/interference control. The [compiled history](compiled_clock_history/README.md)
+implements that finite apparatus with emitted source controls and a
+complete error bound. The ordinary CP incident-clock construction supplies
+a separate positive-mixture representation for its stated local-output
+domain. Neither representation identifies physical Lorentzian dynamics.
 
 The [interacting band extension](interacting_band_extension/README.md)
 addresses a different gap in the supplied scalar branch. It adds two
@@ -154,7 +205,16 @@ separates the conditional ACT result from a native-observer derivation.
 Extend the operational domain only with a demonstrated compatibility or
 approximation bound.
 
-The audit therefore supports the mathematical direction while narrowing the
-next target. The three physical completion claims remain open; their
-missing premises are explicit and the new controls make several tempting
-but invalid shortcuts testable.
+The [model–theorem map](PREMISES.md) inventories every registered claim and
+tracked Lean module, retains the canonical hypotheses and marks missing
+same-model attachments explicitly. Its checked connections distinguish
+carrier, law, preparation, records, controls, clock and regime. This checks
+coverage and stated compatibility; it does not certify mathematical
+entailment or instantiate every theorem on one physical world.
+
+Physical completion requires a source-compatible spatial/field limit,
+a detector and clock dictionary, and independent observations that test
+that same dictionary. Operational self-read can identify an admitted
+instance up to its accessible equivalence class. It does not prove that
+inaccessible implementation details or the chosen instance are necessary
+features of the observed Universe.

@@ -10,10 +10,17 @@ from tools import strict_json
 from ..native_clock import clock, host_clock
 from ..primitive_observer import transfer
 from .attachment import Endpoint, analyse, fit_rate, validate
+from . import resource_clock
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 SOURCE_PATHS = tuple(sorted(set((*host_clock.SOURCE_PATHS, *clock.SOURCE_PATHS,
+    *resource_clock.target.SOURCE_PATHS, *resource_clock.compiled.source.SOURCE_PATHS,
+    *resource_clock.exact_core.SOURCE_PATHS,
+    "model/compiled_clock_history/receipt.py", "model/compiled_clock_history/history.py",
+    "model/repair_identification/__init__.py", "model/record_laws/__init__.py",
+    "model/predictions/__init__.py",
+    "model/laboratory_clock/resource_clock.py",
     "model/native_clock/host_clock_records.json", "model/laboratory_clock/attachment.py",
     "model/laboratory_clock/experiment.py", "model/laboratory_clock/__main__.py",
     "model/laboratory_clock/__init__.py", "model/laboratory_clock/endpoints_example.json"))))
@@ -142,6 +149,7 @@ def run():
             "joint_validation_control": joint,
             "missed_event_control": missed,
             "native_waiting_law_attachment": native,
+            "compiled_operation_clock_attachment": resource_clock.run(),
             "retained_host_attachment": _host_attachment(raw, replay),
             "scope": {"federation_required": False, "new_laboratory_data": False,
                 "physical_proper_time_derived": False, "physical_clock_scale_selected_by_repair": False,

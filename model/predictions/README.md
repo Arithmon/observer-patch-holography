@@ -13,6 +13,21 @@ branch, under the experiment's stated setting and locality contract. These
 retrospective calculations and the prospective finite-instrument protocol
 have different evidential roles.
 
+The [complete repair identification](../repair_identification/README.md)
+extends the two-coordinate phase probe to all nine real instrument
+coordinates. The [compiled-history forecast](../compiled_clock_history/README.md#calibrated-repair-law-and-complete-readout-predictions)
+then carries calibration uncertainty through a complete two-tick experiment
+with feedback and source-emitted apparatus. Under the stated synthetic
+probability tubes, its two intervention settings retain a resolved joint
+clock/detector contrast. The [resource-clock forecast](../laboratory_clock/README.md)
+additionally predicts deadline-conditioned detector events under a joint
+repair/pulse-duration calibration region. These are conditional source
+predictions, not new discrepancies with SM + GR, externally registered
+predictions or physical confirmations. The
+[public-data audit](../../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+identifies available clock observations and the missing native-record
+dictionary; no arbitrary transition assignment is fitted to those data.
+
 ## Run
 
 From the repository root:

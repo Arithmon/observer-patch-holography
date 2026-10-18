@@ -5,6 +5,15 @@ The [repair-law guide](CANDIDATES.md) explains which parts of the repair law
 are forced and which are free; the generated [premise map](PREMISES.md)
 connects the constructions to the theorem library.
 
+The premise map inventories every canonical claim row and tracked Lean source
+module. Typed connections distinguish carrier, law, preparation, records,
+controls, clock and regime; changing one requires an explicit mapping.
+This checks coverage and source custody, not mathematical entailment. A
+theorem without a checked model instantiation remains an open connection.
+The [physical audit](PHYSICAL_AUDIT.md) gives the current completion status,
+including the native occupation-field action, its conditional torus limit,
+complete-history uncertainty and resource-clock calibration.
+
 **Build the simplest shared repair process that satisfies the required
 constraints.**
 

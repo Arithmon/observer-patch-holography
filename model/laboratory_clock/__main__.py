@@ -22,7 +22,7 @@ def main():
     if args.check:
         if strict_json.load(args.check) != result:
             raise ValueError("the laboratory-clock attachment receipt does not replay")
-        print("Affine clock bounds, native waiting laws and retained host controls replayed.")
+        print("Affine and operation-duration bounds, native histories and host controls replayed.")
         return
     payload = json.dumps(result, sort_keys=True, indent=2, allow_nan=False)+"\n"
     if args.write:

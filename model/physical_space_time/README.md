@@ -7,6 +7,14 @@ and a metric inferred from those laws. No observer federation is required.
 a spatial continuum, or a relation to a laboratory clock. The receipt sets
 these acceptance fields to false even when every mathematical check passes.
 
+The [occupation-field extension](OCCUPATION_FIELD.md) derives a spatial
+Gaussian fluctuation action from long averages of one continuing native
+history. It computes the correction caused by a port's incident clock and
+gives a quantitative Green-convergence criterion. A supplied periodic square
+graph control meets that criterion on every fixed Fourier band after the
+observation-count limit. The existing spherical source screens have not
+met it; the control does not establish physical or Lorentzian spacetime.
+
 This packet makes a concrete connection between geometry, propagation and a
 local clock instead of identifying their parameters by name. It also shows
 why the previously established rank-three response Gram and native causal

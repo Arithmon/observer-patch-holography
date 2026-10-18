@@ -21,6 +21,14 @@ which claims need larger observer domains, and connects the single-carrier
 [action-family](repair_action_audit/README.md) and
 [laboratory calibration](laboratory_clock/README.md) checks.
 
+The [native occupation field](physical_space_time/OCCUPATION_FIELD.md) derives
+a Gaussian long-average field and its quadratic action from one continuing
+repair history. Incident-clock sampling has a calculable spatial correction.
+On a supplied square-torus family, the limiting Gaussian observations converge
+on every fixed Fourier band to the massless Euclidean free field. The limits
+take observation count first and spatial mesh second; the existing spherical
+screens, Lorentzian dynamics and interacting CFTs remain separate obligations.
+
 The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
 sets out correspondence tests using published observations without requiring a
 laboratory experiment. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
@@ -94,6 +102,15 @@ agree with the complete ideal history within 1e-11, with source pulse and
 service budgets. This closes the ideal coherent-apparatus gap for that
 finite protocol; the native repair instrument and code services remain its
 declared primitives.
+
+The [calibrated history bound](compiled_clock_history/README.md#calibrated-repair-law-and-complete-readout-predictions)
+carries all nine repair-law calibration coordinates into that complete
+experiment. Its expected repair count gives a sharper error bound than the
+worst-case count. The [resource clock](laboratory_clock/README.md) retains
+repair and apparatus-pulse counts together and predicts timed detector events
+under one correlated calibration region. The retained durations are synthetic
+assumptions, not measured physical seconds; public optical-clock datasets
+do not supply the required mapping to native records.
 
 The [quantum incident-clock correspondence](observer_correspondence/QUANTUM_CLOCK.md)
 complements that exact full-state representation with an ordinary CP

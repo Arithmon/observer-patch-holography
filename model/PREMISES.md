@@ -15,6 +15,8 @@ The entries distinguish finite executions, analytic bounds, imported theorem hyp
 
 The [current physical bridge](SOURCE_SELECTION.md#current-bridge-to-physical-observations) distinguishes finite observer field/clock results, the remaining effective QFT and spacetime identification, and actual public-data tests. No federation is required for the completed single-carrier calculations. Issue #1077 retains its original q=3 scalar-word deliverable; smaller executed histories do not replace it.
 
+The exhaustive contract inventory below covers every registered claim and tracked Lean source module. Restricted same-model bindings retain all canonical inputs and require explicit domain maps before composition. Missing model realizations remain visible; coverage and typed compatibility do not certify scientific entailment or physical completion.
+
 These groups are workgroup navigation crosswalks, not claim-consumer edges or changes
 to proof status. A group links related construction, branch, downstream or metrology
 work; that association does not make every listed premise an antecedent of every
@@ -36,7 +38,7 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | Model criteria represented | 12/12 |
 | Registered claims | 339 |
 | Unique ordinary `assumptions` names | 819 |
-| Unique `imported_results` names | 896 |
+| Unique `imported_results` names | 898 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 33 |
 | Claims explicitly linked by optional group fields | 18 |
@@ -124,9 +126,9 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 ### RE-01: Common repair reference and law
 
-**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings. The executable N1 observer composes current observation, retained classical history, record-only prediction and feedback for two events, with all benchmark paths retained. Its detector extension maps the accepted closure P through the existing electromagnetic coupling to a binary record and native feedback. A minimal twelve-block address carrier preserves the complete quantum channel and joins binary native/N4 repair with collective response in an abstract scalar-seam A1–A3 source. The two laws share the full quantum reference and normalized geometry but differ in certified finite kinetics. A separate coherent phase/readout protocol distinguishes C and E exactly while preserving their common classical load transitions; it supplies a candidate comparison without requiring a uniqueness theorem. The common-source joint instrument lets the actual first native current prepare the gauge/scalar experiment and lets its final scalar record control the second native repair, retaining all 1056 histories and their quantum terminal states. In that earlier classical attachment, native M78 integer repair remains a supplied primitive while the quantum apparatus uses the existing M6 source controls. The independent uniform-seam forgotten-record C/E channels have exact quantum gap (5-sqrt(5))/60 on both the binary shell and the full total-two carrier, by an exact signed-difference reduction. Their sharp binary coherence rates differ despite identical classical geometry and relaxation. The coherent native attachment places source-compiled C or E repairs before and after the same retained four-read work program. Its first decoded current controls the gauge kick and its second smooth bit selects the final native seam. The complete joint channel admits arbitrary native/work/reference inputs; default executions use the declared scalar vacuum. This supplies a common finite interface without selecting a unique native record law or a physical encoding. A separate coherent-continuation experiment checks all 3960 native binary arcs and a bijective unread-record reversal. With supplied uniform coherent event embedding A and reflection, W=S(2AA*-I) has compression A*W^n A=T_n(K), and the actual centered load columns obey KX=X(I-L/60). This gives a compressed-amplitude wave recurrence, not a mean-load or probability law. Two continuation phases share the same first coherent event but have two-step Ramsey plus probabilities 1 and 113/150 for the specified basis input. Record-label phases invisible to complete committed C/E CP branches change the compressed spectral trace by -1/900. Thus the native instrument does not select the coherent extension; collision states obstruct this same-domain arc reversal on the full carrier. Coherent preparation, unread records, reflection and interferometric readout are additional controls; no source pulse realization, spatial refinement or physical clock is claimed. Proper-carrier covariance and the declared real coherent-continuation criteria leave the two executed alternatives. A source-executed record-phase experiment has the same complete committed C/E instrument but a fixed coherent read with probabilities 3/4 versus 1/4; commitment before read gives 1/2 for both. Exact native diagonal-block equivalence makes C/E indistinguishable through work-only instruments and common-record feedback, including arbitrary initial native/work/reference correlations. Coherent native access can distinguish them. A separate cut-metric obstruction rules out identifying fixed occupation-diagonal binary-pinch mixtures directly with the supplied quadratic number-dephasing rates; it is not an empirical rejection of C or E.
+**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings. The executable N1 observer composes current observation, retained classical history, record-only prediction and feedback for two events, with all benchmark paths retained. Its detector extension maps the accepted closure P through the existing electromagnetic coupling to a binary record and native feedback. A minimal twelve-block address carrier preserves the complete quantum channel and joins binary native/N4 repair with collective response in an abstract scalar-seam A1–A3 source. The two laws share the full quantum reference and normalized geometry but differ in certified finite kinetics. A separate coherent phase/readout protocol distinguishes C and E exactly while preserving their common classical load transitions; it supplies a candidate comparison without requiring a uniqueness theorem. The common-source joint instrument lets the actual first native current prepare the gauge/scalar experiment and lets its final scalar record control the second native repair, retaining all 1056 histories and their quantum terminal states. In that earlier classical attachment, native M78 integer repair remains a supplied primitive while the quantum apparatus uses the existing M6 source controls. The independent uniform-seam forgotten-record C/E channels have exact quantum gap (5-sqrt(5))/60 on both the binary shell and the full total-two carrier, by an exact signed-difference reduction. Their sharp binary coherence rates differ despite identical classical geometry and relaxation. The coherent native attachment places source-compiled C or E repairs before and after the same retained four-read work program. Its first decoded current controls the gauge kick and its second smooth bit selects the final native seam. The complete joint channel admits arbitrary native/work/reference inputs; default executions use the declared scalar vacuum. This supplies a common finite interface without selecting a unique native record law or a physical encoding. A separate coherent-continuation experiment checks all 3960 native binary arcs and a bijective unread-record reversal. With supplied uniform coherent event embedding A and reflection, W=S(2AA*-I) has compression A*W^n A=T_n(K), and the actual centered load columns obey KX=X(I-L/60). This gives a compressed-amplitude wave recurrence, not a mean-load or probability law. Two continuation phases share the same first coherent event but have two-step Ramsey plus probabilities 1 and 113/150 for the specified basis input. Record-label phases invisible to complete committed C/E CP branches change the compressed spectral trace by -1/900. Thus the native instrument does not select the coherent extension; collision states obstruct this same-domain arc reversal on the full carrier. Coherent preparation, unread records, reflection and interferometric readout are additional controls; no source pulse realization, spatial refinement or physical clock is claimed. Proper-carrier covariance and the declared real coherent-continuation criteria leave the two executed alternatives. A source-executed record-phase experiment has the same complete committed C/E instrument but a fixed coherent read with probabilities 3/4 versus 1/4; commitment before read gives 1/2 for both. Exact native diagonal-block equivalence makes C/E indistinguishable through work-only instruments and common-record feedback, including arbitrary initial native/work/reference correlations. Coherent native access can distinguish them. A separate cut-metric obstruction rules out identifying fixed occupation-diagonal binary-pinch mixtures directly with the supplied quadratic number-dephasing rates; it is not an empirical rejection of C or E. Complete current-law identification executes nine independent scalar quadratures and reconstructs all nine real coordinates of the classified 78-state coarse definite-current instrument. It includes collision coherence invisible on the binary sector, source-compiled probes and continuing reference histories. This determines the model instrument only within the stated family and probe interface.
 
-**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. The one-way current-record lift adds local response factors and a supplied coupling. For binary N4, collective controls supply a complete abstract response grammar on the central-address carrier; independent-factor or address-controlled reversible probes are excluded from that grammar. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification. Exact all-input preservation of the original reduced load channel forbids unconditional internal-to-load feedback. The retained rational CPTP control has feedback difference 144/625 and a scalar-only private commutant, so the restricted single-product exclusion cannot be extended to all number-preserving conjugations (#1089). Reversible words and chart paths are fixed independently of measured records; admitted feedback uses the repair/reset templates. Unrestricted record-conditioned reversible words add 144 independent address-controlled response directions and are excluded from this abstract grammar. The coherent native attachment implements its declared finite encoding; source compilation alone supplies neither a physical native-load interface nor independently calibrated preparation, code-transfer, storage and readout errors. A source-selection argument must constrain cross-record phases and coherent continuation, or identify observables independent of those choices. Selection is relative to the admitted observer interface: scalar branch phases invisible throughout committed histories need no separate operational selection there, while coherent access makes their full implementation part of the repair-rule obligation.
+**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. The one-way current-record lift adds local response factors and a supplied coupling. For binary N4, collective controls supply a complete abstract response grammar on the central-address carrier; independent-factor or address-controlled reversible probes are excluded from that grammar. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification. Exact all-input preservation of the original reduced load channel forbids unconditional internal-to-load feedback. The retained rational CPTP control has feedback difference 144/625 and a scalar-only private commutant, so the restricted single-product exclusion cannot be extended to all number-preserving conjugations (#1089). Reversible words and chart paths are fixed independently of measured records; admitted feedback uses the repair/reset templates. Unrestricted record-conditioned reversible words add 144 independent address-controlled response directions and are excluded from this abstract grammar. The coherent native attachment implements its declared finite encoding; source compilation alone supplies neither a physical native-load interface nor independently calibrated preparation, code-transfer, storage and readout errors. A source-selection argument must constrain cross-record phases and coherent continuation, or identify observables independent of those choices. Selection is relative to the admitted observer interface: scalar branch phases invisible throughout committed histories need no separate operational selection there, while coherent access makes their full implementation part of the repair-rule obligation. Self-read cannot distinguish observationally equivalent fine refinements or uncommitted dilations. Calibration requires the declared coherent apparatus, family membership and independently chosen sampling design; instrument identification is not a theorem that selects nature's source or an observer-independent eternal truth.
 
 **Closure condition:** Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.
 
@@ -155,6 +157,7 @@ Sources:
 - [Three primitive selection obligations and interface-equivalence tests](../model/SOURCE_SELECTION.md).
 - [Exact C/E diagonal-block intertwining and correlated adaptive work-observer replay](../model/identifiability_checks/rule_observability.py).
 - [Binary-pinch rate obstruction to direct number-dephasing identification](../model/identifiability_checks/dephasing_observability.py).
+- [Complete coarse-current identification and operational equivalence boundary](../model/repair_identification/README.md).
 
 <a id="re-02"></a>
 
@@ -530,9 +533,9 @@ Sources:
 
 **Constructed:** Source count and finite execution-cost results retain their declared clock and service domains. Native local event instruments sum actual unresolved repairs, retain remote evolution and include finite-cap timeouts. The joint clock/field process supplies exact reduced-memory identities and a four-mark completed-event closure on its specified one-particle support; conditional reference states and controller memory remain. Equal completed clock statistics need not imply equal phase observations. Independent identity holds cancel from completed stopped laws without fixing a laboratory duration.
 
-A chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates. On the 66-state binary total-two sector of one twelve-port carrier, actual local movement clocks have asymptotic count rate 1/6 per carrier movement from any initial density in that sector. An exact Poisson corrector supplies finite count-error bounds without stationary preparation or an independent clock. Their long-run covariance distinguishes all three graph-distance shells. A positive seconds calibration changes no such dimensionless law; empirical attachment requires a matched source apparatus and held-out paired records. A recorded software attachment executes the same 264532 native attempts in each of two runs against a host monotonic counter. One baseline block calibrates port 2; three held-out blocks measured with port 3 have timing errors 2.3% to 7.8%, within the fixed 25% engineering tolerance. Host-only workload preserves all native records and rejects that calibration in every control block. Replay checks the seeded choices and source currents, not timestamp authenticity or clock traceability; physical proper time and modular flow are not inferred. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. Exact incident-clock field correlations reconstruct a seven-dimensional cyclic detector Hilbert space and its transfer spectrum on the elementary total-two source; independent full 66-state propagation checks withheld lags. The positive-transfer moment class is supplied by the existing theorem. Exact rank is not inferred from sampled records, and the seven-mode Gram is severely ill-conditioned. On each actual level-3/5 screen with product preparation, bounded record correlations also certify a two-vector temporal subspace and compressed transfer values near 0.88702 and 0.97079 with error below 2e-5. These compressed values are not a closed two-mode spectrum or laboratory energy calibration. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy. A separate exact affine event/timestamp contract preserves the correlated rate/offset calibration set and tests held-out endpoints jointly without retuning. Missing timing or count-error bounds remain unresolved; uncertain integer counts use an explicitly disclosed continuous outer relaxation. Under a declared fixed attempt cadence, the native waiting distribution yields deadline-probability intervals. Synthetic controls and retained host measurements are distinguished; no native-event laboratory correspondence or traceability is established.
+A chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates. On the 66-state binary total-two sector of one twelve-port carrier, actual local movement clocks have asymptotic count rate 1/6 per carrier movement from any initial density in that sector. An exact Poisson corrector supplies finite count-error bounds without stationary preparation or an independent clock. Their long-run covariance distinguishes all three graph-distance shells. A positive seconds calibration changes no such dimensionless law; empirical attachment requires a matched source apparatus and held-out paired records. A recorded software attachment executes the same 264532 native attempts in each of two runs against a host monotonic counter. One baseline block calibrates port 2; three held-out blocks measured with port 3 have timing errors 2.3% to 7.8%, within the fixed 25% engineering tolerance. Host-only workload preserves all native records and rejects that calibration in every control block. Replay checks the seeded choices and source currents, not timestamp authenticity or clock traceability; physical proper time and modular flow are not inferred. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. Exact incident-clock field correlations reconstruct a seven-dimensional cyclic detector Hilbert space and its transfer spectrum on the elementary total-two source; independent full 66-state propagation checks withheld lags. The positive-transfer moment class is supplied by the existing theorem. Exact rank is not inferred from sampled records, and the seven-mode Gram is severely ill-conditioned. On each actual level-3/5 screen with product preparation, bounded record correlations also certify a two-vector temporal subspace and compressed transfer values near 0.88702 and 0.97079 with error below 2e-5. These compressed values are not a closed two-mode spectrum or laboratory energy calibration. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy. A separate exact affine event/timestamp contract preserves the correlated rate/offset calibration set and tests held-out endpoints jointly without retuning. Missing timing or count-error bounds remain unresolved; uncertain integer counts use an explicitly disclosed continuous outer relaxation. Under a declared fixed attempt cadence, the native waiting distribution yields deadline-probability intervals. Synthetic controls and retained host measurements are distinguished; no native-event laboratory correspondence or traceability is established. A resource-clock refinement retains total native attempts alongside the ideal incident-clock history and attaches the source pulse invocation costs. Forgetting the added count reproduces every original conditional source matrix. A joint duration polytope provides conditional deadline bounds and a disjoint held-out test under an explicit affine timestamp hypothesis.
 
-**Remaining input:** No preferred universal clock is required. Relating an observer's records to modular evolution, laboratory durations or effective proper time requires an operational correspondence preserving joint and conditional observations. A common mean rate or affine label comparison does not supply that correspondence. Physical service accuracy, reference preparation and clock calibration remain explicit. The scalar benchmark time and native event parameter cannot be identified merely because they occur in one program; unbounded event protocols need well-posed stopping and complete tail control. Choosing seconds is a unit convention. The dynamical obligation is a compatible joint record law and an independently validated apparatus correspondence, rather than an absolute duration derived without calibration.
+**Remaining input:** No preferred universal clock is required. Relating an observer's records to modular evolution, laboratory durations or effective proper time requires an operational correspondence preserving joint and conditional observations. A common mean rate or affine label comparison does not supply that correspondence. Physical service accuracy, reference preparation and clock calibration remain explicit. The scalar benchmark time and native event parameter cannot be identified merely because they occur in one program; unbounded event protocols need well-posed stopping and complete tail control. Choosing seconds is a unit convention. The dynamical obligation is a compatible joint record law and an independently validated apparatus correspondence, rather than an absolute duration derived without calibration. The controller attempt-count record is an extra read service. This refinement neither propagates the raw compiled arrays nor inherits coarse-current calibration bounds for its finer record. Native attempts, pulse costs and physical seconds remain distinct; no measured timing evidence is supplied by the fixture.
 
 **Closure condition:** Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.
 
@@ -579,6 +582,7 @@ Sources:
 - [Joint incident and movement clocks with finite conversion uncertainty](../model/native_clock/CLOCK_BRIDGE.md).
 - [Retained joint clock and host comparison](../model/native_clock/clock_bridge_results.json).
 - [Paired event/clock calibration and native waiting-time push-forward](../model/laboratory_clock/README.md).
+- [Ideal-history resource refinement and conditional two-counter duration attachment](../model/laboratory_clock/resource_clock.py); exact source anchor: ` def resource_law( `.
 
 <a id="re-13"></a>
 
@@ -776,9 +780,9 @@ Public oscillator comparisons execute a supplied experimental action and apparat
 
 A retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.
 
-A finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map.
+A finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map. One continuing native occupation history has a fixed-graph Gaussian fluctuation limit whose covariance and precision follow from the actual binary generator. The incident-clock correction is explicit and independently checked against the 66-state kernel. A separately supplied periodic square family has fixed-band Gaussian convergence in the iterated observation-count then spatial-mesh limits.
 
-**Remaining input:** The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained.
+**Remaining input:** The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained. Full occupation-vector readback needs initial disclosure and every seam/current record, including remote records. A port-only observer reads only its own occupation. The fluctuation action is not a Lorentzian dynamical action; the torus family is not an established continuum of the source screens, and no uniform joint limit or physical identification follows.
 
 **Closure condition:** Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.
 
@@ -818,6 +822,7 @@ Sources:
 - [Actual ACT combined posterior projection and exact weighted comparison](../code/cosmology/tilt_posterior/README.md).
 - [Retained actual-data tilt comparison without a prospective verdict](../code/cosmology/tilt_posterior/results.json).
 - [Controlled finite bandwidth extension and matched low-mode observations](../model/interacting_band_extension/README.md).
+- [One-history occupation field, clock correction and separate torus limit](../model/physical_space_time/OCCUPATION_FIELD.md).
 
 <a id="re-23"></a>
 
@@ -886,9 +891,9 @@ Theorem attachment is checked on the actual objects: native signed-difference bl
 
 An executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.
 
-The separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically.
+The separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically. The complete claim and Lean-module inventory retains every canonical hypothesis and marks absent same-model mappings open. Restricted model connections check all seven declared domain coordinates, require sourced maps for changes, retain the whole canonical input inventory and reject circular fact dependencies. The calibration-to-incident-history connection restricts the identified 78-state current family to its invariant binary sector and derives the cap-two expected exposure 408/125, including feedback, before adding the independent source compilation error.
 
-**Remaining input:** Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. Source-screen scaling, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process.
+**Remaining input:** Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. Source-screen scaling, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process. Typed contract checks validate the stated composition ledger, not its mathematical entailment. The finite A4 full-premise witness is a synthetic branch; it is not a source-derived realization of the common physical tower. Unbound theorem contracts retain their own state, action, clock and refinement premises.
 
 **Closure condition:** For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.
 
@@ -928,6 +933,8 @@ Sources:
 - [Coherent native correspondence with arbitrary references and joint clock controls](../model/quantum_observer_correspondence/README.md).
 - [Source-compiled preparation and intervention in the continuing clock/field history](../model/compiled_clock_history/README.md).
 - [Exact original-array execution, complete-output and resource certificates](../model/compiled_clock_history/results.json).
+- [Common-current calibration propagated through the same complete compiled history](../model/compiled_clock_history/law_calibration.py); exact source anchor: ` def complete_bound( `.
+- [Explicit synthetic A4 premise inhabitant and its source-selection boundary](../Lean/Tower/FullPremiseInhabitant.lean); exact source anchor: ` theorem branch_endpoint_unconditional `.
 
 <a id="re-27"></a>
 
@@ -1001,3 +1008,1297 @@ Sources:
 - [Prepared complete smooth-history certificate and native/encoded lifting scope](../model/common_source/SMOOTH_HISTORY.md).
 - [Exact sixteen-output continuation enclosure and canonical replay](../model/common_source/smooth_history.py).
 - [All-current prepared finite/infinite comparisons with separate temporal errors](../model/common_source/smooth_history_results.json).
+
+<a id="finite-contract-coverage"></a>
+
+## Finite-contract coverage and compatible model connections
+
+This inventory covers every canonical claim, including non-theorem rows, and
+every tracked Lean source module. This is a deliberate superset of the finite
+contracts; a lexical declaration count does not decide finiteness or proof validity.
+A registry addition or source module addition requires an explicit inventory update.
+The existing Lean builds remain responsible for kernel checks.
+
+A restricted binding below records the named model clause and its source argument.
+It does not instantiate the entire registry row. All that row's assumptions and
+imports remain attached, including inputs outside the restricted clause. Claim
+classifications and consumed/open/boundary roles are preserved without conversion.
+A row with no binding has an open model mapping: realization of its own hypotheses
+and conclusion on this common observer process is not established here. A theorem
+on a different supplied fixture remains a valid theorem on that fixture.
+
+The checker requires exact produced/consumed fact names, a noncircular connection
+graph, and an explicit sourced map for every changed carrier, law, preparation,
+record access, control, clock or regime coordinate. These are machine-checked
+contract and coverage constraints. The source arguments, their mathematical
+entailment and physical relevance require separate review; strings and source
+anchors are not proofs. No entry silently discharges a canonical premise.
+
+Coverage: **339 claims**, **659 Lean source modules**,
+**12679 public theorem/lemma declarations**;
+**8 restricted model bindings** and **5 explicit connections**.
+
+### Named model domains
+
+**native_coherent.** carrier: 66 binary total-two states with arbitrary untouched finite references; law: native C with uniform independent seam and fair coin; preparation: arbitrary compatible quantum input; executed coherent and entangled preparations; records: committed regional currents and incident ticks, complete conditional quantum output; controls: ideal number-preserving union operations on ports 0,1,5; clock: two observer incident counters; scheduled attempts for cap and error bookkeeping; regime: finite two-interval protocol, cap two; no continuum or laboratory identification.
+
+**identified_current_family.** carrier: 78 total-two states with arbitrary spectator and reference coherences; law: nine-real-coordinate admissible definite-current family; preparation: nine coherent-pair quadratures on declared source code; records: coarse definite current and complete plus/complement probe outcome including abort; controls: source-compiled coherent preparations and reads; common public-record feedback; clock: addressed repair attempts, including zero current; regime: finite complete-current instrument identification with fixed-design probability tubes.
+
+**compiled_incident.** carrier: 66 binary states isometrically embedded in 512 chart states; explicit complement abort; arbitrary untouched references; law: native C with uniform independent seam and fair coin; retained complement-abort extension; preparation: declared compiled coherent or entangled preparation, no initial occupation disclosure; records: committed regional currents, incident ticks, feedback records, terminal bit, timeouts and aborts with full quantum states; controls: same union operations emitted by source compiler; exact rational propagation of raw binary arrays; clock: two observer incident counters; scheduled attempts for cap and error bookkeeping; regime: finite two-interval protocol, cap two; source-array error certificate.
+
+**calibrated_incident.** carrier: 66 binary states isometrically embedded in 512 chart states; explicit complement abort; arbitrary untouched references; law: comparison of executed raw native C with each admissible ideal current table in common tubes containing C; same independent uniform seam scheduler; preparation: executed nominal-C compiled preparation compared with its matched ideal coherent or entangled input; no initial occupation disclosure; records: committed regional currents, incident ticks, feedback records, terminal bit, timeouts and aborts with full quantum states; controls: executed nominal-C raw apparatus arrays compared through ideal C with identical ideal controls under each admissible alternative law; clock: two observer incident counters; scheduled attempts for cap and error bookkeeping; regime: finite two-interval protocol, cap two; law uncertainty plus separate source-array error.
+
+**supplied_scalar_band.** carrier: 512 low occupation states embedded in 8192 nine-mode states; law: supplied quartic torus Hamiltonian, mass-matched low projection; preparation: declared low preparation and high-mode blank; records: complete low-record histories and reduced terminal states; high modes traced only at end; controls: compiled low instruments; high dynamics continue between reads; clock: supplied scalar model time; regime: one seven-to-nine-mode enlargement on declared finite occupation codes.
+
+**synthetic_A4.** carrier: two public Boolean flags and one hidden Boolean bit; law: set-left and set-right accepted repairs; preparation: arbitrary raw configuration; records: public flag pair, erasing hidden bit; controls: two flag repairs with an actual commuting choice peak; clock: finite accepted rewrite order; regime: finite synthetic A4 premise inhabitant, no source selection or cross-regulator map.
+
+**native_occupation_average.** carrier: 66 binary total-two configurations on the twelve-port source; law: common diagonal native C/E law, uniform independent seams and fair placement coins; preparation: uniform diagonal stationary fixed-total-two law with disclosed initial occupations; records: full seam/current tape for vector readback; local port-only tape supports only its scalar occupation; controls: no feedback or interventions during one continuing occupation average; clock: all native attempts or port-zero incident attempts, including zero current; regime: exact finite laws and finite-count covariance; count-to-infinity CLT on the fixed graph; separate supplied torus has a subsequent mesh limit.
+
+**ideal_resource_clock.** carrier: 66 binary total-two source states; executed source density matrices without an added reference; law: native C with uniform independent seam and fair coin; preparation: declared coherent preparation of the ideal two-interval experiment; records: complete native observer output refined by a disclosed controller attempt count and corresponding pulse cost; controls: ideal union operations with source pulse invocation costs; an additional controller-count record service is admitted; clock: native attempt count and source pulse count; a separate common affine duration/offset hypothesis may attach timestamps; regime: finite cap-two ideal history with all timeouts; calibration and disjoint held-out timestamp intervals.
+
+### native-coherent-instrument
+
+Domain: **native_coherent**. The fixed native C protocol preserves every finite record and conditional source/reference state through the allowed local operations. All 4356 operator units support the structural correspondence proof.
+
+Established restricted facts: ` complete_native_coherent_history `.
+
+Required connected facts: None.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: The effective inverse is positive only on the transported state cone. Ideal union controls are supplied. This finite clause neither instantiates the full claim nor selects physical space, time or action.
+
+Exact source anchors:
+
+- [model/quantum_observer_correspondence/construction.py](../model/quantum_observer_correspondence/construction.py); ` def structural_certificate(): `.
+- [model/quantum_observer_correspondence/construction.py](../model/quantum_observer_correspondence/construction.py); ` def execute( `.
+
+### complete-current-identification
+
+Domain: **identified_current_family**. Nine scalar quadratures determine the classified coarse current instrument on all 78 states. The exact CP tests and reference-uniform bound epsilon <= min(1,7 delta) concern this admitted family and interface.
+
+Established restricted facts: ` full_current_instrument_error_bound `.
+
+Required connected facts: None.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: Coarse observations do not identify fine record refinements or coherent dilations. Binary-only probes cannot identify the collision coordinate n. Family membership, apparatus errors and fixed sampling design remain inputs; synthetic records do not select nature's law.
+
+Exact source anchors:
+
+- [model/repair_identification/core.py](../model/repair_identification/core.py); ` def reconstruct( `.
+- [model/repair_identification/core.py](../model/repair_identification/core.py); ` def instrument_bound( `.
+- [model/repair_identification/README.md](../model/repair_identification/README.md); ` **Theorem 2.** `.
+
+### compiled-incident-history
+
+Domain: **compiled_incident**. The source compiler supplies the preparation, union intervention and detector in the same complete incident-clock experiment. Every 512-state output, timeout and complement abort is retained. The cap-two expected native repair count is 408/125, including feedback.
+
+Established restricted facts: ` complete_compiled_output_error_bound `; ` incident_attempt_expectation `.
+
+Required connected facts: ` complete_native_coherent_history `.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: The compiled raw CP arrays need not be exactly trace preserving; their mass defect is charged. Source numerical error is separate from physical hardware fidelity. Pulse cost does not advance the native incident clock.
+
+Exact source anchors:
+
+- [model/compiled_clock_history/history.py](../model/compiled_clock_history/history.py); ` def execute( `.
+- [model/compiled_clock_history/receipt.py](../model/compiled_clock_history/receipt.py); ` def bound( `.
+- [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py); ` def exposure( `.
+
+### calibrated-complete-incident-law
+
+Domain: **calibrated_incident**. Restrict the identified full-carrier current map to the invariant binary sector and propagate uncertainty through the ideal stopped experiment. Nominal C must belong to the tubes. Expected exposure gives ideal half-trace error min(1,(408/125) epsilon). Adding the executed nominal-C source-array discrepancy bounds that raw output against each alternative ideal law.
+
+Established restricted facts: ` calibrated_complete_incident_history_bound `.
+
+Required connected facts: ` full_current_instrument_error_bound `; ` complete_compiled_output_error_bound `; ` incident_attempt_expectation `.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: Raw arrays under alternative repair laws are not executed. The homogeneous relabelled seam law is a premise, not inferred by probing one seam. Raw-array maps need not preserve trace, so their event-weight allowance is twice their half-trace bound. No physical law or duration is selected; admitted services and sampling assumptions remain explicit.
+
+Exact source anchors:
+
+- [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py); ` def complete_bound( `.
+- [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py); ` def from_tubes( `.
+- [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py); ` def from_counts( `.
+
+### supplied-first-band-control
+
+Domain: **supplied_scalar_band**. Projecting the supplied nine-mode quartic action onto its declared high blank derives the low mass adjustment. The finite off-code coupling controls complete low output with untouched references and continuing high dynamics.
+
+Established restricted facts: ` first_band_mass_matching_and_complete_low_output_bound `.
+
+Required connected facts: None.
+
+Canonical claims: ` OPH-MODEL-SHARED-SCALAR-OBSERVATIONS `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_fixed_band_scalar_observation_protocol `, ` declared_scalar_band_extension_protocol `.
+
+Retained imported results: ` canonical_lattice_scalar_quantum_simulation `, ` exact_rational_arithmetic_with_directed_root_and_pi_enclosures `, ` quadratic_form_Leibniz_identity_for_smooth_measurement `, ` symmetric_product_formula_integral_Taylor_remainder `, ` weighted_number_moment_and_projected_Duhamel_cutoff_bounds `.
+
+Boundary: This action, occupation code, blank and model time are supplied. The one-band R-squared T-squared estimate is a reduced-output bound, not a full joint-state estimate, a native-C Hamiltonian derivation or an all-band continuum result.
+
+Exact source anchors:
+
+- [model/interacting_band_extension/README.md](../model/interacting_band_extension/README.md); ` R^2 T^2 `.
+- [model/interacting_band_extension/construction.py](../model/interacting_band_extension/construction.py); ` def reduced_output_distance( `.
+
+### finite-A4-existence-witness
+
+Domain: **synthetic_A4**. An explicit finite branch combines all five A4 endpoint premises, including a nontrivial choice peak and hidden representatives. Its unconditional corollary quantifies over this constructed branch.
+
+Established restricted facts: ` synthetic_branch_public_endpoint_unique `.
+
+Required connected facts: None.
+
+Canonical claims: ` OPH-PUBLIC-WORLD-ENDPOINT-FINITE `.
+
+Retained ordinary assumptions: ` finite_inhabited_public_world_presentation `, ` injective_OPH_to_tower_public_readback_adapter `, ` repair_output_and_enabledness_quotient_congruence `, ` source_and_cross_regulator_endpoint_realization_deferred `, ` terminating_confluent_semantically_complete_labelled_repair `.
+
+Retained imported results: ` existing_OPH_repair_and_gauge_theorems `, ` finite_kernel_quotients `, ` well_founded_confluent_rewriting `.
+
+Boundary: The source does not select this synthetic branch. Its word unconditional removes the branch theorem's hypotheses; it does not establish a physical common tower, a unique Universe or a native C confluence theorem.
+
+Exact source anchors:
+
+- [Lean/Tower/FullPremiseInhabitant.lean](../Lean/Tower/FullPremiseInhabitant.lean); ` theorem branch_endpoint_unconditional `.
+- [Lean/Tower/FullPremiseInhabitant.lean](../Lean/Tower/FullPremiseInhabitant.lean); ` theorem branchQuotientCompatible `.
+
+### native-occupation-fluctuation-field
+
+Domain: **native_occupation_average**. The unchanged native binary process yields the covariance and precision of its one-history occupation-average Gaussian limit. Exact 66-state transitions check the field closure, stationary lag law and clock correction. A separate supplied torus family admits fixed-band Gaussian convergence after the time limit.
+
+Established restricted facts: ` native_occupation_covariance_and_clock_corrected_precision `.
+
+Required connected facts: None.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: The full vector needs the disclosed initial occupations and every seam/current record; it is not readable from a local incident tape. The field action describes fluctuation statistics, not a Lorentzian evolution. The torus is a different supplied architecture with an iterated time-then-mesh limit, no uniform joint limit and no continuum identification for the source screens.
+
+Exact source anchors:
+
+- [model/physical_space_time/occupation_field.py](../model/physical_space_time/occupation_field.py); ` def configuration_kernel( `.
+- [model/physical_space_time/occupation_field.py](../model/physical_space_time/occupation_field.py); ` def covariance_at_count( `.
+- [model/physical_space_time/occupation_field.py](../model/physical_space_time/occupation_field.py); ` def incomplete_tape_control( `.
+- [model/physical_space_time/OCCUPATION_FIELD.md](../model/physical_space_time/OCCUPATION_FIELD.md); ` ## Finite-graph theorem and the source-derived action `.
+
+### ideal-resource-clock-attachment
+
+Domain: **ideal_resource_clock**. An independent endpoint replay refines each ideal native history by its total scheduled-plus-feedback attempt count. Forgetting that count reproduces every ideal conditional source matrix. Source pulse costs supply a second operation counter; a common feasible duration polytope gives conditional deadline bounds and held-out tests.
+
+Established restricted facts: ` ideal_history_resource_refinement_and_conditional_duration_bounds `.
+
+Required connected facts: ` complete_native_coherent_history `.
+
+Canonical claims: ` OPH-MODEL-NATIVE-PROCESS-RECOVERY `.
+
+Retained ordinary assumptions: ` declared_coherent_proper_code_services_and_analogue_source_controls `, ` declared_incident_clock_field_protocol `, ` declared_incident_screen_refinement_protocol `, ` declared_native_binary_federation_instruments `, ` declared_native_clock_field_and_initial_state_contract `, ` declared_native_local_access_and_scheduler `.
+
+Retained imported results: ` Caputo_Liggett_Richthammer_exclusion_spectral_gap `, ` Gaussian_Green_covariance_and_generalized_free_field_construction `, ` Poisson_factorial_moments_and_finite_dependency_cones `, ` classical_CHSH_local_response_bound_and_published_Bell_null_contract `, ` conditional_law_sequential_coupling `, ` directed_integer_probability_enclosure `, ` finite_Kraus_Stinespring_construction `, ` finite_matrix_block_elimination_and_stopped_instrument_resolvents `, ` finite_state_martingale_functional_central_limit_theorem `, ` ordered_subsequence_count_at_incident_stopping_time `, ` positive_transfer_spectral_logarithm `, ` stationary_local_cylinder_similarity_under_commuting_interventions `, ` trace_distance_contraction_and_unitary_channel_composition `.
+
+Boundary: The extra controller count is an admitted read service. This is a refinement of the ideal native history, not an execution of the raw compiled-array history. PR1117 coarse-current calibration bounds do not automatically control the finer resource record. The affine timing law and timestamp errors are external hypotheses; fixture timestamps are not physical measurements.
+
+Exact source anchors:
+
+- [model/laboratory_clock/resource_clock.py](../model/laboratory_clock/resource_clock.py); ` def counted_history( `.
+- [model/laboratory_clock/resource_clock.py](../model/laboratory_clock/resource_clock.py); ` def resource_law( `.
+- [model/laboratory_clock/resource_clock.py](../model/laboratory_clock/resource_clock.py); ` def deadline( `.
+
+### Sourced domain connections
+
+**native-coherent-instrument → compiled-incident-history** consumes ` complete_native_coherent_history `.
+
+- carrier: Use the checked 66-to-512 isometry and retain the complement as an explicit abort branch.
+- law: Embed every native code Kraus map and add the common complement-abort map; do not reinterpret padding as native states.
+- preparation: Specialize the arbitrary-input identity to the declared coherent/reference preparation and charge its emitted-array error.
+- records: Append complement-abort labels and the terminal detector while retaining all old words, including zero branches.
+- controls: Compare the emitted raw arrays with the same ideal union operations in complete output norm.
+- regime: Keep cap two and add the independently certified source-array error, including mass defect.
+
+Source: [model/compiled_clock_history/README.md](../model/compiled_clock_history/README.md) at `` Write `P=VV*` and `Q=I-P`. ``.
+
+**complete-current-identification → calibrated-complete-incident-law** consumes ` full_current_instrument_error_bound `.
+
+- carrier: Restrict the same complete 78-state current instrument to the invariant 66-state binary sector; isometric embedding and common abort extension cannot increase its diamond discrepancy.
+- law: Require nominal C as a feasible tube witness and use any admissible table in those same tubes, with a shared seam law at every call.
+- preparation: The all-input/reference norm bound covers the incident protocol preparation without a new calibration fit.
+- records: Forget inaccessible probe/private labels and retain the common current/incident-clock history; do not compare fine coin records or coherent environments.
+- controls: Use identical ideal intervening controls for law comparison and account for compiled-array error separately.
+- clock: Sum call error over the state-independent live-branch weights of the incident scheduler, including the feedback repair.
+- regime: Apply the bound to the complete cap-two two-interval output with every timeout retained.
+
+Source: [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py) at ` def from_tubes( `.
+
+**compiled-incident-history → calibrated-complete-incident-law** consumes ` complete_compiled_output_error_bound `.
+
+- law: Compare the identical compiled apparatus first with ideal C, then with each admissible calibrated ideal current table; no raw-map trace-preserving assumption is inserted.
+- regime: Add the reference-uniform calibration discrepancy and compilation discrepancy on the common complete output alphabet.
+- preparation: Compare the nominal-C raw preparation to the matched ideal preparation before replacing ideal C by another admissible ideal instrument.
+- controls: The native-law comparison keeps ideal controls identical; the separate source-array discrepancy is for the executed nominal-C apparatus only.
+
+Source: [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py) at ` def complete_bound( `.
+
+**compiled-incident-history → calibrated-complete-incident-law** consumes ` incident_attempt_expectation `.
+
+- law: Compare the identical compiled apparatus first with ideal C, then with each admissible calibrated ideal current table; no raw-map trace-preserving assumption is inserted.
+- regime: Add the reference-uniform calibration discrepancy and compilation discrepancy on the common complete output alphabet.
+- preparation: Compare the nominal-C raw preparation to the matched ideal preparation before replacing ideal C by another admissible ideal instrument.
+- controls: The native-law comparison keeps ideal controls identical; the separate source-array discrepancy is for the executed nominal-C apparatus only.
+
+Source: [model/compiled_clock_history/law_calibration.py](../model/compiled_clock_history/law_calibration.py) at ` def complete_bound( `.
+
+**native-coherent-instrument → ideal-resource-clock-attachment** consumes ` complete_native_coherent_history `.
+
+- carrier: Specialize the reference-complete native correspondence to the executed ideal source density matrices.
+- preparation: Use the same coherent preparation and omit the separate entangled-reference setting.
+- records: Admit a classical controller attempt-count record in the endpoint replay; equality to the earlier output holds after forgetting it. Coarse law calibration does not identify this finer instrument.
+- controls: Keep the ideal operations and attach their pulse invocation costs; admit the count-record service explicitly rather than inferring it from incident ticks.
+- clock: Keep attempt and pulse counters distinct; timestamp conversion additionally assumes a shared affine duration law, with calibration and held-out endpoints.
+- regime: Refine the complete cap-two ideal output; do not normalize or reinterpret raw compiled-array weights as probabilities.
+
+Source: [model/laboratory_clock/resource_clock.py](../model/laboratory_clock/resource_clock.py) at ` def resource_law( `.
+
+### Every canonical contract
+
+A/I count ordinary assumption/import names, not independent or unproved premises.
+Each identifier points to its owning evidence; the complete names and statements
+remain in the [canonical registry](../claims/claim_registry.yaml). An open mapping
+does not add an antecedent to an explicit non-consumer theorem.
+
+| Canonical claim | Restricted model mapping | A / I | Original premise roles |
+| --- | --- | ---: | --- |
+| [OPH-SYN-FORMAL-BASIS](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02 |
+| [OPH-OBS-PATCH-DEF](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-CARRIER-PRESENTATION-INVARIANCE](../paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-UNIFIED-TYPED-SPINE](../paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex) | Open: no same-model instantiation recorded | 7 / 5 | open: PR-03, PR-04, PR-51, PR-52, PR-53, PR-54, PR-64, PR-65 |
+| [OPH-CONS-D1](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 11 / 3 | consumed: PR-01 |
+| [OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 2 / 2 | consumed: PR-77, PR-78 |
+| [OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 2 / 3 | consumed: PR-79, PR-80; boundary: PR-78 |
+| [OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-01, PR-79, PR-80 |
+| [OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 2 / 3 | consumed: PR-81; boundary: PR-82 |
+| [OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-01, PR-77 |
+| [OPH-CONS-BFT-PREPARED-LOCK](../paper/appendix_B_bft_qecc_extensions.tex) | Open: no same-model instantiation recorded | 15 / 1 | explicit_non_consumer |
+| [OPH-CONS-REFINEMENT-MODULI](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 8 / 2 | explicit_non_consumer |
+| [OPH-CONS-PROTECTED-BEHAVIOR-PROFILE](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 6 / 4 | explicit_non_consumer |
+| [OPH-CONS-CROSS-SOURCE-ENDPOINT](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 3 / 1 | explicit_non_consumer |
+| [OPH-GR-PORT-RESPONSE-COMPLETION](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 3 | explicit_non_consumer |
+| [OPH-GR-D2-COLLAR-RECOVERY](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-GR-D5](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 8 / 5 | consumed: PR-23, PR-24, PR-25, PR-26, PR-27, PR-28 |
+| [OPH-GR-D3-CAP-H3](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 4 | explicit_non_consumer |
+| [OPH-GR-D3-H3-LOCALIZATION](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 7 / 4 | explicit_non_consumer |
+| [OPH-GR-D3H-GEOMETRY-PRODUCER](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 6 / 3 | explicit_non_consumer |
+| [OPH-GR-D4-NULLNET-STANDARDNESS](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 8 / 5 | explicit_non_consumer |
+| [OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 7 / 10 | consumed: PR-16; open: PR-15, PR-52 |
+| [OPH-GR-FINITE-LOCAL-DOMAIN](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-GR-D4C-LOCAL-STRESS](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 6 / 2 | consumed: PR-24, PR-25 |
+| [OPH-GR-D4D-ENTROPY-BRIDGE](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-GR-D5A-ABSOLUTE-EINSTEIN](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 17 / 2 | consumed: PR-23, PR-24, PR-25, PR-26, PR-27, PR-28 |
+| [OPH-GR-E2E-BRANCH-ENTRY](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 16 / 1 | consumed: PR-23, PR-24, PR-25, PR-26, PR-27, PR-28 |
+| [OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 3 | explicit_non_consumer |
+| [OPH-GR-D6-CAPACITY](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 9 / 4 | explicit_non_consumer |
+| [OPH-GR-D6-READBACK-NOGO](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 5 | boundary: PR-51 |
+| [OPH-GR-D6-A5-FINITE-CONTROL](../paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-GR-D6-HORIZON-RECORD](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-42 |
+| [OPH-GR-DS-MU2-IDENTITY](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-GR-DS-CAPACITY-TRANSFER](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-GR-DS-SHOCK-SIGN-ATTACHMENT](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Open: no same-model instantiation recorded | 5 / 2 | open: PR-42, PR-52 |
+| [OPH-GR-DS-DISCRETE-SHOCK-SPECTRUM](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-REPAIR-SHOCK-DOMAIN-BOUNDARY](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-COSMO-SCREEN-SPECTRUM](../paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex) | Open: no same-model instantiation recorded | 10 / 5 | explicit_non_consumer |
+| [OPH-WZ-STRICT-1L-POLE-MAP](../paper/tex_fragments/STRICT_ONE_LOOP_WZ_POLE_MAP_PORT.tex) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-47, PR-48, PR-49, PR-50, PR-54 |
+| [OPH-SM-Q1-LOCAL-G6](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-47, PR-48, PR-49, PR-50, PR-54 |
+| [OPH-SM-Q2E-CHIRAL-MEASURE-CRITERION](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-47, PR-54 |
+| [OPH-SM-Q2H-POSITIVE-HAMILTONIAN-SOUNDNESS](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-54 |
+| [OPH-SM-Q3-BV-RESTORATION](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-54 |
+| [OPH-SM-Q4-OS-OBSERVABLE-SECTOR](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 1 / 1 | open: PR-54 |
+| [OPH-SM-Q4-RESONANCE-CONTINUATION](../paper/tex_fragments/QFT_Q1_Q4_WZ_THEOREM_PORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-54 |
+| [OPH-SCREEN-ECHOSAHEDRAL-SELECTOR](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-SCREEN-GALOIS-FRAME-BOUNDARY](../code/a5_closure/galois_port_frame_certificate.md) | Open: no same-model instantiation recorded | 4 / 3 | boundary: PR-53 |
+| [OPH-A5-PRIMITIVE-PORT-SPIN6](../flagship/from_observer_consensus_to_standard_physics.tex) | Open: no same-model instantiation recorded | 6 / 3 | open: PR-15, PR-53 |
+| [OPH-A5-CARRIER-CLASS-DISPERSION-BAND](../flagship/from_observer_consensus_to_standard_physics.tex) | Open: no same-model instantiation recorded | 6 / 4 | explicit_non_consumer |
+| [OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-TIME-ORDER-TYPE-LEDGER](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-BOUNDED-OBSERVER-TIME-CALIBRATION](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02 |
+| [OPH-CONSENSUS-TOWER-INTERFACE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02 |
+| [OPH-PUBLICIZATION-DYNAMICS-FINITE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 7 / 4 | consumed: PR-02; open: PR-15 |
+| [OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 5 | consumed: PR-43 |
+| [OPH-FINITE-QUANTUM-LIMITATION-SUITE](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 3 / 4 | consumed: PR-02 |
+| [OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-59; open: PR-47 |
+| [OPH-FINITE-BORN-FRAME-RANK-GAP](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 6 / 5 | consumed: PR-02, PR-03; open: PR-04, PR-64, PR-65 |
+| [OPH-THERMO-FOUR-LAW-PACKAGE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 8 / 4 | consumed: PR-07, PR-08, PR-15 |
+| [OPH-THERMO-SOURCE-REALIZATION-AUDIT](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 2 | boundary: PR-07 |
+| [OPH-FINITE-TRANSPORT-GREEN-KUBO-DIFFUSION](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 6 / 3 | open: PR-07, PR-15 |
+| [OPH-FINITE-LOCALITY-NOSIGNALLING](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-44; open: PR-52 |
+| [OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER](../Lean/ObserverPatchHolography/Locality/AdaptiveScheduler.lean) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-44; open: PR-52 |
+| [OPH-FINITE-HISTORY-VARIATIONAL-HELPERS](../Lean/Variational/MechanicsAdequacySurface.lean) | Open: no same-model instantiation recorded | 7 / 5 | consumed: PR-05, PR-06, PR-45; open: PR-15 |
+| [OPH-A5-SEAM-CURRENT-EDGE30](../code/a5_fingerprint/seam_current_edge_prediction.py) | Open: no same-model instantiation recorded | 14 / 3 | consumed: PR-20, PR-21, PR-22; open: PR-15, PR-53 |
+| [OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 2 / 3 | open: PR-53, PR-54 |
+| [OPH-SCREEN-PORT-CURRENT-INNER](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 8 / 4 | consumed: PR-09, PR-10, PR-11; open: PR-54 |
+| [OPH-SM-SIMPLE-GUT-XY-CHANNEL-ABSENCE](../code/a5_closure/receipts/port_current_inner_reference.receipt.json) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT](../code/a5_closure/super_tannakian_matter_lift_certificate.md) | Open: no same-model instantiation recorded | 7 / 5 | consumed: PR-59; open: PR-46, PR-47, PR-48, PR-54 |
+| [OPH-SCREEN-CARRIER-SUPPORT-BRIDGE](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-FINITE-CONSERVATION-WARD-PRECURSOR](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-GAUGE-D7-D9](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 6 / 4 | consumed: PR-59; open: PR-35, PR-46, PR-47, PR-54 |
+| [OPH-QUARK-REGISTER-CLEBSCH](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 8 / 4 | consumed: PR-59; open: PR-50 |
+| [OPH-QUARK-YUKAWA-TWO-MODULUS-NONIDENTIFIABILITY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 6 / 3 | open: PR-48, PR-50 |
+| [OPH-KOIDE-CIRCULANT-IDENTITY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 3 / 4 | consumed: PR-13; open: PR-47, PR-50 |
+| [OPH-A5-REAL-AXIS-CABIBBO-NOGO](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 3 / 3 | boundary: PR-50 |
+| [OPH-W5-STABILISER-POTENTIAL-BOUNDARY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 4 / 4 | boundary: PR-50 |
+| [OPH-SCREEN-A5-SM-RECOGNITION](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 12 / 4 | consumed: PR-09, PR-10, PR-11, PR-36, PR-59; open: PR-35, PR-46, PR-47, PR-48, PR-54 |
+| [OPH-GAUGE-KINETIC-HISTORY-BINDING](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-05; open: PR-54 |
+| [OPH-SM-ROUTE-IDENTIFICATION](../paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-35, PR-46, PR-47, PR-54 |
+| [OPH-GAUGE-EXTERIOR-SM-WITNESS](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-59; open: PR-47, PR-48 |
+| [OPH-Q-PN-CLOSURE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 7 / 2 | consumed: PR-17, PR-37; open: PR-38, PR-39, PR-51 |
+| [OPH-Q-N-RESERVE-CANDIDATES](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 13 / 3 | consumed: PR-17, PR-51 |
+| [OPH-HIER-EW](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 9 / 1 | consumed: PR-17, PR-51, PR-59 |
+| [OPH-SCREEN-24-CLOCK-DETERMINANT](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 2 / 3 | open: PR-15, PR-50 |
+| [OPH-SOURCE-DIMENSIONLESS-GAP](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-SCREEN-MODULAR-GEARING](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 5 / 4 | open: PR-07, PR-15, PR-42 |
+| [OPH-ALPHA-PIXEL](../extra/fine_structure_constant_derivation.tex) | Open: no same-model instantiation recorded | 5 / 2 | consumed: PR-17, PR-37; open: PR-14, PR-38, PR-39 |
+| [OPH-DM-CONT](../cosmology/oph_dark_matter_paper.tex) | Open: no same-model instantiation recorded | 5 / 6 | explicit_non_consumer |
+| [OPH-EDGE-HEAT-KERNEL-FINITE-DIAGNOSTICS](../paper/tex_fragments/PAPER.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-YM-GAP](../extra/yang_mills_gap_clay_problem.tex) | Open: no same-model instantiation recorded | 7 / 3 | open: PR-54 |
+| [OPH-STRING-SELECTOR](../paper/archive/observer_patch_holography_as_string_vacuum_selector.tex) | Open: no same-model instantiation recorded | 8 / 2 | explicit_non_consumer |
+| [OPH-IBM-GENERATIVE-REPAIR](../code/ibm_quantum_cloud/protocols/BLINDED_GENERATIVE_REPAIR_KERNEL.md) | Open: no same-model instantiation recorded | 7 / 4 | explicit_non_consumer |
+| [OPH-THINKING-PATCH](../paper/archive/thinking_as_patch_net_fixed_point_search.tex) | Open: no same-model instantiation recorded | 5 / 3 | explicit_non_consumer |
+| [OPH-PARADISE](../paper/archive/paradise_as_fixed_point_consensus.tex) | Open: no same-model instantiation recorded | 3 / 1 | explicit_non_consumer |
+| [OPH-PUBLIC-WORLD-ENDPOINT-FINITE](../paper/observers_are_all_you_need.tex) | finite-A4-existence-witness | 5 / 3 | consumed: PR-01 |
+| [OPH-CANONICAL-LORENTZ-MODULE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-FINITE-CAUSAL-OBSERVER-NET](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 4 | consumed: PR-32, PR-33, PR-34, PR-44; open: PR-52 |
+| [OPH-FINITE-HOLONOMY-CHARACTER-PHASE](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 4 | open: PR-46, PR-52, PR-54 |
+| [OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 4 | explicit_non_consumer |
+| [OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 3 / 3 | open: PR-52, PR-54, PR-58 |
+| [OPH-FINITE-UNITARY-SCATTERING-LIMIT-NO-GO](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 1 / 4 | explicit_non_consumer |
+| [OPH-GEOMETRY-INVERSE-SQUARE-SHELL](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 3 / 2 | consumed: PR-18, PR-19; open: PR-52 |
+| [OPH-GEOMETRY-KINEMATIC-MASS-SHELL](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-15, PR-52 |
+| [OPH-GEOMETRY-LAYERED-DISCRETE-GAUSS](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 3 | consumed: PR-29, PR-30, PR-31 |
+| [OPH-EM-POSITION-SPACE-MAXWELL-COULOMB](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 1 / 3 | open: PR-53, PR-54 |
+| [OPH-QUANTUM-TSIRELSON-SATURATION](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-02, PR-44; open: PR-52 |
+| [OPH-QUANTUM-OPERATIONAL-PHASE-INTERFACE](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-02; open: PR-03, PR-04, PR-64, PR-65 |
+| [OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-32, PR-33, PR-34; open: PR-52, PR-58 |
+| [OPH-MECH-ENRICHMENT-CHARACTERIZATION](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 2 / 2 | boundary: PR-06 |
+| [OPH-THERMO-COHERENT-REFINEMENT-ENVELOPE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-07, PR-08, PR-15 |
+| [OPH-EM-LOCAL-FACE-MAXWELL-STATIC-COMPOSITION](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-53, PR-54 |
+| [OPH-QUANTUM-TRIPLE-CARRIER-JOIN](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-32, PR-34; open: PR-52, PR-58 |
+| [OPH-THERMO-COFINAL-SPECTRAL-TAIL-COMPOSITION](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-07, PR-08, PR-15 |
+| [OPH-EM-TEMPORAL-MAXWELL-EVOLUTION-CONTINUITY](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-66; open: PR-15, PR-53, PR-54 |
+| [OPH-QUANTUM-HINGE-FIBERED-JOIN-AND-SLICE-REGION-DICHOTOMY](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 3 / 2 | consumed: PR-32, PR-33, PR-34; open: PR-52, PR-58 |
+| [OPH-QUANTUM-PHASE-MODEL-DETERMINATION-BOUNDARY](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-02; open: PR-03, PR-04, PR-64, PR-65 |
+| [OPH-GEOMETRY-INTERNAL-CLOCK-REST-FREQUENCY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 4 / 2 | open: PR-15, PR-52 |
+| [OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 5 / 2 | consumed: PR-59, PR-67, PR-68, PR-69; open: PR-47, PR-48, PR-49, PR-50, PR-54 |
+| [OPH-MECH-POLYNOMIAL-BOOST-SELECTION](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-45; boundary: PR-06 |
+| [OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION](../Lean/Screen/AssembledActionComposition.lean) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-59, PR-67, PR-68, PR-69; open: PR-35, PR-36, PR-46, PR-47, PR-48, PR-49, PR-50, PR-54 |
+| [OPH-QFT-CAUSAL-ORDER-COMPOSITION](../Lean/Geometry/CausalOrderComposition.lean) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-16, PR-44, PR-52 |
+| [OPH-GEOMETRY-FREE-EVOLUTION-PERSISTENCE](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-15, PR-52, PR-54 |
+| [OPH-EVENTALGEBRA-SOURCE-REACHABILITY-DIAGONAL-CHSH](../Lean/EventAlgebra/SourceReachabilityDelimitation.lean) | Open: no same-model instantiation recorded | 3 / 2 | consumed: PR-02, PR-44; open: PR-52 |
+| [OPH-EVENTALGEBRA-PAULI-MINIMAL-COUPLING-SQUARE](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-15, PR-47, PR-52, PR-54 |
+| [OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT](../Lean/Screen/GlobalFormCharacterDescent.lean) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-35, PR-59; open: PR-46 |
+| [OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE](../Lean/Geometry/EventPopulationChartInterface.lean) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-16, PR-52 |
+| [OPH-SCREEN-FERMION-SECTOR-ASSEMBLY](../Lean/Screen/FermionSectorAssembly.lean) | Open: no same-model instantiation recorded | 4 / 3 | open: PR-35, PR-36, PR-46, PR-47, PR-48, PR-49, PR-50, PR-54, PR-59 |
+| [OPH-GEOMETRY-COMMON-WORLD-TWO-ISLAND-WITNESS](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 3 | consumed: PR-59, PR-66, PR-67, PR-68, PR-69; open: PR-15, PR-16, PR-44, PR-47, PR-48, PR-49, PR-50, PR-52, PR-53, PR-54 |
+| [OPH-QUANTUM-PHASE-OPERATION-RECORDED-DECISION-ATTAINMENT](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Open: no same-model instantiation recorded | 5 / 3 | consumed: PR-18, PR-19; open: PR-52 |
+| [OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 5 / 2 | consumed: PR-59, PR-67, PR-68; open: PR-47, PR-48, PR-49, PR-54 |
+| [OPH-QFT-JOIN-RECORD-NET-MORPHISM](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 5 / 2 | consumed: PR-32, PR-33, PR-34; open: PR-52, PR-58 |
+| [OPH-CONS-SCHEDULER-CLASS-CAPACITY-SPLIT](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 3 / 2 | consumed: PR-60, PR-61, PR-62, PR-63 |
+| [OPH-QUANTUM-OPERATIONAL-ADDITIVITY-BOUNDARY](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-04; open: PR-52, PR-64, PR-65; boundary: PR-03 |
+| [OPH-QFT-OPERATOR-LAYER-MORPHISM-BOUNDARY](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 4 / 2 | consumed: PR-32, PR-33, PR-34; open: PR-52, PR-58 |
+| [OPH-GEOMETRY-COMMON-WORLD-ISLAND-BRIDGE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-18, PR-19; open: PR-15, PR-52, PR-53, PR-54 |
+| [OPH-SCREEN-GAUGE-SECTOR-BRACKET-COMPLETION](../Lean/Screen/GaugeSectorBracketCompletion.lean) | Open: no same-model instantiation recorded | 4 / 2 | open: PR-35, PR-36, PR-46, PR-47, PR-48, PR-49, PR-50, PR-54, PR-59 |
+| [OPH-SCREEN-CHARGED-CURRENT-DICTIONARY](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Open: no same-model instantiation recorded | 5 / 2 | consumed: PR-59, PR-67, PR-68; open: PR-47, PR-48, PR-49, PR-54 |
+| [OPH-COMPUTATION-REPAIR-PROGRAM-BOUNDARY](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 1 / 2 | consumed: PR-84 |
+| [OPH-COMPUTATION-FIXED-FEDERATION-ENDPOINT](../extra/observable_normal_forms.tex) | Open: no same-model instantiation recorded | 1 / 1 | consumed: PR-84 |
+| [OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION](../paper/reality_as_consensus_protocol.tex) | Open: no same-model instantiation recorded | 2 / 3 | consumed: PR-84, PR-85 |
+| [OPH-QUANTUM-LUEDERS-PHASE-INSTRUMENT](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-EVENTALGEBRA-SOURCE-PHASE-EFFECT-SELECTION](../Lean/EventAlgebra/SourcePhaseSelection.lean) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-EVENTALGEBRA-SOURCE-PHASE-INSTRUMENT-OUTCOME-BRIDGE](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-EVENTALGEBRA-SOURCE-PHASE-COMMON-PREPARATION-HULL](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-EVENTALGEBRA-SOURCE-PHASE-BORN-WEIGHT-BOUNDARY](../extra/machine_checked_finite_event_algebras.tex) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-02, PR-04; open: PR-03, PR-52, PR-64, PR-65 |
+| [OPH-EVENTALGEBRA-PRODUCT-SPLIT-SLOT-LOCAL-CHSH](../Lean/EventAlgebra/ProductSplitSeparability.lean) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-02, PR-44; open: PR-52 |
+| [OPH-GR-EINSTEIN-BRANCH-INHABITANT](../Lean/Geometry/EinsteinBranchInhabitant.lean) | Open: no same-model instantiation recorded | 3 / 4 | consumed: PR-07, PR-42; open: PR-52; boundary: PR-15 |
+| [OPH-EM-SCALED-MAXWELL-STABILITY-ACTION](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 5 / 3 | consumed: PR-66; open: PR-15, PR-53, PR-54 |
+| [OPH-GEOMETRY-COMMON-WORLD-INSTRUMENT-JOIN](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 6 / 4 | consumed: PR-02, PR-04, PR-07, PR-18, PR-19, PR-42, PR-66; open: PR-03, PR-15, PR-52, PR-53, PR-54, PR-64, PR-65 |
+| [OPH-QFT-COLIMIT-NORMED-COMPLETION](../Lean/QFT/ColimitNormedCompletion.lean) | Open: no same-model instantiation recorded | 3 / 3 | open: PR-52, PR-58 |
+| [OPH-QFT-COMPLETED-COLIMIT-GNS-INTERFACE](../Lean/QFT/ColimitGNSRepresentation.lean) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-52, PR-58 |
+| [OPH-QFT-SELECTED-STATE-GNS-ATTACHMENT](../Lean/QFT/ColimitSelectedStateGNS.lean) | Open: no same-model instantiation recorded | 1 / 4 | open: PR-52, PR-58 |
+| [OPH-QFT-FINITE-TWO-SITE-ISING-HILBERT-DYNAMICS](../Lean/QFT/FiniteTwoSiteIsingField.lean) | Open: no same-model instantiation recorded | 1 / 3 | open: PR-15, PR-52, PR-54, PR-58 |
+| [OPH-QFT-SELECTED-GNS-ISING-HAMILTONIAN-COMPOSITION](../Lean/QFT/FiniteTwoSiteIsingColimitGNS.lean) | Open: no same-model instantiation recorded | 1 / 3 | open: PR-15, PR-52, PR-54, PR-58 |
+| [OPH-QFT-SOURCE-HISTORY-GNS-HAMILTONIAN-ATTACHMENT](../Lean/QFT/SourceHistoryGNSDynamics.lean) | Open: no same-model instantiation recorded | 1 / 4 | open: PR-15, PR-52, PR-54, PR-58 |
+| [OPH-QFT-SOURCE-HISTORY-THREE-SLOT-LOCAL-GNS-DYNAMICS](../Lean/QFT/SourceHistoryThreeSlotLocalGNS.lean) | Open: no same-model instantiation recorded | 1 / 3 | open: PR-15, PR-52, PR-54, PR-58 |
+| [OPH-DM-COLLAR-SATURATION](../Lean/ObserverPatchHolography/EinsteinBranch/CollarScaleSaturation.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-DM-DEEP-PROFILE-CHARACTERIZATION](../Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-QFT-SOURCE-HISTORY-STATE-PRESERVING-RECORD-NET](../Lean/QFT/SourceHistoryExpectationNet.lean) | Open: no same-model instantiation recorded | 1 / 3 | open: PR-15, PR-52, PR-54, PR-58 |
+| [OPH-EM-CERTIFIED-SCALED-STEP-INSTRUMENT](../Lean/Screen/CertifiedScaledStepInstrument.lean) | Open: no same-model instantiation recorded | 3 / 2 | consumed: PR-66; open: PR-15, PR-53, PR-54 |
+| [OPH-DM-PER-CUT-COMPOSITION](../Lean/ObserverPatchHolography/EinsteinBranch/PerCutCollarComposition.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-DM-SPARSE-DEFECT-MECHANISM](../Lean/ObserverPatchHolography/EinsteinBranch/SparseRecordDefectWitness.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-DM-COLLAR-PREMISE-DERIVATION](../Lean/ObserverPatchHolography/EinsteinBranch/CollarPremiseDerivation.lean) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-DM-FINITE-CAP-GENERATOR-SPLIT](../Lean/ObserverPatchHolography/EinsteinBranch/FiniteCapGeneratorSplit.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-QUANTUM-SOURCE-BOUND-INSTRUMENT-INTERFACE](../Lean/EventAlgebra/SourceBoundInstrumentInterface.lean) | Open: no same-model instantiation recorded | 2 / 1 | consumed: PR-02, PR-04; open: PR-64, PR-65; boundary: PR-03 |
+| [OPH-GEOMETRY-COMMON-WORLD-MAXWELL-CLOCK-JOIN](../Lean/Geometry/CommonWorldMaxwellClockJoin.lean) | Open: no same-model instantiation recorded | 2 / 1 | consumed: PR-02, PR-04, PR-07, PR-18, PR-19, PR-42, PR-66; open: PR-03, PR-15, PR-52, PR-53, PR-54, PR-64, PR-65 |
+| [OPH-DE-FIXED-CAPACITY-WLAW](../Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-GW-INTEGER-K-COMB-TEMPLATE](../code/gravitation/ringdown_comb/integer_k_comb_template.py) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-CAL-SI-ANCHOR-IMPORT](../Lean/Thermodynamics/PhysicalCalibrationImport.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15 |
+| [OPH-GEOMETRY-COMMON-WORLD-JOINT-ACTION](../Lean/Geometry/CommonWorldJointAction.lean) | Open: no same-model instantiation recorded | 3 / 1 | consumed: PR-02, PR-04, PR-07, PR-18, PR-19, PR-42, PR-66; open: PR-03, PR-15, PR-52, PR-53, PR-54, PR-64, PR-65 |
+| [OPH-EM-DISPERSION-ARMING-INTERFACE](../Lean/Screen/DispersionArmingInterface.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-70, PR-71, PR-72, PR-73, PR-74, PR-75, PR-76 |
+| [OPH-QFT-SOURCE-CLOCK-CANDIDATE](../Lean/QFT/SourceClockCandidate.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15 |
+| [OPH-QUANTUM-INS03-EXPORT-VALIDATOR](../code/phase_instrument_export/ins03_export_validator.py) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-64, PR-65 |
+| [OPH-GEOMETRY-SCREEN-CARRIER-MAP-CANDIDATE](../Lean/Geometry/ScreenCarrierMapCandidate.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52, PR-53 |
+| [OPH-DM-MATCHED-OBSERVABLE-DIAGNOSTIC](../code/cosmology/rar_deep_regime/matched_observable_diagnostic.py) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-QUANTUM-INS03-V2-REPLAY-GATE](../code/phase_instrument_export/v2/PRIMITIVE_GENERATION_SEMANTICS.md) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-64, PR-65 |
+| [OPH-YM-FIBER-RATE-COMPARISON](../Lean/Screen/KogutSusskindFiberRateComparison.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-GEOMETRY-CARRIER-DYNAMICS-COMPATIBILITY](../Lean/Geometry/CarrierDynamicsCompatibility.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15, PR-52, PR-53 |
+| [OPH-DM-ROTATION-CURVE-PROFILE-LIKELIHOOD](../code/cosmology/rar_deep_regime/joint_likelihood/joint_rar_likelihood.py) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-QFT-ENLARGED-TARGET-RECORD-EMBEDDING](../Lean/QFT/EnlargedTargetRecordEmbedding.lean) | Open: no same-model instantiation recorded | 1 / 1 | open: PR-15, PR-52 |
+| [OPH-YM-GAUGE-ORBIT-QUOTIENT-DESCENT](../Lean/Screen/GaugeOrbitQuotientGap.lean) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-QFT-SOURCE-RECURRENCE-CLOCK-PRECURSOR](../Lean/QFT/SourceRecurrenceClock.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15 |
+| [OPH-GEOMETRY-CHARGE-FIXED-INTERACTION](../Lean/Geometry/ChargeFixedInteraction.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15, PR-52, PR-54 |
+| [OPH-GEOMETRY-INTERNAL-ENERGY-INERTIA-PRECURSOR](../Lean/Geometry/InternalEnergyInertia.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15, PR-52, PR-54 |
+| [OPH-EM-LOCAL-ENERGY-BALANCE](../Lean/Screen/LocalEnergyBalance.lean) | Open: no same-model instantiation recorded | 1 / 1 | open: PR-52, PR-53 |
+| [OPH-GEOMETRY-PORT-CHARGE-MINIMAL-COUPLING](../Lean/Geometry/PortChargeMinimalCoupling.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52, PR-54 |
+| [OPH-GEOMETRY-COMPOSITE-MOMENTUM-COVARIANCE](../Lean/Geometry/CompositeMomentumCovariance.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15, PR-52, PR-54 |
+| [OPH-GEOMETRY-PROPER-TIME-INTERNAL-ACTION](../Lean/Geometry/ProperTimeInternalAction.lean) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-15, PR-52, PR-54 |
+| [OPH-EM-CARRIER-MODE-OSCILLATORS](../Lean/Screen/CarrierModeOscillators.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52, PR-53 |
+| [OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION](../Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52 |
+| [OPH-THERMO-MODULAR-ENERGY-ADDITIVITY](../Lean/Thermodynamics/ModularEnergyAdditivity.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-54 |
+| [OPH-GEOMETRY-WORLDLINE-HOP-TRANSPORT](../Lean/Geometry/WorldlineHopTransport.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-52, PR-53, PR-54 |
+| [OPH-THERMO-COLLAR-TEMPERATURE-READING](../Lean/Thermodynamics/CollarTemperatureReading.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52 |
+| [OPH-EM-CARRIER-MODE-EQUIVARIANCE](../Lean/Screen/CarrierModeEquivariance.lean) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-15, PR-52, PR-53 |
+| [OPH-GEOMETRY-TRANSPORTED-CHARGE-FORCE-LAW](../Lean/Geometry/TransportedChargeForceLaw.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-52, PR-53, PR-54 |
+| [OPH-GEOMETRY-SEAM-STEP-SPEED-LIMIT](../Lean/Geometry/SeamStepSpeedLimit.lean) | Open: no same-model instantiation recorded | 2 / 1 | open: PR-15, PR-52, PR-53 |
+| [OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES](../Lean/Geometry/SourceClockRateAlongWorldlines.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-52, PR-54 |
+| [OPH-EM-GOLDEN-SECTOR-CHARACTERS](../Lean/Screen/GoldenSectorCharacters.lean) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-52, PR-53 |
+| [OPH-GEOMETRY-PROPER-LENGTH-CLOCKED-CHAIN](../Lean/Geometry/ProperLengthClockedChain.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-52, PR-54 |
+| [OPH-EM-GOLDEN-SECTOR-IRREDUCIBILITY](../Lean/Screen/GoldenSectorIrreducibility.lean) | Open: no same-model instantiation recorded | 1 / 1 | open: PR-52, PR-53 |
+| [OPH-GEOMETRY-TIMELIKE-CLASS-FORCE-LAW](../Lean/Geometry/TimelikeClassForceLaw.lean) | Open: no same-model instantiation recorded | 3 / 1 | open: PR-15, PR-52, PR-53, PR-54 |
+| [OPH-EM-CARRIER-EVOLUTION-FLOW](../Lean/Screen/CarrierEvolutionFlow.lean) | Open: no same-model instantiation recorded | 1 / 1 | open: PR-15, PR-52, PR-53 |
+| [OPH-QUANTUM-INSTRUMENT-SELECTION-BY-CERTAIN-STATES](../Lean/EventAlgebra/InstrumentSelectionByCertainStates.lean) | Open: no same-model instantiation recorded | 3 / 2 | open: PR-02, PR-03, PR-04, PR-52, PR-64, PR-65 |
+| [OPH-EM-SOURCED-FIELD-CONSISTENCY](../Lean/Screen/SeamChargeContinuity.lean) | Open: no same-model instantiation recorded | 5 / 2 | open: PR-15, PR-53, PR-54 |
+| [OPH-EM-GOLDEN-SECTOR-COMPLEX-IRREDUCIBILITY](../Lean/Screen/GoldenSectorComplexIrreducibility.lean) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-52, PR-53 |
+| [OPH-EM-FIELD-SECTOR-ENERGY-INNER-PRODUCT](../Lean/Screen/FieldSectorEnergyInnerProduct.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52, PR-53 |
+| [OPH-EM-CURL-SECTOR-EIGENBASIS](../Lean/Screen/CurlSectorEigenbasis.lean) | Open: no same-model instantiation recorded | 2 / 2 | open: PR-15, PR-52, PR-53 |
+| [OPH-SEAM-MAXWELL-CONTINUUM](../paper/screen_microphysics_and_observer_synchronization.tex) | Open: no same-model instantiation recorded | 5 / 4 | explicit_non_consumer |
+| [OPH-SERIAL-MAXWELL-READOUT](../Lean/Screen/SerialMaxwellReadout.lean) | Open: no same-model instantiation recorded | 4 / 2 | explicit_non_consumer |
+| [OPH-CONE-WHITNEY-BRIDGE](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-WHITNEY-MAXWELL-DYNAMICS](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 4 | explicit_non_consumer |
+| [OPH-WHITNEY-RADIATIVE-QUANTUM](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 4 / 5 | explicit_non_consumer |
+| [OPH-WHITNEY-CHARGED-MATTER](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 5 / 4 | explicit_non_consumer |
+| [OPH-WHITNEY-SPATIAL-CONSISTENCY](../paper/tex_fragments/WHITNEY_SPATIAL_CONSISTENCY.tex) | Open: no same-model instantiation recorded | 6 / 3 | explicit_non_consumer |
+| [OPH-WHITNEY-INTERACTING-QUANTUM](../paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex) | Open: no same-model instantiation recorded | 8 / 7 | explicit_non_consumer |
+| [OPH-WHITNEY-CHARGED-EXECUTION](../paper/tex_fragments/WHITNEY_CHARGED_EXECUTION.tex) | Open: no same-model instantiation recorded | 6 / 3 | explicit_non_consumer |
+| [OPH-WHITNEY-REAL-CONTINUUM](../paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-WHITNEY-CHARGED-INSTRUMENT](../paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-WHITNEY-EPHEMERIS-CLOCK](../paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-WHITNEY-QUANTUM-HISTORY](../paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex) | Open: no same-model instantiation recorded | 4 / 2 | explicit_non_consumer |
+| [OPH-WHITNEY-MAGNETIC-CONTINUUM](../paper/tex_fragments/WHITNEY_MAGNETIC_CONTINUUM.tex) | Open: no same-model instantiation recorded | 3 / 5 | explicit_non_consumer |
+| [OPH-WHITNEY-QUANTUM-PACKET](../paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex) | Open: no same-model instantiation recorded | 3 / 5 | explicit_non_consumer |
+| [OPH-WHITNEY-CHARGED-ENCLOSURE](../paper/tex_fragments/WHITNEY_CHARGED_ENCLOSURE.tex) | Open: no same-model instantiation recorded | 3 / 6 | explicit_non_consumer |
+| [OPH-QFT-RESTRICTION-NATURALITY](../paper/tex_fragments/SOURCE_RESTRICTION_NATURALITY.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON](../paper/tex_fragments/EFFECTIVE_QUANTUM_COMPARISON.tex) | Open: no same-model instantiation recorded | 8 / 4 | explicit_non_consumer |
+| [OPH-SCALAR-ACTION-CLOCK](../paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-COSMO-FLRW-RECORD-DENSITY](../Lean/Geometry/SourceNetConformalRecordDensity.lean) | Open: no same-model instantiation recorded | 3 / 3 | consumed: PR-16; open: PR-15, PR-52 |
+| [OPH-BH-CROSSING-READ-AREA-LAW](../Lean/Geometry/CrossingReadAreaLaw.lean) | Open: no same-model instantiation recorded | 2 / 2 | consumed: PR-16; open: PR-15, PR-52 |
+| [OPH-COSMO-POSTDICTION-LEDGER](../code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-GOLDEN-SOURCE-QUADRATURE](../Lean/Geometry/GoldenSourceAssignment.lean) | Open: no same-model instantiation recorded | 4 / 5 | explicit_non_consumer |
+| [OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION](../Lean/QFT/ScalarRegionalTimeSlice.lean) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-SEAM-PATH-TOMOGRAPHY](../Lean/Geometry/SourceSeamPathTomography.lean) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-CARTAN-SCALAR-CONTINUOUS-READOUT](../paper/tex_fragments/CARTAN_SCALAR_READOUT.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT](../Lean/Geometry/SourceFeedbackTransport.lean) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SCALAR-SEQUENTIAL-INSTRUMENT](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex) | Open: no same-model instantiation recorded | 6 / 5 | explicit_non_consumer |
+| [OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY](../paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-GOLDEN-SCALAR-METRIC-PRESSURE](../paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-WHITNEY-MAXWELL-METRIC-PRESSURE](../paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT](../paper/tex_fragments/FERMION_SOURCE_CURRENT.tex) | Open: no same-model instantiation recorded | 1 / 2 | open: PR-47, PR-52, PR-54; boundary: PR-15 |
+| [OPH-QUANTUM-TRIPLE-OPERATOR-JOIN](../paper/observers_are_all_you_need.tex) | Open: no same-model instantiation recorded | 2 / 3 | consumed: PR-32, PR-34; open: PR-52, PR-58 |
+| [OPH-SOURCE-FULL-FAMILY-READ-ROUTING](../Lean/Geometry/SourceReadRouting.lean) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT](../Lean/Geometry/SourceRoutingHierarchy.lean) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION](../Lean/Geometry/SourceReadAcceptance.lean) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-NATIVE-REUSABLE-ACCUMULATION](../Lean/Geometry/SourceNativeAccumulator.lean) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-NATIVE-CONDITIONAL-STORED-PROGRAM](../paper/tex_fragments/SOURCE_NATIVE_STORED_PROGRAMS.tex) | Open: no same-model instantiation recorded | 1 / 6 | explicit_non_consumer |
+| [OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION](../evidence/federation_recovery/recover.py) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-TEMPORAL-NATIVE-RECOVERY](../paper/tex_fragments/SOURCE_TEMPORAL_RECOVERY.tex) | Open: no same-model instantiation recorded | 1 / 5 | explicit_non_consumer |
+| [OPH-NATIVE-CHECKPOINT-SELECTION](../paper/tex_fragments/SOURCE_CHECKPOINT_SELECTION.tex) | Open: no same-model instantiation recorded | 1 / 6 | explicit_non_consumer |
+| [OPH-NATIVE-EVENTUAL-PUBLICATION](../paper/tex_fragments/SOURCE_EVENTUAL_PUBLICATION.tex) | Open: no same-model instantiation recorded | 1 / 6 | explicit_non_consumer |
+| [OPH-FINITE-A3-SUPPORT](../paper/tex_fragments/SOURCE_EVENTUAL_PUBLICATION.tex) | Open: no same-model instantiation recorded | 1 / 4 | explicit_non_consumer |
+| [OPH-REGISTERED-SOURCE-READ-ALGEBRA](../paper/tex_fragments/SOURCE_OPERATION_READS.tex) | Open: no same-model instantiation recorded | 1 / 11 | explicit_non_consumer |
+| [OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY](../paper/tex_fragments/SPIN_EXCHANGE_SELECTION_BOUNDARY.tex) | Open: no same-model instantiation recorded | 1 / 3 | boundary: PR-47, PR-54 |
+| [OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION](../paper/tex_fragments/PAULI_STABILITY_SELECTION.tex) | Open: no same-model instantiation recorded | 1 / 4 | boundary: PR-47, PR-54 |
+| [OPH-CONDITIONAL-PAULI-OPERATION-SELECTION](../paper/tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex) | Open: no same-model instantiation recorded | 1 / 4 | boundary: PR-47, PR-54 |
+| [OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex) | Open: no same-model instantiation recorded | 1 / 4 | explicit_non_consumer |
+| [OPH-RECORD-GLUING-M1-SUFFICIENCY](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex) | Open: no same-model instantiation recorded | 1 / 5 | explicit_non_consumer |
+| [OPH-RG-LOCAL-CLOCK-REDUCTION](../paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex) | Open: no same-model instantiation recorded | 1 / 4 | boundary: PR-52 |
+| [OPH-RG-INFORMATION-RESOURCE-BOUND](../paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT](../code/m1_necessity/DERIVATION.md) | Open: no same-model instantiation recorded | 1 / 4 | explicit_non_consumer |
+| [OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY](../code/m1_necessity/DERIVATION.md) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION](../code/m1_necessity/DERIVATION.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION](../code/m1_necessity/BALANCED_REPLACEMENT.md) | Open: no same-model instantiation recorded | 6 / 9 | explicit_non_consumer |
+| [OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION](../paper/tex_fragments/M1_INTERFACES.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-M1-VARIATIONAL-AREA-REPAIR](../paper/tex_fragments/M1_INTERFACES.tex) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD](../paper/tex_fragments/M1_INTERFACES.tex) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-M1-GLOBAL-VACUUM-FIDELITY](../paper/tex_fragments/M1_VACUUM_FIDELITY.tex) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-M1-SPARSE-QUANTUM-TICK-REPAIR](../paper/tex_fragments/M1_VACUUM_FIDELITY.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION](../paper/tex_fragments/M1_VACUUM_FIDELITY.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION](../paper/tex_fragments/M1_VACUUM_FIDELITY.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-M1-QUANTUM-VELOCITY-BUDGET](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-M1-COHERENT-VELOCITY-SEPARATION](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 1 / 2 | explicit_non_consumer |
+| [OPH-M1-FINITE-STENCIL-CLOCK-BOUND](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT](../paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex) | Open: no same-model instantiation recorded | 2 / 5 | explicit_non_consumer |
+| [OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION](../cosmology/oph_cosmological_vacuum_and_structure_formation.tex) | Open: no same-model instantiation recorded | 5 / 5 | open: PR-15, PR-52 |
+| [OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION](../cosmology/oph_boltzmann_transport_derivation.tex) | Open: no same-model instantiation recorded | 8 / 5 | consumed: PR-15, PR-17; open: PR-39, PR-52, PR-53 |
+| [OPH-SM-BARYON-DIMENSION-SIX-CENSUS](../Lean/Screen/BaryonDimensionSix.lean) | Open: no same-model instantiation recorded | 4 / 3 | consumed: PR-55, PR-56; open: PR-57 |
+| [OPH-NATIVE-REPAIR-HISTORY-SOURCE](../paper/tex_fragments/NATIVE_REPAIR_RECORD_SPECTRUM.tex) | Open: no same-model instantiation recorded | 2 / 1 | explicit_non_consumer |
+| [OPH-SETTLEMENT-SCALE-TRANSFER](../paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-NATIVE-PORT-TRANSPORT-CONTROLS](../paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-REFINEMENT-ABSOLUTE-INNOVATION](../paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-LAYERED-OBSERVER-CLOCK-CONTROLS](../paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-GOLDEN-FIXED-MODE-FOURIER](../Lean/Geometry/GoldenSourceFourier.lean) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-COMMON-BULK-LOG-COVARIANCE](../paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex) | Open: no same-model instantiation recorded | 1 / 1 | explicit_non_consumer |
+| [OPH-COMMON-HISTORY-FEEDBACK-PACKET](../paper/tex_fragments/COMMON_HISTORY_FEEDBACK_PACKET.tex) | Open: no same-model instantiation recorded | 2 / 2 | explicit_non_consumer |
+| [OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION](../paper/tex_fragments/SOURCE_ACTION_DENSITY_IDENTIFICATION.tex) | Open: no same-model instantiation recorded | 3 / 2 | explicit_non_consumer |
+| [OPH-M1-MASSIVE-FLIGHT-SPECTRUM](../docs/research/MASSIVE_OPERATIONAL_CLOCKS.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-M1-RESOLVED-LOCAL-READ-CONE](../docs/research/MASSIVE_OPERATIONAL_CLOCKS.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-M1-OBSERVABLE-MASS-CLOCK](../docs/research/MASSIVE_OPERATIONAL_CLOCKS.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-COHERENT-CODE-COMPLETION](../docs/research/COHERENT_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-TWO-BASIS-A3-SELECTION](../docs/research/COHERENT_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-COMPILED-MASS-CLOCK](../docs/research/COHERENT_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION](../docs/research/FERMIONIC_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-ENCODED-FERMION-CLOCK](../docs/research/FERMIONIC_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 6 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-FERMIONIC-VACUUM-NOISE](../docs/research/FERMIONIC_SOURCE_CLOCKS.md) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-FIXED-RATE-PROTECTED-READS](../code/m1_fixed_noise/CONTRACT.md) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION](../code/m1_fixed_noise/CONTRACT.md) | Open: no same-model instantiation recorded | 1 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-NOISY-CONTROL-HISTORIES](../code/m1_noisy_records/CONTRACT.md) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-LIVE-RECORD-PROTECTION](../code/m1_noisy_records/CONTRACT.md) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION](../code/m1_leakage/__init__.py) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-SOURCE-GENERAL-NOISE-REFINEMENT](../code/m1_leakage/__init__.py) | Open: no same-model instantiation recorded | 3 / 5 | explicit_non_consumer |
+| [OPH-SOURCE-EXPANDER-LIVE-ARCHIVE](../code/m1_expander_archive/__init__.py) | Open: no same-model instantiation recorded | 3 / 6 | explicit_non_consumer |
+| [OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY](../code/m1_expander_archive/__init__.py) | Open: no same-model instantiation recorded | 3 / 6 | explicit_non_consumer |
+| [OPH-SOURCE-SEA-GENERATOR](../code/m1_sea_energy/__init__.py) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-LOCAL-SEA-LIMIT](../code/m1_sea_energy/__init__.py) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-SEA-CLOCK](../code/m1_sea_energy/__init__.py) | Open: no same-model instantiation recorded | 4 / 7 | explicit_non_consumer |
+| [OPH-QUARK-CONDITIONAL-FIXED-P-REPLAY](../code/particles/flavor/conditional_quark_mass_spec.json) | Open: no same-model instantiation recorded | 4 / 3 | explicit_non_consumer |
+| [OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY](../code/particles/calibration/conditional_top_fixed_p_spec.json) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-QUARK-SOURCE-W5-RESPONSE-CONSTRAINTS](../code/particles/flavor/source_w5_response_constraints_spec.json) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-QUARK-NATIVE-REPAIR-FLAVOR-CONSTRAINTS](../code/particles/flavor/native_repair_flavor_constraints_spec.json) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-TOP-POSITIVE-CAPACITY-BAND](../code/particles/calibration/top_positive_capacity_band_spec.json) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-QUARK-CONDITIONAL-RECORD-RENEWAL](../code/particles/flavor/native_record_renewal_spec.json) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-QUARK-EXTERIOR-HIGGS-RESPONSE](../code/particles/flavor/exterior_higgs_response_spec.json) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING](../code/particles/calibration/source_ew_vev_matching_spec.json) | Open: no same-model instantiation recorded | 4 / 4 | explicit_non_consumer |
+| [OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION](../code/paired_gravity/CONTRACT.md) | Open: no same-model instantiation recorded | 1 / 6 | explicit_non_consumer |
+| [OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL](../code/a5_closure/mckay_golden_field_certificate.py) | Open: no same-model instantiation recorded | 1 / 4 | explicit_non_consumer |
+| [OPH-DARK-SOURCE-DYNAMICS-LENSING](../docs/research/DARK_SOURCE_DYNAMICS_LENSING.md) | Open: no same-model instantiation recorded | 1 / 5 | explicit_non_consumer |
+| [OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION](../docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION](../docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md) | Open: no same-model instantiation recorded | 2 / 4 | consumed: PR-13, PR-17, PR-37; boundary: PR-14, PR-38, PR-39, PR-50 |
+| [OPH-FIXED-DISPERSION-FEASIBILITY](../docs/research/DISPERSION_FEASIBILITY.md) | Open: no same-model instantiation recorded | 2 / 3 | explicit_non_consumer |
+| [OPH-MODEL-NATIVE-OBSERVER-EXECUTION](../model/observer/native.py) | Open: no same-model instantiation recorded | 9 / 9 | explicit_non_consumer |
+| [OPH-MODEL-OBSERVER-RECORD-CAPACITY](../model/observer/capacity.py) | Open: no same-model instantiation recorded | 3 / 3 | explicit_non_consumer |
+| [OPH-MODEL-P-RESPONSE-EXECUTION](../model/observer/p_response/experiment.py) | Open: no same-model instantiation recorded | 6 / 4 | consumed: PR-17, PR-37; open: PR-38, PR-39 |
+| [OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE](../model/local_tick/experiment.py) | Open: no same-model instantiation recorded | 3 / 4 | explicit_non_consumer |
+| [OPH-MODEL-SCALAR-RESPONSE-EXECUTION](../model/observer/scalar_response/README.md) | Open: no same-model instantiation recorded | 7 / 8 | explicit_non_consumer |
+| [OPH-MODEL-COMMON-SOURCE-EXECUTION](../model/common_source/README.md) | Open: no same-model instantiation recorded | 14 / 24 | explicit_non_consumer |
+| [OPH-MODEL-SPATIAL-INTERACTION-EXECUTION](../model/spatial_interaction/README.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-MODEL-CANONICAL-SCALAR-EXECUTION](../model/relativistic_scalar/README.md) | Open: no same-model instantiation recorded | 2 / 4 | explicit_non_consumer |
+| [OPH-MODEL-SHARED-SCALAR-OBSERVATIONS](../model/scalar_observations/README.md) | supplied-first-band-control | 3 / 5 | explicit_non_consumer |
+| [OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT](../model/scalar_observations/experimental_readout/README.md) | Open: no same-model instantiation recorded | 3 / 7 | explicit_non_consumer |
+| [OPH-MODEL-COUPLED-INTERACTION-RECOVERY](../model/coupled_reconstruction/README.md) | Open: no same-model instantiation recorded | 2 / 5 | explicit_non_consumer |
+| [OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON](../model/anharmonic_transfer/README.md) | Open: no same-model instantiation recorded | 2 / 5 | explicit_non_consumer |
+| [OPH-MODEL-NATIVE-PROCESS-RECOVERY](../model/OBSERVER_RELATIVE_RECOVERY.md) | native-coherent-instrument, complete-current-identification, compiled-incident-history, calibrated-complete-incident-law, native-occupation-fluctuation-field, ideal-resource-clock-attachment | 6 / 13 | explicit_non_consumer |
+
+### Every Lean source module
+
+The declaration count uses the existing theorem-count gate's public declaration
+grammar with comments removed. Evidence membership is file-level navigation,
+not an assertion that a registry claim consumes every declaration in that file.
+Modules without a registry evidence edge remain visible. Every declaration in
+a module retains its original quantified hypotheses and proof in the linked source.
+
+| Lean source | Public theorem/lemma declarations | Registered evidence users |
+| --- | ---: | --- |
+| [Lean/Computation/FixedFederationComplexity.lean](../Lean/Computation/FixedFederationComplexity.lean) | 26 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Computation/FixedFederationCounterexamples.lean](../Lean/Computation/FixedFederationCounterexamples.lean) | 27 | OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS |
+| [Lean/Computation/FixedFederationExecution.lean](../Lean/Computation/FixedFederationExecution.lean) | 20 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Computation/FixedFederationExecutionExamples.lean](../Lean/Computation/FixedFederationExecutionExamples.lean) | 54 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Computation/FixedFederationFanoutControl.lean](../Lean/Computation/FixedFederationFanoutControl.lean) | 29 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Computation/FixedFederationProgress.lean](../Lean/Computation/FixedFederationProgress.lean) | 36 | OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS, OPH-COMPUTATION-FIXED-FEDERATION-ENDPOINT |
+| [Lean/Computation/RepairUniversality.lean](../Lean/Computation/RepairUniversality.lean) | 43 | OPH-COMPUTATION-REPAIR-PROGRAM-BOUNDARY |
+| [Lean/Dynamics/CenterSpectral.lean](../Lean/Dynamics/CenterSpectral.lean) | 38 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/CentralBlocks.lean](../Lean/Dynamics/CentralBlocks.lean) | 24 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/ChoiCPTP.lean](../Lean/Dynamics/ChoiCPTP.lean) | 38 | OPH-QUANTUM-INSTRUMENT-SELECTION-BY-CERTAIN-STATES |
+| [Lean/Dynamics/ConditionalExpectationGenerator.lean](../Lean/Dynamics/ConditionalExpectationGenerator.lean) | 6 | OPH-PUBLICIZATION-DYNAMICS-FINITE |
+| [Lean/Dynamics/PrivateInner.lean](../Lean/Dynamics/PrivateInner.lean) | 6 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/ProtectedCharge.lean](../Lean/Dynamics/ProtectedCharge.lean) | 8 | OPH-FINITE-CONSERVATION-WARD-PRECURSOR, OPH-MODEL-COMMON-SOURCE-EXECUTION |
+| [Lean/Dynamics/PublicAutomorphism.lean](../Lean/Dynamics/PublicAutomorphism.lean) | 12 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/PublicMarkov.lean](../Lean/Dynamics/PublicMarkov.lean) | 18 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/StarWedderburn.lean](../Lean/Dynamics/StarWedderburn.lean) | 54 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/StoneConverse.lean](../Lean/Dynamics/StoneConverse.lean) | 11 | OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE |
+| [Lean/Dynamics/WardLimitManifest.lean](../Lean/Dynamics/WardLimitManifest.lean) | 1 | OPH-FINITE-CONSERVATION-WARD-PRECURSOR |
+| [Lean/Dynamics.lean](../Lean/Dynamics.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/Basic.lean](../Lean/EventAlgebra/Basic.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/ExpectationBound.lean](../Lean/EventAlgebra/ExpectationBound.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/FiniteBornFrame.lean](../Lean/EventAlgebra/FiniteBornFrame.lean) | 18 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/EventAlgebra/FiniteBuschGleason.lean](../Lean/EventAlgebra/FiniteBuschGleason.lean) | 69 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/EventAlgebra/FiniteEffectClosureBoundary.lean](../Lean/EventAlgebra/FiniteEffectClosureBoundary.lean) | 15 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/EventAlgebra/FiniteWebBornNoGo.lean](../Lean/EventAlgebra/FiniteWebBornNoGo.lean) | 34 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/EventAlgebra/FrequencyConcentration.lean](../Lean/EventAlgebra/FrequencyConcentration.lean) | 38 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/InstrumentSelectionByCertainStates.lean](../Lean/EventAlgebra/InstrumentSelectionByCertainStates.lean) | 44 | OPH-QUANTUM-INSTRUMENT-SELECTION-BY-CERTAIN-STATES |
+| [Lean/EventAlgebra/InterlockingContexts.lean](../Lean/EventAlgebra/InterlockingContexts.lean) | 29 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/EventAlgebra/Lueders.lean](../Lean/EventAlgebra/Lueders.lean) | 13 | OPH-QUANTUM-INSTRUMENT-SELECTION-BY-CERTAIN-STATES |
+| [Lean/EventAlgebra/LuedersPhaseInstrument.lean](../Lean/EventAlgebra/LuedersPhaseInstrument.lean) | 68 | OPH-QUANTUM-LUEDERS-PHASE-INSTRUMENT, OPH-EVENTALGEBRA-SOURCE-PHASE-INSTRUMENT-OUTCOME-BRIDGE, OPH-QUANTUM-SOURCE-BOUND-INSTRUMENT-INTERFACE, OPH-QUANTUM-INSTRUMENT-SELECTION-BY-CERTAIN-STATES |
+| [Lean/EventAlgebra/NoBroadcastingAdapter.lean](../Lean/EventAlgebra/NoBroadcastingAdapter.lean) | 7 | OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING |
+| [Lean/EventAlgebra/OperationalAdditivityBoundary.lean](../Lean/EventAlgebra/OperationalAdditivityBoundary.lean) | 41 | OPH-QUANTUM-OPERATIONAL-ADDITIVITY-BOUNDARY, OPH-QUANTUM-SOURCE-BOUND-INSTRUMENT-INTERFACE |
+| [Lean/EventAlgebra/OperationalPhaseAttainment.lean](../Lean/EventAlgebra/OperationalPhaseAttainment.lean) | 19 | OPH-QUANTUM-PHASE-OPERATION-RECORDED-DECISION-ATTAINMENT |
+| [Lean/EventAlgebra/OperationalPhaseInstrument.lean](../Lean/EventAlgebra/OperationalPhaseInstrument.lean) | 43 | OPH-QUANTUM-OPERATIONAL-PHASE-INTERFACE |
+| [Lean/EventAlgebra/PartitionAverage.lean](../Lean/EventAlgebra/PartitionAverage.lean) | 30 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/PartitionAverageCP.lean](../Lean/EventAlgebra/PartitionAverageCP.lean) | 10 | OPH-PUBLICIZATION-DYNAMICS-FINITE |
+| [Lean/EventAlgebra/PartitionPinching.lean](../Lean/EventAlgebra/PartitionPinching.lean) | 27 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/PartitionPinchingCP.lean](../Lean/EventAlgebra/PartitionPinchingCP.lean) | 2 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/EventAlgebra/PauliMinimalCoupling.lean](../Lean/EventAlgebra/PauliMinimalCoupling.lean) | 14 | OPH-EVENTALGEBRA-PAULI-MINIMAL-COUPLING-SQUARE |
+| [Lean/EventAlgebra/PhaseInstrumentDetermination.lean](../Lean/EventAlgebra/PhaseInstrumentDetermination.lean) | 24 | OPH-QUANTUM-PHASE-MODEL-DETERMINATION-BOUNDARY |
+| [Lean/EventAlgebra/ProductSplitSeparability.lean](../Lean/EventAlgebra/ProductSplitSeparability.lean) | 61 | OPH-EVENTALGEBRA-SOURCE-REACHABILITY-DIAGONAL-CHSH, OPH-EVENTALGEBRA-PRODUCT-SPLIT-SLOT-LOCAL-CHSH |
+| [Lean/EventAlgebra/PublicRecordAlgebra.lean](../Lean/EventAlgebra/PublicRecordAlgebra.lean) | 19 | OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING |
+| [Lean/EventAlgebra/QuantumAdequacySurface.lean](../Lean/EventAlgebra/QuantumAdequacySurface.lean) | 21 | OPH-EM-CARRIER-EVOLUTION-FLOW |
+| [Lean/EventAlgebra/RecordMajorization.lean](../Lean/EventAlgebra/RecordMajorization.lean) | 21 | OPH-FINITE-QUANTUM-LIMITATION-SUITE |
+| [Lean/EventAlgebra/Robertson.lean](../Lean/EventAlgebra/Robertson.lean) | 24 | OPH-FINITE-QUANTUM-LIMITATION-SUITE |
+| [Lean/EventAlgebra/SchroedingerFrameFlow.lean](../Lean/EventAlgebra/SchroedingerFrameFlow.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/SlotLocalitySurface.lean](../Lean/EventAlgebra/SlotLocalitySurface.lean) | 2 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/SourceBoundInstrumentInterface.lean](../Lean/EventAlgebra/SourceBoundInstrumentInterface.lean) | 33 | OPH-QUANTUM-SOURCE-BOUND-INSTRUMENT-INTERFACE, OPH-QUANTUM-INS03-EXPORT-VALIDATOR |
+| [Lean/EventAlgebra/SourcePhaseBornWeightBoundary.lean](../Lean/EventAlgebra/SourcePhaseBornWeightBoundary.lean) | 20 | OPH-EVENTALGEBRA-SOURCE-PHASE-BORN-WEIGHT-BOUNDARY |
+| [Lean/EventAlgebra/SourcePhaseCommonPreparationHull.lean](../Lean/EventAlgebra/SourcePhaseCommonPreparationHull.lean) | 13 | OPH-EVENTALGEBRA-SOURCE-PHASE-COMMON-PREPARATION-HULL |
+| [Lean/EventAlgebra/SourcePhaseInstrumentOutcomeBridge.lean](../Lean/EventAlgebra/SourcePhaseInstrumentOutcomeBridge.lean) | 8 | OPH-EVENTALGEBRA-SOURCE-PHASE-INSTRUMENT-OUTCOME-BRIDGE, OPH-EVENTALGEBRA-SOURCE-PHASE-COMMON-PREPARATION-HULL |
+| [Lean/EventAlgebra/SourcePhaseSelection.lean](../Lean/EventAlgebra/SourcePhaseSelection.lean) | 17 | OPH-EVENTALGEBRA-SOURCE-PHASE-EFFECT-SELECTION, OPH-EVENTALGEBRA-SOURCE-PHASE-INSTRUMENT-OUTCOME-BRIDGE, OPH-EVENTALGEBRA-SOURCE-PHASE-COMMON-PREPARATION-HULL, OPH-EVENTALGEBRA-SOURCE-PHASE-BORN-WEIGHT-BOUNDARY |
+| [Lean/EventAlgebra/SourcePhaseSelectionInput.lean](../Lean/EventAlgebra/SourcePhaseSelectionInput.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/SourcePhaseSelectionRelation.lean](../Lean/EventAlgebra/SourcePhaseSelectionRelation.lean) | 7 | OPH-EVENTALGEBRA-SOURCE-PHASE-EFFECT-SELECTION |
+| [Lean/EventAlgebra/SourcePhaseSelectionSemantics.lean](../Lean/EventAlgebra/SourcePhaseSelectionSemantics.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/SourceReachabilityDelimitation.lean](../Lean/EventAlgebra/SourceReachabilityDelimitation.lean) | 34 | OPH-EVENTALGEBRA-SOURCE-REACHABILITY-DIAGONAL-CHSH, OPH-EVENTALGEBRA-SOURCE-PHASE-BORN-WEIGHT-BOUNDARY, OPH-EVENTALGEBRA-PRODUCT-SPLIT-SLOT-LOCAL-CHSH |
+| [Lean/EventAlgebra/SpectralEntropyBoundary.lean](../Lean/EventAlgebra/SpectralEntropyBoundary.lean) | 11 | OPH-FINITE-QUANTUM-LIMITATION-SUITE |
+| [Lean/EventAlgebra/StateExpectation.lean](../Lean/EventAlgebra/StateExpectation.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/Superselection.lean](../Lean/EventAlgebra/Superselection.lean) | 9 | OPH-FINITE-QUANTUM-LIMITATION-SUITE |
+| [Lean/EventAlgebra/Tsirelson.lean](../Lean/EventAlgebra/Tsirelson.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/EventAlgebra/TsirelsonSaturation.lean](../Lean/EventAlgebra/TsirelsonSaturation.lean) | 39 | OPH-QUANTUM-TSIRELSON-SATURATION, OPH-EVENTALGEBRA-SOURCE-REACHABILITY-DIAGONAL-CHSH, OPH-EVENTALGEBRA-PRODUCT-SPLIT-SLOT-LOCAL-CHSH |
+| [Lean/EventAlgebra/TwoScalePublicRepair.lean](../Lean/EventAlgebra/TwoScalePublicRepair.lean) | 12 | OPH-PUBLICIZATION-DYNAMICS-FINITE |
+| [Lean/EventAlgebra.lean](../Lean/EventAlgebra.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/CanonicalLorentzModule.lean](../Lean/Geometry/CanonicalLorentzModule.lean) | 18 | OPH-CANONICAL-LORENTZ-MODULE, OPH-QFT-CAUSAL-ORDER-COMPOSITION |
+| [Lean/Geometry/CarrierDynamicsCompatibility.lean](../Lean/Geometry/CarrierDynamicsCompatibility.lean) | 75 | OPH-GEOMETRY-CARRIER-DYNAMICS-COMPATIBILITY, OPH-GEOMETRY-CHARGE-FIXED-INTERACTION, OPH-EM-CARRIER-MODE-EQUIVARIANCE |
+| [Lean/Geometry/CausalOrderComposition.lean](../Lean/Geometry/CausalOrderComposition.lean) | 37 | OPH-QFT-CAUSAL-ORDER-COMPOSITION, OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE |
+| [Lean/Geometry/CelestialNullCone.lean](../Lean/Geometry/CelestialNullCone.lean) | 8 | OPH-CANONICAL-LORENTZ-MODULE |
+| [Lean/Geometry/CelestialSoldering.lean](../Lean/Geometry/CelestialSoldering.lean) | 7 | OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING |
+| [Lean/Geometry/ChargeFixedInteraction.lean](../Lean/Geometry/ChargeFixedInteraction.lean) | 69 | OPH-GEOMETRY-CHARGE-FIXED-INTERACTION, OPH-GEOMETRY-PORT-CHARGE-MINIMAL-COUPLING, OPH-GEOMETRY-WORLDLINE-HOP-TRANSPORT |
+| [Lean/Geometry/CommonWorldInstrumentJoin.lean](../Lean/Geometry/CommonWorldInstrumentJoin.lean) | 56 | OPH-GEOMETRY-COMMON-WORLD-INSTRUMENT-JOIN, OPH-GEOMETRY-COMMON-WORLD-MAXWELL-CLOCK-JOIN |
+| [Lean/Geometry/CommonWorldIslandBridge.lean](../Lean/Geometry/CommonWorldIslandBridge.lean) | 18 | OPH-GEOMETRY-COMMON-WORLD-ISLAND-BRIDGE |
+| [Lean/Geometry/CommonWorldJointAction.lean](../Lean/Geometry/CommonWorldJointAction.lean) | 45 | OPH-GEOMETRY-COMMON-WORLD-JOINT-ACTION, OPH-GEOMETRY-SCREEN-CARRIER-MAP-CANDIDATE, OPH-GEOMETRY-CHARGE-FIXED-INTERACTION |
+| [Lean/Geometry/CommonWorldKinematicsWitness.lean](../Lean/Geometry/CommonWorldKinematicsWitness.lean) | 21 | OPH-GEOMETRY-COMMON-WORLD-TWO-ISLAND-WITNESS |
+| [Lean/Geometry/CommonWorldMaxwellClockJoin.lean](../Lean/Geometry/CommonWorldMaxwellClockJoin.lean) | 31 | OPH-GEOMETRY-COMMON-WORLD-MAXWELL-CLOCK-JOIN, OPH-GEOMETRY-COMMON-WORLD-JOINT-ACTION |
+| [Lean/Geometry/CompositeMomentumCovariance.lean](../Lean/Geometry/CompositeMomentumCovariance.lean) | 44 | OPH-GEOMETRY-COMPOSITE-MOMENTUM-COVARIANCE |
+| [Lean/Geometry/CrossingReadAreaLaw.lean](../Lean/Geometry/CrossingReadAreaLaw.lean) | 8 | OPH-BH-CROSSING-READ-AREA-LAW |
+| [Lean/Geometry/EinsteinBranchInhabitant.lean](../Lean/Geometry/EinsteinBranchInhabitant.lean) | 37 | OPH-GR-EINSTEIN-BRANCH-INHABITANT |
+| [Lean/Geometry/EinsteinTensorBridge.lean](../Lean/Geometry/EinsteinTensorBridge.lean) | 4 | OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION, OPH-CANONICAL-LORENTZ-MODULE |
+| [Lean/Geometry/EventFrameSoldering.lean](../Lean/Geometry/EventFrameSoldering.lean) | 4 | OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING |
+| [Lean/Geometry/EventGermDisplacement.lean](../Lean/Geometry/EventGermDisplacement.lean) | 10 | OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING |
+| [Lean/Geometry/EventPopulationChartInterface.lean](../Lean/Geometry/EventPopulationChartInterface.lean) | 9 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE, OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE |
+| [Lean/Geometry/FiniteLayerQuadrature.lean](../Lean/Geometry/FiniteLayerQuadrature.lean) | 6 | OPH-LAYERED-OBSERVER-CLOCK-CONTROLS |
+| [Lean/Geometry/FlatDiamondError.lean](../Lean/Geometry/FlatDiamondError.lean) | 6 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/FlatDiamondNormalization.lean](../Lean/Geometry/FlatDiamondNormalization.lean) | 15 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/FlatDiamondPairIntegral.lean](../Lean/Geometry/FlatDiamondPairIntegral.lean) | 12 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/FlatDiamondVolume.lean](../Lean/Geometry/FlatDiamondVolume.lean) | 18 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/FlatLorentzVolume.lean](../Lean/Geometry/FlatLorentzVolume.lean) | 23 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/FreeEvolutionPersistence.lean](../Lean/Geometry/FreeEvolutionPersistence.lean) | 27 | OPH-GEOMETRY-FREE-EVOLUTION-PERSISTENCE |
+| [Lean/Geometry/GoldenSourceAssignment.lean](../Lean/Geometry/GoldenSourceAssignment.lean) | 27 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/GoldenSourceCausalLimit.lean](../Lean/Geometry/GoldenSourceCausalLimit.lean) | 13 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/GoldenSourceCountLimit.lean](../Lean/Geometry/GoldenSourceCountLimit.lean) | 29 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/GoldenSourceFourier.lean](../Lean/Geometry/GoldenSourceFourier.lean) | 6 | OPH-GOLDEN-FIXED-MODE-FOURIER |
+| [Lean/Geometry/GoldenSourcePairLimit.lean](../Lean/Geometry/GoldenSourcePairLimit.lean) | 9 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/GoldenSourceVolumeLimit.lean](../Lean/Geometry/GoldenSourceVolumeLimit.lean) | 6 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/IntegerKCombInvariance.lean](../Lean/Geometry/IntegerKCombInvariance.lean) | 30 | OPH-GW-INTEGER-K-COMB-TEMPLATE |
+| [Lean/Geometry/InternalClockRestFrequency.lean](../Lean/Geometry/InternalClockRestFrequency.lean) | 30 | OPH-GEOMETRY-INTERNAL-CLOCK-REST-FREQUENCY, OPH-GEOMETRY-PROPER-TIME-INTERNAL-ACTION |
+| [Lean/Geometry/InternalEnergyInertia.lean](../Lean/Geometry/InternalEnergyInertia.lean) | 43 | OPH-GEOMETRY-INTERNAL-ENERGY-INERTIA-PRECURSOR, OPH-GEOMETRY-COMPOSITE-MOMENTUM-COVARIANCE, OPH-GEOMETRY-PROPER-TIME-INTERNAL-ACTION, OPH-THERMO-MODULAR-ENERGY-ADDITIVITY |
+| [Lean/Geometry/InverseSquareShellLaw.lean](../Lean/Geometry/InverseSquareShellLaw.lean) | 8 | OPH-GEOMETRY-INVERSE-SQUARE-SHELL, OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT |
+| [Lean/Geometry/LorentzOverlapCocycle.lean](../Lean/Geometry/LorentzOverlapCocycle.lean) | 9 | OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING |
+| [Lean/Geometry/M1Interfaces.lean](../Lean/Geometry/M1Interfaces.lean) | 8 | OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION, OPH-M1-VARIATIONAL-AREA-REPAIR, OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD |
+| [Lean/Geometry/M1InterfacesAxiomAudit.lean](../Lean/Geometry/M1InterfacesAxiomAudit.lean) | 0 | OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION, OPH-M1-VARIATIONAL-AREA-REPAIR, OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD |
+| [Lean/Geometry/M1Necessity.lean](../Lean/Geometry/M1Necessity.lean) | 17 | OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT, OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY, OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION, OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION |
+| [Lean/Geometry/M1NecessityAxiomAudit.lean](../Lean/Geometry/M1NecessityAxiomAudit.lean) | 0 | OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT, OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY, OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION, OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION |
+| [Lean/Geometry/M1QuantumTransport.lean](../Lean/Geometry/M1QuantumTransport.lean) | 13 | OPH-M1-QUANTUM-VELOCITY-BUDGET, OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT, OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION, OPH-M1-COHERENT-VELOCITY-SEPARATION, OPH-M1-FINITE-STENCIL-CLOCK-BOUND, OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT |
+| [Lean/Geometry/M1QuantumTransportAxiomAudit.lean](../Lean/Geometry/M1QuantumTransportAxiomAudit.lean) | 0 | OPH-M1-QUANTUM-VELOCITY-BUDGET, OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT, OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION, OPH-M1-COHERENT-VELOCITY-SEPARATION, OPH-M1-FINITE-STENCIL-CLOCK-BOUND, OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT |
+| [Lean/Geometry/M1VacuumFidelity.lean](../Lean/Geometry/M1VacuumFidelity.lean) | 10 | OPH-M1-GLOBAL-VACUUM-FIDELITY, OPH-M1-SPARSE-QUANTUM-TICK-REPAIR, OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION, OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION |
+| [Lean/Geometry/M1VacuumFidelityAxiomAudit.lean](../Lean/Geometry/M1VacuumFidelityAxiomAudit.lean) | 0 | OPH-M1-GLOBAL-VACUUM-FIDELITY, OPH-M1-SPARSE-QUANTUM-TICK-REPAIR, OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION, OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION |
+| [Lean/Geometry/MassShellKinematics.lean](../Lean/Geometry/MassShellKinematics.lean) | 15 | OPH-GEOMETRY-KINEMATIC-MASS-SHELL, OPH-GEOMETRY-INTERNAL-CLOCK-REST-FREQUENCY, OPH-GEOMETRY-INTERNAL-ENERGY-INERTIA-PRECURSOR, OPH-GEOMETRY-COMPOSITE-MOMENTUM-COVARIANCE |
+| [Lean/Geometry/MetricKernelEnergy.lean](../Lean/Geometry/MetricKernelEnergy.lean) | 5 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/NativeGeometricSourceIdentification.lean](../Lean/Geometry/NativeGeometricSourceIdentification.lean) | 12 | OPH-NATIVE-REPAIR-HISTORY-SOURCE |
+| [Lean/Geometry/ObserverFrameHyperboloid.lean](../Lean/Geometry/ObserverFrameHyperboloid.lean) | 2 | OPH-CANONICAL-LORENTZ-MODULE |
+| [Lean/Geometry/ObserverRestSpace.lean](../Lean/Geometry/ObserverRestSpace.lean) | 10 | OPH-CANONICAL-LORENTZ-MODULE |
+| [Lean/Geometry/OrderingFractionFourDimensional.lean](../Lean/Geometry/OrderingFractionFourDimensional.lean) | 25 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/PortChargeMinimalCoupling.lean](../Lean/Geometry/PortChargeMinimalCoupling.lean) | 42 | OPH-GEOMETRY-PORT-CHARGE-MINIMAL-COUPLING, OPH-GEOMETRY-WORLDLINE-HOP-TRANSPORT, OPH-GEOMETRY-TRANSPORTED-CHARGE-FORCE-LAW, OPH-GEOMETRY-TIMELIKE-CLASS-FORCE-LAW, OPH-EM-SOURCED-FIELD-CONSISTENCY |
+| [Lean/Geometry/ProperLengthClockedChain.lean](../Lean/Geometry/ProperLengthClockedChain.lean) | 55 | OPH-GEOMETRY-PROPER-LENGTH-CLOCKED-CHAIN |
+| [Lean/Geometry/ProperTimeInternalAction.lean](../Lean/Geometry/ProperTimeInternalAction.lean) | 49 | OPH-GEOMETRY-PROPER-TIME-INTERNAL-ACTION, OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES |
+| [Lean/Geometry/RecordGluingPrinciple.lean](../Lean/Geometry/RecordGluingPrinciple.lean) | 12 | OPH-RG-LOCAL-CLOCK-REDUCTION, OPH-RG-INFORMATION-RESOURCE-BOUND |
+| [Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean](../Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean) | 0 | OPH-RG-LOCAL-CLOCK-REDUCTION, OPH-RG-INFORMATION-RESOURCE-BOUND |
+| [Lean/Geometry/RefiningLatticeCausalCone.lean](../Lean/Geometry/RefiningLatticeCausalCone.lean) | 16 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/RestFiberShellTransport.lean](../Lean/Geometry/RestFiberShellTransport.lean) | 27 | OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT |
+| [Lean/Geometry/ScreenCarrierMapCandidate.lean](../Lean/Geometry/ScreenCarrierMapCandidate.lean) | 77 | OPH-GEOMETRY-SCREEN-CARRIER-MAP-CANDIDATE, OPH-GEOMETRY-CARRIER-DYNAMICS-COMPATIBILITY, OPH-GEOMETRY-WORLDLINE-HOP-TRANSPORT |
+| [Lean/Geometry/SeamStepSpeedLimit.lean](../Lean/Geometry/SeamStepSpeedLimit.lean) | 44 | OPH-GEOMETRY-SEAM-STEP-SPEED-LIMIT, OPH-GEOMETRY-TIMELIKE-CLASS-FORCE-LAW |
+| [Lean/Geometry/SourceAccumulatorAxiomAudit.lean](../Lean/Geometry/SourceAccumulatorAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceAccumulatorDecoder.lean](../Lean/Geometry/SourceAccumulatorDecoder.lean) | 7 | OPH-NATIVE-REUSABLE-ACCUMULATION |
+| [Lean/Geometry/SourceAccumulatorProgram.lean](../Lean/Geometry/SourceAccumulatorProgram.lean) | 23 | OPH-NATIVE-REUSABLE-ACCUMULATION |
+| [Lean/Geometry/SourceActionMeasure.lean](../Lean/Geometry/SourceActionMeasure.lean) | 15 | OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION |
+| [Lean/Geometry/SourceBankBusWitness.lean](../Lean/Geometry/SourceBankBusWitness.lean) | 8 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankCompiler.lean](../Lean/Geometry/SourceBankCompiler.lean) | 8 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankControl.lean](../Lean/Geometry/SourceBankControl.lean) | 9 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankExecution.lean](../Lean/Geometry/SourceBankExecution.lean) | 1 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankInvariant.lean](../Lean/Geometry/SourceBankInvariant.lean) | 23 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankLowering.lean](../Lean/Geometry/SourceBankLowering.lean) | 16 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankMachine.lean](../Lean/Geometry/SourceBankMachine.lean) | 22 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankPrecision.lean](../Lean/Geometry/SourceBankPrecision.lean) | 4 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBankTrace.lean](../Lean/Geometry/SourceBankTrace.lean) | 2 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceBusScaling.lean](../Lean/Geometry/SourceBusScaling.lean) | 27 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceCausalBoundary.lean](../Lean/Geometry/SourceCausalBoundary.lean) | 14 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/SourceCheckpointAxiomAudit.lean](../Lean/Geometry/SourceCheckpointAxiomAudit.lean) | 0 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceCheckpointEntropy.lean](../Lean/Geometry/SourceCheckpointEntropy.lean) | 6 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceCheckpointMeaning.lean](../Lean/Geometry/SourceCheckpointMeaning.lean) | 10 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceCheckpointNative.lean](../Lean/Geometry/SourceCheckpointNative.lean) | 9 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceCheckpointPipeline.lean](../Lean/Geometry/SourceCheckpointPipeline.lean) | 5 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceCheckpointPolicy.lean](../Lean/Geometry/SourceCheckpointPolicy.lean) | 12 | OPH-NATIVE-CHECKPOINT-SELECTION |
+| [Lean/Geometry/SourceClockRateAlongWorldlines.lean](../Lean/Geometry/SourceClockRateAlongWorldlines.lean) | 53 | OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES, OPH-GEOMETRY-PROPER-LENGTH-CLOCKED-CHAIN |
+| [Lean/Geometry/SourceConstrainedRead.lean](../Lean/Geometry/SourceConstrainedRead.lean) | 2 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceConstrainedSelection.lean](../Lean/Geometry/SourceConstrainedSelection.lean) | 17 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceCountLimitAxiomAudit.lean](../Lean/Geometry/SourceCountLimitAxiomAudit.lean) | 0 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/SourceCountTransport.lean](../Lean/Geometry/SourceCountTransport.lean) | 13 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/SourceDerivedSpacetimeCarrier.lean](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean) | 49 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE |
+| [Lean/Geometry/SourceEncodedMemory.lean](../Lean/Geometry/SourceEncodedMemory.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean](../Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceFeedbackTransport.lean](../Lean/Geometry/SourceFeedbackTransport.lean) | 14 | OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT |
+| [Lean/Geometry/SourceNativeAccumulator.lean](../Lean/Geometry/SourceNativeAccumulator.lean) | 19 | OPH-NATIVE-REUSABLE-ACCUMULATION |
+| [Lean/Geometry/SourceNativeCore.lean](../Lean/Geometry/SourceNativeCore.lean) | 8 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeProgramBudget.lean](../Lean/Geometry/SourceNativeProgramBudget.lean) | 3 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeProgramError.lean](../Lean/Geometry/SourceNativeProgramError.lean) | 7 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeProgramsAxiomAudit.lean](../Lean/Geometry/SourceNativeProgramsAxiomAudit.lean) | 0 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeRecords.lean](../Lean/Geometry/SourceNativeRecords.lean) | 12 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceNativeShuttle.lean](../Lean/Geometry/SourceNativeShuttle.lean) | 19 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeStoredProgram.lean](../Lean/Geometry/SourceNativeStoredProgram.lean) | 4 | OPH-NATIVE-CONDITIONAL-STORED-PROGRAM |
+| [Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean](../Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceNetCausalCone.lean](../Lean/Geometry/SourceNetCausalCone.lean) | 13 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/SourceNetClockSeparation.lean](../Lean/Geometry/SourceNetClockSeparation.lean) | 5 | OPH-LAYERED-OBSERVER-CLOCK-CONTROLS |
+| [Lean/Geometry/SourceNetConformalRecordDensity.lean](../Lean/Geometry/SourceNetConformalRecordDensity.lean) | 22 | OPH-COSMO-FLRW-RECORD-DENSITY |
+| [Lean/Geometry/SourceNetLayeredOrder.lean](../Lean/Geometry/SourceNetLayeredOrder.lean) | 43 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/SourceNetOrderLimit.lean](../Lean/Geometry/SourceNetOrderLimit.lean) | 4 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/SourceNetVolumeError.lean](../Lean/Geometry/SourceNetVolumeError.lean) | 9 | OPH-GOLDEN-SOURCE-QUADRATURE |
+| [Lean/Geometry/SourceNonlinearRecord.lean](../Lean/Geometry/SourceNonlinearRecord.lean) | 11 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceOperationReads.lean](../Lean/Geometry/SourceOperationReads.lean) | 15 | OPH-REGISTERED-SOURCE-READ-ALGEBRA |
+| [Lean/Geometry/SourceOperationReadsAxiomAudit.lean](../Lean/Geometry/SourceOperationReadsAxiomAudit.lean) | 0 | OPH-REGISTERED-SOURCE-READ-ALGEBRA |
+| [Lean/Geometry/SourceOrderEinsteinComposition.lean](../Lean/Geometry/SourceOrderEinsteinComposition.lean) | 14 | OPH-GR-E2E-BRANCH-ENTRY, OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION |
+| [Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean](../Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean) | 8 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION, OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING, OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE |
+| [Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean](../Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourcePassiveMemoryBudget.lean](../Lean/Geometry/SourcePassiveMemoryBudget.lean) | 15 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourcePassiveReset.lean](../Lean/Geometry/SourcePassiveReset.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourcePopulationQuadrature.lean](../Lean/Geometry/SourcePopulationQuadrature.lean) | 17 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/SourcePublicationAxiomAudit.lean](../Lean/Geometry/SourcePublicationAxiomAudit.lean) | 0 | OPH-NATIVE-EVENTUAL-PUBLICATION, OPH-FINITE-A3-SUPPORT |
+| [Lean/Geometry/SourcePublicationLaw.lean](../Lean/Geometry/SourcePublicationLaw.lean) | 11 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationMass.lean](../Lean/Geometry/SourcePublicationMass.lean) | 15 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationMenu.lean](../Lean/Geometry/SourcePublicationMenu.lean) | 9 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationNative.lean](../Lean/Geometry/SourcePublicationNative.lean) | 8 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationPath.lean](../Lean/Geometry/SourcePublicationPath.lean) | 11 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationPathInvariant.lean](../Lean/Geometry/SourcePublicationPathInvariant.lean) | 8 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourcePublicationTail.lean](../Lean/Geometry/SourcePublicationTail.lean) | 5 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourceRadiusRemoval.lean](../Lean/Geometry/SourceRadiusRemoval.lean) | 7 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourceRadiusSelection.lean](../Lean/Geometry/SourceRadiusSelection.lean) | 6 | OPH-NATIVE-EVENTUAL-PUBLICATION |
+| [Lean/Geometry/SourceReadAcceptance.lean](../Lean/Geometry/SourceReadAcceptance.lean) | 48 | OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION |
+| [Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean](../Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceReadAcceptanceSchedule.lean](../Lean/Geometry/SourceReadAcceptanceSchedule.lean) | 13 | OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION |
+| [Lean/Geometry/SourceReadRouting.lean](../Lean/Geometry/SourceReadRouting.lean) | 14 | OPH-SOURCE-FULL-FAMILY-READ-ROUTING |
+| [Lean/Geometry/SourceReadSelection.lean](../Lean/Geometry/SourceReadSelection.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceReadSelectionAxiomAudit.lean](../Lean/Geometry/SourceReadSelectionAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceRecordGluing.lean](../Lean/Geometry/SourceRecordGluing.lean) | 20 | OPH-RECORD-GLUING-M1-SUFFICIENCY |
+| [Lean/Geometry/SourceRecordGluingAxiomAudit.lean](../Lean/Geometry/SourceRecordGluingAxiomAudit.lean) | 0 | OPH-RECORD-GLUING-M1-SUFFICIENCY |
+| [Lean/Geometry/SourceRecordProtection.lean](../Lean/Geometry/SourceRecordProtection.lean) | 11 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Geometry/SourceRepairInstrument.lean](../Lean/Geometry/SourceRepairInstrument.lean) | 17 | OPH-REGISTERED-SOURCE-READ-ALGEBRA |
+| [Lean/Geometry/SourceReusableBus.lean](../Lean/Geometry/SourceReusableBus.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceReusableBusAxiomAudit.lean](../Lean/Geometry/SourceReusableBusAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceRoutingBudget.lean](../Lean/Geometry/SourceRoutingBudget.lean) | 7 | OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT |
+| [Lean/Geometry/SourceRoutingHierarchy.lean](../Lean/Geometry/SourceRoutingHierarchy.lean) | 12 | OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT |
+| [Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean](../Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceRoutingStorage.lean](../Lean/Geometry/SourceRoutingStorage.lean) | 7 | OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT |
+| [Lean/Geometry/SourceSeamPathTomography.lean](../Lean/Geometry/SourceSeamPathTomography.lean) | 9 | OPH-SEAM-PATH-TOMOGRAPHY |
+| [Lean/Geometry/SourceSelectionControls.lean](../Lean/Geometry/SourceSelectionControls.lean) | 15 | No claim evidence edge; model mapping open |
+| [Lean/Geometry/SourceSelectionLocality.lean](../Lean/Geometry/SourceSelectionLocality.lean) | 15 | OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT |
+| [Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean](../Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean) | 0 | OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT |
+| [Lean/Geometry/SourceStateSelection.lean](../Lean/Geometry/SourceStateSelection.lean) | 9 | OPH-FINITE-A3-SUPPORT |
+| [Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean](../Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean) | 0 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalAttempts.lean](../Lean/Geometry/SourceTemporalAttempts.lean) | 7 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalConnected.lean](../Lean/Geometry/SourceTemporalConnected.lean) | 5 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalErasure.lean](../Lean/Geometry/SourceTemporalErasure.lean) | 12 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalEssential.lean](../Lean/Geometry/SourceTemporalEssential.lean) | 5 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalGuard.lean](../Lean/Geometry/SourceTemporalGuard.lean) | 18 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalMenu.lean](../Lean/Geometry/SourceTemporalMenu.lean) | 8 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalNative.lean](../Lean/Geometry/SourceTemporalNative.lean) | 8 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalObservation.lean](../Lean/Geometry/SourceTemporalObservation.lean) | 10 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalSelection.lean](../Lean/Geometry/SourceTemporalSelection.lean) | 5 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SourceTemporalTomography.lean](../Lean/Geometry/SourceTemporalTomography.lean) | 20 | OPH-TEMPORAL-NATIVE-RECOVERY |
+| [Lean/Geometry/SpatialReadbackSoldering.lean](../Lean/Geometry/SpatialReadbackSoldering.lean) | 9 | OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING, OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT |
+| [Lean/Geometry/TimelikeClassForceLaw.lean](../Lean/Geometry/TimelikeClassForceLaw.lean) | 46 | OPH-GEOMETRY-TIMELIKE-CLASS-FORCE-LAW |
+| [Lean/Geometry/TransportedChargeForceLaw.lean](../Lean/Geometry/TransportedChargeForceLaw.lean) | 42 | OPH-GEOMETRY-TRANSPORTED-CHARGE-FORCE-LAW, OPH-GEOMETRY-TIMELIKE-CLASS-FORCE-LAW |
+| [Lean/Geometry/WorldlineHopTransport.lean](../Lean/Geometry/WorldlineHopTransport.lean) | 58 | OPH-GEOMETRY-WORLDLINE-HOP-TRANSPORT, OPH-GEOMETRY-TRANSPORTED-CHARGE-FORCE-LAW, OPH-GEOMETRY-SEAM-STEP-SPEED-LIMIT, OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES |
+| [Lean/Geometry.lean](../Lean/Geometry.lean) | 0 | OPH-QFT-CAUSAL-ORDER-COMPOSITION |
+| [Lean/InformationProjection/GlobalObjective.lean](../Lean/InformationProjection/GlobalObjective.lean) | 39 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/InformationProjection/HistoryLaw.lean](../Lean/InformationProjection/HistoryLaw.lean) | 48 | No claim evidence edge; model mapping open |
+| [Lean/InformationProjection/LogTransitionAction.lean](../Lean/InformationProjection/LogTransitionAction.lean) | 60 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/InformationProjection/PathGibbs.lean](../Lean/InformationProjection/PathGibbs.lean) | 10 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/InformationProjection/ReferenceNormalForm.lean](../Lean/InformationProjection/ReferenceNormalForm.lean) | 15 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/InformationProjection/SourceHistoryPacket.lean](../Lean/InformationProjection/SourceHistoryPacket.lean) | 101 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS, OPH-QFT-SOURCE-HISTORY-GNS-HAMILTONIAN-ATTACHMENT, OPH-QFT-SOURCE-CLOCK-CANDIDATE |
+| [Lean/InformationProjection/SourceReferenceSelection.lean](../Lean/InformationProjection/SourceReferenceSelection.lean) | 14 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/InformationProjection.lean](../Lean/InformationProjection.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Locality.lean](../Lean/Locality.lean) | 0 | OPH-FINITE-LOCALITY-NOSIGNALLING |
+| [Lean/Main.lean](../Lean/Main.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/AxiomAudit.lean](../Lean/ObservableNormalForms/ObservableNormalForms/AxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/ConditionalResampling.lean](../Lean/ObservableNormalForms/ObservableNormalForms/ConditionalResampling.lean) | 34 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Exact.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Exact.lean) | 15 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Examples/AmdA2A5Conditional.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Examples/AmdA2A5Conditional.lean) | 52 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Examples/ProtectedObstructions.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Examples/ProtectedObstructions.lean) | 114 | OPH-CONS-PROTECTED-BEHAVIOR-PROFILE |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Examples/Rule90.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Examples/Rule90.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Functional.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Functional.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/MechanismVariants.lean](../Lean/ObservableNormalForms/ObservableNormalForms/MechanismVariants.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Moduli.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Moduli.lean) | 56 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean](../Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean) | 13 | OPH-CONS-CROSS-SOURCE-ENDPOINT |
+| [Lean/ObservableNormalForms/ObservableNormalForms/ProtectedObstructions.lean](../Lean/ObservableNormalForms/ObservableNormalForms/ProtectedObstructions.lean) | 126 | OPH-CONS-PROTECTED-BEHAVIOR-PROFILE |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Refinement.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Refinement.lean) | 8 | OPH-CONS-REFINEMENT-MODULI |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Repair.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Repair.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms/SchedulerClassObstructions.lean](../Lean/ObservableNormalForms/ObservableNormalForms/SchedulerClassObstructions.lean) | 40 | OPH-CONS-SCHEDULER-CLASS-CAPACITY-SPLIT |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Stability.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Stability.lean) | 4 | OPH-CONS-REFINEMENT-MODULI |
+| [Lean/ObservableNormalForms/ObservableNormalForms/Stochastic.lean](../Lean/ObservableNormalForms/ObservableNormalForms/Stochastic.lean) | 38 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/ObservableNormalForms.lean](../Lean/ObservableNormalForms/ObservableNormalForms.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObservableNormalForms/lakefile.lean](../Lean/ObservableNormalForms/lakefile.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/A2EndpointCommutator.lean](../Lean/ObserverPatchHolography/A2EndpointCommutator.lean) | 19 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/AbstractRewriting.lean](../Lean/ObserverPatchHolography/AbstractRewriting.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/BoundaryFiber.lean](../Lean/ObserverPatchHolography/BoundaryFiber.lean) | 10 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/BridgeBoundaries.lean](../Lean/ObserverPatchHolography/BridgeBoundaries.lean) | 12 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/BridgeEquivalence.lean](../Lean/ObserverPatchHolography/BridgeEquivalence.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/Bridges/ObservableNormalForms.lean](../Lean/ObserverPatchHolography/Bridges/ObservableNormalForms.lean) | 3 | OPH-CONS-CROSS-SOURCE-ENDPOINT |
+| [Lean/ObserverPatchHolography/CapacityClosurePrinciple.lean](../Lean/ObserverPatchHolography/CapacityClosurePrinciple.lean) | 7 | OPH-Q-N-RESERVE-CANDIDATES |
+| [Lean/ObserverPatchHolography/CapacityFixedPoint.lean](../Lean/ObserverPatchHolography/CapacityFixedPoint.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CapacityNonidentifiability.lean](../Lean/ObserverPatchHolography/CapacityNonidentifiability.lean) | 15 | OPH-GR-D6-CAPACITY, OPH-GR-D6-READBACK-NOGO, OPH-Q-PN-CLOSURE, OPH-Q-N-RESERVE-CANDIDATES |
+| [Lean/ObserverPatchHolography/ClebschRatio.lean](../Lean/ObserverPatchHolography/ClebschRatio.lean) | 6 | OPH-QUARK-REGISTER-CLEBSCH |
+| [Lean/ObserverPatchHolography/ClosurePreflight.lean](../Lean/ObserverPatchHolography/ClosurePreflight.lean) | 4 | OPH-Q-PN-CLOSURE, OPH-Q-N-RESERVE-CANDIDATES, OPH-ALPHA-PIXEL |
+| [Lean/ObserverPatchHolography/CollarClause.lean](../Lean/ObserverPatchHolography/CollarClause.lean) | 15 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CollarLayer.lean](../Lean/ObserverPatchHolography/CollarLayer.lean) | 41 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CollarModularT2.lean](../Lean/ObserverPatchHolography/CollarModularT2.lean) | 32 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CollarStates.lean](../Lean/ObserverPatchHolography/CollarStates.lean) | 91 | OPH-THERMO-COLLAR-TEMPERATURE-READING |
+| [Lean/ObserverPatchHolography/CollarStatesBridge.lean](../Lean/ObserverPatchHolography/CollarStatesBridge.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CollarStatesT1.lean](../Lean/ObserverPatchHolography/CollarStatesT1.lean) | 28 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/CoreAxioms.lean](../Lean/ObserverPatchHolography/CoreAxioms.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/DeSitterCapacityShock.lean](../Lean/ObserverPatchHolography/DeSitterCapacityShock.lean) | 9 | OPH-GR-DS-MU2-IDENTITY, OPH-GR-DS-CAPACITY-TRANSFER |
+| [Lean/ObserverPatchHolography/DirectedSeamRepair.lean](../Lean/ObserverPatchHolography/DirectedSeamRepair.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/DirectedSeamRepairProgress.lean](../Lean/ObserverPatchHolography/DirectedSeamRepairProgress.lean) | 13 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/AxiomAudit.lean](../Lean/ObserverPatchHolography/EinsteinBranch/AxiomAudit.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/CollarPremiseDerivation.lean](../Lean/ObserverPatchHolography/EinsteinBranch/CollarPremiseDerivation.lean) | 37 | OPH-DM-COLLAR-PREMISE-DERIVATION |
+| [Lean/ObserverPatchHolography/EinsteinBranch/CollarScaleSaturation.lean](../Lean/ObserverPatchHolography/EinsteinBranch/CollarScaleSaturation.lean) | 16 | OPH-DM-CONT, OPH-DM-COLLAR-SATURATION |
+| [Lean/ObserverPatchHolography/EinsteinBranch/Composition.lean](../Lean/ObserverPatchHolography/EinsteinBranch/Composition.lean) | 3 | OPH-GR-E2E-BRANCH-ENTRY, OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION |
+| [Lean/ObserverPatchHolography/EinsteinBranch/Consensus.lean](../Lean/ObserverPatchHolography/EinsteinBranch/Consensus.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/CosmologyLedgerBrackets.lean](../Lean/ObserverPatchHolography/EinsteinBranch/CosmologyLedgerBrackets.lean) | 36 | OPH-COSMO-POSTDICTION-LEDGER |
+| [Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean](../Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean) | 18 | OPH-DM-CONT, OPH-DM-COLLAR-SATURATION, OPH-DM-DEEP-PROFILE-CHARACTERIZATION, OPH-DM-SPARSE-DEFECT-MECHANISM, OPH-DM-FINITE-CAP-GENERATOR-SPLIT |
+| [Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean](../Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean) | 24 | OPH-DM-CONT, OPH-DM-DEEP-PROFILE-CHARACTERIZATION, OPH-DM-PER-CUT-COMPOSITION |
+| [Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltCocycle.lean](../Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltCocycle.lean) | 16 | OPH-COSMO-POSTDICTION-LEDGER |
+| [Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltFreedom.lean](../Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltFreedom.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/Entropy.lean](../Lean/ObserverPatchHolography/EinsteinBranch/Entropy.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/FiniteCapGeneratorSplit.lean](../Lean/ObserverPatchHolography/EinsteinBranch/FiniteCapGeneratorSplit.lean) | 29 | OPH-DM-FINITE-CAP-GENERATOR-SPLIT |
+| [Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean](../Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean) | 15 | OPH-DE-FIXED-CAPACITY-WLAW |
+| [Lean/ObserverPatchHolography/EinsteinBranch/Manifest.lean](../Lean/ObserverPatchHolography/EinsteinBranch/Manifest.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/PerCutCollarComposition.lean](../Lean/ObserverPatchHolography/EinsteinBranch/PerCutCollarComposition.lean) | 10 | OPH-DM-PER-CUT-COMPOSITION, OPH-DM-COLLAR-PREMISE-DERIVATION |
+| [Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean](../Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean) | 6 | OPH-GR-EINSTEIN-BRANCH-INHABITANT |
+| [Lean/ObserverPatchHolography/EinsteinBranch/SmallBall.lean](../Lean/ObserverPatchHolography/EinsteinBranch/SmallBall.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch/SparseRecordDefectWitness.lean](../Lean/ObserverPatchHolography/EinsteinBranch/SparseRecordDefectWitness.lean) | 34 | OPH-DM-SPARSE-DEFECT-MECHANISM |
+| [Lean/ObserverPatchHolography/EinsteinBranch/Tensor.lean](../Lean/ObserverPatchHolography/EinsteinBranch/Tensor.lean) | 37 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EinsteinBranch.lean](../Lean/ObserverPatchHolography/EinsteinBranch.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/EqualSeamSelection.lean](../Lean/ObserverPatchHolography/EqualSeamSelection.lean) | 11 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/Execution/AdaptiveRunCounterexamples.lean](../Lean/ObserverPatchHolography/Execution/AdaptiveRunCounterexamples.lean) | 8 | OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION |
+| [Lean/ObserverPatchHolography/Execution/AdaptiveRunStratification.lean](../Lean/ObserverPatchHolography/Execution/AdaptiveRunStratification.lean) | 16 | OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION, OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT |
+| [Lean/ObserverPatchHolography/Execution/CumulativeAttemptCapacity.lean](../Lean/ObserverPatchHolography/Execution/CumulativeAttemptCapacity.lean) | 11 | OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY, OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT |
+| [Lean/ObserverPatchHolography/Execution/CumulativeAttemptCapacityExamples.lean](../Lean/ObserverPatchHolography/Execution/CumulativeAttemptCapacityExamples.lean) | 26 | OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY |
+| [Lean/ObserverPatchHolography/Execution/RankedAttemptCapacity.lean](../Lean/ObserverPatchHolography/Execution/RankedAttemptCapacity.lean) | 8 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/ObserverPatchHolography/GlobalCapacityAttachment.lean](../Lean/ObserverPatchHolography/GlobalCapacityAttachment.lean) | 15 | OPH-Q-N-RESERVE-CANDIDATES |
+| [Lean/ObserverPatchHolography/IcosahedralAntibridge.lean](../Lean/ObserverPatchHolography/IcosahedralAntibridge.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/IcosahedralAxisNoGo.lean](../Lean/ObserverPatchHolography/IcosahedralAxisNoGo.lean) | 8 | OPH-A5-REAL-AXIS-CABIBBO-NOGO |
+| [Lean/ObserverPatchHolography/IcosahedralOrbitStabilizer.lean](../Lean/ObserverPatchHolography/IcosahedralOrbitStabilizer.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/KoideCirculant.lean](../Lean/ObserverPatchHolography/KoideCirculant.lean) | 8 | OPH-KOIDE-CIRCULANT-IDENTITY |
+| [Lean/ObserverPatchHolography/Locality/AdaptiveScheduler.lean](../Lean/ObserverPatchHolography/Locality/AdaptiveScheduler.lean) | 28 | OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER |
+| [Lean/ObserverPatchHolography/Locality/DependencyCone.lean](../Lean/ObserverPatchHolography/Locality/DependencyCone.lean) | 16 | OPH-FINITE-LOCALITY-NOSIGNALLING |
+| [Lean/ObserverPatchHolography/Locality/NoSignalling.lean](../Lean/ObserverPatchHolography/Locality/NoSignalling.lean) | 5 | OPH-FINITE-LOCALITY-NOSIGNALLING |
+| [Lean/ObserverPatchHolography/Primitives.lean](../Lean/ObserverPatchHolography/Primitives.lean) | 58 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/Provenance/CausalInterval.lean](../Lean/ObserverPatchHolography/Provenance/CausalInterval.lean) | 17 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/FiniteCausetCompiler.lean](../Lean/ObserverPatchHolography/Provenance/FiniteCausetCompiler.lean) | 9 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE, OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/ObserverPatchHolography/Provenance/FiniteCausetCoverCompiler.lean](../Lean/ObserverPatchHolography/Provenance/FiniteCausetCoverCompiler.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean](../Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean) | 58 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/MismatchProvenance.lean](../Lean/ObserverPatchHolography/Provenance/MismatchProvenance.lean) | 8 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/QuotientInvariance.lean](../Lean/ObserverPatchHolography/Provenance/QuotientInvariance.lean) | 10 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/RefinementNaturality.lean](../Lean/ObserverPatchHolography/Provenance/RefinementNaturality.lean) | 7 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/SeamDeltaAggregation.lean](../Lean/ObserverPatchHolography/Provenance/SeamDeltaAggregation.lean) | 7 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean](../Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean) | 25 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE, OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM, OPH-QFT-RESTRICTION-NATURALITY |
+| [Lean/ObserverPatchHolography/RateBridgeObstruction.lean](../Lean/ObserverPatchHolography/RateBridgeObstruction.lean) | 19 | OPH-QFT-SOURCE-RECURRENCE-CLOCK-PRECURSOR |
+| [Lean/ObserverPatchHolography/RateNonidentifiability.lean](../Lean/ObserverPatchHolography/RateNonidentifiability.lean) | 39 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/RepairGapChain.lean](../Lean/ObserverPatchHolography/RepairGapChain.lean) | 3 | OPH-YM-GAP |
+| [Lean/ObserverPatchHolography/RepairWordSchedule.lean](../Lean/ObserverPatchHolography/RepairWordSchedule.lean) | 12 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/Rule90.lean](../Lean/ObserverPatchHolography/Rule90.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/ScalarSeamRepair.lean](../Lean/ObserverPatchHolography/ScalarSeamRepair.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/SeedPi.lean](../Lean/ObserverPatchHolography/SeedPi.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/ObserverPatchHolography/W5Stabilizer.lean](../Lean/ObserverPatchHolography/W5Stabilizer.lean) | 10 | OPH-W5-STABILISER-POTENTIAL-BOUNDARY |
+| [Lean/ObserverPatchHolography/YangMillsGap.lean](../Lean/ObserverPatchHolography/YangMillsGap.lean) | 5 | OPH-YM-GAP |
+| [Lean/ObserverPatchHolography/YangMillsGapWitness.lean](../Lean/ObserverPatchHolography/YangMillsGapWitness.lean) | 15 | OPH-YM-GAP |
+| [Lean/ObserverPatchHolography/YangMillsLemma72.lean](../Lean/ObserverPatchHolography/YangMillsLemma72.lean) | 5 | OPH-YM-GAP |
+| [Lean/ObserverPatchHolography/YangMillsProp81.lean](../Lean/ObserverPatchHolography/YangMillsProp81.lean) | 6 | OPH-YM-GAP |
+| [Lean/ObserverPatchHolography.lean](../Lean/ObserverPatchHolography.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Checker.lean](../Lean/OphGap/Checker.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/OphData.lean](../Lean/OphGap/OphData.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/OphOrigControls.lean](../Lean/OphGap/OphOrigControls.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/OphOrigData.lean](../Lean/OphGap/OphOrigData.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/OphOrigWitness.lean](../Lean/OphGap/OphOrigWitness.lean) | 18 | OPH-SOURCE-DIMENSIONLESS-GAP |
+| [Lean/OphGap/OphWitness.lean](../Lean/OphGap/OphWitness.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/SignedGap.lean](../Lean/OphGap/SignedGap.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/E1.lean](../Lean/OphGap/Slices/E1.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/E2.lean](../Lean/OphGap/Slices/E2.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/E3.lean](../Lean/OphGap/Slices/E3.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/N1.lean](../Lean/OphGap/Slices/N1.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/N2.lean](../Lean/OphGap/Slices/N2.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/N3.lean](../Lean/OphGap/Slices/N3.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/P1.lean](../Lean/OphGap/Slices/P1.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/P2.lean](../Lean/OphGap/Slices/P2.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/P3.lean](../Lean/OphGap/Slices/P3.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/P4.lean](../Lean/OphGap/Slices/P4.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/T1.lean](../Lean/OphGap/Slices/T1.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/T2.lean](../Lean/OphGap/Slices/T2.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Slices/T3.lean](../Lean/OphGap/Slices/T3.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/OphGap/Transport.lean](../Lean/OphGap/Transport.lean) | 37 | No claim evidence edge; model mapping open |
+| [Lean/OphGap.lean](../Lean/OphGap.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/QFT/CPRestrictionNet.lean](../Lean/QFT/CPRestrictionNet.lean) | 8 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/CarrierJoinTransport.lean](../Lean/QFT/CarrierJoinTransport.lean) | 78 | OPH-QUANTUM-HINGE-FIBERED-JOIN-AND-SLICE-REGION-DICHOTOMY, OPH-QFT-JOIN-RECORD-NET-MORPHISM |
+| [Lean/QFT/ColimitGNSRepresentation.lean](../Lean/QFT/ColimitGNSRepresentation.lean) | 10 | OPH-QFT-COMPLETED-COLIMIT-GNS-INTERFACE, OPH-QFT-SELECTED-STATE-GNS-ATTACHMENT, OPH-QFT-SELECTED-GNS-ISING-HAMILTONIAN-COMPOSITION |
+| [Lean/QFT/ColimitNormedCompletion.lean](../Lean/QFT/ColimitNormedCompletion.lean) | 80 | OPH-QFT-COLIMIT-NORMED-COMPLETION, OPH-QFT-COMPLETED-COLIMIT-GNS-INTERFACE, OPH-QFT-SELECTED-STATE-GNS-ATTACHMENT |
+| [Lean/QFT/ColimitSelectedStateGNS.lean](../Lean/QFT/ColimitSelectedStateGNS.lean) | 9 | OPH-QFT-SELECTED-STATE-GNS-ATTACHMENT, OPH-QFT-SELECTED-GNS-ISING-HAMILTONIAN-COMPOSITION, OPH-QFT-SOURCE-HISTORY-GNS-HAMILTONIAN-ATTACHMENT |
+| [Lean/QFT/ConjugationGauge.lean](../Lean/QFT/ConjugationGauge.lean) | 22 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/QFT/ConvexAffinityBridge.lean](../Lean/QFT/ConvexAffinityBridge.lean) | 35 | No claim evidence edge; model mapping open |
+| [Lean/QFT/CoverageReceipt.lean](../Lean/QFT/CoverageReceipt.lean) | 33 | OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/EffectiveQuantumComparison.lean](../Lean/QFT/EffectiveQuantumComparison.lean) | 13 | OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON |
+| [Lean/QFT/EnlargedTargetRecordEmbedding.lean](../Lean/QFT/EnlargedTargetRecordEmbedding.lean) | 53 | OPH-QFT-ENLARGED-TARGET-RECORD-EMBEDDING |
+| [Lean/QFT/FiniteCausalObserverNet.lean](../Lean/QFT/FiniteCausalObserverNet.lean) | 12 | OPH-FINITE-CAUSAL-OBSERVER-NET, OPH-QFT-CAUSAL-ORDER-COMPOSITION |
+| [Lean/QFT/FiniteTwoSiteIsingColimitGNS.lean](../Lean/QFT/FiniteTwoSiteIsingColimitGNS.lean) | 44 | OPH-QFT-SELECTED-GNS-ISING-HAMILTONIAN-COMPOSITION |
+| [Lean/QFT/FiniteTwoSiteIsingField.lean](../Lean/QFT/FiniteTwoSiteIsingField.lean) | 40 | OPH-QFT-FINITE-TWO-SITE-ISING-HILBERT-DYNAMICS, OPH-QFT-SELECTED-GNS-ISING-HAMILTONIAN-COMPOSITION, OPH-QFT-SOURCE-HISTORY-THREE-SLOT-LOCAL-GNS-DYNAMICS |
+| [Lean/QFT/FiniteUnitaryScatteringNoGo.lean](../Lean/QFT/FiniteUnitaryScatteringNoGo.lean) | 6 | OPH-FINITE-UNITARY-SCATTERING-LIMIT-NO-GO |
+| [Lean/QFT/GaugeIrreducibleBorn.lean](../Lean/QFT/GaugeIrreducibleBorn.lean) | 71 | No claim evidence edge; model mapping open |
+| [Lean/QFT/GlueCountermodel.lean](../Lean/QFT/GlueCountermodel.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/QFT/HistoryActionBinding.lean](../Lean/QFT/HistoryActionBinding.lean) | 38 | OPH-GAUGE-KINETIC-HISTORY-BINDING |
+| [Lean/QFT/InhabitedTowerRow.lean](../Lean/QFT/InhabitedTowerRow.lean) | 21 | No claim evidence edge; model mapping open |
+| [Lean/QFT/InheritanceMatrix.lean](../Lean/QFT/InheritanceMatrix.lean) | 13 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX |
+| [Lean/QFT/InheritanceMatrixGuards.lean](../Lean/QFT/InheritanceMatrixGuards.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/QFT/JoinNetMorphism.lean](../Lean/QFT/JoinNetMorphism.lean) | 71 | OPH-QFT-JOIN-RECORD-NET-MORPHISM, OPH-QFT-OPERATOR-LAYER-MORPHISM-BOUNDARY |
+| [Lean/QFT/JointInstance.lean](../Lean/QFT/JointInstance.lean) | 12 | No claim evidence edge; model mapping open |
+| [Lean/QFT/JointSlotFactorisation.lean](../Lean/QFT/JointSlotFactorisation.lean) | 22 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/LimitRestriction.lean](../Lean/QFT/LimitRestriction.lean) | 11 | OPH-QFT-RESTRICTION-NATURALITY |
+| [Lean/QFT/LocallyCovariantLimit.lean](../Lean/QFT/LocallyCovariantLimit.lean) | 75 | OPH-QFT-COLIMIT-NORMED-COMPLETION, OPH-QFT-SELECTED-STATE-GNS-ATTACHMENT, OPH-QFT-RESTRICTION-NATURALITY |
+| [Lean/QFT/NoncommutativeWitness.lean](../Lean/QFT/NoncommutativeWitness.lean) | 38 | No claim evidence edge; model mapping open |
+| [Lean/QFT/ObserverAccessCut.lean](../Lean/QFT/ObserverAccessCut.lean) | 44 | No claim evidence edge; model mapping open |
+| [Lean/QFT/ObserverEventTower.lean](../Lean/QFT/ObserverEventTower.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/QFT/ObserverEventWorld.lean](../Lean/QFT/ObserverEventWorld.lean) | 11 | No claim evidence edge; model mapping open |
+| [Lean/QFT/ObserverNetDescent.lean](../Lean/QFT/ObserverNetDescent.lean) | 7 | OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/OperationalOverlapEvidence.lean](../Lean/QFT/OperationalOverlapEvidence.lean) | 26 | OPH-OBS-PATCH-DEF |
+| [Lean/QFT/OperatorLayerMorphismBoundary.lean](../Lean/QFT/OperatorLayerMorphismBoundary.lean) | 17 | OPH-QFT-OPERATOR-LAYER-MORPHISM-BOUNDARY |
+| [Lean/QFT/PathTimeSliceInterface.lean](../Lean/QFT/PathTimeSliceInterface.lean) | 28 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX, OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION |
+| [Lean/QFT/PublicEndpointBridge.lean](../Lean/QFT/PublicEndpointBridge.lean) | 41 | No claim evidence edge; model mapping open |
+| [Lean/QFT/RichFibreRegionalNet.lean](../Lean/QFT/RichFibreRegionalNet.lean) | 65 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET, OPH-QFT-CAUSAL-ORDER-COMPOSITION |
+| [Lean/QFT/RichFibreWitness.lean](../Lean/QFT/RichFibreWitness.lean) | 22 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/ScalarRegionalTimeSlice.lean](../Lean/QFT/ScalarRegionalTimeSlice.lean) | 5 | OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION |
+| [Lean/QFT/SectorInheritance.lean](../Lean/QFT/SectorInheritance.lean) | 21 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX |
+| [Lean/QFT/SimEarnedWitness.lean](../Lean/QFT/SimEarnedWitness.lean) | 70 | No claim evidence edge; model mapping open |
+| [Lean/QFT/SourceClockCandidate.lean](../Lean/QFT/SourceClockCandidate.lean) | 34 | OPH-QFT-SOURCE-CLOCK-CANDIDATE |
+| [Lean/QFT/SourceContextTomographyNoGo.lean](../Lean/QFT/SourceContextTomographyNoGo.lean) | 25 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/QFT/SourceContextWeb.lean](../Lean/QFT/SourceContextWeb.lean) | 41 | No claim evidence edge; model mapping open |
+| [Lean/QFT/SourceConvexFamily.lean](../Lean/QFT/SourceConvexFamily.lean) | 24 | No claim evidence edge; model mapping open |
+| [Lean/QFT/SourceCorrelationCapstone.lean](../Lean/QFT/SourceCorrelationCapstone.lean) | 26 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/SourceDerivedEventPrecedence.lean](../Lean/QFT/SourceDerivedEventPrecedence.lean) | 7 | OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE |
+| [Lean/QFT/SourceHistoryExpectationNet.lean](../Lean/QFT/SourceHistoryExpectationNet.lean) | 98 | OPH-QFT-SOURCE-HISTORY-STATE-PRESERVING-RECORD-NET, OPH-QFT-ENLARGED-TARGET-RECORD-EMBEDDING |
+| [Lean/QFT/SourceHistoryGNSDynamics.lean](../Lean/QFT/SourceHistoryGNSDynamics.lean) | 34 | OPH-QFT-SOURCE-HISTORY-GNS-HAMILTONIAN-ATTACHMENT, OPH-QFT-SOURCE-HISTORY-THREE-SLOT-LOCAL-GNS-DYNAMICS, OPH-QFT-SOURCE-HISTORY-STATE-PRESERVING-RECORD-NET |
+| [Lean/QFT/SourceHistoryThreeSlotLocalGNS.lean](../Lean/QFT/SourceHistoryThreeSlotLocalGNS.lean) | 60 | OPH-QFT-SOURCE-HISTORY-THREE-SLOT-LOCAL-GNS-DYNAMICS, OPH-QFT-SOURCE-HISTORY-STATE-PRESERVING-RECORD-NET |
+| [Lean/QFT/SourceLinkSquare.lean](../Lean/QFT/SourceLinkSquare.lean) | 26 | No claim evidence edge; model mapping open |
+| [Lean/QFT/SourceOperatorGeneration.lean](../Lean/QFT/SourceOperatorGeneration.lean) | 14 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/SourceOrientedCompletion.lean](../Lean/QFT/SourceOrientedCompletion.lean) | 16 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/QFT/SourcePhaseLiftBridge.lean](../Lean/QFT/SourcePhaseLiftBridge.lean) | 16 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/QFT/SourceRecurrenceClock.lean](../Lean/QFT/SourceRecurrenceClock.lean) | 40 | OPH-QFT-SOURCE-RECURRENCE-CLOCK-PRECURSOR, OPH-EM-CARRIER-MODE-OSCILLATORS, OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES, OPH-GEOMETRY-PROPER-LENGTH-CLOCKED-CHAIN |
+| [Lean/QFT/SourceRegionalNet.lean](../Lean/QFT/SourceRegionalNet.lean) | 69 | OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/StructuralInheritance.lean](../Lean/QFT/StructuralInheritance.lean) | 28 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX |
+| [Lean/QFT/StructuralNetAdequacySurface.lean](../Lean/QFT/StructuralNetAdequacySurface.lean) | 22 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/TowerAnchoredCorrelation.lean](../Lean/QFT/TowerAnchoredCorrelation.lean) | 13 | OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION |
+| [Lean/QFT/TowerAnchoredDiamond.lean](../Lean/QFT/TowerAnchoredDiamond.lean) | 9 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT/TripleCarrierJoin.lean](../Lean/QFT/TripleCarrierJoin.lean) | 44 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX, OPH-QUANTUM-TRIPLE-CARRIER-JOIN |
+| [Lean/QFT/TripleCarrierOperatorJoin.lean](../Lean/QFT/TripleCarrierOperatorJoin.lean) | 23 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX, OPH-QUANTUM-TRIPLE-OPERATOR-JOIN |
+| [Lean/QFT/TwoFactorHistoryBinding.lean](../Lean/QFT/TwoFactorHistoryBinding.lean) | 26 | OPH-GAUGE-KINETIC-HISTORY-BINDING |
+| [Lean/QFT/TwoSlotCPNetWitness.lean](../Lean/QFT/TwoSlotCPNetWitness.lean) | 34 | OPH-FINITE-LOCALITY-NOSIGNALLING, OPH-FINITE-CAUSAL-OBSERVER-NET |
+| [Lean/QFT.lean](../Lean/QFT.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A2HolonomyBridge.lean](../Lean/Screen/A2HolonomyBridge.lean) | 10 | OPH-SCREEN-PORT-CURRENT-INNER, OPH-SCREEN-A5-SM-RECOGNITION |
+| [Lean/Screen/A5AngularBands.lean](../Lean/Screen/A5AngularBands.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5AngularKernels.lean](../Lean/Screen/A5AngularKernels.lean) | 22 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5AngularMultiplets.lean](../Lean/Screen/A5AngularMultiplets.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5CarrierClassBand.lean](../Lean/Screen/A5CarrierClassBand.lean) | 27 | OPH-A5-CARRIER-CLASS-DISPERSION-BAND |
+| [Lean/Screen/A5CharacterField.lean](../Lean/Screen/A5CharacterField.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5Commutant.lean](../Lean/Screen/A5Commutant.lean) | 13 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5CouplingSymmetry.lean](../Lean/Screen/A5CouplingSymmetry.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5FamilyBand.lean](../Lean/Screen/A5FamilyBand.lean) | 21 | OPH-SCREEN-A5-SM-RECOGNITION |
+| [Lean/Screen/A5IncidenceResponse.lean](../Lean/Screen/A5IncidenceResponse.lean) | 2 | OPH-SCREEN-PORT-CURRENT-INNER |
+| [Lean/Screen/A5OPH.lean](../Lean/Screen/A5OPH.lean) | 65 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5OrbitRaySeparation.lean](../Lean/Screen/A5OrbitRaySeparation.lean) | 12 | OPH-A5-PRIMITIVE-PORT-SPIN6, OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/A5PortAction.lean](../Lean/Screen/A5PortAction.lean) | 9 | OPH-EM-CARRIER-MODE-EQUIVARIANCE |
+| [Lean/Screen/A5PortModule.lean](../Lean/Screen/A5PortModule.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5PortSixAxesBridge.lean](../Lean/Screen/A5PortSixAxesBridge.lean) | 7 | OPH-EM-GOLDEN-SECTOR-CHARACTERS |
+| [Lean/Screen/A5PrimitivePortPrediction.lean](../Lean/Screen/A5PrimitivePortPrediction.lean) | 5 | OPH-A5-PRIMITIVE-PORT-SPIN6 |
+| [Lean/Screen/A5ResponseWordAlgebra.lean](../Lean/Screen/A5ResponseWordAlgebra.lean) | 67 | No claim evidence edge; model mapping open |
+| [Lean/Screen/A5SixAxes.lean](../Lean/Screen/A5SixAxes.lean) | 28 | No claim evidence edge; model mapping open |
+| [Lean/Screen/ActionTimeGram.lean](../Lean/Screen/ActionTimeGram.lean) | 3 | OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON, OPH-SCALAR-ACTION-CLOCK |
+| [Lean/Screen/AssembledActionComposition.lean](../Lean/Screen/AssembledActionComposition.lean) | 24 | OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION, OPH-SCREEN-FERMION-SECTOR-ASSEMBLY, OPH-SCREEN-GAUGE-SECTOR-BRACKET-COMPLETION |
+| [Lean/Screen/B10EdgeCenterAction.lean](../Lean/Screen/B10EdgeCenterAction.lean) | 29 | OPH-FINITE-QUANTUM-LIMITATION-SUITE, OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE |
+| [Lean/Screen/B10QuantumLimitations.lean](../Lean/Screen/B10QuantumLimitations.lean) | 0 | OPH-FINITE-QUANTUM-LIMITATION-SUITE, OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE |
+| [Lean/Screen/BaryonDimensionSix.lean](../Lean/Screen/BaryonDimensionSix.lean) | 20 | OPH-SM-BARYON-DIMENSION-SIX-CENSUS |
+| [Lean/Screen/BipoSHFrameInvariant.lean](../Lean/Screen/BipoSHFrameInvariant.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/Screen/BipoSHInverseBoundary.lean](../Lean/Screen/BipoSHInverseBoundary.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/BipoSHTransferInvariant.lean](../Lean/Screen/BipoSHTransferInvariant.lean) | 2 | No claim evidence edge; model mapping open |
+| [Lean/Screen/CarrierEvolutionFlow.lean](../Lean/Screen/CarrierEvolutionFlow.lean) | 78 | OPH-EM-CARRIER-EVOLUTION-FLOW, OPH-EM-FIELD-SECTOR-ENERGY-INNER-PRODUCT, OPH-EM-CURL-SECTOR-EIGENBASIS |
+| [Lean/Screen/CarrierFrequencySpeed.lean](../Lean/Screen/CarrierFrequencySpeed.lean) | 13 | OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION |
+| [Lean/Screen/CarrierModeEquivariance.lean](../Lean/Screen/CarrierModeEquivariance.lean) | 81 | OPH-EM-CARRIER-MODE-EQUIVARIANCE, OPH-EM-GOLDEN-SECTOR-CHARACTERS, OPH-EM-GOLDEN-SECTOR-IRREDUCIBILITY |
+| [Lean/Screen/CarrierModeOscillators.lean](../Lean/Screen/CarrierModeOscillators.lean) | 81 | OPH-EM-CARRIER-MODE-OSCILLATORS, OPH-EM-CARRIER-MODE-EQUIVARIANCE, OPH-EM-CARRIER-EVOLUTION-FLOW |
+| [Lean/Screen/CarrierUniqueness.lean](../Lean/Screen/CarrierUniqueness.lean) | 47 | No claim evidence edge; model mapping open |
+| [Lean/Screen/CartanScalarReduction.lean](../Lean/Screen/CartanScalarReduction.lean) | 5 | OPH-SM-Q1-LOCAL-G6 |
+| [Lean/Screen/CertifiedScaledStepInstrument.lean](../Lean/Screen/CertifiedScaledStepInstrument.lean) | 15 | OPH-EM-CERTIFIED-SCALED-STEP-INSTRUMENT, OPH-GEOMETRY-COMMON-WORLD-MAXWELL-CLOCK-JOIN, OPH-GEOMETRY-CARRIER-DYNAMICS-COMPATIBILITY |
+| [Lean/Screen/ChargedCurrentDictionary.lean](../Lean/Screen/ChargedCurrentDictionary.lean) | 30 | OPH-SCREEN-CHARGED-CURRENT-DICTIONARY |
+| [Lean/Screen/CommonEWOrderUnit.lean](../Lean/Screen/CommonEWOrderUnit.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/CommonHistoryFeedback.lean](../Lean/Screen/CommonHistoryFeedback.lean) | 4 | OPH-COMMON-HISTORY-FEEDBACK-PACKET |
+| [Lean/Screen/Compact12.lean](../Lean/Screen/Compact12.lean) | 30 | No claim evidence edge; model mapping open |
+| [Lean/Screen/ConeCochainBridge.lean](../Lean/Screen/ConeCochainBridge.lean) | 23 | OPH-CONE-WHITNEY-BRIDGE, OPH-WHITNEY-RADIATIVE-QUANTUM, OPH-WHITNEY-CHARGED-MATTER |
+| [Lean/Screen/CurlSectorEigenbasis.lean](../Lean/Screen/CurlSectorEigenbasis.lean) | 60 | OPH-EM-CARRIER-EVOLUTION-FLOW, OPH-EM-FIELD-SECTOR-ENERGY-INNER-PRODUCT, OPH-EM-CURL-SECTOR-EIGENBASIS |
+| [Lean/Screen/CurlStoneClockBridge.lean](../Lean/Screen/CurlStoneClockBridge.lean) | 19 | OPH-EM-CURL-SECTOR-EIGENBASIS |
+| [Lean/Screen/DiscreteCoulombGreen.lean](../Lean/Screen/DiscreteCoulombGreen.lean) | 79 | OPH-EM-POSITION-SPACE-MAXWELL-COULOMB |
+| [Lean/Screen/DiscreteGauss.lean](../Lean/Screen/DiscreteGauss.lean) | 7 | OPH-FINITE-CONSERVATION-WARD-PRECURSOR |
+| [Lean/Screen/DiscreteRefinement.lean](../Lean/Screen/DiscreteRefinement.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/Screen/DispersionArmingInterface.lean](../Lean/Screen/DispersionArmingInterface.lean) | 21 | OPH-EM-DISPERSION-ARMING-INTERFACE |
+| [Lean/Screen/ElectroweakBreakingComposition.lean](../Lean/Screen/ElectroweakBreakingComposition.lean) | 33 | OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION, OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION, OPH-SCREEN-FERMION-SECTOR-ASSEMBLY |
+| [Lean/Screen/ElectroweakPoleScaleQuotient.lean](../Lean/Screen/ElectroweakPoleScaleQuotient.lean) | 5 | OPH-WZ-STRICT-1L-POLE-MAP |
+| [Lean/Screen/EqualStateWeights.lean](../Lean/Screen/EqualStateWeights.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/Screen/ExteriorComponentBridge.lean](../Lean/Screen/ExteriorComponentBridge.lean) | 11 | OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE |
+| [Lean/Screen/ExteriorSelection.lean](../Lean/Screen/ExteriorSelection.lean) | 10 | OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT, OPH-GAUGE-D7-D9, OPH-SCREEN-A5-SM-RECOGNITION |
+| [Lean/Screen/FermionSectorAssembly.lean](../Lean/Screen/FermionSectorAssembly.lean) | 41 | OPH-SCREEN-FERMION-SECTOR-ASSEMBLY |
+| [Lean/Screen/FieldSectorEnergyInnerProduct.lean](../Lean/Screen/FieldSectorEnergyInnerProduct.lean) | 113 | OPH-EM-CARRIER-EVOLUTION-FLOW, OPH-EM-FIELD-SECTOR-ENERGY-INNER-PRODUCT |
+| [Lean/Screen/GaugeKineticInvariantForms.lean](../Lean/Screen/GaugeKineticInvariantForms.lean) | 6 | OPH-GAUGE-KINETIC-HISTORY-BINDING, OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION, OPH-SCREEN-GAUGE-SECTOR-BRACKET-COMPLETION |
+| [Lean/Screen/GaugeOrbitQuotientGap.lean](../Lean/Screen/GaugeOrbitQuotientGap.lean) | 57 | OPH-YM-GAUGE-ORBIT-QUOTIENT-DESCENT |
+| [Lean/Screen/GaugeSectorBracketCompletion.lean](../Lean/Screen/GaugeSectorBracketCompletion.lean) | 39 | OPH-SCREEN-GAUGE-SECTOR-BRACKET-COMPLETION |
+| [Lean/Screen/GlobalFormCharacterDescent.lean](../Lean/Screen/GlobalFormCharacterDescent.lean) | 15 | OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT |
+| [Lean/Screen/GoldenSectorCharacters.lean](../Lean/Screen/GoldenSectorCharacters.lean) | 51 | OPH-EM-GOLDEN-SECTOR-CHARACTERS, OPH-EM-GOLDEN-SECTOR-IRREDUCIBILITY, OPH-EM-GOLDEN-SECTOR-COMPLEX-IRREDUCIBILITY |
+| [Lean/Screen/GoldenSectorComplexIrreducibility.lean](../Lean/Screen/GoldenSectorComplexIrreducibility.lean) | 71 | OPH-EM-GOLDEN-SECTOR-CHARACTERS, OPH-EM-GOLDEN-SECTOR-IRREDUCIBILITY, OPH-EM-GOLDEN-SECTOR-COMPLEX-IRREDUCIBILITY |
+| [Lean/Screen/GoldenSectorIrreducibility.lean](../Lean/Screen/GoldenSectorIrreducibility.lean) | 55 | OPH-EM-GOLDEN-SECTOR-CHARACTERS, OPH-EM-GOLDEN-SECTOR-IRREDUCIBILITY, OPH-EM-GOLDEN-SECTOR-COMPLEX-IRREDUCIBILITY |
+| [Lean/Screen/GoldenSectorPSL2F5Representations.lean](../Lean/Screen/GoldenSectorPSL2F5Representations.lean) | 12 | OPH-EM-GOLDEN-SECTOR-CHARACTERS |
+| [Lean/Screen/HolonomyInterference.lean](../Lean/Screen/HolonomyInterference.lean) | 26 | OPH-FINITE-HOLONOMY-CHARACTER-PHASE |
+| [Lean/Screen/KineticFamilyCancellation.lean](../Lean/Screen/KineticFamilyCancellation.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/Screen/KineticFormDichotomy.lean](../Lean/Screen/KineticFormDichotomy.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/Screen/KogutSusskindFiberRateComparison.lean](../Lean/Screen/KogutSusskindFiberRateComparison.lean) | 78 | OPH-YM-FIBER-RATE-COMPARISON, OPH-YM-GAUGE-ORBIT-QUOTIENT-DESCENT |
+| [Lean/Screen/LabeledEventReadout.lean](../Lean/Screen/LabeledEventReadout.lean) | 6 | OPH-GEOMETRY-SCREEN-CARRIER-MAP-CANDIDATE |
+| [Lean/Screen/LayeredDiscreteGauss.lean](../Lean/Screen/LayeredDiscreteGauss.lean) | 15 | OPH-GEOMETRY-LAYERED-DISCRETE-GAUSS |
+| [Lean/Screen/LightSignalAdequacySurface.lean](../Lean/Screen/LightSignalAdequacySurface.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/Screen/LightSignalMaxwellComposition.lean](../Lean/Screen/LightSignalMaxwellComposition.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/Screen/LocalEnergyBalance.lean](../Lean/Screen/LocalEnergyBalance.lean) | 19 | OPH-EM-LOCAL-ENERGY-BALANCE |
+| [Lean/Screen/LocalFaceMaxwellAction.lean](../Lean/Screen/LocalFaceMaxwellAction.lean) | 47 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX, OPH-EM-LOCAL-FACE-MAXWELL-STATIC-COMPOSITION |
+| [Lean/Screen/LocalGaugeJetAction.lean](../Lean/Screen/LocalGaugeJetAction.lean) | 5 | OPH-SM-Q1-LOCAL-G6 |
+| [Lean/Screen/MagneticMatterStability.lean](../Lean/Screen/MagneticMatterStability.lean) | 3 | OPH-WHITNEY-MAGNETIC-CONTINUUM |
+| [Lean/Screen/MatterGrammarIndexBridge.lean](../Lean/Screen/MatterGrammarIndexBridge.lean) | 8 | OPH-SM-BARYON-DIMENSION-SIX-CENSUS |
+| [Lean/Screen/ModalMaxwellFactorizationBoundary.lean](../Lean/Screen/ModalMaxwellFactorizationBoundary.lean) | 17 | OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY |
+| [Lean/Screen/NeutralCurrentDictionary.lean](../Lean/Screen/NeutralCurrentDictionary.lean) | 33 | OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY |
+| [Lean/Screen/NeutralPairCoupledAction.lean](../Lean/Screen/NeutralPairCoupledAction.lean) | 28 | OPH-EM-SOURCED-FIELD-CONSISTENCY |
+| [Lean/Screen/NeutralPairJointStationaryWitness.lean](../Lean/Screen/NeutralPairJointStationaryWitness.lean) | 50 | OPH-EM-SOURCED-FIELD-CONSISTENCY, OPH-SERIAL-MAXWELL-READOUT |
+| [Lean/Screen/OPHScreen.lean](../Lean/Screen/OPHScreen.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Screen/OrientedFaceBracketSelector.lean](../Lean/Screen/OrientedFaceBracketSelector.lean) | 18 | OPH-SCREEN-PORT-CURRENT-INNER |
+| [Lean/Screen/OrientedFaceInvariantMetric.lean](../Lean/Screen/OrientedFaceInvariantMetric.lean) | 12 | OPH-SCREEN-PORT-CURRENT-INNER |
+| [Lean/Screen/PSL2F5SixAxesBridge.lean](../Lean/Screen/PSL2F5SixAxesBridge.lean) | 46 | OPH-EM-GOLDEN-SECTOR-CHARACTERS |
+| [Lean/Screen/PhysicalA5ForcingNoGo.lean](../Lean/Screen/PhysicalA5ForcingNoGo.lean) | 6 | OPH-SCREEN-A5-SM-RECOGNITION |
+| [Lean/Screen/PortDualMetricSelection.lean](../Lean/Screen/PortDualMetricSelection.lean) | 6 | OPH-SCREEN-PORT-CURRENT-INNER |
+| [Lean/Screen/PortFrameGram.lean](../Lean/Screen/PortFrameGram.lean) | 11 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PortGramA5Isometry.lean](../Lean/Screen/PortGramA5Isometry.lean) | 18 | OPH-GR-PORT-RESPONSE-COMPLETION |
+| [Lean/Screen/PortGramRepairBand.lean](../Lean/Screen/PortGramRepairBand.lean) | 20 | OPH-GR-PORT-RESPONSE-COMPLETION, OPH-SCREEN-GALOIS-FRAME-BOUNDARY |
+| [Lean/Screen/PortGramRepairCovariance.lean](../Lean/Screen/PortGramRepairCovariance.lean) | 27 | OPH-GR-PORT-RESPONSE-COMPLETION |
+| [Lean/Screen/PositionSpaceMaxwellAction.lean](../Lean/Screen/PositionSpaceMaxwellAction.lean) | 38 | OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX, OPH-EM-POSITION-SPACE-MAXWELL-COULOMB, OPH-EM-SOURCED-FIELD-CONSISTENCY |
+| [Lean/Screen/PrimitiveHopSelection.lean](../Lean/Screen/PrimitiveHopSelection.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PrimitivePortDualMeasure.lean](../Lean/Screen/PrimitivePortDualMeasure.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PrimitivePortFrameQuotient.lean](../Lean/Screen/PrimitivePortFrameQuotient.lean) | 37 | OPH-GR-PORT-RESPONSE-COMPLETION, OPH-GEOMETRY-INVERSE-SQUARE-SHELL |
+| [Lean/Screen/PrimitivePortMetricAttachment.lean](../Lean/Screen/PrimitivePortMetricAttachment.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PrimitivePortOperatorSelectionBoundary.lean](../Lean/Screen/PrimitivePortOperatorSelectionBoundary.lean) | 13 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PrimitivePortScaleBoundary.lean](../Lean/Screen/PrimitivePortScaleBoundary.lean) | 12 | No claim evidence edge; model mapping open |
+| [Lean/Screen/PrimitivePortTranslationBridge.lean](../Lean/Screen/PrimitivePortTranslationBridge.lean) | 21 | No claim evidence edge; model mapping open |
+| [Lean/Screen/QuantumMatterIntegration.lean](../Lean/Screen/QuantumMatterIntegration.lean) | 11 | OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE |
+| [Lean/Screen/QuarkMeanDomain.lean](../Lean/Screen/QuarkMeanDomain.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/Screen/RGRepresentationFrontier.lean](../Lean/Screen/RGRepresentationFrontier.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/Screen/RegionalContinuity.lean](../Lean/Screen/RegionalContinuity.lean) | 7 | OPH-FINITE-CONSERVATION-WARD-PRECURSOR |
+| [Lean/Screen/RepairWordCarrierReadout.lean](../Lean/Screen/RepairWordCarrierReadout.lean) | 20 | OPH-GR-PORT-RESPONSE-COMPLETION |
+| [Lean/Screen/S2DesignSignature.lean](../Lean/Screen/S2DesignSignature.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/Screen/SL2F5PortCover.lean](../Lean/Screen/SL2F5PortCover.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/Screen/SMStructureAdequacySurface.lean](../Lean/Screen/SMStructureAdequacySurface.lean) | 28 | OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT |
+| [Lean/Screen/SMStructureComposition.lean](../Lean/Screen/SMStructureComposition.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/ScaledMaxwellStability.lean](../Lean/Screen/ScaledMaxwellStability.lean) | 145 | OPH-EM-SCALED-MAXWELL-STABILITY-ACTION, OPH-EM-CERTIFIED-SCALED-STEP-INSTRUMENT, OPH-GEOMETRY-COMMON-WORLD-JOINT-ACTION, OPH-EM-LOCAL-ENERGY-BALANCE, OPH-GEOMETRY-PORT-CHARGE-MINIMAL-COUPLING, OPH-EM-CARRIER-MODE-OSCILLATORS, OPH-EM-CARRIER-MODE-EQUIVARIANCE, OPH-GEOMETRY-SEAM-STEP-SPEED-LIMIT, OPH-EM-GOLDEN-SECTOR-CHARACTERS, OPH-EM-CARRIER-EVOLUTION-FLOW, OPH-EM-SOURCED-FIELD-CONSISTENCY, OPH-EM-FIELD-SECTOR-ENERGY-INNER-PRODUCT, OPH-EM-CURL-SECTOR-EIGENBASIS |
+| [Lean/Screen/SeamChargeContinuity.lean](../Lean/Screen/SeamChargeContinuity.lean) | 47 | OPH-EM-SOURCED-FIELD-CONSISTENCY |
+| [Lean/Screen/SeamCurrentAuxiliaryOscillatorLift.lean](../Lean/Screen/SeamCurrentAuxiliaryOscillatorLift.lean) | 7 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentCarrierQuotient.lean](../Lean/Screen/SeamCurrentCarrierQuotient.lean) | 30 | OPH-GR-PORT-RESPONSE-COMPLETION, OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentDirichletGenerator.lean](../Lean/Screen/SeamCurrentDirichletGenerator.lean) | 34 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentEdge30Moment.lean](../Lean/Screen/SeamCurrentEdge30Moment.lean) | 18 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentEdge30Remainder.lean](../Lean/Screen/SeamCurrentEdge30Remainder.lean) | 1 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentFreePhotonLift.lean](../Lean/Screen/SeamCurrentFreePhotonLift.lean) | 21 | OPH-A5-SEAM-CURRENT-EDGE30, OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY |
+| [Lean/Screen/SeamCurrentHomogeneousAction.lean](../Lean/Screen/SeamCurrentHomogeneousAction.lean) | 37 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentPhotonLeptonThreshold.lean](../Lean/Screen/SeamCurrentPhotonLeptonThreshold.lean) | 57 | OPH-A5-SEAM-CURRENT-EDGE30 |
+| [Lean/Screen/SeamCurrentPhysicalMetricAttachment.lean](../Lean/Screen/SeamCurrentPhysicalMetricAttachment.lean) | 13 | No claim evidence edge; model mapping open |
+| [Lean/Screen/SeamMaxwellContinuum.lean](../Lean/Screen/SeamMaxwellContinuum.lean) | 6 | OPH-SEAM-MAXWELL-CONTINUUM |
+| [Lean/Screen/SeamU1HolonomyClassification.lean](../Lean/Screen/SeamU1HolonomyClassification.lean) | 31 | No claim evidence edge; model mapping open |
+| [Lean/Screen/SerialMaxwellReadout.lean](../Lean/Screen/SerialMaxwellReadout.lean) | 11 | OPH-SERIAL-MAXWELL-READOUT |
+| [Lean/Screen/SourceActionTime.lean](../Lean/Screen/SourceActionTime.lean) | 5 | OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON, OPH-SCALAR-ACTION-CLOCK |
+| [Lean/Screen/TemporalMaxwellEvolution.lean](../Lean/Screen/TemporalMaxwellEvolution.lean) | 30 | OPH-EM-TEMPORAL-MAXWELL-EVOLUTION-CONTINUITY, OPH-EM-SCALED-MAXWELL-STABILITY-ACTION, OPH-EM-LOCAL-ENERGY-BALANCE |
+| [Lean/Screen/TopThreeKernelFix.lean](../Lean/Screen/TopThreeKernelFix.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/Screen/TraceBalancedKernel.lean](../Lean/Screen/TraceBalancedKernel.lean) | 10 | OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT |
+| [Lean/Screen/TrichotomyCases.lean](../Lean/Screen/TrichotomyCases.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/Screen/UnitSplit12.lean](../Lean/Screen/UnitSplit12.lean) | 4 | No claim evidence edge; model mapping open |
+| [Lean/Screen/VolumeReadoutBridge.lean](../Lean/Screen/VolumeReadoutBridge.lean) | 15 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WeylYukawaConventions.lean](../Lean/Screen/WeylYukawaConventions.lean) | 16 | OPH-GAUGE-EXTERIOR-SM-WITNESS |
+| [Lean/Screen/WhitneyActualCertificates.lean](../Lean/Screen/WhitneyActualCertificates.lean) | 10 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyAlgebraicLDL.lean](../Lean/Screen/WhitneyAlgebraicLDL.lean) | 20 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyCertificateCLI.lean](../Lean/Screen/WhitneyCertificateCLI.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyCertificatePipeline.lean](../Lean/Screen/WhitneyCertificatePipeline.lean) | 12 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyCertifiedConsumers.lean](../Lean/Screen/WhitneyCertifiedConsumers.lean) | 17 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyChargedMatter.lean](../Lean/Screen/WhitneyChargedMatter.lean) | 10 | OPH-WHITNEY-CHARGED-MATTER |
+| [Lean/Screen/WhitneyConeMass.lean](../Lean/Screen/WhitneyConeMass.lean) | 9 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyConeMassNaturality.lean](../Lean/Screen/WhitneyConeMassNaturality.lean) | 8 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyConeModes.lean](../Lean/Screen/WhitneyConeModes.lean) | 18 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyConeNaturality.lean](../Lean/Screen/WhitneyConeNaturality.lean) | 10 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyCurlRow0.lean](../Lean/Screen/WhitneyCurlRow0.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyCurlRow1.lean](../Lean/Screen/WhitneyCurlRow1.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyCurlRow2.lean](../Lean/Screen/WhitneyCurlRow2.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyCurlRow3.lean](../Lean/Screen/WhitneyCurlRow3.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneyExactSourceProblem.lean](../Lean/Screen/WhitneyExactSourceProblem.lean) | 3 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyFiniteCertificate.lean](../Lean/Screen/WhitneyFiniteCertificate.lean) | 14 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyFrameMorphism.lean](../Lean/Screen/WhitneyFrameMorphism.lean) | 9 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyFrameNaturality.lean](../Lean/Screen/WhitneyFrameNaturality.lean) | 32 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyGeneratedCertificate.lean](../Lean/Screen/WhitneyGeneratedCertificate.lean) | 12 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyMassPremiseInstance.lean](../Lean/Screen/WhitneyMassPremiseInstance.lean) | 5 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyMaxwellDynamics.lean](../Lean/Screen/WhitneyMaxwellDynamics.lean) | 31 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyNormalModeConstruction.lean](../Lean/Screen/WhitneyNormalModeConstruction.lean) | 9 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyOmittedCellCounterexample.lean](../Lean/Screen/WhitneyOmittedCellCounterexample.lean) | 6 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyQuantumBridge.lean](../Lean/Screen/WhitneyQuantumBridge.lean) | 24 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneyRotationWitness.lean](../Lean/Screen/WhitneyRotationWitness.lean) | 6 | OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneySourceAssembly.lean](../Lean/Screen/WhitneySourceAssembly.lean) | 21 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneySourceGeometry.lean](../Lean/Screen/WhitneySourceGeometry.lean) | 20 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneySourceNaturality.lean](../Lean/Screen/WhitneySourceNaturality.lean) | 30 | OPH-WHITNEY-MAXWELL-DYNAMICS, OPH-WHITNEY-RADIATIVE-QUANTUM |
+| [Lean/Screen/WhitneySourceProblemCLI.lean](../Lean/Screen/WhitneySourceProblemCLI.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Screen/WhitneySpatialConsistency.lean](../Lean/Screen/WhitneySpatialConsistency.lean) | 5 | OPH-WHITNEY-SPATIAL-CONSISTENCY |
+| [Lean/Screen/WhitneyTimeBridge.lean](../Lean/Screen/WhitneyTimeBridge.lean) | 15 | OPH-CONE-WHITNEY-BRIDGE |
+| [Lean/Screen/Z6Descent.lean](../Lean/Screen/Z6Descent.lean) | 15 | OPH-GAUGE-D7-D9, OPH-SCREEN-A5-SM-RECOGNITION, OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT |
+| [Lean/Screen/Z6Exact.lean](../Lean/Screen/Z6Exact.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/ContinuumConnection.lean](../Lean/SourceLaw/ContinuumConnection.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/ContinuumTimeLimit.lean](../Lean/SourceLaw/ContinuumTimeLimit.lean) | 11 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/CounterfamilyLocality.lean](../Lean/SourceLaw/CounterfamilyLocality.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/CounterfamilyReader.lean](../Lean/SourceLaw/CounterfamilyReader.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/DynamicalResponse.lean](../Lean/SourceLaw/DynamicalResponse.lean) | 14 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/GoldenCarrier.lean](../Lean/SourceLaw/GoldenCarrier.lean) | 61 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/GoldenFamily.lean](../Lean/SourceLaw/GoldenFamily.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/HistoryRegister.lean](../Lean/SourceLaw/HistoryRegister.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/IdentificationLadder.lean](../Lean/SourceLaw/IdentificationLadder.lean) | 6 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/LangevinStationarity.lean](../Lean/SourceLaw/LangevinStationarity.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/MatrixLimits.lean](../Lean/SourceLaw/MatrixLimits.lean) | 31 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/MatrixSeams.lean](../Lean/SourceLaw/MatrixSeams.lean) | 5 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/OpenWindow.lean](../Lean/SourceLaw/OpenWindow.lean) | 24 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/ReflectionPositivity.lean](../Lean/SourceLaw/ReflectionPositivity.lean) | 7 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/RepairAdmissibility.lean](../Lean/SourceLaw/RepairAdmissibility.lean) | 21 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/RepairConvergence.lean](../Lean/SourceLaw/RepairConvergence.lean) | 10 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/ScalarPacket.lean](../Lean/SourceLaw/ScalarPacket.lean) | 33 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/StationaryWindow.lean](../Lean/SourceLaw/StationaryWindow.lean) | 25 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/TransferMatrixLift.lean](../Lean/SourceLaw/TransferMatrixLift.lean) | 42 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/TransferStructure.lean](../Lean/SourceLaw/TransferStructure.lean) | 19 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/TwoPointFlux.lean](../Lean/SourceLaw/TwoPointFlux.lean) | 3 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/VacuumIdentity.lean](../Lean/SourceLaw/VacuumIdentity.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/SourceLaw/WeightedSeams.lean](../Lean/SourceLaw/WeightedSeams.lean) | 8 | No claim evidence edge; model mapping open |
+| [Lean/Thermodynamics/CapFirstLaw.lean](../Lean/Thermodynamics/CapFirstLaw.lean) | 9 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-GEOMETRY-INTERNAL-ENERGY-INERTIA-PRECURSOR, OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION |
+| [Lean/Thermodynamics/CofinalSpectralTailFamily.lean](../Lean/Thermodynamics/CofinalSpectralTailFamily.lean) | 26 | OPH-THERMO-COFINAL-SPECTRAL-TAIL-COMPOSITION |
+| [Lean/Thermodynamics/CoherentRefinementFamily.lean](../Lean/Thermodynamics/CoherentRefinementFamily.lean) | 26 | OPH-THERMO-COHERENT-REFINEMENT-ENVELOPE |
+| [Lean/Thermodynamics/CollarTemperatureReading.lean](../Lean/Thermodynamics/CollarTemperatureReading.lean) | 23 | OPH-THERMO-COLLAR-TEMPERATURE-READING |
+| [Lean/Thermodynamics/CommonObjectBinding.lean](../Lean/Thermodynamics/CommonObjectBinding.lean) | 46 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/Thermodynamics/CommonReferenceObstruction.lean](../Lean/Thermodynamics/CommonReferenceObstruction.lean) | 10 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-THERMO-SOURCE-REALIZATION-AUDIT |
+| [Lean/Thermodynamics/EinsteinPremiseLink.lean](../Lean/Thermodynamics/EinsteinPremiseLink.lean) | 7 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-GR-EINSTEIN-BRANCH-INHABITANT |
+| [Lean/Thermodynamics/EquationOfState.lean](../Lean/Thermodynamics/EquationOfState.lean) | 17 | OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY, OPH-GOLDEN-SCALAR-METRIC-PRESSURE, OPH-WHITNEY-MAXWELL-METRIC-PRESSURE |
+| [Lean/Thermodynamics/FiniteConditionalRepair.lean](../Lean/Thermodynamics/FiniteConditionalRepair.lean) | 35 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION |
+| [Lean/Thermodynamics/FirstLawIdentity.lean](../Lean/Thermodynamics/FirstLawIdentity.lean) | 1 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/Thermodynamics/FluctuationTheorems.lean](../Lean/Thermodynamics/FluctuationTheorems.lean) | 9 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/Thermodynamics/FourLawAdequacySurface.lean](../Lean/Thermodynamics/FourLawAdequacySurface.lean) | 28 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION |
+| [Lean/Thermodynamics/GibbsEntropyLimit.lean](../Lean/Thermodynamics/GibbsEntropyLimit.lean) | 9 | No claim evidence edge; model mapping open |
+| [Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean](../Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean) | 36 | OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION, OPH-THERMO-MODULAR-ENERGY-ADDITIVITY, OPH-THERMO-COLLAR-TEMPERATURE-READING |
+| [Lean/Thermodynamics/GraphDiffusion.lean](../Lean/Thermodynamics/GraphDiffusion.lean) | 42 | OPH-FINITE-TRANSPORT-GREEN-KUBO-DIFFUSION |
+| [Lean/Thermodynamics/GreenKubo.lean](../Lean/Thermodynamics/GreenKubo.lean) | 48 | OPH-FINITE-TRANSPORT-GREEN-KUBO-DIFFUSION |
+| [Lean/Thermodynamics/HorizonThermalitySurface.lean](../Lean/Thermodynamics/HorizonThermalitySurface.lean) | 10 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-GR-EINSTEIN-BRANCH-INHABITANT |
+| [Lean/Thermodynamics/KolmogorovCriterion.lean](../Lean/Thermodynamics/KolmogorovCriterion.lean) | 18 | OPH-SCREEN-MODULAR-GEARING |
+| [Lean/Thermodynamics/LowTemperatureControl.lean](../Lean/Thermodynamics/LowTemperatureControl.lean) | 36 | OPH-THERMO-FOUR-LAW-PACKAGE |
+| [Lean/Thermodynamics/MixingChainRealization.lean](../Lean/Thermodynamics/MixingChainRealization.lean) | 16 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-QFT-SOURCE-RECURRENCE-CLOCK-PRECURSOR |
+| [Lean/Thermodynamics/ModularEnergyAdditivity.lean](../Lean/Thermodynamics/ModularEnergyAdditivity.lean) | 33 | OPH-THERMO-MODULAR-ENERGY-ADDITIVITY |
+| [Lean/Thermodynamics/NativeRepairFourCycle.lean](../Lean/Thermodynamics/NativeRepairFourCycle.lean) | 11 | OPH-NATIVE-REPAIR-HISTORY-SOURCE |
+| [Lean/Thermodynamics/PhysicalCalibrationImport.lean](../Lean/Thermodynamics/PhysicalCalibrationImport.lean) | 41 | OPH-CAL-SI-ANCHOR-IMPORT, OPH-QFT-SOURCE-CLOCK-CANDIDATE |
+| [Lean/Thermodynamics/PoissonizedRepair.lean](../Lean/Thermodynamics/PoissonizedRepair.lean) | 10 | OPH-PUBLICIZATION-DYNAMICS-FINITE |
+| [Lean/Thermodynamics/PoissonizedRepairOperatorExp.lean](../Lean/Thermodynamics/PoissonizedRepairOperatorExp.lean) | 8 | OPH-PUBLICIZATION-DYNAMICS-FINITE |
+| [Lean/Thermodynamics/RepairCurrentOrientation.lean](../Lean/Thermodynamics/RepairCurrentOrientation.lean) | 20 | OPH-FINITE-BORN-FRAME-RANK-GAP |
+| [Lean/Thermodynamics/StationaryRealization.lean](../Lean/Thermodynamics/StationaryRealization.lean) | 8 | OPH-THERMO-FOUR-LAW-PACKAGE, OPH-THERMO-SOURCE-REALIZATION-AUDIT |
+| [Lean/Thermodynamics/TemporalFilterMonotonicity.lean](../Lean/Thermodynamics/TemporalFilterMonotonicity.lean) | 1 | No claim evidence edge; model mapping open |
+| [Lean/Time/ClockComparison.lean](../Lean/Time/ClockComparison.lean) | 11 | OPH-BOUNDED-OBSERVER-TIME-CALIBRATION |
+| [Lean/Time/ClockReadout.lean](../Lean/Time/ClockReadout.lean) | 13 | OPH-BOUNDED-OBSERVER-TIME-CALIBRATION |
+| [Lean/Time/ObserverHistory.lean](../Lean/Time/ObserverHistory.lean) | 5 | OPH-BOUNDED-OBSERVER-TIME-CALIBRATION |
+| [Lean/Time/ProperTimeCalibration.lean](../Lean/Time/ProperTimeCalibration.lean) | 5 | OPH-BOUNDED-OBSERVER-TIME-CALIBRATION |
+| [Lean/Time/SourceCountClock.lean](../Lean/Time/SourceCountClock.lean) | 5 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Time/SourceCountClockEnclosure.lean](../Lean/Time/SourceCountClockEnclosure.lean) | 5 | OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM |
+| [Lean/Time/TimeOrderLedger.lean](../Lean/Time/TimeOrderLedger.lean) | 4 | OPH-TIME-ORDER-TYPE-LEDGER |
+| [Lean/Time/WorldlineRealization.lean](../Lean/Time/WorldlineRealization.lean) | 8 | OPH-BOUNDED-OBSERVER-TIME-CALIBRATION |
+| [Lean/Tower/AdaptiveFixedPointEndpoint.lean](../Lean/Tower/AdaptiveFixedPointEndpoint.lean) | 3 | OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT |
+| [Lean/Tower/ConsensusTower.lean](../Lean/Tower/ConsensusTower.lean) | 7 | OPH-CONSENSUS-TOWER-INTERFACE |
+| [Lean/Tower/CumulativeCapacityEndpoint.lean](../Lean/Tower/CumulativeCapacityEndpoint.lean) | 2 | OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT |
+| [Lean/Tower/EventGeometryReadout.lean](../Lean/Tower/EventGeometryReadout.lean) | 18 | No claim evidence edge; model mapping open |
+| [Lean/Tower/FixedFederationEndpoint.lean](../Lean/Tower/FixedFederationEndpoint.lean) | 2 | OPH-COMPUTATION-FIXED-FEDERATION-ENDPOINT |
+| [Lean/Tower/FixedFederationExecutionAudit.lean](../Lean/Tower/FixedFederationExecutionAudit.lean) | 0 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Tower/FixedFederationExecutionEndpoint.lean](../Lean/Tower/FixedFederationExecutionEndpoint.lean) | 5 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Tower/FixedFederationFanoutEndpoint.lean](../Lean/Tower/FixedFederationFanoutEndpoint.lean) | 3 | OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION |
+| [Lean/Tower/FixedPointEndpoint.lean](../Lean/Tower/FixedPointEndpoint.lean) | 62 | OPH-CONS-D1, OPH-PUBLIC-WORLD-ENDPOINT-FINITE |
+| [Lean/Tower/FullPremiseInhabitant.lean](../Lean/Tower/FullPremiseInhabitant.lean) | 16 | No claim evidence edge; model mapping open |
+| [Lean/Tower/OperationalObserver.lean](../Lean/Tower/OperationalObserver.lean) | 26 | OPH-OBS-PATCH-DEF |
+| [Lean/Tower/PublicWorldQuotient.lean](../Lean/Tower/PublicWorldQuotient.lean) | 5 | OPH-CONS-D1, OPH-PUBLIC-WORLD-ENDPOINT-FINITE |
+| [Lean/Tower.lean](../Lean/Tower.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/Variational/DiscreteEulerLagrange.lean](../Lean/Variational/DiscreteEulerLagrange.lean) | 3 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/DiscreteNoether.lean](../Lean/Variational/DiscreteNoether.lean) | 6 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/EnrichmentCharacterization.lean](../Lean/Variational/EnrichmentCharacterization.lean) | 49 | OPH-MECH-ENRICHMENT-CHARACTERIZATION |
+| [Lean/Variational/FiniteHistoryBridge.lean](../Lean/Variational/FiniteHistoryBridge.lean) | 3 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/FiniteRealTransfer.lean](../Lean/Variational/FiniteRealTransfer.lean) | 11 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/LegendreBridge.lean](../Lean/Variational/LegendreBridge.lean) | 44 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/MechanicsAdequacySurface.lean](../Lean/Variational/MechanicsAdequacySurface.lean) | 23 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/ModeExtremalEnrichment.lean](../Lean/Variational/ModeExtremalEnrichment.lean) | 22 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/PolynomialEnrichmentSelection.lean](../Lean/Variational/PolynomialEnrichmentSelection.lean) | 42 | OPH-MECH-POLYNOMIAL-BOOST-SELECTION |
+| [Lean/Variational/RealizedHistoryLegendreNoGo.lean](../Lean/Variational/RealizedHistoryLegendreNoGo.lean) | 21 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS, OPH-GEOMETRY-INTERNAL-ENERGY-INERTIA-PRECURSOR |
+| [Lean/Variational/SourceToHamiltonianComposed.lean](../Lean/Variational/SourceToHamiltonianComposed.lean) | 13 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/StationarySaddleCoverage.lean](../Lean/Variational/StationarySaddleCoverage.lean) | 3 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational/TranslationInvariantComposedInstance.lean](../Lean/Variational/TranslationInvariantComposedInstance.lean) | 17 | OPH-FINITE-HISTORY-VARIATIONAL-HELPERS |
+| [Lean/Variational.lean](../Lean/Variational.lean) | 0 | No claim evidence edge; model mapping open |
+| [Lean/lakefile.lean](../Lean/lakefile.lean) | 0 | No claim evidence edge; model mapping open |

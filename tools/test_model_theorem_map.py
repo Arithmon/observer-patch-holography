@@ -37,6 +37,12 @@ class ModelTheoremMapTests(unittest.TestCase):
         self.data = {
             "schema": builder.SCHEMA, "as_of": "2026-10-11",
             "coverage_note": "Navigation only; physical identification is excluded.",
+            "contract_coverage": {
+                "schema": builder.CONTRACT_SCHEMA,
+                "claim_ids": ["C-SUPPLIED", "C-BRANCH"], "lean_files": [],
+                "domains": {"native": {field: "declared " + field for field in builder.DOMAIN_FACETS}},
+                "bindings": [], "connections": [],
+            },
             "groups": [{
                 "id": "RE-01", "title": "Supplied scalar | branch",
                 "links": sorted(builder.MODEL_IDS), "scope": "active",
@@ -62,7 +68,7 @@ class ModelTheoremMapTests(unittest.TestCase):
     def test_complete_fixture_passes_without_changing_claim_edges(self):
         before = deepcopy(self.claims)
         self.assertEqual(self.errors(), [])
-        rendered = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims))
+        rendered = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims, self.root))
         self.assertEqual(self.claims, before)
         self.assertIn("explicit_non_consumer", rendered)
         self.assertIn("no proof-discharge edges", rendered)
@@ -86,7 +92,7 @@ class ModelTheoremMapTests(unittest.TestCase):
         other["scope"] = "downstream"
         self.data["groups"].append(other)
         self.assertEqual(self.errors(), [])
-        self.assertEqual(builder.inventory(self.data, self.premises, self.claims)["covered_premises"], 2)
+        self.assertEqual(builder.inventory(self.data, self.premises, self.claims, self.root)["covered_premises"], 2)
 
     def test_duplicate_references_within_group_fail(self):
         for field in ("premises", "links", "claims", "assumptions"):
@@ -103,7 +109,7 @@ class ModelTheoremMapTests(unittest.TestCase):
         (self.root / "page.md").write_text('# Page\n\n<a id="gravity-rungs"></a>\n\n## Ladder\n')
         self.data["groups"][0]["sources"].append({"path": "page.md#gravity-rungs", "label": "Ladder"})
         self.assertEqual(self.errors(), [])
-        rendered = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims))
+        rendered = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims, self.root))
         self.assertIn("- [Ladder](../page.md#gravity-rungs).", rendered)
         self.reject(lambda d: d["groups"][0]["sources"][1].update(path="page.md#ladder"),
                     "anchor #ladder absent from page.md")
@@ -150,7 +156,7 @@ class ModelTheoremMapTests(unittest.TestCase):
         self.reject(lambda d: d["groups"][0]["assumptions"].append("invented"), "assumptions: unknown references")
 
     def test_extra_assumption_fields_are_independently_inventoried(self):
-        inv = builder.inventory(self.data, self.premises, self.claims)
+        inv = builder.inventory(self.data, self.premises, self.claims, self.root)
         self.assertEqual(inv["ordinary_assumptions"], 2)
         self.assertEqual(inv["imported_names"], 2)
         self.assertEqual(inv["role_counts"], {"consumed": 1, "open": 1, "boundary": 1})
@@ -225,6 +231,115 @@ class ModelTheoremMapTests(unittest.TestCase):
         with patch.object(builder, "ROOT", self.root), redirect_stderr(io.StringIO()):
             self.assertEqual(builder.main([]), 1)
         self.assertEqual(output.read_text(), "preserve me\n")
+
+    def joined_fixture(self):
+        coverage = self.data["contract_coverage"]
+        coverage["domains"]["observer"] = deepcopy(coverage["domains"]["native"])
+        upstream = {
+            "id": "native-map", "domain": "native", "claims": ["C-SUPPLIED"],
+            "establishes": ["complete instrument"], "requires": [],
+            "assumptions": ["declared_action", "shared"], "imports": ["spectral_theorem"],
+            "additional_assumptions": {},
+            "scope": "One finite source clause.", "limitations": "No physical selection.",
+            "sources": [{"path": "proof.lean", "anchor": "theorem exact_join"}],
+        }
+        downstream = deepcopy(upstream)
+        downstream.update(id="observer-map", domain="observer", establishes=["complete history"],
+                          requires=["complete instrument"])
+        coverage["bindings"] = [upstream, downstream]
+        coverage["connections"] = [{
+            "from": "native-map", "to": "observer-map", "fact": "complete instrument",
+            "coordinate_maps": {}, "sources": [{"path": "proof.lean", "anchor": "theorem exact_join"}],
+        }]
+        self.assertEqual(self.errors(), [])
+        return coverage
+
+    def test_every_claim_including_nonconsumers_requires_explicit_inventory(self):
+        self.reject(lambda d: d["contract_coverage"]["claim_ids"].remove("C-BRANCH"),
+                    "exact claim inventory/order changed")
+        self.claims["claims"].append(dict(self.claims["claims"][0], claim_id="NEW-FINITE"))
+        self.assertIn("exact claim inventory/order changed", "\n".join(self.errors()))
+
+    def test_new_lean_source_cannot_disappear_behind_registry_coverage(self):
+        lean = self.root / "Lean"
+        lean.mkdir()
+        (lean / "New.lean").write_text("/- theorem commented : True := trivial -/\n"
+                                      "private theorem hidden : True := trivial\n"
+                                      "theorem actual : True := trivial\n")
+        self.assertEqual(builder.lean_inventory(self.root), {"Lean/New.lean": 1})
+        self.assertIn("exact Lean source inventory changed", "\n".join(self.errors()))
+        self.data["contract_coverage"]["lean_files"] = ["Lean/New.lean"]
+        self.assertEqual(self.errors(), [])
+
+    def test_binding_cannot_erase_canonical_inputs_or_claim_discharge(self):
+        self.joined_fixture()
+        for field in ("assumptions", "imports"):
+            with self.subTest(field=field):
+                self.reject(lambda d: d["contract_coverage"]["bindings"][0][field].pop(),
+                            "every canonical input must remain, without discharge")
+        self.reject(lambda d: d["contract_coverage"]["bindings"][0].update(discharged=True),
+                    "unknown keys ['discharged']")
+
+    def test_malformed_domain_or_fact_fields_return_errors_without_crashing(self):
+        self.joined_fixture()
+        self.reject(lambda d: d["contract_coverage"]["bindings"][0].update(domain=[]),
+                    "unknown model domain")
+        self.reject(lambda d: d["contract_coverage"]["connections"][0].update({"from": []}),
+                    "unknown binding endpoint")
+        self.reject(lambda d: d["contract_coverage"]["bindings"][0].update(establishes=None),
+                    "expected a list")
+        self.reject(lambda d: d["contract_coverage"]["bindings"][1].update(requires=[{}]),
+                    "expected a list")
+
+    def test_extra_assumption_fields_cannot_be_silently_folded_or_lost(self):
+        coverage = self.joined_fixture()
+        binding = coverage["bindings"][0]
+        binding.update(claims=["C-BRANCH"], assumptions=["shared"],
+                       imports=["external_scale", "spectral_theorem"])
+        self.assertIn("all separate canonical assumption fields must remain", "\n".join(self.errors()))
+        binding["additional_assumptions"] = {
+            "null_decision_assumptions": ["coverage", "shared"],
+            "threshold_kinematic_assumptions": ["dispersion"]}
+        self.assertEqual(self.errors(), [])
+
+    def test_each_changed_coordinate_needs_its_own_sourced_mapping(self):
+        coverage = self.joined_fixture()
+        for facet in builder.DOMAIN_FACETS:
+            with self.subTest(facet=facet):
+                self.reject(lambda d: d["contract_coverage"]["domains"]["observer"].update({facet: "different"}),
+                            "explicit maps required for exactly changed coordinates")
+        coverage["domains"]["observer"]["law"] = "different law"
+        coverage["connections"][0]["coordinate_maps"] = {"law": "Explicit restriction, not silent substitution."}
+        self.assertEqual(self.errors(), [])
+        self.reject(lambda d: d["contract_coverage"]["connections"][0]["sources"][0].update(anchor="invented"),
+                    "exact source anchor absent")
+        self.reject(lambda d: d["contract_coverage"]["connections"][0]["coordinate_maps"].update(clock="Unneeded"),
+                    "exactly changed coordinates")
+
+    def test_missing_mismatched_and_duplicate_fact_deliveries_fail(self):
+        self.joined_fixture()
+        self.reject(lambda d: d["contract_coverage"]["connections"].clear(), "missing connection")
+        self.reject(lambda d: d["contract_coverage"]["connections"][0].update(fact="marginal only"),
+                    "produced and required fact must agree exactly")
+        self.reject(lambda d: d["contract_coverage"]["connections"].append(
+            deepcopy(d["contract_coverage"]["connections"][0])), "duplicate input delivery")
+
+    def test_circular_tower_support_cannot_establish_itself(self):
+        coverage = self.joined_fixture()
+        coverage["bindings"][0]["requires"] = ["complete history"]
+        coverage["connections"].append({"from": "observer-map", "to": "native-map",
+            "fact": "complete history", "coordinate_maps": {},
+            "sources": [{"path": "proof.lean", "anchor": "theorem exact_join"}]})
+        self.assertIn("circular connection cannot establish its own input", "\n".join(self.errors()))
+
+    def test_rendered_open_mapping_does_not_invent_a_physical_witness(self):
+        self.joined_fixture()
+        text = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims, self.root))
+        self.assertIn("C-BRANCH", text)
+        self.assertIn("Open: no same-model instantiation recorded", text)
+        self.assertIn("strings and source\nanchors are not proofs", text)
+        self.assertIn("No entry silently discharges a canonical premise", text)
+        self.assertIn("explicit_non_consumer", text)
 
 
 if __name__ == "__main__":

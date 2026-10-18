@@ -32,6 +32,8 @@ construction realizes those domains.
 | Repair to history action | Each native endpoint instrument has an explicit unitary completion and a dimensionless Hermitian action whose event-boundary histories reproduce the complete record-conditioned process. | The environment and records are retained. This is an exact representation of the finite instrument, with no autonomous carrier Hamiltonian or relativistic interpolation inferred. |
 | Repair to local-clock current action | Native circulating currents have exact covariance `P/5` per tick of one port and a long-count Gaussian increment action with coefficient `5/2`. | Exact finite moments use the derived local-tick Palm preparation and carrier-wide current access. Finite blocks retain non-Gaussianity and dependence; the limit is not a relativistic field action. |
 | Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. Actual host-clock records permit one-block calibration and separate validation. | The measured software timing is an implementation comparison. Traceable lab accuracy and an identification with physical proper time require independent evidence. |
+| Occupation histories to a spatial action | Complete native records reconstruct long occupation averages with an exact Gaussian-limit covariance and positive quadratic action. The incident-clock correction is derived rather than replaced by a mean wait. | Stationary diagonal preparation and carrier-wide initial/current disclosure are supplied. A port-only tape supplies only its local scalar. The field is a history fluctuation, not an instantaneous Gaussian state. |
+| Spatial refinement to a free field | On a supplied square torus, both native-attempt and incident-clock Gaussian observations converge on every fixed finite Fourier band to the massless Euclidean field, with explicit spatial covariance bounds. | Count tends to infinity before mesh refinement. No uniform finite-count distribution bound, actual spherical-screen limit, interacting CFT or Lorentzian evolution is established. |
 | Field records to temporal representation | Exact incident-clock correlations reconstruct a seven-mode cyclic Hilbert space on one carrier; actual source-screen correlations also certify a nontrivial two-vector temporal subspace. | The seven-mode result needs exact laws and is ill-conditioned for sampled data. Screen transfer values are compressions, not a closed two-mode dynamics or physical energy calibration. |
 
 These results make the finite construction more coherent and reduce particular
@@ -52,6 +54,18 @@ histories with recorded feedback. Ten source-executed two-event histories
 instantiate that contract and replay through the canonical observer runtime.
 This closes a finite identification/composition gap; it does not establish
 which repair table or physical time/field dictionary describes nature.
+
+The [compiled-history calibration](compiled_clock_history/README.md#calibrated-repair-law-and-complete-readout-predictions)
+joins this uncertainty to the emitted apparatus. For two waits capped at two
+attempts, including feedback, the expected repair count is `408/125`.
+Calibration tubes propagate to joint detector/clock probabilities with every
+timeout retained. A shared seam law is assumed; calibrating one seam alone
+does not prove homogeneity. Raw compiled-array error is accounted separately.
+The [resource clock](laboratory_clock/README.md) refines the corresponding
+ideal native histories with an explicit repair-count readout and pulse
+accounting. Its exact joint
+calibration polytope supports held-out deadline predictions. Synthetic
+calibration demonstrates this contract without supplying physical units.
 
 The [joint correspondence](observer_correspondence/README.md) uses regions
 `{0,1}` and `{0,5}` on the same binary total-two C process. Their local

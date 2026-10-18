@@ -50,7 +50,16 @@ three-dimensional spatial continuum. A holographic bulk interpretation, if
 used, needs a map to bulk observables rather than equating ports with bulk
 locations.
 
-### The next executable acceptance test
+### The joint executable acceptance contract
+
+The [quantum observer construction](../../model/quantum_observer_correspondence/README.md)
+executes coherent interventions, overlapping incident clocks and complete
+conditional output states in one total-two native history. Its
+[compiled counterpart](../../model/compiled_clock_history/README.md) also
+charges source preparation, intervention and terminal readout, retaining
+timeouts and compiler failures. These give a finite joint interface on
+which to test the following contract. They do not identify those operations
+with atomic transitions or provide an interacting Lorentzian continuum.
 
 Keep one complete native instrument, sector, continuing-state preparation,
 observer access contract and scheduler fixed. Start with overlapping regions
@@ -165,6 +174,9 @@ One carrier is enough. Keep three operations distinct:
    [clock attachment](../../model/laboratory_clock/README.md) performs the
    bounded-error affine test. Constant duration between every attempt is an
    additional hypothesis; a few endpoint readings alone do not establish it.
+   If preparation, coherent control and readout use source pulses, their
+   durations need separate calibration or explicit latency bounds. A repair
+   attempt and a source-pulse invocation are not the same clock resource.
 3. **Predict unused observations.** Freeze the preparation, schedule,
    spatial dictionary, instrument candidate and decision rule before the
    validation trials. Predict complete arrival/readout laws, including
@@ -278,6 +290,54 @@ The phase-dependent action family has further coherent predictions in the
 cannot distinguish these laws. A successful classical timing test therefore
 does not select the action's coherent component.
 
+## A joint timed coherent prediction with charged operations
+
+The [two-resource attachment](../../model/laboratory_clock/README.md#compiled-operations-require-separate-timing-coefficients)
+uses the same capped total-two history for its coherent response, incident
+clocks and operation costs. Its dimensionless prediction is independent of
+any assigned seconds. At cap two the pairs `(native attempts, source pulses)`
+have masses `(2,27):9/25`, `(3,51):4/25`, `(4,51):42/125`,
+`(5,51):18/125`, at either coherent setting. All terminal outcomes, including
+both timeouts, contribute. The setting changes the joint clock/detector law
+by total variation `1848/15625` without changing this cost marginal.
+
+To make a dimensional prediction, declare
+`t=b+tau_native*N+tau_pulse*P`, with both durations positive and shared
+across every workload and setting. The exact solver preserves their joint
+feasible region and tests unused endpoints without refitting. If every
+calibration workload has the same pulse-to-repair ratio, the two durations
+are not separately identifiable, even with perfect timestamps. Unmeasured
+initialization, readout and record-delivery latency needs an additional
+resource or justified bound.
+
+For the explicitly synthetic calibration `(N,P,t)=(0,0,0)`,
+`(100,0,0.1 s +/-1 us)`, `(100,100,0.102 s +/-1 us)`, an unused
+`(200,50,0.201 s +/-1 us)` endpoint passes, and shifting its reading by
+`10 us` rejects. At a `4.5 ms` elapsed deadline with `1 us` additional
+elapsed-reading error, the exact predictions are:
+
+| Coherent setting | Terminal output by deadline | Terminal output by deadline and detector one |
+| --- | ---: | ---: |
+| `gamma=0` | `13/25 = 0.52` | `2451/10000 = 0.2451` |
+| `gamma=1` | `13/25 = 0.52` | `543/2000 = 0.2715` |
+
+The joint contrast is `33/1250`, using identical timing coefficients.
+These are unconditional probabilities; a timeout is a terminal outcome,
+not a discarded trial. The synthetic timing values establish no physical
+scale. The native-attempt counter is an explicitly added controller record,
+not inferred access to microscopic events in nature. Forgetting it recovers
+every ideal native conditional output matrix; this packet does not execute
+the corresponding count refinement of the raw compiled arrays.
+
+Instrument calibration and timing calibration are separate obligations.
+A complete normalized instrument-law error can widen the event intervals
+only for the same admitted record service. A bound after discarding the
+attempt counter does not automatically constrain this finer observable.
+Raw compiled weights can have a trace defect and cannot be normalized away:
+a half-nuclear error `epsilon` permits event-weight error `2*epsilon`, or
+`epsilon+abs(trace_defect)/2` when the defect is retained. Neither numerical
+bound authenticates the physical timing hypothesis.
+
 ## Published evidence available without operating a laboratory
 
 The following are complementary opportunities, not measurements of the
@@ -288,6 +348,7 @@ native twelve-port model. Their sources were checked on 18 October 2026.
 | Spiecker et al., [*Solomon equations for qubit and two-level systems: Insights into non-Poissonian quantum jumps*](https://arxiv.org/html/2307.06900v3), [Zenodo 8114088](https://zenodo.org/records/8114088) | Reproduce measured fluxonium jump/dwell statistics and test record-analysis methods against non-Poissonian dynamics. The deposit includes `Quantum_jumps.npz`. | The device couples a qubit to a TLS environment. Its physical detection records need their own observation map; they are not native seam/coin/current records. Histogram bin width is not automatically an attempt duration or accuracy bound. |
 | Dalmasso et al., [*Quantum trajectory simulation of two-dimensional non-equilibrium steady states with a trapped ion quantum processor*](https://arxiv.org/html/2605.08350v1), [Zenodo 20075236](https://zenodo.org/records/20075236) | Use hardware-produced mid-circuit records and public analysis/code to investigate complete quantum-trajectory instruments and implementation errors. | The experiment supplies coherent hopping/interactions plus source/drain resets on a square lattice. Its SSEP comparison is classical numerics. Simulated Trotter time is not elapsed laboratory time, and its instrument is not C or E. |
 | Minev et al., [*To catch and reverse a quantum jump mid-flight*](https://www.nature.com/articles/s41586-019-1287-z) | Use a demonstrated monitored-jump/feedback setup as a design precedent for timing and conditional intervention. | The paper's data-availability statement offers data on reasonable request, not an immediately downloadable complete record dataset. Its three-level driven system has a different law. |
+| King et al., [*An Optical Atomic Clock Based on a Highly Charged Ion*](https://arxiv.org/abs/2205.13053), [Zenodo 6901524](https://zenodo.org/records/6901524) | Public corrected frequency-ratio traces for two argon isotopes against the ytterbium octupole clock transition provide real clock-comparison observables. | An atomic-transition dictionary and its predicted ratio, correlations and systematic-error model are required. Native incident-count equality does not identify these different atomic transitions. |
 
 The Spiecker file was actually downloaded and inspected without executing
 external analysis code: 26,376,881 bytes, repository MD5
@@ -306,6 +367,19 @@ It retains per-shot source/drain trajectories, coin outcomes and circuit
 parameters, with no timestamp, accuracy or traceability fields in the saved
 schema. These records are useful for instrument analysis, but their
 simulation step cannot be read as an independent laboratory-clock sample.
+
+The argon deposit lists `36ar_yb_ratio.txt` (2.7 MB) and
+`40ar_yb_ratio.txt` (5.2 MB). Directly reading the latter's header confirms
+UTC date/time and corrected ratio columns, with one-second spacing in its
+first displayed sequence. This is not a claim of gap-free acquisition,
+one-second independent samples or a timing-accuracy certificate. No native
+observable has been independently identified with these transitions, so no
+OPH fit or physical prediction score is assigned to these traces.
+
+The [2021 BACON clock-network paper](https://doi.org/10.1038/s41586-021-03253-4)
+provides another measured ratio comparison, but its raw-data availability
+statement requires a request to the authors. It should not be described as
+an immediately downloadable event-record dataset.
 
 The first two provide a practical route for work with existing data. Begin
 by reproducing the publication's original observable, with its own units,

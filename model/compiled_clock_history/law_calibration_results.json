@@ -1,0 +1,367 @@
+{
+  "all_pass": true,
+  "calibration_provenance": "declared probability tubes; no measured counts",
+  "executions": [
+    {
+      "calibration": {
+        "call_cap": 5,
+        "candidate_set_exhaustive": false,
+        "centers": [
+          "1",
+          "1/2",
+          "5/8",
+          "3/8",
+          "5/8",
+          "3/8",
+          "1/4",
+          "5/8",
+          "3/8"
+        ],
+        "common_current_instrument_diameter_bound": "7/5000",
+        "compatible_locked_candidates": [
+          "C"
+        ],
+        "complete_history_diameter_bound": "7/1000",
+        "cp_projection_performed": false,
+        "diameter_scope": "any two admissible tables in the tubes; identical common-current controls, all outcomes, arbitrary untouched references; no fine-record comparison",
+        "excluded_locked_candidates": [],
+        "full_family_feasibility": "witnessed_by_locked_candidate",
+        "locked_candidate_checks": [
+          {
+            "compatible": true,
+            "name": "C",
+            "predicted_joint_probabilities": [
+              "1",
+              "1/2",
+              "5/8",
+              "3/8",
+              "5/8",
+              "3/8",
+              "1/4",
+              "5/8",
+              "3/8"
+            ],
+            "violating_probes": []
+          }
+        ],
+        "maximum_probability_radius": "1/10000",
+        "physical_law_selected": false,
+        "probability_intervals": [
+          [
+            "9999/10000",
+            "1"
+          ],
+          [
+            "4999/10000",
+            "5001/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ],
+          [
+            "2499/10000",
+            "2501/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ]
+        ],
+        "probe_order": [
+          "k_re",
+          "k_im",
+          "g_re",
+          "g_im",
+          "h_re",
+          "h_im",
+          "m_re",
+          "n_re",
+          "n_im"
+        ],
+        "radii": [
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000"
+        ],
+        "schema": "oph.repair_identification.probability_tubes.v1"
+      },
+      "event": "both incident waits complete and terminal detector bit is one",
+      "forecast_status": "conditional_source_forecast",
+      "gamma": 0,
+      "joint_probability_interval": [
+        "616267/3750000",
+        "633403/3750000"
+      ],
+      "nominal_complete_probability": "256/625",
+      "nominal_joint_probability": "124967/750000",
+      "nominal_probability_difference_upper": "1/10000",
+      "physical_law_selected": false,
+      "prediction_budget": {
+        "complete_probability": "256/625",
+        "feedback_attempts_mean": "16/25",
+        "first_success_probability": "16/25",
+        "ideal_complete_half_trace_upper": "357/156250",
+        "incident_probability": "2/5",
+        "native_attempts_maximum": 5,
+        "native_attempts_mean": "408/125",
+        "per_attempt_half_diamond_upper": "7/10000",
+        "raw_compilation_half_trace_upper": "115601379682159462536924394331182055345060543591762549466692983831168378233844421879870213439542686277186801727567766068619868692481405471846615912544790209119354039533126606546552241219256284653490119209305542954584596628645356987865746439988635334400220321631415353615654994299905573009749300485700597538089119120878926718667048179015998707875614477967432705024804579630643839441179580289222132993960403865205935286773969/24337935909969659295256907943966791225634549361796796790366330404669473093772853885858515392687901655636405489343708162113876328867444170763031262931522722447942566951584948176439406547210868960268633071311702046787380961285309171147478182326919616155120504702274621355521412017609235692164402840774171023426021710929263613560226937002770565051738277477285310154262442728535782173646578411866168956123723142001231314113542230178057420800",
+        "raw_event_weight_error_upper": "86886431198952937995573909680389333407800285144567878740332057511753434519241489554495663770270403327620538491573246894145187763021212779288026000765056793865857433420656246363429702019000777941969195954124932929560029853521630605461013851494183487298744687207121086744309613882913893278214123057219257117648711875323999597662756811095725442794130646556019852494365147744075256671264046928615909361765510782550522053464114309506833645381/38028024859327592648838918662448111290053983377807494984947391257296051709020084196653930301074846336931883577099544003302931763855381516817236348330504253824910260861851481525686572730016982750419739173924534448105282752008295579917934659885811900242375788597304095868002206277514430769006879438709642224103158923326974396187854589066829007893341058558258297116035066763337159646322778768540888993943317409376923928302409734653214720000000",
+        "raw_to_calibrated_ideal_half_trace_upper": "173772862397544621679641071040350778083315626366182443281939857056423453464010577927010563722166212238242506088530285032891726257077988468912047609430592913005012397437814511353318383392543580130128216018707709236590979885310184346457510962401286516972524888994241484983521054785778864699241041198783047671279609383341470698072766976195616360028836297149928409745082068284947999031182331858978132535127202399494917844849460071242498637637/76056049718655185297677837324896222580107966755614989969894782514592103418040168393307860602149692673863767154199088006605863527710763033634472696661008507649820521723702963051373145460033965500839478347849068896210565504016591159835869319771623800484751577194608191736004412555028861538013758877419284448206317846653948792375709178133658015786682117116516594232070133526674319292645557537081777987886634818753847856604819469306429440000000",
+        "scheduled_attempts_mean": "328/125",
+        "timeout_probability": "369/625",
+        "worst_branch_ideal_upper": "7/2000"
+      },
+      "scope": "any CP table in these nine tubes, common current records, same homogeneous relabelled seam law, identical ideal controls, all timeouts, arbitrary untouched reference",
+      "success_conditioned_interval": [
+        "616267/1544568",
+        "633403/1527432"
+      ]
+    },
+    {
+      "calibration": {
+        "call_cap": 5,
+        "candidate_set_exhaustive": false,
+        "centers": [
+          "1",
+          "1/2",
+          "5/8",
+          "3/8",
+          "5/8",
+          "3/8",
+          "1/4",
+          "5/8",
+          "3/8"
+        ],
+        "common_current_instrument_diameter_bound": "7/5000",
+        "compatible_locked_candidates": [
+          "C"
+        ],
+        "complete_history_diameter_bound": "7/1000",
+        "cp_projection_performed": false,
+        "diameter_scope": "any two admissible tables in the tubes; identical common-current controls, all outcomes, arbitrary untouched references; no fine-record comparison",
+        "excluded_locked_candidates": [],
+        "full_family_feasibility": "witnessed_by_locked_candidate",
+        "locked_candidate_checks": [
+          {
+            "compatible": true,
+            "name": "C",
+            "predicted_joint_probabilities": [
+              "1",
+              "1/2",
+              "5/8",
+              "3/8",
+              "5/8",
+              "3/8",
+              "1/4",
+              "5/8",
+              "3/8"
+            ],
+            "violating_probes": []
+          }
+        ],
+        "maximum_probability_radius": "1/10000",
+        "physical_law_selected": false,
+        "probability_intervals": [
+          [
+            "9999/10000",
+            "1"
+          ],
+          [
+            "4999/10000",
+            "5001/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ],
+          [
+            "2499/10000",
+            "2501/10000"
+          ],
+          [
+            "6249/10000",
+            "6251/10000"
+          ],
+          [
+            "3749/10000",
+            "3751/10000"
+          ]
+        ],
+        "probe_order": [
+          "k_re",
+          "k_im",
+          "g_re",
+          "g_im",
+          "h_re",
+          "h_im",
+          "m_re",
+          "n_re",
+          "n_im"
+        ],
+        "radii": [
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000",
+          "1/10000"
+        ],
+        "schema": "oph.repair_identification.probability_tubes.v1"
+      },
+      "event": "both incident waits complete and terminal detector bit is one",
+      "forecast_status": "conditional_source_forecast",
+      "gamma": 1,
+      "joint_probability_interval": [
+        "869707/3750000",
+        "886843/3750000"
+      ],
+      "nominal_complete_probability": "256/625",
+      "nominal_joint_probability": "35131/150000",
+      "nominal_probability_difference_upper": "1/10000",
+      "physical_law_selected": false,
+      "prediction_budget": {
+        "complete_probability": "256/625",
+        "feedback_attempts_mean": "16/25",
+        "first_success_probability": "16/25",
+        "ideal_complete_half_trace_upper": "357/156250",
+        "incident_probability": "2/5",
+        "native_attempts_maximum": 5,
+        "native_attempts_mean": "408/125",
+        "per_attempt_half_diamond_upper": "7/10000",
+        "raw_compilation_half_trace_upper": "127163603314707103886570968334281938192275785556001826615132030403803184390683687092412075170299513621000919374130318597399030291724611462599416400347113398975379854613252554964239213525985414799166761523968165622184427863897444016280715438105648020969320031022200970069347736672761603531956336726355749937004007047056571320929248563747139908286869196402280621157923673788396986894486146980038531977564799453292176122365833/24337935909969659295256907943966791225634549361796796790366330404669473093772853885858515392687901655636405489343708162113876328867444170763031262931522722447942566951584948176439406547210868960268633071311702046787380961285309171147478182326919616155120504702274621355521412017609235692164402840774171023426021710929263613560226937002770565051738277477285310154262442728535782173646578411866168956123723142001231314113542230178057420800",
+        "raw_event_weight_error_upper": "86886431198989069944425621059606978951559972278465426371470305252842306539780973323735786474059596645529153577022666011790695739673647659285661019486159295390239693388956327035555095607806049730427724485830172436793350549357880078071176623457980265417860351852649523336155818934331683098129298152601154105900759226570608622432061950477794818996415462807305023489474047481991253840507025514407492382674312029374285789676883812118058220381/38028024859327592648838918662448111290053983377807494984947391257296051709020084196653930301074846336931883577099544003302931763855381516817236348330504253824910260861851481525686572730016982750419739173924534448105282752008295579917934659885811900242375788597304095868002206277514430769006879438709642224103158923326974396187854589066829007893341058558258297116035066763337159646322778768540888993943317409376923928302409734653214720000000",
+        "raw_to_calibrated_ideal_half_trace_upper": "173772862397580753628492782419568423627075313500079990913078104797512325484550061696250686425955405556151121173979704150537234233730423348909682628151695414529394657406114592025443776981348851918586744550412948743824300581146433819067673734365083295091640553639769921575367259837196654519156216294164944659531656734588079722842072115577685736231121113401213580740190968022863996200425310444769715556036003646318681581062229573853723212637/76056049718655185297677837324896222580107966755614989969894782514592103418040168393307860602149692673863767154199088006605863527710763033634472696661008507649820521723702963051373145460033965500839478347849068896210565504016591159835869319771623800484751577194608191736004412555028861538013758877419284448206317846653948792375709178133658015786682117116516594232070133526674319292645557537081777987886634818753847856604819469306429440000000",
+        "scheduled_attempts_mean": "328/125",
+        "timeout_probability": "369/625",
+        "worst_branch_ideal_upper": "7/2000"
+      },
+      "scope": "any CP table in these nine tubes, common current records, same homogeneous relabelled seam law, identical ideal controls, all timeouts, arbitrary untouched reference",
+      "success_conditioned_interval": [
+        "869707/1544568",
+        "886843/1527432"
+      ]
+    }
+  ],
+  "intervention_contrast": {
+    "calibrated_interval": [
+      "4923/78125",
+      "5637/78125"
+    ],
+    "event": "complete and detector one, gamma one minus gamma zero",
+    "nominal_probability_difference": "1056/15625",
+    "same_law_and_calibration_for_both_settings": true
+  },
+  "physical_dictionary_validated": false,
+  "schema": "oph.compiled_clock_history.law_calibration.v1",
+  "source_sha256": {
+    "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "model/__init__.py": "eff7e4cc748c51d89ef0dd1626dbe42a9bd453a2d6933eb26eb96cbc36113078",
+    "model/anharmonic_transfer/__init__.py": "2a37d8911ef47c17a261f7d6e361092a4c8f00214d576c9975291d96e559903d",
+    "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
+    "model/common_source/__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
+    "model/common_source/exact_output.py": "996e4eb3023e5fc56044f20f381931594e9f2aed31bba071a83f32ded7cdbb39",
+    "model/common_source/experiment.py": "10b9040d1d2f870f6d4a5e72df2848bbc0f55c136be0be3bacd2fbda28ff4ab8",
+    "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
+    "model/common_source/infinite_history.py": "b579a3facd773f447796191ec1dc9f9e12b4473d129d4890164ddb8b3dd9becc",
+    "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
+    "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
+    "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
+    "model/common_source/protocol.py": "4339a070f39f2ddbc958e83041e9b8935dd8efd50acfca80519c4d92ea6cfac2",
+    "model/common_source/records.py": "af8187c7d3f12a3088c64f881f47bda3e6d2fd2723f41337d0a8f8fe3fa43b82",
+    "model/common_source/scalar_coupling.py": "90e4000b0e48e4429e69891c0274966701cd59951f79d151dbe98a66e61ba0cf",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/common_source/smooth_history.py": "2f25d0781527f609c414c111132faf3189b20cf3581c2e2f2ffa9d821aeaa1fb",
+    "model/common_source/smooth_protocol.py": "b3e9f706d6e239900f36c300deb7d83faba2b39e02d3c6ecc5b3a806d9316480",
+    "model/compiled_clock_history/__init__.py": "f1f8a3faf1ecc7c9a251be4dc66139facd05db3ed4b6edcebdacb096e359e5ce",
+    "model/compiled_clock_history/history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",
+    "model/compiled_clock_history/law_calibration.py": "2d4a92a68b822764dc46cfa2031589740740bd21107991ad6e19b50afe6476e1",
+    "model/compiled_clock_history/receipt.py": "f07ce8cea419ba6b702668594bde1d0b1147c45d488d7d1d352989ab083a6230",
+    "model/compiled_clock_history/source.py": "86bef8ce53e02d2474888f5397fab6e8b2a23eed57fd8c0f860637f6ce367d3e",
+    "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
+    "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
+    "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
+    "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
+    "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
+    "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/observer/scalar_response/__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
+    "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_scalar/__init__.py": "d3dcf546c13e23ceb9a58c19481e2e3f04134013d8047d83b020ec836d8e1e86",
+    "model/observer/source_scalar/bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
+    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
+    "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
+    "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
+    "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
+    "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
+    "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
+    "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
+    "model/quantum_observer_correspondence/__init__.py": "3bc49c4604f5da8cf9cd58dcb6c89e848b783f4e4dfcadd0c36ee1ad0205eb71",
+    "model/quantum_observer_correspondence/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "model/quantum_observer_correspondence/clock_response.py": "cf1eb5001f634e298fcb6fa36cc79388e2ee2e13fa8e18f2b8a84257ded36720",
+    "model/quantum_observer_correspondence/construction.py": "36c542daaf1f125b376c4bf72da63a307dbbf5d74b51c26a42b97fee4ef3a9e1",
+    "model/record_laws/__init__.py": "1b66289fa4160260460fa4e947b1f7339fe0e8d7382fe6848c0029896c02bd19",
+    "model/record_laws/family.py": "ac615e49101faa9a7b0b42d07f01ff44f342c20195ea5f6e5f88743bd11b4919",
+    "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
+    "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",
+    "model/repair_identification/__init__.py": "8f437d05b775590a935367956f706e4e1d9bdcdcc224f8790a2a7ff6db1fafa8",
+    "model/repair_identification/calibration.py": "7f5b9dd6e4a4441d6dd0c92d0da7db7f2a8506dde54ac70f51d90697be1c04c4",
+    "model/repair_identification/core.py": "15b705391cde6a051d5ddeec98b6c0a7712088679be0ebfa88cf168c78205eeb",
+    "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
+    "model/scalar_observations/__init__.py": "aca05029c4326bba3c7ac0237284dbe87c8ac5011769cd5bdf68152b443c21ae",
+    "model/scalar_observations/experimental_readout/__init__.py": "4fe571d3440bea33028288fa3314a6712962f8c8b1bb629ed828084d8e0460cd",
+    "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
+    "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",
+    "model/scalar_observations/lattice.py": "3f08c67ee7c1be4ac89ba031f021a79ae308aba2dffa9ca6c296deb982ddf074",
+    "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
+    "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
+  },
+  "unconditional_continuum_or_lab_clock_claim": false
+}

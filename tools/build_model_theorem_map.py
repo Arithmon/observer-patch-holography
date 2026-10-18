@@ -3,9 +3,11 @@
 The crosswalk is the ``model_supply`` section of
 ``tracking/premise_register.json``; this tool renders it to
 ``model/PREMISES.md``. It checks references, inventory coverage and
-generated-file freshness. It does not infer claim-consumer edges, logical
-entailment, or a total of unproved premises. The premise rows of the same file
-and the claim registry remain authoritative.
+generated-file freshness. Its contract section additionally enumerates every
+registered claim and tracked Lean source, retains canonical inputs, and checks
+typed, noncircular connections between narrowly scoped model clauses. It does
+not infer claim-consumer edges, logical entailment, or a total of unproved
+premises. The premise rows and the claim registry remain authoritative.
 
 A source path may end in ``#fragment`` to link a section of its file; the
 fragment must name an explicit ``<a id="fragment"></a>`` anchor in that file.
@@ -19,8 +21,11 @@ from datetime import date
 import json
 from pathlib import Path, PurePosixPath
 import re
+import subprocess
 import sys
 from urllib.parse import quote
+
+from check_lean_theorem_count import DECL_RE, strip_comments
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER = Path("tracking/premise_register.json")
@@ -32,13 +37,185 @@ SCOPES = {"active", "branch", "downstream", "metrology"}
 STATUSES = {"conditional", "open", "imported"}
 MODEL_IDS = {f"M{i:02d}" for i in range(1, 13)}
 ROLES = ("consumed", "open", "boundary")
-TOP_KEYS = {"schema", "as_of", "coverage_note", "groups"}
+TOP_KEYS = {"schema", "as_of", "coverage_note", "groups", "contract_coverage"}
+CONTRACT_SCHEMA = "oph.model_contract_coverage.v1"
+DOMAIN_FACETS = ("carrier", "law", "preparation", "records", "controls", "clock", "regime")
 GROUP_KEYS = {
     "id", "title", "links", "scope", "status", "premises", "constructed",
     "remaining", "closure", "sources", "assumptions", "claims",
 }
 GROUP_REQUIRED = GROUP_KEYS - {"assumptions", "claims"}
 FRAGMENT = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+
+
+def lean_inventory(root: Path) -> dict[str, int]:
+    """Enumerate public source declarations, not proof validity or finite scope.
+
+    Use the same comment stripping and declaration grammar as the existing
+    theorem-count gate. Git coverage excludes dependency/build trees; fixture
+    roots without a Git repository use their own Lean directory.
+    """
+    root = Path(root).resolve()
+    try:
+        result = subprocess.run(["git", "-C", str(root), "ls-files", "-z", "--", "Lean"],
+                                check=True, capture_output=True)
+        paths = [root / item.decode() for item in result.stdout.split(b"\0")
+                 if item.endswith(b".lean")]
+    except (OSError, subprocess.CalledProcessError):
+        paths = list((root / "Lean").rglob("*.lean"))
+    return {path.relative_to(root).as_posix(): len(DECL_RE.findall(strip_comments(
+                path.read_text(encoding="utf-8")))) for path in sorted(paths)
+            if path.is_file() and not any(part.startswith(".") or part == "lake-packages"
+                                        for part in path.relative_to(root).parts)}
+
+
+def _contract_sources(value: object, where: str, root: Path, errors: list[str]) -> None:
+    if not isinstance(value, list) or not value:
+        errors.append(f"{where}: expected nonempty exact source anchors")
+        return
+    for i, source in enumerate(value):
+        spot = f"{where}[{i}]"
+        if not isinstance(source, dict) or set(source) != {"path", "anchor"}:
+            errors.append(f"{spot}: expected path and anchor")
+            continue
+        name, anchor = source["path"], source["anchor"]
+        if not _text(name) or not _text(anchor):
+            errors.append(f"{spot}: nonempty path and anchor required")
+            continue
+        path = PurePosixPath(name)
+        target = (root / name).resolve()
+        if (path.is_absolute() or ".." in path.parts or "\\" in name or
+                not target.is_relative_to(root) or not target.is_file()):
+            errors.append(f"{spot}: source must be an existing repository file")
+        elif anchor not in target.read_text(encoding="utf-8"):
+            errors.append(f"{spot}: exact source anchor absent")
+
+
+def validate_contracts(data: object, claims: list[dict], root: Path) -> list[str]:
+    """Check exhaustive custody and typed joins; never certify entailment.
+
+    A binding records a reviewed, restricted clause, not discharge of its
+    whole claim. All canonical assumptions/imports survive the projection.
+    A join must name its consumed fact and every changed domain coordinate.
+    Its source argument remains subject to ordinary mathematical review.
+    """
+    errors: list[str] = []
+    keys = {"schema", "claim_ids", "lean_files", "domains", "bindings", "connections"}
+    if not isinstance(data, dict):
+        return ["contract_coverage: expected an object"]
+    _keys(data, keys, keys, "contract_coverage", errors)
+    if data.get("schema") != CONTRACT_SCHEMA:
+        errors.append(f"contract_coverage.schema: expected {CONTRACT_SCHEMA}")
+    ids = _string_list(data.get("claim_ids"), "contract_coverage.claim_ids", errors)
+    registry = {row["claim_id"]: row for row in claims}
+    if ids != list(registry):
+        errors.append("contract_coverage: exact claim inventory/order changed; review every new or removed contract")
+    files = _string_list(data.get("lean_files"), "contract_coverage.lean_files", errors)
+    if files != list(lean_inventory(root)):
+        errors.append("contract_coverage: exact Lean source inventory changed; review its model mapping")
+    domains = data.get("domains")
+    if not isinstance(domains, dict) or not domains:
+        errors.append("contract_coverage.domains: expected nonempty named domains")
+        domains = {}
+    for name, domain in domains.items():
+        if not _text(name) or not isinstance(domain, dict):
+            errors.append("contract_coverage.domains: nonempty names and objects required")
+            continue
+        if set(domain) != set(DOMAIN_FACETS) or any(not _text(v) for v in domain.values()):
+            errors.append(f"domain {name}: all seven nonempty domain coordinates required")
+    bindings = data.get("bindings")
+    if not isinstance(bindings, list):
+        errors.append("contract_coverage.bindings: expected a list")
+        bindings = []
+    by_id: dict[str, dict] = {}
+    binding_keys = {"id", "domain", "claims", "establishes", "requires", "assumptions",
+                    "additional_assumptions", "imports", "scope", "limitations", "sources"}
+    for i, binding in enumerate(bindings):
+        where = f"binding[{i}]"
+        if not isinstance(binding, dict):
+            errors.append(f"{where}: expected an object")
+            continue
+        _keys(binding, binding_keys, binding_keys, where, errors)
+        name = binding.get("id")
+        if not _text(name) or name in by_id:
+            errors.append(f"{where}: unique nonempty binding id required")
+        else:
+            by_id[name] = binding
+        if not _text(binding.get("domain")) or binding["domain"] not in domains:
+            errors.append(f"{where}: unknown model domain")
+        named = _string_list(binding.get("claims"), f"{where}.claims", errors)
+        if not named or set(named) - registry.keys():
+            errors.append(f"{where}: nonempty known canonical claims required")
+        for field in ("establishes", "requires", "assumptions", "imports"):
+            _string_list(binding.get(field), f"{where}.{field}", errors)
+        if not binding.get("establishes"):
+            errors.append(f"{where}: a restricted established clause is required")
+        for field, original in (("assumptions", "assumptions"), ("imports", "imported_results")):
+            expected = sorted({item for cid in named if cid in registry
+                               for item in registry[cid][original]})
+            if binding.get(field) != expected:
+                errors.append(f"{where}.{field}: every canonical input must remain, without discharge")
+        extra_fields = sorted({field for cid in named if cid in registry for field in registry[cid]
+                               if field.endswith("_assumptions")})
+        extra = {field: sorted({value for cid in named if cid in registry
+                                for value in registry[cid].get(field, [])}) for field in extra_fields}
+        if binding.get("additional_assumptions") != extra:
+            errors.append(f"{where}.additional_assumptions: all separate canonical assumption fields must remain")
+        for field in ("scope", "limitations"):
+            if not _text(binding.get(field)):
+                errors.append(f"{where}.{field}: nonempty restricted scope required")
+        _contract_sources(binding.get("sources"), f"{where}.sources", root, errors)
+    connections = data.get("connections")
+    if not isinstance(connections, list):
+        errors.append("contract_coverage.connections: expected a list")
+        connections = []
+    delivered: set[tuple[str, str]] = set()
+    adjacency = {name: set() for name in by_id}
+    for i, connection in enumerate(connections):
+        where = f"connection[{i}]"
+        if not isinstance(connection, dict):
+            errors.append(f"{where}: expected an object")
+            continue
+        required = {"from", "to", "fact", "coordinate_maps", "sources"}
+        _keys(connection, required, required, where, errors)
+        first, last = connection.get("from"), connection.get("to")
+        if not _text(first) or not _text(last) or first not in by_id or last not in by_id:
+            errors.append(f"{where}: unknown binding endpoint")
+            continue
+        fact = connection.get("fact")
+        produced = by_id[first].get("establishes")
+        required_facts = by_id[last].get("requires")
+        if (not isinstance(produced, list) or not isinstance(required_facts, list) or
+                fact not in produced or fact not in required_facts):
+            errors.append(f"{where}: produced and required fact must agree exactly")
+        if not _text(fact):
+            continue
+        if (last, fact) in delivered:
+            errors.append(f"{where}: duplicate input delivery")
+        delivered.add((last, fact)); adjacency[first].add(last)
+        first_domain, last_domain = by_id[first].get("domain"), by_id[last].get("domain")
+        a = domains.get(first_domain) if _text(first_domain) else None
+        b = domains.get(last_domain) if _text(last_domain) else None
+        if isinstance(a, dict) and isinstance(b, dict):
+            changed = {field for field in DOMAIN_FACETS if a.get(field) != b.get(field)}
+            maps = connection.get("coordinate_maps")
+            if (not isinstance(maps, dict) or set(maps) != changed or
+                    any(not _text(value) for value in maps.values())):
+                errors.append(f"{where}: explicit maps required for exactly changed coordinates {sorted(changed)}")
+        _contract_sources(connection.get("sources"), f"{where}.sources", root, errors)
+    for name, binding in by_id.items():
+        facts = binding.get("requires")
+        for fact in facts if isinstance(facts, list) and all(_text(x) for x in facts) else []:
+            if (name, fact) not in delivered:
+                errors.append(f"binding {name}: missing connection for {fact}")
+    pending = {name: set(targets) for name, targets in adjacency.items()}
+    while pending:
+        sinks = {name for name, targets in pending.items() if not targets}
+        if not sinks:
+            errors.append("contract_coverage: circular connection cannot establish its own input")
+            break
+        pending = {name: targets - sinks for name, targets in pending.items() if name not in sinks}
+    return errors
 
 
 def _text(value: object) -> bool:
@@ -221,10 +398,14 @@ def validate(data: object, premise_register: object, claim_registry: object,
         errors.append(f"map: omitted canonical premises {sorted(premise_ids - used_pr)}")
     if MODEL_IDS - used_m:
         errors.append(f"map: missing model criteria {sorted(MODEL_IDS - used_m)}")
+    if isinstance(claim_registry, dict) and isinstance(claim_registry.get("claims"), list):
+        errors.extend(validate_contracts(data.get("contract_coverage"),
+                                         claim_registry["claims"], root))
     return errors
 
 
-def inventory(data: dict, premise_register: dict, claim_registry: dict) -> dict:
+def inventory(data: dict, premise_register: dict, claim_registry: dict,
+              root: Path | None = None) -> dict:
     """Count named registry metadata, not unproved mathematical obligations."""
     claims, groups = claim_registry["claims"], data["groups"]
     ordinary = {s for c in claims for s in c["assumptions"]}
@@ -253,7 +434,103 @@ def inventory(data: dict, premise_register: dict, claim_registry: dict) -> dict:
         "mapped_assumptions": len({a for g in groups for a in g.get("assumptions", [])}),
         "mapped_claims": len({c for g in groups for c in g.get("claims", [])}),
         "scope_counts": dict(sorted(Counter(g["scope"] for g in groups).items())),
+        "contract_rows": claims,
+        "lean_inventory": lean_inventory(ROOT if root is None else root),
     }
+
+
+def render_contracts(data: dict, counts: dict) -> list[str]:
+    coverage = data["contract_coverage"]
+    bindings = coverage["bindings"]
+    rows = counts["contract_rows"]
+    by_claim = {row["claim_id"]: [b for b in bindings if row["claim_id"] in b["claims"]]
+                for row in rows}
+    lines = ["", '<a id="finite-contract-coverage"></a>', "",
+             "## Finite-contract coverage and compatible model connections", "",
+             "This inventory covers every canonical claim, including non-theorem rows, and",
+             "every tracked Lean source module. This is a deliberate superset of the finite",
+             "contracts; a lexical declaration count does not decide finiteness or proof validity.",
+             "A registry addition or source module addition requires an explicit inventory update.",
+             "The existing Lean builds remain responsible for kernel checks.", "",
+             "A restricted binding below records the named model clause and its source argument.",
+             "It does not instantiate the entire registry row. All that row's assumptions and",
+             "imports remain attached, including inputs outside the restricted clause. Claim",
+             "classifications and consumed/open/boundary roles are preserved without conversion.",
+             "A row with no binding has an open model mapping: realization of its own hypotheses",
+             "and conclusion on this common observer process is not established here. A theorem",
+             "on a different supplied fixture remains a valid theorem on that fixture.", "",
+             "The checker requires exact produced/consumed fact names, a noncircular connection",
+             "graph, and an explicit sourced map for every changed carrier, law, preparation,",
+             "record access, control, clock or regime coordinate. These are machine-checked",
+             "contract and coverage constraints. The source arguments, their mathematical",
+             "entailment and physical relevance require separate review; strings and source",
+             "anchors are not proofs. No entry silently discharges a canonical premise.", "",
+             f"Coverage: **{len(rows)} claims**, **{len(counts['lean_inventory'])} Lean source modules**,",
+             f"**{sum(counts['lean_inventory'].values())} public theorem/lemma declarations**;",
+             f"**{len(bindings)} restricted model bindings** and **{len(coverage['connections'])} explicit connections**.", "",
+             "### Named model domains", ""]
+    for name, domain in coverage["domains"].items():
+        lines += [f"**{name}.** " + "; ".join(f"{field}: {domain[field]}" for field in DOMAIN_FACETS) + ".", ""]
+    for binding in bindings:
+        lines += [f"### {binding['id']}", "", f"Domain: **{binding['domain']}**. {binding['scope']}", "",
+                  "Established restricted facts: " + "; ".join(_code(x) for x in binding["establishes"]) + ".", "",
+                  "Required connected facts: " + ("; ".join(_code(x) for x in binding["requires"]) or "None") + ".", "",
+                  "Canonical claims: " + ", ".join(_code(x) for x in binding["claims"]) + ".", "",
+                  "Retained ordinary assumptions: " + ", ".join(_code(x) for x in binding["assumptions"]) + ".", "",
+                  "Retained imported results: " + ", ".join(_code(x) for x in binding["imports"]) + ".", "",
+                  "Boundary: " + binding["limitations"], "", "Exact source anchors:", ""]
+        if binding["additional_assumptions"]:
+            lines[-2:-2] = ["Separate retained assumption fields: " + "; ".join(
+                _code(field) + ": " + ", ".join(_code(x) for x in values)
+                for field, values in binding["additional_assumptions"].items()) + ".", ""]
+        lines.extend(f"- [{s['path']}](../{quote(s['path'], safe='/')}); {_code(s['anchor'])}."
+                     for s in binding["sources"])
+        lines.append("")
+    if coverage["connections"]:
+        lines += ["### Sourced domain connections", ""]
+    for connection in coverage["connections"]:
+        lines += [f"**{connection['from']} → {connection['to']}** consumes {_code(connection['fact'])}.", ""]
+        if connection["coordinate_maps"]:
+            lines.extend(f"- {field}: {mapping}" for field, mapping in connection["coordinate_maps"].items())
+        else:
+            lines.append("All seven declared domain coordinates agree.")
+        lines += ["", "Source: " + "; ".join(
+            f"[{s['path']}](../{quote(s['path'], safe='/')}) at {_code(s['anchor'])}"
+            for s in connection["sources"]) + ".", ""]
+    lines += ["### Every canonical contract", "",
+              "A/I count ordinary assumption/import names, not independent or unproved premises.",
+              "Each identifier points to its owning evidence; the complete names and statements",
+              "remain in the [canonical registry](../claims/claim_registry.yaml). An open mapping",
+              "does not add an antecedent to an explicit non-consumer theorem.", "",
+              "| Canonical claim | Restricted model mapping | A / I | Original premise roles |",
+              "| --- | --- | ---: | --- |"]
+    for row in rows:
+        cid = row["claim_id"]
+        evidence = row.get("evidence", [])
+        target = evidence[0] if evidence else "claims/claim_registry.yaml"
+        mapping = ", ".join(b["id"] for b in by_claim[cid]) or "Open: no same-model instantiation recorded"
+        roles = "; ".join(role + ": " + ", ".join(row["premise_dependencies"][role])
+                          for role in ROLES if row["premise_dependencies"][role])
+        if not roles:
+            roles = row["premise_dependencies"].get("classification", "No canonical-ID edges")
+        lines.append(f"| [{cid}](../{quote(target, safe='/#')}) | {_cell(mapping)} | {len(row['assumptions'])} / {len(row['imported_results'])} | {_cell(roles)} |")
+    lean_claims: dict[str, list[str]] = {}
+    for row in rows:
+        for evidence in row.get("evidence", []):
+            if evidence.startswith("Lean/") and evidence.endswith(".lean"):
+                lean_claims.setdefault(evidence, []).append(row["claim_id"])
+    lines += ["", "### Every Lean source module", "",
+              "The declaration count uses the existing theorem-count gate's public declaration",
+              "grammar with comments removed. Evidence membership is file-level navigation,",
+              "not an assertion that a registry claim consumes every declaration in that file.",
+              "Modules without a registry evidence edge remain visible. Every declaration in",
+              "a module retains its original quantified hypotheses and proof in the linked source.", "",
+              "| Lean source | Public theorem/lemma declarations | Registered evidence users |",
+              "| --- | ---: | --- |"]
+    for path, number in counts["lean_inventory"].items():
+        users = ", ".join(lean_claims.get(path, [])) or "No claim evidence edge; model mapping open"
+        lines.append(f"| [{path}](../{quote(path, safe='/')}) | {number} | {_cell(users)} |")
+    return lines
 
 
 def _cell(value: str) -> str:
@@ -362,6 +639,7 @@ def render(data: dict, counts: dict) -> str:
             if "anchor" in source:
                 item += "; exact source anchor: " + _code(source["anchor"])
             lines.append(item + ".")
+    lines.extend(render_contracts(data, counts))
     return "\n".join(lines) + "\n"
 
 
@@ -393,7 +671,7 @@ def main(argv: list[str] | None = None) -> int:
             for error in errors:
                 print(error, file=sys.stderr)
             return 1
-        counts = inventory(data, premises, claims)
+        counts = inventory(data, premises, claims, ROOT)
         content = render(data, counts)
         target = ROOT / OUTPUT
         if args.check:
@@ -406,7 +684,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Model/theorem map {'checked' if args.check else 'generated'}: "
               f"{counts['groups']} groups; {counts['covered_premises']}/"
               f"{counts['canonical_premises']} canonical IDs; "
-              f"{counts['covered_model_criteria']}/12 model criteria. Reference checks only.")
+              f"{counts['covered_model_criteria']}/12 model criteria; "
+              f"{len(counts['contract_rows'])} claim contracts; "
+              f"{len(counts['lean_inventory'])} Lean modules. Typed contract checks, not proof discharge.")
         return 0
     except (OSError, UnicodeError, ValueError) as exc:
         print(f"Cannot build model/theorem map: {exc}", file=sys.stderr)

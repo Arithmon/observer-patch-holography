@@ -23,6 +23,7 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Intrinsic photon dispersion | Equal-weight primitive-port or seam-edge propagation gives linked fourth- and sixth-order coefficients below, if these directions are physical translations of the photon field. | A conditional departure from minimal locally Lorentz-invariant vacuum propagation. Published timing limits are far too weak at the proposed scale; the Auger transfer is source- and interaction-dependent. |
 | Native clock ratios and noise | Same-history local movement counts have definite waiting distributions, correlations and covariance-derived spatial relations. | No identified atomic-clock, pulsar or photon observable has this record law. These laws admit ordinary stochastic realizations; matching them alone would not distinguish OPH. |
 | C/E coherent record law | One fixed coherent preparation gives plus probabilities `5/8` and `3/8` under the two instruments. | These are ordinary quantum instruments. The distinction selects a record law, not OPH over standard quantum mechanics. |
+| Joint timed coherent response | The charged total-two source history fixes a joint cost/clock/detector law. Under one explicitly synthetic calibration, its two settings have identical `0.52` deadline mass and distinct `0.2451`/`0.2715` joint detector masses. | An executable conditional forecast with shared timing coefficients and all timeouts retained. No measured system or physical duration is identified; these finite quantum instruments are not unique to OPH. |
 | Fine-structure constant | Several declared endpoint maps exist, with incomplete physical transport and map-selection obligations. | Withhold a new prediction claim. The [existing endpoint audit](../../model/predictions/README.md#inherited-coupling-comparison) already finds a 300.388218 ppm gap for its named map, without a justified theory-error distribution. |
 | Higgs mass | The historical near-match used a target-conditioned calibration. The [replacement electroweak producer](../../code/particles/calibration/source_ew_vev_matching.py) uses additional criticality, matching and energy-scale premises; it is not derived from the finite observer. | Withhold a distinctive prediction claim: the physical matching and theory-error budget remain open. The replacement's [retrospective comparison](../../code/particles/runs/calibration/source_ew_vev_matching_comparison.json) should retain those qualifications. |
 
@@ -133,6 +134,31 @@ the instrument when that system is measured. This applies to both executed
 interference probabilities therefore admit ordinary quantum realizations.
 This is a statement about these finite laws, not a theorem excluding every
 possible OPH distinction or every ultraviolet completion.
+
+The [charged clock-history attachment](../../model/laboratory_clock/README.md#compiled-operations-require-separate-timing-coefficients)
+strengthens the internal test: one shared two-resource calibration predicts
+the joint timed response without choosing separate clocks for the two
+coherent settings. It preserves the complete stopping distribution and
+proves that calibration workloads with fixed pulse-to-repair ratio cannot
+identify the two operation durations separately. Its additional attempt
+counter is a declared controller readout, and its timestamps are synthetic.
+The [protocol](NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md#a-joint-timed-coherent-prediction-with-charged-operations)
+states the exact conditional forecast and the physical correspondence needed
+to use it. It changes no frozen prediction or empirical verdict.
+
+Usable public clock observations exist. King et al.'s
+[argon optical-clock paper](https://arxiv.org/abs/2205.13053) has
+[public corrected argon/ytterbium ratio traces](https://zenodo.org/records/6901524),
+including UTC timestamp columns verified by directly reading a file header.
+Those are ratios of identified atomic transitions, not native incident
+counts. No source-derived atomic-transition map or ratio prediction is
+available here, so fitting an arbitrary time scale to those traces would
+not test this source. By contrast, the
+[2021 BACON publication](https://doi.org/10.1038/s41586-021-03253-4) supplies
+its raw data on request rather than as an immediately public trace deposit.
+The executed ACT comparison above is retained as the actual public-data
+constraint; clock-data availability does not turn a missing observable map
+into an additional physical comparison.
 
 ## Conditional dispersion: exact branch relation and actual sensitivity
 

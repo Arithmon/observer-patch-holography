@@ -28,8 +28,10 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
+| [One-history occupation field](physical_space_time/OCCUPATION_FIELD.md) | The fixed native process determines a Gaussian fluctuation covariance and action precision, with an exact incident-clock correction. | Full vector readback needs the initial occupations and complete seam/current tape. A separate supplied torus has an iterated time-then-mesh limit; the source screens and Lorentzian propagation need their own attachments. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Paired event/timestamp bounds determine a frozen rate/offset set and a joint held-out test. | Supply independently justified physical event records and clock errors. Software timings and assigned timestamps do not provide them. |
+| [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
 | [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | Actual CMB posterior samples constrain a separately declared primordial-tilt branch; other comparisons retain their own physical assumptions. | Derive that cosmological observable, or another measurable relation, from the selected observer process with its uncertainty and remaining freedom. No current bridge equates primordial tilt with a native finite-carrier readout. |
 
 The next construction should use the process's existing states, record
@@ -51,6 +53,29 @@ test route with its own service and calibration obligations.
 The [integrated observer correspondence](observer_correspondence/README.md)
 checks the finite action, field, signal and clock connections together while
 retaining each domain and the unresolved physical identifications above.
+
+The [complete-current identification](repair_identification/README.md) and
+[compiled incident history](compiled_clock_history/README.md) connect law
+uncertainty to that same finite observer experiment. Nine coherent quadratures
+identify the admitted coarse-current family on all 78 total-two states. Its
+reference-uniform error restricts to the invariant binary sector and propagates
+through the two-interval history, with every timeout and complement abort
+retained. The derived cap-two exposure is `408/125` native repairs, including
+feedback. Source compilation error is charged separately: executed nominal-C
+arrays are compared with each alternative ideal law; alternative raw-array
+histories are not executed. This attaches an
+operationally identified law to joint field, detector and clock predictions;
+it does not identify the apparatus or its readings with physical spacetime.
+
+The [complete contract inventory](PREMISES.md#finite-contract-coverage) lists
+every canonical claim and tracked Lean source module, including contracts
+without an established model mapping. Its restricted connections name the
+carrier, law, preparation, record access, controls, clock and regime. A
+different coordinate requires an explicit sourced map. These checks prevent
+silent changes of model or forgotten inputs; they do not prove the source
+arguments merely by checking their names. The finite A4 full-premise
+inhabitant is a useful existence witness for a synthetic branch, with source
+selection separate from its unconditional branch theorem.
 
 The [current scalar milestone](CANDIDATES.md#s1-the-canonical-scalar-benchmark)
 also retains its exact ownership: issue
@@ -117,6 +142,35 @@ values, those phases become observable. The complete coherent implementation
 then belongs to the repair-rule selection problem. A classical record read
 and a complementary coherent read are distinct instruments; their results
 cannot be treated as simultaneous readings of one undisturbed record.
+
+An observer's self-read identifies an **operational equivalence class within
+the admitted candidate family**. It does not reveal an unrestricted law from
+finitely many measurements. In the
+[complete repair experiment](repair_identification/README.md), nine exact
+scalar quadratures determine the nine real coordinates `(k,g,h,m,n)` of the
+classified coarse definite-current instrument. The theorem covers arbitrary
+spectator and reference coherences because the table determines every matrix
+unit. It requires the stated locality, classical update, covariance and
+definite-current record contract. It cannot select fine record refinements
+or coherent dilations invisible to those probes. Restricting probes to the
+binary sector also leaves the collision coordinate `n` undetermined.
+
+With noisy records, the result is a set of admissible laws and a bound on
+their complete future observations. A fixed-design probability tube is not
+an exact recovered constant. Apparatus errors and the sampling design remain
+explicit; the existing source executions use synthetic outcomes. Within a
+specified model, a theorem may hold for every admitted state and reference.
+That mathematical quantifier does not make the empirically selected model
+instance an unconditional or observer-independent "eternal truth".
+
+The [calibration propagation](compiled_clock_history/law_calibration.py)
+uses a feasible nominal C instrument in the same tubes, the same binary
+current interface and identical controls. Its expected-exposure coefficient
+comes from the state-independent incident scheduler; an arbitrary observed
+mean attempt count cannot replace a worst-branch bound. The raw compiled maps
+can have a mass defect, so their event-weight error is charged separately
+from the normalized ideal-instrument law error. No record or tail is
+discarded to make the comparison succeed.
 
 The existing [coherent code theorem](../docs/research/COHERENT_SOURCE_CLOCKS.md)
 illustrates the positive direction. In its fixed channel domain, one-basis
@@ -442,10 +496,14 @@ certificate does not provide that correspondence.
 
 ## Record-law selection
 
-The record layer of the repair rule has an exact answer up to one coherent
-measurement. Seam locality, the exact classical law, local number-phase
-covariance and endpoint symmetry admit precisely the coherence tables of the
-[record-law classification](record_laws/README.md). Within that family the
+The unread channel of the repair rule has an exact coherence-table
+classification under seam locality, the exact classical law, local
+number-phase covariance and endpoint symmetry. Identifying it with the
+coarse recorded instrument additionally requires the admitted definite-current
+record interface; channel covariance alone does not fix an arbitrary Kraus
+recording. The [record-law classification](record_laws/README.md) and
+[instrument contract](record_laws/INSTRUMENT_CONTRACT.md) keep these statements
+separate. Within that family the
 candidate principles are explicit: recording only what conservation needs
 gives C0, recording the tie-break as an event gives C, requiring one repair
 to complete the seam gives E, and recording the full seam occupation gives T.

@@ -17,7 +17,10 @@ these files are ledger sources and which are rendered views.
   `docs/registers/PREMISE_REGISTER_V3.md` with the coverage and the rungs as
   closing sections, and `python3 tools/build_model_theorem_map.py` renders the
   model view `model/PREMISES.md`; both take `--check`. The crosswalk indexes
-  scientific connections without certifying premise discharge. GitHub owns
+  every canonical claim row and tracked Lean source module, with typed
+  model-domain connections and explicit unmapped obligations. Its checks
+  establish coverage and source custody without certifying entailment or
+  premise discharge. GitHub owns
   tasks and the claim registry owns established claim scope; the model
   programme is in
   [Model construction](../model/CONSTRUCTION.md#work-ownership-and-claim-accounting).

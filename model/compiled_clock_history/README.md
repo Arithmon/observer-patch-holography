@@ -246,6 +246,67 @@ large caps, spatial refinement and a physical continuum limit are separate
 claims. Pulse costs stay bounded because there is only one intervention;
 the maximum scheduled-repair cost is `2h`.
 
+## Calibrated repair law and complete readout predictions
+
+The [law-calibration bridge](law_calibration.py) connects the nine-quadrature
+[repair identification](../repair_identification/README.md) to this same
+continuing experiment. Its full-carrier current instrument restricts to the
+invariant 66-state binary sector; forgetting private records is a CP
+coarse-graining. The bound retains the joint clocks, detector, conditional
+quantum state, every timeout and an arbitrary untouched reference. It applies
+to the common-current interface, not coherent access to private Kraus labels.
+It assumes the same relabelled instrument law on every seam. A calibration
+of one seam alone does not establish that homogeneity.
+
+Let `delta` bound the half-diamond difference of one repair instrument from
+nominal C. For cap `h`, let `p=2/5` and `q=1-(3/5)^h`. Each waiting interval
+uses `q/p` attempts on average. The first success additionally triggers one
+feedback repair and a second wait. The complete ideal output therefore has
+half trace-distance error at most
+
+```text
+min(1, mu_h * delta),   mu_h = (1+q)*q/p + q.
+```
+
+To prove this, telescope the chronological CP instruments, weighting each
+local discrepancy by the probability that its call is reached. The scheduler
+fixes these probabilities independently of the state and admissible law;
+later identical controls contract the complete norm. The feedback repair
+contributes `q`. No successful-branch conditioning is used. At cap two,
+`mu_h=408/125`, improving the worst-branch multiplier five.
+
+Nine probability tubes with C as a feasible witness constrain the entire
+admissible family. If the tubes are centered on C with radius `r`, the
+instrument bound is `delta <= min(1,7r)`. This uses a fixed nominal witness,
+not a projection of noisy estimates onto the CP family. The strict complete
+count interface retains aborts, separately declared sampling design,
+apparatus errors and simultaneous coverage assumptions.
+
+For the declared radius `r=1/10000`, the complete ideal-law error is
+`357/156250`. The unconditional probability of both waits completing and the
+terminal detector reporting one is `124967/750000` at `gamma=0` and
+`35131/150000` at `gamma=1`. The nominal contrast is `1056/15625`; its
+calibrated interval remains strictly positive. These are conditional source
+forecasts with no measured calibration counts. They are not a discrepancy
+with Standard Model or general-relativistic observations. The
+[current receipt](law_calibration_results.json) retains both settings and
+their probability ranges without refitting.
+
+The raw comparison bounds the executed nominal-C compiler against an
+alternative calibrated ideal history, by the triangle through ideal C.
+It does not execute the raw compiler with the alternative repair law.
+Its independently certified compiled-array discrepancy is added separately.
+Raw maps need not preserve trace exactly: a half trace-norm
+error `epsilon` allows event-weight error `2*epsilon`. Neither a probability
+normalization nor a cap of one is applied to this raw-map error. Conditioning
+on successful records requires a positive success-probability lower bound
+and its own enlarged uncertainty. Physical calibration additionally needs a
+validated detector/clock dictionary and independent observation data.
+
+```bash
+python -m model.compiled_clock_history.law_calibration --check model/compiled_clock_history/law_calibration_results.json
+```
+
 ## Resources and remaining obligations
 
 The ideal two-request protocol has at most four scheduled native attempts

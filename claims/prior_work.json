@@ -7317,6 +7317,20 @@
       "verification_source": "https://api.crossref.org/works/10.1090/cln/002"
     },
     {
+      "key": "sheffield2007gaussian",
+      "type": "article",
+      "author": "Sheffield, Scott",
+      "title": "Gaussian free fields for mathematicians",
+      "journal": "Probability Theory and Related Fields",
+      "volume": "139",
+      "pages": "521--541",
+      "year": "2007",
+      "doi": "10.1007/s00440-006-0050-1",
+      "verified": true,
+      "verification_source": "https://link.springer.com/article/10.1007/s00440-006-0050-1",
+      "note": "Gaussian fields with Green covariance and the mean-zero torus construction; this does not identify a supplied graph family with physical space."
+    },
+    {
       "key": "shor1995scheme",
       "type": "article",
       "author": "Shor, Peter W.",
@@ -8256,6 +8270,20 @@
       "doi": "10.1515/9781400877577",
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1515/9781400877577"
+    },
+    {
+      "key": "whitt2007martingale",
+      "type": "article",
+      "author": "Whitt, Ward",
+      "title": "Proofs of the martingale FCLT",
+      "journal": "Probability Surveys",
+      "volume": "4",
+      "pages": "268--302",
+      "year": "2007",
+      "doi": "10.1214/07-PS122",
+      "verified": true,
+      "verification_source": "https://www.columbia.edu/~ww2040/WWproofs2007pub.pdf",
+      "note": "Theorem 2.1 supplies the martingale functional central limit theorem after the declared finite-state Poisson decomposition and quadratic-variation checks."
     },
     {
       "key": "wick1952intrinsic",

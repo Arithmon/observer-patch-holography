@@ -147,6 +147,137 @@ identify the modular parameter with native attempts. An incident-clock action
 also needs its joint clock law; its stochastic counter cannot be replaced
 pathwise by a constant multiple of this attempt counter.
 
+## Compiled operations require separate timing coefficients
+
+The [compiled clock history](../compiled_clock_history/README.md) executes
+source preparation, a coherent intervention and terminal readout around the
+same capped native repairs. Native repairs and source-pulse invocations are
+different resources. The source does not equate their durations. A zero-angle
+control also counts as a requested invocation in that compiler.
+
+[`resource_clock.py`](resource_clock.py) adds the conditional timing model
+
+```text
+t_i = b + tau_native*N_i + tau_pulse*P_i,
+tau_native > 0, tau_pulse > 0.
+```
+
+Each calibration endpoint identifies both exact operation counters and a
+bounded independent reading. The same origin and duration coefficients must
+serve all calibration and validation endpoints. Endpoints may describe
+different calibration workloads under a common zeroing convention; they
+are not required to form one chronological counter tape. The prediction
+uses elapsed differences from a declared protocol start, so the common
+origin cancels. Timestamp error must bound that difference, including both
+readings. The coefficients are supplied timing hypotheses, not physical
+quantities selected by repair or by compiling a matrix.
+
+Per-pulse load/export latency can be included in the pulse coefficient if
+it has the same fixed multiplicity and timing law. Other initialization,
+complement-check, record-delivery and detector latency needs an explicit
+bound or additional resource. It cannot disappear from the physical
+comparison because a software array contracts it instantaneously.
+
+Eliminating the common origin gives the exact closed inequalities
+
+```text
+(N_j-N_i)*tau_native + (P_j-P_i)*tau_pulse <= t_j^+ - t_i^-.
+```
+
+The implementation uses rational Fourier--Motzkin elimination to project
+this two-dimensional region onto any elapsed duration
+`N*tau_native + P*tau_pulse`. It preserves the correlation between the
+coefficients. Independent marginal intervals generally give a wider bound.
+The closed region allows zero coefficients as boundary limits; the output
+separately tests whether strictly positive coefficients exist and whether
+both are bounded away from zero. An unbounded pulse duration is reported as
+unbounded. No value is assigned to an unobserved resource.
+
+If every calibration workload has `P=2N`, observations determine only
+`tau_native+2*tau_pulse`. Distinct positive coefficient pairs reproduce
+every such observation and disagree on a subsequent native-only workload.
+This is an identifiability obstruction, independent of measurement
+precision. The same issue occurs when no calibration endpoint varies the
+pulse count. Validation tests one common calibration against all held-out
+endpoints jointly; individually compatible endpoints can fail together.
+No replacement duration pair is fitted using validation data.
+
+### Complete cost and detector law
+
+The native endpoint replay retains the number of actual scheduled attempts,
+including hidden zero-current attempts and the feedback repair. This is an
+additional controller counter for the calibration protocol; it is not an
+assertion that an observer can read hidden microscopic events in nature.
+At cap two its maximum needs three counter bits. Forgetting this new count
+recovers every full conditional matrix of the established observer history,
+for both coherent settings and for each executed cap from one through three.
+This full-matrix identity concerns the ideal native history. Source-pulse
+cost metadata is imported from the compiler; a resource-refined execution
+of its raw binary arrays is not claimed. A calibration bound for coarser
+current records does not by itself certify this additional count record.
+Applying an instrument-error bound here requires a proof before that
+coarse-graining, with the counter service explicitly admitted.
+
+Source pulse costs are taken from the compiler's resource interface. For
+the cap-two, non-reference preparation, the complete resource law is
+
+| Native repairs `N` | Source pulses `P` | Probability |
+| ---: | ---: | ---: |
+| 2 | 27 | `9/25` |
+| 3 | 51 | `4/25` |
+| 4 | 51 | `42/125` |
+| 5 | 51 | `18/125` |
+
+Every timeout and both detector outcomes contribute. The means are
+`E[N]=408/125` and `E[P]=1059/25`; the two coherent settings have the same
+resource marginal. Their complete resource/clock/detector laws differ by
+total variation `1848/15625`. No duration coefficient has been used to
+derive these dimensionless quantities.
+
+For a deadline, each resource pair determines a linear duration on the
+calibration region. An event is forced before the deadline if its maximum
+duration, including reading error, is below the deadline; it is possible
+if its minimum duration allows it. Summing the corresponding exact masses
+gives valid outer probability bounds. For this componentwise ordered cost
+support and a bounded calibration with strictly positive coefficient
+bounds, they are sharp: the possible deadline sets are nested prefixes of
+the cost ordering. The proof applies to the event jointly with either
+detector outcome. It does not replace the calibration region by independent
+fits for different records.
+
+The synthetic fixture calibrates on `(N,P)=(0,0),(100,0),(100,100)`, with
+assigned readings `0`, `0.1 s +/-1 us`, `0.102 s +/-1 us`. It gives
+
+```text
+tau_native in [99999/100000000, 100001/100000000] seconds,
+tau_pulse  in [999/50000000, 1001/50000000] seconds.
+```
+
+An unused `(200,50)` workload at `0.201 s +/-1 us` passes. Shifting that
+unused reading by `10 us` rejects with the original calibration unchanged.
+The sharp expected-duration interval is
+`[0.00411038544,0.00411201456] s`. All readings and errors here are assigned
+software fixtures, not measured data.
+
+At a `4.5 ms` elapsed deadline, with a further `1 us` reading-error bound,
+the predicted probability of finishing is `13/25` at either setting.
+The joint probability of finishing with detector one is `2451/10000` for
+`gamma=0` and `543/2000` for `gamma=1`. These are unconditional masses;
+timeouts contribute and are not discarded. At `4 ms` the exact nominal
+cadence gives finish probability `9/25`, whereas substituting the mean
+duration gives zero. A mean cannot substitute for the stopped law.
+
+The evaluator accepts normalized ideal probability laws. The raw compiled
+arrays can have a trace defect and are not silently normalized for this
+use. For an authenticated normalized implementation law within total
+variation `eta` of the identified ideal law, widen an event interval
+`[L,U]` to `[max(0,L-eta),min(1,U+eta)]`. A complete raw-array half-nuclear
+error `epsilon` alone instead permits event-weight error `2*epsilon`,
+or `epsilon+abs(trace_defect)/2` if the defect is retained. Those numerical
+array bounds are not physical service-error certificates. Simultaneous
+coverage of calibration and timestamp bounds must also be justified before
+assigning a statistical rejection level.
+
 ## What the actual retained measurements establish
 
 The replay checks both original host executions: each has 264,532 native

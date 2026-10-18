@@ -1,4 +1,1339 @@
 {
+  "compiled_operation_clock_attachment": {
+    "calibrated_deadline_predictions": [
+      {
+        "bounds_sharp_for_ordered_cost_support": true,
+        "calibration_used_jointly": true,
+        "deadline_seconds": "9/2000",
+        "detector": null,
+        "event_probability_bounds": [
+          "13/25",
+          "13/25"
+        ],
+        "raw_compiler_weights_normalized": false,
+        "timeouts_retained": true,
+        "timestamp_error_bound": "1/1000000"
+      },
+      {
+        "bounds_sharp_for_ordered_cost_support": true,
+        "calibration_used_jointly": true,
+        "deadline_seconds": "9/2000",
+        "detector": 1,
+        "event_probability_bounds": [
+          "2451/10000",
+          "2451/10000"
+        ],
+        "raw_compiler_weights_normalized": false,
+        "timeouts_retained": true,
+        "timestamp_error_bound": "1/1000000"
+      },
+      {
+        "bounds_sharp_for_ordered_cost_support": true,
+        "calibration_used_jointly": true,
+        "deadline_seconds": "9/2000",
+        "detector": null,
+        "event_probability_bounds": [
+          "13/25",
+          "13/25"
+        ],
+        "raw_compiler_weights_normalized": false,
+        "timeouts_retained": true,
+        "timestamp_error_bound": "1/1000000"
+      },
+      {
+        "bounds_sharp_for_ordered_cost_support": true,
+        "calibration_used_jointly": true,
+        "deadline_seconds": "9/2000",
+        "detector": 1,
+        "event_probability_bounds": [
+          "543/2000",
+          "543/2000"
+        ],
+        "raw_compiler_weights_normalized": false,
+        "timeouts_retained": true,
+        "timestamp_error_bound": "1/1000000"
+      }
+    ],
+    "calibration": {
+      "both_durations_bounded_and_bounded_away_from_zero": true,
+      "calibration_ids": [
+        "origin",
+        "native",
+        "mixed"
+      ],
+      "closed_outer_feasible": true,
+      "native_seconds_bounds": [
+        "99999/100000000",
+        "100001/100000000"
+      ],
+      "one_common_origin_and_duration_pair": true,
+      "physical_timing_hypothesis_authenticated": false,
+      "pulse_seconds_bounds": [
+        "999/50000000",
+        "1001/50000000"
+      ],
+      "strict_positive_durations_feasible": true
+    },
+    "complete_conditional_matrices_coarse_grain_to_native_oracle": true,
+    "complete_resource_laws": [
+      [
+        {
+          "attempts": 2,
+          "clock_ticks": [
+            0,
+            0
+          ],
+          "detector": 0,
+          "probability": "9/50",
+          "pulses": 27,
+          "status": "timeout_first"
+        },
+        {
+          "attempts": 2,
+          "clock_ticks": [
+            0,
+            0
+          ],
+          "detector": 1,
+          "probability": "9/50",
+          "pulses": 27,
+          "status": "timeout_first"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "27/5000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "23/5000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "2351/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "1249/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "87/4000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "73/4000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "11/1500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "1/375",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "4651/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "2549/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "1291/60000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "1109/60000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "81/12500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "69/12500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "169297/10800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "89903/10800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "261/10000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "219/10000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "3173/360000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "1147/360000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "167461/5400000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "91739/5400000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "1291/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "1109/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 0,
+          "probability": "243/12500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 1,
+          "probability": "207/12500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 0,
+          "probability": "99/5000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 1,
+          "probability": "81/5000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "1041/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "759/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "243/125000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "207/125000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "84661/18000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "44939/18000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "783/100000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "657/100000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "1589/600000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "571/600000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "83743/9000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "45857/9000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "3873/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "3327/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 0,
+          "probability": "729/62500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 1,
+          "probability": "621/62500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 0,
+          "probability": "297/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 1,
+          "probability": "243/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "3123/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "2277/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        }
+      ],
+      [
+        {
+          "attempts": 2,
+          "clock_ticks": [
+            0,
+            0
+          ],
+          "detector": 0,
+          "probability": "9/50",
+          "pulses": 27,
+          "status": "timeout_first"
+        },
+        {
+          "attempts": 2,
+          "clock_ticks": [
+            0,
+            0
+          ],
+          "detector": 1,
+          "probability": "9/50",
+          "pulses": 27,
+          "status": "timeout_first"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "3/1000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "7/1000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "1703/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "1897/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "283/20000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "517/20000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "23/3750",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "29/7500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "3643/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "3557/180000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "931/60000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 3,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "1469/60000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "9/2500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "21/2500",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "122641/10800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "136559/10800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "849/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "1551/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "13273/1800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "8327/1800000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "131173/5400000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "128027/5400000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "931/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "1469/50000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 0,
+          "probability": "27/2500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 1,
+          "probability": "63/2500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 0,
+          "probability": "279/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 1,
+          "probability": "621/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "681/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 4,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "1119/25000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 0,
+          "probability": "27/25000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            3
+          ],
+          "detector": 1,
+          "probability": "63/25000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "61333/18000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "68267/18000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 0,
+          "probability": "2547/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            3
+          ],
+          "detector": 1,
+          "probability": "4653/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 0,
+          "probability": "6649/3000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            1
+          ],
+          "detector": 1,
+          "probability": "4151/3000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 0,
+          "probability": "65599/9000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            2
+          ],
+          "detector": 1,
+          "probability": "64001/9000000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 0,
+          "probability": "2793/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            3,
+            3
+          ],
+          "detector": 1,
+          "probability": "4407/500000",
+          "pulses": 51,
+          "status": "complete"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 0,
+          "probability": "81/12500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            1,
+            2
+          ],
+          "detector": 1,
+          "probability": "189/12500",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 0,
+          "probability": "837/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            1
+          ],
+          "detector": 1,
+          "probability": "1863/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 0,
+          "probability": "2043/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        },
+        {
+          "attempts": 5,
+          "clock_ticks": [
+            2,
+            2
+          ],
+          "detector": 1,
+          "probability": "3357/125000",
+          "pulses": 51,
+          "status": "timeout_second"
+        }
+      ]
+    ],
+    "data_kind": "synthetic_fixture",
+    "deficient_fixed_resource_ratio_calibration": {
+      "both_durations_bounded_and_bounded_away_from_zero": false,
+      "calibration_ids": [
+        "d0",
+        "d1"
+      ],
+      "closed_outer_feasible": true,
+      "native_seconds_bounds": [
+        "0",
+        "13/12500"
+      ],
+      "one_common_origin_and_duration_pair": true,
+      "physical_timing_hypothesis_authenticated": false,
+      "pulse_seconds_bounds": [
+        "0",
+        "13/25000"
+      ],
+      "strict_positive_durations_feasible": true
+    },
+    "deficient_held_out_native_only_duration_bounds": [
+      "0",
+      "13/125"
+    ],
+    "expected_mean_duration_seconds_bounds": [
+      "25689909/6250000000",
+      "25700091/6250000000"
+    ],
+    "held_out": {
+      "calibration": {
+        "both_durations_bounded_and_bounded_away_from_zero": true,
+        "calibration_ids": [
+          "origin",
+          "native",
+          "mixed"
+        ],
+        "closed_outer_feasible": true,
+        "native_seconds_bounds": [
+          "99999/100000000",
+          "100001/100000000"
+        ],
+        "one_common_origin_and_duration_pair": true,
+        "physical_timing_hypothesis_authenticated": false,
+        "pulse_seconds_bounds": [
+          "999/50000000",
+          "1001/50000000"
+        ],
+        "strict_positive_durations_feasible": true
+      },
+      "held_out_used_in_calibration": false,
+      "individually_compatible": [
+        true
+      ],
+      "jointly_compatible_with_some_original_calibration": true,
+      "replacement_fitted_duration_pair_exported": false,
+      "validation_ids": [
+        "validation"
+      ]
+    },
+    "held_out_changed": {
+      "calibration": {
+        "both_durations_bounded_and_bounded_away_from_zero": true,
+        "calibration_ids": [
+          "origin",
+          "native",
+          "mixed"
+        ],
+        "closed_outer_feasible": true,
+        "native_seconds_bounds": [
+          "99999/100000000",
+          "100001/100000000"
+        ],
+        "one_common_origin_and_duration_pair": true,
+        "physical_timing_hypothesis_authenticated": false,
+        "pulse_seconds_bounds": [
+          "999/50000000",
+          "1001/50000000"
+        ],
+        "strict_positive_durations_feasible": true
+      },
+      "held_out_used_in_calibration": false,
+      "individually_compatible": [
+        false
+      ],
+      "jointly_compatible_with_some_original_calibration": false,
+      "replacement_fitted_duration_pair_exported": false,
+      "validation_ids": [
+        "validation_changed"
+      ]
+    },
+    "independent_marginal_box_mean_duration_seconds_bounds": [
+      "25689501/6250000000",
+      "25700499/6250000000"
+    ],
+    "joint_resource_clock_detector_setting_response_tv": "1848/15625",
+    "mean_native_attempts_including_feedback": "408/125",
+    "mean_replacement_negative_control": {
+      "exact_cadence_deadline": {
+        "bounds_sharp_for_ordered_cost_support": true,
+        "calibration_used_jointly": true,
+        "deadline_seconds": "1/250",
+        "detector": null,
+        "event_probability_bounds": [
+          "9/25",
+          "9/25"
+        ],
+        "raw_compiler_weights_normalized": false,
+        "timeouts_retained": true,
+        "timestamp_error_bound": "0"
+      },
+      "first_timeout_probability": "9/25",
+      "probability_from_deterministic_mean_duration": "0",
+      "total_timeout_probability": "369/625"
+    },
+    "mean_source_pulses": "1059/25",
+    "resource_marginal": [
+      {
+        "attempts": 2,
+        "probability": "9/25",
+        "pulses": 27
+      },
+      {
+        "attempts": 3,
+        "probability": "4/25",
+        "pulses": 51
+      },
+      {
+        "attempts": 4,
+        "probability": "42/125",
+        "pulses": 51
+      },
+      {
+        "attempts": 5,
+        "probability": "18/125",
+        "pulses": 51
+      }
+    ],
+    "same_resource_marginal_both_settings": true,
+    "schema": "oph.two_resource_clock.v1",
+    "scope": {
+      "additional_attempt_counter_is_declared_readout": true,
+      "all_resource_cost_classes_and_timeouts_retained": true,
+      "arbitrary_modular_or_atomic_clock_identification": false,
+      "coarse_current_calibration_bound_transferred_to_resource_records": false,
+      "compiled_raw_array_mass_used_as_probability": false,
+      "physical_service_duration_or_fidelity_established": false,
+      "primitive_source_pulses_are_native_incident_ticks": false,
+      "raw_compiled_history_refinement_executed": false,
+      "unrecorded_service_latency_must_be_bounded_or_added_as_a_resource": true
+    },
+    "source_duration_selected": false,
+    "timing_hypothesis": "t=b+tau_native*N+tau_pulse*P; counts include every declared operation"
+  },
   "joint_validation_control": {
     "calibration": {
       "bounded_away_from_zero_and_infinity": true,
@@ -441,18 +1776,38 @@
     "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
     "Lean/Time/ClockReadout.lean": "bbe0b9d99047a4de4e2bbc5cf01ec026bfa26e6fb63212702a5be8080053266d",
     "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "model/__init__.py": "eff7e4cc748c51d89ef0dd1626dbe42a9bd453a2d6933eb26eb96cbc36113078",
+    "model/anharmonic_transfer/__init__.py": "2a37d8911ef47c17a261f7d6e361092a4c8f00214d576c9975291d96e559903d",
+    "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
+    "model/common_source/__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
+    "model/common_source/exact_output.py": "996e4eb3023e5fc56044f20f381931594e9f2aed31bba071a83f32ded7cdbb39",
+    "model/common_source/experiment.py": "10b9040d1d2f870f6d4a5e72df2848bbc0f55c136be0be3bacd2fbda28ff4ab8",
+    "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
+    "model/common_source/infinite_history.py": "b579a3facd773f447796191ec1dc9f9e12b4473d129d4890164ddb8b3dd9becc",
+    "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
     "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
     "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
     "model/common_source/protocol.py": "4339a070f39f2ddbc958e83041e9b8935dd8efd50acfca80519c4d92ea6cfac2",
+    "model/common_source/records.py": "af8187c7d3f12a3088c64f881f47bda3e6d2fd2723f41337d0a8f8fe3fa43b82",
+    "model/common_source/scalar_coupling.py": "90e4000b0e48e4429e69891c0274966701cd59951f79d151dbe98a66e61ba0cf",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/common_source/smooth_history.py": "2f25d0781527f609c414c111132faf3189b20cf3581c2e2f2ffa9d821aeaa1fb",
+    "model/common_source/smooth_protocol.py": "b3e9f706d6e239900f36c300deb7d83faba2b39e02d3c6ecc5b3a806d9316480",
+    "model/compiled_clock_history/__init__.py": "f1f8a3faf1ecc7c9a251be4dc66139facd05db3ed4b6edcebdacb096e359e5ce",
+    "model/compiled_clock_history/history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",
+    "model/compiled_clock_history/receipt.py": "f07ce8cea419ba6b702668594bde1d0b1147c45d488d7d1d352989ab083a6230",
+    "model/compiled_clock_history/source.py": "86bef8ce53e02d2474888f5397fab6e8b2a23eed57fd8c0f860637f6ce367d3e",
     "model/laboratory_clock/__init__.py": "ed84862b1b7acf3f1b63feabb8207105b22e99b70c930d79bc5e0c94bd499f94",
-    "model/laboratory_clock/__main__.py": "b4b11c8af6e36cacecbb01993030ff377f9ed30cf45a2f2f06d5c72e65f0bb1d",
+    "model/laboratory_clock/__main__.py": "4031dbfa8ab56b51e5de87f6371c9399ba864eb035967a5235637b906a9f37e7",
     "model/laboratory_clock/attachment.py": "fd2391d68e74f5a09c446d7ae20fc7591684a12bb0d66cbd93f4b0832bdd902a",
     "model/laboratory_clock/endpoints_example.json": "aa33932e6482247c2e3a272d98323889a2f84403c58148914f25e751c4098f65",
-    "model/laboratory_clock/experiment.py": "775db76d39b1fdee60ba560c89ed716f437a05685c851a4378c89bbc207096f9",
+    "model/laboratory_clock/experiment.py": "b59d2cc34ca893ff5a5311e711b107b99bf6e6482b1acb0b69dfe66ab1f443ff",
+    "model/laboratory_clock/resource_clock.py": "d4776e7ac5ad61a78982da67426410b97b38fefed14a7589fc89c89d831c2cee",
     "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
     "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
@@ -463,13 +1818,42 @@
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
     "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
+    "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
+    "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
     "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
     "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/observer/scalar_response/__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_scalar/__init__.py": "d3dcf546c13e23ceb9a58c19481e2e3f04134013d8047d83b020ec836d8e1e86",
+    "model/observer/source_scalar/bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
+    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
+    "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
+    "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
+    "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
+    "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
+    "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
+    "model/quantum_observer_correspondence/__init__.py": "3bc49c4604f5da8cf9cd58dcb6c89e848b783f4e4dfcadd0c36ee1ad0205eb71",
+    "model/quantum_observer_correspondence/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "model/quantum_observer_correspondence/clock_response.py": "cf1eb5001f634e298fcb6fa36cc79388e2ee2e13fa8e18f2b8a84257ded36720",
+    "model/quantum_observer_correspondence/construction.py": "36c542daaf1f125b376c4bf72da63a307dbbf5d74b51c26a42b97fee4ef3a9e1",
+    "model/record_laws/__init__.py": "1b66289fa4160260460fa4e947b1f7339fe0e8d7382fe6848c0029896c02bd19",
+    "model/record_laws/family.py": "ac615e49101faa9a7b0b42d07f01ff44f342c20195ea5f6e5f88743bd11b4919",
+    "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
+    "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",
+    "model/repair_identification/__init__.py": "8f437d05b775590a935367956f706e4e1d9bdcdcc224f8790a2a7ff6db1fafa8",
+    "model/repair_identification/core.py": "15b705391cde6a051d5ddeec98b6c0a7712088679be0ebfa88cf168c78205eeb",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
+    "model/scalar_observations/__init__.py": "aca05029c4326bba3c7ac0237284dbe87c8ac5011769cd5bdf68152b443c21ae",
+    "model/scalar_observations/experimental_readout/__init__.py": "4fe571d3440bea33028288fa3314a6712962f8c8b1bb629ed828084d8e0460cd",
+    "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
+    "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",
+    "model/scalar_observations/lattice.py": "3f08c67ee7c1be4ac89ba031f021a79ae308aba2dffa9ca6c296deb982ddf074",
+    "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
   },
   "synthetic_endpoint_fixture": {
