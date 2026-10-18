@@ -1686,6 +1686,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/observer_correspondence/QUANTUM_CLOCK.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/observer_correspondence/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false

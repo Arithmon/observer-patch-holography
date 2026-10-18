@@ -90,10 +90,18 @@ that preparation, intervention and terminal pointer with emitted source
 pulses. Exact rational propagation of the original binary arrays retains
 all 512 code addresses and 1,656 clock, timeout and complement-abort outputs.
 Both intervention settings and a compiled reference-attached preparation
-agree with the complete ideal history within `1e-11`, with source pulse and
+agree with the complete ideal history within 1e-11, with source pulse and
 service budgets. This closes the ideal coherent-apparatus gap for that
 finite protocol; the native repair instrument and code services remain its
 declared primitives.
+
+The [quantum incident-clock correspondence](observer_correspondence/QUANTUM_CLOCK.md)
+complements that exact full-state representation with an ordinary CP
+effective instrument for local outputs. A positive mixture of native repairs
+implements it. Its one-particle coherent/reference experiment retains all 81
+outputs in the shared runtime, with error and resource budgets. Distinct C/E
+phase predictions show why agreeing classical currents do not fix the quantum
+field response. Coherent preparation and readout remain declared services.
 
 ## Architecture and execution
 
