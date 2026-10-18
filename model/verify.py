@@ -36,8 +36,10 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/native_action", "model/joint_clock_process",
            "model/closed_prediction_protocol", "model/characteristic_constraints",
            "model/record_laws", "model/physical_space_time",
-           "model/repair_action_audit", "model/laboratory_clock")
+           "model/repair_action_audit", "model/laboratory_clock",
+           "model/observer_correspondence")
 REPLAYS = (
+    ("model.observer_correspondence", None, "model/observer_correspondence/results.json"),
     ("model.record_laws.instrument_contract", None, "model/record_laws/instrument_results.json"),
     ("model.physical_space_time", None, "model/physical_space_time/results.json"),
     ("model.repair_action_audit", None, "model/repair_action_audit/results.json"),

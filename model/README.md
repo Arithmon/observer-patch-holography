@@ -55,6 +55,16 @@ established three-dimensional bulk. Its supplied routes and failed ancestry
 maps are reasons to test its suitability, rather than conditions to impose on
 every local proof.
 
+The [joint observer correspondence](observer_correspondence/README.md)
+compares two overlapping observers on one continuing binary total-two
+process. Their disclosed local preparations, incident clocks, current-derived
+fields and record-triggered native feedback share one complete law.
+Independent endpoint recursion and the effective marked-transfer description
+agree exactly on all retained records and terminal populations, including
+timeouts. This closes a finite diagonal observation contract. Its effective
+transfer action and local spatial dictionary do not establish a physical
+relativistic QFT or identify the observations with our Universe.
+
 ## Architecture and execution
 
 The [primitive observer runtime](primitive_observer/README.md) executes
@@ -413,6 +423,7 @@ current constructions can also be checked directly:
 
 ```sh
 python3 -m model.native_action --check model/native_action/results.json
+python3 -m model.observer_correspondence --check model/observer_correspondence/results.json
 python3 -m model.joint_clock_process --check model/joint_clock_process/results.json
 python3 -m model.closed_prediction_protocol --check model/closed_prediction_protocol/results.json
 python3 -m model.characteristic_constraints --check model/characteristic_constraints/results.json
@@ -428,9 +439,13 @@ The central obligation is an observational correspondence: compatible field,
 clock and intervention laws must recover the physical regimes observers
 measure. A finite algebra, a clock comparison or a graph dimension alone
 does not supply that correspondence. The remaining work includes compatible
-federation/refinement maps, controlled interacting scaling limits, a physical
-apparatus mapping and discriminating data with justified errors. Supplied
-benchmark structure remains a premise until its connection is demonstrated.
+observation maps across domains, controlled interacting effective limits,
+physical detector/clock identifications and discriminating data with justified
+errors. Existing public observations can test this construction without a
+physical emulator. The [complete-output criterion](CONSTRUCTION.md#the-observable-correspondence-to-establish)
+specifies what it means for the native and effective descriptions to agree.
+Supplied benchmark structure remains a premise until its connection is
+demonstrated.
 
 - [Observer-relative recovery](OBSERVER_RELATIVE_RECOVERY.md): current native
   action, clock, field and federation results and their limits.

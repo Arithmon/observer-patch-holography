@@ -38,6 +38,17 @@ issue completion do not change a registered claim's scientific status. Record
 exact same-model attachments and retained inputs there; change this registry
 when the established claim or its evidence changes.
 
+Finite theorem validity, realization of its hypotheses by an executable
+instance, observational equivalence to an effective field description, and
+agreement with physical data are separate claims. An `emitted_artifact` row
+can establish the second without establishing the last two. Its evidence
+must identify the actual state sector, instruments, scheduler, observer access
+and retained outputs. The [complete-output criterion](../model/CONSTRUCTION.md#the-observable-correspondence-to-establish)
+states the operational comparison; counts of theorem references do not
+discharge its physical hypotheses. Retrospective conditional fits belong in
+the observation/postdiction ledgers and cannot become prospective prediction
+successes through a status or wording change.
+
 `claims/active_surface_inventory.json` is a generated reachability projection
 written by `tools/check_axiom_consistency.py --inventory`; it is not a ledger.
 

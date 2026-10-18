@@ -41,6 +41,36 @@ and nonunique representations are legitimate design freedoms. The substantive
 test is whether the chosen observation, intervention, clock and spatial maps
 give compatible measurement laws in the claimed physical regime.
 
+### One complete joint observer comparison
+
+The [joint correspondence](observer_correspondence/README.md) uses regions
+`{0,1}` and `{0,5}` on the same binary total-two C process. Their local
+fields follow from disclosed initial occupation bits and signed currents;
+each incident repair advances the corresponding observer's clock, including
+zero-current repairs. After the first scheduled union incident, the shared
+port's reconstructed occupation selects one native feedback seam. The
+feedback record and its clock increments remain in the output.
+
+The complete finite-cap native experiment and a source-derived effective
+marked transfer give exactly the same joint records and terminal
+populations. Remote repairs continue between reads; neither successful
+events nor one observer's marginal replaces the complete law. The same
+endpoint branches supply the local instrument-history action, and the
+spatial dictionary is the chosen slow Gram of those source interfaces.
+That spatial dictionary is not reconstructed from this short observation
+sample. Initial local labels, comparison access and the timeout service are
+declared inputs.
+
+The unread completed transfer is positive in a specified weighted inner
+product, permitting its Euclidean logarithm. Individual marked operations
+need not be positive operators in that inner product. Finite-cap effective
+states instead use the explicitly transported population cone and decoder;
+negative matrix entries are retained. This is an exact representation of
+the declared diagonal laws, with no extension to arbitrary coherent states
+or quantum references claimed. It supplies a finite instance of the
+[complete-output comparison](CONSTRUCTION.md#the-observable-correspondence-to-establish),
+not its interacting QFT or empirical completion.
+
 ## What the inputs supply
 
 Architecture, observer implementation and the complete repair law define an

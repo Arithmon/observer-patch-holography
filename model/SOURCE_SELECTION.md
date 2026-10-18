@@ -12,6 +12,56 @@ instance. It adds no core axiom or scientific ledger. The claim registry and
 the generated
 [premise map](PREMISES.md) retain their existing ownership and statuses.
 
+<a id="current-bridge-to-physical-observations"></a>
+
+## Current bridge to physical observations
+
+The completed finite constructions support an observer-relative account of
+fields and clocks: the observer reads a declared algebra through complete
+instruments, including retained records, failures and surviving quantum
+states. They do not identify those observations with a relativistic QFT
+or the spacetime of our Universe. The next attachment must preserve the
+same joint observations and interventions, rather than only matching a
+mean response, a spectrum or a clock rate.
+
+| Established connection | Exact domain | Remaining physical identification |
+| --- | --- | --- |
+| [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
+| [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
+| [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
+| [Laboratory-clock attachment](laboratory_clock/README.md) | Paired event/timestamp bounds determine a frozen rate/offset set and a joint held-out test. | Supply independently justified physical event records and clock errors. Software timings and assigned timestamps do not provide them. |
+| [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | Actual CMB posterior samples constrain a separately declared primordial-tilt branch; other comparisons retain their own physical assumptions. | Derive that cosmological observable, or another measurable relation, from the selected observer process with its uncertainty and remaining freedom. No current bridge equates primordial tilt with a native finite-carrier readout. |
+
+The next construction should use the process's existing states, record
+instruments, accessible algebras and intervention laws. A field description
+can be effective, and clock readings can be local; no preferred universal
+clock is required. State their maps and approximation domains
+before invoking the QFT or spacetime theorem that needs them. In particular,
+commutative record gluing does not provide every hypothesis of a quantum
+regional net, and an available modular automorphism is not proof that the
+continuing repair process follows it.
+
+One carrier suffices for the present action, signal and clock derivations.
+Use extension or federation only when the claimed observation domain needs
+it. Physical comparison may use existing public observations once their
+observable map is derived; building a new laboratory apparatus is not a
+universal prerequisite. A laboratory realization is a separate available
+test route with its own service and calibration obligations.
+
+The [integrated observer correspondence](observer_correspondence/README.md)
+checks the finite action, field, signal and clock connections together while
+retaining each domain and the unresolved physical identifications above.
+
+The [current scalar milestone](CANDIDATES.md#s1-the-canonical-scalar-benchmark)
+also retains its exact ownership: issue
+[#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077)
+asks for the original q=3 preparation and five retained-pointer histories.
+Its d=8192 full source word has not been emitted or executed. Later native,
+two-site and common-source histories are substantive completed finite
+protocols; they neither execute that original word nor establish physical
+completion. Their theorem hypotheses and error budgets remain separately
+scoped in [RE-10](PREMISES.md#re-10).
+
 ## What each primitive must specify
 
 | Primitive | Required content | Current boundary |

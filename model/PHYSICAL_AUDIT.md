@@ -130,10 +130,17 @@ Choose the operational spatial and temporal maps in advance, retain hidden
 events and failures, and establish their error bounds on the domain claimed.
 The native action must predict those same records under the chosen clock
 map, including coherent interventions that can distinguish the remaining
-record-law freedom. Calibrate a physical implementation using paired
-event/timestamp data, then test unused interventions and time windows
-without refitting. Extend the operational domain only with a demonstrated
-compatibility or approximation bound.
+record-law freedom. Identify these records with physical detector and clock
+observables, calibrate the declared unit/parameter freedoms using existing
+measurements, then test unused observation protocols without refitting.
+A physical emulator is an optional implementation test; paired microscopic
+repair-event timestamps are not a prerequisite for comparing the proposed
+Universe with public observations. The
+[observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
+states this route, and the [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+separates the conditional ACT result from a native-observer derivation.
+Extend the operational domain only with a demonstrated compatibility or
+approximation bound.
 
 The audit therefore supports the mathematical direction while narrowing the
 next target. The three physical completion claims remain open; their

@@ -82,6 +82,49 @@ force a particular random outcome in an independently repeated experiment.
 Agreement must be constrained by measurements; a consistent world model can
 describe different physics from nature.
 
+### The observable correspondence to establish
+
+Fix an observer region, preparation family, accessible instruments, feedback
+rules and finite resource domain before comparing descriptions. A physical
+dictionary maps these operations and their complete outputs to the proposed
+effective field description. It must include local clock comparisons, signal
+records and field readouts together. Different observers' dictionaries must
+agree on their shared records and allowed joint interventions. Choosing
+seconds and metres sets units; it does not determine these response laws.
+
+For a protocol `p` in that fixed menu, let `rho_native(p)` and `rho_eff(p)`
+be its complete record/quantum outputs, including failures, unresolved waits
+and any admitted untouched reference. Map both outputs to one declared
+comparison algebra with decoders `D_native` and `D_eff`. The finite target is
+
+```text
+sup_p (1/2) ||D_native(rho_native(p)) - D_eff(rho_eff(p))||_1 <= epsilon.
+```
+
+The supremum also covers the related initial states and references declared
+by the contract. For classical records this is total variation of the full
+joint law. Matching individual expectations, two-point functions or clock
+means is weaker. Conditioning on a rare successful outcome needs its own
+probability-dependent error bound; it cannot erase failed branches from the
+comparison. Decoders must retain the observations being claimed: mapping
+both outputs to a constant is not an observation-faithful correspondence.
+
+The finite source results provide parts of this contract. A physical QFT
+attachment must additionally supply an operational domain with three spatial
+and one temporal dimension, the appropriate covariance/locality and state
+conditions, and measured interaction responses. Its approximation errors
+must be controlled across the claimed domains or refinement. A finite
+positive transfer and its spectral logarithm alone do not provide those
+hypotheses. The [premise map](PREMISES.md) records which theorem interfaces
+are instantiated and which require extra inputs.
+
+The empirical step uses the *same* dictionary and calibrated parameters on
+independent observation protocols. Existing public data can supply that test;
+a physical emulator or new laboratory is unnecessary. An assumed
+experimental outcome is a conditional forecast and cannot validate the
+dictionary. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+keeps the ACT comparison separate from native-observer derivation.
+
 Hardware, protocol and implementation choices are open design variables.
 No uniqueness theorem for the chosen rule is a prerequisite. For the current
 P/N construction, closure-derived P and N are accepted inputs under their

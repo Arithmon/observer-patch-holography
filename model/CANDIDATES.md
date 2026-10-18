@@ -11,6 +11,12 @@ members apart. The [construction guide](CONSTRUCTION.md) describes the
 executable model built on the chosen law, and the [premise map](PREMISES.md)
 connects both to the theorem library.
 
+The [current physical audit](PHYSICAL_AUDIT.md) connects the single-carrier
+geometry, action and clock results. None needs a federation for its finite
+derivation. The [physical identification obligations](SOURCE_SELECTION.md#current-bridge-to-physical-observations)
+separate these executed laws from an observer-relative QFT or spacetime
+description and from the [actual public-data comparisons](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md).
+
 ## What a repair law specifies
 
 A repair law answers four questions about one event on one seam:
@@ -217,8 +223,8 @@ the remaining vertices plus a constant loss.
 
 ### What observations decide
 
-**Classical records decide nothing here.** Every admissible law has the same
-diagonal action. For C and E the [observability results](identifiability_checks/README.md)
+**Common classical load/current records do not select C/E.** Every admissible
+channel has the same diagonal action. For C and E the [observability results](identifiability_checks/README.md)
 prove more: for every load basis state the joint law of coin, current and
 post-repair load agrees once E's extra label is summed out, and the
 equality continues through finite adaptive classical protocols and through
@@ -414,7 +420,9 @@ reuses the free scalar continuum and quantum-instrument results under a
 supplied canonical representation, state, controls and clock. An eight-site
 construction composes preparation and retained observations on one finite
 code with mathematical trace-distance error **<0.001237** before physical
-service errors.
+service errors. This is the original q=3, d=8192 construction recipe: its
+full source word has not been emitted or executed. The later two-site and
+native histories below are executed on their own stated domains.
 
 The [configuration-equilibrium control](CONSTRUCTION.md#retained-audit-controls)
 preserves only the normalized classical configuration Gibbs marginal; its
@@ -445,9 +453,10 @@ supplied forecast from that record, chooses seam `(0,5)` when `j1>0` and
 `(0,1)` otherwise, records the second outcome and halts. All 264 binary-source
 paths are enumerated. The [capacity calculation](observer/CAPACITY.md) gives
 11 terminal record words and 16 reachable prefixes, a four-bit classical
-prefix encoding. The observer's action reads only the current, which every
-admissible record law records, so the controller runs unchanged under each
-of them; its forecast also uses the coin.
+prefix encoding. The observer's action reads only the current, so it runs
+unchanged for instruments satisfying the declared current-record interface;
+its forecast also requires the coin. Unread-channel covariance alone does
+not supply either actually committed record.
 
 The [electromagnetic detector protocol](observer/p_response/README.md)
 accepts the closure coordinates P and N and computes the source-only
@@ -497,7 +506,10 @@ fit the owners below.
 [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076)
 owns shared-law selection;
 [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077)
-owns complete source execution. No entry closes a physical premise by
+owns execution of the original q=3 scalar preparation and five retained-pointer
+histories. Its large common-code word remains unexecuted. Later complete
+native and two-site programs establish their own finite milestones and do
+not silently replace that deliverable. No entry closes a physical premise by
 renaming it. Completion requires the simplest shared rule to satisfy the
 required constraints on one common model, with discriminating evidence for
 its physical identification.

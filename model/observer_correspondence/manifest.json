@@ -1,0 +1,16 @@
+{
+  "description": "Exact same-carrier joint fields, overlapping incident clocks, native feedback and capped effective transfer with full terminal-state correspondence.",
+  "files": {
+    "README.md": "9f1aa0fde49c863d9f32dd39bb831427968b818418bd68c94507005236722613",
+    "__init__.py": "e8b50f98ae2a86890361af1c27bfe3db5ee7b4cbb41fe806431886ed37c11bdc",
+    "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "construction.py": "2e3850588f8d87a0bcc0c21cb1be304698a4c01a12b7c16c1aee6e1c7465cb00",
+    "results.json": "29f78c613267ac2ea32f6f62eaed83b15aa45e4e0c97384dd614021e8f689eeb",
+    "test_construction.py": "1180781f18d7e3a87349f6120f02a8c697bff4b8e22ea2a20c1507f50d803893"
+  },
+  "reproduce": [
+    "python -m model.observer_correspondence --check model/observer_correspondence/results.json",
+    "python -m pytest -q -W error model/observer_correspondence"
+  ],
+  "schema": "oph.observer_correspondence.manifest.v1"
+}
