@@ -207,7 +207,12 @@ def execute_history(n, edges, root=(0, 1), *, incident=None, law='C', cap=3,
     payload = runtime.checkpoint_to_json(prefix)
     resumed = runtime.execute(program, checkpoint=runtime.checkpoint_from_json(program, payload))
     replay = runtime.complete_distance(whole, resumed)
-    if replay != 0 or whole.resources != resumed.resources:
+    # Keep runtime domain/record validation, then check raw arrays and branch
+    # budgets: a Hermitian distance can erase an anti-Hermitian replay defect,
+    # and an aggregate resource count can hide a changed per-record charge.
+    if (replay != 0 or whole.resources != resumed.resources
+            or any(a.resources != b.resources or not np.array_equal(a.density, b.density)
+                   for a, b in zip(whole.branches, resumed.branches, strict=True))):
         raise ArithmeticError('serialized continuation changed the complete runtime output')
     full, reduced, padding = {}, {}, 0.
     for branch in whole.branches:

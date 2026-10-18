@@ -1,4 +1,5 @@
 """Full-state and continuation controls independent of the screen dual."""
+from dataclasses import replace
 from fractions import Fraction as F
 import hashlib
 import json
@@ -109,6 +110,66 @@ def test_runtime_checkpoint_tampering_is_not_accepted(monkeypatch):
         return json.dumps(value)
     monkeypatch.setattr(o.runtime, 'checkpoint_to_json', change_record)
     with pytest.raises(ValueError):
+        o.execute_history(2, ((0, 1),), cap=1)
+
+
+def test_serialized_replay_rejects_antihermitian_resumed_only_corruption(monkeypatch):
+    original = o.runtime.execute
+    observed_errors = []
+
+    def corrupted_resume(program, **kwargs):
+        result = original(program, **kwargs)
+        if kwargs.get('checkpoint') is None:
+            return result
+        branches = list(result.branches)
+        index = max(range(len(branches)),
+                    key=lambda i: float(np.max(np.abs(branches[i].density))))
+        density = branches[index].density.copy()
+        diagonal = np.unravel_index(np.argmax(np.abs(density)), density.shape)[0]
+        density[diagonal, diagonal] += 1e-11j
+        observed_errors.append(float(np.linalg.svd(
+            density-branches[index].density, compute_uv=False).sum()/2))
+        branches[index] = replace(branches[index], density=density)
+        changed = replace(result, branches=tuple(branches), seal='')
+        changed = replace(changed, seal=o.runtime._seal(changed))
+        # Model a defect inside the runtime, before sealing its result. This
+        # passes its numerical domain check and has zero Hermitian distance.
+        o.runtime.validate_history(changed)
+        assert o.runtime.complete_distance(result, changed) == 0
+        return changed
+
+    monkeypatch.setattr(o.runtime, 'execute', corrupted_resume)
+    with pytest.raises(ArithmeticError, match='serialized continuation'):
+        o.execute_history(2, ((0, 1),), cap=1)
+    assert observed_errors == pytest.approx([5e-12], rel=1e-14, abs=0)
+    assert observed_errors[0] > o.OUTPUT_TOLERANCE
+
+
+def test_serialized_replay_rejects_permuted_branch_budgets_with_unchanged_totals(monkeypatch):
+    original = o.runtime.execute
+
+    def corrupted_resume(program, **kwargs):
+        result = original(program, **kwargs)
+        if kwargs.get('checkpoint') is None:
+            return result
+        branches = list(result.branches)
+        first = max(range(len(branches)), key=lambda i: branches[i].probability)
+        assert branches[first].probability > 0
+        other = next(i for i, branch in enumerate(branches)
+                     if branch.resources != branches[first].resources)
+        first_resources = branches[first].resources
+        branches[first] = replace(branches[first], resources=branches[other].resources)
+        branches[other] = replace(branches[other], resources=first_resources)
+        changed = replace(result, branches=tuple(branches), seal='')
+        changed = replace(changed, seal=o.runtime._seal(changed))
+        o.runtime.validate_history(changed)
+        assert changed.resources == result.resources
+        assert sorted(b.resources for b in changed.branches) == sorted(b.resources for b in result.branches)
+        assert o.runtime.complete_distance(result, changed) == 0
+        return changed
+
+    monkeypatch.setattr(o.runtime, 'execute', corrupted_resume)
+    with pytest.raises(ArithmeticError, match='serialized continuation'):
         o.execute_history(2, ((0, 1),), cap=1)
 
 
