@@ -4,31 +4,37 @@
     "model/observer/native.py",
     "model/observer/p_response/experiment.py",
     "model/observer/p_response/results.json",
-    "code/P_derivation"
+    "code/P_derivation",
+    "model/laboratory_clock/event_geometry.py"
   ],
   "files": {
     "BELL_RECORDS.md": "f3a5d35c85dd29af37fdea1e828109575a21ec5442593aadfc93286a0361daa0",
     "DERIVATION.md": "c48154c94b2c928f3869d08f438ea40fa8b5e22f8937c2ebc780381a97687e32",
-    "README.md": "fb16b380179d327379e172e8e4882946725bdfccf7513fc42f857fe671e0005e",
+    "README.md": "72614e2840dd00e9138bfe1b352e8ebed8bad26f99b6ddfe9861c03941c3a142",
     "__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "__main__.py": "21a944d38029986b3d73b5667bcd7764cf530fa524cbef371292f6fc498af389",
     "bell_records.py": "7cfc6e19088c90739cf3e93006d7febfd86a4699fdb09ec89e7c948ed8a6c381",
     "bell_results.json": "f85b298594ce113a1dcd80c888cb7fbc971f015f684b40858c7bccb4fc4fede3",
     "data/.gitattributes": "2e115f5bf30c5de41ad50abc1fc2346d046bd28b959f88ac641f8b211ec0a465",
     "data/hensen2015.txt": "5a6b1853554ad508d35c795415d64922ed9e5bc0469f6052ad222486ad3566ff",
+    "data/optical_clock_summary.json": "e7b5c5f795729e7c9b162bab696903a3b8a293a681d94aad583f74d263eef2ea",
     "endpoint_audit.py": "f362374fe6156ea9ceb4cd17d694fd1091bdb34c2085ef4080ee5dcdfbee90cb",
     "observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
+    "optical_clock.py": "76e00f870aecee8832e285b5fa46b6916e4ea5ac522a88aef40b94bd61d833be",
+    "optical_clock_results.json": "958fbf95f98c4349415c2039e83a15be18c380c6c41ed327a500c56b5330caf6",
     "protocol.json": "ce79d4e3f1331ad0443d4815e1b6a2709ba4ef64ed052a80e1a4439a0297c041",
     "protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
     "results.json": "18b5ced3ec67ea0d018f67e197b6739cce2869e04019539c37957501a720de53",
     "test_bell_records.py": "0e851b976cfd92b9e6d06189ccebd7034480dda545cadc3bcc0710f59887670a",
     "test_endpoint_audit.py": "9ef226c41e586dc79b3bf1bd78f3e15fcf6591e6d291e8836b07e47dfefbdfa1",
     "test_observer_instrument.py": "2d898f5047c2863ea7d8c15843df75c30aa4851d6d57655087ff02557ed072bb",
+    "test_optical_clock.py": "8ec88d8a1e1833bc801b8526bb2ea8b3a3634f541f82c08b05a582e55872e211",
     "test_protocol.py": "ca55d594d1d7158bed65f2c27b6695ae30a8cc38317e727456459b1088984fd3"
   },
   "reproduce": [
     "python3 -m model.predictions --check model/predictions/results.json",
     "python3 -m model.predictions.bell_records --check model/predictions/bell_results.json",
+    "python3 -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json",
     "python3 -m pytest -q -W error model/predictions"
   ],
   "schema": "oph.observer.predictions.manifest.v1"

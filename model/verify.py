@@ -151,6 +151,7 @@ REPLAYS = (
      "model/quantum_observer_correspondence/results.json"),
     ("model.interacting_band_extension", None,
      "model/interacting_band_extension/results.json"),
+    ("model.predictions.optical_clock", None, "model/predictions/optical_clock_results.json"),
 )
 
 

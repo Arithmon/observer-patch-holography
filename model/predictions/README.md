@@ -25,8 +25,12 @@ repair/pulse-duration calibration region. These are conditional source
 predictions, not new discrepancies with SM + GR, externally registered
 predictions or physical confirmations. The
 [public-data audit](../../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
-identifies available clock observations and the missing native-record
-dictionary; no arbitrary transition assignment is fitted to those data.
+tests a direct event-count/optical-phase identification against public
+Ar13+/Yb+ records. Its complete-block range test charges missing data and
+calendar-window selection. It rejects that simple attachment under its
+explicit bounded-error and readout assumptions; collective clocks and
+interacting physical identification remain open. No clock definition needs
+external approval, and no atomic transition is derived by choosing a unit.
 
 ## Run
 
@@ -36,6 +40,7 @@ From the repository root:
 # Replay the retained exact predictions, statistical checks and endpoint audit.
 python3 -m model.predictions --check model/predictions/results.json
 python3 -m model.predictions.bell_records --check model/predictions/bell_results.json
+python3 -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json
 
 # Produce an unfilled count template; the destination must not exist.
 python3 -m model.predictions --template /tmp/observer-counts.json

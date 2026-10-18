@@ -208,9 +208,23 @@ two. The receipt executes all sixteen coin branches, retaining zero-current
 events. Consequently the derived forward bound does not supply a faithful
 identification of causal order with a Lorentz cone. The endpoint DAG also
 requires extra edges for adaptive controllers or preparation dependencies;
-those are outside this placement certificate. No authenticated semantic-log
-implementation, Lean proof term, physical Lorentz symmetry or continuum
-spacetime is emitted by this test.
+those are outside this placement certificate.
+
+The execution certificate emits native before/after endpoint values and
+writer versions, checks floor/ceiling payloads independently, and
+authenticates the endpoint parents. Local support is checked on all 4,680
+native branches and is irredundant within the admitted two-endpoint read
+interface. The [Lean witness](../../Lean/Geometry/NativeRepairSemanticPlacement.lean)
+constructs the executed semantic log for the four-event tape and all sixteen
+coin branches, proves canonical heights `(0, 0, 1, 2)`, and applies the
+registered forward placement theorem; the converse countercontrol is also
+proved. Python compares all current/terminal rows with the literal table
+proved in Lean and checks its source-midpoint/scale chart. The general
+all-tape cone bound has its separate analytic certificate. Complete
+classical value/version logging and zero-current commit stamps are
+instrumentation, not intrinsic global read access, arbitrary quantum
+histories or a physical influence law. Adaptive scheduling requires its
+additional dependency edges.
 
 ## Finite counts, caps and observation errors
 
@@ -321,12 +335,82 @@ positive eigenvalues on the executed screens are approximately
 Their within-cell nonconstant weights satisfy the bound. These are finite
 spectral diagnostics, not a proof of a target spectrum or physical dimension.
 
-The eliminated operator supplies a controlled actual-source continuum
-candidate. Completing that test requires a record-accessible family
-of spatial smearings and scales, followed by convergence of the resulting
-`S^+` observations and the clock correction. The existing fixed-radius
-screen agreement does not bound these global inverses. The constant-factor
-comparison with `L_cell^+` supplies no vanishing continuum error by itself.
+### One ancestry readout across the actual source levels
+
+The [ancestry calculation](ancestry_green.py) fixes a common observation
+dictionary before comparing levels. Each source cell inherits one of the
+twenty base faces from the source's declared refinement tree. At level `l`,
+write `s=4^l`, so each base face contains `12s` ports. Define the integer
+matrix `B` to have entry `19` on a port's own ancestral face and `-1`
+otherwise, and set `W=B/(20 sqrt(12s))`. Thus `W^T W=P20`, where
+`P20=I-11^T/20`. The twenty readouts are centered ancestral occupation
+counts divided by `sqrt(12s)`. They require the disclosed initial loads and
+complete seam/current transcript used throughout this field construction;
+they are not inferred from an individual port's tape. The ancestry tree
+and the combinatorial operator normalization `s` are declared source data,
+not an operational radial coordinate or a selected continuum metric.
+
+Use the stationary binary preparation with total `V/3` on the graph's `V`
+ports, hence `chi=2V/[9(V-1)]`. The observation-count limit of the field,
+normalized by `1/sqrt(4 chi m s)`, has the following exact covariance on
+these twenty observations:
+
+```text
+G_l = W^T (s L)^+ W = B^T L^+ B/(4800 s^2),
+C_attempt = G_l - P20/(4 M s),
+C_incident = G_l + P20/(132 s)
+             - W^T (L_i L^+ + L^+ L_i) W/(132 s).
+```
+
+Here `M` is the total seam count; `L_i` contains the root carrier's 33
+incident seams, including its 30 internal seams. Both clocks sample the
+same native law and preparation. The observation-count limit is taken
+separately at each finite graph before any spatial comparison.
+
+The executable checks every seam, ancestry assignment and full Laplacian
+row at levels zero through three: 240, 960, 3,840 and 15,360 ports. A sparse
+solve proposes `X/2^40` as an approximation to `L^+B`; exact integer
+arithmetic then checks its residual `E=LX-2^40 B`. If `e` is the cell-graph
+eccentricity of its root, the port diameter is at most `D=8e+3` because
+each carrier has diameter three. The elementary range/variance inequality
+gives `||L^+||<=VD/4=:beta`. Consequently the symmetrized covariance
+approximation has certified operator error at most
+
+```text
+epsilon = sqrt(4800s) beta ||E/2^40||_F /(4800s^2).
+```
+
+The implementation rounds each square root upwards over the rationals.
+The incident covariance's error is at most `(13/11)epsilon`, using
+`||L_i||<=12`; the attempt covariance has error `epsilon`. Conversion to
+retained floating matrices and the receipt's existing entrywise replay
+tolerance are included in a common `1e-6` operator enclosure. The numerical
+solver is therefore a candidate generator, not the error certificate.
+
+Consecutive Green differences on this fixed dictionary have operator norms
+approximately `2.02562`, `0.616605` and `0.182154`. The receipt encloses each
+with an exact rational Rayleigh lower bound and row-sum upper bound,
+expanded for the retained covariance error. These finite decreases do not
+bound the unexecuted refinement tail.
+
+The clock correction has an additional all-level conditional bound.
+Only three cross-carrier seams can affect a cell-constant observation, so
+`||W^T L_i W||<=1/(2s)`. Since `L_i<=L`, Cauchy–Schwarz in the `L_i`
+quadratic form gives
+
+```text
+||C_incident-G_l|| <= [1+2 sqrt(||G_l||/2)]/(132s).
+```
+
+Thus bounded Green observations imply that these attempt and incident
+clock covariances share any existing limit. On the four executed levels,
+`||G_l||<=36` is certified and the incident correction is at most
+`19/(264s)`. Proving a uniform bound and a Cauchy tail for the complete
+ancestry sequence is the remaining spatial-limit obligation. A limit of
+these twenty smearings alone would not reconstruct a full continuum field;
+that requires compatible limits on an enlarging observation algebra.
+The existing fixed-radius screen agreement and the constant-factor
+comparison with `L_cell^+` do not establish either obligation.
 
 ## A quantitative spatial-limit criterion
 
@@ -439,11 +523,12 @@ the conditional interpretation here; neither supplies the spatial maps and
 Green convergence in (5). A fixed-radius local history bound does not control
 the inverse-Laplacian contribution from arbitrarily slow global modes.
 
-For those actual screens the next certificate must supply compatible spatial
-smearings and scales, bound their Green matrices, evaluate the incident-clock
-correction, and carry preparation/readout errors through the same comparison.
-This packet gives that test and a constructive source-law control, without
-asserting that the screens pass it. Physical dimensionality, Lorentzian
-propagation, interacting continuum fields, and identification with observed
-physics remain separate obligations. No federation axiom is needed for the
-finite single-carrier result.
+The fixed ancestry dictionary supplies compatible observations and a declared
+scale for four actual source levels, with certified Green matrices and
+incident-clock corrections. These finite certificates do not prove an
+all-level Green bound or Cauchy tail. A continuum field also requires an
+enlarging compatible observation algebra and quantitative control of any
+preparation/readout errors under the same comparison. Physical dimensionality,
+Lorentzian propagation, interacting continuum fields, and identification with
+observed physics are separate obligations. No federation axiom is needed for
+the finite single-carrier result.

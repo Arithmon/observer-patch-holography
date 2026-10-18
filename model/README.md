@@ -27,8 +27,11 @@ repair history. Incident-clock sampling has a calculable spatial correction.
 Its projection onto the actual carrier's rank-three band gives exact axial
 and transverse variances in the local incident clock. Eliminating internal
 variables on the existing spherical screens gives a controlled native Green
-operator. Complete endpoint records also give a forward-cone placement in
-the registered response geometry; its cone-to-ancestry converse fails.
+operator. A fixed twenty-face readout has certified Green and clock
+covariances across four source levels. Complete endpoint records also give
+a forward-cone placement in the registered response geometry; a four-event
+native execution has a Lean instance proving that implication and the
+failure of its converse.
 These source-specific results leave the physical continuum, Lorentzian
 symmetry and interacting CFT identification open. The supplied torus is a
 separate free-field comparison example.
@@ -37,8 +40,10 @@ The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOC
 sets out correspondence tests using published observations without requiring a
 laboratory experiment. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 compares the conditional scalar-tilt prediction with ACT DR6 joint posterior
-chains and explains its retrospective status. These phenomenological comparisons
-do not establish a derivation from native observer dynamics.
+chains and tests a direct native event-count/optical-phase attachment against
+published clock ratios. The latter rejects that simple attachment under its
+stated readout assumptions. These retrospective comparisons do not establish
+the common physical observation dictionary.
 
 ## Start with one carrier
 
@@ -113,8 +118,12 @@ experiment. Its expected repair count gives a sharper error bound than the
 worst-case count. The [resource clock](laboratory_clock/README.md) retains
 repair and apparatus-pulse counts together and predicts timed detector events
 under one correlated calibration region. The retained durations are synthetic
-assumptions, not measured physical seconds; public optical-clock datasets
-do not supply the required mapping to native records.
+assumptions. A visible-event construction instead recovers geometry and joint
+field correlations using two local clocks without a hidden attempt counter.
+The [public optical-clock comparison](predictions/optical_clock.py) tests a
+direct count-to-phase attachment and rejects that simple identification under
+its stated readout assumptions. Event-clock definitions and unit choices
+need no external validation.
 
 The [quantum incident-clock correspondence](observer_correspondence/QUANTUM_CLOCK.md)
 complements that exact full-state representation with an ordinary CP

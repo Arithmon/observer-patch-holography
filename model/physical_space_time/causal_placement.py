@@ -8,6 +8,9 @@ from __future__ import annotations
 
 from functools import lru_cache
 from itertools import product
+import ast
+from pathlib import Path
+import re
 
 import sympy as sp
 
@@ -17,6 +20,10 @@ from . import construction as passage
 
 SOURCE_PATHS = tuple(sorted(set((*passage.SOURCE_PATHS,
     'model/physical_space_time/causal_placement.py',
+    'Lean/Geometry/NativeRepairSemanticPlacement.lean',
+    'Lean/Geometry/SourceDerivedSpacetimeCarrier.lean',
+    'Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean',
+    'Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean',
     'Lean/Screen/PortFrameGram.lean'))))
 SPEED_SQUARED = (1+sp.sqrt(5)/5)/2
 
@@ -78,6 +85,208 @@ def dependencies(tape):
     return rows
 
 
+def _loads(values):
+    if (type(values) not in (tuple, list) or len(values) != 12
+            or any(type(v) is not int or v < 0 for v in values)
+            or sum(values) != 2):
+        raise ValueError('a native nonnegative total-two twelve-port state is required')
+    return tuple(values)
+
+
+def authenticated_parent_ports(parent, child):
+    """The four clauses of Lean ReadAfterWriteAt, without trusting citations.
+
+    This relation alone does not validate a log's execution. In particular,
+    an arbitrary writer label does not establish either write membership or
+    continuity of the value actually read.
+    """
+    return tuple(p for p in child['causal_support']
+                 if p in parent['write_set']
+                 and child['before_writers'][p] == parent['event_id']
+                 and child['before_values'][p] == parent['after_values'][p])
+
+
+def verify_semantic_execution(initial, log, *, tape=None, coins=None):
+    """Independently check the complete native CommitSpec execution contract.
+
+    The producer calls native.native; this verifier reconstructs its payload
+    by floor/ceiling averaging. Endpoint version stamps describe retained
+    instrument invocations, including zero current. They are full execution
+    instrumentation, not an intrinsic primitive observer's read interface.
+
+    Without an external tape the check certifies the supplied finite execution,
+    not that a longer experiment was fully disclosed. Supplying tape and coins
+    also checks coverage of every declared invocation.
+    """
+    state, writers = _loads(initial), (None,)*12
+    if type(log) not in (tuple, list):
+        raise ValueError('a complete finite semantic log is required')
+    if (tape is None) != (coins is None):
+        raise ValueError('external coverage requires both the seam and coin tapes')
+    if tape is not None:
+        if (type(tape) not in (tuple, list) or type(coins) not in (tuple, list)
+                or len(tape) != len(log) or len(coins) != len(log)):
+            raise ValueError('the semantic log does not cover the complete declared experiment')
+        if (any(type(coin) is not int or coin not in (0, 1) for coin in coins)
+                or any(type(entry) is not dict or entry.get('seam') != list(_seam(seam))
+                       or entry.get('coin') != coin
+                       for entry, seam, coin in zip(log, tape, coins, strict=True))):
+            raise ValueError('the semantic log does not match the declared seam/coin sequence')
+    fields = {'event_id', 'seam', 'coin', 'record', 'before_values', 'after_values',
+              'before_writers', 'after_writers', 'read_set', 'write_set', 'causal_support'}
+    rows = []
+    for event_id, entry in enumerate(log):
+        if type(entry) is not dict or set(entry) != fields:
+            raise ValueError('the complete semantic commit fields are required')
+        if type(entry['event_id']) is not int or entry['event_id'] != event_id:
+            raise ValueError('event identifiers must be fresh consecutive execution positions')
+        seam = _seam(entry['seam'])
+        coin = entry['coin']
+        if type(coin) is not int or coin not in (0, 1):
+            raise ValueError('a binary exogenous coin is required')
+        for name in ('read_set', 'write_set', 'causal_support'):
+            if (type(entry[name]) not in (list, tuple)
+                    or any(type(p) is not int for p in entry[name]) or tuple(entry[name]) != seam):
+                raise ValueError('the admitted native read, write and support sets are both endpoints')
+        if _loads(entry['before_values']) != state:
+            raise ValueError('the before-value snapshot does not thread the actual execution')
+        for name in ('before_writers', 'after_writers'):
+            if (type(entry[name]) not in (list, tuple) or len(entry[name]) != 12
+                    or any(v is not None and (type(v) is not int or v < 0)
+                           for v in entry[name])):
+                raise ValueError('writer versions must be twelve optional event identifiers')
+        if tuple(entry['before_writers']) != writers:
+            raise ValueError('the before-writer snapshot does not thread the actual execution')
+        a, b = seam
+        total = state[a]+state[b]
+        low, high = total//2, (total+1)//2
+        expected = list(state)
+        expected[a], expected[b] = (low, high) if coin == 0 else (high, low)
+        record = (coin, state[a]-expected[a])
+        if (type(entry['record']) not in (list, tuple) or len(entry['record']) != 2
+                or any(type(v) is not int for v in entry['record'])
+                or tuple(entry['record']) != record or _loads(entry['after_values']) != tuple(expected)):
+            raise ValueError('the payload or current label is not the native endpoint repair')
+        stamped = list(writers)
+        for p in seam:
+            stamped[p] = event_id
+        if tuple(entry['after_writers']) != tuple(stamped):
+            raise ValueError('the endpoint stamp or outside-write frame law failed')
+        parents = tuple(p for p, parent in enumerate(log[:event_id])
+                        if authenticated_parent_ports(parent, entry))
+        # A fresh threaded execution leaves no unauthenticated earlier writer.
+        cited = tuple(sorted({writers[p] for p in seam if writers[p] is not None}))
+        if parents != cited:
+            raise ValueError('a current writer citation lacks an authenticated value/write witness')
+        height = 0 if not parents else 1+max(rows[p]['height'] for p in parents)
+        ancestors = set(parents)
+        for parent in parents:
+            ancestors.update(rows[parent]['ancestors'])
+        rows.append({'seam': seam, 'parents': parents, 'height': height,
+                     'ancestors': tuple(sorted(ancestors))})
+        state, writers = tuple(expected), tuple(stamped)
+    return rows
+
+
+def semantic_execution(initial, tape, coins):
+    """Emit native branch payloads with authenticated endpoint provenance.
+
+    The seam and coin sequence is exogenous. The declared log retains every
+    invocation and its record; it does not add feedback or claim that the
+    local observer can inspect hidden source values or all writer versions.
+    """
+    state = _loads(initial)
+    if type(tape) not in (tuple, list) or type(coins) not in (tuple, list) or len(tape) != len(coins):
+        raise ValueError('equal-length complete seam and coin tapes are required')
+    writers, log = (None,)*12, []
+    for event_id, (original, coin) in enumerate(zip(tape, coins, strict=True)):
+        seam = _seam(original)
+        if type(coin) is not int or coin not in (0, 1):
+            raise ValueError('a binary exogenous coin is required')
+        after, record = native.native(state, seam, coin)
+        stamped = list(writers)
+        for p in seam:
+            stamped[p] = event_id
+        log.append({'event_id': event_id, 'seam': list(seam), 'coin': coin,
+                    'record': list(record), 'before_values': list(state), 'after_values': list(after),
+                    'before_writers': list(writers), 'after_writers': stamped,
+                    'read_set': list(seam), 'write_set': list(seam), 'causal_support': list(seam)})
+        state, writers = after, tuple(stamped)
+    if verify_semantic_execution(initial, log, tape=tape, coins=coins) != dependencies(tape):
+        raise ArithmeticError('authenticated native parents differ from the endpoint DAG')
+    return log
+
+
+def semantic_support():
+    """Finite support certificate relative to the admitted two-register read.
+
+    Equal local reads give equal local payload/current. Each endpoint is
+    necessary within this read interface, witnessed on actual total-two
+    states. This does not assert a unique minimal support among global
+    read interfaces related by the fixed-total constraint.
+    """
+    checks, necessary = 0, 0
+    for seam in passage.recovered_carrier()[0]:
+        for coin in (0, 1):
+            local = {}
+            for before in native.states():
+                log = semantic_execution(before, [seam], [coin])
+                after, record = log[0]['after_values'], log[0]['record']
+                key = tuple(before[p] for p in seam)
+                value = (tuple(after[p] for p in seam), tuple(record))
+                if key in local and local[key] != value:
+                    raise ArithmeticError('native accepted payload depends on a hidden outside read')
+                local[key] = value
+                checks += 1
+            for port in (0, 1):
+                if not any(x[1-port] == y[1-port] and x[port] != y[port] and local[x] != local[y]
+                           for x in local for y in local):
+                    raise ArithmeticError('a declared endpoint has no local support witness')
+                necessary += 1
+    return {'actual_native_branch_checks': checks, 'necessary_endpoint_witnesses': necessary,
+            'support_sound_and_irredundant_within_two_endpoint_read_interface': True,
+            'unique_minimal_support_among_global_read_interfaces_claimed': False}
+
+
+def lean_branch_binding(branches):
+    """Compare the complete native branch table proved in the Lean witness.
+
+    Python checks the literal executable-data boundary. Lean CI checks
+    branch_table_exact and the placement theorem; this parser is not a
+    substitute for kernel proof checking.
+    """
+    source = (Path(__file__).resolve().parents[2]/
+              'Lean/Geometry/NativeRepairSemanticPlacement.lean').read_text(encoding='utf-8')
+    match = re.search(r'def branchTable\s*:.*?:=\s*(\[.*?\])\n\n', source, re.S)
+    if match is None:
+        raise ValueError('the registered Lean literal branch table is absent')
+    table = ast.literal_eval(match.group(1))
+    actual = [(branch['coins'], [r[1] for r in branch['records']],
+               branch['semantic_log'][-1]['after_values']) for branch in branches]
+    if table != actual:
+        raise ArithmeticError('the Lean native execution table and actual source branches differ')
+    declared = ' '.join(source.split())
+    if ('quotientEquivVec3.symm ![0, Real.goldenRatio / Real.sqrt (2+Real.goldenRatio), 0]' not in declared
+            or 'def spatial (e : Event) : FrameQuotient := if e = 1 then -midpoint else midpoint' not in declared
+            or 'def timeScale : ℝ := Real.goldenRatio / Real.sqrt (2+Real.goldenRatio)' not in declared):
+        raise ValueError('the registered Lean midpoint and scale readout has changed')
+    phi = (1+sp.sqrt(5))/2
+    raw = slow_geometry.raw_frame()
+    q5 = lambda x: sp.Rational(x[0])+sp.Rational(x[1])*sp.sqrt(5)
+    mid = [sum(q5(raw[p][d]) for p in (0, 1))/2 for d in range(3)]
+    opposite = [sum(q5(raw[p][d]) for p in (2, 3))/2 for d in range(3)]
+    if (any(sp.simplify(x-y) != 0 for x, y in zip(mid, [0, phi, 0], strict=True))
+            or any(sp.simplify(x+y) != 0 for x, y in zip(mid, opposite, strict=True))
+            or sp.simplify(phi**2/(2+phi)-SPEED_SQUARED) != 0):
+        raise ArithmeticError('the formal midpoint chart differs from the actual source Gram placement')
+    return {'branches_compared': len(actual),
+            'exact_table_theorem': 'OPH.NativeRepairSemanticPlacement.branch_table_exact',
+            'placement_theorem': 'OPH.NativeRepairSemanticPlacement.native_generatedBeforeEq_sourceCausalLE',
+            'python_table_comparison_replaces_Lean_kernel_check': False,
+            'source_midpoint_chart_and_squared_time_scale_checked': True,
+            'formal_instance_scope': 'the declared four-event tape, every one of its sixteen coin branches'}
+
+
 def interval_squared(first, second):
     """The (+---) interval with dimensionless time sqrt(c²)*height."""
     for row in (first, second):
@@ -134,12 +343,10 @@ def run():
     before = tuple(int(i in (0, 2)) for i in range(12))
     branches = []
     for coins in product((0, 1), repeat=len(tape)):
-        state, records = before, []
-        for seam, coin in zip(tape, coins, strict=True):
-            state, record = native.native(state, seam, coin)
-            records.append(list(record))
-        branches.append({'coins': list(coins), 'records': records,
-                         'terminal_occupied_ports': [i for i, value in enumerate(state) if value]})
+        log = semantic_execution(before, tape, coins)
+        branches.append({'coins': list(coins), 'records': [entry['record'] for entry in log],
+                         'terminal_occupied_ports': [i for i, value in enumerate(log[-1]['after_values']) if value],
+                         'semantic_log': log})
     return {'contract': {
                 'spatial_readout': 'declared seam midpoint in the native response Gram',
                 'time_parameter': 'canonical endpoint-dependency height times sqrt(c_squared)',
@@ -147,6 +354,9 @@ def run():
                 'predeclared_exogenous_schedule_required_for_endpoint_only_dependency_graph': True,
                 'arbitrary_controller_or_preparation_dependency_edges_covered': False,
                 'endpoint_parents_are_structural_not_proven_signal_influences': True,
+                'complete_value_version_log_is_execution_instrumentation': True,
+                'intrinsic_primitive_observer_receives_complete_value_version_log': False,
+                'classical_branch_logs_identify_arbitrary_coherent_quantum_histories': False,
                 'physical_seconds_or_unique_spatial_readout_inferred': False},
             'forward_cone': {'c_squared': str(SPEED_SQUARED),
                 'ordered_sharing_seam_pairs_checked': len(sharing),
@@ -161,7 +371,10 @@ def run():
                 'earlier_is_ancestor': False, 'all_coin_branches': branches,
                 'zero_current_events_kept': True},
             'finite_current_readout': finite_readout(),
+            'semantic_execution_support': semantic_support(),
+            'Lean_native_branch_binding': lean_branch_binding(branches),
             'acceptance': {'forward_placement_geometric_hypotheses_checked': True,
-                'authenticated_semantic_log_or_Lean_term_emitted': False,
+                'authenticated_native_semantic_log_emitted': True,
+                'kernel_checked_Lean_native_placement_instance': True,
                 'cone_implies_ancestry': False, 'physical_Lorentz_symmetry_or_clock_derived': False,
                 'continuum_spacetime_derived': False}, 'all_pass': True}

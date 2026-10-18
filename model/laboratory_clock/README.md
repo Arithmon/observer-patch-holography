@@ -1,11 +1,12 @@
-# A falsifiable attachment to an independent clock
+# Visible event clocks and conditional timestamp attachment
 
-One elementary carrier is sufficient to derive and test local clock relations.
-A federation is not needed for this task. The native rule already supplies
-event ordering and complete current-count laws; it does not choose how many
-seconds elapse between attempts. This packet adds an executable **conditional
-clock calibration and held-out test**, with event-detection and timestamp
-errors kept explicit. No new laboratory measurements are claimed.
+One elementary carrier supplies local event clocks and testable clock–field
+relations. Counting visible events defines a clock; choosing its unit needs
+no external calibration. A federation is not needed. This packet derives
+geometry from comparisons between incident-event clocks and tests field
+predictions from that geometry. It also implements a **conditional timestamp
+calibration and held-out test** for an independently specified apparatus.
+No new laboratory measurements are claimed.
 
 The [existing clock bridge](../native_clock/CLOCK_BRIDGE.md) relates incident
 hits, moving currents and fields on the native source. The
@@ -15,6 +16,72 @@ given paired event counts and independently measured timestamps, what clock
 correspondence is compatible with their stated errors, and which unused
 measurements can falsify it? The numerical solver never authenticates a
 measurement's provenance or declares an empirical identification with OPH.
+
+## Geometry and fields from visible incident clocks
+
+[event_geometry.py](event_geometry.py) uses two clocks on the actual twelve-port
+native source. Each incident event ticks, including zero-current events. The
+observer reads their ordered union tape, including coincidences, and each
+port's initial local occupation and own currents. This comparison service
+does not expose remote currents, a global movement count or an attempt counter.
+An isolated tape without the other clock's interval alignment does not supply
+the comparison. The source scheduler selects each of thirty seams independently
+with equal probability. The field calculation uses the stationary uniform
+binary total-two preparation.
+
+Let `X` count B ticks through and including the next A tick. Summing every
+unseen remote waiting word gives the exact generating function
+
+```
+g_delta(z) = E[z^X] = (5-delta+delta*z)/(10-delta-(5-delta)*z),
+E[X] = 1,  Var(X) = 2-2*delta/5,
+```
+
+where `delta=1` for adjacent ports and zero otherwise. Successive A intervals
+have independent count increments because the scheduler is independent; the
+field increments need not be independent. At `N` A ticks the count law has
+generating function `g_delta(z)^N`. Equivalently, one count is an independent
+Bernoulli with probability `delta/5` plus a geometric count on nonnegative
+integers with success probability `5/(10-delta)`. This decomposition is derived
+from the source's incidence classes. The finite count table retains an explicit
+overflow outcome.
+
+The probability `Pr(X=0)` is `4/9` for an edge and `1/2` otherwise. The estimator
+receives only the 66 pair labels and these probabilities, recovers the graph,
+and checks its rank-three unit Gram by the existing exact spectral certificate.
+The result is determined up to orthogonal isometry and relabelling. For finite
+samples, thresholding each zero-count frequency at `17/36` has a joint rejection
+or wrong-graph probability at most `min(1,21384/N)`, using `N` consecutive
+intervals per pair. This conservative bound uses Chebyshev and a union bound;
+different pairs' datasets need not be independent. It is unconditional and
+does not license selection of favorable intervals. The retained reconstruction
+uses exact ensemble laws, not a claimed measured sample.
+
+That same inferred graph, together with the native fair-coin repair, predicts
+the joint local field readout without fitting another spatial or clock scale:
+
+| Native graph distance | `Pr(n_A(0)=1, n_B(T_A(2))=1)` |
+| --- | --- |
+| 1 | `14/407` |
+| 2 | `7/407` |
+| 3 | `58/3663` |
+
+The prediction uses `B(z)(I-A(z))^-1` on centered occupation vectors, where
+the two subtransfers carry the B-count generating weight and the terminal
+transfer ticks A. The stationary covariance is `(5/33)(I-11^T/12)`.
+An independent enumeration of all 66 configurations and 3,960 native branches
+checks nine stopped count/field comparisons, including all four binary readout
+outcomes and the infinite remote waiting tail. Local current readback is checked
+on every branch. Only the selected classical readout marginal is asserted here;
+these measurements do not distinguish the coherent candidates C and E.
+
+Replacing repair by the identity preserves every clock-count law and each
+single-bit marginal, but changes every two-tick joint probability above to
+`1/66`. Changing the seam scheduler can instead change the clock laws and
+invalidate the graph inference. These controls separate source assumptions
+that the joint observations can test. Identifying these dimensionless records
+with observations of the Universe is a falsifiable correspondence proposal;
+neither choosing units nor defining the event clock waits for that identification.
 
 ## What can be derived without a laboratory
 
@@ -27,10 +94,10 @@ including terminal states and untouched references. In particular both
 `f(n)=b+tau*n` and a nonlinear increasing `f` preserve these laws. This is
 proved directly by induction on the identical conditional operations.
 
-Consequently native record data alone identify neither a positive scale
-`tau` in seconds per attempt nor constant cadence. This is a missing physical
-correspondence, beyond the conventional choice of the unit second. External
-time-triggered interventions would add a timing premise and are outside this
+Consequently native record data alone do not determine the cadence relative
+to an independently specified timestamp apparatus. A chosen event-count unit
+defines a clock; an affine relation to a second apparatus adds a testable
+correspondence. External time-triggered interventions add a timing premise outside this
 invariance. The argument requires no preferred universal clock and no
 federation. Adding carriers with only the same record-defined scheduling
 does not remove it.
@@ -78,7 +145,7 @@ give the exact feasible rate interval by rational arithmetic. A positive
 coefficient gives a lower bound, a negative coefficient an upper bound, and
 a zero coefficient a consistency condition. Zero rate is always excluded.
 For uncertain integer counts this is a continuous outer relaxation:
-infeasibility still rejects, while a feasible real count may have no integer
+infeasibility rejects, while a feasible real count may have no integer
 realization. Overlapping uncertain count intervals also receive no joint
 true-count ordering constraint. Machine-readable outputs mark this outer
 feasibility and never certify an integer realization in that case. With exact
@@ -140,7 +207,7 @@ waiting-law conversion permits 9–10 completed attempts, with a nonzero
 no-current probability in either case. All these assigned timestamps and
 error bounds are software fixtures, not measurements.
 
-A calibrated attempt scale would give dimensional **rates** for laws already
+A calibrated attempt scale would give dimensional **rates** for laws
 parameterized by attempts. It does not turn a Euclidean transfer generator
 into real-time unitary evolution, select an energy/action normalization, or
 identify the modular parameter with native attempts. An incident-clock action
@@ -333,16 +400,16 @@ unresolved. The reported host-clock resolution is not promoted to accuracy.
 
 As an explicitly counterfactual zero-error check, calibrating the first
 baseline interval gives `2941500/5977` nanoseconds per attempt. Later baseline
-endpoints already reject an **exact** affine cadence, as does the same-record
+endpoints reject an **exact** affine cadence, as does the same-record
 workload control. This does not contradict the existing 25% engineering
 tolerance for movement-clock predictions; that was a different, deliberately
 approximate contract. Its calibration, observations and verdicts are preserved.
 The present retrospective attempt-cadence test was not part of the original
 capture policy and is not described as a prospective experiment.
 
-## The empirical input still required
+## An optional independent apparatus test
 
-Supply one identified apparatus with the native preparation, seam/coin
+To test an implementation's timestamp relation, supply an apparatus with the native preparation, seam/coin
 selection, recording and intervention semantics; paired independent
 timestamps and attempt records including zeros; justified simultaneous
 missed/extra-event and timestamp bounds; and a calibration/validation split
@@ -358,8 +425,10 @@ No such complete native-apparatus laboratory dataset is supplied here.
 Existing oscillator fits use supplied apparatus evolution, and host execution
 timings measure an engineered implementation. Neither silently supplies the
 missing native physical identification. A traceable implementation benchmark
-would still establish that apparatus's timing contract, not that its native
+would establish that apparatus's timing contract, not that its native
 events are physical proper time in the Universe.
+This optional experiment is separate from testing an effective correspondence
+between the dimensionless observer laws and existing observations of the Universe.
 
 ## Reproduce or test endpoint data
 

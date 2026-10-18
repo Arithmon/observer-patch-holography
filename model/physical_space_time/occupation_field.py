@@ -19,14 +19,54 @@ import sympy as sp
 
 from . import construction as passage
 from . import source_green
+from . import ancestry_green
 from . import causal_placement
 from ..observer import native
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from tools import strict_json
 
 ROOT = Path(__file__).resolve().parents[2]
+FORMAL_SOURCE_PATHS = (
+    'Lean/EventAlgebra/Basic.lean',
+    'Lean/EventAlgebra/Lueders.lean',
+    'Lean/EventAlgebra/PartitionAverage.lean',
+    'Lean/EventAlgebra/PartitionPinching.lean',
+    'Lean/EventAlgebra/PublicRecordAlgebra.lean',
+    'Lean/EventAlgebra/TwoScalePublicRepair.lean',
+    'Lean/Geometry/CanonicalLorentzModule.lean',
+    'Lean/Geometry/CausalOrderComposition.lean',
+    'Lean/Geometry/CelestialNullCone.lean',
+    'Lean/Geometry/EventGermDisplacement.lean',
+    'Lean/Geometry/EventPopulationChartInterface.lean',
+    'Lean/Geometry/LorentzOverlapCocycle.lean',
+    'Lean/Geometry/MassShellKinematics.lean',
+    'Lean/Geometry/NativeRepairSemanticPlacement.lean',
+    'Lean/Geometry/ObserverFrameHyperboloid.lean',
+    'Lean/Geometry/ObserverRestSpace.lean',
+    'Lean/Geometry/SourceDerivedSpacetimeCarrier.lean',
+    'Lean/ObserverPatchHolography/Locality/NoSignalling.lean',
+    'Lean/ObserverPatchHolography/Provenance/CausalInterval.lean',
+    'Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean',
+    'Lean/ObserverPatchHolography/Provenance/MismatchProvenance.lean',
+    'Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean',
+    'Lean/QFT/CoverageReceipt.lean',
+    'Lean/QFT/FiniteCausalObserverNet.lean',
+    'Lean/QFT/NoncommutativeWitness.lean',
+    'Lean/QFT/ObserverAccessCut.lean',
+    'Lean/QFT/ObserverNetDescent.lean',
+    'Lean/QFT/RichFibreRegionalNet.lean',
+    'Lean/QFT/RichFibreWitness.lean',
+    'Lean/Screen/A5PortAction.lean',
+    'Lean/Screen/A5PortModule.lean',
+    'Lean/Screen/A5PrimitivePortPrediction.lean',
+    'Lean/Screen/PrimitivePortTranslationBridge.lean',
+    'Lean/Time/TimeOrderLedger.lean',
+    'Lean/Tower/ConsensusTower.lean',
+    'Lean/lake-manifest.json',
+    'Lean/lakefile.lean',
+    'Lean/lean-toolchain')
 SOURCE_PATHS = tuple(sorted(set((*passage.SOURCE_PATHS, *source_green.SOURCE_PATHS,
-    *causal_placement.SOURCE_PATHS,
+    *ancestry_green.SOURCE_PATHS, *causal_placement.SOURCE_PATHS, *FORMAL_SOURCE_PATHS,
     'model/physical_space_time/occupation_field.py',
     'model/observer/scalar_response/experiment.py', 'tools/strict_json.py',
     'model/__init__.py', 'model/common_source/__init__.py',
@@ -426,6 +466,7 @@ def run():
             'observer_access_negative_control': incomplete_tape_control(),
             'actual_carrier_spatial_clock_field': carrier_band_receipt(),
             'actual_source_screen_Green': source_green.run(),
+            'actual_source_ancestry_covariances': ancestry_green.run(),
             'actual_carrier_causal_placement': causal_placement.run(),
             'finite_history_controls': [scalar_moments(clock, n) for clock, ns in
                 (('attempt', (1, 4, 16, 64)), ('incident', (1, 4, 16))) for n in ns],
@@ -440,6 +481,7 @@ def run():
                 'actual_incident_clock_correction_derived': True,
                 'actual_rank_three_carrier_marginal_clock_actions_proved': True,
                 'actual_source_screen_Green_elimination_and_uniform_approximation_proved': True,
+                'actual_source_fixed_ancestry_covariances_certified_at_levels_zero_through_three': True,
                 'conditional_graph_Green_convergence_criterion_proved': True,
                 'supplied_torus_fixed_band_iterated_limit_proved': True,
                 'uniform_finite_count_Gaussian_error_bound_proved': False,

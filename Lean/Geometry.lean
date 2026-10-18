@@ -56,6 +56,7 @@ import Geometry.FreeEvolutionPersistence
 import Geometry.CausalOrderComposition
 import Geometry.EventPopulationChartInterface
 import Geometry.SourceDerivedSpacetimeCarrier
+import Geometry.NativeRepairSemanticPlacement
 import Geometry.RefiningLatticeCausalCone
 import Geometry.MetricKernelEnergy
 import Geometry.SourceOrderFrameCompatibilityPacket

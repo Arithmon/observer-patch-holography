@@ -1,5 +1,6 @@
 """Controls for actual-source geometry, dependency records and cone scope."""
 from itertools import product
+from copy import deepcopy
 
 import pytest
 import sympy as sp
@@ -50,6 +51,11 @@ def test_all_native_converse_branches_are_retained_and_counts_are_exact():
     pair = result['forward_cone']['sharp_pair']
     assert c.distance_squared(*pair) == c.SPEED_SQUARED
     assert not result['acceptance']['cone_implies_ancestry']
+    assert result['Lean_native_branch_binding']['branches_compared'] == 16
+    corrupted = deepcopy(control['all_coin_branches'])
+    corrupted[0]['records'][0][1] = 0
+    with pytest.raises(ArithmeticError, match='Lean native execution table'):
+        c.lean_branch_binding(corrupted)
 
 
 @pytest.mark.parametrize('seam', [(True, 1), (1, 0), (0, 0), (0, 2), (0, 12), '01'])
@@ -63,3 +69,86 @@ def test_reject_inexact_or_foreign_height(height):
     with pytest.raises(ValueError):
         c.interval_squared({'seam': (0, 1), 'height': height},
                            {'seam': (0, 1), 'height': 2})
+
+
+INITIAL = tuple(int(i in (0, 2)) for i in range(12))
+TAPE = ((0, 1), (2, 3), (0, 1), (0, 1))
+
+
+def test_actual_native_logs_authenticate_every_coin_branch_and_preserve_zero_currents():
+    zero_commits = 0
+    for coins in product((0, 1), repeat=4):
+        log = c.semantic_execution(INITIAL, TAPE, coins)
+        assert c.verify_semantic_execution(INITIAL, log) == c.dependencies(TAPE)
+        assert c.authenticated_parent_ports(log[0], log[2]) == (0, 1)
+        assert c.authenticated_parent_ports(log[1], log[3]) == ()
+        assert c.authenticated_parent_ports(log[2], log[3]) == (0, 1)
+        for entry in log:
+            if entry['record'][1] == 0:
+                zero_commits += 1
+                assert entry['before_values'] == entry['after_values']
+                assert all(entry['after_writers'][p] == entry['event_id'] for p in entry['write_set'])
+    assert zero_commits > 0
+
+
+def test_authenticated_log_for_merging_endpoint_histories_and_empty_history():
+    seams, _ = c.passage.recovered_carrier()
+    tape = (*seams, *reversed(seams))
+    log = c.semantic_execution(INITIAL, tape, [i % 2 for i in range(len(tape))])
+    rows = c.verify_semantic_execution(INITIAL, log)
+    assert rows == c.dependencies(tape)
+    assert any(len(row['parents']) == 2 for row in rows)
+    assert c.semantic_execution(INITIAL, [], []) == []
+
+
+def test_native_local_support_is_checked_on_the_complete_carrier():
+    assert c.semantic_support() == {
+        'actual_native_branch_checks': 4680, 'necessary_endpoint_witnesses': 120,
+        'support_sound_and_irredundant_within_two_endpoint_read_interface': True,
+        'unique_minimal_support_among_global_read_interfaces_claimed': False}
+
+
+@pytest.mark.parametrize('mutation', [
+    'stale_writer', 'forged_value', 'missing_write', 'missing_support',
+    'outside_stamp', 'duplicate_id', 'false_current', 'false_coin', 'omit_zero',
+])
+def test_reject_unthreaded_forged_or_incomplete_semantic_logs(mutation):
+    log = deepcopy(c.semantic_execution(INITIAL, TAPE, (1, 1, 1, 1)))
+    if mutation == 'stale_writer':
+        log[3]['before_writers'][0] = 0
+    elif mutation == 'forged_value':
+        log[2]['before_values'][0], log[2]['before_values'][1] = 0, 1
+    elif mutation == 'missing_write':
+        log[0]['write_set'] = [1]
+    elif mutation == 'missing_support':
+        log[2]['causal_support'] = [1]
+    elif mutation == 'outside_stamp':
+        log[0]['after_writers'][2] = 0
+    elif mutation == 'duplicate_id':
+        log[2]['event_id'] = 0
+    elif mutation == 'false_current':
+        log[0]['record'][1] = 1
+    elif mutation == 'false_coin':
+        log[0]['coin'] = True
+    else:
+        del log[2]
+    with pytest.raises(ValueError):
+        c.verify_semantic_execution(INITIAL, log)
+
+
+def test_writer_citation_alone_does_not_authenticate_an_edge():
+    log = c.semantic_execution(INITIAL, TAPE, (1, 1, 1, 1))
+    parent, child = deepcopy(log[0]), deepcopy(log[2])
+    parent['write_set'] = []
+    assert c.authenticated_parent_ports(parent, child) == ()
+    parent = deepcopy(log[0])
+    child['before_values'][0], child['before_values'][1] = 0, 1
+    assert c.authenticated_parent_ports(parent, child) == ()
+
+
+def test_external_experiment_coverage_rejects_a_truncated_valid_execution():
+    coins = (1, 1, 1, 1)
+    log = c.semantic_execution(INITIAL, TAPE, coins)
+    assert c.verify_semantic_execution(INITIAL, log[:-1]) == c.dependencies(TAPE[:-1])
+    with pytest.raises(ValueError, match='complete declared experiment'):
+        c.verify_semantic_execution(INITIAL, log[:-1], tape=TAPE, coins=coins)

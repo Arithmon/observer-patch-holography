@@ -1,6 +1,7 @@
 """Independent native-history, random-clock and spatial-limit controls."""
 from fractions import Fraction as F
 from itertools import combinations, product
+import re
 
 import numpy as np
 import pytest
@@ -274,3 +275,27 @@ def test_cached_theorem_data_cannot_be_replaced_by_a_caller():
         data['covariance'] = sp.eye(12)
     with pytest.raises(TypeError):
         data['kernel'][0, 0] = 1
+
+
+def test_retained_semantic_witness_pins_its_local_lean_import_closure():
+    lake = (f.ROOT/'Lean/lakefile.lean').read_text(encoding='utf-8')
+    roots = {(f.ROOT/'Lean'/name).resolve()
+             for name in re.findall(r'srcDir\s*:=\s*"([^"]+)"', lake)}
+    assert {(f.ROOT/'Lean'/name).resolve() for name in
+            ('.', 'Screen', 'Thermodynamics', 'ObservableNormalForms')} <= roots
+    visited, pending = set(), ['Lean/Geometry/NativeRepairSemanticPlacement.lean']
+    while pending:
+        path = pending.pop()
+        if path in visited:
+            continue
+        visited.add(path)
+        for line in (f.ROOT/path).read_text(encoding='utf-8').splitlines():
+            if line.startswith('import '):
+                for name in line.split()[1:]:
+                    candidates = {root/(name.replace('.', '/')+'.lean') for root in roots}
+                    found = [p for p in candidates if p.is_file()]
+                    assert len(found) <= 1, 'ambiguous local Lean module resolution'
+                    pending.extend(p.relative_to(f.ROOT).as_posix() for p in found)
+    assert 'Lean/Screen/PrimitivePortTranslationBridge.lean' in visited
+    assert visited <= set(f.SOURCE_PATHS)
+    assert {'Lean/lake-manifest.json', 'Lean/lakefile.lean', 'Lean/lean-toolchain'} <= set(f.SOURCE_PATHS)

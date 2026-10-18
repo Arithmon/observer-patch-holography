@@ -132,10 +132,15 @@ history by native-attempt and source-pulse counts. The refined counter is
 an additional declared observer service. A supplied affine operation-timing
 law and its joint calibration region give complete deadline/detector
 predictions, retaining timeouts and correlated parameter uncertainty.
-The numerical seconds are synthetic calibration values. Public optical
-clock measurements require a transition/readout dictionary before they
-can test this source process; matching units or fitting an arbitrary scale
-does not supply that dictionary.
+The numerical seconds are synthetic calibration values. A specified event
+series defines a clock, and its unit needs no external validation.
+Visible pair-clock laws also recover the carrier graph and predict local
+field correlations without a hidden counter. A physical identification may
+be posed as a hypothesis and tested: the public optical comparison rejects
+a direct primitive-count/phase attachment under an explicit bounded-error
+and readout contract. It permits arbitrary missing blocks and charges
+calendar-window selection. This does not exclude collective clocks or
+identify native repair with atomic dynamics.
 
 ## Gaussian field and continuum scope
 
@@ -156,21 +161,26 @@ checks finite-count moments independently of the limiting Gaussian theorem.
 
 The actual rank-three band has an isotropic attempt-count fluctuation law
 and distinct axial/transverse incident-clock variances. Its projected local
-clock transfer fails a two-tick closure test: eliminating the other modes
-requires memory. On the existing spherical screens, exact block elimination
-gives a Schur Green operator and a uniform approximation bound. The missing
-continuum step is a compatible cross-level observation map and convergence
-of that operator to the claimed target. The supplied square torus establishes
-a separate iterated fixed-band free-field example; it does not settle the
-spherical source's continuum or physical signature.
+clock transfer fails a two-tick linear closure test. On the existing spherical
+screens, exact block elimination gives a Schur Green operator and a uniform
+approximation bound. One fixed twenty-base-face ancestry readout compares
+native Green, attempt-clock and root-carrier incident-clock covariances on
+levels zero through three, with retained operator error at most `1e-6`.
+If normalized Green observations stay bounded across refinement, the
+incident-clock correction vanishes under the declared `4^level` normalization.
+An all-level Cauchy tail, an enlarging observation algebra and identification
+with a target continuum require further proof. The supplied square torus is
+a separate iterated fixed-band free-field example.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint
 readout in the native rank-three Gram, with time proportional to canonical
 endpoint-dependency height, satisfies the registered forward-cone placement
 conditions. This uses a complete attempted-seam tape and an exogenous
-schedule. The same native source gives a null-cone pair without ancestry,
-so the theorem's converse condition is substantive. Adaptive controller
+schedule. A Lean instance constructs the authenticated log for all sixteen
+branches of a four-event native execution and applies the forward theorem.
+It also proves that a null-cone pair lacks ancestry, so the converse
+condition is substantive. Adaptive controller
 edges, local clock calibration and physical frame changes need their own
 bounds. The finite current decoder has only 73 distinct spatial images on
 78 fixed-total states; it is not the signed-control completion proved to be

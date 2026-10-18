@@ -14,8 +14,11 @@ transverse clock-dependent variances and a marginal field action. On the
 existing joined source screens it eliminates internal carrier variables to
 obtain a native Green operator, with a level-independent relative error bound
 `1/(2^(p+1)-1)` for its order-`p` approximation. The associated continuum
-criterion requires spatial observations, scales and convergence beyond these
-finite results. A supplied periodic square graph is a separate comparison
+test uses one fixed twenty-face ancestry observation on source levels zero
+through three, with certified Green and clock covariances. Each retained
+covariance has operator error at most `1e-6`. An all-level convergence tail
+and a physical identification are further obligations. A supplied periodic
+square graph is a separate comparison
 control; it does not identify the actual source's physical spacetime.
 
 This packet makes a concrete connection between geometry, propagation and a

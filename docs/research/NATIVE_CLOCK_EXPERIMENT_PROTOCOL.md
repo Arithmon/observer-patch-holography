@@ -26,6 +26,7 @@ Use the model's accessible records, rather than host execution time:
 - **Time:** one observer's recorded event count supplies an internal clock.
   Its comparisons with other clocks are stochastic laws, with finite
   uncertainty, rather than a universal deterministic conversion.
+  Choosing an event-count unit needs no independent timestamp calibration.
 - **Space:** a declared current-response protocol recovers a dimensionless
   spatial Gram matrix. For that readout, squared distances are
   `d(i,j)^2 = G[i,i] + G[j,j] - 2 G[i,j]`. A factorization of the rank-three
@@ -39,6 +40,19 @@ Use the model's accessible records, rather than host execution time:
   distance shells. No independent oscillator, laboratory timestamp or
   federation enters this result. Finite-sample inference of those covariance
   classes still needs its own uncertainty analysis.
+
+The [visible incident-clock construction](../../model/laboratory_clock/README.md#geometry-and-fields-from-visible-incident-clocks)
+uses the ordered union of two local tapes without a hidden attempt or movement
+counter. Between A ticks, B's count has mean one and variance `8/5` for adjacent
+ports or `2` otherwise. All 66 pair laws recover the source graph and its
+rank-three Gram; a fixed zero-count classifier has an explicit finite-sample
+error bound. With the stationary total-two preparation, that same geometry and
+native repair predict the joint local occupation probabilities after two A
+ticks: `14/407`, `7/407` and `58/3663` in the three distance classes. Identity
+repair preserves every clock law but fails these field predictions. This is a
+joint dimensionless correspondence within one source. Identifying the same
+records in measured data is a hypothesis to test, rather than a prerequisite
+for defining the clocks or deriving their predictions.
 
 Thus records can already carry an observer-relative clock and a finite
 spatial interpretation. An event labelled by a local count and a spatial

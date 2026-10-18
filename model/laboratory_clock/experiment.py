@@ -10,11 +10,12 @@ from tools import strict_json
 from ..native_clock import clock, host_clock
 from ..primitive_observer import transfer
 from .attachment import Endpoint, analyse, fit_rate, validate
-from . import resource_clock
+from . import resource_clock, event_geometry
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 SOURCE_PATHS = tuple(sorted(set((*host_clock.SOURCE_PATHS, *clock.SOURCE_PATHS,
+    *event_geometry.SOURCE_PATHS,
     *resource_clock.target.SOURCE_PATHS, *resource_clock.compiled.source.SOURCE_PATHS,
     *resource_clock.exact_core.SOURCE_PATHS,
     "model/compiled_clock_history/receipt.py", "model/compiled_clock_history/history.py",
@@ -150,6 +151,7 @@ def run():
             "missed_event_control": missed,
             "native_waiting_law_attachment": native,
             "compiled_operation_clock_attachment": resource_clock.run(),
+            "visible_event_clock_geometry": event_geometry.run(),
             "retained_host_attachment": _host_attachment(raw, replay),
             "scope": {"federation_required": False, "new_laboratory_data": False,
                 "physical_proper_time_derived": False, "physical_clock_scale_selected_by_repair": False,

@@ -150,19 +150,73 @@ The [protocol](NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md#a-joint-timed-coherent-predic
 states the exact conditional forecast and the physical correspondence needed
 to use it. It changes no frozen prediction or empirical verdict.
 
-Usable public clock observations exist. King et al.'s
-[argon optical-clock paper](https://arxiv.org/abs/2205.13053) has
-[public corrected argon/ytterbium ratio traces](https://zenodo.org/records/6901524),
-including UTC timestamp columns verified by directly reading a file header.
-Those are ratios of identified atomic transitions, not native incident
-counts. No source-derived atomic-transition map or ratio prediction is
-available here, so fitting an arbitrary time scale to those traces would
-not test this source. By contrast, the
-[2021 BACON publication](https://doi.org/10.1038/s41586-021-03253-4) supplies
-its raw data on request rather than as an immediately public trace deposit.
-The executed ACT comparison above is retained as the actual public-data
-constraint; clock-data availability does not turn a missing observable map
-into an additional physical comparison.
+### A direct event-clock attachment tested on public optical records
+
+An event series defines a clock without external validation. Its unit can
+be conventional. Identifying its readings with a particular published
+measurement is a hypothesis that can be stated and tested directly.
+The [optical comparison](../../model/predictions/optical_clock.py) does this
+for King et al.'s [corrected Ar13+/Yb+ traces](https://zenodo.org/records/6901524).
+It does not require an experimental carrier or observed microscopic repairs.
+
+Let A and B count incident repairs at two distinct native ports, with
+independent uniform seam scheduling and coincident terminal ticks included.
+The [visible-clock derivation](../../model/laboratory_clock/README.md#geometry-and-fields-from-visible-incident-clocks)
+gives independent interval increments with generating function
+
+```text
+g_delta(z) = (5-delta+delta*z)/(10-delta-(5-delta)*z),
+E[B(N)] = N,       Var[B(N)] = N*(2-2delta/5),
+```
+
+where `delta=1` for adjacent ports and `0` otherwise. These are predictions
+in A's clock units. The tested attachment identifies a reported 300-second
+ratio block with `gain*B(N)/N + error`. The gain is a constant at least one;
+`N` is fixed within 300 times a declared ±1 Hz bracket around
+642121496772645 Hz. That bracket is based on the independent
+[Yb+ frequency measurement](https://arxiv.org/abs/2010.06620),
+642121496772645.10(8) Hz, whose quoted uncertainty is not a hard bound. The allowed absolute ratio error is `10^-12` per block.
+The hypothesis includes direct phase-count readback, without an additional
+filter or collective clock mechanism. These are explicit tested assumptions,
+not derived atomic physics.
+
+Both complete public files are SHA-256 pinned and independently reduced with
+exact rational arithmetic. The reducer uses complete 300-second UTC-grid
+blocks, applies no value-based filter and leaves published removals as gaps.
+Only compact sufficient summaries are retained; the raw-file option rechecks
+the complete extraction. The measured block ranges are:
+
+| Isotope | Published one-second rows | Complete blocks | Ratio range across blocks |
+| --- | --- | --- | --- |
+| 36Ar | 53,682 | 120 | `1.425293886457181e-14` |
+| 40Ar | 102,888 | 210 | `1.0714598669982e-14` |
+
+The test allows arbitrary discarded blocks and post hoc choice of the gain,
+calendar subwindow and retained count within the fixed year 2021. It uses
+an exact concentration bound rather than a Gaussian approximation: a
+geometric-parity decomposition gives `max_k P[B(N)=k] <= 2/sqrt(N)`. If a
+count interval has `w+1` integer values, its mass is at most
+`p=(w+1)*2/floor(sqrt(N))`. For `K` retained draws among `T` possible blocks,
+anchoring at the smallest retained value gives the range-tail bound
+`T*choose(T-1,K-1)*p^(K-1)`. A further union factor `105120^3` charges every
+2021 subwindow and retained-count choice. Exact integer inequalities give
+adjusted conditional bounds below `10^-159` and `10^-104`, respectively.
+Searching other years, block sizes or attachment families is outside that
+stated test.
+
+This rejects the **direct attachment together with its readout assumptions**.
+The [experiment](https://arxiv.org/abs/2205.13053) uses interrogations, servos
+and frequency combs; a proposed description of that apparatus must account
+for their action. The result does not reject every OPH clock, establish an
+atomic-transition derivation or distinguish OPH from SM + GR. It is a
+retrospective constraint on a precise simple identification. Defining a
+native clock remains legitimate even when that identification fails.
+
+```sh
+python -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json
+# After downloading both original files into a local directory:
+python -m model.predictions.optical_clock --raw-dir /tmp/oph-clock-public --check model/predictions/optical_clock_results.json
+```
 
 ## Conditional dispersion: exact branch relation and actual sensitivity
 

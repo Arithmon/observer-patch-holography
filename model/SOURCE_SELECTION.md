@@ -30,7 +30,7 @@ mean response, a spectrum or a clock rate.
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
 | [Native spatial fluctuation field](physical_space_time/OCCUPATION_FIELD.md) | The actual rank-three readout has exact clock-dependent covariance and marginal action. Eliminating internal variables on the actual source screens gives a [Schur Green operator](physical_space_time/source_green.py) with uniform comparison and approximation bounds. | Initial occupations and full seam/current readback are supplied. These are finite field/Green results; a physical radial coordinate, target-manifold Green convergence and Lorentzian dynamics require their own attachments. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
-| [Laboratory-clock attachment](laboratory_clock/README.md) | Paired event/timestamp bounds determine a frozen rate/offset set and a joint held-out test. | Supply independently justified physical event records and clock errors. Software timings and assigned timestamps do not provide them. |
+| [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamp bounds test a specified apparatus attachment; the public optical comparison rejects one direct count/phase hypothesis. | State the proposed observation map and its error model, then test that hypothesis. Defining the event clock itself requires no external calibration. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
 | [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | Actual CMB posterior samples constrain a separately declared primordial-tilt branch; other comparisons retain their own physical assumptions. | Derive that cosmological observable, or another measurable relation, from the selected observer process with its uncertainty and remaining freedom. No current bridge equates primordial tilt with a native finite-carrier readout. |
 
@@ -135,14 +135,32 @@ ancestry. Thus this placement does not give two-way causal faithfulness.
 
 The exact reusable Lean theorem is
 `OPH.SourceDerivedSpacetime.RankSpatialCausalPlacement.generatedBeforeEq_sourceCausalLE`.
-The Python check supplies the geometric argument on a structural endpoint
-DAG; it emits no Lean instance of the authenticated `SemanticEventLog`.
-That interface separately checks written registers, value/version continuity
-and declared causal support. The executable requires a complete attempted-seam
-tape, including remote and zero-current events, and an exogenous schedule.
+The executable emits actual native payloads with endpoint value/version
+snapshots; an independent averaging oracle checks execution, local read
+support, writes and authenticated parents. The
+[finite Lean attachment](../Lean/Geometry/NativeRepairSemanticPlacement.lean)
+constructs `SemanticEventLog` from the four-event native execution for all
+sixteen coin sequences, proves its parent graph and canonical heights, and
+instantiates the forward theorem. The executable compares its complete
+current/terminal-state table with the literal table proved in Lean.
+This formal instance has the declared four-event scope; the all-tape
+geometric argument remains separate. Full value/version logging is execution
+instrumentation, with every zero-current invocation committed. It supplies
+neither intrinsic local access to all source registers nor arbitrary coherent
+quantum histories. The complete tape and exogenous schedule are explicit.
 Adaptive controller or preparation dependencies require additional edges.
 Midpoint position and dimensionless dependency height are declared readouts,
 not selected physical rods and clocks.
+
+The [pair-clock construction](laboratory_clock/README.md#geometry-and-fields-from-visible-incident-clocks)
+uses a different, smaller observation interface: the ordered union of two
+local incident tapes. Coincidence laws recover the finite graph and response
+Gram under the declared scheduler. Adding stationary preparation and local
+bit/current reads predicts the joint initial-A/B-at-second-A field law;
+identity repair preserves the clocks while changing that correlation. A
+[public optical test](predictions/optical_clock.py) rejects a direct incident-count
+attachment under its stated gain, error and readout hypotheses. It does not
+reject every possible clock mechanism or derive atomic transitions.
 
 To identify three physical spatial dimensions in a bounded effective regime,
 attach radial and angular records to a common metric and dynamical law with
