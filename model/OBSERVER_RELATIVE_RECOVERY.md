@@ -43,7 +43,7 @@ give compatible measurement laws in the claimed physical regime.
 
 ### One complete joint observer comparison
 
-Repair-law uncertainty now has a complete finite interface. The
+Repair-law uncertainty has a complete finite interface. The
 [source identification](repair_identification/README.md) determines all nine
 real parameters of the classified current instrument, including collision
 coherences invisible to binary-shell observations. Its reference-uniform
