@@ -450,6 +450,15 @@ def native_reference_state_control(particles=4):
     eigenvalues = np.linalg.eigvalsh(counts)
     if eigenvalues[0] < -1e-12 or eigenvalues[-1] > 1+1e-12:
         raise ArithmeticError('the native transfer positivity control failed')
+    # The integer row sums already certify the stationary eigenvalue as one.
+    # acos has an unbounded derivative there: retain the exact eigenvalue
+    # instead of amplifying harmless platform-dependent eigensolver roundoff.
+    if abs(eigenvalues[-1]-1) > 1e-12:
+        raise ArithmeticError('the native stationary eigenvalue exceeds its numerical allowance')
+    eigenvalues[-1] = 1.
+    if (abs(float(np.mean(eigenvalues))-float(mean)) > 1e-12
+            or abs(float(np.mean(eigenvalues**2))-float(second)) > 1e-12):
+        raise ArithmeticError('the native spectral oracle differs from exact trace moments')
     weights = np.exp(-np.arccos(np.clip(eigenvalues, 0, 1)))
     distance = float(np.sum(np.abs(weights/weights.sum()-1/dimension))/2)
     bound = 5*_root_upper(exact['transfer_trace_variance'])/exact['susceptibility']

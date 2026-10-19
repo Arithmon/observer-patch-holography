@@ -262,6 +262,33 @@ def test_complete_native_branch_trace_matches_permutation_formula(particles):
     assert value['different_supplied_two_configuration_pure_state_commutator'] == 1
 
 
+def test_exact_stationary_eigenvalue_prevents_acos_roundoff_amplification(monkeypatch):
+    expected = d.native_reference_state_control(4)
+    original = np.linalg.eigvalsh
+    def rounded(matrix):
+        values = original(matrix)
+        values[-1] = 1-5e-13
+        return values
+    monkeypatch.setattr(np.linalg, 'eigvalsh', rounded)
+    actual = d.native_reference_state_control(4)
+    assert actual == expected
+
+
+@pytest.mark.parametrize('mutation', ('stationary', 'interior'))
+def test_native_spectral_oracle_rejects_non_roundoff_errors(monkeypatch, mutation):
+    original = np.linalg.eigvalsh
+    def corrupted(matrix):
+        values = original(matrix)
+        if mutation == 'stationary':
+            values[-1] = .99
+        else:
+            values[len(values)//2] += .001
+        return values
+    monkeypatch.setattr(np.linalg, 'eigvalsh', corrupted)
+    with pytest.raises(ArithmeticError, match='stationary eigenvalue|exact trace moments'):
+        d.native_reference_state_control(4)
+
+
 def test_permutation_cycle_formula_has_an_independent_subset_oracle():
     for particles in (2, 4):
         states, _, edges = d._native_trace_counts(particles)
