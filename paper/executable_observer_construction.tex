@@ -5,7 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage[shortlabels]{enumitem}
-\usepackage{booktabs,array}
+\usepackage{booktabs,array,longtable}
 \usepackage{hyperref}
 \usepackage{xurl}
 \input{release_info.tex}
@@ -82,14 +82,21 @@ infinite oscillator occupation. A four-read continuation retains the disturbed
 field between measurements and joins source-compiled native repairs to active
 recovery of a logical qubit, including its reference entanglement. The
 quantum record laws compatible with the native repair form an exactly
-classified convex family, and a fixed count protocol reads the coherence that
-separates its members; no comparison data exist. On the refining spherical
+classified convex family; a fixed count protocol reads the coherence that
+separates the executed laws, nine source-executed measurements identify every
+coordinate of the family, and no comparison data exist. Two observers whose
+regions overlap on one carrier read local fields and event clocks from one
+continuing history, and its native and effective descriptions agree
+exactly, including with a source-compiled apparatus. Joined carriers form
+federations and matched screens with complete-output bounds. On the refining spherical
 source, a common subsequence defines a regular local spatial form with
 spectral dimension two, an actual Gaussian density limit at finitely many
 scaled native times, admitted coherent waves with a finite comparison-space
 propagation bound, and continuous classical Gaussian wave readouts.
 A controlled repair protocol has a nonvanishing mean response at
-fixed small amplitude in this limit. A premise map
+fixed small amplitude in this limit. Public Bell and optical-clock records
+reject the local classical reading of the diagonal native branch and a
+direct attachment of native event counts. A premise map
 records which theorem antecedents the construction supplies and which enter
 as inputs. The open connections are spatial refinement of the full interacting
 construction, responsive geometry,
@@ -146,8 +153,10 @@ with their acceptance evidence. Sections~\ref{sec:observer}
 to~\ref{sec:prediction} report the certified components, in turn the finite
 observer and its records, scalar field detectors, a common interacting source in which
 quantum electric flux, charged fermions and a neutral scalar share one
-register, and a fixed count protocol that reads the coherence separating
-the record laws.
+register, overlapping observers with local event clocks on carriers and
+screens, and a fixed count protocol that reads the coherence separating
+the executed record laws, with its sequential design and retrospective
+comparisons with public records.
 Section~\ref{sec:premises} gives the premise map together with four retained
 audit controls, Section~\ref{sec:open} the open connections and
 Section~\ref{sec:repro} the reproducibility contract. Every number in the
@@ -161,7 +170,7 @@ to~\ref{sec:prediction} are finite constructions under declared premises;
 their analytic observation limits are identified separately. Actions,
 preparations, couplings, instruments, services and schedules are inputs of
 the specification. None of these construction results is a comparison
-with independent observations of nature. Individual results state only the boundary specific to them. The theorems and propositions below are finite theorems; the items inside them that quote a certified enclosure, table or replayed count are certified finite computations; Section~\ref{sec:endpoint} is a diagnostic, and the count protocol of Section~\ref{sec:ce-protocol} is a prospectively fixed conditional test.
+with independent observations of nature. Individual results state only the boundary specific to them. The theorems and propositions below are finite theorems; the items inside them that quote a certified enclosure, table or replayed count are certified finite computations; the native continuum statements of Section~\ref{sec:repair-geometry} are source limit theorems; Sections~\ref{sec:public-records} and~\ref{sec:endpoint} are diagnostics, and the count protocol of Section~\ref{sec:ce-protocol} is a prospectively fixed conditional test.
 
 \begin{table}[htbp]
 \centering
@@ -179,6 +188,10 @@ Certified finite computation & An executable witness whose inputs,
 controls, and output are fixed by a reproducible certificate; execution alone
 does not promote its interpretation to a theorem.\\
 Conditional analytic theorem & A theorem whose hypotheses include a supplied continuum action, state space or limit; its conclusion holds on that supplied object.\\
+Source limit theorem & A theorem about the limit of a declared family of
+finite source executions along a stated subsequence, with its
+normalizations and order of limits displayed; the limit is derived, and its
+physical identification is a separate claim.\\
 Reconstruction implication & An exact implication whose antecedents
 include displayed geometric or physical premises.\\
 Unsupplied realization map & A required map from a finite object to a
@@ -197,7 +210,7 @@ framework only if the branch is proved forced and exclusive.\\
 \end{tabular}
 \end{table}
 
-Six claim records of the repository \cite{ophrepo} state the scope of the
+Seven claim records of the repository \cite{ophrepo} state the scope of the
 certified components. Table~\ref{tab:registry} lists them with
 the sections that state their content.
 
@@ -231,8 +244,14 @@ Common interacting source, occupation and readout certificates, smooth
 continuation, compiled native attachment and encoded memory, observer
 readouts, history repair, geometric and field readouts &
 \ref{sec:common-construction} to \ref{sec:repair-geometry}, except
-Proposition~\ref{prop:causal} &
+Proposition~\ref{prop:causal} and the native continuum paragraphs &
 \texttt{OPH-MODEL-COMMON-SOURCE-EXECUTION}\\
+Overlapping observers, local and active event clocks, record-law
+identification, federations and matched screens, the native continuum
+operator and its limits, the sequential protocol and public-record replays &
+\ref{sec:repair-geometry} (native continuum), \ref{sec:native-process},
+\ref{sec:sequential}, \ref{sec:public-records} &
+\texttt{OPH-MODEL-NATIVE-PROCESS-RECOVERY}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -392,8 +411,14 @@ an admissible record law for $e$ if it acts as the identity on the ten
 spectator ports, reproduces the classical repair distribution on every
 $\proj x$, commutes with $U_t=\exp(i\sum_pt_pN_p)$ for every $t\in\mathbb
 R^{12}$, and is invariant under the carrier rotation that exchanges $a$ and
-$b$ with the current reversed. The third condition is the quantum form of
-local load conservation: every recorded branch transports one definite load.
+$b$ with the current reversed. The third condition makes every local load
+phase a symmetry of the unread channel. It guarantees that a
+definite-current Kraus representation exists; it does not force every
+recorded implementation of the channel to commit a definite current, since
+a change of record basis before commitment mixes the current labels and
+leaves the channel unchanged \cite{mINSTRUMENT}. The classification below
+concerns unread channels, and statements about current histories use the
+compatible definite-current instrument.
 
 \begin{theorem}[Coherence tables]
 \label{thm:record-laws}
@@ -443,9 +468,18 @@ what conservation requires, $\Cn$ records the tie-break as an event, $\En$ is
 the coarsest law for which one repair completes the seam, and $\Tn$ records
 the full seam occupation. None of these principles follows from the theorem
 premises as stated. The construction executes $\Cn$, whose records are
-exactly the classical event data, and compares it with $\En$. All members
-assign the same probabilities to every classical observation, and
-Section~\ref{sec:prediction} reads $g$ in one coherent event.
+exactly the classical event data, and compares it with $\En$. Under a
+common definite-current record interface all members assign the same
+probabilities to every classical current observation.
+Section~\ref{sec:prediction} reads $g$ in one coherent event, and
+Section~\ref{sec:identification} identifies all nine real coordinates of
+the table. Every admissible table, including complex phases and different
+laws on different seams, has the uniform binary density as its unique
+stationary source state and the same spectral gap $(5-\sqrt5)/60$, so
+equilibrium selects none of the coordinates; a finite unread warm-up of
+$221$ attempts on the binary shell, or $318$ on the full carrier, brings an
+arbitrary initial density within $1/1000$ of that state, uniformly over
+untouched references \cite{mRECORDLAWS}.
 
 \begin{table}[htbp]
 \centering
@@ -584,10 +618,15 @@ construction does not make.
 \label{sec:time}
 
 The construction keeps the time parameters of Table~\ref{tab:time} distinct
-\cite{mINTERP}. Conversions between them need explicit maps. The only
-conversion it uses is the fixed-reference relation $t=-\beta s$ of
+\cite{mINTERP}. Conversions between them need explicit maps. The
+construction uses three: the fixed-reference relation $t=-\beta s$ of
 Section~\ref{sec:readouts} between a model coordinate and a modular
-parameter. No preferred universal physical clock is required.
+parameter, the instrument-valued conversion between two local event clocks
+of Section~\ref{sec:event-clocks}, which keeps their whole count law, and
+the rescaling of native attempt count along the refining screens of
+Section~\ref{sec:repair-geometry}. A calibration of native calls against a
+monotonic host counter is an engineered software correspondence. No
+preferred universal physical clock is required.
 
 \begin{table}[htbp]
 \centering
@@ -598,9 +637,11 @@ parameter. No preferred universal physical clock is required.
 \toprule
 \textbf{Parameter} & \textbf{Meaning} & \textbf{Occurrence}\\
 \midrule
-Host time & Runtime of a software execution; a resource cost & Never used as a physical quantity\\
+Host time & Runtime of a software execution; a resource cost & A software calibration of native calls; never a physical quantity\\
 Solver counter & Position in a search or repair schedule; the attempt count of a declared schedule & History repair (Section~\ref{sec:repair-geometry}); attempt counts in the observer theorems\\
 Causal order & Precedence of recorded events; counts of native operations & Observers, detectors, phase protocol, local ticks\\
+Local event count & Attempted repairs incident to an observer region, or occupation changes at a port & Overlapping observers, local and active event clocks, matched screens (Section~\ref{sec:native-process})\\
+Scaled attempt count & Native attempt count divided by its level scale on the refining screens & Native density limits (Section~\ref{sec:repair-geometry})\\
 Model coordinate & Parameter of a declared Hamiltonian or action & Scalar detectors, two-site apparatus, common source\\
 Modular parameter & Parameter of the modular automorphisms of an algebra-state pair & Modular clock and fixed-reference relation (Section~\ref{sec:readouts})\\
 Operational clock & Observer-accessible reading with calibrated duration & Supplied by no component\\
@@ -632,22 +673,27 @@ on an interpretation alone does not supply it \cite{mINTERP}.
 Table~\ref{tab:acceptance} states the five obligations, their acceptance
 evidence, and the components of this paper that address each.
 
-\begin{table}[htbp]
-\centering
+{
 \footnotesize
+\begin{longtable}{@{}L{0.17\linewidth}L{0.47\linewidth}L{0.30\linewidth}@{}}
 \caption{Completion obligations, acceptance evidence \cite{mCONSTRUCTION}, and
 the corresponding evidence in this paper.}
-\label{tab:acceptance}
-\begin{tabular}{@{}L{0.17\linewidth}L{0.47\linewidth}L{0.30\linewidth}@{}}
+\label{tab:acceptance}\\
 \toprule
 \textbf{Obligation} & \textbf{Acceptance evidence} & \textbf{This paper}\\
 \midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize Table~\thetable\ continued}\\
+\toprule
+\textbf{Obligation} & \textbf{Acceptance evidence} & \textbf{This paper}\\
+\midrule
+\endhead
 Executable observer algebra &
 Explicit state, operation, preparation, measurement, retained-record and
 feedback maps; their algebraic identities and observer-access limits;
 accounted memory and service assumptions; actual execution of the claimed
 protocols. A finite implementation discharges its own contract only. &
-\textbf{Discharged under the declared contract.} Two-event observers and detectors with every history retained (Sections~\ref{sec:observer}, \ref{sec:fields}); a finite four-read continuation with compiled native repair and active encoded memory (Section~\ref{sec:continued-native}). No federation or autonomous unbounded observer.\\
+\textbf{Discharged under the declared contract.} Two-event observers and detectors with every history retained (Sections~\ref{sec:observer}, \ref{sec:fields}); a finite four-read continuation with compiled native repair and active encoded memory (Section~\ref{sec:continued-native}); overlapping observers, local and active event clocks, quantum federations and a coherent observer on matched screens (Section~\ref{sec:native-process}). No autonomous unbounded observer.\\
 \addlinespace
 Shared operational meaning &
 Interpretation maps specified independently of the validation outcomes,
@@ -656,8 +702,11 @@ intervention statistics and quantum correlations. Shared labels alone are
 insufficient; incompatible unperformed measurements need no common table of
 classical outcomes. &
 \textbf{Not discharged.} Committed-record preservation (Section~\ref{sec:observer-algebra}); one record law for every observer of the common source; a schedule-independent
-completed history (Section~\ref{sec:repair-geometry}). No interpretation
-maps across observers and refinement.\\
+completed history (Section~\ref{sec:repair-geometry}); an exact native and
+effective correspondence for two overlapping observers
+(Section~\ref{sec:correspondence}); complete-output maps between actual
+screen levels (Section~\ref{sec:screens}). No interpretation maps for
+physical quantities across all observers and refinement levels.\\
 \addlinespace
 Effective quantum-field description &
 A common refining family of observer statistics and interpretation maps
@@ -669,8 +718,10 @@ defined, it is nonnegative and may be zero. &
 \textbf{Not discharged.} Free-scalar refinement transfer (Section~\ref{sec:scalar}); two-site
 occupation limits with complete-output bounds and a nonzero interacting
 signal at infinite occupation (Sections~\ref{sec:two-site},
-\ref{sec:finite-contrast} to \ref{sec:smooth}). No spatially refining
-interacting family.\\
+\ref{sec:finite-contrast} to \ref{sec:smooth}); a native continuum
+operator for Gaussian density fields, their decay and admitted waves on the
+refining screen (Section~\ref{sec:repair-geometry}). No interacting
+refining family, quantum vacuum or Lorentzian symmetry.\\
 \addlinespace
 Effective classical and gravitational descriptions &
 The same observer construction yields observations that admit compatible
@@ -678,9 +729,9 @@ classical, geometric, stress and clock descriptions in their regimes,
 reproducing the gravitational predictions with controlled corrections. A
 fundamental metric or manifold is not a prerequisite; calculations on a
 supplied geometry need a map to these observer statistics. &
-\textbf{Not discharged.} A finite rank-three geometric readout, native causal cones and field relations (Section~\ref{sec:repair-geometry}); modular clock readouts
-(Section~\ref{sec:readouts}). No stress, responsive geometry or calibrated
-clock.\\
+\textbf{Not discharged.} A finite rank-three geometric readout, native causal cones and field relations, and a two-dimensional local continuum form with counting-entropy controls (Section~\ref{sec:repair-geometry}); modular clock readouts and active event clocks
+(Sections~\ref{sec:readouts}, \ref{sec:event-clocks}). No stress, radial
+bulk reading, responsive geometry or calibrated clock.\\
 \addlinespace
 Physical predictions &
 Explicit parameter and input ancestry, calibration and uncertainty;
@@ -688,10 +739,10 @@ predictions and rejection rules fixed before independent comparison data;
 agreement with the observed statistics, including alternatives and
 distinguishing tests. Reusing a calibration datum is not an independent
 prediction. &
-\textbf{Decision rule fixed; no data.} A fixed count protocol that reads the record-law coherence $g$, without data (Sections~\ref{sec:ce-protocol}, \ref{sec:ce-source}); a retrospective coupling audit (Section~\ref{sec:endpoint}). The coupling map $P\mapsto\alpha(P)$ is a supplied input.\\
+\textbf{Decision rule fixed; no data.} A fixed count protocol that reads the record-law coherence $g$, without data, and its sequential design (Sections~\ref{sec:ce-protocol}, \ref{sec:ce-source}, \ref{sec:sequential}); retrospective replays of public Bell and optical-clock records (Section~\ref{sec:public-records}); a retrospective coupling audit (Section~\ref{sec:endpoint}). The coupling map $P\mapsto\alpha(P)$ is a supplied input.\\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
+}
 
 Rows two to four state no quantitative acceptance functional; an acceptance names the observables, the refinement family and the error budget before comparison. Exact equality of limiting observable laws is the mathematical target. Finite simulations and experiments are assessed with declared approximation
 and measurement errors. They cannot certify arbitrary empirical precision,
@@ -2383,6 +2434,177 @@ other fluctuation regimes. If the relevant fluctuation moments converge,
 any limiting scalar canonical commutator in this bounded-overlap regime
 must be zero; a quantum vacuum is not identified \cite{nativeContinuum}.
 
+\section{Observers, clocks and screens on one process}
+\label{sec:native-process}
+
+The components of this section run the native C or E instrument itself,
+with the uniform independent seam schedule and fair placement coin as
+declared scheduling inputs. Their time parameters are attempt counts and
+local event counts. Each result states its preparation, observer access
+and services; none identifies a count with laboratory duration
+\cite{nativeRecovery}.
+
+\subsection{Two overlapping observers}
+\label{sec:correspondence}
+
+On the $66$ binary total-two configurations, prepare the uniform state and
+disclose the bits at ports $(0,1,5)$; all eight labels stay in the output
+menu. Observer A accesses $(0,1)$ and observer B accesses $(0,5)$, so the
+regions overlap at port $0$. Each receives its initial bits and every
+incident local current, including zero, and ticks when an attempted seam
+meets its region. The protocol requests two incidents on the union with at
+most two native attempts per interval; after the first it applies one
+native repair on $(0,1)$ if the reconstructed $n_0$ is one and on $(0,5)$
+otherwise, and that repair ticks both observers.
+
+\begin{proposition}[Exact overlapping-observer correspondence]
+\label{prop:correspondence}
+Normalize the native remote and incident branch counts by $60$, write
+$P=A+B$ with $B=\sum_mB_m$ over incident marks $m$, and put $D=I-A$,
+$p=2/5$ and $G=D/p$. With $K_m=B_mD^{-1}$ and $F_m=D^{-1}B_m$,
+\begin{enumerate}[(i)]
+\item $K_m=GF_mG^{-1}$ and $\mathbf 1^{\mathsf T}G=\mathbf 1^{\mathsf T}$; remote
+projectors, the selective feedback maps and the disclosed uniform
+preparation commute with or are fixed by $G$;
+\item for attempt cap $h$ the marked and timeout maps are
+$K_{m,h}=B_m(I+A+\dots+A^{h-1})$ and $Q_h=A^h$, their effective conjugates
+are $F_{m,h}=G^{-1}K_{m,h}G$ and $A^h$, and the terminal decoder $G$
+returns the complete unnormalized source state on every output word of
+every finite adaptive protocol in this commuting intervention family;
+\item the direct endpoint execution and the effective recursion agree
+exactly on all $5{,}768$ output words, $689$ of positive probability,
+including all terminal populations, and the timeout probability is
+$369/625$; and
+\item the unread completed transfer $F=D^{-1}B$ is self-adjoint in the
+metric $G$ with $1/20\le F\le1$, so $H=-\log F$ is an effective Euclidean
+generator per completed union incident tick.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Remote repairs leave the union fields fixed and every remote seam is
+disjoint from the feedback ports, so the conjugation by $G$ cancels between
+successive reads and allowed feedback maps; induction over the protocol
+gives (ii). Every native seam count equals $I+\mathrm{SWAP}$, which makes
+$GF=B/p$ symmetric positive semidefinite, and the native triangle $(0,1,5)$
+contributes at least $3I/60$ to $B$ \cite{nativeCorrespondence}.
+\end{proof}
+
+At every positive-weight prefix each observer's decoder, which sees only
+its local initial pair and incident increments, returns fields that obey
+native continuity, and the two port-zero values agree. The transformed
+finite-cap maps preserve the transported cone $G^{-1}\mathbb R_+^{66}$; they
+are not entrywise-positive stochastic maps, and the comparison is of
+decoded full states. The quantum extension checks the native remote
+resolvent on all $4{,}356$ matrix units with coherent preparations,
+untouched references and complete local clock records, and an ordinary
+completely positive effective instrument for local outputs is a positive
+mixture of native repairs; its one-particle coherent experiment retains all
+$81$ outputs \cite{nativeQuantumCorrespondence}. The compiled clock history
+replaces the ideal preparation, intervention and pointer of that experiment
+by words of the six-level source compiler. Exact rational propagation of
+the binary source arrays keeps all $512$ code addresses and $1{,}656$ clock,
+timeout and complement-abort outputs within $10^{-11}$ of the ideal
+history, at most $51$ pulses ($54$ with the compiled Bell preparation), two
+code services per pulse and five native repair attempts
+\cite{nativeCompiledClock}. The native instrument, the scheduler and the
+code services remain specified inputs.
+
+\subsection{Local event clocks}
+\label{sec:event-clocks}
+
+A local event clock ticks on actual occupation changes at an observer port,
+or on attempted repairs incident to a region, while remote repairs
+continue; its stopped instrument sums the unresolved wait and retains finite
+timeouts and conditional quantum outputs. Two such clocks on ports $0$ and
+$72$ of joined carriers read one continuing history with an
+observer-chosen field algebra. Exact elimination of the hidden factor gives
+a record-conditioned quantum memory recurrence valid for arbitrary untouched
+references. At completed events the experiment admits a four-mark
+measure-and-prepare description, while unresolved waits retain coherence
+that the completed instrument erases. C and E share the completed clock law
+and predict field-plus probabilities $35/54$ and $14/27$ after three native
+attempts. Without feedback each two-tick cycle of clock A carries B-count
+mean two and variance $16$; instrument-valued clock conversion preserves
+that count law, and direct native elimination and elimination through the
+joint event instrument agree, including B-triggered field feedback
+\cite{nativeJointClock}.
+
+An active event clock lets each native event incident to port $0$,
+including a zero-current one, trigger one fixed compiled modular word
+$U(1)=\exp(iH)$ generated by the native three-state attempt transfer; the
+carrier pauses during probe services, which are charged separately. For
+caps $c\in\{1,2\}$ the execution retains all $3{,}661$ joint output labels,
+the first timeout has probability $(5/6)^c$ and both ticks occur with
+probability $[1-(5/6)^c]^2$. Closed native histories derive a faithful
+thermal reference for that generator, and passive repair itself cannot act
+as a nontrivial modular automorphism on an invariant observer algebra
+\cite{nativeEventClock}. Conversely, on the complete movement-bit tape
+$B_t=|j_t|$, including zero currents, four consecutive covariances
+$c_n=\mathbb E[B_tB_{t+n+1}]-p^2$ invert to the two transfer roots
+$\lambda_\pm=(25\pm\sqrt3)/30$ with $p=5/33$, and the same roots predict the
+coherent quadratures $q_X=(1+\cos(sE_j))/2$ and $q_Y=(1+\sin(sE_j))/2$,
+$E_\pm=-\log\lambda_\pm$, with no frequency fit. The one-exponential
+approximation matching $c_0,c_1$ misses $c_2$ by exactly $1/2673000$. The
+inference does not distinguish C from E, whose classical tapes agree
+\cite{nativePredictions}.
+
+\subsection{Identification of the record law}
+\label{sec:identification}
+
+Nine source-executed scalar measurements identify all nine real coordinates
+$(k,g,h,m,n)$ of the record-law table of Theorem~\ref{thm:record-laws}, and
+with them the coarse definite-current instrument on all $78$ total-two
+states with arbitrary spectator and reference coherences. The execution
+comprises $36$ compiled probes and ten complete two-event histories, five
+with untouched quantum references, run through the canonical observer
+runtime with serialized checkpoint validation and continuation. An
+admissible collision law agrees with E on the whole binary shell, and this
+experiment separates it. A reference-uniform bound carries measurement
+uncertainty through the finite feedback histories, so narrowing the
+admissible probability tubes narrows the complete-history bound
+\cite{nativeIdentification}. The probes are synthetic; they identify an
+instrument within the classified family and select no law for nature.
+
+\subsection{Federations and matched screens}
+\label{sec:screens}
+
+Federations of $20$, $80$ and $320$ identical twelve-port carriers join
+them through the declared seam wiring, and native Kraus maps preserve
+signed-difference operator blocks with individual outcomes and reference
+correlations. The endpoint instruments fix the local Liouville action
+$H_{\rm native}=\sum_e(I-\Phi_e)$, with $h_e=P_1+\tfrac12P_{1/2}$ for C and
+$h_e=P_1$ for E on orthogonal projectors; the discrete uniform transfer is
+$I-H_{\rm native}/M$ for $M$ seams. For an observed region $R$, maximum
+degree $\Delta$ and retained radius $r$, truncating distant ports changes
+the complete local record, quantum and reference output by at most
+$\min(1,|R|(\Delta s)^{r+1}/(r+1)!)$ at auxiliary per-seam Poisson parameter
+$s$ \cite{nativeAction}. Actual source neighborhoods are identified at levels
+$1/3$, $2/4$ and $3/5$. On the $15{,}360$- and $245{,}760$-port screens
+matched radius-nine initial restrictions give complete root-observer
+output distance below $0.000382$ at $s=1/4$; after four local incident
+ticks, with no auxiliary time coordinate, the pair allowance is below
+$6.656\times10^{-9}$, and a density-$1/3$ preparation keeps a certified
+two-time field covariance above $0.15332581621$. Full-screen executions
+retain the actual seam scheduler, current records, feedback repair costs,
+timeouts and serialized continuation. Conditional on a conserved total,
+native connected exchange derives the unique diagonal equilibrium, so the
+screens at totals $5{,}120$ and $81{,}920$ keep density $1/3$, the feedback
+reversal of the connected four-field statistic and their finite-number
+correlations without product preparation \cite{nativeTimeFields}.
+
+A coherent observer runs on the same matched screens. A logical qubit on
+ports $0$ and $1$, possibly entangled with an untouched reference, passes
+through two native incident ticks and a local phase $Z_a$ after first mark
+$1$, while every other port is occupied with probability $1/3$. A
+degree-two operator dual evaluates the common $222$-port ball with $561$
+seams and all $21$ capped record labels, and each full-screen completed
+output lies within $7.779\times10^{-10}$ of it, uniformly over references.
+C and E give identical classical records in this protocol and different
+reference coherences \cite{nativeScreenObserver}. The native continuum
+operator of the refining screens and its density, wave and response limits
+are stated in Section~\ref{sec:repair-geometry}.
+
 \section{A prediction protocol}
 \label{sec:prediction}
 
@@ -2541,7 +2763,7 @@ false \cite{prREADME}. If one candidate survives and the other is rejected,
 the counts discriminate the conditional instruments; if both survive, the
 test does not separate them; if both are rejected, neither specified
 apparatus model explains the counts within the declared premises. In every
-case the same counts bound the realized coherence $g$.
+case the same counts estimate the realized coherence $g$.
 
 \subsection{The source-executed implementation}
 \label{sec:ce-source}
@@ -2636,6 +2858,63 @@ hypothesis that this output is the complete physical endpoint
 with zero missing correction; the documented incomplete-transport contract
 of the branch requires physical transport work. No fit is performed, $P$ is
 unchanged, and no theory significance is assigned.
+
+\subsection{A sequential design on one carrier}
+\label{sec:sequential}
+
+The phase test of Section~\ref{sec:ce-protocol} assumes fresh preparations.
+A sequential design runs it on one continuing carrier in its binary
+total-two sector without exact resets or independent trials. Each trial
+applies $379$ unread native attempts to whatever state the carrier holds,
+performs the fixed-seam native current herald, whose useful yield is $5/33$,
+and on either useful branch executes the source mixer, three unread native
+attempts, a second mixer and the native coin/current pointer; a failed
+herald remains a trial. After exactly $3{,}927$ trials the two locked
+likelihoods are compared on all six counts, and an impossible record
+returns a verdict outside both declared models. Conditional-law bounds on the
+dependent transcript give a wrong-candidate probability of at most $3/400$
+under the exact-source model; a uniform physical service allowance of
+$1/1570800$ per complete trial would suffice for a one-percent bound, and
+that allowance is not authenticated \cite{nativeProtocol}. The producer
+executes two consecutive trials per candidate and their reference controls,
+not the full campaign.
+
+\subsection{Native records against public data}
+\label{sec:public-records}
+
+Published records test precise attachments of native records without a
+laboratory realization of the carrier; each test is retrospective and
+states its readout hypotheses.
+
+The binary endpoint map is an identity or a local exchange, so diagonal
+preparations stay diagonal under recorded operations and local classical
+feedback. Under independent settings and local factorized responses the
+diagonal branch therefore obeys $P(\mathrm{win})\le3/4$ in the CHSH game,
+equivalently $S\le2$, and an executable control that lets one side read
+both settings wins every trial. The native example on the $66$-state carrier,
+with all $1{,}056$ setting, coin and input histories, gives $S=26/33$.
+Replaying the deposited loophole-free records of Hensen et
+al.\ \cite{hensen2015} reproduces $245$ eligible trials, $196$ wins and
+$S=16036094/6619647\approx2.42250$, and the published fixed-count analysis
+gives a tail bound near $0.03917$ with its setting-calibration allowance
+\cite{nativeBell}. This rejects the local classical reading of the diagonal
+branch under that experimental contract; it does not test the quantum C/E
+instruments or distinguish them.
+
+Two native ports, or two distinct regions of one carrier, counting incident
+repairs under the uniform scheduler have independent interval increments
+with exact count laws in the first clock's units. Attaching the published
+$300$-second blocks of the Ar$^{13+}$/Yb$^+$ frequency ratios of King et
+al.\ \cite{king2022} to the normalized count ratio, through a gain of at
+least one, a declared bracket on the Yb$^+$ frequency, an absolute error of
+$10^{-12}$ per block and direct phase-count readback, gives conditional
+probability bounds for the observed block ranges below $10^{-104}$ for two
+ports and below $10^{-22}$ over all ordered pairs of the $3{,}433$ distinct
+regional event sets, after charging every choice of 2021 subwindow, gain and
+retained blocks \cite{nativePublicData}. The rejection uses the complete
+count law, including its variance. It rejects the direct attachment together with
+its readout assumptions; the interrogations and servos of the experiment are
+outside that hypothesis, and no native clock is rejected.
 
 \section{The premise map}
 \label{sec:premises}
@@ -2825,12 +3104,20 @@ Section~\ref{sec:common}, retains its records, and bounds numerical and
 physical services along the way would connect the construction to a
 continuum. Two oscillators at increasing occupation cutoff stay two
 oscillators, and the spatial bounds of Section~\ref{sec:scalar} transfer to
-another implementation only through an explicit map. No continuum limit of
+another implementation only through an explicit map. The native continuum
+operator of Section~\ref{sec:repair-geometry} supplies such a limit for the
+passive density fields and admitted waves of the repair process itself;
+extending it to the interacting construction, with a quantum reference
+state and Lorentzian observation maps, is open, and no continuum limit of
 the interacting family is established.
 
 \paragraph{Matter, geometry and clocks on one process.} Interacting matter,
-responsive geometry and a physical clock calibration have to attach to the
-same state, event law and retained records. This needs stress and geometric
+a radial observation algebra for the two-dimensional screen, responsive
+geometry and a physical clock calibration have to attach to the same state,
+event law and retained records. The optical comparison of
+Section~\ref{sec:public-records} rejects one direct attachment of native
+event counts, so a clock calibration needs an explicit model of the
+measuring apparatus. This needs stress and geometric
 readouts from the same family, the balance and Ward identities with
 controlled tails, a calibrated scale, a choice of modular reference produced
 by the construction, and a relation between modular readings and causal
@@ -2977,6 +3264,86 @@ FloatingPragma (2026). \emph{Joint counting stationarity and its geometric
 boundary}. Exact entropy identity and finite source controls.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/47aba948d4c0acad7092759fc223eae5462b4cba/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
 
+\bibitem{nativeRecovery}
+FloatingPragma (2026). \emph{Observer-relative time, fields and shared
+records}. Recovery assessment of the native process results.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/OBSERVER_RELATIVE_RECOVERY.md}
+
+\bibitem{nativeCorrespondence}
+FloatingPragma (2026). \emph{One process, overlapping observer records and
+an effective transfer}. Executable model and exact receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/observer_correspondence/README.md}
+
+\bibitem{nativeQuantumCorrespondence}
+FloatingPragma (2026). \emph{Coherent quantum histories on overlapping
+native clocks}. Executable model and receipts.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/quantum_observer_correspondence/README.md}
+
+\bibitem{nativeCompiledClock}
+FloatingPragma (2026). \emph{Source-compiled apparatus in a complete
+observer-clock history}. Executable model and exact receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/compiled_clock_history/README.md}
+
+\bibitem{nativeJointClock}
+FloatingPragma (2026). \emph{Joint local clocks and quantum fields with
+explicit memory}. Executable model and exact receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/joint_clock_process/README.md}
+
+\bibitem{nativeEventClock}
+FloatingPragma (2026). \emph{An executable modular clock for the native
+record-transfer description}. Executable model and exact receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/transfer_modular_probe/README.md}
+
+\bibitem{nativePredictions}
+FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
+comparison}. Modular clock recovery and native repair response.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/predictions/README.md}
+
+\bibitem{nativeIdentification}
+FloatingPragma (2026). \emph{Identifying the complete current-resolving
+repair law}. Executable model and receipts.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/repair_identification/README.md}
+
+\bibitem{nativeAction}
+FloatingPragma (2026). \emph{A local action for native quantum
+observations}. Executable model, locality bounds and screen comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/native_action/README.md}
+
+\bibitem{nativeTimeFields}
+FloatingPragma (2026). \emph{Joint time and field laws on matched source
+screens}. Executable model and receipts.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/observer_time_fields/REFINEMENT.md}
+
+\bibitem{nativeScreenObserver}
+FloatingPragma (2026). \emph{Coherent observer outputs on matched source
+screens}. Executable model and receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/coherent_screen_observer/README.md}
+
+\bibitem{nativeProtocol}
+FloatingPragma (2026). \emph{A finite sequential native-law prediction
+protocol}. Executable model and receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/closed_prediction_protocol/README.md}
+
+\bibitem{nativeBell}
+FloatingPragma (2026). \emph{Classical record responses and published Bell
+measurements}. Replay of the deposited records.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/predictions/BELL_RECORDS.md}
+
+\bibitem{nativePublicData}
+FloatingPragma (2026). \emph{OPH predictions and public-data comparisons}.
+Retrospective audit, including the direct optical-clock attachments.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+
+\bibitem{hensen2015}
+Hensen, B. et al. (2015). Loophole-free Bell inequality violation using
+electron spins separated by 1.3 kilometres. \emph{Nature} 526, 682--686.
+\url{https://doi.org/10.1038/nature15759}
+
+\bibitem{king2022}
+King, S. A. et al. (2022). An optical atomic clock based on a highly
+charged ion. \emph{Nature} 611, 43--47.
+\url{https://doi.org/10.1038/s41586-022-05245-4}
+
 \bibitem{mCONSTRUCTION}
 FloatingPragma (2026). \emph{OPH model construction from local repair}.
 Construction guide with completion target, acceptance criteria and audit
@@ -2986,7 +3353,12 @@ controls.
 \bibitem{mRECORDLAWS}
 FloatingPragma (2026). \emph{Admissible record laws for native repair}. Model
 document and exact receipt.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/03c26e8aaccfd6e7cd85e32214262e7d6a518447/model/record_laws/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/record_laws/README.md}
+
+\bibitem{mINSTRUMENT}
+FloatingPragma (2026). \emph{The coherence table and the recorded
+instrument}. Exact control on the actual carrier.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/925b77c83115a9085c1dd020291bbc6c11e3f45d/model/record_laws/INSTRUMENT_CONTRACT.md}
 
 \bibitem{mCANDIDATES}
 FloatingPragma (2026). \emph{Concrete repair-law candidates}. Candidate
