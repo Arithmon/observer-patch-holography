@@ -75,7 +75,11 @@ event, a finite observer algebra of preparations, measurements, retained
 records and record-only feedback, declared services, and two accepted closure
 inputs. We give acceptance criteria for the completion target and report the
 certified components. A two-event observer whose retained record selects its
-next repair moves a final occupation from $1/6$ to $35/264$. Under uniform seam attempts the repair channels with discarded records have the exact quantum spectral gap $(5-\sqrt5)/60$, and complete classical records recover every initial load population and permit an optimal recovery of the unknown quantum input with explicitly computed fidelity below one. A binary detector converts the electromagnetic coupling computed from a closure input into a recorded bit that controls the next repair, and scalar-field detectors carry refinement, occupation and complete-output error bounds. In a common source, quantum
+next repair moves a final occupation from $1/6$ to $35/264$. Uniform seam
+attempts have exact quantum gap $(5-\sqrt5)/60$; complete records recover
+initial classical populations and give bounded quantum recovery.
+Scalar-field detectors carry refinement, occupation and complete-output
+error bounds. In a common source, quantum
 electric flux, charged fermions and a scalar field share one register; for a
 declared preparation its recorded feedback response is certified nonzero at
 infinite oscillator occupation. A four-read continuation retains the disturbed
@@ -91,9 +95,11 @@ and a source-compiled apparatus reproduces that history within $10^{-11}$.
 Joined carriers form
 federations and matched screens with complete-output bounds. On the refining
 two-dimensional spherical source, a common subsequence defines a regular local spatial form with
-spectral dimension two, an actual Gaussian density limit at finitely many
-scaled native times, admitted coherent waves with a finite comparison-space
-propagation bound, and continuous classical Gaussian wave readouts.
+spectral dimension two, continuous Gaussian density histories measured by
+normalized native incident clocks, admitted coherent waves with a finite
+comparison-space propagation bound, and continuous classical Gaussian wave
+readouts. The density history also determines a reflection-positive free
+field with diffusive dispersion and an explicit Euclidean quadratic form.
 A controlled repair protocol has a nonvanishing mean response at
 fixed small amplitude in this limit. Retrospective replays of public Bell
 and optical-clock records reject, under their stated access and readout
@@ -2403,7 +2409,12 @@ boundedly invertible $L^2$ energy identification of $A$ with the static
 boundary action of a smooth compact three-dimensional Dirichlet bulk with
 smooth boundary, whose Steklov eigenvalues grow like $\sqrt n$; bounded-energy
 internal rank-three modes vanish at this scaling, and physical radial
-observations are not constructed \cite{nativeContinuum}. Full native density correlations converge to
+observations are not constructed \cite{nativeContinuum}. An exact terminal
+reduction also gives local dual-edge conductances in $[5/8,15/19]$, with
+Green-operator error at most $182\,2^{-l}$ relative to native cell means.
+Thus this explicit weighted graph has the same continuum subsequences;
+the routing-dependent conductances are not proved to select one unique
+form. Full native density correlations converge to
 $e^{-\tau A}$, while the admitted coherent continuation converges strongly
 to $\cos(t\sqrt A)$. The full-space extension $\bar A=A\oplus0$ satisfies
 \[
@@ -2443,9 +2454,66 @@ $G_l^{1/2}$ gives limiting covariance $Ge^{-|\tau-u|A}$.
 The Gaussian law is reflection positive: past and future are conditionally
 independent given the time-zero field. Its reconstructed one-particle
 semigroup is $e^{-\tau A}$, with generator $A$, not $\sqrt A$.
-These are finite-dimensional process laws; no path-space tightness,
-coherent quantum preparation or laboratory duration is inferred
-\cite{nativeContinuum}.
+The linearly interpolated native density converges in
+$C([0,T],H^{-3}(S^2))$, and its finite Green-filtered readout converges in
+$C([0,T],H^{-2}(S^2))$. A corrected forward--backward martingale
+decomposition uses $g=2(I+P_l)^{-1}f$; its conditional bracket bound holds
+at every state and hence at stopping times. Uniform harmonic supremum
+tails then give path tightness. The step paths are uniformly close to the
+interpolations and have the same continuous limits in the Skorohod topology.
+These Sobolev spaces use the supplied source sphere, without a physical
+spacetime or laboratory duration identification \cite{nativeContinuum}.
+
+For the normalization $\phi=\Phi/\sqrt2$ of the Green-filtered limit, a mode
+with $A$-eigenvalue $\lambda>0$ has covariance
+$e^{-\lambda|\tau-u|}/(2\lambda)$. Its temporal Fourier transform is
+$(\omega^2+\lambda^2)^{-1}$, giving the Euclidean quadratic form
+\[
+ S_E(\phi)=\frac12\int_{\mathbb R}
+       \bigl(\|\partial_\tau\phi\|^2+\|A\phi\|^2\bigr)\,d\tau.
+\]
+This is the finite-mode Gaussian precision and the continuum
+Cameron--Martin form on its finite-energy domain, not a density relative
+to an infinite-dimensional Lebesgue measure. Gaussian reconstruction gives
+Hamiltonian $d\Gamma(A)$. Its spatial precision is $A^2$; a scalar clock
+conversion cannot change all frequencies $\lambda$ into $\sqrt\lambda$.
+The action therefore follows from this native readout law, with diffusive
+dispersion. It does not establish a relativistic vacuum or a coherent
+preparation of that reconstructed state \cite{nativeContinuum}.
+
+\paragraph{Incident clocks of the same density history.}
+Let $a_l=1260\,16^l$, $M_l=630\,4^l$ and let a fixed event set contain
+$d_l>0$ seams. Its incident counter $N_l(n)$ includes zero-current repairs,
+with $p_l=d_l/M_l$ and $a_lp_l=2d_l4^l$. Write $T_l(k)$ for the first
+attempt at its $k$th tick, with $T_l(0)=0$. For
+$n_*=\lceil a_l(T+\delta)\rceil$, the count martingale gives
+\[
+ \Pr\!\left[\max_{n\le n_*}|N_l(n)-np_l|>a_lp_l\delta\right]
+ \le \frac{n_*(1-p_l)}{a_l^2p_l\delta^2}.
+\]
+On the complementary event, uniformly on $[0,T]$, the normalized count
+$N_l(\lfloor a_lt\rfloor)/(a_lp_l)$ differs from $t$ by at most
+$\delta+1/a_l$, and the inverse clock
+$U_l(t)=T_l(\lfloor a_lp_lt\rfloor)/a_l$ differs by at most
+$\delta+1/(a_lp_l)$. Both converge uniformly in probability to the identity.
+A primitive port has $d_l=5$ or $6$, and a whole carrier has $d_l=33$.
+The density path theorem therefore transfers the same continuous limit
+to these local count parametrizations. It requires no independence
+between clock marks and fields, and grants no additional field access
+\cite{nativeClockLimit}.
+
+For fixed bounded incidence counts $d_i$ and shared-seam counts $c_{ij}$,
+centered clock counts divided by $\sqrt{a_l/M_l}$ converge at finitely many
+times to Gaussian increments with covariance $\min(t,u)c_{ij}$.
+The finite covariance retains the correction $-d_id_j/M_l$.
+Conditioning on the seam and auxiliary-swap history makes the limiting
+density characteristic function deterministic, so these clock
+fluctuations and density snapshots are asymptotically independent.
+Adjacent degree-five port clocks have limiting normalized correlation
+$1/5$, the two endpoints of an external seam have correlation $1/6$, and
+nonadjacent clocks have correlation zero. These are native model
+predictions under the stated schedule and preparation, without an
+atomic-clock or proper-time dictionary \cite{nativeClockLimit}.
 
 \paragraph{The reference-state boundary.}
 Increasing native-return caps match modular phase magnitudes to the cosine
@@ -3064,9 +3132,10 @@ Refinement transfer to complete histories and native feedback; occupation
 limits with complete-output bounds for free and interacting two-site
 actions; the infinite-occupation interacting signal. A native regular local
 $H^1$ form of spectral dimension two governs spherical
-Gaussian fields, decay and admitted finite-speed comparison waves
+Gaussian density paths, their incident-clock parametrizations, the derived
+Gaussian precision $-\partial_\tau^2+A^2$, and admitted finite-speed comparison waves
 \cite{nativeContinuum}. &
-The scalar action, quantization and vacuum; inertia; the model clock; a
+The physical scalar action, quantization and vacuum; inertia; a calibrated clock; a
 spatially refining family for the interacting process.\\
 \addlinespace
 Modular clocks \cite{ophspacetime} &
@@ -3085,8 +3154,8 @@ depth.\\
 \addlinespace
 Gravity \cite{ophspacetime} &
 A rank-three response attached to committed records and native causal cones;
-a common local spherical continuum and continuous observation and
-classical-wave limits under their count-first contract
+a common local spherical continuum, simultaneous native density and
+incident-clock limits, and separate classical-wave limits under their count-first contract
 \cite{nativeContinuum}; the boundary-action test excludes a bounded energy
 identification with a smooth compact three-dimensional Dirichlet bulk. These
 supply no responsive metric or physical stress. &
@@ -3305,23 +3374,29 @@ Observer Synchronization in Observer-Patch Holography}. Public manuscript.
 
 \bibitem{mREADME}
 FloatingPragma (2026). \emph{The runnable OPH model}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/README.md}
 
 \bibitem{nativeContinuum}
 FloatingPragma (2026). \emph{A common native continuum operator, wave
 observations, modular phases and repair response}. Executable model,
 analytic bounds and retained source receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/README.md}
 
 \bibitem{nativeEntropy}
 FloatingPragma (2026). \emph{Joint counting stationarity and its geometric
 boundary}. Exact entropy identity and finite source controls.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
 
+\bibitem{nativeClockLimit}
+FloatingPragma (2026). \emph{Incident clocks on the simultaneous density
+continuum scale}. Analytic count and inverse-clock bounds, correlated
+clock fluctuations and exact native controls.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/relative_observer_geometry/README.md}
+
 \bibitem{nativeRecovery}
 FloatingPragma (2026). \emph{Observer-relative time, fields and shared
 records}. Recovery assessment of the native process results.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/OBSERVER_RELATIVE_RECOVERY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/OBSERVER_RELATIVE_RECOVERY.md}
 
 \bibitem{nativeCorrespondence}
 FloatingPragma (2026). \emph{One process, overlapping observer records and
@@ -3351,7 +3426,7 @@ record-transfer description}. Executable model and exact receipt.
 \bibitem{nativePredictions}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Modular clock recovery and native repair response.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/predictions/README.md}
 
 \bibitem{nativeIdentification}
 FloatingPragma (2026). \emph{Identifying the complete current-resolving
@@ -3366,7 +3441,7 @@ observations}. Executable model, locality bounds and screen comparisons.
 \bibitem{nativeTimeFields}
 FloatingPragma (2026). \emph{Joint time and field laws on matched source
 screens}. Executable model and receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/observer_time_fields/REFINEMENT.md}
 
 \bibitem{nativeScreenObserver}
 FloatingPragma (2026). \emph{Coherent observer outputs on matched source
@@ -3386,7 +3461,7 @@ measurements}. Replay of the deposited records.
 \bibitem{nativePublicData}
 FloatingPragma (2026). \emph{OPH predictions and public-data comparisons}.
 Retrospective audit, including the direct optical-clock attachments.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{hensen2015}
 Hensen, B. et al. (2015). Loophole-free Bell inequality violation using
@@ -3402,7 +3477,7 @@ charged ion. \emph{Nature} 611, 43--47.
 FloatingPragma (2026). \emph{OPH model construction from local repair}.
 Construction guide with completion target, acceptance criteria and audit
 controls.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/CONSTRUCTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/CONSTRUCTION.md}
 
 \bibitem{mRECORDLAWS}
 FloatingPragma (2026). \emph{Admissible record laws for native repair}. Model
@@ -3422,12 +3497,12 @@ register.
 \bibitem{mPREMISES}
 FloatingPragma (2026). \emph{OPH reverse-engineering table: model and theorem
 premises}. Generated premise map and concrete theorem bindings.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/PREMISES.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/PREMISES.md}
 
 \bibitem{mMAP}
 FloatingPragma (2026). \emph{Machine-readable premise crosswalk}. Source of
 the generated premise map.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/tracking/premise_register.json}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/tracking/premise_register.json}
 
 \bibitem{mINTERP}
 FloatingPragma (2026). \emph{OPH interpretation and working terms}.
@@ -3465,7 +3540,7 @@ nonselection}. Model document.
 \bibitem{oSOURCESELECT}
 FloatingPragma (2026). \emph{Selecting one source, interface and repair law}.
 Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/SOURCE_SELECTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/SOURCE_SELECTION.md}
 
 \bibitem{pREADME}
 FloatingPragma (2026). \emph{P-dependent electromagnetic observation and native
@@ -3528,7 +3603,7 @@ discriminator}. Model document.
 \bibitem{prREADME}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7e3297e6e4cf518635327931b5b0b69657320837/model/predictions/README.md}
 
 \bibitem{prDERIV}
 FloatingPragma (2026). \emph{Exact record-instrument discrimination}. Model
