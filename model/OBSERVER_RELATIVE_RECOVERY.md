@@ -28,12 +28,12 @@ construction realizes those domains.
 | Bridge | Exact finite result | Scope |
 | --- | --- | --- |
 | Records to spatial structure | Current-only binary calibration reconstructs the response and rank-three slow-band Gram inside the quantum clocks' 66-state sector. A separate 360-shot even-load protocol removes coin fairness for its structural readout. | Binary calibration retains known preparations, resets, addressed seams and the fair native law; finite-cap failures remain recorded. The two protocols have different preparation and scheduling contracts. |
-| Visible clock comparisons to geometry and fields | At N ticks of A, B has mean N and variance 8N/5 for adjacent ports or 2N otherwise. All pair laws recover the graph and rank-three Gram. The same native law predicts the joint law of the initial A occupation and B occupation at the second A incident in all three distance classes. | Requires ordered/coincident pair tapes and, for fields, initial local bits and the stationary total-two preparation. No hidden attempt count or dimensional clock is supplied. Identity repair preserves clock laws but fails the field test. |
+| Visible clock comparisons to geometry and fields | Pair means and terminal coincidences recover arbitrary positive IID seam weights and the structural Gram. Those weights predict complete stopped field laws. Regional unions on one carrier have an exact count law and nonzero fluctuation floor whenever their event sets differ. | Requires ordered/coincident tapes and, for fields, local initial bits and the stationary total-two preparation. A periodic scheduler matches pair means but fails the IID interval law. No hidden attempt counter or dimensional clock is supplied. |
 | Repair to history action | Each native endpoint instrument has an explicit unitary completion and a dimensionless Hermitian action whose event-boundary histories reproduce the complete record-conditioned process. | The environment and records are retained. This is an exact representation of the finite instrument, with no autonomous carrier Hamiltonian or relativistic interpolation inferred. |
 | Repair to local-clock current action | Native circulating currents have exact covariance `P/5` per tick of one port and a long-count Gaussian increment action with coefficient `5/2`. | Exact finite moments use the derived local-tick Palm preparation and carrier-wide current access. Finite blocks retain non-Gaussianity and dependence; the limit is not a relativistic field action. |
 | Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. Actual host-clock records permit one-block calibration and separate validation. | The measured software timing is an implementation comparison. Traceable lab accuracy and an identification with physical proper time require independent evidence. |
 | Occupation histories to a spatial action | Complete native records reconstruct long occupation averages with an exact Gaussian-limit covariance and positive quadratic action. The incident-clock correction is derived rather than replaced by a mean wait. | Stationary diagonal preparation and carrier-wide initial/current disclosure are supplied. A port-only tape supplies only its local scalar. The field is a history fluctuation, not an instantaneous Gaussian state. |
-| Rank-three field and spherical screens | The actual slow-band marginal has exact axial/transverse clock-dependent variances. Eliminating internal variables on the existing spherical screens gives a Schur Green operator with a uniform polynomial approximation bound. One fixed twenty-face ancestry dictionary has certified native Green and clock covariances at levels zero through three. | The local rank is an embedding dimension. Ancestry and the `4^level` normalization are supplied source data. The all-level Green tail and identification with a target continuum are unproved; the supplied torus is a separate comparison example. |
+| Rank-three field and spherical screens | The native Schur Green operator has a proved all-level scaled bound. Nested ancestry observations admit nonzero compatible subsequential Gaussian laws, shared by normalized attempt and incident clocks. Four levels also have certified numerical covariance comparisons. | Ancestry and the `4^level` normalization are declared source data. Whole-sequence uniqueness, a target Green operator, interacting/conformal dynamics and physical Lorentzian geometry remain unproved; the supplied torus is separate. |
 | Endpoint records to causal placement | A declared seam-midpoint readout and canonical dependency height satisfy the registered forward Lorentz-cone placement conditions on every finite complete tape. A four-event native execution with all sixteen coin branches has an authenticated Lean instance. | Exogenous scheduling and complete endpoint records are required. An actual four-event tape has a null-cone pair without ancestry; causal-order equivalence, physical boosts and proper-time calibration do not follow. |
 | Field records to temporal representation | Exact incident-clock correlations reconstruct a seven-mode cyclic Hilbert space on one carrier; actual source-screen correlations also certify a nontrivial two-vector temporal subspace. | The seven-mode result needs exact laws and is ill-conditioned for sampled data. Screen transfer values are compressions, not a closed two-mode dynamics or physical energy calibration. |
 
@@ -139,7 +139,7 @@ records that separate obligation.
 | Item | Status in the executed instance | Remaining obligation |
 | --- | --- | --- |
 | Elementary ports, native occupation domain and S2 federation routing | Fixed by the retained architecture; all graph/coupling calls are source bound. | Physical identification of this instance; no claim that routing uniquely follows from A1 alone. |
-| Native local instrument, fair coin and uniform seam schedule | Specified by the complete C or E instance. | Choosing C versus E and proving applicability to a physical apparatus. The production adaptive schedule is a different instance. |
+| Native local instrument and scheduling | The admitted current family fixes classical endpoint probabilities. Pair clocks identify nonuniform IID seam weights; positive exposure gives a law-uniform preparation bound. | Coherence-table selection, temporal independence and physical apparatus identification remain distinct. Outcome-dependent seam choice is outside the preparation theorem. |
 | Exchange generator, density and coherence coefficients | Derived from the native Kraus branches and actual seams. | No extra oscillator or relativistic action follows just from these coefficients. |
 | Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
 | Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
@@ -157,6 +157,17 @@ state, uniformly including an untouched reference. Every subsequent common
 complete observation protocol inherits that error. The larger federation
 budgets are conservative mathematical certificates, not executed trillion-step
 preparations or a uniform continuum mixing result.
+
+The [full current-family bound](record_laws/README.md#preparation-by-finite-native-warm-up)
+extends elementary-carrier preparation to every admitted coherence table.
+Under uniform seam selection, 221 discarded attempts bound binary preparation
+error by `1/1000`; 318 suffice from any total-two state on the full 78-state
+carrier. Both bounds include arbitrary untouched references. Nonuniform
+exogenous schedules use a positive lower exposure bound. Restricted law-only
+feedback is allowed, but source-dependent seam choice and retained warm-up
+records are not. Every common complete subsequent observation instrument
+inherits the error; a full-carrier comparison must retain out-of-domain
+outcomes rather than apply a binary-only map.
 
 The [canonical-sector field construction](observer_time_fields/REFINEMENT.md)
 removes independently prepared Bernoulli occupations from the actual-screen
@@ -700,8 +711,9 @@ coefficients, not complete quantum histories or global native-attempt steps.
 
 The port-labelled maps fail at the next tested radius; finite matches do
 not establish convergence at every level. The pinned routing generator's
-floating geometric comparisons need a uniform stability argument before
-an all-level source theorem follows. Neither a fixed-radius match nor the
+floating geometric comparisons need a uniform stability argument for
+an all-level port-labelled local-isomorphism theorem. The occupation-field
+bound applies to every valid port routing and does not need that argument. Neither a fixed-radius match nor the
 conditional infinite-graph construction supplies a relativistic scaling.
 
 A finite screen can alternatively support effective spacetime on a specified

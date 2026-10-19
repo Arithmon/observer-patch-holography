@@ -213,14 +213,161 @@ construction gives `Pr(plus) = 1/2 + Re(k e^{-iθ})/2`. C0, C and E predict
 certainty at `θ = 0`; T predicts `1/2`. This second test separates the two
 idempotent laws.
 
+## Preparation by finite native warm-up
+
+[burn_in.py](burn_in.py) extends the existing
+[C/E mixing theorem](../observer/QUANTUM_MIXING.md) to **every admissible
+coherence table**, including complex phases, different laws on different
+seams, and the restricted law feedback described below. The uniform binary
+density `tau=P_binary/66` is the unique stationary source state of each fixed
+uniformly scheduled law. Their quantum spectral gap is the same exact
+`(5-sqrt(5))/60`. Equilibrium alone therefore selects none of the nine real
+record-law coordinates.
+
+More usefully, an arbitrary initial total-two density, even entangled with
+an untouched reference, approaches `tau` with an explicit error. A finite
+warm-up replaces an exact stationary-background preparation with that error
+budget. It does not prepare the coherent probes, blank records, programme
+states or source apparatus required by other experiments.
+
+**Domination on the actual source.** Positivity of every current block gives
+`|G_j(a,b)| <= sqrt(P(j|a)P(j|b))`. The right side is C0's coefficient.
+Consequently C0 bounds the absolute value of every admissible channel entry.
+For a binary matrix unit with signed difference `z=x-y`, let `c1` and `c2`
+count seams with endpoint differences of magnitude one and two. C0's block is
+
+```text
+B_z = [1-((1-1/sqrt(2))*c1+c2/2)/30] I - L_excl(G[z=0])/60.
+```
+
+Each local block is a positive self-adjoint contraction. Its row and column
+sums coincide. The exact native enumeration verifies this reduction on all
+4,356 binary matrix units, symmetry, and the largest nonzero-sector sum
+
+```text
+q0 = 43/60 + 2 sqrt(2)/15 < 57/60 < r=(55+sqrt(5))/60.
+```
+
+The bound is attained for the 60 oriented adjacent-site differences. The
+diagonal sector is exactly the existing exclusion chain. Its gap is the
+source graph gap divided by 60, using the weighted exclusion theorem of
+[Caputo, Liggett and Richthammer, §4.1.1, (4.1)](https://arxiv.org/pdf/0906.1238).
+Thus every binary channel contracts the nonconstant diagonal sector by `r`
+and every off-diagonal sector by at most `q0`, regardless of its phases.
+Entrywise domination implies the operator 2-norm bound because the dominating
+matrix has both row and column sums bounded by `q0`; normality of the admitted
+channel is unnecessary. The surviving classical gap eigenmode makes the
+exact binary traceless Hilbert--Schmidt contraction factor `r`. Here the
+spectral gap means one minus the largest modulus of a nonstationary
+eigenvalue. On all 6,084 full-carrier units, the
+collision-to-collision block is diagonal and bounded in modulus by `5/6`.
+The triangular binary/collision decomposition therefore gives the same
+unique stationary density and spectral gap on dimension 78; it does not
+give a Hilbert--Schmidt contraction bound for that nonunital full channel.
+
+**Schedules and restricted feedback.** Uniform scheduling is sufficient,
+but a weaker condition gives a quantitative result. At each attempt the seam
+probabilities may be an exogenous, time-varying distribution with
+`p_e >= alpha/30`, for a common `0<alpha<=1`. Decompose that distribution
+into an `alpha` uniform part and a remaining distribution. Each binary
+single-seam C0 map is a self-adjoint positive contraction; each classical
+single-seam map fixes the uniform density. Their nonconstant contraction
+factors are bounded by
+
+```text
+r_alpha = 1-alpha*(1-r),      mu_alpha = 1-alpha/6.
+```
+
+The seam choice must be independent of the source and preceding repair
+outcomes. The law table may depend on the seam, attempt and preceding
+**coarse current records**, with no intervening operation on the source.
+For each complete current path, the absolute product of coefficients is
+bounded by the corresponding product of C0 coefficients. Summing over all
+paths bounds the resulting off-diagonal matrix entrywise by the product of
+the exogenous C0 matrices. All diagonal path probabilities are independent
+of the chosen tables, giving the same product of classical kernels.
+This proves the contraction also for this particular law-only feedback.
+It does not follow merely from each unread channel fixing `tau`. A changed
+record basis, coherent access to the environment, other source operations,
+or outcome-dependent seam scheduling requires a separate argument.
+
+**Untouched references and full outputs.** For any initial joint density
+`rho_SR` supported on the binary source, the resulting source channel `Psi_n`
+obeys
+
+```text
+dist((Psi_n tensor id_R)(rho_SR), tau tensor rho_R)
+    <= min(1, 33*r_alpha^n),                 dist=half trace norm.
+```
+
+The replacement map is the orthogonal Hilbert--Schmidt projection onto the
+identity source operator. The preceding sector bounds give
+`||Psi_n-Replacement||_(2->2) <= r_alpha^n`. A pure input has Schmidt rank
+at most 66, so its output difference has dimension at most `66^2` and
+`||Y||_1 <= 66||Y||_2`. Tensoring with the reference leaves the 2-norm bound
+unchanged. The input Hilbert--Schmidt norm is one. Convexity proves the stated
+bound for arbitrary mixed inputs and reference dimension.
+
+For all 78 source states, choose an even integer `0<=s<=n`. After `s`
+attempts the collision population is at most `mu_alpha^s`. In the proof,
+replace the collision block by `tau` times its reference marginal, and
+remove binary/collision cross terms. Positivity bounds those cross terms
+by the square root of the collision probability; the replaced population
+costs at most that probability. Keep any classical controller prefix during
+this mathematical comparison. For prefix probabilities `w_h` and conditional
+collision masses `q_h`, Cauchy--Schwarz gives
+`sum_h w_h sqrt(q_h) <= sqrt(sum_h w_h q_h) <= mu_alpha^(s/2)`.
+Conditional on each prefix the remaining
+law-only protocol satisfies the same binary bound, and the untouched
+reference marginals sum to the original marginal. Contractivity then gives
+
+```text
+dist(output_SR, tau tensor rho_R)
+ <= min(1, mu_alpha^(s/2)+mu_alpha^s+33*r_alpha^(n-s)).
+```
+
+This split introduces **no executed measurement or reset**. The evaluator
+uses the strict rational upper bound `r < 19079/20000`, verified by integer
+squaring, and optimizes only over even proof splits. `coverage_of(weights)`
+computes `alpha=30 min_e p_e`; it does not infer independence or certify
+sampling error for estimated weights. For uniform scheduling, the retained
+certificates bound binary warm-up error by `1/1000` after 221 attempts and
+full-carrier error by `1/1000` after 318 attempts, with proof split `s=88`.
+These are sufficient
+counts, not sharp mixing times or durations in seconds.
+
+The warm-up tape and its controller are traced out at the comparison
+boundary and are unavailable to the subsequent protocol. They may remain
+elsewhere as inaccessible records; this requires no physical erasure. They
+need not become independent of the source: even starting
+from `tau`, after repairing `(0,1)`, current `+1` has probability `5/66`
+and excludes an occupied endpoint zero. A false source/tape product would
+assign that joint event probability `5/396`. An exact second control changes
+the seam according to the first current and moves the source away from
+`tau`. A one-seam schedule also retains an exact empty/full coherence.
+These controls expose residual premises without changing the native law.
+
+Any **common complete subsequent CPTP instrument** inherits the same error,
+including its joint clock, field, quantum-reference and timeout outputs,
+independently of its finite horizon. For full-carrier warm-up it must be
+defined on all 78 states, for example by retaining an explicit out-of-domain
+outcome; a binary-only map is insufficient. Keeping or conditioning on the
+warm-up tape, or conditioning on a rare future success, is outside this
+unconditional bound. The two-attempt executable witness retains all records
+and complex reference coherences during law-only feedback; an independent
+floor/ceiling Kraus oracle checks every output before the tape is discarded.
+The result derives a preparation error budget, not a physical record-law
+selection, apparatus implementation, Lorentzian dynamics or interacting QFT.
+
 ## Scope
 
-The classification concerns one seam of the total-two carrier and assumes the
-same law on every seam, which carrier covariance requires. Network coherence
-rates beyond C and E, the [coherent continuation](../observer/COHERENT_CONTINUATION.md)
-of unread records and the response extensions in the
-[candidate guide](../CANDIDATES.md) are separate questions. No laboratory
-data enter.
+The classification concerns one seam of the total-two carrier. Requiring
+carrier covariance also fixes the same law on every seam; the warm-up bound
+allows seam-dependent laws within the same local family. The
+[coherent continuation](../observer/COHERENT_CONTINUATION.md) of unread
+environments and the response extensions in the
+[candidate guide](../CANDIDATES.md) have separate contracts. No laboratory
+data enter this classification or warm-up calculation.
 
 ## Run
 
@@ -228,6 +375,7 @@ From the repository root:
 
 ```sh
 python -m model.record_laws --check model/record_laws/results.json
+python -m model.record_laws.burn_in --check model/record_laws/burn_in_results.json
 python -m pytest -q -W error model/record_laws
 ```
 

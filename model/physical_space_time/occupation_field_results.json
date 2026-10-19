@@ -2,7 +2,9 @@
   "acceptance": {
     "actual_incident_clock_correction_derived": true,
     "actual_rank_three_carrier_marginal_clock_actions_proved": true,
+    "actual_source_all_level_Green_bound_and_vanishing_clock_correction_proved": true,
     "actual_source_fixed_ancestry_covariances_certified_at_levels_zero_through_three": true,
+    "actual_source_nonzero_compatible_subsequential_Gaussian_law_proved": true,
     "actual_source_screen_Green_elimination_and_uniform_approximation_proved": true,
     "conditional_graph_Green_convergence_criterion_proved": true,
     "existing_spherical_source_continuum_criterion_verified": false,
@@ -11471,6 +11473,130 @@
       "source_Green": "U^T L^+ U=S^+"
     }
   },
+  "actual_source_uniform_Green_and_subsequential_field": {
+    "acceptance": {
+      "attempt_and_root_incident_clock_difference_vanishes": true,
+      "interacting_CFT_or_Lorentzian_spacetime_identified": false,
+      "nonzero_compatible_subsequential_Gaussian_field_law_proved": true,
+      "target_spherical_Green_operator_identified": false,
+      "uniform_all_level_native_Green_bound_proved": true,
+      "whole_sequence_convergence_or_unique_spatial_limit_proved": false
+    },
+    "all_level_bounds": {
+      "0": {
+        "Green_norm_upper": "4096/3",
+        "attempt_Green_difference_upper": "1/2520",
+        "base_rank_three_Green_lower": "4",
+        "cell_gap_lower": "9/512",
+        "incident_Green_difference_upper": "5/12"
+      },
+      "1": {
+        "Green_norm_upper": "4096/3",
+        "attempt_Green_difference_upper": "1/40320",
+        "base_rank_three_Green_lower": "4",
+        "cell_gap_lower": "9/2048",
+        "incident_Green_difference_upper": "5/48"
+      },
+      "20": {
+        "Green_norm_upper": "4096/3",
+        "attempt_Green_difference_upper": "1/3046493065428865520259563520",
+        "base_rank_three_Green_lower": "4",
+        "cell_gap_lower": "9/562949953421312",
+        "incident_Green_difference_upper": "5/13194139533312"
+      },
+      "3": {
+        "Green_norm_upper": "4096/3",
+        "attempt_Green_difference_upper": "1/10321920",
+        "base_rank_three_Green_lower": "4",
+        "cell_gap_lower": "9/32768",
+        "incident_Green_difference_upper": "5/768"
+      }
+    },
+    "contract": {
+      "architecture": "existing shared-midpoint spherical source combinatorics",
+      "auxiliary_flat_comparison_is_a_supplied_physical_metric": false,
+      "limit_order": "stationary observation count first; common spatial subsequence second",
+      "native_update": "uniform fair binary endpoint repair on distinct-port carrier joins",
+      "observer": "centered ancestral counts from complete initial loads and seam currents"
+    },
+    "exact_base_geometry": {
+      "base_centroid_Gram": "(20 r^2/3) I_3",
+      "convexity_outward_faces_radii_and_edge_lengths_checked": true,
+      "rank_three_Green_lower_exact": "sqrt(5) + 7/3",
+      "squared_inradius": "2*sqrt(5)/15 + 1/3",
+      "squared_unit_side": "2 - 2*sqrt(5)/5"
+    },
+    "finite_source_binding_controls": [
+      {
+        "actual_faces_cross_seams_and_all_ancestries_checked": true,
+        "cells": 20,
+        "distinct_port_routing_and_native_carrier_rows_checked": true,
+        "dual_edges": 30,
+        "exact_edge_centroid_and_ancestry_checks": true,
+        "level": 0,
+        "vertices": 12
+      },
+      {
+        "actual_faces_cross_seams_and_all_ancestries_checked": true,
+        "cells": 80,
+        "distinct_port_routing_and_native_carrier_rows_checked": true,
+        "dual_edges": 120,
+        "exact_edge_centroid_and_ancestry_checks": true,
+        "level": 1,
+        "vertices": 42
+      },
+      {
+        "actual_faces_cross_seams_and_all_ancestries_checked": true,
+        "cells": 320,
+        "distinct_port_routing_and_native_carrier_rows_checked": true,
+        "dual_edges": 480,
+        "exact_edge_centroid_and_ancestry_checks": true,
+        "level": 2,
+        "vertices": 162
+      },
+      {
+        "actual_faces_cross_seams_and_all_ancestries_checked": true,
+        "cells": 1280,
+        "distinct_port_routing_and_native_carrier_rows_checked": true,
+        "dual_edges": 1920,
+        "exact_edge_centroid_and_ancestry_checks": true,
+        "level": 3,
+        "vertices": 642
+      }
+    ],
+    "nested_dictionary_controls": [
+      {
+        "coarse_channels": 20,
+        "coarse_observation_level": 0,
+        "exact_centered_Gram_and_refinement_checked": true,
+        "fine_channels": 80,
+        "source_level": 3
+      },
+      {
+        "coarse_channels": 80,
+        "coarse_observation_level": 1,
+        "exact_centered_Gram_and_refinement_checked": true,
+        "fine_channels": 320,
+        "source_level": 3
+      },
+      {
+        "coarse_channels": 320,
+        "coarse_observation_level": 2,
+        "exact_centered_Gram_and_refinement_checked": true,
+        "fine_channels": 1280,
+        "source_level": 3
+      }
+    ],
+    "theorem": {
+      "all_level_attempt_clock_error_upper": "1/(2520*16^level)",
+      "all_level_root_clock_error_upper": "5/(12*4^level)",
+      "all_level_scaled_native_Green_norm_upper": "4096/3",
+      "common_subsequence_all_ancestral_Gaussian_laws_exist": true,
+      "fixed_coarse_level_k_root_clock_error_upper": "(1+54*2^k)/(132*4^level)",
+      "source_graph_inequality_import": "round-sphere finite-perimeter isoperimetry",
+      "subsequential_base_three_mode_Green_lower": "4"
+    }
+  },
   "all_pass": true,
   "clock_negative_control": {
     "equal_mean_duration_rescaling_makes_fields_equal": false,
@@ -12544,8 +12670,9 @@
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/causal_placement.py": "35b7ae06cfcbdb48ba3425eb9d7cb4697ed20f164810f4be6c4025b1cb5b7f30",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
-    "model/physical_space_time/occupation_field.py": "3f11379c90e2b3bd180ca5b4db7e6b5edf6a368e59a979628633b3b7846316c4",
+    "model/physical_space_time/occupation_field.py": "1037cea6fc36f73d04e1e95ac6cd1053108d4eefb80b9d06083f47107a7b3e7e",
     "model/physical_space_time/source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
+    "model/physical_space_time/uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",

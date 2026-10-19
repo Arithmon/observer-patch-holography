@@ -2869,7 +2869,7 @@
   ],
   "model_supply": {
     "schema": "oph.model_theorem_map.v1",
-    "as_of": "2026-10-18",
+    "as_of": "2026-10-19",
     "coverage_note": "This map connects the canonical premise identifiers and active model obligations to their current construction evidence. It is navigation coverage, not an extraction of every paper or Lean antecedent and not a proof of discharge. Alternative branches retain their own hypotheses; cross-references do not change claim-registry dependency roles.\n\n**Construct the simplest shared repair process satisfying the declared observational contract.** Architecture, observer services and the complete repair law can supply inputs. Their consequences need not be postulated again. A theorem attachment must identify the same states, instruments, retained records, access rules and scheduling domain; matching component formulas alone is insufficient. Unique selection of an implementation is separate from executing that implementation and testing its predictions.\n\nThe live construction is `model/`. Its native C/E instruments determine local exchange and coherence laws, finite stationary preparation, field and event-clock statistics, and complete quantum observation bounds. The finite transfer logarithm, local Liouville generator and modular action on a chosen algebra/reference are distinct constructions. An observer-relative clock is an accessible record process; no preferred universal physical clock is required. Supplied scalar, gauge and matter actions remain conditional benchmarks with their own occupation, temporal and spatial error contracts.\n\n**Completion concerns observations.** The intended effective quantum-field, classical and gravitational descriptions must reproduce compatible joint statistics and intervention responses within controlled regimes. Fields, metrics and manifolds need not be fundamental objects. Native source execution does not by itself establish physical spacetime or identify a laboratory apparatus. Public oscillator comparisons retain their calibration, postselection, coordinate and sampling limitations; numerical agreement, mathematical consistency and code fidelity are separate from physical identification.\n\nThe entries distinguish finite executions, analytic bounds, imported theorem hypotheses and remaining physical attachments. Separate actions, preparations, detectors and approximation domains keep separate certificates. Reusing a theorem requires a valid map of its actual hypotheses, not a count of available results or the simultaneous imposition of incompatible branches.\n\nThe [current physical bridge](SOURCE_SELECTION.md#current-bridge-to-physical-observations) distinguishes finite observer field/clock results, the remaining effective QFT and spacetime identification, and actual public-data tests. No federation is required for the completed single-carrier calculations. Issue #1077 retains its original q=3 scalar-word deliverable; smaller executed histories do not replace it.\n\nThe exhaustive contract inventory below covers every registered claim and tracked Lean source module. Restricted same-model bindings retain all canonical inputs and require explicit domain maps before composition. Missing model realizations remain visible; coverage and typed compatibility do not certify scientific entailment or physical completion.",
     "groups": [
       {
@@ -3098,8 +3098,8 @@
           "PR-84",
           "PR-85"
         ],
-        "constructed": "Native counting and bounded scheduling results retain their declared reference and fairness/resource classes. The native observer declares its two-event tape and halting rule. The correctable-record evaluator gives 11 reachable terminal words and 16 prefixes under its binary preparation, with a lossless four-bit classical prefix encoding. On one carrier, complete even-load calibration laws reconstruct the unweighted structural response after dividing out each positive seam exposure. This removes uniform scheduling and fair-coin requirements for that structural readout; complete known preparations and full seam exposure remain. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. A separate current-only binary calibration uses twelve spanning preparations and addressed seams. Its 110 stochastic settings have cap 24 and total timeout probability at most 55/4194304 under independent fair placement draws; 250 constant-current settings need one attempt each. The retained seeded execution uses 578 attempts. Both outcome values, rather than hidden coin records, support exact reconstruction under the declared fair law. Preparation/reset and record access remain inputs; the samples do not establish fairness. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy.",
-        "remaining": "Select the scheduler and complete path reference actually used. Adaptive repair, fixed-node attempts and the canonical Hamiltonian are different branches; their resource hypotheses are not automatically interchangeable.",
+        "constructed": "Native counting and bounded scheduling results retain their declared reference and fairness/resource classes. The native observer declares its two-event tape and halting rule. The correctable-record evaluator gives 11 reachable terminal words and 16 prefixes under its binary preparation, with a lossless four-bit classical prefix encoding. On one carrier, complete even-load calibration laws reconstruct the unweighted structural response after dividing out each positive seam exposure. This removes uniform scheduling and fair-coin requirements for that structural readout; complete known preparations and full seam exposure remain. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. A separate current-only binary calibration uses twelve spanning preparations and addressed seams. Its 110 stochastic settings have cap 24 and total timeout probability at most 55/4194304 under independent fair placement draws; 250 constant-current settings need one attempt each. The retained seeded execution uses 578 attempts. Both outcome values, rather than hidden coin records, support exact reconstruction under the declared fair law. Preparation/reset and record access remain inputs; the samples do not establish fairness. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy. Ordered pair-clock means and terminal coincidences uniquely recover positive nonuniform IID seam weights on the native support. The normalization follows because each seam ticks exactly two ports. The inferred coverage alpha=30 min p_e supplies the finite warm-up bound; finite estimates require their own conservative exposure bounds. A cyclic control shares the means and coincidences but changes interval counts, exposing the independence premise.",
+        "remaining": "Select the scheduling class and complete path reference actually used. Exact pair-clock laws determine the weights within the declared IID class; independence, positive coverage and the comparison service require their own contracts. Adaptive repair, fixed-node attempts and the canonical Hamiltonian are different branches; their resource hypotheses are not automatically interchangeable.",
         "closure": "Declare one branch and prove its fairness, locality and attempt/waste bounds on complete histories, charging all operations.",
         "sources": [
           {
@@ -3142,6 +3142,16 @@
           {
             "path": "model/native_clock/clock_bridge_results.json",
             "label": "Retained joint clock and host comparison"
+          },
+          {
+            "path": "model/relative_observer_geometry/clock_reconstruction.py",
+            "label": "Nonuniform IID weights from local clock comparisons",
+            "anchor": "def recover("
+          },
+          {
+            "path": "model/record_laws/burn_in.py",
+            "label": "Coverage-dependent finite preparation bounds",
+            "anchor": "def coverage_of("
           }
         ],
         "claims": [
@@ -3168,8 +3178,8 @@
           "PR-81",
           "PR-82"
         ],
-        "constructed": "Finite carriers, authenticated source order and regional reconstruction contracts exist. The canonical executed-history constructor supplies an ancestry rank; the abstract semantic-log interface requires one. The executable native observer specifies a finite source/tape carrier, a record-only controller menu and repeatable committed-prefix reads. The electromagnetic detector distinguishes the one-bit actuator algebra from its complete recorded trajectory. A separate binary native/N4 source admits twelve primitive central address blocks with a unital inclusion of its full quantum working algebra. Refresh followed by incident-star repair decodes to the original channel on arbitrary correlated inputs and repeated histories. The current-record regional protocol reconstructs known diagonal fields and their common-prefix overlaps on the actual native carrier. Its pullback is a finite commutative GNS isometry. This does not supply the homomorphic restriction maps or other quantum-net hypotheses of FiniteCausalObserverNet; shared marginals alone do not reconstruct joint laws. An actual native four-event execution, for all sixteen coin sequences, constructs an authenticated SemanticEventLog through the existing threaded-execution constructor. Independently checked endpoint payloads, value/version continuity and local support give parents 0-to-2 and 2-to-3 and canonical heights (0,0,1,2). Its source-midpoint placement applies the finite Lean forward theorem while retaining a cone-converse countercontrol. Complete classical execution instrumentation, zero-current commit stamps and exogenous scheduling are explicit; this is not intrinsic global read access or a physical signal-causality certificate.",
-        "remaining": "Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu. This single local protocol has no federation, transported record service or continuum regional net; it does not instantiate the complete abstract OperationalObserver structure. The unextended full M66/M78 working algebra has scalar centre and cannot itself be the twelve-central-port A1 carrier (#1087). The addressed abstract source has scalar inter-carrier seams; its endpoint records require a separate retention service, and it supplies no physical field net.",
+        "constructed": "Finite carriers, authenticated source order and regional reconstruction contracts exist. The canonical executed-history constructor supplies an ancestry rank; the abstract semantic-log interface requires one. The executable native observer specifies a finite source/tape carrier, a record-only controller menu and repeatable committed-prefix reads. The electromagnetic detector distinguishes the one-bit actuator algebra from its complete recorded trajectory. A separate binary native/N4 source admits twelve primitive central address blocks with a unital inclusion of its full quantum working algebra. Refresh followed by incident-star repair decodes to the original channel on arbitrary correlated inputs and repeated histories. The current-record regional protocol reconstructs known diagonal fields and their common-prefix overlaps on the actual native carrier. Its pullback is a finite commutative GNS isometry. This does not supply the homomorphic restriction maps or other quantum-net hypotheses of FiniteCausalObserverNet; shared marginals alone do not reconstruct joint laws. An actual native four-event execution, for all sixteen coin sequences, constructs an authenticated SemanticEventLog through the existing threaded-execution constructor. Independently checked endpoint payloads, value/version continuity and local support give parents 0-to-2 and 2-to-3 and canonical heights (0,0,1,2). Its source-midpoint placement applies the finite Lean forward theorem while retaining a cone-converse countercontrol. Complete classical execution instrumentation, zero-current commit stamps and exogenous scheduling are explicit; this is not intrinsic global read access or a physical signal-causality certificate. Regional clocks use ordered unions of local tapes on the same carrier, counting a coincident seam event once. All 4095 nonempty regions give 3433 distinct event sets; aliases represent the same clock. The selected joint regional clock/field law has an independent full-configuration check. This admitted union service does not construct a quantum regional net.",
+        "remaining": "Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu. The single-carrier protocols and regional tape unions require no federation. They supply neither a continuum regional net nor the complete abstract OperationalObserver structure. The unextended full M66/M78 working algebra has scalar centre and cannot itself be the twelve-central-port A1 carrier (#1087). The addressed abstract source has scalar inter-carrier seams; its endpoint records require a separate retention service, and it supplies no physical field net.",
         "closure": "Construct restriction-compatible regions and retained histories on the same source. For the scalar regional theorem verify its exterior row-space criterion; local coordinates alone do not establish that criterion.",
         "sources": [
           {
@@ -3212,6 +3222,11 @@
           {
             "path": "Lean/Geometry/NativeRepairSemanticPlacement.lean",
             "label": "Native executed-log instance of finite source placement"
+          },
+          {
+            "path": "model/laboratory_clock/regional_clock.py",
+            "label": "Collective clocks and fields on the same native carrier",
+            "anchor": "def joint_field("
           }
         ],
         "claims": [
@@ -3602,8 +3617,8 @@
         "scope": "active",
         "status": "conditional",
         "premises": [],
-        "constructed": "For the original eight-mode q=3 action, the unchanged local gapped ramp has rigorous full-state error below 0.000433450 at model time 512 and 0.000108323 at 1024. At T=512, local time discretization with N=2^24 adds less than 0.000695044; a fixed d=8192 onsite code adds less than 0.000033144832 through all partial quadratic factors. The ideal finite preparation error is below 0.001162. Existing source controls compile that word with uniform synthesis error at most 1161/2^24; its preparation and subsequent history share one conditional mathematical budget in RE-10. The older finite-code preparation and its 0.059059008 bound remain a separate construction. For the scalar-response adapter, the first native current sets the signed momentum preparation 4j f on the original finite-action vacuum. This is an executed conditional preparation, with vacuum and admissible controls supplied rather than source selected. For the separate two-site action, the source word prepares an entangled site state from blank registers at onsite dimensions d=4, d=8 and d=16. It retains the antisymmetric normal-mode squeezed vacuum through total occupation d-2 and compiles the resulting finite vector. Directed rational bounds certify its initial trace distance from that action's infinite coupled vacuum. The target vector supplies compiler coefficients, not the executed initial state. The d=8 initial vacuum trace-distance upper bound is 0.000079898200718; it does not include propagation or readout cutoff error. A separate uniform Gaussian number-tail and projected Duhamel calculation adds the impulse, evolution, both pointer arms and final outside component on the same embedded two-site history. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.",
-        "remaining": "Independent oscillator blanks, control of the ramp and model time are hypotheses. The original q=3, d=8192 preparation word has not been emitted or executed; physical pulse and code-service precision, storage, initialization and readout costs remain additional. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied. The initial two-site preparation bound alone controls only a common subsequent channel; its complete-history cutoff certificate supplies the separate finite-versus-infinite propagation and readout comparison. This action and state differ from the original eight-mode ramp, and physical initialization/control errors require additional bounds. The native canonical-sector state is a distinct stationary classical source family, not the supplied interacting oscillator vacuum. Particle density is conserved boundary information, and neither finite waiting resources nor quantum vacuum selection follows from its stationary characterization.",
+        "constructed": "For the original eight-mode q=3 action, the unchanged local gapped ramp has rigorous full-state error below 0.000433450 at model time 512 and 0.000108323 at 1024. At T=512, local time discretization with N=2^24 adds less than 0.000695044; a fixed d=8192 onsite code adds less than 0.000033144832 through all partial quadratic factors. The ideal finite preparation error is below 0.001162. Existing source controls compile that word with uniform synthesis error at most 1161/2^24; its preparation and subsequent history share one conditional mathematical budget in RE-10. The older finite-code preparation and its 0.059059008 bound remain a separate construction. For the scalar-response adapter, the first native current sets the signed momentum preparation 4j f on the original finite-action vacuum. This is an executed conditional preparation, with vacuum and admissible controls supplied rather than source selected. For the separate two-site action, the source word prepares an entangled site state from blank registers at onsite dimensions d=4, d=8 and d=16. It retains the antisymmetric normal-mode squeezed vacuum through total occupation d-2 and compiles the resulting finite vector. Directed rational bounds certify its initial trace distance from that action's infinite coupled vacuum. The target vector supplies compiler coefficients, not the executed initial state. The d=8 initial vacuum trace-distance upper bound is 0.000079898200718; it does not include propagation or readout cutoff error. A separate uniform Gaussian number-tail and projected Duhamel calculation adds the impulse, evolution, both pointer arms and final outside component on the same embedded two-site history. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate. On the fixed twelve-port total-two carrier, law-uniform native warm-up approaches the binary stationary density from arbitrary quantum states and untouched references. Uniform scheduling gives unconditional trace-distance error at most 1/1000 after 221 attempts for binary inputs or 318 for all 78 states. This holds for all admitted coarse-current tables, including phases and law-only current feedback, with the warm-up tape and controller excluded from subsequent access.",
+        "remaining": "Independent oscillator blanks, control of the ramp and model time are hypotheses. The original q=3, d=8192 preparation word has not been emitted or executed; physical pulse and code-service precision, storage, initialization and readout costs remain additional. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied. The initial two-site preparation bound alone controls only a common subsequent channel; its complete-history cutoff certificate supplies the separate finite-versus-infinite propagation and readout comparison. This action and state differ from the original eight-mode ramp, and physical initialization/control errors require additional bounds. The native canonical-sector state is a distinct stationary classical source family, not the supplied interacting oscillator vacuum. Particle density is conserved boundary information. The fixed-carrier warm-up bounds native attempts; it does not provide a uniform screen-family preparation budget, prepare the supplied oscillator vacuum or identify a physical duration. Retaining or conditioning on the warm-up tape is outside the unconditional preparation contract.",
         "closure": "Implement the native preparation within the same-code history of RE-10 and charge actual initialization, pulse and service errors. Reuse the uniform synthesis estimate and transport the state-specific preparation error by channel contraction. Do not substitute q=3 evidence for q=5/q=233 budgets or a numerical trajectory for a certified bound. For the two-site branch, use its complete ideal history certificate and add independently justified numerical and physical service errors before claiming a realized infinite-oscillator comparison.",
         "sources": [
           {
@@ -3660,6 +3675,16 @@
           {
             "path": "model/observer_time_fields/REFINEMENT.md",
             "label": "Common clock/field proof and conserved-sector extension"
+          },
+          {
+            "path": "model/record_laws/README.md",
+            "label": "Law-uniform preparation and complete-output transport",
+            "anchor": "## Preparation by finite native warm-up"
+          },
+          {
+            "path": "model/record_laws/burn_in.py",
+            "label": "Exact binary and full-carrier preparation certificates",
+            "anchor": "def sufficient_attempts("
           }
         ],
         "claims": [
@@ -3864,8 +3889,8 @@
         "scope": "active",
         "status": "conditional",
         "premises": [],
-        "constructed": "The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.\n\nOn the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.\n\nFor native C/E federations, the complete local-output bound controls retained quantum states, local records, local feedback and untouched references. Compatible restrictions on a fixed bounded-degree graph yield a quasilocal quantum process at bounded auxiliary per-seam Poisson parameter. Actual screen parent/child mean restrictions require memory and do not automatically intertwine dynamics. Each locality or refinement argument must use compatible initial states and access maps on the same source family. Actual source-screen pairs 1/3, 2/4 and 3/5 have native-port-labelled neighborhoods agreeing through radii 3,6 and 9. Matched radius-nine initial restrictions give complete root-output distance at most 2187/5734400 at per-seam s=1/4 between 15360 and 245760 ports. The explicit product-state family is compatible; fixed global total-two preparations have a separately charged local mismatch. Exact mean-density return kernels agree through uniformization power 22 and first differ at 23; this stronger first-moment check is not a complete-history bound. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.\n\nThe coherent screen observer executes a complete logical-qubit channel at native incident-clock count two on the actual matched level-three/five screens. A degree-two exclusion dual and fixed signed-difference operator compute all pair/reference populations and coherences, including mask-controlled phase feedback and all 21 capped records. Spatial, cutoff and directed-arithmetic bounds put the computed table within 7.779e-10 of either completed full-screen output, uniformly over logical inputs and untouched references under the independent Bernoulli-environment preparation. The two completed source channels differ by at most 2.731e-10. C and E share the classical record law but have completed Bell-output distance 101/968; an unnormalized retained C block certifies entanglement. Preparation and phase services remain declared, and this finite comparison does not establish an all-level or physical-time limit.",
-        "remaining": "A common controlled interacting relativistic observation limit remains open. Growing volume, increasing occupation and reducing a temporal splitting step are different operations. All-level native source-screen compatibility, nontrivial operational scaling and laboratory identification must be established on the actual family. Supplied scalar actions retain their own geometry and preparation inputs; their bounds do not select the native law. Numerical source-array certificates and mathematical ideal limits do not authenticate physical service errors. Postselected output comparisons need their own success-probability control, and infinite stopping needs a tail bound.",
+        "constructed": "The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.\n\nOn the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.\n\nFor native C/E federations, the complete local-output bound controls retained quantum states, local records, local feedback and untouched references. Compatible restrictions on a fixed bounded-degree graph yield a quasilocal quantum process at bounded auxiliary per-seam Poisson parameter. Actual screen parent/child mean restrictions require memory and do not automatically intertwine dynamics. Each locality or refinement argument must use compatible initial states and access maps on the same source family. Actual source-screen pairs 1/3, 2/4 and 3/5 have native-port-labelled neighborhoods agreeing through radii 3,6 and 9. Matched radius-nine initial restrictions give complete root-output distance at most 2187/5734400 at per-seam s=1/4 between 15360 and 245760 ports. The explicit product-state family is compatible; fixed global total-two preparations have a separately charged local mismatch. Exact mean-density return kernels agree through uniformization power 22 and first differ at 23; this stronger first-moment check is not a complete-history bound. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.\n\nThe coherent screen observer executes a complete logical-qubit channel at native incident-clock count two on the actual matched level-three/five screens. A degree-two exclusion dual and fixed signed-difference operator compute all pair/reference populations and coherences, including mask-controlled phase feedback and all 21 capped records. Spatial, cutoff and directed-arithmetic bounds put the computed table within 7.779e-10 of either completed full-screen output, uniformly over logical inputs and untouched references under the independent Bernoulli-environment preparation. The two completed source channels differ by at most 2.731e-10. C and E share the classical record law but have completed Bell-output distance 101/968; an unnormalized retained C block certifies entanglement. Preparation and phase services remain declared, and this finite comparison does not establish an all-level or physical-time limit. For the actual shared-midpoint source screens, an all-level native Green bound of 4096/3 gives compatible nonzero Gaussian laws on an enlarging ancestral observation dictionary along one common spatial subsequence. The observation-count CLT precedes that spatial subsequence. Attempt-clock and root incident-clock corrections vanish on each fixed dictionary; no whole-sequence convergence or unique limiting covariance is selected.",
+        "remaining": "A common controlled interacting relativistic observation limit remains open. Growing volume, increasing occupation and reducing a temporal splitting step are different operations. The actual source has bounded compatible Gaussian subsequential field laws. Whole-sequence convergence, a unique physical limit, interacting relativistic observations and laboratory identification require further arguments; finite-count errors are separate from the iterated Gaussian limit. Supplied scalar actions retain their own geometry and preparation inputs; their bounds do not select the native law. Numerical source-array certificates and mathematical ideal limits do not authenticate physical service errors. Postselected output comparisons need their own success-probability control, and infinite stopping needs a tail bound.",
         "closure": "Use each proved occupation and readout certificate with its actual initial-state, record and observable contract. Keep the sharp-sign and smooth Ramsey protocols distinct, and preserve the separate finite modular-clock scope. Control source compilation and physical-service errors before an apparatus claim. Other interactions or spatially refining families require their own uniform errors and compatible states/observables; the existing free-scalar spatial limit remains a different theorem.",
         "sources": [
           {
@@ -4088,6 +4113,16 @@
           {
             "path": "model/coherent_screen_observer/results.json",
             "label": "Native coherent screen comparison and independent full-state controls"
+          },
+          {
+            "path": "model/physical_space_time/uniform_green.py",
+            "label": "All-level actual-source Green bounds and compatible subsequential fields",
+            "anchor": "def bounds("
+          },
+          {
+            "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+            "label": "Proof and limits of common spatial subsequences",
+            "anchor": "### Compatible subsequential field laws and their limits"
           }
         ],
         "claims": [
@@ -4114,7 +4149,7 @@
           "PR-15",
           "PR-22"
         ],
-        "constructed": "Source count and finite execution-cost results retain their declared clock and service domains. Native local event instruments sum actual unresolved repairs, retain remote evolution and include finite-cap timeouts. The joint clock/field process supplies exact reduced-memory identities and a four-mark completed-event closure on its specified one-particle support; conditional reference states and controller memory remain. Equal completed clock statistics need not imply equal phase observations. Independent identity holds cancel from completed stopped laws without fixing a laboratory duration.\n\nA chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates. On the 66-state binary total-two sector of one twelve-port carrier, actual local movement clocks have asymptotic count rate 1/6 per carrier movement from any initial density in that sector. An exact Poisson corrector supplies finite count-error bounds without stationary preparation or an independent clock. Their long-run covariance distinguishes all three graph-distance shells. A positive seconds calibration changes no such dimensionless law; empirical attachment requires a matched source apparatus and held-out paired records. A recorded software attachment executes the same 264532 native attempts in each of two runs against a host monotonic counter. One baseline block calibrates port 2; three held-out blocks measured with port 3 have timing errors 2.3% to 7.8%, within the fixed 25% engineering tolerance. Host-only workload preserves all native records and rejects that calibration in every control block. Replay checks the seeded choices and source currents, not timestamp authenticity or clock traceability; physical proper time and modular flow are not inferred. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. Exact incident-clock field correlations reconstruct a seven-dimensional cyclic detector Hilbert space and its transfer spectrum on the elementary total-two source; independent full 66-state propagation checks withheld lags. The positive-transfer moment class is supplied by the existing theorem. Exact rank is not inferred from sampled records, and the seven-mode Gram is severely ill-conditioned. On each actual level-3/5 screen with product preparation, bounded record correlations also certify a two-vector temporal subspace and compressed transfer values near 0.88702 and 0.97079 with error below 2e-5. These compressed values are not a closed two-mode spectrum or laboratory energy calibration. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy. A separate exact affine event/timestamp contract preserves the correlated rate/offset calibration set and tests held-out endpoints jointly without retuning. Missing timing or count-error bounds remain unresolved; uncertain integer counts use an explicitly disclosed continuous outer relaxation. Under a declared fixed attempt cadence, the native waiting distribution yields deadline-probability intervals. Synthetic controls and retained host measurements are distinguished; no native-event laboratory correspondence or traceability is established. A resource-clock refinement retains total native attempts alongside the ideal incident-clock history and attaches the source pulse invocation costs. Forgetting the added count reproduces every original conditional source matrix. A joint duration polytope provides conditional deadline bounds and a disjoint held-out test under an explicit affine timestamp hypothesis. The native pair-clock construction reconstructs the finite adjacency and response Gram from ordered local incident coincidences, without a hidden attempt counter. Exact renewal laws and a fixed-threshold finite-sample error/rejection bound retain the uniform IID scheduler premise. The pair-tape union is an admitted observation interface.",
+        "constructed": "Source count and finite execution-cost results retain their declared clock and service domains. Native local event instruments sum actual unresolved repairs, retain remote evolution and include finite-cap timeouts. The joint clock/field process supplies exact reduced-memory identities and a four-mark completed-event closure on its specified one-particle support; conditional reference states and controller memory remain. Equal completed clock statistics need not imply equal phase observations. Independent identity holds cancel from completed stopped laws without fixing a laboratory duration.\n\nA chosen faithful algebra/reference defines its modular action. The native Palm reference, reconstructed transfer reference and supplied full-work Gibbs reference are separate pairs. Source probes execute the relevant finite modular automorphisms on stated accessible codes. For sigma_beta proportional to exp(-beta H), Hamiltonian segments have t=-beta*s, with reference choice, beta and full-work access supplied. Exact native covariance defects prevent equating particular event operations with those modular flows. Actual interventions and feedback are retained as instruments, rather than treated as one autonomous modular group. Pulse, native-attempt, event and load/export counts are separately accounted resources. Instrument-valued clock conversion equals direct native stopping, with every remote-count coefficient and conditional quantum/reference output retained. The passive two-A-tick renewal cycle has B-count mean 2 and variance 16; specified B-entry feedback changes the law. A uniform two-event survival bound certifies completion, while capped runtime execution retains all timeouts. This derives a stochastic relative-clock law, not a deterministic conversion from equal mean rates. On the 66-state binary total-two sector of one twelve-port carrier, actual local movement clocks have asymptotic count rate 1/6 per carrier movement from any initial density in that sector. An exact Poisson corrector supplies finite count-error bounds without stationary preparation or an independent clock. Their long-run covariance distinguishes all three graph-distance shells. A positive seconds calibration changes no such dimensionless law; empirical attachment requires a matched source apparatus and held-out paired records. A recorded software attachment executes the same 264532 native attempts in each of two runs against a host monotonic counter. One baseline block calibrates port 2; three held-out blocks measured with port 3 have timing errors 2.3% to 7.8%, within the fixed 25% engineering tolerance. Host-only workload preserves all native records and rejects that calibration in every control block. Replay checks the seeded choices and source currents, not timestamp authenticity or clock traceability; physical proper time and modular flow are not inferred. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. Exact incident-clock field correlations reconstruct a seven-dimensional cyclic detector Hilbert space and its transfer spectrum on the elementary total-two source; independent full 66-state propagation checks withheld lags. The positive-transfer moment class is supplied by the existing theorem. Exact rank is not inferred from sampled records, and the seven-mode Gram is severely ill-conditioned. On each actual level-3/5 screen with product preparation, bounded record correlations also certify a two-vector temporal subspace and compressed transfer values near 0.88702 and 0.97079 with error below 2e-5. These compressed values are not a closed two-mode spectrum or laboratory energy calibration. The exact marked incident/movement-clock law retains zero-current local hits, remote waits, field-conditioned continuations and feedback hits. For the uniform total-two single-port source, I/K tends to 33/5; an exact Poisson corrector supplies a finite conversion-error bound indexed by fixed global movement count, uniformly over initial states. The retained host record comparison preserves baseline acceptance and workload-control rejection under that conversion uncertainty without refitting. It does not transfer the ratio or calibration to the different root-clock product/canonical-sector field protocol, identify a physical clock, or authenticate the pseudorandom entropy. A separate exact affine event/timestamp contract preserves the correlated rate/offset calibration set and tests held-out endpoints jointly without retuning. Missing timing or count-error bounds remain unresolved; uncertain integer counts use an explicitly disclosed continuous outer relaxation. Under a declared fixed attempt cadence, the native waiting distribution yields deadline-probability intervals. Synthetic controls and retained host measurements are distinguished; no native-event laboratory correspondence or traceability is established. A resource-clock refinement retains total native attempts alongside the ideal incident-clock history and attaches the source pulse invocation costs. Forgetting the added count reproduces every original conditional source matrix. A joint duration polytope provides conditional deadline bounds and a disjoint held-out test under an explicit affine timestamp hypothesis. The native pair-clock construction reconstructs the finite adjacency and response Gram from ordered local incident coincidences, without a hidden attempt counter. Exact renewal laws and a fixed-threshold finite-sample error/rejection bound retain the uniform IID scheduler premise. The pair-tape union is an admitted observation interface. Nonuniform IID weights are recoverable from exact pair-clock laws without a hidden attempt counter. Regional event unions derive their own count fluctuations: distinct event sets have normalized variance at least 1/(30N), or 2/(29N) at equal mean rates, while identical event sets coincide pathwise. These are dimensionless observer-clock predictions, with no independently added clock replicas.",
         "remaining": "No preferred universal clock is required. Relating an observer's records to modular evolution, laboratory durations or effective proper time requires an operational correspondence preserving joint and conditional observations. A common mean rate or affine label comparison does not supply that correspondence. Physical service accuracy, reference preparation and clock calibration remain explicit. The scalar benchmark time and native event parameter cannot be identified merely because they occur in one program; unbounded event protocols need well-posed stopping and complete tail control. Choosing seconds is a unit convention. The dynamical obligation is a compatible joint record law and an independently validated apparatus correspondence, rather than an absolute duration derived without calibration. The controller attempt-count record is an extra read service. This refinement neither propagates the raw compiled arrays nor inherits coarse-current calibration bounds for its finer record. Native attempts, pulse costs and physical seconds remain distinct; no measured timing evidence is supplied by the fixture.",
         "closure": "Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.",
         "sources": [
@@ -4278,6 +4313,16 @@
           {
             "path": "model/laboratory_clock/event_geometry.py",
             "label": "Incident pair-clock geometry and exact joint field law"
+          },
+          {
+            "path": "model/relative_observer_geometry/clock_reconstruction.py",
+            "label": "Unknown IID scheduler and marked field transfer",
+            "anchor": "def renewal_pgf("
+          },
+          {
+            "path": "model/laboratory_clock/regional_clock.py",
+            "label": "Sharp collective-clock count bounds and alias controls",
+            "anchor": "def pair_classes("
           }
         ],
         "claims": [
@@ -4306,8 +4351,8 @@
           "PR-16",
           "PR-52"
         ],
-        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied. Exposure-normalized even-load current laws recover the same unweighted rank-three structural Gram without a uniform schedule or fair coins. The actual slowest response under a doubled seam weight has multiplicity two. The full inverse-response Gram instead has rank eleven, so choosing the slow-band metric is an operational readout choice, not a proof of physical bulk dimension. These exact single-carrier constructions require no federation. On the same uniform single carrier, asymptotic local-tick covariance independently recovers the native distance shells from a continuing movement-count history. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. A disclosed total-one preparation supplies exact native first-arrival records in the receiver incident-attempt clock. Mean arrival counts are 22, 28 and 30 for graph-distance shells one through three; the resulting passage metric has centered Gram rank eleven. Complete arrival and timeout laws retain remote repairs. A separate total-two source witness shows a two-seam intervention response at the first receiver incident tick, disproving a one-seam-per-local-tick identification while preserving native-attempt locality. The same pair-clock geometry predicts the joint initial-A/final-B occupation marginal at the second A incident tick under the stationary total-two preparation and local bit/current reads. An independent 66-state stopped-process check agrees, while identity repair preserves the clocks and separate marginals but changes the joint field law. This is a finite common-source observable link, not a physical continuum identification.",
-        "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature. Uniform calibration and the two-event binary controllers are separate protocols. Finite calibration kernels have eleven nonconstant modes; rank three refers to their slow response quotient. The added controller spans that carrier but establishes no isotropic or autonomous motion. Neither this readout nor the two-scalar interaction graph identifies physical position, momentum, length scale or a spatial continuum. The uniform-scheduler premise belongs to the actual slow dynamics; dividing exposure out of exact laws does not remove that premise for motion. A compatible extended family is required for a continuum claim, but the specific spherical federation is optional.",
+        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied. Exposure-normalized even-load current laws recover the same unweighted rank-three structural Gram without a uniform schedule or fair coins. The actual slowest response under a doubled seam weight has multiplicity two. The full inverse-response Gram instead has rank eleven, so choosing the slow-band metric is an operational readout choice, not a proof of physical bulk dimension. These exact single-carrier constructions require no federation. On the same uniform single carrier, asymptotic local-tick covariance independently recovers the native distance shells from a continuing movement-count history. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. A disclosed total-one preparation supplies exact native first-arrival records in the receiver incident-attempt clock. Mean arrival counts are 22, 28 and 30 for graph-distance shells one through three; the resulting passage metric has centered Gram rank eleven. Complete arrival and timeout laws retain remote repairs. A separate total-two source witness shows a two-seam intervention response at the first receiver incident tick, disproving a one-seam-per-local-tick identification while preserving native-attempt locality. The same pair-clock geometry predicts the joint initial-A/final-B occupation marginal at the second A incident tick under the stationary total-two preparation and local bit/current reads. An independent 66-state stopped-process check agrees, while identity repair preserves the clocks and separate marginals but changes the joint field law. This is a finite common-source observable link, not a physical continuum identification. Nonuniform clock reconstruction separates the unweighted structural Gram from weighted kinetics: inferred weights predict a different joint field law, checked against the complete 66-state process. On the actual extended source, uniform Green bounds and nested ancestral observations give nonzero compatible Gaussian subsequential fields; their three comparison smearings do not establish three physical spatial dimensions.",
+        "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature. Uniform calibration and the two-event binary controllers are separate protocols. Finite calibration kernels have eleven nonconstant modes; rank three refers to their slow response quotient. The added controller spans that carrier but establishes no isotropic or autonomous motion. Neither this readout nor the two-scalar interaction graph identifies physical position, momentum, length scale or a spatial continuum. Uniform scheduling belongs to the stated uniform slow dynamics. Inferred nonuniform IID weights determine their own dynamics; removing weights from a structural Gram does not preserve the slow band. The actual spherical source has a compatible Gaussian subsequential field construction, but no selected whole-sequence covariance or physical spacetime interpretation. Other compatible architectures retain their own obligations.",
         "closure": "Construct operational metric and geometric response on the same source and refinement family. Preserve the distinction between action capacity, event-count measure and physical volume.",
         "sources": [
           {
@@ -4361,6 +4406,16 @@
           {
             "path": "model/laboratory_clock/README.md",
             "label": "Geometry and fields from visible incident clocks"
+          },
+          {
+            "path": "model/relative_observer_geometry/clock_reconstruction.py",
+            "label": "Structural Gram versus inferred weighted field dynamics",
+            "anchor": "def predict_field("
+          },
+          {
+            "path": "model/physical_space_time/uniform_green.py",
+            "label": "Actual-source bounded Green forms and nested observation maps",
+            "anchor": "def dictionary_control("
           }
         ],
         "assumptions": [
@@ -4893,7 +4948,7 @@
           "PR-14",
           "PR-15"
         ],
-        "constructed": "The canonical register explicitly distinguishes hadronic empirical payloads and laboratory clock/energy anchors from source deductions. The endpoint audit imports only the cited CODATA 2022 inverse-alpha comparison value and standard uncertainty. It is a known-data retrospective check, with P and the inherited incomplete source branch unchanged, no fitted correction and no empirical validation verdict. A separate C/E apparatus comparison declares independently established coherent preparation/readout errors and fresh-trial independence; its software evaluator does not authenticate those premises. The native clock comparison supplies dimensionless count-ratio and covariance predictions plus an explicit paired-record calibration contract. No existing laboratory apparatus or dataset is identified with that native source. Actual paired source-count/host-timestamp records are retained for an engineered software implementation. Their held-out timing check and rate-change control test that execution correspondence; they supply no independently matched natural apparatus, traceable clock-accuracy bound, or empirical OPH confirmation. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration. A retrospective public Ar13+/Yb+ comparison rejects the direct identification of independent native incident counts with optical phase under the declared constant-gain, bounded-error and uniform-scheduler hypotheses. The complete-block range bound charges missing blocks and calendar-window selection. It neither excludes every native clock nor derives atomic transitions or establishes a distinction from SM plus GR.",
+        "constructed": "The canonical register explicitly distinguishes hadronic empirical payloads and laboratory clock/energy anchors from source deductions. The endpoint audit imports only the cited CODATA 2022 inverse-alpha comparison value and standard uncertainty. It is a known-data retrospective check, with P and the inherited incomplete source branch unchanged, no fitted correction and no empirical validation verdict. A separate C/E apparatus comparison declares independently established coherent preparation/readout errors and fresh-trial independence; its software evaluator does not authenticate those premises. The native clock comparison supplies dimensionless count-ratio and covariance predictions plus an explicit paired-record calibration contract. No existing laboratory apparatus or dataset is identified with that native source. Actual paired source-count/host-timestamp records are retained for an engineered software implementation. Their held-out timing check and rate-change control test that execution correspondence; they supply no independently matched natural apparatus, traceable clock-accuracy bound, or empirical OPH confirmation. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration. A retrospective public Ar13+/Yb+ comparison rejects the direct identification of independent native incident counts with optical phase under the declared constant-gain, bounded-error and uniform-scheduler hypotheses. The complete-block range bound charges missing blocks and calendar-window selection. It neither excludes every native clock nor derives atomic transitions or establishes a distinction from SM plus GR. The regional extension tests every ordered pair of distinct event sets on the same carrier. The public complete-block summaries give conditional bounds 10^-121 for 36Ar and 10^-22 for 40Ar after charging all regional pairs, arbitrary block removal and the stated 2021 calendar search. The tested raw-count attachment assumes a fixed tick count per candidate block, constant gain at least one and absolute ratio error at most 10^-12. It excludes identical-event aliases and does not derive the experimental servo readout or a resource count for atomic stability.",
         "remaining": "Every result using these inputs retains their provenance, uncertainty and transfer contract. Fundamental-input counts do not absorb or erase them. The endpoint residual does not provide the missing physical transport or its theory-error budget; five reported standard uncertainties are a comparison allowance, not a rigorous confidence interval.",
         "closure": "Supply admissible independent calibration/import data, or replace a payload with an independently justified source computation; do not count calibration as a theorem proof.",
         "sources": [
@@ -4944,6 +4999,16 @@
           {
             "path": "model/predictions/optical_clock.py",
             "label": "Conditional public optical-clock attachment test"
+          },
+          {
+            "path": "model/predictions/regional_optical.py",
+            "label": "Public-data test of the distinct regional raw-count attachment",
+            "anchor": "def evaluate("
+          },
+          {
+            "path": "model/predictions/README.md",
+            "label": "Optical attachment hypotheses, selection allowance and boundary",
+            "anchor": "## Collective regional optical attachment"
           }
         ],
         "claims": [
@@ -5030,8 +5095,8 @@
         "scope": "active",
         "status": "open",
         "premises": [],
-        "constructed": "The live model connects native repair, recorded observations, feedback and checkpoint continuation. Full native C/E source compilation, common interacting work, coherent native/work composition and active encoded memory have explicit but distinct interface contracts. The native action, finite equilibration, local event clocks and field memory are consequences of their specified common source operations. The supplied scalar/gauge/matter benchmark executes a complete joint history with occupation and temporal bounds on its declared preparations and detectors.\n\nTheorem attachment is checked on the actual objects: native signed-difference blocks supply exchange/coherence rates; local endpoint supports and tensor splits supply dependency-cone and no-signalling hypotheses; stopped instruments retain remote evolution and conditional references; positive state expectations supply measurement Gram constraints. These are compatible finite and analytic attachments. They do not assert that every theorem branch uses the same reference, observer algebra or action, or that an all-theorem physical model has been completed. The field/refinement attachment uses a common finite-density preparation, clock, record dictionary and feedback. Its canonical extension removes mandatory product independence while preserving exact fixed-number correlations. Record-derived temporal representations and joint incident/movement clocks have explicit domain maps; their distinct sectors, observer regions and empirical contracts remain separate.\n\nAn executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.\n\nThe separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically. The complete claim and Lean-module inventory retains every canonical hypothesis and marks absent same-model mappings open. Restricted model connections check all seven declared domain coordinates, require sourced maps for changes, retain the whole canonical input inventory and reject circular fact dependencies. The calibration-to-incident-history connection restricts the identified 78-state current family to its invariant binary sector and derives the cap-two expected exposure 408/125, including feedback, before adding the independent source compilation error.",
-        "remaining": "Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. Source-screen scaling, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process. Typed contract checks validate the stated composition ledger, not its mathematical entailment. The finite A4 full-premise witness is a synthetic branch; it is not a source-derived realization of the common physical tower. Unbound theorem contracts retain their own state, action, clock and refinement premises.",
+        "constructed": "The live model connects native repair, recorded observations, feedback and checkpoint continuation. Full native C/E source compilation, common interacting work, coherent native/work composition and active encoded memory have explicit but distinct interface contracts. The native action, finite equilibration, local event clocks and field memory are consequences of their specified common source operations. The supplied scalar/gauge/matter benchmark executes a complete joint history with occupation and temporal bounds on its declared preparations and detectors.\n\nTheorem attachment is checked on the actual objects: native signed-difference blocks supply exchange/coherence rates; local endpoint supports and tensor splits supply dependency-cone and no-signalling hypotheses; stopped instruments retain remote evolution and conditional references; positive state expectations supply measurement Gram constraints. These are compatible finite and analytic attachments. They do not assert that every theorem branch uses the same reference, observer algebra or action, or that an all-theorem physical model has been completed. The field/refinement attachment uses a common finite-density preparation, clock, record dictionary and feedback. Its canonical extension removes mandatory product independence while preserving exact fixed-number correlations. Record-derived temporal representations and joint incident/movement clocks have explicit domain maps; their distinct sectors, observer regions and empirical contracts remain separate.\n\nAn executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.\n\nThe separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically. The complete claim and Lean-module inventory retains every canonical hypothesis and marks absent same-model mappings open. Restricted model connections check all seven declared domain coordinates, require sourced maps for changes, retain the whole canonical input inventory and reject circular fact dependencies. The calibration-to-incident-history connection restricts the identified 78-state current family to its invariant binary sector and derives the cap-two expected exposure 408/125, including feedback, before adding the independent source compilation error. The preparation-to-observation connection propagates law-uniform warm-up error through a common complete future instrument, without multiplying by the observation horizon. The weighted clock/field connection uses inferred IID exposures, with finite-data exposure uncertainty kept separate. The actual-source Gaussian subsequence and regional optical attachment have distinct domains and preserve their own observation and physical-readout premises.",
+        "remaining": "Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. A unique physical source-screen limit, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process. Typed contract checks validate the stated composition ledger, not its mathematical entailment. The finite A4 full-premise witness is a synthetic branch; it is not a source-derived realization of the common physical tower. Unbound theorem contracts retain their own state, action, clock and refinement premises.",
         "closure": "For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.",
         "sources": [
           {
@@ -6511,13 +6576,13 @@
           "regime": "finite synthetic A4 premise inhabitant, no source selection or cross-regulator map"
         },
         "native_occupation_average": {
-          "carrier": "66 binary total-two configurations on the twelve-port source",
-          "law": "common diagonal native C/E law, uniform independent seams and fair placement coins",
-          "preparation": "uniform diagonal stationary fixed-total-two law with disclosed initial occupations",
-          "records": "full seam/current tape for vector readback; local port-only tape supports only its scalar occupation",
+          "carrier": "finite connected binary exclusion graphs; the native twelve-port total-two witness has 66 states",
+          "law": "uniform independent seam selection and fair identity/exchange placement on the declared finite graph",
+          "preparation": "uniform stationary fixed-number sector, 0<q<V, with disclosed initial occupations",
+          "records": "full seam/current tape for vector readback; a local incident tape supports its own occupation only",
           "controls": "no feedback or interventions during one continuing occupation average",
-          "clock": "all native attempts or port-zero incident attempts, including zero current",
-          "regime": "exact finite laws and finite-count covariance; count-to-infinity CLT on the fixed graph; separate supplied torus has a subsequent mesh limit"
+          "clock": "all native attempts or a declared nonempty incident seam set, including zero current",
+          "regime": "finite-graph covariance and count-to-infinity CLT; exact 66-state witness, with supplied torus refinement treated separately"
         },
         "ideal_resource_clock": {
           "carrier": "66 binary total-two source states; executed source density matrices without an added reference",
@@ -6563,6 +6628,60 @@
           "controls": "declared pair of port observers without feedback; pairwise protocols across all 66 port pairs",
           "clock": "B incidents between successive A incidents, including coincident terminal ticks",
           "regime": "exact joint law of the initial A occupation and B occupation at the second A incident; no full quantum output or continuum"
+        },
+        "native_law_uniform_warmup": {
+          "carrier": "binary 66-dimensional or full 78-dimensional twelve-port total-two source, with any untouched quantum reference",
+          "law": "every admissible positive coarse-current coherence table with fixed fair classical placement; exogenous seam probabilities p_e,t>=alpha/30",
+          "preparation": "arbitrary joint source/reference density in the stated sector; target tau=P_binary/66 tensor the original reference marginal",
+          "records": "coarse currents may drive law-only feedback during warm-up; its entire tape and controller are traced out before subsequent observations",
+          "controls": "tables may depend on seam, attempt and preceding coarse-current prefix; no other intervention or outcome-dependent seam schedule",
+          "clock": "number n of native warm-up attempts; alpha>0 is a declared uniform exposure lower bound, not seconds",
+          "regime": "finite unconditional reference-safe trace-distance bounds; no convergence assertion for retained controller correlations"
+        },
+        "inferred_iid_clock_field": {
+          "carrier": "the native twelve-port graph with positive weight on its thirty seams; binary total-two sector for field observations",
+          "law": "unknown time-independent IID seam distribution and fair native placement; recovered weights determine the classical field transfer",
+          "preparation": "clock recovery needs no load preparation; field prediction uses the uniform stationary binary total-two density",
+          "records": "all 132 oriented pair-clock means and terminal coincidences; field readout additionally admits initial local bits and signed local currents",
+          "controls": "fixed pair observers without feedback; ordered pair-tape union and coincidence service are admitted",
+          "clock": "B incidents through specified A incidents, including terminal coincidence and zero-current ticks; no hidden attempt counter",
+          "regime": "exact ensemble scheduler recovery and complete marked clock/field law; independent 66-state oracle and a cyclic non-IID countercontrol"
+        },
+        "warmed_inferred_clock_field": {
+          "carrier": "binary 66-dimensional twelve-port total-two source with any untouched quantum reference",
+          "law": "fixed positive IID native seam weights recovered from exact pair-clock laws, with the admitted fair coarse-current family",
+          "preparation": "arbitrary binary source/reference density after n native warm-up attempts; compare with stationary tau and the original reference marginal",
+          "records": "fresh declared pair-clock, initial-bit and local-current records; no warm-up tape or controller access, and every future timeout retained",
+          "controls": "law-only warm-up feedback followed by the same complete field/clock instrument on both compared states",
+          "clock": "n warm-up attempts followed by B counts at specified A incident ticks; alpha=30 min p_e",
+          "regime": "unconditional complete-output trace-distance error <=min(1,33 r_alpha^n), independent of the finite observation horizon"
+        },
+        "native_screen_subsequential_field": {
+          "carrier": "actual shared-midpoint spherical source screens, twelve native ports per cell and distinct-port intercell seams at every level",
+          "law": "uniform independent native seam selection and fair binary identity/exchange repair on each connected source graph",
+          "preparation": "uniform stationary binary sector at total V/3 on each V-port source graph; this is a declared family of preparations",
+          "records": "complete initial occupations and seam/current tape, projected to centered ancestral cell counts with the declared normalization",
+          "controls": "no interventions during each occupation average; nested ancestral observation maps and auxiliary comparison geometry are specified",
+          "clock": "all native attempts or the root carrier incident-clock seam set, with its exact clock correction and level-dependent normalization",
+          "regime": "observation-count Gaussian limit first; one common spatial subsequence for every fixed ancestral dictionary, not a uniform joint limit"
+        },
+        "native_regional_clock_field": {
+          "carrier": "one twelve-port native carrier, with all nonempty port regions and their distinct incident-seam event sets",
+          "law": "uniform independent thirty-seam scheduling and fair native placement; no independent copies",
+          "preparation": "incident counts are state-independent; the selected joint field witness uses the uniform stationary binary total-two density",
+          "records": "admitted ordered regional unions of local incident tapes and coincidences; count each source event once, including zero current; local field bits/currents for the field witness",
+          "controls": "fixed regions and no clock feedback; initial field port lies in A and final field port in B",
+          "clock": "B regional events through N A regional ticks, with mean-normalized ratio a B(N)/(b N)",
+          "regime": "exact renewal laws, exhaustive finite event-set catalogue and selected initial-A/final-B occupation law at two A ticks"
+        },
+        "regional_optical_attachment": {
+          "carrier": "distinct regional event-set pairs on one twelve-port carrier, proposed as the count component of public Ar13+/Yb+ ratio blocks",
+          "law": "same uniform IID regional renewal law plus the declared constant-gain bounded-error raw-count readout hypothesis",
+          "preparation": "no load preparation needed for the count law; public block eligibility and deposited measurement provenance are external inputs",
+          "records": "public complete UTC-grid 300-second ratio blocks; hypothesized relation ratio=gain*a*B(N)/(b*N)+error with gain>=1 and |error|<=10^-12",
+          "controls": "one fixed N in 300*[642121496772644,642121496772646] for every consecutive candidate block including missing blocks; no extra filtering or replicas",
+          "clock": "N consecutive A regional intervals per candidate calendar block; all 2021 endpoints/count choices and distinct regional pairs are charged",
+          "regime": "retrospective conditional point-mass/range rejection using complete deposited block summaries and arbitrary block-removal allowance"
         }
       },
       "bindings": [
@@ -6596,6 +6715,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6643,6 +6763,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6697,6 +6818,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6752,6 +6874,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6875,12 +6998,13 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "additional_assumptions": {},
-          "scope": "The unchanged native binary process yields the covariance and precision of its one-history occupation-average Gaussian limit. Exact 66-state transitions check the field closure, stationary lag law and clock correction. A separate supplied torus family admits fixed-band Gaussian convergence after the time limit.",
-          "limitations": "The full vector needs the disclosed initial occupations and every seam/current record; it is not readable from a local incident tape. The field action describes fluctuation statistics, not a Lorentzian evolution. The torus is a different supplied architecture with an iterated time-then-mesh limit, no uniform joint limit and no continuum identification for the source screens.",
+          "scope": "The finite connected-graph theorem derives occupation-average covariance and precision with the actual incident-clock correction. Exact 66-state checks establish the native witness and its rank-three restriction. It supplies the finite-graph formula used by the actual-screen field construction.",
+          "limitations": "Full-vector readback requires disclosed initial occupations and every seam/current record. The Gaussian action is a fluctuation precision, not Lorentzian evolution. A separate supplied torus has an iterated time-then-mesh limit; the actual-screen subsequence has its own domain below.",
           "sources": [
             {
               "path": "model/physical_space_time/occupation_field.py",
@@ -6897,6 +7021,10 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "## Finite-graph theorem and the source-derived action"
+            },
+            {
+              "path": "model/physical_space_time/occupation_field.py",
+              "anchor": "def carrier_band("
             }
           ]
         },
@@ -6932,6 +7060,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7087,6 +7216,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7142,6 +7272,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7166,6 +7297,329 @@
             {
               "path": "model/laboratory_clock/event_geometry.py",
               "anchor": "def identity_field_control("
+            }
+          ]
+        },
+        {
+          "id": "law-uniform-native-warmup",
+          "domain": "native_law_uniform_warmup",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "finite_reference_safe_background_bound"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "All admitted tables share a reference-safe preparation bound: binary error <=33 r_alpha^n; full error <=mu_alpha^(s/2)+mu_alpha^s+33 r_alpha^(n-s), capped at one. Uniform scheduling certifies 1/1000 at 221 binary or 318 full-carrier attempts (s=88).",
+          "limitations": "The conserved sector, definite-current interface and exogenous positive coverage remain. Warm-up records are unavailable afterwards; keeping or conditioning on them is excluded. Counts are sufficient native resource bounds, with no oscillator-vacuum, physical-duration or all-screen preparation conclusion.",
+          "sources": [
+            {
+              "path": "model/record_laws/burn_in.py",
+              "anchor": "def binary_bound("
+            },
+            {
+              "path": "model/record_laws/burn_in.py",
+              "anchor": "def full_bound("
+            },
+            {
+              "path": "model/record_laws/README.md",
+              "anchor": "## Preparation by finite native warm-up"
+            }
+          ]
+        },
+        {
+          "id": "inferred-iid-clock-and-field",
+          "domain": "inferred_iid_clock_field",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "inferred_native_iid_weights_and_stationary_field_law"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Pair means and coincidences give a_i=2 mu_0i/sum_j mu_0j and p_ij=a_i nu_ij. Recovered weights determine the marked stopped field law and structural native Gram; the exact 66-state oracle checks uniform and biased examples.",
+          "limitations": "IID exogeneity and positive support are hypotheses. A cyclic process shares the input moments but changes interval laws. Finite samples require exposure uncertainty bounds. The structural rank-three Gram need not be the weighted slow band; stationary field preparation and local bit/current access are separate inputs.",
+          "sources": [
+            {
+              "path": "model/relative_observer_geometry/clock_reconstruction.py",
+              "anchor": "def recover("
+            },
+            {
+              "path": "model/relative_observer_geometry/clock_reconstruction.py",
+              "anchor": "def predict_field("
+            },
+            {
+              "path": "model/relative_observer_geometry/README.md",
+              "anchor": "## Inferring nonuniform scheduling from clock comparisons"
+            }
+          ]
+        },
+        {
+          "id": "warmed-inferred-clock-field",
+          "domain": "warmed_inferred_clock_field",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "prepared_complete_clock_field_error_bound"
+          ],
+          "requires": [
+            "finite_reference_safe_background_bound",
+            "inferred_native_iid_weights_and_stationary_field_law"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Inferred positive weights supply alpha=30 min p_e. Channel contraction transports the binary warm-up error to the common complete clock/field observation, including references and timeout outputs, with no horizon multiplier.",
+          "limitations": "This is a sourced analytic composition, not an additional executed joint-history receipt. Estimated weights need a conservative lower exposure bound. The full 78-state preparation result requires a future instrument defined on collisions, such as retained out-of-domain abort; the binary field routine alone does not supply it. Rare postselection is excluded.",
+          "sources": [
+            {
+              "path": "model/record_laws/burn_in.py",
+              "anchor": "def coverage_of("
+            },
+            {
+              "path": "model/record_laws/README.md",
+              "anchor": "Any **common complete subsequent CPTP instrument**"
+            },
+            {
+              "path": "model/relative_observer_geometry/clock_reconstruction.py",
+              "anchor": "def predict_field("
+            }
+          ]
+        },
+        {
+          "id": "actual-screen-subsequential-field",
+          "domain": "native_screen_subsequential_field",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "compatible_nonzero_native_gaussian_subsequential_field"
+          ],
+          "requires": [
+            "native_occupation_covariance_and_clock_corrected_precision"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Actual-source Green forms obey the all-level bound 4096/3 and compatible ancestral restrictions. A common spatial subsequence gives nonzero centered Gaussian field laws on the enlarging dictionary. Root-clock corrections vanish for each fixed dictionary, so both clocks share those limits.",
+          "limitations": "The finite-graph CLT, stationary source family, full readback and spherical isoperimetric import are explicit. Compactness does not prove whole-sequence convergence, a unique or spherical Green operator, an interacting/CFT limit, physical three-space or Lorentzian dynamics. Three nonvanishing smearings are not spatial sites.",
+          "sources": [
+            {
+              "path": "model/physical_space_time/uniform_green.py",
+              "anchor": "def bounds("
+            },
+            {
+              "path": "model/physical_space_time/uniform_green.py",
+              "anchor": "def dictionary_control("
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### Compatible subsequential field laws and their limits"
+            }
+          ]
+        },
+        {
+          "id": "same-carrier-regional-clocks",
+          "domain": "native_regional_clock_field",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "complete_distinct_regional_count_law"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "All 4095 regions yield 3433 event sets and 2848 incidence classes. The renewal law gives sharp distinct-clock normalized variance bounds 1/(30N), or 2/(29N) at equal rates. A complete 66-state oracle checks the selected joint field value 101/5046.",
+          "limitations": "Ordered tape unions and coincidence deduplication are additional access. Identical event sets satisfy B(N)=N pathwise. The joint field assumes stationary preparation and local bit/current reads. Neither atomic transitions nor independent replica or coherence resources are inferred.",
+          "sources": [
+            {
+              "path": "model/laboratory_clock/regional_clock.py",
+              "anchor": "def parameters("
+            },
+            {
+              "path": "model/laboratory_clock/regional_clock.py",
+              "anchor": "def pair_classes("
+            },
+            {
+              "path": "model/laboratory_clock/regional_clock.py",
+              "anchor": "def joint_field("
+            },
+            {
+              "path": "model/laboratory_clock/README.md",
+              "anchor": "## Collective clocks on the same carrier"
+            }
+          ]
+        },
+        {
+          "id": "conditional-regional-optical-test",
+          "domain": "regional_optical_attachment",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "conditional_distinct_regional_optical_rejection"
+          ],
+          "requires": [
+            "complete_distinct_regional_count_law"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Point-mass and range bounds test the full distinct-regional raw-count attachment against public Ar13+/Yb+ blocks. Allowing all 11782056 ordered distinct pairs, missing blocks and the stated 2021 search gives conditional bounds 10^-121 for 36Ar and 10^-22 for 40Ar.",
+          "limitations": "The fixed count bracket, constant gain, bounded error and calendar partition are hypotheses. The experiment uses servo averages; their native readout is not derived. Identical-event aliases, other timing/filter contracts and every OPH clock are outside this rejection; no atom or coherence-resource lower bound follows.",
+          "sources": [
+            {
+              "path": "model/predictions/regional_optical.py",
+              "anchor": "def point_mass_bound("
+            },
+            {
+              "path": "model/predictions/regional_optical.py",
+              "anchor": "def evaluate("
+            },
+            {
+              "path": "model/predictions/README.md",
+              "anchor": "## Collective regional optical attachment"
             }
           ]
         }
@@ -7304,6 +7758,110 @@
             {
               "path": "model/laboratory_clock/event_geometry.py",
               "anchor": "def native_field("
+            }
+          ]
+        },
+        {
+          "from": "law-uniform-native-warmup",
+          "to": "warmed-inferred-clock-field",
+          "fact": "finite_reference_safe_background_bound",
+          "coordinate_maps": {
+            "carrier": "Restrict the all-sector theorem to its invariant binary 66-dimensional subdomain; do not drop collision outputs from the full-carrier theorem.",
+            "law": "Specialize the exogenous lower-bounded schedules to the positive constant IID weights inferred by the other input.",
+            "preparation": "Use the binary preparation error relative to tau tensor the untouched reference marginal; no reset or measurement implements the proof comparison.",
+            "records": "Trace out the warm-up tape/controller, then append fresh complete observation records through the same CPTP instrument on both states.",
+            "controls": "End law-only warm-up feedback before applying the common field/clock read protocol; contractivity does not assert retained-controller independence.",
+            "clock": "Use n only for warm-up attempts, then the declared incident-clock stopping rule; no mean-time substitution connects the two.",
+            "regime": "Complete-channel contraction bounds the entire future output by the initial trace distance, including timeout and reference blocks."
+          },
+          "sources": [
+            {
+              "path": "model/record_laws/README.md",
+              "anchor": "Any **common complete subsequent CPTP instrument**"
+            }
+          ]
+        },
+        {
+          "from": "inferred-iid-clock-and-field",
+          "to": "warmed-inferred-clock-field",
+          "fact": "inferred_native_iid_weights_and_stationary_field_law",
+          "coordinate_maps": {
+            "carrier": "Use the same twelve-port binary sector and append an untouched reference, without changing graph or conserved total.",
+            "law": "Order the recovered thirty seam weights by native seam identity and take alpha=30 min p_e; retain the fair classical law.",
+            "preparation": "Compare the actual warmed state with the stationary reference input of predict_field; the independent preparation bound pays for the difference.",
+            "records": "Use the same local field and pair-clock interfaces for both inputs, with fresh records and complete failure outputs; warm-up access is excluded.",
+            "controls": "Keep the future clock/field protocol fixed between the actual and stationary comparisons; prior law-only adaptation is covered by the other input.",
+            "clock": "Prepend n declared native attempts; the subsequent B-at-A clock is unchanged, and its inference supplies no seconds.",
+            "regime": "Apply the exact stationary marked law as the reference prediction and add the unconditional preparation error; do not transfer exact-ensemble identification to finite-data confidence."
+          },
+          "sources": [
+            {
+              "path": "model/relative_observer_geometry/clock_reconstruction.py",
+              "anchor": "def recover("
+            },
+            {
+              "path": "model/record_laws/burn_in.py",
+              "anchor": "def coverage_of("
+            },
+            {
+              "path": "model/record_laws/README.md",
+              "anchor": "Any **common complete subsequent CPTP instrument**"
+            }
+          ]
+        },
+        {
+          "from": "native-occupation-fluctuation-field",
+          "to": "actual-screen-subsequential-field",
+          "fact": "native_occupation_covariance_and_clock_corrected_precision",
+          "coordinate_maps": {
+            "carrier": "Apply the graph-general finite occupation theorem separately to each connected actual source graph; a twelve-port numerical check alone supplies no spatial-family theorem.",
+            "law": "Each source screen uses the same uniform identity/exchange rule on its own full seam set; do not identify it with the separately supplied torus.",
+            "preparation": "Select q=V/3 on each source graph and include its susceptibility in the field normalization; twelve-port warm-up gives no uniform screen-family budget.",
+            "records": "Form centered ancestral-cell occupations from the complete disclosed tape; nested normalized observation matrices obey exact restriction identities.",
+            "controls": "Use fixed linear observation restrictions without modifying source repair; the auxiliary flat comparison proves an inequality, not a replacement dynamics.",
+            "clock": "Insert each graph Laplacian and root incident seam set into the exact clock-corrected formula before applying all-level Green estimates.",
+            "regime": "Take the finite-graph count CLT first, then compactness and a common diagonal spatial subsequence; explicit vanishing clock bounds hold for each fixed dictionary."
+          },
+          "sources": [
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "## Finite-graph theorem and the source-derived action"
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### A uniform bound on the actual spherical source"
+            },
+            {
+              "path": "model/physical_space_time/uniform_green.py",
+              "anchor": "def dictionary_control("
+            }
+          ]
+        },
+        {
+          "from": "same-carrier-regional-clocks",
+          "to": "conditional-regional-optical-test",
+          "fact": "complete_distinct_regional_count_law",
+          "coordinate_maps": {
+            "carrier": "Retain each distinct event-set pair on the same carrier and charge the whole pair-selection family; do not count aliases as independent clocks.",
+            "law": "Use the derived renewal law only under uniform IID scheduling; the optical raw-count attachment is an additional tested hypothesis.",
+            "preparation": "Discard the separate stationary-field preparation requirement because this test uses state-independent incident counts only; retain public measurement provenance.",
+            "records": "Postulate the stated affine mean-normalized count readout and bounded ratio error, then compare with the deposited complete blocks; this does not derive atomic/servo instruments.",
+            "controls": "Require one fixed N and consecutive disjoint A intervals in every candidate block, including unobserved blocks; charge arbitrary selection without introducing filters or replicas.",
+            "clock": "Attach the declared N interval to 300-second UTC blocks as a hypothesis; choosing a unit is free, while this record correspondence is tested.",
+            "regime": "Use the exact count law to prove a conservative point-mass bound and selection-charged range tail; no Gaussian approximation or variance-only rejection is used."
+          },
+          "sources": [
+            {
+              "path": "model/laboratory_clock/regional_clock.py",
+              "anchor": "def parameters("
+            },
+            {
+              "path": "model/predictions/regional_optical.py",
+              "anchor": "def point_mass_bound("
+            },
+            {
+              "path": "model/predictions/regional_optical.py",
+              "anchor": "def evaluate("
             }
           ]
         }

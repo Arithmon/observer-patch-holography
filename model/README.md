@@ -27,8 +27,11 @@ repair history. Incident-clock sampling has a calculable spatial correction.
 Its projection onto the actual carrier's rank-three band gives exact axial
 and transverse variances in the local incident clock. Eliminating internal
 variables on the existing spherical screens gives a controlled native Green
-operator. A fixed twenty-face readout has certified Green and clock
-covariances across four source levels. Complete endpoint records also give
+operator. An all-level bound yields nonzero compatible subsequential Gaussian
+laws on nested ancestry readouts; normalized attempt and incident clocks share
+those limits. Four source levels also have certified numerical covariances.
+Whole-sequence uniqueness and a physical continuum identification are unproved.
+Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
 failure of its converse.
@@ -40,9 +43,10 @@ The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOC
 sets out correspondence tests using published observations without requiring a
 laboratory experiment. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 compares the conditional scalar-tilt prediction with ACT DR6 joint posterior
-chains and tests a direct native event-count/optical-phase attachment against
-published clock ratios. The latter rejects that simple attachment under its
-stated readout assumptions. These retrospective comparisons do not establish
+chains and tests direct native event-count/optical-phase attachments against
+published clock ratios. The clock test covers all distinct regional incident
+unions on one carrier under its stated readout assumptions; identical event
+sets are aliases and are excluded. These retrospective comparisons do not establish
 the common physical observation dictionary.
 
 ## Start with one carrier
@@ -69,7 +73,12 @@ process. A current-only calibration reconstructs the rank-three slow-response
 metric using binary preparations in the quantum clocks' state space. Its
 retained execution uses 578 native attempts; a finite cap retains failed
 calibrations with a derived probability bound. Local clock fluctuations give
-another readout of the same distance shells. A reversible representation of
+another readout of the same distance shells. Pair-clock means and coincidences
+also [recover nonuniform seam probabilities](relative_observer_geometry/README.md#inferring-nonuniform-scheduling-from-clock-comparisons)
+and predict weighted field laws, under independent scheduling. A
+[law-uniform preparation bound](record_laws/README.md#preparation-by-finite-native-warm-up)
+replaces exact stationary initialization by discarded repairs and a quantified
+error for every admissible current table. A reversible representation of
 repair retains complete finite instrument histories, records and feedback.
 The detailed claims and their scope are in the
 [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md).

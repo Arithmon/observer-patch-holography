@@ -1,22 +1,24 @@
 {
-  "description": "Native passage and authenticated finite causal placement, actual rank-three occupation fields, and certified shared-ancestry Green and clock observations on existing source screens.",
+  "description": "Native passage, authenticated finite causal placement, rank-three occupation fields, and uniform all-level source Green bounds with compatible nonzero subsequential Gaussian observation laws.",
   "files": {
-    "OCCUPATION_FIELD.md": "c635ea0962230ddce63b3d9b06bd47e86e3920ff74089e22427b65bdebaba762",
-    "README.md": "91232f7147c025c6d44d97c2e1d0d6fe1bbfa4440fb469fe9e604f8bda108a87",
+    "OCCUPATION_FIELD.md": "08a840a7abbdb81e900c8e18fbd7ce489c918c7822b39b1b554d2bfa55d58390",
+    "README.md": "1f6ea4a9ea449beaa1a0f4260051126467611c0178ed110c5e9a853f2eae7d66",
     "__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "causal_placement.py": "35b7ae06cfcbdb48ba3425eb9d7cb4697ed20f164810f4be6c4025b1cb5b7f30",
     "construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
-    "occupation_field.py": "3f11379c90e2b3bd180ca5b4db7e6b5edf6a368e59a979628633b3b7846316c4",
-    "occupation_field_results.json": "a93217efac7f4b45692f5925870791e53d0ebad8a48587c3db3efa43bd19e03e",
+    "occupation_field.py": "1037cea6fc36f73d04e1e95ac6cd1053108d4eefb80b9d06083f47107a7b3e7e",
+    "occupation_field_results.json": "9baeb53d61c092213182d69ab78c7018a5fa24fe674ac68810716306172b90b7",
     "results.json": "317c3b8a6446f8a4b0b7ee2fac9fb2b199ca5b71a2f337b51853bab70ebe91c5",
     "source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
     "test_ancestry_green.py": "a64550946c13a27ec4600ac5b97e2e94e6db7d17ca45850eb22b639ac464e88d",
     "test_causal_placement.py": "6ee76276f2437ecb989b19939808db35b50e65b37dff85eeba5810be64854c4c",
     "test_construction.py": "4b22e287824d6780a64a5b7c1883518138813a322e7896c7caceaa008c2d6171",
     "test_occupation_field.py": "68125797104ed44f34271dc6521a19b5d5f84c075f6391d2c2ab2605e449e130",
-    "test_source_green.py": "3c5585e77a78cc2b736e1056cfee0145b082739241b7dc2942e24c832731e45b"
+    "test_source_green.py": "3c5585e77a78cc2b736e1056cfee0145b082739241b7dc2942e24c832731e45b",
+    "test_uniform_green.py": "029cc960f7fcab35c46a91a667a291d839b8313f042058b0002f029d28651c95",
+    "uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8"
   },
   "reproduce": [
     "python -m model.physical_space_time --check model/physical_space_time/results.json",

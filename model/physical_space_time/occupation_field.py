@@ -20,6 +20,7 @@ import sympy as sp
 from . import construction as passage
 from . import source_green
 from . import ancestry_green
+from . import uniform_green
 from . import causal_placement
 from ..observer import native
 from ..observer.scalar_response.experiment import canonical, compare_receipt
@@ -66,7 +67,8 @@ FORMAL_SOURCE_PATHS = (
     'Lean/lakefile.lean',
     'Lean/lean-toolchain')
 SOURCE_PATHS = tuple(sorted(set((*passage.SOURCE_PATHS, *source_green.SOURCE_PATHS,
-    *ancestry_green.SOURCE_PATHS, *causal_placement.SOURCE_PATHS, *FORMAL_SOURCE_PATHS,
+    *ancestry_green.SOURCE_PATHS, *uniform_green.SOURCE_PATHS,
+    *causal_placement.SOURCE_PATHS, *FORMAL_SOURCE_PATHS,
     'model/physical_space_time/occupation_field.py',
     'model/observer/scalar_response/experiment.py', 'tools/strict_json.py',
     'model/__init__.py', 'model/common_source/__init__.py',
@@ -467,6 +469,7 @@ def run():
             'actual_carrier_spatial_clock_field': carrier_band_receipt(),
             'actual_source_screen_Green': source_green.run(),
             'actual_source_ancestry_covariances': ancestry_green.run(),
+            'actual_source_uniform_Green_and_subsequential_field': uniform_green.run(),
             'actual_carrier_causal_placement': causal_placement.run(),
             'finite_history_controls': [scalar_moments(clock, n) for clock, ns in
                 (('attempt', (1, 4, 16, 64)), ('incident', (1, 4, 16))) for n in ns],
@@ -482,6 +485,8 @@ def run():
                 'actual_rank_three_carrier_marginal_clock_actions_proved': True,
                 'actual_source_screen_Green_elimination_and_uniform_approximation_proved': True,
                 'actual_source_fixed_ancestry_covariances_certified_at_levels_zero_through_three': True,
+                'actual_source_all_level_Green_bound_and_vanishing_clock_correction_proved': True,
+                'actual_source_nonzero_compatible_subsequential_Gaussian_law_proved': True,
                 'conditional_graph_Green_convergence_criterion_proved': True,
                 'supplied_torus_fixed_band_iterated_limit_proved': True,
                 'uniform_finite_count_Gaussian_error_bound_proved': False,

@@ -255,6 +255,10 @@ record bin and an apparatus error budget of `1/64`. The
 [continuing-carrier protocol](closed_prediction_protocol/README.md) runs it
 on one continuing carrier with 379 discarded preparation attempts before
 each of 3,927 trials and an exact-source wrong-choice bound of `3/400`.
+The [law-family warm-up bound](record_laws/README.md#preparation-by-finite-native-warm-up)
+also applies to every admitted current law, including complex phases: 221
+binary or 318 full-carrier attempts give stationary-state error at most
+`1/1000`, including an untouched reference, after discarding the warm-up tape.
 
 **No retained dataset reads `g`.** The public oscillator and Bell records
 have no identified native apparatus map, so they supply no likelihood for any

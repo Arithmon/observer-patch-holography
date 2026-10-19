@@ -152,6 +152,10 @@ REPLAYS = (
     ("model.interacting_band_extension", None,
      "model/interacting_band_extension/results.json"),
     ("model.predictions.optical_clock", None, "model/predictions/optical_clock_results.json"),
+    ("model.relative_observer_geometry.clock_reconstruction", None,
+     "model/relative_observer_geometry/clock_reconstruction_results.json"),
+    ("model.record_laws.burn_in", None, "model/record_laws/burn_in_results.json"),
+    ("model.predictions.regional_optical", None, "model/predictions/regional_optical_results.json"),
 )
 
 

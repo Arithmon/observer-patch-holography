@@ -132,6 +132,51 @@ assumption is instantiated here. The relation of these native local tick
 records to observer-relative modular flow remains to be established. A
 preferred universal physical clock is not required.
 
+## Inferring nonuniform scheduling from clock comparisons
+
+[clock_reconstruction.py](clock_reconstruction.py) removes uniform seam
+selection from the pair-clock geometry inference. Assume independent draws
+from an unknown positive seam distribution on the connected twelve-port
+graph. Every incident event ticks, including zero current. The comparison
+service supplies the ordered pair tapes and terminal coincidences. Write
+`a_i` for port i's incident probability and `p_ij` for the shared seam
+probability, zero on a nonedge. Observable pair laws give
+
+```text
+mu_ij = E[number of j ticks through the next i tick] = a_j/a_i,
+nu_ij = Pr[j also ticks at the terminal i event] = p_ij/a_i.
+```
+
+Each seam ticks exactly two ports, hence `sum a_i=2`. Set `r_0=1` and
+`r_i=mu_0i`; then `a_i=2r_i/sum r` and `p_ij=a_i nu_ij` uniquely recover
+the scheduler. Probability normalization supplies no elapsed-time unit.
+The estimator checks all 132 oriented pair laws, opposite coincidences,
+row completeness and connectivity. It receives no load preparation, seam
+table, final state or coordinates. Positive support then recovers the
+unweighted native rank-three Gram; unequal weights need not preserve that
+band as the slow band of the actual dynamics.
+
+For one pair with exposures `a,b` and shared weight `c`, its count generating
+function is `(a-c+cz)/(a+b-c-(b-c)z)`. The inferred weights also determine the
+marked density transfer `B(z)(I-A(z))^-1`, with the remote waiting tail
+summed exactly. Under the declared stationary binary total-two preparation,
+this predicts the complete joint law of the initial A occupation and the B
+occupation after specified A ticks. Independent enumeration of all 66 states
+and native endpoint branches reproduces four count/field comparisons for
+uniform and biased schedules. Both recover the same structural Gram but
+predict different joint fields; using uniform kinetics for the biased
+clock records fails the control.
+
+This identifies an IID scheduler from exact ensemble laws. A stationary
+cyclic control has the same pair means and terminal coincidences, but its
+zero-count probability is `4/5` rather than `4/9` for ports 0 and 1.
+Temporal independence therefore remains testable with further interval
+records. Finite data also cannot distinguish an absent seam from an
+arbitrarily rare one without an exposure bound. Local initial-bit disclosure and
+incident-current readback remain necessary for the field observation. A
+physical clock or Lorentzian geometry is not inferred from this probability
+normalization.
+
 ## Geometry connection and remaining boundary
 
 The existing record-only native response calibration is executed again. Its
@@ -537,6 +582,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geome
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.binary_dynamics --check model/relative_observer_geometry/binary_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.temporal_records --check model/relative_observer_geometry/temporal_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_observer_geometry.clock_reconstruction --check model/relative_observer_geometry/clock_reconstruction_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/relative_observer_geometry
 ```
 

@@ -16,8 +16,11 @@ obtain a native Green operator, with a level-independent relative error bound
 `1/(2^(p+1)-1)` for its order-`p` approximation. The associated continuum
 test uses one fixed twenty-face ancestry observation on source levels zero
 through three, with certified Green and clock covariances. Each retained
-covariance has operator error at most `1e-6`. An all-level convergence tail
-and a physical identification are further obligations. A supplied periodic
+covariance has operator error at most `1e-6`. The actual source's subdivision
+also gives the all-level bound `||G_l||<=4096/3`, vanishing normalized clock
+corrections, and a nonzero compatible Gaussian law along one common spatial
+subsequence on the enlarging ancestral observation dictionary. A unique
+whole-sequence limit and a physical identification are further obligations. A supplied periodic
 square graph is a separate comparison
 control; it does not identify the actual source's physical spacetime.
 

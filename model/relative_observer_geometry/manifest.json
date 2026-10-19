@@ -1,11 +1,13 @@
 {
   "description": "Observer-visible spatial fields and temporal Hilbert spaces, exact incident-clock spectra, controlled screen compressions, and explicit interpretation limits.",
   "files": {
-    "README.md": "8e1c5d3e7410f59c77b17b1f89fe0a521fa39727851ac09ef04d7095717f9298",
+    "README.md": "9e5014b4f2ae6eb4ab59f6136a7ba5e3a436f4069affcf61fbe5daf9d5900dad",
     "__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "binary_dynamics.py": "a5801807eac5518b8f8661ac88effa07390356b9e0caf89c63ff47ba96f17c15",
     "binary_results.json": "c153ae0902230a3127201edbe66d90e66e8e58aa0ec0aff000b9a7317ab24534",
+    "clock_reconstruction.py": "989db7dd95fab25c6f06942e3349c3a1f433101b0be4bd5beca6cbfe733ee0d6",
+    "clock_reconstruction_results.json": "498e2b1d3c70fde48ced422731ee719ab86b6bc50a9b3c6eccef0ebfb017a08a",
     "construction.py": "9ca1e81d200451cb704efaf05d5463ebda121cfca4179f95febc8b7ca3dd351d",
     "intrinsic_geometry.py": "9a8731d640260b7fda6e85b0fc84764deeccfc7147a6f26999236c716f116e43",
     "intrinsic_results.json": "7f1cf9f64acb85ca15d8f066e27f88f750306b53c8114f8094da2dd0ce3789a6",
@@ -13,6 +15,7 @@
     "temporal_records.py": "36671ee75ea1a2982104e3fd793186eb57e941f62c8a68d9a9d23a9a14259d9c",
     "temporal_results.json": "cab19ba9540dd39f26d393623084f1a0abc5b2f6564a222442ea968b437cd86c",
     "test_binary_dynamics.py": "cfcffdcf865fb0db3b3c6efb81b9a180eed8087aeeacfd771bd4a971178bb442",
+    "test_clock_reconstruction.py": "2e63e91502dd84c8a974d0db179ee2f4c27051ae1492a4c536323c4ed921d96f",
     "test_construction.py": "cddc206a4bac54bb728c5fb5ed83d951093dc198ad3ae93a8820c48e6bd67c3c",
     "test_intrinsic_geometry.py": "98cd2f99e40fdc211f8c3eed3ad170a461fa91e77d11ed7d8cd3d24135efd277",
     "test_temporal_records.py": "5ac9032ec21645ebd22cab2e7562746dc85c805f873314a3b90ba81876049190"
@@ -22,6 +25,7 @@
     "python -m model.relative_observer_geometry.intrinsic_geometry --check model/relative_observer_geometry/intrinsic_results.json",
     "python -m model.relative_observer_geometry.binary_dynamics --check model/relative_observer_geometry/binary_results.json",
     "python -m model.relative_observer_geometry.temporal_records --check model/relative_observer_geometry/temporal_results.json",
+    "python -m model.relative_observer_geometry.clock_reconstruction --check model/relative_observer_geometry/clock_reconstruction_results.json",
     "python -m pytest -q -W error model/relative_observer_geometry"
   ],
   "schema": "oph.relative_observer_geometry.manifest.v1"

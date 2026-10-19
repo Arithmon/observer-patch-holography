@@ -12,7 +12,8 @@ This checks coverage and source custody, not mathematical entailment. A
 theorem without a checked model instantiation remains an open connection.
 The [physical audit](PHYSICAL_AUDIT.md) gives the current completion status,
 including the actual rank-three occupation-field action, spherical-screen
-Green bounds, endpoint causal placement, complete-history uncertainty and
+Green bounds and compatible nonzero subsequential fields, endpoint causal
+placement, law-uniform finite preparation, complete-history uncertainty and
 resource-clock calibration.
 
 **Build the simplest shared repair process that satisfies the required
@@ -173,7 +174,7 @@ law-level arguments in full.
 | Carrier | Twelve ports and thirty seams of the source icosahedron; integer loads with total two | Declared by the architecture premise; total two is the smallest sector where a single load waits or moves and two loads collide | Selection of the architecture from an unrestricted menu; extended carriers and refinement |
 | Classical seam rule | Endpoints become floor and ceiling of their mean; a fair coin breaks ties | Forced by conservation, one-step balance, a tie-break that reads no load, and endpoint symmetry | Nothing on its domain; the four requirements are premises |
 | Record law | C executes; E is the comparison law | C records the classical rule's own random variables, the coin and the current, and nothing more | Which coherence `g` nature keeps; the admissible laws form one convex family |
-| Scheduler | Uniform independent seam attempts | The symmetric baseline; prescribed seams serve as controls | Identification of attempts with a physical clock |
+| Scheduler | Uniform independent seam attempts as baseline; fixed nonuniform IID weights can be recovered from exact pair-clock laws | Clock ratios and coincidences determine weights; a periodic control shows they do not establish independence | Temporal independence and identification with physical clock observations |
 | Observer | A finite record tape and a controller that reads committed records and chooses the next seam | The smallest object that records, predicts and acts on its own records | Larger observers, record delivery and refinement |
 | Services | Coherent preparation, readout, mixers, record storage and compiled source words | Declared and costed in every error budget | Physical realization and authenticated service errors |
 | Closure inputs | P and N as derived by the closure equations | Accepted under their declared contracts | Physical endpoint corrections |

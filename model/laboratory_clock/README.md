@@ -83,6 +83,57 @@ that the joint observations can test. Identifying these dimensionless records
 with observations of the Universe is a falsifiable correspondence proposal;
 neither choosing units nor defining the event clock waits for that identification.
 
+## Collective clocks on the same carrier
+
+[regional_clock.py](regional_clock.py) derives a collective clock without adding
+independent replicas. A nonempty port region ticks **once** whenever a native
+event touches that region, including events with zero current. Its interface
+admits the ordered union of its port tapes and event coincidences. This service
+is stronger than one primitive port's tape; a sufficiently large region reads
+every source event. No hidden counter or physical time unit is required.
+
+Let `a`, `b` and `c` count the seams incident to regions A, B and both. Under the
+same independent uniform scheduler, the B count through the next A tick has
+
+```
+g(z) = (a-c+c*z)/(a+b-c-(b-c)*z),
+X = independent Bernoulli(c/a) + Geom0(a/(a+b-c)),
+E[X] = b/a,    Var(X) = b*(a+b-2*c)/a^2.
+```
+
+Ignoring seams incident to neither region does not change this renewal law.
+Among the remaining events, a B-only event repeats the wait and an A event
+terminates it; the terminal B coincidence has probability `c/a`. The geometric
+waiting count and terminal coincidence are independent. Successive intervals
+are independent because each begins after a stopping event in the IID seam
+sequence. Thus the mean-normalized ratio `a*B(N)/(b*N)` has variance
+`(a+b-2*c)/(b*N)`, with no fitted suppression factor.
+
+All 4,095 nonempty port regions produce 3,433 distinct event sets. Their
+11,782,056 ordered distinct pairs have 2,848 incidence classes. For every
+distinct pair, `a+b-2*c>=1` and `b<=30`, so the normalized variance is at least
+`1/(30*N)`. This is attained at `(a,b,c)=(29,30,29)`. At equal mean rates,
+`a=b`, the difference is at least two and `b<=29`; the sharp bound is
+`2/(29*N)`, attained at `(29,29,28)`. The executable catalogue checks every
+mask and pair class. Identical event sets instead give `B(N)=N` pathwise:
+69 different regions expose all thirty seams. These aliases are the same
+clock, not evidence of independently stable clocks.
+
+The joint field check uses A equal to all ports except `(0,1)` and B equal to
+all ports except `(0,5)`, attaining `(29,29,28)`. With the declared stationary
+binary total-two preparation, local readouts obey
+`Pr(n_5(0)=1,n_1(T_A(2))=1)=101/5046`. The density resolvent derives the four
+bit probabilities together with the B-count generating function. Independent
+enumeration of all 66 configurations and every native branch verifies three
+complete stopped comparisons, including all unseen waiting tails. The initial
+field port belongs to A and the final field port to B. This is a selected
+classical clock/field law; coherence cannot alter these load-independent
+incident counts under the declared scheduler. No atomic transition or C/E
+selection follows from this result. The
+[public comparison](../predictions/README.md#collective-regional-optical-attachment)
+tests the distinct regional count family under an explicit optical readout
+attachment, retaining aliases as a separate boundary.
+
 ## What can be derived without a laboratory
 
 Let an admissible native history have finite record word `r` and probability

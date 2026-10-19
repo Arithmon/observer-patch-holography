@@ -393,7 +393,7 @@ with an exact rational Rayleigh lower bound and row-sum upper bound,
 expanded for the retained covariance error. These finite decreases do not
 bound the unexecuted refinement tail.
 
-The clock correction has an additional all-level conditional bound.
+The clock correction has an all-level bound.
 Only three cross-carrier seams can affect a cell-constant observation, so
 `||W^T L_i W||<=1/(2s)`. Since `L_i<=L`, Cauchy–Schwarz in the `L_i`
 quadratic form gives
@@ -402,15 +402,147 @@ quadratic form gives
 ||C_incident-G_l|| <= [1+2 sqrt(||G_l||/2)]/(132s).
 ```
 
-Thus bounded Green observations imply that these attempt and incident
-clock covariances share any existing limit. On the four executed levels,
+On the four executed levels,
 `||G_l||<=36` is certified and the incident correction is at most
-`19/(264s)`. Proving a uniform bound and a Cauchy tail for the complete
-ancestry sequence is the remaining spatial-limit obligation. A limit of
-these twenty smearings alone would not reconstruct a full continuum field;
-that requires compatible limits on an enlarging observation algebra.
-The existing fixed-radius screen agreement and the constant-factor
-comparison with `L_cell^+` do not establish either obligation.
+`19/(264s)`. The following proof supplies boundedness at every level and
+compatible subsequential limits on an enlarging observation dictionary.
+It does not supply a Cauchy tail or uniqueness of the spatial limit.
+
+### A uniform bound on the actual spherical source
+
+The source refines each triangular face into four children using shared
+edge-midpoint identifiers. Normalizing the midpoint coordinates changes
+their placement, but not this combinatorial subdivision or its dual cell
+graph. Compare that graph with the affine midpoint subdivisions of the
+flat regular icosahedron of circumradius one. This auxiliary surface is
+used to prove an inequality; it replaces neither native repair nor the
+source readout by a geometric Laplacian. Its side length `a`, face area
+`a0` and inradius `r` satisfy
+
+```text
+a^2=16/(10+2sqrt(5)),  a0=sqrt(3)a^2/4,
+r^2=(5+2sqrt(5))/15,  r>3/4.
+```
+
+At level `l` each flat triangle has area `a0/s` and side `a/sqrt(s)`.
+For a set of `k<=10s` cells with `b` dual edges leaving it, its flat
+boundary consists of exactly those `b` primal edges. Its complement has
+at least the same flat area. Radial projection of the convex polyhedron
+onto the unit sphere is one-to-one except for shared edge descriptions.
+On each face its area Jacobian is `r/|x|^3>=r`, and its differential has
+norm at most `1/|x|<=1/r`. Thus both spherical areas are at least
+`r a0 k/s`, while the spherical boundary length is at most
+`a b/(r sqrt(s))`. The finite-perimeter spherical isoperimetric inequality
+`P^2>=A(4pi-A)>=2pi min(A,4pi-A)` applies also to disconnected unions
+and sets with holes. We import this classical round-sphere case of
+[Cavalletti–Mondino, Theorem 1.1 and Section 2.2](https://arxiv.org/html/1610.05044v2);
+the cap profile follows from `A=2pi(1-cos(theta))`, `P=2pi sin(theta)`.
+The cited theorem uses probability area: substitute `v=A/(4pi)` and
+normalized perimeter `P/(4pi)` to obtain the displayed unnormalized formula.
+Consequently the cell graph's edge Cheeger constant obeys
+
+```text
+b^2 >= (pi sqrt(3) r^3/2) k,
+h^2 := min_(0<k<=10s) (b/k)^2 >= pi sqrt(3) r^3/(20s)
+                                           >= 27/(256s).
+```
+
+For completeness, the graph inequality used here follows from layer cake.
+If `g>=0` is supported on at most half the vertices, integration of its
+level-set boundaries gives `h sum g_i^2<=sum_edges |g_i^2-g_j^2|`.
+Cauchy–Schwarz bounds the right side by
+`sqrt(2d sum g_i^2 sum_edges(g_i-g_j)^2)` for maximum degree `d`.
+Apply this to the positive and negative parts of a mean-zero vector after
+subtracting a median. Their energies sum to at most the original energy;
+their squared norms sum to at least the original squared norm. Since the
+actual dual graph has degree three,
+
+```text
+lambda_2(L_cell)>=h^2/6>=9/(512s).
+```
+
+The internal gap `5-sqrt(5)>2` and distinct-port routing give the native
+Schur bound `S>=L_cell/24`. Hence for **any** constant-free cell observation
+`Z` of operator norm at most one, with port lift `W=UZ`,
+
+```text
+G_l[Z]=W^T(sL)^+W=Z^T S^+ Z/s,    0<=G_l[Z]<= (4096/3) I.   (U)
+```
+
+This holds at every combinatorial level and for every routing using
+distinct ports at a carrier. The source's three endpoint assignments
+use distinct columns of its local assignment; no convergence of its
+floating routing choices is assumed. The executable checks the base
+geometry and subdivision identities exactly, binds the independent
+combinatorial reconstruction to the source, and checks the finite native
+matrices. The all-level conclusion follows by subdivision induction and
+the inequalities above, rather than by enumerating finitely many levels.
+It concerns the mathematical continuation of the declared source rule,
+not the ability of a finite-precision constructor to allocate every level.
+
+For the twenty-face dictionary, (U) gives the rational clock bounds
+
+```text
+||C_incident-G_l|| <= 5/(12s),
+||C_attempt-G_l|| <= 1/(2520s^2).
+```
+
+Thus these normalized observer-clock fields share every spatial
+subsequential limit. No replacement of an event clock by its mean wait
+was made. Gaussian characteristic-function differences are at most half
+these bounds times the squared argument norm.
+
+### Compatible subsequential field laws and their limits
+
+Fix any coarse level `k`. At each `l>=k`, center the occupation counts
+over its `20*4^k` ancestral cells and divide by
+`sqrt(12*4^(l-k))`; call this port observation matrix `W_lk`.
+The isometry `J_k` repeats each coarse coefficient on its four children
+and divides it by two. Exactly,
+
+```text
+W_lk=W_l,k+1 J_k,
+G_l,k=J_k^T G_l,k+1 J_k,    ||G_l,k||<=4096/3.
+```
+
+For each fixed `k`, the covariance matrices lie in a compact finite
+dimensional set. A diagonal subsequence of levels therefore converges
+for every `k` simultaneously and preserves these identities. This gives
+a positive bounded covariance form on the countable union of the
+ancestral step-function spaces, hence compatible centered Gaussian
+finite-dimensional laws. One can construct the countable Gaussian law
+by a Gram representation in a separable Hilbert space and independent
+normal variables; no claim of a square-integrable random field follows
+from bounded covariance alone. The observation-count CLT is taken first
+at each finite graph, followed by this common spatial subsequence.
+
+The attempt correction is unchanged. For the root incident clock,
+`||W_lk^T L_i W_lk||<=4^k/(2s)`, giving
+`||C_incident,l,k-G_l,k||<=[1+54*2^k]/(132s)`. It vanishes for every
+fixed coarse observation space, so both clocks have the same compatible
+limiting Gaussian laws along the selected subsequence. This is not a
+uniform finite-observation-count distribution bound.
+
+The limit cannot be identically zero. Let `C` contain the twenty flat
+base-face centroid vectors, so `C^T C=(20r^2/3)I` and `1^T C=0`.
+At level `l`, use the fine flat face centroids as a three-component
+cell-constant variational test field. Each adjacent centroid separation
+is at most `a/sqrt(3s)`, including edges crossing a base-face hinge.
+There are `30s` dual edges, so its energy matrix is at most `10a^2 I`.
+Its average over descendants of each base face is exactly that face's
+centroid. The variational formula for `L^+` then gives, for every unit
+`q` in `range(C)`,
+
+```text
+q^T G_l,0 q >= 8r^2/a^2 = (7+3sqrt(5))/3 > 4.
+```
+
+These three nonvanishing comparison smearings are not additional spatial
+sites or an identified physical coordinate chart. Compactness does not
+select a unique covariance, identify a spherical Green operator, establish
+a conformal theory, or reconstruct causal Lorentzian dynamics. A whole
+sequence convergence estimate and that physical reconstruction remain
+separate obligations.
 
 ## A quantitative spatial-limit criterion
 
@@ -523,12 +655,12 @@ the conditional interpretation here; neither supplies the spatial maps and
 Green convergence in (5). A fixed-radius local history bound does not control
 the inverse-Laplacian contribution from arbitrarily slow global modes.
 
-The fixed ancestry dictionary supplies compatible observations and a declared
-scale for four actual source levels, with certified Green matrices and
-incident-clock corrections. These finite certificates do not prove an
-all-level Green bound or Cauchy tail. A continuum field also requires an
-enlarging compatible observation algebra and quantitative control of any
-preparation/readout errors under the same comparison. Physical dimensionality,
-Lorentzian propagation, interacting continuum fields, and identification with
-observed physics are separate obligations. No federation axiom is needed for
-the finite single-carrier result.
+The ancestry dictionary supplies certified finite covariances and an
+enlarging observation algebra. The source subdivision and native Schur
+comparison give an all-level uniform bound, vanishing normalized clock
+corrections and a nonzero compatible Gaussian law along a common spatial
+subsequence. A quantitative whole-sequence tail, a unique target Green
+operator and control of preparation/readout errors under that limit require
+further proof. Physical dimensionality, Lorentzian propagation, interacting
+continuum fields, and identification with observed physics are separate
+obligations. No federation axiom is needed for the finite single-carrier result.

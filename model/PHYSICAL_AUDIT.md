@@ -137,10 +137,12 @@ series defines a clock, and its unit needs no external validation.
 Visible pair-clock laws also recover the carrier graph and predict local
 field correlations without a hidden counter. A physical identification may
 be posed as a hypothesis and tested: the public optical comparison rejects
-a direct primitive-count/phase attachment under an explicit bounded-error
-and readout contract. It permits arbitrary missing blocks and charges
-calendar-window selection. This does not exclude collective clocks or
-identify native repair with atomic dynamics.
+direct count/phase attachments for every distinct regional incident-event
+union on one carrier under an explicit bounded-error and readout contract.
+It permits arbitrary missing blocks and charges calendar-window and region
+selection. Identical event sets are the same clock and are excluded. The
+test does not model atomic transitions, servo filtering or other collective
+clock mechanisms.
 
 ## Gaussian field and continuum scope
 
@@ -166,11 +168,15 @@ screens, exact block elimination gives a Schur Green operator and a uniform
 approximation bound. One fixed twenty-base-face ancestry readout compares
 native Green, attempt-clock and root-carrier incident-clock covariances on
 levels zero through three, with retained operator error at most `1e-6`.
-If normalized Green observations stay bounded across refinement, the
-incident-clock correction vanishes under the declared `4^level` normalization.
-An all-level Cauchy tail, an enlarging observation algebra and identification
-with a target continuum require further proof. The supplied square torus is
-a separate iterated fixed-band free-field example.
+A geometric comparison proves the normalized Green bound `4096/3` at every
+refinement level. The root incident-clock correction is at most
+`5/(12*4^level)` on the twenty-face dictionary. Nested ancestry readouts
+therefore admit compatible Gaussian subsequential limits shared by both
+clocks, with three nonvanishing smearings. This is an analytic result about
+the actual combinatorial source continuation, not a fit to four levels.
+A unique whole-sequence limit, a conformal or interacting field theory and
+Lorentzian propagation remain unproved. The supplied square torus is a
+separate iterated fixed-band free-field example.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint

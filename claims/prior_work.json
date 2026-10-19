@@ -1508,6 +1508,22 @@
       "note": "PBFT with prepared/commit certificates and view change (journal version of the OSDI 1999 paper)."
     },
     {
+      "key": "cavalletti2018isoperimetric",
+      "type": "article",
+      "author": "Cavalletti, Fabio and Mondino, Andrea",
+      "title": "Isoperimetric inequalities for finite perimeter sets under lower Ricci curvature bounds",
+      "journal": "Rendiconti Lincei - Matematica e Applicazioni",
+      "volume": "29",
+      "number": "3",
+      "pages": "413--430",
+      "year": "2018",
+      "doi": "10.4171/RLM/814",
+      "eprint": "1610.05044",
+      "verified": true,
+      "verification_source": "https://ems.press/journals/rlm/articles/15551; https://arxiv.org/html/1610.05044v2",
+      "note": "Theorem 1.1 and Section 2.2, applied only to the round unit two-sphere and finite-perimeter sets. The probability-area and perimeter normalization is converted explicitly in the native source Green comparison."
+    },
+    {
       "key": "chaitin1982register",
       "type": "article",
       "author": "Chaitin, G. J.",

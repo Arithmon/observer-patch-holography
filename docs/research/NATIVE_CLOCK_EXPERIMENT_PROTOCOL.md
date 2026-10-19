@@ -54,6 +54,27 @@ joint dimensionless correspondence within one source. Identifying the same
 records in measured data is a hypothesis to test, rather than a prerequisite
 for defining the clocks or deriving their predictions.
 
+Uniform scheduling can be relaxed within the IID class. The
+[weighted reconstruction](../../model/relative_observer_geometry/README.md)
+uses all oriented pair means and terminal coincidences to determine the
+positive seam probabilities. Normalization follows because each source event
+ticks exactly two endpoint clocks. The recovered weights predict the local
+field law, while a matched cyclic control shows that those pair statistics
+do not establish temporal independence. No hidden attempt counter enters
+this inference.
+
+The [collective regional construction](../../model/laboratory_clock/README.md#collective-clocks-on-the-same-carrier)
+counts the union of each region's visible events once. Under uniform IID
+scheduling it derives the complete count law for every region pair, with
+normalized variance at least `1/(30N)` for distinct event sets and `2/(29N)`
+at equal mean rates. Regions exposing identical events define one clock.
+The [public comparison](../../model/predictions/README.md#collective-regional-optical-attachment)
+tests all distinct pairs under an explicit direct optical readout hypothesis,
+including its count normalization, bounded error and selection cost. It rejects
+that conjunction; it does not derive the published atomic/servo apparatus or
+exclude every collective clock. Collective tape access is stronger than an
+isolated primitive port's tape.
+
 Thus records can already carry an observer-relative clock and a finite
 spatial interpretation. An event labelled by a local count and a spatial
 coordinate is an internal chart. The individual clocks' mean rate equality
@@ -74,6 +95,16 @@ charges source preparation, intervention and terminal readout, retaining
 timeouts and compiler failures. These give a finite joint interface on
 which to test the following contract. They do not identify those operations
 with atomic transitions or provide an interacting Lorentzian continuum.
+
+The [native warm-up theorem](../../model/record_laws/README.md#preparation-by-finite-native-warm-up)
+replaces exact stationary-background preparation by a controlled error for
+every admissible current-record law. Under uniform IID scheduling, 221 native
+attempts suffice for any binary input, and 318 for any full 78-state input,
+to reach half trace distance at most `1e-3` from the uniform binary state
+times an untouched reference. Warm-up tapes and controller memory must be
+unavailable to the subsequent protocol. A common complete continuation then
+inherits that error; for full-carrier input it must retain domain failures.
+This does not prepare coherent probes or source apparatus.
 
 Keep one complete native instrument, sector, continuing-state preparation,
 observer access contract and scheduler fixed. Start with overlapping regions

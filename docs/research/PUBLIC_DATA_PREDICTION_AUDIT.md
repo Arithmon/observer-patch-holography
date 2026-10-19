@@ -150,7 +150,7 @@ The [protocol](NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md#a-joint-timed-coherent-predic
 states the exact conditional forecast and the physical correspondence needed
 to use it. It changes no frozen prediction or empirical verdict.
 
-### A direct event-clock attachment tested on public optical records
+### Direct event-clock attachments tested on public optical records
 
 An event series defines a clock without external validation. Its unit can
 be conventional. Identifying its readings with a particular published
@@ -176,9 +176,26 @@ ratio block with `gain*B(N)/N + error`. The gain is a constant at least one;
 642121496772645 Hz. That bracket is based on the independent
 [Yb+ frequency measurement](https://arxiv.org/abs/2010.06620),
 642121496772645.10(8) Hz, whose quoted uncertainty is not a hard bound. The allowed absolute ratio error is `10^-12` per block.
-The hypothesis includes direct phase-count readback, without an additional
-filter or collective clock mechanism. These are explicit tested assumptions,
-not derived atomic physics.
+Each candidate calendar block comprises exactly N consecutive A ticks,
+including blocks absent from the published file. The hypothesis includes
+direct phase-count readback without an additional temporal filter. These are
+explicit tested assumptions, not derived atomic physics.
+
+The [regional comparison](../../model/predictions/regional_optical.py) also
+covers every nonempty port region on the same carrier. A regional clock ticks
+once per event incident to any of its ports. The 4,095 regions expose 3,433
+distinct event sets. If the two sets contain `a,b` seams and share `c`, then
+
+```text
+E[z^X] = (a-c+cz)/(a+b-c-(b-c)z),
+E[a B(N)/(bN)] = 1,  Var[a B(N)/(bN)] = (a+b-2c)/(bN).
+```
+
+The regional attachment uses `gain*a*B(N)/(bN)+error`, retaining the same
+frequency and error hypotheses. Distinct event sets have variance at least
+`1/(30N)`; at equal mean rate the sharp floor is `2/(29N)`. Identical event
+sets instead have `B(N)=N` on every history: they define the same clock and
+are excluded from this distinct-clock test. No independent replicas are added.
 
 Both complete public files are SHA-256 pinned and independently reduced with
 exact rational arithmetic. The reducer uses complete 300-second UTC-grid
@@ -201,19 +218,27 @@ anchoring at the smallest retained value gives the range-tail bound
 `T*choose(T-1,K-1)*p^(K-1)`. A further union factor `105120^3` charges every
 2021 subwindow and retained-count choice. Exact integer inequalities give
 adjusted conditional bounds below `10^-159` and `10^-104`, respectively.
-Searching other years, block sizes or attachment families is outside that
-stated test.
+For the regional family, each interval is an independent Bernoulli plus a
+geometric count. A Bernoulli factor with variance v gives the exact Fourier
+bound `max_k P[B(N)=k] <= sqrt(pi/(8Nv))`. Evaluating the range bound over
+all 2,848 incidence classes and charging all 11,782,056 ordered distinct
+event-set pairs gives conservative bounds `10^-121` and `10^-22`. These
+rejections use the full count law, not variance alone. Searching other years,
+block sizes, nonuniform schedulers or other readout mechanisms remains outside
+these tests.
 
 This rejects the **direct attachment together with its readout assumptions**.
 The [experiment](https://arxiv.org/abs/2205.13053) uses interrogations, servos
-and frequency combs; a proposed description of that apparatus must account
-for their action. The result does not reject every OPH clock, establish an
+and frequency combs; the published readout averages eight servo outputs and
+has an approximately 30-second servo time. Their action is not included in
+the direct-counter hypotheses. The result does not reject every OPH clock, establish an
 atomic-transition derivation or distinguish OPH from SM + GR. It is a
 retrospective constraint on a precise simple identification. Defining a
 native clock remains legitimate even when that identification fails.
 
 ```sh
 python -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json
+python -m model.predictions.regional_optical --check model/predictions/regional_optical_results.json
 # After downloading both original files into a local directory:
 python -m model.predictions.optical_clock --raw-dir /tmp/oph-clock-public --check model/predictions/optical_clock_results.json
 ```
