@@ -133,7 +133,7 @@ $\tau(T)=\int_0^T(1+\eta)\,d\eta=T+T^2/2$, hence
 $\tau(1)/\tau(1/2)=12/5$. Subtracting fourth powers gives the strictly
 positive rational $25944064/27781875$.
 \end{proof}
-\path{Lean/Geometry/SourceNetClockSeparation.lean} checks the evaluated
+The Lean module \texttt{SourceNetClockSeparation} checks the evaluated
 mass polynomial and rational mismatch; the identification of that
 polynomial with the geometric integral is the analytical argument above.
 The resulting relative clock bias is $+0.696366\%$. It is a continuum
@@ -142,8 +142,8 @@ profiles $\sigma(\eta)=(1-\eta/2)^{-1}$ and
 $\sigma(\eta)=[1+(\sqrt2-1)\eta]^2$, independent split quadratures give
 $-1.595321\%$ and $+0.265422\%$ at the same durations. The shrinking-diamond
 hypothesis in Corollary~\ref{flrw:count-clock} is therefore substantive.
-The exact polynomial control and numerical receipts accompany
-\path{code/observer_dynamics/verify.py}. No expansion profile is selected
+The exact polynomial control and numerical receipts accompany the
+observer-dynamics verifier. No expansion profile is selected
 by this calculation.
 
 \begin{corollary}[Redshift as a count ratio]
@@ -167,7 +167,7 @@ $(\sigma_0/\sigma_e)^4$ is $\sigma_0/\sigma_e$.
 
 \begin{remark}[Expansion history as a record-production law]
 \label{flrw:record-production}
-On this family the Friedmann equation is a statement about record
+On this family the scale-factor profile is a statement about record
 production: a comoving cell of volume $v$ produces
 $\rho\,\sigma(\eta)^4\,\Delta\,v$ records per conformal tick, and a profile
 $\sigma(\eta)$ is the same datum as a record-production rate per comoving
@@ -175,7 +175,7 @@ cell. The de Sitter profile $\sigma(\eta)=-1/(H\eta)$ on $\eta<0$ solves
 $d\sigma/d\eta=H\sigma^2$, and its record density per comoving cell is
 $n(\eta)\propto(H\eta)^{-4}$; the fixed-capacity branch of the corpus,
 $w=-1$, corresponds to this profile. The Lean module
-\texttt{Lean/Geometry/SourceNetConformalRecordDensity.lean} checks the
+\texttt{SourceNetConformalRecordDensity} checks the
 order invariance, the mass identity and sandwich, the clock enclosure
 \eqref{flrw:eq-clock-enclosure}, the redshift identity and the de Sitter
 derivative and density identities over the reals.

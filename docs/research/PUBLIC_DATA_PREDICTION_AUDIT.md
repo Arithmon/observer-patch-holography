@@ -36,7 +36,7 @@ uses the collaboration's actual ordered posterior samples, not a Gaussian
 distribution manufactured from its published mean and standard deviation.
 We downloaded the official `p-actbase-l-b_lcdm_camb` archive: full
 multifrequency ACT DR6 plus Planck primary CMB, ACT/Planck lensing and DESI
-2024 BAO. The model is flat six-parameter power-law LambdaCDM with the
+2024 (DR1) BAO. The model is flat six-parameter power-law LambdaCDM with the
 collaboration's nuisance treatment and priors, including `n_s` uniform on
 `[0.85,1.1]`, at pivot `0.05 Mpc^-1`. These are conditional cosmological
 inferences, not model-independent direct measurements of a repair event.
@@ -104,7 +104,7 @@ input covariance with the stated marginal errors.
 `1777.09 +/- 0.08(stat) +/- 0.11(syst) MeV`. Combining the two reported
 uncertainties in quadrature gives `0.1360 MeV`; the prediction is lower by
 `0.12097 MeV`, about `0.89` of that experimental uncertainty. This is a
-retrospective residual diagnostic, not a new likelihood analysis or an
+retrospective conditional postdiction, not a new likelihood analysis or an
 eligible post-freeze measurement. The balanced OPH and Koide formulations
 predict exactly the same mass for every allowed input; with the same
 measurement model their likelihood ratio is one. The

@@ -26,7 +26,7 @@ and [NERSC chain documentation](https://portal.nersc.gov/project/act/dr6.02/chai
 The selected product is exactly `p-actbase-l-b_lcdm_camb`, not the smaller CLASS
 or foreground-marginalized ACT-lite alternatives. It combines Planck and the
 full multifrequency ACT DR6 primary CMB likelihood, ACT/Planck CMB lensing,
-and DESI 2024 BAO. No Pantheon+ supernova likelihood is included.
+and DESI 2024 (DR1) BAO. No Pantheon+ supernova likelihood is included.
 
 The [ACT DR6 parameter paper](https://arxiv.org/html/2503.14452v1), section VIII.3
 and Appendix H, supplies the physical interpretation. The dimensionless scalar

@@ -3960,9 +3960,9 @@
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
     "code/m1_necessity/test_necessity.py": "a3bc212ebf2fcbd2e0a329c3469457ce9737c6645c74d9a2f50a7454bf32bee6",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
-    "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
+    "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "7407e8a7e107ecbc444f5e1354cd648767213e00cfb9269b9365917a4f2988a0",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
     "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex": "22d14e170fa56fd5f341c24a6e0b8256358b80e98f93020384dc613c08823e2a",
-    "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex": "5bfa80b7aadd55fcc4a008970631230fc86b325b278e399bf330a42f0a3e3f8a"
+    "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex": "71c7154e13d97106bc02ee6d7a8e463876ec97673fdc1d060ddbbfea966cc483"
   }
 }

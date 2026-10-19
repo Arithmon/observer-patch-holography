@@ -1,4 +1,4 @@
-\section{Seam-count area law on the source family}
+\section{Crossing-read area law on the source family}
 \label{sec:crossing-read-area-law}
 
 The layered read law of the conservative source family supplies a finite
@@ -109,9 +109,9 @@ Proposition~\ref{prop:crossing-reads-per-area} the cut entropy is the area
 law
 \begin{equation}
  \Ent_{\mathrm{cut}}(\Sigma)=\frac{\pi}{4}\,n^2a^4\,|\Sigma| .
- \label{eq:seam-area-law}
+ \label{eq:crossing-area-law}
 \end{equation}
-Identifying \eqref{eq:seam-area-law} with $|\Sigma|/(4\ell_P^2)$ fixes
+Identifying \eqref{eq:crossing-area-law} with $|\Sigma|/(4\ell_P^2)$ fixes
 \begin{equation}
  n^2a^4=\frac1{\pi\ell_P^2},\qquad
  \ell_P=\frac1{\sqrt\pi\,n\,a^2},
@@ -120,7 +120,7 @@ Identifying \eqref{eq:seam-area-law} with $|\Sigma|/(4\ell_P^2)$ fixes
 and on the golden family $\ell_P=L/(\sqrt\pi\,q^2)$.
 \end{proposition}
 \begin{proof}
-Equation \eqref{eq:seam-area-law} is \eqref{eq:crossing-read-density} with
+Equation \eqref{eq:crossing-area-law} is \eqref{eq:crossing-read-density} with
 one nat per read. Equating $(\pi/4)n^2a^4$ with $1/(4\ell_P^2)$ and
 solving for $\ell_P^2$ gives \eqref{eq:planck-dictionary}; with
 $n^2a^4=q^4/L^2$ this reads $\ell_P^2=L^2/(\pi q^4)$.
@@ -147,12 +147,17 @@ The depth integral in \eqref{eq:crossing-read-density}, the value
 $(\pi/4)n^2a^4$, the golden identity $n_q^2a_q^4=q^4/L^2$ with the
 cross-section value $\pi q^4/4$, and the dictionary
 \eqref{eq:planck-dictionary} with its golden value $\ell_P^2=L^2/(\pi q^4)$
-are machine-checked in \texttt{Geometry/CrossingReadAreaLaw.lean}
+are machine-checked in the Lean module \texttt{CrossingReadAreaLaw}
 (\texttt{capVolume\_integral}, \texttt{crossingDensity\_eq},
 \texttt{golden\_crossing\_count}, \texttt{planck\_area\_of\_area\_law},
 \texttt{golden\_planck\_length\_sq}) with the standard axioms only. The
 limit statement of Proposition~\ref{prop:crossing-reads-per-area} is
-analytic and is proved above.
+analytic and is proved above. The crossing-read count is a declared
+one-nat-per-read quantity on a supplied three-dimensional population. On the
+two-dimensional native source screens, regional reduced entropy carries no
+nonzero coefficient times the boundary-seam count, so this law is distinct
+from a native entropy-area law; a whole-screen reading as the boundary of a
+three-dimensional region needs its own region map.
 
 \paragraph{Finite receipt.}
 The exact crossing counts of the golden family at $q=5,8,13,21,34,55$ are

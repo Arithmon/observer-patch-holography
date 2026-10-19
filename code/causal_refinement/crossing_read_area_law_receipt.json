@@ -688,6 +688,6 @@
     "code/causal_refinement/test_crossing_read_area_law.py": "3317b5ebb1d39a1b858c989df9104f070b01d70709e64abbae15c0c28c24c423",
     "code/causal_refinement/verify_crossing_read_area_law.py": "c1210fe917f7a12b02e3e1eaba832b8125087fbf0800f27a10dd856a14472653",
     "evidence/source_net_causal_poset/build_causal_poset.py": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb",
-    "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18"
+    "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "7407e8a7e107ecbc444f5e1354cd648767213e00cfb9269b9365917a4f2988a0"
   }
 }

@@ -886,6 +886,30 @@ therefore loses its within-carrier component, including the internal
 rank-three band, as `O(2^(-l))` in norm. This statement concerns the current
 full-port energy scaling, not all possible native observable limits.
 
+### Tilted shell spectra under the same comparison
+
+The min-max argument of the boundary trace test applies to every isotropic
+shell precision. Let `K_theta` be a positive operator on the round sphere
+whose degree-`l` harmonics have eigenvalue proportional to
+`(l(l+1))^(1+theta/2)`, so its counting function satisfies
+`mu_n ~ c_theta n^(1+theta/2)`. Suppose the centered native form and this
+precision are related by a boundedly invertible `L2` map `T`:
+
+```text
+E_A(f)=c E_K(Tf)+<f,Bf>,    c>0, B bounded self-adjoint.
+```
+
+Min-max in both directions gives `lambda_n(A)<=c ||T||^2 mu_n+||B||` and
+`mu_n<=||T^-1||^2 (lambda_n(A)+||B||)/c`. With `n/49920<=lambda_n(A)<=3n/2`
+from (L4), `mu_n` grows linearly, so `theta=0`. A field whose angular
+precision is boundedly congruent with the native form therefore has the
+scale-invariant angular spectrum of a two-dimensional Gaussian free field:
+`l(l+1)C_l` is bounded above and below. In particular, a shell field with
+tilt `theta=1-n_s` different from zero cannot be a bounded congruent image of
+the native long-average field; a tilt needs unbounded spectral processing or
+a separately derived scale map. This is a statement about the comparison,
+conditional on the identification it names, and no sky prediction.
+
 ### A continuum random distribution on the carrier sphere
 
 The compatible law extends beyond the countable ancestry dictionary.
