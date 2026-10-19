@@ -235,7 +235,7 @@ classical transitions does not determine which quantum record instrument
 is executed. The missing choice is operationally measurable: retaining
 contrast distinguishes inputs whose current record coincides and destroys
 their interference. This is an explicit pair of implemented alternatives,
-not a claim that every OPH axiom is satisfied by both, nor an obstruction
+not a claim that both satisfy every premise of the theorem library, nor an obstruction
 to selection by an additional law governing admissible records. The
 frozen count test probes precisely that remaining choice once its physical
 preparation, readout and error premises are independently established.

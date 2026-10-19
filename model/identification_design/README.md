@@ -6,7 +6,7 @@ see `B(N)=binom(N,4)` at any precision. A coherent preparation involving level
 four, followed by a phase-sensitive read, can see it. The retained native
 witness uses **41 pulses per trial** and separates its two supplied candidate
 laws by total variation **0.7071067812**. No empirical outcomes enter this
-packet, and no physical Hamiltonian is selected from the source axioms here.
+packet, and no physical Hamiltonian is selected from the source specification here.
 
 Run from the repository root:
 

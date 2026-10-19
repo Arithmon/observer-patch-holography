@@ -115,7 +115,7 @@ whose common observable differs by 1/4. Thus those ingredients alone cannot
 select the quantum record law. The additional selection must constrain
 which information is recorded, and the fixed experiment makes that choice
 observable. This bounded counterexample does not assert that both candidates
-satisfy every OPH axiom.
+satisfy every premise of the theorem library.
 
 More precisely, E is C followed by recording one bit: seam-total parity
 `p=(a+b) mod 2`. The original contrast is recovered as

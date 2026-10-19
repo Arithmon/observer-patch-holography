@@ -52,7 +52,7 @@ update order. It is nonempty: recursively composing the given maps produces
 an assignment. It has one element: agreement at depth zero forces agreement
 at depth one, and induction forces agreement at all five depths. This is
 uniqueness conditional on the apparatus inputs; it is not selection of one
-physical universe from OPH's axioms.
+physical universe from the OPH basis.
 
 The scalar and gauge work are coupled within `U_1,U_2`. The first retained
 record really selects the feedback operation before the second evolution;

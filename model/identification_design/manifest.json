@@ -10,7 +10,7 @@
   ],
   "description": "Exact action-response nullspaces and a complete 41-pulse native level-four Ramsey discriminator, with conditional sampling bounds.",
   "files": {
-    "README.md": "40ee598b48cd7cdccca879857e51ebe191a7f32abf6a79bfd63883df4237a01c",
+    "README.md": "c3680c0b63459e0358ff90e5dfdfc27b1f3f41afbc5616057186395bd042d683",
     "__init__.py": "0104578a7dbdb1395f6a5f8b792807d2954870271a42699841df1cc5186abf46",
     "__main__.py": "aa2f03d498cc725c004ab14b17970026c4f7a2ac46666c6bd157372983e213e7",
     "experiment.py": "85edc89002edd78b58e2b53516b7ba3a8552b81826988d5034a1aac945dd5b6f",
