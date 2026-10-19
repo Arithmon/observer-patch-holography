@@ -192,9 +192,18 @@ Schur resolvents differ by at most `1/(8*4^level)`. The
 ancestral projection tails by `624*4^(-k)` times the native scaled energy.
 It upgrades the common Green subsequence to operator-norm convergence to
 an injective compact `G`, whose inverse is a positive self-adjoint `A`.
+The [actual density limit](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
+also proves joint Gaussian finite-dimensional laws of native occupation
+snapshots, with covariance `exp(-|tau-u|A)` and simultaneous scaling
+`tau=attempts/(1260*16^level)`. It uses uniform fixed-number preparation,
+IID seams, fair repair and full occupation readback. No preliminary
+long-count limit or synthetic wave is used, and no path convergence is
+claimed. The declared `A^-1/2` spatial filter gives covariance
+`G exp(-|tau-u|A)`. Reflection-positive reconstruction of these density
+laws has one-particle generator `A`.
 The [joint dynamics proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
-then gives native heat and coherent cosine propagation with this same `A`.
-Two long blocks from one native observation history supply a continuous
+uses the same `A` for coherent cosine propagation. Two long native blocks
+supply a continuous
 Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. Its synthesis
 parameter and processor are declared; it is not the passive instantaneous
 occupation process or a quantum vacuum. Coherent access and reflection
@@ -206,7 +215,13 @@ has a positive off-diagonal counterexample, so this conclusion needs
 the full-port argument. Two-sided eigenvalue bounds give heat-trace
 spectral dimension two. Under the same operator dictionary and scaling,
 this excludes a regular compact three-dimensional second-order elliptic
-spatial operator. It does not exclude a separate radial reconstruction.
+spatial operator. The [boundary-action test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+also excludes boundedly invertible `L2` form congruence with a smooth compact
+three-dimensional Dirichlet bulk's static boundary precision (with smooth boundary): its Steklov
+eigenvalues grow as `sqrt(n)`, while native eigenvalues grow as `n`.
+Unbounded spectral processing or another bulk observation dictionary
+remains possible. The internal gap removes rank-three carrier components
+from bounded-energy full-port modes at this scale; they supply no radius.
 Restoring the constant mode gives the full-space generator `Abar`.
 Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
 are `||1_F exp(-tau*Abar)1_E||<=exp(-d(E,F)^2/(2*tau))` and zero cosine
@@ -232,7 +247,13 @@ The jointly growing return cap `64*(4^level)^4` gives scaled phase error
 at most `26/4^level`. A fixed cap instead makes the bounded-band scaled
 generator tend to zero. This order-of-limits control prevents a finite
 sampler demonstration from certifying a continuum modular clock or state.
-The full fixed-number reference approaches normalized trace.
+The full fixed-number reference approaches normalized trace. Its
+[absolute entropy deficit](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
+is at most `2025/(64V)` for `V` ports and every cap. Across a region with `J` allowed
+particle numbers, its mutual information is at most `log(J)+2025/(64V)`.
+For a base-face patch this divided by `3*2^level` crossing seams tends
+to zero. This excludes that two-dimensional regional-boundary entropy
+dictionary, without excluding a whole-screen gravitational area law.
 At fixed modular parameter, bounded readouts become stationary in the
 normalized-trace L2 sense; refinement-rescaled dynamics are not covered
 by that conclusion. The density-wave sector carries vanishing reference

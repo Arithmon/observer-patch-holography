@@ -4618,7 +4618,7 @@
         "premises": [
           "PR-26"
         ],
-        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities hold under their declared variations. The exact identity S_count(p,d)=log(M)-D(p||d/M) bounds all integer sector partitions at fixed M=sum(d). In the positive-real relaxation, saturation p=d/M gives joint state-capacity first variation zero and second variation -sum((p_prime-d_prime/M)^2/p). Uniform sampling on the actual 66-state native sector supplies dimension-weighted observed probabilities; arbitrary stationary reset does not. With nontrivial bulk blocks, total sector counts are b_i*d_i and saturation also requires maximally mixed bulk states.",
+        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities hold under their declared variations. The exact identity S_count(p,d)=log(M)-D(p||d/M) bounds all integer sector partitions at fixed M=sum(d). In the positive-real relaxation, saturation p=d/M gives joint state-capacity first variation zero and second variation -sum((p_prime-d_prime/M)^2/p). Uniform sampling on the actual 66-state native sector supplies dimension-weighted observed probabilities; arbitrary stationary reset does not. With nontrivial bulk blocks, total sector counts are b_i*d_i and saturation also requires maximally mixed bulk states. The same full native-return references have cap-uniform absolute entropy deficit at most 2025/(64V); fixed-charge block entropies bound regional mutual information by log J plus the deficit. Equal-size native regions with different boundary-seam counts have identical counting entropies. A complete base-face region has volume-order reduced entropy and sub-boundary-order mutual information on the two-dimensional source.",
         "remaining": "The physical bridge must identify fixed total count with fixed small-ball proper volume, edge log-count variation with delta A/(4G), and the remaining block entropy with the same continuum field state. Native entropy stationarity on a fixed sector does not establish these identifications or a geometric modular boost.",
         "closure": "Map the proved counting variation family to controlled joint state-geometry variations at fixed physical volume, with the area coefficient and continuum error established independently.",
         "sources": [
@@ -4638,6 +4638,11 @@
             "path": "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
             "label": "Joint finite counting stationarity and its physical geometric boundary",
             "anchor": "## Joint counting stationarity and its geometric boundary"
+          },
+          {
+            "path": "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
+            "anchor": "### Native reference entropy and region boundaries",
+            "label": "Absolute entropy saturation and actual native region-boundary tests"
           }
         ],
         "assumptions": [
@@ -4848,8 +4853,8 @@
           "PR-75",
           "PR-76"
         ],
-        "constructed": "Native C/E instruments give different complete coherent-readout laws under shared classical endpoint dynamics. Source compilation executes both alternatives on the full 78-state encoding, with all outcomes, padding and arbitrary references. The continuing-carrier discriminator uses finite native mixing before each trial and a uniform conditional-law coupling bound, so actual trial independence and exact stationary resets are unnecessary. Its locked design uses 379 discarded attempts before each of 3927 trials and bounds wrong-candidate probability by 3/400 in the exact-source model. The retained execution verifies two consecutive trials, not a sampled full campaign. A separately authenticated physical per-trial conditional error at most 1/1570800 would suffice for a one-percent bound.\n\nPublic oscillator comparisons execute a supplied experimental action and apparatus model, with retrospective calibration/evaluation splits. Zero-displacement, opposite-probe and two-order Gram identities constrain observations independently of the oscillator action; their aggregate-mean residuals are deterministic diagnostics. The calibrated measurement evaluator retains null settings, complete counts, apparatus budgets and simultaneous sampling error. These controls provide explicit measurement requirements without treating software trials as physical data. A randomized Gram witness has a fixed-horizon conditional concentration bound despite preparation drift and quantum memory. Fresh settings must remain independent of the joint prepared work/reference state conditional on the past. Its two-trial source program retains 100 outcomes; physical detector-error bounds and fresh complete records are needed. Public means determine future threshold-crossing budgets conditional on repeated negative scores, not power or a present-data rejection. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration.\n\nA retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.\n\nA finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map. One continuing native occupation history has a count-limit Gaussian covariance derived from the actual binary generator. On the spherical source, an all-level ancestral energy bound gives an injective compact Green limit in operator norm along a common subsequence. Its inverse has a regular strongly local H1 form with spectral dimension two and is shared by native heat, coherent cosine propagation and continuous classical Gaussian wave readouts. A native weighted heat estimate gives a finite wave cone in the declared comparison distance. A record-conditioned repair has an exact marked likelihood identity that predicts complete joint clock/field laws from passive correlations; its discounted response is a dipole of the same spatial resolvent. The forecast fits no response parameter and retains pulse ticks, failures and all current outcomes. A separately declared execute-or-idle controller has an exact aggregate executed-clock derivative converging to 2*(I-exp(-tau*A))*f. Uniform likelihood, timeout and finite-bit service bounds give a positive coordinate mean at fixed epsilon=1e-6; no empirical or physical-force identification is inferred.",
-        "remaining": "The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained. Full occupation-vector readback needs initial disclosure and every seam/current record, including remote records. A port-only observer reads only its own occupation. The fluctuation action is not a Lorentzian dynamical action; the separate torus comparison is not the source sphere. The common source continuum is subsequential, with no proved local physical metric, interacting quantum state, simultaneous finite-count rate or physical identification. Public optical ratios do not instantiate the marked repair-response dictionary.",
+        "constructed": "Native C/E instruments give different complete coherent-readout laws under shared classical endpoint dynamics. Source compilation executes both alternatives on the full 78-state encoding, with all outcomes, padding and arbitrary references. The continuing-carrier discriminator uses finite native mixing before each trial and a uniform conditional-law coupling bound, so actual trial independence and exact stationary resets are unnecessary. Its locked design uses 379 discarded attempts before each of 3927 trials and bounds wrong-candidate probability by 3/400 in the exact-source model. The retained execution verifies two consecutive trials, not a sampled full campaign. A separately authenticated physical per-trial conditional error at most 1/1570800 would suffice for a one-percent bound.\n\nPublic oscillator comparisons execute a supplied experimental action and apparatus model, with retrospective calibration/evaluation splits. Zero-displacement, opposite-probe and two-order Gram identities constrain observations independently of the oscillator action; their aggregate-mean residuals are deterministic diagnostics. The calibrated measurement evaluator retains null settings, complete counts, apparatus budgets and simultaneous sampling error. These controls provide explicit measurement requirements without treating software trials as physical data. A randomized Gram witness has a fixed-horizon conditional concentration bound despite preparation drift and quantum memory. Fresh settings must remain independent of the joint prepared work/reference state conditional on the past. Its two-trial source program retains 100 outcomes; physical detector-error bounds and fresh complete records are needed. Public means determine future threshold-crossing budgets conditional on repeated negative scores, not power or a present-data rejection. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration.\n\nA retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.\n\nA finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map. One continuing native occupation history has a count-limit Gaussian covariance derived from the actual binary generator. On the spherical source, an all-level ancestral energy bound gives an injective compact Green limit in operator norm along a common subsequence. Its inverse has a regular strongly local H1 form with spectral dimension two and is shared by native heat, coherent cosine propagation and continuous classical Gaussian wave readouts. A native weighted heat estimate gives a finite wave cone in the declared comparison distance. The actual native occupation snapshots have joint Gaussian finite-dimensional limits under simultaneous attempt/refinement scaling, with covariance exp(-abs(tau-u)*A). Finite Green filters give the corresponding G*exp(-abs(tau-u)*A) field law; Gaussian reflection positivity has one-particle generator A, not sqrt(A). A record-conditioned repair has an exact marked likelihood identity that predicts complete joint clock/field laws from passive correlations; its discounted response is a dipole of the same spatial resolvent. The forecast fits no response parameter and retains pulse ticks, failures and all current outcomes. A separately declared execute-or-idle controller has an exact aggregate executed-clock derivative converging to 2*(I-exp(-tau*A))*f. Uniform likelihood, timeout and finite-bit service bounds give a positive coordinate mean at fixed epsilon=1e-6; no empirical or physical-force identification is inferred.",
+        "remaining": "The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained. Full occupation-vector readback needs initial disclosure and every seam/current record, including remote records. A port-only observer reads only its own occupation. The fluctuation action is not a Lorentzian dynamical action; the separate torus comparison is not the source sphere. The common source continuum is subsequential, with no proved local physical metric, interacting quantum state, simultaneous finite-count rate or physical identification. Public optical ratios do not instantiate the marked repair-response dictionary. This density theorem is not a path-space limit or physical quantum-state identification.",
         "closure": "Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.",
         "sources": [
           {
@@ -6830,6 +6835,15 @@
           "controls": "a supplied controller evaluates activation from current reconstructed occupations; finite fair bits are obtained from charged equal-occupation native service repairs; independent uniform seam selections remain supplied",
           "clock": "aggregate executed dynamical repairs, including zero current, with r=floor(1260*16^l*tau); idle selection slots and coin-service writes are separate resource counts, not primitive port-incident ticks or physical seconds",
           "regime": "same common Green subsequence gives derivative 2*(I-exp(-tau*A))*f; at tau=1 the four-r slot cap, retained timeout field and dyadic activation have uniform error bounds and a positive fixed-epsilon mean liminf; no uniqueness of the nonlinear continuum law or physical force identification is asserted"
+        },
+        "native_stationary_density_snapshots": {
+          "carrier": "the same refining spherical source, V=240*4^l binary ports and the same normalized ancestral cell embeddings",
+          "law": "uniform IID native seam choices and fair binary repair, whose occupation path equals an independent identity-or-swap stirring law; auxiliary swap coins are not identified with retained repair marks",
+          "preparation": "uniform fixed-number equilibrium q=V/3, independent of the seam and fair-coin schedule",
+          "records": "actual occupations at finitely many requested attempt counts, reconstructed from disclosed initial occupations and the complete seam/current record; smearings are fixed L2 tests",
+          "controls": "no feedback during observation; optional finite spectral filtering uses G_l^(1/2) on declared test coefficients and retains its processor assumption",
+          "clock": "global native attempt counts floor(1260*16^l*tau), including zero current, scaled simultaneously with source refinement; no incident-clock, proper-time or laboratory conversion is asserted",
+          "regime": "joint finite-dimensional convergence along the common spatial subsequence to stationary Gaussian covariance exp(-abs(tau-u)*A); finite Green filters give G*exp(-abs(tau-u)*A); reflection positivity has generator A; no path tightness or spatial rate is claimed"
         }
       },
       "bindings": [
@@ -6856,7 +6870,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -6866,6 +6882,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -6909,7 +6926,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -6919,6 +6938,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -6969,7 +6989,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -6979,6 +7001,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7030,7 +7053,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7040,6 +7065,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7159,7 +7185,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7169,6 +7197,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7226,7 +7255,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7236,6 +7267,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7387,7 +7419,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7397,6 +7431,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7448,7 +7483,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7458,6 +7495,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7512,7 +7550,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7522,6 +7562,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7569,7 +7610,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7579,6 +7622,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7629,7 +7673,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7639,6 +7685,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7692,7 +7739,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7702,6 +7751,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7709,7 +7759,7 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "scope": "The ancestral tail bound gives a compact injective norm Green limit and inverse A on mean-zero L2. Mosco recovery, full-port contraction and support localization prove that its extension by the constant zero mode has a conservative regular strongly local Dirichlet form. Exact source interpolation gives domain H1 and gradient-energy comparison a^2/112<=E/||grad||^2<=a^2/48. Explicit tents and the source Poincare bound give n/49920<=lambda_n(A)<=3n/2, hence heat-trace spectral dimension two. Same-history attempt/incident Wiener fields retain this covariance.",
-          "limitations": "The sphere and ancestry are the declared source observation domain. Whole-sequence uniqueness and a selected intrinsic or physical metric are not proved. The associated full-space wave has a finite support bound in the declared flat comparison distance. Under the same operator dictionary, fixed scale and bounded mass shift, the spectral growth excludes a regular compact positive-volume three-dimensional second-order elliptic operator; different radial observations or scaling are outside that exclusion. Complete readback and count-first limits remain explicit.",
+          "limitations": "The sphere and ancestry are the declared source observation domain. Whole-sequence uniqueness and a selected intrinsic or physical metric are not proved. The associated full-space wave has a finite support bound in the declared flat comparison distance. Under the same operator dictionary, fixed scale and bounded mass shift, the spectral growth excludes a regular compact positive-volume three-dimensional second-order elliptic operator; different radial observations or scaling are outside that exclusion. Complete readback and count-first limits remain explicit. The direct classical three-dimensional Dirichlet boundary-trace precision is also excluded under the stated bounded L2 form-congruence dictionary; a nonlocal filtered readout is a different operation.",
           "sources": [
             {
               "path": "model/physical_space_time/uniform_green.py",
@@ -7754,6 +7804,10 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "### Locality and spectral dimension of the source continuum"
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### A boundary trace test for a radial extension"
             }
           ]
         },
@@ -7781,7 +7835,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7791,6 +7847,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7844,7 +7901,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7854,6 +7913,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7901,7 +7961,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7911,6 +7973,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -7950,7 +8013,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -7960,6 +8025,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8001,7 +8067,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8011,6 +8079,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8053,7 +8122,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8063,6 +8134,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8133,7 +8205,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8143,6 +8217,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8179,7 +8254,8 @@
           "establishes": [
             "native_return_reference_has_coherent_wave_modular_generator",
             "native_full_reference_tracial_limit",
-            "native_bounded_overlap_fluctuation_commutator_vanishes"
+            "native_bounded_overlap_fluctuation_commutator_vanishes",
+            "native_full_reference_absolute_entropy_saturation"
           ],
           "requires": [
             "native_temporal_green_resolvent_and_coherent_wave_bound"
@@ -8197,7 +8273,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8207,6 +8285,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8214,8 +8293,8 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "additional_assumptions": {},
-          "scope": "Positive random-length native returns reconstruct exp(-arccos K)/Tr. For polynomial cap h and ideal length tail delta_h, the reference trace-distance error is at most delta_h and 0<=arccos K-Theta_h<=-log(1-delta_h)I. Exact rational finite samplers retain every cap and return failure. The generator is the same phase appearing in the coherent wave compression. Choosing cap h_l=64*(4^l)^4 bounds the scaled wave-generator error by26/4^l; this is an analytic resource bound, not an executed large sampler. This increasing-cap bound carries the same spatial subsequence to cos(t sqrt(A)); holding the cap fixed instead sends every bounded-band scaled generator to zero. Exact full-configuration trace moments give half-trace distance at most 3/(8*2^l) from normalized trace, plus cap error. At fixed modular parameter, bounded readouts become stationary in normalized-trace L2. The density-wave sector has vanishing reference weight, and bounded-overlap normalized local fluctuations have vanishing expected commutator.",
-          "limitations": "The length law is selected, not forced by the committed repair instrument. Full endpoint closure and coherent services are admitted. The uncapped mean length is infinite. The reconstructed density differs from the actual return-conditioned source state. Phase/cosine matching does not implement the full vertex modular unitary, identify its clock with the three-class probe or select a physical vacuum. Compatible bounded-algebra moment limits of this reference are tracial, with trivial modular flow on faithful support. This is not operator-norm convergence or a theorem about diverging rescaled time. A nonzero scalar CCR or vacuum state needs a different justified preparation, observable scaling or sector-conditioning construction.",
+          "scope": "Positive random-length native returns reconstruct exp(-arccos K)/Tr. For polynomial cap h and ideal length tail delta_h, the reference trace-distance error is at most delta_h and 0<=arccos K-Theta_h<=-log(1-delta_h)I. Exact rational finite samplers retain every cap and return failure. The generator is the same phase appearing in the coherent wave compression. Choosing cap h_l=64*(4^l)^4 bounds the scaled wave-generator error by26/4^l; this is an analytic resource bound, not an executed large sampler. This increasing-cap bound carries the same spatial subsequence to cos(t sqrt(A)); holding the cap fixed instead sends every bounded-band scaled generator to zero. Exact full-configuration trace moments give half-trace distance at most 3/(8*2^l) from normalized trace, plus cap error. At fixed modular parameter, bounded readouts become stationary in normalized-trace L2. The density-wave sector has vanishing reference weight, and bounded-overlap normalized local fluctuations have vanishing expected commutator. Every finite or ideal return cap has absolute entropy deficit at most 2025/(64V). Fixed-sector partial traces give mutual information at most log J plus that deficit, with explicit actual-source region controls.",
+          "limitations": "The length law is selected, not forced by the committed repair instrument. Full endpoint closure and coherent services are admitted. The uncapped mean length is infinite. The reconstructed density differs from the actual return-conditioned source state. Phase/cosine matching does not implement the full vertex modular unitary, identify its clock with the three-class probe or select a physical vacuum. Compatible bounded-algebra moment limits of this reference are tracial, with trivial modular flow on faithful support. This is not operator-norm convergence or a theorem about diverging rescaled time. A nonzero scalar CCR or vacuum state needs a different justified preparation, observable scaling or sector-conditioning construction. The entropy/seam comparison concerns boundaries of regions on the two-dimensional source, not the area of a three-dimensional gravitational screen.",
           "sources": [
             {
               "path": "model/observer_time_fields/wave_reference.py",
@@ -8236,6 +8315,10 @@
             {
               "path": "model/observer_time_fields/REFINEMENT.md",
               "anchor": "### The full reference state and its quantum-fluctuation boundary"
+            },
+            {
+              "path": "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
+              "anchor": "### Native reference entropy and region boundaries"
             }
           ]
         },
@@ -8263,7 +8346,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8273,6 +8358,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8331,7 +8417,9 @@
             "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
             "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
             "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
@@ -8341,6 +8429,7 @@
             "finite_state_martingale_functional_central_limit_theorem",
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
             "spectral_theorem_for_self_adjoint_operators",
             "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
@@ -8366,6 +8455,69 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "### Locality and spectral dimension of the source continuum"
+            }
+          ]
+        },
+        {
+          "id": "native-stationary-density-snapshots",
+          "domain": "native_stationary_density_snapshots",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "native_joint_gaussian_density_snapshot_limit",
+            "native_Green_filtered_density_time_law"
+          ],
+          "requires": [
+            "native_temporal_green_resolvent_and_coherent_wave_bound"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
+            "Doob_L2_martingale_maximal_inequality",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "quantum_relative_entropy_data_processing",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spectral_theorem_for_self_adjoint_operators",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "additional_assumptions": {},
+          "scope": "The exact stirring representation bounds permutation-overlap variance by 4*||g||_infinity^2*||f||_ell2^2/V^2 uniformly in the number of attempts. Conditional finite-population CLT and native heat convergence give actual joint Gaussian snapshot laws with covariance exp(-abs(tau-u)*A). Canonical covariance isometry extends bounded tests to L2 and justifies finite Green filters. Conditional Gaussian past/future independence proves reflection positivity with one-particle generator A.",
+          "limitations": "The exact stationary sector, independent scheduling, complete record access and optional spectral processor are explicit. This is simultaneous scaling of actual density snapshots, not the count-first occupation-average limit or cosine wave synthesis. The result covers finite-dimensional laws, without path-space tightness, a convergence rate, a coherent preparation of the reconstructed state, interacting QFT, Lorentzian spacetime or atomic clock identification.",
+          "sources": [
+            {
+              "path": "model/observer_time_fields/REFINEMENT.md",
+              "anchor": "### Actual native density observations at several continuum times"
+            },
+            {
+              "path": "model/observer_time_fields/continuum_dynamics.py",
+              "anchor": "def density_process_bounds("
+            },
+            {
+              "path": "model/observer_time_fields/continuum_dynamics.py",
+              "anchor": "def native_stirring_control("
             }
           ]
         }
@@ -8780,6 +8932,26 @@
             {
               "path": "model/observer_time_fields/REFINEMENT.md",
               "anchor": "## One continuum operator for fields, native decay and coherent waves"
+            }
+          ]
+        },
+        {
+          "from": "native-temporal-spatial-spectrum",
+          "to": "native-stationary-density-snapshots",
+          "fact": "native_temporal_green_resolvent_and_coherent_wave_bound",
+          "coordinate_maps": {
+            "carrier": "Keep the identical full source graph and cell embedding at each refinement level.",
+            "law": "Use the existing one-particle native transfer as the expectation of an exact occupation-law stirring representation; covariance concentration supplies the extra joint-law argument.",
+            "preparation": "Retain the same stationary fixed-number source family; no independent Gaussian initial field is supplied.",
+            "records": "Read actual occupation snapshots reconstructed from the current tape, rather than long-block averages or coherent amplitudes.",
+            "controls": "No interventions are added; an optional finite Green square-root filter is an explicitly declared spectral readout.",
+            "clock": "Scale global attempt count by the same 2*M*4^l used in the native heat limit, with source size and count increasing together.",
+            "regime": "Combine native heat convergence with uniform stirring overlap concentration and the conditional finite-population CLT. This proves joint Gaussian finite-dimensional laws without transferring count-first path tightness."
+          },
+          "sources": [
+            {
+              "path": "model/observer_time_fields/REFINEMENT.md",
+              "anchor": "### Actual native density observations at several continuum times"
             }
           ]
         }

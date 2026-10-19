@@ -142,15 +142,23 @@ an ancestral-cell Poincare bound makes the Green subsequence converge in
 operator norm to an injective compact `G`. Its inverse `A` determines the
 limiting spatial covariance, native heat propagator and admitted coherent
 wave amplitudes. Its conservative regular strongly local form has domain
-`H1` and spectral dimension two on the spherical observation domain. With
-the constant mode restored, a heat off-diagonal estimate gives finite wave
-propagation in the supplied flat comparison distance. Two long record
-blocks give a continuous Gaussian wave readout with covariance
+`H1` and spectral dimension two on the spherical observation domain.
+[Actual density snapshots](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
+converge jointly to a Gaussian law with covariance `exp(-|tau-u|A)` at
+`tau=attempts/(1260*16^level)`. This simultaneous refinement/count limit
+retains uniform fixed-number preparation, IID seams and full readback;
+it establishes finite-dimensional distributions, with no path claim.
+With the constant mode restored, a heat off-diagonal estimate gives finite
+wave propagation in the supplied flat comparison distance. Two long record
+blocks give a separate continuous Gaussian wave readout with covariance
 `G cos((t-u)sqrt(A))`; a controlled repair bias gives mean derivative
 `2(I-exp(-tau*A))f` and a nonvanishing fixed-amplitude signal with uniform
-error bounds. These compatible limits do not identify a physical metric,
-three-dimensional bulk, quantum field vacuum or calibrated clock. In
-particular the full native-return reference approaches normalized trace
+error bounds. The [boundary-action test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+excludes a boundedly invertible `L2` energy identification with a smooth compact three-dimensional
+Dirichlet bulk's static boundary trace (with smooth boundary). Internal rank-three components
+vanish in bounded-energy families under this scaling. A physical radial
+domain, metric, quantum vacuum and calibrated clock remain open.
+The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The
 [common-generator proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
@@ -884,9 +892,14 @@ The [joint counting identity](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#joint-
 `S_count(p,d)=log(M)-D(p||d/M)`, with `M=sum d`, also makes joint state/count
 variations stationary at saturation when `M` stays fixed, in the stated
 positive-real relaxation. The native sector counts satisfy that finite
-identity. Neither fixed total count nor `log(d)` is yet identified with
-physical volume or geometric area. A charge center alone supplies no
-physical gauge-edge factor or stress coupling. Nonnested completions need not commute. The
+identity. The [full return reference](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
+has entropy deficit at most `2025/(64V)` for `V` ports uniformly over caps; its regional
+mutual information grows at most logarithmically in `V`, excluding a
+nonzero coefficient times crossing-seam count on a refining base-face
+patch. This is a two-dimensional regional boundary, not whole-screen area.
+Fixed total count and `log(d)` have no established physical volume/area
+map. A charge center supplies no physical gauge-edge factor or stress
+coupling. Nonnested completions need not commute. The
 [gravity premise ladder](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs) retains
 the physical assumptions needed for the existing gravitational conclusions.
 

@@ -137,6 +137,89 @@ uses simultaneous geometry and field-state variations at fixed geodesic-ball
 volume. The counting identity does not identify that geometric variation
 family or its area coefficient.
 
+### Native reference entropy and region boundaries
+
+The [full native-return reference](../../model/observer_time_fields/REFINEMENT.md#the-full-reference-state-and-its-quantum-fluctuation-boundary)
+has an absolute entropy bound, stronger than trace-distance convergence in
+its growing dimension. Let `N=240*4^l`, `k=N/3`, `D=binom(N,k)` and
+`tau=I/D`. Its transfer satisfies
+`kappa=Tr(K)/D=1-chi`, `chi>=2/9`, and
+`v=Tr((K-kappa I)^2)/D<=1/(16N)`.
+For the ideal function `f(x)=exp(-acos(x))` or any finite return polynomial
+`g_h(x)`, normalized to `sigma_h=g_h(K)/Tr(g_h(K))`,
+
+```text
+Delta_h := log D-S(sigma_h) = D(sigma_h||tau)
+ <= Tr[(D*sigma_h-I)^2]/D <= 25*v/chi^2 <= 2025/(64N).      (E1)
+```
+
+For the ideal reference use `g_infinity=f`. All coefficients are positive,
+so `|g_h(x)-g_h(kappa)|<=|f(x)-f(kappa)|<=|x-kappa|/chi` on `[0,1]`,
+and the constant coefficient is `exp(-pi/2)>1/5`. A common scalar factor,
+including the implemented finite-sampler normalization, cancels on forming
+`sigma_h`. Thus `Var_tau(g_h)/tau(g_h)^2<=25v/chi^2`. The first inequality
+follows from `log r<=r-1`, averaged with weights `r/D`, where
+`r=D*sigma_h`. This is uniform over every cap, including zero, and proves
+absolute entropy saturation without a dimension-dependent continuity bound.
+Data processing also bounds the relative entropy of every admitted regional
+partial trace by (E1), against the corresponding marginal of `tau`. It does
+not turn that marginal into the identity on an unconstrained tensor factor.
+
+The regional split gives a more precise physical boundary. For any set `R`
+of `m` native ports, write
+
+```text
+a_j=binom(m,j), b_j=binom(N-m,k-j),
+q_j=a_j*b_j/D, j=max(0,k-N+m),...,min(m,k).
+```
+
+Direct partial trace of `tau` gives
+`S(tau_R)=H(q)+sum q_j log a_j` and the complementary formula with `b_j`.
+Consequently its quantum mutual information is exactly
+`I_tau(R:Rc)=H(q)`. These are full-state entropies in nats; they are not
+correctable record capacities. For any, possibly coherent, fixed-`k` state
+`rho`, put `Delta=log D-S(rho)` and let `p_j` be its regional-number law.
+The marginals are block diagonal in `j` and `k-j`; their conditional
+entropies are bounded by `log a_j` and `log b_j`. Hence
+
+```text
+I_rho(R:Rc) <= H(p)-D(p||q)+Delta <= log J+Delta,
+J=min(m,k,N-m,N-k)+1.                                    (E2)
+```
+
+No diagonality of `rho` was assumed: coherences between distinct regional
+charges disappear in either partial trace. Combining (E1) and (E2) bounds
+the full coherent return reference by `log J+2025/(64N)` for every cap.
+
+For the stationary native state, a separate exact bound is
+`m*h(k/N)-log(N+1)<=S(tau_R)<=m*h(k/N)`, where `h` is binary entropy.
+The upper bound is subadditivity. For the lower bound, compare with the
+product Bernoulli state of density `k/N`: its relative entropy from `tau`
+is `N*h(k/N)-log D<=log(N+1)`, since `k` is a binomial mode and has
+probability at least `1/(N+1)`. Partial-trace contraction gives the bound.
+
+This permits source-based controls on a proposed geometric dictionary.
+On the twelve-port total-two carrier, the connected regions `(0,1,5,7)`
+and `(7,8,10,11)` have **10 and 14 crossing seams**, respectively, but
+identical sector counts `(28,32,6)` and identical reduced entropies and
+mutual information. Across source refinement, a complete base-face patch
+contains `m=12*4^l=N/20` ports and has `3*2^l` crossing seams: each of its
+three sides is bisected at every refinement. Its stationary reduced entropy
+grows proportionally to `4^l`, while the full return reference's mutual
+information is at most `log(12*4^l+1)+2025/(64N)`. The latter divided by
+crossing-seam count tends to zero. Exact native partial traces, coherent
+controls, return spectra and the retained patch seam census test these
+attachments independently.
+
+These controls rule out assigning either regional reduced entropy or mutual
+information a nonzero universal coefficient times **boundary-seam count
+on this two-dimensional source**. They do not rule out a gravitational
+area law: a whole `S2` screen's cell count could instead represent the area
+of a three-dimensional region's boundary. That physical region map, its
+bulk/edge split and the fixed-volume variation family still need construction.
+The full return reference is a reconstructed state, not a demonstrated
+native preparation of a spacetime vacuum.
+
 ## A complete generator test and its witness
 
 Supply an independent Hermitian candidate `K`. Let

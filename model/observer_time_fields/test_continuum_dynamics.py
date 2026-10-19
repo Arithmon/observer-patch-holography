@@ -110,6 +110,86 @@ def test_weighted_heat_geometric_series_requires_a_sufficiently_fine_level():
     assert d.finite_speed_bounds(1, lipschitz=4)['native_weighted_heat_log_norm_upper'] == 12
 
 
+def test_native_stirring_and_random_canonical_covariance_have_independent_oracles():
+    value = d.native_stirring_control()
+    assert value['canonical_configurations'] == 495
+    assert value['native_endpoint_branches'] == 29700
+    assert value['independent_two_attempt_stirring_branches'] == 3600
+    assert value['native_unread_repair_equals_identity_or_swap']
+    assert value['conditional_covariance_varies_before_averaging']
+    assert value['conditional_canonical_covariance_verified_on_every_branch']
+    assert value['stirring_and_full_native_two_time_covariance_exactly_equal']
+    assert 0 < value['two_attempt_overlap_variance'] <= value['uniform_overlap_variance_upper']
+    assert value['two_time_sum_variance'] == 2+2*value['two_attempt_mean_overlap']
+
+
+def test_reusing_a_seam_keeps_stationarity_but_changes_multitime_density_law():
+    value = d.native_stirring_control()
+    assert value['repeated_seam_mutation_mean_overlap'] != value['two_attempt_mean_overlap']
+    states, _, edges = d._native_trace_counts(4)
+    samples = np.asarray(states, dtype=np.int64)
+    # Every individual seam permutation preserves the complete uniform sector.
+    for a, b in edges:
+        order = list(range(12))
+        order[a], order[b] = order[b], order[a]
+        assert set(map(tuple, samples[:, order])) == set(states)
+    assert value['single_time_unit_variance_fourth_moment'] != 3
+    assert not value['finite_native_snapshot_is_exactly_Gaussian']
+
+
+@pytest.mark.parametrize('level', (0, 2, 5, 10))
+def test_actual_density_process_uses_simultaneous_diffusive_attempt_scaling(level):
+    value = d.density_process_bounds(level)
+    v, q = 240*4**level, 80*4**level
+    assert value['ports'] == v and value['particles'] == q
+    assert value['native_attempts_per_comparison_time'] == 2*(630*4**level)*4**level
+    assert value['susceptibility'] == F(q*(v-q), v*(v-1))
+    assert value['stirring_overlap_variance_upper'] == F(4, v)
+    assert value['overlap_bound_uniform_in_native_attempt_count']
+    assert value['conditional_Hajek_ratio_upper_under_variance_assumption'] == F(18, q)
+    assert value['simultaneous_refinement_and_attempt_time_finite_dimensional_limit']
+    assert not value['count_first_long_block_limit_required']
+    assert not value['path_space_tightness_asserted']
+    assert not value['clock_is_laboratory_proper_time']
+
+
+def test_stirring_variance_telescopes_only_for_a_positive_contraction():
+    x = sp.symbols('x', real=True)
+    # The discarded remainder is nonnegative exactly on the positive band.
+    assert sp.expand((1-x*x)-(1-x)-x*(1-x)) == 0
+    for value in (F(0), F(1, 3), F(2, 3), F(1)):
+        for n in (1, 3, 20):
+            cost = sum(value**(2*k)*(1-value) for k in range(n))
+            assert cost <= 1-value**(2*n)
+    assert 1-F(-1, 2) > 1-F(-1, 2)**2
+
+
+def test_reflected_ou_covariance_reconstructs_decay_generator_not_wave_frequency():
+    # An exact positive transfer tests the reflected covariance factorization.
+    transfer = sp.diag(sp.Rational(1, 2), sp.Rational(1, 3))
+    fields = [sp.Matrix([1, 0]), sp.Matrix([1, 2]), sp.Matrix([-1, 1])]
+    times = (1, 2, 4)
+    gram = sp.Matrix(3, 3, lambda i, j:
+        (fields[i].T*transfer**(times[i]+times[j])*fields[j])[0])
+    columns = sp.Matrix.hstack(*(transfer**t*f for t, f in zip(times, fields)))
+    assert gram == columns.T*columns
+    for value in (sp.Matrix([1, 0, -1]), sp.Matrix([1, -2, 3])):
+        assert (value.T*gram*value)[0] >= 0
+    # Spatial filtering changes the covariance, not the eigenmode decay rate.
+    eigenvalues = np.array([1., 4., 9.])
+    tau = .5
+    actual = np.exp(-tau*eigenvalues)/eigenvalues
+    relativistic = np.exp(-tau*np.sqrt(eigenvalues))/eigenvalues
+    assert actual[0] == relativistic[0]
+    assert np.all(actual[1:] < relativistic[1:])
+
+
+@pytest.mark.parametrize('bad', (True, 0, -1, 1., '1'))
+def test_density_limit_requires_an_original_positive_test_count(bad):
+    with pytest.raises(ValueError):
+        d.density_process_bounds(0, tests=bad)
+
+
 def test_native_green_wave_covariance_has_identity_velocity_not_quantum_vacuum():
     value = d.exact_wave_synthesis()
     assert value['constant_mode_exactly_removed']
@@ -269,6 +349,10 @@ def test_retained_continuum_receipt_replays_and_rejects_physical_promotion():
     compare_receipt(json.loads(path.read_text()), result)
     changed = copy.deepcopy(result)
     changed['scope']['observed_one_plus_three_spacetime_identified'] = True
+    with pytest.raises(ValueError):
+        compare_receipt(changed, result)
+    changed = copy.deepcopy(result)
+    changed['scope']['density_process_path_space_limit_proved'] = True
     with pytest.raises(ValueError):
         compare_receipt(changed, result)
 

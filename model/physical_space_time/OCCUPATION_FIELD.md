@@ -840,6 +840,52 @@ The exclusion does not cover a different radial observation algebra,
 noncompact volume limit, different operator order or different scaling.
 Rank-three internal coefficients alone do not change this spectral count.
 
+### A boundary trace test for a radial extension
+
+A three-dimensional **classical static Dirichlet-energy bulk** has a
+different boundary action from its bulk action. Minimizing
+`integral_bulk |grad u|^2` at fixed boundary value `f` gives the harmonic
+extension and boundary energy `<f,Lambda f>`, where `Lambda` is the
+Dirichlet-to-Neumann operator. On a ball of radius `R`, a degree-`j`
+spherical harmonic extends as `(r/R)^j Y_j`, with boundary precision `j/R`
+and multiplicity `2j+1`. Thus its positive eigenvalues are exactly
+`mu_n=floor(sqrt(n))/R`, indexed from one. On any smooth compact
+three-dimensional Riemannian bulk with smooth boundary, the Steklov Weyl
+law gives `mu_n=O(sqrt(n))`; see
+[Girouard–Polterovich, Example 1.3.2 and §2.1](https://arxiv.org/abs/1411.6567).
+
+This supplies a precise test of a proposed boundary interpretation. Suppose
+the centered native boundary readout and this scalar boundary trace are
+related by a boundedly invertible `L2` map `T`, with the **form congruence**
+
+```text
+E_A(f)=c E_Lambda(Tf)+<f,Bf>,    c>0, B bounded self-adjoint.
+```
+
+Take the inverse image under `T` of the first `n` Steklov eigenfunctions.
+On that `n`-dimensional subspace the Rayleigh quotient is at most
+`c ||T||^2 mu_n+||B||`; min-max gives the same upper bound on `lambda_n(A)`.
+It contradicts `lambda_n(A)>=n/49920` for large `n`. Consequently this
+ordinary scalar boundary-trace identification fails, including bounded
+calibration corrections. This argument is about energy congruence, not an
+arbitrary similarity of operators. It excludes neither quantum or interacting
+bulk reconstructions nor unbounded, differently scaled observation maps.
+
+One permissible mathematical change illustrates the distinction: on a finite
+spectral cutoff, applying `A^(1/4)` to the native Gaussian changes covariance
+`A^-1` to `A^-1/2`. The distributional spectral limit has the order appropriate
+to the harmonic half-cylinder extension `U(r)=exp(-r sqrt(A))f`, whose
+minimized action is `<f,sqrt(A)f>`. This is unbounded `L2` processing; the
+additional radial domain and its action are construction inputs. It supplies
+no native bulk fluctuations or physical radial readout by itself.
+
+The internal carrier directions also cannot supply such a radius at the
+present scale. Set `E_l^port(v)=4^l<v,L_l v>`. The internal gap gives
+`||Q v_l||^2<=E_l^port(v_l)/[(5-sqrt(5))*4^l]`. Every bounded-energy family
+therefore loses its within-carrier component, including the internal
+rank-three band, as `O(2^(-l))` in norm. This statement concerns the current
+full-port energy scaling, not all possible native observable limits.
+
 ### A continuum random distribution on the carrier sphere
 
 The compatible law extends beyond the countable ancestry dictionary.

@@ -68,6 +68,17 @@ local wave changes travel at most `|t|/sqrt(2)` in the source's flat
 comparison distance. The proof uses native full-port weighted heat bounds;
 it does not assign metres, seconds or Lorentz symmetry to that cone.
 
+The [actual density process](REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
+has a simultaneous finite-dimensional Gaussian limit at native attempt
+counts `floor(1260*16^l tau)`. Its covariance is
+`exp(-|tau-u|A)`, with identity equal-time covariance. Exact stirring
+concentration and a conditional canonical-sampling CLT establish the joint
+law; no long-block averaging or wave processing enters this result.
+The fixed spatial filter `A^-1/2` gives Green covariance and the same
+native decay. The Gaussian law is reflection positive, with reconstructed
+one-particle generator `A`. Path-space tightness, relativistic quantum
+identification and laboratory calibration are not conclusions of this limit.
+
 Growing native-return caps give the same rescaled modular phase magnitudes;
 a fixed cap freezes those phases in this spatial limit. The
 [full-configuration reference](REFINEMENT.md#the-full-reference-state-and-its-quantum-fluctuation-boundary)

@@ -180,6 +180,126 @@ def native_weighted_form_control():
         'finite_continuous_wave_has_instantaneous_small_tail': True}
 
 
+def density_process_bounds(level, covariance_tolerance=F(1, 10), tests=3,
+                           coefficient_l1=3, population_variance_lower=F(1, 2)):
+    """Uniform stirring concentration and the conditional finite-population CLT.
+
+    Each real, mean-zero profile has supremum at most one. The CLT ratio
+    assumes the displayed positive lower bound on its conditional population
+    variance; zero limiting variance is handled separately by Chebyshev.
+    No spatial convergence rate or path-space tightness is asserted.
+    """
+    level = dynamics._level(level)
+    tolerance, coefficient_l1, variance = map(dynamics._positive,
+        (covariance_tolerance, coefficient_l1, population_variance_lower))
+    if type(tests) is not int or tests < 1:
+        raise ValueError('a positive original number of test variables is required')
+    vertices, particles = 240*4**level, 80*4**level
+    overlap_variance = F(4, vertices)
+    pairs = tests*(tests-1)//2
+    return {'level': level, 'ports': vertices, 'particles': particles,
+        'native_attempts_per_comparison_time': 1260*16**level,
+        'susceptibility': F(particles*(vertices-particles), vertices*(vertices-1)),
+        'stirring_overlap_variance_upper': overlap_variance,
+        'overlap_bound_uniform_in_native_attempt_count': True,
+        'test_variables': tests, 'covariance_error_tolerance': tolerance,
+        'any_off_diagonal_conditional_covariance_error_probability_upper':
+            min(F(1), pairs*overlap_variance/tolerance**2),
+        'Cramer_Wold_coefficient_l1_upper': coefficient_l1,
+        'conditional_population_variance_lower_assumption': variance,
+        'conditional_Hajek_ratio_upper_under_variance_assumption':
+            coefficient_l1**2/(variance*min(particles, vertices-particles)),
+        'joint_limit': 'centered Gaussian; Cov(Y_tau(f),Y_u(g))=<f,exp(-abs(tau-u) A)g>',
+        'equal_time_covariance': 'identity on mean-zero L2(mu)',
+        'Green_filtered_covariance': 'G exp(-abs(tau-u) A), using A^-1/2 readout',
+        'simultaneous_refinement_and_attempt_time_finite_dimensional_limit': True,
+        'count_first_long_block_limit_required': False,
+        'path_space_tightness_asserted': False,
+        'clock_is_laboratory_proper_time': False}
+
+
+def native_stirring_control():
+    """Exact repair/permutation, random-covariance and scheduling controls.
+
+    All two-attempt stirring branches are enumerated on the native carrier;
+    canonical moments independently sum its 495 total-four configurations.
+    """
+    states, rows, edges = _native_trace_counts(4)
+    vertices, particles, denominator = 12, 4, 2*len(edges)
+    identity = tuple(range(vertices))
+    permutations = []
+    for a, b in edges:
+        swapped = list(identity)
+        swapped[a], swapped[b] = swapped[b], swapped[a]
+        permutations.extend((identity, tuple(swapped)))
+        for before in states:
+            after_swap = tuple(before[i] for i in swapped)
+            actual = Counter(dynamics.native.native(before, (a, b), coin)[0]
+                             for coin in (0, 1))
+            if actual != Counter((before, after_swap)):
+                raise ArithmeticError('native unread repair is not identity-or-swap')
+    field = np.array([1]*6+[-1]*6, dtype=np.int64)
+    single = sum((np.eye(vertices, dtype=np.int64)[list(p)] for p in permutations))
+    mean = F(int(field@single@single@field), vertices*denominator**2)
+    chi = F(particles*(vertices-particles), vertices*(vertices-1))
+    sample = np.asarray(states, dtype=np.int64)
+    overlap_sum = overlap_squared_sum = conditional_variance_sum = 0
+    conditional_variances = set()
+    for first in permutations:
+        for second in permutations:
+            moved = field[list(first)][list(second)]
+            overlap = int(field@moved)
+            overlap_sum += overlap
+            overlap_squared_sum += overlap*overlap
+            coefficients = field+moved
+            observations = sample@coefficients
+            squared_sum = int(observations@observations)
+            expected = chi*len(states)*int(coefficients@coefficients)
+            if squared_sum != expected:
+                raise ArithmeticError('conditional canonical covariance changed')
+            conditional_variance_sum += squared_sum
+            conditional_variances.add(F(squared_sum, len(states)*vertices)/chi)
+    branches = denominator**2
+    if F(overlap_sum, vertices*branches) != mean:
+        raise ArithmeticError('independent stirring mean is not the native density semigroup')
+    variance = F(overlap_squared_sum, vertices**2*branches)-mean**2
+    bound = F(4*int(field@field), vertices**2)
+    if not 0 < variance <= bound:
+        raise ArithmeticError('stirring overlap concentration control failed')
+    native_field = sample@field
+    direct_cross = F(int(native_field@np.asarray(rows, dtype=np.int64)@
+                         np.asarray(rows, dtype=np.int64)@native_field),
+                     len(states)*denominator**2*vertices)/chi
+    total_variance = F(conditional_variance_sum, len(states)*branches*vertices)/chi
+    if direct_cross != mean or total_variance != 2+2*mean:
+        raise ArithmeticError('stirring and full native joint second moments differ')
+    fourth = F(sum(int(x)**4 for x in native_field), len(states))/(vertices*chi)**2
+    repeated_sum = 0
+    for edge_index in range(len(edges)):
+        for first in permutations[2*edge_index:2*edge_index+2]:
+            for second in permutations[2*edge_index:2*edge_index+2]:
+                repeated_sum += int(field@field[list(first)][list(second)])
+    repeated_seam_mean = F(repeated_sum, 4*len(edges)*vertices)
+    if repeated_seam_mean != F(int(field@single@field), vertices*denominator):
+        raise ArithmeticError('repeated-seam mutation does not retain its projector')
+    if repeated_seam_mean == mean or fourth == 3 or len(conditional_variances) <= 1:
+        raise ArithmeticError('a finite-density or scheduling countercontrol disappeared')
+    return {'source_ports': vertices, 'particles': particles,
+        'canonical_configurations': len(states), 'native_endpoint_branches': len(states)*denominator,
+        'native_unread_repair_equals_identity_or_swap': True,
+        'independent_two_attempt_stirring_branches': branches,
+        'normalized_profile': 'six plus ones followed by six minus ones',
+        'two_attempt_mean_overlap': mean, 'two_attempt_overlap_variance': variance,
+        'uniform_overlap_variance_upper': bound,
+        'conditional_covariance_varies_before_averaging': True,
+        'conditional_canonical_covariance_verified_on_every_branch': True,
+        'stirring_and_full_native_two_time_covariance_exactly_equal': True,
+        'two_time_sum_variance': total_variance,
+        'repeated_seam_mutation_mean_overlap': repeated_seam_mean,
+        'single_time_unit_variance_fourth_moment': fourth,
+        'finite_native_snapshot_is_exactly_Gaussian': False}
+
+
 def exact_wave_synthesis():
     """Exact source20cell covariance and conserved velocity identities."""
     _, _, _, _, _, schur = dynamics._base_blocks()
@@ -418,6 +538,14 @@ def run():
         'continuum_path_bounds': [wave_path_bounds(j) for j in (0, 10, 100)],
         'native_weighted_form_control': native_weighted_form_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],
+        'actual_native_density_process': {
+            'exact_stirring_and_canonical_controls': native_stirring_control(),
+            'all_level_bounds': [density_process_bounds(l) for l in (0, 1, 2, 4, 10)],
+            'uniform_fixed_number_equilibrium_and_IID_seams_required': True,
+            'Gaussian_limit_follows_from_conditional_finite_population_CLT': True,
+            'reflection_positive_Gaussian_covariance': True,
+            'OS_one_particle_semigroup': 'exp(-tau A), not exp(-tau sqrt(A))',
+            'native_coherent_quantum_vacuum_preparation_inferred': False},
         'full_reference_state_limit': {
             'native_trace_and_nontracial_controls': [native_reference_state_control(q) for q in (2, 4)],
             'actual_source_degree_census': [source_trace_census(l) for l in range(3)],
@@ -435,6 +563,7 @@ def run():
             'source_heat_trace_spectral_dimension': 2,
             'native_attempt_parameter': 'tau=n/(1260*16^level)',
             'native_two_point_transfer': 'exp(-tau A)',
+            'actual_multitime_density_limit': 'stationary Gaussian OU finite-dimensional laws',
             'coherent_step_parameter': 't=n/(sqrt(630)*4^level)',
             'native_coherent_compression': 'cos(t sqrt(A))',
             'return_reference_modular_phase_magnitudes': 'sqrt(A)',
@@ -448,6 +577,8 @@ def run():
             'full_initial_occupation_and_current_readback_required': True,
             'coherent_preparation_reflection_and_Ramsey_services_required': True,
             'Gaussian_wave_uses_declared_record_processing': True,
+            'Gaussian_density_limit_uses_actual_native_snapshot_process': True,
+            'density_process_path_space_limit_proved': False,
             'modular_reference_is_a_native_coherently_prepared_state': False,
             'faithful_continuum_modular_algebra_state_constructed': False,
             'full_modular_unitary_or_intervention_implementation_proved': False,

@@ -293,3 +293,34 @@ def test_cycle_variance_control_requires_an_actual_source_valence(valence):
 def test_interpolation_finite_control_size_is_bounded():
     with pytest.raises(ValueError, match='levels zero through three'):
         c.source_interpolation_control(4)
+
+
+@pytest.mark.parametrize('degree', (1, 2, 3, 7))
+def test_ball_harmonic_extension_energy_is_linear_in_degree_not_quadratic(degree):
+    # Independent exact radial integral for a spherical harmonic of unit
+    # angular L2 norm and angular energy j(j+1). Boundary area contributes R².
+    r, radius = c.sp.symbols('r radius', positive=True)
+    radial = (r/radius)**degree
+    energy = c.sp.integrate(r*r*c.sp.diff(radial, r)**2
+                           +degree*(degree+1)*radial**2, (r, 0, radius))
+    assert c.sp.simplify(energy/radius**2-degree/radius) == 0
+
+
+def test_positive_ball_steklov_index_retains_every_angular_multiplicity():
+    import math
+
+    spectrum = [degree for degree in range(1, 21) for _ in range(2*degree+1)]
+    assert len(spectrum) == 20*22
+    assert spectrum == [math.isqrt(index) for index in range(1, len(spectrum)+1)]
+
+
+@pytest.mark.parametrize('scale,bounded_correction', [(F(1), F(0)), (F(7, 3), F(5)),
+                                                     (F(1, 1000), F(999))])
+def test_native_precision_eventually_exceeds_every_declared_ball_trace_upper_bound(scale, bounded_correction):
+    # scale includes c*||T||²/R for a bounded form-congruence map. This is
+    # an exact all-level bound witness, not a computed high-frequency spectrum.
+    threshold = 49920*(scale+bounded_correction+1)
+    degree = -((-threshold.numerator)//threshold.denominator)
+    index = degree*degree
+    native_lower = c.continuum_eigenvalue_enclosure(index)['lower']
+    assert native_lower > scale*degree+bounded_correction

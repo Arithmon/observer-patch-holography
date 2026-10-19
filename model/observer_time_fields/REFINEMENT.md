@@ -905,6 +905,130 @@ Native occupation correlations decay with `exp(-tau A)`; the admitted
 coherent amplitudes propagate with `cos(t sqrt(A))`. Their parameter
 normalizations differ and are not calibrated laboratory seconds.
 
+### Actual native density observations at several continuum times
+
+The same spatial subsequence also gives the joint laws of **actual native
+occupation snapshots**, with attempt count and source size tending to
+infinity together. Put `V_l=240*4^l`, `q_l=V_l/3`,
+`chi_l=q_l(V_l-q_l)/[V_l(V_l-1)]` and `a_l=1260*16^l=2M_l 4^l`.
+Start in the declared uniform fixed-number equilibrium and retain the
+uniform IID seam schedule and fair repair. For a bounded real mean-zero
+`f in L2(mu)`, let `f_l` repeat its cell averages on the twelve ports of
+each cell. Define
+
+```text
+Y_l(tau;f) = sum_p f_l(p)[n_floor(a_l tau)(p)-1/3]/sqrt(V_l chi_l).
+```
+
+For `tau>=0`, every finite collection of these variables converges jointly
+to a centered stationary Gaussian family with
+
+```text
+Cov(Y(tau;f),Y(u;g)) = <f, exp(-|tau-u| A) g>.                (OU)
+```
+
+The argument establishes Gaussianity of the joint process; convergence of
+its two-point function alone would not suffice. Each unread native repair
+has exactly the law of an independent fair identity-or-endpoint-swap.
+Consequently its occupation path can be represented as `n_j=Pi_j n_0`,
+where `Pi_j` is a product of independent seam permutations, independent of
+the uniform initial `q_l`-subset. This is an equality of the existing
+occupation path laws, not an added carrier process or preparation. Repair
+marks themselves are not identified with the auxiliary swap coins.
+
+Here is the needed bound on the randomness remaining in those permutations.
+On any finite source with `V` ports and `M` seams, let
+`K=I-L/(2M)` be the native one-particle kernel. It is a positive contraction,
+being an average of `(I+swap)/2`. For deterministic real profiles `f,g`,
+with `||g||_infinity<=C`, independent stirring gives, uniformly in `n`,
+
+```text
+E[V^-1 <f,Pi_n g>] = V^-1 <f,K^n g>,
+Var(V^-1 <f,Pi_n g>) <= 4 C^2 ||f||_ell2^2/V^2.             (OU1)
+```
+
+To prove (OU1), use the Doob martingale
+`M_j=V^-1 <K^(n-j)f,Pi_j g>` and set `h=K^(n-j)f`.
+Its conditional increment variance is at most
+
+```text
+(2 C^2)/(M V^2) sum_edges (h_a-h_b)^2
+    = (4 C^2)/V^2 <h,(I-K)h>.
+```
+
+Indeed an actual swap changes the pairing by
+`(h_a-h_b)[(Pi_(j-1)g)_b-(Pi_(j-1)g)_a]/V`, and occurs with
+probability `1/(2M)` per seam. Positivity of `K` gives
+`<K^k f,(I-K)K^k f> <= ||K^k f||^2-||K^(k+1)f||^2`.
+Summation telescopes, proving the bound independently of the number of
+attempts. No temporal mixing estimate is used here.
+
+Condition on all stirring permutations at finitely many snapshot times.
+A Cramer-Wold combination is a canonical subset sample with coefficients
+`b_l=sum_i c_i Pi_(n_i)^T f_i,l`, whose sum is zero and whose supremum is
+bounded independently of `l`. Its conditional variance after the displayed
+normalization is exactly `V_l^-1 ||b_l||^2`. For each pair of times, the
+corresponding overlap depends on the intervening permutation product.
+(OU1) makes that overlap converge in probability to
+`V_l^-1 <f_i,l,K_l^|n_i-n_j| f_j,l>`. The full-native heat convergence
+above identifies its limit as the entry in (OU), including the integer
+rounding of both attempt counts. Thus the entire conditional covariance
+matrix converges to the deterministic matrix in (OU).
+
+For a positive limiting Cramer-Wold variance, the finite-population CLT
+applies: bounded coefficients and `q_l=V_l/3` give
+`max_p b_l(p)^2/[v_l min(q_l,V_l-q_l)]->0`, where
+`v_l=||b_l||^2/(V_l-1)`. This is
+[Hájek's criterion, stated as Li–Ding Theorem 1](https://arxiv.org/pdf/1610.04821).
+For random conditional populations, every subsequence has a further
+subsequence on which its covariance converges almost surely. Apply the
+deterministic CLT there; bounded conditional characteristic functions
+then converge in expectation. This proves the unconditional conclusion
+for the original sequence. If the limiting variance is zero, its uniformly
+bounded conditional variance converges to zero in expectation, and
+Chebyshev supplies the degenerate Gaussian limit. Cramer-Wold proves the
+joint claim. The exact identity
+`E|Y_l(tau;f)-Y_l(tau;g)|^2=||P_l(f-g)||_L2(mu)^2`
+extends the result by bounded-test approximation to all mean-zero `L2`
+tests. It does not establish path-space tightness or a spatial convergence
+rate. The limit is the finite-dimensional law of a generalized stationary
+Ornstein–Uhlenbeck process, in scaled global-attempt units.
+
+The executable checks the native identity-or-swap dictionary on every
+total-four carrier branch, all 3,600 two-attempt stirring branches and
+their conditional canonical variances by independently summing all 495
+initial configurations. The conditional variances fluctuate at
+finite size. Reusing one randomly chosen seam at the second attempt changes
+the mean overlap from `K^2` to `K`, although the uniform one-time law is
+preserved. A native snapshot's fourth moment also differs from the Gaussian
+value. These controls keep the IID schedule and the actual conditional CLT
+in the proof.
+
+Since the gap bounds make `A^-1/2` bounded on the mean-zero space, the
+declared spatial readout `Phi(tau;f)=Y(tau;A^-1/2 f)` has covariance
+`<f,G exp(-|tau-u|A)g>`. This connects the spatial Green field to actual
+native density dynamics through a declared spectral filter. Finite readouts
+can use the cell coefficients of `G_l^1/2 P_l f`: norm convergence of
+`G_l` gives convergence of these tests to `A^-1/2 f`, and the exact `L2`
+covariance identity above controls their approximation. Thus no uniform
+supremum bound on these filtered tests is needed. The unfiltered
+equal-time density covariance is the identity; neither field has the
+cosine time covariance of the separately synthesized wave ensemble.
+
+There is also a direct Euclidean positivity statement. For positive
+`s,t`, the reflected covariance is
+`<f,exp(-(s+t)A)g>=<exp(-sA)f,exp(-tA)g>`.
+Stationarity supplies the two-sided extension used in this reflection.
+The Gaussian family has conditionally independent past and future given
+its time-zero field: subtracting their conditional means leaves zero
+cross covariance. For each bounded positive-time cylinder functional `F`,
+this gives `E[conjugate(F after reflection) F]=E|E[F|Y(0)]|^2>=0`.
+On the one-particle reconstructed Hilbert space, a positive time shift has
+semigroup `exp(-tau A)`, with generator **A**, not `sqrt(A)`.
+This connects the actual density law to a reflection-positive Gaussian
+reconstruction. It supplies no coherent preparation in that reconstructed
+state, physical relativistic vacuum, Lorentz symmetry or laboratory clock.
+
 ### Finite propagation on the source comparison space
 
 The same full-port convergence also supplies a support bound. Restore

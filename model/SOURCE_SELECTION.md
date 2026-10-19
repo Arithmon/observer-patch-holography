@@ -28,8 +28,8 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | An ancestral-cell Poincare bound gives operator-norm convergence along the common spatial subsequence to a compact injective Green operator `G`. Its inverse defines a conservative regular strongly local Dirichlet generator with form domain `H1` and spectral dimension two. Continuous H^-2(S2) fields retain the same-history coupling between normalized attempt and incident clocks. | Full initial occupation and seam/current readback are admitted. Observation count tends to infinity first. Whole-sequence uniqueness, an intrinsic metric, radial observations and interacting Lorentzian dynamics are unestablished. |
-| [Native correlations and coherent waves](observer_time_fields/README.md) | The native resolvent error bound `1/(8*4^level)` connects heat and coherent cosine propagation to the same generator `A=G^-1`. Two long blocks of one native history give a continuous Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. The constant-mode extension has finite wave propagation in the supplied flat comparison distance. | Spectral processing, coherent event access, reflection and phase convention are declared operations. A specified random-length return reference matches wave phases under a growing cap; a fixed cap freezes the scaled phase. Its length sampler and endpoint reads are additional services. The full reference has a tracial bounded-algebra limit at fixed modular parameter; its density-wave sector has vanishing weight. A physical vacuum, radial field and boost action are unestablished. |
+| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The common Green subsequence converges in operator norm to compact injective `G`. Its inverse has a conservative regular strongly local form with domain `H1` and spectral dimension two. Continuous H^-2(S2) cumulative fields retain the same-history coupling between normalized attempt and incident clocks. | Full initial occupation and seam/current readback are admitted. These cumulative fields take the count limit first; the snapshot limit below uses simultaneous scaling. Whole-sequence uniqueness, an intrinsic physical metric, radial observations and interacting Lorentzian dynamics remain open. |
+| [Native correlations and coherent waves](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times) | Actual density snapshots have joint Gaussian finite-dimensional limits with covariance `exp(-|tau-u|A)`, at `tau=attempts/(1260*16^level)`. The declared `A^-1/2` filter gives `G exp(-|tau-u|A)`. Separate long-block wave synthesis gives `G cos((t-u)sqrt(A))`; localized cosine propagation has finite speed in the supplied flat comparison distance. | Native density uses uniform fixed-number preparation, IID seams, fair repair and full readback; no path limit is proved. Wave synthesis and coherent controls remain declared. Growing return caps match coherent modular phases; fixed caps freeze them. The full reference becomes tracial at fixed modular parameter and its density-wave sector has vanishing weight. Physical vacuum, radial field and boost action remain open. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md) | Oriented pair means and terminal coincidences reconstruct positive IID seam weights, and the recovered scheduler predicts joint local fields. Collective regional unions have an exact shared-event count law. | Ordered tape comparison and coincidences are admitted access. Pair means do not establish temporal independence; field predictions use the declared stationary binary preparation. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamps test an apparatus relation. The public optical test rejects the direct attachment for every distinct regional event-set pair under its bounded-error and no-extra-filter assumptions. | The actual atomic/servo dictionary is not derived. Identical event sets are the same clock and are outside the rejection. Clock definitions require no external calibration. |
@@ -142,7 +142,14 @@ does not turn that decoder into the dense unbounded control module. This
 leaves room for other source observables and growing constructions; their
 readout and dynamics must be attached explicitly. The all-mode response
 metric has rank eleven, and a doubled-seam scheduler has a rank-two slowest
-band, so selecting one spatial readout is load-bearing.
+band, so selecting one spatial readout is load-bearing. In the current
+continuum energy scaling, internal components, including the rank-three
+band, decay as `O(2^-level)` in every bounded-energy family. The
+[radial compatibility test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+also excludes boundedly invertible `L2` form congruence between the native
+boundary action and a smooth compact three-dimensional Dirichlet bulk's static
+boundary action (with smooth boundary). An unbounded filter can change its spectral order; its
+radial domain and action remain additional construction inputs.
 
 The [ambient spacetime theorem](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean)
 adjoins an independent real axis and defines `t*t'-G(x,x')`; dimension four
@@ -378,8 +385,13 @@ entropy maximum with zero first variation for trace-zero state changes.
 The [finite counting identity](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#joint-counting-stationarity-and-its-geometric-boundary)
 adds joint stationarity at `p=d/M` for fixed `M=sum d` in its positive-real
 count relaxation. It does not identify this constraint with physical volume
-or the count logarithm with area. The tracial state has trivial modular flow; preparation
-does not select a nontrivial clock reference or a geometric boost.
+or the count logarithm with area. The [native return reference](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
+has entropy deficit at most `2025/(64V)` for `V` ports, uniformly in the cap.
+Its regional mutual information grows at most logarithmically in `V`, so
+it cannot scale with crossing seams of a refining base-face patch. This
+concerns a region boundary on the two-dimensional source, not whole-screen
+area. The tracial state has trivial modular flow; preparation selects no
+nontrivial clock reference or geometric boost.
 
 ## Observer-relative clocks and effective descriptions
 

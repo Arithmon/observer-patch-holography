@@ -168,6 +168,176 @@ def test_relative_entropy_stationarity_does_not_select_the_counting_entropy_maxi
     assert sp.simplify(sp.diff(entropy, t).subs(t, 0)) == sp.log(3)
 
 
+def _sector_partial_traces(rho, states, region):
+    """Independent partial traces in the actual occupied basis, no 2^N matrix."""
+    complement = tuple(i for i in range(len(states[0])) if i not in region)
+    labels = [tuple(tuple(state[i] for i in part) for state in states)
+              for part in (region, complement)]
+    indices = [{label: i for i, label in enumerate(sorted(set(side)))} for side in labels]
+    partial = [np.zeros((len(index), len(index)), dtype=complex) for index in indices]
+    for i in range(len(states)):
+        for j in range(len(states)):
+            if labels[1][i] == labels[1][j]:
+                partial[0][indices[0][labels[0][i]], indices[0][labels[0][j]]] += rho[i, j]
+            if labels[0][i] == labels[0][j]:
+                partial[1][indices[1][labels[1][i]], indices[1][labels[1][j]]] += rho[i, j]
+    return tuple(partial)
+
+
+def _state_entropy(rho):
+    np.testing.assert_allclose(rho, rho.conj().T, atol=2e-13)
+    assert abs(np.trace(rho)-1) < 2e-13
+    spectrum = np.linalg.eigvalsh(rho)
+    assert min(spectrum) >= -2e-13
+    positive = spectrum[spectrum > 0]
+    return -float(np.dot(positive, np.log(positive)))
+
+
+def test_native_region_entropy_is_shape_blind_while_crossing_seams_differ():
+    from collections import Counter
+    from model.primitive_observer.transfer import native_counts
+
+    source = native_counts()
+    regions = ((0, 1, 5, 7), (7, 8, 10, 11))
+    tau = np.eye(66)/66
+    entropy_pairs, boundaries = [], []
+    for region in regions:
+        reached = {region[0]}
+        for _ in region:
+            reached |= {b for a, b in source.seams if a in reached and b in region}
+            reached |= {a for a, b in source.seams if b in reached and a in region}
+        assert reached == set(region)
+        boundaries.append(sum((a in region) != (b in region) for a, b in source.seams))
+        counts = Counter(sum(state[i] for i in region) for state in source.states)
+        assert [counts[j] for j in range(3)] == [28, 32, 6]
+        left, right = _sector_partial_traces(tau, source.states, region)
+        entropy_pairs.append((_state_entropy(left), _state_entropy(right)))
+        q = np.array([28, 32, 6])/66
+        center_entropy = -float(np.dot(q, np.log(q)))
+        assert abs(sum(entropy_pairs[-1])-np.log(66)-center_entropy) < 2e-13
+    assert boundaries == [10, 14]
+    np.testing.assert_allclose(entropy_pairs[0], entropy_pairs[1], atol=2e-13)
+
+
+@pytest.mark.parametrize('kind', ('cross_charge_coherence', 'nonuniform_coherent'))
+def test_quantum_region_mutual_information_bound_uses_full_nondiagonal_states(kind):
+    from model.primitive_observer.transfer import native_counts
+
+    states = native_counts().states
+    region = (0, 1, 5, 7)
+    charges = np.array([sum(state[i] for i in region) for state in states])
+    dimension = len(states)
+    tau = np.eye(dimension, dtype=complex)/dimension
+    if kind == 'cross_charge_coherence':
+        i, j = int(np.flatnonzero(charges == 0)[0]), int(np.flatnonzero(charges == 1)[0])
+        rho = tau.copy()
+        rho[i, j] = 1j/(2*dimension); rho[j, i] = -1j/(2*dimension)
+    else:
+        ket = np.array([(index+1)*np.exp(1j*index/3) for index in range(dimension)])
+        ket /= np.linalg.norm(ket)
+        rho = (tau+np.outer(ket, ket.conj()))/2
+    assert np.linalg.norm(rho-np.diag(np.diag(rho))) > 0.001
+    left, right = _sector_partial_traces(rho, states, region)
+    entropy = _state_entropy(rho)
+    information = _state_entropy(left)+_state_entropy(right)-entropy
+    deficit = np.log(dimension)-entropy
+    p = np.array([np.real(np.diag(rho))[charges == charge].sum() for charge in range(3)])
+    q = np.array([28, 32, 6])/66
+    center_entropy = -float(np.dot(p, np.log(p)))
+    center_deficit = float(np.dot(p, np.log(p/q)))
+    assert 0 <= information <= center_entropy-center_deficit+deficit+3e-13
+    assert information <= np.log(3)+deficit+3e-13
+    if kind == 'cross_charge_coherence':
+        # Both partial traces are unchanged; nonzero coherence entropy is
+        # essential, and the sharper quantum bound is attained.
+        assert deficit > 0
+        np.testing.assert_allclose(p, q, atol=2e-14)
+        assert abs(information-center_entropy-deficit) < 3e-13
+        assert information > center_entropy
+
+
+@pytest.mark.parametrize('particles', (2, 4))
+def test_native_return_reference_entropy_deficit_for_ideal_and_all_retained_caps(particles):
+    from fractions import Fraction as F
+    from model.observer_time_fields import continuum_dynamics as dynamics
+    from model.observer_time_fields import wave_reference as reference
+
+    states, counts, edges = dynamics._native_trace_counts(particles)
+    kernel = np.array(counts, dtype=float)/(2*len(edges))
+    spectrum, vectors = np.linalg.eigh(kernel)
+    assert spectrum[0] >= -2e-13 and spectrum[-1] <= 1+2e-13
+    spectrum = np.clip(spectrum, 0, 1)
+    kappa = np.trace(kernel)/len(states)
+    dimension, denominator = len(states), 2*len(edges)
+    exact_mean = F(sum(counts[i][i] for i in range(dimension)), dimension*denominator)
+    exact_second = F(sum(value*value for row in counts for value in row), dimension*denominator**2)
+    variance = exact_second-exact_mean**2
+    assert abs(float(variance)-np.sum((kernel-kappa*np.eye(dimension))**2)/dimension) < 2e-14
+    chi = F(particles*(12-particles), 12*11)
+    upper = float(25*variance/chi**2)
+    ideal = np.exp(-np.arccos(spectrum))
+    for cap in (None, 0, 1, 4, 32):
+        weights = ideal if cap is None else np.exp(-np.pi/2)*sum(
+            float(c)*spectrum**n for n, c in enumerate(reference.coefficients(cap)))
+        ratio = weights/np.mean(weights)
+        deficit = float(np.dot(ratio, np.log(ratio))/len(states))
+        squared = float(np.mean((ratio-1)**2))
+        assert -2e-13 <= deficit <= squared+2e-13 <= upper+2e-13
+        if cap == 0:
+            assert abs(deficit) < 2e-13
+        elif cap == 1 and particles == 2:
+            rho = (vectors*(weights/weights.sum()))@vectors.T
+            assert np.linalg.norm(rho-np.diag(np.diag(rho))) > 0.001
+            left, right = _sector_partial_traces(rho, states, (0, 1, 5, 7))
+            information = _state_entropy(left)+_state_entropy(right)-_state_entropy(rho)
+            assert information <= np.log(3)+deficit+3e-13
+
+
+@pytest.mark.parametrize('level', (0, 1, 2, 8, 100))
+def test_all_level_reference_entropy_bound_is_absolute_and_cap_independent(level):
+    from fractions import Fraction as F
+    from model.observer_time_fields.continuum_dynamics import reference_state_bounds
+
+    row = reference_state_bounds(level)
+    ports, particles = row['ports'], row['particles']
+    chi = F(particles*(ports-particles), ports*(ports-1))
+    assert chi >= F(2, 9)
+    assert 25*row['transfer_trace_variance']/chi**2 <= F(2025, 64*ports)
+    assert F(2025, 64*ports) == F(135, 1024*4**level)
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_actual_screen_patch_counts_distinguish_cells_from_boundary_seams(level):
+    from model.federated_observer.source import federation
+
+    graph = federation(level)
+    patch_ports = 12*4**level
+    crossing = sum((a < patch_ports) != (b < patch_ports) for a, b in graph.seams)
+    assert patch_ports == graph.ports//20
+    assert crossing == 3*2**level
+    assert crossing == sum((a < patch_ports) != (b < patch_ports) for a, b in graph.inter_seams)
+
+
+def test_counting_entropy_marginal_bounds_follow_exact_binomial_mode_control():
+    import math
+    from fractions import Fraction as F
+
+    for population in range(2, 13):
+        for occupied in range(1, population):
+            rho = F(occupied, population)
+            mode_mass = math.comb(population, occupied)*rho**occupied*(1-rho)**(population-occupied)
+            assert mode_mass >= F(1, population+1)
+            h = -float(rho)*np.log(float(rho))-float(1-rho)*np.log(float(1-rho))
+            for size in range(1, population):
+                low, high = max(0, occupied-population+size), min(size, occupied)
+                region_entropy = 0.0
+                for number in range(low, high+1):
+                    multiplicity = math.comb(size, number)
+                    eigenvalue = F(math.comb(population-size, occupied-number), math.comb(population, occupied))
+                    region_entropy -= multiplicity*float(eigenvalue)*np.log(float(eigenvalue))
+                assert size*h-np.log(population+1)-2e-13 <= region_entropy <= size*h+2e-13
+
+
 def test_area_gradient_and_hessian_match_finite_differences() -> None:
     n = 12
     d = 7.0

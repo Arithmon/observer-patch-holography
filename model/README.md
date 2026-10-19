@@ -41,10 +41,16 @@ on the same native history makes the normalized attempt and incident-clock
 fields coincide in that limit. Uniform spatial-tail and temporal-increment
 bounds control the construction; observation count tends to infinity before
 spatial refinement.
+The [actual density observations](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
+have a joint Gaussian limit with covariance `exp(-|tau-u|A)` along the
+same spatial subsequence, with `tau=attempts/(1260*16^level)`.
+Refinement and count grow together; this proves finite-dimensional laws,
+with no path-convergence claim. Uniform fixed-number preparation, IID
+seams and full occupation readback remain declared. The spatial filter
+`A^-1/2` gives covariance `A^-1 exp(-|tau-u|A)`.
 The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
-uses this same `A` for native heat propagation, coherent cosine amplitudes
-and a continuous Gaussian wave readout synthesized from two long observation
-blocks of one native history. Its covariance is
+also uses `A` for coherent cosine amplitudes and a continuous Gaussian
+wave synthesized from two long observation blocks, with covariance
 `A^-1 cos((t-u)sqrt(A))`. Restoring the constant mode gives finite
 propagation at speed at most `1/sqrt(2)` in the flat comparison distance
 per coherent wave parameter. This support theorem concerns localized
@@ -58,9 +64,15 @@ a quantum vacuum or a complete modular evolution of the observer.
 The return cap must grow with refinement: a fixed cap freezes the scaled
 low-band modular phase. The full configuration reference approaches a
 tracial state at fixed modular parameter; the density-wave sector has
-vanishing reference weight. Nonzero rescaled phases alone therefore do
-not supply a quantum vacuum. Whole-sequence uniqueness, the physical
-metric and physical field identification remain unresolved.
+vanishing reference weight. Its [entropy deficit](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
+is at most `2025/(64V)` for `V` ports and every return cap. Regional mutual information
+is too small to scale with crossing seams of a base-face patch; this
+concerns a boundary on the two-dimensional source, not whole-screen area.
+The [radial compatibility test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+excludes a boundedly invertible `L2` energy identification with a smooth compact three-dimensional
+Dirichlet bulk's static boundary action (with smooth boundary). Internal rank-three modes vanish
+from bounded-energy families at the present scale. Whole-sequence
+uniqueness, physical radial observations and a quantum vacuum remain open.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
