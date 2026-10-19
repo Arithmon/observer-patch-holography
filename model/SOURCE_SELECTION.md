@@ -28,7 +28,7 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [Native spatial fluctuation field](physical_space_time/OCCUPATION_FIELD.md) | Exact rank-three covariance and action coexist with an all-level scaled Green bound of `4096/3` on the actual source subdivision. Nested ancestry observations admit compatible nonzero Gaussian laws along a common spatial subsequence, shared by normalized attempt and root-incident clocks. | Full initial occupation and seam/current readback are admitted. Observation count tends to infinity first. Whole-sequence convergence, a unique target Green operator and interacting Lorentzian dynamics are not identified. |
+| [Native spatial fluctuation field](physical_space_time/OCCUPATION_FIELD.md) | Exact rank-three covariance and action coexist with an all-level scaled Green bound of `4096/3` on the actual source subdivision. A uniform harmonic-tail bound extends compatible ancestral laws to a nonzero Gaussian H^-2(S2) random distribution along a common spatial subsequence, shared by normalized attempt and root-incident clocks. | Full initial occupation and seam/current readback are admitted. Observation count tends to infinity first. Whole-sequence convergence, a unique target Green operator and interacting Lorentzian dynamics are not identified. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md) | Oriented pair means and terminal coincidences reconstruct positive IID seam weights, and the recovered scheduler predicts joint local fields. Collective regional unions have an exact shared-event count law. | Ordered tape comparison and coincidences are admitted access. Pair means do not establish temporal independence; field predictions use the declared stationary binary preparation. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamps test an apparatus relation. The public optical test rejects the direct attachment for every distinct regional event-set pair under its bounded-error and no-extra-filter assumptions. | The actual atomic/servo dictionary is not derived. Identical event sets are the same clock and are outside the rejection. Clock definitions require no external calibration. |
@@ -362,15 +362,17 @@ nontrivial clock reference.
 The [observer-relative recovery connection](OBSERVER_RELATIVE_RECOVERY.md)
 identifies the fixed-carrier native generator as a hard-core exchange field
 and derives controlled logarithm approximants from its actual transfer.
-That positive transfer also supplies a faithful reference whose modular flow
-matches the reconstructed finite Hamiltonian. The reduced three-mode
-description has an executed coherent modular probe; the native Palm flow
-acts on a separately verified invariant protocol algebra. These are concrete
-connections between source records, effective actions and modular descriptions,
-with different algebras and access contracts kept explicit. They do not select
-a unique reference, replace dissipative repair by unitary evolution or derive
-a relativistic continuum. Compatible regional field counters require known
-local preparation and complete incident-current records.
+Open stationary cylinders reconstruct its ground state. Conditioning complete
+histories to return instead gives faithful finite-temperature references.
+Equal-class heralding supplies this construction for the same three-mode
+transfer used by the compiled modular probe. An active observer triggers a
+fixed modular step on each native incident event, with a declared controller
+and carrier-pause schedule. Its complete feedback/readout law retains
+timeouts and source errors. Passive repair has a quantitative obstruction to
+nontrivial modular automorphisms. These results connect source records,
+thermal references and clock protocols without selecting physical duration
+or a relativistic continuum. The coherent probe services and conditioning
+access remain explicit inputs.
 
 The [native record clock](native_clock/README.md) constructs an observable
 counter with exact statistics from the same committed currents.

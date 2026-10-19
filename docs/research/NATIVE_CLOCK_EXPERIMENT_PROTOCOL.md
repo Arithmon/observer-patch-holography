@@ -75,6 +75,14 @@ that conjunction; it does not derive the published atomic/servo apparatus or
 exclude every collective clock. Collective tape access is stronger than an
 isolated primitive port's tape.
 
+The [active modular clock](../../model/transfer_modular_probe/README.md)
+also makes each native incident event trigger one fixed coherent phase step.
+Closed histories provide its faithful native-derived reference. The coherent
+probe and carrier-pause scheduler are declared apparatus; passive repair has
+a modular-automorphism obstruction. Mapping two measured optical transitions
+directly to its three-mode energy gaps fails the public absolute-ratio test
+under the [specified common-scale attachment](../../model/predictions/README.md#minimal-modular-transition-optical-attachment).
+
 Thus records can already carry an observer-relative clock and a finite
 spatial interpretation. An event labelled by a local count and a spatial
 coordinate is an internal chart. The individual clocks' mean rate equality

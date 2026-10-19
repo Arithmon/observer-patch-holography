@@ -101,7 +101,7 @@ law E:  P(plus | s, herald) = 1/2 - sin(s log(5/4))/220.
 The coefficients follow from exact rational evaluation at modular phases
 `0`, `+/-pi/2` and `pi`; the two-eigenspace source has no higher modular
 frequencies, so linearity fixes the whole one-harmonic response. The quarter
-turn points are checked in the producer, including the already-executed
+turn points are checked in the producer, including the executed
 positive quarter-turn phase-order experiment. `s` has period
 `2*pi/log(5/4)`. The nonzero derivative at `s=0` makes this an observer
 readout of modular phase locally near that point. One probability is periodic
@@ -133,7 +133,7 @@ Each branch maps a real density to a real unnormalized density; normalization
 by a positive real probability preserves that property. A convergent stopped
 CP sum does too. Thus selecting a different native event boundary or a
 nonzero-probability record cannot turn this same Y protocol into a moving
-modular hand. An alternative detector can still read native change: the
+modular hand. An alternative detector can read native change: the
 [single-carrier clock comparison](../native_clock/COMPARISON.md) gives actual
 current-count agreement and uncertainty without a federation. Those clocks
 do not require modular phase advancement.
@@ -159,6 +159,88 @@ whose modular flow is trivial. Its other existing complex preparation uses an
 untouched reference qubit; tracing that qubit leaves a nonfaithful diagonal
 work state. Neither alternative supplies continuing modular phase motion.
 
+## Passive repair cannot act as a modular automorphism
+
+The obstruction extends beyond the real C/E preparations. The
+[law-uniform warm-up theorem](../record_laws/README.md#preparation-by-finite-native-warm-up)
+gives `tau=I66/66` and, after `n` unread attempts,
+`D(Psi_n(rho),tau)<=epsilon_n`, where `D` is half trace distance and
+`epsilon_n=min(1,33 r_alpha^n)`,
+`r_alpha=1-alpha*(1-19079/20000)`. The domain is every admitted current table,
+including its phases and the theorem's restricted law-only feedback, under
+exogenous seam coverage at least `alpha/30`. Discard the warm-up record and
+controller memory; do not insert other source operations.
+
+For every faithful matrix reference `sigma`, every modular parameter `s`,
+and the dual modular action `U_s rho U_s*`, unitary invariance gives
+`D(U_s rho U_s*,tau)=D(rho,tau)`. The reverse triangle inequality therefore
+proves
+
+```text
+D(Psi_n(rho), U_s rho U_s*) >= max(0, D(rho,tau)-epsilon_n).
+```
+
+The same statement holds with an arbitrary untouched reference `R`, replacing
+`tau` by `tau tensor rho_R` and acting with `U_s` only on the source. Any
+deterministic reparameterization `s=s(n)` obeys it. A record-conditioned
+mixture of phase actions, postselection, and active coherent controllers are
+different comparisons. At 221 uniform attempts, `epsilon_n<=1/1000`:
+every pure source input is at least `32467/33000` from its modular orbit.
+For the native Palm reference, `D(sigma,tau)=3/55`, so even its stationary
+modular orbit has separation at least `589/11000`. The tracial reference's
+modular action is identity; passive repair is not identity on general inputs.
+
+Restricting to an observer algebra does not evade the uniform dynamical
+obstruction. Let `A` be a unital star subalgebra invariant under the chosen
+modular group, and `E_A` its trace-preserving conditional expectation. The
+warm-up proof gives `||Psi_n-Replacement||_(2->2)<=r_alpha^n`; the adjoint
+has the same Hilbert--Schmidt norm. For any traceless `X` in `A`,
+
+```text
+||E_A Psi_n*(X)-alpha_s(X)||_2 >= (1-r_alpha^n)||X||_2.
+```
+
+Indeed `E_A` is an orthogonal contraction and the modular action is an
+isometry. Every nonscalar observer algebra contains such a nonzero `X`.
+This excludes agreement as maps on all admitted states, while allowing
+agreement on a single stationary state or scalar readout. The scalar algebra
+passes but has no moving hand.
+
+[`passive.py`](passive.py) independently enumerates actual C/E branches and
+provides an exact finite checker for a rational-complex operator basis and a
+faithful diagonal reference. It checks the ambient identity, adjoints,
+products, modular invariance, leakage and norm loss. Modular invariance is
+checked without logarithms: group matrix units by equal `sigma_i/sigma_j`
+and test that each spectral component lies in the algebra. The native degree
+centralizer and a coherent `M2` block both exhibit strict norm loss. Passing
+this necessary isometry test alone is not a modular-flow certificate; the
+generic callback must separately be shown to be an admitted channel.
+
+There is also a direct stopped-event witness, without replacing an event by
+its mean waiting time. Start from `tau`, make one native movement herald,
+read degree, wait for one native movement with cap `h`, and read degree again.
+Keep the failed herald, every successful waiting count, and both degree
+timeouts. A matched control uses each initial degree's same waiting law and
+timeout mass but preserves that degree under an arbitrary modular phase.
+The degree projectors commute with `sigma`, so every such phase has the same
+control records. Exact C/E enumeration gives the unconditional record distance
+
+```text
+TV = [2-(13/15)^h-(5/6)^h]/33.
+```
+
+At cap two this is `499/29700`; the limit is `2/33`, or `2/5` conditional
+on the `5/33` herald. Failed heralds and timeouts match exactly. This control
+is a declared comparison law, not an implementation claim. The witness uses
+the existing degree-read service and a selected preparation; the general
+reference-safe bound above concerns attempts, not arbitrary stopping rules.
+
+The [thermal-time proposal of Connes and Rovelli](https://arxiv.org/abs/gr-qc/9406019)
+motivates a state-relative modular automorphism as time. These finite matrix
+arguments need no imported infinite-algebra theorem. They test whether the
+declared passive native channel realizes that automorphism, independently of
+choosing units for its parameter.
+
 ## The modular readout has no lab-time scale
 
 The modular response fixes a frequency `log(5/4)` per unit of the
@@ -175,8 +257,8 @@ calibrating a lab clock alone would not implement the modular flow. A test
 against lab data first needs a physical operation that realizes this phase
 action, an identified detector/preparation mapping, and an independently
 measured nonzero pair `(delta-s, delta-t)`; a constant `ds/dt` must be justified
-over the tested range. No matching public dataset is presently identified for
-this protocol, so the response curve is not yet an empirical lab prediction.
+over the tested range. No matching public dataset is identified for
+this protocol, so the response curve is not an empirical lab prediction.
 
 The related [`native_clock`](../native_clock/README.md) packet independently
 shows that native attempt/event counts also have no seconds scale: arbitrary
@@ -221,7 +303,7 @@ discarding source leakage outside it.
 The two-event experiment starts with an actual primitive-runtime
 `Program`: `I66/66`, one native attempt, and its current herald. On success,
 an explicit finite stopping driver repeatedly calls the existing runtime
-instrument executor, retaining the unnormalized no-current state until a
+instrument executor, retaining the unnormalized zero-current density until a
 movement occurs. It applies the declared degree projector, continues that
 postmeasurement matrix through a second stopping block, then reads degree
 again. The complete loop is an explicit driver of the same CP instruments;
@@ -318,6 +400,7 @@ correlations without a fitted action or an extra fundamental clock.
 
 ```sh
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.relative_modular_dynamics --check model/relative_modular_dynamics/results.json
+python -m model.relative_modular_dynamics.passive --check model/relative_modular_dynamics/passive_results.json
 VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/relative_modular_dynamics
 ```
 

@@ -4,7 +4,7 @@
 carrier, exact first-arrival laws in a receiver's own incident-attempt clock,
 and a metric inferred from those laws. No observer federation is required.
 **Not established:** physical three-dimensional space, Lorentzian spacetime,
-a spatial continuum, or a relation to a laboratory clock. The receipt sets
+the observed spatial continuum, or a relation to a laboratory clock. The receipt sets
 these acceptance fields to false even when every mathematical check passes.
 
 The [occupation-field extension](OCCUPATION_FIELD.md) derives a spatial
@@ -19,8 +19,13 @@ through three, with certified Green and clock covariances. Each retained
 covariance has operator error at most `1e-6`. The actual source's subdivision
 also gives the all-level bound `||G_l||<=4096/3`, vanishing normalized clock
 corrections, and a nonzero compatible Gaussian law along one common spatial
-subsequence on the enlarging ancestral observation dictionary. A unique
-whole-sequence limit and a physical identification are further obligations. A supplied periodic
+subsequence on the enlarging ancestral observation dictionary. The
+[continuum extension](OCCUPATION_FIELD.md#a-continuum-random-distribution-on-the-carrier-sphere)
+realizes that law as a Gaussian random distribution in `H^-2(S2)`, with an
+explicit angular-tail bound and convergent continuous test observations.
+The comparison sphere defines the test-function topology, without selecting
+a physical metric. A unique whole-sequence limit and physical identification
+are further obligations. A supplied periodic
 square graph is a separate comparison
 control; it does not identify the actual source's physical spacetime.
 

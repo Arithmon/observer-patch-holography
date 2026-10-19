@@ -260,6 +260,12 @@ also applies to every admitted current law, including complex phases: 221
 binary or 318 full-carrier attempts give stationary-state error at most
 `1/1000`, including an untouched reference, after discarding the warm-up tape.
 
+Passive mixing also forbids a nontrivial modular automorphism on an invariant
+observer algebra. The [active event clock](transfer_modular_probe/README.md)
+adds a fixed coherent step per incident event and a declared pause schedule;
+closed histories supply its faithful three-mode reference. This construction
+does not select a quantum record law or identify an atomic clock.
+
 **No retained dataset reads `g`.** The public oscillator and Bell records
 have no identified native apparatus map, so they supply no likelihood for any
 record law; the [empirical status](../docs/EMPIRICAL_STATUS.md) gives the

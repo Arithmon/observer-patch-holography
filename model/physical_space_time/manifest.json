@@ -1,13 +1,15 @@
 {
-  "description": "Native passage, authenticated finite causal placement, rank-three occupation fields, and uniform all-level source Green bounds with compatible nonzero subsequential Gaussian observation laws.",
+  "description": "Native passage, authenticated finite causal placement, and native occupation fields with uniform bounds and nonzero continuum distribution limits on the spherical carrier.",
   "files": {
-    "OCCUPATION_FIELD.md": "08a840a7abbdb81e900c8e18fbd7ce489c918c7822b39b1b554d2bfa55d58390",
-    "README.md": "1f6ea4a9ea449beaa1a0f4260051126467611c0178ed110c5e9a853f2eae7d66",
+    "OCCUPATION_FIELD.md": "60429c51d05884108cec218e0128e4676d8c0c09021a26872379b6ce7d7cf0e9",
+    "README.md": "05a4c0354aa67bac1ccb886db040fd0c64b61ee310ad1fa34441566bda2b11dc",
     "__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "causal_placement.py": "35b7ae06cfcbdb48ba3425eb9d7cb4697ed20f164810f4be6c4025b1cb5b7f30",
     "construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
+    "continuum_field.py": "822efc9ecf8cc626fc152b0ada5739769d075c639cf245543a6d6123f6d2a7d4",
+    "continuum_field_results.json": "7fdb4dafaea26551a313920e08148756aab2a84a17c93ed2e588b45c11002c2a",
     "occupation_field.py": "1037cea6fc36f73d04e1e95ac6cd1053108d4eefb80b9d06083f47107a7b3e7e",
     "occupation_field_results.json": "9baeb53d61c092213182d69ab78c7018a5fa24fe674ac68810716306172b90b7",
     "results.json": "317c3b8a6446f8a4b0b7ee2fac9fb2b199ca5b71a2f337b51853bab70ebe91c5",
@@ -15,6 +17,7 @@
     "test_ancestry_green.py": "a64550946c13a27ec4600ac5b97e2e94e6db7d17ca45850eb22b639ac464e88d",
     "test_causal_placement.py": "6ee76276f2437ecb989b19939808db35b50e65b37dff85eeba5810be64854c4c",
     "test_construction.py": "4b22e287824d6780a64a5b7c1883518138813a322e7896c7caceaa008c2d6171",
+    "test_continuum_field.py": "4d02f25427f6fffa7793f5e94f6c8c393b35c18d5fcb771ab952186cbefdad3a",
     "test_occupation_field.py": "68125797104ed44f34271dc6521a19b5d5f84c075f6391d2c2ab2605e449e130",
     "test_source_green.py": "3c5585e77a78cc2b736e1056cfee0145b082739241b7dc2942e24c832731e45b",
     "test_uniform_green.py": "029cc960f7fcab35c46a91a667a291d839b8313f042058b0002f029d28651c95",
@@ -23,6 +26,7 @@
   "reproduce": [
     "python -m model.physical_space_time --check model/physical_space_time/results.json",
     "python -m model.physical_space_time.occupation_field --check model/physical_space_time/occupation_field_results.json",
+    "python -m model.physical_space_time.continuum_field --check model/physical_space_time/continuum_field_results.json",
     "python -m pytest -q -W error model/physical_space_time"
   ],
   "schema": "oph.physical_space_time.manifest.v1"

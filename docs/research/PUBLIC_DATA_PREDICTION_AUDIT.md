@@ -243,6 +243,17 @@ python -m model.predictions.regional_optical --check model/predictions/regional_
 python -m model.predictions.optical_clock --raw-dir /tmp/oph-clock-public --check model/predictions/optical_clock_results.json
 ```
 
+The separate [minimal modular-transition audit](../../model/predictions/README.md#minimal-modular-transition-optical-attachment)
+tests every assignment of two optical transitions to the three positive gaps
+of the native three-mode generator. A shared frequency scale cancels. All
+nine ordered assignments miss each published Ar13+/Yb+ absolute ratio by more
+than `0.057`, under the declared total absolute ratio-error budget `1e-12`.
+The retained values come from King et al., accepted manuscript, Extended Data
+Table 1. This deterministic retrospective comparison treats neither quoted
+standard uncertainties as hard bounds nor mismatch as a p-value. It excludes
+that minimal direct-transition attachment; no atomic spectrum or universal
+modular-clock exclusion follows.
+
 ## Conditional dispersion: exact branch relation and actual sensitivity
 
 In natural units, write the candidate physical dispersion as

@@ -342,8 +342,13 @@ joint event instrument agree, including B-triggered field feedback. The
 passive two-A-tick renewal cycle has B-count mean two and variance 16;
 equating mean rates would discard observable clock fluctuations.
 Neither reduction identifies native attempts or event counts with modular
-flow. The [recovery contract](OBSERVER_RELATIVE_RECOVERY.md) specifies the
-remaining observational and clock correspondences.
+flow. A separate [active event clock](transfer_modular_probe/README.md)
+triggers one compiled modular step per incident event, using the generator
+of the native three-state transfer. Its controller pauses the native carrier
+during coherent probe service. Closed native histories select a faithful
+reference for that generator; passive repair itself has a strict modular
+automorphism obstruction. The [recovery contract](OBSERVER_RELATIVE_RECOVERY.md)
+states these access and scheduling conditions.
 
 The [native field identities](common_source/NATIVE_FIELDS.md) derive exact
 continuity, current noise and mean diffusion under the uniform scheduler.

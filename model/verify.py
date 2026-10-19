@@ -156,6 +156,12 @@ REPLAYS = (
      "model/relative_observer_geometry/clock_reconstruction_results.json"),
     ("model.record_laws.burn_in", None, "model/record_laws/burn_in_results.json"),
     ("model.predictions.regional_optical", None, "model/predictions/regional_optical_results.json"),
+    ("model.predictions.modular_optical", None, "model/predictions/modular_optical_results.json"),
+    ("model.physical_space_time.continuum_field", None,
+     "model/physical_space_time/continuum_field_results.json"),
+    ("model.relative_modular_dynamics.passive", None, "model/relative_modular_dynamics/passive_results.json"),
+    ("model.observer_time_fields.thermal", None, "model/observer_time_fields/thermal_results.json"),
+    ("model.transfer_modular_probe.event_clock", None, "model/transfer_modular_probe/event_clock_results.json"),
 )
 
 

@@ -45,6 +45,7 @@ python3 -m model.predictions --check model/predictions/results.json
 python3 -m model.predictions.bell_records --check model/predictions/bell_results.json
 python3 -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json
 python3 -m model.predictions.regional_optical --check model/predictions/regional_optical_results.json
+python3 -m model.predictions.modular_optical --check model/predictions/modular_optical_results.json
 
 # Produce an unfilled count template; the destination must not exist.
 python3 -m model.predictions --template /tmp/observer-counts.json
@@ -158,7 +159,7 @@ measurement are explicit apparatus choices. Both C and E are ordinary
 quantum instruments. Their separation is a test of the chosen record law,
 not a novel prediction distinguishing OPH from quantum mechanics.
 
-Neither new finite result currently has a valid comparison with publicly
+Neither finite instrument result has a valid comparison with publicly
 available physical data. The C/E protocol requires a specific coherent
 12-port preparation, native fair-coin repair, committed coin/current record,
 source-projector readout and complete attempted-trial counts; no matching
@@ -236,6 +237,48 @@ requires no conversion of a solver counter to physical seconds. A laboratory
 implementation must nevertheless implement and calibrate those operations.
 No spatial continuum, gravity or universal physical clock is inferred from
 this finite test.
+
+## Minimal modular-transition optical attachment
+
+The source-derived [three-mode transfer generator](../transfer_modular_probe/README.md)
+has energies `0`, `E_+=-log((25+sqrt(3))/30)` and
+`E_-=-log((25-sqrt(3))/30)`. Its positive gaps are `E_+`, `E_-` and
+`E_--E_+`. [modular_optical.py](modular_optical.py) tests the explicit
+hypothesis that the measured Ar13+ and Yb+ optical transitions correspond
+directly to two such gaps with **one common positive frequency scale**.
+That scale cancels in their ratio. A common Gibbs inverse temperature also
+cancels, since `-log(T3^beta/Tr(T3^beta))=beta H+constant`. The test uses the
+real logarithm of the positive transfer; it does not add integer harmonics,
+alternative logarithm branches, species-dependent gains or offsets.
+
+All nine ordered assignments, including the three same-gap assignments,
+are evaluated by exact outward intervals. Their distinct ratios are
+approximately `0.453856`, `0.546144`, `0.831019`, `1`, `1.203342`, `1.831019`
+and `2.203342`. King et al. report the dimensionless ratios
+`R40=1.05776938758748094(11)` and `R36=1.05776646273518748(13)` in
+[Extended Data Table 1 of the accepted manuscript](https://arxiv.org/pdf/2205.13053v2#page=20),
+published in [Nature 611, 43–47 (2022)](https://doi.org/10.1038/s41586-022-05245-4).
+These table values and their quoted standard uncertainties are retained in
+[the small data record](data/modular_optical_ratios.json); this comparison
+does not reanalyse the measured time traces.
+
+Under the declared **total absolute ratio error at most `1e-12`**, every
+assignment is disjoint from either observation. The closest ratio is one;
+the certified absolute separation exceeds `0.057` for each isotope. The
+error budget combines measurement and attachment errors and is part of
+the tested hypothesis. Quoted standard uncertainties are not converted
+into hard bounds or a significance claim, and the two observations are
+compared separately without an independence assumption. A `0.06` total
+ratio-error control does permit an assignment. Allowing separate arbitrary
+frequency scales would also remove the test's constraint.
+
+This is a retrospective failure of the minimal direct-transition assignment.
+The source does not derive atomic structure, identify these ions with the
+three-state code, or supply an optical detector mapping. It therefore neither
+excludes all modular clocks nor supplies a new discriminator against SM + GR.
+It records a concrete restriction on a proposed physical dictionary while
+keeping the source spectrum and its observer readout independent of the
+measured ratios.
 
 ## Inherited coupling comparison
 

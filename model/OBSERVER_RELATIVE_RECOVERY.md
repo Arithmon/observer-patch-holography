@@ -144,7 +144,7 @@ records that separate obligation.
 | Stationary state within a connected binary fixed-total sector | Unique attracting unread state `I/binomial(V,k)`; finite preparation has a derived error bound. | Conserved total and sector mixture remain initial/boundary data. Conditioning on preparation records changes the state. |
 | Local event-clock law | Derived by eliminating real no-local-tick repairs, retaining their remote evolution and finite timeouts. | Clock count is an observable parameter; modular and metric identifications require compatible intervention laws. |
 | Coherent preparation, phase interventions and readout | Declared observer services, with source implementations where explicitly attached. | Their availability is not derived from the committed native partial-injection grammar, which cannot create coherence from diagonal inputs. |
-| Effective modular descriptions | Fixed once their particular accessible algebra and faithful reference are fixed; an existing coherent preparation gives a local modular-phase readout under the ideal reference action. | The phase response is periodic, native repair has not been shown to advance the modular parameter, and the relation to continuing native events remains open. The stationary tracial state's modular flow is trivial. |
+| Effective modular descriptions | Native transfer determines a finite generator; closed histories give its faithful thermal references. An active observer advances a compiled modular step on each incident event. | The event controller, coherent probe and carrier-pause service are explicit. Passive repair cannot supply a nontrivial automorphism. Two native frequencies have no common exact phase period, but finite-precision reads have finite range. No laboratory duration follows. |
 | Finite spatial interpretation | The observer's current records recover an exact unitless rank-three Gram metric on the twelve-port carrier; all thirty native seams form its shortest-distance shell. Exact native-hop balls are retained across finite federation levels, with roughly quadratic growth over part of the tested range. | Refinement does not glue local frames: the cell-ancestry map is not record-derived and, at 0→1, sends 74/2,520 fine seams to non-seams and collapses 2; at 1→2, it sends 280/10,080 to non-seams and collapses 4. Existing inter-carrier routing uses supplied cell-centre directions and a local tangent-frame convention (`source_derived: false`); the local carrier Gram is record-derived. These finite, dimensionless graph results do not establish a 3D physical bulk, calibrated distances, or path-independent global frames. |
 | Native causal propagation | Under a fixed seam schedule and shared coins, exact dependency cones advance at most one graph seam per ordered repair event; two retained source witnesses attain the bound. | This load/coin result covers neither the coherent compiler nor adaptive/global services. It does not identify causal events with local clock ticks or modular parameter, and gives no calibrated continuum speed. |
 | Relativistic spacetime and laboratory mapping | Not established by this finite construction. | Joint observable/intervention correspondence, a controlled effective or scaling domain, and empirical calibration/discrimination. |
@@ -561,10 +561,34 @@ service errors are separate.
 The same frequencies reproduce the exact native current-bit covariance at
 integer Euclidean gaps. The probe executes its analytic continuation in the
 reconstructed code. This supplies a finite operational connection between
-source correlations and a modular effective description. It does not show
-that native waiting follows the unitary continuation. The native protocol
-experiment supplies an explicit measurable failure of commuting event and
-modular operations, making that boundary testable.
+source correlations and a modular effective description. The
+[event-driven extension](transfer_modular_probe/README.md#a-native-event-drives-the-modular-step)
+advances one fixed compiled `U(1)` at every incident event, including zero
+current, while the native carrier pauses during disjoint probe service.
+Two reads, current-controlled feedback, terminal fields, failures and timeouts
+share a complete law. The all-input source error is at most `1e-10` in half
+diamond norm; numerical diagnostics and physical service errors are separate.
+The two logarithmic frequencies have no common nonzero exact phase period.
+Finite precision and near recurrences limit a readable clock range.
+
+The [thermal construction](observer_time_fields/README.md) distinguishes open
+stationary histories from closed histories. The former reconstruct a ground
+state and fail the finite-temperature KMS identity. Equal-class heralding
+followed by class return after `L` native attempts gives the three-mode
+reference `S^L/tr(S^L)`; its modular parameter satisfies `s=t/L` for the
+compiled state action `exp(itH)`, where `H=-log(S)`. Herald failures remain
+in the complete source law. This conditional reference construction does
+not prepare a thermal quantum probe or turn waiting into unitary evolution.
+
+The [passive obstruction](relative_modular_dynamics/README.md#passive-repair-cannot-act-as-a-modular-automorphism)
+is quantitative: mixing toward the tracial state forbids any nontrivial
+invariant observer algebra from carrying modular automorphisms for all inputs.
+Even a Palm reference fixed by its own modular flow has a distinguishable
+two-read degree-history law under actual repair. In the active clock protocol,
+native event count `n` gives compiled parameter `t=n` and modular parameter
+`s=n/L` for reference `S^L/tr(S^L)`; the executed clock uses `L=1`.
+This includes its controller and services and is not an identity of the
+passive native dynamics.
 
 The [native-reference readout](native_modular_reference/README.md) makes the
 Palm frequency `log(5/4)` observable on the known orientation corner:

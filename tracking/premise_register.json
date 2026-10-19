@@ -6663,7 +6663,7 @@
           "records": "complete initial occupations and seam/current tape, projected to centered ancestral cell counts with the declared normalization",
           "controls": "no interventions during each occupation average; nested ancestral observation maps and auxiliary comparison geometry are specified",
           "clock": "all native attempts or the root carrier incident-clock seam set, with its exact clock correction and level-dependent normalization",
-          "regime": "observation-count Gaussian limit first; one common spatial subsequence for every fixed ancestral dictionary, not a uniform joint limit"
+          "regime": "Finite-graph observation-count Gaussian limit first, then a common spatial subsequence weakly in H^-2(S2); L2 smearings are mean-square extensions, not pointwise fields or a joint finite-count limit"
         },
         "native_regional_clock_field": {
           "carrier": "one twelve-port native carrier, with all nonempty port regions and their distinct incident-seam event sets",
@@ -6682,6 +6682,33 @@
           "controls": "one fixed N in 300*[642121496772644,642121496772646] for every consecutive candidate block including missing blocks; no extra filtering or replicas",
           "clock": "N consecutive A regional intervals per candidate calendar block; all 2021 endpoints/count choices and distinct regional pairs are charged",
           "regime": "retrospective conditional point-mass/range rejection using complete deposited block summaries and arbitrary block-removal allowance"
+        },
+        "passive_modular_obstruction": {
+          "carrier": "binary total-two native M66 and any untouched reference; unital invariant observer subalgebras",
+          "law": "admitted coarse-current laws under exogenous positive seam coverage, with only permitted law feedback",
+          "preparation": "arbitrary source/reference input; Palm degree-history witness uses its declared complete herald",
+          "records": "unread warm-up records for the norm theorem; complete degree-read, herald, waiting and timeout records for the witness",
+          "controls": "no coherent intervention during passive evolution; modular automorphisms serve as comparison channels",
+          "clock": "native attempt n or first moving event with finite cap; arbitrary deterministic modular reparameterization s(n)",
+          "regime": "all-input contraction obstruction and exact finite Palm stopped-history control"
+        },
+        "native_closed_thermal_reference": {
+          "carrier": "finite native incident transfer and its reconstructed history Hilbert space; same three-class attempt transfer S for the clock adapter",
+          "law": "uniform independent native seams and fair placements; pointwise marked strong lumping on all 66 binary configurations",
+          "preparation": "stationary uniform native input, disclosed full state and deterministic six-per-class herald for the three-class reference",
+          "records": "complete initial rejection, class words, return/failure and finite incident timeouts; returned laws identified only after explicit conditioning",
+          "controls": "full-state/class read and closed-history selection; no prepared coherent Gibbs state or passive unitary law asserted",
+          "clock": "L native attempts for three-class cycles, or L completed incident ticks for the full stopped transfer; beta=L",
+          "regime": "finite closed-cylinder trace/KMS identities, open-ground-state obstruction and complete independent endpoint oracles"
+        },
+        "active_event_modular_clock": {
+          "carrier": "native binary twelve-port clock carrier and separate four-address coherent probe/service region with untouched references",
+          "law": "uniform IID fair native C repair; same fixed compiled U(1)=exp(iH) per port-0 incident record, H=-log(S)",
+          "preparation": "executed stationary diagonal carrier and known coherent probe; all-input/reference composition bound separately proved",
+          "records": "two local incident seam/current marks, pointer outcomes, retained timeouts and padding; terminal native populations are execution audit access",
+          "controls": "record-triggered modular step including zero current; analysis undo and current feedback; native carrier paused throughout disjoint coherent service",
+          "clock": "incident event count fixes probe parameter t, s=t/L for reference S^L/Tr(S^L); cap counter only terminates",
+          "regime": "complete cap-one/two histories and half-diamond source error below 1e-10; exact phase independence and separate ensemble finite-window reading bound"
         }
       },
       "bindings": [
@@ -6716,6 +6743,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6764,6 +6792,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6819,6 +6848,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6875,6 +6905,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -6999,6 +7030,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7061,6 +7093,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7217,6 +7250,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7273,6 +7307,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7332,6 +7367,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7384,6 +7420,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7439,6 +7476,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7493,10 +7531,11 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
-          "scope": "Actual-source Green forms obey the all-level bound 4096/3 and compatible ancestral restrictions. A common spatial subsequence gives nonzero centered Gaussian field laws on the enlarging dictionary. Root-clock corrections vanish for each fixed dictionary, so both clocks share those limits.",
+          "scope": "Actual-source Green forms obey the all-level bound 4096/3. Compatible ancestral laws extend to a nonzero Gaussian random distribution in H^-2(S2) along a common spatial subsequence. Green, normalized attempt and incident fields share it; the harmonic tail second moment above J is <=(5463/2)/(J+1)^2.",
           "limitations": "The finite-graph CLT, stationary source family, full readback and spherical isoperimetric import are explicit. Compactness does not prove whole-sequence convergence, a unique or spherical Green operator, an interacting/CFT limit, physical three-space or Lorentzian dynamics. Three nonvanishing smearings are not spatial sites.",
           "sources": [
             {
@@ -7510,6 +7549,10 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "### Compatible subsequential field laws and their limits"
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### A continuum random distribution on the carrier sphere"
             }
           ]
         },
@@ -7545,6 +7588,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7603,6 +7647,7 @@
             "ordered_subsequence_count_at_incident_stopping_time",
             "positive_transfer_spectral_logarithm",
             "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
@@ -7620,6 +7665,143 @@
             {
               "path": "model/predictions/README.md",
               "anchor": "## Collective regional optical attachment"
+            }
+          ]
+        },
+        {
+          "id": "passive-modular-obstruction",
+          "domain": "passive_modular_obstruction",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "passive_all_input_modular_obstruction"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Mixing gives D((Psi_n tensor id_R)(rho_SR),(U_s tensor I_R)rho_SR(U_s* tensor I_R))>=D(rho_SR,tau tensor rho_R)-epsilon_n for every s. Hilbert-Schmidt contraction excludes passive modular dynamics on any nonscalar invariant observer algebra uniformly over inputs. A Palm degree-history witness retains failures and timeouts.",
+          "limitations": "Active controllers, conditioned ensembles and record-dependent phase mixtures have different contracts; no general obstruction to effective relativistic reconstruction is asserted.",
+          "sources": [
+            {
+              "path": "model/relative_modular_dynamics/README.md",
+              "anchor": "## Passive repair cannot act as a modular automorphism"
+            }
+          ]
+        },
+        {
+          "id": "closed-native-thermal-reference",
+          "domain": "native_closed_thermal_reference",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "same_three_class_faithful_thermal_reference"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Open stationary cylinders reconstruct a ground state and fail every finite-beta KMS condition. Closed histories give faithful T^L/Tr(T^L); the explicit equal-class herald gives S^L/Tr(S^L) for the compiled clock generator with return mass Tr(P^L)/11.",
+          "limitations": "Closure and readback are admitted access. Conditional errors need their success-probability divisor. This reconstructs a reference, not a coherent physical thermal preparation.",
+          "sources": [
+            {
+              "path": "model/observer_time_fields/thermal.py",
+              "anchor": "def class_cycle("
+            }
+          ]
+        },
+        {
+          "id": "incident-driven-modular-clock",
+          "domain": "active_event_modular_clock",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "complete_incident_driven_modular_clock"
+          ],
+          "requires": [
+            "same_three_class_faithful_thermal_reference"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "One fixed source word per incident event advances the dual modular state action. Complete two-tick feedback/readout laws include timeouts and disturbed continuation, with half-diamond source error below 1e-10 and separately charged source service.",
+          "limitations": "Carrier pauses and coherent apparatus are explicit; passive repair is not unitary. Exact phase independence is not unlimited finite-precision resolution. Neither seconds nor atomic transitions are identified.",
+          "sources": [
+            {
+              "path": "model/transfer_modular_probe/README.md",
+              "anchor": "## A native event drives the modular step"
             }
           ]
         }
@@ -7820,7 +8002,7 @@
             "records": "Form centered ancestral-cell occupations from the complete disclosed tape; nested normalized observation matrices obey exact restriction identities.",
             "controls": "Use fixed linear observation restrictions without modifying source repair; the auxiliary flat comparison proves an inequality, not a replacement dynamics.",
             "clock": "Insert each graph Laplacian and root incident seam set into the exact clock-corrected formula before applying all-level Green estimates.",
-            "regime": "Take the finite-graph count CLT first, then compactness and a common diagonal spatial subsequence; explicit vanishing clock bounds hold for each fixed dictionary."
+            "regime": "Take the finite-graph count CLT first, then common ancestral covariance subsequence. Uniform L2 bounds extend tests and harmonic tails give Gaussian tightness in H^-2(S2); no physical metric or whole-sequence identification follows."
           },
           "sources": [
             {
@@ -7862,6 +8044,30 @@
             {
               "path": "model/predictions/regional_optical.py",
               "anchor": "def evaluate("
+            }
+          ]
+        },
+        {
+          "from": "closed-native-thermal-reference",
+          "to": "incident-driven-modular-clock",
+          "fact": "same_three_class_faithful_thermal_reference",
+          "coordinate_maps": {
+            "carrier": "Use the same native marked three-class attempt transfer P and reversible S in the four-address spectral code; this is a reconstructed history representation, not equality with native M66.",
+            "law": "Both use the native uniform seam/fair placement transfer; closed-history conditioning fixes the reference while the separate source compiler implements its dual action.",
+            "preparation": "The closed ensemble supplies sigma_L mathematically; the probe uses its declared coherent preparation and does not claim to prepare that Gibbs state.",
+            "records": "Retain herald/return failure in the reference protocol and timeouts/padding in the active protocol; these are linked protocols, not one unconditioned experimental dataset.",
+            "controls": "Admit the complete closed-history read and equal-class filter separately from active coherent services, current feedback and carrier-pause scheduling.",
+            "clock": "For H=-log(S), sigma_L has log sigma_L=-L H-constant, so the dual modular state action at s equals exp(i L s H); event count t sets s=t/L.",
+            "regime": "The exact finite reference identity identifies the target generator; the independently certified complete source error controls its active implementation. No passive unitary or physical duration is inferred."
+          },
+          "sources": [
+            {
+              "path": "model/observer_time_fields/thermal.py",
+              "anchor": "def class_cycle("
+            },
+            {
+              "path": "model/transfer_modular_probe/README.md",
+              "anchor": "## A native event drives the modular step"
             }
           ]
         }

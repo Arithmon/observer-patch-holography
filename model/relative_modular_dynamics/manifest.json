@@ -1,15 +1,19 @@
 {
   "description": "Native continuing event records, Palm modular reference, invariant protocol algebra and operational covariance tests.",
   "files": {
-    "README.md": "ab9b6c1884ff51e9954be8a53b3f7ecc352701c1ab4ba7ecff3202b604cc09c3",
+    "README.md": "2276e1ae20cbe9fe817c10e032638367ed31c2ca4948f6128ba80943c6a60a5b",
     "__init__.py": "f201a67b9b7787025793d212236054dca7c9b963153073afedc3b8f53c056673",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "construction.py": "edf902afe4a3e06db6210e066b6e143980a4303b9fdb9607973b35db336967fc",
+    "passive.py": "d82e590260f0a91ea7f0774a2be7785f03967ce7af79f5f516bdaf1d9470f6e0",
+    "passive_results.json": "b94f799c0102e6e2cb8419176ed80d9bc18d14d9b6ad6f6be4e0ff24f5c244eb",
     "results.json": "9e12fe43c286a16e07fd0e156738d85991e66504037d51bc487333e24470b937",
-    "test_construction.py": "650283dd1fc23c5392ef51fe4933451bd8668e0fa5777c1ded3b91245417a959"
+    "test_construction.py": "650283dd1fc23c5392ef51fe4933451bd8668e0fa5777c1ded3b91245417a959",
+    "test_passive.py": "477fd617c859014a452b3c3ba80b47fc9a6b292be898e73c329bdeef2ce6447f"
   },
   "reproduce": [
     "python -m model.relative_modular_dynamics --check model/relative_modular_dynamics/results.json",
+    "python -m model.relative_modular_dynamics.passive --check model/relative_modular_dynamics/passive_results.json",
     "python -m pytest -q -W error model/relative_modular_dynamics"
   ],
   "schema": "oph.relative_modular_dynamics.manifest.v1"

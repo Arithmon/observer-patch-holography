@@ -24,7 +24,7 @@ two-particle configurations. The latter retains remote repairs, exclusion,
 cross-carrier feedback, every initial readout label and finite-cap timeout.
 It does not use a one-particle or mean-density closure for higher moments.
 
-The [finite-density screen extension](REFINEMENT.md) now connects this positive
+The [finite-density screen extension](REFINEMENT.md) connects this positive
 field transfer to the actual levels-three/five incident-clock comparison.
 At Bernoulli density `1/3`, an exact degree-two exclusion dual certifies the
 complete four-bit readout and every timeout prefix on the common source
@@ -134,7 +134,7 @@ not be symmetric or be field projectors. This extension does not identify
 the effective hidden trajectory with the source's individual attempt times.
 
 The identity is exact for the stated stationary preparation and the
-record-induced conditional states, which are already represented by the
+record-induced conditional states, which are represented by the
 initial projectors. It is not a claim that an arbitrary other preparation
 has the same untransformed boundary vectors. Likewise, boundary-straddling
 interventions or fields outside the clock region do not automatically
@@ -172,7 +172,7 @@ H_m = sum_(j=1)^m (I-T)^j/j,
 when `T >= alpha I > 0`. This is a norm-controlled source reconstruction
 in incident-clock units. `exp(-n H)=T^n`, with the same local read and
 intervention insertions, reproduces the complete declared Euclidean field
-histories, not just an energy gap. The Hamiltonian will
+histories. The Hamiltonian will
 generally be nonlocal in the original graph coordinates because it includes
 the eliminated remote waiting histories.
 
@@ -191,6 +191,157 @@ The inserted slots are not incident repair attempts. Their physical cost,
 attempt timestamps and finite-cap timeout probabilities are not invariant.
 Changing relative seam rates, or doing other work during a holding slot,
 is outside this identity.
+
+## Which native histories are thermal
+
+[thermal.py](thermal.py) distinguishes the open stationary observer from a
+closed-history thermal ensemble. Both use the source-derived transfer above.
+No target Hamiltonian, temperature fit or independent oscillator is added.
+The exact producer retains original/final source configurations, closure
+failure and waiting timeout; an independent endpoint/coin/current oracle
+checks every entry in the short capped experiments.
+
+For the open stationary field process, the reconstructed reference is the
+vector `Omega=1/sqrt(66)`, with `T Omega=Omega` and `H Omega=0`. This is a
+ground-state functional on the transfer algebra. It is different from the
+native working-state density `I/66`, and from the faithful transfer density
+`T/Tr(T)`. For the admitted centered local occupation `F=n_0-1/6`, exact
+native histories give
+
+```text
+C(n)=<Omega,F T^n F Omega>,
+C(0)=5/36,          C(1)=115/1188,
+C(0)-C(1)=25/594 > 0.
+```
+
+Fix the Heisenberg convention `alpha_t(A)=exp(itH) A exp(-itH)`. The
+finite-beta KMS boundary requires
+`omega(F alpha_(i beta)(F))=omega(F^2)`. Since `T Omega=Omega`, its two
+sides here are `C(beta)` and `C(0)`. Positive spectral calculus gives
+
+```text
+C(0)-C(beta) >= min(beta,1) * 25/594 > 0,     beta>0.
+```
+
+For `0<beta<=1`, use `1-lambda^beta>=beta(1-lambda)`; for `beta>=1`, use
+`lambda^beta<=lambda`, with `0<lambda<=1`. Thus the dynamical algebra
+containing this field is not finite-temperature KMS for this `H`. The
+excited spectral weight has no reverse ground-state transition weight.
+This does not contradict positive Euclidean reconstruction or exclude a
+different regional algebra/flow from having a thermal interpretation.
+The [finite Gibbs-KMS theorem](../../Lean/QFT/StructuralInheritance.lean)
+and the usual [spectral detailed-balance criterion](https://arxiv.org/html/1905.13542)
+apply to their specified state and time convention; stationarity alone
+supplies neither conclusion.
+
+Reflection positivity remains constructive. Write native half-history
+vectors as `v=W_K 1`, where each field and internal-seam insertion commutes
+with `D`. Their reconstructed Gram matrix, with zero or one separating
+step, is
+
+```text
+G_ij=(p/66) v_i^* D^-1 K^r v_j,       r=0 or 1.
+```
+
+Similarity to `T` makes this a positive Gram form for every such finite
+family. The executable checks four nontrivial half histories, both forms,
+and all fifteen principal minors of each matrix exactly. The complete
+configuration kernel `K` is nonsymmetric; this weighted reconstruction
+does not assert ordinary classical detailed balance on all configurations.
+
+### A Gibbs reference from native closed histories
+
+Save the full initial binary source configuration, execute `L` completed
+incident intervals, and compare the final configuration with the saved one.
+This full-state closure service exceeds the primitive local field interface.
+Start from the declared uniform source density. Before conditioning, retain
+every field word and the `return` or `different` result. For return events,
+
+```text
+Pr(return)=Tr(K^L)/66=Tr(T^L)/66,
+Pr(word | return)=Tr(F_L T ... F_1 T)/Tr(T^L),
+rho_L=T^L/Tr(T^L)=exp(-L H)/Tr(exp(-L H)).
+```
+
+The first identity is a native path sum with equal initial/final indices.
+Each local projector commutes with `D`; similarity and trace cyclicity give
+the second identity. Therefore inverse temperature `beta=L` comes from the
+declared closed-history length. The faithful reconstructed Gibbs functional
+satisfies the full finite algebraic KMS boundary. The code checks the exact two-sided inverse and boundary
+identities for local fields and the existing internal repair. It also checks
+the Euclidean wrap `C_L(n)=C_L(L-n)` directly from native matrices. This
+constructs a reference reproducing the admitted closed cylinders; local
+records do not uniquely determine every density on the full matrix algebra.
+It does not prepare `rho_L` as a native quantum working state.
+
+If each interval has at most `h` native attempts, all waiting timeouts stay
+in the output. The exact lost completion mass is
+`delta=1-(1-(7/10)^h)^L`. The complete capped law is within `delta` of the
+uncapped law, including failures. Its conditional return-word error is at
+most `min(1,delta/p_return)`. Return occurs with probability at least `1/66`;
+rare-event normalization is charged. Conditioning only on equal **local**
+loads gives a different reference and different field words. Native feedback
+is preserved by the commuting-insertion dictionary, but its extra repair
+is charged and its disturbed history is not the unforced Gibbs ensemble.
+
+The source exclusion gap and `D<=19/30` give the rational nonconstant bound
+`T<=35237/38000` on `Omega`'s orthogonal complement. Consequently
+
+```text
+dist(rho_L, |Omega><Omega|)
+ <= 65 r^L/(1+65 r^L),       r=35237/38000.
+```
+
+Length 147 suffices for error `1/1000` in this reconstructed state. This is a
+closed-loop, low-temperature limit, not a physical duration. If a finite
+native warm-up replaces the exact initial density with error `epsilon`, the
+complete retained law inherits `epsilon`; conditioned statistics require a
+separate normalization allowance, for example `2 epsilon/(p-epsilon)` when
+the reference success probability is `p>epsilon`.
+
+### The same three-class reference as the compiled modular probe
+
+The [compiled transfer probe](../transfer_modular_probe/README.md) uses the
+native **attempt-clock** token-separation chain, a different clock and
+representation from the two-port incident transfer. Its row matrix and
+stationary class weights are
+
+```text
+P=[[14/15,1/15,0], [1/15,9/10,1/30], [0,1/6,5/6]],
+pi=(5/11,5/11,1/11),    S3=diag(pi)^1/2 P diag(pi)^-1/2.
+```
+
+The actual 66 configurations split into classes of sizes `(30,30,6)`.
+With full initial-configuration access, accept a fixed six configurations
+per class, such as the first six in lexicographic order. This deterministic
+herald succeeds with probability `3/11`, gives uniform initial class weights,
+and retains its `8/11` rejection. It uses no added randomizer or reset.
+Existing marked strong lumping holds for each configuration, so this
+within-class bias does not change the subsequent class law.
+
+After `L` actual native attempts, condition on return to the **initial
+class**, with every failed return retained. The unnormalized class weight
+before evolution is `1/11`; hence combined success is `Tr(P^L)/11` and the
+closed class cylinders are exactly the Gibbs trace of
+`sigma_L=S3^L/Tr(S3^L)`. Independent endpoint enumeration verifies every
+class word for lengths one, two and three, using both the first and last
+six configurations per class. Omitting the initial herald changes the
+conditional words. At `L=1`, combined success is `8/33` and
+`sigma_1` has eigenvalues `3/8,(25+sqrt(3))/80,(25-sqrt(3))/80`, the same
+reference as the compiled probe. It is derived on this explicit source
+history contract, without claiming an automatic restriction of the
+66-dimensional incident Gibbs state.
+
+For `H3=-log(S3)`, the dual modular state action of `sigma_L` is
+`rho -> exp(+is L H3) rho exp(-is L H3)`. The active probe's `U_k=exp(+ikH3)`
+therefore has modular parameter `s=k/L`. This parameter relation does not
+make passive native attempts unitary or supply a coherent Gibbs preparation
+in the work code. Full-state herald access and class-read/return access are
+explicit services. Neither loop construction identifies Kelvin, seconds,
+a spacetime boost, a continuum field theory or a natural apparatus.
+
+Reproduce the additional certificate with
+`python -m model.observer_time_fields.thermal --check model/observer_time_fields/thermal_results.json`.
 
 ## Why the clock choice matters
 
@@ -211,7 +362,7 @@ sparse integer source operators and directed integer-grid propagation.
 Every rounded component is a lower bound on the corresponding exact
 unnormalized probability. Lost mass is accounted for across the entire
 branch tree, including initialization and feedback. The final deficit thus
-bounds the complete classical output's L1 error, not merely a fitted moment.
+bounds the complete classical output's L1 error.
 No floating eigensolve or floating normalization contributes to this bound.
 
 For cap `h` on each of four intervals, the ideal complete timeout probability
@@ -230,7 +381,7 @@ timeout service; the completed incident-clock law requires neither.
 
 The capped protocol uses at most `4h+1` native attempts, four scheduled
 field reads, two disclosed initial bits, and at most one feedback attempt.
-Its incident clock uses at most five ticks; remote attempts are still
+Its incident clock uses at most five ticks; remote attempts are
 charged as source operations. Processing a signed incident current is a
 declared record-access service. The implementation also reports its finite
 configuration and terminal-record storage. These are software/resource
@@ -257,7 +408,7 @@ clock and global-attempt field packets.
 
 For the elementary twelve-port source, the
 [record-reconstructed geometry](../relative_observer_geometry/README.md)
-now assigns an exact unitless finite metric to the same seam carrier, and the
+assigns an exact unitless finite metric to the same seam carrier, and the
 [effective-field packet](../native_effective_fields/README.md) checks that its
 native exchange terms lie on that metric's shortest shell. The geometric
 calibration preparation and the continuing incident-clock field histories

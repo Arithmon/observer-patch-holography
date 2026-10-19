@@ -27,9 +27,10 @@ repair history. Incident-clock sampling has a calculable spatial correction.
 Its projection onto the actual carrier's rank-three band gives exact axial
 and transverse variances in the local incident clock. Eliminating internal
 variables on the existing spherical screens gives a controlled native Green
-operator. An all-level bound yields nonzero compatible subsequential Gaussian
-laws on nested ancestry readouts; normalized attempt and incident clocks share
-those limits. Four source levels also have certified numerical covariances.
+operator. An all-level bound gives a nonzero Gaussian random distribution
+in `H^-2(S²)` along a common spatial subsequence; normalized attempt and
+incident clocks share that limit. Its harmonic tail has a uniform bound.
+Four source levels also have certified numerical covariances.
 Whole-sequence uniqueness and a physical continuum identification are unproved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
@@ -82,6 +83,15 @@ error for every admissible current table. A reversible representation of
 repair retains complete finite instrument histories, records and feedback.
 The detailed claims and their scope are in the
 [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md).
+
+An [active event clock](transfer_modular_probe/README.md#a-native-event-drives-the-modular-step)
+uses each native incident event, including zero current, to trigger one fixed
+compiled modular step. Its generator comes from the native three-state
+transfer. Closed-history conditioning derives a faithful thermal reference
+for that same generator. This is an implemented observer protocol with
+declared coherent services and scheduling; passive repair itself cannot act
+as a nontrivial modular automorphism. No seconds or atomic transition are
+identified by this construction.
 
 The twelve-port result does not by itself describe an extended physical
 space. That stronger claim needs observations over larger operational domains

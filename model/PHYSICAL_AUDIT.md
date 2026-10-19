@@ -42,7 +42,7 @@ overturned by successful finite native-carrier calculations or by this audit.
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
 | Space and fields | Current preparations recover the carrier response and a rank-three slow-band Gram. Long observation averages of the actual binary repair process give a Gaussian field with a derived Green covariance and quadratic action. | Selecting the operational metric and length calibration, realizing the observation access, and establishing the physical spatial domain. The full inverse-response Gram has rank eleven. |
-| Time | Complete local stopped instruments, finite count uncertainty and same-history clock comparisons; modular actions for specified algebra/reference pairs. | A joint signal/clock correspondence with effective proper duration. The stationary tracial state has trivial modular flow; a chosen nontrivial reference does not prove native events advance its modular parameter. |
+| Time | Complete local stopped instruments and clock comparisons. Incident events drive fixed compiled modular steps on an explicitly controlled probe; closed histories select a faithful reference for its native-derived generator. | The controller, coherent services and carrier-pause schedule are declared. Passive repair is contractive and cannot implement nontrivial modular automorphisms on an invariant observer algebra. Proper duration remains unidentified. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
 | Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 
@@ -172,8 +172,10 @@ A geometric comparison proves the normalized Green bound `4096/3` at every
 refinement level. The root incident-clock correction is at most
 `5/(12*4^level)` on the twenty-face dictionary. Nested ancestry readouts
 therefore admit compatible Gaussian subsequential limits shared by both
-clocks, with three nonvanishing smearings. This is an analytic result about
-the actual combinatorial source continuation, not a fit to four levels.
+clocks, with three nonvanishing smearings. Density and a uniform harmonic-tail
+bound extend them to a Gaussian random distribution in `H^-2(S²)`.
+The auxiliary spherical test measure supplies no physical metric. This is an
+analytic result about the actual combinatorial source continuation.
 A unique whole-sequence limit, a conformal or interacting field theory and
 Lorentzian propagation remain unproved. The supplied square torus is a
 separate iterated fixed-band free-field example.

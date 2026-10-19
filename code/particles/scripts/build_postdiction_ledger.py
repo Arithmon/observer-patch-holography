@@ -6935,7 +6935,11 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "operational domain. The [observed-Universe protocol](research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md) "
         "sets out comparison against published observations; building an experimental "
         "realization of the carrier is not a prerequisite. Common states, records, "
-        "spatial and temporal maps, field interpretation and uncertainty bounds are required.")
+        "spatial and temporal maps, field interpretation and uncertainty bounds are required. "
+        "The [modular optical assignment audit](../model/predictions/README.md#minimal-modular-transition-optical-attachment) "
+        "compares every direct three-mode gap assignment with published absolute clock ratios "
+        "under a shared-scale and bounded-error hypothesis. Its retained conditional rejection "
+        "is retrospective; it supplies neither an atomic derivation nor a frozen prediction.")
     add("")
     tilt = ledger["retrospective_tilt_comparison"]
     pooled = tilt["pooled"]

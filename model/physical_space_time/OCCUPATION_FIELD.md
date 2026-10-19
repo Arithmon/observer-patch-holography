@@ -544,6 +544,77 @@ a conformal theory, or reconstruct causal Lorentzian dynamics. A whole
 sequence convergence estimate and that physical reconstruction remain
 separate obligations.
 
+### A continuum random distribution on the carrier sphere
+
+The compatible law extends beyond the countable ancestry dictionary.
+Let `mu` be normalized area on the auxiliary flat icosahedron, pushed onto
+the unit sphere by radial projection, and let `omega=dOmega/(4pi)`.
+Every level-`l` cell has `mu`-mass `1/(20*4^l)`. Its normalized indicators
+are therefore an orthonormal dictionary, with the same child isometry
+`J` used above. Their union is dense in `L2(mu)`: their diameters tend to
+zero and continuous functions are dense. Centering removes the constant.
+The radial Jacobian gives
+
+```text
+dmu/domega = pi |x|^3/(5 a0 r),       1/2 < dmu/domega < 2.
+```
+
+Indeed `4/9<a0<1/2`, `r>3/4`, `r<=|x|<=1` and `3<pi<22/7` give the
+stronger lower and upper bounds `27/40` and `66/35`. These are comparison
+measures for expressing native readouts, not a selected physical metric.
+The finite Green covariance, extended by the ancestry projection to
+`L2(mu)`, has norm at most `C=4096/3`. The bound for the **full** fine
+dictionary is obtained by setting `k=l` above:
+
+```text
+||C_incident,l-G_l|| <= (1+54*2^l)/(132*4^l) -> 0.
+```
+
+Thus all three normalized covariance forms have the common bound
+`M=C+5/12=5463/4`; their constant mode vanishes. Uniform boundedness
+extends the common subsequential covariance uniquely from ancestral step
+functions to all `L2(mu)` tests. For example, approximating `f,g` by their
+ancestry projections changes the covariance by at most
+`M (||f-P_k f|| ||g|| + ||P_k f|| ||g-P_k g||)`, uniformly in finer levels.
+This proves convergence on every fixed pair of square-integrable tests.
+
+Use real spherical harmonics normalized in `L2(omega)` to define the
+distribution norm `||X||_-2^2=sum_(j,m) [1+j(j+1)]^-2 |X(Y_jm)|^2`.
+Their orthogonality and eigenvalues are the standard
+[spherical-harmonic identities](https://dlmf.nist.gov/14.30).
+Each coefficient has variance at most `2M`. For `j>=1`,
+
+```text
+(2j+1)/[1+j(j+1)]^2 <= 1/j^2 - 1/(j+1)^2,
+E ||(I-P_<=J) X_l||_-2^2 <= (5463/2)/(J+1)^2.             (D)
+```
+
+The omitted `j=0` coefficient is zero by conservation. Finite harmonic
+blocks have convergent Gaussian covariances along the same subsequence.
+Bound (D) controls the remaining norm uniformly. To see tightness directly,
+choose cutoffs `J_k` so that the sum of the Markov bounds for tails larger
+than `1/k` is arbitrarily small, and bound the first finite block. The
+intersection of these constraints has compact closure in `H^-2(S2)`.
+Consequently the finite Gaussian fields converge weakly, along that
+subsequence, to a centered **Gaussian random distribution in `H^-2(S2)`**.
+The Green, attempt-clock and root-incident-clock fields share its law.
+Its covariance on `L2(mu)` is the preceding extension. In particular the
+three nonzero coarse smearings persist as mean-square limits of smooth
+test observations; they need not be pointwise pairings of a distribution
+with discontinuous cell indicators.
+
+There is also an exact spatial approximation budget. Transport the three
+flat coordinate functions to the sphere. Uniform triangle integration
+gives `sum_i ||f_i-P_l f_i||_L2(mu)^2=a^2/(12*4^l)`.
+Their summed mean-square field error is at most `1821/(14*4^l)` under the
+common bound `M`. The executable independently checks triangle moments and
+full native port-Laplacian covariances for these continuous readouts.
+Neither these auxiliary coordinates nor (D) establish three physical
+spatial dimensions. This result supplies a continuum distribution on the
+given carrier topology, without a pointwise field, an `L2` random function,
+a unique continuum covariance, conformal invariance or Lorentzian dynamics.
+The observation-count limit precedes spatial refinement throughout.
+
 ## A quantitative spatial-limit criterion
 
 For a graph family indexed by `a`, supply a positive spatial scale `s_a`,
