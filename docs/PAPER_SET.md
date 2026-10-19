@@ -35,10 +35,40 @@ under their declared services and inputs:
 - an exact classification of the quantum record laws compatible with the
   native seam rule, and a frozen instrument comparison that reads their
   distinguishing coherence, with a complete-count rejection rule and an
-  explicit no-data verdict.
+  explicit no-data verdict;
+- two overlapping observers on one continuing native process whose
+  preparations, incident clocks, current-derived fields and record-triggered
+  feedback share one complete law, with a coherent extension on all 4,356
+  matrix units and a source-compiled implementation on all 512 code
+  addresses within 1e-11 of the ideal history;
+- identification of all nine record-law coordinates with compiled source
+  probes, with an error bound carried to joint clock, current and
+  interference records;
+- the local Liouville action `H_native = sum_e (I-Phi_e)`, a native
+  dependency bound of one seam per ordered repair event, local and active
+  event clocks with an inverse clock prediction, federations of 20, 80 and
+  320 carriers, complete-output distances below 0.000382 and 6.656e-9
+  between the 15,360- and 245,760-port screens, and a coherent screen
+  observer within 7.779e-10 of either full-screen output;
+- on the refining spherical screens, one positive continuum spatial
+  generator `A` whose regular strongly local Dirichlet form has spectral
+  dimension two on the two-dimensional source, Gaussian density limits with
+  covariance `exp(-|tau-u|A)`, admitted waves of speed at most `1/sqrt(2)`
+  in the flat comparison distance, a return-reference entropy deficit at
+  most `2025/(64V)` and a controlled repair response `2(I-exp(-tau A))f`;
+- a continuing-carrier protocol with 379 discarded attempts before each of
+  3,927 trials and an exact-source wrong-candidate probability at most 3/400,
+  and retrospective public-data comparisons: the Hensen Bell replay rejects a
+  local factorized reading of the diagonal branch, the conditional scalar tilt
+  lies at the lower 0.612% position of the ACT DR6 combined posterior, and a
+  direct count-to-phase attachment to published optical-clock ratios is
+  rejected under its readout assumptions.
 
+The shared-operational-meaning row has finite instances in the
+overlapping-observer correspondence and the matched screen comparisons;
+interpretation maps along a physical refinement family are not constructed.
 The effective quantum-field, classical and gravitational rows and independent
-physical comparison are open. The [construction guide](../model/CONSTRUCTION.md#remaining-construction-work)
+prospective physical comparison are open. The [construction guide](../model/CONSTRUCTION.md#remaining-construction-work)
 lists the connections that remain to be built on the same process.
 
 ## Active papers

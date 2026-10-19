@@ -47,6 +47,12 @@ intemporelle et les horloges qu’elle contient.
   continu à mesure lisse exécute quatre lectures du même état perturbé,
   compile deux lois d’enregistrement quantiques de la réparation native et protège un qubit codé
   par une récupération commandée par les registres, sous des services déclarés.
+  Deux observateurs dont les régions se recouvrent lisent leurs champs et
+  leurs horloges dans une même histoire continue et s’accordent sur une même
+  loi complète. Des supports joints forment des écrans allant jusqu’à
+  245 760 ports, et sur un écran qui se raffine une seule histoire de
+  réparation définit un champ continu aux fluctuations gaussiennes, dont les
+  ondes se propagent à vitesse finie.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de
@@ -91,22 +97,54 @@ Plus la valeur est basse, mieux c’est. La prévision qui utilise le registre
 conservé bat celle qui ne connaît que l’action choisie et celle dont les
 registres sont mélangés au sein d’une même action ; les valeurs exactes sont
 395/7392, 140/2013 et 12875/150304. Le [répertoire du modèle](model/README.md)
-contient l’implémentation, ses tests et ses résultats conservés. Son
-expérience conjointe la plus forte est le
+contient l’implémentation, ses tests et ses résultats conservés. Ses
+expériences conjointes comprennent l’[observateur cohérent sur écran](model/coherent_screen_observer/README.md),
+qui fait traverser à un qubit logique et à une référence intacte des tics
+d’horloge natifs et une rétroaction commandée par les registres sur des
+écrans de 15 360 et 245 760 ports, et le
 [processus commun en interaction](model/common_source/README.md), dans lequel
 le flux électrique quantique, des fermions chargés et un champ scalaire
 partagent un même registre fini avec des instruments complets, des registres
-conservés et une rétroaction native ; l’action du champ et la préparation sont
-des entrées fournies. Le
+conservés et une rétroaction native ; l’action du champ et la préparation de
+ce processus sont des entrées fournies. Le
 [guide des lois de réparation](model/CANDIDATES.md) montre quelles parties de
 la loi de réparation sont imposées et lesquelles restent libres : la règle
-classique découle de quatre exigences, et ses lois d’enregistrement
-quantiques forment une seule famille dont une unique expérience
-d’interférence distingue les membres. Le
+classique découle de quatre exigences, ses lois d’enregistrement quantiques
+forment une seule famille à cinq multiplicateurs de cohérence, une seule
+expérience d’interférence lit la cohérence qui sépare la loi exécutée C de la
+loi de comparaison E, et neuf mesures compilées identifient la table entière. Le
 [paquet de prédictions](model/predictions/README.md) fixe cette expérience et
 sa règle de rejet par comptage avant tout comptage indépendant, et le
 [guide de construction](model/CONSTRUCTION.md) énonce les critères
 d’acceptation et les connexions qui restent à construire.
+
+Un seul support à douze ports relie les observations spatiales et
+d’horloge : les registres de courant retrouvent la géométrie locale, et des
+lois exactes de corrélation temporelle reconstruisent l’espace de Hilbert
+cyclique d’un détecteur et ses modes de transfert visibles. La réparation fixe
+une action de fluctuation du courant et une loi de probabilité reliant les
+passages incidents aux tics de mouvement. Des exécutions conservées testent
+cette conversion contre une horloge hôte. Sur des écrans sources plus grands,
+les prédictions de champ et de rétroaction valent aussi à occupation
+conservée fixe, sans occupations de Bernoulli préparées indépendamment. Deux
+observateurs qui partagent un port d’un même support lisent leurs champs,
+leurs horloges locales et leur rétroaction dans une même histoire continue,
+et l’exécution native directe comme une description effective donnent la
+même probabilité à chaque registre conjoint ; une version construite à partir
+d’impulsions sources compilées reproduit cette histoire sur les 512 adresses
+de code. Sur les écrans sphériques qui se raffinent, une seule histoire de
+réparation donne un [opérateur de champ continu](model/physical_space_time/OCCUPATION_FIELD.md)
+dont les champs gaussiens, la décroissance et les ondes vivent sur l’écran
+bidimensionnel lui-même. Le [bilan de récupération](model/OBSERVER_RELATIVE_RECOVERY.md)
+sépare ces résultats finis d’un espace-temps relativiste étendu et d’une
+identification de laboratoire calibrée. Une
+[relecture de données publiques de Bell](model/predictions/BELL_RECORDS.md)
+teste la limite de l’interprétation de la branche diagonale comme modèle
+complet de réponse locale ; elle ne teste pas la construction quantique
+complète. L’[audit des données publiques](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+compare l’inclinaison scalaire conditionnelle aux chaînes postérieures d’ACT DR6
+et teste un rattachement direct des comptages d’horloge natifs aux rapports
+publiés d’horloges optiques.
 
 Le [bilan empirique](docs/EMPIRICAL_STATUS.md) distingue les comparaisons
 avec les mesures de la sélection de la règle de réparation native. La réparation
@@ -127,7 +165,7 @@ les données conservées ne déterminent pas la loi d’enregistrement native.
   [Algèbres finies d’événements quantiques](extra/machine_checked_finite_event_algebras.pdf).
 - **Trois directions spatiales.** Le support fixe à douze ports et sa règle de
   réparation moyenne donnent une réponse lente exactement tridimensionnelle de
-  géométrie euclidienne, la brique géométrique de l’espace d’un observateur.
+  géométrie euclidienne, que retrouvent les registres de courant d’un observateur.
   [Construction du support](code/a5_closure/README.md).
 - **La symétrie de jauge.** Sous des prémisses énoncées de réponse réversible
   complète et de transport entre observateurs, la construction impose

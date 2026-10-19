@@ -58,10 +58,13 @@ states what inter-observer agreement must preserve.
 
 ## The executable specification
 
-The specification consists of the twelve-port carrier with its federation
-and spherical support, the native repair law, the observer algebra of states,
-preparations, measurements, retained records and feedback, the declared
-services, and the closure inputs P and N. It is implemented and run in the
+The specification consists of the twelve-port carrier, the native repair
+law, the observer algebra of states, preparations, measurements, retained
+records and feedback, the declared services, and the closure inputs P and N.
+One carrier supports the local observer, clock and geometry results; the
+spherical federation, whose cross-carrier routing is a declared convention,
+is the construction used for larger observer domains and refinement. The
+specification is implemented and run in the
 [model directory](../model/README.md). Its status is a candidate, judged by
 the [acceptance criteria](../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 of the completion target.

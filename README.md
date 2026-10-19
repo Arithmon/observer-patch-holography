@@ -42,6 +42,11 @@ and the clocks inside it.
   measured response. Its continued smooth protocol executes four reads on
   one disturbed state, compiles two quantum record laws of the native repair, and preserves
   an encoded qubit through record-selected recovery under declared services.
+  Two observers whose regions overlap read their fields and clocks from one
+  continuing history and agree on one complete law. Joined carriers form
+  screens of up to 245,760 ports, and on a refining screen one repair history
+  defines a continuum field with Gaussian fluctuations and waves of finite
+  speed.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
@@ -86,15 +91,20 @@ Lower is better. The forecast that uses the retained record beats the one
 that knows only the chosen action and the one with records shuffled within the
 same action; the exact values are 395/7392, 140/2013 and 12875/150304. The
 [model directory](model/README.md) holds the implementation, its tests and its
-retained results. Its strongest joined experiment is the
+retained results. Its joined experiments include the
+[coherent screen observer](model/coherent_screen_observer/README.md), which
+carries a logical qubit and an untouched reference through native clock ticks
+and record-controlled feedback on screens of 15,360 and 245,760 ports, and the
 [common interacting process](model/common_source/README.md), in which quantum
 electric flux, charged fermions and a scalar field share one finite register
 with complete instruments, retained records and native feedback; the field
-action and the preparation are supplied inputs. The
+action and the preparation of that process are supplied inputs. The
 [repair-law guide](model/CANDIDATES.md) shows which parts of the repair law
 are forced and which are free: the classical rule follows from four
-requirements, and its quantum record laws form one family whose members a
-single interference experiment tells apart. The
+requirements, its quantum record laws form one family with five coherence
+multipliers, a single interference experiment reads the coherence that
+separates the executed law C from its comparison law E, and nine compiled
+measurements identify the whole table. The
 [prediction package](model/predictions/README.md) fixes that experiment and its
 count-based rejection rule before any independent counts, and the
 [construction guide](model/CONSTRUCTION.md) states the acceptance criteria and
@@ -107,6 +117,17 @@ current-fluctuation action and a probability law relating incident hits to
 moving ticks. Retained executions test that conversion against a host clock.
 On larger source screens, field and feedback predictions also work at fixed
 conserved occupation, without independently prepared Bernoulli occupations.
+Two observers sharing a port of one carrier read their fields, local clocks
+and feedback from one continuing history, and the direct native execution and
+an effective description assign every joint record the same probability; a
+version built from compiled source pulses reproduces that history on all 512
+code addresses. On the refining spherical screens one repair history gives a
+[continuum field operator](model/physical_space_time/OCCUPATION_FIELD.md)
+whose Gaussian fields, decay and waves live on the two-dimensional screen
+itself. The
+[public-data audit](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) compares
+the conditional scalar tilt with the ACT DR6 posterior chains and tests a
+direct attachment of native clock counts to published optical-clock ratios.
 The [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md) separates these
 finite results from extended relativistic spacetime and a calibrated laboratory
 identification. A [public Bell-data replay](model/predictions/BELL_RECORDS.md)
@@ -130,7 +151,7 @@ record law.
   [Finite quantum event algebras](extra/machine_checked_finite_event_algebras.pdf).
 - **Three spatial directions.** The fixed twelve-port carrier and its mean
   repair rule give an exact three-dimensional slow response with Euclidean
-  geometry, the geometric building block of an observer's space.
+  geometry, which an observer's current records recover.
   [Carrier construction](code/a5_closure/README.md).
 - **Gauge symmetry.** Under stated premises on complete reversible response
   and observer transport, the construction forces the Standard Model gauge
