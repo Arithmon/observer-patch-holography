@@ -3270,7 +3270,10 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         " identify a physical primordial field, a physical Lorentzian action"
         " or an observed clock, and require no federation for their local scope."
         " Their validity is independent of whether an additional physical"
-        " correspondence succeeds."
+        " correspondence succeeds. The active modular-clock construction and"
+        " its direct-gap comparison with published optical ratios are conditional"
+        " model evidence and a retrospective attachment audit; neither creates"
+        " a prospective freeze."
     )
     lines.append("")
     lines.append(
