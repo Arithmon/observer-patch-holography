@@ -12,7 +12,8 @@ This checks coverage and source custody, not mathematical entailment. A
 theorem without a checked model instantiation remains an open connection.
 The [physical audit](PHYSICAL_AUDIT.md) gives the current completion status,
 including the actual rank-three occupation-field action, spherical-screen
-Green bounds and compatible nonzero subsequential fields, endpoint causal
+Green bounds, a common positive continuum generator and compatible
+continuous field readouts, endpoint causal
 placement, law-uniform finite preparation, complete-history uncertainty and
 resource-clock calibration.
 
@@ -135,6 +136,18 @@ a physical emulator or new laboratory is unnecessary. An assumed
 experimental outcome is a conditional forecast and cannot validate the
 dictionary. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 keeps the ACT comparison separate from native-observer derivation.
+
+The native spherical construction supplies one such mathematical connection:
+an ancestral-cell Poincare bound makes the Green subsequence converge in
+operator norm to an injective compact `G`. Its inverse `A` determines the
+limiting spatial covariance, native heat propagator and admitted coherent
+wave amplitudes. Two long record blocks also give a continuous Gaussian
+wave readout with covariance `G cos((t-u)sqrt(A))`. These are compatible
+limits on the source's spherical test domain; a local physical metric,
+three-dimensional bulk, quantum field state and calibrated clock do not
+follow from this operator construction. The
+[common-generator proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
+states its observation access, parameter conventions and limit orders.
 
 The [quantum incident-clock construction](observer_correspondence/QUANTUM_CLOCK.md)
 complements the [exact full-state representation](quantum_observer_correspondence/README.md)

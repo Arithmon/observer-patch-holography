@@ -23,6 +23,14 @@ subsequence on the enlarging ancestral observation dictionary. The
 [continuum extension](OCCUPATION_FIELD.md#a-continuum-random-distribution-on-the-carrier-sphere)
 realizes that law as a Gaussian random distribution in `H^-2(S2)`, with an
 explicit angular-tail bound and convergent continuous test observations.
+The [spatial-generator construction](OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
+upgrades the same subsequence to operator-norm Green convergence using an
+all-level descendant-patch Poincare bound. Its compact positive limit is
+injective on the mean-zero observation space and supplies one self-adjoint
+continuum generator. The native reduced action has exponentially decaying
+couplings in cell distance; couplings between fixed separated continuum
+regions vanish. A local Dirichlet form or a physical metric has not been
+identified by this result.
 The [joint observation-process extension](OCCUPATION_FIELD.md#one-continuum-observation-path-for-both-native-clocks)
 couples both clocks on the same native history and obtains one Gaussian
 Wiener field in `C([0,T],H^-2(S2))` along that spatial subsequence. It supplies
@@ -44,6 +52,7 @@ remote attempts does not inherit the one-edge-per-attempt propagation bound.
 ```sh
 python -m model.physical_space_time --check model/physical_space_time/results.json
 python -m model.physical_space_time.observation_process --check model/physical_space_time/observation_process_results.json
+python -m model.physical_space_time.local_continuum --check model/physical_space_time/local_continuum_results.json
 python -m pytest -q -W error model/physical_space_time
 ```
 

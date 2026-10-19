@@ -700,9 +700,10 @@ Cell means do not form a closed Markov process at finite level. Their
 two-attempt discrepancy from resetting to cell means is
 `CC*/(2M_l)^2`; the base cell-zero/minus-cell-one contrast gives exactly
 `13/19051200`. Weak convergence of compressed static Green operators
-alone does not establish a limiting resolvent identity or unique temporal
-semigroup. Stronger convergence and the complete observable-domain mapping
-are required for those claims.
+alone does not establish a limiting resolvent identity. The
+[source compactness theorem](../physical_space_time/OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
+supplies the stronger convergence used below; it does not make the finite
+cell process Markovian.
 
 ### Two continuations of the same native density spectrum
 
@@ -806,4 +807,221 @@ and controlled regime, beyond the finite and bandwise results here.
 ```text
 python -m model.observer_time_fields.spatial_dynamics --check model/observer_time_fields/spatial_dynamics_results.json
 python -m pytest -q -W error model/observer_time_fields/test_spatial_dynamics.py
+```
+
+## One continuum operator for fields, native decay and coherent waves
+
+[The continuum dynamics implementation](continuum_dynamics.py) uses the
+actual source compactness result, the same ancestry readouts and the
+native resolvent identity (R). No continuum Laplacian is substituted for
+the finite repair operator. Write `H=L2_0(mu)`, where `mu` is the normalized
+flat-polyhedron area transported to the carrier sphere. Let `J_l` identify
+cell coefficients with normalized step functions, `P_l=J_l J_l*`, and
+
+```text
+B_l=4^l S_l,   G_l=J_l B_l^+ J_l*,   D_l=4^l L_l.
+```
+
+The coarse-patch Poincare estimate gives compact Green images and upgrades
+the existing common subsequence to `||G_l-G||->0`. Smooth-test variational
+bounds make `G` injective on `H`; it is positive, compact and bounded by
+`C=4096/3`. Its inverse `A=G^-1`, with domain `range(G)`, is therefore a
+densely defined positive self-adjoint operator with compact resolvent.
+This defines an actual continuum spatial action
+`E(f)=||sqrt(A)f||^2` on `D(sqrt(A))`, independently of a guessed metric.
+The selected subsequence is common to every readout below; neither a
+whole-sequence limit nor its numerical value is inferred from finite runs.
+
+### The full native dynamics have the same limit
+
+For every `z>0`, functional calculus of the bounded Green operators gives
+
+```text
+J_l(B_l+z)^-1 J_l* = G_l(I+zG_l)^-1 -> (A+z)^-1
+```
+
+in operator norm on the mean-zero space. The identity acts on the
+level-`l` cell subspace; the left side is zero on its orthogonal complement.
+Bound (R) shows that replacing the left side by
+`J_l U_l*(D_l+z)^-1 U_l J_l*` changes it by at most `1/(8*4^l)`.
+Consequently the **full native port dynamics**, including their carrier
+interiors, have the same limiting resolvent. Finite elimination memory
+has not been discarded as an exact identity.
+
+The functional-calculus step requires control of high spectral mass.
+For any fixed `f in H`, the positive full-native spectral measure of
+`U_l J_l* f` has total mass `||P_l f||^2->||f||^2`. Its Stieltjes transform
+converges by the preceding resolvent result to that of `A` at `f`.
+The limiting measure has the same total mass because `A` is densely
+defined. More explicitly, for any `R,z>0`,
+
+```text
+mass_l([R,infinity)) <= (R+z)/R
+    [ ||P_l f||^2-z <f,J_l U_l*(D_l+z)^-1 U_l J_l* f> ].
+```
+
+Take the level limit, then `z` large, then `R` larger than `z`. This makes
+the bound arbitrarily small. Stieltjes-transform uniqueness and this
+tightness give convergence for bounded continuous spectral functions.
+Polarization gives weak vector convergence of compressed propagators;
+the inequality
+`||J_l U_l* F(D_l) U_l J_l* f||^2
+ <= <U_l J_l* f,|F|^2(D_l) U_l J_l* f>`
+gives the matching norm upper bound and hence strong convergence.
+On a compact spectral interval the heat and cosine functions are
+uniformly continuous in their parameters; the controlled tails extend
+this to compact parameter intervals. Thus, for each fixed input `f`,
+
+```text
+J_l U_l* exp(-tau D_l) U_l J_l* f -> exp(-tau A) f,
+J_l U_l* cos(t sqrt(D_l)) U_l J_l* f -> cos(t sqrt(A)) f,
+```
+
+uniformly for `0<=tau,t<=T`. This is strong convergence on fixed inputs,
+not operator-norm convergence of unbounded-frequency wave propagators.
+
+Both functions are limits of the **actual integer-step protocols**. Put
+`N_l=1260*16^l`, `Q_l=630*16^l`, choose native attempt count
+`floor(tau N_l)` and coherent step count `floor(t sqrt(Q_l))`, and retain
+all native outcomes or both Ramsey outcomes as appropriate. On a band
+`0<=a<=Lambda<N_l`, the respective errors against the preceding finite
+propagators are at most
+
+```text
+T Lambda^2/[2(N_l-Lambda)] + Lambda/N_l,
+T sqrt(Lambda) Lambda/[6(4Q_l-Lambda)] + sqrt(Lambda)/(25*4^l).
+```
+
+The last term includes integer coherent-step rounding, using
+`sqrt(630)>25`. For a unit input with `D_l` energy at most `E`, each
+remaining spectral tail contributes at most `2 sqrt(E/Lambda)`. For
+arbitrary fixed continuum inputs, the preceding tightness argument
+provides the qualitative tail control. These are finite-step error
+budgets, separate from the unquantified spatial subsequence limit.
+Native occupation correlations decay with `exp(-tau A)`; the admitted
+coherent amplitudes propagate with `cos(t sqrt(A))`. Their parameter
+normalizations differ and are not calibrated laboratory seconds.
+
+### A continuous wave readout from one native record history
+
+The existing native functional CLT supplies independent Gaussian limits
+for two disjoint consecutive long observation blocks of the **same**
+stationary history. No independent carrier replicas are required. At
+fixed level their normalized cell fields `xi_l,zeta_l` have covariance
+
+```text
+C_l=B_l^+ - c_l P0,       c_l=1/(2520*16^l).
+```
+
+Define the declared spectral processing of these two recorded fields by
+
+```text
+X_l(t)=cos(t sqrt(B_l)) xi_l + sin(t sqrt(B_l)) zeta_l.
+```
+
+The sine coefficient is the velocity divided by `sqrt(B_l)`, so the two
+initial Gaussian fields have the same covariance. The source bounds
+`0<=B_l<=4^l I/2` and `B_l C_l=P0-c_l B_l` imply
+`0<=B_l C_l<=I`. Both covariance and conserved constant mode are checked
+exactly on the actual twenty-cell source. Independence of the two CLT
+increments is essential: reusing one field changes the time-dependent
+variance and fails the stationary covariance identity.
+
+The joint law is centered Gaussian with
+
+```text
+Cov(X_l(t),X_l(u)) = C_l cos((t-u) sqrt(B_l)).
+```
+
+Because `g cos(t/sqrt(g))` extends continuously by zero at `g=0`, norm
+convergence of `G_l` and `c_l->0` gives every finite space-time covariance
+along the same subsequence. Its limit is
+
+```text
+Cov(X(t),X(u)) = G cos((t-u) sqrt(A)).                    (CW)
+```
+
+The spherical harmonic topology used for the native spatial field makes
+this a continuous distribution-valued process. With harmonics normalized
+for spherical probability area, `dmu/domega<2`, and with `Pi_>J` omitting
+degrees through `J`, the previously proved harmonic summation gives
+
+```text
+E sup_(0<=t<=T) ||Pi_>J X_l(t)||_-2^2
+    <= 4(C+T^2)/(J+1)^2,
+E ||X_l(t)-X_l(u)||_-2^2 <= 2 |t-u|^2,
+E ||X_l(t)-X_l(u)||_-2^4 <= 12 |t-u|^4.
+```
+
+The first bound follows from the initial tail plus the integral of the
+velocity tail; its covariance is bounded by the identity. The second
+uses the same velocity bound and Cauchy–Schwarz; the third is the Gaussian
+fourth-moment inequality. Finite harmonic paths are tight by the increment
+bound, and the uniform supremum tails control the remaining modes.
+Hence `X_l` converges in `C([0,T],H^-2(S2))` to the nonzero Gaussian wave
+readout (CW). The bounded covariance extends its Gaussian test variables
+to all `L2(mu)` smearings. For `f in D(A)`, these variables satisfy
+`d^2 X(t;f)/dt^2 + X(t;Af)=0` in mean square, distributionally in time.
+This does not assert pathwise pairing of an `H^-2` distribution with every
+operator-domain test; that would require additional spatial regularity.
+Its displacement covariance is
+`A^-1` and its velocity covariance is the identity, which specifies a
+classical Gaussian wave ensemble. It is not the quantum vacuum covariance
+`(2sqrt(A))^-1` and asserts no canonical commutation relations.
+
+Observation count tends to infinity first at each finite source. The
+source subsequence then tends to the continuum. These limits do not give
+a simultaneous finite-count/refinement rate. The construction processes
+native records through a declared spectral readout; passive occupation
+waiting retains its different heat-type correlation law. Coherent native
+amplitudes converge independently to the **same** cosine operator, with
+their admitted preparation, reflection and readout services.
+
+### Modular phase matching and its order of limits
+
+The [native return reference](README.md#a-native-return-reference-for-the-coherent-wave-generator)
+has positive phase generator `Theta_l=acos(K_l)`. Its finite-cap version
+`Theta_l,h=-log(P_h(K_l)/P_h(1))` satisfies the existing uniform logarithm
+bound. The sufficient joint budget `h_l=64*(4^l)^4` gives
+
+```text
+||sqrt(Q_l)(Theta_l-Theta_l,h_l)|| <= 26/4^l.
+```
+
+For bounded `t`, its reconstructed modular cosine therefore has the same
+limit `cos(t sqrt(A))`; the additional error is at most
+`min(2,26|t|/4^l)`. This compares spectral phase magnitudes and cosine
+amplitudes. The arc walk has both phase signs and does not implement every
+vertex modular unitary or modular intervention. No compatible faithful
+continuum algebra-state pair is obtained merely by convergence of the
+rescaled generators. The normalized finite reference states have their
+own state-limit and implementation obligations.
+
+The cap order matters in a stronger way than absence of a uniform error
+certificate. For a **fixed** `h`, positivity of the polynomial coefficients
+gives `P_h(x)/P_h(1)>=x^h`, hence, on any fixed band `a<=Lambda<2Q_l`,
+
+```text
+sqrt(Q_l) Theta_l,h(1-a/(2Q_l))
+    <= 26 h Lambda 4^l/(1260*16^l-Lambda) -> 0.
+```
+
+A fixed capped reference freezes its low-band modular phase under spatial
+refinement; the uncapped wave phase tends to `sqrt(a)`. The executable
+checks this control against the actual positive length polynomial.
+The increasing sufficient budgets are analytic resource bounds, not
+executed samplers at those large lengths.
+
+This construction connects a spatial covariance, a continuum action,
+native temporal correlations, continuous wave observations and matching
+modular phase magnitudes through one source operator. The source sphere
+is a two-dimensional readout domain. Neither its three ambient coordinate
+functions nor the internal rank-three band add a physical radial variable.
+Finite signal speed, a Lorentzian metric, an observed `1+3` identification,
+interacting CFT/QFT and atomic-clock calibration require additional proved
+observable relations. They are not conclusions of this continuum limit.
+
+```text
+python -m model.observer_time_fields.continuum_dynamics --check model/observer_time_fields/continuum_dynamics_results.json
+python -m pytest -q -W error model/observer_time_fields/test_continuum_dynamics.py
 ```

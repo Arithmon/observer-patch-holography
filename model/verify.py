@@ -169,6 +169,11 @@ REPLAYS = (
     ("model.observer_time_fields.wave_reference", None,
      "model/observer_time_fields/wave_reference_results.json"),
     ("model.predictions.inverse_clock", None, "model/predictions/inverse_clock_results.json"),
+    ("model.physical_space_time.local_continuum", None,
+     "model/physical_space_time/local_continuum_results.json"),
+    ("model.observer_time_fields.continuum_dynamics", None,
+     "model/observer_time_fields/continuum_dynamics_results.json"),
+    ("model.predictions.repair_response", None, "model/predictions/repair_response_results.json"),
 )
 
 

@@ -1,7 +1,7 @@
 # Physical interpretation of the executable model
 
-The construction derives compatible
-finite observations from one specified repair process. It has not established
+The construction derives compatible finite observations and a common
+subsequential continuum operator from one specified repair process. It has not established
 physical 3+1 spacetime, a selected Lorentzian field action, or a measured
 clock correspondence with observed physical processes. The distinction matters
 for deciding what to build next: more carriers do not discharge any of these
@@ -187,11 +187,20 @@ iterated limit supplies no simultaneous finite-count approximation rate.
 The [dynamic Schur comparison](observer_time_fields/spatial_dynamics.py)
 connects native two-time density correlations to that same static spatial
 operator. At every level and positive discount, the compressed native and
-Schur resolvents differ by at most `1/(8*4^level)`. A specified coherent
-event walk also gives square-root low-band wave dispersion with a controlled
-error. Its phase is a nonlinear function of the transfer logarithm, so one
-scalar clock calibration cannot turn the logarithmic continuation into this
-wave on all modes. Coherent access and reflection remain explicit services.
+Schur resolvents differ by at most `1/(8*4^level)`. The
+[source compactness proof](physical_space_time/local_continuum.py) bounds
+ancestral projection tails by `624*4^(-k)` times the native scaled energy.
+It upgrades the common Green subsequence to operator-norm convergence to
+an injective compact `G`, whose inverse is a positive self-adjoint `A`.
+The [joint dynamics proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
+then gives native heat and coherent cosine propagation with this same `A`.
+Two long blocks from one native observation history supply a continuous
+Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. Its synthesis
+parameter and processor are declared; it is not the passive instantaneous
+occupation process or a quantum vacuum. Coherent access and reflection
+remain explicit services. The limiting form's locality is not established:
+finite cell-mean elimination has a positive off-diagonal counterexample
+and cannot be treated as a Markov generator by vertex-reduction arguments.
 
 The [random-length return construction](observer_time_fields/wave_reference.py)
 uses the positive length law with generating function
@@ -204,6 +213,20 @@ Length sampling, full endpoint closure and the coherent wave controls are
 admitted services. The native return-conditioned state differs from this
 reconstructed reference, and the two-sign arc walk does not implement the
 whole vertex modular unitary or arbitrary modular interventions.
+
+The jointly growing return cap `64*(4^level)^4` gives scaled phase error
+at most `26/4^level`. A fixed cap instead makes the bounded-band scaled
+generator tend to zero. This order-of-limits control prevents a finite
+sampler demonstration from certifying a continuum modular clock or state.
+
+The [finite repair-response identity](predictions/repair_response.py)
+connects a native intervention to passive observations. Repair on `(a,b)`
+conditioned on the disclosed bit `n_a=1` changes the stationary density
+by the likelihood factor `1+(n_b-n_a)/2`. Its marked refinement predicts
+complete future clock, current and field laws, including zero outcomes and
+timeouts. The discounted mean-field response is a dipole of the same
+spatial Green resolvent. It adds no fitted response parameter and supplies
+no physical identification with the published optical-clock records.
 
 These are compatible source-observation constructions. The auxiliary sphere
 supplies no physical radial domain, and wave amplitudes supply no quantum

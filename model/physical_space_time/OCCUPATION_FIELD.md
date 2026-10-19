@@ -544,6 +544,111 @@ a conformal theory, or reconstruct causal Lorentzian dynamics. A whole
 sequence convergence estimate and that physical reconstruction remain
 separate obligations.
 
+### A common positive spatial generator from the native Green field
+
+The [compactness calculation](local_continuum.py) strengthens the common
+subsequence result from weak covariance convergence to **operator-norm
+convergence**. Its inverse is one positive self-adjoint continuum spatial
+generator shared by the field and the temporal constructions. The source
+architecture, routing contract and ancestry observations are unchanged.
+This does not select a unique whole-sequence limit, identify a physical
+metric, or assert that the limiting generator is a local Dirichlet operator.
+
+Let `P_k` be conditional averaging on the level-`k` ancestral cells in
+`H=L2_0(mu)`, with the normalized area measure defined below. The level-`l`
+cell space has dimension `20*4^l-1`. Write `B_l=4^l S_l` and extend
+`G_l=B_l^+` by zero on its orthogonal complement. The quantitative new
+ingredient is, for every cell vector `u` and every `l>=k`,
+
+```text
+||(I-P_k)u||^2 <= 624*4^(-k) <u,B_l u>.                       (K1)
+```
+
+Here is an elementary proof using the actual subdivision. A coarse triangle
+has `m^2` descendant cells, `m=2^(l-k)`. Label the upright cells `U(i,j)`,
+`i,j>=0, i+j<m`, and downward cells `D(i,j)`, `i+j<m-1`.
+Each downward cell joins precisely `U(i,j),U(i+1,j),U(i,j+1)`.
+Reflect upright values into an `m` by `m` square by mapping an index with
+`i+j>=m` to `(m-1-j,m-1-i)`. Each upright value occurs once or twice;
+every horizontal or vertical upright edge occurs exactly twice in the
+square energy. The square variance is at most `m^2` times its edge energy:
+apply the one-dimensional telescoping inequality to each row and then to
+the row means, using Jensen's inequality on the latter differences.
+
+Each upright edge is a two-edge path through a downward cell. The sum of
+upright edge energies is at most four times the dual patch energy `E`.
+Thus upright squared deviations about the square mean total at most
+`8m^2 E`. Pair each downward cell with its unique `U(i,j)`; its squared
+deviation is at most twice that upright deviation plus twice their edge
+energy. The total variance, minimized over the constant, is consequently
+at most `(24m^2+2)E<=26m^2 E`. Summing over coarse triangles discards only
+nonnegative boundary-edge energies. Finally `S_l>=L_cell/24` gives (K1).
+The exact executable controls bind every descendant adjacency to the
+independent triangular stencil, check square edge multiplicities, and
+independently certify the finite patch inequality by rational LDL factors.
+These controls audit the stencil; the argument proves all refinement levels.
+
+Using `||G_l||<=C=4096/3`, substitute `u=G_l f` into (K1):
+
+```text
+||(I-P_k)G_l|| <= sqrt(624 C)*2^(-k),
+||G_l-P_k G_l P_k|| <= 2 sqrt(624 C)*2^(-k).                 (K2)
+```
+
+For fixed `k`, the middle operator acts on a fixed finite-dimensional space
+and converges along the existing common covariance subsequence. Given an
+error tolerance, choose `k` first in (K2), then take the subsequence indices
+large. This proves that the full operators are norm Cauchy. Their limit `G`
+is compact, positive and self-adjoint. The finite-dimensional min-max
+principle also gives a quantitative spectral bound: positive covariance
+eigenvalue number `20*4^k` and every later one is at most `624*4^(-k)`.
+Indeed (K1) bounds the energy below on the subspace perpendicular to `P_k`,
+whose codimension is `20*4^k-1`; norm convergence preserves that bound.
+This estimate is an upper spectral-count control, not an identification of
+the observed spatial dimension.
+
+The limiting covariance has no further null directions. For a Lipschitz
+mean-zero test `g` on the auxiliary flat polyhedron, adjacent cell averages
+differ by at most `2a*2^(-l) Lip(g)`. Counting the `30*4^l` dual edges and
+normalizing the `20*4^l` cell indicators yields
+`<P_l g,B_l P_l g><=a^2 Lip(g)^2/2<Lip(g)^2`.
+The Green variational identity gives
+`<f,G_l f> >= |<f,P_l g>|^2/Lip(g)^2` for nonconstant `g`.
+Lipschitz tests are dense in `H`, so for every nonzero `f` one can choose
+such a test with nonzero pairing; `P_l g->g` then gives `<f,Gf>>0`.
+Consequently `A=G^(-1)` on `range(G)` is densely defined, positive and
+self-adjoint. This is an infinite-dimensional generator from the native
+source, with compact inverse. Its closed quadratic form has domain
+`range(G^(1/2))`. No round-sphere Laplacian was inserted into this argument.
+The [joint dynamics](../observer_time_fields/README.md) uses this same
+operator limit for temporal correlations and the admitted coherent wave.
+
+There is also a quantitative spatial range statement for the finite action.
+Set `T=I-F/2`, so `0<=T<=I/2`. In the exact Schur series
+`S_p=(1/24) R^T sum_(j=0..p) T^j R`, the term at power `j` joins only cells
+of graph distance at most `j+1`: `F` joins only seams sharing a carrier.
+Its remainder obeys `0<=S-S_p<=2^(-p-1)S<=2^(-p-2)I`.
+For vectors supported on cell sets at graph distance `d>=1`, choose
+`p=d-2` when `d>=2`; use `||S||<=1/2` when `d=1`. Then
+
+```text
+|<u,B_l v>| <= 4^l 2^(-d) ||u|| ||v||.                     (K3)
+```
+
+Adjacent affine centroids have intrinsic distance at most
+`a/(sqrt(3)*2^l)<2^(-l)`, and cell diameters are less than `2*2^(-l)`.
+If two fixed test supports have comparison separation `delta>0`, the
+supports of their cell averages therefore have graph distance at least
+`ceil(delta*2^l-4)` once that expression is positive. Bound (K3) tends to
+zero faster than every power of the cell size. The original action thus
+has vanishing couplings between separated continuum regions. This proof
+does not identify the relaxed limiting form: convergence of the energies
+of raw cell averages is a separate claim from convergence of their inverses.
+In particular, eliminating **cell means** is not vertex Kron reduction.
+The exact native level-zero Schur entry `(5,9)` is positive, so its negative
+is not a Markov jump generator. Neither an M-matrix premise nor finite
+propagation for the limiting wave follows from (K3) alone.
+
 ### A continuum random distribution on the carrier sphere
 
 The compatible law extends beyond the countable ancestry dictionary.

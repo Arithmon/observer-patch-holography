@@ -46,6 +46,7 @@ python3 -m model.predictions.bell_records --check model/predictions/bell_results
 python3 -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json
 python3 -m model.predictions.regional_optical --check model/predictions/regional_optical_results.json
 python3 -m model.predictions.modular_optical --check model/predictions/modular_optical_results.json
+python3 -m model.predictions.repair_response --check model/predictions/repair_response_results.json
 
 # Produce an unfilled count template; the destination must not exist.
 python3 -m model.predictions --template /tmp/observer-counts.json
@@ -325,6 +326,108 @@ those observations can test this correspondence.
 
 Replay with `python -m model.predictions.inverse_clock --check
 model/predictions/inverse_clock_results.json`.
+
+## Native repair response from passive clock and field records
+
+[repair_response.py](repair_response.py) predicts a finite response using the
+same repair law, fields and incident clocks that define the passive process.
+There is no fitted force, response coefficient or conversion to seconds.
+Prepare the uniform fixed-number binary sector. Disclose the occupations at
+ports 0, 1 and 2. If the port-0 bit is one, apply one fair native repair on
+seam `(0,1)`; otherwise apply no repair. The trigger, coin and signed current
+are retained. Postpulse fields are reconstructed from the disclosed bits and
+that current, without another state query. The pulse contributes one tick to
+each incident observer clock when it occurs, including a zero-current pulse.
+
+Write `a=n_0`, `b=n_1` for the initial occupations in a *passive continuation*
+experiment. The corresponding post-intervention law has density
+
+```text
+w = 1 + (b-a)/2,
+Pr_feedback(F) - Pr_passive(F) = E_passive[(b-a) 1_F]/2.
+```
+
+Here `F` is any fixed subsequent record event, with the same continuation
+rule in both experiments, independent of the earlier pulse mark. It may
+include fields, incident-clock comparisons, feedback on subsequent records,
+stopping and timeouts. A continuation that consults the pulse mark must use
+the separate marked weights below, not the summed density. The identity follows from detailed
+balance of the local fair repair: for its self-adjoint operator `R`,
+`R a=(a+b)/2`, and the pulse policy has operator `I + a(R-I)`. This is the
+finite Markov adjoint identity applied to the actual native intervention,
+not a claim of a new general fluctuation-response theorem. It is exact at
+the specified pulse amplitude; it is not an infinitesimal-response fit.
+
+The complete marked prediction uses these passive-record weights:
+
+| Retained trigger, coin, current | Weight |
+| --- | --- |
+| No pulse (`0,-1,0`, with `-1` the unused-coin label) | `1-a` |
+| Pulse (`1,0,1`) | `(1-a)*b/2` |
+| Pulse (`1,1,0`) | `a/2` |
+| Pulse (`1,0,0`) | `a*b/2` |
+| Each other declared pulse mark | `0` |
+
+These are importance densities for unnormalized joint events, not
+conditional probabilities of drawing a mark from each passive sample.
+Their sum need not equal one at each sample. Their equilibrium averages
+produce a normalized complete law. No division by that sum is permitted.
+Pre-pulse disclosed fields can be recovered from the postpulse fields and
+retained current, so the prediction preserves their record as well.
+
+The executed forecast stops at the first subsequent port-0 incident event,
+with a supplied watchdog cap of one or two uniform native attempts. The
+second observer counts incidents at port 1 or port 2. Every signed-current
+record meeting the three read ports, zero-current events, pulse marks and
+timeouts is included. The exact timeout probability is `(5/6)^cap`.
+For the event "the stop succeeds, the final port-1 field is one, and the
+second clock has at least one *subsequent* tick", the cap-two predictions are:
+
+| Second clock | Passive probability | Feedback probability | Response from passive covariance |
+| --- | --- | --- | --- |
+| Port 1 | `71/5400` | `34/2475` | `7/11880` |
+| Port 2 | `1/216` | `5/792` | `1/594` |
+
+The cap-one response is exactly zero for both clocks. Total clock readouts
+also retain the pulse tick: subtracting that known contribution in the
+specified event merely selects equal continuation menus for comparison.
+The watchdog attempt count supplies no physical duration. Independent
+primitive-path expansion checks all one-attempt record labels; exact native
+propagation checks the capped laws. An unconditional extra repair has zero
+marginal response at equilibrium. A nonstationary preparation violates the
+stationary weight formula; the retained control has predicted total mass
+`1/2` against actual mass one and is rejected without renormalization.
+
+For an arbitrary finite graph with `V` ports, `M` seams, fixed total `k`,
+`chi=k*(V-k)/(V*(V-1))`, and native density transfer `K=I-L/(2M)`, the same
+identity gives the complete mean occupation response to a pulse on `(a,b)`:
+
+```text
+Delta <n_c(n)> = chi/2 * [(K^n)_(b,c) - (K^n)_(a,c)].
+```
+
+For any chosen spatial normalization `s>0`, let `r=2*M*s/(2*M*s+z)`, `z>0`.
+Then `(1/(2*M*s))*sum_(n>=0) r^(n+1)*Delta<n(n)>` equals
+`chi/2*(e_b-e_a)^T*(s*L+z*I)^-1`. Full 66-configuration inverses independently
+verify this response on the native carrier. This makes the
+[spatial Green operator](../observer_time_fields/REFINEMENT.md#native-temporal-correlations-and-the-spatial-green-field)
+a response to an observer's explicit repair operation, as well as a passive
+correlation. A nonzero continuum source additionally requires a compatible
+source normalization and limit; one microscopic pulse is not automatically
+a finite continuum force, a Lorentzian signal or a laboratory field.
+
+The [published Ar13+/Yb+ files](https://zenodo.org/records/6901524) contain
+corrected optical frequency ratios. They do not contain these disclosed
+occupations, trigger/current records and corresponding intervention arms.
+Their [experimental description](https://arxiv.org/html/2205.13053v2) supplies
+an atomic apparatus; this packet supplies no identification of its readouts
+with the native pulse. These exact native forecasts therefore add no public
+measurement agreement or discriminator against SM + GR. Choosing event-count
+units is sufficient to define the model clocks; identifying an observed
+physical response must preserve the joint relations above.
+
+Replay with `python -m model.predictions.repair_response --check
+model/predictions/repair_response_results.json`.
 
 ## Minimal modular-transition optical attachment
 

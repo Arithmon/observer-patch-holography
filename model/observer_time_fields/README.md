@@ -54,6 +54,21 @@ square-root spatial spectrum and complete finite Ramsey readouts; its
 coherent record and reflection services are explicit. Neither continuation
 is identified with physical time or with the separate three-class clock probe.
 
+The [common continuum operator](REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
+uses the source's compact Green limit to obtain one positive self-adjoint
+operator `A`: the spatial field has covariance `A^-1`, native correlations
+have transfer `exp(-tau A)`, and coherent amplitudes approach
+`cos(t sqrt(A))`. Two disjoint long blocks of one native record history,
+with declared spectral processing, give a continuous Gaussian wave readout
+in `C([0,T],H^-2(S2))`. This is a common subsequential continuum on the
+carrier sphere, with distinct native and coherent parameter units.
+
+Growing native-return caps give the same rescaled modular phase magnitudes;
+a fixed cap freezes those phases in this spatial limit. This phase match
+does not construct a faithful continuum modular state or identify atomic
+clock time. The Gaussian wave ensemble has covariance `A^-1`; it supplies
+neither a quantum vacuum nor an observed Lorentzian metric.
+
 ## The common observer contract
 
 This is a classical recorded branch of the
@@ -549,6 +564,12 @@ separate obligations. The
 not those complete laws. No Lorentzian continuum, universal synchronization,
 physical time calibration, C/E selection or new empirical observation is
 claimed. The construction changes none of the retained laboratory fits.
+
+The collective continuum readouts use full initial occupations and the
+current tape, beyond the earlier local four-bit access contract. Their
+common operator closes the spatial and temporal limit connection for this
+declared source. The continuum's physical metric, causal locality and
+empirical identification require separate observable relations.
 
 Reproduce the complete packet with:
 

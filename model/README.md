@@ -27,24 +27,31 @@ repair history. Incident-clock sampling has a calculable spatial correction.
 Its projection onto the actual carrier's rank-three band gives exact axial
 and transverse variances in the local incident clock. Eliminating internal
 variables on the existing spherical screens gives a controlled native Green
-operator. The [continuous observation process](physical_space_time/OCCUPATION_FIELD.md)
+operator. A [source Poincare bound](physical_space_time/OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
+upgrades the common covariance subsequence to operator-norm convergence.
+The limit is compact and injective on mean-zero `L2`; its inverse defines
+one positive continuum spatial generator `A`.
+The [continuous observation process](physical_space_time/OCCUPATION_FIELD.md)
 extends this to continuous paths in `H^-2(S²)` along a common spatial
 subsequence. Its time parameter is rescaled observation count. A coupling
 on the same native history makes the normalized attempt and incident-clock
 fields coincide in that limit. Uniform spatial-tail and temporal-increment
 bounds control the construction; observation count tends to infinity before
 spatial refinement.
-The [temporal–spatial bridge](observer_time_fields/README.md)
-also links discounted native density correlations to the same spatial Green
-operator, with an all-level error bound. An admitted coherent continuation
-has a controlled wave-frequency limit; it uses different operations from
-passive repair and a nonlinear function of its transfer logarithm.
+The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
+uses this same `A` for native heat propagation, coherent cosine amplitudes
+and a continuous Gaussian wave readout synthesized from two long observation
+blocks of one native history. Its covariance is
+`A^-1 cos((t-u)sqrt(A))`. The wave processor and coherent services are
+declared; their parameter is distinct from passive waiting and physical time.
 A [specified random-length return reference](observer_time_fields/README.md#a-native-return-reference-for-the-coherent-wave-generator)
 has modular generator `arccos(K)`, matching those wave phases. Finite caps
 have explicit state and generator error bounds. The length sampler and
 endpoint reads are admitted services; this reconstructs a reference, not
 a quantum vacuum or a complete modular evolution of the observer.
-Whole-sequence uniqueness and a physical continuum identification are unresolved.
+The return cap must grow with refinement: a fixed cap freezes the scaled
+low-band modular phase. Whole-sequence uniqueness, a local continuum
+Dirichlet form and a physical identification are unresolved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
@@ -108,6 +115,13 @@ as a nontrivial modular automorphism. The
 from four movement-bit covariances on the complete attempt tape and predicts
 its coherent quadratures without a separate frequency fit. This supplies a
 joint observation test; seconds and atomic transitions remain unidentified.
+
+The [native response prediction](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
+links a record-triggered repair to passive clock/field correlations without
+fitting a response parameter. It retains the trigger, current, all clock
+ticks and timeouts, and its discounted field response uses the same native
+spatial resolvent. This is a model prediction with a fixed intervention
+dictionary; no corresponding public measurement is identified.
 
 The twelve-port result does not by itself describe an extended physical
 space. That stronger claim needs observations over larger operational domains
