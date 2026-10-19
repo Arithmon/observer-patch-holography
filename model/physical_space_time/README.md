@@ -29,8 +29,15 @@ all-level descendant-patch Poincare bound. Its compact positive limit is
 injective on the mean-zero observation space and supplies one self-adjoint
 continuum generator. The native reduced action has exponentially decaying
 couplings in cell distance; couplings between fixed separated continuum
-regions vanish. A local Dirichlet form or a physical metric has not been
-identified by this result.
+regions vanish. Full-port harmonic lifts give Mosco energy convergence
+and a conservative strongly local Dirichlet form. A native six-triangle
+interpolation identifies its domain with `H1` of the auxiliary flat surface
+and supplies a regular continuous piecewise-affine core. Explicit ancestral tents
+bound its positive eigenvalues between `n/49920` and `3n/2`, proving
+heat-trace spectral dimension two. This particular source limit therefore
+cannot be a compact smooth three-dimensional second-order elliptic field
+under the same observable dictionary and fixed scale. The exact intrinsic
+metric and physical identification are separate obligations.
 The [joint observation-process extension](OCCUPATION_FIELD.md#one-continuum-observation-path-for-both-native-clocks)
 couples both clocks on the same native history and obtains one Gaussian
 Wiener field in `C([0,T],H^-2(S2))` along that spatial subsequence. It supplies

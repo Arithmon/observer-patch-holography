@@ -64,6 +64,52 @@ def test_growing_cap_budget_has_finite_scaled_error_and_distinct_clock_parameter
     assert F(4**5, 4**4) == 4
 
 
+@pytest.mark.parametrize('level', (0, 1, 4, 12))
+def test_weighted_native_heat_bound_has_correct_continuum_constant(level):
+    for kappa in (F(1, 3), F(1), F(2)):
+        value = d.finite_speed_bounds(level, kappa, separation=3, heat_parameter=2)
+        with mp.workdps(80):
+            k = mp.mpf(kappa.numerator)/kappa.denominator
+            exact = 2*4**level*(mp.cosh(k/2**level)-1)
+            upper = value['native_weighted_heat_log_norm_upper']
+            assert exact <= mp.mpf(upper.numerator)/upper.denominator
+            assert exact >= k*k
+        assert value['continuum_weighted_heat_log_norm_upper'] == kappa*kappa
+        assert value['continuum_separated_heat_log_norm_upper'] == -F(9, 4)
+        assert value['continuum_zero_wave_matrix_element_when_time_squared_below'] == 18
+        assert value['continuum_wave_speed_squared_upper'] == F(1, 2)
+        assert value['constant_zero_mode_restored_before_support_localization']
+
+
+def test_weighted_form_uses_actual_full_native_edges_and_rejects_internal_weights():
+    value = d.native_weighted_form_control()
+    assert value['exact_weighted_form_decomposition']
+    assert F(value['maximum_port_penalty']) == F(value['maximum_cross_seam_cosh_minus_one'])
+    assert F(value['internal_weight_mutation_cross_seam_penalty']) == 0
+    assert F(value['internal_weight_mutation_constant_quadratic_form']) < 0
+    assert value['finite_continuous_wave_has_instantaneous_small_tail']
+    assert F(value['finite_cross_seam_wave_t_squared_coefficient']) == F(1, 2)
+
+
+def test_davies_gaffney_optimization_and_wave_distance_normalization():
+    k, r, tau = sp.symbols('k r tau', positive=True)
+    exponent = tau*k*k/2-k*r
+    assert sp.diff(exponent, k).subs(k, r/tau) == 0
+    assert exponent.subs(k, r/tau) == -r*r/(2*tau)
+    assert -(sp.sqrt(2)*r)**2/(4*tau) == -r*r/(2*tau)
+    # A mean-zero projection spreads a localized input; support claims need
+    # the full operator with the constant zero mode restored.
+    localized = sp.Matrix([1, 0, 0, 0])
+    projected = (sp.eye(4)-sp.ones(4)/4)*localized
+    assert all(projected[i] != 0 for i in range(4))
+
+
+def test_weighted_heat_geometric_series_requires_a_sufficiently_fine_level():
+    with pytest.raises(ValueError):
+        d.finite_speed_bounds(0, lipschitz=4)
+    assert d.finite_speed_bounds(1, lipschitz=4)['native_weighted_heat_log_norm_upper'] == 12
+
+
 def test_native_green_wave_covariance_has_identity_velocity_not_quantum_vacuum():
     value = d.exact_wave_synthesis()
     assert value['constant_mode_exactly_removed']
@@ -121,6 +167,90 @@ def test_wave_path_tail_controls_the_supremum_and_tends_to_zero():
         assert value['expected_squared_supremum_tail_upper'] == expected
         assert value['expected_fourth_increment_upper_per_dt_fourth'] == 12
     assert d.wave_path_bounds(1000)['expected_squared_supremum_tail_upper'] < F(1, 100)
+
+
+@pytest.mark.parametrize('particles', (2, 4))
+def test_complete_native_branch_trace_matches_permutation_formula(particles):
+    value = d.native_reference_state_control(particles)
+    assert value['native_and_permutation_trace_moments_exactly_equal']
+    assert value['configuration_dimension'] == (66 if particles == 2 else 495)
+    assert value['native_endpoint_branches'] == 60*value['configuration_dimension']
+    assert value['cap_one_commutator_expectation_minus_i'] == (F(1, 366) if particles == 2 else F(2, 435))
+    assert value['ideal_reference_half_trace_distance_diagnostic'] > 0
+    assert not value['finite_reference_exactly_tracial']
+    # A different supplied nontracial state retains a nonzero commutator.
+    assert value['different_supplied_two_configuration_pure_state_commutator'] == 1
+
+
+def test_permutation_cycle_formula_has_an_independent_subset_oracle():
+    for particles in (2, 4):
+        states, _, edges = d._native_trace_counts(particles)
+        moments = d._permutation_moments(12, particles, 30, 240)
+        for cycle, key in (((1, 0, *range(2, 12)), 'swap_trace'),
+                           ((1, 2, 0, *range(3, 12)), 'three_cycle_trace'),
+                           ((1, 0, 3, 2, *range(4, 12)), 'disjoint_swap_trace')):
+            fixed = sum(tuple(state[i] for i in cycle) == state for state in states)
+            assert F(fixed, len(states)) == moments[key]
+    assert d._native_trace_counts(2)[1] == tuple(tuple(map(int, row))
+        for row in d.dynamics.native_density()['counts'].tolist())
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_actual_source_seams_satisfy_all_level_trace_census(level):
+    value = d.source_trace_census(level)
+    assert value['source_census_matches_all_level_formula']
+    assert value['degree_five_ports']+value['degree_six_ports'] == 240*4**level
+
+
+def test_trace_variance_bound_is_an_all_level_rational_inequality():
+    v = sp.symbols('v', positive=True)
+    exact = 2*(365*v*v-1631*v+1560)/(11907*(v-2)*(v-1)**2)
+    difference = sp.factor(1/(16*v)-exact)
+    expected = (227*v**3+4564*v*v+9615*v-23814)/(190512*v*(v-2)*(v-1)**2)
+    assert sp.simplify(difference-expected) == 0
+    # Every numerator term is positive for v>=3 after this constant grouping.
+    assert 9615*3-23814 > 0
+    for level in (0, 1, 4, 10, 100):
+        value = d.reference_state_bounds(level)
+        direct = d._permutation_moments(240*4**level, 80*4**level,
+                                        630*4**level, 5400*4**level)
+        assert value['transfer_trace_variance'] == direct['transfer_trace_variance']
+        assert value['ideal_reference_half_trace_distance_to_normalized_trace_upper'] == F(3, 8*2**level)
+
+
+def test_density_mode_weight_bound_charges_full_configuration_normalization():
+    import math
+    for level in (0, 1):
+        value = d.reference_state_bounds(level)
+        v, q = value['ports'], value['particles']
+        exact_upper = F(5*(v-1), math.comb(v, q))
+        exponent = value['density_mode_reference_probability_log2_upper']
+        assert exact_upper <= F(1, 2**(-exponent))
+        assert exponent < -60
+    assert d.reference_state_bounds(4)['density_mode_reference_probability_log2_upper'] < -20000
+
+
+def test_fixed_parameter_modular_bound_does_not_bound_rescaled_wave_time():
+    fixed = d.reference_state_bounds(12)
+    rescaled = d.reference_state_bounds(12, modular_parameter=26*4**12)
+    assert fixed['ideal_modular_automorphism_normalized_trace_L2_error_upper'] < F(1, 10000)
+    assert rescaled['ideal_modular_automorphism_normalized_trace_L2_error_upper'] == 2
+    assert not fixed['modular_operator_norm_triviality_claimed']
+    assert not fixed['refinement_rescaled_modular_time_triviality_claimed']
+
+
+def test_local_fluctuation_commutator_bound_accounts_for_overlapping_terms():
+    value = d.reference_state_bounds(10, terms_per_vertex=3, overlaps=5, norm=2)
+    assert value['bounded_overlap_fluctuation_commutator_norm_upper'] == 120
+    epsilon = value['growing_cap_reference_half_trace_distance_to_normalized_trace_upper']
+    assert value['growing_cap_fluctuation_commutator_expectation_upper'] == 240*epsilon
+    assert not value['every_noncommutative_or_nontracial_limit_excluded']
+
+
+def test_cached_native_trace_rows_cannot_be_mutated():
+    _, rows, _ = d._native_trace_counts(2)
+    with pytest.raises(TypeError):
+        rows[0][0] = 0
 
 
 @pytest.mark.parametrize('bad', (True, -1, 1., '1'))

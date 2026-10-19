@@ -72,6 +72,71 @@ into agreement. `finite_entropy_balance` **evaluates** the identity;
 separate scalar spectra and high-precision entropy derivatives test it.
 Subtracting two order-one entropies is no longer the production method.
 
+## Joint counting stationarity and its geometric boundary
+
+The existing [screen entropy identity](derive_screen_shock_spectrum.py)
+has a joint state–capacity consequence. For positive integer sector counts
+`d_i`, normalized probabilities `p_i`, and `M=sum_i d_i`, put `q_i=d_i/M`.
+Then
+
+```text
+S_count(p,d) = H(p)+sum_i p_i log d_i = log M-D(p||q) <= log M.
+```
+
+Equality holds exactly at `p=q`. This compares every admissible finite
+integer partition at the same total count `M`; it requires no derivative of
+integer dimensions. The corresponding equality at dimension weights is
+[proved in Lean](../../Lean/ObserverPatchHolography/DeSitterCapacityShock.lean).
+
+In the **positive-real analytic relaxation**, take differentiable joint
+paths `p(t),d(t)` with `sum p=1`, fixed `M`, and `p(0)=d(0)/M`. Writing
+`u=p'(0)` and `v=d'(0)`, direct differentiation gives
+
+```text
+S_count'(0) = (log M-1) sum_i u_i + sum_i v_i/M = 0,
+S_count''(0) = -sum_i (u_i-v_i/M)^2/p_i <= 0.
+```
+
+The second identity assumes twice differentiable constrained paths. Their
+acceleration terms cancel by the same constraints. Equality directions
+follow the moving maximizer; this is a nonstrict joint maximum, while the
+area term alone can have positive fixed-capacity curvature. These derivatives
+do not construct an operation that changes integer sector dimensions.
+
+The count convention matters. For actual blocks
+`rho=direct_sum_i p_i(rho_i tensor I_(d_i)/d_i)` with bulk dimension `b_i`,
+the full entropy contains `sum p_i S(rho_i)`. Its exact deficit is
+
+```text
+S(rho) = log M-D(p||w/M)-sum_i p_i D(rho_i||I_(b_i)/b_i),
+w_i=b_i d_i, M=sum_i w_i.
+```
+
+Thus full saturation also requires maximally mixed bulk blocks and uses
+`w_i`, not edge counts alone. The simpler formula has one-dimensional bulk
+blocks, or counts the entire sector as `d_i`.
+
+Uniform microscopic repair statistics produce `q_i=d_i/M` when `d_i`
+counts the accessible microstates in each observed sector. The existing
+[native fixed-total calculation](../../model/physical_space_time/occupation_field.py)
+checks this for the uniform stationary law on all 66 binary total-two
+states. Preparation at that law or the separately controlled
+[equilibration](../../model/native_equilibration/README.md)
+is still needed. Consensus or relative-entropy minimization against an
+arbitrary reference does not select uniform counting: on two equally sized
+sectors a reset kernel with stationary law `(1/4,3/4)` minimizes divergence
+to that law, but the counting entropy derivative in direction `(1,-1)` is
+`log 3`, not zero.
+
+This discharges joint counting stationarity on its stated finite/relaxed
+domain. Identifying fixed `M` with fixed physical small-ball volume,
+`sum p_i log d_i` with the area term, and the remaining block entropy with
+the same continuum quantum fields still requires a common source dictionary
+and controlled variations. [Jacobson's construction](https://arxiv.org/abs/1505.04753)
+uses simultaneous geometry and field-state variations at fixed geodesic-ball
+volume. The counting identity does not identify that geometric variation
+family or its area coefficient.
+
 ## A complete generator test and its witness
 
 Supply an independent Hermitian candidate `K`. Let

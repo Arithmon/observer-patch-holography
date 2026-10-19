@@ -7,16 +7,52 @@
       "4": "3328"
     },
     "coarse_projection_energy_multiplier": "624*4^(-k)",
+    "continuum_form_comparison_on_H1": "a^2/112*integral|grad f|^2 <= E(f) <= a^2/48*integral|grad f|^2",
+    "continuum_positive_eigenvalue_enclosures": {
+      "1": {
+        "lower": "1/49920",
+        "upper": "3/2"
+      },
+      "1000000": {
+        "lower": "3125/156",
+        "upper": "1500000"
+      },
+      "19": {
+        "lower": "19/49920",
+        "upper": "57/2"
+      },
+      "20": {
+        "lower": "1/2496",
+        "upper": "30"
+      },
+      "79": {
+        "lower": "79/49920",
+        "upper": "237/2"
+      },
+      "80": {
+        "lower": "1/624",
+        "upper": "120"
+      }
+    },
     "covariance_eigenvalue_number_20_times_4_power_k_upper": {
       "0": "624",
       "20": "39/68719476736",
       "4": "39/16"
     },
+    "full_port_internal_tail_per_unit_energy": {
+      "0": "1/2",
+      "20": "1/2199023255552",
+      "4": "1/512"
+    },
+    "interpolation_gradient_squared_upper": "112/a^2*E_l(f_l)",
+    "interpolation_mass_error_upper": "20/(3*4^l)*E_l(f_l)",
     "macroscopic_separation_one_quarter_action_base_two_exponents": {
       "12": -996,
       "5": 6,
       "8": -44
     },
+    "mean_zero_heat_trace_lower": "1/(exp(3*t/2)-1), t>0",
+    "mean_zero_heat_trace_upper": "1/(exp(t/49920)-1), t>0",
     "patch_variance_energy_multiplier": "26*4^(l-k)",
     "separated_cell_support_bilinear_action": "4^l*2^(-d)*||u||*||v||, d>=1"
   },
@@ -26,6 +62,37 @@
     "physical_spatial_metric_or_radial_coordinate_supplied_by_this_result": false,
     "source": "existing spherical shared-midpoint carrier joins with distinct ports",
     "space": "mean-zero L2 of normalized auxiliary flat-polyhedron area"
+  },
+  "exact_interpolation_geometry": {
+    "normalized_gradient_times_side_squared_per_dual_energy_upper": "7/30",
+    "normalized_mass_error_times_cell_count_per_dual_energy_upper": "5/18",
+    "source_vertex_cycle_certificates": [
+      {
+        "rational_nonnegative_pivots": [
+          "6/5",
+          "2/3",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "valence": 5,
+        "variance_is_bounded_by_cycle_edge_energy": true
+      },
+      {
+        "rational_nonnegative_pivots": [
+          "7/6",
+          "4/7",
+          "1/4",
+          "0",
+          "0",
+          "0"
+        ],
+        "valence": 6,
+        "variance_is_bounded_by_cycle_edge_energy": true
+      }
+    ],
+    "subtriangle_mean_squared_error": "((v-c)^2+(m-c)^2+(v-c)*(m-c))/6",
+    "unit_side_subtriangle_energy": "sqrt(3)/6*(v-m)^2+sqrt(3)/2*(c-m)^2"
   },
   "exact_patch_controls": [
     {
@@ -71,6 +138,128 @@
       "variance_energy_multiplier": 416
     }
   ],
+  "exact_source_interpolation_controls": [
+    {
+      "all_native_vertex_stars_are_the_certified_cycles": true,
+      "cells": 20,
+      "exact_dual_energy": "4073/25",
+      "exact_normalized_interpolation_mass_error": "33157/45000",
+      "level": 0,
+      "normalized_gradient_times_side_squared": "33157/1875",
+      "normalized_gradient_times_side_squared_upper": "28511/750",
+      "normalized_interpolation_mass_error_upper": "4073/1800",
+      "vertex_valence_counts": {
+        "5": 12
+      }
+    },
+    {
+      "all_native_vertex_stars_are_the_certified_cycles": true,
+      "cells": 80,
+      "exact_dual_energy": "11831/25",
+      "exact_normalized_interpolation_mass_error": "31499/54000",
+      "level": 1,
+      "normalized_gradient_times_side_squared": "62998/1125",
+      "normalized_gradient_times_side_squared_upper": "82817/750",
+      "normalized_interpolation_mass_error_upper": "11831/7200",
+      "vertex_valence_counts": {
+        "5": 12,
+        "6": 30
+      }
+    },
+    {
+      "all_native_vertex_stars_are_the_certified_cycles": true,
+      "cells": 320,
+      "exact_dual_energy": "46404/25",
+      "exact_normalized_interpolation_mass_error": "4217/7200",
+      "level": 2,
+      "normalized_gradient_times_side_squared": "16868/75",
+      "normalized_gradient_times_side_squared_upper": "54138/125",
+      "normalized_interpolation_mass_error_upper": "1289/800",
+      "vertex_valence_counts": {
+        "5": 12,
+        "6": 150
+      }
+    },
+    {
+      "all_native_vertex_stars_are_the_certified_cycles": true,
+      "cells": 1280,
+      "exact_dual_energy": "37436/5",
+      "exact_normalized_interpolation_mass_error": "1700087/2880000",
+      "level": 3,
+      "normalized_gradient_times_side_squared": "1700087/1875",
+      "normalized_gradient_times_side_squared_upper": "131026/75",
+      "normalized_interpolation_mass_error_upper": "9359/5760",
+      "vertex_valence_counts": {
+        "5": 12,
+        "6": 630
+      }
+    }
+  ],
+  "exact_tent_geometry": {
+    "native_limit_tent_energy_quotient_at_coarse_level_zero": "3/2",
+    "normalized_tent_mean": "1/3",
+    "normalized_tent_second_moment": "1/6",
+    "unit_side_centroid_tensor": "I_2/2",
+    "unit_side_tent_gradient_squared": "12"
+  },
+  "exact_tent_refinement_controls": [
+    {
+      "exact_normalized_patch_tent_mean": "1",
+      "exact_normalized_patch_tent_second_moment": "1",
+      "integer_source_adjacency_and_all_twenty_tent_energies_checked": true,
+      "level": 0,
+      "max_dual_energy_diagonal_error_from_three_twentieths": "0",
+      "max_dual_energy_off_diagonal": "1/20",
+      "source_cells": 20
+    },
+    {
+      "exact_normalized_patch_tent_mean": "5/8",
+      "exact_normalized_patch_tent_second_moment": "7/16",
+      "integer_source_adjacency_and_all_twenty_tent_energies_checked": true,
+      "level": 1,
+      "max_dual_energy_diagonal_error_from_three_twentieths": "3/80",
+      "max_dual_energy_off_diagonal": "1/40",
+      "source_cells": 80
+    },
+    {
+      "exact_normalized_patch_tent_mean": "25/64",
+      "exact_normalized_patch_tent_second_moment": "49/256",
+      "integer_source_adjacency_and_all_twenty_tent_energies_checked": true,
+      "level": 2,
+      "max_dual_energy_diagonal_error_from_three_twentieths": "9/320",
+      "max_dual_energy_off_diagonal": "1/80",
+      "source_cells": 320
+    },
+    {
+      "exact_normalized_patch_tent_mean": "179/512",
+      "exact_normalized_patch_tent_second_moment": "721/4096",
+      "integer_source_adjacency_and_all_twenty_tent_energies_checked": true,
+      "level": 3,
+      "max_dual_energy_diagonal_error_from_three_twentieths": "21/1280",
+      "max_dual_energy_off_diagonal": "1/160",
+      "source_cells": 1280
+    },
+    {
+      "exact_normalized_patch_tent_mean": "1381/4096",
+      "exact_normalized_patch_tent_second_moment": "11041/65536",
+      "integer_source_adjacency_and_all_twenty_tent_energies_checked": true,
+      "level": 4,
+      "max_dual_energy_diagonal_error_from_three_twentieths": "9/1024",
+      "max_dual_energy_off_diagonal": "1/320",
+      "source_cells": 5120
+    }
+  ],
+  "full_port_form_control": {
+    "constant_zero_mode_adjoined_before_normal_contraction": true,
+    "contracted_energy_over_raw_energy": "1573668269738701925212375451322141217872207380541218398383165090752162526709562164844477024839832791/5456392245351238474597421383099195868880242331912599878704011122517495992024488195460532094635880000",
+    "contraction_error_squared_over_internal_norm_squared": "374113211776002745645361853630005767421822314734227769025390591157426161120124738863467993140166629/902429575020804968600100959223995315813640738593409444246334224419507584785101888415360982249292160",
+    "cutoff_energy": "259463/400",
+    "cutoff_energy_upper": "61716/25",
+    "full_port_harmonic_energy_identity_checked": true,
+    "internal_norm_squared_over_raw_energy": "313343602437779502986146166397220595768625256456044945918866050145662355828160377922000341058782/5683741922240873411038980607394995696750252429075624873650011585955724991692175203604720931912375",
+    "level": 0,
+    "ports": 240
+  },
   "mean_elimination_control": {
     "cells": [
       5,
@@ -307,7 +496,7 @@
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
     "model/physical_space_time/continuum_field.py": "822efc9ecf8cc626fc152b0ada5739769d075c639cf245543a6d6123f6d2a7d4",
-    "model/physical_space_time/local_continuum.py": "cfc566946b9a174cbeed0a4dee823a6b586d392050919ee330c8695526bf39d0",
+    "model/physical_space_time/local_continuum.py": "811da8a81b0cd3c4dbfe39cddd84f7dfd2d841a398c4ba2fdecf34e2bd153500",
     "model/physical_space_time/source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
     "model/physical_space_time/uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
@@ -328,10 +517,17 @@
   },
   "theorem": {
     "common_Green_subsequence_converges_in_operator_norm": true,
+    "continuous_piecewise_affine_functions_are_a_regular_form_core": true,
+    "exact_intrinsic_metric_identified": false,
+    "finite_reduced_forms_Mosco_converge_on_full_L2_with_constant_zero_mode": true,
     "finite_rescaled_action_couplings_at_separated_continuum_supports_vanish": true,
+    "form_domain_is_H1_of_the_auxiliary_flat_surface": true,
+    "heat_trace_spectral_dimension": 2,
     "inverse_is_positive_self_adjoint_spatial_generator": true,
-    "limit_identified_as_local_Dirichlet_or_round_sphere_Laplacian": false,
+    "limit_identified_as_round_sphere_Laplacian": false,
     "limit_is_compact_positive_and_injective_on_mean_zero_L2": true,
+    "limit_is_conservative_strongly_local_Dirichlet_form": true,
+    "same_dictionary_scaled_compact_smooth_second_order_three_dimensional_elliptic_identification_excluded": true,
     "three_dimensional_space_or_Lorentzian_metric_derived": false,
     "unique_whole_sequence_generator_selected": false
   }

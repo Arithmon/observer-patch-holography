@@ -198,9 +198,23 @@ Two long blocks from one native observation history supply a continuous
 Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. Its synthesis
 parameter and processor are declared; it is not the passive instantaneous
 occupation process or a quantum vacuum. Coherent access and reflection
-remain explicit services. The limiting form's locality is not established:
-finite cell-mean elimination has a positive off-diagonal counterexample
-and cannot be treated as a Markov generator by vertex-reduction arguments.
+remain explicit services. The limiting form is conservative, regular,
+Markovian and strongly local, with domain `H1`: full-port contractions and
+support-preserving
+recoveries survive the internal-gap limit. Finite cell-mean elimination
+has a positive off-diagonal counterexample, so this conclusion needs
+the full-port argument. Two-sided eigenvalue bounds give heat-trace
+spectral dimension two. Under the same operator dictionary and scaling,
+this excludes a regular compact three-dimensional second-order elliptic
+spatial operator. It does not exclude a separate radial reconstruction.
+Restoring the constant mode gives the full-space generator `Abar`.
+Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
+are `||1_F exp(-tau*Abar)1_E||<=exp(-d(E,F)^2/(2*tau))` and zero cosine
+propagation when `|t|<sqrt(2)*d(E,F)`. The distance is intrinsic to the
+supplied flat comparison polyhedron. Finite matrices do not have this
+exact support property, and stationary field correlations need not vanish
+outside this propagation region. The theorem supplies neither a measured
+light speed nor Lorentz boosts.
 
 The [random-length return construction](observer_time_fields/wave_reference.py)
 uses the positive length law with generating function
@@ -218,6 +232,13 @@ The jointly growing return cap `64*(4^level)^4` gives scaled phase error
 at most `26/4^level`. A fixed cap instead makes the bounded-band scaled
 generator tend to zero. This order-of-limits control prevents a finite
 sampler demonstration from certifying a continuum modular clock or state.
+The full fixed-number reference approaches normalized trace.
+At fixed modular parameter, bounded readouts become stationary in the
+normalized-trace L2 sense; refinement-rescaled dynamics are not covered
+by that conclusion. The density-wave sector carries vanishing reference
+weight. Bounded-overlap local fluctuation arrays have vanishing expected
+commutator under this state, so they do not yield nonzero scalar CCR
+without a different justified state or observable construction.
 
 The [finite repair-response identity](predictions/repair_response.py)
 connects a native intervention to passive observations. Repair on `(a,b)`
@@ -225,8 +246,19 @@ conditioned on the disclosed bit `n_a=1` changes the stationary density
 by the likelihood factor `1+(n_b-n_a)/2`. Its marked refinement predicts
 complete future clock, current and field laws, including zero outcomes and
 timeouts. The discounted mean-field response is a dipole of the same
-spatial Green resolvent. It adds no fitted response parameter and supplies
-no physical identification with the published optical-clock records.
+spatial Green resolvent. The [controlled continuum response](predictions/README.md#a-controlled-continuum-mean-with-an-executed-event-clock)
+uses the unchanged endpoint rule with an occupation-dependent execution
+probability. Its exact executed-clock derivative is
+`2*chi*K*(I-K^r)*h`; simply doubling a slot count misses a stopping
+correlation. With the source normalization it converges to
+`2(I-exp(-tau*A))f`. A stopped likelihood bound gives a uniform nonlinear
+mean error `36*epsilon^2*||g||` at `tau=1`, including terminal fields on
+timeout. At `epsilon=10^-6`, one coordinate readout has strictly positive
+liminf at least `244359/1024750000000000`. Finite fair-bit approximation
+preserves that limit and charges its native service writes separately
+from executed dynamical repairs. This proves a controlled signal, not a
+unique nonlinear law, spontaneous force or atomic-clock correspondence.
+Public optical ratios do not contain the required intervention records.
 
 These are compatible source-observation constructions. The auxiliary sphere
 supplies no physical radial domain, and wave amplitudes supply no quantum

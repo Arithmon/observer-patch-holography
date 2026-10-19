@@ -141,13 +141,21 @@ The native spherical construction supplies one such mathematical connection:
 an ancestral-cell Poincare bound makes the Green subsequence converge in
 operator norm to an injective compact `G`. Its inverse `A` determines the
 limiting spatial covariance, native heat propagator and admitted coherent
-wave amplitudes. Two long record blocks also give a continuous Gaussian
-wave readout with covariance `G cos((t-u)sqrt(A))`. These are compatible
-limits on the source's spherical test domain; a local physical metric,
-three-dimensional bulk, quantum field state and calibrated clock do not
-follow from this operator construction. The
+wave amplitudes. Its conservative regular strongly local form has domain
+`H1` and spectral dimension two on the spherical observation domain. With
+the constant mode restored, a heat off-diagonal estimate gives finite wave
+propagation in the supplied flat comparison distance. Two long record
+blocks give a continuous Gaussian wave readout with covariance
+`G cos((t-u)sqrt(A))`; a controlled repair bias gives mean derivative
+`2(I-exp(-tau*A))f` and a nonvanishing fixed-amplitude signal with uniform
+error bounds. These compatible limits do not identify a physical metric,
+three-dimensional bulk, quantum field vacuum or calibrated clock. In
+particular the full native-return reference approaches normalized trace
+at fixed modular parameter, while its density-wave sector has vanishing
+reference weight. The
 [common-generator proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
-states its observation access, parameter conventions and limit orders.
+and [controlled response](predictions/README.md#a-controlled-continuum-mean-with-an-executed-event-clock)
+state their observation access, parameter conventions and limit orders.
 
 The [quantum incident-clock construction](observer_correspondence/QUANTUM_CLOCK.md)
 complements the [exact full-state representation](quantum_observer_correspondence/README.md)
@@ -868,8 +876,17 @@ retains the detailed preparation, history and resource assumptions.
 Regional maximum-entropy completion, nested inclusion towers, protected
 records and charge-resolved collars remain available from the
 [finite algebra results](../code/quantum_information/ALGEBRAS_AND_REPAIR.md).
-A charge center is not by itself a physical gauge-edge factor, area law or
-stress coupling. Nonnested completions need not commute. The
+The [native mixing theorem](observer/QUANTUM_MIXING.md) makes the
+unread binary fixed-number state converge to its tracial entropy maximum under
+the specified independent schedule. At `I/d`, entropy has zero first
+variation for every trace-zero state perturbation on that fixed algebra.
+The [joint counting identity](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#joint-counting-stationarity-and-its-geometric-boundary)
+`S_count(p,d)=log(M)-D(p||d/M)`, with `M=sum d`, also makes joint state/count
+variations stationary at saturation when `M` stays fixed, in the stated
+positive-real relaxation. The native sector counts satisfy that finite
+identity. Neither fixed total count nor `log(d)` is yet identified with
+physical volume or geometric area. A charge center alone supplies no
+physical gauge-edge factor or stress coupling. Nonnested completions need not commute. The
 [gravity premise ladder](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs) retains
 the physical assumptions needed for the existing gravitational conclusions.
 

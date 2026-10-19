@@ -829,6 +829,9 @@ bounds make `G` injective on `H`; it is positive, compact and bounded by
 densely defined positive self-adjoint operator with compact resolvent.
 This defines an actual continuum spatial action
 `E(f)=||sqrt(A)f||^2` on `D(sqrt(A))`, independently of a guessed metric.
+The [full-port recovery argument](../physical_space_time/OCCUPATION_FIELD.md#locality-and-spectral-dimension-of-the-source-continuum)
+shows that adjoining the constant zero mode gives a conservative strongly
+local Dirichlet form; its heat-trace spectral dimension is two.
 The selected subsequence is common to every readout below; neither a
 whole-sequence limit nor its numerical value is inferred from finite runs.
 
@@ -901,6 +904,68 @@ budgets, separate from the unquantified spatial subsequence limit.
 Native occupation correlations decay with `exp(-tau A)`; the admitted
 coherent amplitudes propagate with `cos(t sqrt(A))`. Their parameter
 normalizations differ and are not calibrated laboratory seconds.
+
+### Finite propagation on the source comparison space
+
+The same full-port convergence also supplies a support bound. Restore
+the constant zero mode and write `Abar=A direct-sum 0` on **all**
+`L2(mu)`. A support statement for arbitrary local inputs must use this
+extension: subtracting a mean is itself nonlocal. Let `d` be intrinsic
+distance on the unit-circumradius flat comparison polyhedron. A bounded
+real `kappa`-Lipschitz function `psi` is sampled at cell centroids and
+repeated on the twelve ports. It has zero difference on internal seams;
+on a cross seam its difference is at most `kappa*2^-l`. Cross seams form
+a port matching. Expanding the Hermitian part edge by edge therefore gives
+
+```text
+Re <u,e^psi_l D_l e^-psi_l u>
+ >= -4^l [cosh(kappa*2^-l)-1] ||u||^2.                  (FS1)
+```
+
+For an edge with weight difference `delta`, its real contribution is its
+unweighted squared difference minus
+`2(cosh(delta)-1) Re(conj(u_a)u_b)`. Bound the latter by
+`(cosh(delta)-1)(|u_a|^2+|u_b|^2)` and sum. The matching, not the full
+native degree, gives the coefficient in (FS1). The differential norm
+inequality for the finite matrix semigroup yields
+
+```text
+||e^psi_l exp(-tau D_l)e^-psi_l||
+ <= exp(tau*4^l [cosh(kappa*2^-l)-1]).
+```
+
+Cell compression commutes with these cell-repeated multipliers. The
+centroid weights converge uniformly to `psi`, and the full-port heat
+convergence above extends exactly to the constant mode. Taking the same
+subsequence gives
+`||e^psi exp(-tau Abar)e^-psi||<=exp(tau*kappa^2/2)`.
+For inputs supported in sets `E,F` at distance `r>0`, use
+`psi(x)=kappa*min(d(x,E),r)` and optimize at `kappa=r/tau`. Thus
+
+```text
+||1_F exp(-tau Abar)1_E|| <= exp(-r^2/(2*tau)), tau>0.    (FS2)
+<g,cos(t sqrt(Abar))f> = 0 when |t|<sqrt(2)*r.            (FS3)
+```
+
+The last implication is the nonnegative self-adjoint
+[Davies–Gaffney/finite-propagation equivalence of Coulhon and Sikora,
+Theorem 3.4](https://arxiv.org/abs/math/0609429), applied with distance
+`sqrt(2)*d`. Its normalization is `exp(-distance^2/(4*tau))` for unit
+wave speed. Consequently (FS3) bounds speed by `1/sqrt(2)` in the declared
+comparison distance per coherent wave parameter. Integrating the cosine
+also gives this support bound for the sine-over-generator propagator of
+a localized initial velocity.
+
+The exact source control verifies (FS1) using rational exponential
+weights. Allowing weights to vary inside a carrier defeats its
+cross-seam-only penalty. At level zero a cross-seam matrix element of the
+**finite** continuous cosine starts with `t^2/2` (with `4^l*t^2/2` at
+level `l`), so exact finite-level
+propagation is not asserted. Nor does (FS3) make the stationary Gaussian
+field's long-range correlations vanish: it concerns propagation of local
+changes. This is a finite-speed continuum wave law on the supplied
+two-dimensional comparison topology. It does not identify a measured
+metric, light speed, Lorentz symmetry, or laboratory clock.
 
 ### A continuous wave readout from one native record history
 
@@ -992,10 +1057,11 @@ For bounded `t`, its reconstructed modular cosine therefore has the same
 limit `cos(t sqrt(A))`; the additional error is at most
 `min(2,26|t|/4^l)`. This compares spectral phase magnitudes and cosine
 amplitudes. The arc walk has both phase signs and does not implement every
-vertex modular unitary or modular intervention. No compatible faithful
-continuum algebra-state pair is obtained merely by convergence of the
-rescaled generators. The normalized finite reference states have their
-own state-limit and implementation obligations.
+vertex modular unitary or modular intervention. The
+[full-reference limit below](#the-full-reference-state-and-its-quantum-fluctuation-boundary)
+shows why the rescaled phase match does not supply the desired quantum
+state: these full-configuration references approach normalized trace, and
+the density-wave sector has vanishing reference weight.
 
 The cap order matters in a stronger way than absence of a uniform error
 certificate. For a **fixed** `h`, positivity of the polynomial coefficients
@@ -1017,11 +1083,136 @@ native temporal correlations, continuous wave observations and matching
 modular phase magnitudes through one source operator. The source sphere
 is a two-dimensional readout domain. Neither its three ambient coordinate
 functions nor the internal rank-three band add a physical radial variable.
-Finite signal speed, a Lorentzian metric, an observed `1+3` identification,
-interacting CFT/QFT and atomic-clock calibration require additional proved
-observable relations. They are not conclusions of this continuum limit.
+The comparison wave support cone is proved above. A Lorentzian metric,
+an observed `1+3` identification, interacting CFT/QFT and atomic-clock
+calibration require additional proved observable relations. They are not
+conclusions of this continuum limit.
 
 ```text
 python -m model.observer_time_fields.continuum_dynamics --check model/observer_time_fields/continuum_dynamics_results.json
 python -m pytest -q -W error model/observer_time_fields/test_continuum_dynamics.py
 ```
+
+### The full reference state and its quantum-fluctuation boundary
+
+The native return construction normalizes over **all** fixed-number
+configurations, not just its density-mode subspace. This distinction has
+a quantitative consequence on the same refining source. Write
+`V=240*4^l`, `q=V/3`, `d=binom(V,q)`, `M=21V/8`, and let
+`tau(X)=Tr(X)/d` on the full configuration algebra. For each native seam,
+let `S_e` swap its two binary occupations. The actual transfer is
+
+```text
+K=(1/M) sum_e (I+S_e)/2,       kappa=tau(K)=1-chi,
+chi=q(V-q)/[V(V-1)].
+```
+
+This uses the unchanged uniform seam law and fair native repair.
+Normalized permutation traces count fixed binary subsets. One swap,
+two swaps sharing an endpoint, and disjoint swaps have respective traces
+`1-2chi`, `1-3chi`, and `1-4chi+4psi`, where
+`psi=q(q-1)(V-q)(V-q-1)/[V(V-1)(V-2)(V-3)]`.
+There are `M` equal ordered edge pairs, `45V/2` distinct ordered pairs
+sharing a vertex, and `M(M-1)-45V/2` disjoint pairs: exactly `3V/4`
+ports have degree five and `V/4` have degree six. Consequently
+
+```text
+v_l := tau((K-kappa I)^2)
+ = 2(365V^2-1631V+1560)/[11907(V-2)(V-1)^2] <= 1/(16V).    (S1)
+```
+
+The executable verifies the census on the actual source levels and
+independently sums all native endpoint/coin branches in the twelve-port
+total-two and total-four sectors. The inequality is all-level algebra:
+subtracting (S1) from `1/(16V)` has positive denominator and numerator
+`227V^3+4564V^2+9615V-23814`, positive for `V>=3`.
+
+Set `f(x)=exp(-acos x)` and `sigma=f(K)/Tr f(K)`. For the present density,
+`2/9<=chi<=1/4`. Convexity of `f` gives the relative-to-`kappa` bound
+`|f(x)-f(kappa)|<=|x-kappa|/chi` for `0<=x<=1`; its largest secant
+slope is bounded by the secant to one. Also `f>=exp(-pi/2)>1/5`.
+Cauchy–Schwarz applied to the spectral trace therefore gives
+
+```text
+(1/2)||sigma-I/d||_1 <= (5/chi) sqrt(v_l)
+                           <= 3/(8*2^l) = epsilon_l.      (S2)
+```
+
+The estimate holds on the full algebra, uniformly over bounded readouts.
+It concerns the reconstructed reference; it does not claim that coherent
+`sigma` has been prepared on the native working source. For the admitted
+growing cap `h_l=64*(4^l)^4`, its additional half-trace error is at most
+`delta_l=1/[2*(4^l)^2]`, so the capped reference obeys (S2) with
+`epsilon_l+delta_l`.
+
+There is a corresponding statement about **fixed dimensionless modular
+parameter** `u`. Let `Theta=acos(K)`, `theta0=acos(kappa)` and
+`||X||_(2,tau)^2=tau(X*X)`. The concavity of `acos` gives
+`|acos(x)-theta0|<=8|x-kappa|`. For `||B||<=1`,
+
+```text
+||exp(-iuTheta) B exp(iuTheta)-B||_(2,tau)
+ <= 16|u| sqrt(v_l) <= 4|u|/(15*2^l).                    (S3)
+```
+
+The cap contributes at most `2|u|/(4^l)^2`. Relative reference densities
+are bounded by five times normalized trace, so the same vanishing holds
+in the reference-state `L2` norm. This is not operator-norm convergence.
+Nor does (S3) imply triviality for the wave scaling
+`u=t sqrt(630)*4^l`, which diverges. Rescaled low-mode phases can remain
+nontrivial while fixed-parameter bounded-state observations become tracial.
+
+More generally, any compatible product-preserving bounded algebra readouts
+whose moments have a limit inherit a tracial state: cyclicity of `tau`
+and (S2) make every bounded commutator expectation vanish. On the faithful
+support of such a tracial limiting state its modular automorphism is the
+identity. This conditional statement does not supply the missing algebra
+embeddings or preclude a differently scaled dynamical limit.
+
+The exact native density-mode subspace has dimension `V-1` and is invariant
+under `K`. Its orthogonal projection `P_density` satisfies, for the ideal
+reference and every polynomial cap,
+
+```text
+Tr(sigma P_density) <= 5(V-1)/binom(V,V/3) -> 0.           (S4)
+```
+
+Here the scalar density relative to normalized trace is at most five:
+for the cap polynomial, `P_h(1)/P_h(0)<=exp(pi/2)<5`.
+The bound `binom(V,V/3)>=3^(V/3)>=2^(V/3)` makes the decay explicit without
+allocating the configuration space. Renormalizing this subspace would
+therefore be a new sector-conditioning operation with a vanishing success
+probability under the full reference. The nonzero density-wave generator
+alone does not identify its state as the unconditioned source vacuum.
+
+This also identifies a precise boundary for a quantum fluctuation claim.
+Recorded occupations and their deterministic processing commute exactly.
+Allow instead coherent local observables `A_j,B_j` of norm at most `B`,
+at most `aV` terms per family, with at most `b` overlapping terms of the
+other family for each term. Assume disjoint supports commute and every
+operator preserves the binary fixed-number sector. For centered fluctuations
+`F=V^(-1/2)sum A_j`, `H=V^(-1/2)sum B_j`,
+
+```text
+||[F,H]|| <= 2ab B^2,
+|Tr(sigma_h [F,H])| <= 4ab B^2 (epsilon_l+delta_l) -> 0.   (S5)
+```
+
+Thus a quantum central limit with moment convergence on this specified
+fluctuation domain cannot have a nonzero scalar canonical commutator.
+No quantum CLT for the refining source is assumed or proved here. The
+[tracial quantum CLT of Kuperberg](https://arxiv.org/abs/math-ph/0202035)
+is relevant context, but its IID-copy premise is different from this
+source refinement; (S5) follows directly from trace distance and locality
+of the tested operator family.
+
+The finite references are not exactly tracial. With `A=n_0`,
+`B=i[A,S_(0,1)]` and the cap-one reference `(I+K)/Tr(I+K)`, the native
+oracle gives `-i Tr(sigma_1[A,B])=chi/[M(2-chi)]`, equal to `2/435`
+in the total-four carrier. A separately supplied coherent pure state on
+two swapped configurations gives one instead. These controls exclude an
+overbroad no-go: different nontracial preparations, different observable
+scalings, unbounded overlap or a justified sector-conditioned construction
+need their own analysis. The present full reference does not obtain the
+quantum vacuum covariance `(2sqrt(A))^-1` by its existing unconditioned
+bounded-algebra limit.

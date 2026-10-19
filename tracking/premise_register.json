@@ -4618,9 +4618,9 @@
         "premises": [
           "PR-26"
         ],
-        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities are proved under their declared variations.",
-        "remaining": "The candidate must supply constraint-tangent generalized-entropy stationarity for joint state and geometry variations, with the physical area/edge identification.",
-        "closure": "Construct the permitted variation family and show the full generalized entropy has zero first variation at fixed physical volume. A fixed-reference entropy optimum alone does not do this.",
+        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities hold under their declared variations. The exact identity S_count(p,d)=log(M)-D(p||d/M) bounds all integer sector partitions at fixed M=sum(d). In the positive-real relaxation, saturation p=d/M gives joint state-capacity first variation zero and second variation -sum((p_prime-d_prime/M)^2/p). Uniform sampling on the actual 66-state native sector supplies dimension-weighted observed probabilities; arbitrary stationary reset does not. With nontrivial bulk blocks, total sector counts are b_i*d_i and saturation also requires maximally mixed bulk states.",
+        "remaining": "The physical bridge must identify fixed total count with fixed small-ball proper volume, edge log-count variation with delta A/(4G), and the remaining block entropy with the same continuum field state. Native entropy stationarity on a fixed sector does not establish these identifications or a geometric modular boost.",
+        "closure": "Map the proved counting variation family to controlled joint state-geometry variations at fixed physical volume, with the area coefficient and continuum error established independently.",
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
@@ -4633,6 +4633,11 @@
           {
             "path": "claims/assumption_dictionary.md",
             "label": "Stationarity and fixed-cap assumptions"
+          },
+          {
+            "path": "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
+            "label": "Joint finite counting stationarity and its physical geometric boundary",
+            "anchor": "## Joint counting stationarity and its geometric boundary"
           }
         ],
         "assumptions": [
@@ -4843,7 +4848,7 @@
           "PR-75",
           "PR-76"
         ],
-        "constructed": "Native C/E instruments give different complete coherent-readout laws under shared classical endpoint dynamics. Source compilation executes both alternatives on the full 78-state encoding, with all outcomes, padding and arbitrary references. The continuing-carrier discriminator uses finite native mixing before each trial and a uniform conditional-law coupling bound, so actual trial independence and exact stationary resets are unnecessary. Its locked design uses 379 discarded attempts before each of 3927 trials and bounds wrong-candidate probability by 3/400 in the exact-source model. The retained execution verifies two consecutive trials, not a sampled full campaign. A separately authenticated physical per-trial conditional error at most 1/1570800 would suffice for a one-percent bound.\n\nPublic oscillator comparisons execute a supplied experimental action and apparatus model, with retrospective calibration/evaluation splits. Zero-displacement, opposite-probe and two-order Gram identities constrain observations independently of the oscillator action; their aggregate-mean residuals are deterministic diagnostics. The calibrated measurement evaluator retains null settings, complete counts, apparatus budgets and simultaneous sampling error. These controls provide explicit measurement requirements without treating software trials as physical data. A randomized Gram witness has a fixed-horizon conditional concentration bound despite preparation drift and quantum memory. Fresh settings must remain independent of the joint prepared work/reference state conditional on the past. Its two-trial source program retains 100 outcomes; physical detector-error bounds and fresh complete records are needed. Public means determine future threshold-crossing budgets conditional on repeated negative scores, not power or a present-data rejection. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration.\n\nA retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.\n\nA finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map. One continuing native occupation history has a count-limit Gaussian covariance derived from the actual binary generator. On the spherical source, an all-level ancestral energy bound gives an injective compact Green limit in operator norm along a common subsequence. Its inverse is shared by native heat, coherent cosine propagation and continuous classical Gaussian wave readouts. A record-conditioned repair has an exact marked likelihood identity that predicts complete joint clock/field laws from passive correlations; its discounted response is a dipole of the same spatial resolvent. The forecast fits no response parameter and retains pulse ticks, failures and all current outcomes.",
+        "constructed": "Native C/E instruments give different complete coherent-readout laws under shared classical endpoint dynamics. Source compilation executes both alternatives on the full 78-state encoding, with all outcomes, padding and arbitrary references. The continuing-carrier discriminator uses finite native mixing before each trial and a uniform conditional-law coupling bound, so actual trial independence and exact stationary resets are unnecessary. Its locked design uses 379 discarded attempts before each of 3927 trials and bounds wrong-candidate probability by 3/400 in the exact-source model. The retained execution verifies two consecutive trials, not a sampled full campaign. A separately authenticated physical per-trial conditional error at most 1/1570800 would suffice for a one-percent bound.\n\nPublic oscillator comparisons execute a supplied experimental action and apparatus model, with retrospective calibration/evaluation splits. Zero-displacement, opposite-probe and two-order Gram identities constrain observations independently of the oscillator action; their aggregate-mean residuals are deterministic diagnostics. The calibrated measurement evaluator retains null settings, complete counts, apparatus budgets and simultaneous sampling error. These controls provide explicit measurement requirements without treating software trials as physical data. A randomized Gram witness has a fixed-horizon conditional concentration bound despite preparation drift and quantum memory. Fresh settings must remain independent of the joint prepared work/reference state conditional on the past. Its two-trial source program retains 100 outcomes; physical detector-error bounds and fresh complete records are needed. Public means determine future threshold-crossing budgets conditional on repeated negative scores, not power or a present-data rejection. A retrospective replay of the deposited Hensen Bell records reproduces 196 wins in 245 eligible trials, S=2.42249987046 and a fixed-horizon local-response null tail 0.0391746435588 using the published setting allowance. Exact native local readbacks instantiate the classical branch and all sixteen deterministic local response tables establish its CHSH bound under setting independence and local factorization. Eligibility, locality, setting predictability and fixed-horizon validity remain external premises. This constrains a local-factorized extension of the diagonal field branch; it excludes neither full quantum OPH nor either C/E candidate and supplies no native lab calibration.\n\nA retrospective comparison consumes the actual four ordered P-ACT-LB LCDM CAMB posterior chains: Planck plus ACT DR6 primary spectra, ACT/Planck lensing and DESI 2024 BAO. Official half-chain burn-in leaves multiplicity 508985; the conditional fixed tilt 1-P/48 lies at empirical lower-tail mass 3114/508985. Exact decimal/rational replay retains per-chain and omitted-chain sensitivity. This is an exposed posterior-position diagnostic under the released cosmological model and priors, not a p-value, likelihood ratio, independent-row estimate or FZ-15 prospective verdict.\n\nA finite seven-to-nine-mode scalar extension derives added couplings from the same quartic integral, accounts for the high-blank-induced mass shift, executes native source words and bounds the complete low-mode output after tracing the added modes. Their state continues between measurements, with an explicit reset control and an interaction-specific odd-excitation witness. This supplies one bounded bandwidth extension under a declared action and occupation code, not relativistic locality, an ultraviolet limit or a physical timing map. One continuing native occupation history has a count-limit Gaussian covariance derived from the actual binary generator. On the spherical source, an all-level ancestral energy bound gives an injective compact Green limit in operator norm along a common subsequence. Its inverse has a regular strongly local H1 form with spectral dimension two and is shared by native heat, coherent cosine propagation and continuous classical Gaussian wave readouts. A native weighted heat estimate gives a finite wave cone in the declared comparison distance. A record-conditioned repair has an exact marked likelihood identity that predicts complete joint clock/field laws from passive correlations; its discounted response is a dipole of the same spatial resolvent. The forecast fits no response parameter and retains pulse ticks, failures and all current outcomes. A separately declared execute-or-idle controller has an exact aggregate executed-clock derivative converging to 2*(I-exp(-tau*A))*f. Uniform likelihood, timeout and finite-bit service bounds give a positive coordinate mean at fixed epsilon=1e-6; no empirical or physical-force identification is inferred.",
         "remaining": "The native discriminator needs a justified laboratory map and physical service error bounds; no deposited dataset is identified with that native protocol. The public oscillator means do not authenticate accepted shot counts, common preparation or all coordinate conventions. A statistical rejection needs a valid sampling/selection model and calibrated instruments. Mathematical or source-array error is not hardware fidelity. Retrospective witnesses and comparisons cannot be relabeled as preregistered observations, and a general quantum consistency test is not an OPH-specific prediction. The tilt relation uses an alpha-calibrated P and a separate conditional primordial embedding. No theorem here identifies it with the runnable observer field or clock. A physical parameter restriction can be tested without changing SM/GR dynamics, but its source ancestry and comparison uncertainty must be retained. Full occupation-vector readback needs initial disclosure and every seam/current record, including remote records. A port-only observer reads only its own occupation. The fluctuation action is not a Lorentzian dynamical action; the separate torus comparison is not the source sphere. The common source continuum is subsequential, with no proved local physical metric, interacting quantum state, simultaneous finite-count rate or physical identification. Public optical ratios do not instantiate the marked repair-response dictionary.",
         "closure": "Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.",
         "sources": [
@@ -6734,7 +6739,7 @@
           "records": "complete initial occupations and seam/current tape, projected to centered ancestral cell counts with the declared normalization",
           "controls": "no interventions during each occupation average; nested ancestral observation maps and auxiliary comparison geometry are specified",
           "clock": "all native attempts and the root incident seam set on the same history, including zero current; centered cumulative sums use the exact susceptibility, exposure and level normalization",
-          "regime": "Joint finite-graph functional count CLT first, then one spatial subsequence in C([0,T],H^-2(S2)); the local incident-index clock is converted at fixed level before refinement; no uniform finite-count rate or physical time identification"
+          "regime": "Joint finite-graph functional count CLT first, then one spatial subsequence in C([0,T],H^-2(S2)); the local incident-index clock is converted at fixed level before refinement. The full-space form is conservative, regular and strongly local with domain H1 and spectral dimension two. No uniform finite-count rate or physical time identification is supplied."
         },
         "native_regional_clock_field": {
           "carrier": "one twelve-port native carrier, with all nonempty port regions and their distinct incident-seam event sets",
@@ -6788,7 +6793,7 @@
           "records": "complete initial occupations and seam/current tape for density correlations and two disjoint long-block field readouts; coherent amplitude compression and complete Ramsey outcomes for the wave protocol",
           "controls": "fixed cell and ancestry maps and a declared spectral processor for the two-block Gaussian wave synthesis; coherent event preparation, uncommitted arc reversal, reflection and controlled Ramsey readout are explicit services",
           "clock": "integer native attempt separation with exact geometric discount, scaled by 2*M*4^l for native decay; coherent steps scale by sqrt(M*4^l); spectral wave synthesis has its declared parameter, distinct from passive waiting and physical seconds",
-          "regime": "operator-norm Green convergence selects one compact injective covariance and inverse generator along a common spatial subsequence; the all-level Schur resolvent error at most 1/(8*4^l) gives strong native heat and coherent cosine limits, and the two-block wave readout converges in C([0,T],H^-2(S2)); count limits precede refinement, with no whole-sequence uniqueness, spatial rate, local Dirichlet identification or growing-walk native pulse compiler"
+          "regime": "Operator-norm Green convergence selects one compact injective covariance and inverse generator along a common spatial subsequence; all-level Schur resolvent error at most 1/(8*4^l) gives strong native heat and coherent cosine limits. The full-space regular H1 form has spectral dimension two and comparison-distance wave speed at most 1/sqrt(2). The two-block wave converges in C([0,T],H^-2(S2)); count limits precede refinement. Whole-sequence uniqueness, a spatial rate, selected intrinsic metric and growing-walk native pulse compiler are not supplied."
         },
         "native_record_phase_prediction": {
           "carrier": "elementary twelve-port total-two source and the separate compiled four-address coherent probe",
@@ -6806,7 +6811,7 @@
           "records": "full initial and final configurations, sampled length, equal-endpoint return, unequal-endpoint failure and cap, with all branches retained",
           "controls": "independent finite categorical sampler and endpoint closure are admitted; coherent arc reversal/reflection retain their separate services and two-sign readout",
           "clock": "native length counts repairs; the reconstructed modular parameter multiplies arccos K, matching coherent phase at integer n and wave scale n/sqrt(M4^l)",
-          "regime": "exact finite-cap endpoint laws and dimension-independent reference/log-generator truncation bounds; uncapped expected length is infinite, no complete modular-history or physical-time identification"
+          "regime": "exact finite-cap endpoint laws and dimension-independent reference/log-generator truncation bounds; uncapped expected length is infinite, no complete modular-history or physical-time identification On canonical density-one-third source refinement, the full reference approaches normalized trace. Fixed-parameter bounded-algebra limits are tracial; refinement-rescaled time and a differently conditioned wave-sector state are separate contracts."
         },
         "native_marked_repair_response": {
           "carrier": "66 binary total-two states on the twelve-port native source; the general finite-graph mean-response extension is analytic and is not an executed refining-family pulse experiment",
@@ -6816,6 +6821,15 @@
           "controls": "apply one pulse iff the disclosed port-zero bit is one, otherwise skip; compare identical subsequent instruments for each retained mark; the summed likelihood requires continuation independent of that mark; the executed stop has a supplied one- or two-attempt watchdog",
           "clock": "port-zero and port-one or port-two incident counts include the pulse tick iff it occurs on an incident seam; stop at the first subsequent port-zero incident or retained timeout; watchdog attempt count is a resource bound and no physical duration",
           "regime": "exact marked complete-output response forecast on the finite carrier with no fitted response parameter; mean response and discounted dipole resolvent hold analytically on each finite connected graph; a nonzero continuum source normalization and physical apparatus dictionary are separate obligations"
+        },
+        "native_controlled_continuum_response": {
+          "carrier": "the same refining twelve-port-cell spherical source at binary density one third; exact finite oracle uses the elementary total-two source",
+          "law": "uniform seam selection followed by execute-or-idle activation p=(1+epsilon*(h_b-h_a)*(n_a-n_b))/2; execution uses the unchanged fair native endpoint repair",
+          "preparation": "stationary fixed-number distribution with disclosed initial occupation; h is the normalized cell-average coordinate profile with bounded full-port lift energy",
+          "records": "complete seam, activation, coin and current records reconstruct all occupations; retain the terminal field on timeout and every idle, zero-current and service event",
+          "controls": "a supplied controller evaluates activation from current reconstructed occupations; finite fair bits are obtained from charged equal-occupation native service repairs; independent uniform seam selections remain supplied",
+          "clock": "aggregate executed dynamical repairs, including zero current, with r=floor(1260*16^l*tau); idle selection slots and coin-service writes are separate resource counts, not primitive port-incident ticks or physical seconds",
+          "regime": "same common Green subsequence gives derivative 2*(I-exp(-tau*A))*f; at tau=1 the four-r slot cap, retained timeout field and dyadic activation have uniform error bounds and a positive fixed-epsilon mean liminf; no uniqueness of the nonlinear continuum law or physical force identification is asserted"
         }
       },
       "bindings": [
@@ -6839,10 +6853,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -6890,10 +6906,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -6948,10 +6966,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7007,10 +7027,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7134,10 +7156,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7199,10 +7223,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7358,10 +7384,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7417,10 +7445,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7479,10 +7509,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7534,10 +7566,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7592,10 +7626,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7634,7 +7670,10 @@
           ],
           "establishes": [
             "compatible_nonzero_native_gaussian_subsequential_field",
-            "native_compact_injective_green_limit"
+            "native_compact_injective_green_limit",
+            "native_conservative_strongly_local_form",
+            "native_spectral_dimension_two",
+            "native_regular_H1_form"
           ],
           "requires": [
             "native_occupation_covariance_and_clock_corrected_precision"
@@ -7650,10 +7689,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7667,8 +7708,8 @@
             "stationary_local_cylinder_similarity_under_commuting_interventions",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
-          "scope": "The all-level ancestral tail bound 624*4^(-k) times scaled native energy upgrades the common Green subsequence to operator-norm convergence. Its limit G is compact, positive and injective on mean-zero L2; A=G^-1 is a positive self-adjoint continuum generator. Existing same-history attempt/incident Wiener paths share its covariance. Finite native action coupling between separated supports is bounded by4^l*2^(-d).",
-          "limitations": "The supplied source sphere and ancestry domain do not identify physical space. Whole-sequence uniqueness, locality of the limiting form and finite wave propagation are not proved. Cell-mean elimination has a positive off-diagonal counterexample and is not a vertex Markov reduction. Count-first limits and complete readback remain explicit; native warm-up permits a separately budgeted preparation error.",
+          "scope": "The ancestral tail bound gives a compact injective norm Green limit and inverse A on mean-zero L2. Mosco recovery, full-port contraction and support localization prove that its extension by the constant zero mode has a conservative regular strongly local Dirichlet form. Exact source interpolation gives domain H1 and gradient-energy comparison a^2/112<=E/||grad||^2<=a^2/48. Explicit tents and the source Poincare bound give n/49920<=lambda_n(A)<=3n/2, hence heat-trace spectral dimension two. Same-history attempt/incident Wiener fields retain this covariance.",
+          "limitations": "The sphere and ancestry are the declared source observation domain. Whole-sequence uniqueness and a selected intrinsic or physical metric are not proved. The associated full-space wave has a finite support bound in the declared flat comparison distance. Under the same operator dictionary, fixed scale and bounded mass shift, the spectral growth excludes a regular compact positive-volume three-dimensional second-order elliptic operator; different radial observations or scaling are outside that exclusion. Complete readback and count-first limits remain explicit.",
           "sources": [
             {
               "path": "model/physical_space_time/uniform_green.py",
@@ -7709,6 +7750,10 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "### A common positive spatial generator from the native Green field"
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### Locality and spectral dimension of the source continuum"
             }
           ]
         },
@@ -7733,10 +7778,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7794,10 +7841,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7849,10 +7898,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7896,10 +7947,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7945,10 +7998,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -7978,7 +8033,8 @@
             "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
           ],
           "establishes": [
-            "native_temporal_green_resolvent_and_coherent_wave_bound"
+            "native_temporal_green_resolvent_and_coherent_wave_bound",
+            "native_comparison_wave_finite_propagation"
           ],
           "requires": [
             "native_occupation_covariance_and_clock_corrected_precision",
@@ -7994,10 +8050,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -8012,8 +8070,8 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "additional_assumptions": {},
-          "scope": "The exact native density resolvent and all-level Schur comparison converge to (A+z)^-1 for the same compact Green limit. Spectral tightness gives strong native heat and admitted coherent cosine propagation, uniformly on compact parameter intervals for fixed inputs. Two long blocks of one native history give a continuous Gaussian wave readout in H^-2(S2), with covariance A^-1 cos((t-u)sqrt(A)); finite integer-step errors are separately bounded.",
-          "limitations": "The continuum operator is subsequential with no supplied convergence rate or local Dirichlet identification. Native heat time, coherent step parameter and spectral wave synthesis differ. Two independent limiting increments, full records, a declared spectral processor and coherent preparation/reflection/readout are required. The Gaussian wave is a classical ensemble, not a CCR or vacuum construction; physical radial observations and Lorentz locality are unproved.",
+          "scope": "The exact native density resolvent and all-level Schur comparison converge to (A+z)^-1 for the same compact Green limit. Spectral tightness gives strong native heat and admitted coherent cosine propagation, uniformly on compact parameter intervals for fixed inputs. Two long blocks of one native history give a continuous Gaussian wave readout in H^-2(S2), with covariance A^-1 cos((t-u)sqrt(A)); finite integer-step errors are separately bounded. The weighted full-port heat inequality gives exp(-r^2/(2*tau)) off-diagonal decay. With the constant zero mode restored, the imported equivalence proves wave support radius at most |t|/sqrt(2) in the flat comparison metric.",
+          "limitations": "The continuum operator is subsequential with no supplied convergence rate or selected intrinsic metric. Native heat time, coherent step parameter and spectral wave synthesis differ. Two independent limiting increments, full records, a declared spectral processor and coherent preparation/reflection/readout are required. The Gaussian wave is a classical ensemble, not a CCR or vacuum construction; physical radial observations and Lorentz locality are unproved.",
           "sources": [
             {
               "path": "model/observer_time_fields/spatial_dynamics.py",
@@ -8042,6 +8100,10 @@
             {
               "path": "model/observer_time_fields/REFINEMENT.md",
               "anchor": "## One continuum operator for fields, native decay and coherent waves"
+            },
+            {
+              "path": "model/observer_time_fields/REFINEMENT.md",
+              "anchor": "### Finite propagation on the source comparison space"
             }
           ]
         },
@@ -8068,10 +8130,12 @@
           "additional_assumptions": {},
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -8113,7 +8177,9 @@
             "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
           ],
           "establishes": [
-            "native_return_reference_has_coherent_wave_modular_generator"
+            "native_return_reference_has_coherent_wave_modular_generator",
+            "native_full_reference_tracial_limit",
+            "native_bounded_overlap_fluctuation_commutator_vanishes"
           ],
           "requires": [
             "native_temporal_green_resolvent_and_coherent_wave_bound"
@@ -8128,10 +8194,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -8146,8 +8214,8 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "additional_assumptions": {},
-          "scope": "Positive random-length native returns reconstruct exp(-arccos K)/Tr. For polynomial cap h and ideal length tail delta_h, the reference trace-distance error is at most delta_h and 0<=arccos K-Theta_h<=-log(1-delta_h)I. Exact rational finite samplers retain every cap and return failure. The generator is the same phase appearing in the coherent wave compression. Choosing cap h_l=64*(4^l)^4 bounds the scaled wave-generator error by26/4^l; this is an analytic resource bound, not an executed large sampler. This increasing-cap bound carries the same spatial subsequence to cos(t sqrt(A)); holding the cap fixed instead sends every bounded-band scaled generator to zero.",
-          "limitations": "The length law is selected, not forced by the committed repair instrument. Full endpoint closure and coherent services are admitted. The uncapped mean length is infinite. The reconstructed density differs from the actual return-conditioned source state. Phase/cosine matching does not implement the full vertex modular unitary, identify its clock with the three-class probe or select a physical vacuum. Rescaled phase convergence does not establish a compatible faithful continuum modular algebra-state pair.",
+          "scope": "Positive random-length native returns reconstruct exp(-arccos K)/Tr. For polynomial cap h and ideal length tail delta_h, the reference trace-distance error is at most delta_h and 0<=arccos K-Theta_h<=-log(1-delta_h)I. Exact rational finite samplers retain every cap and return failure. The generator is the same phase appearing in the coherent wave compression. Choosing cap h_l=64*(4^l)^4 bounds the scaled wave-generator error by26/4^l; this is an analytic resource bound, not an executed large sampler. This increasing-cap bound carries the same spatial subsequence to cos(t sqrt(A)); holding the cap fixed instead sends every bounded-band scaled generator to zero. Exact full-configuration trace moments give half-trace distance at most 3/(8*2^l) from normalized trace, plus cap error. At fixed modular parameter, bounded readouts become stationary in normalized-trace L2. The density-wave sector has vanishing reference weight, and bounded-overlap normalized local fluctuations have vanishing expected commutator.",
+          "limitations": "The length law is selected, not forced by the committed repair instrument. Full endpoint closure and coherent services are admitted. The uncapped mean length is infinite. The reconstructed density differs from the actual return-conditioned source state. Phase/cosine matching does not implement the full vertex modular unitary, identify its clock with the three-class probe or select a physical vacuum. Compatible bounded-algebra moment limits of this reference are tracial, with trivial modular flow on faithful support. This is not operator-norm convergence or a theorem about diverging rescaled time. A nonzero scalar CCR or vacuum state needs a different justified preparation, observable scaling or sector-conditioning construction.",
           "sources": [
             {
               "path": "model/observer_time_fields/wave_reference.py",
@@ -8164,6 +8232,10 @@
             {
               "path": "model/observer_time_fields/continuum_dynamics.py",
               "anchor": "def fixed_cap_collapse("
+            },
+            {
+              "path": "model/observer_time_fields/REFINEMENT.md",
+              "anchor": "### The full reference state and its quantum-fluctuation boundary"
             }
           ]
         },
@@ -8188,10 +8260,12 @@
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
             "Doob_L2_martingale_maximal_inequality",
             "Gaussian_Green_covariance_and_generalized_free_field_construction",
             "Poisson_factorial_moments_and_finite_dependency_cones",
             "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
             "conditional_law_sequential_coupling",
             "directed_integer_probability_enclosure",
             "finite_Kraus_Stinespring_construction",
@@ -8228,6 +8302,70 @@
             {
               "path": "model/predictions/README.md",
               "anchor": "## Native repair response from passive clock and field records"
+            }
+          ]
+        },
+        {
+          "id": "native-controlled-continuum-response",
+          "domain": "native_controlled_continuum_response",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "native_executed_clock_continuum_response",
+            "native_positive_finite_amplitude_response"
+          ],
+          "requires": [
+            "native_temporal_green_resolvent_and_coherent_wave_bound"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler"
+          ],
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
+            "Doob_L2_martingale_maximal_inequality",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
+            "conditional_law_sequential_coupling",
+            "directed_integer_probability_enclosure",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_transfer_spectral_logarithm",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spectral_theorem_for_self_adjoint_operators",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "additional_assumptions": {},
+          "scope": "The finite embedded execution kernel gives derivative 2*chi*K*(I-K^r)*h, distinct from the slot-clock response. Native heat convergence gives 2*(I-exp(-tau*A))*f. A uniform stopped likelihood bound gives mean remainder at most 36*epsilon^2*||g||; timeout and finite fair-bit errors vanish with refinement. At tau=1 and epsilon=1e-6 the coordinate readout has positive mean liminf at least 244359/1024750000000000.",
+          "limitations": "The activation controller, stationary preparation, disclosed initial occupations, all-current reconstruction and seam selection are explicit services. The event clock counts executed dynamical repairs across the graph, not a primitive local clock; coin-service writes are charged separately. Fixed-amplitude positivity does not establish a unique nonlinear continuum law, a natural physical force, observed spacetime, atomic timing or an SM/GR discriminator.",
+          "sources": [
+            {
+              "path": "model/predictions/repair_response.py",
+              "anchor": "def controlled_response("
+            },
+            {
+              "path": "model/predictions/repair_response.py",
+              "anchor": "def continuum_response_budget("
+            },
+            {
+              "path": "model/predictions/README.md",
+              "anchor": "### A controlled continuum mean with an executed-event clock"
+            },
+            {
+              "path": "model/physical_space_time/OCCUPATION_FIELD.md",
+              "anchor": "### Locality and spectral dimension of the source continuum"
             }
           ]
         }
@@ -8614,6 +8752,30 @@
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
               "anchor": "### A common positive spatial generator from the native Green field"
+            },
+            {
+              "path": "model/observer_time_fields/REFINEMENT.md",
+              "anchor": "## One continuum operator for fields, native decay and coherent waves"
+            }
+          ]
+        },
+        {
+          "from": "native-temporal-spatial-spectrum",
+          "to": "native-controlled-continuum-response",
+          "fact": "native_temporal_green_resolvent_and_coherent_wave_bound",
+          "coordinate_maps": {
+            "carrier": "Use the identical source graphs, normalized cell embeddings and common spatial subsequence; the elementary exact response oracle is only a finite control.",
+            "law": "Use the passive native density transfer inside the exact derivative of the disclosed execute-or-idle kernel; the controller changes event selection and does not change executed fair repair.",
+            "preparation": "Use the same stationary binary density; the coordinate profile has the full-port energy and nonzero norm bounds proved from the source embedding.",
+            "records": "Carry complete initial and current records into the state-dependent activation protocol and retain timeout fields and service records.",
+            "controls": "The response adds a stated activation controller and finite fair-bit services; none follows from passive heat or coherent wave existence.",
+            "clock": "Convert the aggregate executed-repair count by 2*M*4^l; use the embedded-kernel factor K, not substitution of twice as many selection slots. Coin-service events are separately charged.",
+            "regime": "Apply strong native heat convergence to the finite response identity. Uniform likelihood and rounding estimates establish fixed-amplitude positivity without exchanging an uncontrolled derivative and refinement limit."
+          },
+          "sources": [
+            {
+              "path": "model/predictions/README.md",
+              "anchor": "### A controlled continuum mean with an executed-event clock"
             },
             {
               "path": "model/observer_time_fields/REFINEMENT.md",
@@ -9442,6 +9604,10 @@
           {
             "path": "code/maxent/test_maxent_closure_acceptance.py",
             "name": "test_transverse_field_subfamily_is_exactly_closed"
+          },
+          {
+            "path": "code/geometry/test_screen_shock_spectrum.py",
+            "name": "test_joint_relaxed_state_capacity_derivatives_equal_the_constrained_score_square"
           }
         ],
         "paper_anchors": [],

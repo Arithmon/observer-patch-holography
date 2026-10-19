@@ -11,6 +11,7 @@ import sys
 
 import numpy as np
 import pytest
+import sympy as sp
 
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -85,6 +86,86 @@ def test_entropy_maximum_and_area_hessian_have_distinct_statuses() -> None:
     assert area["fixed_M_tangent_classification"] == "strict_local_minimum"
     assert area["homogeneous_eigenvalue"] < 0.0
     assert area["homogeneous_directional_second_derivative"] < 0.0
+
+
+@pytest.mark.parametrize("dimensions", [(2, 3, 5), (1, 4, 5), (4, 4, 2)])
+def test_fixed_integer_capacity_entropy_has_the_exact_relative_entropy_deficit(dimensions):
+    # Distinct actual integer partitions of one total capacity, no derivative
+    # or dimension-changing repair step is invoked.
+    total = sum(dimensions)
+    probability = tuple(map(sp.Rational, ("1/2", "1/3", "1/6")))
+    reference = tuple(sp.Rational(d, total) for d in dimensions)
+    entropy = -sum(p*sp.log(p/d) for p, d in zip(probability, dimensions, strict=True))
+    deficit = sum(p*sp.log(p/q) for p, q in zip(probability, reference, strict=True))
+    assert sp.expand_log(entropy-sp.log(total)+deficit, force=True).simplify() == 0
+    maximum = -sum(q*sp.log(q/d) for q, d in zip(reference, dimensions, strict=True))
+    assert sp.simplify(maximum-sp.log(total)) == 0
+
+
+@pytest.mark.parametrize("probability_velocity", [
+    ("1/20", "-1/10", "1/20"), ("1/10", "-1/5", "1/10"), ("0", "0", "0"),
+])
+def test_joint_relaxed_state_capacity_derivatives_equal_the_constrained_score_square(probability_velocity):
+    t = sp.symbols("t", real=True)
+    base = tuple(map(sp.Rational, (2, 3, 5)))
+    v = tuple(map(sp.Rational, (1, -2, 1)))
+    u = tuple(map(sp.Rational, probability_velocity))
+    # Nonzero acceleration also checks cancellation for curved constrained paths.
+    acceleration = tuple(map(sp.Rational, (2, -1, -1)))
+    dimensions = tuple(d+t*x+t*t*a for d, x, a in zip(base, v, acceleration, strict=True))
+    probability = tuple(d/10+t*x-t*t*a/100 for d, x, a in zip(base, u, acceleration, strict=True))
+    assert sum(dimensions) == 10 and sum(probability) == 1
+    entropy = -sum(p*sp.log(p/d) for p, d in zip(probability, dimensions, strict=True))
+    assert sp.simplify(sp.diff(entropy, t).subs(t, 0)) == 0
+    second = sp.simplify(sp.diff(entropy, t, 2).subs(t, 0))
+    score_square = -sum((up-vp/10)**2/(d/10) for up, vp, d in zip(u, v, base, strict=True))
+    assert second == score_square <= 0
+    assert (second == 0) == all(up == vp/10 for up, vp in zip(u, v, strict=True))
+
+
+def test_native_uniform_microstates_supply_the_actual_sector_counts():
+    from model.physical_space_time.occupation_field import native_counts
+
+    states, remote, incident, _, _ = native_counts()
+    kernel = (remote+incident)/60
+    uniform = sp.ones(66, 1)/66
+    assert kernel*uniform == uniform
+    # The observed sector is the load in four named ports. Its multiplicities
+    # come from the native states, not an assigned thermodynamic weight.
+    counts = [sum(sum(state[:4]) == load for state in states) for load in range(3)]
+    assert counts == [28, 32, 6]
+    masses = [sum(uniform[i] for i, state in enumerate(states) if sum(state[:4]) == load)
+              for load in range(3)]
+    assert masses == [sp.Rational(count, 66) for count in counts]
+
+
+def test_bulk_dimensions_must_enter_the_sector_count_and_the_entropy_deficit():
+    edge = (2, 3)
+    bulk = ((sp.Rational(1, 3), sp.Rational(2, 3)), (sp.Rational(1, 1),))
+    probability = (sp.Rational(2, 5), sp.Rational(3, 5))
+    weights = tuple(d*len(rho) for d, rho in zip(edge, bulk, strict=True))
+    total = sum(weights)
+    eigenvalues = [p*r/d for p, d, rho in zip(probability, edge, bulk, strict=True)
+                   for r in rho for _ in range(d)]
+    entropy = -sum(x*sp.log(x) for x in eigenvalues)
+    sector_deficit = sum(p*sp.log(p*total/w) for p, w in zip(probability, weights, strict=True))
+    bulk_deficit = sum(p*sum(r*sp.log(r*len(rho)) for r in rho)
+                       for p, rho in zip(probability, bulk, strict=True))
+    assert sp.expand_log(entropy-sp.log(total)+sector_deficit+bulk_deficit, force=True).simplify() == 0
+    assert total == 7 and sum(edge) == 5
+    assert sp.simplify(bulk_deficit) != 0
+
+
+def test_relative_entropy_stationarity_does_not_select_the_counting_entropy_maximum():
+    t = sp.symbols("t", real=True)
+    reference = sp.Matrix([[sp.Rational(1, 4), sp.Rational(3, 4)]])
+    reset = sp.ones(2, 1)*reference
+    assert reference*reset == reference and reset*reset == reset
+    probability = (sp.Rational(1, 4)+t, sp.Rational(3, 4)-t)
+    relative = sum(p*sp.log(p/q) for p, q in zip(probability, reference, strict=True))
+    entropy = -sum(p*sp.log(p) for p in probability)  # Two sectors of count one.
+    assert sp.simplify(sp.diff(relative, t).subs(t, 0)) == 0
+    assert sp.simplify(sp.diff(entropy, t).subs(t, 0)) == sp.log(3)
 
 
 def test_area_gradient_and_hessian_match_finite_differences() -> None:

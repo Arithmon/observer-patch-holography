@@ -28,8 +28,8 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | An ancestral-cell Poincare bound gives operator-norm convergence along the common spatial subsequence to a compact injective Green operator `G`. Its inverse defines one positive self-adjoint generator. Continuous H^-2(S2) fields retain the same-history coupling between normalized attempt and incident clocks. | Full initial occupation and seam/current readback are admitted. Observation count tends to infinity first. Whole-sequence uniqueness, locality of the limiting form, radial observations and interacting Lorentzian dynamics are unestablished. |
-| [Native correlations and coherent waves](observer_time_fields/README.md) | The native resolvent error bound `1/(8*4^level)` connects heat and coherent cosine propagation to the same generator `A=G^-1`. Two long blocks of one native history give a continuous Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. | Spectral processing, coherent event access, reflection and phase convention are declared operations. A specified random-length return reference matches wave phases under a growing cap; a fixed cap freezes the scaled phase. Its length sampler and endpoint reads are additional services. A physical vacuum, radial field, boost action and faithful continuum modular state are unestablished. |
+| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | An ancestral-cell Poincare bound gives operator-norm convergence along the common spatial subsequence to a compact injective Green operator `G`. Its inverse defines a conservative regular strongly local Dirichlet generator with form domain `H1` and spectral dimension two. Continuous H^-2(S2) fields retain the same-history coupling between normalized attempt and incident clocks. | Full initial occupation and seam/current readback are admitted. Observation count tends to infinity first. Whole-sequence uniqueness, an intrinsic metric, radial observations and interacting Lorentzian dynamics are unestablished. |
+| [Native correlations and coherent waves](observer_time_fields/README.md) | The native resolvent error bound `1/(8*4^level)` connects heat and coherent cosine propagation to the same generator `A=G^-1`. Two long blocks of one native history give a continuous Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. The constant-mode extension has finite wave propagation in the supplied flat comparison distance. | Spectral processing, coherent event access, reflection and phase convention are declared operations. A specified random-length return reference matches wave phases under a growing cap; a fixed cap freezes the scaled phase. Its length sampler and endpoint reads are additional services. The full reference has a tracial bounded-algebra limit at fixed modular parameter; its density-wave sector has vanishing weight. A physical vacuum, radial field and boost action are unestablished. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md) | Oriented pair means and terminal coincidences reconstruct positive IID seam weights, and the recovered scheduler predicts joint local fields. Collective regional unions have an exact shared-event count law. | Ordered tape comparison and coincidences are admitted access. Pair means do not establish temporal independence; field predictions use the declared stationary binary preparation. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamps test an apparatus relation. The public optical test rejects the direct attachment for every distinct regional event-set pair under its bounded-error and no-extra-filter assumptions. | The actual atomic/servo dictionary is not derived. Identical event sets are the same clock and are outside the rejection. Clock definitions require no external calibration. |
@@ -47,8 +47,13 @@ identification. It selects no atomic correspondence from optical ratios.
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair
 from passive records, with no separate response fit. Its discounted field
-response uses the same native spatial resolvent. The intervention dictionary
-is fixed within the model; a matching public measurement is unidentified.
+response uses the same native spatial resolvent. A controlled execution
+bias, with the endpoint rule unchanged, also gives continuum mean derivative
+`2(I-exp(-tau*A))f`. Uniform likelihood and timeout bounds keep a nonzero
+response at fixed bias. The designated executed-repair clock and additional
+native coin-service costs are distinguished. The controller, disclosure and
+intervention dictionary remain explicit; a natural force and matching public
+measurement are unidentified.
 
 The next physical identification should use the process's existing states, record
 instruments, accessible algebras and intervention laws. A field description
@@ -367,9 +372,14 @@ identification.
 The [native equilibration construction](native_equilibration/README.md)
 derives finite approach to the stationary state in each connected binary
 fixed-total sector, uniformly with an untouched reference. Conserved total
-and sector mixture remain initial or boundary data. A tracial stationary
-state also has trivial modular flow; preparation does not select a
-nontrivial clock reference.
+and sector mixture remain initial or boundary data. On that fixed algebra,
+unital repair cannot increase relative entropy to `I/d`, and `I/d` is the
+entropy maximum with zero first variation for trace-zero state changes.
+The [finite counting identity](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#joint-counting-stationarity-and-its-geometric-boundary)
+adds joint stationarity at `p=d/M` for fixed `M=sum d` in its positive-real
+count relaxation. It does not identify this constraint with physical volume
+or the count logarithm with area. The tracial state has trivial modular flow; preparation
+does not select a nontrivial clock reference or a geometric boost.
 
 ## Observer-relative clocks and effective descriptions
 

@@ -218,6 +218,356 @@ def discounted_response(z=1):
     return tuple(F(value) for value in predicted)
 
 
+def _profile(values):
+    if type(values) is not tuple or len(values) != 12:
+        raise ValueError('a fixed twelve-port source profile is required')
+    return tuple(inherited.exact_core._fraction(value) for value in values)
+
+
+def _source_state(state):
+    if (type(state) is not tuple or len(state) != 12
+            or any(type(x) is not int or x not in (0, 1) for x in state)
+            or sum(state) != 2):
+        raise ValueError('an original twelve-port binary source state with total two is required')
+    return state
+
+
+def activation(state, edge, profile, epsilon):
+    """Local controller probability; the subsequent native endpoint is unchanged."""
+    profile = _profile(profile)
+    epsilon = inherited.exact_core._fraction(epsilon)
+    state = _source_state(state)
+    if (type(edge) is not tuple or len(edge) != 2
+            or any(type(x) is not int for x in edge) or edge not in source().seams):
+        raise ValueError('an original native oriented seam is required')
+    a, b = edge
+    bias = epsilon*(profile[b]-profile[a])
+    if abs(bias) > F(1, 2):
+        raise ValueError('the certified activation probability must lie in [1/4,3/4]')
+    return (1+bias*(state[a]-state[b]))/2
+
+
+def controlled_matrices(profile, epsilon=F(0)):
+    """Full native slot kernel and actual executed-repair stopping kernel.
+
+    Idle/control slots do not tick this particular aggregate dynamical clock.
+    Successful native attempts tick even at zero current. Controller service
+    coin writes, if implemented natively, have their own retained cost count.
+    """
+    profile, epsilon = _profile(profile), inherited.exact_core._fraction(epsilon)
+    kernel = source(); index = {state: i for i, state in enumerate(kernel.states)}
+    success, success_derivative = sp.zeros(66), sp.zeros(66)
+    activity_derivative = []
+    for i, state in enumerate(kernel.states):
+        derivative = F(0)
+        for a, b in kernel.seams:
+            probability = activation(state, (a, b), profile, epsilon)
+            slope = (profile[b]-profile[a])*(state[a]-state[b])/2
+            derivative += slope/30
+            for coin in (0, 1):
+                after, _ = native.native(state, (a, b), coin)
+                j = index[after]
+                success[i, j] += sp.Rational(probability)/60
+                success_derivative[i, j] += sp.Rational(slope)/60
+        activity_derivative.append(sp.Rational(derivative))
+    activity = success*sp.ones(66, 1)
+    diag = sp.diag(*activity)
+    first = sp.diag(*activity_derivative)
+    k = sp.Matrix(kernel.counts)/60
+    embedded = sp.diag(*(1/a for a in activity))*success
+    slot = sp.eye(66)-diag+success
+    derivative_slot = success_derivative-first
+    derivative_embedded = 2*success_derivative-2*first*k
+    uniform = sp.ones(1, 66)/66
+    if (uniform*success_derivative != sp.zeros(1, 66)
+            or slot*sp.ones(66, 1) != sp.ones(66, 1)
+            or embedded*sp.ones(66, 1) != sp.ones(66, 1)):
+        raise ArithmeticError('the native marked control or Palm normalization changed')
+    return {'slot': sp.ImmutableMatrix(slot), 'embedded': sp.ImmutableMatrix(embedded),
+            'success': sp.ImmutableMatrix(success), 'activity': tuple(F(a) for a in activity),
+            'slot_derivative_at_zero': sp.ImmutableMatrix(derivative_slot),
+            'embedded_derivative_at_zero': sp.ImmutableMatrix(derivative_embedded),
+            'activity_derivative': tuple(F(a) for a in activity_derivative)}
+
+
+def controlled_response(profile, count, *, clock='executed'):
+    """Exact derivative of every terminal configuration weight, at epsilon=0."""
+    profile = _profile(profile)
+    count = _integer(count, 0, 8)
+    if clock not in ('executed', 'slot'):
+        raise ValueError('the clock is either executed dynamical repairs or control slots')
+    matrices = controlled_matrices(profile)
+    key = 'embedded' if clock == 'executed' else 'slot'
+    p, dp = matrices[key], matrices[key+'_derivative_at_zero']
+    uniform, derivative = sp.ones(1, 66)/66, sp.zeros(1, 66)
+    for _ in range(count):
+        derivative = derivative*p+uniform*dp
+    laplacian = sp.zeros(12)
+    for a, b in source().seams:
+        laplacian[a, a] += 1; laplacian[b, b] += 1
+        laplacian[a, b] -= 1; laplacian[b, a] -= 1
+    k = sp.eye(12)-laplacian/60
+    h = sp.Matrix(profile)
+    vector = (2*k*(sp.eye(12)-k**count)*h if clock == 'executed'
+              else 2*(sp.eye(12)-((sp.eye(12)+k)/2)**count)*h)
+    field = sp.Matrix(66, 12, lambda i, j: source().states[i][j]-sp.Rational(1, 6))
+    predicted = (field*vector).T/66
+    if derivative != predicted or sum(derivative) != 0:
+        raise ArithmeticError('the full native response lost its stopping-clock correction')
+    means = derivative*field
+    if means != sp.Rational(5, 33)*vector.T:
+        raise ArithmeticError('the source susceptibility normalization changed')
+    return {'terminal_probability_derivative': tuple(F(v) for v in derivative),
+            'occupation_mean_derivative': tuple(F(v) for v in means)}
+
+
+def controlled_history(profile, epsilon, initial, *, ticks=1, slot_cap=2):
+    """Complete marked finite execution, including idle slots and timeout fields.
+
+    Initial occupations are disclosed. Every selected seam, execution flag,
+    coin and current is retained. The terminal field is reconstructed by those
+    currents, including when the cap fires; no timeout is discarded or zeroed.
+    """
+    profile, epsilon = _profile(profile), inherited.exact_core._fraction(epsilon)
+    ticks, slot_cap = _integer(ticks, 1, 2), _integer(slot_cap, 1, 2)
+    initial = _source_state(initial)
+    populations = {((), initial, 0): F(1)}; result = defaultdict(F)
+    for step in range(slot_cap):
+        future = defaultdict(F)
+        for (tape, state, completed), mass in populations.items():
+            for edge in source().seams:
+                probability = activation(state, edge, profile, epsilon)
+                branches = [(0, -1, 0, state, 1-probability)]
+                for coin in (0, 1):
+                    after, (_, current) = native.native(state, edge, coin)
+                    branches.append((1, coin, current, after, probability/2))
+                for active, coin, current, after, weight in branches:
+                    record = tape+((edge, active, coin, current),)
+                    count = completed+active
+                    if count == ticks or step+1 == slot_cap:
+                        fields = list(initial)
+                        for (a, b), _, _, j in record:
+                            fields[a] -= j; fields[b] += j
+                        if tuple(fields) != after:
+                            raise ArithmeticError('the full retained tape lost field readback')
+                        key = record, 'complete' if count == ticks else 'timeout', count, tuple(fields)
+                        result[key] += mass*weight/30
+                    else:
+                        future[record, after, count] += mass*weight/30
+        populations = future
+    if sum(result.values()) != 1:
+        raise ArithmeticError('the complete controlled execution lost probability')
+    return dict(result)
+
+
+def native_service_coin_word(state, coins):
+    """Fair-bit source using a recorded equal-occupation seam, with charged cost.
+
+    The field/current interface discloses the equal pair. Each service write
+    is an actual native repair, preserves the load and is separately counted.
+    The word parameter specifies a branch, not chosen random coin outcomes.
+    """
+    state = _source_state(state)
+    if type(coins) is not tuple or any(
+            type(coin) is not int or coin not in (0, 1) for coin in coins):
+        raise ValueError('a native binary state and an original binary coin word are required')
+    edge = next((edge for edge in source().seams if state[edge[0]] == state[edge[1]]), None)
+    if edge is None:
+        raise ArithmeticError('the source triangle supplied no equal binary pair')
+    records = []
+    for coin in coins:
+        after, record = native.native(state, edge, coin)
+        if after != state or record != (coin, 0):
+            raise ArithmeticError('a supposedly neutral coin service changed the carrier')
+        records.append((edge, *record))
+    return {'records': tuple(records), 'branch_probability': F(1, 2**len(coins)),
+            'native_service_events': len(coins), 'dynamical_clock_ticks': 0,
+            'terminal_load': state}
+
+
+def dyadic_activation(probability, bits):
+    """An executable finite fair-bit controller, with explicit approximation."""
+    probability = inherited.exact_core._fraction(probability)
+    bits = _integer(bits, 1, 10000)
+    if not 0 <= probability <= 1:
+        raise ValueError('a probability is required')
+    denominator = 2**bits
+    numerator = (probability*denominator).numerator//(probability*denominator).denominator
+    return {'probability': F(numerator, denominator), 'absolute_error_upper': F(1, denominator),
+            'fair_bits_per_slot': bits, 'native_service_events_if_equal_seam_realized': bits,
+            'uniform_seam_selection_service_is_additional': True}
+
+
+def likelihood_control(profile, epsilon, *, ticks=1, slot_cap=4):
+    """Exact stopped likelihood/score moments from complete native branches.
+
+    Six propagated moments retain correlations with the configuration and
+    completed clock count. Timeout uses its actual terminal field. The coarse
+    marks specify seam, activation, native coin/current; additional controller
+    fair-bit words are separately recorded service resources.
+    """
+    profile, epsilon = _profile(profile), inherited.exact_core._fraction(epsilon)
+    ticks, slot_cap = _integer(ticks, 1, 2), _integer(slot_cap, 1, 8)
+    states, seams = source().states, source().seams
+    # (mass, score, score^2, likelihood, likelihood^2, likelihood*score).
+    moments = {(state, 0): (F(1, 66), F(0), F(0), F(1, 66), F(1, 66), F(0))
+               for state in states}
+    energy = sum(((profile[b]-profile[a])**2 for a, b in seams), F())
+    variance = energy/30
+    x = epsilon**2*slot_cap*variance
+    if x >= 1:
+        raise ValueError('the rational uniform likelihood allowance needs epsilon^2*q*v<1')
+    for _ in range(slot_cap):
+        future = defaultdict(lambda: [F(0)]*6)
+        for (state, completed), values in moments.items():
+            if completed == ticks:
+                future[state, completed] = [a+b for a, b in zip(future[state, completed], values)]
+                continue
+            p, ps, pss, pl, pll, pls = values
+            for edge in seams:
+                a, b = edge
+                probability = activation(state, edge, profile, epsilon)
+                score = (profile[b]-profile[a])*(state[a]-state[b])
+                branches = [(state, completed, -score, F(1, 60))]
+                for coin in (0, 1):
+                    after, _ = native.native(state, edge, coin)
+                    branches.append((after, completed+1, score, F(1, 120)))
+                if probability != (1+epsilon*score)/2:
+                    raise ArithmeticError('the retained activation score changed')
+                for after, count, step_score, weight in branches:
+                    factor = 1+epsilon*step_score
+                    row = (p, ps+step_score*p, pss+2*step_score*ps+step_score**2*p,
+                           factor*pl, factor**2*pll, factor*(pls+step_score*pl))
+                    target = future[after, count]
+                    for j, value in enumerate(row):
+                        target[j] += weight*value
+        moments = dict(future)
+    total = tuple(sum((row[j] for row in moments.values()), F()) for j in range(6))
+    p, ps, pss, pl, pll, pls = total
+    remainder_squared = pll+1+epsilon**2*pss-2*pl-2*epsilon*pls+2*epsilon*ps
+    polynomial_bound = (1+epsilon**2*variance)**slot_cap-1-slot_cap*epsilon**2*variance
+    rational_bound = x**2/(2*(1-x))
+    timeout = sum((row[0] for (_, count), row in moments.items() if count < ticks), F())
+    biased_timeout = sum((row[3] for (_, count), row in moments.items() if count < ticks), F())
+    field = {state: sum(((F(n)-F(1, 6))*h for n, h in zip(state, profile)), F())
+             for state in states}
+    baseline_variance = sum((row[0]*field[state]**2 for (state, _), row in moments.items()), F())
+    derivative = sum((row[1]*field[state] for (state, _), row in moments.items()), F())
+    mean = sum((row[3]*field[state] for (state, _), row in moments.items()), F())
+    source_variance = sum((field[state]**2/F(66) for state in states), F())
+    centered = tuple(h-sum(profile)/12 for h in profile)
+    if (p != 1 or pl != 1 or ps != 0 or baseline_variance != source_variance
+            or source_variance != F(5, 33)*sum(h*h for h in centered)
+            or not 0 <= remainder_squared <= polynomial_bound <= rational_bound
+            or (mean-epsilon*derivative)**2 > baseline_variance*remainder_squared
+            or biased_timeout**2 > pll*timeout):
+        raise ArithmeticError('the exact stopped likelihood or correlated timeout bound failed')
+    unlimited = controlled_response(profile, ticks)['occupation_mean_derivative']
+    unlimited_derivative = sum((h*d for h, d in zip(profile, unlimited)), F())
+    maximum_field = max(abs(v) for v in field.values())
+    derivative_tail_squared = 8*maximum_field**2*ticks*variance*timeout
+    if (derivative-unlimited_derivative)**2 > derivative_tail_squared:
+        raise ArithmeticError('the stopped derivative comparison lost its clock correlation')
+    return {'ticks': ticks, 'slot_cap': slot_cap, 'epsilon': epsilon,
+            'baseline_score_mean': ps, 'baseline_score_second_moment': pss,
+            'likelihood_mean': pl, 'likelihood_second_moment': pll,
+            'linear_likelihood_remainder_second_moment': remainder_squared,
+            'linear_likelihood_remainder_polynomial_upper': polynomial_bound,
+            'linear_likelihood_remainder_rational_upper': rational_bound,
+            'conditional_score_variance_upper': variance,
+            'baseline_terminal_field_variance': baseline_variance,
+            'capped_field_derivative': derivative, 'unbounded_clock_field_derivative': unlimited_derivative,
+            'capped_derivative_error_squared_upper': derivative_tail_squared,
+            'biased_terminal_field_mean': mean, 'field_nonlinear_error': mean-epsilon*derivative,
+            'baseline_timeout': timeout, 'biased_timeout': biased_timeout,
+            'timeout_fields_are_terminal_fields': True}
+
+
+def continuum_response_budget(level, epsilon=F(1, 10**6)):
+    """All-level bounds for a fixed bounded flat coordinate at density one-third.
+
+    These are analytic resource and error bounds, not allocated large screens.
+    The positive limiting response is a controlled mean, not a physical force
+    identification or a proof of a unique nonlinear finite-epsilon law.
+    """
+    level = _integer(level, 0, 100)
+    epsilon = inherited.exact_core._fraction(epsilon)
+    if not 0 < epsilon <= F(1, 100):
+        raise ValueError('the retained finite-signal regime is 0<epsilon<=1/100')
+    scale, cells = 4**level, 20*4**level
+    ports, seams = 12*cells, 630*scale
+    number = ports//3
+    chi = F(number*(ports-number), ports*(ports-1))
+    ticks, slots = 2*seams*scale, 8*seams*scale
+    variance = F(slots, chi*seams*scale)  # normalized scaled full-lift energy <=1
+    if not variance <= 36 or epsilon**2*variance > F(1, 2):
+        raise ArithmeticError('the uniform nonlinear response allowance failed')
+    # A>=3/4096, ||coordinate||^2>=3/16, 1-exp(-x)>=x/(1+x).
+    linear_lower = F(9, 32792)
+    nonlinear_allowance = epsilon**2*36
+    limiting_lower = epsilon*linear_lower-nonlinear_allowance
+    required_denominator = 16*ports*slots**2
+    bits = (required_denominator-1).bit_length()
+    return {'level': level, 'ports': ports, 'seams': seams, 'particles': number,
+            'susceptibility': chi, 'normalized_profile_maximum_upper': F(1),
+            'uniform_positivity_radius': F(1, 4),
+            'executed_dynamical_repairs_at_tau_one': ticks,
+            'selection_slot_cap': slots, 'baseline_expected_slots_without_cap': 2*ticks,
+            'biased_expected_slots_without_cap_upper': 4*ticks,
+            'score_variance_upper': variance,
+            'baseline_timeout_dyadic_exponent': ticks//2,
+            'baseline_timeout_upper': '2^(-baseline_timeout_dyadic_exponent)',
+            'biased_timeout_probability_squared_upper_factor': F(2),
+            'capped_linear_derivative_error_squared_upper_factor': F(8*ports*ticks, chi**2*seams*scale),
+            'capped_linear_derivative_error_squared_upper': 'factor * 2^(-baseline_timeout_dyadic_exponent)',
+            'epsilon': epsilon, 'limiting_linear_response_lower': linear_lower,
+            'limiting_nonlinear_mean_error_upper': nonlinear_allowance,
+            'liminf_mean_response_lower': limiting_lower,
+            'liminf_lower_is_positive': limiting_lower > 0,
+            'dyadic_activation_bits_per_slot': bits,
+            'maximum_native_coin_service_events': bits*slots,
+            'additional_uniform_seam_selection_calls': slots,
+            'dyadic_mean_error_squared_upper': F(1, 64*slots**2*ports*chi),
+            'all_bounds_include_terminal_fields_on_timeout': True,
+            'complete_nonlinear_continuum_law_identified': False,
+            'clock_is_a_primitive_port_incident_clock': False}
+
+
+def controlled_response_run():
+    profile = (F(1), F(-1))+(F(0),)*10
+    rows = []
+    for count in (1, 2, 4):
+        tick = controlled_response(profile, count)
+        slot = controlled_response(profile, 2*count, clock='slot')
+        defect = tick['occupation_mean_derivative'][0]-slot['occupation_mean_derivative'][0]
+        if defect == 0:
+            raise ArithmeticError('naive slot-to-clock substitution lost its finite control')
+        rows.append({'executed_repairs': count, 'correct_response': tick,
+                     'double_slot_substitution_response': slot,
+                     'naive_clock_substitution_port_zero_defect': defect})
+    initial = next(state for state in source().states if state[0] and not state[1])
+    law = controlled_history(profile, F(1, 8), initial, ticks=1, slot_cap=2)
+    zero = sum((p for key, p in law.items() if any(r[1] and r[3] == 0 for r in key[0])), F())
+    idle = sum((p for key, p in law.items() if any(not r[1] for r in key[0])), F())
+    timeout = sum((p for key, p in law.items() if key[1] == 'timeout'), F())
+    if not 0 < zero < 1 or not 0 < idle < 1 or not 0 < timeout < 1:
+        raise ArithmeticError('the controlled full-history counter witnesses vanished')
+    return {'profile': profile, 'full_configuration_derivatives': rows,
+            'complete_controlled_history': {'epsilon': F(1, 8), 'initial_load': initial,
+                'target_executed_repairs': 1, 'slot_cap': 2,
+                'nonzero_record_labels': len(law), 'law_sha256': law_digest(law),
+                'some_zero_current_execution_probability': zero,
+                'some_idle_slot_probability': idle, 'timeout_probability': timeout,
+                'timeout_fields_are_terminal_fields': True},
+            'exact_stopped_likelihood_control': likelihood_control(profile, F(1, 8)),
+            'continuum_normalization_and_resources': [continuum_response_budget(level) for level in (0, 1, 2)],
+            'continuum_mean_derivative': '2*(I-exp(-tau*A))*f',
+            'finite_clock_mean_derivative': '2*chi*K*(I-K^r)*h',
+            'finite_slot_mean_derivative': '2*chi*(I-((I+K)/2)^q)*h',
+            'weak_force_if_f_in_form_domain': '2*A*f, in the dual of the closed form domain',
+            'natural_physical_force_or_atomic_clock_identified': False}
+
+
 def _json(value):
     if isinstance(value, F):
         return str(value)
@@ -285,6 +635,7 @@ def run():
         'stopped_joint_forecasts': rows,
         'mean_field_responses': {str(n): density_response(n) for n in (0, 1, 2, 4)},
         'discounted_spatial_response': {str(z): discounted_response(z) for z in (1, 2)},
+        'controlled_continuum_response': controlled_response_run(),
         'controls': {'nonstationary_prior_rejects_stationary_weight_formula': True,
             'nonstationary_actual_total_mass': sum(nonstationary.values()),
             'nonstationary_invalid_forecast_total_mass': sum(invalid_forecast.values()),

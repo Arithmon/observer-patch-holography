@@ -551,8 +551,9 @@ subsequence result from weak covariance convergence to **operator-norm
 convergence**. Its inverse is one positive self-adjoint continuum spatial
 generator shared by the field and the temporal constructions. The source
 architecture, routing contract and ancestry observations are unchanged.
-This does not select a unique whole-sequence limit, identify a physical
-metric, or assert that the limiting generator is a local Dirichlet operator.
+This does not select a unique whole-sequence limit or identify a physical
+metric. The full-port lifting argument below proves that its limiting form
+is a conservative strongly local Dirichlet form.
 
 Let `P_k` be conditional averaging on the level-`k` ancestral cells in
 `H=L2_0(mu)`, with the normalized area measure defined below. The level-`l`
@@ -604,14 +605,20 @@ principle also gives a quantitative spectral bound: positive covariance
 eigenvalue number `20*4^k` and every later one is at most `624*4^(-k)`.
 Indeed (K1) bounds the energy below on the subspace perpendicular to `P_k`,
 whose codimension is `20*4^k-1`; norm convergence preserves that bound.
-This estimate is an upper spectral-count control, not an identification of
-the observed spatial dimension.
+The matching lower spectral-count estimate below identifies the spectral
+dimension of this particular source limit; it does not identify the observed
+spatial dimension.
 
 The limiting covariance has no further null directions. For a Lipschitz
 mean-zero test `g` on the auxiliary flat polyhedron, adjacent cell averages
 differ by at most `2a*2^(-l) Lip(g)`. Counting the `30*4^l` dual edges and
 normalizing the `20*4^l` cell indicators yields
 `<P_l g,B_l P_l g><=a^2 Lip(g)^2/2<Lip(g)^2`.
+This upper bound also holds for the full cell-constant port lift, whose
+energy is `<P_l g,4^l L_cell,l P_l g>/12`. For any unit-axis flat coordinate
+`f=e.x`, `Lip(f)<=1` and
+`||P_l f||^2>=||P_0 f||^2=r^2/3>3/16`, by the exact base-centroid Gram
+above and the inradius bound `r^2>9/16`.
 The Green variational identity gives
 `<f,G_l f> >= |<f,P_l g>|^2/Lip(g)^2` for nonconstant `g`.
 Lipschitz tests are dense in `H`, so for every nonzero `f` one can choose
@@ -642,12 +649,196 @@ supports of their cell averages therefore have graph distance at least
 `ceil(delta*2^l-4)` once that expression is positive. Bound (K3) tends to
 zero faster than every power of the cell size. The original action thus
 has vanishing couplings between separated continuum regions. This proof
-does not identify the relaxed limiting form: convergence of the energies
+alone does not identify the relaxed limiting form: convergence of the energies
 of raw cell averages is a separate claim from convergence of their inverses.
 In particular, eliminating **cell means** is not vertex Kron reduction.
 The exact native level-zero Schur entry `(5,9)` is positive, so its negative
 is not a Markov jump generator. Neither an M-matrix premise nor finite
 propagation for the limiting wave follows from (K3) alone.
+
+### Locality and spectral dimension of the source continuum
+
+The continuum form inherits contraction and locality from the **full native
+port energy**, even though finite cell-mean elimination is not Markov.
+Extend the mean-zero operator `A` to `L2(mu)` by adjoining the constant zero
+mode. Write `E(f)=||A^(1/2)f||^2`; the reduced inverse is the preceding `G`.
+The finite forms are `E_l(f)=<f,B_l f>` on the cell step functions, and
+infinite outside them. Constants have zero energy at every level.
+
+First these forms converge in the Mosco sense along the selected subsequence.
+For weakly convergent `f_l->f`, their variational representation gives
+
+```text
+E_l(f_l) >= 2<f_l,g>-<g,G_l g>  for every mean-zero g.
+```
+
+Norm Green convergence and then the supremum over `g` give the energy
+liminf inequality. For `f=Gg`, the recovery sequence `f_l=G_l g` converges
+strongly and has energy `<g,G_l g>->E(f)`. Finite spectral truncations are
+dense in the form norm; a diagonal choice supplies recovery for every
+finite-energy `f`. Add its constant part unchanged. Thus convergence of
+the inverses controls the relaxed energies, not just covariance pairings.
+
+For a finite cell field, take its full-port energy minimizer
+`v_l=U_l f_l+q_l`, where `U_l` is the normalized cell isometry and `q_l`
+has zero mean within each carrier. The native internal gap gives
+
+```text
+4^l <v_l,L_l v_l> = E_l(f_l),
+||q_l||^2 <= E_l(f_l)/(2*4^l).                              (L1)
+```
+
+Consequently every bounded-energy recovery has negligible internal
+fluctuation in `L2`. For any real normal contraction `C` (`C(0)=0`,
+`|C(x)-C(y)|<=|x-y|`), apply it to the scalar port values:
+`v_p -> C(sqrt(V_l)*v_p)/sqrt(V_l)`. Each native edge energy decreases.
+This contraction differs from applying `C` to the cell values by at most
+`||q_l||` in norm. Average the contracted ports back to cells and use the
+Mosco liminf inequality. It follows that `E(C(f))<=E(f)` on the full
+`L2(mu)` space. The closed symmetric form is therefore a Dirichlet form;
+`1` belongs to its domain with zero energy, so its heat semigroup is
+conservative. Explicitly, the resolvent minimizes
+`E(u)+t^(-1)||u-f||^2`; for `0<=f<=1`, clipping `u` to `[0,1]` lowers
+both terms, so the minimizer lies in that interval. Euler products of
+these resolvents give the same interval-preservation for the heat
+semigroup, and the constant zero mode gives conservation.
+The finite positive Schur entry is compatible with this
+limit, because the internal correction in (L1) vanishes.
+
+Locality needs more than this contraction argument. Let `chi` be a fixed
+Lipschitz cutoff on the auxiliary flat polyhedron, with `0<=chi<=1`,
+sampled at cell centroids and repeated at all twelve ports of each cell.
+For each native seam, expand the difference of `chi*v` into the difference
+of `v` plus the difference of `chi`. Internal seams have no cutoff
+difference. Each cross-seam endpoint occurs once, and adjacent centroids
+are less than `2^(-l)` apart. For every `epsilon>0`,
+
+```text
+4^l <chi*v,L_l chi*v>
+ <= (1+epsilon) 4^l <v,L_l v>
+    +(1+1/epsilon) Lip(chi)^2 ||v||^2_transition.            (L2)
+```
+
+The transition norm uses only endpoints of edges on which `chi` changes.
+For a cutoff equal to one on a neighborhood of `supp(f)` and changing
+only at positive distance from that support, this norm tends to zero on
+any full-port recovery for `f`, by (L1) and strong convergence. Choose
+`epsilon_l->0` slowly enough that its last term also tends to zero.
+This gives recovery sequences supported in any fixed neighborhood of
+`supp(f)`, with asymptotically unchanged energy.
+
+For two form-domain functions with supports at positive distance, choose
+such recoveries with disjoint support neighborhoods. No native seam joins
+them at sufficiently fine levels. The **full-port trial energies** of
+both their sum and difference are exactly additive. The projected cell
+energies are bounded above by those trial energies; no exact additivity
+of finite Schur energies is assumed. Mosco liminf therefore gives
+`E(f+g)<=E(f)+E(g)` and `E(f-g)<=E(f)+E(g)`, hence `E(f,g)=0` by
+polarization. Subtract a global constant to cover the case that `g` is
+constant on a neighborhood of `supp(f)`. This proves **strong locality**
+on the comparison topology.
+
+The form also has a regular Sobolev core. On each fine primal triangle,
+assign its cell value to the centroid, the mean of the two adjacent cell
+values to each edge midpoint, and the mean of the incident cell values to
+each primal vertex. Affine interpolation on the six resulting triangles
+defines a continuous function `I_l f_l`, including across original face
+hinges. Every primal vertex has valence five or six: midpoint refinement
+preserves old valences and creates valence-six vertices. Around either
+cycle, `sum_i (u_i-mean(u))^2<=sum_i (u_i-u_(i+1))^2`. The executable
+proves these two finite inequalities by exact rational positive-semidefinite
+factorizations, and binds the vertex stars to the source refinement.
+
+For one small triangle with vertex, edge midpoint and cell centroid
+values `v,m,c`, exact flat integration gives
+`integral |grad I_l f_l|^2=(sqrt(3)/6)(v-m)^2+(sqrt(3)/2)(c-m)^2`.
+Summing all small triangles gives `sum(c-m)^2=E_dual` and
+`sum(v-m)^2<=4 E_dual`, where `E_dual` is the unnormalized dual-edge
+energy of the scalar cell values. Dividing by total area `20a0`, with
+`a0=sqrt(3)a^2/4`, and using the normalized cell dictionary gives
+
+```text
+integral |grad I_l f_l|^2 dmu
+ <= 14/(3a^2) <f_l,4^l L_cell,l f_l> <= 112/a^2 E_l(f_l),
+||I_l f_l-f_l||^2 <= 5/(18*4^l) <f_l,4^l L_cell,l f_l>
+                  <= 20/(3*4^l) E_l(f_l).                  (L5)
+```
+
+For the second bound, convexity bounds each interpolated squared error by
+the barycentric average of its three nodal squared errors. Summed nodal
+errors contribute at most `E_dual+4 E_dual`; each small triangle has
+normalized area `1/(120*4^l)` and each barycentric coordinate averages
+`1/3`, giving `E_dual/(72*4^l)`. No boundary value is pinned.
+
+Take `H1` on the glued flat surface to be the completion of continuous
+piecewise-affine functions in the norm `||f||^2+integral |grad f|^2 dmu`.
+The gradient is closable in `L2`, as integration against tests in the
+interior of each face verifies, so this completion embeds in `L2(mu)`.
+Applying (L5) to bounded-energy recovery sequences and taking a weak
+`H1` subsequence gives `D(E)` contained in `H1`. Conversely, the
+piecewise-affine energy upper bound proved below extends to its `H1`
+completion by closedness of `E`. Therefore
+
+```text
+D(E)=H1,
+(a^2/112) integral |grad f|^2 dmu <= E(f)
+ <= (a^2/48) integral |grad f|^2 dmu.                       (L6)
+```
+
+The equivalent norms make continuous piecewise-affine functions a form
+core. Their vertex interpolants approximate every continuous function
+uniformly as mesh diameter vanishes, so the Dirichlet form is **regular**.
+Its exact intrinsic metric, routing-independent uniqueness and physical
+length/time identification have not been selected by these comparisons.
+
+There is a quantitative two-dimensional spectral conclusion independent of
+those further claims. On each of the `N_k=20*4^k` coarse triangles, let
+`b=3 min(lambda_1,lambda_2,lambda_3)` in barycentric coordinates, and zero
+outside that triangle. This continuous tent has normalized triangle
+moments `mean(b)=1/3`, `mean(b^2)=1/6`, and gradient squared
+`12*4^k/a^2` almost everywhere. For a fixed continuous piecewise-affine
+field `f`, the dual triangular mesh satisfies
+
+```text
+lim_l 4^l <f_l,L_cell,l f_l> = (a^2/4) integral |grad f|^2 dmu,  (L3)
+```
+
+where `f_l` is its centroid-sampled cell step function with the normalized
+indicator coefficients. Within each affine piece, the three neighbor
+centroid vectors obey `sum_j d_j d_j^T=(a^2/(2*4^l)) I_2`; counting each
+edge at both ends gives (L3). Only `O(2^l)` fine cells meet the finitely
+many affine break lines or base-face hinges. Each such edge contributes
+`O(4^(-l))` before the fixed factor `4^l/(20*4^l)`, so their total
+contribution vanishes. No round-sphere Laplacian is substituted for `S_l`.
+The upper native comparison `S_l<=L_cell,l/12` and the energy liminf
+give `E(f)<=(a^2/48) integral |grad f|^2 dmu` for these tests.
+
+For a linear combination of the `N_k` tents with coefficients summing to
+zero, its squared norm is `sum_i c_i^2/(6N_k)` and its energy is at most
+`4^k sum_i c_i^2/(4N_k)`. This is an `N_k-1` dimensional mean-zero
+subspace, so min-max gives `lambda_(20*4^k-1)(A)<=(3/2)*4^k`.
+Together with (K1), monotonicity and `lambda_1(A)>=3/4096`, every positive
+eigenvalue, counted with multiplicity from `n=1`, satisfies
+
+```text
+n/49920 <= lambda_n(A) <= 3n/2,
+1/(exp(3t/2)-1) <= Tr_H0 exp(-t A) <= 1/(exp(t/49920)-1).    (L4)
+```
+
+Here `t>0` is the common generator's scaled native-decay parameter, not
+laboratory time.
+Thus the heat-trace spectral dimension
+`2 lim_(t downarrow 0) log Tr_H0(exp(-t A))/log(1/t)` is exactly **two**.
+This concerns the native spherical observation domain and normalization.
+It excludes unitary identification, up to a fixed positive scale and
+bounded mass shift, with a second-order positive elliptic operator on a
+smooth compact three-dimensional manifold without boundary and of positive
+volume: the latter
+has counting growth `N(Lambda)~c Lambda^(3/2)` by the classical Weyl law
+([Rivera, §1, recalling Hörmander's theorem](https://arxiv.org/html/1801.07598#S1)).
+The exclusion does not cover a different radial observation algebra,
+noncompact volume limit, different operator order or different scaling.
+Rank-three internal coefficients alone do not change this spectral count.
 
 ### A continuum random distribution on the carrier sphere
 

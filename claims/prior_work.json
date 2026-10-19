@@ -1990,6 +1990,19 @@
       "note": "Component: dynamic circuits"
     },
     {
+      "key": "coulhon2006gaussian",
+      "type": "article",
+      "author": "Coulhon, Thierry and Sikora, Adam",
+      "title": "Gaussian heat kernel upper bounds via Phragmén-Lindelöf theorem",
+      "journal": "arXiv preprint arXiv:math/0609429",
+      "year": "2006",
+      "eprint": "math/0609429",
+      "doi": "10.1112/plms/pdm050",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/math/0609429",
+      "note": "Theorem 3.4 relates Davies-Gaffney heat estimates and finite propagation for the cosine family of a nonnegative self-adjoint operator; the native weighted estimate and comparison units are proved separately."
+    },
+    {
       "key": "courant1928partiellen",
       "type": "article",
       "author": "Courant, R. and Friedrichs, K. and Lewy, H.",
@@ -6858,6 +6871,19 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1561/2500000045",
       "note": "Proof engineering with typed interfaces."
+    },
+    {
+      "key": "rivera2018weighted",
+      "type": "article",
+      "author": "Rivera, Alejandro",
+      "title": "Weighted local Weyl laws for elliptic operators",
+      "journal": "arXiv preprint arXiv:1801.07598",
+      "year": "2018",
+      "eprint": "1801.07598",
+      "doi": "10.48550/arXiv.1801.07598",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1801.07598",
+      "note": "Section 1 recalls the Weyl counting exponent n/m for a positive elliptic operator of order m on a smooth compact n-dimensional manifold; used only for the scoped comparison with the native spectral count."
     },
     {
       "key": "robert1986discrete",

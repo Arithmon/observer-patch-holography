@@ -30,7 +30,10 @@ variables on the existing spherical screens gives a controlled native Green
 operator. A [source Poincare bound](physical_space_time/OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
 upgrades the common covariance subsequence to operator-norm convergence.
 The limit is compact and injective on mean-zero `L2`; its inverse defines
-one positive continuum spatial generator `A`.
+one positive continuum spatial generator `A`. Its full-space quadratic form
+is conservative, regular, Markovian and strongly local, with domain `H1`.
+Two-sided eigenvalue bounds give heat-trace spectral dimension two on
+this source readout domain.
 The [continuous observation process](physical_space_time/OCCUPATION_FIELD.md)
 extends this to continuous paths in `H^-2(S²)` along a common spatial
 subsequence. Its time parameter is rescaled observation count. A coupling
@@ -42,16 +45,22 @@ The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-
 uses this same `A` for native heat propagation, coherent cosine amplitudes
 and a continuous Gaussian wave readout synthesized from two long observation
 blocks of one native history. Its covariance is
-`A^-1 cos((t-u)sqrt(A))`. The wave processor and coherent services are
-declared; their parameter is distinct from passive waiting and physical time.
+`A^-1 cos((t-u)sqrt(A))`. Restoring the constant mode gives finite
+propagation at speed at most `1/sqrt(2)` in the flat comparison distance
+per coherent wave parameter. This support theorem concerns localized
+changes; it does not erase the stationary field's long-range correlations.
+The wave processor and coherent services are declared; their parameter is distinct from passive waiting and physical time.
 A [specified random-length return reference](observer_time_fields/README.md#a-native-return-reference-for-the-coherent-wave-generator)
 has modular generator `arccos(K)`, matching those wave phases. Finite caps
 have explicit state and generator error bounds. The length sampler and
 endpoint reads are admitted services; this reconstructs a reference, not
 a quantum vacuum or a complete modular evolution of the observer.
 The return cap must grow with refinement: a fixed cap freezes the scaled
-low-band modular phase. Whole-sequence uniqueness, a local continuum
-Dirichlet form and a physical identification are unresolved.
+low-band modular phase. The full configuration reference approaches a
+tracial state at fixed modular parameter; the density-wave sector has
+vanishing reference weight. Nonzero rescaled phases alone therefore do
+not supply a quantum vacuum. Whole-sequence uniqueness, the physical
+metric and physical field identification remain unresolved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
@@ -120,8 +129,12 @@ The [native response prediction](predictions/README.md#native-repair-response-fr
 links a record-triggered repair to passive clock/field correlations without
 fitting a response parameter. It retains the trigger, current, all clock
 ticks and timeouts, and its discounted field response uses the same native
-spatial resolvent. This is a model prediction with a fixed intervention
-dictionary; no corresponding public measurement is identified.
+spatial resolvent. A controlled weak-bias source also has continuum mean
+derivative `2(I-exp(-tau*A))f` in its executed-repair clock. Uniform
+likelihood bounds retain a strictly positive response at fixed bias
+`epsilon=10^-6`, with timeouts and coin-service costs included. This is
+a declared observer intervention; no corresponding public measurement
+or atomic-clock identification is supplied.
 
 The twelve-port result does not by itself describe an extended physical
 space. That stronger claim needs observations over larger operational domains

@@ -144,6 +144,152 @@ def test_coarse_cells_do_not_get_an_unjustified_separation_bound():
 
 def test_finite_control_allocation_caps_are_explicit():
     for function, value in ((c.triangle_patch, 6), (c.exact_patch_energy_control, 4),
-                            (c.native_operator_control, 3), (c.source_patch_control, 4)):
+                            (c.native_operator_control, 3), (c.source_patch_control, 4),
+                            (c.tent_refinement_control, 5)):
         with pytest.raises(ValueError):
             function(value)
+
+
+def test_continuous_tent_integrals_and_isotropic_centroid_energy_tensor():
+    row = c.tent_geometry_control()
+    assert F(row['normalized_tent_mean']) == F(1, 3)
+    assert F(row['normalized_tent_second_moment']) == F(1, 6)
+    assert F(row['unit_side_tent_gradient_squared']) == 12
+    assert F(row['native_limit_tent_energy_quotient_at_coarse_level_zero']) == F(3, 2)
+
+
+@pytest.mark.parametrize('level', range(5))
+def test_all_ancestral_tents_use_actual_dual_edges_and_vanishing_boundary_terms(level):
+    row = c.tent_refinement_control(level)
+    # Along each coarse boundary there are m edges, each joining tent
+    # values1/m and0 for each distinct ancestral tent. The off-diagonal
+    # rescaled energy is therefore exactly -1/(20m).
+    assert F(row['max_dual_energy_off_diagonal']) == F(1, 20*2**level)
+    assert row['source_cells'] == 20*4**level
+    assert F(row['exact_normalized_patch_tent_second_moment']) >= F(1, 6)
+
+
+def test_tent_readouts_approximate_continuous_moments_without_fitting_energy():
+    coarse = c.tent_refinement_control(2)
+    fine = c.tent_refinement_control(4)
+    for key, target in (('exact_normalized_patch_tent_mean', F(1, 3)),
+                        ('exact_normalized_patch_tent_second_moment', F(1, 6))):
+        assert abs(F(fine[key])-target) < abs(F(coarse[key])-target)/10
+    assert F(fine['max_dual_energy_diagonal_error_from_three_twentieths']) < F(1, 100)
+
+
+def test_exact_full_port_lift_transports_contraction_and_cutoff_with_constant_mode():
+    row = c.full_port_form_control()
+    assert row['full_port_harmonic_energy_identity_checked']
+    assert row['constant_zero_mode_adjoined_before_normal_contraction']
+    assert 0 < F(row['internal_norm_squared_over_raw_energy']) < F(1, 2)
+    assert 0 < F(row['contracted_energy_over_raw_energy']) < 1
+    assert 0 < F(row['contraction_error_squared_over_internal_norm_squared']) < 1
+    assert F(row['cutoff_energy']) <= F(row['cutoff_energy_upper'])
+
+
+def test_changing_the_mean_elimination_kernel_breaks_the_full_native_lift(monkeypatch):
+    graph, laplacian, r, integer_f, denominator = c.source.matrices(0)
+    changed = integer_f+np.eye(len(integer_f), dtype=np.int64)
+    monkeypatch.setattr(c.source, 'matrices', lambda level:
+        (graph, laplacian, r, changed, denominator))
+    with pytest.raises(ArithmeticError, match='harmonic energy lift'):
+        c.full_port_form_control()
+
+
+@pytest.mark.parametrize('level', (0, 1, 20, 100))
+def test_full_port_internal_weight_vanishes_at_every_refinement(level):
+    assert c.harmonic_lift_tail(level) == F(1, 2*4**level)
+    assert c.harmonic_lift_tail(level+1) == c.harmonic_lift_tail(level)/4
+
+
+@pytest.mark.parametrize('index', (1, 19, 20, 21, 79, 80, 81, 319, 320, 10**8, 10**100))
+def test_global_eigenvalue_enclosures_follow_from_all_level_minmax_indices(index):
+    lower, upper = c.continuum_eigenvalue_enclosure(index).values()
+    lower_level = 0
+    while 20*4**(lower_level+1) <= index:
+        lower_level += 1
+    actual_lower = (F(3, 4096) if index < 20
+                    else 1/c.covariance_eigenvalue_tail(lower_level))
+    upper_level = 0
+    while c.tent_eigenvalue_bound(upper_level)['index'] < index:
+        upper_level += 1
+    actual_upper = c.tent_eigenvalue_bound(upper_level)['upper']
+    assert lower <= actual_lower <= actual_upper <= upper
+
+
+def test_regular_three_dimensional_eigen_growth_eventually_violates_native_lower_bound():
+    # Exact exponent countercontrol for n^(2/3), with unit coefficient.
+    # The theorem treats every fixed positive coefficient asymptotically;
+    # this is not a fit to an actual laboratory spectrum.
+    side = 49921
+    index = side**3
+    assert side**2 < c.continuum_eigenvalue_enclosure(index)['lower']
+
+
+@pytest.mark.parametrize('index', (True, 0, -1, 1., '2'))
+def test_continuum_eigenvalue_index_rejects_invalid_values(index):
+    with pytest.raises(ValueError):
+        c.continuum_eigenvalue_enclosure(index)
+
+
+@pytest.mark.parametrize('level', (True, -1, 1., '2'))
+def test_all_level_form_and_tent_bounds_reject_invalid_levels(level):
+    for function in (c.harmonic_lift_tail, c.tent_eigenvalue_bound, c.tent_refinement_control):
+        with pytest.raises(ValueError):
+            function(level)
+
+
+def test_exact_interpolation_integrals_and_both_source_cycle_certificates():
+    row = c.interpolation_geometry_control()
+    assert F(row['normalized_gradient_times_side_squared_per_dual_energy_upper']) == F(7, 30)
+    assert F(row['normalized_mass_error_times_cell_count_per_dual_energy_upper']) == F(5, 18)
+    for certificate, zero_count in zip(row['source_vertex_cycle_certificates'], (1, 3), strict=True):
+        pivots = [F(x) for x in certificate['rational_nonnegative_pivots']]
+        assert all(value >= 0 for value in pivots)
+        assert pivots.count(0) == zero_count
+
+
+@pytest.mark.parametrize('level', range(4))
+def test_source_interpolation_uses_closed_native_stars_and_exact_energy_mass_bounds(level):
+    row = c.source_interpolation_control(level)
+    assert row['vertex_valence_counts'].get('5') == 12
+    assert row['vertex_valence_counts'].get('6', 0) == 10*4**level-10
+    assert F(row['normalized_gradient_times_side_squared']) <= F(row['normalized_gradient_times_side_squared_upper'])
+    assert 0 < F(row['exact_normalized_interpolation_mass_error']) <= F(row['normalized_interpolation_mass_error_upper'])
+    compare_receipt(json.loads(json.dumps(row)), row)
+
+
+def test_missing_native_edge_fails_the_interpolation_dictionary_binding(monkeypatch):
+    original = c.uniform.dual_edges
+    monkeypatch.setattr(c.uniform, 'dual_edges', lambda faces: original(faces)[1:])
+    with pytest.raises(ArithmeticError, match='dual-edge dictionaries differ'):
+        c.source_interpolation_control(1)
+
+
+def test_source_interpolation_does_not_silently_insert_a_boundary_condition(monkeypatch):
+    vertices, faces = c.uniform.affine_prefix(1)
+    monkeypatch.setattr(c.uniform, 'affine_prefix', lambda level: (vertices, faces[1:]))
+    with pytest.raises(ArithmeticError, match='two cells at each primal edge'):
+        c.source_interpolation_control(1)
+
+
+def test_valence_seven_would_invalidate_the_specific_cycle_variance_constant():
+    values = (10, 6, -2, -9, -9, -2, 6)
+    assert sum(values) == 0
+    variance = sum(x*x for x in values)
+    energy = sum((values[i]-values[(i+1) % 7])**2 for i in range(7))
+    assert variance > energy
+    with pytest.raises(ValueError, match='valence five or six'):
+        c.cycle_variance_control(7)
+
+
+@pytest.mark.parametrize('valence', (True, 4, 5., '6'))
+def test_cycle_variance_control_requires_an_actual_source_valence(valence):
+    with pytest.raises(ValueError):
+        c.cycle_variance_control(valence)
+
+
+def test_interpolation_finite_control_size_is_bounded():
+    with pytest.raises(ValueError, match='levels zero through three'):
+        c.source_interpolation_control(4)

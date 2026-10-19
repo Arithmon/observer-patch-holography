@@ -412,9 +412,114 @@ Then `(1/(2*M*s))*sum_(n>=0) r^(n+1)*Delta<n(n)>` equals
 verify this response on the native carrier. This makes the
 [spatial Green operator](../observer_time_fields/REFINEMENT.md#native-temporal-correlations-and-the-spatial-green-field)
 a response to an observer's explicit repair operation, as well as a passive
-correlation. A nonzero continuum source additionally requires a compatible
-source normalization and limit; one microscopic pulse is not automatically
-a finite continuum force, a Lorentzian signal or a laboratory field.
+correlation. One microscopic pulse does not by itself have a nonzero
+continuum normalization. The following controlled source supplies one.
+
+### A controlled continuum mean with an executed-event clock
+
+Fix a real port profile `h`, disclose the initial binary load and reconstruct
+subsequent occupations from retained currents. In each selection slot choose
+a uniform seam `(a,b)` and execute its unchanged fair native repair with
+probability
+
+```text
+p_execute = [1 + epsilon*(h_b-h_a)*(n_a-n_b)]/2.
+```
+
+Every selection, idle/execution flag, repair coin and current is retained.
+The source certifies `|epsilon*(h_b-h_a)|<=1/2`. The designated dynamical
+clock counts executed repairs, including zero-current repairs. It is an
+aggregate event clock; it is not a primitive port-incident clock. Selection
+slots and controller service have separate counts. Native fair bits can be
+read by repairing a disclosed equal-occupation seam: its load stays fixed,
+but every service write remains a charged native event. An equal pair exists
+in every binary carrier triangle. These resource counts do not identify
+seconds, an atomic transition or an autonomous force law.
+
+For the uniform fixed-number preparation the execution subkernel has
+stationary incoming mass `pi/2`, even at nonzero epsilon; its row activity
+depends on the load. Dividing by that activity gives the actual kernel at
+successive executed repairs. Differentiating this normalization at zero
+produces the extra `K` in the exact response:
+
+```text
+executed repair count r: d< n >/d epsilon|_0 = 2*chi*K*(I-K^r)*h,
+selection slot count q: d< n >/d epsilon|_0 = 2*chi*(I-Q^q)*h,
+Q = (I+K)/2.
+```
+
+Full 66-configuration propagation checks both identities. Replacing `q`
+by `2r` is not exact: the retained finite controls have different responses.
+This correction retains the correlation between clock stopping and load.
+
+On the actual level-`l` carrier set `s=4^l`, `N=240s`, `M=630s` and density
+one third, with its canonical susceptibility `chi`. For a fixed mean-zero
+flat coordinate `f`, put `h_l=cell_average(f)/sqrt(N*chi)`, copied to the
+ports of each cell, and read
+`eta_l(g)=sum_p cell_average(g)_p*(n_p-1/3)/sqrt(N*chi)`.
+The [common native generator](../observer_time_fields/REFINEMENT.md#the-full-native-dynamics-have-the-same-limit)
+then gives, along the same spatial subsequence, at
+`r=floor(2*M*s*tau)=floor(1260*16^l*tau)` executed repairs,
+
+```text
+d E[eta_l(g)]/d epsilon|_0 --> 2 <g,(I-exp(-tau*A))f>.
+```
+
+The small-`tau` source is `2Af` in the dual of the closed form domain when
+`f` lies in that domain. This derives a controlled mean response through
+the same `A` as the passive field and heat limit. It does not identify a
+physical force or quantum field interaction.
+
+The statement also has a finite, level-independent amplitude. At `tau=1`
+stop at `r` executed repairs or `q=4r` selection slots, retaining the actual
+terminal field on timeout. Against the zero-bias law the stopped likelihood
+is `L=product(1+epsilon*s_j)`, where `s_j` is the signed activation score
+and is zero after stopping. Its conditional mean is zero and variance is
+at most `v=h_l^T L_graph h_l/M`. The
+[coordinate energy bound](../physical_space_time/OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
+gives `q*v<=8/chi<36`. Writing `S=sum s_j`, martingale conditioning yields
+
+```text
+E L^2 <= (1+epsilon^2*v)^q <= exp(epsilon^2*q*v),
+E (L-1-epsilon*S)^2 <= (1+epsilon^2*v)^q-1-q*epsilon^2*v.
+```
+
+Indeed the remainder increments are `epsilon*s_j*(L_previous-1)`;
+conditional centering removes their cross terms. When `epsilon^2*q*v<=1/2`,
+Cauchy--Schwarz bounds the nonlinear mean error by
+`36*epsilon^2*||g||_L2(mu)`, uniformly in refinement.
+
+The cap comparison retains the stopping correlations. At zero bias the
+uncapped slot count `T_r` has mean `2r` and
+`P(T_r>4r)<=2^(-r/2)`. With `B` the maximum absolute terminal field, the
+squared difference of capped and uncapped derivatives is at most
+`8*B^2*r*v*P(T_r>4r)`: use the complete stopped score, whose second moment
+is at most `2r*v`, and the fact that the fields differ only on timeout.
+The biased timeout obeys
+`P_epsilon(timeout)^2<=E_0[L^2]*P_0(timeout)`; it is not assigned the
+unbiased watchdog probability. The executable propagates all likelihood,
+score and field moments on the complete finite state space and verifies
+these correlations, including a nonzero nonlinear mean correction.
+
+For a flat coordinate of the unit carrier, `||f||<=1` and
+`||f||^2>=3/16`. Since `A>=3/4096`,
+`2<f,(I-exp(-A))f> >= 9/32792`. Consequently the fixed choice
+`epsilon=10^-6` has the strictly positive bound
+
+```text
+liminf_l E_epsilon[eta_l(f)] >= epsilon*9/32792 - 36*epsilon^2
+                            = 244359/1024750000000000 > 0.
+```
+
+This is a nonvanishing controlled continuum signal. It does not prove a
+unique nonlinear law at fixed epsilon. A finite fair-bit implementation
+rounds each activation probability down using
+`b=ceil(log2(16*N*q^2))` bits. Coupling bounds the path discrepancy by
+`q*2^-b`; the squared terminal-mean error is at most
+`1/(64*q^2*N*chi)`, which vanishes. At most `b*q` native coin-service
+writes are charged, plus the separately supplied uniform-seam selection
+service. This implementation is a declared observer protocol, not a
+claim that passive repair spontaneously chooses this drive or clock.
 
 The [published Ar13+/Yb+ files](https://zenodo.org/records/6901524) contain
 corrected optical frequency ratios. They do not contain these disclosed

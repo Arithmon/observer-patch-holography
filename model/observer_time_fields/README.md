@@ -62,12 +62,22 @@ have transfer `exp(-tau A)`, and coherent amplitudes approach
 with declared spectral processing, give a continuous Gaussian wave readout
 in `C([0,T],H^-2(S2))`. This is a common subsequential continuum on the
 carrier sphere, with distinct native and coherent parameter units.
+Restoring the constant mode gives a
+[finite propagation bound](REFINEMENT.md#finite-propagation-on-the-source-comparison-space):
+local wave changes travel at most `|t|/sqrt(2)` in the source's flat
+comparison distance. The proof uses native full-port weighted heat bounds;
+it does not assign metres, seconds or Lorentz symmetry to that cone.
 
 Growing native-return caps give the same rescaled modular phase magnitudes;
-a fixed cap freezes those phases in this spatial limit. This phase match
-does not construct a faithful continuum modular state or identify atomic
-clock time. The Gaussian wave ensemble has covariance `A^-1`; it supplies
-neither a quantum vacuum nor an observed Lorentzian metric.
+a fixed cap freezes those phases in this spatial limit. The
+[full-configuration reference](REFINEMENT.md#the-full-reference-state-and-its-quantum-fluctuation-boundary)
+approaches normalized trace with half-trace error at most `3/(8*2^l)`.
+Its density-wave sector has vanishing weight, and fixed-parameter modular
+evolution becomes trivial in normalized-trace `L2`; rescaled wave phases
+are a different limit. The reference's bounded-overlap fluctuation
+commutators also vanish. These statements identify why the current
+unconditioned reference does not supply a quantum vacuum. The Gaussian
+wave ensemble has covariance `A^-1`, with no atomic-clock identification.
 
 ## The common observer contract
 
@@ -568,8 +578,9 @@ claimed. The construction changes none of the retained laboratory fits.
 The collective continuum readouts use full initial occupations and the
 current tape, beyond the earlier local four-bit access contract. Their
 common operator closes the spatial and temporal limit connection for this
-declared source. The continuum's physical metric, causal locality and
-empirical identification require separate observable relations.
+declared source. Its comparison wave support cone is controlled; a physical
+metric, relativistic causal identification and empirical identification
+require separate observable relations.
 
 Reproduce the complete packet with:
 
