@@ -7607,7 +7607,7 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "scope": "Point-mass and range bounds test the full distinct-regional raw-count attachment against public Ar13+/Yb+ blocks. Allowing all 11782056 ordered distinct pairs, missing blocks and the stated 2021 search gives conditional bounds 10^-121 for 36Ar and 10^-22 for 40Ar.",
-          "limitations": "The fixed count bracket, constant gain, bounded error and calendar partition are hypotheses. The experiment uses servo averages; their native readout is not derived. Identical-event aliases, other timing/filter contracts and every OPH clock are outside this rejection; no atom or coherence-resource lower bound follows.",
+          "limitations": "The fixed count bracket, constant gain, bounded error and calendar partition are hypotheses. The experiment uses servo averages; their native readout is not derived. Identical-event aliases and other timing/filter contracts are outside this rejection. The test does not reject OPH as a whole; no atom or coherence-resource lower bound follows.",
           "sources": [
             {
               "path": "model/predictions/regional_optical.py",
