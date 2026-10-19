@@ -226,6 +226,13 @@ set out that work. Paper releases follow the
 main-branch PDFs are source previews, and deposited releases retain their
 original bytes.
 
+## License
+
+Software, including Lean and the model code, uses [Apache-2.0](code/LICENSE).
+Papers, documentation, figures, data and ledgers use [CC BY-NC-SA 4.0](LICENSE),
+with upstream Particle Data Group terms for the packaged particle values.
+The [license map](LICENSE) gives the directory-specific terms.
+
 <details>
 <summary>Related projects and funding</summary>
 
@@ -233,21 +240,15 @@ original bytes.
 project. Its capability evidence is separate from OPH's physics evidence.
 [Pragma Research](https://floatingpragma.io/) brings the projects together.
 
-OPH's official TEO (Theory Of Everything) memecoin is on Base at
+OPH's official TEO (Theory Of Everything) memecoin was deployed by the Base
+community and lives on Base at
 `0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
 ([chart](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
-Bernhard Mueller can claim its trading fees, which help fund the research.
+Its trading fees are routed to Bernhard Mueller to fund the project.
 The token has no role in the theory. Other tokens using the OPH or TEO name
 are unrelated. Nothing here is financial advice.
 
 </details>
-
-## License
-
-Software, including Lean and the model code, uses [Apache-2.0](code/LICENSE).
-Papers, documentation, figures, data and ledgers use [CC BY-NC-SA 4.0](LICENSE),
-with upstream Particle Data Group terms for the packaged particle values.
-The [license map](LICENSE) gives the directory-specific terms.
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->

@@ -228,24 +228,6 @@ décrivent ce travail. Les publications d’articles suivent la
 les PDF de la branche principale sont des aperçus des sources, et les versions
 déposées conservent leurs octets d’origine.
 
-<details>
-<summary>Projets associés et financement</summary>
-
-[Cadence](https://github.com/muellerberndt/cadence) est le projet associé de
-machines apprenantes. Ses éléments de preuve sur les capacités sont distincts
-des éléments de preuve physiques d’OPH.
-[Pragma Research](https://floatingpragma.io/) réunit les projets.
-
-Le memecoin officiel TEO (Theory Of Everything) d’OPH est sur Base à l’adresse
-`0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
-([graphique](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
-Bernhard Mueller peut réclamer ses frais de transaction, qui aident à financer
-la recherche. Le jeton n’a aucun rôle dans la théorie. Les autres jetons qui
-utilisent le nom OPH ou TEO n’ont aucun lien avec le projet. Rien ici ne
-constitue un conseil financier.
-
-</details>
-
 ## Licence
 
 Le logiciel, y compris Lean et le code du modèle, est publié sous
@@ -254,6 +236,25 @@ données et les registres sont publiés sous [CC BY-NC-SA 4.0](LICENSE), avec le
 conditions amont du Particle Data Group pour les valeurs de particules
 empaquetées. La [carte des licences](LICENSE) donne les conditions par
 répertoire.
+
+<details>
+<summary>Projets associés et financement</summary>
+
+[Cadence](https://github.com/muellerberndt/cadence) est le projet associé de
+machines apprenantes. Ses éléments de preuve sur les capacités sont distincts
+des éléments de preuve physiques d’OPH.
+[Pragma Research](https://floatingpragma.io/) réunit les projets.
+
+Le memecoin officiel TEO (Theory Of Everything) d’OPH a été déployé par la
+communauté Base et se trouve sur Base à l’adresse
+`0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
+([graphique](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
+Ses frais de transaction sont versés à Bernhard Mueller pour financer le
+projet. Le jeton n’a aucun rôle dans la théorie. Les autres jetons qui
+utilisent le nom OPH ou TEO n’ont aucun lien avec le projet. Rien ici ne
+constitue un conseil financier.
+
+</details>
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->
