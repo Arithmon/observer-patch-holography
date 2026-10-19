@@ -1711,7 +1711,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "485f63dd4d3d25847ecd469efd428710669fd6fa4c379c95ab50c35448e2cf9c"
+        "original_claim_sha256": "19fb360184c37c469784272b4570d579da5114bd84a633f29130103a2336fb5c"
       },
       "OPH-MODEL-CANONICAL-SCALAR-EXECUTION": {
         "assumptions": [
@@ -1719,7 +1719,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "1c83ee14ada99bf6f5567d3ee1135f85d6dbb69252fc38de054cdfbf770c5cd7"
+        "original_claim_sha256": "85fc998f5f45e94dd36c3088352967766271baac3d4541dea827e9d85393f8b5"
       },
       "OPH-MODEL-COMMON-SOURCE-EXECUTION": {
         "assumptions": [
@@ -1739,7 +1739,7 @@
           "declared_common_source_active_encoded_native_memory"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "ef892fd4879e17eafa4e8f2251725f8ddf276d75cce8ee43e321c70f8aa3088e"
+        "original_claim_sha256": "20dfaa7a104887171fe1ea126f478007b8f66399724beb67ec5fbc27f3de2ffd"
       },
       "OPH-MODEL-COUPLED-INTERACTION-RECOVERY": {
         "assumptions": [
@@ -1747,7 +1747,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "a5a31588d7cd6203d0b3b846a4a5bd720e27e45221999313628650b5dc5695b2"
+        "original_claim_sha256": "590a4533fff61eb35648626faf8ad84616b45c04495a8c7a7f4e0ddf57af8ff9"
       },
       "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
         "assumptions": [
@@ -1756,7 +1756,7 @@
           "declared_randomized_Gram_witness_protocol"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "cd5f6c67db24242264e66cac5d34b3d83bff8b861f44deed878f908b2665963d"
+        "original_claim_sha256": "79d9247b7233dd8fb8327964964d34673433c2cff3ae4f7fd8bd83ea0e409a3c"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
@@ -1769,7 +1769,7 @@
           "declared_scalar_two_read_continuation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "01131760df319a187975e740a7c4de535caba9498004be3eeaeed887b162a3b9"
+        "original_claim_sha256": "7c0cb0f65b1fbe1fa74548cf8d8e8a6dd92eff89ed1c6c5b1011af299f0d696d"
       },
       "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS": {
         "assumptions": [
@@ -1778,7 +1778,7 @@
           "declared_scalar_band_extension_protocol"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "45ccc612cfb13acac4237b3f16152fd6f1e90889ab8e71b86bc5e1954b7ed8e2"
+        "original_claim_sha256": "85ba8d9afa1f03fce7e0fac04fdd39447b5d171d50a608ba71a4923e60dd58ca"
       },
       "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION": {
         "assumptions": [
@@ -1786,7 +1786,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "3b74cc31b41ef9f3bcd65aae7bd52935b7c26a3af3890201177ed6b9686747d7"
+        "original_claim_sha256": "4eb037c3c9963016e5a72bbf061d25c35a2c4bae1860798f3e33743fa1076fd0"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

@@ -159,8 +159,9 @@ alone still cannot create the needed coherence from diagonal inputs.
 
 The fixed particle sector, native law candidate, random schedule, coherent
 transport/control services and classical record implementation remain
-declared architecture/interface inputs. They are not claimed to be selected
-from the OPH axioms. No public laboratory dataset implementing this native
+declared architecture/interface inputs. They are not claimed to follow from
+the closure hypothesis, the no-outside rule or the agreement condition of the
+[OPH basis](../../docs/BASIS.md). No public laboratory dataset implementing this native
 protocol is identified here. A meaningful empirical comparison requires an
 apparatus mapping and an authenticated complete-trial error bound; fitting
 an unrelated oscillator trace does not provide those inputs.

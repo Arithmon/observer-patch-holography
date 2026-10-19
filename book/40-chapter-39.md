@@ -14,7 +14,7 @@ Then the other one. When our cognitive systems engage in visual and auditory inf
 
 Descartes had a physical world made of extended stuff and a thinking thing that occupies no place at all, and his trouble was traffic between the two: how a decision taken in something with no location moves an arm that has one. He put the meeting at the pineal gland, on the grounds that every other part of the brain comes in pairs and that one does not, so it was the only place the signals from two eyes and two ears could be brought together into one impression. Every version since has kept the shape and dropped the gland. There is an account of the world written in the third person, there is what it is like to be one of the things in it, and nobody has a rule that turns either into the other. The name for that is the **mind-body problem**.
 
-Chapter three defined an operational observer without assuming consciousness. This chapter adds a psychophysical identity proposal: certain organized self-reading and repair processes are experiences. Sharing a record-and-feedback interface, as a thermostat does, does not by itself establish that identity or identify which systems satisfy it.
+Chapter three defined an observer without any mention of consciousness. This chapter takes one further step: certain organized self-reading and repair processes are experiences. A thermostat shares the record-and-feedback interface with a person, and the step is about what is organized behind the interface.
 
 One of these bounded record-keepers is holding this book. There is something it is like to be it. Where in the architecture does that sit? And if the network settles into the same arrangement whatever order anybody repairs in, what is there for that reader to decide?
 
@@ -26,7 +26,7 @@ The argument runs three lines. Such a creature is conceivable, and Chalmers set 
 
 The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that without flinching, because the twin does everything he does.
 
-The zombie argument keeps the entire physical organization and removes experience, not computational registers or causal dependencies. An identity theory rejects the proposed separation. OPH can adopt that position, but showing that deleting a physical register changes behavior does not refute the zombie premise or derive experience from the operational definition.
+The zombie argument keeps the entire physical organization, every register and every causal dependency, and removes experience. An identity theory rejects the separation outright: if experience is a kind of physical organization, a duplicate of the organization is a duplicate of the experience. That is the position this chapter takes.
 
 Everything rests on the first step, the step nobody pauses on, because taking a complete physical description sounds like the part you get for free.
 
@@ -46,11 +46,11 @@ Distance counts comparisons. There is no comparison without two parties each hol
 
 Objective, in the sense chapter eleven fixed, means settled between parties who each have a boundary and a budget, with no further list standing behind theirs for it to approximate.
 
-The proposed answer identifies certain lived processes with their qualitative character. That is a philosophical commitment about what the physical organization is, not a consequence of having records or a bounded point of view. The hard-problem objection therefore applies at this identity premise rather than disappearing through a change in the word observer.
+The answer here identifies certain lived processes with their qualitative character. That is a commitment about what the physical organization is. Having records and a bounded point of view makes something an observer, the identity is a further step, and the hard problem meets the account at that step.
 
-A record map can omit internally accessible state. That fact establishes privacy relative to that map. It does not identify every omitted variable with a quale, prove that it could never be inferred through another interface, or determine whether a physical duplicate has experience.
+A record map can leave out state that is accessible inside. That makes the omitted state private relative to the map, which is a long way short of making every omitted variable a quale.
 
-Deleting a causally used interior can change boundary behavior. Keeping the interior while questioning its phenomenal character is a different proposal. The identity account opposes the latter on its stated psychophysical premise, not on the arithmetic of a missing register.
+Deleting an interior that does causal work changes boundary behavior, and nobody disputes that. The zombie keeps the interior and asks about its character, and the identity account answers that the interior's organization is its character.
 
 ## Coordinates an observer reads on itself
 
@@ -60,7 +60,7 @@ What that private register holds is the observer's reading of its own relation t
 
 A system carrying readings of its own update state is doing something a photographic plate does not do. It divides itself into parts and reads the division. The reading goes to its own repair policy and nowhere else. Give it more registers and the division gets finer. A stable cell of that division is a coordinate the observer can locate itself along and repair itself with.
 
-For an experiencing system, the proposal associates redness, pain and other lived distinctions with organized self-reading. Which distinctions occur, and how they depend on neural activity, are questions requiring psychological and biological evidence. The existence of a computational coordinate alone does not name its phenomenal character.
+In an experiencing system, redness, pain and the other lived distinctions are organized self-reading of this kind. Which distinctions occur, and how they depend on neural activity, are questions for psychology and biology.
 
 Reading such a coordinate is the whole of having it. There is no second copy of the ache, kept elsewhere, for the reading to be a reading of, and no fact about whether the one you have is the genuine article.
 
@@ -68,31 +68,31 @@ Reading such a coordinate is the whole of having it. There is no second copy of 
 
 Owned, because the capacity being spent belongs to the observer and comes out of its own budget. Boundary, because what is being held is the interface between it and everything else. Repair, because the holding is a rate rather than an act, since the neighbors keep writing and the entries keep moving. Read from the inside, because the observer's records include readings of its own state, and those readings are the half of the record the map deletes: real by the same standard Alice's coin is real, and unpublishable by construction.
 
-The proposed identity adds a claim about experience to the operational observer contract. A thermostat's bounded feedback does not establish the same phenomenal organization as a person's. The relevant distinctions could depend on organization as well as capacity, and neither a coordinate count nor the observer definition resolves them.
+That sentence is a claim about experience, laid on top of the definition of an observer. A thermostat's bounded feedback is a long way from a person's organization, and the distance depends on how the self-reading is organized as well as on how much of it there is.
 
 Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are questions for people with electrodes and scanners.
 
-A coordinate omitted by the chosen public record cannot be recovered uniquely from that record if its fiber contains different values. Another intervention or a richer interface can change what is reconstructible. Reconstructing information about an episode is also different from undergoing it.
+A coordinate the public record leaves out cannot be recovered from that record when its fiber holds different values. A different intervention or a richer interface can learn more, and learning about an episode is a different thing from undergoing it.
 
 ## Three cells down the diagonal
 
 Ask somebody what red is like and everything comes back except the thing you asked for. A wavelength. The name the paint shop prints on the can. Both of those cross the gap between two people intact. Neither answers the question. The word for what failed to cross is a **quale**, plural qualia, meaning how a particular experience is for the thing undergoing it, as against the wavelength, the firing pattern or the word.
 
-A finite quantum model can represent a three-alternative system by three-by-three matrices. Its chosen diagonal record algebra has three independent entries; the six off-diagonal matrix entries encode distinctions absent from that diagonal restriction. The diagonal algebra is commutative, but it is not the center of the full matrix algebra, whose center contains only scalar multiples of the identity. It can serve as a classical record algebra in the appropriately restricted description. This algebraic choice is an additional model assumption, not something a thermostat's two output labels establish.
+Represent a three-alternative system by three-by-three matrices. A readout that writes which alternative occurred keeps the diagonal, three independent entries, and the six off-diagonal entries hold the distinctions the diagonal leaves out. The full matrix algebra has only multiples of the identity in its center. Pinch it down to what the readout writes, chapter nineteen's mail room, and the diagonal is what is left: commutative, its own center, the record algebra of that readout.
 
-For N alternatives in the full matrix model, there are N diagonal and N squared minus N off-diagonal matrix entries. These are dimensions of a representation, not a count of conscious experiences. A two-state classical device can use a commutative algebra instead; assigning it two labels does not require a two-dimensional quantum amplitude space.
+For N alternatives there are N diagonal entries and N squared minus N off the diagonal. Those are dimensions of a representation, and experiences are counted some other way, if they are counted at all. A two-state classical device gets by with a commutative algebra and no amplitudes.
 
 One line covers every size, with N standing for the number of alternatives a readout tells apart.
 
 $$\text{cells on the diagonal} \;=\; N, \qquad \text{cells off it} \;=\; N^2 - N$$
 
-The diagonal restriction has N matrix entries out of N squared. This counts that chosen algebraic projection, not everything that can ever leave an observer or everything others can reconstruct by different measurements. No ratio of these dimensions establishes a ratio of public information to conscious content.
+The diagonal keeps N entries out of N squared. That is what one readout writes, and a different measurement writes a different diagonal.
 
-The identity proposal concerns lived content in an experiencing organization. It does not establish that a quale is an off-diagonal matrix entry or every part of a state omitted by a public record. Which distinctions the record loses is a mathematical question; which distinctions are experienced requires the additional psychophysical premise.
+The identity concerns lived content in an experiencing organization, and nothing in the count makes a quale an off-diagonal matrix entry. Which distinctions a record loses is a mathematical question. Which distinctions are lived is the question the identity answers, one experiencing organization at a time.
 
-No-cloning rules out perfect universal copying of arbitrary unknown quantum states. It allows copying orthogonal record states and does not prohibit learning about a prepared ensemble or reconstructing a model from richer measurements. It therefore supplies no standalone proof that qualia are quantum states or that every aspect of an experience is inaccessible to others.
+No-cloning rules out copying an unknown quantum state and allows copying records. It forbids nobody from learning about a prepared ensemble or from reconstructing a model out of richer measurements, and it says nothing about whether qualia are quantum states.
 
-On the proposed ontology, experiencing organization belongs within reality rather than being supplied by an external observer. The operational equations and no-cloning theorem do not prove that experience is fundamental or locate every experiencing system. Those are the further commitments this chapter explores.
+Experiencing organization belongs within reality, built out of the same observers as everything else, with no observer outside supplying it. Where it occurs, and in what, is the question this chapter has been walking around.
 
 ## Then nothing you do matters
 
@@ -160,7 +160,7 @@ Chapter six's flipped edge is the clean case, because the whole net can be check
 
 Where it sits is a different matter. Run the repairs in another order and the leftover ends up on a different part of the net. It survives any amount of working harder, and it can be placed, and which patch is carrying it when the repairs stop is settled by who repaired what, in which order, and which way each one pushed the disagreement it found.
 
-A record can retain part of the trajectory rather than only its endpoint. The midpoint map loses input distinctions when viewed only through its two output readings; retaining a log makes the full-state question different. Distinguishing who absorbed or exported a cost requires that the relevant interventions and records survive in the declared description.
+A record can keep part of the trajectory along with its endpoint. The midpoint map loses input distinctions on its two output readings, and the crossing count it writes keeps them, so who absorbed a cost and who exported it survives in the records for as long as the records do.
 
 The leftover comes to one either way. The record that produced it names which patch absorbed the mismatch and which one exported it. The naming is no moral gloss applied afterward by somebody keeping accounts. It is the entries, in order, which is the only material anybody downstream has to compute from.
 

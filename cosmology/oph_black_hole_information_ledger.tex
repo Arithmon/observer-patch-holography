@@ -60,11 +60,14 @@ blocks and unique restriction gluing. We state the support-aware entropy
 identity and its proposed thermality and information-relocation consequences
 as finite conjectures. Together these results and conjectures make the
 black-hole information question precise within the supplied finite model.
-On the layered source family of the spacetime construction the number of
-unordered read pairs crossing a surface per layer is an exact area law, \((\pi/4)n^2a^4\)
-per unit area for site density \(n\) and read radius \(a\), and reading one
-crossing read as one nat of cut entropy fixes the Planck-area dictionary
-\(n^2a^4=1/(\pi\ell_P^2)\).
+On the layered source family of the spacetime construction, with specified
+population and read law, the number of unordered read pairs crossing a
+surface per layer obeys an area law with exact limiting coefficient
+\((\pi/4)n^2a^4\) per unit area for site density \(n\) and read radius
+\(a\), and declaring one nat of cut entropy per crossing read fixes the
+Planck-area dictionary \(n^2a^4=1/(\pi\ell_P^2)\). This declared count is
+distinct from native regional entropy, which on the two-dimensional source
+screen carries no nonzero coefficient times boundary-seam count.
 \end{abstract}
 
 \section*{Finite-model scope and theorem boundary}
@@ -77,10 +80,20 @@ names the shape of the question, not a constructed physical object: the
 model has no continuum horizon, no gravitational collapse, no Hawking
 flux, and no evaporation endpoint. The bridge from the finite ledger to
 physical black-hole statements requires a faithful continuum realization of
-the finite source-causal carrier, a source-realized clock, Einstein-branch
+the finite source-causal carrier, a calibrated identification of native
+event-clock readings with proper time, Einstein-branch
 geometry and stress, and, for any observable, a prospectively fixed
 measurement contract under immutable custody. No observable prediction follows
-from this finite ledger.
+from this finite ledger. The executable observer has local event clocks that
+tick on actual occupation changes at an observer port; their identification
+with proper duration or seconds is not constructed~\cite{ophmodel}. The native continuum operator of
+one repair history is a positive two-dimensional spatial operator on the
+source screen. It supplies no radial domain, no Lorentzian structure and no
+quantum vacuum: its full configuration reference approaches the normalized
+trace at fixed modular parameter~\cite{ophcontinuum,ophtimefields}. Its
+causal statement is a bound of one seam per ordered repair event, a speed in
+seams per native event with no laboratory calibration or continuum light
+cone~\cite{ophcausality}.
 
 \section{The question in finite form}
 
@@ -88,8 +101,8 @@ The black-hole information problem sets two commitments against each
 other: microscopic dynamics that preserves information, and a
 macroscopic record that looks exactly thermal. In the observer-patch
 model both commitments are formal objects, and the question becomes
-finite: given that ambient dynamics on a finite private algebra is
-unitary, and given that what any observer can hold is a public record
+finite: given a unitary ambient dynamics on a finite private algebra,
+and given that what any observer can hold is a public record
 produced by a specific channel, account exactly for the information that
 the record does not carry.
 
@@ -108,12 +121,24 @@ projective partition, the publicization pinching is exactly the uniform
 average of the $2^{k}$ independently signed block reflections. The
 channel that produces the public record is therefore an explicit uniform
 mixture of unitaries, with the mixing unitaries named. It is unital; entropy
-nondecrease for this channel is part of Conjecture~\ref{tgt:core}.
+nondecrease for this channel is part of Conjecture~\ref{tgt:core}. This
+pinching is the publicization of a supplied partition. The native record
+laws of the executable observer form one convex family classified by five
+coherence multipliers, in which exactly two members are idempotent and the
+executed law C is not; the ledger's channel is not derived from that
+family~\cite{ophrecordlaws}.
 
 The conjectured ledger combines these two facts with the exact thermodynamic
 theorems. It would identify the information absent from the public record with
 observer-inaccessible coherences of the ambient state through the formula in
-Conjecture~\ref{tgt:core}.
+Conjecture~\ref{tgt:core}. The executable observer computes this missing
+information exactly for its own records. Its complete classical tape and
+final load register recover every initial load population but not an
+arbitrary unknown quantum state; the missing information is coherence
+between different committed histories. The optimal entanglement fidelity
+over all decoders is \(D^{-2}\sum_h w_h\,\operatorname{rank}(P_h)^2\), which
+equals \(1301/2028\) for the full-carrier two-event C observer and
+\(3329/6084\) for E~\cite{ophrecovery}.
 
 \section{Machine-checked inputs}\label{sec:checked-inputs}
 
@@ -131,7 +156,8 @@ by a fixed self-adjoint Hamiltonian, unique up to a real scalar.
 \begin{theorem}[Publicization is a uniform mixture of sign unitaries]
 For every supplied $k$-block projective partition, the pinching map is
 the uniform average of the $2^{k}$ diagonal sign unitaries
-(\texttt{EventAlgebra/RecordMajorization.lean}); averaging only the two
+(Lean module \texttt{EventAlgebra.RecordMajorization}~\cite{ophlean});
+averaging only the two
 global signs does not pinch, so the independence of the signs is
 load-bearing.
 \end{theorem}
@@ -144,8 +170,9 @@ contracts Kullback--Leibler divergence to that reference
 kernels, the integral fluctuation identity holds under its positivity,
 normalization and stationary-reference hypotheses; the pointwise Crooks
 identity additionally assumes detailed balance.
-The proofs are in \path{Lean/Thermodynamics/FiniteConditionalRepair.lean}
-and \path{Lean/Thermodynamics/FluctuationTheorems.lean}.
+The proofs are in the Lean modules
+\texttt{Thermodynamics.FiniteConditionalRepair} and
+\texttt{Thermodynamics.FluctuationTheorems}~\cite{ophlean}.
 \end{theorem}
 
 \begin{theorem}[Support boundary for entropy architecture]
@@ -153,7 +180,7 @@ The totalized continuous-functional-calculus logarithm sends every
 projection to zero, so the raw finite trace formula for relative entropy
 assigns the value zero to an orthogonal pair of density projections whose
 support inclusion fails
-(\texttt{EventAlgebra/SpectralEntropyBoundary.lean}). A support-aware
+(\texttt{EventAlgebra.SpectralEntropyBoundary}~\cite{ophlean}). A support-aware
 extended-value layer is therefore mandatory, not stylistic.
 \end{theorem}
 
@@ -165,10 +192,11 @@ designated-fibre matrix corner at every observer region, elementwise
 commutation across distinct constructed blocks, computed four-window coverage
 of the declared top algebra, and unique restriction gluing with its
 reconstruction corollary
-(\texttt{QFT/RichFibreWitness.lean},
-\texttt{QFT/RichFibreRegionalNet.lean}).
-The source does not produce the matrix units, state, regional restrictions,
-or repair, and the corner is neither a tensor factor nor a
+(\texttt{QFT.RichFibreWitness},
+\texttt{QFT.RichFibreRegionalNet}~\cite{ophlean}).
+That source run does not produce the matrix units, state, regional
+restrictions or repair of this adapter, and the corner is neither a tensor
+factor nor a
 \texttt{TensorSplitReceipt}. A source-attached regional-factor theorem requires an operator
 algebra and a justified factor or local-channel adapter.
 \end{theorem}
@@ -176,10 +204,16 @@ algebra and a justified factor or local-channel adapter.
 \begin{theorem}[Finite KMS identity, degenerate inheritance boundary]
 The finite algebraic KMS identity holds for Gibbs states of
 support-graded flows, and the truncation-8 nets inherit KMS
-structure only degenerately (\texttt{QFT/StructuralInheritance.lean}).
+structure only degenerately
+(\texttt{QFT.StructuralInheritance}~\cite{ophlean}).
 The nondegenerate continuation on the rich-fibre net is
 Conjecture~\ref{tgt:kms}.
 \end{theorem}
+
+Because the native full configuration reference has a tracial limit at
+fixed modular parameter, its limiting modular automorphism is the identity,
+and it supplies no nondegenerate KMS state of this
+kind~\cite{ophtimefields}.
 
 \section{Finite conjectures}
 \label{sec:targets}
@@ -206,15 +240,25 @@ majorization, maximum-entropy, and H-theorem scope is not used here.
 \end{conjecture}
 
 \begin{conjecture}[Finite no-loss statement]
-Under the specified ambient repair dynamics the global state evolves by
-the forced unitary conjugation of the Stone packet. Ordinary entropy of
-the state is preserved; when both arguments co-evolve under the same
+Let the specified ambient dynamics be a unitary dilation of repair that
+retains its record environment. The joint state of system and records
+evolves by the forced unitary conjugation of the Stone packet, and ordinary
+entropy of that joint state is preserved; when both arguments co-evolve under the same
 unitary, each explicitly named jointly unitarily invariant quantity is
 also preserved (including support-aware relative entropy and trace
 distance when those quantities are defined). The statement quantifies over the specified
 dynamics class; no toy evolution is substituted and no arbitrary
 coordinate-dependent divergence is covered.
 \end{conjecture}
+
+The record-discarded native repair channel is not of this kind: it strictly
+attenuates a coherent mode, which rules out unitary conjugation on the
+carrier, and under independent seam attempts the unread binary
+fixed-number state converges to its tracial entropy maximum. Each finite
+native observation history has an exact unitary representation once its
+record environment is kept, with a dimensionless Hermitian action \(A_0\)
+whose exponential \(\exp(-iA_0)\) is that unitary
+representation~\cite{ophmodel,ophnativeaction,ophmixing}.
 
 \begin{conjecture}[Ledger identity and relocation]
 For the specified record channel, the public entropy gain equals
@@ -231,6 +275,14 @@ ledger under repair, with finite constants and a negative control
 exhibiting failure of the monotone when unitality of the record channel
 is dropped.
 \end{conjecture}
+
+A classical sector-level instance follows from the joint counting identity
+\(S_{\rm count}(p,d)=H(p)+\sum_ip_i\log d_i=\log M-\KL{p}{d/M}\): a repair
+kernel on sectors that preserves \(d/M\) contracts the divergence by
+\texttt{kl\_push\_le}, so \(S_{\rm count}\) does not decrease, while a reset
+kernel with stationary law \((1/4,3/4)\) on two equal sectors does not
+preserve \(d/M\) and lowers \(S_{\rm count}\) from its maximum~\cite{ophentropy}.
+The conjecture concerns the quantum record channel and the cap first law.
 
 \begin{conjecture}[Complementarity receipts]
 There is a composition of the generic operational access-cut interface, the
@@ -263,12 +315,30 @@ to the computable functional $\KL{\rho}{\mathcal E(\rho)}$ and localized in
 observer-inaccessible coherences. The implication supplies no physical
 black-hole attachment. A source-selected order embedding with calibrated
 density (a causal-set faithful embedding), manifoldlikeness, and a
-source-realized clock are additional hypotheses. Any smooth Einstein reading
+calibrated identification of native event clocks with proper time are
+additional hypotheses. Any smooth Einstein reading
 also requires same-family tensor-curvature convergence or the independent
 continuum small-ball/null-balance identification.
 \end{remark}
 
 \input{../paper/tex_fragments/CROSSING_READ_AREA_LAW.tex}
+
+\paragraph{Declared cut entropy and native regional entropy.}
+The population, its read radius and the layer read law of the preceding
+section are specified inputs, and the cut entropy is a declared count on
+read links; the seam-count wording of that section refers to these read
+links, not to native repair seams. It is distinct from native regional
+entropy. On a source screen of \(N=240\cdot4^l\) ports, a complete refining
+base-face patch with \(12\cdot4^l\) ports has \(3\cdot2^l\) crossing seams;
+its stationary reduced entropy grows in proportion to \(4^l\), while the
+return reference's mutual information is at most
+\(\log(12\cdot4^l+1)+2025/(64N)\), which per crossing seam tends to zero.
+Neither native regional quantity carries a nonzero universal coefficient
+times boundary-seam count on that two-dimensional source~\cite{ophentropy}.
+A reading of a whole screen's cell count as the area of a three-dimensional
+region's boundary is not excluded, and that region map is a premise. The
+Lean statements of the preceding section are in the module
+\texttt{Geometry.CrossingReadAreaLaw}~\cite{ophlean}.
 
 \section{Relation to standard approaches}
 
@@ -276,7 +346,7 @@ The Page analysis, the Hayden--Preskill protocol, and island computations
 concern continuum or holographic systems with gravitational dynamics. The
 finite ledger formulates their information question using separately proved
 unitary dynamics and a specified record channel. Its proposed entropy and
-thermality composition remains conditional on
+thermality composition is conditional on
 Conjectures~\ref{tgt:core}--\ref{tgt:kms}. Within the supplied automorphism
 class, the Stone converse gives unitary implementation; the public channel
 is the explicit sign-unitary mixture. A physical black-hole interpretation
@@ -293,7 +363,9 @@ and readout contract under immutable custody before any data comparison.
 
 A conditional instrument template is defined for the integer-\(k\) ringdown
 transition comb. It is not preregistered or frozen and therefore supports no
-observable claim. The transition rule is an imported
+observable claim. The historical \(\alpha=4\) ringdown row of the frozen
+register FZ-01 is superseded and void, and no ringdown value is
+frozen~\cite{ophladder}. The transition rule is an imported
 continuation premise, not a source-derived consequence of the finite ledger.
 For an emission it assumes positive integer record dimensions satisfying
 \(d_{\rm before}=k d_{\rm after}\), so \(k\) must divide the initial
@@ -369,6 +441,55 @@ Commun. Math. Phys. 40 (1975) 147--151.
 \bibitem{dousorkin2003} D.~Dou and R.~D. Sorkin,
 \emph{Black-hole entropy as causal links},
 Found. Phys. 33 (2003) 279--296.
+
+\bibitem{ophmodel}
+FloatingPragma (2026). The runnable OPH model: observer implementation,
+tests, receipts and construction guide.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophnativeaction}
+FloatingPragma (2026). A local action for native quantum observations.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/native_action/README.md}.
+
+\bibitem{ophmixing}
+FloatingPragma (2026). Native quantum mixing and the full-carrier memory
+boundary.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/QUANTUM_MIXING.md}.
+
+\bibitem{ophrecovery}
+FloatingPragma (2026). What complete native records can recover.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/RECORD_RECOVERY.md}.
+
+\bibitem{ophrecordlaws}
+FloatingPragma (2026). Admissible record laws for native repair.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/record_laws/README.md}.
+
+\bibitem{ophentropy}
+FloatingPragma (2026). Tangent first laws and finite entropy changes:
+native reference entropy and region boundaries.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophladder}
+FloatingPragma (2026). Frozen prediction ladder.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/FROZEN_PREDICTION_LADDER.md}.
+
+\bibitem{ophlean}
+FloatingPragma (2026). Observer Patch Holography Lean formalization.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/Lean}.
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_OPH_BLACK_HOLE_INFORMATION_LEDGER_BIBITEMS.tex}{}{}
 \end{thebibliography}

@@ -182,7 +182,7 @@ Where it breaks is a pair of questions outside the table. Take the question this
 
 That locates the boundary. Additivity restricted to the sums in the table amounts to nothing more than the numbers in each setting adding to one. A demand that weak leaves the fake alive. The work is done by requiring the adding-up to hold for every compatible sum of weighted questions, including those outside the table. Impose that, and the same prescribed frequencies leave exactly one state standing, without a continuity assumption and without any appeal to long runs.
 
-The finite table therefore does not select the probability rule. The theorem assumes that the weight of a question is independent of the setting in which it appears, and that combining compatible alternatives adds their weights. For a physical instrument, those assumptions require an operational account of which procedures ask the same question and how alternatives are combined. Agreement on overlapping records alone does not provide that account. Common preparation, the phase-sensitive operations and public readout also need physical implementations; chosen counts supply none of them.
+So a finite table of counts never selects the probability rule by itself. What selects it is the demand behind the theorem: a question carries the same weight whichever setting it is asked in, and compatible alternatives add. For an observer that demand is the overlap rule applied to questions, two procedures that ask the same question owing it the same answer.
 
 ## Constraint
 

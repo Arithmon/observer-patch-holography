@@ -67,12 +67,15 @@ theorem separate from the Clay claim.
 
 The standard target is clear: construct a nontrivial four-dimensional quantum Yang--Mills theory
 for every compact simple gauge group and prove a positive mass gap. OPH imports the usual compact
-gauge language, reflection positivity, and Osterwalder--Schrader/Wightman target conditions. The
-repair interpretation supplies a finite vacuum-sector relaxation mechanism.
+gauge language, reflection positivity, and Osterwalder--Schrader/Wightman target conditions.
+Under the finite ground-state-transform receipt stated below, the collar repair generator is the
+ground-state transform of the finite transfer Hamiltonian, and its gap is the finite vacuum-sector
+gap.
 
 On the support-visible compact-gauge branch, local holonomy data and the OPH scaling chart give
-the candidate Euclidean Yang--Mills form. Exact local repair acts as a positive Euclidean
-relaxation generator at finite cutoff. A uniform fixed-cutoff repair rate floor transports to the
+the candidate Euclidean Yang--Mills form. Under that receipt and fiber homogeneity, exact local
+collar repair is the ground-state transform of the Euclidean transfer generator at finite cutoff.
+A uniform fixed-cutoff repair rate floor transports to the
 continuum Hamiltonian only when the transfer forms, vacuum projections, and finite intertwiners
 converge in the sense stated below. The proof therefore separates the finite repair mechanism from
 the additional four-dimensional continuum certificate required by the Clay problem.
@@ -104,6 +107,15 @@ the ground-state transform, a gauge-invariant excitation algebra, nor the
 uniform cofinal bound required here. That result therefore does not discharge
 the finite transfer receipt or any Clay-facing continuum premise.
 
+The executable observer construction~\cite{ophmodel} carries its own native gaps, and none of
+them is the gap of this paper. Its native action \(H_{\rm native}=\sum_e(I-\Phi_e)\) is a
+positive local Liouville operator on operator space, not a Hamiltonian on state vectors, and the
+executed channel strictly attenuates coherent modes, which rules out unitary conjugation on its
+carrier. Its unread C and E channels have quantum spectral gap \((5-\sqrt5)/60\) per native
+attempt on the twelve-port carrier~\cite{ophnativeaction,ophmixing}. Its canonical scalar
+regulator has a finite-volume gap bound for a supplied positive mass~\cite{ophrelscalar}. None
+of these supplies \(L^{\Rep}_r\), the transfer Hamiltonian \(H_r\), or any receipt of this paper.
+
 More precisely, the imported four-dimensional form theorem uses compact-gauge reconstruction, the
 four-dimensional scaling chart, the reflection-positive ordinary vacuum sector, the absence of
 additional gauge-invariant relevant dimension-four pure-gauge operators beyond the positive
@@ -124,10 +136,33 @@ identified exactly:
 The two-dimensional heat-kernel identity in the companion OPH results is a separate normalization
 and worldsheet-effective bridge; it is not the mass-gap proof.
 
+The executable observer's native density laws give a reflection-positive Gaussian reconstruction
+whose one-particle time shift is \(e^{-\tau A}\), where \(\tau\) is rescaled native attempt count
+and \(A\) acts on the two-dimensional screen readout. With the constant mode restored, the form
+of \(A\) is a conservative strongly local Dirichlet form with \(n/49920\le\lambda_n(A)\le3n/2\)
+and heat-trace spectral dimension two~\cite{ophcontinuum,ophtimefields}. This free two-dimensional spectrum is not a
+four-dimensional Yang--Mills Hamiltonian, its lowest eigenvalue is not a mass gap, and it supplies
+no quantum vacuum and none of (Y1)--(Y6).
+
+The native gap closes under refinement because native repair conserves load. On the federated
+screens of \(240\), \(960\) and \(3{,}840\) ports, the per-attempt gap
+\(\lambda_1(L_l)/(2M_l)\) of the port Laplacian \(L_l\) with \(M_l\) seams is
+\(3.50\times10^{-5}\), \(2.05\times10^{-6}\) and \(1.27\times10^{-7}\), a fall by a factor near
+sixteen per level~\cite{ophfedscaling}. The continuum operator \(A\) appears only after rescaling
+by \(1260\cdot16^l\) attempts, a diffusive normalization whose semigroup \(e^{-\tau A}\) is second
+order in space and first order in time; a Euclidean-covariant reading would instead require
+\(e^{-|\tau|\sqrt{A+m^2}}\) for a mass \(m\ge0\). Single-site heat-bath collars \(P_v\) are the identity under a fixed
+total load, so the native seams lie outside the admissible collar tower of
+Definition~\ref{def:admissible-collar-tower}, and \(\lambda_1(A)\) is the finite-size gap of a
+massless two-dimensional operator.
+
 \section{Relation to the other OPH papers}
 
 This paper is a focused companion to the other OPH papers. The broad reconstruction framework is
-summarized in the flagship synthesis~\cite{oph1}. The gauge derivation is
+summarized in the flagship synthesis~\cite{oph1}. The executable observer
+construction~\cite{ophmodel} runs native repair, quantum instruments, recorded feedback and
+local event clocks; the compact-gauge collar system of this paper is a separate declared
+construction. The gauge derivation is
 \emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency}~\cite{oph2},
 which carries the support-visible compact-gauge repair-gap theorem inside the Standard Model gauge paper
 itself. The particle branch is separate~\cite{oph3}. The finite repair and quotient-normal-form
@@ -138,20 +173,21 @@ Observer Synchronization in Observer-Patch Holography}~\cite{oph5}.
 
 The companion edge-sector theorem relates OPH heat-kernel weights to a two-dimensional
 Yang--Mills partition identity. That identity fixes normalization and the controlled worldsheet
-effective bridge. The four-dimensional mass-gap argument uses repair dynamics: exact local repair
-becomes a positive Euclidean relaxation generator, and the uniform repair gap is transported to the
-compact-gauge Hamiltonian only under the continuum certificate.
+effective bridge. The four-dimensional mass-gap argument uses collar repair. Under the finite
+transfer receipt, exact local collar repair is the ground-state transform of the Euclidean transfer
+generator, and the uniform repair gap is transported to the compact-gauge Hamiltonian only under
+the continuum certificate.
 
-The repair mechanism keeps records readable under continued reading at finite
-cutoff. The mass gap is
-then the cost of leaving the repair-fixed vacuum sector: the same
-consistency requirement that forces records at the substrate level supplies
-the relaxation generator whose spectral floor is \(\Delta_{\mathrm{rep}}\).
-This interpretation adds no strength to the Clay-facing claim: the identity
-\(\Delta_{\YM}=\Delta_{\mathrm{rep}}\) is conditional on (Y1)--(Y6) and
-the continuum certificate exactly as stated above.
+In the collar construction each repair preserves its repaired visible datum and relaxes the
+complementary fiber, so the constants are the fixed sector of \(L^{\Rep}_r\). On a branch
+carrying the finite transfer receipt of Assumption~\ref{ass:finite-transfer-receipt}, the mass
+gap is the cost of leaving that sector. The executable observer's native seam repair, with the
+Liouville action and mixing gap described in the claim boundary above, is a different object and
+supplies neither \(L^{\Rep}_r\) nor the finite transfer receipt. The identity
+\(\Delta_{\YM}=\Delta_{\mathrm{rep}}\) is conditional on (Y1)--(Y6), the continuum certificate,
+and the finite receipts exactly as stated above.
 
-The Clay-facing import is The Standard Model gauge paper's Yang--Mills theorem surface: the compact-gauge
+The Clay-facing import is the Standard Model gauge paper's Yang--Mills theorem surface: the compact-gauge
 reconstruction ladder, the four-dimensional Euclidean Yang--Mills form theorem, the coherent
 compact-gauge extraction proposition, the conditional support-visible Osterwalder--Schrader
 reconstruction theorem, the nontriviality certificate, and the exact finite repair-gap theorem.
@@ -167,8 +203,9 @@ strong as the stated Wightman or Osterwalder--Schrader references and prove a ma
 \(\Delta>0\)~\cite{jaffe-witten,clay-mpp}.
 
 The OPH proof below approaches that target through a different variable, within the claim boundary stated above. The starting data are finite observer patches,
-compact-gauge visible quotient data, and exact repair collars. The nonzero energy threshold is
-the cost of leaving the repair-fixed vacuum sector.
+compact-gauge visible quotient data, and exact repair collars. On a branch carrying the finite
+transfer receipt and the continuum certificate, the nonzero energy threshold is the cost of leaving
+the constant sector of the collar repair generator, which the receipt maps to the transfer vacuum.
 
 \section{Standing Setup}
 
@@ -233,7 +270,7 @@ Notation & Meaning \\
 The compact-gauge branch used below satisfies the following branch-local conditions.
 \begin{enumerate}[(i)]
 \item the ordinary or central zero-obstruction compact-gauge sector survives refinement with compact simple structure group \(G\);
-\item the cofinal regulator tail satisfies The Standard Model gauge paper's explicit compact-gauge refinement receipt;
+\item the cofinal regulator tail satisfies the Standard Model gauge paper's explicit compact-gauge refinement receipt;
 \item the support-visible quotient carries a four-dimensional Euclidean scaling chart;
 \item the ordinary vacuum sector is reflection positive and has topological angle \(\theta=0\);
 \item the local finite-constraint MaxEnt/Gibbs family is gauge-invariant, Euclidean local, rotation-invariant, and refinement-stable;
@@ -267,8 +304,8 @@ transfer semigroup is the corresponding Euclidean Yang--Mills semigroup.
 \end{theorem}
 
 \begin{proof}
-This is the support-visible compact-gauge Yang--Mills form theorem of the compact OPH paper,
-where it appears as Theorem \texttt{thm:oph-4d-euclidean-yang-mills-form}~\cite{oph2}. The proof
+This is the support-visible compact-gauge Yang--Mills form theorem of the Standard Model gauge
+paper, where it appears as the four-dimensional Euclidean Yang--Mills form theorem~\cite{oph2}. The proof
 spine is recalled here because it fixes the target Hamiltonian for the mass-gap step.
 
 The present Yang--Mills branch takes compact simple \(G\) as branch data. When \(G\) is imported
@@ -616,13 +653,13 @@ angles.  A numerical receipt must certify outward-rounded bounds \(c_*^{\rm lo}>
 \(\delta_*^{\rm lo}=c_*^{\rm lo}(1-\eta_*^{\rm hi})\).  Point estimates do not qualify.
 \end{remark}
 
-\begin{remark}[Executable calibration boundary]
+\begin{remark}[Finite calibration boundary]
 The exact-rational \(244\)-type four-dimensional Ising calibration has \(c_*=1\), \(\eta_*\le1/2\), and hence
 \(\delta_*\ge1/2\) for its declared finite family. The separate theorem-contract
 witness retains the floor \(3/8\). Both interfaces use one exact row
 validator that retains every influence and its integer multiplicity. These
 are checks of the supplied finite arithmetic; source-kernel completeness and
-rate bounds remain declared premises. Both interfaces reject physical-source
+rate bounds are declared premises. Both interfaces reject physical-source
 scope, so descriptive metadata cannot promote a calibration to a physical
 compact-simple-gauge receipt. A physical instance requires source
 collar kernels, refinement closure, gauge and zero-mode data, and independent
@@ -736,8 +773,8 @@ survives the first option without change, since its proof uses only
 fiber; multiplication then commutes with the corresponding conditional
 expectation. In the tested Kogut--Susskind transform,
 \(c_l=\lambda(r_l+r_l^{-1})\ge2\lambda\) by AM--GM. The variable-rate
-comparison is machine-checked at its finite level
-(\path{Lean/Screen/KogutSusskindFiberRateComparison.lean}): the single-fiber
+comparison is machine-checked at its finite level in the Lean module
+\texttt{KogutSusskindFiberRateComparison}~\cite{ophlean}: the single-fiber
 rate identity \(c_l=\lambda(r+r^{-1})\) with the sharp bound
 \(c_l\ge2\lambda\) and equality exactly at \(r=1\), and, for a finite
 independent product of two-point fibers with fiber-dependent rates, a
@@ -747,8 +784,8 @@ ratio. Concrete two- and three-fiber instances with distinct ratios carry
 computed exact gaps in a released receipt tied to the finite-transfer
 conventions of this section. The comparison is proved on the independent
 fiber product, and the finite descent-and-restriction part of the
-gauge-orbit quotient step is machine-checked
-(\path{Lean/Screen/GaugeOrbitQuotientGap.lean}): the \(\mathbb Z_2\)
+gauge-orbit quotient step is machine-checked in the Lean module
+\texttt{GaugeOrbitQuotientGap}~\cite{ophlean}: the \(\mathbb Z_2\)
 XOR-mask action, which agrees with the gauge action of the committed
 non-self-loop \(L=2,3\) transfer receipts, is formalized as a permutation
 subgroup whose every element is a mask translation; with fiber weights
@@ -1070,8 +1107,9 @@ identifications and satisfy
 \sup_r q_r^{\mathrm{phys}}(A_r\Omega_r)<\infty .
 \]
 \end{enumerate}
-The explicit multiresolution construction in the main paper supplies a model for items
-(Y1)--(Y2) and an exact transfer tower when its shell identities are implemented. Identification
+The explicit multiresolution reference branch of the Standard Model gauge paper~\cite{oph2}, with
+its fixed-cutoff regulator certificate in the screen microphysics paper~\cite{oph5}, supplies a
+model for items (Y1)--(Y2) and an exact transfer tower when its shell identities are implemented. Identification
 of its continuum limit with the four-dimensional Yang--Mills OS theory is the additional content
 of (Y3)--(Y6).
 \end{assumption}
@@ -1161,8 +1199,10 @@ contains the vacuum scalars and admits a non-vacuum finite-energy local excitati
 \end{proposition}
 
 \begin{proof}
-The compact-gauge witness and physical-UV landing theorem in the OPH Standard Model gauge paper supplies a
-realized nontrivial compact-gauge branch~\cite{oph2}. At finite cutoff this gives a
+The compact-gauge witness theorem of the Standard Model gauge paper supplies finite
+support-visible gauge-invariant local observables on the receipt-conditional compact-gauge
+branch~\cite{oph2}. The executable observer's finite gauge example is a U(1) code and supplies no
+non-Abelian dynamics~\cite{ophpremises}. At finite cutoff the witness gives a
 support-visible gauge-invariant local observable, such as a nonconstant Wilson/plaquette cylinder
 observable, whose vacuum variance is positive. Its GNS vector is orthogonal to the vacuum after
 subtracting its expectation value. The finite-range local-Gibbs generator assigns finite energy to
@@ -1280,7 +1320,7 @@ Clay/Jaffe--Witten target & OPH repair-dynamics boundary \\
 \midrule
 \endhead
 Compact simple gauge group \(G\) & \(G\) is arbitrary compact simple, provided it is carried by the OPH compact-gauge zero-obstruction branch. \\
-Four-dimensional Euclidean Yang--Mills form & Theorem~\ref{thm:ym-form}, imported from The Standard Model gauge paper's Yang--Mills theorem surface, gives \(S_E[A]=\frac{1}{4g^2}\int_{\R^4}\langle F_{\mu\nu},F_{\mu\nu}\rangle\,d^4x\) under the branch and renormalized identification certificates. \\
+Four-dimensional Euclidean Yang--Mills form & Theorem~\ref{thm:ym-form}, imported from the Standard Model gauge paper's Yang--Mills theorem surface, gives \(S_E[A]=\frac{1}{4g^2}\int_{\R^4}\langle F_{\mu\nu},F_{\mu\nu}\rangle\,d^4x\) under the branch and renormalized identification certificates. \\
 Four-dimensional quantum Yang--Mills theory & Proposition~\ref{prop:extraction} proves support-visible projective weak-* / GNS extraction. Renormalized Schwinger convergence, reflection positivity, Euclidean covariance/locality, clustering, nontriviality, and transfer/intertwiner convergence are conditional on Assumption~\ref{ass:ym-continuum-certificate}. \\
 Nontriviality & Conditional on the variance-floor and finite-energy certificate in item (Y6). Finite nonconstant Wilson/plaquette cylinders are candidates; weak-\(*\) convergence alone is not enough. \\
 Axiomatic strength & Theorem~\ref{thm:os} states the conditional OS reconstruction step on the support-visible gauge-invariant local algebra. \\
@@ -1298,8 +1338,8 @@ active collar must relax it. Because active collar rates have a uniform positive
 source law has one uniform approximate-tensorization constant, every non-vacuum finite-regulator
 state pays a positive Euclidean repair cost. The finite-stage statements are exact theorems on the
 declared cylinder system, with every assumption named, the load-bearing receipt isolated in
-one place, and that receipt evaluated on a finite gauge system; the mechanism inherits the wider
-program's discipline of finite core theorems and zero continuous dials.
+one place, and that receipt evaluated on a finite gauge system; the mechanism follows the wider
+program's discipline of finite core theorems with every premise named.
 
 The Clay-facing conclusion is conditional. If the regulator family also satisfies the
 renormalized continuum, reflection-positivity, OS, nontriviality, and transfer/intertwiner
@@ -1320,35 +1360,35 @@ Yang--Mills gap is the repair gap:
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, B.~Cassie, P.~Nguyen, J.~Kim, D.~Matscheko, J.~Hill, W.~T.~Glynn, M.~A.~Visser, K.~A.~Anirudha, and B.~de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics},
 2026.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/flagship/from_observer_consensus_to_standard_physics.pdf}.
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{oph2}
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, P.~Nguyen, and D.~Matscheko,
 \emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
 
 \bibitem{oph3}
 B.~M\"uller, M.~Poneder, A.~Osika, and K.~Xue,
 \emph{Deriving the Particle Zoo from Observer Consistency},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
 
 \bibitem{oph4}
 B.~M\"uller, K.~Xue, J.~Kim, K.~A.~Anirudha, D.~Matscheko, and J.~Hill,
 \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That Implements Physics},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/reality_as_consensus_protocol.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/reality_as_consensus_protocol.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/reality_as_consensus_protocol.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/reality_as_consensus_protocol.pdf}.
 
 \bibitem{oph5}
 B.~M\"uller, A.~Osika, K.~Xue, B.~Cassie, and B.~de La Fourni\`ere,
 \emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and Observer Synchronization in Observer-Patch Holography},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/screen_microphysics_and_observer_synchronization.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/screen_microphysics_and_observer_synchronization.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.pdf}.
 
 \bibitem{ophfpe}
 B.~M\"uller,
@@ -1360,16 +1400,16 @@ Finite local-domain revision and data:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506},
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506/data/local_domain}.\\
 Canonical evidence archives:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence}, including the exact
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence}, including the exact
 local-domain package and checker at
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/local_domain}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/local_domain}.
 
 \bibitem{ophstringselector}
 B.~M\"uller,
 \emph{Observer-Patch Holography as a String-Vacuum Selector: Observers, Clocks, Edge Strings, and the Bouchard-Donagi Witness},
 2026. Archived manuscript.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/archive/observer_patch_holography_as_string_vacuum_selector.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/archive/observer_patch_holography_as_string_vacuum_selector.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/archive/observer_patch_holography_as_string_vacuum_selector.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/archive/observer_patch_holography_as_string_vacuum_selector.pdf}.
 
 \bibitem{ophlean}
 B.~M\"uller et al.,
@@ -1378,13 +1418,57 @@ separate modules for the uniform-fiber lemma, commuting-projection inequality,
 finite-gap assembly and stripped witness, conditional continuum chain, and
 cofinal spectral-tail boundary,
 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/Lean}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/Lean}.\\
+Modules \texttt{KogutSusskindFiberRateComparison} and \texttt{GaugeOrbitQuotientGap}:
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/Lean/Screen/KogutSusskindFiberRateComparison.lean},
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/Lean/Screen/GaugeOrbitQuotientGap.lean}.
 
 \bibitem{ophz2}
 B.~M\"uller,
 \emph{Finite \(\mathbb Z_2\) lattice-gauge diagnostic for the ground-state-transform receipt},
 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/code/yang_mills}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/code/yang_mills}.
+
+\bibitem{ophmodel}
+FloatingPragma,
+\emph{OPH executable observer construction}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophfedscaling}
+FloatingPragma,
+\emph{What propagates on a federation of identical elementary carriers}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/federated_observer/SCALING.md};
+receipt: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/federated_observer/results.json}
+
+\bibitem{ophnativeaction}
+FloatingPragma,
+\emph{A local action for native quantum observations}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/native_action/README.md}.
+
+\bibitem{ophmixing}
+FloatingPragma,
+\emph{Quantum mixing of the native C/E repairs}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/QUANTUM_MIXING.md}.
+
+\bibitem{ophrelscalar}
+FloatingPragma,
+\emph{A source-executed canonical scalar field regulator}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/relativistic_scalar/README.md}.
+
+\bibitem{ophcontinuum}
+FloatingPragma,
+\emph{A spatial fluctuation field from one native history}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma,
+\emph{Joint time and field laws on matched source screens}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophpremises}
+FloatingPragma,
+\emph{OPH reverse-engineering table: model and theorem premises}, 2026.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/PREMISES.md}.
 
 \bibitem{clay}
 Clay Mathematics Institute,

@@ -92,26 +92,26 @@ registry/check surface. That rule keeps the registry from becoming a stale snaps
 
 ## Finite model constructions
 
-Thirteen `emitted_artifact` rows register the runnable model and its retained
-evidence. Their owners are the self-contained implementation documents under
+Thirteen of the `emitted_artifact` rows register the runnable model and its
+retained evidence. Their owners are the self-contained implementation documents under
 `model/`, with `owner_medium: protocol_record`; no paper theorem is promoted
 or changed by these executable records.
 
 | Claim | Executed scope |
 | --- | --- |
-| `OPH-MODEL-NATIVE-OBSERVER-EXECUTION` | [Native current recorder](../model/observer/README.md), exact classical preservation, supplied forecasts and feedback |
+| `OPH-MODEL-NATIVE-OBSERVER-EXECUTION` | [Native current recorder](../model/observer/README.md), exact classical preservation, supplied forecasts and feedback; the C/E phase test with its locked count protocol and source-compiled channels; the native quantum gap, record recovery and coherent continuation; and the five-multiplier record-law classification |
 | `OPH-MODEL-OBSERVER-RECORD-CAPACITY` | [Finite correctable capacity](../model/observer/CAPACITY.md) and lossless reached-prefix controller encoding |
 | `OPH-MODEL-P-RESPONSE-EXECUTION` | [P-dependent binary detector](../model/observer/p_response/README.md), with accepted closure input and declared running/matching map |
 | `OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE` | [Incident-attempt memory certificate](../model/local_tick/README.md), with supplied occupation preparation and readout |
-| `OPH-MODEL-SCALAR-RESPONSE-EXECUTION` | [Scalar detector and native continuation](../model/observer/scalar_response/README.md), with supplied field action/vacuum and inherited history refinement control |
+| `OPH-MODEL-SCALAR-RESPONSE-EXECUTION` | [Scalar detector and native continuation](../model/observer/scalar_response/README.md), with supplied field action/vacuum and inherited history refinement control, and the two-site source apparatus that emits and executes preparation, evolution and pointer words with complete occupation bounds |
 | `OPH-MODEL-COMMON-SOURCE-EXECUTION` | [Common interacting observer](../model/common_source/README.md), complete scalar/matter/flux records and feedback, observer readouts and conditional error bounds |
 | `OPH-MODEL-SPATIAL-INTERACTION-EXECUTION` | [Spatial interaction](../model/spatial_interaction/README.md), finite Bose-Hubbard source histories and separate interaction-deletion control |
 | `OPH-MODEL-CANONICAL-SCALAR-EXECUTION` | [Canonical scalar execution](../model/relativistic_scalar/README.md), finite number-changing scalar histories and supplied-regulator comparison |
-| `OPH-MODEL-SHARED-SCALAR-OBSERVATIONS` | [Shared scalar observations](../model/scalar_observations/README.md), one detector across spatial grids at a fixed mode band |
-| `OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT` | [Published oscillator readout](../model/scalar_observations/experimental_readout/README.md), retrospective preparation/readout comparison |
+| `OPH-MODEL-SHARED-SCALAR-OBSERVATIONS` | [Shared scalar observations](../model/scalar_observations/README.md), one detector across spatial grids on the seven-mode band, and one controlled [band extension](../model/interacting_band_extension/README.md) by an added mode pair |
+| `OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT` | [Published oscillator readout](../model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md), retrospective preparation/readout and driven-dynamics comparisons, readout identities and two-order characteristic constraints |
 | `OPH-MODEL-COUPLED-INTERACTION-RECOVERY` | [Coupled interaction reconstruction](../model/coupled_reconstruction/README.md), finite source identification under the declared action and clock |
 | `OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON` | [Anharmonic transfer](../model/anharmonic_transfer/README.md), retrospective changed-potential transfer on published records |
-| `OPH-MODEL-NATIVE-PROCESS-RECOVERY` | [Observer-relative recovery](../model/OBSERVER_RELATIVE_RECOVERY.md), including incident-clock fields, source-derived modular readout, local carrier geometry, repair-cost laws, and their calibration/gluing limits |
+| `OPH-MODEL-NATIVE-PROCESS-RECOVERY` | [Observer-relative recovery](../model/OBSERVER_RELATIVE_RECOVERY.md): overlapping-observer correspondences, local and active event clocks, record-law identification, federations and matched screens, the coherent screen observer, the native continuum operator, the sequential protocol, and the public Bell and optical replays, with their calibration and gluing limits |
 
 The detector consumes PR-17 and PR-37. Its separate physical same-quantity
 and Thomson readback attachments are undischarged PR-38 and PR-39. These rows

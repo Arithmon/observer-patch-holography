@@ -145,8 +145,13 @@ analysis and its distinct uncertainty calculation.
 The next dynamical observation obligation is parameter identification on
 declared calibration observations and prediction of withheld physical
 responses, with a justified action and clock mapping to those data.
-A controlled band enlargement must account for omitted modes and parameter
-matching.
+The [interacting band extension](../interacting_band_extension/README.md)
+performs one controlled band enlargement. It adds the `cos(3x)`, `sin(3x)`
+pair at momentum `(3,0,0)`, derives the induced low-mode mass-squared shift
+`g/4` for the declared blank, and bounds the complete low-mode observations of
+the continued, disturbed history on its finite occupation code. The remaining
+omitted modes, repeated enlargement with an unrestricted occupation limit, and
+relativistic locality are open.
 The [native source-selection obligation](../SOURCE_SELECTION.md) also remains:
 compiling a supplied scalar action does not select its physical law or values.
 

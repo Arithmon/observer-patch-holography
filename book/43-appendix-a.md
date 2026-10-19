@@ -14,7 +14,7 @@ That is two questions welded together, and both halves lean on a first instant s
 
 The hot dense era is the far end of a reconstruction built from records held inside finite patches. The microwave glow left over from when the plasma stopped being opaque is a record. So are the ratios of the light elements, the spectra of galaxies and the catalogs of supernovae. The Big Bang names the place where the record side of that reconstruction goes dark. As for before, the only ordering there is runs on committed repairs, and where none have committed the word has nothing to be a relation on.
 
-Two things follow. The arrow of time is not inherited from that era, since a commit destroys what it resolved, and does that at the ten billionth repair as thoroughly as at the first. And the early universe is the most constrained object there has ever been: twelve ports, three directions and one way round the arrow, with no earlier record for any of it to have come from. The grain, chapter twenty-eight's number for how fine a distinction a screen supports, shows up on the microwave sky, whose ripples are slightly stronger at large angles than at small ones. A forty-eighth of 1.6309682414 is 0.033979, one minus that is 0.966021, and the Planck satellite measured 0.9649 give or take 0.0042.
+Two things follow. The arrow of time is not inherited from that era, since a commit destroys what it resolved, and does that at the ten billionth repair as thoroughly as at the first. And the early universe is the most constrained object there has ever been: twelve ports, three directions and one way round the arrow, with no earlier record for any of it to have come from. The grain, chapter twenty-eight's number for how fine a distinction a screen supports, shows up on the microwave sky, whose ripples are slightly stronger at large angles than at small ones. A forty-eighth of 1.6309682414 is 0.033979, and one minus that is 0.966021, the spectral index that measures the tilt. The Planck satellite measured 0.9649 give or take 0.0042. The Atacama Cosmology Telescope's 2025 analysis, joined with Planck and with maps of galaxies, sits higher, at 0.9743 give or take 0.0034. The next generation of microwave maps decides between them, and the grain fails if the index lands well away from 0.966021.
 
 ## If none of this is fundamental, why does my car work?
 
@@ -52,7 +52,7 @@ Twelve ports, thirty seams, patches wired to neighbors. Draw that on a page and 
 
 The question hands itself a place for free: everything is in something, and a relation needs a room to be a relation in.
 
-Distance here is a count of comparisons. Two patches are far apart when many comparisons separate them. A direction is a pattern in that tally rather than an arrow drawn in a room. The three directions come out of a fading rate. A repair operator's twelve readings split into blocks that fade at 0.9539, at exactly nine tenths and at 0.8794 a pass, with only the slowest block surviving enough rounds to carry a position, and the rank of that block is three.
+Distance here is a count of comparisons. Two patches are far apart when many comparisons separate them. A direction is a pattern in that tally rather than an arrow drawn in a room. The three directions come out of a fading rate inside each carrier. A repair operator's twelve readings split into blocks that fade at 0.9539, at exactly nine tenths and at 0.8794 a pass, with only the slowest block surviving enough rounds to carry a position, and the rank of that block is three.
 
 Turn the question on the room it asks for. A room for the network to sit in would have to be assembled out of comparisons between record-keepers, which is what a network is, and then that room would need a room. What exists is a tally, a rank of three, and observers doing the counting from inside while occupying no position in anything larger.
 
@@ -96,7 +96,7 @@ The question expects an evasion, on the assumption that a structure either expla
 
 The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
-The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999. The interval enclosure rules out numerical error as the source of the difference. The registers record the residual as a diagnostic datum until the closure map is selected from the axioms; reading it as the quark cloud around a photon at rest is a hypothesis, not a certified attribution, and the certified Thomson endpoint sits outside the closure interval.
+The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999, and the interval enclosure rules out numerical error as the source of the difference. The difference sits in the step from the cell down to a photon at rest, where the quark cloud lives, and computing that step from the cell is work in progress.
 
 ## You knew the answers before you started
 
@@ -106,7 +106,7 @@ The complaint assumes flexibility, and flexibility is countable.
 
 A fit is worthless when it has a dial in it, meaning a quantity somebody turns until the output matches. Count the dials between the wiring and the result and there are none. The grain appears on both sides of its own equation, and the family count is the number of corners on an oriented face. A structure with no continuous freedom either lands on the measured value or misses it in public.
 
-In the program's certified fixed-capacity branch, dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. Whether nature sits on that branch is a declared open item, and the test that would settle it is already standing: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that will decide it.
+The horizon's capacity is fixed, so dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. The test is standing: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that decide it, and a measured evolution of $w$ breaks the account.
 
 ## Isn't this what Leibniz said?
 
@@ -126,7 +126,7 @@ The word carries an original. A flight simulator earns the name because there ar
 
 Put the question to the inventory and look for the second end. Name the entry that substitutes for something, or the warehouse where the original repair rate is kept, or the object a loop residue resembles. The two-rule rewriter produced strings that described nothing filed anywhere else. Run the rules and the strings you get are the strings there are.
 
-Computed need not mean simulated by an external host. The proposed world realizes its own local read, write and feedback dependencies. The numerical examples use executor schedules and counters to test particular rules; their success does not establish that the universe has that executor or those counters as physical clocks.
+The word computed arrives with fake attached to it. Watch one repair: a disagreement that was there is gone, the total sits where it started, and which of seven arrangements the seam held is gone from the readings. That is a change in the world, carried out by arithmetic. Coffee tastes the way it does by the same route, and so does a magnetic field. And nothing is stepping any of it: eighty-one thousand nine hundred and twenty patches reached agreement on every seam between them without a tick from anywhere. The cycles in that run's trace belong to the computer that kept it.
 
 ## Does an observer have to be conscious?
 
@@ -136,17 +136,17 @@ The assumption is that observing is a mental act, so the word carries a mind whe
 
 Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all five. None of the results built on the list would change if every observer in the network were plumbing.
 
-Consciousness is the further identity proposal of chapter thirty-nine: some organized self-reading and repair processes are lived experience. The operational definition alone establishes no subject, qualitative character or boundary of experience. A thermostat illustrates feedback, not a theorem that experience differs from ours only by a coordinate count.
+Consciousness is a special case, defined in chapter thirty-nine at the size the structure supports: owned boundary repair, read from the inside. An observer that holds coordinates on its own state, and computes its next move off them, is reading the half of the record that the map to the public list deletes. Which organizations of that reading are lived, and how finely a person's runs, are questions that chapter takes up. Nothing in the structure lets a wish move an entry.
 
 ## Isn't the loop circular?
 
 Observers build the account of the world and the world builds the observers. Anybody trained to spot a circular argument spots one here immediately, and circular arguments have the property of proving whatever you like.
 
-The objection assumes the loop is an argument, whose premises would have to be in place before its conclusions.
+The objection assumes the loop is an argument, whose starting points would have to be in place before its conclusions.
 
-The proposed fixed point concerns a complete history under its self-reference map. It requires no external first solver, but it contains internal causal order, local changes and the computations through which the structure realizes its dependencies. A terminating repair solver, a stationary state and an observer's calibrated clock are distinct objects; no one of them supplies the others merely by being called a fixed point.
+The fixed point is a complete history under its self-reference map. It needs no first solver outside it, and it contains internal causal order, local changes and the computations through which the structure realizes its dependencies. A terminating repair solver, a stationary state and an observer's calibrated clock are three different objects, and calling each of them a fixed point does not make them one.
 
-The demand constrains a specified description and realization. A finite endpoint-invariance theorem checks one projected aspect of an execution; it does not prove unique self-description or preservation of every intermediate observation. Complete-history closure and intrinsic realization remain the proposed identification to investigate.
+A loop of this kind is a condition. It constrains a description and its realization together, the way an equation constrains its unknown, and the history either satisfies it or does not. Nothing in it needs to come first. Part of the demand can be checked on hardware: cut the run across a thousand machines and it finishes in the state the single machine finishes in, with the worker count, the restart history and the schedule appearing in none of the settled readings anybody inside can take. Circular reasoning does not usually come with a theorem about worker counts.
 
 ## Does this mean my choices are already made?
 

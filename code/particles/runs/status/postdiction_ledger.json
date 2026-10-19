@@ -24,13 +24,102 @@
     },
     {
       "id": "koide_conditional_tau_window",
-      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from measurement. The balance premise is Koide's published relation, which the face circulant of the carrier holds as a finite structure, so this is a conditional postdiction with a frozen rejection rule and a declared premise ancestry."
+      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from the PDG charged-lepton reference 1776.93 +- 0.09 MeV used by the FZ-10 comparison. The balance premise is Koide's published relation, which the face circulant of the carrier holds as a finite structure, so this is a retrospective conditional postdiction with a frozen rejection rule and a declared premise ancestry. The public-data audit compares the same output separately with the Belle II 2023 measurement alone."
     },
     {
       "id": "lepton_closure_target",
       "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; scientific owner #736 records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition."
     }
   ],
+  "retrospective_public_record_comparisons": {
+    "bell_records": {
+      "artifact_ref": "model/predictions/bell_results.json",
+      "artifact_sha256": "f85b298594ce113a1dcd80c888cb7fbc971f015f684b40858c7bccb4fc4fede3",
+      "chsh_estimate_decimal": "2.42250",
+      "chsh_estimate_exact": "16036094/6619647",
+      "comparison": "retrospective published Bell null replay, not a prospective OPH prediction",
+      "eligible_trials": 245,
+      "fixed_horizon_tail_upper_decimal": "0.03917",
+      "fixed_horizon_tail_upper_exact": "23679619036210593814221/604462909807314587353088",
+      "published_setting_allowance_tau": "27/2500000",
+      "scope": {
+        "diagonal_local_factorized_response_extension_excluded_under_stated_null": true,
+        "lab_clock_calibrated": false,
+        "native_repairs_identified_with_laboratory_spacelike_separation": false,
+        "new_native_empirical_confirmation": false,
+        "quantum_C_or_E_selected": false,
+        "whole_OPH_excluded": false
+      },
+      "wins": 196
+    },
+    "optical_direct": {
+      "artifact_ref": "model/predictions/optical_clock_results.json",
+      "artifact_sha256": "958fbf95f98c4349415c2039e83a15be18c380c6c41ed327a500c56b5330caf6",
+      "assessment": {
+        "OPH_or_every_native_clock_excluded": false,
+        "native_atomic_transition_or_interacting_QFT_derived": false,
+        "new_distinction_from_SM_GR_established": false,
+        "retrospective_conditional_attachment_test": true
+      },
+      "conservative_probability_upper_power_of_ten": {
+        "36ar_yb_ratio.txt": -159,
+        "40ar_yb_ratio.txt": -104
+      }
+    },
+    "optical_modular": {
+      "artifact_ref": "model/predictions/modular_optical_results.json",
+      "artifact_sha256": "af541da987f1a33954e36c833fb866f64915ad763c5aff28860f0ac595e222c3",
+      "interpretation": {
+        "OPH_or_all_modular_clocks_excluded": false,
+        "each_ratio_compared_separately_no_independence_assumed": true,
+        "frozen_prospective_prediction": false,
+        "minimal_three_mode_direct_transition_attachment_incompatible": true,
+        "p_value_or_sigma_significance_claimed": false,
+        "quoted_standard_uncertainties_treated_as_hard_bounds": false,
+        "status": "retrospective conditional assignment audit"
+      },
+      "minimum_absolute_ratio_separation_exact": "1444161568354687/25000000000000000",
+      "minimum_absolute_ratio_separation_floor_3": "0.057"
+    },
+    "optical_regional": {
+      "artifact_ref": "model/predictions/regional_optical_results.json",
+      "artifact_sha256": "9ac34f421781491443f71634d3bda48788aabe1f87766219a2b02770b560fd8e",
+      "assessment": {
+        "atomic_clocks_or_OPH_excluded": false,
+        "coherence_or_independent_atom_resource_lower_bound_derived": false,
+        "retrospective_conditional_attachment_test": true,
+        "shared_same_carrier_overlap_fully_enumerated": true,
+        "variance_alone_used_as_rejection": false
+      },
+      "conservative_probability_upper_power_of_ten": {
+        "36ar_yb_ratio.txt": -121,
+        "40ar_yb_ratio.txt": -22
+      },
+      "distinct_event_sets": 3433
+    },
+    "oscillator_readouts": {
+      "anharmonic_transfer": {
+        "artifact_ref": "model/anharmonic_transfer/results.json",
+        "artifact_sha256": "cccc9a17b7c8ee3866a8db95297723da05e5dbe050598ffcda4300ef95aac37a",
+        "observations": 125,
+        "position_estimator_rmse": 0.28764278683646793
+      },
+      "driven_anharmonic": {
+        "artifact_ref": "model/anharmonic_observations/results.json",
+        "artifact_sha256": "b3d84b3c1ec1598285e992c5ed5ad33f4ec46254e386e0833a2ee19bbef8cf5e",
+        "binary_probability_rmse": 0.055581824888896444,
+        "scalar_means": 707
+      },
+      "executable_readout": {
+        "artifact_ref": "model/scalar_observations/experimental_readout/executable_results.json",
+        "artifact_sha256": "d452061bfd7ac8c351bdee84620b867d070f9e04a3048c4a2f056e6c7eb7c5d0",
+        "coordinate_extent": 4,
+        "spin_mean_rmse": 0.06647165859372044,
+        "withheld_complex_points": 100
+      }
+    },
+    "projection_scope": "mechanical receipt projection of retrospective public-record comparisons; independent replay belongs to each linked package"
+  },
   "retrospective_tilt_comparison": {
     "analysis": {
       "FZ15_prospective_verdict": null,

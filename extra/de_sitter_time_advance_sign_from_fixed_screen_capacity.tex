@@ -59,11 +59,13 @@ horizon-capacity dictionary, an exact fixed-budget law on a finite screen
 supplies a conditional sign mechanism. Maximizing generalized entropy over sector probabilities gives
 \(S_{\mathrm{gen}}^{\max}=\log M\). Uniform transfer of a fraction \(f\) of
 the horizon capacity to an observer changes both this maximum and the
-uniformly normalized area observable by \(\log(1-f)<0\). The unperturbed
+logarithmic sector observable \(\mathcal A\) by \(\log(1-f)<0\). The unperturbed
 horizon is therefore a one-sided boundary maximum along the transfer
-direction. The exact gradient and Hessian show that this statement cannot be
-replaced by an interior-maximum claim: at fixed horizon capacity the tangent
-Hessian is positive, while the homogeneous curvature is negative. For an
+direction. The exact gradient and Hessian of \(\mathcal A\) show that this
+statement cannot be replaced by an interior-maximum claim for that observable:
+at fixed horizon capacity its tangent Hessian is positive, while its
+homogeneous curvature is negative. The joint counting entropy is instead a
+nonstrict maximum at fixed capacity. For an
 icosahedral screen, a normalized finite shock spectrum follows conditionally
 from exact gauge transport of the rotation triplet and a nearest-neighbour
 Laplacian identification. The calculation does not derive the coefficient or
@@ -83,7 +85,7 @@ Hilbert-space trace~\cite{chenStanfordTangYang2026}. Their shock-wave
 calculation includes observer recoil and gravitational backreaction. The
 resulting out-of-time-ordered correlator conflicts with cyclicity and
 positivity: its leading regularized contribution increases. Geometrically,
-the negative shock advances the signal.
+the negative shock advances the signal in the horizon null coordinate.
 
 The finite-screen calculation below isolates a capacity mechanism for this
 sign. Three levels are kept separate throughout:
@@ -157,6 +159,13 @@ M=\sum_{i=1}^n d_i,
 S_{\mathrm{gen}}(p,d)
 =-\sum_{i=1}^n p_i\log p_i+\sum_{i=1}^n p_i\log d_i.
 \]
+This is the counting entropy of sectors with one-dimensional bulk blocks, or
+with \(d_i\) counting the whole sector. For blocks
+\(\rho=\bigoplus_ip_i(\rho_i\otimes I_{d_i}/d_i)\) with bulk dimensions
+\(b_i\), the full entropy is
+\(\log M-\KL(p\Vert w/M)-\sum_ip_i\KL(\rho_i\Vert I_{b_i}/b_i)\) with
+\(w_i=b_id_i\) and \(M=\sum_iw_i\), so saturation also requires maximally
+mixed bulk blocks~\cite{ophentropy}.
 
 \begin{proposition}[Finite sector entropy maximum]
 \label{prop:entropymax}
@@ -180,8 +189,14 @@ Nonnegativity of relative entropy proves the result.
 
 Thus a logarithmic capacity \(N=\log M_0\) agrees exactly with the extremal
 generalized entropy when the closed screen carries total dimension \(M_0\).
-This is a maximization over \(p\), with the sector dimensions held fixed. It
-does not classify extrema with respect to the \(d_i\).
+The same identity compares every admissible integer partition with total
+count \(M\): \(S_{\mathrm{gen}}(p,d)\le\log M\), with equality exactly at
+\(p=d/M\). In the positive-real relaxation, every twice differentiable joint
+path at fixed \(M\) through \(p=d/M\), with \(u=p'(0)\) and \(v=d'(0)\), has
+\(S_{\mathrm{gen}}'(0)=0\) and
+\(S_{\mathrm{gen}}''(0)=-\sum_i(u_i-v_i/M)^2/p_i\le0\), so saturation is a
+nonstrict joint maximum at fixed \(M\)~\cite{ophentropy}. Neither statement
+constructs an operation that changes integer sector dimensions.
 
 \subsection{Exact gradient and Hessian}
 
@@ -268,7 +283,7 @@ Both relations are exact.
 \begin{theorem}[Finite transfer law and analytic one-sided maximum]
 \label{thm:transfersign}
 Every admissible positive integer transfer has a smaller horizon entropy
-maximum and uniformly depleted area observable than the zero-transfer
+maximum and uniformly depleted sector observable \(\mathcal A\) than the zero-transfer
 allocation. On the positive-real interpolation
 \(0\leq c_{\mathrm{obs}}<M_0\), the change is strictly decreasing and concave:
 \[
@@ -291,7 +306,8 @@ For transfers of \(2\%\), \(5\%\), and \(10\%\),
 The exact finite order and its analytic interpolation are the budget statements
 relevant to the shock sign. Proposition~\ref{prop:hessian} supplies compatible
 negative homogeneous curvature, while also showing why the transfer result
-cannot be described as an interior maximum at fixed horizon \(M\).
+cannot be described as an interior maximum of \(\mathcal A\) at fixed
+horizon \(M\).
 
 \subsection{Conditional gravitational interpretation}
 
@@ -299,7 +315,12 @@ In the horizon coordinates used in
 Ref.~\cite{chenStanfordTangYang2026}, the constant term of the shock operator
 carries the sign of \(B'(0)/B(0)=2r'(0)/r_c\). For a cosmological horizon,
 the transverse area decreases from the horizon toward the observer, and the
-shock has the time-advance sign. Under the two physical identifications
+shock has the time-advance sign. This radial profile belongs to the
+gravitational dictionary. The native screen energy excludes a boundedly
+invertible \(L^2\) energy congruence with the boundary action of a smooth
+compact three-dimensional Dirichlet bulk, so a bulk reading of the screen
+needs a radial observation algebra that the native energy does not
+supply~\cite{ophcontinuum}. Under the two physical identifications
 \[
 \text{closed screen capacity}=\text{fixed horizon--observer budget},
 \qquad
@@ -309,7 +330,13 @@ Theorem~\ref{thm:transfersign} supplies the corresponding conditional sign
 mechanism. Identifying the capacity coordinate \(c_{\mathrm{obs}}\) with the
 observer mass used in the gravitational shock calculation is an additional
 physical dictionary. The finite entropy theorem and transfer law establish
-none of these identifications.
+none of these identifications. On the executable source, fixed total count and
+\(\log d\) have no established physical volume or area map. Its full return
+reference has entropy deficit at most \(2025/(64V)\) for \(V\) ports, and on
+a refining base-face patch its mutual information per crossing seam tends to
+zero, so no nonzero universal coefficient multiplies boundary-seam counts of
+regions on the two-dimensional source~\cite{ophentropy}. The identification
+above reads the whole screen count, which those controls leave open.
 
 \section{Conditional icosahedral spectrum}
 \label{sec:spectrum}
@@ -323,7 +350,10 @@ with raw Laplacian eigenvalues
 \[
 0,\qquad 5-\sqrt5,\qquad 6,\qquad 5+\sqrt5,
 \]
-respectively.
+respectively. This graph is the seam graph of the twelve-port carrier of the
+executable observer. Under its uniform independent seam schedule both native
+repairs have quantum spectral gap \((5-\sqrt5)/60\) per attempt; that gap
+describes mixing on a fixed carrier, not a shock spectrum~\cite{ophmixing}.
 
 \begin{assumption}[Discrete gauge transport
 \(\mathsf{DS\text{-}GAUGE}\)]
@@ -429,7 +459,7 @@ premise.
 
 Let \(X_r\) be the configuration space at fixed sector structure, with
 measure \(\pi_r\), and let \(P_v\) be the single-site heat-bath conditional
-expectation. The repair generator
+expectation. The declared heat-bath generator
 \[
 L^{\mathrm{rep}}=\sum_v(I-P_v)
 \]
@@ -450,14 +480,22 @@ Reducing this intersection to the constants requires a separate
 irreducibility or intersection proof and is unnecessary for the scope
 statement here.
 
+The executable native action is the seam sum
+\(H_{\mathrm{native}}=\sum_e(I-\Phi_e)\), a positive local Liouville operator
+built from the record-discarded native repair \(\Phi_e\) of each
+seam~\cite{ophnativeaction}. It acts on the operator algebra of a fixed
+carrier and conserves total occupation, whose fixed-number sectors its
+connected exchanges generate. It therefore changes no sector dimension either,
+and the domain statement below applies to it.
+
 A horizon shock changes the sector dimensions \(d_\alpha\) in
 \[
 L_C=\sum_\alpha(\log d_\alpha)P_\alpha .
 \]
 Such a change deforms the configuration space and lies outside
-\(L^2(X_r,\pi_r)\) at fixed sector structure. The repair generator therefore
-does not act on the sector-dimension shock. Its spectral gap neither excludes
-nor supplies the time-advance mode. The capacity-transfer law in
+\(L^2(X_r,\pi_r)\) at fixed sector structure. Neither generator
+therefore acts on the sector-dimension shock. Their spectral gaps neither exclude
+nor supply the time-advance mode. The capacity-transfer law in
 Theorem~\ref{thm:transfersign} is a response input on the enlarged
 sector-dimension space; no dynamical generator on that space is supplied.
 
@@ -468,7 +506,9 @@ port graph, let \(z=n-(r/p)\mathbf1\) and
 \(\kappa=r(p-r)/[p(p-1)]\). Fair endpoint exchange at each Poisson
 attempt has density drift \(Gz=-Lz/2\), uniform stationary occupancy,
 and \(\operatorname{Cov}(z(t),z(0))=\kappa e^{-|t|L/2}\Pi\).
-At fixed graph, its integrated fluctuation record has covariance
+Here \(t\) is the Poisson schedule parameter, one expected attempt per seam
+per unit; it is a model coordinate, not a physical, modular or observer clock
+time. At fixed graph, its integrated fluctuation record has covariance
 \(4\kappa L^+\). This derives a graph Green covariance from local port
 readback and repair histories; it neither deforms sector dimensions nor
 identifies the record with a horizon shock.
@@ -486,7 +526,7 @@ two-state flip instead gives \((-1)^m\). These are controls for a
 specified classical autocorrelation, not constraints on an out-of-time-
 ordered quantum correlator or an enlarged sector-dimension dynamics.
 Exact finite witnesses and source-pinned operator controls are archived
-under \path{evidence/observer_dynamics_20260925/sim-analysis/codex/}.
+with the repository evidence~\cite{ophdynamicsevidence}.
 
 The inverse covariance also retains geometric anisotropy:
 \([L^{-1},U]=-L^{-1}[L,U]L^{-1}\) on the mean-zero subspace.
@@ -499,9 +539,9 @@ keep its metric and representation premises.
 
 \section{The fixed-capacity equation of state}
 
-The capacity reading of the vacuum term supplies a conditional
-model-discrimination test through the equation of state of dark energy,
-and its algebraic law is machine-checked. Read the
+The capacity reading of the cosmological-constant term supplies a
+conditional branch test through the dark-energy equation of state, and its
+algebraic law is machine-checked. Read the
 dark-energy density through the capacity relation as
 \(\rho_{\rm DE}(a)=\kappa/N(a)\), with \(\kappa\) the single positive
 constant packaging \(c^4\,3\pi/(8\pi G\,l_P^2)\), and define the effective
@@ -536,7 +576,14 @@ and carry no prospective score. Exclusion of \((-1,0)\) in any direction
 conflicts with the fixed branch; a posterior-mean quadrant is not a valid
 extra gate. Conversely, compatibility with \((-1,0)\) does not validate
 fixed capacity or OPH because that point is also the standard
-\(\Lambda\)CDM null. No comparison is frozen or armed by this paper.
+\(\Lambda\)CDM null. No comparison is frozen or armed by this paper. The
+fixed branch is registered separately: FZ-01 freezes the point
+\((w_0,w_a)=(-1,0)\) for a later DESI DR3, CMB and supernova combination with
+a thawing-mean condition, and FZ-13 registers the conditional
+fixed-global-capacity branch with direction-neutral empirical credible
+ellipsoids. FZ-13 scores only the fixed branch, the monotone branch cannot
+rescue it, and because the point coincides with \(\Lambda\)CDM its survival
+earns no distinctive OPH support~\cite{ophladder}.
 
 For a seen-data diagnostic, a script checked the official SHA-256 values for
 four DESI DR2 chains in each of four \(w_0w_a\)CDM combinations. It then
@@ -547,10 +594,16 @@ fractions in that conditional monotone subset are \(0.00705\%\),
 Union3, and DESY5 combinations, respectively~\cite{desidr2}. Two
 combinations have at least one chain with no raw sample in the rare subset.
 The respective raw tail counts are 6, 126, 15, and 11. Union3 is represented
-in all four chains but remains sparse.
+in all four chains but is sparse.
 These seen-data fractions depend on the collaboration's model, likelihood,
 and priors; they are not model evidences, frequentist exclusions, direct
-capacity measurements, or a prediction score.
+capacity measurements, or a prediction score. On the same official chains, a
+Gaussian moment summary places \((-1,0)\) at two-sided normal equivalents
+\(2.61\), \(2.60\), \(3.38\) and \(3.93\) for BAO+CMB and its Pantheon+,
+Union3 and DESY5 combinations. These data precede both registrations, so the
+values are retrospective tension diagnostics for the fixed branch; they are
+not the empirical-quantile rule registered in FZ-13 and carry no frozen
+verdict~\cite{ophcosmoledger}.
 
 Four separately authenticated official DESI DR2 BAO+CMB base-\(\Lambda\)CDM
 chains give, under a direct samplewise nonlinear transform,
@@ -561,7 +614,15 @@ with weighted 2.5--97.5 percent interval
 \([2.88997,3.04530]\times10^{-122}\). This automatically retains the sampled
 \(H_0\)--\(\Omega_\Lambda\) covariance. It is a target-informed retrospective
 \(\Lambda\)CDM posterior display, not an OPH likelihood or theory
-uncertainty~\cite{desidr2,ophrepo}.
+uncertainty~\cite{desidr2,ophrepo}. The FZ-01 capacity band
+\(N\in[3.30836,3.31137]\times10^{122}\) corresponds to
+\(\Lambda\ell_P^2\in[2.84618,2.84878]\times10^{-122}\), below the
+2.5 percent point of this display, and the closure candidates
+\(N=3.2921\times10^{122}\) and \(3.3001\times10^{122}\) give values \(2.64\)
+and \(2.81\) posterior standard deviations below its mean. DESI DR2 precedes
+the FZ-01 freeze, so this is a retrospective tension under baseline
+\(\Lambda\)CDM; the FZ-01 capacity rule uses its own frozen posterior and
+precision condition~\cite{ophladder,ophcosmoledger}.
 
 A second conditional diagnostic composes the capacity law with the local
 electroweak-closure tangent. It requires three extra physical premises: (B1)
@@ -639,7 +700,21 @@ dimension-changing generator is not excluded. The graph-spectrum statement
 concerns the scaled nearest-neighbour icosahedral port Laplacian and its line
 graph under exact gauge transport. Weighted, longer-range, refinement-limit,
 and other source-derived kinetic operators are possible and require their
-own spectra.
+own spectra. One refinement-limit operator is constructed: along a common
+subsequence of refining source screens the native cell Green operators
+converge in operator norm to a compact injective \(G\), and \(A=G^{-1}\)
+defines a regular, strongly local Dirichlet form with
+\(n/49920\le\lambda_n(A)\le3n/2\) and heat-trace spectral dimension
+two~\cite{ophcontinuum}. That limit selects no unique whole-sequence limit and
+no physical metric, so a shock reading of \(A\) needs its own gauge-transport
+and normalization premises. On the executed federated screens of \(240\), \(960\) and
+\(3{,}840\) ports, the numerically computed ratio of the second to the first
+low band of the native port Laplacian is \(2.68\), \(2.92\) and \(2.97\),
+against \(6/(5-\sqrt5)\approx2.17\) on one carrier and \(3\) on the round
+sphere~\cite{ophfedscaling}. The lowest band is a near triplet whose relative
+spread grows from \(0.92\) to \(2.31\) percent over these levels, so the
+declared cross-carrier routing carries no carrier-wide \(A_5\) covariance,
+and rotational covariance of a refinement limit is a premise.
 
 None of these boundaries disproves Observer-Patch Holography. They delimit
 one trace interpretation, one fixed-sector generator, and one conditional
@@ -650,13 +725,15 @@ identities survive independently of those physical attachments.
 
 A closed capacity budget has a distinguished transfer direction. Moving
 capacity from a horizon screen to its observer changes the extremal entropy
-and the uniformly normalized logarithmic area observable by
+and the logarithmic sector observable \(\mathcal A\) by
 \(\log(1-f)\). The sign is negative for every allowed positive finite
 transfer and throughout the positive-real interpolation, so the zero-observer
-allocation is a one-sided boundary maximum. The analytic Hessian supports a
-negative homogeneous curvature and a positive fixed-horizon-capacity tangent
-curvature. Keeping both facts visible avoids an incorrect interior-maximum
-argument.
+allocation is a one-sided boundary maximum. The analytic Hessian of
+\(\mathcal A\) has negative homogeneous curvature and positive
+fixed-horizon-capacity tangent curvature, while the joint counting entropy is
+a nonstrict maximum along fixed-capacity joint variations. The sign result
+therefore rests on the capacity transfer, not on an interior maximum of
+\(\mathcal A\).
 
 The pure de Sitter normalization \(\mu^2=\lambda_{\ell=1}\) is exact. An
 icosahedral spectrum follows only after exact discrete gauge transport and a
@@ -665,7 +742,7 @@ identity then makes its low spectrum independent of choosing ports or edge
 sectors. These results supply a conditional finite-screen mechanism for the
 time-advance sign, with the ledger-to-mass map, coefficient, gravitational
 attachment, and sector-dimension dynamics as separate premises.
-The exact identities remain valid if those attachments fail; such a failure
+The exact identities hold if those attachments fail; such a failure
 would reject the corresponding physical interpretation inside its stated
 class.
 
@@ -691,7 +768,48 @@ Manifest authenticated by the replay:
 B.\ M\"uller et al.,
 \emph{Observer-Patch Holography: formal proofs and executable receipts},
 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/code/cosmology/fixed_capacity_wlaw}
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/code/cosmology/fixed_capacity_wlaw}
+
+\bibitem{ophentropy}
+FloatingPragma,
+\emph{Tangent first laws and finite entropy changes}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
+
+\bibitem{ophcontinuum}
+FloatingPragma,
+\emph{A spatial fluctuation field from one native history}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}
+
+\bibitem{ophnativeaction}
+FloatingPragma,
+\emph{A local action for native quantum observations}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/native_action/README.md}
+
+\bibitem{ophmixing}
+FloatingPragma,
+\emph{Quantum mixing of the native C/E repairs}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/QUANTUM_MIXING.md}
+
+\bibitem{ophladder}
+FloatingPragma,
+\emph{The frozen-prediction ladder}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/FROZEN_PREDICTION_LADDER.md}
+
+\bibitem{ophcosmoledger}
+FloatingPragma,
+\emph{Cosmology postdiction ledger}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md}
+
+\bibitem{ophdynamicsevidence}
+FloatingPragma,
+\emph{Observer-dynamics finite witnesses and operator controls}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/observer_dynamics_20260925/sim-analysis}
+
+\bibitem{ophfedscaling}
+FloatingPragma,
+\emph{What propagates on a federation of identical elementary carriers}, 2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/federated_observer/SCALING.md};
+receipt: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/federated_observer/results.json}
 
 \bibitem{filzinger2023}
 M.~Filzinger et al.,

@@ -31,8 +31,6 @@
 \theoremstyle{plain}
 
 \newcommand{\pathref}[1]{\nolinkurl{#1}}
-\newcommand{\SimSourceRepo}{\url{https://github.com/muellerberndt/oph-physics-sim}}
-\newcommand{\SimEvidenceRepo}{\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence}}
 
 \title{Observer-Patch Holography Cosmological Vacuum and Structure Formation:\\
 Finite Transfer Conditions, Fluctuation Ensembles, and Proto-Objects}
@@ -52,18 +50,23 @@ We specify finite quotient ensembles and transfer conditions for
 Observer-Patch Holography (OPH) cosmology. A declared quotient-intrinsic action
 and base measure determine a finite state, while reversible Euclidean data,
 reflection positivity and compatible refinement support its vacuum
-interpretation. On a separate supplied Whitney action, controlled real-field
+interpretation. On the source screens of the executable observer
+construction, the native density law has a reflection-positive
+reconstruction whose generator is the native continuum operator, and the
+full return reference approaches the normalized trace, so no quantum vacuum
+is identified. On a separate supplied Whitney action, controlled real-field
 trajectories and a neutral interacting Hilbert space provide explicit matter
 and state constructions. We state the further source and transfer conditions
 that connect such objects to primordial seeds, observer-facing worldlines
 and large-scale structure observables. On the sourced causal order the
 expansion history is a record density; the capacity dictionary
-\(\Lambda\ell_P^2=3\pi/N\) returns the cosmological constant \(+0.62\) and
-\(+0.38\) percent above the Planck central value from the two closure
-candidates, which sit \(-2.64\) and \(-2.81\) standard deviations below the
-DESI DR2 display of the same coordinate, and the fixed-capacity equation of
-state \(w=-1\) sits \(2.6\) to \(3.9\) standard deviations from the DESI
-DR2 posterior means.
+\(\Lambda\ell_P^2=3\pi/N\) returns, as diagnostics of two target-informed
+closure candidates, the cosmological constant \(+0.62\) and \(+0.38\)
+percent above the Planck central value, while the candidates sit \(-2.64\)
+and \(-2.81\) standard deviations below the DESI DR2 display of the same
+coordinate; under a Gaussian moment diagnostic the fixed-capacity equation
+of state \(w=-1\) sits \(2.6\) to \(3.9\) standard deviations from the
+DESI DR2 posterior means.
 \end{abstract}
 
 \section{Scope}
@@ -71,23 +74,33 @@ DR2 posterior means.
 This technical companion states the
 vacuum and fluctuation boundary for finite-source cosmology, screen
 microphysics, the compact results, and finite-patch simulations.
-The simulator source is \SimSourceRepo, and its canonical public data
-archives are indexed at \SimEvidenceRepo. The large finite repair archive is
+The executable observer construction runs native repair, record-controlled
+feedback and local event clocks on one twelve-port carrier~\cite{ophmodel,ophspine}.
+Its refining source screens give a positive continuum operator of spectral
+dimension two~\cite{ophcontinuum}; Section~\ref{sec:vacuum-claim-boundary}
+states why its native reference identifies no quantum vacuum. That
+construction does not supply the source Euclidean slab, expanding
+background or transfer conditions stated below.
+The simulator source and its canonical public data archives are cited
+in~\cite{ophsim}. The large finite repair archive is
 a diagnostic that passes neither the physical-CMB nor the production-gravity criterion; it
 does not supply the source and transfer receipts required below.
 
-The \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}{spacetime construction}
-gives a controlled flat $1+3$ causal-order and count-volume limit for
+The spacetime construction~\cite{ophEinstein} gives a controlled flat $1+3$ causal-order and count-volume limit for
 conservative Fibonacci records with a specified population, complete local
 neighbour reads and layer duration. An observer with complete authenticated
 ancestry and interval anchors can read $(|I|/|J|)^{1/4}$ relative to a
 nondegenerate interval $J$ in the same history. For interior timelike
 diamonds this tends to the proper-time ratio; the readout uses no coordinates,
-timestamps or density. Its reference fixes relative units, while the law
-underlying the limit remains supplied.
+timestamps or density. Its reference fixes relative units, and the law
+underlying the limit is supplied.
 
 The vacuum term of the background has one dictionary on the fixed-capacity
-branch, \(\Lambda\ell_P^2=3\pi/N\). The two closure candidates for the
+branch, \(\Lambda\ell_P^2=3\pi/N\). Reading \(N\) as de Sitter horizon
+entropy is a premise. On the native source, regional reduced entropy grows
+with port count and mutual information per crossing seam tends to zero, so
+a whole-screen area reading requires a region map that the executable
+construction does not supply~\cite{ophentropy}. The two closure candidates for the
 capacity, \(3.2921\times10^{122}\) and \(3.3001\times10^{122}\), return
 \(\Lambda=1.0959\times10^{-52}\) and \(1.0933\times10^{-52}\,\mathrm{m^{-2}}\)
 against the Planck-central \(1.0891\times10^{-52}\,\mathrm{m^{-2}}\),
@@ -108,7 +121,11 @@ fractions between \(0.007\) and \(0.11\) percent, so the fixed branch is
 under tension on seen data. The conditional FZ-13 protocol was frozen on
 2026-10-04 with register status \texttt{frozen\_stamped\_upgrade\_pending};
 only its complete protocol and anchoring requirements define the eligible
-comparison. The cosmology postdiction ledger released with
+comparison. The fixed-capacity point coincides with \(\Lambda\)CDM, so its
+survival earns no distinctive OPH support. FZ-01, frozen on 2026-07-17,
+registers the capacity band \(N\in[3.30836,3.31137]\times10^{122}\) and the
+point \((w_0,w_a)=(-1,0)\) without a registered verdict; both closure
+candidates lie below that band~\cite{ophladder}. The cosmology postdiction ledger released with
 these papers records these rows with their classes.
 
 On the rank-three source Gram space with a real axis adjoined, a nonzero
@@ -116,7 +133,10 @@ closed convex pointed cone is future or past Lorentzian if the proper
 icosahedral rotations and all rapidities of one boost axis preserve it.
 Time orientation selects the future cone. This premise must concern
 possible influence on histories, interventions and clock readouts, beyond
-an algebraic frame action. A cosmological vacuum requires the additional
+an algebraic frame action. The executable carrier supplies one such
+influence bound: for a fixed seam schedule and shared local coins,
+dependence crosses at most one seam per ordered repair event, which gives no
+laboratory speed or continuum light cone~\cite{ophcausality}. A cosmological vacuum requires the additional
 state, expanding geometry, physical clock calibration and screen-to-volume
 transfer conditions below. Smooth Einstein promotion requires same-family
 tensor-curvature convergence or the continuum small-ball/null-balance
@@ -137,8 +157,8 @@ uniform conforming refinements give
 \]
 The real, zero-current solutions are invariant solutions of the full
 charged action. The proof uses a fixed shape-regular refinement family,
-the conserved nonlinear energy and a Ritz error estimate
-(\pathref{paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex}).
+the conserved nonlinear energy and a Ritz error estimate, as proved in
+\emph{Observers Are All You Need}~\cite{ophobservers}.
 
 On the original finite mesh with nonzero coupling \(e\), eliminating
 mean-zero gauge directions gives a
@@ -148,8 +168,7 @@ complete kinetic metric \(\gamma\) on
 \(L^2(\mathcal Q,d\mathrm{vol}_\gamma)\) has a unique nonnegative
 self-adjoint Hamiltonian and unitary dynamics. Normalized Gaussian
 half-density states lie in its operator domain and have explicit initial
-matter moments
-(\pathref{paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex}). These
+matter moments~\cite{ophobservers}. These
 are states of a finite spatial discretization, not a derived cosmological
 ground state or a continuum quantum field limit.
 
@@ -158,8 +177,8 @@ For the same autonomous action, the Jacobi duration
  d\tau=\sqrt{\frac{G_q(dq,dq)}{2(E-V(q))}}
 \]
 recovers action time on regular nonturning solutions at supplied energy
-\(E\), using the full coupled kinetic metric or its gauge reduction
-(\pathref{paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex}). Its
+\(E\), using the full coupled kinetic metric or its gauge
+reduction~\cite{ophobservers}. Its
 configuration-based reconstruction supplies an internal model clock.
 A cosmological interpretation additionally requires observer-selected
 geometry, physical preparation and units, and a compatible expanding
@@ -201,7 +220,21 @@ and do not select the profile.
 
 \input{../paper/tex_fragments/FINITE_QUOTIENT_ENSEMBLE_THEOREMS.tex}
 
+\paragraph{Native source screens.}
+On the native source screens the actual density law has the
+reflection-positive reconstruction that a continuum interpretation requires,
+along one common refining subsequence; it supplies no coherent preparation,
+relativistic vacuum or Lorentz symmetry~\cite{ophtimefields}
+(Section~\ref{sec:vacuum-claim-boundary}). The same continuum energy is not
+boundedly congruent to the static boundary action of a smooth compact
+three-dimensional Dirichlet bulk, whose Steklov eigenvalues grow like
+\(\sqrt n\) while the native eigenvalues grow like \(n\), and internal
+rank-three carrier modes vanish from bounded-energy families; a radial lift
+needs a radial observation algebra that the native energy does not
+supply~\cite{ophcontinuum}.
+
 \section{Vacuum Claim Boundary}
+\label{sec:vacuum-claim-boundary}
 
 A simulated field is classified as seed noise, repair jitter, or a conventional
 reference ensemble unless it satisfies the finite quotient ensemble
@@ -210,8 +243,17 @@ conditions. An OPH-native vacuum requires source data of the form
 \mathfrak S_r^E=(Q_r,m_r^0,J_r,V_r,a_{t,r})
 \]
 with \(J_r\), \(V_r\), and \(a_{t,r}\) derived from OPH source structure rather than from a target
-law or a desired visual spectrum.  Accepted repair moves are generally directed and cannot simply
-be reused as reversible Euclidean conductances.
+law or a desired visual spectrum. Directed accepted repair moves cannot be
+reused as reversible Euclidean conductances. The native seam rule differs:
+each unread repair has the law of a fair identity-or-endpoint swap, so its
+configuration transfer \(K\) is symmetric and positive, and the actual native
+density law has a reflection-positive Gaussian reconstruction. The
+obstruction on the native source lies elsewhere: the reconstructed
+one-particle generator is the
+continuum operator \(A\), not \(\sqrt A\), and the full configuration return
+reference built from \(K\) approaches the normalized trace at fixed modular
+parameter and gives the density-wave sector vanishing weight, so it
+identifies no quantum vacuum~\cite{ophtimefields}.
 
 \section{Structure-Formation Requirements}
 
@@ -258,6 +300,58 @@ The bridge from a source-derived vacuum to primordial growth seeds
 without cosmic microwave background or large-scale structure data is not
 supplied. A physical proto-object or worldline requires conditions distinct
 from those used for production particle claims.
+
+\begin{thebibliography}{99}
+
+\bibitem{ophEinstein}
+B.~M\"uller et al.,
+\emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+
+\bibitem{ophobservers}
+B.~M\"uller et al., \emph{Observers Are All You Need}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/observers_are_all_you_need.pdf}.
+
+\bibitem{ophspine}
+B.~Mueller, M.~Poneder and J.~Kim (2026). \emph{An Executable Observer for
+Observer Patch Holography: Specification, Certified Components and
+Acceptance Criteria}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/executable_observer_construction.pdf}.
+
+\bibitem{ophsim}
+B.~Mueller (2026). OPH physics simulator and reproduction source.
+\url{https://github.com/muellerberndt/oph-physics-sim}. Public data archives:
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence}.
+
+\bibitem{ophmodel}
+FloatingPragma (2026). The runnable OPH model: observer implementation,
+tests, receipts and construction guide.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophentropy}
+FloatingPragma (2026). Tangent first laws and finite entropy changes:
+native reference entropy and region boundaries.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophladder}
+FloatingPragma (2026). Frozen prediction ladder.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/FROZEN_PREDICTION_LADDER.md}.
+
+\end{thebibliography}
 
 \section*{AI Assistance Disclosure}
 This research project used research-grade commercial models, including

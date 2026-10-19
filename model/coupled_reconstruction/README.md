@@ -83,9 +83,9 @@ Gram, conditional on the same unit-edge convention and topology-separation
 premise as before. The recovered coefficients are approximately:
 
 ```text
-bare mass squared = 1.00000000064
-bond weight       = 1
-quartic g         = 0.04166666655   (target 1/24)
+bare mass squared = 1.00000000027
+bond weight       = 0.99999999997
+quartic g         = 0.04166666664   (target 1/24)
 ```
 
 The bare mass and bond/speed coefficients describe the supplied action;
@@ -95,7 +95,7 @@ the declared canonical polynomial family.
 
 | Complete two-read comparison | 8 × 2⁷ levels | 8 × 4⁷ levels |
 | --- | ---: | ---: |
-| Numerical prediction/execution TV | <2.7e-13 | <2.4e-13 |
+| Numerical prediction/execution TV | <1.2e-13 | <6.8e-13 |
 | Ideal coefficient + evolution-splitting TV bound | <2.97e-6 | <2.14e-5 |
 | Matched quartic-deletion discrepancy | >3.90e-5 | >3.90e-5 |
 

@@ -27,10 +27,12 @@ not a prerequisite for every geometry, action or clock theorem.
 The [federation evidence](federated_observer/README.md) is valuable as a test
 of composition and coarse memory. It also exposes the particular family's
 limitations: routing is supplied, coarse blocks retain memory, and existing
-ancestry maps do not preserve every seam. Its approximately quadratic native
-ball growth over part of the measured range does not establish a
-three-dimensional bulk. Building larger copies before specifying the needed
-observable correspondence would leave the physical question unchanged.
+ancestry maps do not preserve every seam. The approximately quadratic growth
+of native-hop balls on its levels over part of the measured range, retained by
+the [relative observer geometry](relative_observer_geometry/README.md), does
+not establish a three-dimensional bulk. Building larger copies before
+specifying the needed observable correspondence would leave the physical
+question unchanged.
 
 The separate [OL-A1 signature replication instrument](../code/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md)
 also remains `FAILED`. Its threshold-sensitive inertia and nondiscriminating
@@ -42,7 +44,7 @@ overturned by successful finite native-carrier calculations or by this audit.
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
 | Space and fields | Current preparations recover the carrier response and a rank-three slow-band Gram. Long observation averages of the actual binary repair process give a Gaussian field with a derived Green covariance and quadratic action. | Selecting the operational metric and length calibration, realizing the observation access, and establishing the physical spatial domain. The full inverse-response Gram has rank eleven. |
-| Time | Complete local stopped instruments and clock comparisons. Incident events drive fixed compiled modular steps on an explicitly controlled probe; closed histories select a faithful reference for its native-derived generator. | The controller, coherent services and carrier-pause schedule are declared. Passive repair is contractive and cannot implement nontrivial modular automorphisms on an invariant observer algebra. Proper duration remains unidentified. |
+| Time | Complete local stopped instruments and clock comparisons. Incident events drive fixed compiled modular steps on an explicitly controlled probe; closed-history conditioning derives a faithful reference for its native-derived generator. | The controller, coherent services and carrier-pause schedule are declared. Passive repair is contractive and cannot implement nontrivial modular automorphisms on an invariant observer algebra. Proper duration remains unidentified. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
 | Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 

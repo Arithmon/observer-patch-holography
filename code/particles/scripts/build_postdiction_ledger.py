@@ -337,6 +337,154 @@ def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
     }
 
 
+def _public_receipt(relative: str, schema: str) -> tuple[dict[str, Any], str]:
+    path = REPO / relative
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    if receipt.get("schema") != schema:
+        raise SystemExit(f"unexpected public-record receipt: {relative}")
+    return receipt, hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _retrospective_public_record_references() -> dict[str, Any]:
+    """Project separately replayed public-record comparisons without rescoring them.
+
+    Each receipt is retrospective. The guards refuse any receipt that would
+    promote a physical, OPH-wide, prospective or significance claim.
+    """
+    bell, bell_sha = _public_receipt("model/predictions/bell_results.json",
+                                     "oph.predictions.bell_records.v1")
+    scope = bell["scope"]
+    if (scope["whole_OPH_excluded"] is not False
+            or scope["quantum_C_or_E_selected"] is not False
+            or scope["new_native_empirical_confirmation"] is not False
+            or scope["lab_clock_calibrated"] is not False
+            or scope["diagonal_local_factorized_response_extension_excluded_under_stated_null"] is not True):
+        raise SystemExit("Bell replay cannot promote a physical or OPH-wide claim")
+    selection = bell["published_selection_analysis"]
+    null = bell["conditional_null_test"]
+    tail_upper = null["fixed_n_tail_interval"][1]
+
+    direct, direct_sha = _public_receipt("model/predictions/optical_clock_results.json",
+                                         "oph.optical_clock.direct_attachment.v1")
+    assessment = direct["assessment"]
+    if (assessment["OPH_or_every_native_clock_excluded"] is not False
+            or assessment["new_distinction_from_SM_GR_established"] is not False
+            or assessment["retrospective_conditional_attachment_test"] is not True
+            or not all(test["attachment_rejected_at_one_percent_under_stated_hypotheses"]
+                       for test in direct["conditional_tests"])):
+        raise SystemExit("direct optical audit cannot promote a physical or OPH-wide claim")
+
+    regional, regional_sha = _public_receipt("model/predictions/regional_optical_results.json",
+                                             "oph.optical_clock.regional_attachment.v1")
+    regional_assessment = regional["assessment"]
+    if (regional_assessment["atomic_clocks_or_OPH_excluded"] is not False
+            or regional_assessment["variance_alone_used_as_rejection"] is not False
+            or regional_assessment["retrospective_conditional_attachment_test"] is not True
+            or not all(test["all_distinct_regional_direct_attachments_rejected_at_one_percent"]
+                       for test in regional["conditional_tests"])):
+        raise SystemExit("regional optical audit cannot promote a physical or OPH-wide claim")
+
+    modular, modular_sha = _public_receipt("model/predictions/modular_optical_results.json",
+                                           "oph.modular_optical_assignment.v1")
+    interpretation = modular["interpretation"]
+    if (interpretation["OPH_or_all_modular_clocks_excluded"] is not False
+            or interpretation["frozen_prospective_prediction"] is not False
+            or interpretation["p_value_or_sigma_significance_claimed"] is not False
+            or not all(row["all_nine_assignments_incompatible"] for row in modular["comparisons"])):
+        raise SystemExit("modular optical audit cannot promote a physical or frozen claim")
+    separation = min(Fraction(row["minimum_absolute_ratio_separation"])
+                     for row in modular["comparisons"])
+
+    readout, readout_sha = _public_receipt(
+        "model/scalar_observations/experimental_readout/executable_results.json",
+        "oph.scalar_observations.executable_experimental_readout.v1")
+    if (readout["scope"]["prospective_prediction"] is not False
+            or readout["scope"]["oph_specific_prediction"] is not False):
+        raise SystemExit("oscillator readout cannot promote a prospective or OPH-specific claim")
+    primary_readout = [run for run in readout["runs"] if run["coordinate_extent"] == 4]
+    if len(primary_readout) != 1:
+        raise SystemExit("oscillator readout primary run missing")
+    readout_cmp = primary_readout[0]["comparison"]
+    if readout_cmp["statistical_significance_claimed"] is not False:
+        raise SystemExit("oscillator readout cannot claim significance")
+
+    driven, driven_sha = _public_receipt("model/anharmonic_observations/results.json",
+                                         "oph.anharmonic_observations.results.v1")
+    driven_primary = [run for run in driven["runs"] if run["name"] == "primary"]
+    if len(driven_primary) != 1:
+        raise SystemExit("driven anharmonic primary run missing")
+    driven_cmp = driven_primary[0]["comparison"]["combined"]
+
+    transfer, transfer_sha = _public_receipt("model/anharmonic_transfer/results.json",
+                                             "oph.anharmonic_transfer.results.v1")
+    if transfer["scores"]["primary"]["statistical_significance_claimed"] is not False:
+        raise SystemExit("anharmonic transfer cannot claim significance")
+    transfer_cmp = transfer["scores"]["primary"]["metrics"]["combined"]
+
+    return {
+        "projection_scope": ("mechanical receipt projection of retrospective public-record "
+                             "comparisons; independent replay belongs to each linked package"),
+        "bell_records": {
+            "artifact_ref": "model/predictions/bell_results.json",
+            "artifact_sha256": bell_sha,
+            "comparison": bell["comparison"],
+            "eligible_trials": selection["eligible_trials"],
+            "wins": selection["wins"],
+            "chsh_estimate_exact": selection["CHSH_estimate"],
+            "chsh_estimate_decimal": f"{float(Fraction(selection['CHSH_estimate'])):.5f}",
+            "published_setting_allowance_tau": null["published_setting_allowance_tau"],
+            "fixed_horizon_tail_upper_exact": tail_upper,
+            "fixed_horizon_tail_upper_decimal": f"{float(Fraction(tail_upper)):.5f}",
+            "scope": scope,
+        },
+        "optical_direct": {
+            "artifact_ref": "model/predictions/optical_clock_results.json",
+            "artifact_sha256": direct_sha,
+            "assessment": assessment,
+            "conservative_probability_upper_power_of_ten": {
+                test["file"]: test["conservative_probability_upper_power_of_ten"]
+                for test in direct["conditional_tests"]},
+        },
+        "optical_regional": {
+            "artifact_ref": "model/predictions/regional_optical_results.json",
+            "artifact_sha256": regional_sha,
+            "assessment": regional_assessment,
+            "distinct_event_sets": regional["family"]["distinct_event_sets"],
+            "conservative_probability_upper_power_of_ten": {
+                test["file"]: test["conservative_probability_upper_power_of_ten"]
+                for test in regional["conditional_tests"]},
+        },
+        "optical_modular": {
+            "artifact_ref": "model/predictions/modular_optical_results.json",
+            "artifact_sha256": modular_sha,
+            "interpretation": interpretation,
+            "minimum_absolute_ratio_separation_exact": str(separation),
+            "minimum_absolute_ratio_separation_floor_3": f"{math.floor(separation * 1000) / 1000:.3f}",
+        },
+        "oscillator_readouts": {
+            "executable_readout": {
+                "artifact_ref": "model/scalar_observations/experimental_readout/executable_results.json",
+                "artifact_sha256": readout_sha,
+                "coordinate_extent": 4,
+                "withheld_complex_points": readout_cmp["withheld_complex_points"],
+                "spin_mean_rmse": readout_cmp["spin_mean_rmse"],
+            },
+            "driven_anharmonic": {
+                "artifact_ref": "model/anharmonic_observations/results.json",
+                "artifact_sha256": driven_sha,
+                "scalar_means": driven_cmp["scalar_means"],
+                "binary_probability_rmse": driven_cmp["binary_probability_rmse"],
+            },
+            "anharmonic_transfer": {
+                "artifact_ref": "model/anharmonic_transfer/results.json",
+                "artifact_sha256": transfer_sha,
+                "observations": transfer_cmp["observations"],
+                "position_estimator_rmse": transfer_cmp["position_estimator_rmse"],
+            },
+        },
+    }
+
+
 def _load(key: str, override: Path | None = None) -> dict[str, Any]:
     path = override or PARENTS[key]
     if not path.exists():
@@ -6104,10 +6252,15 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"[{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][0]}, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][1]}] MeV, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['distance_sigma']} sigma from "
-                "measurement. The balance premise is Koide's published "
+                "the PDG charged-lepton reference "
+                f"{leptons['charged_leptons_koide_conditional_tau']['measured_tau_mev'][0]} +- "
+                f"{leptons['charged_leptons_koide_conditional_tau']['measured_tau_mev'][1]} MeV "
+                "used by the FZ-10 comparison. The balance premise is Koide's published "
                 "relation, which the face circulant of the carrier holds as a "
-                "finite structure, so this is a conditional postdiction with a "
-                "frozen rejection rule and a declared premise ancestry."
+                "finite structure, so this is a retrospective conditional postdiction with a "
+                "frozen rejection rule and a declared premise ancestry. The public-data audit "
+                "compares the same output separately with the Belle II 2023 measurement "
+                "alone."
             ),
         },
         {
@@ -6882,6 +7035,7 @@ def build(
         ),
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
+        "retrospective_public_record_comparisons": _retrospective_public_record_references(),
         "sections": sections,
     }
     if write:
@@ -6941,11 +7095,58 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "under a shared-scale and bounded-error hypothesis. Its retained conditional rejection "
         "is retrospective; it supplies neither an atomic derivation nor a frozen prediction.")
     add("")
+    public = ledger["retrospective_public_record_comparisons"]
+    bell = public["bell_records"]
+    add("The [public Bell-record replay](../model/predictions/BELL_RECORDS.md) applies the "
+        "published event-ready selection to the deposited Hensen et al. (2015) records: "
+        f"`{bell['eligible_trials']}` eligible trials, `{bell['wins']}` CHSH-game wins and "
+        f"S = `{bell['chsh_estimate_decimal']}`. With the published setting-calibration "
+        f"allowance the fixed-horizon tail bound is `{bell['fixed_horizon_tail_upper_decimal']}`. "
+        "Under that declared experimental and null contract the replay rejects only the "
+        "local classical reading, with local factorized responses, of the diagonal native "
+        "branch. It rejects neither the full quantum construction nor either C/E law and is "
+        "no prospective OPH test.")
+    add("")
+    direct = public["optical_direct"]["conservative_probability_upper_power_of_ten"]
+    regional = public["optical_regional"]
+    regional_bounds = regional["conservative_probability_upper_power_of_ten"]
+    add("The [direct optical-clock attachment test](../model/predictions/optical_clock.py) "
+        "and its [regional extension](../model/predictions/regional_optical.py) compare "
+        "native incident-count clocks with the corrected King et al. Ar13+/Yb+ 300-second "
+        "ratio blocks under constant-gain, bounded-error, uniform-scheduler and "
+        "direct-readback hypotheses. Their conservative conditional bounds are below "
+        f"`1e{direct['36ar_yb_ratio.txt']}` (36Ar) and `1e{direct['40ar_yb_ratio.txt']}` "
+        f"(40Ar) for two ports, and below `1e{regional_bounds['36ar_yb_ratio.txt']}` and "
+        f"`1e{regional_bounds['40ar_yb_ratio.txt']}` for every ordered pair of the "
+        f"`{regional['distinct_event_sets']}` distinct regional event sets. These "
+        "retrospective tests reject the stated attachments together with their readout "
+        "assumptions. They reject no native clock definition, derive no atomic transition "
+        "and establish no distinction from SM plus GR. In the modular assignment audit "
+        "every assignment misses both published ratios by more than "
+        f"`{public['optical_modular']['minimum_absolute_ratio_separation_floor_3']}`.")
+    add("")
+    osc = public["oscillator_readouts"]
+    add("The [published trapped-ion oscillator comparisons](../model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md) "
+        "execute a supplied oscillator and apparatus model through the source interface "
+        "against the McGarry et al. deposit. The executable readout has per-spin-mean RMSE "
+        f"`{osc['executable_readout']['spin_mean_rmse']:.5f}` on "
+        f"`{osc['executable_readout']['withheld_complex_points']}` withheld complex points; the "
+        "[driven anharmonic comparison](../model/anharmonic_observations/README.md) has "
+        f"binary-probability RMSE `{osc['driven_anharmonic']['binary_probability_rmse']:.5f}` "
+        f"over `{osc['driven_anharmonic']['scalar_means']}` positive-duration means; and the "
+        "[changed-potential transfer](../model/anharmonic_transfer/README.md) has RMSE "
+        f"`{osc['anharmonic_transfer']['position_estimator_rmse']:.5f}` in dimensionless "
+        "two-point position-estimator units over "
+        f"`{osc['anharmonic_transfer']['observations']}` observations. These units differ and "
+        "the errors are not compared with one another. All three are retrospective "
+        "postdictions of a supplied quantum-mechanical model; their agreement does not "
+        "distinguish OPH from ordinary quantum mechanics.")
+    add("")
     tilt = ledger["retrospective_tilt_comparison"]
     pooled = tilt["pooled"]
     add("The [ACT joint-posterior reanalysis](../code/cosmology/tilt_posterior/README.md) "
         "uses the released P-ACT-LB CAMB chains (Planck plus ACT DR6, CMB lensing "
-        "and DESI 2024 BAO) under baseline Lambda-CDM, after the official per-chain "
+        "and DESI 2024 (DR1) BAO) under baseline Lambda-CDM, after the official per-chain "
         "50% stored-row burn-in. These observations precede the FZ-01 and FZ-15 "
         "freezes. This is a retrospective conditional-branch comparison, not an "
         "eligible prospective adjudication or an independent dataset added to the "
@@ -7144,7 +7345,8 @@ def _render_md(ledger: dict[str, Any]) -> str:
                 "balanced-circulant and mass-ordering premises the measured "
                 "electron and muon masses fix the tau mass inside "
                 f"`[{lo}, {hi}]` MeV, `{row['distance_sigma']}` sigma from "
-                f"the measured `{measured} +- {sigma}` MeV; the premise "
+                f"the PDG charged-lepton reference `{measured} +- {sigma}` MeV; this is a "
+                "retrospective conditional postdiction, the premise "
                 "ancestry is declared and improving tau-mass averages test "
                 "the premise directly.")
             continue

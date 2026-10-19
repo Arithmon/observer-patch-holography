@@ -501,7 +501,7 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                     item=items[item_id],
                     corpus_ids=[branch, "edge_center_tilt_theorem", "edge_center_paper_display"],
                     discriminates=True,
-                    prospective="Simons Observatory; CMB-S4",
+                    prospective="Simons Observatory",
                     note=edge_note,
                 )
             )
@@ -529,7 +529,7 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                 item=items[item_id],
                 corpus_ids=["P_C", "golden_ratio", "euler_number", "clock_branch_diagnostic_alternative", "clock_branch_paper_display"],
                 discriminates=True,
-                prospective="Simons Observatory; CMB-S4",
+                prospective="Simons Observatory",
                 note=clock_note,
             )
         )
@@ -558,7 +558,7 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                 item=items[item_id],
                 corpus_ids=["zero_running_dilation_cocycle", "homogeneous_radial_source_family_theorem"],
                 discriminates=True,
-                prospective="Simons Observatory; CMB-S4",
+                prospective="Simons Observatory",
                 note=running_note,
             )
         )
@@ -592,7 +592,7 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                 item=items[item_id],
                 corpus_ids=["zero_tensor_scalar_screen_field"],
                 discriminates=False,
-                prospective="LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
+                prospective="LiteBIRD (tests specified tensor alternatives above the achieved bound)",
                 note=tensor_note,
             )
         )
@@ -622,7 +622,7 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                 item=items[item_id],
                 corpus_ids=["zero_isocurvature_rank_one_single_clock"],
                 discriminates=False,
-                prospective="LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)",
+                prospective="LiteBIRD (bound tightening only; zero is the shared baseline)",
                 note=iso_note,
             )
         )
@@ -1332,6 +1332,12 @@ def render_markdown(receipt: dict[str, Any], receipt_sha256: str) -> str:
         "derivation using native observer records. The scalar tilt is a free "
         "primordial input of the baseline model; fixing it is a conditional "
         "parameter restriction, not a demonstrated change of the baseline dynamics.",
+        "",
+        "DOE and NSF ended their support for the CMB-S4 project on 9 July 2025 "
+        "([CMB-S4](https://cmb-s4.org/)), so the prospective-data column names no "
+        "CMB-S4 product. FZ-01's frozen scorer order, which names a CMB-S4 baseline "
+        "as its terminal pass, is unchanged; that pass has no decision data unless "
+        "such a product is released.",
         "",
     ]
     header = (

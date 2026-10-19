@@ -14,27 +14,27 @@ Thomas Young gave the number its modern name in 1807: the term energy, he wrote,
 
 ## The rate a region is worked through
 
-Chapter nine studied scalar midpoint repair on a supplied graph. Its norm decreases under the exact averaging move, but that descent score is not automatically a region's physical energy. Other OPH constructions use different state spaces and admissible updates; their physical interpretation must be supplied separately.
+Chapter nine left this world with one move. Two neighbors share a seam, each holds a reading of it, the readings disagree, and both readings go to their midpoint. Nothing else happens anywhere. Repair drives the outstanding disagreement down toward zero, which is what the seams read when every pair of neighbors agrees.
 
-The scalar machine supplies an update and a descent score. Identifying either with physical energy requires a dynamical realization, a clock convention and an independently justified calibration. The count of available moves does not make that identification unique.
+The machine holds one move, one kind of seam and two readings at each seam. The descent of the outstanding disagreement is the only quantitative thing any of it does, so energy is made out of that descent, there being nothing else to make it out of.
 
 Take a screwdriver to a screw. One eighth of a turn, repeated, drives the screw into the wood. The whole trip of the screw is that one small move done again and again.
 
 A smooth continuous change is a flow. The small move whose repetition produces the flow is its **generator**, and the pairing runs both ways: a flow determines its generator, and a generator run out determines the flow. The trip of the screw is a long list of positions. The one turn is a single instruction. The list follows from it.
 
-Every region in this world advances along a clock of its own. Something generates that advance. That something is the region's energy. The identification is declared rather than derived: it rides on an imported clock-and-energy calibration anchor, and closing the identification against the axioms is an open item in the program's registers.
+Every region in this world advances along a clock of its own. Something generates that advance. That something is the region's energy. The energy of a region is the rate at which its records are worked through by repair, counted against that region's own clock.
 
 The word behaves identically wherever physics uses it. What generates turning about an axis is the angular momentum about that axis, and what generates sliding sideways is the momentum in that direction. Advance along a clock has the energy for its generator, and quantum mechanics has run on exactly that definition since the 1920s without ever saying what does the advancing.
 
-The target is compatible observer-local clocks without a preferred universal physical tick. The simulation in chapter ten nevertheless uses schedules and cycle counts to execute and report work. Those auxiliary counters do not become physical time by appearing in the code. A modular parameter extracted from an algebra-state pair likewise needs an operational clock correspondence before rates can be compared in seconds.
+A clock of a region's own is the only kind this world has. Chapter ten's network ran with no tick anywhere in the machinery, nothing waiting for the next round and nothing counting rounds; the cycles in its trace belong to whoever reads the trace. What a region has instead is a clock its own state manufactures, out of nothing but what it holds, and the events at its own ports to count against it. Two regions worked through at different rates differ in a fact about themselves, since no clock outside them has a setting they could differ in.
 
-Agreement of the declared records alone determines neither an energy nor a physical clock rate. A stationary quantum state can have nonzero energy and nontrivial modular flow; a reduced repair map can have zero residual while other variables change. The calibration above is therefore part of the claimed physical reading, not a consequence of the word agreement.
+A region whose records agree everywhere generates no flow and reports nothing above the floor. A region holding standing disagreement drives its clock hard. The driving rate is the number a calorimeter or a particle detector hands you.
 
-A physical Hamiltonian specifies evolution in calibrated time. A faithful finite density matrix supplies a modular Hamiltonian, its negative operator logarithm. In a Gibbs interpretation the two are proportional up to an additive constant, but the temperature and time normalization are additional inputs. Equal density matrices alone do not fix an absolute energy in joules.
+In ordinary quantum mechanics the energy of a system is the operator somebody writes down for it. You pick an operator called a Hamiltonian to match the system in front of you and fit its constants to measurements. The fitting is done by a person with a pencil. Here the operator is manufactured by the state the region holds: for a region in equilibrium, chapter twenty-one finds minus the logarithm of the state equal to the energy in units of the region's own temperature, plus a constant that moves nothing. The region holds its state whether or not anybody has written anything about it, the pencil never enters, and a thermometer supplies the units.
 
 ## Positive, and additive
 
-The disagreement outstanding across a region's seams is a sum of squares, which puts a floor under it at zero, and zero is total agreement. Every process available in this world is a descent toward that floor. No region can spend past it. So the rate is never negative. There is no arrangement of records that goes on falling forever.
+The disagreement outstanding in a region is a sum of squares, the spread of its readings about their average, which puts a floor under it at zero, and zero is total agreement. No repair ever raises it: an even split lowers it by half the squared gap, an odd one by a little less, and a gap of a single unit leaves it level. No region can spend past it, and written as an operator, what repair takes away from a region's quantum state is positive as well: repair only ever runs downhill. So the rate is never negative. There is no arrangement of records that goes on falling forever.
 
 Arthur Wightman wrote that into the axioms of quantum field theory in the 1950s and called it the spectrum condition. It has to be assumed there, because without it every system has somewhere lower to drop into and hydrogen radiates without limit. Here it is the floor of a sum of squares.
 
@@ -62,7 +62,7 @@ What he chased was a shape. The water in the heap changed the entire way: each s
 
 The seam network holds patterns of that kind. A bounded set of records reproduces itself after every round of repair, because flattening it would open larger disagreements at the boundary of the set than it closes inside. Repair works on such a pattern at every event and gets nowhere with it, so holding the pattern costs repair work at every event, and what the work buys is the pattern being there for the next one.
 
-Mass is identified with that standing cost: the rate a pattern demands while its records go nowhere. The identification carries the same declared status as the energy identification above. Nothing about a stone on a table is idle. The arrangement that makes it a stone is being re-asserted at every event, at a rate the stone's own clock sets. That rate is what a balance reads off when you put the stone on one.
+Mass is that standing cost: the rate a pattern demands while its records go nowhere. Nothing about a stone on a table is idle. The arrangement that makes it a stone is being re-asserted at every event, at a rate the stone's own clock sets. That rate is what a balance reads off when you put the stone on one.
 
 A pattern of that kind turns its material over, exactly as the heap in the canal did, and the charge falls on the arrangement rather than on whichever records are holding the arrangement at a given event. So the cost is steady while the material under it is not, which is why the proton's mass comes out at 1.0072764665789 atomic mass units, with the uncertainty sitting in the last two of those digits, in every laboratory that has weighed one.
 
@@ -78,11 +78,9 @@ Move the terms to the other side of the equals sign and the statement about the 
 
 $$E^2 = m^2 + p^2$$
 
-Here E, m and p are the energy, invariant mass and momentum of the supplied relativistic model, in units with c=1. The matrix identity has that physical reading only after those quantities and their units are identified. Counting seams and repair events alone does not calibrate a speed or an energy.
+Here E, m and p are the energy, the mass and the momentum, in units where the speed of light is one.
 
-On the positive-energy branch with nonnegative invariant mass, setting momentum to zero gives E=m in units with c=1. Conversely E=m implies p squared is zero. The algebraic mass-shell identity alone also permits a negative-energy branch, which this physical reading has excluded explicitly.
-
-Chapter nine gave an update-locality bound. Relating it to the physical speed in the relativistic energy-momentum relation requires chapter seventeen's geometric and clock identification. Restoring the calibrated c then gives E=mc^2 in the zero-momentum case.
+Energy is positive, so the relation has one branch that matters. Set the momentum to zero and E equals m. Chapter seventeen turned one reach per round into the speed of light; put that speed back in, and a region at rest has E equal to m times c squared.
 
 The corner is worth something because the conversion is squared. A helium-4 nucleus falls short of the two protons and two neutrons that make it by 0.0304 atomic mass units, and the energy released when those four combine, measured in the laboratory, is 28.3 million electronvolts, which is that shortfall multiplied by the square of the speed of light.
 

@@ -67,7 +67,11 @@ declared imports. It does not certify the initial spectrum
 (amplitude or tilt), the recombination history, the absolute Thomson
 normalization, or any likelihood statement. Those require a finite primordial
 source, a physical radial lift, active-kernel and clock receipts, and an
-immutable likelihood contract. No statement in this note reads Planck data.
+immutable likelihood contract. The executable observer construction runs
+native repair, records and local event clocks on one carrier; it supplies no
+photon sector, physical clock calibration or transport continuum, so it
+discharges none of these premises~\cite{ophmodel,ophspine}. No statement in
+this note reads Planck data.
 
 \section{Branch inputs}
 
@@ -75,7 +79,13 @@ immutable likelihood contract. No statement in this note reads Planck data.
 The observer-facing normal form carries a Lorentzian metric $g_{ab}$
 satisfying $G_{ab}+\Lambda g_{ab}=8\pi G_{\rm geom}\langle T_{ab}\rangle$,
 with $G_{\rm geom}=\ell_\star^2$ from the edge-entropy/area-law theorem and
-$\Lambda\ell_\star^2=3\pi/N_\star$ from capacity closure. $N_\star$ is the
+$\Lambda\ell_\star^2=3\pi/N_\star$ from capacity closure. Relative to the
+executable observer construction this area-law normalization is a premise:
+on the native source, regional reduced entropy grows with port count and
+mutual information per crossing seam tends to zero, and a reading of the
+whole screen's count as the area of a three-dimensional region's boundary
+requires a region map that the construction does not
+supply~\cite{ophentropy}. $N_\star$ is the
 capacity-identity estimate read from measured $\Lambda$ through a declared
 capacity-to-scale bridge; $\Lambda$ is an input to this assumption, not an
 OPH output. A physical interpretation of $N_\star$ beyond that estimate
@@ -85,7 +95,11 @@ algebraic Lorentzian extension. A nonzero closed convex pointed displacement
 cone is future or past Lorentzian when the proper icosahedral rotations and
 all rapidities of one boost axis preserve it; a time orientation fixes the
 future cone. This requires operational covariance of histories, interventions
-and clock readouts, beyond the algebraic frame action. It does not supply
+and clock readouts, beyond the algebraic frame action. The executable carrier
+supplies one such influence bound: for a fixed seam schedule and shared
+local coins, dependence crosses at most one seam per ordered repair event,
+which gives no laboratory speed or continuum light cone~\cite{ophcausality}.
+It does not supply
 the smooth metric assumed here. This branch requires physically identified
 events with exact order reflection or controlled vanishing causal error,
 count-to-volume convergence, a common clock and physical stress, together
@@ -94,8 +108,7 @@ same-family tensor-curvature convergence or the continuum
 small-ball/null-balance identification; scalar curvature alone is diagnostic.
 \end{assumption}
 
-The \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}{spacetime construction}
-realizes a flat causal-order and count-volume limit using conservative
+The spacetime construction~\cite{ophEinstein} realizes a flat causal-order and count-volume limit using conservative
 Fibonacci records, complete local neighbour reads and a declared layer
 duration. Complete authenticated ancestry and interval anchors also give
 the retrospective clock $(|I|/|J|)^{1/4}$. For interior timelike diamonds
@@ -151,7 +164,10 @@ orientation-half identity, and a physical clock receipt. The radial theorem
 proves that one-shell inversion is nonunique and supplies physical
 source-dilation and cross-covariance tomography as conditional uniqueness
 routes. Finite source instantiation is not supplied here. This note consumes
-\(A_s\) and \(n_s\) as gated inputs and derives no initial spectrum.
+\(A_s\) and \(n_s\) as gated inputs and derives no initial spectrum. The
+registered branch \(n_s=1-P/48\) fixes \(P\) at its inherited
+\(\alpha\)-calibrated value, and the executable observer construction does
+not derive that branch from its joint records~\cite{ophpublicdata}.
 \end{assumption}
 
 \section{Conditional Refinement Liouville Transport}
@@ -566,14 +582,27 @@ the limiting jump sizes and generator distinguish diffusion from jump transport.
 
 \paragraph{Native repair diffusion and the photon interface.}
 For the specified fair conservative port repair, mean load evolves as
-\(e^{-tL/2}\), and stationary density has covariance
+\(e^{-tL/2}\), with \(t\) the native attempt count divided by the seam
+count, and stationary density has covariance
 \(\kappa e^{-|t-s|L/2}\Pi\). Its integrated readback has a
 fixed-graph Gaussian limit with inverse-Laplacian covariance; the literal
 finite-time average has the different normalization
 \(\kappa h(\lambda T/2)\). The exact derivation, local attempted-event
 record correction and finite-state controls are given in the
-screen-microphysics companion and preserved in
-\path{evidence/observer_dynamics_20260925/sim-analysis/codex/}.
+screen-microphysics companion~\cite{ophmicro} and preserved in the
+observer-dynamics evidence archive~\cite{ophobsdyn}.
+Along one common subsequence of refining source screens, actual native
+density snapshots have joint Gaussian limits with covariance
+\(\exp(-|\tau-u|A)\), where \(\tau\) is the native attempt count divided
+by \(1260\cdot16^{l}\) and \(A\) is a positive self-adjoint operator of
+heat-trace spectral dimension two on the
+screen~\cite{ophtimefields,ophcontinuum}. Coherent waves
+\(\cos(t\sqrt A)\) require a declared wave processor whose parameter differs
+from passive waiting, and they propagate at most at speed \(1/\sqrt2\) in the
+flat comparison distance per coherent wave parameter~\cite{ophmodel}. This two-dimensional screen
+operator supplies no \(3+1\) null-geodesic flow or photon sector, and its
+density limit is a stationary Gaussian process, not a deterministic
+Liouville flow.
 These statements instantiate a diffusion/record mechanism. They do not
 verify the vanishing conditional second moment required for a deterministic
 photon Liouville limit, nor do they provide polarization, Thomson
@@ -589,7 +618,7 @@ chain; a nonlazy two-state flip is a counterexample. These restrictions
 apply to the stated generator and readout, not to extended dynamics with
 momentum, active forcing, nonstationary preparation or different records.
 The passive source matching and acoustic initial data used by a conditional
-CMB transport calculation remain additional physical inputs.
+CMB transport calculation are additional physical inputs.
 
 \section{Scope of the Conditional Reduction}
 The cited branch theorems supply the \emph{scalar angular form} of the
@@ -605,25 +634,100 @@ likelihood, and it reads no Planck data. Under the anti-fitting rule, the
 acoustic peak structure is attributable to standard plasma physics. OPH's
 falsifiable exposure is concentrated in the primordial inputs.
 
-\section*{References}
-\begin{itemize}[leftmargin=1.2em]
-\item C.-P. Ma and E. Bertschinger, \emph{Cosmological Perturbation Theory
+\begin{thebibliography}{99}
+
+\bibitem{mabertschinger}
+C.-P. Ma and E. Bertschinger, \emph{Cosmological Perturbation Theory
 in the Synchronous and Conformal Newtonian Gauges}, ApJ 455, 7 (1995).
-\item S. Dodelson and F. Schmidt, \emph{Modern Cosmology}, 2nd ed., Academic
+
+\bibitem{dodelson}
+S. Dodelson and F. Schmidt, \emph{Modern Cosmology}, 2nd ed., Academic
 Press (2020).
-\item U. Seljak and M. Zaldarriaga, \emph{A Line-of-Sight Integration
+
+\bibitem{seljakzaldarriaga}
+U. Seljak and M. Zaldarriaga, \emph{A Line-of-Sight Integration
 Approach to Cosmic Microwave Background Anisotropies}, ApJ 469, 437 (1996).
-\item P.-L. Lions and T. Paul, \emph{Sur les mesures de Wigner}, Rev. Mat.
+
+\bibitem{lionspaul}
+P.-L. Lions and T. Paul, \emph{Sur les mesures de Wigner}, Rev. Mat.
 Iberoam. 9, 553 (1993).
-\item S. Bashinsky and U. Seljak, \emph{Signatures of Relativistic Neutrinos
+
+\bibitem{bashinskyseljak}
+S. Bashinsky and U. Seljak, \emph{Signatures of Relativistic Neutrinos
 in CMB Anisotropy and Matter Clustering}, Phys. Rev. D 69, 083002 (2004).
-\item W. Hu and M. White, \emph{CMB Anisotropies: Total Angular Momentum
+
+\bibitem{huwhite}
+W. Hu and M. White, \emph{CMB Anisotropies: Total Angular Momentum
 Method}, Phys. Rev. D 56, 596 (1997).
-\item Related OPH papers: \emph{Observers Are All You Need}; \emph{Reality as a
-Consensus Protocol}; \emph{Recovering Observer Spacetime and Einstein Dynamics
-from Overlap Consistency}; \emph{Finite-Source Cosmology from
-Observer-Patch Holography}.
-\end{itemize}
+
+\bibitem{ophobservers}
+B.~M\"uller et al., \emph{Observers Are All You Need}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/observers_are_all_you_need.pdf}.
+
+\bibitem{ophconsensus}
+B.~M\"uller et al., \emph{Reality as a Consensus Protocol}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/reality_as_consensus_protocol.pdf}.
+
+\bibitem{ophEinstein}
+B.~M\"uller et al., \emph{Recovering Observer Spacetime and Einstein
+Dynamics from Overlap Consistency}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+
+\bibitem{ophmicro}
+B.~M\"uller et al., \emph{Federated Echosahedral Screen Microphysics: Patch
+Hardware, Records, and Observer Synchronization in Observer-Patch Holography}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.pdf}.
+
+\bibitem{ophcmb}
+B.~M\"uller, \emph{Finite-Source Cosmology from Observer-Patch Holography:
+Source, Transfer, and Likelihood Boundaries}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/cosmology/oph_cosmology_finite_source_cmb_program.pdf}.
+
+\bibitem{ophflagship}
+B.~M\"uller et al., \emph{Observers Who Read Their Universe into Existence:
+Finite Consensus, an Executable Observer, and Standard Physics}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/flagship/from_observer_consensus_to_standard_physics.pdf}.
+
+\bibitem{ophspine}
+B.~Mueller, M.~Poneder and J.~Kim (2026). \emph{An Executable Observer for
+Observer Patch Holography: Specification, Certified Components and
+Acceptance Criteria}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/executable_observer_construction.pdf}.
+
+\bibitem{ophmodel}
+FloatingPragma (2026). The runnable OPH model: observer implementation,
+tests, receipts and construction guide.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophentropy}
+FloatingPragma (2026). Tangent first laws and finite entropy changes:
+native reference entropy and region boundaries.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophpublicdata}
+FloatingPragma (2026). OPH predictions and public-data comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
+
+\bibitem{ophobsdyn}
+FloatingPragma (2026). Observer-dynamics analysis archive: derivation
+receipts and finite-state controls.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/observer_dynamics_20260925/sim-analysis/codex}.
+
+\end{thebibliography}
 
 \section*{AI Assistance Disclosure}
 This research project used research-grade commercial models, including

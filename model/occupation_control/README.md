@@ -10,7 +10,9 @@ For case `a` of the supplied [anharmonic apparatus](../anharmonic_transfer/READM
 the retained 64-level run has complete half-trace error below `1.32e-8` at
 0.4 ms and `0.002041` at 2 ms. At 10 ms it is about `0.19946`, too loose to
 justify a precision claim. The 32-level bound exceeds one at 10 ms and does
-not certify that the selected reference branch even has positive mass. Differences between two cutoffs alone do not establish these guarantees.
+not certify that the selected reference branch even has positive mass. The
+32-level conditional estimator certificate is unavailable at both 5 ms and
+10 ms. Differences between two cutoffs alone do not establish these guarantees.
 
 | Published coordinate | 32-level half-trace radius | 64-level half-trace radius |
 |---|---:|---:|

@@ -216,7 +216,8 @@ coherence multipliers, one positive matrix per transported current. Four
 members stand out: C0 records only the current, C adds the coin, E adds the
 seam parity and T adds the seam total. Exactly E and T are idempotent, and
 every law that keeps an empty seam coherent with a full seam completes to E
-under repetition. All members share every classical observation. One
+under repetition. Under the same current-record interface all members share
+every classical observation. One
 coherent interference experiment reads the multiplier `g` directly, with
 predictions `3/8 ± Re(g)/2` at phases `0` and `π`. The model executes C because
 its records are exactly the classical event data. The
@@ -228,8 +229,9 @@ instruments.
 that keeps records and uses them. The [native observer](observer/README.md)
 commits the coin and current of one repair, forecasts the next current from
 that record and chooses its next seam from the current alone. Its controller
-sees no hidden load. Because every admissible record law records the current,
-the same controller runs under each of them. Larger observers compose such
+sees no hidden load. Under the same current-record interface every admissible
+record law records the current, so the same controller runs under each of
+them. Larger observers compose such
 tapes, federations join elementary carriers, and detectors attach to the
 record through declared couplings.
 
@@ -374,7 +376,7 @@ Neither reduction identifies native attempts or event counts with modular
 flow. A separate [active event clock](transfer_modular_probe/README.md)
 triggers one compiled modular step per incident event, using the generator
 of the native three-state transfer. Its controller pauses the native carrier
-during coherent probe service. Closed native histories select a faithful
+during coherent probe service. Closed native histories derive a faithful
 reference for that generator; passive repair itself has a strict modular
 automorphism obstruction. The [recovery contract](OBSERVER_RELATIVE_RECOVERY.md)
 states these access and scheduling conditions.
@@ -426,9 +428,10 @@ comparisons, floating execution diagnostics and physical device errors are
 separate. The [finite-law discriminator](predictions/README.md) and its
 [encoded realization](observer/source_discrimination/README.md) supply
 additional complete protocols under their own preparation and service
-contracts. Mean loads and native classical histories assign the same
-probabilities under every admissible record law; the discriminator reads the
-coherence `g` that separates them. No public laboratory dataset is
+contracts. Under the same current-record interface, mean loads and native
+classical histories assign the same probabilities under every admissible
+record law; the discriminator reads the coherence `g`, which separates C
+from E. No public laboratory dataset is
 identified with these native-law experiments.
 
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
@@ -546,10 +549,12 @@ planar control and alternative actions invisible to a restricted apparatus.
 
 The [published readout comparison](scalar_observations/experimental_readout/README.md)
 calibrates a Gaussian response relation on zero-duration trapped-ion data;
-100 off-axis means test that relation with spin-mean RMSE 0.07639. The
+100 withheld off-axis complex points, or 200 reported real and imaginary spin
+means, test that axis-factorization relation with spin-mean RMSE 0.07639. The
 [executable detector](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
 contracts source preparation, rotation and detector words under the declared
-laboratory model. Published coordinate conflicts, postselection and
+laboratory model; on the same 200 means its primary spin-mean RMSE is
+0.06647. Published coordinate conflicts, postselection and
 normalization limitations remain explicit. This component postdiction
 establishes neither the seven-mode dynamics nor a physical clock.
 
@@ -558,7 +563,7 @@ the continuous polynomial-path defect, occupation boundary, endpoint jumps,
 thermal initialization, displacement and pointer for the supplied pulse
 apparatus. It includes arithmetic under its stated IEEE-754 contract, not
 the separate native compiler or laboratory error. At 64 levels the case-a
-estimator radius is about 9.91e-8 at 0.4 ms, 0.0163 at 2 ms, 0.211 at 5 ms
+estimator radius is below 9.91e-8 at 0.4 ms, 0.0163 at 2 ms, 0.211 at 5 ms
 and 1.68 at 10 ms; the 32-level conditional bound is unavailable at the last
 two durations. Agreement between cutoffs is not an error certificate.
 The independently controlled unrestricted-versus-exact-finite radius can
@@ -1022,7 +1027,7 @@ around carrier architecture, observer interface and implementation, and the
 complete repair rule. For the repair rule the selection problem is sharp:
 the classical seam rule is forced by four stated requirements, the record law
 ranges over an exactly classified convex family, and one interference
-experiment reads the coherence that separates its members. The
+experiment reads one of its coherence multipliers directly. The
 [repair-law guide](CANDIDATES.md) states the principle that singles out each
 distinguished member. Architecture, observer implementation and repair law
 may supply the instance inputs. Action, state, scheduling and control consequences require

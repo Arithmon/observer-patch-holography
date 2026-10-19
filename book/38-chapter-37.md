@@ -36,9 +36,7 @@ The symmetries of the earlier chapters arrive free of charge. The laws not carin
 
 So there are two ways for a reading to be invariant, two different physical situations wearing one word. In the first, the invariance is a property of the world's laws. The observer has nothing to do with it. In the second, the invariance is manufactured by a bounded observer out of its own capacity, continuously, for as long as it can afford the outlay. What the vital principle was tracking is the outlay, which in Bernard's rabbits was paid in liver.
 
-The outlay has to continue when the surrounding conditions keep changing. Neighbors update shared boundaries, and a maintained pattern must respond under its declared dynamics. Such updates need not erase information from the complete state; chapter sixteen's loss concerns a reduced map. Interpreting this maintenance as physical expenditure requires the relevant energy and clock model.
-
-Chapters eighteen and twenty-one describe candidate energy and clock identifications under explicit physical calibration. An animal's food use and heat production can be measured, but identifying those quantities with this model's maintenance score requires a common dynamics and units. The biological example motivates that connection rather than proving it.
+The outlay has to continue while the surrounding conditions keep changing. Neighbors update shared boundaries, and a maintained pattern has to answer every update, at a rate set by its own clock. Chapters eighteen and twenty-one priced that kind of work: a standing cost is a rate, and a rate is energy. Bernard's rabbits paid it in liver, and a calorimeter around the cage reads it as heat.
 
 ## What a living thing is
 
@@ -46,7 +44,7 @@ Chapter eleven divided a network's state into what any neighbor can check and wh
 
 A bounded observer persists when the reading on its seams keeps having a consistent extension. At every point along its own record time there is a world that carries what it publishes. It is spending to keep that true.
 
-Bounded homeostatic persistence is the operational criterion proposed here for a living pattern. It captures maintenance under disturbance and a finite budget; by itself it does not settle the biological classification of every thermostat, organism or dormant state. The rabbit motivates the criterion, while its predictive use requires actual survival and recovery tests.
+Bounded homeostatic persistence is the criterion for a living pattern: maintenance under disturbance, paid for out of a finite budget.
 
 Chapter five's invariants survived something done to a system from outside: a rotation, a shift, a relabeling. This one survives the system's own running. A rabbit is whatever a rabbit's metabolism leaves alone while it takes everything else apart.
 

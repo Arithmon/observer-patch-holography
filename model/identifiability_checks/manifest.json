@@ -1,7 +1,7 @@
 {
   "description": "Exact observational-equivalence and channel-mapping controls, local apparatus-history repair, finite algebra checks and supplied-Hamiltonian empirical comparisons.",
   "files": {
-    "README.md": "9400f19146aa13117b36ddafdac24d25a9d729459e0c6ee149b98dfa4fa6ed64",
+    "README.md": "73e75aaed608bd6d7404e7d093fe14ca5b832bb03f9f95dd5d8a77ade2294f24",
     "architecture_counterexamples.py": "ec050d4977115a2f87714ced64735b5312be7c9a4d8ab10d200b483548fdfe72",
     "architecture_results.json": "f9233c80b26cc8bb3a8215ea0ca7f9000a5305a07eb1d59b8741e923ae4c5a72",
     "consensus_observability.py": "64e479423f9c0b285a8f5fcec2831b9b9c7bda9683862ae44b18eac19b9ce5c0",

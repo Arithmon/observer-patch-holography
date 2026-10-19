@@ -36,8 +36,6 @@
 \newcommand{\LCDM}{\Lambda\mathrm{CDM}}
 \newcommand{\Zsix}{\mathbb Z_6}
 \newcommand{\pathref}[1]{\nolinkurl{#1}}
-\newcommand{\SimSourceRepo}{\url{https://github.com/muellerberndt/oph-physics-sim}}
-\newcommand{\SimEvidenceRepo}{\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence}}
 
 \title{Inflation Without an Inflaton:\\
 Observer-Screen Synchronization in Observer-Patch Holography Cosmology}
@@ -58,10 +56,12 @@ inflaton in Observer-Patch Holography (OPH). The conditional source theorem
 fixes a screen amplitude from a primitive collar release law and a spectral
 tilt from an edge-center generator. Physical source dilation and radial
 cross-covariance tomography give two sufficient routes to a unique
-three-dimensional spectrum. Vanishing spatial curvature holonomy identifies
-a flat FLRW branch. On the sourced causal order the expansion history is a
-layer-dependent record density: the comoving read law generates the same
-finite order for every scale-factor profile. The redshift between two
+three-dimensional spectrum.
+Vanishing spatial curvature holonomy identifies a flat FLRW branch.
+For a supplied layered event population whose comoving read law generates
+the same finite order for every scale-factor profile, the expansion history
+is a record density per comoving cell and conformal tick; native repair
+selects neither the population nor its profile. The redshift between two
 epochs is the fourth root of a record-count ratio for congruent comoving
 windows with constant scale factor within each, or in the shrinking-window
 limit of a continuous profile. These results specify how
@@ -83,6 +83,26 @@ and finite-source cosmic microwave background (CMB) papers.
 
 \input{../paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex}
 
+\paragraph{Native source and the screen premises.}
+The conformal precision of
+Definition~\ref{def:oph-screen-conformal-precision} takes the round
+continuum limit \(-\Delta_{S^2}\) as a premise. The native repair law
+supplies a continuum generator \(A\) on the screen whose energy lies between
+fixed multiples of the gradient energy of the flat comparison polyhedron;
+its identification with \(-\Delta_{S^2}\) is not
+established~\cite{ophcontinuum}. The executable source also supplies no
+source-only vacuum law in the sense of
+Proposition~\ref{prop:oph-screen-amplitude-nogo}: its full configuration
+reference approaches the normalized trace, and its continuous wave readout
+has the classical displacement covariance \(A^{-1}\), not the vacuum
+covariance \((2\sqrt A)^{-1}\)~\cite{ophtimefields}. Under any bounded
+form-congruent identification of the shell precision \(K_\theta\) with the
+native long-average field, the min-max argument of the boundary-trace
+test~\cite{ophcontinuum} matches the eigenvalue growth \(n^{1+\theta/2}\)
+of \(K_\theta\) against the linear growth of \(\lambda_n(A)\) and forces
+\(\theta=0\), so the native field's spatial covariance cannot carry the
+edge-center tilt, which requires a separate ingredient.
+
 \section{Branch Thesis}
 
 The branch claim is:
@@ -94,14 +114,26 @@ The branch claim is:
 \text{a geometric screen spectrum, MaxEnt release, and ordinary Boltzmann transfer.}
 \end{gathered}}
 \]
-This claim lies outside the recovered Standard Model and general-relativistic
-core. It becomes predictive only when the source
+This claim is separate from the conditional gauge-structure and
+Einstein-branch theorems of the library. The executable observer
+construction supplies no physical identification with the Standard Model,
+general relativity or interacting relativistic spacetime~\cite{ophmodel}.
+The claim becomes predictive only when the source
 objects are fixed before observational comparison.
 The proposed screen synchronization must be related to the declared
 state--algebra pair. Its modular group supplies a dimensionless parameter;
 the geometric branch, local clock readout, and cosmological-duration
 identification require their own premises. A synchronization schedule does
-not provide that physical calibration by itself.
+not provide that physical calibration by itself. In the executable observer,
+passive native repair cannot act as a nontrivial modular automorphism; an
+active event clock executes one compiled modular step per incident native
+event, with declared coherent services and scheduling~\cite{ophmodel}. A
+fixed return cap freezes the scaled low-band modular phase under refinement,
+and the full configuration reference approaches the normalized trace at
+fixed modular parameter, so it identifies no quantum
+vacuum~\cite{ophtimefields}. Equal mean rates of local event clocks give a
+stochastic relative-clock law rather than a deterministic conversion, and no
+universal synchronization of the screen follows from these constructions.
 
 Coherent-matter same-channel forcing supplies a local scalar-channel identity for
 nondegenerate OPH-coherent material sources under Scalar Edge-Center Exhaustion.
@@ -128,7 +160,12 @@ invariance.\\
 Flatness & Zero clock-slice spatial Levi--Civita holonomy identifies \(\kappa=0\). Exact selection
 requires a derivation from the finite screen or an explicit curvature premise. Damping
 gives only an approximate \(|K|\) or \(|\Omega_K|\) bound.\\
-Horizon coherence & Same-boundary unique-extension theorem or a uniform low-\(k\) repair gap.\\
+Horizon coherence & Same-boundary unique-extension theorem or a uniform low-\(k\) repair gap.
+The native screen generator has lowest eigenvalue at least \(3/4096\) only
+in the rescaled attempt parameter \(\tau=\text{attempts}/(1260\cdot16^l)\),
+so per native attempt its slowest relaxation rate falls as \(16^{-l}\); it is
+a two-dimensional spatial spectrum, not a physical low-\(k\)
+gap~\cite{ophcontinuum,ophtimefields}.\\
 Near scale invariance & Geometric screen scalar, normalized scalar precision, source release
 energy, infinitesimal reserve-generator tilt, and angular screen-spectrum receipts.\\
 Amplitude & The conditional theorem fixes \(A_q=2E_q^{\rm src}/d\) and its source-family
@@ -144,11 +181,16 @@ Acoustic transfer & Declared source functions and a Boltzmann transfer calculati
 
 \section{Numerical Acceptance Conditions}
 
-The simulator source is \SimSourceRepo, and public data archives are indexed
-at \SimEvidenceRepo. For this paper the simulator may emit diagnostic
+The simulator source and its public data archives are cited
+in~\cite{ophsim}. For this paper the simulator may emit diagnostic
 screen spectra, observer-screen synchronization receipts, and release-amplitude candidates.  It
 supports an inflation-replacement interpretation only when one finite source supplies the
 primordial growth mode, physical radial lift, transfer calculation, and likelihood inputs.
+The executable observer construction runs native repair, records, local
+event clocks and an active modular event clock on the twelve-port carrier
+and its source screens~\cite{ophmodel}. It emits no primordial growth mode,
+physical radial lift, transfer calculation or likelihood input, so it
+supports no inflation-replacement interpretation by itself.
 
 \section{Expansion as Record Density}
 \label{sec:expansion-record-density}
@@ -159,7 +201,9 @@ count clock. The following statements transfer that family to a spatially
 flat expanding background. They are exact and machine-checked in the Lean
 module named below; the profile law that selects how many records a comoving
 cell produces per conformal tick is a supplied datum, and no statement below
-derives the Friedmann equation.
+derives the Friedmann equation. Conformal time \(\eta\), the layer index
+\(j\) and the durations \(\sigma_j\Delta\) called physical ticks are
+coordinates of the supplied FLRW chart; none is a calibrated observer clock.
 
 \input{../paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex}
 
@@ -207,22 +251,29 @@ pixel \(1.6309721\) moves it by less than \(10^{-7}\). The retrospective
 comparison with public temperature and polarization data is recorded in the
 cosmology postdiction ledger released with these papers: the value lies
 \(0.27\sigma\) above Planck 2018, \(0.69\sigma\) above SPT-3G with Planck,
-\(0.79\sigma\) below the SPT, Planck and ACT combination, \(1.28\sigma\) below
-ACT DR6 with Planck, and \(2.4\sigma\) below ACT DR6 with Planck, lensing and
-baryon acoustic oscillations. The diagnostic \(e(P_\star-\varphi)\) branch
-gives \(0.96484\). These are seen-data comparisons of a receipt-conditional
-value and select neither branch. The operative tilt protocol is FZ-15,
+\(0.79\sigma\) below the SPT, Planck and ACT combination, and \(1.28\sigma\)
+below ACT DR6 with Planck.
+The diagnostic \(e(P_\star-\varphi)\) branch gives \(0.96484\).
+The official joint posterior chains of ACT DR6 with Planck, lensing and DESI
+2024 baryon acoustic oscillations, whose mean is \(0.9743\pm0.0034\), place
+the edge-center branch at their lower \(0.612\) percent position and the
+diagnostic branch at \(0.200\) percent; the measured tail differs from the
+Gaussian summary~\cite{act2025,ophpublicdata}. Those data precede the
+registration, so this is a retrospective tension under baseline
+\(\Lambda\)CDM, not a likelihood ratio, and the registered comparison with a
+later dataset is unchanged. These are seen-data comparisons of a
+receipt-conditional value and select neither branch. The operative tilt protocol is FZ-15,
 frozen on 2026-10-04 with register status
 \texttt{frozen\_stamped\_upgrade\_pending}; its complete combination, pivot,
 thresholds and anchoring requirements govern the prospective comparison,
 rather than the historical proposal alternatives.
-On the same branch the dilation cocycle gives zero
-running, the rank-one single-clock normal form gives zero source-side
-isocurvature. The scalar screen field emits no transverse-traceless source,
-but that condition alone leaves homogeneous tensor modes free. A zero
-linear primordial tensor amplitude additionally requires zero initial
-tensor amplitude and velocity and no tensor forcing; those initial data
-are extra branch premises. Planck 2018 gives a
+On the same branch
+the dilation cocycle gives zero running,
+the rank-one single-clock normal form gives zero source-side isocurvature.
+The scalar screen field emits no transverse-traceless source,
+but that condition alone leaves homogeneous tensor modes free.
+A zero linear primordial tensor amplitude additionally requires zero initial tensor amplitude and velocity and no tensor forcing;
+those initial data are extra branch premises. Planck 2018 gives a
 running of \(-0.0045\pm0.0067\) and ACT DR6 with Planck, lensing and
 baryon acoustic oscillations \(0.0062\pm0.0052\); BICEP/Keck 2018 bounds
 \(r_{0.05}<0.036\) and the fourth Planck release with BK18 and BAO \(r<0.032\); Planck
@@ -265,7 +316,7 @@ continuous multiplicative survival cocycle. For \(\theta\ge0\) it also
 obeys \(0<u_\theta(s)\le1\) on \(s\ge0\). Distinct exponents
 therefore inhabit the same cocycle interface; its type alone cannot select
 \(P_\star/48\). The Lean module
-\path{Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltFreedom.lean}
+\texttt{EinsteinBranch.EdgeCenterTiltFreedom}~\cite{ophlean}
 checks this freedom against the canonical cocycle definition. Numerical
 tilt selection requires the source generator and its physical
 dilation attachment. Neither nested regression orthogonality nor coarse
@@ -289,13 +340,21 @@ objects to semantic commits, together with complete certified read supports,
 would let the generated informational order verify execution dependencies; it
 would not derive the evidence objects or their scientific relations. The resulting quantities are the inputs to the
 cosmic microwave background transfer and likelihood calculations.
-The source Gram space supplies a Euclidean spatial carrier of dimension
-three. After adjoining a real axis, a nonzero closed convex pointed
+The source Gram space supplies a rank-three Euclidean metric on one
+twelve-port carrier. After adjoining a real axis, a nonzero closed convex pointed
 influence cone invariant under the proper icosahedral rotations and all
 rapidities of one boost axis is the future or past Lorentz cone. Time
 orientation selects the future cone. The invariance concerns operational
 transformations of histories, interventions and clock readouts, beyond an
-algebraic action on source frames~\cite{ophEinstein}.
+algebraic action on source frames~\cite{ophEinstein}. The rank-three metric
+is a finite readout of that carrier's slow response, not an extended space.
+On the refining source screens, bounded-energy port modes lose the
+within-carrier band, including the rank-three band, at order \(2^{-l}\),
+and the native continuum generator has heat-trace spectral dimension two on
+the two-dimensional source~\cite{ophmodel,ophcontinuum}. Native
+dependence crosses at most one seam per ordered repair event, a bound in
+graph hops per native event with no laboratory speed or continuum light
+cone~\cite{ophcausality}.
 
 A conservative Fibonacci-record family has flat $1+3$ causal-order and
 normalized count-volume limits under a specified population, complete local
@@ -304,7 +363,7 @@ interval anchors and a nondegenerate reference interval in the same history,
 $(|I|/|J|)^{1/4}$ converges to the proper-time ratio of interior timelike
 diamonds. This retrospective clock uses order and cardinality, without
 coordinates or timestamps in its definition. The reference interval fixes
-relative units, while the population and read law remain assumptions of
+relative units, while the population and read law are assumptions of
 the continuum construction~\cite{ophEinstein}.
 
 An inflationary realization requires the same events and clock to support
@@ -319,12 +378,60 @@ identification; scalar-curvature convergence alone is diagnostic. Neither
 cone covariance nor the flat count-clock law supplies those inflationary
 attachments.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+
+\bibitem{ophmicro}
+B.~M\"uller et al.,
+\emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and
+Observer Synchronization in Observer-Patch Holography}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.pdf}.
+
+\bibitem{ophsim}
+B.~Mueller (2026). OPH physics simulator and reproduction source.
+\url{https://github.com/muellerberndt/oph-physics-sim}. Public data archives:
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence}.
+
+\bibitem{ophmodel}
+FloatingPragma (2026). The runnable OPH model: observer implementation,
+tests, receipts and construction guide.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophpublicdata}
+FloatingPragma (2026). OPH predictions and public-data comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
+
+\bibitem{act2025}
+T.~Louis et al. (2025). The Atacama Cosmology Telescope: DR6 power spectra,
+likelihoods and \(\Lambda\)CDM parameters. arXiv:2503.14452.
+\url{https://arxiv.org/abs/2503.14452}.
+
+\bibitem{ophlean}
+FloatingPragma (2026). Observer Patch Holography Lean formalization.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/Lean}.
+
+\bibitem{ophobsdyn}
+FloatingPragma (2026). Observer-dynamics analysis archive: specifications,
+refinement-chain receipts, independent controls and covariance extraction.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/observer_dynamics_20260925/sim-analysis}.
 
 \end{thebibliography}
 

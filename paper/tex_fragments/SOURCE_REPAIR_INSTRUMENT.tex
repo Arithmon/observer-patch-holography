@@ -1,14 +1,17 @@
 \subsection{Repair instruments, recurrent influence, and erased records}
 \label{sec:source-repair-instrument}
 
-The current repair rule has explicit channel obstructions.
+The simulator's thresholded pair-mean repair rule has explicit channel
+obstructions. These concern that floating-point rule; the native seam repair
+of the executable observer construction is executed as completely positive
+record instruments~\cite{ophmodel}.
 A quantum channel must preserve convex mixtures. For the exact
 binary64 threshold $\epsilon=\texttt{1e-15}$ and $\delta=2^{-51}$, consider
 the positive diagonal states
 \[
  p_j=(1/2+j\delta,1/2-j\delta),\qquad j=0,1,2.
 \]
-The native rule leaves $p_0,p_1$ unchanged and averages $p_2$ to $p_0$,
+The thresholded rule leaves $p_0,p_1$ unchanged and averages $p_2$ to $p_0$,
 since $2\delta\leq\epsilon<4\delta$. Its first output coordinate violates
 affinity at $p_1=(p_0+p_2)/2$ by exactly $\delta$. Thus this thresholded
 rule is not the exact diagonal restriction of a quantum channel on these
@@ -22,7 +25,7 @@ zero the equally weighted ensembles $\{|0\rangle,|1\rangle\}$ and
 $\{(|0\rangle+|1\rangle)/\sqrt2,(|0\rangle-|1\rangle)/\sqrt2\}$.
 Their average input densities agree. After full repair, the first ensemble
 has local intensities $(13/24,1/24)$ or $(1/24,13/24)$ at these ports.
-The native phase-preserving lift, including its zero-phase convention at
+The simulator's phase-preserving lift, including its zero-phase convention at
 zero amplitude, gives coherence $\sqrt{13}/(24N)$ for both. The second
 ensemble has intensities $(7/24,7/24)$ and opposite coherences
 $\pm7/(24N)$, averaging to zero. The output ensemble gap exceeds
@@ -49,15 +52,15 @@ under simultaneous relabeling of modes and seams; none is source-selected.
 For a phase state $(|0\rangle+i|b\rangle)/\sqrt2$ at one carrier, with
 $b$ adjacent to zero, and maximally mixed other blocks of weight $1/N$,
 $E$ retains one quarter of the original local coherence while $DE$
-erases it. The next native unitary read distinguishes them by at least
+erases it. The next simulator unitary read distinguishes them by at least
 $(2t-400t^2)/(8N)$. At $t=2^{-17},N=4$ this is
-$16359/34359738368>0$. Native execution and an independent rational
+$16359/34359738368>0$. Simulator execution and an independent rational
 reconstruction of the full sparse matrices check the witness. Scalar
 repair data therefore do not determine the recurrent instrument.
 
 The coordinate probes also cannot simply be renamed A1's central records.
 An accessible algebra in $\mathbb C^{12}$ containing all $P_i$ and the
-native time translate $Q=U^*P_0U$ contains
+simulator time translate $Q=U^*P_0U$ contains
 \[
  P_iQP_j=\overline{U_{0i}}U_{0j}|i\rangle\langle j|.
 \]

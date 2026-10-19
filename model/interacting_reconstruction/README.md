@@ -88,9 +88,9 @@ rank-three unit-edge cube Gram matrix. It estimates:
 
 | Quantity | Recovered value | Ideal finite-duration interval |
 | --- | ---: | ---: |
-| Bare mass squared | 1.000000000075 | [0.9999989912, 1.0000010089] |
-| Bond weight `kappa` | 0.999999999995 | [0.999999999989, 1.000000000002] |
-| Local quartic coefficient `g` | 0.041666666652 | [0.0416664303, 0.0416669030] |
+| Bare mass squared | 0.999999999980 | [0.9999989911, 1.0000010088] |
+| Bond weight `kappa` | 1.000000000001 | [0.999999999994, 1.000000000007] |
+| Local quartic coefficient `g` | 0.041666666672 | [0.0416664303, 0.0416669030] |
 
 The target quartic coefficient is `1/24`. Its positive interval excludes a
 purely quadratic onsite action within the declared family. An independently
@@ -102,7 +102,7 @@ Table values are rounded for display; the receipt retains numerical bounds.
 | Complete two-read law | 8 × 2⁷ levels | 8 × 4⁷ levels |
 | --- | ---: | ---: |
 | Hilbert dimension | 1,024 | 131,072 |
-| Largest prediction/execution TV | 2.54e-13 | 2.06e-13 |
+| Largest prediction/execution TV | 1.23e-13 | 7.01e-13 |
 | Ideal parameter + splitting TV bound | 2.44e-6 | 2.03e-5 |
 | Smallest matched quartic-deletion discrepancy | 3.90e-5 | 3.90e-5 |
 | Ideal source-to-unrestricted-occupation TV bound | 1.133e-3 | 6.371e-4 |

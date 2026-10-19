@@ -227,7 +227,7 @@ and compares it with E, which also records the seam parity. Under a common
 definite-current record interface all members share the classical current
 laws; the unread channel alone does not specify every possible recorded
 instrument. One coherent interference experiment reads
-the coherence that separates them. The [repair-law guide](CANDIDATES.md)
+one coherence multiplier directly. The [repair-law guide](CANDIDATES.md)
 explains what is forced, what is free and how to tell.
 
 The [complete repair identification](repair_identification/README.md) reads
@@ -242,7 +242,8 @@ declared family, without selecting a physical law from synthetic data.
 A declared instance supplies its carrier, accessible algebra, instruments,
 repair law, preparation domain and scheduling protocol. Consequences of
 those inputs can be derived without proving that the instance is uniquely
-selected by the OPH axioms. The [source-selection assessment](SOURCE_SELECTION.md)
+selected by the closure hypothesis, the no-outside rule or the agreement
+condition of the [OPH basis](../docs/BASIS.md). The [source-selection assessment](SOURCE_SELECTION.md)
 tracks that distinction. In particular, committed native repairs alone
 cannot create coherence from a diagonal input. The
 [compiled native interface](compiled_native_interface/README.md) implements
@@ -257,7 +258,7 @@ auxiliary solver counters are distinct. A preferred universal physical
 clock is not required. Their operational correspondences are tested through
 joint observations rather than asserted from a shared name. The source record
 laws are invariant under any positive rescaling of attempt count as duration.
-The [host-clock attachment](native_clock/README.md) records actual native calls
+The [host-clock attachment](native_clock/HOST_CLOCK.md) records actual native calls
 against a monotonic host counter, calibrates one block and tests disjoint
 blocks with another local clock. Its measured timing is an engineered software
 correspondence. Traceable laboratory accuracy, native proper time and modular

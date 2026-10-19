@@ -34,11 +34,11 @@ for individual ports fails: fine seam `(1,38)` maps to coarse pair `(1,2)`,
 which is not a coarse seam. The executable checks all source edges, without
 replacing the source graph by a more convenient hierarchy.
 
-| Refinement | Fine edges | Edges mapping to a non-edge of the coarse port graph | Coarse edges lacking a direct fine-edge lift |
-|---|---:|---:|---:|
-| 0 to 1 | 2,520 | 74 | 0 |
-| 1 to 2 | 10,080 | 280 | 16 |
-| 0 to 2 | 10,080 | 400 | 8 |
+| Refinement | Fine edges | Edges mapping to a non-edge of the coarse port graph | Edges mapping onto a single coarse port | Coarse edges lacking a direct fine-edge lift |
+|---|---:|---:|---:|---:|
+| 0 to 1 | 2,520 | 74 | 2 | 0 |
+| 1 to 2 | 10,080 | 280 | 4 | 16 |
+| 0 to 2 | 10,080 | 400 | 4 | 8 |
 
 These port-edge failures leave the cell subdivision intact. They identify the
 additional routing compatibility a port-level dynamical tower would need.

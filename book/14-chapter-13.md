@@ -34,7 +34,7 @@ Six words, and every one of them names something you could point at on a board: 
 
 A patch does one thing, over and over.
 
-It reads the packets exposed on its ports. It compares them against its own, through a declared rule saying which of its readings answers which of the neighbor's, since two patches keeping their state in private conventions have to be told what corresponds to what before a comparison means anything. That rule is chapter twelve's dictionary on the seam. The technical word for whether the comparison is possible at all is commensurability. Then, if the comparison came back unequal, the patch chooses a move from a finite menu of allowed local updates, one entry off a printed card. It writes a record of the move it made. It exposes the resulting packet at its ports, so the neighbor's next read sees the new state rather than the old one. And any claim about what it did is settled by an exact check run on the exposed data, by anything that has access to that data, with the patch's own opinion of its work carrying no vote.
+It reads the packets exposed on its ports. It compares them against its own, through a rule saying which of its readings answers which of the neighbor's, since two patches keeping their state in private conventions have to be told what corresponds to what before a comparison means anything. That rule is chapter twelve's dictionary on the seam. The technical word for whether the comparison is possible at all is commensurability. Then, if the comparison came back unequal, the patch chooses a move from a finite menu of allowed local updates, one entry off a printed card. It writes a record of the move it made. It exposes the resulting packet at its ports, so the neighbor's next read sees the new state rather than the old one. And any claim about what it did is settled by an exact check run on the exposed data, by anything that has access to that data, with the patch's own opinion of its work carrying no vote.
 
 Read, compare, choose, write, expose, verify. That is the entire operational repertoire of a piece of reality. No move reaches a patch on the far side of the network, none of them consults a clock, and the menu they are drawn from has an end to it.
 
@@ -46,7 +46,7 @@ The sixth move is the one engineers recognize on sight. A patch can be wrong. It
 
 Each seam can score itself. Take the two packets, apply the seam's dictionary to one of them, and produce a number that is zero when they answer each other and positive when they do not. That number is local: it involves the two ends of one seam and nothing else in the world.
 
-In this finite terminating contract, sum the declared seam scores and require each accepted progress move to lower that sum. A strictly decreasing quantity in a finite ordered set proves termination of those moves. This is an assumption of this contract, not a property inherited by every continuous, stochastic or plateau-admitting repair law.
+Sum the seam scores and accept a move only when it lowers that sum. The sum takes finitely many values, and a quantity that strictly falls through finitely many values can fall only finitely many times, so the moves terminate.
 
 Chapter ten watched that number come down. Of the 122,880 seams in that run, 102,415 were scoring above zero at the start, and at cycle 1 out of 16 none of them were. The settling curve counted the seams contributing anything at all. The quantity the machine was working against was their sum.
 

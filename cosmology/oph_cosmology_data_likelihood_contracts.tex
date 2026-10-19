@@ -7,6 +7,7 @@
 \usepackage{booktabs,tabularx}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{xurl}
 
 \IfFileExists{paper/release_info.tex}{
   \input{paper/release_info.tex}
@@ -44,9 +45,13 @@ screen and dark-sector models to cosmological data. A retrospective
 comparison ledger with an independent verifier and machine-checked brackets
 records where the receipt-conditional values land on Planck, ACT, SPT,
 BICEP/Keck, DESI and SPARC data. The running, tensor, isocurvature and
-non-Gaussianity rows are consistent. The tilt is in tension at
-\(-2.43\sigma\) against ACT DR6 with Planck, CMB lensing and DESI DR1
-BAO, and consistent against the other combinations; the curvature value
+non-Gaussianity rows are consistent. The registered conditional tilt
+branch \(n_s=1-P/48=0.96602\), at the calibrated grain \(P\), lies at the
+lower \(0.612\) percent position of the official joint posterior chains of
+ACT DR6 with Planck, CMB lensing and DESI 2024 (DR1) BAO, whose mean is
+\(0.9743\pm0.0034\); those data precede the registration, so this is a
+retrospective tension under baseline \(\Lambda\)CDM, not a likelihood
+ratio, and the tilt is consistent with the other combinations; the curvature value
 is in tension at \(-2.09\sigma\) against DESI DR2 with CMB; the
 fixed-capacity equation of state is in tension with DESI DR2; and the
 capacity display is in tension at \(-2.64\) and \(-2.81\sigma\) against
@@ -74,8 +79,7 @@ Section~\ref{sec:ledger} classifies every recorded comparison by these
 classes and by whether the compared value is shared with the standard
 baseline.
 
-The \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}{spacetime construction}
-provides a flat causal-order and normalized count-volume limit for
+The spacetime construction~\cite{ophEinstein} provides a flat causal-order and normalized count-volume limit for
 conservative record populations with a specified neighbour-read law and
 layer duration. With complete authenticated ancestry and anchors, the
 interval-count ratio $(|I|/|J|)^{1/4}$ approaches the proper-time ratio of
@@ -86,7 +90,11 @@ its convergence uses the supplied population and law.
 A separate cone-selection criterion requires a nonzero closed convex pointed
 cone invariant under the proper icosahedral rotations and all rapidities of
 one boost axis. Its operational action on histories, interventions and clock
-readouts is additional to the algebraic source frame. In a likelihood
+readouts is additional to the algebraic source frame. The executable carrier
+supplies one such influence bound: for a fixed seam schedule and shared
+local coins, dependence crosses at most one seam per ordered repair event,
+which gives no laboratory speed or continuum light cone~\cite{ophcausality}.
+In a likelihood
 comparison, that hypothesis, the event law and its physical calibration
 count as model information, alongside the background, conserved stress,
 initial conditions and matter assumptions. A geometric count clock by itself
@@ -170,8 +178,14 @@ absolute stationary load-record variance and inherited/fresh/settled
 covariance in 61 retained refinement chains. They constrain those finite
 mechanisms without using a CMB normalization, but do not identify load as
 geometric curvature, set a physical background, or supply a primordial
-tilt. Their receipts and conditional observer comparisons are archived
-under \path{evidence/observer_dynamics_20260925/sim-analysis/codex/}.
+tilt. In the executable observer construction, actual native density
+snapshots on refining source screens have joint Gaussian limits with
+covariance \(\exp(-|\tau-u|A)\) for a positive operator \(A\) of spectral
+dimension two on the screen, with \(\tau\) a rescaled native attempt
+count~\cite{ophtimefields,ophcontinuum}. That construction does not derive
+the tilt branch \(n_s=1-P/48\) from its joint records~\cite{ophpublicdata}.
+Their receipts and conditional observer comparisons are
+archived~\cite{ophobsdyn}.
 An observational test must first connect the native geometric readout to
 the source, radial and transfer interfaces with their uncertainties.
 
@@ -198,9 +212,10 @@ Quantity & Value & Public measurement and distance & Class \\
 Planck 2018 \(0.9649\pm0.0042\) (\(+0.27\sigma\)); SPT-3G with Planck
 \(0.9636\pm0.0035\) (\(+0.69\sigma\)); SPT, Planck and ACT
 \(0.9684\pm0.0030\) (\(-0.79\sigma\)); ACT DR6 with Planck
-\(0.9709\pm0.0038\) (\(-1.28\sigma\)); with lensing and BAO
-\(0.9743\pm0.0034\) (\(-2.43\sigma\)) &
-conditional theorem; discriminates \\
+\(0.9709\pm0.0038\) (\(-1.28\sigma\)); with lensing and DESI 2024 (DR1)
+BAO \(0.9743\pm0.0034\): lower \(0.612\) percent posterior position in the
+official chains (Gaussian summary \(-2.43\sigma\)) &
+conditional branch at the calibrated grain; discriminates \\
 \(\mathrm dn_s/\mathrm d\ln k\) & \(0\) &
 Planck 2018 \(-0.0045\pm0.0067\) (\(+0.67\sigma\)); ACT DR6 with Planck,
 lensing and BAO \(0.0062\pm0.0052\) (\(-1.19\sigma\)) &
@@ -232,7 +247,8 @@ Planck-central \(\Lambda\): \(+0.62\) and \(+0.38\) percent; DESI DR2 with
 CMB display \((2.968\pm0.040)\times10^{-122}\): \(-3.5\) and \(-3.8\)
 percent (\(-2.6\) and \(-2.8\sigma\)) &
 closure-candidate display \\
-\(a_0\) & no source value &
+\(a_0\) & no source-derived value; FZ-01 readings \(1.1847\) and
+\(1.1790\times10^{-10}\,\mathrm{m\,s^{-2}}\) &
 SPARC calibration \(1.161\times10^{-10}\,\mathrm{m\,s^{-2}}\) at
 mass-to-light \(0.5\); ratio to \(c^2\sqrt{\Lambda/3}\) equal to \(0.214\) &
 fitted comparison value \\
@@ -240,7 +256,8 @@ fitted comparison value \\
 \end{tabularx}
 \caption{Rows of the cosmology postdiction ledger. Distances are theory
 minus measurement in units of the quoted standard deviation; bounds are
-consistent when the value lies below the bound. All data are seen.}
+consistent when the value lies below the bound. All data are seen. SPARC
+values are ineligible for scoring the FZ-01 acceleration readings.}
 \label{tab:ledger}
 \end{table}
 
@@ -253,9 +270,14 @@ velocity as well as no forcing and whose null test excludes only specified
 models above the achieved bound, the exact zero
 running, which discriminates only against running of order \(10^{-2}\), and
 the specific tilt value, which the seen combinations place between
-\(+0.7\sigma\) and \(-2.4\sigma\). Absence of an emitted tensor source alone
+\(+0.7\sigma\) and \(-2.4\sigma\) under the ledger's Gaussian rule. In the
+official ordered ACT DR6, Planck and DESI joint chains, \(0.612\) percent of
+the posterior mass lies at or below the branch, against about \(0.74\)
+percent for the Gaussian summary; the historical clock alternative
+\(0.96484\) lies at \(0.200\) percent and is kept as an exposed
+diagnostic~\cite{act2025,ophpublicdata}. Absence of an emitted tensor source alone
 does not establish the tensor-zero premise; source-free homogeneous modes
-remain allowed. Slow roll supplies no universal positive tensor lower bound,
+are allowed. Slow roll supplies no universal positive tensor lower bound,
 so a finite upper limit cannot distinguish the entire model class from zero.
 The tensions are the fixed-capacity
 equation of state, at \(2.6\) to \(3.9\sigma\) across the DESI DR2
@@ -265,10 +287,20 @@ DESI DR2 with CMB at \(2.1\sigma\), and the capacity display against the
 DESI DR2 \(\Lambda\) coordinate at \(-2.64\) and \(-2.81\sigma\), while the
 same candidates sit at \(+0.62\) and \(+0.38\) percent against the
 Planck-central value. These are retrospective
-diagnostics of receipt-conditional values. The tilt FZ-15 and fixed-capacity
+diagnostics of receipt-conditional values. FZ-01, frozen on 2026-07-17 with
+a Bitcoin attestation, registers four cosmology targets: the capacity band
+\(N\in[3.30836,3.31137]\times10^{122}\), the tilt menu
+\(\{0.9660214956,\,0.96484114303\}\), the acceleration readings
+\(1.184737388\) and \(1.179018696\times10^{-10}\,\mathrm{m\,s^{-2}}\), and
+the point \((w_0,w_a)=(-1,0)\). Every comparison in Table~\ref{tab:ledger}
+uses data published before that freeze, so each is a postdiction, and no
+FZ-01 verdict is registered; neither closure candidate lies in the
+registered capacity band~\cite{ophladder}. The tilt FZ-15 and fixed-capacity
 FZ-13 protocols were frozen on 2026-10-04, with register status
 \texttt{frozen\_stamped\_upgrade\_pending}; their complete protocols and
-anchoring requirements govern eligible comparisons. The tensor FZ-16 and
+anchoring requirements govern eligible comparisons. The registered FZ-15
+comparison is the first eligible Simons Observatory LAT primary-CMB
+release, which the ACT DR6 reanalysis leaves unchanged. The tensor FZ-16 and
 running/isocurvature FZ-17 texts are unadopted proposals. A ledger row alone
 does not define a score: the combination, statistic and thresholds must be
 fixed before the eligible release under the operative registration.
@@ -288,10 +320,55 @@ data-use classification.
 The screen-spectrum and radial-lift mathematics are conditional theorems.
 One-shell inversion is nonunique; physical source dilation and radial
 cross-covariance tomography are two established sufficient uniqueness routes.
+Neither route is supplied by the native screen energy, which is not
+boundedly congruent to the static boundary action of a smooth compact
+three-dimensional Dirichlet bulk; a radial lift needs a radial observation
+algebra as an added premise~\cite{ophcontinuum}.
 Finite source instantiation, repair-charge cosmological source, Boltzmann
 bridge, and joint likelihood are not supplied. All cosmological
 data products are diagnostic. No cosmological result carries an OPH
 falsification verdict.
+
+\begin{thebibliography}{99}
+
+\bibitem{ophEinstein}
+B.~M\"uller et al., \emph{Recovering Observer Spacetime and Einstein
+Dynamics from Overlap Consistency}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+
+\bibitem{act2025}
+T.~Louis et al. (2025). The Atacama Cosmology Telescope: DR6 power spectra,
+likelihoods and \(\Lambda\)CDM parameters. arXiv:2503.14452.
+\url{https://arxiv.org/abs/2503.14452}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophpublicdata}
+FloatingPragma (2026). OPH predictions and public-data comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
+
+\bibitem{ophladder}
+FloatingPragma (2026). Frozen prediction ladder.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/FROZEN_PREDICTION_LADDER.md}.
+
+\bibitem{ophobsdyn}
+FloatingPragma (2026). Observer-dynamics analysis archive: native-repair
+receipts and conditional observer comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/observer_dynamics_20260925/sim-analysis/codex}.
+
+\end{thebibliography}
 
 \section*{AI Assistance Disclosure}
 This research project used research-grade commercial models, including

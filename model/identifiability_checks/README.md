@@ -157,7 +157,7 @@ It is neither a reserved-data test nor a distinction between OPH and
 ordinary quantum mechanics.
 
 The 32-versus-48-level target calculation changes an estimator by at most
-`1.62e-7`; trace residuals are below `1.7e-15`. These are numerical checks,
+`1.62e-7`; trace residuals are below `2.6e-15`. These are numerical checks,
 not unrestricted-occupation certificates or apparatus-error bounds. The
 [occupation certificate](../occupation_control/README.md) supplies a separate
 controlled comparison for the specified pulse model.

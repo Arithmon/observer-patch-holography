@@ -111,7 +111,7 @@ source needs an actual metric or collar-volume update, its relation to native
 records, an independently specified reference slice, and a physical
 calibration. The fixed-geometry construction supplies none of those by
 relabelling a load fluctuation. Nonstationary preparations, spatial memory or
-new couplings remain possible mechanisms, but each must expose that interface.
+new couplings are possible mechanisms, but each must expose that interface.
 
 Reconstructing a chart solely from the exact native linear response does
 not introduce a stochastic geometry update: the fair repair law has
@@ -121,9 +121,9 @@ state-dependent metric extracted from other response or fluctuation data
 would require its own observable and constitutive identification.
 
 The general finite-history and observability statements, together with a
-four-cycle equal-diagonal covariance witness, are kernel-checked in
-\path{Lean/Geometry/NativeGeometricSourceIdentification.lean}.
+four-cycle equal-diagonal covariance witness, are kernel-checked in the Lean
+geometry library.\footnote{\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/Lean/Geometry/NativeGeometricSourceIdentification.lean}}
 The twelve-port rational enumeration and native trace checks are reproduced
-by \path{code/native_geometric_source/verify.py}, with inputs and outputs in
-\path{evidence/native_geometric_source_20260925/}. No primordial amplitude,
+by an independent verifier with retained inputs and
+outputs.\footnote{\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/code/native_geometric_source}} No primordial amplitude,
 tilt, physical expansion or photon transfer is inferred from these controls.

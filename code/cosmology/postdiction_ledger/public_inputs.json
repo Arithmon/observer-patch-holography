@@ -50,7 +50,7 @@
       "quantity": "n_s",
       "value": 0.9743,
       "uncertainty": 0.0034,
-      "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)",
+      "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI 2024 (DR1) BAO)",
       "citation": "ACT Collaboration, Louis et al. (2025), arXiv:2503.14452; Calabrese et al. (2025), arXiv:2503.14454",
       "provenance_note": "digits as supplied in the ledger brief from the parameter tables; the arXiv:2503.14452 abstract quotes the rounded n_s = 0.974 +/- 0.003"
     },

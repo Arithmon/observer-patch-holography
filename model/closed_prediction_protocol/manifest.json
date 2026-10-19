@@ -1,7 +1,7 @@
 {
   "description": "Finite unread preparation, dependent complete-record trials and locked native-law prediction error accounting.",
   "files": {
-    "README.md": "f51d4c4a7ae77755c6c428816a3f2aa6ac639f8aab89aea919f2fdace7e6242a",
+    "README.md": "6dd42c6f64b7657298d4eb069393a87e1bf061bcce26e9bb634b29593251bd7e",
     "__init__.py": "57066dd3a069ab9cdfce787cfd28f6557177f2fc7b3c52a40e51e358ecf6a7af",
     "__main__.py": "c4ebe96c67374045fadf071ebf479b19694b96aefa80198b96a6a0d2a2e05dd4",
     "construction.py": "c73dec55b37281b034b4b973bf82f69658864b3395e0145112dd6268eb6d7d84",

@@ -90,7 +90,7 @@ is imported, not implemented by a finite test.
 
 Equivalently, the one-dimensional limit can be obtained from the finite tilted
 kernel `K_theta(x,y)=sum_branches P(branch|x) exp(i theta g)`.
-`K_0` has a simple eigenvalue1 and all other eigenvalues strictly within the
+`K_0` has a simple eigenvalue `1` and all other eigenvalues strictly within the
 unit circle. The eigenvalue branch has first derivative zero and second
 derivative `-1/66`: its first eigenvector derivative is zero because the
 conditional signed drift vanishes. Analytic perturbation at zero then yields
@@ -130,7 +130,7 @@ counter/terminal-state integer arrays.
 
 The limit does not imply a Gaussian finite record law. At 256 attempts the
 variance is `128/33` and the excess kurtosis is about **0.6717113**. For the
-variance-normalized counter, the characteristic function at1 is about
+variance-normalized counter, the characteristic function at `1` is about
 **0.62319322**, compared with **0.60653066** for a standard Gaussian. At 64 attempts
 the corresponding values are **0.66078679** and excess kurtosis **2.30935635**.
 The exact finite laws are the predictions at those counts. These comparisons

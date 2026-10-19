@@ -178,21 +178,19 @@ comparison does not authenticate the laboratory phase convention.
 The maximum ideal selected probability bound for the primary is
 `0.000429036`, equivalent to **0.00151687 estimator units**. The smallest
 retained acceptance probability is `0.791399`. The actual step refinement
-changes an estimator by at most `2.46691e-7`; the occupation refinement changes
+changes an estimator by at most `2.46650e-7`; the occupation refinement changes
 one by at most `0.00449740` (binary probability change `0.00127206`). These are
 small relative to the empirical discrepancies. The ideal splitting and
 finite-quadrature approximation within the declared finite model cannot
 account for those discrepancies. The cutoff comparison remains a diagnostic,
 and floating execution and physical errors remain outside the ideal bound.
 
-All 193 new tests pass. The complete model regression run has **3,044 passed,
-2 skipped**, with 55 passing subtests; the separately corrected occupation
-audit also passes all 33 checks. New tests include independent unsplit master-equation
-comparisons, the finite-occupation boundary counterexample, full spin
-continuation, native environment accounting, poisoned-outcome isolation,
-protocol mutation rejection and portable receipt replay. A fresh complete execution reproduced the retained receipt, and all 420
-model artifact bindings verified. The plotted figure was visually inspected
-for clipping and overlaps. Software `all_pass` records
+The package tests include independent unsplit master-equation comparisons,
+the finite-occupation boundary counterexample, full spin continuation, native
+environment accounting, poisoned-outcome isolation, protocol mutation rejection
+and portable receipt replay. The `--check` command below reproduces the
+retained receipt, and `model.verify` checks every model artifact binding. The
+plotted figure was visually inspected for clipping and overlaps. Software `all_pass` records
 execution/comparison contract success, not an empirical acceptance threshold.
 
 ## What it means and next steps

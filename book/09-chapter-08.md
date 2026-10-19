@@ -98,17 +98,17 @@ An engineer would take that guarantee over Snowball's in an instant and cannot h
 
 Fix an observer and ask a question that the engineered protocols cannot even pose: what could the reading it holds possibly depend on?
 
-Before any update, its state depends on its admitted inputs. One synchronous nearest-neighbor round adds at most one edge of dependency depth; after two such rounds, neighbors of neighbors can contribute. In an asynchronous execution, several dependent moves can occur in one sweep, so the bound belongs to causal path depth rather than to an arbitrary executor's round counter.
+Before any update, its state depends on its own inputs. Each repair touches one overlap, so dependence crosses at most one edge per repair event. A round in which every overlap is repaired once adds at most one edge of depth; after two such rounds, neighbors of neighbors can contribute. A sweep that repairs a path of overlaps in order can carry dependence several edges at once, one event per edge, so the bound counts repair events along a chain of dependence, whatever round counter an executor keeps.
 
-On the twelve-observer graph, five vertices are one edge away, five are two edges away, and the opposite vertex is three edges away. Those counts give possible source sets by dependency depth: six vertices including itself at depth one, eleven at depth two and twelve at depth three. They neither guarantee delivery by a deadline nor set the duration of a hop.
+On the twelve-observer graph, five vertices are one edge away, five are two edges away, and the opposite vertex is three edges away. Those counts give possible source sets by dependency depth: six vertices including itself at depth one, eleven at depth two and twelve at depth three. They say who can be heard from and leave open how long a hop takes.
 
 Call the set the **dependency cone**: the observers within reach, where reach is counted in steps along overlaps rather than in kilometers.
 
-Under the declared local rule, a value outside the actual dependency cone has not influenced that reading. A physical signal-speed interpretation additionally requires a map from graph dependencies and operational clocks to spacetime. A local algorithm and a finite graph alone do not establish that map.
+A value outside the dependency cone has not influenced that reading. At most one overlap per repair event is a speed limit, and chapter seventeen puts meters and seconds on it.
 
 Two distant readings in this world can be correlated, and chapter six built an arrangement where they are correlated by force, since the twelve observers had exactly one consistent state available to them and every one of them was pinned by it. Correlation is allowed and is ordinary. What no arrangement permits is a distant party choosing what you read. There is no dial they can turn, because the only channel between you is the wiring and the wiring has a pace, so whatever they do arrives as something that walked, or does not arrive.
 
-Correlation without communication is the shape of the Delft result from the prologue, where two laboratories 1.3 kilometers apart got answers that matched too often and could not use the matching to send each other a single bit. In an arrangement whose only channels are its declared overlaps, that combination is arithmetic about which observers are within how many steps of which. The name for it is **no-signalling**, arriving here before there are any particles to attach it to.
+Correlation without communication is the shape of the Delft result from the prologue, where two laboratories 1.3 kilometers apart got answers that matched too often and could not use the matching to send each other a single bit. In an arrangement whose only channels are its overlaps, that combination is arithmetic about which observers are within how many steps of which. The name for it is **no-signalling**, arriving here before there are any particles to attach it to.
 
 ## Only the conflicts
 
@@ -120,6 +120,6 @@ The leader family does the opposite, and pays for it in the queue. Every transac
 
 A network of observers repairing their overlaps is in the first camp, there by construction rather than by choice. A repair happens where a comparison disagrees. Two disagreements in unrelated parts of the arrangement are not competing for anything, do not touch a common quantity, and have no order between them, which is chapter seven's partial order doing work in this world. One repair comes after another when it read a value the other one wrote. Repairs with no such read between them stand in no order at all. The rest of the arrangement is under no obligation to have an opinion about when they happened.
 
-The local rule needs no leader, synchronized physical clock or roster beyond its neighbors. The examples still have a supplied graph and admitted schedule, and whole-network qualification can require aggregate information. A patch proposes and checks its update from its declared boundary data; the proof of global agreement, progress and cost has separate hypotheses. Removing an external coordinator from that rule does not select a physical law.
+The local rule needs no leader, no synchronized clock and no roster beyond a patch's own neighbors. A patch proposes and checks its update from the data on its own boundary. Whether all of those local checks add up to one global agreement is the question chapter ten answers.
 
 Alice and Bob share an overlap. Alice reads twenty across it, Bob reads twenty-two, in whatever units that boundary is measured in. Both are careful, neither has malfunctioned, and both readings are of the same thing, which is why two numbers where there should be one is a problem rather than a curiosity. Something has to move. The protocol says nothing about which number moves, or by how much, or why that answer rather than one of the infinitely many others that would also leave the two of them matching.

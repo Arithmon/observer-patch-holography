@@ -3,7 +3,8 @@
 The fair balanced integer repair law supplies an absolute spectrum for a
 specified load readout, without fitting an observed sky. On a connected
 weighted port graph with \(p\) ports and \(r\) raised loads, stationary
-continued repair gives
+continued repair, in the continuous native attempt parameter \(t\) at unit
+attempt rate per seam, gives
 \[
  \operatorname{Cov}(z(t),z(0))=\kappa e^{-|t|L/2}\Pi,\qquad
  \kappa=\frac{r(p-r)}{p(p-1)},\quad
@@ -19,11 +20,12 @@ The fixed-graph fluctuation record
 covariance \(4\kappa L^+\). Incident pre-attempt records, including null
 attempts and centered with the prepared filling, have the same leading
 inverse-Laplacian term with operator correction at most
-\(3\kappa/d_{\min}\), on a common elapsed-time slice. These are
+\(3\kappa/d_{\min}\), at a common native attempt parameter; \(t\) is not a
+calibrated observer clock. These are
 analytical consequences of actual local port interaction and readback,
 checked by finite-state enumeration and independent moment evolution.
 The detailed proofs and the distinct occupation and event normalizations
-are given in the screen-microphysics companion.
+are given in the screen-microphysics companion~\cite{ophmicro}.
 
 The amplitude is in native load-record units. Occupancy, attempt clock,
 duration, gain and stationary preparation are specified inputs.
@@ -34,7 +36,18 @@ the stationary law gives at every finite duration
 \]
 Thus a future measured collar-volume readout can test its density overlap;
 the load record cannot be substituted for that geometric observable.
-No uniform refinement and long-time limit is asserted. With fixed-area
+Along one common subsequence of refining source screens with
+\(240\cdot4^l\) ports, one-third filling from the declared uniform
+fixed-number preparation, independent uniform seam selection and fair
+repair, normalized native occupation snapshots read at native attempt count
+\(\lfloor1260\cdot16^l\tau\rfloor\) converge jointly to a stationary
+Gaussian family with covariance \(\langle f,e^{-|\tau-u|A}g\rangle\). Here
+\(A\) is one positive self-adjoint generator whose form is a conservative,
+regular, strongly local Dirichlet form of heat-trace spectral dimension
+two~\cite{ophcontinuum,ophtimefields}. These finite-dimensional laws assert
+no path-space tightness or spatial convergence rate, and the density field
+lives on the two-dimensional screen readout; it is not identified with a
+primordial curvature field. With fixed-area
 equal port weights and a common deterministic filter of bounded \(L^1\)
 gain \(W\), the ensemble mean empirical harmonic pseudo-power satisfies
 \(\widetilde C_\ell=(2\ell+1)^{-1}\sum_m\mathbb E|a_{\ell m}|^2
@@ -47,7 +60,14 @@ There are two additional quantitative restrictions. A common deterministic
 temporal filter of stationary density obeys
 \(d\log V/d\log\lambda\ge-1\), so under a separately established
 three-dimensional \(\lambda\propto k^2\) identification it cannot
-produce the required \(k^{-3}\) curvature spectrum. The native port
+produce the required \(k^{-3}\) curvature spectrum. Under the same operator
+dictionary that identification fails for the native continuum generator:
+its eigenvalues obey \(n/49920\le\lambda_n(A)\le3n/2\), which excludes a
+unitary identification, up to a fixed scale and bounded mass shift, with a
+second-order elliptic operator on a smooth compact three-dimensional
+manifold, and excludes a boundedly invertible energy congruence with the
+static boundary action of a smooth compact three-dimensional Dirichlet
+bulk~\cite{ophcontinuum}. The native port
 operator is also not proved round: at level four the seven-mode band
 splitting is \(14.642\%\), compared with \(0.01561\%\) for a supplied
 round-metric operator. An inverse graph covariance retains its precision's
@@ -68,5 +88,4 @@ a common refinement generator. The retained sample shares initial fields,
 and fresh reconstruction depends on pinned producer and random-number
 semantics; it supplies neither \(A_s\) nor \(n_s\).
 The specifications, original chain receipts, independent controls and
-absolute-covariance extraction are preserved under
-\path{evidence/observer_dynamics_20260925/sim-analysis/}.
+absolute-covariance extraction are archived~\cite{ophobsdyn}.

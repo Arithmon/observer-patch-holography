@@ -2947,8 +2947,8 @@ are identities. The construction provides no genuine coverage semantics for a
 source-produced net.
 
 \paragraph{Hamiltonian rigidity of the private block.}
-The private dynamics behind these interfaces is forced from continuity
-alone, in the machine-checked modules
+The reversible private dynamics behind these interfaces is forced from
+continuity alone, in the machine-checked modules
 \path{Lean/Dynamics/StoneConverse.lean},
 \path{Lean/Dynamics/CentralBlocks.lean}, \path{Lean/Dynamics/CenterSpectral.lean},
 and \path{Lean/Dynamics/StarWedderburn.lean}. On one full finite matrix
@@ -2964,8 +2964,8 @@ Hamiltonian: continuity upgrades to differentiability at parameter zero
 because the group acts on the matrix-unit basis as a norm-continuous
 matrix family whose short-interval average is invertible, and the
 fundamental theorem of calculus recovers the family from its primitive.
-Time evolution on the finite private block therefore has no choice
-except Hamiltonian form. The converse extends to the general finite
+Every pointwise-continuous reversible evolution of the finite private
+block therefore has Hamiltonian form. The converse extends to the general finite
 private algebra through its central structure: the center of any unital
 star subalgebra of a finite complex matrix algebra, containing the ambient
 identity, is the span of a minimal
@@ -2979,7 +2979,11 @@ the unitary family of one time-independent self-adjoint Hamiltonian per
 block, with block fixing derived rather than assumed and the block swap
 realized on the square two-block algebra. The parameter is a real
 number; no physical clock, source-selected Hamiltonian, or physical
-time identification is claimed \cite{ophrepo}.
+time identification is claimed \cite{ophrepo}. The native seam repair of
+the executable observer construction lies outside the reversibility
+hypothesis: its executed channel strictly attenuates a coherent mode, and
+its local generator is a positive Liouville operator on operator space
+\cite{ophmodelguide}.
 \input{tex_fragments/QFT_STRUCTURAL_INHERITANCE_STATUS.tex}
 \input{tex_fragments/SOURCE_RESTRICTION_NATURALITY.tex}
 \paragraph{Tower-anchored joint carriers and the typed time-slice interface.}
@@ -5108,14 +5112,14 @@ B.~M\"uller, J.~Kim, D.~Matscheko, and J.~Hill,
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and Refinement in Constraint
 and Rewrite Systems},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/observable_normal_forms.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/observable_normal_forms.pdf}.
 
 \bibitem{eventalgebraLean}
 B.~M\"uller,
 \emph{Verified Projection-Event Calculus in Lean~4: Bundled Arbitrary-Partition Pinching,
 L\"uders Retractions, and CHSH Interoperability},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/machine_checked_finite_event_algebras.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/machine_checked_finite_event_algebras.pdf}.
 
 \bibitem{ophrepo}
 Pragma Research,
@@ -5132,18 +5136,24 @@ Source available at \url{https://github.com/muellerberndt/oph-physics-sim}.
 Finite provenance and operator producers, independent verifiers, and receipts:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/6080f3a4045b7cbd821476a0a8fa0a6b57eeeeab}.
 
+\bibitem{ophmodelguide}
+FloatingPragma,
+\emph{The runnable OPH model},
+2026.\\
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/README.md}.
+
 \bibitem{ophsynthesis}
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, B.~Cassie, P.~Nguyen, J.~Kim, D.~Matscheko, J.~Hill, W.~T.~Glynn, M.~A.~Visser, K.~A.~Anirudha, and B.~de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/flagship/from_observer_consensus_to_standard_physics.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{ophObservers}
 B.~M\"uller et al.,
 \emph{Observers Are All You Need},
 2026.\\
 Source and compiled paper:
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/observers_are_all_you_need.pdf}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/observers_are_all_you_need.pdf}.
 
 \bibitem{dijkstra1974}
 E.~W.~Dijkstra,
@@ -5231,7 +5241,7 @@ arXiv:1410.0664.
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
 
 \InputIfFileExists{tex_fragments/PRIOR_WORK_REALITY_AS_CONSENSUS_PROTOCOL_BIBITEMS.tex}{}{}
 \end{thebibliography}

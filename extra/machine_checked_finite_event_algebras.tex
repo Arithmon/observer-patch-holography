@@ -158,9 +158,10 @@ Lean declaration identifiers are printed throughout in monospaced type, for
 example \texttt{partitionPinching\_idem}; the underscore is part of the
 identifier. To locate a declaration, search for the exact printed identifier,
 after removing only TeX's protective backslash before each underscore, in the
-\texttt{EventAlgebra/*.lean} files. In the public repository these files are
-under \texttt{Lean/EventAlgebra/}. Table~\ref{tab:modules} maps each module
-name to its subject matter. The top-level \texttt{EventAlgebra.lean} file
+\texttt{EventAlgebra} Lean library of the public repository
+\cite{observerPatchHolographyRepo}. Module names are printed without the
+\texttt{EventAlgebra} prefix. Table~\ref{tab:modules} maps each module
+name to its subject matter. The library root \texttt{EventAlgebra}
 imports these fifteen modules alongside the wider OPH event-algebra library.
 
 The checked development contributes fifteen pieces:
@@ -233,7 +234,7 @@ arbitrary partition with Physlib's spectral partition. There is no rank-one
 classical-representation theorem. The CHSH bounds carry a saturation witness
 (Section~\ref{subsec:saturation}); the witness state and events are declared
 data, produced by no theorem from any source object. A companion module,
-\texttt{Dynamics/ChoiCPTP.lean}, defines an explicit finite-matrix CPTP
+\texttt{Dynamics.ChoiCPTP}, defines an explicit finite-matrix CPTP
 predicate and proves both partition expectations completely positive and
 trace preserving; the fifteen-module audit here covers their event-algebra
 interfaces rather than recounting that companion development.
@@ -511,7 +512,7 @@ characterize the trace-preserving conditional expectation onto a subalgebra
 in the operator-algebra literature \cite{umegaki1954,takesaki1972}. The
 library proves the identities directly for this map. This core module does
 not instantiate an operator-algebra conditional-expectation interface. The
-companion \texttt{Dynamics/ChoiCPTP.lean} separately proves its custom
+companion \texttt{Dynamics.ChoiCPTP} separately proves its custom
 finite-matrix \texttt{IsCPTP} predicate from the same Kraus and trace
 identities.
 
@@ -549,7 +550,7 @@ The real weights are strictly positive and sum to one, so this is a literal
 random-unitary representation. A two-coordinate control proves that replacing
 the independent sign family by only the global pair \(\{I,-I\}\) leaves an
 off-diagonal matrix unchanged and is not pinching. These statements are
-checked in \texttt{RecordMajorization.lean}. They are an algebraic precursor;
+checked in \texttt{RecordMajorization}. They are an algebraic precursor;
 they do not prove spectral majorization or entropy monotonicity.
 
 The support layer cannot be bypassed by totalizing the logarithm. In Lean,
@@ -564,7 +565,7 @@ density matrices, but the first support is not contained in the second.
 Thus any extended-real divergence that returns \(+\infty\) on support failure
 cannot equal this totalized raw formula. The density, support, zero-value, and
 inequivalence receipts are checked in
-\texttt{SpectralEntropyBoundary.lean}.
+\texttt{SpectralEntropyBoundary}.
 
 This is a fail-closed architectural result, not a no-go for Umegaki entropy.
 A complete continuation must define the support-aware extended divergence and
@@ -690,7 +691,7 @@ Trace duality gives the forward statistics of the pinched matrices. For the
 converse, apply the uniqueness theorem for the commutant-valued trace-dual
 projection. The cross-sector statement follows from orthogonality of the
 partition projectors. The complete equivalence, kernel, and corner statements
-are machine-checked in \texttt{Superselection.lean}.
+are machine-checked in \texttt{Superselection}.
 \end{proof}
 
 The theorem is relative to a supplied partition. It neither constructs a
@@ -703,7 +704,7 @@ every value commutes with the partition commutant. A one-block rank-two
 control keeps the maps distinct: pinching retains a within-block coherence
 which averaging removes. The finite matter interface bundles the same map as
 a typed public-record adaptor. These statements are machine-checked in
-\texttt{B10EdgeCenterAction.lean}. The interface adds no edge object,
+the companion module \texttt{B10EdgeCenterAction} of the screen library. The interface adds no edge object,
 edge-to-partition identification, source selection, or physical detector
 interpretation to the event-algebra theorems.
 
@@ -772,7 +773,7 @@ $\langle A_0,B_0\rangle_\rho$. Its imaginary part is no larger. Trace
 cyclicity identifies the pairing with $\Tr(\rho A_0B_0)$, and scalar centring
 does not change the commutator. The complex identity, the centered reduction,
 and the ordinary-commutator inequality are machine-checked in
-\texttt{Robertson.lean}.
+\texttt{Robertson}.
 \end{proof}
 
 The exact two-level control uses $\rho=|{+z}\rangle\langle{+z}|$.
@@ -848,7 +849,7 @@ bound.
 \subsection{Exact saturation on the slot-locality interface}
 \label{subsec:saturation}
 
-The module \texttt{TsirelsonSaturation.lean} supplies the attainment
+The module \texttt{TsirelsonSaturation} supplies the attainment
 witness. Its carrier objects come from the wider library. A supplied
 bipartite slot split of the record algebra, committed as the interface
 \texttt{SlotLocalityInterface}, which carries a norm-form Tsirelson bound
@@ -889,8 +890,8 @@ from the committed theorems, not re-proved.
 
 The boundary is declared data. The saturating state and the four events
 are declarations of the module; no theorem produces them from committed
-source runs, and no physical regions, spacelike separation, or observer
-instruments are constructed. Identification of the supplied finite event-order structure with an
+source runs, and the module constructs no physical regions, spacelike
+separation, or observer instruments. Identification of the supplied finite event-order structure with an
 observer-produced physical spacetime is not supplied, and the receipt consumes the
 bipartite slot split as a supplied datum.
 
@@ -922,7 +923,7 @@ sufficient for attainment.
 
 The delimitation extends from one fixed counted state to the whole committed
 production surface
-(\texttt{SourceReachabilityDelimitation.lean}). The module defines the class
+(\texttt{SourceReachabilityDelimitation}). The module defines the class
 of states reachable from the three source-counted occupation laws under
 every operation the development commits: the walk-step transports, the
 internal slot exchange, the ambient anchorings, the marginalizations, the
@@ -939,11 +940,11 @@ respect to the declared split are outside the bound, and the slot-local
 separability theorem for arbitrary settings is supplied by the companion
 module described next. The result is a statement about the committed
 operation class and the declared Bell-state witness; every conceivable
-architecture extension is outside its scope. Like \texttt{Dynamics/ChoiCPTP.lean},
+architecture extension is outside its scope. Like \texttt{Dynamics.ChoiCPTP},
 the module is a companion in the wider library, outside this paper's
 fifteen-module count and scale table.
 
-The companion module \texttt{ProductSplitSeparability.lean} lifts the jointly-diagonal
+The companion module \texttt{ProductSplitSeparability} lifts the jointly-diagonal
 restriction on the declared slot split. A product-basis diagonal state with a probability
 diagonal is the explicit convex combination of the point states $e_{aa}\otimes e_{bb}$
 weighted by its diagonal entries (\texttt{productDiagonal\_separable}), and against any
@@ -961,10 +962,19 @@ off-diagonal record coherence; the theorem supplies neither physical regions nor
 Like the reachability module, it is a companion in the wider library, outside the
 fifteen-module count and scale table.
 
+The executable OPH model has the same boundary. Its diagonal native branch is a
+classical stochastic process and obeys $S\le2$ under independently chosen
+settings and local factorized responses. A replay of the deposited records of
+the Hensen experiment \cite{hensen2015} reproduces $245$ eligible trials, $196$
+wins and $S=2.42250$, with a published fixed-count tail bound near $0.03917$.
+Under that experimental contract the replay rejects the local classical reading
+of the diagonal branch; it leaves the full quantum construction untouched,
+selects no record law, and is formalized by no theorem here \cite{ophbell}.
+
 \section{An ideal static phase-POVM count fit}
 \label{sec:phase-instrument}
 
-The module \texttt{OperationalPhaseInstrument.lean} makes the interface
+The module \texttt{OperationalPhaseInstrument} makes the interface
 boundary machine-visible. Its structure
 \texttt{IdealPhasePOVMCountModel} is an ideal static model: one matrix state,
 the committed web effects plus one designated phase effect, exact binary POVM
@@ -1012,7 +1022,7 @@ separate cross-context additivity premise.
 \subsection{Exact determination boundary and the integer receipt window}
 \label{sec:phase-determination}
 
-The module \texttt{PhaseInstrumentDetermination.lean} sharpens the boundary to
+The module \texttt{PhaseInstrumentDetermination} sharpens the boundary to
 an exact reduction. The phase-sensitivity clause has a coordinate
 characterization: for a Hermitian effect $E$ the Born-weight gap between the
 two Pauli-Y states equals $-2\,\mathrm{Im}\,E_{01}$
@@ -1062,7 +1072,7 @@ since the synthetic inhabitant meets it without a source run.
 The committed exact lift
 $I/2 - (2\sqrt{3}/3)\,i\,(QP - PQ)$, equal to the Pauli $+Y$ projector, is taken
 as a declared phase-sensitive effect. It is not a state transition or an
-instrument. The module \path{OperationalPhaseAttainment.lean} consumes that
+instrument. The module \texttt{OperationalPhaseAttainment} consumes that
 declaration and inhabits \texttt{IdealPhasePOVMCountModel} over the committed
 core with static integer literals. A deterministic calculator expands the
 Born table of the declared effects on the declared matrix
@@ -1085,9 +1095,10 @@ equations and their cross-multiplied scaling consequences, positive integer
 masses, and phase counts inside the registered window. The Lean theorem does
 not prove leastness, source reachability of this two-dimensional matrix, or
 receipt provenance; the external verifier checks the deterministic
-least-denominator arithmetic separately. The instrument representation, the
-source-produced preparation, and the independent cross-context additivity
-premise are not supplied.
+least-denominator arithmetic separately. This fixture supplies no instrument
+representation, source-produced preparation, or independent cross-context
+additivity premise; the module described next supplies a declared instrument
+representation.
 
 The module \texttt{LuedersPhaseInstrument} types the channel clauses as a
 structure \texttt{PhaseInstrument} on the eight committed contexts: outcome maps
@@ -1112,9 +1123,15 @@ one; the swap-twisted instrument fails that invariance, and the committed
 repeatability clause (the normalized output is certain of its effect) is
 strictly weaker and does not select
 (\texttt{InstrumentSelectionByCertainStates}). Certain-state invariance is a
-declared operational hypothesis, no source implements it, and the instrument representation,
-the source-produced preparation, and cross-context additivity are not supplied. The module is a companion in the wider library, outside the
-fifteen-module count and scale table.
+declared operational hypothesis with no source implementation. The module
+supplies a declared instrument representation; a source-implemented
+instrument, readback bound to a recorded public outcome, a source-produced
+preparation, and cross-context additivity are not supplied. The module is a
+companion in the wider library, outside the fifteen-module count and scale
+table. In the executable OPH model, a native phase detector with the same
+effects on its active orientation corner changes a state certain of its
+outcome; the invariance premise fails there, so the selection theorem does
+not identify that detector with a L\"uders instrument \cite{ophnativeinterface}.
 
 The companion module \texttt{SourcePhaseSelection} asks what phase-sensitive
 effect candidates can be built from source-attached algebraic fields. Its
@@ -1211,12 +1228,22 @@ result derives no source bridge or operation, common preparation, public
 outcome, sequential instrument behavior, operational readback, run,
 provenance, or custody.
 
+Outside this library, the executable OPH model supplies the coherent resource
+that these bounds require. Its committed native repairs preserve diagonal
+states. A balanced mixer compiled from $34$ source pulses, with one further
+phase pulse for the imaginary quadrature, prepares and detects two conjugate
+phase mixtures with plus probabilities one and zero, where real-only effects
+give one half; the coherent proper-code services it uses are declared
+\cite{ophinterface}. That attachment is a finite-matrix computation that no
+theorem here formalizes, and the phase-sensitive-effect declaration of the
+static model is unchanged.
+
 \section{Working over Mathlib: scopes, gaps, and affordances}
 \label{sec:mathlib}
 
 This section records what the construction consumed from Mathlib, where the
 library resisted, and which workarounds closed the gaps. The artifact
-repeats the catalog in the notes file \texttt{MATHLIB\_NOTES.md}.
+repeats the catalog in its Mathlib notes file.
 
 \subsection{Scoped instances}
 
@@ -1369,7 +1396,8 @@ hypotheses. The commutant, span, and both expectations are bundled, and the
 CHSH adapters are clients of the event definitions.
 
 The repository contains the toolchain, Lake manifest, source modules, build
-command, in-source axiom queries, and a Creative Commons BY-NC-SA 4.0 license.
+command, and in-source axiom queries. The Lean source is licensed under the
+Apache License 2.0, and this manuscript under Creative Commons BY-NC-SA 4.0.
 No persistent archive identifier is claimed.
 
 \section{Feature-level comparison}
@@ -1455,7 +1483,7 @@ are exact, and hand finished objects to Mathlib interfaces through small
 adapters. The pattern is independent of measurement theory and applies to
 other finite-dimensional operator-algebra developments over Mathlib.
 
-The companion \texttt{Dynamics/ChoiCPTP.lean} establishes complete positivity
+The companion \texttt{Dynamics.ChoiCPTP} establishes complete positivity
 and trace preservation for both expectations under a custom finite-matrix
 \texttt{IsCPTP} interface. There is no theorem connecting the supplied
 partition to Physlib's spectral pinching and no rank-one classical
@@ -1476,8 +1504,11 @@ non-discharge counterreceipt; the
 companion module adds the custom CPTP proofs.
 It contains no Physlib
 spectral-partition correspondence and no source-selected quantum instrument;
-the two-qubit saturation witness consists of declared data, and the
-operational phase instrument and its source custody are not constructed.
+the two-qubit saturation witness consists of declared data, and no theorem
+here constructs an operational phase instrument or its source custody. The
+executable OPH model implements phase preparation and detection through
+declared coherent proper-code services \cite{ophinterface}; this library
+formalizes no part of that implementation.
 
 \section*{Declarations}
 
@@ -1493,8 +1524,8 @@ manuscript and artifact.
 canonical Lean source is available in the Observer Patch Holography
 repository \cite{observerPatchHolographyRepo}. The repository revision
 containing this manuscript provides the Lean source, pinned dependency files,
-build instructions, and declaration-level axiom queries under a Creative
-Commons BY-NC-SA 4.0 license. No persistent archive identifier is claimed.
+build instructions, and declaration-level axiom queries under the Apache
+License 2.0. No persistent archive identifier is claimed.
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_MACHINE_CHECKED_FINITE_EVENT_ALGEBRAS.tex}{}{}
 \bibliographystyle{plainnat}

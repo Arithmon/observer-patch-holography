@@ -4,7 +4,7 @@ Michael Faraday distrusted the word pole. It had been attached to the two ends o
 
 So in the spring of 1834 he wrote to William Whewell at Trinity College, Cambridge, who had the Greek. Candidates went back and forth between them: eisode, exode, zetode, dexiode, skaiode, orthode, anthode. On 5 May, Whewell came back with anode and cathode, on the ground that short words get adopted and elaborate ones do not, and threw in ion, anion and cation while he was about it. Faraday replied ten days later to say he had taken all of them, and that his colleagues' objections subsided the moment he mentioned whose idea they were.
 
-Anode and cathode name a direction and a doorway. They say nothing whatever about what is traveling, which is why they outlived the theory they were coined for. The entries below distinguish model objects from proposed physical interpretations. A declared map, state space and evidence scope determine which use applies.
+Anode and cathode name a direction and a doorway. They say nothing whatever about what is traveling, which is why they outlived the theory they were coined for. The entries below try for the same restraint.
 
 **Action.** A single number scored over a whole history, one contribution per step from start to finish. The history the world runs is the one where nudging an interior reading leaves that total alone.
 
@@ -22,7 +22,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Carrier.** The finite wiring of the model: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. The structural numbers of the physics are read off that arrangement.
 
-**Causal diamond.** Everything after one event and before another: two cones joined at the rim. In the supplied refining record model, weighted counts approach coordinate volume for timelike diamonds contained in the sampled region. Fourth roots of suitable count ratios approach relative model durations. Extra relay operations are excluded from those counts; physical volume and clock calibration require separate identification.
+**Causal diamond.** Everything after one event and before another: two cones joined at the rim. Count the completed records inside one and the count approaches its volume, and the fourth root of a ratio of two such counts is a ratio of durations.
 
 **Causal set.** A partial order in which any two related events have only finitely many others between them. The 1987 proposal is that spacetime, looked at finely, is one of these, with the order supplying the light cones and the number of elements supplying volume. The observers' records form one.
 
@@ -38,7 +38,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Commensurability.** Whether two observers' readings answer each other at all. The rule saying which of your readings answers which of mine sits on the seam between us.
 
-**Commit.** An accepted update under a declared rule, with its reads, writes and retained records specified. Midpoint averaging is many-to-one on the two updated readings; a commit that retains its inputs or carries reversible state need not erase them. An event count supplies no physical duration by itself.
+**Commit.** An accepted update, with its reads, its writes and the record it leaves. Midpoint averaging is many-to-one on the two readings it updates, and the record keeps what the readings forget. A count of commits orders events, and seconds come from a clock laid against the count.
 
 **Commutator.** What you get by doing two operations in both orders and subtracting. Zero means the two questions can be answered together, and anything else is the amount by which they cannot.
 
@@ -48,11 +48,11 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Density matrix.** The description left behind when somebody is cut out of the picture: odds for every question you can put, and nothing left of what only the far side could have detected. Two different accounts of the whole can leave the same one behind, and no operation on your side tells them apart.
 
-**Dependency cone.** The events or patches that can affect a readout through admitted dependencies. One synchronous nearest-neighbor round extends its radius by at most one edge. An asynchronous sweep can carry a chain through several edges; dependency depth and physical elapsed time are separate quantities.
+**Dependency cone.** The events or patches that can affect a readout. Dependence crosses at most one seam per repair event, so a round in which every seam is repaired once widens the cone by at most one seam, and a sweep along a path carries a chain several seams, one event per seam.
 
-**Derived.** A conclusion obtained from explicit premises. A supplied carrier or calibration remains an input even when its consequences are proved. A prediction additionally needs a source independent of the target measurement; fitting or importing that measurement is a different claim.
+**Derived.** Obtained by arithmetic from the structure, with nothing measured fed in to produce it. A number fitted to a measurement and then read back out has been derived from the measurement, which is a different achievement.
 
-**Direction.** An orientation of record dependence or a thermodynamic arrow, depending on the claim. Reduced averaging loses distinctions; irreversibility of a complete physical process needs its full-state and thermodynamic assumptions. These are separate from causal precedence and modular flow.
+**Direction.** The one-way character of time: the loss inside a single repair, where seven arrangements of a seam collapse into one and quantum coherence drains away for good. It is separate from causal order, which says what depends on what, and from flow, which runs both ways.
 
 **Direction split.** The fork at every repair: spend your own capacity on a private update, or spend the capacity shared out on the overlap. Some outcomes are reachable only the second way.
 
@@ -62,7 +62,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Eigenvalue.** A grid of weights usually swings a direction round to point somewhere else. Where it merely stretches or shrinks one, that direction is the grid's own, and the factor is its eigenvalue.
 
-**Energy.** The generator of declared physical evolution, with units and an additive convention fixed. A modular Hamiltonian or a repair-work score is not automatically energy in joules. Matching either to a region's physical energy requires the model's calibration and conservation assumptions.
+**Energy.** What generates a region's advance along its own clock, the reversible flow its state determines. For a region in thermal equilibrium it is minus the logarithm of the state times the temperature, up to a constant that moves nothing.
 
 **Entanglement.** Content living in the relation between two halves of a thing rather than in either half. Cut a definite whole in two, look at one side alone, and what comes back is vague by exactly the amount the cut severed.
 
@@ -78,11 +78,11 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Field.** Two objects wear the word. One is a value assigned at every place, like the temperature through a room or the wind over an ocean; the other is a net of algebras, which is the sense the Standard Model is written in.
 
-**Fine-structure constant.** The dimensionless strength of electromagnetic interaction, near 1/137 at low energy. One supplied cell closure map gives inverse coupling 137.035660; the quoted comparison 137.035999 is measured. The calculation depends on its map, carrier and calibration. Selecting the physical map is a separate requirement.
+**Fine-structure constant.** The dimensionless strength of electromagnetic interaction, near 1/137 at low energy. Reading one cell of the screen from outside and from inside and requiring the two readings to agree gives an inverse coupling of 137.035660, against a measured 137.035999.
 
 **Fixed point.** An object x left unchanged by a specified map F: F(x)=x. The object may be an instantaneous state, a reduced record, a probability law or a complete history. A fixed complete history can contain changing local states; a stationary law can support changing realizations. Fixedness alone establishes neither attraction nor uniqueness.
 
-**Flow.** A parameterized family of transformations. Modular flow belongs to an algebra-state pair and leaves the state invariant; its parameter is dimensionless. Interpreting it as an observer's physical time requires an additional correspondence, and experiencing succession requires more than the algebraic theorem.
+**Flow.** A parameterized family of transformations. Modular flow belongs to an algebra and a state, leaves the state's odds where they were, and has a bare number for its parameter. An observer's clock steps it once at every event at the observer's ports.
 
 **Force.** A steepness in the potential. A single unit of source dropped on the twelve ports lowers the reading eleven sixtieths over the first hop, three sixtieths over the second and one sixtieth over the third, and a pattern held in a slope like that comes back each cycle a little further down it.
 
@@ -120,11 +120,11 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Leaky abstraction.** An account that lets you get on with the work while the machinery stays out of sight, good until the machinery does something the account has no words for. Joel Spolsky wrote the rule down in 2002, and the everyday container picture of space and time leaks in at least six places.
 
-**Mass.** A physical invariant with a declared measurement and energy-momentum interpretation. A pattern's maintenance cost is a proposed model connection, not a definition that automatically converts repair counts into mass. The dynamical and clock calibration must support the identification.
+**Mass.** The standing cost of a persistent pattern: the repair it demands at every event to be re-established where it is. Every observer computes the same value for it out of energy and momentum.
 
-**Mismatch.** A declared discrepancy on shared data or coupled relations. Its value and interpretation depend on the model. A fixed update can retain mismatch, and vanishing mismatch on checked boundaries need not establish a global extension or physical correctness. Strict descent is a property to prove, not the definition of every update.
+**Mismatch.** The disagreement on a seam: what is left when one reading, passed through the seam's dictionary, is held against the other. It is zero when the two answer each other and positive when they do not. Every seam can read zero while a loop carries a residue, which is chapter six's leftover of one.
 
-**Momentum.** In a specified action, the Noether charge associated with spatial translations under the required symmetry and boundary assumptions. Conservation under a common shift of scalar readings is a different symmetry unless a physical correspondence is supplied.
+**Momentum.** What a pattern carries as it drifts across the seam network, conserved because the laws do not care where you are. Newton listed it second among his definitions and called it the quantity of motion.
 
 **Natural selection.** Variation, heredity and differential persistence running together. The list closes at three, and nothing on it decides anything.
 
@@ -134,13 +134,13 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Noether's procedure.** The machine that turns a continuous symmetry of the scored line into a conserved quantity, one for one. Shifting in space gives momentum, shifting in time gives energy.
 
-**Normal form.** A state with no applicable move in the declared repair relation. Termination and confluence can make its reachable record unique for fixed starting and boundary data. Finding no move at one patch does not certify that every other patch has stopped.
+**Normal form.** A state with no move left to make. When repair terminates and is confluent, every order of repairs from a given start reaches the same one. A patch with nothing to do knows that about itself and nothing about the rest.
 
-**Observer.** Operationally, a bounded system or federation with specified state, readback, records, feedback and continuation interfaces. A thermostat illustrates some of these functions; the exact observer contract must be declared for each theorem. This definition alone does not establish conscious experience.
+**Observer.** A bounded system that reads its boundary, keeps records, acts on what it reads and carries all of it forward: an algebra of questions bounded by its interface, a record algebra at its center, an interface that behaves the same way every time, and a state fixing the odds. A thermostat qualifies. Being an observer takes no mind.
 
 **Orbit.** Every place the moves in a group can send one thing. The four corners of a square make one orbit under its eight moves, the four edge midpoints make another, and nothing carries a corner into the second set.
 
-**Order.** Precedence between events, such as authenticated read-from dependence and its transitive closure. Independent events can be assigned a conventional logical order without creating a causal edge or physical duration. A preferred universal clock is a stronger claim.
+**Order.** Precedence between events: one comes before another when a chain of certified reads runs from the first to the second. Events with no chain between them have no order, and numbering them anyway creates none.
 
 **Ordering fraction.** Of all the pairs of events inside a causal diamond, the share in which one could have influenced the other. It is a half with one direction of space, eight thirty-fifths with two and a tenth with three, which makes it a dimension meter that needs no ruler.
 
@@ -148,41 +148,41 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Packet.** What appears at a port: one reading drawn from a finite list, available to whatever sits on the far side. It is what a patch's state looks like from outside at one interface rather than the state itself.
 
-**Particle.** In the proposed interpretation, a persistent mode or defect with compatible transport, charge and observable readouts under the admitted refinements. A disagreement that repair cannot remove is a candidate obstruction, not automatically a physical particle; dynamics and experimental identification are additional requirements.
+**Particle.** A persistent pattern that repair cannot remove, carried from seam to seam with its charge and readouts intact, and read at a commit as one count at one place.
 
-**Patch.** A bounded local system with specified state, interfaces and admissible operations. It is a proposed primitive of the model, not an experimentally established smallest constituent of nature. A patch need not already carry physical spatial coordinates.
+**Patch.** A bounded local system with its own state, its ports and a printed menu of moves: read, compare, choose, write, expose, verify. A patch carries no coordinates; positions come out of what patches record about each other.
 
 **Pinching.** Sorting every question into the alternatives a record distinguishes, keeping the parts that fall inside one of them and deleting every comparison that only meant something across two. This is what writing a record does to an observer's algebra, and decoherence is the usual name for the result.
 
-**Port.** A declared interface through which part of a patch's state or an operation is accessible. The twelve-port carrier is the particular structure supplied in the present axioms; port count and physical interpretation are model assumptions unless independently derived under stated premises.
+**Port.** An interface through which part of a patch's state is visible to a neighbor. A carrier has twelve, five seams meet at each, and chapter fourteen shows that no other count closes.
 
-**Probability.** A normalized nonnegative assignment to the admitted events or measurement effects. Additivity alone does not select the entire quantum formalism: representation results require their stated event structure, dimension and consistency assumptions.
+**Probability.** Numbers between zero and one on the questions an observer can ask, adding up across every complete list of exclusive alternatives. On quantum questions, blunt ones included, every such assignment is the trace against one density matrix.
 
-**Projector.** An idempotent self-adjoint operator representing a sharp quantum yes-or-no question. General measurement effects need not be projectors; the sharp-measurement assumption must be stated where used.
+**Projector.** A sharp yes-or-no question: an operation that, applied twice, does what it did once. Blunt questions answer yes with a weight, and the sharp ones are the special case whose weights are zero and one.
 
 **Quotient.** Sweeping up everything that counts as the same into one bundle and working with the bundles. The twelve hours on a clock face are the whole numbers with twelve counting as nothing.
 
-**Rank.** The dimension of a linear map's image. The specified carrier has a rank-three slow spectral band; identifying it with physical spatial dimension needs the geometric realization. A rank-two transverse subspace gives two candidate polarizations only under the declared field and gauge assumptions.
+**Rank.** The number of independent directions in a table of comparisons. The carrier's slow band has rank three, which is the count of directions in space, and the plane perpendicular to a light ray has rank two, which is why light has two polarizations.
 
-**Record.** Data retained under a specified protection and access contract. Some models preserve earlier entries while appending later ones; some retain only a reduced public record. Repeatability, copyability, persistence and the observer's ability to access it must be stated rather than assumed for every state variable.
+**Record.** A write into the center of an observer's algebra, where everything commutes. It reads the same the second time, copies to a neighbor without loss, and stays put under the flow until another write moves it.
 
-**Record law.** What a repair writes down when it acts: how much load crossed the seam, and possibly the coin, the parity of the seam total or the full count at both ends. It fixes which quantum coherences survive the repair. Counting experiments give the same statistics under every record law, and one interference experiment tells them apart.
+**Record law.** What a repair writes down when it acts: how much load crossed the seam, and possibly the coin, the parity of the seam total or the full count at both ends. It fixes which quantum coherences survive the repair. Experiments that prepare definite loads and read only how many units crossed give the same statistics under every record law. Interference experiments tell the laws apart. One, between an empty seam and a waiting unit, separates the coin record from the parity record; a second, between an empty seam and a full one, separates the parity record from the full count; and nine such measurements fix all nine numbers of the family.
 
-**Record map.** A declared projection from a model's state to its accessible records. Its fibers express what those records leave unresolved. Other readouts or interventions can refine them; information omitted by this map is not thereby forever inaccessible or conscious.
+**Record map.** The map from the full state of the world to the part that survives comparison: every seam entry and nothing private to either end. Its fibers are what the records leave unresolved.
 
-**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. The model's space looks smooth for that reason. The smooth version is a limit nobody occupies.
+**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. Smooth space is a limit of that kind. Carriers joined into ever finer spheres have a smooth limit of their own, and it lives on a two-dimensional screen. The smooth version is a limit nobody occupies.
 
-**Relative entropy.** A divergence comparing two probability laws or quantum states. It cannot increase when both are passed through the same stochastic channel, or the same completely positive trace-preserving quantum channel. Arbitrary postselection or different processing of the two states is not covered.
+**Relative entropy.** How many extra questions per state your odds cost you against a reference. Pass both through the same process, classical or quantum, and it can only fall, which makes it the quantity the second law is about.
 
-**Repair.** An admissible update intended to restore an independently specified compatibility or legitimate-state condition while preserving protected data. Midpoint averaging is its scalar form, with its own sum-preservation law; on whole-number loads the two ends go to the floor and ceiling of their mean, and a fair coin places the odd unit.
+**Repair.** The one move a seam makes: both readings to their midpoint, with the total left where it was; on whole-number loads the two ends go to the floor and ceiling of their mean, and a fair coin places the odd unit. Its quantum form also writes a record, and the record law says what. Repair only runs downhill.
 
 **Repair load.** How much of an observer's state fails to lie along the field its neighbors have written on its boundary. It cannot go below zero and it reaches zero exactly when the two agree, which is the reading a tuner is listening for when the beat disappears.
 
 **Running coupling.** A force strength is one number only if nothing surrounds the charge. Screening puts more of the charge in view the closer an experiment gets, so every strength quoted carries a distance with it.
 
-**Schedule independence.** Equality of the declared outcome across admitted schedules under stated termination, confluence or convergence hypotheses. It does not imply identical trajectories, equal duration, convergence under starvation, or one final state for all boundary data.
+**Schedule independence.** Every order of repairs that keeps going until nothing is left to do lands, from the same start and the same boundary data, on the same settled state. The routes there differ, and so do their lengths.
 
-**Screen.** Every reading on every port an observer has facing outward. Nobody looks at it, it points nowhere, and its size is counted in readings rather than measured in meters.
+**Screen.** Every reading on every port an observer has facing outward. Nobody looks at it, it points nowhere, and its size is counted in readings rather than measured in meters. Carriers joined into a sphere make a screen whose smooth limit is two-dimensional, the surface a hologram is written on.
 
 **Seam.** Two ports routed to each other, which makes it the one place a disagreement can show up at all. Twelve observers wired into a twenty-sided solid have thirty.
 
@@ -196,12 +196,12 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Temperature.** The exchange rate between energy and questions, in joules per bit. Three hundred kelvin sets that rate at 2.87 joules divided by ten to the twenty-first, for each yes-or-no question a record settles.
 
-**Tsirelson ceiling.** The quantum CHSH bound 2 times the square root of 2, corresponding to a winning fraction approximately 85.36 percent, under the specified quantum measurement assumptions. The classical local bound is 2, or 75 percent. Nonsignaling alone permits stronger correlations; locality of information access does not by itself imply the quantum bound.
+**Tsirelson ceiling.** The quantum ceiling on the four-question score, 2 times the square root of 2, a winning fraction of about 85.36 percent. Answer sheets, and every written record with its answers fixed on each side, top out at 2, or 75 percent. A world that only forbade signalling would allow scores above the ceiling; non-commuting questions and a state put it at 2√2 exactly.
 
 **Verifier.** Anything that runs the check on the exposed readings and settles whether a patch's claim about its own work holds. The inside of the patch never enters it, because the check is arithmetic, and arithmetic is indifferent to whose readings it gets.
 
-**Wave.** What repair looks like while it is under way. A port that hands its mismatch on rather than deleting it has a current to show for it, the two go on feeding each other instead of settling, and the pair crosses the wiring at the speed one seam per event allows.
+**Wave.** What repair looks like while it is under way. A port that hands its mismatch on rather than deleting it has a current to show for it, the two go on feeding each other instead of settling, and the pair crosses the wiring no faster than one seam per repair event.
 
-**Zero-error capacity.** An asymptotic communication rate with no confusion between codewords, with units declared. For the pentagon confusability graph, the largest one-use code has two messages; the asymptotic Shannon capacity is the square root of five in message-growth units, or log base two of that value in bits per use.
+**Zero-error capacity.** The rate at which messages can be sent with no chance of confusion. On the ring of five symbols the largest one-use code has two messages; used many times over, the ring carries the square root of five messages per use, or log base two of that in bits.
 
-**Zombie.** A philosophical hypothetical: a physical duplicate without experience. Excluding one requires a psychophysical identity premise; deleting computational state is not the same hypothetical. The operational observer definition alone does not resolve it.
+**Zombie.** A philosophical hypothetical: a physical duplicate without experience. The identity account of experience that chapter thirty-nine takes leaves no room for one.

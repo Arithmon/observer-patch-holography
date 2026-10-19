@@ -198,18 +198,18 @@
   },
   "pins": {
     "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
-    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "a1c3a9cb2f8341e2c2e3e70b7fa6576a149abe0d0d69bfcf5d059b413b24bc31",
+    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "b95554833d92a33edec643655b29f6114e6c36802354caa8a6bc9633ce6a7533",
     "code/cosmology/postdiction_ledger/corpus_inputs.json": "7beba089591dccd9f1cfbc922fbefaaacbe60737dec3bead897f57b4f5266e0b",
-    "code/cosmology/postdiction_ledger/public_inputs.json": "22dfe5c393486ac19b4617759fae72bcf1be4c6fae71075206e39b6691e8b47a",
+    "code/cosmology/postdiction_ledger/public_inputs.json": "ce7d58fa6c35bad5d14262a6ad1c0b1e4371010fc2254134e91193dcd9a7a436",
     "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "9115121d2ac490db08f5534633dbe37a632d800dfa46ed7d8a2d044095e02937",
-    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "8aae6976f87377ca9178befeb576b656cd61e6a513c5ce55c9a491168a6d629e",
+    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "20039ffe18bb464693b64a80806321bf48ea901c336f996a758a4e76cd560ce1",
     "code/cosmology/rar_deep_regime/receipts/sparc_deep_regime_diagnostic.json": "b52c06698523ada1b8fe6337f61d81b5a0c57421c03453679dccf1872f56f2e9",
     "code/cosmology/rar_deep_regime/receipts/sparc_full_rar_calibration.json": "204ec809099937ffdb95ba77ae26f1343b49e9378a6c030c6b3494d29f28525f"
   },
   "promotes_nothing": true,
   "public_inputs_schema": "oph.cosmology.postdiction_ledger.public_inputs.v1",
   "row_count": 53,
-  "rows_sha256": "e30e256328683ae0576dbcda99c142ccd51403a9ed2b284cdd7d0a008233b933",
+  "rows_sha256": "7f3d38e7fb68b03e5a2634cfdff1bb40a5233a6e5d1f23c726e0dae2dce5a793",
   "schema": "oph.cosmology.postdiction_ledger.v1",
   "sections": [
     {
@@ -242,7 +242,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "planck2018_vi_ns"
           ],
@@ -280,7 +280,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_planck_ns"
           ],
@@ -318,7 +318,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "cmb_spa_ns"
           ],
@@ -356,7 +356,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_alone_ns"
           ],
@@ -394,7 +394,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_ns"
           ],
@@ -413,7 +413,7 @@
             "edge_center_tilt_theorem",
             "edge_center_paper_display"
           ],
-          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)",
+          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI 2024 (DR1) BAO)",
           "discriminates_from_baseline": true,
           "epistemic_note": "Conditional theorem: n_s = 1 - P/48 follows from the declared full-collar generator density P/24 and the orientation-half identity; the source generator receipt is not supplied. Both P values were exposed after the data. The P_fwd minus P_C branch spread in n_s is -8.1e-08, far below every quoted uncertainty. Seen data; the row is a postdiction, not a frozen prediction.",
           "measurement": {
@@ -432,7 +432,7 @@
           "oph_value": 0.9660214956374175,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "463690317905960407/480000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_lb_ns"
           ],
@@ -470,7 +470,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "planck2018_vi_ns"
           ],
@@ -508,7 +508,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_planck_ns"
           ],
@@ -546,7 +546,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "cmb_spa_ns"
           ],
@@ -584,7 +584,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_alone_ns"
           ],
@@ -622,7 +622,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_ns"
           ],
@@ -641,7 +641,7 @@
             "edge_center_tilt_theorem",
             "edge_center_paper_display"
           ],
-          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)",
+          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI 2024 (DR1) BAO)",
           "discriminates_from_baseline": true,
           "epistemic_note": "Conditional theorem: n_s = 1 - P/48 follows from the declared full-collar generator density P/24 and the orientation-half identity; the source generator receipt is not supplied. Both P values were exposed after the data. The P_fwd minus P_C branch spread in n_s is -8.1e-08, far below every quoted uncertainty. Seen data; the row is a postdiction, not a frozen prediction.",
           "measurement": {
@@ -660,7 +660,7 @@
           "oph_value": 0.9660214146696063,
           "oph_value_display": "0.966021",
           "oph_value_exact_rational": "15456342634713701/16000000000000000",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_lb_ns"
           ],
@@ -699,7 +699,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "planck2018_vi_ns"
           ],
@@ -738,7 +738,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_planck_ns"
           ],
@@ -777,7 +777,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "cmb_spa_ns"
           ],
@@ -816,7 +816,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "spt3g_d1_alone_ns"
           ],
@@ -855,7 +855,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_ns"
           ],
@@ -876,7 +876,7 @@
             "clock_branch_diagnostic_alternative",
             "clock_branch_paper_display"
           ],
-          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)",
+          "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI 2024 (DR1) BAO)",
           "discriminates_from_baseline": true,
           "epistemic_note": "diagnostic alternative branch; no selection between branches is made by data. The inflation paper displays this branch value as 0.96484. Float arithmetic: 1 - e (P_C - varphi) with varphi = (1 + sqrt 5)/2.",
           "measurement": {
@@ -894,7 +894,7 @@
           "oph_value": 0.9648411430307772,
           "oph_value_display": "0.964841",
           "oph_value_exact_rational": null,
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_lb_ns"
           ],
@@ -930,7 +930,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "planck2018_running"
           ],
@@ -966,7 +966,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "Simons Observatory; CMB-S4",
+          "prospective_data": "Simons Observatory",
           "public_input_ids": [
             "act_dr6_p_act_lb_running"
           ],
@@ -1003,7 +1003,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
+          "prospective_data": "LiteBIRD (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "bk18_r_0p05"
           ],
@@ -1039,7 +1039,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
+          "prospective_data": "LiteBIRD (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "tristram2022_r"
           ],
@@ -1075,7 +1075,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
+          "prospective_data": "LiteBIRD (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "planck2018_x_r_0p002_bk15"
           ],
@@ -1110,7 +1110,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)",
+          "prospective_data": "LiteBIRD (bound tightening only; zero is the shared baseline)",
           "public_input_ids": [
             "planck2018_x_cdi_axion_i_100beta_klow"
           ],
@@ -1145,7 +1145,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)",
+          "prospective_data": "LiteBIRD (bound tightening only; zero is the shared baseline)",
           "public_input_ids": [
             "planck2018_x_cdi_axion_i_100beta_kmid"
           ],
@@ -1180,7 +1180,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)",
+          "prospective_data": "LiteBIRD (bound tightening only; zero is the shared baseline)",
           "public_input_ids": [
             "planck2018_x_cdi_axion_i_100beta_khigh"
           ],
@@ -1215,7 +1215,7 @@
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)",
+          "prospective_data": "LiteBIRD (bound tightening only; zero is the shared baseline)",
           "public_input_ids": [
             "planck2018_x_cdi_general_100beta_klow"
           ],

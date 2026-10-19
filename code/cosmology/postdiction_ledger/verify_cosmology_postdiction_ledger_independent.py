@@ -325,7 +325,7 @@ class Expected:
         }
 
     def primordial(self) -> None:
-        cmb = "Simons Observatory; CMB-S4"
+        cmb = "Simons Observatory"
         for branch in ("P_C", "P_fwd"):
             for item_id in NS_DATASETS:
                 self.add("primordial", self.gaussian(
@@ -341,7 +341,7 @@ class Expected:
         for item_id in ("bk18_r_0p05", "tristram2022_r", "planck2018_x_r_0p002_bk15"):
             row = self.bound(
                 f"tensor_zero_{item_id}", "conditional_theorem_postdiction", item_id, False,
-                "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)")
+                "LiteBIRD (tests specified tensor alternatives above the achieved bound)")
             # Bind the scientific premises, not only the zero and upper bound.
             # No source term in a second-order tensor equation does not fix
             # its two homogeneous initial data.
@@ -370,7 +370,7 @@ class Expected:
         ):
             self.add("primordial", self.bound(
                 f"isocurvature_zero_{item_id}", "shared_baseline", item_id, False,
-                "LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline)"))
+                "LiteBIRD (bound tightening only; zero is the shared baseline)"))
         for item_id in ("planck2018_ix_fnl_local", "planck2018_ix_fnl_equil", "planck2018_ix_fnl_ortho"):
             self.add("primordial", self.gaussian(
                 f"fnl_zero_{item_id}", "shared_baseline", Fraction(0), item_id, False,

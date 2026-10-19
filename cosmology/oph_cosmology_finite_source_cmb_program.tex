@@ -52,18 +52,22 @@ tilt once its reserve-generator receipt is supplied. Physical dilation and radia
 sufficient uniqueness routes beyond one-shell data. The construction states
 the source, covariant stress, physical scale, Boltzmann transfer and likelihood
 conditions needed to convert these screen quantities into cosmological
-observables. On the sourced causal order the expanding background is a
-record density. The redshift is a fourth root of a count ratio for congruent
+observables. For a supplied layered event population with a conformally
+flat causal order, a spatially flat expanding background is a record density
+per comoving cell and conformal tick; native repair selects neither the
+population nor its profile. The redshift is a fourth root of a count ratio for congruent
 comoving windows with a constant scale factor within each window, or in the
 shrinking-window limit of a continuous profile. The
 receipt-conditional primordial values, the tilt \(1-P_\star/48=0.96602\),
 zero running, zero source-side isocurvature and zero linear primordial tensor
 amplitude under additionally vanishing tensor initial data and forcing,
 are compared with Planck 2018, ACT DR6, SPT-3G and BICEP/Keck
-data in a deterministic ledger with machine-checked brackets: the tilt lies
-within one standard deviation of Planck 2018 and of both SPT-3G
-combinations and 2.4 standard deviations below the ACT DR6 combination with
-lensing and baryon acoustic oscillations.
+data that precede the registered freezes, in a deterministic ledger with
+machine-checked brackets. The tilt lies within one standard deviation of
+Planck 2018 and of both SPT-3G combinations, and at the lower \(0.612\)
+percent position of the official ACT DR6, Planck, lensing and DESI BAO joint
+posterior chains, a retrospective tension under baseline \(\Lambda\)CDM that
+is not a likelihood ratio.
 \end{abstract}
 
 \section{Claim Boundary}
@@ -71,7 +75,13 @@ lensing and baryon acoustic oscillations.
 A physical cosmological prediction requires one construction that maps finite
 OPH records to a covariant source, propagates that source through a declared
 background, and evaluates the resulting observables with a complete likelihood.
-No such construction is supplied. Simulator outputs may test numerical
+No such construction is supplied. The executable observer construction runs
+native repair, records and local event clocks on one twelve-port carrier and
+on refining spherical source screens, where native density snapshots have a
+two-dimensional continuum limit~\cite{ophmodel,ophtimefields}. It supplies no
+covariant source, physical scale, radial lift or primordial branch, and the
+conditional tilt is not derived from its joint records~\cite{ophpublicdata}.
+Simulator outputs may test numerical
 interfaces and expose incompatible assumptions. They carry no cosmological
 verdict.
 
@@ -109,13 +119,22 @@ semantic commits, a declared mapping and complete certified read supports can
 make the generated informational order verify their execution dependencies.
 The provenance theorem alone derives neither these scientific nodes nor their
 prerequisite edges.
-The source Gram construction supplies a three-dimensional spatial carrier
-and, after adjoining a real axis, an algebraic Lorentzian carrier. A nonzero
+The source Gram construction supplies a rank-three Euclidean metric on one
+twelve-port carrier and, after adjoining a real axis, an algebraic Lorentzian
+carrier. A nonzero
 closed convex pointed displacement cone is forced to be future or past
 Lorentzian if the proper icosahedral rotations and all rapidities of one
 boost axis preserve it. This is an operational condition on histories,
 interventions and clock readouts; an algebraic frame action alone does not
 satisfy it. A time orientation fixes the future branch~\cite{ophEinstein}.
+The rank-three metric is a finite readout of that carrier's slow response,
+not an extended space. On the refining source screens, bounded-energy
+port modes lose the within-carrier band, including the rank-three band, at
+order \(2^{-l}\), and the native continuum generator has heat-trace spectral
+dimension two on the two-dimensional source~\cite{ophmodel,ophcontinuum}.
+In the native repair history, dependence crosses at most one seam per
+ordered repair event, a speed bound in graph hops per native event that
+fixes no laboratory speed or continuum light cone~\cite{ophcausality}.
 
 A conservative Fibonacci-record family realizes a controlled flat $1+3$
 limit through a specified population, complete shrinking-radius neighbour
@@ -125,7 +144,7 @@ $1/10$. Given complete authenticated ancestry and interval anchors, an
 observer can read $(|I|/|J|)^{1/4}$ relative to a nondegenerate interval $J$ in
 the same history. It converges to the proper-time ratio without using
 coordinates, timestamps or density in the readout. The population and local
-read law remain hypotheses of the limit, and the reference interval fixes
+read law are hypotheses of the limit, and the reference interval fixes
 only a relative time unit~\cite{ophEinstein}.
 
 Cosmology requires a common physical realization of those events and clocks
@@ -158,7 +177,10 @@ The statements are proved in the fragment below and machine-checked
 in the named Lean module. The record-production profile \(a(\eta)\) is a
 supplied datum on this family; deriving it from the source dynamics is the
 sourced-density problem of the spacetime paper, and nothing here supplies the
-Friedmann equation, a physical clock, or the physical scale map.
+Friedmann equation, a physical clock, or the physical scale map. In the
+fragment, conformal time \(\eta\), the layer index \(j\) and the durations
+\(\sigma_j\Delta\) called physical ticks are coordinates of the supplied
+FLRW chart; none is a calibrated observer clock.
 
 \input{../paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex}
 
@@ -186,6 +208,10 @@ C_\ell^q
 &=A_q\frac{\Gamma(\ell-\theta/2)}
 {\Gamma(\ell+2+\theta/2)},\qquad \ell\ge2.
 \end{align}
+The round-sphere Laplacian \(-\Delta_{S^2}\) is a premise of this spectrum.
+The native continuum generator \(A\) of the source screen has energy between
+fixed multiples of the gradient energy of the flat comparison polyhedron;
+its identification with \(-\Delta_{S^2}\) is not established~\cite{ophcontinuum}.
 A required infinitesimal reserve-generator receipt must supply a full-collar
 density \(P_\star/24\). A separately proved weighted
 orientation-reversal coarea identity then supplies its source-facing half, so
@@ -204,8 +230,8 @@ C_{\zeta,r}=U_rC_{{\rm src},r}U_r^*.
 \end{equation}
 For a tilted spectrum on all positive wavenumbers, require convergence on
 the common compact-$\ln k$ core, with the local dilation residual tending to
-zero, as specified by the source-orbit-transfer theorem in
-\path{paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex}. A global
+zero, as specified by the source-orbit-transfer theorem of the radial-lift
+packet in the spacetime paper~\cite{ophEinstein}. A global
 uniform covariance norm bound would be incompatible with nonzero tilt and
 unitary dilation. The local receipt instead gives, on that core,
 \begin{equation}
@@ -257,12 +283,11 @@ each numerator proves the rate. It concerns fixed integer modes in a
 fixed cube. It is not an infinite-volume hyperuniformity result or a
 primordial tilt. Finite directional power ratios can be large while both
 powers vanish; some finite modes remain above the independent-uniform
-structure-factor reference. The exact formula and independent small-cloud
-checks are preserved in
-\path{evidence/observer_dynamics_20260925/sim-analysis/scripts/codex_golden_fourier.py}
-with the retained numerical receipt. No physical length or curvature
+structure-factor reference. The exact formula, independent small-cloud
+checks and the retained numerical receipt are
+archived~\cite{ophgoldenfourier}. No physical length or curvature
 amplitude is selected by this supplied coordinate population. The Lean
-module \path{Lean/Geometry/GoldenSourceFourier.lean} checks tensor
+module \texttt{Geometry.GoldenSourceFourier}~\cite{ophlean} checks tensor
 factorization, fractional-coordinate phase equality and the finite
 geometric-series identity. The fixed-mode asymptotic argument above is
 analytical, not a claimed formal limit theorem.
@@ -282,7 +307,11 @@ not supply the common bulk or unbounded coverage: positive perturbations
 supported beyond the largest measured chord preserve all those marginals.
 The detailed radial theorem and its explicit positive-baseline control
 therefore strengthen the conditional inverse statement without identifying
-the native load record as curvature.
+the native load record as curvature. The native screen energy supplies no
+such common bulk: by the boundary-congruence exclusion of
+Section~\ref{subsec:native-cosmology-source-boundary}, a bulk reading of the
+screen needs a radial observation algebra that the native energy does not
+supply~\cite{ophcontinuum}.
 
 \section{Dark-Sector Interface}
 
@@ -339,9 +368,16 @@ rows are the following.
 a branch spread below \(10^{-7}\), lies \(0.27\sigma\) above Planck 2018
 (\(0.9649\pm0.0042\)), \(0.69\sigma\) above SPT-3G with Planck
 (\(0.9636\pm0.0035\)), \(0.79\sigma\) below the SPT, Planck and ACT
-combination (\(0.9684\pm0.0030\)), \(1.28\sigma\) below ACT DR6 with Planck
-(\(0.9709\pm0.0038\)) and \(2.43\sigma\) below ACT DR6 with Planck, lensing
-and baryon acoustic oscillations (\(0.9743\pm0.0034\)). The value is a
+combination (\(0.9684\pm0.0030\)) and \(1.28\sigma\) below ACT DR6 with
+Planck (\(0.9709\pm0.0038\)). The official joint posterior chains of ACT DR6
+with Planck, lensing and DESI 2024 baryon acoustic oscillations, whose mean
+is \(0.9743\pm0.0034\), place the branch at their lower \(0.612\) percent
+position and the historical clock alternative
+\(1-e(P_\star-\varphi)=0.96484\) at \(0.200\) percent; the measured tail
+differs from the Gaussian summary~\cite{act2025,ophpublicdata}. Those data
+precede the FZ-01 and FZ-15 registrations, so this is a retrospective
+tension under baseline \(\Lambda\)CDM, not a likelihood ratio, and the
+registered comparison with a later dataset is unchanged. The value is a
 consequence of the reserve-generator receipt, which is not supplied; the
 comparison records where a receipt-conditional number lands and selects no
 branch.
@@ -373,11 +409,15 @@ DESI DR2 with CMB \(0.0023\pm0.0011\), \(2.1\sigma\)) are shared with the
 adiabatic single-field baseline.
 \end{itemize}
 
-The background rows are the fixed-capacity equation of state
+The first background row is the fixed-capacity equation of state
 \((w_0,w_a)=(-1,0)\), which the Gaussian moment diagnostic of the official
 DESI DR2 chains places between \(2.6\sigma\) and \(3.9\sigma\) from the
 posterior means of the four default combinations, a tension recorded with
-the same prominence as the agreements, and the capacity candidates
+the same prominence as the agreements. This fixed-capacity point coincides
+with \(\Lambda\)CDM, so its survival earns no distinctive OPH support, and
+the registered FZ-13 rule uses empirical posterior quantiles rather than a
+Gaussian conversion~\cite{ophladder}. The other background rows are the
+capacity candidates
 \(3.29\times10^{122}\) and \(3.30\times10^{122}\), whose dictionary
 \(\Lambda\ell_P^2=3\pi/N\) returns the cosmological constant within
 \(0.6\) percent of the Planck-central value and \(2.7\sigma\) below the DESI
@@ -385,6 +425,9 @@ DR2 with CMB display. The conditional tilt protocol FZ-15 and the
 fixed-capacity protocol FZ-13 were frozen on 2026-10-04; the register labels
 both \texttt{frozen\_stamped\_upgrade\_pending}. Only their complete
 registered protocols and anchoring requirements govern eligible comparisons.
+The FZ-15 registered comparison concerns a specified later Simons
+Observatory product; the Planck, ACT DR6, SPT-3G and DESI data above precede
+both FZ-01 (2026-07-17) and FZ-15~\cite{ophladder}.
 The tensor-zero FZ-16 and running/isocurvature FZ-17 texts are unadopted
 proposals, not scoring contracts. Their historical proposal body is retained
 separately from the operative FZ-15 target.
@@ -426,6 +469,8 @@ cosmological comparison nor a falsification verdict.
 Object & Classification \\
 \midrule
 Finite observer-screen carriers & Conditional finite construction \\
+Native screen continuum generator \(A\) & Proved along one common refinement
+subsequence; two-dimensional; no physical, radial or primordial identification \\
 Screen scalar covariance & Conditional theorem \\
 Source-functional screen amplitude and edge-center tilt & Conditional theorem; finite receipt not supplied \\
 Radial-lift mathematics & Conditional theorem packet; one-shell unrestricted inversion is impossible \\
@@ -450,12 +495,64 @@ Existing cosmological calculations are diagnostics and carry no falsification
 verdict.
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_OPH_COSMOLOGY_FINITE_SOURCE_CMB_PROGRAM.tex}{}{}
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+
+\bibitem{ophmicro}
+B.~M\"uller et al.,
+\emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and
+Observer Synchronization in Observer-Patch Holography}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.pdf}.
+
+\bibitem{ophmodel}
+FloatingPragma (2026). The runnable OPH model: observer implementation,
+tests, receipts and construction guide.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}.
+
+\bibitem{ophcontinuum}
+FloatingPragma (2026). A spatial fluctuation field from one native history:
+the common spatial generator, its locality and spectral dimension, and the
+boundary-trace test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma (2026). Joint time and field laws on matched source screens.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
+
+\bibitem{ophcausality}
+FloatingPragma (2026). Exact native causal cones.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}.
+
+\bibitem{ophpublicdata}
+FloatingPragma (2026). OPH predictions and public-data comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
+
+\bibitem{ophladder}
+FloatingPragma (2026). Frozen prediction ladder.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/FROZEN_PREDICTION_LADDER.md}.
+
+\bibitem{act2025}
+T.~Louis et al. (2025). The Atacama Cosmology Telescope: DR6 power spectra,
+likelihoods and \(\Lambda\)CDM parameters. arXiv:2503.14452.
+\url{https://arxiv.org/abs/2503.14452}.
+
+\bibitem{ophlean}
+FloatingPragma (2026). Observer Patch Holography Lean formalization.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/Lean}.
+
+\bibitem{ophgoldenfourier}
+FloatingPragma (2026). Exact Fourier response of the golden source
+population: formula, small-cloud checks and numerical receipt.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/evidence/observer_dynamics_20260925/sim-analysis/scripts/codex_golden_fourier.py}.
+
+\bibitem{ophobsdyn}
+FloatingPragma (2026). Observer-dynamics analysis archive: specifications,
+refinement-chain receipts, independent controls and covariance extraction.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/observer_dynamics_20260925/sim-analysis}.
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_OPH_COSMOLOGY_FINITE_SOURCE_CMB_PROGRAM_BIBITEMS.tex}{}{}
 \end{thebibliography}

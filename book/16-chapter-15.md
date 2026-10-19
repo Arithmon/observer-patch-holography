@@ -88,7 +88,7 @@ That settles which content can carry a position. A position is a quantity two se
 
 The five-dimensional piece is the largest one on the wiring and it loses anyway. Its content halves in 6.6 passes against the slow band's 14.7, and after sixty passes the five directions are holding about a twentieth of what the three are holding. Whatever an observer writes into those five directions has drained most of the way out before a second observer can be told about it. A quantity like that describes nothing that has a place.
 
-That is where three comes from in the model. It is the number of independent directions in the one band that outlives every other band, on a wiring that has no alternatives. The band arithmetic above is exact; its preregistered fresh-seed instrument returned FAILED, so the observation ledger records the three-dimensionality row as owed and the match to the world's dimensions is not certified by it.
+That is where three comes from. It is the number of independent directions in the one band that outlives every other band, on a wiring that has no alternatives.
 
 ## The table of angles
 
@@ -99,6 +99,8 @@ Each port leaves a shadow in the slow band, a direction with a length. To compar
 Do that for all 144 pairs of port shadows and the table has exactly four different numbers in it. A port against itself gives 1. Two ports sharing a seam give one divided by the square root of five, which is 0.4472, an angle of 63.43 degrees. Two ports that are two seams apart give minus that. A port and the port directly across the arrangement from it give minus 1.
 
 Those are the angles the twelve ports of chapter fourteen's arrangement stand at, arriving here out of a rule about disagreement rather than out of anybody having measured anything. What went into the calculation was a list of which port shares a seam with which. What came back was a solid.
+
+An observer inside the carrier can read the same table off its own records, with no ruler and no view from outside. Prepare the ports, let repair run, and count the units crossing each port, timing the counts by nothing but the observer's own local events. The counts fix the table of angles exactly, and every one of the thirty seams lands at the same shortest distance. The way the observer's local clocks fluctuate gives the same distances a second time.
 
 The count of independent directions in a table like that is called its **rank**: how many of the twelve shadows you have to be given before the other shadows are forced. Two will not do it. Four is more than necessary. The rank of that table is three. Every entry in it is 1, or minus 1, or one over the square root of five with a sign in front, so the whole calculation runs in arithmetic built out of the square root of five and nothing anywhere in it is rounded.
 
@@ -132,9 +134,11 @@ That is the whole of what "the sum is 1" says. The surprise is in what it does n
 
 The fix for pi is a single operation and it is the operation that built the number line. Take the ratios of whole numbers, which have gaps in them wherever a sequence crowds together without arriving, and add in the limit of every such sequence. What comes out has no gaps left. It is the real numbers: the fractions together with every destination the fractions were pointing at. The name for the operation is **completion**.
 
-Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is the model's continuous three-dimensional space. The record points belong to it, just as fractions belong to the real line. Every other point is the destination of some sequence of ever more accurate records, in the sense that 3.1416 and its successors are a destination. Whether the world's space carries the same three is the owed row above.
+Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is a continuous three-dimensional space. The record points belong to it, just as fractions belong to the real line. Every other point is the destination of some sequence of ever more accurate records, in the sense that 3.1416 and its successors are a destination.
 
 The sixty rotations come along. Each of them permutes the twelve ports, so each leaves every entry of the table of angles precisely where it was, so each preserves every distance in the completed space. A transformation that preserves all distances is a **rigid motion**: what a machinist does picking up a part and setting it down the other way round, with nothing stretched. The group chapter fourteen counted at sixty elements acts on the space it built as the turns of a rigid body.
+
+A carrier is one piece of something larger. Carriers join into a sphere, twenty of them, then eighty, then three hundred and twenty, each level finer than the last, and repair running across the joins has a smooth limit of its own. That limit lives on the sphere the carriers tile. Count its modes below each frequency and the count grows the way it grows on a surface: the limit has dimension two, the dimension of a screen, the surface a hologram is written on. The three slow directions inside each carrier drop out of the screen's low-energy modes at that scale. Three is the number of directions in each carrier's slowest response, the screen the carriers make together is two-dimensional, and chapter twenty-three sets the two side by side.
 
 ## What holds at a finite resolution
 

@@ -117,8 +117,11 @@ reversible proposal rates, tests whether the oriented \(24\)-slot register is an
 space, and fixes only symmetry-protected degeneracies rather than numerical gaps or clock units.
 The finite echosahedral selector gives the exact unit split within the
 declared integer counting and normalized readback-cost realization. Atomic
-signed record events generate the integer loads, while conservative whole-unit
-repairs terminate by strict quadratic descent. Their minimum move count is
+signed record events generate the integer loads, and accepted whole-unit
+repairs at load difference at least two terminate by strict quadratic descent;
+the native seam rule of the executable observer construction~\cite{ophmodel}
+also waits or swaps at difference one, which preserves the quadratic sum and
+keeps the balanced class in motion. The minimum accepted move count is
 natural under rotations and the declared refinements. Oriented incidence
 separately gives the proper-\(A_5\) result without using downstream particle
 or gauge targets.
@@ -476,6 +479,10 @@ cellulations of the chart supply the regulator side: patch ports, edge sectors, 
 overlap checks.
 
 At fixed cutoff, the fundamental object is a finite patch federation.
+Its smallest instance is one twelve-port carrier: in the executable observer
+construction a single carrier supports overlapping observer regions, native
+repair and local event clocks, and joined carriers serve larger regions,
+distant interventions and refinement~\cite{ophmodel}.
 Each patch has:
 \begin{enumerate}[leftmargin=2em]
 \item an internal finite state algebra;
@@ -4862,39 +4869,39 @@ B.\ M\"uller, J.\ Kim, D.\ Matscheko, and J.\ Hill,
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and Refinement in Constraint
 and Rewrite Systems},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/observable_normal_forms.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/observable_normal_forms.pdf}.
 
 \bibitem{eventalgebraLean}
 B.\ M\"uller,
 \emph{Verified Projection-Event Calculus in Lean~4: Bundled Arbitrary-Partition Pinching,
 L\"uders Retractions, and CHSH Interoperability},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/machine_checked_finite_event_algebras.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/machine_checked_finite_event_algebras.pdf}.
 
 \bibitem{ophobservers}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, B.\ Cassie, and P.\ Nguyen,
 \emph{Observers Are All You Need}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/observers_are_all_you_need.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/observers_are_all_you_need.pdf}.
 
 \bibitem{ophconsensus}
 B.\ M\"uller, K.\ Xue, J.\ Kim, K.\ A.\ Anirudha, D.\ Matscheko, and J.\ Hill,
 \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That Implements Physics}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/reality_as_consensus_protocol.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/reality_as_consensus_protocol.pdf}.
 
 \bibitem{ophGauge}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, P.\ Nguyen, and D.\ Matscheko,
 \emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
 
 \bibitem{ophsynthesis}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, B.\ Cassie, P.\ Nguyen, J.\ Kim, D.\ Matscheko, J.\ Hill, W.\ T.\ Glynn, M.\ A.\ Visser, K.\ A.\ Anirudha, and B.\ de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/flagship/from_observer_consensus_to_standard_physics.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{ophparticles}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, and K.\ Xue,
 \emph{Deriving the Particle Zoo from Observer Consistency}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
 
 \bibitem{ophfpe}
 B.\ M\"uller,
@@ -4907,13 +4914,13 @@ Finite provenance and operator producers, independent verifiers, and receipts:
 Large-run source revision:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/ce17921eb7504106fef1ba445e1349b5367aa676}.
 Exact-federation archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/exact_federation_L6_canonical_20260909}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/exact_federation_L6_canonical_20260909}.
 Closure-loop archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/closure_loop}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/closure_loop}.
 Causal-poset archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/source_net_causal_poset}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/source_net_causal_poset}.
 Evidence index:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence}.
 
 \bibitem{ophrepo}
 FloatingPragma (2026). Observer Patch Holography: Lean library, exact code
@@ -4923,12 +4930,12 @@ Available at \url{https://github.com/FloatingPragma/observer-patch-holography}.
 \bibitem{ophym}
 B.\ M\"uller and J.\ Hill,
 \emph{Explaining the Yang--Mills Mass Gap with Observer-Patch Repair Dynamics: A Support-Visible OPH Route to the Clay Problem: A Conditional Identity}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/yang_mills_gap_clay_problem.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/yang_mills_gap_clay_problem.pdf}.
 
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
 
 \bibitem{KipnisVaradhanNative}
 C. Kipnis and S. R. S. Varadhan,
@@ -4936,6 +4943,23 @@ C. Kipnis and S. R. S. Varadhan,
 processes and applications to simple exclusions,''
 \emph{Communications in Mathematical Physics} \textbf{104} (1986), 1--19.
 \url{https://doi.org/10.1007/BF01210789}.
+
+\bibitem{ophmodel}
+B.~M\"uller, M.~Poneder, and J.~Kim,
+\emph{An Executable Observer for Observer Patch Holography: Specification, Certified Components and Acceptance Criteria}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/executable_observer_construction.pdf}.
+
+\bibitem{ophcontinuum}
+FloatingPragma,
+\emph{A spatial fluctuation field from one native history},
+2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}.
+
+\bibitem{ophtimefields}
+FloatingPragma,
+\emph{Joint time and field laws on matched source screens},
+2026.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}.
 
 \InputIfFileExists{tex_fragments/PRIOR_WORK_SCREEN_MICROPHYSICS_AND_OBSERVER_SYNCHRONIZATION_BIBITEMS.tex}{}{}
 \end{thebibliography}

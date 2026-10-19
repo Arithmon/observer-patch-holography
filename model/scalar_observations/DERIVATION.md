@@ -294,19 +294,22 @@ theorem by zero.
 ## 6. The remaining occupation and physical obligations
 
 The unrestricted theorem and finite source execution have matching physical
-definitions, but no quantified occupation comparison between them has been
-proved in this packet. Their initial kicks, smooth detectors and conditional
+definitions. The spatial derivation in this document does not compare their
+occupations. Their initial kicks, smooth detectors and conditional
 kicks create infinite occupation support in the unrestricted model. Agreement
 between occupation-two and occupation-four numerical outputs, and the
-zero-duration blank calibration, do not supply that missing bound.
+zero-duration blank calibration, do not supply that bound. The separate
+[occupation derivation](OCCUPATION_DERIVATION.md) supplies it for the
+principal history: its [receipt](occupation_results.json) gives an ideal
+source-to-unrestricted record TV bound below 0.054 at the finest retained grid.
 
 The finite-code grid and temporal certificates must consequently retain a
 finite-code target. The unrestricted spatial certificate must remain a
 separate theorem. The earlier eight-site occupation certificate cannot be
 transferred: it used another action, preparation and detector.
 
-An additional occupation theorem, wider physical momentum bands, compatible
-state preparation and calibrated operational time are subsequent tasks.
+Wider physical momentum bands, compatible state preparation and calibrated
+operational time are subsequent tasks.
 Calibration observations and later comparison observations must have explicit
 roles. The current numerical choices are exploratory; their response to the
 supplied interaction or feedback is not a preregistered prediction or an

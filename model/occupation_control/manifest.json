@@ -8,7 +8,7 @@
   "description": "Outward-enclosed full-path occupation and integration control for the supplied spin-oscillator apparatus, including preparation and detector.",
   "files": {
     "DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
-    "README.md": "130ec8d82f561613d8aaa72ba243bf99ffc551fcca77aa0d582a21b0c27a315b",
+    "README.md": "525be50684bac1b435321aa145db7312d4dbc41b8b0c1738d4f6772e640b2ce7",
     "__init__.py": "fbe5ce9438a35ba51737471026d78abc5fb5b88582607c244a7ce84efa5dc16c",
     "__main__.py": "b442422dbc00e0873a934c8c9348ea26af75e851c36721784744dd9f88887cfc",
     "experiment.py": "4073a2d90e53004a0eb0c0a1fc185e4c94768798b07d3a934b161dd896920285",

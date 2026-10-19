@@ -48,7 +48,7 @@ Two for three. Nothing in the glass consults the column. The mercury stands wher
 
 That is a useful failure, because it shows which of the three is load-bearing. Take away the boundary and you get a duplicate. Take away the writing and nothing is retained. But take away the reading and you are left with something that looks entirely functional, sits on the wall for decades, correlates with the world to a fraction of a degree, and observes nothing whatsoever.
 
-The thermostat passes this elementary operational contract. A person also has bounded access, retained state and feedback, along with much richer organization. Sharing that contract does not prove that their difference is only quantitative or that either device has experience; the later consciousness argument adds a psychophysical hypothesis.
+The thermostat passes. So does a person, who has bounded access, retained state and feedback along with a great deal more organization. Passing the same test makes both of them observers and says nothing about whether either one feels anything; chapter thirty-nine takes that question up on its own.
 
 A sensor, a number you set and a switch meet all three in full. That is the whole of what anything needs to be an observer, thermostats and people included.
 
@@ -98,11 +98,11 @@ Observer-first is constraint-first. Nothing anywhere in this book turns on anybo
 
 ## What the starting point explains
 
-A theory that supplies a spacetime can explain how its geometry changes and what matter does within it. Explaining why that starting structure is appropriate requires an additional argument. Chapter one's examples show several ways to move the boundary between what is assumed and what is derived.
+A theory that starts with a spacetime can explain how its geometry changes and what matter does within it. Why that starting structure is there at all is a question it cannot reach from inside. Chapter one's examples show several ways to move the boundary between what is assumed and what is derived.
 
 OPH begins on the observer side of that boundary. Consider the sentence: *these two records agree*. It specifies a relation between bounded record-keepers without assigning them coordinates or a distance. The patch architecture makes such comparisons precise through its states, ports and repair laws.
 
-That gives a vocabulary for reconstruction. Whether it describes physical spacetime depends on how the records, their relations and their dynamics connect to measured geometry. Agreement supplies the common constraint; the physical bridges must do the rest.
+That gives a vocabulary for reconstruction. Agreement is the common constraint, and the chapters that follow build distance, duration and curvature out of records, their relations and their dynamics, one bridge at a time.
 
 ## The bill
 

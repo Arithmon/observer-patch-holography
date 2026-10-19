@@ -3456,6 +3456,16 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
     )
     lines.append("")
     lines.append(
+        "Append-only note, 2026-10-19: DOE and NSF ended their support for the"
+        " CMB-S4 project on 9 July 2025 ([CMB-S4](https://cmb-s4.org/)). FZ-01's"
+        " frozen custody files, decision rule and scorer order are unchanged."
+        " The terminal CMB-S4 pass has no decision data unless a CMB-S4 baseline"
+        " product is released; substituting another dataset changes the"
+        " combination, which the frozen policy allows only through a new"
+        " registration before the data opening."
+    )
+    lines.append("")
+    lines.append(
         "FZ-10 retains its existing armed physical comparison. The October 4"
         " FZ-13 and FZ-15 registrations add specified conditional branch tests:"
         " their fixed-capacity and reserve-generator premises are hypotheses,"
