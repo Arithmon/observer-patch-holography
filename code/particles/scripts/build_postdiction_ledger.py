@@ -7002,7 +7002,7 @@ def _render_md(ledger: dict[str, Any]) -> str:
             continue
         rendered = "; ".join(
             f"`{module}`: " + ", ".join(f"`{name}`" for name in names)
-            for module, names in bindings.items()
+            for module, names in sorted(bindings.items())
         )
         add(f"- `{row['id']}`: {rendered}")
     add("")
