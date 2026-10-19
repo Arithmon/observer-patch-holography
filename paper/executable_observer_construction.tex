@@ -84,10 +84,11 @@ recovery of a logical qubit, including its reference entanglement. The
 quantum record laws compatible with the native repair form an exactly
 classified convex family, and a fixed count protocol reads the coherence that
 separates its members; no comparison data exist. On the refining spherical
-source, a common subsequence defines one continuum spatial operator for
-native decay, admitted coherent waves and continuous classical Gaussian
-wave readouts. A finite repair intervention has an exact response predicted
-from passive clock and field records. A premise map
+source, a common subsequence defines a regular local spatial form with
+spectral dimension two, native decay, admitted coherent waves with a finite
+comparison-space propagation bound, and continuous classical Gaussian wave
+readouts. A controlled repair protocol has a nonvanishing mean response at
+fixed small amplitude in this limit. A premise map
 records which theorem antecedents the construction supplies and which enter
 as inputs. The open connections are spatial refinement of the full interacting
 construction, responsive geometry,
@@ -2321,18 +2322,39 @@ dependency set proves the dependency claim by induction
 On the declared spherical source family, the native cell Green operators
 converge in norm along one common subsequence to a positive compact
 injective operator $G$ on the mean-zero observation space. Its inverse
-$A=G^{-1}$ is densely defined and self-adjoint. The spatial action is
-$\|\sqrt A f\|^2$; full native density correlations converge to
+$A=G^{-1}$ is densely defined and self-adjoint. Restoring the constant zero
+mode gives a conservative strongly local regular Dirichlet form, with domain
+$H^1$ on the supplied flat-polyhedron comparison surface. Its energy is
+bounded above and below by positive multiples of the gradient energy, and
+its heat-trace spectral dimension is two. Full native density correlations converge to
 $e^{-\tau A}$, while the admitted coherent continuation converges strongly
-to $\cos(t\sqrt A)$. Two consecutive long observation blocks of the same
+to $\cos(t\sqrt A)$. The full-space extension $\bar A=A\oplus0$ satisfies
+\[
+ \|\mathbf1_F e^{-\tau\bar A}\mathbf1_E\|
+ \le e^{-d(E,F)^2/(2\tau)}.
+\]
+Its cosine propagator vanishes between these supports when
+$|t|<\sqrt2\,d(E,F)$. The distance is the declared flat comparison distance;
+neither it nor the coherent parameter has a laboratory calibration.
+Two consecutive long observation blocks of the same
 native history supply a continuous classical Gaussian wave readout with
 covariance $G\cos((t-u)\sqrt A)$ in $C([0,T],H^{-2}(S^2))$
 \cite{nativeContinuum}. Observation count tends to infinity before spatial
 refinement. The wave readout is declared processing, distinct from passive
-density waiting and from the quantum vacuum. Increasing native-return caps
-match modular phase magnitudes to this cosine limit; a fixed cap freezes
-the low-band phase. No unique whole-sequence limit, local limiting metric,
-finite continuum propagation speed or observed $1+3$ spacetime is proved.
+density waiting and from the quantum vacuum. Neither a unique whole-sequence
+limit nor an observed $1+3$ spacetime is proved.
+
+\paragraph{The reference-state boundary.}
+Increasing native-return caps match modular phase magnitudes to the cosine
+limit; a fixed cap freezes the low-band phase. On the full configuration
+algebra, however, the uncapped reference approaches normalized trace with
+half-trace error at most $3/(8\,2^l)$. Its density-wave sector has vanishing
+weight. Fixed-parameter modular evolution becomes trivial in normalized-trace
+$L^2$, and bounded-overlap fluctuation commutator expectations vanish.
+These bounds do not exclude refinement-rescaled time, other states or
+other fluctuation regimes. If the relevant fluctuation moments converge,
+any limiting scalar canonical commutator in this bounded-overlap regime
+must be zero; a quantum vacuum is not identified \cite{nativeContinuum}.
 
 \section{A prediction protocol}
 \label{sec:prediction}
@@ -2351,6 +2373,29 @@ the intervention contributes to each incident clock. Complete capped
 clock/field forecasts and the native spatial Green response satisfy this
 identity exactly \cite{nativeContinuum}. The forecasts have no matched
 public intervention dataset and establish no discriminator against SM+GR.
+
+\paragraph{A controlled continuum response.}
+For a disclosed port profile $h$, a uniform seam $(a,b)$ executes its
+unchanged fair repair with probability
+$[1+\epsilon(h_b-h_a)(n_a-n_b)]/2$. The clock counts executed repairs,
+including zero currents; selection slots and controller services are charged
+separately. Its exact linear occupation response is
+$2\chi K(I-K^r)h$, with the extra $K$ arising from state-dependent clock
+stopping. The normalized coordinate profile on the refining source gives
+\[
+ \left.\partial_\epsilon\Ex\eta_l(g)\right|_0
+ \longrightarrow 2\langle g,(I-e^{-\tau A})f\rangle.
+\]
+At $\tau=1$, a cap of four selection slots per target repair retains actual
+timeout fields. Stopped likelihood bounds control the nonlinear mean error
+by $36\epsilon^2\|g\|$. For a unit-axis flat coordinate and
+$\epsilon=10^{-6}$,
+$\liminf_l\Ex_\epsilon\eta_l(f)\ge
+\epsilon\,9/32792-36\epsilon^2>0$.
+Finite fair-bit activation approximations have vanishing terminal-mean error
+with explicit service counts. This is a controlled signal on the same
+continuum, without a unique nonlinear limit or an identified physical force
+\cite{nativeContinuum}.
 
 \subsection{The phase experiment}
 \label{sec:ce-protocol}
@@ -2587,6 +2632,23 @@ This inventory does not individually instantiate or prove every listed
 claim, ordinary assumption or imported result in the observer model
 \cite{mPREMISES}. Table~\ref{tab:premises} summarizes seven theorem routes.
 
+\paragraph{Finite entropy and the gravitational premise.}
+For positive sector counts $d_i$, normalized probabilities $p_i$ and fixed
+$M=\sum_i d_i$, the counting entropy obeys
+\[
+ S_{\rm count}=H(p)+\sum_i p_i\log d_i
+ =\log M-D(p\|d/M)\le\log M.
+\]
+The maximizer is $p_i=d_i/M$. In the positive-real relaxation, joint
+fixed-$M$ variations have zero first derivative there and second derivative
+$-\sum_i(p_i'-d_i'/M)^2/p_i$. This is not an operation varying integer
+dimensions. If sectors contain bulk factors, full entropy saturation also
+requires maximally mixed bulk blocks and counts their dimensions.
+Uniform native preparation realizes counting weights; consensus against an
+arbitrary reference need not do so. Fixed count has not been identified
+with fixed physical volume, nor the logarithmic sector term with a geometric
+area term of universal coefficient \cite{nativeEntropy}.
+
 \begin{table}[htbp]
 \centering
 \footnotesize
@@ -2634,8 +2696,9 @@ chiral matter.\\
 Scalar continuum \cite{ophobservers,flagship} &
 Refinement transfer to complete histories and native feedback; occupation
 limits with complete-output bounds for free and interacting two-site
-actions; the infinite-occupation interacting signal. A native spatial
-operator governs spherical Gaussian fields, decay and admitted waves
+actions; the infinite-occupation interacting signal. A native regular local
+$H^1$ form of spectral dimension two governs spherical
+Gaussian fields, decay and admitted finite-speed comparison waves
 \cite{nativeContinuum}. &
 The scalar action, quantization and vacuum; inertia; the model clock; a
 spatially refining family for the interacting process.\\
@@ -2644,8 +2707,8 @@ Modular clocks \cite{ophspacetime} &
 Finite modular flow of actual observation states; a programmed modular clock
 with a readable law; the fixed-reference relation $t=-\beta s$ and a gauge
 probe on the continued smooth history. A specified native-return reference
-links wave phases to a modular generator, with a controlled increasing-cap
-continuum limit; fixed caps freeze that low-band phase
+links rescaled wave phases to a modular generator; its full-state limit is
+tracial at fixed modular parameter, and fixed caps freeze the low-band phase
 \cite{nativeContinuum}. &
 Selection of a physical reference and its complete modular dynamics;
 Bisognano-Wichmann identification; common
@@ -2654,11 +2717,11 @@ depth.\\
 \addlinespace
 Gravity \cite{ophspacetime} &
 A rank-three response attached to committed records and native causal cones;
-a common spherical continuum operator and continuous observation and
+a common local spherical continuum and continuous observation and
 classical-wave limits under their count-first contract
 \cite{nativeContinuum}. These supply no responsive metric or physical stress. &
-Physical region, metric and area attachment; generalized-entropy
-stationarity; small-ball geometry; conserved stress; universal coupling and
+Physical region, metric and area attachment; geometric identification of
+finite counting-entropy stationarity; small-ball geometry; conserved stress; universal coupling and
 normalization on one inhabited physical tower.\\
 \bottomrule
 \end{tabular}
@@ -2866,7 +2929,12 @@ FloatingPragma (2026). \emph{The runnable OPH model}. Model document.
 FloatingPragma (2026). \emph{A common native continuum operator, wave
 observations, modular phases and repair response}. Executable model,
 analytic bounds and retained source receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/6660fdf891ae4c7f103f3a877894724439c3b866/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b56cf9a2cfe0cb10c206db60c399ca042972de4b/model/README.md}
+
+\bibitem{nativeEntropy}
+FloatingPragma (2026). \emph{Joint counting stationarity and its geometric
+boundary}. Exact entropy identity and finite source controls.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b56cf9a2cfe0cb10c206db60c399ca042972de4b/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
 
 \bibitem{mCONSTRUCTION}
 FloatingPragma (2026). \emph{OPH model construction from local repair}.
@@ -2887,7 +2955,7 @@ register.
 \bibitem{mPREMISES}
 FloatingPragma (2026). \emph{OPH reverse-engineering table: model and theorem
 premises}. Generated premise map and concrete theorem bindings.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/6660fdf891ae4c7f103f3a877894724439c3b866/model/PREMISES.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b56cf9a2cfe0cb10c206db60c399ca042972de4b/model/PREMISES.md}
 
 \bibitem{mMAP}
 FloatingPragma (2026). \emph{Model and theorem navigation map}.
