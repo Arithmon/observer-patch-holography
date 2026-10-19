@@ -35,7 +35,7 @@ are not identified by this experiment.
 | Finite approximation | The common-ball calculation caps each scheduled waiting interval at `h` attempts and retains every timeout prefix. Positive integer arithmetic supplies enclosing masses; discarded numerical mass is charged. |
 | Output | The four-bit success law and all timeout prefixes are a declared coarsening of the richer current/controller history. A complete law here means all outcomes of this declared output, not every source mark or terminal quantum state. |
 
-The source identification is the one already checked by the stopped-clock
+The source identification is the one checked by the stopped-clock
 comparison:
 
 | Quantity | Value |
@@ -86,9 +86,9 @@ with the diagonal matrix `W=diag(Omega_rho)`. Field projectors commute with
 ```
 
 This follows by writing `pi_rho=W Omega_rho`, moving `W` through the
-number-preserving product, and using `1^T W=Omega_rho^T`. Moreover,
+number-preserving product, and using `1^T W=Omega_rho^T`. The identities
 `A Omega_rho=(1-p)Omega_rho`, `B Omega_rho=p Omega_rho` and
-`D^s Omega_rho=p^s Omega_rho`.
+`D^s Omega_rho=p^s Omega_rho` also hold.
 
 Remote seams have no endpoint in the root. Root occupation projectors and
 the internal repair `(0,1)` thus commute with `D` and its real powers.
@@ -98,7 +98,7 @@ factors cancel against `Omega_rho`. This proves equality of every complete
 local field word under the native `K` process and the effective `T`
 process, with the same projectors and internal intervention dictionary.
 The proof is branchwise and so permits the stated record-dependent choice
-to apply or omit the repair. Initial conditioning is already represented
+to apply or omit the repair. Initial conditioning is represented
 by its retained projectors; it does not require a new stationary state
 after a read.
 
@@ -239,7 +239,7 @@ Let `j` count successful scheduled intervals before a timeout, with
 Pr(a,b,timeout after 0) = pi_ab (1-q).
 ```
 
-For `j>=1`, the already observed `c` remains in the timeout record:
+For `j>=1`, the observed `c` remains in the timeout record:
 
 ```text
 Pr(a,b,c=1,timeout after j)
@@ -325,7 +325,7 @@ dyadic grid. The complete deficit must then be recomputed from the
 exported lower masses, or explicitly enlarged by the sum of their downward
 rounding losses. Likewise the completed missing mass uses the sixteen
 exported success lower masses when it certifies that exported vector.
-Rounding one previously computed deficit cannot in general cover all
+Rounding one aggregate deficit cannot in general cover all
 separate row-rounding errors.
 
 ## Composing with the actual-screen locality theorem
@@ -412,7 +412,7 @@ first-read memory for each screen. Loading checks these original values
 against the source prefix, including exact types and record ancestry.
 This source replay is a validation operation, not another observation
 available to the controller. After restoration, the observer advances the
-saved counters and first-read memory using only the newly produced record
+saved counters and first-read memory using only the subsequent record
 suffix. It neither resets the counters from terminal occupations nor
 reprocesses the old prefix as part of this operational continuation.
 Independent full-history reconstruction and comparisons with terminal
@@ -519,7 +519,7 @@ coherent-state uniqueness theorem.
 Repair preserves `N`, so it cannot select the sector or density. The displayed
 non-diluting examples use `N=5120` and `81920`, respectively, giving density
 `1/3` on each screen. The equilibrium law is derived conditional on that
-conserved boundary. Choosing to prepare it is still an operational service.
+conserved boundary. Choosing to prepare it is an operational service.
 An exact sampler uses successive uniform integer choices: with `r` positions
 remaining and `n` occupations left, the next bit is one when a uniform
 integer from `0,...,r-1` is below `n`. Every final `N`-subset has probability
@@ -551,7 +551,7 @@ E[n_X | a,b] = (factors a,b present in X)
 
 where `r` counts the distinct undisclosed ports in `X`. Replacing the product
 expectation in the existing dual by this identity evaluates the same complete
-44-record protocol. Known coefficient mass still bounds each expectation
+44-record protocol. Known coefficient mass bounds each expectation
 because every monomial lies in `[0,1]`. All directed rounding, timeout,
 cumulant and outward export allowances therefore remain valid. Impossible
 initial disclosures retain explicit zero-mass branches.
@@ -606,4 +606,204 @@ service, coherent continuation and physical identification explicit.
 ```text
 python -m model.observer_time_fields.canonical_sector --check model/observer_time_fields/canonical_sector_results.json
 python -m pytest -q -W error model/observer_time_fields/test_canonical_sector.py
+```
+
+## Native temporal correlations and the spatial Green field
+
+[The temporal implementation](spatial_dynamics.py) connects the actual
+[source Green construction](../physical_space_time/OCCUPATION_FIELD.md#controlled-green-elimination-on-the-actual-source-screens)
+to correlations at separated native attempts. It uses the same binary
+repair, uniform IID seam selection and stationary canonical number sector.
+For collective fields the observer admits the initial occupation disclosure
+and complete seam/current tape; these reconstruct the occupations through
+actual repairs. A single primitive port tape does not supply all these reads.
+The sector can have any `0<q<V`; the continuum field uses `q=V/3`, while
+the exact elementary oracle executes all 3,960 branches of `V=12,q=2`.
+
+Let `L_l` be the full port Laplacian, `M_l=630*4^l` its seam count,
+`s=4^l`, `P0` remove the conserved constant, and
+`chi=q(V-q)/(V(V-1))`. For `eta=x-q/V`, native repair gives exactly
+
+```text
+E[eta_(n+1) | eta_n] = K_l eta_n,     K_l=I-L_l/(2M_l),
+Cov(eta_n,eta_0) = chi K_l^n P0.
+```
+
+The first identity follows on every seam from the mean of the two native
+endpoint outcomes. The second uses the exact canonical covariance
+`E eta_0 eta_0*=chi P0`; it is not an independent-particle assumption.
+These are two-point laws of bounded native occupations, not a claim that
+their instantaneous joint distribution is Gaussian. Initial occupation
+disclosures used for readback retain every label and are not conditioned
+away in these expectations.
+
+Set `N_l=2M_l s`. For any rational discount rate `z>0`, the geometric series
+is an exact processing of correlations at integer native attempts:
+
+```text
+r=N_l/(N_l+z),
+(1/N_l) sum_(n>=0) r^(n+1) K_l^n = (s L_l+zI)^-1.       (T)
+```
+
+The omitted tail after `h` terms has norm at most `r^h/z`. No extra Poisson
+scheduler or fractional native event is needed. The constant mode is
+`1/z` on both sides and disappears for centered fields. Its mean-free
+`z->0` limit is `(1/s)L_l^+`, exactly the Green operator in the spatial
+fluctuation construction. Thus that static covariance and (T) come from
+one repair law and readout dictionary. The observation-count Brownian
+limit concerns cumulative fields on long histories; its fluctuation-time
+parameter is different from the native attempt separation in (T).
+
+### A uniform temporal bound for eliminating carrier interiors
+
+Let `U` repeat a cell value over its twelve ports with factor `1/sqrt(12)`.
+Decompose the actual full Laplacian between cell constants and their
+orthogonal complement:
+
+```text
+L_l = [[A,C],[C*,D]],       S_l=A-CD^-1C*.
+```
+
+The internal native gap is greater than `lambda0=2`. The cross-carrier
+seams form a port matching, so their Laplacian has norm at most two.
+The existing Schur comparison gives
+`S_l >= lambda0/(lambda0+2) A`. Consequently
+
+```text
+CD^-2C* <= (A-S_l)/lambda0 <= 2S_l/lambda0^2.
+```
+
+The Schur formula at positive frequency is
+
+```text
+U*(sL_l+zI)^-1U = (sS_l+zI+E_z)^-1,
+E_z=sC[D^-1-(D+z/s)^-1]C*,
+0 <= E_z <= [2z/(lambda0^2 s)] sS_l.
+```
+
+For `R=(sS_l+zI)^-1`, positivity and the resolvent identity yield
+`0<=R-(R^-1+E_z)^-1<=R E_z R`. Since
+`max_(a>=0) a/(a+z)^2=1/(4z)`, this proves at every source level
+
+```text
+0 <= (sS_l+zI)^-1-U*(sL_l+zI)^-1U,
+||(sS_l+zI)^-1-U*(sL_l+zI)^-1U|| <= 1/(8s).             (R)
+```
+
+The constant mode cancels in the difference. The result holds for every
+admitted port matching, independently of how geometric directions label
+its ports, and survives restriction to the fixed ancestry observations.
+The executable verifies exact full 240-port residuals for `z=1/2,1,4`;
+independent full-matrix solves and changed valid port routings test (R).
+
+Cell means do not form a closed Markov process at finite level. Their
+two-attempt discrepancy from resetting to cell means is
+`CC*/(2M_l)^2`; the base cell-zero/minus-cell-one contrast gives exactly
+`13/19051200`. Weak convergence of compressed static Green operators
+alone does not establish a limiting resolvent identity or unique temporal
+semigroup. Stronger convergence and the complete observable-domain mapping
+are required for those claims.
+
+### Two continuations of the same native density spectrum
+
+On the scaled low band `a=s lambda<=Lambda`, the positive attempt transfer
+has `H_density=-log(I-L_l/(2M_l))`. Its rescaled eigenvalues obey
+
+```text
+0 <= N_l H_density-a <= Lambda^2/[2(N_l-Lambda)].        (L)
+```
+
+This is a bound on the declared band, not on the full growing spectrum.
+For the root-carrier incident clock, write `m=33`, let `L_i` contain its
+incident seams, and let `L_r=L_l-L_i`. The density transfer has positive
+similarity representative
+`T=(2mI+L_r)^-1/2(2mI-L_i)(2mI+L_r)^-1/2`.
+Generalized min-max gives ordered eigenvalue bounds
+
+```text
+lambda/(2m+lambda) <= eigenvalue_j(I-T) <= lambda/(2m),
+|2ms eigenvalue_j(-log T)-s lambda_j|
+    <= Lambda^2/[2(2ms-Lambda)].                        (I)
+```
+
+Only the low band with `Lambda<2ms` is used. This is an ordered spectral
+comparison, not a scalar conversion of every native field or marked clock
+history. Complete incident laws use the earlier noncommuting transfer
+dictionary and retain their waiting and readout correlations.
+
+There is also a positive wave construction. Reuse the
+[coherent native-arc continuation](../observer/COHERENT_CONTINUATION.md):
+coherently prepare the uniform seam/coin alternatives with isometry `A0`,
+reverse each native current arc with involution `J`, and reflect about the
+prepared subspace. For `W=J(2A0 A0*-I)`, its exact compression is
+
+```text
+A0* W^n A0 = T_n(K_configuration),
+K_configuration G = G(I-L_l/(2M_l)).
+```
+
+Here `T_n` is a Chebyshev polynomial and `G[x,p]=x_p-q/V`. These identities
+hold on each fixed binary number sector: native branch reversal is a
+bijection on every seam, and each density column obeys the preceding
+endpoint identity. They do not replace exclusion by independent particles.
+Therefore the density-mode compressed amplitudes are
+`cos(n arccos(1-lambda/(2M_l)))`. Put `Q_l=M_l s` and define the coherent
+step parameter `t=n/sqrt(Q_l)`. For `a=s lambda<=Lambda<4Q_l`,
+
+```text
+Omega_l(a)=sqrt(Q_l) arccos(1-a/(2Q_l)),
+0 <= Omega_l(a)/sqrt(a)-1 <= Lambda/[6(4Q_l-Lambda)] = e_l,
+||cos(n theta)-cos(t sqrt(sL_l))||_band <= t sqrt(Lambda) e_l.   (W)
+```
+
+The zero mode is obtained by continuity. To prove the bound, set
+`x=sqrt(a/(4Q_l))`. Then `arccos(1-2x^2)=2 asin(x)` and
+`asin(x)-x<=x^3/[6(1-x^2)]`, by integrating
+`(1-u^2)^-1/2-1<=u^2/[2(1-x^2)]`. Thus (W) gives an explicit
+square-root spatial dispersion for an admitted continuation of the same
+native density transfer. The finite oracle executes all 3,960 native arcs
+through eight coherent steps and retains both Ramsey outcomes.
+
+These are coherent amplitudes and an apparatus clock, not the passive
+occupation process. Coherent access to uncommitted records, their reversible
+re-encoding, the reflection, preparation of the stated amplitude and
+controlled Ramsey readout are required services. Opposite reflection gives
+the same first coherent native event but a different second Ramsey result.
+A phase on a complete committed current label preserves each CP instrument
+branch while changing the coherent transfer's third spectral moment by
+`-1/900`. The committed native instrument therefore does not force this
+continuation. No native pulse compiler for the growing walk is asserted.
+The amplitude proportional to a centered occupation is a declared coherent
+preparation; it is not the stationary classical mixture used for (T).
+The common source operator and field intertwiner connect these protocols,
+without identifying their preparation or measurement contracts.
+
+Its relation to the density log is explicitly nonlinear:
+`theta=arccos(exp(-H_density))`. The
+[active three-class modular clock](../transfer_modular_probe/README.md)
+uses a different observable subspace of the same elementary source; its
+two nontrivial eigenvalues `(25+/-sqrt(3))/30` do not equal these density
+bands. Its compiled gate does not by itself implement (W), supply the
+growing field generator, or establish a cross-sector clock calibration.
+
+Finally, a shared scalar clock conversion cannot turn the density log
+into the wave dispersion. On the elementary carrier its three Laplacian
+bands are `5-sqrt(5),6,5+sqrt(5)`, with log rates
+`h(lambda)=-log(1-lambda/60)`. An arbitrary mass and speed would require
+`h(lambda)^2` to be affine in `lambda` after a common positive scale.
+This function is strictly convex. Rational logarithm enclosures give a
+three-band affine-fit defect in `[0.910524428210,0.910524428211]` after
+normalizing by the first squared frequency; any affine fit has maximum
+normalized squared-frequency error at least `0.329430832885`.
+This rejects that specific identification while retaining the constructive
+coherent wave route (W). The time-average Green covariance `a^-1` is also
+different from a free scalar vacuum covariance `(2sqrt(a))^-1`.
+Neither spectral construction alone supplies a physical quantum field
+state, interactions, Lorentz locality, conformal invariance or measured
+spacetime. Those require the corresponding common observable dictionary
+and controlled regime, beyond the finite and bandwise results here.
+
+```text
+python -m model.observer_time_fields.spatial_dynamics --check model/observer_time_fields/spatial_dynamics_results.json
+python -m pytest -q -W error model/observer_time_fields/test_spatial_dynamics.py
 ```

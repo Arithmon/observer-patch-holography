@@ -23,6 +23,12 @@ subsequence on the enlarging ancestral observation dictionary. The
 [continuum extension](OCCUPATION_FIELD.md#a-continuum-random-distribution-on-the-carrier-sphere)
 realizes that law as a Gaussian random distribution in `H^-2(S2)`, with an
 explicit angular-tail bound and convergent continuous test observations.
+The [joint observation-process extension](OCCUPATION_FIELD.md#one-continuum-observation-path-for-both-native-clocks)
+couples both clocks on the same native history and obtains one Gaussian
+Wiener field in `C([0,T],H^-2(S2))` along that spatial subsequence. It supplies
+an exact finite-count clock-difference covariance, a uniform path error bound
+and the finite-time Gaussian increment action. Time here counts cumulative
+observations; it is not identified with instantaneous matter evolution.
 The comparison sphere defines the test-function topology, without selecting
 a physical metric. A unique whole-sequence limit and physical identification
 are further obligations. A supplied periodic
@@ -37,6 +43,7 @@ remote attempts does not inherit the one-edge-per-attempt propagation bound.
 
 ```sh
 python -m model.physical_space_time --check model/physical_space_time/results.json
+python -m model.physical_space_time.observation_process --check model/physical_space_time/observation_process_results.json
 python -m pytest -q -W error model/physical_space_time
 ```
 

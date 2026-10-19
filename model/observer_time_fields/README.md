@@ -45,6 +45,15 @@ and preserve the field/feedback witnesses. The sector total remains a
 declared conserved boundary; the calculation does not claim that repair
 selects its density or reaches exact equilibrium in a measured finite time.
 
+The [spatial dynamics connection](REFINEMENT.md#native-temporal-correlations-and-the-spatial-green-field)
+attaches two-time occupation correlations to the same spatial Green operator,
+with an all-level dynamic elimination error `1/(8*4^l)`. On its density modes,
+the native transfer logarithm and an admitted coherent continuation have
+different dispersions. The coherent continuation has a controlled
+square-root spatial spectrum and complete finite Ramsey readouts; its
+coherent record and reflection services are explicit. Neither continuation
+is identified with physical time or with the separate three-class clock probe.
+
 ## The common observer contract
 
 This is a classical recorded branch of the
@@ -298,6 +307,117 @@ native warm-up replaces the exact initial density with error `epsilon`, the
 complete retained law inherits `epsilon`; conditioned statistics require a
 separate normalization allowance, for example `2 epsilon/(p-epsilon)` when
 the reference success probability is `p>epsilon`.
+
+### A native-return reference for the coherent wave generator
+
+The [bounded variable-length protocol](wave_reference.py) connects the
+[coherent density wave](REFINEMENT.md#two-continuations-of-the-same-native-density-spectrum)
+to a reconstructed modular reference. Here `K` is the symmetric positive
+**global-attempt configuration transfer**, not the nonsymmetric incident
+kernel or the separate three-class clock transfer. It uses the same
+uniform canonical binary sector and native repairs, with an admitted
+independent length sampler and full initial/final configuration reads.
+
+The wave phase fixes a positive length law without a fitted spectrum:
+
+```text
+f(z)=exp(arcsin(z)-pi/2)=sum_(n>=0) c_n z^n,
+c_n=exp(-pi/2)b_n,
+b_0=b_1=1,   b_(n+2)=(n^2+1)b_n/[(n+2)(n+1)].
+```
+
+The recurrence follows from `(1-z^2)y''-zy'-y=0` for `y=exp(arcsin z)`.
+All coefficients are positive and `f(1)=1`, so they define a probability
+distribution. Sample `N`, execute `N` actual native attempts from the
+uniform sector, and compare the complete initial and final configurations.
+Retain the sampled length and both equal and unequal endpoints. The full
+endpoint law reconstructs the positive operator `f(K)`. Conditioning on
+return gives the trace reference
+
+```text
+sigma_wave = f(K)/Tr f(K) = exp(-Theta)/Tr exp(-Theta),
+Theta=arccos(K).
+```
+
+This is a reference reconstructed from retained native histories. The
+conditional working source has diagonal density proportional to
+`diag(f(K))`; it has not been coherently prepared in `sigma_wave`.
+The implementation tests this distinction. Its complete output is the
+declared `(length, initial configuration, final configuration)` interface
+plus a cap label; it does not emit every intermediate repair record.
+
+For the finite-dimensional configuration algebra, the modular
+automorphism is `sigma_wave^(iu) A sigma_wave^(-iu)` and its dual state
+unitary is `exp(+iu Theta)`. The admitted arc walk has paired `+/-Theta`
+phases and compression `A0*W^nA0=cos(n Theta)`. Thus the source-return
+reference supplies the same **positive phase magnitudes and cosine
+amplitudes** as the wave construction. The arc walk does not by itself
+execute the vertex unitary `exp(in Theta)`, select its positive-frequency
+branch, or preserve every modular intervention history. Those stronger
+implementation contracts are not asserted. The reflection and coherent
+record phases also remain apparatus choices: the committed native
+instrument does not force this length law or continuation.
+
+Finite resources are essential. The ideal law has
+`f'(1-)=infinity`, hence infinite expected repair length. Conditioning on
+unforced return does not make the expectation finite on any fixed finite
+source: `Tr(K^n)/d>=1/d`. For a cap `h`, define
+`P_h(z)=sum_(n=0)^h b_n z^n`, `B_h=P_h(1)` and
+`delta_h=1-exp(-pi/2)B_h`.
+The implemented sampler uses a certified dyadic
+`c_hat<=exp(-pi/2)`, exact length masses `c_hat b_n` for `n<=h`, and one
+cap mass `1-c_hat B_h`. Sampling precedes repair execution; a cap performs
+no native attempts. Every accepted length executes at most `h` attempts,
+and every return failure remains an output. The categorical sampler is a
+declared service, not an implemented native fair-bit or source-pulse circuit.
+
+The exact finite endpoint law has reconstructed conditional reference
+`sigma_h=P_h(K)/Tr P_h(K)`; `c_hat` cancels only after this explicitly
+declared conditioning. For `0<=x<=1`, weighting lengths by `x^n` favors
+shorter lengths. Consequently
+
+```text
+(1-delta_h) exp(arcsin x) <= P_h(x) <= exp(arcsin x),
+Theta_h=-log(P_h(K)/B_h),
+0 <= Theta-Theta_h <= -log(1-delta_h) I,
+half_trace_distance(sigma_h,sigma_wave) <= delta_h.
+```
+
+The state bound follows by expressing the untruncated positive matrix as
+the truncated matrix plus its positive tail. The tail's relative trace
+is at most `delta_h`. Since `Tr K^n` decreases in `n`, return conditioning
+also favors shorter lengths: the complete **unforced** return-history
+cutoff has TV error at most `delta_h`. Arbitrary interventions in the loop
+need their own conditioning bound. The unconditioned implemented law's
+entire missing length mass is its explicit cap probability.
+The mathematical modular unitaries satisfy
+`||exp(iuTheta)-exp(iuTheta_h)||<=min(2,|u|[-log(1-delta_h)])`.
+
+At `h=512`, the retained bounds are `0.035239638851` for reference trace
+distance and conditional history TV, and `0.035875538898` for generator
+norm error. Expected executed native attempts lie in
+`[17.071322032485,17.071322032486]`; the maximum is 512. The exact
+categorical denominator has 2,503 bits. These resource statements include
+the cap and do not promise an equally cheap implementation of the sampler.
+Exact endpoint/coin enumeration checks all outputs through cap two;
+matrix execution retains caps zero, one, two, four and eight.
+
+The cap must grow with spatial wave scaling. Positivity of the PGF gives
+`delta_h<=4/sqrt(h+1)`: set `r=1-1/(h+1)`, use
+`1-r^(h+1)>=1/2` and `1-f(r)<=acos(r)<=2/sqrt(h+1)`.
+With `s=4^l`, the sufficient budget `h_l=64s^4` gives
+`delta<=1/(2s^2)` and unscaled log error at most `1/s^2`.
+Since `sqrt(M_l s)=sqrt(630)s`, its scaled wave-generator error is at
+most `26/s`, which vanishes. This is an analytic joint refinement budget;
+the retained sampler evaluator supports caps through 512 and does not
+execute those large-level budgets. A fixed cap is not a uniform continuum
+certificate. Neither this reconstructed reference nor the wave dispersion
+identifies a physical vacuum, conformal field theory or laboratory time.
+
+```text
+python -m model.observer_time_fields.wave_reference --check model/observer_time_fields/wave_reference_results.json
+python -m pytest -q -W error model/observer_time_fields/test_wave_reference.py
+```
 
 ### The same three-class reference as the compiled modular probe
 

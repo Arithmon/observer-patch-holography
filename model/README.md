@@ -27,11 +27,24 @@ repair history. Incident-clock sampling has a calculable spatial correction.
 Its projection onto the actual carrier's rank-three band gives exact axial
 and transverse variances in the local incident clock. Eliminating internal
 variables on the existing spherical screens gives a controlled native Green
-operator. An all-level bound gives a nonzero Gaussian random distribution
-in `H^-2(S²)` along a common spatial subsequence; normalized attempt and
-incident clocks share that limit. Its harmonic tail has a uniform bound.
-Four source levels also have certified numerical covariances.
-Whole-sequence uniqueness and a physical continuum identification are unproved.
+operator. The [continuous observation process](physical_space_time/OCCUPATION_FIELD.md)
+extends this to continuous paths in `H^-2(S²)` along a common spatial
+subsequence. Its time parameter is rescaled observation count. A coupling
+on the same native history makes the normalized attempt and incident-clock
+fields coincide in that limit. Uniform spatial-tail and temporal-increment
+bounds control the construction; observation count tends to infinity before
+spatial refinement.
+The [temporal–spatial bridge](observer_time_fields/README.md)
+also links discounted native density correlations to the same spatial Green
+operator, with an all-level error bound. An admitted coherent continuation
+has a controlled wave-frequency limit; it uses different operations from
+passive repair and a nonlinear function of its transfer logarithm.
+A [specified random-length return reference](observer_time_fields/README.md#a-native-return-reference-for-the-coherent-wave-generator)
+has modular generator `arccos(K)`, matching those wave phases. Finite caps
+have explicit state and generator error bounds. The length sampler and
+endpoint reads are admitted services; this reconstructs a reference, not
+a quantum vacuum or a complete modular evolution of the observer.
+Whole-sequence uniqueness and a physical continuum identification are unresolved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
@@ -90,8 +103,11 @@ compiled modular step. Its generator comes from the native three-state
 transfer. Closed-history conditioning derives a faithful thermal reference
 for that same generator. This is an implemented observer protocol with
 declared coherent services and scheduling; passive repair itself cannot act
-as a nontrivial modular automorphism. No seconds or atomic transition are
-identified by this construction.
+as a nontrivial modular automorphism. The
+[inverse clock prediction](predictions/README.md) recovers its two nontrivial frequencies
+from four movement-bit covariances on the complete attempt tape and predicts
+its coherent quadratures without a separate frequency fit. This supplies a
+joint observation test; seconds and atomic transitions remain unidentified.
 
 The twelve-port result does not by itself describe an extended physical
 space. That stronger claim needs observations over larger operational domains

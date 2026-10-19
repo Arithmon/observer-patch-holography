@@ -162,6 +162,13 @@ REPLAYS = (
     ("model.relative_modular_dynamics.passive", None, "model/relative_modular_dynamics/passive_results.json"),
     ("model.observer_time_fields.thermal", None, "model/observer_time_fields/thermal_results.json"),
     ("model.transfer_modular_probe.event_clock", None, "model/transfer_modular_probe/event_clock_results.json"),
+    ("model.physical_space_time.observation_process", None,
+     "model/physical_space_time/observation_process_results.json"),
+    ("model.observer_time_fields.spatial_dynamics", None,
+     "model/observer_time_fields/spatial_dynamics_results.json"),
+    ("model.observer_time_fields.wave_reference", None,
+     "model/observer_time_fields/wave_reference_results.json"),
+    ("model.predictions.inverse_clock", None, "model/predictions/inverse_clock_results.json"),
 )
 
 

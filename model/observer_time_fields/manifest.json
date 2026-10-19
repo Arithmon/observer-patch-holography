@@ -1,9 +1,9 @@
 {
-  "description": "Positive native incident-clock fields, complete histories, finite-density source laws, and explicit open-ground versus closed-Gibbs observation contracts.",
+  "description": "Native field histories, spatial resolvents, coherent-wave bounds and bounded return protocols reconstructing logarithmic and wave modular references.",
   "files": {
     "AUDIT.md": "96de349b73a15fe61ed94639d12f05ac2a54fa7edc30ced63458ae0476c3b737",
-    "README.md": "092a80cec92d0e13cef36aca279f513738e6af6eb11a3eaf15f2c316ca564a4b",
-    "REFINEMENT.md": "d51bf5fe1e809d86948d606596a7c845532b108241e7f26128dd57e0286cad3e",
+    "README.md": "d668e904f7dcb9a90bbecca14bccb035b91fc217fada17a140025634ff3fd09e",
+    "REFINEMENT.md": "574ab65233481da3bd5616d23259d2401d0c1ea4f56895e7e73525c2be7a31b6",
     "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
     "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
     "canonical_sector.py": "50569e985860cce4014d1156224a127b03881e11b387d5c926ec985f7d9a2029",
@@ -15,6 +15,8 @@
     "refinement.py": "7d875b328ae27ade12920dff5c8927b92fcb1b2dc038743f941c3f22b45ad43d",
     "refinement_results.json": "d76a6dcd99c1c279923f4bf852bb00db8240b1fbd4ae3ab24bf3817fa928e5ca",
     "results.json": "13a000287a74615e7086526584d5f9b025ed1faf4170a757a84f25880a54ab97",
+    "spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
+    "spatial_dynamics_results.json": "c05c248880c346e75ee8d6e61a2c86e9b27aa5ace93bcb76bb30e23f8c8b83d2",
     "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
     "test_canonical_sector.py": "6563fc2eb688b3b5cd073e3f0181790807462e8bdbcc3961f3dfcfa2ef62d866",
     "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
@@ -22,15 +24,21 @@
     "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
     "test_receipt.py": "57c9bbafa9c0b67c91be42d6391e220cdf56b0e38bfbd2196ba6d938587cb4e9",
     "test_refinement.py": "c910378e516369255edc9a0f50358e84ce4d2368e8664839b88727503b5595d9",
+    "test_spatial_dynamics.py": "3d5d123d5f943735d08f2a78a1300627c4c5c9037e417af159b5de710492f747",
     "test_thermal.py": "8c48cc1d2bc653cbd9df1ca5459d8277686cd145f1d216fc56b2a90257767e9c",
+    "test_wave_reference.py": "e8b64d4fbb4defb2eb422afd5864244a33f130a549cc108e66c3f691fc758744",
     "thermal.py": "c2f266f527c0ce083b4d7c091686dbc01cfd8bb68c8dea9c0157f30800d4a0f9",
-    "thermal_results.json": "d7839c4852df1266c70dde4e928c499c5143fd4f688fb5d4bd3483057c3aaaec"
+    "thermal_results.json": "d7839c4852df1266c70dde4e928c499c5143fd4f688fb5d4bd3483057c3aaaec",
+    "wave_reference.py": "4b37e0ded33523e746657bfa3ef768581ef7e7ef9d6e66cea9d9d9180cbf50eb",
+    "wave_reference_results.json": "87e7ba29ece2eea24442682264ea93dc0da1f342adf02686c25321562fc31b7e"
   },
   "reproduce": [
     "python -m model.observer_time_fields --check model/observer_time_fields/results.json",
     "python -m model.observer_time_fields.refinement --check model/observer_time_fields/refinement_results.json",
     "python -m model.observer_time_fields.canonical_sector --check model/observer_time_fields/canonical_sector_results.json",
     "python -m model.observer_time_fields.thermal --check model/observer_time_fields/thermal_results.json",
+    "python -m model.observer_time_fields.spatial_dynamics --check model/observer_time_fields/spatial_dynamics_results.json",
+    "python -m model.observer_time_fields.wave_reference --check model/observer_time_fields/wave_reference_results.json",
     "python -m pytest -q -W error model/observer_time_fields"
   ],
   "schema": "oph.observer_time_fields.manifest.v1"

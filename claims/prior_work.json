@@ -32,6 +32,22 @@
       "note": "Original Abel integral equation and its inversion. Crossref omits the author; authorship confirmed from the Zenodo record of the same DOI."
     },
     {
+      "key": "acciaio2013trajectorial",
+      "type": "article",
+      "author": "Acciaio, Beatrice and Beiglböck, Mathias and Penkner, Friedrich and Schachermayer, Walter and Temme, Johannes",
+      "title": "A trajectorial interpretation of Doob's martingale inequalities",
+      "journal": "The Annals of Applied Probability",
+      "volume": "23",
+      "number": "4",
+      "pages": "1494--1505",
+      "year": "2013",
+      "doi": "10.1214/12-AAP878",
+      "eprint": "1202.0447",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1202.0447",
+      "note": "Doob L2 maximal inequality for nonnegative submartingales, applied to Hilbert martingale norms."
+    },
+    {
       "key": "adame2025desi",
       "type": "article",
       "author": "Adame, A. G. and others",

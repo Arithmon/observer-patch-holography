@@ -238,6 +238,94 @@ implementation must nevertheless implement and calibrate those operations.
 No spatial continuum, gravity or universal physical clock is inferred from
 this finite test.
 
+## Recovering the modular clock from visible current records
+
+[inverse_clock.py](inverse_clock.py) ties a current record to the coherent
+readouts of the [same three-mode transfer](../transfer_modular_probe/README.md).
+Its input is the complete movement-bit tape `B_t=|j_t|`, **including every
+zero-current attempt**, under the uniform IID seam schedule and fair coin on
+the binary total-two carrier. This is an admitted complete-attempt record
+service, stronger than an isolated port's incident tape. Record position
+defines its clock; no physical seconds conversion enters the construction.
+
+Write `p=E[B_t]` and `c_n=E[B_t B_(t+n+1)]-p^2`. Thus `c_0` is the
+covariance of consecutive records, not the same-time Bernoulli variance.
+The actual marked strong lumping gives
+`c_n=w_+ lambda_+^n+w_- lambda_-^n` with positive weights and distinct
+positive roots. Four consecutive covariances invert this relation:
+
+```
+D = c_0*c_2-c_1^2 = w_+*w_-*(lambda_+-lambda_-)^2
+S = (c_0*c_3-c_1*c_2)/D = lambda_++lambda_-
+P = (c_1*c_3-c_2^2)/D  = lambda_+*lambda_-
+lambda_± = (S ± sqrt(S^2-4P))/2
+w_+ = (c_1-lambda_-*c_0)/(lambda_+-lambda_-)
+w_- = (lambda_+*c_0-c_1)/(lambda_+-lambda_-)
+```
+
+Full 66-state marked path sums, computed independently of the forward
+spectral formula, give `p=5/33`, `D=1/9702990000`, `S=5/3` and `P=311/450`.
+Consequently the observed two-mode domain determines
+`lambda_±=(25±sqrt(3))/30` and `E_±=-log(lambda_±)`. Their unit-free ratio
+is `E_-/E_+≈2.2033420301466635`. The one-exponential approximation matching
+`c_0,c_1` misses `c_2` by exactly `1/2673000`; matching an average rate or
+one decay does not establish the joint prediction. This approximation is
+a moment control, not a claimed alternative native instrument.
+
+`identify` accepts rational probability intervals and encloses every
+compatible model in this positive two-mode domain. It verifies positive
+Hankel determinant, separated real roots in `[1/2,1)`, and positive residues;
+failure produces an inconclusive result. Repeated uncertain parameters are
+shared in the underlying model; outward interval arithmetic enlarges their
+image. A successful enclosure does not certify that an arbitrary input box
+contains a realizable model, or rule out additional hidden modes outside the
+declared domain. It also does not distinguish C from E, whose classical
+current tapes agree.
+
+`predict_readout` uses those same root intervals to predict the existing
+coherent code's X and Y quadratures: `q_X=(1+cos(s E_j))/2` and
+`q_Y=(1+sin(s E_j))/2`. Preparation in a specified spectral mode, the
+coherent phase operation and the detector basis are declared services;
+passive repair is not identified with this unitary. The retained example
+uses `s=4`, both modes, and all four outcomes including padding. Synthetic
+source-centred input tubes of radius `1e-12` predict the four zero-address
+probabilities within approximately `[.946797,.948659]`, `[.721645,.723507]`,
+`[.762113,.764252]` and `[.924060,.926199]`; the compiled source outputs lie
+inside the corresponding outward bounds. The same inference predicts the
+unused lag `c_4`. No separate field frequency or clock scale is fitted.
+A common unit convention rescales both frequencies together. The raw
+compiled arrays receive an event-weight allowance of twice their complete
+half-diamond error, retain padding and are not renormalized.
+
+The probability tubes have a dependent-tape coverage contract. Use the same
+`M` starting positions from `M+5` retained bits to estimate the mean and five
+lag products, reserving the fifth product for validation. A bounded function
+of `L` consecutive marked events has variance at most `1/4`. For separated
+windows whose starting positions differ by `k>=L`, conditioning on their
+endpoint states and the reversible marked lumping gives absolute covariance
+at most `(9/10)^(k-L)/4`, since its nonconstant eigenvalues are below `9/10`.
+Overlapping windows retain the `1/4` bound. Summing covariances gives
+`Var(mean_L) <= (2L-1+2/(1-9/10))/(4M)`. For the six statistics (`L=1..6`),
+Chebyshev and a union bound give simultaneous tube failure at most
+`39/(M*delta^2)`, without independent-window or independent-validation data
+assumptions. For an arbitrary initial binary density, discarding a prefix
+of 221 native attempts adds at most `1e-3` by the existing
+[unread warm-up theorem](../record_laws/README.md); no retained controller
+record is used to select the subsequent tape.
+
+At `delta=1e-12`, this conservative proof gives total failure at most `.01`
+for `M=4333333333333333333333333334` windows. This is a sufficient bound,
+not a minimal data requirement, a collected dataset, or a feasible
+experimental protocol. Broad tubes can be inconclusive. The retained
+receipt exercises algebraic inference, interval coverage and complete
+source readouts; the public optical data below do not supply this marked
+current tape or the coherent-mode measurement dictionary. An atomic or
+continuum-field identification must preserve these joint constraints before
+those observations can test this correspondence.
+
+Replay with `python -m model.predictions.inverse_clock --check
+model/predictions/inverse_clock_results.json`.
+
 ## Minimal modular-transition optical attachment
 
 The source-derived [three-mode transfer generator](../transfer_modular_probe/README.md)

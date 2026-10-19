@@ -174,11 +174,42 @@ refinement level. The root incident-clock correction is at most
 therefore admit compatible Gaussian subsequential limits shared by both
 clocks, with three nonvanishing smearings. Density and a uniform harmonic-tail
 bound extend them to a Gaussian random distribution in `H^-2(S²)`.
-The auxiliary spherical test measure supplies no physical metric. This is an
-analytic result about the actual combinatorial source continuation.
-A unique whole-sequence limit, a conformal or interacting field theory and
-Lorentzian propagation remain unproved. The supplied square torus is a
-separate iterated fixed-band free-field example.
+The [observation-process extension](physical_space_time/observation_process.py)
+gives continuous paths in this space. At fixed source level, cumulative
+centered occupations satisfy the functional count CLT. Uniform Gaussian
+increment and maximal spatial-tail bounds then give path tightness along
+the same spatial subsequence. Post-repair incident selection supplies a
+reverse-martingale difference on the actual history, so the two normalized
+clocks have a joint coupling with vanishing difference, beyond agreement of
+their separate covariances. The time parameter remains rescaled count; this
+iterated limit supplies no simultaneous finite-count approximation rate.
+
+The [dynamic Schur comparison](observer_time_fields/spatial_dynamics.py)
+connects native two-time density correlations to that same static spatial
+operator. At every level and positive discount, the compressed native and
+Schur resolvents differ by at most `1/(8*4^level)`. A specified coherent
+event walk also gives square-root low-band wave dispersion with a controlled
+error. Its phase is a nonlinear function of the transfer logarithm, so one
+scalar clock calibration cannot turn the logarithmic continuation into this
+wave on all modes. Coherent access and reflection remain explicit services.
+
+The [random-length return construction](observer_time_fields/wave_reference.py)
+uses the positive length law with generating function
+`exp(arcsin(z)-pi/2)` on the same native transfer `K`. Its reconstructed
+faithful reference has modular generator `Theta=arccos(K)`, the phase in
+the coherent wave compression `cos(n Theta)`. Exact finite samplers retain
+return failures and cap outcomes; explicit bounds control the reference
+and generator error. The uncapped law has infinite expected length.
+Length sampling, full endpoint closure and the coherent wave controls are
+admitted services. The native return-conditioned state differs from this
+reconstructed reference, and the two-sign arc walk does not implement the
+whole vertex modular unitary or arbitrary modular interventions.
+
+These are compatible source-observation constructions. The auxiliary sphere
+supplies no physical radial domain, and wave amplitudes supply no quantum
+vacuum or interacting field state. A unique whole-sequence physical limit,
+Lorentz covariance and a physical detector dictionary remain open. The
+supplied square torus retains its separate free-field contract.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint
