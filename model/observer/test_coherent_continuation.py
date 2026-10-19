@@ -221,7 +221,7 @@ def test_receipt_strict_types_scope_and_custody(tmp_path):
     c.compare_receipt(deepcopy(result), result)
     for mutate in (
         lambda forged: forged["audit"].__setitem__("all_pass", 1),
-        lambda forged: forged["scope"].__setitem__("source_pulses_emitted", True),
+        lambda forged: forged["scope"].__setitem__("source_pulses_emitted", False),
         lambda forged: forged["source_sha256"].__setitem__(c.SOURCE_PATHS[0], "0"*64),
     ):
         forged = deepcopy(result); mutate(forged)
@@ -357,3 +357,150 @@ def test_selection_audit_rejects_missing_reflection_on_nonuniform_inputs(monkeyp
     monkeypatch.setattr(c, "advance", lambda values, phase=-1: original(values,1))
     with pytest.raises(ArithmeticError, match="selection criteria"):
         c.selection_audit()
+
+
+def test_density_sector_uses_the_actual_native_one_particle_coin_and_total_two_intertwiner():
+    import numpy as np
+    result = c.density_sector_audit()
+    assert result["all_720_native_branch_and_inverse_coins_checked"]
+    x = np.array(c.STATES, dtype=int)
+    centered = 6*x-1
+    gram = centered.T@centered
+    assert np.array_equal(gram, 360*np.eye(12, dtype=int)-30)
+    k12 = np.zeros((12, 12), dtype=int)
+    for site in range(12):
+        state = tuple(int(j == site) for j in range(12))
+        for edge in c.quantum_mixing.seams():
+            for coin in (0, 1):
+                output, _ = endpoint(state, edge, coin)
+                k12[site, output.index(1)] += 1
+    assert np.array_equal(np.array(c.kernel_counts())@centered, centered@k12)
+    # Both second-order polynomial recurrences have the same complete Gram
+    # under F=X/sqrt(10); this is an 11-dimensional density sector only.
+    left, right = centered.copy(), np.eye(12, dtype=int)
+    old_left = old_right = None
+    for n in range(4):
+        assert np.array_equal(left, centered@right)
+        next_left = np.array(c.kernel_counts())@left
+        next_right = k12@right
+        if n:
+            next_left = 2*next_left-3600*old_left
+            next_right = 2*next_right-3600*old_right
+        old_left, left, old_right, right = left, next_left, right, next_right
+
+
+def test_compiled_density_shift_keeps_every_padding_and_scratch_output():
+    import numpy as np
+    program = c.density_walk_program()
+    permutation = c.density_shift_permutation(program)
+    assert sorted(permutation.tolist()) == list(range(32768))
+    for address in range(1024):
+        site, event = address & 15, address >> 4
+        expected = site
+        if site < 12 and event < 60 and event & 1:
+            a, b = c.quantum_mixing.seams()[event//2]
+            expected = b if site == a else a if site == b else site
+        assert permutation[address] == 16*event+expected
+    assert np.all(permutation[:1024] < 1024)
+    assert sum(op["routine"] == "ccx" for op in program["shift"]) == 1010
+    assert sum(op["routine"] == "flip" for op in program["shift"]) == 548
+    # Removing an uncompute cannot be hidden by truncating the scratch array.
+    mutant = deepcopy(program)
+    del mutant["shift"][-2]
+    with pytest.raises(ArithmeticError, match="padding|scratch"):
+        c.density_shift_permutation(mutant)
+
+
+def test_density_word_replay_is_dyadic_and_has_complete_service_cost():
+    import hashlib
+    import math
+    from .source_scalar import compiler
+    program = c.density_walk_program()
+    word = c.density_walk_word(program)
+    assert len(word) == 114910
+    assert all(p["angle"]*2**44 == int(p["angle"]*2**44) for p in word)
+    assert all(set(p) == {"kind", "angle", "targets"} for p in word)
+    assert max(max(p["targets"]) for p in word) == 14
+    encoded = json.dumps(word, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+    assert hashlib.sha256(encoded).hexdigest() == c.compiled_density_audit()["expanded_walk_sha256"]
+    assert c.density_walk_word(c.density_walk_program()) == word
+    # Roundoff of two ulps in the unrounded preparation angles does not
+    # change this emitted finite-precision word.
+    import numpy as np
+    original = compiler.compile_real_state(np.r_[np.full(60, 1/math.sqrt(60)), np.zeros(4)])
+    for p in original:
+        theta = p["angle"]
+        for sign in (-1, 1):
+            assert round((theta+sign*2*math.ulp(theta))*2**44) == round(theta*2**44)
+    audit = c.compiled_density_audit()
+    assert audit["walk_resources"]["proper_code_service_events"] == 229820
+    assert audit["walk_resources"]["valid_code_failure_probability_in_exact_arithmetic"] == 0
+    assert audit["source_routines_executed_pulse_by_pulse_on_all_columns"]
+    assert not audit["expanded_word_executed_literally_on_15_qubits"]
+    assert not audit["source_pulse_Ramsey_controller_compiled"]
+    assert not audit["density_sector"]["complete_3960_arc_unitary_compiled"]
+
+
+def test_source_macro_factorization_matches_literal_pulses_with_reference_columns():
+    import numpy as np
+    from .source_scalar import compiler
+    program = c.density_walk_program()
+    operations = [{"routine": "ccx", "targets": [3, 0, 2]},
+                  {"routine": "flip", "targets": [1]},
+                  {"routine": "ccx", "targets": [1, 2, 0]}]
+    literal = [pulse for op in operations
+               for pulse in compiler.remap(program["routines"][op["routine"]], op["targets"])]
+    state = np.eye(16, dtype=complex)
+    factored = state.copy()
+    for op in operations:
+        gate = compiler.execute(program["routines"][op["routine"]], len(op["targets"]))
+        factored = compiler._apply(factored, gate, list(reversed(op["targets"])), 4)
+    assert np.linalg.norm(factored-compiler.execute(literal, 4, state), "fro") < 1e-12
+
+
+def test_source_walk_rejects_phase_wrong_reflection_without_polar_or_postselection(monkeypatch):
+    import numpy as np
+    from .source_scalar import compiler
+    original = compiler.execute
+    def phase_mutant(tape, qubits, state=None):
+        value = original(tape, qubits, state)
+        return -value if len(tape) == 73414 else value
+    monkeypatch.setattr(compiler, "execute", phase_mutant)
+    c.compiled_density_audit.cache_clear()
+    try:
+        with pytest.raises(ArithmeticError, match="reflection"):
+            c.compiled_density_audit()
+    finally:
+        c.compiled_density_audit.cache_clear()
+
+
+def test_density_walk_full_processor_failure_channel_remains_complete():
+    import numpy as np
+    from .source_scalar import compiler
+    for dimension in (2, 4):
+        branches = compiler.transfer_kraus(dimension)
+        assert np.array_equal(sum(k.conj().T@k for k in branches), np.eye(6))
+        outside = np.eye(6)[:, dimension]
+        outputs = [k@outside for k in branches]
+        assert sum(np.linalg.norm(v)**2 for v in outputs) == 1
+        assert sum(abs(v[-1])**2 for v in outputs) == 1
+        assert sum(np.linalg.norm(v[:-1])**2 for v in outputs) == 0
+
+
+def test_compiled_density_receipt_keeps_reference_error_and_implementation_scope():
+    result = c.compiled_density_audit()
+    assert F(result["walk_error_guard_sum"]) == F(829, 5_000_000_000)
+    assert result["complete_reference_trace_error_bound"] == "2*delta+delta^2 for delta=s/(1-s); no output renormalization"
+    assert not result["error_guards_are_interval_or_physical_certificates"]
+    assert not result["selected_by_committed_native_instrument"]
+    assert not result["growing_refinement_compiler_or_physical_precision_certified"]
+
+
+def test_uniform_preparation_word_does_not_depend_on_platform_libm(monkeypatch):
+    import math
+    baseline = c.density_walk_program()["routines"]["prepare"]
+    def forbidden(*args):
+        raise AssertionError("uniform event preparation must use exact multiplicities")
+    monkeypatch.setattr(math, "atan2", forbidden)
+    monkeypatch.setattr(math, "hypot", forbidden)
+    assert c.density_walk_program()["routines"]["prepare"] == baseline

@@ -19,12 +19,13 @@ import sympy as sp
 
 from ..observer import native
 from ..observer_time_fields import core
+from ..observer_time_fields import spatial_dynamics as waves
 from ..native_action import incident_refinement as clocks
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from tools import strict_json
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_PATHS = tuple(sorted(set((*core.SOURCE_PATHS, *clocks.screen.SOURCE_PATHS,
+SOURCE_PATHS = tuple(sorted(set((*core.SOURCE_PATHS, *clocks.screen.SOURCE_PATHS, *waves.SOURCE_PATHS,
     'model/native_action/incident_refinement.py',
     'model/relative_observer_geometry/temporal_records.py'))))
 
@@ -338,6 +339,209 @@ def incident_clock_bound(level, incident_seams, horizon=F(1), tolerance=F(1, 8))
         'failure_probability_upper': str(failure)}
 
 
+def predictable_port_clock_bound(level, horizon=F(1), tolerance=F(1, 8)):
+    """Uniform bounds for passive access chosen before each fresh seam draw.
+
+    The port can depend on earlier field records. Its integer clock credits
+    an incident event by 30/degree, including zero current. Access and degree
+    disclosure are supplied; autonomous motion and lab time are not derived.
+    """
+    fixed = incident_clock_bound(level, 5, horizon, tolerance)
+    scale, seams = fixed['native_attempt_scale'], fixed['source_seams']
+    b = F(scale, seams)
+    return {'level': level, 'native_attempt_scale': scale, 'source_seams': seams,
+        'source_ports': fixed['source_ports'], 'allowed_port_degrees': [5, 6],
+        'integer_credits_per_incident_event': {'5': 6, '6': 5},
+        'conditional_credit_mean_per_attempt': str(F(30, seams)),
+        'conditional_credit_variance_upper': str(900*(F(1, 5*seams)-F(1, seams**2))),
+        'mean_credits_per_continuum_unit': str(30*b),
+        'horizon': str(horizon), 'martingale_tolerance': str(tolerance),
+        'covered_native_attempts': fixed['covered_native_attempts'],
+        'uniform_count_error_upper': fixed['uniform_count_error_upper'],
+        'uniform_inverse_error_upper': str(tolerance+F(1, 5)/b),
+        'failure_probability_upper': fixed['failure_probability_upper']}
+
+
+def predictable_native_clock_control():
+    """Complete native first histories and conditional second-step clock laws.
+
+    A nonzero incident current moves readout access from a degree-five port
+    to an adjacent degree-six port for the next attempt. Every first history
+    is retained. The second clock law uses all actual seams, with both coins;
+    its reward is state independent, so histories may be grouped by next port.
+    """
+    graph = clocks.screen.source.federation(0)
+    seams = len(graph.seams)
+    first = next(p for p, row in enumerate(graph.neighbours) if len(row) == 5)
+    second = next(p for p in graph.neighbours[first] if len(graph.neighbours[p]) == 6)
+    initial = tuple(int(p % 3 == 0) for p in range(graph.ports))
+    laws = {}
+    conditional = []
+    for port in (first, second):
+        degree = len(graph.neighbours[port])
+        law = {}
+        for seam in graph.seams:
+            reward = (30//degree)*int(port in seam)
+            law[reward] = law.get(reward, 0)+2
+        laws[port] = law
+        mean = sum(F(reward*count, 2*seams) for reward, count in law.items())
+        variance = sum(F(count, 2*seams)*(reward-mean)**2 for reward, count in law.items())
+        if mean != F(30, seams) or variance != 900*(F(1, seams*degree)-F(1, seams**2)):
+            raise ArithmeticError('predictable native port compensator changed')
+        conditional.append({'port': port, 'degree': degree,
+            'bare_tick_probability': str(F(degree, seams)),
+            'credit_mean': str(mean), 'credit_variance': str(variance)})
+    first_histories = {}
+    accepted_credits = 0
+    for seam in graph.seams:
+        tick = int(first in seam)
+        for coin in (0, 1):
+            after, (_, current) = native.native(initial, seam, coin)
+            decoded = initial[first]+current*(int(seam[1] == first)-int(seam[0] == first))
+            if decoded != after[first]:
+                raise ArithmeticError('adaptive access failed the incident-current readback')
+            selected = second if tick and current else first
+            key = 6*tick, selected
+            first_histories[key] = first_histories.get(key, 0)+1
+            accepted_credits += 6*int(bool(tick and current))
+    totals = {}
+    cross = 0
+    for (reward, selected), count in first_histories.items():
+        for next_reward, next_count in laws[selected].items():
+            total = reward+next_reward
+            totals[total] = totals.get(total, 0)+count*next_count
+            cross += reward*next_reward*count*next_count
+    branches = (2*seams)**2
+    selected_counts = {str(port): sum(count for (_, p), count in first_histories.items() if p == port)
+                       for port in (first, second)}
+    if (sum(totals.values()) != branches or min(selected_counts.values()) == 0
+            or F(cross, branches) != F(30, seams)**2):
+        raise ArithmeticError('complete adaptive clock histories lost the martingale property')
+    # Choosing an endpoint after the seam is revealed always produces a tick.
+    postselected = sum(F(30, len(graph.neighbours[seam[0]])) for seam in graph.seams)/seams
+    return {'source_level': 0, 'source_ports': graph.ports, 'source_seams': seams,
+        'initial_occupied_ports': sum(initial), 'initial_port': first, 'next_port_if_nonzero_current': second,
+        'selection_uses_only_previous_incident_current': True,
+        'first_native_histories': 2*seams, 'second_native_histories': branches,
+        'next_port_first_history_counts': selected_counts,
+        'conditional_second_step_laws': conditional,
+        'two_step_credit_histogram': {str(k): v for k, v in sorted(totals.items())},
+        'two_step_credit_mean': str(sum(F(k*v, branches) for k, v in totals.items())),
+        'successive_credit_covariance': str(F(cross, branches)-F(30, seams)**2),
+        'after_seam_endpoint_selection_credit_mean': str(postselected),
+        'count_only_nonzero_current_credit_mean': str(F(accepted_credits, 2*seams)),
+        'proper_time_or_autonomous_worldline_identified': False}
+
+
+def incident_wave_clock_bound(level, degree, band=F(1), horizon=F(1),
+                              tolerance=F(1, 8), step_error=F(0)):
+    """Attach the admitted coherent walk to zero-inclusive native port ticks.
+
+    A protected wave register receives one fixed W per incident clock event.
+    Clock repairs pause during these atomic apparatus services. The bound
+    does not describe passive repairs interleaved on the wave register.
+    """
+    fixed = incident_clock_bound(level, degree, horizon, tolerance)
+    if (degree not in (5, 6) or type(band) is not F or band <= 0
+            or type(step_error) is not F or step_error < 0):
+        raise ValueError('a primitive source degree, positive rational band and nonnegative step error required')
+    wave = waves.wave_bounds(level, band, horizon)
+    eta = F(fixed['uniform_count_error_upper'])
+    beta_squared = F(2*degree**2, 315)
+    square = beta_squared*band
+    grid = 10**12
+    units = math.isqrt(square.numerator*grid**2//square.denominator)
+    units += int(F(units**2, grid**2) < square)
+    prefactor = F(units, grid)
+    ideal = prefactor*(eta+(horizon+eta)*wave['relative_wave_frequency_error'])
+    steps = math.floor(F(fixed['mean_incident_ticks_per_continuum_unit'])*(horizon+eta))
+    accumulated = steps*step_error
+    # (1+epsilon)^N-1 <= N epsilon/(1-N epsilon), when N epsilon<1.
+    # This avoids an enormous rational power on growing source levels.
+    raw = accumulated/(1-accumulated) if accumulated < 1 else None
+    return {'level': level, 'port_degree': degree, 'band_upper': str(band),
+        'native_attempt_scale': fixed['native_attempt_scale'],
+        'squared_wave_normalization_Q': wave['squared_coherent_clock_normalization'],
+        'squared_incident_to_wave_parameter_factor_beta': str(beta_squared),
+        'beta_times_sqrt_band_upper': str(prefactor),
+        'relative_wave_frequency_error': str(wave['relative_wave_frequency_error']),
+        'count_error_eta': str(eta), 'horizon': str(horizon),
+        'clock_failure_probability_upper': fixed['failure_probability_upper'],
+        'uniform_ideal_compressed_amplitude_error_upper': str(min(F(2), ideal)),
+        'maximum_triggered_steps_on_clock_good_event': steps,
+        'per_step_operator_error': str(step_error),
+        'unitary_step_accumulated_error_upper': str(min(F(2), accumulated)),
+        'raw_step_accumulated_error_upper': None if raw is None else str(raw),
+        'raw_step_exact_error_formula': '(1+epsilon_l)^N-1',
+        'growing_compilation_requirement': 'sqrt(Q_l)*epsilon_l -> 0',
+        'protected_wave_register_and_paused_atomic_services_required': True}
+
+
+def active_wave_clock_control():
+    """Exact two-attempt native clock histories driving the existing arc walk.
+
+    The timing carrier and protected coherent wave register are separate.
+    The latter starts in the admitted normalized occupation amplitude. All
+    clock histories and both Ramsey outcomes are included; no source pulse
+    compiler for this whole walk is asserted.
+    """
+    coherent = waves.coherent
+    field = tuple(6*state[0]-1 for state in coherent.STATES)
+    norm = sum(value*value for value in field)
+    probabilities = {}
+    for phase in (-1, 1):
+        for ticks in range(3):
+            outputs = coherent.ramsey_outputs(field, ticks, phase)
+            pair = tuple(coherent.norm_squared(output)/norm for output in outputs)
+            if sum(pair) != 1:
+                raise ArithmeticError('the triggered coherent walk lost a Ramsey outcome')
+            probabilities[phase, ticks] = pair
+    source = core.source()
+    histories = {}
+    for initial in source.states:
+        for first_seam in source.seams:
+            for first_coin in (0, 1):
+                first, (_, first_current) = native.native(initial, first_seam, first_coin)
+                first_tick = int(0 in first_seam)
+                for second_seam in source.seams:
+                    for second_coin in (0, 1):
+                        _, (_, second_current) = native.native(first, second_seam, second_coin)
+                        second_tick = int(0 in second_seam)
+                        ticks = first_tick+second_tick
+                        movements = int(bool(first_tick and first_current))+int(bool(second_tick and second_current))
+                        key = ticks, movements
+                        histories[key] = histories.get(key, 0)+1
+    branches = len(source.states)*(2*len(source.seams))**2
+    if sum(histories.values()) != branches or norm != 330:
+        raise ArithmeticError('the complete native timing-source history changed')
+    rows = []
+    plus = opposite = accepted = reset = joint = mean_movements = F(0)
+    for (ticks, movements), count in sorted(histories.items()):
+        weight = F(count, branches)
+        pair = probabilities[-1, ticks]
+        rows.append({'incident_ticks': ticks, 'nonzero_incident_currents': movements,
+            'native_histories': count, 'joint_Ramsey_probabilities': [str(weight*p) for p in pair]})
+        plus += weight*pair[0]
+        opposite += weight*probabilities[1, ticks][0]
+        accepted += weight*probabilities[-1, movements][0]
+        reset += weight*probabilities[-1, int(ticks > 0)][0]
+        joint += weight*movements*pair[0]
+        mean_movements += weight*movements
+    if plus == opposite or plus == accepted or plus == reset:
+        raise ArithmeticError('an active-wave clock or continuation control disappeared')
+    return {'elementary_native_states': len(source.states), 'native_attempt_cap': 2,
+        'complete_native_histories': branches, 'admitted_wave_arc_dimension': coherent.DIMENSION,
+        'wave_preparation': '(6*n_0-1)/sqrt(330) in the separate coherent arc register',
+        'Ramsey_by_incident_ticks': [[str(p) for p in probabilities[-1, ticks]] for ticks in range(3)],
+        'joint_clock_current_and_Ramsey_law': rows,
+        'complete_Ramsey_plus': str(plus), 'opposite_reflection_Ramsey_plus': str(opposite),
+        'nonzero_current_only_trigger_Ramsey_plus': str(accepted),
+        'reprepare_before_each_step_Ramsey_plus': str(reset),
+        'nonzero_current_count_Ramsey_plus_covariance': str(joint-mean_movements*plus),
+        'growing_wave_source_pulse_compiler_executed': False,
+        'passive_repairs_act_on_protected_wave_register': False}
+
+
 def source_clock_incidence(level):
     """Check clock exposure against actual refined native seams and ancestry."""
     if type(level) is not int or level not in (0, 1, 2):
@@ -519,6 +723,27 @@ def run():
                 'D with the same continuous limits for stopped step versions'],
             'local_clock_grants_complete_spatial_field_access': False,
             'modular_parameter_proper_time_or_lab_seconds_identified': False},
+        'predictable_port_access': {
+            'normalized_clock': 'C_l(t)=R_l(floor(a_l*t))/(30*a_l/M_l), R_l(n)=sum_(j<=n) (30/d_j)*I_j',
+            'inverse_clock': 'U_l(t)=T_l(floor(30*a_l/M_l*t))/a_l; T_l(k)=inf{n:R_l(n)>=k}; T_l(0)=0',
+            'port_selected_before_fresh_seam_draw': True,
+            'previous_field_records_may_select_next_port': True,
+            'passive_access_path_and_degree_disclosure_supplied': True,
+            'finite_bounds': [predictable_port_clock_bound(level) for level in (0, 2, 6)],
+            'complete_native_adaptation_control': predictable_native_clock_control(),
+            'same_density_and_green_field_path_limits_after_inverse_clock': True,
+            'clock_and_field_independence_required': False,
+            'fixed_incidence_gaussian_jitter_claim_extended_to_adaptive_ports': False,
+            'autonomous_motion_modular_flow_or_proper_time_identified': False},
+        'active_incident_wave_clock': {
+            'coherent_wave_steps': 'one admitted W_l per primitive port incident event, including zero current',
+            'continuum_compressed_wave': 'cos((2*d/sqrt(630))*tau*sqrt(A)) on the proved bounded band',
+            'finite_bounds': [incident_wave_clock_bound(level, degree, step_error=F(1, 10**12))
+                             for level in (0, 2, 6) for degree in (5, 6)],
+            'complete_native_history_control': active_wave_clock_control(),
+            'clock_and_wave_history_independence_required': False,
+            'protected_wave_register_paused_services_and_common_readout_supplied': True,
+            'continuation_selected_by_passive_repair_or_atomic_clock_identified': False},
         'scope': {'exact_laws_reconstruct_finite_cyclic_positive_transfer': True,
             'positive_transfer_class_is_existing_native_theorem': True,
             'coherent_real_time_implementation_or_lab_duration_derived': False,

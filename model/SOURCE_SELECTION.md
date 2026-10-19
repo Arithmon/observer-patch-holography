@@ -28,10 +28,10 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The common Green subsequence converges in operator norm to compact injective `G`. Its inverse has a conservative regular strongly local `H1` form and spectral dimension two. Terminal-star reduction gives an explicit positive weighted dual graph with the same continuum limits and Green error at most `182*2^-level`. | Full initial occupation and seam/current readback are admitted. The separate cumulative observation fields take the count limit first. Whole-sequence uniqueness, an intrinsic physical metric, radial observations and interacting Lorentzian dynamics are unproved. |
+| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The common Green subsequence converges in operator norm to compact injective `G`. Its inverse has a conservative regular strongly local `H1` form and spectral dimension two. Terminal-star reduction gives an explicit positive weighted dual graph with the same continuum limits and Green error at most `182*2^-level`. | Full initial occupation and seam/current readback are admitted. The separate cumulative observation fields take the count limit first. Static Dirichlet-bulk and complete linear free-scalar dictionaries fail the stated spectral tests. Whole-sequence uniqueness, other radial observations and physical interacting dynamics are unproved. |
 | [Native correlations and coherent waves](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field) | Interpolated native density paths converge in `C([0,T],H^-3(S2))` with covariance `exp(-|tau-u|A)`, at `tau=attempts/(1260*16^level)`. The declared `A^-1/2` filter gives `H^-2` paths with covariance `G exp(-|tau-u|A)`. Separate long-block wave synthesis gives `G cos((t-u)sqrt(A))` and finite-speed localized cosine propagation. | The limit uses the common spatial subsequence, uniform fixed-number preparation, IID seams, fair repair and full readback. Wave synthesis and coherent controls remain declared. Growing return caps match coherent modular phases; fixed caps freeze them. The full reference becomes tracial at fixed modular parameter. Native quantum-vacuum preparation, radial field and boosts are unproved. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
-| [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. At the continuum count scale, normalized incident counts and inverse clocks converge uniformly and sample the same field paths. Fixed bounded seam incidences give a finite-vector Gaussian jitter law with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | Ordered/coincident tapes and the uniform IID schedule are explicit. Event sets are fixed before sampling; state-dependent ticks are outside the limit theorem. A local clock grants no remote field readback, modular identity or physical duration. |
+| [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. Normalized incident clocks sample the continuum field paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with inverse-degree tick weights. Fixed bounded seam incidences separately give finite-vector Gaussian jitter with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | The IID uniform schedule and read access are explicit. Predictable port choices precede the fresh seam draw; their path theorem assumes no clock–field independence. Jitter independence applies only to the fixed-event-set contract. A local clock grants no remote readback, modular identity or physical duration. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamps test an apparatus relation. The public optical test rejects the direct attachment for every distinct regional event-set pair under its bounded-error and no-extra-filter assumptions. | The actual atomic/servo dictionary is not derived. Identical event sets are the same clock and are outside the rejection. Clock definitions require no external calibration. |
 | [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. | Warm-up records and controller memory are inaccessible to the common complete continuation; full-carrier domain failures must be retained. This prepares neither coherent probes nor their apparatus and selects no record law. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
@@ -50,10 +50,11 @@ from passive records, with no separate response fit. Its discounted field
 response uses the same native spatial resolvent. A controlled execution
 bias, with the endpoint rule unchanged, also gives continuum mean derivative
 `2(I-exp(-tau*A))f`. Uniform likelihood and timeout bounds keep a nonzero
-response at fixed bias. The designated executed-repair clock and additional
-native coin-service costs are distinguished. The controller, disclosure and
-intervention dictionary remain explicit; a natural force and matching public
-measurement are unidentified.
+response at fixed bias. At fixed selection-slot count, its [disjoint-support response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
+has a nonzero exponentially bounded tail at every positive scaled time.
+An exact finite cone fails under that support/control/time dictionary.
+The controller, disclosure and their physical locality remain explicit
+obligations; this does not infer signalling from equilibrium correlations.
 
 The next physical identification should use the process's existing states, record
 instruments, accessible algebras and intervention laws. A field description
@@ -107,6 +108,30 @@ two-site and common-source histories are substantive completed finite
 protocols; they neither execute that original word nor establish physical
 completion. Their theorem hypotheses and error budgets remain separately
 scoped in [RE-10](PREMISES.md#re-10).
+
+The reverse-engineering search uses finite OPH theorems, eligible observations
+and effective physical descriptions as different kinds of constraints. A
+candidate must connect their joint readouts and interventions; matching a
+dimension, a spectrum or an equal-time partition function alone does not do so.
+The [existing worldsheet branch](../paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex)
+is a concrete guide. On its declared compact-group edge branch,
+`Z_edge(t)=sum_R d_R^2 exp(-t C_2(R))=K_t(1)`, with heat-kernel parameter
+`t` and a matching sewing law. The controlled string interpretation also
+requires its distinct large-`N_edge` sequence and uniform genus remainder;
+`N_edge` is not the physical color count. The executable task is to realize
+those edge weights and sewing operations in the native instrument and test
+the same clock and response, before importing the effective description.
+
+Critical superstring dimension ten follows from a specified worldsheet
+consistency problem, not from counting carrier ports; see
+[Tong's account](https://www.damtp.cam.ac.uk/user/tong/talks/whatisstring.pdf).
+[String dualities](https://arxiv.org/abs/hep-th/9503124) also caution against
+treating one effective description as a unique microscopic architecture.
+The OPH heat-kernel identity supplies no critical worldsheet CFT, physical
+string tension, anomaly cancellation or observed spectrum. Closed native
+current cycles are candidates for an extended-excitation readout; by themselves
+they establish neither a vibrating string nor its propagation law. These
+connections are research targets, not empirical identifications.
 
 ## What the rank-three response and its sphere establish
 
@@ -349,15 +374,16 @@ Independence is a product-realization premise; this result does not establish
 the same-capacity canonical-vacuum identification, spatial locality,
 physical clock or interacting field limit.
 
-The [single-history circulation construction](native_circulation/README.md)
-removes independent replication for a different observable. Projecting actual
-seam currents onto the graph cycle space gives bounded martingale differences
-with covariance `(I-B^T L^+ B)/198`. Finite-chain ergodicity supplies the
-single-history Gaussian limit under the stated stationary law and uniform
-scheduler. Triangular current counts have exact variance `N/66`; their complete
-finite laws retain non-Gaussian corrections. The associated finite-partition
-increment action is derived in rescaled native-attempt units. It supplies no
-spatial refinement or physical duration.
+The [single-history circulation construction](native_circulation/README.md#a-three-component-axial-counter-from-the-recovered-frame)
+projects actual seam currents onto the graph cycle space. The recovered
+rank-three frame gives axial weights `W_e=u_a cross u_b`, with
+`W B^T=0` and `W W^T=8I3`. Its counter has exact covariance `(4N/99) I3`,
+a Brownian path limit and Gaussian increment-action coefficient `99/8` in
+rescaled native attempts. Triangular current counts have variance `N/66`;
+finite laws retain non-Gaussian corrections. Repeating a closed carrier
+cycle gives unbounded axial counter support with growing memory. The
+stationary law, uniform scheduler and current access are explicit; these
+are circulation records, not spatial translations or physical duration.
 
 The [native quantum action](native_action/README.md) fixes the local
 Liouville operator `H_native=sum_e(I-Phi_e)` from the complete candidate
@@ -527,6 +553,17 @@ transition support, are real orthogonal, respect proper carrier relabeling,
 fix the uniform coherent state and admit the same algebraic time reversal.
 Neither has an adjustable continuous parameter. Nevertheless their later
 Ramsey probabilities differ. These criteria cannot select between them.
+The eleven-mode density sector has an isometric
+[720-arc source realization](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk):
+114,910 pulses per walk, clean scratch and retained padding. Full-register
+execution reuses raw pulse-executed routines with numerical guard
+`s/(1-s)`, `s=829/5000000000`, not an interval or physical certificate.
+An [active incident counter](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+drives steps on a protected register; its complete two-attempt Ramsey
+probability is `1297/1320` and its ideal bounded-band limit is
+`cos((2d/sqrt(630))*tau*sqrt(A))`. Timing-carrier pauses, coherent services
+and accumulating implementation errors remain explicit. The source-pulse
+Ramsey controller and growing refinement compiler are unproved.
 
 Even the stronger hypothetical requirement of covariance under every
 permutation of the sixty event labels leaves two real orthogonal coins

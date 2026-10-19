@@ -1184,6 +1184,27 @@ These path results do not identify global-attempt time with proper time,
 change the supplied spatial topology, or turn the diffusive Gaussian
 reconstruction into a Lorentzian vacuum.
 
+Changing only the native count scale does not produce a propagating field.
+At the ballistic attempt scale `b_l=2M_l*2^l=1260*8^l`, define
+`Y_l^bal(t)=Y_l(t*2^-l)` and likewise for the filtered field, using the
+same linear interpolation. Before adding its initial variance, (OP1)
+and Doob give `E sup_(k<=N)|F_f(X_k)-F_f(X_0)|^2<=25(N/a_l)E_l(f)`.
+Set `N=ceil(b_l T)` and sum the same harmonic energy bounds as in
+(OP5)–(OP6). Then
+
+```text
+E sup_(t<=T)||Y_l^bal(t)-Y_l(0)||_-3^2
+ <=50(T*2^-l+1/a_l),
+E sup_(t<=T)||Phi_l^bal(t)-Phi_l(0)||_-2^2
+ <=50(T*2^-l+1/a_l).                                      (OP7)
+```
+
+Both native paths freeze to their initial random field in this scaling.
+The separate coherent-walk step parameter is not a rescaling of these
+passive attempts. This diagnoses the proposed change of count units for
+this density sector; it does not exclude a different microscopic causal
+theory whose effective long-scale density is diffusive.
+
 ### Finite propagation on the source comparison space
 
 The same full-port convergence also supplies a support bound. Restore
@@ -1245,6 +1266,106 @@ field's long-range correlations vanish: it concerns propagation of local
 changes. This is a finite-speed continuum wave law on the supplied
 two-dimensional comparison topology. It does not identify a measured
 metric, light speed, Lorentz symmetry, or laboratory clock.
+
+### Heat response and the boundary of a finite signal cone
+
+The passive heat dynamics have a different support law from (FS3).
+The full-space extension `Abar=A direct-sum 0` has
+`ker(Abar)=span{1}`, since the mean-zero generator has the proved positive
+gap. Its conservative positivity-preserving heat semigroup is irreducible.
+Indeed a closed subspace invariant under all bounded multiplications is
+`L2(B)` for a measurable set `B`. If it is also heat invariant,
+self-adjointness makes its orthogonal complement invariant; multiplication
+by `1_B` therefore commutes with the heat semigroup. Conservation gives
+`exp(-tau*Abar)1_B=1_B`, so `1_B` belongs to the constant kernel.
+Consequently `B` has zero or full measure. The
+[positivity-improvement equivalence, Keller–Lenz–Vogt–Wojciechowski,
+Theorem A.2](https://arxiv.org/pdf/1101.0373), then proves
+
+```text
+<g,exp(-tau*Abar)f> > 0
+for every tau>0 and nonzero nonnegative f,g in L2(mu).        (HR1)
+```
+
+This is an almost-everywhere positivity statement, with no assumed smooth
+heat kernel or point-detector readout. It cannot be applied directly to
+the mean-zero projection: subtracting a mean destroys positivity and
+local support.
+
+The support result also applies to an intervention mean.
+For nonzero nonnegative bounded Lipschitz profiles `f,g` with supports at distance
+`d>0`, use the [existing activation controller](../predictions/README.md#a-controlled-continuum-mean-with-an-executed-event-clock)
+with `h_l=cell_average(f)/sqrt(V_l chi_l)` and retain the density readout
+against `g`. Subtracting either profile's `mu` mean changes neither the
+activation differences nor its response. At a fixed number `q` of
+**selection slots**, the already verified exact response is
+`2chi_l(I-Q_l^q)h_l`, where
+`Q_l=(I+K_l)/2=I-L_l/(4M_l)`. Put
+`q=floor(4M_l*4^l*tau)=floor(2520*16^l*tau)`.
+This formula holds for every profile: on each seam the activation slope
+is antisymmetric under its endpoint swap, so the uniform preparation's
+incoming execution derivative cancels. The activity derivative is
+`-h_l^T(I-K_l)n`. Uniform reversibility, the exact linear density transfer,
+and `sum_(j=0)^(q-1) Q_l^j(I-K_l)=2(I-Q_l^q)` give the stated response.
+In the normalized density readout this is exactly
+
+```text
+d E[eta_l(g)]/d epsilon|_0
+    = (2/V_l) g_l^T(I-Q_l^q) f_l
+    --> 2<g,(I-exp(-tau*Abar))f>.                           (HR0)
+```
+
+Cell averaging preserves positivity and converges strongly to the test
+profiles (uniformly for these Lipschitz tests); their cell supports are
+disjoint once the mesh diameter is below `d`. The same full-port heat
+convergence applies with the doubled slot normalization, including the
+integer rounding. Thus `R_tau=2(I-exp(-tau*Abar))` is the limiting linear
+response map for this test class. This is a derivative at zero bias;
+the coordinate-specific fixed-amplitude error budget is not asserted for
+these arbitrary localized profiles.
+No state-dependent executed-clock stopping correction is substituted for
+this fixed-slot calculation. The existing executed-clock derivative has
+the same limit, but is a separate finite formula.
+
+Equations (HR1) and (FS2), and the disjoint supports, now give
+
+```text
+<g,R_tau f> = -2<g,exp(-tau*Abar)f> < 0,
+0 < |<g,R_tau f>| <=2 exp(-d^2/(2tau)) ||f|| ||g||,
+for every tau>0.                                           (HR2)
+```
+
+Thus this particular response has no exact finite support cone, even
+though its distant short-time tail is exponentially bounded. At each
+finite source the controller changes activation probabilities only on
+seams meeting the profile support; outside it the differences vanish.
+Conservation explains the negative remote density response. Its
+nonvanishing is a derivative of an intervention mean, not an inference
+of signalling from equilibrium correlations.
+
+If the same support dictionary, control operation, readout and parameter
+were identified with physical local interventions and elapsed time,
+(HR2) would contradict an exact finite-cone response: any `c<infinity`
+would require zero response when `0<tau<d/c`. A positive scalar clock
+conversion leaves the contradiction intact. The result does not supply
+that physical identification. Uniform seam selection, activation control,
+initial/current disclosure, field reconstruction and the aggregate slot
+clock are declared services; their physical locality and accessible
+duration have not been derived. It therefore establishes no observed
+faster-than-light signal, excludes no alternative observer dictionary or
+microscopic causal completion, and does not invalidate the separate
+comparison-wave support theorem (FS3). A hydrodynamic diffusion limit
+need not preserve the causal cone of another microscopic theory.
+
+The exact source control uses
+`exp(-tau*L)=exp(-D*tau) sum_k tau^k(DI-L)^k/k!`, with
+`D` the maximum native degree. Every summand is nonnegative, and a
+shortest native path gives a strictly positive coefficient. In contrast,
+the fixed finite selection-slot kernel is exactly zero before that many
+steps. Deleting the cross seams leaves disconnected carriers and zero
+cross-component heat, while projecting away constants gives a negative
+off-diagonal entry even at zero time. These controls preserve the
+connectedness, constant-mode and finite-versus-continuum distinctions.
 
 ### A continuous wave readout from one native record history
 

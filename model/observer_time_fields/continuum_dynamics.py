@@ -180,6 +180,80 @@ def native_weighted_form_control():
         'finite_continuous_wave_has_instantaneous_small_tail': True}
 
 
+def native_heat_support_control():
+    """Exact source paths distinguish heat tails from finite attempt fronts.
+
+    Uniformization has nonnegative coefficients and a positive coefficient
+    along every connected path. No numerical exponential or fitted kernel
+    is used, and this finite gate is not a proof of continuum irreducibility.
+    """
+    graph, lap, _, _, _ = dynamics.source_green.matrices(0)
+    matrix = sp.Matrix(lap.toarray())
+    ports, start = graph.ports, 0
+    maximum_degree = max(map(len, graph.neighbours))
+    if matrix*sp.ones(ports, 1) != sp.zeros(ports, 1):
+        raise ArithmeticError('the source constant mode is not conservative')
+    uniformized = maximum_degree*sp.eye(ports)-matrix
+    if any(value < 0 for value in uniformized):
+        raise ArithmeticError('the native heat uniformization is not nonnegative')
+    distance = {start: 0}
+    queue = [start]
+    for vertex in queue:
+        for other in graph.neighbours[vertex]:
+            if other not in distance:
+                distance[other] = distance[vertex]+1
+                queue.append(other)
+    if len(distance) != ports:
+        raise ArithmeticError('the native source is disconnected')
+    length = max(distance.values())
+    end = min(p for p, value in distance.items() if value == length)
+    seam_count = len(graph.seams)
+    # Q=I-L/(4M) is the unbiased fixed-selection-slot transfer. Its
+    # numerator differs from uniformization only on the diagonal.
+    heat, slot = [0]*ports, [0]*ports
+    heat[start] = slot[start] = 1
+    prefix = []
+    for step in range(length+1):
+        prefix.append(slot[end])
+        if step == length:
+            break
+        heat = [(maximum_degree-len(graph.neighbours[p]))*heat[p]
+                +sum(heat[q] for q in graph.neighbours[p]) for p in range(ports)]
+        slot = [(4*seam_count-len(graph.neighbours[p]))*slot[p]
+                +sum(slot[q] for q in graph.neighbours[p]) for p in range(ports)]
+    if any(prefix[:-1]) or heat[end] <= 0 or slot[end] != heat[end]:
+        raise ArithmeticError('the exact native support front changed')
+    # Removing all cross seams leaves separate twelve-port carriers.
+    disconnected = {start}
+    queue = [start]
+    for vertex in queue:
+        for other in graph.neighbours[vertex]:
+            if vertex//12 == other//12 and other not in disconnected:
+                disconnected.add(other); queue.append(other)
+    profile = [int(p//12 == start//12) for p in range(ports)]
+    changed_seams = tuple((a, b) for a, b in graph.seams if profile[a] != profile[b])
+    if (len(disconnected) != 12 or end in disconnected or len(changed_seams) != 3
+            or any(not (profile[a] or profile[b]) for a, b in changed_seams)):
+        raise ArithmeticError('the disconnected or intervention-support control changed')
+    return {'source_level': 0, 'ports': ports, 'native_seams': seam_count,
+        'source_port': start, 'target_port': end, 'graph_distance': length,
+        'maximum_native_degree': maximum_degree,
+        'nonnegative_uniformization_matrix': True,
+        'shortest_path_count': heat[end],
+        'continuous_heat_lower_bound': 'exp(-maximum_native_degree*t)*shortest_path_count*t^graph_distance/graph_distance!',
+        'continuous_heat_leading_taylor_coefficient': F(heat[end], math.factorial(length)),
+        'fixed_slot_front_zero_before_graph_distance': True,
+        'first_nonzero_slot_transfer': F(slot[end], (4*seam_count)**length),
+        'first_nonzero_slot_response_without_susceptibility': -2*F(slot[end], (4*seam_count)**length),
+        'cell_supported_control_changed_seams': len(changed_seams),
+        'all_changed_control_seams_meet_profile_support': True,
+        'cross_seam_deletion_reachable_ports': len(disconnected),
+        'cross_seam_deletion_has_zero_cross_component_heat': True,
+        'mean_zero_projected_identity_off_diagonal': -F(1, ports),
+        'constant_mode_must_be_restored_for_heat_positivity': True,
+        'finite_native_attempt_front_is_an_instantaneous_continuum_cone': False}
+
+
 def density_process_bounds(level, covariance_tolerance=F(1, 10), tests=3,
                            coefficient_l1=3, population_variance_lower=F(1, 2)):
     """Uniform stirring concentration and the conditional finite-population CLT.
@@ -236,6 +310,8 @@ def density_path_bounds(level, harmonic_cutoff=10, horizon=4, energy=1,
     chi = F(particles*(vertices-particles), vertices*(vertices-1))
     steps = math.ceil(attempts*horizon)
     rounded_horizon = F(steps, attempts)
+    ballistic_attempts = 1260*8**level
+    ballistic_change = 50*F(math.ceil(ballistic_attempts*horizon), attempts)
     return {'level': level, 'harmonic_cutoff': harmonic_cutoff,
         'parameter_horizon': horizon, 'finite_reversal_attempt_horizon': steps,
         'rounded_parameter_horizon': rounded_horizon,
@@ -257,6 +333,11 @@ def density_path_bounds(level, harmonic_cutoff=10, horizon=4, energy=1,
         'density_interpolated_path_topology': 'C([0,T],H^-3(S2))',
         'Green_filtered_interpolated_path_topology': 'C([0,T],H^-2(S2))',
         'step_paths_have_same_continuous_limit_in_Skorohod_J1': True,
+        'ballistic_native_attempts_per_parameter': ballistic_attempts,
+        'ballistic_to_diffusive_parameter_ratio': F(1, 2**level),
+        'ballistic_density_H_minus_3_expected_squared_supremum_change_upper': ballistic_change,
+        'ballistic_Green_field_H_minus_2_expected_squared_supremum_change_upper': ballistic_change,
+        'ballistic_native_path_limit_is_initial_field_held_constant': True,
         'same_spatial_subsequence_and_simultaneous_attempt_scaling': True,
         'stationary_reversibility_required': True,
         'forward_and_backward_martingale_independence_required': False,
@@ -673,6 +754,7 @@ def run():
         'fixed_cap_order_of_limits_control': [fixed_cap_collapse(l) for l in (0, 2, 4, 10)],
         'continuum_path_bounds': [wave_path_bounds(j) for j in (0, 10, 100)],
         'native_weighted_form_control': native_weighted_form_control(),
+        'native_heat_support_control': native_heat_support_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],
         'actual_native_density_process': {
             'exact_stirring_and_canonical_controls': native_stirring_control(),
@@ -703,6 +785,9 @@ def run():
             'positive_self_adjoint_generator': 'A=G^-1 with compact resolvent',
             'constant_mode_extension_is_conservative_strongly_local_Dirichlet': True,
             'constant_mode_extension_has_finite_speed_in_comparison_distance': True,
+            'constant_mode_heat_is_positivity_improving': True,
+            'disjoint_positive_profiles_have_nonzero_heat_response_at_every_positive_time': True,
+            'fixed_selection_slot_parameter': 'tau=q/(2520*16^level)',
             'source_heat_trace_spectral_dimension': 2,
             'native_attempt_parameter': 'tau=n/(1260*16^level)',
             'native_two_point_transfer': 'exp(-tau A)',
@@ -728,6 +813,10 @@ def run():
             'faithful_continuum_modular_algebra_state_constructed': False,
             'full_modular_unitary_or_intervention_implementation_proved': False,
             'comparison_wave_support_cone_proved': True,
+            'same_dictionary_heat_response_has_an_exact_finite_support_cone': False,
+            'conditional_obstruction_to_same_dictionary_relativistic_response': True,
+            'physical_faster_than_light_signalling_inferred': False,
+            'every_OPH_clock_observer_or_reconstruction_excluded': False,
             'physical_signal_speed_or_Lorentzian_metric_identified': False,
             'observed_one_plus_three_spacetime_identified': False,
             'physical_interacting_QFT_CFT_or_vacuum_state_identified': False,

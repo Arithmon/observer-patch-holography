@@ -55,6 +55,47 @@ The triangular weights have `B a=0` and `||a||^2=3`, yielding `1/66` exactly.
 The cycle rank 19 counts independent graph currents; it is not a spatial-dimension
 prediction.
 
+### A three-component axial counter from the recovered frame
+
+The existing rank-three response Gram selects a particular three-component
+circulation without choosing three arbitrary cycles. Let `u_a` be any unit
+frame realizing that Gram, and for each oriented seam `e=(a,b)` put
+`W_e=u_a cross u_b`. The actual neighbor sum is parallel to `u_a`, so
+`W B^T=0`. Also each of the thirty seam vectors has squared length `4/5`;
+icosahedral symmetry makes their second moment isotropic, giving `W W^T=8 I3`.
+The executable checks these identities exactly, all 144 frame-Gram entries,
+and the conditional increment means on all 3,960 native branches.
+
+The observer retains only the selected seam/current records and accumulates
+
+```text
+Z_N = sum_(n<N) W J_n,
+E[Z_N]=0,                   Cov(Z_N)=(4N/99) I3.
+```
+
+The martingale identity follows from `W B^T=0`; the covariance follows from
+the independently counted `E[J_n J_n^T]=I30/198`. The stationary preparation
+is required for this exact finite-count covariance. The bounded-increment
+martingale functional CLT below gives `N^(-1/2) Z_floor(Nt)` converging to
+three-dimensional Brownian motion with covariance `(4/99) min(t,s) I3`.
+Its finite-partition increment action is
+`(99/8) sum_k |delta z_k|^2/delta t_k`, with the corresponding
+Cameron–Martin form `(99/8) integral |dot z|^2 dt`.
+Here `t` is rescaled native attempt count. An exact three-event face cycle
+returns both occupation tokens to their initial state but adds a nonzero
+`Z` increment; repeating it proves that this counter is unbounded despite
+the carrier's finite state space. Every finite repetition is an allowed
+native history with positive probability, not a claim of indefinite typical
+drift. Counter capacity grows with the retained observation horizon.
+
+This construction is intrinsic as an **axial circulation** in the recovered
+frame: `W_(a,b).W_(c,d)=G_ac G_bd-G_ad G_bc`, and an orthogonal frame change
+acts by `det(O)O` on `Z`. It is not the gradient-weighted endpoint displacement.
+The readout and retained memory are specified observer operations; no bulk
+locations, radial field, translation law or physical trajectory follows from
+its three components. A physical position interpretation would need compatible
+relative measurements and intervention/transport locality in those records.
+
 The nearest existing finite results are
 [`GreenKubo.lean`](../../Lean/Thermodynamics/GreenKubo.lean) and
 [`NativeRepairFourCycle.lean`](../../Lean/Thermodynamics/NativeRepairFourCycle.lean).

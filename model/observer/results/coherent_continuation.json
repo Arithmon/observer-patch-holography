@@ -144,6 +144,75 @@
       ]
     }
   },
+  "compiled_density_walk": {
+    "address_qubits": 10,
+    "all_clean_address_inputs_return_scratch": true,
+    "all_reversible_basis_inputs_checked": 32768,
+    "angle_denominator": 17592186044416,
+    "clean_scratch_qubits": 5,
+    "compiled_walk": "S_12 (2 A_12 A_12*-I)",
+    "complete_reference_and_padding_outputs_checked": true,
+    "complete_reference_trace_error_bound": "2*delta+delta^2 for delta=s/(1-s); no output renormalization",
+    "density_sector": {
+      "all_720_native_branch_and_inverse_coins_checked": true,
+      "all_density_compressions_intertwined": true,
+      "complete_3960_arc_unitary_compiled": false,
+      "cyclic_Gram": "[[I,K_12],[K_12,I]] on the mean-zero sector",
+      "cyclic_isometry": "A_12 f -> A_66 Ff; S_12 A_12 f -> S_66 A_66 Ff",
+      "intertwiner": "K_66 F=F K_12, K_12=I-L/60",
+      "isometry": "F[x,p]=(x_p-1/6)/sqrt(10); F*F=I-J/12",
+      "mean_zero_density_dimension": 11,
+      "one_particle_events": 60,
+      "one_particle_ports": 12,
+      "valid_arcs": 720
+    },
+    "error_guards_are_interval_or_physical_certificates": false,
+    "expanded_walk_sha256": "425808a95944b2980f047087341917e3813693a3f4d30a2075d94ab78b27303c",
+    "expanded_word_executed_literally_on_15_qubits": false,
+    "full_register_execution": "factorized reuse of raw executed source matrices; no polar correction or state normalization",
+    "growing_refinement_compiler_or_physical_precision_certified": false,
+    "numerical_routine_error_guards": {
+      "ccx": "1e-10",
+      "flip": "1e-10",
+      "prepare": "1e-08",
+      "reflection": "1e-08"
+    },
+    "padding_extension": "S fixes address padding; R acts on events for every site and is -I on event padding",
+    "physical_pulse_error_allowance": "P*epsilon/(1-P*epsilon) if P*epsilon<1; load/export errors also require allowances",
+    "retained_address_padding": 304,
+    "routine_native_pulses": {
+      "ccx": 40,
+      "flip": 2,
+      "prepare": 36288,
+      "reflection": 73414
+    },
+    "selected_by_committed_native_instrument": false,
+    "source_pulse_Ramsey_controller_compiled": false,
+    "source_routines_executed_pulse_by_pulse_on_all_columns": true,
+    "two_step_prepared_error_bound_formula": "s/(1-s), s=prepare_guard+2*walk_guard_sum; initially blank event and scratch registers",
+    "uniform_preparation_angles": "exact integer multiplicities; pinned mpmath at 80 decimal digits",
+    "valid_address_arcs": 720,
+    "walk_error_bound_formula": "s/(1-s), s=sum_r uses_r*guard_r; complete operator norm",
+    "walk_error_guard_sum": "829/5000000000",
+    "walk_resources": {
+      "identity_phase_pulses": 1559,
+      "maximum_work_qubits": 15,
+      "native_pulses": 114910,
+      "pair_code_pulses": 30518,
+      "proper_code_export_events": 114910,
+      "proper_code_load_events": 114910,
+      "proper_code_service_events": 229820,
+      "service_failure_outcomes_retained": true,
+      "single_code_pulses": 84392,
+      "valid_code_failure_probability_in_exact_arithmetic": 0
+    },
+    "walk_routine_uses": {
+      "ccx": 1010,
+      "flip": 548,
+      "prepare": 0,
+      "reflection": 1
+    }
+  },
   "contract": {
     "native_rule": "N1 current-record instrument on its invariant 66-state binary shell",
     "nearest_theorem": "Szegedy quantum walk / unitary-involution spectral mapping",
@@ -160,7 +229,8 @@
     "physical_clock_or_spatial_refinement": false,
     "physical_predictions_or_empirical_validation": false,
     "same_as_existing_committed_observer": false,
-    "source_pulses_emitted": false,
+    "source_pulses_emitted": true,
+    "source_pulses_scope": "finite 720-arc density representation; full 3960-arc unitary not compiled",
     "supplied_coherent_control_law": true,
     "unknown_quantum_input_restored_after_commitment": false
   },
@@ -230,12 +300,16 @@
     }
   },
   "source_sha256": {
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/observer/coherent_continuation.py": "91a0c885a52b934c01a470e269e4ac98e575bc010c7764ba624badcb79a0b0a9",
+    "model/observer/coherent_continuation.py": "a71433c2c4afe605ac6920deca125f2ce08f7e0c6e9cb7c976d0c60b83f88488",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
-    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139"
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd"
   }
 }

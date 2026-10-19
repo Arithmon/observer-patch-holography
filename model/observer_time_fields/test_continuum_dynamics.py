@@ -110,6 +110,57 @@ def test_weighted_heat_geometric_series_requires_a_sufficiently_fine_level():
     assert d.finite_speed_bounds(1, lipschitz=4)['native_weighted_heat_log_norm_upper'] == 12
 
 
+def test_source_heat_tail_and_finite_slot_front_are_distinct():
+    value = d.native_heat_support_control()
+    assert value['ports'] == 240 and value['native_seams'] == 630
+    assert value['maximum_native_degree'] == 6
+    assert value['graph_distance'] > 1 and value['shortest_path_count'] > 0
+    assert value['continuous_heat_leading_taylor_coefficient'] > 0
+    assert value['fixed_slot_front_zero_before_graph_distance']
+    assert value['first_nonzero_slot_response_without_susceptibility'] < 0
+    assert value['first_nonzero_slot_response_without_susceptibility'] == -2*value['first_nonzero_slot_transfer']
+    assert not value['finite_native_attempt_front_is_an_instantaneous_continuum_cone']
+    # Independent path counting uses the actual sparse Laplacian rather than
+    # the control's adjacency recurrence. At the shortest distance no diagonal
+    # waiting term can reach the target.
+    _, lap, _, _, _ = d.dynamics.source_green.matrices(0)
+    vector = [0]*value['ports']; vector[value['source_port']] = 1
+    matrix = sp.eye(value['ports'])*6-sp.Matrix(lap.toarray())
+    target = sp.Matrix(vector)
+    for step in range(value['graph_distance']):
+        assert target[value['target_port']] == 0
+        target = matrix*target
+    assert target[value['target_port']] == value['shortest_path_count']
+
+
+def test_heat_positivity_requires_connectivity_and_full_constant_mode():
+    value = d.native_heat_support_control()
+    assert value['cell_supported_control_changed_seams'] == 3
+    assert value['all_changed_control_seams_meet_profile_support']
+    assert value['cross_seam_deletion_reachable_ports'] == 12
+    assert value['cross_seam_deletion_has_zero_cross_component_heat']
+    assert value['mean_zero_projected_identity_off_diagonal'] == -F(1, 240)
+    # A genuine disconnected positive conservative transfer has a nontrivial
+    # fixed indicator and cannot satisfy the strict positivity conclusion.
+    block = sp.Matrix([[sp.Rational(3, 4), sp.Rational(1, 4)],
+                       [sp.Rational(1, 4), sp.Rational(3, 4)]])
+    disconnected = sp.diag(block, block)
+    indicator = sp.Matrix([1, 1, 0, 0])
+    assert disconnected*indicator == indicator
+    assert (disconnected**9)[3, 0] == 0
+
+
+def test_fixed_selection_slot_clock_has_the_required_doubled_normalization():
+    for level in (0, 2, 5):
+        seams, scale = 630*4**level, 4**level
+        assert 4*seams*scale == 2520*16**level
+    x = sp.symbols('x')
+    native = 1-x/1260
+    slot = (1+native)/2
+    assert sp.expand(slot-(1-x/2520)) == 0
+    assert sp.expand(native-slot**2) != 0
+
+
 def test_native_stirring_and_random_canonical_covariance_have_independent_oracles():
     value = d.native_stirring_control()
     assert value['canonical_configurations'] == 495
@@ -223,6 +274,24 @@ def test_harmonic_path_tail_summation_and_borderline_topology_control():
     for exponent in range(1, 6):
         block = sum(F(2*k-1, 1+k*(k+1)) for k in range(2**exponent, 2**(exponent+1)))
         assert block >= F(1, 2)
+
+
+def test_ballistic_native_attempt_scale_freezes_both_observation_paths():
+    horizon = F(3, 7)
+    changes = []
+    for level in (0, 1, 4, 10):
+        value = d.density_path_bounds(level, horizon=horizon)
+        b, a = 1260*8**level, 1260*16**level
+        expected = 50*F((3*b+6)//7, a)
+        assert value['ballistic_native_attempts_per_parameter'] == b
+        assert value['ballistic_to_diffusive_parameter_ratio'] == F(b, a) == F(1, 2**level)
+        assert value['ballistic_density_H_minus_3_expected_squared_supremum_change_upper'] == expected
+        assert value['ballistic_Green_field_H_minus_2_expected_squared_supremum_change_upper'] == expected
+        assert expected <= 50*(horizon/F(2**level)+F(1, a))
+        assert value['ballistic_native_path_limit_is_initial_field_held_constant']
+        changes.append(expected)
+    assert all(a > b for a, b in zip(changes, changes[1:]))
+    assert changes[-1] < F(1, 40)
 
 
 def test_green_filter_full_native_energy_is_bounded_by_its_schur_energy():

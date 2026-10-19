@@ -51,18 +51,35 @@ grow together along the same spatial subsequence. The declared `A^-1/2`
 filter gives `H^-2` paths with covariance `A^-1 exp(-|tau-u|A)`.
 Uniform fixed-number preparation, IID seams and full readback are explicit.
 [Incident counts and their inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
-converge uniformly to this parameter after the derived normalization, so
-they sample the same limiting field paths. Their finite-vector Gaussian
-jitter prediction retains shared-seam correlations. This is a native event
-clock connection; physical duration and modular-flow identification are unsupplied.
+converge uniformly to this parameter after the derived normalization.
+[Predictably selected ports](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale), with inverse-degree tick weights,
+sample the same paths without a clock–field independence assumption.
+The shared-seam Gaussian jitter law retains its separate fixed-event-set
+contract. Physical duration and modular-flow identification are unsupplied.
 The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
-also uses `A` for coherent cosine amplitudes and a continuous Gaussian
-wave synthesized from two long observation blocks, with covariance
-`A^-1 cos((t-u)sqrt(A))`. Restoring the constant mode gives finite
+also uses `A` for coherent cosine amplitudes. An
+[active incident-clock protocol](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+triggers one walk per tick on a protected register, giving bounded-band
+limit `cos(beta*tau*sqrt(A))`, `beta=2d/sqrt(630)`, with a quantified
+clock and step-error budget. Its complete two-attempt control gives Ramsey
+plus probability `1297/1320`. The finite eleven-mode density sector has a
+[720-arc source compilation](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk)
+with 114,910 pulses per walk, clean scratch and retained padding.
+Full-register execution reuses raw pulse-executed routines; its numerical
+guards are not interval or physical precision certificates. Protected
+storage, coherent control and carrier pauses are declared; the growing
+refinement compiler is unproved. A separate Gaussian wave synthesized from
+two long observation blocks has covariance `A^-1 cos((t-u)sqrt(A))`.
+Restoring the constant mode gives finite
 propagation at speed at most `1/sqrt(2)` in the flat comparison distance
 per coherent wave parameter. This support theorem concerns localized
 changes; it does not erase the stationary field's long-range correlations.
-The wave processor and coherent services are declared; their parameter is distinct from passive waiting and physical time.
+The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
+has a nonzero, exponentially bounded disjoint-support tail at every positive
+scaled selection-slot time. It has no exact finite signal cone under that
+support/control/time dictionary. Physical locality of these services is
+unproved. Causal microscopic theories with diffusive limits are not excluded;
+the separate wave processor and coherent parameter remain declared.
 A [specified random-length return reference](observer_time_fields/README.md#a-native-return-reference-for-the-coherent-wave-generator)
 has modular generator `arccos(K)`, matching those wave phases. Finite caps
 have explicit state and generator error bounds. The length sampler and
@@ -77,9 +94,13 @@ is too small to scale with crossing seams of a base-face patch; this
 concerns a boundary on the two-dimensional source, not whole-screen area.
 The [radial compatibility test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
 excludes a boundedly invertible `L2` energy identification with a smooth compact three-dimensional
-Dirichlet bulk's static boundary action (with smooth boundary). Internal rank-three modes vanish
-from bounded-energy families at the present scale. Whole-sequence
-uniqueness, physical radial observations and a quantum vacuum remain open.
+Dirichlet bulk's static boundary action (with smooth boundary). A
+[complete linear readout](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
+also preserves the normalized decay spectrum, excluding a complete compact
+three-dimensional free scalar's Euclidean law under one clock scale.
+Internal rank-three modes vanish from bounded-energy families at this scale.
+Other radial dictionaries, whole-sequence uniqueness and physical quantum
+identification are unproved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
@@ -303,14 +324,16 @@ surprisal in nats, with the initial-state prior kept separate. It is not the
 quadratic repair cost or mean-field generator and supplies no physical action
 units.
 
-Native circulation also gives an action in one port's own movement clock.
-For the specified local-tick Palm preparation, triangle-current variance is
-exactly `3m/5` after `m` local ticks. The long-count Gaussian increment action
-has coefficient `5/2` on the carrier's cycle subspace. Finite higher moments
-retain memory and non-Gaussianity; independent replicas and a separate clock
-are unnecessary. Carrier-wide current access, the preparation and scheduler
-remain declared. This fluctuation action does not establish relativistic
-spacetime or an empirical field identification.
+The [axial circulation counter](native_circulation/README.md#a-three-component-axial-counter-from-the-recovered-frame)
+maps actual seam currents through the recovered rank-three frame. Its
+three components have exact covariance `(4N/99) I3` and a Brownian path
+limit with Gaussian increment-action coefficient `99/8` in rescaled native
+attempt count. A repeatable closed carrier cycle gives unbounded counter
+support; this is an axial record, not spatial translation. In one port's
+movement clock, the separate Palm-prepared triangle variance is `3m/5`
+and the cycle-space action coefficient is `5/2`. Stationary preparation,
+current access and growing record capacity remain declared; these actions
+do not establish relativistic spacetime or an empirical field identification.
 
 The [native quantum transfer](native_quantum_history/README.md) and
 [effective fields](native_effective_fields/README.md) provide finite

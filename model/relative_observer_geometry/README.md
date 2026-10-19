@@ -623,6 +623,130 @@ The normalization connects native incident clocks to the density continuum
 parameter. It does not identify that parameter with modular flow, Lorentzian
 proper time, or atomic-clock seconds.
 
+### Predictable port access on the density continuum scale
+
+The fixed-port requirement can be removed for the path correspondence.
+Before attempt `j`, choose a port `v_j` using any earlier available records,
+including density records. Its degree `d_j` is five or six and is disclosed.
+The fresh seam remains independent and uniform on the same `M_l` seams.
+This is passive access: choosing the port changes neither the preparation
+nor the repair law. The path and any access needed to change ports are
+supplied; autonomous motion or a physical worldline is not constructed.
+
+Let `I_j` mark every seam incident on `v_j`, including zero current, and put
+
+```text
+b_l = a_l/M_l = 2*4^l,
+R_n = sum_(j<=n) (30/d_j) I_j,
+C_l(t) = R_floor(a_l*t)/(30 b_l),
+T_l(k) = inf{n:R_n>=k},   T_l(0)=0,
+U_l(t) = T_l(floor(30 b_l t))/a_l.
+```
+
+The clock uses integer credits, six or five per incident event. Conditional
+on the entire past, its next credit has mean `30/M_l` and variance
+`900[1/(M_l d_j)-1/M_l^2]`. Thus `R_n-30n/M_l` is a martingale even when
+the access decision depends on earlier field observations. For
+`n_*=ceil(a_l(T+delta))`, the squared-martingale maximal inequality gives
+
+```text
+Pr[max_(n<=n_*) |R_n-30n/M_l| > 30 b_l delta]
+    <= n_* (M_l-5)/(5 a_l^2 delta^2).                      (PC1)
+```
+
+On its complementary event, `|C_l(t)-t|<=delta+1/a_l` uniformly on `[0,T]`.
+Also `R_(n_*)>=30 b_l T`, so every inverse threshold is reached. At the
+first crossing of a positive integer `k`, `k<=R_(T_l(k))<=k+5`.
+Combining this overshoot with the floor error gives
+`|U_l(t)-t|<=delta+1/(5 b_l)`, including the initial zero threshold.
+Taking `delta_l=2^(-floor(l/2))` proves uniform convergence in probability
+on every fixed finite horizon. A union bound treats finitely many such
+access protocols. The preceding pathwise modulus inequality then transfers
+the same `H^-3` density and `H^-2` Green-field limits to their inverse clocks;
+the stopped step paths converge in `D` to the same continuous laws.
+No clock–field independence is required. This argument does **not** transfer
+the fixed-incidence Gaussian clock-jitter or independence prediction to
+field-adaptive access.
+
+The finite control executes all 1,260 first native branches on the actual
+240-port source. A nonzero current at port zero moves the next readout to
+its adjacent degree-six port one. Five histories switch access; all 1,587,600
+two-step histories are retained in the conditional clock enumeration.
+The conditional credit mean stays `1/21`, while the bare tick rate changes
+from `1/126` to `1/105`. Choosing the endpoint **after** seeing the current
+seam instead gives credit mean `1787/315`; discarding zero currents gives
+`1/42` for this preparation. Both violate the required compensator.
+Exact finite prefix and inverse-crossing tests check (PC1) and its
+deterministic inversion, including threshold overshoot.
+
+This establishes a dimensionless clock for adaptive observations of the
+same density continuum. Same-degree bare clocks share their mean rate;
+the result contains no derived velocity dependence, local duration for
+changing access, or atomic-frequency relation. Passive modular-flow
+identification is separately restricted by the
+[all-input native modular obstruction](../relative_modular_dynamics/README.md#passive-repair-cannot-act-as-a-modular-automorphism).
+
+### Active coherent waves in a native incident clock
+
+The [admitted coherent wave](../observer_time_fields/REFINEMENT.md#two-continuations-of-the-same-native-density-spectrum)
+can also use a primitive incident counter. The timing carrier and protected
+wave register are distinct apparatus regions. Each event at a fixed port
+of degree `d=5` or `6`, **including zero current**, triggers one fixed walk
+step `W_l`. The timing source pauses during atomic coherent services, as in
+the [existing event-driven modular probe](../transfer_modular_probe/README.md#a-native-event-drives-the-modular-step).
+The wave register receives no passive timing-source repair between steps.
+Consequently its continuing operation is exactly `W_l^N` after `N` ticks;
+interleaved passive repairs on that register would define a different law.
+The coherent preparation, reflection, protected storage, common amplitude
+and Ramsey readout remain the stated apparatus contract. Service events
+are charged separately from timing-carrier incidents.
+
+Set `Q_l=M_l 4^l=630*16^l`, `D_l=4^l L_l` and
+`beta=2d/sqrt(630)`. The native clock gives
+`N_l(floor(a_l tau))/sqrt(Q_l)=beta C_l(tau)`.
+On its preceding finite good event, let `eta=delta+1/a_l`. For the proved
+spectral band `0<=D_l<=Lambda<4Q_l`, the coherent dispersion estimate gives
+
+```text
+e_l = Lambda/[6(4Q_l-Lambda)],
+sup_(tau<=T) ||cos(N_l(floor(a_l tau)) arccos K_l)
+                - cos(beta tau sqrt(D_l))||_band
+    <= beta sqrt(Lambda) [eta+(T+eta)e_l].                 (WC1)
+```
+
+Here `K_l=I-L_l/(2M_l)` is the density transfer and the cosine is the
+existing walk's compressed amplitude. Indeed its random wave parameter
+differs from `beta tau` by at most `beta eta`; its frequency error costs at
+most `beta(T+eta)sqrt(Lambda)e_l`. The cosine Lipschitz bound proves (WC1)
+for each retained clock history. Independence of clocks and fields is
+unnecessary. Along the same spatial subsequence, the previously proved
+bounded-band wave convergence and the clock LLN therefore give
+`cos(beta tau sqrt(A))` in probability, uniformly on compact parameter
+intervals. This closes the independent wave-counter requirement within
+this active protocol; it does not select the continuation from passive repair.
+
+On the good event at most `N_max=floor(a_l p_l(T+eta))` steps are triggered.
+If each implemented step is unitary and differs from `W_l` in operator norm
+by at most `epsilon_l`, telescoping adds at most `N_max epsilon_l` to the
+amplitude bound. For raw arrays with norm at most `1+epsilon_l`, the bound
+is `(1+epsilon_l)^N_max-1`, bounded by
+`N_max epsilon_l/(1-N_max epsilon_l)` when the denominator is positive.
+The error estimate vanishes when `sqrt(Q_l) epsilon_l -> 0`.
+A fixed gate tolerance does not prove this growing limit. No source-pulse
+compiler for the growing walk is executed here; preparation/readout errors
+need their own allowances.
+
+An exact elementary control retains all 237,600 two-attempt timing-carrier
+histories and both Ramsey outputs for the existing 3,960-arc walk. The
+protected input is `(6n_0-1)/sqrt(330)`. Its plus probabilities after zero,
+one and two incident-triggered steps are `1`, `21/22` and `91/110`; the
+complete two-attempt probability is `1297/1320`. Triggering only on nonzero
+current gives `7901/7920`; repreparing before each triggered step gives `71/72`;
+the opposite continuation reflection gives `391/396`. Thus the same native
+clock history distinguishes these operational choices. These are finite
+apparatus predictions, with no atomic-clock or observed Lorentzian-field
+identification.
+
 ### Transport through source refinement
 
 The response-recovered carrier Gram can be transported into the actual level-3

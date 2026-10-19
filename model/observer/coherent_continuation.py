@@ -3,8 +3,8 @@
 This is a finite law-selection experiment, not the committed N1 observer.
 Arc coordinates are (binary load state, seam, placement coin). Real rational
 arrays store amplitudes multiplied by sqrt(60); real and imaginary parts and
-spectator-reference columns extend by linearity. No source pulses or physical
-clock are claimed. The two continuation phases have the SAME first coherent
+spectator-reference columns extend by linearity. A separately compiled finite
+density-sector walk uses the existing source pulses; no physical clock is claimed. The two continuation phases have the SAME first coherent
 native event but different later Ramsey probabilities.
 """
 from __future__ import annotations
@@ -26,6 +26,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE_PATHS = (
     "model/observer/coherent_continuation.py", "model/observer/native.py",
     "model/observer/quantum_mixing.py", "model/common_source/slow_geometry.py",
+    "model/observer/source_scalar/compiler.py", "model/requirements.txt",
+    "code/source_selection_model/response.json", "code/m1_source_realization/receipt.json",
     "evidence/native_geometric_source_20260925/spec.json",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py",
@@ -394,11 +396,266 @@ def selection_audit():
     }
 
 
+
+def density_sector_audit():
+    """Exact isometric intertwiner, without replacing the 66-state source."""
+    import numpy as np
+    x6 = np.array([[6*x[p]-1 for p in range(12)] for x in STATES], dtype=np.int64)
+    lap = np.zeros((12, 12), dtype=np.int64)
+    for a, b in quantum_mixing.seams():
+        lap[a, a] += 1; lap[b, b] += 1
+        lap[a, b] -= 1; lap[b, a] -= 1
+    counts = 60*np.eye(12, dtype=np.int64)-lap
+    if (not np.array_equal(x6.T@x6, 360*np.eye(12, dtype=np.int64)-30)
+            or not np.array_equal(np.array(kernel_counts())@x6, x6@counts)):
+        raise ArithmeticError("density isometry or kernel intertwiner failed")
+    for site in range(12):
+        state = tuple(int(p == site) for p in range(12))
+        for a, b in quantum_mixing.seams():
+            for coin in (0, 1):
+                sigma = 1-coin if site == a else coin
+                output, (_, current) = native.native(state, (a, b), coin)
+                endpoint = (a+b-site) if sigma and site in (a, b) else site
+                reverse_coin = 1-coin if current else coin
+                reverse_sigma = 1-reverse_coin if endpoint == a else reverse_coin
+                if (output != tuple(int(p == endpoint) for p in range(12))
+                        or reverse_sigma != sigma):
+                    raise ArithmeticError("one-particle native coin reencoding failed")
+    return {"one_particle_ports": 12, "one_particle_events": 60, "valid_arcs": 720,
+            "all_720_native_branch_and_inverse_coins_checked": True,
+            "mean_zero_density_dimension": 11,
+            "isometry": "F[x,p]=(x_p-1/6)/sqrt(10); F*F=I-J/12",
+            "intertwiner": "K_66 F=F K_12, K_12=I-L/60",
+            "cyclic_Gram": "[[I,K_12],[K_12,I]] on the mean-zero sector",
+            "cyclic_isometry": "A_12 f -> A_66 Ff; S_12 A_12 f -> S_66 A_66 Ff",
+            "all_density_compressions_intertwined": True,
+            "complete_3960_arc_unitary_compiled": False}
+
+
+def density_walk_program():
+    """Emit compact source routines and their full chronological schedule.
+
+    Bits 0..3 are the site, 4..9 the event, and 10..14 clean scratch.
+    Every emitted angle is dyadic with denominator 2**44. This declared
+    finite precision makes the complete expanded-word digest reproducible.
+    """
+    import math
+    import numpy as np
+    from .source_scalar import compiler as c
+
+    def quantize(word):
+        return [c.pulse(p["kind"], round(p["angle"]*2**44)/2**44, p["targets"])
+                for p in word]
+
+    # The existing Gray compiler's uniform-state elimination has exact
+    # integer squared-amplitude multiplicities. Evaluate its angles with
+    # pinned arbitrary precision, avoiding platform libm atan2/hypot drift
+    # at a subsequent dyadic rounding boundary.
+    import mpmath as mp
+    gray = [j ^ (j >> 1) for j in range(64)]
+    counts = [int(j < 60) for j in gray]
+    rotations = []
+    with mp.workdps(80):
+        for row in range(63, 0, -1):
+            x, y = counts[row-1], counts[row]
+            theta = 0. if x == y == 0 else float(mp.atan2(mp.sqrt(y), mp.sqrt(x)))
+            rotations.append((gray[row-1], gray[row], theta))
+            counts[row-1], counts[row] = x+y, 0
+    prepare = [pulse for a, b, theta in reversed(rotations)
+               for pulse in c._gray_rotation(a, b, -theta, 6)]
+    reflection = c.inverse(prepare)+c.compile_diagonal(np.r_[0., np.full(63, math.pi)])+prepare
+    ccx = ([c.pulse("H", math.pi/2, [2])]
+           +c.compile_diagonal([0.]*7+[math.pi])
+           +[c.pulse("H", -math.pi/2, [2])])
+    routines = {"prepare": quantize(prepare), "reflection": quantize(reflection),
+                "ccx": quantize(ccx),
+                "flip": quantize([c.pulse("I", -math.pi/2, [0]),
+                                  c.pulse("X", math.pi/2, [0])])}
+    shift = []
+
+    def emit(kind, targets):
+        shift.append({"routine": kind, "targets": list(targets)})
+
+    def controlled_x(controls, target, scratch):
+        # AND ladder followed by its inverse; scratch is restored on every
+        # clean input and the complete circuit also defines dirty inputs.
+        chain = [(controls[0], controls[1], scratch[0])]
+        for j in range(2, len(controls)-1):
+            chain.append((scratch[j-2], controls[j], scratch[j-1]))
+        for gate in chain: emit("ccx", gate)
+        emit("ccx", (scratch[len(controls)-3], controls[-1], target))
+        for gate in reversed(chain): emit("ccx", gate)
+
+    def adjacent_swap(left, right):
+        target = (left ^ right).bit_length()-1
+        controls = [j for j in range(4) if j != target]
+        zeros = [j for j in controls if not left >> j & 1]
+        for j in zeros: emit("flip", [j])
+        controlled_x(controls+[10], target, [11, 12])
+        for j in reversed(zeros): emit("flip", [j])
+
+    for edge, (a, b) in enumerate(quantum_mixing.seams()):
+        event = 2*edge+1
+        zeros = [4+j for j in range(6) if not event >> j & 1]
+        for j in zeros: emit("flip", [j])
+        controlled_x(list(range(4, 10)), 10, list(range(11, 15)))
+        path = [a]
+        for j in range(4):
+            if (a ^ b) >> j & 1: path.append(path[-1] ^ (1 << j))
+        pairs = list(zip(path[:-1], path[1:], strict=True))
+        for left, right in pairs+pairs[-2::-1]: adjacent_swap(left, right)
+        controlled_x(list(range(4, 10)), 10, list(range(11, 15)))
+        for j in reversed(zeros): emit("flip", [j])
+    schedule = [{"routine": "reflection", "targets": list(range(4, 10))}]+shift
+    return {"routines": routines, "walk": schedule, "shift": shift,
+            "address_qubits": 10, "clean_scratch_qubits": 5, "angle_denominator": 2**44}
+
+
+def density_walk_word(program):
+    """Generate every pulse of W, including phase and zero-angle requests."""
+    from .source_scalar import compiler as c
+    return [pulse for op in program["walk"]
+            for pulse in c.remap(program["routines"][op["routine"]], op["targets"])]
+
+
+def density_shift_permutation(program):
+    """Execute the reversible circuit on all 32768 basis values exactly."""
+    import numpy as np
+    permutation = np.arange(1 << 15, dtype=np.int64)
+    for op in program["shift"]:
+        bits = op["targets"]
+        if op["routine"] == "flip":
+            permutation ^= 1 << bits[0]
+        elif op["routine"] == "ccx":
+            permutation ^= (((permutation >> bits[0]) & 1)
+                            & ((permutation >> bits[1]) & 1)) << bits[2]
+        else:
+            raise ValueError("unknown reversible shift routine")
+    expected = np.arange(1024)
+    for address in range(1024):
+        site, event = address & 15, address >> 4
+        if site < 12 and event < 60 and event & 1:
+            a, b = quantum_mixing.seams()[event//2]
+            if site in (a, b): expected[address] ^= a ^ b
+    if (len(np.unique(permutation)) != len(permutation)
+            or not np.array_equal(permutation[:1024], expected)):
+        raise ArithmeticError("compiled shift changes padding or fails clean scratch return")
+    return permutation
+
+
+def execute_density_walk(program, routines, state, steps=1, prepare=False):
+    """Apply executed source matrices on all 15 qubits; retain every output.
+
+    Factor reuse is explicit: each routine was executed pulse by pulse on
+    all of its columns. This does not execute the expanded word literally
+    on the full register, insert target matrices, or normalize a state.
+    """
+    import numpy as np
+    from .source_scalar import compiler as c
+    if type(steps) is not int or steps < 0 or type(prepare) is not bool:
+        raise ValueError("nonnegative integer steps and Boolean preparation required")
+    out = np.asarray(state, dtype=complex)
+    if out.ndim != 2 or out.shape[0] != 1 << 15 or not np.all(np.isfinite(out)):
+        raise ValueError("finite full-register reference columns required")
+    out = out.copy()
+    schedule = ([{"routine": "prepare", "targets": list(range(4, 10))}] if prepare else [])
+    schedule += program["walk"]*steps
+    for op in schedule:
+        # compiler._apply packs its first axis as the most significant bit;
+        # each routine was executed with little-endian local bit numbering.
+        out = c._apply(out, routines[op["routine"]], list(reversed(op["targets"])), 15)
+    return out
+
+
+@lru_cache(maxsize=1)
+def compiled_density_audit():
+    """Execute finite source macros, exact full-basis logic and complete probes."""
+    import math
+    import numpy as np
+    from .source_scalar import compiler as c
+    program = density_walk_program()
+    word = density_walk_word(program)
+    permutation = density_shift_permutation(program)
+    routines = {name: c.execute(tape, {"prepare": 6, "reflection": 6,
+                                      "ccx": 3, "flip": 1}[name])
+                for name, tape in program["routines"].items()}
+    uniform = np.r_[np.full(60, 1/math.sqrt(60)), np.zeros(4)]
+    wanted_ccx = np.zeros((8, 8))
+    for j in range(8): wanted_ccx[j ^ (4 if j & 3 == 3 else 0), j] = 1
+    wanted = {"reflection": 2*np.outer(uniform, uniform)-np.eye(64),
+              "ccx": wanted_ccx, "flip": np.array([[0., 1.], [1., 0.]])}
+    # Fixed guards are portable receipt facts. Observed roundoff is checked
+    # here, not frozen as platform-dependent digits or called physical error.
+    limits = {"prepare": 1e-8, "reflection": 1e-8, "ccx": 1e-10, "flip": 1e-10}
+    for name, matrix in routines.items():
+        error = (np.linalg.norm(matrix[:, 0]-uniform) if name == "prepare"
+                 else np.linalg.norm(matrix-wanted[name], "fro"))
+        if error > limits[name] or np.linalg.norm(matrix.conj().T@matrix-np.eye(len(matrix)), "fro") > 2*limits[name]:
+            raise ArithmeticError(f"source {name} routine exceeds its fixed error guard")
+    uses = {name: sum(op["routine"] == name for op in program["walk"])
+            for name in routines}
+    error_sum = sum(uses[name]*limits[name] for name in uses)
+    walk_error = error_sum/(1-error_sum)
+    # Complex reference columns include valid density data and
+    # both classes of address padding. Dirty scratch outputs are never cut.
+    inputs = np.zeros((1 << 15, 2), complex)
+    inputs[0, 0], inputs[1, 0] = 1/math.sqrt(2), -1/math.sqrt(2)
+    inputs[12, 1], inputs[960+3, 1] = .6, .8j
+    actual = execute_density_walk(program, routines, inputs, steps=1)
+    reflected = c._apply(inputs, wanted["reflection"], list(range(9, 3, -1)), 15)
+    expected = np.empty_like(reflected); expected[permutation] = reflected
+    if np.linalg.norm(actual-expected, "fro") > math.sqrt(2)*walk_error:
+        raise ArithmeticError("complete source-walk reference output exceeds its product bound")
+    prepared = execute_density_walk(program, routines, inputs[:, :1], steps=2, prepare=True)
+    ideal = np.zeros_like(inputs[:, :1])
+    for event in range(60): ideal[event*16:event*16+16] = inputs[:16, :1]/math.sqrt(60)
+    for _ in range(2):
+        reflected = c._apply(ideal, wanted["reflection"], list(range(9, 3, -1)), 15)
+        ideal = np.empty_like(reflected); ideal[permutation] = reflected
+    total_sum = limits["prepare"]+2*error_sum
+    if np.linalg.norm(prepared-ideal) > total_sum/(1-total_sum):
+        raise ArithmeticError("prepared two-step density walk exceeds its full output bound")
+    resource = c.resources(word)
+    stable_resources = {key: resource[key] for key in (
+        "native_pulses", "single_code_pulses", "pair_code_pulses", "identity_phase_pulses",
+        "proper_code_load_events", "proper_code_export_events", "proper_code_service_events",
+        "maximum_work_qubits", "service_failure_outcomes_retained",
+        "valid_code_failure_probability_in_exact_arithmetic")}
+    digest = hashlib.sha256(json.dumps(word, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+    return {"density_sector": density_sector_audit(),
+            "compiled_walk": "S_12 (2 A_12 A_12*-I)",
+            "valid_address_arcs": 720, "retained_address_padding": 304,
+            "address_qubits": 10, "clean_scratch_qubits": 5,
+            "all_reversible_basis_inputs_checked": len(permutation),
+            "all_clean_address_inputs_return_scratch": True,
+            "padding_extension": "S fixes address padding; R acts on events for every site and is -I on event padding",
+            "angle_denominator": program["angle_denominator"],
+            "uniform_preparation_angles": "exact integer multiplicities; pinned mpmath at 80 decimal digits",
+            "expanded_walk_sha256": digest,
+            "routine_native_pulses": {name: len(tape) for name, tape in program["routines"].items()},
+            "walk_routine_uses": uses, "walk_resources": stable_resources,
+            "numerical_routine_error_guards": {name: str(value) for name, value in limits.items()},
+            "walk_error_guard_sum": str(F(1, 10**8)+F(uses["ccx"]+uses["flip"], 10**10)),
+            "walk_error_bound_formula": "s/(1-s), s=sum_r uses_r*guard_r; complete operator norm",
+            "complete_reference_trace_error_bound": "2*delta+delta^2 for delta=s/(1-s); no output renormalization",
+            "error_guards_are_interval_or_physical_certificates": False,
+            "two_step_prepared_error_bound_formula": "s/(1-s), s=prepare_guard+2*walk_guard_sum; initially blank event and scratch registers",
+            "physical_pulse_error_allowance": "P*epsilon/(1-P*epsilon) if P*epsilon<1; load/export errors also require allowances",
+            "source_routines_executed_pulse_by_pulse_on_all_columns": True,
+            "full_register_execution": "factorized reuse of raw executed source matrices; no polar correction or state normalization",
+            "expanded_word_executed_literally_on_15_qubits": False,
+            "complete_reference_and_padding_outputs_checked": True,
+            "source_pulse_Ramsey_controller_compiled": False,
+            "growing_refinement_compiler_or_physical_precision_certified": False,
+            "selected_by_committed_native_instrument": False}
+
+
 def run():
     return {"schema": "oph.observer.coherent_continuation.v1",
             "source_sha256": {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCE_PATHS},
             "audit": audit(),
             "selection": selection_audit(),
+            "compiled_density_walk": compiled_density_audit(),
             "contract": {"native_rule": "N1 current-record instrument on its invariant 66-state binary shell",
                          "seams": "the existing thirty seams, with coherent uniform event amplitudes",
                          "workspace": "uncommitted event amplitudes, coherent record re-encoding and reflection",
@@ -410,7 +667,8 @@ def run():
                       "coherent_extension_selected_by_native_instrument": False,
                       "no_new_supplied_field_Hamiltonian": True,
                       "supplied_coherent_control_law": True,
-                      "source_pulses_emitted": False,
+                      "source_pulses_emitted": True,
+                      "source_pulses_scope": "finite 720-arc density representation; full 3960-arc unitary not compiled",
                       "physical_clock_or_spatial_refinement": False,
                       "unknown_quantum_input_restored_after_commitment": False,
                       "physical_predictions_or_empirical_validation": False}}

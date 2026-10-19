@@ -5,7 +5,9 @@ reflection walk to the actual N1 repair branches on the 66-state binary
 total-two shell. It derives a wave recurrence for compressed **amplitudes**
 and gives two exact countercontrols against selecting that wave law from
 the repair instrument alone. This is a law-selection experiment, separate
-from the observer that commits a classical tape after each event.
+from the observer that commits a classical tape after each event. The finite
+[compiled density walk](#source-compilation-of-the-finite-density-walk) realizes
+its density-sector operation with the existing source controls.
 
 ```sh
 python3 -m model.observer.coherent_continuation --check model/observer/results/coherent_continuation.json
@@ -152,3 +154,96 @@ coherent record access with commit-first access; it is not a source-pulse
 realization of the entire 3,960-arc walk. Replay it with
 `python3 -m model.observer.source_selection --check
 model/observer/results/source_selection.json`.
+
+
+## Source compilation of the finite density walk
+
+The same source Laplacian admits a smaller representation of this precise
+density sector. On twelve one-particle port addresses, take sixty events
+`(e,sigma)`: `sigma=0` fixes the port and `sigma=1` exchanges the endpoints
+of seam `e`. This is the native one-particle event under the reversible
+coin relabelling `sigma=1-c` at the first endpoint and `sigma=c` elsewhere.
+All 720 native branches and inverse coins are checked. The event embedding
+`A_12` has uniform amplitudes and `A_12* S_12 A_12=K_12=I-L/60`.
+
+For the original 66-state total-two source, set
+`F[x,p]=(x_p-1/6)/sqrt(10)`. Exact enumeration gives
+
+```text
+F*F = I-J/12,                    K_66 F = F K_12.
+```
+
+Thus `F` is isometric on the eleven-dimensional mean-zero port space.
+The two pairs `(A_12 f,S_12 A_12 f)` and
+`(A_66 Ff,S_66 A_66 Ff)` have the same block Gram matrix
+`[[I,K_12],[K_12,I]]`. Sending the first pair to the second therefore
+extends to an isometry of their cyclic subspaces. The identity
+`W A=SA`, `W SA=2SAK-A` shows that it intertwines their walks and every
+density compression. This proves a finite density-sector representation;
+it does not implement the full 3,960-arc unitary or its higher-configuration
+observables.
+
+[`density_walk_program`](coherent_continuation.py) emits the following word
+using the existing [source compiler](source_scalar/README.md). Bits `0..3`
+encode the port, `4..9` encode the event, and five initially blank bits
+supply reversible scratch. A source word `U_60` prepares the uniform first
+sixty event addresses. The event reflection is
+`U_60 diag(1,-1,...,-1) U_60*`. A controlled permutation exchanges each
+seam's endpoint addresses only for its odd event. Reversible AND ladders
+and Gray paths compile this permutation using the compiler's two-dimensional
+and four-dimensional proper-code services; no new logical matrix is a
+primitive.
+
+One walk has **114,910 native pulses**: 73,414 in the reflection, 1,010
+forty-pulse Toffoli routines and 548 two-pulse bit flips. Every phase and
+zero-angle request is charged, with 114,910 loads and 114,910 exports.
+Preparing the event register costs a separate 36,288 pulses. The complete
+chronological word is generated on demand and its SHA-256 is retained;
+the uniform-state angles use exact integer multiplicities and the pinned
+arbitrary-precision backend at eighty decimal digits. Emitted angles are
+rounded to multiples of `2^-44`. No expanded pulse
+array is stored in the repository.
+
+All 32,768 reversible basis inputs are executed exactly. Every one of the
+1,024 clean-scratch address inputs returns clean scratch. Of these, 720
+addresses are valid and 304 are retained padding. The shift fixes padding;
+the reflection acts on the event register at every site and equals `-I`
+on event padding. This specifies a unitary extension, including the padding
+block, without postselection. The declared proper-code export channel
+retains each processor-complement failure branch; source generators preserve
+the valid code exactly, so these failure probabilities are zero for the
+stated valid inputs. Invalid processor inputs have explicit failure outputs.
+Application-address padding and processor failure are different branches.
+
+Each routine is executed pulse by pulse from the full six-level source
+exponentials, on all its input columns. The 15-qubit replay reuses those raw
+executed matrices and retains every output component, including scratch
+and padding. It checks a complex reference input and an event-prepared
+two-step density input. This is **factorized verified execution**, not
+literal replay of every expanded pulse on the entire 15-qubit array.
+No polar projection, target-matrix substitution or output normalization is
+used. An independent test compares literal pulses and factor reuse on a
+complete smaller register, including overlapping controls.
+
+The numerical guards bound the reflection's Frobenius error by `10^-8`
+and each Toffoli/flip error by `10^-10`; these also bound operator errors.
+For one walk their sum is `s=829/5,000,000,000`. Multiplicative error
+accounting gives `delta<=s/(1-s)` on the complete register, including any
+spectator reference. The induced unnormalized output trace-norm error is
+at most `2 delta+delta^2`. Event preparation has a `10^-8` first-column
+guard; its two-step bound uses `s=10^-8+2(829/5,000,000,000)` and requires
+an initially blank event register and scratch. These are checked floating
+bounds, not interval or physical precision certificates. If physical pulse
+implementation errors are at most `epsilon` in operator norm, `P` pulses
+add `P epsilon/(1-P epsilon)` when `P epsilon<1`; load/export errors need
+their own allowance. The existing source-pulse and proper-code apparatus,
+blank scratch, coherent storage and analogue control remain explicit.
+
+This constructs the finite wave service for the density representation.
+Its [incident-clock attachment](../relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+separates a timing carrier from a protected wave register. A source-pulse
+Ramsey controller and a compiler with vanishing error along a growing
+refinement are not executed here. The identity/reflection and record-phase
+controls continue to show that committed repair alone does not select this
+coherent law. No physical vacuum, observed Lorentzian field or laboratory
+clock identification follows from compiling the finite service.

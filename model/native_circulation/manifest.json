@@ -1,12 +1,12 @@
 {
-  "description": "Exact one-history native circulation and its conditional martingale Gaussian limit.",
+  "description": "Exact one-history native circulation, its rank-three axial readout and conditional Brownian limit.",
   "files": {
-    "README.md": "f9c25efad2b0794672c599d67c5eb186153d6bba6fd86e8eab74a10969d4ac67",
+    "README.md": "686d12ea57326239c635be1a577dd81a856cfc523ea74a48ca37d580171b299d",
     "__init__.py": "f202d73c2d0428ff7e8d18c2957999d3de107e0c6fea9157b28ad335177a26e1",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
-    "construction.py": "45df2c535e914f84587de21d78711d4c98e9ae8562361d1141cb155037b4e008",
-    "results.json": "91e8796af657f06434cf209dff1ed80af0a72bd8195aad27b52a724cca074c02",
-    "test_construction.py": "81f7860fd9cdf639ec10df93aaba0ac219c7b2552308750bd30f7d6c8c811f7d"
+    "construction.py": "8b5ee8cebc55122db95aa2e7fb16b555dbeff80490d133a4ee0492efb9bcc337",
+    "results.json": "3537f3b0803132ebdb723354e310e4b7a61cc6e7faca2238bab8e06988a37104",
+    "test_construction.py": "58dce291cac8ba32ef6ed6417ed0f4cb945361deb1783d0b2c20dc992911734d"
   },
   "reproduce": [
     "python -m model.native_circulation --check model/native_circulation/results.json",

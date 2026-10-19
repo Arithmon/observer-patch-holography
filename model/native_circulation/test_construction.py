@@ -24,6 +24,59 @@ def test_cycle_projection_is_exact_and_gradient_observables_do_not_diffuse():
     assert sum(weights)==1  # Orientation signs are not all positive.
 
 
+def test_axial_readout_uses_the_rank_three_gram_and_every_native_branch():
+    row=c.axial_geometry()
+    assert row['rank']==3 and row['frame_gram_entries_checked']==144
+    assert row['native_branches_checked']==3960
+    assert row['all_conditional_drifts_zero'] and row['cycle_orthogonality_exact']
+    assert row['covariance_per_attempt_diagonal']=='4/99'
+    assert row['off_diagonal_covariances']=='0'
+    # The weights' inner products are determined by the recovered Gram alone;
+    # no choice of handedness or Cartesian presentation changes this metric.
+    weights=c.axial_weights()
+    kernel,_,_,_=c.source()
+    source_gram=c.transfer.slow_geometry.source().intrinsic_gram_exact()
+    gram=sp.Matrix([[sp.Rational(a)+sp.Rational(b)*sp.sqrt(5) for a,b in row]
+                    for row in source_gram])
+    for i,(a,b) in enumerate(kernel.seams):
+        for j,(d,e) in enumerate(kernel.seams):
+            expected=gram[a,d]*gram[b,e]-gram[a,e]*gram[b,d]
+            assert sp.simplify(weights[:,i].dot(weights[:,j])-expected)==0
+
+
+def test_axial_counter_accumulates_on_repeated_closed_native_cycles():
+    row=c.axial_geometry(); witness=row['closed_cycle']
+    initial=tuple(witness['initial_and_final_loads']); state=initial
+    kernel,_,_,_=c.source(); weights=c.axial_weights()
+    total=sp.zeros(3,1)
+    increment=sp.Matrix([sp.sympify(x) for x in witness['axial_counter_increment']])
+    assert increment!=sp.zeros(3,1)
+    for repeats in range(1,6):
+        for event in witness['events']:
+            seam=tuple(event['seam'])
+            state,record=c.native.native(state,seam,event['coin'])
+            assert record[1]==event['current']
+            total+=weights[:,kernel.seams.index(seam)]*record[1]
+        assert state==initial
+        assert (total-repeats*increment).applyfunc(sp.simplify)==sp.zeros(3,1)
+
+
+def test_axial_geometry_rejects_a_changed_frame_dictionary(monkeypatch):
+    original=c.transfer.slow_geometry.raw_frame()
+    altered=list(original); altered[1]=original[2]
+    monkeypatch.setattr(c.transfer.slow_geometry,'raw_frame',lambda:tuple(altered))
+    with pytest.raises(ArithmeticError,match='recovered rank-three Gram'):
+        c.axial_weights()
+
+
+def test_gradient_contamination_destroys_the_axial_martingale(monkeypatch):
+    weights=sp.MutableDenseMatrix(c.axial_weights())
+    weights[0,0]+=1
+    monkeypatch.setattr(c,'axial_weights',lambda:weights)
+    with pytest.raises(ArithmeticError,match='martingale difference'):
+        c.axial_geometry()
+
+
 def test_conditional_zero_drift_but_state_dependent_variance():
     m=c.marked()
     variances=[]

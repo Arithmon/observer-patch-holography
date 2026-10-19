@@ -279,3 +279,167 @@ def test_every_nonempty_event_set_has_many_ticks_on_density_continuum_scale():
 def test_clock_bound_rejects_unstated_or_empty_source_exposure(args):
     with pytest.raises(ValueError):
         t.incident_clock_bound(*args)
+
+
+def test_native_adaptation_preserves_weighted_rate_but_not_bare_tick_rate():
+    result = t.predictable_native_clock_control()
+    assert result['source_ports'] == 240 and result['source_seams'] == 630
+    assert result['first_native_histories'] == 1260
+    assert result['next_port_first_history_counts'] == {'0': 1255, '1': 5}
+    conditional = result['conditional_second_step_laws']
+    assert [F(row['bare_tick_probability']) for row in conditional] == [F(1, 126), F(1, 105)]
+    assert [F(row['credit_mean']) for row in conditional] == [F(1, 21)]*2
+    assert [F(row['credit_variance']) for row in conditional] == [F(125, 441), F(104, 441)]
+    # Independent complete two-step enumeration from the current branch law:
+    # 1250 first histories miss, five incident histories have zero current,
+    # five incident histories move the readout. No current branch is dropped.
+    graph = t.clocks.screen.source.federation(0)
+    totals = {}
+    for first_credit, next_port, multiplicity in ((0, 0, 1250), (6, 0, 5), (6, 1, 5)):
+        for seam in graph.seams:
+            total = first_credit+(30//len(graph.neighbours[next_port]))*int(next_port in seam)
+            totals[total] = totals.get(total, 0)+2*multiplicity
+    assert {int(k): v for k, v in result['two_step_credit_histogram'].items()} == totals
+    assert totals == {0: 1562500, 6: 24990, 11: 60, 12: 50}
+    assert sum(totals.values()) == result['second_native_histories'] == 1587600
+    assert F(result['two_step_credit_mean']) == F(2, 21)
+    assert F(result['successive_credit_covariance']) == 0
+    # Neither choosing the current endpoint after seeing the seam nor dropping
+    # its zero-current events obeys the predictable incident-clock compensator.
+    assert F(result['after_seam_endpoint_selection_credit_mean']) == F(1787, 315) > F(1, 21)
+    assert F(result['count_only_nonzero_current_credit_mean']) == F(1, 42) < F(1, 21)
+
+
+def test_adaptive_maximum_failure_bound_against_complete_finite_path_law():
+    # Change to a degree-six port after the first incident event. Integer
+    # weights enumerate every seam word, retaining an absorbing failure bit.
+    result = t.predictable_port_clock_bound(0, F(1, 1260), F(1, 3))
+    pending = {(0, False): 1}
+    cap = result['covered_native_attempts']
+    assert cap == 421
+    for n in range(1, cap+1):
+        updated = {}
+        for (credits, failed), count in pending.items():
+            degree = 6 if credits else 5
+            for increment, weight in ((0, 630-degree), (30//degree, degree)):
+                after = credits+increment
+                # |R_n-n/21| > 60 delta, without rational-rounding error.
+                key = after, failed or abs(21*after-n) > 420
+                updated[key] = updated.get(key, 0)+count*weight
+        pending = updated
+    total = 630**cap
+    assert sum(pending.values()) == total
+    failure = F(sum(count for (_, failed), count in pending.items() if failed), total)
+    assert 0 < failure <= F(result['failure_probability_upper']) < 1
+
+
+def test_predictable_clock_inverse_inclusion_for_all_admitted_credit_words():
+    # The deterministic inversion argument only uses increments in {0,5,6}.
+    # Check all words on a short auxiliary scale, including threshold overshoot.
+    a, b, horizon, delta = 8, F(1), F(1, 2), F(1, 4)
+    cap, checked = math.ceil(a*(horizon+delta)), 0
+    for word in product((0, 5, 6), repeat=cap):
+        credits = [0]
+        for increment in word:
+            credits.append(credits[-1]+increment)
+        if max(abs(credits[n]-30*b*n/a) for n in range(cap+1)) > 30*b*delta:
+            continue
+        checked += 1
+        targets = math.floor(30*b*horizon)
+        assert credits[-1] >= targets
+        for k in range(targets+1):
+            first = next(n for n, count in enumerate(credits) if count >= k)
+            inverse = F(first, a)
+            left, right = F(k)/(30*b), min(horizon, F(k+1)/(30*b))
+            assert abs(inverse-left) <= delta+1/(5*b)
+            assert abs(inverse-right) <= delta+1/(5*b)
+        for n in range(math.floor(a*horizon)+1):
+            displayed = credits[n]/(30*b)
+            assert abs(displayed-F(n, a)) <= delta+F(1, a)
+            assert abs(displayed-min(horizon, F(n+1, a))) <= delta+F(1, a)
+    assert checked > 0
+
+
+def test_predictable_clock_uniform_bounds_vanish_on_actual_refinement():
+    for level in (0, 2, 6, 20, 100):
+        delta = F(1, 2**(level//2))
+        result = t.predictable_port_clock_bound(level, tolerance=delta)
+        assert F(result['mean_credits_per_continuum_unit']) == 60*4**level
+        assert F(result['uniform_inverse_error_upper']) == delta+F(1, 10*4**level)
+        assert F(result['failure_probability_upper']) <= min(F(1), F(2, 5*2**level))
+    for args in ((True,), (101,), (0, 1), (0, F(0)), (0, F(1), 0)):
+        with pytest.raises(ValueError):
+            t.predictable_port_clock_bound(*args)
+
+
+def test_incident_wave_clock_bound_against_actual_source_spectral_phases():
+    graph = t.clocks.screen.source.federation(0)
+    laplacian = np.zeros((graph.ports, graph.ports))
+    for a, b in graph.seams:
+        laplacian[a, a] += 1; laplacian[b, b] += 1
+        laplacian[a, b] -= 1; laplacian[b, a] -= 1
+    eigenvalues = np.maximum(0., np.linalg.eigvalsh(laplacian))
+    for degree in (5, 6):
+        result = t.incident_wave_clock_bound(0, degree, band=F(12), tolerance=F(1, 8))
+        bound = F(result['uniform_ideal_compressed_amplitude_error_upper'])
+        factor = F(result['beta_times_sqrt_band_upper'])
+        square = F(result['squared_incident_to_wave_parameter_factor_beta'])*12
+        assert (factor-F(1, 10**12))**2 < square <= factor**2
+        beta, eta = 2*degree/math.sqrt(630), F(result['count_error_eta'])
+        phases = np.arccos(1-eigenvalues/1260)
+        for tau in (F(0), F(1, 4), F(1, 2), F(1)):
+            for ticks in range(result['maximum_triggered_steps_on_clock_good_event']+1):
+                if abs(F(ticks, 2*degree)-tau) > eta:
+                    continue
+                actual = np.cos(ticks*phases)
+                target = np.cos(beta*float(tau)*np.sqrt(eigenvalues))
+                assert max(abs(actual-target)) <= float(bound)+1e-13
+
+
+def test_wave_clock_and_compilation_errors_vanish_with_declared_refinement():
+    previous = F(2)
+    for level in (0, 2, 6, 20):
+        q = 630*16**level
+        delta = F(1, 2**(level//2))
+        result = t.incident_wave_clock_bound(level, 5, tolerance=delta, step_error=F(1, q))
+        assert result['squared_wave_normalization_Q'] == q
+        ideal = F(result['uniform_ideal_compressed_amplitude_error_upper'])
+        assert 0 < ideal < previous
+        previous = ideal
+        steps = result['maximum_triggered_steps_on_clock_good_event']
+        total = F(steps, q)
+        assert F(result['unitary_step_accumulated_error_upper']) == total
+        assert F(result['raw_step_accumulated_error_upper']) == total/(1-total)
+    # A fixed compiler tolerance cannot silently supply an all-level limit.
+    assert t.incident_wave_clock_bound(6, 5, step_error=F(1, 10))['raw_step_accumulated_error_upper'] is None
+    small = t.incident_wave_clock_bound(0, 5, step_error=F(1, 1000))
+    n = small['maximum_triggered_steps_on_clock_good_event']
+    assert (1+F(1, 1000))**n-1 <= F(small['raw_step_accumulated_error_upper'])
+
+
+def test_complete_native_clock_histories_drive_wave_steps_including_zero_currents():
+    result = t.active_wave_clock_control()
+    assert result['complete_native_histories'] == 237600
+    assert result['admitted_wave_arc_dimension'] == 3960
+    assert result['Ramsey_by_incident_ticks'] == [['1', '0'], ['21/22', '1/22'], ['91/110', '19/110']]
+    rows = result['joint_clock_current_and_Ramsey_law']
+    assert [row['native_histories'] for row in rows] == [165000, 56000, 10000, 4900, 1400, 300]
+    assert sum(F(p) for row in rows for p in row['joint_Ramsey_probabilities']) == 1
+    assert sum(F(row['joint_Ramsey_probabilities'][0]) for row in rows) == F(1297, 1320)
+    # Same-history dependence remains in the actual joint current/readout law.
+    assert F(result['nonzero_current_count_Ramsey_plus_covariance']) == -F(65, 26136)
+    assert F(result['nonzero_current_only_trigger_Ramsey_plus']) == F(7901, 7920)
+    assert F(result['reprepare_before_each_step_Ramsey_plus']) == F(71, 72)
+    assert F(result['opposite_reflection_Ramsey_plus']) == F(391, 396)
+    assert len({result[key] for key in ('complete_Ramsey_plus',
+        'nonzero_current_only_trigger_Ramsey_plus', 'reprepare_before_each_step_Ramsey_plus',
+        'opposite_reflection_Ramsey_plus')}) == 4
+    assert not result['passive_repairs_act_on_protected_wave_register']
+    assert not result['growing_wave_source_pulse_compiler_executed']
+
+
+@pytest.mark.parametrize('args', ((0, 33), (0, True), (0, 5, F(0)),
+    (0, 5, F(2520)), (0, 5, 1), (0, 5, F(1), F(1), F(1, 8), F(-1))))
+def test_wave_clock_bound_rejects_wrong_clock_domain_or_unbounded_inputs(args):
+    with pytest.raises(ValueError):
+        t.incident_wave_clock_bound(*args)

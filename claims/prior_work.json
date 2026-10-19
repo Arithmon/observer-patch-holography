@@ -4526,6 +4526,18 @@
       "note": "Approximate quantum Markov chains and Gibbs states."
     },
     {
+      "key": "keller2011heat",
+      "type": "article",
+      "author": "Keller, Matthias and Lenz, Daniel and Vogt, Hendrik and Wojciechowski, Radosław",
+      "title": "Note on basic features of large time behaviour of heat kernels",
+      "year": "2011",
+      "eprint": "1101.0373",
+      "archivePrefix": "arXiv",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1101.0373; https://arxiv.org/html/1101.0373v2",
+      "note": "Appendix A, Theorem A.2: positivity improvement is equivalent to irreducibility for bounded-below self-adjoint positivity-preserving semigroups. The native conservative form and its constant kernel check the hypotheses separately."
+    },
+    {
       "key": "kelly2011reversibility",
       "type": "book",
       "author": "Kelly, Frank P.",

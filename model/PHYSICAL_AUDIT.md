@@ -165,7 +165,14 @@ checks finite-count moments independently of the limiting Gaussian theorem.
 
 The actual rank-three band has an isotropic attempt-count fluctuation law
 and distinct axial/transverse incident-clock variances. Its projected local
-clock transfer fails a two-tick linear closure test. On the existing spherical
+clock transfer fails a two-tick linear closure test. A different
+[axial current readout](native_circulation/README.md#a-three-component-axial-counter-from-the-recovered-frame)
+is a three-component martingale with exact covariance `(4N/99) I3` and a
+Brownian path limit under stationary native repair. Its increment action has
+coefficient `99/8` in rescaled attempt count. Repeatable closed carrier cycles
+give unbounded counter support, with growing record capacity; axial parity
+and record accumulation do not establish translations or a spatial bulk.
+On the existing spherical
 screens, exact block elimination gives a Schur Green operator and a uniform
 approximation bound. One fixed twenty-base-face ancestry readout compares
 native Green, attempt-clock and root-carrier incident-clock covariances on
@@ -208,16 +215,27 @@ the same continuous limit in Skorohod topology. Uniform fixed-number
 preparation, IID seams, fair repair and full occupation readback are explicit.
 Normalized [incident counts and inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
 converge uniformly, transferring these paths to native event-clock reads.
-For fixed bounded seam incidences, finite-vector clock jitter has Gaussian
-covariance `min(t,u)*shared_seams` and is asymptotically independent of
-the density vectors. State-dependent tick selection is outside this result.
+[Predictable port selection](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) also has this path limit when ticks are weighted
+by inverse degree, without assuming clock–field independence. For fixed bounded
+seam incidences, finite-vector jitter has Gaussian covariance
+`min(t,u)*shared_seams` and is asymptotically independent of density vectors;
+that fluctuation statement does not cover adaptive choices.
 Reflection-positive reconstruction gives free Fock generator `dGamma(A)`;
 the Green field divided by `sqrt(2)` has temporal precision
 `-partial_tau^2+A^2`. This diffusive reconstruction supplies neither
 a relativistic vacuum nor its native quantum preparation.
 The [joint dynamics proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
-uses the same `A` for coherent cosine propagation. Two long native blocks
-supply a continuous
+uses the same `A` for coherent cosine propagation. An
+[active incident-clock protocol](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+gives bounded-band `cos((2d/sqrt(630))*tau*sqrt(A))`, with a quantified clock
+and accumulated step-error bound. The exact two-attempt control has Ramsey
+plus probability `1297/1320`. Its finite density sector has a
+[720-arc source compiler](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk)
+using 114,910 pulses per walk, clean scratch and retained padding.
+The full-register replay reuses raw pulse-executed routines; its floating
+guards certify neither interval enclosure nor physical precision. Protected
+storage, coherent services and timing-carrier pauses are supplied; the
+growing refinement compiler is unproved. Two long native blocks supply a continuous
 Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. Its synthesis
 parameter and processor are declared; it is not the passive instantaneous
 occupation process or a quantum vacuum. Coherent access and reflection
@@ -233,17 +251,26 @@ spatial operator. The [boundary-action test](physical_space_time/OCCUPATION_FIEL
 also excludes boundedly invertible `L2` form congruence with a smooth compact
 three-dimensional Dirichlet bulk's static boundary precision (with smooth boundary): its Steklov
 eigenvalues grow as `sqrt(n)`, while native eigenvalues grow as `n`.
-Unbounded spectral processing or another bulk observation dictionary
-remains possible. The internal gap removes rank-three carrier components
-from bounded-energy full-port modes at this scale; they supply no radius.
+The [complete-readout invariant](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
+also preserves normalized decay rates under the stated dense-range linear
+dictionary: native rates grow as `n`, while a compact three-dimensional free
+scalar's Euclidean rates grow as `n^(1/3)`. No common clock scale equates them.
+Restricted boundary, interacting and nonlinear dictionaries are outside that
+test. Internal rank-three modes vanish from bounded-energy full-port families
+at this scale; they supply no radius.
 Restoring the constant mode gives the full-space generator `Abar`.
 Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
 are `||1_F exp(-tau*Abar)1_E||<=exp(-d(E,F)^2/(2*tau))` and zero cosine
 propagation when `|t|<sqrt(2)*d(E,F)`. The distance is intrinsic to the
 supplied flat comparison polyhedron. Finite matrices do not have this
-exact support property, and stationary field correlations need not vanish
-outside this propagation region. The theorem supplies neither a measured
-light speed nor Lorentz boosts.
+exact support property. The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
+instead has strictly negative response between separated nonzero nonnegative profiles
+at every positive scaled selection-slot time, bounded in magnitude by
+`2*exp(-d^2/(2*tau))*||f||*||g||`. This is an intervention derivative, not
+signalling inferred from correlations. An exact finite response cone fails
+only if the same support/control/time dictionary is imposed; physical
+locality of those services, measured light speed and Lorentz boosts are unproved.
+Causal microscopic theories may have such diffusive limits.
 
 The [random-length return construction](observer_time_fields/wave_reference.py)
 uses the positive length law with generating function

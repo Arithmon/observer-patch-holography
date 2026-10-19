@@ -392,3 +392,45 @@ def test_native_precision_eventually_exceeds_every_declared_ball_trace_upper_bou
     index = degree*degree
     native_lower = c.continuum_eigenvalue_enclosure(index)['lower']
     assert native_lower > scale*degree+bounded_correction
+
+
+@pytest.mark.parametrize('lag', (1, 2))
+@pytest.mark.parametrize('green_filtered', (False, True))
+def test_complete_mixed_carrier_readouts_preserve_all_centered_lag_eigenvalues(lag, green_filtered):
+    # Use the actual recovered twelve-port graph and its exact density kernel.
+    # The conserved mode is removed by a complete, nonorthonormal difference
+    # dictionary; an additional shear mixes all eleven observation channels.
+    _, laplacian = c.source.passage.recovered_carrier()
+    native_kernel = c.sp.eye(12)-laplacian/60
+    projection = c.sp.eye(12)-c.sp.ones(12)/12
+    covariance = ((laplacian+c.sp.ones(12)/12).inv()-c.sp.ones(12)/12
+                  if green_filtered else projection)
+    dictionary = c.sp.zeros(12, 11)
+    for i in range(11):
+        dictionary[i, i] = 1
+        dictionary[11, i] = -1
+    mixing = c.sp.eye(11)
+    for i in range(10):
+        mixing[i, i+1] = i+1
+    readout = dictionary*mixing
+    equal_time = readout.T*covariance*readout
+    delayed = readout.T*covariance*native_kernel**lag*readout
+    z = c.sp.Symbol('z')
+    observed = (equal_time.inv()*delayed).charpoly(z).as_expr()
+    expected, remainder = c.sp.div((native_kernel**lag).charpoly(z).as_expr(), z-1)
+    assert remainder == 0
+    assert c.sp.expand(observed-expected) == 0
+    # A raw lag matrix does change under calibration; covariance normalization
+    # is essential to the invariant, not an optional choice of units.
+    assert delayed.charpoly(z).as_expr() != observed
+
+
+def test_incomplete_carrier_dictionary_cannot_invert_its_covariance():
+    # Duplicating one channel destroys completeness even with every channel
+    # retained in the output tape. It must not be treated as an invertible map.
+    projection = c.sp.eye(12)-c.sp.ones(12)/12
+    dictionary = c.sp.eye(12)[:, :11]
+    dictionary[:, 10] = dictionary[:, 9]
+    covariance = dictionary.T*projection*dictionary
+    assert covariance.rank() == 10
+    assert covariance.det() == 0

@@ -962,6 +962,60 @@ present scale. Set `E_l^port(v)=4^l<v,L_l v>`. The internal gap gives
 therefore loses its within-carrier component, including the internal
 rank-three band, as `O(2^(-l))` in norm. This statement concerns the current
 full-port energy scaling, not all possible native observable limits.
+Changing only that scale does not keep both sectors: with energy
+`rho_l<v,L_l v>`, a unit internal component costs at least
+`(5-sqrt(5))*rho_l`. Keeping this cost bounded requires bounded `rho_l`,
+while every fixed smooth cell lift then has energy `O(rho_l*4^(-l))->0`.
+The admitted square-root coherent frequencies have the same separation.
+The native [axial circulation counter](../native_circulation/README.md#a-three-component-axial-counter-from-the-recovered-frame)
+is a different unbounded three-component record, with a Brownian count limit;
+it supplies no radial field or spatial transport law by itself.
+
+### A complete linear readout preserves the decay spectrum
+
+The [actual density path law](../observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+also constrains a dynamical bulk dictionary. Its covariance is
+`C^(1/2) exp(-tau A) C^(1/2)`, with `C=I` for density or `C=G` for the
+declared Green field. Let a fixed linear spatial readout have composite
+`B=T C^(1/2)` extending to a bounded injective map with dense range between
+the complete centered observation Hilbert spaces. Then its covariances are
+`D_0=B B*` and `D_tau=B exp(-tau A) B*`. Left polar decomposition gives
+`B=D_0^(1/2) U` with `U` unitary. Consequently the covariance-normalized lag
+has the bounded extension
+
+```text
+D_0^(-1/2) D_tau D_0^(-1/2) = U exp(-tau A) U*.             (R1)
+```
+
+Here the inverse square root acts first on its dense domain
+`range(D_0^(1/2))`; no bounded inverse of the covariance is assumed.
+The identity follows there by substitution and extends by continuity.
+Thus every complete readout in this class retains the ordered decay rates
+`lambda_n(A)`, including multiplicities. One common positive clock factor
+multiplies all rates by the same constant and preserves their linear growth
+in (L4). More generally, a continuous nonconstant common clock change `h`
+with `h(0)=0` and `h(t)>=0` must be such a factor if `exp(-h(t) A)` preserves
+semigroup composition: any positive mode gives `h(t+s)=h(t)+h(s)`, hence
+`h(t)=alpha*t`, `alpha>0`. This does not constrain clocks conditioned on
+the state or clocks with a different stationarity contract.
+Exact finite-carrier controls recover all eleven centered native
+lag eigenvalues after nonorthogonal readout mixing and Green filtering.
+
+For comparison, consider a complete stationary free scalar on a smooth compact
+three-dimensional spatial manifold without boundary, with Euclidean covariance
+`(2 Omega)^(-1) exp(-tau Omega)`, with `Omega=sqrt(c^2 K+m^2)`, `c>0`,
+and positive second-order elliptic `K`. The same
+[Weyl law](https://arxiv.org/html/1801.07598#S1) gives
+`lambda_n(K)~constant*n^(2/3)`, hence `lambda_n(Omega)~constant*n^(1/3)`.
+Its normalized lags therefore cannot equal (R1) under one fixed clock scale.
+Removing finitely many zero modes does not change this obstruction.
+Separately, the commuting `A^(1/4)` filter above changes the Green covariance
+modewise to `A^(-1/2) exp(-tau A)`; its normalized decay is unchanged, even
+though that processing is unbounded on `L2`. Equal-time spectral adjustment
+alone cannot supply the missing radial dynamics. This excludes the stated
+complete linear Gaussian identification. Restricted boundary observations,
+nonlinear dictionaries, interacting fields, other scaling limits and general
+holographic reconstructions are outside its scope.
 
 ### Tilted shell spectra under the same comparison
 

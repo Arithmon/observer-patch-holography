@@ -3,13 +3,13 @@
   "files": {
     "AUDIT.md": "96de349b73a15fe61ed94639d12f05ac2a54fa7edc30ced63458ae0476c3b737",
     "README.md": "90c6ccfea8442548a5f86c5532ca8c7370a0ffc25df1a395a0b4869c87d64478",
-    "REFINEMENT.md": "d62fb10f0c894cdc28a34b442a218c3ecb9e6b07ecb986ee3e3a669b83303f8c",
+    "REFINEMENT.md": "aa60ccc8636c556e8542cd79044524eef6b816a47c572a16664be82f7c774df8",
     "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
     "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
     "canonical_sector.py": "50569e985860cce4014d1156224a127b03881e11b387d5c926ec985f7d9a2029",
     "canonical_sector_results.json": "c62ff2836f1d3cd833e5c1728676f263b532683dd37953fad0e035ee4bbacf99",
-    "continuum_dynamics.py": "70df2563915157362bfd750955743278da9c7621c551f1a5370564b67ed9c8a3",
-    "continuum_dynamics_results.json": "1e38d594cf5c35d59cbfbea6e5508a833fa0068d506b81db0ee5019fc7dc9779",
+    "continuum_dynamics.py": "77064a796dcfca80d2cd8ab4c89a8a9bf2935b42e34442e872aacd82e2d0f607",
+    "continuum_dynamics_results.json": "f552d7c3ffc587c184dc5269b4dbfdf1fb89d0a93f3e991a3ba98bfe97c37de0",
     "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
     "dual.py": "647f69c428e9bf7c8cf0eb72fa7d408eb7758a728861d0202600dc6dc883c548",
     "federation.py": "300cce61e8de9f43deb048523def82c35ac9d7440e05d097c892a827eb4ed037",
@@ -18,10 +18,10 @@
     "refinement_results.json": "d76a6dcd99c1c279923f4bf852bb00db8240b1fbd4ae3ab24bf3817fa928e5ca",
     "results.json": "13a000287a74615e7086526584d5f9b025ed1faf4170a757a84f25880a54ab97",
     "spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
-    "spatial_dynamics_results.json": "c05c248880c346e75ee8d6e61a2c86e9b27aa5ace93bcb76bb30e23f8c8b83d2",
+    "spatial_dynamics_results.json": "39061fceacceb85834151c6063c10762e2c436e6bf70417103767099c869201e",
     "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
     "test_canonical_sector.py": "6563fc2eb688b3b5cd073e3f0181790807462e8bdbcc3961f3dfcfa2ef62d866",
-    "test_continuum_dynamics.py": "9cb639c83b6a5fcf399ec3c4703a1c5da84559f0475fada0406bca1fcce91135",
+    "test_continuum_dynamics.py": "f642d8fdc5012cde64f7bd9f1168e32968eeea638a789c1925e1ed0a0aad13cb",
     "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
     "test_dual.py": "3aad4050be728668865cce56b7685cd196c39fa2de6c645d9cddfac3cc7c7bee",
     "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
@@ -33,7 +33,7 @@
     "thermal.py": "c2f266f527c0ce083b4d7c091686dbc01cfd8bb68c8dea9c0157f30800d4a0f9",
     "thermal_results.json": "d7839c4852df1266c70dde4e928c499c5143fd4f688fb5d4bd3483057c3aaaec",
     "wave_reference.py": "4b37e0ded33523e746657bfa3ef768581ef7e7ef9d6e66cea9d9d9180cbf50eb",
-    "wave_reference_results.json": "87e7ba29ece2eea24442682264ea93dc0da1f342adf02686c25321562fc31b7e"
+    "wave_reference_results.json": "e67cad143c1d4accfb2224e13d5a3b9b445a64ac47c28bbc20403ec748ae4820"
   },
   "reproduce": [
     "python -m model.observer_time_fields --check model/observer_time_fields/results.json",

@@ -151,18 +151,30 @@ converge after interpolation in `C([0,T],H^-3(S2))`, with covariance
 filter gives `H^-2` paths. This simultaneous refinement/count limit
 retains uniform fixed-number preparation, IID seams and full readback.
 Normalized [incident counts and inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
-sample these same paths, with a finite-vector shared-seam jitter law.
+sample these same paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with degree-weighted
+ticks. This path result needs no clock–field independence; finite-vector
+shared-seam jitter retains its separate fixed-event-set contract.
 Whole-sequence uniqueness and physical clock calibration are unproved.
 With the constant mode restored, a heat off-diagonal estimate gives finite
-wave propagation in the supplied flat comparison distance. Two long record
-blocks give a separate continuous Gaussian wave readout with covariance
-`G cos((t-u)sqrt(A))`; a controlled repair bias gives mean derivative
-`2(I-exp(-tau*A))f` and a nonvanishing fixed-amplitude signal with uniform
-error bounds. The [boundary-action test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+wave propagation in the supplied flat comparison distance. An
+[active incident clock](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+drives one coherent step per tick on a protected register and gives
+`cos((2d/sqrt(630))*tau*sqrt(A))` on bounded spectral bands. Its exact
+two-attempt Ramsey probability is `1297/1320`; carrier pauses, coherent
+services and a vanishing accumulated implementation error are explicit.
+Two long record blocks give a separate continuous Gaussian wave readout with covariance
+`G cos((t-u)sqrt(A))`. Controlled repair gives derivative `2(I-exp(-tau*A))f`;
+at fixed scaled selection-slot time its [disjoint-support response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
+is nonzero with an exponentially small short-time bound. An exact finite
+signal cone is incompatible with that same support/control/time dictionary;
+its physical locality is unproved. The [boundary-action test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
 excludes a boundedly invertible `L2` energy identification with a smooth compact three-dimensional
 Dirichlet bulk's static boundary trace (with smooth boundary). Internal rank-three components
-vanish in bounded-energy families under this scaling. A physical radial
-domain, metric, quantum vacuum and calibrated clock remain open.
+vanish in bounded-energy families under this scaling. The
+[normalized-lag invariant](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
+also excludes complete linear identification with a compact three-dimensional
+free scalar's Euclidean law under one clock scale. These restricted tests
+leave other radial dictionaries and physical quantum identification unproved.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The
@@ -393,10 +405,14 @@ continuity, current noise and mean diffusion under the uniform scheduler.
 [joint current/phase readouts](native_relational_readout/README.md),
 [replicated fluctuations](native_fluctuations/README.md) and
 [one-history circulation](native_circulation/README.md) provide additional
-controlled finite or fluctuation descriptions of that source. Their
-scheduler, accessible records and limit hypotheses are distinct. Replication
-is not a spatial refinement, and a Gaussian limit does not select a
-fundamental Gaussian field action.
+controlled finite or fluctuation descriptions of that source. The recovered
+rank-three frame maps seam currents to an axial martingale with covariance
+`(4N/99) I3`, a three-dimensional Brownian path limit and increment-action
+coefficient `99/8` in rescaled attempt count. Closed carrier cycles give
+unbounded counter support with growing record capacity; this does not
+construct spatial translations. Scheduler, preparation and record hypotheses
+remain distinct. Replication is not spatial refinement, and Gaussian limits
+do not select a fundamental field action.
 
 ### Continuing measurement predictions
 
@@ -1010,8 +1026,16 @@ Useful tests target actual alternatives. The
 [binary coherent continuation](observer/COHERENT_CONTINUATION.md) implements
 a reversible 3,960-arc lift and a compressed-amplitude recurrence. Different
 continuations or cross-record phases give distinct Ramsey predictions while
-agreeing on the committed native instrument. A selecting restriction must
-constrain that additional interface freedom. The
+agreeing on the committed native instrument. Its eleven-mode density sector
+has an exact 720-arc representation and a
+[114,910-pulse source word](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk).
+All reversible basis inputs and clean-scratch address outputs are checked;
+the full-register replay uses raw pulse-executed routines and retains
+padding. The complete numerical operator guard is `s/(1-s)`,
+`s=829/5000000000`; it is not an interval or physical certificate.
+The full 3,960-arc compiler, source-pulse Ramsey controller and growing
+refinement compiler are unproved. A selecting restriction must constrain
+the additional coherent interface freedom. The
 [identifiability checks](identifiability_checks/README.md) likewise separate
 apparatus restrictions, unseen action directions and geometry ambiguities.
 The stronger effective-Hamiltonian comparator remains relevant to empirical

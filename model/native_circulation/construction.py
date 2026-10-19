@@ -31,6 +31,8 @@ SOURCE_PATHS = tuple(dict.fromkeys((
     *transfer.SOURCE_PATHS,
     'Lean/Thermodynamics/GreenKubo.lean',
     'Lean/Thermodynamics/NativeRepairFourCycle.lean',
+    'Lean/Screen/PrimitivePortFrameQuotient.lean',
+    'Lean/Screen/PortFrameGram.lean',
 )))
 
 
@@ -101,6 +103,77 @@ def exact_geometry():
             'stationary_single_edge_second_moment':'1/198',
             'native_count_parameter':'integer uniform native attempts',
             'spatial_dimension_inferred_from_cycle_rank':False}
+
+
+def axial_weights():
+    """The recovered rank-three frame's axial seam readout, exactly over Q(sqrt5)."""
+    kernel, _, _, _ = source()
+    frame = [sp.Matrix([sp.Rational(a)+sp.Rational(b)*sp.sqrt(5) for a,b in row])
+             for row in transfer.slow_geometry.raw_frame()]
+    radius_squared = sp.simplify(frame[0].dot(frame[0]))
+    retained_gram = transfer.slow_geometry.source().intrinsic_gram_exact()
+    for i in range(12):
+        for j in range(12):
+            a,b = retained_gram[i][j]
+            if sp.simplify(frame[i].dot(frame[j])/radius_squared-a-b*sp.sqrt(5)) != 0:
+                raise ArithmeticError('axial frame differs from the recovered rank-three Gram')
+    weights = sp.zeros(3, 30)
+    for e,(a,b) in enumerate(kernel.seams):
+        weights[:,e] = frame[a].cross(frame[b])/radius_squared
+    return sp.ImmutableMatrix(weights.applyfunc(sp.simplify))
+
+
+def axial_geometry():
+    """Audit every native increment and a closed-state, nonzero-circulation cycle."""
+    kernel, triangle, _, branches = source()
+    weights = axial_weights()
+    incidence = sp.zeros(12, 30)
+    conditional = sp.zeros(66, 30)
+    second = [0]*30
+    for e,(a,b) in enumerate(kernel.seams):
+        incidence[a,e] = -1
+        incidence[b,e] = 1
+    for i,_,e,_,current,_ in branches:
+        conditional[i,e] += current
+        second[e] += current*current
+    if ((weights*incidence.T).applyfunc(sp.simplify) != sp.zeros(3,12)
+            or (weights*conditional.T).applyfunc(sp.simplify) != sp.zeros(3,66)):
+        raise ArithmeticError('axial current is not a native martingale difference')
+    if (weights*weights.T).applyfunc(sp.simplify) != 8*sp.eye(3):
+        raise ArithmeticError('axial frame covariance is not isotropic')
+    covariance = (weights*sp.diag(*second)*weights.T/sp.Integer(len(branches))).applyfunc(sp.simplify)
+    if covariance != sp.Rational(4,99)*sp.eye(3):
+        raise ArithmeticError('native axial current covariance changed')
+    # One token goes around an actual face while the other stays outside it.
+    # Returning the carrier state does not reset the accessible counter.
+    other = next(p for p in range(12) if p not in triangle)
+    initial = tuple(int(p in (triangle[0],other)) for p in range(12))
+    state = initial
+    total = sp.zeros(3,1)
+    events = []
+    for a,b in zip(triangle, triangle[1:]+triangle[:1]):
+        seam = tuple(sorted((a,b)))
+        e = kernel.seams.index(seam)
+        desired = tuple(state[p]-int(p==a)+int(p==b) for p in range(12))
+        candidates = [(coin,*native.native(state,seam,coin)) for coin in (0,1)]
+        coin,target,record = next(row for row in candidates if row[1] == desired)
+        total += weights[:,e]*record[1]
+        events.append({'seam':list(seam),'coin':coin,'current':record[1]})
+        state = target
+    total = total.applyfunc(sp.simplify)
+    if state != initial or total == sp.zeros(3,1):
+        raise ArithmeticError('closed native cycle lost its nonzero axial readout')
+    return {'rank':3, 'native_branches_checked':len(branches),
+            'frame_gram_entries_checked':144,
+            'weights_by_oriented_seam':[[str(x) for x in weights[:,e]] for e in range(30)],
+            'cycle_orthogonality_exact':True,'all_conditional_drifts_zero':True,
+            'weight_gram_diagonal':'8','covariance_per_attempt_diagonal':'4/99',
+            'off_diagonal_covariances':'0',
+            'closed_cycle':{'initial_and_final_loads':list(initial),'events':events,
+                            'axial_counter_increment':[str(x) for x in total],
+                            'increment_norm_squared':str(sp.simplify(total.dot(total))),
+                            'repeatable_without_resetting_carrier':True},
+            'interpretation':'axial circulation in the recovered frame; no spatial translation or bulk inferred'}
 
 
 def marked():
@@ -221,13 +294,15 @@ def run():
         raise ArithmeticError('the nonindependent squared-current control changed')
     return {'schema':'oph.native_circulation.v1','all_pass':True,
         'sources':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
-        'source_geometry':geometry,'complete_native_execution':runtime_check(),
+        'source_geometry':geometry,'axial_circulation':axial_geometry(),
+        'complete_native_execution':runtime_check(),
         'one_history_counter_predictions':summaries,
         'temporal_dependence_control':{'successive_signed_covariance':'0',
             'successive_squared_product':str(square_correlation),'independent_squared_product':str(F(1,66)**2),
             'increments_independent':False},
         'limit':{'triangle_variance_per_native_attempt':'1/66',
             'vector_covariance':'(I-B^T L^+ B)/198','stationary_finite_ergodic_martingale_limit':True,
+            'axial_three_vector_covariance':'(4/99) I3',
             'independent_replicas_required':False,'new_Lean_CLT':False,
             'uniform_Berry_Esseen_or_trajectory_error_certificate':False},
         'scope':{'stationary_binary_preparation_uniform_scheduler_and_cycle_readout_supplied':True,
