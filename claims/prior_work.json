@@ -2518,6 +2518,20 @@
       "note": "Component: DR reconstruction of the compact gauge group"
     },
     {
+      "key": "dorfler2011kron",
+      "type": "misc",
+      "author": "Dörfler, Florian and Bullo, Francesco",
+      "title": "Kron Reduction of Graphs with Applications to Electrical Networks",
+      "year": "2011",
+      "doi": "10.48550/arXiv.1102.2950",
+      "url": "https://arxiv.org/abs/1102.2950",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1102.2950",
+      "note": "Theorem III.8 and Lemma III.10: terminal effective-resistance invariance and reconstruction. Native star arms and continuum observation error are derived separately.",
+      "eprint": "1102.2950",
+      "archivePrefix": "arXiv"
+    },
+    {
       "key": "dou2003black",
       "type": "article",
       "author": "Dou, Djamel and Sorkin, Rafael D.",
@@ -5010,6 +5024,20 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1016/b978-0-08-025072-4.50010-1",
       "note": "Field stress-energy tensors and canonical metric variation. Fourth revised English edition."
+    },
+    {
+      "key": "landim2006stationary",
+      "type": "misc",
+      "author": "Landim, Claudio and Milanés, Aniura and Olla, Stefano",
+      "title": "Stationary and Nonequilibrium Fluctuations in Boundary Driven Exclusion Processes",
+      "year": "2006",
+      "doi": "10.48550/arXiv.math/0608165",
+      "url": "https://arxiv.org/abs/math/0608165",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/math/0608165",
+      "note": "Section 3, especially Proposition 3.2, is prior work for density-path tightness and Gaussian limits on a continuous-time boundary-driven interval. The closed discrete native source requires its own checked martingale and spatial-tail estimates.",
+      "eprint": "math/0608165",
+      "archivePrefix": "arXiv"
     },
     {
       "key": "langacker2017standard",

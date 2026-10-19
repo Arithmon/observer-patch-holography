@@ -990,9 +990,9 @@ Chebyshev supplies the degenerate Gaussian limit. Cramer-Wold proves the
 joint claim. The exact identity
 `E|Y_l(tau;f)-Y_l(tau;g)|^2=||P_l(f-g)||_L2(mu)^2`
 extends the result by bounded-test approximation to all mean-zero `L2`
-tests. It does not establish path-space tightness or a spatial convergence
-rate. The limit is the finite-dimensional law of a generalized stationary
-Ornstein–Uhlenbeck process, in scaled global-attempt units.
+tests. The path theorem below supplies continuous distribution-valued
+versions and path convergence. No spatial convergence rate is asserted.
+The process is stationary Ornstein–Uhlenbeck in scaled global-attempt units.
 
 The executable checks the native identity-or-swap dictionary on every
 total-four carrier branch, all 3,600 two-attempt stirring branches and
@@ -1028,6 +1028,161 @@ semigroup `exp(-tau A)`, with generator **A**, not `sqrt(A)`.
 This connects the actual density law to a reflection-positive Gaussian
 reconstruction. It supplies no coherent preparation in that reconstructed
 state, physical relativistic vacuum, Lorentz symmetry or laboratory clock.
+
+The Green-filtered normalization `phi=Phi/sqrt(2)` makes this reconstruction
+explicit. In a mode of `A` with eigenvalue `lambda>0`, its covariance is
+`exp(-lambda*|tau-u|)/(2lambda)`. Its temporal Fourier transform is
+`1/(omega^2+lambda^2)`. Thus the finite-mode Gaussian precision, and the
+corresponding continuum Cameron–Martin quadratic form, are
+
+```text
+S_E(phi) = (1/2) integral [||partial_tau phi||^2 + ||A phi||^2] d tau.
+```
+
+The expression specifies the form on its finite-energy domain; it is not
+a density relative to an infinite-dimensional Lebesgue measure. Gaussian
+Wick decomposition gives the symmetric Fock reconstruction, vacuum energy
+zero and Hamiltonian `dGamma(A)`. The same statement follows mode by mode
+from the oscillator covariance, and extends by its orthogonal chaos
+decomposition. Its spatial precision is `A^2`, not `A`: the source form
+is equivalent to a second-order elliptic energy, so this is the associated
+spatial precision of spectral order four. No smooth bi-Laplacian or
+`H2` operator-domain identification is required. A single
+rescaling of the clock cannot turn all unequal frequencies `lambda` into
+`sqrt(lambda)`. This is a free field reconstructed from the declared
+classical native readout, with diffusive dispersion; an observed
+relativistic quantum field or a native preparation of its vacuum does not
+follow.
+
+### Continuous paths of the actual native density and Green field
+
+Along the same spatial subsequence, linearly interpolate actual snapshots
+at the attempt times `k/a_l`. For every finite `T`, jointly with the
+finite Green-filtered snapshot readout above, they converge in
+
+```text
+Y_l -> Y       in C([0,T],H^-3(S2)),
+Phi_l -> Phi   in C([0,T],H^-2(S2)).                         (OP)
+```
+
+These are simultaneous source-refinement/attempt-time limits, with
+`a_l=1260*16^l`. The stationary preparation, IID seams, fair repair and
+full snapshot reconstruction are the same as in (OU). They are not the
+count-first long-block construction of the separate cosine wave.
+
+Here is a discrete proof of tightness that keeps the stopping-time and
+reversal hypotheses explicit. Write `s=4^l`, `P=I-L/(2M)`, `a=2Ms`,
+`F_f(x)=sum_p f_p(x_p-1/3)/sqrt(V chi)` and
+`E_l(f)=s<f,Lf>/V` for a real mean-zero full-port profile.
+The canonical variance is `||f||^2/V`. Set
+`g=2(I+P)^-1 f`, so `E_l(g)<=4 E_l(f)`, and fix the finite reversal
+horizon `N=ceil(aT)`, `T_l=N/a`. Define
+
+```text
+m_j = F_g(X_j)-F_Pg(X_(j-1)),
+r_j = F_g(X_(j-1))-F_Pg(X_j),
+M_k = sum_(j=1)^k m_j,       Mhat_r = sum_(j=N-r+1)^N r_j.
+2[F_f(X_k)-F_f(X_0)] = M_k-[Mhat_N-Mhat_(N-k)].              (OP1)
+```
+
+The first process is a martingale; stationarity and reversibility make
+the second a martingale in the reversed filtration. The last identity is
+pathwise: subtract the increments and telescope `(I+P)g=2f`. Using `f`
+in place of `g` leaves a nonzero discrete endpoint term. No independence
+of the two martingales is used.
+
+A swap on seam `{b,c}` changes `F_g` by
+`(g_b-g_c)(x_c-x_b)/sqrt(V chi)`. Thus, **at every current state**,
+
+```text
+E[m_j^2 | X_(j-1)] <= E_l(g)/(a chi) <=4 E_l(f)/(a chi),
+max_j |m_j|^2 <=4 E_l(g)/(s chi) <=16 E_l(f)/(s chi).        (OP2)
+```
+
+For the first inequality bound variance by the second moment of the raw
+increment and sum the seam swaps, each of probability `1/(2M)`. For the
+second, a raw jump squared is at most `E_l(g)/(s chi)`; centering increases
+its amplitude by at most two. The same bounds hold in reverse. Hence a
+martingale increment over a bounded stopping time and a further interval
+of length `delta` has second moment at most
+`4 E_l(f)(delta+1/a)/chi`. For uniformly bounded-energy test profiles,
+this tends to zero as `delta->0` and `l->infinity`, and all jumps vanish.
+Doob's inequality supplies stochastic boundedness. The
+[stopping-time tightness criterion and continuous-limit criterion in
+Whitt, Theorem 3.5 and Lemma 3.10](https://arxiv.org/pdf/0712.1929)
+therefore give continuous subsequential limits for both martingales.
+Their joint tightness, reversal on `T_l->T`, and (OP1) give tightness of
+every finite collection of interpolated field modes. Deterministic-time
+increment variances alone would not justify the stopping-time step.
+
+There is a uniform supremum estimate. Stationarity gives exactly
+`E m_j^2=<g,(I-P^2)g>/V=4<f,(I-P)(I+P)^-1 f>/V`
+`<=4 E_l(f)/a`. If
+`sigma^2=E M_N^2<=4T_l E_l(f)`, Doob bounds the `L2` norm of the forward
+maximum by `2sigma` and of the reversed terminal-minus-suffix maximum by
+`3sigma`. Equation (OP1), followed by the initial variance bound, gives
+
+```text
+E sup_(t<=T) |Y_l(t;f)|^2 <=2||f||^2/V+50T_l E_l(f).       (OP3)
+```
+
+To control infinitely many modes, use the real spherical harmonics
+`Y_jm` normalized for spherical probability area, with weights
+`w_j=1+j(j+1)`. Their addition identities are
+`sum_m Y_jm(x)^2=2j+1` and
+`sum_m |grad Y_jm(x)|^2=(2j+1)j(j+1)`. Let `a0` be the base polyhedron's
+side and `r` its inradius. The radial map has derivative norm at most
+`1/r`, and any two points in adjacent fine triangles can be connected
+within their union by length at most `2a0*2^-l`. Jensen's inequality for
+the cell averages, summed over `30*4^l` cross seams, therefore gives
+
+```text
+sum_m Var Y_l(0;Y_jm) <=2j+1,
+sum_m E_l((Y_jm)_l) <=[a0^2/(2r^2)](2j+1)j(j+1)
+                    <=2(2j+1)j(j+1).                     (OP4)
+```
+
+Here `a0^2<2`, `r^2>9/16` prove the final conservative constant; internal
+seam differences vanish. Subtracting each `mu` mean only decreases its
+variance and leaves energy unchanged. Conservation removes degree zero.
+The exact telescoper
+`(2j+1)/w_j^2<=1/j^2-1/(j+1)^2`, together with (OP3), implies
+
+```text
+E sup_(t<=T) ||Pi_>J Y_l(t)||_-3^2
+    <= (2+100T_l)/(J+1)^2.                                (OP5)
+```
+
+For the actual Green-filtered test `h_l=G_l^1/2 P_l h`, the existing source
+comparison `L_cell/24<=S_l<=L_cell/12` gives
+`||h_l||^2<=C||h||^2` and, for its cell-constant full-port lift,
+`E_l(h_l)<=2<h_l,B_l h_l><=2||h||^2`, where `C=4096/3`.
+Consequently (OP2) applies without a supremum assumption on the filtered
+tests, and (OP3) gives
+
+```text
+E sup_(t<=T) ||Pi_>J Phi_l(t)||_-2^2
+    <= (2C+100T_l)/(J+1)^2.                                (OP6)
+```
+
+Finite-mode tightness and these uniform supremum tails prove compactness
+in the stated continuous-path spaces: choose a sequence of harmonic
+cutoffs with summably small tail probabilities and compact coordinate
+path sets; uniform tails make their intersection relatively compact.
+The joint laws (OU) and their filtered versions identify every limit,
+proving (OP). The piecewise-constant snapshot paths have the same limit
+in the Skorohod `J1` topology. Indeed every raw snapshot jump has squared
+`H^-3` norm at most `4/(V chi)`, by the addition identity and Jensen;
+the filtered `H^-2` bound is `2/(s chi)`, by its aggregate energy bound.
+Both vanish, so the interpolation error tends to zero deterministically.
+
+The executable checks (OP1), zero conditional means, the state-uniform
+bracket and stationary variance on all 29,700 native carrier branches.
+It also retains the nonzero uncorrected-profile defect and a fixed-initial-
+state control for which the stationary reverse conditional mean fails.
+These path results do not identify global-attempt time with proper time,
+change the supplied spatial topology, or turn the diffusive Gaussian
+reconstruction into a Lorentzian vacuum.
 
 ### Finite propagation on the source comparison space
 

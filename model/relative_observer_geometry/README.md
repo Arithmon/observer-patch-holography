@@ -6,8 +6,9 @@ currents. They need not remain simulator-only variables. Two regional observers
 can reconstruct compatible parts of the same field history, continue from
 their own checkpoints, and compare local event clocks on shared records.
 
-The result is finite and conditional on declared access. It does not identify
-the fields as physical matter or the local counters as physical time.
+The finite readouts and the simultaneous refinement of their incident clocks
+are conditional on declared access and scheduling. They do not identify the
+fields as physical matter or the local counters as physical time.
 
 ## What executes
 
@@ -496,8 +497,131 @@ temporal Hilbert subspace and its positive effective transfer survive the
 actual finite-screen comparison, including the arithmetic and spatial
 budgets. These two values are **compression eigenvalues**, not claims of two
 isolated spectral lines or closure under later evolution. They do not equal
-the elementary source's seven-mode spectrum. Neither calculation establishes
-an all-level limit, a physical spacetime metric, or a laboratory duration.
+the elementary source's seven-mode spectrum. These finite temporal pencils
+do not identify a physical spacetime metric or a laboratory duration.
+
+### Incident clocks on the simultaneous density continuum scale
+
+The [actual density snapshot limit](../observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
+uses global native attempt count at scale `a_l=1260*16^l`. Its time parameter
+also has a local incident-event realization. Fix a nonempty event set before
+drawing the independent uniform seam schedule. A port or region ticks once
+when a seam meets it, **including zero current**. If its event set contains
+`d_l` of the `M_l=630*4^l` source seams, then
+
+```text
+p_l = d_l/M_l,                a_l p_l = 2 d_l 4^l,
+N_l(n) = number of its ticks through attempt n,
+C_l(t) = N_l(floor(a_l t))/(a_l p_l),
+T_l(k) = first attempt with k ticks,   T_l(0)=0,
+U_l(t) = T_l(floor(a_l p_l t))/a_l.
+```
+
+These are actual incident records and their inverse count, with a declared
+dimensionless normalization. A primitive port has `d_l=5` or `6`; a whole
+carrier has `d_l=33`. A complete base-face patch has
+`d_l=(63*4^l+3*2^l)/2`. The executable checks these counts on the actual source
+and ancestry at levels zero through two. The formula for every level follows
+from thirty internal seams per carrier, three intercarrier seams per cell,
+and `3*2^l` seams crossing the ancestral patch boundary.
+
+For any `T,delta>0`, put `n_*=ceil(a_l(T+delta))`. The centered count
+`Z_n=N_l(n)-np_l` is a martingale with variance `np_l(1-p_l)`.
+Applying the maximal inequality to its squared absolute value gives
+
+```text
+Pr[max_(n<=n_*) |Z_n| > a_l p_l delta]
+    <= n_* (1-p_l)/(a_l^2 p_l delta^2).
+```
+
+On the complementary event, uniformly for `0<=t<=T`,
+`|C_l(t)-t|<=delta+1/a_l`. Also `N_l(n_*)>=a_l p_l T`, so every requested
+inverse count is reached within the retained horizon. At its first occurrence,
+`N_l(T_l(k))=k`; therefore `|U_l(t)-t|<=delta+1/(a_l p_l)`.
+The receipt exports these rational finite bounds, capped at probability one.
+For example, choosing `delta_l=2^(-floor(l/2))` proves uniform convergence
+in probability of both clocks to the identity for **every nonempty** such
+event set: `a_l p_l>=2*4^l` and, at `T=1`, the failure bound is at most
+`2/2^l`. The displayed bound converges to zero on every fixed finite horizon.
+
+Several observers use the same seam schedule. Their clocks are correlated;
+their pair covariance per attempt is `p_(A intersect B)-p_A p_B`.
+A union bound gives simultaneous clock convergence without an independence
+assumption. On the simultaneous good event, B's normalized display at A's
+inverse count differs from `t` by at most `delta_A+delta_B+1/(a_l p_A)`.
+The shared count horizon must cover both requested inverse clocks. Complete
+enumeration of the elementary native source also finds covariance
+`-25/2376` between port zero's one-attempt tick and `n_0(0)n_0(1)`.
+Thus clock–field dependence cannot be discarded at finite level.
+
+The time-change step is pathwise. For a density path `X_l` in a normed state
+space and its modulus `omega_(X_l,H)`, whenever `U_l([0,T])` lies in `[0,H]`,
+
+```text
+sup_(t<=T) ||X_l(U_l(t))-X_l(t)||
+    <= omega_(X_l,H)(sup_(t<=T)|U_l(t)-t|).
+```
+
+The linked density construction proves a continuous path limit in
+`C([0,T],H^-3(S2))` for linear interpolation of actual density snapshots and
+in `C([0,T],H^-2(S2))` after their finite `G_l^(1/2)` readout filter. Its step
+versions are uniformly close to these interpolations. The displayed modulus
+bound therefore transfers the same limiting laws to observations made at any
+fixed finite collection of incident clocks; the stopped step versions
+converge in `D` to the same continuous laws. The joint convergence uses a
+deterministic inverse-clock limit and adds no independence assumption between
+clock marks and density records. Finite-dimensional density convergence
+alone would not justify this random-time substitution.
+
+There is also a joint fluctuation prediction. For finitely many clocks with
+fixed bounded incidence counts `d_i` and pairwise shared-seam counts `c_ij`,
+define
+
+```text
+W_(l,i)(t) = [N_(l,i)(floor(a_l t))-floor(a_l t)*d_i/M_l]
+               / sqrt(a_l/M_l).
+```
+
+Its exact covariance is
+`floor(a_l min(t,u))/a_l * (c_ij-d_i*d_j/M_l)`. Independent schedule
+increments give a joint Gaussian finite-dimensional limit with covariance
+`min(t,u)c_ij`. To check the triangular-array CLT directly, a fixed linear
+combination of centered one-step counts has magnitude at most
+`sum|theta_i| sqrt(M_l/a_l)`, which tends to zero, and its total variance
+converges to the displayed quadratic form. Taylor's characteristic-function
+remainder is bounded by this maximum times the total variance divided by six;
+the quadratic logarithm remainder also vanishes. Disjoint time blocks are
+independent. This proves the finite-dimensional Brownian law, including
+degenerate combinations, without imposing independent port clocks.
+
+For adjacent degree-five ports the limiting normalized correlation is `1/5`;
+for the two degree-six endpoints of an intercarrier seam it is `1/6`;
+nonadjacent port clocks have limiting correlation zero. The executable
+checks actual witnesses and the finite common-scheduler correction at three
+source levels. Each pattern exists at every level: nine of each carrier's
+twelve ports have degree five, each port has five internal neighbors, and
+every external seam joins two degree-six ports.
+
+Under the same stationary preparation, the density proof conditions on the
+entire seam and auxiliary-swap history. Its conditional characteristic
+function converges in probability, and hence in `L1`, to the deterministic
+Gaussian value. Multiplying by any bounded characteristic function of the
+seam-only clock vector therefore factors the limiting joint characteristic
+function. Thus these centered clock fluctuations and the density snapshots
+are **asymptotically independent**, despite the finite two-time-field
+dependence above. This statement concerns finite vectors; it does not extend
+to clocks selected by accepted repairs, currents or other state-dependent
+events. The single linear endpoint field already has zero covariance with
+the clock mark at finite level; its zero covariance alone would not prove
+the stronger joint result.
+
+The port can count its own ticks; this does not grant it the complete spatial
+record access needed for an arbitrary field smearing. Initial local field
+disclosure, complete incident currents, any admitted regional aggregation,
+the uniform independent scheduler and the source refinement remain explicit.
+The normalization connects native incident clocks to the density continuum
+parameter. It does not identify that parameter with modular flow, Lorentzian
+proper time, or atomic-clock seconds.
 
 ### Transport through source refinement
 

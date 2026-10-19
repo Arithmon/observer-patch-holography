@@ -5,7 +5,9 @@ result upgrades their common weak Green subsequence to operator-norm
 convergence, with an injective compact limit and a positive inverse generator.
 Full-port energy lifts supply its conservative strongly local Dirichlet form;
 an explicit source interpolation identifies its regular H1 form core, and
-triangle tests bound both sides of its spectral growth. A selected intrinsic
+triangle tests bound both sides of its spectral growth. Exact terminal-star
+elimination gives a local conductance graph with the same continuum Green
+limits and a vanishing operator comparison bound. A selected intrinsic
 metric and physical spatial identification are not asserted.
 The all-level proof is in OCCUPATION_FIELD.md.
 """
@@ -14,7 +16,9 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from fractions import Fraction as F
+from functools import lru_cache
 import hashlib
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -67,6 +71,147 @@ def tent_eigenvalue_bound(coarse_level):
 def harmonic_lift_tail(level):
     """Squared internal fluctuation per unit scaled full-port energy."""
     return F(1, 2*4**_level(level))
+
+
+@lru_cache(maxsize=1)
+def _carrier_resistances():
+    """Exact resistances of the record-recovered twelve-port Laplacian."""
+    _, laplacian = source.passage.recovered_carrier()
+    green = (laplacian+sp.ones(12)/12).inv()-sp.ones(12)/12
+    return tuple(tuple(F(green[a, a]+green[b, b]-2*green[a, b])
+                       for b in range(12)) for a in range(12))
+
+
+def terminal_star_arms(ports):
+    """Three positive star resistances, ordered like the actual terminal ports."""
+    if (type(ports) is not tuple or len(ports) != 3 or len(set(ports)) != 3
+            or any(type(p) is not int or not 0 <= p < 12 for p in ports)):
+        raise ValueError('three distinct original integer carrier ports are required')
+    resistance = _carrier_resistances()
+    arms = tuple((resistance[ports[i]][ports[(i+1) % 3]]
+                  +resistance[ports[i]][ports[(i+2) % 3]]
+                  -resistance[ports[(i+1) % 3]][ports[(i+2) % 3]])/2
+                 for i in range(3))
+    if not all(F(2, 15) <= arm <= F(3, 10) for arm in arms):
+        raise ArithmeticError('the exact native terminal-star bounds failed')
+    return arms
+
+
+@lru_cache(maxsize=220)
+def _terminal_harmonic_lift(ports):
+    """Exact minimum-energy twelve-port lift of three terminal values."""
+    terminal_star_arms(ports)
+    _, laplacian = source.passage.recovered_carrier()
+    interior = tuple(p for p in range(12) if p not in ports)
+    interior_lift = -laplacian.extract(interior, interior).inv()*laplacian.extract(interior, ports)
+    lift = sp.zeros(12, 3)
+    for i, p in enumerate(ports):
+        lift[p, i] = 1
+    for i, p in enumerate(interior):
+        for j in range(3):
+            lift[p, j] = interior_lift[i, j]
+    if any(value < 0 for value in lift) or lift*sp.ones(3, 1) != sp.ones(12, 1):
+        raise ArithmeticError('native terminal harmonic lift lost its maximum principle')
+    return tuple(tuple(F(lift[p, i]) for i in range(3)) for p in range(12))
+
+
+def terminal_star_control():
+    """Every carrier triple, with independent exact terminal-energy elimination."""
+    _, laplacian = source.passage.recovered_carrier()
+    distance = shortest_path((np.asarray(laplacian, dtype=int) < 0).astype(int),
+                             directed=False, unweighted=True)
+    resistance = _carrier_resistances()
+    by_distance = {str(d): sorted({resistance[a][b] for a in range(12)
+                                  for b in range(a+1, 12) if distance[a, b] == d})
+                   for d in (1, 2, 3)}
+    classes = Counter()
+    for ports in combinations(range(12), 3):
+        arms = terminal_star_arms(ports)
+        lift = sp.Matrix(_terminal_harmonic_lift(ports))
+        conductance = sp.Matrix([1/r for r in arms])
+        star_trace = sp.diag(*conductance)-conductance*conductance.T/sum(conductance)
+        if lift.T*laplacian*lift != star_trace:
+            raise ArithmeticError('star and native terminal Dirichlet energies differ')
+        classes[tuple(sorted(arms))] += 1
+    return {'terminal_triples_checked': sum(classes.values()),
+        'resistance_by_native_hop_distance': {d: [str(r) for r in values]
+                                             for d, values in by_distance.items()},
+        'star_arm_classes': [{'resistances': [str(r) for r in arms], 'triples': count}
+                             for arms, count in sorted(classes.items())],
+        'all_exact_terminal_Dirichlet_forms_and_harmonic_lifts_checked': True,
+        'star_arm_lower': '2/15', 'star_arm_upper': '3/10',
+        'weighted_dual_conductance_lower': '5/8', 'weighted_dual_conductance_upper': '15/19'}
+
+
+def weighted_dual_network(graph):
+    """Positive local conductances from the actual three distinct routed ports."""
+    ports = [[] for _ in range(graph.cells)]
+    for a, b in graph.inter_seams:
+        ports[a//12].append(a % 12); ports[b//12].append(b % 12)
+    ports = tuple(tuple(sorted(row)) for row in ports)
+    arms = tuple(dict(zip(row, terminal_star_arms(row), strict=True)) for row in ports)
+    edges = tuple((a//12, b//12, 1/(1+arms[a//12][a % 12]+arms[b//12][b % 12]))
+                  for a, b in graph.inter_seams)
+    if (len({(a, b) for a, b, _ in edges}) != 3*graph.cells//2
+            or any(a == b or not F(5, 8) <= w <= F(15, 19) for a, b, w in edges)):
+        raise ArithmeticError('the native weighted dual graph or its conductances changed')
+    return ports, arms, edges
+
+
+def weighted_green_difference_bound(level):
+    """Operator norm on the common normalized, centered cell observation space."""
+    return F(182, 2**_level(level))
+
+
+def weighted_dual_control(level):
+    """Exact energy-map controls and finite Green diagnostics on actual joins."""
+    if _level(level) > 2:
+        raise ValueError('weighted dual source controls use levels zero through two')
+    graph, _, incidence, integer_f, denominator = source.matrices(level)
+    ports, arms, edges = weighted_dual_network(graph)
+    values = [F(17*p % 23-11, 5) for p in range(graph.ports)]
+    centers, means = [], []
+    for c, row in enumerate(ports):
+        weights = [1/arms[c][p] for p in row]
+        centers.append(sum(w*values[12*c+p] for w, p in zip(weights, row, strict=True))/sum(weights))
+        means.append(sum(values[12*c:12*c+12])/12)
+    native = sum((values[a]-values[b])**2 for a, b in graph.seams)
+    reduced = sum(w*(centers[a]-centers[b])**2 for a, b, w in edges)
+    if reduced > native or sum((a-b)**2 for a, b in zip(centers, means, strict=True)) > native/2:
+        raise ArithmeticError('native-to-star energy or readout bound failed')
+    target = [F(7*c % 19-9, 3) for c in range(graph.cells)]
+    boundary = [{} for _ in range(graph.cells)]
+    for (a, b), (c, d, w) in zip(graph.inter_seams, edges, strict=True):
+        current = w*(target[c]-target[d])
+        boundary[c][a % 12] = target[c]-arms[c][a % 12]*current
+        boundary[d][b % 12] = target[d]+arms[d][b % 12]*current
+    lifted = []
+    for c, row in enumerate(ports):
+        matrix = _terminal_harmonic_lift(row)
+        lifted.extend(sum(coeff*boundary[c][p] for coeff, p in zip(line, row, strict=True))
+                      for line in matrix)
+    target_energy = sum(w*(target[a]-target[b])**2 for a, b, w in edges)
+    lifted_energy = sum((lifted[a]-lifted[b])**2 for a, b in graph.seams)
+    error = sum((sum(lifted[12*c:12*c+12])/12-target[c])**2 for c in range(graph.cells))
+    if lifted_energy > target_energy or error > F(3, 10)*target_energy:
+        raise ArithmeticError('star-to-native energy or readout bound failed')
+    weighted = np.zeros((graph.cells, graph.cells))
+    for a, b, w in edges:
+        weighted[a, a] += float(w); weighted[b, b] += float(w)
+        weighted[a, b] -= float(w); weighted[b, a] -= float(w)
+    schur = incidence.T@np.linalg.solve(integer_f/denominator, incidence)/12
+    difference = np.linalg.norm((source._green(schur)-source._green(weighted/12))/4**level, 2)
+    bound = weighted_green_difference_bound(level)
+    if difference > float(bound):
+        raise ArithmeticError('weighted Green diagnostic violates the analytic bound')
+    return {'level': level, 'cells': graph.cells, 'ports': graph.ports,
+        'actual_terminal_star_classes': {','.join(map(str, key)): count for key, count in
+            sorted(Counter(tuple(sorted(row.values())) for row in arms).items())},
+        'exact_weighted_dual_conductances': {str(w): count for w, count in
+            sorted(Counter(w for _, _, w in edges).items())},
+        'both_exact_energy_decreases_and_readout_bounds_checked': True,
+        'scaled_Green_difference_norm_diagnostic': float(difference),
+        'scaled_Green_difference_norm_upper': str(bound)}
 
 
 def cycle_variance_control(valence):
@@ -506,6 +651,8 @@ def run():
         'native_operator_controls': [native_operator_control(k) for k in range(3)],
         'mean_elimination_control': non_markov_control(),
         'full_port_form_control': full_port_form_control(),
+        'terminal_star_control': terminal_star_control(),
+        'weighted_dual_controls': [weighted_dual_control(k) for k in range(3)],
         'exact_interpolation_geometry': interpolation_geometry_control(),
         'exact_source_interpolation_controls': [source_interpolation_control(k) for k in range(4)],
         'exact_tent_geometry': tent_geometry_control(),
@@ -522,6 +669,8 @@ def run():
                 str(k): macroscopic_action_exponent(k, F(1, 4)) for k in (5, 8, 12)},
             'full_port_internal_tail_per_unit_energy': {
                 str(k): str(harmonic_lift_tail(k)) for k in (0, 4, 20)},
+            'weighted_dual_Green_difference_upper': {
+                str(k): str(weighted_green_difference_bound(k)) for k in (0, 4, 20)},
             'interpolation_gradient_squared_upper': '112/a^2*E_l(f_l)',
             'interpolation_mass_error_upper': '20/(3*4^l)*E_l(f_l)',
             'continuum_form_comparison_on_H1': 'a^2/112*integral|grad f|^2 <= E(f) <= a^2/48*integral|grad f|^2',
@@ -540,6 +689,8 @@ def run():
             'heat_trace_spectral_dimension': 2,
             'same_dictionary_scaled_compact_smooth_second_order_three_dimensional_elliptic_identification_excluded': True,
             'finite_rescaled_action_couplings_at_separated_continuum_supports_vanish': True,
+            'explicit_positive_weighted_dual_graph_has_same_continuum_Green_limits': True,
+            'weighted_dual_graph_reproduces_finite_native_repair_histories': False,
             'unique_whole_sequence_generator_selected': False,
             'exact_intrinsic_metric_identified': False,
             'limit_identified_as_round_sphere_Laplacian': False,

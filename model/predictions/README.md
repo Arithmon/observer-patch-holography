@@ -35,6 +35,19 @@ shared-event collective clocks on one carrier and tests every distinct pair
 under the same direct readout hypothesis. No clock definition needs
 external approval, and no atomic transition is derived by choosing a unit.
 
+The [simultaneous source-clock limit](../relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
+also predicts joint clock jitter and density observations. For fixed bounded
+incidence patterns, centered incident counts have Gaussian finite-dimensional
+covariance `min(t,u)*c_ij`, where `c_ij` counts shared seams. Adjacent degree-five
+ports have limiting correlation `1/5`; the degree-six endpoints of an external
+seam have `1/6`. Conditional native stirring proves asymptotic independence
+from density snapshot vectors, while exact finite nonlinear clock–field
+dependence is nonzero. Uniform inverse-clock bounds let the same local clocks
+read the proved continuous density paths. These predictions use the declared
+stationary preparation, IID seams and observation access. Public optical ratios
+do not supply the joint density readouts or identify this source with atomic
+physics; no additional empirical verdict follows.
+
 ## Run
 
 From the repository root:

@@ -29,7 +29,11 @@ all-level descendant-patch Poincare bound. Its compact positive limit is
 injective on the mean-zero observation space and supplies one self-adjoint
 continuum generator. The native reduced action has exponentially decaying
 couplings in cell distance; couplings between fixed separated continuum
-regions vanish. Full-port harmonic lifts give Mosco energy convergence
+regions vanish. An [exact terminal-star reduction](OCCUPATION_FIELD.md#a-local-conductance-graph-with-the-same-continuum-green-limit)
+gives a positive local weighted dual graph with Green error at most
+`182*2^-level`. Its coefficients use the actual routed ports, so it has
+the same continuum limits; their uniqueness remains a conductance
+convergence obligation. Full-port harmonic lifts give Mosco energy convergence
 and a conservative strongly local Dirichlet form. A native six-triangle
 interpolation identifies its domain with `H1` of the auxiliary flat surface
 and supplies a regular continuous piecewise-affine core. Explicit ancestral tents

@@ -1,5 +1,6 @@
 """Independent checks of correlation-only temporal reconstruction and scope."""
 from fractions import Fraction as F
+from itertools import product
 import math
 
 import numpy as np
@@ -153,3 +154,128 @@ def test_mutated_reconstruction_cannot_be_used_as_a_prediction_or_spectral_certi
         t.spectrum(forged)
     with pytest.raises(ValueError):
         t.perturbation_budget(forged, F(0))
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_refined_clock_rates_use_actual_seams_and_ancestral_regions(level):
+    census = t.source_clock_incidence(level)
+    assert census['port_degree_census'] == {'5': 180*4**level, '6': 60*4**level}
+    assert census['one_carrier_incident_seams'] == 33
+    assert census['base_face_ports'] == 12*4**level
+    assert census['base_face_incident_seams'] == (63*4**level+3*2**level)//2
+    assert census['base_face_boundary_seams'] == 3*2**level
+
+
+def test_uniform_clock_bound_encloses_exact_finite_prefix_failure_law():
+    # Enumerate the complete count-state distribution and an absorbing failure
+    # bit. This is a separate rational calculation of a maximum-over-time law.
+    result = t.incident_clock_bound(0, 105, F(1, 126), F(1, 63))
+    a, p, delta = 1260, F(1, 6), F(1, 63)
+    pending = {(0, False): F(1)}
+    for n in range(1, result['covered_native_attempts']+1):
+        updated = {}
+        for (count, failed), mass in pending.items():
+            for tick, weight in ((0, 1-p), (1, p)):
+                after = count+tick
+                key = after, failed or abs(after-n*p) > a*p*delta
+                updated[key] = updated.get(key, F(0))+mass*weight
+        pending = updated
+    actual = sum(mass for (_, failed), mass in pending.items() if failed)
+    assert sum(pending.values()) == 1
+    assert 0 < actual <= F(result['failure_probability_upper']) < 1
+    assert result['covered_native_attempts'] == 30
+
+
+@pytest.mark.parametrize('p', (F(1, 4), F(1, 2), F(3, 4), F(1)))
+def test_inverse_clock_inclusion_on_every_admitted_finite_tick_word(p):
+    # Check the deterministic event inclusion behind the probability bound.
+    # Endpoint/left-limit checks cover the entire piecewise-constant clock.
+    a, horizon, delta = 8, F(1, 2), F(1, 2)
+    cap = math.ceil(a*(horizon+delta))
+    checked = 0
+    for word in product((0, 1), repeat=cap):
+        counts = [0]
+        for tick in word:
+            counts.append(counts[-1]+tick)
+        if max(abs(counts[n]-n*p) for n in range(cap+1)) > a*p*delta:
+            continue
+        checked += 1
+        targets = math.floor(a*p*horizon)
+        assert counts[-1] >= targets
+        for k in range(targets+1):
+            inverse = F(next(n for n, count in enumerate(counts) if count >= k), a)
+            left, right = F(k, a*p), min(horizon, F(k+1, a*p))
+            assert abs(inverse-left) <= delta+1/(a*p)
+            assert abs(inverse-right) <= delta+1/(a*p)
+        for n in range(math.floor(a*horizon)+1):
+            displayed = F(counts[n], a*p)
+            assert abs(displayed-F(n, a)) <= delta+F(1, a)
+            assert abs(displayed-min(horizon, F(n+1, a))) <= delta+F(1, a)
+    assert checked > 0
+
+
+def test_correlated_clocks_share_union_bound_without_independent_replica_assumption():
+    source = t.core.source()
+    p = F(1, 6)
+    for other in (0, 1, 2):
+        common = F(sum(0 in seam and other in seam for seam in source.seams), 30)
+        covariance = common-p*p
+        assert covariance == (F(5, 36) if other == 0 else
+                              F(1, 180) if (0, other) in source.seams else F(-1, 36))
+    result = t.native_clock_field_dependence()
+    assert result['native_branches'] == 3960
+    assert F(result['clock_field_covariance']) == -F(25, 2376)
+    assert F(result['clock_single_endpoint_covariance']) == 0
+    assert result['clock_field_independence_asserted'] is False
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_exact_clock_fluctuation_covariance_from_complete_native_seam_distribution(level):
+    graph = t.clocks.screen.source.federation(level)
+    m = len(graph.seams)
+    rows = t.source_clock_fluctuations(level)
+    assert [row['incidence_counts'] for row in rows] == [[5, 5, 1], [5, 5, 0], [6, 6, 1]]
+    assert [F(row['limiting_correlation_squared_for_fixed_incidence_counts']) for row in rows] == [F(1, 25), F(0), F(1, 36)]
+    for row in rows:
+        ports = row['ports']
+        marks = [tuple(int(p in seam) for p in ports) for seam in graph.seams]
+        means = [F(sum(mark[i] for mark in marks), m) for i in (0, 1)]
+        direct = [[sum((mark[i]-means[i])*(mark[j]-means[j]) for mark in marks)
+                   for j in (0, 1)] for i in (0, 1)]
+        reported = [[F(x) for x in values] for values in row['scaled_count_covariance_per_continuum_unit']]
+        assert direct == reported
+        assert sp.Matrix(reported).is_positive_definite
+    # Distinct clocks on disjoint seam sets are negatively correlated at
+    # finite source size, despite their independent Gaussian limiting counts.
+    assert F(rows[1]['scaled_count_covariance_per_continuum_unit'][0][1]) < 0
+
+
+def test_finite_count_covariance_retains_aliases_and_deterministic_complete_clock():
+    aliases = t.clock_fluctuation_covariance(0, 5, 5, 5)
+    assert len({x for row in aliases for x in row}) == 1
+    complete = t.clock_fluctuation_covariance(0, 630, 5, 5)
+    assert complete[0] == (F(0), F(0)) and complete[1][0] == 0
+    assert complete[1][1] > 0
+    for args in ((0, 5, 5, True), (0, 630, 5, 4), (0, 5, 5, 6), (0, 5, 5, -1)):
+        with pytest.raises(ValueError):
+            t.clock_fluctuation_covariance(*args)
+
+
+def test_every_nonempty_event_set_has_many_ticks_on_density_continuum_scale():
+    for level in (0, 1, 2, 8, 100):
+        for d in (1, 5, 6, 33, 630*4**level):
+            result = t.incident_clock_bound(level, d)
+            assert F(result['mean_incident_ticks_per_continuum_unit']) == 2*d*4**level
+            if d == 630*4**level:
+                assert F(result['failure_probability_upper']) == 0
+        # A shrinking rational tolerance supplies an explicit uniform LLN.
+        delta = F(1, 2**(level//2))
+        bound = t.incident_clock_bound(level, 1, tolerance=delta)
+        assert F(bound['failure_probability_upper']) <= min(F(1), F(2, 2**level))
+
+
+@pytest.mark.parametrize('args', ((True, 5), (101, 5), (0, 0), (0, 631),
+    (0, True), (0, 5, 1), (0, 5, F(0)), (0, 5, F(1), F(0))))
+def test_clock_bound_rejects_unstated_or_empty_source_exposure(args):
+    with pytest.raises(ValueError):
+        t.incident_clock_bound(*args)

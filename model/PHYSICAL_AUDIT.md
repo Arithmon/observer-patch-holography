@@ -194,15 +194,27 @@ Schur resolvents differ by at most `1/(8*4^level)`. The
 ancestral projection tails by `624*4^(-k)` times the native scaled energy.
 It upgrades the common Green subsequence to operator-norm convergence to
 an injective compact `G`, whose inverse is a positive self-adjoint `A`.
-The [actual density limit](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
-also proves joint Gaussian finite-dimensional laws of native occupation
-snapshots, with covariance `exp(-|tau-u|A)` and simultaneous scaling
-`tau=attempts/(1260*16^level)`. It uses uniform fixed-number preparation,
-IID seams, fair repair and full occupation readback. No preliminary
-long-count limit or synthetic wave is used, and no path convergence is
-claimed. The declared `A^-1/2` spatial filter gives covariance
-`G exp(-|tau-u|A)`. Reflection-positive reconstruction of these density
-laws has one-particle generator `A`.
+The [terminal-star reduction](physical_space_time/OCCUPATION_FIELD.md#a-local-conductance-graph-with-the-same-continuum-green-limit)
+gives local dual conductances in `[5/8,15/19]` from the actual routed
+ports and Green error at most `182*2^-level`. Both forms have exactly the
+same subsequential limits. Routing convergence is the remaining uniqueness
+question; finite transition laws are distinct.
+The [actual density path limit](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+has covariance `exp(-|tau-u|A)` and simultaneous scaling
+`tau=attempts/(1260*16^level)`. Interpolated native records converge in
+`C([0,T],H^-3(S2))`; the declared `A^-1/2` filter converges in `H^-2`
+with covariance `G exp(-|tau-u|A)`. The piecewise-constant records have
+the same continuous limit in Skorohod topology. Uniform fixed-number
+preparation, IID seams, fair repair and full occupation readback are explicit.
+Normalized [incident counts and inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
+converge uniformly, transferring these paths to native event-clock reads.
+For fixed bounded seam incidences, finite-vector clock jitter has Gaussian
+covariance `min(t,u)*shared_seams` and is asymptotically independent of
+the density vectors. State-dependent tick selection is outside this result.
+Reflection-positive reconstruction gives free Fock generator `dGamma(A)`;
+the Green field divided by `sqrt(2)` has temporal precision
+`-partial_tau^2+A^2`. This diffusive reconstruction supplies neither
+a relativistic vacuum nor its native quantum preparation.
 The [joint dynamics proof](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
 uses the same `A` for coherent cosine propagation. Two long native blocks
 supply a continuous

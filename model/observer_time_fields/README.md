@@ -69,15 +69,20 @@ comparison distance. The proof uses native full-port weighted heat bounds;
 it does not assign metres, seconds or Lorentz symmetry to that cone.
 
 The [actual density process](REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
-has a simultaneous finite-dimensional Gaussian limit at native attempt
+has a simultaneous Gaussian process limit at native attempt
 counts `floor(1260*16^l tau)`. Its covariance is
 `exp(-|tau-u|A)`, with identity equal-time covariance. Exact stirring
 concentration and a conditional canonical-sampling CLT establish the joint
 law; no long-block averaging or wave processing enters this result.
-The fixed spatial filter `A^-1/2` gives Green covariance and the same
-native decay. The Gaussian law is reflection positive, with reconstructed
-one-particle generator `A`. Path-space tightness, relativistic quantum
-identification and laboratory calibration are not conclusions of this limit.
+The [path theorem](REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+gives convergence of interpolated snapshots in `C([0,T],H^-3(S2))` and
+of the finite `G_l^1/2` spatial readout in `C([0,T],H^-2(S2))`.
+The latter has Green covariance and the same native decay. The Gaussian
+law is reflection positive, with reconstructed Fock generator `dGamma(A)`.
+Normalizing the Green field by `1/sqrt(2)` gives temporal Fourier
+covariance `(omega^2+A^2)^-1` and the corresponding quadratic Euclidean
+action. Its dispersion is diffusive; a relativistic quantum identification
+and laboratory calibration remain separate questions.
 
 Growing native-return caps give the same rescaled modular phase magnitudes;
 a fixed cap freezes those phases in this spatial limit. The

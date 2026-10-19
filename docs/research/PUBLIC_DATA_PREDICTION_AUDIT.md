@@ -21,7 +21,7 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Primordial scalar tilt | `n_s = 1 - P/48 = 0.9660214956374175...`, with the inherited alpha-calibrated `P = 1.6309682094039593`. The physical primordial generator, mode identification and standard CMB transfer remain conditional. | Executed the official ACT combined posterior comparison below: the fixed value lies at its lower 0.612% position. This is retrospective tension, not a new prediction score. |
 | Charged-tau mass | Balanced-circulant mass interpretation and measured electron/muon masses give approximately `1776.969027 MeV`. This relation is algebraically the Koide relation; the balance premise has observed-mass ancestry. | A conditional mass restriction, not a change to SM dynamics or a unique OPH signature. The historical Belle II 2023 comparison below is compatible at its reported precision. |
 | Intrinsic photon dispersion | Equal-weight primitive-port or seam-edge propagation gives linked fourth- and sixth-order coefficients below, if these directions are physical translations of the photon field. | A conditional departure from minimal locally Lorentz-invariant vacuum propagation. Published timing limits are far too weak at the proposed scale; the Auger transfer is source- and interaction-dependent. |
-| Native clock ratios and noise | Same-history local movement counts have definite waiting distributions, correlations and covariance-derived spatial relations. | No identified atomic-clock, pulsar or photon observable has this record law. These laws admit ordinary stochastic realizations; matching them alone would not distinguish OPH. |
+| Native clock ratios and noise | Same-history movement and incident counts have definite waiting laws and spatial correlations. Under simultaneous source refinement, bounded-incidence clock jitter has Gaussian finite-dimensional covariance fixed by shared seams and is asymptotically independent of density snapshots. | The [joint clock/field prediction](../../model/relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) uses explicit stationary preparation, IID seams and readout access. No identified atomic-clock, pulsar or photon observable has this joint record law. Ordinary stochastic realizations also satisfy it; matching it alone would not distinguish OPH. |
 | Native record-to-phase relation | Four movement-bit covariances on the complete native attempt tape determine a two-mode transfer generator and predict its coherent quadratures under the fixed readout protocol. | A conditional cross-readout prediction with uncertainty and failed-identification outcomes. Public optical servo ratios are not this bit tape; the [inverse-clock construction](../../model/predictions/README.md) does not assign them a new experimental verdict or establish a distinction from standard quantum instruments. |
 | Native repair response | A disclosed-bit-triggered repair predicts complete future clock/field events from passive correlations. A controlled execution bias has continuum mean derivative `2(I-exp(-tau*A))f` and a positive fixed-amplitude signal under a uniform likelihood bound. | The [complete native forecast](../../model/predictions/README.md#native-repair-response-from-passive-clock-and-field-records) retains timeouts and distinguishes executed repairs from additional coin-service costs. Its controller and readout dictionary are declared. Public optical frequency-ratio traces contain no matching intervention/current records; no empirical verdict or distinction from ordinary stochastic or quantum realizations follows. |
 | C/E coherent record law | One fixed coherent preparation gives plus probabilities `5/8` and `3/8` under the two instruments. | These are ordinary quantum instruments. The distinction selects a record law, not OPH over standard quantum mechanics. |
@@ -122,6 +122,18 @@ recovers the finite seam geometry. These are dimensionless event counts;
 neither external physical timestamps nor observer federations are needed to
 derive them. They do not yet identify a measured physical clock or establish
 Lorentzian spacetime.
+
+On the refining source, uniform incident-count and inverse-clock bounds
+transport the actual density continuum paths to preselected local event
+clocks. For fixed bounded incidence patterns, centered count fluctuations
+have limiting covariance `min(t,u)*c_ij`, where `c_ij` is the shared-seam
+count. The normalized correlations are `1/5` for adjacent degree-five ports
+and `1/6` across an external seam. Their finite-vector asymptotic independence
+from density snapshots follows by conditioning on the shared stirring history;
+finite nonlinear clock–field dependence is retained. This joint source
+prediction supplies no atomic transition or mapping from published servo
+records to native density. The optical comparisons below test their stated
+direct phase-count attachment and gain no broader verdict from this limit.
 
 The classical histories are finite Markov processes. More generally, for any
 finite instrument with Kraus maps `K_r` and `sum_r K_r^* K_r = I`, the map

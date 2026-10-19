@@ -656,6 +656,83 @@ The exact native level-zero Schur entry `(5,9)` is positive, so its negative
 is not a Markov jump generator. Neither an M-matrix premise nor finite
 propagation for the limiting wave follows from (K3) alone.
 
+### A local conductance graph with the same continuum Green limit
+
+The actual three routed ports per carrier admit a different elimination.
+It uses ordinary terminal Kron reduction and star–triangle equivalence
+([Dörfler–Bullo, Theorem III.8 and Lemma III.10](https://arxiv.org/abs/1102.2950)),
+with the native constants and observation error derived here. For carrier
+Laplacian `L_ico`, its exact resistance
+`R_ab=(e_a-e_b)^T L_ico^+ (e_a-e_b)` is `11/30`, `7/15` or `1/2` at native
+hop distance one, two or three. For distinct routed ports `i,j,k`, set
+`r_i=(R_ij+R_ik-R_jk)/2` and cyclically. Eliminating the other nine ports
+gives precisely the terminal energy
+`min_z sum_i (x_i-z)^2/r_i`. All 220 carrier triples are checked by an
+independent exact Schur elimination. Their sorted star arms are
+
+```text
+(11/60,11/60,11/60), (2/15,7/30,7/30), (7/30,7/30,7/30),
+(11/60,11/60,17/60), (1/6,1/5,3/10).
+```
+
+Thus `2/15<=r_i<=3/10`. Across each actual cross seam `(c,i)-(d,j)`,
+eliminating its two terminal values at fixed star centers puts the two
+arms and the unit seam resistance in series:
+
+```text
+w_cd = 1/(1+r_ci+r_dj),                 5/8 <= w_cd <= 15/19,
+W_l = (4^l/12) L_w,l,                  G_l^w = W_l^+ .       (W1)
+```
+
+`L_w,l` is a positive local weighted Laplacian on the existing cell dual;
+the coefficients use the actual routed port labels, with no fitted action.
+Cell and port `L2` norms below use uniform weights `1/C` and `1/(12C)`,
+where `C=20*4^l`. Write `s=4^l` and
+`E_port(x)=s/(12C) sum_native_edges (x_a-x_b)^2`.
+
+Two variational maps compare these fields with native cell means. Given
+any native port vector, set each star center to
+`z_c=sum_i x_ci/r_ci / sum_i 1/r_ci`. Terminal energy minimization and
+then series minimization give `E_w(z)<=E_port(x)`. Since this center is
+a convex combination of port values, the internal gap `5-sqrt(5)>2` gives
+`||z-mean_cell(x)||^2<=6 E_port(x)/s`. Conversely, for any center vector
+`z`, use seam current `I_cd=w_cd(z_c-z_d)`, terminal values
+`x_ci=z_c-r_ci I_cd`, `x_dj=z_d+r_dj I_cd`, and the harmonic lift to
+the nine other ports. Its native energy is at most `E_w(z)`. The harmonic
+maximum principle and `r_i<=3/10` give
+`||mean_cell(x)-z||^2<=(18/5) E_w(z)/s`. Subtracting global means keeps
+both bounds and all energies. These are maps of quadratic energies and
+readouts, not an equality of finite native transition or observation laws.
+
+The existing dual Poincare bound and (W1) give `||G_l^w||<=16384/15`;
+the native bound is `||G_l||<=4096/3`. In
+`<f,Gf>=sup_u(2<f,u>-E(u))`, apply either map to the maximizing vector
+and bound its readout error by the square root of its energy. For unit `f`,
+the two directional errors are at most
+`2 sqrt(6*4096/3)/sqrt(s)` and `2 sqrt((18/5)*16384/15)/sqrt(s)`.
+Polarization for self-adjoint operators therefore gives
+
+```text
+||G_l-G_l^w|| <= 182*2^(-l).                                (W2)
+```
+
+The finite source controls check both energy maps in rational arithmetic
+and audit the distinct Green operators numerically. Consequently the
+explicit local conductance graph and native cell-mean field have exactly
+the same operator-norm subsequential limits; whole-sequence uniqueness
+for either would establish it for both. The conductances are not constant:
+the actual source already uses inequivalent terminal stars and several
+edge weights. Carrier symmetry alone does not remove this dependence.
+For a concrete control, assigning a distance-one equilateral port triple
+at every cell gives `w=30/41`; a distance-two triple gives `w=15/22` on
+the same dual graph. Their weighted Green operators differ by the exact
+factor `44/41`, which (W2) preserves in any common nonzero continuum limit.
+Both retain the carrier and repair law but change the declared routing;
+this distinguishes topology-only inference from the fixed source question.
+Convergence of this routing-dependent conductance family to one effective
+form is unproved. The reduction supplies no extra spatial direction,
+physical metric, changed repair rule or finite Markov approximation claim.
+
 ### Locality and spectral dimension of the source continuum
 
 The continuum form inherits contraction and locality from the **full native

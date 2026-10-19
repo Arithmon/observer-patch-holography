@@ -1,7 +1,7 @@
 {
-  "description": "Observer-visible spatial fields and temporal Hilbert spaces, exact incident-clock spectra, controlled screen compressions, and explicit interpretation limits.",
+  "description": "Observer-visible fields and temporal representations, exact incident-clock reconstructions and simultaneous density-clock limits, with explicit physical identification boundaries.",
   "files": {
-    "README.md": "9e5014b4f2ae6eb4ab59f6136a7ba5e3a436f4069affcf61fbe5daf9d5900dad",
+    "README.md": "abc337d8a3d377e27eb25868bde9ef0de72f9849ee616b05144376aaaa8aae0b",
     "__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "binary_dynamics.py": "a5801807eac5518b8f8661ac88effa07390356b9e0caf89c63ff47ba96f17c15",
@@ -12,13 +12,13 @@
     "intrinsic_geometry.py": "9a8731d640260b7fda6e85b0fc84764deeccfc7147a6f26999236c716f116e43",
     "intrinsic_results.json": "7f1cf9f64acb85ca15d8f066e27f88f750306b53c8114f8094da2dd0ce3789a6",
     "results.json": "24d7d78e4090d57634f30e383ed22ec089908de37c177e6e447d23ca9cce9395",
-    "temporal_records.py": "36671ee75ea1a2982104e3fd793186eb57e941f62c8a68d9a9d23a9a14259d9c",
-    "temporal_results.json": "cab19ba9540dd39f26d393623084f1a0abc5b2f6564a222442ea968b437cd86c",
+    "temporal_records.py": "ec0b5ac58a635e9886fd0de19f15e774c1089e961f165b66145ce8358aa4a4a0",
+    "temporal_results.json": "262396425d30c1db4b9c118c20665e80037990bcba5cdf1e9fc04e26053d8a31",
     "test_binary_dynamics.py": "cfcffdcf865fb0db3b3c6efb81b9a180eed8087aeeacfd771bd4a971178bb442",
     "test_clock_reconstruction.py": "2e63e91502dd84c8a974d0db179ee2f4c27051ae1492a4c536323c4ed921d96f",
     "test_construction.py": "cddc206a4bac54bb728c5fb5ed83d951093dc198ad3ae93a8820c48e6bd67c3c",
     "test_intrinsic_geometry.py": "98cd2f99e40fdc211f8c3eed3ad170a461fa91e77d11ed7d8cd3d24135efd277",
-    "test_temporal_records.py": "5ac9032ec21645ebd22cab2e7562746dc85c805f873314a3b90ba81876049190"
+    "test_temporal_records.py": "777469965db4b0993e0b776ef4d16d0459689d636b53071bfa26c7743eb00241"
   },
   "reproduce": [
     "python -m model.relative_observer_geometry --check model/relative_observer_geometry/results.json",

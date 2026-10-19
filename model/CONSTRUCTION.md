@@ -143,11 +143,16 @@ operator norm to an injective compact `G`. Its inverse `A` determines the
 limiting spatial covariance, native heat propagator and admitted coherent
 wave amplitudes. Its conservative regular strongly local form has domain
 `H1` and spectral dimension two on the spherical observation domain.
-[Actual density snapshots](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
-converge jointly to a Gaussian law with covariance `exp(-|tau-u|A)` at
-`tau=attempts/(1260*16^level)`. This simultaneous refinement/count limit
-retains uniform fixed-number preparation, IID seams and full readback;
-it establishes finite-dimensional distributions, with no path claim.
+An [explicit positive conductance graph](physical_space_time/OCCUPATION_FIELD.md#a-local-conductance-graph-with-the-same-continuum-green-limit)
+has the same Green limits, with finite operator error `182*2^-level`.
+[Actual density paths](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+converge after interpolation in `C([0,T],H^-3(S2))`, with covariance
+`exp(-|tau-u|A)` at `tau=attempts/(1260*16^level)`; the declared Green
+filter gives `H^-2` paths. This simultaneous refinement/count limit
+retains uniform fixed-number preparation, IID seams and full readback.
+Normalized [incident counts and inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
+sample these same paths, with a finite-vector shared-seam jitter law.
+Whole-sequence uniqueness and physical clock calibration are unproved.
 With the constant mode restored, a heat off-diagonal estimate gives finite
 wave propagation in the supplied flat comparison distance. Two long record
 blocks give a separate continuous Gaussian wave readout with covariance

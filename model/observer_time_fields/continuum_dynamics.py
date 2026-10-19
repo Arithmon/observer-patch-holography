@@ -1,4 +1,4 @@
-"""One source continuum operator for native decay, coherent waves and readouts.
+"""One source continuum operator for native density paths, waves and readouts.
 
 The limit follows from the source compactness theorem, not finite numerical
 extrapolation. Wave synthesis processes retained history blocks; its parameter
@@ -187,7 +187,7 @@ def density_process_bounds(level, covariance_tolerance=F(1, 10), tests=3,
     Each real, mean-zero profile has supremum at most one. The CLT ratio
     assumes the displayed positive lower bound on its conditional population
     variance; zero limiting variance is handled separately by Chebyshev.
-    No spatial convergence rate or path-space tightness is asserted.
+    Path tightness is certified separately by density_path_bounds.
     """
     level = dynamics._level(level)
     tolerance, coefficient_l1, variance = map(dynamics._positive,
@@ -214,8 +214,135 @@ def density_process_bounds(level, covariance_tolerance=F(1, 10), tests=3,
         'Green_filtered_covariance': 'G exp(-abs(tau-u) A), using A^-1/2 readout',
         'simultaneous_refinement_and_attempt_time_finite_dimensional_limit': True,
         'count_first_long_block_limit_required': False,
-        'path_space_tightness_asserted': False,
+        'path_space_tightness_certificate': 'density_path_bounds and native_density_path_control',
         'clock_is_laboratory_proper_time': False}
+
+
+def density_path_bounds(level, harmonic_cutoff=10, horizon=4, energy=1,
+                        profile_variance=1):
+    """Uniform path bounds for actual stationary native snapshots.
+
+    Scalar profiles use F_f=sum f_p(n_p-1/3)/sqrt(V chi) and full-port
+    energy E=4^l <f,L f>/V. Harmonic tails use spherical probability-area
+    normalization. The finite Green filter is G_l^1/2 on cell tests.
+    """
+    level = dynamics._level(level)
+    if type(harmonic_cutoff) is not int or harmonic_cutoff < 0:
+        raise ValueError('an original nonnegative harmonic cutoff is required')
+    horizon, energy, variance = map(dynamics._positive,
+        (horizon, energy, profile_variance))
+    scale, vertices, attempts = 4**level, 240*4**level, 1260*16**level
+    particles = vertices//3
+    chi = F(particles*(vertices-particles), vertices*(vertices-1))
+    steps = math.ceil(attempts*horizon)
+    rounded_horizon = F(steps, attempts)
+    return {'level': level, 'harmonic_cutoff': harmonic_cutoff,
+        'parameter_horizon': horizon, 'finite_reversal_attempt_horizon': steps,
+        'rounded_parameter_horizon': rounded_horizon,
+        'native_attempts_per_comparison_time': attempts,
+        'full_native_profile_energy_upper': energy,
+        'canonical_profile_variance_upper': variance,
+        'forward_backward_corrected_profile': 'g=2(I+P)^-1 f',
+        'corrected_profile_energy_upper': 4*energy,
+        'state_uniform_martingale_increment_variance_upper': 4*energy/(attempts*chi),
+        'martingale_maximum_squared_jump_upper': 16*energy/(scale*chi),
+        'stationary_terminal_martingale_variance_upper': 4*rounded_horizon*energy,
+        'scalar_expected_squared_supremum_upper': 2*variance+50*rounded_horizon*energy,
+        'density_H_minus_3_expected_squared_supremum_tail_upper':
+            (2+100*rounded_horizon)/(harmonic_cutoff+1)**2,
+        'Green_filtered_H_minus_2_expected_squared_supremum_tail_upper':
+            (2*spatial.GREEN_BOUND+100*rounded_horizon)/(harmonic_cutoff+1)**2,
+        'density_H_minus_3_maximum_squared_snapshot_jump_upper': F(4, vertices)/chi,
+        'Green_filtered_H_minus_2_maximum_squared_snapshot_jump_upper': F(2, scale)/chi,
+        'density_interpolated_path_topology': 'C([0,T],H^-3(S2))',
+        'Green_filtered_interpolated_path_topology': 'C([0,T],H^-2(S2))',
+        'step_paths_have_same_continuous_limit_in_Skorohod_J1': True,
+        'same_spatial_subsequence_and_simultaneous_attempt_scaling': True,
+        'stationary_reversibility_required': True,
+        'forward_and_backward_martingale_independence_required': False,
+        'spatial_subsequence_convergence_rate_supplied': False}
+
+
+def native_density_path_control():
+    """All native carrier branches check the discrete path-tightness algebra.
+
+    Exact configuration transitions, not a Gaussian simulation, check the
+    corrected forward/backward identity, its state-uniform bracket bound,
+    and failures of the uncorrected and nonstationary reverse controls.
+    """
+    states, rows, edges = _native_trace_counts(4)
+    vertices, denominator = 12, 2*len(edges)
+    chi = F(4*8, vertices*(vertices-1))
+    lap = sp.zeros(vertices)
+    for a, b in edges:
+        lap[a, a] += 1; lap[b, b] += 1
+        lap[a, b] -= 1; lap[b, a] -= 1
+    transfer = sp.eye(vertices)-lap/denominator
+    field = sp.Matrix([1]*6+[-1]*6)
+    corrected = 2*(sp.eye(vertices)+transfer).inv(method='DM')*field
+    if (sp.eye(vertices)+transfer)*corrected != 2*field:
+        raise ArithmeticError('the discrete forward/backward correction changed')
+    divisor = math.lcm(*(int(v.q) for v in corrected))
+    coefficients = [int(v*divisor) for v in corrected]
+    observations = [sum(x*y for x, y in zip(state, coefficients)) for state in states]
+    raw = [sum(x*int(y) for x, y in zip(state, field)) for state in states]
+    expected = [sum(c*v for c, v in zip(row, observations)) for row in rows]
+    expected_raw = [sum(c*v for c, v in zip(row, raw)) for row in rows]
+    one_particle_expected = denominator*transfer*corrected
+    for state, value in zip(states, expected):
+        if sum(x*y for x, y in zip(state, one_particle_expected))*divisor != value:
+            raise ArithmeticError('the configuration and density transfers disagree')
+    energy = F((field.T*lap*field)[0])/vertices
+    corrected_energy = F((corrected.T*lap*corrected)[0])/vertices
+    upper = corrected_energy/(denominator*chi)
+    variances, raw_defects, branches, maximum_jump = [], set(), 0, F(0)
+    nonstationary_reverse = None
+    for before, row in enumerate(rows):
+        numerator, square_numerator = 0, 0
+        for after, multiplicity in enumerate(row):
+            if not multiplicity:
+                continue
+            forward = denominator*observations[after]-expected[before]
+            reverse = denominator*observations[before]-expected[after]
+            if forward-reverse != 2*denominator*divisor*(raw[after]-raw[before]):
+                raise ArithmeticError('a native branch violates forward/backward telescoping')
+            numerator += multiplicity*forward
+            square_numerator += multiplicity*forward*forward
+            maximum_jump = max(maximum_jump,
+                F(forward*forward, denominator**2*divisor**2*vertices)/chi)
+            raw_defects.add(denominator*(raw[after]-raw[before])
+                           +expected_raw[after]-expected_raw[before]
+                           -2*denominator*(raw[after]-raw[before]))
+            # With a fixed X_0, the backwards conditional mean at X_1 is
+            # F_g(X_0)-F_Pg(X_1), not the stationary reversed kernel's zero.
+            if before == 0 and reverse and nonstationary_reverse is None:
+                nonstationary_reverse = F(reverse, denominator*divisor)
+            branches += multiplicity
+        variance = F(square_numerator, denominator**3*divisor**2*vertices)/chi
+        if numerator or variance > upper:
+            raise ArithmeticError('a native conditional martingale bracket failed')
+        variances.append(variance)
+    exact_stationary = F((corrected.T*(sp.eye(vertices)-transfer**2)*corrected)[0])/vertices
+    if (sum(variances, F(0))/len(states) != exact_stationary
+            or corrected_energy > 4*energy
+            or exact_stationary > 4*energy/denominator
+            or maximum_jump > 4*corrected_energy/chi
+            or raw_defects == {0} or nonstationary_reverse is None):
+        raise ArithmeticError('the native path or mutation certificate changed')
+    return {'native_ports': vertices, 'canonical_configurations': len(states),
+        'native_endpoint_branches': branches, 'profile_energy': energy,
+        'corrected_profile_energy': corrected_energy,
+        'exact_corrected_forward_backward_identity_on_every_branch': True,
+        'zero_forward_and_stationary_reverse_conditional_mean': True,
+        'maximum_state_conditional_increment_variance': max(variances),
+        'state_uniform_conditional_increment_variance_upper': upper,
+        'stationary_increment_variance': exact_stationary,
+        'stationary_increment_variance_upper': 4*energy/denominator,
+        'maximum_squared_martingale_increment': maximum_jump,
+        'maximum_squared_martingale_increment_upper': 4*corrected_energy/chi,
+        'uncorrected_profile_has_nonzero_telescoping_defect': True,
+        'fixed_initial_state_reverse_mean_without_normalization': nonstationary_reverse,
+        'fixed_initial_state_admits_stationary_reverse_kernel': False}
 
 
 def native_stirring_control():
@@ -550,10 +677,17 @@ def run():
         'actual_native_density_process': {
             'exact_stirring_and_canonical_controls': native_stirring_control(),
             'all_level_bounds': [density_process_bounds(l) for l in (0, 1, 2, 4, 10)],
+            'exact_native_path_controls': native_density_path_control(),
+            'path_bounds': [density_path_bounds(l, j) for l, j in ((0, 0), (1, 10), (4, 100), (10, 100))],
             'uniform_fixed_number_equilibrium_and_IID_seams_required': True,
             'Gaussian_limit_follows_from_conditional_finite_population_CLT': True,
             'reflection_positive_Gaussian_covariance': True,
             'OS_one_particle_semigroup': 'exp(-tau A), not exp(-tau sqrt(A))',
+            'OS_Gaussian_Fock_Hamiltonian': 'dGamma(A)',
+            'Green_field_normalization': 'phi=Phi/sqrt(2)',
+            'Green_field_temporal_Fourier_covariance': '(omega^2+A^2)^-1',
+            'Green_field_Cameron_Martin_action': '1/2 integral (||partial_tau phi||^2+||A phi||^2) d tau',
+            'action_is_density_against_infinite_dimensional_Lebesgue_measure': False,
             'native_coherent_quantum_vacuum_preparation_inferred': False},
         'full_reference_state_limit': {
             'native_trace_and_nontracial_controls': [native_reference_state_control(q) for q in (2, 4)],
@@ -572,7 +706,9 @@ def run():
             'source_heat_trace_spectral_dimension': 2,
             'native_attempt_parameter': 'tau=n/(1260*16^level)',
             'native_two_point_transfer': 'exp(-tau A)',
-            'actual_multitime_density_limit': 'stationary Gaussian OU finite-dimensional laws',
+            'actual_multitime_density_limit': 'stationary Gaussian OU continuous distribution-valued paths',
+            'actual_density_interpolated_path_topology': 'C([0,T],H^-3(S2))',
+            'actual_Green_filtered_interpolated_path_topology': 'C([0,T],H^-2(S2))',
             'coherent_step_parameter': 't=n/(sqrt(630)*4^level)',
             'native_coherent_compression': 'cos(t sqrt(A))',
             'return_reference_modular_phase_magnitudes': 'sqrt(A)',
@@ -587,7 +723,7 @@ def run():
             'coherent_preparation_reflection_and_Ramsey_services_required': True,
             'Gaussian_wave_uses_declared_record_processing': True,
             'Gaussian_density_limit_uses_actual_native_snapshot_process': True,
-            'density_process_path_space_limit_proved': False,
+            'density_process_path_space_limit_proved': True,
             'modular_reference_is_a_native_coherently_prepared_state': False,
             'faithful_continuum_modular_algebra_state_constructed': False,
             'full_modular_unitary_or_intervention_implementation_proved': False,
@@ -612,7 +748,7 @@ def main():
     if args.check:
         from model.observer.scalar_response.experiment import compare_receipt
         compare_receipt(strict_json.load(args.check), result)
-        print('Common native continuum dynamics, modular cap and wave-path controls replayed.')
+        print('Native continuum density paths, Gaussian reconstruction and wave controls replayed.')
     elif args.write:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:
             json.dump(result, stream, indent=2, sort_keys=True); stream.write('\n')

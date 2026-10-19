@@ -309,6 +309,128 @@ def screen_compression():
         'all_level_continuum_or_physical_time_claimed': False}
 
 
+def incident_clock_bound(level, incident_seams, horizon=F(1), tolerance=F(1, 8)):
+    """Uniform count/inverse bounds on the simultaneous native density scale.
+
+    The event set is fixed before the IID seam schedule is drawn. Dependence
+    between different clocks, endpoint outcomes and field records is retained.
+    This finite probability bound uses the exact source exposure, not seconds.
+    """
+    if (type(level) is not int or not 0 <= level <= 100
+            or type(incident_seams) is not int
+            or not 1 <= incident_seams <= 630*4**level
+            or type(horizon) is not F or horizon <= 0
+            or type(tolerance) is not F or tolerance <= 0):
+        raise ValueError('a bounded source level, nonempty event set and positive rational bounds required')
+    seams, scale = 630*4**level, 1260*16**level
+    probability = F(incident_seams, seams)
+    ticks = scale*probability
+    covered = math.ceil(scale*(horizon+tolerance))
+    failure = min(F(1), F(covered)*(1-probability)/(scale*ticks*tolerance**2))
+    return {'level': level, 'native_attempt_scale': scale,
+        'source_ports': 240*4**level, 'source_seams': seams,
+        'incident_seams': incident_seams, 'incident_probability': str(probability),
+        'mean_incident_ticks_per_continuum_unit': str(ticks),
+        'horizon': str(horizon), 'martingale_tolerance': str(tolerance),
+        'covered_native_attempts': covered,
+        'uniform_count_error_upper': str(tolerance+F(1, scale)),
+        'uniform_inverse_error_upper': str(tolerance+1/ticks),
+        'failure_probability_upper': str(failure)}
+
+
+def source_clock_incidence(level):
+    """Check clock exposure against actual refined native seams and ancestry."""
+    if type(level) is not int or level not in (0, 1, 2):
+        raise ValueError('an executed source level zero, one or two is required')
+    graph = clocks.screen.source.federation(level)
+    ancestry = clocks.screen.source.cell_parents(0, level)
+    patch = {p for p in range(graph.ports) if ancestry[p//12] == 0}
+    patch_events = sum(a in patch or b in patch for a, b in graph.seams)
+    boundary = sum((a in patch) != (b in patch) for a, b in graph.seams)
+    carrier_events = sum(a//12 == 0 or b//12 == 0 for a, b in graph.seams)
+    degree_counts = {degree: sum(len(row) == degree for row in graph.neighbours)
+                     for degree in (5, 6)}
+    expected = (63*4**level+3*2**level)//2
+    if (len(patch) != 12*4**level or boundary != 3*2**level
+            or patch_events != expected or carrier_events != 33
+            or degree_counts != {5: 180*4**level, 6: 60*4**level}):
+        raise ArithmeticError('the actual native incident-clock census changed')
+    return {'level': level, 'port_degree_census': {str(k): v for k, v in degree_counts.items()},
+        'one_carrier_incident_seams': carrier_events,
+        'base_face_ports': len(patch), 'base_face_incident_seams': patch_events,
+        'base_face_boundary_seams': boundary}
+
+
+def clock_fluctuation_covariance(level, first, second, shared):
+    """Exact covariance per continuum unit after scaling by sqrt(a_l/M_l).
+
+    Inputs count two actual event sets and their intersection. Fixed bounded
+    counts give the Brownian overlap limit; finite source counts retain the
+    negative common-scheduler correction, including disjoint event sets.
+    """
+    incident_clock_bound(level, first)
+    incident_clock_bound(level, second)
+    seams = 630*4**level
+    if (type(shared) is not int
+            or not max(0, first+second-seams) <= shared <= min(first, second)):
+        raise ValueError('the intersection must define two possible source event sets')
+    return ((F(first)-F(first*first, seams), F(shared)-F(first*second, seams)),
+            (F(shared)-F(first*second, seams), F(second)-F(second*second, seams)))
+
+
+def source_clock_fluctuations(level):
+    """Actual adjacent, disjoint and cross-carrier port-clock comparisons."""
+    graph = clocks.screen.source.federation(level)
+    five = [p for p, neighbors in enumerate(graph.neighbours) if len(neighbors) == 5]
+    first = five[0]
+    adjacent = next(p for p in five if p in graph.neighbours[first])
+    disjoint = next(p for p in five if p != first and p not in graph.neighbours[first])
+    result = []
+    for label, pair in (('adjacent_degree_five', (first, adjacent)),
+                        ('nonadjacent_degree_five', (first, disjoint)),
+                        ('cross_carrier_degree_six', graph.inter_seams[0])):
+        a, b = pair
+        da, db = len(graph.neighbours[a]), len(graph.neighbours[b])
+        shared = sum(a in seam and b in seam for seam in graph.seams)
+        covariance = clock_fluctuation_covariance(level, da, db, shared)
+        result.append({'comparison': label, 'ports': [a, b],
+            'incidence_counts': [da, db, shared],
+            'scaled_count_covariance_per_continuum_unit': [[str(x) for x in row] for row in covariance],
+            'limiting_correlation_squared_for_fixed_incidence_counts': str(F(shared**2, da*db))})
+    return result
+
+
+def native_clock_field_dependence():
+    """Complete native one-step law: a clock mark and two-time field correlate.
+
+    The small elementary source is a finite dependence control, not a sampled
+    execution of the large refined screen or its continuum limit.
+    """
+    source = core.source()
+    clock, field, joint, branches, endpoint, clock_endpoint = 0, 0, 0, 0, 0, 0
+    for before in source.states:
+        for seam in source.seams:
+            tick = int(0 in seam)
+            for coin in (0, 1):
+                after, (_, current) = native.native(before, seam, coin)
+                decoded = before[0]+current*(int(seam[1] == 0)-int(seam[0] == 0))
+                if decoded != after[0]:
+                    raise ArithmeticError('the clocked current record lost the field')
+                value = before[0]*decoded
+                clock += tick; field += value; joint += tick*value; branches += 1
+                endpoint += decoded; clock_endpoint += tick*decoded
+    covariance = F(joint, branches)-F(clock*field, branches**2)
+    if branches != 3960 or covariance == 0:
+        raise ArithmeticError('the native clock/field dependence control changed')
+    return {'elementary_source_states': 66, 'native_branches': branches,
+        'clock_mean': str(F(clock, branches)),
+        'two_time_occupation_product_mean': str(F(field, branches)),
+        'joint_clock_field_mean': str(F(joint, branches)),
+        'clock_field_covariance': str(covariance),
+        'clock_single_endpoint_covariance': str(F(clock_endpoint, branches)-F(clock*endpoint, branches**2)),
+        'clock_field_independence_asserted': False}
+
+
 def run():
     joint = source_correlations(20)
     centered = tuple(row[0][0]-F(1, 36) for row in joint)
@@ -378,6 +500,25 @@ def run():
                 perturbation_budget(scalar, F(1, 10**26))),
             'finite_samples_prove_exact_rank_or_continuation': False},
         'actual_screen_temporal_compression': screen_compression(),
+        'simultaneous_refinement_incident_clocks': {
+            'native_attempt_scale': 'a_l=1260*16^l',
+            'normalized_clock': 'C_l(t)=N_l(floor(a_l*t))/(a_l*p_l)',
+            'inverse_clock': 'U_l(t)=T_l(floor(a_l*p_l*t))/a_l; T_l(0)=0',
+            'counting_includes_zero_current': True,
+            'actual_source_incidence': [source_clock_incidence(level) for level in (0, 1, 2)],
+            'actual_source_clock_fluctuations': [source_clock_fluctuations(level) for level in (0, 1, 2)],
+            'finite_bounds': [incident_clock_bound(level, degree)
+                              for level in (0, 2, 6) for degree in (5, 6, 33)],
+            'complete_native_dependence_control': native_clock_field_dependence(),
+            'clock_and_field_independence_required': False,
+            'centered_clock_fluctuations_asymptotically_independent_of_density_snapshots': True,
+            'independence_scope': 'finite vectors, stationary canonical preparation, seam-only clocks, fixed bounded incidence pattern',
+            'joint_inverse_clock_transfer_uses_proved_continuous_density_path_limits': True,
+            'density_path_topologies': ['C([0,T],H^-3(S2)) for linear interpolation',
+                'C([0,T],H^-2(S2)) after the finite Green square-root readout',
+                'D with the same continuous limits for stopped step versions'],
+            'local_clock_grants_complete_spatial_field_access': False,
+            'modular_parameter_proper_time_or_lab_seconds_identified': False},
         'scope': {'exact_laws_reconstruct_finite_cyclic_positive_transfer': True,
             'positive_transfer_class_is_existing_native_theorem': True,
             'coherent_real_time_implementation_or_lab_duration_derived': False,

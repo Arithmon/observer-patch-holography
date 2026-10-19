@@ -149,7 +149,7 @@ def test_actual_density_process_uses_simultaneous_diffusive_attempt_scaling(leve
     assert value['conditional_Hajek_ratio_upper_under_variance_assumption'] == F(18, q)
     assert value['simultaneous_refinement_and_attempt_time_finite_dimensional_limit']
     assert not value['count_first_long_block_limit_required']
-    assert not value['path_space_tightness_asserted']
+    assert value['path_space_tightness_certificate'] == 'density_path_bounds and native_density_path_control'
     assert not value['clock_is_laboratory_proper_time']
 
 
@@ -162,6 +162,80 @@ def test_stirring_variance_telescopes_only_for_a_positive_contraction():
             cost = sum(value**(2*k)*(1-value) for k in range(n))
             assert cost <= 1-value**(2*n)
     assert 1-F(-1, 2) > 1-F(-1, 2)**2
+
+
+def test_actual_native_path_martingales_and_state_uniform_brackets():
+    value = d.native_density_path_control()
+    assert value['native_endpoint_branches'] == 29700
+    assert value['canonical_configurations'] == 495
+    assert value['exact_corrected_forward_backward_identity_on_every_branch']
+    assert value['zero_forward_and_stationary_reverse_conditional_mean']
+    assert 0 < value['maximum_state_conditional_increment_variance'] <= value['state_uniform_conditional_increment_variance_upper']
+    assert 0 < value['stationary_increment_variance'] <= value['stationary_increment_variance_upper']
+    assert value['maximum_squared_martingale_increment'] <= value['maximum_squared_martingale_increment_upper']
+    assert value['corrected_profile_energy'] <= 4*value['profile_energy']
+
+
+def test_discrete_correction_and_stationary_reversal_have_nonvacuous_controls():
+    value = d.native_density_path_control()
+    assert value['uncorrected_profile_has_nonzero_telescoping_defect']
+    assert value['fixed_initial_state_reverse_mean_without_normalization'] != 0
+    assert not value['fixed_initial_state_admits_stationary_reverse_kernel']
+    p = sp.symbols('p')
+    assert sp.cancel((1+p)*2/(1+p)-2) == 0
+    assert sp.cancel((1-p*p)*4/(1+p)**2-4*(1-p)/(1+p)) == 0
+    # The sharper stationary estimate, unlike the conditional bracket, has
+    # no susceptibility denominator and gives the stated 50T maximal bound.
+    for eigenvalue in (F(0), F(1, 3), F(2, 3), F(1)):
+        assert 4*(1-eigenvalue)/(1+eigenvalue) <= 4*(1-eigenvalue)
+
+
+@pytest.mark.parametrize('level', (0, 2, 5, 10))
+def test_actual_path_bounds_keep_energy_clock_and_topologies(level):
+    value = d.density_path_bounds(level, harmonic_cutoff=9, horizon=F(1, 13))
+    a, v = 1260*16**level, 240*4**level
+    chi = F((v//3)*(2*v//3), v*(v-1))
+    rounded = F((a+12)//13, a)
+    assert value['rounded_parameter_horizon'] == rounded
+    assert value['state_uniform_martingale_increment_variance_upper'] == 4/(a*chi)
+    assert value['martingale_maximum_squared_jump_upper'] == 16/(4**level*chi)
+    assert value['scalar_expected_squared_supremum_upper'] == 2+50*rounded
+    assert value['density_H_minus_3_expected_squared_supremum_tail_upper'] == (2+100*rounded)/100
+    assert value['Green_filtered_H_minus_2_expected_squared_supremum_tail_upper'] == (2*d.spatial.GREEN_BOUND+100*rounded)/100
+    assert value['density_H_minus_3_maximum_squared_snapshot_jump_upper'] == 4/(v*chi)
+    assert value['Green_filtered_H_minus_2_maximum_squared_snapshot_jump_upper'] == 2/(4**level*chi)
+    assert value['density_interpolated_path_topology'] == 'C([0,T],H^-3(S2))'
+    assert value['Green_filtered_interpolated_path_topology'] == 'C([0,T],H^-2(S2))'
+    assert value['same_spatial_subsequence_and_simultaneous_attempt_scaling']
+    assert not value['forward_and_backward_martingale_independence_required']
+
+
+def test_harmonic_path_tail_summation_and_borderline_topology_control():
+    j = sp.symbols('j', positive=True, integer=True)
+    weight = 1+j*(j+1)
+    gap = sp.factor(1/j**2-1/(j+1)**2-(2*j+1)/weight**2)
+    assert sp.cancel(gap-(2*j+1)*(2*j*j+2*j+1)/(j*j*(j+1)**2*weight**2)) == 0
+    for cutoff in (1, 10, 100):
+        tail = sum(F(2*k+1, (1+k*(k+1))**2) for k in range(cutoff+1, cutoff+101))
+        assert tail < F(1, (cutoff+1)**2)
+    # White equal-time density cannot be promoted to H^-1. For dmu/domega<2,
+    # the degree-j variance trace is at least 2j-1; its H^-1 sum diverges.
+    for exponent in range(1, 6):
+        block = sum(F(2*k-1, 1+k*(k+1)) for k in range(2**exponent, 2**(exponent+1)))
+        assert block >= F(1, 2)
+
+
+def test_green_filter_full_native_energy_is_bounded_by_its_schur_energy():
+    _, _, _, _, _, schur = d.dynamics._base_blocks()
+    graph, lap, _, _, _ = d.dynamics.source_green.matrices(0)
+    # Recover the exact cell-constant full energy independently of the Schur
+    # inverse and check its comparison on a nonconstant source profile.
+    cells = schur.rows
+    profile = sp.Matrix([1, -1]+[0]*(cells-2))
+    repeated = sp.Matrix([profile[p//12] for p in range(graph.ports)])
+    full_energy = (repeated.T*sp.Matrix(lap.toarray())*repeated)[0]/12
+    schur_energy = (profile.T*schur*profile)[0]
+    assert schur_energy <= full_energy <= 2*schur_energy
 
 
 def test_reflected_ou_covariance_reconstructs_decay_generator_not_wave_frequency():
@@ -182,6 +256,19 @@ def test_reflected_ou_covariance_reconstructs_decay_generator_not_wave_frequency
     relativistic = np.exp(-tau*np.sqrt(eigenvalues))/eigenvalues
     assert actual[0] == relativistic[0]
     assert np.all(actual[1:] < relativistic[1:])
+
+
+def test_reconstructed_green_field_precision_and_clock_obstruction():
+    omega, eigenvalue = sp.symbols('omega eigenvalue', real=True, positive=True)
+    # Fourier transform of exp(-lambda|tau|)/(2lambda), split at tau=0.
+    transformed = (1/(eigenvalue+sp.I*omega)+1/(eigenvalue-sp.I*omega))/(2*eigenvalue)
+    assert sp.simplify(transformed-1/(omega**2+eigenvalue**2)) == 0
+    assert sp.simplify(transformed*(omega**2+eigenvalue**2)) == 1
+    assert sp.simplify(transformed*(omega**2+eigenvalue)-1) != 0
+    # A clock scalar matching one of two unequal eigenvalues cannot match both.
+    scale = F(1)
+    assert scale*1 == 1
+    assert scale*4 != 2
 
 
 @pytest.mark.parametrize('bad', (True, 0, -1, 1., '1'))
@@ -368,6 +455,8 @@ def test_ambiguous_levels_caps_and_cutoffs_rejected(bad):
         d.fixed_cap_collapse(0, bad)
     with pytest.raises(ValueError):
         d.wave_path_bounds(bad)
+    with pytest.raises(ValueError):
+        d.density_path_bounds(0, harmonic_cutoff=bad)
 
 
 def test_retained_continuum_receipt_replays_and_rejects_physical_promotion():
@@ -379,7 +468,7 @@ def test_retained_continuum_receipt_replays_and_rejects_physical_promotion():
     with pytest.raises(ValueError):
         compare_receipt(changed, result)
     changed = copy.deepcopy(result)
-    changed['scope']['density_process_path_space_limit_proved'] = True
+    changed['scope']['density_process_path_space_limit_proved'] = False
     with pytest.raises(ValueError):
         compare_receipt(changed, result)
 

@@ -1,6 +1,7 @@
 """Independent triangular compactness and native action-range controls."""
 from collections import Counter
 from fractions import Fraction as F
+from itertools import permutations
 import json
 
 import numpy as np
@@ -8,6 +9,73 @@ import pytest
 
 from . import local_continuum as c
 from ..observer.scalar_response.experiment import compare_receipt
+
+
+def test_all_native_terminal_traces_have_the_exact_positive_star_representation():
+    row = c.terminal_star_control()
+    assert row['terminal_triples_checked'] == 220
+    assert row['resistance_by_native_hop_distance'] == {
+        '1': ['11/30'], '2': ['7/15'], '3': ['1/2']}
+    assert sorted(value['triples'] for value in row['star_arm_classes']) == [20, 20, 60, 60, 60]
+    assert row['all_exact_terminal_Dirichlet_forms_and_harmonic_lifts_checked']
+
+
+def test_anisotropic_terminal_readout_preserves_the_order_of_the_actual_ports():
+    expected = {0: F(1, 6), 1: F(1, 5), 2: F(3, 10)}
+    for ports in permutations(expected):
+        assert c.terminal_star_arms(ports) == tuple(expected[p] for p in ports)
+        lift = c._terminal_harmonic_lift(ports)
+        for i, p in enumerate(ports):
+            assert lift[p] == tuple(F(j == i) for j in range(3))
+    assert c.terminal_star_arms((0, 2, 8)) == (F(7, 30),)*3
+    assert c.terminal_star_arms((0, 1, 5)) == (F(11, 60),)*3
+    # Distinct admissible three-port routings on the same cell dual retain
+    # the carrier/repair law but need not select one Green normalization.
+    adjacent_weight = 1/(1+2*F(11, 60))
+    separated_weight = 1/(1+2*F(7, 30))
+    assert adjacent_weight == F(30, 41)
+    assert separated_weight == F(15, 22)
+    assert adjacent_weight/separated_weight == F(44, 41)
+
+
+def test_changed_arm_resistances_fail_independent_native_Dirichlet_elimination(monkeypatch):
+    original = c.terminal_star_arms
+    monkeypatch.setattr(c, 'terminal_star_arms', lambda ports:
+        tuple(arm+F(1, 100) for arm in original(ports)))
+    with pytest.raises(ArithmeticError, match='Dirichlet energies differ'):
+        c.terminal_star_control()
+
+
+@pytest.mark.parametrize('ports', ((0, 0, 2), (0, 1), (0, 1, 12), (False, 1, 2), [0, 1, 2]))
+def test_star_terminals_require_the_actual_three_distinct_port_labels(ports):
+    with pytest.raises(ValueError, match='three distinct'):
+        c.terminal_star_arms(ports)
+
+
+@pytest.mark.parametrize('level', range(3))
+def test_actual_weighted_dual_checks_both_energy_maps_and_distinct_finite_Greens(level):
+    row = c.weighted_dual_control(level)
+    assert row['both_exact_energy_decreases_and_readout_bounds_checked']
+    assert sum(row['actual_terminal_star_classes'].values()) == 20*4**level
+    assert sum(row['exact_weighted_dual_conductances'].values()) == 30*4**level
+    assert len(row['exact_weighted_dual_conductances']) > 1
+    assert 0 < row['scaled_Green_difference_norm_diagnostic'] < F(row['scaled_Green_difference_norm_upper'])
+
+
+def test_missing_routed_terminal_is_rejected_before_scalar_reduction():
+    from dataclasses import replace
+    graph = c.source.source.federation(0)
+    damaged = replace(graph, inter_seams=graph.inter_seams[1:])
+    with pytest.raises(ValueError, match='three distinct'):
+        c.weighted_dual_network(damaged)
+
+
+def test_all_level_Green_comparison_bound_has_the_stated_normalization():
+    # The two readout errors are at most sqrt(6/s) and sqrt(18/(5s)).
+    assert 4*6*F(4096, 3) < 182**2
+    assert 4*F(18, 5)*F(16384, 15) < 182**2
+    for level in (0, 4, 100):
+        assert c.weighted_green_difference_bound(level) == F(182, 2**level)
 
 
 @pytest.mark.parametrize('depth', range(6))

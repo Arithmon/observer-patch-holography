@@ -54,7 +54,12 @@
     "mean_zero_heat_trace_lower": "1/(exp(3*t/2)-1), t>0",
     "mean_zero_heat_trace_upper": "1/(exp(t/49920)-1), t>0",
     "patch_variance_energy_multiplier": "26*4^(l-k)",
-    "separated_cell_support_bilinear_action": "4^l*2^(-d)*||u||*||v||, d>=1"
+    "separated_cell_support_bilinear_action": "4^l*2^(-d)*||u||*||v||, d>=1",
+    "weighted_dual_Green_difference_upper": {
+      "0": "182",
+      "20": "91/524288",
+      "4": "91/8"
+    }
   },
   "contract": {
     "limit": "the same common spatial subsequence as the native Green field",
@@ -496,7 +501,7 @@
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
     "model/physical_space_time/continuum_field.py": "822efc9ecf8cc626fc152b0ada5739769d075c639cf245543a6d6123f6d2a7d4",
-    "model/physical_space_time/local_continuum.py": "811da8a81b0cd3c4dbfe39cddd84f7dfd2d841a398c4ba2fdecf34e2bd153500",
+    "model/physical_space_time/local_continuum.py": "b71c7892777dd6a809b881f292d4316c916af07a057219357d4610fea9223cae",
     "model/physical_space_time/source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
     "model/physical_space_time/uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
@@ -515,10 +520,72 @@
     "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
   },
+  "terminal_star_control": {
+    "all_exact_terminal_Dirichlet_forms_and_harmonic_lifts_checked": true,
+    "resistance_by_native_hop_distance": {
+      "1": [
+        "11/30"
+      ],
+      "2": [
+        "7/15"
+      ],
+      "3": [
+        "1/2"
+      ]
+    },
+    "star_arm_classes": [
+      {
+        "resistances": [
+          "2/15",
+          "7/30",
+          "7/30"
+        ],
+        "triples": 60
+      },
+      {
+        "resistances": [
+          "1/6",
+          "1/5",
+          "3/10"
+        ],
+        "triples": 60
+      },
+      {
+        "resistances": [
+          "11/60",
+          "11/60",
+          "11/60"
+        ],
+        "triples": 20
+      },
+      {
+        "resistances": [
+          "11/60",
+          "11/60",
+          "17/60"
+        ],
+        "triples": 60
+      },
+      {
+        "resistances": [
+          "7/30",
+          "7/30",
+          "7/30"
+        ],
+        "triples": 20
+      }
+    ],
+    "star_arm_lower": "2/15",
+    "star_arm_upper": "3/10",
+    "terminal_triples_checked": 220,
+    "weighted_dual_conductance_lower": "5/8",
+    "weighted_dual_conductance_upper": "15/19"
+  },
   "theorem": {
     "common_Green_subsequence_converges_in_operator_norm": true,
     "continuous_piecewise_affine_functions_are_a_regular_form_core": true,
     "exact_intrinsic_metric_identified": false,
+    "explicit_positive_weighted_dual_graph_has_same_continuum_Green_limits": true,
     "finite_reduced_forms_Mosco_converge_on_full_L2_with_constant_zero_mode": true,
     "finite_rescaled_action_couplings_at_separated_continuum_supports_vanish": true,
     "form_domain_is_H1_of_the_auxiliary_flat_surface": true,
@@ -529,7 +596,67 @@
     "limit_is_conservative_strongly_local_Dirichlet_form": true,
     "same_dictionary_scaled_compact_smooth_second_order_three_dimensional_elliptic_identification_excluded": true,
     "three_dimensional_space_or_Lorentzian_metric_derived": false,
-    "unique_whole_sequence_generator_selected": false
-  }
+    "unique_whole_sequence_generator_selected": false,
+    "weighted_dual_graph_reproduces_finite_native_repair_histories": false
+  },
+  "weighted_dual_controls": [
+    {
+      "actual_terminal_star_classes": {
+        "11/60,11/60,17/60": 8,
+        "7/30,7/30,7/30": 12
+      },
+      "both_exact_energy_decreases_and_readout_bounds_checked": true,
+      "cells": 20,
+      "exact_weighted_dual_conductances": {
+        "12/17": 8,
+        "15/22": 10,
+        "30/41": 4,
+        "60/91": 8
+      },
+      "level": 0,
+      "ports": 240,
+      "scaled_Green_difference_norm_diagnostic": 0.9079632838615097,
+      "scaled_Green_difference_norm_upper": "182"
+    },
+    {
+      "actual_terminal_star_classes": {
+        "1/6,1/5,3/10": 24,
+        "7/30,7/30,7/30": 56
+      },
+      "both_exact_energy_decreases_and_readout_bounds_checked": true,
+      "cells": 80,
+      "exact_weighted_dual_conductances": {
+        "15/22": 76,
+        "30/43": 16,
+        "5/7": 20,
+        "5/8": 8
+      },
+      "level": 1,
+      "ports": 960,
+      "scaled_Green_difference_norm_diagnostic": 0.36967823699165464,
+      "scaled_Green_difference_norm_upper": "91"
+    },
+    {
+      "actual_terminal_star_classes": {
+        "1/6,1/5,3/10": 104,
+        "7/30,7/30,7/30": 216
+      },
+      "both_exact_energy_decreases_and_readout_bounds_checked": true,
+      "cells": 320,
+      "exact_weighted_dual_conductances": {
+        "15/22": 292,
+        "15/23": 28,
+        "3/4": 8,
+        "30/41": 44,
+        "30/43": 28,
+        "5/7": 48,
+        "5/8": 32
+      },
+      "level": 2,
+      "ports": 3840,
+      "scaled_Green_difference_norm_diagnostic": 0.14789342114511683,
+      "scaled_Green_difference_norm_upper": "91/2"
+    }
+  ]
 }
 

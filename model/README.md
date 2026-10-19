@@ -32,8 +32,11 @@ upgrades the common covariance subsequence to operator-norm convergence.
 The limit is compact and injective on mean-zero `L2`; its inverse defines
 one positive continuum spatial generator `A`. Its full-space quadratic form
 is conservative, regular, Markovian and strongly local, with domain `H1`.
-Two-sided eigenvalue bounds give heat-trace spectral dimension two on
-this source readout domain.
+Two-sided eigenvalue bounds give heat-trace spectral dimension two.
+An [exact terminal-star reduction](physical_space_time/OCCUPATION_FIELD.md#a-local-conductance-graph-with-the-same-continuum-green-limit)
+gives a positive weighted cell graph with Green error at most
+`182*2^-level`. It has the same continuum limits; uniqueness of the
+routing-dependent limit is unproved.
 The [continuous observation process](physical_space_time/OCCUPATION_FIELD.md)
 extends this to continuous paths in `H^-2(S²)` along a common spatial
 subsequence. Its time parameter is rescaled observation count. A coupling
@@ -41,13 +44,17 @@ on the same native history makes the normalized attempt and incident-clock
 fields coincide in that limit. Uniform spatial-tail and temporal-increment
 bounds control the construction; observation count tends to infinity before
 spatial refinement.
-The [actual density observations](observer_time_fields/REFINEMENT.md#actual-native-density-observations-at-several-continuum-times)
-have a joint Gaussian limit with covariance `exp(-|tau-u|A)` along the
-same spatial subsequence, with `tau=attempts/(1260*16^level)`.
-Refinement and count grow together; this proves finite-dimensional laws,
-with no path-convergence claim. Uniform fixed-number preparation, IID
-seams and full occupation readback remain declared. The spatial filter
-`A^-1/2` gives covariance `A^-1 exp(-|tau-u|A)`.
+The [actual density paths](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+converge in `C([0,T],H^-3(S2))` after linear interpolation, with covariance
+`exp(-|tau-u|A)` and `tau=attempts/(1260*16^level)`. Refinement and count
+grow together along the same spatial subsequence. The declared `A^-1/2`
+filter gives `H^-2` paths with covariance `A^-1 exp(-|tau-u|A)`.
+Uniform fixed-number preparation, IID seams and full readback are explicit.
+[Incident counts and their inverse clocks](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale)
+converge uniformly to this parameter after the derived normalization, so
+they sample the same limiting field paths. Their finite-vector Gaussian
+jitter prediction retains shared-seam correlations. This is a native event
+clock connection; physical duration and modular-flow identification are unsupplied.
 The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
 also uses `A` for coherent cosine amplitudes and a continuous Gaussian
 wave synthesized from two long observation blocks, with covariance
