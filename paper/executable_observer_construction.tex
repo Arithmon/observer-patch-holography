@@ -100,7 +100,11 @@ fixed or adaptive incident clocks, active coherent waves with a finite
 comparison-space propagation bound, and continuous classical Gaussian wave
 readouts. Independent native blocks also encode a local Dirichlet radial
 product field of spectral dimension three under declared radial labels and
-filters. The density history determines a reflection-positive free
+filters. Source-compiled angular and radial controls join its thermal quantum
+readouts to an active incident clock, with explicit splitting and preparation
+bounds. Its chosen wave action determines a measurable Lorentz-signature
+metric density; smooth geometry and physical transport are not identified.
+The density history determines a reflection-positive free
 field with diffusive dispersion and an explicit Euclidean quadratic form.
 A declared polarized source-code preparation also yields an ordered CCR
 fluctuation limit, with finite native-pulse phase and intervention readouts;
@@ -1262,8 +1266,32 @@ explicit controller, storage and heralding services; the growing compiler's
 precision and service budget remain unproved. The state is central on the
 $44$-dimensional represented group algebra, so its modular flow there is
 trivial. Nontrivial cross-sector modular gaps require the full protected
-matrix algebra. Its generator $tL$ is not the field's $\sqrt A$ wave
-clock \cite{nativePredictions}.
+matrix algebra \cite{nativePredictions}.
+
+Positive subordination connects this heat preparation to square-root
+weights on the same register. Write $F=I-hL/2$, $h=p/30$.
+A Poisson number of Sibuya jumps gives positive weights satisfying
+\[
+ \sum_n w_nF^{2n}=e^{-R\sqrt{I-F^2}}
+ =e^{-b\sqrt{L-hL^2/4}},\qquad b=R\sqrt h .
+\]
+Sampling the requested number of filters before heralding supplies the
+partition weights; averaging normalized component states would
+give a different density. Finite jump/count caps, a rational lower
+exponential approximation and downward dyadic rounding retain missing mass
+as sampler rejection. The source instance $p=R=1/2$ uses 64 native coin
+records and at most four raw filters, retaining each first failure and all
+sixteen successful interference outcomes. Its Gibbs trace-distance bound is
+below $0.217$; the spectral diagnostic is $0.01344$. One prepared density
+fixes the fluctuation noise/response ratio
+$(p_0+p_j)/(p_0-p_j)=\coth[\log(p_0/p_j)/2]$ for each declared
+constant-to-mode observable. Those spectral detectors are not compiled.
+The capped state is not exactly thermal for the finite native walk
+$\sqrt{30}\arccos(I-L/60)$; separate filter and dispersion errors control
+the limits. The uncapped sampler has infinite expected work, even with
+early herald failure, because its constant sector survives every filter.
+This finite-register construction prepares neither the product Fock state
+nor a physical clock \cite{nativePredictions}.
 
 The emitted coherent-walk word uses ten address qubits, five blank scratch qubits and
 114,910 existing source pulses per walk, with 229,820 load/export events.
@@ -2548,9 +2576,30 @@ $\Lambda^{3/2}/(12\sqrt2)\le N_{\mathcal B}(\Lambda)
 Its local tensor form gives comparison wave speed one in
 $d_{\rm product}^2=|r-s|^2+2d_{\rm screen}^2$.
 This is a three-dimensional product field encoded from native records;
-radial labels, filters, boundaries and independent-block access are
-specified operations, not derived physical radial transport or an observer
-clock for $\sqrt{\mathcal B}$ \cite{nativeContinuum}.
+radial labels, filters, boundaries and independent-block access remain
+specified operations. Its classical covariance $\mathcal B^{-1}$ differs
+from the thermal field covariance
+$q_b(\mathcal B)=\coth(b\sqrt{\mathcal B}/2)/(2\sqrt{\mathcal B})$.
+On a radial grid of spacing $h=L/(q+1)$, the sampled bridge has sine-mode
+covariance
+\[
+ c_{k,h}(\lambda)=
+ \frac{h\sinh(h\sqrt\lambda)}
+ {2\sqrt\lambda[\cosh(h\sqrt\lambda)-\cos(\pi k/(q+1))]},
+ \quad c_{k,h}(0)=\rho_{k,h}^{-1},\quad
+ \rho_{k,h}=\frac4{h^2}\sin^2\frac{\pi k}{2(q+1)}.
+\]
+The filter $[q_b(\rho_{k,h}+\lambda)/c_{k,h}(\lambda)]^{1/2}$
+therefore realizes the thermal symmetric covariance from the same records;
+the complete 96-event decoder is executed. It does not supply commutators.
+The finite full-port generator $D_l=4^lL_l$ and cell Schur generator $A_l$
+are distinct, but their compressed resolvents, shifted by each radial
+$\rho_{k,h}$, differ by at most $1/(8\,4^l)$. Together with
+$0\le(\pi k/L)^2-\rho_{k,h}\le h^2(\pi k/L)^4/12$, this gives the
+same product target along the spatial subsequence. The symmetric Gaussian
+wave has a fixed geometric $C([-T,T],H^{-s})$ limit for $s>2$.
+The source-coded quantum clock construction below supplies its separate
+ordered-field connection \cite{nativeContinuum}.
 
 Full native density correlations converge to
 $e^{-\tau A}$, while the admitted coherent continuation converges strongly
@@ -2831,10 +2880,95 @@ Under $t=\kappa\tau$, $\kappa=2d/\sqrt{630}$, its modular parameter is
 $s=-\kappa\tau/b$; refinement requires
 $r_l=\tanh(b\sqrt{Q_l}\theta_l/2)$.
 The common $b$ is a measurable preparation condition, not a repair-selected
-temperature. This result concerns the full encoded $\sqrt A$ field
-algebra; neither a spatial patch's modular flow nor a $\sqrt{\mathcal B}$
-product-field clock or laboratory calibration is thereby proved
-\cite{nativeContinuum}.
+temperature. This result concerns the full encoded field algebra;
+it does not identify spatial patch modular flow or laboratory calibration.
+
+\paragraph{One product field, state and active clock.}
+For an actual full-port angular mode, set
+$a_l=\sqrt{Q_l}\arccos(1-\lambda/(2Q_l))$ and
+$c=\sqrt{\rho_{k,h}}$. Each incident trigger applies the existing source
+$Z$ pulse of angle $a_l/(2\sqrt{Q_l})$, followed by the radial $X$ pulse
+of angle $c/(2\sqrt{Q_l})$. Anticommutation gives
+\[
+ (a_lZ+cX)^2=(a_l^2+c^2)I,\qquad
+ \omega_{l,k}=\sqrt{a_l^2+c^2},\qquad
+ H_{l,k}=\frac{\omega_{l,k}I-a_lZ-cX}{2}.
+\]
+No independently fitted product-frequency pulse is supplied.
+The finite split word differs from this Hamiltonian evolution:
+the commutator bound gives single-code unitary error at most
+$na_lc/(4Q_l)$ after $n$ triggers, in addition to pulse-synthesis error.
+Reversing the axes' order gives a nonzero finite control; placing both
+on $Z$ changes the gap to $a_l+c$ and fails the product law.
+
+The faithful reference is polarized along
+$(cX+a_lZ)/\omega_{l,k}$, with
+$r=\tanh(b\omega_{l,k}/2)$. Source rotations of the retained purification
+and transverse readouts give the thermal CCR limit for this joint
+generator. Two-time ordered measurements retain all 32 system, reference
+and pointer outputs; signed kicks retain all sixteen system/reference
+outputs. The finite modular comparison uses the actual prepared reduced
+state at $s=-t/b$, charging its polarization-gap and preparation errors
+as well as splitting. Finite split stationarity is not asserted.
+An exact nonconstant 240-port fixture has eigenvalue six but zero cell
+compression; it tests the compiler, not a surviving continuum mode.
+The constant angular mode is separately executed. Bounded full-port bands
+join the product readout through the compressed-resolvent theorem; no
+growing spectral encoder is executed.
+
+The same zero-inclusive incident clock gives
+$t=\kappa\tau$, $\kappa=2d/\sqrt{630}$.
+The joint budget includes count fluctuations, angular dispersion,
+two-axis splitting and synthesis; it charges two pulses per copy and
+trigger. Vanishing count tolerances require
+$4^l\eta_l^2\to\infty$, while complete-step errors require
+$\sqrt{Q_l}\epsilon_l\to0$. The protected register and pauses of native repair during coherent
+service remain part of this protocol. Copy and spectral limits followed
+by radial refinement and the common spatial subsequence give
+\[
+ C_b(t)=\frac{\coth(b\sqrt{\mathcal B}/2)\cos(t\sqrt{\mathcal B})
+                     -i\sin(t\sqrt{\mathcal B})}{2\sqrt{\mathcal B}},
+ \qquad
+ D(t)=\frac{\sin(t\sqrt{\mathcal B})}{\sqrt{\mathcal B}},
+ \qquad \sigma_s=\alpha_{-bs}.
+\]
+The angular constant is retained, and Dirichlet radial boundaries remove
+the zero-frequency obstruction. Thus the full sine response has the
+product comparison cone. The count bound
+$N_{\mathcal B}(x)\le C_Lx^{3/2}$,
+$C_L=L(49920+L^2/9)/3$, gives
+$\Tr e^{-b\sqrt{\mathcal B}}\le6C_L/b^3$ and
+$\log Z_b\le8C_L/b^3$. Consequently the full encoded Fock algebra has the
+faithful normal state $Z_b^{-1}e^{-b\,d\Gamma(\sqrt{\mathcal B})}$, with
+$s=-\kappa\tau/b$. Radial design, common $b$, independent preparation,
+mode access and sufficient source precision are declared services, not
+selected physical transport or temperature \cite{nativeContinuum}.
+
+\paragraph{The product wave's Lorentzian density.}
+The regular strongly local angular form with its $H^1$ domain and
+gradient-energy bounds admits a measurable uniformly elliptic tensor
+in each chart \cite[Theorem 7.2 and Corollary 7.3]{pwcipriani2006dirichlet}.
+For example, strong locality applied to
+$v\sin(n\,\xi\cdot x)/n$ and $v\cos(n\,\xi\cdot x)/n$
+shows that the energy measure of $\xi\cdot x$ is absolutely continuous;
+the same bounds give ellipticity, and polarization recovers the tensor.
+The radial product adds coefficient $a^{rr}=1$. With coordinate measure
+$\mu(x)\,d^3x$, the chosen wave action has coefficient density
+$C=\mu\diag(-1,a)$, and the four-dimensional identity
+\[
+ g=\sqrt{-\det C}\,C^{-1}
+   =\mu\sqrt{\det a}\,\diag(-1,a^{-1}),
+ \qquad \sqrt{-\det g}\,g^{-1}=C
+\]
+gives signature $(-,+,+,+)$ almost everywhere. Its weak wave equation is
+$\partial_\alpha(C^{\alpha\beta}\partial_\beta\phi)=0$.
+This uses the density-to-metric identity
+\cite[Equations (23)--(26)]{pwvisser1998acoustic}, not fluid dynamics.
+Exact controls check chart and clock transformations and show that changing
+the measure preserves the cone but changes the metric normalization.
+This is a measurable Lorentzian description of the declared product wave;
+smoothness, curvature, Einstein dynamics, interacting fields and observed
+radial transport do not follow \cite{nativeClockLimit}.
 
 \paragraph{The reference-state boundary.}
 Increasing native-return caps match modular phase magnitudes to the cosine
@@ -3477,7 +3611,8 @@ $H^1$ form of spectral dimension two governs spherical
 Gaussian density paths, fixed or predictable incident-clock parametrizations,
 the derived Gaussian precision $-\partial_\tau^2+A^2$, and active
 incident-clock comparison waves with finite propagation
-\cite{nativeContinuum}. &
+\cite{nativeContinuum}. A declared radial product has a conditional thermal
+CCR field and shared active clock. &
 The physical scalar action, quantization and vacuum; inertia; a calibrated clock; a
 spatially refining family for the interacting process.\\
 \addlinespace
@@ -3489,7 +3624,9 @@ links rescaled wave phases to a modular generator; its full-state limit is
 tracial at fixed modular parameter, and fixed caps freeze the low-band phase
 \cite{nativeContinuum}. An active clock steps a native-transfer modular word
 on each incident event, and four movement-bit covariances predict its
-coherent quadratures \cite{nativeEventClock,nativePredictions}. &
+coherent quadratures \cite{nativeEventClock,nativePredictions}.
+Faithful encoded product-field states share the active clock when their
+state--frequency relation holds; finite splitting errors are bounded. &
 Selection of a physical reference and its complete modular dynamics;
 Bisognano-Wichmann identification; common
 null translations; physical clock calibration; the relation to causal
@@ -3502,8 +3639,8 @@ a common local spherical continuum, simultaneous native density and
 incident-clock limits, and separate classical-wave limits under their count-first contract
 \cite{nativeContinuum}; the boundary-action test excludes the stated bounded
 energy identification with a smooth compact three-dimensional Dirichlet bulk
-with smooth boundary. These
-supply no responsive metric or physical stress. &
+with smooth boundary. The declared product wave determines a measurable
+Lorentzian metric density, with no responsive metric or physical stress. &
 Physical region, metric and area attachment; geometric identification of
 finite counting-entropy stationarity; small-ball geometry; conserved stress; universal coupling and
 normalization on one inhabited physical tower.\\
@@ -3571,12 +3708,12 @@ oscillators, and the spatial bounds of Section~\ref{sec:scalar} transfer to
 another implementation only through an explicit map. The native continuum
 operator of Section~\ref{sec:repair-geometry} supplies such a limit for the
 passive density fields and admitted waves of the repair process itself;
-extending it to the interacting construction, with a quantum reference
-state and Lorentzian observation maps, is open, and no continuum limit of
-the interacting family is established.
+its declared radial extension has a thermal quantum field, active clock
+and measurable Lorentzian action density. Extending these joint
+constructions to the interacting family remains open.
 
 \paragraph{Matter, geometry and clocks on one process.} Interacting matter,
-a radial observation algebra for the two-dimensional screen, responsive
+physical radial transport, responsive
 geometry and a physical clock calibration have to attach to the same state,
 event law and retained records. The optical comparison of
 Section~\ref{sec:public-records} rejects one direct attachment of native
@@ -3725,13 +3862,13 @@ Observer Synchronization in Observer-Patch Holography}. Public manuscript.
 
 \bibitem{mREADME}
 FloatingPragma (2026). \emph{The runnable OPH model}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/README.md}
 
 \bibitem{nativeContinuum}
 FloatingPragma (2026). \emph{A common native continuum operator, wave
 observations, modular phases and repair response}. Executable model,
 analytic bounds and retained source receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/README.md}
 
 \bibitem{nativeEntropy}
 FloatingPragma (2026). \emph{Joint counting stationarity and its geometric
@@ -3742,12 +3879,12 @@ boundary}. Exact entropy identity and finite source controls.
 FloatingPragma (2026). \emph{Native incident clocks, predictable access and
 active waves}. Analytic count and inverse-clock bounds, correlated
 clock fluctuations and exact native controls.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/relative_observer_geometry/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/relative_observer_geometry/README.md}
 
 \bibitem{nativeRecovery}
 FloatingPragma (2026). \emph{Observer-relative time, fields and shared
 records}. Recovery assessment of the native process results.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/OBSERVER_RELATIVE_RECOVERY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/OBSERVER_RELATIVE_RECOVERY.md}
 
 \bibitem{nativeCorrespondence}
 FloatingPragma (2026). \emph{One process, overlapping observer records and
@@ -3777,7 +3914,7 @@ record-transfer description}. Executable model and exact receipt.
 \bibitem{nativePredictions}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Modular clock recovery and native repair response.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/predictions/README.md}
 
 \bibitem{nativeIdentification}
 FloatingPragma (2026). \emph{Identifying the complete current-resolving
@@ -3792,7 +3929,7 @@ observations}. Executable model, locality bounds and screen comparisons.
 \bibitem{nativeTimeFields}
 FloatingPragma (2026). \emph{Joint time and field laws on matched source
 screens}. Executable model and receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/observer_time_fields/REFINEMENT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/observer_time_fields/REFINEMENT.md}
 
 \bibitem{nativeScreenObserver}
 FloatingPragma (2026). \emph{Coherent observer outputs on matched source
@@ -3812,7 +3949,7 @@ measurements}. Replay of the deposited records.
 \bibitem{nativePublicData}
 FloatingPragma (2026). \emph{OPH predictions and public-data comparisons}.
 Retrospective audit, including the direct optical-clock attachments.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{hensen2015}
 Hensen, B. et al. (2015). Loophole-free Bell inequality violation using
@@ -3828,7 +3965,7 @@ charged ion. \emph{Nature} 611, 43--47.
 FloatingPragma (2026). \emph{OPH model construction from local repair}.
 Construction guide with completion target, acceptance criteria and audit
 controls.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/CONSTRUCTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/CONSTRUCTION.md}
 
 \bibitem{mRECORDLAWS}
 FloatingPragma (2026). \emph{Admissible record laws for native repair}. Model
@@ -3848,12 +3985,12 @@ register.
 \bibitem{mPREMISES}
 FloatingPragma (2026). \emph{OPH reverse-engineering table: model and theorem
 premises}. Generated premise map and concrete theorem bindings.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/PREMISES.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/PREMISES.md}
 
 \bibitem{mMAP}
 FloatingPragma (2026). \emph{Machine-readable premise crosswalk}. Source of
 the generated premise map.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/tracking/premise_register.json}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/tracking/premise_register.json}
 
 \bibitem{mINTERP}
 FloatingPragma (2026). \emph{OPH interpretation and working terms}.
@@ -3886,12 +4023,12 @@ document.
 \bibitem{oCOHERENT}
 FloatingPragma (2026). \emph{Coherent continuation: native attachment and
 nonselection}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/observer/COHERENT_CONTINUATION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/observer/COHERENT_CONTINUATION.md}
 
 \bibitem{oSOURCESELECT}
 FloatingPragma (2026). \emph{Selecting one source, interface and repair law}.
 Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/SOURCE_SELECTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/SOURCE_SELECTION.md}
 
 \bibitem{pREADME}
 FloatingPragma (2026). \emph{P-dependent electromagnetic observation and native
@@ -3954,7 +4091,7 @@ discriminator}. Model document.
 \bibitem{prREADME}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/bfaf78beeee868383d2f322370a4a49c5583f86d/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/predictions/README.md}
 
 \bibitem{prDERIV}
 FloatingPragma (2026). \emph{Exact record-instrument discrimination}. Model
