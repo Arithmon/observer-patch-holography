@@ -2580,8 +2580,8 @@ radial labels, filters, boundaries and independent-block access remain
 specified operations. Its classical covariance $\mathcal B^{-1}$ differs
 from the thermal field covariance
 $q_b(\mathcal B)=\coth(b\sqrt{\mathcal B}/2)/(2\sqrt{\mathcal B})$.
-On a radial grid of spacing $h=L/(q+1)$, the sampled bridge has sine-mode
-covariance
+On a radial grid of spacing $h=L/(q+1)$, the $\sqrt h$-normalized
+sampled bridge has sine-mode covariance
 \[
  c_{k,h}(\lambda)=
  \frac{h\sinh(h\sqrt\lambda)}
@@ -2593,11 +2593,12 @@ The filter $[q_b(\rho_{k,h}+\lambda)/c_{k,h}(\lambda)]^{1/2}$
 therefore realizes the thermal symmetric covariance from the same records;
 the complete 96-event decoder is executed. It does not supply commutators.
 The finite full-port generator $D_l=4^lL_l$ and cell Schur generator $A_l$
-are distinct, but their compressed resolvents, shifted by each radial
-$\rho_{k,h}$, differ by at most $1/(8\,4^l)$. Together with
+are distinct, but their compressed resolvents at each positive shift
+$z=\rho_{k,h}>0$ differ by at most $1/(8\,4^l)$. Together with
 $0\le(\pi k/L)^2-\rho_{k,h}\le h^2(\pi k/L)^4/12$, this gives the
 same product target along the spatial subsequence. The symmetric Gaussian
-wave has a fixed geometric $C([-T,T],H^{-s})$ limit for $s>2$.
+wave has a $C([-T,T],H^{-s})$ limit for $s>2$, where the fixed geometric
+Sobolev norm uses radial sine modes and spherical harmonics.
 The source-coded quantum clock construction below supplies its separate
 ordered-field connection \cite{nativeContinuum}.
 
@@ -3862,13 +3863,13 @@ Observer Synchronization in Observer-Patch Holography}. Public manuscript.
 
 \bibitem{mREADME}
 FloatingPragma (2026). \emph{The runnable OPH model}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/README.md}
 
 \bibitem{nativeContinuum}
 FloatingPragma (2026). \emph{A common native continuum operator, wave
 observations, modular phases and repair response}. Executable model,
 analytic bounds and retained source receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/README.md}
 
 \bibitem{nativeEntropy}
 FloatingPragma (2026). \emph{Joint counting stationarity and its geometric
@@ -3879,12 +3880,12 @@ boundary}. Exact entropy identity and finite source controls.
 FloatingPragma (2026). \emph{Native incident clocks, predictable access and
 active waves}. Analytic count and inverse-clock bounds, correlated
 clock fluctuations and exact native controls.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/relative_observer_geometry/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/relative_observer_geometry/README.md}
 
 \bibitem{nativeRecovery}
 FloatingPragma (2026). \emph{Observer-relative time, fields and shared
 records}. Recovery assessment of the native process results.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/OBSERVER_RELATIVE_RECOVERY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/OBSERVER_RELATIVE_RECOVERY.md}
 
 \bibitem{nativeCorrespondence}
 FloatingPragma (2026). \emph{One process, overlapping observer records and
@@ -3914,7 +3915,7 @@ record-transfer description}. Executable model and exact receipt.
 \bibitem{nativePredictions}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Modular clock recovery and native repair response.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/predictions/README.md}
 
 \bibitem{nativeIdentification}
 FloatingPragma (2026). \emph{Identifying the complete current-resolving
@@ -3929,7 +3930,7 @@ observations}. Executable model, locality bounds and screen comparisons.
 \bibitem{nativeTimeFields}
 FloatingPragma (2026). \emph{Joint time and field laws on matched source
 screens}. Executable model and receipts.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/observer_time_fields/REFINEMENT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/observer_time_fields/REFINEMENT.md}
 
 \bibitem{nativeScreenObserver}
 FloatingPragma (2026). \emph{Coherent observer outputs on matched source
@@ -3949,7 +3950,7 @@ measurements}. Replay of the deposited records.
 \bibitem{nativePublicData}
 FloatingPragma (2026). \emph{OPH predictions and public-data comparisons}.
 Retrospective audit, including the direct optical-clock attachments.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{hensen2015}
 Hensen, B. et al. (2015). Loophole-free Bell inequality violation using
@@ -3965,7 +3966,7 @@ charged ion. \emph{Nature} 611, 43--47.
 FloatingPragma (2026). \emph{OPH model construction from local repair}.
 Construction guide with completion target, acceptance criteria and audit
 controls.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/CONSTRUCTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/CONSTRUCTION.md}
 
 \bibitem{mRECORDLAWS}
 FloatingPragma (2026). \emph{Admissible record laws for native repair}. Model
@@ -3985,12 +3986,12 @@ register.
 \bibitem{mPREMISES}
 FloatingPragma (2026). \emph{OPH reverse-engineering table: model and theorem
 premises}. Generated premise map and concrete theorem bindings.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/PREMISES.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/PREMISES.md}
 
 \bibitem{mMAP}
 FloatingPragma (2026). \emph{Machine-readable premise crosswalk}. Source of
 the generated premise map.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/tracking/premise_register.json}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/tracking/premise_register.json}
 
 \bibitem{mINTERP}
 FloatingPragma (2026). \emph{OPH interpretation and working terms}.
@@ -4023,12 +4024,12 @@ document.
 \bibitem{oCOHERENT}
 FloatingPragma (2026). \emph{Coherent continuation: native attachment and
 nonselection}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/observer/COHERENT_CONTINUATION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/observer/COHERENT_CONTINUATION.md}
 
 \bibitem{oSOURCESELECT}
 FloatingPragma (2026). \emph{Selecting one source, interface and repair law}.
 Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/SOURCE_SELECTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/SOURCE_SELECTION.md}
 
 \bibitem{pREADME}
 FloatingPragma (2026). \emph{P-dependent electromagnetic observation and native
@@ -4091,7 +4092,7 @@ discriminator}. Model document.
 \bibitem{prREADME}
 FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
 comparison}. Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/9ae1c1f1cae7cb449b33565ec01b56fc78049675/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/16a5ff662f05cb5c6092514077b8b6823946e5e0/model/predictions/README.md}
 
 \bibitem{prDERIV}
 FloatingPragma (2026). \emph{Exact record-instrument discrimination}. Model
