@@ -195,12 +195,45 @@ def test_input_contract_rejects_bools_float_aliases_and_malformed_boxes(exact_fi
 
 def test_replay_complete_coherent_predictions_and_scope():
     result = m.run()
+    # Compare the producer's unmodified return value, not two JSON-normalized
+    # copies: NumPy float64 can serialize while failing the strict type check.
+    m.source.compare_receipt(result, json.loads(json.dumps(result, allow_nan=False)))
     assert len(result['coherent_readout_forecasts']) == 4
     assert all(row['all_padding_outcomes_retained'] for row in result['coherent_readout_forecasts'])
     assert result['declared_probability_tubes']['synthetic_source_centered_example']
     assert result['unused_lag_validation']['shift_by_1_over_1000_rejected']
     assert not result['scope']['matched_physical_record_dataset_available']
     assert not result['scope']['native_C_E_instrument_identified_from_classical_bits']
+
+
+def test_receipt_boundary_normalizes_numpy_scalars_without_losing_exact_values():
+    import numpy as np
+    cases = (
+        (np.float16(.125), float, .125),
+        (np.float32(.125), float, .125),
+        (np.float64(.125), float, .125),
+        (np.int8(-7), int, -7),
+        (np.int64(-7), int, -7),
+        (np.uint64(2**64-1), int, 2**64-1),
+        (np.bool_(True), bool, True),
+        (np.str_('diagnostic'), str, 'diagnostic'),
+    )
+    for scalar, kind, wanted in cases:
+        result = m._json({np.str_('nested'): (scalar, F(1, 3))})
+        assert type(next(iter(result))) is str
+        assert type(result['nested'][0]) is kind
+        assert result['nested'] == [wanted, '1/3']
+        m.source.compare_receipt(result, json.loads(json.dumps(result, allow_nan=False)))
+
+
+def test_receipt_boundary_rejects_non_json_values_and_nonfinite_diagnostics():
+    import numpy as np
+    for value in (np.array([1.]), np.complex128(1+2j), {1: 'non-string key'}):
+        with pytest.raises(TypeError):
+            m._json(value)
+    for value in (float('nan'), np.float32('inf'), np.float64('-inf')):
+        with pytest.raises(ValueError):
+            m._json({'diagnostic': value})
 
 
 @pytest.mark.parametrize('parameter,heralds', [
@@ -356,6 +389,9 @@ def test_fixed_native_coin_word_sampler_retains_rejection_and_every_bin():
 
 def test_complete_source_subordination_uses_partition_weights_and_finite_costs():
     row = m.subordinated_wave_gibbs()
+    for mode in row['single_mode_joint_readout_predictions']:
+        assert all(type(value) is float for key, value in mode.items()
+                   if key.endswith('_diagnostic'))
     records = row['complete_request_failure_and_readout_law']
     assert len(records) == 5
     assert sum((sum(r['first_failure_probabilities'])+sum(r['successful_address_probabilities'])

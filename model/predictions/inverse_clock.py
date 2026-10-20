@@ -686,7 +686,7 @@ def subordinated_wave_gibbs():
         omega = math.sqrt(eigenvalues[j])
         phase = math.acos(1-eigenvalues[j]/60)
         gap = math.log(values[0]/values[j])
-        polarization = (values[0]-values[j])/(values[0]+values[j])
+        polarization = float((values[0]-values[j])/(values[0]+values[j]))
         mode_rows.append({'band': j, 'degeneracy': int(multiplicity[j]),
             'constant_to_single_mode_modular_gap_diagnostic': gap,
             'noise_over_half_commutator_amplitude_diagnostic': 1/polarization,
@@ -729,13 +729,36 @@ def subordinated_wave_gibbs():
 
 
 def _json(value):
+    """Return built-in JSON values, preserving exact rational strings.
+
+    Numeric arrays can yield NumPy scalars even when json.dumps accepts
+    them. Strict replay compares types before numeric tolerances, so the
+    producer must normalize those scalars before returning its receipt.
+    """
+    import math
+    import numpy as np
     if isinstance(value, F):
         return str(value)
     if isinstance(value, dict):
-        return {key: _json(v) for key, v in value.items()}
+        if any(not isinstance(key, str) for key in value):
+            raise TypeError('receipt dictionaries require string keys')
+        return {str(key): _json(v) for key, v in value.items()}
     if isinstance(value, (list, tuple)):
         return [_json(v) for v in value]
-    return value
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return str(value)
+    if isinstance(value, (bool, np.bool_)):
+        return bool(value)
+    if isinstance(value, (int, np.integer)):
+        return int(value)
+    if isinstance(value, (float, np.floating)):
+        result = float(value)
+        if not math.isfinite(result):
+            raise ValueError('receipt diagnostics must be finite')
+        return result
+    raise TypeError(f'unsupported receipt value type: {type(value).__name__}')
 
 
 def run():
