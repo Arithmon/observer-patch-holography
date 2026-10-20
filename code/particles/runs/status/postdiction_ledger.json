@@ -54,7 +54,7 @@
     },
     "optical_direct": {
       "artifact_ref": "model/predictions/optical_clock_results.json",
-      "artifact_sha256": "958fbf95f98c4349415c2039e83a15be18c380c6c41ed327a500c56b5330caf6",
+      "artifact_sha256": "2af7be6363d4681cb89df6e0e07da4c5681097a92dceffbd8a0850c1a88fb588",
       "assessment": {
         "OPH_or_every_native_clock_excluded": false,
         "native_atomic_transition_or_interacting_QFT_derived": false,
@@ -83,7 +83,7 @@
     },
     "optical_regional": {
       "artifact_ref": "model/predictions/regional_optical_results.json",
-      "artifact_sha256": "9ac34f421781491443f71634d3bda48788aabe1f87766219a2b02770b560fd8e",
+      "artifact_sha256": "4ade61bd90ea4fc86238af6f1ebbc44821e717ac30f6f200ba73f43c65c4b47e",
       "assessment": {
         "atomic_clocks_or_OPH_excluded": false,
         "coherence_or_independent_atom_resource_lower_bound_derived": false,
