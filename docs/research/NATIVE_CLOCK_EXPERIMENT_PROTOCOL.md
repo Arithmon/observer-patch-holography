@@ -83,6 +83,13 @@ a modular-automorphism obstruction. Mapping two measured optical transitions
 directly to its three-mode energy gaps fails the public absolute-ratio test
 under the [specified common-scale attachment](../../model/predictions/README.md#minimal-modular-transition-optical-attachment).
 
+The separate [faithful encoded-mode clock](../../model/observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
+has a joint state/response test: matching polarization axes and
+`log((1+r)/(1-r))=b*Omega` with common `b` relate noise, response and modular
+rate. This tests a declared preparation on the full encoded algebra.
+A spatial-patch modular flow and an atomic apparatus correspondence require
+additional observation maps; assigning seconds alone does not supply them.
+
 Thus records can already carry an observer-relative clock and a finite
 spatial interpretation. An event labelled by a local count and a spatial
 coordinate is an internal chart. The individual clocks' mean rate equality
