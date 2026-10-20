@@ -42,6 +42,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/quantum_observer_correspondence",
            "model/interacting_band_extension", "model/repair_identification", "model/compiled_clock_history")
 REPLAYS = (
+    ("model.predictions.prepared_clock", None, "model/predictions/prepared_clock_results.json"),
     ("model.repair_identification", None, "model/repair_identification/results.json"),
     ("model.observer_correspondence.quantum_experiment", None, "model/observer_correspondence/quantum_results.json"),
     ("model.observer_correspondence", None, "model/observer_correspondence/results.json"),

@@ -199,6 +199,16 @@ from supplied `I12/12`, retaining failures and bounding free-entropy error.
 Its [capped subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
 approximates square-root Gibbs weights with complete failures and explicit
 state/modular-gap bounds. Exact uncapped sampling has infinite mean cost.
+The [same-register continuation](predictions/README.md#prepared-reference-clock) applies a
+[source-compiled clock and pair detector](predictions/prepared_clock_source.py)
+to that actual finite preparation. For its ideal successful polynomial `M`,
+`H=-log(M/m0)` fixes the clock; native incidence and first-current feedback
+drive the complete two-attempt experiment. Sampler and herald failures,
+padding outcomes and quantum references remain retained. The modular identity
+`sigma_s=alpha_(-s)` concerns the ideal successful twelve-dimensional work marginal
+after forgetting the request and tracing the reference. The finite clock is
+not `sqrt(L)`; raw source checks are numerical guards, not interval or
+physical apparatus certificates.
 This does not prepare the product Fock state. Geometric entropy stationarity,
 physical gauge collars and full-group sewing remain separate obligations.
 The full native-return reference approaches normalized trace
