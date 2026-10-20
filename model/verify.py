@@ -222,8 +222,52 @@ def selected_replay_groups(shard_index=None, shard_count=None, *, replays=None):
                  if index % (shard_count-1) == shard_index-1)
 
 
+def verify_receipt_source_bindings(digests=None):
+    """Check live replay source maps without recalculating their science.
+
+    Only the three existing source-map conventions and repository-relative
+    files that exist are checked. External custody, unresolved aliases and
+    frozen captures outside REPLAYS retain their owning verifiers; this is
+    not a substitute for receipt schema or full replay validation.
+    """
+    digests = {} if digests is None else digests
+    root = ROOT.resolve()
+    fields = {"sources", "source_sha256", "source_bindings"}
+
+    def walk(value, receipt, location="root"):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                here = f"{location}.{key}"
+                if key in fields and isinstance(child, dict):
+                    for relative, expected in child.items():
+                        if not isinstance(relative, str) or "://" in relative:
+                            continue
+                        path = Path(relative)
+                        if path.is_absolute():
+                            continue
+                        try:
+                            target = (root/path).resolve()
+                            if not target.is_relative_to(root) or not target.is_file():
+                                continue
+                        except (OSError, ValueError):
+                            continue
+                        if target not in digests:
+                            digests[target] = hashlib.sha256(target.read_bytes()).hexdigest()
+                        if digests[target] != expected:
+                            raise ValueError(
+                                f"Receipt source digest mismatch: {receipt} at {here}[{relative}]")
+                walk(child, receipt, here)
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                walk(child, receipt, f"{location}[{index}]")
+
+    for _, _, receipt in REPLAYS:
+        walk(json.loads((ROOT/receipt).read_text(encoding="utf-8")), receipt)
+
+
 def verify_artifacts():
     covered = set()
+    digests = {}
     for name in PACKETS:
         folder = ROOT / name
         manifest = json.loads((folder / "manifest.json").read_text())
@@ -238,19 +282,21 @@ def verify_artifacts():
             if actual != expected:
                 raise ValueError(f"Artifact digest mismatch: {name}/{relative}")
             covered.add(target)
+            digests[target] = actual
     for name in PACKETS:
         for target in (ROOT / name).rglob("*"):
             if (target.is_file() and target.suffix in {".py", ".md", ".json"}
                     and target.name != "manifest.json"
                     and target.resolve() not in covered):
                 raise ValueError(f"Unbound artifact: {target.relative_to(ROOT)}")
+    verify_receipt_source_bindings(digests)
     return len(covered)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--hashes-only", action="store_true",
-                        help="check artifact integrity without recalculation")
+                        help="check artifacts and live receipt source bindings without recalculation")
     parser.add_argument("--shard-index", type=int,
                         help="zero-based replay shard; requires --shard-count")
     parser.add_argument("--shard-count", type=int,
