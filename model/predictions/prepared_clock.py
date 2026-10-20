@@ -227,10 +227,18 @@ def _pure_distance(a, b):
     """
     if np.array_equal(a, b):
         return 0.
-    na, nb = np.linalg.norm(a), np.linalg.norm(b)
-    overlap = np.vdot(b, a)
-    phase = overlap/abs(overlap) if overlap else 1.
-    return float((na+nb)*np.linalg.norm(a-phase*b)/2)
+    # Finite input entries do not imply finite dot products or norms. A NaN
+    # must never bypass the caller's error > allowance rejection branch.
+    with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
+        na, nb = np.linalg.norm(a), np.linalg.norm(b)
+        overlap = np.vdot(b, a)
+        if not (np.isfinite(na) and np.isfinite(nb) and np.isfinite(overlap)):
+            raise ArithmeticError("quantum-output norm calculation is not finite")
+        phase = overlap/abs(overlap) if overlap else 1.
+        result = float((na+nb)*np.linalg.norm(a-phase*b)/2)
+    if not math.isfinite(result):
+        raise ArithmeticError("quantum-output distance calculation is not finite")
+    return result
 
 
 def _validate(actual):
@@ -397,6 +405,10 @@ def resources():
     program_bytes = len(json.dumps(
         {"filter": filter_program, "continuation_words": words},
         sort_keys=True, separators=(",", ":"), allow_nan=False).encode())
+    thresholds = [row["past_last_word"] for row in sampler_contract()
+                  if row["request"] is not None]
+    if any(not 0 < value < 1 << 64 for value in thresholds):
+        raise ArithmeticError("the sampler thresholds do not fit their declared storage")
     return {"maximum_filter_requests": 4,
         "one_filter_source_pulses": filter_pulses,
         "maximum_successful_continuation_source_pulses": continuation_pulses,
@@ -406,6 +418,12 @@ def resources():
         "mean_executed_filters_with_first_failure_stopping": expected_filters,
         "ideal_mean_total_source_pulses_upper": expected_filters*filter_pulses+expected_continuation,
         "fair_native_sampler_coin_events": 64,
+        "native_carrier_placement_coin_events_maximum": 66,
+        "native_carrier_placement_coin_events_ideal_mean": 64+2*success,
+        "uniform_thirty_seam_selection_service_calls_maximum": 2,
+        "uniform_thirty_seam_selection_service_calls_ideal_mean": 2*success,
+        "exact_uniform_seam_selector_is_a_supplied_service": True,
+        "finite_worst_case_fair_bit_budget_for_seam_selection_claimed": False,
         "subsequent_native_attempts_maximum": 2,
         "ideal_subsequent_native_attempts_mean": 2*success,
         "clock_ticks_per_successful_trial_mean": F(1, 3),
@@ -422,8 +440,12 @@ def resources():
         "fixed_attempt_horizon_not_wait_for_two_ticks": True,
         "zero_tick_trials_retained": True,
         "mode_basis_and_detector_costs_included": True,
-        "declared_source_program_utf8_bytes": program_bytes,
-        "program_cursor_bits_upper": maximum.bit_length(),
+        "source_word_packet_utf8_bytes": program_bytes,
+        "source_word_packet_byte_cursor_bits": (program_bytes-1).bit_length(),
+        "expanded_source_pulse_ordinal_bits": maximum.bit_length(),
+        "sampler_cumulative_threshold_storage_bits": 64*len(thresholds),
+        "observer_setting_storage_bits": 2,
+        "controller_interpreter_working_memory_included": False,
         "filter_request_counter_bits": 3,
         "attempt_counter_bits": 2,
         "herald_measurements_maximum": 4,

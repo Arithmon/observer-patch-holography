@@ -123,13 +123,64 @@ def test_wrong_phase_sign_and_padding_are_rejected_by_full_source_guards(source)
                         source['guards']['detector_x_2'], 'dropped_padding')
 
 
-def test_literal_clock_word_and_raw_routine_reuse_agree_without_polar_correction(source, monkeypatch):
+@pytest.mark.parametrize('target', (
+    np.full((16, 16), np.nan, dtype=complex),
+    np.full((16, 16), np.inf, dtype=complex),
+    np.eye(12, dtype=complex),
+    np.eye(16, dtype=bool),
+    np.eye(16, dtype=object),
+))
+def test_matrix_guard_rejects_invalid_targets_before_comparing_norms(target):
+    with pytest.raises(ArithmeticError, match='target .*complete finite register'):
+        m._check_matrix(np.eye(16, dtype=complex), target, F(1, 10**9), 'bad_target')
+
+
+@pytest.mark.parametrize('guard', (float('nan'), float('inf'), True, 1., F(-1), F(10**400)))
+def test_matrix_guard_requires_a_finite_nonnegative_rational_allowance(guard):
+    with pytest.raises(ArithmeticError, match='finite nonnegative rational guard'):
+        m._check_matrix(2*np.eye(16, dtype=complex), np.eye(16), guard, 'bad_guard')
+
+
+def test_matrix_guard_rejects_finite_input_overflow_without_runtime_warnings():
+    import warnings
+    raw = np.full((16, 16), 1e308, dtype=complex)
+    assert np.isfinite(raw).all()
+    with warnings.catch_warnings():
+        warnings.simplefilter('error', RuntimeWarning)
+        with pytest.raises(ArithmeticError, match='complete-register numerical guard'):
+            m._check_matrix(raw, np.eye(16), F(1, 10**9), 'overflow')
+
+
+def test_matrix_guard_accepts_an_exact_zero_allowance():
+    result = m._check_matrix(np.eye(16, dtype=int), np.eye(16), F(0), 'exact_identity')
+    assert result['complete_target_Frobenius_error'] == 0
+    assert result['raw_unitarity_Frobenius_defect'] == 0
+
+
+def test_matrix_guard_does_not_accept_unitarity_from_wrapped_integer_products():
+    raw = np.eye(16, dtype=np.int64)*np.iinfo(np.int64).max
+    np.testing.assert_array_equal(raw.T@raw, np.eye(16))
+    with pytest.raises(ArithmeticError, match='complete-register numerical guard'):
+        m._check_matrix(raw, raw.copy(), F(0), 'integer_wrap')
+
+
+def test_matrix_guard_does_not_erase_small_float32_errors_by_squaring():
+    target = np.eye(16, dtype=np.float32)
+    raw = target.copy()
+    raw[0, 1] = 1e-25
+    assert np.linalg.norm(raw-target, 'fro') == 0
+    with pytest.raises(ArithmeticError, match='complete-register numerical guard'):
+        m._check_matrix(raw, target, F(1, 10**30), 'underflow')
+
+
+@pytest.mark.parametrize('name', ('clock1', 'kick_plus_2', 'detector_x_2', 'detector_y_2'))
+def test_literal_continuation_words_agree_with_raw_routines_without_polar_correction(
+        source, monkeypatch, name):
     def forbidden(*_args, **_kwargs):
         raise AssertionError('polar correction must not replace executed source maps')
     monkeypatch.setattr(m.compiler, 'stabilize_executed_unitary', forbidden)
-    columns = np.eye(16, dtype=complex)[:, [0, 1, 12, 15]]
-    literal = m.compiler.execute(m.clock_word(), 4, columns)
-    np.testing.assert_allclose(literal, source['raw']['clock1']@columns, atol=1e-10, rtol=0)
+    literal = m.compiler.execute(source['words'][name], 4)
+    np.testing.assert_allclose(literal, source['raw'][name], atol=1e-10, rtol=0)
     assert source['raw_source_routines_used_without_polar_correction']
 
 

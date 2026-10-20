@@ -214,6 +214,30 @@ def test_complete_comparison_retains_raw_mass_defect_instead_of_normalizing(hist
     assert clock.complete_distance(changed, actual) > .05
 
 
+@pytest.mark.parametrize("request_index", (1, 4))
+def test_overflowing_retained_preparation_cannot_bypass_audit(histories, request_index):
+    actual, ideal = histories
+    successes = list(actual.preparation.successes)
+    successes[request_index] = np.full((16, 12), 1e308, dtype=complex)
+    changed = replace(actual, preparation=replace(actual.preparation,
+                                                  successes=tuple(successes)))
+    # The saved intermediate preparation is exposed data but not reused when
+    # reading these already-computed terminal outputs. Its audit must stand
+    # independently of the unchanged, well-behaved terminal distribution.
+    assert clock.probabilities(changed) == clock.probabilities(actual)
+    with pytest.raises(ArithmeticError, match="norm calculation is not finite"):
+        clock.audit(changed, ideal)
+
+
+def test_distance_rejects_nonfinite_arithmetic_on_finite_vectors():
+    # Each separate squared norm fits; the norm of their difference does not.
+    a = np.array([1.2e154, 0], dtype=complex)
+    b = np.array([0, 1.2e154], dtype=complex)
+    assert np.isfinite(np.linalg.norm(a)) and np.isfinite(np.linalg.norm(b))
+    with pytest.raises(ArithmeticError, match="distance calculation is not finite"):
+        clock._pure_distance(a, b)
+
+
 @pytest.mark.parametrize("mutation", ("missing", "nonfinite", "real_dtype", "boolean_key"))
 def test_complete_output_validator_rejects_missing_or_aliased_fields(histories, mutation):
     actual, _ = histories
@@ -319,3 +343,27 @@ def test_sampler_intervals_cover_all_coin_words_and_preserve_rejections():
         assert F(row["past_last_word"]-row["first_word"], 1 << 64) == row["probability"]
         if index:
             assert rows[index-1]["past_last_word"] == row["first_word"]
+
+
+def test_resource_counts_include_external_selection_and_scope_storage():
+    result = clock.resources()
+    success = F(clock.source.prepared_reference()["normalization"])/12
+    # Two IID selections among 30 seams cannot be generated exactly from a
+    # fixed finite fair-bit word: 30 does not divide any power of two.
+    assert result["uniform_thirty_seam_selection_service_calls_maximum"] == 2
+    assert result["uniform_thirty_seam_selection_service_calls_ideal_mean"] == 2*success
+    assert result["exact_uniform_seam_selector_is_a_supplied_service"]
+    assert not result["finite_worst_case_fair_bit_budget_for_seam_selection_claimed"]
+    assert result["native_carrier_placement_coin_events_maximum"] == 64+2
+    assert result["native_carrier_placement_coin_events_ideal_mean"] == 64+2*success
+    thresholds = [r["past_last_word"] for r in clock.sampler_contract()
+                  if r["request"] is not None]
+    assert len(thresholds) == 5
+    assert all(int.from_bytes(t.to_bytes(8, "little"), "little") == t for t in thresholds)
+    assert result["sampler_cumulative_threshold_storage_bits"] == 320
+    size = result["source_word_packet_utf8_bytes"]
+    bits = result["source_word_packet_byte_cursor_bits"]
+    assert 1 << (bits-1) < size <= 1 << bits
+    assert result["expanded_source_pulse_ordinal_bits"] == 20 < bits
+    assert result["observer_setting_storage_bits"] == 2
+    assert not result["controller_interpreter_working_memory_included"]

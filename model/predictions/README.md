@@ -630,11 +630,19 @@ is **538,182 source pulses**, with one load and export per pulse; numerical
 cache reuse removes no service invocation. Peak encoded storage is nineteen
 qubits, including the retained reference and filter environment/scratch,
 besides the native carrier and six-dimensional source processor. The receipt
-also counts program storage, records, counters, sampler events and
-early-failure resource expectations. Preparation blanks, protected storage,
-coherent source services, herald/readout and the controller's paused-carrier
-schedule remain supplied. Physical duration, drift and service fidelity
-are not bounded.
+also counts the serialized source-word packet, its byte-address cursor,
+the separate expanded-pulse ordinal, records, counters, the five 64-bit
+sampler thresholds and early-failure resource expectations. The source-word
+packet is a storage subtotal; it does not include the controller/interpreter
+program or working memory. The two observation-setting bits are counted separately.
+At most 66 native-carrier placement coins are used: 64 for the sampler and
+two for subsequent repairs. At most two IID uniform selections among thirty seams
+are separate supplied service calls, with ideal mean `2*Psuccess`. Exact
+uniform selection among thirty possibilities has no fixed finite fair-bit
+implementation, so no such worst-case bit budget is claimed.
+Preparation blanks, protected storage, coherent source services,
+herald/readout and the controller's paused-carrier schedule remain supplied.
+Physical duration, drift and service fidelity are not bounded.
 
 This completes the finite preparation-to-clock-and-detector connection.
 It supplies neither a growing nonconstant product-field encoder nor the

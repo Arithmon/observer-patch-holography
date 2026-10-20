@@ -237,12 +237,31 @@ def _pair_target(band, axis, angle):
 
 
 def _check_matrix(raw, target, guard, name):
-    if (type(raw) is not np.ndarray or raw.shape != (16, 16)
-            or raw.dtype.kind not in 'iufc' or not np.all(np.isfinite(raw))):
-        raise ArithmeticError(f'raw source {name} is not a complete finite register matrix')
-    difference = float(np.linalg.norm(raw-target, 'fro'))
-    defect = float(np.linalg.norm(raw.conj().T@raw-np.eye(16), 'fro'))
-    if difference > float(guard) or defect > float(2*guard+guard*guard):
+    for label, matrix in (('raw source', raw), ('target', target)):
+        if (type(matrix) is not np.ndarray or matrix.shape != (16, 16)
+                or matrix.dtype.kind not in 'iufc' or not np.all(np.isfinite(matrix))):
+            raise ArithmeticError(f'{label} {name} is not a complete finite register matrix')
+    if (type(guard) is not F or type(guard.numerator) is not int
+            or type(guard.denominator) is not int or guard.numerator < 0
+            or guard.denominator <= 0 or math.gcd(guard.numerator, guard.denominator) != 1):
+        raise ArithmeticError(f'source {name} requires a finite nonnegative rational guard')
+    try:
+        error_limit = float(guard)
+        defect_limit = float(2*guard+guard*guard)
+    except OverflowError as exc:
+        raise ArithmeticError(
+            f'source {name} requires a finite nonnegative rational guard') from exc
+    if not math.isfinite(error_limit) or not math.isfinite(defect_limit):
+        raise ArithmeticError(f'source {name} requires a finite nonnegative rational guard')
+    with np.errstate(over='ignore', invalid='ignore'):
+        # Integer matrix products can wrap to an apparently unitary matrix;
+        # lower-precision floating norms can also underflow before comparison.
+        numeric_raw = raw.astype(np.result_type(raw.dtype, np.complex128), copy=False)
+        numeric_target = target.astype(np.result_type(target.dtype, np.complex128), copy=False)
+        difference = float(np.linalg.norm(numeric_raw-numeric_target, 'fro'))
+        defect = float(np.linalg.norm(numeric_raw.conj().T@numeric_raw-np.eye(16), 'fro'))
+    if (not math.isfinite(difference) or not math.isfinite(defect)
+            or difference > error_limit or defect > defect_limit):
         raise ArithmeticError(f'raw source {name} exceeds its complete-register numerical guard')
     return {'complete_target_Frobenius_error': difference,
         'raw_unitarity_Frobenius_defect': defect,
