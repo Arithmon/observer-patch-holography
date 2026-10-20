@@ -64,7 +64,8 @@ def lean_inventory(root: Path) -> dict[str, int]:
     except (OSError, subprocess.CalledProcessError):
         paths = list((root / "Lean").rglob("*.lean"))
     return {path.relative_to(root).as_posix(): len(DECL_RE.findall(strip_comments(
-                path.read_text(encoding="utf-8")))) for path in sorted(paths)
+                path.read_text(encoding="utf-8")))) for path in
+            sorted(paths, key=lambda path: path.relative_to(root).parts)
             if path.is_file() and not any(part.startswith(".") or part == "lake-packages"
                                         for part in path.relative_to(root).parts)}
 
