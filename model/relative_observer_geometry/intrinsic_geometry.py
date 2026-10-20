@@ -13,6 +13,8 @@ from fractions import Fraction as F
 import hashlib
 from pathlib import Path
 
+import sympy as sp
+
 from ..observer import native
 from ..observer_reconstruction import native_geometry as ng
 from ..observer.scalar_response.experiment import canonical, compare_receipt
@@ -304,6 +306,80 @@ def inverse_response_metric(laplacian):
     }
 
 
+def wave_density_metric(spatial_tensor, measure_density=1, time_weight=1):
+    """Recover a comparison Lorentz metric from a four-dimensional action.
+
+    Inputs are exact rational coefficients at one point, not inferred native
+    continuum coefficients. The continuum argument in README obtains a
+    measurable positive spatial tensor from the already proved local form.
+    A smooth tensor, radial geometry and actual wave apparatus are distinct
+    obligations. The time weight names the chosen wave-clock coordinate.
+    """
+    def rational(value):
+        if type(value) not in (int, F) and not isinstance(value, sp.Rational):
+            raise ValueError('exact rational coefficients required')
+        return sp.Rational(value)
+
+    try:
+        rows = [list(row) for row in spatial_tensor]
+    except TypeError as exc:
+        raise ValueError('a three-dimensional spatial tensor is required') from exc
+    if len(rows) != 3 or any(len(row) != 3 for row in rows):
+        raise ValueError('a three-dimensional spatial tensor is required')
+    a = sp.Matrix([[rational(value) for value in row] for row in rows])
+    mu, weight = rational(measure_density), rational(time_weight)
+    if mu <= 0 or weight <= 0:
+        raise ValueError('positive measure density and time weight required')
+    if a != a.T or any(a[:k, :k].det() <= 0 for k in range(1, 4)):
+        raise ValueError('a symmetric positive definite spatial tensor is required')
+    coefficient = mu*sp.diag(-weight, a)
+    volume = sp.sqrt(-coefficient.det())
+    metric = sp.simplify(volume*coefficient.inv())
+    inverse = sp.simplify(coefficient/volume)
+    if sp.simplify(metric.det()-coefficient.det()) != 0:
+        raise ArithmeticError('four-dimensional density determinant identity failed')
+    if sp.simplify(volume*inverse-coefficient) != sp.zeros(4):
+        raise ArithmeticError('metric did not reproduce the complete action density')
+    return {'action_density': coefficient, 'metric': metric,
+            'inverse_metric': inverse, 'metric_volume_density': volume}
+
+
+def product_wave_metric_control():
+    """Exact tensor/control checks, separate from finite carrier readbacks."""
+    # This anisotropic rational tensor is a test coefficient, not a fitted
+    # value of the subsequential native continuum tensor.
+    a = sp.Matrix([[1, 0, 0], [0, 2, 1], [0, 1, 3]])
+    data = wave_density_metric(a.tolist(), F(3, 2))
+    doubled = wave_density_metric(a.tolist(), 3)
+    rate = sp.Rational(3, 2)
+    rescaled = wave_density_metric(a.tolist(), rate*sp.Rational(3, 2), 1/rate**2)
+    jacobian = sp.diag(rate, 1, 1, 1)  # old coordinate t = rate * new coordinate
+    if sp.simplify(rescaled['metric']-jacobian.T*data['metric']*jacobian) != sp.zeros(4):
+        raise ArithmeticError('clock reparameterization must transform the same metric')
+    if sp.simplify(doubled['metric']-2*data['metric']) != sp.zeros(4):
+        raise ArithmeticError('action normalization must retain its conformal factor')
+    encode = lambda matrix: [[str(sp.simplify(value)) for value in row]
+                             for row in matrix.tolist()]
+    return {
+        'coefficient_fixture': 'anisotropic rational product tensor; not measured native coefficients',
+        'spatial_tensor': encode(a),
+        'measure_density': '3/2',
+        'action_density': encode(data['action_density']),
+        'metric': encode(data['metric']),
+        'metric_volume_density': str(data['metric_volume_density']),
+        'signature': [-1, 1, 1, 1],
+        'complete_action_density_recovered_exactly': True,
+        'clock_reparameterization_rate': str(rate),
+        'clock_reparameterization_is_tensor_covariant': True,
+        'doubling_measure_preserves_cone_but_doubles_metric': True,
+        'continuum_input': 'regular strongly local H1 form and chosen product wave action',
+        'coefficient_regularities_proved': ['measurable', 'uniformly elliptic in local charts'],
+        'smooth_coefficients_or_curvature_proved': False,
+        'native_radial_transport_or_lab_proper_time_proved': False,
+        'observed_spacetime_or_Einstein_dynamics_proved': False,
+    }
+
+
 def run():
     uniform_records = ng.execute_calibration()
     uniform = ng.recover(uniform_records)
@@ -355,6 +431,7 @@ def run():
             'complete_exact_observation_laws_not_finite_shot_estimates': True},
         'actual_scheduler_slow_band_control': scheduling_control(laplacian, seams[0]),
         'full_response_metric': inverse_response_metric(laplacian),
+        'product_wave_metric': product_wave_metric_control(),
         'incomplete_exposure_control': {'exposed_seams': len(missing['seams']),
             'rank_three_structural_gram_certified': missing['rank_three_structural_gram_certified']},
         'scope': {'federation_needed_for_finite_carrier_result': False,

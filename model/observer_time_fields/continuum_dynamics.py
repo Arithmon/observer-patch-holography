@@ -23,11 +23,16 @@ from . import spatial_dynamics as dynamics
 from . import wave_reference
 from ..observer.source_scalar import compiler as source_compiler
 from ..physical_space_time import local_continuum as spatial
+from ..physical_space_time import observation_process as observations
+from ..relative_observer_geometry import temporal_records as clocks
 from tools import strict_json
 
 ROOT = dynamics.ROOT
 SOURCE_PATHS = tuple(sorted(set((*dynamics.SOURCE_PATHS, *wave_reference.SOURCE_PATHS,
-    *spatial.SOURCE_PATHS, 'model/observer_time_fields/continuum_dynamics.py'))))
+    *spatial.SOURCE_PATHS, *observations.SOURCE_PATHS, *clocks.SOURCE_PATHS,
+    'model/relational_event_clock/__init__.py',
+    'model/native_action/stopped_control.py', 'model/native_action/clock_histories.py',
+    'model/observer_time_fields/continuum_dynamics.py'))))
 
 
 def _root_upper(value):
@@ -1474,6 +1479,284 @@ def faithful_modular_encoding_control():
         'geometric_patch_modular_flow_or_Unruh_temperature_identified': False}
 
 
+def product_clock_bound(level, degree=5, angular_band=F(8), radial_band=F(9),
+                        horizon=F(1), tolerance=F(1, 8), step_error=F(0)):
+    """Single-code unitary error in the native incident parameter tau.
+
+    The two-axis word, count clock, and angular dispersion share Q_l.
+    Radial grid error is separate; radial_band bounds its supplied frequency
+    squared. The pulse error is for the complete two-pulse single-code step.
+    """
+    fixed = clocks.incident_clock_bound(level, degree, horizon, tolerance)
+    angular_band, radial_band = map(dynamics._positive, (angular_band, radial_band))
+    step_error = _fraction(step_error)
+    if degree not in (5, 6) or step_error < 0:
+        raise ValueError('a native port degree and nonnegative step error required')
+    wave = dynamics.wave_bounds(level, angular_band, horizon)
+    q = wave['squared_coherent_clock_normalization']
+    delta = wave['relative_wave_frequency_error']
+    a, c = _root_upper(angular_band)*(1+delta), _root_upper(radial_band)
+    omega = _root_upper(a*a+c*c)
+    kappa = _root_upper(F(2*degree**2, 315))
+    eta = F(fixed['uniform_count_error_upper'])
+    steps = math.floor(F(fixed['mean_incident_ticks_per_continuum_unit'])*(horizon+eta))
+    count = omega*kappa*eta/2
+    dispersion = kappa*horizon*_root_upper(angular_band)*delta/2
+    split = steps*a*c/(4*q)
+    synthesis = steps*step_error
+    return {'level': level, 'port_degree': degree, 'angular_band': angular_band,
+        'radial_band': radial_band, 'Q': q, 'horizon_in_native_incident_units': horizon,
+        'clock_failure_probability_upper': F(fixed['failure_probability_upper']),
+        'count_error_single_code_unitary_upper': count,
+        'angular_dispersion_single_code_unitary_upper': dispersion,
+        'split_axes_single_code_unitary_upper': split,
+        'source_synthesis_single_code_unitary_upper': synthesis,
+        'combined_single_code_unitary_error_upper': min(F(2), count+dispersion+split+synthesis),
+        'maximum_triggered_steps_on_clock_good_event': steps,
+        'source_pulses_per_code_per_trigger': 2,
+        'modular_parameter': 's=-(2d/sqrt(630))*tau/b in the limiting product field',
+        'growing_precision_requirement': 'sqrt(Q_l)*step_error_l -> 0',
+        'count_tolerance_requirement': 'tolerance_l -> 0 and 4^l*tolerance_l^2 -> infinity',
+        'radial_grid_and_spatial_subsequence_errors_included': False,
+        'protected_register_and_paused_atomic_pulse_services_required': True}
+
+
+def product_thermal_field_bound(inverse_temperature=F(4), length=F(2)):
+    """A normal thermal state for the same declared Dirichlet product."""
+    beta = _fraction(inverse_temperature, positive=True)
+    bounds = observations.product_thermal_bounds(beta, length)
+    return {'inverse_temperature': beta, 'interval_length': length,
+        'one_particle_heat_trace_upper': bounds['one_particle_heat_trace_upper'],
+        'normal_ordered_Fock_log_partition_upper': bounds['normal_ordered_Fock_log_partition_upper'],
+        'state': 'rho_b=Z_b^-1 exp(-b dGamma(sqrt(B))), B=-d_r^2+(A direct_sum 0)',
+        'modular_flow': 'sigma_s=alpha_(-b*s) on the full encoded Fock algebra',
+        'domain': 'declared interval (0,L) with Dirichlet ends times the native screen',
+        'angular_constant_mode_included': True, 'product_has_zero_frequency_mode': False,
+        'field_smearing_domain': 'L2; momentum smearing domain D(B^(1/4))',
+        'commutator_and_kick_response': 'B^(-1/2) sin((t-u)*sqrt(B))',
+        'comparison_distance_squared': '|r-s|^2+2*d_screen^2',
+        'comparison_response_speed_upper': 1,
+        'spatial_patch_modular_flow_or_physical_Lorentzian_metric_identified': False}
+
+
+def product_native_mode_control():
+    """An exact full-source mode and zero-inclusive incident records."""
+    from ..observer import native
+    graph, lap, _, _, _ = dynamics.source_green.matrices(0)
+    matrix = sp.Matrix(lap.toarray())
+    external = sorted({p for edge in graph.inter_seams for p in edge if p < 12})
+    rows = (matrix[:12, :12]-6*sp.eye(12)).col_join(sp.eye(12)[external, :])
+    local = rows.nullspace()[0]
+    profile = local.col_join(sp.zeros(graph.ports-12, 1))
+    if matrix*profile != 6*profile or sum(profile) or matrix*sp.ones(graph.ports, 1) != sp.zeros(graph.ports, 1):
+        raise ArithmeticError('the product clock did not use an actual full-port native mode')
+    port = next(p for p, neighbors in enumerate(graph.neighbours) if len(neighbors) == 5)
+    initial = (1,)*(graph.ports//3)+(0,)*(2*graph.ports//3)
+    records = Counter()
+    for seam in graph.seams:
+        for coin in (0, 1):
+            _, (_, current) = native.native(initial, seam, coin)
+            records[int(port in seam), int(bool(current and port in seam))] += 1
+    if sum(records.values()) != 1260 or sum(n for (tick, _), n in records.items() if tick) != 10:
+        raise ArithmeticError('native incident-clock records lost zero-current events')
+    return {'ports': graph.ports, 'seams': len(graph.seams), 'clock_port': port,
+        'native_eigenvalue': 6, 'exact_first_carrier_profile': [str(x) for x in local],
+        'all_other_profile_entries': '0', 'external_seam_ports_of_first_carrier': external,
+        'profile_cell_compression': '0 on every cell',
+        'internal_fixture_survives_as_a_bounded_nonconstant_continuum_mode': False,
+        'same_internal_fixture_scaled_eigenvalue_at_level_l': '6*4^l',
+        'complete_one_attempt_clock_record_counts': [
+            {'incident': tick, 'nonzero_incident_current': current, 'count': count}
+            for (tick, current), count in sorted(records.items())],
+        'constant_angular_mode_eigenvalue': 0,
+        'clock_ticks_require_nonzero_current': False}
+
+
+def product_mode_source_control(native_eigenvalue=6, radial_mode=1, radial_points=3,
+                                length=F(2), level=0, inverse_temperature=F(1), steps=25):
+    """Compile a product mode from the native angular clock and a radial axis.
+
+    No product-frequency pulse is inserted: each incident service is the
+    native Z phase followed by the radial X pulse. Their noncommutation is
+    measured and bounded. A declared mode must separately belong to the
+    actual native Laplacian; product_native_mode_control certifies the retained
+    lambda=0,6 fixtures, not every caller-supplied spectral value.
+    """
+    level, steps = dynamics._level(level), _int(steps, 1)
+    if steps > 256 or level > 8:
+        raise ValueError('the finite source execution admits at most 256 steps and level eight')
+    beta = _fraction(inverse_temperature, positive=True)
+    dictionary = observations.product_mode_dictionary(
+        native_eigenvalue, radial_mode, radial_points, length, angular_scale=F(4**level))
+    q = 630*16**level
+    lam, radial = dictionary['scaled_native_eigenvalue'], dictionary['radial_eigenvalue']
+    if not (lam >= 0 and lam < 4*q):
+        raise ValueError('the angular mode must lie in the coherent source phase domain')
+    theta = sp.acos(1-lam/(2*q))
+    a, c = sp.sqrt(q)*theta, sp.sqrt(radial)
+    omega_expression = sp.sqrt(a*a+c*c)
+    axis_angle = sp.atan2(c, a)
+    frequency = _source_dyadic_scalar(omega_expression)
+    polarization = _source_dyadic_scalar(sp.tanh(sp.Rational(beta)*omega_expression/2))
+    parameters = thermal_clock_parameters(frequency, polarization)
+    af, cf, omega, time = (float(sp.N(x, 80)) for x in (a, c, omega_expression, steps/sp.sqrt(q)))
+    r = float(polarization)
+    x = np.array([[0, 1], [1, 0]], complex)
+    y = np.array([[0, -1j], [1j, 0]], complex)
+    z, identity = np.diag([1., -1.]), np.eye(2)
+    normal, transverse = (cf*x+af*z)/omega, (af*x-cf*z)/omega
+    one = (identity+r*normal)/2
+    rotation = [source_compiler.pulse('Y', -float(_source_dyadic_scalar(axis_angle/2)), [0])]
+    step_word = [source_compiler.pulse('Z', float(_source_dyadic_scalar(theta/2)), [0]),
+                 source_compiler.pulse('X', float(_source_dyadic_scalar(c/(2*sp.sqrt(q)))), [0])]
+    unitary = source_compiler.execute(step_word*steps, 1)
+    ideal = np.cos(time*omega/2)*identity+1j*np.sin(time*omega/2)*normal
+    unitary_error = float(np.linalg.norm(unitary-ideal, 2))
+    split_bound = float(steps*sp.N(a*c, 80)/(4*q))
+    synthesis_bound = steps/2**44
+    if unitary_error > split_bound+synthesis_bound+2e-12:
+        raise ArithmeticError('source product clock exceeded its two-axis commutator bound')
+    reversed_step = source_compiler.execute(list(reversed(step_word)), 1)
+    order_defect = float(np.linalg.norm(source_compiler.execute(step_word, 1)-reversed_step, 2))
+    copies = 2
+    rotate = sum((source_compiler.remap(rotation, [j]) for j in range(copies)), [])
+    evolution = sum((source_compiler.remap(step_word*steps, [j]) for j in range(copies)), [])
+    preparation = _thermal_code_preparation(polarization, copies)+rotate
+    blank = np.zeros(32, complex); blank[0] = 1
+    pure = source_compiler.execute(preparation, 4, blank[:16])
+    reduced = pure.reshape(4, 4).T@pure.reshape(4, 4).conj()
+    state_error = float(np.linalg.norm(reduced-np.kron(one, one), 2))
+    if state_error > 2e-11:
+        raise ArithmeticError('product thermal preparation lost its joint generator axis')
+    # Two times on the same code, with references and pointer retained.
+    strengths = (F(1, 2), F(1, 3))
+    def weyl(strength, controlled=False):
+        normalized = float(sp.N(sp.Rational(strength)/
+                           sp.sqrt(sp.Rational(polarization)*omega_expression), 80))
+        middle = spin_weyl_word([[normalized, 0]], copies, controlled=controlled)
+        if controlled:
+            middle = source_compiler.remap(middle, [0, 1, 4])
+        return source_compiler.inverse(rotate)+middle+rotate
+    single_q = transverse/np.sqrt(2*copies*r*omega)
+    def exact_weyl(strength):
+        angle = float(strength)/np.sqrt(2*copies*r*omega)
+        return np.cos(angle)*identity+1j*np.sin(angle)*transverse
+    first, second = map(exact_weyl, strengths)
+    expected = complex(np.trace(one@unitary.conj().T@first@unitary@second)**copies)
+    ideal_expected = complex(np.trace(one@ideal.conj().T@first@ideal@second)**copies)
+    records = {}
+    for axis in ('X', 'Y'):
+        word = preparation+[source_compiler.pulse('Y', -math.pi/4, [4])]
+        word += weyl(strengths[1], True)+evolution+weyl(strengths[0], True)+source_compiler.inverse(evolution)
+        word += [source_compiler.pulse('Y' if axis == 'X' else 'X',
+                                      math.pi/4 if axis == 'X' else -math.pi/4, [4])]
+        output = source_compiler.execute(word, 5, blank)
+        probabilities = abs(output)**2
+        mean = float(sum(probabilities[:16])-sum(probabilities[16:]))
+        oracle = expected.real if axis == 'X' else expected.imag
+        if abs(mean-oracle) > 3e-11 or abs(sum(probabilities)-1) > 3e-11:
+            raise ArithmeticError('product two-time detector lost an ordered phase or complete outcome')
+        records[axis] = {'all_system_reference_pointer_probabilities': probabilities.tolist(),
+            'pointer_mean': mean, 'independent_matrix_expectation': oracle,
+            'source_pulses': len(word),
+            'word_sha256': hashlib.sha256(json.dumps(word, sort_keys=True).encode()).hexdigest()}
+    epsilon = F(1, 1000)
+    probabilities, means = [], []
+    readout = np.array([copies-2*(j % 4).bit_count() for j in range(16)])
+    for sign in (-1, 1):
+        word = preparation+weyl(sign*epsilon)+evolution+source_compiler.inverse(rotate)
+        word += [source_compiler.pulse('Y', math.pi/4, [j]) for j in range(copies)]
+        output = source_compiler.execute(word, 4, blank[:16])
+        law = abs(output)**2
+        probabilities.append(law.tolist())
+        means.append(float(law@readout)/np.sqrt(2*copies*r*omega))
+    response = (means[1]-means[0])/(2*float(epsilon))
+    evolved = unitary.conj().T@single_q@unitary
+    linear = float((1j*copies*np.trace(one@(evolved@single_q-single_q@evolved))).real)
+    sine = math.sin(time*omega)/omega
+    kick_bound = abs(linear)*float(epsilon)**2/(3*copies*r*omega)
+    if abs(response-linear) > kick_bound+3e-10 or abs(linear-sine) > 2*unitary_error/(r*omega)+2e-12:
+        raise ArithmeticError('product source intervention exceeded its finite kick or split-clock error')
+    gap = parameters['modular_gap_diagnostic']
+    # The rounded polarization fixes its own exact gap. Compare the actual
+    # prepared state at s=-time/requested_beta, charging both preparation
+    # error and the small difference from the ideal common-beta relation.
+    prepared_one = source_compiler.execute(_thermal_code_preparation(polarization, 1)+rotation,
+                                          2, np.array([1., 0., 0., 0.]))
+    amplitude = prepared_one.reshape(2, 2)
+    reduced_one = amplitude.T@amplitude.conj()
+    state_one_error = float(np.linalg.norm(reduced_one-one, 2))
+    eigenvalues, eigenvectors = np.linalg.eigh(reduced_one)
+    modular = (eigenvectors*np.exp(-1j*time/float(beta)*np.log(eigenvalues)))@eigenvectors.conj().T
+    polarization_modular_allowance = abs(time*(gap/float(beta)-omega))
+    preparation_modular_allowance = 2*time/float(beta)*state_one_error/min(
+        eigenvalues[0], (1-r)/2)
+    modular_error = max(float(np.linalg.norm(modular@p@modular.conj().T-unitary.conj().T@p@unitary, 2))
+                        for p in (x, y, z))
+    if modular_error > 2*unitary_error+polarization_modular_allowance+preparation_modular_allowance+2e-12:
+        raise ArithmeticError('finite product modular mismatch exceeded its unitary error')
+    # Marginalize every native seam/coin branch, never only successful currents.
+    clock_rows = []
+    branches_per_attempt = 1260*4**level
+    for marks in ((0, 0), (0, 1), (1, 0), (1, 1)):
+        count = math.prod(10 if tick else branches_per_attempt-10 for tick in marks)
+        u = source_compiler.execute(step_word*sum(marks), 1)
+        value = complex(np.trace(one@u.conj().T@first@u@second)**copies)
+        clock_rows.append({'incident_marks': list(marks), 'native_branches': count,
+            'joint_X_pointer_probabilities': [float(F(count, branches_per_attempt**2))*(1+sign*value.real)/2
+                                             for sign in (1, -1)]})
+    if abs(sum(sum(row['joint_X_pointer_probabilities']) for row in clock_rows)-1) > 2e-12:
+        raise ArithmeticError('product clock marginal discarded a native branch')
+    return {'mode_dictionary': {key: str(value) for key, value in dictionary.items()},
+        'level': level, 'Q': q, 'incident_triggers': steps,
+        'angular_frequency_expression': str(a), 'radial_frequency_expression': str(c),
+        'joint_frequency_expression': str(omega_expression),
+        'state_clock_parameters': parameters, 'requested_inverse_temperature': beta,
+        'inferred_inverse_temperature_diagnostic': gap/omega,
+        'source_step_word': step_word, 'source_step_word_pulses_per_code': len(step_word),
+        'source_step_angle_error_upper': F(1, 1 << 44),
+        'single_code_unitary_error': unitary_error,
+        'two_axis_product_formula_error_upper': split_bound,
+        'two_axis_pulse_synthesis_error_upper': synthesis_bound,
+        'split_order_unitary_difference': order_defect,
+        'wrong_parallel_axis_gap_error': af+cf-omega,
+        'preparation_reduced_state_error': state_error,
+        'finite_split_state_stationarity_defect': float(np.linalg.norm(unitary@one@unitary.conj().T-one, 2)),
+        'finite_split_modular_action_error_on_Paulis': modular_error,
+        'modular_parameter_used': -time/float(beta),
+        'polarization_common_beta_modular_allowance': polarization_modular_allowance,
+        'source_preparation_modular_allowance': preparation_modular_allowance,
+        'complete_ordered_two_time_pointer_records': records,
+        'finite_ordered_expectation': [expected.real, expected.imag],
+        'ideal_joint_generator_ordered_expectation': [ideal_expected.real, ideal_expected.imag],
+        'complete_signed_kick_system_reference_probabilities': probabilities,
+        'signed_kick_response': response, 'actual_split_clock_linear_response': linear,
+        'target_product_sine_response': sine, 'finite_kick_error_upper': kick_bound,
+        'complete_two_attempt_clock_and_pointer_marginal': clock_rows,
+        'finite_split_clock_is_exact_target_modular_flow': False,
+        'product_frequency_is_an_independent_input_pulse': False,
+        'spectral_encoder_radial_grid_and_protected_services_are_declared': True,
+        'source_eigenmode_membership_is_checked_for_every_function_input': False}
+
+
+def product_clock_encoding_control():
+    return {'native_mode_and_clock': product_native_mode_control(),
+        'finite_source_modes': [product_mode_source_control(lam, radial_mode=k)
+                                for lam, k in ((6, 1), (6, 2), (0, 1))],
+        'refinement_clock_bounds': [product_clock_bound(l, tolerance=F(1, 2**(l//2+3)),
+                                                      step_error=F(1, 2**(44+4*l)))
+                                    for l in (0, 2, 4, 8)],
+        'continuum_thermal_state': product_thermal_field_bound(),
+        'limiting_generator': 'sqrt(B), B=-d_r^2+(A direct_sum 0)',
+        'ordered_covariance': '(coth(b sqrt(B)/2)*cos(t sqrt(B))-i sin(t sqrt(B)))/(2 sqrt(B))',
+        'conditional_same_product_operator_state_response_and_active_clock': True,
+        'nonconstant_finite_fixture_is_an_internal_compiler_control': True,
+        'constant_angular_fixture_is_included_in_the_product_limit': True,
+        'passive_source_selects_radial_domain_temperature_or_mode_encoding': False,
+        'growing_source_compiler_or_local_detector_network_executed': False,
+        'observed_spacetime_or_lab_clock_identified': False}
+
+
 def run():
     rows = {
         'schema': 'oph.observer_time_fields.continuum_dynamics.v1',
@@ -1486,6 +1769,7 @@ def run():
         'fractional_wave_bounds': [fractional_wave_bounds(l) for l in range(3)],
         'source_encoded_quantum_fluctuation': quantum_fluctuation_control(),
         'faithful_thermal_modular_encoding': faithful_modular_encoding_control(),
+        'product_thermal_active_clock_encoding': product_clock_encoding_control(),
         'native_weighted_form_control': native_weighted_form_control(),
         'native_heat_support_control': native_heat_support_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],
@@ -1548,6 +1832,7 @@ def run():
             'density_process_path_space_limit_proved': True,
             'native_return_reference_is_a_native_coherently_prepared_state': False,
             'faithful_mean_zero_Fock_modular_state_under_declared_encoding_constructed': True,
+            'faithful_product_Fock_state_and_source_split_clock_under_declared_encoding_constructed': True,
             'growing_source_field_modular_intervention_compiler_executed': False,
             'comparison_wave_support_cone_proved': True,
             'fractional_wave_canonical_energy_equipartition_proved': True,

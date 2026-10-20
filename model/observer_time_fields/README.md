@@ -116,6 +116,17 @@ Fock Gibbs state for each supplied common `b>0`. This fixes the conditional
 state/clock relation; passive repair does not choose `b`, and the modular
 flow of a spatial patch or a laboratory clock is not identified.
 
+The [product construction](REFINEMENT.md#one-product-field-state-and-active-clock)
+joins the declared radial field to this state and clock. Alternating the
+native angular `Z` pulse with the radial `X` pulse derives the product gap
+from their anticommutation. Its finite splitting and incident-count errors
+are bounded; ordered two-time outcomes and signed kicks are executed with
+retained references. The limit has generator `sqrt(-d_r^2+(A direct_sum 0))`,
+a faithful thermal free-field state and the full product comparison cone.
+Radial design, spectral encoding, preparation and protected source services
+remain premises; finite internal-mode controls do not execute a growing
+continuum encoder.
+
 ## The common observer contract
 
 This is a classical recorded branch of the

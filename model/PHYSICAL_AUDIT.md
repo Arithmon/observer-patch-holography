@@ -1,11 +1,10 @@
 # Physical interpretation of the executable model
 
-The construction derives compatible finite observations and a common
-subsequential continuum operator from one specified repair process. It has not established
-physical 3+1 spacetime, a selected Lorentzian field action, or a measured
-clock correspondence with observed physical processes. The distinction matters
-for deciding what to build next: more carriers do not discharge any of these
-three obligations by themselves.
+The construction derives a common subsequential continuum operator and a
+conditional product free field with thermal state, active clock and measurable
+Lorentz-signature action. Its radial domain and observer services are supplied.
+Observed spacetime, interacting QFT, Einstein dynamics and laboratory clock
+identification remain unproved; larger carrier counts alone do not establish them.
 
 ## Are federations necessary?
 
@@ -43,8 +42,8 @@ overturned by successful finite native-carrier calculations or by this audit.
 
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
-| Space and fields | Current preparations recover the carrier response and a rank-three slow-band Gram. Long observation averages of the actual binary repair process give a Gaussian field with a derived Green covariance and quadratic action. | Selecting the operational metric and length calibration, realizing the observation access, and establishing the physical spatial domain. The full inverse-response Gram has rank eleven. |
-| Time | Complete local stopped instruments and clock comparisons. Incident events drive fixed compiled modular steps on an explicitly controlled probe; closed-history conditioning derives a faithful reference for its native-derived generator. | The controller, coherent services and carrier-pause schedule are declared. Passive repair is contractive and cannot implement nontrivial modular automorphisms on an invariant observer algebra. Proper duration remains unidentified. |
+| Space and fields | Native Green fields and independent long-block innovations give a declared radial product of spectral dimension three. Its thermal covariance and local wave action share one operator; the action determines a measurable Lorentz-signature metric. | Radial topology, boundary conditions, filters and access remain supplied. Smoothness, unique spatial limit, physical transport and length calibration are unproved. Rank-three response alone fixes none of these. |
+| Time | Complete stopped instruments compare native clocks. Incident-triggered angular/radial pulses give a joint product clock with controlled splitting error; matched faithful states identify its full-algebra modular flow. | Preparation, protected controls and carrier pauses are declared. Growing nonconstant-mode compilation is unexecuted. Passive repair, spatial-patch modular flow and laboratory duration are not identified with this active clock. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
 | Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 
@@ -235,18 +234,16 @@ and accumulated step-error bound. The exact two-attempt control has Ramsey
 plus probability `1297/1320`. Its finite density sector has a
 [720-arc source compiler](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk)
 using 114,910 pulses per walk, clean scratch and retained padding.
-The full-register replay reuses raw pulse-executed routines; its floating
-guards certify neither interval enclosure nor physical precision. Protected
-storage, coherent services and timing-carrier pauses are supplied; the
-growing refinement compiler is unproved. The
+The full-register replay reuses raw pulses with numerical, not physical,
+guards. Protection, coherent services and carrier pauses are supplied;
+growing nonconstant-mode compilation is unexecuted. The
 [faithful quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility) executes purifying source
 pulses, ordered pointer outputs and signed kicks. The common condition
 `log((1+r)/(1-r))=b*Omega` is necessary and sufficient for modular flow
 to match the active mode clock, including the state's axis. The IID limit
-gives thermal CCR noise and the unchanged sine response; native spectral
-bounds give a faithful normal mean-zero Fock state. This uses supplied
-preparation, mode encoding and active controls, on the full encoded algebra.
-It proves no geometric modular action on spatial patches or selected temperature.
+gives thermal CCR noise, sine response and a faithful mean-zero Fock state.
+Preparation and controls are supplied; geometric patch modular flow and
+passive temperature selection are unproved.
 Mean-zero supported tests obey the comparison cone; unrestricted tests need
 `D_bar(t)=D_perp(t)+t*P_const`. The restored massless zero mode has no
 normalizable stationary vacuum. The limiting form is conservative, regular,
@@ -272,12 +269,16 @@ constructs the Poisson operator `exp(-r*sqrt(A))` with explicit finite caps.
 Its deterministic extension reuses boundary information. A separate
 [long-block construction](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) supplies independent radial innovations,
 including an encoded angular constant, and yields `(-d_r^2+Abar)^-1` on
-a chosen Dirichlet interval. Gaussian grid gluing, continuous radial paths,
-three-dimensional spectral growth and the product comparison cone follow.
-The executed finite tapes check readback and filters; their adjacent blocks
-are not independent. The radial coordinate and filters are supplied and
-native count tends to infinity first. Product wave evolution requires a
-different encoder from the active angular clock.
+a chosen Dirichlet interval. The [thermal covariance construction](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+separates sampled bridges, the classical inverse and quantum thermal state,
+with finite-count and grid budgets. The [two-axis active clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
+uses native angular phases and radial pulses to implement the product
+dispersion with controlled splitting error. It supplies one conditional
+thermal CCR field, sine response and modular conversion. Its
+[local action determines a measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+Finite tapes check all readouts, not Gaussian independence. The interval,
+filters, preparation and controls remain supplied; growing nonconstant-mode
+execution, smoothness and observed spacetime identification are unproved.
 The dual conductance graph also obeys a uniform isotropic
 reference sandwich with relative allowance `5/43`; it proves no homogenization.
 Restoring the constant mode gives the full-space generator `Abar`.
@@ -351,9 +352,12 @@ success at least `1/12`, all failures retained and a source-read interference
 contrast. Its Gibbs variational identity gives state-fibre stationarity at
 fixed `L`, not joint bulk-plus-area stationarity. The state is central on
 the represented group algebra; its nontrivial modular gaps concern the
-larger logical register. Neither `L` nor the product radial wave generator
-is identified with the angular clock by a common scale. Physical collar
-algebras, interactions and a joint spacetime observation map are unproved.
+larger logical register. [Capped positive subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
+prepares square-root Gibbs approximants with state and modular-gap budgets,
+without equating `L` and `sqrt(L)` by a clock scale. Sampler rejection and
+herald failures are retained; uncapped exact sampling has infinite mean cost.
+This finite register construction does not prepare the product Fock state.
+Physical collars, interactions and observational identification are unproved.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint

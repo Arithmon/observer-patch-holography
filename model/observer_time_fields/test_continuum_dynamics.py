@@ -948,3 +948,135 @@ def test_faithful_clock_rejects_nonfaithful_or_inexact_preparation(r):
 def test_faithful_clock_rejects_ambiguous_or_nonpositive_frequency(frequency):
     with pytest.raises((TypeError, ValueError)):
         d.thermal_clock_parameters(frequency, F(1, 2))
+
+
+def test_product_mode_fixture_belongs_to_full_source_but_not_to_cell_readout():
+    row = d.product_native_mode_control()
+    graph, lap, _, _, _ = d.dynamics.source_green.matrices(0)
+    vector = sp.Matrix([sp.Rational(x) for x in row['exact_first_carrier_profile']]
+                       +[0]*(graph.ports-12))
+    matrix = sp.Matrix(lap.toarray())
+    assert matrix*vector == 6*vector
+    assert all(sum(vector[12*j:12*(j+1)]) == 0 for j in range(graph.ports//12))
+    # Violating the zero collar condition destroys the native eigenmode.
+    vector[row['external_seam_ports_of_first_carrier'][0]] = 1
+    assert matrix*vector != 6*vector
+    counts = row['complete_one_attempt_clock_record_counts']
+    assert sum(x['count'] for x in counts) == 1260
+    assert sum(x['count'] for x in counts if x['incident']) == 10
+    assert all(x['nonzero_incident_current'] == 0 for x in counts)
+    assert row['internal_fixture_survives_as_a_bounded_nonconstant_continuum_mode'] is False
+
+
+@pytest.mark.parametrize('level', (0, 1, 3))
+def test_product_split_error_controls_independent_matrix_exponentials(level):
+    from scipy.linalg import expm
+    x, z = np.array([[0., 1.], [1., 0.]]), np.diag([1., -1.])
+    q = 630*16**level
+    for lam, radial in ((0., 2.), (.04, 3.), (6., 9.)):
+        a, c = np.sqrt(q)*np.arccos(1-lam/(2*q)), np.sqrt(radial)
+        step = expm(1j*c*x/(2*np.sqrt(q)))@expm(1j*a*z/(2*np.sqrt(q)))
+        for count in (1, 13, 100):
+            exact = expm(1j*count*(a*z+c*x)/(2*np.sqrt(q)))
+            assert np.linalg.norm(np.linalg.matrix_power(step, count)-exact, 2) <= count*a*c/(4*q)+1e-12
+        # Anticommutation fixes the gap; parallel controls give a different gap.
+        np.testing.assert_allclose((a*z+c*x)@(a*z+c*x), (a*a+c*c)*np.eye(2), atol=1e-12)
+        if a:
+            assert np.linalg.norm(step-step.T, 2) > 1e-10
+            assert abs((a+c)-np.sqrt(a*a+c*c)) > .01
+
+
+def test_product_clock_joint_refinement_controls_count_split_and_precision():
+    rows = [d.product_clock_bound(l, tolerance=F(1, 2**(l//2+3)),
+                                  step_error=F(1, 2**(44+4*l))) for l in (0, 4, 8, 12)]
+    for key in ('combined_single_code_unitary_error_upper', 'clock_failure_probability_upper',
+                'split_axes_single_code_unitary_upper', 'source_synthesis_single_code_unitary_upper'):
+        assert rows[-1][key] < rows[0][key]
+    # Fixed error per trigger does not support an arbitrarily refined clock.
+    first = d.product_clock_bound(0, step_error=F(1, 2**44))
+    last = d.product_clock_bound(12, step_error=F(1, 2**44))
+    assert last['source_synthesis_single_code_unitary_upper'] > first['source_synthesis_single_code_unitary_upper']
+    assert rows[-1]['source_pulses_per_code_per_trigger'] == 2
+
+
+@pytest.mark.parametrize('lam,radial_mode', ((6, 1), (6, 2), (0, 1)))
+def test_product_source_joint_ordered_records_intervention_and_modular_error(lam, radial_mode):
+    from scipy.linalg import expm
+    row = d.product_mode_source_control(lam, radial_mode=radial_mode)
+    a = float(sp.N(sp.sympify(row['angular_frequency_expression'])))
+    c = float(sp.N(sp.sympify(row['radial_frequency_expression'])))
+    omega = np.hypot(a, c)
+    r = float(row['state_clock_parameters']['polarization'])
+    x, z = np.array([[0., 1.], [1., 0.]]), np.diag([1., -1.])
+    normal, transverse = (c*x+a*z)/omega, (a*x-c*z)/omega
+    rho = (np.eye(2)+r*normal)/2
+    step = np.eye(2, dtype=complex)
+    for pulse in row['source_step_word']:
+        step = expm(1j*pulse['angle']*{'X': x, 'Z': z}[pulse['kind']])@step
+    unitary = np.linalg.matrix_power(step, row['incident_triggers'])
+    field = transverse/np.sqrt(4*r*omega)
+    ordered = np.trace(rho@unitary.conj().T@expm(.5j*field)@unitary@expm(1j*field/3))**2
+    np.testing.assert_allclose(row['finite_ordered_expectation'], [ordered.real, ordered.imag], atol=2e-12)
+    for record in row['complete_ordered_two_time_pointer_records'].values():
+        law = record['all_system_reference_pointer_probabilities']
+        assert len(law) == 32 and min(law) >= 0 and abs(sum(law)-1) < 2e-12
+    response = float((2j*np.trace(rho@(unitary.conj().T@field@unitary@field
+                                  -field@unitary.conj().T@field@unitary))).real)
+    assert abs(row['actual_split_clock_linear_response']-response) < 2e-12
+    exact_signed = response*np.sinc(.001/np.sqrt(r*omega)/np.pi)
+    assert abs(row['signed_kick_response']-exact_signed) < 3e-10
+    for law in row['complete_signed_kick_system_reference_probabilities']:
+        assert len(law) == 16 and abs(sum(law)-1) < 2e-12
+    joint = row['complete_two_attempt_clock_and_pointer_marginal']
+    assert sum(item['native_branches'] for item in joint) == 1260**2
+    assert abs(sum(sum(item['joint_X_pointer_probabilities']) for item in joint)-1) < 2e-12
+    assert row['finite_split_modular_action_error_on_Paulis'] <= (
+        2*row['single_code_unitary_error']+row['polarization_common_beta_modular_allowance']
+        +row['source_preparation_modular_allowance']+2e-12)
+    if lam:
+        assert row['finite_split_state_stationarity_defect'] > .01
+        assert row['split_order_unitary_difference'] > .001
+    else:
+        assert row['finite_split_state_stationarity_defect'] < 2e-12
+    assert row['finite_split_clock_is_exact_target_modular_flow'] is False
+
+
+def test_product_control_rejects_commuting_axis_substitution(monkeypatch):
+    original = d.source_compiler.execute
+    def wrong_axis(tape, qubits, state=None):
+        if qubits == 1 and len(tape) == 50 and all(p['kind'] in ('X', 'Z') for p in tape):
+            tape = [dict(p, kind='Z') for p in tape]
+        return original(tape, qubits, state)
+    monkeypatch.setattr(d.source_compiler, 'execute', wrong_axis)
+    with pytest.raises(ArithmeticError, match='two-axis commutator bound'):
+        d.product_mode_source_control()
+
+
+def test_product_source_words_have_platform_independent_exact_inputs(monkeypatch):
+    def signature():
+        row = d.product_mode_source_control()
+        return (row['state_clock_parameters']['frequency'], row['state_clock_parameters']['polarization'],
+                row['source_step_word'], [r['word_sha256'] for r in row['complete_ordered_two_time_pointer_records'].values()])
+    expected = signature()
+    for name in ('sqrt', 'acos', 'atan2', 'hypot', 'tanh'):
+        original = getattr(d.math, name)
+        def changed(*args, fn=original):
+            result = fn(*args)
+            for _ in range(8):
+                result = d.math.nextafter(result, np.inf)
+            return result
+        monkeypatch.setattr(d.math, name, changed)
+    assert signature() == expected
+
+
+@pytest.mark.parametrize('beta', (F(1), F(4)))
+def test_product_gibbs_bounds_include_the_angular_constant_without_zero_frequency(beta):
+    row = d.product_thermal_field_bound(beta)
+    # The angular lower spectrum includes n=0, while Dirichlet k starts at1.
+    lam = np.arange(10000)/49920
+    frequency = np.sqrt((np.pi/float(row['interval_length'])*np.arange(1, 101)[:, None])**2+lam)
+    weights = np.exp(-float(beta)*frequency)
+    assert np.sum(weights) < float(row['one_particle_heat_trace_upper'])
+    assert np.sum(-np.log1p(-weights)) < float(row['normal_ordered_Fock_log_partition_upper'])
+    assert row['angular_constant_mode_included'] is True
+    assert row['product_has_zero_frequency_mode'] is False

@@ -568,7 +568,7 @@
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
-    "model/predictions/inverse_clock.py": "6672fe242351d8ce9c3809d96fd645d614a279b554ff8eef7564b2b98c733fee",
+    "model/predictions/inverse_clock.py": "35a6ebef9c1bd7493bccb298aea2e20a92f786211b13e683df9ae81abcdec988",
     "model/predictions/modular_optical.py": "62cdebe3d32765870374579ca6dfe5044d97036fb1e009306bb3fc3b260021ee",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/predictions/protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
@@ -593,6 +593,307 @@
     "model/transfer_modular_probe/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "model/transfer_modular_probe/construction.py": "6d879aed3b62bbe0ffcf9610a94832cdf026d332441ad2e68abc1c80d5d00f40",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
+  },
+  "subordinated_wave_reference": {
+    "Fock_state_or_radial_product_state_prepared": false,
+    "actual_sqrt_L_Gibbs_trace_distance_diagnostic": 0.013435730791467669,
+    "coherence_contrast": "4771393560832199754798789019884/4970677136104243279530613015691605",
+    "complete_ideal_record_law_sha256": "bc22143a2c991d97ba1aa1059d71bad31af59be93518ba4608e479f757040c46",
+    "complete_request_failure_and_readout_law": [
+      {
+        "filter_requests": 0,
+        "first_failure_probabilities": [],
+        "sampling_probability": "5594257926288576401/9223372036854775808",
+        "successful_address_probabilities": [
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "5594257926288576401/110680464442257309696",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "filter_requests": 1,
+        "first_failure_probabilities": [
+          "909066913021893665/73786976294838206464"
+        ],
+        "sampling_probability": "349641120393036025/2305843009213693952",
+        "successful_address_probabilities": [
+          "94137375254621019371/7968993439842526298112",
+          "90892705657373645059/7968993439842526298112",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "3426482979851753045/295147905179352825856",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "filter_requests": 2,
+        "first_failure_probabilities": [
+          "2727200739065680995/590295810358705651712",
+          "5318027455533262218809/1275038950374804207697920"
+        ],
+        "sampling_probability": "1048923361179108075/18446744073709551616",
+        "successful_address_probabilities": [
+          "39673400318587773277843/9562792127811031557734400",
+          "147770407089572991768583/38251168511244126230937600",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "61292801672784816975991/15300467404497650492375040",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "filter_requests": 3,
+        "first_failure_probabilities": [
+          "568166820638683539/737869762948382064640",
+          "5539611932847148128749/7968993439842526298112000",
+          "4003346584330152739366463/6375194751874021038489600000"
+        ],
+        "sampling_probability": "43705140049129503/4611686018427387904",
+        "successful_address_probabilities": [
+          "1116679961214162706632247291/1721302583005985680392192000000",
+          "500824752610205525061048937/860651291502992840196096000000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "5230443126998947547541593/8500259669165361384652800000",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "filter_requests": 4,
+        "first_failure_probabilities": [
+          "284083410319341763/2951479051793528258560",
+          "8309417899270722002999/95627921278110315577344000",
+          "6005019876495228971651213/76502337022488252461875200000",
+          "87936002259759126476571283879/1239337859764309689882378240000000"
+        ],
+        "sampling_probability": "21852570024564751/18446744073709551616",
+        "successful_address_probabilities": [
+          "5667837843081052032903898839709/74360271585858581392942694400000000",
+          "4891781253068054727073101415501/74360271585858581392942694400000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "1055961909614910675997700025521/14872054317171716278588538880000000",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "complete_source_outcome_weight_error_upper": "70369962895677001536492000772641/24999956050019316025000000000000000000",
+    "density_walk_positive_phase_encoding_on_logical_register_compiled_here": false,
+    "exact_finite_native_walk_thermal_state_prepared": false,
+    "growing_source_precision_and_service_budget_certified": false,
+    "incorrect_normalized_component_mixture_trace_distance_diagnostic": 0.0006260419935939466,
+    "joint_copy_normalization": "Q_j=sum X_j/sqrt(2N(p0-pj)), P_j likewise; independent copies supplied",
+    "joint_readout_identity": "noise/half_commutator_amplitude=(m0+mj)/(m0-mj)=coth(log(m0/mj)/2)",
+    "maximum_native_filter_pulses": 456288,
+    "native_coin_sampler_boundary_executions": [
+      {
+        "complete_record_sha256": "c6c05559c609a5885523a744c0e2cd41b2368d0ab975b806872e33ae27cf1721",
+        "native_events": 64,
+        "request": 0
+      },
+      {
+        "complete_record_sha256": "eecf44a64f8f70f1f8d5dc874f9455f93ddb8d41fe4558161e6fc8a237b9825f",
+        "native_events": 64,
+        "request": 0
+      },
+      {
+        "complete_record_sha256": "f599b75191ca69ce62b754cf0ce807958d4206beb7bb8b37b3ab3b616a28402c",
+        "native_events": 64,
+        "request": 1
+      },
+      {
+        "complete_record_sha256": "02a6b157ef70ea1357b73f8942e3c382cb4dfc0d78a92c8d3121780906cee862",
+        "native_events": 64,
+        "request": 1
+      },
+      {
+        "complete_record_sha256": "533fff12c30c01a07b5906379b34c06a520dc1c20789da35e647e335c07a968b",
+        "native_events": 64,
+        "request": 2
+      },
+      {
+        "complete_record_sha256": "95e258b9fe8f2583627d5b580835484871a1d02ab5785410b43ea123536dce39",
+        "native_events": 64,
+        "request": 2
+      },
+      {
+        "complete_record_sha256": "f5819021ab73d28fc336e8a4462547e6dbb03a46c003053869a829c0ebe28adf",
+        "native_events": 64,
+        "request": 3
+      },
+      {
+        "complete_record_sha256": "4ab12b65d917863e3030cf0a12b72e2ceea48af9f7a74469290d3eef7ac9cf9b",
+        "native_events": 64,
+        "request": 3
+      },
+      {
+        "complete_record_sha256": "4d226fe509c8cc188efa4c2935dde7309ee6fde5b34620fd5a48680f6572352b",
+        "native_events": 64,
+        "request": 4
+      },
+      {
+        "complete_record_sha256": "4d247f9d7740d090bbbbddf5b612729e8b1acc602caeba46b367ea348fee7bc4",
+        "native_events": 64,
+        "request": 4
+      },
+      {
+        "complete_record_sha256": "75ff6ebdec3c818797e4a8c13f569dbf0953fcfb9ea68db6d463e202e92cabf5",
+        "native_events": 64,
+        "request": null
+      },
+      {
+        "complete_record_sha256": "6943eb774aa3b882fb4b140818ae4ccf9ff0943512940a614feec9015d2d8958",
+        "native_events": 64,
+        "request": null
+      }
+    ],
+    "one_source_filter_word_sha256": "3cd621a22552929eefc1a42df012cb9464aa6a9d2cfee16a31c33b58968aae54",
+    "public_physical_dataset_identified": false,
+    "restricted_group_image_modular_flow": "identity for ideal densities, which are central there; source errors have separate guards",
+    "same_full_logical_state_and_generator_family": true,
+    "sampler_and_herald_controller_selected_by_passive_repair": false,
+    "sampling_rejection_probability": "100484461455872493/576460752303423488",
+    "single_mode_joint_readout_predictions": [
+      {
+        "band": 1,
+        "canonical_fluctuation_variance_diagnostic": 61.10385583165687,
+        "constant_to_single_mode_modular_gap_diagnostic": 0.016365944614047168,
+        "degeneracy": 3,
+        "inferred_actual_walk_inverse_temperature_diagnostic": 0.05371017867207829,
+        "inferred_sqrt_L_inverse_temperature_diagnostic": 0.00984413131494997,
+        "noise_over_half_commutator_amplitude_diagnostic": 122.20771166331375
+      },
+      {
+        "band": 2,
+        "canonical_fluctuation_variance_diagnostic": 28.737135870852477,
+        "constant_to_single_mode_modular_gap_diagnostic": 0.03480169117292301,
+        "degeneracy": 5,
+        "inferred_actual_walk_inverse_temperature_diagnostic": 0.07716102516017079,
+        "inferred_sqrt_L_inverse_temperature_diagnostic": 0.014207730926597132,
+        "noise_over_half_commutator_amplitude_diagnostic": 57.47427174170495
+      },
+      {
+        "band": 3,
+        "canonical_fluctuation_variance_diagnostic": 24.018869311958593,
+        "constant_to_single_mode_modular_gap_diagnostic": 0.041639948711939524,
+        "degeneracy": 3,
+        "inferred_actual_walk_inverse_temperature_diagnostic": 0.08391796608421105,
+        "inferred_sqrt_L_inverse_temperature_diagnostic": 0.015479569088686407,
+        "noise_over_half_commutator_amplitude_diagnostic": 48.037738623917186
+      }
+    ],
+    "single_mode_observables": "|constant><v_j|+adjoint; choose one vector in each eigenspace, not its full degeneracy",
+    "small_executed_contract": {
+      "analytic_jump_count_Taylor_and_rounding_remainder_upper": "54530016642773392461302867/261744079842077727050956800",
+      "classical_controller_cost_or_laboratory_duration_included": false,
+      "constant_to_band_modular_gap_error_upper": "102463620241581180936718313172125641675683872675041033386227242915744353102303838001117561199723035827036568542116615/373764185378449920249619856189944799178930620098652244080399399287387415564126308986820777207374602827598394118111232",
+      "count_cap": 2,
+      "dyadic_rounding_missing_mass_upper": "5/18446744073709551616",
+      "exact_finite_walk_clock_match": false,
+      "fair_native_coin_events": 64,
+      "filter_generator_to_sqrt_L_bias_upper": "573018369371018209858356933511640760621450337221826172619/185174501193907082533155787984626159275019485611689018130432",
+      "heat_step": "1/60",
+      "jump_cap": 2,
+      "lazy_weight": "1/2",
+      "lower_Taylor_order": 13,
+      "maximum_filter_requests": 4,
+      "mean_filter_requests_before_early_stopping": "2753423823095158695/9223372036854775808",
+      "native_walk_clock_relation": "Omega_30=sqrt(30)*acos(I-L/60); unscaled phase is acos(I-L/60)",
+      "rate": "1/2",
+      "retained_sampler_mass": "475976290847550995/576460752303423488",
+      "sampling_rejection_probability": "100484461455872493/576460752303423488",
+      "scaled_native_walk_to_sqrt_L_modular_bias_upper": "2865091846855091049291784667558203803107251686109130863095/1230311940135789429711814726948702617556061667114950764527616",
+      "second_filter_request_moment": "139310133906600291/288230376151711744",
+      "target_inverse_temperature": "beta=R*sqrt(h), h=p/30",
+      "trace_distance_to_sqrt_L_Gibbs_upper": "102777112543901358578608162543676036418307683754268176061368256843239067487016046762006310734914020999576165703351047/475071200673594267266040938940041636897694792728004338413054067005662980791130033372922167884989314406365933367984128",
+      "unconditional_success_probability_lower": "475976290847550995/6917529027641081856",
+      "unnormalized_operator_remainder_upper": "100484461455872493/576460752303423488",
+      "untruncated_mean_filter_requests_is_infinite": true
+    },
+    "spectral_pair_detector_or_sqrt_L_unitary_compiled_here": false,
+    "successful_readout_native_pulses": 96,
+    "tighter_maximum_native_filter_pulses": 58404864,
+    "tighter_unexecuted_contract": {
+      "analytic_jump_count_Taylor_and_rounding_remainder_upper": "56641175824445621105229812745815415037038359/1609442017885135674104309465135219903928729600",
+      "classical_controller_cost_or_laboratory_duration_included": false,
+      "constant_to_band_modular_gap_error_upper": "21505661454129495839854807893693172368452602294630739310788477654811458428373934240205175318781911534161781162375943/454973444409118426031043892488606321474980842519937094773341263040084864098930670454598051390063016723405124497571840",
+      "count_cap": 8,
+      "dyadic_rounding_missing_mass_upper": "513/18446744073709551616",
+      "exact_finite_walk_clock_match": false,
+      "fair_native_coin_events": 64,
+      "filter_generator_to_sqrt_L_bias_upper": "573018369371018209858356933511640760621450337221826172619/185174501193907082533155787984626159275019485611689018130432",
+      "heat_step": "1/60",
+      "jump_cap": 64,
+      "lazy_weight": "1/2",
+      "lower_Taylor_order": 13,
+      "maximum_filter_requests": 512,
+      "mean_filter_requests_before_early_stopping": "20055911186607848421/9223372036854775808",
+      "native_walk_clock_relation": "Omega_30=sqrt(30)*acos(I-L/60); unscaled phase is acos(I-L/60)",
+      "rate": "1/2",
+      "retained_sampler_mass": "2226104712361351961/2305843009213693952",
+      "sampling_rejection_probability": "79738296852341991/2305843009213693952",
+      "scaled_native_walk_to_sqrt_L_modular_bias_upper": "2865091846855091049291784667558203803107251686109130863095/1230311940135789429711814726948702617556061667114950764527616",
+      "second_filter_request_moment": "243201525269374318015/4611686018427387904",
+      "target_inverse_temperature": "beta=R*sqrt(h), h=p/30",
+      "trace_distance_to_sqrt_L_Gibbs_upper": "21567853513232852797184126245014514122257461332983325368426393090541618952211685294229036552225607103769435323890439/475071200673594267266040938940041636897694792728004338413054067005662980791130033372922167884989314406365933367984128",
+      "unconditional_success_probability_lower": "2226104712361351961/27670116110564327424",
+      "unnormalized_operator_remainder_upper": "79738296852341991/2305843009213693952",
+      "untruncated_mean_filter_requests_is_infinite": true
+    },
+    "total_herald_success_probability": "994135427220848655906122603138321/1239337859764309689882378240000000"
   },
   "uncertain_identification": {
     "Hankel_determinant_interval": [

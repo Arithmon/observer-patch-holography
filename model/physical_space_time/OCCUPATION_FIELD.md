@@ -1186,6 +1186,122 @@ The native [axial circulation counter](../native_circulation/README.md#a-three-c
 is a different unbounded three-component record, with a Brownian count limit;
 it supplies no radial field or spatial transport law by itself.
 
+### Thermal product covariance and the shared wave operator
+
+The classical radial covariance is `B^-1`, where
+`B=-d_r^2+(A ⊕ 0)` on the declared Dirichlet interval `(0,L)`. A quantum
+thermal free field has a different equal-time covariance,
+`q_b(B)=coth(b sqrt(B)/2)/(2 sqrt(B))`, for inverse temperature `b>0`.
+These operators cannot be interchanged. `product_mode_dictionary` specifies
+the finite radial energy independently of either state: for `q` interior
+sites, `h=L/(q+1)`, the Dirichlet difference operator has eigenvalues
+`rho_k,h=4 sin^2(pi k/[2(q+1)])/h^2`. Its joint eigenvalues with an angular
+mode are `nu=rho_k,h+lambda`. An angular eigenvalue supplied to this dictionary
+still requires a certificate on the actual native operator.
+
+Even sampling (RP1) needs a conversion at finite radial mesh. With the
+`sqrt(h)` normalization, its discrete sine transform eigenvalues are
+
+```text
+c_k,h(lambda) = h sinh(h sqrt(lambda)) /
+  [2 sqrt(lambda) (cosh(h sqrt(lambda))-cos(pi k/(q+1)))],
+c_k,h(0) = 1/rho_k,h.                                    (TP1)
+```
+
+The tridiagonal inverse of (RP1) proves (TP1). The first filter
+`[nu*c_k,h(lambda)]^-1/2` produces the grid classical covariance `nu^-1`;
+the second filter `[nu*q_b(nu)]^1/2` produces `q_b(nu)`. Their product
+is fixed by these two covariances. `product_thermal_control` executes it on
+all three radial outputs of the complete 96-event native tape. Independent
+matrix inversion and sine diagonalization check (TP1) and the product
+energy. Keeping the raw sampled bridge, replacing `q_b(B)` by `B^-1`,
+or changing the radial eigenvalues fails these controls. The finite tape
+checks the decoder; the covariance law uses the joint long-block limit.
+
+For commuting Gaussian readouts this constructs only the symmetric
+covariance. After the separate [source-encoded quantum clock and CCR
+construction](../observer_time_fields/REFINEMENT.md), the same product
+operator has ordered covariance and retarded response
+
+```text
+W_b(t)=q_b(B) cos(t sqrt(B))-i sin(t sqrt(B))/(2 sqrt(B)),
+D(t)=sin(t sqrt(B))/sqrt(B),     W_b(t-i b)=W_b(-t).        (TP2)
+```
+
+The imaginary part is fixed by the commutator, not by processing classical
+records. `D'(0)=I`; dropping the angular constant gives a nonlocal
+projection. On the twenty-cell control its response derivative between two
+distinct cells in one radial slice becomes `-1/20`. Dirichlet radial
+boundary conditions retain the constant angular mode without introducing
+a zero product frequency. The finite full-port source operator
+`D_l=4^l L_l` and the cell Schur operator `A_l` are also distinct.
+The [native resolvent bound](../observer_time_fields/REFINEMENT.md#a-uniform-temporal-bound-for-eliminating-carrier-interiors)
+with its argument shifted by each `rho_k,h` gives
+`||(A_l+rho_k,h+z)^-1-U*(D_l+rho_k,h+z)^-1U||<=1/(8*4^l)`.
+Taking the direct sum preserves this bound, independently of the radial
+cutoff. The executable solves all three shifted full 240-port systems.
+Thus the source-compiled frequencies and the cell readouts share the same
+continuum target along the existing spatial subsequence. Their finite
+matrices, active pulses and state preparations are not silently identified.
+
+There are explicit approximation budgets. For fixed radial band `k<=K`,
+`0<=(pi k/L)^2-rho_k,h<=h^2(pi K/L)^4/12`. All finite-grid frequencies are
+at least `m=2/L`. On `nu>=m^2`,
+`|q_b'(nu)|<=1/(4m^3)+1/(b m^4)` and
+`|partial_nu D(t)|<=T^2/(4m)` for `|t|<=T`.
+The latter follows by differentiating `D(t)=integral_0^t cos(u sqrt(nu))du`.
+These bounds also control (TP2), including its cosine factor;
+`product_thermal_bounds` retains rational upper bounds using `pi<22/7`.
+Norm resolvent convergence of `A_l` then gives every fixed smeared thermal
+covariance and response as the angular level and radial cutoff increase.
+There is no asserted rate for selecting the spatial subsequence.
+
+Before the native count limit, `native_block_covariance_bound` controls
+covariances without declaring Gaussian independence. Write `s=4^l`,
+`M=630s`. The internal gap is at least two, the external matching has norm
+at most two, and `S_l>=3/(4096s)` on centered cell vectors.
+Completing the native block quadratic form gives
+`||u||^2<=(3/lambda_2(S_l)+1)<u,L_l u>`, hence
+`lambda_2(L_l)>=1/(4096s+1)`. Set `r=1-1/[2M(4096s+1)]` and
+`epsilon=r/[4Msn(1-r)^2]`. Summing the exact stationary lag covariances
+gives one-block covariance error at most `2epsilon` and adjacent-block
+cross covariance at most `epsilon`. For `p` consecutive blocks and any
+declared composite linear filter `T`, the covariance error is at most
+`2p epsilon ||T||^2`. This includes the constant-mode encoder when it is
+included in `T`. It is a conservative finite-count covariance bound, not
+a Gaussian distributional or total-variation bound.
+
+The continuum thermal state exists on the entire declared product.
+Counting angular modes with `lambda_n>=n/49920` gives
+`N_B(x)<=C_L x^(3/2)`, `C_L=L(49920+L^2/9)/3`, using `pi>3` and
+`x>=(pi/L)^2`. Integrating this count yields
+`Tr exp(-b sqrt(B))<=6 C_L/b^3` and the normal-ordered bosonic bound
+`log Z<=8 C_L/b^3`; here `sum m^-4<=4/3`. The inverse temperature is a
+state choice. Neither this bound nor KMS compatibility selects it.
+
+For the classical symmetric Gaussian wave, convergence also holds in a
+fixed geometric path space. Use the auxiliary product basis of interval
+sines and spherical harmonics, with squared Sobolev weight
+`(1+k^2+j(j+1))^-s`. The existing angular form bound gives harmonic-average
+energy at most `2j(j+1)`; Jensen bounds the corresponding square-root
+energy. For `s=3`, grouping by `n=max(k,j+1)` gives at most `3n^2`
+weighted modes and proves
+`E||Phi(0)||_-3^2<=32(L/4+L^2/(4b))` and
+`E||dot Phi(0)||_-3^2<=36(1+11/(7L)+1/b)`.
+The fourth increment bound is three times the square of the latter
+constant times `|t-u|^4`. The same sums converge for every `s>2`;
+compact embedding from any `2<s'<s` supplies tightness in
+`C([-T,T],H^-s)`. Spectral-order labels are not substituted for geometric
+harmonics. These commuting Gaussian path laws describe the symmetric
+covariance; the quantum limit concerns ordered fields or Weyl observables.
+
+The count limit, the declared grid/field processing, the source quantum
+encoding and the common spatial subsequence remain explicit. The product
+wave's [Lorentzian action density](../relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+follows conditionally from this same local energy and the chosen wave
+clock. None of these constructions selects physical radial sites, a
+laboratory second, a smooth unique continuum, or an interacting QFT.
+
 ### A complete linear readout preserves the decay spectrum
 
 The [actual density path law](../observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)

@@ -1,15 +1,15 @@
 {
-  "description": "Native field histories and comparison waves share one source operator; source-coded ordered readouts give a conditional quantum fluctuation field, with faithful thermal state and active modular clock under explicit preparation.",
+  "description": "Native density and product field readouts share the source continuum operator; source-coded ordered fields have a conditional faithful thermal state and active modular clock, with explicit radial, preparation and service contracts.",
   "files": {
     "AUDIT.md": "96de349b73a15fe61ed94639d12f05ac2a54fa7edc30ced63458ae0476c3b737",
-    "README.md": "6fc1c8ac011e8cda98a32ea53751249b0889b7fc5d4399459ed37a0723d33b21",
-    "REFINEMENT.md": "8b45b890589037399880a029e14f413316eae4922a8df33d13002364f55e4485",
+    "README.md": "0b86162ff30b60f432420592775ae89f61b224a70424202428dad1fab1e5373a",
+    "REFINEMENT.md": "13cac8024e51e329a5192f2e2b5e382f39d893f8de1dc0421a615159af6c673f",
     "__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
     "__main__.py": "095f289c3a9703247de1b0faf913823705f56a9d1512dd05b04bc95749d8308d",
     "canonical_sector.py": "50569e985860cce4014d1156224a127b03881e11b387d5c926ec985f7d9a2029",
     "canonical_sector_results.json": "c62ff2836f1d3cd833e5c1728676f263b532683dd37953fad0e035ee4bbacf99",
-    "continuum_dynamics.py": "f174a06d0f975514ad4bcb6f8009fa67e28395abf6ff5ca649d116298b2f221d",
-    "continuum_dynamics_results.json": "f2f3a2cdbd5be1a727e44c3996c0a5adb60342d315a2fdf68e43275e450213ba",
+    "continuum_dynamics.py": "b58190e20c42778fcf2d05fdf961bfd0c6af685fe8ffea956b96021775d837db",
+    "continuum_dynamics_results.json": "5d467417f1af802860d275cf4d7b5ba2c4847f5d38eca4104abed1b1c103c258",
     "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
     "dual.py": "647f69c428e9bf7c8cf0eb72fa7d408eb7758a728861d0202600dc6dc883c548",
     "federation.py": "300cce61e8de9f43deb048523def82c35ac9d7440e05d097c892a827eb4ed037",
@@ -18,10 +18,10 @@
     "refinement_results.json": "d76a6dcd99c1c279923f4bf852bb00db8240b1fbd4ae3ab24bf3817fa928e5ca",
     "results.json": "13a000287a74615e7086526584d5f9b025ed1faf4170a757a84f25880a54ab97",
     "spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
-    "spatial_dynamics_results.json": "f0bd65f95e14f2c807ea5a3c689216de7020595b067d7676be0a94b26aced26a",
+    "spatial_dynamics_results.json": "4665f0e32526fac53954cceca4ceae53cb71ee200bfdfe52616f1bd95c490ee8",
     "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
     "test_canonical_sector.py": "6563fc2eb688b3b5cd073e3f0181790807462e8bdbcc3961f3dfcfa2ef62d866",
-    "test_continuum_dynamics.py": "6bfab16acbebdb1abd4b8c2dc1724fd97da68697d85fcf876776b9ca53a4d2c0",
+    "test_continuum_dynamics.py": "ec506d12b6a948d1d3cfc08abef2409966b37b62a02799e89bd8bf1a5852031c",
     "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
     "test_dual.py": "3aad4050be728668865cce56b7685cd196c39fa2de6c645d9cddfac3cc7c7bee",
     "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
@@ -33,7 +33,7 @@
     "thermal.py": "c2f266f527c0ce083b4d7c091686dbc01cfd8bb68c8dea9c0157f30800d4a0f9",
     "thermal_results.json": "d7839c4852df1266c70dde4e928c499c5143fd4f688fb5d4bd3483057c3aaaec",
     "wave_reference.py": "4b37e0ded33523e746657bfa3ef768581ef7e7ef9d6e66cea9d9d9180cbf50eb",
-    "wave_reference_results.json": "234c0ef52df1d27bf0dff4a54dc5ed22238376041cd8d0ea032e790393206d80"
+    "wave_reference_results.json": "1fe191938b4240c509a8431a0bdb2fc5d6af6480ae98aa277ae879927ee4a8b8"
   },
   "reproduce": [
     "python -m model.observer_time_fields --check model/observer_time_fields/results.json",

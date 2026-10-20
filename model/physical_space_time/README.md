@@ -63,7 +63,13 @@ twenty- and eighty-cell sources. The declared interval product has spectral
 dimension three and a free-wave comparison cone; its radial domain,
 boundary conditions and processing remain observer choices. Finite adjacent
 native blocks retain nonzero covariance, so the Gaussian construction
-requires the stated count limit. On the twelve-port carrier, explicit four-event fork-and-join
+requires the stated count limit. The [thermal product join](OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+derives separate filters for sampled bridges, the classical inverse and the
+quantum thermal covariance. Complete native readouts, finite-count covariance
+budgets, radial-grid errors and the full-port/Schur resolvent bound connect
+this field to the source-encoded product clock. The construction retains the
+angular constant for locality and admits a finite free-field Gibbs state;
+quantum commutators require the separate quantum encoding. On the twelve-port carrier, explicit four-event fork-and-join
 diamond schedules in `causal_placement.py` realize two-way causal order
 equivalence and matching metric causal intervals across all sixteen coin
 branches, while general tapes retain the converse countercontrol. The exact

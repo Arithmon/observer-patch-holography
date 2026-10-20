@@ -1,23 +1,23 @@
 {
   "description": "Observer-visible fields and temporal representations, fixed or predictable incident-clock density limits, and active coherent-wave clock attachment with explicit physical identification boundaries.",
   "files": {
-    "README.md": "a43074409912ba12d2021b26d9ae5221482fc84380120e37b817413ed4521ff0",
+    "README.md": "b34d5ef3cf6b0e0f86e3d357ef25e9fcbdaabd5c238e5e609153afc173d51809",
     "__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "binary_dynamics.py": "a5801807eac5518b8f8661ac88effa07390356b9e0caf89c63ff47ba96f17c15",
-    "binary_results.json": "c153ae0902230a3127201edbe66d90e66e8e58aa0ec0aff000b9a7317ab24534",
+    "binary_results.json": "b4c5a0135a3162e69bb2969d1fed8b59e25edeb0bb3062ce9f162d49557254f2",
     "clock_reconstruction.py": "989db7dd95fab25c6f06942e3349c3a1f433101b0be4bd5beca6cbfe733ee0d6",
     "clock_reconstruction_results.json": "498e2b1d3c70fde48ced422731ee719ab86b6bc50a9b3c6eccef0ebfb017a08a",
     "construction.py": "9ca1e81d200451cb704efaf05d5463ebda121cfca4179f95febc8b7ca3dd351d",
-    "intrinsic_geometry.py": "9a8731d640260b7fda6e85b0fc84764deeccfc7147a6f26999236c716f116e43",
-    "intrinsic_results.json": "7f1cf9f64acb85ca15d8f066e27f88f750306b53c8114f8094da2dd0ce3789a6",
+    "intrinsic_geometry.py": "e34613b65d1ff3ea6c2ada2941caba4160b00f3ea694a3f1920d0e146dbc2fc2",
+    "intrinsic_results.json": "f015344e09d167618714f884f479c8f5147fc44c5dfac461a13f2a792ce05225",
     "results.json": "24d7d78e4090d57634f30e383ed22ec089908de37c177e6e447d23ca9cce9395",
     "temporal_records.py": "95fd3869dd3de8cc419c529979cfbb2f9d80d14683f49eda6bc45f6acdabe871",
     "temporal_results.json": "8cfb611ed222446185e0c16635a67bff586ccb4c0aa0b508b4d3d7dc5daf1e9e",
     "test_binary_dynamics.py": "cfcffdcf865fb0db3b3c6efb81b9a180eed8087aeeacfd771bd4a971178bb442",
     "test_clock_reconstruction.py": "2e63e91502dd84c8a974d0db179ee2f4c27051ae1492a4c536323c4ed921d96f",
     "test_construction.py": "cddc206a4bac54bb728c5fb5ed83d951093dc198ad3ae93a8820c48e6bd67c3c",
-    "test_intrinsic_geometry.py": "98cd2f99e40fdc211f8c3eed3ad170a461fa91e77d11ed7d8cd3d24135efd277",
+    "test_intrinsic_geometry.py": "3dc1663c0ee75ee40e0bbfc7d3c37a6bb9e35e1baed526797467020dd35303ff",
     "test_temporal_records.py": "7912652855249c973e32ae5f0adba9ad600f465a49e6689f5eee04dd5275e655"
   },
   "reproduce": [

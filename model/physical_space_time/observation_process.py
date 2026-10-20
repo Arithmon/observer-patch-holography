@@ -317,6 +317,210 @@ def radial_product_bounds(energy=F(12), sobolev_order=F(2)):
     }
 
 
+def product_mode_dictionary(native_eigenvalue, radial_mode=1, radial_points=3,
+                            length=F(2), angular_scale=F(1)):
+    """Exact radial-grid/native-mode dictionary; no clock or mode is selected."""
+    radial_points = _integer(radial_points, 1, 64)
+    radial_mode = _integer(radial_mode, 1, radial_points)
+    length, angular_scale = _positive(length), _positive(angular_scale)
+    if type(native_eigenvalue) not in (int, F) and not isinstance(native_eigenvalue, sp.Expr):
+        raise ValueError('an exact nonnegative native eigenvalue is required')
+    if type(native_eigenvalue) is F and (
+            native_eigenvalue.denominator <= 0
+            or math.gcd(native_eigenvalue.numerator, native_eigenvalue.denominator) != 1):
+        raise ValueError('a canonical exact native eigenvalue is required')
+    eigenvalue = sp.sympify(native_eigenvalue)
+    if (eigenvalue.free_symbols or eigenvalue.atoms(sp.Float) or eigenvalue.is_real is not True
+            or eigenvalue.is_nonnegative is not True or eigenvalue.is_finite is not True):
+        raise ValueError('an exact nonnegative native eigenvalue is required')
+    spacing = sp.Rational(length)/(radial_points+1)
+    radial = sp.simplify(4*sp.sin(sp.pi*radial_mode/(2*(radial_points+1)))**2/spacing**2)
+    angular = sp.Rational(angular_scale)*eigenvalue
+    return {
+        'native_eigenvalue': eigenvalue, 'angular_scale': sp.Rational(angular_scale),
+        'scaled_native_eigenvalue': angular, 'radial_eigenvalue': radial,
+        'product_eigenvalue': angular+radial,
+        'continuum_radial_eigenvalue': (sp.pi*radial_mode/sp.Rational(length))**2,
+        'radial_spacing': spacing, 'radial_mode': radial_mode,
+        'radial_points': radial_points, 'interval_length': sp.Rational(length),
+        'radial_boundary_condition': 'Dirichlet',
+        'native_eigenvector_membership_requires_a_separate_certificate': True,
+    }
+
+
+def product_thermal_bounds(inverse_temperature=F(2), length=F(2),
+                           radial_points=3, radial_band=1, horizon=F(1)):
+    """Rational grid, thermal-state and H^-3 path bounds for the declared product."""
+    beta, length, horizon = map(_positive, (inverse_temperature, length, horizon))
+    points = _integer(radial_points, 1, 64)
+    band = _integer(radial_band, 1, points)
+    spacing = length/(points+1)
+    # sin x >= x-x^3/6 and pi < 22/7 bound the squared-frequency defect.
+    radial_defect = spacing**2*(F(22, 7)*band/length)**4/12
+    minimum_frequency = 2/length
+    covariance_norm = length/4+length**2/(4*beta)
+    derivative_bound = length**3/32+length**4/(16*beta)
+    response_derivative_bound = horizon**2/(4*minimum_frequency)
+    ordered_derivative_bound = (derivative_bound
+        +covariance_norm*horizon/(2*minimum_frequency)+response_derivative_bound/2)
+    # N_B(Lambda) <= C Lambda^(3/2), using pi>3 and Lambda>=(pi/L)^2.
+    count_constant = length*(49920+length**2/9)/3
+    velocity_trace = 36*(1+F(11, 7)/length+1/beta)
+    return {
+        'inverse_temperature': beta, 'interval_length': length,
+        'radial_points': points, 'radial_band': band, 'parameter_horizon': horizon,
+        'radial_squared_frequency_error_upper': radial_defect,
+        'frequency_gap_lower_including_angular_constant': minimum_frequency,
+        'thermal_equal_time_covariance_norm_upper': covariance_norm,
+        'thermal_covariance_grid_error_upper': radial_defect*derivative_bound,
+        'sine_response_grid_error_upper': radial_defect*response_derivative_bound,
+        'ordered_thermal_covariance_grid_error_upper': radial_defect*ordered_derivative_bound,
+        'one_particle_heat_trace_upper': 6*count_constant/beta**3,
+        'normal_ordered_Fock_log_partition_upper': 8*count_constant/beta**3,
+        'fixed_product_H_minus_3_initial_second_moment_upper': 32*covariance_norm,
+        'fixed_product_H_minus_3_velocity_second_moment_upper': velocity_trace,
+        'fixed_product_H_minus_3_increment_fourth_moment_per_delta_fourth_upper': 3*velocity_trace**2,
+        'full_angular_constant_included_without_a_zero_frequency': True,
+        'radial_grid_errors_are_not_a_spatial_subsequence_rate': True,
+        'classical_covariance_processing_establishes_CCR': False,
+        'thermal_state_or_radial_domain_selected_by_repair': False,
+    }
+
+
+def native_block_covariance_bound(level, block_length, blocks, filter_norm_squared=F(1)):
+    """A covariance error, not a finite-count Gaussian distribution guarantee.
+
+    The internal gap is at least two, the cross-seam Laplacian norm at most
+    two, and the existing Schur Green bound gives gap(L)>=1/(4096*4^l+1).
+    """
+    level, count, blocks = _integer(level), _integer(block_length, 1), _integer(blocks, 1)
+    gain = _positive(filter_norm_squared)
+    scale, seams = 4**level, 630*4**level
+    contraction = 1-F(1, 2*seams*(4096*scale+1))
+    cross = contraction/(4*seams*scale*count*(1-contraction)**2)
+    return {'level': level, 'native_attempts_per_block': count, 'blocks': blocks,
+        'filter_norm_squared_upper': gain,
+        'native_density_contraction_upper': contraction,
+        'one_block_covariance_defect_upper': 2*cross,
+        'adjacent_block_cross_covariance_upper': cross,
+        'filtered_joint_covariance_defect_upper': 2*blocks*cross*gain,
+        'bound_applies_before_Gaussian_limit': True,
+        'finite_count_Gaussian_total_variation_bound': False}
+
+
+def product_thermal_control(inverse_temperature=F(2)):
+    """Execute the declared radial-grid/thermal filter on the native records.
+
+    The classical symmetric covariance is measured here. Noncommuting ordered
+    readouts and the active product clock are certified by observer_time_fields.
+    """
+    beta = _positive(inverse_temperature)
+    if not F(1, 16) <= beta <= 4:
+        raise ValueError('the numerical thermal control admits inverse temperature in [1/16,4]')
+    points, cells, length, spacing = 3, 20, 2., .5
+    _, angular, _ = spatial._green_orthonormal_bundle(0)
+    values, vectors = np.linalg.eigh(angular)
+    values[0] = 0.
+    grid = np.arange(1, points+1)
+    sine = np.sqrt(2/(points+1))*np.sin(np.pi*np.outer(grid, grid)/(points+1))
+    radial = np.array([float(product_mode_dictionary(
+        0, k, points)['radial_eigenvalue']) for k in grid.tolist()])
+    transform = np.kron(sine, vectors)
+    spectrum = (radial[:, None]+values[None, :]).reshape(-1)
+    frequency = np.sqrt(spectrum)
+    thermal = 1/(2*frequency*np.tanh(float(beta)*frequency/2))
+    product = (np.diag(np.full(points, 2.))+np.diag(np.full(points-1, -1.), 1)
+               +np.diag(np.full(points-1, -1.), -1))/spacing**2
+    product = np.kron(product, np.eye(cells))+np.kron(np.eye(points), angular)
+    product_error = float(np.linalg.norm(
+        product-(transform*spectrum)@transform.T, 2))
+    positions = spacing*grid
+    bridge = spacing*np.block([[(vectors*_radial_dirichlet_covariance(
+        values, r, s, length))@vectors.T for s in positions] for r in positions])
+    # The precision of sampled continuous Dirichlet bridges is tridiagonal.
+    # Its DST eigenvalues are not rho_h+lambda at a finite radial mesh.
+    bridge_spectrum = np.empty((points, cells))
+    bridge_spectrum[:, 0] = 1/radial
+    for j, lam in enumerate(values[1:], 1):
+        root = math.sqrt(lam)
+        bridge_spectrum[:, j] = spacing*np.sinh(spacing*root)/(
+            2*root*(np.cosh(spacing*root)-np.cos(np.pi*grid/(points+1))))
+    bridge_spectrum = bridge_spectrum.reshape(-1)
+    bridge_error = float(np.linalg.norm(
+        bridge-(transform*bridge_spectrum)@transform.T, 2))
+    classical = np.linalg.inv(product)
+    target = (transform*thermal)@transform.T
+    gain = np.sqrt(thermal/bridge_spectrum)
+    transfer = (transform*gain)@transform.T
+    covariance_error = float(np.linalg.norm(transfer@bridge@transfer.T-target, 2))
+    raw_bridge_discrepancy = float(np.linalg.norm(bridge-classical, 2))
+    classical_thermal_discrepancy = float(np.linalg.norm(classical-target, 2))
+    execution = radial_record_gluing()['finite_native_record_execution']
+    record = math.sqrt(spacing)*np.asarray(execution['all_radial_slice_readouts']).reshape(-1)
+    output = transfer@record
+    # Ordered thermal covariance has a state-independent imaginary part.
+    # The real record filter supplies only its symmetric, commuting part.
+    time = .375
+    ordered = thermal*np.cos(time*frequency)-.5j*np.sin(time*frequency)/frequency
+    ordered_minus = thermal*np.cos(time*frequency)+.5j*np.sin(time*frequency)/frequency
+    commutator_error = float(np.max(abs(
+        ordered-ordered_minus+1j*np.sin(time*frequency)/frequency)))
+    argument = (time-1j*float(beta))*frequency
+    bose_occupation = 1/np.expm1(float(beta)*frequency)
+    # Exponential weights avoid subtracting two O(exp(beta*omega)) terms
+    # in the complex cosine/sine representation at the KMS boundary.
+    shifted = ((1+bose_occupation)*np.exp(-1j*argument)
+               +bose_occupation*np.exp(1j*argument))/(2*frequency)
+    kms_error = float(np.max(abs(
+        shifted-ordered_minus)))
+    omitted = np.kron(np.eye(points), np.eye(cells)-np.ones((cells, cells))/cells)
+    omitted_locality_defect = abs(float(omitted[0, 1]))
+    # Actual full-port modes and cell Schur modes are not the same finite
+    # operator. A shifted resolvent checks their common-limit source mapping.
+    graph = spatial.source.source.federation(0)
+    full = np.zeros((graph.ports, graph.ports))
+    for a, b in graph.seams:
+        full[a, a] += 1; full[b, b] += 1
+        full[a, b] -= 1; full[b, a] -= 1
+    lift = np.kron(np.eye(cells), np.ones((12, 1))/math.sqrt(12))
+    resolvent_errors = []
+    for rho in radial:
+        shift = 1+rho
+        compressed = lift.T@np.linalg.solve(full+shift*np.eye(graph.ports), lift)
+        resolvent_errors.append(float(np.linalg.norm(
+            np.linalg.inv(angular+shift*np.eye(cells))-compressed, 2)))
+    if (max(product_error, bridge_error, covariance_error, commutator_error, kms_error)>1e-10
+            or min(raw_bridge_discrepancy, classical_thermal_discrepancy)<1e-4
+            or max(resolvent_errors) >= .125 or abs(omitted_locality_defect-.05)>1e-14):
+        raise ArithmeticError('product thermal covariance or source-operator control failed')
+    return {
+        'inverse_temperature': str(beta), 'radial_points': points, 'angular_cells': cells,
+        'interval_length': '2', 'radial_boundary_condition': 'Dirichlet',
+        'radial_eigenvalues': [str(product_mode_dictionary(
+            0, k, points)['radial_eigenvalue']) for k in grid.tolist()],
+        'cell_generator_is_native_Schur_not_full_port_generator': True,
+        'direct_product_matrix_diagonalization_error': product_error,
+        'sampled_bridge_DST_covariance_error': bridge_error,
+        'sampled_bridge_vs_grid_inverse_discrepancy': raw_bridge_discrepancy,
+        'classical_inverse_vs_quantum_thermal_covariance_discrepancy': classical_thermal_discrepancy,
+        'derived_record_filter_covariance_error': covariance_error,
+        'record_filter_squared_operator_norm': float(np.max(gain**2)),
+        'thermal_covariance_is_coth_beta_sqrt_B_over_two_divided_by_two_sqrt_B': True,
+        'ordered_covariance_commutator_identity_error': commutator_error,
+        'ordered_covariance_KMS_identity_error': kms_error,
+        'smallest_mode_uncertainty_product': float(np.min(spectrum*thermal**2)),
+        'omitted_angular_constant_disjoint_readout_response_derivative': -omitted_locality_defect,
+        'full_product_response_derivative_is_identity': True,
+        'source_shifted_product_resolvent_errors': resolvent_errors,
+        'source_shifted_product_resolvent_error_upper': '1/8',
+        'all_thermal_radial_readouts_from_complete_96_event_tape': output.reshape(points, cells).tolist(),
+        'complete_signed_currents_retained_in_radial_record_innovation_controls': True,
+        'finite_tape_certifies_Gaussian_thermal_ensemble': False,
+        'classical_record_filter_establishes_quantum_CCR': False,
+        'state_temperature_radial_domain_and_filter_are_observer_contracts': True,
+        'physical_clock_radial_distance_or_interacting_QFT_identified': False}
+
+
 def radial_record_gluing(level=0, slices=3, length=F(2)):
     """Native block innovations synthesize a nondegenerate local product field.
 
@@ -524,6 +728,11 @@ def run():
             'applies_after_functional_CLT_not_at_finite_native_count': True},
         'radial_record_innovation_controls': [radial_record_gluing(level) for level in (0, 1)],
         'radial_product_field_bounds': radial_product_bounds(),
+        'thermal_product_covariance_control': product_thermal_control(),
+        'thermal_product_continuum_bounds': {key: str(value) if type(value) is F else value
+            for key, value in product_thermal_bounds().items()},
+        'native_block_covariance_budget': {key: str(value) if type(value) is F else value
+            for key, value in native_block_covariance_bound(0, 1000000, 6).items()},
         'finite_radial_block_countercontrol': finite_radial_block_control(),
         'all_level_path_bounds': {str(level): {k: str(v) for k, v in path_bounds(
             level, count=100, degree=20).items()} for level in (0, 1, 3, 10, 30)},

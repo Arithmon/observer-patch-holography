@@ -29,7 +29,7 @@ mean response, a spectrum or a clock rate.
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
 | [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The compact Green limit G has a strongly local H1 inverse A of spectral dimension two. Positive weighted dual graphs share its limits, with Green error at most 182*2^-level. Positive native lag mixtures construct exp(-r*sqrt(A)) and its half-cylinder comparison. | Full initial/current readback, lag processing and spatial subsequences are explicit. The parameter r is not measured radius or an independent bulk field. Whole-sequence uniqueness, isotropy and physical interacting dynamics remain unproved; the scoped static/complete-spectrum obstructions apply. |
-| [Native correlations and faithful quantum clocks](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility) | Actual density paths have covariance exp(-abs(tau-u)*A). Independent source codes give ordered CCR fluctuations and native-band kick response. Faithful states with matched axes and r_j=tanh(b*Omega_j/2) give sigma_s=alpha_(-b*s), with active incident time t=(2d/sqrt(630))*tau. Source preparations retain all pointer/reference outputs; the native spectral bound gives a finite mean-zero thermal Fock partition. | Common b, preparation, spectral encoding, protected storage and controls are supplied. The full encoded algebra's modular relation does not identify a spatial patch flow, geometric boost or lab clock. Growing encoders and passive state selection are unproved. Mean-zero supported tests retain the comparison cone; unrestricted screen fields require a zero-mode choice. |
+| [Native correlations and faithful quantum clocks](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock) | Native angular phases and declared radial pulses give a bounded-band product clock with splitting and precision bounds. The positive Dirichlet product operator determines thermal CCR covariance, sine response and sigma_s=alpha_(-b*s), at active incident time t=(2d/sqrt(630))*tau. Its local action determines a measurable Lorentz-signature metric. | Radial design, common b, preparation, spectral access and protected controls remain supplied. A growing nonconstant-mode encoder is unexecuted. This full-algebra relation identifies no spatial-patch boost, smooth observed metric or laboratory clock; passive state selection and interactions remain open. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. Normalized incident clocks sample the continuum field paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with inverse-degree tick weights. Fixed bounded seam incidences separately give finite-vector Gaussian jitter with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | The IID uniform schedule and read access are explicit. Predictable port choices precede the fresh seam draw; their path theorem assumes no clock–field independence. Jitter independence applies only to the fixed-event-set contract. A local clock grants no remote readback, modular identity or physical duration. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock. Public optical data reject direct distinct-region attachments under bounded-error/no-extra-filter hypotheses; a separate test covers a declared compact filter and independent replicas. | The published servo time constant establishes neither compact support nor independent native sources. Allan moment targets give no confidence/resource or refinement bound. Atomic identification is unproved; aliases define one clock. |
@@ -121,11 +121,12 @@ requires its distinct large-`N_edge` sequence and uniform genus remainder;
 `N_edge` is not the physical color count. The executable task is to realize
 the remaining edge weights and sewing operations in the native instrument.
 The [finite edge-generator representation](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
-identifies the density Laplacian with one order-five rotation class
-and irreducible ranks `1,3,5,3`. This checks the finite edge theorem's generator
-and rank clauses. It does not prepare a Gibbs state on the 66-state carrier,
-include the missing four-dimensional representation, or supply gauge collars,
-full group sewing and the compact-group/large-N limit.
+identifies the density Laplacian with an order-five rotation class and ranks
+`1,3,5,3`. The [capped source subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
+prepares square-root Gibbs approximants on a twelve-dimensional logical
+register, with all failures and state/modular-gap bounds; its exact uncapped
+sampler has infinite mean cost. It supplies no 66-state Gibbs preparation,
+missing four-dimensional irrep, physical collar, group sewing or product Fock state.
 
 Critical superstring dimension ten follows from a specified worldsheet
 consistency problem, not from counting carrier ports; see
@@ -186,12 +187,14 @@ record-processing parameter. The separate
 [radial product construction](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field)
 uses independent native block limits and declared filters to supply
 cross-radius innovations, covariance `(-d_r^2+(A⊕0))^-1`, and a local
-Dirichlet product action of spectral dimension three. Finite adjacent
-blocks are correlated; their count limit precedes spatial refinement.
-The radial topology, length, boundary condition and constant-mode encoding
-are observer choices. Its comparison wave cone supplies no native radial
-transport or identification with physical radius, the angular active
-clock, Lorentzian spacetime or an interacting QFT.
+Dirichlet product action of spectral dimension three. The [thermal join](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+derives the distinct quantum covariance, finite-count/grid bounds and the
+full-port/Schur correspondence. Its [two-axis active clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
+combines angular and radial generators with controlled splitting error;
+the local wave action determines a [measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+Radial design, initial states, spectral access and controls remain supplied.
+Growing nonconstant-mode execution, smoothness, physical radial transport,
+laboratory duration and an interacting QFT are unproved.
 
 The [ambient spacetime theorem](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean)
 adjoins an independent real axis and defines `t*t'-G(x,x')`; dimension four
@@ -235,13 +238,11 @@ moment targets infer no resource bounds or source refinement level. The
 same-clock density-transfer sampling certificate requires joint incident
 records absent from those optical files. Atomic transitions remain unproved.
 
-To identify three physical spatial dimensions in a bounded effective regime,
-attach radial and angular records to a common metric and dynamical law with
-controlled errors, then establish their physical observation dictionary.
-A global continuum claim additionally needs the refinement, volume and
-topology clauses of PR-16/PR-52. Their statuses are unchanged. Constructing a
-topological bulk from a screen and identifying it with physical propagation
-are distinct obligations.
+The conditional product construction joins radial and angular readouts to
+one wave operator, state and measurable metric. Physical identification
+needs a tested observation dictionary, including actual transport and
+clock response. Global claims retain the refinement, volume and topology
+obligations of PR-16/PR-52; a chosen interval does not settle them.
 
 ## What each primitive must specify
 
@@ -582,8 +583,9 @@ An [active incident counter](relative_observer_geometry/README.md#active-coheren
 drives steps on a protected register; its complete two-attempt Ramsey
 probability is `1297/1320` and its ideal bounded-band limit is
 `cos((2d/sqrt(630))*tau*sqrt(A))`. Timing-carrier pauses, coherent services
-and accumulating implementation errors remain explicit. The source-pulse
-Ramsey controller and growing refinement compiler are unproved.
+and accumulating implementation errors remain explicit. The product-mode
+controller executes complete ordered pointer and kick readouts; its bounded-band
+contract does not execute a growing nonconstant-mode refinement compiler.
 
 Even the stronger hypothetical requirement of covariance under every
 permutation of the sixty event labels leaves two real orthogonal coins

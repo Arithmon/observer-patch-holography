@@ -2,9 +2,68 @@ from copy import deepcopy
 from fractions import Fraction as F
 
 import pytest
+import sympy as sp
 
 from ..observer_reconstruction import native_geometry as ng
 from . import intrinsic_geometry as g
+
+
+def test_wave_metric_reproduces_action_and_anisotropic_characteristics():
+    a = sp.Matrix([[1, 0, 0], [0, 2, 1], [0, 1, 3]])
+    result = g.wave_density_metric(a.tolist(), F(3, 2), F(4, 3))
+    metric = result['metric']
+    assert metric.det() < 0
+    assert metric[0, 0] < 0
+    assert all(metric[1:k, 1:k].det() > 0 for k in (2, 3, 4))
+    density = sp.sqrt(-metric.det())*metric.inv()
+    assert sp.simplify(density-result['action_density']) == sp.zeros(4)
+    # Independent dispersion test in a non-eigenvector spatial direction.
+    xi = sp.Matrix([1, 1, 1])
+    omega = sp.sqrt((xi.T*a*xi)[0]/sp.Rational(4, 3))
+    covector = sp.Matrix([-omega, *xi])
+    assert sp.simplify((covector.T*metric.inv()*covector)[0]) == 0
+    assert (covector.T*sp.diag(-1, 1, 1, 1)*covector)[0] != 0
+
+
+def test_wave_metric_is_covariant_under_a_spatial_chart_change():
+    a = sp.Matrix([[2, 1, 0], [1, 3, 1], [0, 1, 2]])
+    change = sp.Matrix([[2, 1, 0], [0, 1, 1], [0, 0, 1]])
+    before = g.wave_density_metric(a.tolist(), F(2, 3))
+    # x=change*y: gradients transform contragrediently; volume is a density.
+    after = g.wave_density_metric(
+        (change.inv()*a*change.inv().T).tolist(),
+        sp.Rational(2, 3)*abs(change.det()))
+    jacobian = sp.diag(1, change)
+    assert sp.simplify(after['metric']-jacobian.T*before['metric']*jacobian) == sp.zeros(4)
+
+
+def test_wave_metric_retains_action_normalization_and_clock_coordinates():
+    control = g.product_wave_metric_control()
+    assert control['doubling_measure_preserves_cone_but_doubles_metric']
+    assert control['clock_reparameterization_is_tensor_covariant']
+    assert not control['smooth_coefficients_or_curvature_proved']
+    assert not control['observed_spacetime_or_Einstein_dynamics_proved']
+    # Both tensors have rank three. Rank alone does not identify their cones.
+    first = g.wave_density_metric(sp.eye(3).tolist())['inverse_metric']
+    second = g.wave_density_metric(sp.diag(1, 2, 3).tolist())['inverse_metric']
+    light_covector = sp.Matrix([-1, 0, 0, 1])
+    assert (light_covector.T*first*light_covector)[0] == 0
+    assert (light_covector.T*second*light_covector)[0] != 0
+
+
+@pytest.mark.parametrize('tensor,measure,weight', [
+    ([[1, 0], [0, 1]], 1, 1),
+    ([[1, 0, 0], [0, 1, 0], [0, 0, 0]], 1, 1),
+    ([[1, 0, 0], [0, -1, 0], [0, 0, 1]], 1, 1),
+    ([[1, 1, 0], [0, 1, 0], [0, 0, 1]], 1, 1),
+    ([[1., 0, 0], [0, 1, 0], [0, 0, 1]], 1, 1),
+    (sp.eye(3).tolist(), 0, 1),
+    (sp.eye(3).tolist(), 1, -1),
+    (sp.eye(3).tolist(), True, 1),
+])
+def test_wave_metric_rejects_degenerate_or_inadmissible_action(tensor, measure, weight):
+    with pytest.raises(ValueError):
+        g.wave_density_metric(tensor, measure, weight)
 
 
 @pytest.fixture(scope='module')

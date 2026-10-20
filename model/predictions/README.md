@@ -442,6 +442,95 @@ contain this joint preparation and sector measurement, so these are
 conditional model predictions, not an empirical discriminator against SM
 or GR.
 
+### Positive subordination on the prepared register
+
+The [positive native-lag theorem](../physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+and the [semigroup Poisson formula](https://arxiv.org/html/0910.2569v2#S1.E9)
+give a constructive route from heat to square-root Gibbs weights:
+`exp(-b sqrt(L)) = integral mu_b(t) exp(-tL) dt`, with
+`mu_b(t)=b exp(-b²/(4t))/(2 sqrt(pi) t^(3/2))`.
+Mixing normalized states `exp(-tL)/Z_t` with weights `mu_b(t)` is incorrect.
+The conditioned mixture requires weights proportional to `mu_b(t) Z_t`.
+Sampling a requested filter history first and retaining its actual success
+probability supplies this factor without a fitted partition function.
+
+The executable reuses the same source filter `F=I-hL/2`, where `h=p/30`.
+For `a_k=binom(2k,k)/(4^k(2k-1))`, independently sampling
+`J~Poisson(R)` and summing J jumps of law `a_k` gives
+
+```
+sum_n w_n F^(2n) = exp(-R sqrt(I-F²))
+                 = exp[-b sqrt(L-hL²/4)],   b=R sqrt(h).
+```
+
+This is positive discrete subordination, with a controlled filter bias
+relative to `exp(-b sqrt(L))`. The finite implementation caps jumps at B
+and counts at J, replaces `exp(-R)` by a rational lower Taylor bound, and
+rounds each coefficient down to a dyadic grid. A fixed word of fresh native
+placement-coin records selects the requested n. Every unused interval is a
+recorded sampling rejection; the coefficients are never renormalized.
+The decoder checks actual native histories at every interval boundary.
+The fair IID coin law, protected working register and classical controller
+are explicit services.
+
+Let `delta=1-sum w_n` and let s be a rational upper bound for `sqrt(8h)`.
+The omitted positive operator is at most `delta I`. With
+`q=max(w_0,1-Rs)` and `eta=Rsh/(1-h)`, the conditioned state has trace
+distance at most `min(1,delta/max(q,1/12)+eta)` from the square-root Gibbs
+target. If `delta<q`, constant-to-band modular gaps differ from
+`b sqrt(lambda_j)` by at most `delta/(q-delta)+eta`.
+For odd Taylor degree k, split R into `ceil(R)` arguments at most one.
+The missing-mass budget is
+
+```
+delta <= R binom(2B,B)/4^B + R^(J+1)/(J+1)!
+         + 3 ceil(R)/(k+1)! + (BJ+1) 2^(-sampling_bits).
+```
+
+Thus caps, Taylor precision and coin-word length can be chosen before the
+readout. For fixed b, taking `h=1/m²`, `R=bm`, and vanishing truncation
+budgets gives the square-root Gibbs limit. The untruncated jump law has
+infinite mean. Even stopping at the first failed herald leaves infinite
+expected work for the exact sampler, because the constant sector survives
+every filter with initial weight `1/12`. Every capped trial has finite cost.
+This is a convergent family, not a bounded-cost exact preparation.
+
+The complete source instance uses `p=R=1/2`, B=J=2, 64 native coin events,
+and at most four reused raw filters. It retains each sampling label,
+first-failure event and all sixteen successful interference outcomes.
+Its conservative Gibbs trace-distance bound is below `.217`; the finite
+spectral diagnostic is about `.01344`. Incorrectly averaging normalized
+component states changes the result by about `.000626` in trace distance.
+A separate unexecuted B=64, J=8 contract bounds Gibbs trace distance by
+`.046`, with at most 512 filters and 58,404,864 native filter pulses.
+Sampler/control and readout costs are distinguished from these pulse counts.
+Numerical source guards do not certify physical precision for the growing
+family.
+
+One prepared full-register state also fixes joint readout predictions.
+Choose one normalized vector `v_j` in each positive eigenspace, set
+`X_j=|0><v_j|+adjoint`, and let Y_j be its Pauli partner. If p_0,p_j are
+the probabilities per vector, then
+`S_j=<X_j²>=p_0+p_j`, `<[X_j,Y_j]>/(2i)=A_j=p_0-p_j`, and
+`S_j/A_j=coth(g_j/2)` with `g_j=log(p_0/p_j)`. For the declared
+square-root clock, the two-point law is
+`S_j cos(sqrt(lambda_j)t)-i A_j sin(sqrt(lambda_j)t)`.
+Independent copies normalized by `sqrt(2N A_j)` give the existing joint
+CCR limit, with variance `coth(g_j/2)/2`; cross-mode covariances vanish.
+This replaces separately assigned band polarizations by one state. The
+small capped instance does not have an exact common inverse temperature.
+
+Nor is `sqrt(L)` the exact finite native-walk frequency:
+`Omega_30=sqrt(30) acos(I-L/60)`. The receipt separately bounds this
+dispersion error; its band gaps converge only under the stated scaling.
+The spectral-pair detector, positive-phase encoding and square-root unitary
+on this logical register are not compiled here. This is neither a prepared
+Fock state nor a radial product state. The ideal densities are central on
+the represented group algebra, where modular flow is trivial; source
+approximation errors have separate guards. Nontrivial gaps concern the
+full logical algebra. Passive selection, physical clocks and a public-data
+identification do not follow.
+
 ## Native repair response from passive clock and field records
 
 [repair_response.py](repair_response.py) predicts a finite response using the

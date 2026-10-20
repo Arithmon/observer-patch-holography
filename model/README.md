@@ -7,8 +7,8 @@ source operations and compared with exact mathematical targets or public
 measurement data under explicit apparatus assumptions.
 
 The construction supports finite interacting quantum observation laws, local event clocks,
-effective field descriptions with memory, and quantitative observation bounds
-across federations of elementary observers. **A physical identification with
+and a conditional free product field with thermal covariance, active clock
+and measurable Lorentz-signature action. **A physical identification with
 our Universe, including interacting relativistic spacetime, remains open.**
 The [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md) states the current
 results and remaining obligations. The
@@ -65,21 +65,15 @@ clock and step-error budget. Its complete two-attempt control gives Ramsey
 plus probability `1297/1320`. The finite eleven-mode density sector has a
 [720-arc source compilation](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk)
 with 114,910 pulses per walk, clean scratch and retained padding.
-Full-register execution reuses raw pulse-executed routines; its numerical
-guards are not interval or physical precision certificates. Protected
-storage, coherent control and carrier pauses are declared; the growing
-refinement compiler is unproved. A separate classical Gaussian wave has
-covariance `A^-1 cos((t-u)sqrt(A))`. The [source-coded quantum fluctuation readout](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
-executes ordered Weyl products and kick responses for pure and faithfully
-prepared codes. The IID copy limit gives vacuum or thermal CCR fields.
-For a faithful mode, modular flow matches the active clock exactly when
-its axis matches and `log((1+r)/(1-r))=b*Omega`, with a common `b` across
-modes. The native spectral bound gives a faithful mean-zero Fock Gibbs
-state and `s=-(2d/sqrt(630))*tau/b`. This applies to the encoded full
-algebra; geometric modular flow on a spatial patch is unproved. State
-preparation, mode encoding and protected controls remain supplied.
-Unrestricted locality requires the separate constant mode, whose massless
-free particle has no normalizable stationary ground state.
+Full-register execution reuses raw pulse routines with numerical guards,
+not physical precision certificates. Protection, control and carrier pauses
+are supplied; growing nonconstant-mode compilation is unexecuted.
+The [quantum fluctuation readout](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
+executes ordered Weyl products and kicks. IID copies give thermal CCR fields;
+matched axes and `log((1+r)/(1-r))=b*Omega` give full-algebra modular time
+`s=-(2d/sqrt(630))*tau/b`. Preparation, mode access and common `b` are supplied,
+without spatial-patch modular identification. On the screen alone,
+unrestricted locality needs a constant mode with no stationary vacuum.
 The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 has a nonzero, exponentially bounded disjoint-support tail at every positive
 scaled selection-slot time. It has no exact finite signal cone under that
@@ -111,17 +105,26 @@ CLT also supply a [radial product field](physical_space_time/OCCUPATION_FIELD.md
 `(-d_r^2+Abar)^-1`, consistent slice gluing and spectral dimension three
 on a chosen interval. A separately encoded contrast restores the angular
 constant mode. Complete native tapes check the decoder; finite blocks are
-correlated, and Gaussian independence requires the count limit. The interval,
-filters and boundary values are supplied. Its product wave generator differs
-from the active angular clock's `sqrt(A)`; a joint encoder is unproved.
+correlated, and Gaussian independence requires the count limit. The
+[thermal product join](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+distinguishes sampled bridges, `B^-1` and `coth(b*sqrt(B)/2)/(2sqrt(B))`,
+where `B=-d_r^2+Abar`. A [two-axis source protocol](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
+joins this operator, ordered CCR fields, sine response and modular flow to
+the same incident clock, with bounded-band splitting and precision errors.
+Dirichlet radial boundaries retain the angular constant without a zero
+frequency. The [product wave action](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+determines a measurable metric of signature `(-,+,+,+)`. The interval,
+state preparation and controls are supplied; a growing nonconstant-mode
+encoder is unexecuted, and smooth geometry and physical units are unproved.
 The [finite edge-generator bridge](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
 realizes the edge theorem's generator and ranks. An [executed lazy filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
 prepares Gibbs approximants of `L` with all failures retained, nonzero
-interference and an explicit state/free-entropy error bound. This uses a
-supplied initial state, event bias and herald controller. The Gibbs state
-is central on the represented group algebra, so its modular flow there is
-trivial; nontrivial gaps require the larger logical register. Physical
-collars, full-group sewing and generalized-entropy stationarity remain open.
+interference and a state/free-entropy bound. [Capped subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
+prepares square-root Gibbs approximants with all failures and state,
+modular-gap and dispersion budgets; uncapped exact sampling has infinite
+mean cost. Preparation and control are supplied. These states are central
+on the represented algebra; physical collars, sewing and generalized-entropy
+stationarity are unproved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the

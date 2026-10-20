@@ -289,6 +289,129 @@ def test_edge_gibbs_is_central_on_group_image_but_not_on_full_register_algebra()
     assert np.linalg.norm(laplacian@observable-observable@laplacian) > 0
 
 
+@pytest.mark.parametrize('rate,jump_cap,count_cap', [
+    (F(1, 4), 3, 2), (F(1, 2), 2, 2), (F(2), 4, 3), (F(1, 2), 64, 8),
+])
+def test_positive_subordination_weights_keep_missing_mass_and_bound_the_operator(rate, jump_cap, count_cap):
+    import math
+    import numpy as np
+    weights = m.subordinated_filter_weights(rate, jump_cap, count_cap)
+    bound = m.subordinated_filter_bound(rate, jump_cap=jump_cap, count_cap=count_cap)
+    assert len(weights) == jump_cap*count_cap+1
+    assert all(w >= 0 and (w*(1 << 64)).denominator == 1 for w in weights)
+    assert sum(weights)+bound['sampling_rejection_probability'] == 1
+    with localcontext() as context:
+        context.prec = 80
+        lower = Decimal(weights[0].numerator)/Decimal(weights[0].denominator)
+        assert lower <= (-(Decimal(rate.numerator)/Decimal(rate.denominator))).exp()
+    for lam in np.linspace(0, 8, 97):
+        f = 1-lam/120
+        actual = sum(float(w)*f**(2*n) for n, w in enumerate(weights))
+        target = math.exp(-float(rate)*math.sqrt(max(0, 1-f*f)))
+        assert -1e-13 <= target-actual <= float(bound['unnormalized_operator_remainder_upper'])+1e-13
+    assert bound['untruncated_mean_filter_requests_is_infinite']
+    assert not bound['exact_finite_walk_clock_match']
+
+
+@pytest.mark.parametrize('weight', [F(1), F(1, 2), F(1, 100)])
+def test_subordination_state_and_modular_bounds_separate_filter_and_walk_dispersion(weight):
+    import numpy as np
+    rate = F(1, 2)
+    bound = m.subordinated_filter_bound(rate, weight)
+    weights = m.subordinated_filter_weights(rate)
+    lam = np.array([0., 5-np.sqrt(5), 6., 5+np.sqrt(5)])
+    d = np.array([1, 3, 5, 3])
+    h, beta = float(weight/30), float(rate)*np.sqrt(float(weight/30))
+    f = 1-h*lam/2
+    unnormalized = sum(float(w)*f**(2*n) for n, w in enumerate(weights))
+    target = np.exp(-beta*np.sqrt(lam))
+    actual, wanted = d*unnormalized/sum(d*unnormalized), d*target/sum(d*target)
+    assert sum(abs(actual-wanted))/2 <= float(bound['trace_distance_to_sqrt_L_Gibbs_upper'])
+    gaps = np.log(unnormalized[0]/unnormalized)
+    assert max(abs(gaps-beta*np.sqrt(lam))) <= float(bound['constant_to_band_modular_gap_error_upper'])
+    native_omega = np.sqrt(30)*np.arccos(1-lam/60)
+    assert np.max(abs(native_omega-np.sqrt(lam))) > .01
+    assert max(beta*(native_omega-np.sqrt(lam))) <= float(
+        bound['scaled_native_walk_to_sqrt_L_modular_bias_upper'])
+
+
+def test_fixed_native_coin_word_sampler_retains_rejection_and_every_bin():
+    weights = m.subordinated_filter_weights()
+    boundary = 0
+    for label, weight in enumerate((*weights, 1-sum(weights))):
+        width = int(weight*(1 << 64))
+        for value in (boundary, boundary+width-1):
+            bits = tuple(map(int, f'{value:064b}'))
+            assert m.select_subordinated_request(bits, weights) == (label if label < len(weights) else None)
+        boundary += width
+    assert boundary == 1 << 64
+    for bits in ((True,)*64, (0,)*47, [0]*64):
+        with pytest.raises(ValueError):
+            m.select_subordinated_request(bits, weights)
+    with pytest.raises(ValueError):
+        m.select_subordinated_request((0,)*64, (F(1, 3),))
+    with pytest.raises(ValueError):
+        m.select_subordinated_request((0,)*64, (F(1), F(1)))
+
+
+def test_complete_source_subordination_uses_partition_weights_and_finite_costs():
+    row = m.subordinated_wave_gibbs()
+    records = row['complete_request_failure_and_readout_law']
+    assert len(records) == 5
+    assert sum((sum(r['first_failure_probabilities'])+sum(r['successful_address_probabilities'])
+                for r in records), F())+row['sampling_rejection_probability'] == 1
+    assert all(len(r['successful_address_probabilities']) == 16 for r in records)
+    assert row['incorrect_normalized_component_mixture_trace_distance_diagnostic'] > .0005
+    assert row['actual_sqrt_L_Gibbs_trace_distance_diagnostic'] < .014
+    assert .21 < float(row['small_executed_contract']['trace_distance_to_sqrt_L_Gibbs_upper']) < .22
+    assert float(row['tighter_unexecuted_contract']['trace_distance_to_sqrt_L_Gibbs_upper']) < .046
+    assert row['tighter_maximum_native_filter_pulses'] == 512*114072
+    assert len(row['native_coin_sampler_boundary_executions']) == 12
+    assert not row['spectral_pair_detector_or_sqrt_L_unitary_compiled_here']
+    assert not row['exact_finite_native_walk_thermal_state_prepared']
+    assert not row['Fock_state_or_radial_product_state_prepared']
+
+
+def test_one_prepared_state_gives_joint_noise_response_and_modular_gaps():
+    import numpy as np
+    weights = m.subordinated_filter_weights()
+    lam = np.array([0.]+[5-np.sqrt(5)]*3+[6.]*5+[5+np.sqrt(5)]*3)
+    values = sum(float(w)*(1-lam/120)**(2*n) for n, w in enumerate(weights))
+    probabilities = values/sum(values)
+    rho = np.diag(probabilities)
+    clock = np.diag(np.exp(1j*.3*np.sqrt(lam)))
+    fields, inverse_temperatures = [], []
+    for j in range(1, 12):
+        x, y = np.zeros((12, 12), complex), np.zeros((12, 12), complex)
+        x[0, j] = x[j, 0] = 1
+        y[0, j], y[j, 0] = -1j, 1j
+        s, a = probabilities[0]+probabilities[j], probabilities[0]-probabilities[j]
+        gap, omega = np.log(probabilities[0]/probabilities[j]), np.sqrt(lam[j])
+        assert abs(np.trace(rho@x@x)-s) < 1e-14
+        assert abs(np.trace(rho@(x@y-y@x))/(2j)-a) < 1e-14
+        assert abs(s/a-1/np.tanh(gap/2)) < 1e-10
+        assert abs(np.trace(rho@clock@x@clock.conj().T@x)
+                   -(s*np.cos(.3*omega)-1j*a*np.sin(.3*omega))) < 1e-14
+        fields.append((x/np.sqrt(2*a), y/np.sqrt(2*a)))
+        inverse_temperatures.append(gap/omega)
+    for j, pair in enumerate(fields):
+        for k, other in enumerate(fields):
+            assert abs(np.trace(rho@(pair[0]@other[1]-other[1]@pair[0]))-1j*(j == k)) < 1e-12
+            if j != k:
+                assert abs(np.trace(rho@pair[0]@other[0])) < 1e-14
+    # The small capped instance does not satisfy an exact common temperature.
+    assert np.ptp(inverse_temperatures) > .001
+
+
+@pytest.mark.parametrize('arguments', [
+    {'rate': True}, {'rate': F(0)}, {'jump_cap': True}, {'count_cap': 0},
+    {'order': 12}, {'sampling_bits': 47},
+])
+def test_subordination_rejects_ambiguous_or_unsupported_sampling_contracts(arguments):
+    with pytest.raises(ValueError):
+        m.subordinated_filter_weights(**arguments)
+
+
 def test_all_repo_local_runtime_imports_are_pinned():
     script = '''
 import json, sys

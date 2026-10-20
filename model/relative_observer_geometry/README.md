@@ -747,6 +747,78 @@ clock history distinguishes these operational choices. These are finite
 apparatus predictions, with no atomic-clock or observed Lorentzian-field
 identification.
 
+### Lorentzian density of the product wave
+
+The [native-record product construction](../physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field)
+has a sharper geometric consequence once its **comparison wave dynamics**
+are specified. Write its spatial generator as
+`B=-d_r^2+(A⊕0)` on the chosen interval times the source screen. The restored
+angular constant mode is necessary here. The existing proof supplies a regular,
+strongly local form with domain `H1` on the screen, equivalent to its ordinary
+gradient energy. These hypotheses determine a measurable symmetric uniformly
+elliptic coefficient tensor in each chart. Smoothness is not a hypothesis
+needed for this measurable representation.
+
+For completeness, let `Gamma` denote the form's energy measure, normalized
+so `E(u)=integral dGamma(u)`. On a chart choose a smooth cutoff `v` and a
+coordinate-linear function `w=xi.x`. Strong locality and the chain rule give
+
+```text
+E(v sin(nw)/n)+E(v cos(nw)/n)
+    = integral v^2 dGamma(w)+E(v)/n^2.
+```
+
+Apply the proved upper and lower gradient-energy bounds to this identity
+and let `n` tend to infinity. It follows that `Gamma(w)` is absolutely
+continuous, with a density bounded above and below by positive multiples of
+`|xi|^2`. Polarization gives the chart coefficients
+`a_screen^ij=dGamma(x_i,x_j)/dmu`. The chain rule reconstructs the whole
+form from these coefficients. This is the local application of
+[Cipriani, Theorem 7.2 and Corollary 7.3](https://msp.org/pjm/2006/223-2/pjm-v223-n2-p03-p.pdf),
+applied to the part form with `H1_0` domain in a bounded chart.
+The model supplies the required form/domain hypotheses. Constants have zero
+energy, and the radial product adds the coefficient `a_rr=1`. Chart changes
+preserve the resulting measurable tensor.
+
+Thus, in local product coordinates with measure `mu(x) d^3x`,
+`E_B(phi)=integral mu a^ij partial_i phi partial_j phi d^3x`.
+The chosen wave action has the coefficient density
+
+```text
+S(phi) = -1/2 integral C^{alpha beta} partial_alpha phi partial_beta phi d^4x,
+C = mu diag(-1,a),
+g = sqrt(-det C) C^-1 = mu sqrt(det a) diag(-1,a^-1),
+sqrt(-det g) g^-1 = C.
+```
+
+The positive spatial tensor forces signature `(-,+,+,+)` almost everywhere.
+The weak equation `partial_alpha(C^{alpha beta} partial_beta phi)=0`
+is exactly the product wave equation. This reconstructs its full metric
+density, including the conformal normalization, from its action. The
+density-to-metric identity is established mathematics; see
+[Visser, equations (23)–(26)](https://arxiv.org/pdf/gr-qc/9712010).
+Its application here does not import fluid dynamics.
+
+`wave_density_metric` checks this algebra exactly for rational coefficient
+inputs. The retained anisotropic example is a coefficient control, not a
+numerical determination of the native limiting tensor. Controls verify
+spatial chart covariance and the change `t=kappa*tau` of wave-clock
+coordinate. Changing the measure normalization preserves the characteristic
+cone but changes the metric normalization; replacing `a` by a round tensor
+merely because both have rank three changes the cone. The form readout,
+measure and clock therefore carry information absent from the slow-band rank.
+
+This establishes a **measurable Lorentz-signature description of the declared
+product wave**. The radial domain, boundary condition and active wave
+protocol remain construction inputs. No smooth native coefficient field,
+unique whole-sequence limit, curvature, Einstein dynamics, interacting QFT
+or physical radial transport follows. For a smooth representative, the
+static line element gives local proper-duration factor
+`N(x)=sqrt(mu(x)) (det a(x))^(1/4)` relative to its wave coordinate; identifying
+an actual clock apparatus with that line element is a separate measurement
+contract. A faithful global thermal state's modular flow is likewise not
+automatically the modular flow of every spatial patch.
+
 ### Transport through source refinement
 
 The response-recovered carrier Gram can be transported into the actual level-3

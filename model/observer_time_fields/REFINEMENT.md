@@ -1848,6 +1848,115 @@ algebra: restriction to a patch need not preserve this modular generator.
 The excluded constant mode and its locality qualification remain as
 above. Geometric boosts, an Unruh temperature, interactions and
 laboratory seconds do not follow from (FT).
-This clock uses `sqrt(A)`. The separately declared radial product field
-has spatial generator `B=-d_r^2+(A ⊕ 0)`; its wave frequency `sqrt(B)`
-would require its own product-mode encoding and active-clock proof.
+The screen construction uses `sqrt(A)`. The following encoding joins the
+radial product field to an active clock under the same source services.
+
+### One product field, state and active clock
+
+Fix the [radial product dictionary](../physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field):
+an interval `(0,L)` with Dirichlet ends, a radial grid of `q` interior
+points and spacing `h=L/(q+1)`, and the actual full native angular generator
+`D_l=4^l L_l`. Its radial frequencies satisfy
+`c_k,h^2=4h^-2 sin^2(k pi/(2(q+1)))`. A native angular mode of scaled
+eigenvalue `lambda` has the already established coherent phase
+`theta_l=acos(1-lambda/(2Q_l))`, `Q_l=630*16^l`, and frequency
+`a_l=sqrt(Q_l) theta_l`. Use one protected code per mode and copy.
+Each zero-inclusive incident event triggers two existing source pulses,
+in chronological order:
+
+```text
+Z(theta_l/2), X(c_k,h/(2 sqrt(Q_l))).
+```
+
+These pulses implement `exp(i c X/(2sqrt(Q))) exp(i a Z/(2sqrt(Q)))`.
+The Pauli axes anticommute, so
+
+```text
+(a Z+c X)^2=(a^2+c^2) I,
+omega_l,k=sqrt(a_l^2+c_k,h^2),
+H_l,k=[omega_l,k I-a_l Z-c_k,h X]/2.                      (PC)
+```
+
+Thus the product dispersion is determined by composition of the native
+angular clock and declared radial apparatus. No independent fitted product
+frequency is applied as a pulse. The finite split word is **not** exact
+evolution by (PC). Duhamel's formula and
+`||[iaZ/2,icX/2]||=ac/2` bound one step by `ac/(4Q)`;
+telescoping bounds `n` steps by `n ac/(4Q)`. The retained execution
+measures the split-order difference and the finite state's stationarity
+defect. Replacing the radial `X` axis by `Z` changes the gap to `a+c`
+and fails the independent exponential check.
+
+For the exact joint generator (PC), write
+`N=(cX+aZ)/omega`, `E=(aX-cZ)/omega`, and retain `Y` as the other
+transverse axis. The faithful state is
+`rho=(I+rN)/2`, `r=tanh(b omega/2)`. A source `Y` rotation of the
+existing retained purification prepares this axis; it also rotates every
+field readout and intervention. The relation (FT) now gives the modular
+flow of **this same product generator**. IID copies have transverse
+fluctuations `sum E/sqrt(2Nr)` and `sum Y/sqrt(2Nr)`, so (QF) gives
+the joint thermal CCR state. Ordered products at two different times
+are measured by controlled source words with all 32 system, reference
+and pointer outputs retained. Signed kicks retain all 16 system/reference
+outputs. Independent matrix calculations check the actual finite split
+word; its ideal modular action and sine response have explicit split
+error budgets. They are not asserted to hold exactly before the limit.
+The modular check uses the actual reduced source state at `s=-t/b`;
+its budget includes the rounded polarization's gap error relative to the
+requested `b` and the compiled preparation/axis error.
+
+The finite nonconstant compiler fixture is an exact full 240-port mode:
+`(0,0,0,0,1,-1,-1,1,0,0,0,0)` on one carrier and zero elsewhere has
+eigenvalue `6` and vanishes on every external seam endpoint. It has zero
+cell compression, so it is an internal control, **not** a nonconstant
+mode surviving in the continuum readout. Under identical local refinement
+its scaled eigenvalue is `6*4^l`, outside any fixed low band. The constant
+angular mode is separately executed and does survive. Extension to bounded
+full-port bands uses the spatial compression/resolvent theorem, not
+equality of a finite full-port matrix with its cell Schur complement.
+No growing nonconstant-mode encoder is executed.
+
+The native fixed-port incident count has mean `2d*4^l` per density
+parameter unit `tau`, for `d=5` or `6`. Hence the product word has wave
+parameter `t=(2d/sqrt(630)) tau`, just as the angular clock. On a bounded
+joint band, `product_clock_bound` adds the native count error, angular
+dispersion, two-axis splitting and pulse synthesis error. For a code with
+`n` triggers it charges two pulses per trigger. Count tolerances may tend
+to zero with `4^l tolerance_l^2 -> infinity`; complete-step synthesis
+errors must satisfy `sqrt(Q_l) error_l -> 0`. A fixed numerical precision
+does not certify unlimited refinement. Timing repairs pause during atomic
+services on the protected code; these pulse costs are not laboratory
+seconds. The finite joint clock/pointer law sums all native seam/coin
+branches, including incident events with zero current.
+
+Taking the copy limit, bounded spectral approximations, radial refinement
+and the common native spatial subsequence gives one encoded free field with
+
+```text
+B=-d_r^2+(A direct_sum 0),
+C_b(t-u)=[coth(b sqrt(B)/2) cos((t-u)sqrt(B))
+                         -i sin((t-u)sqrt(B))]/(2sqrt(B)),
+D(t-u)=B^(-1/2) sin((t-u)sqrt(B)),
+sigma_s=alpha_(-bs),       s=-(2d/sqrt(630))*tau/b.        (PC2)
+```
+
+The angular constant is included, and Dirichlet radial boundaries give
+`B>0`, avoiding the removed-constant nonlocal correction of the screen-only
+field. The full product sine kernel has support in the comparison cone
+`|t-u|^2 >= |r-r'|^2+2d_screen^2`. The product counting bound
+`N_B(x)<=C_L x^(3/2)`, `C_L=L(49920+L^2/9)/3`, gives
+`Tr exp(-b sqrt(B))<=6C_L/b^3` and
+`log Z_b<=8C_L/b^3`, using `sum m^-4<=4/3`.
+Thus `Z_b^-1 exp(-b dGamma(sqrt(B)))` is a faithful normal state on
+the full encoded Fock algebra. Field smearings lie in `L2`; momentum
+smearings require `D(B^(1/4))`. The corresponding classical symmetric
+thermal covariance is obtained from native radial block records by the
+specified filter; only the ordered code construction supplies the CCR.
+
+This joins the product operator, state, intervention response and active
+clock conditionally. Radial apparatus, spectral mode access, independent
+preparation, common `b`, controlled readout, protection and sufficient
+analogue precision remain declared services. Passive repair has not
+selected them. The comparison cone does not identify physical radial
+transport, a smooth observed metric, an interacting QFT, a CFT, spatial
+patch modular boosts or a laboratory time unit.

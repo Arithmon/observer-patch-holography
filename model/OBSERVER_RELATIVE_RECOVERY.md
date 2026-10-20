@@ -34,7 +34,7 @@ construction realizes those domains.
 | Clock to calibration | Local tick rates and finite uncertainty bounds follow from the same continuing source without exact stationary preparation. Actual host-clock records permit one-block calibration and separate validation under a declared 25% engineering tolerance. | The measured software timing is an implementation comparison. The host records have no traceable timestamp-error bound (`seconds_error: null`), so the [laboratory clock](laboratory_clock/README.md) bounded-error cadence test is unresolved, and a zero-error counterfactual rejects an exact affine attempt cadence. Traceable lab accuracy and an identification with physical proper time require independent evidence. |
 | Occupation histories to a spatial action | Complete native records reconstruct long occupation averages with an exact Gaussian-limit covariance and positive quadratic action. The incident-clock correction is derived rather than replaced by a mean wait. | Stationary diagonal preparation and carrier-wide initial/current disclosure are supplied. A port-only tape supplies only its local scalar. The field is a history fluctuation, not an instantaneous Gaussian state. |
 | Continuous field observations and spherical screens | The common native Green limit `G` defines a regular strongly local `H1` generator `A=G^-1` of spectral dimension two. Actual interpolated density paths converge in `C([0,T],H^-3(S2))`, with covariance `exp(-|tau-u|A)` at `tau=attempts/(1260*16^level)`; the declared `A^-1/2` filter gives `H^-2` paths. A positive weighted dual graph has Green error at most `182*2^-level` and the same continuum limits. | Simultaneous scaling retains the spatial subsequence, uniform fixed-number preparation, IID seams and full readback. Normalized incident clocks, including predictable port choices with degree-weighted ticks, sample the same paths. The cumulative-field count-first limit and synthesized cosine waves retain their separate contracts. The static Dirichlet-bulk and complete linear free-scalar dictionaries fail the scoped spectral tests. Whole-sequence uniqueness, other radial observations and physical Lorentzian identification are unproved. |
-| Spatial spectrum to coherent waves | Protected incident-triggered walks give bounded-band cosine propagation. Source-coded pure and faithful fluctuations give conditional vacuum/thermal CCR limits. Common Gibbs polarization relates the faithful modular flow to that active clock. | Preparation, mode encoding, storage and scheduling remain supplied. The mean-zero Fock algebra is not a spatial-patch algebra; the separate radial product generator requires its own evolution encoder. Growing compilation, physical identification and SI units remain open. |
+| Spatial spectrum to coherent waves | Two-axis source pulses join angular phases and radial modes with a controlled product-formula error. One positive product operator determines the thermal CCR state, sine response and full-algebra modular clock; its local action gives a measurable Lorentz-signature metric. | Radial domain, preparation, spectral encoding and protected controls remain supplied. Bounded-mode execution is established; a growing nonconstant-mode encoder is unexecuted. Smooth geometry, spatial-patch modular flow, interacting physical QFT and SI units remain open. |
 | Controlled repair to continuum response | The executed-clock derivative converges to `2(I-exp(-tau*A))f`, with a nonzero fixed-amplitude bound. A separate fixed-selection-slot calculation gives a nonzero exponentially bounded remote derivative for separated nonnegative profiles. | An exact finite response cone fails if the same support/control/time dictionary is imposed. Its physical locality is unproved; this uses an intervention derivative, not equilibrium correlations. Disclosure, control, timeout fields and coin-service costs retain their contracts. |
 | Endpoint records to causal placement | A declared seam-midpoint readout and canonical dependency height satisfy the registered forward Lorentz-cone placement conditions on every finite complete tape. A four-event native execution with all sixteen coin branches has an authenticated Lean instance. | Exogenous scheduling and complete endpoint records are required. Two four-event native diamonds have exact order-embedding witnesses, but another tape has a null-cone pair without ancestry; causal-order equivalence, physical boosts and proper-time calibration do not follow. |
 | Field records to temporal representation | Exact incident-clock correlations reconstruct a seven-mode cyclic Hilbert space on one carrier; actual source-screen correlations also certify a nontrivial two-vector temporal subspace. | The seven-mode result needs exact laws and is ill-conditioned for sampled data. Screen transfer values are compressions, not a closed two-mode dynamics or physical energy calibration. |
@@ -53,19 +53,19 @@ The separate fixed-event-set contract gives finite-vector Gaussian jitter
 with covariance `min(t,u)*shared_seams`, asymptotically independent of
 density vectors. Adaptive choices have no such jitter-independence theorem;
 modular flow, physical movement and SI calibration are unidentified.
-The [faithful quantum readout](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility) supplies a thermal CCR limit and a
-normal mean-zero Fock state. Modular flow matches the active clock when
-all mode states have matching axes and `log((1+r)/(1-r))=b*Omega` with
-common `b`. This is an encoded full-algebra result, with supplied state
-preparation and controls; spatial-patch boosts and physical units are open.
-The [radial record construction](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) adds independent long-block
-innovations to give a local Dirichlet product field of spectral dimension
-three. A separate source contrast encodes the angular constant; the chosen
-interval, filters and limits remain explicit. Its product generator and the
-angular active-clock generator are distinct. The [edge Gibbs filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
-executes a finite preparation with complete failure accounting and bounded
-free-entropy error, under declared initial state, bias and herald controls.
-It supplies no physical collar, group sewing or geometric entropy variation.
+The [joint product construction](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
+uses native angular phases and declared radial pulses to obtain a thermal
+CCR field, sine response and `sigma_s=alpha_(-bs)` on its full Fock algebra.
+Its [record filters](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+distinguish classical and quantum covariance, with finite-count, radial-grid
+and full-port/Schur bounds. Dirichlet radial boundaries keep the angular
+constant without a zero frequency. The [wave action fixes a measurable
+Lorentz-signature metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave);
+radial design, preparation, spectral access and protection remain supplied.
+The separate [capped Gibbs subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
+retains all failures and bounds state and modular-gap errors on a finite
+register. Its exact uncapped sampler has infinite mean cost; it prepares
+neither a product Fock state nor a physical collar or geometric entropy law.
 
 ### One complete joint observer comparison
 

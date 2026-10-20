@@ -307,7 +307,7 @@ def _lazy_filter_program(weight):
 
 
 @lru_cache(maxsize=1)
-def prepared_edge_gibbs():
+def _prepared_edge_gibbs_data():
     """Execute one full filter on all twelve logical input columns.
 
     Reuse that raw executed linear map for two heralds, retaining every
@@ -409,7 +409,7 @@ def prepared_edge_gibbs():
         'maximum_work_qubits', 'service_failure_outcomes_retained',
         'valid_code_failure_probability_in_exact_arithmetic')}
     as_fraction = lambda x: F(int(sp.numer(x)), int(sp.denom(x)))
-    return {'native_density_generator': 'L=6I-(1/2)sum_{g in C} U_g; K12=I-L/60',
+    result = {'native_density_generator': 'L=6I-(1/2)sum_{g in C} U_g; K12=I-L/60',
         'sector_dimensions': [1, 3, 5, 3],
         'sector_eigenvalues': ['0', '5-sqrt(5)', '6', '5+sqrt(5)'],
         'representation_algebra_dimension': edge['group_image_algebra_dimension'],
@@ -454,6 +454,278 @@ def prepared_edge_gibbs():
         'native_passive_equilibrium_prepares_this_state': False,
         'growing_source_compiler_error_budget_certified': False,
         'physical_dataset_with_this_joint_preparation_and_readout': False}
+    return result, {'raw_filter': actual, 'ideal_filter': lazy,
+                    'raw_readout': read_matrix, 'readout_guard': read_guard}
+
+
+def prepared_edge_gibbs():
+    """Public finite edge receipt; raw executed factors are reused internally."""
+    return _prepared_edge_gibbs_data()[0]
+
+
+@lru_cache(maxsize=16)
+def subordinated_filter_weights(rate=F(1, 2), jump_cap=2, count_cap=2, order=13, sampling_bits=64):
+    """Exact positive subprobabilities; missing sampler mass is a failure.
+
+    The jump generating function is 1-sqrt(1-z). Poisson compounding gives
+    exp(-R sqrt(1-z)). A lower alternating Taylor sum, split into arguments
+    <=1, replaces exp(-R), so truncation never renormalizes retained weights.
+    This finite evaluator caps work; the analytic convergence is unrestricted.
+    """
+    import math
+    rate = _fraction(rate, F(1, 10**12), 32)
+    jump_cap = _integer(jump_cap, 1, 128)
+    count_cap = _integer(count_cap, 1, 16)
+    order = _integer(order, 3, 61)
+    sampling_bits = _integer(sampling_bits, 48, 128)
+    if not order & 1:
+        raise ValueError('an odd lower Taylor order is required')
+    pieces = -((-rate.numerator)//rate.denominator)
+    x = rate/pieces
+    exponential_lower = sum(((-x)**j/math.factorial(j) for j in range(order+1)), F())**pieces
+    jump = [F(0)]+[F(math.comb(2*k, k), 4**k*(2*k-1)) for k in range(1, jump_cap+1)]
+    polynomial = [F(1)]
+    weights = [F(0)]*(jump_cap*count_cap+1)
+    for j in range(count_cap+1):
+        scale = exponential_lower*rate**j/math.factorial(j)
+        for n, coefficient in enumerate(polynomial):
+            weights[n] += scale*coefficient
+        if j < count_cap:
+            next_polynomial = [F(0)]*(len(polynomial)+jump_cap)
+            for n, coefficient in enumerate(polynomial):
+                if coefficient:
+                    for k in range(1, jump_cap+1):
+                        next_polynomial[n+k] += coefficient*jump[k]
+            polynomial = next_polynomial
+    grid = 1 << sampling_bits
+    weights = [F((w*grid).numerator//(w*grid).denominator, grid) for w in weights]
+    if not 0 < sum(weights) <= 1 or any(w < 0 for w in weights):
+        raise ArithmeticError('positive subordination sampler lost its retained mass')
+    return tuple(weights)
+
+
+def select_subordinated_request(coin_bits, weights):
+    """Decode one fixed-length fair-coin word; unused intervals mean rejection."""
+    if (type(coin_bits) is not tuple or not 48 <= len(coin_bits) <= 128
+            or any(type(bit) is not int or bit not in (0, 1) for bit in coin_bits)
+            or type(weights) is not tuple or not weights):
+        raise ValueError('a complete original bit tuple and exact weight tuple are required')
+    grid, boundary, value = 1 << len(coin_bits), 0, 0
+    for bit in coin_bits:
+        value = 2*value+bit
+    answer = None
+    for n, weight in enumerate(weights):
+        width = _fraction(weight, 0, 1)*grid
+        if width.denominator != 1:
+            raise ValueError('weights must be supported on the fair-coin word grid')
+        if boundary <= value < boundary+width:
+            answer = n
+        boundary += width
+    if boundary > grid:
+        raise ValueError('sampling weights exceed one')
+    return answer
+
+
+def subordinated_filter_bound(rate=F(1, 2), weight=F(1, 2), jump_cap=2, count_cap=2,
+                              order=13, sampling_bits=64):
+    """Finite sampler/state/clock/cost contract for a supplied lazy filter.
+
+    Q=F², F=I-hL/2, h=p/30. The infinite mixture is exp(-R sqrt(I-Q)).
+    beta=R sqrt(h) identifies its limiting target exp(-beta sqrt(L)).
+    λ_max<8 bounds the generator bias. Missing sampler mass bounds the
+    positive operator remainder before normalization, including its zero mode.
+    """
+    import math
+    rate = _fraction(rate, F(1, 10**12), 32)
+    weight = _fraction(weight, F(1, 10**12), 1)
+    weights = subordinated_filter_weights(rate, jump_cap, count_cap, order, sampling_bits)
+    h, missing = weight/30, 1-sum(weights)
+    root_upper = source.exact._sqrt_interval(8*h)[1]
+    eigenvalue_floor = max(weights[0], 1-rate*root_upper)
+    partition_floor = max(F(1, 12), eigenvalue_floor)
+    generator_bias = rate*root_upper*h/(1-h)
+    state_error = min(F(1), missing/partition_floor+generator_bias)
+    # sqrt(Q) acos(1-L/(2Q)) differs from sqrt(L) at finite Q.
+    # Use (1-2/Q)^(3/2)>=(1-2/Q)^2 at Q=30 for a rational bound.
+    walk_bias = rate*root_upper/(90*F(14, 15)**2)
+    gap_error = (missing/(eigenvalue_floor-missing)+generator_bias
+                 if missing < eigenvalue_floor else None)
+    pieces = -((-rate.numerator)//rate.denominator)
+    truncation_bound = min(F(1),
+        rate*F(math.comb(2*jump_cap, jump_cap), 4**jump_cap)
+        +rate**(count_cap+1)/math.factorial(count_cap+1)
+        +F(3*pieces, math.factorial(order+1))+F(len(weights), 1 << sampling_bits))
+    if missing > truncation_bound:
+        raise ArithmeticError('exact missing mass exceeds its analytic count/tail budget')
+    return {'rate': rate, 'lazy_weight': weight, 'heat_step': h,
+        'target_inverse_temperature': 'beta=R*sqrt(h), h=p/30',
+        'jump_cap': jump_cap, 'count_cap': count_cap, 'lower_Taylor_order': order,
+        'fair_native_coin_events': sampling_bits,
+        'dyadic_rounding_missing_mass_upper': F(len(weights), 1 << sampling_bits),
+        'retained_sampler_mass': sum(weights), 'sampling_rejection_probability': missing,
+        'unnormalized_operator_remainder_upper': missing,
+        'analytic_jump_count_Taylor_and_rounding_remainder_upper': truncation_bound,
+        'filter_generator_to_sqrt_L_bias_upper': generator_bias,
+        'trace_distance_to_sqrt_L_Gibbs_upper': state_error,
+        'constant_to_band_modular_gap_error_upper': gap_error,
+        'scaled_native_walk_to_sqrt_L_modular_bias_upper': walk_bias,
+        'native_walk_clock_relation': 'Omega_30=sqrt(30)*acos(I-L/60); unscaled phase is acos(I-L/60)',
+        'exact_finite_walk_clock_match': False,
+        'unconditional_success_probability_lower': sum(weights)/12,
+        'maximum_filter_requests': len(weights)-1,
+        'mean_filter_requests_before_early_stopping': sum((n*w for n, w in enumerate(weights)), F()),
+        'second_filter_request_moment': sum((n*n*w for n, w in enumerate(weights)), F()),
+        'untruncated_mean_filter_requests_is_infinite': True,
+        'classical_controller_cost_or_laboratory_duration_included': False}
+
+
+@lru_cache(maxsize=1)
+def subordinated_wave_gibbs():
+    """Small complete source mixture and a separate tighter finite contract.
+
+    Sampling labels are classical admitted controls. Every request, first
+    filter failure, successful address outcome and sampler rejection is
+    accounted for; normalized component states are never averaged.
+    """
+    import math
+    import numpy as np
+    import sympy as sp
+    edge, data = _prepared_edge_gibbs_data()
+    weights = subordinated_filter_weights()
+    contract = subordinated_filter_bound()
+    raw, lazy, read = data['raw_filter'], data['ideal_filter'], data['raw_readout']
+    maximum = len(weights)-1
+    exact_powers = [sp.eye(12)]
+    raw_powers = [np.eye(12, dtype=complex)]
+    raw_failure, exact_failure = [], []
+    for k in range(1, maximum+1):
+        output = raw@raw_powers[-1]/math.sqrt(12)
+        raw_failure.append(float(np.linalg.norm(output[12:])**2))
+        raw_powers.append(output[:12]*math.sqrt(12))
+        exact_powers.append(exact_powers[-1]*lazy)
+        exact_failure.append(((exact_powers[k-1]**2).trace()-(exact_powers[k]**2).trace())/12)
+    delta = edge['one_filter_operator_error_upper']
+    complete_delta = maximum*delta/(1-maximum*delta)
+    complete_weight_guard = 2*complete_delta+complete_delta**2
+    read_delta = (1+complete_delta)*(1+data['readout_guard'])-1
+    read_guard = 2*read_delta+read_delta**2
+    density, naive = sp.zeros(12), np.zeros((12, 12), complex)
+    records, complete_exact = [], [str(contract['sampling_rejection_probability'])]
+    actual_total = float(contract['sampling_rejection_probability'])
+    as_fraction = lambda x: F(int(sp.numer(x)), int(sp.denom(x)))
+    for n, weight in enumerate(weights):
+        unnormalized = exact_powers[n]**2/12
+        density += sp.Rational(weight.numerator, weight.denominator)*unnormalized
+        success = as_fraction(unnormalized.trace())
+        failures = tuple(weight*as_fraction(x) for x in exact_failure[:n])
+        expected = [unnormalized[j, j] for j in range(12)]+[sp.Integer(0)]*4
+        expected[:2] = [unnormalized[0, 0]+unnormalized[0, 1],
+                       unnormalized[0, 0]-unnormalized[0, 1]]
+        expected = tuple(weight*as_fraction(x) for x in expected)
+        state = np.zeros((16, 12), complex)
+        state[:12] = raw_powers[n]/math.sqrt(12)
+        actual = float(weight)*np.sum(abs(read@state)**2, axis=1)
+        if (any(abs(float(weight)*raw_failure[k]-float(failures[k])) > float(weight*complete_weight_guard)
+                for k in range(n))
+                or any(abs(a-float(b)) > float(weight*read_guard)
+                       for a, b in zip(actual, expected, strict=True))):
+            raise ArithmeticError('a retained source subordination outcome exceeds its guard')
+        actual_total += float(weight)*sum(raw_failure[:n])+float(sum(actual))
+        complete_exact.extend(map(str, (*failures, *expected)))
+        records.append({'filter_requests': n, 'sampling_probability': weight,
+            'first_failure_probabilities': failures,
+            'successful_address_probabilities': expected})
+        naive += float(weight/success)*np.array(unnormalized, dtype=float)
+    if abs(actual_total-1) > float(complete_weight_guard+read_guard):
+        raise ArithmeticError('source sampler and all herald/readout records fail total probability')
+    success = as_fraction(density.trace())
+    if sum((sum(r['first_failure_probabilities'])+sum(r['successful_address_probabilities'])
+            for r in records), F())+contract['sampling_rejection_probability'] != 1:
+        raise ArithmeticError('exact retained subordination law is not normalized')
+    normalized = np.array(density, dtype=float)/float(success)
+    naive /= float(sum(weights))
+    naive_error = float(sum(abs(np.linalg.eigvalsh(normalized-naive)))/2)
+    if naive_error < 1e-4:
+        raise ArithmeticError('normalized-component mixing countercontrol disappeared')
+    # Actual native placement-coin records drive the fixed-length decoder.
+    # Every bin's first and last words, plus rejection, are checked; the
+    # exact interval widths prove the full IID fair-word distribution.
+    grid, boundary, sampler_probes = 1 << 64, 0, []
+    for label, weight in enumerate((*weights, 1-sum(weights))):
+        width = int(weight*grid)
+        if not width:
+            continue
+        for integer in (boundary, boundary+width-1):
+            state, native_records = continuation.STATES[0], []
+            for bit in map(int, f'{integer:064b}'):
+                state, record = continuation.native.native(
+                    state, continuation.quantum_mixing.seams()[0], bit)
+                native_records.append(record)
+            decoded = select_subordinated_request(tuple(row[0] for row in native_records), weights)
+            expected_label = label if label < len(weights) else None
+            if decoded != expected_label:
+                raise ArithmeticError('native coin records lost their subordination request')
+            sampler_probes.append({'request': decoded, 'native_events': len(native_records),
+                'complete_record_sha256': hashlib.sha256(json.dumps(native_records).encode()).hexdigest()})
+        boundary += width
+    if boundary != grid:
+        raise ArithmeticError('native coin word intervals omit a sampling outcome')
+    eigenvalues = np.array([0., 5-math.sqrt(5), 6., 5+math.sqrt(5)])
+    multiplicity = np.array([1, 3, 5, 3])
+    f = 1-eigenvalues/120
+    values = sum(float(w)*f**(2*n) for n, w in enumerate(weights))
+    beta = .5/math.sqrt(60)
+    target = np.exp(-beta*np.sqrt(eigenvalues))
+    sector = multiplicity*values/sum(multiplicity*values)
+    target_sector = multiplicity*target/sum(multiplicity*target)
+    distance = float(sum(abs(sector-target_sector))/2)
+    if distance > float(contract['trace_distance_to_sqrt_L_Gibbs_upper']):
+        raise ArithmeticError('source mixture exceeds the analytic square-root Gibbs bound')
+    mode_rows = []
+    for j in range(1, 4):
+        omega = math.sqrt(eigenvalues[j])
+        phase = math.acos(1-eigenvalues[j]/60)
+        gap = math.log(values[0]/values[j])
+        polarization = (values[0]-values[j])/(values[0]+values[j])
+        mode_rows.append({'band': j, 'degeneracy': int(multiplicity[j]),
+            'constant_to_single_mode_modular_gap_diagnostic': gap,
+            'noise_over_half_commutator_amplitude_diagnostic': 1/polarization,
+            'canonical_fluctuation_variance_diagnostic': 1/(2*polarization),
+            'inferred_sqrt_L_inverse_temperature_diagnostic': gap/omega,
+            'inferred_actual_walk_inverse_temperature_diagnostic': gap/phase})
+        if (abs(gap-beta*omega) > float(contract['constant_to_band_modular_gap_error_upper'])
+                or abs(beta*(math.sqrt(30)*phase-omega)) >
+                    float(contract['scaled_native_walk_to_sqrt_L_modular_bias_upper'])):
+            raise ArithmeticError('finite sector gaps violate their declared clock allowances')
+    tighter = subordinated_filter_bound(jump_cap=64, count_cap=8)
+    pulses = edge['one_filter_resources']['native_pulses']
+    return {'small_executed_contract': contract, 'complete_request_failure_and_readout_law': records,
+        'native_coin_sampler_boundary_executions': sampler_probes,
+        'sampling_rejection_probability': contract['sampling_rejection_probability'],
+        'complete_ideal_record_law_sha256': hashlib.sha256('|'.join(complete_exact).encode()).hexdigest(),
+        'total_herald_success_probability': success,
+        'actual_sqrt_L_Gibbs_trace_distance_diagnostic': distance,
+        'incorrect_normalized_component_mixture_trace_distance_diagnostic': naive_error,
+        'coherence_contrast': as_fraction(2*density[0, 1]/density.trace()),
+        'one_source_filter_word_sha256': edge['compiled_word_sha256'],
+        'maximum_native_filter_pulses': maximum*pulses,
+        'successful_readout_native_pulses': edge['coherence_readout']['source_native_pulses'],
+        'complete_source_outcome_weight_error_upper': complete_weight_guard+read_guard,
+        'tighter_unexecuted_contract': tighter,
+        'tighter_maximum_native_filter_pulses': tighter['maximum_filter_requests']*pulses,
+        'single_mode_joint_readout_predictions': mode_rows,
+        'joint_readout_identity': 'noise/half_commutator_amplitude=(m0+mj)/(m0-mj)=coth(log(m0/mj)/2)',
+        'joint_copy_normalization': 'Q_j=sum X_j/sqrt(2N(p0-pj)), P_j likewise; independent copies supplied',
+        'single_mode_observables': '|constant><v_j|+adjoint; choose one vector in each eigenspace, not its full degeneracy',
+        'spectral_pair_detector_or_sqrt_L_unitary_compiled_here': False,
+        'density_walk_positive_phase_encoding_on_logical_register_compiled_here': False,
+        'same_full_logical_state_and_generator_family': True,
+        'restricted_group_image_modular_flow': 'identity for ideal densities, which are central there; source errors have separate guards',
+        'exact_finite_native_walk_thermal_state_prepared': False,
+        'Fock_state_or_radial_product_state_prepared': False,
+        'sampler_and_herald_controller_selected_by_passive_repair': False,
+        'growing_source_precision_and_service_budget_certified': False,
+        'public_physical_dataset_identified': False}
 
 
 def _json(value):
@@ -524,6 +796,7 @@ def run():
             'bound_is_sufficient_not_minimal_sample_requirement': True,
             'independent_windows_assumed': False},
         'actively_prepared_edge_reference': prepared_edge_gibbs(),
+        'subordinated_wave_reference': subordinated_wave_gibbs(),
         'scope': {'positive_rank_two_spectral_domain_admitted': True,
             'unknown_hidden_dimension_identified_by_four_moments': False,
             'native_C_E_instrument_identified_from_classical_bits': False,

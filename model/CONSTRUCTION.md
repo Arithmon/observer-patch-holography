@@ -181,18 +181,26 @@ vanish in bounded-energy families under this scaling. The
 [normalized-lag invariant](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
 also excludes complete linear identification with a compact three-dimensional
 free scalar's Euclidean law under one clock scale. These restricted tests
-leave other radial dictionaries and physical quantum identification unproved.
+leave independently encoded radial fields outside their scope.
 Positive subordination of native lag records gives `exp(-r*sqrt(A))`.
 [Independent long-record blocks](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) provide the innovations needed for
 a Dirichlet product Gaussian field with covariance `(-d_r^2+Abar)^-1`.
-Its chosen interval has three-dimensional spectral growth and a product
-comparison cone. The radial filters, constant-mode encoding, boundary
-conditions and count-first limit are explicit; the angular active clock
-does not implement this product wave generator.
+The [thermal join](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
+derives its distinct quantum covariance and controls finite native counts,
+radial grids and the full-port/Schur correspondence. The [two-axis clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
+combines native angular phases and declared radial pulses, giving the same
+product generator, thermal CCR state, response and modular conversion with
+bounded-band errors. Its local wave action has a [measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+The interval, preparation, spectral access and controls remain supplied;
+growing nonconstant-mode compilation, smoothness and physical identification
+are unproved. The restored angular constant has positive product frequency.
 An [executed edge filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses) prepares approximants to `exp(-tL)/Z`
 from supplied `I12/12`, retaining failures and bounding free-entropy error.
-Stationarity concerns the state at fixed `L`. Geometric entropy stationarity,
-physical gauge collars and full-group sewing are separate obligations.
+Its [capped subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
+approximates square-root Gibbs weights with complete failures and explicit
+state/modular-gap bounds. Exact uncapped sampling has infinite mean cost.
+This does not prepare the product Fock state. Geometric entropy stationarity,
+physical gauge collars and full-group sewing remain separate obligations.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The

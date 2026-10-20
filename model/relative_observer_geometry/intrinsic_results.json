@@ -402,6 +402,98 @@
     "exposed_seams": 1,
     "rank_three_structural_gram_certified": false
   },
+  "product_wave_metric": {
+    "action_density": [
+      [
+        "-3/2",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "3/2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "3",
+        "3/2"
+      ],
+      [
+        "0",
+        "0",
+        "3/2",
+        "9/2"
+      ]
+    ],
+    "clock_reparameterization_is_tensor_covariant": true,
+    "clock_reparameterization_rate": "3/2",
+    "coefficient_fixture": "anisotropic rational product tensor; not measured native coefficients",
+    "coefficient_regularities_proved": [
+      "measurable",
+      "uniformly elliptic in local charts"
+    ],
+    "complete_action_density_recovered_exactly": true,
+    "continuum_input": "regular strongly local H1 form and chosen product wave action",
+    "doubling_measure_preserves_cone_but_doubles_metric": true,
+    "measure_density": "3/2",
+    "metric": [
+      [
+        "-3*sqrt(5)/2",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "3*sqrt(5)/2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "9*sqrt(5)/10",
+        "-3*sqrt(5)/10"
+      ],
+      [
+        "0",
+        "0",
+        "-3*sqrt(5)/10",
+        "3*sqrt(5)/5"
+      ]
+    ],
+    "metric_volume_density": "9*sqrt(5)/4",
+    "native_radial_transport_or_lab_proper_time_proved": false,
+    "observed_spacetime_or_Einstein_dynamics_proved": false,
+    "signature": [
+      -1,
+      1,
+      1,
+      1
+    ],
+    "smooth_coefficients_or_curvature_proved": false,
+    "spatial_tensor": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "2",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "3"
+      ]
+    ]
+  },
   "same_structural_gram_as_uniform_protocol_exact": true,
   "schema": "oph.relative_observer_geometry.intrinsic.v1",
   "scope": {
@@ -1725,6 +1817,6 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
-    "model/relative_observer_geometry/intrinsic_geometry.py": "9a8731d640260b7fda6e85b0fc84764deeccfc7147a6f26999236c716f116e43"
+    "model/relative_observer_geometry/intrinsic_geometry.py": "e34613b65d1ff3ea6c2ada2941caba4160b00f3ea694a3f1920d0e146dbc2fc2"
   }
 }

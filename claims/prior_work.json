@@ -1784,6 +1784,21 @@
       "verification_source": "https://api.crossref.org/works/10.1090/S0002-9947-1936-1501858-0"
     },
     {
+      "key": "cipriani2006dirichlet",
+      "type": "article",
+      "author": "Cipriani, Fabio",
+      "title": "Dirichlet forms as Banach algebras and applications",
+      "journal": "Pacific Journal of Mathematics",
+      "volume": "223",
+      "number": "2",
+      "pages": "229--249",
+      "year": "2006",
+      "verified": true,
+      "verification_source": "https://msp.org/pjm/2006/223-2/pjm-v223-n2-p03-p.pdf",
+      "note": "Theorem 7.2 and Corollary 7.3: strongly local regular forms with the Sobolev domain admit measurable uniformly elliptic coefficients; no smoothness follows.",
+      "url": "https://msp.org/pjm/2006/223-2/pjm-v223-n2-p03-p.pdf"
+    },
+    {
       "key": "cirelson1980quantum",
       "type": "article",
       "author": "Cirel'son, B. S.",
@@ -8200,6 +8215,21 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1016/0010-4655(92)90169-Y",
       "note": "Exact charge conservation and Gauss-law preservation in discrete Maxwell solvers"
+    },
+    {
+      "key": "visser1998acoustic",
+      "type": "article",
+      "author": "Visser, Matt",
+      "title": "Acoustic black holes: horizons, ergospheres, and Hawking radiation",
+      "journal": "Classical and Quantum Gravity",
+      "volume": "15",
+      "pages": "1767--1791",
+      "year": "1998",
+      "doi": "10.1088/0264-9381/15/6/024",
+      "eprint": "gr-qc/9712010",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/gr-qc/9712010",
+      "note": "Equations (23)-(26) reconstruct a four-dimensional scalar-wave metric from its densitized inverse. The OPH application imports this identity, not fluid dynamics or Einstein dynamics."
     },
     {
       "key": "vonneumann1932mathematische",
