@@ -432,6 +432,104 @@ def density_sector_audit():
             "complete_3960_arc_unitary_compiled": False}
 
 
+@lru_cache(maxsize=8)
+def edge_generator_audit(rotations=None, seams=None):
+    """A central finite-group generator on the actual native density module.
+
+    This identifies a representation of a group heat operator, not the
+    complete repair instrument or a prepared edge Gibbs state.
+    """
+    import sympy as sp
+    from ..common_source.slow_geometry import source
+
+    rotations = tuple(source().rotations()) if rotations is None else rotations
+    seams = quantum_mixing.seams() if seams is None else seams
+    identity = tuple(range(12))
+    if (len(rotations) != 60 or len(set(rotations)) != 60
+            or any(tuple(sorted(p)) != identity for p in rotations)):
+        raise ValueError("sixty distinct twelve-port permutations required")
+    compose = lambda p, q: tuple(p[q[i]] for i in range(12))
+    inverse = lambda p: tuple(p.index(i) for i in range(12))
+    group = set(rotations)
+    if identity not in group or any(compose(p, q) not in group
+                                    for p in rotations for q in rotations):
+        raise ValueError("the supplied permutations are not a group")
+    classes, unseen = [], set(group)
+    while unseen:
+        p = min(unseen)
+        conjugacy = {compose(compose(g, p), inverse(g)) for g in rotations}
+        classes.append(tuple(sorted(conjugacy)))
+        unseen -= conjugacy
+    lap = sp.zeros(12)
+    for a, b in seams:
+        lap[a, a] += 1; lap[b, b] += 1
+        lap[a, b] -= 1; lap[b, a] -= 1
+    matches, alternatives = [], []
+    for conjugacy in classes:
+        if len(conjugacy) != 12:
+            continue
+        if any(inverse(p) not in conjugacy for p in conjugacy):
+            raise ArithmeticError("the candidate class is not inverse symmetric")
+        total = sp.zeros(12)
+        for p in conjugacy:
+            power = identity
+            for _ in range(5):
+                power = compose(p, power)
+            if power != identity or p == identity:
+                raise ArithmeticError("the twelve-element class is not of order five")
+            for i, j in enumerate(p):
+                total[j, i] += 1
+        candidate = 6*sp.eye(12)-total/2
+        (matches if candidate == lap else alternatives).append((conjugacy, candidate))
+    if len(matches) != 1 or len(alternatives) != 1:
+        raise ArithmeticError("native density response selects no unique order-five class")
+    pair_orbits, remaining = [], {(i, j) for i in range(12) for j in range(12)}
+    while remaining:
+        i, j = min(remaining)
+        orbit = {(p[i], p[j]) for p in rotations}
+        pair_orbits.append(len(orbit)); remaining -= orbit
+    variable = sp.Symbol("x")
+    characteristic = lap.charpoly(variable).as_expr()
+    expected = variable*(variable-6)**5*(variable**2-10*variable+20)**3
+    if len(pair_orbits) != 4 or sp.expand(characteristic-expected) != 0:
+        raise ArithmeticError("the multiplicity-free density-sector decomposition failed")
+    other = alternatives[0][1]
+    if other.charpoly(variable).as_expr() != characteristic:
+        raise ArithmeticError("the opposite-class isospectral control changed")
+    a, b = seams[0]
+    if lap[b, a] != -1 or other[b, a] != 0:
+        raise ArithmeticError("the one-lag local detector does not distinguish the classes")
+    # Independently bind this density generator to the complete native kernel.
+    x6 = sp.Matrix([[6*x[p]-1 for p in range(12)] for x in STATES])
+    if sp.Matrix(kernel_counts())*x6 != x6*(60*sp.eye(12)-lap):
+        raise ArithmeticError("group generator lost the actual native density intertwiner")
+    return {
+        "proper_rotation_group_order": len(group),
+        "conjugacy_class_sizes": sorted(map(len, classes)),
+        "selected_order_five_class": [list(p) for p in matches[0][0]],
+        "inverse_symmetric_class": True,
+        "exact_generator": "L=6I-(1/2)sum_(g in C) U_g; K_12=I-L/60",
+        "ordered_pair_orbit_sizes": sorted(pair_orbits),
+        "commutant_dimension": len(pair_orbits),
+        "characteristic_polynomial": "x*(x-6)^5*(x^2-10*x+20)^3",
+        "irreducible_sector_ranks": [1, 3, 5, 3],
+        "sector_eigenvalues": ["0", "5-sqrt(5)", "6", "5+sqrt(5)"],
+        "group_image_algebra_dimension": 44,
+        "full_regular_group_algebra_dimension": 60,
+        "opposite_class_control": {
+            "same_spectrum": True, "tested_native_seam": [a, b],
+            "native_one_attempt_transition": "1/60",
+            "other_class_one_attempt_transition": "0"},
+        "conditional_Gibbs_sector_law": "p_R=d_R*exp(-t*lambda_R)/Z if rho=exp(-t*L)/Z is assigned",
+        "density_representation_trace_sector_probabilities": ["1/12", "1/4", "5/12", "1/4"],
+        "Poissonized_native_density_identity": "E[K_12^N]=exp(-t*L), N~Poisson(60*t)",
+        "Poisson_parameter_is_a_physical_clock": False,
+        "nontracial_Gibbs_state_prepared_by_this_audit": False,
+        "complete_native_instrument_is_group_convolution": False,
+        "native_gauge_collar_or_full_group_sewing_identified": False,
+        "compact_group_refinement_or_worldsheet_limit_proved": False}
+
+
 def density_walk_program():
     """Emit compact source routines and their full chronological schedule.
 
@@ -655,6 +753,7 @@ def run():
             "source_sha256": {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCE_PATHS},
             "audit": audit(),
             "selection": selection_audit(),
+            "finite_edge_generator": edge_generator_audit(),
             "compiled_density_walk": compiled_density_audit(),
             "contract": {"native_rule": "N1 current-record instrument on its invariant 66-state binary shell",
                          "seams": "the existing thirty seams, with coherent uniform event amplitudes",

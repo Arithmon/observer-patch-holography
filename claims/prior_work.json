@@ -4314,6 +4314,18 @@
       "verification_source": "https://arxiv.org/abs/cond-mat/9805329"
     },
     {
+      "key": "jaksic2009quantum",
+      "type": "misc",
+      "author": "Jakšić, V. and Pautrat, Y. and Pillet, C.-A.",
+      "title": "A quantum central limit theorem for sums of IID random variables",
+      "year": "2009",
+      "howpublished": "Author manuscript, October 9, 2009",
+      "url": "https://jaksic.xyz/papers_pdf/qcltiid.pdf",
+      "verified": true,
+      "verification_source": "https://jaksic.xyz/papers_pdf/qcltiid.pdf",
+      "note": "Sections 3–4: ordered product convergence to a quasi-free CCR state under tensor IID preparation."
+    },
+    {
       "key": "james2001measurement",
       "type": "article",
       "author": "James, Daniel F. V. and Kwiat, Paul G. and Munro, William J. and White, Andrew G.",
@@ -7683,6 +7695,18 @@
       "verified": true,
       "verification_source": "https://api.crossref.org/works/10.1090/S0002-9939-1955-0069403-4",
       "note": "Stinespring dilation. Also registered under the JSTOR DOI 10.2307/2032342."
+    },
+    {
+      "key": "stinga2009extension",
+      "type": "misc",
+      "author": "Stinga, Pablo Raúl and Torrea, José Luis",
+      "title": "Extension problem and Harnack's inequality for some fractional operators",
+      "year": "2009",
+      "eprint": "0910.2569",
+      "archivePrefix": "arXiv",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/0910.2569",
+      "note": "Positive heat-semigroup representation of fractional extensions; the native finite lag polynomial is derived separately."
     },
     {
       "key": "stock2019revision",

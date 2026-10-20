@@ -88,3 +88,81 @@ def test_receipt_rejects_undeclared_summary_fields(monkeypatch):
     monkeypatch.setattr(r.optical.strict_json, 'load', lambda _: {**summary, 'extra': True})
     with pytest.raises(ValueError, match='retained summaries'):
         r.run()
+
+
+@pytest.mark.parametrize('regions', [
+    ((0,), (1,)),
+    ((0,), tuple(range(12))),
+    (tuple(p for p in range(12) if p not in (0, 1)), tuple(range(12))),
+    (tuple(p for p in range(12) if p not in (0, 1)), tuple(p for p in range(12) if p not in (0, 5))),
+])
+def test_binary_geometric_digits_and_exact_discrete_convolution_oracle(regions):
+    first, second = regions
+    a, b, common = r.regional.incidence_counts(first, second)
+    law = r.regional.parameters(a, b, common)
+    p = law['geometric_success_probability']; q = 1-p
+    for z in (F(0), F(1, 3), F(2, 3)):
+        # Euler binary product identity for Geom0(p) up to 2^3.
+        binary_prefix = F(1)
+        for j in (0, 1, 2):
+            qj = q**(1 << j)
+            rj = qj/(1+qj)
+            binary_prefix *= (1-rj+rj*z**(1 << j))
+        remainder = (1-q**8)/(1-(q*z)**8)
+        assert binary_prefix*remainder == p/(1-q*z)
+    for count in (8, 16):
+        bins, tail = r.regional.count_law(first, second, count=count, maximum=64)
+        for width in (0, 1, 4, 9):
+            # Any window of width w in [0, 64] has mass at most max window + tail.
+            max_window = max(sum(bins[k:k+width+1], F(0)) for k in range(len(bins)-width))
+            bound = r.servo_interval_mass_bound(a, b, common, count, width)
+            assert max_window <= bound
+
+
+def test_regional_servo_and_allan_analysis_oracles_and_controls(receipt):
+    summary = r.optical.strict_json.load(r.optical.SUMMARY)['datasets']
+    high = (r.optical.REFERENCE_HZ+1)*r.optical.BLOCK_SECONDS
+    expected = {
+        '36ar_yb_ratio.txt': (53002037192, 109659387292, -123),
+        '40ar_yb_ratio.txt': (50146616702, 103751620762, -25),
+    }
+    for row, servo in zip(summary, receipt['servo_and_allan_tests']):
+        obs = F(row['nonoverlapping_Allan_variance_diagnostic'])
+        r_min_exp, r_eq_exp, dec_exp = expected[row['file']]
+        assert servo['all_distinct_regional_servo_attachments_rejected_at_one_percent']
+        assert servo['conservative_probability_upper_power_of_ten'] == dec_exp
+        assert servo['worst_incidence_counts'] == [29, 30, 29]
+        r_min = servo['moment_matching_independent_regional_replica_count_lower']
+        r_eq = servo['moment_matching_independent_equal_rate_regional_replica_count_lower']
+        assert r_min == r_min_exp and r_eq == r_eq_exp
+        assert F(1, 30*high*r_min) <= obs < F(1, 30*high*(r_min-1))
+        assert F(2, 29*high*r_eq) <= obs < F(2, 29*high*(r_eq-1))
+        assert servo['moment_target_requires_unfiltered_zero_error_population_variance_matching']
+        assert not servo['sample_Allan_value_is_a_population_upper_confidence_bound']
+        assert not servo['thirty_seam_regional_floor_transferred_to_refining_graph']
+        wider = r.servo_and_allan_analysis(row, error=F(1, 10**6))
+        assert not wider['all_distinct_regional_servo_attachments_rejected_at_one_percent']
+
+
+def test_regional_servo_rejects_invalid_inputs():
+    row = r.optical.strict_json.load(r.optical.SUMMARY)['datasets'][0]
+    malformed = F(1, 2); malformed._denominator = -2
+    for bad_count, bad_width in ((1, 0), (True, 0), (10, -1), (10, True), (10, 1.0)):
+        with pytest.raises(ValueError):
+            r.servo_interval_mass_bound(5, 5, 1, bad_count, bad_width)
+    for bad_replicas in (0, -1, True, 8.0):
+        with pytest.raises(ValueError):
+            r.servo_and_allan_analysis(row, replicas=bad_replicas)
+    for bad_servo in (-1, r.optical.BLOCK_SECONDS, True, 30.0):
+        with pytest.raises(ValueError):
+            r.servo_and_allan_analysis(row, servo_seconds=bad_servo)
+    for bad_frac in (malformed, True, -F(1), 0.5):
+        with pytest.raises(ValueError):
+            r.servo_and_allan_analysis(row, error=bad_frac)
+        with pytest.raises(ValueError):
+            r.servo_and_allan_analysis(row, gain_lower=bad_frac)
+    for bad_row in ({**row, 'adjacent_complete_block_pairs': 0},
+                    {**row, 'nonoverlapping_Allan_variance_diagnostic': None},
+                    {**row, 'nonoverlapping_Allan_variance_diagnostic': '0'}):
+        with pytest.raises(ValueError):
+            r.servo_and_allan_analysis(bad_row)

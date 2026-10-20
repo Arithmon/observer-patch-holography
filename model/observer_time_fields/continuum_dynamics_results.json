@@ -421,6 +421,7 @@
     }
   ],
   "common_limit": {
+    "Pauli_Jordan_causal_commutator_kernel": "D(t-u)=A^(-1/2) sin((t-u) sqrt(A))",
     "actual_Green_filtered_interpolated_path_topology": "C([0,T],H^-2(S2))",
     "actual_density_interpolated_path_topology": "C([0,T],H^-3(S2))",
     "actual_multitime_density_limit": "stationary Gaussian OU continuous distribution-valued paths",
@@ -430,6 +431,9 @@
     "constant_mode_heat_is_positivity_improving": true,
     "disjoint_positive_profiles_have_nonzero_heat_response_at_every_positive_time": true,
     "fixed_selection_slot_parameter": "tau=q/(2520*16^level)",
+    "fractional_filtered_wave_field": "W_{1/4}=A^(1/4) W",
+    "fractional_filtered_wave_path_topology": "C([0,T],H^-s(S2)) for every s>=7/4 (in particular H^-2(S2))",
+    "fractional_filtered_wave_two_time_covariance": "A^(-1/2) cos((t-u) sqrt(A)) = G^(1/2) cos((t-u) sqrt(A))",
     "native_attempt_parameter": "tau=n/(1260*16^level)",
     "native_coherent_compression": "cos(t sqrt(A))",
     "native_two_point_transfer": "exp(-tau A)",
@@ -602,6 +606,257 @@
       "level": 10,
       "scaled_modular_frequency_upper": "13958643712/86586540687359",
       "uncapped_wave_generator_limit": "sqrt(A)"
+    }
+  ],
+  "fractional_wave_bounds": [
+    {
+      "H_minus_s_fourth_moment_constant_per_dt_fourth": "1728",
+      "H_minus_s_second_moment_constant_per_dt_squared": "24",
+      "Kolmogorov_Chentsov_holder_exponent_upper": "1/2",
+      "Pauli_Jordan_commutator_kernel": "D_l(t-u)=A_l^(-1/2) sin((t-u) sqrt(A_l))",
+      "Pauli_Jordan_midpoint_quadrature_error_diagnostic": 5.304836873387675e-05,
+      "Pauli_Jordan_midpoint_quadrature_error_upper": "1/12288",
+      "Pauli_Jordan_midpoint_quadrature_steps": 16,
+      "Pauli_Jordan_operator_norm_diagnostic": 0.9926325700663146,
+      "Pauli_Jordan_operator_norm_upper": "1",
+      "Sobolev_index_s": "2",
+      "canonical_energy_equipartition_verified": true,
+      "canonical_free_scalar_Wightman_factor": 2,
+      "cells": 20,
+      "classical_covariance_supplies_quantum_CCR": false,
+      "continuous_path_topology": "C([0,T],H^-2(S2))",
+      "continuum_comparison_wave_speed_upper": "1/sqrt(2)",
+      "continuum_sine_kernel_vanishes_for_separated_mean_zero_tests": true,
+      "cutoff_kinetic_energy_diagnostic": 0.4218992399535526,
+      "cutoff_potential_energy_diagnostic": 0.4218992399535526,
+      "cutoff_tail_spectral_index_variance_diagnostic": 0.7483096424294533,
+      "cutoff_tail_spectral_index_variance_upper": "224/3",
+      "elementary_twelve_port_control": {
+        "Pauli_Jordan_klein_gordon_residual_diagnostic": 4.440892098500626e-16,
+        "canonical_wave_energy_expectation_diagnostic": 25.304954110812822,
+        "carrier_ports": 12,
+        "equal_time_fractional_wave_covariance_trace_diagnostic": 4.960988420722505,
+        "exact_inv_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))/(2*sqrt(5))+5*sqrt(6)/6",
+        "exact_laplacian_trace": 60,
+        "exact_mode_energy_equipartition_verified": true,
+        "exact_pseudoinverse_trace": "7/3",
+        "exact_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))+5*sqrt(6)",
+        "mean_zero_dimension": 11,
+        "mode_equipartition_residual_diagnostic": 0.0,
+        "multi_step_stationarity_residual_diagnostic": 4.440892098500626e-16
+      },
+      "equal_time_Steklov_boundary_covariance_identity": "C_{1/4,l}(t,t)=G_l^(1/2)=A_l^(-1/2)",
+      "equal_time_spectral_index_variance_diagnostic": 2.4616138070403646,
+      "equal_time_spectral_index_variance_upper": "1120/3",
+      "fractional_wave_field": "W_{1/4,l}(t)=A_l^(1/4) W_l(t)",
+      "full_kinetic_energy_diagnostic": 8.104105753539915,
+      "full_potential_energy_diagnostic": 8.104105753539915,
+      "harmonic_series_integral_factor": "3",
+      "level": 0,
+      "matrix_equipartition_residual_diagnostic": 7.574520475738073e-14,
+      "mean_zero_dimension": 19,
+      "mode_equipartition_residual_diagnostic": 1.1102230246251565e-16,
+      "numerical_weighted_norms_use_spectral_indices_not_spherical_harmonics": true,
+      "parameter_horizon": "1",
+      "restored_zero_mode_kernel": "D_bar(t)=D_perp(t)+t P_const",
+      "separated_dipole_cell_distance": 4,
+      "separated_dipole_cells": [
+        [
+          0,
+          1
+        ],
+        [
+          12,
+          13
+        ]
+      ],
+      "separated_dipole_commutator_leakage_diagnostic": 1.0055046761845381e-07,
+      "separated_dipole_commutator_leakage_upper": "1/80",
+      "separated_dipole_cubic_taylor_coefficient_diagnostic": 2.019182816965911e-07,
+      "separated_dipole_cubic_taylor_coefficient_upper": "1/96",
+      "separated_dipole_step_commutator_leakage_diagnostic": 3.0474678463412786e-09,
+      "separated_dipole_step_commutator_leakage_upper": "27/163840",
+      "spectral_cutoff": 2,
+      "spectral_index_increment_constant": "1008",
+      "step_H_minus_s_fourth_moment_upper": "27/4",
+      "step_H_minus_s_second_moment_upper": "3/2",
+      "step_size": "1/4",
+      "step_spectral_index_fourth_moment_diagnostic": 0.0002896514518794074,
+      "step_spectral_index_fourth_moment_upper": "11907",
+      "step_spectral_index_second_moment_diagnostic": 0.009826010582113296,
+      "step_spectral_index_second_moment_upper": "63",
+      "time_steps": 4,
+      "total_canonical_energy_expectation_diagnostic": 8.104105753539915,
+      "trace_sqrt_Green_diagnostic": 50.148563654490175,
+      "trace_sqrt_generator_diagnostic": 8.104105753539915,
+      "two_time_covariance_kernel": "C_{1/4,l}(t,u)=A_l^(-1/2) cos((t-u) sqrt(A_l))=G_l^(1/2) cos((t-u) sqrt(A_l))",
+      "unrestricted_mean_zero_projected_kernel_has_local_support": false
+    },
+    {
+      "H_minus_s_fourth_moment_constant_per_dt_fourth": "1728",
+      "H_minus_s_second_moment_constant_per_dt_squared": "24",
+      "Kolmogorov_Chentsov_holder_exponent_upper": "1/2",
+      "Pauli_Jordan_commutator_kernel": "D_l(t-u)=A_l^(-1/2) sin((t-u) sqrt(A_l))",
+      "Pauli_Jordan_midpoint_quadrature_error_diagnostic": 0.00018976530271386238,
+      "Pauli_Jordan_midpoint_quadrature_error_upper": "1/3072",
+      "Pauli_Jordan_midpoint_quadrature_steps": 16,
+      "Pauli_Jordan_operator_norm_diagnostic": 0.9931306784777214,
+      "Pauli_Jordan_operator_norm_upper": "1",
+      "Sobolev_index_s": "2",
+      "canonical_energy_equipartition_verified": true,
+      "canonical_free_scalar_Wightman_factor": 2,
+      "cells": 80,
+      "classical_covariance_supplies_quantum_CCR": false,
+      "continuous_path_topology": "C([0,T],H^-2(S2))",
+      "continuum_comparison_wave_speed_upper": "1/sqrt(2)",
+      "continuum_sine_kernel_vanishes_for_separated_mean_zero_tests": true,
+      "cutoff_kinetic_energy_diagnostic": 0.4076184921273365,
+      "cutoff_potential_energy_diagnostic": 0.4076184921273365,
+      "cutoff_tail_spectral_index_variance_diagnostic": 0.7989934443579264,
+      "cutoff_tail_spectral_index_variance_upper": "224/3",
+      "elementary_twelve_port_control": {
+        "Pauli_Jordan_klein_gordon_residual_diagnostic": 4.440892098500626e-16,
+        "canonical_wave_energy_expectation_diagnostic": 25.304954110812822,
+        "carrier_ports": 12,
+        "equal_time_fractional_wave_covariance_trace_diagnostic": 4.960988420722505,
+        "exact_inv_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))/(2*sqrt(5))+5*sqrt(6)/6",
+        "exact_laplacian_trace": 60,
+        "exact_mode_energy_equipartition_verified": true,
+        "exact_pseudoinverse_trace": "7/3",
+        "exact_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))+5*sqrt(6)",
+        "mean_zero_dimension": 11,
+        "mode_equipartition_residual_diagnostic": 0.0,
+        "multi_step_stationarity_residual_diagnostic": 4.440892098500626e-16
+      },
+      "equal_time_Steklov_boundary_covariance_identity": "C_{1/4,l}(t,t)=G_l^(1/2)=A_l^(-1/2)",
+      "equal_time_spectral_index_variance_diagnostic": 2.5727646710509275,
+      "equal_time_spectral_index_variance_upper": "1120/3",
+      "fractional_wave_field": "W_{1/4,l}(t)=A_l^(1/4) W_l(t)",
+      "full_kinetic_energy_diagnostic": 65.4044163966121,
+      "full_potential_energy_diagnostic": 65.4044163966121,
+      "harmonic_series_integral_factor": "3",
+      "level": 1,
+      "matrix_equipartition_residual_diagnostic": 4.629215421578971e-14,
+      "mean_zero_dimension": 79,
+      "mode_equipartition_residual_diagnostic": 2.220446049250313e-16,
+      "numerical_weighted_norms_use_spectral_indices_not_spherical_harmonics": true,
+      "parameter_horizon": "1",
+      "restored_zero_mode_kernel": "D_bar(t)=D_perp(t)+t P_const",
+      "separated_dipole_cell_distance": 10,
+      "separated_dipole_cells": [
+        [
+          0,
+          3
+        ],
+        [
+          52,
+          55
+        ]
+      ],
+      "separated_dipole_commutator_leakage_diagnostic": 1.3785097791395938e-16,
+      "separated_dipole_commutator_leakage_upper": "87/2560",
+      "separated_dipole_cubic_taylor_coefficient_diagnostic": 7.976046642465985e-16,
+      "separated_dipole_cubic_taylor_coefficient_upper": "1/1536",
+      "separated_dipole_step_commutator_leakage_diagnostic": 3.7781691660262285e-18,
+      "separated_dipole_step_commutator_leakage_upper": "7/163840",
+      "spectral_cutoff": 2,
+      "spectral_index_increment_constant": "1008",
+      "step_H_minus_s_fourth_moment_upper": "27/4",
+      "step_H_minus_s_second_moment_upper": "3/2",
+      "step_size": "1/4",
+      "step_spectral_index_fourth_moment_diagnostic": 0.00039788973383610854,
+      "step_spectral_index_fourth_moment_upper": "11907",
+      "step_spectral_index_second_moment_diagnostic": 0.011516506036064187,
+      "step_spectral_index_second_moment_upper": "63",
+      "time_steps": 4,
+      "total_canonical_energy_expectation_diagnostic": 65.4044163966121,
+      "trace_sqrt_Green_diagnostic": 116.1399305906369,
+      "trace_sqrt_generator_diagnostic": 65.4044163966121,
+      "two_time_covariance_kernel": "C_{1/4,l}(t,u)=A_l^(-1/2) cos((t-u) sqrt(A_l))=G_l^(1/2) cos((t-u) sqrt(A_l))",
+      "unrestricted_mean_zero_projected_kernel_has_local_support": false
+    },
+    {
+      "H_minus_s_fourth_moment_constant_per_dt_fourth": "1728",
+      "H_minus_s_second_moment_constant_per_dt_squared": "24",
+      "Kolmogorov_Chentsov_holder_exponent_upper": "1/2",
+      "Pauli_Jordan_commutator_kernel": "D_l(t-u)=A_l^(-1/2) sin((t-u) sqrt(A_l))",
+      "Pauli_Jordan_midpoint_quadrature_error_diagnostic": 0.00029631502863208814,
+      "Pauli_Jordan_midpoint_quadrature_error_upper": "1/768",
+      "Pauli_Jordan_midpoint_quadrature_steps": 16,
+      "Pauli_Jordan_operator_norm_diagnostic": 0.9932000635495436,
+      "Pauli_Jordan_operator_norm_upper": "1",
+      "Sobolev_index_s": "2",
+      "canonical_energy_equipartition_verified": true,
+      "canonical_free_scalar_Wightman_factor": 2,
+      "cells": 320,
+      "classical_covariance_supplies_quantum_CCR": false,
+      "continuous_path_topology": "C([0,T],H^-2(S2))",
+      "continuum_comparison_wave_speed_upper": "1/sqrt(2)",
+      "continuum_sine_kernel_vanishes_for_separated_mean_zero_tests": true,
+      "cutoff_kinetic_energy_diagnostic": 0.4059685548861789,
+      "cutoff_potential_energy_diagnostic": 0.40596855488617895,
+      "cutoff_tail_spectral_index_variance_diagnostic": 0.7985458474192929,
+      "cutoff_tail_spectral_index_variance_upper": "224/3",
+      "elementary_twelve_port_control": {
+        "Pauli_Jordan_klein_gordon_residual_diagnostic": 4.440892098500626e-16,
+        "canonical_wave_energy_expectation_diagnostic": 25.304954110812822,
+        "carrier_ports": 12,
+        "equal_time_fractional_wave_covariance_trace_diagnostic": 4.960988420722505,
+        "exact_inv_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))/(2*sqrt(5))+5*sqrt(6)/6",
+        "exact_laplacian_trace": 60,
+        "exact_mode_energy_equipartition_verified": true,
+        "exact_pseudoinverse_trace": "7/3",
+        "exact_sqrt_laplacian_trace_formula": "3*sqrt(10+4*sqrt(5))+5*sqrt(6)",
+        "mean_zero_dimension": 11,
+        "mode_equipartition_residual_diagnostic": 0.0,
+        "multi_step_stationarity_residual_diagnostic": 4.440892098500626e-16
+      },
+      "equal_time_Steklov_boundary_covariance_identity": "C_{1/4,l}(t,t)=G_l^(1/2)=A_l^(-1/2)",
+      "equal_time_spectral_index_variance_diagnostic": 2.5802411230906053,
+      "equal_time_spectral_index_variance_upper": "1120/3",
+      "fractional_wave_field": "W_{1/4,l}(t)=A_l^(1/4) W_l(t)",
+      "full_kinetic_energy_diagnostic": 523.816111106677,
+      "full_potential_energy_diagnostic": 523.816111106677,
+      "harmonic_series_integral_factor": "3",
+      "level": 2,
+      "matrix_equipartition_residual_diagnostic": 5.5005955410290034e-14,
+      "mean_zero_dimension": 319,
+      "mode_equipartition_residual_diagnostic": 4.440892098500626e-16,
+      "numerical_weighted_norms_use_spectral_indices_not_spherical_harmonics": true,
+      "parameter_horizon": "1",
+      "restored_zero_mode_kernel": "D_bar(t)=D_perp(t)+t P_const",
+      "separated_dipole_cell_distance": 22,
+      "separated_dipole_cells": [
+        [
+          0,
+          16
+        ],
+        [
+          192,
+          208
+        ]
+      ],
+      "separated_dipole_commutator_leakage_diagnostic": 5.908184081557925e-17,
+      "separated_dipole_commutator_leakage_upper": "1398103/2621440",
+      "separated_dipole_cubic_taylor_coefficient_diagnostic": 1.5627976898798416e-16,
+      "separated_dipole_cubic_taylor_coefficient_upper": "1/1572864",
+      "separated_dipole_step_commutator_leakage_diagnostic": 1.5316745186233915e-18,
+      "separated_dipole_step_commutator_leakage_upper": "87383/167772160",
+      "spectral_cutoff": 2,
+      "spectral_index_increment_constant": "1008",
+      "step_H_minus_s_fourth_moment_upper": "27/4",
+      "step_H_minus_s_second_moment_upper": "3/2",
+      "step_size": "1/4",
+      "step_spectral_index_fourth_moment_diagnostic": 0.0004712420814893641,
+      "step_spectral_index_fourth_moment_upper": "11907",
+      "step_spectral_index_second_moment_diagnostic": 0.012533183706855494,
+      "step_spectral_index_second_moment_upper": "63",
+      "time_steps": 4,
+      "total_canonical_energy_expectation_diagnostic": 523.816111106677,
+      "trace_sqrt_Green_diagnostic": 246.31225612931723,
+      "trace_sqrt_generator_diagnostic": 523.816111106677,
+      "two_time_covariance_kernel": "C_{1/4,l}(t,u)=A_l^(-1/2) cos((t-u) sqrt(A_l))=G_l^(1/2) cos((t-u) sqrt(A_l))",
+      "unrestricted_mean_zero_projected_kernel_has_local_support": false
     }
   ],
   "full_reference_state_limit": {
@@ -857,11 +1112,14 @@
     "Gaussian_wave_uses_declared_record_processing": true,
     "atomic_clock_or_public_lab_data_identification_proved": false,
     "coherent_preparation_reflection_and_Ramsey_services_required": true,
+    "comparison_sine_kernel_vanishes_for_separated_mean_zero_tests": true,
     "comparison_wave_support_cone_proved": true,
     "conditional_obstruction_to_same_dictionary_relativistic_response": true,
     "density_process_path_space_limit_proved": true,
     "every_OPH_clock_observer_or_reconstruction_excluded": false,
     "faithful_continuum_modular_algebra_state_constructed": false,
+    "fractional_covariance_alone_constructs_native_quantum_CCR": false,
+    "fractional_wave_canonical_energy_equipartition_proved": true,
     "full_initial_occupation_and_current_readback_required": true,
     "full_modular_unitary_or_intervention_implementation_proved": false,
     "modular_reference_is_a_native_coherently_prepared_state": false,
@@ -872,6 +1130,218 @@
     "same_dictionary_heat_response_has_an_exact_finite_support_cone": false,
     "same_native_source_and_ancestry_dictionary": true,
     "stationary_sector_uniform_IID_seams_and_fair_repair_required": true
+  },
+  "source_encoded_quantum_fluctuation": {
+    "CCR_limit_expectation": [
+      0.7348152860545574,
+      -0.28924282498746984
+    ],
+    "Weyl_angle_grid_denominator": 17592186044416,
+    "Weyl_word_angle_error_operator_norm_upper": "9/8796093022208",
+    "complete_pointer_records": {
+      "X": {
+        "all_pointer_and_work_probabilities": [
+          0.7841578098610693,
+          0.018634410252342387,
+          0.018634410252342394,
+          0.002149502280955088,
+          0.018634410252342408,
+          0.0021495022809550944,
+          0.0021495022809551014,
+          0.0002479477479170746,
+          0.01863441025234244,
+          0.0021495022809550975,
+          0.002149502280955092,
+          0.0002479477479170741,
+          0.0021495022809550957,
+          0.0002479477479170742,
+          0.00024794774791707516,
+          2.8601079534483118e-05,
+          0.03893209660631603,
+          0.018634410252342668,
+          0.018634410252342637,
+          0.0021495022809551213,
+          0.01863441025234269,
+          0.0021495022809551235,
+          0.0021495022809551335,
+          0.000247947747917079,
+          0.018634410252342765,
+          0.002149502280955127,
+          0.0021495022809551296,
+          0.0002479477479170781,
+          0.002149502280955131,
+          0.0002479477479170781,
+          0.00024794774791707955,
+          2.8601079534483498e-05
+        ],
+        "expanded_word_sha256": "b8873d7e7fc6ef2e4685cdcfb03ba73c111b493ce107bc0f298a5ea4ad59fc95",
+        "independent_product_state_mean": 0.7452257132547333,
+        "pointer_mean": 0.745225713254752,
+        "source_pulses": 338
+      },
+      "Y": {
+        "all_pointer_and_work_probabilities": [
+          0.26086445579066364,
+          0.0186344102523424,
+          0.018634410252342373,
+          0.0021495022809550905,
+          0.018634410252342432,
+          0.002149502280955095,
+          0.0021495022809551066,
+          0.00024794774791707635,
+          0.018634410252342477,
+          0.0021495022809550983,
+          0.0021495022809550983,
+          0.0002479477479170759,
+          0.0021495022809551027,
+          0.0002479477479170757,
+          0.0002479477479170769,
+          2.8601079534483294e-05,
+          0.5622254506767217,
+          0.018634410252342644,
+          0.018634410252342668,
+          0.00214950228095512,
+          0.018634410252342682,
+          0.0021495022809551226,
+          0.002149502280955128,
+          0.0002479477479170771,
+          0.018634410252342727,
+          0.002149502280955127,
+          0.0021495022809551244,
+          0.00024794774791707646,
+          0.0021495022809551244,
+          0.00024794774791707646,
+          0.00024794774791707776,
+          2.860107953448331e-05
+        ],
+        "expanded_word_sha256": "2239213be71c32a987173be90d809e61aae6d830aa751d248c8ac7ff774c186a",
+        "independent_product_state_mean": -0.30136099488606605,
+        "pointer_mean": -0.3013609948860593,
+        "source_pulses": 338
+      }
+    },
+    "conditional_CCR_limit_from_ordered_product_state_law_proved": true,
+    "encoded_wave_Wightman": "<phi(t)phi(u)>=exp(-i Omega(t-u))/(2 Omega)",
+    "finite_CCR": "[Q_N,P_N]=i sum Z_j/N; not iI in operator norm",
+    "finite_copy_errors": [
+      {
+        "absolute_ordered_characteristic_error": 0.01597582661965903,
+        "copies": 4
+      },
+      {
+        "absolute_ordered_characteristic_error": 0.003923154502024269,
+        "copies": 16
+      },
+      {
+        "absolute_ordered_characteristic_error": 0.0009760516449449225,
+        "copies": 64
+      },
+      {
+        "absolute_ordered_characteristic_error": 0.00024371248553157394,
+        "copies": 256
+      }
+    ],
+    "finite_expectation": [
+      0.7452257132547333,
+      -0.30136099488606605
+    ],
+    "finite_fourth_moment": "E Q_N^4=3/4-1/(2N)",
+    "finite_native_pulse_Weyl_and_sine_response_detector_executed": true,
+    "growing_field_preparation_and_detector_compiler_executed": false,
+    "independent_product_copy_limit_is_source_refinement_limit": false,
+    "limit_ordered_Weyl_law": "exp(-|sum v_j|^2/4-i sum_(j<k) sigma(v_j,v_k)/2)",
+    "native_frequency_source_pulse_controls": [
+      {
+        "central_difference_response": 0.9845960640733554,
+        "coherent_phase_per_incident_trigger": 0.3047084373702735,
+        "complete_minus_and_plus_kick_pointer_probabilities": [
+          [
+            0.4996156867680684,
+            0.5003843132319317
+          ],
+          [
+            0.5003843132319319,
+            0.4996156867680682
+          ]
+        ],
+        "finite_kick_error_upper": 1.0770920880544228e-06,
+        "native_laplacian_eigenvalue": 2.76393202250021,
+        "ordered_two_point_imaginary": -0.4922985705824222,
+        "ordered_two_point_real": 1.5653233538992353,
+        "sine_kernel_linear_response": 0.9845971411648443,
+        "source_kick_size": 0.001
+      },
+      {
+        "central_difference_response": 0.966438271090403,
+        "coherent_phase_per_incident_trigger": 0.45102681179626236,
+        "complete_minus_and_plus_kick_pointer_probabilities": [
+          [
+            0.49954105536033705,
+            0.5004589446396629
+          ],
+          [
+            0.5004589446396631,
+            0.4995410553603369
+          ]
+        ],
+        "finite_kick_error_upper": 7.142509492153977e-07,
+        "native_laplacian_eigenvalue": 6.0,
+        "ordered_two_point_imaginary": -0.48321949267061237,
+        "ordered_two_point_real": 0.9977233907843018,
+        "sine_kernel_linear_response": 0.9664389853412246,
+        "source_kick_size": 0.001
+      },
+      {
+        "central_difference_response": 0.9594661245101843,
+        "coherent_phase_per_incident_trigger": 0.4961982595020731,
+        "complete_minus_and_plus_kick_pointer_probabilities": [
+          [
+            0.4995220942384454,
+            0.5004779057615549
+          ],
+          [
+            0.5004779057615549,
+            0.4995220942384454
+          ]
+        ],
+        "finite_kick_error_upper": 6.445453006480775e-07,
+        "native_laplacian_eigenvalue": 7.23606797749979,
+        "ordered_two_point_imaginary": -0.47973338452772457,
+        "ordered_two_point_real": 0.8861365897616534,
+        "sine_kernel_linear_response": 0.9594667690554495,
+        "source_kick_size": 0.001
+      }
+    ],
+    "native_incident_parameter": "t=beta tau, beta=2d/sqrt(630), fixed d in {5,6}",
+    "native_refinement_frequency": "Omega_l=sqrt(Q_l)*acos(1-lambda/(2Q_l)), Q_l=630*16^l",
+    "ordered_Weyl_vectors": [
+      [
+        "3/4",
+        "0"
+      ],
+      [
+        "0",
+        "1/2"
+      ],
+      [
+        "-1/4",
+        "1/3"
+      ]
+    ],
+    "physical_QFT_or_atomic_clock_identification": false,
+    "polarized_product_reference_supplied": true,
+    "proper_code_gluing_blank_register_and_controlled_pulses_required": true,
+    "reversed_order_expectation": [
+      0.7452257132547336,
+      0.30136099488606616
+    ],
+    "source_copies_executed": 4,
+    "spectral_mode_labels_and_rotation_angles_are_declared_encoding": true,
+    "tracial_reference_expectation": [
+      0.7891281992470935,
+      0.0
+    ],
+    "unconditioned_repair_selects_this_reference": false
   },
   "source_sha256": {
     "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean": "4ce2b74387dd9cbfb19d8204beabdd4e1d1786b7c2941578c74812f97bf86b6f",
@@ -946,7 +1416,7 @@
     "model/federated_observer/__init__.py": "f2352d90abb18dc526972cc1b849a049fdbe2993d379e711ed03c991130a077e",
     "model/federated_observer/source.py": "4a91b7f254fcee89c93b1ce3e9972ec0c809290ec987dbc87fcb0392319e549d",
     "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
-    "model/observer/coherent_continuation.py": "a71433c2c4afe605ac6920deca125f2ce08f7e0c6e9cb7c976d0c60b83f88488",
+    "model/observer/coherent_continuation.py": "75c9442fb9a54c78af1e932b3b27011c539a9843cc2fcf33076a594a5e619091",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
     "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
@@ -962,14 +1432,14 @@
     "model/observer_reconstruction/__init__.py": "56826b3217ce1e18df3c5dbdbcb8ba7c2482be087a68de6f14e5440bce090a0f",
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
     "model/observer_time_fields/__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",
-    "model/observer_time_fields/continuum_dynamics.py": "77064a796dcfca80d2cd8ab4c89a8a9bf2935b42e34442e872aacd82e2d0f607",
+    "model/observer_time_fields/continuum_dynamics.py": "22765d4b78da4aedf49586fbaf382d36faf63419eafb10649ab151f3cfbc6a90",
     "model/observer_time_fields/spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
     "model/observer_time_fields/wave_reference.py": "4b37e0ded33523e746657bfa3ef768581ef7e7ef9d6e66cea9d9d9180cbf50eb",
     "model/physical_space_time/__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
     "model/physical_space_time/continuum_field.py": "822efc9ecf8cc626fc152b0ada5739769d075c639cf245543a6d6123f6d2a7d4",
-    "model/physical_space_time/local_continuum.py": "b71c7892777dd6a809b881f292d4316c916af07a057219357d4610fea9223cae",
+    "model/physical_space_time/local_continuum.py": "d68d4db5e9289e96192e5144ee79ad8ab33f09254c766eb21eb7560fbee19f22",
     "model/physical_space_time/source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
     "model/physical_space_time/uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",

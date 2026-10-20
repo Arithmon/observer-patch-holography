@@ -429,6 +429,108 @@ def torus_diagnostic(size):
             'incident_cross_mode_diagnostic': float(incident[1, 5])}
 
 
+def subordination_budget(rate, jump_cutoff, count_cutoff):
+    """Positive native-lag mixture for exp(-rate*sqrt(I-K)), with finite caps.
+
+    ``rate`` is a declared mixture parameter. It is neither the native attempt
+    count nor a distance. Omitted histories retain their missing mass.
+    """
+    if type(rate) not in (int, F) or rate <= 0:
+        raise ValueError('an original positive rational mixture rate is required')
+    _integer(jump_cutoff, 1, 4096)
+    _integer(count_cutoff, 0, 64)
+    rate = F(rate)
+    try:
+        numeric_rate = float(rate)
+    except OverflowError as error:
+        raise ValueError('the mixture rate must admit a finite float diagnostic') from error
+    if not math.isfinite(numeric_rate) or numeric_rate == 0:
+        raise ValueError('the mixture rate must admit a positive finite float diagnostic')
+    weights = tuple(F(math.comb(2*n, n), 4**n*(2*n-1))
+                    for n in range(1, jump_cutoff+1))
+    tail = F(math.comb(2*jump_cutoff, jump_cutoff), 4**jump_cutoff)
+    if sum(weights, F(0))+tail != 1:
+        raise ArithmeticError('the exact native-lag probability tail changed')
+    # P(Poisson(rate)>J) <= E[binom(Poisson(rate),J+1)].
+    poisson_bound = rate**(count_cutoff+1)/math.factorial(count_cutoff+1)
+    error_bound = min(F(1), rate*tail+poisson_bound)
+    log_retained_rate = math.log(numeric_rate)+math.log1p(-float(tail))
+    mass = sum(math.exp(-numeric_rate+j*log_retained_rate-math.lgamma(j+1))
+               for j in range(count_cutoff+1))
+    if not 0 <= 1-mass <= float(error_bound)+2e-15:
+        raise ArithmeticError('finite subordination omitted mass exceeded its budget')
+    return {
+        'rate': str(rate), 'jump_cutoff': jump_cutoff,
+        'count_cutoff': count_cutoff,
+        'maximum_native_attempt_lag': jump_cutoff*count_cutoff,
+        'exact_single_jump_tail': str(tail),
+        'poisson_count_tail_upper': str(poisson_bound),
+        'operator_error_upper': str(error_bound),
+        'retained_probability_mass_diagnostic': mass,
+    }
+
+
+def _subordinated_polynomial(kernel, rate, jump_cutoff, count_cutoff):
+    """Evaluate the capped positive polynomial without conditioning on success."""
+    budget = subordination_budget(rate, jump_cutoff, count_cutoff)
+    identity = np.eye(len(kernel))
+    power, jumps = identity.copy(), np.zeros_like(kernel)
+    for n in range(1, jump_cutoff+1):
+        power = power@kernel
+        jumps += float(F(math.comb(2*n, n), 4**n*(2*n-1)))*power
+    term, result = identity.copy(), identity.copy()
+    for j in range(1, count_cutoff+1):
+        term = (float(rate)/j)*(term@jumps)
+        result += term
+    return math.exp(-float(rate))*result, budget
+
+
+def subordinated_native_readout():
+    """Audit the Poisson extension as positive processing of native lag records."""
+    _, a, b, exact_z, checked = native_counts()
+    complete = np.asarray((a+b)/60, dtype=float)
+    reduced = np.asarray(field('attempt')['kernel'], dtype=float)
+    z = np.asarray(exact_z, dtype=float)
+    projector = np.asarray(P0, dtype=float)
+    reduced_generator = np.eye(12)-reduced
+    values, vectors = np.linalg.eigh(reduced_generator)
+    if abs(values[0]) > 1e-14 or np.min(values[1:]) <= 0:
+        raise ArithmeticError('native density subordination lost its stationary mode')
+    values[0] = 0.0
+    rate, jump_cutoff, count_cutoff = F(1, 2), 64, 8
+    full, budget = _subordinated_polynomial(
+        complete, rate, jump_cutoff, count_cutoff)
+    reduced_poly, _ = _subordinated_polynomial(
+        reduced, rate, jump_cutoff, count_cutoff)
+    target = (vectors*np.exp(-float(rate)*np.sqrt(values)))@vectors.T
+    error = float(np.linalg.norm(reduced_poly-target, 2))
+    covariance = z@full@z.T/66
+    covariance_error = float(np.linalg.norm(
+        covariance-float(CHI)*reduced_poly@projector, 2))
+    mass = budget['retained_probability_mass_diagnostic']
+    column_error = float(np.max(abs(full.sum(axis=0)-mass)))
+    # Unit jumps give heat flow, not the square-root Poisson extension.
+    unit_jump_target = (vectors*np.exp(-float(rate)*values))@vectors.T
+    wrong_jump_error = float(np.linalg.norm(unit_jump_target-target, 2))
+    if (float(np.min(full)) < -1e-15 or column_error > 2e-14
+            or covariance_error > 2e-14
+            or error > float(F(budget['operator_error_upper']))+2e-14
+            or wrong_jump_error < 0.05):
+        raise ArithmeticError('native positive-lag subordination control failed')
+    return {
+        **budget, 'native_branches_checked': checked,
+        'complete_configurations': len(complete),
+        'complete_history_covariance_intertwiner_error': covariance_error,
+        'column_mass_error': column_error,
+        'density_Poisson_extension_error_diagnostic': error,
+        'unit_jump_heat_substitution_error_diagnostic': wrong_jump_error,
+        'missing_mass_is_not_renormalized': True,
+        'finite_native_record_polynomial_executed': True,
+        'mixture_rate_identified_as_physical_radius_or_clock': False,
+        'finite_sampling_error_included_in_truncation_bound': False,
+    }
+
+
 def run():
     _, _, _, z, checks = native_counts()
     rows = []
@@ -471,6 +573,7 @@ def run():
             'actual_source_ancestry_covariances': ancestry_green.run(),
             'actual_source_uniform_Green_and_subsequential_field': uniform_green.run(),
             'actual_carrier_causal_placement': causal_placement.run(),
+            'native_positive_lag_Poisson_extension': subordinated_native_readout(),
             'finite_history_controls': [scalar_moments(clock, n) for clock, ns in
                 (('attempt', (1, 4, 16, 64)), ('incident', (1, 4, 16))) for n in ns],
             'finite_cap_control': {'requested_incident_ticks': 64,
@@ -487,6 +590,7 @@ def run():
                 'actual_source_fixed_ancestry_covariances_certified_at_levels_zero_through_three': True,
                 'actual_source_all_level_Green_bound_and_vanishing_clock_correction_proved': True,
                 'actual_source_nonzero_compatible_subsequential_Gaussian_law_proved': True,
+                'native_positive_lag_Poisson_extension_with_finite_cap_bound': True,
                 'conditional_graph_Green_convergence_criterion_proved': True,
                 'supplied_torus_fixed_band_iterated_limit_proved': True,
                 'uniform_finite_count_Gaussian_error_bound_proved': False,

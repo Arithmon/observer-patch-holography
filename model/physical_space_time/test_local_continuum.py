@@ -434,3 +434,126 @@ def test_incomplete_carrier_dictionary_cannot_invert_its_covariance():
     covariance = dictionary.T*projection*dictionary
     assert covariance.rank() == 10
     assert covariance.det() == 0
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_steklov_bulk_extension_quadrature_and_denman_beavers_match_spectral_oracle(level):
+    row = c.steklov_bulk_extension_bounds(level)
+    compare_receipt(json.loads(json.dumps(row)), row)
+    assert row['cells'] == 20*4**level
+    assert row['quadrature_nodes'] == 64
+    assert row['dirichlet_energy_quadrature_error'] <= 1e-10
+    assert row['radial_tangential_equipartition_error'] <= 1e-10
+    assert row['polarized_bilinear_form_error'] <= 1e-10
+    assert row['denman_beavers_vs_spectral_error'] <= 1e-11
+    assert row['A_quarter_spectral_filter_identity_error'] <= 1e-11
+    assert abs(
+        2*row['radial_bulk_energy_diagnostic']
+        -row['boundary_steklov_energy_denman_beavers']) <= 1e-10
+    for tail in row['compactness_tail_controls']:
+        assert abs(
+            tail['sqrt_green_tail_norm_squared_diagnostic']
+            -tail['sandwiched_green_tail_norm_diagnostic']) <= 1e-11
+        assert tail['sqrt_green_tail_norm_squared_diagnostic'] <= float(
+            F(tail['energy_tail_squared_upper']))+1e-9
+        assert F(tail['energy_tail_squared_upper']) < F(tail['green_tail_squared_upper'])
+    assert row['square_root_sqrt_difference_diagnostic'] <= (
+        row['square_root_sqrt_difference_upper_from_green']+1e-12)
+    assert row['square_root_sqrt_difference_upper_from_green'] <= (
+        row['square_root_sqrt_difference_analytic_upper']+1e-12)
+    symbols = row['round_sphere_vs_ball_symbol_bounds']
+    assert F(symbols['squared_symbol_ratio_lower']) == F(1, 2)
+    assert F(symbols['squared_symbol_ratio_strict_upper']) == 1
+    assert F(symbols['symbol_difference_strict_upper']) == F(1, 2)
+    for sample in symbols['sampled_degrees']:
+        assert F(1, 2) <= F(sample['squared_symbol_ratio_exact']) < 1
+        assert 0.0 < sample['symbol_difference_diagnostic'] < 0.5
+    assert row['boundary_trace_achieved_by_A_quarter_spectral_filter'] is True
+    assert row['unfiltered_boundary_trace_of_smooth_3d_local_ball_action'] is False
+    assert row['identifies_physical_radial_bulk_coordinate'] is False
+    assert row['identifies_limit_with_round_sphere'] is False
+
+
+def test_steklov_bulk_extension_rejects_corrupted_square_root_or_propagator(monkeypatch):
+    original_sqrt = c._denman_beavers_sqrt
+    monkeypatch.setattr(
+        c, '_denman_beavers_sqrt',
+        lambda m: (original_sqrt(m)[0]*1.01, original_sqrt(m)[1]))
+    with pytest.raises(ArithmeticError, match='Steklov square-root'):
+        c.steklov_bulk_extension_bounds(0)
+    monkeypatch.setattr(c, '_denman_beavers_sqrt', original_sqrt)
+    original_exp = c._matrix_exp_scaling_squaring
+    monkeypatch.setattr(
+        c, '_matrix_exp_scaling_squaring',
+        lambda m: original_exp(1.05*m))
+    with pytest.raises(ArithmeticError, match='Poisson-Steklov Dirichlet energy'):
+        c.steklov_bulk_extension_bounds(0)
+
+
+@pytest.mark.parametrize('level', range(3))
+def test_isotropic_comparison_loewner_sandwich_and_relative_error_bounds(level):
+    row = c.isotropic_comparison_bounds(level)
+    compare_receipt(json.loads(json.dumps(row)), row)
+    assert row['cells'] == 20*4**level
+    assert row['dual_edges'] == 30*4**level
+    assert F(row['conductance_lower']) == F(5, 8)
+    assert F(row['conductance_upper']) == F(15, 19)
+    assert F(row['harmonic_mean_reference_conductance']) == F(30, 43)
+    assert F(5, 8) <= F(row['arithmetic_mean_conductance']) <= F(15, 19)
+    assert F(row['laplacian_loewner_lower_multiplier']) == F(43, 48)
+    assert F(row['laplacian_loewner_upper_multiplier']) == F(43, 38)
+    assert F(row['green_loewner_lower_multiplier']) == F(38, 43)
+    assert F(row['green_loewner_upper_multiplier']) == F(48, 43)
+    assert F(row['uniform_relative_green_error_upper']) == F(5, 43)
+    assert F(row['min_lower_edge_slack']) >= 0
+    assert F(row['min_upper_edge_slack']) >= 0
+    assert row['all_edge_conductance_slacks_nonnegative'] is True
+    assert row['exact_rational_level_zero_loewner_LDL_pivots'] == 19
+    assert row['laplacian_lower_slack_min_eigenvalue'] >= -1e-12
+    assert row['laplacian_upper_slack_min_eigenvalue'] >= -1e-12
+    assert row['green_lower_slack_min_eigenvalue'] >= -1e-12
+    assert row['green_upper_slack_min_eigenvalue'] >= -1e-12
+    assert 0.0 < row['relative_green_norm_difference_diagnostic'] < float(F(5, 43))
+    assert row['native_to_isotropic_green_norm_difference_diagnostic'] <= (
+        row['native_to_isotropic_green_norm_difference_upper']+1e-12)
+    assert row['all_level_loewner_sandwich_certified'] is True
+    assert row['uniform_relative_green_error_bound_certified'] is True
+    assert row['continuum_green_loewner_sandwich_certified'] is True
+    assert row['exact_continuum_metric_isotropy_proved'] is False
+
+
+def test_isotropic_comparison_rejects_conductance_outside_loewner_enclosure(monkeypatch):
+    bundle = c.weighted_conductance_bundle(0)
+    corrupted = dict(bundle)
+    corrupted['edges'] = ((0, 1, F(1, 2)), *bundle['edges'][1:])
+    monkeypatch.setattr(c, 'weighted_conductance_bundle', lambda level=0: corrupted)
+    with pytest.raises(ArithmeticError, match='Loewner sandwich'):
+        c.isotropic_comparison_bounds(0)
+
+
+@pytest.mark.parametrize('invalid_level', (True, False, -1, 3, 0.0, '0', F(0)))
+def test_green_steklov_and_comparison_reject_invalid_levels_cold_and_warm(invalid_level):
+    c.green_orthonormal_matrix(0)
+    c.weighted_conductance_bundle(0)
+    for fn in (
+        c.green_orthonormal_matrix,
+        c.steklov_bulk_extension_bounds,
+        c.weighted_conductance_bundle,
+        c.isotropic_comparison_bounds,
+    ):
+        with pytest.raises(ValueError, match='original integer'):
+            fn(invalid_level)
+
+
+def test_green_and_conductance_bundles_return_defensive_copies():
+    green = c.green_orthonormal_matrix(0)
+    original_entry = float(green[0, 0])
+    green[0, 0] = -999.0
+    assert float(c.green_orthonormal_matrix(0)[0, 0]) == original_entry
+    bundle = c.weighted_conductance_bundle(0)
+    original_weight_entry = float(bundle['weighted_green'][0, 0])
+    bundle['weighted_green'][0, 0] = -999.0
+    bundle['conductance_histogram']['corrupted'] = 999
+    fresh = c.weighted_conductance_bundle(0)
+    assert float(fresh['weighted_green'][0, 0]) == original_weight_entry
+    assert 'corrupted' not in fresh['conductance_histogram']

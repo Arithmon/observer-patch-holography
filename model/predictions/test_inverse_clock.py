@@ -215,6 +215,7 @@ for module in list(sys.modules.values()):
     if path is None: continue
     try: relative=Path(path).resolve().relative_to(m.ROOT).as_posix()
     except ValueError: continue
+    if relative.startswith('.'): continue
     if relative.endswith('.py') and relative not in m.SOURCE_PATHS: missing.append(relative)
 print(json.dumps(sorted(set(missing))))
 '''

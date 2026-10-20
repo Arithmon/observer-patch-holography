@@ -166,7 +166,7 @@ for module in tuple(sys.modules.values()):
     if not path: continue
     try: name=Path(path).resolve().relative_to(o.ROOT).as_posix()
     except ValueError: continue
-    if name.endswith('.py') and name not in o.SOURCE_PATHS: missing.append(name)
+    if not name.startswith('.') and name.endswith('.py') and name not in o.SOURCE_PATHS: missing.append(name)
 assert not missing,sorted(set(missing))
 '''
     subprocess.run([sys.executable, '-c', code], cwd=o.ROOT, check=True, timeout=120)

@@ -504,3 +504,60 @@ def test_uniform_preparation_word_does_not_depend_on_platform_libm(monkeypatch):
     monkeypatch.setattr(math, "atan2", forbidden)
     monkeypatch.setattr(math, "hypot", forbidden)
     assert c.density_walk_program()["routines"]["prepare"] == baseline
+
+
+def test_central_class_generator_matches_every_one_particle_native_column():
+    import sympy as sp
+    result = c.edge_generator_audit()
+    class_sum = sp.zeros(12)
+    for permutation in result["selected_order_five_class"]:
+        for i, j in enumerate(permutation):
+            class_sum[j, i] += 1
+    native_counts = sp.zeros(12)
+    for site in range(12):
+        state = tuple(int(p == site) for p in range(12))
+        for seam in c.quantum_mixing.seams():
+            for coin in (0, 1):
+                output, _ = endpoint(state, seam, coin)
+                native_counts[output.index(1), site] += 1
+    assert 2*native_counts == 108*sp.eye(12)+class_sum
+    assert result["irreducible_sector_ranks"] == [1, 3, 5, 3]
+    assert not result["complete_native_instrument_is_group_convolution"]
+    assert not result["nontracial_Gibbs_state_prepared_by_this_audit"]
+
+
+def test_group_image_algebra_has_exactly_the_retained_sector_dimension():
+    import sympy as sp
+    from ..common_source.slow_geometry import source
+    columns = []
+    for permutation in source().rotations():
+        columns.append(sp.Matrix([int(permutation[i] == j)
+                                  for j in range(12) for i in range(12)]))
+    # Independent rank computation, not an eigenvalue multiplicity sum.
+    assert sp.Matrix.hstack(*columns).rank() == 44
+    assert c.edge_generator_audit()["commutant_dimension"] == 4
+
+
+def test_edge_generator_rejects_a_changed_seam_law_and_incomplete_group():
+    from ..common_source.slow_geometry import source
+    rotations = tuple(source().rotations())
+    with pytest.raises(ValueError, match="sixty"):
+        c.edge_generator_audit(rotations=rotations[:-1])
+    edges = tuple(c.quantum_mixing.seams())
+    with pytest.raises(ArithmeticError, match="unique"):
+        c.edge_generator_audit(seams=edges[:-1])
+    reordered = c.edge_generator_audit(rotations=tuple(reversed(rotations)))
+    assert reordered == c.edge_generator_audit()
+
+
+def test_isospectral_class_control_changes_the_local_native_response():
+    result = c.edge_generator_audit()["opposite_class_control"]
+    assert result["same_spectrum"]
+    a, b = result["tested_native_seam"]
+    start = tuple(int(i == a) for i in range(12))
+    target = tuple(int(i == b) for i in range(12))
+    hits = sum(endpoint(start, edge, coin)[0] == target
+               for edge in c.quantum_mixing.seams() for coin in (0, 1))
+    assert hits == 1
+    assert F(result["native_one_attempt_transition"]) == F(hits, 60)
+    assert F(result["other_class_one_attempt_transition"]) == 0

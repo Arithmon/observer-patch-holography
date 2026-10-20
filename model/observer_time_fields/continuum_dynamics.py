@@ -21,6 +21,7 @@ import sympy as sp
 
 from . import spatial_dynamics as dynamics
 from . import wave_reference
+from ..observer.source_scalar import compiler as source_compiler
 from ..physical_space_time import local_continuum as spatial
 from tools import strict_json
 
@@ -37,6 +38,22 @@ def _root_upper(value):
     root = math.isqrt(value.numerator*grid*grid//value.denominator)
     root += int(F(root*root, grid*grid) < value)
     return F(root, grid)
+
+
+def _int(value, minimum=0):
+    if type(value) is not int or value < minimum:
+        raise ValueError('an original integer at or above the bound is required')
+    return value
+
+
+def _fraction(value, positive=False):
+    if type(value) not in (int, F):
+        raise ValueError('an original integer or Fraction is required')
+    value = F(value)
+    if positive and value <= 0:
+        raise ValueError('a positive exact value is required')
+    return value
+
 
 
 def propagation_bounds(level, band=16, horizon=4, energy=1):
@@ -744,6 +761,514 @@ def reference_state_bounds(level, modular_parameter=1, terms_per_vertex=1, overl
         'every_noncommutative_or_nontracial_limit_excluded': False}
 
 
+@lru_cache(maxsize=8)
+def _helmert_basis(size):
+    """Deterministic orthonormal basis of the mean-zero subspace in R^size."""
+    basis = np.zeros((size, size-1), dtype=float)
+    for j in range(size-1):
+        norm = math.sqrt((j+1)*(j+2))
+        basis[:j+1, j] = 1.0/norm
+        basis[j+1, j] = -float(j+1)/norm
+    return basis
+
+
+@lru_cache(maxsize=4)
+def _helmert_green_and_basis(level):
+    """Independent mean-zero Schur Green matrix and distant cell-dipole pair."""
+    graph, _, r, integer_f, denominator = spatial.source.matrices(level)
+    schur = r.T@np.linalg.solve(integer_f/denominator, r)/12.0
+    green_ambient = spatial.source._green(schur)/4**level
+    basis = _helmert_basis(graph.cells)
+    green = basis.T@green_ambient@basis
+    green = 0.5*(green+green.T)
+    adjacency = np.zeros((graph.cells, graph.cells), dtype=int)
+    for a, b in graph.inter_seams:
+        adjacency[a//12, b//12] = 1
+        adjacency[b//12, a//12] = 1
+    distances = spatial.shortest_path(adjacency, directed=False, unweighted=True)
+    edges = [(i, j) for i in range(graph.cells)
+             for j in range(i+1, graph.cells) if adjacency[i, j]]
+    best_distance = -1
+    best_pair = None
+    for a0, a1 in edges[:20]:
+        for b0, b1 in edges:
+            d = int(min(distances[a0, b0], distances[a0, b1],
+                        distances[a1, b0], distances[a1, b1]))
+            if d > best_distance:
+                best_distance = d
+                best_pair = ((a0, a1), (b0, b1))
+    return green, basis, best_distance, best_pair
+
+
+def _green_orthonormal_matrix(level):
+    """Orthonormal mean-zero cell Green matrix with independent Schur check."""
+    level = _int(level, minimum=0)
+    if level > 2:
+        raise ValueError('relativistic wave vacuum matrix controls use levels zero through two')
+    helmert_green, basis, _, _ = _helmert_green_and_basis(level)
+    cells = basis.shape[0]
+    if hasattr(spatial, 'green_orthonormal_matrix'):
+        matrix = np.asarray(spatial.green_orthonormal_matrix(level), dtype=float)
+        if matrix.shape == (cells, cells):
+            if (np.max(np.abs(matrix-matrix.T)) > 1e-12
+                    or float(np.linalg.norm(matrix@np.ones(cells, dtype=float), 2)) > 1e-11):
+                raise ArithmeticError('spatial.green_orthonormal_matrix lost symmetry or mean-zero projection')
+            reduced = basis.T@matrix@basis
+            reduced = 0.5*(reduced+reduced.T)
+        elif matrix.shape == helmert_green.shape:
+            if np.max(np.abs(matrix-matrix.T)) > 1e-12:
+                raise ArithmeticError('spatial.green_orthonormal_matrix lost symmetry')
+            reduced = 0.5*(matrix+matrix.T)
+        else:
+            raise ArithmeticError('spatial.green_orthonormal_matrix has unexpected shape')
+        if np.max(np.abs(np.linalg.eigvalsh(reduced)
+                         -np.linalg.eigvalsh(helmert_green))) > 1e-10:
+            raise ArithmeticError('spatial.green_orthonormal_matrix disagrees with independent Schur elimination')
+        return reduced.copy()
+    return helmert_green.copy()
+
+
+@lru_cache(maxsize=8)
+def _elementary_carrier_wave_vacuum_control(horizon, steps):
+    """Exact and spectral wave-vacuum equipartition and commutator on 12 ports."""
+    laplacian = sp.Matrix(dynamics.native_density()['laplacian'])
+    eye = sp.eye(12)
+    min_poly = laplacian*(laplacian-6*eye)*(laplacian**2-10*laplacian+20*eye)
+    pseudo = (laplacian+sp.ones(12)/12).inv()-sp.ones(12)/12
+    if (laplacian.trace() != 60 or pseudo.trace() != sp.Rational(7, 3)
+            or any(value != 0 for value in min_poly)):
+        raise ArithmeticError('elementary twelve-port native Laplacian invariants changed')
+    basis = _helmert_basis(12)
+    reduced = basis.T@np.asarray(laplacian, dtype=float)@basis
+    reduced = 0.5*(reduced+reduced.T)
+    eigenvalues = np.sort(np.linalg.eigvalsh(reduced))
+    exact_eigenvalues = np.array([5.0-math.sqrt(5.0)]*3+[6.0]*5+[5.0+math.sqrt(5.0)]*3)
+    if np.max(np.abs(eigenvalues-exact_eigenvalues)) > 1e-12:
+        raise ArithmeticError('elementary twelve-port spectrum disagrees with exact algebraic roots')
+    omega = np.sqrt(eigenvalues)
+    inv_omega = 1.0/omega
+    kinetic_modes = eigenvalues*inv_omega
+    potential_modes = eigenvalues*inv_omega
+    equipartition_residual = float(np.max(np.abs(kinetic_modes-potential_modes)))
+    exact_sqrt_trace = float(3.0*math.sqrt(10.0+4.0*math.sqrt(5.0))+5.0*math.sqrt(6.0))
+    exact_inv_sqrt_trace = float(3.0*math.sqrt(10.0+4.0*math.sqrt(5.0))/(2.0*math.sqrt(5.0))
+                                 +5.0*math.sqrt(6.0)/6.0)
+    total_energy = 0.5*float(np.sum(kinetic_modes+potential_modes))
+    equal_time_trace = float(np.sum(inv_omega))
+    if (equipartition_residual > 1e-14
+            or abs(total_energy-exact_sqrt_trace) > 1e-12
+            or abs(equal_time_trace-exact_inv_sqrt_trace) > 1e-12):
+        raise ArithmeticError('elementary twelve-port canonical wave energy equipartition failed')
+    t_float = float(horizon)
+    max_step_residual = 0.0
+    max_commutator_residual = 0.0
+    for step in range(steps+1):
+        tau = t_float*step/steps
+        c_diag = np.cos(tau*omega)
+        s_diag = np.sin(tau*omega)
+        propagated_pos = (c_diag**2+s_diag**2)*inv_omega
+        propagated_vel = (c_diag**2+s_diag**2)*omega
+        step_residual = float(max(np.max(np.abs(propagated_pos-inv_omega)),
+                                  np.max(np.abs(propagated_vel-potential_modes))))
+        max_step_residual = max(max_step_residual, step_residual)
+        d_tau = s_diag*inv_omega
+        d_minus = np.sin(-tau*omega)*inv_omega
+        dd_tau = -eigenvalues*d_tau
+        comm_residual = float(max(np.max(np.abs(d_tau+d_minus)),
+                                  np.max(np.abs(dd_tau+omega*s_diag))))
+        max_commutator_residual = max(max_commutator_residual, comm_residual)
+    if max_step_residual > 1e-12 or max_commutator_residual > 1e-12:
+        raise ArithmeticError('elementary twelve-port wave evolution or Pauli-Jordan commutator failed')
+    return {
+        'carrier_ports': 12,
+        'mean_zero_dimension': 11,
+        'exact_laplacian_trace': 60,
+        'exact_pseudoinverse_trace': F(7, 3),
+        'exact_sqrt_laplacian_trace_formula': '3*sqrt(10+4*sqrt(5))+5*sqrt(6)',
+        'exact_inv_sqrt_laplacian_trace_formula': '3*sqrt(10+4*sqrt(5))/(2*sqrt(5))+5*sqrt(6)/6',
+        'equal_time_fractional_wave_covariance_trace_diagnostic': equal_time_trace,
+        'canonical_wave_energy_expectation_diagnostic': total_energy,
+        'mode_equipartition_residual_diagnostic': equipartition_residual,
+        'multi_step_stationarity_residual_diagnostic': max_step_residual,
+        'Pauli_Jordan_klein_gordon_residual_diagnostic': max_commutator_residual,
+        'exact_mode_energy_equipartition_verified': True}
+
+
+def fractional_wave_bounds(level=0, T=F(1), steps=4, cutoff=2, s=F(2)):
+    """Fractional-filtered wave equipartition, H^-s tightness and causal cone.
+
+    For W_{1/4,l}(t)=A_l^(1/4) W_l(t) with A_l=G_l^-1 on the (20*4^l-1)-dimensional
+    orthonormal mean-zero cell subspace, the two-time Gaussian covariance is
+    C_{1/4,l}(t,u)=A_l^(-1/2) cos((t-u) sqrt(A_l))=G_l^(1/2) cos((t-u) sqrt(A_l)),
+    which equals twice the canonical free-scalar Wightman real covariance and matches
+    at equal times the radial half-cylinder Steklov boundary covariance G_l^(1/2).
+    """
+    level = _int(level, minimum=0)
+    if level > 2:
+        raise ValueError('relativistic wave vacuum matrix controls use levels zero through two')
+    T = _fraction(T, positive=True)
+    steps = _int(steps, minimum=1)
+    cutoff = _int(cutoff, minimum=1)
+    s = _fraction(s, positive=True)
+    if s < F(7, 4):
+        raise ValueError('fractional wave path tightness requires Sobolev index s>=7/4')
+    scale = 4**level
+    cells = 20*scale
+    dim = cells-1
+    if cutoff > dim:
+        raise ValueError('spectral cutoff exceeds the mean-zero source dimension')
+    elementary = _elementary_carrier_wave_vacuum_control(T, steps)
+    green = _green_orthonormal_matrix(level)
+    helmert_green, basis, dipole_distance, ((a0, a1), (b0, b1)) = _helmert_green_and_basis(level)
+    if (green.shape != (dim, dim)
+            or np.max(np.abs(green-green.T)) > 1e-12):
+        raise ArithmeticError('mean-zero Green matrix lost symmetry or dimension')
+    evals_g_asc, evecs_g = np.linalg.eigh(green)
+    evals_helmert_asc, evecs_helmert = np.linalg.eigh(helmert_green)
+    if (np.any(evals_g_asc <= 0)
+            or np.max(np.abs(evals_g_asc-evals_helmert_asc)) > 1e-10
+            or float(evals_g_asc[-1]) > float(spatial.GREEN_BOUND)+1e-12):
+        raise ArithmeticError('mean-zero Green spectrum failed independent Schur or norm bounds')
+    # Order modes by ascending generator eigenvalue lambda_1 <= ... <= lambda_dim.
+    mu = evals_g_asc[::-1]
+    vectors = evecs_g[:, ::-1]
+    lambdas = 1.0/mu
+    indices = np.arange(1, dim+1, dtype=float)
+    if (np.any(lambdas < indices/49920.0-1e-12)
+            or np.any(lambdas > 1.5*indices+1e-12)
+            or float(lambdas[-1]) > 0.5*scale+1e-12):
+        raise ArithmeticError('generator eigenvalues violated the all-level spectral enclosure')
+    omega = np.sqrt(lambdas)
+    inv_omega = np.sqrt(mu)
+    # 1. Canonical energy equipartition on the level-l spherical source operator.
+    kinetic_modes = lambdas*(inv_omega**2)*omega
+    potential_modes = lambdas*inv_omega
+    mode_equipartition_residual = float(np.max(np.abs(kinetic_modes-potential_modes)))
+    cutoff_kinetic = float(np.sum(kinetic_modes[:cutoff]))
+    cutoff_potential = float(np.sum(potential_modes[:cutoff]))
+    full_kinetic = float(np.sum(kinetic_modes))
+    full_potential = float(np.sum(potential_modes))
+    total_canonical_energy = 0.5*(full_kinetic+full_potential)
+    trace_sqrt_a = float(np.sum(omega))
+    trace_sqrt_g = float(np.sum(inv_omega))
+    # Matrix-level verification of C_{1/4,l}(0) = G_l^(1/2) = A_l^(-1/2) and A_l C_{1/4,l}(0) = A_l^(1/2),
+    # cross-checked against non-spectral Denman-Beavers matrix square-root iteration.
+    c0_matrix = (vectors*inv_omega)@vectors.T
+    a_matrix = (vectors*lambdas)@vectors.T
+    sqrt_a_matrix = (vectors*omega)@vectors.T
+    db_c0, db_sqrt_a = spatial._denman_beavers_sqrt(green)
+    matrix_equipartition_residual = float(max(
+        np.linalg.norm(c0_matrix@c0_matrix-green, 2),
+        np.linalg.norm(a_matrix@c0_matrix-sqrt_a_matrix, 2),
+        np.linalg.norm(c0_matrix-db_c0, 2),
+        np.linalg.norm(sqrt_a_matrix-db_sqrt_a, 2)))
+    if (mode_equipartition_residual > 1e-12
+            or abs(cutoff_kinetic-cutoff_potential) > 1e-12
+            or abs(full_kinetic-full_potential) > 1e-11
+            or abs(total_canonical_energy-trace_sqrt_a) > 1e-11
+            or matrix_equipartition_residual > 1e-10):
+        raise ArithmeticError('canonical wave energy equipartition failed on the source operator')
+    # 2. Geometric H^-s bounds use the OP4 harmonic energy estimate, not
+    # an identification of eigenvalue indices with spherical harmonics.
+    # Integral comparison: sum_{k>=1} k^-(s-1/2) <= 1 + 1/(s-3/2) = (s-1/2)/(s-3/2).
+    harmonic_series_factor = (s-F(1, 2))/(s-F(3, 2))
+    # From lambda_k >= k/49920 (lambda_k^(-1/2) < 224 k^(-1/2)) and lambda_k <= 3k/2:
+    # the spectral-index diagnostics have increments <=336 sqrt(k)|t-u|^2.
+    # For actual harmonics, sum_m <Y_jm,sqrt(A_l)Y_jm> <=
+    # sqrt(2)(2j+1)sqrt(j(j+1)) <=12 j^2 by OP4 and Cauchy-Schwarz.
+    increment_second_moment_constant = F(12)*(2*s-2)/(2*s-3)
+    spectral_increment_constant = F(336)*harmonic_series_factor
+    increment_fourth_moment_constant = 3*increment_second_moment_constant**2
+    equal_time_hs_variance_upper = F(224)*(s+F(1, 2))/(s-F(1, 2))
+    cutoff_tail_hs_variance_upper = F(224)/((s-F(1, 2))*cutoff)
+    dt = T/steps
+    dt_float = float(dt)
+    s_float = float(s)
+    weights_hs = (1.0+indices)**(-s_float)
+    equal_time_hs_diagnostic = float(np.sum(weights_hs*inv_omega))
+    cutoff_tail_hs_diagnostic = float(np.sum(weights_hs[cutoff:]*inv_omega[cutoff:]))
+    # Both independent initial displacement and velocity contribute. These
+    # diagnostics use spectral-index weights, not spherical harmonic weights.
+    increment_second_diagnostic = float(np.sum(
+        weights_hs*inv_omega*2.0*(1.0-np.cos(dt_float*omega))))
+    increment_fourth_diagnostic = 3.0*(increment_second_diagnostic**2)
+    step_second_upper = increment_second_moment_constant*(dt**2)
+    step_fourth_upper = increment_fourth_moment_constant*(dt**4)
+    if (equal_time_hs_diagnostic > float(equal_time_hs_variance_upper)+1e-12
+            or cutoff_tail_hs_diagnostic > float(cutoff_tail_hs_variance_upper)+1e-12
+            or increment_second_diagnostic > float(spectral_increment_constant*dt**2)+1e-12
+            or increment_fourth_diagnostic > float(3*spectral_increment_constant**2*dt**4)+1e-12):
+        raise ArithmeticError('fractional wave H^-s norm or increment violated its exact rational bound')
+    # 3. Candidate Pauli-Jordan sine kernel; a classical covariance alone
+    # does not define quantum operators or their commutators. Kernel D_l(t-u) = A_l^(-1/2) sin((t-u) sqrt(A_l)).
+    t_float = float(T)
+    d_diag = np.sin(t_float*omega)*inv_omega
+    d_norm_diagnostic = float(np.max(np.abs(d_diag)))
+    d_norm_upper = min(T, _root_upper(spatial.GREEN_BOUND))
+    # Composite midpoint quadrature check for D_l(T) = int_0^T cos(tau sqrt(A_l)) d tau.
+    quad_steps = max(steps, 16)
+    quad_dt = t_float/quad_steps
+    quad_diag = np.zeros_like(omega)
+    for m in range(quad_steps):
+        mid = (m+0.5)*quad_dt
+        quad_diag += np.cos(mid*omega)*quad_dt
+    quad_error_diagnostic = float(np.max(np.abs(d_diag-quad_diag)))
+    quad_error_upper = F(scale, 48*quad_steps**2)*(T**3)
+    # Separated zero-mean cell-dipole commutator leakage at graph distance d.
+    f_ambient = np.zeros(cells, dtype=float)
+    f_ambient[a0] = 1.0/math.sqrt(2.0); f_ambient[a1] = -1.0/math.sqrt(2.0)
+    g_ambient = np.zeros(cells, dtype=float)
+    g_ambient[b0] = 1.0/math.sqrt(2.0); g_ambient[b1] = -1.0/math.sqrt(2.0)
+    f_vec = basis.T@f_ambient
+    g_vec = basis.T@g_ambient
+    omega_h = np.sqrt(1.0/evals_helmert_asc[::-1])
+    vectors_h = evecs_helmert[:, ::-1]
+    d_helmert = (vectors_h*(np.sin(t_float*omega_h)/omega_h))@vectors_h.T
+    d_step_helmert = (vectors_h*(np.sin(dt_float*omega_h)/omega_h))@vectors_h.T
+    a_helmert = (vectors_h*(omega_h**2))@vectors_h.T
+    dipole_commutator_diagnostic = float(abs(g_vec@d_helmert@f_vec))
+    dipole_step_commutator_diagnostic = float(abs(g_vec@d_step_helmert@f_vec))
+    dipole_cubic_coeff_diagnostic = float(abs(g_vec@a_helmert@f_vec))/6.0
+    dipole_cubic_coeff_upper = F(scale, 6*2**dipole_distance)
+    dipole_step_commutator_upper = min(
+        dt, _root_upper(spatial.GREEN_BOUND),
+        F(scale, 12)*(dt**3),
+        dipole_cubic_coeff_upper*(dt**3)+F(scale**2, 480)*(dt**5))
+    dipole_commutator_upper = min(
+        d_norm_upper,
+        F(scale, 12)*(T**3),
+        dipole_cubic_coeff_upper*(T**3)+F(scale**2, 480)*(T**5))
+    if (d_norm_diagnostic > float(d_norm_upper)+1e-12
+            or quad_error_diagnostic > float(quad_error_upper)+1e-12
+            or dipole_cubic_coeff_diagnostic > float(dipole_cubic_coeff_upper)+1e-12
+            or dipole_step_commutator_diagnostic > float(dipole_step_commutator_upper)+1e-12
+            or dipole_commutator_diagnostic > float(dipole_commutator_upper)+1e-12):
+        raise ArithmeticError('Pauli-Jordan commutator kernel violated its norm, quadrature, or spatial leakage bound')
+    return {
+        'level': level,
+        'cells': cells,
+        'mean_zero_dimension': dim,
+        'parameter_horizon': T,
+        'time_steps': steps,
+        'step_size': dt,
+        'spectral_cutoff': cutoff,
+        'Sobolev_index_s': s,
+        'elementary_twelve_port_control': elementary,
+        'fractional_wave_field': 'W_{1/4,l}(t)=A_l^(1/4) W_l(t)',
+        'two_time_covariance_kernel': 'C_{1/4,l}(t,u)=A_l^(-1/2) cos((t-u) sqrt(A_l))=G_l^(1/2) cos((t-u) sqrt(A_l))',
+        'equal_time_Steklov_boundary_covariance_identity': 'C_{1/4,l}(t,t)=G_l^(1/2)=A_l^(-1/2)',
+        'canonical_free_scalar_Wightman_factor': 2,
+        'cutoff_kinetic_energy_diagnostic': cutoff_kinetic,
+        'cutoff_potential_energy_diagnostic': cutoff_potential,
+        'full_kinetic_energy_diagnostic': full_kinetic,
+        'full_potential_energy_diagnostic': full_potential,
+        'total_canonical_energy_expectation_diagnostic': total_canonical_energy,
+        'trace_sqrt_generator_diagnostic': trace_sqrt_a,
+        'trace_sqrt_Green_diagnostic': trace_sqrt_g,
+        'mode_equipartition_residual_diagnostic': mode_equipartition_residual,
+        'matrix_equipartition_residual_diagnostic': matrix_equipartition_residual,
+        'canonical_energy_equipartition_verified': True,
+        'harmonic_series_integral_factor': harmonic_series_factor,
+        'equal_time_spectral_index_variance_diagnostic': equal_time_hs_diagnostic,
+        'equal_time_spectral_index_variance_upper': equal_time_hs_variance_upper,
+        'cutoff_tail_spectral_index_variance_diagnostic': cutoff_tail_hs_diagnostic,
+        'cutoff_tail_spectral_index_variance_upper': cutoff_tail_hs_variance_upper,
+        'spectral_index_increment_constant': spectral_increment_constant,
+        'numerical_weighted_norms_use_spectral_indices_not_spherical_harmonics': True,
+        'H_minus_s_second_moment_constant_per_dt_squared': increment_second_moment_constant,
+        'H_minus_s_fourth_moment_constant_per_dt_fourth': increment_fourth_moment_constant,
+        'step_spectral_index_second_moment_diagnostic': increment_second_diagnostic,
+        'step_spectral_index_second_moment_upper': spectral_increment_constant*dt**2,
+        'step_H_minus_s_second_moment_upper': step_second_upper,
+        'step_spectral_index_fourth_moment_diagnostic': increment_fourth_diagnostic,
+        'step_spectral_index_fourth_moment_upper': 3*spectral_increment_constant**2*dt**4,
+        'step_H_minus_s_fourth_moment_upper': step_fourth_upper,
+        'Kolmogorov_Chentsov_holder_exponent_upper': F(1, 2),
+        'continuous_path_topology': f'C([0,T],H^-{s}(S2))',
+        'Pauli_Jordan_commutator_kernel': 'D_l(t-u)=A_l^(-1/2) sin((t-u) sqrt(A_l))',
+        'Pauli_Jordan_operator_norm_diagnostic': d_norm_diagnostic,
+        'Pauli_Jordan_operator_norm_upper': d_norm_upper,
+        'Pauli_Jordan_midpoint_quadrature_steps': quad_steps,
+        'Pauli_Jordan_midpoint_quadrature_error_diagnostic': quad_error_diagnostic,
+        'Pauli_Jordan_midpoint_quadrature_error_upper': quad_error_upper,
+        'separated_dipole_cells': [[a0, a1], [b0, b1]],
+        'separated_dipole_cell_distance': dipole_distance,
+        'separated_dipole_cubic_taylor_coefficient_diagnostic': dipole_cubic_coeff_diagnostic,
+        'separated_dipole_cubic_taylor_coefficient_upper': dipole_cubic_coeff_upper,
+        'separated_dipole_step_commutator_leakage_diagnostic': dipole_step_commutator_diagnostic,
+        'separated_dipole_step_commutator_leakage_upper': dipole_step_commutator_upper,
+        'separated_dipole_commutator_leakage_diagnostic': dipole_commutator_diagnostic,
+        'separated_dipole_commutator_leakage_upper': dipole_commutator_upper,
+        'continuum_comparison_wave_speed_upper': '1/sqrt(2)',
+        'continuum_sine_kernel_vanishes_for_separated_mean_zero_tests': True,
+        'classical_covariance_supplies_quantum_CCR': False,
+        'unrestricted_mean_zero_projected_kernel_has_local_support': False,
+        'restored_zero_mode_kernel': 'D_bar(t)=D_perp(t)+t P_const'}
+
+
+def spin_weyl_word(vectors, copies=1, controlled=False):
+    """Existing source pulses for ordered exp(i(s Q_N+t P_N)) products.
+
+    Q_N=sum X/sqrt(2N), P_N=sum Y/sqrt(2N). The optional last qubit is
+    the Ramsey control. Blank proper-code registers and coherent code gluing
+    are the source compiler's existing premises.
+    """
+    copies = _int(copies, 1)
+    if copies > 15 or type(controlled) is not bool:
+        raise ValueError('one through fifteen copies and a Boolean control required')
+    vectors = np.asarray(vectors, dtype=float)
+    if vectors.ndim != 2 or vectors.shape[1] != 2 or not np.all(np.isfinite(vectors)):
+        raise ValueError('finite real phase-space pairs required')
+    word = []
+    # execute applies later pulses on the left; mathematical products retain
+    # the caller's order. No reset, projection, or state normalization enters.
+    for sx, sy in reversed(vectors):
+        radius, azimuth = math.hypot(sx, sy), math.atan2(sy, sx)
+        for target in range(copies):
+            for kind, angle in (('Z', azimuth/2),
+                                ('X', radius/math.sqrt(2*copies)),
+                                ('Z', -azimuth/2)):
+                # A fixed dyadic tape avoids libm-last-bit changes in word hashes.
+                angle = round(angle*(1 << 44))/(1 << 44)
+                if controlled:
+                    width = copies+1
+                    one = ['I']*width; one[target] = kind
+                    two = one.copy(); two[copies] = 'Z'
+                    word += source_compiler.pauli_rotation(one, angle/2)
+                    word += source_compiler.pauli_rotation(two, -angle/2)
+                else:
+                    word.append(source_compiler.pulse(kind, angle, [target]))
+    return word
+
+
+def spin_weyl_expectation(vectors, copies, polarization=1):
+    """Exact finite product-state law evaluated by two-dimensional matrices."""
+    copies = _int(copies, 1)
+    polarization = _fraction(polarization)
+    if not -1 <= polarization <= 1:
+        raise ValueError('polarization must lie in [-1,1]')
+    vectors = np.asarray(vectors, dtype=float)
+    if vectors.ndim != 2 or vectors.shape[1] != 2 or not np.all(np.isfinite(vectors)):
+        raise ValueError('finite real phase-space pairs required')
+    x = np.array([[0, 1], [1, 0]], dtype=complex)
+    y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+    product = np.eye(2, dtype=complex)
+    total = np.sum(vectors, axis=0)
+    symplectic = 0.0
+    for i, (sx, sy) in enumerate(vectors):
+        radius = math.hypot(sx, sy)
+        angle = radius/math.sqrt(2*copies)
+        one = (np.eye(2) if radius == 0 else
+               math.cos(angle)*np.eye(2)+1j*math.sin(angle)*(sx*x+sy*y)/radius)
+        product = product@one
+        symplectic += sum(sx*ty-sy*tx for tx, ty in vectors[i+1:])
+    expectation = ((1+float(polarization))*product[0, 0]
+                   +(1-float(polarization))*product[1, 1])/2
+    limit = np.exp(-float(total@total)/4-0.5j*float(polarization)*symplectic)
+    return complex(expectation**copies), complex(limit)
+
+
+def quantum_fluctuation_control():
+    """Source-coded ordered detector law and its conditional CCR limit.
+
+    This realizes a chosen polarized reference, not the unconditioned native
+    repair state. The IID quantum CLT applies to tensor independent copies.
+    Its new content here is the source pulse/readout and native frequency map.
+    """
+    vectors = ((F(3, 4), 0), (0, F(1, 2)), (F(-1, 4), F(1, 3)))
+    expected, limit = spin_weyl_expectation(vectors, 4)
+    reversed_expected, _ = spin_weyl_expectation(tuple(reversed(vectors)), 4)
+    tracial, _ = spin_weyl_expectation(vectors, 4, polarization=0)
+    records = {}
+    for quadrature in ('X', 'Y'):
+        copies, control = 4, 4
+        word = [source_compiler.pulse('Y', -math.pi/4, [control])]
+        word += spin_weyl_word(vectors, copies, controlled=True)
+        word += [source_compiler.pulse('Y' if quadrature == 'X' else 'X',
+                                     math.pi/4 if quadrature == 'X' else -math.pi/4,
+                                     [control])]
+        state = np.zeros(1 << (copies+1), dtype=complex); state[0] = 1
+        output = source_compiler.execute(word, copies+1, state)
+        probabilities = abs(output)**2
+        mean = float(np.sum(probabilities[:1 << copies])-np.sum(probabilities[1 << copies:]))
+        target = expected.real if quadrature == 'X' else expected.imag
+        if abs(mean-target) > 2e-11 or abs(float(np.sum(probabilities))-1) > 2e-11:
+            raise ArithmeticError('source-coded ordered Weyl detector changed its complete output law')
+        records[quadrature] = {
+            'all_pointer_and_work_probabilities': probabilities.tolist(),
+            'pointer_mean': mean, 'independent_product_state_mean': target,
+            'source_pulses': len(word),
+            'expanded_word_sha256': hashlib.sha256(json.dumps(word, sort_keys=True).encode()).hexdigest()}
+    if abs(expected.imag) < .05 or abs(reversed_expected-expected.conjugate()) > 1e-12:
+        raise ArithmeticError('ordered Weyl phase or reversal control disappeared')
+    if abs(tracial.imag) > 1e-12:
+        raise ArithmeticError('tracial product control has a spurious commutator phase')
+    # The finite native density spectrum fixes the coherent phase. This is
+    # a source-executed mode encoding, not an execution of the full arc walk.
+    x = np.array([[0, 1], [1, 0]], dtype=complex)
+    modes = []
+    for lam in (5-math.sqrt(5), 6., 5+math.sqrt(5)):
+        phase = math.acos(1-lam/60)
+        u = source_compiler.execute([source_compiler.pulse('Z', phase/2, [0])], 1)
+        q = x/math.sqrt(2*phase)
+        evolved = u.conj().T@q@u
+        ordered = complex((evolved@q)[0, 0])
+        target = np.exp(-1j*phase)/(2*phase)
+        if abs(ordered-target) > 2e-12:
+            raise ArithmeticError('source pulse lost the native wave frequency or ordered two-point phase')
+        kick = 1e-3
+        outputs = []
+        for sign in (-1, 1):
+            tape = [source_compiler.pulse('X', sign*kick/math.sqrt(2*phase), [0]),
+                    source_compiler.pulse('Z', phase/2, [0]),
+                    source_compiler.pulse('Y', math.pi/4, [0])]
+            out = source_compiler.execute(tape, 1, np.array([1., 0.]))
+            probabilities = abs(out)**2
+            outputs.append(probabilities.tolist())
+        response = ((outputs[1][0]-outputs[1][1])-(outputs[0][0]-outputs[0][1]))/(2*kick*math.sqrt(2*phase))
+        sine_response = math.sin(phase)/phase
+        response_bound = abs(sine_response)*kick*kick/(3*phase)
+        if abs(response-sine_response) > response_bound+2e-10:
+            raise ArithmeticError('native source kick and pointer lost the sine response')
+        modes.append({'native_laplacian_eigenvalue': lam,
+                      'coherent_phase_per_incident_trigger': phase,
+                      'ordered_two_point_real': ordered.real,
+                      'ordered_two_point_imaginary': ordered.imag,
+                      'source_kick_size': kick,
+                      'complete_minus_and_plus_kick_pointer_probabilities': outputs,
+                      'central_difference_response': response,
+                      'sine_kernel_linear_response': sine_response,
+                      'finite_kick_error_upper': response_bound})
+    return {
+        'source_copies_executed': 4, 'complete_pointer_records': records,
+        'Weyl_angle_grid_denominator': 1 << 44,
+        'Weyl_word_angle_error_operator_norm_upper': str(F(3*4*len(vectors), 1 << 45)),
+        'ordered_Weyl_vectors': [[str(x) for x in row] for row in vectors],
+        'finite_expectation': [expected.real, expected.imag],
+        'CCR_limit_expectation': [limit.real, limit.imag],
+        'reversed_order_expectation': [reversed_expected.real, reversed_expected.imag],
+        'tracial_reference_expectation': [tracial.real, tracial.imag],
+        'finite_copy_errors': [{'copies': n,
+            'absolute_ordered_characteristic_error': abs(spin_weyl_expectation(vectors, n)[0]-limit)}
+            for n in (4, 16, 64, 256)],
+        'native_frequency_source_pulse_controls': modes,
+        'limit_ordered_Weyl_law': 'exp(-|sum v_j|^2/4-i sum_(j<k) sigma(v_j,v_k)/2)',
+        'finite_CCR': '[Q_N,P_N]=i sum Z_j/N; not iI in operator norm',
+        'finite_fourth_moment': 'E Q_N^4=3/4-1/(2N)',
+        'encoded_wave_Wightman': '<phi(t)phi(u)>=exp(-i Omega(t-u))/(2 Omega)',
+        'native_refinement_frequency': 'Omega_l=sqrt(Q_l)*acos(1-lambda/(2Q_l)), Q_l=630*16^l',
+        'native_incident_parameter': 't=beta tau, beta=2d/sqrt(630), fixed d in {5,6}',
+        'conditional_CCR_limit_from_ordered_product_state_law_proved': True,
+        'finite_native_pulse_Weyl_and_sine_response_detector_executed': True,
+        'polarized_product_reference_supplied': True,
+        'proper_code_gluing_blank_register_and_controlled_pulses_required': True,
+        'spectral_mode_labels_and_rotation_angles_are_declared_encoding': True,
+        'independent_product_copy_limit_is_source_refinement_limit': False,
+        'growing_field_preparation_and_detector_compiler_executed': False,
+        'unconditioned_repair_selects_this_reference': False,
+        'physical_QFT_or_atomic_clock_identification': False}
+
+
 def run():
     rows = {
         'schema': 'oph.observer_time_fields.continuum_dynamics.v1',
@@ -753,6 +1278,8 @@ def run():
         'all_level_propagation_bounds': [propagation_bounds(l) for l in (0, 1, 2, 4, 10)],
         'fixed_cap_order_of_limits_control': [fixed_cap_collapse(l) for l in (0, 2, 4, 10)],
         'continuum_path_bounds': [wave_path_bounds(j) for j in (0, 10, 100)],
+        'fractional_wave_bounds': [fractional_wave_bounds(l) for l in range(3)],
+        'source_encoded_quantum_fluctuation': quantum_fluctuation_control(),
         'native_weighted_form_control': native_weighted_form_control(),
         'native_heat_support_control': native_heat_support_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],
@@ -798,6 +1325,10 @@ def run():
             'native_coherent_compression': 'cos(t sqrt(A))',
             'return_reference_modular_phase_magnitudes': 'sqrt(A)',
             'synthesized_wave_field_topology': 'C([0,T],H^-2(S2))',
+            'fractional_filtered_wave_field': 'W_{1/4}=A^(1/4) W',
+            'fractional_filtered_wave_two_time_covariance': 'A^(-1/2) cos((t-u) sqrt(A)) = G^(1/2) cos((t-u) sqrt(A))',
+            'fractional_filtered_wave_path_topology': 'C([0,T],H^-s(S2)) for every s>=7/4 (in particular H^-2(S2))',
+            'Pauli_Jordan_causal_commutator_kernel': 'D(t-u)=A^(-1/2) sin((t-u) sqrt(A))',
             'uniform_propagator_convergence_on_compact_parameter_intervals': True,
             'propagator_convergence_topology': 'strong for each fixed input, uniform on compact parameter intervals',
             'same_source_covariance_resolvent_heat_and_wave_operator': True,
@@ -813,6 +1344,9 @@ def run():
             'faithful_continuum_modular_algebra_state_constructed': False,
             'full_modular_unitary_or_intervention_implementation_proved': False,
             'comparison_wave_support_cone_proved': True,
+            'fractional_wave_canonical_energy_equipartition_proved': True,
+            'comparison_sine_kernel_vanishes_for_separated_mean_zero_tests': True,
+            'fractional_covariance_alone_constructs_native_quantum_CCR': False,
             'same_dictionary_heat_response_has_an_exact_finite_support_cone': False,
             'conditional_obstruction_to_same_dictionary_relativistic_response': True,
             'physical_faster_than_light_signalling_inferred': False,

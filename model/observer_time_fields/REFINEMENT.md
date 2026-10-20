@@ -1616,3 +1616,129 @@ scalings, unbounded overlap or a justified sector-conditioned construction
 need their own analysis. The present full reference does not obtain the
 quantum vacuum covariance `(2sqrt(A))^-1` by its existing unconditioned
 bounded-algebra limit.
+
+### Fractional wave covariance and its quantum boundary
+
+The declared filter `A_l^(1/4)` changes the synthesized classical Gaussian
+wave to `W_{1/4,l}`, with stationary covariance
+
+```text
+C_l(t,u)=A_l^(-1/2) cos((t-u)sqrt(A_l)).                    (W4)
+```
+
+It equals twice the real part of a canonical free-field vacuum two-point
+function. Its equal-time covariance is the same `G_l^(1/2)` as the
+[half-cylinder comparison](../physical_space_time/OCCUPATION_FIELD.md).
+These identities supply neither quantum commutators nor a physical bulk.
+Velocity and gradient-energy variances both equal `sqrt(lambda)` in each
+mode, so their finite-mode total energy is `Tr sqrt(A_l)`. The executable
+checks this against independent Schur elimination and matrix square roots.
+
+The path statement uses **fixed spherical harmonics**, not eigenvalue-index
+weights. For their centered cell averages `h_jm,l`, (OP4), Schur
+minimization and Cauchy–Schwarz give
+
+```text
+sum_m <h_jm,l,sqrt(A_l) h_jm,l>
+ <= sqrt(sum_m ||h_jm,l||^2 * sum_m <h_jm,l,A_l h_jm,l>)
+ <= sqrt(2) (2j+1) sqrt(j(j+1)) <= 12 j^2,  j>=1.
+```
+
+The stationary increment covariance is
+`2 A_l^(-1/2)[I-cos((t-u)sqrt(A_l))] <= |t-u|^2 sqrt(A_l)`;
+both independent Gaussian quadratures contribute. With
+`w_j=1+j(j+1)`, for every `s>3/2` the geometric `H^-s` second-moment
+increment is bounded by `C_s |t-u|^2`, where
+`C_s=12[1+1/(2s-3)]`. Its fourth moment is at most
+`3 C_s^2 |t-u|^4`. The initial covariance is bounded by `sqrt(C) I`,
+`C=4096/3`; the velocity tail after degree `J>=1` is at most
+`12 J^(3-2s)/(2s-3)`. Integrating the velocity bounds the expected squared
+supremum tail by twice the initial tail plus `2T^2` times this vanishing tail.
+Finite harmonic tightness and these tails prove convergence along the same
+spatial subsequence in `C([0,T],H^-s(S2))`. The executable retains rational
+budgets for `s>=7/4`; its separate eigenvalue-index diagnostics are not
+labeled geometric Sobolev norms.
+
+The sine kernel `D_perp(t)=A^(-1/2)sin(t sqrt(A))` is the candidate
+Pauli–Jordan kernel of a quantum completion. For separated **mean-zero**
+supported tests its pairing vanishes outside the existing comparison cone.
+For unrestricted local tests the correct kernel is
+`D_bar(t)=D_perp(t)+t P_const`. Omitting the constant mode leaves a nonlocal
+`-t P_const` term, so the projected kernel alone does not define a local net
+for all smearings. Restoring this massless zero mode gives a free particle,
+which has no normalizable stationary ground state. A mass, restriction to
+zero-mean observables or a nonstationary zero-mode state is an additional
+choice. The code bounds finite-level dipole leakage without asserting an
+exact finite-level cone or a native commutator from classical covariance.
+
+### Source-coded quantum fluctuations and an ordered detector law
+
+The [source compiler](../observer/source_scalar/README.md) already realizes
+proper-code Pauli controls, blank registers, coherent code gluing and complete
+export outcomes. In `N` independently prepared `|0>` codes define
+`Q_N=sum_j X_j/sqrt(2N)` and `P_N=sum_j Y_j/sqrt(2N)`. Then
+
+```text
+[Q_N,P_N]=i sum_j Z_j/N,
+E Q_N^2=E P_N^2=1/2,       E Q_N P_N=i/2,
+E Q_N^4=3/4-1/(2N).
+```
+
+The finite commutator is not `iI` in operator norm. For
+`v=(s,t)`, set `W_N(v)=exp(i(s Q_N+t P_N))`. Tensor independence gives
+its **ordered** product expectation as the `N`th power of the one-code
+matrix element. Taylor expansion, or the IID quantum CLT of
+[Jakšić, Pautrat and Pillet, §§3–4](https://jaksic.xyz/papers_pdf/qcltiid.pdf),
+therefore gives, for every fixed finite list,
+
+```text
+lim_N E product_j W_N(v_j)
+ = exp(-|sum_j v_j|^2/4 - i sum_(j<k) sigma(v_j,v_k)/2),
+sigma((s,t),(s',t'))=s t'-t s'.                            (QF)
+```
+
+This is the CCR vacuum state, including its noncommuting phase, on the
+chosen fluctuation algebra. The finite source execution uses four codes and
+one pointer, retains every work/pointer outcome, and reads both quadratures
+of the ordered product by controlled source pulses. The phase-space rotation
+angles use a fixed `2^-44` grid; telescoping bounds their operator error by
+the sum of angle errors. Reversing the order
+conjugates the phase; the tracial product reference removes it. These
+controls distinguish (QF) from a classical covariance fit. Growing `N` in
+this IID preparation is separate from source spatial refinement.
+
+For a native density eigenvalue `lambda` at level `l`, the coherent walk
+fixes `theta_l=acos(1-lambda/(2Q_l))`, `Q_l=630*16^l`, in scaled-Laplacian
+units. The declared mode encoding applies `exp(i theta_l Z/2)` to each
+code per incident trigger. Its positive oscillator generator has frequency
+`Omega_l=sqrt(Q_l) theta_l`, approaching `sqrt(lambda)` on bounded bands
+by (W). With displacement normalized by `1/sqrt(Omega_l)`, the encoded
+ordered covariance is exactly `exp(-i Omega_l(t-u))/(2 Omega_l)` even at
+finite `N`; higher products approach the free-field state by (QF).
+For a fixed spectral band its phase error obeys the same clock budget as
+the wave, since `|exp(ix)-exp(iy)|<=|x-y|`.
+The existing [active incident-clock theorem](../relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
+gives `t=(2d/sqrt(630)) tau`, `d=5` or `6`, under its protected-register
+and atomic-service contract. This is a common native frequency and event
+clock dictionary, with pulse-service costs still charged separately.
+
+A source kick `exp(i epsilon phi(u))` followed by the same mode readout
+has derivative `i E[phi(t),phi(u)]=sin(Omega(t-u))/Omega` at zero kick.
+Thus the antisymmetric two-point function also determines an intervention
+response, not merely an equilibrium correlation. The elementary execution
+retains both pointer outcomes for positive and negative kicks; the central
+difference error is bounded by the exact sine remainder. Summing mode
+responses gives the sine kernel above under the declared mode dictionary.
+
+The executable checks source pulses at all three elementary native bands.
+It does not execute a growing spectral encoder or a growing detector net.
+Independent polarized preparation, mode labels, angle synthesis, controlled
+readout and protected storage remain explicit services; passive repair has
+not selected them. Finite-mode approximation followed by the common spatial
+limit defines the mean-zero free-field completion for admissible smearings,
+with sine-kernel response on that domain. Field smearings can lie in
+`L2_0(mu)`; momentum smearings require `D(A^(1/4))` for finite variance.
+The CCR normalization sets the encoded action unit; it does not calibrate
+Planck's constant in laboratory units. Its locality has the zero-mode
+qualification above. Interactions, conformal symmetry, a physical spatial
+bulk and atomic-clock identification do not follow from this encoding.

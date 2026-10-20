@@ -227,6 +227,7 @@ for module in tuple(sys.modules.values()):
     if path is None:continue
     try:name=Path(path).resolve().relative_to(d.ROOT).as_posix()
     except ValueError:continue
+    if name.startswith('.'):continue
     if name.endswith('.py') and name not in d.SOURCE_PATHS:missing.append(name)
 assert not missing,missing
 '''

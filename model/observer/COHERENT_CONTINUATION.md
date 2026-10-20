@@ -247,3 +247,44 @@ refinement are not executed here. The identity/reflection and record-phase
 controls continue to show that committed repair alone does not select this
 coherent law. No physical vacuum, observed Lorentzian field or laboratory
 clock identification follows from compiling the finite service.
+
+## A finite edge-generator representation from native repair
+
+The native twelve-port density Laplacian has an exact finite-group form.
+Let `H` be the sixty proper rotations of the recovered carrier and `U_g`
+their vertex permutations. Exactly one of its two twelve-element order-five
+conjugacy classes satisfies
+
+```text
+L = 6 I - (1/2) sum_(g in C) U_g,
+K_12 = I-L/60 = (9/10) I + (1/120) sum_(g in C) U_g.
+```
+
+`C` is inverse symmetric, so this is a positive central Cayley Laplacian
+represented on the actual density module. The complete native kernel
+retains `K_66 F=F K_12`. The other order-five class has the same spectrum
+but predicts zero one-attempt transfer across a native seam, where the
+source predicts `1/60`. Thus the local record dictionary distinguishes
+these isospectral choices.
+
+There are four orbits of ordered vertex pairs, so the representation's
+commutant has dimension four. The four distinct eigenvalues of `L` have
+multiplicities `1,3,5,3`, exhausting that commutant: each eigenspace is an
+irreducible representation occurring once. The group image is therefore
+`M_1 ⊕ M_3 ⊕ M_5 ⊕ M_3`, of dimension 44; independent exact matrix rank
+checks this count. Its sector projectors have ranks `d_R`. This realizes
+the generator and rank clauses of the
+[finite edge-law theorem](../../paper/tex_fragments/PAPER.tex) on this
+specific representation, without importing a compact gauge group.
+
+Assigning `rho_t=exp(-t L)/Tr(exp(-t L))` then gives
+`p_R=d_R exp(-t lambda_R)/Z`. Poissonizing the native attempt count gives
+`E[K_12^N]=exp(-t L)` for `N~Poisson(60t)`, but an averaged density
+transition operator is not a physical preparation of `rho_t`. Normalized
+trace on this twelve-dimensional density representation gives sector
+weights `1/12,1/4,5/12,1/4`; this is not the stationary occupation
+distribution or density covariance of the 66-state carrier.
+The missing four-dimensional irreducible block also prevents identifying
+this 44-dimensional image with the full 60-dimensional group algebra.
+No native gauge collar, Gibbs preparation, complete group sewing, compact
+group refinement or worldsheet limit is established by this representation.

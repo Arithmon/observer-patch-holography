@@ -27,6 +27,68 @@ def test_original_native_branches_and_canonical_covariance():
     assert len(reached) == 66
 
 
+def test_positive_native_lag_readout_has_a_complete_history_error_budget():
+    row = f.subordinated_native_readout()
+    assert row['native_branches_checked'] == 3960
+    assert row['complete_configurations'] == 66
+    assert row['maximum_native_attempt_lag'] == 512
+    assert F(row['operator_error_upper']) < F(36, 1000)
+    assert row['complete_history_covariance_intertwiner_error'] < 2e-14
+    assert row['density_Poisson_extension_error_diagnostic'] <= float(
+        F(row['operator_error_upper']))
+    assert row['unit_jump_heat_substitution_error_diagnostic'] > 0.05
+    assert row['missing_mass_is_not_renormalized']
+    assert not row['mixture_rate_identified_as_physical_radius_or_clock']
+    assert not row['finite_sampling_error_included_in_truncation_bound']
+
+
+@pytest.mark.parametrize('rate', (F(1, 8), F(1, 2), F(3, 2)))
+def test_subordination_caps_preserve_missing_mass_and_stationary_mode(rate):
+    kernel = np.array([[0.75, 0.25], [0.25, 0.75]])
+    polynomial, budget = f._subordinated_polynomial(kernel, rate, 32, 12)
+    constant = np.array([1.0, 1.0])
+    contrast = np.array([1.0, -1.0])
+    mass = budget['retained_probability_mass_diagnostic']
+    assert np.linalg.norm(polynomial@constant-mass*constant) < 2e-15
+    assert mass < 1
+    # Independent scalar functional calculus on a nonconstant mode.
+    target = np.exp(-float(rate)/np.sqrt(2))*contrast
+    assert np.linalg.norm(polynomial@contrast-target)/np.sqrt(2) <= float(
+        F(budget['operator_error_upper']))
+    assert np.min(polynomial) > 0
+
+
+def test_subordination_tail_identity_and_refinement_budget_are_exact():
+    assert f.subordination_budget(F(1, 2), 1, 0)['exact_single_jump_tail'] == '1/2'
+    coarse = f.subordination_budget(F(1, 2), 16, 4)
+    fine = f.subordination_budget(F(1, 2), 64, 8)
+    assert F(fine['operator_error_upper']) < F(coarse['operator_error_upper'])
+    # The zero transfer has no surviving nonzero-lag contribution.
+    polynomial, _ = f._subordinated_polynomial(np.zeros((2, 2)), F(1, 2), 4, 3)
+    np.testing.assert_allclose(polynomial, np.exp(-0.5)*np.eye(2), rtol=2e-15, atol=0)
+
+
+@pytest.mark.parametrize('args', (
+    (True, 8, 2), (0.5, 8, 2), (F(0), 8, 2), (F(-1), 8, 2),
+    (F(1), True, 2), (F(1), 0, 2), (F(1), 8, -1), (F(1), 8, 2.0),
+))
+def test_subordination_rejects_ambiguous_rates_and_invalid_caps(args):
+    with pytest.raises(ValueError):
+        f.subordination_budget(*args)
+
+
+def test_success_renormalization_is_rejected_as_a_different_native_readout(monkeypatch):
+    original = f._subordinated_polynomial
+
+    def renormalized(*args):
+        polynomial, budget = original(*args)
+        return polynomial/budget['retained_probability_mass_diagnostic'], budget
+
+    monkeypatch.setattr(f, '_subordinated_polynomial', renormalized)
+    with pytest.raises(ArithmeticError, match='positive-lag subordination'):
+        f.subordinated_native_readout()
+
+
 @pytest.mark.parametrize('clock', ['attempt', 'incident'])
 def test_complete_configuration_law_closes_the_same_field(clock):
     _, _, _, z, _ = f.native_counts()

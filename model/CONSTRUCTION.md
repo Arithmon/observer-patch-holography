@@ -162,8 +162,11 @@ drives one coherent step per tick on a protected register and gives
 `cos((2d/sqrt(630))*tau*sqrt(A))` on bounded spectral bands. Its exact
 two-attempt Ramsey probability is `1297/1320`; carrier pauses, coherent
 services and a vanishing accumulated implementation error are explicit.
-Two long record blocks give a separate continuous Gaussian wave readout with covariance
-`G cos((t-u)sqrt(A))`. Controlled repair gives derivative `2(I-exp(-tau*A))f`;
+The [source-coded quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
+retains ordered Weyl phases and kick responses. Independent polarized codes,
+supplied mode encodings and the active clock give a mean-zero free-field
+completion; unrestricted locality requires a zero-mode choice. Classical
+wave covariance alone supplies no commutator. Controlled repair gives derivative `2(I-exp(-tau*A))f`;
 at fixed scaled selection-slot time its [disjoint-support response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 is nonzero with an exponentially small short-time bound. An exact finite
 signal cone is incompatible with that same support/control/time dictionary;
@@ -175,6 +178,12 @@ vanish in bounded-energy families under this scaling. The
 also excludes complete linear identification with a compact three-dimensional
 free scalar's Euclidean law under one clock scale. These restricted tests
 leave other radial dictionaries and physical quantum identification unproved.
+Positive subordination of [actual native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+gives `exp(-r*sqrt(A))` and the half-cylinder comparison with explicit lag
+truncation. The processing parameter is not a physical radius. The
+[finite edge-generator representation](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
+links the native density Laplacian to central rotation-class repair and
+irreducible ranks; a Gibbs preparation or full gauge sewing does not follow.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The
@@ -1033,8 +1042,9 @@ All reversible basis inputs and clean-scratch address outputs are checked;
 the full-register replay uses raw pulse-executed routines and retains
 padding. The complete numerical operator guard is `s/(1-s)`,
 `s=829/5000000000`; it is not an interval or physical certificate.
-The full 3,960-arc compiler, source-pulse Ramsey controller and growing
-refinement compiler are unproved. A selecting restriction must constrain
+The full 3,960-arc compiler, walk-controlled Ramsey source word and growing
+refinement compiler are unproved. The polarized fluctuation-pointer execution
+has a separate, completed finite scope. A selecting restriction must constrain
 the additional coherent interface freedom. The
 [identifiability checks](identifiability_checks/README.md) likewise separate
 apparatus restrictions, unseen action directions and geometry ambiguities.

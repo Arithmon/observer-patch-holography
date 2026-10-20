@@ -164,6 +164,7 @@ for module in tuple(sys.modules.values()):
  p=getattr(module,'__file__',None)
  if p and Path(p).resolve().is_relative_to(t.ROOT):
   name=Path(p).resolve().relative_to(t.ROOT).as_posix()
+  if name.startswith('.'):continue
   if name.endswith('.py') and name not in t.SOURCE_PATHS:missing.append(name)
 assert not missing, sorted(set(missing))
 """

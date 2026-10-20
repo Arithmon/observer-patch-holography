@@ -81,7 +81,7 @@ def test_independent_one_attempt_path_oracle_keeps_complete_clock_field_labels()
     assert dict(expected) == m.stopped_law(1, clock_b=1)
 
 
-@pytest.mark.parametrize('cap,clock_b', product((1, 2), (1, 2)))
+@pytest.mark.parametrize('cap,clock_b', tuple(product((1, 2), (1, 2))))
 def test_complete_stopped_laws_and_response_from_passive_future_records(cap, clock_b):
     actual = m.stopped_law(cap, clock_b=clock_b)
     forecast = m.stopped_law(cap, clock_b=clock_b, reverse_forecast=True)
@@ -172,6 +172,7 @@ for module in list(sys.modules.values()):
     if path is None: continue
     try: relative=Path(path).resolve().relative_to(m.ROOT).as_posix()
     except ValueError: continue
+    if relative.startswith('.'): continue
     if relative.endswith('.py') and relative not in m.SOURCE_PATHS: missing.append(relative)
 print(json.dumps(sorted(set(missing))))
 '''

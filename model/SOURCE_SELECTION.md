@@ -28,11 +28,11 @@ mean response, a spectrum or a clock rate.
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |
 | [Signal, spatial readout and receiver clock](physical_space_time/README.md) | The declared total-one passage protocol gives receiver-tick means 22, 28 and 30; a total-two control retains remote signal propagation before one local tick. | Select the spatial observable dictionary and compatible clock relation. The passage Gram has rank eleven and the slow-response Gram rank three; neither alone fixes physical dimension or a causal cone. |
-| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The common Green subsequence converges in operator norm to compact injective `G`. Its inverse has a conservative regular strongly local `H1` form and spectral dimension two. Terminal-star reduction gives an explicit positive weighted dual graph with the same continuum limits and Green error at most `182*2^-level`. | Full initial occupation and seam/current readback are admitted. The separate cumulative observation fields take the count limit first. Static Dirichlet-bulk and complete linear free-scalar dictionaries fail the stated spectral tests. Whole-sequence uniqueness, other radial observations and physical interacting dynamics are unproved. |
-| [Native correlations and coherent waves](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field) | Interpolated native density paths converge in `C([0,T],H^-3(S2))` with covariance `exp(-|tau-u|A)`, at `tau=attempts/(1260*16^level)`. The declared `A^-1/2` filter gives `H^-2` paths with covariance `G exp(-|tau-u|A)`. Separate long-block wave synthesis gives `G cos((t-u)sqrt(A))` and finite-speed localized cosine propagation. | The limit uses the common spatial subsequence, uniform fixed-number preparation, IID seams, fair repair and full readback. Wave synthesis and coherent controls remain declared. Growing return caps match coherent modular phases; fixed caps freeze them. The full reference becomes tracial at fixed modular parameter. Native quantum-vacuum preparation, radial field and boosts are unproved. |
+| [Native continuous observation field](physical_space_time/OCCUPATION_FIELD.md) | The compact Green limit G has a strongly local H1 inverse A of spectral dimension two. Positive weighted dual graphs share its limits, with Green error at most 182*2^-level. Positive native lag mixtures construct exp(-r*sqrt(A)) and its half-cylinder comparison. | Full initial/current readback, lag processing and spatial subsequences are explicit. The parameter r is not measured radius or an independent bulk field. Whole-sequence uniqueness, isotropy and physical interacting dynamics remain unproved; the scoped static/complete-spectrum obstructions apply. |
+| [Native correlations and quantum fluctuations](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law) | Actual density paths have covariance exp(-abs(tau-u)*A). Independently polarized source codes give ordered CCR fluctuations with native wave frequencies, kick response and active incident time t=(2d/sqrt(630))*tau. Finite source pulses retain all pointer outputs and ordering controls. | The polarized preparation, spectral encoding, protected storage and controller are supplied; growing encoders and passive vacuum selection are unproved. Mean-zero supported tests retain the comparison cone, while unrestricted local fields need a zero-mode choice. The separate return reference becomes tracial. No interacting CFT, physical bulk or atomic clock follows. |
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. Normalized incident clocks sample the continuum field paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with inverse-degree tick weights. Fixed bounded seam incidences separately give finite-vector Gaussian jitter with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | The IID uniform schedule and read access are explicit. Predictable port choices precede the fresh seam draw; their path theorem assumes no clock–field independence. Jitter independence applies only to the fixed-event-set contract. A local clock grants no remote readback, modular identity or physical duration. |
-| [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock and its chosen unit. Paired timestamps test an apparatus relation. The public optical test rejects the direct attachment for every distinct regional event-set pair under its bounded-error and no-extra-filter assumptions. | The actual atomic/servo dictionary is not derived. Identical event sets are the same clock and are outside the rejection. Clock definitions require no external calibration. |
+| [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock. Public optical data reject direct distinct-region attachments under bounded-error/no-extra-filter hypotheses; a separate test covers a declared compact filter and independent replicas. | The published servo time constant establishes neither compact support nor independent native sources. Allan moment targets give no confidence/resource or refinement bound. Atomic identification is unproved; aliases define one clock. |
 | [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. | Warm-up records and controller memory are inaccessible to the common complete continuation; full-carrier domain failures must be retained. This prepares neither coherent probes nor their apparatus and selects no record law. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
 | [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | Actual CMB posterior samples constrain a separately declared primordial-tilt branch; other comparisons retain their own physical assumptions. | Derive that cosmological observable, or another measurable relation, from the selected observer process with its uncertainty and remaining freedom. No current bridge equates primordial tilt with a native finite-carrier readout. |
@@ -119,8 +119,13 @@ is a concrete guide. On its declared compact-group edge branch,
 `t` and a matching sewing law. The controlled string interpretation also
 requires its distinct large-`N_edge` sequence and uniform genus remainder;
 `N_edge` is not the physical color count. The executable task is to realize
-those edge weights and sewing operations in the native instrument and test
-the same clock and response, before importing the effective description.
+the remaining edge weights and sewing operations in the native instrument.
+The [finite edge-generator representation](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
+identifies the density Laplacian with one order-five rotation class
+and irreducible ranks `1,3,5,3`. This checks the finite edge theorem's generator
+and rank clauses. It does not prepare a Gibbs state on the 66-state carrier,
+include the missing four-dimensional representation, or supply gauge collars,
+full group sewing and the compact-group/large-N limit.
 
 Critical superstring dimension ten follows from a specified worldsheet
 consistency problem, not from counting carrier ports; see
@@ -173,8 +178,12 @@ band, decay as `O(2^-level)` in every bounded-energy family. The
 [radial compatibility test](physical_space_time/OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
 also excludes boundedly invertible `L2` form congruence between the native
 boundary action and a smooth compact three-dimensional Dirichlet bulk's static
-boundary action (with smooth boundary). An unbounded filter can change its spectral order; its
-radial domain and action remain additional construction inputs.
+boundary action (with smooth boundary). The admitted `A^(1/4)` filter gives
+covariance `G^(1/2)` and a half-cylinder energy comparison. A
+[positive mixture of native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+implements `exp(-r*sqrt(A))` with explicit truncation budgets. It makes r a
+record-processing parameter; physical distance and independent radial field
+degrees of freedom remain unselected.
 
 The [ambient spacetime theorem](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean)
 adjoins an independent real axis and defines `t*t'-G(x,x')`; dimension four
@@ -212,8 +221,11 @@ Gram under the declared scheduler. Adding stationary preparation and local
 bit/current reads predicts the joint initial-A/B-at-second-A field law;
 identity repair preserves the clocks while changing that correlation. A
 [public optical test](predictions/optical_clock.py) rejects a direct incident-count
-attachment under its stated gain, error and readout hypotheses. It does not
-reject every possible clock mechanism or derive atomic transitions.
+attachment under its stated gain, error and readout hypotheses. Its separate
+compact-filter extension does not identify the actual servo; sample Allan
+moment targets infer no resource bounds or source refinement level. The
+same-clock density-transfer sampling certificate requires joint incident
+records absent from those optical files. Atomic transitions remain unproved.
 
 To identify three physical spatial dimensions in a bounded effective regime,
 attach radial and angular records to a common metric and dynamical law with

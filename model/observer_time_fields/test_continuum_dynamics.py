@@ -526,6 +526,129 @@ def test_ambiguous_levels_caps_and_cutoffs_rejected(bad):
         d.wave_path_bounds(bad)
     with pytest.raises(ValueError):
         d.density_path_bounds(0, harmonic_cutoff=bad)
+    with pytest.raises(ValueError):
+        d.fractional_wave_bounds(bad)
+
+
+@pytest.mark.parametrize('level', (0, 1, 2))
+def test_fractional_wave_equipartition_on_carrier_and_source_levels(level):
+    value = d.fractional_wave_bounds(level, T=F(3, 2), steps=6, cutoff=5, s=F(2))
+    assert value['cells'] == 20*4**level
+    assert value['mean_zero_dimension'] == 20*4**level-1
+    assert value['canonical_energy_equipartition_verified']
+    assert value['canonical_free_scalar_Wightman_factor'] == 2
+    assert abs(value['cutoff_kinetic_energy_diagnostic']
+               -value['cutoff_potential_energy_diagnostic']) < 1e-13
+    assert abs(value['full_kinetic_energy_diagnostic']
+               -value['full_potential_energy_diagnostic']) < 1e-12
+    assert abs(value['total_canonical_energy_expectation_diagnostic']
+               -value['trace_sqrt_generator_diagnostic']) < 1e-12
+    assert value['mode_equipartition_residual_diagnostic'] < 1e-13
+    assert value['matrix_equipartition_residual_diagnostic'] < 1e-11
+    elementary = value['elementary_twelve_port_control']
+    assert elementary['carrier_ports'] == 12
+    assert elementary['mean_zero_dimension'] == 11
+    assert elementary['exact_laplacian_trace'] == 60
+    assert elementary['exact_pseudoinverse_trace'] == F(7, 3)
+    assert elementary['exact_mode_energy_equipartition_verified']
+    with mp.workdps(60):
+        expected_sqrt = 3*mp.sqrt(10+4*mp.sqrt(5))+5*mp.sqrt(6)
+        expected_inv_sqrt = 3*mp.sqrt(10+4*mp.sqrt(5))/(2*mp.sqrt(5))+5*mp.sqrt(6)/6
+        assert abs(elementary['canonical_wave_energy_expectation_diagnostic']
+                   -float(expected_sqrt)) < 1e-12
+        assert abs(elementary['equal_time_fractional_wave_covariance_trace_diagnostic']
+                   -float(expected_inv_sqrt)) < 1e-12
+
+
+@pytest.mark.parametrize('s,expected_factor,expected_c2', (
+    (F(7, 4), F(5), F(36)),
+    (F(2), F(3), F(24)),
+    (F(5, 2), F(2), F(18)),
+    (F(3), F(5, 3), F(16)),
+))
+def test_fractional_wave_path_tightness_in_H_minus_s(s, expected_factor, expected_c2):
+    value = d.fractional_wave_bounds(0, T=F(4, 5), steps=5, cutoff=4, s=s)
+    dt = F(4, 25)
+    assert value['step_size'] == dt
+    assert value['harmonic_series_integral_factor'] == expected_factor
+    assert value['H_minus_s_second_moment_constant_per_dt_squared'] == expected_c2
+    assert value['spectral_index_increment_constant'] == F(336)*expected_factor
+    assert value['numerical_weighted_norms_use_spectral_indices_not_spherical_harmonics']
+    assert value['H_minus_s_fourth_moment_constant_per_dt_fourth'] == 3*expected_c2**2
+    assert value['step_H_minus_s_second_moment_upper'] == expected_c2*(dt**2)
+    assert value['step_H_minus_s_fourth_moment_upper'] == 3*(expected_c2**2)*(dt**4)
+    assert 0 < value['step_spectral_index_second_moment_diagnostic'] <= float(value['step_spectral_index_second_moment_upper'])
+    assert 0 < value['step_spectral_index_fourth_moment_diagnostic'] <= float(value['step_spectral_index_fourth_moment_upper'])
+    assert 0 < value['equal_time_spectral_index_variance_diagnostic'] <= float(value['equal_time_spectral_index_variance_upper'])
+    assert 0 < value['cutoff_tail_spectral_index_variance_diagnostic'] <= float(value['cutoff_tail_spectral_index_variance_upper'])
+    assert value['Kolmogorov_Chentsov_holder_exponent_upper'] == F(1, 2)
+    assert value['continuous_path_topology'] == f'C([0,T],H^-{s}(S2))'
+    # At the borderline s=3/2, the mode-increment exponent is s-1/2=1 and the harmonic sum diverges.
+    harmonic_blocks = [sum(F(1, k) for k in range(2**m, 2**(m+1))) for m in range(1, 5)]
+    assert all(block >= F(1, 2) for block in harmonic_blocks)
+
+
+def test_pauli_jordan_causal_commutator_kernel_and_comparison_lightcone():
+    cubic_bounds = []
+    for level in range(3):
+        value = d.fractional_wave_bounds(level, T=F(1, 2), steps=4, cutoff=3, s=F(2))
+        assert value['Pauli_Jordan_operator_norm_diagnostic'] <= float(value['Pauli_Jordan_operator_norm_upper'])
+        assert value['Pauli_Jordan_midpoint_quadrature_error_diagnostic'] <= float(
+            value['Pauli_Jordan_midpoint_quadrature_error_upper'])
+        assert value['separated_dipole_cubic_taylor_coefficient_diagnostic'] <= float(
+            value['separated_dipole_cubic_taylor_coefficient_upper'])
+        assert value['separated_dipole_step_commutator_leakage_diagnostic'] <= float(
+            value['separated_dipole_step_commutator_leakage_upper'])
+        assert value['separated_dipole_commutator_leakage_diagnostic'] <= float(
+            value['separated_dipole_commutator_leakage_upper'])
+        assert value['continuum_comparison_wave_speed_upper'] == '1/sqrt(2)'
+        assert value['continuum_sine_kernel_vanishes_for_separated_mean_zero_tests']
+        assert value['classical_covariance_supplies_quantum_CCR'] is False
+        assert value['unrestricted_mean_zero_projected_kernel_has_local_support'] is False
+        cubic_bounds.append(value['separated_dipole_cubic_taylor_coefficient_upper'])
+    assert cubic_bounds == [F(1, 96), F(1, 1536), F(1, 1572864)]
+    assert all(a > b for a, b in zip(cubic_bounds, cubic_bounds[1:]))
+    # Symbolic verification of D(t)=A^(-1/2) sin(t sqrt(A))=int_0^t cos(tau sqrt(A)) d tau.
+    t, tau, a = sp.symbols('t tau a', positive=True)
+    kernel = sp.sin(t*sp.sqrt(a))/sp.sqrt(a)
+    assert sp.simplify(sp.integrate(sp.cos(tau*sp.sqrt(a)), (tau, 0, t))-kernel) == 0
+    assert sp.simplify(sp.diff(kernel, t)-sp.cos(t*sp.sqrt(a))) == 0
+    assert sp.simplify(kernel.subs(t, 0)) == 0
+    assert sp.simplify(sp.diff(kernel, t, 2)+a*kernel) == 0
+
+
+def test_fractional_wave_rejects_invalid_inputs_and_corrupted_oracles(monkeypatch):
+    for bad_level in (-1, 3, True, 1.0, '0'):
+        with pytest.raises(ValueError):
+            d.fractional_wave_bounds(level=bad_level)
+    for bad_t in (0, -1, F(0), F(-1, 2), True, 0.5, '1'):
+        with pytest.raises(ValueError):
+            d.fractional_wave_bounds(0, T=bad_t)
+    for bad_steps in (0, -2, True, 2.0, '4'):
+        with pytest.raises(ValueError):
+            d.fractional_wave_bounds(0, steps=bad_steps)
+    for bad_cutoff in (0, -1, 20, True, 2.0, '2'):
+        with pytest.raises(ValueError):
+            d.fractional_wave_bounds(0, cutoff=bad_cutoff)
+    for bad_s in (0, 1, F(3, 2), F(13, 8), True, 2.0, '2'):
+        with pytest.raises(ValueError):
+            d.fractional_wave_bounds(0, s=bad_s)
+    original_green = d.spatial.green_orthonormal_matrix
+    def corrupted_green(level=0):
+        matrix = original_green(level)
+        matrix[0, 0] += 0.05
+        return matrix
+    monkeypatch.setattr(d.spatial, 'green_orthonormal_matrix', corrupted_green)
+    with pytest.raises(ArithmeticError, match='green_orthonormal_matrix'):
+        d.fractional_wave_bounds(0)
+    monkeypatch.setattr(d.spatial, 'green_orthonormal_matrix', original_green)
+    original_db = d.spatial._denman_beavers_sqrt
+    def corrupted_db(matrix):
+        y, z = original_db(matrix)
+        return y+0.01*np.eye(len(y)), z
+    monkeypatch.setattr(d.spatial, '_denman_beavers_sqrt', corrupted_db)
+    with pytest.raises(ArithmeticError, match='canonical wave energy equipartition'):
+        d.fractional_wave_bounds(0)
 
 
 def test_retained_continuum_receipt_replays_and_rejects_physical_promotion():
@@ -554,7 +677,104 @@ for module in tuple(sys.modules.values()):
     if path is None:continue
     try:name=Path(path).resolve().relative_to(d.ROOT).as_posix()
     except ValueError:continue
+    if name.startswith('.'):continue
     if name.endswith('.py') and name not in d.SOURCE_PATHS:missing.append(name)
 assert not missing,missing
 '''
     subprocess.run([sys.executable, '-c', command], cwd=d.ROOT, check=True)
+
+
+def test_fractional_stationary_increment_retains_both_gaussian_quadratures():
+    value = d.fractional_wave_bounds(0, T=F(1, 2), steps=3)
+    green = d._green_orthonormal_matrix(0)
+    mu = np.linalg.eigvalsh(green)[::-1]
+    omega = 1/np.sqrt(mu)
+    dt = float(value['step_size'])
+    weights = (1+np.arange(1, len(mu)+1))**-2.0
+    # Independent propagation of displacement AND velocity covariance.
+    actual = np.sum(weights*np.sqrt(mu)*((np.cos(dt*omega)-1)**2+np.sin(dt*omega)**2))
+    incomplete = np.sum(weights*np.sqrt(mu)*(np.cos(dt*omega)-1)**2)
+    assert abs(actual-value['step_spectral_index_second_moment_diagnostic']) < 1e-13
+    assert actual > 100*incomplete
+    for j in range(1, 100):
+        assert np.sqrt(2)*(2*j+1)*np.sqrt(j*(j+1)) <= 12*j*j
+
+
+def test_constant_mode_completion_is_required_before_general_local_support():
+    # This identity is independent of the generator: D_perp'(0)=I-P_const.
+    cells = 12
+    projection = np.ones((cells, cells))/cells
+    f = np.eye(cells)[0]; g = np.eye(cells)[6]
+    assert g@f == 0
+    assert abs(g@(np.eye(cells)-projection)@f+1/cells) < 1e-15
+    assert abs(g@((np.eye(cells)-projection)+projection)@f) < 1e-15
+    # A local dipole has zero mean, so the unwanted constant term vanishes.
+    dipole = f-np.eye(cells)[1]
+    assert g@projection@dipole == 0
+
+
+@pytest.mark.parametrize('copies', (1, 2, 3))
+def test_source_weyl_word_against_independent_collective_operator(copies):
+    from scipy.linalg import expm
+    x = np.array([[0, 1], [1, 0]], complex)
+    y = np.array([[0, -1j], [1j, 0]], complex)
+    def collective(single):
+        result = np.zeros((2**copies, 2**copies), complex)
+        for k in range(copies):
+            tensor = np.ones((1, 1), complex)
+            for j in range(copies):
+                tensor = np.kron(tensor, single if j == k else np.eye(2))
+            result += tensor
+        return result/np.sqrt(2*copies)
+    q, p = collective(x), collective(y)
+    vectors = ((.75, 0), (0, .5), (-.25, 1/3))
+    direct = np.eye(2**copies, dtype=complex)
+    for sx, sy in vectors:
+        direct = direct@expm(1j*(sx*q+sy*p))
+    executed = d.source_compiler.execute(d.spin_weyl_word(vectors, copies), copies)
+    np.testing.assert_allclose(executed, direct, rtol=0, atol=2e-12)
+    expected, _ = d.spin_weyl_expectation(vectors, copies)
+    assert abs(expected-direct[0, 0]) < 1e-13
+    commutator = q@p-p@q
+    reference = np.eye(2**copies, dtype=complex)[:, 0]
+    np.testing.assert_allclose(commutator@reference, 1j*reference, atol=1e-13)
+    assert np.linalg.norm(commutator-1j*np.eye(2**copies), 2) > 1.9
+    assert abs(np.linalg.matrix_power(q, 4)[0, 0]-(.75-.5/copies)) < 1e-13
+
+
+def test_ordered_quantum_limit_and_tracial_mutation_preserve_distinct_phase_laws():
+    # Two orthogonal Weyl directions have an independent closed SU(2) formula.
+    a, b = .7, .4
+    for copies in (1, 4, 64, 256):
+        ca, sa = np.cos(a/np.sqrt(2*copies)), np.sin(a/np.sqrt(2*copies))
+        cb, sb = np.cos(b/np.sqrt(2*copies)), np.sin(b/np.sqrt(2*copies))
+        actual, limit = d.spin_weyl_expectation(((a, 0), (0, b)), copies)
+        assert abs(actual-(ca*cb-1j*sa*sb)**copies) < 2e-13
+        assert abs(limit-np.exp(-(a*a+b*b)/4-1j*a*b/2)) < 1e-14
+        reverse, _ = d.spin_weyl_expectation(((0, b), (a, 0)), copies)
+        assert abs(reverse-actual.conjugate()) < 1e-14
+        tracial, _ = d.spin_weyl_expectation(((a, 0), (0, b)), copies, 0)
+        assert tracial.imag == 0
+    value = d.quantum_fluctuation_control()
+    for row in value['complete_pointer_records'].values():
+        assert len(row['all_pointer_and_work_probabilities']) == 32
+        assert abs(sum(row['all_pointer_and_work_probabilities'])-1) < 2e-11
+        assert abs(row['pointer_mean']-row['independent_product_state_mean']) < 2e-11
+    assert abs(value['complete_pointer_records']['Y']['pointer_mean']) > .3
+    assert value['unconditioned_repair_selects_this_reference'] is False
+    assert value['independent_product_copy_limit_is_source_refinement_limit'] is False
+    assert value['growing_field_preparation_and_detector_compiler_executed'] is False
+
+
+def test_source_kick_detector_response_uses_the_same_native_frequency():
+    value = d.quantum_fluctuation_control()
+    for mode in value['native_frequency_source_pulse_controls']:
+        theta = mode['coherent_phase_per_incident_trigger']
+        assert abs(np.cos(theta)-(1-mode['native_laplacian_eigenvalue']/60)) < 1e-14
+        epsilon = mode['source_kick_size']
+        # Exact Bloch-vector kick/rotation calculation, independent of the pulse compiler.
+        response = np.sin(theta)/theta*np.sinc(epsilon*np.sqrt(2/theta)/np.pi)
+        assert abs(response-mode['central_difference_response']) < 2e-11
+        assert abs(mode['central_difference_response']-mode['sine_kernel_linear_response']) <= mode['finite_kick_error_upper']+2e-10
+        for record in mode['complete_minus_and_plus_kick_pointer_probabilities']:
+            assert len(record) == 2 and abs(sum(record)-1) < 2e-12

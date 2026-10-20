@@ -68,12 +68,16 @@ with 114,910 pulses per walk, clean scratch and retained padding.
 Full-register execution reuses raw pulse-executed routines; its numerical
 guards are not interval or physical precision certificates. Protected
 storage, coherent control and carrier pauses are declared; the growing
-refinement compiler is unproved. A separate Gaussian wave synthesized from
-two long observation blocks has covariance `A^-1 cos((t-u)sqrt(A))`.
-Restoring the constant mode gives finite
-propagation at speed at most `1/sqrt(2)` in the flat comparison distance
-per coherent wave parameter. This support theorem concerns localized
-changes; it does not erase the stationary field's long-range correlations.
+refinement compiler is unproved. A separate classical Gaussian wave has
+covariance `A^-1 cos((t-u)sqrt(A))`. The
+[source-coded quantum fluctuation readout](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
+executes noncommuting ordered products and kick responses. Independently
+polarized proper codes give a CCR vacuum limit on the chosen mean-zero
+fluctuation algebra, with native wave frequencies and the active clock above.
+Preparation, mode encoding, control and protected storage remain supplied.
+Comparison-cone locality holds for suitable mean-zero supported tests;
+unrestricted tests require the constant-mode term, whose massless free
+particle has no normalizable stationary ground state.
 The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 has a nonzero, exponentially bounded disjoint-support tail at every positive
 scaled selection-slot time. It has no exact finite signal cone under that
@@ -99,8 +103,14 @@ Dirichlet bulk's static boundary action (with smooth boundary). A
 also preserves the normalized decay spectrum, excluding a complete compact
 three-dimensional free scalar's Euclidean law under one clock scale.
 Internal rank-three modes vanish from bounded-energy families at this scale.
-Other radial dictionaries, whole-sequence uniqueness and physical quantum
-identification are unproved.
+A [positive mixture of actual native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+constructs `exp(-r*sqrt(A))` along the same subsequence, with finite truncation
+budgets. This supplies the Poisson half-cylinder readout; `r` is a processing
+parameter, with no physical radius or independent bulk fields established.
+Whole-sequence uniqueness and physical quantum identification are unproved.
+The [finite edge-generator bridge](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
+realizes the edge theorem's generator and ranks on the native density
+representation. It prepares no 66-state Gibbs reference or gauge collar.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the
@@ -116,8 +126,10 @@ compares the conditional scalar-tilt prediction with ACT DR6 joint posterior
 chains and tests direct native event-count/optical-phase attachments against
 published clock ratios. The clock test covers all distinct regional incident
 unions on one carrier under its stated readout assumptions; identical event
-sets are aliases and are excluded. These retrospective comparisons do not establish
-the common physical observation dictionary.
+sets are aliases and are excluded. The separate compact-filter extension
+assumes independent replicas and does not identify the published atomic servo.
+Allan moment targets infer neither physical resource bounds nor refinement
+levels. These retrospective comparisons establish no physical dictionary.
 
 ## Start with one carrier
 

@@ -152,3 +152,56 @@ def test_external_experiment_coverage_rejects_a_truncated_valid_execution():
     assert c.verify_semantic_execution(INITIAL, log[:-1]) == c.dependencies(TAPE[:-1])
     with pytest.raises(ValueError, match='complete declared experiment'):
         c.verify_semantic_execution(INITIAL, log[:-1], tape=TAPE, coins=coins)
+
+
+def test_faithful_diamond_placement_realizes_null_edges_and_two_way_order_equivalence():
+    diamond = c.faithful_diamond_placement()
+    assert diamond['seam_tape'] == [[0, 1], [0, 10], [1, 8], [0, 1]]
+    assert diamond['parents'] == [[], [0], [0], [1, 2]]
+    assert diamond['heights'] == [0, 1, 1, 2]
+    assert diamond['ancestors'] == [[], [0], [0], [0, 1, 2]]
+    assert diamond['parent_edge_intervals_squared'] == {
+        '0->1': '0', '0->2': '0', '1->3': '0', '2->3': '0'}
+    assert sp.simplify(
+        sp.sympify(diamond['apex_0_to_3_interval_squared'])-(2+2*sp.sqrt(5)/5)) == 0
+    assert sp.simplify(
+        sp.sympify(diamond['antichain_1_to_2_interval_squared'])-(-1-2*sp.sqrt(5)/5)) == 0
+    intervals = diamond['causal_intervals']
+    assert len(intervals) == 16
+    assert intervals['0->3'] == [0, 1, 2, 3]
+    assert intervals['1->2'] == [] and intervals['2->1'] == []
+    assert intervals['0->1'] == [0, 1] and intervals['0->2'] == [0, 2]
+    assert intervals['1->3'] == [1, 3] and intervals['2->3'] == [2, 3]
+    for node in range(4):
+        assert intervals[f'{node}->{node}'] == [node]
+    assert diamond['order_equivalence_pairs_checked'] == 16
+    assert diamond['coin_branches_authenticated'] == 16
+    assert diamond['zero_current_commits_retained'] > 0
+    cycle = diamond['distinct_seam_cycle_diamond']
+    assert cycle['seam_tape'] == [[0, 1], [0, 5], [1, 9], [5, 9]]
+    assert cycle['parents'] == [[], [0], [0], [1, 2]]
+    assert cycle['heights'] == [0, 1, 1, 2]
+    assert cycle['order_equivalence_pairs_checked'] == 16
+    assert cycle['coin_branches_authenticated'] == 16
+    assert diamond['all_parent_edges_are_null'] is True
+    assert diamond['two_way_causal_order_equivalence_on_witness_checked'] is True
+    assert diamond['all_sixteen_causal_intervals_match_metric_diamonds'] is True
+    assert diamond['all_sixteen_coin_branches_authenticated'] is True
+    assert diamond['arbitrary_native_tape_satisfies_converse_cone_implication'] is False
+
+
+def test_diamond_verifier_rejects_non_diamond_tapes_and_non_null_edges(monkeypatch):
+    with pytest.raises(ArithmeticError, match='fork-and-join causal diamond'):
+        c._verify_diamond_witness(TAPE, INITIAL, require_null_edges=False)
+    with pytest.raises(ArithmeticError, match='not lightlike'):
+        c._verify_diamond_witness(
+            ((0, 1), (0, 5), (1, 9), (5, 9)), INITIAL, require_null_edges=True)
+    original_interval = c.interval_squared
+    monkeypatch.setattr(
+        c, 'interval_squared',
+        lambda first, second: sp.Integer(1)
+        if (first['seam'], second['seam']) == ((0, 10), (1, 8))
+        else original_interval(first, second))
+    with pytest.raises(ArithmeticError, match='causal sign'):
+        c._verify_diamond_witness(
+            ((0, 1), (0, 10), (1, 8), (0, 1)), INITIAL, require_null_edges=True)

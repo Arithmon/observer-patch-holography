@@ -31,7 +31,10 @@ continuum generator. The native reduced action has exponentially decaying
 couplings in cell distance; couplings between fixed separated continuum
 regions vanish. An [exact terminal-star reduction](OCCUPATION_FIELD.md#a-local-conductance-graph-with-the-same-continuum-green-limit)
 gives a positive local weighted dual graph with Green error at most
-`182*2^-level`. Its coefficients use the actual routed ports, so it has
+`182*2^-level` and an all-level Loewner sandwich
+`(38/43) G_l^iso <= G_l^w <= (48/43) G_l^iso` (relative Green error at most
+`5/43`) against the harmonic-mean isotropic reference conductance `30/43`.
+Its coefficients use the actual routed ports, so it has
 the same continuum limits; their uniqueness remains a conductance
 convergence obligation. Full-port harmonic lifts give Mosco energy convergence
 and a conservative strongly local Dirichlet form. A native six-triangle
@@ -40,8 +43,21 @@ and supplies a regular continuous piecewise-affine core. Explicit ancestral tent
 bound its positive eigenvalues between `n/49920` and `3n/2`, proving
 heat-trace spectral dimension two. This particular source limit therefore
 cannot be a compact smooth three-dimensional second-order elliptic field
-under the same observable dictionary and fixed scale. The exact intrinsic
-metric and physical identification are separate obligations.
+under the same observable dictionary and fixed scale. A
+[radial Poisson-Steklov half-cylinder extension](OCCUPATION_FIELD.md#a-boundary-trace-test-for-a-radial-extension)
+`U_l(r)=exp(-r A_l^(1/2))f` realizes the boundary quadratic form
+`<f, A_l^(1/2) f>` with radial-tangential energy equipartition and relates
+the half-cylinder boundary trace covariance `G_l^(1/2)=A_l^(-1/2)` to the
+native Green covariance `G_l` through the unbounded spectral filter
+`A_l^(1/4)`. A [positive mixture of native lag records](OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+implements the Poisson extension with an explicit omitted-mass bound:
+the complete 66-state check uses lags at most 512 with error below `0.036`.
+Its mixture parameter remains a chosen readout setting, without a physical
+radial identification. On the twelve-port carrier, explicit four-event fork-and-join
+diamond schedules in `causal_placement.py` realize two-way causal order
+equivalence and matching metric causal intervals across all sixteen coin
+branches, while general tapes retain the converse countercontrol. The exact
+intrinsic metric and physical identification are separate obligations.
 The [joint observation-process extension](OCCUPATION_FIELD.md#one-continuum-observation-path-for-both-native-clocks)
 couples both clocks on the same native history and obtains one Gaussian
 Wiener field in `C([0,T],H^-2(S2))` along that spatial subsequence. It supplies
@@ -56,8 +72,8 @@ control; it does not identify the actual source's physical spacetime.
 
 This packet makes a concrete connection between geometry, propagation and a
 local clock instead of identifying their parameters by name. It also shows
-why the previously established rank-three response Gram and native causal
-order do not yet establish physical spacetime. A local clock that ignores
+why the established rank-three response Gram and native causal
+order do not establish physical spacetime. A local clock that ignores
 remote attempts does not inherit the one-edge-per-attempt propagation bound.
 
 ```sh

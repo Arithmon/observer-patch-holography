@@ -226,6 +226,23 @@ instrumentation, not intrinsic global read access, arbitrary quantum
 histories or a physical influence law. Adaptive scheduling requires its
 additional dependency edges.
 
+Two explicitly checked fork-and-join schedules also satisfy the converse
+cone condition. The lexicographically first four-event
+diamond on the recovered twelve-port carrier with four lightlike parent
+edges is `((0, 1), (0, 10), (1, 8), (0, 1))`, with parents
+`((), (0,), (0,), (1, 2))` and canonical heights `(0, 1, 1, 2)`. Each
+parent edge achieves `distance_squared = c^2` (`interval_squared = 0`),
+the apex pair `(0, 3)` is timelike with `interval_squared = 2+2*sqrt(5)/5`,
+and the antichain pair `(1, 2)` is spacelike with
+`interval_squared = -1-2*sqrt(5)/5`. Across all sixteen ordered event
+pairs and all sixteen coin branches, generated ancestry coincides with
+future cone membership and every order interval matches its metric causal
+diamond (`I(0, 3) = [0, 1, 2, 3]`, `I(1, 2) = []`). The lexicographically
+first four-distinct-seam cycle diamond `((0, 1), (0, 5), (1, 9), (5, 9))`
+satisfies the same two-way order and interval identities. These finite
+witnesses certify diamond order equivalence on linked schedules without
+asserting converse cone implication on arbitrary tapes.
+
 ## Finite counts, caps and observation errors
 
 Stationarity and density closure give an exact finite-count covariance:
@@ -733,6 +750,29 @@ Convergence of this routing-dependent conductance family to one effective
 form is unproved. The reduction supplies no extra spatial direction,
 physical metric, changed repair rule or finite Markov approximation claim.
 
+Comparing `L_w,l` against the harmonic-mean isotropic reference conductance
+`w_* = 2/(w_min^(-1)+w_max^(-1)) = 30/43` on the same dual graph encloses
+every level's weighted Laplacian and Green operator in symmetric Loewner
+sandwiches:
+
+```text
+(43/48) L_iso,l <= L_w,l <= (43/38) L_iso,l,
+(38/43) G_l^iso <= G_l^w <= (48/43) G_l^iso,
+||G_l^w-G_l^iso|| <= (5/43) ||G_l^iso||.                        (W3)
+```
+
+Each dual edge weight `w_cd` lies in `[5/8, 15/19] = [(43/48) w_*, (43/38) w_*]`,
+so the edge Laplacians have nonnegative rational slacks in both directions.
+Operator anti-monotonicity of inversion on the mean-zero subspace yields the
+Green sandwich and the level-independent relative norm bound `5/43`. At
+level zero, nineteen positive rational LDL pivots certify all four reduced
+Loewner matrices exactly; levels zero through two also verify nonnegative
+edge slacks and mean-zero subspace eigenvalues, with diagnostic relative
+Green differences near `0.01105 < 5/43`. Combining (W2) and (W3) along every
+common spatial subsequence gives `(38/43) G_iso <= G <= (48/43) G_iso` in
+the continuum limit, without asserting exact continuum metric isotropy
+`G = G_iso`.
+
 ### Locality and spectral dimension of the source continuum
 
 The continuum form inherits contraction and locality from the **full native
@@ -952,9 +992,83 @@ One permissible mathematical change illustrates the distinction: on a finite
 spectral cutoff, applying `A^(1/4)` to the native Gaussian changes covariance
 `A^-1` to `A^-1/2`. The distributional spectral limit has the order appropriate
 to the harmonic half-cylinder extension `U(r)=exp(-r sqrt(A))f`, whose
-minimized action is `<f,sqrt(A)f>`. This is unbounded `L2` processing; the
-additional radial domain and its action are construction inputs. It supplies
-no native bulk fluctuations or physical radial readout by itself.
+minimized action is `<f,sqrt(A)f>`. At each finite level `l`, the executable
+evaluates `A_l^(1/2)`, `G_l^(1/2)=A_l^(-1/2)` and `A_l^(1/4)` by an
+independent Denman-Beavers matrix square-root iteration on the scaled Schur
+generator, propagates `U_l(r)=exp(-r A_l^(1/2))f` by scaling-and-squaring
+Taylor series, and integrates its radial and tangential bulk energies on
+`(0, infinity)` by 64-point Gauss-Legendre quadrature:
+
+```text
+integral_0^infinity (||d_r U_l(r)||^2 + <U_l(r), A_l U_l(r)>) dr = <f, A_l^(1/2) f>,
+integral_0^infinity ||d_r U_l(r)||^2 dr = integral_0^infinity <U_l(r), A_l U_l(r)> dr
+                                        = <f, A_l^(1/2) f>/2,
+G_l^(1/2) = A_l^(1/4) G_l A_l^(1/4).
+```
+
+Substituting `u=G_l^(1/2) f` into (K1) gives the coarse projection tail
+`||(I-P_k) G_l^(1/2)||^2 = ||(I-P_k) G_l (I-P_k)|| <= 624*4^(-k)`, and the
+operator-monotone square-root inequality gives
+`||G_l^(1/2)-G^(1/2)|| <= ||G_l-G||^(1/2)`: if `||X-Y||<=d`,
+then `X<=Y+d I` implies `sqrt(X)<=sqrt(Y)+sqrt(d) I`, and exchanging
+`X,Y` supplies the other bound. On the round two-sphere, the
+half-cylinder Steklov symbol `sqrt(l(l+1))` and the unit three-ball Steklov
+eigenvalue `l` satisfy `1/2 <= l^2/[l(l+1)] < 1` and
+`0 < sqrt(2)-1 <= sqrt(l(l+1))-l < 1/2` for all `l>=1`. This `A^(1/4)`
+spectral filter is unbounded `L2` processing; the additional radial domain
+and its action are construction inputs. It supplies no native bulk
+fluctuations or physical radial readout by itself.
+
+### The Poisson extension as a native lag-record readout
+
+The extension can nevertheless be computed from the unchanged repair
+records. For the actual attempt transfer `K=I-L/(2M)`, set
+`p_n=binom(2n,n)/(4^n(2n-1))`, `n>=1`. These positive coefficients sum to one
+and satisfy `sum p_n z^n=1-sqrt(1-z)` by the binomial series. With independent
+auxiliary `J~Poisson(R)` and jumps of law `p_n`, their sum `N` therefore gives
+
+```text
+E[K^N] = exp(-R sqrt(I-K)).                                    (P1)
+```
+
+This is a positive mixture of measurable native lag laws. The auxiliary
+variables specify weights; they need not run a second physical clock.
+Under the stationary fixed-total preparation, lag covariance is
+`chi K^n P0`; weighting it by (P1) gives the centered Poisson operator.
+The declared initial occupation and complete seam-current readout recover
+these occupations from one history. Empirical lag averages require their
+own sampling-error control; (P1) is their expectation, not an exact
+finite-sample prediction.
+
+Truncate each jump at `b` and the jump count at `j`, without renormalizing
+the retained weights. Since
+`q_b=sum_{n>b}p_n=binom(2b,b)/4^b`, the polynomial uses at most `b*j`
+native attempts and has operator error at most
+`min(1,R*q_b+R^(j+1)/(j+1)!)`. The first term bounds any discarded jump;
+the second bounds the Poisson count tail by its factorial moment.
+`occupation_field.py` checks the complete 66-state native kernel, its
+12-coordinate density intertwiner and its missing column mass at
+`R=1/2,b=64,j=8`. The maximum lag is 512 and the truncation allowance is
+less than `0.036`. Replacing the jump law by one-step jumps gives heat
+evolution, with a nonzero independently checked discrepancy.
+
+For the refined full source, take `R_l=r sqrt(2M_l 4^l)` in (P1). The
+result is `exp(-r sqrt(4^l L_l))`; the established native heat-semigroup
+limit and positive subordination give its compressed limit
+`exp(-r sqrt(A))` along the same spatial subsequence. Explicitly, for
+`r>0` the subordination density is
+`r exp(-r^2/(4t))/(2 sqrt(pi) t^(3/2))`; it has integral one, so bounded
+convergence transfers the known compressed heat limit. This is the
+[semigroup extension construction](https://arxiv.org/abs/0910.2569).
+The finite compressed full-port operator is generally **different** from
+the Poisson operator of the finite Schur generator; no cell Markov closure
+is assumed. A fixed truncation budget does not survive arbitrary refinement:
+`b_l,j_l` must grow so that `R_l q_b_l` and the count-tail bound vanish.
+The result gives `r` an operational meaning as a chosen lag-mixture
+parameter. Different values reuse the same boundary histories and do not
+provide mutually local radial subsystems. Identifying `r` with spatial
+distance, supplying bulk field degrees of freedom, and identifying native
+physical time remain separate obligations.
 
 The internal carrier directions also cannot supply such a radius at the
 present scale. Set `E_l^port(v)=4^l<v,L_l v>`. The internal gap gives

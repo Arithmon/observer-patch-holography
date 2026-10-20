@@ -7,8 +7,11 @@ Full-port energy lifts supply its conservative strongly local Dirichlet form;
 an explicit source interpolation identifies its regular H1 form core, and
 triangle tests bound both sides of its spectral growth. Exact terminal-star
 elimination gives a local conductance graph with the same continuum Green
-limits and a vanishing operator comparison bound. A selected intrinsic
-metric and physical spatial identification are not asserted.
+limits, an all-level Loewner sandwich against its harmonic-mean isotropic
+reference, and a radial Poisson-Steklov half-cylinder bulk extension whose
+boundary trace covariance is related to the native Green limit by an A^(1/4)
+spectral filter. A selected intrinsic metric and physical spatial
+identification are not asserted.
 The all-level proof is in OCCUPATION_FIELD.md.
 """
 from __future__ import annotations
@@ -39,10 +42,15 @@ PATCH_POINCARE_CONSTANT = F(26)
 COARSE_ENERGY_TAIL_CONSTANT = F(624)
 
 
-def _level(value):
-    if type(value) is not int or value < 0:
-        raise ValueError('an original nonnegative integer is required')
+def _int(value, minimum=0, maximum=None):
+    if (type(value) is not int or value < minimum
+            or (maximum is not None and value > maximum)):
+        raise ValueError('an original integer in the certified range is required')
     return value
+
+
+def _level(value):
+    return _int(value, minimum=0)
 
 
 def compactness_tail_squared(coarse_level):
@@ -638,6 +646,423 @@ def non_markov_control():
         'continuum_locality_or_nonlocality_decided_by_this_control': False}
 
 
+@lru_cache(maxsize=3)
+def _green_orthonormal_bundle(level):
+    graph, _, r, integer_f, denominator = source.matrices(level)
+    schur = r.T@np.linalg.solve(integer_f/denominator, r)/12.0
+    cells = graph.cells
+    projector = np.eye(cells, dtype=float)-np.ones((cells, cells), dtype=float)/cells
+    generator = (4**level)*(projector@schur@projector)
+    generator = 0.5*(generator+generator.T)
+    green = source._green(schur)/4**level
+    green = 0.5*(green+green.T)
+    return green, generator, projector
+
+
+def green_orthonormal_matrix(level=0):
+    """Normalized cell-mean Green operator on the orthonormal cell basis."""
+    level = _int(level, minimum=0, maximum=2)
+    green, _, _ = _green_orthonormal_bundle(level)
+    return green.copy()
+
+
+def _denman_beavers_sqrt(matrix):
+    """Independent Denman-Beavers square root and inverse square root on SPD input."""
+    n = len(matrix)
+    y = matrix.astype(float, copy=True)
+    z = np.eye(n, dtype=float)
+    identity = np.eye(n, dtype=float)
+    for _ in range(32):
+        y_inv = np.linalg.solve(y, identity)
+        z_inv = np.linalg.solve(z, identity)
+        y_next = 0.5*(y+z_inv)
+        z_next = 0.5*(z+y_inv)
+        tolerance = 8*np.finfo(float).eps*max(1.0, np.linalg.norm(y_next, 'fro'))
+        if np.linalg.norm(y_next-y, 'fro') <= tolerance:
+            y = 0.5*(y_next+y_next.T)
+            z = 0.5*(z_next+z_next.T)
+            return y, z
+        y, z = y_next, z_next
+    raise ArithmeticError('Denman-Beavers matrix square-root iteration did not converge')
+
+
+def _matrix_exp_scaling_squaring(matrix):
+    """Independent pure-NumPy Taylor scaling-and-squaring matrix exponential."""
+    n = len(matrix)
+    norm = float(np.linalg.norm(matrix, 1))
+    scale = 0
+    while norm > 0.5*(2**scale):
+        scale += 1
+    scaled = matrix/(2.0**scale)
+    result = np.eye(n, dtype=float)
+    term = np.eye(n, dtype=float)
+    for k in range(1, 20):
+        term = (term@scaled)/k
+        result = result+term
+        if np.linalg.norm(term, 1) <= 1e-16:
+            break
+    for _ in range(scale):
+        result = result@result
+    return result
+
+
+def steklov_bulk_extension_bounds(level=0):
+    """Radial Poisson-Steklov half-cylinder extension, trace filter and symbol bounds."""
+    level = _int(level, minimum=0, maximum=2)
+    green, generator, projector = _green_orthonormal_bundle(level)
+    cells = len(green)
+    constant_projector = np.ones((cells, cells), dtype=float)/cells
+    sqrt_shifted, inv_sqrt_shifted = _denman_beavers_sqrt(generator+constant_projector)
+    a_half_db = projector@sqrt_shifted@projector
+    g_half_db = projector@inv_sqrt_shifted@projector
+    a_quarter_shifted, _ = _denman_beavers_sqrt(a_half_db+constant_projector)
+    a_quarter_db = projector@a_quarter_shifted@projector
+
+    eigenvalues, eigenvectors = np.linalg.eigh(generator)
+    positive = eigenvalues > 1e-10
+    if int(np.sum(positive)) != cells-1:
+        raise ArithmeticError('scaled cell-mean generator lost its mean-zero rank')
+    pos_evals = eigenvalues[positive]
+    pos_evecs = eigenvectors[:, positive]
+    a_half_spec = (pos_evecs*np.sqrt(pos_evals))@pos_evecs.T
+    g_half_spec = (pos_evecs*(1.0/np.sqrt(pos_evals)))@pos_evecs.T
+    a_quarter_spec = (pos_evecs*(pos_evals**0.25))@pos_evecs.T
+
+    sqrt_generator_error = float(np.linalg.norm(a_half_db@a_half_db-generator, 2))
+    sqrt_green_error = float(np.linalg.norm(g_half_db@g_half_db-green, 2))
+    sqrt_duality_error = float(np.linalg.norm(a_half_db@g_half_db-projector, 2))
+    spectral_vs_db_error = float(max(
+        np.linalg.norm(a_half_db-a_half_spec, 2),
+        np.linalg.norm(g_half_db-g_half_spec, 2),
+        np.linalg.norm(a_quarter_db-a_quarter_spec, 2),
+    ))
+    filter_identity_error = float(np.linalg.norm(
+        a_quarter_db@green@a_quarter_db-g_half_db, 2))
+    if (sqrt_generator_error > 1e-11 or sqrt_green_error > 1e-11
+            or sqrt_duality_error > 1e-11 or spectral_vs_db_error > 1e-11
+            or filter_identity_error > 1e-11):
+        raise ArithmeticError('Steklov square-root or A^(1/4) filter identity failed')
+
+    raw_f = np.array([float((11*i*i+5*i+3) % 29-14) for i in range(cells)], dtype=float)
+    raw_g = np.array([float((7*i*i-13*i+9) % 31-15) for i in range(cells)], dtype=float)
+    boundary_f = projector@raw_f
+    boundary_f /= float(np.linalg.norm(boundary_f, 2))
+    boundary_g = projector@raw_g
+    boundary_g /= float(np.linalg.norm(boundary_g, 2))
+
+    nodes, weights = np.polynomial.legendre.leggauss(64)
+    radial_energy_f = 0.0
+    tangential_energy_f = 0.0
+    cross_energy_fg = 0.0
+    for t, weight in zip(nodes, weights, strict=True):
+        radius = (1.0+float(t))/(1.0-float(t))
+        jacobian = 2.0/((1.0-float(t))**2)
+        propagator = _matrix_exp_scaling_squaring(-radius*a_half_db)
+        u_r = propagator@boundary_f
+        du_r = -(a_half_db@u_r)
+        v_r = propagator@boundary_g
+        dv_r = -(a_half_db@v_r)
+        radial_energy_f += float(weight)*jacobian*float(du_r@du_r)
+        tangential_energy_f += float(weight)*jacobian*float(u_r@(generator@u_r))
+        cross_energy_fg += float(weight)*jacobian*float(
+            du_r@dv_r+u_r@(generator@v_r))
+
+    quadrature_dirichlet_energy = radial_energy_f+tangential_energy_f
+    boundary_steklov_energy_db = float(boundary_f@(a_half_db@boundary_f))
+    boundary_steklov_energy_spec = float(boundary_f@(a_half_spec@boundary_f))
+    boundary_cross_energy_db = float(boundary_f@(a_half_db@boundary_g))
+    dirichlet_energy_error = abs(quadrature_dirichlet_energy-boundary_steklov_energy_db)
+    equipartition_error = abs(radial_energy_f-tangential_energy_f)
+    polarized_cross_error = abs(cross_energy_fg-boundary_cross_energy_db)
+    if (dirichlet_energy_error > 1e-10
+            or abs(boundary_steklov_energy_db-boundary_steklov_energy_spec) > 1e-12
+            or equipartition_error > 1e-10
+            or polarized_cross_error > 1e-10):
+        raise ArithmeticError('radial Poisson-Steklov Dirichlet energy identity failed')
+
+    compactness_rows = []
+    for coarse in range(level+1):
+        descendants = 4**(level-coarse)
+        blocks = 20*4**coarse
+        coarse_proj = np.zeros((cells, cells), dtype=float)
+        for block in range(blocks):
+             sl = slice(block*descendants, (block+1)*descendants)
+             coarse_proj[sl, sl] = 1.0/descendants
+        residual_proj = np.eye(cells, dtype=float)-coarse_proj
+        sqrt_tail_sq = float(np.linalg.norm(residual_proj@g_half_db, 2)**2)
+        sandwiched_green = float(np.linalg.norm(residual_proj@green@residual_proj, 2))
+        green_tail_norm = float(np.linalg.norm(residual_proj@green, 2))
+        energy_bound = covariance_eigenvalue_tail(coarse)
+        green_bound = compactness_tail_squared(coarse)
+        if (abs(sqrt_tail_sq-sandwiched_green) > 1e-11
+                or sqrt_tail_sq > green_tail_norm+1e-11
+                or sqrt_tail_sq > float(energy_bound)+1e-9
+                or sqrt_tail_sq > float(green_bound)+1e-9):
+            raise ArithmeticError('Steklov boundary covariance tail violates compactness bound')
+        compactness_rows.append({
+            'coarse_level': coarse,
+            'sqrt_green_tail_norm_squared_diagnostic': sqrt_tail_sq,
+            'sandwiched_green_tail_norm_diagnostic': sandwiched_green,
+            'energy_tail_squared_upper': str(energy_bound),
+            'green_tail_squared_upper': str(green_bound),
+        })
+
+    weighted_bundle = weighted_conductance_bundle(level)
+    g_weighted = weighted_bundle['weighted_green']
+    _, g_weighted_half_shifted = _denman_beavers_sqrt(
+        (4**level)*(projector@(weighted_bundle['weighted_laplacian']/12.0)@projector)
+        +constant_projector)
+    g_weighted_half = projector@g_weighted_half_shifted@projector
+    sqrt_diff_norm = float(np.linalg.norm(g_half_db-g_weighted_half, 2))
+    green_diff_norm = float(np.linalg.norm(green-g_weighted, 2))
+    square_root_upper = float(np.sqrt(green_diff_norm))
+    analytic_square_root_upper = float(np.sqrt(float(weighted_green_difference_bound(level))))
+    if (sqrt_diff_norm > square_root_upper+1e-12
+            or sqrt_diff_norm > analytic_square_root_upper+1e-12):
+        raise ArithmeticError('operator-monotone square-root bound failed')
+
+    ell = sp.Symbol('ell', integer=True, positive=True)
+    ratio_identity = sp.simplify(ell**2/(ell*(ell+1))-(1-1/(ell+1)))
+    gap_rationalized = sp.simplify(
+        (sp.sqrt(ell*(ell+1))-ell)-ell/(sp.sqrt(ell*(ell+1))+ell))
+    if ratio_identity != 0 or gap_rationalized != 0:
+        raise ArithmeticError('round-sphere vs 3-ball Steklov symbol identity changed')
+    symbol_rows = []
+    for degree in range(1, 33):
+        ratio = F(degree, degree+1)
+        gap = float(np.sqrt(degree*(degree+1))-degree)
+        if not (F(1, 2) <= ratio < 1 and 0.0 < gap < 0.5):
+            raise ArithmeticError('Steklov symbol comparison left its certified enclosure')
+        if degree in (1, 2, 4, 8, 16, 32):
+            symbol_rows.append({
+                'degree': degree,
+                'squared_symbol_ratio_exact': str(ratio),
+                'symbol_difference_diagnostic': gap,
+            })
+
+    return {
+        'level': level,
+        'cells': cells,
+        'quadrature_nodes': 64,
+        'quadrature_dirichlet_energy_diagnostic': quadrature_dirichlet_energy,
+        'radial_bulk_energy_diagnostic': radial_energy_f,
+        'tangential_bulk_energy_diagnostic': tangential_energy_f,
+        'boundary_steklov_energy_denman_beavers': boundary_steklov_energy_db,
+        'boundary_steklov_energy_spectral': boundary_steklov_energy_spec,
+        'dirichlet_energy_quadrature_error': dirichlet_energy_error,
+        'radial_tangential_equipartition_error': equipartition_error,
+        'polarized_bilinear_form_error': polarized_cross_error,
+        'denman_beavers_vs_spectral_error': spectral_vs_db_error,
+        'A_quarter_spectral_filter_identity_error': filter_identity_error,
+        'compactness_tail_controls': compactness_rows,
+        'square_root_sqrt_difference_diagnostic': sqrt_diff_norm,
+        'square_root_sqrt_difference_upper_from_green': square_root_upper,
+        'square_root_sqrt_difference_analytic_upper': analytic_square_root_upper,
+        'round_sphere_vs_ball_symbol_bounds': {
+            'squared_symbol_ratio_lower': '1/2',
+            'squared_symbol_ratio_strict_upper': '1',
+            'symbol_difference_strict_lower': '0',
+            'symbol_difference_degree_one_exact': 'sqrt(2)-1',
+            'symbol_difference_strict_upper': '1/2',
+            'sampled_degrees': symbol_rows,
+        },
+        'boundary_trace_achieved_by_A_quarter_spectral_filter': True,
+        'unfiltered_boundary_trace_of_smooth_3d_local_ball_action': False,
+        'identifies_physical_radial_bulk_coordinate': False,
+        'identifies_limit_with_round_sphere': False,
+    }
+
+
+@lru_cache(maxsize=3)
+def _weighted_conductance_cache(level):
+    graph, _, r, integer_f, denominator = source.matrices(level)
+    _, _, edges = weighted_dual_network(graph)
+    w_min = F(5, 8)
+    w_max = F(15, 19)
+    w_star = 2/(1/w_min+1/w_max)
+    if w_star != F(30, 43):
+        raise ArithmeticError('harmonic-mean isotropic reference conductance changed')
+    cells = graph.cells
+    edge_count = len(edges)
+    arithmetic_mean = sum((w for _, _, w in edges), F(0))/edge_count
+    histogram = {str(w): count for w, count in sorted(Counter(w for _, _, w in edges).items())}
+    weighted_laplacian = np.zeros((cells, cells), dtype=float)
+    isotropic_laplacian = np.zeros((cells, cells), dtype=float)
+    w_star_float = float(w_star)
+    for a, b, w in edges:
+        wf = float(w)
+        weighted_laplacian[a, a] += wf
+        weighted_laplacian[b, b] += wf
+        weighted_laplacian[a, b] -= wf
+        weighted_laplacian[b, a] -= wf
+        isotropic_laplacian[a, a] += w_star_float
+        isotropic_laplacian[b, b] += w_star_float
+        isotropic_laplacian[a, b] -= w_star_float
+        isotropic_laplacian[b, a] -= w_star_float
+    schur = r.T@np.linalg.solve(integer_f/denominator, r)/12.0
+    native_green = source._green(schur)/4**level
+    weighted_green = source._green(weighted_laplacian/12.0)/4**level
+    isotropic_green = source._green(isotropic_laplacian/12.0)/4**level
+    return {
+        'level': level,
+        'cells': cells,
+        'edge_count': edge_count,
+        'edges': edges,
+        'conductance_min': w_min,
+        'conductance_max': w_max,
+        'harmonic_mean_conductance': w_star,
+        'arithmetic_mean_conductance': arithmetic_mean,
+        'conductance_histogram': histogram,
+        'weighted_laplacian': weighted_laplacian,
+        'isotropic_laplacian': isotropic_laplacian,
+        'weighted_green': weighted_green,
+        'isotropic_green': isotropic_green,
+        'native_green': native_green,
+    }
+
+
+def weighted_conductance_bundle(level=0):
+    """Exact dual conductances and normalized weighted/isotropic operators."""
+    level = _int(level, minimum=0, maximum=2)
+    cached = _weighted_conductance_cache(level)
+    return {
+        'level': cached['level'],
+        'cells': cached['cells'],
+        'edge_count': cached['edge_count'],
+        'edges': cached['edges'],
+        'conductance_min': cached['conductance_min'],
+        'conductance_max': cached['conductance_max'],
+        'harmonic_mean_conductance': cached['harmonic_mean_conductance'],
+        'arithmetic_mean_conductance': cached['arithmetic_mean_conductance'],
+        'conductance_histogram': dict(cached['conductance_histogram']),
+        'weighted_laplacian': cached['weighted_laplacian'].copy(),
+        'isotropic_laplacian': cached['isotropic_laplacian'].copy(),
+        'weighted_green': cached['weighted_green'].copy(),
+        'isotropic_green': cached['isotropic_green'].copy(),
+        'native_green': cached['native_green'].copy(),
+    }
+
+
+@lru_cache(maxsize=1)
+def _exact_level_zero_loewner_certificate():
+    """Exact rational SymPy LDL certificate for the level-zero Loewner sandwiches."""
+    bundle = _weighted_conductance_cache(0)
+    cells = bundle['cells']
+    w_star = sp.Rational(30, 43)
+    l_w = sp.zeros(cells)
+    l_iso = sp.zeros(cells)
+    for a, b, w in bundle['edges']:
+        wr = sp.Rational(w.numerator, w.denominator)
+        l_w[a, a] += wr; l_w[b, b] += wr
+        l_w[a, b] -= wr; l_w[b, a] -= wr
+        l_iso[a, a] += w_star; l_iso[b, b] += w_star
+        l_iso[a, b] -= w_star; l_iso[b, a] -= w_star
+    basis = sp.zeros(cells, cells-1)
+    for i in range(cells-1):
+        basis[i, i] = 1
+        basis[i+1, i] = -1
+    lap_lower = basis.T*(l_w-sp.Rational(43, 48)*l_iso)*basis
+    lap_upper = basis.T*(sp.Rational(43, 38)*l_iso-l_w)*basis
+    ones = sp.ones(cells)/cells
+    g_w = (l_w/12+ones).inv()-ones
+    g_iso = (l_iso/12+ones).inv()-ones
+    green_lower = basis.T*(g_w-sp.Rational(38, 43)*g_iso)*basis
+    green_upper = basis.T*(sp.Rational(48, 43)*g_iso-g_w)*basis
+    for matrix in (lap_lower, lap_upper, green_lower, green_upper):
+        _, pivots = matrix.LDLdecomposition(hermitian=False)
+        if any(pivots[i, i] <= 0 for i in range(cells-1)):
+            raise ArithmeticError('exact rational Loewner LDL certificate failed at level zero')
+    return cells-1
+
+
+def isotropic_comparison_bounds(level=0):
+    """Exact Loewner sandwiches and uniform error bounds against the isotropic dual."""
+    level = _int(level, minimum=0, maximum=2)
+    bundle = weighted_conductance_bundle(level)
+    cells = bundle['cells']
+    edges = bundle['edges']
+    w_min = bundle['conductance_min']
+    w_max = bundle['conductance_max']
+    w_star = bundle['harmonic_mean_conductance']
+    lap_lower_mult = w_min/w_star
+    lap_upper_mult = w_max/w_star
+    green_lower_mult = w_star/w_max
+    green_upper_mult = w_star/w_min
+    rel_bound = (green_upper_mult-1)
+    if (lap_lower_mult != F(43, 48) or lap_upper_mult != F(43, 38)
+            or green_lower_mult != F(38, 43) or green_upper_mult != F(48, 43)
+            or 1-green_lower_mult != F(5, 43) or rel_bound != F(5, 43)):
+        raise ArithmeticError('exact Loewner multiplier arithmetic changed')
+
+    lower_slacks = [w-lap_lower_mult*w_star for _, _, w in edges]
+    upper_slacks = [lap_upper_mult*w_star-w for _, _, w in edges]
+    if any(slack < 0 for slack in lower_slacks) or any(slack < 0 for slack in upper_slacks):
+        raise ArithmeticError('a dual edge conductance violated the Loewner sandwich')
+
+    ldl_pivots = _exact_level_zero_loewner_certificate()
+
+    l_w = bundle['weighted_laplacian']/12.0
+    l_iso = bundle['isotropic_laplacian']/12.0
+    g_w = bundle['weighted_green']
+    g_iso = bundle['isotropic_green']
+    g_native = bundle['native_green']
+    q_basis, _ = np.linalg.qr(
+        np.eye(cells, dtype=float)[:, :cells-1]
+        -np.ones((cells, cells-1), dtype=float)/cells)
+
+    def min_mean_zero_eig(sym_matrix):
+        reduced = q_basis.T@sym_matrix@q_basis
+        reduced = 0.5*(reduced+reduced.T)
+        return float(np.linalg.eigvalsh(reduced)[0])
+
+    lap_low_eig = min_mean_zero_eig(l_w-float(lap_lower_mult)*l_iso)
+    lap_high_eig = min_mean_zero_eig(float(lap_upper_mult)*l_iso-l_w)
+    green_low_eig = min_mean_zero_eig(g_w-float(green_lower_mult)*g_iso)
+    green_high_eig = min_mean_zero_eig(float(green_upper_mult)*g_iso-g_w)
+    if min(lap_low_eig, lap_high_eig, green_low_eig, green_high_eig) < -1e-12:
+        raise ArithmeticError('numerical Loewner PSD check failed on mean-zero subspace')
+
+    iso_norm = float(np.linalg.norm(g_iso, 2))
+    weighted_iso_diff = float(np.linalg.norm(g_w-g_iso, 2))
+    relative_diff = weighted_iso_diff/iso_norm
+    native_iso_diff = float(np.linalg.norm(g_native-g_iso, 2))
+    native_weighted_bound = weighted_green_difference_bound(level)
+    combined_upper = float(native_weighted_bound)+float(rel_bound)*iso_norm
+    if relative_diff > float(rel_bound)+1e-12 or native_iso_diff > combined_upper+1e-12:
+        raise ArithmeticError('Green comparison norm difference exceeded its bound')
+
+    return {
+        'level': level,
+        'cells': cells,
+        'dual_edges': bundle['edge_count'],
+        'conductance_lower': str(w_min),
+        'conductance_upper': str(w_max),
+        'harmonic_mean_reference_conductance': str(w_star),
+        'arithmetic_mean_conductance': str(bundle['arithmetic_mean_conductance']),
+        'exact_conductance_histogram': bundle['conductance_histogram'],
+        'laplacian_loewner_lower_multiplier': str(lap_lower_mult),
+        'laplacian_loewner_upper_multiplier': str(lap_upper_mult),
+        'green_loewner_lower_multiplier': str(green_lower_mult),
+        'green_loewner_upper_multiplier': str(green_upper_mult),
+        'uniform_relative_green_error_upper': str(rel_bound),
+        'min_lower_edge_slack': str(min(lower_slacks)),
+        'min_upper_edge_slack': str(min(upper_slacks)),
+        'all_edge_conductance_slacks_nonnegative': True,
+        'exact_rational_level_zero_loewner_LDL_pivots': ldl_pivots,
+        'laplacian_lower_slack_min_eigenvalue': lap_low_eig,
+        'laplacian_upper_slack_min_eigenvalue': lap_high_eig,
+        'green_lower_slack_min_eigenvalue': green_low_eig,
+        'green_upper_slack_min_eigenvalue': green_high_eig,
+        'relative_green_norm_difference_diagnostic': relative_diff,
+        'native_to_isotropic_green_norm_difference_diagnostic': native_iso_diff,
+        'native_to_isotropic_green_norm_difference_upper': combined_upper,
+        'all_level_loewner_sandwich_certified': True,
+        'uniform_relative_green_error_bound_certified': True,
+        'continuum_green_loewner_sandwich_certified': True,
+        'exact_continuum_metric_isotropy_proved': False,
+    }
+
+
 def run():
     return {'schema': 'oph.native_compact_spatial_generator.v1',
         'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
@@ -653,6 +1078,8 @@ def run():
         'full_port_form_control': full_port_form_control(),
         'terminal_star_control': terminal_star_control(),
         'weighted_dual_controls': [weighted_dual_control(k) for k in range(3)],
+        'isotropic_comparison_controls': [isotropic_comparison_bounds(k) for k in range(3)],
+        'steklov_bulk_extension_controls': [steklov_bulk_extension_bounds(k) for k in range(2)],
         'exact_interpolation_geometry': interpolation_geometry_control(),
         'exact_source_interpolation_controls': [source_interpolation_control(k) for k in range(4)],
         'exact_tent_geometry': tent_geometry_control(),
@@ -662,6 +1089,8 @@ def run():
             'coarse_projection_energy_multiplier': '624*4^(-k)',
             'Green_norm_upper': str(GREEN_BOUND),
             'Green_tail_squared': {str(k): str(compactness_tail_squared(k)) for k in (0, 4, 20)},
+            'Steklov_boundary_covariance_tail_squared_upper': {
+                str(k): str(covariance_eigenvalue_tail(k)) for k in (0, 4, 20)},
             'covariance_eigenvalue_number_20_times_4_power_k_upper': {
                 str(k): str(covariance_eigenvalue_tail(k)) for k in (0, 4, 20)},
             'separated_cell_support_bilinear_action': '4^l*2^(-d)*||u||*||v||, d>=1',
@@ -671,6 +1100,11 @@ def run():
                 str(k): str(harmonic_lift_tail(k)) for k in (0, 4, 20)},
             'weighted_dual_Green_difference_upper': {
                 str(k): str(weighted_green_difference_bound(k)) for k in (0, 4, 20)},
+            'harmonic_mean_reference_conductance': '30/43',
+            'weighted_to_isotropic_laplacian_loewner_enclosure': '43/48*L_l^iso <= L_l^w <= 43/38*L_l^iso',
+            'weighted_to_isotropic_green_loewner_enclosure': '38/43*G_l^iso <= G_l^w <= 48/43*G_l^iso',
+            'uniform_weighted_to_isotropic_relative_green_error_upper': '5/43',
+            'continuum_green_loewner_enclosure': '38/43*G_iso <= G <= 48/43*G_iso',
             'interpolation_gradient_squared_upper': '112/a^2*E_l(f_l)',
             'interpolation_mass_error_upper': '20/(3*4^l)*E_l(f_l)',
             'continuum_form_comparison_on_H1': 'a^2/112*integral|grad f|^2 <= E(f) <= a^2/48*integral|grad f|^2',
@@ -688,6 +1122,9 @@ def run():
             'continuous_piecewise_affine_functions_are_a_regular_form_core': True,
             'heat_trace_spectral_dimension': 2,
             'same_dictionary_scaled_compact_smooth_second_order_three_dimensional_elliptic_identification_excluded': True,
+            'radial_Poisson_Steklov_half_cylinder_extension_has_boundary_form_A_half': True,
+            'steklov_boundary_trace_covariance_is_G_half_via_A_quarter_spectral_filter': True,
+            'all_level_isotropic_conductance_loewner_sandwich_and_five_forty_thirds_relative_bound': True,
             'finite_rescaled_action_couplings_at_separated_continuum_supports_vanish': True,
             'explicit_positive_weighted_dual_graph_has_same_continuum_Green_limits': True,
             'weighted_dual_graph_reproduces_finite_native_repair_histories': False,

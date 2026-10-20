@@ -143,8 +143,11 @@ direct count/phase attachments for every distinct regional incident-event
 union on one carrier under an explicit bounded-error and readout contract.
 It permits arbitrary missing blocks and charges calendar-window and region
 selection. Identical event sets are the same clock and are excluded. The
-test does not model atomic transitions, servo filtering or other collective
-clock mechanisms.
+direct test includes no additional filter. The separate eight-replica test
+assumes a preselected compact-support filter and independent native replicas;
+the published servo time constant does not establish those hypotheses.
+Allan moment-matching targets are not population confidence or resource
+bounds, and no continuum level or atomic mechanism is inferred.
 
 ## Gaussian field and continuum scope
 
@@ -235,11 +238,16 @@ using 114,910 pulses per walk, clean scratch and retained padding.
 The full-register replay reuses raw pulse-executed routines; its floating
 guards certify neither interval enclosure nor physical precision. Protected
 storage, coherent services and timing-carrier pauses are supplied; the
-growing refinement compiler is unproved. Two long native blocks supply a continuous
-Gaussian wave readout with covariance `G cos((t-u)sqrt(A))`. Its synthesis
-parameter and processor are declared; it is not the passive instantaneous
-occupation process or a quantum vacuum. Coherent access and reflection
-remain explicit services. The limiting form is conservative, regular,
+growing refinement compiler is unproved. The
+[ordered quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
+executes source pulses, all pointer outputs and opposite-kick controls.
+Its IID polarized-code limit gives the CCR vacuum on a chosen fluctuation
+algebra and sine-kernel response in the same active clock. This uses supplied
+polarization, mode labels, control and storage; passive repair has not selected
+them. The separately synthesized classical covariance does not give a CCR.
+Mean-zero supported tests obey the comparison cone; unrestricted tests need
+`D_bar(t)=D_perp(t)+t*P_const`. The restored massless zero mode has no
+normalizable stationary vacuum. The limiting form is conservative, regular,
 Markovian and strongly local, with domain `H1`: full-port contractions and
 support-preserving
 recoveries survive the internal-gap limit. Finite cell-mean elimination
@@ -257,7 +265,12 @@ dictionary: native rates grow as `n`, while a compact three-dimensional free
 scalar's Euclidean rates grow as `n^(1/3)`. No common clock scale equates them.
 Restricted boundary, interacting and nonlinear dictionaries are outside that
 test. Internal rank-three modes vanish from bounded-energy full-port families
-at this scale; they supply no radius.
+at this scale; they supply no radius. A [positive native lag mixture](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+constructs the Poisson operator `exp(-r*sqrt(A))` with explicit finite caps.
+Its half-cylinder extension and `A^(1/4)` covariance filter are operational
+processing/comparison choices, not independent bulk fields or a distance
+measurement. The dual conductance graph also obeys a uniform isotropic
+reference sandwich with relative allowance `5/43`; it proves no homogenization.
 Restoring the constant mode gives the full-space generator `Abar`.
 Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
 are `||1_F exp(-tau*Abar)1_E||<=exp(-d(E,F)^2/(2*tau))` and zero cosine
@@ -323,9 +336,12 @@ unique nonlinear law, spontaneous force or atomic-clock correspondence.
 Public optical ratios do not contain the required intervention records.
 
 These are compatible source-observation constructions. The auxiliary sphere
-supplies no physical radial domain, and wave amplitudes supply no quantum
-vacuum or interacting field state. A unique whole-sequence physical limit,
-Lorentz covariance and a physical detector dictionary remain open. The
+and lag parameter supply no physical radial domain; the polarized quantum
+encoding does not derive vacuum selection or interactions. The
+[finite edge-generator audit](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
+instantiates the density representation's generator and irreducible ranks,
+not a native 66-state Gibbs preparation or full group sewing. A unique
+physical limit, Lorentz covariance and detector dictionary remain open. The
 supplied square torus retains its separate free-field contract.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's

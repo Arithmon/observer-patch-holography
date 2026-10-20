@@ -233,18 +233,51 @@ or interval centre are allowed. The calculation additionally charges
 11,782,056 ordered distinct event-set pairs. It covers neither searches in
 other years nor other block durations.
 
-Using the unchanged complete UTC-grid block summaries from the
-[public Ar13+/Yb+ data](https://zenodo.org/records/6901524), the conservative
-conditional bounds are `10^-121` for 36Ar and `10^-22` for 40Ar. These are
-retrospective tests of the entire attachment conjunction. The
-[experiment](https://arxiv.org/html/2205.13053v2) uses averaged servo outputs
-and a roughly thirty-second servo response; this packet does not derive that
-readout from native repairs. Consequently it excludes neither the experiment's
-atomic mechanism nor every OPH clock. Identical regional event sets satisfy
-`B(N)=N` exactly and are outside the distinct-pair test; calling one event set
-by two region names supplies no independent atomic stability explanation.
-The source theorem and this conditional comparison derive no minimum number
-of atoms, independent replicas or units of quantum coherence.
+Using complete UTC-grid summaries from the [public Ar13+/Yb+ data](https://zenodo.org/records/6901524),
+the direct regional bounds are `10^-121` for 36Ar and `10^-22` for 40Ar.
+A separate conditional extension averages eight **independent native replicas**
+through a preselected causal, nonnegative, unit-integral linear filter with
+**compact support `[0,30 s]`**. A ticks are equally spaced in the declared
+calendar coordinate. Interior `[0,270 s]` ticks contribute their full filter
+mass to one 300-second block. Conditioning on every noninterior increment
+leaves independent block innovations with arbitrary fixed outside shifts;
+the same anchor-and-subset bound applies. Binary geometric digits and a
+split Fourier integral give primitive-port bounds `10^-123`, `10^-38` and
+regional bounds `10^-123`, `10^-25` for 36Ar, 40Ar respectively. The regional
+worst class is `(29,30,29)`. Filter selection from the measured values is not covered.
+
+The [experiment](https://arxiv.org/html/2205.13053v2) reports eight servo
+outputs and a response time constant around 30 seconds. Those facts do **not**
+establish independent native replicas, equally spaced native ticks, or a
+compact impulse response: a decaying filter can retain an infinite tail.
+The extension rejects its stated conjunction, not the actual atomic servo.
+
+A separate **moment-matching diagnostic** equates the unfiltered, zero-error
+population variance to the sample Allan value. It requires at least
+`2544097785171`, `2407037601663` independent primitive replicas, or
+`53002037192`, `50146616702` at the finite carrier's regional floor, for
+36Ar, 40Ar respectively. These are conditional algebraic targets, not
+confidence bounds on physical resources; the sample Allan value is not a
+certified population upper bound. No continuum refinement level follows.
+The refining source has `M_l=630*4^l` seams and `a_l=1260*16^l` attempts per
+density-coordinate unit, hence a fixed degree-d port has **expected**
+`a_l*d/M_l=2*d*4^l` incidents. Its seconds calibration remains free, and the
+thirty-seam regional floor does not transfer to arbitrary refined regions.
+Identical regional event sets satisfy `B(N)=N` and remain outside the test.
+
+The clock and field comparison also reuses the existing
+[pair-incidence reconstruction](../relative_observer_geometry/README.md#inferring-nonuniform-scheduling-from-clock-comparisons)
+in a directly testable moment form. Let `I` mark all ports incident to one
+source event, `p=E[I]`, and `Sigma=Cov(I)`. Fair repair gives
+`P=Id-diag(p)+(Sigma+p*p^T)/2` for the mean density transfer. Every event is
+present, including zero current, and ordered coincident tapes supply the
+index. The optical module checks this identity on all 3,960 native branches;
+no stationary load preparation or second field rate is needed. For a fixed
+window of N IID events, estimate `Q=E[I I^T]`, reusing its diagonal for p.
+Chebyshev on its 78 distinct entries gives operator error at most `6*delta`
+with failure at most `78/(4*N*delta^2)`. This is a finite sampling certificate
+for the existing clock-to-field correspondence, not an independent physical
+derivation. Public ratio files lack these joint clock/occupation records.
 
 The protocol uses event order: preparation, one repair, then readout. It
 requires no conversion of a solver counter to physical seconds. A laboratory

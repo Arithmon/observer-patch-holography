@@ -95,6 +95,16 @@ commutators also vanish. These statements identify why the current
 unconditioned reference does not supply a quantum vacuum. The Gaussian
 wave ensemble has covariance `A^-1`, with no atomic-clock identification.
 
+The [quantum fluctuation encoding](REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
+connects those frequencies to the existing source-coded Pauli controls.
+A finite pointer execution distinguishes ordered Weyl products, including
+their imaginary phase. Independently prepared polarized copies have a
+conditional CCR free-field limit in the active incident-clock dictionary.
+The preparation and spectral encoding are explicit services; passive repair
+has not selected that quantum state. The fractional classical covariance
+alone supplies no CCR, and removing the constant mode restricts the
+comparison-cone statement to suitable mean-zero local tests.
+
 ## The common observer contract
 
 This is a classical recorded branch of the
@@ -594,14 +604,22 @@ claimed. The construction changes none of the retained laboratory fits.
 The collective continuum readouts use full initial occupations and the
 current tape, beyond the earlier local four-bit access contract. Their
 common operator closes the spatial and temporal limit connection for this
-declared source. Its comparison wave support cone is controlled; a physical
-metric, relativistic causal identification and empirical identification
-require separate observable relations.
+declared source. Applying the static fractional filter `A^(1/4)` to the
+synthesized wave field produces `W_{1/4}(t)=A^(1/4)W(t)` with two-time
+covariance `A^(-1/2)cos((t-u)sqrt(A))=G^(1/2)cos((t-u)sqrt(A))`, canonical
+mode-by-mode kinetic/potential energy equipartition, continuous sample-path
+tightness in `C([0,T],H^-s(S2))` for every `s>=7/4` (including `H^-2(S2)`),
+and a Pauli-Jordan commutator kernel `D(t-u)=A^(-1/2)sin((t-u)sqrt(A))`
+that vanishes outside the comparison wave support cone `d_comp <= |t-u|/sqrt(2)`.
+A physical metric, relativistic causal identification, coherent quantum
+vacuum preparation, and empirical identification require separate observable
+relations.
 
 Reproduce the complete packet with:
 
 ```sh
 python -m model.observer_time_fields --check model/observer_time_fields/results.json
 python -m model.observer_time_fields.refinement --check model/observer_time_fields/refinement_results.json
+python -m model.observer_time_fields.continuum_dynamics --check model/observer_time_fields/continuum_dynamics_results.json
 python -m pytest -q -W error model/observer_time_fields
 ```

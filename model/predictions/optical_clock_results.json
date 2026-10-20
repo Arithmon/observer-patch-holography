@@ -73,6 +73,77 @@
     ],
     "schema": "oph.optical_clock.public_summary.v1"
   },
+  "density_continuum_clock_normalization": {
+    "examples": [
+      {
+        "degree": 5,
+        "incident_probability": "1/126",
+        "level": 0,
+        "mean_incident_ticks_per_density_continuum_unit": "10",
+        "native_attempts_per_density_continuum_unit": 1260,
+        "source_seams": 630
+      },
+      {
+        "degree": 6,
+        "incident_probability": "1/105",
+        "level": 0,
+        "mean_incident_ticks_per_density_continuum_unit": "12",
+        "native_attempts_per_density_continuum_unit": 1260,
+        "source_seams": 630
+      },
+      {
+        "degree": 5,
+        "incident_probability": "1/504",
+        "level": 1,
+        "mean_incident_ticks_per_density_continuum_unit": "40",
+        "native_attempts_per_density_continuum_unit": 20160,
+        "source_seams": 2520
+      },
+      {
+        "degree": 6,
+        "incident_probability": "1/420",
+        "level": 1,
+        "mean_incident_ticks_per_density_continuum_unit": "48",
+        "native_attempts_per_density_continuum_unit": 20160,
+        "source_seams": 2520
+      },
+      {
+        "degree": 5,
+        "incident_probability": "1/2016",
+        "level": 2,
+        "mean_incident_ticks_per_density_continuum_unit": "160",
+        "native_attempts_per_density_continuum_unit": 322560,
+        "source_seams": 10080
+      },
+      {
+        "degree": 6,
+        "incident_probability": "1/1680",
+        "level": 2,
+        "mean_incident_ticks_per_density_continuum_unit": "192",
+        "native_attempts_per_density_continuum_unit": 322560,
+        "source_seams": 10080
+      }
+    ],
+    "mean_fixed_port_ticks_per_coordinate_unit": "2*d*4**l",
+    "physical_seconds_per_coordinate_unit_calibrated": false,
+    "primitive_renewal_coefficient_for_equal_degree_adjacent_ports": "2-2/d"
+  },
+  "finite_memory_servo_hypothesis": {
+    "A_ticks_equally_spaced_in_declared_calendar_coordinate": true,
+    "actual_atomic_servo_dictionary_established": false,
+    "all_outside_interior_tick_increments_conditioned_on": true,
+    "conditional_blocks_independent_with_arbitrary_outside_shifts": true,
+    "deterministic_filter_fixed_before_data": true,
+    "eight_published_servo_outputs_establish_independent_native_replicas": false,
+    "filter": "linear causal nonnegative unit-integral impulse response",
+    "impulse_response_support_seconds": [
+      0,
+      30
+    ],
+    "independent_identically_distributed_native_replicas": 8,
+    "published_servo_time_constant_establishes_compact_support": false,
+    "replica_outputs_averaged_with_equal_weights": true
+  },
   "hypothesis": {
     "A_ticks_per_block": "one fixed integer N in the frequency interval times 300 seconds",
     "absolute_ratio_error_per_block_upper": "1/1000000000000",
@@ -91,6 +162,47 @@
     "searches_outside_declared_calendar_year_covered": false,
     "window_endpoints_and_retained_count_selection_charged_within_calendar_year": 2021
   },
+  "joint_clock_field_constraint": {
+    "clock_covariance_by_pair": {
+      "distinct_nonseam": "-1/36",
+      "same": "5/36",
+      "seam": "1/180"
+    },
+    "clock_tick": "every incident event including zero current",
+    "complete_clock_coincidence_access_and_fair_repair_required": true,
+    "event_order": "ordered union of all coincident incident-clock tapes",
+    "finite_sample_example": {
+      "IID_seam_events_and_fixed_unselected_window_required": true,
+      "complete_union_events": 3900000,
+      "density_transfer_operator_error_upper": "3/50",
+      "failure_probability_upper": "1/20",
+      "second_moment_entry_tolerance": "1/100",
+      "stationary_density_preparation_needed_for_mean_transfer": false
+    },
+    "mean_transfer_from_clock_moments": "P=Id-diag(p)+(Sigma+p*p^T)/2",
+    "native_binary_histories_checked": 3960,
+    "port_mean_tick_probability": [
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6",
+      "1/6"
+    ],
+    "public_optical_ratio_files_supply_these_joint_records": false,
+    "recovered_density_transfer_by_pair": {
+      "distinct_nonseam": "0",
+      "same": "11/12",
+      "seam": "1/60"
+    },
+    "second_field_rate_fitted": false
+  },
   "measurement_protocol": "https://arxiv.org/abs/2205.13053",
   "predicted_relative_variance_per_N_A_ticks": {
     "adjacent": "8/(5*N)",
@@ -99,6 +211,68 @@
   "public_dataset": "https://zenodo.org/records/6901524",
   "reference_frequency": "https://arxiv.org/abs/2010.06620",
   "schema": "oph.optical_clock.direct_attachment.v1",
+  "servo_and_refinement_tests": [
+    {
+      "adjacent_complete_block_pairs": 89,
+      "adjacent_to_observed_Allan_variance_ratio_floor": 2544097785170,
+      "binary_power_per_retained_draw": 4,
+      "calendar_and_count_selection_union_budget": 1161598537728000,
+      "causal_servo_memory_seconds_upper": 30,
+      "complete_blocks": 120,
+      "conservative_probability_upper_power_of_ten": -123,
+      "continuum_refinement_level_inferred_from_public_data": false,
+      "file": "36ar_yb_ratio.txt",
+      "interior_A_ticks_lower_per_replica": 173372804128613880,
+      "interior_count_interval_width_upper": 3104149,
+      "interior_uncontaminated_seconds_per_block": 270,
+      "interval_occupancy_union_base_upper": "174846000/2860133873",
+      "moment_matching_independent_native_replica_count_lower": 2544097785171,
+      "moment_matching_unfiltered_A_tick_frequency_Hz_lower": 1633619877749338969258995822,
+      "moment_target_requires_unfiltered_zero_error_population_variance_matching": true,
+      "nonadjacent_to_observed_Allan_variance_ratio_floor": 3180122231462,
+      "observed_nonoverlapping_Allan_variance": "421329932179470338877063637500312000/129054928556093177628529488063064196883011514353414596094498559401",
+      "observed_ratio_range": "1425293886457181/100000000000000000000000000000",
+      "possible_calendar_blocks": 461,
+      "probability_upper_form": "min(1,535496925892608000*2^(-476))",
+      "replicas_tested": 8,
+      "sample_Allan_value_is_a_population_upper_confidence_bound": false,
+      "servo_filtered_multi_replica_attachment_rejected_at_one_percent": true,
+      "single_block_conditional_interval_mass_upper": "886900/168243169",
+      "single_carrier_adjacent_Allan_variance_lower": "1/120397780644871125",
+      "single_carrier_nonadjacent_Allan_variance_lower": "1/96318224515896900",
+      "total_interior_A_ticks_lower": 1386982433028911040
+    },
+    {
+      "adjacent_complete_block_pairs": 136,
+      "adjacent_to_observed_Allan_variance_ratio_floor": 2407037601662,
+      "binary_power_per_retained_draw": 0,
+      "calendar_and_count_selection_union_budget": 1161598537728000,
+      "causal_servo_memory_seconds_upper": 30,
+      "complete_blocks": 210,
+      "conservative_probability_upper_power_of_ten": -38,
+      "continuum_refinement_level_inferred_from_public_data": false,
+      "file": "40ar_yb_ratio.txt",
+      "interior_A_ticks_lower_per_replica": 173372804128613880,
+      "interior_count_interval_width_upper": 3098696,
+      "interior_uncontaminated_seconds_per_block": 270,
+      "interval_occupancy_union_base_upper": "18531093402/35162822321",
+      "moment_matching_independent_native_replica_count_lower": 2407037601663,
+      "moment_matching_unfiltered_A_tick_frequency_Hz_lower": 1545610587567543467906125001,
+      "moment_target_requires_unfiltered_zero_error_population_variance_matching": true,
+      "nonadjacent_to_observed_Allan_variance_ratio_floor": 3008797002078,
+      "observed_nonoverlapping_Allan_variance": "2412053281472473937229397185268675/699017829303917203238356170350749901769191449880743888675551531",
+      "observed_ratio_range": "5357299334991/500000000000000000000000000",
+      "possible_calendar_blocks": 6978,
+      "probability_upper_form": "min(1,8105634596265984000*2^(-193))",
+      "replicas_tested": 8,
+      "sample_Allan_value_is_a_population_upper_confidence_bound": false,
+      "servo_filtered_multi_replica_attachment_rejected_at_one_percent": true,
+      "single_block_conditional_interval_mass_upper": "885342/168243169",
+      "single_carrier_adjacent_Allan_variance_lower": "1/120397780644871125",
+      "single_carrier_nonadjacent_Allan_variance_lower": "1/96318224515896900",
+      "total_interior_A_ticks_lower": 1386982433028911040
+    }
+  ],
   "source_sha256": {
     "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
@@ -183,7 +357,7 @@
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/data/optical_clock_summary.json": "e7b5c5f795729e7c9b162bab696903a3b8a293a681d94aad583f74d263eef2ea",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
-    "model/predictions/optical_clock.py": "76e00f870aecee8832e285b5fa46b6916e4ea5ac522a88aef40b94bd61d833be",
+    "model/predictions/optical_clock.py": "2a880adb587a3ab1888be2d226463b2ba936cc62df07eb0f8513854d81797809",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",

@@ -242,13 +242,34 @@ block sizes, nonuniform schedulers or other readout mechanisms remains outside
 these tests.
 
 This rejects the **direct attachment together with its readout assumptions**.
-The [experiment](https://arxiv.org/abs/2205.13053) uses interrogations, servos
-and frequency combs; the published readout averages eight servo outputs and
-has an approximately 30-second servo time. Their action is not included in
-the direct-counter hypotheses. The result does not reject every OPH clock, establish an
-atomic-transition derivation or distinguish OPH from SM + GR. It is a
-retrospective constraint on a precise simple identification. Defining a
-native clock remains legitimate even when that identification fails.
+A separate eight-replica extension assumes independent native sources,
+equally spaced A ticks in the declared calendar coordinate, and a fixed
+causal, nonnegative, unit-integral linear filter with compact support
+`[0,30 s]`. Conditioning on all noninterior increments leaves independent
+`[0,270 s]` innovations, giving bounds `10^-123`, `10^-38` for primitive
+ports and `10^-123`, `10^-25` for the regional family (36Ar, 40Ar). The
+[experiment](https://arxiv.org/abs/2205.13053) reports eight servo outputs
+and a roughly 30-second response time constant. Neither establishes
+independent native sources or compact filter support. The extension tests
+its explicit readout hypothesis, not the actual atomic servo transfer.
+
+Equating the unfiltered, zero-error population Allan variance to the sample
+value gives moment targets of about `2.54e12`, `2.41e12` independent primitive
+replicas, or `5.30e10`, `5.01e10` at the thirty-seam regional floor. These are
+not empirical confidence bounds or inferred atom counts. No continuum level
+is identified: a fixed degree-d port in the refining source has expected
+`2*d*4^l` incidents per density-continuum unit, and no seconds calibration
+has been fixed. The finite regional floor also depends on its thirty-seam
+source. These retrospective comparisons establish neither an atomic
+transition nor an OPH distinction from SM + GR.
+
+The same-source clock/field constraint is `P=Id-diag(p)+(Sigma+p*p^T)/2`,
+where p and Sigma are incident-indicator means and covariances. This reuses
+the finite pair-incidence reconstruction and is checked against every native
+branch. A fixed N-event IID window supplies operator uncertainty `6*delta`
+with failure at most `78/(4*N*delta^2)`. It uses complete coincident clock
+tapes and predicts the fair-repair density response without a second fitted
+rate. These public optical ratios do not supply that joint measurement.
 
 ```sh
 python -m model.predictions.optical_clock --check model/predictions/optical_clock_results.json

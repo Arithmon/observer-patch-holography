@@ -6,8 +6,14 @@
       "20": "13/16777216",
       "4": "3328"
     },
+    "Steklov_boundary_covariance_tail_squared_upper": {
+      "0": "624",
+      "20": "39/68719476736",
+      "4": "39/16"
+    },
     "coarse_projection_energy_multiplier": "624*4^(-k)",
     "continuum_form_comparison_on_H1": "a^2/112*integral|grad f|^2 <= E(f) <= a^2/48*integral|grad f|^2",
+    "continuum_green_loewner_enclosure": "38/43*G_iso <= G <= 48/43*G_iso",
     "continuum_positive_eigenvalue_enclosures": {
       "1": {
         "lower": "1/49920",
@@ -44,6 +50,7 @@
       "20": "1/2199023255552",
       "4": "1/512"
     },
+    "harmonic_mean_reference_conductance": "30/43",
     "interpolation_gradient_squared_upper": "112/a^2*E_l(f_l)",
     "interpolation_mass_error_upper": "20/(3*4^l)*E_l(f_l)",
     "macroscopic_separation_one_quarter_action_base_two_exponents": {
@@ -55,11 +62,14 @@
     "mean_zero_heat_trace_upper": "1/(exp(t/49920)-1), t>0",
     "patch_variance_energy_multiplier": "26*4^(l-k)",
     "separated_cell_support_bilinear_action": "4^l*2^(-d)*||u||*||v||, d>=1",
+    "uniform_weighted_to_isotropic_relative_green_error_upper": "5/43",
     "weighted_dual_Green_difference_upper": {
       "0": "182",
       "20": "91/524288",
       "4": "91/8"
-    }
+    },
+    "weighted_to_isotropic_green_loewner_enclosure": "38/43*G_l^iso <= G_l^w <= 48/43*G_l^iso",
+    "weighted_to_isotropic_laplacian_loewner_enclosure": "43/48*L_l^iso <= L_l^w <= 43/38*L_l^iso"
   },
   "contract": {
     "limit": "the same common spatial subsequence as the native Green field",
@@ -265,6 +275,116 @@
     "level": 0,
     "ports": 240
   },
+  "isotropic_comparison_controls": [
+    {
+      "all_edge_conductance_slacks_nonnegative": true,
+      "all_level_loewner_sandwich_certified": true,
+      "arithmetic_mean_conductance": "4806387/6976970",
+      "cells": 20,
+      "conductance_lower": "5/8",
+      "conductance_upper": "15/19",
+      "continuum_green_loewner_sandwich_certified": true,
+      "dual_edges": 30,
+      "exact_conductance_histogram": {
+        "12/17": 8,
+        "15/22": 10,
+        "30/41": 4,
+        "60/91": 8
+      },
+      "exact_continuum_metric_isotropy_proved": false,
+      "exact_rational_level_zero_loewner_LDL_pivots": 19,
+      "green_loewner_lower_multiplier": "38/43",
+      "green_loewner_upper_multiplier": "48/43",
+      "green_lower_slack_min_eigenvalue": 0.3623307261215064,
+      "green_upper_slack_min_eigenvalue": 0.26530283896896845,
+      "harmonic_mean_reference_conductance": "30/43",
+      "laplacian_loewner_lower_multiplier": "43/48",
+      "laplacian_loewner_upper_multiplier": "43/38",
+      "laplacian_lower_slack_min_eigenvalue": 0.00286047009847822,
+      "laplacian_upper_slack_min_eigenvalue": 0.005523809351623252,
+      "level": 0,
+      "min_lower_edge_slack": "25/728",
+      "min_upper_edge_slack": "45/779",
+      "native_to_isotropic_green_norm_difference_diagnostic": 0.4545307133626696,
+      "native_to_isotropic_green_norm_difference_upper": 184.6180339887499,
+      "relative_green_norm_difference_diagnostic": 0.0379665865769598,
+      "uniform_relative_green_error_bound_certified": true,
+      "uniform_relative_green_error_upper": "5/43"
+    },
+    {
+      "all_edge_conductance_slacks_nonnegative": true,
+      "all_level_loewner_sandwich_certified": true,
+      "arithmetic_mean_conductance": "18159/26488",
+      "cells": 80,
+      "conductance_lower": "5/8",
+      "conductance_upper": "15/19",
+      "continuum_green_loewner_sandwich_certified": true,
+      "dual_edges": 120,
+      "exact_conductance_histogram": {
+        "15/22": 76,
+        "30/43": 16,
+        "5/7": 20,
+        "5/8": 8
+      },
+      "exact_continuum_metric_isotropy_proved": false,
+      "exact_rational_level_zero_loewner_LDL_pivots": 19,
+      "green_loewner_lower_multiplier": "38/43",
+      "green_loewner_upper_multiplier": "48/43",
+      "green_lower_slack_min_eigenvalue": 0.08974932127089959,
+      "green_upper_slack_min_eigenvalue": 0.040516936313807254,
+      "harmonic_mean_reference_conductance": "30/43",
+      "laplacian_loewner_lower_multiplier": "43/48",
+      "laplacian_loewner_upper_multiplier": "43/38",
+      "laplacian_lower_slack_min_eigenvalue": 0.0005936620122208219,
+      "laplacian_upper_slack_min_eigenvalue": 0.0014723562405344081,
+      "level": 1,
+      "min_lower_edge_slack": "0",
+      "min_upper_edge_slack": "10/133",
+      "native_to_isotropic_green_norm_difference_diagnostic": 0.5846046772230293,
+      "native_to_isotropic_green_norm_difference_upper": 93.74898866386536,
+      "relative_green_norm_difference_diagnostic": 0.03052897769671855,
+      "uniform_relative_green_error_bound_certified": true,
+      "uniform_relative_green_error_upper": "5/43"
+    },
+    {
+      "all_edge_conductance_slacks_nonnegative": true,
+      "all_level_loewner_sandwich_certified": true,
+      "arithmetic_mean_conductance": "64273453/93668190",
+      "cells": 320,
+      "conductance_lower": "5/8",
+      "conductance_upper": "15/19",
+      "continuum_green_loewner_sandwich_certified": true,
+      "dual_edges": 480,
+      "exact_conductance_histogram": {
+        "15/22": 292,
+        "15/23": 28,
+        "3/4": 8,
+        "30/41": 44,
+        "30/43": 28,
+        "5/7": 48,
+        "5/8": 32
+      },
+      "exact_continuum_metric_isotropy_proved": false,
+      "exact_rational_level_zero_loewner_LDL_pivots": 19,
+      "green_loewner_lower_multiplier": "38/43",
+      "green_loewner_upper_multiplier": "48/43",
+      "green_lower_slack_min_eigenvalue": 0.016652265034831786,
+      "green_upper_slack_min_eigenvalue": 0.008571730195657741,
+      "harmonic_mean_reference_conductance": "30/43",
+      "laplacian_loewner_lower_multiplier": "43/48",
+      "laplacian_loewner_upper_multiplier": "43/38",
+      "laplacian_lower_slack_min_eigenvalue": 0.0001567614919176642,
+      "laplacian_upper_slack_min_eigenvalue": 0.00033561666507358784,
+      "level": 2,
+      "min_lower_edge_slack": "0",
+      "min_upper_edge_slack": "3/76",
+      "native_to_isotropic_green_norm_difference_diagnostic": 0.7286826132307423,
+      "native_to_isotropic_green_norm_difference_upper": 48.26001947335421,
+      "relative_green_norm_difference_diagnostic": 0.032152002511539726,
+      "uniform_relative_green_error_bound_certified": true,
+      "uniform_relative_green_error_upper": "5/43"
+    }
+  ],
   "mean_elimination_control": {
     "cells": [
       5,
@@ -501,7 +621,7 @@
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",
     "model/physical_space_time/continuum_field.py": "822efc9ecf8cc626fc152b0ada5739769d075c639cf245543a6d6123f6d2a7d4",
-    "model/physical_space_time/local_continuum.py": "b71c7892777dd6a809b881f292d4316c916af07a057219357d4610fea9223cae",
+    "model/physical_space_time/local_continuum.py": "d68d4db5e9289e96192e5144ee79ad8ab33f09254c766eb21eb7560fbee19f22",
     "model/physical_space_time/source_green.py": "cb501e86b56c1368970c422b6df9a949879c840c07caf0bd2ca843d54eefbc66",
     "model/physical_space_time/uniform_green.py": "8a99be41695b3a1a791487d941c448e65d8ddc4926d03e83d8297b7235b051a8",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
@@ -520,6 +640,155 @@
     "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
   },
+  "steklov_bulk_extension_controls": [
+    {
+      "A_quarter_spectral_filter_identity_error": 7.600559277268754e-15,
+      "boundary_steklov_energy_denman_beavers": 0.43102080309334834,
+      "boundary_steklov_energy_spectral": 0.4310208030933482,
+      "boundary_trace_achieved_by_A_quarter_spectral_filter": true,
+      "cells": 20,
+      "compactness_tail_controls": [
+        {
+          "coarse_level": 0,
+          "energy_tail_squared_upper": "624",
+          "green_tail_squared_upper": "851968",
+          "sandwiched_green_tail_norm_diagnostic": 0.0,
+          "sqrt_green_tail_norm_squared_diagnostic": 0.0
+        }
+      ],
+      "denman_beavers_vs_spectral_error": 6.64527799740805e-15,
+      "dirichlet_energy_quadrature_error": 2.933764342571976e-13,
+      "identifies_limit_with_round_sphere": false,
+      "identifies_physical_radial_bulk_coordinate": false,
+      "level": 0,
+      "polarized_bilinear_form_error": 1.3197776205231548e-13,
+      "quadrature_dirichlet_energy_diagnostic": 0.4310208030936417,
+      "quadrature_nodes": 64,
+      "radial_bulk_energy_diagnostic": 0.21551040154682083,
+      "radial_tangential_equipartition_error": 5.551115123125783e-17,
+      "round_sphere_vs_ball_symbol_bounds": {
+        "sampled_degrees": [
+          {
+            "degree": 1,
+            "squared_symbol_ratio_exact": "1/2",
+            "symbol_difference_diagnostic": 0.41421356237309515
+          },
+          {
+            "degree": 2,
+            "squared_symbol_ratio_exact": "2/3",
+            "symbol_difference_diagnostic": 0.4494897427831779
+          },
+          {
+            "degree": 4,
+            "squared_symbol_ratio_exact": "4/5",
+            "symbol_difference_diagnostic": 0.4721359549995796
+          },
+          {
+            "degree": 8,
+            "squared_symbol_ratio_exact": "8/9",
+            "symbol_difference_diagnostic": 0.48528137423856954
+          },
+          {
+            "degree": 16,
+            "squared_symbol_ratio_exact": "16/17",
+            "symbol_difference_diagnostic": 0.49242250247064234
+          },
+          {
+            "degree": 32,
+            "squared_symbol_ratio_exact": "32/33",
+            "symbol_difference_diagnostic": 0.4961536185438433
+          }
+        ],
+        "squared_symbol_ratio_lower": "1/2",
+        "squared_symbol_ratio_strict_upper": "1",
+        "symbol_difference_degree_one_exact": "sqrt(2)-1",
+        "symbol_difference_strict_lower": "0",
+        "symbol_difference_strict_upper": "1/2"
+      },
+      "square_root_sqrt_difference_analytic_upper": 13.490737563232042,
+      "square_root_sqrt_difference_diagnostic": 0.14555388114730175,
+      "square_root_sqrt_difference_upper_from_green": 0.952871074102635,
+      "tangential_bulk_energy_diagnostic": 0.21551040154682088,
+      "unfiltered_boundary_trace_of_smooth_3d_local_ball_action": false
+    },
+    {
+      "A_quarter_spectral_filter_identity_error": 3.784898100352175e-14,
+      "boundary_steklov_energy_denman_beavers": 0.8690898139590865,
+      "boundary_steklov_energy_spectral": 0.8690898139590866,
+      "boundary_trace_achieved_by_A_quarter_spectral_filter": true,
+      "cells": 80,
+      "compactness_tail_controls": [
+        {
+          "coarse_level": 0,
+          "energy_tail_squared_upper": "624",
+          "green_tail_squared_upper": "851968",
+          "sandwiched_green_tail_norm_diagnostic": 4.326621200762504,
+          "sqrt_green_tail_norm_squared_diagnostic": 4.326621200762503
+        },
+        {
+          "coarse_level": 1,
+          "energy_tail_squared_upper": "156",
+          "green_tail_squared_upper": "212992",
+          "sandwiched_green_tail_norm_diagnostic": 0.0,
+          "sqrt_green_tail_norm_squared_diagnostic": 0.0
+        }
+      ],
+      "denman_beavers_vs_spectral_error": 1.523150670314752e-14,
+      "dirichlet_energy_quadrature_error": 5.651035195342047e-14,
+      "identifies_limit_with_round_sphere": false,
+      "identifies_physical_radial_bulk_coordinate": false,
+      "level": 1,
+      "polarized_bilinear_form_error": 3.99333344169861e-15,
+      "quadrature_dirichlet_energy_diagnostic": 0.869089813959143,
+      "quadrature_nodes": 64,
+      "radial_bulk_energy_diagnostic": 0.43454490697957154,
+      "radial_tangential_equipartition_error": 1.6653345369377348e-16,
+      "round_sphere_vs_ball_symbol_bounds": {
+        "sampled_degrees": [
+          {
+            "degree": 1,
+            "squared_symbol_ratio_exact": "1/2",
+            "symbol_difference_diagnostic": 0.41421356237309515
+          },
+          {
+            "degree": 2,
+            "squared_symbol_ratio_exact": "2/3",
+            "symbol_difference_diagnostic": 0.4494897427831779
+          },
+          {
+            "degree": 4,
+            "squared_symbol_ratio_exact": "4/5",
+            "symbol_difference_diagnostic": 0.4721359549995796
+          },
+          {
+            "degree": 8,
+            "squared_symbol_ratio_exact": "8/9",
+            "symbol_difference_diagnostic": 0.48528137423856954
+          },
+          {
+            "degree": 16,
+            "squared_symbol_ratio_exact": "16/17",
+            "symbol_difference_diagnostic": 0.49242250247064234
+          },
+          {
+            "degree": 32,
+            "squared_symbol_ratio_exact": "32/33",
+            "symbol_difference_diagnostic": 0.4961536185438433
+          }
+        ],
+        "squared_symbol_ratio_lower": "1/2",
+        "squared_symbol_ratio_strict_upper": "1",
+        "symbol_difference_degree_one_exact": "sqrt(2)-1",
+        "symbol_difference_strict_lower": "0",
+        "symbol_difference_strict_upper": "1/2"
+      },
+      "square_root_sqrt_difference_analytic_upper": 9.539392014169456,
+      "square_root_sqrt_difference_diagnostic": 0.09430622126950733,
+      "square_root_sqrt_difference_upper_from_green": 0.6080117079396209,
+      "tangential_bulk_energy_diagnostic": 0.4345449069795714,
+      "unfiltered_boundary_trace_of_smooth_3d_local_ball_action": false
+    }
+  ],
   "terminal_star_control": {
     "all_exact_terminal_Dirichlet_forms_and_harmonic_lifts_checked": true,
     "resistance_by_native_hop_distance": {
@@ -582,6 +851,7 @@
     "weighted_dual_conductance_upper": "15/19"
   },
   "theorem": {
+    "all_level_isotropic_conductance_loewner_sandwich_and_five_forty_thirds_relative_bound": true,
     "common_Green_subsequence_converges_in_operator_norm": true,
     "continuous_piecewise_affine_functions_are_a_regular_form_core": true,
     "exact_intrinsic_metric_identified": false,
@@ -594,7 +864,9 @@
     "limit_identified_as_round_sphere_Laplacian": false,
     "limit_is_compact_positive_and_injective_on_mean_zero_L2": true,
     "limit_is_conservative_strongly_local_Dirichlet_form": true,
+    "radial_Poisson_Steklov_half_cylinder_extension_has_boundary_form_A_half": true,
     "same_dictionary_scaled_compact_smooth_second_order_three_dimensional_elliptic_identification_excluded": true,
+    "steklov_boundary_trace_covariance_is_G_half_via_A_quarter_spectral_filter": true,
     "three_dimensional_space_or_Lorentzian_metric_derived": false,
     "unique_whole_sequence_generator_selected": false,
     "weighted_dual_graph_reproduces_finite_native_repair_histories": false
@@ -659,4 +931,3 @@
     }
   ]
 }
-
