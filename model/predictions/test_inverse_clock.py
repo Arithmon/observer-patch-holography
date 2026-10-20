@@ -203,6 +203,92 @@ def test_replay_complete_coherent_predictions_and_scope():
     assert not result['scope']['native_C_E_instrument_identified_from_classical_bits']
 
 
+@pytest.mark.parametrize('parameter,heralds', [
+    (F(0), 1), (F(1, 30), 1), (F(1, 30), 2), (F(1, 30), 100),
+    (F(1), 30), (F(1), 1000), (F(7), 210),
+])
+def test_lazy_filter_gibbs_limit_bounds_state_and_free_entropy(parameter, heralds):
+    import numpy as np
+    bound = m.edge_gibbs_bound(parameter, heralds)
+    eigenvalues = np.array([0., 5-np.sqrt(5), 6., 5+np.sqrt(5)])
+    dimensions = np.array([1, 3, 5, 3])
+    t = float(parameter)
+    log_finite = 2*heralds*np.log1p(-t*eigenvalues/(2*heralds))
+    weights, target = dimensions*np.exp(log_finite), dimensions*np.exp(-t*eigenvalues)
+    success = weights.sum()/12
+    state, gibbs = weights/weights.sum(), target/target.sum()
+    entropy = -sum(state*np.log(state/dimensions))
+    energy = state@eigenvalues
+    deficit = np.log(target.sum())-(entropy-t*energy)
+    relative_entropy = state@np.log(state/gibbs)
+    assert success >= float(bound['all_success_probability_lower'])
+    assert 0 <= np.max(-log_finite-t*eigenvalues) <= float(bound['spectral_log_error_upper'])+1e-13
+    gap_errors = -log_finite-t*eigenvalues
+    assert np.ptp(gap_errors) <= float(bound['spectral_log_error_upper'])+1e-13
+    assert sum(abs(state-gibbs))/2 <= float(bound['trace_distance_to_edge_Gibbs_upper'])+1e-13
+    assert abs(deficit-relative_entropy) <= 1e-13
+    assert -1e-13 <= deficit <= float(bound['free_entropy_deficit_upper'])+1e-13
+    assert not bound['physical_seconds_or_modular_time']
+
+
+def test_prepared_edge_reference_is_coherent_and_keeps_every_herald_failure():
+    row = m.prepared_edge_gibbs()
+    assert row['executed_full_register_input_columns'] == 12
+    assert row['sector_dimensions'] == [1, 3, 5, 3]
+    assert row['representation_algebra_dimension'] == 44
+    outcomes = row['retained_first_failure_and_success_probabilities']
+    assert all(0 < p < 1 for p in outcomes)
+    assert sum(outcomes) == 1
+    assert row['normalized_success_matrix_element_0_1'] > 0
+    assert row['normalized_success_purity'] > F(1, 12)
+    readout = row['coherence_readout']
+    assert len(readout['ideal_unnormalized_address_probabilities']) == 16
+    assert sum(readout['ideal_unnormalized_address_probabilities']) == outcomes[-1]
+    assert readout['normalized_zero_minus_one_contrast'] == F(260343, 43825510)
+    assert readout['dephased_input_contrast'] == 0
+    assert not readout['sector_projector_detector_compiled']
+    assert row['one_filter_resources']['maximum_work_qubits'] == 15
+    assert row['one_filter_resources']['service_failure_outcomes_retained']
+    assert not row['event_or_scratch_failure_outputs_discarded_from_total_probability']
+    assert not row['native_passive_equilibrium_prepares_this_state']
+    assert not row['edge_and_wave_modular_generators_identified']
+    assert not row['full_group_regular_or_compact_group_sewing_established']
+
+
+def test_gibbs_family_rejects_nonprobabilistic_and_nonexact_preparations():
+    for args in ((True, 1), (0.1, 1), (F(-1), 30), (F(1), 29),
+                 (F(1, 30), True), (F(1, 30), 0)):
+        with pytest.raises(ValueError):
+            m.edge_gibbs_bound(*args)
+
+
+def test_edge_sector_thermal_ratios_do_not_share_the_wave_square_root_clock():
+    import numpy as np
+    bands = np.array([5-np.sqrt(5), 6., 5+np.sqrt(5)])
+    # A common scale would require lambda_j = b*sqrt(lambda_j) for all j.
+    assert np.ptp(bands/np.sqrt(bands)) > .5
+    # Multiplicity-free trace weights differ from regular-group d_R^2 weights.
+    dimensions = np.array([1, 3, 5, 3])
+    assert dimensions.sum() == 12
+    assert (dimensions**2).sum() == 44 < 60
+    assert not np.allclose(dimensions/12, dimensions**2/44)
+
+
+def test_edge_gibbs_is_central_on_group_image_but_not_on_full_register_algebra():
+    import numpy as np
+    from ..common_source.slow_geometry import source
+    laplacian = np.zeros((12, 12), dtype=int)
+    for a, b in m.continuation.quantum_mixing.seams():
+        laplacian[a, a] += 1; laplacian[b, b] += 1
+        laplacian[a, b] -= 1; laplacian[b, a] -= 1
+    for rotation in source().rotations():
+        matrix = np.eye(12, dtype=int)[:, rotation]
+        assert np.array_equal(laplacian@matrix, matrix@laplacian)
+    observable = np.zeros((12, 12), dtype=int)
+    observable[0, 1] = observable[1, 0] = 1
+    assert np.linalg.norm(laplacian@observable-observable@laplacian) > 0
+
+
 def test_all_repo_local_runtime_imports_are_pinned():
     script = '''
 import json, sys

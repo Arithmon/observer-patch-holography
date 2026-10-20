@@ -1106,6 +1106,11 @@ def fractional_wave_bounds(level=0, T=F(1), steps=4, cutoff=2, s=F(2)):
         'restored_zero_mode_kernel': 'D_bar(t)=D_perp(t)+t P_const'}
 
 
+def _source_dyadic_scalar(expression):
+    """Pin transcendental input at 80 digits before rounding to the source grid."""
+    return F(int(sp.floor(sp.N(expression, 80)*(1 << 44)+sp.Rational(1, 2))), 1 << 44)
+
+
 def spin_weyl_word(vectors, copies=1, controlled=False):
     """Existing source pulses for ordered exp(i(s Q_N+t P_N)) products.
 
@@ -1123,13 +1128,12 @@ def spin_weyl_word(vectors, copies=1, controlled=False):
     # execute applies later pulses on the left; mathematical products retain
     # the caller's order. No reset, projection, or state normalization enters.
     for sx, sy in reversed(vectors):
-        radius, azimuth = math.hypot(sx, sy), math.atan2(sy, sx)
+        x, y = sp.Rational(float(sx)), sp.Rational(float(sy))
+        azimuth = sp.atan2(y, x) if x or y else sp.Integer(0)
+        angles = (float(_source_dyadic_scalar(azimuth/2)),
+                  float(_source_dyadic_scalar(sp.sqrt((x*x+y*y)/(2*copies)))))
         for target in range(copies):
-            for kind, angle in (('Z', azimuth/2),
-                                ('X', radius/math.sqrt(2*copies)),
-                                ('Z', -azimuth/2)):
-                # A fixed dyadic tape avoids libm-last-bit changes in word hashes.
-                angle = round(angle*(1 << 44))/(1 << 44)
+            for kind, angle in (('Z', angles[0]), ('X', angles[1]), ('Z', -angles[0])):
                 if controlled:
                     width = copies+1
                     one = ['I']*width; one[target] = kind
@@ -1269,6 +1273,207 @@ def quantum_fluctuation_control():
         'physical_QFT_or_atomic_clock_identification': False}
 
 
+def thermal_clock_parameters(frequency, polarization, copies=2):
+    """Finite faithful state/clock relation in the positive-temperature branch.
+
+    Exact rational inputs describe the finite preparation and frequency;
+    logarithmic diagnostics approximate the stated exact log-ratio formula.
+    sigma_s=rho^(is) . rho^(-is)=alpha_(-beta*s), with
+    alpha_t(.)=exp(itH) . exp(-itH), H=frequency*(I-Z)/2.
+    """
+    frequency = _fraction(frequency, positive=True)
+    polarization = _fraction(polarization, positive=True)
+    copies = _int(copies, 1)
+    if not polarization < 1 or not 0 < float(polarization) < 1:
+        raise ValueError('a numerically representable faithful positive polarization required')
+    ratio = (1+polarization)/(1-polarization)
+    gap = math.log1p(float(polarization))-math.log1p(-float(polarization))
+    if not math.isfinite(float(frequency)) or float(frequency) <= 0 or gap <= 0:
+        raise ValueError('representable nonzero frequency and modular gap required')
+    return {
+        'frequency': frequency, 'polarization': polarization, 'copies': copies,
+        'ground_probability': (1+polarization)/2,
+        'excited_probability': (1-polarization)/2,
+        'modular_gap_log_ratio': str(ratio),
+        'modular_gap_diagnostic': gap,
+        'inverse_temperature_in_frequency_clock_diagnostic': gap/float(frequency),
+        'modular_parameter_per_forward_clock_unit_diagnostic': -float(frequency)/gap,
+        'canonical_quadrature_variance': 1/(2*polarization),
+        'boson_mean_occupation': (1-polarization)/(2*polarization),
+        'field_variance': 1/(2*polarization*frequency),
+        'finite_fourth_quadrature_moment': (F(3, 4)-F(1, 2*copies))/polarization**2,
+        'CCR_fourth_quadrature_moment': F(3, 4)/polarization**2}
+
+
+def _thermal_code_preparation(polarization, copies):
+    """Purify each code with a retained reference using existing source words."""
+    copies = _int(copies, 1)
+    angle = float(_source_dyadic_scalar(sp.acos(sp.sqrt((1+sp.Rational(polarization))/2))))
+    word = []
+    for j in range(copies):
+        word.append(source_compiler.pulse('Y', -angle, [j]))
+        word += source_compiler.cnot(j, copies+j)
+    return word
+
+
+def faithful_mode_source_control(frequency, inverse_temperature=F(4)):
+    """Prepare a faithful reference and read its modular/thermal field laws.
+
+    Two system codes, their two untouched purifying references, and one
+    pointer are retained. The modular algebra is the system codes, not the
+    pure state on the enlarged system-plus-reference algebra.
+    """
+    frequency = _fraction(frequency, positive=True)
+    inverse_temperature = _fraction(inverse_temperature, positive=True)
+    omega, beta = float(frequency), float(inverse_temperature)
+    polarization = _source_dyadic_scalar(sp.tanh(
+        sp.Rational(inverse_temperature)*sp.Rational(frequency)/2))
+    parameters = thermal_clock_parameters(frequency, polarization)
+    r, gap = float(polarization), parameters['modular_gap_diagnostic']
+    if abs(gap/omega-beta) > 1e-12:
+        raise ArithmeticError('prepared polarization lost its common modular clock ratio')
+    copies = 2
+    preparation = _thermal_code_preparation(polarization, copies)
+    initial = np.zeros(16, complex); initial[0] = 1
+    pure = source_compiler.execute(preparation, 4, initial)
+    amplitude = pure.reshape(4, 4)  # reference index, system index
+    reduced = amplitude.T@amplitude.conj()
+    one = np.diag([(1+r)/2, (1-r)/2])
+    target = np.kron(one, one)
+    state_error = float(np.linalg.norm(reduced-target, 2))
+    if state_error > 2e-12:
+        raise ArithmeticError('source purification did not prepare the faithful system state')
+    x = np.array([[0, 1], [1, 0]], complex)
+    y = np.array([[0, -1j], [1j, 0]], complex)
+    z = np.diag([1., -1.])
+    modular_error = 0.0
+    for s in (-.7, .2, .9):
+        modular = np.diag(np.exp(1j*s*gap*np.array([1., -1.])/2))
+        # Forward Heisenberg t=-beta*s fixes the modular sign explicitly.
+        state_unitary = source_compiler.execute(
+            [source_compiler.pulse('Z', -beta*s*omega/2, [0])], 1)
+        for observable in (x, y, z):
+            error = np.linalg.norm(modular@observable@modular.conj().T
+                         -state_unitary.conj().T@observable@state_unitary, 2)
+            modular_error = max(modular_error, float(error))
+    if modular_error > 2e-12:
+        raise ArithmeticError('source wave clock and faithful modular flow disagree')
+    unit = sp.sqrt(sp.Rational(polarization))
+    vectors = np.array([[float(sp.N(1/(2*unit), 80)), 0.],
+                        [0., float(sp.N(1/(4*unit), 80))]])
+    expected, limit = spin_weyl_expectation(vectors, copies, polarization)
+    records = {}
+    for axis in ('X', 'Y'):
+        word = preparation+[source_compiler.pulse('Y', -math.pi/4, [4])]
+        controlled = spin_weyl_word(vectors, copies, controlled=True)
+        word += source_compiler.remap(controlled, [0, 1, 4])
+        word += [source_compiler.pulse('Y' if axis == 'X' else 'X',
+                 math.pi/4 if axis == 'X' else -math.pi/4, [4])]
+        blank = np.zeros(32, complex); blank[0] = 1
+        output = source_compiler.execute(word, 5, blank)
+        probabilities = abs(output)**2
+        mean = float(sum(probabilities[:16])-sum(probabilities[16:]))
+        reference = expected.real if axis == 'X' else expected.imag
+        if abs(mean-reference) > 2e-11 or abs(sum(probabilities)-1) > 2e-11:
+            raise ArithmeticError('faithful ordered detector lost a pointer/reference outcome')
+        records[axis] = {'all_system_reference_pointer_probabilities': probabilities.tolist(),
+            'pointer_mean': mean, 'independent_finite_state_mean': reference,
+            'source_pulses': len(word),
+            'word_sha256': hashlib.sha256(json.dumps(word, sort_keys=True).encode()).hexdigest()}
+    # Finite source intervention: canonical normalization preserves response
+    # while the symmetric noise depends on the faithful polarization.
+    epsilon = 1e-3
+    kicks, means = [], []
+    for sign in (-1, 1):
+        vector = [[sign*epsilon/math.sqrt(r*omega), 0.]]
+        word = preparation+spin_weyl_word(vector, copies)
+        word += [source_compiler.pulse('Z', omega/2, [j]) for j in range(copies)]
+        word += [source_compiler.pulse('Y', math.pi/4, [j]) for j in range(copies)]
+        output = source_compiler.execute(word, 4, initial)
+        probabilities = abs(output)**2
+        readout = np.array([copies-2*(j % 4).bit_count() for j in range(16)])
+        means.append(float(probabilities@readout)/math.sqrt(2*copies*r*omega))
+        kicks.append(probabilities.tolist())
+    response = (means[1]-means[0])/(2*epsilon)
+    reference_response = math.sin(omega)/omega
+    response_budget = abs(reference_response)*epsilon**2/(3*copies*r*omega)
+    if abs(response-reference_response) > response_budget+2e-10:
+        raise ArithmeticError('thermal source kick failed its state-independent sine response')
+    def covariance(t):
+        return (np.cos(omega*t)-1j*r*np.sin(omega*t))/(2*r*omega)
+    kms_error = float(abs(covariance(.3-1j*beta)-covariance(-.3)))
+    if kms_error > 2e-12:
+        raise ArithmeticError('faithful field covariance lost its KMS boundary identity')
+    return {'state_clock_parameters': parameters,
+        'requested_common_inverse_temperature': inverse_temperature,
+        'polarization_synthesis_grid': F(1, 1 << 44),
+        'system_algebra': 'M2 tensor M2; purifying references excluded from this algebra',
+        'preparation_reduced_state_error_diagnostic': state_error,
+        'source_modular_flow_error_on_all_three_Paulis': modular_error,
+        'complete_ordered_pointer_records': records,
+        'thermal_CCR_ordered_limit': [limit.real, limit.imag],
+        'complete_minus_and_plus_kick_system_reference_probabilities': kicks,
+        'central_difference_response': response, 'sine_response': reference_response,
+        'finite_kick_error_upper': response_budget, 'KMS_two_point_boundary_error': kms_error,
+        'same_clock_thermal_and_modular_state_prepared': True,
+        'purifying_reference_algebra_has_a_faithful_global_state': False}
+
+
+def faithful_thermal_field_bound(inverse_temperature=F(4)):
+    """Trace-class bound for the mean-zero free field, using the native Weyl bound."""
+    beta = _fraction(inverse_temperature, positive=True)
+    return {'inverse_temperature': beta,
+        'one_particle_heat_trace_upper': F(99840)/beta**2,
+        'normal_ordered_Fock_log_partition_upper': F(149760)/beta**2,
+        'state': 'rho_b=Z_b^-1 exp(-b dGamma(sqrt(A))) on mean-zero Fock space',
+        'modular_flow': 'sigma_s=alpha_(-b*s) on the full encoded field algebra',
+        'faithful_normal_state_under_declared_encoding': True,
+        'zero_mode_included': False, 'spatial_patch_modular_generator_identified': False,
+        'inverse_temperature_selected_by_passive_repair': False}
+
+
+def faithful_modular_encoding_control():
+    modes = [faithful_mode_source_control(_source_dyadic_scalar(sp.acos(1-lam/60)))
+             for lam in (5-sp.sqrt(5), sp.Integer(6), 5+sp.sqrt(5))]
+    first = modes[0]['state_clock_parameters']['polarization']
+    equal_polarization_betas = [thermal_clock_parameters(
+        row['state_clock_parameters']['frequency'], first)[
+        'inverse_temperature_in_frequency_clock_diagnostic'] for row in modes]
+    if max(equal_polarization_betas)-min(equal_polarization_betas) < .5:
+        raise ArithmeticError('equal-polarization unequal-frequency countercontrol disappeared')
+    # One tick cannot distinguish modular gaps separated by 2pi, whereas
+    # equality as continuous flows does distinguish them at half a tick.
+    theta = float(modes[0]['state_clock_parameters']['frequency'])
+    alias_tick = abs(np.exp(1j*theta)-np.exp(1j*(theta+2*math.pi)))
+    alias_half = abs(np.exp(.5j*theta)-np.exp(.5j*(theta+2*math.pi)))
+    # Matching state eigenvalues alone does not match the modular action:
+    # a transverse polarization is not even stationary for the wave clock.
+    transverse_state = np.array([[1, float(first)], [float(first), 1]])/2
+    hamiltonian = np.diag([0., theta])
+    transverse_commutator = float(np.linalg.norm(
+        transverse_state@hamiltonian-hamiltonian@transverse_state, 2))
+    if transverse_commutator < .05:
+        raise ArithmeticError('off-axis state/clock countercontrol disappeared')
+    return {'finite_source_modes': modes,
+        'native_frequency_synthesis_grid': F(1, 1 << 44),
+        'equal_polarization_implied_inverse_temperatures': equal_polarization_betas,
+        'integer_tick_alias_residual': float(alias_tick),
+        'half_tick_alias_difference': float(alias_half),
+        'same_eigenvalues_transverse_state_clock_commutator_norm': transverse_commutator,
+        'continuum_thermal_bound': faithful_thermal_field_bound(),
+        'necessary_and_sufficient_continuous_flow_relation':
+            'rho_j proportional exp(-b Omega_j (I-Z_j)/2), r_j=tanh(b Omega_j/2)',
+        'canonical_fluctuations': 'Q_N=sum X/sqrt(2Nr), P_N=sum Y/sqrt(2Nr)',
+        'thermal_Wightman': '(cos(Omega delta)-i r sin(Omega delta))/(2r Omega)',
+        'KMS_boundary': 'C(t-i b)=C(-t)',
+        'native_clock_conversion': 't=kappa tau, kappa=2d/sqrt(630); s=-kappa tau/b',
+        'refining_mode_preparation':
+            'Omega_l=sqrt(Q_l) theta_l; r_l=tanh(b Omega_l/2); g_l/theta_l=b sqrt(Q_l)',
+        'inverse_temperature_is_shared_testable_preparation_parameter': True,
+        'common_inverse_temperature_forced_by_carrier_or_repair': False,
+        'geometric_patch_modular_flow_or_Unruh_temperature_identified': False}
+
+
 def run():
     rows = {
         'schema': 'oph.observer_time_fields.continuum_dynamics.v1',
@@ -1280,6 +1485,7 @@ def run():
         'continuum_path_bounds': [wave_path_bounds(j) for j in (0, 10, 100)],
         'fractional_wave_bounds': [fractional_wave_bounds(l) for l in range(3)],
         'source_encoded_quantum_fluctuation': quantum_fluctuation_control(),
+        'faithful_thermal_modular_encoding': faithful_modular_encoding_control(),
         'native_weighted_form_control': native_weighted_form_control(),
         'native_heat_support_control': native_heat_support_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],
@@ -1340,9 +1546,9 @@ def run():
             'Gaussian_wave_uses_declared_record_processing': True,
             'Gaussian_density_limit_uses_actual_native_snapshot_process': True,
             'density_process_path_space_limit_proved': True,
-            'modular_reference_is_a_native_coherently_prepared_state': False,
-            'faithful_continuum_modular_algebra_state_constructed': False,
-            'full_modular_unitary_or_intervention_implementation_proved': False,
+            'native_return_reference_is_a_native_coherently_prepared_state': False,
+            'faithful_mean_zero_Fock_modular_state_under_declared_encoding_constructed': True,
+            'growing_source_field_modular_intervention_compiler_executed': False,
             'comparison_wave_support_cone_proved': True,
             'fractional_wave_canonical_energy_equipartition_proved': True,
             'comparison_sine_kernel_vanishes_for_separated_mean_zero_tests': True,

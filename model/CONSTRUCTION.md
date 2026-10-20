@@ -162,11 +162,15 @@ drives one coherent step per tick on a protected register and gives
 `cos((2d/sqrt(630))*tau*sqrt(A))` on bounded spectral bands. Its exact
 two-attempt Ramsey probability is `1297/1320`; carrier pauses, coherent
 services and a vanishing accumulated implementation error are explicit.
-The [source-coded quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
-retains ordered Weyl phases and kick responses. Independent polarized codes,
-supplied mode encodings and the active clock give a mean-zero free-field
-completion; unrestricted locality requires a zero-mode choice. Classical
-wave covariance alone supplies no commutator. Controlled repair gives derivative `2(I-exp(-tau*A))f`;
+The [source-coded quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
+retains ordered Weyl phases and kick responses. Faithful mode preparation
+matches the active clock precisely when `log((1+r)/(1-r))=b*Omega` with
+common `b` and matching axis. The native spectral bound gives a normal
+thermal Fock state and modular conversion `s=-(2d/sqrt(630))*tau/b` on
+the encoded mean-zero algebra. It does not supply a spatial-patch boost,
+selected temperature or laboratory scale. Mode encodings, protected controls
+and the separate zero-mode choice retain their contracts.
+Controlled repair gives derivative `2(I-exp(-tau*A))f`;
 at fixed scaled selection-slot time its [disjoint-support response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 is nonzero with an exponentially small short-time bound. An exact finite
 signal cone is incompatible with that same support/control/time dictionary;
@@ -178,12 +182,17 @@ vanish in bounded-energy families under this scaling. The
 also excludes complete linear identification with a compact three-dimensional
 free scalar's Euclidean law under one clock scale. These restricted tests
 leave other radial dictionaries and physical quantum identification unproved.
-Positive subordination of [actual native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
-gives `exp(-r*sqrt(A))` and the half-cylinder comparison with explicit lag
-truncation. The processing parameter is not a physical radius. The
-[finite edge-generator representation](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
-links the native density Laplacian to central rotation-class repair and
-irreducible ranks; a Gibbs preparation or full gauge sewing does not follow.
+Positive subordination of native lag records gives `exp(-r*sqrt(A))`.
+[Independent long-record blocks](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) provide the innovations needed for
+a Dirichlet product Gaussian field with covariance `(-d_r^2+Abar)^-1`.
+Its chosen interval has three-dimensional spectral growth and a product
+comparison cone. The radial filters, constant-mode encoding, boundary
+conditions and count-first limit are explicit; the angular active clock
+does not implement this product wave generator.
+An [executed edge filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses) prepares approximants to `exp(-tL)/Z`
+from supplied `I12/12`, retaining failures and bounding free-entropy error.
+Stationarity concerns the state at fixed `L`. Geometric entropy stationarity,
+physical gauge collars and full-group sewing are separate obligations.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The

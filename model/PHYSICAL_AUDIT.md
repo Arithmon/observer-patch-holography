@@ -239,12 +239,14 @@ The full-register replay reuses raw pulse-executed routines; its floating
 guards certify neither interval enclosure nor physical precision. Protected
 storage, coherent services and timing-carrier pauses are supplied; the
 growing refinement compiler is unproved. The
-[ordered quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
-executes source pulses, all pointer outputs and opposite-kick controls.
-Its IID polarized-code limit gives the CCR vacuum on a chosen fluctuation
-algebra and sine-kernel response in the same active clock. This uses supplied
-polarization, mode labels, control and storage; passive repair has not selected
-them. The separately synthesized classical covariance does not give a CCR.
+[faithful quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility) executes purifying source
+pulses, ordered pointer outputs and signed kicks. The common condition
+`log((1+r)/(1-r))=b*Omega` is necessary and sufficient for modular flow
+to match the active mode clock, including the state's axis. The IID limit
+gives thermal CCR noise and the unchanged sine response; native spectral
+bounds give a faithful normal mean-zero Fock state. This uses supplied
+preparation, mode encoding and active controls, on the full encoded algebra.
+It proves no geometric modular action on spatial patches or selected temperature.
 Mean-zero supported tests obey the comparison cone; unrestricted tests need
 `D_bar(t)=D_perp(t)+t*P_const`. The restored massless zero mode has no
 normalizable stationary vacuum. The limiting form is conservative, regular,
@@ -267,9 +269,16 @@ Restricted boundary, interacting and nonlinear dictionaries are outside that
 test. Internal rank-three modes vanish from bounded-energy full-port families
 at this scale; they supply no radius. A [positive native lag mixture](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
 constructs the Poisson operator `exp(-r*sqrt(A))` with explicit finite caps.
-Its half-cylinder extension and `A^(1/4)` covariance filter are operational
-processing/comparison choices, not independent bulk fields or a distance
-measurement. The dual conductance graph also obeys a uniform isotropic
+Its deterministic extension reuses boundary information. A separate
+[long-block construction](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) supplies independent radial innovations,
+including an encoded angular constant, and yields `(-d_r^2+Abar)^-1` on
+a chosen Dirichlet interval. Gaussian grid gluing, continuous radial paths,
+three-dimensional spectral growth and the product comparison cone follow.
+The executed finite tapes check readback and filters; their adjacent blocks
+are not independent. The radial coordinate and filters are supplied and
+native count tends to infinity first. Product wave evolution requires a
+different encoder from the active angular clock.
+The dual conductance graph also obeys a uniform isotropic
 reference sandwich with relative allowance `5/43`; it proves no homogenization.
 Restoring the constant mode gives the full-space generator `Abar`.
 Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
@@ -335,14 +344,16 @@ from executed dynamical repairs. This proves a controlled signal, not a
 unique nonlinear law, spontaneous force or atomic-clock correspondence.
 Public optical ratios do not contain the required intervention records.
 
-These are compatible source-observation constructions. The auxiliary sphere
-and lag parameter supply no physical radial domain; the polarized quantum
-encoding does not derive vacuum selection or interactions. The
-[finite edge-generator audit](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
-instantiates the density representation's generator and irreducible ranks,
-not a native 66-state Gibbs preparation or full group sewing. A unique
-physical limit, Lorentz covariance and detector dictionary remain open. The
-supplied square torus retains its separate free-field contract.
+These constructions share the native angular operator while retaining
+different preparation and readout contracts. An [active edge filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
+prepares Gibbs approximants of the finite density generator `L` with
+success at least `1/12`, all failures retained and a source-read interference
+contrast. Its Gibbs variational identity gives state-fibre stationarity at
+fixed `L`, not joint bulk-plus-area stationarity. The state is central on
+the represented group algebra; its nontrivial modular gaps concern the
+larger logical register. Neither `L` nor the product radial wave generator
+is identified with the angular clock by a common scale. Physical collar
+algebras, interactions and a joint spacetime observation map are unproved.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint

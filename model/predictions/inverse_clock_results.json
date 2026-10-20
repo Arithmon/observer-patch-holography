@@ -1,5 +1,112 @@
 {
   "Hankel_determinant": "1/9702990000",
+  "actively_prepared_edge_reference": {
+    "coherence_readout": {
+      "complete_outcome_weight_error_upper": "2607987479908216467622384768551/3698222251479975716783532377615231449",
+      "dephased_input_contrast": "0",
+      "ideal_unnormalized_address_probabilities": [
+        "2836723/38880000",
+        "10565863/155520000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "4382551/62208000",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "normalized_zero_minus_one_contrast": "260343/43825510",
+      "operation": "exp(i*pi*Y_01/4) on successful site register, then all 16 address outcomes",
+      "sector_projector_detector_compiled": false,
+      "source_native_pulses": 96,
+      "source_word_sha256": "17ff51355d6bf4061dab8385c276e2ed2ce8a480b6d1f6ccba8996adc5aa0846"
+    },
+    "compiled_word_sha256": "3cd621a22552929eefc1a42df012cb9464aa6a9d2cfee16a31c33b58968aae54",
+    "dephasing_control": "diagonalizing the heralded density preserves site probabilities but removes rho[0,1]>0",
+    "edge_and_wave_modular_generators_identified": false,
+    "event_or_scratch_failure_outputs_discarded_from_total_probability": false,
+    "event_probability_even": "1/40",
+    "event_probability_odd": "1/120",
+    "executed_full_register_input_columns": 12,
+    "execution": "raw routine matrices reused on all 32768 outputs; full filter reused for second herald",
+    "expanded_word_executed_literally_on_full_register": false,
+    "full_group_regular_or_compact_group_sewing_established": false,
+    "growing_source_compiler_error_budget_certified": false,
+    "ideal_family": {
+      "all_success_probability_lower": "1/12",
+      "free_entropy_deficit_upper": "1/105",
+      "lazy_weight": "1/2",
+      "physical_seconds_or_modular_time": false,
+      "preparation_parameter": "1/30",
+      "relative_entropy_to_edge_Gibbs_upper": "1/105",
+      "spectral_log_error_upper": "1/105",
+      "successful_heralds": 2,
+      "trace_distance_to_edge_Gibbs_upper": "1/105"
+    },
+    "initial_density": "supplied I12/12 on a protected logical register",
+    "limit_free_entropy_identity": "S(rho)-t*Tr(rho L)=log Z-D(rho||exp(-tL)/Z)",
+    "limit_sector_ratio": "(p_R/d_R)/(p_S/d_S)=exp[-t*(lambda_R-lambda_S)]",
+    "maximum_filters_per_trial": 2,
+    "native_density_generator": "L=6I-(1/2)sum_{g in C} U_g; K12=I-L/60",
+    "native_passive_equilibrium_prepares_this_state": false,
+    "normalized_success_density": "F^4/Tr(F^4)",
+    "normalized_success_matrix_element_0_1": "260343/87651020",
+    "normalized_success_purity": "48322092478271/576202598028030",
+    "numerical_guards_are_interval_or_physical_error_certificates": false,
+    "one_filter_operator_error_upper": "879/4999999121",
+    "one_filter_resources": {
+      "identity_phase_pulses": 1558,
+      "maximum_work_qubits": 15,
+      "native_pulses": 114072,
+      "pair_code_pulses": 30260,
+      "proper_code_export_events": 114072,
+      "proper_code_load_events": 114072,
+      "proper_code_service_events": 228144,
+      "service_failure_outcomes_retained": true,
+      "single_code_pulses": 83812,
+      "valid_code_failure_probability_in_exact_arithmetic": 0
+    },
+    "one_herald_operator": "F=(1-p)I+pK12=I-L/120, p=1/2",
+    "physical_dataset_with_this_joint_preparation_and_readout": false,
+    "prepared_register_algebra": "B(C^12); includes operators between representation sectors",
+    "raw_source_routines_executed_on_all_columns": true,
+    "representation_algebra_dimension": 44,
+    "restricted_group_image_modular_flow": "identity: exp(-tL)/Z is central in M1+M3+M5+M3",
+    "retained_first_failure_and_success_probabilities": [
+      "13/160",
+      "380249/5184000",
+      "4382551/5184000"
+    ],
+    "routine_error_guards": {
+      "ccx": "1/10000000000",
+      "flip": "1/10000000000",
+      "prepare": "1/100000000",
+      "unprepare": "1/100000000"
+    },
+    "sector_dimensions": [
+      1,
+      3,
+      5,
+      3
+    ],
+    "sector_eigenvalues": [
+      "0",
+      "5-sqrt(5)",
+      "6",
+      "5+sqrt(5)"
+    ],
+    "sector_law": "p_R=d_R*(1-t*lambda_R/(2n))^(2n)/sum_S d_S*(1-t*lambda_S/(2n))^(2n)",
+    "success_herald": "valid site address 0..11, event zero and clean scratch",
+    "successful_heralds": 2,
+    "two_filter_outcome_weight_error_upper": "439499884103863583028183025885119/624999560500115896136416971816974114881"
+  },
   "all_pass": true,
   "coherent_readout_forecasts": [
     {
@@ -46,10 +153,10 @@
       ],
       "raw_half_diamond_error": "1/10000000000",
       "raw_source_record_weights_diagnostic": [
-        0.9477291747021519,
-        0.05227082529784012,
-        6.865878040172517e-30,
-        8.48903243410329e-31
+        0.9477291747021521,
+        0.052270825297839996,
+        6.533587809287793e-30,
+        5.820742093284271e-31
       ]
     },
     {
@@ -96,10 +203,10 @@
       ],
       "raw_half_diamond_error": "1/10000000000",
       "raw_source_record_weights_diagnostic": [
-        0.7225726535774786,
-        0.27742734642251327,
-        2.8787449082492894e-30,
-        9.678783433732813e-31
+        0.7225726535774787,
+        0.2774273464225133,
+        2.9711431777410025e-30,
+        1.849640534057544e-30
       ]
     },
     {
@@ -146,10 +253,10 @@
       ],
       "raw_half_diamond_error": "1/10000000000",
       "raw_source_record_weights_diagnostic": [
-        0.7631801445538238,
-        2.5022973467195626e-30,
-        0.23681985544616235,
-        3.999377668808201e-31
+        0.7631801445538233,
+        3.964723015012608e-31,
+        0.2368198554461629,
+        1.9440777912157468e-31
       ]
     },
     {
@@ -196,10 +303,10 @@
       ],
       "raw_half_diamond_error": "1/10000000000",
       "raw_source_record_weights_diagnostic": [
-        0.925130816940635,
-        8.280924885151037e-30,
-        0.07486918305935104,
-        9.821884836308438e-31
+        0.9251308169406349,
+        4.049876342076799e-30,
+        0.07486918305935084,
+        6.570656073733519e-31
       ]
     }
   ],
@@ -442,6 +549,7 @@
     "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
+    "model/observer/coherent_continuation.py": "75c9442fb9a54c78af1e932b3b27011c539a9843cc2fcf33076a594a5e619091",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
     "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
@@ -460,7 +568,7 @@
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
-    "model/predictions/inverse_clock.py": "835eae4deadb448959552d5902e4f59154b212e6e713dc0c0d13734d5a378ab2",
+    "model/predictions/inverse_clock.py": "6672fe242351d8ce9c3809d96fd645d614a279b554ff8eef7564b2b98c733fee",
     "model/predictions/modular_optical.py": "62cdebe3d32765870374579ca6dfe5044d97036fb1e009306bb3fc3b260021ee",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/predictions/protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",

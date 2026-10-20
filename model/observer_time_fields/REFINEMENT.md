@@ -1742,3 +1742,112 @@ The CCR normalization sets the encoded action unit; it does not calibrate
 Planck's constant in laboratory units. Its locality has the zero-mode
 qualification above. Interactions, conformal symmetry, a physical spatial
 bulk and atomic-clock identification do not follow from this encoding.
+
+### Faithful state-clock compatibility
+
+The finite inner-flow result in
+[`PrivateInner.lean`](../../Lean/Dynamics/PrivateInner.lean) and the
+[finite Gibbs/KMS construction](README.md#the-same-three-class-reference-as-the-compiled-modular-probe)
+apply to the encoded mode algebra once its state and generator are specified.
+For a code with `H=Omega(I-Z)/2`, `Omega>0`, set
+`alpha_t(A)=exp(itH) A exp(-itH)`. A faithful state `rho` has
+`sigma_s(A)=rho^(is) A rho^(-is)`. Equality
+`sigma_s=alpha_(-b s)` for every real `s` is equivalent to
+`log(rho)+bH` commuting with the full matrix algebra. Its center is scalar,
+so normalization proves the necessary and sufficient relation
+
+```text
+rho=exp(-bH)/Tr exp(-bH)=(I+rZ)/2,
+g=log((1+r)/(1-r))=b Omega,    r=tanh(b Omega/2).          (FT)
+```
+
+Here `b>0` and `0<r<1`. The polarization axis as well as the eigenvalues
+must match the clock. The finite executable tests the whole Pauli basis,
+an equally polarized but off-axis state, and equal `r` at unequal native
+frequencies. The latter gives unequal inferred `b` and excludes a common
+modular time conversion. Matching only integer steps is insufficient:
+gaps differing by `2pi` agree at integer parameters and disagree at a half
+step. The tracial endpoint `r=0` has trivial modular flow; the pure
+reference `r=1` is not faithful on the full code algebra. Neither endpoint
+supplies this finite-temperature clock relation.
+
+For `N` independent copies of this faithful state, the canonical
+normalization becomes `Q_N=sum X/sqrt(2Nr)`,
+`P_N=sum Y/sqrt(2Nr)`. Their commutator expectation is `i`,
+their variance is `1/(2r)`, and
+`E Q_N^4=(3/4-1/(2N))/r^2`. The same ordered product calculation (QF)
+therefore yields the thermal CCR state
+
+```text
+lim_N E product_j W_N(v_j)
+ = exp(-|sum_j v_j|^2/(4r)-i sum_(j<k) sigma(v_j,v_k)/2).
+```
+
+For `phi_N(t)=(Q_N cos(Omega t)+P_N sin(Omega t))/sqrt(Omega)`,
+even the finite-copy two-point function is exactly
+
+```text
+C(t-u)=[cos(Omega(t-u))-i r sin(Omega(t-u))]/(2r Omega),
+C(t-i b)=C(-t),       n_b(Omega)=(1-r)/(2r).
+```
+
+The positive and negative frequency weights have ratio
+`exp(-b Omega)`, proving the two-point KMS boundary identity. Ordered
+Gaussian products in the copy limit give the full thermal free-field
+state. The antisymmetric part and linear kick response remain
+`sin(Omega(t-u))/Omega`; the symmetric noise changes with `r`. Thus
+temperature is inferable from noise relative to the same response and
+frequency, after fixing the encoded quadrature normalization.
+
+The execution uses two system codes, two retained purifying references
+and a pointer. A source `Y` rotation and source CNOT prepare each
+`sqrt((1+r)/2)|00>+sqrt((1-r)/2)|11>`; restriction to the system codes
+gives the faithful product state. All 32 ordered Ramsey outcomes and all
+16 outcomes for each signed kick are retained. No success branch is
+discarded. The state on the enlarged pure system/reference algebra is
+not faithful. Frequencies and polarizations are evaluated at 80 digits and
+pinned to the existing `2^-44` dyadic synthesis grid; their exact receipt
+rationals do not depend on platform floating-point library rounding.
+Rotation angles use the same grid;
+the receipt separately checks preparation error, full Pauli modular
+action and finite-kick remainder. Its rational polarization fixes an
+exact logarithmic `b`; numerical diagnostics compare this with the
+requested common value. The ideal relation (FT) is exact, while the
+finite source preparation has its stated synthesis error.
+
+For the mean-zero continuum operator, the existing
+[native spectral bound (L4)](../physical_space_time/OCCUPATION_FIELD.md)
+gives `lambda_n(A)>=n/49920`. With `Omega=sqrt(A)`,
+
+```text
+Tr exp(-b Omega) <= integral_0^infty exp(-b sqrt(x/49920)) dx
+                 = 99840/b^2,
+log Z_b = sum_(m>=1) Tr exp(-mb Omega)/m <= 149760/b^2.    (FT2)
+```
+
+The last inequality uses `sum m^-3<=3/2`. Consequently the mean-zero
+bosonic Fock space carries the faithful normal state
+`rho_b=Z_b^-1 exp(-b dGamma(Omega))`, with modular flow
+`sigma_s=alpha_(-b s)` on its full encoded algebra. Its mode covariance
+is `coth(b Omega/2)/(2 Omega)`; the lower spectral gap bounds the
+thermal factor, so the field and momentum smearing domains above still
+apply. Finite-mode copy limits followed by the existing spatial
+subsequence define this state and clock together. This is a conditional
+continuum construction, not execution of a growing source compiler.
+
+Using the active incident parameter `t=kappa tau`,
+`kappa=2d/sqrt(630)`, gives `s=-kappa tau/b`; inverse temperature in
+`tau` units is `b/kappa`. At refinement level `l` the continuum clock
+uses `Omega_l=sqrt(Q_l) theta_l`, so its preparation requires
+`r_l=tanh(b Omega_l/2)` and `g_l/theta_l=b sqrt(Q_l)`.
+Holding polarization fixed while changing this clock normalization
+would change temperature. A common `b` is a measurable preparation
+compatibility condition. Carrier architecture and passive repair have
+not selected it. The encoded full-field algebra is not a spatial patch
+algebra: restriction to a patch need not preserve this modular generator.
+The excluded constant mode and its locality qualification remain as
+above. Geometric boosts, an Unruh temperature, interactions and
+laboratory seconds do not follow from (FT).
+This clock uses `sqrt(A)`. The separately declared radial product field
+has spatial generator `B=-d_r^2+(A ⊕ 0)`; its wave frequency `sqrt(B)`
+would require its own product-mode encoding and active-clock proof.

@@ -10,6 +10,109 @@ import sympy as sp
 from . import observation_process as o
 
 
+@pytest.mark.parametrize('level', (0, 1))
+def test_native_innovations_supply_full_rank_radial_markov_gluing(level):
+    row = o.radial_record_gluing(level)
+    assert row['joint_covariance_rank'] == row['expected_joint_covariance_rank'] == 60*4**level
+    assert row['smallest_conditional_innovation_eigenvalue'] > 0
+    assert row['native_filter_covariance_error'] < 1e-10
+    assert row['joint_cross_radius_covariance_error'] < 1e-10
+    assert row['joint_precision_identity_error'] < 1e-10
+    assert row['nonneighbor_radial_precision_norm'] == 0
+    assert row['conditional_past_future_covariance_norm'] < 1e-10
+    assert row['inserted_layer_gluing_error'] < 1e-10
+    assert row['reused_block_covariance_discrepancy'] > 0.01
+    assert row['independent_CLT_blocks_of_one_history_required'] == 6
+    assert row['zero_angular_mode_is_independent_encoded_readout']
+    executed = row['finite_native_record_execution']
+    assert len(executed['complete_signed_current_records_including_zero']) == 96
+    assert 0 in executed['complete_signed_current_records_including_zero']
+    assert np.shape(executed['all_radial_slice_readouts']) == (3, 20*4**level)
+    assert executed['decoded_field_checked_after_every_native_event']
+    assert not executed['finite_tape_is_a_Gaussian_ensemble_certificate']
+    assert not row['native_conserved_total_load_fluctuates']
+    assert not row['Gaussian_independence_holds_at_finite_native_count']
+    assert not row['physical_radial_transport_or_Lorentzian_clock_identified']
+
+
+@pytest.mark.parametrize('eigenvalue', (0., 5-np.sqrt(5), 6., 5+np.sqrt(5)))
+def test_radial_covariance_inverse_matches_independent_dirichlet_boundary_energy(eigenvalue):
+    times, length = np.array([0.2, 0.7, 1.4]), 2.0
+    covariance = np.array([[o._radial_dirichlet_covariance(
+        np.array([eigenvalue]), r, s, length)[0] for s in times] for r in times])
+    gaps = np.diff(np.concatenate(([0.], times, [length])))
+    root = np.sqrt(eigenvalue)
+    diagonal = 1/gaps if root == 0 else root/np.tanh(root*gaps)
+    crossing = 1/gaps if root == 0 else root/np.sinh(root*gaps)
+    precision = np.diag(diagonal[:-1]+diagonal[1:])
+    for i in range(len(times)-1):
+        precision[i, i+1] = precision[i+1, i] = -crossing[i+1]
+    np.testing.assert_allclose(precision@covariance, np.eye(3), atol=2e-14, rtol=0)
+    # A deterministic harmonic extension of one boundary value has no innovation.
+    boundary = np.exp(-root*times)
+    harmonic_covariance = np.outer(boundary, boundary)
+    assert np.linalg.matrix_rank(harmonic_covariance) == 1
+    assert np.linalg.matrix_rank(covariance) == 3
+    conditional_variance = covariance[1, 1]-covariance[1, 0]**2/covariance[0, 0]
+    assert conditional_variance > 0
+
+
+def test_finite_native_blocks_do_not_receive_exact_gaussian_independence():
+    row = o.finite_radial_block_control()
+    assert row['native_branch_binding'] == 3960
+    assert F(row['normalized_adjacent_block_cross_covariance_trace']) > 0
+    assert row['complete_66_state_and_density_oracles_agree_exactly']
+    assert not row['adjacent_blocks_independent_at_finite_count']
+    assert not row['bound_is_uniform_over_source_refinement']
+
+
+@pytest.mark.parametrize('energy', (3, 4, 12, 48))
+def test_product_spectral_count_bounds_follow_both_extremal_source_spectra(energy):
+    row = o.radial_product_bounds(F(energy))
+    # These exact spectral oracles saturate the existing source eigenvalue
+    # inequalities; the counting proof needs no guessed eigenfunctions.
+    high_spectrum_count = sum((2*(energy-k*k))//3
+                              for k in range(1, int(np.sqrt(energy))+1))
+    low_spectrum_count = sum(49920*(energy-k*k)+1
+                             for k in range(1, int(np.sqrt(energy))+1))
+    lower = row['certified_positive_angular_mode_count_lower']
+    upper = row['certified_including_zero_angular_mode_count_upper']
+    assert lower <= high_spectrum_count
+    assert low_spectrum_count <= upper
+    assert 288*lower**2 >= energy**3
+    assert upper**2 <= 49921**2*energy**3
+    assert row['spectral_count_power'] == '3/2'
+    assert not row['interval_boundary_length_or_metric_selected_by_repair']
+
+
+def test_radial_gluing_rejects_changed_innovation_and_invalid_contracts(monkeypatch):
+    for kwargs in ({'level': True}, {'level': 2}, {'slices': 2},
+                   {'length': 2.0}, {'length': F(0)}, {'length': F(5)}):
+        with pytest.raises(ValueError):
+            o.radial_record_gluing(**kwargs)
+    original = o._radial_bridge_step
+
+    def wrong_innovation(*args):
+        transfer, variance = original(*args)
+        return transfer, variance*0.9
+
+    monkeypatch.setattr(o, '_radial_bridge_step', wrong_innovation)
+    with pytest.raises(ArithmeticError, match='radial innovation'):
+        o.radial_record_gluing()
+
+
+def test_radial_readout_rejects_a_forged_native_current_record(monkeypatch):
+    original = o.spatial.source.source.binary_step
+
+    def wrong_current(*args):
+        occupied, current = original(*args)
+        return occupied, current+1
+
+    monkeypatch.setattr(o.spatial.source.source, 'binary_step', wrong_current)
+    with pytest.raises(ArithmeticError, match='complete field readback'):
+        o.radial_record_gluing()
+
+
 def test_each_actual_native_seam_separately_preserves_the_full_binary_sector():
     states, targets, marks, score, count = o.marked_source()
     assert count == 3960 and len(states) == 66

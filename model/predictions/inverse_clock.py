@@ -9,17 +9,20 @@ from __future__ import annotations
 
 import argparse
 from fractions import Fraction as F
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
 
 from . import modular_optical as inherited
+from ..observer import coherent_continuation as continuation
 from ..record_laws import burn_in
 
 source, exact, ROOT = inherited.source, inherited.exact, inherited.ROOT
 SOURCE_PATHS = tuple(sorted(set((
     *(p for p in inherited.SOURCE_PATHS if p != inherited.DATA),
-    *burn_in.SOURCE_PATHS, 'model/predictions/inverse_clock.py'))))
+    *burn_in.SOURCE_PATHS, *continuation.SOURCE_PATHS,
+    'model/predictions/inverse_clock.py'))))
 RATE_UPPER = F(9, 10)
 
 
@@ -245,6 +248,214 @@ def source_moments():
     return mean, joint
 
 
+def edge_gibbs_bound(parameter, heralds):
+    """Ideal lazy-filter Gibbs limit, in a preparation parameter, not seconds.
+
+    lambda_max=5+sqrt(5)<8 and p=30*t/n<=1. For x=t*lambda/(2*n),
+    0<=-2*n*log(1-x)-t*lambda<=t²*lambda²/[4*n*(1-x)].
+    Thus finite weights are the Gibbs weights times factors in [exp(-e),1].
+    Rejection coupling gives TV<=min(1,e); normalized log ratios give D<=e.
+    These are analytic bounds, not numerical source-pulse error certificates.
+    """
+    t = _fraction(parameter, 0)
+    n = _integer(heralds, 1)
+    p = 30*t/n
+    if p > 1:
+        raise ValueError('the lazy event preparation requires 30*t/n <= 1')
+    error = 16*t*t/(n*(1-4*t/n))
+    return {'preparation_parameter': t, 'successful_heralds': n, 'lazy_weight': p,
+            'spectral_log_error_upper': error,
+            'trace_distance_to_edge_Gibbs_upper': min(F(1), error),
+            'relative_entropy_to_edge_Gibbs_upper': error,
+            'free_entropy_deficit_upper': error,
+            'all_success_probability_lower': F(1, 12),
+            'physical_seconds_or_modular_time': False}
+
+
+def _lazy_filter_program(weight):
+    """Source-only dilation of (1-p)I+pK12; its event bias is supplied."""
+    import math
+    import mpmath as mp
+    import numpy as np
+    from ..observer.source_scalar import compiler as c
+    p = _fraction(weight, 0, 1)
+    program = continuation.density_walk_program()
+    gray = [j ^ (j >> 1) for j in range(64)]
+    counts = [((p.numerator if j & 1 else 2*p.denominator-p.numerator)
+               if j < 60 else 0) for j in gray]
+    rotations = []
+    with mp.workdps(80):
+        for row in range(63, 0, -1):
+            x, y = counts[row-1], counts[row]
+            theta = 0. if x == y == 0 else float(mp.atan2(mp.sqrt(y), mp.sqrt(x)))
+            rotations.append((gray[row-1], gray[row], theta))
+            counts[row-1], counts[row] = x+y, 0
+    prepare, target = [], np.eye(64)
+    for a, b, theta in reversed(rotations):
+        prepare.extend(c._gray_rotation(a, b, -theta, 6))
+        x, y = target[a].copy(), target[b].copy()
+        target[a] = math.cos(theta)*x-math.sin(theta)*y
+        target[b] = math.sin(theta)*x+math.cos(theta)*y
+    prepare = [c.pulse(g['kind'], round(g['angle']*2**44)/2**44, g['targets'])
+               for g in prepare]
+    program['routines'] = {name: program['routines'][name] for name in ('ccx', 'flip')}
+    program['routines'].update(prepare=prepare, unprepare=c.inverse(prepare))
+    program['walk'] = ([{'routine': 'prepare', 'targets': list(range(4, 10))}]
+                       + program['shift']
+                       + [{'routine': 'unprepare', 'targets': list(range(4, 10))}])
+    return program, target
+
+
+@lru_cache(maxsize=1)
+def prepared_edge_gibbs():
+    """Execute one full filter on all twelve logical input columns.
+
+    Reuse that raw executed linear map for two heralds, retaining every
+    first-failure output. The supplied input is I12/12; it is not the native
+    66-state stationary density. Exact rational matrices independently check
+    the success operator, sector ranks, coherence and all outcome weights.
+    """
+    import math
+    import numpy as np
+    import sympy as sp
+    from ..observer.source_scalar import compiler as c
+    program, ideal_prepare = _lazy_filter_program(F(1, 2))
+    permutation = continuation.density_shift_permutation(program)
+    edge = continuation.edge_generator_audit()
+    laplacian = sp.zeros(12)
+    for a, b in continuation.quantum_mixing.seams():
+        laplacian[a, a] += 1; laplacian[b, b] += 1
+        laplacian[a, b] -= 1; laplacian[b, a] -= 1
+    lazy = sp.eye(12)-laplacian/120
+    if laplacian.eigenvals() != {sp.Integer(0): 1, 5-sp.sqrt(5): 3,
+                                sp.Integer(6): 5, 5+sp.sqrt(5): 3}:
+        raise ArithmeticError('native edge-generator spectrum changed')
+    exact_success = [(lazy**(2*n)).trace()/12 for n in range(3)]
+    exact_outcomes = (1-exact_success[1], exact_success[1]-exact_success[2], exact_success[2])
+    rho = lazy**4/(12*exact_success[2])
+    if rho[0, 1] <= 0 or (rho*rho).trace() <= sp.Rational(1, 12):
+        raise ArithmeticError('the heralded density lost its nontracial coherence')
+    matrices = {name: c.execute(tape, 6 if name.endswith('prepare') else
+                                3 if name == 'ccx' else 1)
+                for name, tape in program['routines'].items()}
+    target_ccx = np.zeros((8, 8))
+    for j in range(8):
+        target_ccx[j ^ (4 if j & 3 == 3 else 0), j] = 1
+    wanted = {'prepare': ideal_prepare, 'unprepare': ideal_prepare.T,
+              'ccx': target_ccx, 'flip': np.array([[0., 1.], [1., 0.]])}
+    guards = {'prepare': F(1, 10**8), 'unprepare': F(1, 10**8),
+              'ccx': F(1, 10**10), 'flip': F(1, 10**10)}
+    for name, matrix in matrices.items():
+        if np.linalg.norm(matrix-wanted[name], 'fro') > float(guards[name]):
+            raise ArithmeticError(f'raw source {name} exceeds its numerical guard')
+    amplitudes = np.array([math.sqrt(float((F(1, 2) if j & 1 else F(3, 2))/60))
+                           if j < 60 else 0. for j in range(64)])
+    if np.linalg.norm(ideal_prepare[:, 0]-amplitudes) > 1e-13:
+        raise ArithmeticError('biased event preparation has incorrect amplitudes')
+    inputs = np.zeros((1 << 15, 12), complex)
+    inputs[:12] = np.eye(12)
+    actual = continuation.execute_density_walk(program, matrices, inputs)
+    ideal = c._apply(inputs, ideal_prepare, list(range(9, 3, -1)), 15)
+    shifted = np.empty_like(ideal); shifted[permutation] = ideal
+    ideal = c._apply(shifted, ideal_prepare.T, list(range(9, 3, -1)), 15)
+    wanted_filter = np.array(lazy, dtype=float)
+    if np.linalg.norm(ideal[:12]-wanted_filter, 'fro') > 1e-12:
+        raise ArithmeticError('source dilation does not compress to the native lazy transfer')
+    uses = {name: sum(op['routine'] == name for op in program['walk']) for name in matrices}
+    guard_sum = sum((uses[name]*guards[name] for name in uses), F())
+    delta = guard_sum/(1-guard_sum)
+    if np.linalg.norm(actual-ideal, 'fro') > math.sqrt(12)*float(delta):
+        raise ArithmeticError('complete source filter output exceeds its product bound')
+    # Every nonherald row is retained, including site/event padding and dirty
+    # scratch. No normalization occurs before the complete outcome checks.
+    first = actual/math.sqrt(12)
+    second = actual@actual[:12]/math.sqrt(12)
+    outcomes = (np.linalg.norm(first[12:])**2, np.linalg.norm(second[12:])**2,
+                np.linalg.norm(second[:12])**2)
+    two_delta = 2*delta+delta*delta
+    weight_guard = 2*two_delta+two_delta*two_delta
+    if (any(abs(value-float(expected)) > float(weight_guard)
+            for value, expected in zip(outcomes, exact_outcomes, strict=True))
+            or abs(sum(outcomes)-1) > 3*float(weight_guard)
+            or np.linalg.norm(second-ideal@wanted_filter/math.sqrt(12), 'fro') > float(two_delta)):
+        raise ArithmeticError('complete two-herald source outcomes exceed their guards')
+    read_word = [c.pulse(g['kind'], round(g['angle']*2**44)/2**44, g['targets'])
+                 for g in c._gray_rotation(0, 1, math.pi/4, 4)]
+    read_matrix = c.execute(read_word, 4)
+    read_target = np.eye(16)
+    read_target[:2, :2] = np.array([[1., 1.], [-1., 1.]])/math.sqrt(2)
+    read_guard = F(1, 10**9)
+    if np.linalg.norm(read_matrix-read_target, 'fro') > float(read_guard):
+        raise ArithmeticError('source coherence readout exceeds its numerical guard')
+    successful = np.zeros((16, 12), complex)
+    successful[:12] = second[:12]
+    read_weights = np.sum(abs(read_matrix@successful)**2, axis=1)
+    unnormalized = lazy**4/12
+    wanted_reads = [unnormalized[j, j] for j in range(12)]+[sp.Integer(0)]*4
+    wanted_reads[:2] = [unnormalized[0, 0]+unnormalized[0, 1],
+                       unnormalized[0, 0]-unnormalized[0, 1]]
+    if unnormalized[0, 0] != unnormalized[1, 1]:
+        raise ArithmeticError('the exact transitive site symmetry changed')
+    read_delta = (1+two_delta)*(1+read_guard)-1
+    read_weight_guard = 2*read_delta+read_delta*read_delta
+    if any(abs(value-float(expected)) > float(read_weight_guard)
+           for value, expected in zip(read_weights, wanted_reads, strict=True)):
+        raise ArithmeticError('retained source coherence-readout weights changed')
+    word = continuation.density_walk_word(program)
+    resources = c.resources(word)
+    stable_resources = {key: resources[key] for key in (
+        'native_pulses', 'single_code_pulses', 'pair_code_pulses', 'identity_phase_pulses',
+        'proper_code_load_events', 'proper_code_export_events', 'proper_code_service_events',
+        'maximum_work_qubits', 'service_failure_outcomes_retained',
+        'valid_code_failure_probability_in_exact_arithmetic')}
+    as_fraction = lambda x: F(int(sp.numer(x)), int(sp.denom(x)))
+    return {'native_density_generator': 'L=6I-(1/2)sum_{g in C} U_g; K12=I-L/60',
+        'sector_dimensions': [1, 3, 5, 3],
+        'sector_eigenvalues': ['0', '5-sqrt(5)', '6', '5+sqrt(5)'],
+        'representation_algebra_dimension': edge['group_image_algebra_dimension'],
+        'prepared_register_algebra': 'B(C^12); includes operators between representation sectors',
+        'restricted_group_image_modular_flow': 'identity: exp(-tL)/Z is central in M1+M3+M5+M3',
+        'event_probability_even': F(1, 40), 'event_probability_odd': F(1, 120),
+        'one_herald_operator': 'F=(1-p)I+pK12=I-L/120, p=1/2',
+        'success_herald': 'valid site address 0..11, event zero and clean scratch',
+        'initial_density': 'supplied I12/12 on a protected logical register',
+        'successful_heralds': 2, 'executed_full_register_input_columns': 12,
+        'retained_first_failure_and_success_probabilities': tuple(map(as_fraction, exact_outcomes)),
+        'normalized_success_density': 'F^4/Tr(F^4)',
+        'normalized_success_matrix_element_0_1': as_fraction(rho[0, 1]),
+        'normalized_success_purity': as_fraction((rho*rho).trace()),
+        'coherence_readout': {
+            'operation': 'exp(i*pi*Y_01/4) on successful site register, then all 16 address outcomes',
+            'ideal_unnormalized_address_probabilities': tuple(map(as_fraction, wanted_reads)),
+            'normalized_zero_minus_one_contrast': as_fraction(2*rho[0, 1]),
+            'dephased_input_contrast': F(0),
+            'source_native_pulses': len(read_word),
+            'source_word_sha256': hashlib.sha256(json.dumps(read_word, sort_keys=True,
+                separators=(',', ':'), allow_nan=False).encode()).hexdigest(),
+            'complete_outcome_weight_error_upper': read_weight_guard,
+            'sector_projector_detector_compiled': False},
+        'event_or_scratch_failure_outputs_discarded_from_total_probability': False,
+        'compiled_word_sha256': hashlib.sha256(json.dumps(word, sort_keys=True,
+            separators=(',', ':'), allow_nan=False).encode()).hexdigest(),
+        'one_filter_resources': stable_resources, 'maximum_filters_per_trial': 2,
+        'routine_error_guards': guards, 'one_filter_operator_error_upper': delta,
+        'two_filter_outcome_weight_error_upper': weight_guard,
+        'raw_source_routines_executed_on_all_columns': True,
+        'execution': 'raw routine matrices reused on all 32768 outputs; full filter reused for second herald',
+        'expanded_word_executed_literally_on_full_register': False,
+        'numerical_guards_are_interval_or_physical_error_certificates': False,
+        'ideal_family': edge_gibbs_bound(F(1, 30), 2),
+        'sector_law': 'p_R=d_R*(1-t*lambda_R/(2n))^(2n)/sum_S d_S*(1-t*lambda_S/(2n))^(2n)',
+        'limit_sector_ratio': '(p_R/d_R)/(p_S/d_S)=exp[-t*(lambda_R-lambda_S)]',
+        'limit_free_entropy_identity': 'S(rho)-t*Tr(rho L)=log Z-D(rho||exp(-tL)/Z)',
+        'dephasing_control': 'diagonalizing the heralded density preserves site probabilities but removes rho[0,1]>0',
+        'edge_and_wave_modular_generators_identified': False,
+        'full_group_regular_or_compact_group_sewing_established': False,
+        'native_passive_equilibrium_prepares_this_state': False,
+        'growing_source_compiler_error_budget_certified': False,
+        'physical_dataset_with_this_joint_preparation_and_readout': False}
+
+
 def _json(value):
     if isinstance(value, F):
         return str(value)
@@ -312,6 +523,7 @@ def run():
             'discarded_binary_warmup_attempts': 221,
             'bound_is_sufficient_not_minimal_sample_requirement': True,
             'independent_windows_assumed': False},
+        'actively_prepared_edge_reference': prepared_edge_gibbs(),
         'scope': {'positive_rank_two_spectral_domain_admitted': True,
             'unknown_hidden_dimension_identified_by_four_moments': False,
             'native_C_E_instrument_identified_from_classical_bits': False,

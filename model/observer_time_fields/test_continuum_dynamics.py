@@ -778,3 +778,173 @@ def test_source_kick_detector_response_uses_the_same_native_frequency():
         assert abs(mode['central_difference_response']-mode['sine_kernel_linear_response']) <= mode['finite_kick_error_upper']+2e-10
         for record in mode['complete_minus_and_plus_kick_pointer_probabilities']:
             assert len(record) == 2 and abs(sum(record)-1) < 2e-12
+
+
+@pytest.mark.parametrize('copies', (1, 2, 3))
+def test_faithful_fluctuation_normalization_and_moments_from_tensor_matrices(copies):
+    r, omega = F(1, 2), F(3, 5)
+    values = d.thermal_clock_parameters(omega, r, copies)
+    single = np.diag([.75, .25])
+    x = np.array([[0, 1], [1, 0]], complex)
+    y = np.array([[0, -1j], [1j, 0]], complex)
+    rho = np.ones((1, 1))
+    for _ in range(copies):
+        rho = np.kron(rho, single)
+    def collective(observable):
+        out = np.zeros_like(rho, dtype=complex)
+        for j in range(copies):
+            term = np.ones((1, 1))
+            for k in range(copies):
+                term = np.kron(term, observable if j == k else np.eye(2))
+            out += term
+        return out/np.sqrt(2*copies*float(r))
+    q, p = collective(x), collective(y)
+    assert abs(np.trace(rho@(q@p-p@q))-1j) < 1e-13
+    assert abs(np.trace(rho@q@q)-float(values['canonical_quadrature_variance'])) < 1e-13
+    assert abs(np.trace(rho@np.linalg.matrix_power(q, 4))
+               -float(values['finite_fourth_quadrature_moment'])) < 1e-13
+    assert values['boson_mean_occupation'] == F(1, 2)
+    assert abs(values['modular_gap_diagnostic']-np.log(3)) < 1e-14
+    # The commutator has the canonical expectation, not an operator-norm limit.
+    assert np.linalg.norm(q@p-p@q-1j*np.eye(2**copies), 2) > 1
+
+
+def test_faithful_native_source_records_and_state_clock_mutations():
+    value = d.faithful_modular_encoding_control()
+    betas = []
+    for mode in value['finite_source_modes']:
+        p = mode['state_clock_parameters']
+        omega, r = float(p['frequency']), float(p['polarization'])
+        betas.append(p['inverse_temperature_in_frequency_clock_diagnostic'])
+        assert mode['preparation_reduced_state_error_diagnostic'] < 2e-12
+        assert mode['source_modular_flow_error_on_all_three_Paulis'] < 2e-12
+        for record in mode['complete_ordered_pointer_records'].values():
+            probabilities = record['all_system_reference_pointer_probabilities']
+            assert len(probabilities) == 32 and min(probabilities) >= 0
+            assert abs(sum(probabilities)-1) < 2e-12
+        # This independent Bloch formula includes finite kick saturation;
+        # its response normalization cancels r, while its noise does not.
+        exact_response = np.sin(omega)/omega*np.sinc(
+            .001*np.sqrt(2/(2*r*omega))/np.pi)
+        assert abs(mode['central_difference_response']-exact_response) < 2e-10
+        for probabilities in mode['complete_minus_and_plus_kick_system_reference_probabilities']:
+            assert len(probabilities) == 16 and abs(sum(probabilities)-1) < 2e-12
+        assert mode['purifying_reference_algebra_has_a_faithful_global_state'] is False
+    np.testing.assert_allclose(betas, 4, rtol=0, atol=1e-12)
+    assert np.ptp(value['equal_polarization_implied_inverse_temperatures']) > 1
+    assert value['same_eigenvalues_transverse_state_clock_commutator_norm'] > .05
+    assert value['integer_tick_alias_residual'] < 1e-14
+    assert value['half_tick_alias_difference'] > 1.99
+    assert value['common_inverse_temperature_forced_by_carrier_or_repair'] is False
+    assert value['geometric_patch_modular_flow_or_Unruh_temperature_identified'] is False
+
+
+def test_faithful_state_clock_relation_requires_axis_ratio_and_continuous_parameter():
+    from scipy.linalg import expm, logm
+    x = np.array([[0, 1], [1, 0]], complex)
+    rho = np.diag([.75, .25])
+    h = np.diag([0., .6])
+    beta = np.log(3)/.6
+    for parameter in (-.7, .2, .9):
+        modular = expm(1j*parameter*logm(rho))
+        forward = expm(-1j*beta*parameter*h)
+        np.testing.assert_allclose(modular@x@modular.conj().T,
+                                   forward@x@forward.conj().T, atol=1e-14)
+    # A state with the same spectrum but another axis is not stationary.
+    rotated = np.array([[.5, .25], [.25, .5]])
+    assert np.linalg.norm(rotated@h-h@rotated, 2) > .14
+    wrong = expm(1j*.2*logm(rotated))
+    forward = expm(-1j*beta*.2*h)
+    assert np.linalg.norm(wrong@x@wrong.conj().T-forward@x@forward.conj().T) > .1
+    # Pure references have a zero eigenvalue; the faithful tracial state
+    # has trivial modular action and cannot track a nonzero wave frequency.
+    assert np.linalg.det(np.diag([1., 0.])) == 0
+    tracial = expm(1j*.2*logm(np.eye(2)/2))
+    np.testing.assert_allclose(tracial@x@tracial.conj().T, x, atol=1e-14)
+    assert np.linalg.norm(expm(.2j*h)@x@expm(-.2j*h)-x) > .1
+
+
+def test_omitting_purifying_references_cannot_prepare_the_faithful_clock(monkeypatch):
+    def unentangled(polarization, copies):
+        angle = np.arccos(np.sqrt((1+float(polarization))/2))
+        return [d.source_compiler.pulse('Y', -angle, [j]) for j in range(copies)]
+    monkeypatch.setattr(d, '_thermal_code_preparation', unentangled)
+    with pytest.raises(ArithmeticError, match='faithful system state'):
+        d.faithful_mode_source_control(F(3, 5))
+
+
+def test_faithful_receipt_exact_inputs_and_tapes_do_not_track_libm_last_bits(monkeypatch):
+    def signature():
+        rows = d.faithful_modular_encoding_control()['finite_source_modes']
+        return [(row['state_clock_parameters']['frequency'],
+                 row['state_clock_parameters']['polarization'],
+                 tuple(record['word_sha256']
+                       for record in row['complete_ordered_pointer_records'].values()))
+                for row in rows]
+    expected = signature()
+    original = {name: getattr(d.math, name) for name in ('acos', 'sqrt', 'atan2', 'hypot', 'tanh')}
+    for direction in (-np.inf, np.inf):
+        for name, function in original.items():
+            def perturbed(*args, fn=function, toward=direction):
+                result = fn(*args)
+                for _ in range(8):
+                    result = d.math.nextafter(result, toward)
+                return result
+            monkeypatch.setattr(d.math, name, perturbed)
+        assert signature() == expected
+        for name, function in original.items():
+            monkeypatch.setattr(d.math, name, function)
+    # Independent higher-precision evaluation checks the actual native angles.
+    with mp.workdps(100):
+        for (frequency, polarization, _), lam in zip(expected, (5-mp.sqrt(5), 6, 5+mp.sqrt(5))):
+            angle = mp.acos(1-lam/60)
+            actual = mp.mpf(frequency.numerator)/frequency.denominator
+            r = mp.mpf(polarization.numerator)/polarization.denominator
+            assert abs(actual-angle) <= mp.mpf(2)**-45
+            assert abs(r-mp.tanh(2*actual)) <= mp.mpf(2)**-45
+
+
+def test_thermal_ordered_limit_and_KMS_follow_independent_detailed_balance():
+    a, b, omega = .7, .4, .6
+    for r in (F(1, 3), F(1, 2), F(3, 4)):
+        p = d.thermal_clock_parameters(F(3, 5), r)
+        beta = p['inverse_temperature_in_frequency_clock_diagnostic']
+        noise = 1/(2*float(r)*omega)
+        # Positive and negative frequency weights from a two-level state.
+        weight_plus, weight_minus = (1+float(r))*noise/2, (1-float(r))*noise/2
+        assert abs(weight_minus/weight_plus-np.exp(-beta*omega)) < 1e-14
+        def spectral(t):
+            return weight_plus*np.exp(-1j*omega*t)+weight_minus*np.exp(1j*omega*t)
+        assert abs(spectral(.3-1j*beta)-spectral(-.3)) < 1e-14
+        assert abs(spectral(.3-1j*beta/2)-spectral(-.3)) > .1
+        assert abs((spectral(.3)-spectral(-.3))*1j-np.sin(omega*.3)/omega) < 1e-14
+        vectors = ((a/np.sqrt(float(r)), 0), (0, b/np.sqrt(float(r))))
+        actual, limit = d.spin_weyl_expectation(vectors, 512, r)
+        oracle = np.exp(-(a*a+b*b)/(4*float(r))-1j*a*b/2)
+        assert abs(limit-oracle) < 1e-14 and abs(actual-oracle) < .0002
+
+
+@pytest.mark.parametrize('beta', (F(1), F(4), F(20)))
+def test_native_spectral_bound_gives_a_finite_thermal_Fock_partition(beta):
+    values = d.faithful_thermal_field_bound(beta)
+    # Saturating the proved eigenvalue lower bound is the largest allowed
+    # partition; independent finite sums must lie below both integral bounds.
+    omega = np.sqrt(np.arange(1, 200001)/49920)
+    heat = np.exp(-float(beta)*omega)
+    assert sum(heat) < float(values['one_particle_heat_trace_upper'])
+    assert sum(-np.log1p(-heat)) < float(values['normal_ordered_Fock_log_partition_upper'])
+    assert values['zero_mode_included'] is False
+    assert values['spatial_patch_modular_generator_identified'] is False
+    assert values['inverse_temperature_selected_by_passive_repair'] is False
+
+
+@pytest.mark.parametrize('r', (0, 1, -1, F(3, 2), .5, True))
+def test_faithful_clock_rejects_nonfaithful_or_inexact_preparation(r):
+    with pytest.raises((TypeError, ValueError)):
+        d.thermal_clock_parameters(F(1, 2), r)
+
+
+@pytest.mark.parametrize('frequency', (0, -1, .5, True))
+def test_faithful_clock_rejects_ambiguous_or_nonpositive_frequency(frequency):
+    with pytest.raises((TypeError, ValueError)):
+        d.thermal_clock_parameters(frequency, F(1, 2))

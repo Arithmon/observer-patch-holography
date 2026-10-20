@@ -69,15 +69,17 @@ Full-register execution reuses raw pulse-executed routines; its numerical
 guards are not interval or physical precision certificates. Protected
 storage, coherent control and carrier pauses are declared; the growing
 refinement compiler is unproved. A separate classical Gaussian wave has
-covariance `A^-1 cos((t-u)sqrt(A))`. The
-[source-coded quantum fluctuation readout](observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
-executes noncommuting ordered products and kick responses. Independently
-polarized proper codes give a CCR vacuum limit on the chosen mean-zero
-fluctuation algebra, with native wave frequencies and the active clock above.
-Preparation, mode encoding, control and protected storage remain supplied.
-Comparison-cone locality holds for suitable mean-zero supported tests;
-unrestricted tests require the constant-mode term, whose massless free
-particle has no normalizable stationary ground state.
+covariance `A^-1 cos((t-u)sqrt(A))`. The [source-coded quantum fluctuation readout](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
+executes ordered Weyl products and kick responses for pure and faithfully
+prepared codes. The IID copy limit gives vacuum or thermal CCR fields.
+For a faithful mode, modular flow matches the active clock exactly when
+its axis matches and `log((1+r)/(1-r))=b*Omega`, with a common `b` across
+modes. The native spectral bound gives a faithful mean-zero Fock Gibbs
+state and `s=-(2d/sqrt(630))*tau/b`. This applies to the encoded full
+algebra; geometric modular flow on a spatial patch is unproved. State
+preparation, mode encoding and protected controls remain supplied.
+Unrestricted locality requires the separate constant mode, whose massless
+free particle has no normalizable stationary ground state.
 The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 has a nonzero, exponentially bounded disjoint-support tail at every positive
 scaled selection-slot time. It has no exact finite signal cone under that
@@ -103,14 +105,23 @@ Dirichlet bulk's static boundary action (with smooth boundary). A
 also preserves the normalized decay spectrum, excluding a complete compact
 three-dimensional free scalar's Euclidean law under one clock scale.
 Internal rank-three modes vanish from bounded-energy families at this scale.
-A [positive mixture of actual native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
-constructs `exp(-r*sqrt(A))` along the same subsequence, with finite truncation
-budgets. This supplies the Poisson half-cylinder readout; `r` is a processing
-parameter, with no physical radius or independent bulk fields established.
-Whole-sequence uniqueness and physical quantum identification are unproved.
+A [positive mixture of native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
+gives `exp(-r*sqrt(A))`. Independent increments of the native long-block
+CLT also supply a [radial product field](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field), with covariance
+`(-d_r^2+Abar)^-1`, consistent slice gluing and spectral dimension three
+on a chosen interval. A separately encoded contrast restores the angular
+constant mode. Complete native tapes check the decoder; finite blocks are
+correlated, and Gaussian independence requires the count limit. The interval,
+filters and boundary values are supplied. Its product wave generator differs
+from the active angular clock's `sqrt(A)`; a joint encoder is unproved.
 The [finite edge-generator bridge](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
-realizes the edge theorem's generator and ranks on the native density
-representation. It prepares no 66-state Gibbs reference or gauge collar.
+realizes the edge theorem's generator and ranks. An [executed lazy filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
+prepares Gibbs approximants of `L` with all failures retained, nonzero
+interference and an explicit state/free-entropy error bound. This uses a
+supplied initial state, event bias and herald controller. The Gibbs state
+is central on the represented group algebra, so its modular flow there is
+trivial; nontrivial gaps require the larger logical register. Physical
+collars, full-group sewing and generalized-entropy stationarity remain open.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the

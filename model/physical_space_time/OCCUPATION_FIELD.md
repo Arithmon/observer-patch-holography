@@ -1065,10 +1065,111 @@ the Poisson operator of the finite Schur generator; no cell Markov closure
 is assumed. A fixed truncation budget does not survive arbitrary refinement:
 `b_l,j_l` must grow so that `R_l q_b_l` and the count-tail bound vanish.
 The result gives `r` an operational meaning as a chosen lag-mixture
-parameter. Different values reuse the same boundary histories and do not
-provide mutually local radial subsystems. Identifying `r` with spatial
-distance, supplying bulk field degrees of freedom, and identifying native
-physical time remain separate obligations.
+parameter. Its deterministic extension reuses the same boundary histories;
+additional radial innovations require additional recorded information.
+Identifying `r` with physical spatial distance and native physical time
+remains a separate obligation.
+
+### Independent native records give a radial product field
+
+The deterministic extension has a precise deficiency. If its boundary
+covariance is `C=(2 sqrt(A))^-1`, its cross-radius covariance is
+`C exp(-(r+s)sqrt(A))`. Conditional on one slice, later slices have zero
+innovation. A stationary radial field instead requires
+`C exp(-|r-s|sqrt(A))`, whose conditional innovation over a positive gap
+`delta` is `C(I-exp(-2delta sqrt(A)))`. Reusing one boundary random field
+cannot supply this missing covariance.
+
+The existing native functional CLT supplies the required independent
+information from disjoint long blocks of **one** stationary history.
+At a fixed source level their normalized cell readouts `Z_j` have covariance
+`B_l=G_l-c_l P`, `c_l=1/(2520*16^l)`, with `P` the mean-zero projection.
+Independence holds in the joint count limit. The exact 66-state calculation
+for two adjacent two-attempt blocks gives the nonzero normalized cross
+covariance `(K+2K^2+K^3)P/240`. More generally its norm is at most
+`29/(4n)` for blocks of length `n` on this single carrier, using
+`||K P||<=29/30`; this is not a uniform refinement or distributional error.
+
+Choose a radial interval `(0,L)` with zero endpoint values and write
+`A_bar=A ⊕ 0` for the constant-mode extension. To include its constant angular
+mode, take a second independent native block `Z'_j` and a fixed nonzero
+centered smearing `f`, and form
+`Xi_j=Z_j+e0 <f,Z'_j>/sqrt(<f,B_l f>)`. Here `e0` is the normalized constant
+angular vector. Thus `Cov(Xi_j)=B_l+P_const`. This is an encoded observable;
+the conserved native total occupation remains unchanged. It prevents the
+nonlocal constant-mode projection from being mistaken for a local field.
+
+The Dirichlet product-field covariance for angular eigenvalue `lambda`
+is
+
+```text
+C_lambda(r,s) = sinh(h min(r,s)) sinh(h(L-max(r,s)))/(h sinh(hL)), h=sqrt(lambda),
+C_0(r,s) = min(r,s)(L-max(r,s))/L.                           (RP1)
+```
+
+For a grid step `r<s<L`, set
+`R_rs=sinh(h(L-s))/sinh(h(L-r))` and
+`Q_rs=sinh(h(s-r))sinh(h(L-s))/(h sinh(h(L-r)))`.
+At `lambda=0` these become `(L-s)/(L-r)` and
+`(s-r)(L-s)/(L-r)`. Starting with `U(0)=0`, the declared record filter is
+
+```text
+U(s)=R_rs U(r)+Q_rs^(1/2)(B_l+P_const)^(-1/2) Xi_j.          (RP2)
+```
+
+All factors are spectral functions of the same finite source generator.
+Multiplication gives (RP1), `R_rt=R_st R_rs` and
+`Q_rt=Q_st+R_st Q_rs R_st*`: inserting or deleting an intermediate slice
+preserves the joint law. Its precision is `D* diag(Q_rs^-1) D`, where
+`D U` subtracts each preceding slice multiplied by `R_rs`.
+It is block tridiagonal in the radial grid. Past and future are conditionally
+independent given the intervening slice. The executable checks these
+identities, the positive conditional variances and full joint rank on
+the actual twenty- and eighty-cell sources. Reusing one block changes
+the covariance; a boundary-only extension has rank at most the boundary
+dimension. These are Gaussian laws after the native CLT, with floating
+matrix diagnostics supporting the analytic identities. A complete
+96-attempt tape on each source executes the record filter without changing
+repair: six consecutive blocks of sixteen attempts supply three radial
+slices. Initial loads and every signed current, including zero, reconstruct
+the fields, checked against the native state after every event. All radial
+outputs are retained. This execution checks the decoder and filters; it
+does not turn the finite tape into a Gaussian ensemble.
+
+The compatible grids define the Dirichlet Gaussian field with covariance
+`(-d_r^2+A_bar)^-1`. Its Cameron–Martin quadratic form is
+`(1/2) integral_0^L (||d_r phi||^2+E(phi(r))) dr`.
+Norm convergence of `G_l` gives every fixed cross-radius smeared covariance.
+For angular Sobolev order `s>1`, conditioning the stationary positive-mode
+process bounds increment covariance by `|r-u|I`; the zero-mode Brownian
+bridge obeys the same bound. Spherical harmonic averaging therefore gives
+second and fourth moment bounds `H_s |r-u|` and `3H_s^2 |r-u|^2`, where
+`H_s=1+6(1+1/(2s-2))`. Initial variances are uniformly bounded by
+`max(37/2,L/4)H_s`. Applying these bounds at any `1<s'<s` and the compact
+embedding `H^-s' -> H^-s` gives tightness in `C([0,L],H^-s(S2))`.
+The native count limit precedes the common spatial subsequence; no growing
+encoder or finite-count approximation rate is inferred.
+
+On the declared interval `(0,pi)`, radial Dirichlet eigenvalues are `k^2`,
+`k>=1`. With `lambda_0=0` and `n/49920<=lambda_n(A)<=3n/2`, counting
+`k^2+lambda_n<=Lambda` gives
+`Lambda^(3/2)/(12sqrt(2)) <= N(Lambda) <= 49921 Lambda^(3/2)` for
+`Lambda>=3`. For the lower bound take
+`k<=floor(sqrt(Lambda/2))`, `1<=n<=floor(Lambda/3)`; the upper bound
+counts at most `floor(sqrt(Lambda))(1+floor(49920Lambda))` pairs.
+This proves spectral dimension three for this **chosen product field**.
+The interval heat estimate and the existing full angular heat estimate
+give a comparison wave cone of speed one in
+`d_product^2=|r-u|^2+2d_screen^2`, with zero angular mode included.
+The tensor form is local; the inherited strongly local form comparison
+extends the rectangular heat bound to its product comparison distance.
+
+This constructs independent radial field information and a local product
+action from native observations. The radial topology, length, boundary
+condition, filters, block access and constant-mode encoding are specified
+observer operations. Repair has not selected them, nor identified these
+records with physical radial sites, transport, a laboratory clock, a
+Lorentzian metric or an interacting quantum field.
 
 The internal carrier directions also cannot supply such a radius at the
 present scale. Set `E_l^port(v)=4^l<v,L_l v>`. The internal gap gives

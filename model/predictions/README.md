@@ -340,9 +340,9 @@ probabilities within approximately `[.946797,.948659]`, `[.721645,.723507]`,
 `[.762113,.764252]` and `[.924060,.926199]`; the compiled source outputs lie
 inside the corresponding outward bounds. The same inference predicts the
 unused lag `c_4`. No separate field frequency or clock scale is fitted.
-A common unit convention rescales both frequencies together. The raw
-compiled arrays receive an event-weight allowance of twice their complete
-half-diamond error, retain padding and are not renormalized.
+A common unit convention rescales both frequencies together. The raw arrays
+retain padding without normalization and receive twice their complete
+half-diamond error as an event-weight allowance.
 
 The probability tubes have a dependent-tape coverage contract. Use the same
 `M` starting positions from `M+5` retained bits to estimate the mean and five
@@ -372,6 +372,75 @@ those observations can test this correspondence.
 
 Replay with `python -m model.predictions.inverse_clock --check
 model/predictions/inverse_clock_results.json`.
+
+### Preparing the finite edge reference from source pulses
+
+The same replay implements an active preparation for the
+[native edge generator](../observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair).
+Its density transfer is `K12=I-L/60`; `L` has eigenvalues
+`0, 5-sqrt(5), 6, 5+sqrt(5)` and sector ranks `1,3,5,3`. A closed-history
+trace represents a Gibbs functional but does not prepare a coherent density.
+Here a supplied protected register in `I12/12`, a declared event preparation,
+and an explicit herald produce the density itself.
+
+Prepare each of the thirty even event addresses with probability `(2-p)/60`
+and each odd address with probability `p/60`. The existing compiled reversible
+shift fixes an even address and swaps the corresponding seam endpoints at an
+odd address. Unprepare the event register and herald a valid site address,
+event zero and clean scratch.
+The success operator is exactly
+`F_p=(1-p)I+pK12=I-pL/60`. The retained instance uses `p=1/2` and two
+successful heralds, producing `rho=F_p^4/Tr(F_p^4)`. The source routines are
+executed pulse by pulse on all columns, then reused on the fifteen-qubit
+register for all twelve logical input columns. Every first-failure output,
+including address padding and dirty scratch, contributes to the total
+probability. The complete raw filter is reused for the second herald.
+Fixed numerical error guards test those arrays; they are not interval or
+physical precision certificates. An executed source rotation
+`exp(i*pi*Y_01/4)` followed by all sixteen address outcomes reads the
+normalized zero-minus-one contrast `260343/43825510`; dephasing the prepared
+density reduces this contrast to zero. Sector projectors below are
+mathematical readout predictions, not a compiled sector detector.
+
+For a fixed preparation parameter `t>=0`, set `p=30t/n<=1`. After `n`
+successful heralds,
+
+```
+rho_n = (I-tL/(2n))^(2n) / Z_n  ->  sigma_t = exp(-tL)/Z
+p_R(n,t) = d_R (1-t lambda_R/(2n))^(2n) / Z_n
+Pr(all n heralds succeed) = Z_n/12 >= 1/12.
+```
+
+These relations tie preparation and sector readouts to the same generator,
+with no independently fitted sector temperatures. Since `lambda_max<8`,
+`0 <= -2n log(1-t lambda/(2n))-t lambda <= e_n`,
+where `e_n=16t^2/[n(1-4t/n)]`. The finite weights are the Gibbs weights
+multiplied by factors in `[exp(-e_n),1]`. Rejection coupling gives trace
+distance at most `min(1,e_n)`; the normalized log ratios give
+`D(rho_n||sigma_t)<=e_n`. The full-register modular gap inferred from
+`log[(p_S/d_S)/(p_R/d_R)]` differs from `t(lambda_R-lambda_S)` by at most
+`e_n`; it is fixed by the same preparation and sector law. Thus the Gibbs variational identity
+`S(rho)-t Tr(rho L)=log Z-D(rho||sigma_t)` supplies an explicit
+free-entropy deficit and stationarity at the limit on the trace-one fibre.
+This is not a derivation of bulk-plus-area entropy stationarity.
+
+The density has nonzero off-diagonal entries: dephasing preserves site
+probabilities but changes the prepared reference. Its sector weights use
+`d_R`, not the regular-group multiplicities `d_R^2`; the represented algebra
+has dimension 44, with no four-dimensional irrep. Full group sewing and a
+compact-group limit do not follow. The edge modular generator is `tL` up to
+a scalar on the full logical algebra `B(C^12)`, which includes operators
+between sectors. On the represented algebra `M1+M3+M5+M3`, the state is
+central and its modular flow is the identity. The full-register generator
+is distinct from the wave generator `sqrt(L)`; one clock conversion
+cannot identify their gaps across all bands. The ideal growing filter has
+the proved limit, while source precision and service budgets for that entire
+family require a separate bound. Biased coherent preparation, protected
+storage, initial density and herald readout are admitted observer services,
+not a state selected by passive repair. Public clock-ratio datasets do not
+contain this joint preparation and sector measurement, so these are
+conditional model predictions, not an empirical discriminator against SM
+or GR.
 
 ## Native repair response from passive clock and field records
 

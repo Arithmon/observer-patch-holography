@@ -53,7 +53,17 @@ native Green covariance `G_l` through the unbounded spectral filter
 implements the Poisson extension with an explicit omitted-mass bound:
 the complete 66-state check uses lags at most 512 with error below `0.036`.
 Its mixture parameter remains a chosen readout setting, without a physical
-radial identification. On the twelve-port carrier, explicit four-event fork-and-join
+radial identification. An [independent-record extension](OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field)
+fills its missing radial innovations: independent long-block limits of the
+same native history, including one encoded constant angular mode, synthesize
+the Dirichlet product covariance `(-d_r^2+(A ⊕ 0))^-1`. The exact filters
+give consistent cross-radius laws, positive innovations and block tridiagonal
+radial precision. Complete 96-event tapes execute the readout on the actual
+twenty- and eighty-cell sources. The declared interval product has spectral
+dimension three and a free-wave comparison cone; its radial domain,
+boundary conditions and processing remain observer choices. Finite adjacent
+native blocks retain nonzero covariance, so the Gaussian construction
+requires the stated count limit. On the twelve-port carrier, explicit four-event fork-and-join
 diamond schedules in `causal_placement.py` realize two-way causal order
 equivalence and matching metric causal intervals across all sixteen coin
 branches, while general tapes retain the converse countercontrol. The exact

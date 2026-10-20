@@ -105,6 +105,17 @@ has not selected that quantum state. The fractional classical covariance
 alone supplies no CCR, and removing the constant mode restricts the
 comparison-cone statement to suitable mean-zero local tests.
 
+The [faithful thermal encoding](REFINEMENT.md#faithful-state-clock-compatibility)
+also connects this active clock to modular flow. A mode of frequency `Omega`
+with polarization `0<r<1` has the same continuous clock precisely when
+`log((1+r)/(1-r))=b Omega` on the same Pauli axis; then
+`sigma_s=alpha_(-b s)`. Existing source controls prepare the mixed system
+state using retained purifying references and execute its ordered readout
+and sine response. The native spectral bound gives a faithful mean-zero
+Fock Gibbs state for each supplied common `b>0`. This fixes the conditional
+state/clock relation; passive repair does not choose `b`, and the modular
+flow of a spatial patch or a laboratory clock is not identified.
+
 ## The common observer contract
 
 This is a classical recorded branch of the
