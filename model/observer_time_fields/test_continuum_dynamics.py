@@ -1080,3 +1080,12 @@ def test_product_gibbs_bounds_include_the_angular_constant_without_zero_frequenc
     assert np.sum(-np.log1p(-weights)) < float(row['normal_ordered_Fock_log_partition_upper'])
     assert row['angular_constant_mode_included'] is True
     assert row['product_has_zero_frequency_mode'] is False
+
+
+@pytest.mark.parametrize('beta', (F(1), F(1, 2)))
+def test_joint_product_clock_preparation_and_continuum_state_share_temperature(beta):
+    row = d.product_clock_encoding_control(beta)
+    assert row['continuum_thermal_state']['inverse_temperature'] == beta
+    for mode in row['finite_source_modes']:
+        assert mode['requested_inverse_temperature'] == beta
+        assert abs(mode['inferred_inverse_temperature_diagnostic']-float(beta)) < 1e-12

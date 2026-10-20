@@ -25,7 +25,7 @@ def test_exact_product_dictionary_diagonalizes_declared_radial_energy(points):
         assert row['native_eigenvector_membership_requires_a_separate_certificate']
 
 
-@pytest.mark.parametrize('beta', (F(1, 16), F(1, 2), F(2), F(4)))
+@pytest.mark.parametrize('beta', (F(1, 16), F(1, 2), F(1), F(2), F(4)))
 def test_record_filter_distinguishes_classical_and_quantum_product_covariances(beta):
     row = o.product_thermal_control(beta)
     for key in ('direct_product_matrix_diagonalization_error',
@@ -42,6 +42,11 @@ def test_record_filter_distinguishes_classical_and_quantum_product_covariances(b
     assert np.shape(row['all_thermal_radial_readouts_from_complete_96_event_tape']) == (3, 20)
     assert not row['classical_record_filter_establishes_quantum_CCR']
     assert not row['finite_tape_certifies_Gaussian_thermal_ensemble']
+
+
+def test_retained_product_covariance_and_bound_share_inverse_temperature():
+    assert o.product_thermal_control()['inverse_temperature'] == '1'
+    assert o.product_thermal_bounds()['inverse_temperature'] == F(1)
 
 
 @pytest.mark.parametrize('points', (3, 8, 16))

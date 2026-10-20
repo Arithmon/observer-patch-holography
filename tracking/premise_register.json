@@ -10334,7 +10334,7 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "scope": "Unnormalized positive subordination approaches exp(-b sqrt(L)) without separately fitted band polarizations. Joint success conditioning supplies the required partition weights. One reference determines transition noise, commutator amplitudes and modular gaps.",
-          "limitations": "The exact sampler has infinite expected cost; capped outputs and errors are essential. The state remains central on the represented group algebra. Full-register modular operations and intersector detectors do not constitute physical collars or an executed same-register wave unitary.",
+          "limitations": "The exact sampler has infinite expected cost; capped outputs and errors are essential. The ideal density is central on the represented group algebra; numerical source errors are separately bounded. Full-register modular operations and intersector detectors do not constitute physical collars or an executed same-register wave unitary.",
           "sources": [
             {
               "path": "model/predictions/README.md",

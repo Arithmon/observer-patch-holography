@@ -1739,14 +1739,16 @@ def product_mode_source_control(native_eigenvalue=6, radial_mode=1, radial_point
         'source_eigenmode_membership_is_checked_for_every_function_input': False}
 
 
-def product_clock_encoding_control():
+def product_clock_encoding_control(inverse_temperature=F(1)):
+    beta = _fraction(inverse_temperature, positive=True)
     return {'native_mode_and_clock': product_native_mode_control(),
-        'finite_source_modes': [product_mode_source_control(lam, radial_mode=k)
+        'finite_source_modes': [product_mode_source_control(lam, radial_mode=k,
+                                                           inverse_temperature=beta)
                                 for lam, k in ((6, 1), (6, 2), (0, 1))],
         'refinement_clock_bounds': [product_clock_bound(l, tolerance=F(1, 2**(l//2+3)),
                                                       step_error=F(1, 2**(44+4*l)))
                                     for l in (0, 2, 4, 8)],
-        'continuum_thermal_state': product_thermal_field_bound(),
+        'continuum_thermal_state': product_thermal_field_bound(beta),
         'limiting_generator': 'sqrt(B), B=-d_r^2+(A direct_sum 0)',
         'ordered_covariance': '(coth(b sqrt(B)/2)*cos(t sqrt(B))-i sin(t sqrt(B)))/(2 sqrt(B))',
         'conditional_same_product_operator_state_response_and_active_clock': True,

@@ -348,7 +348,7 @@ def product_mode_dictionary(native_eigenvalue, radial_mode=1, radial_points=3,
     }
 
 
-def product_thermal_bounds(inverse_temperature=F(2), length=F(2),
+def product_thermal_bounds(inverse_temperature=F(1), length=F(2),
                            radial_points=3, radial_band=1, horizon=F(1)):
     """Rational grid, thermal-state and H^-3 path bounds for the declared product."""
     beta, length, horizon = map(_positive, (inverse_temperature, length, horizon))
@@ -408,7 +408,7 @@ def native_block_covariance_bound(level, block_length, blocks, filter_norm_squar
         'finite_count_Gaussian_total_variation_bound': False}
 
 
-def product_thermal_control(inverse_temperature=F(2)):
+def product_thermal_control(inverse_temperature=F(1)):
     """Execute the declared radial-grid/thermal filter on the native records.
 
     The classical symmetric covariance is measured here. Noncommuting ordered
