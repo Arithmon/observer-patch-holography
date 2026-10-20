@@ -7,6 +7,7 @@ import math
 
 import numpy as np
 import pytest
+from scipy.linalg import expm, logm
 
 from ..observer import quantum_mixing
 from . import prepared_clock as clock
@@ -93,6 +94,91 @@ def prepared_pair():
 def histories():
     return (clock.execute(axis="Y", intervention=1),
             clock.execute(axis="Y", intervention=1, ideal=True))
+
+
+@pytest.fixture(scope="module")
+def independent_terminal_outputs():
+    # Derive preparation and its clock directly from the native Laplacian;
+    # neither producer prefix assembly nor its ideal maps enter this oracle.
+    lazy = np.eye(12)-_laplacian()/120
+    weights = clock.preparation.subordinated_filter_weights()
+    mixture = sum(float(w)*np.linalg.matrix_power(lazy, 2*n)
+                  for n, w in enumerate(weights))
+    hamiltonian = -logm(mixture/float(sum(weights)))
+    tick = np.eye(16, dtype=complex)
+    tick[:12, :12] = expm(-1j*hamiltonian)
+    # Reuse only the declared eigenvectors that define the chosen pair and
+    # address readout. The clock above does not use this spectral basis.
+    basis = clock.source.native_spectral_data()["basis"]
+    pair = 2  # The declared single lambda=6 address.
+    zero, selected = basis[:, 0], basis[:, pair]
+    pair_x = np.outer(zero, selected)+np.outer(selected, zero)
+    kick = expm(1j*np.pi*pair_x/4)
+    detectors = {axis: basis.T.astype(complex) for axis in ("X", "Y")}
+    detectors["X"][0] = (zero+selected)/math.sqrt(2)
+    detectors["X"][pair] = (-zero+selected)/math.sqrt(2)
+    detectors["Y"][0] = (zero-1j*selected)/math.sqrt(2)
+    detectors["Y"][pair] = (-1j*zero+selected)/math.sqrt(2)
+    controls = [control for control, _ in _independent_tapes()]
+    outputs = {}
+    for axis, detector in detectors.items():
+        for intervention in (0, 1):
+            expected = {}
+            for n in range(len(weights)):
+                prepared = np.zeros((16, 12), dtype=complex)
+                prepared[:12] = np.linalg.matrix_power(lazy, n)/math.sqrt(12)
+                for first, feedback, second in controls:
+                    expected[n, first, feedback, second] = (
+                        detector@np.linalg.matrix_power(tick, second)
+                        @np.linalg.matrix_power(kick, intervention*feedback)
+                        @np.linalg.matrix_power(tick, first)@prepared)
+            outputs[axis, intervention] = expected
+    return outputs
+
+
+def _reference_density_rows(amplitude):
+    return amplitude[:, :, None]*amplitude[:, None, :].conj()
+
+
+def _assert_terminal_reference_outputs(actual, expected):
+    assert actual.successful.keys() == expected.keys()
+    for key, amplitude in actual.successful.items():
+        np.testing.assert_allclose(
+            _reference_density_rows(amplitude), _reference_density_rows(expected[key]),
+            atol=2e-11, rtol=0,
+            err_msg=f"terminal reference density for {actual.axis}, {actual.intervention}, {key}")
+
+
+@pytest.mark.parametrize("axis", ("X", "Y"))
+@pytest.mark.parametrize("intervention", (0, 1))
+def test_complete_terminal_reference_matches_independent_composition(
+        independent_terminal_outputs, axis, intervention):
+    actual = clock.execute(axis=axis, intervention=intervention)
+    _assert_terminal_reference_outputs(actual, independent_terminal_outputs[axis, intervention])
+
+
+def test_independent_reference_oracle_detects_omitted_first_clock_despite_equal_probabilities(
+        histories, independent_terminal_outputs, monkeypatch):
+    actual, _ = histories
+    expected = independent_terminal_outputs["Y", 1]
+    _assert_terminal_reference_outputs(actual, expected)
+
+    def omit_first_clock(amplitude, control, intervention, maps):
+        return (maps[f"kick_plus_{clock.BAND}"]@amplitude
+                if control[1] and intervention else amplitude)
+
+    monkeypatch.setattr(clock, "_prefix", omit_first_clock)
+    changed = clock.execute(axis="Y", intervention=1)
+    actual_law, changed_law = clock.probabilities(actual), clock.probabilities(changed)
+    assert actual_law.keys() == changed_law.keys()
+    np.testing.assert_allclose(list(actual_law.values()), list(changed_law.values()),
+                               atol=2e-11, rtol=0)
+    difference = max(np.linalg.norm(
+        _reference_density_rows(changed.successful[key])-_reference_density_rows(amplitude))
+        for key, amplitude in expected.items())
+    assert difference > 1e-4
+    with pytest.raises(AssertionError, match="terminal reference density"):
+        _assert_terminal_reference_outputs(changed, expected)
 
 
 def test_ideal_preparation_keeps_every_unnormalized_first_failure(prepared_pair):
