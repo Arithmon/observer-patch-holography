@@ -515,6 +515,20 @@ physical service allowance would suffice for a 1% target. Failed heralds
 remain trials. The producer executes two consecutive trials per candidate
 and reference controls, not the entire proposed experimental campaign.
 
+The [repair-generated scheduler](repair_scheduler/README.md) removes the
+separate random-seam service and exact initial preparation from a complete
+version of this experiment. Seventeen deterministic sweeps first absorb
+arbitrary total-two collision inputs and prepare the binary uniform state
+within `259/10^9`, uniformly over untouched references. A separate native
+carrier's coarse coin instrument supplies uniform seam choices without
+resetting that carrier or assuming its initial independence. Bounded
+rejection retains explicit timeout outcomes. Two continuing trials per law
+execute all 144 public records; the fixed 3,927-trial schedule has
+wrong-candidate bound below `0.006061`, with both carriers' costs counted.
+The native fair instrument, auxiliary access, coherent mixer, record handling
+and physical identification remain inputs. The deterministic scan changes
+preparation only; it does not replace the uniform-scheduler clock laws.
+
 The [native interface](native_interface/README.md) obtains the coherent
 readout from a source mixer, native herald and native pointer. The
 [compiled interface](compiled_native_interface/README.md) verifies the
