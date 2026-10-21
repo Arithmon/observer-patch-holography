@@ -2,15 +2,18 @@
   "dependencies": [
     "Python 3.11+",
     "Pinned model/requirements.txt",
-    "Native quantum-history and primitive runtime source bindings in results.json"
+    "Native quantum-history, prepared-reference and primitive runtime source bindings in results.json and coherence_results.json"
   ],
-  "description": "Native signed-current heralds and coin/current phase effects using one declared shared balanced mixer, with complete outcomes and exact reachability boundaries.",
+  "description": "Native signed-current heralds and coin/current phase effects using one shared balanced mixer, with complete outcomes, exact reachability boundaries, and rational native-only preparation floors.",
   "files": {
-    "README.md": "2a4d781b34de75852054da7d53c59a887216dd9e89a47c097e27bbe2a23f6bed",
+    "README.md": "26a9a1cc1b78f533b9baa4de2cdaee5bb9780119384a0ae46e5c4bbc6e873bc7",
     "__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",
+    "coherence_budget.py": "6a20c76342ec7ca988ed0bd61b4bad1a8b7464a9cb3061a593734237c84be779",
+    "coherence_results.json": "6ad2e02c4a7b81f671178a1569b2ae02929d6c1c57129c28ace53b85d46597fe",
     "construction.py": "9406eba34986f27d47f7be10d3a155d6e37e5123854ff3db40c305cf4bc391fb",
     "results.json": "6110fc1e7a5605d506594db1299b9b26bedd3ffc32cb65e6af87a782257ca80b",
+    "test_coherence_budget.py": "c3efea7c81eb518739b3e9bc5129e75ebbba67870b8e7ca263ed4aa8791ee083",
     "test_construction.py": "fbcef99eae7bdf865f6386c4e3bf0bb4845607969de93d6b2960873ee6aea805"
   },
   "schema": "oph.model.packet.v1"

@@ -170,7 +170,70 @@ has a new Lean instantiation or belongs to the theorem's original generator
 set. Full complex tomography still needs a resource breaking this real-effect
 restriction.
 
-## What is still supplied and how to reproduce
+## Quantitative preparation floors for the native-only grammar
+
+[`coherence_budget.py`](coherence_budget.py) turns the reachability boundary
+above into exact complete-output error floors. Its premise concerns the joint
+marginal of **all accessible quantum registers**: that marginal must initially
+be diagonal, and fresh diagonal ancillas must be independent. Separate diagonal
+marginals of correlated registers are insufficient. Any work extraction must
+preserve the declared basis dephasing. Coherent access to an uncommitted native
+record dilation remains outside this grammar. The producer checks the actual
+C/E partial injections; independent tests rebuild them from endpoint averaging.
+
+Let a target success block be `p rho`, and let `c` be the minimum trace distance
+from `rho` to a normalized diagonal state. A native-only success block has the
+form `q delta`, even when adaptation changes the herald rate. Its complete
+output distance is at least
+
+```text
+D(p rho, q delta) + |p-q|/2 >= p c,       D(A,B) = ||A-B||_1/2.
+```
+
+The other output blocks supply `|p-q|/2`. Rescaling `q delta`, or adding diagonal
+mass, produces a diagonal matrix of trace `p` at precisely that distance; the
+triangle inequality proves the bound. Thus changing the success rate, including
+always failing, cannot evade it. Conditional target error `epsilon` gives
+`p max(0,c-epsilon)`, with no division by a rare-event probability.
+
+For the ten balanced orientation pairs, a signed pair-swap witness proves
+`c=1/2`. Keeping both original sign heralds gives the exact floor **`5/66`**.
+One additional unread fixed-seam repair after each successful native herald
+prepares the equal orientation mixture and attains this floor. This sharpness
+statement retains the original herald and work, forgets the added repair record,
+and makes no claim about a finer tape or retained reference.
+
+For the existing capped twelve-site preparation, write
+`F=I-L/120`, `M=sum_(n=0)^4 w_n F^(2n)`, `p=Tr(M)/12`, and `rho=M/Tr(M)`.
+The producer checks the exact characteristic polynomial
+`x(x-6)^5(x^2-10x+20)^3` and all sixty source rotations. Their uniform transitive
+twirl fixes `rho` and sends every diagonal state to `I/12`; trace-distance
+contractivity proves that `I/12` is closest. With
+`m_lambda=sum_n w_n(1-lambda/120)^(2n)`, integer-square-root enclosures resolve
+the four positive eigenvalues of `rho-I/12` and give
+
+```text
+c   = [m_0 + 3 m_(5-sqrt(5)) - 4p]/(12p),
+p c = [m_0 + 3 m_(5-sqrt(5)) - 4p]/12.
+```
+
+The conditional floor is about `0.005603441895`; the complete floor is about
+`0.004494803462`. Exact rational intervals are retained in
+[`coherence_results.json`](coherence_results.json). Sharpness here concerns
+diagonal successful work and coarse success/failure access that discards failed
+quantum outputs. Retaining those outputs or a reference preserves the lower
+bound, but does not establish sharpness for that richer access.
+
+These are preparation-checkpoint bounds, before the clock and detector. They
+are not applied to the subsequently dephased terminal work. A complete target
+allowance `a`, initial error `eta`, and uniform complete-instrument half-diamond
+error `delta` over at most `N` adaptive attempts leave the lower bound
+`max(0,p c-a-min(1,eta+N delta))`. `N` is a maximum path length, not a mean.
+The receipt subtracts the existing prepared-clock numerical allowance under
+its existing guards; this module reproduces that arithmetic without reexecuting
+the source words or certifying physical service errors.
+
+## Supplied premises and reproduction
 
 The binary carrier sector, `I/66` input, chosen seam, uniform evolution
 scheduler, candidate C or E, balanced mixer and classical protocol controller
@@ -185,9 +248,11 @@ the same effects, but this packet executes fixed native attempt counts only.
 From the repository root, with `model/requirements.txt` installed:
 
 ```sh
-python -m pytest model/native_interface/test_construction.py -q
+python -m pytest model/native_interface -q
 python -m model.native_interface --check model/native_interface/results.json
 python -m model.native_interface --write /tmp/native-interface-new.json
+python -m model.native_interface.coherence_budget --check model/native_interface/coherence_results.json
+python -m model.native_interface.coherence_budget --write /tmp/native-coherence-new.json
 ```
 
 `--write` refuses to overwrite existing files. `--check` rejects malformed
