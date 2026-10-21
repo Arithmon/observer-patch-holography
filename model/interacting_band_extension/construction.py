@@ -1298,7 +1298,8 @@ def leakage_witness(lattice, steps=32, time=F(1, 1024), execute=True):
 
 
 def checks_and_run():
-    from ..common_source.records import product_access_certificate
+    from ..common_source.records import (product_access_certificate,
+                                        product_central_weight_certificate)
     if a.quartic_coefficients() != a.declared_quartic():
         raise ArithmeticError('extended quartic failed independent exact Fourier integration')
     extended, matched, bare = Lattice(), Lattice(False, True), Lattice(False, False)
@@ -1375,6 +1376,8 @@ def checks_and_run():
     product['homogeneous_native_clock_controller'] = product_homogeneous_controller_control()
     product['joint_fixed_reference_modular_history'] = product_modular_history_control()
     product['operational_work_access'] = product_access_certificate()
+    product['central_weight_identification'] = product_central_weight_certificate()
+    product['central_weight_held_out_readout'] = a.product_central_holdout_control()
     product['detector_KMS'] = a.product_detector_kms_control(product)
     product['occupation_refinement'] = a.product_occupation_refinement()
     return a.serializable({

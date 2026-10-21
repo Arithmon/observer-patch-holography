@@ -12,6 +12,15 @@ calibrations across experiments, not a separate fitted law for each case.
 No comparison here establishes agreement with all public observations or
 at every physical scale.
 
+The [earlier-state readout test](../../model/interacting_band_extension/README.md#a-held-out-record-law-after-central-weight-calibration)
+fixes one Hamiltonian, temperature and instrument family, infers its remaining
+sector weight from complete records, and predicts a separate model-time
+readout without another fit. The source execution passes and four changed
+validation contracts fail. Its illustrative counts are synthetic; the
+sampling and service-error bounds expose weak sensitivity of this short
+protocol. This is an executed model prediction, pending a physical dataset
+with the same preparation and readout contract.
+
 Two kinds of claim need separate interpretation. Fixing a parameter that a
 standard model leaves free is a testable restriction of that model. Predicting
 an intrinsic vacuum dispersion or another incompatible response changes its

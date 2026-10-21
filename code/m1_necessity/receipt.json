@@ -1779,7 +1779,7 @@
           "declared_radial_product_interaction_and_Gibbs_protocol"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "cdf84a9d8aa163544489b81f7c3d9a61d79249edf144a6f5c9290facf079a487"
+        "original_claim_sha256": "455e46612814d6fc2314ffc80bd7090e9800944f63ca7895948ad0eb1781439d"
       },
       "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION": {
         "assumptions": [

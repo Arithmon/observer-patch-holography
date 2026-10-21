@@ -551,6 +551,50 @@ Gibbs state: on the absorbing halt sector, every work/reference density is
 fixed by the same instrument. These finite counterexamples leave Hamiltonian,
 temperature and preparation selection as source-law choices.
 
+<a id="a-held-out-record-law-after-central-weight-calibration"></a>
+
+### A held-out record law after central-weight calibration
+
+The [complete-record inverse](../common_source/DERIVATION.md#central-weight-from-complete-records) identifies the
+even-sector weight w within `rho_w=w rho_even+(1-w)rho_odd`, with the same
+`H`, `beta=1/4`, kicks, pointer and feedback fixed. Its calibration event A
+contains terminal bit patterns `(0)`, `(0,0)`, `(1,1)` at model interval
+`1/16`; all seven patterns, including native-clock timeouts, enter the trial
+count. A distinct validation event B is equal bits in the existing complete
+two-read program at interval `1/8`. That validation has four unconditional
+outputs and no native timer. It does not reuse a selected subset of the
+calibration trials or identify timestamps between these two protocols.
+
+For sector probabilities c and v, linearity gives
+
+```text
+p_A = c_odd + w (c_even-c_odd),
+p_B = v_odd + (v_even-v_odd)/(c_even-c_odd) (p_A-c_odd).
+```
+
+The certified validation contrast exceeds `0.00363067148365`; the affine
+slope is about `23.99193`. `product_central_holdout_interval` propagates the
+exact sector enclosures through the inverse interval, then adds validation
+service and sampling allowances. For exact coefficients, calibration error
+e_A and validation error e_B give the simpler bound
+`|p_B_observed-p_B_predicted| <= e_B+|slope| e_A`. Each e includes its
+service, preparation and sampling error. Fresh independent IID samples of
+sizes N_A,N_B with radii r_A,r_B have joint failure probability at most
+`2 exp(-2 N_A r_A^2)+2 exp(-2 N_B r_B^2)`.
+
+The same source preparation gives `p_A=0.1569589724` and held-out
+`p_B=0.6900830597`, retaining every work/reference output. The synthetic
+count example uses `10^11` calibration and `10^9` validation trials as a
+requirement, not collected data; it predicts `[0.68877855,0.69138758]` with
+the declared service bounds and conservative sampling failure below
+`3.82e-6`. This conservative sufficient budget concerns this calibration
+menu; it is not a necessary sample lower bound for other admitted readouts.
+Changing only the validation interaction, temperature, feedback or interval
+violates that interval in the retained controls. No validation parameter
+is fitted. The result predicts classical record probabilities within this
+fixed family; it reconstructs neither unknown reference correlations nor a
+physical state, clock dictionary or observed Universe from modular flow.
+
 ## Unrestricted occupation for the same two-mode history
 
 Fix `g>=0` and `beta>0`, keeping the radial modes, effective coupling,

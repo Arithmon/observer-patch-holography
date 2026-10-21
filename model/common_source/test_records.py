@@ -38,6 +38,87 @@ def branches():
 
 
 class CheckpointRecordsTests(unittest.TestCase):
+    def test_exact_product_sector_event_matches_actual_complete_controller(self):
+        import numpy as np
+        from scipy.linalg import expm
+        from model.interacting_band_extension.construction import ProductControllerInstrument
+        program = ProductControllerInstrument()
+        h = program.lattice.hamiltonian.toarray()
+        thermal = expm(-h/4)
+        parity = np.diag([(-1)**(index % 4) for index in range(16)])
+        bounds = r.product_central_record_bounds()
+        effects = {bits: np.zeros((16, 16), dtype=complex) for bits in r.PRODUCT_RECORD_BITS}
+        native_tapes, rows = set(), 0
+        for state, operation, weight, _ in program.completed():
+            effects[state.bits] += float(weight)*(operation.conj().T@operation)
+            native_tapes.add(state.tape)
+            rows += 1
+        self.assertEqual(rows, 4900)
+        self.assertEqual(len(native_tapes), 3600)
+        np.testing.assert_allclose(sum(effects.values()), np.eye(16), atol=2e-10, rtol=0)
+        for sector, sign in (('even', 1), ('odd', -1)):
+            rho = (np.eye(16)+sign*parity)@thermal/2
+            rho /= np.trace(rho)
+            actual = sum(float(np.trace(rho@effects[bits]).real) for bits in r.PRODUCT_CENTRAL_EVENT)
+            lo, hi = bounds['central_event_probability_intervals'][sector]
+            guard = float(r.product_central_source_error())
+            self.assertLessEqual(float(lo)-guard, actual)
+            self.assertLessEqual(actual, float(hi)+guard)
+            self.assertAlmostEqual(float(np.trace(rho@effects[()]).real), 25/36, places=12)
+        self.assertGreater(bounds['central_event_gap_lower'], Q(151, 10**6))
+
+    def test_rational_product_bounds_against_independent_continuous_exponentials(self):
+        import numpy as np
+        from scipy.linalg import expm
+        from model.interacting_band_extension.construction import ProductBand, _product_clock_prefixes
+        lattice = ProductBand()
+        thermal = expm(-lattice.hamiltonian.toarray()/4)
+        actual = _product_clock_prefixes(lattice, np.eye(16), source=False, interval=Q(1, 16), steps=64)
+        bounds = r.product_central_record_bounds()['sector_prefix_probability_intervals']
+        for sector, sign in (('even', 1), ('odd', -1)):
+            mask = np.diag([int((-1)**(index % 4) == sign) for index in range(16)])
+            rho = mask@thermal; rho /= np.trace(rho)
+            for tick, weight in enumerate((Q(25, 36), Q(5, 18), Q(1, 36))):
+                for bits, op in actual[tick].items():
+                    probability = float(weight)*float(np.trace(rho@op.conj().T@op).real)
+                    lo, hi = bounds[sector][bits]
+                    self.assertLessEqual(float(lo)-5e-16, probability)
+                    self.assertLessEqual(probability, float(hi)+5e-16)
+
+    def test_central_inverse_retains_complete_counts_and_rejects_inconsistent_law(self):
+        bounds = r.product_central_record_bounds()['sector_prefix_probability_intervals']
+        total = 10**12
+        for weight in (Q(0), Q(1, 3), Q(1)):
+            counts = {bits: int(total*(weight*sum(bounds['even'][bits])/2
+                         +(1-weight)*sum(bounds['odd'][bits])/2)) for bits in r.PRODUCT_RECORD_BITS}
+            counts[()] += total-sum(counts.values())
+            lo, hi = r.product_central_weight_interval(counts, Q(10, total), Q(0))
+            self.assertLessEqual(lo, weight); self.assertGreaterEqual(hi, weight)
+            without_timeout = dict(counts); del without_timeout[()]
+            with self.assertRaises(ValueError):
+                r.product_central_weight_interval(without_timeout, Q(0), Q(0))
+        bad = {bits: 0 for bits in r.PRODUCT_RECORD_BITS}; bad[(0,)] = 100
+        self.assertIsNone(r.product_central_weight_interval(bad, Q(0), Q(0)))
+        bad[()] = True
+        with self.assertRaises(ValueError):
+            r.product_central_weight_interval(bad, Q(0), Q(0))
+
+    def test_central_sample_budget_exposes_conditioning_and_source_floor(self):
+        certificate = r.product_central_weight_certificate()
+        self.assertGreater(certificate['sufficient_IID_trials_95_percent_weight_radius_one_percent_ideal'], 8*10**11)
+        self.assertIsNone(certificate['sufficient_IID_trials_95_percent_weight_radius_one_percent_with_source'])
+        self.assertGreater(certificate['sufficient_IID_trials_95_percent_weight_radius_ten_percent_with_source'], 7*10**11)
+        self.assertFalse(certificate['central_weight_selected_by_KMS_or_repair'])
+        self.assertFalse(certificate['finite_samples_or_laboratory_calibration_executed'])
+        for value in (.0625, True, Q(0), Q(1, 4)):
+            with self.assertRaises(ValueError):
+                r.product_central_record_bounds(value)
+        with self.assertRaises(ValueError):
+            r.product_central_sample_budget(.1, Q(0))
+        # A capped two-interval bound cannot be divided by two to bound a
+        # coarse single interval: retain its own complete-output allowance.
+        self.assertGreaterEqual(r.product_central_source_error(Q(1, 8), steps=1), Q(11, 36))
+
     def test_product_access_is_exactly_the_first_mode_parity_commutant(self):
         result = r.product_access_certificate()
         self.assertEqual(result['rational_closure_lower_rank'], 128)

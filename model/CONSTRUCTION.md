@@ -708,7 +708,14 @@ use the fixed Gibbs modular parameter `s=-t/beta`, with compiled errors
 retained. The same state fixes detector/Q-kick cross-noise and response;
 the finite-kick check uses the existing fixed-interval source histories.
 Central parity weights can change observations without changing this
-restricted modular flow. Neither that flow nor halt-state stationarity
+restricted modular flow. With the Hamiltonian and inverse temperature fixed,
+[complete native records identify that weight](common_source/DERIVATION.md#central-weight-from-complete-records)
+within the sector-Gibbs family, with exact probability enclosures and explicit
+sampling and service errors. The inferred interval
+[predicts a separate elapsed-time readout](interacting_band_extension/README.md#a-held-out-record-law-after-central-weight-calibration)
+without a second fitted parameter. The executed control uses the same Gibbs
+preparation; illustrative counts are synthetic, and this short protocol has
+weak state sensitivity. Neither the inference nor halt-state stationarity
 selects the preparation or identifies a physical clock.
 
 The same local quartic action has the two-mode Galerkin Hamiltonian above.

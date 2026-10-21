@@ -1,5 +1,5 @@
 {
-  "aggregation_policy": "numeric values and measured references are read mechanically from cited parents; structural rows distinguish analytic paper proofs, validated Lean declarations and structured parents, and identify direct algebraic corollaries explicitly; a missing or inconsistent receipt aborts the build",
+  "aggregation_policy": "numeric values and measured references are read mechanically from cited parents; structural rows distinguish analytic paper proofs, validated Lean declarations and structured parents, and identify direct algebraic corollaries explicitly; a missing or inconsistent receipt aborts the build; separately supplied apparatus models and calibrations do not establish joint agreement for one fixed physical construction or a pooled all-scale verdict",
   "artifact": "oph_postdiction_ledger",
   "generator": "code/particles/scripts/build_postdiction_ledger.py",
   "guards": {
@@ -54,7 +54,7 @@
     },
     "optical_direct": {
       "artifact_ref": "model/predictions/optical_clock_results.json",
-      "artifact_sha256": "2af7be6363d4681cb89df6e0e07da4c5681097a92dceffbd8a0850c1a88fb588",
+      "artifact_sha256": "074172bfa6c66d0318839b292e23606460c15c2641b5ded6662022ff8425c100",
       "assessment": {
         "OPH_or_every_native_clock_excluded": false,
         "native_atomic_transition_or_interacting_QFT_derived": false,
@@ -68,7 +68,7 @@
     },
     "optical_modular": {
       "artifact_ref": "model/predictions/modular_optical_results.json",
-      "artifact_sha256": "af541da987f1a33954e36c833fb866f64915ad763c5aff28860f0ac595e222c3",
+      "artifact_sha256": "5bef59fc515e77c22ae44c1ba563dddb57edade902e434be8f65969946b54ffd",
       "interpretation": {
         "OPH_or_all_modular_clocks_excluded": false,
         "each_ratio_compared_separately_no_independence_assumed": true,
@@ -83,7 +83,7 @@
     },
     "optical_regional": {
       "artifact_ref": "model/predictions/regional_optical_results.json",
-      "artifact_sha256": "4ade61bd90ea4fc86238af6f1ebbc44821e717ac30f6f200ba73f43c65c4b47e",
+      "artifact_sha256": "48facda36961a53583a07ce038c3a02787f9054538af3bb63110e4704030c1e2",
       "assessment": {
         "atomic_clocks_or_OPH_excluded": false,
         "coherence_or_independent_atom_resource_lower_bound_derived": false,

@@ -408,6 +408,169 @@ def product_detector_kms_control(interaction=None):
         'physical_clock_or_laboratory_dictionary_identified': False}
 
 
+def product_central_holdout_interval(counts, calibration_radius, validation_radius,
+                                    calibration_error, validation_error):
+    """Predict a separate complete two-read event from central-weight records.
+
+    Calibration keeps all seven native timer/pointer patterns at interval
+    1/16. Validation is the existing unconditional two-read program at 1/8,
+    with no native timer. Only its four classical bit probabilities are
+    predicted; an unknown reference purification is not reconstructed.
+    The four radii are exact probability allowances, not fitted parameters.
+    """
+    from ..common_source.records import (product_central_record_bounds,
+                                        product_central_weight_interval)
+    for radius in (calibration_radius, validation_radius, calibration_error, validation_error):
+        if type(radius) is not F or not 0 <= radius <= 1:
+            raise ValueError('exact probability-error radii in [0,1] are required')
+    weights = product_central_weight_interval(counts, calibration_radius, calibration_error)
+    if weights is None:
+        return None
+    prefix = product_central_record_bounds(F(1, 8))['sector_prefix_probability_intervals']
+    # Remove the KNOWN independent timer weight from the mathematical
+    # coefficients. No observed outcomes are discarded or conditioned here.
+    event = {sector: tuple(36*sum(prefix[sector][bits][i] for bits in ((0, 0), (1, 1)))
+                           for i in (0, 1)) for sector in ('even', 'odd')}
+    even, odd = event['even'], event['odd']
+    if even[0] <= odd[1]:
+        raise ArithmeticError('the held-out event does not separate the central sectors')
+    lo = odd[0]+weights[0]*(even[0]-odd[0])-validation_error-validation_radius
+    hi = odd[1]+weights[1]*(even[1]-odd[1])+validation_error+validation_radius
+    return {'central_weight_interval': weights,
+            'validation_frequency_interval': (max(F(0), lo), min(F(1), hi)),
+            'validation_sector_event_intervals': event}
+
+
+def product_central_holdout_control():
+    """Same-state source transfer and a finite independent-sampling contract.
+
+    The retained frequencies below are deterministic synthetic counts, not
+    experimental observations or random samples. The confidence statement
+    applies only to fresh IID calibration and validation trials of the
+    declared fixed state family, including supplied service-error bounds.
+    """
+    import numpy as np
+    from .construction import (ProductBand, product_gibbs_preparation, history,
+                               _product_clock_prefixes, splitting_bound)
+    from ..common_source.records import (PRODUCT_RECORD_BITS, PRODUCT_CENTRAL_EVENT,
+                                        product_central_record_bounds,
+                                        product_central_source_error)
+
+    lattice = ProductBand()
+    raw, target, preparation = product_gibbs_preparation(lattice)
+    source_prefixes = _product_clock_prefixes(lattice, raw, source=True,
+                                              interval=F(1, 16), steps=64)
+    timer = (F(25, 36), F(5, 18), F(1, 36))
+    probabilities = {bits: float(timer[len(bits)])*float(np.linalg.norm(value)**2)
+                     for patterns in source_prefixes for bits, value in patterns.items()}
+    calibration = sum(probabilities[bits] for bits in PRODUCT_CENTRAL_EVENT)
+    rows = history(lattice, 1, initial=raw, interval=F(1, 8), steps=64)
+    validation = sum(row['probability'] for row in rows if tuple(row['bits']) in ((0, 0), (1, 1)))
+    e = preparation['purification_vector_error_guard']
+    gain = (4*64*len(lattice.terms)+4)*F(251, 10**12)
+    vector_error = (e+gain)/(1-gain)
+    source_vector_error = gain/(1-gain)
+    # Add the preparation allowance AFTER the raw source amplification;
+    # the source-only term is already present in the calibration helper.
+    preparation_error = (vector_error*(2+vector_error)
+                         -source_vector_error*(2+source_vector_error))/2
+    calibration_error = product_central_source_error()+preparation_error
+    validation_error = (splitting_bound(lattice, F(1, 8), 64)
+                        ['two_interval_complete_output_trace_distance_upper']
+                        +vector_error*(2+vector_error)/2)
+    calibration_certificate = product_central_record_bounds()
+    c = calibration_certificate['central_event_probability_intervals']
+    prefix = product_central_record_bounds(F(1, 8))['sector_prefix_probability_intervals']
+    v = {sector: tuple(36*sum(prefix[sector][bits][i] for bits in ((0, 0), (1, 1)))
+                       for i in (0, 1)) for sector in ('even', 'odd')}
+    cm, vm = ({sector: sum(bounds)/2 for sector, bounds in menu.items()} for menu in (c, v))
+    slope = (vm['even']-vm['odd'])/(cm['even']-cm['odd'])
+    w = float(np.linalg.norm(target[::2])**2)
+    ideal_c = float(cm['odd']+F(w)*(cm['even']-cm['odd']))
+    ideal_v = float(vm['odd']+F(w)*(vm['even']-vm['odd']))
+    if (abs(calibration-ideal_c) > float(calibration_error)
+            or abs(validation-ideal_v) > float(validation_error)):
+        raise ArithmeticError('the source law exceeded the fixed-family transfer allowances')
+
+    # Exact rational coefficient/partition midpoints give portable synthetic
+    # counts, independent of source floating roundoff. They exercise the
+    # count API and do not normalize or replace any raw source amplitudes.
+    trials, validation_trials = 10**11, 10**9
+    ze, zo = (calibration_certificate['sector_partition_intervals'][s] for s in ('even', 'odd'))
+    synthetic_weight = (ze[0]/(ze[0]+zo[1])+ze[1]/(ze[1]+zo[0]))/2
+    cal_prefix = calibration_certificate['sector_prefix_probability_intervals']
+    synthetic_probabilities = {bits: synthetic_weight*sum(cal_prefix['even'][bits])/2
+                              +(1-synthetic_weight)*sum(cal_prefix['odd'][bits])/2
+                              for bits in PRODUCT_RECORD_BITS}
+    counts = {bits: (trials*probability).__floor__()
+              for bits, probability in synthetic_probabilities.items()}
+    deficit = trials-sum(counts.values())
+    if not 0 <= deficit <= len(counts):
+        raise ArithmeticError('the ideal complete law failed count apportionment')
+    order = sorted(counts, key=lambda bits: trials*synthetic_probabilities[bits]-counts[bits], reverse=True)
+    for bits in order[:deficit]:
+        counts[bits] += 1
+    calibration_radius, validation_radius = F(1, 10**5), F(1, 10**4)
+    predicted = product_central_holdout_interval(counts, calibration_radius, validation_radius,
+                                                calibration_error, validation_error)
+    if predicted is None:
+        raise ArithmeticError('the same-state synthetic calibration was rejected')
+    lo, hi = predicted['validation_frequency_interval']
+    if not float(lo) <= validation <= float(hi):
+        raise ArithmeticError('the same-state held-out source prediction failed')
+
+    changed_beta = F(1, 2)
+    energies, axes = np.linalg.eigh(lattice.hamiltonian.toarray())
+    weights = np.exp(-float(changed_beta)*(energies-energies[0])); weights /= weights.sum()
+    changed_preparation = axes*np.sqrt(weights)
+    alternatives = []
+    for label, model, initial, interval, feedback in (
+            ('delete_interaction_only_in_validation', ProductBand(0), target, F(1, 8), True),
+            ('double_beta_only_in_validation', lattice, changed_preparation, F(1, 8), True),
+            ('delete_feedback_only_in_validation', lattice, target, F(1, 8), False),
+            ('reuse_calibration_interval_in_validation', lattice, target, F(1, 16), True)):
+        altered = history(model, 1, source=False, initial=initial, interval=interval, feedback=feedback)
+        probability = sum(row['probability'] for row in altered
+                          if tuple(row['bits']) in ((0, 0), (1, 1)))
+        separation = max(float(lo)-probability, probability-float(hi))
+        if separation <= 0:
+            raise ArithmeticError('a changed validation contract escaped its declared control')
+        alternatives.append({'change': label, 'ideal_equal_bits_probability': probability,
+                             'separation_outside_validation_interval': separation})
+    # Hoeffding plus the union bound. exp(-x) <= 2^-floor(x) supplies
+    # a conservative exact rational bound with no logarithm rounding.
+    exponents = [int(2*n*r*r) for n, r in ((trials, calibration_radius),
+                                          (validation_trials, validation_radius))]
+    failure = min(F(1), sum((F(2, 2**k) for k in exponents), F(0)))
+    return {'scope': 'Conditional held-out classical readout from the same fixed central Gibbs family.',
+        'calibration_model_interval': F(1, 16), 'validation_model_interval': F(1, 8),
+        'inverse_temperature': F(1, 4), 'effective_coupling': F(1),
+        'calibration_event_bits': list(PRODUCT_CENTRAL_EVENT), 'validation_event_bits': [(0, 0), (1, 1)],
+        'calibration_sector_event_intervals': c, 'validation_sector_event_intervals': v,
+        'affine_elimination_slope_numerical': float(slope),
+        'held_out_sector_contrast_lower': v['even'][0]-v['odd'][1],
+        'complete_source_calibration_record_law': [{'bits': list(bits), 'probability': probabilities[bits]}
+                                                   for bits in PRODUCT_RECORD_BITS],
+        'complete_source_validation_record_law': rows,
+        'source_calibration_event_probability': calibration,
+        'source_validation_event_probability': validation,
+        'calibration_source_probability_error_upper': calibration_error,
+        'validation_source_probability_error_upper': validation_error,
+        'synthetic_calibration_counts': [{'bits': list(bits), 'count': counts[bits]} for bits in PRODUCT_RECORD_BITS],
+        'synthetic_counts_are_observed_or_sampled_data': False,
+        'independent_IID_sampling_example': {'calibration_trials': trials, 'validation_trials': validation_trials,
+            'calibration_radius': calibration_radius, 'validation_radius': validation_radius,
+            'combined_failure_probability_upper': failure, **predicted},
+        'changed_validation_contract_controls': alternatives,
+        'validation_uses_unconditional_four_output_fixed_interval_program': True,
+        'validation_native_timer_executed': False,
+        'calibration_timeouts_and_all_validation_outputs_retained': True,
+        'central_weight_selected_by_modular_flow': False,
+        'separate_validation_parameter_fit': False,
+        'unknown_reference_correlations_reconstructed': False,
+        'public_data_or_physical_identification_claimed': False}
+
+
 def serializable(value):
     if isinstance(value, F):
         return str(value)

@@ -15060,6 +15060,282 @@
   "same_product_interaction": {
     "UV_limit_or_cutoff_microcausality_certified": false,
     "additional_native_repairs_per_history": 2,
+    "central_weight_held_out_readout": {
+      "affine_elimination_slope_numerical": 23.991933311717506,
+      "calibration_event_bits": [
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "calibration_model_interval": "1/16",
+      "calibration_sector_event_intervals": {
+        "even": [
+          "78510896600239/500000000000000",
+          "157021793200481/1000000000000000"
+        ],
+        "odd": [
+          "39217616089637/250000000000000",
+          "156870464358551/1000000000000000"
+        ]
+      },
+      "calibration_source_probability_error_upper": "211339628040134574191172329070391/15624993944625586681062250000000000000",
+      "calibration_timeouts_and_all_validation_outputs_retained": true,
+      "central_weight_selected_by_modular_flow": false,
+      "changed_validation_contract_controls": [
+        {
+          "change": "delete_interaction_only_in_validation",
+          "ideal_equal_bits_probability": 0.6922556317094479,
+          "separation_outside_validation_interval": 0.0008680593610600473
+        },
+        {
+          "change": "double_beta_only_in_validation",
+          "ideal_equal_bits_probability": 0.6524107647718775,
+          "separation_outside_validation_interval": 0.03636778893258619
+        },
+        {
+          "change": "delete_feedback_only_in_validation",
+          "ideal_equal_bits_probability": 0.6863319434819379,
+          "separation_outside_validation_interval": 0.0024466102225257913
+        },
+        {
+          "change": "reuse_calibration_interval_in_validation",
+          "ideal_equal_bits_probability": 0.6936691147966667,
+          "separation_outside_validation_interval": 0.0022815424482788282
+        }
+      ],
+      "complete_source_calibration_record_law": [
+        {
+          "bits": [],
+          "probability": 0.6944444444440527
+        },
+        {
+          "bits": [
+            0
+          ],
+          "probability": 0.13769038591594823
+        },
+        {
+          "bits": [
+            1
+          ],
+          "probability": 0.1400873918616838
+        },
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.00943484037388997
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.004334198217705422
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.004174993044571243
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.0098337461415977
+        }
+      ],
+      "complete_source_validation_record_law": [
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.3310425482812107
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.16041062692967828
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.1495063134160654
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.35904051137239756
+        }
+      ],
+      "effective_coupling": "1",
+      "held_out_sector_contrast_lower": "907667870913/250000000000000",
+      "independent_IID_sampling_example": {
+        "calibration_radius": "1/100000",
+        "calibration_trials": 100000000000,
+        "central_weight_interval": [
+          "1353797808939711851017785011365079/3152682985071270106522643406320190",
+          "3501054983448879504201610353415556/4729024477606905159783965109480285"
+        ],
+        "combined_failure_probability_upper": "1/262144",
+        "validation_frequency_interval": [
+          "868600170698424271309960881087279643183250589826642003124273805565495870355465680771559216230293906273725056139288575341203407215883664805492896531570956759180709838807060394326880256207733497380998003275924267843232518271541422454473984761710967183/1261073194028508042609057362528076000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "871890334172997720895166383914595764641454865842157996875726194434504129644534319228440783769706093726274943860711424658796592784116335194507103468429043240819290161192939605673119743792266502619001996724075732156767481728458577545526015238289032817/1261073194028508042609057362528076000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "validation_radius": "1/10000",
+        "validation_sector_event_intervals": {
+          "even": [
+            "172897563750561/250000000000000",
+            "172897563750579/250000000000000"
+          ],
+          "odd": [
+            "17198989587963/25000000000000",
+            "5374684246239/7812500000000"
+          ]
+        },
+        "validation_trials": 1000000000
+      },
+      "inverse_temperature": "1/4",
+      "public_data_or_physical_identification_claimed": false,
+      "scope": "Conditional held-out classical readout from the same fixed central Gibbs family.",
+      "separate_validation_parameter_fit": false,
+      "source_calibration_event_probability": 0.1569589724314359,
+      "source_validation_event_probability": 0.6900830596536083,
+      "synthetic_calibration_counts": [
+        {
+          "bits": [],
+          "count": 69444444444
+        },
+        {
+          "bits": [
+            0
+          ],
+          "count": 13769038590
+        },
+        {
+          "bits": [
+            1
+          ],
+          "count": 14008739188
+        },
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "count": 943484037
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "count": 433419822
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "count": 417499304
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "count": 983374615
+        }
+      ],
+      "synthetic_counts_are_observed_or_sampled_data": false,
+      "unknown_reference_correlations_reconstructed": false,
+      "validation_event_bits": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "validation_model_interval": "1/8",
+      "validation_native_timer_executed": false,
+      "validation_sector_event_intervals": {
+        "even": [
+          "172897563750561/250000000000000",
+          "172897563750579/250000000000000"
+        ],
+        "odd": [
+          "17198989587963/25000000000000",
+          "5374684246239/7812500000000"
+        ]
+      },
+      "validation_source_probability_error_upper": "480060790634962077837465138018472825042923154141524056632007949083574064777016631727491204184809790969533969155037855457494351621978129715535530488638635111876551366169332784642799528122875629212711475131129975660901798597884631927556121/749999709342028160690988000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "validation_uses_unconditional_four_output_fixed_interval_program": true
+    },
+    "central_weight_identification": {
+      "all_native_tapes_and_timeouts_retained": true,
+      "central_weight_selected_by_KMS_or_repair": false,
+      "declared_source_probability_error_upper": "3381185359/250000000000000",
+      "event_bits": [
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "exact_Taylor_degree": 32,
+      "exact_positive_event_gap_lower": "151328841927/1000000000000000",
+      "fewer_than_two_incidents_timeout_probability_for_every_weight": "35/36",
+      "finite_samples_or_laboratory_calibration_executed": false,
+      "fixed_coupling": "1",
+      "fixed_inverse_temperature": "1/4",
+      "fixed_model_interval": "1/16",
+      "known_family": "w rho_beta_even direct_sum (1-w) rho_beta_odd",
+      "sector_event_probability_intervals": {
+        "even": [
+          "78510896600239/500000000000000",
+          "157021793200481/1000000000000000"
+        ],
+        "odd": [
+          "39217616089637/250000000000000",
+          "156870464358551/1000000000000000"
+        ]
+      },
+      "split_steps": 64,
+      "state_tomography_or_joint_parameter_identification": false,
+      "sufficient_IID_trials_95_percent_weight_radius_one_percent_ideal": 873346490463,
+      "sufficient_IID_trials_95_percent_weight_radius_one_percent_with_source": null,
+      "sufficient_IID_trials_95_percent_weight_radius_ten_percent_with_source": 773358384578,
+      "unknown_preparation_error_included": false,
+      "zero_incident_timeout_probability_for_every_weight": "25/36"
+    },
     "clock_parameter": "Supplied Hamiltonian model time; no event-counter or seconds calibration in this protocol.",
     "complete_source_numerical_guard": "24346497653338251/124999951557004693448498",
     "complete_work_reference_record_trace_error_numerical": 1.9682142647378635e-08,
@@ -16110,10 +16386,10 @@
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
-    "model/common_source/records.py": "eae3320db8806e78751166cfe432f4d060c3b6adf80446afc6c87ecb3a44be0c",
+    "model/common_source/records.py": "7ff9a1a68b4b94c018364b73e0b9c651c9154f7e9b2ede21c51f17be79c1dafa",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/interacting_band_extension/algebra.py": "131ca5714d0eea53e73e8f696ab5b063203b809fca6a8cb966df75c6729ea009",
-    "model/interacting_band_extension/construction.py": "01d5872decc2faff5d2c973e6ff21565f719ad8300c9a9aeb089f5091d559f06",
+    "model/interacting_band_extension/algebra.py": "1d2b955f9b3c20ef9ddb2b1fd024d320a21cdb67ee6bd710ad6126e7939e009b",
+    "model/interacting_band_extension/construction.py": "23351679b9e5e35d9926579d94c1f5f8b5ff88b64a74dc17ea5ca55242b59440",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
     "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",

@@ -617,6 +617,99 @@ not identify this work carrier with the native-only checkpoint carrier,
 derive the controller/storage services, or establish a continuum local
 algebra or a laboratory clock.
 
+<a id="central-weight-from-complete-records"></a>
+
+### A central state weight is identifiable from complete records
+
+Fix the same `ProductBand` Hamiltonian `H` at `g=1`, inverse temperature
+`beta=1/4`, four occupation addresses per mode, and the admitted algebra
+`A=B(C8) direct_sum B(C8)`. The faithful beta-KMS states of
+`alpha_t(X)=exp(itH) X exp(-itH)` on A are exactly
+`rho_w=w rho_even direct_sum (1-w) rho_odd`, `0<w<1`, where each
+`rho_sector=exp(-beta H_sector)/Z_sector`. Applying the finite KMS identity
+to matrix units within each full block fixes that block's normalized Gibbs
+state; the identity imposes no relative central weight. Equivalently these
+states have the same restricted modular action `sigma_s=alpha_(-beta s)`:
+their logarithms differ only by block scalars. This statement fixes beta
+and H, not just an unspecified flow up to rescaling. The endpoints are
+nonfaithful states on A but are valid calibration inputs. Opposite-parity
+coherences remain invisible, and w alone does not determine an unknown
+purification or its reference correlations.
+
+The existing two-attempt native controller supplies an actual inverse
+readout. Sum all native tapes and retain the event of field bits
+`{(0),(0,0),(1,1)}`. The complete clock law gives zero, one and two incident
+events weights `25/36,5/18,1/36`; null currents count as incident events.
+No timeout is discarded. With `U=exp(-iH/16)`, `F=exp(iQ_1/4)` and the
+existing pointer operators, its effect is
+
+```
+E = (5/18) (K_0 U F)* (K_0 U F)
+  + (1/36) [(K_0 U K_0 U F)* (K_0 U K_0 U F)
+           + (K_1 U F K_1 U F)* (K_1 U F K_1 U F)].
+p(w) = p_odd + w (p_even-p_odd),    p_sector=Tr(rho_sector E).
+```
+
+`product_central_record_bounds` encloses these coefficients with exact
+Gaussian-rational degree-32 Taylor polynomials. The actual Bargmann metric
+supplies the adjoint; the Hermitian generators obey the exact row-sum norm
+bounds `||H||<=1679/128`, `||Q_1||<=2`. For the positive H, the contractive
+exponential remainder is `(beta ||H||)^33/33!`; the same integral remainder
+for each unitary uses its duration and generator norm. Writing
+`K_b=(cos(Q_1/2)+(-1)^(1-b)sin(Q_1/2))/sqrt(2)` avoids irrational
+coefficients in the effects. Product errors telescope as
+`eta=product_j(1+epsilon_j)-1` and effect errors are at most
+`eta(2+eta)`. A sector has rank eight, so trace errors are bounded by eight
+times the operator errors; division uses the strictly positive enclosed
+sector partition function. Outward rational rounding gives
+
+```
+p_even in [0.157021793200478, 0.157021793200481],
+p_odd  in [0.156870464358548, 0.156870464358551],
+p_even-p_odd >= 0.000151328841927.
+```
+
+The floating source replay forms the event effect from all 4,900
+native/field outputs and checks its sector probabilities against this
+independent exact enclosure with the declared service allowance; its
+eigensolver is not the separation proof. The zero-incident timeout event
+has probability `25/36` for every w and cannot identify it; all timeouts
+(fewer than two incidents) have probability `35/36`. For the calibration event, the
+existing splitting bounds enter with their actual one/two-incidence
+weights. The declared pulse residual allowance is added, giving a
+probability-error bound about `1.352475e-5` at 64 splitting steps. This is
+conditional on those service accuracies; an unknown preparation error must
+be added separately. It is not a physical hardware accuracy certificate.
+
+For N independent, identically prepared complete trials and empirical event
+frequency f, Hoeffding gives `|f-p|<=r` with probability at least
+`1-2 exp(-2 N r^2)`. Let `[a_o,b_o]`, `[a_e,b_e]` be the exact sector
+enclosures and delta the additional probability-error allowance. The
+intersection with `[0,1]` of
+
+```
+[(f-r-delta-b_o)/(b_e-b_o), (f+r+delta-a_o)/(a_e-a_o)]
+```
+
+is the confidence interval for w; an empty interval rejects this declared
+family/error contract. `product_central_weight_interval` requires all seven
+pattern counts, including timeouts. For a midpoint inverse, an error radius
+epsilon requires probability sampling radius
+`r=epsilon*(c_e-c_o)-delta-max_sector((b-a)/2)>0`.
+`N>=ceil(2/r^2)` suffices for 95% coverage since `2 exp(-4)<1/20`.
+Even without source error, one-percent w accuracy needs over `8.7e11`
+trials by this bound. The present source allowance already exceeds that
+precision budget; ten-percent accuracy requires over `7.7e11` trials.
+These are sufficient budgets, not sampled experiments or optimality claims.
+
+This inverse identifies one parameter within a known H/beta/preparation
+family; it does not select that family or its central weight by repair,
+infer all parameters jointly, or establish stable state tomography.
+Architecture, repair and the admitted controller can be held fixed while
+changing w, preserving their restricted KMS law but changing the record
+probabilities. Treating initialization as primitive specifies this choice;
+observing records estimates it. Neither step derives a unique initial state.
+
 ## Exact hardware refinement and approximate decoded physics
 
 The declared coherent-source construction has an exact inventory tower:

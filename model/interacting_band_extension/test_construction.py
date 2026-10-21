@@ -729,3 +729,90 @@ def test_product_restricted_KMS_does_not_select_central_sector_weights(detector_
     assert control['even_sector_population_difference'] > .1
     assert control['detector_kick_symmetrized_noise_difference'] > 1e-4
     assert not detector_kms_control['Gibbs_temperature_or_central_weights_selected_by_repair']
+
+
+def test_product_central_holdout_covers_independent_matrix_law_for_each_weight():
+    from ..common_source.records import PRODUCT_RECORD_BITS, product_central_record_bounds
+    h = ProductBand().hamiltonian.toarray()
+    gibbs = expm(-h/4)
+    sectors = []
+    for parity in (0, 1):
+        projector = np.diag([int(i % 2 == parity) for i in range(16)])
+        block = projector@gibbs@projector
+        sectors.append(block/np.trace(block))
+    q = np.kron(normalized(a.polynomial(4, 1)), np.eye(4))
+    phase = expm(1j*q/2)
+    reads = ((phase.real-phase.imag)/np.sqrt(2), (phase.real+phase.imag)/np.sqrt(2))
+    kick, advance = expm(1j*q/4), expm(-1j*h/8)
+    operators = [reads[last]@advance@(kick if first else np.eye(16))
+                 @reads[first]@advance@kick for first in (0, 1) for last in (0, 1)]
+    prefix = product_central_record_bounds()['sector_prefix_probability_intervals']
+    samples = 10**10
+    for weight in (F(0), F(1, 3), F(4, 5), F(1)):
+        probabilities = {bits: weight*sum(prefix['even'][bits])/2
+                         +(1-weight)*sum(prefix['odd'][bits])/2 for bits in PRODUCT_RECORD_BITS}
+        counts = {bits: int(samples*p) for bits, p in probabilities.items()}
+        # Restore the complete integer count, never drop the timeout row.
+        counts[()] += samples-sum(counts.values())
+        result = a.product_central_holdout_interval(counts, F(10, samples), F(0), F(0), F(0))
+        assert result is not None
+        lo, hi = result['central_weight_interval']
+        assert lo <= weight <= hi
+        rho = float(weight)*sectors[0]+float(1-weight)*sectors[1]
+        true = sum(float(np.trace(operators[i]@rho@operators[i].conj().T).real) for i in (0, 3))
+        lo, hi = result['validation_frequency_interval']
+        assert float(lo) <= true <= float(hi)
+        assert .68 < true < .70  # No spurious 1/36 timer weight in validation.
+
+
+def test_product_central_holdout_rejects_missing_timeouts_and_inconsistent_counts():
+    from ..common_source.records import PRODUCT_RECORD_BITS
+    counts = {bits: 0 for bits in PRODUCT_RECORD_BITS}
+    counts[()] = 100
+    assert a.product_central_holdout_interval(counts, F(0), F(0), F(0), F(0)) is None
+    del counts[()]
+    with pytest.raises(ValueError, match='Every complete record pattern'):
+        a.product_central_holdout_interval(counts, F(0), F(0), F(0), F(0))
+    for bad in (True, .001, F(-1), F(2)):
+        with pytest.raises(ValueError, match='exact probability-error radii'):
+            a.product_central_holdout_interval(counts, F(0), bad, F(0), F(0))
+
+
+@pytest.fixture(scope='module')
+def central_holdout_control():
+    return a.product_central_holdout_control()
+
+
+def test_product_central_holdout_executes_complete_source_laws_and_rejects_changed_contracts(central_holdout_control):
+    from ..common_source.records import product_central_source_error
+    r = central_holdout_control
+    assert len(r['complete_source_calibration_record_law']) == 7
+    assert len(r['complete_source_validation_record_law']) == 4
+    for key in ('complete_source_calibration_record_law', 'complete_source_validation_record_law'):
+        assert sum(row['probability'] for row in r[key]) == pytest.approx(1., abs=1e-9)
+    assert r['calibration_model_interval'] != r['validation_model_interval']
+    assert F(36, 10**4) < r['held_out_sector_contrast_lower'] < F(37, 10**4)
+    assert 23 < r['affine_elimination_slope_numerical'] < 25
+    preparation_error = F(1, 10**9)
+    # Raw source amplification must also be charged on preparation error.
+    assert r['calibration_source_probability_error_upper'] > (
+        product_central_source_error()+preparation_error*(2+preparation_error)/2)
+    lo, hi = r['independent_IID_sampling_example']['validation_frequency_interval']
+    assert float(lo) < r['source_validation_event_probability'] < float(hi)
+    assert min(row['separation_outside_validation_interval']
+               for row in r['changed_validation_contract_controls']) > .0005
+    assert not r['validation_native_timer_executed']
+    assert not r['separate_validation_parameter_fit']
+    assert not r['unknown_reference_correlations_reconstructed']
+    assert not r['public_data_or_physical_identification_claimed']
+
+
+def test_product_central_holdout_confidence_is_a_fresh_sample_requirement(central_holdout_control):
+    from math import exp
+    r = central_holdout_control
+    sample = r['independent_IID_sampling_example']
+    actual = sum(2*exp(-2*sample[name+'_trials']*float(sample[name+'_radius'])**2)
+                 for name in ('calibration', 'validation'))
+    assert actual <= float(sample['combined_failure_probability_upper']) < 1e-5
+    assert sum(row['count'] for row in r['synthetic_calibration_counts']) == sample['calibration_trials']
+    assert not r['synthetic_counts_are_observed_or_sampled_data']
