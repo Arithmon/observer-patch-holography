@@ -96,7 +96,9 @@ def test_hash_only_shard_checks_all_artifacts_without_replays(monkeypatch):
     assert calls == ['all']
 
 
-@pytest.mark.parametrize('field', ['sources', 'source_sha256', 'source_bindings'])
+@pytest.mark.parametrize('field', ['sources', 'source_sha256', 'source_bindings',
+    'input_sha256', 'source_binding_sha256', 'source_control_bindings', 'source_pins',
+    'implementation_sha256', 'source_interface_hashes'])
 def test_hash_only_rejects_stale_inner_source_even_with_current_outer_manifest(
         monkeypatch, tmp_path, field):
     packet = tmp_path/'model/example'
@@ -104,8 +106,10 @@ def test_hash_only_rejects_stale_inner_source_even_with_current_outer_manifest(
     source = packet/'source.py'
     source.write_text('value = 1\n', encoding='utf-8')
     retained = hashlib.sha256(source.read_bytes()).hexdigest()
+    source_key = {'implementation_sha256': 'source.py',
+                  'source_interface_hashes': 'example/source.py'}.get(field, 'model/example/source.py')
     receipt = packet/'results.json'
-    receipt.write_text(json.dumps({'nested': [{field: {'model/example/source.py': retained}}]}),
+    receipt.write_text(json.dumps({'nested': [{field: {source_key: retained}}]}),
                        encoding='utf-8')
     source.write_text('value = 2\n', encoding='utf-8')
     # Both files have current outer hashes; the receipt's dependency binding
@@ -122,11 +126,63 @@ def test_hash_only_rejects_stale_inner_source_even_with_current_outer_manifest(
     with pytest.raises(ValueError, match=f'root.nested\\[0\\].{field}'):
         verify.main()
     receipt.write_text(json.dumps({'nested': [{field: {
-        'model/example/source.py': hashlib.sha256(source.read_bytes()).hexdigest()}}]}),
+        source_key: hashlib.sha256(source.read_bytes()).hexdigest()}}]}),
         encoding='utf-8')
     manifest['files']['results.json'] = hashlib.sha256(receipt.read_bytes()).hexdigest()
     (packet/'manifest.json').write_text(json.dumps(manifest), encoding='utf-8')
     verify.main()
+
+
+def test_implementation_bindings_resolve_package_parent_without_root_fallback(monkeypatch, tmp_path):
+    folder = tmp_path/'model/example'
+    folder.mkdir(parents=True)
+    source = folder.parent/'source.py'
+    source.write_text('actual implementation\n', encoding='utf-8')
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    receipt = folder/'results.json'
+    receipt.write_text(json.dumps({'implementation_sha256': {'../source.py': digest}}),
+                       encoding='utf-8')
+    monkeypatch.setattr(verify, 'ROOT', tmp_path)
+    monkeypatch.setattr(verify, 'REPLAYS', (('model.example', None, 'model/example/results.json'),))
+    verify.verify_receipt_source_bindings()
+    source.write_text('changed implementation\n', encoding='utf-8')
+    # A matching file at another plausible root cannot hide the local drift.
+    (tmp_path/'source.py').write_text('actual implementation\n', encoding='utf-8')
+    with pytest.raises(ValueError, match='digest mismatch'):
+        verify.verify_receipt_source_bindings()
+
+
+@pytest.mark.parametrize('binding', [{}, [], False, {'missing.py': '0'*64},
+    {'../../../outside.py': '0'*64}, {'https://example.org/source.py': '0'*64}])
+@pytest.mark.parametrize('field', ['implementation_sha256', 'source_interface_hashes',
+    'source_sha256', 'source_bindings', 'input_sha256', 'source_binding_sha256',
+    'source_control_bindings', 'source_pins'])
+def test_local_bindings_cannot_skip_malformed_or_unresolved_inputs(
+        monkeypatch, tmp_path, binding, field):
+    folder = tmp_path/'model/example'
+    folder.mkdir(parents=True)
+    receipt = folder/'results.json'
+    receipt.write_text(json.dumps({field: binding}), encoding='utf-8')
+    monkeypatch.setattr(verify, 'ROOT', tmp_path)
+    monkeypatch.setattr(verify, 'REPLAYS', (('model.example', None, 'model/example/results.json'),))
+    with pytest.raises(ValueError, match=field):
+        verify.verify_receipt_source_bindings()
+
+
+def test_endpoint_pins_are_checked_at_the_declared_nested_location(monkeypatch, tmp_path):
+    source = tmp_path/'source.py'
+    source.write_text('original\n', encoding='utf-8')
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    receipt = tmp_path/'results.json'
+    receipt.write_text(json.dumps({'retrospective_endpoint_audit': {
+        'source': {'pins': {'source.py': digest}}}, 'unrelated': {'pins': {'alias': 'owner'}}}),
+        encoding='utf-8')
+    monkeypatch.setattr(verify, 'ROOT', tmp_path)
+    monkeypatch.setattr(verify, 'REPLAYS', (('model.example', None, 'results.json'),))
+    verify.verify_receipt_source_bindings()
+    source.write_text('changed\n', encoding='utf-8')
+    with pytest.raises(ValueError, match='root.retrospective_endpoint_audit.source.pins'):
+        verify.verify_receipt_source_bindings()
 
 
 def test_live_source_gate_leaves_external_aliases_and_frozen_captures_to_owners(
@@ -138,7 +194,7 @@ def test_live_source_gate_leaves_external_aliases_and_frozen_captures_to_owners(
     receipt.write_text(json.dumps({'sources': {'source.py': digest,
         'external/raw.csv': 'external custody', 'https://example.org/data': 'external',
         '../outside.py': 'not repository-relative'},
-        'source_interface_hashes': {'unknown_alias.py': 'owning verifier'}}), encoding='utf-8')
+        'external_interface_hashes': {'unknown_alias.py': 'owning verifier'}}), encoding='utf-8')
     (tmp_path/'frozen_capture.json').write_text(
         json.dumps({'source_sha256': {'source.py': 'capture-time hash'}}), encoding='utf-8')
     monkeypatch.setattr(verify, 'ROOT', tmp_path)
