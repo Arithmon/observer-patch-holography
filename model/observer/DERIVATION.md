@@ -105,6 +105,16 @@ diagonal preservation allows the controlled isometry above. This is an
 application of the standard CP multiplicative-domain argument, not a new
 physical no-go and not an obstruction to observers with classical records.
 
+The [postcommit observer realization](../common_source/DERIVATION.md#a-native-postcommit-operational-observer)
+checks every `ConsensusTower` and `OperationalObserver` field on this K,
+with its actual first-event state, E/F controls and declared blank-buffer
+refinements. Its accessible algebra is the classical first-letter algebra;
+its typed prediction advances issuance to retention of the same evidence.
+This is an exact mathematical realization, without a compiled Lean
+inhabitant or inter-observer overlap claim. The next-current forecast below
+is a separate function of the record: equal record probabilities need not
+give equal forecasts.
+
 ## Prediction and independent controls
 
 The supplied prior is uniform over the 66 binary configurations. The first

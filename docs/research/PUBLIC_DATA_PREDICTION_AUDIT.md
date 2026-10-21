@@ -6,6 +6,21 @@ comparison with existing observations. Building a new laboratory realization
 of the finite source is not a prerequisite. The observable dictionary, physical
 premises and uncertainty model must nevertheless be explicit.
 
+Current coverage consists of the selected observations listed below. The
+target is one fixed construction with shared parameters and declared
+calibrations across experiments, not a separate fitted law for each case.
+No comparison here establishes agreement with all public observations or
+at every physical scale.
+
+The [earlier-state readout test](../../model/interacting_band_extension/README.md#a-held-out-record-law-after-central-weight-calibration)
+fixes one Hamiltonian, temperature and instrument family, infers its remaining
+sector weight from complete records, and predicts a separate model-time
+readout without another fit. The source execution passes and four changed
+validation contracts fail. Its illustrative counts are synthetic; the
+sampling and service-error bounds expose weak sensitivity of this short
+protocol. This is an executed model prediction, pending a physical dataset
+with the same preparation and readout contract.
+
 Two kinds of claim need separate interpretation. Fixing a parameter that a
 standard model leaves free is a testable restriction of that model. Predicting
 an intrinsic vacuum dispersion or another incompatible response changes its
@@ -25,6 +40,8 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Native record-to-phase relation | Four movement-bit covariances on the complete native attempt tape determine a two-mode transfer generator and predict its coherent quadratures under the fixed readout protocol. | A conditional cross-readout prediction with uncertainty and failed-identification outcomes. Public optical servo ratios are not this bit tape; the [inverse-clock construction](../../model/predictions/README.md) does not assign them a new experimental verdict or establish a distinction from standard quantum instruments. |
 | Prepared-state clock and response | One finite prepared density fixes eleven fluctuation pairs, their noise, ordered response and positive-log clock; three band representatives have complete source pointer reads. The native growing angular family has derived partition/gap bounds and a constructive finite-word/cap/precision schedule. A same-product quartic projection has complete interacting Gibbs readouts. | The [joint-limit contract](../../model/predictions/README.md#growing-shared-state-field) retains preparation, control, precision-service and spectral-tail premises; growing execution is unperformed. The [product field](../../model/observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock) requires a radial design and an anchor for its same-density star construction. The [finite interacting projection](../../model/interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product) adds a declared coupling and model clock. None is an atomic-spectrum identification or a discriminator against standard quantum theory. The fixed three-gap Ar13+/Yb+ attachment is excluded only under the stated error budgets below. |
 | Native repair response | A disclosed-bit-triggered repair predicts complete future clock/field events from passive correlations. A controlled execution bias has continuum mean derivative `2(I-exp(-tau*A))f` and a positive fixed-amplitude signal under a uniform likelihood bound. | The [complete native forecast](../../model/predictions/README.md#native-repair-response-from-passive-clock-and-field-records) retains timeouts and distinguishes executed repairs from additional coin-service costs. Its controller and readout dictionary are declared. Public optical frequency-ratio traces contain no matching intervention/current records; no empirical verdict or distinction from ordinary stochastic or quantum realizations follows. |
+| Executed oscillator dynamics | Native source words implement the supplied spin–oscillator apparatus, preparation, noise, detector and published duration convention. Later observations are excluded from calibration. | The [707-mean comparison](../../model/anharmonic_observations/README.md) has binary-probability RMSE `0.055582`; [125 changed-potential estimates](../../model/anharmonic_transfer/README.md) have dimensionless estimator RMSE `0.287643`. Both improve on their frozen and harmonic controls, with substantial retained discrepancies and incomplete physical error budgets. These retrospective tests of a supplied quantum apparatus do not identify the separate spatial field or native incident clock. |
+| Diagonal local response | Independent settings and factorized local readouts restrict the recorded classical branch to CHSH `S<=2`, allowing shared randomness and device memory under the stated trial contract. | The [Hensen replay](../../model/predictions/BELL_RECORDS.md) reproduces 196 wins in 245 eligible trials and fixed-horizon tail bound `0.03917464`. This excludes that conditional classical extension at 5%; it neither excludes the quantum instrument nor confirms a physical OPH implementation. |
 | C/E coherent record law | One fixed coherent preparation gives plus probabilities `5/8` and `3/8` under the two instruments. | These are ordinary quantum instruments. The distinction selects a record law, not OPH over standard quantum mechanics. |
 | Joint timed coherent response | The charged total-two source history fixes a joint cost/clock/detector law. Under one explicitly synthetic calibration, its two settings have identical `0.52` deadline mass and distinct `0.2451`/`0.2715` joint detector masses. | An executable conditional forecast with shared timing coefficients and all timeouts retained. No measured system or physical duration is identified; these finite quantum instruments are not unique to OPH. |
 | Fine-structure constant | Several declared endpoint maps exist, with incomplete physical transport and map-selection obligations. | Withhold a new prediction claim. The [existing endpoint audit](../../model/predictions/README.md#inherited-coupling-comparison) already finds a 300.388218 ppm gap for its named map, without a justified theory-error distribution. |
@@ -342,24 +359,31 @@ excludes this direct constant-to-band attachment under those hypotheses,
 not other transitions, composite clocks, OPH or standard quantum theory.
 
 The growing native clock bounds and the same-product quartic execution do
-not inherit this verdict or the existing optical postdictions. The quartic
-example supplies its coupling, inverse temperature, radial profiles,
-occupation cutoff and model-time intervals; no measured transition or
-seconds-per-interval correspondence is fixed. Its complete source/reference
-comparison tests an implementation of a declared quantum model. A public
-observation test requires a fixed apparatus/readout map and uncertainty model
-before selecting unused comparison data. Smoothness of an assumed action
-density, or agreement with its finite Gibbs law, adds no distinctive measured
-prediction by itself.
+not inherit the optical verdicts or the oscillator comparisons above. The
+quartic model supplies its coupling, inverse temperature, radial profiles
+and observer control/readout. Its occupation limit removes the finite
+oscillator cutoff at fixed two-mode spatial projection, and its native
+incidents drive the same interacting Hamiltonian. Neither result identifies
+a measured transition or seconds per incident. The executed four-level
+example has substantial occupation error; its finite detector probabilities
+cannot be assigned unrestricted accuracy. A public comparison requires a
+fixed apparatus/readout map and physical uncertainty model. The
+[McGarry apparatus and data](https://arxiv.org/html/2603.04744v1) concern a
+supplied single-mode spin–oscillator pulse experiment, not this two-mode
+quartic Gibbs preparation and adaptive history.
 
 A candidate benchmark is Aimet et al.'s published massive-to-massless
 Klein–Gordon quench, with Neumann boundaries and an inferred initial
 temperature. The [experiment](https://www.nature.com/articles/s41567-025-02930-9)
 and its [relative-phase and density data](https://zenodo.org/records/15205139)
-provide time-indexed spatial records. Comparing those observations requires
-their field, boundary, detector and energy/time dictionaries; they do not
-validate the declared quartic `g=1`, `b=1/4` Gibbs menu. No fit or empirical
-verdict for that menu is retained.
+provide spatial snapshots at declared laboratory times. Detection is
+destructive, so the time points come from repeated preparations, not
+successive disturbed reads of one system. Their Neumann zero mode,
+mass quench and inferred initial temperature differ from the declared
+Dirichlet quartic `g=1`, `b=1/4` Gibbs menu. A comparison needs their field,
+boundary, imaging and energy/time dictionary; those snapshots cannot test
+the current adaptive feedback history directly. No fit or empirical verdict
+for that menu is retained.
 
 ## Conditional dispersion: exact branch relation and actual sensitivity
 

@@ -1,5 +1,6 @@
 """Independent Fourier, compression, matching and observation-bound controls."""
 from fractions import Fraction as F
+from dataclasses import replace
 from math import pi
 
 import numpy as np
@@ -15,7 +16,11 @@ from .construction import (Lattice, Term, exact_apply, exact_norm_squared,
                            ProductBand, product_gibbs_preparation,
                            product_interaction_control, product_parameter_recovery,
                            product_incident_tapes, product_incident_clock_control,
-                           product_incident_clock_bound)
+                           product_incident_clock_bound, ProductControllerState,
+                           ProductControllerInstrument, product_controller_transition,
+                           product_controller_export, product_controller_idle_bound,
+                           product_homogeneous_controller_control,
+                           product_modular_history_control)
 
 
 def test_product_radial_integral_and_compression_against_padded_oscillators():
@@ -63,6 +68,61 @@ def test_product_complete_records_interaction_clock_and_feedback_controls():
     assert result['native_history_probability_sum'] == pytest.approx(1., abs=1e-10)
     assert not result['finite_band_is_invariant_under_untruncated_local_interaction']
     assert not result['observed_QFT_or_laboratory_clock_identified']
+
+
+def test_complete_modular_clock_history_includes_source_interventions_and_references():
+    result = product_modular_history_control()
+    assert result['fixed_reference_modular_parameter_per_incident'] == -F(1, 4)
+    assert result['complete_native_tapes'] == 3600
+    assert result['complete_native_and_field_outputs'] == 4900
+    assert result['retained_work_input_columns'] == result['retained_reference_addresses'] == 16
+    assert result['ideal_all_input_history_Kraus_residual_after_scalar_phase'] < 1e-12
+    assert result['source_to_modular_all_reference_half_diamond_bound_numerical'] < 2e-8
+    assert result['source_prepared_complete_output_half_trace_error_numerical'] < 4e-9
+    assert result['full_intervention_menu_covariance_residual'] < 1e-12
+    assert result['untranslated_feedback_covariance_error'] > .03
+    assert result['conditioned_reference_modular_action_mismatch'] > .08
+    assert result['relative_modular_cocycle_action_residual'] < 1e-12
+    assert result['relative_modular_cocycle_law_residual'] < 1e-12
+    assert result['first_mode_parity_commutator_residual'] < 1e-12
+    assert not result['fixed_reference_replaced_by_measurement_posterior']
+    assert not result['translated_menu_or_cocycle_compiled_as_extra_protocol']
+
+
+@pytest.mark.parametrize('extra_time', [-F(1, 8), F(1, 16)])
+def test_full_modular_history_rejects_source_clock_sign_or_duration_change(monkeypatch, extra_time):
+    original = ProductControllerInstrument.completed
+    h = ProductBand().hamiltonian.toarray()
+    # Reversing the last interval or adding an interval is a legitimate
+    # unitary alteration retaining all records and probability normalization.
+    # Both must fail the declared reference-clock channel comparison.
+    changed_time = expm(-1j*float(extra_time)*h)
+    def changed(self, *args, **kwargs):
+        return tuple((state, changed_time@operation if state.bits else operation, weight, count)
+                     for state, operation, weight, count in original(self, *args, **kwargs))
+    monkeypatch.setattr(ProductControllerInstrument, 'completed', changed)
+    with pytest.raises(ArithmeticError, match='fixed-reference modular history'):
+        product_modular_history_control()
+
+
+def test_half_diamond_estimate_bounds_an_independent_entangled_input():
+    # Independent rank-one branch calculation for the stated Stinespring
+    # bound, including a nonunit normalized source map and its reference.
+    from .construction import _pure_output_distance
+    generator = np.array([[0, 1], [1, .3]])
+    exact = expm(-.2j*generator)
+    source = (1+1e-6)*expm(-.201j*generator)
+    # A two-outcome amplitude-damping read, not the production Ramsey menu.
+    reads = (np.diag([1, np.sqrt(.7)]), np.array([[0, np.sqrt(.3)], [0, 0]]))
+    raw_maps, ideal_maps = [k@source for k in reads], [k@exact for k in reads]
+    gram = sum((x-y).conj().T@(x-y) for x, y in zip(raw_maps, ideal_maps))
+    norm = np.sqrt(np.linalg.eigvalsh(gram)[-1])
+    source_norm = np.sqrt(np.linalg.eigvalsh(sum(x.conj().T@x for x in raw_maps))[-1])
+    bound = norm*(source_norm+1)/2
+    purification = np.array([[np.sqrt(.2), 0], [0, np.sqrt(.8)]])
+    distance = sum(_pure_output_distance(x@purification, y@purification)
+                   for x, y in zip(raw_maps, ideal_maps))
+    assert 0 < distance <= bound
 
 
 def test_product_nonlinearity_leaves_the_declared_radial_band():
@@ -163,6 +223,142 @@ def test_same_interacting_generator_clock_schedule_has_vanishing_complete_budget
             product_incident_clock_bound(2, **kwargs)
     with pytest.raises(ValueError, match='occupation two, four or eight'):
         product_gibbs_preparation(ProductBand(occupation=6))
+
+
+def test_homogeneous_controller_reproduces_all_input_clock_field_instrument():
+    result = product_homogeneous_controller_control()
+    assert result['complete_native_tapes'] == 3600
+    assert result['complete_tape_field_outputs'] == 4900
+    assert result['retained_work_input_columns'] == 16
+    assert result['all_input_Kraus_comparison_residual'] < 2e-12
+    assert result['complete_all_input_channel_residual'] < 2e-11
+    assert result['maximum_active_instructions'] == 775
+    assert result['worst_branch_source_resources_including_preparation']['native_pulses'] == 217110
+    assert result['total_output_probability'] == pytest.approx(1., abs=2e-11)
+    assert not result['external_iteration_or_quantum_amplitudes_read_by_controller']
+    assert not result['controller_hardware_storage_and_source_service_accuracy_derived']
+    observer = result['postcommit_prefix_observer']
+    assert observer['checked_instruction_transition_classes'] > 1000
+    assert observer['postcommit_public_projectors_satisfy_dual_fixed_point_identity']
+    assert not observer['new_record_creation_globally_preserves_that_projector']
+    assert observer['blank_to_first_selected_record_probability'] == F(1, 60)
+
+
+def test_controller_prefix_observer_rejects_erasing_a_committed_field_bit(monkeypatch):
+    from . import construction as c
+    transition = c.product_controller_transition
+    def erase_prefix(state, outcome=None, *, steps=64):
+        following = transition(state, outcome, steps=steps)
+        if state.instruction == 'feedback' and outcome is None:
+            return replace(following, bits=(0,))
+        return following
+    monkeypatch.setattr(c, 'product_controller_transition', erase_prefix)
+    with pytest.raises(ArithmeticError, match='committed prefix'):
+        c.ProductControllerInstrument(steps=1).completed()
+
+
+def test_controller_lock_and_retained_bits_are_part_of_the_instrument(monkeypatch):
+    from . import construction as c
+    transition = c.product_controller_transition
+    def omit_null_incident(state, outcome=None, *, steps=64):
+        following = transition(state, outcome, steps=steps)
+        if state.instruction == 'ready' and following.instruction == 'evolve' and not following.tape[-1][2]:
+            # Even a superficially plausible count-by-current controller
+            # leaves the advertised checkpoint domain and is rejected.
+            return replace(following, instruction='ready')
+        return following
+    monkeypatch.setattr(c, 'product_controller_transition', omit_null_incident)
+    with pytest.raises((ValueError, ArithmeticError)):
+        c.product_homogeneous_controller_control()
+    monkeypatch.setattr(c, 'product_controller_transition', transition)
+    branches = c.ProductControllerInstrument.branches
+    def omit_feedback(self, state):
+        result = branches(self, state)
+        return tuple((following, np.eye(16), weight) for following, _, weight in result) if state.instruction == 'feedback' else result
+    monkeypatch.setattr(c.ProductControllerInstrument, 'branches', omit_feedback)
+    with pytest.raises(ArithmeticError, match='all-input history'):
+        c.product_homogeneous_controller_control()
+
+
+def test_controller_domain_rejects_invented_or_inconsistent_checkpoints():
+    initial = ProductControllerState()
+    for invalid in (replace(initial, instruction='read', bits=(0, 0)),
+                    replace(initial, instruction='ready', attempts=2, tape=((), ())),
+                    replace(initial, instruction='feedback'),
+                    replace(initial, instruction='halt'),
+                    replace(initial, instruction='failure'),
+                    replace(initial, bits=(True,))):
+        with pytest.raises(ValueError):
+            product_controller_transition(invalid, 'idle')
+    ready = product_controller_transition(initial)
+    from ..observer.quantum_mixing import seams
+    edge = next(i for i, seam in enumerate(seams()) if 10 in seam)
+    busy = product_controller_transition(ready, (edge, 0))
+    assert busy.instruction == 'evolve'
+    with pytest.raises(ValueError, match='no classical choice'):
+        product_controller_transition(busy, (edge, 0))
+    bad_record = busy.tape[0][:3]+(0,)
+    with pytest.raises(ValueError, match='incidence'):
+        product_controller_transition(replace(busy, tape=(bad_record,)), 'idle')
+
+
+def test_idle_insertions_preserve_complete_operators_and_native_clock():
+    program = ProductControllerInstrument(steps=1)
+    from ..observer.quantum_mixing import seams
+    edge = next(i for i, seam in enumerate(seams()) if 10 in seam)
+    def run(with_idles):
+        state, operator, idle_records = ProductControllerState(), np.eye(16, dtype=complex), []
+        while state.instruction != 'halt':
+            if with_idles:
+                for _ in range(3):
+                    following = product_controller_transition(state, 'idle', steps=1)
+                    assert following == state
+                    idle_records.append(state.instruction)
+                    state = following
+            options = program.branches(state)
+            if state.instruction == 'ready' and state.attempts < 2:
+                following, local, weight = next(row for row in options if row[0].tape[-1][:2] == (edge, 0))
+            elif state.instruction == 'read':
+                following, local, weight = options[1]
+            else:
+                (following, local, weight), = options
+            operator = float(weight)**.5*local@operator
+            state = following
+        return state, operator, idle_records
+    ordinary, lazy = run(False), run(True)
+    assert ordinary[0] == lazy[0]
+    assert np.array_equal(ordinary[1], lazy[1])
+    assert len(lazy[2]) == 3*19
+    assert len(lazy[0].tape) == len(lazy[0].bits) == 2
+    # An exact binomial calculation checks the stated finite unfinished tail.
+    from math import comb
+    bound = product_controller_idle_bound(19, 152)
+    tail = sum(F(comb(152, k), 2**152) for k in range(19))
+    assert tail <= bound['unfinished_probability_upper'] < F(1, 10)
+    with pytest.raises(ValueError):
+        product_controller_idle_bound(19, 152, F(1))
+
+
+def test_controller_service_export_keeps_failure_reference_and_absorbs():
+    # A proper-code component and a genuine complement component entangled
+    # with different reference labels must both survive the full export.
+    initial = np.zeros((6, 2), complex)
+    initial[0, 0] = initial[5, 1] = 1/np.sqrt(2)
+    program = ProductControllerInstrument()
+    for dimension in (2, 4):
+        outputs = product_controller_export(ProductControllerState(), dimension)
+        assert np.array_equal(sum(k.conj().T@k for _, k, _ in outputs), np.eye(6))
+        terminal = [(state, matrix@initial, label) for state, matrix, label in outputs]
+        assert sum(np.linalg.norm(value)**2 for _, value, _ in terminal) == pytest.approx(1.)
+        failed, value, label = terminal[-1]
+        assert label == 5 and failed.instruction == 'failure'
+        assert np.linalg.norm(value[:, 1])**2 == pytest.approx(.5)
+        assert np.linalg.norm(value[:, 0]) == 0
+        assert product_controller_transition(failed) == failed
+        # Absorption is identity on this distinct failure sector, not an
+        # erroneous sixteen-dimensional map applied to a three/five-row payload.
+        assert program.branches(failed) == ((failed, None, F(1)),)
+        assert all(np.linalg.norm(matrix[:, :dimension]) == 0 for _, matrix, _ in outputs[1:])
 
 
 @pytest.fixture(scope='module')
@@ -479,3 +675,144 @@ def test_product_harmonic_shell_count_and_tail_are_an_exact_series_identity():
         head = sum((q**(i+2*j) for i, j in labels), F(0))
         bound = a.product_gibbs_tail(shell=k)
         assert bound['unnormalized_spectral_tail_upper'] == total-head
+
+
+@pytest.fixture(scope='module')
+def detector_kms_control():
+    return a.product_detector_kms_control()
+
+
+def test_product_detector_KMS_uses_actual_read_effect_and_Q_kick():
+    from scipy.linalg import expm
+    h = ProductBand().hamiltonian.toarray()
+    q = np.kron(normalized(a.polynomial(4, 1)), np.eye(4))
+    values, vectors = np.linalg.eigh(q)
+    reads = [(vectors*f((values+np.pi/2)/2))@vectors.T for f in (np.cos, np.sin)]
+    effect = reads[0].T@reads[0]-reads[1].T@reads[1]
+    independent_effect = .5j*(expm(1j*q)-expm(-1j*q))
+    assert np.allclose(effect, independent_effect, atol=2e-15)
+    rho = expm(-h/4); rho /= np.trace(rho)
+    t = 1/16
+    at = expm(1j*t*h)@effect@expm(-1j*t*h)
+    response = (1j*np.trace(rho@(at@q-q@at))).real
+    epsilon = 1e-4
+    kicks = [expm(sign*1j*epsilon*q) for sign in (-1, 1)]
+    means = [np.trace(rho@u.conj().T@at@u).real for u in kicks]
+    assert (means[1]-means[0])/(2*epsilon) == pytest.approx(response, abs=1e-9)
+    # Replacing the actual Q kick by an A kick changes the observable response.
+    assert abs(response-(1j*np.trace(rho@(at@effect-effect@at))).real) > .01
+
+
+def test_product_detector_KMS_keeps_raw_preparation_and_complete_source_means(detector_kms_control):
+    r = detector_kms_control
+    assert r['cross_spectral_KMS_residual'] < 1e-12
+    assert r['cross_fluctuation_response_identity_residual'] < 1e-12
+    assert r['raw_preparation_full_trace_error_numerical'] <= float(r['raw_preparation_full_trace_error_upper'])
+    assert abs(r['source_central_kick_slope']-r['ideal_central_kick_slope']) <= float(r['source_central_slope_error_upper'])
+    assert abs(r['ideal_central_kick_slope']-r['time_correlations'][1]['Q_kick_linear_response']) <= float(r['central_slope_to_linear_response_error_upper'])
+    assert all(row['spectral_reconstruction_error'] < 1e-12 for row in r['time_correlations'])
+    assert r['all_source_readouts_and_references_retained']
+    assert not r['equilibrium_cross_correlation_detector_executed']
+    assert not r['cross_spectral_weights_are_probabilities']
+    assert not r['physical_clock_or_laboratory_dictionary_identified']
+
+
+def test_product_detector_KMS_rejects_free_state_under_interacting_clock(detector_kms_control):
+    rows = detector_kms_control['time_correlations']
+    assert all(row['free_Gibbs_under_interacting_clock_KMS_defect'] > .008 for row in rows)
+
+
+def test_product_restricted_KMS_does_not_select_central_sector_weights(detector_kms_control):
+    control = detector_kms_control['central_reweighting_control']
+    assert control['restricted_modular_action_residual'] < 1e-12
+    assert control['restricted_KMS_residual'] < 1e-12
+    assert control['even_sector_population_difference'] > .1
+    assert control['detector_kick_symmetrized_noise_difference'] > 1e-4
+    assert not detector_kms_control['Gibbs_temperature_or_central_weights_selected_by_repair']
+
+
+def test_product_central_holdout_covers_independent_matrix_law_for_each_weight():
+    from ..common_source.records import PRODUCT_RECORD_BITS, product_central_record_bounds
+    h = ProductBand().hamiltonian.toarray()
+    gibbs = expm(-h/4)
+    sectors = []
+    for parity in (0, 1):
+        projector = np.diag([int(i % 2 == parity) for i in range(16)])
+        block = projector@gibbs@projector
+        sectors.append(block/np.trace(block))
+    q = np.kron(normalized(a.polynomial(4, 1)), np.eye(4))
+    phase = expm(1j*q/2)
+    reads = ((phase.real-phase.imag)/np.sqrt(2), (phase.real+phase.imag)/np.sqrt(2))
+    kick, advance = expm(1j*q/4), expm(-1j*h/8)
+    operators = [reads[last]@advance@(kick if first else np.eye(16))
+                 @reads[first]@advance@kick for first in (0, 1) for last in (0, 1)]
+    prefix = product_central_record_bounds()['sector_prefix_probability_intervals']
+    samples = 10**10
+    for weight in (F(0), F(1, 3), F(4, 5), F(1)):
+        probabilities = {bits: weight*sum(prefix['even'][bits])/2
+                         +(1-weight)*sum(prefix['odd'][bits])/2 for bits in PRODUCT_RECORD_BITS}
+        counts = {bits: int(samples*p) for bits, p in probabilities.items()}
+        # Restore the complete integer count, never drop the timeout row.
+        counts[()] += samples-sum(counts.values())
+        result = a.product_central_holdout_interval(counts, F(10, samples), F(0), F(0), F(0))
+        assert result is not None
+        lo, hi = result['central_weight_interval']
+        assert lo <= weight <= hi
+        rho = float(weight)*sectors[0]+float(1-weight)*sectors[1]
+        true = sum(float(np.trace(operators[i]@rho@operators[i].conj().T).real) for i in (0, 3))
+        lo, hi = result['validation_frequency_interval']
+        assert float(lo) <= true <= float(hi)
+        assert .68 < true < .70  # No spurious 1/36 timer weight in validation.
+
+
+def test_product_central_holdout_rejects_missing_timeouts_and_inconsistent_counts():
+    from ..common_source.records import PRODUCT_RECORD_BITS
+    counts = {bits: 0 for bits in PRODUCT_RECORD_BITS}
+    counts[()] = 100
+    assert a.product_central_holdout_interval(counts, F(0), F(0), F(0), F(0)) is None
+    del counts[()]
+    with pytest.raises(ValueError, match='Every complete record pattern'):
+        a.product_central_holdout_interval(counts, F(0), F(0), F(0), F(0))
+    for bad in (True, .001, F(-1), F(2)):
+        with pytest.raises(ValueError, match='exact probability-error radii'):
+            a.product_central_holdout_interval(counts, F(0), bad, F(0), F(0))
+
+
+@pytest.fixture(scope='module')
+def central_holdout_control():
+    return a.product_central_holdout_control()
+
+
+def test_product_central_holdout_executes_complete_source_laws_and_rejects_changed_contracts(central_holdout_control):
+    from ..common_source.records import product_central_source_error
+    r = central_holdout_control
+    assert len(r['complete_source_calibration_record_law']) == 7
+    assert len(r['complete_source_validation_record_law']) == 4
+    for key in ('complete_source_calibration_record_law', 'complete_source_validation_record_law'):
+        assert sum(row['probability'] for row in r[key]) == pytest.approx(1., abs=1e-9)
+    assert r['calibration_model_interval'] != r['validation_model_interval']
+    assert F(36, 10**4) < r['held_out_sector_contrast_lower'] < F(37, 10**4)
+    assert 23 < r['affine_elimination_slope_numerical'] < 25
+    preparation_error = F(1, 10**9)
+    # Raw source amplification must also be charged on preparation error.
+    assert r['calibration_source_probability_error_upper'] > (
+        product_central_source_error()+preparation_error*(2+preparation_error)/2)
+    lo, hi = r['independent_IID_sampling_example']['validation_frequency_interval']
+    assert float(lo) < r['source_validation_event_probability'] < float(hi)
+    assert min(row['separation_outside_validation_interval']
+               for row in r['changed_validation_contract_controls']) > .0005
+    assert not r['validation_native_timer_executed']
+    assert not r['separate_validation_parameter_fit']
+    assert not r['unknown_reference_correlations_reconstructed']
+    assert not r['public_data_or_physical_identification_claimed']
+
+
+def test_product_central_holdout_confidence_is_a_fresh_sample_requirement(central_holdout_control):
+    from math import exp
+    r = central_holdout_control
+    sample = r['independent_IID_sampling_example']
+    actual = sum(2*exp(-2*sample[name+'_trials']*float(sample[name+'_radius'])**2)
+                 for name in ('calibration', 'validation'))
+    assert actual <= float(sample['combined_failure_probability_upper']) < 1e-5
+    assert sum(row['count'] for row in r['synthetic_calibration_counts']) == sample['calibration_trials']
+    assert not r['synthetic_counts_are_observed_or_sampled_data']

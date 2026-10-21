@@ -1,5 +1,6 @@
 """Operator-level checks of the checkpoint adapter and its creation boundary."""
 from fractions import Fraction as Q
+from itertools import product
 import unittest
 
 from model.observer import native
@@ -37,6 +38,147 @@ def branches():
 
 
 class CheckpointRecordsTests(unittest.TestCase):
+    def test_exact_product_sector_event_matches_actual_complete_controller(self):
+        import numpy as np
+        from scipy.linalg import expm
+        from model.interacting_band_extension.construction import ProductControllerInstrument
+        program = ProductControllerInstrument()
+        h = program.lattice.hamiltonian.toarray()
+        thermal = expm(-h/4)
+        parity = np.diag([(-1)**(index % 4) for index in range(16)])
+        bounds = r.product_central_record_bounds()
+        effects = {bits: np.zeros((16, 16), dtype=complex) for bits in r.PRODUCT_RECORD_BITS}
+        native_tapes, rows = set(), 0
+        for state, operation, weight, _ in program.completed():
+            effects[state.bits] += float(weight)*(operation.conj().T@operation)
+            native_tapes.add(state.tape)
+            rows += 1
+        self.assertEqual(rows, 4900)
+        self.assertEqual(len(native_tapes), 3600)
+        np.testing.assert_allclose(sum(effects.values()), np.eye(16), atol=2e-10, rtol=0)
+        for sector, sign in (('even', 1), ('odd', -1)):
+            rho = (np.eye(16)+sign*parity)@thermal/2
+            rho /= np.trace(rho)
+            actual = sum(float(np.trace(rho@effects[bits]).real) for bits in r.PRODUCT_CENTRAL_EVENT)
+            lo, hi = bounds['central_event_probability_intervals'][sector]
+            guard = float(r.product_central_source_error())
+            self.assertLessEqual(float(lo)-guard, actual)
+            self.assertLessEqual(actual, float(hi)+guard)
+            self.assertAlmostEqual(float(np.trace(rho@effects[()]).real), 25/36, places=12)
+        self.assertGreater(bounds['central_event_gap_lower'], Q(151, 10**6))
+
+    def test_rational_product_bounds_against_independent_continuous_exponentials(self):
+        import numpy as np
+        from scipy.linalg import expm
+        from model.interacting_band_extension.construction import ProductBand, _product_clock_prefixes
+        lattice = ProductBand()
+        thermal = expm(-lattice.hamiltonian.toarray()/4)
+        actual = _product_clock_prefixes(lattice, np.eye(16), source=False, interval=Q(1, 16), steps=64)
+        bounds = r.product_central_record_bounds()['sector_prefix_probability_intervals']
+        for sector, sign in (('even', 1), ('odd', -1)):
+            mask = np.diag([int((-1)**(index % 4) == sign) for index in range(16)])
+            rho = mask@thermal; rho /= np.trace(rho)
+            for tick, weight in enumerate((Q(25, 36), Q(5, 18), Q(1, 36))):
+                for bits, op in actual[tick].items():
+                    probability = float(weight)*float(np.trace(rho@op.conj().T@op).real)
+                    lo, hi = bounds[sector][bits]
+                    self.assertLessEqual(float(lo)-5e-16, probability)
+                    self.assertLessEqual(probability, float(hi)+5e-16)
+
+    def test_central_inverse_retains_complete_counts_and_rejects_inconsistent_law(self):
+        bounds = r.product_central_record_bounds()['sector_prefix_probability_intervals']
+        total = 10**12
+        for weight in (Q(0), Q(1, 3), Q(1)):
+            counts = {bits: int(total*(weight*sum(bounds['even'][bits])/2
+                         +(1-weight)*sum(bounds['odd'][bits])/2)) for bits in r.PRODUCT_RECORD_BITS}
+            counts[()] += total-sum(counts.values())
+            lo, hi = r.product_central_weight_interval(counts, Q(10, total), Q(0))
+            self.assertLessEqual(lo, weight); self.assertGreaterEqual(hi, weight)
+            without_timeout = dict(counts); del without_timeout[()]
+            with self.assertRaises(ValueError):
+                r.product_central_weight_interval(without_timeout, Q(0), Q(0))
+        bad = {bits: 0 for bits in r.PRODUCT_RECORD_BITS}; bad[(0,)] = 100
+        self.assertIsNone(r.product_central_weight_interval(bad, Q(0), Q(0)))
+        bad[()] = True
+        with self.assertRaises(ValueError):
+            r.product_central_weight_interval(bad, Q(0), Q(0))
+
+    def test_central_sample_budget_exposes_conditioning_and_source_floor(self):
+        certificate = r.product_central_weight_certificate()
+        self.assertGreater(certificate['sufficient_IID_trials_95_percent_weight_radius_one_percent_ideal'], 8*10**11)
+        self.assertIsNone(certificate['sufficient_IID_trials_95_percent_weight_radius_one_percent_with_source'])
+        self.assertGreater(certificate['sufficient_IID_trials_95_percent_weight_radius_ten_percent_with_source'], 7*10**11)
+        self.assertFalse(certificate['central_weight_selected_by_KMS_or_repair'])
+        self.assertFalse(certificate['finite_samples_or_laboratory_calibration_executed'])
+        for value in (.0625, True, Q(0), Q(1, 4)):
+            with self.assertRaises(ValueError):
+                r.product_central_record_bounds(value)
+        with self.assertRaises(ValueError):
+            r.product_central_sample_budget(.1, Q(0))
+        # A capped two-interval bound cannot be divided by two to bound a
+        # coarse single interval: retain its own complete-output allowance.
+        self.assertGreaterEqual(r.product_central_source_error(Q(1, 8), steps=1), Q(11, 36))
+
+    def test_product_access_is_exactly_the_first_mode_parity_commutant(self):
+        result = r.product_access_certificate()
+        self.assertEqual(result['rational_closure_lower_rank'], 128)
+        self.assertEqual(result['exact_first_mode_parity_upper_dimension'], 128)
+        self.assertEqual(result['disconnected_coupling_access_dimension'], 16)
+        self.assertEqual(result['extra_first_mode_pointer_access_dimension'], 256)
+        self.assertFalse(result['full_B_C16_access_from_declared_menu'])
+        self.assertFalse(result['fixed_two_read_program_algebra_identified'])
+        self.assertTrue(result['local_source_service_menu_supplied'])
+
+    def test_product_access_uses_actual_source_terms_and_mode_order(self):
+        import numpy as np
+        from model.interacting_band_extension.construction import ProductBand, normalized
+        from model.interacting_band_extension import algebra
+        lattice, data = ProductBand(), r.product_access_generators()
+        metric = np.asarray(data['bargmann_metric'], dtype=float)
+        def orthonormal(matrix):
+            return np.asarray(matrix, dtype=float)*np.sqrt(metric[:, None]/metric[None, :])
+        for term, matrix in zip(lattice.terms, data['terms'], strict=True):
+            np.testing.assert_allclose(orthonormal(matrix), lattice.embed(term).toarray(),
+                                       atol=1e-14, rtol=0)
+        coordinate = orthonormal(data['coordinate'])
+        np.testing.assert_allclose(coordinate, lattice.apply(np.eye(16), (1,),
+            normalized(algebra.polynomial(4, 1))), atol=1e-14, rtol=0)
+        onsite = orthonormal(data['terms'][1])
+        self.assertGreater(np.linalg.norm(coordinate@onsite-onsite@coordinate), 1)
+        # The parity off-diagonal matrix unit is invisible to every allowed
+        # algebra element, whereas the excluded first-mode pointer sees it.
+        self.assertEqual(data['coordinate'][0][1], 0)
+        self.assertNotEqual(data['excluded_first_coordinate'][0][1], 0)
+
+    def test_actual_product_pointer_pulls_dynamic_effect_into_durable_record(self):
+        import numpy as np
+        from scipy.linalg import block_diag
+        from model.interacting_band_extension.construction import ProductBand, normalized
+        from model.interacting_band_extension import algebra
+        from model.scalar_observations import source
+        lattice = ProductBand()
+        q = normalized(algebra.polynomial(4, 1))
+        values, basis = np.linalg.eigh(q)
+        self.assertLess(max(abs(values)), np.pi/2)
+        pointer, _ = source.instrument(4, 1, np.pi/2, 2)
+        full = tuple(lattice.apply(np.eye(16), (1,), matrix) for matrix in pointer)
+        write = np.vstack(full)
+        np.testing.assert_allclose(write.conj().T@write, np.eye(16), atol=2e-10, rtol=0)
+        sine = lattice.apply(np.eye(16), (1,), (basis*np.sin(values))@basis.T)
+        record = np.diag([0.]*16+[1.]*16)
+        np.testing.assert_allclose(write.conj().T@record@write,
+                                   (np.eye(16)+sine)/2, atol=2e-10, rtol=0)
+        kick, _ = source.feedback(4, .25, 2)
+        control = block_diag(np.eye(16), lattice.apply(np.eye(16), (1,), kick))
+        np.testing.assert_allclose(control.conj().T@record@control, record,
+                                   atol=2e-10, rtol=0)
+        # The new output event is not a durable input observable: its input
+        # effect is nonprojective and changes under the actual onsite service.
+        effect = (np.eye(16)+sine)/2
+        self.assertGreater(np.linalg.norm(effect@effect-effect), .1)
+        onsite = lattice.embed(lattice.terms[1]).toarray()
+        self.assertGreater(np.linalg.norm(onsite@effect-effect@onsite), .1)
+
     def test_native_all_input_gram_and_intertwiner_certificate(self):
         receipt = r.native_checkpoint_certificate()
         self.assertEqual(receipt["all_phase_column_counts"],
@@ -45,6 +187,114 @@ class CheckpointRecordsTests(unittest.TestCase):
         self.assertEqual(receipt["postcommit_dimension"], 3276)
         self.assertTrue(receipt["postcommit_dual_projectors_fixed"])
         self.assertFalse(receipt["full_operational_observer_inhabitant_claimed"])
+        observer = receipt['postcommit_operational_observer']
+        self.assertTrue(observer['all_OperationalObserver_clauses_realized_on_declared_postcommit_tower'])
+        self.assertFalse(observer['Lean_inhabitant_compiled'])
+
+    def test_actual_checkpoint_state_public_readback_and_native_generator(self):
+        state = r.checkpoint_preparation()
+        self.assertEqual(len(state), 132)
+        self.assertTrue(all(left == right and value == (Q(1, 132), Q(0))
+                            for (left, right), value in state.items()))
+        identity = {}
+        for record in native.LETTERS:
+            projector = r.checkpoint_record_element(record)
+            self.assertEqual(len(projector), 546)
+            identity.update(projector)
+            self.assertEqual(r.checkpoint_public_readback(projector), projector)
+            self.assertEqual(r.checkpoint_generator(projector), {})
+        self.assertEqual(r.checkpoint_dual(identity), identity)
+        basis = r.checkpoint_basis()
+        a, b = basis[0], basis[-1]
+        operator = {(a, a): (Q(2), Q(1)), (a, b): (Q(3), Q(-1))}
+        public = r.checkpoint_public_readback(operator)
+        self.assertEqual(len(public), 546)
+        self.assertEqual(set(public.values()), {(Q(1, 273), Q(1, 546))})
+        self.assertEqual(r.checkpoint_public_readback(public), public)
+        self.assertEqual(r._sum(public.values()), (Q(2), Q(1)))
+        self.assertEqual(r.checkpoint_public_readback({(a, b): r.ONE}), {})
+
+    def test_checkpoint_adjoint_matches_original_coherent_native_map(self):
+        # Independent forward/dual pairing on matrix units includes coherent
+        # coin cross terms and the separate phase Kraus branches.
+        def pairing(effect, state):
+            return r._sum(r._multiply(value, state.get((right, left), r.ZERO))
+                          for (left, right), value in effect.items())
+        states = [native.State(native.states()[j], (record,))
+                  for j in (0, 17) for record in native.LETTERS]
+        for a, b in product(states, repeat=2):
+            operator = {(a, b): (Q(2, 7), Q(-3, 11))}
+            forward = r.native_tick_operator(operator)
+            c, d = next(iter(forward))
+            effect = {(d, c): (Q(1, 3), Q(2, 5))}
+            self.assertEqual(pairing(effect, forward),
+                             pairing(r.checkpoint_dual(effect), operator))
+            phase_cross = {(a, c): r.ONE}
+            self.assertEqual(r.checkpoint_dual(phase_cross), {})
+        a = states[0]
+        self.assertEqual(r.checkpoint_generator({(a, a): r.ONE}),
+                         {(a, a): (Q(-1), Q(0))})
+
+    def test_evidence_prediction_clauses_do_not_identify_forecast_with_event_mass(self):
+        labels = tuple(product((0, 1), native.LETTERS))
+        state = r.checkpoint_preparation()
+        read = lambda label: r.native_record_weight(state, label[1])
+        for x, y in product(labels, repeat=2):
+            self.assertFalse(r.checkpoint_precedes(x, x))
+            self.assertFalse(r.checkpoint_precedes(r.checkpoint_predict(x), x))
+            if read(x) == read(y):
+                self.assertEqual(read(r.checkpoint_predict(x)), read(r.checkpoint_predict(y)))
+            for z in labels:
+                if r.checkpoint_precedes(x, y) and r.checkpoint_precedes(y, z):
+                    self.assertTrue(r.checkpoint_precedes(x, z))
+        self.assertTrue(r.checkpoint_precedes((0, (0, 0)), (1, (0, 0))))
+        self.assertEqual(read((0, (0, 0))), read((0, (1, 0))))
+        self.assertNotEqual(native.FORECAST[(0, 0)], native.FORECAST[(1, 0)])
+        certificate = r.checkpoint_observer_certificate()
+        self.assertTrue(certificate['record_conditioned_controls_are_nonconstant'])
+        self.assertFalse(certificate['record_creation_in_persistence_domain'])
+
+    def test_exact_buffer_refinement_state_pairing_composition_and_generator(self):
+        state = r.checkpoint_preparation()
+        a = next(iter(state))[0]
+        effect = {(a, a): (Q(2), Q(3))}
+        def pair(left, right):
+            return r._sum(r._multiply(value, right.get((b, a), r.ZERO))
+                          for (a, b), value in left.items())
+        for bits in (0, 1, 2):
+            lifted = r.checkpoint_buffer_lift(effect, bits)
+            prepared = r.checkpoint_buffer_lift(state, bits, density=True)
+            self.assertEqual(pair(prepared, lifted), pair(state, effect))
+            # Applying native continuation independently on each unchanged
+            # buffer block intertwines the generator, not just expectations.
+            actual = {}
+            for address in range(2**bits):
+                block = {(x, y): value for ((x, u), (y, v)), value in lifted.items()
+                         if u == v == address}
+                actual.update({((x, address), (y, address)): value
+                               for (x, y), value in r.checkpoint_generator(block).items()})
+            self.assertEqual(actual, r.checkpoint_buffer_lift(r.checkpoint_generator(effect), bits))
+        once = r.checkpoint_buffer_lift(effect, 1)
+        twice = {((a, 2*u+w), (b, 2*v+w)): value
+                 for ((a, u), (b, v)), value in once.items() for w in (0, 1)}
+        self.assertEqual(twice, r.checkpoint_buffer_lift(effect, 2))
+        # Normalizing the observable embedding would erase its state pairing.
+        wrong = {pair: tuple(part/4 for part in value)
+                 for pair, value in r.checkpoint_buffer_lift(effect, 2).items()}
+        self.assertNotEqual(pair(r.checkpoint_buffer_lift(state, 2, density=True), wrong),
+                            pair(state, effect))
+
+    def test_persistence_observer_rejects_blank_and_invalid_interfaces(self):
+        blank = native.State(native.states()[0])
+        for function in (r.checkpoint_dual, r.checkpoint_public_readback, r.checkpoint_generator):
+            with self.assertRaisesRegex(ValueError, 'blank sector'):
+                function({(blank, blank): r.ONE})
+        for label in ((False, (0, 0)), (2, (0, 0)), (0, (True, 0)), (0, (1, 2))):
+            with self.assertRaises(ValueError):
+                r.checkpoint_predict(label)
+        for bits in (True, -1, 4):
+            with self.assertRaises(ValueError):
+                r.checkpoint_buffer_lift({}, bits)
 
     def test_native_first_write_is_not_a_global_fixed_record(self):
         state = native.State((1, 1) + (0,)*10)

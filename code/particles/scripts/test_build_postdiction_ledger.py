@@ -13,6 +13,12 @@ import pytest
 import build_postdiction_ledger as ledger
 
 
+def test_retained_public_record_projection_is_current():
+    """Check live receipt projection without rebuilding unrelated proof rows."""
+    retained = json.loads(ledger.DEFAULT_OUT.read_text(encoding="utf-8"))
+    assert retained["retrospective_public_record_comparisons"] == ledger._retrospective_public_record_references()
+
+
 @pytest.fixture(scope="module")
 def result(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("ledger")
@@ -44,6 +50,8 @@ def test_guards_are_compare_only(result):
     assert guards["public_promotion_allowed"] is False
     assert guards["changes_any_solve_path"] is False
     assert guards["hand_typed_measured_values"] is False
+    assert "separately supplied apparatus models and calibrations" in result["aggregation_policy"]
+    assert "do not establish joint agreement for one fixed physical construction" in result["aggregation_policy"]
 
 
 def test_all_sections_present(result):
@@ -1000,6 +1008,8 @@ def test_markdown_rendered(result):
     assert "Every step is machine checked in the Lean workspace" not in text
     assert "Scientific owner: #736" in text
     assert "Historical context:" not in text
+    assert "not identified as restrictions of one fixed physical construction" in text
+    assert "no pooled all-scale agreement verdict" in text
 
 
 def test_principal_results_prioritize_strong_structural_rows(result):

@@ -1,13 +1,13 @@
 {
   "description": "Source-executed interacting observer with certified Gibbs preparation, complete occupation bounds and native-clock composition.",
   "files": {
-    "README.md": "eec3e89abd7119696e7c0ca3568dc2c42454498dc03c89763582075e6027ae15",
+    "README.md": "c9922cfdb62f991b384fac6d1c27d835297a8eeaee2cca5dfd65d91530cdff98",
     "__init__.py": "f3a8f4e46681add759b53f4d4840e670a6d134ea56bec22b38d348b013f84aa1",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
-    "algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
-    "construction.py": "e0968a078d77c826944850cec51a230a3489ae75a046a21a6aa0eff7d893216f",
-    "results.json": "d51a385a526cf11c2bc521ad3bec329356ff3fe357af06e0ad9f631d77428acf",
-    "test_construction.py": "525b532d13d844c452deea1d2abb590d2ef76560f6ac433aa05cfbb0b46e4b60",
+    "algebra.py": "1d2b955f9b3c20ef9ddb2b1fd024d320a21cdb67ee6bd710ad6126e7939e009b",
+    "construction.py": "0278e5a7806147288bd136238dde0a2aea55beceb4111fa2091476e7b7c5c36a",
+    "results.json": "008b6b942cb34a48b833d9a6e458ca75b0eed2fda9247d345fdd4337b3ba0e5a",
+    "test_construction.py": "8fb76023f7a44e3e69c2d914e2533c87957b1eb59b9f38af43474d92e58f6a3b",
     "test_thermal_audit.py": "965fb88c3865d9adceac2cb82b0bd70aa48f1e80e2a205130aa9c3171fcefe5a",
     "test_thermal_forms.py": "71070c961c2a29383e285a2d7a1ec06c561e905b3db70d3c06349d164d0e4171",
     "test_thermal_history.py": "31949da71570ed99365c4cd3a2b6d5b80534919c3dbecbd347abccb34a77b5df",
@@ -23,8 +23,8 @@
   },
   "reproduce": [
     "python -m model.interacting_band_extension --check model/interacting_band_extension/results.json",
-    "python -m model.interacting_band_extension.thermal_certificate --check model/interacting_band_extension/thermal_results.json",
-    "python -m pytest -q -W error model/interacting_band_extension"
+    "python -m pytest -q -W error model/interacting_band_extension",
+    "python -m model.interacting_band_extension.thermal_certificate --check model/interacting_band_extension/thermal_results.json"
   ],
   "schema": "oph.interacting_band_extension.manifest.v1"
 }

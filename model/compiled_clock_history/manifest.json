@@ -7,13 +7,13 @@
     "history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",
     "README.md": "fd9a26a0d927825e340006fb08b0f22381ebadf084d631f1d81e53acd992a502",
     "receipt.py": "f07ce8cea419ba6b702668594bde1d0b1147c45d488d7d1d352989ab083a6230",
-    "results.json": "ff1c32200159730896ed31b2fe3ee89165bfa633eb3b2baeb9aad6094f67bbed",
+    "results.json": "c9efba8634a052e6f1b06ab7ac380ece83521efe22c68ebfbc41c330d0ccb839",
     "source.py": "86bef8ce53e02d2474888f5397fab6e8b2a23eed57fd8c0f860637f6ce367d3e",
     "test_history.py": "a9eb750928d4df8a2e3b6efff329b44f35aec0356740a895533acf35c8b1a664",
     "test_receipt.py": "f68990aac9a03331276783ff78d04e8e4c6f2ec9f7a98708b5a13bae7f1f77fe",
     "test_source.py": "e074da4486229bb768d6661667dd2b361ea0d8bf8076b1e7dab5c0f49b9507c0",
     "law_calibration.py": "3dabedb44ec3ffe0055a476d2c6707c656eaf4a1873d09b932477bd7cfb40344",
-    "law_calibration_results.json": "e87c911faee38c482b6167fea7415473b5853320216bc709727fd223e8422707",
+    "law_calibration_results.json": "fe2135d4d3fa7a0c817289f23382fdf9f1abec5d05100c2c38c1f0e770296673",
     "test_law_calibration.py": "dc46df80c3857f63e4c46e478d8e5d5b09cd99e2fd01d6debcdfd5fc84f24fe1"
   },
   "reproduce": [

@@ -7070,7 +7070,9 @@ def build(
             "parents; structural rows distinguish analytic paper proofs, validated Lean "
             "declarations and structured parents, and identify direct "
             "algebraic corollaries explicitly; a missing or inconsistent "
-            "receipt aborts the build"
+            "receipt aborts the build; separately supplied apparatus models and "
+            "calibrations do not establish joint agreement for one fixed physical "
+            "construction or a pooled all-scale verdict"
         ),
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
@@ -7180,6 +7182,11 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "the errors are not compared with one another. All three are retrospective "
         "postdictions of a supplied quantum-mechanical model; their agreement does not "
         "distinguish OPH from ordinary quantum mechanics.")
+    add("")
+    add("These comparisons share an executable source interface, but their supplied "
+        "apparatus actions, preparations, noise models and clock maps are not "
+        "identified as restrictions of one fixed physical construction. They "
+        "therefore supply no pooled all-scale agreement verdict.")
     add("")
     tilt = ledger["retrospective_tilt_comparison"]
     pooled = tilt["pooled"]
