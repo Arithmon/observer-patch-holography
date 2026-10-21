@@ -7862,6 +7862,17 @@
       "note": "Component: hierarchy problem"
     },
     {
+      "key": "suzuki2014instability",
+      "type": "misc",
+      "author": "Suzuki, Kohei and Uemura, Toshihiro",
+      "title": "On instability of global path properties of symmetric Dirichlet forms under Mosco-convergence",
+      "year": "2014",
+      "eprint": "1412.0725",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/1412.0725; https://arxiv.org/pdf/1412.0725",
+      "note": "Theorem 1.1: local L1 convergence of elliptic coefficients under common local ellipticity implies Mosco convergence. The fixed compact-domain application keeps its measure and form domain explicit."
+    },
+    {
       "key": "szegedy2004spectra",
       "type": "misc",
       "author": "Szegedy, Mario",

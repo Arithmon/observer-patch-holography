@@ -688,6 +688,77 @@ def native_optical_front_control():
             'radial_design_active_wave_and_clock_contracts_required': True}}
 
 
+def radial_nonidentifiability_control():
+    """Connected local extensions agree on the retained angular readout.
+
+    The source Laplacian comes from all total-one native endpoint records.
+    The radial graphs and their normalized average are comparison choices,
+    not extra native seams or an ordinary boundary trace. Their discarded
+    radial contrasts are explicitly measurable within each enlarged model.
+    """
+    graph, rows, denominator = _native_density_rows(0)
+    size = graph.ports
+    lap = sp.SparseMatrix(size, size, {
+        (p, q): (denominator if p == q else 0)-count
+        for p, row in enumerate(rows) for q, count in row})
+    lift = sp.SparseMatrix(3*size, size,
+                          {(r*size+p, p): 1 for r in range(3) for p in range(size)})
+    if lift.T*lift != 3*sp.eye(size):
+        raise ArithmeticError('the normalized radial average lost its isometry')
+    contrast = sp.Matrix([1, -1, 0])
+    lifted_contrast = sp.Matrix([value for value in contrast for _ in range(size)])
+    models = []
+    for name, edges, weight in (
+        ('path_weight_one', ((0, 1), (1, 2)), 1),
+        ('path_weight_four', ((0, 1), (1, 2)), 4),
+        ('cycle_weight_one', ((0, 1), (1, 2), (0, 2)), 1)):
+        radial = sp.zeros(3)
+        for a, b in edges:
+            radial[a, a] += weight; radial[b, b] += weight
+            radial[a, b] -= weight; radial[b, a] -= weight
+        if radial*sp.ones(3, 1) != sp.zeros(3, 1) or radial.rank() != 2:
+            raise ArithmeticError('the radial comparison graph must be connected and conservative')
+        entries = {(r*size+i, r*size+j): value for r in range(3)
+                   for (i, j), value in lap.todok().items()}
+        for a in range(3):
+            for b in range(3):
+                for p in range(size):
+                    key = a*size+p, b*size+p
+                    entries[key] = entries.get(key, 0)+radial[a, b]
+        product = sp.SparseMatrix(3*size, 3*size, entries)
+        residual = product*lift-lift*lap
+        if residual != sp.zeros(3*size, size):
+            raise ArithmeticError('the angular source readout distinguishes the proposed extension')
+        energy = (contrast.T*radial*contrast)[0]/2
+        full_energy = (lifted_contrast.T*product*lifted_contrast)[0]/(2*size)
+        if energy != full_energy:
+            raise ArithmeticError('the distinguishing radial readout changed under angular lifting')
+        spectrum = sorted(value for value, multiplicity in radial.eigenvals().items()
+                          for _ in range(multiplicity))
+        models.append({'name': name, 'radial_edges': [list(edge) for edge in edges],
+            'radial_edge_weight': weight,
+            'radial_laplacian': [[str(v) for v in row] for row in radial.tolist()],
+            'radial_spectrum': [str(v) for v in spectrum],
+            'cycle_rank': len(edges)-2,
+            'exact_product_intertwiner_residual_nonzeros': residual.nnz(),
+            'radial_contrast_wave_second_derivative_at_zero': str(-energy)})
+    if len({row['radial_contrast_wave_second_derivative_at_zero'] for row in models}) != 3:
+        raise ArithmeticError('the additional radial measurement failed to distinguish the models')
+    return {'native_ports': size, 'native_seams': len(graph.seams),
+        'source': 'unchanged complete total-one native endpoint-record kernel',
+        'product_ports': 3*size, 'radial_readout': '(1,1,1)/sqrt(3)',
+        'exact_identity': 'B_R J = J L; J*J=I; B_R=I_3 tensor L+R tensor I',
+        'models': models,
+        'retained_functional_calculus': ['heat', 'cosine wave', 'positive shifted resolvent'],
+        'native_record_and_incident_mark_law_is_independent_of_radial_choice': True,
+        'distinguishing_measurement': 'constant angular mode times radial contrast (1,-1,0)/sqrt(2)',
+        'same_angular_clock_scale_used_for_all_comparisons': True,
+        'radial_average_is_a_boundary_Dirichlet_to_Neumann_readout': False,
+        'additional_radial_contrast_is_available_in_current_native_record_menu': False,
+        'radial_models_are_executed_native_repair_extensions': False,
+        'existing_Dirichlet_product_or_general_OPH_is_refuted': False}
+
+
 def run():
     uniform_records = ng.execute_calibration()
     uniform = ng.recover(uniform_records)
@@ -748,6 +819,7 @@ def run():
         'product_wave_metric': product_wave_metric_control(),
         'native_increment_metric': native_increment,
         'native_optical_front': native_optical_front_control(),
+        'radial_selection_control': radial_nonidentifiability_control(),
         'incomplete_exposure_control': {'exposed_seams': len(missing['seams']),
             'rank_three_structural_gram_certified': missing['rank_three_structural_gram_certified']},
         'scope': {'federation_needed_for_finite_carrier_result': False,

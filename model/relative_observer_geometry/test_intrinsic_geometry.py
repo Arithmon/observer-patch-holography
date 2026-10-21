@@ -10,6 +10,46 @@ from ..observer_reconstruction import native_geometry as ng
 from . import intrinsic_geometry as g
 
 
+def test_radial_extensions_share_angular_readouts_but_have_distinguishing_local_probes():
+    result = g.radial_nonidentifiability_control()
+    assert result['native_ports'] == 240 and result['product_ports'] == 720
+    assert [row['radial_spectrum'] for row in result['models']] == [
+        ['0', '1', '3'], ['0', '4', '12'], ['0', '3', '3']]
+    assert [row['cycle_rank'] for row in result['models']] == [0, 0, 1]
+    assert [row['radial_contrast_wave_second_derivative_at_zero']
+            for row in result['models']] == ['-5/2', '-10', '-3']
+    for row in result['models']:
+        radial = sp.Matrix(row['radial_laplacian'])
+        incidence = sp.zeros(len(row['radial_edges']), 3)
+        for index, (a, b) in enumerate(row['radial_edges']):
+            incidence[index, a] = 1; incidence[index, b] = -1
+        assert radial == row['radial_edge_weight']*incidence.T*incidence
+        assert row['exact_product_intertwiner_residual_nonzeros'] == 0
+        # A separately constructed cosine readout detects the radial contrast;
+        # its Taylor remainder is bounded by ||R||^2 t^4/24.
+        values, vectors = np.linalg.eigh(np.array(radial, float))
+        values = np.maximum(values, 0)
+        probe = np.array([1., -1., 0.])/np.sqrt(2)
+        t = .01
+        observed = np.sum((vectors.T@probe)**2*np.cos(t*np.sqrt(values)))
+        derivative = float(F(row['radial_contrast_wave_second_derivative_at_zero']))
+        assert abs(observed-1-t*t*derivative/2) <= max(values)**2*t**4/24+1e-15
+    assert not result['radial_average_is_a_boundary_Dirichlet_to_Neumann_readout']
+    assert not result['additional_radial_contrast_is_available_in_current_native_record_menu']
+    assert not result['radial_models_are_executed_native_repair_extensions']
+    assert not result['existing_Dirichlet_product_or_general_OPH_is_refuted']
+
+
+def test_radial_control_rejects_loss_of_the_native_angular_constant(monkeypatch):
+    graph, rows, denominator = g._native_density_rows(0)
+    altered = [list(row) for row in rows]
+    q, count = altered[0][0]
+    altered[0][0] = q, count-1
+    monkeypatch.setattr(g, '_native_density_rows', lambda level: (graph, altered, denominator))
+    with pytest.raises(ArithmeticError, match='angular lifting'):
+        g.radial_nonidentifiability_control()
+
+
 def test_native_optical_front_retains_clock_coordinate_and_detector_scope():
     result = g.native_optical_front_control()
     distance = F(result['constant_coefficient_optical_distance_squared'])

@@ -203,6 +203,95 @@ code load/export services, plus the two native repairs. The resource ledger
 counts requested operations rather than cached host computations;
 preparation, hardware fidelity and classical control costs remain supplied.
 
+## Interacting readouts on the same radial product
+
+`same_product_interaction` in the retained receipt joins an interacting
+finite field to the [radial-product geometry](../relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+Take `(0,pi)` times the same angular screen, measure
+`dr/pi dmu_screen`, and the two orthonormal modes `sqrt(2)sin(r)` and
+`sqrt(2)sin(2r)` times the angular constant. Their squared free frequencies
+are `1,4`. For a declared positive effective coupling `g`, the projected
+Hamiltonian is
+
+```text
+H = (P1^2+Q1^2+P2^2+4 Q2^2)/2
+    + g/24 [3(Q1^4+Q2^4)/2 + 6 Q1^2 Q2^2].
+```
+
+The quartic coefficients follow by integrating the four radial sine
+factors; the executable tests independently integrate them. All oscillator
+polynomials are formed before compression to four occupations per mode.
+The frequency-two oscillator basis is only a matrix representation. An
+independent padded-oscillator construction checks the complete Hamiltonian.
+The interaction is positive and couples the two modes. Nonlinear evolution
+also excites omitted modes: even `psi1^3` has nonzero projection onto
+`psi3`. This is a Galerkin effective theory, with explicit spatial and
+occupation cutoffs, and does not claim an invariant two-mode sector.
+
+The geometric map is explicit. Write the product wave coefficient density
+as `C=mu diag(-1,a)` and its Lorentzian metric as
+`g_metric=sqrt(-det C) C^-1`. The lapse satisfies
+`N^2=mu sqrt(det a)` and `sqrt(abs(det g_metric))=mu N^2`.
+Thus a constant covariant coupling `lambda phi^4/24` projects to
+
+```text
+g_eff = lambda/pi integral mu_screen^2 sqrt(det a_screen) dx.
+```
+
+This invariant integral is positive. Setting `g_eff=1` chooses a coupling;
+repair does not select it. The angular constant is likewise only a retained
+mode when `N` varies. Smoothness of the **whole** coefficient density gives
+a smooth Lorentzian background as specified in the linked geometry proof;
+the native measurable coefficient theorem alone does not give smoothness.
+
+The run uses `g=1`, `beta=1/4`, two model-time intervals `1/16`, and 64
+palindrome steps per interval. It actually compiles and executes a
+purification of `rho=exp(-beta H)/Tr exp(-beta H)` on four work and four
+reference qubits, keeping every reference amplitude. The source output is
+not normalized to repair drift. Its raw norm, preparation error and complete
+resources are retained. The ideal observer algebra has
+`sigma_s(A)=rho^(is) A rho^(-is)=alpha_(-beta s)(A)`, so the interacting
+state and interacting clock use the same `H`. The raw prepared marginal's
+modular action is checked separately. A free Gibbs state has nonzero
+commutator with this interacting Hamiltonian and cannot supply this clock.
+The parameter is supplied Hamiltonian model time; this protocol does not
+calibrate its intervals against incident counts or laboratory seconds.
+
+Both source and independent Hamiltonian executions retain measurement
+disturbance, conditional feedback and all four two-bit outcomes, jointly
+with the final work and reference. Native sign control yields 1,056
+complete histories. The numerical complete-output trace error is about
+`1.97e-8`; deleting the interaction changes the record law by about
+`7.31e-4`, and deleting feedback by `1.95e-3`. The ideal splitting bound is
+retained separately from the telescoped numerical source allowance.
+The latter includes preparation, every unitary step, both measurement
+dilations and both kicks, using the inherited raw-target and guarded polar
+correction limits. Neither allowance certifies physical service fidelity.
+The worst branch requests 217,110 source pulses, 434,220 proper-code
+load/export events and two native repairs. These are a finite executable
+interaction and clock consistency check, not a public-data comparison.
+
+The inverse check fits `g`, `beta` and a radial frequency scale `c` from
+six independent probabilities at model interval `1/16`, using an independent
+padded-oscillator Hamiltonian. Three distinct initial guesses recover
+`(1,1/4,1)` within `1e-4`; their fitted model predicts the withheld source
+interval `1/8` within `1e-8` in every outcome probability. The local
+sensitivity singular values are approximately `0.264713,0.001489,0.000110`:
+the menu distinguishes these three parameters locally, but small probability
+errors can amplify substantially. These are noiseless synthetic probabilities,
+not finite-sample confidence bounds or a proof of global uniqueness. The
+declared comparison family changes radial frequencies to `ck`; it corresponds
+to length `pi/c` with normalized radial measure and independent effective `g`.
+Holding the covariant coupling fixed would additionally change `g_eff` by `c`.
+This fit identifies neither radial topology nor the full angular tensor.
+
+An absolute energy scale is still needed: if `H_phys=E_* H_model`, then
+`beta_model=E_*/(k_B T)` and `t_model=E_* t_phys/hbar`. Simultaneously scaling
+the Hamiltonian by a constant and dividing inverse temperature and duration
+by it preserves all these records. A legitimate calibration can fix that
+unit; the remaining ratios and readout predictions must then be tested
+without further adjustment.
+
 ## What remains open
 
 One interacting bandwidth enlargement and its matching error are established
@@ -215,4 +304,7 @@ symmetry, spacelike commutativity, scattering, an interacting vacuum, or
 observed spacetime. Those need a compatible larger-domain construction,
 controlled omitted-mode effects and an independently fixed observational
 meaning. The executable source compilation supplies none of these physical
-identifications by itself.
+identifications by itself. The same-product example supplies an explicit
+conditional interacting effective description and its Gibbs modular clock;
+it does not establish a nontrivial interacting ultraviolet limit, exact
+finite-cutoff microcausality, a CFT, or the observed interacting QFT.

@@ -705,6 +705,123 @@ def test_conditioning_and_partition_bounds_charge_growing_resources():
     assert no_success["conditional_state_trace_norm_error_upper"] is None
 
 
+def test_native_finite_spectrum_counting_precedes_the_continuum_limit():
+    # Assemble the source adjacency independently of the producer's block
+    # elimination; the analytic rank calculation, not these two examples,
+    # proves the stated all-level bound.
+    from ..federated_observer import source as graphs
+    for level in (0, 1):
+        graph = graphs.federation(level)
+        laplacian = np.zeros((graph.ports, graph.ports))
+        for row, neighbours in enumerate(graph.neighbours):
+            laplacian[row, row] = len(neighbours)
+            laplacian[row, list(neighbours)] = -1
+        values = np.linalg.eigvalsh(4**level*laplacian)[1:]
+        lower = np.array([float(clock.native_full_port_eigenvalue_lower(level, n))
+                          for n in range(1, graph.ports)])
+        assert np.all(values >= lower-1e-10)
+    for level in range(7):
+        count = 240*4**level
+        indices = {1, 19, 20, count-1, 20*4**level}
+        for k in range(level+1):
+            indices.update((20*4**k-1, 20*4**k, min(count-1, 80*4**k-1)))
+        for index in indices:
+            assert clock.native_full_port_eigenvalue_lower(level, index) >= F(index, 81940)
+
+
+def test_native_trace_gap_and_herald_bounds_have_distinct_scaling():
+    bounds = [clock.native_prepared_trace_bound(l, F(1), F(1, 1024*16**l), F(1023, 1024))
+              for l in (0, 4, 8, 12)]
+    for bound in bounds:
+        assert bound["native_lazy_event_probability"] == F(315, 512)
+        assert bound["full_domain_heat_step_times_generator_norm_upper"] < 2
+        assert bound["prepared_and_target_positive_gap_floor"] == F(1, 182)
+        assert bound["ideal_herald_success_lower"]*bound["full_port_dimension"] == F(1023, 1024)
+    assert bounds[2]["normalized_partition_upper"] == bounds[3]["normalized_partition_upper"]
+    assert bounds[3]["ideal_herald_success_upper"] < bounds[2]["ideal_herald_success_upper"]
+    insufficient_mass = clock.native_prepared_trace_bound(0, F(1), F(1, 1024), F(1, 2))
+    assert insufficient_mass["prepared_and_target_positive_gap_floor"] is None
+    # Independent scalar verification of the gap proof: any retained
+    # eigenmass m<=exp[-b sqrt(lambda-h lambda²/4)] has this same lower gap.
+    for level, beta in ((0, F(1)), (2, F(2))):
+        step, mass = F(1, 1024*16**level), F(1023, 1024)
+        bound = clock.native_prepared_trace_bound(level, beta, step, mass)
+        low = float(bound["positive_generator_gap_lower"])
+        for lam in np.linspace(low, 12*4**level, 80):
+            exponent = float(beta)*math.sqrt(lam-float(step)*lam*lam/4)
+            worst_gap = exponent+math.log(float(mass))
+            assert worst_gap >= float(bound["prepared_and_target_positive_gap_floor"])
+
+
+def test_native_trace_uses_the_exact_constant_instead_of_square_rooting_solver_noise(monkeypatch):
+    original = np.linalg.eigvalsh
+    clock.native_trace_controls.cache_clear()
+    baseline = clock.native_trace_controls()
+    def shifted_zero(matrix):
+        values = original(matrix)
+        values[0] = 1e-14
+        return values
+    monkeypatch.setattr(np.linalg, "eigvalsh", shifted_zero)
+    clock.native_trace_controls.cache_clear()
+    perturbed = clock.native_trace_controls()
+    for first, second in zip(baseline["finite_source_spectra"], perturbed["finite_source_spectra"], strict=True):
+        assert first["square_root_Gibbs_trace_b1_diagnostic"] == second["square_root_Gibbs_trace_b1_diagnostic"]
+    clock.native_trace_controls.cache_clear()
+
+
+def test_native_joint_contract_uses_one_family_and_counts_the_detector_separately():
+    for level in (0, 1, 2, 6, 8, 10):
+        result = clock.native_growing_field_contract(level)
+        resources, traced, bound = (result[key] for key in
+            ("source_resources", "native_trace_bound", "joint_field_bound"))
+        assert traced["heat_step"] == resources["heat_step"]
+        assert traced["native_lazy_event_probability"] == resources["native_lazy_event_weight"]
+        assert bound["inverse_anchor_weight_upper"] == traced["normalized_partition_upper"]
+        assert bound["positive_gap_floor"] == traced["prepared_and_target_positive_gap_floor"]
+        assert bound["copies"] == 2**level
+        assert bound["herald_success_lower"] == resources["ideal_success_probability_lower"]
+        assert result["ordered_pointer_and_clock_sandwich_pulses_upper"] == resources["one_pointer_quadrature_source_pulses_upper"]
+        assert result["required_detector_with_services_error_base2_negative_exponent"] == resources["required_pointer_primitive_with_services_error_base2_negative_exponent"]
+        allowance = resources["one_copy_complex_Weyl_estimator_error_upper"]
+        assert 0 < result["one_copy_complex_estimator_word_error_upper"] <= allowance
+        assert bound["N_copy_raw_source_error_upper"] is not None
+    tails = [clock.native_growing_field_contract(level)["joint_field_bound"]
+             for level in (6, 8, 10)]
+    assert all(a["finite_copy_gaussian_error_upper"] > b["finite_copy_gaussian_error_upper"]
+               and a["N_copy_raw_source_error_upper"] > b["N_copy_raw_source_error_upper"]
+               for a, b in zip(tails, tails[1:]))
+    unresolved = clock.native_growing_field_contract(0, F(1, 10**12))
+    assert unresolved["joint_field_bound"] is None
+    assert not result["growing_words_or_continuum_identification_executed"]
+
+
+def test_contraction_alone_allows_a_high_energy_filter_alias():
+    # This exact counterfamily obeys ||F||<=1 but is not a realizable
+    # native lazy filter. Every retained even power erases the gap.
+    weights = clock.preparation.subordinated_filter_weights()
+    for step in (F(1), F(1, 16), F(1, 256)):
+        diagonal = (F(0), 4/step)
+        filter_values = tuple(1-step*value/2 for value in diagonal)
+        masses = tuple(sum((w*f**(2*n) for n, w in enumerate(weights)), F())
+                       for f in filter_values)
+        assert masses[0] == masses[1] == sum(weights)
+        assert math.exp(-math.sqrt(float(diagonal[1]))) < .14
+    with pytest.raises(ValueError, match="native lazy filter"):
+        clock.native_prepared_trace_bound(1, F(1), F(1, 1000), F(1))
+
+
+@pytest.mark.parametrize("arguments", (
+    (True, F(1), F(1, 1024), F(1)),
+    (0, F(0), F(1, 1024), F(1)),
+    (0, F(1), F(0), F(1)),
+    (0, F(1), .001, F(1)),
+    (0, F(1), F(1, 1024), F(0)),
+    (0, F(1), F(1, 1024), F(2))))
+def test_native_trace_bound_rejects_unspecified_domains(arguments):
+    with pytest.raises(ValueError):
+        clock.native_prepared_trace_bound(*arguments)
+
+
 def test_gap_and_time_error_bound_controls_the_whole_ordered_exponent():
     # Independent phase-space calculation; the change in prepared gaps also
     # changes thermal noise, not only the rotation frequency.

@@ -2431,7 +2431,7 @@
         "model/compiled_native_interface/README.md": "statement",
         "model/compiled_clock_history/README.md": "statement"
       },
-      "notes": "Lean/EventAlgebra/LuedersPhaseInstrument.lean constructs a declared L\u00fcders instrument on the committed eight-context effect table and proves the channel clauses as exact finite matrix algebra: each outcome map X \u21a6 E X E is completely positive through a singleton Kraus family and trace-nonincreasing on positive-semidefinite inputs, the summed channel of each context is trace preserving on every matrix and hence CPTP, and the induced effects equal the committed table with the declared Pauli-Y projector in the phase slot. The normalized post-measurement state is certain of its effect, a state-update proxy for readback. SourcePhaseInstrumentOutcomeBridge proves that all 48 enabled entries of the generated source phase relation agree with the corresponding normalized outcome of this declared instrument. SourcePhaseCommonPreparationHull evaluates those declared outcome maps on every common-support source state and proves an exact convex-hull compatibility with the declared run state. The run state is outside the generated state domain, no generated source step starts there, and a generated result loses all-event support; the hull therefore supplies neither a source implementation nor a sequential instrument protocol. Its generated outcome index is semantic, not a recorded public outcome. The clause that outcome readback agrees with a recorded public outcome is open: no public outcome is typed. The effect table alone does not determine the instrument, and the committed repeatability clause is strictly weaker than selection. InstrumentSelectionByCertainStates proves a sharper conditional result: among finite Kraus-form maps with the committed projective effects, declared certain-state invariance is equivalent to the L\u00fcders maps. That operational invariance remains a declared hypothesis and is not source-implemented; no recorded public outcome is bound. Removal therefore needs a source-facing instrument whose readback is bound to public outcomes under PR-65. SourceBoundInstrumentInterface identifies induced effects with the static outcome-map trace/expected-frequency surface and proves the determined interface does not pin the instrument; a recorded public outcome is not typed in the corpus, so the readback clause of this row stays open. The INS-03 v2 replay gate adds executable transcript verification against a proposed generation semantics; every verdict is explicitly unauthenticated and no instrument realization follows, so this premise stays open. Model navigation, citation only: the source-discrimination construction emits proper-code words for the C/E local dilations, fixed phase preparations and complete binary source-projector readout; the compiled native interface emits the balanced phase mixer and its imaginary quadrature; and the compiled clock history retains both terminal pointer outcomes with every complement abort. These supply finite instances of complete phase-sensitive instruments with all outcome branches retained, compared with ideal targets on source arrays. No recorded public outcome is bound to them, physical gate fidelity is not certified, and the citation discharges nothing; PR-64 stays open."
+      "notes": "Lean/EventAlgebra/LuedersPhaseInstrument.lean constructs a declared Lüders instrument on the committed eight-context effect table and proves the channel clauses as exact finite matrix algebra: each outcome map X ↦ E X E is completely positive through a singleton Kraus family and trace-nonincreasing on positive-semidefinite inputs, the summed channel of each context is trace preserving on every matrix and hence CPTP, and the induced effects equal the committed table with the declared Pauli-Y projector in the phase slot. The normalized post-measurement state is certain of its effect, a state-update proxy for readback. SourcePhaseInstrumentOutcomeBridge proves that all 48 enabled entries of the generated source phase relation agree with the corresponding normalized outcome of this declared instrument. SourcePhaseCommonPreparationHull evaluates those declared outcome maps on every common-support source state and proves an exact convex-hull compatibility with the declared run state. The run state is outside the generated state domain, no generated source step starts there, and a generated result loses all-event support; the hull therefore supplies neither a source implementation nor a sequential instrument protocol. Its generated outcome index is semantic, not a recorded public outcome. The clause that outcome readback agrees with a recorded public outcome is open: no public outcome is typed. The effect table alone does not determine the instrument, and the committed repeatability clause is strictly weaker than selection. InstrumentSelectionByCertainStates proves a sharper conditional result: among finite Kraus-form maps with the committed projective effects, declared certain-state invariance is equivalent to the Lüders maps. That operational invariance remains a declared hypothesis and is not source-implemented; no recorded public outcome is bound. Removal therefore needs a source-facing instrument whose readback is bound to public outcomes under PR-65. SourceBoundInstrumentInterface identifies induced effects with the static outcome-map trace/expected-frequency surface and proves the determined interface does not pin the instrument; a recorded public outcome is not typed in the corpus, so the readback clause of this row stays open. The INS-03 v2 replay gate adds executable transcript verification against a proposed generation semantics; every verdict is explicitly unauthenticated and no instrument realization follows, so this premise stays open. Model navigation, citation only: the source-discrimination construction emits proper-code words for the C/E local dilations, fixed phase preparations and complete binary source-projector readout; the compiled native interface emits the balanced phase mixer and its imaginary quadrature; and the compiled clock history retains both terminal pointer outcomes with every complement abort. These supply finite instances of complete phase-sensitive instruments with all outcome branches retained, compared with ideal targets on source arrays. No recorded public outcome is bound to them, physical gate fidelity is not certified, and the citation discharges nothing; PR-64 stays open."
     },
     {
       "id": "PR-65",
@@ -2944,7 +2944,7 @@
         "premises": [
           "PR-07"
         ],
-        "constructed": "Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings. The executable N1 observer composes current observation, retained classical history, record-only prediction and feedback for two events, with all benchmark paths retained. Its detector extension maps the accepted closure P through the existing electromagnetic coupling to a binary record and native feedback. A minimal twelve-block address carrier preserves the complete quantum channel and joins binary native/N4 repair with collective response in an abstract scalar-seam A1\u2013A3 source. The two laws share the full quantum reference and normalized geometry but differ in certified finite kinetics. A separate coherent phase/readout protocol distinguishes C and E exactly while preserving their common classical load transitions; it supplies a candidate comparison without requiring a uniqueness theorem. The common-source joint instrument lets the actual first native current prepare the gauge/scalar experiment and lets its final scalar record control the second native repair, retaining all 1056 histories and their quantum terminal states. In that earlier classical attachment, native M78 integer repair remains a supplied primitive while the quantum apparatus uses the existing M6 source controls. The independent uniform-seam forgotten-record C/E channels have exact quantum gap (5-sqrt(5))/60 on both the binary shell and the full total-two carrier, by an exact signed-difference reduction. Their sharp binary coherence rates differ despite identical classical geometry and relaxation. The coherent native attachment places source-compiled C or E repairs before and after the same retained four-read work program. Its first decoded current controls the gauge kick and its second smooth bit selects the final native seam. The complete joint channel admits arbitrary native/work/reference inputs; default executions use the declared scalar vacuum. This supplies a common finite interface without selecting a unique native record law or a physical encoding. A separate coherent-continuation experiment checks all 3960 native binary arcs and a bijective unread-record reversal. With supplied uniform coherent event embedding A and reflection, W=S(2AA*-I) has compression A*W^n A=T_n(K), and the actual centered load columns obey KX=X(I-L/60). This gives a compressed-amplitude wave recurrence, not a mean-load or probability law. Two continuation phases share the same first coherent event but have two-step Ramsey plus probabilities 1 and 113/150 for the specified basis input. Record-label phases invisible to complete committed C/E CP branches change the compressed spectral trace by -1/900. Thus the native instrument does not select the coherent extension; collision states obstruct this same-domain arc reversal on the full carrier. Coherent preparation, unread records, reflection and interferometric readout are additional controls; no source pulse realization, spatial refinement or physical clock is claimed. Proper-carrier covariance and the declared real coherent-continuation criteria leave the two executed alternatives. A source-executed record-phase experiment has the same complete committed C/E instrument but a fixed coherent read with probabilities 3/4 versus 1/4; commitment before read gives 1/2 for both. Exact native diagonal-block equivalence makes C/E indistinguishable through work-only instruments and common-record feedback, including arbitrary initial native/work/reference correlations. Coherent native access can distinguish them. A separate cut-metric obstruction rules out identifying fixed occupation-diagonal binary-pinch mixtures directly with the supplied quadratic number-dephasing rates; it is not an empirical rejection of C or E. Complete current-law identification executes nine independent scalar quadratures and reconstructs all nine real coordinates of the classified 78-state coarse definite-current instrument. It includes collision coherence invisible on the binary sector, source-compiled probes and continuing reference histories. This determines the model instrument only within the stated family and probe interface. The admissible quantum record laws for the native seam rule form one convex family classified exactly by five coherence multipliers, with C, E, C0 and T as named members; classical current data cannot separate members under a common current-record interface. The calibrated clock-history bound carries all nine identified coordinates into one complete continuing experiment, with expected-exposure multiplier 408/125 at cap two.",
+        "constructed": "Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings. The executable N1 observer composes current observation, retained classical history, record-only prediction and feedback for two events, with all benchmark paths retained. Its detector extension maps the accepted closure P through the existing electromagnetic coupling to a binary record and native feedback. A minimal twelve-block address carrier preserves the complete quantum channel and joins binary native/N4 repair with collective response in an abstract scalar-seam A1–A3 source. The two laws share the full quantum reference and normalized geometry but differ in certified finite kinetics. A separate coherent phase/readout protocol distinguishes C and E exactly while preserving their common classical load transitions; it supplies a candidate comparison without requiring a uniqueness theorem. The common-source joint instrument lets the actual first native current prepare the gauge/scalar experiment and lets its final scalar record control the second native repair, retaining all 1056 histories and their quantum terminal states. In that earlier classical attachment, native M78 integer repair remains a supplied primitive while the quantum apparatus uses the existing M6 source controls. The independent uniform-seam forgotten-record C/E channels have exact quantum gap (5-sqrt(5))/60 on both the binary shell and the full total-two carrier, by an exact signed-difference reduction. Their sharp binary coherence rates differ despite identical classical geometry and relaxation. The coherent native attachment places source-compiled C or E repairs before and after the same retained four-read work program. Its first decoded current controls the gauge kick and its second smooth bit selects the final native seam. The complete joint channel admits arbitrary native/work/reference inputs; default executions use the declared scalar vacuum. This supplies a common finite interface without selecting a unique native record law or a physical encoding. A separate coherent-continuation experiment checks all 3960 native binary arcs and a bijective unread-record reversal. With supplied uniform coherent event embedding A and reflection, W=S(2AA*-I) has compression A*W^n A=T_n(K), and the actual centered load columns obey KX=X(I-L/60). This gives a compressed-amplitude wave recurrence, not a mean-load or probability law. Two continuation phases share the same first coherent event but have two-step Ramsey plus probabilities 1 and 113/150 for the specified basis input. Record-label phases invisible to complete committed C/E CP branches change the compressed spectral trace by -1/900. Thus the native instrument does not select the coherent extension; collision states obstruct this same-domain arc reversal on the full carrier. Coherent preparation, unread records, reflection and interferometric readout are additional controls; no source pulse realization, spatial refinement or physical clock is claimed. Proper-carrier covariance and the declared real coherent-continuation criteria leave the two executed alternatives. A source-executed record-phase experiment has the same complete committed C/E instrument but a fixed coherent read with probabilities 3/4 versus 1/4; commitment before read gives 1/2 for both. Exact native diagonal-block equivalence makes C/E indistinguishable through work-only instruments and common-record feedback, including arbitrary initial native/work/reference correlations. Coherent native access can distinguish them. A separate cut-metric obstruction rules out identifying fixed occupation-diagonal binary-pinch mixtures directly with the supplied quadratic number-dephasing rates; it is not an empirical rejection of C or E. Complete current-law identification executes nine independent scalar quadratures and reconstructs all nine real coordinates of the classified 78-state coarse definite-current instrument. It includes collision coherence invisible on the binary sector, source-compiled probes and continuing reference histories. This determines the model instrument only within the stated family and probe interface. The admissible quantum record laws for the native seam rule form one convex family classified exactly by five coherence multipliers, with C, E, C0 and T as named members; classical current data cannot separate members under a common current-record interface. The calibrated clock-history bound carries all nine identified coordinates into one complete continuing experiment, with expected-exposure multiplier 408/125 at cap two.",
         "remaining": "For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. The one-way current-record lift adds local response factors and a supplied coupling. For binary N4, collective controls supply a complete abstract response grammar on the central-address carrier; independent-factor or address-controlled reversible probes are excluded from that grammar. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification. Exact all-input preservation of the original reduced load channel forbids unconditional internal-to-load feedback. The retained rational CPTP control has feedback difference 144/625 and a scalar-only private commutant, so the restricted single-product exclusion cannot be extended to all number-preserving conjugations (#1089). Reversible words and chart paths are fixed independently of measured records; admitted feedback uses the repair/reset templates. Unrestricted record-conditioned reversible words add 144 independent address-controlled response directions and are excluded from this abstract grammar. The coherent native attachment implements its declared finite encoding; source compilation alone supplies neither a physical native-load interface nor independently calibrated preparation, code-transfer, storage and readout errors. A source-selection argument must constrain cross-record phases and coherent continuation, or identify observables independent of those choices. Selection is relative to the admitted observer interface: scalar branch phases invisible throughout committed histories need no separate operational selection there, while coherent access makes their full implementation part of the repair-rule obligation. Self-read cannot distinguish observationally equivalent fine refinements or uncommitted dilations. Calibration requires the declared coherent apparatus, family membership and independently chosen sampling design; instrument identification is not a theorem that selects nature's source or an observer-independent eternal truth.",
         "closure": "Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.",
         "sources": [
@@ -3867,7 +3867,7 @@
         "sources": [
           {
             "path": "model/CONSTRUCTION.md",
-            "label": "One composed preparation\u2013history error and resource budget"
+            "label": "One composed preparation–history error and resource budget"
           },
           {
             "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
@@ -4073,7 +4073,7 @@
         "scope": "active",
         "status": "conditional",
         "premises": [],
-        "constructed": "The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.\n\nOn the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.\n\nFor native C/E federations, the complete local-output bound controls retained quantum states, local records, local feedback and untouched references. Compatible restrictions on a fixed bounded-degree graph yield a quasilocal quantum process at bounded auxiliary per-seam Poisson parameter. Actual screen parent/child mean restrictions require memory and do not automatically intertwine dynamics. Each locality or refinement argument must use compatible initial states and access maps on the same source family. Actual source-screen pairs 1/3, 2/4 and 3/5 have native-port-labelled neighborhoods agreeing through radii 3,6 and 9. Matched radius-nine initial restrictions give complete root-output distance at most 2187/5734400 at per-seam s=1/4 between 15360 and 245760 ports. The explicit product-state family is compatible; fixed global total-two preparations have a separately charged local mismatch. Exact mean-density return kernels agree through uniformization power 22 and first differ at 23; this stronger first-moment check is not a complete-history bound. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.\n\nThe coherent screen observer executes a complete logical-qubit channel at native incident-clock count two on the actual matched level-three/five screens. A degree-two exclusion dual and fixed signed-difference operator compute all pair/reference populations and coherences, including mask-controlled phase feedback and all 21 capped records. Spatial, cutoff and directed-arithmetic bounds put the computed table within 7.779e-10 of either completed full-screen output, uniformly over logical inputs and untouched references under the independent Bernoulli-environment preparation. The two completed source channels differ by at most 2.731e-10. C and E share the classical record law but have completed Bell-output distance 101/968; an unnormalized retained C block certifies entanglement. Preparation and phase services remain declared, and this finite comparison does not establish an all-level or physical-time limit. For the actual shared-midpoint source screens, the all-level native Green bound gives a nonzero Gaussian observation process in C([0,T],H^-2(S2)) along one spatial subsequence. Same-history attempt and incident clocks converge jointly to that path after the fixed-graph count limit. Exact native temporal correlations recover the spatial Green resolvent; cell Schur elimination has error at most1/(8*4^l). The admitted coherent event continuation supplies a controlled square-root low-band dispersion. A unique limiting generator, physical radial space and quantum vacuum remain unselected. A specified positive random-length return reference has modular generator arccos(K), the coherent wave phase, with explicit finite-cap state/generator bounds. The independent sampler and full endpoint closure are admitted; the ideal mean length is infinite. The two-sign arc compression does not implement complete vertex modular histories or prepare the reconstructed reference physically. The actual native density has simultaneous C(H^-3) path limits, and the declared Green filter gives C(H^-2) path limits, under uniform fixed-number preparation and IID seams. No iterated preliminary count limit is needed for these paths.",
+        "constructed": "The supplied scalar families have separate spatial, occupation and temporal refinement contracts. The two-site source apparatus has an explicit occupation certificate; the shared fixed-band scalar construction increases quadrature resolution without adding modes. The repulsive Bose family controls growing volume at fixed spacing, while the canonical scalar regulator has a free Klein-Gordon refinement and finite-volume interacting bounds. These results do not transfer an interacting relativistic limit between different actions.\n\nOn the common interacting scalar/gauge/matter action, moment and projected-Duhamel estimates control pre-readout evolution. The sharp half-line detector has a complete strong-limit construction and a state-specific certified infinite-output comparison; its long occupation tail prevents small probability error from certifying small complete-output error. Finite sign-projector and rectangular-code support certificates retain their preparation domains. Sharp measurement may destroy finite kinetic-energy moments, so a later evolution needs its own estimate. The distinct smooth Ramsey instrument has quantitative occupation/temporal bounds and finite-energy control through repeated reads, feedback and a later gauge-clock probe. Its retained sixteen-output certificate is for the fixed blank-gauge/coupled-vacuum preparation, with independent native/reference inputs; it is not an arbitrary-gauge or correlated-work certificate.\n\nFor native C/E federations, the complete local-output bound controls retained quantum states, local records, local feedback and untouched references. Compatible restrictions on a fixed bounded-degree graph yield a quasilocal quantum process at bounded auxiliary per-seam Poisson parameter. Actual screen parent/child mean restrictions require memory and do not automatically intertwine dynamics. Each locality or refinement argument must use compatible initial states and access maps on the same source family. Actual source-screen pairs 1/3, 2/4 and 3/5 have native-port-labelled neighborhoods agreeing through radii 3,6 and 9. Matched radius-nine initial restrictions give complete root-output distance at most 2187/5734400 at per-seam s=1/4 between 15360 and 245760 ports. The explicit product-state family is compatible; fixed global total-two preparations have a separately charged local mismatch. Exact mean-density return kernels agree through uniformization power 22 and first differ at 23; this stronger first-moment check is not a complete-history bound. The actual-screen field protocol also admits uniform fixed-number preparations: connected native exchanges derive the unique diagonal stationary law within each conserved sector. Exact hypergeometric restrictions, rather than independent product occupations, certify all 44 field/timeout outcomes at totals 5120/15360 and 81920/245760. Positive baseline and negative feedback fourth cumulants survive. Each screen uses its own initial restriction; the complete field-law distance is nonzero and certified near 3.1e-5. Eight paired full-source histories preserve exact totals, native feedback and serialized field-counter continuation. The conserved total and exact sampling service remain inputs; stationarity supplies no finite physical preparation certificate.\n\nThe coherent screen observer executes a complete logical-qubit channel at native incident-clock count two on the actual matched level-three/five screens. A degree-two exclusion dual and fixed signed-difference operator compute all pair/reference populations and coherences, including mask-controlled phase feedback and all 21 capped records. Spatial, cutoff and directed-arithmetic bounds put the computed table within 7.779e-10 of either completed full-screen output, uniformly over logical inputs and untouched references under the independent Bernoulli-environment preparation. The two completed source channels differ by at most 2.731e-10. C and E share the classical record law but have completed Bell-output distance 101/968; an unnormalized retained C block certifies entanglement. Preparation and phase services remain declared, and this finite comparison does not establish an all-level or physical-time limit. For the actual shared-midpoint source screens, the all-level native Green bound gives a nonzero Gaussian observation process in C([0,T],H^-2(S2)) along one spatial subsequence. Same-history attempt and incident clocks converge jointly to that path after the fixed-graph count limit. Exact native temporal correlations recover the spatial Green resolvent; cell Schur elimination has error at most1/(8*4^l). The admitted coherent event continuation supplies a controlled square-root low-band dispersion. A unique limiting generator, physical radial space and quantum vacuum remain unselected. A specified positive random-length return reference has modular generator arccos(K), the coherent wave phase, with explicit finite-cap state/generator bounds. The independent sampler and full endpoint closure are admitted; the ideal mean length is infinite. The two-sign arc compression does not implement complete vertex modular histories or prepare the reconstructed reference physically. The actual native density has simultaneous C(H^-3) path limits, and the declared Green filter gives C(H^-2) path limits, under uniform fixed-number preparation and IID seams. No iterated preliminary count limit is needed for these paths.\n\nAt every finite native level, positive eigenvalues obey lambda_n(4^l L_l)>=n/81940, giving Tr exp(-b sqrt(D_l))<=1+163880/b^2. The positive lazy filter gives a uniform prepared partition bound, success floor and positive gap. A quantified full-source sampler/compiler schedule uses its unchanged zero-request mass to control the global actual-marginal logarithm; increasing spectral encoder, detector and clock resources join the fixed-band ordered field limit with N=2^l copies.",
         "remaining": "A common controlled interacting relativistic observation limit remains open. Growing volume, increasing occupation and reducing a temporal splitting step are different operations. The actual source has bounded compatible Gaussian subsequential field laws. Whole-sequence convergence, a unique physical limit, interacting relativistic observations and laboratory identification require further arguments; finite-count errors are separate from the iterated Gaussian limit. Supplied scalar actions retain their own geometry and preparation inputs; their bounds do not select the native law. Numerical source-array certificates and mathematical ideal limits do not authenticate physical service errors. Postselected output comparisons need their own success-probability control, and infinite stopping needs a tail bound.",
         "closure": "Use each proved occupation and readout certificate with its actual initial-state, record and observable contract. Keep the sharp-sign and smooth Ramsey protocols distinct, and preserve the separate finite modular-clock scope. Control source compilation and physical-service errors before an apparatus claim. Other interactions or spatially refining families require their own uniform errors and compatible states/observables; the existing free-scalar spatial limit remains a different theorem.",
         "sources": [
@@ -4327,6 +4327,11 @@
             "path": "model/observer_time_fields/REFINEMENT.md",
             "anchor": "### Continuous paths of the actual native density and Green field",
             "label": "Actual density and Green-field path limits"
+          },
+          {
+            "path": "model/predictions/README.md",
+            "anchor": "<a id=\"native-growing-preparation-and-clock-contract\"></a>",
+            "label": "Finite native trace and quantified growing source contract"
           }
         ],
         "claims": [
@@ -4624,7 +4629,7 @@
           "PR-16",
           "PR-52"
         ],
-        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied. Exposure-normalized even-load current laws recover the same unweighted rank-three structural Gram without a uniform schedule or fair coins. The actual slowest response under a doubled seam weight has multiplicity two. The full inverse-response Gram instead has rank eleven, so choosing the slow-band metric is an operational readout choice, not a proof of physical bulk dimension. These exact single-carrier constructions require no federation. On the same uniform single carrier, asymptotic local-tick covariance independently recovers the native distance shells from a continuing movement-count history. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. A disclosed total-one preparation supplies exact native first-arrival records in the receiver incident-attempt clock. Mean arrival counts are 22, 28 and 30 for graph-distance shells one through three; the resulting passage metric has centered Gram rank eleven. Complete arrival and timeout laws retain remote repairs. A separate total-two source witness shows a two-seam intervention response at the first receiver incident tick, disproving a one-seam-per-local-tick identification while preserving native-attempt locality. The same pair-clock geometry predicts the joint initial-A/final-B occupation marginal at the second A incident tick under the stationary total-two preparation and local bit/current reads. An independent 66-state stopped-process check agrees, while identity repair preserves the clocks and separate marginals but changes the joint field law. This is a finite common-source observable link, not a physical continuum identification. Nonuniform clock reconstruction separates the unweighted structural Gram from weighted kinetics: inferred weights predict a different joint field law, checked against the complete 66-state process. On the actual source screens, nested observations and uniform Green bounds give a continuous H^-2(S2) Gaussian observation process shared by the normalized attempt and incident clocks. Native temporal correlations recover the same Green operator, and the admitted coherent event walk has controlled square-root spatial dispersion. The three coarse smearings and these wave amplitudes do not identify a physical radial coordinate or a quantum field vacuum. An all-level descendant-patch Poincare bound upgrades the common Green subsequence on the spherical source screens to operator-norm convergence. The compact injective limit on mean-zero L2 has inverse A, one positive self-adjoint spatial generator. With the constant mode restored, Mosco convergence of full-port harmonic lifts gives a conservative, regular, strongly local Dirichlet form with domain H1 of the auxiliary flat surface. Ancestral tents bound its eigenvalues by n/49920 <= lambda_n(A) <= 3n/2, so its heat-trace spectral dimension is two. Under the same observation dictionary and a fixed positive scale this excludes a unitary identification with a second-order positive elliptic operator on a smooth compact three-dimensional manifold. The Steklov comparison excludes a boundedly invertible L2 energy congruence with the static boundary action of a smooth compact three-dimensional Dirichlet bulk, and internal rank-three carrier modes vanish from bounded-energy families at order 2^(-l). The causal-placement control assigns each attempt its seam midpoint and dependency height h. All 270 ordered endpoint-sharing seam pairs obey the sharp bound c^2=(1+1/sqrt(5))/2, which gives a forward cone placement with declared coordinate t=c h; the executed four-event tape (0,1),(2,3),(0,1),(0,1) shows that the converse fails, with a Lean instance for both statements. Terminal-star reduction gives an explicit positive local conductance graph with the same native Green limits and operator error at most 182*2^-level. It isolates routing-dependent homogenization without adding a physical dimension. Complete linear spatial readouts preserve normalized decay spectra, excluding the stated complete compact-three-dimensional free-scalar observation law. The recovered frame weights actual native currents into a three-component axial martingale with isotropic covariance 4N/99 and a Brownian count limit; closed carrier cycles produce nonzero accumulated records. This is not a bulk position or Lorentz identification. Positive Sibuya/Poisson weighting of native lag records gives the square-root Poisson extension with finite omitted-mass control and the same continuum generator. That boundary extension reuses one history field. A separate disjoint-long-block construction adds independent innovations and an encoded angular constant, yielding the Dirichlet product covariance (-d_r^2+Abar)^-1. Its declared interval gives spectral dimension three, radial Markov gluing and a product comparison cone. The count limit precedes spatial refinement; these encoders and radial geometry are supplied, not physical bulk transport. The local product wave action determines a measurable Lorentz-signature tensor from its complete density. No smoothness or physical radial transport is inferred.",
+        "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses. The common-source attachment reuses the existing native twelve-port carrier and proves I-L_ico/60 by exact enumeration of every total-two state, seam and placement coin under a uniform all-seam calibration. The lowest positive Laplacian band has rank three and Gram G=4P3, with an exact icosahedral coordinate witness. Every actual joint history receives a dimensionless displacement readout from its committed currents and declared seams, checked against working-load changes without giving the controller extra state access. The original E/F controller has a rank-two displacement span. A declared binary F/G continuation after the first E event reexecutes every native branch while retaining the same quantum history, and its three admitted seam displacements span the rank-three carrier. The existing native integer rule also gives pathwise load continuity and fair-coin conditional current mean (x_a-x_b)/2 and variance parity(x_a-x_b)/4. Exact enumeration of all 4680 state/seam/coin events builds the full 78-state transition kernel for the existing uniform geometry calibration and proves its closed mean law I-L_ico/60. The binary 66-state uniform distribution is stationary with continuing load fluctuations. All nonconstant mean multipliers are positive contractions, so this fixed linear mean readout cannot be an undamped wave under a positive scalar clock rescaling. The actual record-controlled E/F protocol is executed as a distinct control; no new clock, Hamiltonian, physical field identification or continuum premise is supplied. Exposure-normalized even-load current laws recover the same unweighted rank-three structural Gram without a uniform schedule or fair coins. The actual slowest response under a doubled seam weight has multiplicity two. The full inverse-response Gram instead has rank eleven, so choosing the slow-band metric is an operational readout choice, not a proof of physical bulk dimension. These exact single-carrier constructions require no federation. On the same uniform single carrier, asymptotic local-tick covariance independently recovers the native distance shells from a continuing movement-count history. Deterministic even-load currents also permit exact reconstruction from 360 executed native shots, one per preparation/seam, without a probability-law oracle. This removes native sampling uncertainty for that protocol, not laboratory preparation or detector errors. Native circulation has an action in one port's own tick count. A local-tick Palm herald succeeds with probability 5/198; failure remains recorded. The stopped occupation identity gives six carrier movements per local tick, exact cycle covariance P/5 and triangle variance 3m/5 after m local ticks. Finite fourth moments and adjacent squared-current dependence distinguish the law from independent Gaussian blocks. The long-count Gaussian increment action has coefficient 5/2 on the cycle subspace, without replicas or an independent clock. Carrier-wide current access and the uniform scheduler are declared; this is not a relativistic action. Fixed-window quantum execution preserves herald failures and zero-tick outcomes, while record-controlled seam selection changes the finite law. A disclosed total-one preparation supplies exact native first-arrival records in the receiver incident-attempt clock. Mean arrival counts are 22, 28 and 30 for graph-distance shells one through three; the resulting passage metric has centered Gram rank eleven. Complete arrival and timeout laws retain remote repairs. A separate total-two source witness shows a two-seam intervention response at the first receiver incident tick, disproving a one-seam-per-local-tick identification while preserving native-attempt locality. The same pair-clock geometry predicts the joint initial-A/final-B occupation marginal at the second A incident tick under the stationary total-two preparation and local bit/current reads. An independent 66-state stopped-process check agrees, while identity repair preserves the clocks and separate marginals but changes the joint field law. This is a finite common-source observable link, not a physical continuum identification. Nonuniform clock reconstruction separates the unweighted structural Gram from weighted kinetics: inferred weights predict a different joint field law, checked against the complete 66-state process. On the actual source screens, nested observations and uniform Green bounds give a continuous H^-2(S2) Gaussian observation process shared by the normalized attempt and incident clocks. Native temporal correlations recover the same Green operator, and the admitted coherent event walk has controlled square-root spatial dispersion. The three coarse smearings and these wave amplitudes do not identify a physical radial coordinate or a quantum field vacuum. An all-level descendant-patch Poincare bound upgrades the common Green subsequence on the spherical source screens to operator-norm convergence. The compact injective limit on mean-zero L2 has inverse A, one positive self-adjoint spatial generator. With the constant mode restored, Mosco convergence of full-port harmonic lifts gives a conservative, regular, strongly local Dirichlet form with domain H1 of the auxiliary flat surface. Ancestral tents bound its eigenvalues by n/49920 <= lambda_n(A) <= 3n/2, so its heat-trace spectral dimension is two. Under the same observation dictionary and a fixed positive scale this excludes a unitary identification with a second-order positive elliptic operator on a smooth compact three-dimensional manifold. The Steklov comparison excludes a boundedly invertible L2 energy congruence with the static boundary action of a smooth compact three-dimensional Dirichlet bulk, and internal rank-three carrier modes vanish from bounded-energy families at order 2^(-l). The causal-placement control assigns each attempt its seam midpoint and dependency height h. All 270 ordered endpoint-sharing seam pairs obey the sharp bound c^2=(1+1/sqrt(5))/2, which gives a forward cone placement with declared coordinate t=c h; the executed four-event tape (0,1),(2,3),(0,1),(0,1) shows that the converse fails, with a Lean instance for both statements. Terminal-star reduction gives an explicit positive local conductance graph with the same native Green limits and operator error at most 182*2^-level. It isolates routing-dependent homogenization without adding a physical dimension. Complete linear spatial readouts preserve normalized decay spectra, excluding the stated complete compact-three-dimensional free-scalar observation law. The recovered frame weights actual native currents into a three-component axial martingale with isotropic covariance 4N/99 and a Brownian count limit; closed carrier cycles produce nonzero accumulated records. This is not a bulk position or Lorentz identification. Positive Sibuya/Poisson weighting of native lag records gives the square-root Poisson extension with finite omitted-mass control and the same continuum generator. That boundary extension reuses one history field. A separate disjoint-long-block construction adds independent innovations and an encoded angular constant, yielding the Dirichlet product covariance (-d_r^2+Abar)^-1. Its declared interval gives spectral dimension three, radial Markov gluing and a product comparison cone. The count limit precedes spatial refinement; these encoders and radial geometry are supplied, not physical bulk transport. The local product wave action determines a measurable Lorentz-signature tensor from its complete density. No smoothness or physical radial transport is inferred.\n\nConnected radial paths of different weights and a cycle have identical retained angular functional calculus under their constant-mode isometries, while an explicit nonconstant radial contrast distinguishes them. Radial averaging is not a boundary Dirichlet-to-Neumann measurement; these comparisons do not refute the declared Dirichlet product. If the complete coefficient density C=mu diag(-1,a) has a smooth positive/nondegenerate representative, the same action defines a smooth static Lorentz metric and scalar wave equation. Under a fixed smooth-measure premise, uniformly elliptic smoothing of the same tensor gives Mosco and strong wave-response convergence, without proving the native limit smooth or controlling curvature.",
         "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature. Uniform calibration and the two-event binary controllers are separate protocols. Finite calibration kernels have eleven nonconstant modes; rank three refers to their slow response quotient. The added controller spans that carrier but establishes no isotropic or autonomous motion. Neither this readout nor the two-scalar interaction graph identifies physical position, momentum, length scale or a spatial continuum. Uniform scheduling belongs to the stated uniform slow dynamics. Inferred nonuniform IID weights determine their own dynamics; removing weights from a structural Gram does not preserve the slow band. The actual spherical source has a compatible Gaussian subsequential field construction, but no selected whole-sequence covariance or physical spacetime interpretation. Other compatible architectures retain their own obligations. The spectral-dimension-two operator concerns the native spherical observation domain and normalization. A different radial observation algebra, an unbounded or differently scaled observation map, a quantum or interacting bulk reconstruction, a unique whole-sequence limit and a Lorentzian identification lie outside these exclusions and are not supplied.",
         "closure": "Construct operational metric and geometric response on the same source and refinement family. Preserve the distinction between action capacity, event-count measure and physical volume.",
         "sources": [
@@ -4759,6 +4764,11 @@
             "path": "model/relative_observer_geometry/README.md",
             "anchor": "### Lorentzian density of the product wave",
             "label": "Current product field, clock and preparation contract"
+          },
+          {
+            "path": "model/relative_observer_geometry/intrinsic_geometry.py",
+            "anchor": "def radial_nonidentifiability_control(",
+            "label": "Radial selection obstruction and distinguishing readout"
           }
         ],
         "assumptions": [
@@ -4835,7 +4845,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs3\u20135"
+            "label": "Gravity rungs3–5"
           },
           {
             "path": "claims/assumption_dictionary.md",
@@ -4897,7 +4907,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs7\u20138"
+            "label": "Gravity rungs7–8"
           },
           {
             "path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
@@ -4948,7 +4958,7 @@
       },
       {
         "id": "RE-17",
-        "title": "Joint state\u2013geometry entropy stationarity",
+        "title": "Joint state–geometry entropy stationarity",
         "links": [
           "M07",
           "M08"
@@ -5014,7 +5024,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs8\u201311"
+            "label": "Gravity rungs8–11"
           },
           {
             "path": "flagship/from_observer_consensus_to_standard_physics.tex",
@@ -5058,7 +5068,7 @@
           "PR-68",
           "PR-69"
         ],
-        "constructed": "Finite carrier/representation and declared Higgs/Yukawa packets exist; the active scalar candidate has a conditional free Bose limit. The common finite register has an actual neutral-scalar/density interaction g sqrt(2) Q0(nL0-nR0), with g=1/4 supplied. The source-executed word couples the field to charged hopping rather than leaving tensor factors independent. Its finite Gauss sector and detector response do not select matter content, empirical parameters, scattering amplitudes or an interacting 3+1-dimensional limit.",
+        "constructed": "Finite carrier/representation and declared Higgs/Yukawa packets exist; the active scalar candidate has a conditional free Bose limit. The common finite register has an actual neutral-scalar/density interaction g sqrt(2) Q0(nL0-nR0), with g=1/4 supplied. The source-executed word couples the field to charged hopping rather than leaving tensor factors independent. Its finite Gauss sector and detector response do not select matter content, empirical parameters, scattering amplitudes or an interacting 3+1-dimensional limit.\n\nThe same interval (0,pi) and native angular screen support a declared two-radial-mode quartic Galerkin field with complete source-compiled Gibbs preparation, evolution, feedback and readouts. The same interacting Hamiltonian fixes its ideal Gibbs modular clock, sigma_s=alpha_(-beta*s), in supplied model time. Covariant coupling includes the lapse/volume integral; coupling, temperature, mode/occupation cutoffs and smooth coefficient density remain inputs. No invariant nonlinear two-mode sector, ultraviolet limit or incident-clock identification is inferred.",
         "remaining": "Select physical sectors, spin/chirality/statistics, kinetic attachments, interactions, coupling coefficients and stable poles on the same process. A declared finite grammar is not its physical selection.",
         "closure": "Construct the selected interacting source family and its controlled observables/continuum, reusing the algebraic packets without treating supplied matter content as derived.",
         "sources": [
@@ -5073,6 +5083,11 @@
           {
             "path": "model/common_source/scalar_coupling.py",
             "label": "Declared finite scalar/matter interaction on the shared source"
+          },
+          {
+            "path": "model/interacting_band_extension/README.md",
+            "anchor": "## Interacting readouts on the same radial product",
+            "label": "Conditional interacting product field and same Gibbs clock"
           }
         ],
         "claims": [
@@ -5554,7 +5569,7 @@
         "scope": "active",
         "status": "open",
         "premises": [],
-        "constructed": "The live model connects native repair, recorded observations, feedback and checkpoint continuation. Full native C/E source compilation, common interacting work, coherent native/work composition and active encoded memory have explicit but distinct interface contracts. The native action, finite equilibration, local event clocks and field memory are consequences of their specified common source operations. The supplied scalar/gauge/matter benchmark executes a complete joint history with occupation and temporal bounds on its declared preparations and detectors.\n\nTheorem attachment is checked on the actual objects: native signed-difference blocks supply exchange/coherence rates; local endpoint supports and tensor splits supply dependency-cone and no-signalling hypotheses; stopped instruments retain remote evolution and conditional references; positive state expectations supply measurement Gram constraints. These are compatible finite and analytic attachments. They do not assert that every theorem branch uses the same reference, observer algebra or action, or that an all-theorem physical model has been completed. The field/refinement attachment uses a common finite-density preparation, clock, record dictionary and feedback. Its canonical extension removes mandatory product independence while preserving exact fixed-number correlations. Record-derived temporal representations and joint incident/movement clocks have explicit domain maps; their distinct sectors, observer regions and empirical contracts remain separate.\n\nAn executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.\n\nThe separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically. The complete claim and Lean-module inventory retains every canonical hypothesis and marks absent same-model mappings open. Restricted model connections check all seven declared domain coordinates, require sourced maps for changes, retain the whole canonical input inventory and reject circular fact dependencies. The calibration-to-incident-history connection restricts the identified 78-state current family to its invariant binary sector and derives the cap-two expected exposure 408/125, including feedback, before adding the independent source compilation error. The preparation-to-observation connection propagates law-uniform warm-up error through a common complete future instrument, without multiplying by the observation horizon. The weighted clock/field connection uses inferred IID exposures, with finite-data exposure uncertainty kept separate. The actual-source continuous Gaussian observation process, native temporal/spatial resolvent, coherent wave continuation and inverse record-to-phase prediction have explicit domain maps. Same-history clocks are coupled before refinement; the coherent wave and modular sectors retain their own preparation and access contracts. The regional optical attachment has its separate empirical dictionary. No absent physical premise is discharged by a cross-reference. A specified positive random-length return reference has modular generator arccos(K), the coherent wave phase, with explicit finite-cap state/generator bounds. The independent sampler and full endpoint closure are admitted; the ideal mean length is infinite. The two-sign arc compression does not implement complete vertex modular histories or prepare the reconstructed reference physically. Typed bindings also connect native long blocks to a radial product field, faithful code preparations to the active modular clock, and the finite edge generator to an executed Gibbs filter. The screen-only wave, product wave and edge state have distinct finite domains. Explicit product encoding and positive subordination connect their named limiting targets; a physical observation dictionary remains open. These maps preserve state, control and limit-order contracts. Product thermal covariance, active clock and Lorentz density are linked under explicit domains; square-root edge preparation has a separate finite-cost approximation contract. The fixed capped edge preparation continues on the same protected register through a compiled positive-log modular clock, intersector feedback and complete X/Y readout, with all sampler/herald failures, native tapes, padding and reference outputs retained. The exact modular identity belongs to the ideal successful twelve-dimensional work marginal after request forgetting and reference trace. It does not identify the finite clock with sqrt(L), extend to the complete record algebra, execute a growing product-mode encoder or complete the original scalar benchmark.",
+        "constructed": "The live model connects native repair, recorded observations, feedback and checkpoint continuation. Full native C/E source compilation, common interacting work, coherent native/work composition and active encoded memory have explicit but distinct interface contracts. The native action, finite equilibration, local event clocks and field memory are consequences of their specified common source operations. The supplied scalar/gauge/matter benchmark executes a complete joint history with occupation and temporal bounds on its declared preparations and detectors.\n\nTheorem attachment is checked on the actual objects: native signed-difference blocks supply exchange/coherence rates; local endpoint supports and tensor splits supply dependency-cone and no-signalling hypotheses; stopped instruments retain remote evolution and conditional references; positive state expectations supply measurement Gram constraints. These are compatible finite and analytic attachments. They do not assert that every theorem branch uses the same reference, observer algebra or action, or that an all-theorem physical model has been completed. The field/refinement attachment uses a common finite-density preparation, clock, record dictionary and feedback. Its canonical extension removes mandatory product independence while preserving exact fixed-number correlations. Record-derived temporal representations and joint incident/movement clocks have explicit domain maps; their distinct sectors, observer regions and empirical contracts remain separate.\n\nAn executed single-carrier protocol joins current-reconstructed fields, incident clocks, record-controlled seam repair and terminal populations for two overlapping observers. Direct native branch enumeration and a source-derived capped transfer agree on all 5768 output words, including 5079 zero-probability words and timeout mass 369/625. The unread completed transfer is positive in its specified weighted inner product; individual capped maps use a transported positive cone. This is an exact diagonal observation correspondence, without a certificate for arbitrary quantum inputs, a relativistic QFT or physical identification.\n\nThe separate coherent overlapping-observer protocol omits initial occupation disclosure and establishes the complete native source/reference correspondence using exact remote maps, effects and inverse on all 4356 operator matrix units, followed by composition with the admitted local services. A CPTP remote encoding and its restricted-cone inverse preserve the declared incident-clock, feedback and timeout experiment, including quantum references. An independent native endpoint oracle rejects separately matched clock/detector marginals. The separate compiled clock history emits preparation, phase/mixing and terminal-pointer words, retains all 512 code addresses and 1656 clock/timeout/complement-abort outputs, and propagates original binary arrays exactly. Four complete histories, including a compiled Bell preparation, agree with the ideal correspondence within 1e-11; serialized continuation preserves every quantum entry. The maximum apparatus budgets are 51 or 54 pulses and twice as many load/export services, plus five native attempts. Native repair, encoding and physical service fidelity remain declared interfaces. The supplied scalar branch separately adds an omitted Fourier pair with induced low-mode mass matching and a finite-code reduced-output bound through continuing measurement and feedback. These results have different source/action/clock domains and do not identify them physically. The complete claim and Lean-module inventory retains every canonical hypothesis and marks absent same-model mappings open. Restricted model connections check all seven declared domain coordinates, require sourced maps for changes, retain the whole canonical input inventory and reject circular fact dependencies. The calibration-to-incident-history connection restricts the identified 78-state current family to its invariant binary sector and derives the cap-two expected exposure 408/125, including feedback, before adding the independent source compilation error. The preparation-to-observation connection propagates law-uniform warm-up error through a common complete future instrument, without multiplying by the observation horizon. The weighted clock/field connection uses inferred IID exposures, with finite-data exposure uncertainty kept separate. The actual-source continuous Gaussian observation process, native temporal/spatial resolvent, coherent wave continuation and inverse record-to-phase prediction have explicit domain maps. Same-history clocks are coupled before refinement; the coherent wave and modular sectors retain their own preparation and access contracts. The regional optical attachment has its separate empirical dictionary. No absent physical premise is discharged by a cross-reference. A specified positive random-length return reference has modular generator arccos(K), the coherent wave phase, with explicit finite-cap state/generator bounds. The independent sampler and full endpoint closure are admitted; the ideal mean length is infinite. The two-sign arc compression does not implement complete vertex modular histories or prepare the reconstructed reference physically. Typed bindings also connect native long blocks to a radial product field, faithful code preparations to the active modular clock, and the finite edge generator to an executed Gibbs filter. The screen-only wave, product wave and edge state have distinct finite domains. Explicit product encoding and positive subordination connect their named limiting targets; a physical observation dictionary remains open. These maps preserve state, control and limit-order contracts. Product thermal covariance, active clock and Lorentz density are linked under explicit domains; square-root edge preparation has a separate finite-cost approximation contract. The fixed capped edge preparation continues on the same protected register through a compiled positive-log modular clock, intersector feedback and complete X/Y readout, with all sampler/herald failures, native tapes, padding and reference outputs retained. The exact modular identity belongs to the ideal successful twelve-dimensional work marginal after request forgetting and reference trace. It does not identify the finite clock with sqrt(L), extend to the complete record algebra, execute a growing product-mode encoder or complete the original scalar benchmark.\n\nThe finite-native trace and global positive-floor compilation contract control a growing fixed-band field/clock family without executing increasing words. A separate conditional local quartic action uses the same radial product geometry and an interacting Gibbs state for both evolution and modular readout, with supplied model time. Neither join transfers physical geometry, state selection or an incident clock between these distinct constructions.",
         "remaining": "Architecture and admitted observer services may legitimately be design inputs. Unique selection of an implementation is a separate question. Physical interpretation and quantitative service fidelity require independent evidence. Complete native record laws, benchmark field laws and laboratory apparatus must be connected through compatible observations and interventions before their physical claims can be combined. A unique physical source-screen limit, relativistic field behavior, responsive gravity and observed matter remain open. A programmed modular probe is not automatically the evolution of the continuing observer. No cross-reference transfers a certificate to a different state, detector, action, clock or approximation domain. The single-carrier passage, action and clock packets provide explicit domain maps and countercontrols without federation. An integrated replay can check those maps without removing their preparation, scheduler, interface or physical-attachment premises. Existing public-data comparisons must stay attached to their own observable dictionaries until a derivation connects them to that same process. Typed contract checks validate the stated composition ledger, not its mathematical entailment. The finite A4 full-premise witness is a synthetic branch; it is not a source-derived realization of the common physical tower. Unbound theorem contracts retain their own state, action, clock and refinement premises.",
         "closure": "For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.",
         "sources": [
@@ -7410,16 +7425,25 @@
           "records": "Complete native current/hold records determine full-port conditional coordinate increments; ordered spatial, short-time and chart limits recover the energy tensor.",
           "controls": "Declared radial geometry, bounded chart probes, calibration preparation and active wave protocol; exact finite readouts and anisotropic tensors are controls, not a pointwise continuum-error certificate.",
           "clock": "wave-clock coordinate with explicit covariance under t=kappa*tau; no SI normalization",
-          "regime": "measurable uniformly elliptic local coefficients; a smooth geometry is a further hypothesis Essential intrinsic distance equals the product-wave operator front; finite port travel and single-detector arrivals are separate."
+          "regime": "Measurable uniformly elliptic product coefficients; smooth metric description requires the entire coefficient density to be smooth, including its measure. Fixed smooth-measure coefficient approximations converge in forms and wave responses, not necessarily in curvature or optimal fronts. Essential intrinsic distance determines the declared wave operator front."
         },
         "subordinated_edge_wave_reference": {
-          "carrier": "the same twelve-dimensional finite edge representation in a protected sixteen-address work register, with four retained padding addresses and a twelve-dimensional untouched reference",
+          "carrier": "Executed twelve-dimensional edge code in its protected work/reference register, plus a distinct quantified full native V_l=240*4^l family with spectral encoders and independent successful copies.",
           "law": "positive count mixtures of the source-executed lazy herald filter; the finite successful target polynomial M supplies the positive-log clock H=-log(M/m0), intersector kicks and X/Y detectors",
           "preparation": "supplied maximally mixed work marginal with all twelve purification columns and a disclosed finite count sampler; all failures retained The fluctuation limit additionally assumes independent identical successful work marginals; it assigns no separate polarization to a mode.",
           "records": "sample rejection, every first failed herald, all 3600 two-attempt native tapes and all sixteen terminal detector/reference outputs; serialized live continuation retains the completed preparation log Ordered characteristic-function reads retain all 32 joint work/pointer addresses, failures and reference columns on three band representatives.",
-          "controls": "finite count cap, event bias, protected storage, retained herald service and raw compiled clock, pair-kick and X/Y detector words on the same work register",
-          "clock": "one compiled positive-log clock step per native incident event at port 10; sigma_s=alpha_(-s) holds for the ideal successful M/Tr(M) work marginal after forgetting the request and tracing its reference, not the complete record/work algebra",
-          "regime": "One complete finite source experiment, a joint copy/band fluctuation bound with explicit postselection and source precision, and the bounded-band positive-log limit. Compatible spatial encoders, spectral tails and the radial anchor sector remain conditional."
+          "controls": "finite count cap, event bias, protected storage, retained herald service and raw compiled clock, pair-kick and X/Y detector words on the same work register; the growing native family has explicit sampler caps, pulse counts and improving primitive/load/export precision",
+          "clock": "one compiled positive-log clock step per native incident event at port 10; sigma_s=alpha_(-s) holds for the ideal successful M/Tr(M) work marginal after forgetting the request and tracing its reference, not the complete record/work algebra; the growing resource contract uses supplied model-time spectral words for H/b and separately bounds the actual marginal modular generator",
+          "regime": "Finite same-register execution and a quantified growing native fixed-band contract: uniform finite-source trace/gap/success bounds, global positive-floor logarithm control and copy-amplified source errors. Increasing words, physical services, spatial tails and radial-product encoding are separate obligations."
+        },
+        "product_conditional_interaction": {
+          "carrier": "Two radial sine modes on (0,pi) times the same normalized native angular constant; four occupation states per mode in a sixteen-dimensional work code with retained purification.",
+          "law": "Declared covariant positive quartic action projected before occupation compression; the same interacting Hamiltonian controls Gibbs preparation, dynamics and detector continuation.",
+          "preparation": "Declared coupling g=1, inverse temperature beta=1/4 and source-compiled purification of exp(-beta H)/Z; every work/reference and detector output is retained.",
+          "records": "Both native sign branches, two complete Ramsey reads, conditional feedback and final native current; independent full work/reference/record comparison.",
+          "controls": "Declared interval, smooth coefficient density, angular/radial mode projection, occupation cutoff, coherent services, purification, protected evolution and readout.",
+          "clock": "Supplied Hamiltonian model time t; sigma_s=alpha_(-beta*s) for this interacting Gibbs marginal only. No conversion from primitive incident counts or laboratory seconds is supplied.",
+          "regime": "Finite Galerkin and occupation domain, sixty-four symmetric splitting steps per interval, exact ideal splitting bound and separate numerical source guards; no ultraviolet limit or cutoff microcausality."
         }
       },
       "bindings": [
@@ -7439,7 +7463,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7454,6 +7479,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -7501,7 +7527,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7516,6 +7543,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -7570,7 +7598,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7585,6 +7614,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -7640,7 +7670,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7655,6 +7686,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -7703,11 +7735,14 @@
           "assumptions": [
             "declared_coherent_proper_code_services_and_analogue_source_controls",
             "declared_fixed_band_scalar_observation_protocol",
+            "declared_radial_product_interaction_and_Gibbs_protocol",
             "declared_scalar_band_extension_protocol"
           ],
           "imports": [
             "canonical_lattice_scalar_quantum_simulation",
+            "densitized_scalar_wave_metric_identity",
             "exact_rational_arithmetic_with_directed_root_and_pi_enclosures",
+            "finite_Gibbs_reference_modular_Hamiltonian_identity",
             "quadratic_form_Leibniz_identity_for_smooth_measurement",
             "symmetric_product_formula_integral_Taylor_remainder",
             "weighted_number_moment_and_projected_Duhamel_cutoff_bounds"
@@ -7778,7 +7813,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7793,6 +7829,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -7854,7 +7891,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -7869,6 +7907,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8024,7 +8063,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -8039,6 +8079,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8094,7 +8135,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -8109,6 +8151,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8166,7 +8209,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8182,6 +8226,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8232,7 +8277,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8248,6 +8294,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8301,7 +8348,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8317,6 +8365,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8375,7 +8424,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8391,6 +8441,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8485,7 +8536,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8501,6 +8553,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8557,7 +8610,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8573,6 +8627,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8623,7 +8678,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8639,6 +8695,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8681,7 +8738,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8697,6 +8755,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8741,7 +8800,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8757,6 +8817,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8803,7 +8864,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -8818,6 +8880,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8895,7 +8958,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "additional_assumptions": {},
           "imports": [
@@ -8911,6 +8975,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -8970,7 +9035,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -8985,6 +9051,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9049,7 +9116,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9064,6 +9132,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9126,7 +9195,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9141,6 +9211,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9201,7 +9272,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9216,6 +9288,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9282,7 +9355,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9297,6 +9371,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9358,7 +9433,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9373,6 +9449,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9430,7 +9507,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9445,6 +9523,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9498,7 +9577,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9513,6 +9593,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9564,7 +9645,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9579,6 +9661,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9634,7 +9717,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9649,6 +9733,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9704,7 +9789,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9719,6 +9805,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9768,7 +9855,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9783,6 +9871,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9832,7 +9921,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9847,6 +9937,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9896,7 +9987,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9911,6 +10003,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -9960,7 +10053,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -9975,6 +10069,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10029,7 +10124,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10044,6 +10140,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10062,7 +10159,7 @@
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "scope": "The finite corrected block covariance B_l=G_l-P/(2520*16^l), with P the mean-zero projector, supplies innovations for exact Gaussian radial bridge gluing and nearest-layer precision. A distinct contrast supplies the full angular zero mode. Complete 96-event decoders are executed on two sources. Product eigenvalue counting and heat bounds give a three-dimensional comparison field and wave cone.",
-          "limitations": "Finite adjacent blocks are correlated. Radial topology, boundary data, filters and limit order are explicit. The separate product-clock and Lorentz-density bindings supply additional conditional structure; no physical radial transport, smooth observed spacetime, interacting QFT or SI calibration is inferred.",
+          "limitations": "Finite adjacent blocks are correlated. Radial topology, boundary data, filters and limit order are explicit. The separate product-clock and Lorentz-density bindings supply additional conditional structure; no physical radial transport, smooth observed spacetime, interacting QFT or SI calibration is inferred. Connected radial paths of different weights and a cycle have identical retained angular functional calculus under their constant-mode isometries, while an explicit nonconstant radial contrast distinguishes them. Radial averaging is not a boundary Dirichlet-to-Neumann measurement; these comparisons do not refute the declared Dirichlet product.",
           "sources": [
             {
               "path": "model/physical_space_time/OCCUPATION_FIELD.md",
@@ -10071,6 +10168,10 @@
             {
               "path": "model/physical_space_time/observation_process.py",
               "anchor": "def radial_record_gluing("
+            },
+            {
+              "path": "model/relative_observer_geometry/intrinsic_geometry.py",
+              "anchor": "def radial_nonidentifiability_control("
             }
           ],
           "additional_assumptions": {}
@@ -10093,7 +10194,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10108,6 +10210,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10157,7 +10260,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10172,6 +10276,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10222,7 +10327,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10237,6 +10343,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10287,7 +10394,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10302,6 +10410,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10319,8 +10428,8 @@
             "strongly_local_Sobolev_form_tensor_representation",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
-          "scope": "Full-port native total-one calibration records give exact conditional coordinate increments. Refinement at fixed positive density time, then short-time polarization against bounded H1 probes and chart localization, recovers the measurable elliptic energy tensor. In four dimensions g=sqrt(-det C) C^-1 reproduces the full product-wave action density with Lorentz signature almost everywhere. Exact controls distinguish finite cell reset, a Schur-kernel substitution and the one-attempt-first limit. Its essential intrinsic distance equals the first possible nonzero cosine/sine operator response between finite positive-measure regions, by integrated heat asymptotics and transmutation. A chosen detector may remain dark.",
-          "limitations": "Calibration preparation, known chart probes, uniform native seams and fair coins are explicit; the total-one experiment is distinct from the fixed-number density-field state. No finite-run pointwise tensor error, smoothness, isotropy, whole-sequence uniqueness, curvature, Einstein dynamics or measured proper-clock identification is proved. Radial geometry and the active wave law remain supplied. This operator front does not identify fastest native transport or a pointwise geodesic distance for arbitrary measurable representatives.",
+          "scope": "Full-port native total-one calibration records give exact conditional coordinate increments. Refinement at fixed positive density time, then short-time polarization against bounded H1 probes and chart localization, recovers the measurable elliptic energy tensor. In four dimensions g=sqrt(-det C) C^-1 reproduces the full product-wave action density with Lorentz signature almost everywhere. Exact controls distinguish finite cell reset, a Schur-kernel substitution and the one-attempt-first limit. Its essential intrinsic distance equals the first possible nonzero cosine/sine operator response between finite positive-measure regions, by integrated heat asymptotics and transmutation. A chosen detector may remain dark. If the complete coefficient density C=mu diag(-1,a) has a smooth positive/nondegenerate representative, the same action defines a smooth static Lorentz metric and scalar wave equation. Under a fixed smooth-measure premise, uniformly elliptic smoothing of the same tensor gives Mosco and strong wave-response convergence, without proving the native limit smooth or controlling curvature.",
+          "limitations": "Calibration preparation, known chart probes, uniform native seams and fair coins are explicit; the total-one experiment is distinct from the fixed-number density-field state. No finite-run pointwise tensor error, source-selected smoothness, isotropy, whole-sequence uniqueness, curvature dynamics or measured proper-clock identification is proved. Radial geometry and the active wave law remain supplied. This operator front does not identify fastest native transport or a pointwise geodesic distance for arbitrary measurable representatives.",
           "sources": [
             {
               "path": "model/relative_observer_geometry/README.md",
@@ -10359,7 +10468,8 @@
             "declared_incident_screen_refinement_protocol",
             "declared_native_binary_federation_instruments",
             "declared_native_clock_field_and_initial_state_contract",
-            "declared_native_local_access_and_scheduler"
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
           ],
           "imports": [
             "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
@@ -10374,6 +10484,7 @@
             "conditional_law_sequential_coupling",
             "densitized_scalar_wave_metric_identity",
             "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
             "finite_Kraus_Stinespring_construction",
             "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_state_martingale_functional_central_limit_theorem",
@@ -10391,8 +10502,8 @@
             "strongly_local_Sobolev_form_tensor_representation",
             "trace_distance_contraction_and_unitary_channel_composition"
           ],
-          "scope": "Unnormalized positive subordination approaches exp(-b sqrt(L)) without separately fitted band polarizations. Joint success conditioning supplies the required partition weights. One reference determines transition noise, commutator amplitudes and modular gaps. The fixed preparation target polynomial M=sum_n w_n(I-L/120)^(2n) supplies H=-log(M/m0). Raw compiled routines continue that same register through two native attempts, incident clock steps, first-current-controlled intersector intervention and complete X/Y readout, carrying all twelve reference columns and every failed preparation output. The ideal successful work marginal has sigma_s=alpha_(-s); this is a statement on its full twelve-dimensional matrix algebra. The same successful marginal fixes eleven fluctuation pairs and a direct O(1/N) ordered-Weyl bound; three band representatives have source-controlled pointer reads with complete outputs. A rational positive-log modulus joins its bounded-band clock to b sqrt(D) under explicit sampling-cap, filter and phase precision limits. Frequency-normalized pairs give the thermal covariance and unit sine response. A joint copy/band bound scales as Z/N for fixed positive gaps and probes, with copy-amplified conditional source errors; compatible spectral tails join the common continuum operator.",
-          "limitations": "The initial state, finite sampler, coherent controls, protected storage and herald services remain supplied. The exact uncapped sampler has infinite expected cost. The ideal density is central on the represented group algebra; its nontrivial modular action uses the larger logical matrix algebra. Forgetting the sampler request and tracing the reference are required for the stated marginal: no faithful modular identity is claimed for the complete classical-record/work state or the four unsupported padding addresses. The finite positive-log clock differs from sqrt(L). Raw source implementation errors are retained separately using fixed numerical guards, not directed interval or physical apparatus certificates. No growing nonconstant product-mode compiler, original q=3 scalar benchmark, physical collar, product Fock preparation or empirical clock is supplied. IID successful copies remain supplied; the many-copy characteristic is derived from one-copy reads, not a growing-register execution. Fixed caps fail the square-root generator limit. Direct no-offset/no-harmonic assignments of its three fixed gaps to the public Ar13+/Yb+ ratios are excluded under the stated ratio-error budget; other clock attachments are outside that test. Noncommuting raw-log bounds require a reducing encoded band or a global positive mass floor; the finite preparation uses its explicit twelve-dimensional success herald, not the later padded clock state. The positive radial product requires an extra zero-energy anchor sector. Fixed-copy, fixed-source-precision or merely finite-band convergence does not discharge the joint limit.",
+          "scope": "Unnormalized positive subordination approaches exp(-b sqrt(L)) without separately fitted band polarizations. Joint success conditioning supplies the required partition weights. One reference determines transition noise, commutator amplitudes and modular gaps. The fixed preparation target polynomial M=sum_n w_n(I-L/120)^(2n) supplies H=-log(M/m0). Raw compiled routines continue that same register through two native attempts, incident clock steps, first-current-controlled intersector intervention and complete X/Y readout, carrying all twelve reference columns and every failed preparation output. The ideal successful work marginal has sigma_s=alpha_(-s); this is a statement on its full twelve-dimensional matrix algebra. The same successful marginal fixes eleven fluctuation pairs and a direct O(1/N) ordered-Weyl bound; three band representatives have source-controlled pointer reads with complete outputs. A rational positive-log modulus joins its bounded-band clock to b sqrt(D) under explicit sampling-cap, filter and phase precision limits. Frequency-normalized pairs give the thermal covariance and unit sine response. A joint copy/band bound scales as Z/N for fixed positive gaps and probes, with copy-amplified conditional source errors; compatible spectral tails join the common continuum operator. At every finite native level, positive eigenvalues obey lambda_n(4^l L_l)>=n/81940, giving Tr exp(-b sqrt(D_l))<=1+163880/b^2. The positive lazy filter gives a uniform prepared partition bound, success floor and positive gap. A quantified full-source sampler/compiler schedule uses its unchanged zero-request mass to control the global actual-marginal logarithm; increasing spectral encoder, detector and clock resources join the fixed-band ordered field limit with N=2^l copies.",
+          "limitations": "The initial state, finite sampler, coherent controls, protected storage and herald services remain supplied. The exact uncapped sampler has infinite expected cost. The ideal density is central on the represented group algebra; its nontrivial modular action uses the larger logical matrix algebra. Forgetting the sampler request and tracing the reference are required for the stated marginal: no faithful modular identity is claimed for the complete classical-record/work state or the four unsupported padding addresses. The finite positive-log clock differs from sqrt(L). Raw source implementation errors are retained separately using fixed numerical guards, not directed interval or physical apparatus certificates. No growing nonconstant product-mode compiler, original q=3 scalar benchmark, physical collar, product Fock preparation or empirical clock is supplied. IID successful copies remain supplied; the many-copy characteristic is derived from one-copy reads, not a growing-register execution. Fixed caps fail the square-root generator limit. Direct no-offset/no-harmonic assignments of its three fixed gaps to the public Ar13+/Yb+ ratios are excluded under the stated ratio-error budget; other clock attachments are outside that test. Noncommuting raw-log bounds require a reducing encoded band or a global positive mass floor; the finite preparation uses its explicit twelve-dimensional success herald, while the quantified full-source schedule supplies a global floor. Increasing words and physical service precision are not executed or authenticated. The positive radial product requires an extra zero-energy anchor sector. Fixed-copy, fixed-source-precision or merely finite-band convergence does not discharge the joint limit.",
           "sources": [
             {
               "path": "model/predictions/README.md",
@@ -10421,9 +10532,109 @@
             {
               "path": "model/predictions/prepared_clock_source.py",
               "anchor": "def positive_log_clock_bound("
+            },
+            {
+              "path": "model/predictions/README.md",
+              "anchor": "<a id=\"finite-native-trace-and-gap\"></a>"
+            },
+            {
+              "path": "model/predictions/README.md",
+              "anchor": "<a id=\"native-growing-preparation-and-clock-contract\"></a>"
+            },
+            {
+              "path": "model/predictions/prepared_clock.py",
+              "anchor": "def native_growing_field_contract("
+            },
+            {
+              "path": "model/predictions/prepared_clock_source.py",
+              "anchor": "def native_growing_source_resources("
             }
           ],
           "additional_assumptions": {}
+        },
+        {
+          "id": "product-conditional-interaction",
+          "domain": "product_conditional_interaction",
+          "claims": [
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+            "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS"
+          ],
+          "establishes": [
+            "conditional_product_interacting_Gibbs_readouts"
+          ],
+          "requires": [
+            "conditional_product_wave_Lorentz_density"
+          ],
+          "assumptions": [
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_fixed_band_scalar_observation_protocol",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler",
+            "declared_radial_product_interaction_and_Gibbs_protocol",
+            "declared_scalar_band_extension_protocol",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
+            "Doob_L2_martingale_maximal_inequality",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
+            "canonical_lattice_scalar_quantum_simulation",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
+            "conditional_law_sequential_coupling",
+            "densitized_scalar_wave_metric_identity",
+            "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
+            "exact_rational_arithmetic_with_directed_root_and_pi_enclosures",
+            "finite_Gibbs_reference_modular_Hamiltonian_identity",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "integrated_short_time_local_Dirichlet_heat_asymptotics",
+            "irreducible_positive_self_adjoint_semigroup",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_semigroup_fractional_extension",
+            "positive_transfer_spectral_logarithm",
+            "quadratic_form_Leibniz_identity_for_smooth_measurement",
+            "quantum_IID_fluctuation_Weyl_limit",
+            "quantum_relative_entropy_data_processing",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spectral_theorem_for_self_adjoint_operators",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "strongly_local_Sobolev_form_tensor_representation",
+            "symmetric_product_formula_integral_Taylor_remainder",
+            "trace_distance_contraction_and_unitary_channel_composition",
+            "weighted_number_moment_and_projected_Duhamel_cutoff_bounds"
+          ],
+          "scope": "The same interval (0,pi) and native angular screen support a declared two-radial-mode quartic Galerkin field with complete source-compiled Gibbs preparation, evolution, feedback and readouts. The same interacting Hamiltonian fixes its ideal Gibbs modular clock, sigma_s=alpha_(-beta*s), in supplied model time. Covariant coupling includes the lapse/volume integral; coupling, temperature, mode/occupation cutoffs and smooth coefficient density remain inputs. No invariant nonlinear two-mode sector, ultraviolet limit or incident-clock identification is inferred.",
+          "limitations": "The projected local action is an effective construction on the declared radial product, not selection of radial geometry, coupling or temperature by native repair. Nonlinear evolution generates omitted angular and radial modes. The source numerical guards are not physical fidelity certificates. Its supplied model-time clock is not the separate free product incident clock, a spatial-patch modular boost or an atomic clock.",
+          "sources": [
+            {
+              "path": "model/interacting_band_extension/README.md",
+              "anchor": "## Interacting readouts on the same radial product"
+            },
+            {
+              "path": "model/interacting_band_extension/construction.py",
+              "anchor": "class ProductBand("
+            },
+            {
+              "path": "model/interacting_band_extension/construction.py",
+              "anchor": "def product_gibbs_preparation("
+            },
+            {
+              "path": "model/interacting_band_extension/construction.py",
+              "anchor": "def product_interaction_control("
+            }
+          ]
         }
       ],
       "connections": [
@@ -11273,6 +11484,26 @@
             {
               "path": "model/predictions/prepared_clock.py",
               "anchor": "def execute("
+            }
+          ]
+        },
+        {
+          "from": "product-wave-lorentz-density",
+          "to": "product-conditional-interaction",
+          "fact": "conditional_product_wave_Lorentz_density",
+          "coordinate_maps": {
+            "carrier": "Restrict the declared product field to its angular constant and first two Dirichlet radial modes, then compress to the four-by-four occupation code.",
+            "law": "Add the declared covariant quartic term with g_eff=lambda/pi integral mu_screen^2 sqrt(det a_screen) dx; retain the same kinetic product geometry.",
+            "preparation": "Choose and source-prepare the Gibbs marginal of the interacting H, not the free product state or a density-calibration preparation.",
+            "records": "Use complete finite source Ramsey, feedback and retained reference outputs; the finite mode projection is not a local-field net.",
+            "controls": "Supply smoothness of the full coefficient density, coupling, temperature, cutoffs and coherent preparation/control services.",
+            "clock": "Use supplied model time with the same interacting Gibbs pair; no inherited primitive incident-clock or physical proper-time identification.",
+            "regime": "Apply finite Galerkin/occupation projection and source splitting bounds; do not transfer the free-field continuum or optimal-front theorem to the cutoff interacting system."
+          },
+          "sources": [
+            {
+              "path": "model/interacting_band_extension/README.md",
+              "anchor": "## Interacting readouts on the same radial product"
             }
           ]
         }

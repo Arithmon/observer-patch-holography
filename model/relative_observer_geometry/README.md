@@ -813,12 +813,39 @@ This establishes a **measurable Lorentz-signature description of the declared
 product wave**. The radial domain, boundary condition and active wave
 protocol remain construction inputs. No smooth native coefficient field,
 unique whole-sequence limit, curvature, Einstein dynamics, interacting QFT
-or physical radial transport follows. For a smooth representative, the
-static line element gives local proper-duration factor
+or physical radial transport follows. If the **whole coefficient density**
+`C=mu diag(-1,a)` has a smooth nondegenerate representative in a fixed
+smooth product atlas, the displayed `g` is a smooth static Lorentz metric
+and the same product wave is exactly its scalar wave equation, with the
+declared radial boundary condition. This requires smooth positive `mu`
+as well as smooth uniformly elliptic `a`; smoothness of the native measure
+across screen chart seams is not inferred. The static line element then
+gives local proper-duration factor
 `N(x)=sqrt(mu(x)) (det a(x))^(1/4)` relative to its wave coordinate; identifying
 an actual clock apparatus with that line element is a separate measurement
 contract. A faithful global thermal state's modular flow is likewise not
 automatically the modular flow of every spatial patch.
+
+There is also a controlled smooth approximation **conditional on a fixed
+smooth positive measure density**. On the same interval and screen, mollify
+the measurable screen tensor in a fixed atlas and combine with a smooth
+partition of unity. Smooth tensors `a_epsilon=diag(1,a_screen_epsilon)` can
+be chosen with common ellipticity bounds and `a_epsilon->a` almost
+everywhere. Keep the same `H1` form domain with zero radial-end traces.
+Dominated convergence gives form recovery on every fixed input. For a
+weakly convergent sequence with bounded energy, uniform ellipticity gives
+weak `H1` compactness; the dual energy formula using `a_epsilon^-1` gives
+the lower bound. Hence the forms Mosco-converge to the original product
+form, yielding strong resolvent and heat convergence; spectral truncation
+also gives strong cosine and sine-response convergence uniformly on
+compact wave-parameter intervals for each fixed input. This is the
+coefficient-convergence argument of
+[Suzuki and Uemura, Theorem 1.1](https://arxiv.org/pdf/1412.0725), with the
+common product domain kept fixed. The associated smooth metrics converge
+almost everywhere and locally in finite `Lp` to the measurable metric.
+Neither smoothness of that limit nor convergence of curvature or optimal
+fronts follows. These are approximations of the same source-linked product
+response, with an explicit regularity premise, not a different spatial model.
 
 ### Native records determine the limiting tensor weakly
 
@@ -1000,6 +1027,49 @@ intrinsic distance and optimal response of the **declared product wave**.
 Radial geometry, active dynamics and clock/readout access remain its
 contracts; fastest primitive transport and observed spacetime are not
 identified by (OF2).
+
+The existing angular record menu does not select that radial extension.
+Let `L` be the full-port generator reconstructed from native endpoint
+records, `R` any connected radial graph Laplacian with `R 1=0`, and
+`J f=1_radial tensor f` with the radial constant normalized. Then
+
+```text
+B_R=I tensor L+R tensor I,     B_R J=J L,     J*J=I,
+J* F(B_R) J=F(L)                                             (RS)
+```
+
+for bounded spectral functions `F`. The first equality on the invariant
+subspace proves (RS) by the resolvent identity and spectral calculus.
+Thus heat, cosine and positive shifted-resolvent readouts of this angular
+sector agree for inequivalent connected local extensions. The continuum
+version uses any connected radial Neumann interval or circle: their
+normalized constant has eigenvalue zero, but their lengths and other
+eigenvalues differ. These are radial-**average** observations, not ordinary
+boundary Dirichlet-to-Neumann data. No equality is claimed for all radial
+states, extra interventions or a full thermal state's normalization.
+
+`radial_nonidentifiability_control` uses the actual 240-port `L` and three
+three-site radial graphs: a unit-weight path, a weight-four path and a
+unit-weight cycle. Their radial spectra are `(0,1,3)`, `(0,4,12)` and
+`(0,3,3)`, while all three exact 720-port intertwiners satisfy (RS).
+A specified additional measurement distinguishes them: prepare the
+normalized constant angular mode times radial contrast `(1,-1,0)/sqrt(2)`
+and measure its cosine response in the **same angular-clock parameter**.
+The second derivatives at zero are respectively `-5/2`, `-10` and `-3`.
+This identifies the missing information as access to a nonconstant radial
+preparation and response, beyond the retained angular menu.
+
+The original native histories and incident marks do not contain `R`;
+these comparison extensions neither alter their law nor execute extra
+native repair seams. Likewise the supplied length in the existing radial
+record filter changes its decoded outputs, not its input current tape.
+The result is underdetermination from this record menu, not a refutation
+of the Dirichlet product or OPH. Rank-three carrier coordinates and `S2`
+directional topology do not remove this ambiguity. Conditional on a
+chosen product operator and compatible active clock, (OF2) does discharge
+a separate propagation-speed postulate: the same form fixes its optimal
+operator front and its conversion to that clock's parameter. Selecting
+physical radial access and laboratory units requires further readouts.
 
 ### Transport through source refinement
 

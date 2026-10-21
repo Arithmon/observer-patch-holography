@@ -8,7 +8,9 @@ measurement data under explicit apparatus assumptions.
 
 The construction supports finite interacting quantum observation laws, local event clocks,
 and a conditional free product field with thermal covariance, active clock
-and measurable Lorentz-signature action. **A physical identification with
+and measurable Lorentz-signature action. Smoothness of that action density
+gives a smooth metric; a finite quartic projection on the same product has
+source-executed interacting Gibbs readouts. **A physical identification with
 our Universe, including interacting relativistic spacetime, remains open.**
 The [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md) states the current
 results and remaining obligations. The
@@ -120,8 +122,13 @@ error boundary. The [first possible wave response](relative_observer_geometry/RE
 between regions equals their intrinsic form distance. This is an operator
 statement; individual detectors can remain dark. A source-compiled,
 cell-visible nonconstant native packet has an explicit spectral-residual
-budget. A growing encoder, the radial design, preparation, controls, smooth
-geometry and physical units remain obligations.
+budget. Finite-word encoder and precision bounds extend to every declared
+native refinement, although that growing family is unexecuted. The same
+action gives a smooth metric if its complete coefficient density is smooth;
+smooth approximants do not prove this regularity for the source limit.
+Three distinct radial graphs have identical complete radial-average angular
+readouts and different radial responses, so those readouts do not select the
+radial architecture. Preparation, controls and physical units remain supplied.
 The [finite edge-generator bridge](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
 realizes the edge theorem's generator and ranks. An [executed lazy filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
 prepares Gibbs approximants of `L` with all failures retained, nonzero
@@ -135,8 +142,15 @@ successful copies give a quantitative Gaussian limit. The joint copy/band
 bound is proportional to `Z/N`, where `Z` is the anchor-normalized partition
 function, with postselection and source errors charged before the copy limit.
 Physical field normalization gives the same thermal covariance and sine
-response as the log clock's square-root limit; increasing caps, precision,
-compatible encoders and controlled spectral tails remain required. These states are central on the represented group algebra;
+response as the log clock's square-root limit. On the native angular family,
+the gap and partition bound `Z<=(1+327760/b²)/m0` follow from its spectrum.
+A [joint resource construction](predictions/README.md#growing-shared-state-field)
+keeps the native filter realizable while increasing caps, copy count and
+precision. Its retained zero-request branch supplies a global logarithm
+bound for the actual prepared marginal, including input preparation errors.
+Growing word execution, increasingly accurate source services and controlled
+spectral tails remain obligations; no radial architecture is selected by this
+angular result. These states are central on the represented group algebra;
 nontrivial modular flow uses the full logical algebra. Preparation, independent
 copies and control remain supplied; physical collars, sewing and geometric
 entropy stationarity are unproved.
@@ -616,8 +630,13 @@ It derives their induced quadratic term and controls their effect on
 complete low-mode observations while their disturbed state continues.
 The comparison traces out the added modes; it does not discard runs in
 which they are excited. This is a controlled finite bandwidth extension,
-with its own occupation code and model-time domain, rather than a claim
-that increasing the sampling grid removes an ultraviolet cutoff.
+with its own occupation code and model-time domain.
+The [same-product interacting readout](interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product)
+projects a declared local quartic action onto two radial modes and the angular
+constant. Its source-prepared interacting Gibbs state fixes its ideal modular
+clock, and complete quantum/reference/record histories retain two reads and
+feedback. The coupling, radial design and occupation cutoff are supplied;
+this finite example supplies no ultraviolet limit or calibrated event clock.
 
 [Record-only reconstruction](observer_reconstruction/README.md),
 [interacting reconstruction](interacting_reconstruction/README.md), and

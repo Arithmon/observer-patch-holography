@@ -23,6 +23,8 @@ import sympy as sp
 from tools import strict_json
 from ..observer import native, quantum_mixing
 from ..observer.source_scalar import compiler
+from ..physical_space_time import local_continuum as spatial_limit
+from ..physical_space_time import source_green as spatial_source
 from . import inverse_clock as preparation
 from . import prepared_clock_source as source
 
@@ -316,7 +318,7 @@ def probabilities(actual):
 
 
 def bindings():
-    paths = {*preparation.SOURCE_PATHS,
+    paths = {*preparation.SOURCE_PATHS, *spatial_limit.SOURCE_PATHS,
              "model/predictions/prepared_clock.py", "model/predictions/prepared_clock_source.py",
              "tools/strict_json.py", OPTICAL_DATA}
     return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in sorted(paths)}
@@ -770,6 +772,110 @@ def shared_state_field():
         "empirical_seconds_interacting_QFT_or_spacetime_identified": False}
 
 
+def native_full_port_eigenvalue_lower(level, index):
+    """Finite positive eigenvalue bound for D_l=4^l L_l, counted from one.
+
+    K1 and Schur minimization control the coarse cell residual by
+    624*4^-k E(v); the native internal gap controls its orthogonal port
+    residual by E(v)/(2*4^l). The centered coarse range has rank20*4^k-1,
+    so min-max bounds eigenvalue20*4^k. At k=l the cell residual is zero.
+    The whole-domain gap handles the first nineteen positive eigenvalues.
+    """
+    level = preparation._integer(level, 0, 100)
+    scale = 4**level
+    index = preparation._integer(index, 1, 240*scale-1)
+    if index < 20:
+        return F(scale, 4096*scale+1)
+    if index >= 20*scale:
+        return F(2*scale)
+    coarse_scale = 1
+    while 80*coarse_scale <= index:
+        coarse_scale *= 4
+    return F(coarse_scale)/(spatial_limit.COARSE_ENERGY_TAIL_CONSTANT+F(1, 2))
+
+
+def native_prepared_trace_bound(level, inverse_temperature, heat_step, retained_mass_lower):
+    """Trace, anchor gap and success bounds from the finite native source.
+
+    Every positive eigenvalue of D_l is >=n/81940. Thus its square-root
+    heat trace is <=1+163880/b², uniformly BEFORE taking a continuum limit.
+    For the native lazy filter F=(1-p)I+pK=I-hD_l/2, p=630h16^l<=1.
+    Its full-domain norm obeys h||D_l||<=12h4^l<2. Positive retained
+    subordination gives M<=exp[-b sqrt(D_l-hD_l²/4)]<=exp[-b sqrt(D_l/2)].
+    Z=Tr(M)/m0 and the successful probability is Tr(M)/(240*4^l).
+    The sampler coefficients must be retained below that positive law;
+    this function does not implement a growing preparation or compiler.
+    """
+    level = preparation._integer(level, 0, 100)
+    beta, step, mass = (preparation._fraction(value, 0)
+                        for value in (inverse_temperature, heat_step, retained_mass_lower))
+    if not beta or not step or not 0 < mass <= 1:
+        raise ValueError("positive temperature, step and retained mass at most one are required")
+    scale, count_constant = 4**level, F(81940)
+    dimension = 240*scale
+    laziness = 630*step*scale**2
+    if laziness > 1:
+        raise ValueError("the native lazy filter requires630*heat_step*16^level<=1")
+    unnormalized_upper = 1+4*count_constant/beta**2
+    logarithmic_mass_loss = (1-mass)/mass
+    gap = beta/182 if logarithmic_mass_loss <= beta/182 else None
+    return {"level": level, "full_port_dimension": dimension,
+        "generator": "D_l=4^l L_l on the complete native port space",
+        "positive_eigenvalue_index_denominator": count_constant,
+        "positive_generator_gap_lower": F(scale, 4096*scale+1),
+        "square_root_Gibbs_trace_upper": min(F(dimension), 1+2*count_constant/beta**2),
+        "inverse_temperature": beta, "heat_step": step,
+        "native_lazy_event_probability": laziness,
+        "full_domain_heat_step_times_generator_norm_upper": 12*step*scale,
+        "retained_sampler_mass_lower": mass,
+        "unnormalized_filter_trace_upper": min(F(dimension), unnormalized_upper),
+        "normalized_partition_upper": min(F(dimension), unnormalized_upper/mass),
+        "uniform_normalized_partition_upper": unnormalized_upper/mass,
+        "ideal_herald_success_lower": mass/dimension,
+        "ideal_herald_success_upper": min(F(1), unnormalized_upper/dimension),
+        "logarithmic_zero_mass_loss_upper": logarithmic_mass_loss,
+        "prepared_and_target_positive_gap_floor": gap,
+        "gap_floor_includes_no_raw_compiler_error": True,
+        "finite_native_counting_proved_before_continuum_limit": True,
+        "positive_sampler_and_full_native_domain_required": True,
+        "growing_state_preparation_executed": False}
+
+
+@lru_cache(maxsize=1)
+def native_trace_controls():
+    """Actual level-zero/one spectra and the forbidden endpoint alias."""
+    rows = []
+    for level in (0, 1):
+        graph, laplacian, *_ = spatial_source.matrices(level)
+        values = np.linalg.eigvalsh((4**level*laplacian).toarray().astype(float))
+        positive = values[1:]
+        lower = np.array([float(native_full_port_eigenvalue_lower(level, index))
+                          for index in range(1, graph.ports)])
+        if np.min(positive-lower) < -1e-10 or abs(values[0]) > 1e-10:
+            raise ArithmeticError("the actual full-port spectrum violates its finite count bound")
+        # The exact native constant contributes one. Applying sqrt to its
+        # floating residual would amplify backend noise at the zero mode.
+        trace = 1+float(np.exp(-np.sqrt(positive)).sum())
+        bound = native_prepared_trace_bound(level, F(1), F(1, 1024*16**level), F(1023, 1024))
+        if trace > float(bound["square_root_Gibbs_trace_upper"])+1e-10:
+            raise ArithmeticError("the finite source trace exceeds its proved upper bound")
+        rows.append({"level": level, "dimension": graph.ports,
+            "minimum_positive_eigenvalue_over_index_diagnostic":
+                float(np.min(positive/np.arange(1, graph.ports))),
+            "square_root_Gibbs_trace_b1_diagnostic": trace,
+            "bound": bound})
+    # A contractive filter alone can preserve arbitrarily high energy:
+    # D=diag(0,4/h), F=diag(1,-1), hence every F^(2n)=I.
+    return {"finite_source_spectra": rows,
+        "contractive_endpoint_alias_control": {
+            "heat_step_times_high_energy": 4, "high_energy_filter_eigenvalue": -1,
+            "every_even_filter_power_eigenvalue": 1,
+            "prepared_high_to_anchor_ratio": 1,
+            "target_high_to_anchor_ratio_tends_to_zero_as_heat_step_vanishes": True,
+            "native_lazy_realizability_admits_this_endpoint": False},
+        "uniform_partition_bound_removes_no_herald_cost": True}
+
+
 def growing_fluctuation_bound(dimension, copies, factor_radii, *, gap_floor,
         inverse_temperature, clock_gap_error=F(0), maximum_time=F(0),
         complete_preparation_error=F(0), success_lower=F(1),
@@ -847,6 +953,54 @@ def growing_fluctuation_bound(dimension, copies, factor_radii, *, gap_floor,
         "finite_band_convergence_alone_implies_local_smear_convergence": False}
 
 
+def native_growing_field_contract(level, inverse_temperature=F(1), band=F(8)):
+    """Join finite-source trace, preparation and same-state detector budgets.
+
+    This is a two-factor fixed-band contract, with phase-space radii1/4,
+    |t|<=1 and N=2^level independent successful copies. It uses the same
+    finite D_l on both sides, so spatial/cutoff errors are zero here, not
+    asserted zero in the continuum. The growing words and source accuracy
+    are constructive resource obligations, not an executed apparatus.
+    """
+    resources = source.native_growing_source_resources(level, inverse_temperature, band)
+    mass = 1-resources["missing_sampler_mass_upper"]
+    result = {"source_resources": resources,
+        "factor_count": 2, "copies": 2**level,
+        "spatial_and_cutoff_errors_zero_only_for_the_same_finite_generator": True,
+        "independent_successful_copies_and_precise_services_are_required": True,
+        "growing_words_or_continuum_identification_executed": False}
+    if mass <= 0:
+        return {**result, "native_trace_bound": None, "joint_field_bound": None}
+    traced = native_prepared_trace_bound(level, inverse_temperature, resources["heat_step"], mass)
+    result["native_trace_bound"] = traced
+    gap, ideal_error = (traced["prepared_and_target_positive_gap_floor"],
+                        resources["ideal_prepared_generator_error_upper"])
+    if gap is None or ideal_error is None:
+        return {**result, "joint_field_bound": None}
+    words = resources["resources"]
+    pulses = (words["ordered_pointer_common_encoder_and_readout_pulses_upper"]
+        +2*words["controlled_complex_star_factor_pulses_upper_in_spectral_basis"]
+        +4*words["one_same_state_spectral_clock_word_pulses_upper"])
+    # Clock sandwiches are included. Reserve factors for nonunitary raw
+    # gain and both X/Y detector contrasts, not just a nominal unitary word.
+    bits = 2*resources["sampler_index"]+(8*pulses-1).bit_length()
+    linear_error = F(pulses, 1 << bits)
+    complex_error = 4*linear_error/(1-linear_error)
+    bound = growing_fluctuation_bound(traced["full_port_dimension"], 2**level,
+        (F(1, 4), F(1, 4)), gap_floor=gap, inverse_temperature=inverse_temperature,
+        clock_gap_error=ideal_error, maximum_time=F(1),
+        complete_preparation_error=resources["complete_preparation_half_trace_error_upper"],
+        success_lower=traced["ideal_herald_success_lower"], one_copy_word_error=complex_error,
+        partition_upper=traced["normalized_partition_upper"])
+    result.update(ordered_pointer_and_clock_sandwich_pulses_upper=pulses,
+        required_detector_with_services_error_base2_negative_exponent=bits,
+        one_copy_complex_estimator_word_error_upper=complex_error,
+        joint_field_bound=bound,
+        partition_gap_and_success_inputs_derived_from_the_same_native_source=True,
+        nominal_clock_vs_actual_state_log_error_is_separately_retained=True)
+    return result
+
+
 def growing_field_controls():
     """Exact finite-family countercontrols and actual clock normalization.
 
@@ -918,6 +1072,9 @@ def growing_field_controls():
         "fixed_number_of_copies_has_gaussian_growing_dimension_limit": False,
         "finite_prepared_clock_normalization": normalization,
         "finite_clock_frequencies_identified_with_sqrt_native_L": False,
+        "native_full_port_trace": native_trace_controls(),
+        "native_joint_preparation_clock_field_contract": [
+            native_growing_field_contract(level) for level in (0, 1, 2)],
         "sufficient_full_port_resource_schedule": schedules,
         "schedule_error_inputs_are_obligations_not_measured_source_rates": True,
         "angular_A_uses_native_constant_anchor_and_positive_modes": True,

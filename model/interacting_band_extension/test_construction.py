@@ -11,7 +11,80 @@ from scipy.sparse.linalg import eigsh
 from . import algebra as a
 from .construction import (Lattice, Term, exact_apply, exact_norm_squared,
                            execute_term, history, leakage_witness, normalized,
-                           high_parity_instrument, reduced_output_distance, tv)
+                           high_parity_instrument, reduced_output_distance, tv,
+                           ProductBand, product_gibbs_preparation,
+                           product_interaction_control, product_parameter_recovery)
+
+
+def test_product_radial_integral_and_compression_against_padded_oscillators():
+    from scipy.integrate import quad
+    for left, right, expected in ((4, 0, 1.5), (2, 2, 1.), (3, 1, 0.), (1, 3, 0.)):
+        integral = quad(lambda r: (np.sqrt(2)*np.sin(r))**left
+                        *(np.sqrt(2)*np.sin(2*r))**right/pi, 0, pi)[0]
+        assert integral == pytest.approx(expected, abs=1e-13)
+    q = normalized(a.polynomial(8, 1))
+    annihilation = np.diag(np.sqrt(np.arange(1, 8)), 1)
+    p = 1j*(annihilation.T-annihilation)
+    q2, q4, p2 = (matrix[:4, :4] for matrix in (q@q, np.linalg.matrix_power(q, 4), p@p))
+    h1, h2 = (p2/2+k*k*q2/2+q4/16 for k in (1, 2))
+    expected = np.kron(np.eye(4), h1)+np.kron(h2, np.eye(4))+np.kron(q2, q2)/4
+    assert np.allclose(ProductBand().hamiltonian.toarray(), expected, atol=2e-14)
+    assert np.linalg.eigvalsh(expected)[0] > 0
+    assert np.linalg.norm(q4-np.linalg.matrix_power(q[:4, :4], 4)) > 1
+
+
+def test_product_gibbs_source_prepares_the_interacting_state_and_keeps_reference():
+    lattice = ProductBand()
+    raw, target, metadata = product_gibbs_preparation(lattice)
+    exact = expm(-lattice.hamiltonian.toarray()/4)
+    exact /= np.trace(exact)
+    assert raw.shape == target.shape == (16, 16)
+    assert np.linalg.norm(raw-target) < 1e-9
+    assert np.allclose(target@target.conj().T, exact, atol=1e-13)
+    assert np.linalg.matrix_rank(raw) == 16
+    assert metadata['source_resources']['native_pulses'] > 0
+    assert not metadata['physical_preparation_error_certified']
+    with pytest.raises(ArithmeticError, match='faithful Gibbs'):
+        product_gibbs_preparation(lattice, 10**6)
+
+
+def test_product_complete_records_interaction_clock_and_feedback_controls():
+    result = product_interaction_control()
+    assert result['complete_work_reference_record_trace_error_numerical'] < 1e-7
+    assert result['ideal_splitting_complete_output_bound'] < F(1, 1000)
+    assert result['interaction_removal_record_tv'] > 7e-4
+    assert result['feedback_removal_record_tv'] > 1e-3
+    assert result['ideal_Gibbs_modular_identity_residual'] < 1e-10
+    assert result['raw_prepared_marginal_modular_identity_residual'] < 1e-9
+    assert result['free_Gibbs_state_interacting_commutator_norm'] > .05
+    assert result['native_history_count'] == 1056
+    assert result['native_history_probability_sum'] == pytest.approx(1., abs=1e-10)
+    assert not result['finite_band_is_invariant_under_untruncated_local_interaction']
+    assert not result['observed_QFT_or_laboratory_clock_identified']
+
+
+def test_product_nonlinearity_leaves_the_declared_radial_band():
+    from scipy.integrate import quad
+    # The cubic equation from even a single retained mode produces mode3.
+    leaked = quad(lambda r: (np.sqrt(2)*np.sin(r))**3*np.sqrt(2)*np.sin(3*r)/pi, 0, pi)[0]
+    assert leaked == pytest.approx(-.5, abs=1e-13)
+
+
+def test_product_parameters_are_recovered_from_source_records_with_a_withheld_interval():
+    raw, _, _ = product_gibbs_preparation(ProductBand())
+    laws = [history(ProductBand(), sign, initial=raw) for sign in (-1, 1)]
+    result = product_parameter_recovery(laws, raw)
+    assert result['estimates_rounded_to_1e_minus_4'] == [1., .25, 1.]
+    assert min(result['local_sensitivity_singular_values_rounded_to_1e_minus_6']) > 1e-5
+    assert not result['physical_parameter_validation']
+    assert not result['radial_topology_or_angular_tensor_identified']
+
+
+def test_product_records_do_not_fix_the_absolute_energy_and_time_unit():
+    h = ProductBand().hamiltonian.toarray()
+    beta, time, scale = .25, .0625, 7.
+    assert np.allclose(expm(-beta*h), expm(-(beta/scale)*(scale*h)))
+    assert np.allclose(expm(-1j*time*h), expm(-1j*(time/scale)*(scale*h)))
 
 
 @pytest.fixture(scope='module')

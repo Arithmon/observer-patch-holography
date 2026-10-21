@@ -13,6 +13,7 @@ from pathlib import Path
 import numpy as np
 from scipy import sparse
 from scipy.linalg import expm
+from scipy.optimize import least_squares
 from scipy.sparse.linalg import expm_multiply
 
 from . import algebra as a
@@ -186,7 +187,7 @@ def splitting_bound(lattice, duration, steps):
 
 
 def history(lattice, sign=1, *, source=True, feedback=True, interval=INTERVAL,
-            steps=STEPS, reset_high=False, return_states=False):
+            steps=STEPS, reset_high=False, return_states=False, initial=None):
     """Complete low two-bit law with the same disturbed field throughout."""
     if type(sign) is not int or sign not in (-1, 1):
         raise ValueError('preparation sign must be plus or minus one')
@@ -206,7 +207,7 @@ def history(lattice, sign=1, *, source=True, feedback=True, interval=INTERVAL,
         kraus = tuple((basis*function((values+np.pi/2)/2))@basis.T
                       for function in (np.cos, np.sin))
         evolve = lambda v: lattice.evolve(v, interval)
-    prepared = lattice.apply(lattice.blank(), (1,), kick)
+    prepared = lattice.apply(lattice.blank() if initial is None else initial, (1,), kick)
     first_state = evolve(prepared)
     branches = [lattice.apply(first_state, (1,), matrix) for matrix in kraus]
     # The reset control is a genuine trace-and-reprepare channel: retain
@@ -232,6 +233,220 @@ def history(lattice, sign=1, *, source=True, feedback=True, interval=INTERVAL,
             rows.append({'bits': [first, last], 'probability': float(np.linalg.norm(terminal)**2)})
             states.append(terminal)
     return (rows, states) if return_states else rows
+
+
+class ProductBand(Lattice):
+    """Two radial modes of the same angular-constant product field.
+
+    The interval, coupling, occupation cutoff and smooth-background
+    interpretation are declared. This is not a closed nonlinear mode sector.
+    """
+
+    def __init__(self, coupling=1):
+        self.coupling = g = a.rational(coupling)
+        self.extended, self.matched = False, False
+        self.dimensions, self.dimension = (4, 4), 16
+        q2, q4, p2 = a.polynomial(4, 2), a.polynomial(4, 4), a.polynomial(4, 2, True)
+        terms = []
+        for index, frequency in enumerate((1, 2)):
+            matrix = tuple(tuple(p2[i][j]/2+frequency**2*q2[i][j]/2+g*q4[i][j]/16
+                                 for j in range(4)) for i in range(4))
+            terms.append(Term((index,), (matrix,), F(1), f'product_onsite_{index}'))
+        terms.append(Term((0, 1), (q2, q2), g/4, 'product_local_quartic'))
+        self.terms = tuple(terms)
+        self.hamiltonian = sum((self.embed(term) for term in self.terms),
+                               sparse.csr_matrix((16, 16)))
+        self.trace = float(self.hamiltonian.diagonal().sum())
+
+
+def product_gibbs_preparation(lattice, beta=F(1, 4)):
+    """Source preparation of this interacting Hamiltonian's purification.
+
+    Keep all work/reference amplitudes. Numerical synthesis guards and
+    inherited exact-code failure semantics are explicit; no postselection
+    or state normalization is used to repair the returned amplitudes.
+    """
+    beta = a.rational(beta, positive=True)
+    if not isinstance(lattice, ProductBand):
+        raise ValueError('the declared sixteen-state product band is required')
+    values, basis = inherited_source._basis(lattice.hamiltonian.toarray())
+    weights = np.exp(-float(beta)*(values-values[0])); weights /= weights.sum()
+    if not np.isfinite(weights).all() or np.any(weights <= 0):
+        raise ArithmeticError('faithful Gibbs weights exceed the numerical preparation range')
+    word = compiler.compile_real_state(np.sqrt(weights))
+    for bit in range(4):
+        word += compiler.cnot(bit, bit+4)
+    word += compiler.compile_real_orthogonal(basis)
+    blank = np.zeros(256, complex); blank[0] = 1
+    raw = compiler.execute(word, 8, blank).reshape(16, 16).T
+    target = basis@np.diag(np.sqrt(weights))
+    error = float(np.linalg.norm(raw-target))
+    if not np.isfinite(error) or error > 1e-9:
+        raise ArithmeticError('the interacting Gibbs preparation exceeded its source guard')
+    return raw, target, {'inverse_temperature': beta,
+        'retained_work_addresses': 16, 'retained_reference_addresses': 16,
+        'source_resources': compiler.resources(word),
+        'raw_norm_squared': float(np.linalg.norm(raw)**2),
+        'purification_vector_error_numerical': error,
+        'purification_vector_error_guard': F(1, 10**9),
+        'ideal_minimum_density_eigenvalue': float(weights.min()),
+        'physical_preparation_error_certified': False}
+
+
+def product_interaction_control():
+    """Conditional same-product interaction, Gibbs clock and full readouts."""
+    lattice, free = ProductBand(), ProductBand(0)
+    beta, interval, steps = F(1, 4), F(1, 16), 64
+    raw, target, preparation = product_gibbs_preparation(lattice, beta)
+    actual, reference, actual_states, reference_states = [], [], [], []
+    for sign in (-1, 1):
+        rows, states = history(lattice, sign, interval=interval, steps=steps,
+                               initial=raw, return_states=True)
+        ideal_rows, ideal_states = history(lattice, sign, source=False, interval=interval,
+                                           initial=target, return_states=True)
+        actual.append(rows); actual_states.append(states)
+        reference.append(ideal_rows); reference_states.append(ideal_states)
+    def distance(left, right):
+        return sum(float(np.linalg.norm(np.outer(x.reshape(-1), x.reshape(-1).conj())
+                                      -np.outer(y.reshape(-1), y.reshape(-1).conj()), ord='nuc'))/2
+                   for x, y in zip(left, right, strict=True))
+    complete_error = max(distance(x, y) for x, y in zip(actual_states, reference_states, strict=True))
+    split = splitting_bound(lattice, interval, steps)
+    certificate = split['two_interval_complete_output_trace_distance_upper']
+    # Telescope the inherited fixed raw-target and polar-correction guards,
+    # including the complete measurement dilations and both possible kicks.
+    # This is a floating-replay allowance, not a physical service certificate.
+    operation_count = 4*steps*len(lattice.terms)+4
+    local_guard = F(251, 10**12)  # 2e-10 raw residual + 5.1e-11 correction.
+    gain = operation_count*local_guard
+    vector_guard = (preparation['purification_vector_error_guard']+gain)/(1-gain)
+    numerical_guard = vector_guard*(2+vector_guard)/2
+    if complete_error > float(certificate+numerical_guard):
+        raise ArithmeticError('the full interacting work/reference/record law exceeded its bound')
+    # Compare the same input and detectors after removing only the interaction.
+    free_rows = [history(free, sign, source=False, interval=interval, initial=target)
+                 for sign in (-1, 1)]
+    no_feedback = [history(lattice, sign, source=False, feedback=False,
+                           interval=interval, initial=target) for sign in (-1, 1)]
+    h = lattice.hamiltonian.toarray(); rho = target@target.conj().T
+    q = np.kron(normalized(a.polynomial(4, 1)), np.eye(4))
+    t = float(interval)
+    evolved = expm(1j*t*h)@q@expm(-1j*t*h)
+    masses, vectors = np.linalg.eigh(rho)
+    modular = (vectors*np.exp(-1j*t*np.log(masses)/float(beta)))@vectors.T
+    modular_residual = float(np.linalg.norm(modular@q@modular.conj().T-evolved))
+    raw_masses, raw_vectors = np.linalg.eigh(raw@raw.conj().T)
+    raw_modular = (raw_vectors*np.exp(-1j*t*np.log(raw_masses)/float(beta)))@raw_vectors.conj().T
+    raw_modular_residual = float(np.linalg.norm(raw_modular@q@raw_modular.conj().T-evolved))
+    free_values, free_basis = np.linalg.eigh(free.hamiltonian.toarray())
+    free_weights = np.exp(-float(beta)*free_values); free_weights /= free_weights.sum()
+    free_rho = (free_basis*free_weights)@free_basis.T
+    free_state_nonstationarity = float(np.linalg.norm(h@free_rho-free_rho@h))
+    if modular_residual > 1e-10 or raw_modular_residual > 1e-9 or free_state_nonstationarity < 1e-5:
+        raise ArithmeticError('the interacting clock/state identity or mismatched-state control failed')
+    native = native_records(actual)
+    resources = dict(preparation['source_resources'])
+    counts = {key: resources[key] for key in inherited_source.COUNT_KEYS}
+    for term in lattice.terms:
+        meta = execute_term(term, interval/(2*steps))[1]
+        for key in counts:
+            counts[key] += 4*steps*meta['resources'][key]
+    for count, meta in ((2, inherited_source.instrument(4, 1, np.pi/2, 2)[1]),
+                        (2, inherited_source.feedback(4, .25, 2)[1])):
+        for key in counts:
+            counts[key] += count*meta['resources'][key]
+    return {'scope': 'Two-mode interacting effective field on the declared radial product; finite ultraviolet and occupation cutoffs.',
+        'spatial_domain': '(0,pi) times the same native angular screen',
+        'field_modes': ['sqrt(2) sin(r) times angular constant', 'sqrt(2) sin(2r) times angular constant'],
+        'spatial_measure': 'dr/pi times normalized native angular measure',
+        'quartic_polynomial': '3/2*(Q1^4+Q2^4)+6*Q1^2*Q2^2',
+        'effective_coupling': lattice.coupling, 'oscillator_basis_frequency': 2,
+        'covariant_coupling_map': 'g_eff=lambda/pi integral mu_screen^2 sqrt(det a_screen) dx',
+        'occupation_dimensions': lattice.dimensions, 'preparation': preparation,
+        'model_time_per_interval': interval, 'steps_per_interval': steps,
+        'source_histories_by_native_sign': actual,
+        'independent_hamiltonian_histories_by_native_sign': reference,
+        'complete_work_reference_record_trace_error_numerical': complete_error,
+        'ideal_splitting_complete_output_bound': certificate,
+        'complete_source_numerical_guard': numerical_guard,
+        'guarded_local_operation_count': operation_count,
+        'local_raw_plus_polar_operator_guard': local_guard,
+        'interaction_removal_record_tv': max(tv(x, y) for x, y in zip(reference, free_rows)),
+        'feedback_removal_record_tv': max(tv(x, y) for x, y in zip(reference, no_feedback)),
+        'ideal_Gibbs_modular_identity_residual': modular_residual,
+        'raw_prepared_marginal_modular_identity_residual': raw_modular_residual,
+        'free_Gibbs_state_interacting_commutator_norm': free_state_nonstationarity,
+        'modular_clock': 'sigma_s=alpha_(-beta*s) for this interacting H and its ideal Gibbs marginal',
+        'clock_parameter': 'Supplied Hamiltonian model time; no event-counter or seconds calibration in this protocol.',
+        'native_history_count': len(native),
+        'native_history_probability_sum': sum(row['probability'] for row in native),
+        'worst_branch_source_resources': counts,
+        'additional_native_repairs_per_history': 2,
+        'physical_service_error_certified': False,
+        'conditional_smooth_background_requires_smooth_coefficient_density': True,
+        'coupling_and_temperature_selected_by_repair': False,
+        'finite_band_is_invariant_under_untruncated_local_interaction': False,
+        'UV_limit_or_cutoff_microcausality_certified': False,
+        'observed_QFT_or_laboratory_clock_identified': False}
+
+
+def product_parameter_recovery(source_histories, raw_preparation):
+    """Synthetic inverse check with an independent padded-oscillator oracle.
+
+    Fit coupling, inverse temperature and radial frequency scale from the
+    first interval only. A second interval is withheld. Rounded estimates
+    are retained under explicit numerical guards, not statistical intervals.
+    """
+    annihilation = np.diag(np.sqrt(np.arange(1, 8)), 1)
+    q = (annihilation+annihilation.T)/2
+    p = 1j*(annihilation.T-annihilation)
+    q2, q4, p2 = (matrix[:4, :4] for matrix in (q@q, np.linalg.matrix_power(q, 4), p@p))
+
+    def oracle(parameters, interval=F(1, 16)):
+        coupling, beta, scale = parameters
+        h1, h2 = (p2/2+(scale*k)**2*q2/2+coupling*q4/16 for k in (1, 2))
+        h = np.kron(np.eye(4), h1)+np.kron(h2, np.eye(4))+coupling*np.kron(q2, q2)/4
+        lattice = ProductBand()
+        lattice.hamiltonian, lattice.trace = sparse.csr_matrix(h), float(np.trace(h).real)
+        values, vectors = np.linalg.eigh(h)
+        weights = np.exp(-beta*(values-values[0])); weights /= weights.sum()
+        initial = vectors*np.sqrt(weights)
+        return np.array([[row['probability'] for row in history(
+            lattice, sign, source=False, initial=initial, interval=interval)] for sign in (-1, 1)])
+
+    target = np.array([[row['probability'] for row in rows] for rows in source_histories])
+    select = lambda probabilities: probabilities[:, :3].ravel()
+    starts = ([.6, .4, .8], [1.6, .15, 1.2], [2., .8, .7])
+    fits = [least_squares(lambda x: select(oracle(x)-target), start,
+                         bounds=([.01, .03, .5], [3., 2., 2.]),
+                         xtol=1e-13, ftol=1e-13, gtol=1e-13, max_nfev=150)
+            for start in starts]
+    expected = np.array([1., .25, 1.])  # Used only for the synthetic acceptance check.
+    if any(not fit.success or np.max(abs(fit.x-expected)) >= 1e-4
+           or np.max(abs(fit.fun)) >= 1e-8 for fit in fits):
+        raise ArithmeticError('the synthetic observer records failed parameter recovery')
+    estimate = fits[0].x
+    step = 1e-5
+    jacobian = np.column_stack([(select(oracle(estimate+np.eye(3)[i]*step))
+                                -select(oracle(estimate-np.eye(3)[i]*step)))/(2*step)
+                               for i in range(3)])
+    singular_values = np.linalg.svd(jacobian, compute_uv=False)
+    withheld = np.array([[row['probability'] for row in history(
+        ProductBand(), sign, initial=raw_preparation, interval=F(1, 8))] for sign in (-1, 1)])
+    if singular_values[-1] <= 1e-5 or np.max(abs(oracle(estimate, F(1, 8))-withheld)) >= 1e-8:
+        raise ArithmeticError('the local identifiability or withheld-interval check failed')
+    return {'data_kind': 'synthetic source-executed complete probabilities, without sampling noise',
+            'parameters': ['effective coupling', 'inverse temperature', 'radial frequency scale'],
+            'estimates_rounded_to_1e_minus_4': np.round(estimate, 4).tolist(),
+            'three_distinct_initial_guesses_agree_with_declared_inputs_within': F(1, 10000),
+            'training_max_probability_residual_guard': F(1, 10**8),
+            'training_model_interval': F(1, 16), 'withheld_model_interval': F(1, 8),
+            'withheld_max_probability_error_guard': F(1, 10**8),
+            'local_sensitivity_singular_values_rounded_to_1e_minus_6': np.round(singular_values, 6).tolist(),
+            'global_identifiability_or_finite_sample_confidence_proved': False,
+            'radial_topology_or_angular_tensor_identified': False,
+            'absolute_energy_time_scale_identified': False,
+            'physical_parameter_validation': False}
 
 
 def tv(left, right):
@@ -415,6 +630,9 @@ def checks_and_run():
     }
     if not all(checks.values()):
         raise ArithmeticError(f'band-extension checks failed: {checks}')
+    product = product_interaction_control()
+    product['synthetic_parameter_recovery'] = product_parameter_recovery(
+        product['source_histories_by_native_sign'], product_gibbs_preparation(ProductBand())[0])
     return a.serializable({
         'schema': 'oph.interacting_band_extension.v1', 'all_pass': True,
         'scope': 'One supplied interacting Fourier-band extension, finite occupation, matched low-only histories; no ultraviolet, Lorentzian or empirical completion.',
@@ -430,6 +648,7 @@ def checks_and_run():
         'models': outputs, 'high_reset_reference_histories': high_reset,
         'no_feedback_reference_histories': no_feedback,
         'resonant_leakage_witness': witness,
+        'same_product_interaction': product,
         'complete_native_history_count': len(native),
         'complete_native_history_probability_sum': sum(row['probability'] for row in native),
         'complete_native_history_law': native,

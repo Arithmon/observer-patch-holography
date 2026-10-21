@@ -622,3 +622,159 @@ def positive_log_refinement_schedule(level, inverse_temperature=F(1), band=F(8),
         bounded_band_then_spectral_cutoff_limit=True,
         unbounded_generator_operator_norm_convergence_claimed=False)
     return result
+
+
+def native_growing_word_bounds(vertices, seams):
+    """Constructive pulse counts for the existing source-gate identities.
+
+    Binary-tree preparation has B(n)=3*((n-1)*2**n+1) pulses. A complete
+    Walsh diagonal has C(n)=(3*n-5)*2**n+6. One Householder reflection
+    costs 2B+C, so a real V-dimensional native spectral basis, extended
+    identically on padding, needs at most V such reflections. This is a
+    finite-word existence bound, not a call beyond the executable API caps.
+
+    The event shift uses the existing clean AND ladders and Gray paths.
+    An r-controlled flip uses 2r-3 forty-pulse Toffolis; a seam swaps at
+    most 2n-1 adjacent work addresses. Every zero-angle request is counted.
+    """
+    vertices = inverse_clock._integer(vertices, 3)
+    seams = inverse_clock._integer(seams, 2)
+    n, r = (vertices-1).bit_length(), (2*seams-1).bit_length()
+    tree = lambda bits: 3*((bits-1)*(1 << bits)+1)
+    diagonal = lambda bits: (3*bits-5)*(1 << bits)+6
+    toffoli = seams*(2*(2*r-3)+(2*n-1)*(2*n-3))
+    flips = seams*(2*r+2*(n-1)*(2*n-1))
+    shift = 40*toffoli+2*flips
+    preparation = tree(n)+3*n  # Uniform valid-address Bell purification.
+    filter_pulses = 2*tree(r)+shift
+    encoder = vertices*(2*tree(n)+diagonal(n))
+    return {'native_addresses': vertices, 'native_seams': seams,
+        'work_qubits': n, 'event_qubits': r,
+        'clean_flag_and_scratch_qubits': max(n, r)-1,
+        'peak_qubits_with_retained_purifying_reference': 2*n+r+max(n, r)-1,
+        'retained_work_padding_addresses': (1 << n)-vertices,
+        'retained_event_padding_addresses': (1 << r)-2*seams,
+        'binary_tree_work_preparation_pulses': tree(n),
+        'binary_tree_event_preparation_pulses': tree(r),
+        'complete_work_diagonal_pulses': diagonal(n),
+        'uniform_input_purification_pulses': preparation,
+        'shift_Toffoli_upper': toffoli, 'shift_flip_upper': flips,
+        'native_event_shift_pulses_upper': shift,
+        'one_native_lazy_filter_pulses_upper': filter_pulses,
+        'full_real_spectral_encoder_pulses_upper': encoder,
+        'one_same_state_spectral_clock_word_pulses_upper': 2*encoder+diagonal(n),
+        'controlled_complex_star_factor_pulses_upper_in_spectral_basis':
+            4*tree(n)+4*diagonal(n)+3*(n+1)*(1 << n),
+        'ordered_pointer_common_encoder_and_readout_pulses_upper': 2*encoder+2,
+        'one_proper_code_load_and_export_per_pulse': True,
+        'all_failure_padding_and_reference_outputs_required': True,
+        'native_matrix_spectral_synthesis_is_classical_computation': True,
+        'classical_synthesis_runtime_or_physical_duration_included': False,
+        'unbounded_word_or_register_executed': False}
+
+
+def native_growing_source_resources(level, inverse_temperature=F(1), band=F(8), *,
+                                    ordered_factors=2):
+    """One jointly realizable native filter, encoder and precision schedule.
+
+    D_l=4**l L_l, V_l=240*4**l, M_l=630*4**l. The biased native-event
+    filter gives I-hD_l/2 iff p=630*h*16**l<=1. Choose r=2l+c with
+    4**c>=b²*max(630,Lambda); R=2**r and h=b²/R². This also gives
+    h||D_l||<=12/(630*4**l)<2, excluding the high-mode F² alias.
+
+    The existing positive sampler has an n=0 branch. Its odd Taylor
+    polynomial at one is >=1/3. For integer R and sampling bits>=2R+2,
+    w0>=3**(-R)-2**(-2R-2)>=(3/4)*3**(-R)>=2**(-2R).
+    No extra identity component or altered reference state is introduced.
+
+    Write f=2**(-2R), a=4**(-r), K=BJ, P=max(Pinit,Pfilter). A combined
+    primitive/load/export error <=f*a/(64*V*K*P), in both operator norm
+    and complete-instrument half-diamond norm, gives stopped preparation
+    half-trace error E<=f*a/(32V). The unnormalized successful marginal
+    S_raw, including imperfect initial purification, gives M_raw=V*S_raw.
+    Thus ||M_raw-M||<=2VE<=f*a/16 and the global log error is <=a/(16-a).
+    Normalizing the actual marginal changes only the scalar logarithm.
+    This removes the reducing-band premise, at explicitly costly precision.
+    Arbitrarily accurate physical proper-code services are NOT derived.
+
+    Only integer exponents of very small error budgets are returned; the
+    function does not allocate 2**(2R), growing words or sampler arrays.
+    """
+    level = inverse_clock._integer(level, 0, 12)
+    ordered_factors = inverse_clock._integer(ordered_factors, 1, 64)
+    beta = inverse_clock._fraction(inverse_temperature, F(1, 10**12), F(16))
+    band = inverse_clock._fraction(band, F(1, 10**12), F(10**6))
+    offset = 0
+    while F(1 << (2*offset)) < beta*beta*max(F(630), band):
+        offset += 1
+    index = 2*level+offset
+    rate, scale = 1 << index, F(1, 1 << (2*index))
+    heat = beta*beta*scale
+    vertices, seams = 240*4**level, 630*4**level
+    lazy_weight = 630*heat*16**level
+    if not 0 < lazy_weight <= 1 or not 12*heat*4**level < 2:
+        raise ArithmeticError('the growing filter is not an admitted native convex event word')
+    jumps, counts = 1 << (6*index), 6*rate+2*index
+    maximum = jumps*counts
+    sampling_bits = max(48, maximum.bit_length()+2*index, 2*rate+2)
+    words = native_growing_word_bounds(vertices, seams)
+    initial = words['uniform_input_purification_pulses']
+    filtering = words['one_native_lazy_filter_pulses_upper']
+    pulse_maximum = max(initial, filtering)
+    stopped_pulses = initial+maximum*filtering
+    # 2**tail_bits >=64 V K P. Only this moderate exponent is materialized.
+    tail_bits = (64*vertices*maximum*pulse_maximum-1).bit_length()
+    primitive_bits = 2*rate+2*index+tail_bits
+    error_over_floor = F(stopped_pulses, 1 << (2*index+tail_bits))
+    relative_mixture_error = 2*vertices*error_over_floor
+    log_error = relative_mixture_error/(1-relative_mixture_error)
+    ideal = positive_log_clock_bound(F(rate), heat, band, min(F(1), 4*scale), maximum)
+    ideal_error = ideal['ideal_generator_to_b_sqrt_D_upper']
+    if error_over_floor > scale/(32*vertices) or log_error > scale/(16-scale):
+        raise ArithmeticError('complete stopped preparation exceeds the global logarithm budget')
+    clock_pulses = words['one_same_state_spectral_clock_word_pulses_upper']
+    clock_bits = 2*index+(2*clock_pulses-1).bit_length()
+    pointer_pulses = (words['ordered_pointer_common_encoder_and_readout_pulses_upper']
+        +ordered_factors*(words['controlled_complex_star_factor_pulses_upper_in_spectral_basis']
+                         +2*clock_pulses))
+    pointer_bits = 2*index+(8*pointer_pulses-1).bit_length()
+    success_lower = max(F(0), (1-4*scale)/vertices)
+    complete_error = scale/(32*vertices)
+    return {'native_level': level, 'sampler_index': index,
+        'inverse_temperature': beta, 'spectral_band_upper': band,
+        'rate': rate, 'heat_step': heat, 'native_lazy_event_weight': lazy_weight,
+        'whole_native_generator_norm_upper': 12*4**level,
+        'whole_native_filter_alias_parameter_upper': 12*heat*4**level,
+        'jump_cap': jumps, 'count_cap': counts, 'maximum_filter_requests': maximum,
+        'lower_Taylor_order': 4*index+3, 'sampling_coin_bits': sampling_bits,
+        'missing_sampler_mass_upper': min(F(1), 4*scale),
+        'zero_request_mass_lower_base2_negative_exponent': 2*rate,
+        'required_primitive_with_services_error_base2_negative_exponent': primitive_bits,
+        'required_clock_word_primitive_error_base2_negative_exponent': clock_bits,
+        'complete_stopped_preparation_source_pulses_upper': stopped_pulses,
+        'complete_preparation_error_divided_by_zero_request_floor_upper': error_over_floor,
+        'complete_preparation_half_trace_error_upper': complete_error,
+        'successful_mixture_error_divided_by_zero_request_floor_upper': relative_mixture_error,
+        'global_actual_marginal_logarithm_error_upper': log_error,
+        'ideal_prepared_generator_error_upper': ideal_error,
+        'actual_marginal_generator_error_upper':
+            ideal_error+log_error if ideal_error is not None else None,
+        'clock_word_operator_error_upper': scale,
+        'ordered_factors': ordered_factors,
+        'one_pointer_quadrature_source_pulses_upper': pointer_pulses,
+        'two_quadrature_source_pulses_per_successful_copy_upper': 2*pointer_pulses,
+        'required_pointer_primitive_with_services_error_base2_negative_exponent': pointer_bits,
+        'one_copy_complex_Weyl_estimator_error_upper': scale,
+        'nominal_clock_to_actual_modular_unitary_error_per_model_time_upper': log_error/beta,
+        'nominal_clock_to_actual_modular_flow_error_per_model_time_upper': 2*log_error/beta,
+        'one_model_time_actual_generator_and_clock_error_upper':
+            (ideal_error+log_error)/beta+scale if ideal_error is not None else None,
+        'ideal_success_probability_lower': success_lower,
+        'actual_success_probability_lower': max(F(0), success_lower-2*complete_error),
+        'resources': words,
+        'initial_purification_and_all_stopped_failures_included_in_error': True,
+        'raw_log_bound_requires_reducing_spectral_band': False,
+        'extra_identity_regularizer_added': False,
+        'increasing_source_service_precision_is_an_explicit_premise': True,
+        'full_refinement_word_sampler_or_physical_accuracy_executed': False,
+        'radial_architecture_interactions_or_lab_units_derived': False}

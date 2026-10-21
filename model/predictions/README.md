@@ -756,7 +756,47 @@ Nth-power amplification is at most `N zeta/(1-N zeta)` when `N zeta<1`.
 No bound is reported outside those domains. For positive filter mass m0,
 `p=m0 Z/d>=m0/d`, so vanishing E alone is insufficient: a conservative
 requirement is `N d E -> 0`. A continuum partition-function bound cannot
-replace a uniform **finite-source** bound without its own proof.
+replace a uniform **finite-source** bound without its own proof. The native
+family has such a proof from its existing ancestry and internal-gap bounds.
+
+<a id="finite-native-trace-and-gap"></a>
+Put `s=4^l`, `D_l=s L_l`, and write any full-port vector as `v=Uu+q`, where
+q has zero mean in each carrier. For `E=<v,D_l v>`, Schur minimization,
+[K1 and the internal gap](../physical_space_time/OCCUPATION_FIELD.md#a-common-positive-spatial-generator-from-the-native-green-field)
+give `||(I-P_k)u||^2<=624*4^(-k)E` and `||q||^2<=E/(2s)`.
+The centered coarse range has rank `20*4^k-1`, so min-max gives
+`lambda_(20*4^k)(D_l)>=4^k/(624+1/2)` for `k<l`. At `k=l` only q
+remains and the bound is `lambda_(20s)>=2s`. The full-source gap
+`lambda_1>=s/(4096s+1)>=1/4097` handles the first nineteen eigenvalues.
+For intermediate indices choose `20*4^k<=n<80*4^k`; high indices satisfy
+`n<240s`. Thus, **at every finite level**,
+
+```text
+lambda_n(D_l)>=n/81940,
+Tr exp(-b sqrt(D_l))<=1+163880/b^2.
+```
+
+The trace bound follows by integrating the decreasing function
+`exp(-b sqrt(x/81940))`; the exact constant mode contributes one.
+For the native density step `K=I-L_l/(2M_l)`, `M_l=630s`, a lazy event
+filter equals `F=(1-p)I+pK=I-hD_l/2` precisely when `p=630hs^2<=1`.
+This implies `h||D_l||<=12hs<2`. Retained positive subordination therefore
+gives `M<=exp[-b sqrt(D_l-hD_l^2/4)]<=exp[-b sqrt(D_l/2)]`, and
+
+```text
+Z=Tr(M)/m0 <= (1+327760/b^2)/m0,
+m0/d <= Psuccess <= (1+327760/b^2)/d,     d=240s.
+```
+
+This derives a uniform partition bound without removing the herald cost.
+It also gives prepared gaps `g>=b/sqrt(8194)+log(m0)`. With omitted mass
+`delta=1-m0` satisfying `delta/(1-delta)<=b/182`, both prepared and target
+positive gaps are at least `b/182`, since `sqrt(8194)<91`. Raw preparation
+and clock errors retain their separate allowances. The independent controls
+check the actual 240- and 960-port spectra and the min-max index boundaries.
+Contraction alone is insufficient: `D=diag(0,4/h)` makes `F=diag(1,-1)`,
+so every even filter power preserves a high-energy mode. This endpoint
+violates the native lazy-event constraint.
 
 On a common embedded band, a gap error e contributes at most
 `R^2[e/gamma^2+2T e/(b theta)]/2` for model times `|t|<=T`.
@@ -773,12 +813,14 @@ under uniform tails `||D^(-1/4)f_tail||+||D^(1/4)h_tail|| -> 0`.
 Smooth local smears require that tail justification; finite-band agreement
 alone is insufficient. The sample full-port schedule `d=240*4^l`, `N=d^2`
 has explicit decreasing error requirements, not measured compiler rates.
-Growing state preparation, mode access and independent copies remain
-implementation obligations. The source precision schedule must be chosen
-jointly with the copy schedule: an error of order `4^(-r)` needs
+Growing state preparation, mode access and independent copies retain their
+implementation costs. The source precision schedule must be chosen
+jointly with the copy schedule: a dimension-independent error of order `4^(-r)` needs
 `r-3l -> infinity` under the conservative full-port herald floor and
 `N=d^2`. Keeping the same refinement index for both does not meet that
 requirement; the stronger precision and sampler caps carry their full cost.
+The native contract below uses the proved partition bound and charges the
+complete preparation error to choose a different compatible copy schedule.
 
 For mean-zero angular A the native constant vector supplies the anchor.
 The Dirichlet product B is strictly positive: using it requires a separate
@@ -811,14 +853,47 @@ the source implementation to preserve that band: small leakage toward
 arbitrarily small outside eigenmasses defeats a low-band log bound. The
 finite twelve-dimensional heralded preparation satisfies this requirement;
 the reported growing-schedule examples declare it as a compiler obligation.
-An explicit finite schedule
-`R=2^l`, `h=b^2/R^2`, jump cap `2^(6l)`, count cap `6R+2l`, and decreasing
-source error makes these terms vanish on each fixed band. Those large
-samplers and phase compilers are obligations, not executed constructions.
 Keeping caps fixed while `Kh` tends to zero instead collapses H to zero.
 Combining this bound with a compatible spatial operator limit requires
 bounded-band convergence followed by spectral cutoff removal; it supplies
 no unbounded-generator norm limit or physical spacetime identification.
+
+<a id="native-growing-preparation-and-clock-contract"></a>
+The full native construction uses the sampler's zero-request branch to
+control the whole spectrum, including leakage outside the observation band.
+Set `k=2l+c`, with `4^c>=b^2 max(630,Lambda)`, `R=2^k`, `h=b^2 4^(-k)`.
+This makes the native event weight admissible. With jump cap `B=2^(6k)`,
+count cap `J=6R+2k`, `K=BJ`, Taylor order `4k+3`, and sampler bits at least
+`max(48,ceil(log2(K+1))+2k,2R+2)`, omitted mass is at most `4a`,
+where `a=4^(-k)`. The unchanged zero-request weight satisfies
+`w0>=3^(-R)-2^(-sampling_bits)>=2^(-2R)=f`; no identity mass is added.
+
+The [source resource bounds](prepared_clock_source.py) count the uniform
+Bell input, native event filter, full spectral encoder and phase words.
+For `P=max(Pinput,Pfilter)`, require primitive plus load/export error at
+most `f a/(64dKP)` in both operator norm and complete-instrument half-diamond
+norm. Composition gives complete preparation half-trace error
+`E<=f a/(32d)`, including every stopped failure. For the unnormalized
+successful marginal `Sraw`, `Mraw=d Sraw` obeys
+`||Mraw-M||<=2dE<=f a/16`; hence the global logarithm error is at most
+`a/(16-a)`. Normalization adds only a scalar to its logarithm. This
+discharges the reducing-band condition for this quantified construction.
+
+The ordered detector has a separate cost: complex star rotations are
+synthesized by phase-adjusted real Householders and a controlled pair
+rotation. Its pulse total `Pdet` includes the common encoder, pointer
+preparation/readout and both clock words around every timed factor.
+Requiring `2k+ceil(log2(8Pdet))` bits of primitive service accuracy bounds
+the combined X/Y characteristic error by `4a/(8-a)<=a`, including raw
+composition gain. `native_growing_field_contract` joins these costs with
+the derived partition, positive-gap and success bounds on the **same**
+finite `D_l`. For fixed b and band, `N=2^l` gives finite-copy error
+`O(2^(-l))`, preparation amplification `O(Na)` and detector error `O(Na)`;
+the gap/clock error also tends to zero. The conservative constants do not
+claim useful accuracy at the first few levels. The finite resource formulas
+are evaluated; increasing words, independent copies and physical service
+accuracy are obligations. Continuum embeddings/tails, radial architecture,
+interactions and laboratory units are not supplied by this contract.
 
 The fixed finite gaps also admit a narrow public-data test. All nine ordered
 assignments of the three executed constant-to-band gaps to the

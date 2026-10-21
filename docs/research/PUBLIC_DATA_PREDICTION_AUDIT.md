@@ -23,7 +23,7 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Intrinsic photon dispersion | Equal-weight primitive-port or seam-edge propagation gives linked fourth- and sixth-order coefficients below, if these directions are physical translations of the photon field. | A conditional departure from minimal locally Lorentz-invariant vacuum propagation. Published timing limits are far too weak at the proposed scale; the Auger transfer is source- and interaction-dependent. |
 | Native clock ratios and noise | Same-history movement and incident counts have definite waiting laws and spatial correlations. Under simultaneous source refinement, bounded-incidence clock jitter has Gaussian finite-dimensional covariance fixed by shared seams and is asymptotically independent of density snapshots. | The [joint clock/field prediction](../../model/relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) uses explicit stationary preparation, IID seams and readout access. No identified atomic-clock, pulsar or photon observable has this joint record law. Ordinary stochastic realizations also satisfy it; matching it alone would not distinguish OPH. |
 | Native record-to-phase relation | Four movement-bit covariances on the complete native attempt tape determine a two-mode transfer generator and predict its coherent quadratures under the fixed readout protocol. | A conditional cross-readout prediction with uncertainty and failed-identification outcomes. Public optical servo ratios are not this bit tape; the [inverse-clock construction](../../model/predictions/README.md) does not assign them a new experimental verdict or establish a distinction from standard quantum instruments. |
-| Prepared-state clock and response | The finite source-prepared density fixes eleven algebraic fluctuation pairs, their thermal noise, ordered response and positive-log clock gaps; three band representatives have complete source pointer reads and a quantitative finite-copy bound. Frequency normalization fixes unit sine response. A joint copy/band bound charges partition-function growth, herald success and source precision before the square-root limit. | The [same-state construction](../../model/predictions/README.md#shared-state-fluctuation-field) retains independent-copy, control and readout premises. The [joint-limit contract](../../model/predictions/README.md#growing-shared-state-field) is conditional. A finite cell-visible native packet is source-compiled; the [product field](../../model/observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock) still needs radial design and a growing encoder; its same-density star-fluctuation realization additionally needs an anchor sector. The direct assignment of the three fixed prepared gaps to public Ar13+/Yb+ ratios is excluded under explicit attachment-error budgets below. This retrospective restricted test identifies no atomic spectrum; the quantum fluctuation law supplies no discriminator against standard quantum theory. |
+| Prepared-state clock and response | One finite prepared density fixes eleven fluctuation pairs, their noise, ordered response and positive-log clock; three band representatives have complete source pointer reads. The native growing angular family has derived partition/gap bounds and a constructive finite-word/cap/precision schedule. A same-product quartic projection has complete interacting Gibbs readouts. | The [joint-limit contract](../../model/predictions/README.md#growing-shared-state-field) retains preparation, control, precision-service and spectral-tail premises; growing execution is unperformed. The [product field](../../model/observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock) requires a radial design and an anchor for its same-density star construction. The [finite interacting projection](../../model/interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product) adds a declared coupling and model clock. None is an atomic-spectrum identification or a discriminator against standard quantum theory. The fixed three-gap Ar13+/Yb+ attachment is excluded only under the stated error budgets below. |
 | Native repair response | A disclosed-bit-triggered repair predicts complete future clock/field events from passive correlations. A controlled execution bias has continuum mean derivative `2(I-exp(-tau*A))f` and a positive fixed-amplitude signal under a uniform likelihood bound. | The [complete native forecast](../../model/predictions/README.md#native-repair-response-from-passive-clock-and-field-records) retains timeouts and distinguishes executed repairs from additional coin-service costs. Its controller and readout dictionary are declared. Public optical frequency-ratio traces contain no matching intervention/current records; no empirical verdict or distinction from ordinary stochastic or quantum realizations follows. |
 | C/E coherent record law | One fixed coherent preparation gives plus probabilities `5/8` and `3/8` under the two instruments. | These are ordinary quantum instruments. The distinction selects a record law, not OPH over standard quantum mechanics. |
 | Joint timed coherent response | The charged total-two source history fixes a joint cost/clock/detector law. Under one explicitly synthetic calibration, its two settings have identical `0.52` deadline mass and distinct `0.2451`/`0.2715` joint detector masses. | An executable conditional forecast with shared timing coefficients and all timeouts retained. No measured system or physical duration is identified; these finite quantum instruments are not unique to OPH. |
@@ -91,6 +91,20 @@ Observatory product, with additional convergence and eligibility conditions.
 This analysis changes none of those terms and issues no FZ-15 verdict.
 It supplies an actual-data constraint on the declared primordial branch;
 deriving that branch from the runnable observer's joint records remains open.
+
+The [finite-source CMB construction](../../cosmology/oph_cosmology_finite_source_cmb_program.tex),
+[inflation construction](../../cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex)
+and [vacuum/structure construction](../../cosmology/oph_cosmological_vacuum_and_structure_formation.tex)
+therefore support conditional early-Universe tests already. The next stronger
+comparison is a full public CMB likelihood with the edge-center tilt held
+fixed, profiling or marginalizing the same remaining cosmological and nuisance
+parameters as the free-tilt baseline. A posterior tail is not that likelihood
+comparison. Running and tensor initial conditions retain their own premises;
+vanishing source forcing alone does not imply zero primordial tensors.
+The native model still needs the specific curvature perturbation, release
+state, reserve generator, expanding background and photon-transfer map used
+by these papers. Its static two-mode product interaction supplies none of
+those by identifying its scalar field with primordial curvature.
 
 ## Conditional tau comparison
 
@@ -303,6 +317,26 @@ quoted standard uncertainties do not establish physical hard bounds.
 The [primary table](https://arxiv.org/pdf/2205.13053v2#page=20) therefore
 excludes this direct constant-to-band attachment under those hypotheses,
 not other transitions, composite clocks, OPH or standard quantum theory.
+
+The growing native clock bounds and the same-product quartic execution do
+not inherit this verdict or the existing optical postdictions. The quartic
+example supplies its coupling, inverse temperature, radial profiles,
+occupation cutoff and model-time intervals; no measured transition or
+seconds-per-interval correspondence is fixed. Its complete source/reference
+comparison tests an implementation of a declared quantum model. A public
+observation test requires a fixed apparatus/readout map and uncertainty model
+before selecting unused comparison data. Smoothness of an assumed action
+density, or agreement with its finite Gibbs law, adds no distinctive measured
+prediction by itself.
+
+A candidate benchmark is Aimet et al.'s published massive-to-massless
+Klein–Gordon quench, with Neumann boundaries and an inferred initial
+temperature. The [experiment](https://www.nature.com/articles/s41567-025-02930-9)
+and its [relative-phase and density data](https://zenodo.org/records/15205139)
+provide time-indexed spatial records. Comparing those observations requires
+their field, boundary, detector and energy/time dictionaries; they do not
+validate the declared quartic `g=1`, `b=1/4` Gibbs menu. No fit or empirical
+verdict for that menu is retained.
 
 ## Conditional dispersion: exact branch relation and actual sensitivity
 

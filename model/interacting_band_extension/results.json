@@ -15057,13 +15057,239 @@
     "steps": 32,
     "taylor_vector_remainder_upper": "14429830096410604042971646053210812709/2097152000000000000000000000000000000000000"
   },
+  "same_product_interaction": {
+    "UV_limit_or_cutoff_microcausality_certified": false,
+    "additional_native_repairs_per_history": 2,
+    "clock_parameter": "Supplied Hamiltonian model time; no event-counter or seconds calibration in this protocol.",
+    "complete_source_numerical_guard": "24346497653338251/124999951557004693448498",
+    "complete_work_reference_record_trace_error_numerical": 1.9682142647378635e-08,
+    "conditional_smooth_background_requires_smooth_coefficient_density": true,
+    "coupling_and_temperature_selected_by_repair": false,
+    "covariant_coupling_map": "g_eff=lambda/pi integral mu_screen^2 sqrt(det a_screen) dx",
+    "effective_coupling": "1",
+    "feedback_removal_record_tv": 0.0019527637429536254,
+    "field_modes": [
+      "sqrt(2) sin(r) times angular constant",
+      "sqrt(2) sin(2r) times angular constant"
+    ],
+    "finite_band_is_invariant_under_untruncated_local_interaction": false,
+    "free_Gibbs_state_interacting_commutator_norm": 0.0578884150085857,
+    "guarded_local_operation_count": 772,
+    "ideal_Gibbs_modular_identity_residual": 4.905509639528665e-15,
+    "ideal_splitting_complete_output_bound": "7678638362194609897301838428464787623661827556760338246490202888582061597906592960845670179501949672548017109900718990022251160491171096745413716571421290547345999859640736857447096820225914578501740213818095872129/96000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "independent_hamiltonian_histories_by_native_sign": [
+      [
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.352128951986392
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.15218565877976178
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.15407837202407737
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.3416070172097689
+        }
+      ],
+      [
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.3396542534668152
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.15603113576703104
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.15029974943630256
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.35401486132985144
+        }
+      ]
+    ],
+    "interaction_removal_record_tv": 0.0007309676435666435,
+    "local_raw_plus_polar_operator_guard": "251/1000000000000",
+    "model_time_per_interval": "1/16",
+    "modular_clock": "sigma_s=alpha_(-beta*s) for this interacting H and its ideal Gibbs marginal",
+    "native_history_count": 1056,
+    "native_history_probability_sum": 0.9999999999995055,
+    "observed_QFT_or_laboratory_clock_identified": false,
+    "occupation_dimensions": [
+      4,
+      4
+    ],
+    "oscillator_basis_frequency": 2,
+    "physical_service_error_certified": false,
+    "preparation": {
+      "ideal_minimum_density_eigenvalue": 0.01105722663740916,
+      "inverse_temperature": "1/4",
+      "physical_preparation_error_certified": false,
+      "purification_vector_error_guard": "1/1000000000",
+      "purification_vector_error_numerical": 2.9713428238843364e-13,
+      "raw_norm_squared": 0.9999999999994356,
+      "retained_reference_addresses": 16,
+      "retained_work_addresses": 16,
+      "source_resources": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 22503.267146602986,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 8,
+        "native_pulses": 13090,
+        "pair_code_pulses": 3278,
+        "proper_code_export_events": 13090,
+        "proper_code_load_events": 13090,
+        "proper_code_service_events": 26180,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 9812,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 8
+      }
+    },
+    "quartic_polynomial": "3/2*(Q1^4+Q2^4)+6*Q1^2*Q2^2",
+    "raw_prepared_marginal_modular_identity_residual": 1.58227237641395e-13,
+    "scope": "Two-mode interacting effective field on the declared radial product; finite ultraviolet and occupation cutoffs.",
+    "source_histories_by_native_sign": [
+      [
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.3521289517863124
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.15218565891573088
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.15407837212782813
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.34160701716963326
+        }
+      ],
+      [
+        {
+          "bits": [
+            0,
+            0
+          ],
+          "probability": 0.3396542534600389
+        },
+        {
+          "bits": [
+            0,
+            1
+          ],
+          "probability": 0.15603113583739522
+        },
+        {
+          "bits": [
+            1,
+            0
+          ],
+          "probability": 0.15029974960456474
+        },
+        {
+          "bits": [
+            1,
+            1
+          ],
+          "probability": 0.35401486109751723
+        }
+      ]
+    ],
+    "spatial_domain": "(0,pi) times the same native angular screen",
+    "spatial_measure": "dr/pi times normalized native angular measure",
+    "steps_per_interval": 64,
+    "synthetic_parameter_recovery": {
+      "absolute_energy_time_scale_identified": false,
+      "data_kind": "synthetic source-executed complete probabilities, without sampling noise",
+      "estimates_rounded_to_1e_minus_4": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "global_identifiability_or_finite_sample_confidence_proved": false,
+      "local_sensitivity_singular_values_rounded_to_1e_minus_6": [
+        0.264713,
+        0.001489,
+        0.00011
+      ],
+      "parameters": [
+        "effective coupling",
+        "inverse temperature",
+        "radial frequency scale"
+      ],
+      "physical_parameter_validation": false,
+      "radial_topology_or_angular_tensor_identified": false,
+      "three_distinct_initial_guesses_agree_with_declared_inputs_within": "1/10000",
+      "training_max_probability_residual_guard": "1/100000000",
+      "training_model_interval": "1/16",
+      "withheld_max_probability_error_guard": "1/100000000",
+      "withheld_model_interval": "1/8"
+    },
+    "worst_branch_source_resources": {
+      "identity_phase_pulses": 2829,
+      "native_pulses": 217110,
+      "pair_code_pulses": 41814,
+      "proper_code_export_events": 217110,
+      "proper_code_load_events": 217110,
+      "proper_code_service_events": 434220,
+      "single_code_pulses": 175296
+    }
+  },
   "schema": "oph.interacting_band_extension.v1",
   "scope": "One supplied interacting Fourier-band extension, finite occupation, matched low-only histories; no ultraviolet, Lorentzian or empirical completion.",
   "source_sha256": {
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "model/interacting_band_extension/algebra.py": "768512a0e0131ef764113037f56f997cd01aebbebd6b6302287a0e4e78e65342",
-    "model/interacting_band_extension/construction.py": "e873a73707974b6109f3e32e3a1605d7e884df426d4324b779ae20c0f6d18ce5",
+    "model/interacting_band_extension/construction.py": "70810d9ef3602c974e662da3864b101fdaa17728fa913eb96c8b1c96a374587a",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",

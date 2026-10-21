@@ -406,3 +406,131 @@ def test_native_success_herald_is_the_whole_twelve_dimensional_log_domain():
         -bound['raw_positive_mixture_operator_error_upper'])
     assert bound['successful_filter_domain_selected_by_herald_projection']
     assert bound['successful_filter_domain_dimension'] == 12
+
+
+@pytest.mark.parametrize('bits', (2, 3, 5))
+def test_growing_word_counts_are_existing_native_binary_tree_and_householder_words(bits):
+    dimension = 1 << bits
+    vector = np.arange(1, dimension+1, dtype=float)
+    vector[::2] *= -1
+    vector /= np.linalg.norm(vector)
+    word = m.compiler._compile_real_state_tree(vector, bits)
+    phase = m.compiler.compile_diagonal([np.pi]+[0.]*(dimension-1))
+    bound = m.native_growing_word_bounds(dimension, dimension)
+    assert len(word) == bound['binary_tree_work_preparation_pulses']
+    assert len(phase) == bound['complete_work_diagonal_pulses']
+    reflected = m.compiler.execute(m.compiler.inverse(word)+phase+word, bits)
+    np.testing.assert_allclose(reflected, np.eye(dimension)-2*np.outer(vector, vector),
+                               atol=1e-12, rtol=0)
+    assert dimension*(2*len(word)+len(phase)) == bound['full_real_spectral_encoder_pulses_upper']
+
+
+@pytest.mark.parametrize('bits', (2, 3))
+def test_growing_controlled_star_pair_count_retains_both_pointer_blocks(bits):
+    dimension, angle = 1 << bits, .17
+    word = []
+    for mask in range(1 << (bits-1)):
+        label = ['X']+['Z' if mask >> j & 1 else 'I' for j in range(bits-1)]
+        word += m.compiler.pauli_rotation(label+['I'], angle/dimension)
+        word += m.compiler.pauli_rotation(label+['Z'], -angle/dimension)
+    assert len(word) == 3*(bits+1)*dimension
+    pair = np.zeros((dimension, dimension)); pair[0, 1] = pair[1, 0] = 1
+    target = np.eye(2*dimension, dtype=complex)
+    target[dimension:, dimension:] = expm(1j*angle*pair)
+    np.testing.assert_allclose(m.compiler.execute(word, bits+1), target, atol=2e-12, rtol=0)
+
+
+def test_binary_tree_lazy_filter_executes_existing_source_shift_with_all_outputs():
+    weight = F(1, 2)
+    program, _ = m.inverse_clock._lazy_filter_program(weight)
+    amplitudes = np.zeros(64)
+    amplitudes[:60:2] = np.sqrt(float(2-weight)/60)
+    amplitudes[1:60:2] = np.sqrt(float(weight)/60)
+    program['routines']['prepare'] = m.compiler._compile_real_state_tree(amplitudes, 6)
+    program['routines']['unprepare'] = m.compiler.inverse(program['routines']['prepare'])
+    raw = {name: m.compiler.execute(word, 6 if name in ('prepare', 'unprepare')
+                                    else 3 if name == 'ccx' else 1)
+           for name, word in program['routines'].items()}
+    initial = np.zeros((1 << 15, 12), complex); initial[:12] = np.eye(12)
+    output = m.inverse_clock.continuation.execute_density_walk(program, raw, initial)
+    laplacian = np.array(m.native_spectral_data()['laplacian'], float)
+    expected = np.eye(12)-float(weight)*laplacian/60
+    np.testing.assert_allclose(output[:12], expected, atol=2e-10, rtol=0)
+    np.testing.assert_allclose(output.conj().T@output, np.eye(12), atol=2e-10, rtol=0)
+    assert np.linalg.norm(output[12:]) > .1  # All first-failure outputs remain.
+    pulses = sum(len(program['routines'][row['routine']]) for row in program['walk'])
+    assert pulses <= m.native_growing_word_bounds(12, 30)['one_native_lazy_filter_pulses_upper']
+
+
+@pytest.mark.parametrize('rate', (1, 2, 4, 8, 16, 32))
+def test_zero_request_floor_uses_the_existing_sampler_without_a_regularizer(rate):
+    weights = m.inverse_clock.subordinated_filter_weights(F(rate), 2, 2, 3,
+                                                         max(48, 2*rate+2))
+    assert weights[0] >= F(1, 1 << (2*rate))
+    if rate == 32:
+        coarse = m.inverse_clock.subordinated_filter_weights(F(rate), 2, 2, 3, 48)
+        assert coarse[0] == 0  # Fixed sampler precision cannot certify faithfulness.
+
+
+@pytest.mark.parametrize('beta', (F(1, 4), F(1), F(3, 2)))
+def test_joint_native_resource_schedule_enforces_realizable_filter_and_global_precision(beta):
+    previous = None
+    for level in (0, 1, 2, 3):
+        row = m.native_growing_source_resources(level, beta)
+        h, rate, vertices = row['heat_step'], row['rate'], 240*4**level
+        assert rate*rate*h == beta*beta
+        assert row['native_lazy_event_weight'] == 630*h*16**level <= 1
+        assert row['whole_native_filter_alias_parameter_upper'] == 12*h*4**level < 2
+        assert row['sampling_coin_bits'] >= 2*rate+2
+        shift = row['required_primitive_with_services_error_base2_negative_exponent']-2*rate
+        pulses = row['complete_stopped_preparation_source_pulses_upper']
+        relative = F(pulses, 1 << shift)
+        assert relative == row['complete_preparation_error_divided_by_zero_request_floor_upper']
+        assert relative <= F(1, 4**row['sampler_index']*32*vertices)
+        xi = 2*vertices*relative
+        assert row['global_actual_marginal_logarithm_error_upper'] == xi/(1-xi)
+        assert row['actual_success_probability_lower'] > 0
+        assert not row['raw_log_bound_requires_reducing_spectral_band']
+        assert not row['extra_identity_regularizer_added']
+        assert row['increasing_source_service_precision_is_an_explicit_premise']
+        clock_ratio = F(row['resources']['one_same_state_spectral_clock_word_pulses_upper'],
+            1 << row['required_clock_word_primitive_error_base2_negative_exponent'])
+        assert clock_ratio/(1-clock_ratio) <= row['clock_word_operator_error_upper']
+        pointer_ratio = F(row['one_pointer_quadrature_source_pulses_upper'],
+            1 << (row['required_pointer_primitive_with_services_error_base2_negative_exponent']
+                  -2*row['sampler_index']))/4**row['sampler_index']
+        assert 4*pointer_ratio/(1-pointer_ratio) <= row['one_copy_complex_Weyl_estimator_error_upper']
+        if previous is not None:
+            assert row['actual_marginal_generator_error_upper'] < previous
+        previous = row['actual_marginal_generator_error_upper']
+    # The separate sampler index cannot simply be equated with source level.
+    assert 630*beta*beta*4**3 > 1
+
+
+def test_global_raw_log_bound_charges_nonflat_initial_preparation():
+    from scipy.linalg import logm
+    weights = m.inverse_clock.subordinated_filter_weights()
+    dimension = 4
+    contraction = np.diag([1., .9, .7, 0.])
+    ideal = sum(float(w)*np.linalg.matrix_power(contraction, 2*n)
+                for n, w in enumerate(weights))
+    rho = np.eye(dimension)/dimension
+    rho[0, 3] = rho[3, 0] = 1e-5
+    initial_error = np.linalg.norm(rho-np.eye(dimension)/dimension, ord='nuc')/2
+    actual = dimension*sum(float(w)*(np.linalg.matrix_power(contraction, n)@rho
+                                      @np.linalg.matrix_power(contraction, n))
+                           for n, w in enumerate(weights))
+    xi, floor = 2*dimension*initial_error, float(weights[0])
+    assert np.linalg.norm(actual-ideal, 2) <= xi
+    error = np.linalg.norm(logm(actual)-logm(ideal), 2)
+    assert 1e-6 < error <= xi/(floor-xi)
+    # Ignoring the initial purification would incorrectly assign zero error.
+    assert not np.allclose(actual, ideal, atol=1e-7, rtol=0)
+
+
+def test_large_resource_exponents_are_not_materialized_as_enormous_probabilities():
+    row = m.native_growing_source_resources(12)
+    assert row['zero_request_mass_lower_base2_negative_exponent'] == 2**30
+    assert row['required_primitive_with_services_error_base2_negative_exponent'] > 2**30
+    assert row['resources']['native_addresses'] == 240*4**12
+    assert not row['full_refinement_word_sampler_or_physical_accuracy_executed']

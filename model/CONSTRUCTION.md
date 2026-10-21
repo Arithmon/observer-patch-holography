@@ -200,9 +200,13 @@ possible nonzero operator response between positive-measure regions. This
 uses integrated short-time heat asymptotics and heat-wave transmutation;
 a chosen detector can remain dark. It requires neither pointwise smooth
 coefficients nor an identification with native repair speed.
-The interval, preparation, spectral access and controls remain supplied;
-growing nonconstant-mode compilation, smoothness and physical identification
-are unproved. The restored angular constant has positive product frequency.
+The same metric is smooth if the full action density is smooth. Uniformly
+elliptic smooth approximants converge in form and propagator senses without
+establishing smoothness or curvature convergence of the source limit.
+Distinct radial graphs give identical complete radial-average angular laws
+and different radial responses: those observations cannot select an interval
+or its transport. The interval, preparation, spectral access and controls
+remain supplied. The restored angular constant has positive product frequency.
 An [executed edge filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses) prepares approximants to `exp(-tL)/Z`
 from supplied `I12/12`, retaining failures and bounding free-entropy error.
 Its [capped subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
@@ -228,8 +232,18 @@ the copy count, so fixed source precision cannot justify this limit. Scaling
 coordinate and momentum by inverse square root and square root frequency
 respectively gives the thermal covariance and unit-normalized sine response.
 The positive-log bound then connects the same clock to square-root dynamics.
-This is a conditional joint limit, not an executed growing product Fock
-preparation; the positive radial product additionally needs an anchor sector. Geometric entropy stationarity, physical gauge collars and
+For `D_l=4^l L_l`, the finite native spectrum gives positive eigenvalues
+`lambda_n>=n/81940`, a uniform prepared partition bound
+`Z<=(1+327760/b²)/m0`, and an explicit positive gap. Native realizability
+requires `p=630*h*16^l<=1`. A joint schedule `k=2l+c`, `R=2^k`,
+`h=b²*4^-k` meets it, with complete finite-word encoder, filter and pointer
+costs. The retained zero-request branch has mass at least `2^(-2R)`;
+precision scaled to this floor controls the actual marginal's logarithm,
+including imperfect initial purification and every failure. Quantified
+arbitrary-precision load/export services remain premises. This is a
+constructive resource theorem, not an execution of the growing product
+Fock preparation; the positive radial product additionally needs an anchor
+sector and controlled spectral tails. Geometric entropy stationarity, physical gauge collars and
 full-group sewing remain separate obligations.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
@@ -604,6 +618,16 @@ observations through measurements and feedback, with the added modes
 retained between reads and traced only at the comparison output. Its
 finite occupation domain and selected anisotropic band remain explicit.
 This does not remove all omitted modes or prove relativistic locality.
+The [same-product quartic construction](interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product)
+uses angular-constant profiles `sqrt(2) sin(r)` and `sqrt(2) sin(2r)` on the
+declared interval `(0,pi)`. Their projected interaction is
+`W=3(q1^4+q2^4)/2+6q1²q2²`, with full oscillator polynomials compressed
+after multiplication. At occupation cutoff `4x4`, native source pulses
+prepare the interacting Gibbs state and execute complete two-read feedback
+histories jointly with its reference. The ideal state determines its modular
+flow; raw preparation and propagation residuals remain separate. The
+coupling and model-time intervals are declared. This projection is not an
+invariant mode band or a proof of an interacting ultraviolet continuum.
 
 The [relativistic scalar regulator](relativistic_scalar/README.md) executes
 an eight-site three-dimensional quartic action with an unrestricted-
@@ -1009,7 +1033,7 @@ finite software run.
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
 | Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
-| Seven-to-nine-mode interacting scalar extension | Matched low-mode action and a complete reduced-output error bound through continuing observation and feedback | Supplied scalar action, oscillator blanks, finite occupation codes and model-time intervals; further bands, physical parameters and Lorentzian observation laws need additional control |
+| Finite interacting scalar projections | A seven-to-nine-mode extension with matched low-mode error bounds; a same-product two-mode quartic model with source-prepared interacting Gibbs state and complete reference/feedback histories | Supplied couplings, radial design, finite occupation codes and model-time intervals; further bands, physical parameters, calibrated clocks and interacting continuum laws need additional control |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 
