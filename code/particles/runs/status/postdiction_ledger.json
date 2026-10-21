@@ -112,7 +112,7 @@
       },
       "executable_readout": {
         "artifact_ref": "model/scalar_observations/experimental_readout/executable_results.json",
-        "artifact_sha256": "d452061bfd7ac8c351bdee84620b867d070f9e04a3048c4a2f056e6c7eb7c5d0",
+        "artifact_sha256": "b705f069be26d2df957b8dfde3565ab0965f9183a3cd1086a90c9909e520c04d",
         "coordinate_extent": 4,
         "spin_mean_rmse": 0.06647165859372044,
         "withheld_complex_points": 100
