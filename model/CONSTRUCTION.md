@@ -763,12 +763,18 @@ description. It does not establish a continuum interacting ultraviolet
 limit, a conformal theory, the Standard Model or Einstein dynamics.
 
 Selection is a different mathematical question with an explicit obstruction:
-three connected radial extensions have identical retained angular heat,
-wave and resolvent observations but different radial responses. The
-native observer-centered shell quotient gives an operational radius within
-the original carrier; it cannot be tensored back with all angular modes
-and counted as an independently derived dimension. The active wave
-protocol also differs from passive diffusive repair dynamics. Thus the
+three connected radial extensions have identical
+[complete adaptive angular histories](relative_observer_geometry/README.md#radial-nonidentifiability-under-complete-histories)
+on the constant-radial input code, retaining native marks, timeouts and
+untouched references. Angular-only controls preserve this code; nonconstant
+radial preparations and full-product Gibbs states are outside the equality.
+A supplied radial-contrast probe distinguishes the extensions at finite time.
+The native observer-centered shell quotient gives an operational radius
+within the original carrier, and the axial current counter has its own
+derived radial diffusion limit. Neither selects the separate radial-product
+field or its boundary conditions. The shell quotient cannot be tensored back
+with all angular modes and counted as an independently derived dimension.
+The active wave protocol also differs from passive diffusive repair dynamics. Thus the
 present native observations admit this conditional effective construction
 without determining it uniquely. Physical calibration may fix units and
 parameters, after which unused measurements must test the fixed dictionary;
