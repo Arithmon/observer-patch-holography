@@ -6,7 +6,9 @@
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "results.json": "a1ecb5f247dacdf1b5b579bede3a7c9fde84fd54d5775815697bb52563a2ed0c",
-    "test_construction.py": "48fecbfc173c5224debb29780bf9ccb3011796c5c85453191f3de2db58780cea"
+    "sweeps.py": "605b36070ba40be1e3dc933361a9065bac83ab2e8bf8978a260fb7e632cced26",
+    "test_construction.py": "48fecbfc173c5224debb29780bf9ccb3011796c5c85453191f3de2db58780cea",
+    "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb"
   },
   "reproduce": [
     "python -m model.native_equilibration --check model/native_equilibration/results.json",
