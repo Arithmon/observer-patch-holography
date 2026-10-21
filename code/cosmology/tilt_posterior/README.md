@@ -12,13 +12,14 @@ derived our Universe.
 
 This is a reproducible reanalysis of measured-Universe data already used in the
 [cosmology postdiction ledger](../postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md).
-It adds exact weighted marginal calculations from the released ordered chains,
-including per-chain and leave-one-out sensitivity, rather than a Gaussian
-approximation to rounded published summaries. It does not add independent data
-to that ledger or refit a likelihood. Both exposed formulas remain visible;
-the clock alternative does not replace the edge-center commitment.
+It includes exact weighted marginal calculations from the released ordered
+chains, with per-chain and leave-one-out sensitivity, and a separate conditional
+ACT-only likelihood slice below. These analyses use overlapping ACT data and
+are not independent evidence. Both exposed formulas remain visible in the
+posterior comparison; the clock alternative does not replace the edge-center
+commitment.
 
-## Data and provenance
+## Posterior data and provenance
 
 The [ACT collaboration release page](https://act.princeton.edu/act-dr6-data-products)
 links the official [NASA LAMBDA archive listing](https://lambda.gsfc.nasa.gov/product/act/act_dr6.02/act_dr6.02_chains_lcdm_get.html)
@@ -53,13 +54,12 @@ stored projection. The full 163.5 MB archive remains outside the repository.
 The archive is available from
 [NASA LAMBDA](https://lambda.gsfc.nasa.gov/data/act/chains/lcdm/p-actbase-l-b_lcdm_camb.tar.gz)
 and its [NERSC mirror](https://portal.nersc.gov/project/act/dr6.02/chains/compressed/lcdm/p-actbase-l-b_lcdm_camb.tar.gz).
-The listing dates delivery to 18 March 2025. The FZ-15 stamp is
-4 October 2026, and this reanalysis is dated 18 October 2026. Consequently the
-data are retrospective relative to that commitment. The projection is a
+The listing dates delivery to 18 March 2025, before the FZ-15 stamp of
+4 October 2026. The data are retrospective relative to that commitment. The projection is a
 lossless projection onto two columns, not a copy of the complete posterior
 state or a replacement for the full likelihood.
 
-## Calculation and its limits
+## Posterior calculation and its limits
 
 The official README prescribes **50% burn-in for this exact CAMB product**.
 The calculation discards `floor(0.5 * stored_row_count)` initial rows separately
@@ -105,6 +105,58 @@ claimed. Standard Lambda-CDM treats `n_s` as a fitted primordial input; the
 conditional OPH branch fixes that input, but this comparison does not establish
 its derivation from the runnable native observer construction.
 
+## Conditional ACT-only likelihood slice
+
+[likelihood_slice.py](likelihood_slice.py) uses the official
+[foreground-marginalized ACT DR6 likelihood](https://github.com/ACTCollaboration/DR6-ACT-lite/tree/627aeafb88ae5ad1aa66b406bea2d65cfa66a27d)
+and [measured SACC archive](https://lambda.gsfc.nasa.gov/data/act/pspipe/sacc_files/dr6_data_cmbonly.tar.gz).
+It compares the fixed edge-center tilt with a free tilt using all 135 TT/TE/EE
+bandpowers, their windows and full covariance. The data are measured ACT
+observations; the repository's bundled mock data are inadmissible.
+
+The calculation fixes `omega_b=0.0226`, `omega_c=0.118`,
+`theta_MC=0.010417`, `tau=0.0544` and absolute calibration `A_act=1`.
+Each branch optimizes `log(10^10 A_s)` and polarization calibration `P_act`;
+the second branch also optimizes `n_s`. Their bounds are `[2.6,3.5]`,
+`[0.9,1.1]` and `[0.9,1.1]`, respectively. These optimization bounds are
+not a posterior marginalization. The pivot is `0.05 Mpc^-1`. The supplied
+flat Lambda-CDM transfer model has total neutrino mass `0.06 eV`,
+`N_eff=3.044`, one massive neutrino, BBN-consistent helium, zero scalar
+running and tensors, `A_lens=1`, Recfast recombination and HMcode-2020
+nonlinear lensing. The full settings are retained in
+[likelihood_slice.json](likelihood_slice.json).
+
+CAMB transfer reuse sets `only_time_sources=True`, so changing amplitude
+or tilt recalculates nonlinear-lensing corrections as required by the
+[CAMB implementation contract](https://camb.readthedocs.io/en/latest/results.html#camb.results.CAMBdata.power_spectra_from_transfer).
+Both fitted points also receive independent full CAMB recalculations.
+The retained scores use those full calculations and independent Cholesky
+whitening; agreement with the official ACT quadratic likelihood is checked.
+
+| Conditional fit | `n_s` | `log(10^10 A_s)` | `P_act` | Full-recalculation `chi^2` |
+| --- | ---: | ---: | ---: | ---: |
+| Fixed edge-center tilt | 0.966021496 | 3.046192764 | 1.003886089 | 171.929744332 |
+| Free tilt | 0.977274822 | 3.037913732 | 1.002521246 | 167.860973954 |
+
+Thus `chi^2_fixed - chi^2_free = 4.068770378`: freeing the tilt improves
+this conditional fit. Full recalculation changes either cached-transfer
+score by less than `4e-13`; this is a numerical consistency check, not a
+bound on cosmological modeling uncertainty.
+
+This is a numerical likelihood comparison conditional on the specified
+background and calibration. It is not the collaboration's joint cosmological
+fit, a fully profiled or marginalized cosmological/nuisance likelihood, or a
+certified global optimum. No p-value or FZ-15 verdict is assigned. Its ACT
+observations overlap the posterior analysis above; the two results cannot be
+combined as independent evidence. The supplied primordial-to-CMB map also
+does not identify the native observer's field with primordial curvature.
+
+The receipt retains every observed and predicted bandpower and the full
+covariance triangle. Independent extraction from the measured FITS pins the
+ordered bin indices, ell values, tracers and window hashes together with
+those observations. The offline checker verifies that projection, metadata
+and both quadratic scores; it does not rerun CAMB or establish optimality.
+
 ## Reproduce
 
 From the repository root, obtain the pinned archive outside the repository:
@@ -129,6 +181,7 @@ Replay the retained comparison using the repository's Python dependencies:
 
 ```sh
 python3 code/cosmology/tilt_posterior/audit.py --check
+python3 code/cosmology/tilt_posterior/likelihood_slice.py --check
 ```
 
 To analyze the independently rebuilt projection without changing the retained
@@ -143,3 +196,20 @@ python3 code/cosmology/tilt_posterior/audit.py \
 `results.json` records the input and analysis hashes, exact comparisons,
 weighted posterior summaries, and sensitivity checks. CI can replay it from
 the small retained projection without a network download.
+
+The optional likelihood reproduction requires CAMB `1.6.6`, SACC `0.16`,
+NumPy `2.2.6`, SciPy `1.15.3`, Cobaya `3.6.2` and the other official
+likelihood dependencies, together with the pinned ACT source linked above. Install the measured archive under
+`<data-root>/data/ACTDR6CMBonly/v1.0/dr6_data_cmbonly.fits`, then run:
+
+```sh
+python3 code/cosmology/tilt_posterior/likelihood_slice.py \
+  --data-root /path/to/cobaya-packages \
+  --official-code /path/to/DR6-ACT-lite \
+  --output /tmp/act_dr6_likelihood_slice.json
+```
+
+The producer verifies measured-data and official-source hashes before
+optimizing. Ordinary offline CI needs no download or optional cosmology
+packages. The independent covariance/calibration tests and mutation gates run
+with `python3 -m pytest -q code/cosmology/tilt_posterior`.

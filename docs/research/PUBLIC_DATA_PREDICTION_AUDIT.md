@@ -18,7 +18,7 @@ dataset, or assign a prospective verdict to already exposed observations.
 
 | Candidate | Additional prediction and physical premise | Public-data disposition |
 | --- | --- | --- |
-| Primordial scalar tilt | `n_s = 1 - P/48 = 0.9660214956374175...`, with the inherited alpha-calibrated `P = 1.6309682094039593`. The physical primordial generator, mode identification and standard CMB transfer remain conditional. | Executed the official ACT combined posterior comparison below: the fixed value lies at its lower 0.612% position. This is retrospective tension, not a new prediction score. |
+| Primordial scalar tilt | `n_s = 1 - P/48 = 0.9660214956374175...`, with the inherited alpha-calibrated `P = 1.6309682094039593`. The physical primordial generator, mode identification and standard CMB transfer remain conditional. | The official combined posterior places the fixed value at its lower 0.612% position. The ACT-only conditional likelihood slice below holds the background and absolute calibration fixed while fitting amplitude and polarization calibration. These overlapping-data analyses are retrospective; neither issues a prospective verdict. |
 | Charged-tau mass | Balanced-circulant mass interpretation and measured electron/muon masses give approximately `1776.969027 MeV`. This relation is algebraically the Koide relation; the balance premise has observed-mass ancestry. | A conditional mass restriction, not a change to SM dynamics or a unique OPH signature. The historical Belle II 2023 comparison below is compatible at its reported precision. |
 | Intrinsic photon dispersion | Equal-weight primitive-port or seam-edge propagation gives linked fourth- and sixth-order coefficients below, if these directions are physical translations of the photon field. | A conditional departure from minimal locally Lorentz-invariant vacuum propagation. Published timing limits are far too weak at the proposed scale; the Auger transfer is source- and interaction-dependent. |
 | Native clock ratios and noise | Same-history movement and incident counts have definite waiting laws and spatial correlations. Under simultaneous source refinement, bounded-incidence clock jitter has Gaussian finite-dimensional covariance fixed by shared seams and is asymptotically independent of density snapshots. | The [joint clock/field prediction](../../model/relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) uses explicit stationary preparation, IID seams and readout access. No identified atomic-clock, pulsar or photon observable has this joint record law. Ordinary stochastic realizations also satisfy it; matching it alone would not distinguish OPH. |
@@ -63,7 +63,8 @@ This indicates tension with this particular dataset combination and its
 cosmological assumptions. It is not a frequentist p-value, the probability
 that OPH is true, a likelihood ratio or a Bayes factor. The alternative is
 retained as an exposed diagnostic, not substituted for the fixed branch.
-No parameters or likelihoods were fitted to improve either agreement.
+This posterior reduction fits no parameters or likelihoods to improve either
+agreement.
 
 The mean and standard deviation reproduce the published rounded
 `0.9743 +/- 0.0034`, while the measured tail differs from a Gaussian shortcut.
@@ -82,6 +83,7 @@ exact-rational replay agree on both integer tail totals. Reproduce locally:
 
 ```sh
 python code/cosmology/tilt_posterior/audit.py --check
+python code/cosmology/tilt_posterior/likelihood_slice.py --check
 python -m pytest -q code/cosmology/tilt_posterior
 ```
 
@@ -92,14 +94,35 @@ This analysis changes none of those terms and issues no FZ-15 verdict.
 It supplies an actual-data constraint on the declared primordial branch;
 deriving that branch from the runnable observer's joint records remains open.
 
+The separate [conditional likelihood slice](../../code/cosmology/tilt_posterior/README.md#conditional-act-only-likelihood-slice)
+uses the [official foreground-marginalized ACT likelihood](https://github.com/ACTCollaboration/DR6-ACT-lite)
+with 135 measured TT/TE/EE bandpowers, their exact windows and full covariance.
+It fixes `omega_b=0.0226`, `omega_c=0.118`, `theta_MC=0.010417`,
+`tau=0.0544` and `A_act=1`, and fits primordial amplitude and polarization
+calibration under each tilt choice. CAMB supplies flat Lambda-CDM transfer,
+neutrino, recombination and nonlinear-lensing assumptions; both fitted points
+receive full recalculations. The retained data projection is independently
+hash-pinned to the [measured SACC release](https://lambda.gsfc.nasa.gov/data/act/pspipe/sacc_files/dr6_data_cmbonly.tar.gz),
+and the offline check recomputes the covariance scores. It does not certify
+a global optimum or rerun the radiation-transfer calculation.
+
+The retained full-recalculation scores are `chi^2=171.929744332` for the
+fixed tilt and `167.860973954` for the free tilt, whose fitted value is
+`n_s=0.977274822`. The conditional difference is `4.068770378` in favor
+of freeing the tilt. This is an actual-data likelihood comparison under
+the stated fixed background, with no assigned significance or OPH-wide
+verdict.
+
 The [finite-source CMB construction](../../cosmology/oph_cosmology_finite_source_cmb_program.tex),
 [inflation construction](../../cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex)
 and [vacuum/structure construction](../../cosmology/oph_cosmological_vacuum_and_structure_formation.tex)
-therefore support conditional early-Universe tests already. The next stronger
-comparison is a full public CMB likelihood with the edge-center tilt held
-fixed, profiling or marginalizing the same remaining cosmological and nuisance
-parameters as the free-tilt baseline. A posterior tail is not that likelihood
-comparison. Running and tensor initial conditions retain their own premises;
+therefore support conditional early-Universe tests. A full cosmological and
+nuisance profile or marginalization, with the same parameter treatment for
+fixed and free tilt, is unperformed. The conditional slice fixes several of
+those parameters and cannot replace it. It also overlaps the ACT data used in
+the combined posterior; the two calculations are not independent evidence.
+Neither supplies a p-value or changes FZ-15. Running and tensor initial
+conditions retain their own premises;
 vanishing source forcing alone does not imply zero primordial tensors.
 The native model still needs the specific curvature perturbation, release
 state, reserve generator, expanding background and photon-transfer map used
