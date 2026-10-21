@@ -195,11 +195,17 @@ def run(occupation=8, beta=F(4), *, interval=F(1, 16), steps=64, include_target=
     for multiplicity, metadata in services:
         for key in counts:
             counts[key] += multiplicity*metadata['resources'][key]
+    # Reuse the executed preparation in the fixed controller. The local
+    # import avoids a module cycle: its audit shares the guard primitives.
+    from .thermal_controller import audit as controller_audit
+    controllers = [controller_audit(raw, target, occupation=occupation, sign=sign,
+                                    interval=interval, steps=steps) for sign in (-1, 1)]
     report = {'occupation': occupation, 'inverse_temperature': preparation['inverse_temperature'],
             'model_time_per_interval': interval, 'steps_per_interval': steps,
             'reference_basis': ('canonical_fixed_frequency_two_Hermite' if occupation == 8
                                 else 'finite_Hamiltonian_energy_eigenvectors'),
             'preparation': preparation, 'histories': rows,
+            'fixed_controller_histories': controllers,
             'splitting_certificate': split, **budget,
             'guarded_local_operation_count': operation_count,
             'worst_branch_source_resources': counts,

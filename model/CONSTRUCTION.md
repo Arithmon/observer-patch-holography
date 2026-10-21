@@ -646,6 +646,13 @@ retain the reference, both reads and record feedback. The declared cold
 `beta=4,d=8` history has complete ideal error below `0.0025`; its executed
 source word has error below `0.005` under the stated source numerical
 guards. The original hot `beta=1/4,d=4` benchmark retains its limitations.
+The same fixed controller executes the cold preparation without repeating
+it, retains all 3,600 native tapes and 4,900 terminal outcomes, and is
+checked on all 64 work-input columns. One occupation bound covers every
+completed zero-, one- and two-read timeout prefix. The separate four-level
+central-weight calibration keeps its own state family, reference scope
+and synthetic count examples; its coefficients are not transferred to the
+cold protocol.
 
 These premises compose on the same two-mode code: positivity gives a
 faithful trace-class Gibbs state; that state supplies the full-algebra
@@ -1167,7 +1174,7 @@ finite software run.
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
 | Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
-| Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories, finite source execution and an active native-incident clock | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the small executed occupation code has substantial thermal error and supplies no ultraviolet completion |
+| Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories; a cold eight-level source/controller history with a complete occupation budget and a native-incident clock schedule | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the original hot four-level code retains its substantial thermal allowance, and neither construction supplies an ultraviolet completion |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 

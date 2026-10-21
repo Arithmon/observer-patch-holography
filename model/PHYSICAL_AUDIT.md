@@ -11,7 +11,10 @@ identification remain unproved; larger carrier counts alone do not establish the
 The new [thermal certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
 closes a numerical occupation gap for one declared interacting observer,
 including preparation, disturbance, feedback and the quantum reference.
-It does not add empirical data. Existing public oscillator agreement keeps
+It does not add empirical data. The separate central-weight calibration and
+held-out model readout use explicitly synthetic counts; their state-family
+and sample budgets do not establish a new laboratory comparison.
+Existing public oscillator agreement keeps
 its calibration, accepted-shot and coordinate limitations; the conditional
 tilt comparison retains its tension; rejected direct optical and
 factorized-Bell attachments remain rejected. There is no evidence that all

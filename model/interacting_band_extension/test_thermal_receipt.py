@@ -49,3 +49,10 @@ def test_outward_display_does_not_round_down():
     for value in (F(1,3),F(-1,3),F(1,10**30),F(17,8)):
         assert F(certificate.upper(value))>=value
     with pytest.raises(ValueError):certificate.upper(True)
+
+
+def test_receipt_binds_inherited_controller_clock_and_source_inputs():
+    from .construction import SOURCE_PATHS
+    assert set(SOURCE_PATHS) <= set(certificate.SOURCE_PATHS)
+    assert 'model/interacting_band_extension/thermal_controller.py' in certificate.SOURCE_PATHS
+    assert len(certificate.SOURCE_PATHS) == len(set(certificate.SOURCE_PATHS))

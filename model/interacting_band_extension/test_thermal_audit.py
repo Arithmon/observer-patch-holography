@@ -26,16 +26,19 @@ def independent_operators(d, coupling=1.):
     return hamiltonian, np.kron(q[:d, :d], np.eye(d))
 
 
-def finite_history(state, sign, hamiltonian, coordinate, *, interval=1/16):
+def finite_history(state, sign, hamiltonian, coordinate, *, interval=1/16,
+                   return_prefixes=False):
     values, basis = np.linalg.eigh(coordinate)
     reads = tuple((basis*function((values+np.pi/2)/2))@basis.conj().T
                   for function in (np.cos, np.sin))
     evolve = expm(-1j*interval*hamiltonian)
     kick = expm(1j*sign*coordinate/4)
     feedback = expm(1j*coordinate/4)
-    first = [read@evolve@kick@state for read in reads]
+    prepared = kick@state
+    first = [read@evolve@prepared for read in reads]
     first[1] = feedback@first[1]
-    return tuple(read@evolve@branch for branch in first for read in reads)
+    final = tuple(read@evolve@branch for branch in first for read in reads)
+    return ((prepared,), tuple(first), final) if return_prefixes else final
 
 
 def pure_distance(left, right):
@@ -114,6 +117,60 @@ def test_erasing_a_branch_and_reversing_the_preparation_sign_are_resolved(cold):
     assert complete_distance(plus, minus) > .05
     assert complete_distance(plus, erased) > 10*budget['complete_output_trace_error_upper']
     assert sum(np.linalg.norm(state)**2 for state in erased) < .9
+
+
+def test_uniform_occupation_bound_covers_stopped_prefixes_and_classical_timer_mixture():
+    # A larger dense truncation is an independent numerical cross-check of
+    # the infinite-space certificate, not a replacement for its proof.
+    d, larger, beta = 4, 12, 2
+    h, q = independent_operators(d)
+    larger_h, larger_q = independent_operators(larger)
+
+    def canonical(hamiltonian):
+        values, vectors = np.linalg.eigh(hamiltonian)
+        weights = np.exp(-beta*(values-values[0])); weights /= weights.sum()
+        return (vectors*np.sqrt(weights))@vectors.conj().T
+
+    finite_input, larger_input = canonical(h), canonical(larger_h)
+    seed, seed_budget = thermal.finite_gibbs_seed(d, F(beta))
+    preparation = thermal.preparation_bracket(d, 12, F(beta))
+    ids = [i+larger*j for j in range(d) for i in range(d)]
+    weights = (F(25, 36), F(10, 36), F(1, 36))
+    assert sum(weights) == 1
+    for sign in (-1, 1):
+        _, budget = thermal.history(seed, sign, occupation=d)
+        finite_error = F(budget['finite_residual'])+F(budget['endpoint_jump'])
+        bound = min(F(1), preparation['canonical_preparation_trace_distance_upper']
+                    +2*seed_budget['canonical_seed_vector_error_upper']
+                    +2*finite_error+F(budget['occupation_residual']))
+        finite = finite_history(finite_input, sign, h, q, return_prefixes=True)
+        expected = finite_history(larger_input, sign, larger_h, larger_q,
+                                  return_prefixes=True)
+        assert [len(branches) for branches in finite] == [1, 2, 4]
+        distances, weighted_finite, weighted_expected = [], [], []
+        for branches, targets, weight in zip(finite, expected, weights, strict=True):
+            lifted = []
+            for branch in branches:
+                # Embed both work and untouched reference in the common
+                # Hermite basis; never compare work marginals alone.
+                value = np.zeros((larger*larger, larger*larger), complex)
+                value[np.ix_(ids, ids)] = branch
+                lifted.append(value)
+            assert sum(np.linalg.norm(value)**2 for value in lifted) == pytest.approx(1, abs=3e-13)
+            assert sum(np.linalg.norm(value)**2 for value in targets) == pytest.approx(1, abs=3e-13)
+            distances.append(complete_distance(lifted, targets))
+            assert distances[-1] < float(bound)
+            amplitude = np.sqrt(float(weight))
+            weighted_finite.extend(amplitude*value for value in lifted)
+            weighted_expected.extend(amplitude*value for value in targets)
+        # Distinct timer and field labels are distinct output blocks. A
+        # classical mixture weights complete distances, without conditioning
+        # on completing two reads or dividing by the rare two-tick weight.
+        mixture = complete_distance(weighted_finite, weighted_expected)
+        average = sum(float(weight)*distance for weight, distance in
+                      zip(weights, distances, strict=True))
+        assert mixture == pytest.approx(average, abs=3e-13)
+        assert mixture <= max(distances)+3e-13 < float(bound)
 
 
 @pytest.mark.parametrize('kind,coefficient', (('coordinate', F(-1, 4)),

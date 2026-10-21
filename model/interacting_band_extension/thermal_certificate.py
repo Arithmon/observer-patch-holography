@@ -13,18 +13,18 @@ from tools import strict_json
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from ..occupation_control import intervals as iv
 from ..scalar_observations.bounds import sqrt_upper
-from .construction import product_incident_clock_bound
+from .construction import product_incident_clock_bound, SOURCE_PATHS as CONSTRUCTION_SOURCE_PATHS
 from .thermal_history import finite_gibbs_seed, history, preparation_bracket
 from .thermal_spectrum import certify_spectrum
 from .thermal_forms import fixed_code_form
 from .thermal_source import run as source_run
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_PATHS = tuple('model/interacting_band_extension/'+name for name in (
+SOURCE_PATHS = tuple(dict.fromkeys(CONSTRUCTION_SOURCE_PATHS+tuple(
+    'model/interacting_band_extension/'+name for name in (
     'thermal_forms.py', 'thermal_spectrum.py', 'thermal_history.py',
-    'thermal_source.py', 'thermal_certificate.py', 'construction.py', 'algebra.py'))+(
-    'model/occupation_control/intervals.py', 'model/scalar_observations/bounds.py',
-    'model/scalar_observations/source.py', 'model/observer/source_scalar/compiler.py')
+    'thermal_source.py', 'thermal_controller.py', 'thermal_certificate.py'))+(
+    'model/occupation_control/intervals.py',)))
 
 
 def upper(value, digits=9):
@@ -65,13 +65,14 @@ def run():
     ideal_max=F()
     for sign in (-1,1):
         outputs, budget = history(seed,sign)
-        # Compare exact finite and infinite canonical histories via the same
-        # candidate endpoint. Its finite path defect and two seed comparisons
-        # are necessary; a certificate for the candidate alone would omit them.
+        # Both exact complete-prefix isometries act on the normalized finite
+        # canonical seed. Their vector difference is at most two seed errors,
+        # two finite path defects and the escaped-row defect. Every stopped
+        # complete prefix uses a subset of these nonnegative contributions.
         finite_path = F(budget['finite_residual'])+F(budget['endpoint_jump'])
-        vector = 2*seed_budget['canonical_seed_vector_error_upper']+F(budget['vector_error_upper'])+finite_path
-        endpoint = vector*(1+F(budget['output_norm_upper']))/2
-        bound = cold['canonical_preparation_trace_distance_upper']+endpoint
+        vector = (2*seed_budget['canonical_seed_vector_error_upper']
+                  +2*finite_path+F(budget['occupation_residual']))
+        bound = min(F(1), cold['canonical_preparation_trace_distance_upper']+vector)
         if not 0 < bound < F(1,400):
             raise ArithmeticError('the complete interacting occupation bound is not below 1/400')
         ideal_max=max(ideal_max,bound)
@@ -79,6 +80,7 @@ def run():
             'record_alphabet':[[0,0],[0,1],[1,0],[1,1]],
             'probabilities_numerical':[float(np.linalg.norm(value)**2) for value in outputs],
             'complete_infinite_output_trace_distance_upper':upper(bound),
+            'every_completed_zero_one_or_two_read_prefix_trace_distance_upper':upper(bound),
             'candidate_vector_error_upper':upper(budget['vector_error_upper']),
             'finite_path_residual_upper':upper(budget['finite_residual'],15),
             'occupation_residual_upper':upper(budget['occupation_residual']),
@@ -89,7 +91,11 @@ def run():
     target_seed=F(iv.frobenius_upper(*iv.complex_sub(iv.complex_exact(source_target),iv.complex_exact(seed))))
     target_vector=target_seed+seed_budget['canonical_seed_vector_error_upper']
     target_error=target_vector*(1+F(iv.frobenius_upper(*iv.complex_exact(source_target))))/2
-    guarded=ideal_max+split+executed['source_numerical_guard']+target_error
+    source_finite=max([split+executed['source_numerical_guard']]+[
+        row['finite_source_budget_under_numerical_guards']['target_scaled_splitting_error_upper']
+        +row['finite_source_budget_under_numerical_guards']['source_numerical_guard']
+        for row in executed['fixed_controller_histories']])
+    guarded=ideal_max+source_finite+target_error
     if guarded >= F(1,200):
         raise ArithmeticError('the source/occupation bound under numerical guards exceeds 1/200')
     # This is a resource/accuracy schedule, not execution of half a million
@@ -116,6 +122,7 @@ def run():
         'source_execution':executed,
         'source_numerical_target_to_exact_finite_Gibbs_error_upper':upper(target_error,12),
         'complete_source_to_infinite_output_error_upper_under_numerical_guards':upper(guarded),
+        'complete_stopped_controller_to_infinite_prefix_output_error_upper_under_numerical_guards':upper(guarded),
         'incident_clock_schedule':{key:clock[key] for key in clock_keys}|{
             'modular_increment_per_incident_at_beta_four':-F(1,4*clock['incident_rate_per_normalized_attempt_unit']),
             'complete_nominal_work_output_with_same_clock_tape_error_upper_under_required_services':upper(ideal_max+clock_error),
@@ -127,6 +134,8 @@ def run():
             'first_read_disturbance_and_feedback_retained':True,
             'all_outcomes_retained_without_renormalization':True,
             'common_native_continuation_CPTP_contraction':True,
+            'independent_classical_native_tapes_average_complete_prefix_bounds':True,
+            'unfinished_mid_service_states_covered_by_prefix_bound':False,
             'source_clock_word_and_occupation_limits_interchangeable_without_budget':False},
         'boundary':{
             'finite_occupation_preparation_and_history_accuracy_certified':True,

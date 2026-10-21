@@ -781,11 +781,19 @@ and infinite outputs assumes the field preparation is independent of the
 native/reference input and the sign is selected by a committed classical
 current record. The bound then averages over those native branches; it does
 not cover coherent sign control or arbitrary initial field/native correlations.
-Comparing the exact finite
-and infinite outputs through the computed endpoint charges both finite and
-infinite path residuals and both seed comparisons. Vector errors convert
-to half trace distance using `(1+||candidate_output||)/2`; the canonical
-preparation distance is then added. The source compiler's numerical Gibbs
+Write `e` for the certified seed vector error, `F` for the finite path
+residuals plus endpoint jumps, and `O` for the escaped-row residuals.
+Comparing the exact finite and infinite outputs through the computed path
+charges both seed comparisons and both finite path defects. Both exact
+complete-prefix outputs are normalized, so their half trace distance is
+at most their vector distance, bounded by `2e+2F+O`. Every completed
+zero-, one- or two-read prefix uses a subset of these nonnegative terms.
+Adding the canonical preparation distance therefore gives one uniform
+bound for all three stopping points. Independent classical native tapes
+average these bounds, with no record-count multiplier or division by
+success probability. An unfinished mid-service controller state is outside
+this prefix argument and needs the separate unfinished-probability budget.
+The source compiler's numerical Gibbs
 target is separately compared to the certified seed and exact finite Gibbs
 state. All sums and norms use the existing outward IEEE-754 interval
 kernel. No empirical cutoff agreement substitutes for the residual bound.
@@ -802,6 +810,20 @@ not directed arithmetic or measured physical fidelity certificates; this
 last combined statement inherits those guards. The ideal occupation
 certificate itself has directed arithmetic bounds. No output is normalized
 or postselected to achieve either comparison.
+
+The same executed preparation is passed to the fixed
+`ProductControllerInstrument` on the eight-level code for both initial
+signs; the record-selected feedback remains positive. All 64 work-input
+columns and all 3,600 native tapes are checked against independent source
+prefix maps, retaining 4,900 terminal native/field outputs. Grouped
+calculations reuse a work operator only after checking exact equality on
+every tape; no record is discarded. This composes the uniform prefix
+bound with the actual controller and retained preparation reference.
+The zero-/one-/two-incident timeout alphabet is preserved, including its
+`35/36` timeout mass at the two-attempt horizon. Algebraic invalid-code
+failure exports remain absorbing; they have zero weight on the declared
+valid-code input. The larger construction does not assert a new quantum
+access-algebra rank beyond the separately derived four-level result.
 
 The same receipt instantiates the existing incident-clock composition at
 level eight, with 81,920 total incident ticks and 491,524 local word calls.
