@@ -1,4 +1,5 @@
 """Receipt checking never trusts an uploaded bound or drops unexpected fields."""
+from collections import Counter
 import copy
 from fractions import Fraction as F
 import json
@@ -176,3 +177,103 @@ def test_receipt_rejects_lowered_or_raised_declared_seed_ceiling(
     monkeypatch.setattr(sys, 'argv', ['thermal', '--check', str(path)])
     with pytest.raises(ValueError):
         certificate.main()
+
+
+@pytest.fixture
+def small_preparation():
+    # An asymmetric normalized target makes the work/reference flattening
+    # convention observable without compiling the full twelve-qubit word.
+    target = np.array([[.6, .8], [0., 0.]])
+    word = certificate.compiler.compile_real_state(target.T.reshape(-1))
+    executed = {'preparation': {'source_resources': certificate.compiler.resources(word)}}
+    return executed, target
+
+
+def test_preparation_resource_certificate_recompiles_actual_reference_order(
+        small_preparation, monkeypatch):
+    executed, target = small_preparation
+    original = copy.deepcopy(executed)
+    compile_state = certificate.compiler.compile_real_state
+    arguments = []
+
+    def capture(vector):
+        arguments.append(vector.copy())
+        return compile_state(vector)
+
+    monkeypatch.setattr(certificate.compiler, 'compile_real_state', capture)
+    certificate._certify_preparation_resources(executed, target)
+    assert len(arguments) == 1
+    np.testing.assert_array_equal(arguments[0], target.T.reshape(-1))
+    original['preparation']['source_resources']['integrated_processor_norm_upper'] = str(
+        certificate.PREPARATION_PROCESSOR_NORM_CEILING)
+    assert executed == original
+
+
+@pytest.mark.parametrize('field, replacement', [
+    ('native_pulses', -1),
+    ('proper_code_service_events', True),
+    ('zero_angle_requests', 10**9),
+    ('integrated_processor_norm_upper', 0.),
+    ('integrated_processor_norm_upper', 277000.),
+    ('integrated_processor_norm_upper', float('nan')),
+    ('maximum_numerical_valid_code_leakage', 1.),
+    ('service_failure_outcomes_retained', False),
+])
+def test_preparation_resource_certificate_rejects_unverified_resource_claims(
+        small_preparation, field, replacement):
+    executed, target = small_preparation
+    executed['preparation']['source_resources'][field] = replacement
+    with pytest.raises(ValueError):
+        certificate._certify_preparation_resources(executed, target)
+
+
+@pytest.mark.parametrize('angles', [
+    [-277000.], [276999., 1.], [-276999., -1.],
+    [263867.88048755], [float(np.nextafter(263867.88048755, np.inf))],
+])
+def test_preparation_resource_ceiling_accepts_exact_boundary_and_numerical_variation(
+        angles, monkeypatch):
+    word = [{'kind': 'Y', 'targets': [0], 'angle': angle} for angle in angles]
+    executed = {'preparation': {'source_resources': certificate.compiler.resources(word)}}
+    monkeypatch.setattr(certificate.compiler, 'compile_real_state', lambda vector: word)
+    certificate._certify_preparation_resources(executed, np.eye(2)/np.sqrt(2))
+    assert executed['preparation']['source_resources']['integrated_processor_norm_upper'] == '277000'
+
+
+def test_preparation_resource_ceiling_uses_exact_absolute_angle_sum(monkeypatch):
+    # The fresh floating resource sum equals the ceiling, but the exact sum
+    # exceeds it. Summing signed angles or rounding first would accept this.
+    word = [{'kind': 'Y', 'targets': [0], 'angle': -277000.},
+            {'kind': 'Y', 'targets': [0], 'angle': 2.**-40}]
+    resources = certificate.compiler.resources(word)
+    assert resources['integrated_processor_norm_upper'] == 277000.
+    executed = {'preparation': {'source_resources': resources}}
+    monkeypatch.setattr(certificate.compiler, 'compile_real_state', lambda vector: word)
+    with pytest.raises(ArithmeticError):
+        certificate._certify_preparation_resources(executed, np.eye(2)/np.sqrt(2))
+    assert executed['preparation']['source_resources']['integrated_processor_norm_upper'] == 277000.
+
+
+@pytest.mark.parametrize('angle', [True, None, '1', complex(1),
+                                  float('nan'), float('inf'), float('-inf')])
+def test_preparation_resource_certificate_preserves_compiler_angle_validation(angle, monkeypatch):
+    word = [{'kind': 'Y', 'targets': [0], 'angle': angle}]
+    monkeypatch.setattr(certificate.compiler, 'compile_real_state', lambda vector: word)
+    executed = {'preparation': {'source_resources': {}}}
+    with pytest.raises(ValueError):
+        certificate._certify_preparation_resources(executed, np.eye(2)/np.sqrt(2))
+
+
+def test_twelve_qubit_preparation_template_fits_structural_resource_ceiling():
+    # All 4096 amplitudes are exactly representable and normalized. Compile
+    # every scheduled pulse, including zero-angle requests; do not execute.
+    word = certificate.compiler.compile_real_state(np.full(4096, 1/64))
+    counts = Counter(event['kind'] for event in word)
+    assert counts == {'J': 40962, 'H': 81924, 'X': 8190, 'Z': 4095}
+    # The template has angle bounds pi, pi/2, pi/4, pi, respectively.
+    # Replacing pi by the strict rational upper bound 22/7 remains outward.
+    caps = {'J': F(22, 7), 'H': F(11, 7), 'X': F(11, 14), 'Z': F(22, 7)}
+    assert all(abs(F(event['angle'])) < caps[event['kind']] for event in word)
+    structural_ceiling = sum((counts[kind]*cap for kind, cap in caps.items()), F())
+    assert structural_ceiling == F(1937463, 7)
+    assert structural_ceiling < certificate.PREPARATION_PROCESSOR_NORM_CEILING == F(277000)

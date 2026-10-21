@@ -11,6 +11,7 @@ import numpy as np
 
 from tools import strict_json
 from ..observer.scalar_response.experiment import canonical, compare_receipt
+from ..observer.source_scalar import compiler
 from ..occupation_control import intervals as iv
 from ..scalar_observations.bounds import sqrt_upper
 from .construction import product_incident_clock_bound, SOURCE_PATHS as CONSTRUCTION_SOURCE_PATHS
@@ -38,6 +39,11 @@ BRACKET_ENVELOPES = {
     'cold': (F('0.001840676370'), F('0.001840680344'), F('0.0014685')),
 }
 OCCUPATION_CEILINGS = {-1: F('0.0008034'), 1: F('0.0009881')}
+# The twelve-bit tree has J/H/X/Z counts 40962/81924/8190/4095.
+# Their angle bounds pi, pi/2, pi/4, pi give 88066.5*pi < 1937463/7.
+# This template bound covers backend-dependent signed atan2/Walsh choices;
+# the actual emitted binary angles are independently summed exactly below.
+PREPARATION_PROCESSOR_NORM_CEILING = F(277000)
 
 
 def _exact_budget(value, bound):
@@ -61,6 +67,21 @@ def certified_lower(value, floor, label):
     if value < floor:
         raise ArithmeticError(f'{label} falls below its declared certificate floor')
     return str(floor)
+
+
+def _certify_preparation_resources(executed, target):
+    """Certify the actual amplitude-tree word's cost with exact angle sums.
+
+    Recompilation uses the very target returned by the executed preparation.
+    Check the whole resource record before replacing its platform-dependent
+    floating sum with an exactly verified, declared upper budget.
+    """
+    word = compiler.compile_real_state(target.T.reshape(-1))
+    resources = executed['preparation']['source_resources']
+    compare_receipt(resources, compiler.resources(word))
+    exact_cost = sum((abs(F(event['angle'])) for event in word), F())
+    resources['integrated_processor_norm_upper'] = certified_upper(
+        exact_cost, PREPARATION_PROCESSOR_NORM_CEILING, 'preparation processor norm')
 
 
 def upper(value, digits=9):
@@ -129,6 +150,7 @@ def run():
             'path_rounding_upper':str(endpoint_jump),
             'retained_work_dimension':64,'retained_reference_dimension':64})
     executed, source_target=source_run(include_target=True)
+    _certify_preparation_resources(executed, source_target)
     split=executed['target_scaled_splitting_error_upper']
     target_seed=F(iv.frobenius_upper(*iv.complex_sub(iv.complex_exact(source_target),iv.complex_exact(seed))))
     target_vector=target_seed+seed_budget['canonical_seed_vector_error_upper']

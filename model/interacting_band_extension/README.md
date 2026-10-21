@@ -775,6 +775,16 @@ path and escaped-row budgets enter the final error sum. The displayed
 partition interval is a separate, coarser enclosure; the preparation check
 uses the tighter unrounded partition certificate. Exact receipt comparisons
 remain strict, including rejection of both larger and smaller stored caps.
+The preparation resource budget is also checked from the exact rational sum
+of the compiled word's binary floating-point angles, after recompiling the
+returned target and checking the entire resource record. Its declared
+integrated processor norm ceiling is `277000`. The twelve-qubit tree has
+40962 J, 81924 H, 8190 X and 4095 central Z pulses, with respective angle
+bounds pi, pi/2, pi/4 and pi. Their sum is at most `88066.5 pi`, below
+`1937463/7 < 277000` using `pi < 22/7`. This covers the different signed
+atan2/Walsh choices at tiny amplitudes; the actual binary angles are also
+summed exactly on every replay. A platform-dependent rounded cost is not
+used as the portable resource certificate.
 
 `thermal_history.py` then encloses polynomial-path residuals against the
 **infinite** generator. Acting with `H` on a finite `d`-box path reaches

@@ -414,7 +414,7 @@
       "source_resources": {
         "identity_phase_pulses": 0,
         "initialization_storage_readout_physical_costs_included": false,
-        "integrated_processor_norm_upper": 263867.88048755284,
+        "integrated_processor_norm_upper": "277000",
         "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
         "maximum_work_qubits": 12,
         "native_pulses": 135171,
@@ -460,7 +460,7 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/interacting_band_extension/algebra.py": "1d2b955f9b3c20ef9ddb2b1fd024d320a21cdb67ee6bd710ad6126e7939e009b",
     "model/interacting_band_extension/construction.py": "b55bd454646353687335401ca993796306ee8079b881a6556f6f2b48488bc1d7",
-    "model/interacting_band_extension/thermal_certificate.py": "ac535faaf8bb29337ccdf46d316aa7c9f78a402653206d7ec9ab2bfa85786bad",
+    "model/interacting_band_extension/thermal_certificate.py": "f011e39f280958fd613b8110fe53b05b9a84871ef22432e49cfe31b1ff272219",
     "model/interacting_band_extension/thermal_controller.py": "e25076ceb7ffcedefd72ca9862b0aadd447ed871193347b9b7c299ac2e2c6878",
     "model/interacting_band_extension/thermal_forms.py": "635515e5cde558d5f1090f2ffa72a2a924889d80dc1420123574700c4bef125e",
     "model/interacting_band_extension/thermal_history.py": "0c1897151eb965061199e079535ac5a32a6ba17eb28c5cdedbfba56c38ffd9d1",
