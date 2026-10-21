@@ -710,6 +710,84 @@ directions have not been executed. Pulse/load/export costs are counted for
 the one-register witness; collecting successful copies by retrying has
 mean preparation-attempt count `N/Psuccess` and no finite worst-case count.
 
+<a id="growing-shared-state-field"></a>
+The same construction has a quantitative growing-field contract. For
+positive frequencies `omega_j`, use **field** variables
+`q_j=Q_j/sqrt(omega_j)` and `pi_j=sqrt(omega_j)P_j`. With `g_j=b omega_j`
+and model-time evolution `H/b`, their ordered covariance and response are
+
+```text
+W_b(t)=coth(b sqrt(D)/2) cos(t sqrt(D))/(2 sqrt(D))
+       -i sin(t sqrt(D))/(2 sqrt(D)),
+D_ret(t)=sin(t sqrt(D))/sqrt(D),       modular s=-t/b.
+```
+
+The finite prepared register verifies this normalization with
+`omega_j=g_j`, `b=1`, its raw source clock and its actual successful
+state. Using unscaled Q instead gives response derivative `omega_j`,
+instead of one. These finite frequencies are not silently replaced by
+`sqrt(L)`; the positive-log bound below controls that separate limit.
+
+For a fixed menu of m real smeared factors, put
+`R_k^2=sum_j(f_kj^2/omega_j+omega_j h_kj^2)` and `R=sum R_k`.
+Each factor is a star matrix connecting one anchor to one excited vector,
+with exact squared norm `sum_j[(f_kj^2/omega_j+omega_j h_kj^2)/(2 delta_j)]`.
+All products and derivatives preserve the span of that anchor and the m
+excited vectors, including their declared observation times. Its state
+weight is at most `(m+1)p_0`. Thus the fourth-order Taylor remainder above
+improves to `tau (sum_k ||A_k||)^4/(24N^2)`, where `tau` is this span's weight. If
+`g_j,b omega_j>=gamma>0`, let `theta=gamma/(1+gamma)` and `Z=1/p_0<=d`:
+
+```text
+finite-copy error <= R^4 [(m+1)Z/96+1/8]/(theta^2 N).
+```
+
+Consequently `N/Z -> infinity` suffices on a positive fixed band; `N/d ->
+infinity` is a conservative choice. The executable counterfamily
+`rho=diag(2,1,...,1)/(d+1)` proves that choosing `N=d` does not suffice:
+its unit-smear characteristic tends to `exp(3[cos(1/sqrt(2))-1])`, not
+the Gaussian `exp(-3/4)`. This family tests the bound, not a native encoder.
+
+The [executable contract](prepared_clock.py) also charges preparation,
+clock, spectral and cutoff errors. Complete preparation half-trace error
+E and success floor p give conditional trace error at most `4E/p` when
+`2E<p`. A one-copy word error epsilon gives `zeta=4E/p+epsilon`; raw
+Nth-power amplification is at most `N zeta/(1-N zeta)` when `N zeta<1`.
+No bound is reported outside those domains. For positive filter mass m0,
+`p=m0 Z/d>=m0/d`, so vanishing E alone is insufficient: a conservative
+requirement is `N d E -> 0`. A continuum partition-function bound cannot
+replace a uniform **finite-source** bound without its own proof.
+
+On a common embedded band, a gap error e contributes at most
+`R^2[e/gamma^2+2T e/(b theta)]/2` for model times `|t|<=T`.
+A normalized two-point spectral error kappa adds `R^2 kappa/2`.
+Target-field phase-space tails of total radius r add `(R r+r^2/2)/theta`,
+using the same positive target gap floor. Finite-source observables are
+band-filtered; no bound on uncontrolled high source modes is presumed.
+Event-count interpolation retains its separate native-clock bound; a
+model-time phase bound alone does not establish a clock-reading error.
+These constants permit a diagonal limit using the existing common
+[A/B operator limits](../physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator).
+One first proves each bounded-band convergence, then removes the cutoff
+under uniform tails `||D^(-1/4)f_tail||+||D^(1/4)h_tail|| -> 0`.
+Smooth local smears require that tail justification; finite-band agreement
+alone is insufficient. The sample full-port schedule `d=240*4^l`, `N=d^2`
+has explicit decreasing error requirements, not measured compiler rates.
+Growing state preparation, mode access and independent copies remain
+implementation obligations. The source precision schedule must be chosen
+jointly with the copy schedule: an error of order `4^(-r)` needs
+`r-3l -> infinity` under the conservative full-port herald floor and
+`N=d^2`. Keeping the same refinement index for both does not meet that
+requirement; the stronger precision and sampler caps carry their full cost.
+
+For mean-zero angular A the native constant vector supplies the anchor.
+The Dirichlet product B is strictly positive: using it requires a separate
+zero-energy reference sector `0 direct-sum B`, distinct from the physical
+constant angular modes with positive radial energy. This additional sector
+has not been constructed by the angular source fixture. No stationary
+massless zero-frequency oscillator, physical radial transport or observed
+Lorentzian geometry follows from this field-limit contract.
+
 <a id="prepared-positive-log-limit"></a>
 The clock also has a conditional limit tied to its preparation. For
 `F=I-hD/2`, `M=sum w_n F^(2n)`, `m0=sum w_n`, put `H=log(m0)I-log(M)`.

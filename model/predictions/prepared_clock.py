@@ -770,6 +770,162 @@ def shared_state_field():
         "empirical_seconds_interacting_QFT_or_spacetime_identified": False}
 
 
+def growing_fluctuation_bound(dimension, copies, factor_radii, *, gap_floor,
+        inverse_temperature, clock_gap_error=F(0), maximum_time=F(0),
+        complete_preparation_error=F(0), success_lower=F(1),
+        one_copy_word_error=F(0), spectral_pair_error=F(0),
+        cutoff_tail_radius=F(0), partition_upper=None):
+    """A conditional finite bound for one growing shared-state field.
+
+    Each star factor has phase-space radius R_k, where the field variables
+    are q_j=Q_j/sqrt(omega_j), pi_j=sqrt(omega_j)P_j. The same reference
+    rho has p0=max p_j, delta_j=p0(1-exp(-g_j)); Z=1/p0<=dimension.
+    Both g_j and b*omega_j are >=gap_floor on the certified band. The
+    spectral error bounds the normalized two-point forms under the actual
+    common embedding; it is not inferred from a supplied eigenvalue list.
+    The cutoff tail belongs to the target field, with b*omega>=gap_floor
+    also on that tail. Finite-source observables are band-filtered; no
+    thermal bound on uncontrolled high source modes is silently assumed.
+
+    Products and their derivatives preserve anchor+span(v_1,...,v_m), of
+    dimension at most m+1. Hence |Tr rho V''''| <= (m+1)*p0*D^4. This
+    improves the crude norm-only d^2/N allowance to Z/N. Supplied source
+    and conditioning errors are charged before the N-copy power. No growing
+    source preparation, spatial encoder or independent copies are inferred.
+    """
+    dimension = preparation._integer(dimension, 2)
+    copies = preparation._integer(copies, 1)
+    if type(factor_radii) is not tuple or not 1 <= len(factor_radii) <= 64:
+        raise ValueError("a fixed nonempty tuple of phase-space radii is required")
+    radii = tuple(preparation._fraction(value, 0) for value in factor_radii)
+    gamma, beta = (preparation._fraction(value, 0)
+                   for value in (gap_floor, inverse_temperature))
+    if not gamma or not beta:
+        raise ValueError("positive gap and inverse-temperature bounds are required")
+    error, duration, prep_error, word_error, spatial_error, tail = (
+        preparation._fraction(value, 0) for value in
+        (clock_gap_error, maximum_time, complete_preparation_error,
+         one_copy_word_error, spectral_pair_error, cutoff_tail_radius))
+    success = preparation._fraction(success_lower, 0, 1)
+    if not success:
+        raise ValueError("a positive herald probability lower bound is required")
+    partition = (F(dimension) if partition_upper is None else
+                 preparation._fraction(partition_upper, 1, dimension))
+    radius, factors = sum(radii), len(radii)
+    # exp(gamma)>=1+gamma gives 1-exp(-gamma)>=gamma/(1+gamma).
+    theta = gamma/(1+gamma)
+    gaussian_error = radius**4*((factors+1)*partition/F(96)+F(1, 8))/(theta**2*copies)
+    normalized_state_error = 4*prep_error/success if 2*prep_error < success else None
+    single_error = (normalized_state_error+word_error
+                    if normalized_state_error is not None else None)
+    amplified = copies*single_error if single_error is not None else None
+    source_error = (amplified/(1-amplified)
+                    if amplified is not None and amplified < 1 else None)
+    # |d[coth(g/2)/2]/dg|<=1/gamma^2, and clock coefficient
+    # rotations differ by at most T*|g-b*omega|/b on the same band.
+    covariance_error = radius**2*(error/gamma**2+2*duration*error/(beta*theta)
+                                  +spatial_error)/2
+    cutoff_error = (radius*tail+tail**2/2)/theta
+    total = (gaussian_error+source_error+covariance_error+cutoff_error
+             if source_error is not None else None)
+    return {"dimension": dimension, "copies": copies, "factor_count": factors,
+        "phase_space_radius_sum": radius, "inverse_anchor_weight_upper": partition,
+        "positive_gap_floor": gamma, "inverse_temperature": beta,
+        "finite_copy_gaussian_error_upper": gaussian_error,
+        "conditional_state_trace_norm_error_upper": normalized_state_error,
+        "one_copy_characteristic_error_upper": single_error,
+        "N_copy_raw_source_error_upper": source_error,
+        "clock_and_common_spectral_error_upper": covariance_error,
+        "spectral_cutoff_error_upper": cutoff_error,
+        "total_ordered_characteristic_error_upper": total,
+        "herald_success_lower": success,
+        "expected_preparation_attempts_upper": F(copies)/success,
+        "clock_parameter": "model time t for H/b; modular parameter s=-t/b",
+        "native_event_count_to_model_time_error_requires_its_separate_bound": True,
+        "partition_bound_is_a_supplied_or_separately_proved_input": partition_upper is not None,
+        "common_source_state_encoder_and_independent_copies_executed": False,
+        "finite_band_convergence_alone_implies_local_smear_convergence": False}
+
+
+def growing_field_controls():
+    """Exact finite-family countercontrols and actual clock normalization.
+
+    The equal-gap d-state family is a mathematical sharpness control, not
+    a source-prepared growing Gibbs state. The separate twelve-state mode
+    checks use the existing source preparation and clock on their actual
+    register, with their complete preparation/error contract unchanged.
+    """
+    gaussian, rows = math.exp(-.75), []
+    for dimension in (16, 64, 256, 1024):
+        pair = []
+        # rho=diag(2,1,...,1)/(d+1), delta=1/(d+1), q=X/sqrt(2delta).
+        # The exact support trace is 3/(d+1), giving (d+10)/(32N).
+        for copies in (dimension, dimension**2):
+            angle = math.sqrt((dimension+1)/(2*copies))
+            one_minus = 6*math.sin(angle/2)**2/(dimension+1)
+            characteristic = math.exp(copies*math.log1p(-one_minus))
+            bound = F(dimension+10, 32*copies)
+            if abs(characteristic-gaussian) > float(bound)+1e-13:
+                raise ArithmeticError("the rank-supported finite-copy bound failed")
+            pair.append({"copies": copies, "characteristic": characteristic,
+                "gaussian_error": abs(characteristic-gaussian),
+                "exact_rank_supported_error_upper": bound})
+        rows.append({"dimension": dimension, "copy_controls": pair})
+    data = shared_fluctuation_modes()
+    reference, compiled, actual = source.prepared_reference(), source.compiled_source(), prepare()
+    raw_state = sum(float(weight)*(amplitude@amplitude.conj().T)
+                    for weight, amplitude in zip(actual.weights, actual.successes, strict=True))
+    raw_state /= np.trace(raw_state).real  # Explicit successful work marginal.
+    basis, raw_clock = compiled["spectrum"]["basis"], compiled["raw"]["clock1"]
+    guard = float(compiled["guards"]["clock1"])
+    budget = error_budget()
+    state_error = 4*float(budget["stopped_preparation_half_diamond_upper_under_guards"]
+                         +ARITHMETIC_ALLOWANCE)/float(
+        budget["ideal_success_probability"])
+    normalization = []
+    for address in source.PAIR_ADDRESSES:
+        mode = data["modes"][address-1]
+        omega = mode["gap"]  # The finite H clock, with declared b=1.
+        q = basis@mode["Q"]@basis.T/math.sqrt(omega)
+        raw_two_point = complex(np.trace(raw_state@raw_clock.conj().T@q@raw_clock@q))
+        target = complex(mode["variance"]*math.cos(omega)/omega, -math.sin(omega)/(2*omega))
+        norm_squared = 1/(2*mode["delta"]*omega)
+        error = norm_squared*((1+guard)**2-1+state_error*(1+guard)**2
+                              +float(ARITHMETIC_ALLOWANCE))
+        if abs(raw_two_point-target) > error:
+            raise ArithmeticError("the actual prepared clock violates its normalized field dictionary")
+        normalization.append({"address": address, "omega_equals_prepared_gap_at_b1": omega,
+            "raw_operator_norm_scaled_two_point":
+                [raw_two_point.real/norm_squared, raw_two_point.imag/norm_squared],
+            "operator_norm_squared": norm_squared,
+            "ideal_ordered_two_point": [target.real, target.imag],
+            "source_numerical_error_upper": error,
+            "normalized_retarded_derivative_at_zero": 1,
+            "unscaled_Q_retarded_derivative_at_zero_control": omega})
+    schedules = []
+    for level in (0, 1, 2):
+        dimension = 240*4**level  # Candidate full-port family; no Gibbs encoder asserted.
+        copies = dimension**2
+        schedules.append(growing_fluctuation_bound(dimension, copies, (F(1, 4), F(1, 4)),
+            gap_floor=F(1, 2), inverse_temperature=F(1),
+            clock_gap_error=F(1, dimension), maximum_time=F(1),
+            complete_preparation_error=F(1, 64*dimension**4),
+            success_lower=F(1, 2*dimension), one_copy_word_error=F(1, 8*dimension**3),
+            spectral_pair_error=F(1, dimension), cutoff_tail_radius=F(1, dimension)))
+    return {"equal_gap_family_is_a_mathematical_countercontrol_not_a_native_encoder": True,
+        "finite_family": rows, "gaussian_characteristic": gaussian,
+        "N_equals_dimension_limit": math.exp(3*(math.cos(1/math.sqrt(2))-1)),
+        "fixed_number_of_copies_has_gaussian_growing_dimension_limit": False,
+        "finite_prepared_clock_normalization": normalization,
+        "finite_clock_frequencies_identified_with_sqrt_native_L": False,
+        "sufficient_full_port_resource_schedule": schedules,
+        "schedule_error_inputs_are_obligations_not_measured_source_rates": True,
+        "angular_A_uses_native_constant_anchor_and_positive_modes": True,
+        "positive_Dirichlet_product_B_requires_a_separate_zero_energy_anchor": True,
+        "physical_zero_frequency_stationary_thermal_mode_constructed": False,
+        "interacting_field_or_observed_spacetime_identified": False}
+
+
 def prepared_gap_intervals():
     """Exact rational enclosures, independently of observations and libm.
 
@@ -907,6 +1063,7 @@ def run():
         "complete_native_tape_sha256": hashlib.sha256(native_json.encode()).hexdigest(),
         "executions": rows, "error_budget": budget, "resources": resources(),
         "shared_state_field": shared_state_field(),
+        "growing_shared_state_field": growing_field_controls(),
         "prepared_positive_log_limit": source.prepared_log_limit_bound(filter_operator_error=FILTER_GUARD),
         "positive_log_refinement_schedule": [
             {key: value for key, value in source.positive_log_refinement_schedule(
@@ -992,6 +1149,13 @@ def check_receipt(recorded, actual):
         if (not 0 <= row["complete_quantum_half_trace_upper_diagnostic"] <= bound
                 or abs(row["complete_raw_mass_diagnostic"]-1) > 2*bound):
             raise ValueError("stored pointer outputs violate their scientific guard")
+    growing = recorded["growing_shared_state_field"]
+    for row in growing["finite_prepared_clock_normalization"]:
+        raw = complex(*row["raw_operator_norm_scaled_two_point"])*row["operator_norm_squared"]
+        target = complex(*row["ideal_ordered_two_point"])
+        if (row["source_numerical_error_upper"] < 0
+                or abs(raw-target) > row["source_numerical_error_upper"]):
+            raise ValueError("stored normalized field violates its scientific guard")
 
 
 def main():

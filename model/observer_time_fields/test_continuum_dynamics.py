@@ -1089,3 +1089,105 @@ def test_joint_product_clock_preparation_and_continuum_state_share_temperature(b
     for mode in row['finite_source_modes']:
         assert mode['requested_inverse_temperature'] == beta
         assert abs(mode['inferred_inverse_temperature_diagnostic']-float(beta)) < 1e-12
+
+
+def test_cell_visible_packet_is_selected_by_native_integer_polynomial_not_a_mesh_mode():
+    data = d._cell_visible_packet()
+    integer = data['integer_profile']; graph = data['graph']
+    # Recover the same integer Laplacian independently from the public seams.
+    applied = [0]*graph.ports
+    for a, b in graph.seams:
+        difference = integer[a]-integer[b]
+        applied[a] += difference; applied[b] -= difference
+    norm = sum(x*x for x in integer)
+    quotient = F(sum(x*y for x, y in zip(integer, applied, strict=True)), norm)
+    residual = sum((y*quotient.denominator-x*quotient.numerator)**2
+                   for x, y in zip(integer, applied, strict=True))
+    assert quotient == data['rayleigh']
+    assert F(residual, norm*quotient.denominator**2) == data['residual_squared'] > 0
+    assert sum(integer) == 0 and len(integer) == 240
+    assert F(44, 1000) < quotient < F(45, 1000)
+    assert data['cell_visible_weight'] > F(996, 1000)
+    assert d._root_upper(data['residual_squared']) < F(31, 100000)
+    # The former single-carrier mode has exactly zero cell readout.
+    internal = np.array([0, 0, 0, 0, 1, -1, -1, 1, 0, 0, 0, 0]+[0]*228)
+    assert not np.any(internal.reshape(20, 12).sum(axis=1))
+    assert np.linalg.norm(np.array(data['vectors'][1], float)[:240]
+                          .reshape(20, 12).sum(axis=1)) > 3
+
+
+def test_packet_encoder_is_actual_source_words_on_all_addresses_and_references():
+    row = d._cell_visible_packet_source()
+    target = row['target']
+    np.testing.assert_allclose(target.T@target, np.eye(256), atol=3e-14, rtol=0)
+    np.testing.assert_allclose(target[:, 0], row['constant'], atol=2e-14, rtol=0)
+    np.testing.assert_allclose(target[:, 1], row['mode'], atol=2e-14, rtol=0)
+    np.testing.assert_array_equal(target[240:, 240:], np.eye(16))
+    rng = np.random.default_rng(21102026)
+    columns = rng.normal(size=(256, 3))+1j*rng.normal(size=(256, 3))
+    columns /= np.linalg.norm(columns)
+    literal = d.source_compiler.execute(row['words']['encode'], 8, columns)
+    np.testing.assert_allclose(literal, row['encode']@columns, atol=1e-10, rtol=0)
+    assert np.linalg.norm(literal-target@columns) < float(row['guard'])
+    assert np.sum(abs(literal[240:])**2) > .01  # Padding is retained, never discarded.
+    back = d.source_compiler.execute(row['words']['decode'], 8, literal)
+    assert np.linalg.norm(back-columns) < 2*float(row['guard'])
+
+
+@pytest.mark.parametrize('steps', (0, 1, 25))
+def test_packet_clock_uses_native_chebyshev_response_with_an_explicit_packet_error(steps):
+    from scipy.linalg import eigh
+    result = d.cell_visible_packet_control(steps)
+    data = d._cell_visible_packet(); vector = np.array(data['vectors'][1], float)[:240]
+    values, basis = eigh(data['laplacian'].toarray())
+    angles = np.arccos(np.clip(1-values/1260, -1, 1))
+    exact = basis@(np.cos(steps*angles)*(basis.T@vector))
+    cosine = np.cos(steps*float(result['native_phase_per_trigger']))
+    error = np.linalg.norm(exact-cosine*vector)
+    assert abs(error-result['native_packet_cosine_residual_diagnostic']) < 2e-12
+    assert error < float(result['native_packet_cosine_residual_upper'])+2e-12
+    law = np.array(result['complete_system_reference_probabilities'])
+    assert len(law) == 512 and np.min(law) >= 0
+    assert abs(sum(law)-1) < float(result['source_readout_error_upper'])
+    assert abs(result['source_reference_parity_contrast']-cosine) < float(result['source_readout_error_upper'])
+    records = result['complete_native_one_attempt_record_counts']
+    assert sum(row['count'] for row in records) == 1260
+    assert sum(row['count'] for row in records if row['incident']) == 10
+    assert any(row['incident'] and not row['nonzero_incident_current'] and row['count'] for row in records)
+    assert result['native_record_mean_field_residual'] < 2e-12
+    assert abs(sum(sum(row['joint_reference_parity_probabilities'])
+                   for row in result['complete_one_attempt_clock_reference_marginal'])-1) < 1e-9
+    resources = result['resources']
+    assert resources['total_source_pulses'] == resources['proper_code_load_events'] == resources['proper_code_export_events']
+    assert resources['protected_work_qubits']+resources['reference_qubits'] == 9
+    assert result['full_register_input_columns_checked'] == 256
+    assert not result['packet_is_an_exact_native_eigenvector']
+    assert not result['unbounded_growing_encoder_or_nonconstant_continuum_mode_selected']
+    if steps == 25:
+        assert error > 1e-4  # Labelling the packet an exact mode would be false.
+
+
+def test_packet_state_word_is_stable_without_platform_eigenvectors_or_libm_angles(monkeypatch):
+    source = d._cell_visible_packet_source()
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError('the source profile cannot use a floating eigensolver or libm angles')
+    monkeypatch.setattr(np.linalg, 'eigh', forbidden)
+    for name in ('atan2', 'acos', 'hypot'):
+        monkeypatch.setattr(d.math, name, forbidden)
+    assert d._packet_state_word(source['data']['vectors'][2]) == source['words']['first']
+    for invalid in (True, -1, 129, 1.):
+        with pytest.raises(ValueError):
+            d.cell_visible_packet_control(invalid)
+
+
+def test_packet_clock_rejects_reversed_native_source_phase(monkeypatch):
+    d._cell_visible_packet_source()
+    original = d.source_compiler.execute
+    phase_size = len(d.source_compiler.compile_diagonal([0.]*256))
+    def reversed_phase(word, qubits, state=None):
+        if qubits == 8 and state is None and len(word) == phase_size:
+            word = d.source_compiler.inverse(word)
+        return original(word, qubits, state)
+    monkeypatch.setattr(d.source_compiler, 'execute', reversed_phase)
+    with pytest.raises(ArithmeticError, match='packet phase word'):
+        d.cell_visible_packet_control()

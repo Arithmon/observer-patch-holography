@@ -112,6 +112,209 @@
       "retained_coarse_records": 491
     }
   ],
+  "growing_shared_state_field": {
+    "N_equals_dimension_limit": 0.4871095615728937,
+    "angular_A_uses_native_constant_anchor_and_positive_modes": true,
+    "equal_gap_family_is_a_mathematical_countercontrol_not_a_native_encoder": true,
+    "finite_clock_frequencies_identified_with_sqrt_native_L": false,
+    "finite_family": [
+      {
+        "copy_controls": [
+          {
+            "characteristic": 0.48000485292361617,
+            "copies": 16,
+            "exact_rank_supported_error_upper": "13/256",
+            "gaussian_error": 0.007638300182601476
+          },
+          {
+            "characteristic": 0.47282884727988844,
+            "copies": 256,
+            "exact_rank_supported_error_upper": "13/4096",
+            "gaussian_error": 0.00046229453887375316
+          }
+        ],
+        "dimension": 16
+      },
+      {
+        "copy_controls": [
+          {
+            "characteristic": 0.48536163069517735,
+            "copies": 64,
+            "exact_rank_supported_error_upper": "37/1024",
+            "gaussian_error": 0.01299507795416266
+          },
+          {
+            "characteristic": 0.4725683895822933,
+            "copies": 4096,
+            "exact_rank_supported_error_upper": "37/65536",
+            "gaussian_error": 0.00020183684127861312
+          }
+        ],
+        "dimension": 64
+      },
+      {
+        "copy_controls": [
+          {
+            "characteristic": 0.48667430277575247,
+            "copies": 256,
+            "exact_rank_supported_error_upper": "133/4096",
+            "gaussian_error": 0.014307750034737776
+          },
+          {
+            "characteristic": 0.4724224129045885,
+            "copies": 65536,
+            "exact_rank_supported_error_upper": "133/1048576",
+            "gaussian_error": 5.5860163573784316e-05
+          }
+        ],
+        "dimension": 256
+      },
+      {
+        "copy_controls": [
+          {
+            "characteristic": 0.4870008539884749,
+            "copies": 1024,
+            "exact_rank_supported_error_upper": "517/16384",
+            "gaussian_error": 0.014634301247460235
+          },
+          {
+            "characteristic": 0.4723808555949406,
+            "copies": 1048576,
+            "exact_rank_supported_error_upper": "517/16777216",
+            "gaussian_error": 1.430285392589603e-05
+          }
+        ],
+        "dimension": 1024
+      }
+    ],
+    "finite_prepared_clock_normalization": [
+      {
+        "address": 1,
+        "ideal_ordered_two_point": [
+          3733.0978626747446,
+          -0.49997767995365766
+        ],
+        "normalized_retarded_derivative_at_zero": 1,
+        "omega_equals_prepared_gap_at_b1": 0.016365944614047213,
+        "operator_norm_squared": 21941.096460606834,
+        "raw_operator_norm_scaled_two_point": [
+          0.17014180988503208,
+          -2.278726958107771e-05
+        ],
+        "source_numerical_error_upper": 0.000927881343096066,
+        "unscaled_Q_retarded_derivative_at_zero_control": 0.016365944614047213
+      },
+      {
+        "address": 2,
+        "ideal_ordered_two_point": [
+          825.23963800221,
+          -0.49989907630287833
+        ],
+        "normalized_retarded_derivative_at_zero": 1,
+        "omega_equals_prepared_gap_at_b1": 0.03480169117292312,
+        "operator_norm_squared": 4896.953557376604,
+        "raw_operator_norm_scaled_two_point": [
+          0.16852102604852962,
+          -0.0001020836874279706
+        ],
+        "source_numerical_error_upper": 0.00020709046387246922,
+        "unscaled_Q_retarded_derivative_at_zero_control": 0.03480169117292312
+      },
+      {
+        "address": 4,
+        "ideal_ordered_two_point": [
+          576.3227400678642,
+          -0.4998555220819148
+        ],
+        "normalized_retarded_derivative_at_zero": 1,
+        "omega_equals_prepared_gap_at_b1": 0.041639948711939614,
+        "operator_norm_squared": 3432.2725016650406,
+        "raw_operator_norm_scaled_two_point": [
+          0.1679128739887369,
+          -0.00014563398501647655
+        ],
+        "source_numerical_error_upper": 0.0001451496111160422,
+        "unscaled_Q_retarded_derivative_at_zero_control": 0.041639948711939614
+      }
+    ],
+    "fixed_number_of_copies_has_gaussian_growing_dimension_limit": false,
+    "gaussian_characteristic": 0.4723665527410147,
+    "interacting_field_or_observed_spacetime_identified": false,
+    "physical_zero_frequency_stationary_thermal_mode_constructed": false,
+    "positive_Dirichlet_product_B_requires_a_separate_zero_energy_anchor": true,
+    "schedule_error_inputs_are_obligations_not_measured_source_rates": true,
+    "sufficient_full_port_resource_schedule": [
+      {
+        "N_copy_raw_source_error_upper": "1/959",
+        "clock_and_common_spectral_error_upper": "11/1920",
+        "clock_parameter": "model time t for H/b; modular parameter s=-t/b",
+        "common_source_state_encoder_and_independent_copies_executed": false,
+        "conditional_state_trace_norm_error_upper": "1/110592000",
+        "copies": 57600,
+        "dimension": 240,
+        "expected_preparation_attempts_upper": "27648000",
+        "factor_count": 2,
+        "finite_band_convergence_alone_implies_local_smear_convergence": false,
+        "finite_copy_gaussian_error_upper": "61/819200",
+        "herald_success_lower": "1/480",
+        "inverse_anchor_weight_upper": "240",
+        "inverse_temperature": "1",
+        "native_event_count_to_model_time_error_requires_its_separate_bound": true,
+        "one_copy_characteristic_error_upper": "1/55296000",
+        "partition_bound_is_a_supplied_or_separately_proved_input": false,
+        "phase_space_radius_sum": "1/2",
+        "positive_gap_floor": "1/2",
+        "spectral_cutoff_error_upper": "241/38400",
+        "total_ordered_characteristic_error_upper": "30927433/2356838400"
+      },
+      {
+        "N_copy_raw_source_error_upper": "1/3839",
+        "clock_and_common_spectral_error_upper": "11/7680",
+        "clock_parameter": "model time t for H/b; modular parameter s=-t/b",
+        "common_source_state_encoder_and_independent_copies_executed": false,
+        "conditional_state_trace_norm_error_upper": "1/7077888000",
+        "copies": 921600,
+        "dimension": 960,
+        "expected_preparation_attempts_upper": "1769472000",
+        "factor_count": 2,
+        "finite_band_convergence_alone_implies_local_smear_convergence": false,
+        "finite_copy_gaussian_error_upper": "241/13107200",
+        "herald_success_lower": "1/1920",
+        "inverse_anchor_weight_upper": "960",
+        "inverse_temperature": "1",
+        "native_event_count_to_model_time_error_requires_its_separate_bound": true,
+        "one_copy_characteristic_error_upper": "1/3538944000",
+        "partition_bound_is_a_supplied_or_separately_proved_input": false,
+        "phase_space_radius_sum": "1/2",
+        "positive_gap_floor": "1/2",
+        "spectral_cutoff_error_upper": "961/614400",
+        "total_ordered_characteristic_error_upper": "494423533/150955622400"
+      },
+      {
+        "N_copy_raw_source_error_upper": "1/15359",
+        "clock_and_common_spectral_error_upper": "11/30720",
+        "clock_parameter": "model time t for H/b; modular parameter s=-t/b",
+        "common_source_state_encoder_and_independent_copies_executed": false,
+        "conditional_state_trace_norm_error_upper": "1/452984832000",
+        "copies": 14745600,
+        "dimension": 3840,
+        "expected_preparation_attempts_upper": "113246208000",
+        "factor_count": 2,
+        "finite_band_convergence_alone_implies_local_smear_convergence": false,
+        "finite_copy_gaussian_error_upper": "961/209715200",
+        "herald_success_lower": "1/7680",
+        "inverse_anchor_weight_upper": "3840",
+        "inverse_temperature": "1",
+        "native_event_count_to_model_time_error_requires_its_separate_bound": true,
+        "one_copy_characteristic_error_upper": "1/226492416000",
+        "partition_bound_is_a_supplied_or_separately_proved_input": false,
+        "phase_space_radius_sum": "1/2",
+        "positive_gap_floor": "1/2",
+        "spectral_cutoff_error_upper": "3841/9830400",
+        "total_ordered_characteristic_error_upper": "7909111933/9663047270400"
+      }
+    ]
+  },
   "native_record_groups": [
     {
       "control": [
@@ -740,7 +943,7 @@
     "model/predictions/inverse_clock.py": "37424902b920fb70d4cae26cc4f56d7f8bd9ff75ae9d418ba41c8b35946a9fff",
     "model/predictions/modular_optical.py": "62cdebe3d32765870374579ca6dfe5044d97036fb1e009306bb3fc3b260021ee",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
-    "model/predictions/prepared_clock.py": "2d747efaae497bd9f0c091ccf00c2874859a4fd0b49b21ecf350556a90ecec6f",
+    "model/predictions/prepared_clock.py": "6fe2cd5a52fc431d73a8e61f46e74432032c94330c7fbc57d2b93267b9011378",
     "model/predictions/prepared_clock_source.py": "0839509be7142048d00f71d6e59607933d18b4cfc9a8b037f130197b90579131",
     "model/predictions/protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",

@@ -128,8 +128,9 @@ register, with all failures and state/modular-gap bounds; its exact uncapped
 sampler has infinite mean cost. Its compiled positive-log clock, pair detectors
 and ordered pointer readouts use that same prepared state. Independent copies
 supply a quantitative eleven-mode fluctuation limit, while three band
-representatives are executed. The bounded-band clock limit requires growing
-caps and vanishing filter/phase errors. It supplies no 66-state Gibbs preparation,
+representatives are executed. The joint copy/band limit charges `Z/N` and
+copy-amplified conditional preparation error, as well as cap/filter/phase and
+spectral-tail errors. It derives no growing encoder from the finite CLT. It supplies no 66-state Gibbs preparation,
 missing four-dimensional irrep, physical collar, group sewing or product Fock state.
 
 Critical superstring dimension ten follows from a specified worldsheet

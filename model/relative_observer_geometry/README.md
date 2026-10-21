@@ -905,6 +905,102 @@ before the nonlinear density-to-metric map. The radial domain and active
 wave law remain supplied; neither native density time nor this calibration
 is identified with wave time, a modular parameter or laboratory seconds.
 
+### Intrinsic distance is the product wave's first response
+
+The recovered energy determines more than a comparison propagation bound.
+For the declared product `X=(0,L) times screen`, retain the full angular
+constant, radial Dirichlet endpoints and the same operator
+`B=-d_r^2+(A⊕0)`. Write `Gamma_B(u)=grad u.a.grad u`, where
+`a=diag(1,a_screen)`. For measurable sets `E,F` of positive finite measure,
+define the **essential intrinsic set distance**
+
+```text
+d(E,F) = sup_u [essinf_F u - esssup_E u],
+u bounded in the local form domain, Gamma_B(u)<=1 almost everywhere.
+```
+
+Use the local domain on compact interior exhaustions, not globally
+boundary-zero test functions. This matters at Dirichlet endpoints.
+The strongly local regular form and its uniform ellipticity are already
+proved; (NR) determines its angular energy density. The radial factor is
+the declared one. No smooth coefficients or pointwise heat kernel are needed.
+
+The form chain rule gives
+`||exp(lambda u) exp(-tau B) exp(-lambda u)||<=exp(lambda^2 tau)`
+for every admissible `u`. Optimizing the resulting separated-support bound
+over `lambda` and then `u` gives the Davies–Gaffney estimate
+`||1_F exp(-tau B)1_E||<=exp(-d(E,F)^2/(4tau))`.
+Its pairwise heat-to-wave implication
+([Coulhon–Sikora, Theorem 3.4](https://arxiv.org/pdf/math/0609429))
+gives `1_F cos(t sqrt(B))1_E=0` for `|t|<d(E,F)`; the same holds for
+`1_F B^-1/2 sin(t sqrt(B))1_E`. The integrated short-time theorem of
+[Ariyoshi–Hino, Theorem 2.7 and Remark 2.8](https://www.maths.tcd.ie/EMIS/journals/EJP-ECP/article/download/286/286-793-1-PB.pdf)
+also applies to this symmetric local Dirichlet form, including its
+nonconservative Dirichlet boundary. Apply their normalization to `E_B/2`
+and set their time to `2tau`. Their essential set distance is exactly the
+one above, so
+
+```text
+lim_(tau->0) -4tau log <1_F,exp(-tau B)1_E> = d(E,F)^2.     (OF1)
+```
+
+This proves that the propagation bound is optimal for complete local
+readouts. Indeed spectral calculus gives
+`exp(-tau B)=(pi tau)^-1/2 integral_0^infinity exp(-t^2/(4tau)) cos(t sqrt(B)) dt`.
+If the cosine block vanished for all `0<t<R` with `R>d(E,F)`, this identity
+and `||cos(t sqrt(B))||<=1` would bound the positive heat pairing by
+`sqrt(m(E)m(F)) erfc(R/(2sqrt(tau)))`. Its logarithmic exponent contradicts
+(OF1). Therefore, with an empty infimum interpreted as infinity,
+
+```text
+inf{t>0: ||1_F cos(t sqrt(B))1_E||>0}
+ = inf{t>0: ||1_F B^-1/2 sin(t sqrt(B))1_E||>0}
+ = d(E,F).                                                (OF2)
+```
+
+The sine equality follows by integrating the cosine and, conversely,
+differentiating a zero sine block in the strong topology. An infimum need
+not be attained. The result quantifies over the full local `L2` spaces;
+one fixed signed probe and detector can cancel. In the free-field encoding,
+the same sine block is its retarded commutator, so (OF2) is also a
+state-independent onset of possible local linear response. Finite spectral
+cutoffs need not have an exact support cone. A growing source apparatus
+realizing all those local probes and modes is a separate implementation
+obligation.
+
+This distance is consistent with the reconstructed static metric:
+`g_spatial/(-g_00)=a^-1` almost everywhere. For constant coefficients and
+time weight `w`, the squared optical separation is `w dx.a^-1.dx`; its
+dual covector saturates `xi.a.xi=w`. Changing the wave coordinate by
+`t=kappa*tau` changes the onset to `d/kappa`. A modular clock satisfying
+`sigma_s=alpha_(-b s)` for **this same field and algebra-state pair** gives
+onset `|s|=d/b`; a different prepared marginal's modular flow supplies no
+such identification. Neither statement calibrates seconds.
+
+`native_optical_front_control` checks optical duality, chart covariance
+and clock scaling on the finite native increment tensor. Its full-port
+240-state eigenmode of eigenvalue six is zero outside one carrier, so
+every remote detector misses that signed mode at all wave parameters.
+A positive preparation crosses the same seam in one native attempt.
+The continuous finite-matrix cosine also has a cross-seam term `t^2/2`;
+its nonzero small-time tail cannot be substituted for the limiting front.
+On the declared interval `(0,4)`, restored angular-constant probes on
+`E=(1,3/2)` and `F=(2,5/2)` have distance `1/2`: for `0<=t<=1`, the
+cosine pairing is `(t-1/2)_+/2` and the sine pairing `(t-1/2)_+^2/4`.
+Independent Dirichlet spectral sums check these exact readouts with
+explicit tail bounds. Removing the angular constant erases this control.
+
+For rough tensors use the essential form distance, not arbitrary
+representative-dependent curve lengths. Multiplying a constant tensor
+by four only on a line changes no energy, heat or wave operator: that
+line has volume measure zero. Yet a naive length integral along that
+line is halved. This control excludes an unsupported identification with
+smooth null geodesics. The achieved join is native weak energy readout,
+intrinsic distance and optimal response of the **declared product wave**.
+Radial geometry, active dynamics and clock/readout access remain its
+contracts; fastest primitive transport and observed spacetime are not
+identified by (OF2).
+
 ### Transport through source refinement
 
 The response-recovered carrier Gram can be transported into the actual level-3

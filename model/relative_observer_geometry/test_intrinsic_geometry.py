@@ -2,11 +2,86 @@ from copy import deepcopy
 from collections import Counter
 from fractions import Fraction as F
 
+import numpy as np
 import pytest
 import sympy as sp
 
 from ..observer_reconstruction import native_geometry as ng
 from . import intrinsic_geometry as g
+
+
+def test_native_optical_front_retains_clock_coordinate_and_detector_scope():
+    result = g.native_optical_front_control()
+    distance = F(result['constant_coefficient_optical_distance_squared'])
+    rate = F(result['wave_coordinate_change_t_equals_rate_times_tau'])
+    assert F(result['rescaled_optical_distance_squared']) == distance/rate**2
+    assert result['optical_dual_energy_saturated_exactly']
+    assert result['metric_null_vector_identity_exact']
+    assert result['spatial_chart_covariance_exact']
+    dark = result['dark_native_mode']
+    graph, _, denominator = g._native_density_rows(0)
+    profile = dark['first_carrier_profile']+[0]*(graph.ports-12)
+    # Reconstruct the generator directly from the seam incidence, independently
+    # of the endpoint-record kernel used by the control.
+    laplacian_profile = [0]*graph.ports
+    for a, b in graph.seams:
+        difference = profile[a]-profile[b]
+        laplacian_profile[a] += difference
+        laplacian_profile[b] -= difference
+    assert laplacian_profile == [6*v for v in profile]
+    assert sum(profile) == 0 and sum(v*v for v in profile) == 4
+    assert F(dark['uniform_first_carrier_one_attempt_probability_at_detector']) == F(1, 12*denominator)
+    assert not dark['finite_matrix_wave_has_a_positive_hard_arrival_delay']
+    changed = result['null_set_representative_control']
+    assert F(changed['naive_curve_length_squared_on_that_line']) == distance/4
+    scope = result['continuum_front_scope']
+    assert not scope['finite_coefficient_average_is_the_limiting_metric']
+    assert not scope['one_fixed_detector_must_see_every_signal']
+    assert not scope['smooth_null_geodesics_or_fastest_native_transport_identified']
+
+
+@pytest.mark.parametrize('time', [F(1, 4), F(1, 2), F(5, 8), F(3, 4), F(1)])
+def test_radial_front_against_independent_dirichlet_spectral_response(time):
+    result = g.radial_front_readout(time)
+    n = np.arange(1, 4097, dtype=float)
+    omega = n*np.pi/4
+    source = (np.cos(omega)-np.cos(1.5*omega))/(np.sqrt(2)*omega)
+    detector = (np.cos(2*omega)-np.cos(2.5*omega))/(np.sqrt(2)*omega)
+    cosine = np.sum(source*detector*np.cos(float(time)*omega))
+    sine = np.sum(source*detector*np.sin(float(time)*omega)/omega)
+    # Each interval coefficient is at most 4*sqrt(2)/(n*pi). Summing
+    # the absolute omitted products gives these independent tail bounds.
+    assert abs(cosine-float(F(result['cosine_pairing']))) <= 32/(np.pi**2*4096)
+    assert abs(sine-float(F(result['retarded_sine_pairing']))) <= 64/(np.pi**3*4096**2)
+
+
+def test_optical_duality_for_nonunit_time_weight_and_zero_displacement():
+    a = sp.Matrix([[2, 1, 0], [1, 3, 0], [0, 0, 5]])
+    v = sp.Matrix([2, -1, 3])
+    w = sp.Rational(7, 3)
+    result = g.constant_optical_separation(a.tolist(), v, w)
+    dual = result['maximizing_covector']
+    assert result['optical_tensor'] == w*a.inv()
+    assert sp.simplify((dual.T*a*dual)[0]) == w
+    assert sp.simplify((dual.T*v)[0]**2) == result['distance_squared']
+    for density in (F(1, 10), F(7, 3)):
+        metric = g.wave_density_metric(a.tolist(), density, w)['metric']
+        assert sp.simplify(metric[1:, 1:]/(-metric[0, 0])) == result['optical_tensor']
+    zero = g.constant_optical_separation(a.tolist(), [0, 0, 0], w)
+    assert zero['distance_squared'] == 0
+    assert zero['maximizing_covector'] == sp.zeros(3, 1)
+
+
+@pytest.mark.parametrize('vector', [None, [1, 2], [1, 2, 3, 4], [1., 2, 3], [True, 0, 0]])
+def test_optical_separation_rejects_inexact_or_malformed_displacements(vector):
+    with pytest.raises(ValueError, match='displacement'):
+        g.constant_optical_separation(sp.eye(3).tolist(), vector)
+
+
+@pytest.mark.parametrize('time', [True, .5, F(-1), F(9, 8)])
+def test_radial_front_rejects_parameters_outside_its_exact_unreflected_window(time):
+    with pytest.raises(ValueError, match='wave parameter'):
+        g.radial_front_readout(time)
 
 
 def test_native_density_kernel_counts_every_endpoint_record_and_hold():

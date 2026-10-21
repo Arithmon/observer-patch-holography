@@ -16,6 +16,7 @@ import json
 import math
 from pathlib import Path
 
+import mpmath as mp
 import numpy as np
 import sympy as sp
 
@@ -1572,6 +1573,248 @@ def product_native_mode_control():
         'clock_ticks_require_nonzero_current': False}
 
 
+@lru_cache(maxsize=1)
+def _cell_visible_packet():
+    """Exact polynomial selection on the actual level-zero 240-port graph.
+
+    The integer polynomial fixes the choice inside nearly degenerate bands;
+    no numerical eigenvector or external continuum profile is supplied.
+    """
+    graph, laplacian, _, _, _ = dynamics.source_green.matrices(0)
+    profile = [1]*12+[-1]*12+[0]*(graph.ports-24)
+    for _ in range(1024):
+        profile = [12*profile[i]-sum(profile[i]-profile[j] for j in neighbors)
+                   for i, neighbors in enumerate(graph.neighbours)]
+        divisor = math.gcd(*profile)
+        profile = [x//divisor for x in profile]
+    norm2 = sum(x*x for x in profile)
+    applied = [sum(profile[i]-profile[j] for j in neighbors)
+               for i, neighbors in enumerate(graph.neighbours)]
+    energy = F(sum(x*y for x, y in zip(profile, applied, strict=True)), norm2)
+    residual2 = sum((F(y)-energy*x)**2 for x, y in zip(profile, applied, strict=True))/norm2
+    visible = F(sum(sum(profile[j:j+12])**2 for j in range(0, graph.ports, 12)), 12*norm2)
+    if sum(profile) or not F(0) < energy < F(1, 20) or visible < F(99, 100):
+        raise ArithmeticError('the native polynomial lost its mean-zero cell-visible low packet')
+    with mp.workdps(100):
+        constant = [1/mp.sqrt(graph.ports)]*graph.ports+[mp.mpf(0)]*(256-graph.ports)
+        mode = [mp.mpf(x)/mp.sqrt(norm2) for x in profile]+[mp.mpf(0)]*(256-graph.ports)
+        first = [-x for x in constant]; first[0] += 1
+        first_norm = mp.sqrt(sum(x*x for x in first))
+        first = [x/first_norm for x in first]
+        overlap = sum(x*y for x, y in zip(first, mode, strict=True))
+        rotated = [y-2*x*overlap for x, y in zip(first, mode, strict=True)]
+        if abs(rotated[0]) > mp.mpf('1e-95'):
+            raise ArithmeticError('the exact orthogonal packet does not preserve the anchor')
+        rotated[0] = mp.mpf(0)  # Exact identity <constant,mode>=0.
+        second = [-x for x in rotated]; second[1] += 1
+        second_norm = mp.sqrt(sum(x*x for x in second))
+        second = [x/second_norm for x in second]
+        rows = [[mp.nstr(x, 100) for x in row] for row in (constant, mode, first, second)]
+    return {'graph': graph, 'laplacian': laplacian, 'integer_profile': tuple(profile),
+        'norm_squared': norm2, 'rayleigh': energy, 'residual_squared': residual2,
+        'cell_visible_weight': visible, 'vectors': tuple(tuple(row) for row in rows)}
+
+
+def _packet_state_word(amplitudes):
+    """Deterministic binary-tree state synthesis on eight existing code qubits."""
+    word = []
+    with mp.workdps(90):
+        values = list(map(mp.mpf, amplitudes))
+        for target in reversed(range(8)):
+            controls = 7-target
+            angles = []
+            for prefix in range(1 << controls):
+                block = values[prefix*(1 << (target+1)):(prefix+1)*(1 << (target+1))]
+                half = 1 << target
+                x = block[0] if not target else mp.sqrt(sum(v*v for v in block[:half]))
+                y = block[1] if not target else mp.sqrt(sum(v*v for v in block[half:]))
+                angles.append(-mp.atan2(y, x) if x or y else mp.mpf(0))
+            for mask in range(1 << controls):
+                coefficient = sum(theta*(-1)**((prefix & mask).bit_count())
+                                  for prefix, theta in enumerate(angles))/(1 << controls)
+                rounded = F(int(mp.floor(coefficient*(1 << 44)+mp.mpf('.5'))), 1 << 44)
+                label = ['I']*8; label[target] = 'Y'
+                for bit in range(controls):
+                    if mask >> bit & 1:
+                        label[target+1+bit] = 'Z'
+                word += source_compiler.pauli_rotation(label, float(rounded))
+    return [source_compiler.pulse(p['kind'], round(p['angle']*2**44)/2**44, p['targets'])
+            for p in word]
+
+
+@lru_cache(maxsize=1)
+def _cell_visible_packet_source():
+    data = _cell_visible_packet()
+    constant, mode, first, second = (np.array(row, float) for row in data['vectors'])
+    words, raw = {}, {}
+    for name, values in (('first', data['vectors'][2]), ('second', data['vectors'][3])):
+        words[name] = _packet_state_word(values)
+        words['inverse_'+name] = source_compiler.inverse(words[name])
+    phase = [float(_source_dyadic_scalar(sp.pi))]+[0.]*255
+    words['reflect'] = [source_compiler.pulse(p['kind'], round(p['angle']*2**44)/2**44, p['targets'])
+                        for p in source_compiler.compile_diagonal(phase)]
+    words['inverse_reflect'] = source_compiler.inverse(words['reflect'])
+    for name, word in words.items():
+        raw[name] = source_compiler.execute(word, 8)
+    h1 = raw['first']@raw['reflect']@raw['inverse_first']
+    h2 = raw['second']@raw['reflect']@raw['inverse_second']
+    h1i = raw['first']@raw['inverse_reflect']@raw['inverse_first']
+    h2i = raw['second']@raw['inverse_reflect']@raw['inverse_second']
+    words['encode'] = (words['inverse_second']+words['reflect']+words['second']
+                       +words['inverse_first']+words['reflect']+words['first'])
+    words['decode'] = source_compiler.inverse(words['encode'])
+    encoding, decoding = h1@h2, h2i@h1i
+    wanted = (np.eye(256)-2*np.outer(first, first))@(np.eye(256)-2*np.outer(second, second))
+    error = float(np.linalg.norm(encoding-wanted, 'fro'))
+    inverse_error = float(np.linalg.norm(decoding-wanted.T, 'fro'))
+    guard = F(1, 10**8)
+    if (not math.isfinite(error+inverse_error) or max(error, inverse_error) > float(guard)
+            or np.linalg.norm(wanted[:, 0]-constant) > 2e-13
+            or np.linalg.norm(wanted[:, 1]-mode) > 2e-13):
+        raise ArithmeticError('the executed full-port packet isometry exceeds its numerical guard')
+    return {'data': data, 'words': words, 'encode': encoding, 'decode': decoding,
+        'target': wanted, 'guard': guard, 'encoding_error': error,
+        'decoding_error': inverse_error, 'constant': constant, 'mode': mode}
+
+
+def cell_visible_packet_control(steps=25):
+    """Actual native cell-visible packet, source encoder and incident clock.
+
+    This is a finite approximate mode with a quantified native Chebyshev
+    residual. It is neither an exact invariant mode nor a growing encoder.
+    Every256 work address and both untouched reference columns are retained.
+    """
+    steps = _int(steps)
+    if steps > 128:
+        raise ValueError('the finite packet clock admits at most128 incident triggers')
+    source = _cell_visible_packet_source(); data = source['data']
+    graph, rayleigh = data['graph'], data['rayleigh']
+    theta = _source_dyadic_scalar(sp.acos(1-sp.Rational(rayleigh)/(2*len(graph.seams))))
+    phases = [0.]*256; phases[1] = -float(theta)
+    phase_word = [source_compiler.pulse(p['kind'], round(p['angle']*2**44)/2**44, p['targets'])
+                  for p in source_compiler.compile_diagonal(phases)]
+    raw_phase = source_compiler.execute(phase_word, 8)
+    target_phase = np.eye(256, dtype=complex)
+    target_phase[1, 1] = np.exp(-1j*float(theta))
+    phase_error = float(np.linalg.norm(raw_phase-target_phase, 'fro'))
+    if not math.isfinite(phase_error) or phase_error > 1e-9:
+        raise ArithmeticError('the packet phase word exceeds its complete-address guard')
+    raw_step = source['encode']@raw_phase@source['decode']
+    desired_step = source['target']@target_phase@source['target'].T
+    step_guard = (1+source['guard'])**2*(1+F(1, 10**9))-1
+    # Build a genuine logical Bell input by source pulses, then encode only
+    # the work register; its second index is an untouched reference qubit.
+    bell_word = [source_compiler.pulse('H', float(_source_dyadic_scalar(sp.pi/2)), [0])]
+    bell_word += source_compiler.cnot(0, 8)
+    bell_word = [source_compiler.pulse(p['kind'], round(p['angle']*2**44)/2**44, p['targets'])
+                 for p in bell_word]
+    blank = np.zeros(512, complex); blank[0] = 1
+    bell = source_compiler.execute(bell_word, 9, blank).reshape(2, 256).T
+    encoded = source['encode']@bell
+    evolved = np.linalg.matrix_power(raw_step, steps)@encoded
+    decoded = source['decode']@evolved
+    read_word = [source_compiler.pulse('H', float(_source_dyadic_scalar(sp.pi/2)), [j]) for j in (0, 8)]
+    output = source_compiler.execute(read_word, 9, decoded.T.reshape(512))
+    probabilities = abs(output)**2
+    contrast = float(sum((-1)**((j & 1)+(j >> 8))*probabilities[j] for j in range(512)))
+    expected = math.cos(steps*float(theta))
+    source_amplitude_bound = (1+source['guard'])**2*(1+step_guard)**steps-1+F(1, 10**9)
+    observable_bound = 2*source_amplitude_bound+source_amplitude_bound**2
+    if (abs(sum(probabilities)-1) > float(observable_bound)
+            or abs(contrast-expected) > float(observable_bound)):
+        raise ArithmeticError('the full packet/reference readout exceeds its source budget')
+    mode = source['mode']; kernel = np.eye(graph.ports)-data['laplacian'].toarray()/(2*len(graph.seams))
+    previous, current = mode[:graph.ports], kernel@mode[:graph.ports]
+    if not steps:
+        native_cosine = previous
+    elif steps == 1:
+        native_cosine = current
+    else:
+        for _ in range(2, steps+1):
+            previous, current = current, 2*kernel@current-previous
+        native_cosine = current
+    residual_upper = _root_upper(data['residual_squared'])
+    native_bound = F(steps*steps, 2*len(graph.seams))*residual_upper+F(steps, 1 << 45)
+    native_error = float(np.linalg.norm(native_cosine-expected*mode[:graph.ports]))
+    if native_error > float(native_bound)+1e-12:
+        raise ArithmeticError('the packet clock exceeded its actual-native Chebyshev residual')
+    cell = mode[:graph.ports].reshape(graph.cells, 12).sum(axis=1)/math.sqrt(12)
+    from ..observer import native
+    initial = (1,)*(graph.ports//3)+(0,)*(2*graph.ports//3)
+    port = next(i for i, neighbors in enumerate(graph.neighbours)
+                if len(neighbors) == 5 and any(initial[i] != initial[j] for j in neighbors))
+    records, counts, expected_field = [], Counter(), 0.
+    before_field = float(np.dot(mode[:graph.ports], initial))
+    for index, seam in enumerate(graph.seams):
+        for coin in (0, 1):
+            after, (_, current_record) = native.native(initial, seam, coin)
+            tick = int(port in seam)
+            records.append((index, coin, current_record, tick))
+            counts[tick, int(bool(tick and current_record))] += 1
+            a, b = seam
+            decoded_field = before_field+current_record*(mode[b]-mode[a])
+            if abs(decoded_field-np.dot(mode[:graph.ports], after)) > 2e-13:
+                raise ArithmeticError('native current records do not decode the encoded packet field')
+            expected_field += decoded_field/(2*len(graph.seams))
+    native_field_target = float(initial@kernel@mode[:graph.ports])
+    if abs(expected_field-native_field_target) > 2e-12 or not counts[1, 0]:
+        raise ArithmeticError('the complete native packet/incident-clock law changed')
+    clock_marginal = []
+    for tick in (0, 1):
+        once = source['decode']@(raw_step@encoded if tick else encoded)
+        decoded_once = source_compiler.execute(read_word, 9, once.T.reshape(512))
+        law = abs(decoded_once)**2
+        parity = [sum(float(value) for j, value in enumerate(law)
+                      if ((j & 1)+(j >> 8)) % 2 == sign) for sign in (0, 1)]
+        mass = sum(value for (mark, _), value in counts.items() if mark == tick)
+        clock_marginal.append({'incident': tick, 'native_branch_count': mass,
+            'joint_reference_parity_probabilities': [mass*x/(2*len(graph.seams)) for x in parity]})
+    word = source['words']['decode']+phase_word+source['words']['encode']
+    pulses = len(bell_word)+len(source['words']['encode'])+steps*len(word)+len(source['words']['decode'])+len(read_word)
+    rounded = lambda x: F(math.ceil(x*10**12), 10**12)
+    return {'source_level': 0, 'native_ports': graph.ports, 'protected_work_addresses': 256,
+        'retained_work_padding_addresses': list(range(graph.ports, 256)),
+        'selection': '(12I-L)^1024 applied to cell0 minus cell1, with integer gcd reduction',
+        'integer_profile_sha256': hashlib.sha256(json.dumps(data['integer_profile']).encode()).hexdigest(),
+        'exact_profile_sum': sum(data['integer_profile']),
+        'maximum_profile_integer_bits': max(abs(x).bit_length() for x in data['integer_profile']),
+        'rayleigh_eigenvalue_interval': [rounded(rayleigh)-F(1, 10**12), rounded(rayleigh)],
+        'exact_residual_norm_upper': residual_upper,
+        'cell_visible_weight_lower': rounded(data['cell_visible_weight'])-F(1, 10**12),
+        'cell_readout_profile': cell.tolist(),
+        'native_internal_fixture_has_zero_cell_compression': True,
+        'packet_is_an_exact_native_eigenvector': False,
+        'source_encoder_complete_Frobenius_error': source['encoding_error'],
+        'source_decoder_complete_Frobenius_error': source['decoding_error'],
+        'source_isometry_numerical_guard': source['guard'],
+        'encoder_word_sha256': hashlib.sha256(json.dumps(source['words']['encode'], sort_keys=True).encode()).hexdigest(),
+        'incident_triggers': steps, 'native_phase_per_trigger': theta,
+        'phase_dictionary': 'theta=acos(1-Rayleigh/(2M)), M=630; wave t=N/sqrt(630)',
+        'clock_port': port,
+        'complete_native_one_attempt_record_sha256': hashlib.sha256(json.dumps(records).encode()).hexdigest(),
+        'complete_native_one_attempt_record_counts': [
+            {'incident': tick, 'nonzero_incident_current': current_record, 'count': count}
+            for (tick, current_record), count in sorted(counts.items())],
+        'complete_one_attempt_clock_reference_marginal': clock_marginal,
+        'packet_field_native_current_decoder': 'F(after)=F(before)+current*(v_b-v_a)',
+        'native_record_mean_field_residual': abs(expected_field-native_field_target),
+        'complete_system_reference_probabilities': probabilities.tolist(),
+        'source_reference_parity_contrast': contrast,
+        'native_packet_cosine_residual_diagnostic': native_error,
+        'native_packet_cosine_residual_upper': native_bound,
+        'source_readout_error_upper': observable_bound,
+        'source_step_complete_target_error': float(np.linalg.norm(raw_step-desired_step, 'fro')),
+        'resources': {'encoder_pulses': len(source['words']['encode']), 'clock_pulses_per_trigger': len(word),
+            'total_source_pulses': pulses, 'proper_code_load_events': pulses, 'proper_code_export_events': pulses,
+            'protected_work_qubits': 8, 'reference_qubits': 1, 'complete_terminal_addresses': 512,
+            'classical_profile_construction_integer_iterations': 1024,
+            'initial_blank_storage_controller_and_paused_services_supplied': True},
+        'full_register_input_columns_checked': 256,
+        'cell_visible_finite_native_packet_encoded_and_read': True,
+        'unbounded_growing_encoder_or_nonconstant_continuum_mode_selected': False,
+        'prepared_thermal_state_radial_law_or_physical_seconds_derived': False}
+
+
 def product_mode_source_control(native_eigenvalue=6, radial_mode=1, radial_points=3,
                                 length=F(2), level=0, inverse_temperature=F(1), steps=25):
     """Compile a product mode from the native angular clock and a radial axis.
@@ -1772,6 +2015,7 @@ def run():
         'source_encoded_quantum_fluctuation': quantum_fluctuation_control(),
         'faithful_thermal_modular_encoding': faithful_modular_encoding_control(),
         'product_thermal_active_clock_encoding': product_clock_encoding_control(),
+        'cell_visible_native_packet_encoding': cell_visible_packet_control(),
         'native_weighted_form_control': native_weighted_form_control(),
         'native_heat_support_control': native_heat_support_control(),
         'continuum_finite_speed_bounds': [finite_speed_bounds(l) for l in (0, 1, 2, 4, 10)],

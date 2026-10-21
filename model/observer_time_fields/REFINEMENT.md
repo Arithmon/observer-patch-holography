@@ -1916,6 +1916,52 @@ full-port bands uses the spatial compression/resolvent theorem, not
 equality of a finite full-port matrix with its cell Schur complement.
 No growing nonconstant-mode encoder is executed.
 
+The finite cell-visible encoder uses the actual level-zero 240-port
+Laplacian directly. Starting from the disclosed cell contrast
+`w0=(1 on cell0,-1 on cell1,0 elsewhere)`, it forms
+`w=(12I-L)^1024 w0` by exact integer arithmetic and gcd reduction.
+The normalized packet `v=w/||w||` has exact zero mean, Rayleigh quotient
+`lambda=<v,Lv>` in `[.044442251696,.044442251697]`, residual
+`||(L-lambda)v||<.000304`, and cell-visible squared weight
+`||V* v||^2>.996458773594`, where `V` is the normalized cell embedding.
+This deterministic polynomial fixes a packet without a numerical
+eigensolver or an externally supplied mode. Its nonzero residual is kept;
+it is not declared an exact eigenvector or an independently identified
+continuum mode.
+
+Two Householder reflections map logical addresses zero and one to the
+native constant and this packet. Each reflection is compiled as a source
+binary-tree state preparation, a zero-address phase, and the inverse
+preparation. The resulting eight-qubit word is executed on all 256 input
+columns; all sixteen padding addresses remain outputs. A source-prepared
+Bell reference, the encoder, its source phase and inverse decoder give a
+512-address interference readout. Each incident trigger applies the
+phase `theta=acos(1-lambda/(2M))`, `M=630`, to the encoded packet.
+The whole-register pulse word implements this restricted phase operation;
+it does not replace the full native propagator by a target matrix.
+
+For the actual native compression `K=I-L/(2M)`, the spectral theorem and
+`sup_[-1,1]|T_n'|<=n^2` give
+
+```text
+||T_n(K)v-cos(n theta)v|| <= n^2 ||(L-lambda)v||/(2M).
+```
+
+The retained 25-trigger native discrepancy is about `.000149026`, below
+this bound; source synthesis and phase rounding are charged separately.
+Its wave parameter is `t=n/sqrt(630)`, with the same angular dispersion
+correction as (PC). The native one-attempt census retains all 1,260
+seam/coin/current records, including incident events with zero current.
+Those records decode the same packet field through
+`F(after)=F(before)+current*(v_b-v_a)` and trigger its reference readout.
+The 25-trigger encoded experiment costs 1,747,068 source pulses, each
+with one proper-code load and export, on eight work qubits and one
+reference qubit. Supplied storage, controller access, initial preparation
+and paused coherent services remain premises. This is a cell-visible
+finite native packet encoder, separate from the prepared twelve-state
+Gibbs marginal; it does not construct the full growing mode family,
+thermal selection, radial apparatus or laboratory units.
+
 The native fixed-port incident count has mean `2d*4^l` per density
 parameter unit `tau`, for `d=5` or `6`. Hence the product word has wave
 parameter `t=(2d/sqrt(630)) tau`, just as the angular clock. On a bounded

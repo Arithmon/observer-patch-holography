@@ -624,6 +624,127 @@
     "two_attempt_native_record_tapes_per_starting_port": 25401600,
     "zero_current_records_included": true
   },
+  "native_optical_front": {
+    "constant_coefficient_displacement": [
+      "1",
+      "2",
+      "-1"
+    ],
+    "constant_coefficient_optical_distance_squared": "730799/5039",
+    "continuum_front_scope": {
+      "complete_local_cosine_and_retarded_sine_onset_equals_intrinsic_set_distance": true,
+      "finite_coefficient_average_is_the_limiting_metric": false,
+      "one_fixed_detector_must_see_every_signal": false,
+      "onset_is_an_infimum_not_a_claim_of_response_at_the_front": true,
+      "radial_design_active_wave_and_clock_contracts_required": true,
+      "smooth_null_geodesics_or_fastest_native_transport_identified": false
+    },
+    "dark_native_mode": {
+      "continuous_matrix_cosine_cross_seam_t_squared_coefficient": "1/2",
+      "finite_matrix_wave_has_a_positive_hard_arrival_delay": false,
+      "first_carrier_profile": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "full_port_eigenvector_identity_exact": true,
+      "full_port_laplacian_eigenvalue": "6",
+      "native_seams": 630,
+      "other_ports_zero": true,
+      "ports": 240,
+      "remote_detector_port": 82,
+      "signed_mode_response_at_remote_detector_for_every_wave_parameter": "0",
+      "transmitting_seam": [
+        1,
+        82
+      ],
+      "uniform_first_carrier_one_attempt_probability_at_detector": "1/15120"
+    },
+    "declared_interval_constant_mode_front": {
+      "angular_mode": "restored normalized constant",
+      "boundary": "Dirichlet",
+      "detector_interval": [
+        "2",
+        "5/2"
+      ],
+      "essential_set_distance": "1/2",
+      "initial_interval": [
+        "1",
+        "3/2"
+      ],
+      "mean_zero_angular_projection_erases_this_control": true,
+      "radial_interval": [
+        "0",
+        "4"
+      ],
+      "readouts": [
+        {
+          "cosine_pairing": "0",
+          "retarded_sine_pairing": "0",
+          "wave_parameter": "1/4"
+        },
+        {
+          "cosine_pairing": "0",
+          "retarded_sine_pairing": "0",
+          "wave_parameter": "1/2"
+        },
+        {
+          "cosine_pairing": "1/16",
+          "retarded_sine_pairing": "1/256",
+          "wave_parameter": "5/8"
+        },
+        {
+          "cosine_pairing": "1/8",
+          "retarded_sine_pairing": "1/64",
+          "wave_parameter": "3/4"
+        }
+      ]
+    },
+    "declared_radial_coefficient": "1",
+    "density_measure_does_not_change_optical_tensor": true,
+    "metric_null_vector_identity_exact": true,
+    "native_coefficient_readout": {
+      "averaged_screen_tensor": [
+        [
+          "5039/181440",
+          "-5039/362880"
+        ],
+        [
+          "-5039/362880",
+          "5039/181440"
+        ]
+      ],
+      "cells": 80,
+      "density_parameter": "1/10080",
+      "finite_value_is_identified_with_continuum_tensor": false,
+      "kernel": "full-port native records; no cell reset or mean-zero projection",
+      "level": 1,
+      "native_attempts": 2,
+      "native_seams": 2520,
+      "nonzero_chart_weights": 1,
+      "ports": 960,
+      "preparation": "disclosed total one; chart-weighted starting cell and uniform port"
+    },
+    "null_set_representative_control": {
+      "alteration": "multiply the constant tensor by four only on the displacement line",
+      "energy_form_heat_wave_and_intrinsic_distance_unchanged": true,
+      "naive_curve_length_squared_on_that_line": "730799/20156",
+      "unmodified_constant_optical_distance_squared": "730799/5039"
+    },
+    "optical_dual_energy_saturated_exactly": true,
+    "rescaled_optical_distance_squared": "2923196/45351",
+    "spatial_chart_covariance_exact": true,
+    "wave_coordinate_change_t_equals_rate_times_tau": "3/2"
+  },
   "product_wave_metric": {
     "action_density": [
       [
@@ -2125,7 +2246,7 @@
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/relative_observer_geometry/__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
-    "model/relative_observer_geometry/intrinsic_geometry.py": "9da30df1887650e8fbc1ac7f260f554a7b05cd5f1b08a816e62fa030d53ec9b5",
+    "model/relative_observer_geometry/intrinsic_geometry.py": "002319abe691caf93c8d3f2cdac071c74f54593382559028a7ccd71a40ff57da",
     "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",

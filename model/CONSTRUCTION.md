@@ -195,6 +195,11 @@ Complete native total-one calibration records also determine conditional
 coordinate increments. Spatial refinement at fixed density time, followed by
 short-time polarization and chart localization, recovers the angular tensor.
 The one-attempt-first limit and a finite cell-reset kernel fail explicit controls.
+For the declared product wave, intrinsic energy distance equals the earliest
+possible nonzero operator response between positive-measure regions. This
+uses integrated short-time heat asymptotics and heat-wave transmutation;
+a chosen detector can remain dark. It requires neither pointwise smooth
+coefficients nor an identification with native repair speed.
 The interval, preparation, spectral access and controls remain supplied;
 growing nonconstant-mode compilation, smoothness and physical identification
 are unproved. The restored angular constant has positive product frequency.
@@ -216,11 +221,15 @@ physical apparatus certificates.
 All eleven constant-to-mode fluctuation pairs inherit their covariance,
 commutator and clock frequencies from this one density. Three representative
 bands have complete source pointer readouts of an ordered Weyl product;
-independent successful copies give a finite-copy error bound. They are a
-preparation premise, and the growing copy register is not executed. A positive-log
-bound states the cap and source-precision scaling required for the square-root
-clock limit; fixed caps do not implement it. This does not prepare the spatial
-product Fock state. Geometric entropy stationarity, physical gauge collars and
+independent successful copies give a finite-copy error bound. The joint
+copy/band estimate scales as `Z/N` for fixed positive gap and probe bounds;
+`N` proportional to dimension can fail. Postselection error is amplified by
+the copy count, so fixed source precision cannot justify this limit. Scaling
+coordinate and momentum by inverse square root and square root frequency
+respectively gives the thermal covariance and unit-normalized sine response.
+The positive-log bound then connects the same clock to square-root dynamics.
+This is a conditional joint limit, not an executed growing product Fock
+preparation; the positive radial product additionally needs an anchor sector. Geometric entropy stationarity, physical gauge collars and
 full-group sewing remain separate obligations.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing

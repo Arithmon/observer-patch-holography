@@ -360,12 +360,16 @@ The [same-register continuation](predictions/README.md#prepared-reference-clock)
 executes its positive-log clock and complete pair detectors. Its single density
 also fixes eleven algebraic fluctuation pairs, with three source-read band
 representatives and a finite-copy ordered-Weyl bound. Independent successful
-copies remain a declared preparation; no growing spatial field encoder is
-executed. The cap/filter/precision bound controls a bounded-band square-root
-clock limit, with fixed caps as a failed control. Native conditional increment
-records recover the angular tensor only in the declared ordered limits, not
-from a single finite short-time derivative. Physical collars, interactions,
-observational identification and the product Fock preparation remain unproved.
+copies remain a declared preparation. The joint copy/band estimate charges
+partition-function growth, herald success and complete source error; frequency
+normalization fixes the field covariance and sine response from the same clock.
+A cell-visible nonconstant native packet has an executed source encoder and
+spectral-residual bound, but a growing spatial encoder is unexecuted.
+Native conditional increments recover the angular tensor in ordered limits.
+That tensor's intrinsic distance is the exact first possible operator response
+of the declared product wave; a single detector need not see its front.
+Physical collars, interactions, observational identification and the product
+Fock preparation remain unproved.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint

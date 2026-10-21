@@ -610,3 +610,151 @@ def test_prepared_optical_comparison_covers_every_fixed_gap_assignment_without_r
     assert result["declared_absolute_per_gap_attachment_error"] > 10*result["numerically_checked_clock_operator_guard"]
     assert not result["prospective_prediction_or_OPH_exclusion"]
     assert not result["standard_uncertainties_or_numerical_guards_are_physical_hard_bounds"]
+
+
+def test_rank_supported_fourth_derivative_and_physical_field_norm():
+    from itertools import product
+    data = clock.shared_fluctuation_modes()
+    rho = data["density"][:12, :12]
+    random = np.random.default_rng(21102026)
+    matrices, radii = [], []
+    for _ in range(3):
+        f, h = random.normal(size=(2, 11))/100
+        a, radius = np.zeros((12, 12), complex), 0.
+        expected_norm_squared = 0.
+        for j, mode in enumerate(data["modes"]):
+            omega = mode["gap"]
+            a += (f[j]*mode["Q"][:12, :12]/math.sqrt(omega)
+                  +h[j]*mode["P"][:12, :12]*math.sqrt(omega))
+            term = f[j]**2/omega+h[j]**2*omega
+            radius += term
+            expected_norm_squared += term/(2*mode["delta"])
+        assert np.linalg.norm(a, 2)**2 == pytest.approx(expected_norm_squared)
+        matrices.append(a)
+        radii.append(math.sqrt(radius))
+    span = np.column_stack((np.eye(12)[:, 0], *[a[:, 0] for a in matrices]))
+    orthogonal = np.linalg.qr(span)[0]
+    projection = orthogonal@orthogonal.conj().T
+    for a in matrices:
+        np.testing.assert_allclose(projection@a@projection, a, atol=2e-14, rtol=0)
+    weight = np.trace(rho@projection).real
+    assert weight <= 4*rho[0, 0].real+1e-15
+    derivative = np.zeros((12, 12), complex)
+    for powers in product(range(5), repeat=3):
+        if sum(powers) != 4:
+            continue
+        coefficient = math.factorial(4)/math.prod(math.factorial(k) for k in powers)
+        term = np.eye(12, dtype=complex)
+        for a, k in zip(matrices, powers, strict=True):
+            term = np.linalg.matrix_power(1j*a, k)@expm(.31j*a)@term
+        derivative += coefficient*term
+    np.testing.assert_allclose(projection@derivative@projection, derivative, atol=2e-12, rtol=0)
+    norm_sum = sum(np.linalg.norm(a, 2) for a in matrices)
+    assert abs(np.trace(rho@derivative)) <= weight*norm_sum**4
+    copies = 4096
+    unitary = np.eye(12, dtype=complex)
+    for a in matrices:
+        unitary = expm(1j*a/math.sqrt(copies))@unitary
+    c = sum(np.trace(rho@a@a)/2 for a in matrices)
+    c += sum(np.trace(rho@matrices[j]@matrices[i]) for j in range(3) for i in range(j))
+    bound = clock.growing_fluctuation_bound(12, copies,
+        tuple(F(math.ceil(r*10**10), 10**10) for r in radii),
+        gap_floor=F(1, 100), inverse_temperature=F(1))
+    assert abs(np.trace(rho@unitary)**copies-np.exp(-c)) <= float(bound["finite_copy_gaussian_error_upper"])
+
+
+def test_growing_dimension_requires_copy_growth_and_correct_field_normalization():
+    result = clock.growing_field_controls()
+    rows = result["finite_family"]
+    # |cos sqrt(x)-cos sqrt(y)|<=|x-y|/2 and the log1p
+    # remainder give an elementary 2/d bound for d>=16.
+    assert abs(rows[-1]["copy_controls"][0]["characteristic"]-result["N_equals_dimension_limit"]) < 2/rows[-1]["dimension"]
+    assert abs(result["N_equals_dimension_limit"]-result["gaussian_characteristic"]) > .01
+    linear_copy_errors = [row["copy_controls"][0]["gaussian_error"] for row in rows]
+    assert linear_copy_errors[-1] > .01
+    assert all(b > a > 0 for a, b in zip(linear_copy_errors, linear_copy_errors[1:]))
+    errors = [row["copy_controls"][1]["gaussian_error"] for row in rows]
+    assert all(a > b for a, b in zip(errors, errors[1:]))
+    for row in result["finite_prepared_clock_normalization"]:
+        raw = complex(*row["raw_operator_norm_scaled_two_point"])*row["operator_norm_squared"]
+        target = complex(*row["ideal_ordered_two_point"])
+        assert abs(raw-target) <= row["source_numerical_error_upper"]
+        assert row["normalized_retarded_derivative_at_zero"] == 1
+        assert row["unscaled_Q_retarded_derivative_at_zero_control"] < .05
+    totals = [row["total_ordered_characteristic_error_upper"]
+              for row in result["sufficient_full_port_resource_schedule"]]
+    assert all(a > b > 0 for a, b in zip(totals, totals[1:]))
+    assert not result["finite_clock_frequencies_identified_with_sqrt_native_L"]
+
+
+def test_conditioning_and_partition_bounds_charge_growing_resources():
+    kwargs = dict(gap_floor=F(1, 2), inverse_temperature=F(1),
+                  complete_preparation_error=F(1, 10**9), success_lower=F(1, 1000))
+    low = clock.growing_fluctuation_bound(1000, 1000, (F(1),), **kwargs)
+    assert low["conditional_state_trace_norm_error_upper"] == F(1, 250000)
+    assert low["N_copy_raw_source_error_upper"] == F(1, 249)
+    assert low["expected_preparation_attempts_upper"] == 1000000
+    traced = clock.growing_fluctuation_bound(1000, 1000, (F(1),), partition_upper=F(2), **kwargs)
+    assert traced["finite_copy_gaussian_error_upper"] < low["finite_copy_gaussian_error_upper"]
+    assert traced["N_copy_raw_source_error_upper"] == low["N_copy_raw_source_error_upper"]
+    exhausted = clock.growing_fluctuation_bound(1000, 10**6, (F(1),), **kwargs)
+    assert exhausted["N_copy_raw_source_error_upper"] is None
+    assert exhausted["total_ordered_characteristic_error_upper"] is None
+    no_success = clock.growing_fluctuation_bound(12, 10, (F(1),), gap_floor=F(1),
+        inverse_temperature=F(1), complete_preparation_error=F(1, 4), success_lower=F(1, 2))
+    assert no_success["conditional_state_trace_norm_error_upper"] is None
+
+
+def test_gap_and_time_error_bound_controls_the_whole_ordered_exponent():
+    # Independent phase-space calculation; the change in prepared gaps also
+    # changes thermal noise, not only the rotation frequency.
+    random = np.random.default_rng(2102026)
+    frequencies = np.array([.3, .7, 1.2])
+    gap_error, beta, duration, gamma = F(1, 100), F(2), F(3), F(1, 2)
+    gaps = 2*frequencies+np.array([.01, -.01, .005])
+    vectors = random.normal(size=(3, 3, 2))/10
+    times = [-2., .5, 3.]
+    radii = tuple(F(math.ceil(np.linalg.norm(v)*10**10), 10**10) for v in vectors)
+    def exponent(source_gaps):
+        rotated = []
+        for v, time in zip(vectors, times, strict=True):
+            angles = source_gaps*time/float(beta)
+            c, s = np.cos(angles), np.sin(angles)
+            rotated.append(np.column_stack((c*v[:, 0]-s*v[:, 1], s*v[:, 0]+c*v[:, 1])))
+        noise = .5/np.tanh(source_gaps/2)
+        def two(a, b):
+            return np.sum(noise*np.sum(a*b, axis=1)
+                          +.5j*(a[:, 0]*b[:, 1]-a[:, 1]*b[:, 0]))
+        return sum(two(v, v)/2 for v in rotated)+sum(two(rotated[j], rotated[i])
+                            for j in range(3) for i in range(j))
+    bound = clock.growing_fluctuation_bound(4, 1000, radii, gap_floor=gamma,
+        inverse_temperature=beta, clock_gap_error=gap_error, maximum_time=duration)
+    assert abs(exponent(gaps)-exponent(2*frequencies)) < float(bound["clock_and_common_spectral_error_upper"])
+
+
+def test_vanishing_single_copy_state_error_does_not_ensure_joint_field_limit():
+    # A positive coherent preparation error O(N^-1/2) vanishes on each
+    # register but leaves a finite collective mean phase. Parity is broken.
+    p0, p1, strength = 2/3, 1/3, .1
+    qnorm, gaussian = math.sqrt(1.5), math.exp(-.75)
+    for copies in (100, 1000, 10000):
+        perturbation = strength/math.sqrt(copies)
+        assert p0*p1 > perturbation**2
+        angle = qnorm/math.sqrt(copies)
+        single = complex(math.cos(angle), 2*perturbation*math.sin(angle))
+        assert abs(single**copies-gaussian) > .1
+    expected = gaussian*np.exp(2j*strength*qnorm)
+    assert abs(single**copies-expected) < 1e-4
+
+
+@pytest.mark.parametrize("changes", (
+    {"dimension": True}, {"copies": 0}, {"factor_radii": [F(1)]},
+    {"factor_radii": (0.1,)}, {"gap_floor": F(0)},
+    {"inverse_temperature": F(0)}, {"success_lower": F(0)},
+    {"partition_upper": F(13)}, {"clock_gap_error": F(-1)}))
+def test_growing_field_contract_rejects_unstated_or_nonpositive_domains(changes):
+    values = dict(dimension=12, copies=100, factor_radii=(F(1),),
+                  gap_floor=F(1), inverse_temperature=F(1))
+    values.update(changes)
+    with pytest.raises(ValueError):
+        clock.growing_fluctuation_bound(**values)

@@ -82,7 +82,11 @@ representatives have complete source pointer readouts, and a quantitative
 ordered-Weyl limit assumes independent successful copies. A bounded-band
 positive-log estimate connects the clock to square-root dynamics under explicit
 cap/filter/precision scaling. This fixed execution supplies neither the growing
-nonconstant product-mode encoder nor the original scalar benchmark.
+nonconstant product-mode encoder nor the original scalar benchmark. A separate
+compiled full-port packet has nonzero cell compression and an explicit residual
+bound. Joint copy/band convergence requires vanishing `Z/N`, amplified
+postselection/source error and common spectral-tail error; finite-dimensional
+CCR convergence alone is insufficient.
 
 ### One complete joint observer comparison
 

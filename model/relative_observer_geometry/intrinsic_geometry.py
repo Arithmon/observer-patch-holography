@@ -565,6 +565,129 @@ def native_increment_control():
         'native_time_is_identified_with_wave_or_lab_time': False}
 
 
+def constant_optical_separation(spatial_tensor, displacement, time_weight=1):
+    """Exact constant-coefficient optical duality, not a rough-metric ruler.
+
+    For C=mu*diag(-w,a), the optical tensor is w*a^-1.  A coefficient
+    averaged from finite native records can test this identity, but its
+    constant extension is not the continuum coefficient field.
+    """
+    data = wave_density_metric(spatial_tensor, time_weight=time_weight)
+    try:
+        values = list(displacement)
+    except TypeError as exc:
+        raise ValueError('three exact rational displacement components required') from exc
+    if len(values) != 3 or any(type(v) not in (int, F) and
+                               not isinstance(v, sp.Rational) for v in values):
+        raise ValueError('three exact rational displacement components required')
+    vector = sp.Matrix([sp.Rational(v) for v in values])
+    optical = sp.simplify(data['metric'][1:, 1:]/(-data['metric'][0, 0]))
+    squared = sp.simplify((vector.T*optical*vector)[0])
+    dual = optical*vector/sp.sqrt(squared) if squared else sp.zeros(3, 1)
+    return {'optical_tensor': optical, 'distance_squared': squared,
+            'maximizing_covector': sp.simplify(dual)}
+
+
+def radial_front_readout(wave_parameter):
+    """Exact product-wave comparison on its restored angular constant mode.
+
+    Declare radial interval (0,4), Dirichlet endpoints, initial interval
+    (1,3/2) and detector (2,5/2). For 0<=t<=1 no reflected wave reaches
+    this detector. Values are unnormalized L2 pairings; angular mass is one.
+    """
+    if (type(wave_parameter) not in (int, F) and
+            not isinstance(wave_parameter, sp.Rational)):
+        raise ValueError('an exact wave parameter in [0,1] is required')
+    t = F(wave_parameter)
+    if not 0 <= t <= 1:
+        raise ValueError('an exact wave parameter in [0,1] is required')
+    overlap = max(F(0), min(F(5, 2), F(3, 2)+t)-max(F(2), F(1)+t))
+    cosine = overlap/2  # the left-moving copy has no overlap in this window
+    sine = max(F(0), t-F(1, 2))**2/4
+    return {'wave_parameter': str(t), 'cosine_pairing': str(cosine),
+            'retarded_sine_pairing': str(sine)}
+
+
+def native_optical_front_control():
+    """Native coefficient duality and controls on what a wave front means."""
+    native_tensor = native_chart_increment(1, 2)
+    a = sp.diag(1, sp.Matrix(native_tensor['averaged_screen_tensor']))
+    displacement = sp.Matrix([1, 2, -1])
+    separation = constant_optical_separation(a.tolist(), displacement)
+    squared, dual = separation['distance_squared'], separation['maximizing_covector']
+    if sp.simplify((dual.T*a*dual)[0]-1) != 0:
+        raise ArithmeticError('optical covector must saturate the energy constraint')
+    if sp.simplify((dual.T*displacement)[0]-sp.sqrt(squared)) != 0:
+        raise ArithmeticError('optical dual readout must equal its separation')
+    metric = wave_density_metric(a.tolist(), F(1, 10))['metric']
+    null_vector = sp.Matrix([sp.sqrt(squared), *displacement])
+    if sp.simplify((null_vector.T*metric*null_vector)[0]) != 0:
+        raise ArithmeticError('optical separation disagrees with the wave metric')
+    change = sp.Matrix([[1, 0, 0], [0, 2, 1], [0, 1, 1]])
+    transformed = constant_optical_separation(
+        (change.inv()*a*change.inv().T).tolist(), change.inv()*displacement)
+    rate = sp.Rational(3, 2)
+    rescaled = constant_optical_separation(a.tolist(), displacement, 1/rate**2)
+    if transformed['distance_squared'] != squared or rescaled['distance_squared'] != squared/rate**2:
+        raise ArithmeticError('optical separation lost chart or clock covariance')
+
+    # This full-port eigenmode is compactly supported on carrier zero and
+    # vanishes at its external seam ports.  A remote detector is dark even
+    # though a positive local preparation crosses the same seam.
+    graph, rows, denominator = _native_density_rows(0)
+    profile = (0, 0, 0, 0, 1, -1, -1, 1, 0, 0, 0, 0)+(0,)*(graph.ports-12)
+    transfer = tuple(sum(count*profile[q] for q, count in row) for row in rows)
+    if any(value != (denominator-6)*profile[p] for p, value in enumerate(transfer)):
+        raise ArithmeticError('the actual full-port dark mode is not an eigenmode')
+    crossing = next((p, q) for p, q in graph.inter_seams if p < 12 <= q)
+    origin, target = crossing
+    positive = sum(F(count, 12*denominator) for p, count in rows[target] if p < 12)
+    if profile[origin] != 0 or positive <= 0 or transfer[target] != 0:
+        raise ArithmeticError('the dark-mode control did not retain a transmitting seam')
+    altered = constant_optical_separation((4*a).tolist(), displacement)
+    if altered['distance_squared'] != squared/4:
+        raise ArithmeticError('null-line representative control lost its length distinction')
+    return {
+        'native_coefficient_readout': native_tensor,
+        'declared_radial_coefficient': '1',
+        'constant_coefficient_displacement': [str(v) for v in displacement],
+        'constant_coefficient_optical_distance_squared': str(squared),
+        'optical_dual_energy_saturated_exactly': True,
+        'metric_null_vector_identity_exact': True,
+        'spatial_chart_covariance_exact': True,
+        'wave_coordinate_change_t_equals_rate_times_tau': str(rate),
+        'rescaled_optical_distance_squared': str(rescaled['distance_squared']),
+        'density_measure_does_not_change_optical_tensor': True,
+        'dark_native_mode': {
+            'ports': graph.ports, 'native_seams': len(graph.seams),
+            'first_carrier_profile': list(profile[:12]), 'other_ports_zero': True,
+            'full_port_laplacian_eigenvalue': '6',
+            'full_port_eigenvector_identity_exact': True,
+            'remote_detector_port': target, 'transmitting_seam': list(crossing),
+            'signed_mode_response_at_remote_detector_for_every_wave_parameter': '0',
+            'uniform_first_carrier_one_attempt_probability_at_detector': str(positive),
+            'continuous_matrix_cosine_cross_seam_t_squared_coefficient': '1/2',
+            'finite_matrix_wave_has_a_positive_hard_arrival_delay': False},
+        'declared_interval_constant_mode_front': {
+            'radial_interval': ['0', '4'], 'boundary': 'Dirichlet',
+            'initial_interval': ['1', '3/2'], 'detector_interval': ['2', '5/2'],
+            'essential_set_distance': '1/2', 'angular_mode': 'restored normalized constant',
+            'readouts': [radial_front_readout(t) for t in (F(1, 4), F(1, 2), F(5, 8), F(3, 4))],
+            'mean_zero_angular_projection_erases_this_control': True},
+        'null_set_representative_control': {
+            'alteration': 'multiply the constant tensor by four only on the displacement line',
+            'energy_form_heat_wave_and_intrinsic_distance_unchanged': True,
+            'naive_curve_length_squared_on_that_line': str(altered['distance_squared']),
+            'unmodified_constant_optical_distance_squared': str(squared)},
+        'continuum_front_scope': {
+            'complete_local_cosine_and_retarded_sine_onset_equals_intrinsic_set_distance': True,
+            'onset_is_an_infimum_not_a_claim_of_response_at_the_front': True,
+            'finite_coefficient_average_is_the_limiting_metric': False,
+            'one_fixed_detector_must_see_every_signal': False,
+            'smooth_null_geodesics_or_fastest_native_transport_identified': False,
+            'radial_design_active_wave_and_clock_contracts_required': True}}
+
+
 def run():
     uniform_records = ng.execute_calibration()
     uniform = ng.recover(uniform_records)
@@ -624,6 +747,7 @@ def run():
         'full_response_metric': inverse_response_metric(laplacian),
         'product_wave_metric': product_wave_metric_control(),
         'native_increment_metric': native_increment,
+        'native_optical_front': native_optical_front_control(),
         'incomplete_exposure_control': {'exposed_seams': len(missing['seams']),
             'rank_three_structural_gram_certified': missing['rank_three_structural_gram_certified']},
         'scope': {'federation_needed_for_finite_carrier_result': False,

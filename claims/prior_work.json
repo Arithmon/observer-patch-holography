@@ -336,6 +336,20 @@
       "verification_source": "https://api.crossref.org/works/10.1063/1.1519669"
     },
     {
+      "key": "ariyoshi2005smalltime",
+      "type": "article",
+      "author": "Ariyoshi, Teppei and Hino, Masanori",
+      "title": "Small-time asymptotic estimates in local Dirichlet spaces",
+      "journal": "Electronic Journal of Probability",
+      "volume": "10",
+      "pages": "1236--1259",
+      "year": "2005",
+      "doi": "10.1214/EJP.v10-286",
+      "verified": true,
+      "verification_source": "https://www.maths.tcd.ie/EMIS/journals/EJP-ECP/article/download/286/286-793-1-PB.pdf",
+      "note": "Theorem 2.7: integrated short-time heat asymptotics for symmetric local forms, with nest-local intrinsic distance; conservativity is not required."
+    },
+    {
       "key": "arnold1989mathematical",
       "type": "book",
       "author": "Arnold, V. I.",
