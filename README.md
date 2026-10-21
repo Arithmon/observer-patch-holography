@@ -47,6 +47,18 @@ and the clocks inside it.
   screens of up to 245,760 ports, and on a refining screen one repair history
   defines a continuum field with Gaussian fluctuations and waves of finite
   speed.
+- **Relativistic field theory as the observers' effective description.** On
+  a declared radial product over that screen, the native wave action has a
+  Lorentz-signature density, and for every finite set of the observers'
+  clock, field and response readouts one smooth static (1+3)-dimensional
+  Lorentzian field theory reproduces them all to any chosen tolerance. The
+  [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
+  states the limits: the exact native metric is not smooth in its present
+  atlas, and the radial design is supplied. The carrier's own current
+  records do derive a radius: their three-dimensional counter has the
+  standard radial diffusion law from every initial state. Complete
+  measurement histories cannot tell radial designs apart, so tying that
+  radius to the field's radial direction and to physical distance is open.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
@@ -126,7 +138,8 @@ code addresses. On the refining spherical screens one repair history gives a
 whose Gaussian fields, decay and waves live on the two-dimensional screen
 itself. The
 [public-data audit](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) compares
-the conditional scalar tilt with the ACT DR6 posterior chains and tests a
+the conditional scalar tilt with the ACT DR6 posterior chains and an ACT
+likelihood slice, and tests a
 direct attachment of native clock counts to published optical-clock ratios.
 The [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md) separates these
 finite results from extended relativistic spacetime and a calibrated laboratory

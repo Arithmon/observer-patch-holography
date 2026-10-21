@@ -15,7 +15,7 @@
 
 \hypersetup{
   pdftitle={Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics},
-  pdfauthor={Bernhard Mueller; Mario Poneder; Alexander Osika; Kai Xue; Ben Cassie; Peter Nguyen; Jinwook Kim; David Matscheko; Jonathan Hill; William T. Glynn; Maarten Antonie Visser; Kale Arnav Anirudha; Brieuc de La Fourni\`ere},
+  pdfauthor={Bernhard Mueller; Mario Poneder; Alexander Osika; Kai Xue; Ben Cassie; Peter Nguyen; Jinwook Kim; David Matscheko; Daniel Ari Friedman; Jonathan Hill; William T. Glynn; Maarten Antonie Visser; Kale Arnav Anirudha; Brieuc de La Fourni\`ere},
   pdfsubject={Finite observer-patch reconstruction in foundations of physics},
   pdfkeywords={foundations of physics, Observer Patch Holography, observer consensus, executable observer, self-reference, quantum records, gauge structure, Einstein field equation},
   pdflang={en-US}
@@ -44,10 +44,11 @@ Finite Consensus, an Executable Observer, and Standard Physics}
 \normalsize Peter Nguyen\qquad
 \normalsize Jinwook Kim\textsuperscript{4}\qquad
 \normalsize David Matscheko\\[0.5em]
+\normalsize Daniel Ari Friedman\textsuperscript{5,6}\qquad
 \normalsize Jonathan Hill\qquad
 \normalsize William T. Glynn\qquad
-\normalsize Maarten Antonie Visser\qquad
-\normalsize Kale Arnav Anirudha\\[0.5em]
+\normalsize Maarten Antonie Visser\\[0.5em]
+\normalsize Kale Arnav Anirudha\qquad
 \normalsize Brieuc de La Fourni\`ere}
 \date{\small\OPHPaperReleaseDate\quad\textperiodcentered\quad Paper release: \OPHPaperReleaseID}
 
@@ -59,7 +60,9 @@ Finite Consensus, an Executable Observer, and Standard Physics}
 \textsuperscript{1}Pragma Research Inc.\quad
 \textsuperscript{2}Information Physics Institute\quad
 \textsuperscript{3}EtherWorks\quad
-\textsuperscript{4}Oraclizer Labs\\
+\textsuperscript{4}Oraclizer Labs\quad
+\textsuperscript{5}Active Inference Institute\quad
+\textsuperscript{6}FractiAI\\
 \textsuperscript{*}Corresponding author:
 \href{mailto:bernhard@floatingpragma.ai}{\nolinkurl{bernhard@floatingpragma.ai}}
 \end{center}
@@ -81,7 +84,9 @@ field whose feedback response is certified nonzero in the infinite-occupation
 limit. Observers whose regions overlap on one carrier share a single complete
 law of fields, local event clocks and feedback, and on a refining spherical
 screen one repair history defines a common continuum operator for Gaussian
-fields, their decay and finite-speed waves. Finite theorems turn the specification's readouts into familiar
+fields, their decay and finite-speed waves. On a declared radial product over
+that screen, every finite menu of observer readouts admits, to any tolerance,
+one smooth static $(1+3)$-dimensional Lorentzian effective field theory. Finite theorems turn the specification's readouts into familiar
 structure: schedule-independent public records, the Born rule and Tsirelson
 bound on completed records, a carrier whose slow response is exactly three-dimensional, the
 Standard Model gauge Lie algebra with an anomaly-free generation, a
@@ -152,8 +157,12 @@ and a derived effective description assign their joint records the same
 complete law. Joined carriers form spherical screens, and on a refining
 family of screens one native repair history defines a continuum spatial
 operator that governs Gaussian density fields, their decay and admitted
-waves with a finite propagation speed.
-Section~\ref{sec:selected} turns seven readouts of the specification into familiar structure: schedule-independent public records, the quantum identities of completed records, three spatial directions, the gauge algebra with one anomaly-free generation, a continuum field operator on the screen, a causal precursor with record-count clocks, and the Einstein equation up to a cosmological constant.
+waves with a finite propagation speed. Observers of that history can use a
+Lorentzian field theory as their effective description: on a declared radial
+product over the screen, one smooth static $(1+3)$-dimensional metric
+reproduces any finite menu of their joint clock, field and response readouts
+to any prescribed tolerance.
+Section~\ref{sec:selected} turns seven readouts of the specification into familiar structure: schedule-independent public records, the quantum identities of completed records, three spatial directions, the gauge algebra with one anomaly-free generation, a continuum field operator on the screen with its effective $(1+3)$ Lorentzian description, a causal precursor with record-count clocks, and the Einstein equation up to a cosmological constant.
 
 The results have different logical types, and Table~\ref{tab:claim-classes} gives the classes used throughout; each result below carries one of them. Each step is identified by its artifact as a Lean theorem, exact executable certificate, conditional paper argument, numerical receipt, or explicit unproved premise.
 
@@ -212,8 +221,8 @@ Section~\ref{sec:consensus} shows what observers agree on: public normal
 forms and the quantum identities of completed records.
 Section~\ref{sec:selected} develops six results in detail: the three
 spatial directions, the gauge algebra and one generation, measurement inside
-one interacting process, the continuum operator of one repair history, the
-source-derived causal precursor, and the Einstein equation; it lists the
+one interacting process, the continuum operator of one repair history and
+its effective Lorentzian description, the source-derived causal precursor, and the Einstein equation; it lists the
 other results briefly.
 Section~\ref{sec:scoreboard} states the completion target, the acceptance
 criteria and their status. Section~\ref{sec:strange-loop} develops closure.
@@ -1203,8 +1212,67 @@ information per crossing seam vanishes, so neither carries
 a nonzero universal coefficient times the patch's boundary-seam count; a
 reading of the whole screen as the boundary of a three-dimensional region
 is not excluded, and that region map is a premise \cite{ophentropy}.
-Uniqueness of the limit along the whole sequence, Lorentzian symmetry and an
-interacting field on the same screen are open.
+
+Independent native long-block records nevertheless supply a radial product
+field over the screen: on a declared radial interval with Dirichlet ends its
+covariance is $(-\partial_r^2+\bar A)^{-1}$, with spectral dimension three.
+The product wave action has coefficient density $C=\mu\,\mathrm{diag}(-1,a)$,
+where $\mu$ is the native measure and $a$ the measurable spatial tensor, whose
+angular part complete native records recover and whose radial coefficient is
+one. The identity
+\[
+ g=\sqrt{-\det C}\,C^{-1}=\mu\sqrt{\det a}\,\mathrm{diag}(-1,a^{-1})
+\]
+gives signature $(-,+,+,+)$ almost everywhere \cite{ophspine}.
+
+\begin{proposition}[Smooth $(1+3)$ effective descriptions]
+\label{prop:effective-lorentzian}
+Smoothing the angular variables of $\mu$ and $a$, with the radial Dirichlet
+boundary retained, converges in the norm-resolvent sense with spectral gap
+$(\pi/L)^2$. Consequently, for every fixed finite admissible menu of
+observer readouts on bounded wave times (thermal field covariances, responses,
+ordered Weyl and Ramsey histories, detector and reference outputs) and every
+$\varepsilon>0$, one smooth static $(1+3)$-dimensional Lorentzian metric
+carries a free scalar field with the standard canonical and KMS normalization
+whose predictions for the whole menu agree with the native ones within
+$\varepsilon$, plus the declared source and clock budgets.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The native density relative to smooth sphere volume is positive and globally
+Lipschitz. The unitary $U_\varepsilon f=\sqrt{\rho_\varepsilon/\rho}\,f$
+between the changing and fixed $L^2$ spaces converges on the form domain;
+Rellich compactness, recovery sequences and the dual energy liminf give
+transported Mosco convergence, which compact resolvents and
+self-adjointness upgrade to norm-resolvent convergence. Thermal covariance
+and sine response then converge in operator norm, momentum covariance on the
+form domain, and every fixed finite history with them
+\cite{ophspine,mosco1994}.
+\end{proof}
+
+The observers therefore have the effective description that standard physics
+uses, a Lorentzian field theory in $1+3$ dimensions, as a theorem about their
+own readouts. Its scope is stated with it. The exact native measure, the
+radial pushforward of flat face area, is not $C^1$ across the original face
+edges, so the proposition asserts no exact smooth native metric and no
+computable smoothing rate. The carrier's own records do supply a radius:
+read through the recovered rank-three frame, the axial current counter
+converges from every binary initial state to three-dimensional Brownian
+motion, and its norm has the radial generator
+$\tfrac{2}{99}(\partial_r^2+\tfrac2r\partial_r)$ with angular term
+$\tfrac{2}{99}r^{-2}\Delta_{S^2}$, without added radial sites. That radius
+is the radius of a retained record; it is not identified with physical
+transport, and it does not select the radial architecture of the field: complete adaptive histories
+with angular instruments, native clock marks and feedback are identical
+across distinct radial extensions \cite{ophspine}. The radial architecture
+and the active observer protocol therefore remain declared. The metric is
+static and does not respond to stress. A quartic projection on the same
+product has a source-prepared interacting Gibbs state, an active native event
+clock and an unrestricted-occupation limit within its two modes, and the
+same smoothing preserves its finite histories; it is no spatially refining
+interacting continuum \cite{ophspine}. Uniqueness of the limit along the
+whole sequence, an exact smooth native metric, responsive geometry and a
+spatially refining interacting field are open.
 
 \subsection{A causal precursor from records}
 \label{sec:spacetime}
@@ -1488,6 +1556,10 @@ A local field operator on the screen & One repair history gives a regular,
 strongly local Dirichlet form of spectral dimension two, Gaussian density
 laws $e^{-|\tau-u|A}$ and admitted waves $\cos(t\sqrt A)$ of finite speed &
 source limit theorem & \S\ref{sec:continuum}\\
+An effective Lorentzian field theory & On a declared radial product, a
+Lorentz-signature wave density and one smooth static $(1+3)$ metric whose free
+scalar reproduces every finite menu of observer readouts to any tolerance &
+source limit theorem & \S\ref{sec:continuum}\\
 A finite signal speed & Dependence crosses at most one seam per ordered
 native repair event, and retained witnesses attain the bound & finite
 theorem & \S\ref{sec:spacetime}\\
@@ -1664,10 +1736,14 @@ to zero, including observed matter and interactions & One interacting
 register with operator Gauss law; infinite-occupation and complete-output
 certificates for a two-site action; free-field continuum theorems; a native
 continuum operator for Gaussian density fields, their decay and admitted
-finite-speed waves on the screen (Proposition~\ref{prop:native-continuum}) &
-The interacting field action, vacuum and coupling are supplied; the native
-reference identifies no quantum vacuum; an interacting refining family and
-Lorentzian symmetry are not constructed\\
+finite-speed waves on the screen (Proposition~\ref{prop:native-continuum});
+a smooth static $(1+3)$ Lorentzian effective description of every finite
+readout menu on a declared radial product
+(Proposition~\ref{prop:effective-lorentzian}), with a finite interacting Gibbs
+projection and active native clock on that product &
+The interacting field action, vacuum and coupling and the radial product are
+supplied; the native reference identifies no quantum vacuum; the exact native
+metric is not smooth in the fixed atlas, and an interacting refining family is not constructed\\
 Classical and gravitational descriptions & Compatible classical, geometric,
 stress and clock descriptions of the same observations, reproducing
 gravitational predictions with controlled corrections & Rank-three
@@ -1677,8 +1753,8 @@ balance; a two-dimensional local continuum form on the screen with a
 controlled repair response $2(I-e^{-\tau A})f$, the entropy bound
 $\log J+2025/(64V)$ and a boundary-action test against a three-dimensional
 Dirichlet bulk & Read law, model clock, stress, region map and scale
-premises are supplied; a radial bulk reading and responsive geometry on the
-same process are not constructed\\
+premises are supplied; a source-selected radial reading and responsive
+geometry on the same process are not constructed\\
 Physical predictions & Input ancestry, calibration and decision rules fixed
 before independent data, agreement with observed statistics & The C/E
 protocol with a sequential trial design and the angular-rank-six band are
@@ -1730,7 +1806,8 @@ The executable observer turns these maps into construction work on one
 process. Its retained histories carry a rank-three displacement
 readout, local event clocks, modular clock probes and committed records on a
 single register, and its joined screens carry one continuum operator for
-fields, decay and waves. What such a realization lacks is an interacting
+fields, decay and waves, with a smooth effective Lorentzian description on a
+declared radial product. What such a realization lacks is an interacting
 refining family whose records, clocks, currents and stress readouts converge
 together in physical units. A finite theorem that consumes none of the five
 maps stands on its own domain, and no result in this paper discharges any of
@@ -1743,9 +1820,10 @@ These connections can be built in parallel, and each concerns the same process:
 \begin{enumerate}[label=(\roman*),leftmargin=1.8em]
 \item extend the native continuum operator from passive fields and admitted
 waves to the full interacting construction, with a quantum reference state
-and Lorentzian observation maps, while retaining records and bounding
+and an effective Lorentzian description that is interacting and responsive,
+while retaining records and bounding
 numerical and physical service errors;
-\item attach interacting matter, a radial observation algebra, responsive
+\item attach interacting matter, a source-selected radial observation algebra, responsive
 geometry and physical clock calibration to the same state, event law and
 retained records;
 \item extend finite composition and active encoded memory to autonomous
@@ -2223,7 +2301,10 @@ official ACT DR6, Planck and DESI joint posterior chains, whose mean is
 $0.9743\pm0.0034$ \cite{act2025,ophpublicdata}. Those data precede the
 registration, so this is a retrospective tension under baseline
 $\Lambda$CDM, not a likelihood ratio, and the registered comparison with a
-later dataset is unchanged. A
+later dataset is unchanged. A separate ACT DR6 likelihood slice on the
+measured bandpowers, with the background and absolute calibration held fixed,
+prefers a free tilt, fitted at $0.9773$, by $\Delta\chi^2=4.07$; no
+significance or framework-wide verdict is assigned to it \cite{ophpublicdata}. A
 charged-lepton world average more than three standard uncertainties from the
 balanced-circulant center refutes the equal-rank-two tracial reading of the
 face-circulant sector; a resolved deep-regime galaxy sample violating
@@ -2409,7 +2490,10 @@ carries flux, charged matter and a scalar field through complete
 measurements with a certified feedback response. Overlapping observers on
 one carrier read a single complete law of fields, local clocks and feedback,
 and joined carriers on a refining screen carry one continuum operator for
-Gaussian fields, their decay and finite-speed waves.
+Gaussian fields, their decay and finite-speed waves. On a declared radial
+product over that screen, observers can describe every finite menu of their
+readouts, to any tolerance, by one smooth static $(1+3)$-dimensional
+Lorentzian field theory.
 
 The finite theorems turn the specification's readouts into familiar
 structure: public records independent of the repair schedule, the Born rule
@@ -2422,7 +2506,7 @@ counts, and the Einstein equation from a realized null balance. The prospective 
 The acceptance criteria state what is missing: a refining family of
 interacting observer processes whose statistics converge to a
 $3+1$-dimensional quantum field theory with the observed matter and a
-quantum reference state, a radial reading of the two-dimensional screen,
+quantum reference state, a source-selected radial reading of the two-dimensional screen,
 and responsive geometry with calibrated clocks on the same histories. The five
 maps of Section~\ref{sec:standing-maps} are consumed rather than
 constructed, so these results do not establish that the architecture
@@ -2470,13 +2554,14 @@ Xue contributed consistency checks, simulator review, visualization review,
 and prototype-engineering review. Ben Cassie contributed implementation-claim
 and physical-evidence review. Peter Nguyen contributed proof auditing,
 branch-boundary analysis, compact-gauge and global-quotient analysis, and
-manuscript consistency review. Jinwook Kim developed the mathematical
-constructions, proofs, and counterexamples for the mechanism-variant
-comparison kernel and conditional example, protected-behavior first-hit
-obstruction profiles and finite-state transport, source-derived phase-effect
-selection, canonical adaptive-repair endpoint stratification, cumulative
-attempt-capacity bounds and sharpness results, and input-independent fixed
-computation-federation progress and execution. He constructed a provably fair
+manuscript consistency review. Jinwook Kim developed the constructions,
+proofs, and counterexamples for the profile partition and structural
+characterizations, exact behavior-cut recovery, exact finite-state profile
+transport, adaptive repair stratification, the cumulative attempt-capacity
+classification, fixed computation-federation progress, and the
+fixed-federation execution classification, together with the
+mechanism-variant comparison kernel and conditional example and the
+source-derived phase-effect selection. He constructed a provably fair
 emission-order round-robin scheduler with a linear exact-output attempt bound,
 established order-sharp quadratic accepted-step bounds for the actual compiler
 with the exponential fanout control, and proved the historical weak-relation
@@ -2484,7 +2569,13 @@ fair-stuttering no-go and the weak-fair delay versus bounded-waste horizon
 separation. He formalized these results in Lean, connected the repair and
 execution results to the Tower library, and contributed their manuscript, claim registry, ledger and build records. David Matscheko contributed proof review of
 consensus repair, observable normal forms, modular and Einstein algebra,
-edge entropy, hypercharge, and the $\mathbb Z_6$ quotient. Jonathan Hill
+edge entropy, hypercharge, and the $\mathbb Z_6$ quotient. Daniel Ari Friedman contributed independent
+red-team audits of the papers, the book, the claim and premise ledgers, the
+Lean library, continuous integration and the custody records, which led to
+scoped headline claims, displayed values matched to their certified receipts
+and repaired falsification rules, and the independently reviewed
+programme-obstruction audit whose controls bound how the carrier, the
+response triplets, the feedback class and the kinetic term may be attached. Jonathan Hill
 contributed Lean formalization and proof auditing of observable normal forms,
 refinement and repair results, complexity classifications, and artifact
 coverage. William T. Glynn contributed simulator development, computational
@@ -2498,7 +2589,8 @@ review of the protocol surface. Brieuc de La Fourni\`ere contributed finite
 Lean constructions on the source-derived causal-order and carrier-symmetry
 surfaces, including the cover-relation provenance compiler and the antipodal
 port-action identification, and external comparison controls for the
-charged-lepton branch. All authors reviewed and approved
+charged-lepton branch.
+All authors reviewed and approved
 the manuscript. All authors agree to be accountable for all aspects of the
 work.
 
@@ -2551,11 +2643,11 @@ receipts, finite certificates, and scientific claim registries.
 Mueller, B. (2026). OPH physics simulator and reproduction source.
 \url{https://github.com/muellerberndt/oph-physics-sim}.
 Exact-federation archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/exact_federation_L6_canonical_20260909}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/exact_federation_L6_canonical_20260909}.
 Closure-loop archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/closure_loop}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/closure_loop}.
 Causal-poset archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/evidence/source_net_causal_poset}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/source_net_causal_poset}.
 Active refinement-readout revision:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/036b12b608a9ca4c19d69f5e951b3b83a7a51cd8}.
 
@@ -2567,88 +2659,88 @@ Immutable source receipt:
 Append-only custody packet:
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/bb73f80d459113ccc82d5a5b5219d1dda78e9a79/evidence/custody/falsification/frozen_targets/fz11_2026-07-31}.
 Source-seam edge receipt:
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/a5_fingerprint/runtime/seam_current_edge_prediction_receipt.json}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/code/a5_fingerprint/runtime/seam_current_edge_prediction_receipt.json}.
 Source-seam custody and decision-rule clarification:
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/bb73f80d459113ccc82d5a5b5219d1dda78e9a79/evidence/custody/falsification/frozen_targets/fz12_2026-08-02}.
 Koide custody packet:
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/bb73f80d459113ccc82d5a5b5219d1dda78e9a79/evidence/custody/falsification/frozen_targets/fz10_2026-07-28}.
 Live register:
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/claims/frozen_prediction_register.json}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/claims/frozen_prediction_register.json}.
 
 \bibitem{ophnormalforms}
 Mueller, B., Kim, J., Matscheko, D., and Hill, J. (2026).
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and
 Refinement in Constraint and Rewrite Systems}. Public manuscript in the same repository revision as this paper.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/observable_normal_forms.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/observable_normal_forms.pdf}
 
 \bibitem{opheventalgebra}
 Mueller, B. (2026). \emph{Verified Projection-Event Calculus in Lean 4:
 Bundled Arbitrary-Partition Pinching, L\"uders Retractions, and CHSH
 Interoperability}. Public manuscript and formal artifact.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/machine_checked_finite_event_algebras.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/machine_checked_finite_event_algebras.pdf}
 
 \bibitem{ophconsensus}
 Mueller, B., Xue, K., Kim, J., Anirudha, K.\,A., Matscheko, D., and Hill, J. (2026).
 \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That
 Implements Physics}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/reality_as_consensus_protocol.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/reality_as_consensus_protocol.pdf}
 
 \bibitem{ophMicrophysics}
-Mueller, B., Osika, A., Xue, K., Cassie, B., and de La Fourni\`ere, B.
+Mueller, B., Osika, A., Xue, K., Cassie, B., de La Fourni\`ere, B., and Friedman, D.\,A.
 (2026).
  \emph{Federated Echosahedral Screen Microphysics: Patch Hardware,
 Records, and Observer Synchronization in Observer-Patch Holography}. Public
 manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/screen_microphysics_and_observer_synchronization.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/screen_microphysics_and_observer_synchronization.pdf}
 
 \bibitem{ophobservers}
-Mueller, B., Poneder, M., Osika, A., Xue, K., Cassie, B., and Nguyen, P.
+Mueller, B., Poneder, M., Osika, A., Xue, K., Cassie, B., Nguyen, P., and Friedman, D.\,A.
 (2026). \emph{Observers Are All You Need}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/observers_are_all_you_need.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/observers_are_all_you_need.pdf}
 
 \bibitem{ophEinstein}
 Mueller, B., Poneder, M., Osika, A., Xue, K., Nguyen, P., Visser, M.\,A.,
 Matscheko, D., and de La Fourni\`ere, B. (2026). \emph{Recovering Observer
 Spacetime and Einstein
 Dynamics from Overlap Consistency}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}
 
 \bibitem{ophalpha}
-Mueller, B. and Osika, A. (2026). \emph{The Fine-Structure Constant as an OPH
+Mueller, B., Osika, A., and Friedman, D.\,A. (2026). \emph{The Fine-Structure Constant as an OPH
 Pixel Fixed Point}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/fine_structure_constant_derivation.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/fine_structure_constant_derivation.pdf}
 
 \bibitem{ophGauge}
-Mueller, B., Poneder, M., Osika, A., Xue, K., Nguyen, P., and Matscheko, D. (2026).
+Mueller, B., Poneder, M., Osika, A., Xue, K., Nguyen, P., Matscheko, D., and Friedman, D.\,A. (2026).
  \emph{Deriving Standard Model Gauge Structure from
 Observer Overlap Consistency}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}
 
 \bibitem{ophkoide}
 Mueller, B. (2026). \emph{The Positive-Chamber Koide Identity for
 Icosahedral Face Circulants}. Public manuscript and formal artifact.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/koide_identity_from_positive_c3_face_circulants.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/koide_identity_from_positive_c3_face_circulants.pdf}
 
 \bibitem{ophdesitter}
 Mueller, B. (2026). \emph{The de Sitter Time-Advance Sign from a Finite
 Screen with Fixed Capacity}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf}
 
 \bibitem{ophdarkmatter}
 Mueller, B. and Matscheko, D. (2026). \emph{Observer-Patch Holography and the
 Dark Sector: Modular Charge, the Anomalous Collar Source, and the Deep Galaxy
 Law}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/cosmology/oph_dark_matter_paper.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/cosmology/oph_dark_matter_paper.pdf}
 
 \bibitem{ophvacuum}
 Mueller, B. (2026). \emph{Observer-Patch Holography Cosmological Vacuum and
 Structure Formation: Finite Transfer Conditions, Fluctuation Ensembles, and
 Proto-Objects}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/cosmology/oph_cosmological_vacuum_and_structure_formation.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/cosmology/oph_cosmological_vacuum_and_structure_formation.pdf}
 
 \bibitem{ophyangmills}
 Mueller, B. and Hill, J. (2026). \emph{Explaining the Yang--Mills Mass Gap with Observer-Patch Repair Dynamics: A Support-Visible OPH Route to the Clay Problem: A Conditional Identity}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/extra/yang_mills_gap_clay_problem.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/yang_mills_gap_clay_problem.pdf}
 
 \bibitem{hardy2001}
 Hardy, L. (2001). ``Quantum theory from five reasonable axioms.''
@@ -2914,114 +3006,114 @@ Mohr, P.\,J., Newell, D.\,B., Taylor, B.\,N., and Tiesinga, E. (2025).
 \url{https://doi.org/10.1103/RevModPhys.97.025002}
 
 \bibitem{ophspine}
-Mueller, B. and Poneder, M. (2026). \emph{An Executable Observer for Observer
+Mueller, B., Poneder, M., Kim, J., and Friedman, D.\,A. (2026). \emph{An Executable Observer for Observer
 Patch Holography: Specification, Certified Components and Acceptance
 Criteria}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/paper/executable_observer_construction.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/executable_observer_construction.pdf}
 
 \bibitem{ophmodel}
 FloatingPragma (2026). The runnable OPH model: observer implementation,
 tests, receipts and construction guide.
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2051/model}
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/model}
 
 \bibitem{ophrecordlaws}
 FloatingPragma (2026). Admissible record laws for native repair.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/record_laws/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/record_laws/README.md}
 
 \bibitem{ophmixing}
 FloatingPragma (2026). Native quantum mixing and the full-carrier memory
 boundary.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/QUANTUM_MIXING.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer/QUANTUM_MIXING.md}
 
 \bibitem{ophrecovery}
 FloatingPragma (2026). What complete native records can recover.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer/RECORD_RECOVERY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer/RECORD_RECOVERY.md}
 
 \bibitem{ophinfinite}
 FloatingPragma (2026). The infinite-occupation sharp-readout history of the
 common interacting source.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/INFINITE_HISTORY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/INFINITE_HISTORY.md}
 
 \bibitem{ophreadout}
 FloatingPragma (2026). Complete comparisons with the actual finite pointer.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/READOUT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/READOUT.md}
 
 \bibitem{ophcomposition}
 FloatingPragma (2026). The finite executable observer specification.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/COMPOSITION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/COMPOSITION.md}
 
 \bibitem{ophquantumnative}
 FloatingPragma (2026). Coherent native repairs around one continuing quantum history.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/QUANTUM_NATIVE.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/QUANTUM_NATIVE.md}
 
 \bibitem{ophencodedmemory}
 FloatingPragma (2026). Active encoded memory in the continuing observer.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/ENCODED_MEMORY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/ENCODED_MEMORY.md}
 
 \bibitem{ophcorrespondence}
 FloatingPragma (2026). One process, overlapping observer records and an
 effective transfer.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_correspondence/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer_correspondence/README.md}
 
 \bibitem{ophcompiledclock}
 FloatingPragma (2026). Source-compiled apparatus in a complete
 observer-clock history.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/compiled_clock_history/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/compiled_clock_history/README.md}
 
 \bibitem{ophjointclock}
 FloatingPragma (2026). Joint local clocks and quantum fields with explicit
 memory.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/joint_clock_process/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/joint_clock_process/README.md}
 
 \bibitem{ophpredictions}
 FloatingPragma (2026). Fixed observer predictions and complete-count
 comparison: modular clock recovery and native repair response.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/predictions/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/predictions/README.md}
 
 \bibitem{ophidentification}
 FloatingPragma (2026). Identifying the complete current-resolving repair
 law.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/repair_identification/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/repair_identification/README.md}
 
 \bibitem{ophnativeaction}
 FloatingPragma (2026). A local action for native quantum observations.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/native_action/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/native_action/README.md}
 
 \bibitem{ophscreenobserver}
 FloatingPragma (2026). Coherent observer outputs on matched source screens.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/coherent_screen_observer/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/coherent_screen_observer/README.md}
 
 \bibitem{ophcontinuum}
 FloatingPragma (2026). A spatial fluctuation field from one native history:
 the common spatial generator, its locality and spectral dimension, and the
 boundary-trace test.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/physical_space_time/OCCUPATION_FIELD.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/physical_space_time/OCCUPATION_FIELD.md}
 
 \bibitem{ophtimefields}
 FloatingPragma (2026). Joint time and field laws on matched source screens.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/observer_time_fields/REFINEMENT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer_time_fields/REFINEMENT.md}
 
 \bibitem{ophentropy}
 FloatingPragma (2026). Tangent first laws and finite entropy changes:
 native reference entropy and region boundaries.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/code/geometry/ENTROPY_FIRST_LAW_AUDIT.md}
 
 \bibitem{ophcausality}
 FloatingPragma (2026). Exact native causal cones.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/common_source/CAUSALITY.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/CAUSALITY.md}
 
 \bibitem{ophprotocol}
 FloatingPragma (2026). A finite sequential native-law prediction protocol.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/closed_prediction_protocol/README.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/closed_prediction_protocol/README.md}
 
 \bibitem{ophbell}
 FloatingPragma (2026). Classical record responses and published Bell
 measurements.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/predictions/BELL_RECORDS.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/predictions/BELL_RECORDS.md}
 
 \bibitem{ophpublicdata}
 FloatingPragma (2026). OPH predictions and public-data comparisons.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{hensen2015}
 Hensen, B. et al. (2015). Loophole-free Bell inequality violation using
@@ -3062,18 +3154,18 @@ problem. \emph{J. Spectral Theory} 7, 321--359.
 \bibitem{oSOURCESELECT}
 FloatingPragma (2026). \emph{Selecting one source, interface and repair law}.
 Model document.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/model/SOURCE_SELECTION.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/SOURCE_SELECTION.md}
 
 \bibitem{ophessayB}
 FloatingPragma (2026). \emph{Why Does Anything Exist, and Why Is It Like
 This?} OPH essay B.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/essays/B-why-does-anything-exist.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/essays/B-why-does-anything-exist.pdf}
 
 \bibitem{ophbasis}
 FloatingPragma (2026). \emph{The OPH Basis}: the closure hypothesis, the
 no-outside rule, the agreement condition, the executable specification, and
 the theorem-library premises.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2051/docs/BASIS.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/BASIS.md}
 
 \bibitem{wheeler1983}
 Wheeler, J.\,A. (1983). ``Law without law.'' In J.\,A. Wheeler and
