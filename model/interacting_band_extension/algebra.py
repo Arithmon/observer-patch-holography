@@ -272,6 +272,142 @@ def product_occupation_refinement():
             'spatial_ultraviolet_limit_or_physical_identification': False}
 
 
+def product_detector_kms_control(interaction=None):
+    """Gibbs/KMS on the actual detector effect and actual kick generator.
+
+    The cross weights are signed, not transition probabilities. The source
+    comparison reuses the complete +/-Q/4 histories; no A-generated kick,
+    equilibrium noise instrument, or extra physical experiment is compiled.
+    """
+    import numpy as np
+    from scipy.linalg import expm
+    from .construction import (ProductBand, normalized, product_gibbs_preparation,
+                               product_interaction_control)
+
+    lattice, beta, epsilon = ProductBand(), F(1, 4), F(1, 4)
+    h = lattice.hamiltonian.toarray()
+    energies, basis = np.linalg.eigh(h)
+    weights = np.exp(-float(beta)*energies); weights /= weights.sum()
+    rho = (basis*weights)@basis.T
+    q = np.kron(normalized(polynomial(4, 1)), np.eye(4))
+    values, vectors = np.linalg.eigh(q)
+    effect = (vectors*(-np.sin(values)))@vectors.T
+    ae, qe = basis.T@effect@basis, basis.T@q@basis
+    # W_AQ(t)=sum_ij p_i A_ij Q_ji exp[-i(E_j-E_i)t].
+    gaps = energies[None, :]-energies[:, None]
+    cross = ae*qe.T
+    forward, reverse = weights[:, None]*cross, weights[None, :]*cross
+    kms = float(np.max(np.abs(reverse-np.exp(-float(beta)*gaps)*forward)))
+    upper = np.triu_indices(16, 1)
+    factor = np.exp(-float(beta)*gaps[upper])
+    symmetric = (forward+reverse)/2
+    antisymmetric = forward-reverse
+    fdt = float(np.max(np.abs((1-factor)*symmetric[upper]
+                              -(1+factor)*antisymmetric[upper]/2)))
+
+    raw, target, preparation = product_gibbs_preparation(lattice, beta)
+    raw_rho = raw@raw.conj().T  # No numerical renormalization.
+    e = preparation['purification_vector_error_guard']
+    trace_guard = e*(2+e)
+    q_bound = local_norm(4, 1)
+    raw_trace_error = float(np.linalg.norm(raw_rho-rho, 'nuc'))
+    free_energies, free_basis = np.linalg.eigh(ProductBand(0).hamiltonian.toarray())
+    free_weights = np.exp(-float(beta)*free_energies); free_weights /= free_weights.sum()
+    free_rho = (free_basis*free_weights)@free_basis.T
+    rows = []
+    for time in (F(0), F(1, 16), F(1, 8)):
+        u = expm(1j*float(time)*h)
+        evolved = u@effect@u.conj().T
+        ordered = np.trace(rho@evolved@q)
+        reversed_order = np.trace(rho@q@evolved)
+        response = float((1j*(ordered-reversed_order)).real)
+        spectral = np.sum(forward*np.exp(-1j*float(time)*gaps))
+        raw_ordered = np.trace(raw_rho@evolved@q)
+        raw_response = float((1j*np.trace(raw_rho@(evolved@q-q@evolved))).real)
+        wrap = expm(float(beta)*h)@evolved@expm(-float(beta)*h)
+        free_defect = abs(np.trace(free_rho@wrap@q)-np.trace(free_rho@q@evolved))
+        rows.append({'model_time': time,
+            'ordered_detector_kick_correlation': [float(ordered.real), float(ordered.imag)],
+            'symmetrized_detector_kick_correlation': float(((ordered+reversed_order)/2).real),
+            'Q_kick_linear_response': response,
+            'spectral_reconstruction_error': float(abs(ordered-spectral)),
+            'raw_preparation_ordered_correlation_error': float(abs(raw_ordered-ordered)),
+            'raw_preparation_response_error': float(abs(raw_response-response)),
+            'free_Gibbs_under_interacting_clock_KMS_defect': float(free_defect)})
+
+    if interaction is None:
+        interaction = product_interaction_control()
+    first_means = [sum((1-2*row['bits'][0])*row['probability'] for row in law)
+                   for law in interaction['source_histories_by_native_sign']]
+    source_slope = float((first_means[1]-first_means[0])/(2*float(epsilon)))
+    time = F(1, 16)
+    evolved = expm(1j*float(time)*h)@effect@expm(-1j*float(time)*h)
+    kicks = [expm(sign*1j*float(epsilon)*q) for sign in (-1, 1)]
+    exact_means = [float(np.trace(rho@kick.conj().T@evolved@kick).real) for kick in kicks]
+    exact_slope = (exact_means[1]-exact_means[0])/(2*float(epsilon))
+    # Central difference: ||ad_Q^3(A(t))|| <= 8 ||Q||^3 ||A||.
+    finite_kick_guard = F(4, 3)*epsilon**2*q_bound**3
+    history_guard = (interaction['ideal_splitting_complete_output_bound']
+                     +interaction['complete_source_numerical_guard'])
+    source_slope_guard = 2*history_guard/epsilon
+
+    # The admitted menu preserves the first-mode parity. Central reweighting
+    # changes its state but not the restricted modular flow or KMS relation.
+    parity = np.kron(np.eye(4), np.diag([1., -1., 1., -1.]))
+    even = (np.eye(16)+parity)/2
+    changed = (np.eye(16)+even)@rho
+    changed /= np.trace(changed)
+    def logarithm(state):
+        masses, axes = np.linalg.eigh(state)
+        return (axes*np.log(masses))@axes.conj().T
+    s = -.25
+    modular = expm(1j*s*logarithm(rho))
+    changed_modular = expm(1j*s*logarithm(changed))
+    restricted_flow_error = float(np.linalg.norm(modular@effect@modular.conj().T
+        -changed_modular@effect@changed_modular.conj().T, 2))
+    changed_wrap = expm(float(beta)*h)@evolved@expm(-float(beta)*h)
+    changed_kms = float(abs(np.trace(changed@changed_wrap@q)-np.trace(changed@q@evolved)))
+    population_difference = float(abs(np.trace((changed-rho)@even)))
+    cross_noise_difference = float(abs(np.trace((changed-rho)@effect@q)))
+    if (max(kms, fdt, restricted_flow_error, changed_kms) > 1e-11
+            or raw_trace_error > float(trace_guard)
+            or max(row['raw_preparation_ordered_correlation_error'] for row in rows) > float(trace_guard*q_bound)
+            or max(row['raw_preparation_response_error'] for row in rows) > float(2*trace_guard*q_bound)
+            or abs(source_slope-exact_slope) > float(source_slope_guard)
+            or abs(exact_slope-rows[1]['Q_kick_linear_response']) > float(finite_kick_guard)
+            or min(population_difference, cross_noise_difference) < 1e-5
+            or rows[1]['free_Gibbs_under_interacting_clock_KMS_defect'] < 1e-3):
+        raise ArithmeticError('the same-state detector/kick KMS contract failed')
+    return {'scope': 'Finite interacting Gibbs reference, actual detector effect and Q-generated kick; no extra noise-law fit.',
+        'inverse_temperature': beta, 'detector_effect': '-sin(Q_mode_1)',
+        'kick_generator': 'Q_mode_1', 'source_kick_amplitude': epsilon,
+        'energy_levels_numerical': [float(x) for x in energies],
+        'Gibbs_weights_numerical': [float(x) for x in weights],
+        'cross_spectral_KMS_residual': kms, 'cross_fluctuation_response_identity_residual': fdt,
+        'cross_spectral_weights_are_probabilities': False,
+        'raw_prepared_trace_mass': float(np.trace(raw_rho).real),
+        'raw_preparation_full_trace_error_numerical': raw_trace_error,
+        'raw_preparation_full_trace_error_upper': trace_guard,
+        'ordered_correlation_preparation_error_upper': trace_guard*q_bound,
+        'response_preparation_error_upper': 2*trace_guard*q_bound,
+        'time_correlations': rows,
+        'source_first_read_means_for_minus_plus_Q_kicks': [float(x) for x in first_means],
+        'source_central_kick_slope': source_slope,
+        'ideal_central_kick_slope': exact_slope,
+        'source_central_slope_error_upper': source_slope_guard,
+        'central_slope_to_linear_response_error_upper': finite_kick_guard,
+        'central_reweighting_control': {
+            'even_sector_population_difference': population_difference,
+            'detector_kick_symmetrized_noise_difference': cross_noise_difference,
+            'restricted_modular_action_residual': restricted_flow_error,
+            'restricted_KMS_residual': changed_kms},
+        'all_source_readouts_and_references_retained': True,
+        'equilibrium_cross_correlation_detector_executed': False,
+        'noise_law_independently_fitted': False,
+        'Gibbs_temperature_or_central_weights_selected_by_repair': False,
+        'physical_clock_or_laboratory_dictionary_identified': False}
+
+
 def serializable(value):
     if isinstance(value, F):
         return str(value)

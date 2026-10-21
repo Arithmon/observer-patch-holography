@@ -14,7 +14,9 @@ never normalize a branch or infer positivity from a numerical tolerance.
 from __future__ import annotations
 
 from fractions import Fraction as Q
+from functools import lru_cache
 from itertools import product
+from math import factorial
 
 from model.observer import native
 
@@ -260,6 +262,315 @@ def native_record_weight(operator, record):
                 if left == right and left.prefix[:1] == (record,))
 
 
+@lru_cache(maxsize=None)
+def checkpoint_basis():
+    """The actual postcommit carrier, including unreachable tape/load pairs."""
+    return tuple(native.State(loads, prefix) for length in (1, 2)
+                 for prefix in product(native.LETTERS, repeat=length)
+                 for loads in native.states())
+
+
+def _checkpoint_operator(operator):
+    operator = _sparse(operator)
+    if any(not state.prefix for pair in operator for state in pair):
+        raise ValueError("The persistence observer excludes the blank sector")
+    return operator
+
+
+def checkpoint_record_element(record):
+    """A committed first-letter projector on the complete checkpoint space."""
+    if record not in native.LETTERS:
+        raise ValueError("Unknown native record")
+    return {(state, state): ONE for state in checkpoint_basis()
+            if state.prefix[0] == record}
+
+
+def checkpoint_public_readback(operator):
+    """Normalized block trace on the actual six equal 546-dimensional blocks."""
+    operator = _checkpoint_operator(operator)
+    dimension = len(checkpoint_basis()) // len(native.LETTERS)
+    means = {record: tuple(part/dimension for part in native_record_weight(operator, record))
+             for record in native.LETTERS}
+    return {(state, state): means[state.prefix[0]] for state in checkpoint_basis()
+            if means[state.prefix[0]] != ZERO}
+
+
+@lru_cache(maxsize=None)
+def _checkpoint_write_preimages(seam):
+    # None is the actual record-dependent native policy. E/F are its two
+    # already available interventions, selected from a retained letter.
+    if seam not in (None, native.E, native.F):
+        raise ValueError("Only the native policy and its E/F controls are admitted")
+    inverse = {}
+    for before in checkpoint_basis():
+        if before.phase != 1:
+            continue
+        if seam is None:
+            outputs = [state for _, state in native.tick(before)]
+        else:
+            outputs = [native.State(loads, before.prefix+(record,))
+                       for coin in (0, 1)
+                       for loads, record in (native.native(before.loads, seam, coin),)]
+        for after in outputs:
+            if after in inverse:
+                raise AssertionError("Native write columns lost orthogonality")
+            inverse[after] = before
+    return inverse
+
+
+def checkpoint_dual(operator, seam=None):
+    """Exact Heisenberg continuation A1* X A1 + P2 X P2 on K.
+
+    The same source columns define the persistence generator (seam=None)
+    and the E/F interventions; no unitary or autonomous-time substitution.
+    """
+    inverse, output = _checkpoint_write_preimages(seam), {}
+    for (left, right), coefficient in _checkpoint_operator(operator).items():
+        if left.phase == right.phase == 2:
+            _accumulate(output, (left, right), coefficient)
+            if left in inverse and right in inverse:
+                _accumulate(output, (inverse[left], inverse[right]),
+                            tuple(part/2 for part in coefficient))
+    return output
+
+
+def checkpoint_generator(operator):
+    """T_K*−I, an algebraic persistence generator in continuation-step units."""
+    output = checkpoint_dual(operator)
+    for pair, coefficient in _checkpoint_operator(operator).items():
+        _accumulate(output, pair, tuple(-part for part in coefficient))
+    return output
+
+
+def _evidence_label(label):
+    if (type(label) is not tuple or len(label) != 2
+            or type(label[0]) is not int or label[0] not in (0, 1)
+            or type(label[1]) is not tuple or len(label[1]) != 2
+            or any(type(value) is not int for value in label[1])
+            or label[1] not in native.LETTERS):
+        raise ValueError("An issued/retained native evidence label is required")
+    return label
+
+
+def checkpoint_precedes(first, second):
+    """Order two reads of the same evidence across one native continuation."""
+    a, r = _evidence_label(first)
+    b, s = _evidence_label(second)
+    return r == s and a < b
+
+
+def checkpoint_predict(label):
+    """Advance issuance to retention of the SAME evidence, not predict a new bit."""
+    _, record = _evidence_label(label)
+    return (1, record)
+
+
+def checkpoint_control(operator, label):
+    """The retained current selects an actual native E/F continuation map."""
+    _, record = _evidence_label(label)
+    return checkpoint_dual(operator, native.F if record[1] > 0 else native.E)
+
+
+def checkpoint_preparation():
+    """Actual first-event state with its classical letter committed, no refit."""
+    prior = {(native.State(loads), native.State(loads)): (Q(1, 66), Q(0))
+             for loads in native.states(binary=True)}
+    return native_block_readback(native_tick_operator(prior))
+
+
+def checkpoint_buffer_lift(operator, bits, *, density=False):
+    """Declared exact buffers: X tensor I or rho tensor |0><0|.
+
+    Basis keys are (native checkpoint, buffer address). These are architecture
+    refinements, not occupation cutoffs or spatial refinements.
+    """
+    if type(bits) is not int or not 0 <= bits <= 3 or type(density) is not bool:
+        raise ValueError("The executable buffer witness admits zero to three bits")
+    return {((left, address), (right, address)): value
+            for (left, right), value in _checkpoint_operator(operator).items()
+            for address in (range(1) if density else range(2**bits))}
+
+
+def checkpoint_observer_certificate():
+    """All fields of the finite postcommit OperationalObserver, exactly.
+
+    DERIVATION.md supplies the all-operator proofs and arbitrary buffer
+    refinement. This finite certificate checks the actual source columns,
+    state, every evidence/control label, and a nonzero generator witness.
+    It is a mathematical interface realization, not a new Lean declaration.
+    """
+    labels = tuple(product((0, 1), native.LETTERS))
+    state = checkpoint_preparation()
+    if any(left != right or value[1] or value[0] < 0
+           for (left, right), value in state.items()):
+        raise AssertionError("The committed native preparation is not a diagonal state")
+    if _sum(state.values()) != ONE:
+        raise AssertionError("The native checkpoint preparation is not normalized")
+    weights = {record: native_record_weight(state, record)[0]
+               for record in native.LETTERS}
+    for label in labels:
+        stage, record = label
+        element = checkpoint_record_element(record)
+        if checkpoint_public_readback(element) != element or checkpoint_generator(element):
+            raise AssertionError("Native self-readback or durable evidence failed")
+        if any(checkpoint_control(element, control) != element for control in labels):
+            raise AssertionError("A native control changed committed evidence")
+        prediction = checkpoint_predict(label)
+        if prediction[0] < stage or prediction[1] != record:
+            raise AssertionError("Evidence retention prediction regressed or changed value")
+    witness = native.State(native.states()[0], ((0, 0),))
+    unit = {(witness, witness): ONE}
+    if checkpoint_generator(unit) != {(witness, witness): (Q(-1), Q(0))}:
+        raise AssertionError("The persistence generator witness changed")
+    # Nonconstant record-conditioned controls on the actual K, rather than
+    # copies of one abstract identity intervention.
+    before = native.State((1, 1)+(0,)*10, ((0, 0),))
+    loads, letter = native.native(before.loads, native.E, 0)
+    after = native.State(loads, before.prefix+(letter,))
+    effect = {(after, after): ONE}
+    if checkpoint_control(effect, (0, (0, 0))) == checkpoint_control(effect, (0, (0, 1))):
+        raise AssertionError("The two native evidence-conditioned controls coincided")
+    # Actual conditional forecasts are an additional function of the record.
+    # Equal record PROBABILITIES do not imply equal forecasts.
+    a, b = (0, 0), (1, 0)
+    if weights[a] != Q(14, 33) or weights[a] != weights[b] or native.FORECAST[a] == native.FORECAST[b]:
+        raise AssertionError("The event-probability/forecast congruence control changed")
+    return {
+        "private_dimension": len(checkpoint_basis()), "record_block_dimension": 546,
+        "evidence_labels": len(labels), "accessible_algebra": "span of first-letter projectors",
+        "state": "actual first native event from uniform binary prior, first letter committed",
+        "generator": "T_K* - I", "generator_nonzero": True,
+        "control": "current-selected native E/F dual continuation with all outcomes",
+        "record_conditioned_controls_are_nonconstant": True,
+        "prediction": "issuance to retention of the same committed evidence",
+        "all_OperationalObserver_clauses_realized_on_declared_postcommit_tower": True,
+        "Lean_inhabitant_compiled": False,
+        "buffer_refinement_architecture_supplied": True,
+        "buffer_refinement": "X -> X tensor I; rho -> rho tensor |0><0|",
+        "record_creation_in_persistence_domain": False,
+        "native_repair_global_termination_or_physical_clock_inferred": False,
+        "forecast_is_not_the_typed_evidence_retention_prediction": True,
+        "forecast_congruence_counterexample": {
+            "first_records": [list(a), list(b)], "equal_readout_weight": str(weights[a]),
+            "different_conditional_forecasts": [str(native.FORECAST[a]), str(native.FORECAST[b])]},
+        "first_record_probabilities": [str(weights[record]) for record in native.LETTERS]}
+
+
+def product_access_generators(coupling=Q(1)):
+    """Actual product source terms and the second-mode coordinate, exactly.
+
+    Rational Bargmann matrices use the SAME least-significant first-mode
+    ordering as ProductBand. Conjugation by diag(sqrt(n0! n1!)) gives the
+    orthonormal work-code matrices; algebra dimensions are unchanged.
+    """
+    from model.interacting_band_extension.construction import ProductBand
+    from model.interacting_band_extension import algebra
+    lattice = ProductBand(coupling=coupling)
+    dimension = lattice.dimension
+
+    def embed(sites, factors, coefficient=Q(1)):
+        local = dict(zip(sites, factors, strict=True))
+        return tuple(tuple(coefficient *
+            product_entry(row, column, local) for column in range(dimension))
+            for row in range(dimension))
+
+    def product_entry(row, column, factors):
+        value = Q(1)
+        for mode in range(2):
+            left, right = (row//4**mode) % 4, (column//4**mode) % 4
+            value *= factors[mode][left][right] if mode in factors else int(left == right)
+        return value
+
+    coordinate = algebra.polynomial(4, 1)
+    return {"coordinate": embed((1,), (coordinate,)),
+            "excluded_first_coordinate": embed((0,), (coordinate,)),
+            "terms": tuple(embed(term.sites, term.factors, term.coefficient)
+                           for term in lattice.terms),
+            "term_names": tuple(term.label for term in lattice.terms),
+            "first_mode_parity": tuple((-1)**(index % 4) for index in range(dimension)),
+            "bargmann_metric": tuple(factorial(index % 4)*factorial(index//4)
+                                     for index in range(dimension))}
+
+
+def product_access_rank(coupling=Q(1), *, first_mode_pointer=False):
+    """Certified rational lower rank of the readout/control closure.
+
+    Work modulo the prime 65537. Every source coefficient denominator is
+    invertible there. A nonzero reduced minor is a nonzero rational minor;
+    a separate exact parity bound supplies equality in the declared case.
+    No numerical-rank tolerance or unobserved Hamiltonian read is used.
+    """
+    import numpy as np
+    if type(first_mode_pointer) is not bool:
+        raise ValueError("The extra first-mode pointer selector must be boolean")
+    data = product_access_generators(coupling)
+    modulus, dimension = 65537, 16
+
+    def reduced(matrix):
+        return np.array([[value.numerator*pow(value.denominator, -1, modulus) % modulus
+                          for value in row] for row in matrix], dtype=np.int64)
+
+    coordinates = [reduced(data["coordinate"])]
+    if first_mode_pointer:
+        coordinates.append(reduced(data["excluded_first_coordinate"]))
+    terms = [reduced(term) for term in data["terms"]]
+    basis, queue = {}, []
+
+    def append(matrix):
+        vector = matrix.reshape(-1) % modulus
+        for pivot, row in basis.items():
+            if vector[pivot]:
+                vector = (vector-vector[pivot]*row) % modulus
+        nonzero = np.flatnonzero(vector)
+        if len(nonzero):
+            pivot = int(nonzero[0])
+            vector = vector*pow(int(vector[pivot]), -1, modulus) % modulus
+            basis[pivot] = vector
+            queue.append(vector.reshape(dimension, dimension))
+
+    append(np.eye(dimension, dtype=np.int64))
+    for matrix in queue:
+        for coordinate in coordinates:
+            append(coordinate@matrix % modulus)
+        for term in terms:
+            append((term@matrix-matrix@term) % modulus)
+    # Matrix products sum at most sixteen products of residues, far below
+    # int64 overflow. The closure uses only multiplication and derivations.
+    return len(basis)
+
+
+def product_access_certificate():
+    """Readout-derived noncommutative access for the declared product menu."""
+    data = product_access_generators()
+    parity, metric = data["first_mode_parity"], data["bargmann_metric"]
+    for matrix in (data["coordinate"], *data["terms"]):
+        for row, entries in enumerate(matrix):
+            for column, value in enumerate(entries):
+                if metric[row]*value != metric[column]*matrix[column][row]:
+                    raise AssertionError("A product generator lost its physical adjoint")
+                if value and parity[row] != parity[column]:
+                    raise AssertionError("An admitted product service changes first-mode parity")
+    ranks = (product_access_rank(), product_access_rank(Q(0)),
+             product_access_rank(first_mode_pointer=True))
+    if ranks != (128, 16, 256):
+        raise AssertionError("The product readout/control algebra or its controls changed")
+    return {"work_dimension": 16, "measured_mode": 1, "unmeasured_parity_mode": 0,
+            "source_term_names": list(data["term_names"]),
+            "menu": "second-mode pointer and finite words of the three local source services with selectable durations",
+            "local_source_service_menu_supplied": True,
+            "fixed_two_read_program_algebra_identified": False,
+            "rational_closure_lower_rank": ranks[0], "rank_certificate_prime": 65537,
+            "exact_first_mode_parity_upper_dimension": 128,
+            "accessible_work_algebra": "B(C8) direct_sum B(C8)",
+            "disconnected_coupling_access_dimension": ranks[1],
+            "extra_first_mode_pointer_access_dimension": ranks[2],
+            "full_B_C16_access_from_declared_menu": False,
+            "prewrite_effect_is_postwrite_record_pullback": True,
+            "old_records_and_arbitrary_references_preserved": True,
+            "new_record_durable_before_its_write": False,
+            "physical_source_or_continuum_algebra_identification": False}
+
+
 def native_checkpoint_certificate():
     """Check all write columns and their checkpoint intertwiners exactly.
 
@@ -302,4 +613,5 @@ def native_checkpoint_certificate():
             "arbitrary_operator_and_reference_scope": True,
             "global_blank_projector_counterexample": {
                 "first_record": list(record), "before": "0", "after": "1/2"},
-            "full_operational_observer_inhabitant_claimed": False}
+            "full_operational_observer_inhabitant_claimed": False,
+            "postcommit_operational_observer": checkpoint_observer_certificate()}

@@ -6,6 +6,19 @@ checkpoint continuation. Its finite predictions are computed from declared
 source operations and compared with exact mathematical targets or public
 measurement data under explicit apparatus assumptions.
 
+The actual postcommit source realizes every finite
+[`OperationalObserver` interface clause](common_source/DERIVATION.md#a-native-postcommit-operational-observer),
+with classical record access, native continuation controls and a declared
+buffer refinement. This exact mathematical realization covers retention of
+committed evidence; record creation, cross-observer overlaps and physical
+identification have separate obligations.
+
+For the interacting product, the [admitted pointer and control menu](common_source/DERIVATION.md#product-readout-derived-access)
+derive a noncommutative, parity-restricted work algebra and connect its
+measurement effects to durable records. Its fixed Gibbs reference joins
+complete modular histories and detector response, while preparation,
+temperature and physical identification remain explicit inputs.
+
 The construction admits smooth static `1+3` scalar-field effective
 descriptions for any specified finite Weyl/Ramsey measurement menu and
 positive tolerance, under its declared radial-product and active-observer

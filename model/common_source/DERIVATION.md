@@ -361,8 +361,9 @@ implemented.
 This adapter executes the existing record proof in
 `model/observer/DERIVATION.md` on the actual native source/tape carrier and
 on the common gauge/matter carrier. It reuses the dual fixed-observable
-criterion in `Lean/Dynamics/ProtectedCharge.lean`; it does not claim a new
-abstract conservation theorem or a complete `OperationalObserver` inhabitant.
+criterion in `Lean/Dynamics/ProtectedCharge.lean`. The finite persistence
+observer below supplies the remaining typed clauses on its postcommit domain;
+it does not extend record durability across creation of a new record.
 
 Let the committed record space have basis `|r>` and let W be the
 entire current quantum work space. For every r supply a complete instrument
@@ -448,9 +449,173 @@ the entire blank-and-written space. `OperationalObserver.record_durable`
 requires a fixed-observable law for its declared persistence generator;
 that generator must describe the postcommit persistence/control regime if
 these raw record projectors are used. Writing transitions must be attached
-separately. This package does not silently identify the writing generator
-with the persistence generator, and it does not instantiate all other
-fields of `OperationalObserver` or its cross-observer extension.
+separately. The writing generator and persistence generator have different
+domains. The construction below realizes the latter interface; no
+cross-observer extension is inferred.
+
+<a id="a-native-postcommit-operational-observer"></a>
+
+### A native postcommit operational observer
+
+The functions `checkpoint_observer_certificate` and `checkpoint_dual` in
+[`records.py`](records.py) give a mathematical realization of every field of
+[`ConsensusTower`](../../Lean/Tower/ConsensusTower.lean) and
+[`OperationalObserver`](../../Lean/Tower/OperationalObserver.lean) on the
+actual checkpoint carrier `K=H_1 direct_sum H_2`. This is an exact rational
+execution with an all-operator proof, not a compiled Lean inhabitant.
+It supplies an observer of persistent evidence; native stochastic repair is
+not asserted to terminate, and the solver, model and physical clocks are not
+identified.
+
+Let `Q_r` denote the six first-letter projectors on K, each of rank 546.
+The public and accessible algebra is `A_pub=span{Q_r}`. Thus this observer
+reads its actual committed tape, with no hidden-load access added. Its
+selected state `rho_1` is the actual first native tick of the uniform
+66-state binary preparation, followed by first-letter commitment. Orthogonal
+native columns give 132 distinct diagonal entries `1/132`, so positivity and
+trace one hold exactly. This state is not stationary: continuation writes
+the second slot. Neither stationarity nor faithfulness is a field of the
+owning tower or observer structures.
+
+The private algebra is `B(K)`, and its algebraic persistence generator is
+`G=T_K*−I`, using the original coherent continuation, with separate writing
+and halt Kraus branches. In particular `G(Q_r)=0` on all K, including
+unreachable tape/load combinations. This is not the zero generator: any
+phase-one basis projector P has `G(P)=−P`. For a declared E or F seam, let
+`S_e` write the second native letter on phase one and halt on phase two.
+The same injective native write columns prove each map CPTP. For evidence
+label r, choose the Heisenberg intervention `S_F*` if its current is positive,
+and `S_E*` otherwise. These are different maps on actual work effects and fix
+every `Q_s`; they are exactly the two native continuations available to the
+record controller. No renormalized outcome or unrecorded success restriction
+is used.
+
+For every nonnegative integer m, declare m independent blank buffer qubits:
+`K_m=K tensor (C²)^tensor m`, `rho_m=rho_1 tensor |0^m><0^m|`,
+`G_m=G tensor id`. The index order is the usual order on natural numbers,
+with common refinement `max(m,n)`. Observer labels are a singleton. The
+record labels are `(h,r)`, with h=0 for issuance and h=1 for retention of
+the **same** first-letter evidence across continuation. Only
+`(0,r) precedes (1,r)`; both labels represent `Q_r tensor I`.
+Record-element injectivity is not a field of the owning structures.
+All observer and record refinement maps are identities; the algebra map
+from m to n is `X -> X tensor I_(2^(n-m))`. These unused buffers are a
+supplied architecture refinement, not additional spatial modes or a field
+cutoff. The executable checks m=0,1,2; the formulas prove every finite m.
+
+The complete field correspondence is:
+
+| Owning structure fields | Same-source realization and proof |
+| --- | --- |
+| `indexNonempty`, `commonRefinement`, `dim`, `Observer`, `Record`, finiteness | Index 0, maximum index, dimension `3276*2^m`, one observer and twelve evidence labels. |
+| `recordOrder`, `publicAlgebra`, `public_mul_comm`, `recordElement` | The displayed two-stage order is strict and transitive. Orthogonal `Q_r tensor I` generate a commutative star algebra. |
+| `state`, `state_isState`, `generator` | The actual committed `rho_1`, blank tensor factors and the nonzero linear `G_m` above. |
+| Observer/record/algebra refinement and all six identity/composition laws | Identity label maps and associative unital star embeddings `X -> X tensor I`. |
+| `record_order_natural`, `public_natural`, `record_element_natural` | Labels and order are unchanged; each public projector maps to the identical named projector at the larger buffer index. |
+| `state_natural`, `generator_natural` | Trace of each added blank is one; the source generator acts only on K. Hence pairings are unchanged and `G_n(X tensor I)=G_m(X) tensor I`. |
+| `label`, `label_refine`, `accessible`, `public_le_accessible` | The sole label at every index and accessible algebra equal to its own public algebra. |
+| `readback`, `readback_mem_public`, `readback_fixes_public` | `E_m(X)=sum_r Tr(Q_(r,m) X Q_(r,m))/(546*2^m) Q_(r,m)` lands in and fixes the public algebra, on arbitrary complex operators. |
+| `record_durable`, `control`, `control_preserves_accessible`, `record_fixed_by_control` | The source Kraus intertwiners give `G_m(Q_(r,m))=0` and fix every record under every E/F control, hence preserve their entire span. |
+| `predict`, `predict_no_regress`, `predict_refine` | `(h,r) -> (1,r)` advances issuance to retention, holds retained evidence, never regresses and commutes with identity record refinement. |
+| `readout`, `readout_eq_pairing`, `predict_readout_congruent` | `p_r=Tr(rho_m Q_(r,m))` is independent of h and m. Prediction preserves this value, so equal readouts have equal predicted readouts. |
+
+The operator proofs cover arbitrary references: tensoring each native Kraus
+intertwiner with the reference identity preserves it. This does not claim
+that classical evidence preserves every quantum work observable. The
+public readback is a normalized block trace, whereas quantum-block pinching
+fixes a larger algebra and retains additional work coherences. They are
+different total readback maps, although both fix the chosen public interface.
+
+The typed prediction has a precise, limited meaning: persistence of issued
+evidence. The observer's actual next-current forecast is the separate
+function `native.FORECAST(r)`, independently calibrated on all four
+positive-probability first records. It cannot be substituted into
+`predict_readout_congruent` while identifying the scalar readout with record
+probability: `(0,0)` and `(1,0)` both have probability `14/33`, but their
+conditional forecasts are `0` and `5/56`. Equal event probabilities do not
+identify the event labels. This exact control prevents a formal retention
+receipt from being presented as a theorem of prediction accuracy.
+
+The construction closes these finite interface hypotheses on one native
+postcommit carrier, state, control and explicit buffer family. It does not
+instantiate the global blank-to-written evolution as a durable-record
+observer, unrestricted observer menus, inter-observer overlap maps, source
+selection of preparation or storage, a physical time unit, or a continuum
+field net. The full-history flag and the separate scoped certificate retain
+these distinctions in the executable receipt.
+
+<a id="product-readout-derived-access"></a>
+
+### Product readouts determine a proper noncommutative access algebra
+
+The same two-radial-mode `ProductBand` has a sharper access contract than
+declaring its entire sixteen-dimensional matrix algebra observable. Label
+the modes 0 and 1, each with four occupation addresses; mode 0 is the
+least-significant address in the executed source. The actual pointer reads
+mode 1 with `K_0=cos((Q_1+pi/2)/2)` and
+`K_1=sin((Q_1+pi/2)/2)`, hence effects
+`E_b=(I+(-1)^(1-b) sin Q_1)/2`. The four eigenvalues of the compressed
+coordinate are `+/-sqrt((3+/-sqrt(6))/4)`, strictly between `-pi/2` and
+`pi/2`. Polynomial interpolation on this finite spectrum therefore recovers
+`Q_1` from the measured effect `E_1`; no coordinate read is added.
+
+Declare the observation menu to allow this pointer after finite words of
+the existing three local source services, with selectable rational model
+durations. This is a supplied reusable service menu, larger than one fixed
+two-read program, and does not include arbitrary source unitaries. Let A be
+the smallest unital star algebra containing its effects and invariant under
+these service conjugations. For the executed coupling `g=1`,
+
+```
+A = {X : [X, (-1)^N_0]=0} = B(C8) direct_sum B(C8).
+```
+
+`product_access_generators` extracts the three **actual** `ProductBand`
+terms, preserving tensor order and full-before-compression oscillator
+powers. All three and `Q_1` commute with first-mode parity, giving the
+exact upper dimension `8^2+8^2=128`. For the lower bound,
+`product_access_rank` starts with I and closes its rational linear span
+under `X -> Q_1 X` and `X -> [H_j,X]` for those three terms. The relation
+`[ad(H_j), L_X]=L_[H_j,X]` shows that this span is the algebra generated by
+all iterated control derivatives of the pointer coordinate. Differentiating
+the admitted conjugations places it in A; conversely the resulting finite
+algebra is invariant under their exponentials. Rational durations suffice
+by continuity. Exact elimination modulo the prime 65537 gives rank 128.
+Every entry denominator is invertible modulo this prime, so a nonzero
+minor there is a nonzero rational minor. The parity upper bound makes the
+dimension equality exact, without a numerical singular-value threshold.
+The rational matrices are in Bargmann coordinates; conjugating by
+`diag(sqrt(n_0! n_1!))` gives the physical orthonormal matrices and leaves
+the algebra dimension unchanged.
+This is algebraic access under the ideal declared services; exact rank does
+not supply stable finite-sample tomography or a hardware-precision
+certificate for every element of A.
+
+The controls have operational consequences. Disconnecting the same model
+(`g=0`) gives only `I_0 tensor B(C4)`, dimension 16. Adding a separate
+first-mode pointer gives dimension 256, but that pointer is excluded from
+the stated menu. Opposite coherent superpositions of `|0,0>` and `|1,0>`
+therefore have identical laws for every admitted history, although the
+excluded first-mode coordinate distinguishes them. The interacting work
+algebra is noncommutative, but first-mode parity coherence is inaccessible.
+The existing Gibbs Hamiltonian and its modular flow preserve A; the
+all-input matrix certificate on C16 does not enlarge the readout menu.
+
+This dynamic access and durable evidence refer to different stages of the
+same instrument. Its write isometry is `V=sum_b |b> tensor K_b`, so
+`V^dagger (|b><b| tensor I) V=E_b` and `V^dagger V=I` for every work input
+and untouched reference. The new pointer projector is durable **after**
+its write: all subsequent source services, bit-conditioned feedback and
+native timer transitions copy the old bit, giving the Kraus intertwiner
+with that projector. Before writing, the pullback effect `E_b` is generally
+nonprojective and changes under the actual onsite service. The executable
+test uses the emitted pointer and feedback matrices on all sixteen work
+columns, while the instrument identities supply the exact proof. No
+commuting pointer algebra is substituted for the noncommutative work
+effects. This supplies the work-access and write-to-evidence join; it does
+not identify this work carrier with the native-only checkpoint carrier,
+derive the controller/storage services, or establish a continuum local
+algebra or a laboratory clock.
 
 ## Exact hardware refinement and approximate decoded physics
 

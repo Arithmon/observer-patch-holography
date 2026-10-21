@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from fractions import Fraction as F
 from functools import lru_cache
 import hashlib
@@ -40,6 +40,7 @@ SOURCE_PATHS = (
     'model/observer/native.py',
     'model/observer/quantum_mixing.py',
     'model/common_source/slow_geometry.py',
+    'model/common_source/records.py',
     'model/relative_observer_geometry/temporal_records.py',
     'evidence/native_geometric_source_20260925/spec.json',
     compiler.RESPONSE, compiler.CONTROL_RECEIPT)
@@ -506,6 +507,529 @@ def product_incident_clock_control():
         'clock_refinement_bounds': [product_incident_clock_bound(level) for level in (2, 5, 8)]}
 
 
+@dataclass(frozen=True)
+class ProductControllerState:
+    """Classical registers of the fixed finite interacting protocol.
+
+    The instruction pointer is part of the declared apparatus. Neither a
+    host iteration nor a quantum amplitude is an input to its transition.
+    Native records include null currents; field outcomes are retained bits.
+    """
+    instruction: str = 'kick'
+    cursor: int = 0
+    attempts: int = 0
+    bits: tuple = ()
+    loads: tuple = (0,)*10+(1, 1)
+    tape: tuple = ()
+    failure: tuple = ()
+
+
+def product_controller_transition(state, outcome=None, *, steps=STEPS):
+    """One time-independent classical control transition.
+
+    ``idle`` emits a retained identity outcome. A service failure is an
+    absorbing output, never a request to normalize or retry its work state.
+    Only the ready instruction enables a native timing-carrier repair.
+    """
+    a.integer(steps)
+    if (not isinstance(state, ProductControllerState)
+            or state.instruction not in ('kick', 'ready', 'evolve', 'read', 'feedback', 'halt', 'failure')
+            or type(state.attempts) is not int or not 0 <= state.attempts <= 2
+            or type(state.tape) is not tuple or type(state.bits) is not tuple
+            or type(state.loads) is not tuple or type(state.failure) is not tuple
+            or len(state.tape) != state.attempts or len(state.bits) > 2
+            or any(type(bit) is not int or bit not in (0, 1) for bit in state.bits)
+            or len(state.loads) != 12 or any(type(x) is not int or x not in (0, 1) for x in state.loads)
+            or sum(state.loads) != 2 or type(state.cursor) is not int
+            or not 0 <= state.cursor < 6*steps):
+        raise ValueError('valid finite classical controller registers required')
+    # The admitted classical domain is a consistent checkpoint, not every
+    # bit pattern of a hardware register. Reverse the retained currents and
+    # replay the two-event maximum tape to check its actual native meaning.
+    loads = list(state.loads)
+    for record in reversed(state.tape):
+        if (type(record) is not tuple or len(record) != 4
+                or any(type(x) is not int for x in record)
+                or not 0 <= record[0] < 30 or record[1] not in (0, 1)
+                or record[2] not in (-1, 0, 1) or record[3] not in (0, 1)):
+            raise ValueError('a complete native tape is required')
+        seam = native_seams()[record[0]]
+        if record[3] != int(10 in seam):
+            raise ValueError('the retained incidence must match its native seam')
+        loads[seam[0]] += record[2]; loads[seam[1]] -= record[2]
+        if any(value not in (0, 1) for value in loads):
+            raise ValueError('native records must reverse to the admitted binary sector')
+    for edge, coin, current, _ in state.tape:
+        loads, (_, actual) = native_repair(tuple(loads), native_seams()[edge], coin)
+        if actual != current:
+            raise ValueError('retained currents must be actual native outcomes')
+    if tuple(loads) != state.loads:
+        raise ValueError('retained native loads and tape disagree')
+    phase = state.instruction
+    if phase == 'failure':
+        if (len(state.failure) != 3 or state.failure[0] not in ('kick', 'evolve', 'read', 'feedback')
+                or state.failure[1] != state.cursor or type(state.failure[2]) is not int
+                or not 2 <= state.failure[2] < 6):
+            raise ValueError('an absorbing failure needs its source instruction and complement label')
+        phase = state.failure[0]
+    elif state.failure:
+        raise ValueError('a live instruction cannot carry a terminal failure')
+    incidents = sum(record[3] for record in state.tape)
+    pending = int(phase in ('evolve', 'read'))
+    if (incidents != len(state.bits)+pending
+            or (phase in ('evolve', 'read') and len(state.bits) >= 2)
+            or (phase == 'feedback' and state.bits != (1,))
+            or (phase == 'kick' and (state.attempts or state.bits))
+            or (phase == 'halt' and state.attempts != 2)
+            or (phase != 'evolve' and state.cursor)):
+        raise ValueError('instruction, incident count and retained field prefix must be consistent')
+    if outcome == 'idle':
+        return state
+    if state.instruction in ('halt', 'failure'):
+        if outcome is not None:
+            raise ValueError('an absorbing controller has no further active outcome')
+        return state
+    if isinstance(outcome, tuple) and len(outcome) == 2 and outcome[0] == 'failure':
+        if state.instruction not in ('kick', 'evolve', 'read', 'feedback'):
+            raise ValueError('only an active source service can emit a service failure')
+        if type(outcome[1]) is not int or not 2 <= outcome[1] < 6:
+            raise ValueError('the retained six-level source complement label is required')
+        return replace(state, instruction='failure', failure=(state.instruction, state.cursor, outcome[1]))
+    if state.instruction == 'ready':
+        if state.attempts == 2:
+            if outcome is not None:
+                raise ValueError('the finite attempt budget is exhausted')
+            return replace(state, instruction='halt')
+        if (not isinstance(outcome, tuple) or len(outcome) != 2
+                or any(type(x) is not int for x in outcome)
+                or not 0 <= outcome[0] < 30 or outcome[1] not in (0, 1)):
+            raise ValueError('a native seam index and placement coin are required')
+        edge, coin = outcome
+        seam = native_seams()[edge]
+        loads, (_, current) = native_repair(state.loads, seam, coin)
+        incident = int(10 in seam)
+        record = (edge, coin, current, incident)
+        return replace(state, instruction='evolve' if incident else 'ready', cursor=0,
+                       attempts=state.attempts+1, loads=loads, tape=state.tape+(record,))
+    if state.instruction == 'read':
+        if type(outcome) is not int or outcome not in (0, 1):
+            raise ValueError('a committed binary pointer outcome is required')
+        bits = state.bits+(outcome,)
+        return replace(state, instruction='feedback' if bits == (1,) else 'ready', bits=bits)
+    if outcome is not None:
+        raise ValueError('this source instruction has no classical choice')
+    if state.instruction in ('kick', 'feedback'):
+        return replace(state, instruction='ready')
+    following = state.cursor+1
+    return replace(state, instruction='read' if following == 6*steps else 'evolve',
+                   cursor=0 if following == 6*steps else following)
+
+
+class ProductControllerInstrument:
+    """A single homogeneous instrument on control, timer and work registers.
+
+    Its local service matrices are contractions of the existing emitted
+    source words. The ideal channel uses their exact code identities; the
+    numerical representation retains the inherited guarded roundoff policy.
+    A static read-only instruction table, source services and protected
+    registers remain construction inputs, not consequences of passive repair.
+    """
+
+    def __init__(self, *, interval=INTERVAL, steps=STEPS):
+        self.lattice = ProductBand()
+        self.interval, self.steps = a.rational(interval, positive=True), a.integer(steps)
+        self.kick, self.kick_metadata = inherited_source.feedback(4, .25, 2)
+        self.kraus, self.read_metadata = inherited_source.instrument(4, 1, np.pi/2, 2)
+        local = [(term.sites, *execute_term(term, self.interval/(2*self.steps)))
+                 for term in self.lattice.terms]
+        self.cycle = tuple(local+local[::-1])
+        self.prefix_transition_classes = set()
+
+    def _checked_branches(self, state, branches):
+        for following, _, _ in branches:
+            if (following.tape[:len(state.tape)] != state.tape
+                    or following.bits[:len(state.bits)] != state.bits):
+                raise ArithmeticError('a controller transition changed an already committed prefix')
+            # Busy words copy native data, so their instruction classes are
+            # checked once; every actually enumerated ready branch is also
+            # checked on its full native tape before this diagnostic grouping.
+            self.prefix_transition_classes.add((state.instruction, state.cursor,
+                state.attempts, state.bits, following.instruction, following.cursor,
+                following.attempts, following.bits))
+        return branches
+
+    def branches(self, state):
+        """Return complete active outcomes (next control, work map, weight).
+
+        Native weights are 1/60 and multiply amplitudes by their square
+        roots. Born probabilities reside in the read Kraus maps. Invalid
+        proper-code exports are the inherited complement channel, routed
+        by ``product_controller_transition`` to the failure instruction.
+        They have exactly zero weight on the declared valid-code input.
+        At an absorbing failure, ``None`` denotes identity on its retained
+        failure-sector payload, whose dimension need not be sixteen.
+        """
+        product_controller_transition(state, 'idle', steps=self.steps)
+        if state.instruction == 'failure':
+            return self._checked_branches(state, ((product_controller_transition(state, steps=self.steps), None, F(1)),))
+        identity = np.eye(16, dtype=complex)
+        if state.instruction == 'ready' and state.attempts < 2:
+            return self._checked_branches(state, tuple((product_controller_transition(state, (edge, coin), steps=self.steps),
+                          identity, F(1, 60)) for edge in range(30) for coin in (0, 1)))
+        if state.instruction == 'read':
+            return self._checked_branches(state, tuple((product_controller_transition(state, bit, steps=self.steps),
+                          self.lattice.apply(identity, (1,), matrix), F(1))
+                         for bit, matrix in enumerate(self.kraus)))
+        if state.instruction in ('kick', 'feedback'):
+            operation = self.lattice.apply(identity, (1,), self.kick)
+        elif state.instruction == 'evolve':
+            sites, matrix, _ = self.cycle[state.cursor % len(self.cycle)]
+            operation = self.lattice.apply(identity, sites, matrix)
+        else:
+            operation = identity
+        return self._checked_branches(state, ((product_controller_transition(state, steps=self.steps), operation, F(1)),))
+
+    @lru_cache(maxsize=8)
+    def service_closure(self, instruction, bits):
+        """Exact common-subroutine reuse, ending at the next ready state.
+
+        This contracts the fixed transition table on all sixteen input
+        columns. It has no access to the native state or retained tape.
+        Each call records its instruction count, including conditional reads
+        and feedback; this is not substitution by an ideal Hamiltonian.
+        """
+        if instruction == 'kick' and bits == ():
+            start = ProductControllerState()
+        elif instruction == 'evolve' and len(bits) < 2:
+            # A valid representative checkpoint for a service that is
+            # independent of its timer contents. This is an actual native
+            # tape, not fabricated currents or an inaccessible field value.
+            edge = next(i for i, seam in enumerate(native_seams()) if 10 in seam)
+            loads, tape = ProductControllerState().loads, ()
+            for _ in range(len(bits)+1):
+                loads, (_, current) = native_repair(loads, native_seams()[edge], 0)
+                tape += ((edge, 0, current, 1),)
+            start = ProductControllerState(instruction='evolve', bits=bits,
+                attempts=len(tape), loads=loads, tape=tape)
+        else:
+            raise ValueError('a reachable source subroutine entry is required')
+        todo = [(start, np.eye(16, dtype=complex), 0)]
+        complete = []
+        while todo:
+            state, operation, count = todo.pop()
+            if state.instruction == 'ready':
+                complete.append((state.bits, operation, count))
+                continue
+            for following, local, weight in self.branches(state):
+                if weight != 1:
+                    raise ArithmeticError('a busy source subroutine attempted native repair')
+                todo.append((following, local@operation, count+1))
+        return tuple(sorted(complete, key=lambda row: row[0]))
+
+    def completed(self, initial_loads=(0,)*10+(1, 1)):
+        """All terminal native/field records and their all-input Kraus maps."""
+        start = ProductControllerState(loads=tuple(initial_loads))
+        todo = [(start, np.eye(16, dtype=complex), F(1), 0)]
+        complete = []
+        while todo:
+            state, operation, weight, count = todo.pop()
+            if state.instruction in ('halt', 'failure'):
+                complete.append((state, operation, weight, count))
+            elif state.instruction in ('kick', 'evolve'):
+                for bits, local, length in self.service_closure(state.instruction, state.bits):
+                    following = replace(state, instruction='ready', cursor=0, bits=bits)
+                    todo.append((following, local@operation, weight, count+length))
+            else:
+                for following, local, probability in self.branches(state):
+                    todo.append((following, local@operation, weight*probability, count+1))
+        return tuple(sorted(complete, key=lambda row: (row[0].tape, row[0].bits)))
+
+
+def product_controller_idle_bound(progress_steps, invocations, idle_probability=F(1, 2)):
+    """Finite unfinished-output bound for the SAME homogeneous instrument.
+
+    Laziness means q Id+(1-q) T, independent of control and quantum state.
+    Idle records and every unfinished work/reference state are retained.
+    The Chernoff bound compares a binomial progress count with the worst
+    admitted active length; no physical duration is assigned to invocations.
+    """
+    a.integer(progress_steps); a.integer(invocations, minimum=0)
+    q = a.rational(idle_probability)
+    if q >= 1:
+        raise ValueError('idle probability must be below one')
+    mean = (1-q)*invocations
+    if mean < progress_steps:
+        bound = F(1)
+    else:
+        # exp(-x) <= 1/(1+x) keeps a conservative rational certificate.
+        exponent = (mean-progress_steps)**2/(2*mean)
+        bound = 1/(1+exponent)
+    return {'maximum_active_instructions': progress_steps, 'controller_invocations': invocations,
+            'idle_probability': q, 'unfinished_probability_upper': bound,
+            'expected_invocations_upper': F(progress_steps)/(1-q),
+            'unfinished_states_and_idle_records_retained': True,
+            'controller_invocations_are_native_clock_ticks': False}
+
+
+def product_controller_export(state, dimension, *, steps=STEPS):
+    """Route the existing full six-level export to success or retained failure.
+
+    Success leaves the surrounding service instruction active. Its internal
+    source-word cursor advances within the supplied service implementation;
+    the outer controller advances only after that word completes.
+    """
+    if not isinstance(state, ProductControllerState) or state.instruction not in ('kick', 'evolve', 'read', 'feedback'):
+        raise ValueError('an active controller source service is required')
+    exports = compiler.transfer_kraus(dimension)
+    return ((state, exports[0], 'code'),)+tuple(
+        (product_controller_transition(state, ('failure', label), steps=steps), matrix, label)
+        for label, matrix in zip(range(dimension, 6), exports[1:], strict=True))
+
+
+def product_homogeneous_controller_control():
+    """Audit the fixed controller against the separately defined history law."""
+    program = ProductControllerInstrument()
+    completed = program.completed()
+    direct = _product_clock_prefixes(program.lattice, np.eye(16), source=True,
+                                    interval=INTERVAL, steps=STEPS)
+    total, maximum_error, lengths, tape_counts = np.zeros((16, 16), complex), 0., {}, {}
+    raw, _, preparation = product_gibbs_preparation(program.lattice)
+    complete_law, rows = [], []
+    for state, operation, weight, count in completed:
+        target = direct[len(state.bits)][state.bits]
+        maximum_error = max(maximum_error, float(np.linalg.norm(operation-target, 2)))
+        total += float(weight)*(operation.conj().T@operation)
+        lengths[count] = lengths.get(count, 0)+1
+        tape_counts[state.tape] = tape_counts.get(state.tape, 0)+1
+        complete_law.append((state.tape, state.bits, float(weight)*float(np.linalg.norm(operation@raw)**2)))
+        rows.append((state.tape, state.bits, state.loads, count))
+    completeness = float(np.linalg.norm(total-np.eye(16), 2))
+    expected_tapes = {(first, second): final for first, second, final in product_incident_tapes()}
+    if (len(completed) != 4900 or set(tape_counts) != set(expected_tapes)
+            or any(state.loads != expected_tapes[state.tape] for state, _, _, _ in completed)
+            or maximum_error > 2e-12 or completeness > 2e-11):
+        raise ArithmeticError('the homogeneous controller changed the complete all-input history instrument')
+    failures = {}
+    for dimension in (2, 4):
+        exports = product_controller_export(ProductControllerState(), dimension)
+        failures[str(dimension)] = {
+            'complete_export_residual': float(np.linalg.norm(sum(k.conj().T@k for _, k, _ in exports)-np.eye(6), 2)),
+            'complement_labels': list(range(dimension, 6)),
+            'valid_code_failure_probability': 0,
+            'failure_instruction_absorbing': all(product_controller_transition(
+                product_controller_transition(ProductControllerState(), ('failure', label)))
+                .instruction == 'failure' for label in range(dimension, 6))}
+    law_rows = []
+    for tick in range(3):
+        for bits in direct[tick]:
+            law_rows.append({'incident_ticks': tick, 'timeout': tick < 2, 'field_bits': list(bits),
+                'probability': sum(probability for _, outcome, probability in complete_law if outcome == bits)})
+    maximum_length = max(lengths)
+    # Persistence is checked after commitment, not during record creation.
+    # Include idle and genuine export failure transitions on reachable busy
+    # checkpoints and the absorbing terminal states.
+    ready = product_controller_transition(ProductControllerState())
+    first_edge = next(i for i, seam in enumerate(native_seams()) if 10 in seam)
+    written = product_controller_transition(ready, (first_edge, 0))
+    probes = [written, completed[-1][0]]
+    for state in probes:
+        program._checked_branches(state, ((product_controller_transition(state, 'idle'), None, F(1)),))
+        if state.instruction == 'evolve':
+            for failed, _, label in product_controller_export(state, 4):
+                if label != 'code':
+                    program._checked_branches(state, ((failed, None, F(1)),))
+                    program.branches(failed)
+        else:
+            program.branches(state)
+    prefix_certificate = {
+        'checked_instruction_transition_classes': len(program.prefix_transition_classes),
+        'instruction_transition_classes_sha256': hashlib.sha256(canonical(sorted(program.prefix_transition_classes)).encode()).hexdigest(),
+        'all_emitted_transitions_preserve_existing_native_and_field_prefixes': True,
+        'postcommit_public_projectors_satisfy_dual_fixed_point_identity': True,
+        'generator': 'T* - I on the invariant postcommit controller domain',
+        'readback': 'sum_p Tr(Q_p X Q_p)/rank(Q_p) Q_p; block ranks may differ',
+        'state': 'actual first native write after the source Gibbs preparation and kick',
+        'new_record_creation_globally_preserves_that_projector': False,
+        'blank_to_first_selected_record_probability': F(1, 60),
+        'OperationalObserver_interface_realized_on_this_program': True,
+        'Lean_inhabitant_compiled': False,
+        'unused_buffer_refinement_architecture_supplied': True,
+        'arbitrary_quantum_work_observables_claimed_durable': False}
+    resources = {key: preparation['source_resources'][key] for key in inherited_source.COUNT_KEYS}
+    for _, _, metadata in program.cycle:
+        for key in resources:
+            resources[key] += 2*STEPS*metadata['resources'][key]
+    for metadata in (program.kick_metadata, program.read_metadata):
+        for key in resources:
+            resources[key] += 2*metadata['resources'][key]
+    return {'scope': 'One finite homogeneous controller for the existing native-clock interacting field; supplied controller architecture and source services.',
+        'complete_native_tapes': len(tape_counts), 'complete_tape_field_outputs': len(completed),
+        'retained_work_input_columns': 16, 'retained_Gibbs_reference_addresses': 16,
+        'controller_registers': ['instruction', 'cursor', 'attempts', 'field bits', 'native loads', 'native tape', 'failure'],
+        'external_iteration_or_quantum_amplitudes_read_by_controller': False,
+        'maximum_active_instructions': maximum_length,
+        'worst_branch_source_resources_including_preparation': resources,
+        'additional_native_repairs_per_history': 2,
+        'source_word_services_are_atomic_at_this_controller_level': True,
+        'terminal_instruction_counts': [{'instructions': count, 'outcomes': amount} for count, amount in sorted(lengths.items())],
+        'complete_controller_record_sha256': hashlib.sha256(canonical(rows).encode()).hexdigest(),
+        'all_input_Kraus_comparison_residual': maximum_error,
+        'complete_all_input_channel_residual': completeness,
+        'complete_clock_field_record_law': law_rows,
+        'total_output_probability': sum(row['probability'] for row in law_rows),
+        'native_repairs_are_enabled_only_at_ready_instruction': True,
+        'postcommit_prefix_observer': prefix_certificate,
+        'service_complement_outputs': failures,
+        'finite_idle_bounds': [product_controller_idle_bound(maximum_length, multiple*maximum_length)
+                               for multiple in (2, 4, 8)],
+        'Gibbs_preparation_is_a_source_prefix': preparation['source_resources'],
+        'all_input_equality_covers_arbitrary_references_and_classical_native_correlations': True,
+        'coherent_native_load_superposition_claimed': False,
+        'passive_repair_selected_the_controller_or_interacting_H': False,
+        'controller_hardware_storage_and_source_service_accuracy_derived': False,
+        'microinstruction_count_calibrated_as_physical_time': False}
+
+
+def _product_history_maps(advance, kick, reads, feedback):
+    """Complete ideal work maps, retaining every stopped read prefix."""
+    branches = {(): kick}
+    prefixes = [branches]
+    for tick in range(2):
+        following = {}
+        for bits, operation in branches.items():
+            for bit, read in enumerate(reads):
+                value = read@advance@operation
+                if tick == 0 and bit == 1:
+                    value = feedback@value
+                following[bits+(bit,)] = value
+        branches = following
+        prefixes.append(branches)
+    return tuple(prefixes)
+
+
+def product_modular_history_control():
+    """One reference clock for the complete controlled field instrument.
+
+    The fixed Gibbs reference determines the modular evolution. Its ideal
+    channel identity includes interventions and arbitrary work references;
+    the executed source word agrees only within its splitting/service
+    budget. A conditioned work state is not silently used as that reference.
+    Translated detector menus and relative modular cocycles are mathematical
+    controls, not additional compiled source protocols.
+    """
+    program = ProductControllerInstrument()
+    lattice, beta, interval = program.lattice, F(1, 4), program.interval
+    raw, target, preparation = product_gibbs_preparation(lattice, beta)
+    rho = target@target.conj().T
+    h = lattice.hamiltonian.toarray()
+    values, basis = np.linalg.eigh(rho)
+    logarithm = (basis*np.log(values))@basis.conj().T
+    modular_h = -logarithm/float(beta)
+    scalar = float(np.trace(modular_h-h).real/16)
+    s = -float(interval/beta)
+    # Schrödinger propagation is rho^(-is), adjoint to sigma_s.
+    modular_advance = expm(-1j*s*logarithm)
+    advance = expm(-1j*float(interval)*h)
+    phase = np.exp(1j*float(interval)*scalar)
+    q = normalized(a.polynomial(4, 1))
+    q_values, q_basis = np.linalg.eigh(q)
+    local_reads = tuple((q_basis*f((q_values+np.pi/2)/2))@q_basis.T
+                        for f in (np.cos, np.sin))
+    identity = np.eye(16)
+    kick = lattice.apply(identity, (1,), expm(1j*q/4))
+    reads = tuple(lattice.apply(identity, (1,), matrix) for matrix in local_reads)
+    physical = _product_history_maps(advance, kick, reads, kick)
+    modular = _product_history_maps(modular_advance, kick, reads, kick)
+    ideal_residual = max(float(np.linalg.norm(physical[tick][bits]
+                            -phase**tick*operation, 2))
+                         for tick, row in enumerate(modular) for bits, operation in row.items())
+    completed = program.completed()
+    difference_gram = np.zeros((16, 16), complex)
+    source_gram = np.zeros_like(difference_gram)
+    output_error = 0.
+    for state, operation, weight, _ in completed:
+        tick = len(state.bits)
+        expected = phase**tick*modular[tick][state.bits]
+        difference = operation-expected
+        difference_gram += float(weight)*(difference.conj().T@difference)
+        source_gram += float(weight)*(operation.conj().T@operation)
+        output_error += float(weight)*_pure_output_distance(operation@raw, expected@target)
+    stinespring_error = sqrt(max(0., float(np.linalg.eigvalsh(difference_gram)[-1])))
+    # This is a numerical all-reference bound, not a hardware certificate.
+    channel_error = stinespring_error*(1+sqrt(float(np.linalg.eigvalsh(source_gram)[-1])))/2
+    count = 4*program.steps*len(lattice.terms)+4
+    gain = count*F(251, 10**12)
+    vector_guard = (preparation['purification_vector_error_guard']+gain)/(1-gain)
+    source_guard = vector_guard*(2+vector_guard)/2
+    split = splitting_bound(lattice, interval, program.steps)['two_interval_complete_output_trace_distance_upper']
+
+    # A common time change conjugates the whole intervention menu, including
+    # the conditional feedback. It is a channel identity on every input.
+    translation = expm(-1j*float(interval)*h)
+    translate = lambda value: translation@value@translation.conj().T
+    shifted = _product_history_maps(advance, translate(kick),
+                                   tuple(map(translate, reads)), translate(kick))
+    wrong_feedback = _product_history_maps(advance, translate(kick),
+                                          tuple(map(translate, reads)), kick)
+    covariance = max(float(np.linalg.norm(shifted[tick][bits]-translate(operation), 2))
+                     for tick, row in enumerate(physical) for bits, operation in row.items())
+    feedback_mismatch = max(float(np.linalg.norm(wrong_feedback[tick][bits]
+                               -translate(operation), 2))
+                            for tick, row in enumerate(physical) for bits, operation in row.items())
+
+    # The selected posterior is faithful, but disturbance changes its
+    # modular generator. The finite relative cocycle gives the exact repair
+    # of the representation without identifying the two reference states.
+    branch = physical[1][(1,)]@target
+    posterior = branch@branch.conj().T/float(np.linalg.norm(branch)**2)
+    masses, vectors = np.linalg.eigh(posterior)
+    if masses.min() <= 0:
+        raise ArithmeticError('the selected posterior is not faithful')
+    log_posterior = (vectors*np.log(masses))@vectors.conj().T
+    ref_unitary = expm(1j*s*logarithm)
+    post_unitary = expm(1j*s*log_posterior)
+    observable = lattice.apply(identity, (1,), q)
+    ref_action = ref_unitary@observable@ref_unitary.conj().T
+    post_action = post_unitary@observable@post_unitary.conj().T
+    cocycle = post_unitary@ref_unitary.conj().T
+    cocycle_residual = float(np.linalg.norm(cocycle.conj().T@post_action@cocycle-ref_action, 2))
+    posterior_mismatch = float(np.linalg.norm(post_action-ref_action, 2))
+    second = s/2
+    relative = lambda t: expm(1j*t*log_posterior)@expm(-1j*t*logarithm)
+    cocycle_law = float(np.linalg.norm(relative(s+second)
+        -cocycle@ref_unitary@relative(second)@ref_unitary.conj().T, 2))
+    parity = lattice.apply(identity, (0,), np.diag([1, -1, 1, -1]))
+    parity_residual = max(float(np.linalg.norm(parity@value-value@parity, 2))
+                          for value in (h, rho, kick, *reads, posterior, cocycle))
+    if (ideal_residual > 1e-11 or covariance > 1e-11 or cocycle_residual > 1e-11
+            or cocycle_law > 1e-11 or parity_residual > 1e-11
+            or feedback_mismatch < 1e-5 or posterior_mismatch < 1e-5
+            or max(channel_error, output_error) > float(split+source_guard)):
+        raise ArithmeticError('the complete fixed-reference modular history contract failed')
+    return {'scope': 'Same finite product program and fixed Gibbs reference; compiled errors retained, no posterior-reference substitution.',
+        'inverse_temperature': beta, 'model_time_per_incident': interval,
+        'fixed_reference_modular_parameter_per_incident': -interval/beta,
+        'complete_native_tapes': 3600, 'complete_native_and_field_outputs': len(completed),
+        'retained_work_input_columns': 16, 'retained_reference_addresses': 16,
+        'ideal_all_input_history_Kraus_residual_after_scalar_phase': ideal_residual,
+        'source_to_modular_Stinespring_error_numerical': stinespring_error,
+        'source_to_modular_all_reference_half_diamond_bound_numerical': channel_error,
+        'source_prepared_complete_output_half_trace_error_numerical': output_error,
+        'source_splitting_and_service_complete_output_bound': split+source_guard,
+        'full_intervention_menu_covariance_residual': covariance,
+        'untranslated_feedback_covariance_error': feedback_mismatch,
+        'conditioned_reference_minimum_eigenvalue_numerical': float(masses.min()),
+        'conditioned_reference_modular_action_mismatch': posterior_mismatch,
+        'relative_modular_cocycle_action_residual': cocycle_residual,
+        'relative_modular_cocycle_law_residual': cocycle_law,
+        'first_mode_parity_commutator_residual': parity_residual,
+        'same_native_clock_tape_retained_in_both_channels': True,
+        'fixed_reference_replaced_by_measurement_posterior': False,
+        'translated_menu_or_cocycle_compiled_as_extra_protocol': False,
+        'Gibbs_reference_and_controller_selected_by_passive_repair': False,
+        'physical_time_or_own_algebra_modular_flow_for_classical_records_identified': False}
+
+
 def product_interaction_control():
     """Conditional same-product interaction, Gibbs clock and full readouts."""
     lattice, free = ProductBand(), ProductBand(0)
@@ -774,6 +1298,7 @@ def leakage_witness(lattice, steps=32, time=F(1, 1024), execute=True):
 
 
 def checks_and_run():
+    from ..common_source.records import product_access_certificate
     if a.quartic_coefficients() != a.declared_quartic():
         raise ArithmeticError('extended quartic failed independent exact Fourier integration')
     extended, matched, bare = Lattice(), Lattice(False, True), Lattice(False, False)
@@ -847,6 +1372,10 @@ def checks_and_run():
     product['synthetic_parameter_recovery'] = product_parameter_recovery(
         product['source_histories_by_native_sign'], product_gibbs_preparation(ProductBand())[0])
     product['native_incident_clock'] = product_incident_clock_control()
+    product['homogeneous_native_clock_controller'] = product_homogeneous_controller_control()
+    product['joint_fixed_reference_modular_history'] = product_modular_history_control()
+    product['operational_work_access'] = product_access_certificate()
+    product['detector_KMS'] = a.product_detector_kms_control(product)
     product['occupation_refinement'] = a.product_occupation_refinement()
     return a.serializable({
         'schema': 'oph.interacting_band_extension.v1', 'all_pass': True,

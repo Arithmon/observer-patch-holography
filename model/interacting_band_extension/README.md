@@ -340,9 +340,216 @@ They are service-accuracy requirements, not hardware measurements.
 Since the Gibbs state uses this same `H`, an ideal incident advances modular
 parameter by `-delta/beta`; at `beta=1/4` the executed fixture advances it
 by `-1/4`. Source splitting and precision errors are charged above. The
-active coupling rule, independent timing carrier and protected service
-schedule are supplied, and do not establish autonomous repair dynamics or
-SI time units.
+active coupling rule, independent timing carrier and protected source
+services are supplied. The finite scheduling logic has the homogeneous
+realization below; this does not derive the apparatus from passive repair
+or calibrate SI time units.
+
+<a id="one-fixed-instrument-controls-the-clock-and-field"></a>
+
+### One fixed instrument controls the clock and field
+
+`ProductControllerInstrument` realizes this same finite history with one
+time-independent instrument. Its classical registers store an instruction
+pointer, local-word cursor, attempt count, committed field bits, native
+loads, the complete native tape and a failure flag. The admitted domain is
+the consistent checkpoints: every native tape reverses to a binary
+two-particle state and replays to its recorded currents and final loads;
+the instruction and field prefix agree with the number of pending
+incidents. Malformed register patterns are outside this contract.
+
+The fixed instruction table first kicks the prepared field. A `ready`
+instruction enables the next uniformly selected seam and placement coin.
+Every port incident, including a null-current incident, enters `evolve`.
+That instruction advances through the source-executed local palindrome;
+`read` commits its pointer bit, and the first bit alone selects `feedback`.
+No native repair is enabled while these services are busy. After two native
+attempts the controller halts, retaining zero-, one- and two-read outputs.
+The selector receives no host iteration, model-time variable or hidden
+quantum amplitude. The Gibbs preparation is the same source-executed prefix.
+
+For a consistent classical checkpoint c and emitted outcome a, write its
+next checkpoint as `delta(c,a)`, native weight as `p_(c,a)` and source work
+map as `K_(c,a)`. The instrument has Kraus operators
+
+```text
+J_(c,a) = |delta(c,a)><c| tensor sqrt(p_(c,a)) K_(c,a).
+```
+
+The incoming controller is classical: these operators dephase its different
+checkpoint labels. At `ready`, the sixty weights sum to one; at `read`, the
+two source pointer Kraus maps are complete; other active services are the
+existing exact-code unitary words, and halt is absorbing. Consequently
+`sum J*J=I` on the admitted control and valid work-code domain. Every
+finite branch has exactly the native and source word of the original
+history. Induction on instructions therefore proves equality of the
+complete instruments for every work/reference state, including correlations
+with a classical native-load register. It asserts no coherent
+superposition of classical timing-carrier loads. The executable audits all
+sixteen work-input columns, 3,600 native tapes and 4,900 terminal outcomes;
+common busy subroutines are reused only when their entire source words
+coincide. Removing feedback or ignoring null incidents breaks the audit.
+
+The same controller also realizes the
+[postcommit persistence-observer interface](../common_source/DERIVATION.md#a-native-postcommit-operational-observer).
+Restrict to its invariant domain after the first native record has been
+written. Each first-record projector `Q_p` is fixed by `T*`, because every
+transition copies the old native prefix. After a field bit is committed,
+its prefix has the same property on that later invariant domain. The
+executable checks every emitted native transition and each reused busy
+instruction class, including absorbing halt/failure and idle transitions.
+Thus `G=T*-I` annihilates these public projectors. Use the actual first-write
+state, public/access algebra `span{Q_p}`, and
+`E(X)=sum_p Tr(Q_p X Q_p)/rank(Q_p) Q_p`; ranks may differ. Continuing the
+same instrument or idling are available interventions and both fix this
+algebra. One may choose between them by the retained label. With the same
+issued/retained evidence labels, prediction and unused-buffer embeddings as
+the cited construction, every finite observer-interface clause follows on
+this product program. These buffers and interface choices remain declared;
+no new Lean inhabitant is asserted. The first write itself changes its
+projector from zero to probability `1/60` for a selected seam/coin record,
+so global blank-to-written durability is false. The proof preserves public
+prefixes, not arbitrary quantum work observables, and does not identify
+the product registers with the separate native checkpoint carrier.
+
+The existing six-level code-export Kraus maps separately give all genuine
+complement outcomes. `product_controller_export` routes each to an
+absorbing failure sector and retains its reference state and complement
+label. These sectors form a direct sum with the successful code and tensor
+with untouched spectators. Their probability is exactly zero on valid-code
+source words. The 4,900-outcome run is the complete valid-code history;
+the independent export control includes a nonzero off-code component and
+its entangled reference. No failed branch is normalized or discarded.
+
+There are at most 775 controller instructions after preparation, with the
+same 217,110 source pulses including preparation, 434,220 load/export
+events and two native timing repairs. One instruction may call an entire
+compiled source word; its primitive cost remains counted. Controller
+instruction count is neither incident count nor physical duration.
+For fixed `0<=q<1`, the single lazy instrument `q Id+(1-q) T` merely
+inserts recorded idle outcomes. If L bounds active instructions and
+`mu=(1-q)J>=L`, then after J invocations
+
+```text
+Pr(unfinished) <= exp(-(mu-L)^2/(2 mu))
+               <= 1 / (1+(mu-L)^2/(2 mu)),
+E[invocations until halt] <= L/(1-q).
+```
+
+All unfinished work/reference states are retained at a finite invocation
+budget. Erasing only idle labels from completed histories gives the same
+native/field instrument; conditioning a finite-budget run on finishing
+would generally bias it and is not used. An implementation error epsilon
+per complete controller invocation adds at most `J epsilon` to the
+existing source and splitting budget. This is a construction of the finite
+scheduler, not a certificate of controller hardware, storage or source
+service accuracy. The instruction table and architecture remain declared.
+The passive mixing channel is still distinct from the nontrivial modular
+unitary of the interacting Gibbs state.
+
+<a id="one-reference-clock-for-complete-intervened-histories"></a>
+### One reference clock for complete intervened histories
+
+`product_modular_history_control` connects the same fixed controller to
+the interacting Gibbs reference on its complete recorded channel. Write
+`rho=exp(-beta H)/Z`, `sigma_s(A)=rho^(is) A rho^(-is)`, and
+`s=-t/beta`. The Schrödinger modular segment is
+`rho^(-is)=Z^(is) exp(-itH)`. Substituting this segment into every
+elapsed-time interval changes a history Kraus operator only by the scalar
+phase `Z^(i n s)`, where n is that history's zero-inclusive incident count.
+Every intervening read and record-conditioned feedback stays in its original
+order. The record labels are committed classical outputs. Thus the ideal
+complete channels agree, including timeouts, all
+native tapes, field records, surviving work and arbitrary references. This
+is a statement about the entire instrument, not only a two-point function.
+Each tick in the executed fixture has `t=1/16`, `s=-1/4` and `beta=1/4`;
+the refining clock contract above replaces these by `t=1/R_l` and
+`s=-1/(beta R_l)` with its existing timing and source errors.
+
+The actual compiled word approximates this channel. For its maps A_j and
+phase-aligned ideal modular maps B_j, including square roots of the native
+branch weights, the direct-sum Stinespring estimate is
+
+```text
+e = || sum_j (A_j-B_j)^* (A_j-B_j) ||^(1/2),
+half_diamond(Phi_A-Phi_B) <= e (1+||sum_j A_j^* A_j||^(1/2))/2.
+```
+
+The 4,900-output, all-sixteen-input execution gives a numerical bound
+`1.69e-8`; its actual prepared work/reference output differs by `3.44e-9`.
+Both fit the existing splitting and complete service budget, without
+normalizing source amplitudes or discarding records. The all-input check
+does not establish access to every work observable. The Hamiltonian,
+reference, reads and relative cocycle preserve first-mode parity and
+therefore restrict to its block algebra. Conjugating the full
+ideal intervention menu, including conditional feedback, by a common
+`V=exp(-iuH)` gives `K'_j=V K_j V*` on every input. Leaving only feedback
+untranslated fails this identity. The translated menu is an algebraic
+control; no extra compiled implementation is claimed.
+
+The fixed reference must also be distinguished from a conditioned work
+state. The faithful first-read posterior has a different modular action:
+the retained probe mismatch is about `0.0858`. For that posterior eta,
+`u_s=eta^(is) rho^(-is)` obeys
+`u_(s+t)=u_s sigma_s(u_t)` and
+`sigma_s(A)=u_s* sigma_s^eta(A) u_s`, verified independently in the control.
+This relative cocycle describes the change of reference; it is not an
+additional operation executed by the controller. The same-H continuation
+therefore uses the fixed Gibbs reference throughout the disturbed history.
+The committed classical record algebra alone has trivial modular flow on
+its state support.
+Neither choosing this reference nor realizing the channel identifies
+seconds, a geometric modular boost or an observed physical field.
+
+<a id="the-interacting-detector-and-kick-obey-the-same-gibbs-law"></a>
+
+### The interacting detector and kick obey the same Gibbs law
+
+`product_detector_kms_control` applies the existing
+[finite Gibbs/KMS theorem](../../Lean/QFT/StructuralInheritance.lean)
+to this interacting preparation and its actual detector. Its bit effect is
+`A=K0* K0-K1* K1=-sin(Q)`; its preparation kick is `exp(i epsilon Q)`.
+For energy eigenvalues E_i and Gibbs weights p_i, put
+`z_ij=A_ij Q_ji` and `omega_ij=E_j-E_i`. These signed cross weights obey
+
+```text
+W_AQ(t) = sum_ij p_i z_ij exp(-i omega_ij t),
+p_j z_ij = exp(-beta omega_ij) p_i z_ij,
+W_AQ(t-i beta) = Tr(rho Q A(t)),
+d_epsilon <A(t)>|0 = i Tr(rho [A(t),Q]).
+```
+
+Thus the symmetrized cross-noise coefficient `(p_i+p_j)z_ij/2`
+and commutator coefficient `(p_i-p_j)z_ij` have ratio
+`coth(beta omega_ij/2)/2` when the denominator is nonzero. At zero
+frequency the undivided detailed-balance identity applies. No independent
+noise parameter enters; this is a cross-response to Q, not an A-generated
+kick or a probability distribution of cross weights.
+
+The comparison reuses the existing fixed-interval native-sign histories;
+the homogeneous incident controller has a fixed positive kick. These
+complete source histories with kicks `epsilon=+-1/4` give first-read
+central slope `-0.0345168856` at model time `1/16`; the same-H ideal slope
+is `-0.0345168861` and its infinitesimal response is `-0.0347883501`.
+The finite-kick remainder is bounded by
+`4 epsilon^2 ||Q||^3/3`, and complete history half-trace error delta adds
+`2 delta/epsilon` to the central slope. If the raw prepared purification
+has vector error e, its unnormalized marginal has trace error at most
+`e(2+e)`; ordered cross correlations and response acquire allowances
+`e(2+e)||Q||` and `2e(2+e)||Q||`. The retained source amplitudes are not
+renormalized. Equilibrium cross-correlation measurements are algebraic
+predictions here, not extra executed pointer protocols. A free Gibbs
+preparation under the interacting clock violates the displayed KMS boundary.
+
+The accessible algebra also preserves first-mode parity. Reweighting its
+two central sectors by positive constants preserves restricted modular
+flow and detailed balance, while changing accessible populations and
+cross noise. The control changes the even-sector mass by `0.15320` and
+the equal-time cross correlation by `0.001384`. KMS therefore does not
+select these central weights. Nor does controller stationarity select the
+Gibbs state: on the absorbing halt sector, every work/reference density is
+fixed by the same instrument. These finite counterexamples leave Hamiltonian,
+temperature and preparation selection as source-law choices.
 
 ## Unrestricted occupation for the same two-mode history
 

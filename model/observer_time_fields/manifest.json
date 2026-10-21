@@ -9,7 +9,7 @@
     "canonical_sector.py": "50569e985860cce4014d1156224a127b03881e11b387d5c926ec985f7d9a2029",
     "canonical_sector_results.json": "c62ff2836f1d3cd833e5c1728676f263b532683dd37953fad0e035ee4bbacf99",
     "continuum_dynamics.py": "667c79896bd1748b492b9fce3dadbdb4e10f62d130359e5cf45ace70de4214c5",
-    "continuum_dynamics_results.json": "74a01baaf487903d3052bc1ea490dad040812167e7670d6c9372aea50f7040ea",
+    "continuum_dynamics_results.json": "a149f43a421a0560871265f9586c8913926fc48d4b1961aecb42c36588da420e",
     "core.py": "c305f335e1bb1b1abf3ee078eee7f969dc2558522d04b547063601f45c95bde2",
     "dual.py": "647f69c428e9bf7c8cf0eb72fa7d408eb7758a728861d0202600dc6dc883c548",
     "federation.py": "300cce61e8de9f43deb048523def82c35ac9d7440e05d097c892a827eb4ed037",
@@ -18,7 +18,7 @@
     "refinement_results.json": "d76a6dcd99c1c279923f4bf852bb00db8240b1fbd4ae3ab24bf3817fa928e5ca",
     "results.json": "13a000287a74615e7086526584d5f9b025ed1faf4170a757a84f25880a54ab97",
     "spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
-    "spatial_dynamics_results.json": "ef0252c2bb465b6664ceb0ea01551dadbedeef0a67e32023241df3787ca0e36c",
+    "spatial_dynamics_results.json": "e9ccdf0cb22df16bcc29e43b41c7689ca68897cf8c4e23a5d6b1bf0ca45a4ff2",
     "test_audit.py": "6089f7f86500822c28b70df992c5665920da44c93941447d0d0d3e9d191cc2fb",
     "test_canonical_sector.py": "6563fc2eb688b3b5cd073e3f0181790807462e8bdbcc3961f3dfcfa2ef62d866",
     "test_continuum_dynamics.py": "e9ae9fa78562fdc5e992be069ea5b2f6dc61a9351e1ffd9f444383be1c8e67e2",
@@ -31,9 +31,9 @@
     "test_thermal.py": "25a100951bc0d7b7399c79893fa814ee8d0836ddc65810bc4ecfd698d9e3d07d",
     "test_wave_reference.py": "d11925c98a5c39292d495a063b777f29f70ad837886993ee4a84e1c282bd198b",
     "thermal.py": "c2f266f527c0ce083b4d7c091686dbc01cfd8bb68c8dea9c0157f30800d4a0f9",
-    "thermal_results.json": "d7839c4852df1266c70dde4e928c499c5143fd4f688fb5d4bd3483057c3aaaec",
+    "thermal_results.json": "11f3e17749b9cc9a35a22685c02baf965530de6aee1b370463a8ac7fdd781271",
     "wave_reference.py": "4b37e0ded33523e746657bfa3ef768581ef7e7ef9d6e66cea9d9d9180cbf50eb",
-    "wave_reference_results.json": "c9be525869ab97130bdcd57088457f3bc3ea0d8e0f8402e364b39737a32d8f7c"
+    "wave_reference_results.json": "1eb71c5eeea0612d7bb648cd0c2d490b49979c348d3cf247ced215f87881b688"
   },
   "reproduce": [
     "python -m model.observer_time_fields --check model/observer_time_fields/results.json",

@@ -681,6 +681,36 @@ Hamiltonian time, with the corresponding coordinate pullback for each
 controller. An unchanged physical conversion across the protocols is not
 proved by counting their incidents.
 
+The finite interacting protocol has a
+[single fixed controller instrument](interacting_band_extension/README.md#one-fixed-instrument-controls-the-clock-and-field)
+on its native timer, control registers and quantum work. It reproduces all
+3,600 native tapes and 4,900 joint native/field outputs on the full sixteen-dimensional
+valid work code with classical timer states, including untouched references.
+A separate complete export control retains off-code failures. Its ready/busy
+states enforce the carrier pause; timeouts and unfinished executions remain
+explicit outputs. At most 775 controller instructions execute the finite
+program after preparation; the source-pulse total includes preparation. This realizes its sequence and feedback inside a fixed
+instrument; the controller architecture, initialization and protected source
+services remain declared, and instruction count supplies no physical duration.
+Committed-prefix intertwiners connect this same product program to the finite
+persistence-observer interface: its actual first-write state, classical
+prefix algebra and normalized block readback supply the observer fields,
+with the declared evidence labels and buffer refinements. This does not
+identify its registers with the separate native checkpoint carrier or
+extend persistence to the creation of a record.
+
+The [actual pointer and reusable source-control menu](common_source/DERIVATION.md#product-readout-derived-access)
+generate `B(C8) direct_sum B(C8)`, with first-mode parity coherence
+inaccessible. This derives algebraic work access and its effect-to-record
+map; stable tomography and the reusable service menu remain separate.
+The [complete recorded histories](interacting_band_extension/README.md#one-reference-clock-for-complete-intervened-histories)
+use the fixed Gibbs modular parameter `s=-t/beta`, with compiled errors
+retained. The same state fixes detector/Q-kick cross-noise and response;
+the finite-kick check uses the existing fixed-interval source histories.
+Central parity weights can change observations without changing this
+restricted modular flow. Neither that flow nor halt-state stationarity
+selects the preparation or identifies a physical clock.
+
 The same local quartic action has the two-mode Galerkin Hamiltonian above.
 Its occupation limit is an interacting quantum theory whose finite
 measurement histories converge, and the active native clock has a
@@ -1094,7 +1124,7 @@ finite software run.
 | Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, finite temporal and occupation bounds, exact sharp-readout contrasts, state-specific complete-output cutoff enclosures and unavoidable occupation-code output errors | Spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process; post-sharp clock continuation needs its own error analysis |
 | Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
 | Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound, finite-energy backreaction and a separate prepared four-read history certificate | Different instrument and bit dictionary; the uniform moment bound is vacuous at small executed cutoffs, and the sharp-history clock does not transfer |
-| N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Extension of the specified finite observer/federation contracts to the intended access, delivery and refinement family; no full physical `OperationalObserver` realization is asserted |
+| N1 source, phase and finite record tape | All-input CPTP law, exact forecast and feedback controls; every finite `OperationalObserver` clause on the actual postcommit carrier, with classical access and declared blank-buffer refinement | Record creation is outside the persistence generator. Typed prediction retains the same evidence; next-current forecasting is separate. A compiled Lean inhabitant, cross-observer overlaps and physical identification are not supplied |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
 | Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |

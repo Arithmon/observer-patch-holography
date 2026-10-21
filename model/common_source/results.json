@@ -20,7 +20,51 @@
     "postcommit_dimension": 3276,
     "postcommit_dual_projectors_fixed": true,
     "postcommit_first_record_intertwiners_exact": true,
-    "source_tape_dimension": 3354
+    "source_tape_dimension": 3354,
+    "postcommit_operational_observer": {
+      "Lean_inhabitant_compiled": false,
+      "accessible_algebra": "span of first-letter projectors",
+      "all_OperationalObserver_clauses_realized_on_declared_postcommit_tower": true,
+      "buffer_refinement": "X -> X tensor I; rho -> rho tensor |0><0|",
+      "buffer_refinement_architecture_supplied": true,
+      "control": "current-selected native E/F dual continuation with all outcomes",
+      "evidence_labels": 12,
+      "first_record_probabilities": [
+        "0",
+        "14/33",
+        "5/66",
+        "5/66",
+        "14/33",
+        "0"
+      ],
+      "forecast_congruence_counterexample": {
+        "different_conditional_forecasts": [
+          "0",
+          "5/56"
+        ],
+        "equal_readout_weight": "14/33",
+        "first_records": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "forecast_is_not_the_typed_evidence_retention_prediction": true,
+      "generator": "T_K* - I",
+      "generator_nonzero": true,
+      "native_repair_global_termination_or_physical_clock_inferred": false,
+      "prediction": "issuance to retention of the same committed evidence",
+      "private_dimension": 3276,
+      "record_block_dimension": 546,
+      "record_conditioned_controls_are_nonconstant": true,
+      "record_creation_in_persistence_domain": false,
+      "state": "actual first native event from uniform binary prior, first letter committed"
+    }
   },
   "exact_controlled_record_instrument": {
     "arbitrary_operator_and_reference_scope": true,

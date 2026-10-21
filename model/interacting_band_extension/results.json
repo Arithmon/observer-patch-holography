@@ -15066,6 +15066,117 @@
     "conditional_smooth_background_requires_smooth_coefficient_density": true,
     "coupling_and_temperature_selected_by_repair": false,
     "covariant_coupling_map": "g_eff=lambda/pi integral mu_screen^2 sqrt(det a_screen) dx",
+    "detector_KMS": {
+      "Gibbs_temperature_or_central_weights_selected_by_repair": false,
+      "Gibbs_weights_numerical": [
+        0.18475408257639236,
+        0.13683395476984542,
+        0.10955841359079978,
+        0.09034531031681178,
+        0.07951595848220874,
+        0.06404340627901697,
+        0.06143894807254636,
+        0.05248709380952721,
+        0.0453379476427614,
+        0.0370424971930021,
+        0.035430836481108466,
+        0.02983988006895408,
+        0.025634705743611066,
+        0.019878029424069594,
+        0.016801708911935564,
+        0.011057226637409164
+      ],
+      "all_source_readouts_and_references_retained": true,
+      "central_reweighting_control": {
+        "detector_kick_symmetrized_noise_difference": 0.0013839716001026597,
+        "even_sector_population_difference": 0.15319635704471407,
+        "restricted_KMS_residual": 4.278019427619926e-15,
+        "restricted_modular_action_residual": 1.7297062415364651e-15
+      },
+      "central_slope_to_linear_response_error_upper": "10381602151407980392855197679953176736975504353632024412193226171201153869749678387478132165218346492655901541/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "cross_fluctuation_response_identity_residual": 3.469446951953614e-18,
+      "cross_spectral_KMS_residual": 6.938893903907228e-18,
+      "cross_spectral_weights_are_probabilities": false,
+      "detector_effect": "-sin(Q_mode_1)",
+      "energy_levels_numerical": [
+        1.5816564704464404,
+        2.782686373064845,
+        3.6719276422771077,
+        4.443202660329883,
+        4.95392815158945,
+        5.819514793833036,
+        5.9855832302417395,
+        6.615489871447232,
+        7.20118158765103,
+        8.00949579486093,
+        8.187428988150629,
+        8.874376075390641,
+        9.48197059426038,
+        10.49929880904239,
+        11.171836691414729,
+        12.84542226599954
+      ],
+      "equilibrium_cross_correlation_detector_executed": false,
+      "ideal_central_kick_slope": -0.034516886129230616,
+      "inverse_temperature": "1/4",
+      "kick_generator": "Q_mode_1",
+      "noise_law_independently_fitted": false,
+      "ordered_correlation_preparation_error_upper": "6292528743030209054600242473760275959715570447/2000000000000000000000000000000000000000000000000000000",
+      "physical_clock_or_laboratory_dictionary_identified": false,
+      "raw_preparation_full_trace_error_numerical": 5.644130997911254e-13,
+      "raw_preparation_full_trace_error_upper": "2000000001/1000000000000000000",
+      "raw_prepared_trace_mass": 0.9999999999994358,
+      "response_preparation_error_upper": "6292528743030209054600242473760275959715570447/1000000000000000000000000000000000000000000000000000000",
+      "scope": "Finite interacting Gibbs reference, actual detector effect and Q-generated kick; no extra noise-law fit.",
+      "source_central_kick_slope": -0.0345168856184595,
+      "source_central_slope_error_upper": "481083343536402284379465138018472825042923154141524056632007949083574064777016631727491204184809790969533969155037855457494351621978129715535530488638635111876551366169332784642799528122875629212711475131129975660901798597884631927556121/749999709342028160690988000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "source_first_read_means_for_minus_plus_Q_kicks": [
+        0.008629221404581916,
+        -0.008629221404647835
+      ],
+      "source_kick_amplitude": "1/4",
+      "time_correlations": [
+        {
+          "Q_kick_linear_response": 0.0,
+          "free_Gibbs_under_interacting_clock_KMS_defect": 0.008994232103210209,
+          "model_time": "0",
+          "ordered_detector_kick_correlation": [
+            -0.47071337539997543,
+            0.0
+          ],
+          "raw_preparation_ordered_correlation_error": 2.785549568784518e-13,
+          "raw_preparation_response_error": 1.5707889400366776e-30,
+          "spectral_reconstruction_error": 5.551115123125783e-17,
+          "symmetrized_detector_kick_correlation": -0.47071337539997543
+        },
+        {
+          "Q_kick_linear_response": -0.034788350090455056,
+          "free_Gibbs_under_interacting_clock_KMS_defect": 0.010033862801745399,
+          "model_time": "1/16",
+          "ordered_detector_kick_correlation": [
+            -0.4662474361637572,
+            0.01739417504522753
+          ],
+          "raw_preparation_ordered_correlation_error": 2.764490024044491e-13,
+          "raw_preparation_response_error": 1.5910883721659275e-14,
+          "spectral_reconstruction_error": 5.928593550334434e-17,
+          "symmetrized_detector_kick_correlation": -0.4662474361637572
+        },
+        {
+          "Q_kick_linear_response": -0.0689127254599825,
+          "free_Gibbs_under_interacting_clock_KMS_defect": 0.012606595601339657,
+          "model_time": "1/8",
+          "ordered_detector_kick_correlation": [
+            -0.45293484171900156,
+            0.03445636272999126
+          ],
+          "raw_preparation_ordered_correlation_error": 2.6935695802106597e-13,
+          "raw_preparation_response_error": 3.1502578323738817e-14,
+          "spectral_reconstruction_error": 4.163336342344337e-17,
+          "symmetrized_detector_kick_correlation": -0.4529348417190015
+        }
+      ]
+    },
     "effective_coupling": "1",
     "feedback_removal_record_tv": 0.0019527637429536254,
     "field_modes": [
@@ -15075,6 +15186,209 @@
     "finite_band_is_invariant_under_untruncated_local_interaction": false,
     "free_Gibbs_state_interacting_commutator_norm": 0.0578884150085857,
     "guarded_local_operation_count": 772,
+    "homogeneous_native_clock_controller": {
+      "Gibbs_preparation_is_a_source_prefix": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 22503.267146602986,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 8,
+        "native_pulses": 13090,
+        "pair_code_pulses": 3278,
+        "proper_code_export_events": 13090,
+        "proper_code_load_events": 13090,
+        "proper_code_service_events": 26180,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 9812,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 8
+      },
+      "additional_native_repairs_per_history": 2,
+      "all_input_Kraus_comparison_residual": 8.733808847849706e-15,
+      "all_input_equality_covers_arbitrary_references_and_classical_native_correlations": true,
+      "coherent_native_load_superposition_claimed": false,
+      "complete_all_input_channel_residual": 1.1290647406285602e-13,
+      "complete_clock_field_record_law": [
+        {
+          "field_bits": [],
+          "incident_ticks": 0,
+          "probability": 0.6944444444440526,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            0
+          ],
+          "incident_ticks": 1,
+          "probability": 0.13769038591594815,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            1
+          ],
+          "incident_ticks": 1,
+          "probability": 0.14008739186168376,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            0,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.009434840373889945,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            0,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.004334198217705405,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            1,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.004174993044571233,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            1,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.009833746141597698,
+          "timeout": false
+        }
+      ],
+      "complete_controller_record_sha256": "5f4238b61364b00687be5b64f5338ab6d50d48edd36d72f6fe4373ab4f290a64",
+      "complete_native_tapes": 3600,
+      "complete_tape_field_outputs": 4900,
+      "controller_hardware_storage_and_source_service_accuracy_derived": false,
+      "controller_registers": [
+        "instruction",
+        "cursor",
+        "attempts",
+        "field bits",
+        "native loads",
+        "native tape",
+        "failure"
+      ],
+      "external_iteration_or_quantum_amplitudes_read_by_controller": false,
+      "finite_idle_bounds": [
+        {
+          "controller_invocations": 1550,
+          "controller_invocations_are_native_clock_ticks": false,
+          "expected_invocations_upper": "1550",
+          "idle_probability": "1/2",
+          "maximum_active_instructions": 775,
+          "unfinished_probability_upper": "1",
+          "unfinished_states_and_idle_records_retained": true
+        },
+        {
+          "controller_invocations": 3100,
+          "controller_invocations_are_native_clock_ticks": false,
+          "expected_invocations_upper": "1550",
+          "idle_probability": "1/2",
+          "maximum_active_instructions": 775,
+          "unfinished_probability_upper": "4/779",
+          "unfinished_states_and_idle_records_retained": true
+        },
+        {
+          "controller_invocations": 6200,
+          "controller_invocations_are_native_clock_ticks": false,
+          "expected_invocations_upper": "1550",
+          "idle_probability": "1/2",
+          "maximum_active_instructions": 775,
+          "unfinished_probability_upper": "8/6983",
+          "unfinished_states_and_idle_records_retained": true
+        }
+      ],
+      "maximum_active_instructions": 775,
+      "microinstruction_count_calibrated_as_physical_time": false,
+      "native_repairs_are_enabled_only_at_ready_instruction": true,
+      "passive_repair_selected_the_controller_or_interacting_H": false,
+      "postcommit_prefix_observer": {
+        "Lean_inhabitant_compiled": false,
+        "OperationalObserver_interface_realized_on_this_program": true,
+        "all_emitted_transitions_preserve_existing_native_and_field_prefixes": true,
+        "arbitrary_quantum_work_observables_claimed_durable": false,
+        "blank_to_first_selected_record_probability": "1/60",
+        "checked_instruction_transition_classes": 1179,
+        "generator": "T* - I on the invariant postcommit controller domain",
+        "instruction_transition_classes_sha256": "5ab4932c5c68425b8424ab1674c4908b2fa95568e072ae083fe4f24208e7495d",
+        "new_record_creation_globally_preserves_that_projector": false,
+        "postcommit_public_projectors_satisfy_dual_fixed_point_identity": true,
+        "readback": "sum_p Tr(Q_p X Q_p)/rank(Q_p) Q_p; block ranks may differ",
+        "state": "actual first native write after the source Gibbs preparation and kick",
+        "unused_buffer_refinement_architecture_supplied": true
+      },
+      "retained_Gibbs_reference_addresses": 16,
+      "retained_work_input_columns": 16,
+      "scope": "One finite homogeneous controller for the existing native-clock interacting field; supplied controller architecture and source services.",
+      "service_complement_outputs": {
+        "2": {
+          "complement_labels": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "complete_export_residual": 0.0,
+          "failure_instruction_absorbing": true,
+          "valid_code_failure_probability": 0
+        },
+        "4": {
+          "complement_labels": [
+            4,
+            5
+          ],
+          "complete_export_residual": 0.0,
+          "failure_instruction_absorbing": true,
+          "valid_code_failure_probability": 0
+        }
+      },
+      "source_word_services_are_atomic_at_this_controller_level": true,
+      "terminal_instruction_counts": [
+        {
+          "instructions": 4,
+          "outcomes": 2500
+        },
+        {
+          "instructions": 389,
+          "outcomes": 1000
+        },
+        {
+          "instructions": 390,
+          "outcomes": 1000
+        },
+        {
+          "instructions": 774,
+          "outcomes": 200
+        },
+        {
+          "instructions": 775,
+          "outcomes": 200
+        }
+      ],
+      "total_output_probability": 0.9999999999994488,
+      "worst_branch_source_resources_including_preparation": {
+        "identity_phase_pulses": 2829,
+        "native_pulses": 217110,
+        "pair_code_pulses": 41814,
+        "proper_code_export_events": 217110,
+        "proper_code_load_events": 217110,
+        "proper_code_service_events": 434220,
+        "single_code_pulses": 175296
+      }
+    },
     "ideal_Gibbs_modular_identity_residual": 4.905509639528665e-15,
     "ideal_splitting_complete_output_bound": "7678638362194609897301838428464787623661827556760338246490202888582061597906592960845670179501949672548017109900718990022251160491171096745413716571421290547345999859640736857447096820225914578501740213818095872129/96000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
     "independent_hamiltonian_histories_by_native_sign": [
@@ -15140,6 +15454,33 @@
       ]
     ],
     "interaction_removal_record_tv": 0.0007309676435666435,
+    "joint_fixed_reference_modular_history": {
+      "Gibbs_reference_and_controller_selected_by_passive_repair": false,
+      "complete_native_and_field_outputs": 4900,
+      "complete_native_tapes": 3600,
+      "conditioned_reference_minimum_eigenvalue_numerical": 0.001367385426857205,
+      "conditioned_reference_modular_action_mismatch": 0.08579714149563661,
+      "first_mode_parity_commutator_residual": 1.1931527304812497e-15,
+      "fixed_reference_modular_parameter_per_incident": "-1/4",
+      "fixed_reference_replaced_by_measurement_posterior": false,
+      "full_intervention_menu_covariance_residual": 7.062998177825371e-16,
+      "ideal_all_input_history_Kraus_residual_after_scalar_phase": 1.6700294520587831e-15,
+      "inverse_temperature": "1/4",
+      "model_time_per_incident": "1/16",
+      "physical_time_or_own_algebra_modular_flow_for_classical_records_identified": false,
+      "relative_modular_cocycle_action_residual": 7.418074238044469e-16,
+      "relative_modular_cocycle_law_residual": 6.883657812439202e-16,
+      "retained_reference_addresses": 16,
+      "retained_work_input_columns": 16,
+      "same_native_clock_tape_retained_in_both_channels": true,
+      "scope": "Same finite product program and fixed Gibbs reference; compiled errors retained, no posterior-reference substitution.",
+      "source_prepared_complete_output_half_trace_error_numerical": 3.4324569856923598e-09,
+      "source_splitting_and_service_complete_output_bound": "481083343536402284379465138018472825042923154141524056632007949083574064777016631727491204184809790969533969155037855457494351621978129715535530488638635111876551366169332784642799528122875629212711475131129975660901798597884631927556121/5999997674736225285527904000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "source_to_modular_Stinespring_error_numerical": 1.6880334254802648e-08,
+      "source_to_modular_all_reference_half_diamond_bound_numerical": 1.688033425480312e-08,
+      "translated_menu_or_cocycle_compiled_as_extra_protocol": false,
+      "untranslated_feedback_covariance_error": 0.03578958278070371
+    },
     "local_raw_plus_polar_operator_guard": "251/1000000000000",
     "model_time_per_interval": "1/16",
     "modular_clock": "sigma_s=alpha_(-beta*s) for this interacting H and its ideal Gibbs marginal",
@@ -15606,6 +15947,30 @@
       ],
       "unrestricted_two_mode_limit_proved_in_README": true
     },
+    "operational_work_access": {
+      "accessible_work_algebra": "B(C8) direct_sum B(C8)",
+      "disconnected_coupling_access_dimension": 16,
+      "exact_first_mode_parity_upper_dimension": 128,
+      "extra_first_mode_pointer_access_dimension": 256,
+      "fixed_two_read_program_algebra_identified": false,
+      "full_B_C16_access_from_declared_menu": false,
+      "local_source_service_menu_supplied": true,
+      "measured_mode": 1,
+      "menu": "second-mode pointer and finite words of the three local source services with selectable durations",
+      "new_record_durable_before_its_write": false,
+      "old_records_and_arbitrary_references_preserved": true,
+      "physical_source_or_continuum_algebra_identification": false,
+      "prewrite_effect_is_postwrite_record_pullback": true,
+      "rank_certificate_prime": 65537,
+      "rational_closure_lower_rank": 128,
+      "source_term_names": [
+        "product_onsite_0",
+        "product_onsite_1",
+        "product_local_quartic"
+      ],
+      "unmeasured_parity_mode": 0,
+      "work_dimension": 16
+    },
     "oscillator_basis_frequency": 2,
     "physical_service_error_certified": false,
     "preparation": {
@@ -15745,9 +16110,10 @@
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "model/common_source/records.py": "eae3320db8806e78751166cfe432f4d060c3b6adf80446afc6c87ecb3a44be0c",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/interacting_band_extension/algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
-    "model/interacting_band_extension/construction.py": "00a55d76dd6e2a83e3164a2699ea7d57a9eb7926ec32854ed2ea9be68ddacc32",
+    "model/interacting_band_extension/algebra.py": "131ca5714d0eea53e73e8f696ab5b063203b809fca6a8cb966df75c6729ea009",
+    "model/interacting_band_extension/construction.py": "01d5872decc2faff5d2c973e6ff21565f719ad8300c9a9aeb089f5091d559f06",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
     "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
