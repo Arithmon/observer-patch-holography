@@ -221,8 +221,8 @@ def test_same_interacting_generator_clock_schedule_has_vanishing_complete_budget
     for kwargs in ({'degree': True}, {'degree': 7}, {'steps': 0}, {'tolerance': F(0)}):
         with pytest.raises(ValueError):
             product_incident_clock_bound(2, **kwargs)
-    with pytest.raises(ValueError, match='sixteen-state'):
-        product_gibbs_preparation(ProductBand(occupation=8))
+    with pytest.raises(ValueError, match='occupation two, four or eight'):
+        product_gibbs_preparation(ProductBand(occupation=6))
 
 
 def test_homogeneous_controller_reproduces_all_input_clock_field_instrument():
@@ -655,8 +655,8 @@ def test_product_occupation_refinement_does_not_reuse_a_fixed_source_error_budge
     large = splitting_bound(ProductBand(occupation=12), F(1, 16), 64)
     assert large['centered_generator_norm_sum_upper'] > 5*small['centered_generator_norm_sum_upper']
     assert large['one_interval_operator_error_upper'] > small['one_interval_operator_error_upper']
-    with pytest.raises(ValueError, match='sixteen-state'):
-        product_gibbs_preparation(ProductBand(occupation=8))
+    with pytest.raises(ValueError, match='two, four or eight'):
+        product_gibbs_preparation(ProductBand(occupation=12))
 
 
 @pytest.mark.parametrize('beta,coupling,shell', [(0, 1, 8), (True, 1, 8), (F(1, 4), -1, 8),

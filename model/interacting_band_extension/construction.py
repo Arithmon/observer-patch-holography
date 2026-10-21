@@ -274,32 +274,47 @@ def product_gibbs_preparation(lattice, beta=F(1, 4)):
     Keep all work/reference amplitudes. Numerical synthesis guards and
     inherited exact-code failure semantics are explicit; no postselection
     or state normalization is used to repair the returned amplitudes.
+    Occupations two and four keep the energy-labelled reference, including
+    the unchanged original four-occupation word. Occupation eight prepares
+    the canonical square-root density amplitude in the work Hermite basis
+    on both registers; it needs no six-qubit arbitrary basis compiler.
     """
     beta = a.rational(beta, positive=True)
-    if not isinstance(lattice, ProductBand) or lattice.dimensions != (4, 4):
-        raise ValueError('the declared sixteen-state product band is required')
+    if (not isinstance(lattice, ProductBand)
+            or lattice.dimensions not in ((2, 2), (4, 4), (8, 8))):
+        raise ValueError('a product band with occupation two, four or eight is required')
+    dimension = lattice.dimension
+    workbits = dimension.bit_length()-1
     values, basis = inherited_source._basis(lattice.hamiltonian.toarray())
     weights = np.exp(-float(beta)*(values-values[0])); weights /= weights.sum()
     if not np.isfinite(weights).all() or np.any(weights <= 0):
         raise ArithmeticError('faithful Gibbs weights exceed the numerical preparation range')
-    word = compiler.compile_real_state(np.sqrt(weights))
-    for bit in range(4):
-        word += compiler.cnot(bit, bit+4)
-    word += compiler.compile_real_orthogonal(basis)
-    blank = np.zeros(256, complex); blank[0] = 1
-    raw = compiler.execute(word, 8, blank).reshape(16, 16).T
-    target = basis@np.diag(np.sqrt(weights))
+    if lattice.dimensions == (8, 8):
+        target = (basis*np.sqrt(weights))@basis.T
+        word = compiler.compile_real_state(target.T.reshape(-1))
+    else:
+        word = compiler.compile_real_state(np.sqrt(weights))
+        for bit in range(workbits):
+            word += compiler.cnot(bit, bit+workbits)
+        word += compiler.compile_real_orthogonal(basis)
+        target = basis@np.diag(np.sqrt(weights))
+    blank = np.zeros(dimension*dimension, complex); blank[0] = 1
+    raw = compiler.execute(word, 2*workbits, blank).reshape(dimension, dimension).T
     error = float(np.linalg.norm(raw-target))
     if not np.isfinite(error) or error > 1e-9:
         raise ArithmeticError('the interacting Gibbs preparation exceeded its source guard')
-    return raw, target, {'inverse_temperature': beta,
-        'retained_work_addresses': 16, 'retained_reference_addresses': 16,
+    metadata = {'inverse_temperature': beta,
+        'retained_work_addresses': dimension, 'retained_reference_addresses': dimension,
         'source_resources': compiler.resources(word),
         'raw_norm_squared': float(np.linalg.norm(raw)**2),
         'purification_vector_error_numerical': error,
         'purification_vector_error_guard': F(1, 10**9),
         'ideal_minimum_density_eigenvalue': float(weights.min()),
         'physical_preparation_error_certified': False}
+    if lattice.dimensions == (8, 8):
+        metadata['reference_basis'] = 'canonical_fixed_frequency_two_Hermite'
+        metadata['preparation_source_word'] = 'twelve_qubit_real_amplitude_tree'
+    return raw, target, metadata
 
 
 @lru_cache(maxsize=1)
@@ -384,17 +399,19 @@ def product_incident_clock_bound(level, *, degree=5, occupation=4,
         'same_occupation_H_at_every_clock_level': True}
 
 
-def _product_clock_prefixes(lattice, initial, *, source, interval, steps, feedback=True):
+def _product_clock_prefixes(lattice, initial, *, source, interval, steps, feedback=True, sign=1):
     """Keep the work/reference state at every possible timeout prefix."""
+    if type(sign) is not int or sign not in (-1, 1):
+        raise ValueError('an original initial kick sign of minus or plus one is required')
     d = lattice.dimensions[1]
     q = normalized(a.polynomial(d, 1))
     if source:
-        kick = inherited_source.feedback(d, .25, 2)[0]
+        kick = inherited_source.feedback(d, sign/4, 2)[0]
         kraus = inherited_source.instrument(d, 1, np.pi/2, 2)[0]
-        control = kick
+        control = inherited_source.feedback(d, .25, 2)[0]
         advance = lambda value: lattice.source_evolve(value, interval, steps)
     else:
-        kick = control = expm(1j*q/4)
+        kick, control = expm(1j*sign*q/4), expm(1j*q/4)
         eigenvalues, basis = np.linalg.eigh(q)
         kraus = tuple((basis*function((eigenvalues+np.pi/2)/2))@basis.T
                       for function in (np.cos, np.sin))
@@ -633,13 +650,21 @@ class ProductControllerInstrument:
     numerical representation retains the inherited guarded roundoff policy.
     A static read-only instruction table, source services and protected
     registers remain construction inputs, not consequences of passive repair.
+    The initial kick has the declared sign; record-selected feedback is
+    always +1/4. Native transitions and durable prefixes are unchanged.
     """
 
-    def __init__(self, *, interval=INTERVAL, steps=STEPS):
-        self.lattice = ProductBand()
+    def __init__(self, *, occupation=4, sign=1, interval=INTERVAL, steps=STEPS):
+        if type(occupation) is not int or occupation not in (2, 4, 8):
+            raise ValueError('an original occupation of two, four or eight is required')
+        if type(sign) is not int or sign not in (-1, 1):
+            raise ValueError('an original initial kick sign of minus or plus one is required')
+        self.occupation, self.sign = occupation, sign
+        self.lattice = ProductBand(occupation=occupation)
         self.interval, self.steps = a.rational(interval, positive=True), a.integer(steps)
-        self.kick, self.kick_metadata = inherited_source.feedback(4, .25, 2)
-        self.kraus, self.read_metadata = inherited_source.instrument(4, 1, np.pi/2, 2)
+        self.kick, self.kick_metadata = inherited_source.feedback(occupation, sign/4, 2)
+        self.feedback, self.feedback_metadata = inherited_source.feedback(occupation, .25, 2)
+        self.kraus, self.read_metadata = inherited_source.instrument(occupation, 1, np.pi/2, 2)
         local = [(term.sites, *execute_term(term, self.interval/(2*self.steps)))
                  for term in self.lattice.terms]
         self.cycle = tuple(local+local[::-1])
@@ -667,12 +692,12 @@ class ProductControllerInstrument:
         by ``product_controller_transition`` to the failure instruction.
         They have exactly zero weight on the declared valid-code input.
         At an absorbing failure, ``None`` denotes identity on its retained
-        failure-sector payload, whose dimension need not be sixteen.
+        failure-sector payload, whose dimension need not equal the work code.
         """
         product_controller_transition(state, 'idle', steps=self.steps)
         if state.instruction == 'failure':
             return self._checked_branches(state, ((product_controller_transition(state, steps=self.steps), None, F(1)),))
-        identity = np.eye(16, dtype=complex)
+        identity = np.eye(self.lattice.dimension, dtype=complex)
         if state.instruction == 'ready' and state.attempts < 2:
             return self._checked_branches(state, tuple((product_controller_transition(state, (edge, coin), steps=self.steps),
                           identity, F(1, 60)) for edge in range(30) for coin in (0, 1)))
@@ -681,7 +706,8 @@ class ProductControllerInstrument:
                           self.lattice.apply(identity, (1,), matrix), F(1))
                          for bit, matrix in enumerate(self.kraus)))
         if state.instruction in ('kick', 'feedback'):
-            operation = self.lattice.apply(identity, (1,), self.kick)
+            matrix = self.kick if state.instruction == 'kick' else self.feedback
+            operation = self.lattice.apply(identity, (1,), matrix)
         elif state.instruction == 'evolve':
             sites, matrix, _ = self.cycle[state.cursor % len(self.cycle)]
             operation = self.lattice.apply(identity, sites, matrix)
@@ -693,7 +719,7 @@ class ProductControllerInstrument:
     def service_closure(self, instruction, bits):
         """Exact common-subroutine reuse, ending at the next ready state.
 
-        This contracts the fixed transition table on all sixteen input
+        This contracts the fixed transition table on every work-input
         columns. It has no access to the native state or retained tape.
         Each call records its instruction count, including conditional reads
         and feedback; this is not substitution by an ideal Hamiltonian.
@@ -713,7 +739,7 @@ class ProductControllerInstrument:
                 attempts=len(tape), loads=loads, tape=tape)
         else:
             raise ValueError('a reachable source subroutine entry is required')
-        todo = [(start, np.eye(16, dtype=complex), 0)]
+        todo = [(start, np.eye(self.lattice.dimension, dtype=complex), 0)]
         complete = []
         while todo:
             state, operation, count = todo.pop()
@@ -729,7 +755,7 @@ class ProductControllerInstrument:
     def completed(self, initial_loads=(0,)*10+(1, 1)):
         """All terminal native/field records and their all-input Kraus maps."""
         start = ProductControllerState(loads=tuple(initial_loads))
-        todo = [(start, np.eye(16, dtype=complex), F(1), 0)]
+        todo = [(start, np.eye(self.lattice.dimension, dtype=complex), F(1), 0)]
         complete = []
         while todo:
             state, operation, weight, count = todo.pop()

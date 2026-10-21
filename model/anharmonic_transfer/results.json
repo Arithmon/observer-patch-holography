@@ -148340,14 +148340,14 @@
       "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
       "model/anharmonic_transfer/experiment.py": "06003a4038d39d6bf604a116d90b6b154581239f17d99146d186dbbb783df3ac",
       "model/anharmonic_transfer/source.py": "1e54438f8c1939e53334d4f573ae63004a8cc86d8253618277835a7f5ff052f5",
-      "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+      "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
       "model/relativistic_scalar/exact.py": "d0787e21f37f06d1d9e6e13d7ed046c60215b449b3e371b406b87ac8cc6cfd23",
       "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
       "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",
       "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94"
     }
   },
-  "prediction_payload_sha256_before_scoring": "32743bb481138449d304b36ca8445462e434c3097e3f1be4fdf3efec185bb004",
+  "prediction_payload_sha256_before_scoring": "4163011bd28f2a63485e82099663a0d1c6003db7164320b0f74312f359cb3bc9",
   "schema": "oph.anharmonic_transfer.results.v1",
   "scores": {
     "frozen_control": {

@@ -8,6 +8,23 @@ Its radial domain, interaction and observer services are supplied.
 Observed spacetime, interacting continuum QFT, Einstein dynamics and laboratory clock
 identification remain unproved; larger carrier counts alone do not establish them.
 
+The new [thermal certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
+closes a numerical occupation gap for one declared interacting observer,
+including preparation, disturbance, feedback and the quantum reference.
+It does not add empirical data. The separate central-weight calibration and
+held-out model readout use explicitly synthetic counts; their state-family
+and sample budgets do not establish a new laboratory comparison.
+Existing public oscillator agreement keeps
+its calibration, accepted-shot and coordinate limitations; the conditional
+tilt comparison retains its tension; rejected direct optical and
+factorized-Bell attachments remain rejected. There is no evidence that all
+observer measurements agree with known data under one common physical
+dictionary. The [native-only preparation floor](native_interface/README.md#quantitative-preparation-floors-for-the-native-only-grammar)
+also shows that deriving every coherent service from the committed C/E
+grammar with diagonal initial resources is impossible for the stated
+targets. This is a scoped obstruction, not a falsification of all OPH
+interfaces or of uncommitted coherent record implementations.
+
 ## Are federations necessary?
 
 **No federation is needed for the present local derivations.** One twelve-port

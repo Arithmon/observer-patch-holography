@@ -61,7 +61,7 @@
     "model/identification_design/response.py": "32da504e8355ee2bbac3caf74b617f219a13b8520fae3a38507af55ce837fabb",
     "model/identification_design/source.py": "0d53893e8ff1911433f240d2eb88dfddff5727365b0060fe6a9cdf913ba76e87",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
-    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3"
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8"
   },
   "maximum_source_reference_probability_errors": [
     5.551115123125783e-15,

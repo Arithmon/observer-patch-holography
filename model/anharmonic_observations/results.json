@@ -403,7 +403,7 @@
     }
   },
   "positive_duration_values_used": false,
-  "prediction_payload_sha256_before_scoring": "54613c69957b876412de4fe54e79f6194c739b70ecf71717ef04dddc16286743",
+  "prediction_payload_sha256_before_scoring": "5f6475927f47408a45c5ad2d752e6d8a59c776c80312aa197097e185d7175d4d",
   "protocol": {
     "apparatus": {
       "asymmetry_phase": 0.0,
@@ -180126,7 +180126,7 @@
     "model/anharmonic_observations/data.py": "e27be32b85d4aa73f0747aeaff5fe1024463a8584c78e2e022bd86ebafefa8ef",
     "model/anharmonic_observations/experiment.py": "d63447240d92a650cdd3aeb4f907c4892985bd7fd5c2d11b6c5566642215bdaf",
     "model/anharmonic_observations/source.py": "cdd4536a5259e971db0ff118005c89377ed69d50303976fd97085732c69cc12a",
-    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
     "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
     "model/scalar_observations/experimental_readout/executable_calibration.py": "31c7a9058ef482afabd6bf03e7f416078de34594a1a600f514d6f6fa90bb9b51",
     "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",

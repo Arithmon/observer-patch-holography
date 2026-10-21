@@ -663,6 +663,14 @@ constant. Its source-prepared interacting Gibbs state fixes its ideal modular
 clock, and complete quantum/reference/record histories retain two reads and
 feedback. The coupling, radial design and occupation cutoff are supplied;
 this finite example supplies no ultraviolet limit or calibrated event clock.
+Its [thermal occupation certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
+bounds a complete eight-level cold history against the infinite
+two-mode Gibbs history below `0.0025`, or below `0.005` for the source
+execution under its numerical guards. A separate
+[native coherence floor](native_interface/README.md#quantitative-preparation-floors-for-the-native-only-grammar)
+quantifies the extra coherence needed by the native sign and capped-reference
+preparations. Neither result identifies a laboratory
+apparatus or establishes agreement of every proposed physical attachment.
 
 [Record-only reconstruction](observer_reconstruction/README.md),
 [interacting reconstruction](interacting_reconstruction/README.md), and
@@ -705,6 +713,11 @@ python3 -m model.joint_clock_process --check model/joint_clock_process/results.j
 python3 -m model.closed_prediction_protocol --check model/closed_prediction_protocol/results.json
 python3 -m model.characteristic_constraints --check model/characteristic_constraints/results.json
 ```
+
+After regenerating model receipts, also check their artifact bindings in the
+shared postdiction ledger with
+`python3 code/particles/scripts/build_postdiction_ledger.py --check`.
+Updating the model manifests alone does not update that derived ledger.
 
 Use `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1` for reproducible resource usage
 on numerical runs. Package READMEs document their hypotheses, tests and

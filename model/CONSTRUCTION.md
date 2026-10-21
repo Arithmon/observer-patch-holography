@@ -642,6 +642,39 @@ the small executed code supplies no accurate unrestricted-output claim.
 This projection is not an invariant spatial band or a proof of an
 interacting ultraviolet continuum.
 
+The [quantitative thermal certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
+supplies an explicit occupation budget for this same interacting
+observer. Exact finite lower forms and a summable harmonic complement bound
+the infinite Gibbs preparation. Directed full-generator path residuals
+retain the reference, both reads and record feedback. The declared cold
+`beta=4,d=8` history has complete ideal error below `0.0025`; its executed
+source word has error below `0.005` under the stated source numerical
+guards. The original hot `beta=1/4,d=4` benchmark retains its limitations.
+The same fixed controller executes the cold preparation without repeating
+it, retains all 3,600 native tapes and 4,900 terminal outcomes, and is
+checked on all 64 work-input columns. One occupation bound covers every
+completed zero-, one- and two-read timeout prefix. The separate four-level
+central-weight calibration keeps its own state family, reference scope
+and synthetic count examples; its coefficients are not transferred to the
+cold protocol.
+
+These premises compose on the same two-mode code: positivity gives a
+faithful trace-class Gibbs state; that state supplies the full-algebra
+modular flow; complete instruments preserve all records and references;
+the occupation residual and incident-clock schedule supply separately
+charged refinement errors. Alternative repair instruments, algebras or
+preparations require their own attachment. This is not simultaneous
+satisfaction of every finite theorem's alternative hypotheses.
+
+The [coherence budget](native_interface/README.md#quantitative-preparation-floors-for-the-native-only-grammar)
+also limits what repair can supply. Committed C/E repair with joint diagonal
+accessible inputs and fresh independent diagonal ancillas cannot prepare
+the declared coherent reference to arbitrary accuracy, even with adaptive
+heralding. The successful-work lower bound survives as a complete-output
+lower bound after charging all failure mass. Coherent source services
+therefore remain a necessary resource for these particular targets; an
+uncommitted coherent record dilation is a different operational grammar.
+
 <a id="integrated-effective-description"></a>
 ### Integrated effective-description verdict
 
@@ -730,12 +763,18 @@ description. It does not establish a continuum interacting ultraviolet
 limit, a conformal theory, the Standard Model or Einstein dynamics.
 
 Selection is a different mathematical question with an explicit obstruction:
-three connected radial extensions have identical retained angular heat,
-wave and resolvent observations but different radial responses. The
-native observer-centered shell quotient gives an operational radius within
-the original carrier; it cannot be tensored back with all angular modes
-and counted as an independently derived dimension. The active wave
-protocol also differs from passive diffusive repair dynamics. Thus the
+three connected radial extensions have identical
+[complete adaptive angular histories](relative_observer_geometry/README.md#radial-nonidentifiability-under-complete-histories)
+on the constant-radial input code, retaining native marks, timeouts and
+untouched references. Angular-only controls preserve this code; nonconstant
+radial preparations and full-product Gibbs states are outside the equality.
+A supplied radial-contrast probe distinguishes the extensions at finite time.
+The native observer-centered shell quotient gives an operational radius
+within the original carrier, and the axial current counter has its own
+derived radial diffusion limit. Neither selects the separate radial-product
+field or its boundary conditions. The shell quotient cannot be tensored back
+with all angular modes and counted as an independently derived dimension.
+The active wave protocol also differs from passive diffusive repair dynamics. Thus the
 present native observations admit this conditional effective construction
 without determining it uniquely. Physical calibration may fix units and
 parameters, after which unused measurements must test the fixed dictionary;
@@ -1145,7 +1184,7 @@ finite software run.
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
 | Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
-| Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories, finite source execution and an active native-incident clock | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the small executed occupation code has substantial thermal error and supplies no ultraviolet completion |
+| Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories; a cold eight-level source/controller history with a complete occupation budget and a native-incident clock schedule | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the original hot four-level code retains its substantial thermal allowance, and neither construction supplies an ultraviolet completion |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 

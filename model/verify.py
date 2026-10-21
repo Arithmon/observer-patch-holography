@@ -89,6 +89,7 @@ REPLAYS = (
     ("model.primitive_observer.complete_certificate", None, "model/primitive_observer/complete_certificate_results.json"),
     ("model.native_circulation", None, "model/native_circulation/results.json"),
     ("model.native_interface", None, "model/native_interface/results.json"),
+    ("model.native_interface.coherence_budget", None, "model/native_interface/coherence_results.json"),
     ("model.measurement_bounds", None, "model/measurement_bounds/results.json"),
     ("model.native_relational_readout", None, "model/native_relational_readout/results.json"),
     ("model.native_quantum_history", None, "model/native_quantum_history/results.json"),
@@ -152,6 +153,8 @@ REPLAYS = (
      "model/quantum_observer_correspondence/results.json"),
     ("model.interacting_band_extension", None,
      "model/interacting_band_extension/results.json"),
+    ("model.interacting_band_extension.thermal_certificate", None,
+     "model/interacting_band_extension/thermal_results.json"),
     ("model.predictions.optical_clock", None, "model/predictions/optical_clock_results.json"),
     ("model.relative_observer_geometry.clock_reconstruction", None,
      "model/relative_observer_geometry/clock_reconstruction_results.json"),
@@ -226,31 +229,50 @@ def selected_replay_groups(shard_index=None, shard_count=None, *, replays=None):
 def verify_receipt_source_bindings(digests=None):
     """Check live replay source maps without recalculating their science.
 
-    Only the three existing source-map conventions and repository-relative
-    files that exist are checked. External custody, unresolved aliases and
-    frozen captures outside REPLAYS retain their owning verifiers; this is
-    not a substitute for receipt schema or full replay validation.
+    Recognized maps use their producers' repository or package-relative
+    path convention. Local-only maps reject missing or escaping files.
+    The mixed ``sources`` maps also contain external custody metadata and
+    aliases; those and frozen captures outside REPLAYS retain their owning
+    verifiers. This does not replace schema validation or scientific replay.
     """
     digests = {} if digests is None else digests
     root = ROOT.resolve()
-    fields = {"sources", "source_sha256", "source_bindings"}
+    repository_fields = {"sources", "source_sha256", "source_bindings",
+                         "input_sha256", "source_binding_sha256",
+                         "source_control_bindings", "source_pins"}
+    package_levels = {"implementation_sha256": 0, "source_interface_hashes": 1}
+    # The endpoint audit's generic field name is scoped to its actual location.
+    endpoint_pins = "root.retrospective_endpoint_audit.source.pins"
 
     def walk(value, receipt, location="root"):
         if isinstance(value, dict):
             for key, child in value.items():
                 here = f"{location}.{key}"
-                if key in fields and isinstance(child, dict):
+                recognized = key in repository_fields or key in package_levels or here == endpoint_pins
+                local_only = recognized and key != "sources"
+                if local_only and (not isinstance(child, dict) or not child):
+                    raise ValueError(f"Empty or malformed local source map: {receipt} at {here}")
+                if recognized and isinstance(child, dict):
+                    base = ((root/receipt).parents[package_levels[key]]
+                            if key in package_levels else root)
                     for relative, expected in child.items():
                         if not isinstance(relative, str) or "://" in relative:
+                            if local_only:
+                                raise ValueError(f"Invalid local source path: {receipt} at {here}")
                             continue
                         path = Path(relative)
                         if path.is_absolute():
+                            if local_only:
+                                raise ValueError(f"Absolute local source path: {receipt} at {here}[{relative}]")
                             continue
                         try:
-                            target = (root/path).resolve()
-                            if not target.is_relative_to(root) or not target.is_file():
-                                continue
+                            target = (base/path).resolve()
+                            local_file = target.is_relative_to(root) and target.is_file()
                         except (OSError, ValueError):
+                            local_file = False
+                        if not local_file:
+                            if local_only:
+                                raise ValueError(f"Missing or escaping local source path: {receipt} at {here}[{relative}]")
                             continue
                         if target not in digests:
                             digests[target] = hashlib.sha256(target.read_bytes()).hexdigest()

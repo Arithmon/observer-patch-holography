@@ -20,7 +20,6 @@
     "postcommit_dimension": 3276,
     "postcommit_dual_projectors_fixed": true,
     "postcommit_first_record_intertwiners_exact": true,
-    "source_tape_dimension": 3354,
     "postcommit_operational_observer": {
       "Lean_inhabitant_compiled": false,
       "accessible_algebra": "span of first-letter projectors",
@@ -64,7 +63,8 @@
       "record_conditioned_controls_are_nonconstant": true,
       "record_creation_in_persistence_domain": false,
       "state": "actual first native event from uniform binary prior, first letter committed"
-    }
+    },
+    "source_tape_dimension": 3354
   },
   "exact_controlled_record_instrument": {
     "arbitrary_operator_and_reference_scope": true,
@@ -475,7 +475,7 @@
     "source_sha256": {
       "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
       "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-      "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3"
+      "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8"
     }
   },
   "levels": [

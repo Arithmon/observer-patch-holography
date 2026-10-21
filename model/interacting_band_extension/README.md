@@ -698,7 +698,168 @@ finite-`d` norm and waiting-time terms to vanish along the same schedule.
 Fixed step counts, fixed source precision and a fixed native clock
 refinement do not suffice uniformly in `d`. Protected services and
 arbitrarily accurate growing-code preparation/control are implementation
-premises; the source execution retained here uses `d=4`.
+premises. The original source execution uses `d=4`; the separate cold
+eight-level execution below now has a quantitative occupation certificate.
+
+## Quantitative preparation and complete-history certificate
+
+The qualitative occupation theorem now has a computable error for the same
+Hamiltonian, detector and feedback protocol. Run
+
+```sh
+python -m model.interacting_band_extension.thermal_certificate --check model/interacting_band_extension/thermal_results.json
+python -m pytest -q -W error model/interacting_band_extension
+```
+
+The original hot protocol remains `beta=1/4`. At `d=24`, its **preparation**
+error against the infinite canonical Gibbs purification is below `0.005435`.
+This does not certify the old four-level history or execute a 24-level
+source word. A separate declared cold protocol, `beta=4,g=1,d=8`, has
+preparation error below `0.001469`. Its complete two-read history has
+error below `0.0025`, retaining work, the full quantum reference and all four
+records for each native sign. Temperature is a supplied parameter, not an
+estimate from laboratory data. The spatial two-mode projection remains.
+
+Here is the partition certificate. In the natural frequency `(1,2)` basis,
+let `H0` be the harmonic operator, `K=(Q1^2,Q2^2,Q1 Q2)`, and
+`c=(g/16,g/16,g/4)`. If `P_m` retains the natural `m` by `m` Hermite box, set
+
+```text
+h_minus_m[psi] = h0[psi] + sum_j c_j ||P_m K_j psi||^2 <= h[psi].
+```
+
+These closed forms increase to `h`: their partial polynomial coefficient
+sums converge in square norm, with finite supremum exactly on the quartic
+form domain. Each `K_j` changes occupation by at most two, so the lower
+operator is a finite block on the `(m+2)` box plus **exactly** `H0` outside.
+For `N=m+2` its complementary partition trace is
+
+```text
+Z0 [exp(-beta N)+exp(-2 beta N)-exp(-3 beta N)],
+Z0 = exp(-3 beta/2)/[(1-exp(-beta))(1-exp(-2 beta))].
+```
+
+Variational min-max, compact harmonic form embedding and domination by the
+summable harmonic eigenvalues give `Z_d <= Z <= Z_upper(m)`, with
+`Z_d` increasing and `Z_upper(m)` decreasing to `Z`. The original
+frequency-two Hermite boxes form the quartic form core used for `Z_d`.
+The natural basis above is solely a device for bounding the trace: it
+does not change the finite source code. No operator-monotonicity of the
+exponential, or differentiation of a partition inequality, is assumed.
+
+For the canonical purifications, diagonalize `H_d` in vectors `u_i`.
+Scalar Jensen gives `<u_i,exp(-beta H/2)u_i> >= exp(-beta e_i/2)`. Consequently
+
+```text
+Tr sqrt(rho_d) sqrt(rho) >= sqrt(Z_d/Z),
+D(canonical(rho_d), canonical(rho)) <= sqrt(1-z_d/z_upper).
+```
+
+Here `z_d,z_upper` are certified outward partition endpoints and `D` is
+half trace distance. This preserves the reference; it is stronger than
+merely controlling the work marginal. The finite matrices have exact
+rational Bargmann entries and factorial metric. `thermal_spectrum.py`
+encloses their orthonormal entries, certifies dyadic eigenbasis Gram and
+eigen-equation residuals with integer arithmetic, and bounds exponentials
+by rational Taylor series. LAPACK supplies candidates only. A polar-unitary
+comparison and heat-semigroup Duhamel bound also certify the numerical
+canonical seed. There is no assumed eigenvector accuracy or uncharged
+Gibbs normalization.
+
+The replay publishes fixed rational budgets after checking them against
+fresh outward enclosures. In particular, the seed and source-target errors
+must each be at most `10^-9`; an inaccurate eigensolver candidate fails
+these checks. This avoids treating the last rounded digit of a
+platform-dependent residual as an invariant. Declared preparation, seed,
+path and escaped-row budgets enter the final error sum. The displayed
+partition interval is a separate, coarser enclosure; the preparation check
+uses the tighter unrounded partition certificate. Exact receipt comparisons
+remain strict, including rejection of both larger and smaller stored caps.
+The preparation resource budget is also checked from the exact rational sum
+of the compiled word's binary floating-point angles, after recompiling the
+returned target and checking the entire resource record. Its declared
+integrated processor norm ceiling is `277000`. The twelve-qubit tree has
+40962 J, 81924 H, 8190 X and 4095 central Z pulses, with respective angle
+bounds pi, pi/2, pi/4 and pi. Their sum is at most `88066.5 pi`, below
+`1937463/7 < 277000` using `pi < 22/7`. This covers the different signed
+atan2/Walsh choices at tiny amplitudes; the actual binary angles are also
+summed exactly on every replay. A platform-dependent rounded cost is not
+used as the portable resource certificate.
+
+`thermal_history.py` then encloses polynomial-path residuals against the
+**infinite** generator. Acting with `H` on a finite `d`-box path reaches
+only the `d+4` box; acting with the actual second-coordinate detector/kick
+`Q2` reaches only `d+1`. Every escaped row is included. For each path cell,
+the integrated norm of its derivative minus the exact generator, plus the
+endpoint-rounding jump, bounds the vector error by unitary Duhamel.
+First-read outcomes stay as orthogonal record columns; feedback acts only
+on record one. Both Ramsey arms are bounded before the pointer rotation,
+so functions of a compressed coordinate are never confused with compressed
+functions of the infinite coordinate. The final record dephasing and any
+common native continuation are CPTP contractions. Comparing the exact finite
+and infinite outputs assumes the field preparation is independent of the
+native/reference input and the sign is selected by a committed classical
+current record. The bound then averages over those native branches; it does
+not cover coherent sign control or arbitrary initial field/native correlations.
+Write `e` for the certified seed vector error, `F` for the finite path
+residuals plus endpoint jumps, and `O` for the escaped-row residuals.
+Comparing the exact finite and infinite outputs through the computed path
+charges both seed comparisons and both finite path defects. Both exact
+complete-prefix outputs are normalized, so their half trace distance is
+at most their vector distance, bounded by `2e+2F+O`. Every completed
+zero-, one- or two-read prefix uses a subset of these nonnegative terms.
+Adding the canonical preparation distance therefore gives one uniform
+bound for all three stopping points. Independent classical native tapes
+average these bounds, with no record-count multiplier or division by
+success probability. An unfinished mid-service controller state is outside
+this prefix argument and needs the separate unfinished-probability budget.
+The source compiler's numerical Gibbs
+target is separately compared to the certified seed and exact finite Gibbs
+state. All sums and norms use the existing outward IEEE-754 interval
+kernel. No empirical cutoff agreement substitutes for the residual bound.
+
+The cold source execution emits a twelve-qubit amplitude-tree preparation
+of the canonical Gibbs reference, followed by the existing native pulses
+for both signed histories, two reads and feedback. Its largest branch uses
+2,520,047 pulses and 5,040,094 proper-code services at 64 palindrome steps
+per interval. The exact finite splitting allowance is below `0.001788`.
+Adding preparation/occupation error and the explicitly guarded source
+numerical allowance gives complete output error below `0.005` against the
+infinite two-mode history. Source pulse contractions have numerical guards,
+not directed arithmetic or measured physical fidelity certificates; this
+last combined statement inherits those guards. The ideal occupation
+certificate itself has directed arithmetic bounds. No output is normalized
+or postselected to achieve either comparison.
+
+The same executed preparation is passed to the fixed
+`ProductControllerInstrument` on the eight-level code for both initial
+signs; the record-selected feedback remains positive. All 64 work-input
+columns and all 3,600 native tapes are checked against independent source
+prefix maps, retaining 4,900 terminal native/field outputs. Grouped
+calculations reuse a work operator only after checking exact equality on
+every tape; no record is discarded. This composes the uniform prefix
+bound with the actual controller and retained preparation reference.
+The zero-/one-/two-incident timeout alphabet is preserved, including its
+`35/36` timeout mass at the two-attempt horizon. Algebraic invalid-code
+failure exports remain absorbing; they have zero weight on the declared
+valid-code input. The larger construction does not assert a new quantum
+access-algebra rank beyond the separately derived four-level result.
+
+The same receipt instantiates the existing incident-clock composition at
+level eight, with 81,920 total incident ticks and 491,524 local word calls.
+Its timeout and source requirements give a combined nominal-work bound
+below `0.003` when added to the ideal occupation certificate. Both compared
+outputs retain the same stochastic clock tape. This is an explicit
+resource/accuracy schedule, not execution of those 491,524 calls or a
+claim that the required service precision has been measured. At `beta=4`
+the modular increment per incident is `-1/(4 R)`. The active coupling,
+protected storage, coherent services and temperature remain supplied.
+
+The tests independently build padded oscillator matrices, compare all
+work/reference amplitudes, omit feedback as a negative control, corrupt
+candidate paths, challenge spectral candidates and reject invalid or
+overflowing inputs. The stored receipt contains compact bounds and counts;
+the matrices and pulse histories are recomputed rather than archived.
 
 ## What remains open
 

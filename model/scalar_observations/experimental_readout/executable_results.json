@@ -10,7 +10,7 @@
     "source_probability_mass_preserved": true
   },
   "implementation_sha256": {
-    "../../observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "../../observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
     "../source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94",
     "canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
     "data.py": "63785d2d6defaa91904d6a11c6a9d7f3d47a18b20c17720734b3f6b1cd896f73",
