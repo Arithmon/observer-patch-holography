@@ -800,8 +800,9 @@ density-to-metric identity is established mathematics; see
 Its application here does not import fluid dynamics.
 
 `wave_density_metric` checks this algebra exactly for rational coefficient
-inputs. The retained anisotropic example is a coefficient control, not a
-numerical determination of the native limiting tensor. Controls verify
+inputs. The anisotropic fixture tests the algebra; the native increment
+readout below obtains finite averaged coefficients from source records.
+Controls verify
 spatial chart covariance and the change `t=kappa*tau` of wave-clock
 coordinate. Changing the measure normalization preserves the characteristic
 cone but changes the metric normalization; replacing `a` by a round tensor
@@ -818,6 +819,91 @@ static line element gives local proper-duration factor
 an actual clock apparatus with that line element is a separate measurement
 contract. A faithful global thermal state's modular flow is likewise not
 automatically the modular flow of every spatial patch.
+
+### Native records determine the limiting tensor weakly
+
+The tensor can be read from the same full-port density kernel, without
+fitting an elliptic operator. Set `s=4^l`, `M_l=630s`, `N_l=2M_l s`, and
+`K_l=I-L_l/(2M_l)`. A disclosed **total-one calibration** of the unchanged
+native endpoint rule has exactly this transition kernel: each occupied
+seam contributes one move and one hold among the `2M_l` equally likely
+seam/coin records. Empty seams contribute two holds. Currents reconstruct
+the terminal location from the disclosed start. This calibration is
+distinct from tagging a particle in the fixed-number density experiment;
+that experiment independently gives the same `K_l` in its two-point
+covariance after the susceptibility and conserved constant are restored.
+
+For cell probes `f_l,g_l`, repeat their values at every port, evolve for
+`n_l=floor(t N_l)` native attempts, and average the twelve starting ports
+in each cell. Denote the resulting positive kernel by `Pbar_l(t)`; it
+preserves constants but is not a cell semigroup. For `t>0`, define
+
+```text
+Gamma_l,t(f,g) = [Pbar_l(t)(fg)-f Pbar_l(t)g-g Pbar_l(t)f+fg]/(2t).
+```
+
+This is the conditional mean of `Delta f Delta g/(2t)`, so every finite
+matrix of probe increments is positive semidefinite. In a finite run use
+the exact separation `t=n/N_l`; no fractional event is introduced. The
+source full-port resolvent/heat theorem gives `Pbar_l(t)->exp(-t Abar)`
+strongly along the existing spatial subsequence. For bounded `H1` probes
+and bounded `H1` weight `phi`, cell averages converge in `L2`, as do their
+products. Hence, first refining at fixed positive `t`, then taking `t->0`,
+
+```text
+lim_(t->0) lim_l integral phi Gamma_l,t(f,g) dmu
+  = [E(f,phi g)+E(g,phi f)-E(fg,phi)]/2
+  = integral phi a_screen^ij partial_i f partial_j g dmu.   (NR)
+```
+
+The first equality follows from `(I-exp(-t Abar))/t` in the quadratic-form
+pairings; all three products belong to `H1`. No differentiation of a
+rough coefficient is used. Choose cutoff coordinate probes `f_i=chi x_i`
+with `chi=1` near `supp(phi)`. Dividing (NR) by `integral phi dmu` recovers
+the weighted chart average of `a_screen^ij`. Shrinking nonnegative chart
+weights then recovers the coefficient almost everywhere by Lebesgue
+differentiation. This identifies the measurable tensor of each selected
+limit, without a whole-sequence rate, pointwise finite-run accuracy,
+smoothness or isotropy assumption.
+
+The order of limits is essential. On an original face use barycentric
+coordinates `(x,y)` with corners `(0,0),(1,0),(0,1)`. The unrelaxed
+one-attempt increment tensor on its interior refined cells is exactly
+
+```text
+a_bare = [[1/36,-1/72],[-1/72,1/36]],
+(3/7) a_bare <= a_screen(x) <= (15/19) a_bare   almost everywhere. (NB)
+```
+
+The lower inequality is the existing `H1` coercivity bound expressed in
+this chart. For the upper inequality, sample a smooth compactly supported
+probe at cell centroids. Its unweighted native trial energy converges by
+the three centroid displacement directions to `integral grad f.a_bare.grad f`.
+The source terminal-star conductances satisfy `w<=15/19`; their harmonic
+lifts have no greater native energy and their cell means converge to the
+same probe. Mosco liminf therefore bounds `E(f)` by `15/19` of this trial
+energy. The cutoff sine/cosine localization argument above gives (NB)
+pointwise. Taking the one-attempt derivative before refinement thus reads
+a strictly different, unrelaxed tensor; it cannot determine `a_screen`.
+
+`native_chart_increment` executes continuous cutoff coordinate probes on
+source levels one and two, retaining all holds. Exact two-attempt endpoint
+composition independently checks its polarized kernel calculation. A
+cell-reset control assigns probability `1/3657830400` to a two-cross-seam
+path whose true probability is zero: the source matching needs an internal
+move between distinct cross seams. The mean-eliminated Schur generator
+also has a positive off-diagonal entry and cannot replace this positive
+kernel. One- and sixteen-attempt runs at levels one and two share
+`t=1/20160`; these are finite comparisons, not evidence of an asymptotic rate.
+
+The finite averaged tensor feeds `wave_density_metric` with declared
+radial coefficient one and product measure `dr dmu=dr dx dy/10`. It yields
+an exact Lorentz-signature **comparison metric for those averaged
+coefficients**. A metric of an average is not an average of the metric.
+The limiting metric uses (NR) and the subsequent shrinking-chart limit
+before the nonlinear density-to-metric map. The radial domain and active
+wave law remain supplied; neither native density time nor this calibration
+is identified with wave time, a modular parameter or laboratory seconds.
 
 ### Transport through source refinement
 

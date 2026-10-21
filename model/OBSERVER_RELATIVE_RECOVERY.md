@@ -60,8 +60,11 @@ Its [record filters](physical_space_time/OCCUPATION_FIELD.md#thermal-product-cov
 distinguish classical and quantum covariance, with finite-count, radial-grid
 and full-port/Schur bounds. Dirichlet radial boundaries keep the angular
 constant without a zero frequency. The [wave action fixes a measurable
-Lorentz-signature metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave);
-radial design, preparation, spectral access and protection remain supplied.
+Lorentz-signature metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+Full-port native conditional increments recover its angular coefficients by
+first refining at fixed density time, then taking short-time and chart limits.
+The disclosed total-one calibration is distinct from fixed-number field
+preparation; radial design, spectral access and protection remain supplied.
 The separate [capped Gibbs subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
 retains all failures and bounds state and modular-gap errors on a finite
 register. Its exact uncapped sampler has infinite mean cost; it prepares
@@ -73,9 +76,13 @@ sixteen detector addresses and untouched reference outputs remain included.
 The ideal successful work marginal determines `H=-log(M/m0)` and
 `sigma_s=alpha_(-s)` after request forgetting and reference trace; that
 identity does not extend to the complete record/work state or unsupported
-padding; numerical source errors remain separate. This fixed finite execution
-supplies neither the growing nonconstant product-mode encoder nor the original
-scalar benchmark.
+padding; numerical source errors remain separate. The same density fixes all
+eleven fluctuation pairs without separate mode polarizations. Three band
+representatives have complete source pointer readouts, and a quantitative
+ordered-Weyl limit assumes independent successful copies. A bounded-band
+positive-log estimate connects the clock to square-root dynamics under explicit
+cap/filter/precision scaling. This fixed execution supplies neither the growing
+nonconstant product-mode encoder nor the original scalar benchmark.
 
 ### One complete joint observer comparison
 

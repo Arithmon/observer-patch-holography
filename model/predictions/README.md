@@ -654,6 +654,106 @@ python -m model.predictions.prepared_clock --check model/predictions/prepared_cl
 python -m pytest -q -W error model/predictions/test_prepared_clock.py model/predictions/test_prepared_clock_source.py
 ```
 
+<a id="shared-state-fluctuation-field"></a>
+### A field of fluctuations from the same prepared register
+
+Write the twelve eigenvalues of the ideal successful work state as `p_j`, with
+constant-vector weight `p_0`, and put `delta_j=p_0-p_j>0`. The **same state**
+defines eleven pairs
+`Q_j=X_(0j)/sqrt(2 delta_j)`, `P_j=Y_(0j)/sqrt(2 delta_j)`.
+Their expected commutators are `i delta_jk`; their symmetric covariance is
+diagonal, with each Q/P variance `coth(g_j/2)/2`. The existing clock rotates
+each pair at `g_j=log(p_0/p_j)`. Thus one preparation fixes noise, ordered
+response and clock rates together:
+`<Q_j(t)Q_k>=delta_jk[coth(g_j/2)cos(g_j t)-i sin(g_j t)]/2`, where t counts
+the ideal incident-triggered clock steps and its declared continuous extension.
+The finite matrices do not themselves
+obey exact canonical commutation relations. These observables belong to
+the full logical algebra; the reference state is central on the smaller
+represented group algebra.
+
+For independent identically prepared successful copies, let
+`F_N(A)=sum_(r=1)^N A^(r)/sqrt(N)`. If chronological factors have generators
+`A_1,...,A_m`, their ordered characteristic function is exactly `z_N^N`,
+where `z_N=Tr(rho exp(i A_m/sqrt(N))...exp(i A_1/sqrt(N)))`. Put
+
+```text
+C = sum_k Tr(rho A_k^2)/2 + sum_(l>k) Tr(rho A_l A_k),
+D = sum_k ||A_k||,
+|z_N^N-exp(-C)| <= (D^4/24 + |C|^2/2)/N.
+```
+
+The parity that fixes the constant vector and negates the excited vectors
+commutes with `rho` and anticommutes with every chosen generator. Odd
+Taylor terms vanish. The fourth derivative of the ordered unitary product
+has norm at most `D^4`; its remainder is therefore at most `D^4/(24N^2)`.
+Since `Re C=Tr(rho(sum A_k)^2)/2>=0`, the exponential remainder is at most
+`|C|^2/(2N^2)`. Telescoping between two contractions gives the bound above.
+This directly proves the ordered Gaussian/CCR limit without assigning
+separate polarized states to the modes. Independent copies and their
+preparation remain premises.
+
+The executed witness uses representatives of all three nonconstant bands,
+one prepared work register, and a source-compiled pointer. All 32 joint
+pointer/work addresses, twelve reference columns, requests, rejections and
+first herald failures are retained. Its chronological generators are
+`Q_3/10,P_3/10,Q_1/50,P_2/40`, with pulse-angle parameter `N=4096`.
+Here subscripts label the three band representatives. The derived
+`z_N^N` is approximately `0.76998918+0.00384689i`; the Gaussian limit is
+`0.76997108+0.00384989i`. The finite-copy allowance is below `0.000944`;
+including source numerical guards gives an allowance below `0.001462`.
+The positive ordered phase remains resolved. Raw estimator amplification
+is charged when taking its Nth power. The request-zero branch supplies a
+tracial control with zero Gaussian symplectic form; its finite ordered
+phase need not vanish. A 4096-register circuit and access to all eleven
+directions have not been executed. Pulse/load/export costs are counted for
+the one-register witness; collecting successful copies by retrying has
+mean preparation-attempt count `N/Psuccess` and no finite worst-case count.
+
+<a id="prepared-positive-log-limit"></a>
+The clock also has a conditional limit tied to its preparation. For
+`F=I-hD/2`, `M=sum w_n F^(2n)`, `m0=sum w_n`, put `H=log(m0)I-log(M)`.
+Assume F is a contraction on the **whole encoded domain** and `h Lambda<2`
+on a fixed band `0<=D<=Lambda`. With `b=R sqrt(h)`, missing sampler mass
+`delta`, and `0<a<=exp(-b sqrt(Lambda))`, `delta<a` gives
+
+```text
+||H-b sqrt(D)|| <= delta/(a-delta)
+  + b h Lambda^(3/2)/(4(1+sqrt(1-h Lambda/4))).
+```
+
+Positivity bounds the omitted sampler operator before taking the logarithm;
+both scalar log corrections have the same sign, so normalization adds no
+factor two. If each raw filter has error at most `epsilon`, a cap of K
+filters adds mixture error `xi=2K epsilon/(1-2K epsilon)` and log error
+`xi/(a-delta-xi)`, provided the denominators are positive. Insufficient
+precision or retained mass produces no bound. This raw-source log bound
+also requires the entire encoded domain to lie in the certified band, or
+the source implementation to preserve that band: small leakage toward
+arbitrarily small outside eigenmasses defeats a low-band log bound. The
+finite twelve-dimensional heralded preparation satisfies this requirement;
+the reported growing-schedule examples declare it as a compiler obligation.
+An explicit finite schedule
+`R=2^l`, `h=b^2/R^2`, jump cap `2^(6l)`, count cap `6R+2l`, and decreasing
+source error makes these terms vanish on each fixed band. Those large
+samplers and phase compilers are obligations, not executed constructions.
+Keeping caps fixed while `Kh` tends to zero instead collapses H to zero.
+Combining this bound with a compatible spatial operator limit requires
+bounded-band convergence followed by spectral cutoff removal; it supplies
+no unbounded-generator norm limit or physical spacetime identification.
+
+The fixed finite gaps also admit a narrow public-data test. All nine ordered
+assignments of the three executed constant-to-band gaps to the
+[published Ar13+/Yb+ ratios](https://arxiv.org/pdf/2205.13053v2#page=20) are
+incompatible, even allowing absolute attachment error `10^-6` in each gap
+and `10^-12` in the ratio. Exact rational log enclosures leave a ratio
+separation above `0.057` for each isotope. One common frequency scale
+cancels; no preparation parameter, offset, harmonic, phase alias or
+species-dependent scale is fitted. The error budgets are explicit tested
+hypotheses, not hard bounds inferred from quoted standard uncertainties or
+numerical compiler checks. This retrospective exclusion concerns this
+direct assignment only; it supplies no atomic model or exclusion of OPH.
+
 ## Native repair response from passive clock and field records
 
 [repair_response.py](repair_response.py) predicts a finite response using the

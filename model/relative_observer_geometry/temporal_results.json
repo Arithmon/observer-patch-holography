@@ -1345,7 +1345,7 @@
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/relational_event_clock/kernel.py": "5c2933ca60e2219b9550fc0cdaa11021a58948cda31195f4fbaa90420187a028",
     "model/relative_observer_geometry/__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
-    "model/relative_observer_geometry/intrinsic_geometry.py": "e34613b65d1ff3ea6c2ada2941caba4160b00f3ea694a3f1920d0e146dbc2fc2",
+    "model/relative_observer_geometry/intrinsic_geometry.py": "9da30df1887650e8fbc1ac7f260f554a7b05cd5f1b08a816e62fa030d53ec9b5",
     "model/relative_observer_geometry/temporal_records.py": "95fd3869dd3de8cc419c529979cfbb2f9d80d14683f49eda6bc45f6acdabe871",
     "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",

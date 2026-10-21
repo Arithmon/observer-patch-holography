@@ -356,8 +356,16 @@ larger logical register. [Capped positive subordination](predictions/README.md#p
 prepares square-root Gibbs approximants with state and modular-gap budgets,
 without equating `L` and `sqrt(L)` by a clock scale. Sampler rejection and
 herald failures are retained; uncapped exact sampling has infinite mean cost.
-This finite register construction does not prepare the product Fock state.
-Physical collars, interactions and observational identification are unproved.
+The [same-register continuation](predictions/README.md#prepared-reference-clock)
+executes its positive-log clock and complete pair detectors. Its single density
+also fixes eleven algebraic fluctuation pairs, with three source-read band
+representatives and a finite-copy ordered-Weyl bound. Independent successful
+copies remain a declared preparation; no growing spatial field encoder is
+executed. The cap/filter/precision bound controls a bounded-band square-root
+clock limit, with fixed caps as a failed control. Native conditional increment
+records recover the angular tensor only in the declared ordered limits, not
+from a single finite short-time derivative. Physical collars, interactions,
+observational identification and the product Fock preparation remain unproved.
 
 The [source-selection assessment](SOURCE_SELECTION.md) separates the sphere's
 Lorentz/celestial role from physical realization. A declared seam-midpoint

@@ -113,8 +113,10 @@ joins this operator, ordered CCR fields, sine response and modular flow to
 the same incident clock, with bounded-band splitting and precision errors.
 Dirichlet radial boundaries retain the angular constant without a zero
 frequency. The [product wave action](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
-determines a measurable metric of signature `(-,+,+,+)`. The interval,
-state preparation and controls are supplied; a growing nonconstant-mode
+determines a measurable metric of signature `(-,+,+,+)`. Native conditional
+increment records recover its angular energy tensor in ordered spatial,
+short-time and localization limits; finite chart readouts retain their own
+error boundary. The interval, state preparation and controls are supplied; a growing nonconstant-mode
 encoder is unexecuted, and smooth geometry and physical units are unproved.
 The [finite edge-generator bridge](observer/COHERENT_CONTINUATION.md#a-finite-edge-generator-representation-from-native-repair)
 realizes the edge theorem's generator and ranks. An [executed lazy filter](predictions/README.md#preparing-the-finite-edge-reference-from-source-pulses)
@@ -122,9 +124,15 @@ prepares Gibbs approximants of `L` with all failures retained, nonzero
 interference and a state/free-entropy bound. [Capped subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
 prepares square-root Gibbs approximants with all failures and state,
 modular-gap and dispersion budgets; uncapped exact sampling has infinite
-mean cost. Preparation and control are supplied. These states are central
-on the represented algebra; physical collars, sewing and generalized-entropy
-stationarity are unproved.
+mean cost. The [same-register clock and field readout](predictions/README.md#prepared-reference-clock)
+uses this density for all eleven algebraic fluctuation pairs; three band
+representatives have source-executed ordered pointer readouts. Independent
+successful copies give a quantitative Gaussian limit. A bounded-band log
+estimate specifies the growing caps and precision needed for the clock's
+square-root limit. These states are central on the represented group algebra;
+nontrivial modular flow uses the full logical algebra. Preparation, independent
+copies and control remain supplied; physical collars, sewing and geometric
+entropy stationarity are unproved.
 Complete endpoint records also give
 a forward-cone placement in the registered response geometry; a four-event
 native execution has a Lean instance proving that implication and the

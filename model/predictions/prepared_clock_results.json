@@ -2,8 +2,8 @@
   "clock_field_response": {
     "analytic_signal": 9.098497360631269e-07,
     "event": "first incident attempt loses port10 load, second attempt is incident",
-    "executed_clock_off_signal": 5.4056795660822193e-17,
-    "executed_signal": 9.098497359575632e-07,
+    "executed_clock_off_signal": -1.8689781981166137e-18,
+    "executed_signal": 9.09849736076555e-07,
     "formula": "(m0-m6)*sin(log(m0/m6))/(12*90)",
     "observable": "X detector address0 minus selected lambda6 address, feedback on minus off",
     "resolved_signal_lower_under_guards": 6.765937360631269e-07,
@@ -56,7 +56,7 @@
     "continuation_channel_norm_upper_under_guards": "1000000144401/1000000000000",
     "continuation_half_diamond_upper_under_guards": "72201/1000000000000",
     "directed_rounding_or_physical_fidelity_certificate": false,
-    "filter_complete_Frobenius_residual": 4.3040947407068774e-11,
+    "filter_complete_Frobenius_residual": 2.6131049291712487e-11,
     "filter_operator_guard": "1/1000000000",
     "ideal_success_probability": "994135427220848655906122603138321/1239337859764309689882378240000000",
     "numerical_arithmetic_allowance": "1/10000000000",
@@ -67,8 +67,8 @@
       "all_first_failure_environment_rows_compared": true,
       "all_terminal_reference_entries_compared": true,
       "axis": "X",
-      "complete_quantum_half_trace_upper_diagnostic": 4.648095340430079e-12,
-      "complete_raw_mass_diagnostic": 0.99999999999142,
+      "complete_quantum_half_trace_upper_diagnostic": 2.149593086364948e-12,
+      "complete_raw_mass_diagnostic": 0.9999999999968401,
       "complete_uncompressed_records": 288011,
       "intervention": 0,
       "native_tapes_per_successful_request": 3600,
@@ -79,8 +79,8 @@
       "all_first_failure_environment_rows_compared": true,
       "all_terminal_reference_entries_compared": true,
       "axis": "X",
-      "complete_quantum_half_trace_upper_diagnostic": 4.740200361821489e-12,
-      "complete_raw_mass_diagnostic": 0.9999999999912348,
+      "complete_quantum_half_trace_upper_diagnostic": 2.1870987845788742e-12,
+      "complete_raw_mass_diagnostic": 0.999999999996763,
       "complete_uncompressed_records": 288011,
       "intervention": 1,
       "native_tapes_per_successful_request": 3600,
@@ -91,8 +91,8 @@
       "all_first_failure_environment_rows_compared": true,
       "all_terminal_reference_entries_compared": true,
       "axis": "Y",
-      "complete_quantum_half_trace_upper_diagnostic": 4.6482153446736406e-12,
-      "complete_raw_mass_diagnostic": 0.9999999999914198,
+      "complete_quantum_half_trace_upper_diagnostic": 2.1504677344504744e-12,
+      "complete_raw_mass_diagnostic": 0.9999999999968383,
       "complete_uncompressed_records": 288011,
       "intervention": 0,
       "native_tapes_per_successful_request": 3600,
@@ -103,8 +103,8 @@
       "all_first_failure_environment_rows_compared": true,
       "all_terminal_reference_entries_compared": true,
       "axis": "Y",
-      "complete_quantum_half_trace_upper_diagnostic": 4.740302639872295e-12,
-      "complete_raw_mass_diagnostic": 0.9999999999912347,
+      "complete_quantum_half_trace_upper_diagnostic": 2.1879688674178006e-12,
+      "complete_raw_mass_diagnostic": 0.9999999999967613,
       "complete_uncompressed_records": 288011,
       "intervention": 1,
       "native_tapes_per_successful_request": 3600,
@@ -162,6 +162,209 @@
       "tape_count": 40
     }
   ],
+  "positive_log_refinement_schedule": [
+    {
+      "bounded_band_then_spectral_cutoff_limit": true,
+      "count_cap": 104,
+      "growing_sampler_evaluated": false,
+      "heat_step": "1/256",
+      "jump_cap": 16777216,
+      "level": 4,
+      "maximum_filter_requests": 1744830464,
+      "one_filter_operator_error": "1/3573412790272",
+      "rate": "16",
+      "raw_generator_to_b_sqrt_D_upper": "27240958819593709025186336060944904612631118872954847169222464040221907431071480606978496493698992681453803/69240834484753347785943850822730601695425860065720934683879566711075462690401480399651928432744597420406640",
+      "raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band": true,
+      "required_phase_word_error_upper": "1/256",
+      "sampling_bits": 48
+    },
+    {
+      "bounded_band_then_spectral_cutoff_limit": true,
+      "count_cap": 396,
+      "growing_sampler_evaluated": false,
+      "heat_step": "1/4096",
+      "jump_cap": 68719476736,
+      "level": 6,
+      "maximum_filter_requests": 27212912787456,
+      "one_filter_operator_error": "1/891712726219358208",
+      "rate": "64",
+      "raw_generator_to_b_sqrt_D_upper": "200649468069485224977508362216483875331102571607288378208872427107223208827128603020622359719726959134156537/10821557738531453109528258556766514083807689852866152245481109874764744997320211995123290133868431710577884160",
+      "raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band": true,
+      "required_phase_word_error_upper": "1/4096",
+      "sampling_bits": 57
+    },
+    {
+      "bounded_band_then_spectral_cutoff_limit": true,
+      "count_cap": 1552,
+      "growing_sampler_evaluated": false,
+      "heat_step": "1/65536",
+      "jump_cap": 281474976710656,
+      "level": 8,
+      "maximum_filter_requests": 436849163854938112,
+      "one_filter_operator_error": "1/229034774419177792864256",
+      "rate": "256",
+      "raw_generator_to_b_sqrt_D_upper": "78394564166994738765999421555104202931847455443621612759759518668042284171865571184708456377012322356801415/68677949196994585863527771894287266544442912001508953446448750921169312613197936832233388432487257685343936512",
+      "raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band": true,
+      "required_phase_word_error_upper": "1/65536",
+      "sampling_bits": 75
+    }
+  ],
+  "prepared_gap_optical_comparison": {
+    "assignments": [
+      {
+        "denominator_band": 1,
+        "numerator_band": 1,
+        "ratio_enclosure_with_attachment_error": [
+          "499938901241/500000000000",
+          "250030553113/250000000000"
+        ]
+      },
+      {
+        "denominator_band": 2,
+        "numerator_band": 1,
+        "ratio_enclosure_with_attachment_error": [
+          "470220665773/1000000000000",
+          "470305159537/1000000000000"
+        ]
+      },
+      {
+        "denominator_band": 3,
+        "numerator_band": 1,
+        "ratio_enclosure_with_attachment_error": [
+          "393001243253/1000000000000",
+          "393068151823/1000000000000"
+        ]
+      },
+      {
+        "denominator_band": 1,
+        "numerator_band": 2,
+        "ratio_enclosure_with_attachment_error": [
+          "1063139516677/500000000000",
+          "106333055179/50000000000"
+        ]
+      },
+      {
+        "denominator_band": 2,
+        "numerator_band": 2,
+        "ratio_enclosure_with_attachment_error": [
+          "999942533179/1000000000000",
+          "1000057470123/1000000000000"
+        ]
+      },
+      {
+        "denominator_band": 3,
+        "numerator_band": 2,
+        "ratio_enclosure_with_attachment_error": [
+          "20893310701/25000000000",
+          "835820601853/1000000000000"
+        ]
+      },
+      {
+        "denominator_band": 1,
+        "numerator_band": 3,
+        "ratio_enclosure_with_attachment_error": [
+          "2544088080813/1000000000000",
+          "2544521212507/1000000000000"
+        ]
+      },
+      {
+        "denominator_band": 2,
+        "numerator_band": 3,
+        "ratio_enclosure_with_attachment_error": [
+          "1196428991799/1000000000000",
+          "299138805211/250000000000"
+        ]
+      },
+      {
+        "denominator_band": 3,
+        "numerator_band": 3,
+        "ratio_enclosure_with_attachment_error": [
+          "499975985177/500000000000",
+          "1000048031953/1000000000000"
+        ]
+      }
+    ],
+    "atomic_transition_dictionary_derived": false,
+    "comparisons": [
+      {
+        "all_nine_direct_assignments_incompatible": true,
+        "isotope": 40,
+        "minimum_absolute_ratio_separation_lower": "28823587567/500000000000",
+        "published_ratio": "1.05776938758748094",
+        "quoted_standard_uncertainty": "0.00000000000000011"
+      },
+      {
+        "all_nine_direct_assignments_incompatible": true,
+        "isotope": 36,
+        "minimum_absolute_ratio_separation_lower": "28822125141/500000000000",
+        "published_ratio": "1.05776646273518748",
+        "quoted_standard_uncertainty": "0.00000000000000013"
+      }
+    ],
+    "data": "model/predictions/data/modular_optical_ratios.json",
+    "declared_absolute_per_gap_attachment_error": "1/1000000",
+    "declared_absolute_ratio_error": "1/1000000000000",
+    "fixed_generator": "H=-log(M/m0)",
+    "gap_enclosures": [
+      [
+        "16365944614047213/1000000000000000000",
+        "8182972307023607/500000000000000000"
+      ],
+      [
+        "435021139661539/12500000000000000",
+        "34801691172923121/1000000000000000000"
+      ],
+      [
+        "8327989742387923/200000000000000000",
+        "1301248397248113/31250000000000000"
+      ]
+    ],
+    "numerically_checked_clock_operator_guard": "2010000010200000001/100000000000000000000000000",
+    "offsets_harmonics_phase_aliases_or_excited_to_excited_transitions_included": false,
+    "one_common_positive_frequency_scale": true,
+    "primary_url": "https://arxiv.org/pdf/2205.13053v2#page=20",
+    "prospective_prediction_or_OPH_exclusion": false,
+    "sampler_gaps_or_species_scales_fitted_to_observations": false,
+    "source_table": "Extended Data Table 1, accepted manuscript version 2, page 20",
+    "standard_uncertainties_or_numerical_guards_are_physical_hard_bounds": false,
+    "status": "retrospective conditional direct-gap attachment exclusion"
+  },
+  "prepared_positive_log_limit": {
+    "filter_to_square_root_generator_upper": "191006123123672736619452311170546920207150112407275390873/62243492242717476520643695256421590014053634449136156941975",
+    "fixed_cap_generator_upper": "4/7",
+    "full_encoded_domain_filter_contraction_is_a_premise": true,
+    "growing_source_filter_or_phase_compiler_certified": false,
+    "heat_step": "1/60",
+    "ideal_generator_to_b_sqrt_D_upper": "13268772454843237196009119280441579471474249435594842065203386373758559985275485663/49573986107420983575113249413754299140940445476702084742522445729064595727116826225",
+    "infinite_reference_mass_lower": "1007183707015415275174967/1208925819614629174706176",
+    "inherited_constant_to_band_modular_gap_upper": "102463620241581180936718313172125641675683872675041033386227242915744353102303838001117561199723035827036568542116615/373764185378449920249619856189944799178930620098652244080399399287387415564126308986820777207374602827598394118111232",
+    "inverse_temperature_interval": [
+      "3241481397813638714461578434858582096547393842120893621369/50216813883093446110686315385661331328818843555712276103168",
+      "6482962795627277428923156869717164193094787684241787242739/100433627766186892221372630771322662657637687111424552206336"
+    ],
+    "logarithm_domain": "the certified spectral band; global faithfulness is not inferred",
+    "maximum_encoded_generator_norm_for_filter_contraction": "240",
+    "maximum_filter_requests": 4,
+    "missing_sampler_mass_upper": "100484461455872493/576460752303423488",
+    "normalization": "H=log(sum w) I-log(sum_n w_n F^(2n))",
+    "normalized_log_truncation_upper": "210731189311105910439936/796452517704309364735031",
+    "off_band_source_log_bound_claimed": false,
+    "one_filter_operator_error": "1/1000000000",
+    "rate": "1/2",
+    "raw_generator_to_b_sqrt_D_upper": "1320993436885548668180516653841586497893898477599289312511237822553163189822109081757328892774126444364701591350359/4935415656572139341842391283380491789986007941485350229288034418628743885201174103912863836966660699131078051746425",
+    "raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band": true,
+    "raw_positive_mixture_log_error_upper": "1208925819614629174706176/99556562707660333272940335558793",
+    "raw_positive_mixture_operator_error_upper": "1/124999999",
+    "retained_band_mass_lower": "796452517704309364735031/1208925819614629174706176",
+    "retained_request_algebra_has_this_modular_generator": false,
+    "sampler_coefficients_checked_by_existing_positive_evaluator": true,
+    "source_log_scalar_convention": "same ideal m0; scalar changes cancel in modular action",
+    "spectral_band_upper": "8",
+    "successful_filter_domain_dimension": 12,
+    "successful_filter_domain_selected_by_herald_projection": true,
+    "unit_model_time_observable_error_upper": "132672163121739092682557264422188458138780847459611719021504491455116432518622037222872886479849207379733595796539165383625701935942725955194908190659252833968894167035674624/15998058041256775715220837587535378451635329898746555508254051440281616174623832663778855733115193677581052901929343291521372197587853837088958937391195767803468493149355825",
+    "unit_model_time_unitary_error_upper": "66336081560869546341278632211094229069390423729805859510752245727558216259311018611436443239924603689866797898269582691812850967971362977597454095329626416984447083517837312/15998058041256775715220837587535378451635329898746555508254051440281616174623832663778855733115193677581052901929343291521372197587853837088958937391195767803468493149355825"
+  },
   "resources": {
     "attempt_counter_bits": 2,
     "classical_record_storage_bits": 91,
@@ -222,6 +425,199 @@
     "raw_arrays_normalized_or_projected_to_ideal_unitaries": false,
     "same_native_carrier_continues_after_sampler": true,
     "source_preparation_filter_and_clock_are_supplied_observer_services": true
+  },
+  "shared_state_field": {
+    "all_eleven_mode_controls_executed": false,
+    "angle_copy_parameter": 4096,
+    "central_group_image_algebra_is_the_fluctuation_algebra": false,
+    "clock_rule": "Qj(t)=cos(gj*t)Qj+sin(gj*t)Pj under the same H=-log(M/m0)",
+    "combined_gaussian_error_upper_under_guards": 0.0014613293182510999,
+    "covariance_rule": "Cov(Qj,Qk)=Cov(Pj,Pk)=delta_jk*coth(gj/2)/2; Cov(Qj,Pk)=0",
+    "empirical_seconds_interacting_QFT_or_spacetime_identified": false,
+    "executed_representative_addresses": [
+      1,
+      2,
+      4
+    ],
+    "executed_work_registers_per_trial": 1,
+    "executions": [
+      {
+        "all_terminal_reference_and_first_failure_environment_entries_compared": true,
+        "axis": "X",
+        "complete_half_trace_upper_under_guards": "1084845782678972679411128409433835854259596223822958727282185811725779689664439655833848888375028875909048530474947461/30257271966902092038144000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "complete_quantum_half_trace_upper_diagnostic": 2.1422703576156537e-12,
+        "complete_raw_mass_diagnostic": 0.9999999999966172,
+        "joint_pointer_work_addresses_per_success": 32,
+        "retained_coarse_records": 171,
+        "source_pulses_after_success": 24238,
+        "source_word_sha256": "c2e6cffd615a96a6094912aea0a494f2efa508dfb0d49f5a914438e03c183400",
+        "unconditional_pointer_contrast": 0.8020992705784515
+      },
+      {
+        "all_terminal_reference_and_first_failure_environment_entries_compared": true,
+        "axis": "Y",
+        "complete_half_trace_upper_under_guards": "1084845782678972679411128409433835854259596223822958727282185811725779689664439655833848888375028875909048530474947461/30257271966902092038144000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "complete_quantum_half_trace_upper_diagnostic": 2.144207153342435e-12,
+        "complete_raw_mass_diagnostic": 0.9999999999966173,
+        "joint_pointer_work_addresses_per_success": 32,
+        "retained_coarse_records": 171,
+        "source_pulses_after_success": 24238,
+        "source_word_sha256": "72ed74c56c5e4ac5d343ff1738955462b94b60b6d8176505bf054e404dbc1277",
+        "unconditional_pointer_contrast": 9.78340649282067e-07
+      }
+    ],
+    "expected_commutator_rule": "< [Qj,Pk] >= i*delta_jk; cross Q/Q and P/P vanish",
+    "factors_chronological": [
+      [
+        3,
+        "X",
+        "1/10"
+      ],
+      [
+        3,
+        "Y",
+        "1/10"
+      ],
+      [
+        1,
+        "X",
+        "1/50"
+      ],
+      [
+        2,
+        "Y",
+        "1/40"
+      ]
+    ],
+    "finite_copy_error_upper": 0.0009433646251762877,
+    "finite_copy_rule": "z_N^N; |z_N^N-exp(-C)| <= (D^4/24+|C|^2/2)/N",
+    "formal_fluctuation_pairs": [
+      {
+        "address": 1,
+        "delta": 0.0013924211152968324,
+        "equal_mode_commutator_L2_variance_times_copy_count": 87765.3447650759,
+        "gap": 0.016365944614047213,
+        "variance": 61.10385583165666
+      },
+      {
+        "address": 2,
+        "delta": 0.002933888942562815,
+        "equal_mode_commutator_L2_variance_times_copy_count": 19588.79118394982,
+        "gap": 0.03480169117292312,
+        "variance": 28.737135870852445
+      },
+      {
+        "address": 3,
+        "delta": 0.0013924211152968324,
+        "equal_mode_commutator_L2_variance_times_copy_count": 87765.3447650759,
+        "gap": 0.016365944614047213,
+        "variance": 61.10385583165666
+      },
+      {
+        "address": 4,
+        "delta": 0.0034984692219010155,
+        "equal_mode_commutator_L2_variance_times_copy_count": 13730.073671648395,
+        "gap": 0.041639948711939614,
+        "variance": 24.01886931195864
+      },
+      {
+        "address": 5,
+        "delta": 0.0013924211152968324,
+        "equal_mode_commutator_L2_variance_times_copy_count": 87765.3447650759,
+        "gap": 0.016365944614047213,
+        "variance": 61.10385583165666
+      },
+      {
+        "address": 6,
+        "delta": 0.002933888942562815,
+        "equal_mode_commutator_L2_variance_times_copy_count": 19588.79118394982,
+        "gap": 0.03480169117292312,
+        "variance": 28.737135870852445
+      },
+      {
+        "address": 7,
+        "delta": 0.002933888942562815,
+        "equal_mode_commutator_L2_variance_times_copy_count": 19588.79118394982,
+        "gap": 0.03480169117292312,
+        "variance": 28.737135870852445
+      },
+      {
+        "address": 8,
+        "delta": 0.002933888942562815,
+        "equal_mode_commutator_L2_variance_times_copy_count": 19588.79118394982,
+        "gap": 0.03480169117292312,
+        "variance": 28.737135870852445
+      },
+      {
+        "address": 9,
+        "delta": 0.002933888942562815,
+        "equal_mode_commutator_L2_variance_times_copy_count": 19588.79118394982,
+        "gap": 0.03480169117292312,
+        "variance": 28.737135870852445
+      },
+      {
+        "address": 10,
+        "delta": 0.0034984692219010155,
+        "equal_mode_commutator_L2_variance_times_copy_count": 13730.073671648395,
+        "gap": 0.041639948711939614,
+        "variance": 24.01886931195864
+      },
+      {
+        "address": 11,
+        "delta": 0.0034984692219010155,
+        "equal_mode_commutator_L2_variance_times_copy_count": 13730.073671648395,
+        "gap": 0.041639948711939614,
+        "variance": 24.01886931195864
+      }
+    ],
+    "gaussian_characteristic": [
+      0.7699710830673022,
+      0.0038498874977858
+    ],
+    "independent_copy_characteristic": [
+      0.769989175505703,
+      0.003846893489361429
+    ],
+    "independent_identical_successful_copies_are_a_preparation_premise": true,
+    "mode_specific_preparations_supplied": false,
+    "multicopy_pointer_circuit_or_growing_spatial_encoder_executed": false,
+    "one_copy_characteristic": [
+      0.9999361918929933,
+      1.2196473271106593e-06
+    ],
+    "one_copy_source_estimator_error_upper_under_guards": 1.2642349326154846e-07,
+    "ordered_time_correlation": "<Qj(t)Qk>=delta_jk*(coth(gj/2)*cos(gj*t)-i*sin(gj*t))/2",
+    "raw_pointer_estimator": [
+      0.9999361918890529,
+      1.2196473168562623e-06
+    ],
+    "raw_pointer_estimator_power": [
+      0.7699891630775287,
+      0.003846893394941021
+    ],
+    "reference": "the ideal successful work marginal M/Tr(M); raw source error is separately bounded",
+    "request_zero_finite_ordering_phase_required_to_vanish": false,
+    "request_zero_gaussian_symplectic_form_vanishes": true,
+    "request_zero_pointer_characteristic_control": [
+      0.9999367642404031,
+      -8.877875656843059e-10
+    ],
+    "resolved_ordered_phase_lower_under_guards": 0.0023885581795347003,
+    "resources": {
+      "additional_native_attempts_in_pointer_protocol": 0,
+      "ideal_expected_preparation_attempts_for_N_successful_copies": "5076327873594612489758221271040000000/994135427220848655906122603138321",
+      "independent_copy_collection_executed": false,
+      "maximum_filters_per_attempt": 4,
+      "maximum_source_pulses_per_executed_trial": 480526,
+      "one_load_and_export_per_source_pulse": true,
+      "peak_encoded_qubits_including_reference": 19,
+      "pointer_prepared_after_filter_environment_is_released": true,
+      "protected_pointer_qubits_after_success": 1,
+      "sampler_native_coin_events_per_attempt": 64,
+      "unbounded_retry_has_no_finite_worst_case_cost": true
+    },
+    "source_estimator_power_error_upper_under_guards": 0.0005179646930748123,
+    "source_numerical_guards_are_physical_fidelities": false
   },
   "source_sha256": {
     "Lean/Dynamics/PrivateInner.lean": "05d3ef9300bb4e34ca25031d6c3bfb47b2dcbb065930354eb5a080e96f7f036f",
@@ -344,11 +740,12 @@
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
+    "model/predictions/data/modular_optical_ratios.json": "a1ce4fab0c9b98b1a3bdc765625d8505b5a7f761749937ab28b034508aade7c2",
     "model/predictions/inverse_clock.py": "37424902b920fb70d4cae26cc4f56d7f8bd9ff75ae9d418ba41c8b35946a9fff",
     "model/predictions/modular_optical.py": "62cdebe3d32765870374579ca6dfe5044d97036fb1e009306bb3fc3b260021ee",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
-    "model/predictions/prepared_clock.py": "02616a55086878a5f2b4881a5b79b9da479f25ee854fab2173803ce578f97f87",
-    "model/predictions/prepared_clock_source.py": "3b3348451f1c6e64ea67782c3834bdaf6a812a9a75689b6d52b78fc402e46cb1",
+    "model/predictions/prepared_clock.py": "0eb7ca3c81919a65bd2eabb00ab5bb7bf1f0028397c0169e9fc87676a902be22",
+    "model/predictions/prepared_clock_source.py": "0839509be7142048d00f71d6e59607933d18b4cfc9a8b037f130197b90579131",
     "model/predictions/protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

@@ -10,7 +10,9 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from fractions import Fraction as F
+from functools import lru_cache
 import hashlib
+from math import lcm
 from pathlib import Path
 
 import sympy as sp
@@ -380,6 +382,189 @@ def product_wave_metric_control():
     }
 
 
+@lru_cache(maxsize=3)
+def _native_density_rows(level):
+    """Integer kernels from total-one endpoint records, including all holds.
+
+    This is the unchanged primitive with a disclosed total-one preparation,
+    not a tagged-particle assumption about the fixed-number density field.
+    Empty seams give two zero-current records; occupied seams are executed.
+    """
+    from ..federated_observer import source
+    graph = source.federation(level)
+    denominator = 2*len(graph.seams)
+    rows = [Counter({p: denominator-2*len(graph.neighbours[p])})
+            for p in range(graph.ports)]
+    for a, b in graph.seams:
+        for origin, before in ((a, (1, 0)), (b, (0, 1))):
+            for coin in (0, 1):
+                after, (_, current) = native.native(before, (0, 1), coin)
+                decoded = before[0]-current, before[1]+current
+                if after != decoded or sum(after) != 1 or min(after) < 0:
+                    raise ArithmeticError('native current failed total-one reconstruction')
+                rows[origin][(a, b)[after.index(1)]] += 1
+    for p, row in enumerate(rows):
+        expected = {p: denominator-len(graph.neighbours[p]),
+                    **{q: 1 for q in graph.neighbours[p]}}
+        if dict(row) != expected or sum(row.values()) != denominator:
+            raise ArithmeticError('native records disagree with the full-port density kernel')
+    return graph, tuple(tuple(sorted(row.items())) for row in rows), denominator
+
+
+def _native_chart_dictionary(level):
+    """Exact barycentric probes with a continuous cutoff on source face zero."""
+    from ..physical_space_time import uniform_green as uniform
+    graph, _, _ = _native_density_rows(level)
+    vertices = ((0, 0, 0, 0, 0, 0), (2, 0, 0, 0, 0, 0),
+                (0, 2, 0, 0, 0, 0))
+    faces = ((0, 1, 2),)
+    for _ in range(level):
+        vertices, faces = uniform.refine(vertices, faces)
+    _, whole_faces = uniform.affine_prefix(level)
+    actual = {tuple(sorted((a//12, b//12))) for a, b in graph.inter_seams}
+    if actual != set(uniform.dual_edges(whole_faces)):
+        raise ArithmeticError('chart ancestry does not match the actual native seams')
+    probes, weights = [], []
+    for face in faces:
+        x, y = (sum(F(vertices[v][i], 2**(level+1)) for v in face)/3
+                for i in (0, 1))
+        distance = min(x, y, 1-x-y)
+        cutoff = min(F(1), 6*distance)
+        probes.append((cutoff*x, cutoff*y))
+        weights.append(max(F(0), 12*distance-3))
+    probes.extend([(F(0), F(0))]*(graph.cells-len(probes)))
+    weights.extend([F(0)]*(graph.cells-len(weights)))
+    if sum(weights) <= 0:
+        raise ArithmeticError('the declared interior chart has no sampled weight')
+    return tuple(probes), tuple(weights)
+
+
+def native_chart_increment(level=1, attempts=2):
+    """Read a finite averaged tensor from full-port conditional increments.
+
+    The time is attempts/(1260*16**level), not seconds or a modular parameter.
+    These exact finite observations are not claimed to approximate the limiting
+    tensor at this cap. Their continuum identification requires the ordered
+    limits in README, with bounded H1 probes and the full constant mode.
+    """
+    if type(level) is not int or level not in (1, 2):
+        raise ValueError('a native chart level of one or two is required')
+    if type(attempts) is not int or not 1 <= attempts <= 32:
+        raise ValueError('one through thirty-two native attempts required')
+    graph, rows, denominator = _native_density_rows(level)
+    probes, weights = _native_chart_dictionary(level)
+    scale = lcm(*(v.denominator for pair in probes for v in pair))
+    first = tuple(int(pair[0]*scale) for pair in probes for _ in range(12))
+    second = tuple(int(pair[1]*scale) for pair in probes for _ in range(12))
+    features = [first, second, tuple(x*x for x in first),
+                tuple(x*y for x, y in zip(first, second, strict=True)),
+                tuple(y*y for y in second)]
+    for _ in range(attempts):
+        features = [tuple(sum(count*values[q] for q, count in row) for row in rows)
+                    for values in features]
+    power = denominator**attempts
+    time = F(attempts, denominator*4**level)
+    tensor = [[F(0), F(0)], [F(0), F(0)]]
+    for p in range(graph.ports):
+        weight = weights[p//12]
+        if not weight:
+            continue
+        for i, j, slot in ((0, 0, 2), (0, 1, 3), (1, 1, 4)):
+            x, y = (first, second)[i][p], (first, second)[j][p]
+            numerator = (features[slot][p]-x*features[j][p]
+                         -y*features[i][p]+x*y*power)
+            tensor[i][j] += weight*F(numerator, scale**2*power)
+    norm = 24*sum(weights)*time  # twelve starting ports per cell and 2*time
+    tensor = [[x/norm for x in row] for row in tensor]
+    tensor[1][0] = tensor[0][1]
+    if tensor[0][0] <= 0 or tensor[0][0]*tensor[1][1] <= tensor[0][1]**2:
+        raise ArithmeticError('the executed two-coordinate increment tensor is degenerate')
+    encode = lambda matrix: [[str(v) for v in row] for row in matrix]
+    return {'level': level, 'native_attempts': attempts,
+            'density_parameter': str(time), 'cells': graph.cells,
+            'ports': graph.ports, 'native_seams': len(graph.seams),
+            'nonzero_chart_weights': sum(w > 0 for w in weights),
+            'averaged_screen_tensor': encode(tensor),
+            'kernel': 'full-port native records; no cell reset or mean-zero projection',
+            'preparation': 'disclosed total one; chart-weighted starting cell and uniform port',
+            'finite_value_is_identified_with_continuum_tensor': False}
+
+
+def native_increment_control():
+    """Native chart values, source-record oracles and false-limit controls."""
+    graph, rows, denominator = _native_density_rows(1)
+    probes, _ = _native_chart_dictionary(1)
+    cell = 3
+    # Independently compose endpoint records for each of the twelve starting
+    # ports. Remote seam/coin records retain their exact hold multiplicities.
+    direct = sp.zeros(2)
+    time = sp.Rational(2, denominator*4)
+    endpoints = Counter()
+    for origin in range(12*cell, 12*(cell+1)):
+        for middle, first_count in rows[origin]:
+            for target, second_count in rows[middle]:
+                multiplicity = first_count*second_count
+                endpoints[target//12] += multiplicity
+                delta = sp.Matrix([sp.Rational(probes[target//12][i]-probes[cell][i])
+                                   for i in range(2)])
+                direct += multiplicity*(delta*delta.T)/(24*denominator**2*time)
+    early = [native_chart_increment(level, n) for level in (1, 2) for n in (1, 2)]
+    if direct != sp.Matrix(early[1]['averaged_screen_tensor']):
+        raise ArithmeticError('native endpoint records disagree with polarized heat readout')
+    bare = sp.Matrix([[sp.Rational(1, 36), -sp.Rational(1, 72)],
+                      [-sp.Rational(1, 72), sp.Rational(1, 36)]])
+    for row in early:
+        factor = 1-sp.Rational(row['native_attempts']-1, 2*row['native_seams'])
+        if sp.Matrix(row['averaged_screen_tensor']) != factor*bare:
+            raise ArithmeticError('the exact early native chart response changed')
+    # Resetting to a uniform port after each attempt fabricates a two-cross-
+    # seam path: the true matching needs an intervening internal move.
+    neighbors = {c: set() for c in range(graph.cells)}
+    for a, b in graph.inter_seams:
+        neighbors[a//12].add(b//12); neighbors[b//12].add(a//12)
+    target = min(q for p in neighbors[cell] for q in neighbors[p]
+                 if q != cell and q not in neighbors[cell])
+    reset_paths = len(neighbors[cell] & neighbors[target])
+    reset_probability = F(reset_paths, (12*denominator)**2)
+    if endpoints[target] != 0 or reset_probability <= 0:
+        raise ArithmeticError('the finite cell-reset countercontrol lost its distinction')
+    # The one-attempt-first value persists with refinement. Actual continuum
+    # energy has the strict upper bound 15/19 of this bare tensor, from the
+    # existing terminal-star conductances and their native recovery maps.
+    from ..physical_space_time import local_continuum as local
+    conductances = local.weighted_dual_network(graph)[2]
+    if any(w > F(15, 19) for _, _, w in conductances):
+        raise ArithmeticError('the native terminal conductance upper bound changed')
+    fixed_time = [early[0], native_chart_increment(2, 16)]
+    if fixed_time[0]['density_parameter'] != fixed_time[1]['density_parameter']:
+        raise ArithmeticError('refinement changed the declared observation separation')
+    measured = sp.Matrix(fixed_time[1]['averaged_screen_tensor'])
+    product = sp.diag(1, measured)
+    metric = wave_density_metric(product.tolist(), F(1, 10))
+    encode = lambda matrix: [[str(sp.simplify(v)) for v in row] for row in matrix.tolist()]
+    return {'early_native_chart_readouts': early,
+        'fixed_density_parameter_readouts': fixed_time,
+        'two_attempt_endpoint_record_oracle_exact': True,
+        'two_attempt_native_record_tapes_per_starting_port': denominator**2,
+        'zero_current_records_included': True,
+        'false_cell_reset': {'initial_cell': cell, 'terminal_cell': target,
+            'actual_probability': '0', 'reset_probability': str(reset_probability)},
+        'false_Schur_kernel': local.non_markov_control(),
+        'bare_chart_tensor': encode(bare),
+        'continuum_chart_tensor_lower_relative_to_bare': '3/7',
+        'continuum_chart_tensor_upper_relative_to_bare': '15/19',
+        'one_attempt_first_limit_equals_bare_not_effective_tensor': True,
+        'finite_averaged_product_tensor': encode(product),
+        'product_measure_density_in_barycentric_chart': '1/10',
+        'finite_averaged_comparison_metric': encode(metric['metric']),
+        'ordered_limits': ['spatial subsequence at fixed positive density parameter',
+                           'density parameter to zero against bounded H1 probes',
+                           'chart averaging radius to zero at Lebesgue points'],
+        'limiting_tensor_pointwise_error_from_finite_run_bounded': False,
+        'radial_factor_and_active_wave_law_are_declared': True,
+        'native_time_is_identified_with_wave_or_lab_time': False}
+
+
 def run():
     uniform_records = ng.execute_calibration()
     uniform = ng.recover(uniform_records)
@@ -411,9 +596,15 @@ def run():
             expected = F(i == j)-(laplacian[i][j]+edge_i*edge_j)/62
             if F(actual_biased['transition_matrix_exact'][i][j]) != expected:
                 raise AssertionError('weighted source response does not match rank-one perturbation')
+    native_increment = native_increment_control()
+    # Lazy imports avoid a cycle through the carrier calibration above. The
+    # live receipt binds every dependency of the executed ancestry readout.
+    from ..physical_space_time import uniform_green, local_continuum
+    source_paths = sorted(set((*SOURCE_PATHS, *uniform_green.SOURCE_PATHS,
+                              *local_continuum.SOURCE_PATHS)))
     return {
         'schema': 'oph.relative_observer_geometry.intrinsic.v1',
-        'sources': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in SOURCE_PATHS},
+        'sources': {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in source_paths},
         'single_carrier_recovery': biased,
         'same_structural_gram_as_uniform_protocol_exact': True,
         'finite_shot_recovery': {
@@ -432,6 +623,7 @@ def run():
         'actual_scheduler_slow_band_control': scheduling_control(laplacian, seams[0]),
         'full_response_metric': inverse_response_metric(laplacian),
         'product_wave_metric': product_wave_metric_control(),
+        'native_increment_metric': native_increment,
         'incomplete_exposure_control': {'exposed_seams': len(missing['seams']),
             'rank_three_structural_gram_certified': missing['rank_three_structural_gram_certified']},
         'scope': {'federation_needed_for_finite_carrier_result': False,

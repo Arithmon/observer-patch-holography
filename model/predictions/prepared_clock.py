@@ -18,6 +18,7 @@ import math
 from pathlib import Path
 
 import numpy as np
+import sympy as sp
 
 from tools import strict_json
 from ..observer import native, quantum_mixing
@@ -31,6 +32,10 @@ CLOCK_PORT = 10
 BAND = 2  # One vector of the lambda=6 sector, not its multiplicity.
 FILTER_GUARD = F(1, 10**9)
 ARITHMETIC_ALLOWANCE = F(1, 10**10)
+WEYL_FACTORS = ((3, "X", F(1, 10)), (3, "Y", F(1, 10)),
+                (1, "X", F(1, 50)), (2, "Y", F(1, 40)))
+WEYL_COPIES = 4096
+OPTICAL_DATA = "model/predictions/data/modular_optical_ratios.json"
 
 
 def _array(value, shape):
@@ -241,13 +246,7 @@ def _pure_distance(a, b):
     return result
 
 
-def _validate(actual):
-    if type(actual) is not History:
-        raise ValueError("a complete typed clock history is required")
-    if type(actual.resumed) is not bool:
-        raise ValueError("the continuation marker must be an original Boolean")
-    _choice(actual.axis, actual.intervention)
-    p = actual.preparation
+def _validate_preparation(p):
     weights = preparation.subordinated_filter_weights()
     if (type(p) is not Preparation or type(p.weights) is not tuple
             or any(type(w) is not F or type(w.numerator) is not int
@@ -262,6 +261,16 @@ def _validate(actual):
         _array(state, (16, 12))
     for state in p.failures:
         _array(state, ((1 << 15)-12, 12))
+
+
+def _validate(actual):
+    if type(actual) is not History:
+        raise ValueError("a complete typed clock history is required")
+    if type(actual.resumed) is not bool:
+        raise ValueError("the continuation marker must be an original Boolean")
+    _choice(actual.axis, actual.intervention)
+    _validate_preparation(actual.preparation)
+    weights = actual.preparation.weights
     expected = {(n, *control) for n in range(len(weights)) for control, _ in native_histories()}
     if (type(actual.successful) is not dict
             or any(type(key) is not tuple or any(type(x) is not int for x in key)
@@ -309,7 +318,7 @@ def probabilities(actual):
 def bindings():
     paths = {*preparation.SOURCE_PATHS,
              "model/predictions/prepared_clock.py", "model/predictions/prepared_clock_source.py",
-             "tools/strict_json.py"}
+             "tools/strict_json.py", OPTICAL_DATA}
     return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in sorted(paths)}
 
 
@@ -487,6 +496,361 @@ def sampler_contract():
     return rows
 
 
+def shared_fluctuation_modes():
+    """Eleven fluctuation pairs from ONE successful twelve-state marginal.
+
+    No independent state is assigned to a mode. Matrices here are expressed
+    in the declared spectral basis; only three band representatives have
+    the source-controlled pair readout used below. The other modes are an
+    algebraic statement, not a claim of executed access to eleven modes.
+    """
+    reference = source.prepared_reference()
+    populations = np.array([float(value/reference["normalization"])
+                            for value in reference["masses"]])
+    density = np.diag(np.r_[populations, np.zeros(4)]).astype(complex)
+    modes, observables = [], []
+    for address in range(1, 12):
+        delta = populations[0]-populations[address]
+        if not delta > 0:
+            raise ArithmeticError("the prepared fluctuation pair is not polarized")
+        x = np.zeros((16, 16), complex)
+        x[0, address] = x[address, 0] = 1
+        y = np.zeros((16, 16), complex)
+        y[0, address], y[address, 0] = -1j, 1j
+        q, p = x/math.sqrt(2*delta), y/math.sqrt(2*delta)
+        gap = reference["modular_gaps"][address]
+        variance = (populations[0]+populations[address])/(2*delta)
+        modes.append({"address": address, "delta": float(delta), "gap": gap,
+            "variance": float(variance), "Q": q, "P": p,
+            "equal_mode_commutator_L2_variance_times_copy_count":
+                float((populations[0]+populations[address])/delta**2-1)})
+        observables.extend((q, p))
+    two_point = np.array([[np.trace(density@a@b) for b in observables]
+                          for a in observables])
+    covariance, symplectic = two_point.real, 2*two_point.imag
+    wanted_symplectic = np.kron(np.eye(11), [[0., 1.], [-1., 0.]])
+    wanted_covariance = np.diag([mode["variance"] for mode in modes for _ in range(2)])
+    if (np.max(abs(symplectic-wanted_symplectic)) > 1e-12
+            or np.max(abs(covariance-wanted_covariance)) > 1e-12
+            or any(abs(mode["variance"]-.5/math.tanh(mode["gap"]/2)) > 2e-11
+                   for mode in modes)):
+        raise ArithmeticError("the shared-state fluctuation dictionary failed")
+    return {"density": density, "modes": tuple(modes),
+        "covariance": covariance, "symplectic": symplectic}
+
+
+def _weyl_choice(factors, copies):
+    if type(copies) is not int or not 1 <= copies <= 1 << 40:
+        raise ValueError("an original positive copy count at most 2^40 is required")
+    if (type(factors) is not tuple or not 1 <= len(factors) <= 8
+            or any(type(row) is not tuple or len(row) != 3
+                   or type(row[0]) is not int or row[0] not in (1, 2, 3)
+                   or type(row[1]) is not str or row[1] not in ("X", "Y")
+                   or type(row[2]) is not F or abs(row[2]) > 1 for row in factors)):
+        raise ValueError("one to eight declared band/axis/rational-coefficient factors required")
+
+
+def ordered_weyl_law(factors=WEYL_FACTORS, copies=WEYL_COPIES):
+    """Direct finite-copy law and a quantitative Gaussian limit.
+
+    Source factors are chronological: U=exp(i A_m/sqrt(N))...exp(i A_1/sqrt(N)).
+    Independent identical copies give z_N**N exactly. The parity commuting
+    with rho and anticommuting with each A eliminates all odd Taylor terms.
+    Taylor's integral remainder and a contraction telescoping bound give
+    |z_N**N-exp(-C)| <= (D**4/24+|C|**2/2)/N. This is a finite bound, not
+    an assertion that any finite register has exact canonical commutators.
+    """
+    _weyl_choice(factors, copies)
+    data, reference = shared_fluctuation_modes(), source.prepared_reference()
+    addresses = source.PAIR_ADDRESSES
+    matrices, source_factors = [], []
+    unitary = np.eye(16, dtype=complex)
+    norm_sum = 0.
+    for band, axis, coefficient in factors:
+        address = addresses[band-1]
+        mode = data["modes"][address-1]
+        operator = mode["Q" if axis == "X" else "P"]
+        matrices.append(float(coefficient)*operator)
+        norm_sum += abs(float(coefficient))/math.sqrt(2*mode["delta"])
+        exact_delta = ((reference["masses"][0]-reference["masses"][address])
+                       /reference["normalization"])
+        angle = sp.Rational(coefficient)/sp.sqrt(2*exact_delta*copies)
+        source_factors.append((band, axis, source._dyadic(angle)))
+        theta = float(sp.N(angle, 60))
+        pair = operator*math.sqrt(2*mode["delta"])
+        projector = pair@pair
+        unitary = (np.eye(16)+(math.cos(theta)-1)*projector
+                   +1j*math.sin(theta)*pair)@unitary
+    density = data["density"]
+    c = sum((np.trace(density@a@a)/2 for a in matrices), 0j)
+    c += sum((np.trace(density@matrices[later]@matrices[earlier])
+              for later in range(len(matrices)) for earlier in range(later)), 0j)
+    if c.real < -1e-13 or not (math.isfinite(norm_sum) and np.isfinite(c)):
+        raise ArithmeticError("the ordered fluctuation exponent is not finite and positive")
+    single = complex(np.trace(density@unitary))
+    limit = complex(np.exp(-c))
+    bound = (norm_sum**4/24+abs(c)**2/2)/copies
+    return {"source_factors": tuple(source_factors), "matrices": tuple(matrices),
+        "one_copy_unitary_spectral": unitary, "one_copy_characteristic": single,
+        "independent_copy_characteristic": single**copies,
+        "gaussian_characteristic": limit, "gaussian_exponent": complex(c),
+        "operator_norm_sum": norm_sum, "finite_copy_error_upper": min(2., bound),
+        "uncapped_finite_copy_error_upper": bound,
+        "angle_rounding_operator_error_upper": F(len(factors), 1 << (source.SYNTHESIS_BITS+1))}
+
+
+@dataclass(frozen=True)
+class PointerHistory:
+    factors: tuple
+    copies: int
+    axis: str
+    preparation: Preparation
+    successful: tuple[np.ndarray, ...]
+
+
+def execute_weyl(*, factors=WEYL_FACTORS, copies=WEYL_COPIES, axis="X", ideal=False):
+    """One source-prepared register and one actual controlled pointer read.
+
+    ``copies`` sets the pulse angle, not the number of executed registers.
+    All first failures and 32 joint pointer/work addresses retain the same
+    twelve reference columns. Product-copy expectations are derived later.
+    """
+    _choice(axis, 0)
+    if type(ideal) is not bool:
+        raise ValueError("an explicit ideal comparison flag is required")
+    law = ordered_weyl_law(factors, copies)
+    routine = source.pair_pointer_source(law["source_factors"], axis=axis)
+    matrix = routine["target" if ideal else "raw"]
+    prepared, outputs = prepare(ideal=ideal), []
+    for amplitude in prepared.successes:
+        embedded = np.zeros((32, 12), complex)
+        embedded[:16] = amplitude
+        outputs.append(_array(matrix@embedded, (32, 12)))
+    return PointerHistory(factors, copies, axis, prepared, tuple(outputs))
+
+
+def _validate_pointer(history):
+    if type(history) is not PointerHistory:
+        raise ValueError("a complete typed pointer history is required")
+    _choice(history.axis, 0)
+    _weyl_choice(history.factors, history.copies)
+    _validate_preparation(history.preparation)
+    if (type(history.successful) is not tuple
+            or len(history.successful) != len(history.preparation.weights)):
+        raise ValueError("every pointer request and terminal address must be retained")
+    for amplitude in history.successful:
+        _array(amplitude, (32, 12))
+
+
+def pointer_probabilities(history):
+    _validate_pointer(history)
+    p = history.preparation
+    result = {("sampler_reject",): float(p.rejection)*float(np.linalg.norm(p.successes[0])**2)}
+    for n, weight in enumerate(p.weights):
+        for k in range(n):
+            result["herald_failure", n, k+1] = float(weight)*float(np.linalg.norm(p.failures[k])**2)
+        for address, row in enumerate(history.successful[n]):
+            result["read", n, address] = float(weight)*float(np.vdot(row, row).real)
+    if any(not math.isfinite(value) or value < 0 for value in result.values()):
+        raise ArithmeticError("the complete pointer law is not finite and nonnegative")
+    return result
+
+
+def pointer_audit(actual, target):
+    _validate_pointer(actual); _validate_pointer(target)
+    if (actual.factors, actual.copies, actual.axis) != (target.factors, target.copies, target.axis):
+        raise ValueError("identical pointer observation menus are required")
+    law = ordered_weyl_law(actual.factors, actual.copies)
+    routine = source.pair_pointer_source(law["source_factors"], axis=actual.axis)
+    budget = error_budget()
+    p, q = actual.preparation, target.preparation
+    error = float(p.rejection)*_pure_distance(p.successes[0], q.successes[0])
+    for n, weight in enumerate(p.weights):
+        for k in range(n):
+            error += float(weight)*_pure_distance(p.failures[k], q.failures[k])
+        error += float(weight)*sum(_pure_distance(a, b) for a, b in
+                                   zip(actual.successful[n], target.successful[n], strict=True))
+        if _pure_distance(p.successes[n], q.successes[n]) > 4*float(FILTER_GUARD)+float(ARITHMETIC_ALLOWANCE):
+            raise ArithmeticError("the retained pointer preparation violates its numerical guard")
+    guard = routine["guard"]
+    gain = (1+guard)**2
+    success = budget["ideal_success_probability"]
+    allowance = (gain*budget["stopped_preparation_half_diamond_upper_under_guards"]
+                 +success*(gain-1)/2+ARITHMETIC_ALLOWANCE)
+    probabilities_ = pointer_probabilities(actual)
+    total = sum(probabilities_.values())
+    if (not math.isfinite(error) or error > float(allowance)
+            or abs(total-1) > 2*float(allowance)):
+        raise ArithmeticError("complete pointer quantum outputs violate the numerical guards")
+    contrast = sum(value*(1 if key[2] < 16 else -1)
+                   for key, value in probabilities_.items() if key[0] == "read")
+    return {"axis": actual.axis, "complete_raw_mass_diagnostic": total,
+        "complete_quantum_half_trace_upper_diagnostic": error,
+        "complete_half_trace_upper_under_guards": allowance,
+        "unconditional_pointer_contrast": contrast,
+        "retained_coarse_records": len(probabilities_),
+        "joint_pointer_work_addresses_per_success": 32,
+        "all_terminal_reference_and_first_failure_environment_entries_compared": True,
+        "source_word_sha256": routine["word_sha256"],
+        "source_pulses_after_success": routine["pulse_count"]}
+
+
+def shared_state_field():
+    """Same-state noise/response/clock law, with a source pointer witness."""
+    data, law = shared_fluctuation_modes(), ordered_weyl_law()
+    rows, histories = [], {}
+    for axis in ("X", "Y"):
+        actual, target = execute_weyl(axis=axis), execute_weyl(axis=axis, ideal=True)
+        rows.append(pointer_audit(actual, target))
+        histories[axis] = actual
+    success = error_budget()["ideal_success_probability"]
+    estimator = complex(rows[0]["unconditional_pointer_contrast"],
+                        rows[1]["unconditional_pointer_contrast"])/float(success)
+    one_error = (2*math.sqrt(2)*max(float(row["complete_half_trace_upper_under_guards"])
+                                  for row in rows)/float(success)
+                 +float(law["angle_rounding_operator_error_upper"]))
+    # The raw numerical estimator need not be a contraction. Its possible
+    # amplification is charged, not removed by normalization or clipping.
+    product_error = math.expm1(WEYL_COPIES*math.log1p(one_error))
+    if abs(estimator-law["one_copy_characteristic"]) > one_error:
+        raise ArithmeticError("the source pointer fails the ordered one-copy law")
+    combined = law["finite_copy_error_upper"]+product_error
+    if abs(estimator**WEYL_COPIES-law["gaussian_characteristic"]) > combined:
+        raise ArithmeticError("the source estimator fails the finite-copy bound")
+    # The request-zero branch is already retained in the same experiment.
+    zero = []
+    for axis in ("X", "Y"):
+        amplitude = histories[axis].successful[0]
+        zero.append(float(np.linalg.norm(amplitude[:16])**2-np.linalg.norm(amplitude[16:])**2))
+    modes = [{key: value for key, value in mode.items() if key not in ("Q", "P")}
+             for mode in data["modes"]]
+    pair = lambda value: [float(value.real), float(value.imag)]
+    filter_pulses = resources()["one_filter_source_pulses"]
+    maximum_pointer = max(row["source_pulses_after_success"] for row in rows)
+    return {"reference": "the ideal successful work marginal M/Tr(M); raw source error is separately bounded",
+        "mode_specific_preparations_supplied": False,
+        "formal_fluctuation_pairs": modes,
+        "executed_representative_addresses": list(source.PAIR_ADDRESSES),
+        "covariance_rule": "Cov(Qj,Qk)=Cov(Pj,Pk)=delta_jk*coth(gj/2)/2; Cov(Qj,Pk)=0",
+        "expected_commutator_rule": "< [Qj,Pk] >= i*delta_jk; cross Q/Q and P/P vanish",
+        "clock_rule": "Qj(t)=cos(gj*t)Qj+sin(gj*t)Pj under the same H=-log(M/m0)",
+        "ordered_time_correlation": "<Qj(t)Qk>=delta_jk*(coth(gj/2)*cos(gj*t)-i*sin(gj*t))/2",
+        "finite_copy_rule": "z_N^N; |z_N^N-exp(-C)| <= (D^4/24+|C|^2/2)/N",
+        "factors_chronological": [[band, axis, str(coefficient)] for band, axis, coefficient in WEYL_FACTORS],
+        "angle_copy_parameter": WEYL_COPIES, "executed_work_registers_per_trial": 1,
+        "one_copy_characteristic": pair(law["one_copy_characteristic"]),
+        "independent_copy_characteristic": pair(law["independent_copy_characteristic"]),
+        "gaussian_characteristic": pair(law["gaussian_characteristic"]),
+        "raw_pointer_estimator": pair(estimator),
+        "raw_pointer_estimator_power": pair(estimator**WEYL_COPIES),
+        "finite_copy_error_upper": law["finite_copy_error_upper"],
+        "one_copy_source_estimator_error_upper_under_guards": one_error,
+        "source_estimator_power_error_upper_under_guards": product_error,
+        "combined_gaussian_error_upper_under_guards": combined,
+        "resolved_ordered_phase_lower_under_guards": law["gaussian_characteristic"].imag-combined,
+        "request_zero_pointer_characteristic_control": zero,
+        "request_zero_gaussian_symplectic_form_vanishes": True,
+        "request_zero_finite_ordering_phase_required_to_vanish": False,
+        "executions": rows,
+        "resources": {"maximum_filters_per_attempt": 4,
+            "maximum_source_pulses_per_executed_trial": 4*filter_pulses+maximum_pointer,
+            "one_load_and_export_per_source_pulse": True,
+            "sampler_native_coin_events_per_attempt": 64,
+            "additional_native_attempts_in_pointer_protocol": 0,
+            "protected_pointer_qubits_after_success": 1,
+            "peak_encoded_qubits_including_reference": 19,
+            "pointer_prepared_after_filter_environment_is_released": True,
+            "ideal_expected_preparation_attempts_for_N_successful_copies": F(WEYL_COPIES)/success,
+            "independent_copy_collection_executed": False,
+            "unbounded_retry_has_no_finite_worst_case_cost": True},
+        "independent_identical_successful_copies_are_a_preparation_premise": True,
+        "multicopy_pointer_circuit_or_growing_spatial_encoder_executed": False,
+        "all_eleven_mode_controls_executed": False,
+        "central_group_image_algebra_is_the_fluctuation_algebra": False,
+        "source_numerical_guards_are_physical_fidelities": False,
+        "empirical_seconds_interacting_QFT_or_spacetime_identified": False}
+
+
+def prepared_gap_intervals():
+    """Exact rational enclosures, independently of observations and libm.
+
+    Positive coefficients make m(lambda)=sum w_n(1-lambda/120)^(2n)
+    decreasing on [0,8].  For x=(m0-m)/(m0+m), log(m0/m)=2*atanh(x);
+    the positive series has remainder at most 2*x^17/(17*(1-x*x)).
+    """
+    scale = 10**24
+    lower = F(math.isqrt(5*scale*scale), scale)
+    upper = lower+F(1, scale)
+    eigenvalues = ((5-upper, 5-lower), (F(6), F(6)), (5+lower, 5+upper))
+    weights, result = preparation.subordinated_filter_weights(), []
+    mass0 = sum(weights)
+    polynomial = lambda value: sum((w*(1-value/120)**(2*n)
+                                   for n, w in enumerate(weights)), F())
+    series = lambda value: 2*sum((value**(2*k+1)/F(2*k+1) for k in range(8)), F())
+    for lo, hi in eigenvalues:
+        mlo, mhi = polynomial(hi), polynomial(lo)
+        xlo, xhi = (mass0-mhi)/(mass0+mhi), (mass0-mlo)/(mass0+mlo)
+        if not 0 < xlo <= xhi < 1:
+            raise ArithmeticError("the prepared positive-log enclosure lost its domain")
+        result.append((series(xlo), series(xhi)+2*xhi**17/(17*(1-xhi*xhi))))
+    return tuple(result)
+
+
+def prepared_optical_comparison():
+    """Retrospective test of nine direct assignments, with no retuning.
+
+    The total ratio error and per-gap attachment error are explicit hard
+    hypotheses. Published standard uncertainties and numerical compiler
+    guards do not by themselves establish physical error bounds.
+    """
+    gaps = prepared_gap_intervals()  # Deliberately evaluated before data access.
+    gap_error, ratio_error = F(1, 10**6), F(1, 10**12)
+    extended = tuple((lo-gap_error, hi+gap_error) for lo, hi in gaps)
+    if any(lo <= 0 for lo, _ in extended):
+        raise ArithmeticError("the attachment error exceeds a positive clock gap")
+    data = strict_json.load(ROOT/OPTICAL_DATA)
+    expected = [(40, "1.05776938758748094", "0.00000000000000011"),
+                (36, "1.05776646273518748", "0.00000000000000013")]
+    if (data["schema"] != "oph.optical_absolute_ratios.v1"
+            or [(row["isotope"], row["ratio"], row["standard_uncertainty"])
+                for row in data["rows"]] != expected):
+        raise ValueError("the pinned primary-table optical observations changed")
+    assignments = []
+    # Even same-gap assignments receive independent allowed attachment errors;
+    # this enlarges the tested family instead of assuming their cancellation.
+    for i, (lo1, hi1) in enumerate(extended, 1):
+        for j, (lo2, hi2) in enumerate(extended, 1):
+            assignments.append((i, j, lo1/hi2, hi1/lo2))
+    comparisons = []
+    for row in data["rows"]:
+        measured = F(row["ratio"])
+        separations = [max(F(), lo-measured-ratio_error, measured-ratio_error-hi)
+                       for _, _, lo, hi in assignments]
+        comparisons.append({"isotope": row["isotope"], "published_ratio": row["ratio"],
+            "quoted_standard_uncertainty": row["standard_uncertainty"],
+            "all_nine_direct_assignments_incompatible": all(value > 0 for value in separations),
+            "minimum_absolute_ratio_separation_lower":
+                F((min(separations)*10**12).__floor__(), 10**12)})
+    return {"data": OPTICAL_DATA, "primary_url": data["primary_url"],
+        "source_table": data["source_table"], "fixed_generator": "H=-log(M/m0)",
+        "gap_enclosures": [[F((lo*10**18).__floor__(), 10**18),
+                            F((hi*10**18).__ceil__(), 10**18)] for lo, hi in gaps],
+        "declared_absolute_per_gap_attachment_error": gap_error,
+        "declared_absolute_ratio_error": ratio_error,
+        "numerically_checked_clock_operator_guard": source.compiled_source()["guards"]["clock1"],
+        "assignments": [{"numerator_band": i, "denominator_band": j,
+            "ratio_enclosure_with_attachment_error": [F((lo*10**12).__floor__(), 10**12),
+                                                       F((hi*10**12).__ceil__(), 10**12)]}
+                        for i, j, lo, hi in assignments],
+        "comparisons": comparisons, "one_common_positive_frequency_scale": True,
+        "sampler_gaps_or_species_scales_fitted_to_observations": False,
+        "offsets_harmonics_phase_aliases_or_excited_to_excited_transitions_included": False,
+        "standard_uncertainties_or_numerical_guards_are_physical_hard_bounds": False,
+        "status": "retrospective conditional direct-gap attachment exclusion",
+        "prospective_prediction_or_OPH_exclusion": False,
+        "atomic_transition_dictionary_derived": False}
+
+
 def run():
     budget = error_budget()
     compiled = source.compiled_source()
@@ -543,6 +907,18 @@ def run():
                                   for key, tapes in groups],
         "complete_native_tape_sha256": hashlib.sha256(native_json.encode()).hexdigest(),
         "executions": rows, "error_budget": budget, "resources": resources(),
+        "shared_state_field": shared_state_field(),
+        "prepared_positive_log_limit": source.prepared_log_limit_bound(filter_operator_error=FILTER_GUARD),
+        "positive_log_refinement_schedule": [
+            {key: value for key, value in source.positive_log_refinement_schedule(
+                level, source_preserves_band=True).items()
+             if key in ("level", "rate", "heat_step", "jump_cap", "count_cap", "sampling_bits",
+                        "maximum_filter_requests", "one_filter_operator_error",
+                        "raw_generator_to_b_sqrt_D_upper", "required_phase_word_error_upper",
+                        "growing_sampler_evaluated", "bounded_band_then_spectral_cutoff_limit",
+                        "raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band")}
+            for level in (4, 6, 8)],
+        "prepared_gap_optical_comparison": prepared_optical_comparison(),
         "source_words": {"sha256": compiled["word_sha256"],
                          "pulse_counts": compiled["pulse_counts"],
                          "full_register_guards": compiled["guards"]},
@@ -596,6 +972,16 @@ def check_receipt(recorded, actual):
             or abs(signal["executed_signal"]-signal["analytic_signal"]) > 4*allowance
             or abs(signal["executed_clock_off_signal"]) > 4*allowance):
         raise ValueError("stored clock signal violates its scientific guard")
+    field = recorded["shared_state_field"]
+    if (field["finite_copy_error_upper"] < 0
+            or field["one_copy_source_estimator_error_upper_under_guards"] < 0
+            or field["resolved_ordered_phase_lower_under_guards"] <= 0):
+        raise ValueError("stored fluctuation bound violates its scientific guard")
+    for row in field["executions"]:
+        bound = float(F(row["complete_half_trace_upper_under_guards"]))
+        if (not 0 <= row["complete_quantum_half_trace_upper_diagnostic"] <= bound
+                or abs(row["complete_raw_mass_diagnostic"]-1) > 2*bound):
+            raise ValueError("stored pointer outputs violate their scientific guard")
 
 
 def main():

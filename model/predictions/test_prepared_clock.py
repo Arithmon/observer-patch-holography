@@ -418,6 +418,10 @@ def test_actual_producer_roundtrip_and_stored_negative_norm_refusal():
     recorded["executions"][0]["complete_quantum_half_trace_upper_diagnostic"] = -1e-10
     with pytest.raises(ValueError, match="scientific guard"):
         clock.check_receipt(recorded, result)
+    recorded = json.loads(json.dumps(result, allow_nan=False))
+    recorded["shared_state_field"]["executions"][0]["complete_quantum_half_trace_upper_diagnostic"] = -1e-10
+    with pytest.raises(ValueError, match="scientific guard"):
+        clock.check_receipt(recorded, result)
 
 
 def test_sampler_intervals_cover_all_coin_words_and_preserve_rejections():
@@ -453,3 +457,134 @@ def test_resource_counts_include_external_selection_and_scope_storage():
     assert result["expanded_source_pulse_ordinal_bits"] == 20 < bits
     assert result["observer_setting_storage_bits"] == 2
     assert not result["controller_interpreter_working_memory_included"]
+
+
+def test_one_prepared_state_fixes_all_eleven_fluctuation_pairs_and_clock_rates():
+    data = clock.shared_fluctuation_modes()
+    reference = clock.source.prepared_reference()
+    rho = data["density"]
+    h = np.diag([*reference["modular_gaps"], 0., 0., 0., 0.])
+    tick = expm(-1j*.73*h)
+    for mode in data["modes"]:
+        q, p, g = mode["Q"], mode["P"], mode["gap"]
+        assert abs(np.trace(rho@(q@p-p@q))-1j) < 2e-14
+        assert np.trace(rho@q) == np.trace(rho@p) == 0
+        np.testing.assert_allclose(tick.conj().T@q@tick,
+            math.cos(.73*g)*q+math.sin(.73*g)*p, atol=1e-13, rtol=0)
+        # A finite matrix commutator is not the identity operator. Its
+        # product-copy centered L2 error falls as 1/N, with this coefficient.
+        centered = q@p-p@q-1j*np.eye(16)
+        variance = np.trace(rho@centered.conj().T@centered).real
+        assert variance == pytest.approx(mode["equal_mode_commutator_L2_variance_times_copy_count"])
+        assert variance > 1
+    np.testing.assert_allclose(data["symplectic"],
+        np.kron(np.eye(11), [[0., 1.], [-1., 0.]]), atol=2e-14, rtol=0)
+    assert np.count_nonzero(abs(data["covariance"]-np.diag(np.diag(data["covariance"]))) > 1e-14) == 0
+
+
+@pytest.mark.parametrize("copies", (1, 4, 64, 4096))
+def test_ordered_weyl_finite_copy_bound_against_independent_matrix_exponentials(copies):
+    data = clock.shared_fluctuation_modes()
+    law = clock.ordered_weyl_law(copies=copies)
+    ordered = np.eye(16, dtype=complex)
+    parity = np.diag([1., *([-1.]*11), *([1.]*4)])
+    for matrix in law["matrices"]:
+        np.testing.assert_allclose(parity@matrix@parity, -matrix, atol=0, rtol=0)
+        ordered = expm(1j*matrix/math.sqrt(copies))@ordered
+    single = np.trace(data["density"]@ordered)
+    assert abs(single-law["one_copy_characteristic"]) < 3e-16
+    assert abs(single**copies-law["gaussian_characteristic"]) <= law["finite_copy_error_upper"]+1e-12
+    variances = {row["address"]: row["variance"] for row in data["modes"]}
+    independent_c = .5*(.02*variances[4]+.0004*variances[1]+.000625*variances[2])-.005j
+    assert abs(independent_c-law["gaussian_exponent"]) < 3e-16
+    reversed_law = clock.ordered_weyl_law(tuple(reversed(clock.WEYL_FACTORS)), copies)
+    assert abs(reversed_law["gaussian_characteristic"]-law["gaussian_characteristic"].conjugate()) < 1e-15
+
+
+def test_two_copy_factorization_is_a_tensor_law_not_independent_mode_preparation():
+    rho = clock.shared_fluctuation_modes()["density"][:12, :12]
+    law = clock.ordered_weyl_law(copies=2)
+    # Explicitly construct the two-copy observable; the factors within each
+    # copy share the constant vector and do not form independent subsystems.
+    unitary = law["one_copy_unitary_spectral"][:12, :12]
+    actual = np.trace(np.kron(rho, rho)@np.kron(unitary, unitary))
+    assert abs(actual-law["independent_copy_characteristic"]) < 3e-16
+    q1 = clock.shared_fluctuation_modes()["modes"][0]["Q"]
+    q2 = clock.shared_fluctuation_modes()["modes"][1]["Q"]
+    assert np.linalg.norm(q1@q2-q2@q1) > 1
+
+
+@pytest.fixture(scope="module")
+def pointer_histories():
+    return {axis: (clock.execute_weyl(axis=axis), clock.execute_weyl(axis=axis, ideal=True))
+            for axis in ("X", "Y")}
+
+
+@pytest.mark.parametrize("axis", ("X", "Y"))
+def test_pointer_complete_reference_oracle_and_all_failure_mass(pointer_histories, axis):
+    actual, target = pointer_histories[axis]
+    basis = clock.source.native_spectral_data()["basis"]
+    law = clock.ordered_weyl_law()
+    work = basis@law["one_copy_unitary_spectral"]@basis.T
+    # Construct the Hadamard-test branches directly, independently of the
+    # controlled-Pauli compiler and its target constructor.
+    outputs = []
+    lazy = np.eye(12)-_laplacian()/120
+    for n in range(5):
+        amplitude = np.zeros((16, 12), complex)
+        amplitude[:12] = np.linalg.matrix_power(lazy, n)/math.sqrt(12)
+        if axis == "X":
+            outputs.append(np.vstack((amplitude+work@amplitude, -amplitude+work@amplitude))/2)
+        else:
+            outputs.append(np.vstack((amplitude-1j*work@amplitude, -1j*amplitude+work@amplitude))/2)
+    for observed, expected in zip(actual.successful, outputs, strict=True):
+        np.testing.assert_allclose(_reference_density_rows(observed),
+                                   _reference_density_rows(expected), atol=3e-11, rtol=0)
+    probabilities = clock.pointer_probabilities(actual)
+    assert len(probabilities) == 1+10+5*32
+    assert abs(sum(probabilities.values())-1) < 2e-10
+    audit = clock.pointer_audit(actual, target)
+    expected = law["one_copy_characteristic"].real if axis == "X" else law["one_copy_characteristic"].imag
+    success = float(clock.source.prepared_reference()["normalization"])/12
+    assert abs(audit["unconditional_pointer_contrast"]-success*expected) < 2e-10
+    # A complete terminal probability law does not certify the references.
+    changed = replace(actual, successful=tuple(value*np.array([1, -1]*6)
+                                               for value in actual.successful))
+    assert clock.pointer_probabilities(changed) == probabilities
+    with pytest.raises(ArithmeticError, match="pointer quantum outputs"):
+        clock.pointer_audit(changed, target)
+
+
+@pytest.mark.parametrize("factors,copies", (
+    (((True, "X", F(1)),), 1), (((1, "Z", F(1)),), 1),
+    (((1, "X", 0.1),), 1), (clock.WEYL_FACTORS, True),
+    (clock.WEYL_FACTORS, 0), (clock.WEYL_FACTORS, (1 << 40)+1)))
+def test_fluctuation_menu_rejects_implicit_or_unimplemented_choices(factors, copies):
+    with pytest.raises(ValueError):
+        clock.ordered_weyl_law(factors, copies)
+
+
+def test_prepared_gap_enclosures_use_rational_positive_log_series():
+    import mpmath as mp
+    with mp.workdps(90):
+        weights = [mp.mpf(w.numerator)/w.denominator
+                   for w in clock.preparation.subordinated_filter_weights()]
+        eigenvalues = (5-mp.sqrt(5), mp.mpf(6), 5+mp.sqrt(5))
+        for lam, (lo, hi) in zip(eigenvalues, clock.prepared_gap_intervals(), strict=True):
+            mass = sum(w*(1-lam/120)**(2*n) for n, w in enumerate(weights))
+            expected = mp.log(sum(weights)/mass)
+            assert mp.mpf(lo.numerator)/lo.denominator <= expected
+            assert expected <= mp.mpf(hi.numerator)/hi.denominator
+            assert hi-lo < F(1, 10**23)
+
+
+def test_prepared_optical_comparison_covers_every_fixed_gap_assignment_without_refit():
+    result = clock.prepared_optical_comparison()
+    assert len(result["assignments"]) == 9
+    assert {(row["numerator_band"], row["denominator_band"]) for row in result["assignments"]} == {
+        (i, j) for i in (1, 2, 3) for j in (1, 2, 3)}
+    assert all(row["all_nine_direct_assignments_incompatible"] for row in result["comparisons"])
+    assert min(row["minimum_absolute_ratio_separation_lower"] for row in result["comparisons"]) > F(57, 1000)
+    assert result["declared_absolute_per_gap_attachment_error"] > 10*result["numerically_checked_clock_operator_guard"]
+    assert not result["prospective_prediction_or_OPH_exclusion"]
+    assert not result["standard_uncertainties_or_numerical_guards_are_physical_hard_bounds"]

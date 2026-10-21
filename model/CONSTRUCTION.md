@@ -191,6 +191,10 @@ radial grids and the full-port/Schur correspondence. The [two-axis clock](observ
 combines native angular phases and declared radial pulses, giving the same
 product generator, thermal CCR state, response and modular conversion with
 bounded-band errors. Its local wave action has a [measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+Complete native total-one calibration records also determine conditional
+coordinate increments. Spatial refinement at fixed density time, followed by
+short-time polarization and chart localization, recovers the angular tensor.
+The one-attempt-first limit and a finite cell-reset kernel fail explicit controls.
 The interval, preparation, spectral access and controls remain supplied;
 growing nonconstant-mode compilation, smoothness and physical identification
 are unproved. The restored angular constant has positive product frequency.
@@ -209,8 +213,15 @@ padding outcomes and quantum references remain retained. The modular identity
 after forgetting the request and tracing the reference. The finite clock is
 not `sqrt(L)`; raw source checks are numerical guards, not interval or
 physical apparatus certificates.
-This does not prepare the product Fock state. Geometric entropy stationarity,
-physical gauge collars and full-group sewing remain separate obligations.
+All eleven constant-to-mode fluctuation pairs inherit their covariance,
+commutator and clock frequencies from this one density. Three representative
+bands have complete source pointer readouts of an ordered Weyl product;
+independent successful copies give a finite-copy error bound. They are a
+preparation premise, and the growing copy register is not executed. A positive-log
+bound states the cap and source-precision scaling required for the square-root
+clock limit; fixed caps do not implement it. This does not prepare the spatial
+product Fock state. Geometric entropy stationarity, physical gauge collars and
+full-group sewing remain separate obligations.
 The full native-return reference approaches normalized trace
 at fixed modular parameter, while its density-wave sector has vanishing
 reference weight. The

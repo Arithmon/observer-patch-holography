@@ -236,9 +236,11 @@ def _pair_target(band, axis, angle):
     return result
 
 
-def _check_matrix(raw, target, guard, name):
+def _check_matrix(raw, target, guard, name, dimension=16):
+    if type(dimension) is not int or dimension not in (16, 32):
+        raise ValueError('the complete four- or five-qubit register is required')
     for label, matrix in (('raw source', raw), ('target', target)):
-        if (type(matrix) is not np.ndarray or matrix.shape != (16, 16)
+        if (type(matrix) is not np.ndarray or matrix.shape != (dimension, dimension)
                 or matrix.dtype.kind not in 'iufc' or not np.all(np.isfinite(matrix))):
             raise ArithmeticError(f'{label} {name} is not a complete finite register matrix')
     if (type(guard) is not F or type(guard.numerator) is not int
@@ -259,7 +261,7 @@ def _check_matrix(raw, target, guard, name):
         numeric_raw = raw.astype(np.result_type(raw.dtype, np.complex128), copy=False)
         numeric_target = target.astype(np.result_type(target.dtype, np.complex128), copy=False)
         difference = float(np.linalg.norm(numeric_raw-numeric_target, 'fro'))
-        defect = float(np.linalg.norm(numeric_raw.conj().T@numeric_raw-np.eye(16), 'fro'))
+        defect = float(np.linalg.norm(numeric_raw.conj().T@numeric_raw-np.eye(dimension), 'fro'))
     if (not math.isfinite(difference) or not math.isfinite(defect)
             or difference > error_limit or defect > defect_limit):
         raise ArithmeticError(f'raw source {name} exceeds its complete-register numerical guard')
@@ -387,3 +389,236 @@ def detector_word(band, axis='X'):
     if type(axis) is not str or axis not in ('X', 'Y'):
         raise ValueError('a declared X or Y detector is required')
     return deepcopy(_compiled_data()['words'][f'detector_{axis.lower()}_{band}'])
+
+
+@lru_cache(maxsize=8)
+def _pair_pointer_data(factors, axis):
+    compiled = _compiled_data()
+    controlled, wanted = [], np.eye(16, dtype=complex)
+    for band, direction, angle in factors:
+        address = _band(band)
+        target = address.bit_length()-1
+        for mask in range(16):
+            if mask & address:
+                continue
+            label = [direction if j == target else 'Z' if mask >> j & 1 else 'I'
+                     for j in range(4)]
+            # Eight commuting Pauli terms give the pair operator; the extra
+            # (I-Z_pointer)/2 controls it on the pointer-one branch.
+            controlled.extend(compiler.pauli_rotation(label+['I'], float(angle)/16))
+            controlled.extend(compiler.pauli_rotation(label+['Z'], -float(angle)/16))
+        wanted = _pair_target(band, direction, angle)@wanted
+    controlled = _quantize(controlled)
+    target_controlled = np.eye(32, dtype=complex)
+    target_controlled[16:, 16:] = wanted
+    raw_controlled = compiler.execute(controlled, 5)
+    control_guard = len(factors)*PAIR_GUARD
+    control_check = _check_matrix(raw_controlled, target_controlled, control_guard,
+                                 'controlled_pair_factors', 32)
+    prepare = _quantize([compiler.pulse('Y', -float(_dyadic(sp.pi/4)), [4])])
+    read = _quantize([compiler.pulse('Y' if axis == 'X' else 'X',
+                                    (1 if axis == 'X' else -1)*float(_dyadic(sp.pi/4)), [4])])
+    root = math.sqrt(.5)
+    target_prepare = np.kron(np.array([[root, -root], [root, root]]), np.eye(16))
+    target_read = np.kron(np.array([[root, root], [-root, root]]) if axis == 'X'
+                         else np.array([[root, -1j*root], [-1j*root, root]]), np.eye(16))
+    raw_prepare, raw_read = compiler.execute(prepare, 5), compiler.execute(read, 5)
+    _check_matrix(raw_prepare, target_prepare, PHASE_GUARD, 'pointer_prepare', 32)
+    _check_matrix(raw_read, target_read, PHASE_GUARD, 'pointer_read', 32)
+    raw_basis = np.kron(np.eye(2), compiled['raw']['basis'])
+    raw_unbasis = np.kron(np.eye(2), compiled['raw']['unbasis'])
+    target_basis = np.kron(np.eye(2), compiled['spectrum']['basis'])
+    word = prepare+compiled['words']['unbasis']+controlled+compiled['words']['basis']+read
+    raw = raw_read@raw_basis@raw_controlled@raw_unbasis@raw_prepare
+    target_map = target_read@target_basis@target_controlled@target_basis.T@target_prepare
+    # Tensoring a 16-address Frobenius error with I_2 costs sqrt(2)<2.
+    guard = _combined_guard(PHASE_GUARD, 2*BASIS_GUARD, control_guard,
+                            2*BASIS_GUARD, PHASE_GUARD)
+    diagnostic = _check_matrix(raw, target_map, guard, 'ordered_pair_pointer', 32)
+    return {'word': word, 'raw': raw, 'target': target_map, 'guard': guard,
+        'word_sha256': hashlib.sha256(json.dumps(word, sort_keys=True,
+            separators=(',', ':'), allow_nan=False).encode()).hexdigest(),
+        'diagnostic': diagnostic, 'controlled_diagnostic': control_check,
+        'pulse_count': len(word), 'pointer_qubit': 4, 'complete_outcome_count': 32,
+        'proper_code_load_events': len(word), 'proper_code_export_events': len(word),
+        'protected_work_and_pointer_qubits': 5,
+        'chronological_factors': factors, 'pointer_axis': axis,
+        'spectral_ordered_unitary': wanted,
+        'expectation': 'Re Tr(rho U)' if axis == 'X' else 'Im Tr(rho U)',
+        'multiplication_order': 'U=last_factor ... first_factor',
+        'input_pointer': 'zero', 'reference_columns_untouched': True,
+        'growing_copy_register_execution_claimed': False}
+
+
+def pair_pointer_source(factors, axis='X'):
+    """Actual controlled pair words and pointer readout on all 32 addresses.
+
+    ``factors`` is a chronological tuple of (band, X/Y, rational angle).
+    Apply ``raw`` to pointer-zero times the unchanged prepared work/reference
+    columns. Sum every output probability with sign (-1)^pointer for the
+    indicated characteristic-function component; work addresses are retained.
+    """
+    if type(axis) is not str or axis not in ('X', 'Y'):
+        raise ValueError('a declared X or Y pointer readout is required')
+    if type(factors) is not tuple or not 1 <= len(factors) <= 16:
+        raise ValueError('one through sixteen chronological pair factors are required')
+    for factor in factors:
+        if type(factor) is not tuple or len(factor) != 3:
+            raise ValueError('each factor requires a band, axis and exact rational angle')
+        band, direction, angle = factor
+        _band(band)
+        if type(direction) is not str or direction not in ('X', 'Y'):
+            raise ValueError('a declared X or Y pair axis is required')
+        if type(angle) is not F or not -64 <= angle <= 64:
+            raise ValueError('an exact rational pair angle in [-64,64] is required')
+    return deepcopy(_pair_pointer_data(factors, axis))
+
+
+def _negative_exponential_lower(value):
+    """Rational lower bound, using the sampler's odd alternating polynomial."""
+    if not value:
+        return F(1)
+    pieces = math.ceil(value)
+    x = value/pieces
+    lower = sum(((-x)**j/math.factorial(j) for j in range(14)), F())**pieces
+    grid = 1 << 80
+    rounded = F((lower*grid).numerator//(lower*grid).denominator, grid)
+    # e<3 also gives a strictly positive fallback when the reporting grid
+    # cannot resolve this band. It does not require floating exponentiation.
+    return max(rounded, F(1, 3**pieces))
+
+
+def positive_log_clock_bound(rate, heat_step, band, missing_mass, maximum_requests,
+                             filter_operator_error=F(0), *, source_preserves_band=False):
+    """Bound the prepared polynomial's log, not a separately chosen clock.
+
+    Premises: D>=0; F=I-hD/2 is a contraction on the encoded domain; retained
+    nonnegative weights are coefficientwise below the Sibuya/Poisson law,
+    with total mass >=1-delta and cap N. On 0<=D<=Lambda, require hLambda<2.
+    The infinite law is exp[-b sqrt(D-hD²/4)], b=R sqrt(h). Normalize the
+    retained M by its own zero-reference mass m0=sum w, not by one.
+
+    If a<=exp(-b sqrt(Lambda)), positivity follows from delta<a. Writing
+    M=exp(-g)-E, 0<=E<=delta, shows
+      |log(m0)-log(M)-g| <= -log(1-delta/a) <= delta/(a-delta).
+    Both log corrections are nonpositive, so their difference needs no
+    extra factor two. A raw successful filter within epsilon of F gives
+    ||M_raw-M|| <= (1+epsilon)^(2N)-1 <= 2N epsilon/(1-2N epsilon).
+    The integral formula for log bounds noncommuting source errors only if
+    the encoded domain lies wholly in this band or the raw implementation
+    preserves its spectral subspace. A small off-band operator error alone
+    gives no such bound when outside eigenvalues can approach zero.
+    These are conditional analytic bounds, not a new growing compiler.
+    """
+    rate, heat_step, band = (inverse_clock._fraction(x, 0)
+                            for x in (rate, heat_step, band))
+    if not rate or not heat_step or not band:
+        raise ValueError('positive rate, heat step and bounded spectral band are required')
+    missing = inverse_clock._fraction(missing_mass, 0, 1)
+    maximum = inverse_clock._integer(maximum_requests, 0, 10**100)
+    epsilon = inverse_clock._fraction(filter_operator_error, 0)
+    if type(source_preserves_band) is not bool:
+        raise ValueError('an explicit Boolean spectral-band preservation premise is required')
+    if heat_step*band >= 2:
+        raise ValueError('the bounded band requires heat_step*band < 2')
+    sqrt_interval = inverse_clock.source.exact._sqrt_interval
+    root_band = sqrt_interval(heat_step*band)[1]
+    beta = tuple(rate*x for x in sqrt_interval(heat_step))
+    mass_floor = _negative_exponential_lower(rate*root_band)
+    root_correction = sqrt_interval(1-heat_step*band/4)[0]
+    bias = rate*root_band*heat_step*band/(4*(1+root_correction))
+    truncation = missing/(mass_floor-missing) if missing < mass_floor else None
+    ideal_error = truncation+bias if truncation is not None else None
+    amplification = 2*maximum*epsilon
+    source_error = amplification/(1-amplification) if amplification < 1 else None
+    floor = mass_floor-missing
+    logarithm_error = (source_error/(floor-source_error)
+                       if (not epsilon or source_preserves_band)
+                       and source_error is not None and source_error < floor else None)
+    total = (ideal_error+logarithm_error
+             if ideal_error is not None and logarithm_error is not None else None)
+    return {'rate': rate, 'heat_step': heat_step, 'spectral_band_upper': band,
+        'inverse_temperature_interval': beta,
+        'infinite_reference_mass_lower': mass_floor,
+        'missing_sampler_mass_upper': missing,
+        'retained_band_mass_lower': max(F(0), floor),
+        'normalization': 'H=log(sum w) I-log(sum_n w_n F^(2n))',
+        'logarithm_domain': 'the certified spectral band; global faithfulness is not inferred',
+        'normalized_log_truncation_upper': truncation,
+        'filter_to_square_root_generator_upper': bias,
+        'ideal_generator_to_b_sqrt_D_upper': ideal_error,
+        'maximum_filter_requests': maximum,
+        'one_filter_operator_error': epsilon,
+        'raw_positive_mixture_operator_error_upper': source_error,
+        'raw_positive_mixture_log_error_upper': logarithm_error,
+        'raw_generator_to_b_sqrt_D_upper': total,
+        'unit_model_time_unitary_error_upper': total/beta[0] if total is not None else None,
+        'unit_model_time_observable_error_upper': 2*total/beta[0] if total is not None else None,
+        'source_log_scalar_convention': 'same ideal m0; scalar changes cancel in modular action',
+        'raw_implementation_preserves_band_or_entire_encoded_domain_is_in_band': source_preserves_band,
+        'off_band_source_log_bound_claimed': False,
+        'fixed_cap_generator_upper': maximum*heat_step*band/(1-heat_step*band/2),
+        'maximum_encoded_generator_norm_for_filter_contraction': 4/heat_step,
+        'full_encoded_domain_filter_contraction_is_a_premise': True,
+        'retained_request_algebra_has_this_modular_generator': False,
+        'growing_source_filter_or_phase_compiler_certified': False}
+
+
+def prepared_log_limit_bound(rate=F(1, 2), weight=F(1, 2), jump_cap=2,
+                             count_cap=2, order=13, sampling_bits=64,
+                             filter_operator_error=F(0)):
+    """Apply the log modulus to the existing executable positive sampler.
+
+    The success herald selects precisely rows0:12 of the 32768-by-12 raw
+    filter; all other rows, including the four work-padding addresses, are
+    retained failures. Each successful S is therefore a map C12->C12 by
+    projection, whose whole declared L spectrum is below8. This is not a
+    claim that the later16-address clock exactly preserves that subspace.
+    """
+    inherited = inverse_clock.subordinated_filter_bound(
+        rate, weight, jump_cap, count_cap, order, sampling_bits)
+    result = positive_log_clock_bound(inherited['rate'], inherited['heat_step'], F(8),
+        inherited['sampling_rejection_probability'], inherited['maximum_filter_requests'],
+        filter_operator_error, source_preserves_band=True)
+    result['inherited_constant_to_band_modular_gap_upper'] = (
+        inherited['constant_to_band_modular_gap_error_upper'])
+    result['sampler_coefficients_checked_by_existing_positive_evaluator'] = True
+    result['successful_filter_domain_dimension'] = 12
+    result['successful_filter_domain_selected_by_herald_projection'] = True
+    return result
+
+
+def positive_log_refinement_schedule(level, inverse_temperature=F(1), band=F(8), *,
+                                    source_preserves_band=False):
+    """Explicit finite cap/precision obligations; not an executed large sampler.
+
+    Put R=2^l, h=b²/R², B=2^(6l), J=6R+2l, odd Taylor order 4l+3.
+    The existing tail theorem, central-binomial bound <=1/sqrt(B+1),
+    k!>=(k/e)^k with e<3, and factorial >=2^order give missing mass
+    <=4*2^(-2l), including a sufficiently fine dyadic sampler. Set one-filter
+    error <=2^(-2l)/(8BJ). On every fixed band the log error tends to zero.
+    Raw log convergence additionally requires a band-preserving compiler or
+    a code whose whole spectrum is in the band. Fixed caps or fixed source
+    precision do not implement this limit.
+    """
+    level = inverse_clock._integer(level, 0, 12)
+    beta, band = (inverse_clock._fraction(x, F(1, 10**12))
+                  for x in (inverse_temperature, band))
+    rate, scale = 1 << level, F(1, 1 << (2*level))
+    heat_step = beta*beta/(rate*rate)
+    jumps, counts = 1 << (6*level), 6*rate+2*level
+    maximum = jumps*counts
+    bits = max(48, maximum.bit_length()+2*level)
+    result = positive_log_clock_bound(F(rate), heat_step, band, min(F(1), 4*scale),
+        maximum, scale/(8*maximum), source_preserves_band=source_preserves_band)
+    result.update(level=level, jump_cap=jumps, count_cap=counts,
+        lower_Taylor_order=4*level+3, sampling_bits=bits,
+        jump_tail_upper=scale, Poisson_count_tail_upper=scale,
+        Taylor_remainder_upper=scale, dyadic_rounding_upper=F(maximum+1, 1 << bits),
+        required_phase_word_error_upper=scale,
+        growing_sampler_evaluated=False,
+        existing_finite_evaluator_covers_parameters=(rate <= 32 and jumps <= 128
+            and counts <= 16 and 4*level+3 <= 61 and bits <= 128),
+        bounded_band_then_spectral_cutoff_limit=True,
+        unbounded_generator_operator_norm_convergence_claimed=False)
+    return result

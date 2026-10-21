@@ -125,7 +125,11 @@ identifies the density Laplacian with an order-five rotation class and ranks
 `1,3,5,3`. The [capped source subordination](predictions/README.md#positive-subordination-on-the-prepared-register)
 prepares square-root Gibbs approximants on a twelve-dimensional logical
 register, with all failures and state/modular-gap bounds; its exact uncapped
-sampler has infinite mean cost. It supplies no 66-state Gibbs preparation,
+sampler has infinite mean cost. Its compiled positive-log clock, pair detectors
+and ordered pointer readouts use that same prepared state. Independent copies
+supply a quantitative eleven-mode fluctuation limit, while three band
+representatives are executed. The bounded-band clock limit requires growing
+caps and vanishing filter/phase errors. It supplies no 66-state Gibbs preparation,
 missing four-dimensional irrep, physical collar, group sewing or product Fock state.
 
 Critical superstring dimension ten follows from a specified worldsheet

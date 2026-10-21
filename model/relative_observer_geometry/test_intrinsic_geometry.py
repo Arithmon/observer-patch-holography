@@ -1,4 +1,5 @@
 from copy import deepcopy
+from collections import Counter
 from fractions import Fraction as F
 
 import pytest
@@ -6,6 +7,65 @@ import sympy as sp
 
 from ..observer_reconstruction import native_geometry as ng
 from . import intrinsic_geometry as g
+
+
+def test_native_density_kernel_counts_every_endpoint_record_and_hold():
+    graph, rows, denominator = g._native_density_rows(1)
+    origin = 36
+    before = tuple(int(p == origin) for p in range(graph.ports))
+    counts = Counter()
+    for seam in graph.seams:
+        for coin in (0, 1):
+            after, (_, current) = g.native.native(before, seam, coin)
+            decoded = list(before)
+            decoded[seam[0]] -= current
+            decoded[seam[1]] += current
+            assert tuple(decoded) == after
+            counts[after.index(1)] += 1
+    assert dict(rows[origin]) == counts
+    assert sum(counts.values()) == denominator
+    assert counts[origin] == denominator-len(graph.neighbours[origin])
+
+
+def test_native_increment_readout_retains_chart_and_affine_probe_covariance(monkeypatch):
+    before = g.native_chart_increment(1, 2)
+    original = g._native_chart_dictionary
+    change = sp.Matrix([[2, 1], [-1, 3]])
+    def changed(level):
+        probes, weights = original(level)
+        return tuple((2*x+y+F(5), -x+3*y-F(7)) for x, y in probes), tuple(7*w for w in weights)
+    monkeypatch.setattr(g, '_native_chart_dictionary', changed)
+    after = g.native_chart_increment(1, 2)
+    first = sp.Matrix(before['averaged_screen_tensor'])
+    assert sp.Matrix(after['averaged_screen_tensor']) == change*first*change.T
+
+
+def test_native_increment_control_rejects_cell_reset_and_reversed_limits():
+    result = g.native_increment_control()
+    assert result['two_attempt_endpoint_record_oracle_exact']
+    assert result['zero_current_records_included']
+    reset = result['false_cell_reset']
+    assert reset['actual_probability'] == '0'
+    assert F(reset['reset_probability']) > 0
+    assert not result['false_Schur_kernel']['finite_cell_mean_generator_is_a_Markov_generator']
+    bare = sp.Matrix(result['bare_chart_tensor'])
+    assert (bare-sp.Rational(15, 19)*bare).det() > 0
+    values = result['fixed_density_parameter_readouts']
+    assert values[0]['density_parameter'] == values[1]['density_parameter']
+    assert values[0]['native_attempts'] == 1 and values[1]['native_attempts'] == 16
+    assert values[0]['averaged_screen_tensor'] != values[1]['averaged_screen_tensor']
+    a = sp.Matrix(result['finite_averaged_product_tensor'])
+    metric = sp.Matrix(result['finite_averaged_comparison_metric'])
+    assert sp.simplify(sp.sqrt(-metric.det())*metric.inv()) == sp.diag(-1, a)/10
+    assert not result['limiting_tensor_pointwise_error_from_finite_run_bounded']
+    assert not result['native_time_is_identified_with_wave_or_lab_time']
+
+
+@pytest.mark.parametrize('level,attempts', [(True, 1), (0, 1), (3, 1),
+                                          (1, False), (1, 0), (1, 33), (1, 1.)])
+def test_native_increment_rejects_undeclared_execution_parameters(level, attempts):
+    with pytest.raises(ValueError):
+        g.native_chart_increment(level, attempts)
 
 
 def test_wave_metric_reproduces_action_and_anisotropic_characteristics():

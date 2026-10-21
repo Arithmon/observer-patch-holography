@@ -223,3 +223,186 @@ def test_exact_basis_source_words_do_not_depend_on_platform_libm_angle_paths(sou
     assert certificate['symmetric_source_laplacian']
     assert certificate['all_twelve_eigenvector_equations_checked_exactly']
     assert certificate['within_each_band_orthogonality_and_positive_norms_checked_exactly']
+
+
+@pytest.mark.parametrize('axis', ('X', 'Y'))
+def test_controlled_ordered_pairs_are_actual_complete_pointer_readouts(source, axis):
+    factors = ((1, 'X', F(1, 3)), (1, 'Y', F(1, 4)), (2, 'X', F(1, 5)))
+    result = m.pair_pointer_source(factors, axis)
+    spectral = np.eye(16, dtype=complex)
+    for band, direction, angle in factors:
+        address = source['pair_addresses'][band]
+        generator = np.zeros((16, 16), complex)
+        generator[0, address] = 1 if direction == 'X' else -1j
+        generator[address, 0] = generator[0, address].conjugate()
+        spectral = expm(1j*float(angle)*generator)@spectral
+    basis = source['spectrum']['basis']
+    ordered = basis@spectral@basis.T
+    values, vectors = np.linalg.eigh(source['reference']['density'][:12, :12])
+    initial = np.zeros((32, 12), complex)
+    initial[:12] = vectors*np.sqrt(values)
+    output = result['raw']@initial
+    probabilities = np.sum(abs(output)**2, axis=1)
+    characteristic = np.trace(source['reference']['density']@ordered)
+    expected = characteristic.real if axis == 'X' else characteristic.imag
+    assert abs(sum(probabilities[:16])-sum(probabilities[16:])-expected) < 1e-10
+    assert abs(sum(probabilities)-1) < 1e-10
+    assert len(probabilities) == result['complete_outcome_count'] == 32
+    # Literal source execution checks the cached composition and pointer-one
+    # inputs too, not just the prepared pointer-zero sector.
+    literal = m.compiler.execute(result['word'], 5)
+    np.testing.assert_allclose(literal, result['raw'], atol=1e-10, rtol=0)
+    assert result['pulse_count'] == len(result['word'])
+    assert m.compiler.resources(result['word'])['proper_code_service_events'] == 2*len(result['word'])
+    assert result['guard'] > result['diagnostic']['complete_target_Frobenius_error']
+    if axis == 'Y':
+        reversed_order = m.pair_pointer_source(tuple(reversed(factors)), axis)
+        flipped = reversed_order['raw']@initial
+        contrast = np.sum(abs(flipped[:16])**2)-np.sum(abs(flipped[16:])**2)
+        assert abs(contrast-expected) > 100*float(result['guard'])
+
+
+@pytest.mark.parametrize('factors,axis', (
+    ((), 'X'), (((True, 'X', F(1)),), 'X'), (((1, 'Z', F(1)),), 'X'),
+    (((1, 'X', .25),), 'X'), (((1, 'X', F(65)),), 'X'),
+    (((1, 'X', F(1)),), np.str_('Y')),
+))
+def test_pair_pointer_rejects_unaccounted_settings(factors, axis):
+    with pytest.raises(ValueError):
+        m.pair_pointer_source(factors, axis)
+
+
+@pytest.mark.parametrize('jump_cap,count_cap', ((2, 2), (64, 8)))
+def test_positive_log_modulus_bounds_the_actual_normalized_sampler_polynomial(jump_cap, count_cap):
+    import mpmath as mp
+    weights = m.inverse_clock.subordinated_filter_weights(jump_cap=jump_cap, count_cap=count_cap)
+    result = m.prepared_log_limit_bound(jump_cap=jump_cap, count_cap=count_cap)
+    assert result['sampler_coefficients_checked_by_existing_positive_evaluator']
+    with mp.workdps(80):
+        number = lambda x: mp.mpf(x.numerator)/x.denominator
+        mass0 = sum(number(w) for w in weights)
+        beta = mp.mpf('.5')/mp.sqrt(60)
+        assert number(result['infinite_reference_mass_lower']) <= mp.exp(-beta*mp.sqrt(8))
+        for value in range(17):
+            lam = mp.mpf(value)/2
+            mass = sum(number(w)*(1-lam/120)**(2*n) for n, w in enumerate(weights))
+            generator = mp.log(mass0/mass)
+            assert abs(generator-beta*mp.sqrt(lam)) <= number(
+                result['ideal_generator_to_b_sqrt_D_upper'])
+            if not value:
+                assert generator == 0
+                assert -mp.log(mass) > 0  # Omitting m0 changes even the zero clock.
+
+
+def test_log_modulus_covers_noncommuting_source_filter_error():
+    from scipy.linalg import logm
+    epsilon = F(1, 1000)
+    result = m.prepared_log_limit_bound(filter_operator_error=epsilon)
+    weights = m.inverse_clock.subordinated_filter_weights()
+    ideal = np.diag(1-np.array([0., 2., 6., 8.])/120)
+    perturbation = np.roll(np.eye(4), 1, axis=0)
+    actual = ideal+float(epsilon)*perturbation
+    reference = sum(float(w)*np.linalg.matrix_power(ideal, 2*n) for n, w in enumerate(weights))
+    raw = sum(float(w)*(np.linalg.matrix_power(actual, n)
+                        @np.linalg.matrix_power(actual, n).conj().T)
+              for n, w in enumerate(weights))
+    assert np.linalg.norm(reference@raw-raw@reference, 2) > 1e-7
+    assert np.linalg.norm(raw-reference, 2) <= float(result['raw_positive_mixture_operator_error_upper'])
+    assert np.linalg.norm(logm(raw)-logm(reference), 2) <= float(
+        result['raw_positive_mixture_log_error_upper'])
+    unconstrained = m.prepared_log_limit_bound(filter_operator_error=F(1))
+    assert unconstrained['raw_positive_mixture_log_error_upper'] is None
+    assert unconstrained['raw_generator_to_b_sqrt_D_upper'] is None
+
+
+def test_fixed_caps_collapse_instead_of_approaching_a_nonzero_square_root_clock():
+    errors = []
+    for rate in (4, 16, 32):
+        weights = m.inverse_clock.subordinated_filter_weights(rate=F(rate))
+        heat = F(1, 16*rate*rate)  # b=R sqrt(h)=1/4 stays fixed.
+        lam = F(4)
+        mass = sum(w*(1-heat*lam/2)**(2*n) for n, w in enumerate(weights))
+        gap = float(sp.log(sp.Rational(sum(weights))/sp.Rational(mass)))
+        result = m.positive_log_clock_bound(F(rate), heat, lam, 1-sum(weights), 4)
+        assert gap <= float(result['fixed_cap_generator_upper'])
+        errors.append(abs(gap-.5))
+    assert errors[-1] > errors[0] > .45
+    assert errors[-1] > .499
+
+
+def test_refinement_caps_precision_and_small_mass_obstruction_are_explicit():
+    coarse = m.positive_log_refinement_schedule(3)
+    assert coarse['raw_generator_to_b_sqrt_D_upper'] is None
+    rows = [m.positive_log_refinement_schedule(level, source_preserves_band=True)
+            for level in (4, 6, 8)]
+    errors = [float(row['raw_generator_to_b_sqrt_D_upper']) for row in rows]
+    assert errors[0] > errors[1] > errors[2] > 0
+    assert errors[2] < .0012
+    for row in rows:
+        assert row['dyadic_rounding_upper'] <= row['jump_tail_upper']
+        assert row['inverse_temperature_interval'] == (F(1), F(1))
+        assert not row['growing_sampler_evaluated']
+        assert not row['growing_source_filter_or_phase_compiler_certified']
+        assert not row['retained_request_algebra_has_this_modular_generator']
+    first = rows[0]
+    fixed_precision = m.positive_log_clock_bound(first['rate'], first['heat_step'], F(8),
+        first['missing_sampler_mass_upper'], first['maximum_filter_requests'], F(1, 10**9))
+    assert fixed_precision['raw_generator_to_b_sqrt_D_upper'] is None
+    with pytest.raises(ValueError, match='bounded band'):
+        m.positive_log_clock_bound(F(1), F(1), F(2), F(0), 1)
+
+
+def test_a_band_floor_does_not_bound_log_errors_from_coupled_small_outside_modes():
+    # In exact arithmetic M=diag(1,exp(-700)) and Mraw=R(theta) M R(theta)*.
+    # Their operator distance is (1-exp(-700))*sin(theta), but the compressed
+    # log difference on the first coordinate is 700*sin(theta)^2. Its large
+    # value is visible without diagonalizing an ill-conditioned float matrix.
+    import math
+    theta = .01
+    mixture_error = (1-math.exp(-700))*math.sin(theta)
+    bad_band_only_log_bound = mixture_error/(1-mixture_error)
+    actual_compressed_log_error = 700*math.sin(theta)**2
+    assert actual_compressed_log_error > 6*bad_band_only_log_bound
+    unverified = m.positive_log_refinement_schedule(6)
+    assert unverified['ideal_generator_to_b_sqrt_D_upper'] is not None
+    assert unverified['raw_positive_mixture_operator_error_upper'] is not None
+    assert unverified['raw_positive_mixture_log_error_upper'] is None
+    assert unverified['raw_generator_to_b_sqrt_D_upper'] is None
+    assert not unverified['off_band_source_log_bound_claimed']
+    with pytest.raises(ValueError, match='Boolean'):
+        m.positive_log_refinement_schedule(6, source_preserves_band=1)
+
+
+def test_coefficientwise_truncation_can_leave_an_unsupported_outside_mode():
+    # w0=0,w1=1/8 lies below the R=1 compound law (its n=1 mass is1/(2e)).
+    # D=diag(0,2/h) makes F=diag(1,0): the low-band logarithm exists while
+    # the retained full polynomial is rank deficient. A small rotation of
+    # its support cannot justify a full raw logarithm from a low-band floor.
+    heat = F(1, 10)
+    retained = np.diag([1/8, 0.])
+    assert np.linalg.matrix_rank(retained) == 1
+    result = m.positive_log_clock_bound(F(1), heat, F(1, 100), F(7, 8), 1, F(1, 1000))
+    assert result['retained_band_mass_lower'] > 0
+    assert result['ideal_generator_to_b_sqrt_D_upper'] is not None
+    assert result['raw_generator_to_b_sqrt_D_upper'] is None
+
+
+def test_native_success_herald_is_the_whole_twelve_dimensional_log_domain():
+    _, data = m.inverse_clock._prepared_edge_gibbs_data()
+    raw = data['raw_filter']
+    assert raw.shape == (32768, 12)
+    successful, failed = raw[:12], raw[12:]
+    assert successful.shape == (12, 12)
+    assert failed.shape == (32756, 12)  # Padding12:16 remains in this outcome.
+    reference = m.prepared_reference()
+    ideal = np.array(reference['lazy_filter'], float)
+    assert np.linalg.norm(successful-ideal, 2) < 1e-9
+    weights = reference['weights']
+    mixed = sum(float(w)*(np.linalg.matrix_power(successful, n)
+                          @np.linalg.matrix_power(successful, n).conj().T)
+                for n, w in enumerate(weights))
+    bound = m.prepared_log_limit_bound(filter_operator_error=F(1, 10**9))
+    assert np.linalg.eigvalsh(mixed)[0] >= float(bound['retained_band_mass_lower']
+        -bound['raw_positive_mixture_operator_error_upper'])
+    assert bound['successful_filter_domain_selected_by_herald_projection']
+    assert bound['successful_filter_domain_dimension'] == 12
