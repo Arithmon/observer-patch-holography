@@ -82,9 +82,9 @@ def run():
             'complete_infinite_output_trace_distance_upper':upper(bound),
             'every_completed_zero_one_or_two_read_prefix_trace_distance_upper':upper(bound),
             'candidate_vector_error_upper':upper(budget['vector_error_upper']),
-            'finite_path_residual_upper':upper(budget['finite_residual'],15),
+            'finite_path_residual_upper':upper(budget['finite_residual'],12),
             'occupation_residual_upper':upper(budget['occupation_residual']),
-            'path_rounding_upper':upper(budget['endpoint_jump'],15),
+            'path_rounding_upper':upper(budget['endpoint_jump'],12),
             'retained_work_dimension':64,'retained_reference_dimension':64})
     executed, source_target=source_run(include_target=True)
     split=executed['target_scaled_splitting_error_upper']

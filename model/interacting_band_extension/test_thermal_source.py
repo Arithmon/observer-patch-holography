@@ -205,3 +205,13 @@ def test_source_budget_charges_known_nonnormalized_target_and_density_scaling(sc
 def test_source_budget_rejects_nonfinite_or_overflowing_normalization(bad):
     with pytest.raises((ValueError, ArithmeticError)):
         thermal._source_budget(bad, F(1, 10**9), 772, F(1, 100))
+
+
+def test_source_budget_is_outward_and_stable_under_normalization_ulps():
+    first = np.array([[1., 0.], [0., 0.]])
+    second = first.copy(); second[0, 0] = np.nextafter(1., np.inf)
+    left = thermal._source_budget(first, F(1, 10**9), 772, F(1, 100))
+    right = thermal._source_budget(second, F(1, 10**9), 772, F(1, 100))
+    assert left == right
+    assert left['target_norm_upper'] == F(1000000001, 1000000000)
+    assert left['target_norm_upper'] > F(second[0, 0])

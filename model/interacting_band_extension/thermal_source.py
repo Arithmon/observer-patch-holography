@@ -136,9 +136,15 @@ def _source_budget(target, preparation_error, operation_count, split_error):
         raise ValueError('an original positive local operation count is required')
     try:
         with np.errstate(over='raise', invalid='raise', divide='raise'):
-            target_norm = F(iv.frobenius_upper(*iv.complex_exact(target)))
+            measured_norm = F(iv.frobenius_upper(*iv.complex_exact(target)))
     except (FloatingPointError, OverflowError) as error:
         raise ArithmeticError('the outward target norm overflowed') from error
+    # Round to the nearest nanounit, then add one whole nanounit. This
+    # remains strictly outward (with at least half a nanounit of margin)
+    # while preventing platform-level norm ulps from becoming enormous,
+    # unequal exact-rational receipt strings near the normalized value one.
+    grid = 10**9
+    target_norm = F(math.floor(measured_norm*grid+F(1, 2))+1, grid)
     gain = operation_count*F(251, 10**12)
     if gain >= 1:
         raise ValueError('the declared source guard requires fewer local operations')

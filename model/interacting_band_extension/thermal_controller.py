@@ -100,7 +100,9 @@ def audit(raw, target, *, occupation=8, sign=1, interval=F(1, 16), steps=64):
     if abs(sum(row['probability'] for row in rows)-1) > 1e-8:
         raise ArithmeticError('the retained source-prefix output lost probability')
     split = source.splitting_bound(program.lattice, program.interval, program.steps)
-    budget = _source_budget(target, preparation_error, 4*steps*len(program.lattice.terms)+4,
+    # Charge the declared, checked preparation guard, rather than serializing
+    # a platform-dependent measured norm as an exact rational requirement.
+    budget = _source_budget(target, F(1, 10**9), 4*steps*len(program.lattice.terms)+4,
                             split['two_interval_complete_output_trace_distance_upper'])
     if (not math.isfinite(complete_error) or complete_error
             > float(budget['target_scaled_splitting_error_upper']+budget['source_numerical_guard'])):
