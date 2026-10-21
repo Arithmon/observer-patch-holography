@@ -7,19 +7,19 @@
     "spatial_two_mode_projection_removed": false
   },
   "cold_protocol": {
-    "canonical_preparation_trace_distance_upper": "734141/500000000",
-    "canonical_seed_vector_error_upper": "13/200000000000",
+    "canonical_preparation_trace_distance_upper": "2937/2000000",
+    "canonical_seed_vector_error_upper": "1/1000000000",
     "coupling": "1",
     "harmonic_complement_upper": "1/1000000000000000",
     "histories": [
       {
-        "candidate_vector_error_upper": "803381/1000000000",
-        "complete_infinite_output_trace_distance_upper": "1135831/500000000",
-        "every_completed_zero_one_or_two_read_prefix_trace_distance_upper": "1135831/500000000",
-        "finite_path_residual_upper": "1/1000000000000",
+        "candidate_vector_error_upper": "4017/5000000",
+        "complete_infinite_output_trace_distance_upper": "2271903/1000000000",
+        "every_completed_zero_one_or_two_read_prefix_trace_distance_upper": "2271903/1000000000",
+        "finite_path_residual_upper": "1/10000000000",
         "native_sign": -1,
-        "occupation_residual_upper": "803381/1000000000",
-        "path_rounding_upper": "1/1000000000000",
+        "occupation_residual_upper": "4017/5000000",
+        "path_rounding_upper": "1/10000000000",
         "probabilities_numerical": [
           0.3075024998750503,
           0.19941009579249033,
@@ -48,13 +48,13 @@
         "retained_work_dimension": 64
       },
       {
-        "candidate_vector_error_upper": "988059/1000000000",
-        "complete_infinite_output_trace_distance_upper": "2456341/1000000000",
-        "every_completed_zero_one_or_two_read_prefix_trace_distance_upper": "2456341/1000000000",
-        "finite_path_residual_upper": "1/1000000000000",
+        "candidate_vector_error_upper": "9881/10000000",
+        "complete_infinite_output_trace_distance_upper": "2456603/1000000000",
+        "every_completed_zero_one_or_two_read_prefix_trace_distance_upper": "2456603/1000000000",
+        "finite_path_residual_upper": "1/10000000000",
         "native_sign": 1,
-        "occupation_residual_upper": "988059/1000000000",
-        "path_rounding_upper": "1/1000000000000",
+        "occupation_residual_upper": "9881/10000000",
+        "path_rounding_upper": "1/10000000000",
         "probabilities_numerical": [
           0.28689034683279496,
           0.20619705749966585,
@@ -83,15 +83,15 @@
         "retained_work_dimension": 64
       }
     ],
-    "infinite_partition_lower": "460169093/250000000000",
-    "infinite_partition_upper": "920340171/500000000000",
+    "infinite_partition_lower": "184067637/100000000000",
+    "infinite_partition_upper": "230085043/125000000000",
     "inverse_temperature": "4",
     "lower_form_shell": 16,
     "occupation": 8,
     "temperature_selected_from_empirical_fit": false
   },
-  "complete_source_to_infinite_output_error_upper_under_numerical_guards": "2121803/500000000",
-  "complete_stopped_controller_to_infinite_prefix_output_error_upper_under_numerical_guards": "2121803/500000000",
+  "complete_source_to_infinite_output_error_upper_under_numerical_guards": "4243869/1000000000",
+  "complete_stopped_controller_to_infinite_prefix_output_error_upper_under_numerical_guards": "4243869/1000000000",
   "composition": {
     "all_outcomes_retained_without_renormalization": true,
     "common_native_continuation_CPTP_contraction": true,
@@ -103,7 +103,7 @@
     "unfinished_mid_service_states_covered_by_prefix_bound": false
   },
   "incident_clock_schedule": {
-    "complete_nominal_work_output_with_same_clock_tape_error_upper_under_required_services": "1350243/500000000",
+    "complete_nominal_work_output_with_same_clock_tape_error_upper_under_required_services": "675187/250000000",
     "complete_preparation_half_trace_error_required": "1/429496729600",
     "full_refined_clock_schedule_executed": false,
     "incident_rate_per_normalized_attempt_unit": 655360,
@@ -119,16 +119,16 @@
     "timeout_probability_upper": "8257535/33822867456"
   },
   "original_hot_protocol": {
-    "canonical_preparation_trace_distance_upper": "679299/125000000",
+    "canonical_preparation_trace_distance_upper": "13587/2500000",
     "coupling": "1",
     "d24_source_history_executed": false,
     "harmonic_complement_upper": "588566687/20000000000000",
-    "infinite_partition_lower": "5365084368887/1000000000000",
-    "infinite_partition_upper": "5365242818517/1000000000000",
+    "infinite_partition_lower": "335317773/62500000",
+    "infinite_partition_upper": "536524283/100000000",
     "inverse_temperature": "1/4",
     "lower_form_shell": 48,
     "occupation": 24,
-    "original_d4_preparation_allowance_upper": "141566011/250000000"
+    "original_d4_preparation_allowance_upper": "113253/200000"
   },
   "schema": "oph.interacting_band_extension.thermal_certificate.v1",
   "source_execution": {
@@ -451,7 +451,7 @@
       "single_code_pulses": 1926725
     }
   },
-  "source_numerical_target_to_exact_finite_Gibbs_error_upper": "13/200000000000",
+  "source_numerical_target_to_exact_finite_Gibbs_error_upper": "1/1000000000",
   "source_sha256": {
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
@@ -460,7 +460,7 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/interacting_band_extension/algebra.py": "1d2b955f9b3c20ef9ddb2b1fd024d320a21cdb67ee6bd710ad6126e7939e009b",
     "model/interacting_band_extension/construction.py": "b55bd454646353687335401ca993796306ee8079b881a6556f6f2b48488bc1d7",
-    "model/interacting_band_extension/thermal_certificate.py": "828e3ed84bc61adf45791279a3f9e5a07605ed989d439d06dc278bc74a0de234",
+    "model/interacting_band_extension/thermal_certificate.py": "ac535faaf8bb29337ccdf46d316aa7c9f78a402653206d7ec9ab2bfa85786bad",
     "model/interacting_band_extension/thermal_controller.py": "e25076ceb7ffcedefd72ca9862b0aadd447ed871193347b9b7c299ac2e2c6878",
     "model/interacting_band_extension/thermal_forms.py": "635515e5cde558d5f1090f2ffa72a2a924889d80dc1420123574700c4bef125e",
     "model/interacting_band_extension/thermal_history.py": "0c1897151eb965061199e079535ac5a32a6ba17eb28c5cdedbfba56c38ffd9d1",

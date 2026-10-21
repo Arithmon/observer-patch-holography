@@ -766,6 +766,16 @@ comparison and heat-semigroup Duhamel bound also certify the numerical
 canonical seed. There is no assumed eigenvector accuracy or uncharged
 Gibbs normalization.
 
+The replay publishes fixed rational budgets after checking them against
+fresh outward enclosures. In particular, the seed and source-target errors
+must each be at most `10^-9`; an inaccurate eigensolver candidate fails
+these checks. This avoids treating the last rounded digit of a
+platform-dependent residual as an invariant. Declared preparation, seed,
+path and escaped-row budgets enter the final error sum. The displayed
+partition interval is a separate, coarser enclosure; the preparation check
+uses the tighter unrounded partition certificate. Exact receipt comparisons
+remain strict, including rejection of both larger and smaller stored caps.
+
 `thermal_history.py` then encloses polynomial-path residuals against the
 **infinite** generator. Acting with `H` on a finite `d`-box path reaches
 only the `d+4` box; acting with the actual second-coordinate detector/kick

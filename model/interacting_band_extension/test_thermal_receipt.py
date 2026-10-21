@@ -1,9 +1,11 @@
 """Receipt checking never trusts an uploaded bound or drops unexpected fields."""
 import copy
+from fractions import Fraction as F
 import json
 from pathlib import Path
 import sys
 
+import numpy as np
 import pytest
 
 from . import thermal_certificate as certificate
@@ -56,3 +58,121 @@ def test_receipt_binds_inherited_controller_clock_and_source_inputs():
     assert set(SOURCE_PATHS) <= set(certificate.SOURCE_PATHS)
     assert 'model/interacting_band_extension/thermal_controller.py' in certificate.SOURCE_PATHS
     assert len(certificate.SOURCE_PATHS) == len(set(certificate.SOURCE_PATHS))
+
+
+@pytest.mark.parametrize('value', [0, 1, F(1, 3), F(1)])
+def test_certified_upper_accepts_only_values_inside_exact_ceiling(value):
+    assert certificate.certified_upper(value, F(1), 'test bound') == '1'
+
+
+@pytest.mark.parametrize('helper', ['certified_upper', 'certified_lower'])
+@pytest.mark.parametrize('bad', [
+    None, True, False, 0.0, float('nan'), float('inf'), float('-inf'),
+    '1/2', complex(1), np.float64(1), np.int64(1), np.bool_(True), F(-1),
+])
+def test_certified_bounds_reject_inexact_or_invalid_values(helper, bad):
+    with pytest.raises(ValueError):
+        getattr(certificate, helper)(bad, F(1), 'test bound')
+
+
+@pytest.mark.parametrize('helper', ['certified_upper', 'certified_lower'])
+@pytest.mark.parametrize('bad', [
+    None, True, False, 1.0, float('nan'), float('inf'), float('-inf'),
+    '1', np.float64(1), np.int64(1), np.bool_(True), 0, F(0), F(-1),
+])
+def test_certified_bounds_require_exact_positive_declared_limits(helper, bad):
+    with pytest.raises(ValueError):
+        getattr(certificate, helper)(F(1), bad, 'test bound')
+
+
+def test_certified_bounds_preserve_exact_boundaries_without_float_tolerance():
+    boundary = F(1, 10**9)
+    tiny = F(1, 10**100)
+    assert certificate.certified_upper(boundary, boundary, 'upper') == str(boundary)
+    assert certificate.certified_lower(boundary, boundary, 'lower') == str(boundary)
+    assert certificate.certified_upper(boundary-tiny, boundary, 'upper') == str(boundary)
+    assert certificate.certified_lower(boundary+tiny, boundary, 'lower') == str(boundary)
+    with pytest.raises(ArithmeticError):
+        certificate.certified_upper(boundary+tiny, boundary, 'upper')
+    with pytest.raises(ArithmeticError):
+        certificate.certified_lower(boundary-tiny, boundary, 'lower')
+    with pytest.raises(ArithmeticError):
+        certificate.certified_lower(0, boundary, 'lower')
+
+
+def test_seed_certificate_tolerates_eigensolver_rounding_without_changing_declared_bound(monkeypatch):
+    # Exact dyadic residuals certify both candidates; an eigensolver's last-bit
+    # choice is not a premise of the mathematical certificate or receipt.
+    baseline, baseline_budget = certificate.finite_gibbs_seed()
+    eigh = np.linalg.eigh
+
+    def one_ulp_candidate(matrix):
+        values, vectors = eigh(matrix)
+        return np.nextafter(values, np.inf), np.nextafter(vectors, np.inf)
+
+    monkeypatch.setattr(np.linalg, 'eigh', one_ulp_candidate)
+    shifted, shifted_budget = certificate.finite_gibbs_seed()
+    ceiling = certificate.CANONICAL_SEED_ERROR_CEILING
+    for budget in (baseline_budget, shifted_budget):
+        assert certificate.certified_upper(
+            budget['canonical_seed_vector_error_upper'], ceiling, 'seed') == str(ceiling)
+    # The independently certified errors bound their common exact seed.
+    assert np.linalg.norm(baseline-shifted, 'fro') <= float(
+        baseline_budget['canonical_seed_vector_error_upper']
+        + shifted_budget['canonical_seed_vector_error_upper'])
+
+
+def test_seed_certificate_rejects_candidate_whose_certified_error_exceeds_ceiling(monkeypatch):
+    eigh = np.linalg.eigh
+
+    def degraded_candidate(matrix):
+        values, vectors = eigh(matrix)
+        vectors[0, 0] += 1e-8
+        return values, vectors
+
+    monkeypatch.setattr(np.linalg, 'eigh', degraded_candidate)
+    _, budget = certificate.finite_gibbs_seed()
+    with pytest.raises(ArithmeticError):
+        certificate.certified_upper(budget['canonical_seed_vector_error_upper'],
+                                    certificate.CANONICAL_SEED_ERROR_CEILING, 'seed')
+
+
+def test_run_rejects_excess_seed_allowance_before_composing_history(monkeypatch):
+    # Bypass costly, unrelated preparation inputs, but exercise run's actual
+    # seed check. A threshold comparison after float conversion would miss this.
+    def preparation(occupation, shell, beta=F(1, 4)):
+        lower, upper, error = certificate.BRACKET_ENVELOPES[
+            'hot' if occupation == 24 else 'cold']
+        return {'occupation': occupation, 'lower_form_shell': shell,
+                'inverse_temperature': beta, 'coupling': F(1),
+                'infinite_partition_lower': lower, 'infinite_partition_upper': upper,
+                'canonical_preparation_trace_distance_upper': error,
+                'harmonic_complement_upper': F(0)}
+
+    monkeypatch.setattr(certificate, 'preparation_bracket', preparation)
+    monkeypatch.setattr(certificate, 'certify_spectrum',
+                        lambda *args, **kwargs: {'partition_function_interval': (F(1), F(1))})
+    monkeypatch.setattr(certificate, 'finite_gibbs_seed', lambda: (
+        np.zeros((64, 64), complex), {'canonical_seed_vector_error_upper':
+            certificate.CANONICAL_SEED_ERROR_CEILING+F(1, 10**100)}))
+
+    def unexpected_history(*args, **kwargs):
+        pytest.fail('an uncertified seed reached history composition')
+
+    monkeypatch.setattr(certificate, 'history', unexpected_history)
+    with pytest.raises(ArithmeticError):
+        certificate.run()
+
+
+@pytest.mark.parametrize('direction', [-1, 1])
+def test_receipt_rejects_lowered_or_raised_declared_seed_ceiling(
+        reference, direction, tmp_path, monkeypatch):
+    bad = copy.deepcopy(reference)
+    saved = F(bad['cold_protocol']['canonical_seed_vector_error_upper'])
+    bad['cold_protocol']['canonical_seed_vector_error_upper'] = str(
+        saved+direction*F(1, 10**100))
+    path = tmp_path/'changed-seed-ceiling.json'
+    path.write_text(json.dumps(bad))
+    monkeypatch.setattr(sys, 'argv', ['thermal', '--check', str(path)])
+    with pytest.raises(ValueError):
+        certificate.main()

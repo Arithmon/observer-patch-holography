@@ -26,6 +26,42 @@ SOURCE_PATHS = tuple(dict.fromkeys(CONSTRUCTION_SOURCE_PATHS+tuple(
     'thermal_source.py', 'thermal_controller.py', 'thermal_certificate.py'))+(
     'model/occupation_control/intervals.py',)))
 
+# Replays certify these declared budgets; eigensolver-dependent residuals are
+# not serialized as if their rounded last digits were mathematical invariants.
+# Every ceiling/floor is checked against a fresh outward enclosure, and the
+# declared upper budgets (not the smaller measured values) compose below.
+CANONICAL_SEED_ERROR_CEILING = F(1, 10**9)
+TARGET_GIBBS_ERROR_CEILING = F(1, 10**9)
+PATH_ARITHMETIC_CEILING = F(1, 10**10)
+BRACKET_ENVELOPES = {
+    'hot': (F('5.365084368'), F('5.36524283'), F('0.0054348')),
+    'cold': (F('0.001840676370'), F('0.001840680344'), F('0.0014685')),
+}
+OCCUPATION_CEILINGS = {-1: F('0.0008034'), 1: F('0.0009881')}
+
+
+def _exact_budget(value, bound):
+    if (type(value) not in (int, F) or type(bound) not in (int, F)
+            or value < 0 or bound <= 0):
+        raise ValueError('nonnegative exact value and positive exact budget required')
+    return F(value), F(bound)
+
+
+def certified_upper(value, ceiling, label):
+    """Publish a fixed ceiling only after the fresh enclosure proves it."""
+    value, ceiling = _exact_budget(value, ceiling)
+    if value > ceiling:
+        raise ArithmeticError(f'{label} exceeds its declared certificate ceiling')
+    return str(ceiling)
+
+
+def certified_lower(value, floor, label):
+    """Publish a fixed lower endpoint only after the fresh enclosure proves it."""
+    value, floor = _exact_budget(value, floor)
+    if value < floor:
+        raise ArithmeticError(f'{label} falls below its declared certificate floor')
+    return str(floor)
+
 
 def upper(value, digits=9):
     """Portable outward display; all acceptance comparisons precede rounding."""
@@ -45,11 +81,13 @@ def compact(value):
     return value
 
 
-def bracket_summary(row):
+def bracket_summary(row, protocol):
+    lower, ceiling, preparation = BRACKET_ENVELOPES[protocol]
     return {key: row[key] for key in ('occupation','lower_form_shell','inverse_temperature','coupling')} | {
-        'infinite_partition_lower': str(F(math.floor(row['infinite_partition_lower']*10**12),10**12)),
-        'infinite_partition_upper': upper(row['infinite_partition_upper'],12),
-        'canonical_preparation_trace_distance_upper': upper(row['canonical_preparation_trace_distance_upper']),
+        'infinite_partition_lower': certified_lower(row['infinite_partition_lower'],lower,protocol+' partition'),
+        'infinite_partition_upper': certified_upper(row['infinite_partition_upper'],ceiling,protocol+' partition'),
+        'canonical_preparation_trace_distance_upper': certified_upper(
+            row['canonical_preparation_trace_distance_upper'],preparation,protocol+' preparation'),
         'harmonic_complement_upper': upper(row['harmonic_complement_upper'],15)}
 
 
@@ -60,7 +98,10 @@ def run():
     old_lower = certify_spectrum(fixed_code_form(4),bits=48)['partition_function_interval'][0]
     old_allowance = sqrt_upper(1-old_lower/hot['infinite_partition_upper'])
     cold = preparation_bracket(8,16,F(4))
+    hot_summary, cold_summary = bracket_summary(hot,'hot'), bracket_summary(cold,'cold')
     seed, seed_budget = finite_gibbs_seed()
+    seed_error = F(certified_upper(seed_budget['canonical_seed_vector_error_upper'],
+                                  CANONICAL_SEED_ERROR_CEILING,'canonical seed'))
     rows=[]
     ideal_max=F()
     for sign in (-1,1):
@@ -69,10 +110,11 @@ def run():
         # canonical seed. Their vector difference is at most two seed errors,
         # two finite path defects and the escaped-row defect. Every stopped
         # complete prefix uses a subset of these nonnegative contributions.
-        finite_path = F(budget['finite_residual'])+F(budget['endpoint_jump'])
-        vector = (2*seed_budget['canonical_seed_vector_error_upper']
-                  +2*finite_path+F(budget['occupation_residual']))
-        bound = min(F(1), cold['canonical_preparation_trace_distance_upper']+vector)
+        finite_residual = F(certified_upper(F(budget['finite_residual']),PATH_ARITHMETIC_CEILING,'finite path'))
+        endpoint_jump = F(certified_upper(F(budget['endpoint_jump']),PATH_ARITHMETIC_CEILING,'path rounding'))
+        occupation = F(certified_upper(F(budget['occupation_residual']),OCCUPATION_CEILINGS[sign],'escaped rows'))
+        vector = 2*seed_error+2*(finite_residual+endpoint_jump)+occupation
+        bound = min(F(1), F(cold_summary['canonical_preparation_trace_distance_upper'])+vector)
         if not 0 < bound < F(1,400):
             raise ArithmeticError('the complete interacting occupation bound is not below 1/400')
         ideal_max=max(ideal_max,bound)
@@ -81,16 +123,18 @@ def run():
             'probabilities_numerical':[float(np.linalg.norm(value)**2) for value in outputs],
             'complete_infinite_output_trace_distance_upper':upper(bound),
             'every_completed_zero_one_or_two_read_prefix_trace_distance_upper':upper(bound),
-            'candidate_vector_error_upper':upper(budget['vector_error_upper']),
-            'finite_path_residual_upper':upper(budget['finite_residual'],12),
-            'occupation_residual_upper':upper(budget['occupation_residual']),
-            'path_rounding_upper':upper(budget['endpoint_jump'],12),
+            'candidate_vector_error_upper':certified_upper(F(budget['vector_error_upper']),occupation,'candidate vector'),
+            'finite_path_residual_upper':str(finite_residual),
+            'occupation_residual_upper':str(occupation),
+            'path_rounding_upper':str(endpoint_jump),
             'retained_work_dimension':64,'retained_reference_dimension':64})
     executed, source_target=source_run(include_target=True)
     split=executed['target_scaled_splitting_error_upper']
     target_seed=F(iv.frobenius_upper(*iv.complex_sub(iv.complex_exact(source_target),iv.complex_exact(seed))))
     target_vector=target_seed+seed_budget['canonical_seed_vector_error_upper']
-    target_error=target_vector*(1+F(iv.frobenius_upper(*iv.complex_exact(source_target))))/2
+    target_error=F(certified_upper(
+        target_vector*(1+F(iv.frobenius_upper(*iv.complex_exact(source_target))))/2,
+        TARGET_GIBBS_ERROR_CEILING,'source target to finite Gibbs'))
     source_finite=max([split+executed['source_numerical_guard']]+[
         row['finite_source_budget_under_numerical_guards']['target_scaled_splitting_error_upper']
         +row['finite_source_budget_under_numerical_guards']['source_numerical_guard']
@@ -112,12 +156,12 @@ def run():
         'model_time_and_native_arrival_time_discrepancy_upper')
     return compact({'schema':'oph.interacting_band_extension.thermal_certificate.v1',
         'source_sha256':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCE_PATHS},
-        'original_hot_protocol':bracket_summary(hot)|{
-            'original_d4_preparation_allowance_upper':upper(old_allowance),
+        'original_hot_protocol':hot_summary|{
+            'original_d4_preparation_allowance_upper':certified_upper(old_allowance,F('0.566265'),'old preparation'),
             'd24_source_history_executed':False},
-        'cold_protocol':bracket_summary(cold)|{
+        'cold_protocol':cold_summary|{
             'temperature_selected_from_empirical_fit':False,
-            'canonical_seed_vector_error_upper':upper(seed_budget['canonical_seed_vector_error_upper'],12),
+            'canonical_seed_vector_error_upper':str(seed_error),
             'histories':rows},
         'source_execution':executed,
         'source_numerical_target_to_exact_finite_Gibbs_error_upper':upper(target_error,12),
