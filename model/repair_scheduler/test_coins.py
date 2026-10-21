@@ -144,6 +144,59 @@ def test_reused_correlated_auxiliary_keeps_every_coin_word_fair_with_active_refe
         assert np.trace(state).real == pytest.approx(1/8, abs=2e-16)
 
 
+def test_full_auxiliary_reuse_with_adaptive_nonunitary_work_histories():
+    """Coin fairness holds on every conditioned branch, without a reset.
+
+    The expected qutrit branch uses only its original reduced input and the
+    chosen work Kraus operators.  It never calls a native map or constructs
+    an auxiliary state.  Unlike unitary feedback, the two work outcomes have
+    different, state-dependent probabilities and genuinely condition the
+    next auxiliary invocation.
+    """
+    d, reference = 78, 3
+    rng = np.random.default_rng(112203)
+    vector = rng.normal(size=d*reference)+1j*rng.normal(size=d*reference)
+    vector /= np.linalg.norm(vector)
+    initial = np.outer(vector, vector.conj())
+    histories = {(): (initial, _marginal(initial, d))}
+    visited_laws, visited_seams = set(), set()
+    for step in range(3):
+        following = {}
+        for prefix, (state, expected) in histories.items():
+            # Both choices use only previously committed coin/work records.
+            law = 'C' if (step+sum(prefix)) % 2 else 'E'
+            seam = SEAMS[(sum(prefix)+7*step) % len(SEAMS)]
+            visited_laws.add(law)
+            visited_seams.add(seam)
+            for coin in (0, 1):
+                actual = coins.apply_coin(state, law, coin, seam=seam, binary=False)
+                assert np.trace(actual).real == pytest.approx(np.trace(state).real/2, abs=2e-15)
+                cyclic = np.roll(np.eye(reference), coin+step, axis=0)
+                for readout in (0, 1):
+                    weights = np.array([.001, .3, .8])
+                    if readout:
+                        weights = 1-weights
+                    kraus = np.diag(np.sqrt(weights))@cyclic
+                    output = np.einsum('ur,arbs,vs->aubv', kraus,
+                        actual.reshape(d, reference, d, reference), kraus.conj(),
+                        optimize=True).reshape(d*reference, d*reference)
+                    prediction = kraus@expected@kraus.conj().T/2
+                    reduced = _marginal(output, d)
+                    np.testing.assert_allclose(reduced, prediction, rtol=0, atol=2e-15)
+                    mass = np.trace(prediction).real
+                    assert mass > 0
+                    # Check rare conditional outputs as well as total mass.
+                    np.testing.assert_allclose(reduced/np.trace(reduced).real,
+                        prediction/mass, rtol=0, atol=2e-13)
+                    following[(*prefix, coin, readout)] = output, prediction
+        histories = following
+    assert len(histories) == 64
+    assert visited_laws == {'C', 'E'}
+    assert len(visited_seams) > 3
+    assert min(np.trace(state).real for state, _ in histories.values()) < 1e-4
+    assert sum(np.trace(state).real for state, _ in histories.values()) == pytest.approx(1, abs=2e-14)
+
+
 @pytest.mark.parametrize('law', ['C', 'E'])
 def test_actual_selector_reuses_auxiliary_and_retains_rejection_timeout(law):
     report = coins.auxiliary_execution(law, rounds=3)

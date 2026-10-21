@@ -86,7 +86,11 @@ support. Convexity proves the same inequality for arbitrary mixed inputs
 and reference dimensions. The first bound applies this argument to the
 whole traceless part. For a subnormalized input of trace p, multiply the
 bound by p. For a full 78-state input, first execute one absorbing sweep
-and apply (1) to the remaining sweeps.
+and apply (1) to the remaining sweeps. With classical law feedback, apply
+the bound separately conditional on the controller state after absorption,
+then sum the subnormalized branches. Their reference marginals sum to the
+original marginal, so the correlation created during absorption adds no
+independence assumption.
 
 **Seventeen sweeps, 510 native attempts, certify distance at most
 0.000000259 from the binary uniform state, including arbitrary untouched
@@ -260,4 +264,6 @@ histories, impossible/timeout outcomes, fine-record steering, biased modulo
 sampling, shared-bit memory and malformed-input controls challenge the
 implementation. Exact counts, structures, source bindings and rational
 bounds replay exactly; only floating diagnostics use the established
-comparison tolerance.
+comparison tolerance. Separate domain checks reject negative probabilities,
+nonzero mass for impossible records, and incomplete probability mass even
+when individual entries would fall within that tolerance.

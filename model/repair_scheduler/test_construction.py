@@ -3,6 +3,7 @@ import copy
 from fractions import Fraction as F
 from itertools import product
 import json
+from pathlib import Path
 import sys
 
 import numpy as np
@@ -351,3 +352,106 @@ def test_cli_checks_complete_receipt_and_rejects_duplicate_json(small_receipt, m
     path.write_text('{"schema":"first","schema":"second"}')
     with pytest.raises(ValueError):
         command.main()
+
+
+@pytest.fixture
+def retained_receipt():
+    # Exercise the real compact schema without repeating its expensive producer.
+    return json.loads(Path(__file__).with_name('results.json').read_text(encoding='utf-8'))
+
+
+def _corrupt_receipt_domain(receipt, mutation):
+    history = receipt['continuing_histories'][0]
+    joint = history['joint_probabilities']
+    auxiliary = receipt['auxiliary_executions'][0]
+    if mutation == 'negative_impossible':
+        joint[1][1] = -1e-10
+    elif mutation == 'negative_possible':
+        joint[2][2] = -1e-12
+    elif mutation == 'positive_impossible':
+        joint[1][1] = 1e-12
+    elif mutation == 'negative_error':
+        receipt['reference_histories'][0]['untouched_reference_marginal_error_diagnostic'] = -1e-12
+    elif mutation == 'joint_mass':
+        for i, row in enumerate(joint):
+            for j in range(len(row)):
+                if i != 1 and j != 1:
+                    row[j] += 1e-10
+    elif mutation == 'auxiliary_mass':
+        for row in auxiliary['probabilities_by_round_then_address']:
+            for i in range(len(row)):
+                row[i] += 1e-10
+    else:
+        raise AssertionError(mutation)
+
+
+@pytest.mark.parametrize('mutation', ['negative_impossible', 'negative_possible',
+                                     'positive_impossible', 'negative_error',
+                                     'joint_mass', 'auxiliary_mass'])
+def test_cli_rejects_invalid_probability_laws_even_within_replay_tolerance(
+        retained_receipt, mutation, monkeypatch, tmp_path):
+    from . import __main__ as command
+    corrupted = copy.deepcopy(retained_receipt)
+    _corrupt_receipt_domain(corrupted, mutation)
+    # This is precisely the gap that domain validation closes locally.
+    compare_receipt(corrupted, retained_receipt)
+    monkeypatch.setattr(command, 'run', lambda: copy.deepcopy(retained_receipt))
+    path = tmp_path/'receipt.json'
+    path.write_text(json.dumps(corrupted), encoding='utf-8')
+    monkeypatch.setattr(sys, 'argv', ['repair_scheduler', '--check', str(path)])
+    with pytest.raises(ValueError):
+        command.main()
+
+
+@pytest.mark.parametrize('value', [float('nan'), float('inf'), -float('inf'), -1e-300, 1.0000000001, True])
+def test_probability_domain_rejects_nonfinite_out_of_range_and_alias_values(retained_receipt, value):
+    from . import __main__ as command
+    retained_receipt['continuing_histories'][0]['joint_probabilities'][0][0] = value
+    with pytest.raises(ValueError):
+        command._validate_receipt_domains(retained_receipt)
+
+
+@pytest.mark.parametrize('mutation', [
+    lambda r: r.update(continuing_histories=None),
+    lambda r: r['continuing_histories'][0].pop('joint_probabilities'),
+    lambda r: r['continuing_histories'][0].update(joint_probabilities=[]),
+    lambda r: r['continuing_histories'][0]['joint_probabilities'].pop(),
+    lambda r: r['continuing_histories'][0]['joint_probabilities'][0].pop(),
+    lambda r: r['continuing_histories'][0].pop('public_record_order'),
+    lambda r: r['auxiliary_executions'][0].pop('probabilities_by_round_then_address'),
+    lambda r: r['auxiliary_executions'][0].pop('timeout_probability_diagnostic'),
+])
+def test_domain_validation_rejects_malformed_grids_with_value_error(retained_receipt, mutation):
+    from . import __main__ as command
+    mutation(retained_receipt)
+    with pytest.raises(ValueError):
+        command._validate_receipt_domains(retained_receipt)
+
+
+def test_legitimate_floating_rounding_remains_valid(retained_receipt, monkeypatch, tmp_path):
+    from . import __main__ as command
+    rounded = copy.deepcopy(retained_receipt)
+    joint = rounded['continuing_histories'][0]['joint_probabilities']
+    joint[0][0] = float(np.nextafter(joint[0][0], np.inf))
+    joint[0][-1] = float(np.nextafter(joint[0][-1], 0.))
+    auxiliary = rounded['auxiliary_executions'][0]['probabilities_by_round_then_address']
+    auxiliary[0][0] = float(np.nextafter(auxiliary[0][0], np.inf))
+    rounded['reference_histories'][0]['untouched_reference_marginal_error_diagnostic'] = 1e-15
+    compare_receipt(rounded, retained_receipt)
+    command._validate_receipt_domains(rounded)
+    monkeypatch.setattr(command, 'run', lambda: copy.deepcopy(retained_receipt))
+    path = tmp_path/'receipt.json'
+    path.write_text(json.dumps(rounded), encoding='utf-8')
+    monkeypatch.setattr(sys, 'argv', ['repair_scheduler', '--check', str(path)])
+    command.main()
+
+
+def test_write_cannot_emit_fresh_invalid_probability_diagnostics(retained_receipt, monkeypatch, tmp_path):
+    from . import __main__ as command
+    _corrupt_receipt_domain(retained_receipt, 'negative_impossible')
+    monkeypatch.setattr(command, 'run', lambda: retained_receipt)
+    path = tmp_path/'receipt.json'
+    monkeypatch.setattr(sys, 'argv', ['repair_scheduler', '--write', str(path)])
+    with pytest.raises(ValueError):
+        command.main()
+    assert not path.exists()
