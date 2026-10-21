@@ -523,13 +523,136 @@ small capped instance does not have an exact common inverse temperature.
 Nor is `sqrt(L)` the exact finite native-walk frequency:
 `Omega_30=sqrt(30) acos(I-L/60)`. The receipt separately bounds this
 dispersion error; its band gaps converge only under the stated scaling.
-The spectral-pair detector, positive-phase encoding and square-root unitary
-on this logical register are not compiled here. This is neither a prepared
+The continuation below compiles the spectral-pair detector and square-root
+comparison unitary on this logical register. Positive-phase encoding of the
+native arc walk remains separate. This is neither a prepared
 Fock state nor a radial product state. The ideal densities are central on
 the represented group algebra, where modular flow is trivial; source
 approximation errors have separate guards. Nontrivial gaps concern the
 full logical algebra. Passive selection, physical clocks and a public-data
 identification do not follow.
+
+<a id="prepared-reference-clock"></a>
+### One prepared register, incident clock and feedback history
+
+[prepared_clock.py](prepared_clock.py) continues that actual source preparation
+through a source-compiled clock, a current-selected intervention and a
+complete detector. The work register is never replaced by its ideal target.
+The [retained replay](prepared_clock_results.json) compares every quantum
+output, including an untouched twelve-dimensional reference, with an
+independent endpoint/spectral calculation.
+
+The canonical finite instance is:
+
+| Component | Executed contract |
+| --- | --- |
+| Carrier | One binary total-two native carrier, initially occupied at ports 10 and 11; one protected four-qubit work register |
+| Preparation | Supplied `I12/12`, represented with its retained purification; the existing source filter `F=I-L/120`; the existing 64-coin positive request sampler, capped at four filters |
+| Records | Every sampler request/rejection, first herald failure, two complete native seam/coin/current records, and all sixteen terminal addresses |
+| Clock | Every seam incident to port 10 triggers one fixed source word, including zero-current events |
+| Feedback | The first committed current triggers a pair kick exactly when port 10 loses its load; the second repair starts from that repair's actual native state |
+| Continuation | A source-bound checkpoint carries the unnormalized live arrays and binds the completed failure log; replay continues the serialized arrays |
+| Refinement | This finite cap and two-attempt horizon are executed; the inherited sampler/filter limit has its separate approximation and cost contract |
+
+All 64 sampling repairs use the empty seam `(0,1)`, so every coin word leaves
+the carrier fixed. The two subsequent IID uniform-seam repairs therefore
+continue that same carrier without a hidden request/state correlation.
+All 3,600 ordered native tapes are enumerated. Six groups share work
+operations; their full tapes and exact multiplicities remain available.
+The horizon is two attempts, not a wait for two ticks: zero- and one-tick
+outputs remain in the law.
+
+The native endpoint graph fixes `L` and its four spectral bands. Exact
+eigenvector equations and orthogonality establish the twelve-dimensional
+basis; its compiled extension retains all sixteen addresses. The actual
+finite preparation, rather than an asymptotic Gibbs replacement, fixes
+
+```text
+M = sum_(n=0)^4 w_n F^(2n),    rho = M/Tr(M),
+m0 = sum_n w_n,               H = -log(M/m0),
+U = exp(-iH).
+```
+
+The positive real logarithm fixes the gaps without a phase fit or integer
+phase aliases. [prepared_clock_source.py](prepared_clock_source.py) emits
+the basis changes, diagonal phases, intersector kicks and X/Y detectors
+using the existing source compiler. Every routine runs on all of its
+columns; execution reuses its raw returned matrix, retains padding and
+performs no polar correction. The `sqrt(L)` comparison clock is also
+compiled, but it is not the exact modular clock of this capped state.
+
+For the ideal successful work marginal on `B(C12)`,
+`rho^(is) O rho^(-is) = U(-s)^* O U(-s)`. Thus forward incident count `N`
+corresponds to modular parameter `s=-N`. This follows by substituting
+`log(rho)=-H+constant`, on all work operators, and composes with the
+declared instruments by ordinary CP composition. It does **not** identify
+the modular flow of the retained request/work algebra: the request-zero
+branch is tracial, whereas the averaged work state has a nonzero gap.
+The pure purification and four zero-weight padding modes likewise are
+outside that faithful-state identification. The archive retains all these
+records; taking its work marginal is an explicit access map.
+
+The first noncommuting kick makes the clock observable. Let `m6` be the
+eigenvalue of `M` on one chosen vector in the five-dimensional eigenvalue-six
+band, and `g=log(m0/m6)`. The native event “first attempt loses the port-10
+load and second attempt is incident” has probability `1/90`. On that event,
+the unconditional X-address contrast between feedback on and off is
+
+```text
+(m0-m6) sin(g)/(12*90) = 9.09849736... * 10^-7.
+```
+
+The source execution reproduces it. Removing the clock or the
+noncommuting kick removes this phase signal. The preparation success
+probability is about `0.80215045`; it has not been divided out of the
+contrast. Independent tests check the complete per-request X/Y laws,
+native continuation, and corrupted reference phases that preserve every
+outcome probability.
+
+The complete error comparison uses **numerically checked operator guards**,
+not interval arithmetic or measured device fidelities. For a one-filter
+guard `delta`, put `g_filter=(1+delta)^2`. Retaining every first failure gives
+preparation half-diamond allowance
+`Eprep <= sum_n w_n (g_filter^n-1)/2`. If successful continuation has channel
+gain `Gc` and half-diamond allowance `Ec`, telescoping gives
+`Ecomplete <= Gc*Eprep + Psuccess*Ec`. Raw amplification is included; no
+success conditioning enters this bound. A separate `1e-10` numerical
+arithmetic allowance is included. The combined allowance is below `6e-8`,
+and direct complete quantum-output discrepancies are below `1e-10`.
+Each single-setting raw event weight can differ by `2*Ecomplete`; the
+two-setting signed contrast remains positive after `4*Ecomplete`.
+Conditioned claims require their separately reported success-probability
+penalty. A future interval certificate would strengthen these numerical
+checks without changing the finite experiment.
+
+At most four source filters and two clock steps are invoked. The maximum
+is **538,182 source pulses**, with one load and export per pulse; numerical
+cache reuse removes no service invocation. Peak encoded storage is nineteen
+qubits, including the retained reference and filter environment/scratch,
+besides the native carrier and six-dimensional source processor. The receipt
+also counts the serialized source-word packet, its byte-address cursor,
+the separate expanded-pulse ordinal, records, counters, the five 64-bit
+sampler thresholds and early-failure resource expectations. The source-word
+packet is a storage subtotal; it does not include the controller/interpreter
+program or working memory. The two observation-setting bits are counted separately.
+At most 66 native-carrier placement coins are used: 64 for the sampler and
+two for subsequent repairs. At most two IID uniform selections among thirty seams
+are separate supplied service calls, with ideal mean `2*Psuccess`. Exact
+uniform selection among thirty possibilities has no fixed finite fair-bit
+implementation, so no such worst-case bit budget is claimed.
+Preparation blanks, protected storage, coherent source services,
+herald/readout and the controller's paused-carrier schedule remain supplied.
+Physical duration, drift and service fidelity are not bounded.
+
+This completes the finite preparation-to-clock-and-detector connection.
+It supplies neither a growing nonconstant product-field encoder nor the
+original eight-mode scalar benchmark, and it does not identify empirical
+seconds, interacting fields or a relativistic spacetime.
+
+```sh
+python -m model.predictions.prepared_clock --check model/predictions/prepared_clock_results.json
+python -m pytest -q -W error model/predictions/test_prepared_clock.py model/predictions/test_prepared_clock_source.py
+```
 
 ## Native repair response from passive clock and field records
 

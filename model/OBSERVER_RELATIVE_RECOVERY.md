@@ -66,6 +66,16 @@ The separate [capped Gibbs subordination](predictions/README.md#positive-subordi
 retains all failures and bounds state and modular-gap errors on a finite
 register. Its exact uncapped sampler has infinite mean cost; it prepares
 neither a product Fock state nor a physical collar or geometric entropy law.
+The [continuing finite experiment](predictions/README.md#prepared-reference-clock) applies
+a [compiled positive-log clock, pair intervention and X/Y detector](predictions/prepared_clock_source.py)
+to that same register. All 3600 two-attempt native tapes, failed preparations,
+sixteen detector addresses and untouched reference outputs remain included.
+The ideal successful work marginal determines `H=-log(M/m0)` and
+`sigma_s=alpha_(-s)` after request forgetting and reference trace; that
+identity does not extend to the complete record/work state or unsupported
+padding; numerical source errors remain separate. This fixed finite execution
+supplies neither the growing nonconstant product-mode encoder nor the original
+scalar benchmark.
 
 ### One complete joint observer comparison
 

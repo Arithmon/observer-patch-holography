@@ -271,6 +271,36 @@ class ModelTheoremMapTests(unittest.TestCase):
         self.data["contract_coverage"]["lean_files"] = ["Lean/New.lean"]
         self.assertEqual(self.errors(), [])
 
+    def test_lean_inventory_has_one_case_sensitive_order_on_all_platforms(self):
+        expected = [
+            "Lean/Dynamics/Exact.lean",
+            "Lean/Dynamics.lean",
+            "Lean/Locality.lean",
+            "Lean/Main.lean",
+            "Lean/ObservableNormalForms/ObservableNormalForms/Exact.lean",
+            "Lean/ObservableNormalForms/lakefile.lean",
+            "Lean/lakefile.lean",
+        ]
+        # Windows Path comparison folds case and orders lakefile before
+        # Locality; both checkout and fixture discovery must preserve the
+        # canonical case-sensitive component order instead. Directory/file
+        # prefixes also retain the established POSIX Path ordering.
+        for name in reversed(expected):
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text("theorem actual : True := trivial\n")
+        git_result = builder.subprocess.CompletedProcess(
+            args=[], returncode=0,
+            stdout=b"\0".join(name.encode() for name in reversed(expected))+b"\0")
+        for mode in ("git", "fixture"):
+            with self.subTest(mode=mode):
+                options = ({"return_value": git_result} if mode == "git"
+                           else {"side_effect": OSError("git unavailable")})
+                with patch.object(builder.subprocess, "run", **options):
+                    actual = builder.lean_inventory(self.root)
+                self.assertEqual(list(actual), expected)
+                self.assertEqual(list(actual.values()), [1]*len(expected))
+
     def test_binding_cannot_erase_canonical_inputs_or_claim_discharge(self):
         self.joined_fixture()
         for field in ("assumptions", "imports"):
