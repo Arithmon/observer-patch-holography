@@ -13,7 +13,9 @@ from .construction import (Lattice, Term, exact_apply, exact_norm_squared,
                            execute_term, history, leakage_witness, normalized,
                            high_parity_instrument, reduced_output_distance, tv,
                            ProductBand, product_gibbs_preparation,
-                           product_interaction_control, product_parameter_recovery)
+                           product_interaction_control, product_parameter_recovery,
+                           product_incident_tapes, product_incident_clock_control,
+                           product_incident_clock_bound)
 
 
 def test_product_radial_integral_and_compression_against_padded_oscillators():
@@ -85,6 +87,82 @@ def test_product_records_do_not_fix_the_absolute_energy_and_time_unit():
     beta, time, scale = .25, .0625, 7.
     assert np.allclose(expm(-beta*h), expm(-(beta/scale)*(scale*h)))
     assert np.allclose(expm(-1j*time*h), expm(-1j*(time/scale)*(scale*h)))
+
+
+def test_native_product_clock_keeps_every_endpoint_coin_and_zero_current_incident():
+    from ..observer.quantum_mixing import seams
+    tapes = product_incident_tapes()
+    assert len(tapes) == len(set(tapes)) == 3600
+    counts = [0, 0, 0]
+    null_incidents = 0
+    for first, second, final in tapes:
+        loads = [0]*10+[1, 1]
+        for edge, coin, current, incident in (first, second):
+            left, right = seams()[edge]
+            total = loads[left]+loads[right]
+            # Independent balancing rule, expressed as the final endpoint
+            # allocation instead of calling the native current implementation.
+            expected_left = total//2 + coin*(total % 2)
+            assert current == loads[left]-expected_left
+            loads[left], loads[right] = expected_left, total-expected_left
+            assert incident == int(10 in (left, right))
+            null_incidents += int(incident and current == 0)
+        assert tuple(loads) == final
+        counts[first[3]+second[3]] += 1
+    assert counts == [2500, 1000, 100]
+    assert null_incidents > 0
+    # This is the exact two-attempt binomial clock, not an inserted Poisson law.
+    assert abs(counts[0]/3600-np.exp(-1/3)) > .01
+
+
+def test_incident_controller_retains_timeout_work_and_reference_outputs():
+    result = product_incident_clock_control()
+    assert result['complete_native_tape_and_field_prefix_outcomes'] == 4900
+    assert result['timeout_probability'] == F(35, 36)
+    rows = result['complete_clock_and_field_record_law']
+    assert [sum(row['incident_ticks'] == tick for row in rows) for tick in range(3)] == [1, 2, 4]
+    assert sum(row['probability'] for row in rows) == pytest.approx(1, abs=1e-10)
+    assert sum(row['probability'] for row in rows if row['timeout']) == pytest.approx(35/36, abs=1e-10)
+    assert result['retained_work_addresses'] == result['retained_reference_addresses'] == 16
+    assert result['complete_native_tape_work_reference_record_trace_error_numerical'] < 1e-7
+    assert result['nonzero_current_tick_marginal_tv'] > .1
+    assert result['feedback_removal_complete_output_distance'] > 1e-3
+    assert result['source_pauses_during_field_services']
+    assert not result['fixture_is_full_refined_screen_clock']
+    assert not result['physical_service_or_lab_second_calibration_certified']
+
+
+def test_clock_controller_oracle_rejects_counting_ticks_without_interacting_evolution(monkeypatch):
+    monkeypatch.setattr(ProductBand, 'source_evolve', lambda self, state, duration, steps: state)
+    with pytest.raises(ArithmeticError, match='joint incident-clock'):
+        product_incident_clock_control()
+
+
+def test_same_interacting_generator_clock_schedule_has_vanishing_complete_budget():
+    rows = [product_incident_clock_bound(level) for level in (2, 5, 8)]
+    errors = [row['nominal_work_law_with_retained_clock_tape_error_upper'] for row in rows]
+    assert errors[0] > errors[1] > errors[2] > 0
+    assert errors[-1] < F(1, 1000)
+    for row in rows:
+        rate = row['incident_rate_per_normalized_attempt_unit']
+        assert rate == 10*4**row['level']
+        assert row['model_time_per_zero_inclusive_incident'] == F(1, rate)
+        assert row['modular_increment_per_incident_at_beta_one_quarter'] == -F(4, rate)
+        assert row['total_source_instrument_error_upper'] == F(2, rate**2)
+        assert row['same_occupation_H_at_every_clock_level']
+        assert not row['source_services_and_storage_accuracy_certified']
+    # Occupation and clock limits require a diagonal budget; a fixed clock
+    # schedule cannot absorb an arbitrarily growing interacting generator.
+    larger = product_incident_clock_bound(5, occupation=8)
+    assert larger['centered_generator_norm_sum_upper'] > rows[1]['centered_generator_norm_sum_upper']
+    assert larger['same_H_product_formula_error_upper'] > rows[1]['same_H_product_formula_error_upper']
+    nonaligned = product_incident_clock_bound(3, interval=F(1, 17))
+    assert nonaligned['nominal_read_time_rounding_error_upper'] > 0
+    for kwargs in ({'degree': True}, {'degree': 7}, {'steps': 0}, {'tolerance': F(0)}):
+        with pytest.raises(ValueError):
+            product_incident_clock_bound(2, **kwargs)
+    with pytest.raises(ValueError, match='sixteen-state'):
+        product_gibbs_preparation(ProductBand(occupation=8))
 
 
 @pytest.fixture(scope='module')
@@ -314,3 +392,90 @@ def test_invalid_exact_inputs_are_rejected(value):
         a.history_bound(value)
     with pytest.raises(ValueError):
         a.grid_history_bound(value, F(1, 8))
+
+
+@pytest.mark.parametrize('coupling,beta', [(0, F(1, 4)), (1, F(1, 4)), (3, F(1))])
+def test_product_occupation_harmonic_eigenvalue_and_exact_Gibbs_tail_bounds(coupling, beta):
+    d = 12
+    eigenvalues = np.linalg.eigvalsh(ProductBand(coupling, occupation=d).hamiltonian.toarray())
+    harmonic = sorted(i+2*j+1.5 for i in range(d*d) for j in range(d*d))[:d*d]
+    assert np.min(eigenvalues-np.array(harmonic)) > -1e-11
+    weights = np.exp(-float(beta)*eigenvalues)
+    partition = float(weights.sum())
+    for k in (0, 4, 8, 16):
+        bound = a.product_gibbs_tail(beta, coupling, k)
+        assert float(bound['partition_function_lower']) <= partition
+        assert partition <= float(bound['partition_function_upper'])
+        rank = bound['retained_spectral_rank']
+        assert weights[rank:].sum()/partition <= float(bound['normalized_spectral_tail_upper'])+1e-15
+        assert not bound['occupation_projection_or_record_error_certified']
+    assert a.product_gibbs_tail(beta, coupling, 32)['normalized_spectral_tail_upper'] < F(1, 1000)
+
+
+def test_product_occupation_is_nested_full_polynomial_compression():
+    small, large = ProductBand(occupation=4), ProductBand(occupation=8)
+    addresses = [i+8*j for j in range(4) for i in range(4)]
+    large_matrix = large.hamiltonian.toarray()
+    assert np.allclose(large_matrix[np.ix_(addresses, addresses)], small.hamiltonian.toarray(), atol=1e-13)
+    low = np.linalg.eigvalsh(small.hamiltonian.toarray())
+    high = np.linalg.eigvalsh(large_matrix)
+    assert np.all(high[:len(low)] <= low+1e-12)
+    assert np.exp(-high/4).sum() > np.exp(-low/4).sum()
+    # Taking powers after projection changes even the finite target action.
+    q = normalized(a.polynomial(4, 1))
+    assert np.linalg.norm(normalized(a.polynomial(4, 4))-q@q@q@q) > 1
+
+
+def test_product_reference_alignment_is_needed_for_complete_state_convergence():
+    energies, basis = np.linalg.eigh(ProductBand().hamiltonian.toarray())
+    weights = np.exp(-energies/4); weights /= weights.sum()
+    amplitude = basis*np.sqrt(weights)
+    changed_basis = basis.copy(); changed_basis[:, ::2] *= -1
+    changed = changed_basis*np.sqrt(weights)
+    assert np.allclose(amplitude@amplitude.T, changed@changed.T, atol=1e-14)
+    assert np.linalg.norm(amplitude-changed) > 1
+    # Applying each conjugate eigenbasis to its retained reference gives
+    # the same canonical square root, without tracing out any amplitude.
+    assert np.allclose(amplitude@basis.T, changed@changed_basis.T, atol=1e-14)
+
+
+def test_product_occupation_refinement_keeps_the_complete_ideal_history():
+    result = a.product_occupation_refinement()
+    assert [row['occupation_per_mode'] for row in result['dimensions']] == [4, 8, 12]
+    for row in result['dimensions']:
+        assert row['canonical_reference_norm_squared'] == pytest.approx(1., abs=1e-13)
+        assert sum(x['probability'] for x in row['complete_two_read_law']) == pytest.approx(1., abs=1e-13)
+        assert [x['bits'] for x in row['complete_two_read_law']] == [[0, 0], [0, 1], [1, 0], [1, 1]]
+    distances = [row['complete_record_work_reference_trace_distance_numerical']
+                 for row in result['successive_comparisons']]
+    assert 0 < distances[1] < distances[0] < 1
+    assert not result['numerical_comparisons_certify_infinite_occupation_error']
+    assert not result['growing_occupation_source_execution']
+
+
+def test_product_occupation_refinement_does_not_reuse_a_fixed_source_error_budget():
+    from .construction import splitting_bound
+    small = splitting_bound(ProductBand(), F(1, 16), 64)
+    large = splitting_bound(ProductBand(occupation=12), F(1, 16), 64)
+    assert large['centered_generator_norm_sum_upper'] > 5*small['centered_generator_norm_sum_upper']
+    assert large['one_interval_operator_error_upper'] > small['one_interval_operator_error_upper']
+    with pytest.raises(ValueError, match='sixteen-state'):
+        product_gibbs_preparation(ProductBand(occupation=8))
+
+
+@pytest.mark.parametrize('beta,coupling,shell', [(0, 1, 8), (True, 1, 8), (F(1, 4), -1, 8),
+                                                (F(1, 4), 1, -1), (F(1, 4), 1, 2.5)])
+def test_product_Gibbs_tail_requires_declared_exact_positive_temperature(beta, coupling, shell):
+    with pytest.raises(ValueError):
+        a.product_gibbs_tail(beta, coupling, shell)
+
+
+def test_product_harmonic_shell_count_and_tail_are_an_exact_series_identity():
+    q = F(4, 5)
+    total = 1/((1-q)*(1-q*q))
+    for k in (0, 1, 3, 8):
+        labels = [(i, j) for i in range(2*k) for j in range(k) if i+2*j < 2*k]
+        assert len(labels) == k*(k+1)
+        head = sum((q**(i+2*j) for i, j in labels), F(0))
+        bound = a.product_gibbs_tail(shell=k)
+        assert bound['unnormalized_spectral_tail_upper'] == total-head

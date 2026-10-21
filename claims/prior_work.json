@@ -7511,6 +7511,20 @@
       "note": "Nine-qubit code; first quantum error-correcting code."
     },
     {
+      "key": "simon1978canonical",
+      "type": "article",
+      "author": "Simon, Barry",
+      "title": "A Canonical Decomposition for Quadratic Forms with Applications to Monotone Convergence Theorems",
+      "journal": "Journal of Functional Analysis",
+      "volume": "28",
+      "pages": "377--385",
+      "year": "1978",
+      "doi": "10.1016/0022-1236(78)90094-0",
+      "verified": true,
+      "verification_source": "https://math.caltech.edu/SimonPapers/81.pdf",
+      "note": "Sections 3--4: monotone convergence of closed forms, including nondense finite-dimensional domains. The specific Hermite form core and Gibbs trace convergence are checked in the model."
+    },
+    {
       "key": "sirlin1991theoretical",
       "type": "article",
       "author": "Sirlin, A.",

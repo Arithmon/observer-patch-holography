@@ -759,6 +759,164 @@ def radial_nonidentifiability_control():
         'existing_Dirichlet_product_or_general_OPH_is_refuted': False}
 
 
+def execute_radial_records(seams):
+    """Complete total-one native branches; final loads are not exported."""
+    records = []
+    for p in range(PORTS):
+        for seam in seams:
+            for coin in (0, 1):
+                _, (_, current) = native.native(tuple(int(i == p) for i in range(PORTS)), seam, coin)
+                records.append({'preparation_port': p, 'seam': list(seam),
+                                'coin': coin, 'current': current})
+    return records
+
+
+def _lumped_kernel(kernel, blocks):
+    """Exact row-kernel lumping; averages cannot replace equal block sums."""
+    if (not blocks or any(not block for block in blocks)
+            or sorted(p for block in blocks for p in block) != list(range(kernel.rows))):
+        raise ValueError('a partition of the complete kernel required')
+    quotient = sp.Matrix([[sum(kernel[block[0], q] for q in target)
+                           for target in blocks] for block in blocks])
+    for i, block in enumerate(blocks):
+        if any(sum(kernel[p, q] for q in target) != quotient[i, j]
+               for p in block for j, target in enumerate(blocks)):
+            raise ValueError('shell records are not strongly lumpable')
+    return quotient
+
+
+def recover_radial_records(records, observer=0):
+    """Recover shell histories from complete labelled native branch records.
+
+    Equal branch weights are the declared uniform-seam/fair-coin protocol,
+    not empirical frequencies. Known total-one preparations and authentic
+    complete current access are required. No hidden endpoint or graph is an
+    input. The resulting radius is graph distance on this same carrier.
+    """
+    if type(observer) is not int or observer not in range(PORTS):
+        raise ValueError('a native observer port required')
+    if type(records) not in (list, tuple) or not records:
+        raise ValueError('complete native branch records required')
+    outcomes, seams = {}, set()
+    for row in records:
+        if type(row) is not dict or set(row) != ng.RECORD_FIELDS-{'probability'}:
+            raise ValueError('only preparation, seam, coin and current records accepted')
+        p, seam, coin, current = (row[name] for name in ('preparation_port', 'seam', 'coin', 'current'))
+        if (type(p) is not int or p not in range(PORTS)
+                or type(seam) not in (list, tuple) or len(seam) != 2
+                or any(type(i) is not int or i not in range(PORTS) for i in seam)
+                or seam[0] >= seam[1] or type(coin) is not int or coin not in (0, 1)
+                or type(current) is not int or current not in (-1, 0, 1)):
+            raise ValueError('native preparation, ordered seam, coin and current required')
+        a, b = seam
+        difference = int(p == a)-int(p == b)
+        if current != (difference-(2*coin-1)*abs(difference))//2:
+            raise ValueError('current contradicts the declared total-one native preparation')
+        key = p, a, b, coin
+        if key in outcomes:
+            raise ValueError('duplicate native branch record')
+        decoded = [int(i == p)+current*(int(i == b)-int(i == a)) for i in range(PORTS)]
+        outcomes[key] = decoded.index(1)
+        seams.add((a, b))
+    if set(outcomes) != {(p, a, b, coin) for p in range(PORTS) for a, b in seams for coin in (0, 1)}:
+        raise ValueError('complete preparations and both coins on every seam required')
+    denominator = 2*len(seams)
+    remote, incident = sp.zeros(PORTS), sp.zeros(PORTS)
+    for (p, a, b, _), q in outcomes.items():
+        (incident if observer in (a, b) else remote)[p, q] += sp.Rational(1, denominator)
+    kernel = remote+incident
+    shells, unseen = [(observer,)], set(range(PORTS))-{observer}
+    while unseen:
+        layer = tuple(sorted(q for q in unseen if any(kernel[p, q] > 0 for p in shells[-1])))
+        if not layer:
+            raise ValueError('the recovered native carrier is not connected')
+        shells.append(layer); unseen.difference_update(layer)
+    q0, q1 = (_lumped_kernel(matrix, shells) for matrix in (remote, incident))
+    radial = denominator*(sp.eye(len(shells))-q0-q1)
+    stopped = (sp.eye(len(shells))-q0).inv()*q1
+    encode = lambda matrix: [[str(x) for x in row] for row in matrix.tolist()]
+    return {'observer': observer, 'record_count': len(records), 'events_per_preparation': denominator,
+        'shells': [list(block) for block in shells], 'shell_sizes': list(map(len, shells)),
+        'native_row_kernel': encode(kernel), 'radial_generator': encode(radial),
+        'remote_row_kernel': encode(q0), 'incident_row_kernel': encode(q1),
+        'first_incident_row_kernel': encode(stopped),
+        'all_marked_shell_histories_close_exactly': True,
+        'hidden_final_loads_or_supplied_radial_graph_used': False,
+        'uniform_seam_fair_coin_law_and_total_one_preparations_declared': True,
+        'finite_sample_or_laboratory_noise_bound': False}
+
+
+def native_radial_record_control():
+    """Source shell quotient, marked-clock obstruction and exact arc readout."""
+    structure = recover_structure(ng.execute_calibration())
+    records = execute_radial_records(tuple(tuple(edge) for edge in structure['seams']))
+    recovered = recover_radial_records(records)
+    shells = recovered['shells']
+    radial = sp.Matrix(recovered['radial_generator'])
+    kernel = sp.Matrix(recovered['native_row_kernel'])
+    q0, q1 = (sp.Matrix(recovered[name]) for name in ('remote_row_kernel', 'incident_row_kernel'))
+    stopped = sp.Matrix(recovered['first_incident_row_kernel'])
+    lift = sp.Matrix(PORTS, len(shells), lambda p, r: int(p in shells[r]))
+    lap = 60*(sp.eye(PORTS)-kernel)
+    mass = sp.diag(*recovered['shell_sizes'])
+    if (recovered['shell_sizes'] != [1, 5, 5, 1] or lap*lift != lift*radial
+            or mass*radial != radial.T*mass or lift.T*lift != mass
+            or q0*sp.ones(4, 1) != sp.ones(4, 1)*sp.Rational(5, 6)):
+        raise ArithmeticError('native radial histories lost their exact weighted quotient')
+    commutator = stopped*radial-radial*stopped
+    if commutator == sp.zeros(4):
+        raise ArithmeticError('the stopped clock falsely became a scalar spectral continuation')
+    wrong_shells = [list(block) for block in shells]
+    wrong_shells[1][0], wrong_shells[2][0] = wrong_shells[2][0], wrong_shells[1][0]
+    try:
+        _lumped_kernel(kernel, wrong_shells)
+    except ValueError:
+        pass
+    else:
+        raise ArithmeticError('an inequitable shell partition falsely closed its histories')
+    # Native arc reversal retains zero-current outcomes. Amplitudes are
+    # stored multiplied by sqrt(60), so all operations stay rational.
+    keys = [(row['preparation_port'], *row['seam'], row['coin']) for row in records]
+    index = {key: i for i, key in enumerate(keys)}
+    reversal = []
+    for row in records:
+        p, (a, b), coin, current = (row[name] for name in ('preparation_port', 'seam', 'coin', 'current'))
+        q = a+b-p if current else p
+        reversal.append(index[q, a, b, 1-coin if current else coin])
+    if any(reversal[reversal[i]] != i for i in range(len(records))):
+        raise ArithmeticError('native radial arc reversal is not an involution')
+    vector = [sp.Integer(p == 0) for p, *_ in keys]
+    previous, cosine = sp.eye(PORTS), kernel
+    wave_rows = []
+    for steps in range(4):
+        compressed = sp.Matrix([sum(vector[i] for i, key in enumerate(keys) if key[0] == p)/60
+                                for p in range(PORTS)])
+        expected = sp.eye(PORTS)[:, 0] if steps == 0 else cosine[:, 0]
+        if compressed != expected or any(compressed[p] != compressed[block[0]] for block in shells for p in block):
+            raise ArithmeticError('native arc wave failed its radial polynomial readout')
+        wave_rows.append({'incident_triggers': steps,
+            'shell_compressed_amplitudes': [str(compressed[block[0]]) for block in shells],
+            'Ramsey_plus_probability': str((1+compressed[0])/2),
+            'Ramsey_minus_probability': str((1-compressed[0])/2)})
+        means = [sum(vector[i] for i, key in enumerate(keys) if key[0] == p)/60 for p in range(PORTS)]
+        reflected = [2*means[key[0]]-value for key, value in zip(keys, vector, strict=True)]
+        vector = [reflected[reversal[i]] for i in range(len(keys))]
+        if steps:
+            previous, cosine = cosine, 2*kernel*cosine-previous
+    return {**recovered, 'exact_native_arc_count': len(records),
+        'weighted_self_adjoint_radial_generator': True,
+        'radial_generator_characteristic_polynomial': str(radial.charpoly().as_expr()),
+        'stopped_clock_commutator_entry_0_1': str(commutator[0, 1]),
+        'exchanged_shell_ports_control_rejected': True,
+        'first_incident_timeout_after_N_attempts': '(5/6)^N',
+        'active_wave_complete_Ramsey_outputs': wave_rows,
+        'active_wave_protocol': 'one protected native arc walk per incident trigger; timing source pauses during service',
+        'passive_stopped_density_equals_active_wave': False,
+        'source_pulses_for_this_radial_input_reexecuted': False,
+        'radial_shells_are_an_independent_product_coordinate': False,
+        'product_radial_factor_or_physical_length_selected': False}
+
+
 def run():
     uniform_records = ng.execute_calibration()
     uniform = ng.recover(uniform_records)
@@ -820,6 +978,7 @@ def run():
         'native_increment_metric': native_increment,
         'native_optical_front': native_optical_front_control(),
         'radial_selection_control': radial_nonidentifiability_control(),
+        'native_radial_record_quotient': native_radial_record_control(),
         'incomplete_exposure_control': {'exposed_seams': len(missing['seams']),
             'rank_three_structural_gram_certified': missing['rank_three_structural_gram_certified']},
         'scope': {'federation_needed_for_finite_carrier_result': False,

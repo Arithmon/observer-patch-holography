@@ -184,6 +184,94 @@ def grid_history_bound(grid, total_time):
             'grid_increases_bandwidth': False}
 
 
+def product_gibbs_tail(beta=F(1, 4), coupling=1, shell=8):
+    """Exact spectral-rank tail for the two radial modes, at any occupation.
+
+    H >= H_harm with energies n1+2*n2+3/2. The first k*(k+1)
+    harmonic eigenvalues have n1+2*n2 < 2*k. Min-max transfers their
+    ordered tail to every full-polynomial compression and the limit.
+    This is not an occupation-projection error or a finite-cutoff rate.
+    """
+    beta, coupling, k = rational(beta, positive=True), rational(coupling), integer(shell, 0)
+    # exp(-beta) <= 1/(1+beta); discard exp(-3*beta/2) in upper bounds.
+    q = 1/(1+beta)
+    upper = 1/((1-q)*(1-q*q))
+    tail = q**(2*k)*((k+1)-k*q*q)*upper
+    # Jensen on the frequency-two product blank gives Z >= exp(-beta E0).
+    # (1-x/n)**n <= exp(-x), with n >= 2*x, is positive and rational.
+    blank_energy = F(13, 8)+5*coupling/128
+    x = beta*blank_energy
+    n = max(1, (2*x.numerator+x.denominator-1)//x.denominator)
+    lower = (1-x/n)**n
+    return {'inverse_temperature': beta, 'coupling': coupling,
+            'harmonic_shell_exclusive': 2*k,
+            'retained_spectral_rank': k*(k+1),
+            'product_blank_energy': blank_energy,
+            'partition_function_lower': lower,
+            'partition_function_upper': upper,
+            'unnormalized_spectral_tail_upper': tail,
+            'normalized_spectral_tail_upper': min(F(1), tail/lower),
+            'all_full_polynomial_occupation_compressions': True,
+            'unrestricted_two_mode_Gibbs_state': True,
+            'occupation_projection_or_record_error_certified': False,
+            'spatial_bandwidth_removed': False}
+
+
+def product_occupation_refinement():
+    """Independent finite-matrix diagnostics for the fixed two-mode limit.
+
+    The proof is in README; these are not certified infinite-tail errors
+    or new growing-code source executions. Canonical references are kept.
+    """
+    import numpy as np
+    from .construction import ProductBand, history
+
+    rows, comparisons, previous = [], [], None
+    for d in (4, 8, 12):
+        lattice = ProductBand(occupation=d)
+        energies, basis = np.linalg.eigh(lattice.hamiltonian.toarray())
+        unnormalized = np.exp(-energies/4)
+        partition = float(unnormalized.sum())
+        weights = unnormalized/partition
+        canonical = (basis*np.sqrt(weights))@basis.T
+        laws, branches = history(lattice, source=False, initial=canonical,
+                                  return_states=True)
+        rows.append({'occupation_per_mode': d,
+                     'partition_function_numerical': partition,
+                     'first_six_energy_levels_numerical': [float(x) for x in energies[:6]],
+                     'complete_two_read_law': laws,
+                     'canonical_reference_norm_squared': float(np.linalg.norm(canonical)**2)})
+        if previous is not None:
+            old_d, old_canonical, old_branches = previous
+            addresses = [i+d*j for j in range(old_d) for i in range(old_d)]
+
+            def embed(matrix):
+                result = np.zeros_like(canonical, dtype=complex)
+                result[np.ix_(addresses, addresses)] = matrix
+                return result
+
+            overlap = abs(np.vdot(embed(old_canonical), canonical))
+            preparation_distance = np.sqrt(max(0., 1-overlap*overlap))
+            complete_distance = 0.
+            for old, new in zip(old_branches, branches, strict=True):
+                old = embed(old)
+                mass = np.linalg.norm(old)**2+np.linalg.norm(new)**2
+                discriminant = mass*mass-4*abs(np.vdot(old, new))**2
+                complete_distance += np.sqrt(max(0., discriminant))/2
+            comparisons.append({'occupations': [old_d, d],
+                'canonical_purification_trace_distance_numerical': float(preparation_distance),
+                'complete_record_work_reference_trace_distance_numerical': float(complete_distance)})
+        previous = d, canonical, branches
+    return {'scope': 'Fixed two radial modes; ideal finite-matrix occupation checks with canonical untouched reference.',
+            'preparation_sign': 1, 'model_time_per_interval': F(1, 16),
+            'dimensions': rows, 'successive_comparisons': comparisons,
+            'rational_spectral_tail_bounds': [product_gibbs_tail(shell=k) for k in (8, 16, 32)],
+            'unrestricted_two_mode_limit_proved_in_README': True,
+            'numerical_comparisons_certify_infinite_occupation_error': False,
+            'growing_occupation_source_execution': False,
+            'spatial_ultraviolet_limit_or_physical_identification': False}
+
+
 def serializable(value):
     if isinstance(value, F):
         return str(value)

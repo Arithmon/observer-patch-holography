@@ -626,8 +626,79 @@ after multiplication. At occupation cutoff `4x4`, native source pulses
 prepare the interacting Gibbs state and execute complete two-read feedback
 histories jointly with its reference. The ideal state determines its modular
 flow; raw preparation and propagation residuals remain separate. The
-coupling and model-time intervals are declared. This projection is not an
-invariant mode band or a proof of an interacting ultraviolet continuum.
+coupling and model-time intervals are declared. A native-incident protocol
+now advances this same Hamiltonian on zero-inclusive ticks, retaining every
+timeout and disturbed work/reference output. Its refinement controls the
+conversion to model time under the declared paused-service architecture.
+The two-mode positive form has a faithful trace-class Gibbs state and
+convergent complete adaptive histories as occupation grows. Canonical
+reference embeddings and a common occupation/clock/precision schedule
+are necessary. The d=4 to d=8 complete-output distance is about 0.56045;
+the small executed code supplies no accurate unrestricted-output claim.
+This projection is not an invariant spatial band or a proof of an
+interacting ultraviolet continuum.
+
+<a id="integrated-effective-description"></a>
+### Integrated effective-description verdict
+
+The native angular form, its independent radial-product construction and
+its active observer protocol admit one consistent scalar effective theory.
+With `B=-d_r^2+Abar`, its free thermal covariance is
+`coth(beta sqrt(B)/2)/(2 sqrt(B))`, its retarded response is
+`sin(t sqrt(B))/sqrt(B)`, and the same state has modular parameter
+`s=-t/beta`. The product wave action determines a Lorentz-signature
+coefficient density on one time and three spatial coordinates. On a smooth
+representative of the complete density this is the ordinary static scalar
+field theory with the declared radial boundary condition. The full
+coefficient density, including the measure, must be checked. The actual
+radial-projection measure is continuous but not C1 across original face
+edges in the fixed sphere atlas. Since `Ctt=-mu`, that exact dictionary
+does not satisfy the smooth-density premise. Smooth comparison forms
+approximate the measurable wave theory; a different smooth dictionary
+would require its own justification. The reflecting radial boundary is
+part of this theory. No boundary-free Hadamard or renormalized-stress
+claim is inferred.
+
+The actual product nevertheless admits smooth effective descriptions.
+Angular smoothing of its positive Lipschitz measure and measurable elliptic
+tensor, with the local unitary readout map `U_epsilon=sqrt(rho_epsilon/rho)`,
+gives norm-resolvent convergence on the common Dirichlet cylinder. Thermal
+field covariances and sine responses converge in operator norm; momentum
+covariances converge on the Dirichlet form domain. For any fixed finite
+Weyl/Ramsey/feedback menu over bounded wave times and any positive error
+tolerance, one common smooth static `1+3` metric reproduces all its joint
+probabilities and finite detector/reference outputs within that tolerance.
+Source and incident-clock errors enter the same triangle budget. This is
+an existence result for a fixed sequence of smooth descriptions, with no
+data fitting, computable smoothing rate or exact smooth-native claim.
+The [proof and readout domain](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+retain the radial boundary, state and active-control assumptions.
+
+Clock conversions retain their protocol: the free product controller uses
+`t=(2d/sqrt(630))*tau`, while the interacting controller's word durations
+`1/R_l` give `t_model=tau` in its limit. The common action is stated in
+Hamiltonian time, with the corresponding coordinate pullback for each
+controller. An unchanged physical conversion across the protocols is not
+proved by counting their incidents.
+
+The same local quartic action has the two-mode Galerkin Hamiltonian above.
+Its occupation limit is an interacting quantum theory whose finite
+measurement histories converge, and the active native clock has a
+compatible diagonal limit. This is a finite-spatial-band effective
+description. It does not establish a continuum interacting ultraviolet
+limit, a conformal theory, the Standard Model or Einstein dynamics.
+
+Selection is a different mathematical question with an explicit obstruction:
+three connected radial extensions have identical retained angular heat,
+wave and resolvent observations but different radial responses. The
+native observer-centered shell quotient gives an operational radius within
+the original carrier; it cannot be tensored back with all angular modes
+and counted as an independently derived dimension. The active wave
+protocol also differs from passive diffusive repair dynamics. Thus the
+present native observations admit this conditional effective construction
+without determining it uniquely. Physical calibration may fix units and
+parameters, after which unused measurements must test the fixed dictionary;
+synthetic parameter recovery alone is not such a test.
 
 The [relativistic scalar regulator](relativistic_scalar/README.md) executes
 an eight-site three-dimensional quartic action with an unrestricted-
@@ -1033,7 +1104,7 @@ finite software run.
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
 | Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
-| Finite interacting scalar projections | A seven-to-nine-mode extension with matched low-mode error bounds; a same-product two-mode quartic model with source-prepared interacting Gibbs state and complete reference/feedback histories | Supplied couplings, radial design, finite occupation codes and model-time intervals; further bands, physical parameters, calibrated clocks and interacting continuum laws need additional control |
+| Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories, finite source execution and an active native-incident clock | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the small executed occupation code has substantial thermal error and supplies no ultraviolet completion |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
 

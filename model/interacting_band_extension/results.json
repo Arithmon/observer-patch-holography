@@ -15145,11 +15145,467 @@
     "modular_clock": "sigma_s=alpha_(-beta*s) for this interacting H and its ideal Gibbs marginal",
     "native_history_count": 1056,
     "native_history_probability_sum": 0.9999999999995055,
+    "native_incident_clock": {
+      "additional_native_repairs_per_history": 2,
+      "all_tapes_timeout_prefixes_and_reference_outputs_retained": true,
+      "clock_port": 10,
+      "clock_refinement_bounds": [
+        {
+          "autonomous_clock_field_coupling_derived": false,
+          "centered_generator_norm_sum_upper": "13",
+          "complete_preparation_half_trace_error_required": "1/25600",
+          "deterministic_timestamp_total_variation_claimed": false,
+          "incident_rate_per_normalized_attempt_unit": 160,
+          "incident_ticks_per_read_interval": 10,
+          "level": 2,
+          "maximum_guarded_local_word_calls": 124,
+          "maximum_interacting_ticks": 20,
+          "model_time_and_native_arrival_time_discrepancy_upper": "41/160",
+          "model_time_per_zero_inclusive_incident": "1/160",
+          "modular_increment_per_incident_at_beta_one_quarter": "-1/40",
+          "native_clock": {
+            "covered_native_attempts": 120960,
+            "failure_probability_upper": "403/10752",
+            "horizon": "1/8",
+            "incident_probability": "1/2016",
+            "incident_seams": 5,
+            "level": 2,
+            "martingale_tolerance": "1/4",
+            "mean_incident_ticks_per_continuum_unit": "160",
+            "native_attempt_scale": 322560,
+            "source_ports": 3840,
+            "source_seams": 10080,
+            "uniform_count_error_upper": "80641/322560",
+            "uniform_inverse_error_upper": "41/160"
+          },
+          "nominal_read_time_rounding_error_upper": "0",
+          "nominal_work_law_with_retained_clock_tape_error_upper": "35383/860160",
+          "occupation_dimension_per_mode": 4,
+          "palindrome_steps_per_incident": 1,
+          "per_word_complete_instrument_half_diamond_error_required": "1/3174400",
+          "requested_model_time_per_read_interval": "1/16",
+          "same_H_product_formula_error_upper": "2197/614400",
+          "same_clock_tape_complete_work_reference_record_error_upper": "449/122880",
+          "same_occupation_H_at_every_clock_level": true,
+          "source_services_and_storage_accuracy_certified": false,
+          "timeout_probability_upper": "403/10752",
+          "total_source_instrument_error_upper": "1/12800"
+        },
+        {
+          "autonomous_clock_field_coupling_derived": false,
+          "centered_generator_norm_sum_upper": "13",
+          "complete_preparation_half_trace_error_required": "1/104857600",
+          "deterministic_timestamp_total_variation_claimed": false,
+          "incident_rate_per_normalized_attempt_unit": 10240,
+          "incident_ticks_per_read_interval": 640,
+          "level": 5,
+          "maximum_guarded_local_word_calls": 7684,
+          "maximum_interacting_ticks": 1280,
+          "model_time_and_native_arrival_time_discrepancy_upper": "1281/10240",
+          "model_time_per_zero_inclusive_incident": "1/10240",
+          "modular_increment_per_incident_at_beta_one_quarter": "-1/2560",
+          "native_clock": {
+            "covered_native_attempts": 330301440,
+            "failure_probability_upper": "129023/82575360",
+            "horizon": "1/8",
+            "incident_probability": "1/129024",
+            "incident_seams": 5,
+            "level": 5,
+            "martingale_tolerance": "1/8",
+            "mean_incident_ticks_per_continuum_unit": "10240",
+            "native_attempt_scale": 1321205760,
+            "source_ports": 245760,
+            "source_seams": 645120,
+            "uniform_count_error_upper": "165150721/1321205760",
+            "uniform_inverse_error_upper": "1281/10240"
+          },
+          "nominal_read_time_rounding_error_upper": "0",
+          "nominal_work_law_with_retained_clock_tape_error_upper": "16524373/10569646080",
+          "occupation_dimension_per_mode": 4,
+          "palindrome_steps_per_incident": 1,
+          "per_word_complete_instrument_half_diamond_error_required": "1/805725798400",
+          "requested_model_time_per_read_interval": "1/16",
+          "same_H_product_formula_error_upper": "2197/2516582400",
+          "same_clock_tape_complete_work_reference_record_error_upper": "449/503316480",
+          "same_occupation_H_at_every_clock_level": true,
+          "source_services_and_storage_accuracy_certified": false,
+          "timeout_probability_upper": "129023/82575360",
+          "total_source_instrument_error_upper": "1/52428800"
+        },
+        {
+          "autonomous_clock_field_coupling_derived": false,
+          "centered_generator_norm_sum_upper": "13",
+          "complete_preparation_half_trace_error_required": "1/429496729600",
+          "deterministic_timestamp_total_variation_claimed": false,
+          "incident_rate_per_normalized_attempt_unit": 655360,
+          "incident_ticks_per_read_interval": 40960,
+          "level": 8,
+          "maximum_guarded_local_word_calls": 491524,
+          "maximum_interacting_ticks": 81920,
+          "model_time_and_native_arrival_time_discrepancy_upper": "20481/655360",
+          "model_time_per_zero_inclusive_incident": "1/655360",
+          "modular_increment_per_incident_at_beta_one_quarter": "-1/163840",
+          "native_clock": {
+            "covered_native_attempts": 845571686400,
+            "failure_probability_upper": "8257535/33822867456",
+            "horizon": "1/8",
+            "incident_probability": "1/8257536",
+            "incident_seams": 5,
+            "level": 8,
+            "martingale_tolerance": "1/32",
+            "mean_incident_ticks_per_continuum_unit": "655360",
+            "native_attempt_scale": 5411658792960,
+            "source_ports": 15728640,
+            "source_seams": 41287680,
+            "uniform_count_error_upper": "169114337281/5411658792960",
+            "uniform_inverse_error_upper": "20481/655360"
+          },
+          "nominal_read_time_rounding_error_upper": "0",
+          "nominal_work_law_with_retained_clock_tape_error_upper": "10569654229/43293270343680",
+          "occupation_dimension_per_mode": 4,
+          "palindrome_steps_per_incident": 1,
+          "per_word_complete_instrument_half_diamond_error_required": "1/211107950519910400",
+          "requested_model_time_per_read_interval": "1/16",
+          "same_H_product_formula_error_upper": "2197/10307921510400",
+          "same_clock_tape_complete_work_reference_record_error_upper": "449/2061584302080",
+          "same_occupation_H_at_every_clock_level": true,
+          "source_services_and_storage_accuracy_certified": false,
+          "timeout_probability_upper": "8257535/33822867456",
+          "total_source_instrument_error_upper": "1/214748364800"
+        }
+      ],
+      "complete_clock_and_field_record_law": [
+        {
+          "field_bits": [],
+          "incident_ticks": 0,
+          "probability": 0.6944444444440527,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            0
+          ],
+          "incident_ticks": 1,
+          "probability": 0.13769038591594823,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            1
+          ],
+          "incident_ticks": 1,
+          "probability": 0.1400873918616838,
+          "timeout": true
+        },
+        {
+          "field_bits": [
+            0,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.00943484037388997,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            0,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.004334198217705422,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            1,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.004174993044571243,
+          "timeout": false
+        },
+        {
+          "field_bits": [
+            1,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.0098337461415977,
+          "timeout": false
+        }
+      ],
+      "complete_native_tape_and_field_prefix_outcomes": 4900,
+      "complete_native_tape_work_reference_record_trace_error_numerical": 3.432456983593399e-09,
+      "complete_record_probability_sum": 0.9999999999994491,
+      "complete_source_numerical_guard": "24346497653338251/124999951557004693448498",
+      "feedback_removal_complete_output_distance": 0.02249413990651556,
+      "finite_fixture_attempt_normalization_for_rate_sixteen": 96,
+      "fixture_is_full_refined_screen_clock": false,
+      "ideal_splitting_complete_output_bound": "7678638362194609897301838428464787623661827556760338246490202888582061597906592960845670179501949672548017109900718990022251160491171096745413716571421290547345999859640736857447096820225914578501740213818095872129/96000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "incident_seams": 5,
+      "model_time_per_incident": "1/16",
+      "modular_parameter_per_incident_at_beta_one_quarter": "-1/4",
+      "native_attempts_per_history": 2,
+      "native_seams": 30,
+      "native_tape_count": 3600,
+      "native_tape_sha256": "e34dc2cfabeecf4a57471e98c11c8546c113535deabd8c73e1aa58f8483d8f2e",
+      "native_tape_weight": "1/3600",
+      "nonzero_current_tick_marginal_tv": "317/1800",
+      "null_incident_occurrences_across_all_tapes": 726,
+      "palindrome_steps_per_incident": 64,
+      "physical_service_or_lab_second_calibration_certified": false,
+      "protected_persistent_work_register_required": true,
+      "retained_reference_addresses": 16,
+      "retained_work_addresses": 16,
+      "scope": "Active zero-inclusive native incident clock for the same two-mode interacting Gibbs history.",
+      "source_pauses_during_field_services": true,
+      "tape_counts_by_incident_ticks": [
+        2500,
+        1000,
+        100
+      ],
+      "tape_schema": "(edge index, placement coin, signed current, incident bit) twice, final timing-carrier loads",
+      "timeout_probability": "35/36",
+      "timing_carrier_initial_loads": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "timing_carrier_ports": 12,
+      "worst_branch_source_resources": {
+        "identity_phase_pulses": 2829,
+        "native_pulses": 217110,
+        "pair_code_pulses": 41814,
+        "proper_code_export_events": 217110,
+        "proper_code_load_events": 217110,
+        "proper_code_service_events": 434220,
+        "single_code_pulses": 175296
+      },
+      "wrong_nonzero_current_tick_counts": [
+        3134,
+        458,
+        8
+      ]
+    },
     "observed_QFT_or_laboratory_clock_identified": false,
     "occupation_dimensions": [
       4,
       4
     ],
+    "occupation_refinement": {
+      "dimensions": [
+        {
+          "canonical_reference_norm_squared": 1.0000000000000004,
+          "complete_two_read_law": [
+            {
+              "bits": [
+                0,
+                0
+              ],
+              "probability": 0.3396542534668152
+            },
+            {
+              "bits": [
+                0,
+                1
+              ],
+              "probability": 0.15603113576703107
+            },
+            {
+              "bits": [
+                1,
+                0
+              ],
+              "probability": 0.15029974943630256
+            },
+            {
+              "bits": [
+                1,
+                1
+              ],
+              "probability": 0.35401486132985155
+            }
+          ],
+          "first_six_energy_levels_numerical": [
+            1.5816564704464404,
+            2.782686373064845,
+            3.6719276422771077,
+            4.443202660329883,
+            4.95392815158945,
+            5.819514793833036
+          ],
+          "occupation_per_mode": 4,
+          "partition_function_numerical": 3.644851062814547
+        },
+        {
+          "canonical_reference_norm_squared": 0.9999999999999998,
+          "complete_two_read_law": [
+            {
+              "bits": [
+                0,
+                0
+              ],
+              "probability": 0.3418392022378202
+            },
+            {
+              "bits": [
+                0,
+                1
+              ],
+              "probability": 0.15286020508364412
+            },
+            {
+              "bits": [
+                1,
+                0
+              ],
+              "probability": 0.14536424483773522
+            },
+            {
+              "bits": [
+                1,
+                1
+              ],
+              "probability": 0.3599363478408014
+            }
+          ],
+          "first_six_energy_levels_numerical": [
+            1.5766050542994114,
+            2.766893360876251,
+            3.6688810848871927,
+            4.0650742343963655,
+            4.9444543384375255,
+            5.450781579410883
+          ],
+          "occupation_per_mode": 8,
+          "partition_function_numerical": 5.04532496017515
+        },
+        {
+          "canonical_reference_norm_squared": 0.9999999999999998,
+          "complete_two_read_law": [
+            {
+              "bits": [
+                0,
+                0
+              ],
+              "probability": 0.34116603459130096
+            },
+            {
+              "bits": [
+                0,
+                1
+              ],
+              "probability": 0.15355113545173446
+            },
+            {
+              "bits": [
+                1,
+                0
+              ],
+              "probability": 0.14584161931151798
+            },
+            {
+              "bits": [
+                1,
+                1
+              ],
+              "probability": 0.359441210645446
+            }
+          ],
+          "first_six_energy_levels_numerical": [
+            1.576604551535279,
+            2.766892744625398,
+            3.66888101035491,
+            4.064384192423747,
+            4.944453698587543,
+            5.449929908759059
+          ],
+          "occupation_per_mode": 12,
+          "partition_function_numerical": 5.315939244058324
+        }
+      ],
+      "growing_occupation_source_execution": false,
+      "model_time_per_interval": "1/16",
+      "numerical_comparisons_certify_infinite_occupation_error": false,
+      "preparation_sign": 1,
+      "rational_spectral_tail_bounds": [
+        {
+          "all_full_polynomial_occupation_compressions": true,
+          "coupling": "1",
+          "harmonic_shell_exclusive": 16,
+          "inverse_temperature": "1/4",
+          "normalized_spectral_tail_upper": "1",
+          "occupation_projection_or_record_error_certified": false,
+          "partition_function_lower": "299/512",
+          "partition_function_upper": "125/9",
+          "product_blank_energy": "213/128",
+          "retained_spectral_rank": 72,
+          "spatial_bandwidth_removed": false,
+          "unnormalized_spectral_tail_upper": "416611827712/274658203125",
+          "unrestricted_two_mode_Gibbs_state": true
+        },
+        {
+          "all_full_polynomial_occupation_compressions": true,
+          "coupling": "1",
+          "harmonic_shell_exclusive": 32,
+          "inverse_temperature": "1/4",
+          "normalized_spectral_tail_upper": "122781528554610775556096/963918864727020263671875",
+          "occupation_projection_or_record_error_certified": false,
+          "partition_function_lower": "299/512",
+          "partition_function_upper": "125/9",
+          "product_blank_energy": "213/128",
+          "retained_spectral_rank": 272,
+          "spatial_bandwidth_removed": false,
+          "unnormalized_spectral_tail_upper": "3117499748456914223104/41909515857696533203125",
+          "unrestricted_two_mode_Gibbs_state": true
+        },
+        {
+          "all_full_polynomial_occupation_compressions": true,
+          "coupling": "1",
+          "harmonic_shell_exclusive": 64,
+          "inverse_temperature": "1/4",
+          "normalized_spectral_tail_upper": "54532290993281914400786561088585446495092736/291758804615849243191405548714101314544677734375",
+          "occupation_projection_or_record_error_certified": false,
+          "partition_function_lower": "299/512",
+          "partition_function_upper": "125/9",
+          "product_blank_energy": "213/128",
+          "retained_spectral_rank": 1056,
+          "spatial_bandwidth_removed": false,
+          "unnormalized_spectral_tail_upper": "106508380846253739064036252126143450185728/975781955236953990606707520782947540283203125",
+          "unrestricted_two_mode_Gibbs_state": true
+        }
+      ],
+      "scope": "Fixed two radial modes; ideal finite-matrix occupation checks with canonical untouched reference.",
+      "spatial_ultraviolet_limit_or_physical_identification": false,
+      "successive_comparisons": [
+        {
+          "canonical_purification_trace_distance_numerical": 0.5226915530281934,
+          "complete_record_work_reference_trace_distance_numerical": 0.5604470711070955,
+          "occupations": [
+            4,
+            8
+          ]
+        },
+        {
+          "canonical_purification_trace_distance_numerical": 0.2194202668892672,
+          "complete_record_work_reference_trace_distance_numerical": 0.24501205924907152,
+          "occupations": [
+            8,
+            12
+          ]
+        }
+      ],
+      "unrestricted_two_mode_limit_proved_in_README": true
+    },
     "oscillator_basis_frequency": 2,
     "physical_service_error_certified": false,
     "preparation": {
@@ -15288,10 +15744,14 @@
   "source_sha256": {
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-    "model/interacting_band_extension/algebra.py": "768512a0e0131ef764113037f56f997cd01aebbebd6b6302287a0e4e78e65342",
-    "model/interacting_band_extension/construction.py": "70810d9ef3602c974e662da3864b101fdaa17728fa913eb96c8b1c96a374587a",
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/interacting_band_extension/algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
+    "model/interacting_band_extension/construction.py": "00a55d76dd6e2a83e3164a2699ea7d57a9eb7926ec32854ed2ea9be68ddacc32",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
     "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/relative_observer_geometry/temporal_records.py": "95fd3869dd3de8cc419c529979cfbb2f9d80d14683f49eda6bc45f6acdabe871",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",
     "model/scalar_observations/bounds.py": "88bcc254df50658396517a6d7317120bfd97c94b4ea3085c7f8db2306b7c6bf3",
     "model/scalar_observations/protocol.py": "b07cd72b87aa73f464ec90b79d53077f8c5da322acced1d58058bcd49a19dc7d",

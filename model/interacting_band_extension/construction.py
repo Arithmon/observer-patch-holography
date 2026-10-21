@@ -7,7 +7,7 @@ from fractions import Fraction as F
 from functools import lru_cache
 import hashlib
 import json
-from math import factorial, prod, sqrt
+from math import ceil, factorial, prod, sqrt
 from pathlib import Path
 
 import numpy as np
@@ -21,6 +21,9 @@ from ..observer.source_scalar import compiler
 from ..observer.scalar_response.experiment import canonical, compare_receipt
 from ..scalar_observations import source as inherited_source
 from ..scalar_observations.protocol import native_records
+from ..observer.native import native as native_repair
+from ..observer.quantum_mixing import seams as native_seams
+from ..relative_observer_geometry.temporal_records import incident_clock_bound
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,6 +38,10 @@ SOURCE_PATHS = (
     'model/scalar_observations/bounds.py',
     'model/relativistic_scalar/lattice.py',
     'model/observer/native.py',
+    'model/observer/quantum_mixing.py',
+    'model/common_source/slow_geometry.py',
+    'model/relative_observer_geometry/temporal_records.py',
+    'evidence/native_geometric_source_20260925/spec.json',
     compiler.RESPONSE, compiler.CONTROL_RECEIPT)
 
 
@@ -242,20 +249,21 @@ class ProductBand(Lattice):
     interpretation are declared. This is not a closed nonlinear mode sector.
     """
 
-    def __init__(self, coupling=1):
+    def __init__(self, coupling=1, occupation=4):
         self.coupling = g = a.rational(coupling)
+        d = a.integer(occupation, minimum=2)
         self.extended, self.matched = False, False
-        self.dimensions, self.dimension = (4, 4), 16
-        q2, q4, p2 = a.polynomial(4, 2), a.polynomial(4, 4), a.polynomial(4, 2, True)
+        self.dimensions, self.dimension = (d, d), d*d
+        q2, q4, p2 = a.polynomial(d, 2), a.polynomial(d, 4), a.polynomial(d, 2, True)
         terms = []
         for index, frequency in enumerate((1, 2)):
             matrix = tuple(tuple(p2[i][j]/2+frequency**2*q2[i][j]/2+g*q4[i][j]/16
-                                 for j in range(4)) for i in range(4))
+                                 for j in range(d)) for i in range(d))
             terms.append(Term((index,), (matrix,), F(1), f'product_onsite_{index}'))
         terms.append(Term((0, 1), (q2, q2), g/4, 'product_local_quartic'))
         self.terms = tuple(terms)
         self.hamiltonian = sum((self.embed(term) for term in self.terms),
-                               sparse.csr_matrix((16, 16)))
+                               sparse.csr_matrix((d*d, d*d)))
         self.trace = float(self.hamiltonian.diagonal().sum())
 
 
@@ -267,7 +275,7 @@ def product_gibbs_preparation(lattice, beta=F(1, 4)):
     or state normalization is used to repair the returned amplitudes.
     """
     beta = a.rational(beta, positive=True)
-    if not isinstance(lattice, ProductBand):
+    if not isinstance(lattice, ProductBand) or lattice.dimensions != (4, 4):
         raise ValueError('the declared sixteen-state product band is required')
     values, basis = inherited_source._basis(lattice.hamiltonian.toarray())
     weights = np.exp(-float(beta)*(values-values[0])); weights /= weights.sum()
@@ -291,6 +299,211 @@ def product_gibbs_preparation(lattice, beta=F(1, 4)):
         'purification_vector_error_guard': F(1, 10**9),
         'ideal_minimum_density_eigenvalue': float(weights.min()),
         'physical_preparation_error_certified': False}
+
+
+@lru_cache(maxsize=1)
+def product_incident_tapes():
+    """All two-attempt native tapes; null incidents still trigger the clock.
+
+    The timing carrier is independent of the protected field register. Its
+    native seam/coin schedule pauses during compiled field services. The
+    endpoint updates themselves are the unchanged native repair operation.
+    """
+    initial, port = (0,)*10+(1, 1), 10
+    result = []
+    for first_edge, first_seam in enumerate(native_seams()):
+        for first_coin in (0, 1):
+            middle, (_, first_current) = native_repair(initial, first_seam, first_coin)
+            first = (first_edge, first_coin, first_current, int(port in first_seam))
+            for second_edge, second_seam in enumerate(native_seams()):
+                for second_coin in (0, 1):
+                    final, (_, second_current) = native_repair(middle, second_seam, second_coin)
+                    second = (second_edge, second_coin, second_current, int(port in second_seam))
+                    result.append((first, second, final))
+    return tuple(result)
+
+
+def product_incident_clock_bound(level, *, degree=5, occupation=4,
+                                 interval=INTERVAL, steps=1, tolerance=None,
+                                 preparation_error=None, service_error=None):
+    """Same interacting H, native count clock and complete instrument bound.
+
+    Errors refer to normalized complete instruments, including failures and
+    an arbitrary reference, not only successful work matrices. The default
+    decreasing service errors are requirements, not hardware certificates.
+    Both compared instruments retain the SAME native clock tape; closeness
+    of timestamps to model time is a separate probability statement.
+    """
+    a.integer(level, minimum=0)
+    if level > 100 or degree not in (5, 6) or type(degree) is not int:
+        raise ValueError('an admitted source level and native port degree required')
+    a.integer(steps)
+    interval = a.rational(interval, positive=True)
+    lattice = ProductBand(occupation=occupation)
+    rate = 2*degree*4**level
+    ticks_per_interval = ceil(rate*interval)
+    ticks = 2*ticks_per_interval
+    rounded_horizon = F(ticks, rate)
+    eta = F(1, 2**(level//2+1)) if tolerance is None else a.rational(tolerance, positive=True)
+    clock = incident_clock_bound(level, degree, rounded_horizon, eta)
+    local_operations = 2*steps*len(lattice.terms)*ticks+4
+    prep = F(1, rate**2) if preparation_error is None else a.rational(preparation_error)
+    service = (F(1, rate**2*local_operations) if service_error is None
+               else a.rational(service_error))
+    split = splitting_bound(lattice, F(1, rate), steps)
+    # Round an exact upper bound upward; avoid growing decimal-root fractions
+    # in a clock schedule whose purpose is an explicit conservative budget.
+    norm = F(ceil(split['centered_generator_norm_sum_upper']))
+    total_split = ticks*min(F(2), norm**3/(3*rate**3*steps**2))
+    time_error = 2*norm*(F(ticks_per_interval, rate)-interval)
+    word_error = prep+local_operations*service
+    failure = F(clock['failure_probability_upper'])
+    return {'level': level, 'occupation_dimension_per_mode': occupation,
+        'native_clock': clock, 'incident_rate_per_normalized_attempt_unit': rate,
+        'model_time_per_zero_inclusive_incident': F(1, rate),
+        'requested_model_time_per_read_interval': interval,
+        'incident_ticks_per_read_interval': ticks_per_interval,
+        'maximum_interacting_ticks': ticks,
+        'palindrome_steps_per_incident': steps,
+        'centered_generator_norm_sum_upper': norm,
+        'maximum_guarded_local_word_calls': local_operations,
+        'complete_preparation_half_trace_error_required': prep,
+        'per_word_complete_instrument_half_diamond_error_required': service,
+        'total_source_instrument_error_upper': word_error,
+        'same_H_product_formula_error_upper': total_split,
+        'nominal_read_time_rounding_error_upper': time_error,
+        'same_clock_tape_complete_work_reference_record_error_upper': min(F(1), word_error+total_split),
+        'nominal_work_law_with_retained_clock_tape_error_upper': min(F(1), word_error+total_split+time_error+failure),
+        'timeout_probability_upper': failure,
+        'model_time_and_native_arrival_time_discrepancy_upper': eta+F(1, rate),
+        'modular_increment_per_incident_at_beta_one_quarter': -F(4, rate),
+        'source_services_and_storage_accuracy_certified': False,
+        'autonomous_clock_field_coupling_derived': False,
+        'deterministic_timestamp_total_variation_claimed': False,
+        'same_occupation_H_at_every_clock_level': True}
+
+
+def _product_clock_prefixes(lattice, initial, *, source, interval, steps, feedback=True):
+    """Keep the work/reference state at every possible timeout prefix."""
+    d = lattice.dimensions[1]
+    q = normalized(a.polynomial(d, 1))
+    if source:
+        kick = inherited_source.feedback(d, .25, 2)[0]
+        kraus = inherited_source.instrument(d, 1, np.pi/2, 2)[0]
+        control = kick
+        advance = lambda value: lattice.source_evolve(value, interval, steps)
+    else:
+        kick = control = expm(1j*q/4)
+        eigenvalues, basis = np.linalg.eigh(q)
+        kraus = tuple((basis*function((eigenvalues+np.pi/2)/2))@basis.T
+                      for function in (np.cos, np.sin))
+        advance = lambda value: lattice.evolve(value, interval)
+    branches = {(): lattice.apply(initial, (1,), kick)}
+    result = [branches]
+    for tick in range(2):
+        output = {}
+        for prefix, value in branches.items():
+            advanced = advance(value)
+            for bit, matrix in enumerate(kraus):
+                terminal = lattice.apply(advanced, (1,), matrix)
+                if tick == 0 and bit == 1 and feedback:
+                    terminal = lattice.apply(terminal, (1,), control)
+                output[prefix+(bit,)] = terminal
+        branches = output
+        result.append(branches)
+    return tuple(result)
+
+
+def _pure_output_distance(left, right):
+    """Stable half trace norm for two unnormalized rank-one outputs."""
+    x, y = left.reshape(-1), right.reshape(-1)
+    xx, yy = float(np.vdot(x, x).real), float(np.vdot(y, y).real)
+    if xx == 0:
+        return yy/2
+    perpendicular = y-x*(np.vdot(x, y)/xx)
+    return sqrt((xx-yy)**2+4*xx*float(np.vdot(perpendicular, perpendicular).real))/2
+
+
+def product_incident_clock_control():
+    """Execute this interacting Gibbs history on every native timing tape.
+
+    Shared work computations are grouped only when the emitted pulse words
+    coincide. No native record, timeout, measurement or reference output is
+    postselected. The finite fixture has two attempts, not two forced ticks.
+    """
+    lattice, interval, steps = ProductBand(), F(1, 16), 64
+    raw, target, preparation = product_gibbs_preparation(lattice)
+    actual = _product_clock_prefixes(lattice, raw, source=True, interval=interval, steps=steps)
+    ideal = _product_clock_prefixes(lattice, target, source=False, interval=interval, steps=steps)
+    no_feedback = _product_clock_prefixes(lattice, target, source=False, interval=interval,
+                                         steps=steps, feedback=False)
+    tapes = product_incident_tapes()
+    counts, missed_counts, null_ticks = [0]*3, [0]*3, 0
+    for first, second, _ in tapes:
+        counts[first[3]+second[3]] += 1
+        missed_counts[sum(row[3] and row[2] != 0 for row in (first, second))] += 1
+        null_ticks += sum(row[3] and row[2] == 0 for row in (first, second))
+    weights = [F(count, len(tapes)) for count in counts]
+    if weights != [F(25, 36), F(5, 18), F(1, 36)] or not null_ticks:
+        raise ArithmeticError('the full native incident/null clock law changed')
+    complete_error = sum(float(weight)*sum(_pure_output_distance(value, ideal[tick][bits])
+                            for bits, value in actual[tick].items())
+                         for tick, weight in enumerate(weights))
+    operation_count = 4*steps*len(lattice.terms)+4
+    guard = F(251, 10**12)
+    gain = operation_count*guard
+    vector_guard = (preparation['purification_vector_error_guard']+gain)/(1-gain)
+    numerical_guard = vector_guard*(2+vector_guard)/2
+    split = splitting_bound(lattice, interval, steps)['two_interval_complete_output_trace_distance_upper']
+    if complete_error > float(split+numerical_guard):
+        raise ArithmeticError('the joint incident-clock/interacting-field source law exceeded its bound')
+    records = [{'incident_ticks': tick, 'timeout': tick < 2, 'field_bits': list(bits),
+                'probability': float(weights[tick])*float(np.linalg.norm(value)**2)}
+               for tick, branches in enumerate(actual) for bits, value in branches.items()]
+    feedback_error = sum(float(weights[tick])*sum(_pure_output_distance(value, no_feedback[tick][bits])
+                           for bits, value in branches.items())
+                         for tick, branches in enumerate(ideal))
+    resources = {key: preparation['source_resources'][key] for key in inherited_source.COUNT_KEYS}
+    for term in lattice.terms:
+        meta = execute_term(term, interval/(2*steps))[1]
+        for key in resources:
+            resources[key] += 4*steps*meta['resources'][key]
+    for multiplier, meta in ((2, inherited_source.instrument(4, 1, np.pi/2, 2)[1]),
+                              (2, inherited_source.feedback(4, .25, 2)[1])):
+        for key in resources:
+            resources[key] += multiplier*meta['resources'][key]
+    return {'scope': 'Active zero-inclusive native incident clock for the same two-mode interacting Gibbs history.',
+        'timing_carrier_ports': 12, 'timing_carrier_initial_loads': (0,)*10+(1, 1),
+        'clock_port': 10, 'native_attempts_per_history': 2,
+        'native_seams': len(native_seams()), 'incident_seams': 5,
+        'native_tape_count': len(tapes),
+        'native_tape_sha256': hashlib.sha256(canonical(tapes).encode()).hexdigest(),
+        'native_tape_weight': F(1, len(tapes)),
+        'tape_schema': '(edge index, placement coin, signed current, incident bit) twice, final timing-carrier loads',
+        'tape_counts_by_incident_ticks': counts,
+        'complete_native_tape_and_field_prefix_outcomes': sum(count*2**tick for tick, count in enumerate(counts)),
+        'null_incident_occurrences_across_all_tapes': null_ticks,
+        'wrong_nonzero_current_tick_counts': missed_counts,
+        'nonzero_current_tick_marginal_tv': sum(abs(F(x-y, len(tapes))) for x, y in zip(counts, missed_counts))/2,
+        'model_time_per_incident': interval, 'palindrome_steps_per_incident': steps,
+        'finite_fixture_attempt_normalization_for_rate_sixteen': 96,
+        'fixture_is_full_refined_screen_clock': False,
+        'modular_parameter_per_incident_at_beta_one_quarter': -F(1, 4),
+        'complete_clock_and_field_record_law': records,
+        'complete_record_probability_sum': sum(row['probability'] for row in records),
+        'retained_work_addresses': 16, 'retained_reference_addresses': 16,
+        'timeout_probability': weights[0]+weights[1],
+        'complete_native_tape_work_reference_record_trace_error_numerical': complete_error,
+        'ideal_splitting_complete_output_bound': split,
+        'complete_source_numerical_guard': numerical_guard,
+        'feedback_removal_complete_output_distance': feedback_error,
+        'worst_branch_source_resources': resources,
+        'additional_native_repairs_per_history': 2,
+        'source_pauses_during_field_services': True,
+        'protected_persistent_work_register_required': True,
+        'all_tapes_timeout_prefixes_and_reference_outputs_retained': True,
+        'physical_service_or_lab_second_calibration_certified': False,
+        'clock_refinement_bounds': [product_incident_clock_bound(level) for level in (2, 5, 8)]}
 
 
 def product_interaction_control():
@@ -633,6 +846,8 @@ def checks_and_run():
     product = product_interaction_control()
     product['synthetic_parameter_recovery'] = product_parameter_recovery(
         product['source_histories_by_native_sign'], product_gibbs_preparation(ProductBand())[0])
+    product['native_incident_clock'] = product_incident_clock_control()
+    product['occupation_refinement'] = a.product_occupation_refinement()
     return a.serializable({
         'schema': 'oph.interacting_band_extension.v1', 'all_pass': True,
         'scope': 'One supplied interacting Fourier-band extension, finite occupation, matched low-only histories; no ultraviolet, Lorentzian or empirical completion.',

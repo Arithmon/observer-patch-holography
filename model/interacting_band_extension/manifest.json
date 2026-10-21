@@ -1,13 +1,13 @@
 {
-  "description": "Native-executed finite interacting band extensions, complete-output matching, and a same-radial-product Gibbs-clock regulator with synthetic inverse controls.",
+  "description": "Native-executed finite interacting fields with complete-output matching, a same-product Gibbs state and incident clock, and a conditional occupation limit.",
   "files": {
-    "README.md": "72a48fb1eb008b091ef9069ba6740535a96139a27aff80bb3cfc2a19d14c30a8",
+    "README.md": "52c9d83c92f160bebada70bbad7605dc6c271bc4b9648fb1f99874f54bfed8e8",
     "__init__.py": "f3a8f4e46681add759b53f4d4840e670a6d134ea56bec22b38d348b013f84aa1",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
-    "algebra.py": "768512a0e0131ef764113037f56f997cd01aebbebd6b6302287a0e4e78e65342",
-    "construction.py": "70810d9ef3602c974e662da3864b101fdaa17728fa913eb96c8b1c96a374587a",
-    "results.json": "9c3a001298a26d459b025d638d9aa70c556d8917cc14697d7eff84f01a732e16",
-    "test_construction.py": "a18ff17c73ffee534deb9e9f88aff7e89e427411acc73ea7af9867edec20fef0"
+    "algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
+    "construction.py": "00a55d76dd6e2a83e3164a2699ea7d57a9eb7926ec32854ed2ea9be68ddacc32",
+    "results.json": "d51a385a526cf11c2bc521ad3bec329356ff3fe357af06e0ad9f631d77428acf",
+    "test_construction.py": "87fe904ca4ed45d5bc0a3251484ed4f8e9b5006358e7d0215a13a6b2a47a9979"
   },
   "reproduce": [
     "python -m model.interacting_band_extension --check model/interacting_band_extension/results.json",

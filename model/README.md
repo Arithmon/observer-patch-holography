@@ -6,11 +6,17 @@ checkpoint continuation. Its finite predictions are computed from declared
 source operations and compared with exact mathematical targets or public
 measurement data under explicit apparatus assumptions.
 
-The construction supports finite interacting quantum observation laws, local event clocks,
-and a conditional free product field with thermal covariance, active clock
-and measurable Lorentz-signature action. Smoothness of that action density
-gives a smooth metric; a finite quartic projection on the same product has
-source-executed interacting Gibbs readouts. **A physical identification with
+The construction admits smooth static `1+3` scalar-field effective
+descriptions for any specified finite Weyl/Ramsey measurement menu and
+positive tolerance, under its declared radial-product and active-observer
+protocol. A single smooth geometry approximates the joint clock, field and
+response readouts through the proved common limiting operator. The exact
+native product has a measurable Lorentz-signature action; the effective
+statement does not assert that this exact geometry is smooth. A quartic projection on the same product
+has source-executed interacting Gibbs readouts, an active native event clock,
+and convergent unrestricted-occupation histories within its two spatial
+modes. The [integrated verdict](CONSTRUCTION.md#integrated-effective-description)
+connects these contracts and their limits. **A physical identification with
 our Universe, including interacting relativistic spacetime, remains open.**
 The [recovery assessment](OBSERVER_RELATIVE_RECOVERY.md) states the current
 results and remaining obligations. The
@@ -124,8 +130,11 @@ statement; individual detectors can remain dark. A source-compiled,
 cell-visible nonconstant native packet has an explicit spectral-residual
 budget. Finite-word encoder and precision bounds extend to every declared
 native refinement, although that growing family is unexecuted. The same
-action gives a smooth metric if its complete coefficient density is smooth;
-smooth approximants do not prove this regularity for the source limit.
+action gives a smooth comparison metric if its complete coefficient density
+is smooth. The current radial-projection measure is continuous but not C1
+across original face edges in the fixed sphere atlas, so the exact native
+dictionary fails that premise. Smooth approximants do not prove regularity
+of the source limit or select an alternative smooth dictionary.
 Three distinct radial graphs have identical complete radial-average angular
 readouts and different radial responses, so those readouts do not select the
 radial architecture. Preparation, controls and physical units remain supplied.

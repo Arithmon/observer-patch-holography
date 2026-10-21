@@ -44,8 +44,8 @@ overturned by successful finite native-carrier calculations or by this audit.
 
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
-| Space and fields | Native Green fields and independent long-block innovations give a declared radial product of spectral dimension three. Its thermal covariance and local wave action share one operator; the action determines a measurable Lorentz-signature metric, smooth under a smooth full-density premise. A projected quartic example has interacting source readouts on that product. | Radial topology, boundary conditions, interaction, filters and access remain supplied. Distinct radial graphs share the complete radial-average angular law. Smoothness of the source limit, physical transport and length calibration are unproved. |
-| Time | Complete stopped instruments compare native clocks. Incident-triggered angular/radial pulses give a joint product clock with controlled splitting error; matched faithful states identify its full-algebra modular flow. Finite-word and precision bounds provide a constructive growing angular clock family. | Preparation, protected controls and carrier pauses are declared. Growing execution and arbitrarily accurate source services remain obligations. Passive repair, spatial-patch modular flow and laboratory duration are not identified with this active clock; the interacting projection uses declared model time. |
+| Space and fields | Native Green fields and independent long-block innovations give a declared radial product of spectral dimension three. Its thermal covariance and local wave action share one operator; the action determines a measurable Lorentz-signature metric and admits smooth 1+3 effective descriptions of finite admissible measurement menus to arbitrary tolerance. A projected quartic example has interacting source readouts on that product. | Radial topology, boundary conditions, interaction, filters and access remain supplied. Distinct radial graphs share the complete radial-average angular law. Smoothness of the source limit, physical transport and length calibration are unproved. |
+| Time | Complete stopped instruments compare native clocks. Incident-triggered angular/radial pulses give a joint product clock with controlled splitting error; matched faithful states identify its full-algebra modular flow. Finite-word and precision bounds provide a constructive growing angular clock family. | Preparation, protected controls and carrier pauses are declared. Growing execution and arbitrarily accurate source services remain obligations. Passive repair, spatial-patch modular flow and laboratory duration are not identified with this active clock; the interacting projection has its own complete native-incident attachment and declared model-time conversion. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
 | Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 
@@ -279,7 +279,10 @@ dispersion with controlled splitting error. It supplies one conditional
 thermal CCR field, sine response and modular conversion. Its
 [local action determines a measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
 Finite tapes check all readouts, not Gaussian independence. Smoothness of the
-complete coefficient density suffices for a smooth metric; smooth form
+complete coefficient density suffices for a smooth comparison metric.
+The native radial-projection measure is continuous but not C1 across
+original face edges; therefore the exact fixed-atlas dictionary fails this
+premise. A different smooth dictionary needs proof. Smooth form
 approximations do not establish this property of the native limit. Three
 radial graph controls share every radial-average angular observation but
 differ in radial response. The interval, filters, preparation and controls
@@ -429,9 +432,25 @@ and feedback. The retained complete-output distance from an independent
 exponential is below `1.97e-8`; removing the interaction or feedback changes
 the record law. These are numerical controls of a finite occupation code,
 not continuum error or physical precision certificates. The Gibbs state
-fixes its ideal modular clock in declared model time, with no event-clock
-calibration. The projection neither removes the omitted modes nor derives
-the interaction from native repair.
+fixes its ideal modular clock. A complete 3,600-tape native-incident
+protocol drives that same interaction and retains all timeouts; a separate
+refinement bound controls its model-time conversion. The positive confining
+Hamiltonian has trace-class Gibbs states and convergent complete histories
+as oscillator occupation grows, with a matched reference embedding.
+The finite d=4 to d=8 output difference is approximately 0.56045, so the
+small source run is not an accurate unrestricted-field certificate. The
+projection neither removes the omitted spatial modes nor selects the
+interaction, temperature or laboratory unit from native repair.
+
+The [actual-measure smoothing proof](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+now gives one smooth static `1+3` free-scalar effective description for each
+fixed finite admissible measurement menu and tolerance. It preserves the
+local readout normalization, radial boundary and common operator through
+norm-resolvent and covariance convergence. Fixed covariant coupling also
+gives convergent two-mode quartic projections on those same smooth metrics;
+this adds no estimate against a spatially unregulated interacting field.
+No single smooth metric exact for all observations or measured-Universe
+identification follows from the approximation theorem.
 
 The next physical join must preserve these distinct state, operation and
 clock contracts. Identify the native records with physical detector and clock

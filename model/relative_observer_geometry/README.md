@@ -818,34 +818,119 @@ or physical radial transport follows. If the **whole coefficient density**
 smooth product atlas, the displayed `g` is a smooth static Lorentz metric
 and the same product wave is exactly its scalar wave equation, with the
 declared radial boundary condition. This requires smooth positive `mu`
-as well as smooth uniformly elliptic `a`; smoothness of the native measure
-across screen chart seams is not inferred. The static line element then
+as well as smooth uniformly elliptic `a`. The static line element then
 gives local proper-duration factor
 `N(x)=sqrt(mu(x)) (det a(x))^(1/4)` relative to its wave coordinate; identifying
 an actual clock apparatus with that line element is a separate measurement
 contract. A faithful global thermal state's modular flow is likewise not
 automatically the modular flow of every spatial patch.
 
-There is also a controlled smooth approximation **conditional on a fixed
-smooth positive measure density**. On the same interval and screen, mollify
-the measurable screen tensor in a fixed atlas and combine with a smooth
-partition of unity. Smooth tensors `a_epsilon=diag(1,a_screen_epsilon)` can
-be chosen with common ellipticity bounds and `a_epsilon->a` almost
-everywhere. Keep the same `H1` form domain with zero radial-end traces.
-Dominated convergence gives form recovery on every fixed input. For a
-weakly convergent sequence with bounded energy, uniform ellipticity gives
-weak `H1` compactness; the dual energy formula using `a_epsilon^-1` gives
-the lower bound. Hence the forms Mosco-converge to the original product
-form, yielding strong resolvent and heat convergence; spectral truncation
-also gives strong cosine and sine-response convergence uniformly on
-compact wave-parameter intervals for each fixed input. This is the
-coefficient-convergence argument of
-[Suzuki and Uemura, Theorem 1.1](https://arxiv.org/pdf/1412.0725), with the
-common product domain kept fixed. The associated smooth metrics converge
-almost everywhere and locally in finite `Lp` to the measurable metric.
-Neither smoothness of that limit nor convergence of curvature or optimal
-fronts follows. These are approximations of the same source-linked product
-response, with an explicit regularity premise, not a different spatial model.
+The fixed native [radial-projection measure](../physical_space_time/OCCUPATION_FIELD.md#a-continuum-random-distribution-on-the-carrier-sphere)
+does **not** satisfy this smooth-density premise in the standard smooth
+sphere atlas. Let `n_F` be an outward unit face normal, `r` the polyhedron
+inradius, `a0` one flat face's area, and `u` a spherical direction. On face
+`F`, the source point is `x=r u/(n_F.u)`, so the retained Jacobian gives
+`rho_F=dmu/domega=c/(n_F.u)^3`, `c=pi r^2/(5 a0)>0`.
+At an open edge shared by distinct faces `F,G`, their support values
+agree: `n_F.u=n_G.u=d>0`. Their density values agree, but their one-sided
+spherical gradients differ by `-3c(n_F-n_G)/d^4`, a nonzero tangent vector.
+The density is continuous and piecewise smooth but not `C1`. Changing its
+values on the edges cannot make a smooth representative: continuous
+representatives equal almost everywhere must agree everywhere. Since
+`C^{tt}=-mu`, smoothness of `a` alone cannot repair this obstruction.
+An alternate smooth observation dictionary needs its own measure and
+operator proof; this is not a topological obstruction to every atlas.
+
+**Smooth effective descriptions of the actual product readouts do exist.**
+This statement does not require the preceding exact smooth-density premise.
+Use the smooth reference volume `nu=dr/L dOmega/(4pi)` on the same compact
+radial cylinder, and write `dmu=rho dnu`. The native `rho` is positive and
+globally Lipschitz: it is a positive constant times
+`(max_F n_F.u)^(-3)`, whose denominator is bounded away from zero.
+Mollification and normalization in a fixed finite angular atlas give smooth positive `rho_epsilon`
+converging uniformly to `rho`, with uniformly bounded gradients and
+gradient convergence almost everywhere along a subsequence. Smooth
+`a_epsilon=diag(1,a_screen_epsilon)` converge almost everywhere to `a`
+with common ellipticity bounds. Both choices preserve the radial domain
+and Dirichlet boundary condition, and their screen coefficients remain
+independent of `r`. Set
+`H_epsilon=L2(rho_epsilon dnu)`, `H=L2(rho dnu)` and identify them by
+the explicit unitary `U_epsilon f=sqrt(rho_epsilon/rho) f`.
+The corresponding smooth-theory smearing is `U_epsilon^-1 f`; this local
+dictionary preserves support and converges to the original readout.
+
+The transported energy forms Mosco-converge to the native product form.
+Here are the measure-dependent details of the
+[elliptic coefficient-convergence argument](https://arxiv.org/pdf/1412.0725).
+Put `w_epsilon=sqrt(rho_epsilon/rho)`. Then `w_epsilon^±1->1` uniformly,
+their gradients are bounded and tend to zero almost everywhere, and
+multiplication by `w_epsilon^±1` converges strongly to the identity on
+`H1`. The same multiplication error tends to zero in `H1` for a bounded
+`H1` sequence after taking a Rellich-convergent `L2` subsequence: split
+`f_epsilon grad w_epsilon` into
+`(f_epsilon-f) grad w_epsilon+f grad w_epsilon`.
+Thus transporting the forms introduces no limiting derivative term.
+Dominated convergence gives recovery on each fixed form vector. For the
+lower bound, use weak `H1` compactness and the dual energy formula with
+`(rho_epsilon a_epsilon)^(-1)`; bounded ellipticity and almost-everywhere
+convergence pass every fixed dual test to the limit. Zero radial-end
+traces are preserved throughout.
+
+Consequently `Btilde_epsilon=U_epsilon B_epsilon U_epsilon^-1` converges
+in strong resolvent sense to `B`. This convergence is also in **norm
+resolvent**: all shifted resolvents map the unit ball into one bounded
+`H1` set, which is compact in `H`. If unit inputs converge weakly,
+self-adjointness and strong resolvent convergence identify every compact
+output limit with the limiting resolvent applied to that weak limit;
+compactness of the limiting resolvent then gives the norm assertion.
+The angular constant is retained, and the common Dirichlet radial gap
+`B_epsilon,B >= (pi/L)^2` prevents an infrared singularity.
+
+Functional calculus now gives operator-norm convergence of
+`q_b(Btilde_epsilon)` and of the ordered field covariance and sine
+response, uniformly on compact wave-time intervals. These spectral
+functions vanish at infinite energy. Cosine evolution converges strongly,
+uniformly on such intervals for each fixed input. Momentum covariance is
+unbounded; for fixed smearings in the `H1` form domain with zero radial-end
+traces, its spectral tail above energy `K` is
+bounded by a constant times their uniform form energy divided by `sqrt(K)`.
+This yields convergence of the full smeared thermal CCR covariances and
+symplectic forms. Every fixed finite word of Weyl readouts therefore
+converges, as do finite adaptive Ramsey instruments formed from finite Weyl
+sums and Weyl feedback. All their classical records and any fixed finite
+detector/reference outputs are included; arbitrary sharp projectors or
+trace-norm comparison of the entire surviving field are not asserted.
+
+Each smooth coefficient density `C_epsilon=mu_epsilon diag(-1,a_epsilon)`
+defines an exactly smooth static `1+3` Lorentz metric by the displayed
+density identity. Its free scalar thermal theory consequently approximates
+**any fixed finite menu** of these native-product field and clock readouts
+at bounded wave times
+to any requested tolerance, with one common sufficiently small `epsilon`
+for the entire menu. The source preparation, radial design and active-clock
+contracts are unchanged. Keep the same native clock tapes and controller;
+their source, timing and timeout allowances add by the triangle inequality
+to the uniform smooth-description error, without choosing a geometry per
+readout. This is an existence and convergence result,
+without a computable smoothing rate for the unknown limiting tensor.
+It supplies neither one smooth metric exact for every observation nor
+smoothness of the native limit, curvature or optimal-front convergence,
+an interacting spatial continuum, or laboratory identification.
+
+The [same two-mode quartic projection](../interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product)
+also has a compatible smooth-background interpretation. On `(0,pi)` at
+fixed covariant coupling `lambda`, its effective coupling is
+`g_epsilon=lambda/pi integral mu_screen,epsilon^2 sqrt(det a_screen,epsilon) dx`.
+Bounded ellipticity and dominated convergence give `g_epsilon->g`.
+At each fixed occupation cutoff, the Hamiltonian, its Gibbs preparation
+and bounded-time complete detector histories are continuous in this
+coupling. First choose an occupation cutoff using the proved fixed-two-mode
+limit, then one sufficiently small `epsilon` for that cutoff and the whole
+observation menu. This diagonal comparison gives smooth-background
+regulated interacting descriptions of those observations. Their state is
+the Gibbs state of the **interacting** Hamiltonian; the free thermal state
+belongs to the separate free-field protocol. The spatial two-mode cutoff
+is retained, with no error bound against a full interacting local QFT.
 
 ### Native records determine the limiting tensor weakly
 
@@ -1070,6 +1155,67 @@ chosen product operator and compatible active clock, (OF2) does discharge
 a separate propagation-speed postulate: the same form fixes its optimal
 operator front and its conversion to that clock's parameter. Selecting
 physical radial access and laboratory units requires further readouts.
+
+### Native observer-centered radial records
+
+The existing carrier also admits a radial readout without adding radial
+sites. `recover_radial_records` receives labelled total-one preparations,
+seams, coins and signed currents from all 720 native branches. The current
+reconstructs the occupied endpoint; the declared uniform-seam/fair-coin
+law fixes its row kernel `K=I-L/60`. Breadth-first distance from a chosen
+observer port partitions the twelve ports into shells of sizes `(1,5,5,1)`.
+No hidden final load or supplied radial graph enters this decoder. Complete
+branch enumeration is exact source evidence, not a finite-sample noise bound;
+preparation and complete current access are the same calibration contracts
+as the existing structural readout.
+
+Let `U` lift four shell values to the ports and `M=diag(1,5,5,1)`. Direct
+native branch counts give
+
+```text
+       [ 5 -5  0  0 ]
+R =    [-1  3 -2  0 ],       L U=U R,     U*U=M,
+       [ 0 -2  3 -1 ]
+       [ 0  0 -5  5 ]
+J=U M^(-1/2),  J*J=I,  L J=J (M^(1/2) R M^(-1/2)).        (NRQ)
+```
+
+Every port in a shell has the same total transition weight to each other
+shell. This is strong lumpability: multiplication with intermediate shell
+projectors proves the complete shell-history law for every initial port,
+not only its mean. The normalized radial generator is self-adjoint and has
+eigenvalues `0,5-sqrt(5),6,5+sqrt(5)`. (NRQ) intertwines its heat, resolvent
+and coherent cosine readouts with the **same native operator**. It is the
+record-level radial specialization of the existing finite spectral theorem.
+Exchanging a port from shell one with a port from shell two violates the
+block-sum equalities: averaging such a partition would erase memory.
+
+Mark every seam incident on the observer, including zero current. The
+remote and incident substochastic row kernels also lump separately into
+`Q0,Q1`; their row sums are `5/6,1/6`. Consequently every joint marked-shell
+history closes, and the first-incident transition is
+`T=(I-Q0)^(-1) Q1`, with timeout mass `(5/6)^N` after `N` attempts.
+Its commutator satisfies `[T,R]_(0,1)=13/37`, excluding any scalar spectral
+time change of `R`. Independent native two-attempt enumeration tests every
+initial port, intermediate shell, final shell and pair of incident marks.
+
+For the separately admitted protected coherent walk, one incident trigger
+applies one step while the timing source pauses during service. The exact
+720-arc native reversal/reflection on an input at the observer gives both
+Ramsey outcomes; the plus probabilities after zero through three triggers
+are `1,23/24,101/120,7271/10800`. These are `T_n(K)` compressions under the
+[existing source walk](../observer/COHERENT_CONTINUATION.md), with its
+preparation, reflection and readout services. The control executes rational
+arc operations; it does not rerun source pulses for this particular input
+or identify the passive stopped kernel with that active wave.
+
+This radius describes shells **within the same twelve-port carrier**. Its
+four-dimensional function space is a subspace of the twelve-dimensional
+source space, not an independent factor that can be tensored with the full
+angular field. It therefore supplies an operational finite radial readout
+but does not select the extra interval in the product construction, a
+continuum radial metric, or physical length units. Additional product-radial
+observations in (RS) retain that distinct obligation.
 
 ### Transport through source refinement
 

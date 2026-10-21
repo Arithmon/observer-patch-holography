@@ -225,8 +225,9 @@ The frequency-two oscillator basis is only a matrix representation. An
 independent padded-oscillator construction checks the complete Hamiltonian.
 The interaction is positive and couples the two modes. Nonlinear evolution
 also excites omitted modes: even `psi1^3` has nonzero projection onto
-`psi3`. This is a Galerkin effective theory, with explicit spatial and
-occupation cutoffs, and does not claim an invariant two-mode sector.
+`psi3`. This is a Galerkin effective theory with a fixed spatial band. Its
+executed code has four occupations per mode; the occupation limit below
+keeps the same two spatial modes and does not make their sector invariant.
 
 The geometric map is explicit. Write the product wave coefficient density
 as `C=mu diag(-1,a)` and its Lorentzian metric as
@@ -254,8 +255,9 @@ resources are retained. The ideal observer algebra has
 state and interacting clock use the same `H`. The raw prepared marginal's
 modular action is checked separately. A free Gibbs state has nonzero
 commutator with this interacting Hamiltonian and cannot supply this clock.
-The parameter is supplied Hamiltonian model time; this protocol does not
-calibrate its intervals against incident counts or laboratory seconds.
+The parameter in this fixed-duration run is supplied Hamiltonian model
+time. The incident controller below implements that same evolution on a
+native event clock; no laboratory-second calibration is supplied.
 
 Both source and independent Hamiltonian executions retain measurement
 disturbance, conditional feedback and all four two-bit outcomes, jointly
@@ -292,11 +294,167 @@ by it preserves all these records. A legitimate calibration can fix that
 unit; the remaining ratios and readout predictions must then be tested
 without further adjustment.
 
+## Native incidents drive the same interacting field
+
+`product_incident_clock_control` executes the interacting Gibbs preparation,
+Hamiltonian, disturbed reads and feedback under a native timing controller.
+Every incident on its selected port triggers one compiled interval `1/16`,
+including incidents with zero repair current. The timing carrier pauses
+during field services, and the work/reference register is protected between
+them. The finite fixture retains all 3,600 two-attempt seam/coin tapes and
+4,900 tape/field-prefix outcomes. Zero or one incident leaves an explicit
+timeout with its full surviving work/reference state; the timeout probability
+is `35/36`. Grouping identical source words is computational reuse, not
+postselection. Counting only nonzero currents changes the clock law.
+
+The separate refinement contract uses the full screen's IID seam schedule.
+For port degree `d`, seam count `M_l=630*4^l` and normalized attempt rate
+`a_l=1260*16^l`, incidence probability is `p=d/M_l` and rate is
+`R_l=2d*4^l`. An incident executes the same interacting generator for
+`delta=1/R_l`; reads occur at counts `n=ceil(R_l t)` and `2n`. Doob's
+inequality for centered incident counts through
+`K=ceil[a_l(2n/R_l+eta)]` bounds timeout or timing failure by
+`K p(1-p)/(R_l^2 eta^2)`. On the complementary event, both arrival
+times are within `eta+1/R_l` of the rounded model read times. This is a
+bound in the normalized native-attempt coordinate; paused service durations
+are outside it. The 12-port fixture is not a full refined-screen execution.
+
+Let `S` bound the centered local generator norms at the chosen occupation,
+`m=3` be the term count, `s` the palindrome subdivisions per incident and
+`J=2n`. On the **same retained native tape**, the complete source output
+differs from the exact interacting history by at most
+
+```text
+E_preparation + (2 s m J + 4) epsilon + J S^3/(3 R_l^3 s^2).
+```
+
+Here `epsilon` is a complete-instrument half-diamond error including
+failures, not a successful-matrix residual. Comparing work outputs at
+nominal read intervals adds `2S(n/R_l-t)` and the timeout bound. The clock
+tape stays in both compared outputs; stochastic timestamps are not claimed
+to converge in total variation to deterministic point masses. The default
+requirements `E_preparation=R_l^-2`,
+`epsilon=[R_l^2(2smJ+4)]^-1` and
+`eta=2^(-floor(l/2)-1)` make these errors vanish at fixed occupation.
+They are service-accuracy requirements, not hardware measurements.
+Since the Gibbs state uses this same `H`, an ideal incident advances modular
+parameter by `-delta/beta`; at `beta=1/4` the executed fixture advances it
+by `-1/4`. Source splitting and precision errors are charged above. The
+active coupling rule, independent timing carrier and protected service
+schedule are supplied, and do not establish autonomous repair dynamics or
+SI time units.
+
+## Unrestricted occupation for the same two-mode history
+
+Fix `g>=0` and `beta>0`, keeping the radial modes, effective coupling,
+detector and Hamiltonian model times above. On `L2(R^2)` the displayed
+Hamiltonian is the Friedrichs operator of the closed positive form
+`h[psi]=||grad psi||^2/2+integral V|psi|^2`. The quartic part of `V` is
+nonnegative, so `H>=H_harm`, whose energies are `n1+2n2+3/2`. Let `P_d`
+retain the first `d` frequency-two Hermite functions in each coordinate,
+and `H_d=P_d H P_d` on that finite subspace. Forming each polynomial before
+compression is necessary for this identity.
+
+These subspaces form a common form core. Spatial cutoffs and mollification
+approximate the form domain by smooth compactly supported functions;
+their Hermite coefficients decay faster than any power. Hermite truncation
+therefore converges with every polynomial weight and derivative used in
+`h`. Galerkin orthogonality makes `(H_d+1)^-1 P_d f` the form-norm
+projection of `(H+1)^-1 f`, proving strong resolvent convergence. Equivalently,
+these are decreasing closed forms with increasing finite domains in
+[Simon's nondense-form convergence theorem, Sections 3–4](https://math.caltech.edu/SimonPapers/81.pdf).
+Consequently `P_d exp(-it H_d) P_d` converges strongly to `exp(-it H)`.
+The zeros outside `P_d` are embedding conventions: exponentiating a
+zero-extended Hamiltonian would incorrectly add an infinite identity to
+the Gibbs operator.
+
+Min-max gives `lambda_j(H_d)>=lambda_j(H_harm)` and, for each fixed index,
+`lambda_j(H_d)` decreasing to `lambda_j(H)`. The harmonic form has compact
+embedding, so `H` has compact resolvent and
+
+```text
+0 < exp[-beta(13/8+5g/128)] <= Z_d,Z
+  <= exp(-3beta/2)/[(1-exp(-beta))(1-exp(-2beta))] < infinity.
+```
+
+The lower bound is Jensen's inequality on the frequency-two product blank,
+which belongs to every code. Extend the finite eigenvalue list by infinity.
+Harmonic eigenvalue domination and dominated summation give `Z_d -> Z`.
+Strong convergence of the positive Gibbs operators plus convergence of
+their traces gives trace-norm convergence. Explicitly, for any positive
+trace-class `T` and finite-rank `P`, with `Q=I-P`,
+`||T-PTP||_1 <= Tr(QT)+2 sqrt(Tr(T) Tr(QT))`; apply this to the Gibbs
+operators after making the limiting tail small. Thus the embedded
+`rho_d=exp(-beta H_d)/Z_d` converges to the faithful `rho` in trace norm.
+The exact rational `product_gibbs_tail` bounds the normalized ordered
+spectral tail beyond rank `k(k+1)`: putting `q=1/(1+beta)`, its
+unnormalized upper bound is
+`q^(2k)[k+1-k q^2]/[(1-q)(1-q^2)]`. This controls Gibbs tightness; it is
+not an error bound for an occupation box or for a four-level observation.
+
+The untouched reference also has a specified comparison. If the compiled
+purification is `V_d diag(sqrt(w_d))`, its reference labels denote energy
+eigenvectors. Map that reference by `conjugate(V_d)` into the common
+Hermite reference; the resulting amplitude matrix is `sqrt(rho_d)`.
+These canonical purifications converge in Hilbert–Schmidt norm: their
+square roots converge strongly, their squared Hilbert–Schmidt norms are
+one, and finite-rank tests give weak Hilbert–Schmidt convergence. This
+reference isometry changes no work measurement or native record and
+retains the entire reference. Arbitrary eigenvector signs or degenerate
+reference labels cannot be compared across cutoffs without it.
+
+The actual detector uses functions of `Q_d=P_d Q P_d`, rather than
+`P_d f(Q) P_d`. Finite Hermite vectors are an operator core for `Q`, and
+`Q_d` agrees with `Q` on each such vector for sufficiently large `d`.
+Hence its bounded continuous functions converge strongly, including the
+signed preparation and feedback kicks and both cosine/sine Kraus
+operators. Their adjoints converge also; the two Kraus operators obey
+exact completeness at every cutoff. Each fixed finite adaptive history
+is a finite product of these contractions and propagators. Acting on
+the convergent canonical purification gives convergence of every
+unnormalized branch vector, and therefore trace-norm convergence of the
+complete output with all classical records, surviving work and reference.
+Appending the common native continuation is a channel and preserves this
+convergence. This extends the existing
+[smooth-history occupation argument](../scalar_observations/OCCUPATION_DERIVATION.md)
+to this two-mode Gibbs preparation. It gives neither uniform diamond-norm
+convergence over all input energies nor a numerical error for the existing
+four-level run.
+
+The same limiting state and dynamics satisfy, for bounded observables,
+`sigma_s(A)=rho^(is) A rho^(-is)=alpha_(-beta s)(A)`. The finite modular
+flows, on `P_d A P_d`, converge through the strong propagator limit; no boundedness of
+`log(rho)` is asserted. Occupation refinement therefore preserves the
+interacting Gibbs clock and complete histories. Coupling, temperature,
+radial boundary conditions and the two-mode spatial projection remain
+declared choices.
+
+`product_occupation_refinement` retains ideal comparisons at `d=4,8,12`.
+The partition functions are approximately `3.64485,5.04532,5.31594`; the
+successive complete work/reference/record trace distances are `0.56045`
+and `0.24501`. Thus the executed four-level thermal history has substantial
+occupation dependence. These finite diagnostics neither certify its
+infinite-occupation error nor replace the convergence proof. Independent
+controls check nested polynomial compression, harmonic eigenvalue
+domination, reference-basis alignment and the growing splitting budget.
+
+To transfer this ideal limit to source executions, choose a diagonal
+schedule with preparation error and summed complete-operation errors
+tending to zero. At each finite `d`, the centered norm sum `S_d` gives
+the retained palindrome error `S_d^3 t^3/(3 n_d^2)` per interval; choose
+`n_d` accordingly. The incident-clock comparison likewise needs its
+finite-`d` norm and waiting-time terms to vanish along the same schedule.
+Fixed step counts, fixed source precision and a fixed native clock
+refinement do not suffice uniformly in `d`. Protected services and
+arbitrarily accurate growing-code preparation/control are implementation
+premises; the source execution retained here uses `d=4`.
+
 ## What remains open
 
 One interacting bandwidth enlargement and its matching error are established
-on a finite occupation domain. Neither repeated band enlargement nor an
-unrestricted occupation limit for the enlarged process is proved. The
+on a finite occupation domain. Repeated band enlargement and unrestricted
+occupation for that nine-mode comparison are not proved. The two-mode
+occupation theorem above keeps its spatial band fixed. The
 matched mass shift is blank- and cutoff-dependent, and later enlargement
 can induce further operators and memory. A finite torus, finite anisotropic
 band, finite code and prescribed model clock do not establish Lorentz

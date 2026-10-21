@@ -10,6 +10,108 @@ from ..observer_reconstruction import native_geometry as ng
 from . import intrinsic_geometry as g
 
 
+@pytest.fixture(scope='module')
+def radial_records():
+    seams = tuple(tuple(edge) for edge in g.recover_structure(ng.execute_calibration())['seams'])
+    return seams, g.execute_radial_records(seams)
+
+
+def test_native_radial_quotient_has_exact_source_spectrum_and_clock_obstruction():
+    result = g.native_radial_record_control()
+    radial = sp.Matrix(result['radial_generator'])
+    mass = sp.diag(1, 5, 5, 1)
+    symmetric = mass**sp.Rational(1, 2)*radial*mass**sp.Rational(-1, 2)
+    assert symmetric == sp.Matrix([[5, -sp.sqrt(5), 0, 0], [-sp.sqrt(5), 3, -2, 0],
+                                  [0, -2, 3, -sp.sqrt(5)], [0, 0, -sp.sqrt(5), 5]])
+    assert symmetric.eigenvals() == {0: 1, 6: 1, 5-sp.sqrt(5): 1, 5+sp.sqrt(5): 1}
+    stopped = sp.Matrix(result['first_incident_row_kernel'])
+    assert stopped*sp.ones(4, 1) == sp.ones(4, 1)
+    assert (stopped*radial-radial*stopped)[0, 1] == sp.Rational(13, 37)
+    assert result['exchanged_shell_ports_control_rejected']
+    assert not result['radial_shells_are_an_independent_product_coordinate']
+    assert not result['product_radial_factor_or_physical_length_selected']
+    assert not result['source_pulses_for_this_radial_input_reexecuted']
+    # Independent spectral cosine evaluates the emitted arc-walk response.
+    kernel = np.array(sp.Matrix(result['native_row_kernel']), dtype=float)
+    values, vectors = np.linalg.eigh(kernel)
+    phases = np.arccos(np.clip(values, -1, 1))
+    for row in result['active_wave_complete_Ramsey_outputs']:
+        amplitude = np.sum(vectors[0, :]**2*np.cos(row['incident_triggers']*phases))
+        assert abs((1+amplitude)/2-float(F(row['Ramsey_plus_probability']))) < 2e-15
+        assert F(row['Ramsey_plus_probability'])+F(row['Ramsey_minus_probability']) == 1
+
+
+def test_native_radial_histories_match_every_two_attempt_mark_and_intermediate_shell(radial_records):
+    seams, records = radial_records
+    recovered = g.recover_radial_records(records)
+    shells = recovered['shells']
+    shell_of = {p: r for r, block in enumerate(shells) for p in block}
+    kernels = [sp.Matrix(recovered[name]) for name in ('remote_row_kernel', 'incident_row_kernel')]
+    for origin in range(12):
+        before = tuple(int(p == origin) for p in range(12))
+        observed = Counter()
+        for edge in seams:
+            for coin in (0, 1):
+                middle, _ = g.native.native(before, edge, coin)
+                first = int(0 in edge), shell_of[middle.index(1)]
+                for next_edge in seams:
+                    for next_coin in (0, 1):
+                        final, _ = g.native.native(middle, next_edge, next_coin)
+                        observed[*first, int(0 in next_edge), shell_of[final.index(1)]] += 1
+        for m1 in (0, 1):
+            for s1 in range(4):
+                for m2 in (0, 1):
+                    for s2 in range(4):
+                        expected = kernels[m1][shell_of[origin], s1]*kernels[m2][s1, s2]
+                        assert sp.Rational(observed[m1, s1, m2, s2], 3600) == expected
+
+
+@pytest.mark.parametrize('observer', range(12))
+def test_native_radial_generator_is_observer_relative_with_the_same_law(radial_records, observer):
+    _, records = radial_records
+    result = g.recover_radial_records(records, observer)
+    assert result['shells'][0] == [observer]
+    assert result['shell_sizes'] == [1, 5, 5, 1]
+    assert sp.Matrix(result['radial_generator']) == sp.Matrix([
+        [5, -5, 0, 0], [-1, 3, -2, 0], [0, -2, 3, -1], [0, 0, -5, 5]])
+
+
+def test_radial_first_incident_resolvent_keeps_remote_history_and_timeout(radial_records):
+    _, records = radial_records
+    result = g.recover_radial_records(records)
+    remote, incident = (sp.Matrix(result[name]) for name in ('remote_row_kernel', 'incident_row_kernel'))
+    stopped = sp.Matrix(result['first_incident_row_kernel'])
+    completed = sp.zeros(4)
+    for n in range(1, 9):
+        completed += remote**(n-1)*incident
+        assert completed+remote**n*stopped == stopped
+        assert remote**n*sp.ones(4, 1) == sp.ones(4, 1)*sp.Rational(5, 6)**n
+    assert stopped != 6*incident
+    assert remote*incident != incident*remote
+
+
+@pytest.mark.parametrize('mutation', ['missing', 'duplicate', 'no_zero_current', 'wrong_coin', 'hidden_endpoint'])
+def test_radial_record_reconstruction_rejects_incomplete_or_false_records(radial_records, mutation):
+    _, original = radial_records
+    records = deepcopy(original)
+    if mutation == 'missing': records.pop()
+    elif mutation == 'duplicate': records.append(records[0])
+    elif mutation == 'no_zero_current': records = [row for row in records if row['current']]
+    elif mutation == 'wrong_coin': records[0]['coin'] = 1-records[0]['coin']
+    else: records[0]['hidden_endpoint'] = 0
+    with pytest.raises(ValueError):
+        g.recover_radial_records(records)
+
+
+def test_averaging_an_inequitable_partition_does_not_define_shell_histories(radial_records):
+    _, records = radial_records
+    result = g.recover_radial_records(records)
+    blocks = result['shells']
+    blocks[1][0], blocks[2][0] = blocks[2][0], blocks[1][0]
+    with pytest.raises(ValueError, match='not strongly lumpable'):
+        g._lumped_kernel(sp.Matrix(result['native_row_kernel']), blocks)
+
+
 def test_radial_extensions_share_angular_readouts_but_have_distinguishing_local_probes():
     result = g.radial_nonidentifiability_control()
     assert result['native_ports'] == 240 and result['product_ports'] == 720

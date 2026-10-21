@@ -103,9 +103,31 @@ retains two radial modes, the angular constant and a declared quartic
 coupling. Native source operations prepare its finite interacting Gibbs
 state and execute complete measurement/feedback histories jointly with a
 reference. That state determines the ideal modular clock in model time.
-The coupling, occupation cutoff and radial design are supplied; an event
-clock, an interacting continuum limit and observational identification are
-not established by this finite execution.
+The same-product interaction has a source-executed native incident clock:
+all 3,600 two-attempt timing tapes retain the 0/1-tick timeouts and complete
+field/reference outputs. A common refinement schedule joins that active
+clock to the same interacting Hamiltonian and its Gibbs modular flow.
+The [occupation theorem](interacting_band_extension/README.md#unrestricted-occupation-for-the-same-two-mode-history)
+removes the oscillator cutoff mathematically for this fixed spatial band.
+It does not make the four-level execution accurate: its complete output
+differs from the eight-level calculation by about 0.56045 in trace distance.
+Radial architecture, spatial bandwidth, coupling, thermal state, active
+control and physical units remain explicit choices.
+
+The actual product nevertheless admits smooth effective descriptions.
+Angular smoothing of its positive Lipschitz measure and measurable elliptic
+tensor, with the local unitary readout map `U_epsilon=sqrt(rho_epsilon/rho)`,
+gives norm-resolvent convergence on the common Dirichlet cylinder. Thermal
+field covariances and sine responses converge in operator norm; momentum
+covariances converge on the Dirichlet form domain. For any fixed finite
+Weyl/Ramsey/feedback menu over bounded wave times and any positive error
+tolerance, one common smooth static `1+3` metric reproduces all its joint
+probabilities and finite detector/reference outputs within that tolerance.
+Source and incident-clock errors enter the same triangle budget. This is
+an existence result for a fixed sequence of smooth descriptions, with no
+data fitting, computable smoothing rate or exact smooth-native claim.
+The [proof and readout domain](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+retain the radial boundary, state and active-control assumptions.
 
 ### One complete joint observer comparison
 

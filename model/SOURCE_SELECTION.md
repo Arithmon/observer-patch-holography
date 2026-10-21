@@ -202,16 +202,30 @@ derives the distinct quantum covariance, finite-count/grid bounds and the
 full-port/Schur correspondence. Its [two-axis active clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
 combines angular and radial generators with controlled splitting error;
 the local wave action determines a [measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
-Smoothness of the whole action density suffices for a smooth metric; smooth
-approximations do not prove this property for the native limit. Three radial
+Smoothness of the whole action density suffices for a smooth comparison
+metric. The fixed radial-projection measure is continuous but not C1 across
+original face edges, so the exact native dictionary fails that premise in
+the standard sphere atlas. Smooth approximations do not prove a smooth
+source limit or identify a different exact smooth dictionary. Angular
+smoothing of the actual Lipschitz measure and elliptic tensor does give
+norm-resolvent convergence under a support-preserving readout unitary.
+Thus one common smooth `1+3` metric approximates every fixed finite
+admissible field/clock menu at any positive tolerance; the fixed two-mode
+quartic projection converges too. This effective approximation does not
+select radial architecture or remove the interacting spatial regulator.
+Three radial
 graph choices have identical complete radial-average angular laws and
 different radial responses, so that readout cannot select the radial law.
 The [same-product quartic example](interacting_band_extension/README.md#interacting-readouts-on-the-same-radial-product)
 executes a two-mode projection, a source-prepared interacting Gibbs state and
-complete reference/feedback readouts. Its coupling and model clock are
-declared. Radial design, initial states, spectral access and controls remain
-supplied; growing execution, physical transport, laboratory duration and an
-interacting continuum QFT remain unproved.
+complete reference/feedback readouts. Native incidents also trigger its
+interacting evolution while the clock carrier pauses during protected
+services; timeouts remain in the output. Its two-mode Gibbs histories have
+an unrestricted-occupation limit, with a common clock/precision schedule.
+The four-level execution has substantial occupation dependence. Radial
+design, initial states, coupling, spectral access and controls remain
+supplied; growing execution, physical transport, laboratory duration and a
+spatially unregulated interacting QFT remain unproved.
 
 The [ambient spacetime theorem](../Lean/Geometry/SourceDerivedSpacetimeCarrier.lean)
 adjoins an independent real axis and defines `t*t'-G(x,x')`; dimension four
