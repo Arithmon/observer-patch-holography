@@ -627,7 +627,7 @@ prepare the interacting Gibbs state and execute complete two-read feedback
 histories jointly with its reference. The ideal state determines its modular
 flow; raw preparation and propagation residuals remain separate. The
 coupling and model-time intervals are declared. A native-incident protocol
-now advances this same Hamiltonian on zero-inclusive ticks, retaining every
+advances this same Hamiltonian on zero-inclusive ticks, retaining every
 timeout and disturbed work/reference output. Its refinement controls the
 conversion to model time under the declared paused-service architecture.
 The two-mode positive form has a faithful trace-class Gibbs state and

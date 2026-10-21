@@ -443,7 +443,7 @@ projection neither removes the omitted spatial modes nor selects the
 interaction, temperature or laboratory unit from native repair.
 
 The [actual-measure smoothing proof](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
-now gives one smooth static `1+3` free-scalar effective description for each
+gives one smooth static `1+3` free-scalar effective description for each
 fixed finite admissible measurement menu and tolerance. It preserves the
 local readout normalization, radial boundary and common operator through
 norm-resolvent and covariance convergence. Fixed covariant coupling also
