@@ -714,6 +714,11 @@ python3 -m model.closed_prediction_protocol --check model/closed_prediction_prot
 python3 -m model.characteristic_constraints --check model/characteristic_constraints/results.json
 ```
 
+After regenerating model receipts, also check their artifact bindings in the
+shared postdiction ledger with
+`python3 code/particles/scripts/build_postdiction_ledger.py --check`.
+Updating the model manifests alone does not update that derived ledger.
+
 Use `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1` for reproducible resource usage
 on numerical runs. Package READMEs document their hypotheses, tests and
 output options. Result writers refuse to overwrite existing evidence files.

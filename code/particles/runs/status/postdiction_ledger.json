@@ -54,7 +54,7 @@
     },
     "optical_direct": {
       "artifact_ref": "model/predictions/optical_clock_results.json",
-      "artifact_sha256": "074172bfa6c66d0318839b292e23606460c15c2641b5ded6662022ff8425c100",
+      "artifact_sha256": "0efe3c11a5cefb27645cf5d448fc3403f5ef5e3dc69a1fbf51ef4b88b478e91e",
       "assessment": {
         "OPH_or_every_native_clock_excluded": false,
         "native_atomic_transition_or_interacting_QFT_derived": false,
@@ -68,7 +68,7 @@
     },
     "optical_modular": {
       "artifact_ref": "model/predictions/modular_optical_results.json",
-      "artifact_sha256": "5bef59fc515e77c22ae44c1ba563dddb57edade902e434be8f65969946b54ffd",
+      "artifact_sha256": "6b8b03872919f018910b5f03dd074ae0e36196e4be0cf2eed4f23dadb38ba19c",
       "interpretation": {
         "OPH_or_all_modular_clocks_excluded": false,
         "each_ratio_compared_separately_no_independence_assumed": true,
@@ -83,7 +83,7 @@
     },
     "optical_regional": {
       "artifact_ref": "model/predictions/regional_optical_results.json",
-      "artifact_sha256": "48facda36961a53583a07ce038c3a02787f9054538af3bb63110e4704030c1e2",
+      "artifact_sha256": "a523773feb34d3b22321f20f71386487b50ba2b4745b5b16e4a6fe8d3160cc50",
       "assessment": {
         "atomic_clocks_or_OPH_excluded": false,
         "coherence_or_independent_atom_resource_lower_bound_derived": false,
@@ -100,13 +100,13 @@
     "oscillator_readouts": {
       "anharmonic_transfer": {
         "artifact_ref": "model/anharmonic_transfer/results.json",
-        "artifact_sha256": "cccc9a17b7c8ee3866a8db95297723da05e5dbe050598ffcda4300ef95aac37a",
+        "artifact_sha256": "e464f39dcfd9a25fee4f82d821b970689fb32122751486ad25e1302be8c1e36d",
         "observations": 125,
         "position_estimator_rmse": 0.28764278683646793
       },
       "driven_anharmonic": {
         "artifact_ref": "model/anharmonic_observations/results.json",
-        "artifact_sha256": "b3d84b3c1ec1598285e992c5ed5ad33f4ec46254e386e0833a2ee19bbef8cf5e",
+        "artifact_sha256": "b544c1a9b44c4243eed97887a80e60370135f61b815bcd09218b011411913cc2",
         "binary_probability_rmse": 0.055581824888896444,
         "scalar_means": 707
       },
