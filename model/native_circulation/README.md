@@ -3,8 +3,9 @@
 A single native observer can accumulate a circulating current with a Gaussian
 long-count limit. Independent copies of the whole history are unnecessary for
 this result. The source fixes the limiting covariance. Stationary binary
-preparation, the uniform seam scheduler and access to the selected seam/current
-record remain declared.
+preparation supplies the exact finite-count laws; the axial functional limit
+holds from every initial classical binary law. The uniform seam scheduler
+and access to the selected seam/current record remain declared.
 
 The concrete measurement counts signed circulation around the lexicographically
 first triangular face of the source graph. Each native attempt contributes
@@ -95,6 +96,80 @@ The readout and retained memory are specified observer operations; no bulk
 locations, radial field, translation law or physical trajectory follows from
 its three components. A physical position interpretation would need compatible
 relative measurements and intervention/transport locality in those records.
+
+<a id="radial-continuum-from-every-binary-initial-state"></a>
+
+### Radial continuum from every binary initial state
+
+The same axial counter has a universal three-dimensional diffusion limit
+without requiring stationary preparation. Let `X_n` be the native binary
+configuration and start the retained counter at zero. For **every** initial
+classical law on the 66 configurations,
+
+```text
+Y_N(t)=Z_floor(Nt)/sqrt(N) -> Y(t)=sqrt(4/99) B_3(t),
+R_N(t)=|Y_N(t)| -> R(t)=|Y(t)|.                         (AR)
+```
+
+Here B_3 is standard three-dimensional Brownian motion and t is scaled
+native attempt count. Convergence is in the path space with the usual
+Skorokhod topology; linear interpolation gives convergence in continuous
+paths on every bounded time interval. The norm is a continuous path
+readout, so the radial limit needs neither extra sites nor a radial graph.
+
+The finite checks in `axial_radial_limit_control` supply the hypotheses.
+Enumeration of all 3,960 branches gives conditional drift zero in every configuration.
+Their transition graph is connected with diameter four, each positive
+transition has probability at least `1/60`, and every state has a self-loop.
+Padding a path to four steps proves
+`K^4(x,y)>=60^-4=(11/2160000)/66` for every pair. Thus the uniform law is
+the unique stationary law and the finite chain is ergodic from every initial
+state. Write `C(x)=E[(W J_n)(W J_n)^T | X_n=x]`. Exact branch enumeration
+gives `sum_x C(x)/66=(4/99)I3`. The ergodic theorem makes the predictable
+bracket `N^-1 sum_(n<floor(Nt)) C(X_n)` converge to `(4t/99)I3`, uniformly
+on bounded t intervals. Every squared jump norm is at most `4/5`, so the
+scaled jumps satisfy the martingale Lindeberg condition. The same
+martingale functional CLT used above proves (AR) for each initial state;
+finite mixtures give every initial classical law. No coherent-state or
+terminal-reference limit is inferred. Stationarity is required for the
+exact finite covariance `Cov(Z_N)=(4N/99)I3`, not for (AR).
+
+Set `D=2/99`. The limiting counter transition density is
+`(4 pi D t)^(-3/2) exp(-|z-z'|^2/(4Dt))` with respect to Lebesgue measure
+on this **counter space**. Its generator in polar coordinates is
+
+```text
+D Delta_R3 = D [d_r^2 + (2/r)d_r + (1/r^2) Delta_S2],   r>0. (AP)
+```
+
+The radius is a scaled three-dimensional Bessel process with entrance
+value zero and generator `D[d_r^2+(2/r)d_r]`. Its density from zero is
+`4 pi r^2 (4 pi D t)^(-3/2) exp(-r^2/(4Dt))`; the radial volume factor is
+`r^2 dr`. The angular rate is radius dependent. Direction is undefined at
+the origin; angular path convergence is asserted only on `[delta,T]` for
+`delta>0`, since the limiting path avoids zero at positive times. There is
+no claim of a finite angular clock `integral_0^t ds/R(s)^2` starting at zero.
+
+The finite controls keep this limit distinct from an assumed continuum.
+At the same initial counter `Z=0`, adjacent occupied ports give
+`E|delta Z|^2=8/75`, while nonadjacent ports give `2/15`; their stationary
+average is `4/33`. Radius alone therefore supplies no autonomous finite
+transition law valid for every native initial state. The exact stationary
+one-step fourth moment `16/165` differs from the Gaussian control
+`80/3267`. In the limit, (AP) gives `D Delta r^2=4/33` and
+`D Delta r^4=(40/99)r^2`. Omitting the radial Jacobian gives the wrong
+first value `4/99`; replacing the angular coefficient `r^-2` by one
+gives spurious drift `(4/99)(1/r-r)cos(theta)` on the Cartesian coordinate
+`z_3=r cos(theta)`, whose true drift is zero.
+
+This derives a three-dimensional continuum and its radius for a specified
+native **record counter**, with no stationary-initial-law premise. It does
+not identify that space with locations of independently local fields or
+fastest native signal transport. In particular (AP) is not the separately
+declared interval product `-d_r^2+A`, and the
+[radial-extension ambiguity](../relative_observer_geometry/README.md)
+of angular-only histories is unchanged. It supplies no physical position,
+laboratory clock, new spatial-site family or uniform finite-count path error.
 
 The nearest existing finite results are
 [`GreenKubo.lean`](../../Lean/Thermodynamics/GreenKubo.lean) and

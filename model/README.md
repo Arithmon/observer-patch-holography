@@ -404,14 +404,17 @@ units.
 
 The [axial circulation counter](native_circulation/README.md#a-three-component-axial-counter-from-the-recovered-frame)
 maps actual seam currents through the recovered rank-three frame. Its
-three components have exact covariance `(4N/99) I3` and a Brownian path
-limit with Gaussian increment-action coefficient `99/8` in rescaled native
-attempt count. A repeatable closed carrier cycle gives unbounded counter
-support; this is an axial record, not spatial translation. In one port's
-movement clock, the separate Palm-prepared triangle variance is `3m/5`
-and the cycle-space action coefficient is `5/2`. Stationary preparation,
-current access and growing record capacity remain declared; these actions
-do not establish relativistic spacetime or an empirical field identification.
+three components have stationary covariance `(4N/99) I3`. Every binary
+initial state gives the same Brownian path limit in rescaled native attempt
+count. The counter norm has radial generator `(2/99)(d_r^2+2/r d_r)`;
+its polar angular term is `(2/99)r^-2 Delta_S2`. This derives a radius for
+the retained current record, without adding radial sites. Finite radial
+increments depend on the hidden carrier state. Physical translation
+and the separate radial field remain unidentified. In one port's movement
+clock, the Palm-prepared triangle variance is `3m/5` and the cycle-space
+action coefficient is `5/2`. Current access, uniform scheduling and growing
+record capacity remain declared; stationary preparation is required for
+the stated exact finite covariances.
 
 The [native quantum transfer](native_quantum_history/README.md) and
 [effective fields](native_effective_fields/README.md) provide finite

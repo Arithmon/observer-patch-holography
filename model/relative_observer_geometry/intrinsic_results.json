@@ -1207,6 +1207,127 @@
   },
   "radial_selection_control": {
     "additional_radial_contrast_is_available_in_current_native_record_menu": false,
+    "complete_adaptive_angular_histories": {
+      "clock_pattern_counts": [
+        {
+          "count": 2500,
+          "incident_marks": [
+            0,
+            0
+          ]
+        },
+        {
+          "count": 500,
+          "incident_marks": [
+            0,
+            1
+          ]
+        },
+        {
+          "count": 500,
+          "incident_marks": [
+            1,
+            0
+          ]
+        },
+        {
+          "count": 100,
+          "incident_marks": [
+            1,
+            1
+          ]
+        }
+      ],
+      "complete_angular_record_law": [
+        {
+          "field_bits": [],
+          "incident_ticks": 0,
+          "probability": 0.6944444444444443
+        },
+        {
+          "field_bits": [
+            0
+          ],
+          "incident_ticks": 1,
+          "probability": 0.1378785882940108
+        },
+        {
+          "field_bits": [
+            1
+          ],
+          "incident_ticks": 1,
+          "probability": 0.13989918948376667
+        },
+        {
+          "field_bits": [
+            0,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.013511623370147857
+        },
+        {
+          "field_bits": [
+            0,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.00027623545925320773
+        },
+        {
+          "field_bits": [
+            1,
+            0
+          ],
+          "incident_ticks": 2,
+          "probability": 0.012055201223128325
+        },
+        {
+          "field_bits": [
+            1,
+            1
+          ],
+          "incident_ticks": 2,
+          "probability": 0.0019347177252483337
+        }
+      ],
+      "complete_native_tape_sha256": "72e13920b372a362a3c4203028d44de978f7ffee8f354dc78fb249c6f481df3a",
+      "complete_native_tapes": 3600,
+      "complete_tape_and_field_outcomes": 4900,
+      "feedback_native_seam": [
+        0,
+        1
+      ],
+      "feedback_removal_record_tv": 0.011321153841852739,
+      "first_model_duration": "1/4",
+      "full_product_Gibbs_or_nonconstant_radial_inputs_covered": false,
+      "native_timer_pauses_during_comparison_services": true,
+      "radial_model_comparisons": [
+        {
+          "complete_output_probability": 0.9999999999999997,
+          "complete_work_reference_record_distance_upper_numerical": 1.4928024629756317e-16,
+          "radial_model": "path_weight_one"
+        },
+        {
+          "complete_output_probability": 0.9999999999999997,
+          "complete_work_reference_record_distance_upper_numerical": 1.4967174380046248e-16,
+          "radial_model": "path_weight_four"
+        },
+        {
+          "complete_output_probability": 0.9999999999999997,
+          "complete_work_reference_record_distance_upper_numerical": 1.7702019714964962e-16,
+          "radial_model": "cycle_weight_one"
+        }
+      ],
+      "reference_dimension": 2,
+      "second_duration_by_first_bit": [
+        "1/4",
+        "1/2"
+      ],
+      "source_pulses_for_comparison_operations_executed": false,
+      "theorem_covers_arbitrary_angular_reference_inputs_in_constant_radial_code": true,
+      "zero_current_incidents_retained": 620
+    },
     "distinguishing_measurement": "constant angular mode times radial contrast (1,-1,0)/sqrt(2)",
     "exact_identity": "B_R J = J L; J*J=I; B_R=I_3 tensor L+R tensor I",
     "existing_Dirichlet_product_or_general_OPH_is_refuted": false,
@@ -1215,6 +1336,11 @@
         "cycle_rank": 0,
         "exact_product_intertwiner_residual_nonzeros": 0,
         "name": "path_weight_one",
+        "nonconstant_radial_cosine_interval": [
+          "799899997/800000000",
+          "799900003/800000000"
+        ],
+        "nonconstant_radial_probe_time": "1/100",
         "radial_contrast_wave_second_derivative_at_zero": "-5/2",
         "radial_edge_weight": 1,
         "radial_edges": [
@@ -1254,6 +1380,11 @@
         "cycle_rank": 0,
         "exact_product_intertwiner_residual_nonzeros": 0,
         "name": "path_weight_four",
+        "nonconstant_radial_cosine_interval": [
+          "49974997/50000000",
+          "49975003/50000000"
+        ],
+        "nonconstant_radial_probe_time": "1/100",
         "radial_contrast_wave_second_derivative_at_zero": "-10",
         "radial_edge_weight": 4,
         "radial_edges": [
@@ -1293,6 +1424,11 @@
         "cycle_rank": 1,
         "exact_product_intertwiner_residual_nonzeros": 0,
         "name": "cycle_weight_one",
+        "nonconstant_radial_cosine_interval": [
+          "799879997/800000000",
+          "799880003/800000000"
+        ],
+        "nonconstant_radial_probe_time": "1/100",
         "radial_contrast_wave_second_derivative_at_zero": "-3",
         "radial_edge_weight": 1,
         "radial_edges": [
@@ -2757,7 +2893,7 @@
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/relative_observer_geometry/__init__.py": "00c42c630b613582af1d78b3c124788a0385dc2c137b6ac901ca04b8c9dceaf3",
-    "model/relative_observer_geometry/intrinsic_geometry.py": "e879a026928ce617748bdf938e6ccb9ec43ea5411cbefbe002fb128bd351ac89",
+    "model/relative_observer_geometry/intrinsic_geometry.py": "1a13f1004fbe897d368bb8c9ae0c7bec41644b1fd002fc1fcaf3aadd3599df1f",
     "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",
     "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",

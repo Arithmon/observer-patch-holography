@@ -69,6 +69,56 @@ def test_axial_geometry_rejects_a_changed_frame_dictionary(monkeypatch):
         c.axial_weights()
 
 
+def test_axial_all_initial_state_limit_has_exact_ergodicity_and_radial_controls():
+    row = c.axial_radial_limit_control()
+    assert row['complete_native_branches_checked'] == 3960
+    assert row['configuration_graph_diameter'] == row['Doeblin_attempt_block'] == 4
+    assert row['minimum_self_loop_probability'] == '5/6'
+    assert row['Doeblin_uniform_reset_probability_lower'] == '11/2160000'
+    assert not row['stationary_initial_preparation_required_for_functional_limit']
+    assert row['exact_finite_covariance_formula_requires_stationary_preparation']
+    assert row['same_zero_counter_one_attempt_radial_second_moment'] == {
+        'adjacent': '8/75', 'nonadjacent': '2/15'}
+    assert row['stationary_one_attempt_radial_fourth_moment'] == '16/165'
+    assert row['Gaussian_one_attempt_radial_fourth_moment_control'] == '80/3267'
+    assert not row['physical_spatial_transport_or_independent_product_radius_identified']
+    # Independently check the positive four-step transition lower bound on
+    # the actual integer kernel; 60^4 fits exactly in the integer datatype.
+    kernel, _, _, _ = c.source()
+    four = np.linalg.matrix_power(np.asarray(kernel.counts, dtype=np.int64), 4)
+    assert four.min() >= 1
+    assert np.all(four.sum(axis=1) == 60**4)
+
+
+def test_axial_radial_moments_use_actual_records_for_every_initial_state():
+    kernel, _, _, _ = c.source()
+    weights = c.axial_weights()
+    norms = [sp.simplify(weights[:, edge].dot(weights[:, edge])) for edge in range(30)]
+    squared = []
+    fourth = []
+    for state in kernel.states:
+        moment2 = moment4 = sp.Rational(0)
+        for edge, seam in enumerate(kernel.seams):
+            for coin in (0, 1):
+                _, record = c.native.native(state, seam, coin)
+                norm2 = norms[edge]*record[1]**2
+                assert norm2 in (0, sp.Rational(4, 5))
+                moment2 += norm2/60
+                moment4 += norm2**2/60
+        squared.append(moment2); fourth.append(moment4)
+    assert set(squared) == {sp.Rational(8, 75), sp.Rational(2, 15)}
+    assert sum(squared)/66 == sp.Rational(4, 33)
+    assert sum(fourth)/66 == sp.Rational(16, 165)
+
+
+def test_axial_radial_certificate_rejects_nonmartingale_readout(monkeypatch):
+    weights = sp.MutableDenseMatrix(c.axial_weights())
+    weights[0, 0] += 1
+    monkeypatch.setattr(c, 'axial_weights', lambda: weights)
+    with pytest.raises(ArithmeticError, match='conditional drift'):
+        c.axial_radial_limit_control()
+
+
 def test_gradient_contamination_destroys_the_axial_martingale(monkeypatch):
     weights=sp.MutableDenseMatrix(c.axial_weights())
     weights[0,0]+=1

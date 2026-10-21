@@ -112,8 +112,13 @@ def test_averaging_an_inequitable_partition_does_not_define_shell_histories(radi
         g._lumped_kernel(sp.Matrix(result['native_row_kernel']), blocks)
 
 
-def test_radial_extensions_share_angular_readouts_but_have_distinguishing_local_probes():
-    result = g.radial_nonidentifiability_control()
+@pytest.fixture(scope='module')
+def radial_extensions():
+    return g.radial_nonidentifiability_control()
+
+
+def test_radial_extensions_share_angular_readouts_but_have_distinguishing_local_probes(radial_extensions):
+    result = radial_extensions
     assert result['native_ports'] == 240 and result['product_ports'] == 720
     assert [row['radial_spectrum'] for row in result['models']] == [
         ['0', '1', '3'], ['0', '4', '12'], ['0', '3', '3']]
@@ -136,10 +141,49 @@ def test_radial_extensions_share_angular_readouts_but_have_distinguishing_local_
         observed = np.sum((vectors.T@probe)**2*np.cos(t*np.sqrt(values)))
         derivative = float(F(row['radial_contrast_wave_second_derivative_at_zero']))
         assert abs(observed-1-t*t*derivative/2) <= max(values)**2*t**4/24+1e-15
+        lo, hi = map(F, row['nonconstant_radial_cosine_interval'])
+        assert float(lo) <= observed <= float(hi)
     assert not result['radial_average_is_a_boundary_Dirichlet_to_Neumann_readout']
     assert not result['additional_radial_contrast_is_available_in_current_native_record_menu']
     assert not result['radial_models_are_executed_native_repair_extensions']
     assert not result['existing_Dirichlet_product_or_general_OPH_is_refuted']
+
+
+def test_radial_extensions_keep_complete_adaptive_clock_reference_histories(radial_extensions):
+    result = radial_extensions['complete_adaptive_angular_histories']
+    assert result['complete_native_tapes'] == 3600
+    assert result['complete_tape_and_field_outcomes'] == 4900
+    assert result['reference_dimension'] == 2
+    assert result['zero_current_incidents_retained'] > 0
+    assert [row['count'] for row in result['clock_pattern_counts']] == [2500, 500, 500, 100]
+    rows = result['complete_angular_record_law']
+    assert len(rows) == 7 and sum(row['probability'] for row in rows) == pytest.approx(1., abs=1e-12)
+    assert rows[0]['field_bits'] == []
+    assert rows[0]['probability'] == pytest.approx(25/36, abs=1e-12)
+    assert result['second_duration_by_first_bit'] == ['1/4', '1/2']
+    assert result['feedback_removal_record_tv'] > 1e-4
+    for row in result['radial_model_comparisons']:
+        assert row['complete_work_reference_record_distance_upper_numerical'] < 1e-11
+        assert row['complete_output_probability'] == pytest.approx(1., abs=1e-12)
+    assert not result['source_pulses_for_comparison_operations_executed']
+    assert not result['full_product_Gibbs_or_nonconstant_radial_inputs_covered']
+    intervals = sorted(tuple(map(F, row['nonconstant_radial_cosine_interval']))
+                       for row in radial_extensions['models'])
+    assert all(a[1] < b[0] for a, b in zip(intervals, intervals[1:]))
+
+
+def test_radial_history_equivalence_needs_the_constant_radial_code():
+    # The angular superposition of eigenvalues zero and lambda acquires a
+    # different reduced coherence under a nonconstant radial preparation.
+    # No full-input channel equality follows from the constant-code theorem.
+    probe = np.array([1., -1., 0.])/np.sqrt(2)
+    radial = np.array([[1., -1., 0.], [-1., 2., -1.], [0., -1., 1.]])
+    values, axes = np.linalg.eigh(radial)
+    values[0] = 0
+    lam, time = 6., .5
+    amplitude = np.sum((axes.T@probe)**2*np.exp(-1j*time*(np.sqrt(values+lam)-np.sqrt(values))))
+    angular_only = np.exp(-1j*time*np.sqrt(lam))
+    assert abs(amplitude-angular_only) > .1
 
 
 def test_radial_control_rejects_loss_of_the_native_angular_constant(monkeypatch):

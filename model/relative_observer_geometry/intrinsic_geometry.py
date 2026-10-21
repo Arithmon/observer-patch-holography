@@ -688,6 +688,111 @@ def native_optical_front_control():
             'radial_design_active_wave_and_clock_contracts_required': True}}
 
 
+def _radial_adaptive_history_control(graph, laplacian, models):
+    """Complete comparison histories on the invariant constant-radial code.
+
+    Native timing tapes are executed; the spectral wave and angular
+    instruments are comparison operations, not additional source pulses.
+    The reference columns are retained through every stopped branch.
+    """
+    import numpy as np
+
+    size = graph.ports
+    eigenvalues, axes = np.linalg.eigh(np.array(laplacian, dtype=float))
+    if abs(eigenvalues[0]) > 1e-10 or eigenvalues[1] <= 0:
+        raise ArithmeticError('the angular comparison lost its unique constant mode')
+    eigenvalues[0] = 0  # Exact conserved mode, not sqrt of roundoff.
+    seam = next(edge for edge in graph.seams if edge[0] % 2 != edge[1] % 2)
+    a, b = seam
+    initial = np.zeros((size, 2), complex)
+    initial[a, 0], initial[b, 1] = 1/np.sqrt(2), 1j/np.sqrt(2)
+    mask = np.array([p % 2 == 0 for p in range(size)])
+    swap = np.arange(size); swap[a], swap[b] = b, a
+
+    # Same genuine native two-attempt clock, including zero-current marks.
+    seams = tuple(tuple(edge) for edge in recover_structure(ng.execute_calibration())['seams'])
+    before = (1,)+(0,)*(PORTS-1)
+    marks, tape_rows, zero_incidents = Counter(), [], 0
+    for edge in seams:
+        for coin in (0, 1):
+            middle, (_, current) = native.native(before, edge, coin)
+            for second in seams:
+                for next_coin in (0, 1):
+                    final, (_, next_current) = native.native(middle, second, next_coin)
+                    flags = int(0 in edge), int(0 in second)
+                    marks[flags] += 1
+                    zero_incidents += int(flags[0] and current == 0)+int(flags[1] and next_current == 0)
+                    tape_rows.append((edge, coin, current, second, next_coin, next_current, final))
+    if marks != Counter({(0, 0): 2500, (0, 1): 500, (1, 0): 500, (1, 1): 100}):
+        raise ArithmeticError('the native comparison timer changed its complete law')
+    weights = [F(sum(count for flags, count in marks.items() if sum(flags) == n), len(tape_rows))
+               for n in range(3)]
+
+    def histories(start, basis, spectrum, radial_copies, feedback=True):
+        branches, out = {(): start}, []
+        for step in range(3):
+            out.append(branches)
+            if step == 2:
+                break
+            following = {}
+            for bits, state in branches.items():
+                time = F(1, 2) if bits == (1,) else F(1, 4)
+                advanced = basis@(np.exp(-1j*float(time)*np.sqrt(spectrum))[:, None]
+                                  *(basis.conj().T@state))
+                for bit in (0, 1):
+                    terminal = advanced*np.tile(mask if bit == 0 else ~mask, radial_copies)[:, None]
+                    if step == 0 and bit == 1 and feedback:
+                        terminal = terminal.reshape(radial_copies, size, 2)[:, swap, :].reshape(-1, 2)
+                    following[bits+(bit,)] = terminal
+            branches = following
+        return out
+
+    base = histories(initial, axes, eigenvalues, 1)
+    no_feedback = histories(initial, axes, eigenvalues, 1, False)
+    probability = lambda state: float(np.linalg.norm(state)**2)
+    feedback_tv = sum(float(weights[n])*sum(abs(probability(state)-probability(no_feedback[n][bits]))
+                       for bits, state in branches.items())/2 for n, branches in enumerate(base))
+    lift = lambda state: np.tile(state, (3, 1))/np.sqrt(3)
+    checks = []
+    for model in models:
+        radial = np.array(model['radial_laplacian'], dtype=float)
+        radial_values, radial_axes = np.linalg.eigh(radial)
+        if abs(radial_values[0]) > 1e-12 or radial_values[1] <= 0:
+            raise ArithmeticError('the radial comparison lost its unique constant mode')
+        radial_values[0] = 0
+        states = histories(lift(initial), np.kron(radial_axes, axes),
+                           (radial_values[:, None]+eigenvalues).reshape(-1), 3)
+        distance, mass = 0., 0.
+        for n, branches in enumerate(states):
+            for bits, state in branches.items():
+                expected = lift(base[n][bits])
+                # Half-trace bound on unnormalized pure work/reference outputs.
+                distance += float(weights[n])*.5*(np.linalg.norm(state)+np.linalg.norm(expected))*np.linalg.norm(state-expected)
+                mass += float(weights[n])*probability(state)
+        if distance > 1e-10 or abs(mass-1) > 1e-11:
+            raise ArithmeticError('an adaptive angular history distinguishes the constant radial code')
+        checks.append({'radial_model': model['name'],
+            'complete_work_reference_record_distance_upper_numerical': float(distance),
+            'complete_output_probability': float(mass)})
+    if feedback_tv < 1e-4 or not zero_incidents:
+        raise ArithmeticError('the adaptive comparison lacks genuine feedback or null incidents')
+    return {'complete_native_tapes': len(tape_rows),
+        'complete_native_tape_sha256': hashlib.sha256(canonical(tape_rows).encode()).hexdigest(),
+        'complete_tape_and_field_outcomes': sum(count*2**sum(flags) for flags, count in marks.items()),
+        'clock_pattern_counts': [{'incident_marks': list(flags), 'count': count} for flags, count in sorted(marks.items())],
+        'zero_current_incidents_retained': zero_incidents, 'reference_dimension': 2,
+        'feedback_native_seam': list(seam), 'first_model_duration': '1/4',
+        'second_duration_by_first_bit': ['1/4', '1/2'],
+        'complete_angular_record_law': [{'incident_ticks': n, 'field_bits': list(bits),
+            'probability': float(weights[n])*probability(state)} for n, branches in enumerate(base)
+                                      for bits, state in branches.items()],
+        'radial_model_comparisons': checks, 'feedback_removal_record_tv': float(feedback_tv),
+        'theorem_covers_arbitrary_angular_reference_inputs_in_constant_radial_code': True,
+        'native_timer_pauses_during_comparison_services': True,
+        'source_pulses_for_comparison_operations_executed': False,
+        'full_product_Gibbs_or_nonconstant_radial_inputs_covered': False}
+
+
 def radial_nonidentifiability_control():
     """Connected local extensions agree on the retained angular readout.
 
@@ -735,20 +840,28 @@ def radial_nonidentifiability_control():
             raise ArithmeticError('the distinguishing radial readout changed under angular lifting')
         spectrum = sorted(value for value, multiplicity in radial.eigenvals().items()
                           for _ in range(multiplicity))
+        probe_time = sp.Rational(1, 100)
+        center = 1-energy*probe_time**2/2
+        remainder = max(spectrum)**2*probe_time**4/24
         models.append({'name': name, 'radial_edges': [list(edge) for edge in edges],
             'radial_edge_weight': weight,
             'radial_laplacian': [[str(v) for v in row] for row in radial.tolist()],
             'radial_spectrum': [str(v) for v in spectrum],
             'cycle_rank': len(edges)-2,
             'exact_product_intertwiner_residual_nonzeros': residual.nnz(),
-            'radial_contrast_wave_second_derivative_at_zero': str(-energy)})
+            'radial_contrast_wave_second_derivative_at_zero': str(-energy),
+            'nonconstant_radial_probe_time': str(probe_time),
+            'nonconstant_radial_cosine_interval': [str(center-remainder), str(center+remainder)]})
     if len({row['radial_contrast_wave_second_derivative_at_zero'] for row in models}) != 3:
         raise ArithmeticError('the additional radial measurement failed to distinguish the models')
+    probe_intervals = sorted(tuple(map(sp.Rational, row['nonconstant_radial_cosine_interval'])) for row in models)
+    if any(left[1] >= right[0] for left, right in zip(probe_intervals, probe_intervals[1:])):
+        raise ArithmeticError('the finite radial probe intervals do not distinguish the extensions')
     return {'native_ports': size, 'native_seams': len(graph.seams),
         'source': 'unchanged complete total-one native endpoint-record kernel',
         'product_ports': 3*size, 'radial_readout': '(1,1,1)/sqrt(3)',
         'exact_identity': 'B_R J = J L; J*J=I; B_R=I_3 tensor L+R tensor I',
-        'models': models,
+        'models': models, 'complete_adaptive_angular_histories': _radial_adaptive_history_control(graph, lap, models),
         'retained_functional_calculus': ['heat', 'cosine wave', 'positive shifted resolvent'],
         'native_record_and_incident_mark_law_is_independent_of_radial_choice': True,
         'distinguishing_measurement': 'constant angular mode times radial contrast (1,-1,0)/sqrt(2)',
