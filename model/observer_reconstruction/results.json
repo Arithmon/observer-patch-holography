@@ -21849,7 +21849,7 @@
   "source_sha256": {
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
-    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
     "model/observer_reconstruction/bounds.py": "4ccabaabd9952c89b6c7dcdea839374918f020465492f7e6b8cdf64b5c450f39",
     "model/observer_reconstruction/experiment.py": "7ea58dcce82ed06d05941b8e647b4e1d84731a166e91246180645ac7c04f2b40",
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",

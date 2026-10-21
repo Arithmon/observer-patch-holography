@@ -74,24 +74,24 @@
         4,
         1
       ],
-      "probability_residual_diagnostic": 1.3211653993039363e-14,
+      "probability_residual_diagnostic": 4.3520742565306136e-14,
       "record_weights": [
-        0.9445810024287684,
-        0.0031481722733779282,
-        1.4956666924891286e-30,
-        1.8538266076795728e-30,
-        0.00017363353086704073,
-        0.052097191766972875,
-        1.5189953159133027e-31,
-        8.296766796219807e-33,
-        1.9786615477328724e-60,
-        7.191882587134066e-60,
-        6.865878040172455e-30,
-        6.708451176122552e-61,
-        1.8640057036586586e-60,
-        7.656250619283025e-61,
-        9.452173904847264e-61,
-        8.489032434103201e-31
+        0.9445810024287381,
+        0.0031481722733777842,
+        5.559339060511733e-31,
+        3.7480241063595255e-32,
+        0.00017363353086703506,
+        0.05209719176697129,
+        9.853339232308368e-33,
+        1.5385736504970594e-33,
+        7.388830789678358e-61,
+        3.6668309599096894e-61,
+        1.8613869591132945e-30,
+        5.644357255287869e-62,
+        7.165343605519786e-63,
+        6.228585233573429e-62,
+        4.2844807551020815e-62,
+        1.1088336613085167e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 2,
@@ -179,24 +179,24 @@
         4,
         1
       ],
-      "probability_residual_diagnostic": 1.8096635301390052e-14,
+      "probability_residual_diagnostic": 3.5638159090467525e-14,
       "record_weights": [
-        0.7509252883311852,
-        2.926550929924345e-31,
-        0.012254856222631326,
-        2.737569565020184e-31,
-        1.414540735521297e-61,
-        2.5022973467195374e-30,
-        4.05184618158276e-60,
-        1.3851654533561526e-60,
-        0.003802763082697518,
-        7.057751224294652e-31,
-        0.23301709236346277,
-        5.353992320364729e-32,
-        2.5674816258180442e-61,
-        6.485255077670368e-61,
-        3.0486032919756035e-62,
-        3.999377668808156e-31
+        0.7509252883311677,
+        1.4686784941686142e-31,
+        0.012254856222630912,
+        2.4317172971768446e-31,
+        6.189714419930261e-62,
+        9.097535284550537e-31,
+        6.592497534305911e-62,
+        3.4343083742736584e-61,
+        0.0038027630826974277,
+        1.855889236485149e-33,
+        0.23301709236345397,
+        4.2247397553987285e-34,
+        1.8543505717660243e-62,
+        2.9896092643362027e-61,
+        3.248107593262593e-63,
+        4.496315687526679e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 2,
@@ -257,8 +257,8 @@
         ],
         "modular_parameter": 0,
         "source_phase_weighted_sum": [
-          0.0002754820936639071,
-          -2.424099897244216e-18
+          0.0002754820936638969,
+          -7.97400384602464e-18
         ]
       },
       {
@@ -268,8 +268,8 @@
         ],
         "modular_parameter": 1,
         "source_phase_weighted_sum": [
-          0.0002728442448194699,
-          3.602438484797478e-05
+          0.00027284424481945963,
+          3.602438484796836e-05
         ]
       },
       {
@@ -279,8 +279,8 @@
         ],
         "modular_parameter": 4,
         "source_phase_weighted_sum": [
-          0.00023497940190148883,
-          0.00013547496519533906
+          0.00023497940190147932,
+          0.00013547496519533087
         ]
       },
       {
@@ -290,8 +290,8 @@
         ],
         "modular_parameter": 8,
         "source_phase_weighted_sum": [
-          0.00013302609529815496,
-          0.00022272257719074373
+          0.00013302609529814715,
+          0.00022272257719073375
         ]
       }
     ],
@@ -337,13 +337,13 @@
       ],
       "mode": 1,
       "modular_parameter": 0,
-      "probability_residual_diagnostic": 7.882583474838611e-15,
+      "probability_residual_diagnostic": 2.6867397195928788e-14,
       "quadrature": "x",
       "record_weights": [
-        0.9999999999999921,
-        2.31128399370673e-32,
-        8.079495149266683e-30,
-        4.306968203910778e-31
+        0.9999999999999731,
+        5.223122009178087e-31,
+        2.247262222680384e-30,
+        2.0884977943784083e-32
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -381,13 +381,13 @@
       ],
       "mode": 1,
       "modular_parameter": 0,
-      "probability_residual_diagnostic": 4.163336342344337e-15,
+      "probability_residual_diagnostic": 1.5154544286133387e-14,
       "quadrature": "y",
       "record_weights": [
-        0.49999999999999584,
-        0.4999999999999968,
-        3.247757173422497e-30,
-        1.2043099565683102e-30
+        0.4999999999999858,
+        0.49999999999998485,
+        1.0522322959021465e-30,
+        4.00506054669312e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -425,13 +425,13 @@
       ],
       "mode": 1,
       "modular_parameter": 1,
-      "probability_residual_diagnostic": 7.549516567451064e-15,
+      "probability_residual_diagnostic": 2.6645352591003757e-14,
       "quadrature": "x",
       "record_weights": [
-        0.9966781941957474,
-        0.0033218058042449846,
-        7.962221858965996e-30,
-        4.742689257098343e-31
+        0.9966781941957283,
+        0.003321805804244982,
+        2.2739249406704076e-30,
+        4.1596468155135226e-32
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -469,13 +469,13 @@
       ],
       "mode": 1,
       "modular_parameter": 1,
-      "probability_residual_diagnostic": 4.551914400963142e-15,
+      "probability_residual_diagnostic": 1.609823385706477e-14,
       "quadrature": "y",
       "record_weights": [
-        0.5575393031800295,
-        0.44246069681996303,
-        3.2793790819830724e-30,
-        1.0996502844637177e-30
+        0.557539303180018,
+        0.44246069681995226,
+        1.1763331429531653e-30,
+        3.3010816922928303e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -513,13 +513,13 @@
       ],
       "mode": 1,
       "modular_parameter": 4,
-      "probability_residual_diagnostic": 7.66053886991358e-15,
+      "probability_residual_diagnostic": 2.5868196473766147e-14,
       "quadrature": "x",
       "record_weights": [
-        0.9477291747021519,
-        0.05227082529784012,
-        6.865878040172517e-30,
-        8.48903243410329e-31
+        0.9477291747021337,
+        0.0522708252978393,
+        1.861386959113335e-30,
+        1.1088336613085414e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -557,13 +557,13 @@
       ],
       "mode": 1,
       "modular_parameter": 4,
-      "probability_residual_diagnostic": 6.328271240363392e-15,
+      "probability_residual_diagnostic": 2.098321516541546e-14,
       "quadrature": "y",
       "record_weights": [
-        0.7225726535774786,
-        0.27742734642251327,
-        2.8787449082492894e-30,
-        9.678783433732813e-31
+        0.7225726535774639,
+        0.2774273464225065,
+        6.337335706864103e-31,
+        1.923569467596035e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -601,13 +601,13 @@
       ],
       "mode": 1,
       "modular_parameter": 8,
-      "probability_residual_diagnostic": 6.5503158452884236e-15,
+      "probability_residual_diagnostic": 2.220446049250313e-14,
       "quadrature": "x",
       "record_weights": [
-        0.8018456555179011,
-        0.19815434448209107,
-        3.7654274755700864e-30,
-        1.2699813166255915e-30
+        0.8018456555178854,
+        0.19815434448208746,
+        1.1645765918570336e-30,
+        2.9773449856589417e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -645,13 +645,13 @@
       ],
       "mode": 1,
       "modular_parameter": 8,
-      "probability_residual_diagnostic": 7.882583474838611e-15,
+      "probability_residual_diagnostic": 2.6423307986078726e-14,
       "quadrature": "y",
       "record_weights": [
-        0.89860908199006,
-        0.1013909180099315,
-        1.3786970041318196e-30,
-        6.406631829075155e-31
+        0.8986090819900414,
+        0.10139091800992892,
+        1.4236445863474117e-31,
+        5.076672362457684e-32
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -689,13 +689,13 @@
       ],
       "mode": 2,
       "modular_parameter": 0,
-      "probability_residual_diagnostic": 1.3988810110276972e-14,
+      "probability_residual_diagnostic": 2.8754776337791554e-14,
       "quadrature": "x",
       "record_weights": [
-        0.999999999999986,
-        5.717505408183676e-30,
-        1.6483810252536082e-31,
-        5.888599210612504e-31
+        0.9999999999999712,
+        1.4809213129921996e-30,
+        2.454410547804318e-30,
+        1.3220151229665e-30
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -733,13 +733,13 @@
       ],
       "mode": 2,
       "modular_parameter": 0,
-      "probability_residual_diagnostic": 6.994405055138486e-15,
+      "probability_residual_diagnostic": 1.6486811915683575e-14,
       "quadrature": "y",
       "record_weights": [
-        0.4999999999999938,
-        9.113483953783935e-30,
-        0.499999999999993,
-        1.78256628938194e-30
+        0.4999999999999835,
+        1.2223224589474256e-30,
+        0.4999999999999849,
+        1.856606521537818e-30
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -777,13 +777,13 @@
       ],
       "mode": 2,
       "modular_parameter": 1,
-      "probability_residual_diagnostic": 1.3877787807814457e-14,
+      "probability_residual_diagnostic": 2.8199664825478976e-14,
       "quadrature": "x",
       "record_weights": [
-        0.9839423806946569,
-        4.906782656245385e-30,
-        0.01605761930532911,
-        4.6566308417585834e-31
+        0.9839423806946426,
+        1.3806118067617917e-30,
+        0.016057619305328355,
+        1.1072171252391569e-30
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -821,13 +821,13 @@
       ],
       "mode": 2,
       "modular_parameter": 1,
-      "probability_residual_diagnostic": 7.993605777301127e-15,
+      "probability_residual_diagnostic": 2.042810365310288e-14,
       "quadrature": "y",
       "record_weights": [
-        0.6256971446277613,
-        9.176338973388838e-30,
-        0.37430285537222535,
-        1.6074122314621707e-30
+        0.6256971446277488,
+        1.4348035237198802e-30,
+        0.3743028553722195,
+        1.9236331379600078e-30
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -865,13 +865,13 @@
       ],
       "mode": 2,
       "modular_parameter": 4,
-      "probability_residual_diagnostic": 1.1102230246251565e-14,
+      "probability_residual_diagnostic": 2.1094237467877974e-14,
       "quadrature": "x",
       "record_weights": [
-        0.7631801445538238,
-        2.5022973467195626e-30,
-        0.23681985544616235,
-        3.999377668808201e-31
+        0.7631801445538138,
+        9.097535284550746e-31,
+        0.23681985544615655,
+        4.496315687526779e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -909,13 +909,13 @@
       ],
       "mode": 2,
       "modular_parameter": 4,
-      "probability_residual_diagnostic": 1.27675647831893e-14,
+      "probability_residual_diagnostic": 2.90878432451791e-14,
       "quadrature": "y",
       "record_weights": [
-        0.925130816940635,
-        8.280924885151037e-30,
-        0.07486918305935104,
-        9.821884836308438e-31
+        0.9251308169406187,
+        1.9334656303878674e-30,
+        0.07486918305935045,
+        1.756345148226541e-30
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -953,13 +953,13 @@
       ],
       "mode": 2,
       "modular_parameter": 8,
-      "probability_residual_diagnostic": 9.325873406851315e-15,
+      "probability_residual_diagnostic": 2.353672812205332e-14,
       "quadrature": "x",
       "record_weights": [
-        0.27705515394950564,
-        4.677337855349226e-31,
-        0.7229448460504808,
-        9.810271880278195e-31
+        0.27705515394950275,
+        2.335810941506242e-31,
+        0.7229448460504666,
+        1.9969257315920307e-33
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -990,20 +990,20 @@
       ],
       "gate_comparison_half_diamond_upper": "1/10000000000",
       "ideal_probability_diagnostic": [
-        0.9475439594269185,
+        0.9475439594269184,
         0.0,
-        0.05245604057308151,
+        0.05245604057308162,
         0.0
       ],
       "mode": 2,
       "modular_parameter": 8,
-      "probability_residual_diagnostic": 1.3766765505351941e-14,
+      "probability_residual_diagnostic": 2.864375403532904e-14,
       "quadrature": "y",
       "record_weights": [
-        0.9475439594269047,
-        5.2603803881090504e-30,
-        0.052456040573080794,
-        4.002681309105101e-31
+        0.9475439594268897,
+        1.9935968113794085e-30,
+        0.05245604057307919,
+        9.129356874873675e-31
       ],
       "resources_per_branch": {
         "four_outcome_reads": 1,
@@ -1071,7 +1071,7 @@
     "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
     "model/observer/source_discrimination/experiment.py": "3f7bacf7f99b93b7d7a72b3d3e97c9a7fb9de1b37311c48366e1be07a0d4095c",
     "model/observer/source_scalar/bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
-    "model/observer/source_scalar/compiler.py": "07d7a04e2f665aa277736118f7b3beb1eb67f527e4c3bb42d7fb81e0ecd796d3",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
