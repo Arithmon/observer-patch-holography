@@ -53,6 +53,20 @@ intemporelle et les horloges qu’elle contient.
   245 760 ports, et sur un écran qui se raffine une seule histoire de
   réparation définit un champ continu aux fluctuations gaussiennes, dont les
   ondes se propagent à vitesse finie.
+- **La théorie relativiste des champs comme description effective des
+  observateurs.** Sur un produit radial déclaré au-dessus de cet écran,
+  l’action d’onde native a une densité de signature lorentzienne, et pour tout
+  ensemble fini de lectures d’horloge, de champ et de réponse des
+  observateurs, une seule théorie des champs lorentzienne lisse et statique en
+  dimension 1+3 les reproduit toutes, à toute tolérance choisie. Le
+  [bilan intégré](model/CONSTRUCTION.md#integrated-effective-description)
+  en énonce les limites : la métrique native exacte n’est pas lisse dans son
+  atlas actuel, et la structure radiale est fournie. Les registres de courant
+  du support dérivent pourtant un rayon : leur compteur tridimensionnel suit
+  la loi de diffusion radiale standard depuis tout état initial. Les
+  histoires de mesure complètes ne distinguent pas les structures radiales,
+  si bien que relier ce rayon à la direction radiale du champ et à la
+  distance physique reste ouvert.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de
@@ -143,7 +157,7 @@ teste la limite de l’interprétation de la branche diagonale comme modèle
 complet de réponse locale ; elle ne teste pas la construction quantique
 complète. L’[audit des données publiques](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 compare l’inclinaison scalaire conditionnelle aux chaînes postérieures d’ACT DR6
-et teste un rattachement direct des comptages d’horloge natifs aux rapports
+et à une tranche de vraisemblance ACT, et teste un rattachement direct des comptages d’horloge natifs aux rapports
 publiés d’horloges optiques.
 
 Le [bilan empirique](docs/EMPIRICAL_STATUS.md) distingue les comparaisons
