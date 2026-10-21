@@ -591,10 +591,6 @@
       0.9999361918890529,
       1.2196473168562623e-06
     ],
-    "raw_pointer_estimator_power": [
-      0.7699891630775287,
-      0.003846893394941021
-    ],
     "reference": "the ideal successful work marginal M/Tr(M); raw source error is separately bounded",
     "request_zero_finite_ordering_phase_required_to_vanish": false,
     "request_zero_gaussian_symplectic_form_vanishes": true,
@@ -744,7 +740,7 @@
     "model/predictions/inverse_clock.py": "37424902b920fb70d4cae26cc4f56d7f8bd9ff75ae9d418ba41c8b35946a9fff",
     "model/predictions/modular_optical.py": "62cdebe3d32765870374579ca6dfe5044d97036fb1e009306bb3fc3b260021ee",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
-    "model/predictions/prepared_clock.py": "0eb7ca3c81919a65bd2eabb00ab5bb7bf1f0028397c0169e9fc87676a902be22",
+    "model/predictions/prepared_clock.py": "2d747efaae497bd9f0c091ccf00c2874859a4fd0b49b21ecf350556a90ecec6f",
     "model/predictions/prepared_clock_source.py": "0839509be7142048d00f71d6e59607933d18b4cfc9a8b037f130197b90579131",
     "model/predictions/protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",

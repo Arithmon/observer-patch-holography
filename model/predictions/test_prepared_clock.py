@@ -424,6 +424,28 @@ def test_actual_producer_roundtrip_and_stored_negative_norm_refusal():
         clock.check_receipt(recorded, result)
 
 
+def test_pointer_power_is_recomputed_with_its_propagated_bound_not_fixed_tolerance():
+    # Use the actual retained receipt, allowing this regression to remain
+    # cheap without replacing any producer execution in the roundtrip test.
+    result = json.loads((clock.ROOT/"model/predictions/prepared_clock_results.json").read_text())
+    result["shared_state_field"].pop("raw_pointer_estimator_power", None)
+    recorded = json.loads(json.dumps(result))
+    field = recorded["shared_state_field"]
+    old = complex(*field["raw_pointer_estimator"])
+    field["raw_pointer_estimator"][0] += 1e-12
+    field["raw_pointer_estimator"][1] -= 1e-12
+    new = complex(*field["raw_pointer_estimator"])
+    assert abs(new**field["angle_copy_parameter"]-old**field["angle_copy_parameter"]) > 2e-10
+    clock.check_receipt(recorded, result)
+    field["raw_pointer_estimator"][0] += 1e-6
+    with pytest.raises(ValueError):
+        clock.check_receipt(recorded, result)
+    # Matching stored/current malformed metadata must not bypass the domain
+    # guard merely because the ordinary structural comparator sees equality.
+    with pytest.raises(ValueError, match="propagated scientific guard"):
+        clock.check_receipt(recorded, recorded)
+
+
 def test_sampler_intervals_cover_all_coin_words_and_preserve_rejections():
     rows = clock.sampler_contract()
     assert rows[0]["first_word"] == 0 and rows[-1]["past_last_word"] == 1 << 64

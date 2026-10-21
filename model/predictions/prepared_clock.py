@@ -742,7 +742,6 @@ def shared_state_field():
         "independent_copy_characteristic": pair(law["independent_copy_characteristic"]),
         "gaussian_characteristic": pair(law["gaussian_characteristic"]),
         "raw_pointer_estimator": pair(estimator),
-        "raw_pointer_estimator_power": pair(estimator**WEYL_COPIES),
         "finite_copy_error_upper": law["finite_copy_error_upper"],
         "one_copy_source_estimator_error_upper_under_guards": one_error,
         "source_estimator_power_error_upper_under_guards": product_error,
@@ -977,6 +976,17 @@ def check_receipt(recorded, actual):
             or field["one_copy_source_estimator_error_upper_under_guards"] < 0
             or field["resolved_ordered_phase_lower_under_guards"] <= 0):
         raise ValueError("stored fluctuation bound violates its scientific guard")
+    # The Nth power is a derived diagnostic: tiny permissible backend drift
+    # in one-copy amplitudes is amplified by N. Retain its inputs and check
+    # the scientifically propagated bound, without assigning it an unrelated
+    # fixed absolute replay tolerance or weakening any other field's check.
+    estimator = complex(*field["raw_pointer_estimator"])
+    one_copy = complex(*field["one_copy_characteristic"])
+    gaussian = complex(*field["gaussian_characteristic"])
+    if (abs(estimator-one_copy) > field["one_copy_source_estimator_error_upper_under_guards"]
+            or abs(estimator**field["angle_copy_parameter"]-gaussian)
+            > field["combined_gaussian_error_upper_under_guards"]):
+        raise ValueError("stored pointer estimator violates its propagated scientific guard")
     for row in field["executions"]:
         bound = float(F(row["complete_half_trace_upper_under_guards"]))
         if (not 0 <= row["complete_quantum_half_trace_upper_diagnostic"] <= bound
