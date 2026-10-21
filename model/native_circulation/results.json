@@ -212,6 +212,41 @@
       ]
     ]
   },
+  "axial_radial_limit": {
+    "Doeblin_attempt_block": 4,
+    "Doeblin_uniform_reset_probability_lower": "11/2160000",
+    "Gaussian_one_attempt_radial_fourth_moment_control": "80/3267",
+    "complete_native_branches_checked": 3960,
+    "conditional_drift_zero_at_every_configuration": true,
+    "configuration_graph_diameter": 4,
+    "dropped_radial_Jacobian_squared_generator_control": "4/99",
+    "ergodic_predictable_covariance_per_attempt": "(4/99) I3",
+    "exact_finite_covariance_formula_requires_stationary_preparation": true,
+    "finite_radius_is_autonomous_for_every_initial_configuration": false,
+    "initial_domain": "every classical law on the 66 binary total-two configurations; counter starts at zero",
+    "irreducible_configuration_graph": true,
+    "limit_heat_generator": "(2/99) Delta_R3",
+    "maximum_increment_squared_norm": "4/5",
+    "minimum_self_loop_probability": "5/6",
+    "new_Lean_limit_or_uniform_finite_count_error_bound": false,
+    "physical_spatial_transport_or_independent_product_radius_identified": false,
+    "polar_generator_for_r_positive": "(2/99) (d_r^2+2 d_r/r+Delta_S2/r^2)",
+    "radial_fourth_generator": "(40/99) r^2",
+    "radial_generator_for_r_positive": "(2/99) (d_r^2+2 d_r/r)",
+    "radial_squared_generator": "4/33",
+    "radial_volume_density_up_to_constant": "r^2",
+    "radius_entrance_value": "0; angular direction is undefined there",
+    "same_zero_counter_one_attempt_radial_second_moment": {
+      "adjacent": "8/75",
+      "nonadjacent": "2/15"
+    },
+    "scaling": "Z_floor(N t)/sqrt(N); t is scaled native attempt count",
+    "stationary_initial_preparation_required_for_functional_limit": false,
+    "stationary_one_attempt_radial_fourth_moment": "16/165",
+    "stationary_one_attempt_radial_second_moment": "4/33",
+    "uniform_stationary_law": "1/66",
+    "unwarped_product_z3_drift_control": "(4/99) (1/r-r) cos(theta)"
+  },
   "complete_native_execution": {
     "checkpoint_complete_distance": 0.0,
     "complete_records": [
@@ -437,6 +472,7 @@
     "maximum_complete_output_residual": 1.0085294997567047e-16
   },
   "limit": {
+    "axial_functional_limit_from_every_binary_initial_law": true,
     "axial_three_vector_covariance": "(4/99) I3",
     "independent_replicas_required": false,
     "new_Lean_CLT": false,
@@ -3201,7 +3237,7 @@
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/native_circulation/__init__.py": "f202d73c2d0428ff7e8d18c2957999d3de107e0c6fea9157b28ad335177a26e1",
     "model/native_circulation/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
-    "model/native_circulation/construction.py": "8b5ee8cebc55122db95aa2e7fb16b555dbeff80490d133a4ee0492efb9bcc337",
+    "model/native_circulation/construction.py": "8588e337a2f45090b7dee53388593c1aea01d0ce4f6c5fe330bbc388c6a1e2bb",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

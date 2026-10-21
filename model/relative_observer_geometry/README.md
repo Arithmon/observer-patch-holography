@@ -1133,6 +1133,40 @@ eigenvalues differ. These are radial-**average** observations, not ordinary
 boundary Dirichlet-to-Neumann data. No equality is claimed for all radial
 states, extra interventions or a full thermal state's normalization.
 
+<a id="radial-nonidentifiability-under-complete-histories"></a>
+
+The same intertwiner extends this statement to complete adaptive histories.
+Put `U_R(t)=exp(-it sqrt(B_R))` and `U(t)=exp(-it sqrt(L))`. Spectral calculus
+gives `U_R(t)J=JU(t)`. For any angular instrument or feedback operator K,
+its lift `I_radial tensor K` satisfies `K_R J=J K`. Induction through each
+branch word therefore gives
+
+```text
+W_R,h J = J W_h,
+(W_R,h tensor I_ref) (J tensor I_ref) = (J tensor I_ref) (W_h tensor I_ref).
+```
+
+The branch h may contain native clock marks from the same clock instrument
+in each extension, earlier measurement outcomes, record-selected durations
+and feedback. For every angular/reference input
+embedded by J, the complete classical-history and decoded angular/reference
+output is identical. Keeping all stopped branches includes timeouts; extra
+clock records do not select R. This statement requires angular-only controls
+and the constant-radial input code. Nonconstant radial inputs, controls that
+leave the code and a full-product Gibbs preparation are outside its scope.
+
+The executable control uses the actual 240-port L, all 3600 two-attempt
+native clock tapes, zero-current incidents and all 4900 tape/field outcomes.
+The timer pauses during comparison services. Calculations group tapes only
+when their conditional work state has the same incident count and field
+bits; their weights sum the complete classical direct-sum output.
+It propagates a two-column entangled reference, measures angular port parity,
+uses a native-seam swap as first-bit feedback and chooses the second wave
+duration `1/4` or `1/2` from that bit. Every stopped output agrees across the
+three extensions below; deleting feedback changes the record law. These
+spectral waves and angular instruments are comparison operations, not
+additional executed source pulses or a physical clock identification.
+
 `radial_nonidentifiability_control` uses the actual 240-port `L` and three
 three-site radial graphs: a unit-weight path, a weight-four path and a
 unit-weight cycle. Their radial spectra are `(0,1,3)`, `(0,4,12)` and
@@ -1141,6 +1175,8 @@ A specified additional measurement distinguishes them: prepare the
 normalized constant angular mode times radial contrast `(1,-1,0)/sqrt(2)`
 and measure its cosine response in the **same angular-clock parameter**.
 The second derivatives at zero are respectively `-5/2`, `-10` and `-3`.
+At time `1/100`, the remainder `||R||^2 t^4/24` gives three disjoint exact
+cosine-response intervals, so the separating probe works at finite time.
 This identifies the missing information as access to a nonconstant radial
 preparation and response, beyond the retained angular menu.
 

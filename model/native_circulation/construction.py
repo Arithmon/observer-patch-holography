@@ -176,6 +176,116 @@ def axial_geometry():
             'interpretation':'axial circulation in the recovered frame; no spatial translation or bulk inferred'}
 
 
+def axial_radial_limit_control():
+    """Finite hypotheses for the same counter's all-initial-law radial limit.
+
+    Initial laws are classical distributions on the 66 binary configurations.
+    Native attempt count supplies the scaling parameter. No assertion about
+    the convergence of quantum terminal/reference states is made here.
+    """
+    kernel, _, _, branches = source()
+    weights = axial_weights()
+    size = len(kernel.states)
+    counts = [[0]*size for _ in range(size)]
+    means = sp.zeros(size, 30)
+    squares = [[0]*30 for _ in range(size)]
+    for i, j, edge, _, current, _ in branches:
+        counts[i][j] += 1
+        means[i, edge] += current
+        squares[i][edge] += current*current
+    if (tuple(tuple(row) for row in counts) != kernel.counts
+            or any(sum(row) != 60 for row in counts)
+            or any(sum(counts[i][j] for i in range(size)) != 60 for j in range(size))):
+        raise ArithmeticError('the complete native kernel lost its uniform invariant law')
+    if (weights*means.T).applyfunc(sp.simplify) != sp.zeros(3, size):
+        raise ArithmeticError('the axial counter has a conditional drift')
+    diameters = []
+    for start in range(size):
+        distance, frontier = {start: 0}, {start}
+        depth = 0
+        while frontier:
+            next_frontier = {j for i in frontier for j, count in enumerate(counts[i])
+                             if count and j not in distance}
+            depth += 1
+            for j in next_frontier:
+                distance[j] = depth
+            frontier = next_frontier
+        if len(distance) != size:
+            raise ArithmeticError('the native binary configuration chain is reducible')
+        diameters.append(max(distance.values()))
+    if any(counts[i][i] <= 0 for i in range(size)):
+        raise ArithmeticError('a native self-loop is required for this aperiodicity certificate')
+    jump_norms = tuple(sp.simplify(weights[:, e].dot(weights[:, e])) for e in range(30))
+    if set(jump_norms) != {sp.Rational(4, 5)}:
+        raise ArithmeticError('the native axial jump bound changed')
+    stationary_covariance = (weights*sp.diag(*(sum(row[e] for row in squares)
+        for e in range(30)))*weights.T/sp.Integer(60*size)).applyfunc(sp.simplify)
+    if stationary_covariance != sp.Rational(4, 99)*sp.eye(3):
+        raise ArithmeticError('the predictable covariance average changed')
+    radial = {'adjacent': set(), 'nonadjacent': set()}
+    for state, row in zip(kernel.states, squares, strict=True):
+        occupied = tuple(i for i, value in enumerate(state) if value)
+        kind = 'adjacent' if occupied in kernel.seams else 'nonadjacent'
+        radial[kind].add(sum(jump_norms[e]*row[e] for e in range(30))/60)
+    if radial != {'adjacent': {sp.Rational(8, 75)}, 'nonadjacent': {sp.Rational(2, 15)}}:
+        raise ArithmeticError('the same-radius hidden-state control changed')
+    # Exact radial generator identities on polynomial probes. The angular
+    # term is tested on f(z)=z_3: dropping r^-2 leaves a nonzero drift.
+    fourth = sp.simplify(sum(jump_norms[e]**2*current**4
+                            for _, _, e, _, current, _ in branches)/(60*size))
+    gaussian_fourth = sp.trace(stationary_covariance)**2+2*sp.trace(stationary_covariance**2)
+    if fourth != sp.Rational(16, 165) or fourth == gaussian_fourth:
+        raise ArithmeticError('the finite radial law falsely became Gaussian')
+    diffusion = stationary_covariance[0, 0]/2
+    radius = sp.Symbol('r', positive=True)
+    radial_generator = lambda f: sp.simplify(diffusion*(sp.diff(f, radius, 2)
+                                                       +2*sp.diff(f, radius)/radius))
+    if (radial_generator(radius**2) != sp.Rational(4, 33)
+            or radial_generator(radius**4) != sp.Rational(40, 99)*radius**2
+            or sp.simplify(radial_generator(radius)-2*diffusion/radius) != 0):
+        raise ArithmeticError('the three-dimensional radial generator changed')
+    theta = sp.Symbol('theta', real=True)
+    coordinate = radius*sp.cos(theta)
+    angular_part = sp.simplify(sp.diff(coordinate, theta, 2)
+                              +sp.cot(theta)*sp.diff(coordinate, theta))
+    if sp.simplify(radial_generator(coordinate)+diffusion*angular_part/radius**2) != 0:
+        raise ArithmeticError('the polar form fails the Cartesian linear coordinate test')
+    unwarped = sp.simplify(radial_generator(coordinate)+diffusion*angular_part)
+    if sp.simplify(unwarped-2*diffusion*(1/radius-radius)*sp.cos(theta)) != 0 or unwarped == 0:
+        raise ArithmeticError('a constant-rate angular product passed as the native polar law')
+    return {'initial_domain': 'every classical law on the 66 binary total-two configurations; counter starts at zero',
+        'complete_native_branches_checked': len(branches),
+        'irreducible_configuration_graph': True,
+        'configuration_graph_diameter': max(diameters),
+        'Doeblin_attempt_block': max(diameters),
+        'Doeblin_uniform_reset_probability_lower': str(F(size, 60**max(diameters))),
+        'minimum_self_loop_probability': str(F(min(counts[i][i] for i in range(size)), 60)),
+        'uniform_stationary_law': '1/66',
+        'conditional_drift_zero_at_every_configuration': True,
+        'maximum_increment_squared_norm': '4/5',
+        'ergodic_predictable_covariance_per_attempt': '(4/99) I3',
+        'stationary_initial_preparation_required_for_functional_limit': False,
+        'exact_finite_covariance_formula_requires_stationary_preparation': True,
+        'same_zero_counter_one_attempt_radial_second_moment':
+            {kind: str(next(iter(values))) for kind, values in radial.items()},
+        'stationary_one_attempt_radial_second_moment': '4/33',
+        'stationary_one_attempt_radial_fourth_moment': str(fourth),
+        'Gaussian_one_attempt_radial_fourth_moment_control': str(gaussian_fourth),
+        'scaling': 'Z_floor(N t)/sqrt(N); t is scaled native attempt count',
+        'limit_heat_generator': '(2/99) Delta_R3',
+        'radial_generator_for_r_positive': '(2/99) (d_r^2+2 d_r/r)',
+        'polar_generator_for_r_positive': '(2/99) (d_r^2+2 d_r/r+Delta_S2/r^2)',
+        'radial_volume_density_up_to_constant': 'r^2',
+        'radial_squared_generator': '4/33',
+        'radial_fourth_generator': '(40/99) r^2',
+        'dropped_radial_Jacobian_squared_generator_control': '4/99',
+        'unwarped_product_z3_drift_control': '(4/99) (1/r-r) cos(theta)',
+        'radius_entrance_value': '0; angular direction is undefined there',
+        'finite_radius_is_autonomous_for_every_initial_configuration': False,
+        'physical_spatial_transport_or_independent_product_radius_identified': False,
+        'new_Lean_limit_or_uniform_finite_count_error_bound': False}
+
+
 def marked():
     kernel,_,_,branches=source()
     matrices=[[[0]*66 for _ in range(66)] for _ in VALUES]
@@ -295,6 +405,7 @@ def run():
     return {'schema':'oph.native_circulation.v1','all_pass':True,
         'sources':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
         'source_geometry':geometry,'axial_circulation':axial_geometry(),
+        'axial_radial_limit':axial_radial_limit_control(),
         'complete_native_execution':runtime_check(),
         'one_history_counter_predictions':summaries,
         'temporal_dependence_control':{'successive_signed_covariance':'0',
@@ -303,6 +414,7 @@ def run():
         'limit':{'triangle_variance_per_native_attempt':'1/66',
             'vector_covariance':'(I-B^T L^+ B)/198','stationary_finite_ergodic_martingale_limit':True,
             'axial_three_vector_covariance':'(4/99) I3',
+            'axial_functional_limit_from_every_binary_initial_law':True,
             'independent_replicas_required':False,'new_Lean_CLT':False,
             'uniform_Berry_Esseen_or_trajectory_error_certificate':False},
         'scope':{'stationary_binary_preparation_uniform_scheduler_and_cycle_readout_supplied':True,

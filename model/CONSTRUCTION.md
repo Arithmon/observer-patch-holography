@@ -476,12 +476,16 @@ continuity, current noise and mean diffusion under the uniform scheduler.
 [replicated fluctuations](native_fluctuations/README.md) and
 [one-history circulation](native_circulation/README.md) provide additional
 controlled finite or fluctuation descriptions of that source. The recovered
-rank-three frame maps seam currents to an axial martingale with covariance
-`(4N/99) I3`, a three-dimensional Brownian path limit and increment-action
-coefficient `99/8` in rescaled attempt count. Closed carrier cycles give
-unbounded counter support with growing record capacity; this does not
-construct spatial translations. Scheduler, preparation and record hypotheses
-remain distinct. Replication is not spatial refinement, and Gaussian limits
+rank-three frame maps seam currents to an axial martingale with stationary
+covariance `(4N/99) I3`. From every binary initial state, its rescaled path
+converges to three-dimensional Brownian motion with increment-action
+coefficient `99/8`. Its norm has the derived radial generator
+`(2/99)(d_r^2+2/r d_r)`; the joint polar operator also has
+`(2/99)r^-2 Delta_S2`. This is the radius of a retained current counter,
+with time parameter rescaled native attempt count. It neither supplies
+spatial translations nor selects the separately encoded radial field.
+Uniform scheduling, current access and growing record capacity remain
+explicit; stationary preparation is needed only for the exact finite covariance. Replication is not spatial refinement, and Gaussian limits
 do not select a fundamental field action.
 
 ### Continuing measurement predictions
