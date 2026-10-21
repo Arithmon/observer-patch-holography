@@ -1,16 +1,29 @@
 {
-  "description": "Native-executed finite interacting fields with complete-output matching, a same-product Gibbs state and incident clock, and a conditional occupation limit.",
+  "description": "Source-executed interacting observer with certified Gibbs preparation, complete occupation bounds and native-clock composition.",
   "files": {
-    "README.md": "52c9d83c92f160bebada70bbad7605dc6c271bc4b9648fb1f99874f54bfed8e8",
+    "README.md": "eec3e89abd7119696e7c0ca3568dc2c42454498dc03c89763582075e6027ae15",
     "__init__.py": "f3a8f4e46681add759b53f4d4840e670a6d134ea56bec22b38d348b013f84aa1",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
-    "construction.py": "00a55d76dd6e2a83e3164a2699ea7d57a9eb7926ec32854ed2ea9be68ddacc32",
+    "construction.py": "e0968a078d77c826944850cec51a230a3489ae75a046a21a6aa0eff7d893216f",
     "results.json": "d51a385a526cf11c2bc521ad3bec329356ff3fe357af06e0ad9f631d77428acf",
-    "test_construction.py": "87fe904ca4ed45d5bc0a3251484ed4f8e9b5006358e7d0215a13a6b2a47a9979"
+    "test_construction.py": "525b532d13d844c452deea1d2abb590d2ef76560f6ac433aa05cfbb0b46e4b60",
+    "test_thermal_audit.py": "965fb88c3865d9adceac2cb82b0bd70aa48f1e80e2a205130aa9c3171fcefe5a",
+    "test_thermal_forms.py": "71070c961c2a29383e285a2d7a1ec06c561e905b3db70d3c06349d164d0e4171",
+    "test_thermal_history.py": "31949da71570ed99365c4cd3a2b6d5b80534919c3dbecbd347abccb34a77b5df",
+    "test_thermal_receipt.py": "acb4398842c9dbab694d43d49ea861de19d77f3c717540d32d52ada2bf99261c",
+    "test_thermal_source.py": "cf2d51a7b7b1acc23169cce0bc5fbb85d9b6bc789929d17336b7d5b511ac3bd4",
+    "test_thermal_spectrum.py": "5ecff618fe511578e9e69bfa3f895c202a4ffea6bd8f1d911bc6ff1f5e548248",
+    "thermal_certificate.py": "33bf0da2b15e68b13358f6417f43722526390df1044cc25d964da5606d14e115",
+    "thermal_forms.py": "635515e5cde558d5f1090f2ffa72a2a924889d80dc1420123574700c4bef125e",
+    "thermal_history.py": "0c1897151eb965061199e079535ac5a32a6ba17eb28c5cdedbfba56c38ffd9d1",
+    "thermal_results.json": "f1870491613ead460442d9c03f5054b7f9295b8269e5db77a94ae7251e8ec1a0",
+    "thermal_source.py": "9e592a445503c5e96e50ee3ae9b984ca19e0a507aebaf4dbf03c869613335e72",
+    "thermal_spectrum.py": "dbca9b1a146d9e834a4f83fce479762a4d51cb07b8e3796942b7ea9d36213bc6"
   },
   "reproduce": [
     "python -m model.interacting_band_extension --check model/interacting_band_extension/results.json",
+    "python -m model.interacting_band_extension.thermal_certificate --check model/interacting_band_extension/thermal_results.json",
     "python -m pytest -q -W error model/interacting_band_extension"
   ],
   "schema": "oph.interacting_band_extension.manifest.v1"
