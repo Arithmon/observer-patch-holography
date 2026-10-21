@@ -109,6 +109,7 @@ def test_scalar_descendants_retain_their_declared_protocols_without_m1_transfer(
         expected.add('declared_randomized_Gram_witness_protocol')
     if name == 'OPH-MODEL-SHARED-SCALAR-OBSERVATIONS':
         expected.add('declared_scalar_band_extension_protocol')
+        expected.add('declared_radial_product_interaction_and_Gibbs_protocol')
     assert set(row['assumptions']) == expected
     assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
     assert not (set(row['assumptions']) & audit.KEYS)

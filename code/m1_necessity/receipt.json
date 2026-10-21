@@ -1775,10 +1775,11 @@
         "assumptions": [
           "declared_fixed_band_scalar_observation_protocol",
           "declared_coherent_proper_code_services_and_analogue_source_controls",
-          "declared_scalar_band_extension_protocol"
+          "declared_scalar_band_extension_protocol",
+          "declared_radial_product_interaction_and_Gibbs_protocol"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "85ba8d9afa1f03fce7e0fac04fdd39447b5d171d50a608ba71a4923e60dd58ca"
+        "original_claim_sha256": "d503652156d8e5fb098e73306ef6b63ed12566b8a8ccc4a59f9b97ebf78ac2eb"
       },
       "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION": {
         "assumptions": [
@@ -3958,7 +3959,7 @@
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
     "code/m1_necessity/downstream.json": "60742abd926aa4982aba301d6d4373f26ed6f9fbea6c9fbd2774de6de9389e7e",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "a3bc212ebf2fcbd2e0a329c3469457ce9737c6645c74d9a2f50a7454bf32bee6",
+    "code/m1_necessity/test_necessity.py": "02aa3a6ef1095988f26e853f32a070ee93951c5e1b0cd3ea41050fcdd91b2cab",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "7407e8a7e107ecbc444f5e1354cd648767213e00cfb9269b9365917a4f2988a0",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
