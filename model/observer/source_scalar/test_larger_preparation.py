@@ -72,7 +72,7 @@ def test_four_qubit_basis_word_retains_every_column_and_inverse_phase():
 
 
 def test_expanded_capacity_keeps_a_declared_upper_limit():
-    beyond = np.zeros(512)
+    beyond = np.zeros(8192)
     beyond[0] = 1
     with pytest.raises(ValueError):
         c.compile_real_state(beyond)

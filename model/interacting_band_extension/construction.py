@@ -273,32 +273,47 @@ def product_gibbs_preparation(lattice, beta=F(1, 4)):
     Keep all work/reference amplitudes. Numerical synthesis guards and
     inherited exact-code failure semantics are explicit; no postselection
     or state normalization is used to repair the returned amplitudes.
+    Occupations two and four keep the energy-labelled reference, including
+    the unchanged original four-occupation word. Occupation eight prepares
+    the canonical square-root density amplitude in the work Hermite basis
+    on both registers; it needs no six-qubit arbitrary basis compiler.
     """
     beta = a.rational(beta, positive=True)
-    if not isinstance(lattice, ProductBand) or lattice.dimensions != (4, 4):
-        raise ValueError('the declared sixteen-state product band is required')
+    if (not isinstance(lattice, ProductBand)
+            or lattice.dimensions not in ((2, 2), (4, 4), (8, 8))):
+        raise ValueError('a product band with occupation two, four or eight is required')
+    dimension = lattice.dimension
+    workbits = dimension.bit_length()-1
     values, basis = inherited_source._basis(lattice.hamiltonian.toarray())
     weights = np.exp(-float(beta)*(values-values[0])); weights /= weights.sum()
     if not np.isfinite(weights).all() or np.any(weights <= 0):
         raise ArithmeticError('faithful Gibbs weights exceed the numerical preparation range')
-    word = compiler.compile_real_state(np.sqrt(weights))
-    for bit in range(4):
-        word += compiler.cnot(bit, bit+4)
-    word += compiler.compile_real_orthogonal(basis)
-    blank = np.zeros(256, complex); blank[0] = 1
-    raw = compiler.execute(word, 8, blank).reshape(16, 16).T
-    target = basis@np.diag(np.sqrt(weights))
+    if lattice.dimensions == (8, 8):
+        target = (basis*np.sqrt(weights))@basis.T
+        word = compiler.compile_real_state(target.T.reshape(-1))
+    else:
+        word = compiler.compile_real_state(np.sqrt(weights))
+        for bit in range(workbits):
+            word += compiler.cnot(bit, bit+workbits)
+        word += compiler.compile_real_orthogonal(basis)
+        target = basis@np.diag(np.sqrt(weights))
+    blank = np.zeros(dimension*dimension, complex); blank[0] = 1
+    raw = compiler.execute(word, 2*workbits, blank).reshape(dimension, dimension).T
     error = float(np.linalg.norm(raw-target))
     if not np.isfinite(error) or error > 1e-9:
         raise ArithmeticError('the interacting Gibbs preparation exceeded its source guard')
-    return raw, target, {'inverse_temperature': beta,
-        'retained_work_addresses': 16, 'retained_reference_addresses': 16,
+    metadata = {'inverse_temperature': beta,
+        'retained_work_addresses': dimension, 'retained_reference_addresses': dimension,
         'source_resources': compiler.resources(word),
         'raw_norm_squared': float(np.linalg.norm(raw)**2),
         'purification_vector_error_numerical': error,
         'purification_vector_error_guard': F(1, 10**9),
         'ideal_minimum_density_eigenvalue': float(weights.min()),
         'physical_preparation_error_certified': False}
+    if lattice.dimensions == (8, 8):
+        metadata['reference_basis'] = 'canonical_fixed_frequency_two_Hermite'
+        metadata['preparation_source_word'] = 'twelve_qubit_real_amplitude_tree'
+    return raw, target, metadata
 
 
 @lru_cache(maxsize=1)

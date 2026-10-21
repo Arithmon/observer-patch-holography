@@ -1,0 +1,261 @@
+{
+  "boundary": {
+    "all_alternative_finite_theorem_premises_conjoined": false,
+    "coherent_services_and_Gibbs_parameters_derived_from_committed_repair": false,
+    "finite_occupation_preparation_and_history_accuracy_certified": true,
+    "physical_seconds_or_universal_empirical_agreement_established": false,
+    "spatial_two_mode_projection_removed": false
+  },
+  "cold_protocol": {
+    "canonical_preparation_trace_distance_upper": "734141/500000000",
+    "canonical_seed_vector_error_upper": "13/200000000000",
+    "coupling": "1",
+    "harmonic_complement_upper": "1/1000000000000000",
+    "histories": [
+      {
+        "candidate_vector_error_upper": "803381/1000000000",
+        "complete_infinite_output_trace_distance_upper": "1135831/500000000",
+        "finite_path_residual_upper": "1/500000000000000",
+        "native_sign": -1,
+        "occupation_residual_upper": "803381/1000000000",
+        "path_rounding_upper": "59/500000000000000",
+        "probabilities_numerical": [
+          0.3075024998750503,
+          0.19941009579249033,
+          0.20277542020936817,
+          0.29031198412309234
+        ],
+        "record_alphabet": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "retained_reference_dimension": 64,
+        "retained_work_dimension": 64
+      },
+      {
+        "candidate_vector_error_upper": "988059/1000000000",
+        "complete_infinite_output_trace_distance_upper": "2456341/1000000000",
+        "finite_path_residual_upper": "1/500000000000000",
+        "native_sign": 1,
+        "occupation_residual_upper": "988059/1000000000",
+        "path_rounding_upper": "119/1000000000000000",
+        "probabilities_numerical": [
+          0.28689034683279496,
+          0.20619705749966585,
+          0.19593728019682877,
+          0.31097531547071217
+        ],
+        "record_alphabet": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "retained_reference_dimension": 64,
+        "retained_work_dimension": 64
+      }
+    ],
+    "infinite_partition_lower": "460169093/250000000000",
+    "infinite_partition_upper": "920340171/500000000000",
+    "inverse_temperature": "4",
+    "lower_form_shell": 16,
+    "occupation": 8,
+    "temperature_selected_from_empirical_fit": false
+  },
+  "complete_source_to_infinite_output_error_upper_under_numerical_guards": "2121803/500000000",
+  "composition": {
+    "all_outcomes_retained_without_renormalization": true,
+    "common_native_continuation_CPTP_contraction": true,
+    "first_read_disturbance_and_feedback_retained": true,
+    "reference_retained_in_common_Hermite_basis": true,
+    "same_frequency_two_code_and_interacting_H": true,
+    "source_clock_word_and_occupation_limits_interchangeable_without_budget": false
+  },
+  "incident_clock_schedule": {
+    "complete_nominal_work_output_with_same_clock_tape_error_upper_under_required_services": "1350243/500000000",
+    "complete_preparation_half_trace_error_required": "1/429496729600",
+    "full_refined_clock_schedule_executed": false,
+    "incident_rate_per_normalized_attempt_unit": 655360,
+    "incident_ticks_per_read_interval": 40960,
+    "level": 8,
+    "maximum_guarded_local_word_calls": 491524,
+    "maximum_interacting_ticks": 81920,
+    "model_time_and_native_arrival_time_discrepancy_upper": "20481/655360",
+    "modular_increment_per_incident_at_beta_four": "-1/2621440",
+    "per_word_complete_instrument_half_diamond_error_required": "1/211107950519910400",
+    "physical_service_accuracy_certified": false,
+    "same_H_product_formula_error_upper": "243/53687091200",
+    "timeout_probability_upper": "8257535/33822867456"
+  },
+  "original_hot_protocol": {
+    "canonical_preparation_trace_distance_upper": "679299/125000000",
+    "coupling": "1",
+    "d24_source_history_executed": false,
+    "harmonic_complement_upper": "588566687/20000000000000",
+    "infinite_partition_lower": "5365084368887/1000000000000",
+    "infinite_partition_upper": "5365242818517/1000000000000",
+    "inverse_temperature": "1/4",
+    "lower_form_shell": 48,
+    "occupation": 24,
+    "original_d4_preparation_allowance_upper": "141566011/250000000"
+  },
+  "schema": "oph.interacting_band_extension.thermal_certificate.v1",
+  "source_execution": {
+    "all_terminal_work_reference_and_record_outputs_retained": true,
+    "directed_rounding_source_execution_certificate": false,
+    "guarded_local_operation_count": 772,
+    "histories": [
+      {
+        "complete_work_reference_record_distance_numerical": 1.2837253543661062e-08,
+        "native_sign": -1,
+        "probabilities": [
+          0.30750249964293364,
+          0.19941009589561287,
+          0.20277542025735332,
+          0.29031198418040755
+        ],
+        "records": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "complete_work_reference_record_distance_numerical": 1.2950933920043703e-08,
+        "native_sign": 1,
+        "probabilities": [
+          0.2868903469464896,
+          0.20619705749116665,
+          0.19593728035811406,
+          0.31097531518048716
+        ],
+        "records": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ],
+    "inverse_temperature": "4",
+    "model_time_per_interval": "1/16",
+    "occupation": 8,
+    "original_beta_one_quarter_benchmark_discharged": false,
+    "physical_service_or_lab_time_certificate": false,
+    "preparation": {
+      "ideal_minimum_density_eigenvalue": 1.9609047517440343e-52,
+      "inverse_temperature": "4",
+      "physical_preparation_error_certified": false,
+      "preparation_source_word": "twelve_qubit_real_amplitude_tree",
+      "purification_vector_error_guard": "1/1000000000",
+      "purification_vector_error_numerical": 1.2052354495122535e-11,
+      "raw_norm_squared": 0.999999999976158,
+      "reference_basis": "canonical_fixed_frequency_two_Hermite",
+      "retained_reference_addresses": 64,
+      "retained_work_addresses": 64,
+      "source_resources": {
+        "identity_phase_pulses": 0,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 263867.88048755284,
+        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+        "maximum_work_qubits": 12,
+        "native_pulses": 135171,
+        "pair_code_pulses": 40962,
+        "proper_code_export_events": 135171,
+        "proper_code_load_events": 135171,
+        "proper_code_service_events": 270342,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 94209,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      }
+    },
+    "reference_basis": "canonical_fixed_frequency_two_Hermite",
+    "resource_scope": "one worst complete path, not a sum over counterfactual branches",
+    "source_numerical_guard": "123451409454837977980459859477072661711466958751/633825054478946391935106535795793104444172895090900992",
+    "source_numerical_vector_guard": "109646888327775926193/562949844337373625645531136",
+    "splitting_certificate": {
+      "centered_generator_norm_sum_upper": "2275957946867699510135031464270072860308857931718692227835224178907869017409/64000000000000000000000000000000000000000000000000000000000000000000000000",
+      "one_interval_operator_error_upper": "3929809020065002525414896727908966728878017400202223989825684954294239316121593648210230017825841609269056442850768794740366696412505790109384367286194323552092151651287842888298235905063120370569943087130994430705306923249643/4398046511104000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "two_interval_complete_output_trace_distance_upper": "3929809020065002525414896727908966728878017400202223989825684954294239316121593648210230017825841609269056442850768794740366696412505790109384367286194323552092151651287842888298235905063120370569943087130994430705306923249643/2199023255552000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "steps_per_interval": 64,
+    "target_norm_upper": "2251799813685251/2251799813685248",
+    "target_scaled_splitting_error_upper": "19926499052270894898817276527083891333674458763270405042054680696755393974826046781510657420619247519369869156262280393975442647397743321372516675332875900187671583293743896617606979566262535381628684102151642129542896687607605886051533190829357706082168643/11150372599265311570767859136324180752990208000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "unrestricted_occupation_error_included": false,
+    "worst_branch_source_resources": {
+      "identity_phase_pulses": 2828,
+      "native_pulses": 2520047,
+      "pair_code_pulses": 593322,
+      "proper_code_export_events": 2520047,
+      "proper_code_load_events": 2520047,
+      "proper_code_service_events": 5040094,
+      "single_code_pulses": 1926725
+    }
+  },
+  "source_numerical_target_to_exact_finite_Gibbs_error_upper": "13/200000000000",
+  "source_sha256": {
+    "model/interacting_band_extension/algebra.py": "843589380034959e72eb1e102b02365789fd99bfa0b65b3b65882f7ea5dbb565",
+    "model/interacting_band_extension/construction.py": "e0968a078d77c826944850cec51a230a3489ae75a046a21a6aa0eff7d893216f",
+    "model/interacting_band_extension/thermal_certificate.py": "33bf0da2b15e68b13358f6417f43722526390df1044cc25d964da5606d14e115",
+    "model/interacting_band_extension/thermal_forms.py": "635515e5cde558d5f1090f2ffa72a2a924889d80dc1420123574700c4bef125e",
+    "model/interacting_band_extension/thermal_history.py": "0c1897151eb965061199e079535ac5a32a6ba17eb28c5cdedbfba56c38ffd9d1",
+    "model/interacting_band_extension/thermal_source.py": "9e592a445503c5e96e50ee3ae9b984ca19e0a507aebaf4dbf03c869613335e72",
+    "model/interacting_band_extension/thermal_spectrum.py": "dbca9b1a146d9e834a4f83fce479762a4d51cb07b8e3796942b7ea9d36213bc6",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
+    "model/occupation_control/intervals.py": "7c11fbde0360e2153fa8d3c154b128a0f238a85b2da1b345ea769b5df4c66bbc",
+    "model/scalar_observations/bounds.py": "88bcc254df50658396517a6d7317120bfd97c94b4ea3085c7f8db2306b7c6bf3",
+    "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94"
+  }
+}

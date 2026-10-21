@@ -388,19 +388,23 @@ def _compile_real_state_tree(value, bits):
 
 
 def compile_real_state(vector):
-    """Prepare a normalized real state from |0>, using at most eight qubits.
+    """Prepare a normalized real state from |0>, using at most twelve qubits.
 
     This emits a state-preparation word, not an arbitrary state replacement.
     Its action on all other inputs is the same explicitly compiled unitary.
     Through six qubits the existing Gray word is preserved. Larger vectors
     use an O(bits*2**bits) binary-tree word with commuting Walsh-Y factors.
+    The admitted maximum is 4096 real amplitudes and 135171 emitted pulses.
     """
     value = _real_array(vector, 1, "state amplitudes")
-    bits = _bits(len(value), 8)
+    bits = _bits(len(value), 12)
     if abs(np.linalg.norm(value)-1) > 2e-12:
         raise ValueError("a normalized real state required")
     if bits > 6:
-        return _compile_real_state_tree(value, bits)
+        word = _compile_real_state_tree(value, bits)
+        if len(word) != 3*((bits-1)*(1 << bits)+1) or len(word) > 135171:
+            raise ArithmeticError("the bounded amplitude-tree source schedule changed")
+        return word
     gray = [j ^ (j >> 1) for j in range(len(value))]
     residual = value[gray].copy()
     rotations = []
