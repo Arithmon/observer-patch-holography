@@ -638,6 +638,32 @@ the small executed code supplies no accurate unrestricted-output claim.
 This projection is not an invariant spatial band or a proof of an
 interacting ultraviolet continuum.
 
+The [quantitative thermal certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
+supplies an explicit occupation budget for this same interacting
+observer. Exact finite lower forms and a summable harmonic complement bound
+the infinite Gibbs preparation. Directed full-generator path residuals
+retain the reference, both reads and record feedback. The declared cold
+`beta=4,d=8` history has complete ideal error below `0.0025`; its executed
+source word has error below `0.005` under the stated source numerical
+guards. The original hot `beta=1/4,d=4` benchmark retains its limitations.
+
+These premises compose on the same two-mode code: positivity gives a
+faithful trace-class Gibbs state; that state supplies the full-algebra
+modular flow; complete instruments preserve all records and references;
+the occupation residual and incident-clock schedule supply separately
+charged refinement errors. Alternative repair instruments, algebras or
+preparations require their own attachment. This is not simultaneous
+satisfaction of every finite theorem's alternative hypotheses.
+
+The [coherence budget](native_interface/README.md#quantitative-preparation-floors-for-the-native-only-grammar)
+also limits what repair can supply. Committed C/E repair with joint diagonal
+accessible inputs and fresh independent diagonal ancillas cannot prepare
+the declared coherent reference to arbitrary accuracy, even with adaptive
+heralding. The successful-work lower bound survives as a complete-output
+lower bound after charging all failure mass. Coherent source services
+therefore remain a necessary resource for these particular targets; an
+uncommitted coherent record dilation is a different operational grammar.
+
 <a id="integrated-effective-description"></a>
 ### Integrated effective-description verdict
 

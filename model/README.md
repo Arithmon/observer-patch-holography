@@ -647,6 +647,14 @@ constant. Its source-prepared interacting Gibbs state fixes its ideal modular
 clock, and complete quantum/reference/record histories retain two reads and
 feedback. The coupling, radial design and occupation cutoff are supplied;
 this finite example supplies no ultraviolet limit or calibrated event clock.
+Its [thermal occupation certificate](interacting_band_extension/README.md#quantitative-preparation-and-complete-history-certificate)
+bounds a complete eight-level cold history against the infinite
+two-mode Gibbs history below `0.0025`, or below `0.005` for the source
+execution under its numerical guards. A separate
+[native coherence floor](native_interface/README.md#quantitative-preparation-floors-for-the-native-only-grammar)
+quantifies the extra coherence needed by the native sign and capped-reference
+preparations. Neither result identifies a laboratory
+apparatus or establishes agreement of every proposed physical attachment.
 
 [Record-only reconstruction](observer_reconstruction/README.md),
 [interacting reconstruction](interacting_reconstruction/README.md), and
