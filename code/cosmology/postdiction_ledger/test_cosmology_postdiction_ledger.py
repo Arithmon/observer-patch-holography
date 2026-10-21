@@ -234,3 +234,41 @@ def test_prose_avoids_banned_vocabulary() -> None:
     for path in (RECEIPT, MARKDOWN, PUBLIC, CORPUS):
         text = path.read_text(encoding="utf-8")
         assert not banned.search(text), f"{path.name}: {banned.search(text).group(0)!r}"
+
+
+def test_act_likelihood_attaches_once_without_changing_row_contract():
+    receipt = committed_receipt()
+    table = rows(receipt)
+    attached = [row for row in table.values()
+                if "act_only_conditional_likelihood" in row.get("extras", {})]
+    assert len(attached) == 1
+    row = attached[0]
+    assert row["row_id"] == "ns_edge_center_P_C_act_dr6_p_act_lb_ns"
+    assert receipt["row_count"] == 53
+    assert row["verdict"] == "tension"
+    assert row["measurement"]["sigma"] == 0.0034
+    diagnostic = row["extras"]["act_only_conditional_likelihood"]
+    parent = json.loads((ROOT / diagnostic["artifact_ref"]).read_text())
+    assert diagnostic["fixed_tilt"]["ns"] == row["oph_value"]
+    assert diagnostic["delta_chi2"] == parent["delta_chi2"]
+    assert diagnostic["new_independent_data"] is False
+    assert diagnostic["FZ15_verdict"] is None
+
+
+@pytest.mark.parametrize("key,value", [
+    ("p_value", 0.04), ("FZ15_verdict", "EXCLUDED"),
+    ("full_cosmological_profile", True),
+    ("native_primordial_generator_identified", True),
+])
+def test_act_likelihood_projection_rejects_scope_promotion(key, value):
+    parent = json.loads((ROOT / "code/cosmology/tilt_posterior/likelihood_slice.json").read_text())
+    parent[key] = value
+    with pytest.raises(ledger.LedgerError, match="cannot"):
+        ledger.conditional_tilt_attachment(parent)
+
+
+def test_act_likelihood_projection_rejects_inconsistent_difference():
+    parent = json.loads((ROOT / "code/cosmology/tilt_posterior/likelihood_slice.json").read_text())
+    parent["delta_chi2"] += 1
+    with pytest.raises(ledger.LedgerError, match="difference"):
+        ledger.conditional_tilt_attachment(parent)

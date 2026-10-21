@@ -1716,7 +1716,7 @@ def cell_visible_packet_control(steps=25):
     read_word = [source_compiler.pulse('H', float(_source_dyadic_scalar(sp.pi/2)), [j]) for j in (0, 8)]
     output = source_compiler.execute(read_word, 9, decoded.T.reshape(512))
     probabilities = abs(output)**2
-    contrast = float(sum((-1)**((j & 1)+(j >> 8))*probabilities[j] for j in range(512)))
+    contrast = math.fsum((-1)**((j & 1)+(j >> 8))*float(probabilities[j]) for j in range(512))
     expected = math.cos(steps*float(theta))
     source_amplitude_bound = (1+source['guard'])**2*(1+step_guard)**steps-1+F(1, 10**9)
     observable_bound = 2*source_amplitude_bound+source_amplitude_bound**2
@@ -2100,14 +2100,65 @@ def run():
     return json.loads(json.dumps(rows, default=encode))
 
 
+def check_receipt(recorded, actual):
+    """Replay primitive probabilities strictly and propagate their contrast.
+
+    The parity is a signed sum of 512 retained outcomes. Applying the same
+    scalar tolerance independently to that duplicate can reject otherwise
+    admissible backend roundoff. Its replay allowance is the observed L1
+    change of those probabilities, plus summation roundoff, not a relaxed
+    tolerance on the primitive records or the independent source bound.
+    """
+    from ..observer.scalar_response.experiment import compare_receipt
+    key, contrast_key = 'cell_visible_native_packet_encoding', 'source_reference_parity_contrast'
+    rows = []
+    projected = []
+    for result in (recorded, actual):
+        if type(result) is not dict or type(result.get(key)) is not dict or contrast_key not in result[key]:
+            raise ValueError('the complete packet parity record is required')
+        row = result[key]
+        rows.append(row)
+        projected.append({**result, key: {name: value for name, value in row.items() if name != contrast_key}})
+    # In particular, all 512 primitive probabilities retain the existing
+    # type, shape and 2e-10 scalar checks; every other field is unchanged.
+    compare_receipt(*projected)
+    allowances = []
+    for row in rows:
+        probabilities, contrast = row['complete_system_reference_probabilities'], row[contrast_key]
+        if (type(probabilities) is not list or len(probabilities) != 512
+                or any(type(p) is not float or not math.isfinite(p) or p < 0 for p in probabilities)
+                or type(contrast) is not float or not math.isfinite(contrast)):
+            raise ValueError('finite nonnegative complete packet probabilities and parity required')
+        recomputed = math.fsum((-1)**((j & 1)+(j >> 8))*p for j, p in enumerate(probabilities))
+        mass = math.fsum(probabilities)
+        # A conservative gamma_n bound also admits receipts accumulated by
+        # the former sequential sum. It is ~1.14e-13 for a unit-mass law.
+        nu = len(probabilities)*math.ulp(1.)
+        roundoff = nu/(1-nu)*mass
+        if abs(contrast-recomputed) > roundoff:
+            raise ValueError('stored packet parity is inconsistent with its retained probabilities')
+        allowance = float(F(row['source_readout_error_upper']))
+        theta, steps = float(F(row['native_phase_per_trigger'])), row['incident_triggers']
+        if (type(steps) is not int or not 0 <= steps <= 128
+                or not math.isfinite(allowance) or allowance < 0
+                or abs(mass-1) > allowance
+                or abs(contrast-math.cos(steps*theta)) > allowance):
+            raise ValueError('stored packet probabilities or parity violate the independent source bound')
+        allowances.append(roundoff)
+    probability_change = math.fsum(abs(x-y) for x, y in zip(
+        rows[0]['complete_system_reference_probabilities'],
+        rows[1]['complete_system_reference_probabilities'], strict=True))
+    if abs(rows[0][contrast_key]-rows[1][contrast_key]) > probability_change+math.fsum(allowances):
+        raise ValueError('packet parity replay exceeds its propagated probability bound')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--write', type=Path); group.add_argument('--check', type=Path)
     args = parser.parse_args(); result = run()
     if args.check:
-        from model.observer.scalar_response.experiment import compare_receipt
-        compare_receipt(strict_json.load(args.check), result)
+        check_receipt(strict_json.load(args.check), result)
         print('Native continuum density paths, Gaussian reconstruction and wave controls replayed.')
     elif args.write:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:

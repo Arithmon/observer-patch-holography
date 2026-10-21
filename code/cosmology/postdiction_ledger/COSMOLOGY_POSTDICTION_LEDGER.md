@@ -1,6 +1,6 @@
 # Cosmology postdiction ledger
 
-Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `6e5045e330cbb707cf2d59ca270a6feada86ff758fa2ff05eac1e84dc0532069`, rows digest `7f3d38e7fb68b03e5a2634cfdff1bb40a5233a6e5d1f23c726e0dae2dce5a793`).
+Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `1681c20554b0257367a14ab8e9d539c1600780cef2f74f1ecd31acd646a614d7`, rows digest `efe91527d3eade781f66b9e19ed22c04a78379375c2a3aba36f6ba97ee4079c9`).
 
 This ledger promotes nothing. Every comparison is on seen data; no row is a frozen prediction, a score, or evidence for or against OPH. Every number is read mechanically from `public_inputs.json`, `corpus_inputs.json`, or a pinned parent receipt. Sigma distances are signed as theory minus measurement over the quoted one-sigma uncertainty. The fixed verdict rule is: |sigma| < 2 consistent; 2 <= |sigma| < 3 tension; |sigma| >= 3 exceeds_three_sigma_diagnostic; an upper-bound row is consistent exactly when the theory value lies below the bound; rows without a comparison contract are not_evaluable. The (w0, wa) rows use the two-sided normal equivalent of a two-degree-of-freedom Gaussian Mahalanobis distance.
 
@@ -55,6 +55,8 @@ DOE and NSF ended their support for the CMB-S4 project on 9 July 2025 ([CMB-S4](
 | Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | -0.0106 +/- 0.0065 (Planck 2018 TT,TE,EE+lowE+lensing) | +1.63 | consistent | no | DESI DR3; Euclid |
 | Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | 0.0007 +/- 0.0019 (Planck 2018 TT,TE,EE+lowE+lensing + BAO) | -0.37 | consistent | no | DESI DR3; Euclid |
 | Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | 0.0023 +/- 0.0011 (DESI DR2 BAO + CMB (LambdaCDM + Omega_K)) | -2.09 | tension | no | DESI DR3; Euclid |
+
+Attached to the P_C ACT joint-posterior row: the [conditional ACT-only likelihood](../tilt_posterior/README.md#conditional-act-only-likelihood-slice) gives chi^2 171.929744332 for the fixed tilt and 167.860973954 for free tilt (fitted n_s 0.977274822); the difference is 4.068770378. The background and absolute calibration are fixed; amplitude and polarization calibration are fitted under both branches. These ACT observations overlap the combined posterior. This attachment adds no independent dataset or row, changes no quoted uncertainty or verdict, and supplies neither a full cosmological/nuisance profile nor a p-value or FZ-15 adjudication. The pinned parent retains the complete data, covariance and supplied radiation-transfer assumptions.
 
 ## Background and dark energy
 

@@ -298,6 +298,44 @@ DEFAULT_OUT = RUNS / "status" / "postdiction_ledger.json"
 DEFAULT_MD = REPO / "docs" / "POSTDICTION_LEDGER.md"
 
 
+def _retrospective_tilt_likelihood_reference(path: Path | None = None) -> dict[str, Any]:
+    """Attach a pinned conditional diagnostic to the existing tilt comparison."""
+    pin = json.loads((CODE / "cosmology/postdiction_ledger/corpus_inputs.json").read_text(
+        encoding="utf-8"))["parent_receipts"]["act_dr6_conditional_likelihood"]
+    path = path or REPO / pin["path"]
+    payload = path.read_bytes()
+    if hashlib.sha256(payload).hexdigest() != pin["sha256"]:
+        raise SystemExit("ACT conditional likelihood custody mismatch")
+    receipt = json.loads(payload)
+    if (receipt["schema"] != pin["schema"]
+            or receipt["scope"] != "fixed_background_ACT_only_likelihood_slice"
+            or receipt["p_value"] is not None or receipt["FZ15_verdict"] is not None
+            or receipt["full_cosmological_profile"] is not False
+            or receipt["native_primordial_generator_identified"] is not False):
+        raise SystemExit("ACT conditional likelihood cannot promote a physical or frozen claim")
+    producer = CODE / "cosmology/tilt_posterior/likelihood_slice.py"
+    if receipt["source_sha256"] != hashlib.sha256(producer.read_bytes()).hexdigest():
+        raise SystemExit("ACT conditional likelihood producer custody mismatch")
+    fixed, free = (receipt["fits"][name] for name in ("fixed_tilt", "free_tilt"))
+    if not math.isclose(fixed["chi2"] - free["chi2"], receipt["delta_chi2"], abs_tol=1e-10):
+        raise SystemExit("ACT conditional likelihood difference mismatch")
+    return {
+        "artifact_ref": pin["path"],
+        "artifact_sha256": pin["sha256"],
+        "scope": receipt["scope"],
+        "background": receipt["background"],
+        "calibration_A_act": receipt["calibration_A_act"],
+        "fixed_tilt": {key: fixed[key] for key in ("ns", "chi2")},
+        "free_tilt": {key: free[key] for key in ("ns", "chi2")},
+        "delta_chi2": receipt["delta_chi2"],
+        "new_independent_data": False,
+        "p_value": None,
+        "FZ15_verdict": None,
+        "full_cosmological_profile": False,
+        "native_primordial_generator_identified": False,
+    }
+
+
 def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
     """Project a separately replayed observational receipt without rescoring it."""
     path = path or CODE / "cosmology/tilt_posterior/results.json"
@@ -331,6 +369,7 @@ def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
         "artifact_ref": "code/cosmology/tilt_posterior/results.json",
         "artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit",
+        "act_only_conditional_likelihood": _retrospective_tilt_likelihood_reference(),
         "prediction": receipt["prediction"],
         "analysis": policy,
         "pooled": pooled,
@@ -7170,6 +7209,20 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "The [public-data audit](research/PUBLIC_DATA_PREDICTION_AUDIT.md) also "
         "records the Koide-equivalent tau restriction, incomplete alpha matching, "
         "and the physical attachments required for dispersion tests.")
+    add("")
+    diagnostic = tilt["act_only_conditional_likelihood"]
+    add("The attached [ACT-only conditional likelihood slice]"
+        "(../code/cosmology/tilt_posterior/README.md#conditional-act-only-likelihood-slice) "
+        f"gives chi^2 `{diagnostic['fixed_tilt']['chi2']:.9f}` for the fixed edge tilt "
+        f"and `{diagnostic['free_tilt']['chi2']:.9f}` for free tilt "
+        f"(fitted n_s `{diagnostic['free_tilt']['ns']:.9f}`), a difference of "
+        f"`{diagnostic['delta_chi2']:.9f}`. It fixes the cosmological background and "
+        "absolute calibration while fitting amplitude and polarization calibration "
+        "under both branches. The 135 measured TT/TE/EE bandpowers, full covariance "
+        "and supplied CAMB transfer are retained in its receipt. These ACT data "
+        "overlap the combined posterior; this attachment adds no independent dataset "
+        "or postdiction row and changes no quoted uncertainty or verdict. It is no "
+        "full cosmological/nuisance profile, p-value or prospective FZ-15 adjudication.")
     add("")
     add("## Principal results")
     add("")

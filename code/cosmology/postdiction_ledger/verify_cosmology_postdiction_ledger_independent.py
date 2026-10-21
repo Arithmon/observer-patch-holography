@@ -331,6 +331,32 @@ class Expected:
                 self.add("primordial", self.gaussian(
                     f"ns_edge_center_{branch}_{item_id}", "conditional_theorem_postdiction",
                     self.exact[f"ns_{branch}"], item_id, True, cmb))
+        parent = self.parents["act_dr6_conditional_likelihood"]
+        require(parent["scope"] == "fixed_background_ACT_only_likelihood_slice", "ACT slice scope")
+        require(parent["p_value"] is None and parent["FZ15_verdict"] is None,
+                "ACT slice cannot assign a significance or verdict")
+        require(parent["full_cosmological_profile"] is False
+                and parent["native_primordial_generator_identified"] is False,
+                "ACT slice cannot promote physical or profiling scope")
+        fixed, free = parent["fits"]["fixed_tilt"], parent["fits"]["free_tilt"]
+        same_float(fixed["ns"], float(self.exact["ns_P_C"]), "ACT fixed branch")
+        same_float(parent["delta_chi2"], fl(fixed["chi2"]) - fl(free["chi2"]), "ACT delta chi2")
+        diagnostic = {
+            "artifact_ref": "code/cosmology/tilt_posterior/likelihood_slice.json",
+            "scope": parent["scope"],
+            "background": {key: fl(value) for key, value in parent["background"].items()},
+            "calibration_A_act": fl(parent["calibration_A_act"]),
+            "fixed_tilt": {key: fl(fixed[key]) for key in ("ns", "chi2")},
+            "free_tilt": {key: fl(free[key]) for key in ("ns", "chi2")},
+            "delta_chi2": fl(parent["delta_chi2"]),
+            "new_independent_data": False,
+            "p_value": None,
+            "FZ15_verdict": None,
+            "full_cosmological_profile": False,
+            "native_primordial_generator_identified": False,
+        }
+        self.rows["ns_edge_center_P_C_act_dr6_p_act_lb_ns"]["extras"] = {
+            "act_only_conditional_likelihood": diagnostic}
         for item_id in NS_DATASETS:
             self.add("primordial", self.gaussian(
                 f"ns_clock_branch_P_C_{item_id}", "conditional_theorem_postdiction",

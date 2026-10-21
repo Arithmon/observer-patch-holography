@@ -175,7 +175,8 @@ The [observed-Universe protocol](../docs/research/NATIVE_CLOCK_EXPERIMENT_PROTOC
 sets out correspondence tests using published observations without requiring a
 laboratory experiment. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 compares the conditional scalar-tilt prediction with ACT DR6 joint posterior
-chains and tests direct native event-count/optical-phase attachments against
+chains and a fixed-background ACT likelihood slice, and tests direct native
+event-count/optical-phase attachments against
 published clock ratios. The clock test covers all distinct regional incident
 unions on one carrier under its stated readout assumptions; identical event
 sets are aliases and are excluded. The separate compact-filter extension

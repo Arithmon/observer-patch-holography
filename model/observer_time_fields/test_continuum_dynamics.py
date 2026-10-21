@@ -2,6 +2,7 @@
 from fractions import Fraction as F
 import copy
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -654,15 +655,55 @@ def test_fractional_wave_rejects_invalid_inputs_and_corrupted_oracles(monkeypatc
 def test_retained_continuum_receipt_replays_and_rejects_physical_promotion():
     result = d.run()
     path = Path(__file__).with_name('continuum_dynamics_results.json')
-    compare_receipt(json.loads(path.read_text()), result)
+    d.check_receipt(json.loads(path.read_text()), result)
     changed = copy.deepcopy(result)
     changed['scope']['observed_one_plus_three_spacetime_identified'] = True
     with pytest.raises(ValueError):
-        compare_receipt(changed, result)
+        d.check_receipt(changed, result)
     changed = copy.deepcopy(result)
     changed['scope']['density_process_path_space_limit_proved'] = False
     with pytest.raises(ValueError):
-        compare_receipt(changed, result)
+        d.check_receipt(changed, result)
+
+
+def test_packet_parity_replay_propagates_primitive_probability_roundoff_only():
+    recorded = json.loads(Path(__file__).with_name('continuum_dynamics_results.json').read_text())
+    key, contrast = 'cell_visible_native_packet_encoding', 'source_reference_parity_contrast'
+    def update(row):
+        row[contrast] = math.fsum((-1)**((j & 1)+(j >> 8))*p
+                                 for j, p in enumerate(row['complete_system_reference_probabilities']))
+    def transfer(result, amount):
+        row = result[key]
+        probabilities = row['complete_system_reference_probabilities']
+        even = max((j for j in range(512) if not ((j & 1)+(j >> 8)) % 2), key=probabilities.__getitem__)
+        odd = max((j for j in range(512) if ((j & 1)+(j >> 8)) % 2), key=probabilities.__getitem__)
+        probabilities[even] -= amount; probabilities[odd] += amount
+        update(row)
+    # Each primitive changes by less than 2e-10, but their signed contrast
+    # changes by 2.4e-10, reproducing the Linux-versus-mac failure mechanism.
+    shifted = copy.deepcopy(recorded)
+    transfer(shifted, 1.2e-10)
+    with pytest.raises(ValueError, match='parity_contrast'):
+        compare_receipt(recorded, shifted)
+    d.check_receipt(recorded, shifted)
+    inconsistent = copy.deepcopy(shifted)
+    inconsistent[key][contrast] += 1e-9
+    with pytest.raises(ValueError, match='inconsistent'):
+        d.check_receipt(recorded, inconsistent)
+    changed_primitive = copy.deepcopy(recorded)
+    transfer(changed_primitive, 4e-10)
+    with pytest.raises(ValueError, match='complete_system_reference_probabilities'):
+        d.check_receipt(recorded, changed_primitive)
+    negative = copy.deepcopy(recorded)
+    probabilities = negative[key]['complete_system_reference_probabilities']
+    probabilities[min(range(512), key=probabilities.__getitem__)] = -1e-12
+    update(negative[key])
+    with pytest.raises(ValueError, match='nonnegative'):
+        d.check_receipt(recorded, negative)
+    wrong_physics = copy.deepcopy(recorded)
+    transfer(wrong_physics, .001)
+    with pytest.raises(ValueError, match='independent source bound'):
+        d.check_receipt(wrong_physics, wrong_physics)
 
 
 def test_fresh_runtime_source_closure_is_pinned():

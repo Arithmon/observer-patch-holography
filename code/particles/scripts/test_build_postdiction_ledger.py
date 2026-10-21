@@ -2656,3 +2656,24 @@ def test_pauli_ledger_rejects_false_source_derivation(monkeypatch):
     monkeypatch.setattr(ledger, '_structural_packet', forged)
     with pytest.raises(SystemExit, match='field/Kraus identification'):
         ledger._pauli_structure_rows()
+
+
+def test_retrospective_tilt_attaches_pinned_overlapping_likelihood():
+    comparison = ledger._retrospective_tilt_reference()
+    diagnostic = comparison["act_only_conditional_likelihood"]
+    parent = json.loads((ledger.REPO / diagnostic["artifact_ref"]).read_text())
+    assert diagnostic["delta_chi2"] == parent["delta_chi2"]
+    assert diagnostic["new_independent_data"] is False
+    assert diagnostic["FZ15_verdict"] is None
+    assert diagnostic["full_cosmological_profile"] is False
+    assert diagnostic["native_primordial_generator_identified"] is False
+
+
+def test_retrospective_tilt_likelihood_rejects_changed_custody(tmp_path):
+    path = ledger.CODE / "cosmology/tilt_posterior/likelihood_slice.json"
+    parent = json.loads(path.read_text())
+    parent["delta_chi2"] += 1
+    changed = tmp_path / "changed-likelihood.json"
+    changed.write_text(json.dumps(parent))
+    with pytest.raises(SystemExit, match="custody mismatch"):
+        ledger._retrospective_tilt_likelihood_reference(changed)

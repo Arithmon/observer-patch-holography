@@ -1212,6 +1212,37 @@ def not_evaluable_rows(items: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def conditional_tilt_attachment(parent: dict[str, Any]) -> dict[str, Any]:
+    """Project the pinned overlapping-data diagnostic without changing a row verdict."""
+    require(parent["scope"] == "fixed_background_ACT_only_likelihood_slice",
+            "ACT likelihood scope mismatch")
+    for key in ("p_value", "FZ15_verdict"):
+        require(parent[key] is None, f"ACT likelihood cannot assign {key}")
+    for key in ("full_cosmological_profile", "native_primordial_generator_identified"):
+        require(parent[key] is False, f"ACT likelihood cannot promote {key}")
+    fixed, free = (parent["fits"][key] for key in ("fixed_tilt", "free_tilt"))
+    delta = float(parent["delta_chi2"])
+    values = [float(fit[key]) for fit in (fixed, free) for key in ("ns", "chi2")]
+    require(all(math.isfinite(value) for value in values + [delta]),
+            "nonfinite ACT likelihood diagnostic")
+    require(abs(float(fixed["chi2"]) - float(free["chi2"]) - delta) < 1e-10,
+            "ACT likelihood difference mismatch")
+    return {
+        "artifact_ref": "code/cosmology/tilt_posterior/likelihood_slice.json",
+        "scope": parent["scope"],
+        "background": {key: float(value) for key, value in parent["background"].items()},
+        "calibration_A_act": float(parent["calibration_A_act"]),
+        "fixed_tilt": {key: float(fixed[key]) for key in ("ns", "chi2")},
+        "free_tilt": {key: float(free[key]) for key in ("ns", "chi2")},
+        "delta_chi2": delta,
+        "new_independent_data": False,
+        "p_value": None,
+        "FZ15_verdict": None,
+        "full_cosmological_profile": False,
+        "native_primordial_generator_identified": False,
+    }
+
+
 def build_receipt(public_bytes: bytes, corpus_bytes: bytes, root: Path = ROOT) -> dict[str, Any]:
     public = load_exact_bytes(public_bytes)
     corpus = load_exact_bytes(corpus_bytes)
@@ -1238,6 +1269,18 @@ def build_receipt(public_bytes: bytes, corpus_bytes: bytes, root: Path = ROOT) -
         {"id": "dark_sector", "title": "Dark sector", "rows": dark_sector_rows(items, typed, parents, consts)},
         {"id": "not_evaluable", "title": "Not evaluable", "rows": not_evaluable_rows(items)},
     ]
+    attachment = conditional_tilt_attachment(parents["act_dr6_conditional_likelihood"])
+    require(attachment["fixed_tilt"]["ns"] == consts["ns_edge_center_P_C"],
+            "ACT likelihood uses a different fixed tilt")
+    tilt_row = next(row for row in sections[0]["rows"]
+                    if row["row_id"] == "ns_edge_center_P_C_act_dr6_p_act_lb_ns")
+    tilt_row["extras"] = {"act_only_conditional_likelihood": attachment}
+    tilt_row["epistemic_note"] += (
+        " The attached ACT-only likelihood slice shares ACT observations with this "
+        "combined posterior. Its fixed-background comparison fits amplitude and "
+        "polarization calibration; it changes no uncertainty, verdict, row count, "
+        "or frozen prediction and supplies no independent dataset."
+    )
     row_ids = [row["row_id"] for section in sections for row in section["rows"]]
     require(len(row_ids) == len(set(row_ids)), "duplicate row id")
     for section in sections:
@@ -1382,7 +1425,26 @@ def render_markdown(receipt: dict[str, Any], receipt_sha256: str) -> str:
 
 def section_notes(section: dict[str, Any]) -> list[str]:
     notes: list[str] = []
-    if section["id"] == "background_dark_energy":
+    if section["id"] == "primordial":
+        row = next(row for row in section["rows"]
+                   if row["row_id"] == "ns_edge_center_P_C_act_dr6_p_act_lb_ns")
+        diagnostic = row["extras"]["act_only_conditional_likelihood"]
+        notes.append(
+            "Attached to the P_C ACT joint-posterior row: the "
+            "[conditional ACT-only likelihood](../tilt_posterior/README.md#conditional-act-only-likelihood-slice) "
+            f"gives chi^2 {diagnostic['fixed_tilt']['chi2']:.9f} for the fixed tilt "
+            f"and {diagnostic['free_tilt']['chi2']:.9f} for free tilt "
+            f"(fitted n_s {diagnostic['free_tilt']['ns']:.9f}); "
+            f"the difference is {diagnostic['delta_chi2']:.9f}. "
+            "The background and absolute calibration are fixed; amplitude and "
+            "polarization calibration are fitted under both branches. These ACT "
+            "observations overlap the combined posterior. This attachment adds no "
+            "independent dataset or row, changes no quoted uncertainty or verdict, "
+            "and supplies neither a full cosmological/nuisance profile nor a p-value "
+            "or FZ-15 adjudication. The pinned parent retains the complete data, "
+            "covariance and supplied radiation-transfer assumptions."
+        )
+    elif section["id"] == "background_dark_energy":
         notes.append("Chain diagnostics read from the parent DESI receipt:")
         notes.append("")
         for row in section["rows"]:

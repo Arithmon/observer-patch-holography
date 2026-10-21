@@ -121,6 +121,32 @@
     "projection_scope": "mechanical receipt projection of retrospective public-record comparisons; independent replay belongs to each linked package"
   },
   "retrospective_tilt_comparison": {
+    "act_only_conditional_likelihood": {
+      "FZ15_verdict": null,
+      "artifact_ref": "code/cosmology/tilt_posterior/likelihood_slice.json",
+      "artifact_sha256": "c8d8481e3807f407217e52aad7aa21f5d1993877e5deeb826d4956443fe6680d",
+      "background": {
+        "cosmomc_theta": 0.010417,
+        "ombh2": 0.0226,
+        "omch2": 0.118,
+        "tau": 0.0544
+      },
+      "calibration_A_act": 1.0,
+      "delta_chi2": 4.068770377846249,
+      "fixed_tilt": {
+        "chi2": 171.92974433221303,
+        "ns": 0.9660214956374175
+      },
+      "free_tilt": {
+        "chi2": 167.86097395436678,
+        "ns": 0.9772748223774699
+      },
+      "full_cosmological_profile": false,
+      "native_primordial_generator_identified": false,
+      "new_independent_data": false,
+      "p_value": null,
+      "scope": "fixed_background_ACT_only_likelihood_slice"
+    },
     "analysis": {
       "FZ15_prospective_verdict": null,
       "burn_in": "discard floor(0.5 * stored_rows) separately in each ordered chain",
