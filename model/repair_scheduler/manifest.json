@@ -1,0 +1,18 @@
+{
+  "description": "Native deterministic preparation, reusable coarse-coin seam selection and complete continuing observer histories.",
+  "files": {
+    "README.md": "fc6c760d75957c08b712152d25c039f332537f484ac13def27a7dcebb3d9d35e",
+    "__init__.py": "7e241f87b902e72de6e154b3f307dfbef44f6dab3eefdb4905a1b849e82ac4c0",
+    "__main__.py": "209e968589d04b7bf64e44e8a4ad9b4d6e003fa32e5dc70aced4be29fb7ece53",
+    "coins.py": "c6f76f1dacf05b030479911cd07147ebcaa7e555c2223a3661f94e98657c98cb",
+    "construction.py": "07c71fb9ae186329eb6b3bc241549c5c6ee067cf7a4b410da0bc0877de6399dd",
+    "results.json": "3c69f5e24f181aec1cd1f48ca0a2e45ce30d0c290878aee2f3b987dd8a521d6b",
+    "test_coins.py": "e1d4a7863bcdfd909a85bc6371a3cb0c60efb8d5351d3e45e45801b82b7caea8",
+    "test_construction.py": "27fa4c6181f7a82fee736542cbfee085260fb02bc41e911cd489a27c933a9462"
+  },
+  "reproduce": [
+    "python -m model.repair_scheduler --check model/repair_scheduler/results.json",
+    "python -m pytest -q -W error model/repair_scheduler model/native_equilibration/test_sweeps.py"
+  ],
+  "schema": "oph.repair_scheduler.manifest.v1"
+}
