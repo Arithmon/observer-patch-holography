@@ -768,7 +768,7 @@ the physical interpretation premise open.
 
 The comparison keeps the McKay result in its established scope: the
 character field is `Q(sqrt(5))`, and its two real embeddings remain
-unselected by McKay alone. The exact OPH marked-triplet certificate now
+unselected by McKay alone. The exact OPH marked-triplet certificate
 transports the source-frozen order-five action through the live response
 chart before evaluating characters. For that action, the spatial slow
 triplet and lower internal triplet have zero intertwiner dimension; the
