@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 898,
+    "file_count": 907,
     "files": [
       {
         "byte_count": 42558,
@@ -2273,6 +2273,11 @@
         "sha256": "sha256:88455c12f6ee5f81704e4c6385253e3df591dbabb6309b1d68855787c9e0c889"
       },
       {
+        "byte_count": 31470,
+        "path": "code/a5_closure/manifests/marked_triplet_attachment_reference.json",
+        "sha256": "sha256:26679f06e09459b3d90a7b33fe2f0b4b21c813be90d610f4bdb528826c1e229f"
+      },
+      {
         "byte_count": 8616,
         "path": "code/a5_closure/manifests/matter_attachment_receipt.json",
         "sha256": "sha256:f58c6c283cfff1d4c2bb10c0db050fce256bcd5ce17bb4d5bc1fda545c2e799e"
@@ -2346,6 +2351,11 @@
         "byte_count": 3597,
         "path": "code/a5_closure/manifests/super_tannakian_matter_reference.json",
         "sha256": "sha256:cb627653c332996adcec8f9d501299e0fcb272958b346316946b613253040c59"
+      },
+      {
+        "byte_count": 11697,
+        "path": "code/a5_closure/marked_triplet_attachment_certificate.py",
+        "sha256": "sha256:977e5c7ce770ee15ad7697234a3f37f4e35fdbbf70cd16848e9f57b0b4bdc253"
       },
       {
         "byte_count": 44292,
@@ -2713,6 +2723,11 @@
         "sha256": "sha256:2487bb59e738866fc38308d5c89dc1408dbe98d77d7593ea4f1d1079f79bab35"
       },
       {
+        "byte_count": 2825,
+        "path": "code/a5_closure/tests/test_marked_triplet_attachment_certificate.py",
+        "sha256": "sha256:005484d6bb3ee1345fbffa7b386e3b3b9e22cdf25b278f36d878193ffcdd4d61"
+      },
+      {
         "byte_count": 15901,
         "path": "code/a5_closure/tests/test_matter_menu_spectral_ledger_certificate.py",
         "sha256": "sha256:6fe1c0de4a31162a35f685f2942e5fd595b8609051d602e21dce2bebeba57dd6"
@@ -2818,6 +2833,11 @@
         "sha256": "sha256:0b805033eb3e7c27c812a2d0919504796f73980d5d6d75f23dd68925045fbbea"
       },
       {
+        "byte_count": 17109,
+        "path": "code/a5_closure/verify_marked_triplet_attachment_independent.py",
+        "sha256": "sha256:fc93e515c75fa5b768c84ee009062e3c00ea416aa9e7a9280c1800409581c448"
+      },
+      {
         "byte_count": 14166,
         "path": "code/a5_closure/verify_mckay_golden_field_cross_control.py",
         "sha256": "sha256:691faea72f827d86f823d2516236fe1b1f002cf5d43a624d5be2cf4237d0b077"
@@ -2883,14 +2903,24 @@
         "sha256": "sha256:a725f115690562eba63feefccd9ef612f83b8d2c05c3b1736ebf424df2d1d00d"
       },
       {
-        "byte_count": 6484,
+        "byte_count": 15669,
+        "path": "code/angular_sprint/external/k7_gauge_scale/ERRATUM_v3.5.md",
+        "sha256": "sha256:1c8940ac4b202032e117333f91c0b7041663dd70f35c1f99894f7236e8bd8dc7"
+      },
+      {
+        "byte_count": 9208,
         "path": "code/angular_sprint/k7_gauge_kinetic_cross_control.md",
-        "sha256": "sha256:81f71c13fdbb7d51210d615f999eded4f2e97863b38b3343d346fc9d7e019e33"
+        "sha256": "sha256:94d8005025144a630529b53c712eae3ffaaa092cb8ea1e7aff1a5b70cd879507"
       },
       {
         "byte_count": 17204,
         "path": "code/angular_sprint/k7_gauge_kinetic_cross_control.py",
         "sha256": "sha256:dacdb2307059dad85dfa87d15c34314aa1a4ad5cf293baf7f4ba7f25ea1836df"
+      },
+      {
+        "byte_count": 11687,
+        "path": "code/angular_sprint/k7_gauge_scale_contract.py",
+        "sha256": "sha256:3041a491accbdea23e1e4711c5ce57c38bf49d7dad5c67596026df1dabbede63"
       },
       {
         "byte_count": 32254,
@@ -2928,6 +2958,11 @@
         "sha256": "sha256:07e932a0b954ded06cb1396de3ee7db11dbd4b80da7c205844305d44497e3bdc"
       },
       {
+        "byte_count": 4517,
+        "path": "code/angular_sprint/runtime/k7_gauge_scale_contract.json",
+        "sha256": "sha256:9b74092e62a90f121c3ea0a9e799dfc13129027b499be2d46c217eecf5945e2d"
+      },
+      {
         "byte_count": 8006,
         "path": "code/angular_sprint/runtime/kinetic_form_selection_receipt.json",
         "sha256": "sha256:bb086d9b792d87667904f5ab9c5b948bce3c92163a68780af09f1b7c98cf3a9a"
@@ -2963,6 +2998,11 @@
         "sha256": "sha256:0367897a0dd74d1dae7017d0feaf509b0fb293c615052f6fd5a4a8b4951f22d3"
       },
       {
+        "byte_count": 4023,
+        "path": "code/angular_sprint/test_k7_gauge_scale_contract.py",
+        "sha256": "sha256:fdc57afcec8becaedfb1eac142cc712af8dcda7ea53c1cc10de8941438e270aa"
+      },
+      {
         "byte_count": 8018,
         "path": "code/angular_sprint/test_kinetic_form_selection_certificate.py",
         "sha256": "sha256:50506b3edd9872a093f2da4d2415812d53c4955f3b4cfd35ce743923b27f4ef1"
@@ -2991,6 +3031,11 @@
         "byte_count": 16715,
         "path": "code/angular_sprint/verify_k7_gauge_kinetic_cross_control_independent.py",
         "sha256": "sha256:cdb8ef5dcb480021fdf33c34c943bf82858f46e471ef8e1efba6cd35c7395f62"
+      },
+      {
+        "byte_count": 9074,
+        "path": "code/angular_sprint/verify_k7_gauge_scale_contract_independent.py",
+        "sha256": "sha256:ab5bd197cf093f97b542f4e0c8d2c5d84304db74d8a9039d4fbf1c830ed4c00f"
       },
       {
         "byte_count": 27687,
@@ -4688,7 +4733,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:7d517d6f56859ab30a77b9be43bcf4d5b947c8a47c81c77f76c630b98a3c052e",
+    "files_sha256": "sha256:56d2d4e2fb009e1f34fd224a9bc1375f2a9c67927b81c3a1c0ed9c522494e873",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7597,7 +7642,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:c63918c41d097eee05bf9c5f82d8f8a0ec855342a698d485001c3531a2c06acb",
+  "inventory_sha256": "sha256:b70668a3e7e97fc498d4f812d6f9c38e08a756873856aeaeff8cbaac81cefee1",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
