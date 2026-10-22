@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Compare-only distances between the criticality boundary family and data.
 
-This module consumes the measured Higgs and top values from the reference
-table and the boundary-scale scan artifact.  It exists to state, per named
-source boundary scale, how far each conditional coordinate pair sits from
-measurement, in relative terms and in experimental standard deviations.  It
-is a diagnostic: nothing here is a prediction ancestor, and the scan artifact
-itself reads no reference value.
+This module consumes the Higgs reference and the cross-section top pole-mass
+reference from the frozen PDG table, together with the boundary-scale scan.
+It reports arithmetic distances to those measurements.  The Higgs output is a
+tree coordinate and the top conversion lacks a complete electroweak matching
+budget, so distances in experimental-sigma units are not physical pulls.
+Nothing here is a prediction ancestor; the scan itself reads no reference.
 """
 
 from __future__ import annotations
@@ -36,6 +36,7 @@ def _distance_row(
     mh_ref: float,
     mh_sigma: float,
     mh_band: float,
+    mt_band: float,
 ) -> dict[str, Any]:
     mt = float(row["mt_pole_gev"])
     mh = float(row["mh_tree_gev"])
@@ -44,8 +45,9 @@ def _distance_row(
         "mh_tree_gev": mh,
         "mt_relative": mt / mt_ref - 1.0,
         "mh_relative": mh / mh_ref - 1.0,
-        "mt_sigma": (mt - mt_ref) / mt_sigma,
-        "mh_sigma_experimental": (mh - mh_ref) / mh_sigma,
+        "mt_offset_in_experimental_sigma_units": (mt - mt_ref) / mt_sigma,
+        "mh_offset_in_experimental_sigma_units": (mh - mh_ref) / mh_sigma,
+        "mt_within_matching_band": abs(mt / mt_ref - 1.0) <= mt_band,
         "mh_within_matching_band": abs(mh / mh_ref - 1.0) <= mh_band,
     }
 
@@ -88,7 +90,9 @@ def _relation_test(
                     "status": "interpolated",
                     "mh_on_curve_at_measured_mt_gev": mh_at,
                     "mh_relative": mh_at / mh_ref - 1.0,
-                    "mh_sigma_experimental": (mh_at - mh_ref) / mh_sigma,
+                    "mh_offset_in_experimental_sigma_units": (
+                        mh_at - mh_ref
+                    ) / mh_sigma,
                     "implied_boundary_scale_gev": scale_at,
                 }
                 break
@@ -98,23 +102,28 @@ def _relation_test(
 def build_artifact(scan: dict[str, Any], references: dict[str, Any]) -> dict[str, Any]:
     entries = references["entries"]
     higgs = entries["higgs"]
-    top = entries["top_quark_direct_aux"]
-    mh_ref = float(higgs["api_value"])
-    mh_sigma = float(higgs["api_error_positive"])
-    mt_ref = float(top["api_value"])
-    mt_sigma = float(top["api_error_positive"])
+    top = entries["top_quark"]
+    if top["source"]["summary_id"] != "Q007TP4":
+        raise ValueError("top comparison requires the cross-section pole-mass entry")
+    mh_ref = float(higgs["value_gev"])
+    mh_sigma = float(higgs["error_plus_gev"])
+    mt_ref = float(top["value_gev"])
+    mt_sigma = float(top["error_plus_gev"])
     mh_band = float(scan["matching_bands"]["mh_tree_to_pole_relative_band"])
+    mt_band = float(scan["matching_bands"]["mt_electroweak_matching_relative_band"])
 
     named = {}
     for name, row in scan["one_loop_named_boundaries"].items():
-        named[name] = _distance_row(row, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band)
+        named[name] = _distance_row(
+            row, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band, mt_band
+        )
 
     two_loop = {}
     if scan["two_loop_named_boundaries"].get("available"):
         for name, row in scan["two_loop_named_boundaries"].items():
             if isinstance(row, dict) and "mt_pole_gev" in row:
                 two_loop[name] = _distance_row(
-                    row, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band
+                    row, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band, mt_band
                 )
 
     curve = scan["one_loop_curve"]
@@ -123,7 +132,7 @@ def build_artifact(scan: dict[str, Any], references: dict[str, Any]) -> dict[str
         key=lambda r: (r["mt_pole_gev"] / mt_ref - 1.0) ** 2
         + (r["mh_tree_gev"] / mh_ref - 1.0) ** 2,
     )
-    best_row = _distance_row(best, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band)
+    best_row = _distance_row(best, mt_ref, mt_sigma, mh_ref, mh_sigma, mh_band, mt_band)
     best_row["boundary_scale_gev"] = best["boundary_scale_gev"]
 
     relation_test = _relation_test(scan, mt_ref, mh_ref, mh_sigma)
@@ -137,11 +146,22 @@ def build_artifact(scan: dict[str, Any], references: dict[str, Any]) -> dict[str
         "status": "compare_only_distance_surface",
         "row_class": "compare_only_never_a_prediction_ancestor",
         "promotion_allowed": False,
+        "physical_fit_evaluable": False,
+        "comparison_convention": (
+            "PDG_2026_top_cross_section_pole_mass_vs_model_QCD_converted_top; "
+            "PDG_2026_Higgs_mass_vs_model_tree_Higgs_coordinate"
+        ),
+        "distance_status": (
+            "experimental_sigma_offsets_are_arithmetic_only; model_matching_and_"
+            "truncation_bands_are_declared_tolerances_not_statistical_uncertainties"
+        ),
         "references": {
             "mh_gev": mh_ref,
             "mh_sigma": mh_sigma,
+            "mh_source_id": higgs["source"]["summary_id"],
             "mt_gev": mt_ref,
             "mt_sigma": mt_sigma,
+            "mt_source_id": top["source"]["summary_id"],
             "note": "consumed here only; the scan artifact reads no reference",
         },
         "one_loop_named_distances": named,

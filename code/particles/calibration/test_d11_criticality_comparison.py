@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
+import copy
 import functools
+import json
+
+import pytest
 
 import derive_d11_criticality_comparison as lane
 
@@ -16,6 +20,21 @@ def test_row_class_is_compare_only():
     artifact = _artifact()
     assert artifact["row_class"] == "compare_only_never_a_prediction_ancestor"
     assert artifact["promotion_allowed"] is False
+    assert artifact["physical_fit_evaluable"] is False
+
+
+def test_pole_comparison_does_not_consume_direct_monte_carlo_average():
+    scan = json.loads(lane.SCAN.read_text(encoding="utf-8"))
+    references = json.loads(lane.REFERENCE_JSON.read_text(encoding="utf-8"))
+    expected = lane.build_artifact(scan, references)
+    assert expected["references"]["mt_source_id"] == "Q007TP4"
+    assert expected["references"]["mt_gev"] == 172.1
+    changed = copy.deepcopy(references)
+    changed["entries"]["top_quark_direct_aux"]["value_gev"] = 190.0
+    assert lane.build_artifact(scan, changed) == expected
+    changed["entries"]["top_quark"]["source"]["summary_id"] = "Q007TP"
+    with pytest.raises(ValueError, match="cross-section pole-mass"):
+        lane.build_artifact(scan, changed)
 
 
 def test_archived_boundary_distances_match_known_deficits():
