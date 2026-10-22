@@ -64,9 +64,10 @@ def closed_entries() -> list[dict[str, Any]]:
             "family": "Higgs/top",
             "class": "closed",
             "statement": (
-                "the fit-free criticality curve reproduces the Higgs "
-                "coordinate at the measured top to 0.47 percent at two "
-                "loops, inside the declared matching band"
+                "the two-loop criticality curve supplies a conditional "
+                "Higgs coordinate at the measured pole-top reference inside "
+                "the declared matching band; physical Higgs matching and "
+                "theory uncertainty remain open"
             ),
             "artifact": "runs/calibration/d11_criticality_comparison.json",
         },

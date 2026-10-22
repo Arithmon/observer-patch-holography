@@ -20,7 +20,7 @@
       "class": "closed",
       "family": "Higgs/top",
       "id": "MT_MH_RELATION",
-      "statement": "the fit-free criticality curve reproduces the Higgs coordinate at the measured top to 0.47 percent at two loops, inside the declared matching band"
+      "statement": "the two-loop criticality curve supplies a conditional Higgs coordinate at the measured pole-top reference inside the declared matching band; physical Higgs matching and theory uncertainty remain open"
     },
     {
       "artifact": "runs/calibration/d11_boundary_scale_midpoint_selection_theorem.json",
@@ -135,7 +135,7 @@
     "computationally_blocked": 2,
     "research_open": 9
   },
-  "generated_utc": "2026-08-26T13:17:22Z",
+  "generated_utc": "2026-10-22T03:04:46Z",
   "open_register": [
     {
       "class": "research_open",

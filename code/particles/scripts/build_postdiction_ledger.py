@@ -29,6 +29,7 @@ docs/POSTDICTION_LEDGER.md.
 from __future__ import annotations
 
 import argparse
+from decimal import Decimal
 from fractions import Fraction
 import importlib.util
 import hashlib
@@ -58,6 +59,8 @@ PARENTS = {
     "kappa_rectangle": RUNS / "leptons" / "charged_kappa_interval_from_alpha_transport.json",
     "kappa_coherent": RUNS / "leptons" / "charged_kappa_interval_coherent_closure.json",
     "koide_balance": RUNS / "leptons" / "koide_balance_comparison.json",
+    "koide_identity": RUNS / "leptons" / "koide_circulant_identity.json",
+    "conditional_quark_comparison": RUNS / "flavor" / "conditional_quark_mass_comparison.json",
     "clebsch_lane": RUNS / "flavor" / "down_type_register_clebsch_lane.json",
     "clebsch_selection": RUNS / "flavor" / "clebsch_register_pairing_selection.json",
     "fiber_obstruction": RUNS / "flavor" / "quark_spread_fiber_structure_transport_obstruction.json",
@@ -5895,6 +5898,7 @@ def _lepton_rows(
     rectangle: dict[str, Any],
     coherent: dict[str, Any],
     koide: dict[str, Any],
+    koide_identity: dict[str, Any],
 ) -> list[dict[str, Any]]:
     witness_point = rectangle["compare_only"].get("witness_point")
     if witness_point is None:
@@ -5912,6 +5916,15 @@ def _lepton_rows(
     particles = [r["particle"] for r in rectangle["conditional_mass_rows"]]
     family = next(f for f in surface["families"] if f["family"] == "charged leptons")
     mcpr = next(r for r in family["rows"] if r["lane"].startswith("MCPR"))
+    ratio_comparison = koide_identity["compare_only_PDG_2026_ratio_envelope"]
+    mu_e = ratio_comparison["independent_ratios"]["m_mu_over_m_e"]
+    tau_e = ratio_comparison["independent_ratios"]["m_tau_over_m_e"]
+    if (
+        koide_identity["source_only_physical_prediction"]
+        or koide_identity["public_physical_promotion_allowed"]
+        or mu_e["candidate"] != mcpr["ratios"]["m_mu_over_m_e"]
+    ):
+        raise SystemExit("MCPR ratio receipt disagrees with the mass surface or its claim gate")
     rows: list[dict[str, Any]] = []
     rows.append(
         {
@@ -5953,6 +5966,14 @@ def _lepton_rows(
             "explanation": mcpr["explanation"],
             "artifact_ref": mcpr["artifact"],
             "blocking_objects": mcpr["blocking_objects"],
+            "dimensionless_ratio_comparison": {
+                "m_mu_over_m_e": mu_e,
+                "m_tau_over_m_e_inside_componentwise_one_sigma_interval": tau_e["inside_componentwise_one_sigma_interval"],
+                "common_scale_under_identity_mass_scheme_necessary_condition_passed": ratio_comparison["common_scale_under_identity_mass_scheme_necessary_condition_passed"],
+                "interval_basis": ratio_comparison["interval_basis"],
+                "physical_verdict": ratio_comparison["physical_verdict"],
+            },
+            "dimensionless_ratio_artifact_ref": _rel("koide_identity"),
         }
     )
     for key, lane, artifact in (
@@ -6074,6 +6095,7 @@ def _quark_rows(
     obstruction: dict[str, Any],
     clebsch: dict[str, Any],
     selection: dict[str, Any],
+    conditional_comparison: dict[str, Any],
 ) -> list[dict[str, Any]]:
     if obstruction["fork"] != "ii_fiber_survives":
         raise SystemExit(
@@ -6082,6 +6104,25 @@ def _quark_rows(
         )
     compare = clebsch["compare_only"]
     predictions = clebsch["predictions"]
+    if (
+        conditional_comparison["primary_branch"] != "full_rscc"
+        or conditional_comparison["interpretation"]["new_independent_evidence_claimed"]
+        or not conditional_comparison["interpretation"]["target_informed_formula_discovery_remains_target_informed"]
+    ):
+        raise SystemExit("conditional quark comparison violates its retrospective gate")
+    rscc = conditional_comparison["branches"]["full_rscc"]
+    pdg_ms_mud = next(
+        entry for entry in rscc["pdg_2026_light_quantities"]
+        if entry["reference"]["quantity"] == "ms_over_mud"
+    )
+    individual = rscc["pdg_2026_individual_masses"]
+    reference_centers = {
+        entry["reference"]["quark"]: Decimal(entry["reference"]["central"])
+        for entry in individual
+    }
+    ratio_from_separate_centers = (
+        2 * reference_centers["s"] / (reference_centers["u"] + reference_centers["d"])
+    )
     return [
         {
             "id": "quark_absolute_masses_obstruction",
@@ -6135,6 +6176,27 @@ def _quark_rows(
                 "texture, not a derived CKM angle; a simultaneous diagonal "
                 "mass ansatz would instead give the identity CKM matrix."
             ),
+        },
+        {
+            "id": "quark_conditional_rscc_comparison",
+            "tier": "T0_retrospective_conditional_comparison",
+            "flag_derived_ms_over_md": [
+                {
+                    "nf": entry["nf"],
+                    "computed": entry["computed"],
+                    "reference_central": entry["reference"]["value"],
+                }
+                for entry in rscc["flag_derived_ms_over_md"]
+            ],
+            "pdg_2026_ms_over_mud": pdg_ms_mud,
+            "pdg_2026_ratio_from_separately_displayed_mass_centers": str(ratio_from_separate_centers),
+            "pdg_2026_individual_marginals": {
+                "count": len(individual),
+                "all_inside": all(entry["inside_quoted_marginal_range"] for entry in individual),
+            },
+            "measured_mass_chart_is_conditional": conditional_comparison["interpretation"]["mass_chart_attachment_is_conditional"],
+            "new_independent_evidence_claimed": conditional_comparison["interpretation"]["new_independent_evidence_claimed"],
+            "artifact_ref": _rel("conditional_quark_comparison"),
         },
     ]
 
@@ -6986,6 +7048,8 @@ def build(
     rectangle = _load("kappa_rectangle")
     coherent = _load("kappa_coherent")
     koide = _load("koide_balance")
+    koide_identity = _load("koide_identity")
+    conditional_quark_comparison = _load("conditional_quark_comparison")
     clebsch = _load("clebsch_lane")
     selection = _load("clebsch_selection")
     obstruction = _load("fiber_obstruction")
@@ -7024,9 +7088,9 @@ def build(
         ),
         "alpha": _alpha_rows(endpoint, bridge, alpha_hvp_verdict)
         + _alpha_closure_rows(endpoint, contraction),
-        "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide),
+        "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide, koide_identity),
         "electroweak": _ew_rows(conditional),
-        "quarks": _quark_rows(obstruction, clebsch, selection),
+        "quarks": _quark_rows(obstruction, clebsch, selection, conditional_quark_comparison),
         "hadrons": _hadron_rows(
             payload, standby, lambda_scale, nucleon_ratio
         ),
@@ -7415,9 +7479,22 @@ def _render_md(ledger: dict[str, Any]) -> str:
                 f"{p} `{_fmt(d * 1e6, 3)} ppm`"
                 for p, d in zip(row["particles"], row["relative_deltas"], strict=True)
             )
+            ratios = row["dimensionless_ratio_comparison"]
+            mu_e = ratios["m_mu_over_m_e"]
+            common_scale = "passes" if ratios["common_scale_under_identity_mass_scheme_necessary_condition_passed"] else "fails"
             add(f"- MCPR conditional triple ({row['tier']}): {deltas} against the "
                 "PDG witness triple; the eight-register architecture is a "
                 "declared model input.")
+            add(f"  - Scale-free PDG 2026 comparison: `m_mu/m_e = "
+                f"{_fmt(float(mu_e['candidate']), 12)}` versus "
+                f"`{_fmt(float(mu_e['reference_central']), 12)}` "
+                f"(`{_fmt(float(mu_e['relative_central_residual_ppm']), 5)} ppm`); "
+                "the candidate is outside the product of the displayed "
+                "one-standard-uncertainty mass intervals, while `m_tau/m_e` is "
+                "inside its wider interval. The necessary single-common-scale "
+                f"condition under an identity pole-mass map {common_scale}. "
+                "This target-informed conditional comparison has no model-error "
+                "or physical pole-map bound; it is not a physical exclusion.")
         else:
             kind = "coherent closure" if row["id"].endswith("coherent") else "rectangle"
             contained = "inside" if row["witness_inside_all_intervals"] else "OUTSIDE"
@@ -7465,6 +7542,28 @@ def _render_md(ledger: dict[str, Any]) -> str:
         if row["id"].endswith("obstruction"):
             add(f"- Absolute masses ({row['tier']}): {row['statement']} "
                 f"(scientific owner {', '.join(f'#{i}' for i in row['scientific_owner_issues'])}).")
+        elif row["id"] == "quark_conditional_rscc_comparison":
+            flag = row["flag_derived_ms_over_md"]
+            pdg = row["pdg_2026_ms_over_mud"]
+            add(f"- Conditional RSCC ratios ({row['tier']}): "
+                f"`m_s/m_d = {_fmt(float(flag[0]['computed']), 7)}` versus "
+                "FLAG-derived `"
+                + "`, `".join(_fmt(float(entry["reference_central"]), 7)
+                              for entry in flag)
+                + "` across the two flavor ensembles; "
+                f"`m_s/m_ud = {_fmt(float(pdg['computed']), 7)}` is outside "
+                f"the separately quoted PDG 2026 90% range "
+                f"`[{pdg['quoted_lower']}, {pdg['quoted_upper']}]`. "
+                "Even the arithmetic ratio of PDG's separately displayed "
+                "individual mass centers is "
+                f"`{_fmt(float(row['pdg_2026_ratio_from_separately_displayed_mass_centers']), 7)}`; "
+                "the summary entries are not one joint mass vector. "
+                "All six individual quark coordinates lie within their "
+                "separately quoted PDG 2026 marginal ranges, but those "
+                "references mix mass scales and do not form a joint fit. "
+                "FLAG input covariance and model uncertainty are unavailable; "
+                "these ratios reuse the existing FLAG inputs, so they add no "
+                "independent predictive evidence. The mass chart is conditional.")
         else:
             vals = row["values"]
             flag = row["flag_2024_compare_only"]

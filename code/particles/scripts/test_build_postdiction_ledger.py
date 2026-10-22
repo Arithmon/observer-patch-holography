@@ -927,6 +927,15 @@ def test_alpha_closure_rows_fail_closed_when_the_certificate_promotes():
 
 def test_lepton_rows_match_parents_and_contain_witness(result):
     rows = {r["id"]: r for r in result["sections"]["charged_leptons"]}
+    ratio_parent = json.loads(ledger.PARENTS["koide_identity"].read_text(encoding="utf-8"))
+    mcpr = rows["charged_leptons_mcpr_conditional"]
+    ratios = mcpr["dimensionless_ratio_comparison"]
+    parent_ratios = ratio_parent["compare_only_PDG_2026_ratio_envelope"]
+    assert ratios["m_mu_over_m_e"] == parent_ratios["independent_ratios"]["m_mu_over_m_e"]
+    assert ratios["m_mu_over_m_e"]["inside_componentwise_one_sigma_interval"] is False
+    assert ratios["m_tau_over_m_e_inside_componentwise_one_sigma_interval"] is True
+    assert ratios["common_scale_under_identity_mass_scheme_necessary_condition_passed"] is False
+    assert mcpr["tier"] == "T2"
     coherent = json.loads(ledger.PARENTS["kappa_coherent"].read_text(encoding="utf-8"))
     row = rows["charged_leptons_kappa_coherent"]
     assert row["witness_inside_all_intervals"] is True
@@ -974,6 +983,15 @@ def test_quark_section_is_obstruction_plus_conditional_texture(result):
     assert "cabibbo_gst_sqrt_md_over_ms" in texture["values"]
     assert obstruction["scientific_owner_issues"] == [736]
     assert "historical_context_issues" not in obstruction
+    rscc = rows["quark_conditional_rscc_comparison"]
+    parent = json.loads(ledger.PARENTS["conditional_quark_comparison"].read_text(encoding="utf-8"))
+    branch = parent["branches"]["full_rscc"]
+    assert rscc["flag_derived_ms_over_md"][0]["computed"] == branch["flag_derived_ms_over_md"][0]["computed"]
+    assert rscc["new_independent_evidence_claimed"] is False
+    assert rscc["pdg_2026_individual_marginals"] == {"count": 6, "all_inside": True}
+    pdg = rscc["pdg_2026_ms_over_mud"]
+    assert pdg["inside_quoted_marginal_range"] is False
+    assert float(rscc["pdg_2026_ratio_from_separately_displayed_mass_centers"]) < float(pdg["quoted_lower"])
 
 
 def test_hadron_row_carries_pinned_payload(result):
@@ -997,6 +1015,8 @@ def test_markdown_rendered(result):
     # prose assertions do not require another full numerical parent replay.
     text = ledger._render_md(result)
     assert "# Postdiction Ledger" in text
+    assert "necessary single-common-scale condition" in text
+    assert "Conditional RSCC ratios" in text
     assert "## Forced structure" in text
     assert "## Quantum carrier gate" in text
     assert "NOT_EVALUABLE" in text

@@ -260,12 +260,12 @@
           "blocking_objects": [
             "CRITICALITY_BOUNDARY_SCALE_SELECTION_THEOREM"
           ],
-          "explanation": "Along the fit-free criticality curve, the Higgs coordinate at the measured top mass tests the relation independently of the boundary-scale selection.",
-          "implied_boundary_scale_GeV": 4.750333702733633e+17,
+          "explanation": "At the PDG cross-section pole-top reference, the two-loop curve's tree Higgs coordinate is within the declared matching tolerance. The top datum is an input; no physical pole bridge or theory uncertainty is supplied.",
+          "implied_boundary_scale_GeV": 2.954532473592348e+17,
           "lane": "m_t to m_H criticality relation (fit-free curve, compare-only test)",
-          "mH_on_curve_at_measured_mt_GeV": 125.72052472166195,
-          "mh_relative_residual": 0.004711711391788942,
-          "tier": "relation verified within the declared matching band"
+          "mH_on_curve_at_measured_mt_GeV": 124.72560405075059,
+          "mh_relative_residual": -0.003231806515219371,
+          "tier": "conditional relation inside declared matching tolerance"
         },
         {
           "artifact": "runs/calibration/wzh_residual_elimination_boundary.json",
@@ -504,7 +504,7 @@
       ]
     }
   ],
-  "generated_utc": "2026-08-26T13:17:22Z",
+  "generated_utc": "2026-10-22T03:11:06Z",
   "global_blocking_objects": {
     "X1_strict_no_target_P_alpha_root": "source-audit branch witness; full endpoint proof requires the hadronic spectral transport, the scheme bridge, and the interval fixed-point proof",
     "X2_operational_clock_chain": [

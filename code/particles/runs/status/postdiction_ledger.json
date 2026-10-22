@@ -347,6 +347,24 @@
           "SCALE",
           "W5_ORB"
         ],
+        "dimensionless_ratio_artifact_ref": "code/particles/runs/leptons/koide_circulant_identity.json",
+        "dimensionless_ratio_comparison": {
+          "common_scale_under_identity_mass_scheme_necessary_condition_passed": false,
+          "interval_basis": "Cartesian product of the three separately displayed PDG 2026 mass +/- one-standard-uncertainty intervals; no covariance or joint confidence level is assigned.",
+          "m_mu_over_m_e": {
+            "candidate": "206.768300595180971740336250438069337267297486181700623840391",
+            "componentwise_one_sigma_interval": [
+              "206.7682781427377954077456987013694570288959723409185547450131325450646",
+              "206.7682872741965668318414736060103821912246540597606577241046217535761"
+            ],
+            "conservative_component_interval_halfwidth_ppm": "0.022081381763851474800434487427614876221058272324559463866031678000000",
+            "inside_componentwise_one_sigma_interval": false,
+            "reference_central": "206.7682827084671796902080640552322774868514476087915663034803090115911",
+            "relative_central_residual_ppm": "0.086506080902502294928068645955786559745951458372196515543051481000000"
+          },
+          "m_tau_over_m_e_inside_componentwise_one_sigma_interval": true,
+          "physical_verdict": "No physical exclusion or significance follows: the response architecture was historically target-informed, its mass scheme has no validated pole bridge, and no model uncertainty bound is supplied."
+        },
         "explanation": "The eight-register architecture reproduces the charged triple at 84 ppm with zero runtime charged reference, and the architecture itself is a declared model input. The source-only completion is the A5/W5 orbit program; the homogeneous branch is proven shape-silent.",
         "id": "charged_leptons_mcpr_conditional",
         "measured_gev": [
@@ -7243,6 +7261,46 @@
           "ms_2gev_gev": 0.14049252398611017,
           "ms_over_md": 22.974258210716425
         }
+      },
+      {
+        "artifact_ref": "code/particles/runs/flavor/conditional_quark_mass_comparison.json",
+        "flag_derived_ms_over_md": [
+          {
+            "computed": "19.755755030392649309854565181089",
+            "nf": "2+1+1",
+            "reference_central": "19.9437775"
+          },
+          {
+            "computed": "19.755755030392649309854565181089",
+            "nf": "2+1",
+            "reference_central": "20.35935"
+          }
+        ],
+        "id": "quark_conditional_rscc_comparison",
+        "measured_mass_chart_is_conditional": true,
+        "new_independent_evidence_claimed": false,
+        "pdg_2026_individual_marginals": {
+          "all_inside": true,
+          "count": 6
+        },
+        "pdg_2026_ms_over_mud": {
+          "computed": "27.094659078776003600854264833331",
+          "inside_quoted_marginal_range": false,
+          "quoted_lower": "27.19",
+          "quoted_upper": "27.51",
+          "reference": {
+            "central": "27.33",
+            "definition": "m_ud=(m_u+m_d)/2",
+            "minus": "0.14",
+            "plus": "0.18",
+            "quantity": "ms_over_mud",
+            "quoted_confidence": "90%",
+            "unit": "1"
+          },
+          "signed_difference": "-0.235340921223996399145735166669"
+        },
+        "pdg_2026_ratio_from_separately_displayed_mass_centers": "27.08454810495626822157434402",
+        "tier": "T0_retrospective_conditional_comparison"
       }
     ]
   }

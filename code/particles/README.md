@@ -5,12 +5,13 @@ This directory is the canonical particle-spectrum code path for OPH inside
 
 The single entry point for results is the
 [postdiction ledger](../../docs/POSTDICTION_LEDGER.md): the forced gauge structure with
-its Lean receipts, the charged-lepton closure target (one anchor-gap value
-closes the lane exactly on the measured triple, inside the certified band),
-the certified lepton intervals with the measured triple inside every one,
-the conditional Higgs/top envelopes within one experimental sigma, and the
-quark obstruction and conditional texture rows, each read live from its
-certified artifact.
+its Lean receipts, the charged-lepton closure and conditional ratio checks,
+the Higgs/top comparison in its declared mass conventions, and the quark
+non-identifiability and conditional flavor checks. The displayed lepton
+intervals use a measured triple. The fixed MCPR muon/electron ratio falls
+outside the displayed PDG componentwise one-sigma interval under an identity
+pole-mass map; the Higgs/top and quark coordinates do not yet have a common
+physical mass attachment. Each ledger row reads its owning artifact.
 
 ## Scope
 
@@ -207,12 +208,12 @@ row declares no lane.
 | `sin^2 theta_W_eff` | `0.22305833336075578` | `0.22321` in a distinct on-shell comparison convention | same incomplete quintet; no common scheme map, so no residual or pull |
 | `m_H` | `125.1995304097179 GeV` | `125.13 +- 0.11 GeV` | target-anchored fit: the synchronization scale minimizes an objective containing the measured pair; validation of the formula stack, never a prediction |
 | `m_t` | `172.3523553288312 GeV` | `172.1 +- 0.6 GeV` | companion coordinate of the same target-anchored fit; never a prediction |
-| `m_t` (criticality, adopted branch) | `172.629 GeV` | `172.60 +- 0.27 GeV` | double-criticality boundary at the log-midpoint anchor `E_star exp(-pi) P^(-1/6)`, two loops; boundary-scale selection is a theorem modulo two carrier facts CF1/CF2 |
+| `m_t` (criticality, adopted branch) | `172.629 GeV` | PDG 2026 cross-section pole reference `172.1 +- 0.6 GeV` | QCD-converted top coordinate at the log-midpoint anchor `E_star exp(-pi) P^(-1/6)`, two loops; finite electroweak pole matching remains open |
 | `m_H` (criticality, adopted branch) | `125.771 GeV` | `125.13 +- 0.11 GeV` | same branch and gates; tree readout inside the declared matching band |
-| `m_H` at measured `m_t` (relation test) | `125.72 GeV` | `125.13 +- 0.11 GeV` | fit-free curve of the criticality family; tests the m_t to m_H relation independently of the boundary-scale selection |
+| `m_H` at measured `m_t` (relation test) | `124.726 GeV` | `125.13 +- 0.11 GeV` | two-loop criticality curve evaluated at the PDG 2026 cross-section pole-top reference; this tree Higgs coordinate is inside the declared matching tolerance, which is not a derived uncertainty |
 | `M_W`, `M_Z` (target-free declared-map audit branch) | `80.3301, 91.1191 GeV` | stale Breit--Wigner coordinates `80.3692, 91.1880 GeV` | zero-selector coordinate on a declared map that the source does not select; the renormalized-vev, tadpole, threshold, running, finite-order, uncertainty, and complex-pole maps are open, so this row is not a physical mass comparison |
 | positive-chamber `C3` Koide identity | `Q = 1/3 + (2/3)(abs(b)/a)^2`; `Q = 2/3` iff `abs(b)/a = 1/sqrt(2)` | PDG 2026 central masses give `Q = 0.6666644634026367` | exact circulant identity; the finite tracial-GNS packet conditionally gives the balanced modulus; physical family attachment, phase, and ratios are open |
-| `m_e, m_mu, m_tau` (MCPR conditional) | `0.510956, 105.649, 1776.78 MeV`; `Q = 0.6666644634090389` | `0.51100, 105.658, 1776.93 MeV`; `Q = 0.6666644634026367` | historically target-informed declared architecture; runtime-reference-free evaluation and the 84 ppm mass offset are retrospective diagnostics, neither blind nor source-only |
+| `m_e, m_mu, m_tau` (MCPR conditional) | `0.510956, 105.649, 1776.78 MeV`; `Q = 0.6666644634090389` | `0.51100, 105.658, 1776.93 MeV`; `Q = 0.6666644634026367` | retrospective diagnostic on a historically target-informed declared architecture; the scale-free `m_mu/m_e` ratio misses the displayed PDG 2026 componentwise one-sigma interval under an identity pole-mass map; no physical exclusion follows without a pole bridge and model-error bound |
 | `m_b, m_s, m_d` (Clebsch lane) | `6.03 GeV, 140 MeV, 6.1 MeV` | `4.18 GeV, 93.5 MeV, 4.7 MeV` | rejected conditional register-Clebsch route; the adopted `(b/tau, s/mu, d/e) = (1, 1/3, 3)` assignment is uniquely least-discrepant among six permutations without being source-derived; the absolute values are `44.2%`, `50.3%`, and `30.1%` high |
 | `m_s/m_d` (Clebsch lane) | `22.9743` | FLAG 2024 derived central ratios `19.9438` (`N_f=2+1+1`) and `20.3594` (`N_f=2+1`) | exact at the `mu_U` boundary and protected by common one-loop multiplicative transport; `15.2%` and `12.8%` high, so the declared conditional route is rejected; the matter receipt gives a conditional channel boundary without equating Yukawa coefficients; the unordered weight set is target-free under its declared alphabet and rules; the historically stipulated MCPR model is neither blind nor source-only; no covariance-aware significance is claimed |
 | `sqrt(m_d/m_s)` (Gatto-Sartori-Tonin diagnostic) | `0.2086` | `0.2250` | restatement of the same rejected ratio, not a derived Cabibbo angle; no relative left-handed eigenbasis is supplied, and the simultaneous diagonal register ansatz itself gives the identity CKM matrix |
@@ -289,8 +290,9 @@ double-criticality law (`lambda = 0` and `beta_lambda = 0` at one source
 scale) and is a zero-continuous-parameter family over the boundary scale:
 the archived `mu_U` branch gives `(164.1, 115.1) GeV` at one loop, the named
 source scales bracket the measured pair at both loop orders, and the
-fit-free curve reproduces `m_H = 125.72 GeV` at the measured top. The
-boundary-scale selection is a theorem modulo two finite carrier facts. A
+fit-free curve gives a tree Higgs coordinate of `124.726 GeV` at the PDG 2026
+cross-section pole-top reference, inside the separately declared 1.5% matching
+tolerance. The boundary-scale selection is a theorem modulo two finite carrier facts. A
 variational principle (AR1 the boundary reconciles the two anchor records at
 `mu_U` and `E_cell`; AR2 the reconciliation cost is quadratic in RG time; AR3
 the anchors have equal capacity) proves the unique minimizer

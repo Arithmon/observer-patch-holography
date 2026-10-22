@@ -20,8 +20,9 @@ Tier ladder used by every row:
 - T4 source-only absolute: T3 plus a closed operational clock ratio.
 
 GeV and MeV displays that use the unclosed clock candidate inherit its
-calibration-checksum status and are annotated per row.  This builder reads no
-measured particle mass.
+calibration-checksum status and are annotated per row. This builder does not
+open a measured-mass fixture directly; compare-only parent receipts retain
+their measured-reference ancestry.
 """
 
 from __future__ import annotations
@@ -347,11 +348,12 @@ def _higgs_top_rows(
             },
             {
                 "lane": "m_t to m_H criticality relation (fit-free curve, compare-only test)",
-                "tier": "relation verified within the declared matching band",
+                "tier": "conditional relation inside declared matching tolerance",
                 "explanation": (
-                    "Along the fit-free criticality curve, the Higgs "
-                    "coordinate at the measured top mass tests the relation "
-                    "independently of the boundary-scale selection."
+                    "At the PDG cross-section pole-top reference, the "
+                    "two-loop curve's tree Higgs coordinate is within the "
+                    "declared matching tolerance. The top datum is an input; "
+                    "no physical pole bridge or theory uncertainty is supplied."
                 ),
                 "mH_on_curve_at_measured_mt_GeV": relation.get(
                     "mh_on_curve_at_measured_mt_gev"

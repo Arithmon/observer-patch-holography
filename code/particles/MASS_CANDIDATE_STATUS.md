@@ -108,11 +108,11 @@ Discrete two-law ambiguity width: 9.3 MeV on MW, 5.1 MeV on MZ.
   - Blocking objects: CRITICALITY_BOUNDARY_SCALE_SELECTION_THEOREM, prospective three-loop RG and matching packet, BRST-complete pole kernels
 
 - Lane: m_t to m_H criticality relation (fit-free curve, compare-only test)
-  - Tier: relation verified within the declared matching band
-  - explanation: Along the fit-free criticality curve, the Higgs coordinate at the measured top mass tests the relation independently of the boundary-scale selection.
-  - mH_on_curve_at_measured_mt_GeV: 125.72052472166195
-  - mh_relative_residual: 0.004711711391788942
-  - implied_boundary_scale_GeV: 4.750333702733633e+17
+  - Tier: conditional relation inside declared matching tolerance
+  - explanation: At the PDG cross-section pole-top reference, the two-loop curve's tree Higgs coordinate is within the declared matching tolerance. The top datum is an input; no physical pole bridge or theory uncertainty is supplied.
+  - mH_on_curve_at_measured_mt_GeV: 124.72560405075059
+  - mh_relative_residual: -0.003231806515219371
+  - implied_boundary_scale_GeV: 2.954532473592348e+17
   - Artifact: `runs/calibration/d11_criticality_comparison.json`
   - Blocking objects: CRITICALITY_BOUNDARY_SCALE_SELECTION_THEOREM
 
