@@ -176,6 +176,22 @@ attempts between their retained events, the exact centered covariance is
 `w_minus r_minus^n + w_plus r_plus^n`. The producer checks the spectral
 recurrence symbolically, not merely a finite fit. This supplies an economical
 two-pole prediction and fixes the associated Euclidean decay parameters.
+The four finite record covariances at `n=0,1,2,3` recover the pole sum `5/3`
+and product `311/450` without reading the hidden configurations or assuming
+the eigenvalues beforehand. Their Hankel determinant is `1/9702990000`.
+The resulting dimensionless ratio of logarithmic decay rates is
+`log(30/(25-sqrt(3)))/log(30/(25+sqrt(3)))`, approximately `2.20334203`.
+It is a **current-record relaxation ratio per native attempt**, not a
+particle-mass ratio. The stationary preparation and uniform scheduler are
+declared protocols, and the production E/F observer halts after two events;
+neither its fixed tape nor a physical clock supplies this long-lag law.
+
+A concrete preparation control shows why the wider readout matters. Occupied
+ports `(4,7)` and `(4,8)` have the same one-bit move probability `1/6`, but
+their probabilities of two successive moving bits are respectively `1/36`
+and `23/900` under this protocol. The exact 66-state native transition counts
+independently reproduce both values. These records resolve this finite hidden
+preparation ambiguity; they do not select a particle family operator.
 The marked matrices inserted at the reads are transition insertions, **not
 POVM effects**: their sum is `P`, and their symmetric moving insertion has a
 negative determinant. A coherent probe of these transfer modes needs its own

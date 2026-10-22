@@ -364,6 +364,70 @@ def record_spectral_reduction():
         'marked_insertions_are_POVM_effects': False}
 
 
+def record_decay_sanity():
+    """Recover dimensionless relaxation poles from finite current records alone.
+
+    The first and last moving bits are retained; the intervening native
+    attempts are unread, including zero-current outcomes. This is a declared
+    uniform-scheduler protocol, not the fixed two-event E/F controller or a
+    particle rest-energy measurement.
+    """
+    reduced = clock.lumping(source_kernel())
+    transfer = sp.Matrix(reduced['matrix'])
+    moving = sp.Matrix(reduced['marked'][1])
+    prior = sp.Matrix([reduced['stationary']])
+    one = sp.ones(3, 1)
+    mean = (prior*moving*one)[0]
+    covariance = tuple(sp.factor((prior*moving*transfer**n*moving*one)[0]-mean**2)
+                       for n in range(4))
+    c0, c1, c2, c3 = covariance
+    hankel = sp.factor(c0*c2-c1*c1)
+    if hankel <= 0:
+        raise ArithmeticError('two accessible current decay modes are not identified')
+    pole_sum = sp.factor((c0*c3-c1*c2)/hankel)
+    pole_product = sp.factor((c1*c3-c2*c2)/hankel)
+    discriminant = sp.factor(pole_sum**2-4*pole_product)
+    if discriminant <= 0:
+        raise ArithmeticError('the record decay poles are not distinct and real')
+    slow, fast = ((pole_sum+sp.sqrt(discriminant))/2,
+                  (pole_sum-sp.sqrt(discriminant))/2)
+    if not 0 < fast < slow < 1:
+        raise ArithmeticError('the two recovered record poles are not decays')
+    # This protocol-conditional readout is dimensionless: no supplied seconds, energy
+    # constant, physical mass operator, or particle label enters this ratio.
+    ratio = sp.log(1/fast)/sp.log(1/slow)
+
+    kernel = source_kernel()
+    index = {state: i for i, state in enumerate(kernel.states)}
+    control = []
+    for occupied in ((4, 7), (4, 8)):
+        state = tuple(int(i in occupied) for i in range(12))
+        source_class = reduced['classes'][index[state]]
+        prepared = tuple(F(int(i == source_class)) for i in range(3))
+        one_bit = sum(clock.word_law(reduced, (1,), prepared))
+        two_bits = sum(clock.word_law(reduced, (1, 1), prepared))
+        control.append({'occupied_ports': list(occupied),
+                        'one_moving_bit_probability': str(one_bit),
+                        'two_moving_bits_probability': str(two_bits)})
+    if (control[0]['one_moving_bit_probability'] != control[1]['one_moving_bit_probability']
+            or control[0]['two_moving_bits_probability'] == control[1]['two_moving_bits_probability']):
+        raise ArithmeticError('the wider native record protocol lost its separation control')
+    return {'parameter': 'unread native attempt count between two retained moving bits',
+        'preparation_and_schedule': 'stationary binary total-two law; independent uniform thirty-seam choices',
+        'single_moving_bit_probability': str(mean),
+        'four_centered_lag_covariances': list(map(str, covariance)),
+        'record_Hankel_determinant': str(hankel),
+        'recovered_pole_sum': str(pole_sum),
+        'recovered_pole_product': str(pole_product),
+        'recovered_slow_and_fast_poles': list(map(str, (sp.simplify(slow), sp.simplify(fast)))),
+        'dimensionless_log_decay_ratio_fast_over_slow': str(ratio),
+        'floating_ratio_diagnostic': float(ratio.evalf(17)),
+        'prepared_state_record_control': control,
+        'fixed_two_event_E_F_controller_supplies_this_long_lag_law': False,
+        'source_selects_uniform_scheduler_or_stationary_preparation': False,
+        'particle_mass_ratio_or_physical_energy_identified': False}
+
+
 def run():
     kernel = source_kernel()
     adjacency = {i: {b if a == i else a for a, b in kernel.seams if i in (a, b)} for i in range(12)}
@@ -378,6 +442,7 @@ def run():
         'local_source_field': local_field_audit(), 'controlled_logarithm': logarithm_audit(),
         'finite_spatial_support': spatial_locality_audit(),
         'observer_record_spectral_reduction': record_spectral_reduction(),
+        'observer_record_decay_sanity': record_decay_sanity(),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],
         'scope': {'one_native_carrier_no_independent_replica_limit': True,

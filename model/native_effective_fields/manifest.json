@@ -1,12 +1,12 @@
 {
   "description": "Exact native hard-core fields, controlled logarithm, minimal record spectrum and complete four-current readouts.",
   "files": {
-    "README.md": "e143c75611bcf9da76d6f4d0c9ccb44dc7cc19297f524b7c34e61b846efbb78d",
+    "README.md": "5fdfd20ec6beef54b484c19ae74712c44132767928258c0a4c7140f8d70c0d7d",
     "__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
-    "construction.py": "d9d330ee3ca372e1766ab07e53fc79b9285d44e4c9598fd9b656657e956ddff7",
-    "results.json": "1b9af35b1463a0dee15e3c7c7a224482cfb54dbb5c16d34b67a1091cb09fb26e",
-    "test_construction.py": "4d29396a196305180ed62b30f020b393c759bdd48654860d6547ea28a3227442"
+    "construction.py": "3791e5c7ce8c7839991962305ac8d05b2dbd4b7a5ebff87cbb27b5bdbdcad5ff",
+    "results.json": "0a3d0a4b03c5a98efbf4bd1b942956adc380caa65da7cdcfafb4c6750d65eef1",
+    "test_construction.py": "b5196761c2ba945c585f1e9f855ef059e10e9e5d05476a465e4d59131c696980"
   },
   "reproduce": [
     "python -m model.native_effective_fields --check model/native_effective_fields/results.json",

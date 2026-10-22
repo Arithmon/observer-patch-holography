@@ -2691,6 +2691,47 @@
     "source_coefficient_of_density_product_in_G": "-2",
     "sum_of_30_local_terms_equals_60_I_minus_native_counts": true
   },
+  "observer_record_decay_sanity": {
+    "dimensionless_log_decay_ratio_fast_over_slow": "log(1/(5/6 - sqrt(3)/30))/log(1/(sqrt(3)/30 + 5/6))",
+    "fixed_two_event_E_F_controller_supplies_this_long_lag_law": false,
+    "floating_ratio_diagnostic": 2.2033420301466635,
+    "four_centered_lag_covariances": [
+      "1/3630",
+      "79/326700",
+      "521/2450250",
+      "3059/16335000"
+    ],
+    "parameter": "unread native attempt count between two retained moving bits",
+    "particle_mass_ratio_or_physical_energy_identified": false,
+    "preparation_and_schedule": "stationary binary total-two law; independent uniform thirty-seam choices",
+    "prepared_state_record_control": [
+      {
+        "occupied_ports": [
+          4,
+          7
+        ],
+        "one_moving_bit_probability": "1/6",
+        "two_moving_bits_probability": "1/36"
+      },
+      {
+        "occupied_ports": [
+          4,
+          8
+        ],
+        "one_moving_bit_probability": "1/6",
+        "two_moving_bits_probability": "23/900"
+      }
+    ],
+    "record_Hankel_determinant": "1/9702990000",
+    "recovered_pole_product": "311/450",
+    "recovered_pole_sum": "5/3",
+    "recovered_slow_and_fast_poles": [
+      "sqrt(3)/30 + 5/6",
+      "5/6 - sqrt(3)/30"
+    ],
+    "single_moving_bit_probability": "5/33",
+    "source_selects_uniform_scheduler_or_stationary_preparation": false
+  },
   "observer_record_spectral_reduction": {
     "all_one_word_Hankel_determinant": "1/9702990000",
     "bit_covariance_with_n_unread_attempts": "w_minus*r_minus^n + w_plus*r_plus^n",
@@ -2802,7 +2843,7 @@
     "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
     "model/native_effective_fields/__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "model/native_effective_fields/__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
-    "model/native_effective_fields/construction.py": "d9d330ee3ca372e1766ab07e53fc79b9285d44e4c9598fd9b656657e956ddff7",
+    "model/native_effective_fields/construction.py": "3791e5c7ce8c7839991962305ac8d05b2dbd4b7a5ebff87cbb27b5bdbdcad5ff",
     "model/native_fluctuations/__main__.py": "143bc389270f4983ff83374b424dcf750de0d4ffacaea01102ff3cc01c4c4aba",
     "model/native_fluctuations/experiment.py": "3e248555159cdd0835d9e4ffd51ad3df8f7e928e8d3a127a905cfba032e2e13f",
     "model/native_fluctuations/source.py": "963281df213df670acf1d4d0368f71b929b3c97b88d94f696d999f6e8da6c86f",

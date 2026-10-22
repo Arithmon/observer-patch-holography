@@ -152,6 +152,48 @@ def test_three_class_reconstruction_is_minimal_for_complete_current_bit_words():
     assert marked.det() < 0
 
 
+def test_record_lags_recover_two_decay_poles_without_hidden_state_reads():
+    result = c.record_decay_sanity()
+    kernel = c.source_kernel()
+    moving = np.asarray(kernel.marked_counts[1], dtype=object)
+    all_records = np.asarray(kernel.counts, dtype=object)
+    row = np.ones(66, dtype=object)@moving
+    mean = F(5, 33)
+    covariances = []
+    for unread in range(4):
+        terminal = row@moving
+        probability = F(int(sum(terminal)), 66*60**(unread+2))
+        covariances.append(str(probability-mean*mean))
+        row = row@all_records
+    assert result['four_centered_lag_covariances'] == covariances
+    assert result['record_Hankel_determinant'] == '1/9702990000'
+    assert result['recovered_pole_sum'] == '5/3'
+    assert result['recovered_pole_product'] == '311/450'
+    assert result['floating_ratio_diagnostic'] == pytest.approx(2.2033420301466636)
+    assert not result['particle_mass_ratio_or_physical_energy_identified']
+
+
+def test_richer_native_current_words_separate_fixed_controller_hidden_preparations():
+    result = c.record_decay_sanity()['prepared_state_record_control']
+    assert result == [
+        {'occupied_ports': [4, 7], 'one_moving_bit_probability': '1/6',
+         'two_moving_bits_probability': '1/36'},
+        {'occupied_ports': [4, 8], 'one_moving_bit_probability': '1/6',
+         'two_moving_bits_probability': '23/900'},
+    ]
+    kernel = c.source_kernel()
+    index = {state: i for i, state in enumerate(kernel.states)}
+    moving = kernel.marked_counts[1]
+    for prepared in result:
+        occupied = prepared['occupied_ports']
+        state = tuple(int(i in occupied) for i in range(12))
+        i = index[state]
+        one_bit = F(sum(moving[i]), 60)
+        two_bits = F(sum(moving[i][j]*sum(moving[j]) for j in range(66)), 60**2)
+        assert str(one_bit) == prepared['one_moving_bit_probability']
+        assert str(two_bits) == prepared['two_moving_bits_probability']
+
+
 @pytest.mark.parametrize('bad', [True, -1, 25, 2., '2', None])
 def test_log_orders_reject_undeclared_values_and_alias_types(bad):
     for operation in (c.log_polynomial, c.log_remainder):
