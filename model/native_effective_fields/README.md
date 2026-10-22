@@ -212,6 +212,34 @@ Hamiltonian gap or a selected charged-lepton mass; the hard-core ladder is
 not a derived CAR electron operator. The [native action](../native_action/README.md)
 keeps those mathematical objects distinct.
 
+A number-conserving *relational* check makes the missing readout precise.
+Prepare the declared total-one source/reference state
+`(|one_i,0_ref>+|vacuum,1_ref>)/sqrt(2)`, retain the reference, make `n`
+uniform native seam attempts on the source, then apply the declared positive
+effect `(I+X_i,ref)/2`, where `X_i,ref` swaps those two states and is zero
+elsewhere. Direct propagation of every current word through the original C/E
+Kraus maps gives `p_+(n)=[1+r_L^n]/2`: at one attempt it is `23/24` for C and
+`11/12` for E. This is an exact charged-coherence signal accessible *if* the
+reference preparation and exchange analyzer are supplied. Neither is in the
+current two-event observer or selected by its repair records.
+
+The records alone cannot fix an oscillation frequency. Multiplying each
+native Kraus map by source charge parity after repair leaves every current
+word unchanged, including adaptive words, yet changes the charge-one rate
+from `r_L` to `-r_L`. The exact one-attempt plus probabilities then become
+`1/24` for C and `1/12` for E. This is an **alternative quantum completion of
+the classical endpoint/current rule**, not the chosen C or E instrument. The
+general source-only charge rotation `U_theta=exp(i theta N_source)` gives the
+same current words: each native outcome preserves source number on both sides
+and commutes with `U_theta`, so a word of length `n` changes only its terminal
+state by `U_theta^n`. Against the untouched reference the declared analyzer
+would read `[1+r_L^n cos(n theta)]/2`. This is relative phase, not a global
+gauge rotation of source and reference together. Selecting a
+full quantum lift, a source/reference phase service, a physical clock and a
+unitary or relativistic spectral continuation are separate requirements. A
+decay pole in this declared attempt count cannot be identified with a
+particle rest mass by analytic continuation alone.
+
 The marked matrices inserted at the reads are transition insertions, **not
 POVM effects**: their sum is `P`, and their symmetric moving insertion has a
 negative determinant. A coherent probe of these transfer modes needs its own

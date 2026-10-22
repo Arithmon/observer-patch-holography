@@ -8,6 +8,7 @@ import pytest
 import sympy as sp
 
 from . import construction as c
+from . import charged_reference
 
 
 def test_local_hard_core_operator_is_identity_minus_actual_endpoint_swap():
@@ -224,6 +225,22 @@ def test_charged_coherence_rates_do_not_turn_neutral_record_poles_into_masses():
     assert all(sum(port in seam for seam in seams) == 5 for port in range(12))
     assert 1-F(5, 2*len(seams)) == F(11, 12)
     assert 1-F(5, len(seams)) == F(5, 6)
+
+
+def test_relational_charge_readout_separates_coherence_from_current_records():
+    result = charged_reference.reference_readout_scope(c.source_kernel().seams)
+    assert result['source_charge_one_coherence_rate'] == {'C': '11/12', 'E': '5/6'}
+    assert result['complete_current_words_C_E_and_parity_twist_identical']
+    assert result['reference_plus_probabilities'] == {
+        'C': {'1': {'plus': '23/24', 'parity_twisted_plus': '1/24', 'current_word_count': 3},
+              '2': {'plus': '265/288', 'parity_twisted_plus': '265/288', 'current_word_count': 9}},
+        'E': {'1': {'plus': '11/12', 'parity_twisted_plus': '1/12', 'current_word_count': 3},
+              '2': {'plus': '61/72', 'parity_twisted_plus': '61/72', 'current_word_count': 9}}}
+    assert not result['phase_frequency_selected_by_native_current_records']
+    assert result['all_source_charge_U1_phase_twists_leave_current_words_identical']
+    assert result['relative_phase_plus_law'] == '(1+r_L^n cos(n theta))/2; U_theta acts on source only'
+    assert not result['reference_preparation_or_analyzer_implemented_by_current_observer']
+    assert not result['physical_charged_spectral_pole_or_rest_energy_identified']
 
 
 @pytest.mark.parametrize('bad', [True, -1, 25, 2., '2', None])

@@ -24,6 +24,7 @@ from ..observer_reconstruction import native_geometry
 from ..observer.scalar_response.experiment import canonical
 from ..primitive_observer import runtime, transfer
 from ..federated_quantum_sector import construction as quantum
+from . import charged_reference
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -31,6 +32,7 @@ SOURCE_PATHS = tuple(sorted(set((*clock.SOURCE_PATHS, *fluctuations.SOURCE_PATHS
     'model/observer_reconstruction/native_geometry.py',
     'model/native_effective_fields/__init__.py', 'model/native_effective_fields/__main__.py',
     'model/native_effective_fields/construction.py',
+    'model/native_effective_fields/charged_reference.py',
     'model/federated_quantum_sector/construction.py',
     'Lean/SourceLaw/TransferMatrixLift.lean', 'Lean/Dynamics/PrivateInner.lean'))))
 CURRENT_VALUES = (-1, 0, 1)
@@ -499,6 +501,7 @@ def run():
         'observer_record_spectral_reduction': record_spectral_reduction(),
         'observer_record_decay_sanity': record_decay_sanity(),
         'charged_coherence_scope': charged_coherence_scope(),
+        'charged_reference_readout': charged_reference.reference_readout_scope(kernel.seams),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],
         'scope': {'one_native_carrier_no_independent_replica_limit': True,
