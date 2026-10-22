@@ -60,6 +60,10 @@ unit change cannot alter the ratio, as explained in the
 A QED/isospin or physical-readout map would have to be derived and bounded
 before invoking it. This miss tests the
 conditional chart, not the as-yet-unselected physical flavor law.
+If a single source-selected flavor law and justified mass-scheme map retain
+this ratio with a theory-error bound too small to reach the direct interval,
+that construction fails the light-quark ratio test; a refitted coefficient
+would be a new candidate, not a repair of this frozen result.
 
 The subsequent further-theorem/QFRC audit sharpens this boundary. It proves by
 explicit finite countermodels that first and second moments do not fix higher

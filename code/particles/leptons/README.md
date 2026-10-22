@@ -83,6 +83,27 @@ postdiction, not a promoted prediction.
 These are negative/frontier theorems for the current source signature, not a
 claim that every future OPH extension must fail.
 
+The executable observer now fixes a neutral `W5` port-response eigenvalue
+`9/10` per declared uniform-seam attempt, while its stationary `W5` mean is
+zero ([native port audit](../../../model/observer/README.md)). Its fixed
+two-occupation record sector has no charged ladder operator. On the full
+native channel, the formal charge-one coherence decays at `11/12` or `5/6`
+per attempt under the two coherent laws that share all classical current
+records ([finite-field audit](../../../model/native_effective_fields/README.md)).
+Neither rate is a charged-lepton mass: the observer has no implemented
+charge-coherence measurement, and the source does not select a three-family
+charged operator, physical energy map or mass scheme. The next ratio test
+therefore requires those objects from the same native rule before consulting
+the charged-lepton reference values.
+
+The [finite cycle-obstruction theorem](../../../paper/reality_as_consensus_protocol.tex)
+proves irreducible mismatch for supplied nontrivial holonomy, not a charged
+particle or its energy. The [conditional puncture-flux certificate](../../a5_closure/flux_defect_criterion_certificate.py)
+classifies declared `Z6` defects and finite spectra, but supplies neither a
+source-selected defect nor a quantum mass pole. A defect-based lepton model
+must connect that charge to native repair, propagation, and the same physical
+spectral readout used for the ratio test.
+
 ## Icosahedral Face-Incidence Completion Conjecture
 
 The reviewed Pro archive is preserved unchanged at workspace
