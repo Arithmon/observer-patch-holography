@@ -52,14 +52,25 @@ stationary law unchanged but changes two-current probabilities. Source
 symmetry therefore does not derive the IID schedule used by the present
 clock and field histories.
 
-The [native loop readout](observer/README.md) derives only flat additive
-current contrasts from the all-seam record protocol; it supplies no charged
-flux. A [relational charged-coherence test](native_effective_fields/README.md)
-can distinguish the admitted C/E laws when a source/reference preparation and
-exchange analyzer are supplied. Current words alone leave a continuous
-charge-phase freedom, so neither a defect nor a physical charged pole is
-selected by these records. Both routes need a source-selected coherent
-interface before a particle identity or mass can be tested.
+The [native loop readout](observer/README.md) derives flat additive current
+contrasts from the all-seam record protocol. A source-compiled coherent tape
+eraser can distinguish relative phases of two same-endpoint histories, but
+those histories are stationary and out-and-back on one seam: their geometric
+link product is one. The phase is not selected by the committed records and
+does not establish charged flux or a defect.
+
+A [relational charged-coherence test](native_effective_fields/README.md)
+can distinguish the admitted C/E laws
+using existing source controls for a declared source/reference preparation
+and exchange analyzer. This proves ideal encoded realizability, while their
+selection and physical service errors remain open. Each exact native C/E
+channel keeps every vacuum-to-one-token coherence at its original port under
+any current-word schedule; its uniform-attempt charged two-point function has
+a flat spatial band even though one-token populations move. Thus these
+coherence rates cannot serve as propagating relativistic particle poles.
+Source-selected coherent transport, a geometric loop observable and a
+calibrated physical spectrum remain necessary before a particle identity or
+mass can be tested.
 
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair

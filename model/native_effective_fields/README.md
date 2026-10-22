@@ -223,8 +223,8 @@ Kraus maps gives `p_+(n)=[1+r_L^n]/2`: at one attempt it is `23/24` for C and
 reference preparation and exchange analyzer are supplied. Neither is in the
 current two-event observer or selected by its repair records.
 
-The same declared reference test is now emitted as existing six-level
-processor source words, rather than inserted as a state or effect matrix.
+The declared reference test has an encoded realization in the existing
+six-level processor source words.
 A five-pulse word prepares the total-one source/reference superposition;
 the existing C/E repair words act on the vacuum/one-token and binary seam
 columns; a 598-pulse word couples the pair-exchange effect to a pointer.

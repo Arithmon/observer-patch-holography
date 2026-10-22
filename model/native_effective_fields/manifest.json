@@ -1,7 +1,7 @@
 {
   "description": "Exact native fields, charged spatial pole gate, source-word reference readout and complete current histories.",
   "files": {
-    "README.md": "d4905fa3167f5250d92d29b89ca2821c1669ac2bdb093edea3a255fd45a7a595",
+    "README.md": "b9704b83c1a0ab3aa75d401aff4ab9ddd94812431c5febf53c8e136f2e82234d",
     "__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
     "charged_reference.py": "a4072b8156e18daaed13bff232b94e2b6f1d638694459d3963b3704a8d759112",

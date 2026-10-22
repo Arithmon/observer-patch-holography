@@ -72,7 +72,7 @@ also vanish. Neither result excludes a future coherent repair transport with
 a measurable path phase. The fixed two-event E/F recorder encloses no carrier
 face. Two different retained tape words can return the same source load, but
 their record labels remain orthogonal in the committed observer. A declared
-2,707-pulse source tape eraser now compares those paths **if the tape is kept
+2,707-pulse source tape eraser compares those paths **if the tape is kept
 coherent**: its returning plus/minus probabilities are `(1/2,0)` and become
 `(0,1/2)` after a two-pulse first-coin phase, while all four committed
 native word probabilities remain `1/4`. Both returning paths use E twice;

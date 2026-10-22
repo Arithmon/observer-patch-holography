@@ -22,6 +22,11 @@ a declared uniform scheduler. The [modular-clock scale
 check](../../model/transfer_modular_probe/README.md) shows that assigning
 seconds to native events remains free. These are target-free native diagnostics,
 not selected charged-family operators, particle mass ratios or absolute masses.
+The C/E charge-one two-point block is spatially pinned despite token
+population transport; a compiled relational readout can measure its decay
+only under declared preparation and analyzer services. A same-endpoint tape
+phase comparison does not supply geometric loop flux. Neither result promotes
+a native relaxation rate to a particle mass.
 
 ## Scope
 
