@@ -31,6 +31,23 @@ derived.
 No neutrino value in this directory has source-only prediction status. The
 lane emits no physical PMNS matrix and no absolute neutrino masses.
 
+The public mass tests have different observables. Oscillations constrain
+mass-squared differences; tritium beta decay constrains
+`m_beta^2 = sum_i |U_ei|^2 m_i^2`, with [KATRIN's 0.45 eV upper limit at
+90% confidence](https://arxiv.org/abs/2406.13516); cosmology constrains
+`sum_i m_i` only within a specified cosmological model. The retained
+weighted-cycle absolute attachment displays the compare-only ascending
+coordinates `(0.01745, 0.01948, 0.05308) eV`, summing to `0.09001 eV`.
+Its scale uses a measured oscillation splitting and its mixing candidate fails
+NuFIT 6.1, so these coordinates are neither independent mass predictions nor
+physical flavor-neutrino masses. If they were physical mass eigenvalues,
+unitary mixing would give `m_beta <= 0.05308 eV`; passing KATRIN's much weaker
+bound would not confirm the candidate. The [DESI DR2/Planck/ACT comparison](https://arxiv.org/abs/2503.14744)
+quotes `sum_i m_i < 0.0642 eV` at 95% under ΛCDM with three degenerate
+neutrinos. The candidate sum exceeds that benchmark, but its nondegenerate
+spectrum and the unestablished OPH cosmological readout prevent treating this
+cross-model comparison as a physical exclusion or fit.
+
 The purpose is controlled scope. The active forward objects are:
 
 - a local neutrino scale anchor from the D10 core
