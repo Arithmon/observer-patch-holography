@@ -1,6 +1,40 @@
 {
   "branches": {
     "full_rscc": {
+      "flag_derived_ms_over_md": [
+        {
+          "absolute_difference_over_first_order_maximal_correlation_scale": "0.48703355495206191359408485263426",
+          "computed": "19.755755030392649309854565181089",
+          "first_order_scale_is_a_confidence_interval": false,
+          "includes_theory_uncertainty": false,
+          "independent_evidence_from_other_flag_rows": false,
+          "input_covariance_available": false,
+          "nf": "2+1+1",
+          "quantity": "ms_over_md",
+          "reference": {
+            "independent_standard_uncertainty": "0.332067640296747373384442091962701498301810002803780586821039",
+            "rho_plus_one_standard_uncertainty": "0.3860565",
+            "value": "19.9437775"
+          },
+          "signed_difference": "-0.188022469607350690145434818911"
+        },
+        {
+          "absolute_difference_over_first_order_maximal_correlation_scale": "1.7265796207195591697286387451329",
+          "computed": "19.755755030392649309854565181089",
+          "first_order_scale_is_a_confidence_interval": false,
+          "includes_theory_uncertainty": false,
+          "independent_evidence_from_other_flag_rows": false,
+          "input_covariance_available": false,
+          "nf": "2+1",
+          "quantity": "ms_over_md",
+          "reference": {
+            "independent_standard_uncertainty": "0.275306829010832929610842758346627366377832896540005008453062",
+            "rho_plus_one_standard_uncertainty": "0.349590",
+            "value": "20.35935"
+          },
+          "signed_difference": "-0.603594969607350690145434818911"
+        }
+      ],
       "flag_light_ratios": [
         {
           "computed": "0.45827670117228963675530897856368",
@@ -210,6 +244,40 @@
       ]
     },
     "lower_order_control": {
+      "flag_derived_ms_over_md": [
+        {
+          "absolute_difference_over_first_order_maximal_correlation_scale": "0.48880643124588429186636852570025",
+          "computed": "19.755070599975723270877091299258",
+          "first_order_scale_is_a_confidence_interval": false,
+          "includes_theory_uncertainty": false,
+          "independent_evidence_from_other_flag_rows": false,
+          "input_covariance_available": false,
+          "nf": "2+1+1",
+          "quantity": "ms_over_md",
+          "reference": {
+            "independent_standard_uncertainty": "0.332067640296747373384442091962701498301810002803780586821039",
+            "rho_plus_one_standard_uncertainty": "0.3860565",
+            "value": "19.9437775"
+          },
+          "signed_difference": "-0.188706900024276729122908700742"
+        },
+        {
+          "absolute_difference_over_first_order_maximal_correlation_scale": "1.7285374296297855462768062608827",
+          "computed": "19.755070599975723270877091299258",
+          "first_order_scale_is_a_confidence_interval": false,
+          "includes_theory_uncertainty": false,
+          "independent_evidence_from_other_flag_rows": false,
+          "input_covariance_available": false,
+          "nf": "2+1",
+          "quantity": "ms_over_md",
+          "reference": {
+            "independent_standard_uncertainty": "0.275306829010832929610842758346627366377832896540005008453062",
+            "rho_plus_one_standard_uncertainty": "0.349590",
+            "value": "20.35935"
+          },
+          "signed_difference": "-0.604279400024276729122908700742"
+        }
+      ],
       "flag_light_ratios": [
         {
           "computed": "0.45839319800171881349467738474815",
@@ -496,7 +564,7 @@
     "code/particles/calibration/verify_conditional_top_fixed_p.py": "5790d7e59fa03f2fb5aba16097ff49a77c29bdf2fae3d74f9c6fafc99c4d8a8a",
     "code/particles/data/flag_2024_light_quark_ratio_fixture.json": "82df19655fa2db8973376f0b5627729189c40f40042d38bfdc0f08bd1dce3e78",
     "code/particles/data/pdg_2025_conditional_quark_comparison.json": "503f043ec8581b48e1a8ae184c97e7676dd5e84198ad18f2781d1bf7e32156a5",
-    "code/particles/flavor/compare_conditional_quark_masses.py": "c7a4f03acdf90d99fb27ead5e6b52010408917fcb9239398a549280ddb45cd10",
+    "code/particles/flavor/compare_conditional_quark_masses.py": "fc578192f44c8b46e398945a6797b73da655ea7c3d7ea630deedd3b52d153ac1",
     "code/particles/flavor/conditional_quark_mass_spec.json": "7dac1a6000395790f7dd156837c11c43f3a5ca56c8fe9313add1c50a8df654e8",
     "code/particles/flavor/verify_conditional_quark_mass_replay.py": "e6f1f91b3970987fe712c8a56e5e8e4301c62ca9a0a053f8c36dd82260a52e86",
     "code/particles/runs/calibration/conditional_top_fixed_p.json": "e027f9225efec2497080995cfc7e435e2e37536815715a9e02aca6cf6d4d47fe",

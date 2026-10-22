@@ -37,6 +37,37 @@ def quoted_range(value, row):
     }
 
 
+def flag_derived_ratio(value, average):
+    """Compare a ratio made from published FLAG marginals, without a fit."""
+    strange = average["ms_over_mud"]
+    up_down = average["mu_over_md"]
+    reference = average["derived_ms_over_md"]
+    s, u = D(strange["value"]), D(up_down["value"])
+    sigma_s = D(strange["standard_uncertainty"])
+    sigma_u = D(up_down["standard_uncertainty"])
+    central = s * (1 + u) / 2
+    # This is the largest first-order scale for any correlation in [-1, 1].
+    scale = ((1 + u) * sigma_s + s * sigma_u) / 2
+    if central != D(reference["value"]) or scale != D(
+        reference["rho_plus_one_standard_uncertainty"]
+    ):
+        raise ValueError("FLAG derived ratio must follow its published marginals")
+    return {
+        "nf": average["nf"],
+        "quantity": "ms_over_md",
+        "computed": str(value),
+        "reference": reference,
+        "signed_difference": str(value - central),
+        "absolute_difference_over_first_order_maximal_correlation_scale": str(
+            abs(value - central) / scale
+        ),
+        "input_covariance_available": False,
+        "first_order_scale_is_a_confidence_interval": False,
+        "independent_evidence_from_other_flag_rows": False,
+        "includes_theory_uncertainty": False,
+    }
+
+
 def compare(packet, pdg, flag):
     spec = json.loads(SPEC.read_text())
     if packet["guards"] != spec["guards"]:
@@ -85,6 +116,7 @@ def compare(packet, pdg, flag):
             values = {
                 "mu_over_md": masses["u"] / masses["d"],
                 "ms_over_mud": 2 * masses["s"] / (masses["u"] + masses["d"]),
+                "ms_over_md": masses["s"] / masses["d"],
                 "mud_gev": (masses["u"] + masses["d"]) / 2,
             }
             flag_rows = []
@@ -104,6 +136,10 @@ def compare(packet, pdg, flag):
                 "pdg_individual_masses": [quoted_range(masses[r["quark"]], r) for r in pdg["masses"]],
                 "pdg_light_quantities": [quoted_range(values[r["quantity"]], r) for r in pdg["light_quantities"]],
                 "flag_light_ratios": flag_rows,
+                "flag_derived_ms_over_md": [
+                    flag_derived_ratio(values["ms_over_md"], average)
+                    for average in flag["averages"]
+                ],
             }
         return {
             "schema": "oph.conditional_quark_mass_comparison.v1",

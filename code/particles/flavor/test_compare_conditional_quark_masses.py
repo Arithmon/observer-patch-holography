@@ -23,10 +23,18 @@ def test_receipt_and_all_comparisons_retained():
         assert len(branch["pdg_individual_masses"]) == 6
         assert len(branch["pdg_light_quantities"]) == 3
         assert len(branch["flag_light_ratios"]) == 4
+        assert len(branch["flag_derived_ms_over_md"]) == 2
     full = receipt["branches"]["full_rscc"]
     assert all(row["inside_quoted_marginal_range"] for row in full["pdg_individual_masses"])
     ratios = {row["reference"]["quantity"]: row for row in full["pdg_light_quantities"]}
     assert not ratios["ms_over_mud"]["inside_quoted_marginal_range"]
+    derived = full["flag_derived_ms_over_md"]
+    assert [row["nf"] for row in derived] == ["2+1+1", "2+1"]
+    assert all(not row["input_covariance_available"] for row in derived)
+    assert all(not row["first_order_scale_is_a_confidence_interval"] for row in derived)
+    assert all(not row["independent_evidence_from_other_flag_rows"] for row in derived)
+    assert comparison.D(derived[0]["absolute_difference_over_first_order_maximal_correlation_scale"]) < 1
+    assert comparison.D(derived[1]["absolute_difference_over_first_order_maximal_correlation_scale"]) > 1
     assert receipt["joint_likelihood"] is None
     assert receipt["theory_uncertainty"] is None
     top = receipt["criticality_top_running_coordinate_comparisons"]
@@ -66,6 +74,13 @@ def test_asymmetric_range_is_not_a_gaussian_error():
     assert output["inside_quoted_marginal_range"]
     assert output["quoted_upper"] == "27.51"
     assert "sigma" not in output
+
+
+def test_derived_flag_ratio_rejects_inconsistent_fixture():
+    packet, pdg, flag = inputs()
+    flag["averages"][0]["derived_ms_over_md"]["value"] = "20"
+    with pytest.raises(ValueError, match="must follow its published marginals"):
+        comparison.compare(packet, pdg, flag)
 
 
 @pytest.mark.parametrize("mutation", ["control_selection", "producer_chart", "reference_chart", "promotion", "missing_disagreement", "missing_flavor_theory", "criticality_chart"])
