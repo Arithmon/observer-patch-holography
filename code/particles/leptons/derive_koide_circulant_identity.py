@@ -17,8 +17,8 @@ mass ratios.  Outside the positive chamber, physical square roots are
 absolute eigenvalues and the signed-eigenvalue formula is not physical Q.
 
 The artifact also evaluates the historically target-informed MCPR coordinate
-and a compare-only PDG central-mass coordinate.  Neither comparison promotes a
-source-only charged-lepton prediction.
+against PDG central masses and displayed component uncertainties. Neither
+comparison promotes a source-only charged-lepton prediction.
 """
 
 from __future__ import annotations
@@ -70,6 +70,7 @@ EXPECTED_PDG_2026_MASSES_MEV = {
 EXPECTED_PDG_2026_Q = Decimal(
     "0.6666644634026367029382786248892424584933042461962970542137359728464935"
 )
+PDG_2026_LEPTON_SUMMARY = "https://pdg.lbl.gov/2026/tables/rpp2026-sum-leptons.pdf"
 
 
 def sha256_file(path: Path) -> str:
@@ -119,6 +120,88 @@ def measured_central_q(references: dict[str, Any]) -> tuple[Decimal, dict[str, s
         denominator = sum(value.sqrt() for value in masses.values()) ** 2
         q_value = sum(masses.values()) / denominator
     return q_value, {name: decimal_text(value) for name, value in masses.items()}
+
+
+def compare_independent_ratios(
+    mcpr: dict[str, Any], references: dict[str, Any]
+) -> dict[str, Any]:
+    """Compare two independent ratios using displayed PDG mass intervals.
+
+    The intervals are the Cartesian product of separately reported one-standard-
+    uncertainty component ranges, not a joint confidence region. No independence
+    or covariance model is assumed.
+    """
+    with localcontext() as context:
+        context.prec = 70
+        masses: dict[str, tuple[Decimal, Decimal]] = {}
+        for name in ("electron", "muon", "tau"):
+            entry = references["entries"][name]
+            central = Decimal(str(entry["raw_value"]))
+            displayed_central, separator, displayed_error = entry["value_text"].partition(
+                "+-"
+            )
+            if (
+                entry["raw_unit"] != "MeV"
+                or not separator
+                or Decimal(displayed_central) != central
+            ):
+                raise ValueError(
+                    f"Expected displayed PDG 2026 MeV mass and uncertainty for {name}"
+                )
+            uncertainty = Decimal(displayed_error)
+            if uncertainty <= 0 or uncertainty >= central:
+                raise ValueError(f"Invalid displayed PDG uncertainty for {name}")
+            masses[name] = central, uncertainty
+
+        rows: dict[str, Any] = {}
+        for key, numerator in (("m_mu_over_m_e", "muon"), ("m_tau_over_m_e", "tau")):
+            model = Decimal(mcpr["conditional_prediction"]["ratios"][key])
+            numerator_central, numerator_error = masses[numerator]
+            electron_central, electron_error = masses["electron"]
+            central = numerator_central / electron_central
+            low = (numerator_central - numerator_error) / (
+                electron_central + electron_error
+            )
+            high = (numerator_central + numerator_error) / (
+                electron_central - electron_error
+            )
+            relative_residual_ppm = (model / central - 1) * Decimal(1_000_000)
+            envelope_halfwidth_ppm = max(
+                high / central - 1, 1 - low / central
+            ) * Decimal(1_000_000)
+            rows[key] = {
+                "candidate": decimal_text(model),
+                "reference_central": decimal_text(central),
+                "componentwise_one_sigma_interval": [
+                    decimal_text(low),
+                    decimal_text(high),
+                ],
+                "relative_central_residual_ppm": decimal_text(relative_residual_ppm),
+                "conservative_component_interval_halfwidth_ppm": decimal_text(envelope_halfwidth_ppm),
+                "inside_componentwise_one_sigma_interval": low <= model <= high,
+            }
+
+        return {
+            "status": "COMPARE_ONLY_RETROSPECTIVE_MODEL_COORDINATE",
+            "source": PDG_2026_LEPTON_SUMMARY,
+            "interval_basis": (
+                "Cartesian product of the three separately displayed PDG 2026 mass +/- "
+                "one-standard-uncertainty intervals; no covariance or joint confidence "
+                "level is assigned."
+            ),
+            "independent_ratios": rows,
+            "common_scale_under_identity_mass_scheme_necessary_condition_passed": (
+                all(
+                    row["inside_componentwise_one_sigma_interval"]
+                    for row in rows.values()
+                )
+            ),
+            "physical_verdict": (
+                "No physical exclusion or significance follows: the response architecture "
+                "was historically target-informed, its mass scheme has no validated "
+                "pole bridge, and no model uncertainty bound is supplied."
+            ),
+        }
 
 
 def build_artifact() -> dict[str, Any]:
@@ -292,6 +375,9 @@ def build_artifact() -> dict[str, Any]:
                 "diagnostic and not prospective evidence."
             ),
         },
+        "compare_only_PDG_2026_ratio_envelope": compare_independent_ratios(
+            mcpr, references
+        ),
         "phase_controls": {
             "positive_samples": phase_samples,
             "outside_sample": {

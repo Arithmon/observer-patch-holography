@@ -38,6 +38,17 @@ postdiction, separate from the theorem-grade completion lane:
   source-to-mass-response attachment, positivity, refinement, and mass-scheme
   bridge remain open, so the artifact does not promote Koide as a source-only
   OPH prediction.
+- `derive_koide_circulant_identity.py` now compares the two independent MCPR
+  ratios with the [PDG 2026 lepton summary](https://pdg.lbl.gov/2026/tables/rpp2026-sum-leptons.pdf)
+  using the displayed mass uncertainties. Its muon/electron ratio is 0.086506
+  ppm above the PDG central ratio, outside the conservative componentwise
+  one-standard-uncertainty interval (half-width 0.022081 ppm); its tau/electron
+  ratio is inside the much wider tau interval. Under an identity mass-scheme
+  map, no common mass scale can place this fixed candidate triple inside all
+  three displayed component intervals. These are retrospective diagnostics:
+  the architecture was historically target-informed, and neither a physical
+  mass-scheme bridge nor model-error bound is available. The component
+  intervals are not a joint confidence region or a statistical significance.
 - `derive_charged_z3_phase_holonomy_no_go.py` certifies that the arithmetic
   identity `2/9` is not a family-holonomy theorem. Hypercharge acts as a common
   generation phase and does not generate the cyclic family shift.

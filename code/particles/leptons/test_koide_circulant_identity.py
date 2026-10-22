@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from decimal import Decimal
+from decimal import Decimal, localcontext
 
 import derive_koide_circulant_identity as lane
 
@@ -59,6 +59,68 @@ def test_artifact_separates_identity_model_and_comparison() -> None:
     assert "historically target-informed" in artifact[
         "current_MCPR_coordinate"
     ]["provenance"]
+
+
+def test_two_scale_free_ratios_use_displayed_uncertainties() -> None:
+    comparison = lane.build_artifact()["compare_only_PDG_2026_ratio_envelope"]
+    rows = comparison["independent_ratios"]
+    assert set(rows) == {"m_mu_over_m_e", "m_tau_over_m_e"}
+    mu = rows["m_mu_over_m_e"]
+    tau = rows["m_tau_over_m_e"]
+    assert Decimal("0.086") < Decimal(mu["relative_central_residual_ppm"]) < Decimal(
+        "0.087"
+    )
+    assert Decimal("0.022") < Decimal(
+        mu["conservative_component_interval_halfwidth_ppm"]
+    ) < Decimal("0.023")
+    assert mu["inside_componentwise_one_sigma_interval"] is False
+    assert tau["inside_componentwise_one_sigma_interval"] is True
+    assert (
+        comparison[
+            "common_scale_under_identity_mass_scheme_necessary_condition_passed"
+        ]
+        is False
+    )
+    assert "no covariance or joint confidence" in comparison["interval_basis"]
+
+    mcpr = json.loads(lane.MCPR.read_text(encoding="utf-8"))[
+        "conditional_prediction"
+    ]
+    masses = [Decimal(value) for value in mcpr["masses_over_E_star"]]
+    with localcontext() as context:
+        context.prec = 70
+        assert abs(
+            masses[1] / masses[0] - Decimal(mcpr["ratios"]["m_mu_over_m_e"])
+        ) < Decimal("1e-54")
+        assert abs(
+            masses[2] / masses[0] - Decimal(mcpr["ratios"]["m_tau_over_m_e"])
+        ) < Decimal("1e-54")
+
+
+def test_ratio_interval_mutation_fails_closed_without_changing_candidate() -> None:
+    mcpr = json.loads(lane.MCPR.read_text(encoding="utf-8"))
+    reference = json.loads(lane.PDG_REFERENCES.read_text(encoding="utf-8"))
+    original = lane.compare_independent_ratios(mcpr, reference)
+    assert (
+        original["independent_ratios"]["m_mu_over_m_e"][
+            "inside_componentwise_one_sigma_interval"
+        ]
+        is False
+    )
+
+    # A wider reported muon uncertainty changes this componentwise comparison
+    # while preserving the frozen candidate and the tau ratio.
+    reference["entries"]["muon"]["value_text"] = "105.6583755+-0.0000100"
+    widened = lane.compare_independent_ratios(mcpr, reference)
+    assert (
+        widened["independent_ratios"]["m_mu_over_m_e"][
+            "inside_componentwise_one_sigma_interval"
+        ]
+        is True
+    )
+    assert widened["independent_ratios"]["m_tau_over_m_e"] == original[
+        "independent_ratios"
+    ]["m_tau_over_m_e"]
 
 
 def test_committed_artifact_is_byte_exact() -> None:

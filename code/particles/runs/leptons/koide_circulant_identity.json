@@ -50,6 +50,37 @@
     "significance_claimed": false,
     "note": "The current PDG central masses give Q near the MCPR coordinate, not 0.666660511. The MCPR architecture was historically target-informed, so this near-equality is a diagnostic and not prospective evidence."
   },
+  "compare_only_PDG_2026_ratio_envelope": {
+    "status": "COMPARE_ONLY_RETROSPECTIVE_MODEL_COORDINATE",
+    "source": "https://pdg.lbl.gov/2026/tables/rpp2026-sum-leptons.pdf",
+    "interval_basis": "Cartesian product of the three separately displayed PDG 2026 mass +/- one-standard-uncertainty intervals; no covariance or joint confidence level is assigned.",
+    "independent_ratios": {
+      "m_mu_over_m_e": {
+        "candidate": "206.768300595180971740336250438069337267297486181700623840391",
+        "reference_central": "206.7682827084671796902080640552322774868514476087915663034803090115911",
+        "componentwise_one_sigma_interval": [
+          "206.7682781427377954077456987013694570288959723409185547450131325450646",
+          "206.7682872741965668318414736060103821912246540597606577241046217535761"
+        ],
+        "relative_central_residual_ppm": "0.086506080902502294928068645955786559745951458372196515543051481000000",
+        "conservative_component_interval_halfwidth_ppm": "0.022081381763851474800434487427614876221058272324559463866031678000000",
+        "inside_componentwise_one_sigma_interval": false
+      },
+      "m_tau_over_m_e": {
+        "candidate": "3477.36553659602259125062917777770871085134755874859290220748",
+        "reference_central": "3477.365261906346322795029299515057287954526073510282182141284819318148",
+        "componentwise_one_sigma_interval": [
+          "3477.189135211313516535373528546257288269733832076810026194205443543329",
+          "3477.541388601489423884746936057469636463129900119249076611210237117040"
+        ],
+        "relative_central_residual_ppm": "0.078993621773821482154416159678387731210060623717615215042049581000000",
+        "conservative_component_interval_halfwidth_ppm": "50.64946644303499644797927974625323968594251551877902848162406948700000",
+        "inside_componentwise_one_sigma_interval": true
+      }
+    },
+    "common_scale_under_identity_mass_scheme_necessary_condition_passed": false,
+    "physical_verdict": "No physical exclusion or significance follows: the response architecture was historically target-informed, its mass scheme has no validated pole bridge, and no model uncertainty bound is supplied."
+  },
   "phase_controls": {
     "positive_samples": [
       {
