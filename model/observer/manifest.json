@@ -11,12 +11,13 @@
     "COHERENT_CONTINUATION.md": "dae3258e3fcc77b0acd432c3ce40f962b4fd8d99971f2460633a3977653ab94c",
     "DERIVATION.md": "aa61b65e22f538c35eb9b8fe9d991de8f03695b02af9b71bad1870a3362b51d1",
     "QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
-    "README.md": "4d76ae0f9503c7d7660d2b22427314182f0fcb6df35b9e523fad34355a7d2c8e",
+    "README.md": "3f07db572b54a4f8cf3e42c469723654d132c15dea68c8a1ad545f4367bc5673",
     "RECORD_RECOVERY.md": "2ccc526b67c821eb90cc973cf4055d2ab7d4868052b3e6ff08f5647a2b353ba8",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
     "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
     "coherent_continuation.py": "75c9442fb9a54c78af1e932b3b27011c539a9843cc2fcf33076a594a5e619091",
+    "family_port_identifiability.py": "f55cda0106c7ef2a98467ff49eac62f1ebe95f52339eb585fa4b9a669b43c21b",
     "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
     "quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
@@ -27,6 +28,7 @@
     "record_recovery_source.py": "073f177533cf35d6eda9aeffb72205575e9acd80d226ad61f6a6542d48fe371d",
     "results/capacity.json": "373c6558dda5bef7250170876f28aba091c264479db6ef754b23e109b3140680",
     "results/coherent_continuation.json": "4816f49e424046c6d4c09b2bc080ea044271f7986eb281538e84de6f6299f0a6",
+    "results/family_port_identifiability.json": "be73276a1b69d758be286f72d694bcee5566df6f834e0c6f339a0c2997902b8d",
     "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
     "results/quantum_mixing.json": "8f2e18b461437b76b4aa10a653d0c8fa2510b6cf1f66b59f64785be4d0356f30",
     "results/record_recovery.json": "a09f0c771fdd7d598d008f904b3b27f83d23d7bac48fa7eaec60a8f314ce2ca9",
@@ -35,6 +37,7 @@
     "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
     "source_selection.py": "70cd5fa0aa3613e42016172ca130d6a4275aaa7f71019bdaba11e5fcfd43b7b7",
     "test_coherent_continuation.py": "2946524ee379b46f03c50f6a75f02d8b04904462488c5f1c8b6935b45340c1d5",
+    "test_family_port_identifiability.py": "c7a5ca0d676dd85fb2c907b67063a3dcfffe20f0b073139dfd92124dfe9b637f",
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
     "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7",
@@ -56,7 +59,9 @@
     "python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json",
     "python3 -m model.observer.record_recovery_receipt --check model/observer/results/record_recovery.json",
     "python3 -m model.observer.coherent_continuation --check model/observer/results/coherent_continuation.json",
-    "python3 -m model.observer.source_selection --check model/observer/results/source_selection.json"
+    "python3 -m model.observer.source_selection --check model/observer/results/source_selection.json",
+    "python3 -m model.observer.family_port_identifiability --check model/observer/results/family_port_identifiability.json",
+    "python3 -m unittest model.observer.test_family_port_identifiability -v"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }

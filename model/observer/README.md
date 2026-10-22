@@ -59,6 +59,25 @@ coherent read's label is not a native current. See the
 [three selection obligations](../SOURCE_SELECTION.md) for the interface
 boundary and the separately verified symmetry constraints.
 
+The [family-port identifiability audit](family_port_identifiability.py) tests
+the fixed two-event current recorder against the exact icosahedral `W5`
+projector in the
+[charged-family frontier](../../code/particles/leptons/README.md#scoped-non-identifiability-and-exact-port-frontier).
+Binary loads
+on spectator ports `(4,7)` and `(4,8)` give the same complete coin/current
+tape law, while their `W5` norms squared are `5/3` and `2/3`. An admitted,
+separately labelled native `(7,8)` seam attempt distinguishes them. With
+fresh identical preparations, the complete coin/current laws for all thirty
+labelled native seams recover every one of the 78 possible load vectors
+exactly: the two coin currents sum to each edge contrast, and the connected
+seam graph plus conserved total fixes the loads. Thus port-resolved probing
+does provide a `W5` observable of the load preparation, while the fixed
+record-only controller does not. Identifying that load observable with the
+charged defect record remains open. Repeatable preparation, all-seam access
+and the complete branch law are declared inputs; the full final load register
+is another stronger readout. Neither protocol selects a charged-family
+operator, coupling or mass.
+
 ## Run from the repository root
 
 The native observer commands use the Python standard library. The capacity
@@ -70,6 +89,10 @@ as does the complete-record recovery replay for its source-word execution.
 ```sh
 # Exhaustive exact construction: 78 source states, 264 benchmark histories.
 python3 -m model.observer native --check model/observer/results/native.json
+
+# Exact record-law versus charged-family port-information check.
+python3 -m model.observer.family_port_identifiability \
+  --check model/observer/results/family_port_identifiability.json
 
 # Exact full-channel reduction, gap and quantum-memory certificates.
 python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json
@@ -192,6 +215,7 @@ model/observer/results/record_recovery.json` to replay the complete evidence.
 | File | Role |
 | --- | --- |
 | [native.py](native.py) | Native repair, fixed controller, exact quantum and history checks |
+| [family_port_identifiability.py](family_port_identifiability.py) | Exact native-record / W5 port-information boundary and native probe control |
 | [capacity.py](capacity.py) | Existing capacity-evaluator adapter and compact controller |
 | [simulate.py](simulate.py) | Seeded sequential execution, forecasts and paired controls |
 | [results/native.json](results/native.json) | All exact benchmark histories and 18 calculation checks |
