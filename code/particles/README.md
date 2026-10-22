@@ -13,6 +13,16 @@ outside the displayed PDG componentwise one-sigma interval under an identity
 pole-mass map; the Higgs/top and quark coordinates do not yet have a common
 physical mass attachment. Each ledger row reads its owning artifact.
 
+The executable observer supplies a [finite port-information
+boundary](../../model/observer/README.md): its fixed two-event tape does not
+determine the load `W5` projection, while ideal labelled all-seam records do
+under repeatable preparation. A [current-record spectrum](../../model/native_effective_fields/README.md)
+recovers two exact relaxation poles and a dimensionless decay-rate ratio under
+a declared uniform scheduler. The [modular-clock scale
+check](../../model/transfer_modular_probe/README.md) shows that assigning
+seconds to native events remains free. These are target-free native diagnostics,
+not selected charged-family operators, particle mass ratios or absolute masses.
+
 ## Scope
 
 The goal is to keep one auditable derivation surface from the OPH inputs
