@@ -24,6 +24,7 @@ python3 sl2f5_mckay_e8_certificate.py verify         # exact McKay graph of the 
 python3 verify_galois_port_frame_independent.py    # incidence-derived two-frame geometry and exact degrees 1/7
 python3 galois_source_response_control.py          # bounded non-selection under complete source-law conjugation
 python3 source_repair_generator_certificate.py     # exact seam-law classification and source-receipt boundary
+python3 native_defect_stability_gate.py             # native flatness versus declared puncture/flux protection
 python3 verify_source_repair_generator_independent.py  # independent incidence, invariant-weight and receipt checks
 python3 source_current_tomography_stage0.py verify    # source-current tomography Stage 0 baseline pins
 python3 source_current_tomography_stage1_contract.py verify  # Stage 1 admissibility contract
@@ -140,6 +141,23 @@ and zero-sum relation system. The carrier does not select those relations
 or identify its order-six loop class with the complete current and matter
 kernel. The physical global-form gate therefore remains false, alongside
 the open four-dimensional and laboratory attachments.
+
+`native_defect_stability_gate.py` checks the executable observer against this
+finite flux construction. The closed twelve-port carrier has Euler
+characteristic two, five-cycle vertex links and trivial first homology over
+both `F2` and `F3`. Deleting one declared face leaves first homology trivial;
+deleting an antipodal pair gives one `Z6`-valued loop generator. All 78 native
+load preparations and 4,680 ideal all-seam coin/current branches give zero
+face flux because the measured contrast is a port-potential gradient. A
+separately declared `Z6` link chain has opposite puncture fluxes and is flat
+on the other faces. The same first-homology dimensions persist through one exact
+edge-midpoint refinement (42 ports, 120 seams, 80 faces); this does not
+transport the coarse link connection or define native repair on child cells.
+In a link model allowing single-seam updates across the puncture-boundary
+seams, the pair can be moved together and annihilated.
+Those link updates are not native repair. Gauge invariance of the conditional
+flux certificate does not by itself supply a core-protection law or select a
+physical defect.
 
 `claim_boundary_certificates.py` records five exact-small controls at this
 boundary: completion non-identifiability from the current source reduct, the
