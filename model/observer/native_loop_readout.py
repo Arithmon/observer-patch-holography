@@ -12,10 +12,15 @@ import argparse
 from fractions import Fraction as Q
 import hashlib
 import json
+import math
 from pathlib import Path
+
+import numpy as np
 
 from model.common_source import slow_geometry
 from model.observer import native
+from model.observer.source_discrimination import circuit
+from model.observer.source_scalar import compiler
 
 
 HERE = Path(__file__).resolve().parent
@@ -125,6 +130,118 @@ def binary_transfer(seams: tuple[tuple[int, int], ...]) -> tuple[list[list[int]]
     return counts, triangle
 
 
+def same_endpoint_phase_readout() -> dict:
+    """Source-execute a declared eraser on the fixed observer's two-event tape.
+
+    This is a phase-sensitive *path-record* control, not a carrier face-loop
+    holonomy. The first coin is committed in the fixed observer; the eraser
+    requires keeping that register coherent until its final source read.
+    """
+    loads = tuple(int(i in (1, 11)) for i in range(12))
+    paths = [(first_weight * second_weight, last)
+             for first_weight, first in native.tick(native.State(loads))
+             for second_weight, last in native.tick(first)]
+    if len(paths) != 4 or any(weight != Q(1, 4) for weight, _ in paths):
+        raise ArithmeticError("fixed native path probabilities changed")
+
+    # Little-endian tape: c1, two C current bits, c2, two C current bits.
+    # The current-code dictionary is the one used by the source-executed C
+    # dilation. The final source state is retained as a separate fibre.
+    def code(word: tuple[tuple[int, int], ...]) -> int:
+        return sum((coin << (3 * event))
+                   + (circuit.CURRENT_CODES[current] << (3 * event + 1))
+                   for event, (coin, current) in enumerate(word))
+
+    endpoints: dict[tuple[int, ...], np.ndarray] = {}
+    for weight, last in paths:
+        assert weight == Q(1, 4)
+        vector = endpoints.setdefault(last.loads, np.zeros(64, dtype=complex))
+        record = code(last.prefix)
+        if vector[record] != 0:
+            raise ArithmeticError("native record histories collided before readout")
+        vector[record] = .5  # the native isometry's positive square-root weight
+    returning = [(code(last.prefix), last.prefix)
+                 for _, last in paths if last.loads == loads]
+    if returning != [
+        (0, ((0, 0), (0, 0))),
+        (21, ((1, -1), (0, 1))),
+    ]:
+        raise ArithmeticError("same-endpoint native record words changed")
+
+    # Recode only the second returning word to |1>, then use the ordinary
+    # source-compiled real mixer to read |0> +/- |1>. The scalar first-coin
+    # phase is another executable source word. Neither service is selected
+    # by the committed native observer.
+    phase = [compiler.pulse("Z", math.pi / 2, [0]),
+             compiler.pulse("I", -math.pi / 2, [0])]
+    eraser = (circuit.basis_swap_word(returning[1][0], 1, 6)
+              + [compiler.pulse("Y", math.pi / 4, [0])])
+    source_rows = {}
+    for label, word in (("base", eraser), ("first_coin_phase", phase + eraser)):
+        outputs = {endpoint: compiler.execute(word, 6, vector)
+                   for endpoint, vector in endpoints.items()}
+        mass = sum(float(np.vdot(v, v).real) for v in outputs.values())
+        target = (Q(1, 2), Q(0)) if label == "base" else (Q(0), Q(1, 2))
+        returned = tuple(float(abs(outputs[loads][bit]) ** 2) for bit in (0, 1))
+        remainder = sum(float(abs(value) ** 2)
+                        for endpoint, vector in outputs.items()
+                        for bit, value in enumerate(vector)
+                        if endpoint != loads or bit not in (0, 1))
+        if (abs(mass - 1) > 2e-10 or
+                max(abs(returned[bit] - float(target[bit])) for bit in (0, 1)) > 2e-10 or
+                abs(remainder - .5) > 2e-10):
+            raise ArithmeticError("source pulse word lost a path or the phase contrast")
+        source_rows[label] = {
+            "exact_returning_plus_minus_probabilities": list(map(str, target)),
+            "other_endpoint_probability": "1/2",
+            "all_outcome_probability_mass_within_2e_10": abs(mass - 1) <= 2e-10,
+            "source_readout_probability_residual_below_2e_10": all(
+                abs(returned[bit] - float(target[bit])) <= 2e-10 for bit in (0, 1)),
+        }
+    # First-coin Z multiplies each complete committed branch by a scalar.
+    # This identity holds for arbitrary source/reference input and survives
+    # any later adaptive classical control on the first recorded coin.
+    committed = {last.prefix: weight for weight, last in paths}
+    if len(committed) != 4 or sum(committed.values(), Q(0)) != 1:
+        raise ArithmeticError("the complete native current law changed")
+    phase_branch_counts = {}
+    for law in ("C", "E"):
+        signs: dict[tuple[int, ...], set[int]] = {}
+        branches = 0
+        for initial in native.states():
+            for _, first in native.tick(native.State(initial)):
+                first_seam = native.E
+                first_label = (first.prefix[0][1] if law == "C" else
+                               initial[first_seam[0]] - initial[first_seam[1]])
+                second_seam = native.selected_seam(first)
+                for _, last in native.tick(first):
+                    second_label = (last.prefix[1][1] if law == "C" else
+                                    first.loads[second_seam[0]] - first.loads[second_seam[1]])
+                    key = (first.prefix[0][0], first_label, *second_seam,
+                           last.prefix[1][0], second_label)
+                    signs.setdefault(key, set()).add(1 - 2 * first.prefix[0][0])
+                    branches += 1
+        if branches != 312 or any(len(values) != 1 for values in signs.values()):
+            raise ArithmeticError("first-coin phase is not scalar on a complete committed branch")
+        phase_branch_counts[law] = branches
+    return {
+        "first_and_second_seams_on_both_returning_paths": [list(native.E), list(native.E)],
+        "returning_tape_words": [[list(record) for record in word] for _, word in returning],
+        "returning_tape_codes": [value for value, _ in returning],
+        "all_four_committed_word_probabilities": {
+            str(code(word)): str(weight) for word, weight in sorted(committed.items())},
+        "first_coin_scalar_phase_leaves_every_committed_CP_branch_unchanged": True,
+        "complete_C_E_adaptive_branches_checked": phase_branch_counts,
+        "source_pulse_counts": {"first_coin_phase": len(phase), "record_eraser": len(eraser)},
+        "source_executed_eraser": source_rows,
+        "read_code_is_a_declared_coherent_tape_analyzer_not_a_native_current": True,
+        "phase_selected_by_committed_native_records": False,
+        "carrier_face_loop_or_nontrivial_link_holonomy": False,
+        "reversed_seam_pair_has_unit_wilson_product_for_any_U1_link_assignment": True,
+        "physical_defect_or_mass_identification": False,
+    }
+
+
 def run() -> dict:
     seams, faces = carrier()
     cycles, chords = cycle_basis(seams)
@@ -223,6 +340,7 @@ def run() -> dict:
                 "probability_each": "1/4",
                 "relative_phase_readout_in_committed_tape": False,
             },
+            "coherent_path_record_control": same_endpoint_phase_readout(),
         },
         "scope": (
             "Exact native current records select a flat additive port contrast, not a "
@@ -230,8 +348,11 @@ def run() -> dict:
             "traverse a carrier face. The ideal all-seam protocol and uniform-seam "
             "transfer are separate declared protocols; their flat/balanced outputs "
             "do not rule out a different coherent source-derived holonomy. A "
-            "record-accessible relative phase, path composition, protected flux "
-            "sector and continuum spectral pole remain unconstructed."
+            "record-accessible relative phase in the fixed committed interface, "
+            "geometric path composition, protected flux sector and continuum "
+            "spectral pole remain unconstructed. A declared coherent tape "
+            "eraser distinguishes scalar branch phases on the two returning "
+            "E/E paths; this is not a carrier-loop holonomy."
         ),
         "all_pass": True,
     }

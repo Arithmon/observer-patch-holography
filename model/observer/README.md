@@ -71,8 +71,16 @@ reversible on all 66 states, so its transition-probability cycle affinities
 also vanish. Neither result excludes a future coherent repair transport with
 a measurable path phase. The fixed two-event E/F recorder encloses no carrier
 face. Two different retained tape words can return the same source load, but
-their record labels remain orthogonal; the coherent read above is not a
-same-endpoint path comparison.
+their record labels remain orthogonal in the committed observer. A declared
+2,707-pulse source tape eraser now compares those paths **if the tape is kept
+coherent**: its returning plus/minus probabilities are `(1/2,0)` and become
+`(0,1/2)` after a two-pulse first-coin phase, while all four committed
+native word probabilities remain `1/4`. Both returning paths use E twice;
+one is stationary and the other moves out and back. Their geometric link
+product is one for any `U(1)` connection, so this is a path-record phase
+test, not a face holonomy or protected defect. Coherent tape access, the
+eraser, the relative branch phase and its read-code interpretation are
+additional interface choices; the committed recorder selects none of them.
 
 The [family-port identifiability audit](family_port_identifiability.py) tests
 the fixed two-event current recorder against the exact icosahedral `W5`
