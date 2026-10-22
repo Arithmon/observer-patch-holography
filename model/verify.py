@@ -119,6 +119,8 @@ REPLAYS = (
     ("model.observer.source_selection", None, "model/observer/results/source_selection.json"),
     ("model.observer.family_port_identifiability", None,
      "model/observer/results/family_port_identifiability.json"),
+    ("model.observer.native_loop_readout", None,
+     "model/observer/results/native_loop_readout.json"),
     ("model.observer.coherent_continuation", None, "model/observer/results/coherent_continuation.json"),
     ("model.observer", "native", "model/observer/results/native.json"),
     ("model.observer.quantum_mixing_receipt", None, "model/observer/results/quantum_mixing.json"),

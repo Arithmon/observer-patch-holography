@@ -59,6 +59,21 @@ coherent read's label is not a native current. See the
 [three selection obligations](../SOURCE_SELECTION.md) for the interface
 boundary and the separately verified symmetry constraints.
 
+The [native loop-readout gate](native_loop_readout.py) checks what the current
+records themselves provide for a holonomy construction. Under ideal fresh
+preparation and both coin-conditioned reads on all thirty labelled seams,
+the measured edge contrast is exactly `j_0(a,b)+j_1(a,b)=n_a-n_b` on all 78
+native total-two loads. Its nineteen independent carrier-loop sums and twenty
+face-loop sums vanish. Thus every `U(1)` character of this **additive contrast**
+is pure gauge and has unit loop holonomy; a single modified chord is detected
+as a nonnative flux control. The separate uniform-seam binary transfer is
+reversible on all 66 states, so its transition-probability cycle affinities
+also vanish. Neither result excludes a future coherent repair transport with
+a measurable path phase. The fixed two-event E/F recorder encloses no carrier
+face. Two different retained tape words can return the same source load, but
+their record labels remain orthogonal; the coherent read above is not a
+same-endpoint path comparison.
+
 The [family-port identifiability audit](family_port_identifiability.py) tests
 the fixed two-event current recorder against the exact icosahedral `W5`
 projector in the
@@ -107,6 +122,10 @@ python3 -m model.observer native --check model/observer/results/native.json
 # Exact record-law versus charged-family port-information check.
 python3 -m model.observer.family_port_identifiability \
   --check model/observer/results/family_port_identifiability.json
+
+# Exact native contrast, carrier-loop and transition-cycle gate.
+python3 -m model.observer.native_loop_readout \
+  --check model/observer/results/native_loop_readout.json
 
 # Exact full-channel reduction, gap and quantum-memory certificates.
 python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json
@@ -230,6 +249,7 @@ model/observer/results/record_recovery.json` to replay the complete evidence.
 | --- | --- |
 | [native.py](native.py) | Native repair, fixed controller, exact quantum and history checks |
 | [family_port_identifiability.py](family_port_identifiability.py) | Exact native-record / W5 port-information boundary and native probe control |
+| [native_loop_readout.py](native_loop_readout.py) | Exact current-contrast loop and stochastic cycle checks on the native carrier |
 | [capacity.py](capacity.py) | Existing capacity-evaluator adapter and compact controller |
 | [simulate.py](simulate.py) | Seeded sequential execution, forecasts and paired controls |
 | [results/native.json](results/native.json) | All exact benchmark histories and 18 calculation checks |
