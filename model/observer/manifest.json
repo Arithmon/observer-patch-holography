@@ -11,7 +11,7 @@
     "COHERENT_CONTINUATION.md": "dae3258e3fcc77b0acd432c3ce40f962b4fd8d99971f2460633a3977653ab94c",
     "DERIVATION.md": "aa61b65e22f538c35eb9b8fe9d991de8f03695b02af9b71bad1870a3362b51d1",
     "QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
-    "README.md": "6ebcb421ba91f03edda3e5db2ffd83a31ab669cfa7fa4787ca4d7af01afb47b2",
+    "README.md": "6b7a8ff98c6990622dfb05878f46e24e691bfff93ec6e78366cf6dc28e305ebc",
     "RECORD_RECOVERY.md": "2ccc526b67c821eb90cc973cf4055d2ab7d4868052b3e6ff08f5647a2b353ba8",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
@@ -19,6 +19,7 @@
     "coherent_continuation.py": "75c9442fb9a54c78af1e932b3b27011c539a9843cc2fcf33076a594a5e619091",
     "family_port_identifiability.py": "7d53ebb68ba57766daa8d9eb648e48099989e91661af79697d5232921c9564b7",
     "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "native_link_selection.py": "e35e3e1d09ccbc4e0bc07629628ee34ce7f3a63c6264203d819f1a192eedf398",
     "native_loop_readout.py": "f92c403cd7d3da41dfdd1b6ef552d450627d7272c11599479249943dc8c7b0e4",
     "quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
     "quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
@@ -31,6 +32,7 @@
     "results/coherent_continuation.json": "4816f49e424046c6d4c09b2bc080ea044271f7986eb281538e84de6f6299f0a6",
     "results/family_port_identifiability.json": "9b0c287671a6c34356e255dc0ed61ab588ce0a361d27d7803641686136ea460e",
     "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
+    "results/native_link_selection.json": "cde94fe7aa43cdc6bcaf8f0eb890591dea7e8a8e526c3ac01ec1f6343618c4ab",
     "results/native_loop_readout.json": "fca90c9020b691d9d2d12f4382730feffe70f216732b8eb393e2a04220d113e1",
     "results/quantum_mixing.json": "8f2e18b461437b76b4aa10a653d0c8fa2510b6cf1f66b59f64785be4d0356f30",
     "results/record_recovery.json": "a09f0c771fdd7d598d008f904b3b27f83d23d7bac48fa7eaec60a8f314ce2ca9",
@@ -40,6 +42,7 @@
     "source_selection.py": "70cd5fa0aa3613e42016172ca130d6a4275aaa7f71019bdaba11e5fcfd43b7b7",
     "test_coherent_continuation.py": "2946524ee379b46f03c50f6a75f02d8b04904462488c5f1c8b6935b45340c1d5",
     "test_family_port_identifiability.py": "a0c9e320fa89afa310e737f4d89eb396443635a6802fbd6c3aaf6afa626eb248",
+    "test_native_link_selection.py": "c027e4f6395ca0219d75957c1f2294c9ae7f2bfed5ff89c4f283b4c2ec683cee",
     "test_native_loop_readout.py": "5bc44af191f917b1543c2e31a7f244334797bf61e1b65d0ad97c3d3d09a30120",
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
@@ -66,7 +69,9 @@
     "python3 -m model.observer.family_port_identifiability --check model/observer/results/family_port_identifiability.json",
     "python3 -m unittest model.observer.test_family_port_identifiability -v",
     "python3 -m model.observer.native_loop_readout --check model/observer/results/native_loop_readout.json",
-    "python3 -m unittest model.observer.test_native_loop_readout -v"
+    "python3 -m unittest model.observer.test_native_loop_readout -v",
+    "python3 -m model.observer.native_link_selection --check model/observer/results/native_link_selection.json",
+    "python3 -m unittest model.observer.test_native_link_selection -v"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }

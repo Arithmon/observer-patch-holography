@@ -11,11 +11,19 @@ measurements of a native holonomy.
 """
 from __future__ import annotations
 
+import argparse
 from fractions import Fraction as F
+import hashlib
 from itertools import product
+import json
+from pathlib import Path
 
 from model.common_source import slow_geometry
 from model.observer import native
+
+
+HERE = Path(__file__).resolve().parent
+DEFAULT_RECEIPT = HERE / "results" / "native_link_selection.json"
 
 
 def _branches(loads, seam, law):
@@ -161,6 +169,8 @@ def run():
             raise ArithmeticError("uniform moving-branch phase altered the even loop")
 
     return {
+        "schema": "oph.native_link_selection.v1",
+        "status": "COMMITTED_NATIVE_LINK_PHASE_UNSELECTED",
         "native_states": len(states),
         "native_seams": len(seams),
         "oriented_triangular_faces": len(faces),
@@ -178,5 +188,33 @@ def run():
         "all_minus_phase_rule_depends_on_port_labels": False,
         "source_selected_or_observed_native_link_holonomy": False,
         "scope": "A coherent branch-phase interface can distinguish these completions, "
-                 "but committed native C/E repair and its current records do not select one.",
+                 "but committed native C/E repair and its current records do not select one. "
+                 "The full 78-state matrix-unit test and the one-token number-sector "
+                 "extension are distinct domains.",
+        "all_pass": True,
     }
+
+
+def canonical(payload):
+    return json.dumps(payload, indent=2, sort_keys=True) + "\n"
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--check", type=Path, default=DEFAULT_RECEIPT)
+    group.add_argument("--write", type=Path)
+    args = parser.parse_args()
+    encoded = canonical(run())
+    if args.write is not None:
+        with args.write.open("x", encoding="utf-8") as stream:
+            stream.write(encoded)
+    elif args.check.read_text(encoding="utf-8") != encoded:
+        raise SystemExit("Native link-selection receipt mismatch")
+    print(json.dumps({"all_pass": True, "sha256": hashlib.sha256(encoded.encode()).hexdigest()},
+                     sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

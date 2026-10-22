@@ -1,6 +1,7 @@
 """Exact controls for selecting a phase-sensitive native seam transport."""
 from __future__ import annotations
 
+from pathlib import Path
 import unittest
 
 from model.observer import native, native_link_selection as selection
@@ -34,6 +35,10 @@ class NativeLinkSelectionTests(unittest.TestCase):
         self.assertEqual(result["two_face_0_1_5_11_0_loop_product_in_both_completions"], "+1")
         self.assertFalse(result["two_face_even_loop_detects_uniform_pi_per_triangle"])
         self.assertFalse(result["source_selected_or_observed_native_link_holonomy"])
+        self.assertTrue(result["all_pass"])
+        self.assertEqual(result["schema"], "oph.native_link_selection.v1")
+        receipt = Path(__file__).with_name("results") / "native_link_selection.json"
+        self.assertEqual(receipt.read_text(encoding="utf-8"), selection.canonical(result))
 
     def test_moving_branch_is_partial_isometry_not_two_port_unitary(self):
         for law in ("C", "E"):

@@ -83,8 +83,9 @@ eraser, the relative branch phase and its read-code interpretation are
 additional interface choices; the committed recorder selects none of them.
 
 The [native link-selection gate](native_link_selection.py) checks the full
-recorded C/E map on `2 × 78²` matrix units. A selected one-token moving
-branch is a rank-one transfer, not an invertible two-port transport. Giving
+recorded C/E map on `2 × 78²` total-two matrix units. In the separately
+executed one-token number-sector extension, a selected moving branch is a
+rank-one transfer, not an invertible two-port transport. Giving
 every nonzero-current branch an additional sign leaves both complete
 committed instruments unchanged, including arbitrary reference inputs; the
 all-plus and all-minus choices instead give face products `+1` and `-1` on
@@ -150,6 +151,8 @@ python3 -m model.observer.native_loop_readout \
   --check model/observer/results/native_loop_readout.json
 
 # Exact full-instrument versus candidate coherent-link phase gate.
+python3 -m model.observer.native_link_selection \
+  --check model/observer/results/native_link_selection.json
 python3 -m unittest model.observer.test_native_link_selection -v
 
 # Exact full-channel reduction, gap and quantum-memory certificates.
