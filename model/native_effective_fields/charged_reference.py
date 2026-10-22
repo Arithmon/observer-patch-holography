@@ -129,3 +129,86 @@ def reference_readout_scope(seams):
         'reference_preparation_or_analyzer_implemented_by_current_observer': False,
         'physical_charged_spectral_pole_or_rest_energy_identified': False,
     }
+
+
+def charged_spatial_pole_gate(seams):
+    """Exact source C/E charge-one two-point block versus token transport.
+
+    Every visible-current branch is checked separately. The local result then
+    extends to any finite, possibly adaptive, sequence of native seam choices:
+    a scalar multiple of |one_i><vac| never becomes |one_j><vac| for j != i.
+    The uniform-seam rates and population comparison are separate consequences.
+    """
+    seams = tuple(seams)
+    ports = {port for seam in seams for port in seam}
+    if (len(seams) != 30 or len(set(seams)) != 30 or ports != set(range(12))
+            or any(type(seam) is not tuple or len(seam) != 2
+                   or any(type(port) is not int for port in seam) for seam in seams)):
+        raise ValueError('the native thirty-seam twelve-port carrier is required')
+    degrees = {port: sum(port in seam for seam in seams) for port in ports}
+    if set(degrees.values()) != {5}:
+        raise ArithmeticError('the native five-regular carrier changed')
+
+    signed_difference_checks = 0
+    for law, seam in product(('C', 'E'), seams):
+        a, b = seam
+        for left_local, right_local, current in product(range(4), range(4), CURRENT_VALUES):
+            left = ((left_local & 1) << a) | (((left_local >> 1) & 1) << b)
+            right = ((right_local & 1) << a) | (((right_local >> 1) & 1) << b)
+            signed = tuple(((left >> port) & 1)-((right >> port) & 1) for port in seam)
+            for output_left, output_right in quantum.native_unit(law, left, right, seam, current):
+                if tuple(((output_left >> port) & 1)-((output_right >> port) & 1)
+                         for port in seam) != signed:
+                    raise ArithmeticError('a native current branch transported signed charge')
+            signed_difference_checks += 1
+
+    rates = {}
+    checked = 0
+    for law in ('C', 'E'):
+        for port in sorted(ports):
+            for seam in seams:
+                incident = port in seam
+                scalar = (F(1, 2) if law == 'C' else F(0)) if incident else F(1)
+                for current in CURRENT_VALUES:
+                    expected = {(1 << port, 0): scalar} if scalar and current == 0 else {}
+                    actual = quantum.native_unit(law, 1 << port, 0, seam, current)
+                    if actual != expected:
+                        raise ArithmeticError('a charged current branch changed port or coefficient')
+                    checked += 1
+        rate = F(1)-F(5, 2*len(seams)) if law == 'C' else F(1)-F(5, len(seams))
+        rates[law] = str(rate)
+
+    # The diagonal one-token sector is a different block of the same exact
+    # native instrument. It moves with probability 1/60 across each seam.
+    population_edges = 0
+    for source in sorted(ports):
+        column = defaultdict(F)
+        for seam in seams:
+            for (left, right), weight in quantum.native_unit('C', 1 << source, 1 << source, seam).items():
+                if left != right or left.bit_count() != 1:
+                    raise ArithmeticError('one-token population left its sector')
+                column[left.bit_length()-1] += weight/len(seams)
+        expected = {port: F(1, 60) for port in ports if port != source and
+                    any({source, port} == set(seam) for seam in seams)}
+        expected[source] = F(11, 12)
+        if dict(column) != expected or sum(column.values(), F(0)) != 1:
+            raise ArithmeticError('native one-token population transport changed')
+        population_edges += len(expected)-1
+
+    return {
+        'all_current_resolved_charge_one_columns_checked': checked,
+        'all_current_resolved_endpoint_signed_difference_columns_checked': signed_difference_checks,
+        'portwise_signed_difference_preserved_under_native_current_words': True,
+        'any_current_word_or_adaptive_seam_schedule_preserves_charge_one_port': True,
+        'charged_two_point_all_lags': 'G_ij(n)=delta_ij r_L^n; n is uniform native attempts',
+        'charged_two_point_generating_function': 'G_ij(z)=delta_ij/(1-z r_L)',
+        'charged_two_point_rates_C_E': rates,
+        'scalar_temporal_Hankel_positive_form': 'sum_i |sum_n a_(i,n) r_L^n|^2 >= 0',
+        'full_Osterwalder_Schrader_axioms_verified': False,
+        'spatial_band_in_graph_laplacian_basis': 'flat r_L on all 12 modes',
+        'one_token_population_directed_neighbor_entries': population_edges,
+        'one_token_population_transition_per_neighbor': '1/60',
+        'positive_speed_particle_dispersion_from_this_charge_one_block': False,
+        'native_attempt_count_is_calibrated_physical_time': False,
+        'charged_field_quantum_numbers_or_CAR_selected': False,
+    }

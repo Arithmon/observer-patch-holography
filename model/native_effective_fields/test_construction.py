@@ -243,6 +243,67 @@ def test_relational_charge_readout_separates_coherence_from_current_records():
     assert not result['physical_charged_spectral_pole_or_rest_energy_identified']
 
 
+def test_charge_one_two_point_is_spatially_pinned_while_native_population_moves():
+    seams = c.source_kernel().seams
+    result = charged_reference.charged_spatial_pole_gate(seams)
+    assert result['all_current_resolved_charge_one_columns_checked'] == 2*12*30*3
+    assert result['all_current_resolved_endpoint_signed_difference_columns_checked'] == 2*30*16*3
+    assert result['portwise_signed_difference_preserved_under_native_current_words']
+    assert result['any_current_word_or_adaptive_seam_schedule_preserves_charge_one_port']
+    assert result['one_token_population_directed_neighbor_entries'] == 60
+    assert result['one_token_population_transition_per_neighbor'] == '1/60'
+    assert result['charged_two_point_rates_C_E'] == {'C': '11/12', 'E': '5/6'}
+    assert not result['positive_speed_particle_dispersion_from_this_charge_one_block']
+    assert not result['native_attempt_count_is_calibrated_physical_time']
+
+    # Rebuild the transfer of all twelve vacuum-to-one-token matrix units
+    # from source outcome maps. Every finite power stays diagonal, while a
+    # direct native endpoint count transfers population across seam (0,1).
+    for law in ('C', 'E'):
+        block = [[F(0) for _ in range(12)] for _ in range(12)]
+        for source in range(12):
+            for seam in seams:
+                for (left, right), weight in c.quantum.native_unit(
+                        law, 1 << source, 0, seam).items():
+                    assert right == 0 and left.bit_count() == 1
+                    block[left.bit_length()-1][source] += weight/30
+        rate = F(result['charged_two_point_rates_C_E'][law])
+        assert block == [[rate if i == j else F(0) for j in range(12)]
+                         for i in range(12)]
+        # Scalar temporal Hankel kernel has rank one per port, with nonnegative
+        # quadratic form, but that does not add spatial dispersion.
+        assert all(rate**(m+n)*rate**(m+n+2) == (rate**(m+n+1))**2
+                   for m in range(3) for n in range(3))
+        power = [[F(i == j) for j in range(12)] for i in range(12)]
+        for n in range(4):
+            assert power == [[rate**n if i == j else F(0) for j in range(12)]
+                             for i in range(12)]
+            power = [[sum(block[i][k]*power[k][j] for k in range(12))
+                      for j in range(12)] for i in range(12)]
+
+    from ..observer import native
+    initial = (1,) + (0,)*11
+    moved = 0
+    for seam in seams:
+        for coin in (0, 1):
+            terminal, _ = native.native(initial, seam, coin)
+            moved += terminal[1] == 1
+    assert F(moved, 60) == F(1, 60)
+
+    # A shared spectator may move in both matrix-unit legs. It does not move
+    # their signed charge insertion from port zero to another port.
+    background = (1 << 2) | (1 << 4)
+    charged = background | (1 << 0)
+    signed = c.quantum.difference(charged, background, 12)
+    assert signed == (1,) + (0,)*11
+    for law in ('C', 'E'):
+        for seam in seams:
+            for current in (-1, 0, 1):
+                for left, right in c.quantum.native_unit(
+                        law, charged, background, seam, current):
+                    assert c.quantum.difference(left, right, 12) == signed
+
+
 @pytest.mark.parametrize('bad', [True, -1, 25, 2., '2', None])
 def test_log_orders_reject_undeclared_values_and_alias_types(bad):
     for operation in (c.log_polynomial, c.log_remainder):

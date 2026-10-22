@@ -502,6 +502,7 @@ def run():
         'observer_record_decay_sanity': record_decay_sanity(),
         'charged_coherence_scope': charged_coherence_scope(),
         'charged_reference_readout': charged_reference.reference_readout_scope(kernel.seams),
+        'charged_spatial_pole_gate': charged_reference.charged_spatial_pole_gate(kernel.seams),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],
         'scope': {'one_native_carrier_no_independent_replica_limit': True,

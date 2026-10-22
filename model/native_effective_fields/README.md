@@ -240,6 +240,42 @@ unitary or relativistic spectral continuation are separate requirements. A
 decay pole in this declared attempt count cannot be identified with a
 particle rest mass by analytic continuation alone.
 
+The [charged spatial-pole gate](charged_reference.py) sharpens this limit using
+the **same** C/E native instruments. For every port `i`, seam and retained
+current, the map of `|one_i><vacuum|` is either zero or a multiple of that
+same matrix unit. Nonzero output requires zero current. A seam remote from
+`i` gives multiplier `1`; an incident seam gives `1/2` under C and `0` under
+E. All 2,160 port/seam/current/law columns are checked. The existing
+portwise signed-difference invariant of the full matrix-unit rule extends
+this nontransport to any charge insertion of fixed signed difference; the
+present gate computes the vacuum/one-token two-point block explicitly.
+Any finite sequence of native current instruments, even with seam choice
+adapted to prior current records, leaves that coherence at its original
+port. Under the separately declared uniform scheduler,
+
+```text
+G_ij(n) = Tr(b_i Phi_L^n(b_j^dagger |vac><vac|))
+        = delta_ij r_L^n,  r_C=11/12, r_E=5/6.
+sum_(n>=0) z^n G_ij(n) = delta_ij/(1-z r_L).
+```
+
+This has a positive scalar temporal Hankel form
+`sum_i |sum_n a_(i,n) r_L^n|^2`; it is not a verification of the full
+Osterwalder--Schrader axioms or a physical particle reconstruction. The
+charged band is flat in
+**every** graph-Laplacian mode: it has no offsite response or positive-speed
+dispersion. By contrast, the one-token **population** block of the same
+instrument transfers across each directed native seam with probability
+`1/60` per uniform attempt. Population transport cannot be substituted for a
+charged two-point function. A scalar conversion of attempts to observer time
+cannot create its absent spatial dispersion. This excludes interpreting this
+particular C/E vacuum-to-one-token block as a propagating relativistic
+particle on the recovered graph; it does not exclude a different native
+charged sector or a source-selected coherent continuation. The existing
+[unitary coherent walk](../observer/COHERENT_CONTINUATION.md) propagates a
+neutral density amplitude after additional uncommitted-record services. It
+does not supply a charged particle pole for this block.
+
 The marked matrices inserted at the reads are transition insertions, **not
 POVM effects**: their sum is `P`, and their symmetric moving insertion has a
 negative determinant. A coherent probe of these transfer modes needs its own

@@ -58,6 +58,26 @@
       "E": "5/6"
     }
   },
+  "charged_spatial_pole_gate": {
+    "all_current_resolved_charge_one_columns_checked": 2160,
+    "all_current_resolved_endpoint_signed_difference_columns_checked": 2880,
+    "any_current_word_or_adaptive_seam_schedule_preserves_charge_one_port": true,
+    "charged_field_quantum_numbers_or_CAR_selected": false,
+    "charged_two_point_all_lags": "G_ij(n)=delta_ij r_L^n; n is uniform native attempts",
+    "charged_two_point_generating_function": "G_ij(z)=delta_ij/(1-z r_L)",
+    "charged_two_point_rates_C_E": {
+      "C": "11/12",
+      "E": "5/6"
+    },
+    "full_Osterwalder_Schrader_axioms_verified": false,
+    "native_attempt_count_is_calibrated_physical_time": false,
+    "one_token_population_directed_neighbor_entries": 60,
+    "one_token_population_transition_per_neighbor": "1/60",
+    "portwise_signed_difference_preserved_under_native_current_words": true,
+    "positive_speed_particle_dispersion_from_this_charge_one_block": false,
+    "scalar_temporal_Hankel_positive_form": "sum_i |sum_n a_(i,n) r_L^n|^2 >= 0",
+    "spatial_band_in_graph_laplacian_basis": "flat r_L on all 12 modes"
+  },
   "complete_executions": [
     {
       "all_zero_outcome_words_retained": true,
@@ -2902,8 +2922,8 @@
     "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
     "model/native_effective_fields/__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "model/native_effective_fields/__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
-    "model/native_effective_fields/charged_reference.py": "59d4b8f8d75f75759e18d00d0a5a96366e27f35b506e7d0948882c5edebc6a17",
-    "model/native_effective_fields/construction.py": "440cffc62cebbf2639e9adbdeae3f8cdff0beff6bbed756a33c00a5408158be7",
+    "model/native_effective_fields/charged_reference.py": "a4072b8156e18daaed13bff232b94e2b6f1d638694459d3963b3704a8d759112",
+    "model/native_effective_fields/construction.py": "bf3455905fefc8f568afdfb697d6fe5fd5b393889f6e4b9cb29e710ab0a608fd",
     "model/native_fluctuations/__main__.py": "143bc389270f4983ff83374b424dcf750de0d4ffacaea01102ff3cc01c4c4aba",
     "model/native_fluctuations/experiment.py": "3e248555159cdd0835d9e4ffd51ad3df8f7e928e8d3a127a905cfba032e2e13f",
     "model/native_fluctuations/source.py": "963281df213df670acf1d4d0368f71b929b3c97b88d94f696d999f6e8da6c86f",
