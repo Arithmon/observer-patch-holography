@@ -237,6 +237,23 @@ measure spectral phases in the reconstructed code. Analytic continuation
 plus its executable simulation is a supported correspondence, while agreement
 of that interpretation with independent physical observations remains open.
 
+## Clock and energy scale
+
+The roots `lambda_+` and `lambda_-` describe decay per **native attempt**.
+The declared active controller uses their gaps `E_j=-log(lambda_j)` as phases
+per **incident event**. This choice does not identify an attempt, an incident
+event, a modular parameter increment and a laboratory second. The
+[clock-scale sanity check](clock_scale_sanity.py) exhibits the ambiguity
+without a fitted target: for any positive assignment `tau` seconds per
+incident event, `omega_j=E_j/tau` and `t_n=n*tau` give the same native phase
+`omega_j*t_n=n*E_j`. Changing `tau` rescales both assigned frequencies and any
+conditional energy `hbar*omega_j`, while the exact native word law and the
+dimensionless gap ratio remain fixed. The two gaps are transfer/probe modes;
+they are not particle rest masses. An absolute particle-mass result would
+also need a source-selected particle operator, a justified pole/rest-energy
+readout and a common laboratory clock identification. The attempt-to-incident
+waiting law alone supplies none of those identifications.
+
 ## Error and scope
 
 Exact rational square-root and atanh-series intervals enclose the source
