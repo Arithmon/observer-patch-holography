@@ -97,6 +97,26 @@ control, not an observed defect. The equal-length `0–1–5–11–0` loop arou
 two adjacent faces has product `+1` in both completions, so that even-loop
 interferometer alone cannot detect a uniform `π` phase on each triangle.
 
+The separate [registered loop comparator](native_loop_readout.py) uses the
+equal-length routes `0→1→5` and `0→11→5`, enclosing two adjacent carrier
+faces. All eight route/coin histories are retained. Two histories reach the
+same `(2,5)` load with total probability `1/4`; a source-pulse tape eraser
+reads both phase quadratures. The character of the native current contrast
+has zero loop phase. A **supplied** quarter-turn phase on one link changes the
+successful X read from `(1/4,0)` to `(1/8,1/8)` and the Y read from
+`(1/8,1/8)` to `(1/4,0)`. Endpoint rephasing, path reversal and immediate
+backtracking obey their loop identities. This even loop misses a uniform
+`−1` phase on every moving link, which gives `−1` on each triangular face.
+The one-face control compares `0→1→5` with `0→5` plus an empty-seam idle
+attempt at `(2,3)`. It retains the unused idle-coin outcome and changes the
+selected X read from `(1/4,0)` to `(0,1/4)` under that supplied uniform
+sign. Coherent route scheduling, native-history amplitudes, the idle phase,
+link phases and tape erasure are declared interface choices. These controls
+establish a workable phase-sensitive readout, not a native-selected defect.
+The one-face arms have two versus one **moving** events despite both making
+two attempts; independent idle and move-count dynamical-phase calibration is
+still required before the measured contrast can be called geometric holonomy.
+
 The [family-port identifiability audit](family_port_identifiability.py) tests
 the fixed two-event current recorder against the exact icosahedral `W5`
 projector in the

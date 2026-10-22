@@ -147,8 +147,301 @@
       ]
     }
   },
-  "schema": "oph.native_loop_readout.v1",
-  "scope": "Exact native current records select a flat additive port contrast, not a U(1) connection with nontrivial flux. The two-event observer does not traverse a carrier face. The ideal all-seam protocol and uniform-seam transfer are separate declared protocols; their flat/balanced outputs do not rule out a different coherent source-derived holonomy. A record-accessible relative phase in the fixed committed interface, geometric path composition, protected flux sector and continuum spectral pole remain unconstructed. A declared coherent tape eraser distinguishes scalar branch phases on the two returning E/E paths; this is not a carrier-loop holonomy.",
+  "registered_face_interferometer": {
+    "adjacent_registered_faces": [
+      [
+        0,
+        5,
+        1
+      ],
+      [
+        0,
+        11,
+        5
+      ]
+    ],
+    "closed_registered_route": [
+      0,
+      1,
+      5,
+      11,
+      0
+    ],
+    "coherent_route_and_two_coin_preparation_pulses": 3,
+    "complete_committed_probability_mass": "1",
+    "complete_native_history_distribution_sha256": "f91341f384642535ff796e176ee912116f25e74dbdd1f93297f48075976bc5e8",
+    "initial_occupied_ports": [
+      0,
+      2
+    ],
+    "link_angles_and_coherent_route_interface_declared": true,
+    "native_current_character_has_nontrivial_holonomy": false,
+    "native_history_count": 8,
+    "native_repair_source_executes_individual_link_unitaries": false,
+    "other_terminal_probability": "3/4",
+    "readout_cases": {
+      "flat": {
+        "closed_loop_quarter_turns_mod_4": 0,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "c59c1c5ff93ffecf873fcdc0fd6e937e42b4de66e2fb6535d7f40673c58b00ce",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/4",
+              "0"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7,
+            "source_pulses": 17461
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "015cf0c53833d6fba9eba75b1a9346d227a7a3e157ed7e928081693dc674f82b",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10,
+            "source_pulses": 17461
+          }
+        },
+        "route_quarter_turn_sums": [
+          0,
+          0
+        ]
+      },
+      "inserted_link_phase": {
+        "closed_loop_quarter_turns_mod_4": 1,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "015cf0c53833d6fba9eba75b1a9346d227a7a3e157ed7e928081693dc674f82b",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10,
+            "source_pulses": 17461
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "c59c1c5ff93ffecf873fcdc0fd6e937e42b4de66e2fb6535d7f40673c58b00ce",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/4",
+              "0"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7,
+            "source_pulses": 17461
+          }
+        },
+        "route_quarter_turn_sums": [
+          0,
+          -1
+        ]
+      },
+      "native_current_character": {
+        "closed_loop_quarter_turns_mod_4": 0,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "c59c1c5ff93ffecf873fcdc0fd6e937e42b4de66e2fb6535d7f40673c58b00ce",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/4",
+              "0"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7,
+            "source_pulses": 17461
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "015cf0c53833d6fba9eba75b1a9346d227a7a3e157ed7e928081693dc674f82b",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10,
+            "source_pulses": 17461
+          }
+        },
+        "route_quarter_turn_sums": [
+          1,
+          1
+        ]
+      },
+      "port_rephased_inserted_link": {
+        "closed_loop_quarter_turns_mod_4": 1,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "015cf0c53833d6fba9eba75b1a9346d227a7a3e157ed7e928081693dc674f82b",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10,
+            "source_pulses": 17461
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "c59c1c5ff93ffecf873fcdc0fd6e937e42b4de66e2fb6535d7f40673c58b00ce",
+            "complete_probability_mass": "1",
+            "exact_success_endpoint_plus_minus": [
+              "1/4",
+              "0"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7,
+            "source_pulses": 17461
+          }
+        },
+        "route_quarter_turn_sums": [
+          5,
+          4
+        ]
+      }
+    },
+    "route_phase_pulse_is_not_an_individual_edge_transport": true,
+    "same_committed_native_history_probabilities_under_every_phase_case": true,
+    "source_eraser_pulses": 17456,
+    "source_selected_defect_holonomy": false,
+    "success_probability_before_eraser": "1/4",
+    "success_terminal_occupied_ports": [
+      2,
+      5
+    ],
+    "successful_history_codes": [
+      36,
+      85
+    ],
+    "two_equal_length_routes": [
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        0,
+        11,
+        5
+      ]
+    ]
+  },
+  "registered_triangle_control": {
+    "all_other_terminal_mass": "5/8",
+    "comparison_loop": [
+      0,
+      1,
+      5,
+      0
+    ],
+    "comparison_terminal_occupied_ports": [
+      5,
+      7
+    ],
+    "complete_committed_probability_mass": "1",
+    "complete_native_history_distribution_sha256": "0f540a753dee6665411704872806ad0a2ecee4a162d5fd53aaed92ae3a4a32f1",
+    "empty_idle_current_on_both_coins": 0,
+    "idle_and_move_count_dynamical_phases_independently_calibrated": false,
+    "idle_phase_assumed_zero_in_declared_coherent_lift": true,
+    "initial_occupied_ports": [
+      0,
+      7
+    ],
+    "moving_event_counts_on_selected_arms": [
+      2,
+      1
+    ],
+    "moving_routes": [
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "native_attempt_counts": [
+      2,
+      2
+    ],
+    "native_history_count": 8,
+    "phase_difference_identified_as_geometric_holonomy": false,
+    "readout_cases": {
+      "flat": {
+        "one_face_wilson_quarter_turns_mod_4": 0,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "1f5dda84a5662909f21f90bbee434020fd3587bd55ad79c412ed83b1d458a8eb",
+            "complete_probability_mass": "1",
+            "exact_selected_plus_minus": [
+              "1/4",
+              "0"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "64f6737764fcece9d641f481a0fcc72ce1a815e2a0bcdb330f69290def3342f0",
+            "complete_probability_mass": "1",
+            "exact_selected_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10
+          }
+        },
+        "route_quarter_turn_sums": [
+          0,
+          0
+        ]
+      },
+      "uniform_minus_moving_link_control": {
+        "one_face_wilson_quarter_turns_mod_4": 2,
+        "quadratures": {
+          "X": {
+            "complete_outcome_distribution_sha256": "f36a4720c4adcb51290a1ec807c6eeb9639ff96e3cb47adbc294d0a8c12e977a",
+            "complete_probability_mass": "1",
+            "exact_selected_plus_minus": [
+              "0",
+              "1/4"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 7
+          },
+          "Y": {
+            "complete_outcome_distribution_sha256": "64f6737764fcece9d641f481a0fcc72ce1a815e2a0bcdb330f69290def3342f0",
+            "complete_probability_mass": "1",
+            "exact_selected_plus_minus": [
+              "1/8",
+              "1/8"
+            ],
+            "nonzero_endpoint_and_read_code_outcomes": 10
+          }
+        },
+        "route_quarter_turn_sums": [
+          4,
+          2
+        ]
+      }
+    },
+    "registered_face": [
+      0,
+      5,
+      1
+    ],
+    "second_attempt_on_short_route": [
+      2,
+      3
+    ],
+    "selected_interfering_mass": "1/4",
+    "selected_path_codes": [
+      36,
+      5
+    ],
+    "source_selected_one_face_holonomy": false,
+    "uniform_sign_gives_two_face_loop_unit_but_one_face_minus_unit": true,
+    "unselected_idle_coin_code_at_same_terminal": 21,
+    "unselected_same_terminal_mass": "1/8"
+  },
+  "schema": "oph.native_loop_readout.v2",
+  "scope": "Exact native current records select a flat additive port contrast, not a U(1) connection with nontrivial flux. The two-event observer does not traverse a carrier face. The ideal all-seam protocol and uniform-seam transfer are separate declared protocols; their flat/balanced outputs do not rule out a different coherent source-derived holonomy. A record-accessible relative phase in the fixed committed interface, source-selected link transport, protected flux sector and continuum spectral pole remain unconstructed. A declared coherent tape eraser distinguishes scalar branch phases on the two returning E/E paths; this is not a carrier-loop holonomy. On a separate registered two-face loop, exact native branch endpoints and a source-pulse eraser resolve both quadratures of a supplied quarter-turn route phase. The native current character is flat; the nonzero control phase is supplied and not a discovered defect. The one-face idle-arm control has two versus one moving events; its dynamical phase remains uncalibrated.",
   "source": {
     "carrier_incidence": "model/common_source/slow_geometry.py: source().seams(), oriented_faces()",
     "mass_or_particle_target_data_consumed": false,

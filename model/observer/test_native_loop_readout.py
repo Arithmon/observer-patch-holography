@@ -1,6 +1,9 @@
 """Independent endpoint, loop and mutation checks for native current transport."""
 from __future__ import annotations
 
+import hashlib
+import json
+import math
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -102,8 +105,134 @@ class NativeLoopReadoutTests(unittest.TestCase):
             with self.assertRaisesRegex(ArithmeticError, "phase contrast"):
                 subject.same_endpoint_phase_readout()
 
+    def test_registered_equal_length_face_routes_keep_every_native_history(self):
+        row = subject.registered_face_interferometer()
+        self.assertEqual(row["closed_registered_route"], [0, 1, 5, 11, 0])
+        self.assertEqual(row["adjacent_registered_faces"], [[0, 5, 1], [0, 11, 5]])
+        self.assertEqual(row["two_equal_length_routes"], [[0, 1, 5], [0, 11, 5]])
+        self.assertEqual(len(row["all_eight_native_histories"]), 8)
+        self.assertEqual({entry["committed_probability"] for entry in row["all_eight_native_histories"]},
+                         {"1/8"})
+        self.assertEqual(row["successful_history_codes"], [36, 85])
+        self.assertEqual(row["success_probability_before_eraser"], "1/4")
+        self.assertEqual(row["other_terminal_probability"], "3/4")
+        self.assertFalse(row["source_selected_defect_holonomy"])
+        self.assertFalse(row["native_repair_source_executes_individual_link_unitaries"])
+        for case in row["readout_cases"].values():
+            for read in case["quadratures"].values():
+                all_outcomes = read["all_endpoint_and_read_code_probabilities"]
+                self.assertEqual(sum(subject.Q(value) for bins in all_outcomes.values()
+                                     for value in bins.values()), 1)
+                self.assertEqual(sum(subject.Q(value) for endpoint, bins in all_outcomes.items()
+                                     if endpoint != "2,5" for value in bins.values()),
+                                 subject.Q(3, 4))
+        receipt = json.loads((Path(__file__).with_name("results") / "native_loop_readout.json")
+                             .read_text(encoding="utf-8"))
+        original = row["readout_cases"]["flat"]["quadratures"]["X"]
+        compact = receipt["registered_face_interferometer"]["readout_cases"]["flat"]["quadratures"]["X"]
+        self.assertEqual(compact["complete_outcome_distribution_sha256"], hashlib.sha256(
+            subject.canonical(original["all_endpoint_and_read_code_probabilities"])
+            .encode("utf-8")).hexdigest())
+        self.assertEqual(compact["complete_probability_mass"], "1")
+        self.assertNotIn("all_endpoint_and_read_code_probabilities", compact)
+        compact_face = receipt["registered_face_interferometer"]
+        self.assertEqual(compact_face["native_history_count"], 8)
+        self.assertEqual(compact_face["complete_committed_probability_mass"], "1")
+        self.assertEqual(compact_face["complete_native_history_distribution_sha256"], hashlib.sha256(
+            subject.canonical(row["all_eight_native_histories"]).encode("utf-8")).hexdigest())
+
+    def test_two_quadratures_resolve_supplied_flux_but_native_character_is_flat(self):
+        rows = subject.registered_face_interferometer()["readout_cases"]
+        for case in ("flat", "native_current_character"):
+            self.assertEqual(rows[case]["closed_loop_quarter_turns_mod_4"], 0)
+            self.assertEqual(rows[case]["quadratures"]["X"]["exact_success_endpoint_plus_minus"],
+                             ["1/4", "0"])
+            self.assertEqual(rows[case]["quadratures"]["Y"]["exact_success_endpoint_plus_minus"],
+                             ["1/8", "1/8"])
+        for case in ("inserted_link_phase", "port_rephased_inserted_link"):
+            self.assertEqual(rows[case]["closed_loop_quarter_turns_mod_4"], 1)
+            self.assertEqual(rows[case]["quadratures"]["X"]["exact_success_endpoint_plus_minus"],
+                             ["1/8", "1/8"])
+            self.assertEqual(rows[case]["quadratures"]["Y"]["exact_success_endpoint_plus_minus"],
+                             ["1/4", "0"])
+
+    def test_link_gauge_reversal_and_backtrack_are_independent_path_identities(self):
+        links = {(5, 11): 1}
+        path = (0, 1, 5, 11, 0)
+        self.assertEqual(subject.oriented_link_sum(links, path), 1)
+        self.assertEqual(subject.oriented_link_sum(links, path[::-1]), -1)
+        self.assertEqual(subject.oriented_link_sum(links, (5, 11, 5)), 0)
+        shifted = subject.gauge_shift(links, tuple(range(12)))
+        self.assertEqual(subject.oriented_link_sum(shifted, path), 1)
+        self.assertEqual(subject.oriented_link_sum(shifted, (0, 1, 5))
+                         - subject.oriented_link_sum(shifted, (0, 11, 5)), 1)
+        with self.assertRaisesRegex(ValueError, "outside the native carrier"):
+            subject.oriented_link_sum(links, (0, 2))
+        with self.assertRaisesRegex(ValueError, "twelve integer port phases"):
+            subject.gauge_shift(links, (0, 1))
+
+    def test_one_face_idle_control_sees_uniform_minus_invisible_to_even_loop(self):
+        row = subject.registered_triangle_control()
+        self.assertEqual(row["registered_face"], [0, 5, 1])
+        self.assertEqual(row["comparison_loop"], [0, 1, 5, 0])
+        self.assertEqual(row["native_attempt_counts"], [2, 2])
+        self.assertEqual(row["moving_event_counts_on_selected_arms"], [2, 1])
+        self.assertEqual(row["second_attempt_on_short_route"], [2, 3])
+        self.assertEqual(row["empty_idle_current_on_both_coins"], 0)
+        self.assertEqual(row["selected_path_codes"], [36, 5])
+        self.assertEqual(row["unselected_idle_coin_code_at_same_terminal"], 21)
+        self.assertEqual(len(row["all_eight_native_histories"]), 8)
+        self.assertEqual({item["committed_probability"] for item in row["all_eight_native_histories"]},
+                         {"1/8"})
+        self.assertTrue(row["uniform_sign_gives_two_face_loop_unit_but_one_face_minus_unit"])
+        self.assertTrue(row["idle_phase_assumed_zero_in_declared_coherent_lift"])
+        self.assertFalse(row["idle_and_move_count_dynamical_phases_independently_calibrated"])
+        self.assertFalse(row["phase_difference_identified_as_geometric_holonomy"])
+        self.assertFalse(row["source_selected_one_face_holonomy"])
+        self.assertEqual(row["readout_cases"]["flat"]["quadratures"]["X"]
+                         ["exact_selected_plus_minus"], ["1/4", "0"])
+        self.assertEqual(row["readout_cases"]["uniform_minus_moving_link_control"]
+                         ["quadratures"]["X"]["exact_selected_plus_minus"], ["0", "1/4"])
+        for case in row["readout_cases"].values():
+            for read in case["quadratures"].values():
+                bins = read["all_endpoint_and_read_code_probabilities"]
+                self.assertEqual(sum(subject.Q(value) for endpoint in bins.values()
+                                     for value in endpoint.values()), 1)
+                self.assertEqual(sum(subject.Q(value) for code, value in bins["5,7"].items()
+                                     if code not in ("0", "1")), subject.Q(1, 8))
+        receipt = json.loads((Path(__file__).with_name("results") / "native_loop_readout.json")
+                             .read_text(encoding="utf-8"))
+        original = row["readout_cases"]["uniform_minus_moving_link_control"]["quadratures"]["X"]
+        compact = (receipt["registered_triangle_control"]["readout_cases"]
+                   ["uniform_minus_moving_link_control"]["quadratures"]["X"])
+        self.assertEqual(compact["complete_outcome_distribution_sha256"], hashlib.sha256(
+            subject.canonical(original["all_endpoint_and_read_code_probabilities"])
+            .encode("utf-8")).hexdigest())
+        self.assertEqual(compact["complete_probability_mass"], "1")
+        compact_triangle = receipt["registered_triangle_control"]
+        self.assertEqual(compact_triangle["native_history_count"], 8)
+        self.assertEqual(compact_triangle["complete_committed_probability_mass"], "1")
+        self.assertEqual(compact_triangle["complete_native_history_distribution_sha256"], hashlib.sha256(
+            subject.canonical(row["all_eight_native_histories"]).encode("utf-8")).hexdigest())
+
+    def test_missing_declared_phase_or_eraser_fails_flux_contrast(self):
+        original = subject.compiler.pulse
+
+        def missing_phase(kind, angle, targets):
+            if kind == "Z" and targets == [0] and math.isclose(angle, math.pi / 4):
+                return original("Z", 0, targets)
+            return original(kind, angle, targets)
+
+        with patch.object(subject.compiler, "pulse", side_effect=missing_phase):
+            with self.assertRaisesRegex(ArithmeticError, "quadrature"):
+                subject.registered_face_interferometer()
+        with patch.object(subject.circuit, "basis_swap_word", return_value=[]):
+            with self.assertRaisesRegex(ArithmeticError, "quadrature"):
+                subject.registered_face_interferometer()
+
     def test_receipt_replays_and_keeps_scope(self):
         result = subject.run()
+        self.assertEqual(result["schema"], "oph.native_loop_readout.v2")
         self.assertEqual(result["ideal_all_seam_readout"]["branch_records_checked"], 4680)
         self.assertEqual(result["status"],
                          "NATIVE_CURRENT_CONTRAST_FLAT__COHERENT_HOLONOMY_OPEN")
@@ -119,6 +248,10 @@ class NativeLoopReadoutTests(unittest.TestCase):
         self.assertEqual(result["fixed_observer"]["coherent_path_record_control"]
                          ["source_pulse_counts"], {"first_coin_phase": 2,
                                                   "record_eraser": 2707})
+        self.assertEqual(result["registered_face_interferometer"]["successful_history_codes"], [36, 85])
+        self.assertFalse(result["registered_face_interferometer"]["source_selected_defect_holonomy"])
+        self.assertEqual(result["registered_triangle_control"]["selected_path_codes"], [36, 5])
+        self.assertFalse(result["registered_triangle_control"]["source_selected_one_face_holonomy"])
         receipt = Path(__file__).with_name("results") / "native_loop_readout.json"
         self.assertEqual(receipt.read_text(encoding="utf-8"), subject.canonical(result))
 
