@@ -47,9 +47,19 @@ identification. It selects no atomic correspondence from optical ratios.
 For a bare source-symmetric seam scheduler, the
 [native edge-orbit certificate](native_clock/README.md#which-scheduler-premises-disappear)
 forces a uniform one-step seam marginal. A stationary, symmetry-invariant
-seam-memory scheduler leaves that marginal and the native equilibrium fixed
-but changes two-current probabilities. Source symmetry therefore does not
-derive the IID schedule used by the present clock and field histories.
+seam-memory scheduler leaves that marginal and the uniform binary total-two
+stationary law unchanged but changes two-current probabilities. Source
+symmetry therefore does not derive the IID schedule used by the present
+clock and field histories.
+
+The [native loop readout](observer/README.md) derives only flat additive
+current contrasts from the all-seam record protocol; it supplies no charged
+flux. A [relational charged-coherence test](native_effective_fields/README.md)
+can distinguish the admitted C/E laws when a source/reference preparation and
+exchange analyzer are supplied. Current words alone leave a continuous
+charge-phase freedom, so neither a defect nor a physical charged pole is
+selected by these records. Both routes need a source-selected coherent
+interface before a particle identity or mass can be tested.
 
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair
