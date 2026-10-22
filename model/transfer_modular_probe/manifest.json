@@ -1,19 +1,22 @@
 {
   "description": "Source-derived modular flow with complete coherent probes and native-record-triggered clock steps.",
   "files": {
-    "README.md": "a295e8aa136e35b032079b800dcb66fc07f54a086055cd2cc83de4024d434353",
+    "README.md": "390c09bf002dbf8abea1c7da9affd6b80ad394d8816aaf673473d6283ee324ac",
     "__init__.py": "0f8fb297f063296910e781fb1afba9a9c0f7c4c21631003b2fcb088f57528cc6",
     "__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "clock_scale_sanity.py": "ce0e46e49aa05e5d5be35053e300b80a4cac2a8a6616c2a885bb729aeccb0420",
     "construction.py": "6d879aed3b62bbe0ffcf9610a94832cdf026d332441ad2e68abc1c80d5d00f40",
     "event_clock.py": "6d568599623dc7e03385fc009b620231bc29a62e13a0f21d174adeb4bc9cb35b",
     "event_clock_results.json": "99f7119ed0b0c680fe1b48881c1235962c34f747bcf56097ec21cff55f3df527",
     "results.json": "d22230407128d2a883d1618260904321f8fbc87b709677b22514d530c1902258",
     "test_construction.py": "935984455bf0053a38a9db8ed98c0dc2e779db2821b0640ffc2b9e9bd081c71e",
+    "test_clock_scale_sanity.py": "407e873192cf089a1634de2839ecdb4688be3df34b159ed817f3bc55f6eae93e",
     "test_event_clock.py": "2293c3dfa74594c80c23c5037b5777976c9991b7ee4120889a1c7dfdd04dcf82"
   },
   "reproduce": [
     "python -m model.transfer_modular_probe --check model/transfer_modular_probe/results.json",
     "python -m model.transfer_modular_probe.event_clock --check model/transfer_modular_probe/event_clock_results.json",
+    "python -m pytest -q -W error model/transfer_modular_probe/test_clock_scale_sanity.py",
     "python -m pytest -q -W error model/transfer_modular_probe"
   ],
   "schema": "oph.transfer_modular_probe.manifest.v1"
