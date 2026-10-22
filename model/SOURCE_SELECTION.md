@@ -149,6 +149,38 @@ current cycles are candidates for an extended-excitation readout; by themselves
 they establish neither a vibrating string nor its propagation law. These
 connections are research targets, not empirical identifications.
 
+## Arithmon comparison contracts
+
+The comparison baselines are OPH
+`879ed37ad2c1933ecb6dd8f54271362ee3f4d41c`, K7
+`26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6`, and K7-Lean
+`70dc589bd7c3f77db54a2acb6e67986a7ef69468`. K7 and K7-Lean are
+external comparison sources. Their arithmetic identities, conditional
+geometry and historical physical relations retain their source classifications.
+The [K7 erratum](https://github.com/Arithmon/K7/blob/26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6/publications/ERRATUM_v3.5.md)
+governs interpretation of those relations.
+
+| Interface | Source-derived object | Missing comparison datum |
+| --- | --- | --- |
+| Golden character field and marked triplets | The McKay certificate derives the character field with both conjugate embeddings. The native slow spatial triplet and lower internal response triplet have different characters under the fixed marked action. | An independently source-produced representation attachment, including any required action twist. A marked trace distinguishes these representations after the action is fixed; it does not identify their domains or select a physical embedding. |
+| Gauge scale and kinetic coefficients | The native clock counts events; the axial circulation counter has diffusion coefficient `2/99` in native units. The frozen matter-trace determinant is invariant under common translation along its one-loop beta column. | A common subtraction prescription and compatible field-content, threshold and running transport for a source-clean K7 coupling vector. Absolute placement along the same one-loop trajectory is unnecessary for this determinant, but separate scale labels cannot be combined without that transport. |
+| Spectral geometry | The native angular Green inverse and the supplied radial product have specified operators, observation spaces and distinct spectral growth. | A reducing sector or another explicit observable map from a specified K7 operator, with measure, domains, boundary conditions and normalization. The [operator comparison boundary](CONSTRUCTION.md#arithmon-spectral-operator-contract) states the required map. |
+
+The K7 erratum assigns the fine-structure relation to zero momentum and the
+weak and strong relations to `M_Z`; it withdraws the GUT reading of `3/13`
+and the RGE chain built on it. The native counter radius supplies neither
+this transport nor a subtraction prescription. Choosing physical length and
+time units would leave the latter question separate.
+
+Finite quantum access, fixed-reference histories and observer state weights
+also supply no map from their record algebra to the weak multiplicity
+order-unit line of `COMMON_EW_LOAD_CARRIER`. PR-51 therefore requires the
+same refinement-natural positive unital readout. None of these interfaces
+retires an OPH premise through agreement with Arithmon. The exact Koide
+incompatibility, McKay embedding boundary, gauge common-object negative
+result and `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT` keep their
+declared scopes. Public measurements select none of the maps in this audit.
+
 ## What the rank-three response and its sphere establish
 
 The record-recovered slow Gram agrees in all 144 entries with the registered

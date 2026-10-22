@@ -1154,6 +1154,61 @@ sources in the same repository. Conversely, the remaining physical joins do
 not reopen the completed finite observer contract. Model maintenance belongs
 here; changes to the broader papers follow their separate review policy.
 
+<a id="arithmon-spectral-operator-contract"></a>
+
+### The Arithmon spectral interface
+
+**`K7_INTERNAL_AND_OPH_SPATIAL_SPECTRA_NOT_COMPOSABLE_AT_CURRENT_PINS`.**
+The [native angular generator](physical_space_time/OCCUPATION_FIELD.md#locality-and-spectral-dimension-of-the-source-continuum)
+`A=G^-1` acts on centered `L2` of the carrier sphere, with the declared
+source subsequence and local form domain `H1`. Its positive eigenvalues,
+counted with multiplicity, satisfy `n/49920<=lambda_n(A)<=3n/2`.
+Thus its precision and native decay rates grow linearly with mode count;
+its coherent frequencies `sqrt(A)` grow as `sqrt(n)`. The
+[radial product](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field)
+instead has precision `B=-d_r^2+(A opulus 0)`, with the angular constant
+restored and a supplied Dirichlet interval. On `(0,pi)` its counting law is
+bounded above and below by positive constants times `Lambda^(3/2)`.
+The interval, boundary condition, encoder and independent record blocks
+remain specified operations. The internal rank-three carrier band has
+vanishing norm in bounded-energy families under the angular continuum
+scaling; it does not furnish an additional continuum sector at that scale.
+
+The frozen [K7 spectral construction, sections 3.1--3.3](https://github.com/Arithmon/K7/blob/26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6/publications/papers/markdown/g2_spectral.md#3-laplacian-spectrum)
+provides neck-model Sturm--Liouville channels indexed by torus and K3
+fiber modes, with a stated measure, potential and boundary treatment.
+Its fundamental seam channel has quadratic eigenvalue growth. The
+[companion notebook, scalar-spectrum cell](https://github.com/Arithmon/K7/blob/26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6/publications/papers/notebooks/g2_spectral_companion.ipynb)
+fits `log(lambda_n)` against `log(n)`: its exponent near two is an
+**eigenvalue-growth exponent**, corresponding to counting exponent `1/2`
+and spectral dimension one. Reading it as spectral dimension two fails
+this convention control. The paper's displayed `N(Lambda)~C Lambda^(alpha/2)`
+does not agree with that use of `alpha`. The full assembled tower's
+reported exponent `3.460` is a numerical fit, not an exact asymptotic
+theorem. [K7-Lean's Weyl module](https://github.com/Arithmon/K7-Lean/blob/70dc589bd7c3f77db54a2acb6e67986a7ef69468/GIFT/Spectral/ComputedWeylLaw.lean)
+proves arithmetic bounds on the supplied number `346/100`; its types do
+not derive an operator spectrum. The [K7 erratum, sections 7.2 and 7.5](https://github.com/Arithmon/K7/blob/26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6/publications/ERRATUM_v3.5.md#7-additional-source-corrections)
+also withdraws the physical content attributed to the arithmetic KK
+bridge and the claimed global torsion-free G2/Ricci-flat construction.
+
+A [complete faithful linear native-lag readout](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
+preserves `A` up to unitary conjugation. A continuous common clock change
+preserving semigroup composition supplies only one positive scalar.
+Consequently this class cannot identify the complete angular decay
+generator with a quadratic seam generator. This obstruction does not
+exclude a restriction, a different operator functional or an independently
+encoded product field. No such K7-to-OPH map is established by these pins.
+An admissible spectral comparison must first specify a K7 self-adjoint
+operator `L`, its Hilbert-space measure, domain and boundary conditions,
+a reducing projection `P`, and an observation-faithful unitary `U` with
+`U A = c (L restricted to range(P)) U`, including domains, for an
+independently fixed `c>0`; an alternative dictionary needs its own exact
+identity or certified error and observable contract. Choosing `B` or
+`sqrt(B)` as the OPH object likewise requires its explicit attachment.
+An arbitrary scale fit, eigenvalue relabelling, substitution of `sqrt(L)`
+for `L`, or reuse of a counting exponent cannot supply that datum.
+No OPH physical premise is removed by this spectral inventory.
+
 <a id="retained-audit-controls"></a>
 
 ## Counterexamples and identifiability

@@ -39,6 +39,22 @@ The vendored main paper contains experimental-comparison text, but no public mea
 
 Reopen only when a pinned K7 artifact supplies a reproducible common-scale inverse-coupling triple with explicit scheme, normalization, field content and boundary role compatible with the frozen OPH branch, or OPH derives a branch matching a frozen K7 vector.
 
+## Observer scale and conditional transport contract
+
+The current contract consumes OPH `879ed37ad2c1933ecb6dd8f54271362ee3f4d41c`, K7 `26d18fdd2fce61cc0231ec3485f8f5fe7efd5fc6`, and K7-Lean `70dc589bd7c3f77db54a2acb6e67986a7ef69468`. The historical receipt above retains its own pins. The current K7 erratum, §8.2, withdraws the reading of `3/13` as a GUT boundary and the dependent RGE chain. Its electromagnetic relation is at `q²=0`; the weak and strong relations are interpreted at `M_Z`, with no claim of a common-scale triplet. These are source-status statements, not measurement inputs.
+
+The native axial counter has exact covariance `(4/99) I₃` per uniform attempt and diffusion generator `(2/99) Δ`. Its binary current mark has one-attempt law `(28/33,5/33)`. Assigning arbitrary positive length and time units `ℓ,τ` preserves these native records and assigns diffusion `2ℓ²/(99τ)`. This gives a countermodel to identification of physical units from this declared signature. It proves no universal nonselection theorem for every possible OPH construction. The native radius does not itself supply physical continuum position, an RG subtraction scale, or a laboratory energy.
+
+The missing gauge datum is narrower than an absolute common scale. On the frozen one-loop matter branch, multilinearity gives exactly
+
+```text
+D(x-t b) = D(x),  D(x)=det(x,k,b),  k=(10/3,2,2), b=(41/6,-19/6,-7).
+```
+
+The vanishing-plane test therefore needs no chosen absolute `μ` **conditional on** one common subtraction prescription and compatible branch and threshold transport. Independent component shifts do not obey this identity; neither do arbitrary scheme changes, thresholds, or transport on a different beta branch. In particular, transporting only the first component of `k` by `-b₁` gives `D=943/18`; using the MSSM column `(11,1,-3)` for common transport gives drift `-76/3`. These controls cannot be interpreted as physical K7 comparison results.
+
+The irreducible missing datum at these pins is source-clean transport of the heterogeneous K7 relations into one common subtraction prescription with compatible running, field content, normalization and threshold matching. The matter kinetic branch also lacks a physical selector. No K7 vector is admitted and `NO_ADMISSIBLE_K7_GAUGE_VECTOR_ESTABLISHED_BY_PINNED_SOURCES` remains the interface verdict. The exact native-scale and conditional transport certificate is `k7_gauge_scale_contract.py`, with receipt `runtime/k7_gauge_scale_contract.json`, independent verifier `verify_k7_gauge_scale_contract_independent.py`, and hostile controls `test_k7_gauge_scale_contract.py`.
+
 ## Commands
 
 ```bash

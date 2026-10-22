@@ -1,0 +1,68 @@
+name: Arithmon interface contracts
+
+on:
+  push:
+    paths:
+      - 'code/a5_closure/*marked_triplet*'
+      - 'code/a5_closure/tests/*marked_triplet*'
+      - 'code/a5_closure/manifests/marked_triplet*'
+      - 'code/a5_closure/galois_port_frame_certificate.py'
+      - 'code/angular_sprint/*k7_gauge_scale_contract*'
+      - 'code/angular_sprint/runtime/k7_gauge_scale_contract.json'
+      - 'code/angular_sprint/external/k7_gauge_scale/**'
+      - 'code/source_selection_model/**'
+      - 'model/common_source/**'
+      - 'model/native_circulation/**'
+      - 'model/native_clock/**'
+      - 'model/primitive_observer/**'
+      - 'evidence/observer_dynamics_20260925/**'
+      - 'Lean/Screen/RGRepresentationFrontier.lean'
+      - 'tracking/premise_register.json'
+      - 'tracking/observation_ledger.json'
+      - 'claims/selection_ledger.json'
+      - '.github/workflows/arithmon-interface-contracts.yml'
+  pull_request:
+    paths:
+      - 'code/a5_closure/**'
+      - 'code/angular_sprint/**'
+      - 'code/source_selection_model/**'
+      - 'model/**'
+      - 'evidence/observer_dynamics_20260925/**'
+      - 'Lean/Screen/RGRepresentationFrontier.lean'
+      - 'tracking/**'
+      - 'claims/**'
+      - '.github/workflows/arithmon-interface-contracts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned dependencies
+        run: python3 -m pip install -r requirements.txt
+      - name: Verify native scale and conditional RG transport
+        run: |
+          python3 -B code/angular_sprint/k7_gauge_scale_contract.py --check
+          python3 -B code/angular_sprint/verify_k7_gauge_scale_contract_independent.py
+      - name: Independently verify the marked-triplet packet
+        run: python3 -B code/a5_closure/verify_marked_triplet_attachment_independent.py
+      - name: Run exact attachment and scale hostile controls
+        run: >-
+          python3 -B -m pytest -q
+          code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
+          code/angular_sprint/test_k7_gauge_scale_contract.py
+      - name: Check synchronized registers
+        run: |
+          python3 -B tools/build_premise_register.py --check
+          python3 -B tools/build_model_theorem_map.py --check
+          python3 -B tools/build_observation_ledger.py --check
+          python3 -B tools/build_selection_ledger.py --check
+          python3 -B tools/build_claim_views.py --check
