@@ -44,6 +44,13 @@ coherent quadratures. It uses the complete attempt tape, with zero-current
 events retained, and propagates uncertainty or returns an inconclusive
 identification. It selects no atomic correspondence from optical ratios.
 
+For a bare source-symmetric seam scheduler, the
+[native edge-orbit certificate](native_clock/README.md#which-scheduler-premises-disappear)
+forces a uniform one-step seam marginal. A stationary, symmetry-invariant
+seam-memory scheduler leaves that marginal and the native equilibrium fixed
+but changes two-current probabilities. Source symmetry therefore does not
+derive the IID schedule used by the present clock and field histories.
+
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair
 from passive records, with no separate response fit. Its discounted field

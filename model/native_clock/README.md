@@ -160,6 +160,26 @@ classes retain predictive memory without adding a clock module.
 
 ## Which scheduler premises disappear
 
+The bare source graph supplies a narrower scheduler selection. Two checked
+port automorphisms move any of its 30 seams to any other. Consequently a
+normalized **one-step seam law invariant under those source symmetries** has
+weight `1/30` on every seam. This is an exact symmetry implication, not a
+claim that the adaptive two-event observer uses that law. It also says
+nothing about independence across attempts. The
+[symmetry/scheduling gate](symmetry_schedule.py) executes a stationary
+countercontrol: repeat the last seam with probability `q`, otherwise redraw
+uniformly. For every rational `0 <= q < 1`, each seam still has uniform
+one-step exposure, every fixed-seam native kernel preserves the same uniform
+total-two configuration law, and all seams remain reachable. Yet the
+probability of two successive moving currents is
+`(23+52q)/990`: `23/990` for IID seams and `49/990` at `q=1/2`, while each
+single-attempt moving rate remains `5/33`. Within this declared scheduler
+family, the retained current bits determine `q=(990 P(11)-23)/52` from their
+exact two-event law; finite-sample uncertainty still needs a bound. Thus
+source symmetry and stationarity reduce the uniform-marginal premise
+but do not select the temporal scheduling law required by the complete field
+and clock records.
+
 The **stationary mean rate `5/33` does not require uniform seam choice**.
 For each fixed seam exactly 20 of the 66 configurations have unequal endpoint
 occupancy, and the fair coin produces a move with probability one half.
