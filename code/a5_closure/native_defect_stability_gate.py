@@ -115,10 +115,14 @@ def homology_ranks(support: dict, punctures: tuple[int, int]) -> dict[str, dict]
         full_h1 = len(edges) - rank_one - rank_two
         single_h1 = len(edges) - rank_one - rank_single
         punctured_h1 = len(edges) - rank_one - rank_punctured
+        full_h2 = face_count - rank_two
+        single_h2 = face_count - 1 - rank_single
+        punctured_h2 = face_count - 2 - rank_punctured
         if (rank_one, rank_two, rank_single, rank_punctured,
-                full_h1, single_h1, punctured_h1) != (
+                full_h1, single_h1, punctured_h1,
+                full_h2, single_h2, punctured_h2) != (
             vertex_count - 1, face_count - 1, face_count - 1,
-            face_count - 2, 0, 0, 1
+            face_count - 2, 0, 0, 1, 1, 0, 0
         ):
             raise ArithmeticError("the full/once/twice-punctured sphere homology changed")
         result[f"F{prime}"] = {
@@ -129,6 +133,9 @@ def homology_ranks(support: dict, punctures: tuple[int, int]) -> dict[str, dict]
             "full_H1_dimension": full_h1,
             "one_puncture_H1_dimension": single_h1,
             "two_puncture_H1_dimension": punctured_h1,
+            "full_H2_dimension": full_h2,
+            "one_puncture_H2_dimension": single_h2,
+            "two_puncture_H2_dimension": punctured_h2,
         }
     return result
 
@@ -253,6 +260,8 @@ def run() -> dict:
         if any(flux.face_holonomies(first, support["boundary"], 20)[f]
                for f in range(20) if f not in punctures):
             raise ArithmeticError("declared puncture connection has bulk face curvature")
+        if sum(flux.face_holonomies(first, support["boundary"], 20)) % 6:
+            raise ArithmeticError("a global seam chain has nonzero total sphere flux")
     return {
         "schema": "oph.native_defect_stability_gate.v1",
         "carrier": {"vertices": 12, "seams": 30, "faces": 20,
@@ -278,14 +287,18 @@ def run() -> dict:
             "charges_checked": [1, 2, 3, 4, 5],
             "route_lengths": [len(path), len(alternative)],
             "flat_on_all_unpunctured_faces": True,
+            "globally_assigned_link_chain_total_face_flux_mod_6": 0,
             "route_difference_is_vertex_regauge": True,
             "single_seam_updates_move_and_annihilate_pair": True,
             "annihilation_updates_include_puncture_boundary_seams": True,
             "single_seam_link_updates_are_native_repair": False,
+            "nontrivial_H2_bundle_transition_data_native": False,
             "all_depth_refinement_or_dynamical_protection_proved": False,
         },
         "scope": (
-            "The full closed carrier has no H1 loop sector; a declared two-face "
+            "The full closed carrier has no H1 loop sector but retains H2; "
+            "a nontrivial bundle needs transition data absent from the native "
+            "state. A declared two-face "
             "puncture gives one independent Z6-valued loop generator. Native "
             "current contrasts remain "
             "pure gauge. The constructed nonzero flux pair is a separate link "

@@ -31,6 +31,9 @@ class NativeDefectStabilityGateTests(unittest.TestCase):
                 "full_H1_dimension": 0,
                 "one_puncture_H1_dimension": 0,
                 "two_puncture_H1_dimension": 1,
+                "full_H2_dimension": 1,
+                "one_puncture_H2_dimension": 0,
+                "two_puncture_H2_dimension": 0,
             })
         refined, child_faces = flux.edge_midpoint_refinement(support)
         child_punctures = (child_faces[punctures[0]][0],
@@ -41,6 +44,9 @@ class NativeDefectStabilityGateTests(unittest.TestCase):
             self.assertEqual((row["full_H1_dimension"],
                               row["one_puncture_H1_dimension"],
                               row["two_puncture_H1_dimension"]), (0, 0, 1))
+            self.assertEqual((row["full_H2_dimension"],
+                              row["one_puncture_H2_dimension"],
+                              row["two_puncture_H2_dimension"]), (1, 0, 0))
 
     def test_declared_pair_is_flat_off_cores_and_removable_under_link_updates(self):
         support, punctures = gate.support_and_punctures()
@@ -80,6 +86,10 @@ class NativeDefectStabilityGateTests(unittest.TestCase):
         self.assertFalse(result["native_record"]["current_selected_nontrivial_Z6_defect"])
         self.assertFalse(result["declared_Z6_link_control"]
                          ["single_seam_link_updates_are_native_repair"])
+        self.assertFalse(result["declared_Z6_link_control"]
+                         ["nontrivial_H2_bundle_transition_data_native"])
+        self.assertEqual(result["declared_Z6_link_control"]
+                         ["globally_assigned_link_chain_total_face_flux_mod_6"], 0)
         self.assertFalse(result["one_step_topology_refinement"]
                          ["native_repair_on_child_complex"])
         self.assertEqual(result["one_step_topology_refinement"]

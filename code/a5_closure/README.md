@@ -157,7 +157,10 @@ In a link model allowing single-seam updates across the puncture-boundary
 seams, the pair can be moved together and annihilated.
 Those link updates are not native repair. Gauge invariance of the conditional
 flux certificate does not by itself supply a core-protection law or select a
-physical defect.
+physical defect. The closed carrier retains a second-homology class; trivial
+first homology does not exclude curvature or a nontrivial bundle. A globally
+assigned link chain has zero total oriented sphere flux. Native repair has no
+bundle transition data that would realize a nontrivial second-homology sector.
 
 `claim_boundary_certificates.py` records five exact-small controls at this
 boundary: completion non-identifiability from the current source reduct, the
