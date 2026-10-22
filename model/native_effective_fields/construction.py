@@ -24,7 +24,7 @@ from ..observer_reconstruction import native_geometry
 from ..observer.scalar_response.experiment import canonical
 from ..primitive_observer import runtime, transfer
 from ..federated_quantum_sector import construction as quantum
-from . import charged_reference
+from . import charged_reference, charged_reference_source
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -33,6 +33,11 @@ SOURCE_PATHS = tuple(sorted(set((*clock.SOURCE_PATHS, *fluctuations.SOURCE_PATHS
     'model/native_effective_fields/__init__.py', 'model/native_effective_fields/__main__.py',
     'model/native_effective_fields/construction.py',
     'model/native_effective_fields/charged_reference.py',
+    'model/native_effective_fields/charged_reference_source.py',
+    'model/observer/source_scalar/compiler.py',
+    'model/observer/source_discrimination/circuit.py',
+    'code/source_selection_model/response.json',
+    'code/m1_source_realization/receipt.json',
     'model/federated_quantum_sector/construction.py',
     'Lean/SourceLaw/TransferMatrixLift.lean', 'Lean/Dynamics/PrivateInner.lean'))))
 CURRENT_VALUES = (-1, 0, 1)
@@ -503,6 +508,7 @@ def run():
         'charged_coherence_scope': charged_coherence_scope(),
         'charged_reference_readout': charged_reference.reference_readout_scope(kernel.seams),
         'charged_spatial_pole_gate': charged_reference.charged_spatial_pole_gate(kernel.seams),
+        'charged_reference_source_word': charged_reference_source.source_word_readout(kernel.seams),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],
         'scope': {'one_native_carrier_no_independent_replica_limit': True,

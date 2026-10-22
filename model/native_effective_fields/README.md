@@ -223,6 +223,28 @@ Kraus maps gives `p_+(n)=[1+r_L^n]/2`: at one attempt it is `23/24` for C and
 reference preparation and exchange analyzer are supplied. Neither is in the
 current two-event observer or selected by its repair records.
 
+The same declared reference test is now emitted as existing six-level
+processor source words, rather than inserted as a state or effect matrix.
+A five-pulse word prepares the total-one source/reference superposition;
+the existing C/E repair words act on the vacuum/one-token and binary seam
+columns; a 598-pulse word couples the pair-exchange effect to a pointer.
+Every coin, raw record (including reserved zero-probability codes) and
+pointer outcome is retained. The compiled branch densities match the
+independent exact local Kraus law within the stated numerical tolerance.
+For one seam incident on the source port, the exact plus probabilities are
+`3/4` for C and `1/2` for E. The native degree-five, thirty-seam carrier
+then gives `23/24` and `11/12` under the separately declared uniform
+scheduler. The source-word execution checks the incident unit; the
+25 remote seam units retain the source/reference coherence exactly. Their
+compiled vacuum columns are identity with the source token as an untouched
+spectator; all remote units and both coin words are checked. The
+thirty-seam mixture follows these exact local units and the graph count,
+while the compiled incident probabilities carry a separate floating error.
+This establishes ideal encoded *realizability* using existing control
+primitives. It does not make the preparation, analyzer, coherent law or
+scheduler a consequence of repair, and it does not bound physical
+proper-code service errors or identify a particle pole.
+
 The records alone cannot fix an oscillation frequency. Multiplying each
 native Kraus map by source charge parity after repair leaves every current
 word unchanged, including adaptive words, yet changes the charge-one rate

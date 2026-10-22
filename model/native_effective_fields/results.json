@@ -58,6 +58,48 @@
       "E": "5/6"
     }
   },
+  "charged_reference_source_word": {
+    "carrier_seam_count": 30,
+    "exact_repair_column_maps_checked": 16,
+    "incident_seam_count_per_port": 5,
+    "maximum_floating_branch_or_probability_error": 2.5224267119483557e-13,
+    "native_law": "existing compiled C/E local repair with every raw record and coin retained",
+    "numerical_acceptance_tolerance": 3e-11,
+    "particle_pole_or_rest_mass_identified": false,
+    "pointer_qubits": 1,
+    "preparation_analyzer_or_C_E_law_selected_by_native_records": false,
+    "proper_code_service_failures_physically_bounded": false,
+    "remote_seam_exact_coherence_units_checked": 50,
+    "remote_seam_source_word_vacuum_columns_checked": 4,
+    "rows": {
+      "C": {
+        "all_coin_raw_record_pointer_branches": 16,
+        "one_incident_seam_coherence_rate_exact": "1/2",
+        "one_incident_seam_plus_probability_exact": "3/4",
+        "source_executed_one_incident_seam_plus_probability": 0.7499999999998209,
+        "uniform_thirty_seam_plus_probability_exact": "23/24",
+        "zero_probability_abort_branches": 4
+      },
+      "E": {
+        "all_coin_raw_record_pointer_branches": 32,
+        "one_incident_seam_coherence_rate_exact": "0",
+        "one_incident_seam_plus_probability_exact": "1/2",
+        "source_executed_one_incident_seam_plus_probability": 0.4999999999998809,
+        "uniform_thirty_seam_plus_probability_exact": "11/12",
+        "zero_probability_abort_branches": 12
+      }
+    },
+    "source_analyzer_pulses": 598,
+    "source_code_qubits": 4,
+    "source_preparation_pulses": 5,
+    "source_repair_pulses": {
+      "C": 5370,
+      "E": 5373
+    },
+    "source_word_analyzer_effect": "(I+X_port,ref)/2, fair on orthogonal subspace",
+    "source_word_preparation": "declared total-one source/reference coherent state",
+    "uniform_seam_scheduler_or_physical_clock_selected": false
+  },
   "charged_spatial_pole_gate": {
     "all_current_resolved_charge_one_columns_checked": 2160,
     "all_current_resolved_endpoint_signed_difference_columns_checked": 2880,
@@ -2908,6 +2950,8 @@
     "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
     "Lean/SourceLaw/TransferMatrixLift.lean": "a149722bf254de0506a2543bd4580de617f99abc8aca373e93131c0f24f3a980",
     "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
@@ -2923,12 +2967,15 @@
     "model/native_effective_fields/__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "model/native_effective_fields/__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
     "model/native_effective_fields/charged_reference.py": "a4072b8156e18daaed13bff232b94e2b6f1d638694459d3963b3704a8d759112",
-    "model/native_effective_fields/construction.py": "bf3455905fefc8f568afdfb697d6fe5fd5b393889f6e4b9cb29e710ab0a608fd",
+    "model/native_effective_fields/charged_reference_source.py": "7826534d962d0d6789cdc70ef345a05f916c41b5447aaa06d9bc2d243ccfeb05",
+    "model/native_effective_fields/construction.py": "d36c94c7b4aad45e8668139a320a45c6b120e841156b4426f195f69aadd51c03",
     "model/native_fluctuations/__main__.py": "143bc389270f4983ff83374b424dcf750de0d4ffacaea01102ff3cc01c4c4aba",
     "model/native_fluctuations/experiment.py": "3e248555159cdd0835d9e4ffd51ad3df8f7e928e8d3a127a905cfba032e2e13f",
     "model/native_fluctuations/source.py": "963281df213df670acf1d4d0368f71b929b3c97b88d94f696d999f6e8da6c86f",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",

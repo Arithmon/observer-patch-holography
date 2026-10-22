@@ -1,12 +1,14 @@
 {
-  "description": "Exact native hard-core fields, controlled logarithm, minimal record spectrum and complete four-current readouts.",
+  "description": "Exact native fields, charged spatial pole gate, source-word reference readout and complete current histories.",
   "files": {
-    "README.md": "386c48af482ec707f7bdc650a465f9a407420dc166612b17e9740892c6997a70",
+    "README.md": "d4905fa3167f5250d92d29b89ca2821c1669ac2bdb093edea3a255fd45a7a595",
     "__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
     "charged_reference.py": "a4072b8156e18daaed13bff232b94e2b6f1d638694459d3963b3704a8d759112",
-    "construction.py": "bf3455905fefc8f568afdfb697d6fe5fd5b393889f6e4b9cb29e710ab0a608fd",
-    "results.json": "7cf111889dad1663619926f576f51102adfd4d83e6635d02603c83aec90d4634",
+    "charged_reference_source.py": "7826534d962d0d6789cdc70ef345a05f916c41b5447aaa06d9bc2d243ccfeb05",
+    "construction.py": "d36c94c7b4aad45e8668139a320a45c6b120e841156b4426f195f69aadd51c03",
+    "results.json": "63e633b9a47f98bf7e432e2793497ad080119809050551cb68880d2a29c4bbce",
+    "test_charged_reference_source.py": "6a77414468610d6a4eaa3ac68ff61ffe0709b0e83d3c6bd8184142b9f475a81c",
     "test_construction.py": "a18d7493d4e4c71c50092672e745804ac24d7ff698d19356fddddd8f7cf915b7"
   },
   "reproduce": [
