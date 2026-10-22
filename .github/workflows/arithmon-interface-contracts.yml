@@ -7,8 +7,18 @@ on:
       - 'code/a5_closure/tests/*marked_triplet*'
       - 'code/a5_closure/manifests/marked_triplet*'
       - 'code/a5_closure/galois_port_frame_certificate.py'
+      - 'code/a5_closure/manifests/galois_port_frame_reference.json'
+      - 'code/angular_sprint/*k7_gauge_scale_contract*'
+      - 'code/angular_sprint/runtime/k7_gauge_scale_contract.json'
+      - 'code/angular_sprint/external/k7_gauge_scale/**'
+      - 'code/angular_sprint/k7_gauge_kinetic_cross_control.md'
       - 'code/source_selection_model/**'
       - 'model/common_source/slow_geometry.py'
+      - 'model/native_circulation/construction.py'
+      - 'model/native_clock/clock.py'
+      - 'model/observer/native.py'
+      - 'model/primitive_observer/transfer.py'
+      - 'Lean/Screen/RGRepresentationFrontier.lean'
       - 'evidence/observer_dynamics_20260925/**'
       - 'tracking/premise_register.json'
       - 'tracking/observation_ledger.json'
@@ -23,8 +33,18 @@ on:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/tests/*marked_triplet*'
       - 'code/a5_closure/manifests/marked_triplet*'
+      - 'code/a5_closure/manifests/galois_port_frame_reference.json'
+      - 'code/angular_sprint/*k7_gauge_scale_contract*'
+      - 'code/angular_sprint/runtime/k7_gauge_scale_contract.json'
+      - 'code/angular_sprint/external/k7_gauge_scale/**'
+      - 'code/angular_sprint/k7_gauge_kinetic_cross_control.md'
       - 'code/source_selection_model/**'
       - 'model/common_source/slow_geometry.py'
+      - 'model/native_circulation/construction.py'
+      - 'model/native_clock/clock.py'
+      - 'model/observer/native.py'
+      - 'model/primitive_observer/transfer.py'
+      - 'Lean/Screen/RGRepresentationFrontier.lean'
       - 'evidence/observer_dynamics_20260925/**'
       - 'tracking/premise_register.json'
       - 'tracking/observation_ledger.json'
@@ -52,8 +72,15 @@ jobs:
         run: python3 -m pip install -r requirements.txt
       - name: Independently verify the marked-triplet packet
         run: python3 -B code/a5_closure/verify_marked_triplet_attachment_independent.py
-      - name: Run marked-triplet hostile controls
-        run: python3 -B -m pytest -q code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
+      - name: Verify native scale and conditional RG transport
+        run: |
+          python3 -B code/angular_sprint/k7_gauge_scale_contract.py --check
+          python3 -B code/angular_sprint/verify_k7_gauge_scale_contract_independent.py
+      - name: Run exact interface hostile controls
+        run: >-
+          python3 -B -m pytest -q
+          code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
+          code/angular_sprint/test_k7_gauge_scale_contract.py
       - name: Check synchronized registers
         run: |
           python3 -B tools/build_premise_register.py --check
