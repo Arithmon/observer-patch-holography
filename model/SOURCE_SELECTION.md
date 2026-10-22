@@ -59,6 +59,28 @@ those histories are stationary and out-and-back on one seam: their geometric
 link product is one. The phase is not selected by the committed records and
 does not establish charged flux or a defect.
 
+The registered-face interferometer uses two native moving routes with the
+same endpoint and retains their complete outcome law. A separately calibrated
+coherent phase interface lets its two quadratures distinguish a declared
+face phase. A one-triangle control is essential: a uniform sign on every
+moving link changes each triangular face product but is invisible to the
+even, two-face loop. Exact comparison of the complete C/E record instruments
+shows that both phase completions have identical committed readouts, and the
+selected moving branch is only a rank-one partial transfer. The native source
+therefore does not yet select a coherent link transport or an observed face
+holonomy. The one-face arms contain different numbers of moves, so the idle
+and move-count dynamical phases also need an independent calibration before a
+phase difference can be assigned to geometry. On the closed carrier, the
+measured current contrast is flat. A declared two-puncture `Z6` link field
+has a loop sector, but its flux pair can
+be annihilated by local link updates when those are allowed. Such updates and
+the punctures are not part of native repair. Trivial first homology does not
+exclude curvature or bundle sectors; a physical defect also needs a sourced
+connection, dynamical core protection and a measurable stable excitation.
+The finite seam-holonomy and interference theorems classify supplied link
+labels and their path ratios; their hypotheses do not choose one of the
+record-equivalent native phase completions.
+
 A [relational charged-coherence test](native_effective_fields/README.md)
 can distinguish the admitted C/E laws
 using existing source controls for a declared source/reference preparation

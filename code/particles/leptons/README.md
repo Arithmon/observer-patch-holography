@@ -103,9 +103,14 @@ The [finite cycle-obstruction theorem](../../../paper/reality_as_consensus_proto
 proves irreducible mismatch for supplied nontrivial holonomy, not a charged
 particle or its energy. The [conditional puncture-flux certificate](../../a5_closure/flux_defect_criterion_certificate.py)
 classifies declared `Z6` defects and finite spectra, but supplies neither a
-source-selected defect nor a quantum mass pole. A defect-based lepton model
-must connect that charge to native repair, propagation, and the same physical
-spectral readout used for the ratio test.
+source-selected defect nor a quantum mass pole. The
+[native defect gate](../../a5_closure/native_defect_stability_gate.py) finds
+flat current contrast on the closed carrier and tests a declared two-puncture
+flux pair. Local link updates can annihilate the pair if puncture-boundary
+updates are allowed; native repair supplies neither those links nor a
+protecting core law. A defect-based lepton model must connect that charge to
+native repair, propagation, and the same physical spectral readout used for
+the ratio test.
 
 ## Icosahedral Face-Incidence Completion Conjecture
 
