@@ -61,6 +61,12 @@ class FamilyPortIdentifiabilityTests(unittest.TestCase):
         packet[(7, 8)] = ((0, 2), packet[(7, 8)][1])
         with self.assertRaises(ValueError):
             subject.recover_loads_from_packet(packet)
+        packet = subject.all_seam_packet(subject.binary_load((4, 7)))
+        original_contrast = sum(current for _, current in packet[(7, 8)])
+        packet[(7, 8)] = ((0, 2), (1, -1))
+        self.assertEqual(sum(current for _, current in packet[(7, 8)]), original_contrast)
+        with self.assertRaisesRegex(ValueError, "coin-conditioned record"):
+            subject.recover_loads_from_packet(packet)
         del packet[(7, 8)]
         with self.assertRaises(ValueError):
             subject.recover_loads_from_packet(packet)

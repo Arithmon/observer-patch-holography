@@ -79,7 +79,7 @@ def probe_law(loads: tuple[int, ...], seam: tuple[int, int]) -> dict[tuple[int, 
 
 
 def all_seam_packet(loads: tuple[int, ...]) -> dict[tuple[int, int], tuple[tuple[int, int], ...]]:
-    """Executor: exact branch records on fresh copies of one prepared load."""
+    """Executor: ideal exact branch laws from fresh identical preparations."""
     return {seam: tuple(native.native(loads, seam, coin)[1] for coin in (0, 1))
             for seam in slow_geometry.source().seams()}
 
@@ -87,10 +87,12 @@ def all_seam_packet(loads: tuple[int, ...]) -> dict[tuple[int, int], tuple[tuple
 def recover_loads_from_packet(
     packet: dict[tuple[int, int], tuple[tuple[int, int], ...]], *, total: int = 2,
 ) -> tuple[int, ...]:
-    """Estimator: two fair-coin currents give every edge contrast.
+    """Estimator: the two exact coin-conditioned currents give each contrast.
 
     For oriented seam (a,b), j_0+j_1=x_a-x_b. Connected seam incidence
-    determines all loads up to one constant; conserved total fixes it.
+    determines all loads up to one constant; conserved total fixes it. The
+    recovered loads must also reproduce every branch under the native rule.
+    This packet is an ideal ensemble law, not a finite continuing tape.
     """
     seams = tuple(slow_geometry.source().seams())
     if type(total) is not int or total < 0 or set(packet) != set(seams):
@@ -126,7 +128,14 @@ def recover_loads_from_packet(
     recovered = tuple(relative[i] + shift for i in range(12))
     if any(value.denominator != 1 or value < 0 for value in recovered):
         raise ValueError("native packet has no nonnegative integer load solution")
-    return tuple(int(value) for value in recovered)
+    loads = tuple(int(value) for value in recovered)
+    for seam in seams:
+        expected = {coin: native.native(loads, seam, coin)[1]
+                    for coin in (0, 1)}
+        observed = {coin: (coin, current) for coin, current in packet[seam]}
+        if observed != expected:
+            raise ValueError("coin-conditioned record violates native repair")
+    return loads
 
 
 def _encoded_law(law: dict[tuple[tuple[int, int], ...], Q]) -> list[dict]:
@@ -189,12 +198,14 @@ def run() -> dict:
             "mass_reference_data_consumed": False,
         },
         "port_resolved_readout": {
-            "protocol": "fresh identical preparation for both coin branches at each of 30 labelled native seams",
+            "protocol": "ideal exact fair-coin branch law at each of 30 labelled seams, each on fresh identical preparations",
             "edge_contrast_identity": "j_coin0+j_coin1=x_a-x_b",
+            "branch_validation": "both coin-conditioned currents replayed through native repair after load recovery",
             "source_loads_reconstructed_exactly": reconstructed,
             "readout": "complete load vector and hence its W5 projector",
             "premises": ["identical repeatable preparation", "labelled all-seam access",
-                         "exact complete branch law", "known conserved total two"],
+                         "ideal exact ensemble branch laws, not finite tape samples",
+                         "known conserved total two"],
         },
         "witness": {
             "initial_occupied_ports": [list(WITNESS_PORTS[0]), list(WITNESS_PORTS[1])],

@@ -9,14 +9,15 @@
     "witness_has_identical_complete_native_tape_law": true
   },
   "port_resolved_readout": {
+    "branch_validation": "both coin-conditioned currents replayed through native repair after load recovery",
     "edge_contrast_identity": "j_coin0+j_coin1=x_a-x_b",
     "premises": [
       "identical repeatable preparation",
       "labelled all-seam access",
-      "exact complete branch law",
+      "ideal exact ensemble branch laws, not finite tape samples",
       "known conserved total two"
     ],
-    "protocol": "fresh identical preparation for both coin branches at each of 30 labelled native seams",
+    "protocol": "ideal exact fair-coin branch law at each of 30 labelled seams, each on fresh identical preparations",
     "readout": "complete load vector and hence its W5 projector",
     "source_loads_reconstructed_exactly": 78
   },

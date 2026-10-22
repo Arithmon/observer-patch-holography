@@ -66,15 +66,17 @@ projector in the
 Binary loads
 on spectator ports `(4,7)` and `(4,8)` give the same complete coin/current
 tape law, while their `W5` norms squared are `5/3` and `2/3`. An admitted,
-separately labelled native `(7,8)` seam attempt distinguishes them. With
-fresh identical preparations, the complete coin/current laws for all thirty
-labelled native seams recover every one of the 78 possible load vectors
-exactly: the two coin currents sum to each edge contrast, and the connected
-seam graph plus conserved total fixes the loads. Thus port-resolved probing
+separately labelled native `(7,8)` seam attempt distinguishes them. The ideal
+coin/current ensemble branch laws for all thirty labelled seams, each tested
+on fresh identical preparations, recover every one of the 78 possible load
+vectors exactly: the two coin currents sum to each edge contrast, the connected
+seam graph plus conserved total fixes the loads, and both recovered branch
+records must replay under native repair. This is not a finite observer tape
+or a finite-sample inference. Thus port-resolved probing
 does provide a `W5` observable of the load preparation, while the fixed
 record-only controller does not. Identifying that load observable with the
 charged defect record remains open. Repeatable preparation, all-seam access
-and the complete branch law are declared inputs; the full final load register
+and exact branch laws are declared inputs; the full final load register
 is another stronger readout. Neither protocol selects a charged-family
 operator, coupling or mass.
 
