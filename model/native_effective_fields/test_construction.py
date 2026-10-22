@@ -194,6 +194,38 @@ def test_richer_native_current_words_separate_fixed_controller_hidden_preparatio
         assert str(two_bits) == prepared['two_moving_bits_probability']
 
 
+def test_charged_coherence_rates_do_not_turn_neutral_record_poles_into_masses():
+    result = c.charged_coherence_scope()
+    assert result['record_transfer_sector'] == 'binary total-two; N=2 I_66'
+    assert result['projected_single_port_ladder_nonzero_entries'] == 0
+    assert result['full_native_CP_vacuum_one_token_coherence_eigenvalues'] == {
+        'C': '11/12', 'E': '5/6'}
+    assert result['degenerate_port_modes_per_coherent_law'] == 12
+    assert not result['classical_current_records_select_C_or_E_coherent_law']
+    assert not result['vacuum_one_token_coherence_and_analyzer_executed_by_current_observer']
+    assert not result['hard_core_ladder_is_selected_charged_lepton_CAR_operator']
+    assert not result['CP_coherence_decay_identified_with_particle_rest_energy']
+
+    # C and E have identical classical endpoint/current records, but their
+    # coherent charge-one continuation differs. The distinction is exact even
+    # before asking for a physical pole or a calibrated clock.
+    seam = (0, 1)
+    for mask in range(4):
+        for current in (-1, 0, 1):
+            assert c.quantum.native_unit('C', mask, mask, seam, current) == \
+                c.quantum.native_unit('E', mask, mask, seam, current)
+    assert c.quantum.native_unit('C', 1, 0, seam) != \
+        c.quantum.native_unit('E', 1, 0, seam)
+
+    # Independently derive the full-carrier eigenvalues: each of twelve ports
+    # meets five of thirty seams, and its off-diagonal term survives an
+    # incident attempt with weight 1/2 under C or zero under E.
+    seams = c.source_kernel().seams
+    assert all(sum(port in seam for seam in seams) == 5 for port in range(12))
+    assert 1-F(5, 2*len(seams)) == F(11, 12)
+    assert 1-F(5, len(seams)) == F(5, 6)
+
+
 @pytest.mark.parametrize('bad', [True, -1, 25, 2., '2', None])
 def test_log_orders_reject_undeclared_values_and_alias_types(bad):
     for operation in (c.log_polynomial, c.log_remainder):

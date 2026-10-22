@@ -23,6 +23,7 @@ from ..native_fluctuations import source as currents
 from ..observer_reconstruction import native_geometry
 from ..observer.scalar_response.experiment import canonical
 from ..primitive_observer import runtime, transfer
+from ..federated_quantum_sector import construction as quantum
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -30,6 +31,7 @@ SOURCE_PATHS = tuple(sorted(set((*clock.SOURCE_PATHS, *fluctuations.SOURCE_PATHS
     'model/observer_reconstruction/native_geometry.py',
     'model/native_effective_fields/__init__.py', 'model/native_effective_fields/__main__.py',
     'model/native_effective_fields/construction.py',
+    'model/federated_quantum_sector/construction.py',
     'Lean/SourceLaw/TransferMatrixLift.lean', 'Lean/Dynamics/PrivateInner.lean'))))
 CURRENT_VALUES = (-1, 0, 1)
 
@@ -428,6 +430,59 @@ def record_decay_sanity():
         'particle_mass_ratio_or_physical_energy_identified': False}
 
 
+def charged_coherence_scope():
+    """Separate the fixed-sector record poles from a full-algebra charge block.
+
+    The latter is an exact native CP coherence decay. Its two-point expression
+    requires a vacuum/one-token coherence and an analyzer; neither is among
+    the retained current records, and a CP decay is not a rest energy.
+    """
+    kernel = source_kernel()
+    states = set(kernel.states)
+    if len(states) != 66 or {sum(state) for state in states} != {2}:
+        raise ArithmeticError('the native current transfer left its total-two sector')
+    projected_ladder_entries = 0
+    for state in states:
+        for port in range(12):
+            changed = list(state)
+            changed[port] = 1-changed[port]
+            projected_ladder_entries += tuple(changed) in states
+    if projected_ladder_entries:
+        raise ArithmeticError('a number-changing ladder remained inside the fixed sector')
+
+    for endpoint in range(4):
+        for current in CURRENT_VALUES:
+            if quantum.native_unit('C', endpoint, endpoint, (0, 1), current) != \
+                    quantum.native_unit('E', endpoint, endpoint, (0, 1), current):
+                raise ArithmeticError('classical endpoint/current records distinguish C from E')
+
+    # The full native C/E channels also act on cross-number matrix units.
+    # Check every port directly from the endpoint rule, without constructing
+    # a fitted Hamiltonian or assigning a particle species to a mode.
+    rates = {}
+    for law in ('C', 'E'):
+        expected = F(11, 12) if law == 'C' else F(5, 6)
+        for port in range(12):
+            row = {}
+            for seam in kernel.seams:
+                for key, weight in quantum.native_unit(law, 1 << port, 0, seam).items():
+                    row[key] = row.get(key, F(0))+weight/F(len(kernel.seams))
+            if row != {(1 << port, 0): expected}:
+                raise ArithmeticError('the exact charge-one coherence block changed')
+        rates[law] = str(expected)
+    return {'record_transfer_sector': 'binary total-two; N=2 I_66',
+        'projected_single_port_ladder_nonzero_entries': projected_ladder_entries,
+        'all_operators_within_record_transfer_neutral_under_occupation_U1': True,
+        'full_native_CP_vacuum_one_token_coherence_eigenvalues': rates,
+        'degenerate_port_modes_per_coherent_law': 12,
+        'classical_current_records_select_C_or_E_coherent_law': False,
+        'formal_charge_one_two_point': 'Tr(b_i Phi^n(b_i^dagger |vac><vac|))=r^n',
+        'two_point_parameter': 'unread native attempt count n',
+        'vacuum_one_token_coherence_and_analyzer_executed_by_current_observer': False,
+        'hard_core_ladder_is_selected_charged_lepton_CAR_operator': False,
+        'CP_coherence_decay_identified_with_particle_rest_energy': False}
+
+
 def run():
     kernel = source_kernel()
     adjacency = {i: {b if a == i else a for a, b in kernel.seams if i in (a, b)} for i in range(12)}
@@ -443,6 +498,7 @@ def run():
         'finite_spatial_support': spatial_locality_audit(),
         'observer_record_spectral_reduction': record_spectral_reduction(),
         'observer_record_decay_sanity': record_decay_sanity(),
+        'charged_coherence_scope': charged_coherence_scope(),
         'four_current_predictions': predictions,
         'complete_executions': [execute_currents(ports, checkpoint=(i == 0)) for i, ports in enumerate(probes)],
         'scope': {'one_native_carrier_no_independent_replica_limit': True,

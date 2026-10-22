@@ -192,6 +192,26 @@ their probabilities of two successive moving bits are respectively `1/36`
 and `23/900` under this protocol. The exact 66-state native transition counts
 independently reproduce both values. These records resolve this finite hidden
 preparation ambiguity; they do not select a particle family operator.
+
+The current transfer is restricted to `N=sum_i n_i=2 I_66`. Therefore every
+operator inside that 66-state space is neutral under its occupation `U(1)`,
+and a single-port creation or annihilation operator compressed to the space
+vanishes. Its two record poles cannot be charged-particle two-point poles.
+The full native quantum channel does retain cross-number coherences. Direct
+enumeration of all thirty seams shows that `|one token at i><vacuum|` is an
+eigenoperator of the unread channel at every port, with eigenvalue `11/12`
+per native attempt under coherent rule C, or `5/6` under rule E. These twelve
+single-port modes are degenerate within each law, so this block supplies no
+three-family mass splitting. Formally,
+`Tr(b_i Phi^n(b_i^dagger |vac><vac|))` has the corresponding decay. C and E
+give the same classical endpoint/current records but different coherent
+decays. Measuring this expression would require a prepared vacuum/one-token
+coherence, a charge reference and an analyzer outside the present current
+observer. It is a dissipative Liouville coherence rate, not a state-vector
+Hamiltonian gap or a selected charged-lepton mass; the hard-core ladder is
+not a derived CAR electron operator. The [native action](../native_action/README.md)
+keeps those mathematical objects distinct.
+
 The marked matrices inserted at the reads are transition insertions, **not
 POVM effects**: their sum is `P`, and their symmetric moving insertion has a
 negative determinant. A coherent probe of these transfer modes needs its own
