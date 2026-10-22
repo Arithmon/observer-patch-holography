@@ -52,7 +52,9 @@ SCRIPT = ROOT / "particles" / "flavor" / "derive_quark_lane_closure_contract.py"
 OUTPUT = ROOT / "particles" / "runs" / "flavor" / "quark_lane_closure_contract.json"
 
 
-def test_quark_lane_contract_records_two_independent_obstructions_and_audit_only_sidecars() -> None:
+def test_quark_lane_contract_records_two_independent_obstructions_and_audit_only_sidecars(
+    tmp_path: pathlib.Path,
+) -> None:
     subprocess.run(
         [sys.executable, str(S3_D12_TEMPLATE_SCRIPT), "--allow-template-ancestry"],
         check=True,
@@ -69,7 +71,17 @@ def test_quark_lane_contract_records_two_independent_obstructions_and_audit_only
         check=True,
         cwd=ROOT,
     )
-    subprocess.run([sys.executable, str(RSCC_AUDIT_SCRIPT)], check=True, cwd=ROOT)
+    # The conditional mass replay pins the committed RSCC audit bytes. Rebuild
+    # this audit in isolation so this test cannot rewrite that frozen input.
+    rscc_audit_output = tmp_path / "quark_rscc_completion_candidate_audit.json"
+    subprocess.run(
+        [sys.executable, str(RSCC_AUDIT_SCRIPT), "--output", str(rscc_audit_output)],
+        check=True,
+        cwd=ROOT,
+    )
+    assert json.loads(rscc_audit_output.read_text(encoding="utf-8"))["artifact"] == (
+        "oph_quark_rscc_completion_candidate_audit_v1"
+    )
     subprocess.run([sys.executable, str(FURTHER_THEOREM_AUDIT_SCRIPT)], check=True, cwd=ROOT)
     subprocess.run([sys.executable, str(FLAVOR_SOURCE_CLOSURE_SCRIPT)], check=True, cwd=ROOT)
     for script in (

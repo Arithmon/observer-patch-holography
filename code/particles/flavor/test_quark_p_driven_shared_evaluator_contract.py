@@ -27,11 +27,14 @@ def test_shared_p_driven_contract_refuses_theorem_promotion_with_live_blockers()
     assert payload["runtime_status"] == "shared_candidate_evaluator"
     assert payload["public_promotion_allowed"] is False
     assert payload["theorem_grade_closure"] is False
+    assert payload["input_statuses"]["pure_b_source_status"] == (
+        "comparison_only_values_from_unpromotable_source_projection"
+    )
     assert set(payload["promotion_blockers"]) == {
         "default_universe_anchor_not_removed",
         "edge_statistics_bridge_not_closed",
         "off_canonical_odd_response_not_closed",
-        "off_canonical_pure_B_payload_family_not_closed",
+        "pure_B_source_payload_not_closed",
     }
 
 
