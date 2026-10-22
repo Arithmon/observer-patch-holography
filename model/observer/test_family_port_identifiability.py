@@ -4,6 +4,7 @@ from __future__ import annotations
 from fractions import Fraction as Q
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from model.observer import family_port_identifiability as subject
 
@@ -71,6 +72,44 @@ class FamilyPortIdentifiabilityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             subject.recover_loads_from_packet(packet)
 
+    def test_uniform_seam_W5_rate_is_a_native_record_correlation(self):
+        # Compute the stationary correlation independently from direct_event,
+        # not by applying the W5 eigenvalue returned by the implementation.
+        partner = subject.antipodes()
+        binary = subject.native.states(binary=True)
+        seams = tuple(subject.slow_geometry.source().seams())
+
+        def projection(loads):
+            return tuple(Q(loads[i] + loads[partner[i]], 2) - Q(1, 6)
+                         for i in range(12))
+
+        mean = [Q(0)]*12
+        zero_lag, one_lag = Q(0), Q(0)
+        for loads in binary:
+            before = projection(loads)
+            mean = [a+b/66 for a, b in zip(mean, before, strict=True)]
+            zero_lag += sum((value*value for value in before), Q(0))/66
+            for seam in seams:
+                for coin in (0, 1):
+                    after = projection(direct_event(loads, seam, coin)[0])
+                    one_lag += sum((a*b for a, b in zip(before, after, strict=True)), Q(0))/3960
+        self.assertEqual(mean, [Q(0)]*12)
+        self.assertEqual(zero_lag, Q(25, 33))
+        self.assertEqual(one_lag, Q(15, 22))
+
+    def test_W5_rate_rejects_an_altered_native_update(self):
+        original = subject.native.native
+        witness = subject.binary_load((0, 2))
+
+        def altered(loads, seam, coin):
+            if loads == witness and seam == (0, 1) and coin == 0:
+                return loads, (coin, 0)
+            return original(loads, seam, coin)
+
+        with patch.object(subject.native, "native", side_effect=altered):
+            with self.assertRaisesRegex(ArithmeticError, "not linear"):
+                subject.native_w5_response()
+
     def test_receipt_replay_and_scope(self):
         result = subject.run()
         self.assertTrue(result["all_pass"])
@@ -78,6 +117,8 @@ class FamilyPortIdentifiabilityTests(unittest.TestCase):
         self.assertEqual(result["source"]["record_law_class_sizes"], [46, 10, 9, 1])
         self.assertEqual(result["port_resolved_readout"]["source_loads_reconstructed_exactly"], 78)
         self.assertEqual(result["witness"]["W5_norm_squared"], ["5/3", "2/3"])
+        self.assertEqual(result["uniform_seam_W5_response"]["W5_one_attempt_response_eigenvalue"], "9/10")
+        self.assertEqual(result["uniform_seam_W5_response"]["stationary_expected_W5_norm_squared"], "25/33")
         receipt = Path(__file__).with_name("results") / "family_port_identifiability.json"
         self.assertEqual(receipt.read_text(encoding="utf-8"), subject.canonical(result))
 

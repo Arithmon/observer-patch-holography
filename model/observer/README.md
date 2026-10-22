@@ -80,6 +80,18 @@ and exact branch laws are declared inputs; the full final load register
 is another stronger readout. Neither protocol selects a charged-family
 operator, coupling or mass.
 
+Under a separately declared fair-coin, uniform-seam protocol, the same native
+repair fixes the linear port response `T=I-L_icosahedron/60`. Its exact `W5`
+eigenvalue is `9/10` per native attempt. With the unique stationary uniform
+binary preparation, the `W5` mean is zero and its covariance is `(5/33)P5`;
+the expected squared `W5` norm is `25/33`. Direct native event enumeration
+checks the zero-lag and one-lag quadrupole correlations, `25/33` and `15/22`.
+This gives an observer-accessible dimensionless quadrupole relaxation rate
+when the port-resolved protocol is admitted. It does not pick a nonzero
+charged-family shape, chiral coupling or particle-mass ratio. The uniform
+seam schedule and stationary preparation are protocol premises, and the
+two-event feedback controller does not itself run this protocol.
+
 ## Run from the repository root
 
 The native observer commands use the Python standard library. The capacity

@@ -63,6 +63,18 @@
     ]
   },
   "status": "two_event_tape_does_not_determine_W5_port_norm",
+  "uniform_seam_W5_response": {
+    "W5_n_attempt_response_eigenvalue": "(9/10)^n for n nonnegative uniform-seam native attempts",
+    "W5_one_attempt_response_eigenvalue": "9/10",
+    "W5_projector_rank": 5,
+    "linear_port_response": "T=I-L_icosahedron/60, reconstructed from 12 doubled-port native probes and verified on all 78 total-two loads",
+    "protocol": "fair-coin independent uniform choice among all 30 native seams",
+    "selection_boundary": "Under the declared uniform-seam protocol, the native rule fixes a dimensionless W5 response rate and isotropic stationary fluctuations, not a nonzero family-shape direction, a charged-family action or a chiral mass coupling.",
+    "stationary_W5_covariance": "(5/33)P5",
+    "stationary_W5_mean": "0",
+    "stationary_binary_law": "uniform on 66 total-two binary configurations; unique by symmetry and connectedness",
+    "stationary_expected_W5_norm_squared": "25/33"
+  },
   "witness": {
     "W5_norm_squared": [
       "5/3",

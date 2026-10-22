@@ -69,6 +69,116 @@ def w5_norm_squared(loads: tuple[int, ...], partner: tuple[int, ...]) -> Q:
                for i in range(12))
 
 
+def w5_projector(partner: tuple[int, ...]) -> tuple[tuple[Q, ...], ...]:
+    """Exact port quadrupole projector in the native source ordering."""
+    if len(partner) != 12 or any(partner[partner[i]] != i or partner[i] == i
+                                 for i in range(12)):
+        raise ValueError("twelve paired native ports required")
+    return tuple(tuple(Q(int(i == j) + int(partner[i] == j), 2) - Q(1, 12)
+                       for j in range(12)) for i in range(12))
+
+
+def _matmul(left, right):
+    return tuple(tuple(sum((a*b for a, b in zip(row, column, strict=True)), Q(0))
+                       for column in zip(*right, strict=True)) for row in left)
+
+
+def native_w5_response() -> dict:
+    """Source-selected port response, plus its stationary selection boundary.
+
+    Repeated fair-coin, uniform-seam attempts are a separately declared
+    protocol. Its linear response is reconstructed from the actual native
+    output of all twelve doubled-port probes; every total-two input then
+    verifies the result. The fixed feedback recorder is a different protocol.
+    """
+    seams = tuple(slow_geometry.source().seams())
+    if len(seams) != 30:
+        raise ArithmeticError("native seam set changed")
+    partner = antipodes()
+    projector = w5_projector(partner)
+    probes = []
+    for port in range(12):
+        loads = tuple(2*int(i == port) for i in range(12))
+        outputs = [native.native(loads, seam, coin)[0]
+                   for seam in seams for coin in (0, 1)]
+        probes.append(tuple(Q(sum(output[i] for output in outputs), 120)
+                            for i in range(12)))
+    # Column j is the response to one unit initially at port j. The actual
+    # doubled-port probes have two units, hence the denominator 120 above.
+    transition = tuple(tuple(probes[j][i] for j in range(12)) for i in range(12))
+    for loads in native.states():
+        outputs = [native.native(loads, seam, coin)[0]
+                   for seam in seams for coin in (0, 1)]
+        for i in range(12):
+            observed = Q(sum(output[i] for output in outputs), 60)
+            expected = sum((transition[i][j]*loads[j] for j in range(12)), Q(0))
+            if observed != expected:
+                raise ArithmeticError("native port response is not linear on total two")
+    source_adjacency = tuple(tuple(int(i != j and tuple(sorted((i, j))) in seams)
+                                   for j in range(12)) for i in range(12))
+    expected_transition = tuple(tuple(Q(int(i == j)) -
+                                      Q(5*int(i == j)-source_adjacency[i][j], 60)
+                                      for j in range(12)) for i in range(12))
+    if transition != expected_transition:
+        raise ArithmeticError("native response differs from icosahedral Laplacian")
+    eigencheck = _matmul(transition, projector)
+    if eigencheck != tuple(tuple(Q(9, 10)*value for value in row) for row in projector):
+        raise ArithmeticError("W5 is not a 9/10 native port-response eigenspace")
+    if _matmul(projector, projector) != projector or sum(projector[i][i] for i in range(12)) != 5:
+        raise ArithmeticError("native W5 projector is not rank five")
+
+    binary = native.states(binary=True)
+    if len(binary) != 66:
+        raise ArithmeticError("native binary total-two carrier changed")
+    index = {loads: i for i, loads in enumerate(binary)}
+    counts = [[0]*len(binary) for _ in binary]
+    for i, loads in enumerate(binary):
+        for seam in seams:
+            for coin in (0, 1):
+                counts[i][index[native.native(loads, seam, coin)[0]]] += 1
+    if any(sum(row) != 60 for row in counts) or any(
+        counts[i][j] != counts[j][i] for i in range(66) for j in range(66)
+    ):
+        raise ArithmeticError("native binary transfer is not symmetric stochastic")
+    reached, frontier = {0}, [0]
+    while frontier:
+        i = frontier.pop()
+        for j, count in enumerate(counts[i]):
+            if count and j not in reached:
+                reached.add(j)
+                frontier.append(j)
+    if len(reached) != 66:
+        raise ArithmeticError("native binary transfer is disconnected")
+    # Symmetric, stochastic, connected finite transfer has the unique uniform
+    # stationary law. Its port covariance is computed from that exact law.
+    mean = tuple(sum((Q(loads[i], 66) for loads in binary), Q(0)) for i in range(12))
+    covariance = tuple(tuple(sum(((Q(loads[i])-mean[i])*(Q(loads[j])-mean[j])/66
+                                  for loads in binary), Q(0)) for j in range(12))
+                       for i in range(12))
+    projected = _matmul(_matmul(projector, covariance), projector)
+    if any(mean[i] != Q(1, 6) for i in range(12)) or projected != tuple(
+        tuple(Q(5, 33)*value for value in row) for row in projector
+    ):
+        raise ArithmeticError("stationary W5 mean or covariance changed")
+    return {
+        "protocol": "fair-coin independent uniform choice among all 30 native seams",
+        "linear_port_response": "T=I-L_icosahedron/60, reconstructed from 12 doubled-port native probes and verified on all 78 total-two loads",
+        "W5_projector_rank": 5,
+        "W5_one_attempt_response_eigenvalue": "9/10",
+        "W5_n_attempt_response_eigenvalue": "(9/10)^n for n nonnegative uniform-seam native attempts",
+        "stationary_binary_law": "uniform on 66 total-two binary configurations; unique by symmetry and connectedness",
+        "stationary_W5_mean": "0",
+        "stationary_W5_covariance": "(5/33)P5",
+        "stationary_expected_W5_norm_squared": "25/33",
+        "selection_boundary": (
+            "Under the declared uniform-seam protocol, the native rule fixes a "
+            "dimensionless W5 response rate and isotropic stationary fluctuations, "
+            "not a nonzero family-shape direction, "
+            "a charged-family action or a chiral mass coupling."
+        ),
+    }
+
+
 def probe_law(loads: tuple[int, ...], seam: tuple[int, int]) -> dict[tuple[int, int], Q]:
     """One separately admitted, labelled native seam attempt."""
     law: dict[tuple[int, int], Q] = defaultdict(Q)
@@ -150,6 +260,7 @@ def _encoded_probe(law: dict[tuple[int, int], Q]) -> list[dict]:
 
 def run() -> dict:
     partner = antipodes()
+    response = native_w5_response()
     if len(native.states(binary=True)) != 66:
         raise ArithmeticError("binary source carrier changed")
     classes: dict[tuple, list[tuple[int, ...]]] = defaultdict(list)
@@ -207,6 +318,7 @@ def run() -> dict:
                          "ideal exact ensemble branch laws, not finite tape samples",
                          "known conserved total two"],
         },
+        "uniform_seam_W5_response": response,
         "witness": {
             "initial_occupied_ports": [list(WITNESS_PORTS[0]), list(WITNESS_PORTS[1])],
             "complete_coin_current_tape_law": _encoded_law(law_left),
