@@ -16,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 PACKET = ROOT / "code/particles/runs/flavor/conditional_quark_mass_replay.json"
 PDG = ROOT / "code/particles/data/pdg_2025_conditional_quark_comparison.json"
+PDG_2026 = ROOT / "code/particles/data/pdg_2026_conditional_quark_comparison.json"
 FLAG = ROOT / "code/particles/data/flag_2024_light_quark_ratio_fixture.json"
 SPEC = Path(__file__).with_name("conditional_quark_mass_spec.json")
 VERIFIER = Path(__file__).with_name("verify_conditional_quark_mass_replay.py")
@@ -68,7 +69,7 @@ def flag_derived_ratio(value, average):
     }
 
 
-def compare(packet, pdg, flag):
+def compare(packet, pdg, flag, pdg_2026):
     spec = json.loads(SPEC.read_text())
     if packet["guards"] != spec["guards"]:
         raise ValueError("All frozen scientific guards must be retained")
@@ -85,27 +86,33 @@ def compare(packet, pdg, flag):
         "direct_reconstruction_top_mass_not_used_as_pole_mass": True,
         "new_independent_evidence_claimed": False,
     }
-    if pdg["interpretation"] != expected_interpretation:
-        raise ValueError("The comparison interpretation cannot be promoted")
-    if [r["quark"] for r in pdg["masses"]] != list("udscbt"):
-        raise ValueError("All six PDG comparisons required in fixed order")
-    if [r["quantity"] for r in pdg["light_quantities"]] != ["mu_over_md", "ms_over_mud", "mud_gev"]:
-        raise ValueError("All three light comparisons required")
+    for edition, reference in ((2025, pdg), (2026, pdg_2026)):
+        if reference["schema"] != f"oph.pdg_{edition}_conditional_quark_comparison.v1":
+            raise ValueError("PDG comparison edition changed")
+        if reference["source"]["url"] != f"https://pdg.lbl.gov/{edition}/tables/rpp{edition}-sum-quarks.pdf":
+            raise ValueError("PDG source URL changed")
+        if reference["interpretation"] != expected_interpretation:
+            raise ValueError("The comparison interpretation cannot be promoted")
+        if [r["quark"] for r in reference["masses"]] != list("udscbt"):
+            raise ValueError("All six PDG comparisons required in fixed order")
+        if [r["quantity"] for r in reference["light_quantities"]] != ["mu_over_md", "ms_over_mud", "mud_gev"]:
+            raise ValueError("All three light comparisons required")
     if [r["nf"] for r in flag["averages"]] != ["2+1+1", "2+1"]:
         raise ValueError("Both FLAG flavor theories must be retained")
-    top_reference = pdg["criticality_top_comparison"]
-    if (top_reference["scheme"], top_reference["scale"], top_reference["unit"]) != (
-        "MSbar", "m_t(m_t), cross-section extraction", "GeV"
-    ):
-        raise ValueError("Criticality comparison must retain its running top chart")
-    for row in pdg["masses"]:
-        q = row["quark"]
-        scheme = "pole_extraction" if q == "t" else "MSbar"
-        scale = "2 GeV" if q in "uds" else f"m_{q}(m_{q})"
-        if q == "t":
-            scale = "pole from cross-section measurements"
-        if row["scheme"] != scheme or row["scale"] != scale or row["unit"] != "GeV":
-            raise ValueError("Comparison chart changed")
+    for reference in (pdg, pdg_2026):
+        top_reference = reference["criticality_top_comparison"]
+        if (top_reference["scheme"], top_reference["scale"], top_reference["unit"]) != (
+            "MSbar", "m_t(m_t), cross-section extraction", "GeV"
+        ):
+            raise ValueError("Criticality comparison must retain its running top chart")
+        for row in reference["masses"]:
+            q = row["quark"]
+            scheme = "pole_extraction" if q == "t" else "MSbar"
+            scale = "2 GeV" if q in "uds" else f"m_{q}(m_{q})"
+            if q == "t":
+                scale = "pole from cross-section measurements"
+            if row["scheme"] != scheme or row["scale"] != scale or row["unit"] != "GeV":
+                raise ValueError("Comparison chart changed")
     with localcontext() as ctx:
         ctx.prec = 32
         branches = {}
@@ -135,6 +142,12 @@ def compare(packet, pdg, flag):
             branches[name] = {
                 "pdg_individual_masses": [quoted_range(masses[r["quark"]], r) for r in pdg["masses"]],
                 "pdg_light_quantities": [quoted_range(values[r["quantity"]], r) for r in pdg["light_quantities"]],
+                "pdg_2026_individual_masses": [
+                    quoted_range(masses[r["quark"]], r) for r in pdg_2026["masses"]
+                ],
+                "pdg_2026_light_quantities": [
+                    quoted_range(values[r["quantity"]], r) for r in pdg_2026["light_quantities"]
+                ],
                 "flag_light_ratios": flag_rows,
                 "flag_derived_ms_over_md": [
                     flag_derived_ratio(values["ms_over_md"], average)
@@ -150,17 +163,23 @@ def compare(packet, pdg, flag):
             "interpretation": pdg["interpretation"],
             "joint_likelihood": None,
             "theory_uncertainty": None,
-            "sources": {"pdg": pdg["source"], "flag": flag["source"]},
+            "sources": {
+                "pdg": pdg["source"],
+                "pdg_2026": pdg_2026["source"],
+                "flag": flag["source"],
+            },
         }
 
 
 def build():
-    packet, pdg, flag = (json.loads(p.read_text()) for p in (PACKET, PDG, FLAG))
+    packet, pdg, flag, pdg_2026 = (
+        json.loads(p.read_text()) for p in (PACKET, PDG, FLAG, PDG_2026)
+    )
     module_spec = importlib.util.spec_from_file_location("independent_mass_verifier", VERIFIER)
     verifier = importlib.util.module_from_spec(module_spec)
     module_spec.loader.exec_module(verifier)
     verifier.verify_payload(packet)
-    result = compare(packet, pdg, flag)
+    result = compare(packet, pdg, flag, pdg_2026)
     top = json.loads(TOP_PACKET.read_text())
     top_spec = importlib.util.spec_from_file_location("independent_top_verifier", TOP_VERIFIER)
     top_verifier = importlib.util.module_from_spec(top_spec)
@@ -177,6 +196,10 @@ def build():
         name: quoted_range(D(str(row["top_running_mass_coordinate_GeV"])), pdg["criticality_top_comparison"])
         for name, row in top_rows.items()
     }
+    result["criticality_top_running_coordinate_comparisons_2026"] = {
+        name: quoted_range(D(str(row["top_running_mass_coordinate_GeV"])), pdg_2026["criticality_top_comparison"])
+        for name, row in top_rows.items()
+    }
     result["criticality_top_boundary"] = {
         "physical_electroweak_vev_matching_assumed": True,
         "finite_electroweak_and_complex_pole_matching_supplied": False,
@@ -186,7 +209,7 @@ def build():
     }
     result["source_pins"] = {
         p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in (PACKET, PDG, FLAG, SPEC, VERIFIER, TOP_PACKET, TOP_VERIFIER, Path(__file__))
+        for p in (PACKET, PDG, PDG_2026, FLAG, SPEC, VERIFIER, TOP_PACKET, TOP_VERIFIER, Path(__file__))
     }
     return result
 
