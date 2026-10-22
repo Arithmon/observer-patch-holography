@@ -44,6 +44,23 @@ quark ancestry, and its optional D10 GeV display mixes nonmatching source
 branches. RSCC therefore remains a fail-closed formula-level candidate beneath
 the same F1--F6 contract; all six receipts remain open.
 
+The [conditional light-ratio diagnostic](audit_conditional_quark_ratio.py)
+reconstructs the frozen chart's `m_s/m_ud = 27.094659` from its exponents. The
+common mass normalization and common `delta_g` cancel exactly. Omitting all
+declared quadratic corrections gives `27.091556`, while any one-term ablation
+moves the ratio by at most `0.006738`; these controls do not account for the
+`0.095341` gap to the lower edge of the [PDG 2026 separately quoted 90% ratio
+range](https://pdg.lbl.gov/2026/tables/rpp2026-sum-quarks.pdf). At fixed `u,d`
+coordinates, that edge would require a `0.3519%` larger `s` coordinate; this
+is a sensitivity scale, not a proposed correction. The independently displayed
+PDG `u,d,s` central masses give `27.084548` by arithmetic because those
+marginal summaries are not a joint mass vector. A common pure-QCD running or
+unit change cannot alter the ratio, as explained in the
+[PDG quark-masses review](https://pdg.lbl.gov/2026/reviews/rpp2026-rev-quark-masses.pdf).
+A QED/isospin or physical-readout map would have to be derived and bounded
+before invoking it. This miss tests the
+conditional chart, not the as-yet-unselected physical flavor law.
+
 The subsequent further-theorem/QFRC audit sharpens this boundary. It proves by
 explicit finite countermodels that first and second moments do not fix higher
 cumulants and that finite-support MaxEnt is exponential-quadratic rather than
