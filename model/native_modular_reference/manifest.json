@@ -1,19 +1,23 @@
 {
-  "description": "Native Palm reference with finite faithful preparation, modular-channel error bounds, active-corner source-map bounds and retained observer readouts.",
+  "description": "Native Palm reference with finite faithful preparation, full M66 source-compiled modular flow, complete-register channel bounds and observer readouts.",
   "files": {
-    "README.md": "aa4bf682142784cd72d45cb58a54fc6f3057add8b0c833b34f5344d82475551c",
+    "README.md": "2b54ebdefcbca0ad3dc6b870177a15b3de896b6564c6f5751a238bbf272627ec",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
+    "full_flow.py": "ee717fc19218e4d444a3f163e0febcbb102ac38ef357f0a650f5b282ff746256",
+    "full_flow_results.json": "c8aedad378a71a5b2bab9ae068de887e840022a13172628cb44be6e7b3c3aeed",
     "preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "preparation_results.json": "dc929687fdcf19431053e9c409bb27d9f65575e367a7a330137c97205b9cc761",
     "results.json": "8c89d2a64df6e7417df150d2c95c5432489ee24d270d69892639764d1f12fd70",
     "test_construction.py": "4fb2e8b1c5b3600946f7dad84f7b206fc3b7884a0ca40b96ddeb29611d45b9ef",
+    "test_full_flow.py": "f4db61a073304fded000fd8dab88a06bd1a6541e01616a8fb060b133fc5485a4",
     "test_preparation.py": "d89dad49ec5197ac4e588dcf90f389a2c65ed278566dfbb51f06c4bfc7e73c09"
   },
   "reproduce": [
     "python -m model.native_modular_reference --check model/native_modular_reference/results.json",
     "python -m model.native_modular_reference.preparation --check model/native_modular_reference/preparation_results.json",
+    "python -m model.native_modular_reference.full_flow --check model/native_modular_reference/full_flow_results.json",
     "python -m pytest -q -W error model/native_modular_reference"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"

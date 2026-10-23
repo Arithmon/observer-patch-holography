@@ -1,7 +1,8 @@
 # A native reference state supplies a modular frequency
 
 This packet connects the existing native event statistics to a programmed,
-observer-relative modular readout. The faithful Palm reference is
+observer-relative modular readout, including a source-compiled flow on the
+full native `M66` algebra. The faithful Palm reference is
 `sigma = diag(degree/600)`, derived in
 [`event_circulation`](../event_circulation/README.md). Its two eigenvalues have
 ratio `5/4`. The reference therefore supplies a nonzero modular frequency
@@ -9,7 +10,8 @@ ratio `5/4`. The reference therefore supplies a nonzero modular frequency
 Hamiltonian. This is a finite reference-state attachment, not a recovery of
 interacting spacetime or a new comparison with experimental data.
 
-The reference is **not the probe preparation**. The executed probe begins at
+For the active-corner Ramsey experiment below, the reference is **not the
+probe preparation**. That probe begins at
 `I66/66`, uses the existing fixed-seam signed-current herald, and prepares a
 coherent mixture with the compiled native balanced mixer. Each herald sign
 has probability `5/66`; failed preparation has probability `28/33` and remains
@@ -30,7 +32,7 @@ The twenty-dimensional active corner commutes with the reference. There the
 implemented diagonal target is `D(theta)=exp(i theta P_degree8)`, up to the
 common scalar phase, with `theta=s log(5/4)`. Normalizing the restricted
 reference changes only that scalar. Its full-reference weight is `23/75`.
-The chosen extension assigns zero phase to the remaining native addresses;
+That experiment's extension assigns zero phase to the remaining native addresses;
 it omits 22 other degree-eight states. **It does not implement the modular
 flow on the full 66-dimensional native algebra.**
 
@@ -172,16 +174,73 @@ Each such state admits the existing finite inner-flow theorem and
 [`gibbsState_kms`](../../Lean/QFT/StructuralInheritance.lean) at
 `H=-log(sigma_n), beta=1`; its Gibbs Heisenberg parameter is `-s` in the
 modular convention used here. These are finite algebraic conclusions.
-The compiled program implements the Palm flow only on its
-declared active corner. A controller for the unknown `sigma_n` is not
-derived, passive repair is not identified with modular evolution, and
-neither the attempt count nor `s` is calibrated to physical seconds.
+The full-support construction below approximates the actual `sigma_n` flow
+without computing its unknown logarithm. Passive repair is not identified
+with modular evolution, and neither attempt counts nor `s` are calibrated
+to physical seconds.
+
+## Full native modular flow from the same source services
+
+[`full_flow.py`](full_flow.py) compiles
+`U(s)=exp(i s log(5/4) P_degree8)` on **all 30 degree-eight native addresses**,
+including the 22 omitted by the active-corner experiment. This is the dual
+Palm modular action on every native state and coherence, up to the common
+scalar `exp(i s log(60))`. The declared extension acts as identity on all
+446 nonnative/padding addresses; it supplies no faithful modular state there.
+
+The complete nine-bit Walsh expansion is verified at every one of the 512
+addresses. Closed Gray parity walks execute it using 512 existing `I`/`Z`
+phase requests and 510 existing phase-exact CNOTs: **2042 source pulses**.
+Each CNOT uses the existing `H J H` word from the same proper-code source
+controls. No new global phase primitive is required. Intermediate words
+retain every encoded address: projecting onto the native 66-dimensional
+shell during execution loses amplitude and is explicitly rejected by a
+control. The certificate covers the complete terminal operation, not an
+experiment that measures a partial word.
+
+For any requested exact rational `|s|<=16`, rational series enclose
+`log(5/4)` and its complex phase. Every entry of the actual raw 512-by-512
+source map is compared to this target; the Frobenius enclosure must pass a
+portable operator-error gate `epsilon=1e-9`. Thus the half-diamond bound is
+`delta_word=epsilon(2+epsilon)/2`, with arbitrary untouched references.
+The retained executions use `s=0,1,16`; other requested words must pass their
+own numerical source certificate. The actual prepared-reference comparison is
+
+```
+half-diamond(source(s), modular_sigma_n(s))
+    <= delta_word + min(1, |s| 66 delta_n / (1-66 delta_n)).
+```
+
+At 369 native warm-up attempts and one full movement herald this is below
+`0.000971` throughout the declared modular window, for each certified word.
+The complete preparation-and-source experiment, retaining failure, instead
+has half-trace error at most `delta_n + p_max delta_word` against its ideal
+Palm experiment. These bounds concern different comparisons; successful
+preparation is never treated as free or certain.
+
+An executed Ramsey witness uses native addresses 16 and 144, outside the
+active-corner experiment, and predicts `(1+cos(s log(5/4)))/2`. Its two
+additional source `Y` pulses prepare and analyze the coherence. The admitted
+projective read of work-register bit 7 retains all 512 coordinates in its
+two outcomes; nonnative weight is a numerical diagnostic, not a measured
+membership flag or postselection. At `s=16`, the match probability is about
+`0.04524740944`. The two mixers and source word have a combined half-diamond
+allowance `1.021e-9`.
+
+Proper-code load/export, coherent routing, initial configuration and quantum
+bit readout remain specified services. Ideal code-export failure vanishes
+by the existing invariant-code identities; physical service errors and
+floating state propagation are not covered by the raw-map certificate.
+Initialization/readout physical costs are outside the pulse count. This
+closes the full-native-algebra active-control restriction, without identifying
+that control with passive repair, physical seconds or a spacetime clock.
 
 ## Replay
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference --check model/native_modular_reference/results.json
 python -m model.native_modular_reference.preparation --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.full_flow --check model/native_modular_reference/full_flow_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 
