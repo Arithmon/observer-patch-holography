@@ -4,6 +4,7 @@ from dataclasses import replace
 from fractions import Fraction as F
 import inspect
 import json
+import sys
 
 import numpy as np
 import pytest
@@ -313,6 +314,91 @@ def test_reference_safe_reset_requires_discarding_private_input_label():
     assert np.linalg.norm(labelled-np.eye(4)/4, ord='nuc')/2 == 0.5
 
 
+def _complete_pair_paths(initial_left, initial_right, law, target):
+    """All actual fine-branch matrix-unit outputs, including failed work.
+
+    Rebuild endpoint repair independently and replay only observed currents
+    into the policy. No production probability table or compressed successful
+    macro path is used. One retry keeps this complete branching audit bounded.
+    """
+    leaves = defaultdict(F)
+    stack = [((), initial_left, initial_right, F(1))]
+    while stack:
+        history, left, right, mass = stack.pop()
+        controller = c.policy(1, 1, mode='reset', target=target)
+        request = next(controller)
+        try:
+            for current in history:
+                request = controller.send((current,))
+        except StopIteration as done:
+            leaves[done.value.success, left, right] += mass
+            if done.value.success:
+                assert initial_left == initial_right
+                assert left == right == target
+            continue
+        assert request.limit == 1
+        branches = defaultdict(F)
+        a, b = request.seam
+        for coin in (0, 1):
+            outputs = []
+            for state in (left, right):
+                total = state[a]+state[b]
+                low, high = total//2, (total+1)//2
+                out = list(state)
+                out[a], out[b] = (low, high) if coin == 0 else (high, low)
+                current = state[a]-out[a]
+                label = current if law == 'C' else state[a]-state[b]
+                outputs.append((tuple(out), current, label))
+            (after_left, current, label), (after_right, other_current, other_label) = outputs
+            if label == other_label:
+                assert current == other_current
+                branches[current, after_left, after_right] += mass/2
+        for (current, after_left, after_right), weight in branches.items():
+            stack.append((history+(current,), after_left, after_right, weight))
+    return leaves
+
+
+@pytest.mark.parametrize('target', [
+    (1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),  # Source pointer code 2.
+    (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1),  # Source work code 16.
+])
+def test_complete_failed_quantum_outputs_and_entangled_reference(target):
+    states = c.native.states(binary=True)
+    index = {state: i for i, state in enumerate(states)}
+    failures, success_laws = {}, {}
+    for law in ('C', 'E'):
+        blocks = [np.zeros((132, 132), complex) for _ in (0, 1)]
+        exact_success = []
+        for a, left in enumerate(states[:2]):
+            for b, right in enumerate(states[:2]):
+                leaves = _complete_pair_paths(left, right, law, target)
+                # Gram completeness on each diagonal and off-diagonal unit.
+                assert sum((weight for (_, x, y), weight in leaves.items() if x == y), F()) == int(a == b)
+                if a == b:
+                    exact_success.append(sum((weight for (flag, _, _), weight in leaves.items() if flag), F()))
+                for (flag, x, y), weight in leaves.items():
+                    blocks[int(flag)][2*index[x]+a, 2*index[y]+b] += float(weight)/2
+        failed, successful = blocks
+        ideal = np.zeros_like(successful)
+        for a in (0, 1):
+            ideal[2*index[target]+a, 2*index[target]+a] = .5
+        missing = 1-sum(exact_success, F())/2
+        distance = (np.linalg.norm(successful-ideal, ord='nuc')
+                    +np.linalg.norm(failed, ord='nuc'))/2
+        assert distance == pytest.approx(float(missing), abs=2e-14)
+        assert distance <= float(max(1-p for p in exact_success))+2e-14
+        assert np.linalg.eigvalsh(failed)[0] >= -2e-14
+        assert np.trace(failed+successful).real == pytest.approx(1, abs=2e-14)
+        # Cross-check the production law against this independently enumerated
+        # complete instrument, rather than using that law to construct outputs.
+        assert tuple(exact_success) == c.success_probabilities(1, 1, mode='reset', target=target)[:2]
+        failures[law], success_laws[law] = failed, exact_success
+    assert success_laws['C'] == success_laws['E']
+    # Same failure mass does not mean the failed quantum output is the same.
+    assert np.max(abs(failures['C']-np.diag(np.diag(failures['C'])))) > .05
+    np.testing.assert_array_equal(failures['E'], np.diag(np.diag(failures['E'])))
+
+
 def test_default_certificates_are_exact_and_receipt_is_current():
     payload = c.run()
     assert payload['routing_diameter'] == 4
@@ -322,3 +408,18 @@ def test_default_certificates_are_exact_and_receipt_is_current():
         row = payload[key]
         assert 0 < F(row['exact_max_failure']) <= F(row['failure_upper']) < F(1, 10**7)
     assert json.loads(c.OUTPUT.read_text(encoding='utf-8')) == payload
+
+
+def test_configuration_cli_prints_by_default_and_refuses_overwrite(monkeypatch, tmp_path, capsys):
+    path = tmp_path/'receipt.json'
+    path.write_text('existing evidence', encoding='utf-8')
+    monkeypatch.setattr(c, 'OUTPUT', path)
+    monkeypatch.setattr(c, 'run', lambda: {'test_payload': True})
+    monkeypatch.setattr(sys, 'argv', ['configuration'])
+    c.main()
+    assert json.loads(capsys.readouterr().out) == {'test_payload': True}
+    assert path.read_text(encoding='utf-8') == 'existing evidence'
+    monkeypatch.setattr(sys, 'argv', ['configuration', '--write'])
+    with pytest.raises(FileExistsError):
+        c.main()
+    assert path.read_text(encoding='utf-8') == 'existing evidence'

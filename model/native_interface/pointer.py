@@ -41,12 +41,13 @@ import numpy as np
 from tools import strict_json
 from model.compiled_native_interface import construction as compiled
 from model.observer import native
-from model.observer.scalar_response.experiment import canonical, compare_receipt
+from model.observer.scalar_response.experiment import canonical, compare_receipt as _portable_compare
 
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).with_name('pointer_results.json')
 WORD_ERROR_GATE = F(1, 10**11)
+DENSITY_ROUNDOFF_GATE = F(1, 10**13)
 SOURCE_PATHS = tuple(sorted(set((*compiled.SOURCE_PATHS,
     'model/native_interface/pointer.py', 'model/observer/scalar_response/experiment.py',
     'tools/strict_json.py'))))
@@ -229,6 +230,12 @@ def read_bit(rho, law, bit=7, work_qubits=9, *, reference_dimension=1):
     reset-timeout branch is NOT consumed or synthesized here.  This API is
     invoked only after the canonical reset has conclusively produced the
     pure ready configuration.  Its private classical reset tape is forgotten.
+
+    Numerical admission screens the aggregate negative spectral mass,
+    Hermitian defect and trace excess; it is not an outward PSD certificate.
+    The channel theorem assumes a genuinely positive subnormalized input.
+    Entries within the small roundoff gate are used unchanged, so numerical
+    output diagnostics can retain roundoff rather than exact positivity.
     """
     law, (bit, work_qubits) = _law(law), _address(bit, work_qubits)
     if type(reference_dimension) is not int or not 1 <= reference_dimension <= 3:
@@ -239,14 +246,17 @@ def read_bit(rho, law, bit=7, work_qubits=9, *, reference_dimension=1):
         raise ValueError('a plain finite work/reference density on the declared register required')
     with np.errstate(over='ignore', invalid='ignore'):
         mass = np.trace(rho)
-        hermitian_error = np.max(abs(rho-rho.conj().T))
+        hermitian_error = np.sqrt(dimension)*np.linalg.norm(rho-rho.conj().T, 'fro')/2
     if (not np.isfinite(mass) or not np.isfinite(hermitian_error)
-            or abs(mass.imag) > 1e-10 or not -1e-10 <= mass.real <= 1+1e-10
-            or hermitian_error > 1e-10):
+            or hermitian_error > float(DENSITY_ROUNDOFF_GATE)):
         raise ValueError('a Hermitian subnormalized work/reference density required')
-    eigenvalues = np.linalg.eigvalsh(rho)
-    if not np.isfinite(eigenvalues).all() or eigenvalues[0] < -1e-10:
-        raise ValueError('a positive semidefinite work/reference density required')
+    # Symmetrize only the validation matrix, never the propagated input.
+    eigenvalues = np.linalg.eigvalsh(rho/2+rho.conj().T/2)
+    with np.errstate(over='ignore', invalid='ignore'):
+        defect = (hermitian_error+max(0., -mass.real, mass.real-1)
+                  -np.minimum(eigenvalues, 0).sum())
+    if not np.isfinite(eigenvalues).all() or not np.isfinite(defect) or defect > float(DENSITY_ROUNDOFF_GATE):
+        raise ValueError('a positive subnormalized density within aggregate roundoff required')
     # No spectral projection or density renormalization enters the execution.
     certificate()
     matrices = _superoperators(law)
@@ -306,7 +316,22 @@ def run():
             'complete_original_work_bound': 'reset_timeout + half_diamond_word_error',
             'work_projective_readout_and_logical_pointer_blank_not_separately_supplied': True,
             'proper_code_service_blanks_not_derived': True,
+            'numerical_density_admission_gate': str(DENSITY_ROUNDOFF_GATE),
+            'numerical_density_screen_is_outward_psd_certificate': False,
             'new_physical_readout_or_clock_accuracy_claimed': False}}
+
+
+def compare_receipt(retained, actual):
+    """Portable replay never relaxes a diagnostic's domain or execution gate."""
+    _portable_compare(retained, actual)
+    for report in (retained, actual):
+        for row in report['full_register_reference_executions']:
+            if any(not 0 <= row[key] <= 2e-12 for key in (
+                    'complete_output_max_entry_error_diagnostic', 'mass_error_diagnostic')):
+                raise ValueError('native pointer diagnostic violates its execution domain')
+            if (any(value < 0 for value in row['probabilities_diagnostic'])
+                    or abs(sum(row['probabilities_diagnostic'])-1) > 2e-12):
+                raise ValueError('native pointer probabilities violate their execution domain')
 
 
 def main():

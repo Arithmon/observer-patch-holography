@@ -1,6 +1,8 @@
 """Independent native Kraus and arbitrary-reference pointer regressions."""
 from collections import defaultdict
+from copy import deepcopy
 from fractions import Fraction as F
+import json
 
 import numpy as np
 import pytest
@@ -129,6 +131,38 @@ def test_zero_substate_and_tiny_source_mass_roundoff_are_not_renormalized():
     density = np.diag([1+2e-14, 0]).astype(complex)
     outputs = p.read_bit(density, 'E', bit=0, work_qubits=1)
     assert sum(np.trace(value).real for value in outputs) > 1+1e-14
+
+
+@pytest.mark.parametrize('diagonal', [[1., -9e-11], [1.]+[-5e-14]*255])
+def test_negative_input_mass_cannot_hide_in_per_eigenvalue_tolerance(diagonal):
+    density = np.diag(diagonal)
+    with pytest.raises(ValueError, match='aggregate roundoff'):
+        p.read_bit(density, 'C', bit=0, work_qubits=(len(diagonal)-1).bit_length())
+
+
+def test_dense_rank_one_reference_roundoff_passes_without_changing_input():
+    rng = np.random.default_rng(1125)
+    vector = rng.normal(size=1024)+1j*rng.normal(size=1024)
+    vector /= np.linalg.norm(vector)
+    density = np.outer(vector, vector.conj())
+    before = density.copy()
+    outputs = p.read_bit(density, 'C', reference_dimension=2)
+    np.testing.assert_array_equal(density, before)
+    assert abs(sum(np.trace(value) for value in outputs)-1) < 1e-13
+
+
+@pytest.mark.parametrize('field,value', [
+    ('mass_error_diagnostic', -1e-10),
+    ('mass_error_diagnostic', 1e-10),
+    ('complete_output_max_entry_error_diagnostic', -1e-10),
+    ('complete_output_max_entry_error_diagnostic', 1e-10),
+])
+def test_portable_replay_cannot_accept_invalid_diagnostic_domains(field, value):
+    actual = json.loads(p.OUTPUT.read_text(encoding='utf-8'))
+    changed = deepcopy(actual)
+    changed['full_register_reference_executions'][0][field] = value
+    with pytest.raises(ValueError, match='execution domain'):
+        p.compare_receipt(changed, actual)
 
 
 @pytest.mark.parametrize('kind', ['negative', 'inflated', 'nan', 'inf', 'object',

@@ -90,7 +90,9 @@ Without restoration, the decoded initial label is the same but the terminal
 work configuration can depend on the path. These formulas include arbitrary
 untouched references. Here `s_x` is the
 actual finite success probability for input `x`, not one. The complete
-failure branch has the missing mass. Comparing against ideal rank-one
+failure branch has the missing mass. Each adaptive node applies a complete
+C/E instrument, and every finite terminal branch is retained, so induction
+over the controller tree gives Kraus completeness. Comparing against ideal rank-one
 measurement or replacement, with an empty ideal failure branch, gives
 half-diamond error at most `max_x(1-s_x)`: the missing successful block and
 the actual failure block each contribute half that mass. Conditional
@@ -102,12 +104,19 @@ The exact source replay checks the controller on every basis input and
 retains its failure probability and maximum native-attempt budget. The
 source configuration graph has diameter four. With `a` seed scans and `r`
 attempts per mixed-edge retry, reset costs at most `30a+79r` attempts and
-has failure at most `2^(-8a)+69*2^-r`. Four scans and 32 retries give
+has failure at most `2^(-8a)+69*2^-r`. The ten growth stages need at most
+`1+...+10=55` swaps and twenty probes, followed by four terminal swaps.
+At most ten growth probes are mixed, giving 69 fallible blocks; every seed
+scan has at least eight mixed seams. Four scans and 32 retries give
 **2648 attempts and error at most `70/2^32`**. One initial 30-seam covering
 sweep absorbs arbitrary full total-two collision inputs; keeping its signed
 currents preserves retrodiction. Full-carrier reset therefore costs at most
 2678 attempts. Binary restoration is allowed; recreating collision states
 by these binary repairs is not.
+
+`python -m model.native_clock.configuration` prints its receipt. `--check`
+checks the retained bytes; `--write --output PATH` creates a new file and
+refuses to overwrite existing evidence.
 
 The current-only controller stores at most 2678 `(seam,current)` records,
 78 candidate-original/current mappings and twelve known-bit entries. A

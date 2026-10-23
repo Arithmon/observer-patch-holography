@@ -144,6 +144,11 @@ above still has a different postmeasurement state. Nor can this instrument
 be replaced by measuring the whole work configuration and forgetting all
 but one bit: that operation destroys additional coherences.
 
+The displayed equality is the exact ideal coupling/readout target. The
+literal six-pulse source matrix has a separate operator-norm and
+half-diamond error certificate against that target. Its raw output blocks
+are neither projected nor renormalized.
+
 The implementation executes the complete eight-dimensional local source
 map, lifts its derived Kraus blocks to the work register, and retains every
 work address, including the full Palm clock's 446 addresses outside its
@@ -152,6 +157,13 @@ four auxiliary local code states have native full-carrier representatives,
 so raw source leakage is not removed by an intermediate code projection.
 Its source-array norm certificate covers all local input columns; physical
 code-service error remains a separate input.
+
+Numerical density admission caps the combined aggregate negative spectral
+mass, Hermitian trace-norm bound and out-of-range trace excess at `1e-13`.
+It leaves the input unchanged and is not an outward positivity proof; the
+channel theorem assumes a genuinely positive subnormalized input. Portable
+receipt tolerances do not relax nonnegative diagnostic and probability
+domains or the execution error gates.
 
 Finite auxiliary preparation can steer a correlated work/reference input
 on success. Its uniform complete failure bound, not a claim of conditional
@@ -281,15 +293,22 @@ the source words or certifying physical service errors.
 
 ## Supplied premises and reproduction
 
-The binary carrier sector, `I/66` input, chosen seam, uniform evolution
-scheduler, candidate C or E, balanced mixer and classical protocol controller
-remain premises. The construction does not derive their physical availability,
-select C over E, emit source pulse words, define a physical clock, establish
-an interacting continuum field theory or match a new laboratory observation.
+The original herald experiment in [`construction.py`](construction.py)
+assumes the binary carrier sector, `I/66` input, chosen seam, uniform evolution
+scheduler, candidate C or E, balanced mixer and classical protocol controller.
+That experiment supplies the mixer directly and emits no source pulse words.
 It removes independent coherent preparation and phase-effect assumptions
-conditional on a single clearly identified mixer. The previously derived
-first-current phase probabilities can use these conditional preparations and
-the same effects, but this packet executes fixed native attempt counts only.
+conditional on that mixer. The previously derived first-current phase
+probabilities can use its conditional preparations and effects; its retained
+execution uses fixed native attempt counts.
+
+The auxiliary-pointer construction above emits six source pulses and uses
+the current-only adaptive reset on arbitrary total-two inputs. It does not
+require the original herald experiment's `I/66` input or uniform seam
+scheduler. Coherent proper-code services, their ancillary blanks and physical
+control accuracy remain supplied. Neither construction selects C over E,
+defines a physical clock, establishes an interacting continuum field theory
+or matches a new laboratory observation.
 
 From the repository root, with `model/requirements.txt` installed:
 
@@ -299,6 +318,7 @@ python -m model.native_interface --check model/native_interface/results.json
 python -m model.native_interface --write /tmp/native-interface-new.json
 python -m model.native_interface.coherence_budget --check model/native_interface/coherence_results.json
 python -m model.native_interface.coherence_budget --write /tmp/native-coherence-new.json
+python -m model.native_interface.pointer --check model/native_interface/pointer_results.json
 ```
 
 `--write` refuses to overwrite existing files. `--check` rejects malformed

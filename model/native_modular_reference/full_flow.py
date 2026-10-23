@@ -374,6 +374,27 @@ def run():
                       "physical_seconds_or_temperature_identified": False}}
 
 
+def compare_receipt(retained, actual):
+    """Check physical diagnostic domains before accepting portable agreement."""
+    corner.compare_receipt(retained, actual)
+    for report in (retained, actual):
+        for execution in report['executions']:
+            row = execution['omitted_pair_Ramsey']
+            delta = float(F(row['whole_Ramsey_half_diamond_upper']))
+            _, _, radius = phase_enclosure(F(execution['modular_parameter']))
+            outside = row['outside_native_support_probability_diagnostic']
+            if not 0 <= outside <= 1+2*delta:
+                raise ValueError('native modular diagnostic violates its probability domain')
+            for law in ('C', 'E'):
+                probabilities = row['executed_complete_probabilities_by_law'][law]
+                total = sum(probabilities)
+                error = row['complete_record_half_l1_error_diagnostic'][law]
+                if (any(value < 0 for value in probabilities) or abs(total-1) > 2e-11
+                        or row['raw_total_probability_diagnostic'][law] != total
+                        or not 0 <= error <= delta+float(radius)/2):
+                    raise ValueError('native modular record violates its execution domain')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
@@ -382,7 +403,7 @@ def main():
     args = parser.parse_args()
     result = run()
     if args.check:
-        corner.compare_receipt(strict_json.load(args.check), result)
+        compare_receipt(strict_json.load(args.check), result)
         print("Full native Palm modular flow and finite preparation bound verified.")
     elif args.write:
         with args.write.open("x", encoding="utf-8", newline="\n") as stream:

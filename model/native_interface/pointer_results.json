@@ -110,6 +110,8 @@
     "complete_original_work_bound": "reset_timeout + half_diamond_word_error",
     "conditional_herald_or_reset_can_steer_initial_work": true,
     "new_physical_readout_or_clock_accuracy_claimed": false,
+    "numerical_density_admission_gate": "1/10000000000000",
+    "numerical_density_screen_is_outward_psd_certificate": false,
     "proper_code_service_blanks_not_derived": true,
     "work_projective_readout_and_logical_pointer_blank_not_separately_supplied": true
   },
@@ -153,7 +155,7 @@
     "model/native_interface/__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "model/native_interface/__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",
     "model/native_interface/construction.py": "9406eba34986f27d47f7be10d3a155d6e37e5123854ff3db40c305cf4bc391fb",
-    "model/native_interface/pointer.py": "d49d6a0602eea56b367fa2c4a334f4dd61e1a7a450f311a61530df2391d9c453",
+    "model/native_interface/pointer.py": "30485fdee1d221460c67b9791a34b7fa24b4dece718ab91bdfc3cbb24ca591ac",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
     "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",

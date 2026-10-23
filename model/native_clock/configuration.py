@@ -537,9 +537,12 @@ def main():
         if Path(args.check).read_text(encoding='utf-8') != payload:
             raise SystemExit('native configuration receipt differs')
         print('native configuration receipt verified')
-    else:
-        args.output.write_text(payload, encoding='utf-8', newline='\n')
+    elif args.write:
+        with args.output.open('x', encoding='utf-8', newline='\n') as stream:
+            stream.write(payload)
         print(f'wrote {args.output}')
+    else:
+        print(payload, end='')
 
 
 if __name__ == '__main__':

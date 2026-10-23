@@ -1,6 +1,8 @@
 """Complete source, omitted-address, phase and reference controls."""
 from fractions import Fraction as F
 from functools import lru_cache
+from copy import deepcopy
+import json
 import math
 
 import numpy as np
@@ -129,6 +131,27 @@ def test_complete_history_rejects_a_relabelled_or_suppressed_native_pointer(monk
     monkeypatch.setattr(f.pointer, 'read_bit', swapped)
     with pytest.raises(ArithmeticError, match='complete-word comparison'):
         f.witness(F(16))
+
+
+@pytest.mark.parametrize('mutation', ['negative_outcome', 'negative_padding',
+                                     'overfull_mass', 'false_total'])
+def test_portable_replay_preserves_complete_record_domains(mutation):
+    actual = json.loads(f.OUTPUT.read_text(encoding='utf-8'))
+    changed = deepcopy(actual)
+    row = changed['executions'][0]['omitted_pair_Ramsey']
+    if mutation == 'negative_outcome':
+        row['executed_complete_probabilities_by_law']['C'][3] = -1e-10
+    elif mutation == 'negative_padding':
+        row['outside_native_support_probability_diagnostic'] = -1e-10
+    elif mutation == 'overfull_mass':
+        row['executed_complete_probabilities_by_law']['C'][3] += 1e-10
+        row['raw_total_probability_diagnostic']['C'] = sum(row['executed_complete_probabilities_by_law']['C'])
+    else:
+        row['raw_total_probability_diagnostic']['C'] += 1e-10
+    # Each mutation is smaller than the shared floating replay tolerance.
+    f.corner.compare_receipt(changed, actual)
+    with pytest.raises(ValueError, match='domain'):
+        f.compare_receipt(changed, actual)
 
 
 def test_native_resets_cover_collision_inputs_and_both_code_targets():

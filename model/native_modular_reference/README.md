@@ -229,8 +229,9 @@ are complete native protocols:
    both public timeout flags remain. Private reset tapes are discarded.
 2. Two existing source `Y` pulses surround the 2042-pulse modular word.
 3. Six source pulses couple work bit 7 to the auxiliary orientation. One
-   native coin/current repair reads it. Tracing the auxiliary gives the
-   continuing work-bit Lüders instrument on all 512 work coordinates.
+   native coin/current repair reads it. The ideal reduced target is the
+   continuing work-bit Lüders instrument on all 512 work coordinates;
+   the literal source word retains its separate numerical error bound.
 
 The maximum cost is **5357 native attempts, 2050 source pulses and 4100
 proper-code service events**. The native work and pointer preparation needs
@@ -261,6 +262,17 @@ nonnative weight is a diagnostic, not a measured membership flag. Raw
 outputs are not renormalized. The independent source-array, rank-one reset
 and complete pointer-instrument checks establish composition on this common
 finite apparatus.
+
+The retained `full_flow_results.json` witness contains the four probability
+marginals and trace/leakage diagnostics for the declared `I78/78` inputs.
+The complete quantum-output and arbitrary-reference bound follows by
+composition of the independently checked reset, source-array and pointer
+instruments. The pointer also has separate reference-entangled executions.
+Failure quantum channels are specified by the finite native controller;
+the full-flow receipt does not enumerate their dense output matrices.
+Replay checks the probability and diagnostic domains and the complete
+record mass as well as the comparison bound. Portable numerical tolerances
+do not permit negative probabilities or relax execution error gates.
 
 Coherent proper-code load/export, their service ancillas and routing remain
 architecture services; the native resets do not construct those service blanks.
