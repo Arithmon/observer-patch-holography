@@ -912,7 +912,9 @@ direct assignment only; it supplies no atomic model or exclusion of OPH.
 [repair_response.py](repair_response.py) predicts a finite response using the
 same repair law, fields and incident clocks that define the passive process.
 There is no fitted force, response coefficient or conversion to seconds.
-Prepare the uniform fixed-number binary sector. Disclose the occupations at
+For the equilibrium numerical forecast, use the uniform fixed-number binary
+reference law; finite native preparation has the error budget below.
+Disclose the occupations at
 ports 0, 1 and 2. If the port-0 bit is one, apply one fair native repair on
 seam `(0,1)`; otherwise apply no repair. The trigger, coin and signed current
 are retained. Postpulse fields are reconstructed from the disclosed bits and
@@ -975,8 +977,55 @@ The watchdog attempt count supplies no physical duration. Independent
 primitive-path expansion checks all one-attempt record labels; exact native
 propagation checks the capped laws. An unconditional extra repair has zero
 marginal response at equilibrium. A nonstationary preparation violates the
-stationary weight formula; the retained control has predicted total mass
+stationary weight formula in general; the retained control has predicted total mass
 `1/2` against actual mass one and is rejected without renormalization.
+
+**Local preparation removes the equilibrium premise from the response identity.**
+Let `mu` be any binary fixed-total-two population law, and let `S` exchange
+the pulse endpoints. Only the moving mark can differ between the actual
+pulse law `A_mu` and the passive weighted measure `W_mu`:
+
+```text
+(A_mu-W_mu)((1,0,1),s) = [mu(Ss)-mu(s)]/2,  (s_0,s_1)=(0,1),
+L1(A_mu-W_mu) = TV(mu,S mu)/2 <= TV(mu,uniform).
+```
+
+All other marked differences vanish. Thus endpoint-swap invariance is
+necessary and sufficient for the complete marked identity; global
+stationarity is unnecessary. One **unconditional fair native repair of the
+pulse seam** prepares `(mu+S mu)/2` exactly. It preserves the rest of the
+configuration and costs one incident tick at ports 0 and 1 in both arms.
+Its coin/current record must be unavailable to the later protocol. The
+receipt executes this preparation and retains a nonstationary example at
+TV distance `32/33` from equilibrium whose pulse changes the port-1 mean
+from `1/2` to `3/4`, exactly as its passive records predict. This derives
+the local preparation; the pulse controller and field access remain the
+declared observation protocol.
+
+Without that local preparation, any common complete classical continuation
+contracts the displayed L1 error, independently of its finite stopping cap.
+This includes every pulse mark, field, zero-current incident tick and timeout.
+`W_mu` can have mass different from one: its L1 distance must **not** be
+halved or silently renormalized. A retained perturbation of size `1/132`
+attains both the L1 and event bound; its two-attempt timeout discrepancy is
+`25/4752`. Equal endpoint means and total forecast mass one alone do not
+ensure the identity, as a second exact control shows.
+
+For numerical forecasts relative to equilibrium, the
+[native warm-up theorem](../record_laws/README.md#preparation-by-finite-native-warm-up)
+provides `delta_n=min(1,33*r_alpha^n)`, with
+`r_alpha=1-alpha*(1-19079/20000)`. The actual complete readout probability
+law is within TV `delta_n` of its equilibrium law; the passive weighted
+forecast using the **same warmed preparation** is within L1 `delta_n` of
+the actual pulse readout. Uniform scheduling gives both errors below
+`1/1000` after 221 repair attempts. The binary-sector support, exogenous
+seam coverage, admitted record law and discarded warm-up tape are inherited
+hypotheses. These are unconditional bounds; conditioning on a selected
+preparation outcome or rare later success requires a separate bound.
+The response identity uses classical occupation/current records; coherent
+readout of the repair environment requires a separate calculation.
+The executable wrapper does not extend this binary readout to collisions,
+identify a physical duration, or infer a preferred quantum record law.
 
 For an arbitrary finite graph with `V` ports, `M` seams, fixed total `k`,
 `chi=k*(V-k)/(V*(V-1))`, and native density transfer `K=I-L/(2M)`, the same

@@ -718,6 +718,84 @@
       "-5/2904"
     ]
   },
+  "finite_preparation_response": {
+    "contract": {
+      "all_pulse_marks_zero_currents_and_timeouts_retained": true,
+      "any_admissible_current_record_law_covered": true,
+      "binary_source_density_required": true,
+      "later_classical_record_continuation_common_and_complete": true,
+      "physical_duration_or_record_law_selection_claimed": false,
+      "warmup_seam_schedule_exogenous_with_positive_coverage": true,
+      "warmup_tape_and_controller_unavailable_to_readout": true
+    },
+    "exact_defect": "L1(A_mu-W_mu)=TV(mu,swap(mu))/2 <= TV(mu,uniform)",
+    "exact_local_preparation": {
+      "incident_tick_offsets_on_read_ports": [
+        1,
+        1,
+        0
+      ],
+      "native_preparation_attempts": 1,
+      "preparation_coin_current_unavailable_to_future_protocol": true
+    },
+    "finite_warmup": [
+      {
+        "measured_source_TV_upper": "984848484849/1000000000000",
+        "measured_weighted_forecast_L1_upper": "1/2",
+        "prior_sha256": "0ae2eddcba4f4f6c5bddfdf7e1a022692ff993bc6b626afe151b55eba912d9bc",
+        "uniform_source_and_forecast_error_upper": "1",
+        "warmup_attempts": 0
+      },
+      {
+        "measured_source_TV_upper": "32665621587/50000000000",
+        "measured_weighted_forecast_L1_upper": "256379802853/1000000000000",
+        "prior_sha256": "446620dba44090677f753417a26bc036a80f60c31a6b44718bd4004800fc1090",
+        "uniform_source_and_forecast_error_upper": "1",
+        "warmup_attempts": 8
+      },
+      {
+        "measured_source_TV_upper": "1745234567/40000000000",
+        "measured_weighted_forecast_L1_upper": "9156865759/1000000000000",
+        "prior_sha256": "45b17db23f4df0e89fea3caf7d14314bc00b69dba3299a14043550ca6c9e0774",
+        "uniform_source_and_forecast_error_upper": "1",
+        "warmup_attempts": 64
+      },
+      {
+        "measured_source_TV_upper": "26034729/1000000000000",
+        "measured_weighted_forecast_L1_upper": "2691607/500000000000",
+        "prior_sha256": "6ade19c82fd377ec8fe3fd9993ee0666b5c36848f32307b2c311e83f61e3a9b1",
+        "uniform_source_and_forecast_error_upper": "985540027/1000000000000",
+        "warmup_attempts": 221
+      }
+    ],
+    "identity_requires_only_pulse_endpoint_swap_invariance": true,
+    "nonstationary_swap_invariant_control": {
+      "any_complete_continuation_L1_error_upper": "0",
+      "any_readout_event_absolute_error_upper": "0",
+      "exact_marked_identity": true,
+      "forecast_is_probability": true,
+      "forecast_total_mass": "1",
+      "marked_forecast_L1_error": "0",
+      "source_probability_TV_to_swap": "0",
+      "source_probability_TV_to_uniform": "32/33"
+    },
+    "sharp_complete_stopped_control": {
+      "actual_law_sha256": "c89079b2581ce9157700346c26fbe909a2a5fb5f1f48e235871dfb9f44d268ef",
+      "any_complete_continuation_L1_error_upper": "1/132",
+      "any_readout_event_absolute_error_upper": "1/132",
+      "attempt_cap": 2,
+      "complete_stopped_L1_defect": "1/132",
+      "exact_marked_identity": false,
+      "forecast_is_probability": false,
+      "forecast_renormalized": false,
+      "forecast_total_mass": "131/132",
+      "marked_forecast_L1_error": "1/132",
+      "source_probability_TV_to_swap": "1/66",
+      "source_probability_TV_to_uniform": "1/132",
+      "timeout_event_defect": "25/4752",
+      "weighted_forecast_sha256": "fbbc6b718fe9a50ec92e4b638dff3bf2882fee35399ff613f7befe06a5363829"
+    }
+  },
   "mean_field_responses": {
     "0": [
       "-5/66",
@@ -827,13 +905,14 @@
   "scope": {
     "Lorentzian_or_CFT_limit_established": false,
     "arbitrary_continuation_theorem_requires_identical_continuation_in_both_arms": true,
+    "exact_stationary_preparation_required_for_finite_error_forecast": false,
     "marked_response_may_use_a_separately_declared_continuation_for_each_mark": true,
     "matched_public_intervention_dataset_available": false,
     "new_discriminator_against_SM_GR_established": false,
     "pulse_has_measured_physical_duration": false,
     "response_parameter_fitted": false,
     "source_readouts_and_future_continuation_fixed_before_comparison": true,
-    "stationary_uniform_fixed_number_preparation": true,
+    "stationary_uniform_fixed_number_reference_law": true,
     "unmarked_response_requires_continuation_independent_of_pulse_mark": true
   },
   "source_sha256": {
@@ -907,8 +986,11 @@
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
     "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
     "model/observer/scalar_response/__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
     "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_discrimination/certificate.py": "fd2c4ab1ac3499652b1a5d6ab5fefb44414b848a75e23df5b255d038323d4f05",
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
     "model/observer/source_scalar/__init__.py": "d3dcf546c13e23ceb9a58c19481e2e3f04134013d8047d83b020ec836d8e1e86",
     "model/observer/source_scalar/bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
     "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
@@ -919,11 +1001,12 @@
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
-    "model/predictions/repair_response.py": "7c844f1ac110954473cbec49e329bec6187dd398ed8f3e14cf4b4b601faf84a7",
+    "model/predictions/repair_response.py": "2dce01e471eece85ef67838f7d56bc5b23ca68f202f097f4eca3edbb1ca9f0e3",
     "model/primitive_observer/__init__.py": "b4be22f83a7a3f3f2b509d74593f65d550a227730ec34304acd966def77fb8b4",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
     "model/record_laws/__init__.py": "1b66289fa4160260460fa4e947b1f7339fe0e8d7382fe6848c0029896c02bd19",
+    "model/record_laws/burn_in.py": "ab570ba3c4da75361231538b2d22ac7e3c6884038778c2510d9aa4af796d47e5",
     "model/record_laws/family.py": "ac615e49101faa9a7b0b42d07f01ff44f342c20195ea5f6e5f88743bd11b4919",
     "model/relativistic_scalar/__init__.py": "90c288752c5928c5401abcc8f74102f789ff2c2ce3a4054136581da92a0a3bf1",
     "model/relativistic_scalar/lattice.py": "1c8699de003afc0c7d51af488f2ad49e28db3bd0c1fb83fc8c73469783d89663",

@@ -1,8 +1,9 @@
 """Native feedback response from passive clock/field records, without a fit.
 
-A finite amplitude, occupation-controlled repair has an exact stationary
-likelihood ratio. The identity covers every subsequent fixed record event,
-including stopped clocks and timeouts. Parameters count native events.
+A finite amplitude, occupation-controlled repair has an exact locally balanced
+likelihood identity. Native preparation establishes that balance; finite
+warm-up bounds equilibrium forecasts. Complete records retain clock timeouts.
+Parameters count native events.
 """
 from __future__ import annotations
 
@@ -18,11 +19,12 @@ import sympy as sp
 
 from ..laboratory_clock import event_geometry as inherited
 from ..observer import native
+from ..record_laws import burn_in
 from ..observer.scalar_response.experiment import compare_receipt
 from tools import strict_json
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_PATHS = tuple(sorted(set((*inherited.SOURCE_PATHS,
+SOURCE_PATHS = tuple(sorted(set((*inherited.SOURCE_PATHS, *burn_in.SOURCE_PATHS,
     'model/predictions/repair_response.py', 'tools/strict_json.py'))))
 PULSE = (0, 1)
 # The impossible negative-current and coin-one positive-current labels are
@@ -46,7 +48,7 @@ def source():
 
 
 def pulse_weights(state):
-    """Postpulse stationary density for each retained trigger/coin/current mark.
+    """Postpulse density under endpoint balance, for each complete pulse mark.
 
     These formulas use only the disclosed endpoint bits. No counterfactual
     future, hidden state search or fitted response parameter is consulted.
@@ -65,17 +67,21 @@ def pulse_weights(state):
     return result
 
 
-def pulse_distribution(*, reverse_forecast=False, prior=None):
-    """Full actual pulse instrument, or its passive-record density forecast."""
+def _prior(prior):
     states = source().states
     if prior is None:
         prior = (F(1, len(states)),)*len(states)
     if (type(prior) is not tuple or len(prior) != len(states)
             or any(type(p) is not F or p < 0 for p in prior) or sum(prior) != 1):
         raise ValueError('a complete normalized exact native prior is required')
+    return tuple(inherited.exact_core._fraction(p) for p in prior)
+
+
+def pulse_distribution(*, reverse_forecast=False, prior=None):
+    """Actual probability law, or an unnormalized passive weighted measure."""
+    states, prior = source().states, _prior(prior)
     if type(reverse_forecast) is not bool:
         raise ValueError('a Boolean calculation mode is required')
-    prior = tuple(inherited.exact_core._fraction(p) for p in prior)
     result = defaultdict(F)
     for state, weight in zip(states, prior, strict=True):
         if reverse_forecast:
@@ -128,7 +134,7 @@ def _reading(mark, initial, tape, terminal, status, clock_b):
     return mark, initial, tape, status, (a_ticks, b_ticks), tuple(fields)
 
 
-def stopped_law(cap=2, *, clock_b=1, reverse_forecast=False, intervention=True):
+def stopped_law(cap=2, *, clock_b=1, reverse_forecast=False, intervention=True, prior=None):
     """Complete union tape until the first postpulse port-zero tick or timeout.
 
     The pulse counts as a tick iff the trigger is one. The independent
@@ -140,8 +146,10 @@ def stopped_law(cap=2, *, clock_b=1, reverse_forecast=False, intervention=True):
         raise ValueError('Boolean intervention and forecast choices are required')
     if reverse_forecast and not intervention:
         raise ValueError('the forecast concerns the declared intervention')
-    initial_law = (pulse_distribution(reverse_forecast=reverse_forecast) if intervention else
-                   {((0, -1, 0), state): F(1, 66) for state in source().states})
+    prior = _prior(prior)
+    initial_law = (pulse_distribution(reverse_forecast=reverse_forecast, prior=prior) if intervention else
+                   {((0, -1, 0), state): mass for state, mass in zip(source().states, prior) if mass})
+    initial_mass = sum(initial_law.values())
     populations = {}
     for (mark, state), mass in initial_law.items():
         endpoint = tuple(state[j] for j in READ_PORTS)
@@ -166,9 +174,100 @@ def stopped_law(cap=2, *, clock_b=1, reverse_forecast=False, intervention=True):
                     else:
                         future[mark, initial, read, terminal] += mass/60
         populations = future
-    if sum(result.values()) != 1:
-        raise ArithmeticError('the complete stopped law is not normalized')
+    if sum(result.values()) != initial_mass:
+        raise ArithmeticError('the complete stopped law lost initial measure mass')
     return dict(result)
+
+
+def preparation_defect(prior):
+    """Exact marked-measure L1 defect; no normalization or half-L1 convention.
+
+    Only the moving mark differs: A_mu(m,s)-W_mu(m,s) =
+    [mu(swap s)-mu(s)]/2 when (s_0,s_1)=(0,1).
+    Consequently L1(A_mu-W_mu)=TV(mu,swap mu)/2 <= TV(mu,uniform).
+    A common complete continuation contracts this L1 norm at any finite cap.
+    """
+    prior = _prior(prior)
+    states = source().states
+    mass = dict(zip(states, prior))
+    swapped = tuple(mass[(s[1], s[0])+s[2:]] for s in states)
+    tv = sum((abs(p-F(1, 66)) for p in prior), F())/2
+    swap_tv = sum((abs(p-q) for p, q in zip(prior, swapped)), F())/2
+    actual = pulse_distribution(prior=prior)
+    forecast = pulse_distribution(prior=prior, reverse_forecast=True)
+    l1 = sum((abs(actual.get(k, F())-forecast.get(k, F()))
+              for k in actual.keys() | forecast.keys()), F())
+    for mark, state in actual.keys() | forecast.keys():
+        expected = ((mass[(state[1], state[0])+state[2:]]-mass[state])/2
+                    if mark == (1, 0, 1) and state[:2] == (0, 1) else F())
+        if actual.get((mark, state), F())-forecast.get((mark, state), F()) != expected:
+            raise ArithmeticError('the exact preparation defect lost its moving-branch identity')
+    if l1 != swap_tv/2 or l1 > tv:
+        raise ArithmeticError('the sharp preparation bound failed')
+    return {'source_probability_TV_to_uniform': tv, 'source_probability_TV_to_swap': swap_tv,
+            'marked_forecast_L1_error': l1, 'forecast_total_mass': sum(forecast.values()),
+            'forecast_is_probability': sum(forecast.values()) == 1,
+            'exact_marked_identity': swap_tv == 0,
+            'any_complete_continuation_L1_error_upper': l1,
+            'any_readout_event_absolute_error_upper': l1}
+
+
+def warmup_prior(initial, attempts):
+    """Exact diagonal warm-up, with its entire preparation tape discarded."""
+    initial = _source_state(initial)
+    attempts = _integer(attempts, 0, 1000)
+    kernel = source()
+    row = [int(state == initial) for state in kernel.states]
+    transitions = [tuple((j, n) for j, n in enumerate(values) if n)
+                   for values in kernel.counts]
+    for _ in range(attempts):
+        after = [0]*66
+        for value, outgoing in zip(row, transitions):
+            for j, multiplicity in outgoing:
+                after[j] += value*multiplicity
+        row = after
+    return tuple(F(n, 60**attempts) for n in row)
+
+
+def local_balancing_preparation(prior):
+    """One actual fair repair gives endpoint-swap balance on the binary sector.
+
+    Preparation coin/current are not made available to the subsequent menu.
+    Its deterministic incident tick is included as a known clock offset.
+    """
+    prior = _prior(prior)
+    output = defaultdict(F)
+    for state, mass in zip(source().states, prior):
+        for coin in (0, 1):
+            after, _ = native.native(state, PULSE, coin)
+            output[after] += mass/2
+    balanced = tuple(output[s] for s in source().states)
+    if not preparation_defect(balanced)['exact_marked_identity']:
+        raise ArithmeticError('one native local preparation failed endpoint balance')
+    return {'prior': balanced, 'native_preparation_attempts': 1,
+            'incident_tick_offsets_on_read_ports': tuple(int(p in PULSE) for p in READ_PORTS),
+            'preparation_coin_current_unavailable_to_future_protocol': True}
+
+
+def preparation_budget(attempts, coverage=F(1)):
+    """Inherited binary-sector warm-up bound in repair attempts, not seconds.
+
+    The exact pulse bound improves the triangle bound between two normalized
+    arms: weighting passive records from the same warmed preparation costs
+    at most delta in L1, even though that weighted measure may have mass !=1.
+    """
+    attempts = _integer(attempts, 0, 1000)
+    coverage = inherited.exact_core._fraction(coverage)
+    delta = burn_in.binary_bound(attempts, coverage)
+    return {'warmup_attempts': attempts, 'exogenous_seam_coverage': coverage,
+            'preparation_half_trace_distance_upper': delta,
+            'complete_actual_readout_probability_TV_to_equilibrium_upper': delta,
+            'same_preparation_weighted_forecast_L1_error_upper': delta,
+            'same_preparation_any_event_forecast_error_upper': delta,
+            'warmup_tape_and_controller_discarded': True,
+            'binary_sector_support_required': True,
+            'forecast_renormalized': False,
+            'stationary_initial_preparation_required': False}
 
 
 def density_response(attempts):
@@ -583,6 +682,62 @@ def law_digest(law):
     return hashlib.sha256(json.dumps(rows, separators=(',', ':')).encode()).hexdigest()
 
 
+def preparation_run():
+    states = source().states
+    left = next(s for s in states if s[0] and not s[1])
+    right = (left[1], left[0])+left[2:]
+    # Far from equilibrium, but locally swap-balanced and with nonzero pulse response.
+    balanced = tuple(F(int(s in (left, right)), 2) for s in states)
+    invariant = preparation_defect(balanced)
+    if not invariant['exact_marked_identity'] or invariant['source_probability_TV_to_uniform'] == 0:
+        raise ArithmeticError('local balance did not remove global stationarity')
+    local = local_balancing_preparation(tuple(F(int(s == left)) for s in states))
+    if local['prior'] != balanced:
+        raise ArithmeticError('the native one-repair preparation differs from endpoint averaging')
+    epsilon = F(1, 132)
+    sharp = tuple(F(1, 66)+epsilon*(int(s == left)-int(s == right)) for s in states)
+    tight = preparation_defect(sharp)
+    actual = stopped_law(2, prior=sharp)
+    forecast = stopped_law(2, prior=sharp, reverse_forecast=True)
+    l1 = sum((abs(actual.get(k, F())-forecast.get(k, F()))
+              for k in actual.keys() | forecast.keys()), F())
+    timeout_defect = sum((actual.get(k, F())-forecast.get(k, F())
+                         for k in actual.keys() | forecast.keys() if k[3] == 'timeout'), F())
+    if (l1 != epsilon or tight['source_probability_TV_to_uniform'] != epsilon
+            or sum(forecast.values()) != 1-epsilon or timeout_defect != epsilon*F(5, 6)**2):
+        raise ArithmeticError('the tight complete-law preparation control failed')
+    def upper(value):
+        scaled = value*10**12
+        return F(-(-scaled.numerator//scaled.denominator), 10**12)
+    rows = []
+    for n in (0, 8, 64, 221):
+        prior = warmup_prior(left, n)
+        defect, budget = preparation_defect(prior), preparation_budget(n)
+        if defect['source_probability_TV_to_uniform'] > budget['preparation_half_trace_distance_upper']:
+            raise ArithmeticError('native warm-up exceeds its inherited error budget')
+        rows.append({'warmup_attempts': n,
+            'measured_source_TV_upper': upper(defect['source_probability_TV_to_uniform']),
+            'measured_weighted_forecast_L1_upper': upper(defect['marked_forecast_L1_error']),
+            'uniform_source_and_forecast_error_upper': upper(budget['preparation_half_trace_distance_upper']),
+            'prior_sha256': hashlib.sha256(str(prior).encode()).hexdigest()})
+    return {'identity_requires_only_pulse_endpoint_swap_invariance': True,
+            'exact_local_preparation': {k: v for k, v in local.items() if k != 'prior'},
+            'nonstationary_swap_invariant_control': invariant,
+            'exact_defect': 'L1(A_mu-W_mu)=TV(mu,swap(mu))/2 <= TV(mu,uniform)',
+            'sharp_complete_stopped_control': {**tight, 'attempt_cap': 2,
+                'actual_law_sha256': law_digest(actual), 'weighted_forecast_sha256': law_digest(forecast),
+                'complete_stopped_L1_defect': l1, 'timeout_event_defect': timeout_defect,
+                'forecast_renormalized': False},
+            'finite_warmup': rows,
+            'contract': {'binary_source_density_required': True,
+                'any_admissible_current_record_law_covered': True,
+                'warmup_seam_schedule_exogenous_with_positive_coverage': True,
+                'warmup_tape_and_controller_unavailable_to_readout': True,
+                'all_pulse_marks_zero_currents_and_timeouts_retained': True,
+                'later_classical_record_continuation_common_and_complete': True,
+                'physical_duration_or_record_law_selection_claimed': False}}
+
+
 def run():
     actual, predicted = pulse_distribution(), pulse_distribution(reverse_forecast=True)
     if actual != predicted:
@@ -636,12 +791,14 @@ def run():
         'mean_field_responses': {str(n): density_response(n) for n in (0, 1, 2, 4)},
         'discounted_spatial_response': {str(z): discounted_response(z) for z in (1, 2)},
         'controlled_continuum_response': controlled_response_run(),
+        'finite_preparation_response': preparation_run(),
         'controls': {'nonstationary_prior_rejects_stationary_weight_formula': True,
             'nonstationary_actual_total_mass': sum(nonstationary.values()),
             'nonstationary_invalid_forecast_total_mass': sum(invalid_forecast.values()),
             'nonstationary_invalid_forecast_is_not_renormalized': True,
             'future_law_includes_trigger_coin_current': True},
-        'scope': {'stationary_uniform_fixed_number_preparation': True,
+        'scope': {'stationary_uniform_fixed_number_reference_law': True,
+            'exact_stationary_preparation_required_for_finite_error_forecast': False,
             'source_readouts_and_future_continuation_fixed_before_comparison': True,
             'response_parameter_fitted': False, 'pulse_has_measured_physical_duration': False,
             'unmarked_response_requires_continuation_independent_of_pulse_mark': True,

@@ -130,6 +130,114 @@ def test_nonstationary_prior_invalidates_equilibrium_response_formula():
     assert sum(m.pulse_distribution(prior=prior, reverse_forecast=True).values()) == F(1, 2)
 
 
+def test_swap_balance_replaces_stationarity_with_nonzero_response():
+    left = tuple(int(j in (0, 2)) for j in range(12))
+    right = tuple(int(j in (1, 2)) for j in range(12))
+    prior = tuple(F(int(s in (left, right)), 2) for s in m.source().states)
+    result = m.preparation_defect(prior)
+    assert result['source_probability_TV_to_uniform'] == F(32, 33)
+    assert result['exact_marked_identity']
+    assert m.stopped_law(1, prior=prior) == m.stopped_law(1, prior=prior, reverse_forecast=True)
+    pulse = m.pulse_distribution(prior=prior)
+    assert sum(v*s[1] for (_, s), v in pulse.items()) == F(3, 4)
+    assert sum(p*s[1] for s, p in zip(m.source().states, prior)) == F(1, 2)
+
+
+def test_one_native_local_preparation_establishes_exact_forecast_for_every_basis_input():
+    # Every binary input, including both equal-load cases; convexity covers
+    # any diagonal preparation. No field-independent reset is performed.
+    for state in m.source().states:
+        prior = tuple(F(int(s == state)) for s in m.source().states)
+        prepared = m.local_balancing_preparation(prior)
+        actual = m.pulse_distribution(prior=prepared['prior'])
+        forecast = m.pulse_distribution(prior=prepared['prior'], reverse_forecast=True)
+        assert actual == forecast
+        assert prepared['native_preparation_attempts'] == 1
+        assert prepared['incident_tick_offsets_on_read_ports'] == (1, 1, 0)
+        # The exact diagonal result is the initial measure averaged with its
+        # endpoint-swapped version, from the independent heat-bath formula.
+        swapped = (state[1], state[0])+state[2:]
+        assert prepared['prior'] == tuple(F(int(s == state)+int(s == swapped), 2)
+                                          for s in m.source().states)
+
+
+def test_sharp_unnormalized_forecast_bound_keeps_timeout_mass():
+    left = tuple(int(j in (0, 2)) for j in range(12))
+    right = tuple(int(j in (1, 2)) for j in range(12))
+    epsilon = F(1, 132)
+    prior = tuple(F(1, 66)+epsilon*(int(s == left)-int(s == right)) for s in m.source().states)
+    # Independent endpoint heat-bath enumeration, not pulse_distribution.
+    oracle = defaultdict(F)
+    for state, mass in zip(m.source().states, prior):
+        if not state[0]:
+            oracle[(0, -1, 0), state] += mass
+        else:
+            total = state[0]+state[1]
+            for coin in (0, 1):
+                pair = (total//2, (total+1)//2)
+                if coin:
+                    pair = pair[::-1]
+                oracle[(1, coin, state[0]-pair[0]), pair+state[2:]] += mass/2
+    forecast = m.pulse_distribution(prior=prior, reverse_forecast=True)
+    residual = {key: oracle.get(key, F())-forecast.get(key, F())
+                for key in oracle.keys() | forecast.keys()}
+    assert {key: value for key, value in residual.items() if value} == {((1, 0, 1), right): epsilon}
+    result = m.preparation_defect(prior)
+    assert result['marked_forecast_L1_error'] == epsilon
+    assert result['source_probability_TV_to_uniform'] == epsilon
+    assert not result['forecast_is_probability']
+    actual = m.stopped_law(2, prior=prior)
+    predicted = m.stopped_law(2, prior=prior, reverse_forecast=True)
+    assert sum(actual.values()) == 1
+    assert sum(predicted.values()) == 1-epsilon
+    # Taking half this L1 as an event bound would be false even for the
+    # complete event, since only one of these measures is a probability law.
+    for status, fraction in (('tick', 1-F(5, 6)**2), ('timeout', F(5, 6)**2)):
+        defect = sum((actual.get(k, F())-predicted.get(k, F())
+                      for k in actual.keys() | predicted.keys() if k[3] == status), F())
+        assert defect == epsilon*fraction
+
+
+def test_normalization_and_equal_endpoint_means_do_not_imply_local_balance():
+    def delta(s, a, spectator):
+        return int(s == tuple(int(j in (a, spectator)) for j in range(12)))
+    epsilon = F(1, 132)
+    prior = tuple(F(1, 66)+epsilon*(delta(s, 0, 2)-delta(s, 1, 2)
+                                   -delta(s, 0, 3)+delta(s, 1, 3)) for s in m.source().states)
+    result = m.preparation_defect(prior)
+    assert result['forecast_is_probability']
+    assert not result['exact_marked_identity']
+    assert result['marked_forecast_L1_error'] == 2*epsilon
+
+
+def test_warmup_is_actual_native_propagation_and_uniform_budget():
+    initial = tuple(int(j in (0, 2)) for j in range(12))
+    # Independent floor/ceiling pair enumeration for three whole attempts.
+    oracle = {initial: F(1)}
+    for _ in range(3):
+        after = defaultdict(F)
+        for state, mass in oracle.items():
+            for a, b in m.source().seams:
+                total = state[a]+state[b]
+                for coin in (0, 1):
+                    pair = (total//2, (total+1)//2)
+                    if coin:
+                        pair = pair[::-1]
+                    output = list(state); output[a], output[b] = pair
+                    after[tuple(output)] += mass/60
+        oracle = dict(after)
+    assert m.warmup_prior(initial, 3) == tuple(oracle.get(s, F()) for s in m.source().states)
+    prior = m.warmup_prior(initial, 221)
+    defect, budget = m.preparation_defect(prior), m.preparation_budget(221)
+    assert defect['marked_forecast_L1_error'] <= defect['source_probability_TV_to_uniform'] <= budget[
+        'same_preparation_weighted_forecast_L1_error_upper'] < F(1, 1000)
+    assert m.preparation_budget(220)['preparation_half_trace_distance_upper'] > F(1, 1000)
+    assert budget['warmup_tape_and_controller_discarded']
+    assert not budget['stationary_initial_preparation_required']
+    assert m.preparation_budget(221, F(1, 2))['preparation_half_trace_distance_upper'] > budget[
+        'preparation_half_trace_distance_upper']
+
+
 def test_event_response_is_not_a_reset_or_independent_clock_field_product():
     law = m.stopped_law(1, clock_b=1)
     trigger = sum(v for key, v in law.items() if key[0][0])
