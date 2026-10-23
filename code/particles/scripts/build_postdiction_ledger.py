@@ -7289,12 +7289,15 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("")
     tilt = ledger["retrospective_tilt_comparison"]
     shared = tilt["shared_forward_parameter"]
+    lower_tail, upper_tail = shared["tail_weight_interval"]
+    tail_display = (str(lower_tail) if lower_tail == upper_tail
+                    else f"[{lower_tail},{upper_tail}]")
     add("The [same-P diagnostic](../model/predictions/shared_parameter.py) also uses "
         "one forward structured-running P enclosure in both the coupling endpoint and "
         "the conditional scalar-tilt map. It gives n_s "
         f"`{float(Fraction(shared['prediction']['scalar_tilt_interval'][0])):.12f}`; "
-        "both interval endpoints retain ACT tail weight "
-        f"`{shared['tail_weight_interval'][0]}/{shared['multiplicity']}`. The "
+        "the enclosing ACT posterior mass interval is "
+        f"`{tail_display}/{shared['multiplicity']}`. The "
         "coupling endpoint still misses its declared comparison band. Sharing this "
         "parameter does not complete either physical map or supply a joint likelihood, "
         "physical theory-error budget or FZ-15 verdict.")

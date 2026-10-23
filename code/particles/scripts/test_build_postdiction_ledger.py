@@ -2717,6 +2717,17 @@ def test_shared_parameter_reference_preserves_interval_and_no_joint_verdict():
     assert row["coverage"]["full_common_physical_construction_established"] is False
 
 
+def test_shared_parameter_renderer_retains_unequal_tail_endpoints():
+    retained = json.loads(ledger.DEFAULT_OUT.read_text(encoding="utf-8"))
+    shared = ledger._retrospective_shared_parameter_reference()
+    shared["tail_weight_interval"] = [3114, 3115]
+    shared["posterior_mass_interval"] = [str(Fraction(n, 508985)) for n in (3114, 3115)]
+    retained["retrospective_tilt_comparison"]["shared_forward_parameter"] = shared
+    rendered = ledger._render_md(retained)
+    assert "posterior mass interval is `[3114,3115]/508985`" in rendered
+    assert "both interval endpoints retain ACT tail weight" not in rendered
+
+
 @pytest.mark.parametrize("mutation", ["claim", "P", "tilt"])
 def test_shared_parameter_ledger_rejects_promotion_or_retuning(monkeypatch, mutation):
     original = ledger._public_receipt
