@@ -153,7 +153,8 @@ def preparation(precision_bits=24, cap=CAP):
         "flow_halfdiamond_upper_per_absolute_modular_parameter": str(2*v/(1-v)),
         "expected_underlying_attempts_through_herald": str(F(ticks+1)/p),
         "remote_wait_tail_per_incident_tick": f"({1-p})^h after h native attempts",
-        "global_attempt_counter_required": False,
+        "global_warmup_attempt_counter_required": False,
+        "complement_controller_counts_attempts_and_reports_completion": True,
     }
 
 

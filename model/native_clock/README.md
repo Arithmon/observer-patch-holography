@@ -122,9 +122,10 @@ and `log(5/4)`. These differ from the globally heralded reference's gaps.
 The receipt composes conditioning, finite complement repair and modular
 generator errors, including arbitrary initially untouched references.
 
-No global attempt counter enters this protocol. Regional record collection,
-an IID seam schedule, a fixed local horizon and the complement scheduler
-remain declared services. Retained preparation records must be ignored by
+Warm-up and heralding use no global attempt counter. Regional record
+collection, an IID seam schedule and a fixed local horizon remain declared.
+The complement controller counts its own repairs and reports completion;
+those remote repairs produce no incident tick at the cap. Retained preparation records must be ignored by
 the continuation; the bound does not assert independence from that tape.
 The reference defines a modular clock, whose active implementation and
 physical calibration are separate obligations.

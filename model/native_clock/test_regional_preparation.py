@@ -94,7 +94,7 @@ def test_local_reference_is_distinct_faithful_only_after_completion():
 def test_bounds_keep_failure_and_control_conditioning_cost():
     p = r.preparation()
     assert p["local_warmup_ticks_including_zeros"] == 496
-    assert not p["global_attempt_counter_required"]
+    assert not p["global_warmup_attempt_counter_required"]
     lo, hi = map(F, p["success_probability_interval"])
     flo, fhi = map(F, p["failure_probability_interval"])
     assert lo+fhi == hi+flo == 1

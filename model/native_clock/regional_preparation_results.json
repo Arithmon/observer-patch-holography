@@ -44,6 +44,7 @@
       5,
       7
     ],
+    "complement_controller_counts_attempts_and_reports_completion": true,
     "complement_preparation": {
       "attempts": 7440,
       "blocks": 31,
@@ -59,7 +60,7 @@
       "30064772161/35433480192"
     ],
     "flow_halfdiamond_upper_per_absolute_modular_parameter": "1116155704158/144114629998003793",
-    "global_attempt_counter_required": false,
+    "global_warmup_attempt_counter_required": false,
     "herald": "movement flag of the NEXT specified incident tick",
     "incident_seam_fraction": "1/2",
     "local_warmup_ticks_including_zeros": 496,
@@ -97,7 +98,7 @@
     "Lean/Thermodynamics/CapFirstLaw.lean": "17e8be6e744552b4650efb58932e9a2ed7c7c545a962e17905dbbc70c2de9447",
     "Lean/Thermodynamics/FiniteConditionalRepair.lean": "6d1c8c2db46bba7bcb685d9f11f682ad4f96d01eff528d6f942e0f6666d87ce2",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/native_clock/regional_preparation.py": "0acf0925611d25bca14086be3c5be836de162c94105df02dc0e3f3085ff17b50",
+    "model/native_clock/regional_preparation.py": "4e75106919ab2d2bc42f6ea92c760cb2dd991be845b55429b102ff6db2cf62b5",
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
