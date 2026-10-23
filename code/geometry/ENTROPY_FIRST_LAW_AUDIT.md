@@ -285,6 +285,103 @@ bulk/edge split and the fixed-volume variation family still need construction.
 The full return reference is a reconstructed state, not a demonstrated
 native preparation of a spacetime vacuum.
 
+### Native repair selects a constrained bulk/edge completion
+
+The [cut-repair construction](../../model/native_equilibration/cut_completion.py)
+derives a direct-sum completion from the native C and E instruments. On the
+binary twelve-port total-two carrier, fix cap `R=(0,1,5,7)` and attempt only
+the fifteen native seams within its connected eight-port complement `B`.
+Attempts use independent uniform seams and fair coins; discard every
+preparation record. This controlled cut and schedule are explicit inputs.
+
+Write `j` for the cap occupation. The source basis factorizes as
+`direct_sum_j H_R,j tensor H_B,2-j`, with dimensions `(a_j,b_j)` equal to
+`(1,28),(4,8),(6,1)`. Both native channels converge to
+
+```text
+E_R(rho) = direct_sum_j Tr_B(P_j rho P_j) tensor I_(b_j)/b_j.
+```
+
+The retained algebra is `direct_sum_j M_(a_j) tensor I_(b_j)`, of dimension
+53. Its operators are preserved by every unread complement repair. The
+signed-difference proof in the [native quantum-mixing theorem](../../model/observer/QUANTUM_MIXING.md)
+applies inside `B`: zero outside difference mixes each number sector, while
+every nonzero outside difference has a positive killing rate. Constant
+nonzero differences would require a fully occupied complement, which the
+total-two source excludes. The resulting gap is at least `1/240` per
+discarded native attempt. At 4,080 attempts the complete state is within
+`33/131072` in half trace norm of `E_R(rho)`, uniformly over arbitrary
+untouched references. Any common subsequent complete instrument inherits
+this bound. Actual native Kraus enumeration checks all 4,356 matrix units,
+including cross-charge coherences; coherent reference-entangled executions
+check finite preparation.
+
+For every state `rho`, `sigma=E_R(rho)` is the **unique entropy maximum
+among states with the same retained cap marginal**, since
+
+```text
+S(sigma)-S(rho) = D(rho || sigma) >= 0.
+S(sigma) = H(p)+sum_j p_j S(rho_R,j)+sum_j p_j log b_j.
+K_sigma = K_bulk+Z,    Z_j=log(b_j) I,    K_bulk,j=-log(p_j rho_R,j) tensor I.
+```
+
+The logarithms act on the state's support. Positivity puts `rho` on that
+support, and `log(sigma)` belongs to the retained algebra, proving the first
+identity. At a faithful completed state, every Hermitian tangent `X` with
+`E_R(X)=0` satisfies `dS_sigma[X]=0`. Thus source repair supplies an actual
+maximum-entropy completion, the finite bulk/edge split and its central
+weights; the bulk state and charge probabilities are inherited from the
+input. [Audenaert's entropy-continuity theorem](https://arxiv.org/abs/quant-ph/0610146),
+Theorem 1 converted to nats, bounds the source entropy deficit after the
+same 4,080 attempts by `4719/1310720 < 0.003601`, without a reference
+population floor. This entropy bound concerns the source marginal, while
+the state-distance bound covers arbitrary untouched references.
+
+The same source also instantiates the population hypotheses of
+[`heatBath_cap_clausius`](../../Lean/Thermodynamics/CapFirstLaw.lean).
+For the faithful completed Palm reference `sigma_bar=E_R(sigma_Palm)`,
+the diagonal part of `E_R` is exactly conditional resampling at fixed cap
+configuration. Every actual complement seam is conditional resampling at
+fixed untouched occupations and seam total; all 65,340 seam-kernel entries
+are checked against the native fair-coin rule. These kernels preserve
+`sigma_bar` and separately conserve `K_bulk=-log(sigma_bar*b_j)` and
+`Z=log b_j`. Their uniform mixture and finite compositions therefore satisfy
+the finite cap Clausius inequality with **zero cap heat**, `0 <= Delta S`.
+With `H=-log sigma_bar`, the Gibbs ledger and exact first law apply at
+`beta=1` and partition function one in modular units. This is no physical
+energy or temperature calibration. The original Palm reference generally
+fails these seam heat-bath identities and cannot replace its completion.
+
+These are constrained variations at a fixed cut, not variations of physical
+volume or area. The complement multiplicity `b_j` is not identified with a
+gauge collar or gravitational area, and `K_bulk/(2*pi)` has not been
+identified with a geometric boost. Access to arbitrary coherent cap
+observables is not supplied by the completion. Conditioning on a preparation
+current destroys the unread-state conclusion. A two-port complement admits
+a fixed coherence between its empty and full configurations, so the claimed
+convergence fails on that extension despite connectedness.
+
+The tracial completion also changes the global movement-Palm reference by
+exact half trace distance `8/175`. Its retained algebra is not invariant
+under that reference's modular flow. The
+[regional Palm modular construction](../../model/native_modular_reference/README.md)
+uses its own state-preserving algebra and expectation; neither reference
+may be substituted for the other in a common physical first law.
+
+There is also a common-state construction: apply the complement protocol
+to the Palm reference. Its ideal completed state retains the cap marginal,
+has minimum eigenvalue `1/75`, and has constant eigenvalues across each
+complement factor. Its modular flow therefore preserves the bare cap
+algebra. In its charge-one block, the native eigenvalue ratio `38/37`
+gives a nonzero modular frequency `log(38/37)` between two cap states.
+The same state has the entropy completion and central split above.
+Transferring probability between these cap states changes the retained
+marginal and has a nonzero entropy derivative `log(38/37)`. The derived
+stationarity therefore applies to its stated constraint fibre.
+Finite herald preparation, finite complement repair and source-compiled
+modular control require their composed error bounds; the ideal equality
+does not identify that modular parameter with laboratory seconds.
+
 ## A complete generator test and its witness
 
 Supply an independent Hermitian candidate `K`. Let

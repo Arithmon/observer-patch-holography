@@ -34,6 +34,8 @@ mean response, a spectrum or a clock rate.
 | [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. Normalized incident clocks sample the continuum field paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with inverse-degree tick weights. Fixed bounded seam incidences separately give finite-vector Gaussian jitter with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | The IID uniform schedule and read access are explicit. Predictable port choices precede the fresh seam draw; their path theorem assumes no clock–field independence. Jitter independence applies only to the fixed-event-set contract. A local clock grants no remote readback, modular identity or physical duration. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock. Public optical data reject direct distinct-region attachments under bounded-error/no-extra-filter hypotheses; a separate test covers a declared compact filter and independent replicas. | The published servo time constant establishes neither compact support nor independent native sources. Allan moment targets give no confidence/resource or refinement bound. Atomic identification is unproved; aliases define one clock. |
 | [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. Binary warm-up also controls all normalized entropy tangents; a global movement herald prepares a faithful modular reference with a finite flow-error bound. | Warm-up records and controller memory are inaccessible to the continuation; preparation failures remain outputs. Conserved sector, exogenous seam coverage and herald access are explicit. Neither coherent probes, physical entropy/area identification nor passive modular evolution follow from these preparations. |
+| [Native regional entropy and clock](native_modular_reference/README.md#one-native-entropy-completion-and-its-regional-clock) | Complement-only C/E repair selects the cap's maximum-entropy completion with counted multiplicities `(28,8,1)`. Completing the native Palm reference gives cap frequencies `log(38/37)` and `log(5/4)`. The compiled clock and finite preparation have a joint modular-channel error below `0.001` for each certified `|s|<=16`; the ideal clock commutes with every labelled complement repair. Actual seam populations instantiate the finite heat-bath/zero-heat Clausius contract. | The cut, complement schedule, discarded records and coherent services are declared. Stationarity fixes the cap marginal; a cap-changing tangent has nonzero derivative. Complement multiplicity and modular energy are not physical area and stress. |
+| [Single-history local sampling](native_clock/README.md#finite-confidence-from-one-continuing-local-history) | One own-incident signed-current tape estimates stationary occupation, adjacent-occupation product and movement means with exact finite confidence bounds, from arbitrary initial states. | Uniform IID seams and fair placement remain. Fixed local horizons and complete unknown outcomes are required; the intervals neither estimate an arbitrary initial mean nor authenticate a laboratory correspondence. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
 | [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | The same certified forward P is propagated into the conditional coupling endpoint and primordial tilt without fitting either target. The endpoint misses its comparison band; the ACT posterior position remains `3114/508985` at both tilt interval endpoints. The separate fixed-background ACT likelihood uses overlapping observations. | Complete coupling transport, primordial identification and CMB transfer remain conditional; the numerical enclosure is not a physical theory-error budget. No current bridge equates primordial tilt with a native finite-carrier readout or establishes agreement across all public datasets. |
 
@@ -97,9 +99,17 @@ channel keeps every vacuum-to-one-token coherence at its original port under
 any current-word schedule; its uniform-attempt charged two-point function has
 a flat spatial band even though one-token populations move. Thus these
 coherence rates cannot serve as propagating relativistic particle poles.
-Source-selected coherent transport, a geometric loop observable and a
-calibrated physical spectrum remain necessary before a particle identity or
-mass can be tested.
+A distinct **neutral** block does transport: `|a,j><b,j|` moves its common
+occupation `j` on the punctured source graph while the signed-difference
+endpoints stay fixed. The [complete neutral readout](native_effective_fields/README.md#spatial-neutral-coherence-in-the-same-native-clock)
+derives its dissipative bands and first-global-movement response from the
+actual C/E maps. The ideal first-movement analyzer attains C/E trace distance
+`4/69`; finite capped executions retain complete probabilities and explicit
+timeouts. Coherent preparation,
+joint analysis and all-seam access remain supplied; this is neither charged
+particle propagation nor a physical spectral pole. A sourced geometric loop
+observable and calibrated physical spectrum remain necessary for particle
+identification or mass comparison.
 
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair
@@ -129,6 +139,16 @@ before invoking the QFT or spacetime theorem that needs them. In particular,
 commutative record gluing does not provide every hypothesis of a quantum
 regional net, and an available modular automorphism is not proof that the
 continuing repair process follows it.
+
+The [regional Palm construction](native_modular_reference/README.md#regional-algebras-under-one-native-modular-action)
+derives the extra outside-context information required to make each cap
+algebra invariant under one ambient modular action. The resulting algebras
+agree on their shared observables, but disjoint regions can fail to commute
+and their expectations need not preserve ordinary trace. They do not supply
+the full local-net contract. The entropy-completed reference instead makes
+the bare algebra of one declared cap invariant, with a source-compiled clock
+and an explicit change-of-reference cocycle. Different cap completions do not
+automatically provide a single common-state spacetime net.
 
 One carrier suffices for the present action, signal and clock derivations.
 Use extension or federation only when the claimed observation domain needs

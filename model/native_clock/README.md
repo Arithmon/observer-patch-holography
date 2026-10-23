@@ -62,6 +62,72 @@ python -m model.native_clock.bit_readout --check
 python -m pytest -q -W error model/native_clock/test_bit_readout.py
 ```
 
+### Finite confidence from one continuing local history
+
+[`trajectory_readout.py`](trajectory_readout.py) supplies the sampling contract
+for stationary local moments using one continuing signed-current tape. No
+stationary preparation, resets, independent replicas or initial-bit disclosure
+are needed. The horizon is fixed before reading the tape, in **own incident
+ticks**. Under the same IID uniform seam schedule and fair native placements,
+the stationary occupation, consecutive-occupation product and movement means
+are respectively `1/6`, `1/11` and `5/33`. The product differs from `1/36`:
+consecutive readings are correlated.
+
+For the exact stopped kernel `Q`, a transition reward `h` has conditional
+mean `r`, stationary mean `mu`, and a checked rational solution
+`(I-Q)g=r-mu`. On each source path,
+`sum(h-mu)=g(X_0)-g(X_n)+sum D_k`, where `D_k` is conditionally centered.
+Let `R=osc(g)` and let `W` bound the conditional range of
+`h(X_k,X_(k+1))+g(X_(k+1))`. Iterating the bounded-variable exponential
+inequality gives
+`P(|mean(h)-mu|>(R+W*t)/n) <= 2 exp(-2*t^2/n)`.
+The program chooses the integer `t=ceil(sqrt(n*(s+1)/2))`, so each failure
+probability is at most `2^-s`, with no floating-point confidence calculation.
+For occupation, `R=W=3`. All twelve ports have the same exact constants;
+their observations need not be independent.
+
+The first nonzero current retrospectively resolves every local bit in the
+window. An all-zero window returns `[0,1]` for the two bit moments and still
+reports its exact zero movement count. Coverage includes these unknown
+outcomes and applies from arbitrary binary total-two inputs, including
+coherent states with untouched references. It is not conditional on resolution,
+an arbitrary stopping-time guarantee, or a confidence interval for an initial
+nonstationary occupation. Three simultaneous intervals have total failure
+at most `3/4096` at the default setting. A retained 32,768-tick nonstationary
+native execution satisfies all three predictions; repeated repair of one
+empty incident seam fails the movement test. This control changes the
+scheduler, showing why its hypothesis remains necessary. No physical dataset
+is identified with this local tape.
+
+```sh
+python -m model.native_clock.trajectory_readout --check
+```
+
+The [single-carrier clock comparison](COMPARISON.md) additionally derives
+relative rates and explicit finite uncertainty for all twelve local current
+clocks, without stationary preparation or a federation. Their asymptotic
+count covariances recover all three native port-distance shells. These
+unit-independent relations are testable after an operational apparatus
+identification; choosing seconds is a convention, not the missing result.
+
+The [measured host-clock attachment](HOST_CLOCK.md) now records actual native
+execution against a monotonic host counter, calibrates one local clock on
+one block and checks a different clock on three untouched blocks. Their
+duration errors are 6.29%, 2.29% and 7.76% against a declared 25% engineering
+tolerance. A host-workload control preserves every native record and rejects
+that calibration in all four blocks. This is an executable apparatus check;
+it supplies no traceable lab calibration or identification with proper time.
+
+The [joint clock bridge](CLOCK_BRIDGE.md) derives how incident interactions,
+including zero currents, convert to local movement counts. Their stationary
+ratio is `33/5`, but their exact correlations and finite uncertainty rule out
+using that mean as a pathwise conversion. The bridge retains field reads and
+extra feedback hits, and replays the existing host capture with its unchanged
+calibration: all three baseline blocks remain inside the propagated interval,
+while the corresponding workload controls reject it. This uses the same
+total-two carrier as the capture, not the full binary preparation of the
+field-refinement protocol.
+
 ## Active configuration readout and basis preparation
 
 [`configuration.py`](configuration.py) supplies a different, active protocol:
@@ -132,31 +198,6 @@ its fine measurement to one port is **not** a Lüders port measurement: it
 also destroys coherences between different configurations with the same
 port value. The [auxiliary-pointer construction](../native_interface/README.md)
 avoids that disturbance when a continuing work-bit instrument is required.
-
-The [single-carrier clock comparison](COMPARISON.md) additionally derives
-relative rates and explicit finite uncertainty for all twelve local current
-clocks, without stationary preparation or a federation. Their asymptotic
-count covariances recover all three native port-distance shells. These
-unit-independent relations are testable after an operational apparatus
-identification; choosing seconds is a convention, not the missing result.
-
-The [measured host-clock attachment](HOST_CLOCK.md) now records actual native
-execution against a monotonic host counter, calibrates one local clock on
-one block and checks a different clock on three untouched blocks. Their
-duration errors are 6.29%, 2.29% and 7.76% against a declared 25% engineering
-tolerance. A host-workload control preserves every native record and rejects
-that calibration in all four blocks. This is an executable apparatus check;
-it supplies no traceable lab calibration or identification with proper time.
-
-The [joint clock bridge](CLOCK_BRIDGE.md) derives how incident interactions,
-including zero currents, convert to local movement counts. Their stationary
-ratio is `33/5`, but their exact correlations and finite uncertainty rule out
-using that mean as a pathwise conversion. The bridge retains field reads and
-extra feedback hits, and replays the existing host capture with its unchanged
-calibration: all three baseline blocks remain inside the propagated interval,
-while the corresponding workload controls reject it. This uses the same
-total-two carrier as the capture, not the full binary preparation of the
-field-refinement protocol.
 
 ## Why the model does not predict seconds
 
