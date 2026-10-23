@@ -62,6 +62,68 @@ python -m model.native_clock.bit_readout --check
 python -m pytest -q -W error model/native_clock/test_bit_readout.py
 ```
 
+## Active configuration readout and basis preparation
+
+[`configuration.py`](configuration.py) supplies a different, active protocol:
+a controller chooses seams from its recorded currents and resolves the whole
+binary total-two configuration, without an IID sampler or an initial-bit
+disclosure. It first scans for a nonzero current, which fixes two opposite
+endpoint bits. It then grows a connected known region. To read an unknown
+neighbour, it probes from a known endpoint; if no movement is seen, it routes
+an opposite known bit to that endpoint and probes again. One of these two
+probes has unequal endpoints. A moving current resolves the neighbour; an
+exhausted retry budget produces failure, never a guessed bit. Routing itself
+uses only witnessed native movements on known unequal endpoints.
+
+Every primitive C/E map is a weighted partial injection. Once the current
+tape resolves the configuration, the cumulative signed currents also resolve
+its initial label `x`. Each successful fine path therefore has Kraus form
+`a_h |y_h><x|`. Native feedback can restore `x`, or route to any chosen binary
+total-two target `t`. Discarding the private fine tape gives, respectively,
+
+```
+restore:      rho -> sum_x |x><x|_record tensor s_x P_x rho P_x,
+reset:        rho -> |t><t| tensor sum_x s_x <x|rho|x>.
+```
+
+Without restoration, the decoded initial label is the same but the terminal
+work configuration can depend on the path. These formulas include arbitrary
+untouched references. Here `s_x` is the
+actual finite success probability for input `x`, not one. The complete
+failure branch has the missing mass. Comparing against ideal rank-one
+measurement or replacement, with an empty ideal failure branch, gives
+half-diamond error at most `max_x(1-s_x)`: the missing successful block and
+the actual failure block each contribute half that mass. Conditional
+success can steer a correlated reference; no independence is inferred from
+postselection. Discarding a record is an explicit access choice, not erasure
+of its physical cost.
+
+The exact source replay checks the controller on every basis input and
+retains its failure probability and maximum native-attempt budget. The
+source configuration graph has diameter four. With `a` seed scans and `r`
+attempts per mixed-edge retry, reset costs at most `30a+79r` attempts and
+has failure at most `2^(-8a)+69*2^-r`. Four scans and 32 retries give
+**2648 attempts and error at most `70/2^32`**. One initial 30-seam covering
+sweep absorbs arbitrary full total-two collision inputs; keeping its signed
+currents preserves retrodiction. Full-carrier reset therefore costs at most
+2678 attempts. Binary restoration is allowed; recreating collision states
+by these binary repairs is not.
+
+The current-only controller stores at most 2678 `(seam,current)` records,
+78 candidate-original/current mappings and twelve known-bit entries. A
+packed encoding of its tape, length counter, support map and known bits
+uses at most 19,328 bits; this excludes routing scratch, immutable program
+tables and host-language overhead. These are logical storage components,
+not a measured hardware RAM or thermodynamic erasure cost. Discarding access
+to a preparation tape does not make its production free.
+
+The carrier, fair C/E instrument, seam control and record memory are supplied.
+No coherent preparation follows from this classical protocol. Coarsening
+its fine measurement to one port is **not** a Lüders port measurement: it
+also destroys coherences between different configurations with the same
+port value. The [auxiliary-pointer construction](../native_interface/README.md)
+avoids that disturbance when a continuing work-bit instrument is required.
+
 The [single-carrier clock comparison](COMPARISON.md) additionally derives
 relative rates and explicit finite uncertainty for all twelve local current
 clocks, without stationary preparation or a federation. Their asymptotic

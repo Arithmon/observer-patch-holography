@@ -117,6 +117,52 @@ outcome. Applied to the active corner, its invariance premise fails here.
 Thus that theorem does not identify this native detector with the old
 instrument. It is not applied to the nonprojective whole-carrier effects.
 
+## A native auxiliary supplies a continuing work-bit instrument
+
+[`pointer.py`](pointer.py) supplies the stronger instrument needed for
+continued quantum work. A separate native carrier is prepared in a fixed
+binary configuration by the [current-only reset](../native_clock/configuration.py).
+In the existing source chart its seam orientation is code 2. Two existing
+source CNOTs copy the chosen work bit into the orientation: first work to
+auxiliary bit 0, then auxiliary bit 0 to auxiliary bit 1. The complete word
+uses six source pulses. One native coin/current pointer reads the orientation;
+the auxiliary is then traced out. No projective work-register read is supplied.
+
+For work projectors `P_0,P_1`, the ideal coupling sends the auxiliary blank
+to two orthogonal orientations. The native pointer's effects are certain on
+those orientations. For each outcome, partial trace over the auxiliary
+therefore gives exactly
+
+```
+rho_WR -> (P_b tensor I_R) rho_WR (P_b tensor I_R).
+```
+
+This proves the Lüders **instrument**, including coherences within each bit
+sector and arbitrary untouched references. The auxiliary's own disturbance
+is immaterial after its declared trace. The older same-carrier detector
+above still has a different postmeasurement state. Nor can this instrument
+be replaced by measuring the whole work configuration and forgetting all
+but one bit: that operation destroys additional coherences.
+
+The implementation executes the complete eight-dimensional local source
+map, lifts its derived Kraus blocks to the work register, and retains every
+work address, including the full Palm clock's 446 addresses outside its
+binary shell (12 collision codes and 434 encoding-padding addresses). All
+four auxiliary local code states have native full-carrier representatives,
+so raw source leakage is not removed by an intermediate code projection.
+Its source-array norm certificate covers all local input columns; physical
+code-service error remains a separate input.
+
+Finite auxiliary preparation can steer a correlated work/reference input
+on success. Its uniform complete failure bound, not a claim of conditional
+independence, controls the difference from the original work instrument.
+Private preparation records are discarded and public timeouts are retained.
+The [full modular experiment](../native_modular_reference/README.md) composes
+both native resets, the source clock and this continuing readout. This
+removes independent logical blank and projective-detector services within
+that architecture; proper-code service ancillas and coherent routing remain
+supplied and are not derived from passive repair.
+
 ## The exact reachability boundary
 
 For every source seam, coin and retained candidate record, the native Kraus

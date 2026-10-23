@@ -6,15 +6,18 @@
   ],
   "description": "Native signed-current heralds and coin/current phase effects using one shared balanced mixer, with complete outcomes, exact reachability boundaries, and rational native-only preparation floors.",
   "files": {
-    "README.md": "26a9a1cc1b78f533b9baa4de2cdaee5bb9780119384a0ae46e5c4bbc6e873bc7",
+    "README.md": "0aed6bd7ab76385d34c343a7ce92f623a40276ef51b71b570af1f88f9ad10b28",
     "__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",
     "coherence_budget.py": "6a20c76342ec7ca988ed0bd61b4bad1a8b7464a9cb3061a593734237c84be779",
     "coherence_results.json": "68d8d66e8d61e07e500904a15c94f7c26ca4cc6f1b92e923fa15344da5b48a08",
     "construction.py": "9406eba34986f27d47f7be10d3a155d6e37e5123854ff3db40c305cf4bc391fb",
+    "pointer.py": "d49d6a0602eea56b367fa2c4a334f4dd61e1a7a450f311a61530df2391d9c453",
+    "pointer_results.json": "d4db387d944d19dd9319785efd67dc7e9423d8b163b385f7ee5af7b1cae319b2",
     "results.json": "6110fc1e7a5605d506594db1299b9b26bedd3ffc32cb65e6af87a782257ca80b",
     "test_coherence_budget.py": "c3efea7c81eb518739b3e9bc5129e75ebbba67870b8e7ca263ed4aa8791ee083",
-    "test_construction.py": "fbcef99eae7bdf865f6386c4e3bf0bb4845607969de93d6b2960873ee6aea805"
+    "test_construction.py": "fbcef99eae7bdf865f6386c4e3bf0bb4845607969de93d6b2960873ee6aea805",
+    "test_pointer.py": "ed520a28f3579b73d73d00e2e4a42494d72494da109ba919db78b7d5497e41b5"
   },
   "schema": "oph.model.packet.v1"
 }
