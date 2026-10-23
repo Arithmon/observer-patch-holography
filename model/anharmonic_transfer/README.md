@@ -295,11 +295,15 @@ from the cross-receipt numerical comparison. This avoids applying the same
 dimensionless tolerance again after an estimator conversion amplifies its
 checked inputs.
 
-Separate raw-law checks allow at most `64*ulp(1)` boundary roundoff in each
-probability, `1e-12` marginal and conditional-law inconsistency, and the
-existing `2e-10` accumulated-mass error. They include rejected and zero-time
-rows, preserve tiny signed roundoff, and never clip or renormalize the raw
-law. These numerical screening gates do not represent physical uncertainty.
+Separate raw-law checks allow at most `64*ulp(1)` negative roundoff in each
+probability and the same upper-bound roundoff in the conditional detector
+law. Unconditional spin and joint masses retain the existing `2e-10`
+accumulated trace allowance, including when a deterministic branch exceeds
+one by that drift. Complete-law mass checks use `2e-10`; marginal and
+conditional-law consistency checks use `1e-12`. They include rejected and
+zero-time rows, preserve tiny signed roundoff, and never clip or renormalize
+the raw law. These numerical screening gates do not represent physical
+uncertainty.
 
 Primitive spin means, probabilities, and other floating diagnostics retain
 the `2e-10` replay tolerance. The separate exact-position diagnostic is

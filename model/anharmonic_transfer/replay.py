@@ -58,11 +58,23 @@ def _validate_probability_law(row):
             or any(type(part) is not list or len(part) != 2 for part in joint)):
         raise ValueError('A complete two-spin by two-detector probability law is required')
     spin = [row.get('acceptance_probability'), row.get('rejection_probability')]
-    probabilities = spin+selected+joint[0]+joint[1]
-    if any(type(value) is not float or not math.isfinite(value)
-           or not -PROBABILITY_ROUNDOFF <= value <= 1+PROBABILITY_ROUNDOFF
-           for value in probabilities):
-        raise ValueError('Finite original probabilities within raw boundary roundoff are required')
+    # Unconditional masses retain the executor's accumulated trace drift.
+    # A deterministic spin branch can therefore exceed one by that drift;
+    # its conditional detector law still uses the tighter boundary screen.
+    fields = [('acceptance_probability', spin[0], ACCUMULATED_MASS_ROUNDOFF),
+              ('rejection_probability', spin[1], ACCUMULATED_MASS_ROUNDOFF)]
+    fields += [(f'predicted_detector_probabilities[{index}]', value, PROBABILITY_ROUNDOFF)
+               for index, value in enumerate(selected)]
+    fields += [(f'spin_detector_joint_probabilities[{spin_index}][{detector_index}]',
+                value, ACCUMULATED_MASS_ROUNDOFF)
+               for spin_index, part in enumerate(joint)
+               for detector_index, value in enumerate(part)]
+    for field, value, upper_roundoff in fields:
+        if (type(value) is not float or not math.isfinite(value)
+                or not -PROBABILITY_ROUNDOFF <= value <= 1+upper_roundoff):
+            raise ValueError('Finite original probabilities within raw boundary roundoff '
+                             f'and accumulated mass are required at {field}: {value!r} '
+                             f'(upper {1+upper_roundoff!r})')
     if spin[0] <= 0:
         raise ValueError('Positive acceptance is required for a selected detector law')
     mean = row.get('predicted_spin_mean')
