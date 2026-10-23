@@ -130,10 +130,58 @@ interface supplies the exact herald and pointer laws, while
 the complete source mixer and its numerical comparison theorem. No additional
 axiom or newly claimed abstract theorem is needed.
 
+## Finite preparation of the faithful reference
+
+[`preparation.py`](preparation.py) removes exact equilibrium preparation as
+a premise for this reference approximation. For any initial binary-sector
+state, including one entangled with an untouched reference, the existing
+[native warm-up theorem](../record_laws/README.md) gives
+`D(rho_nR, I66/66 tensor rho_R) <= delta = min(1, 33(19079/20000)^n)`.
+The preparation tape and controller are unavailable to subsequent work;
+the bound retains the theorem's exogenous seam-coverage hypotheses.
+
+One subsequent **global random-seam movement herald**, the same CP success
+map for C and E, sends `I66/66` to `q sigma`, with `q=5/33`. The complete
+success/failure instrument gives `|p-q|<=delta` and conditional work-reference
+distance at most `delta/q`. Its source effect also bounds `2/15<=p<=1/6`.
+Failure remains part of the experiment and its resource cost. This full
+Palm herald is distinct from the fixed-seam probe herald, whose successful
+support has dimension 20 and cannot prepare a faithful full-algebra state.
+
+Put `t=66 delta`. Positivity gives the operator sandwich
+`(1-t)sigma <= M(rho_n)/q <= (1+t)sigma`. For `t<1`, the actual successful
+work state `sigma_n=M(rho_n)/p` is faithful, with minimum eigenvalue at least
+`(1-t)q/[75 min(1/6,q+delta)]`. Operator monotonicity of the logarithm and
+Duhamel's identity then give
+
+```
+||log(sigma_n)-log(sigma)+log(p/q) I|| <= t/(1-t),
+half-diamond(modular_n(s), modular(s)) <= min(1, |s| t/(1-t)).
+```
+
+The scalar phase cancels; no commutation assumption is needed. At **369
+native warm-up attempts plus one herald**, the eigenvalue floor exceeds
+`0.01333244` and the channel error is below `0.000971` uniformly for
+`|s|<=16`, including arbitrary probe references. Repeating the complete
+preparation on failure costs at most `2442.015` expected native attempts.
+Faithfulness concerns the successful work algebra, not a possibly singular
+external reference or every classical record block. The explicit replay
+also retains exact finite diagonal histories and failure masses.
+
+Each such state admits the existing finite inner-flow theorem and
+[`gibbsState_kms`](../../Lean/QFT/StructuralInheritance.lean) at
+`H=-log(sigma_n), beta=1`; its Gibbs Heisenberg parameter is `-s` in the
+modular convention used here. These are finite algebraic conclusions.
+The earlier compiled program still implements the Palm flow only on its
+declared active corner. A controller for the unknown `sigma_n` is not
+derived, passive repair is not identified with modular evolution, and
+neither the attempt count nor `s` is calibrated to physical seconds.
+
 ## Replay
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference --check model/native_modular_reference/results.json
+python -m model.native_modular_reference.preparation --check
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 
