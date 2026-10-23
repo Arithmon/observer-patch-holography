@@ -97,6 +97,8 @@ REPLAYS = (
     ("model.native_modular_reference.regional", None, "model/native_modular_reference/regional_results.json"),
     ("model.native_modular_reference.completed_clock", None, "model/native_modular_reference/completed_clock_results.json"),
     ("model.native_modular_reference.common_caps", None, "model/native_modular_reference/common_caps_results.json"),
+    ("model.native_modular_reference.local_preparation", None, "model/native_modular_reference/local_preparation_results.json"),
+    ("model.native_modular_reference.local_history", None, "model/native_modular_reference/local_history_results.json"),
     ("model.event_circulation", None, "model/event_circulation/results.json"),
     ("model.compiled_native_interface", None, "model/compiled_native_interface/results.json"),
     ("model.calibrated_measurement", None, "model/calibrated_measurement/results.json"),

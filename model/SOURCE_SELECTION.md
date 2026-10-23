@@ -641,6 +641,18 @@ summed separately. The phase preparation, detector, logical stopping controller,
 uniform scheduler and candidate law remain supplied. This does not identify
 a laboratory apparatus or remove its physical clock-calibration premise.
 
+The [common local-clock history](native_modular_reference/README.md#a-common-observer-from-two-local-stopping-clocks)
+selects a faithful reference from a core-incident herald and cap-incident
+completion, with native auxiliary scheduler bits and bounded failures. One
+source action then drives two continuing current reads of that prepared
+mixed carrier. Its ideal common reference has elementary gaps `log(25/8)`
+and `log(8/5)` and preserves every core-containing cap algebra. Requiring
+every bare two-port algebra to be modular invariant is stronger: even among
+noncommuting faithful references it forces diagonal product weights. These
+results discharge finite preparation and instrument connections, while
+coherent code services, exterior-address selection and physical meaning
+remain declared obligations.
+
 The intended field action is an **effective description of observer
 statistics**, and time is relative to the observer's algebra, state and
 readable clock records. No fundamental field or preferred global clock is

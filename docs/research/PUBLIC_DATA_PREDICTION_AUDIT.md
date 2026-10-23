@@ -10,7 +10,13 @@ Current coverage consists of the selected observations listed below. The
 target is one fixed construction with shared parameters and declared
 calibrations across experiments, not a separate fitted law for each case.
 No comparison here establishes agreement with all public observations or
-at every physical scale.
+at every physical scale. The [common local-clock observer](../../model/native_modular_reference/README.md#a-common-observer-from-two-local-stopping-clocks)
+derives one finite preparation and continuing readout contract, with native
+scheduler bits and explicit failure budgets. Its shared gaps `log(25/8)` and
+`log(8/5)` are internal dimensionless frequencies. Neither that construction
+nor its finite theorem connections identify the atomic transitions, detector
+response, laboratory seconds or primordial modes used in the comparisons
+below. Those interfaces cannot be selected separately to force agreement.
 
 The [same-parameter replay](../../model/predictions/shared_parameter.py)
 uses the inherited structured-running branch's forward numerical enclosure
