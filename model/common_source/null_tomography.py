@@ -311,6 +311,61 @@ def independent_history_sampling_bound(trials, tolerance):
     return min(F(1), F(3, trials)/F(tolerance)**2)
 
 
+def interval_tensor_estimate(intervals, native_attempts=0):
+    """Propagate twelve unconditional occupation intervals without postselection.
+
+    Complete resolved/unknown record laws may supply these intervals. Their
+    origin is a caller contract, not inferred here. Coefficient uncertainty
+    bounds R*m, the canonical compatible component of the unknown mean m;
+    m's fast component has the separately declared native bound. Midpoint
+    compatibility never certifies exact compatibility of the unknown mean.
+    """
+    if (not isinstance(intervals, (tuple, list)) or len(intervals) != 12
+            or any(not isinstance(row, (tuple, list)) or len(row) != 2
+                   or any(type(x) not in (int, F) for x in row)
+                   or not 0 <= row[0] <= row[1] <= 1 for row in intervals)):
+        raise ValueError('twelve exact unconditional occupation intervals in [0,1] are required')
+    if not sum(lo for lo, _ in intervals) <= 2 <= sum(hi for _, hi in intervals):
+        raise ValueError('occupation intervals exclude the conserved total two')
+    if type(native_attempts) is not int or native_attempts < 0:
+        raise ValueError('a nonnegative uniform native attempt count is required')
+    c = source()
+    midpoint = tuple(c.q5((F(lo)+F(hi))/2) for lo, hi in intervals)
+    radius = max((F(hi)-F(lo))/2 for lo, hi in intervals)
+    tensor = (c.q5(0),)+tuple(_dot(row, midpoint) for row in _null_tomography_decoder())
+    residual = tuple(_dot(row, midpoint) for row in _charge_residual())
+    norm = _max_row_sum([[x] for x in residual])
+    coefficient_error = c.q5_mul(c.q5(1, F(-1, 5)), c.q5(radius))
+    residual_error = c.q5_mul(c.GOLDEN, c.q5(radius))
+    lower = c.q5_sub(norm, residual_error)
+    if c.q5_sign(lower) < 0:
+        lower = c.q5(0)
+    upper = c.q5_add(norm, residual_error)
+    fast_bound = c.q5_mul(c.q5(F(1, 4), F(1, 20)),
+                          _power(c.q5(F(11, 12), F(-1, 60)), native_attempts))
+    compatible = all(x == c.q5(0) for x in residual)
+    if compatible and decode_null_charges(midpoint) != tensor:
+        raise AssertionError('an exactly compatible midpoint has inconsistent decoding')
+    return {'schema': 'oph.common_source.interval_tensor.v1',
+            'declared_uniform_native_attempts': native_attempts,
+            'midpoint_readings_Qsqrt5': _encode_vector(midpoint),
+            'canonical_tensor_estimate_Qsqrt5': _encode_vector(tensor),
+            'maximum_interval_halfwidth': str(radius),
+            'canonical_component_error_upper_Qsqrt5': c.q5_str(coefficient_error),
+            'midpoint_compatibility_residual_Qsqrt5': _encode_vector(residual),
+            'midpoint_exactly_tensor_compatible': compatible,
+            'compatibility_residual_error_upper_Qsqrt5': c.q5_str(residual_error),
+            'unknown_mean_residual_norm_interval_Qsqrt5': _encode_vector((lower, upper)),
+            'native_fast_residual_upper_Qsqrt5': c.q5_str(fast_bound),
+            'native_bound_excluded_by_intervals': c.q5_sign(c.q5_sub(lower, fast_bound)) > 0,
+            'withheld_error_upper_under_native_bound_Qsqrt5': c.q5_str(c.q5_mul(
+                c.q5(2, 2), c.q5_add(fast_bound, c.q5(radius)))),
+            'scope': {'input_intervals_are_unconditional_caller_contract': True,
+                      'unknown_mean_exact_tensor_compatibility_asserted': False,
+                      'native_bound_pass_is_sufficient_box_feasibility_test': False,
+                      'finite_sample_uncertainty_added_automatically': False}}
+
+
 def native_record_tensor_certificate():
     """Record-to-tensor attachment with an explicit fast-band error budget."""
     c = source()

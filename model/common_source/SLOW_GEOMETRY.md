@@ -187,6 +187,16 @@ state selected by repair. The mean statement is also distinct from a
 history statement: after one antipodal trial, the mean passes but individual
 readings fail exact compatibility with probability `1/6`.
 
+`interval_tensor_estimate` also accepts twelve unconditional occupation
+intervals from complete record laws with unresolved outcomes. Their
+midpoints define an estimate; maximum halfwidth `rho` gives coefficient
+error `(1-sqrt(5)/5)*rho` and residual error `phi*rho`. It reports the
+midpoint's exact compatibility separately and can exclude a declared
+native-attempt horizon when every allowed residual exceeds its source
+bound. Passing that necessary test establishes neither interval feasibility
+nor exact compatibility of the unknown mean. Conditioning away unresolved
+outcomes is outside this input contract; sampling uncertainty is separate.
+
 For `N` independent complete trials, binary-readout variance and a union
 bound give probability at most `min(1,3/(N*eta²))` that any sampled mean
 misses by `eta`; correlations between ports are allowed. Serial samples

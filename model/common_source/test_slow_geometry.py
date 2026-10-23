@@ -337,6 +337,36 @@ class NativeRecordTensorTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 tomography.independent_history_sampling_bound(n, error)
 
+    def test_unconditional_intervals_propagate_without_asserting_exact_tensor(self):
+        c = g.source()
+        _, mean = tomography.native_record_law(self.initial, 16)
+        eta = F(1, 10000)
+        exact = tomography.interval_tensor_estimate([(x, x) for x in mean], 16)
+        uncertain = tomography.interval_tensor_estimate([(x-eta, x+eta) for x in mean], 16)
+        self.assertTrue(uncertain['midpoint_exactly_tensor_compatible'])
+        self.assertFalse(uncertain['scope']['unknown_mean_exact_tensor_compatibility_asserted'])
+        self.assertFalse(uncertain['native_bound_excluded_by_intervals'])
+        self.assertEqual(uncertain['canonical_tensor_estimate_Qsqrt5'], exact['canonical_tensor_estimate_Qsqrt5'])
+        self.assertEqual(uncertain['canonical_component_error_upper_Qsqrt5'], ['1/10000', '-1/50000'])
+        self.assertEqual(uncertain['compatibility_residual_error_upper_Qsqrt5'], ['1/20000', '1/20000'])
+        self.assertEqual(exact['canonical_component_error_upper_Qsqrt5'], ['0', '0'])
+        # These same intervals contain a conserved-total mean that is not a tensor.
+        other = list(mean); other[0] += eta; other[1] -= eta
+        with self.assertRaises(ValueError):
+            tomography.decode_null_charges([c.q5(x) for x in other])
+
+    def test_interval_diagnostic_can_exclude_a_declared_native_horizon(self):
+        adjacent = tuple(int(i in (0, 1)) for i in range(12))
+        rejected = tomography.interval_tensor_estimate([(x, x) for x in adjacent], 64)
+        self.assertTrue(rejected['native_bound_excluded_by_intervals'])
+        self.assertFalse(rejected['midpoint_exactly_tensor_compatible'])
+        self.assertFalse(tomography.interval_tensor_estimate([(x, x) for x in adjacent], 0)[
+            'native_bound_excluded_by_intervals'])
+        for intervals in ([(F(0), F(0))]*12, [(False, 1)]*12,
+                          [(0., 1)]*12, [(1, 0)]*12, [(0, 1)]*11):
+            with self.assertRaises(ValueError):
+                tomography.interval_tensor_estimate(intervals)
+
 
 if __name__ == '__main__':
     unittest.main()
