@@ -117,7 +117,7 @@ def clock(s=PARAMETER):
 
 
 @lru_cache(maxsize=1)
-def source_budget():
+def _source_budget():
     for index in (0, 1):
         for sign in (-1, 1):
             full.corner.report._gate(certify_rotation(index, sign), ROTATION_GATE, "selected native pair rotation")
@@ -130,7 +130,7 @@ def source_budget():
         gain *= (1+eps)**2
     pulses = sum(2*len(pair_word(i, 1))+len(word()) for i in (0, 1))
     programs = [word(), *(pair_word(i, sign) for i in (0, 1) for sign in (-1, 1))]
-    return {"complete_history_half_diamond_upper": error, "channel_norm_upper": gain,
+    return tuple({"complete_history_half_diamond_upper": error, "channel_norm_upper": gain,
             "maximum_source_pulses": pulses, "maximum_proper_code_service_events": 2*pulses,
             "continuing_native_read_attempts": 2, "native_export_checks": 2,
             "source_address_register_qubits": 9,
@@ -138,7 +138,12 @@ def source_budget():
             "source_word_position_counter_bits": max(len(p) for p in programs).bit_length(),
             "emitted_program_canonical_utf8_bytes": sum(len(full.corner.canonical(p).encode()) for p in programs),
             "host_interpreter_or_physical_coherent_service_workspace_in_budget": False,
-            "projective_work_bit_readouts": 0, "selected_configuration_initialization": False}
+            "projective_work_bit_readouts": 0, "selected_configuration_initialization": False}.items())
+
+
+def source_budget():
+    """Fresh certificate data; callers cannot mutate later bounds or costs."""
+    return dict(_source_budget())
 
 
 def _density(density):
@@ -223,7 +228,7 @@ def prepared_history(law, *, raw=True):
     The arbitrary-input/reference claim comes from the channel theorem, not
     this one population witness. No successful state is normalized here.
     """
-    maps = local.population_maps()
+    maps = local.population_maps(law=law)
     result = {("preparation", flag): np.diag(matrix[:, 0]).astype(complex)
               for flag, matrix in maps.items() if flag != "success"}
     result.update(execute(np.diag(maps["success"][:, 0]).astype(complex), law, raw=raw))

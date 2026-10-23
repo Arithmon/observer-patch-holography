@@ -136,6 +136,26 @@ def test_returned_certificate_cannot_mutate_cached_constraints():
     assert c.exact_certificate(4) == expected
 
 
+def test_public_witnesses_cannot_poison_the_cached_classification():
+    operator = {(0, 1): 1, (1, 0): 1}
+    expected = c.analyze_generator(3, operator)
+    certificate = c.exact_certificate(3)
+    assert not expected['compatible']
+    assert not c.directly_normalizes(3, operator)
+    for witness in c.off_diagonal_witnesses(3):
+        # A frozen dataclass still exposes a mutable __dict__. Redirecting
+        # every cached witness to (0,0) used to admit this off-diagonal H.
+        with pytest.raises(TypeError):
+            vars(witness).update(row=0, column=0)
+        with pytest.raises(AttributeError):
+            witness.row = 0
+        changed = witness._asdict()
+        changed.update(row=0, column=0)
+    assert c.analyze_generator(3, operator) == expected
+    assert c.exact_certificate(3) == certificate
+    assert not c.directly_normalizes(3, operator)
+
+
 def test_exact_sparse_algebra_membership_rejects_hidden_outside_dependence():
     support = c.bare_basis(5, (0, 1))[1]
     complete = {address: F(2, 3) for address in support}

@@ -234,6 +234,73 @@ def test_retained_source_costs_include_every_feedback_rotation():
     assert budget["projective_work_bit_readouts"] == 0
 
 
+@pytest.mark.parametrize("law", ("C", "E"))
+def test_second_export_abort_feedback_matches_independent_kraus_history(monkeypatch, law):
+    codes = h.full.support()[0]
+    outside = [i for i in range(512) if i not in set(codes)]
+
+    def turn(a, b, angle):
+        result = np.eye(512, dtype=complex)
+        c, s = math.cos(angle), math.sin(angle)
+        result[np.ix_((a, b), (a, b))] = ((c, s), (-s, c))
+        return result
+
+    # Deliberately uncertified unitaries force both export failures. Changing
+    # the second sign changes its native rotation AND escape probability;
+    # this is observable feedback, not an unobservable padding-row phase.
+    stages = {(0, 1): turn(328, outside[0], .7)@turn(328, 73, .2)}
+    for sign in (-1, 1):
+        stages[1, sign] = turn(73, outside[1], .9 if sign == 1 else .45)@turn(73, 0, sign*.3)
+    monkeypatch.setattr(h, "_stage", lambda index, sign, raw, s: stages[index, sign])
+    rng = np.random.default_rng(1126)
+    vector = rng.normal(size=132)+1j*rng.normal(size=132)
+    vector /= np.linalg.norm(vector)
+    wave = vector.reshape(66, 2)
+    density = np.outer(vector, vector.conj())
+
+    def abort_reference(operator):
+        escaped = operator@wave
+        return escaped.T@escaped.conj()
+
+    native_first = stages[0, 1][np.ix_(codes, codes)]
+    escape_first = stages[0, 1][np.ix_(outside, codes)]
+    expected = {("abort", 0): abort_reference(escape_first)}
+    gram = escape_first.conj().T@escape_first
+    for record, first in _primitive_instrument(law, h.SEAMS[0]).items():
+        prefix = first@native_first
+        stage = stages[1, -1 if record[2] < 0 else 1]
+        escaped = stage[np.ix_(outside, codes)]@prefix
+        expected[("abort", 1, *record)] = abort_reference(escaped)
+        gram += escaped.conj().T@escaped
+        for later, second in _primitive_instrument(law, h.SEAMS[1]).items():
+            operator = second@stage[np.ix_(codes, codes)]@prefix
+            final = (operator@wave).reshape(132)
+            expected[("read", *record, *later)] = np.outer(final, final.conj())
+            gram += operator.conj().T@operator
+
+    actual = h.execute(density, law, raw=False)
+    assert actual.keys() == expected.keys()
+    for key in actual:
+        np.testing.assert_allclose(actual[key], expected[key], rtol=0, atol=3e-15)
+    np.testing.assert_allclose(gram, np.eye(66), rtol=0, atol=3e-15)
+    np.testing.assert_allclose(_reference_marginal(actual), wave.T@wave.conj(), rtol=0, atol=3e-15)
+    second_aborts = [value for key, value in actual.items() if key[:2] == ("abort", 1)]
+    assert sum(np.trace(value).real for value in second_aborts) > .001
+    assert max(abs(value[0, 1]) for value in second_aborts) > .0001
+    assert h.distance(actual, h.execute(density, law, raw=False, feedback=False)) > .0001
+
+
+def test_returned_source_budget_cannot_poison_later_bounds_or_resources():
+    first = h.source_budget()
+    expected = first.copy()
+    first["maximum_source_pulses"] = 0
+    first["complete_history_half_diamond_upper"] = F(1)
+    first["channel_norm_upper"] = F(0)
+    first["selected_configuration_initialization"] = True
+    assert h.source_budget() == expected
+    assert h.source_budget() is not h.source_budget()
+
+
 def test_receipt_rejects_negative_diagnostics_and_inconsistent_mass_inside_float_tolerance():
     receipt = h.strict_json.loads(h.full.preparation.canonical(h.run()))
     h.compare_receipt(receipt, receipt)

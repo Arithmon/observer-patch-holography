@@ -1,6 +1,6 @@
 """All faithful references compatible with every bare two-port algebra.
 
-Let H=-log(sigma) on the total-two shell over N>=3 ports. A faithful sigma
+Let H=-log(sigma) on the binary total-two shell over N>=3 ports. A faithful sigma
 preserves each number-preserving bare A_ij under its modular group iff
 
     H = sum_i a_i N_i, equivalently sigma_{ij}=lambda*r_i*r_j > 0.
@@ -33,12 +33,12 @@ or a numerical rank threshold. Exact complex entries are represented by
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
 from fractions import Fraction as F
 from functools import lru_cache
 import hashlib
 from itertools import combinations
 import json
+from typing import NamedTuple
 
 
 ZERO = (F(), F())
@@ -159,8 +159,7 @@ def directly_normalizes(vertices, entries):
     return True
 
 
-@dataclass(frozen=True)
-class OffDiagonalWitness:
+class OffDiagonalWitness(NamedTuple):
     row: int
     column: int
     number_port: int
