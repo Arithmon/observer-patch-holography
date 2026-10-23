@@ -31,6 +31,7 @@ from decimal import Decimal, localcontext
 from pathlib import Path
 from typing import Any
 
+from mpmath import MPContext
 
 ROOT = Path(__file__).resolve().parents[2]
 MCPR = (
@@ -107,6 +108,20 @@ def roots(a_value: float, abs_b: float, phase: float) -> tuple[float, ...]:
 def physical_koide(root_values: tuple[float, ...]) -> float:
     masses = [value * value for value in root_values]
     return sum(masses) / sum(abs(value) for value in root_values) ** 2
+
+
+def phase_control(phase: str) -> dict[str, Any]:
+    """Portable diagnostic strings, independent of host libm and global precision."""
+    context = MPContext()
+    context.dps = 70
+    angle = context.mpf(phase)
+    values = tuple(1+context.sqrt(2)*context.cos(angle+2*context.pi*k/3)
+                   for k in range(3))
+    physical_q = context.fsum(value*value for value in values)/context.fsum(
+        abs(value) for value in values)**2
+    return {"phase": phase, "roots": [context.nstr(value, 40) for value in values],
+            "all_roots_nonnegative": min(values) >= 0,
+            "physical_Q": context.nstr(physical_q, 40)}
 
 
 def measured_central_q(references: dict[str, Any]) -> tuple[Decimal, dict[str, str]]:
@@ -242,22 +257,9 @@ def build_artifact() -> dict[str, Any]:
 
     phase = float(mcpr["regular_C3_shape"]["delta"])
     current_roots = roots(float(a_value), float(abs_b), phase)
-    positive_phase_samples = (0.0, 0.1, phase)
-    outside_phase = 0.4
-    phase_samples = [
-        {
-            "phase": format(sample, ".17g"),
-            "roots": [format(value, ".17g") for value in roots(1.0, 2.0**-0.5, sample)],
-            "all_roots_nonnegative": min(roots(1.0, 2.0**-0.5, sample))
-            >= -1.0e-14,
-            "physical_Q": format(
-                physical_koide(roots(1.0, 2.0**-0.5, sample)),
-                ".17g",
-            ),
-        }
-        for sample in positive_phase_samples
-    ]
-    outside_roots = roots(1.0, 2.0**-0.5, outside_phase)
+    phase_samples = [phase_control(sample)
+                     for sample in ("0", "0.1", mcpr["regular_C3_shape"]["delta"])]
+    outside_control = phase_control("0.4")
 
     checks = {
         "face_carrier_has_C3_stabilizer": (
@@ -284,8 +286,8 @@ def build_artifact() -> dict[str, Any]:
             for row in phase_samples
         ),
         "outside_phase_signed_formula_is_not_physical_Q": (
-            min(outside_roots) < 0.0
-            and abs(physical_koide(outside_roots) - 2.0 / 3.0) > 1.0e-3
+            not outside_control["all_roots_nonnegative"]
+            and abs(float(outside_control["physical_Q"]) - 2.0 / 3.0) > 1.0e-3
         ),
         "PDG_2026_mass_coordinate_is_exact": (
             measured_masses == EXPECTED_PDG_2026_MASSES_MEV
@@ -380,11 +382,8 @@ def build_artifact() -> dict[str, Any]:
         ),
         "phase_controls": {
             "positive_samples": phase_samples,
-            "outside_sample": {
-                "phase": format(outside_phase, ".17g"),
-                "roots": [format(value, ".17g") for value in outside_roots],
-                "physical_Q": format(physical_koide(outside_roots), ".17g"),
-            },
+            "outside_sample": {key: value for key, value in outside_control.items()
+                               if key != "all_roots_nonnegative"},
         },
         "provenance": {
             "mcpr": {

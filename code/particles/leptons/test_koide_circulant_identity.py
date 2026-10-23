@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from decimal import Decimal, localcontext
 
 import derive_koide_circulant_identity as lane
@@ -128,3 +129,19 @@ def test_committed_artifact_is_byte_exact() -> None:
     assert lane.DEFAULT_OUT.read_bytes() == lane.canonical_bytes(artifact)
     stored = json.loads(lane.DEFAULT_OUT.read_text(encoding="utf-8"))
     assert stored["artifact"] == "oph_koide_circulant_identity"
+
+
+def test_receipt_does_not_serialize_host_libm_or_global_precision(monkeypatch) -> None:
+    import mpmath as mp
+
+    expected = lane.canonical_bytes(lane.build_artifact())
+    host_cos = math.cos
+    # Several ulps exceed the platform differences that triggered CI drift.
+    def perturbed_cos(value):
+        output = host_cos(value)
+        for _ in range(8):
+            output = math.nextafter(output, math.inf)
+        return output
+    monkeypatch.setattr(math, "cos", perturbed_cos)
+    with mp.workdps(9):
+        assert lane.canonical_bytes(lane.build_artifact()) == expected
