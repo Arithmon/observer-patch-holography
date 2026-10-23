@@ -529,12 +529,27 @@ The native fair instrument, auxiliary access, coherent mixer, record handling
 and physical identification remain inputs. The deterministic scan changes
 preparation only; it does not replace the uniform-scheduler clock laws.
 
-The [native interface](native_interface/README.md) obtains the coherent
-readout from a source mixer, native herald and native pointer. The
-[compiled interface](compiled_native_interface/README.md) verifies the
-source control against its ideal target, including padding. Source matrix
-comparisons, floating execution diagnostics and physical device errors are
-separate. The [finite-law discriminator](predictions/README.md) and its
+The [native configuration controller](native_clock/configuration.py) derives
+conclusive basis measurement and basis preparation from signed repair
+currents. Its deterministic adaptive seam choices use the committed tape;
+zero-current prefixes never license a guess. Finite retries retain a timeout
+outcome and give a uniform error bound, including arbitrary references.
+Preparation discards its private tape; retaining that tape would preserve
+conditional reference information and change the comparison instrument.
+This active protocol does not replace the passive IID clock laws above.
+
+The [native auxiliary pointer](native_interface/pointer.py) uses a prepared
+orientation bit and the existing source controls to measure a work bit.
+Tracing the auxiliary gives the full work-bit Lüders instrument, rather
+than just its probabilities, on native and padding addresses. In contrast,
+coarsening a complete configuration measurement dephases more than a bit
+measurement. The [full Palm clock](native_modular_reference/README.md)
+composes native preparation, its source word and this pointer with complete
+timeouts and a common budget. Coherent code routing and controls remain
+architecture inputs: committed repair from a joint diagonal accessible input
+with fresh independent diagonal ancillas cannot create their missing
+coherence. Source-array errors and physical service errors
+remain separate. The [finite-law discriminator](predictions/README.md) and its
 [encoded realization](observer/source_discrimination/README.md) supply
 additional complete protocols under their own preparation and service
 contracts. Under the same current-record interface, mean loads and native

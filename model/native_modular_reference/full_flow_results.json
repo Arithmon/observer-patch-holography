@@ -26,35 +26,72 @@
       "modular_parameter": "0",
       "omitted_pair_Ramsey": {
         "Ramsey_mixer_source_pulses": 2,
+        "coherent_code_services_remain_declared": true,
         "coherent_partner_native_code": 144,
-        "complete_record_half_l1_error_diagnostic": 4.518607710224387e-14,
-        "declared_configuration_and_coherent_services": true,
-        "declared_projective_register_bit_readout": true,
-        "executed_complete_probabilities": [
-          0.9999999999999096,
-          8.584479281127499e-31
-        ],
+        "complete_native_reset_half_diamond_upper": "35/1073741824",
+        "complete_record_half_l1_error_diagnostic": {
+          "C": 9.897481187514996e-09,
+          "E": 9.897481187514996e-09
+        },
+        "declared_projective_register_bit_readout": false,
+        "executed_complete_probabilities_by_law": {
+          "C": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.9999999901023933,
+            6.1216530056926255e-30
+          ],
+          "E": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.9999999901023933,
+            6.1216530056926255e-30
+          ]
+        },
         "ideal_match_probability_interval": [
           "1",
           "1"
         ],
         "initial_native_code": 16,
-        "initialization_and_readout_physical_costs_included": false,
+        "native_attempts_max_including_both_resets_and_pointer": 5357,
+        "native_initialization_and_readout_attempts_charged": true,
         "native_modular_source_pulses": 2042,
-        "outside_native_support_probability_diagnostic": 2.9319656287076255e-27,
+        "native_pointer_source_pulses": 6,
+        "outside_native_support_probability_diagnostic": 2.7582768093345442e-27,
+        "physical_service_error_authenticated": false,
         "pointer_outcomes": [
+          "work_reset_timeout",
+          "auxiliary_reset_timeout",
           "register_bit7_zero",
           "register_bit7_one"
         ],
+        "private_reset_tapes_discarded": true,
+        "proper_code_service_events": 4100,
         "raw_output_renormalized": false,
-        "raw_total_probability_diagnostic": 0.9999999999999096,
-        "whole_Ramsey_half_diamond_upper": "1021/1000000000000"
+        "raw_total_probability_diagnostic": {
+          "C": 0.9999999999997489,
+          "E": 0.9999999999997489
+        },
+        "reset_execution_input": "independent I78/78 on work and auxiliary; bound covers arbitrary correlated inputs",
+        "reset_success_probability_intervals": [
+          [
+            "999999995031/1000000000000",
+            "124999999379/125000000000"
+          ],
+          [
+            "999999995071/1000000000000",
+            "15624999923/15625000000"
+          ]
+        ],
+        "source_word_half_diamond_upper": "1031/1000000000000",
+        "total_source_pulses": 2050,
+        "whole_Ramsey_half_diamond_upper": "33627/1000000000000"
       },
       "resources": {
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 3204.424506661589,
-        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
         "maximum_work_qubits": 9,
         "native_pulses": 2042,
         "pair_code_pulses": 510,
@@ -85,35 +122,72 @@
       "modular_parameter": "1",
       "omitted_pair_Ramsey": {
         "Ramsey_mixer_source_pulses": 2,
+        "coherent_code_services_remain_declared": true,
         "coherent_partner_native_code": 144,
-        "complete_record_half_l1_error_diagnostic": 4.040951601114173e-14,
-        "declared_configuration_and_coherent_services": true,
-        "declared_projective_register_bit_readout": true,
-        "executed_complete_probabilities": [
-          0.9876033062890422,
-          0.012396693710876932
-        ],
+        "complete_native_reset_half_diamond_upper": "35/1073741824",
+        "complete_record_half_l1_error_diagnostic": {
+          "C": 9.897479374728964e-09,
+          "E": 9.897479374728964e-09
+        },
+        "declared_projective_register_bit_readout": false,
+        "executed_complete_probabilities_by_law": {
+          "C": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.9876032965142163,
+            0.012396693588180591
+          ],
+          "E": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.9876032965142163,
+            0.012396693588180591
+          ]
+        },
         "ideal_match_probability_interval": [
           "987603306289/1000000000000",
           "98760330629/100000000000"
         ],
         "initial_native_code": 16,
-        "initialization_and_readout_physical_costs_included": false,
+        "native_attempts_max_including_both_resets_and_pointer": 5357,
+        "native_initialization_and_readout_attempts_charged": true,
         "native_modular_source_pulses": 2042,
-        "outside_native_support_probability_diagnostic": 2.8982974190134932e-27,
+        "native_pointer_source_pulses": 6,
+        "outside_native_support_probability_diagnostic": 2.7448186162039165e-27,
+        "physical_service_error_authenticated": false,
         "pointer_outcomes": [
+          "work_reset_timeout",
+          "auxiliary_reset_timeout",
           "register_bit7_zero",
           "register_bit7_one"
         ],
+        "private_reset_tapes_discarded": true,
+        "proper_code_service_events": 4100,
         "raw_output_renormalized": false,
-        "raw_total_probability_diagnostic": 0.9999999999999192,
-        "whole_Ramsey_half_diamond_upper": "1021/1000000000000"
+        "raw_total_probability_diagnostic": {
+          "C": 0.9999999999997525,
+          "E": 0.9999999999997525
+        },
+        "reset_execution_input": "independent I78/78 on work and auxiliary; bound covers arbitrary correlated inputs",
+        "reset_success_probability_intervals": [
+          [
+            "999999995031/1000000000000",
+            "124999999379/125000000000"
+          ],
+          [
+            "999999995071/1000000000000",
+            "15624999923/15625000000"
+          ]
+        ],
+        "source_word_half_diamond_upper": "1031/1000000000000",
+        "total_source_pulses": 2050,
+        "whole_Ramsey_half_diamond_upper": "33627/1000000000000"
       },
       "resources": {
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 3205.2804713779583,
-        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
         "maximum_work_qubits": 9,
         "native_pulses": 2042,
         "pair_code_pulses": 510,
@@ -144,35 +218,72 @@
       "modular_parameter": "16",
       "omitted_pair_Ramsey": {
         "Ramsey_mixer_source_pulses": 2,
+        "coherent_code_services_remain_declared": true,
         "coherent_partner_native_code": 144,
-        "complete_record_half_l1_error_diagnostic": 6.851810785413193e-14,
-        "declared_configuration_and_coherent_services": true,
-        "declared_projective_register_bit_readout": true,
-        "executed_complete_probabilities": [
-          0.04524740943776519,
-          0.9547525905620978
-        ],
+        "complete_native_reset_half_diamond_upper": "35/1073741824",
+        "complete_record_half_l1_error_diagnostic": {
+          "C": 9.897506171002497e-09,
+          "E": 9.897506171002497e-09
+        },
+        "declared_projective_register_bit_readout": false,
+        "executed_complete_probabilities_by_law": {
+          "C": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.04524740898993178,
+            0.9547525811124116
+          ],
+          "E": [
+            4.9687159204014405e-09,
+            4.928639720429179e-09,
+            0.04524740898993178,
+            0.9547525811124116
+          ]
+        },
         "ideal_match_probability_interval": [
           "45247409437/1000000000000",
           "22623704719/500000000000"
         ],
         "initial_native_code": 16,
-        "initialization_and_readout_physical_costs_included": false,
+        "native_attempts_max_including_both_resets_and_pointer": 5357,
+        "native_initialization_and_readout_attempts_charged": true,
         "native_modular_source_pulses": 2042,
-        "outside_native_support_probability_diagnostic": 2.1670606948666446e-27,
+        "native_pointer_source_pulses": 6,
+        "outside_native_support_probability_diagnostic": 2.510622413175959e-27,
+        "physical_service_error_authenticated": false,
         "pointer_outcomes": [
+          "work_reset_timeout",
+          "auxiliary_reset_timeout",
           "register_bit7_zero",
           "register_bit7_one"
         ],
+        "private_reset_tapes_discarded": true,
+        "proper_code_service_events": 4100,
         "raw_output_renormalized": false,
-        "raw_total_probability_diagnostic": 0.999999999999863,
-        "whole_Ramsey_half_diamond_upper": "1021/1000000000000"
+        "raw_total_probability_diagnostic": {
+          "C": 0.999999999999699,
+          "E": 0.999999999999699
+        },
+        "reset_execution_input": "independent I78/78 on work and auxiliary; bound covers arbitrary correlated inputs",
+        "reset_success_probability_intervals": [
+          [
+            "999999995031/1000000000000",
+            "124999999379/125000000000"
+          ],
+          [
+            "999999995071/1000000000000",
+            "15624999923/15625000000"
+          ]
+        ],
+        "source_word_half_diamond_upper": "1031/1000000000000",
+        "total_source_pulses": 2050,
+        "whole_Ramsey_half_diamond_upper": "33627/1000000000000"
       },
       "resources": {
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 3218.1199421234987,
-        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
         "maximum_work_qubits": 9,
         "native_pulses": 2042,
         "pair_code_pulses": 510,
@@ -187,21 +298,24 @@
       "source_word_sha256": "3a7145146d05fe36587bd80ab2b6345c47744d6a245ea4b89f8dcc5a265edf7b"
     }
   ],
-  "schema": "oph.native_modular_reference.full_flow.v1",
+  "schema": "oph.native_modular_reference.full_flow.v2",
   "scope": {
     "actual_prepared_state_logarithm_controller_needed_for_this_error_bound": false,
     "all_512_native_and_padding_input_columns_certified": true,
     "arbitrary_native_input_reference_entanglement_covered": true,
-    "coherent_load_export_and_projective_bit_read_services_admitted": true,
+    "coherent_load_export_and_routing_services_admitted": true,
     "floating_state_propagation_is_a_directed_certificate": false,
     "full_M66_modular_channel_implemented": true,
+    "independent_native_blank_and_projective_work_bit_read_services_required": false,
     "intermediate_pulse_readouts_covered_by_terminal_certificate": false,
+    "native_configuration_reset_and_auxiliary_readout_executed": true,
     "native_passive_repair_equals_modular_clock": false,
     "physical_proper_code_service_errors_bounded": false,
-    "physical_seconds_or_temperature_identified": false
+    "physical_seconds_or_temperature_identified": false,
+    "proper_code_service_auxiliary_blanks_remain_admitted": true
   },
-  "source_dependency_count": 83,
-  "source_dependency_map_sha256": "40f7063ee25319e08d93d871b43261921c2007df769639d55b0686bcbbccceef",
+  "source_dependency_count": 85,
+  "source_dependency_map_sha256": "29df302881e129df4ae9f52e50941459430735d9992a217a40d8da9f2028952a",
   "support": {
     "degree10_addresses": 36,
     "degree8_addresses": [
