@@ -118,6 +118,155 @@
     "source_dimension": 66,
     "source_entropy_deficit_upper_nats": "4719/1310720"
   },
+  "native_heat_bath_first_law_attachment": {
+    "Gibbs_reference_instance": "H=-log sigma_bar, beta=1, partition=1; modular units",
+    "all_seams_reference_preserving": true,
+    "bulk_generator": "K_bulk(x)=-log(sigma_bar(x)*b_q)",
+    "cap_Clausius_conclusion": "0 <= S(p K)-S(p)",
+    "cap_heat_per_step": "0",
+    "central_generator": "Z(x)=log b_q; b_q=binomial(12-|R|,2-q)",
+    "completion_is_cap_configuration_heat_bath": true,
+    "exact_split": "-log sigma_bar=2*pi*B+Z",
+    "formal_boost": "B=K_bulk/(2*pi), with no physical boost identification",
+    "matrix_quantum_entropy_identity_is_separate_from_classical_Lean_instantiation": true,
+    "mean_bulk_and_central_energy_preserved_for_every_input_law": true,
+    "native_population_laws": [
+      "C",
+      "E"
+    ],
+    "nonzero_physical_heat_work_temperature_or_BW_boost_derived": false,
+    "one_uniform_mixture_and_all_finite_compositions_covered": true,
+    "reference": "sigma_bar=E_R(diag(native_movement_degree/600))",
+    "seams": [
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          2,
+          3
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          2,
+          4
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          2,
+          6
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          2,
+          10
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          2,
+          11
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          3,
+          4
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          3,
+          6
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          3,
+          8
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          3,
+          9
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          4,
+          9
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          4,
+          11
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          6,
+          8
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          6,
+          10
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          8,
+          9
+        ]
+      },
+      {
+        "exact_source_entries_checked": 4356,
+        "fibres": 56,
+        "seam": [
+          10,
+          11
+        ]
+      }
+    ],
+    "source_kernel_equals_heat_bath_on_untouched_bits_and_seam_total": true,
+    "theorem_anchors": [
+      "Lean/Thermodynamics/CapFirstLaw.lean:heatBath_cap_clausius",
+      "Lean/Thermodynamics/CapFirstLaw.lean:cap_clausius_of_central_conserved",
+      "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean:gibbs_of_neg_log",
+      "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean:cap_firstLaw_gibbs"
+    ]
+  },
   "schema": "oph.native_equilibration.cut_completion.v1",
   "scope": {
     "Palm_reference_preserved_by_this_tracial_completion": false,
@@ -130,9 +279,12 @@
     "retained_preparation_tape_covered": false
   },
   "source_sha256": {
+    "Lean/Thermodynamics/CapFirstLaw.lean": "17e8be6e744552b4650efb58932e9a2ed7c7c545a962e17905dbbc70c2de9447",
+    "Lean/Thermodynamics/FiniteConditionalRepair.lean": "6d1c8c2db46bba7bcb685d9f11f682ad4f96d01eff528d6f942e0f6666d87ce2",
+    "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
-    "model/native_equilibration/cut_completion.py": "8a2885296eca4aed3a998128132c787ffa724a5abe57e96db2ec062a1156335b",
+    "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139"

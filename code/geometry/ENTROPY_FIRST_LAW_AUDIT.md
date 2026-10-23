@@ -337,6 +337,21 @@ same 4,080 attempts by `4719/1310720 < 0.003601`, without a reference
 population floor. This entropy bound concerns the source marginal, while
 the state-distance bound covers arbitrary untouched references.
 
+The same source also instantiates the population hypotheses of
+[`heatBath_cap_clausius`](../../Lean/Thermodynamics/CapFirstLaw.lean).
+For the faithful completed Palm reference `sigma_bar=E_R(sigma_Palm)`,
+the diagonal part of `E_R` is exactly conditional resampling at fixed cap
+configuration. Every actual complement seam is conditional resampling at
+fixed untouched occupations and seam total; all 65,340 seam-kernel entries
+are checked against the native fair-coin rule. These kernels preserve
+`sigma_bar` and separately conserve `K_bulk=-log(sigma_bar*b_j)` and
+`Z=log b_j`. Their uniform mixture and finite compositions therefore satisfy
+the finite cap Clausius inequality with **zero cap heat**, `0 <= Delta S`.
+With `H=-log sigma_bar`, the Gibbs ledger and exact first law apply at
+`beta=1` and partition function one in modular units. This is no physical
+energy or temperature calibration. The original Palm reference generally
+fails these seam heat-bath identities and cannot replace its completion.
+
 These are constrained variations at a fixed cut, not variations of physical
 volume or area. The complement multiplicity `b_j` is not identified with a
 gauge collar or gravitational area, and `K_bulk/(2*pi)` has not been

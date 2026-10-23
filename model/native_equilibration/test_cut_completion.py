@@ -233,6 +233,64 @@ def test_palm_reference_and_conditioned_records_are_different_contracts():
     assert entropy(apply_with_reference(e/es, posterior))-entropy(posterior) > 0.1
 
 
+def test_native_heat_bath_attachment_and_full_quantum_diagonal_match():
+    row = c.heat_bath_audit()
+    assert len(row['seams']) == 15
+    assert sum(r['exact_source_entries_checked'] for r in row['seams']) == 65340
+    assert row['cap_heat_per_step'] == '0'
+    assert row['all_seams_reference_preserving']
+    # Independently extract population columns from both full source quantum
+    # channels, including their actual committed labels and coin branches.
+    mixture = np.zeros((66, 66), dtype=object)
+    for item in row['seams']:
+        mixture += np.asarray(c.seam_population(tuple(item['seam'])), dtype=object)/15
+    for law in ('C', 'E'):
+        native_map, denominator = c.native_cut_counts(law=law)
+        for i, j in product(range(66), repeat=2):
+            assert mixture[i, j] == F(int(native_map[67*j, 67*i]), denominator)
+
+
+def test_the_original_Palm_reference_cannot_replace_completed_Palm():
+    basis = native.states(binary=True)
+    seam = tuple(c.heat_bath_audit()['seams'][0]['seam'])
+    other = tuple(p for p in range(12) if p not in seam)
+    fibres = tuple(tuple(x[p] for p in other)+(sum(x[p] for p in seam),) for x in basis)
+    degree = tuple(sum(x[a] != x[b] for a, b in quantum_mixing.seams()) for x in basis)
+    original = tuple(F(d, sum(degree)) for d in degree)
+    actual = c.seam_population(seam)
+    assert actual == c.population_heat_bath(c.completed_palm(), fibres)
+    assert actual != c.population_heat_bath(original, fibres)
+    assert any(sum(original[i]*actual[i][j] for i in range(66)) != original[j] for j in range(66))
+
+
+def test_native_entropy_production_has_zero_cap_heat_not_a_fitted_Clausius_slope():
+    reference = c.completed_palm()
+    seam = tuple(c.heat_bath_audit()['seams'][0]['seam'])
+    transition = c.seam_population(seam)
+    i = next(i for i, row in enumerate(transition) if sum(bool(w) for w in row) == 2)
+    after = transition[i]
+    support = [j for j, w in enumerate(after) if w]
+    assert tuple(after[j] for j in support) == (F(1, 2), F(1, 2))
+    assert all(reference[j] == reference[i] for j in support)
+    cap_fibres = tuple(tuple(x[p] for p in c.CAP) for x in native.states(binary=True))
+    assert all(cap_fibres[j] == cap_fibres[i] for j in support)
+    # The exact identical reference weights imply zero modular energy change.
+    # Positive entropy production is the relative-entropy loss, not heat.
+    divergence_before = -np.log(float(reference[i]))
+    divergence_after = sum(float(after[j])*np.log(float(after[j]/reference[j])) for j in support)
+    assert abs(divergence_before-divergence_after-np.log(2)) < 1e-14
+
+
+def test_heat_bath_domains_reject_invalid_reference_and_source_seams():
+    reference = c.completed_palm()
+    for bad in (tuple([0]*66), tuple(F(1, 65) for _ in range(66)), list(reference)):
+        with pytest.raises(ValueError):
+            c.population_heat_bath(bad, tuple(range(66)))
+    for seam in ((True, 0), (0, 2), (0, 0), (1, 0), [0, 1]):
+        with pytest.raises(ValueError):
+            c.seam_population(seam)
+
+
 @pytest.mark.parametrize("cap", [(), (0, 0), (2, 1), (True,), (12,), list(c.CAP), tuple(range(12))])
 def test_malformed_cap_rejected(cap):
     with pytest.raises(ValueError):

@@ -71,6 +71,9 @@ SOURCE_PATHS = (
     "model/observer/native.py", "model/observer/quantum_mixing.py",
     "model/observer/QUANTUM_MIXING.md",
     "model/common_source/slow_geometry.py",
+    "Lean/Thermodynamics/FiniteConditionalRepair.lean",
+    "Lean/Thermodynamics/CapFirstLaw.lean",
+    "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
 )
 
 
@@ -235,6 +238,101 @@ def exact_audit(cap=CAP):
             "exact_idempotence_and_trace_preservation": True, "laws": laws}
 
 
+def population_heat_bath(reference, fibres):
+    """The corpus heatBath kernel K[input,output], on exact positive weights."""
+    if (type(reference) is not tuple or len(reference) != 66
+            or any(type(w) not in (int, F) or w <= 0 for w in reference)
+            or sum(reference) != 1 or type(fibres) is not tuple or len(fibres) != 66):
+        raise ValueError("a faithful exact normalized 66-state reference and fibre tuple required")
+    masses = [sum((reference[j] for j in range(66) if fibres[j] == fibres[i]), F(0))
+              for i in range(66)]
+    return tuple(tuple(F(reference[j], masses[i]) if fibres[j] == fibres[i] else F(0)
+                       for j in range(66)) for i in range(66))
+
+
+def seam_population(seam):
+    """Actual source endpoint kernel, row-stochastic, with both fair coins."""
+    if (type(seam) is not tuple or any(type(p) is not int for p in seam)
+            or seam not in quantum_mixing.seams()):
+        raise ValueError("one oriented native source seam required")
+    basis = native.states(binary=True)
+    index = {state: i for i, state in enumerate(basis)}
+    result = [[F(0)]*66 for _ in range(66)]
+    for i, state in enumerate(basis):
+        for coin in (0, 1):
+            target, _ = native.native(state, seam, coin)
+            result[i][index[target]] += F(1, 2)
+    return tuple(map(tuple, result))
+
+
+def heat_bath_audit(cap=CAP):
+    """Map the actual population repair to the existing finite cap first law.
+
+    The common state is sigma_bar=E_R(sigma_Palm), not the uncompleted Palm
+    reference. On populations E_R is heatBath(sigma_bar, cap configuration).
+    Each actual complement seam is its own heatBath for all untouched bits
+    and the seam total. K_bulk=-log(sigma_bar*b_q) and Z=log b_q are separately
+    conserved. Setting B=K_bulk/(2pi) supplies the formal split, with ZERO
+    cap heat; it selects neither a physical boost nor an energy scale.
+    """
+    cut_certificate(cap)
+    basis, reference = native.states(binary=True), completed_palm(cap)
+    cap_fibres = tuple(tuple(state[p] for p in cap) for state in basis)
+    expected = population_heat_bath(reference, cap_fibres)
+    completion, scale = completion_counts(cap)
+    if any(expected[i][j] != F(int(completion[67*j, 67*i]), scale)
+           for i in range(66) for j in range(66)):
+        raise ArithmeticError("native entropy completion is not the cap-fibre heat bath")
+    multiplicity = [0]*66
+    for sector in cut_sectors(cap):
+        for row in sector.indices:
+            for i in row:
+                multiplicity[i] = len(sector.complement_states)
+    # Equality of these positive exact arguments proves equality of their
+    # logarithms; no rounded log comparison enters the conservation proof.
+    bulk_weight = tuple(reference[i]*multiplicity[i] for i in range(66))
+    edges = tuple(e for e in quantum_mixing.seams() if all(p not in cap for p in e))
+    seam_rows = []
+    for edge in edges:
+        other = tuple(p for p in range(12) if p not in edge)
+        fibres = tuple(tuple(state[p] for p in other)+(sum(state[p] for p in edge),)
+                       for state in basis)
+        actual = seam_population(edge)
+        if actual != population_heat_bath(reference, fibres):
+            raise ArithmeticError("native fair seam repair differs from the declared heat bath")
+        if any(sum(row) != 1 or min(row) < 0 for row in actual):
+            raise ArithmeticError("native population kernel is not stochastic")
+        if any(sum((reference[i]*actual[i][j] for i in range(66)), F(0)) != reference[j]
+               for j in range(66)):
+            raise ArithmeticError("complement seam does not preserve the completed reference")
+        if any(actual[i][j] and (multiplicity[i] != multiplicity[j]
+                                 or bulk_weight[i] != bulk_weight[j])
+               for i in range(66) for j in range(66)):
+            raise ArithmeticError("a native cut transition changes cap bulk or central energy")
+        seam_rows.append({"seam": list(edge), "fibres": len(set(fibres)),
+                          "exact_source_entries_checked": 66**2})
+    return {"reference": "sigma_bar=E_R(diag(native_movement_degree/600))",
+            "native_population_laws": ["C", "E"],
+            "completion_is_cap_configuration_heat_bath": True,
+            "seams": seam_rows, "all_seams_reference_preserving": True,
+            "source_kernel_equals_heat_bath_on_untouched_bits_and_seam_total": True,
+            "bulk_generator": "K_bulk(x)=-log(sigma_bar(x)*b_q)",
+            "central_generator": "Z(x)=log b_q; b_q=binomial(12-|R|,2-q)",
+            "formal_boost": "B=K_bulk/(2*pi), with no physical boost identification",
+            "exact_split": "-log sigma_bar=2*pi*B+Z",
+            "mean_bulk_and_central_energy_preserved_for_every_input_law": True,
+            "cap_heat_per_step": "0", "cap_Clausius_conclusion": "0 <= S(p K)-S(p)",
+            "theorem_anchors": [
+                "Lean/Thermodynamics/CapFirstLaw.lean:heatBath_cap_clausius",
+                "Lean/Thermodynamics/CapFirstLaw.lean:cap_clausius_of_central_conserved",
+                "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean:gibbs_of_neg_log",
+                "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean:cap_firstLaw_gibbs"],
+            "Gibbs_reference_instance": "H=-log sigma_bar, beta=1, partition=1; modular units",
+            "one_uniform_mixture_and_all_finite_compositions_covered": True,
+            "nonzero_physical_heat_work_temperature_or_BW_boost_derived": False,
+            "matrix_quantum_entropy_identity_is_separate_from_classical_Lean_instantiation": True}
+
+
 def run():
     completed = completed_palm()
     degree = tuple(sum(x[a] != x[b] for a, b in quantum_mixing.seams())
@@ -243,6 +341,7 @@ def run():
     return {"schema": "oph.native_equilibration.cut_completion.v1",
             "source_sha256": {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
             "native_cut": cut_certificate(), "all_matrix_unit_audit": exact_audit(),
+            "native_heat_bath_first_law_attachment": heat_bath_audit(),
             "completed_palm_reference": {
                 "minimum_eigenvalue": str(min(completed)),
                 "half_trace_distance_from_original_palm": str(palm_change),
