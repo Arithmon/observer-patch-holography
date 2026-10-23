@@ -303,6 +303,75 @@ POVM effects**: their sum is `P`, and their symmetric moving insertion has a
 negative determinant. A coherent probe of these transfer modes needs its own
 valid preparation, instruments and service contract.
 
+## Spatial neutral coherence in the same native clock
+
+The [neutral transport construction](neutral_transport.py) supplies such a
+complete measurement for a spatially resolved **neutral** coherence. Choose
+two distinct source ports `a,b`. In the same binary total-two sector define
+`E_j=|a,j><b,j|`, for the ten common occupation positions `j` outside `{a,b}`.
+The signed-difference endpoints `a,b` stay fixed. The common occupation moves
+on the actual induced graph `Z=G\{a,b}`, with adjacency `A_Z`, degrees `d_j`
+and Laplacian `L_Z`. The existing signed-difference theorem gives
+
+```text
+Phi_L(E_j) = sum_k T_L[k,j] E_k,
+T_L = I - L_Z/60 - (V_L/30) I,
+V_C = 5;   V_E = 10 - 1[(a,b) is a source seam].
+```
+
+Actual C/E endpoint enumeration checks every column for all 66 choices of
+`{a,b}`. Thus this coherence block has offsite response and a nonflat band
+`1-V_L/30-lambda/60`, with `lambda` from the punctured source Laplacian.
+For adjacent endpoints its characteristic polynomial is
+`lambda (lambda-5)^3 (lambda²-10lambda+22) (lambda²-9lambda+16)
+(lambda²-8lambda+10)`. These are source-derived dissipative response modes,
+not charged-particle energies. The coordinate that moves is the shared
+occupation; the earlier nontransport result for charged insertions remains.
+
+The same response can be read when the **first global moving current** occurs,
+using the existing [stopped native instrument](../native_relational_readout/README.md).
+This protocol requires all-seam current access. It is not one port's incident
+clock. The zero-current coherence multiplier is
+`W_j=1-(2V_L+d_j)/60`; the moving part is `A_Z/60`. Summing every unobserved
+wait therefore gives the exact first-movement response
+
+```text
+R_L[k,j] = A_Z[k,j]/(2V_L+d_j).
+```
+
+Prepare `(|a,j> +/- |b,j>)/sqrt(2)` and, after the tick, read all twenty
+orthogonal projectors onto `(|a,k> +/- |b,k>)/sqrt(2)`, together with their
+46-dimensional complement. The difference of plus/minus probabilities at
+`k` is exactly `+/- R_L[k,j]`. Every probability is nonnegative and the full
+21-outcome law sums to one. A contrast is not a probability or a herald:
+its attenuation is retained in the phase and complement outcomes. For
+`(a,b,j)=(0,1,2)`, each of five neighboring common positions has contrast
+`1/15` for C and `1/23` for E at the first movement. All other positions have
+zero contrast. No fitted time conversion enters this comparison.
+For this preparation the complete measurement's C/E total variation is
+`4/69`, exactly the output states' trace distance: their difference splits
+into orthogonal two-dimensional phase blocks diagonalized by this analyzer.
+The two candidates still have the same population and current waiting laws.
+
+Successive global movement ticks compose as `R_L^m`. Independent inserted
+identity holds cancel from the stopped law; genuine zero-current repairs
+cannot be discarded. `R_L` is similar to the real symmetric matrix
+`D^-1/2 A_Z D^-1/2`, with `D_jj=2V_L+d_j`. It has negative eigenvalues, witnessed
+by a negative two-port principal minor, so this stopped transfer is not a
+positive Euclidean transfer admitting a real self-adjoint `-log R_L`.
+The change of clock cannot be used to invent a particle Hamiltonian.
+
+The shared runtime executes both preparation signs and both laws with a
+three-attempt cap, retaining all **168 flag/measurement outcomes**, including
+impossible words and the unresolved timeout of probability `125/216`.
+Every terminal 66-dimensional density agrees with an independent exact CP
+calculation, and a serialized checkpoint gives the same continuation.
+The infinite first-tick law is analytically summed, not finitely executed.
+The coherent preparation, joint analyzer, global record access, uniform
+scheduler and logical halt controller remain declared. No physical pulse
+implementation, laboratory identification, Lorentzian limit or particle mass
+is supplied by this neutral response experiment.
+
 ## Existing theorem attachments and remaining scope
 
 The finite bond-positivity argument uses the algebra in
@@ -335,6 +404,7 @@ readouts against which such a bridge can be checked.
 
 ```sh
 python -m model.native_effective_fields --check model/native_effective_fields/results.json
+python -m model.native_effective_fields.neutral_transport --check model/native_effective_fields/neutral_transport_results.json
 python -m pytest -q -W error model/native_effective_fields
 ```
 

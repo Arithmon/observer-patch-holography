@@ -1,18 +1,22 @@
 {
-  "description": "Exact native fields, charged spatial pole gate, source-word reference readout and complete current histories.",
+  "description": "Exact native fields, complete charged and neutral coherent readouts, and source-derived spatial response in a movement clock.",
   "files": {
-    "README.md": "b9704b83c1a0ab3aa75d401aff4ab9ddd94812431c5febf53c8e136f2e82234d",
+    "README.md": "256812e24c24b10d0bd96bec78c1af3b97030c20a3de8971a3563e1b0e4c858d",
     "__init__.py": "8aad2861e6ea171efb3ecc45d3c07466dcf5850e57a5a3d75f68b571ee16f4b8",
     "__main__.py": "414aee2b8837e06d89e7c0574e06ecd494be4c11a86eac0ce42ccf02976b3820",
     "charged_reference.py": "a4072b8156e18daaed13bff232b94e2b6f1d638694459d3963b3704a8d759112",
     "charged_reference_source.py": "7826534d962d0d6789cdc70ef345a05f916c41b5447aaa06d9bc2d243ccfeb05",
     "construction.py": "d36c94c7b4aad45e8668139a320a45c6b120e841156b4426f195f69aadd51c03",
+    "neutral_transport.py": "3be452cab30ce108afd6ebb1e8364d734c3e87eff54db633974e4ed5b79eff4f",
+    "neutral_transport_results.json": "f0f33292a4035176b6fa56094533598fac6b5a2292406f5b5f6ece168c963239",
     "results.json": "63e633b9a47f98bf7e432e2793497ad080119809050551cb68880d2a29c4bbce",
     "test_charged_reference_source.py": "6a77414468610d6a4eaa3ac68ff61ffe0709b0e83d3c6bd8184142b9f475a81c",
-    "test_construction.py": "a18d7493d4e4c71c50092672e745804ac24d7ff698d19356fddddd8f7cf915b7"
+    "test_construction.py": "a18d7493d4e4c71c50092672e745804ac24d7ff698d19356fddddd8f7cf915b7",
+    "test_neutral_transport.py": "6fd846cc7c2afff0c45815bf08abb4a2b62b81c495296f21c06e3fa264192a67"
   },
   "reproduce": [
     "python -m model.native_effective_fields --check model/native_effective_fields/results.json",
+    "python -m model.native_effective_fields.neutral_transport --check model/native_effective_fields/neutral_transport_results.json",
     "python -m pytest -q -W error model/native_effective_fields"
   ],
   "schema": "oph.native_effective_fields.manifest.v1"
