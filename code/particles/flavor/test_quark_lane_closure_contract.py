@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import shutil
 import subprocess
 import sys
 
@@ -52,38 +53,47 @@ SCRIPT = ROOT / "particles" / "flavor" / "derive_quark_lane_closure_contract.py"
 OUTPUT = ROOT / "particles" / "runs" / "flavor" / "quark_lane_closure_contract.json"
 
 
+@pytest.fixture
+def isolated_flavor_tree(tmp_path: pathlib.Path):
+    """Replay the dependency chain without rewriting retained evidence."""
+    receipts = ROOT / "particles" / "runs" / "flavor"
+    before = {p.name: p.read_bytes() for p in receipts.glob("*.json")}
+    snapshot = tmp_path / "code"
+    for relative in ("particles", "P_derivation"):
+        shutil.copytree(
+            ROOT / relative,
+            snapshot / relative,
+            ignore=shutil.ignore_patterns("__pycache__", "*.pyc", ".pytest_cache"),
+        )
+    yield snapshot
+    assert {p.name: p.read_bytes() for p in receipts.glob("*.json")} == before
+
+
 def test_quark_lane_contract_records_two_independent_obstructions_and_audit_only_sidecars(
-    tmp_path: pathlib.Path,
+    isolated_flavor_tree: pathlib.Path,
 ) -> None:
-    subprocess.run(
-        [sys.executable, str(S3_D12_TEMPLATE_SCRIPT), "--allow-template-ancestry"],
-        check=True,
-        cwd=ROOT,
-    )
-    subprocess.run([sys.executable, str(S3_D12_TEMPLATE_AUDIT_SCRIPT)], check=True, cwd=ROOT)
-    subprocess.run([sys.executable, str(RSCC_ARITHMETIC_SCRIPT)], check=True, cwd=ROOT)
-    subprocess.run(
-        [
-            sys.executable,
-            str(RSCC_CANDIDATE_SCRIPT),
-            "--allow-retrospective-rscc",
-        ],
-        check=True,
-        cwd=ROOT,
-    )
-    # The conditional mass replay pins the committed RSCC audit bytes. Rebuild
-    # this audit in isolation so this test cannot rewrite that frozen input.
-    rscc_audit_output = tmp_path / "quark_rscc_completion_candidate_audit.json"
-    subprocess.run(
-        [sys.executable, str(RSCC_AUDIT_SCRIPT), "--output", str(rscc_audit_output)],
-        check=True,
-        cwd=ROOT,
+    def run(script: pathlib.Path, *arguments: str) -> None:
+        subprocess.run(
+            [sys.executable, str(isolated_flavor_tree / script.relative_to(ROOT)), *arguments],
+            check=True,
+            cwd=isolated_flavor_tree,
+        )
+
+    run(S3_D12_TEMPLATE_SCRIPT, "--allow-template-ancestry")
+    run(S3_D12_TEMPLATE_AUDIT_SCRIPT)
+    run(RSCC_ARITHMETIC_SCRIPT)
+    run(RSCC_CANDIDATE_SCRIPT, "--allow-retrospective-rscc")
+    # Every downstream contract consumes freshly replayed upstream receipts
+    # inside the snapshot, including the audit pinned by the mass comparison.
+    run(RSCC_AUDIT_SCRIPT)
+    rscc_audit_output = (
+        isolated_flavor_tree / "particles/runs/flavor/quark_rscc_completion_candidate_audit.json"
     )
     assert json.loads(rscc_audit_output.read_text(encoding="utf-8"))["artifact"] == (
         "oph_quark_rscc_completion_candidate_audit_v1"
     )
-    subprocess.run([sys.executable, str(FURTHER_THEOREM_AUDIT_SCRIPT)], check=True, cwd=ROOT)
-    subprocess.run([sys.executable, str(FLAVOR_SOURCE_CLOSURE_SCRIPT)], check=True, cwd=ROOT)
+    run(FURTHER_THEOREM_AUDIT_SCRIPT)
+    run(FLAVOR_SOURCE_CLOSURE_SCRIPT)
     for script in (
         SIGMA_OBSTRUCTION_SCRIPT,
         AXIOM_LEVEL_OBSTRUCTION_SCRIPT,
@@ -92,9 +102,9 @@ def test_quark_lane_contract_records_two_independent_obstructions_and_audit_only
         PUBLIC_EXACT_YUKAWA_PROMOTION_FRONTIER_SCRIPT,
         SCRIPT,
     ):
-        subprocess.run([sys.executable, str(script)], check=True, cwd=ROOT)
+        run(script)
 
-    payload = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    payload = json.loads((isolated_flavor_tree / OUTPUT.relative_to(ROOT)).read_text(encoding="utf-8"))
     assert payload["artifact"] == "oph_quark_lane_closure_contract"
     assert payload["base_theorem_emitted_package_artifact"] == "oph_quark_maximal_theorem_emitted_package"
     assert payload["proof_status"] == "closed_sharper_obstructions_numeric_quark_predictions_withheld"
