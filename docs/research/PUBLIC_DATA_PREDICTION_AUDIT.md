@@ -27,6 +27,22 @@ the low-energy transport and primordial/transfer maps remain conditional.
 Its numerical enclosure supplies no physical theory-error budget, and no
 joint likelihood or all-scale agreement verdict is assigned.
 
+The coupling/tilt calculation has no C/E instrument input. The
+[P-response observer](../../model/observer/p_response/experiment.py) imports
+the structured-running closure value into its detector; it does not derive
+P from either repair instrument. The [C/E readout test](../../model/predictions/observer_instrument.py)
+compares their distinct coherent laws, but supplies no repair-dependent
+coupling or primordial generator. Thus the alpha/tilt comparison is not a
+separate empirical test of C and E. Its physical audit must address the
+[hadronic current and scheme matching](../../code/P_derivation/README.md),
+and the [primordial construction's](../../cosmology/oph_cosmology_finite_source_cmb_program.tex)
+round-sphere generator, infinitesimal reserve density, release law and
+screen-to-volume map. None is repaired by switching an instrument label.
+The ACT result below uses the combined conditional Lambda-CDM posterior,
+including Planck, lensing and DESI DR1; its tail is neither an ACT-only
+likelihood nor a model-independent rejection probability. The retained
+fixed-background likelihood slice is a separate overlapping-data diagnostic.
+
 The [earlier-state readout test](../../model/interacting_band_extension/README.md#a-held-out-record-law-after-central-weight-calibration)
 fixes one Hamiltonian, temperature and instrument family, infers its remaining
 sector weight from complete records, and predicts a separate model-time
