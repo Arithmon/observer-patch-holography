@@ -14,11 +14,17 @@ on:
     branches: [main]
     paths:
       - "code/a5_closure/**"
+      - "model/observer/native.py"
+      - "model/observer/native_loop_readout.py"
+      - "model/common_source/slow_geometry.py"
       - "requirements.txt"
       - ".github/workflows/certificate-suites.yml"
   pull_request:
     paths:
       - "code/a5_closure/**"
+      - "model/observer/native.py"
+      - "model/observer/native_loop_readout.py"
+      - "model/common_source/slow_geometry.py"
       - "requirements.txt"
       - ".github/workflows/certificate-suites.yml"
   schedule:
@@ -62,6 +68,9 @@ jobs:
 
       - name: Verify source repair generators and hostile incidence controls
         run: python -m pytest -q code/a5_closure/tests/test_source_repair_generator_certificate.py
+
+      - name: Verify native defect topology and local link updates
+        run: python -m pytest -q code/a5_closure/tests/test_native_defect_stability_gate.py
 
       - name: Execute the exhaustive exact certificate suites
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
