@@ -120,13 +120,78 @@ Uniform microscopic repair statistics produce `q_i=d_i/M` when `d_i`
 counts the accessible microstates in each observed sector. The existing
 [native fixed-total calculation](../../model/physical_space_time/occupation_field.py)
 checks this for the uniform stationary law on all 66 binary total-two
-states. Preparation at that law or the separately controlled
-[equilibration](../../model/native_equilibration/README.md)
-is still needed. Consensus or relative-entropy minimization against an
+states. The finite preparation below supplies controlled approximate
+stationarity from arbitrary binary inputs. Consensus or relative-entropy minimization against an
 arbitrary reference does not select uniform counting: on two equally sized
 sectors a reset kernel with stationary law `(1/4,3/4)` minimizes divergence
 to that law, but the counting entropy derivative in direction `(1,-1)` is
 `log 3`, not zero.
+
+### Stationarity after finite native preparation
+
+The [native warm-up theorem](../../model/record_laws/README.md#preparation-by-finite-native-warm-up)
+removes exact stationary preparation on its binary total-two domain. After
+`n` repair attempts, discard the complete warm-up tape and controller. For
+every admitted record law, including the theorem's restricted law feedback,
+the source marginal satisfies `dist(rho_n,I/66)<=epsilon_n`. The seam schedule
+is exogenous, placement is fair, and `dist` is half trace norm. Under uniform
+seam scheduling one may use `epsilon_n=min(1,33*(19079/20000)^n)`.
+The parameter `n` counts repairs, including zero currents; it is not elapsed
+physical time. An untouched quantum reference remains within the inherited
+bound, but no decoupling of the discarded tape is asserted.
+
+Choose **any complete partition** into nonempty microscopic sectors of
+counts `d_i`, with `M=66`, `q_i=d_i/M`, and `p_i=Tr(P_i rho_n)`. Data
+processing gives `TV(p,q)<=epsilon_n`. Let `eta=min q_i` and
+`theta=epsilon_n/eta<1`. For every joint differentiable positive-real path
+at this point, with `sum p=1`, fixed `M`, `u=p'`, and `w=d'/M`, direct
+differentiation in the variation parameter (not repair count or a clock) gives
+
+```text
+S_count' = -sum_i u_i log(p_i/q_i) + sum_i w_i (p_i/q_i-1),
+|S_count'| <= (||u||_1/2) log((1+theta)/(1-theta)) + ||w||_1 theta
+           <= ||u||_1 theta/(1-theta) + ||w||_1 theta.       (E0)
+```
+
+Each coordinate differs from its reference by at most TV, so
+`1-theta<=p_i/q_i<=1+theta`. For a zero-sum tangent, subtracting the midpoint
+of a coefficient's range bounds its pairing by half the range times the
+L1 norm. This proves (E0) uniformly over **all** such tangents, not only a
+chosen path. The logarithmic bound is sharp: on singleton sectors, shift
+two probabilities by `+epsilon,-epsilon`, take `u=(-1/2,1/2)`, and
+`w=(1/2,-1/2)`. Both terms attain their bounds together. Capacity derivatives
+are analytic variations, not native operations changing integer counts.
+
+For the full quantum source density on this fixed 66-dimensional shell,
+`||rho_n-I/66||_op<=epsilon_n`: a traceless Hermitian difference has positive
+and negative parts each of trace `epsilon_n`. Thus `66*epsilon_n<1` gives
+a faithful state. The same range argument applied to `log(rho_n)` gives
+the complete trace-one tangent bound
+
+```text
+|dS_rho_n[X]| <= (||X||_1/2) log((1+66 epsilon_n)/(1-66 epsilon_n)),
+X=X*, Tr X=0.
+```
+
+This includes noncommuting tangents. Also `log r<=r-1` and the same
+positive/negative-part bound give
+`log 66-S(rho_n)<=66 Tr[(rho_n-I/66)^2]<=132 epsilon_n^2`.
+For the counting entropy the corresponding deficit is at most
+`2 epsilon_n^2/eta`. The existing receipt computes finite attempt budgets
+for derivative tolerances `1/100` and `1/1000`, uniformly over partitions
+(`eta>=1/66`) and unit state/count tangent norms. Native transition columns,
+complete tangent dual norms, coherent sharp controls and malformed-floor
+tests check the attachment independently.
+
+Record access and the conserved sector are essential. Even from the exact
+uniform binary source, conditioning on current `+1` at seam `(0,1)` has
+probability `5/66` and yields a uniform law on only ten states. Its entropy
+deficit is `log(33/5)`, so the unread-state stationarity bound cannot be
+assigned to that record-conditioned state. No postselected branch is used
+in the preparation certificate. The full 78-state repair channel is
+nonunital: one step sends its maximally mixed state to a nonuniform state
+and strictly decreases entropy. The fixed-shell derivative bound therefore
+does not extend to all 78-state tangents via the full-carrier warm-up bound.
 
 This discharges joint counting stationarity on its stated finite/relaxed
 domain. Identifying fixed `M` with fixed physical small-ball volume,

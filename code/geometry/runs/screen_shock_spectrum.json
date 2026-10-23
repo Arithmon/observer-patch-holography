@@ -82,6 +82,66 @@
       "simplex_tangent_hessian_negative": true,
       "unique_simplex_maximum": true
     },
+    "finite_native_stationarity": {
+      "bound": "|S_count'| <= (||p'||_1/2)*log((1+theta)/(1-theta))+||d'/M||_1*theta; theta=epsilon/min(d_i/M)<1",
+      "counting_domain": "any complete sector partition; d_i counts all microstates; positive-real d variation at fixed M=66",
+      "entropy_deficit_bound": "log(66)-S(rho) <= 132*epsilon^2; counting deficit <= 2*epsilon^2/min(d_i/66)",
+      "finite_budgets": [
+        {
+          "entropy_deficit_upper": "143473/200000000000",
+          "half_trace_distance_upper": "18429899/250000000000",
+          "joint_derivative_target": "1/100",
+          "joint_derivative_upper": "4877387719/500000000000",
+          "repair_attempts": 276
+        },
+        {
+          "entropy_deficit_upper": "1767/250000000000",
+          "half_trace_distance_upper": "7317083/1000000000000",
+          "joint_derivative_target": "1/1000",
+          "joint_derivative_upper": "966088221/1000000000000",
+          "repair_attempts": 325
+        }
+      ],
+      "preparation": "arbitrary binary total-two density; exogenous uniform seams; fair native placements",
+      "quantum_state_bound": "|dS_rho[X]| <= (||X||_1/2)*log((1+66*epsilon)/(1-66*epsilon)), Tr X=0",
+      "rational_upper": "||p'||_1*theta/(1-theta)+||d'/M||_1*theta",
+      "record_access": "discard the entire warm-up tape and controller; no postselection",
+      "record_control": {
+        "conditional_entropy_deficit_exact": "log(33/5)",
+        "conditional_support_size": 10,
+        "uniform_source_last_current_plus_probability": "5/66"
+      },
+      "record_law": "every admitted current-record table, including the law-only feedback of the warm-up theorem",
+      "scope": {
+        "exact_stationary_preparation_required": false,
+        "finite_error_is_exact_stationarity": false,
+        "full_78_state_entropy_gradient_covered": false,
+        "physical_fixed_volume_or_area_coefficient_derived": false
+      },
+      "sharp_control": {
+        "epsilon": "1/6600",
+        "joint_derivative_exact": "log(101/99)/2+1/100",
+        "normalized_capacity_tangent": [
+          "1/2",
+          "-1/2"
+        ],
+        "partition": "66 singleton sectors",
+        "probability_shifts": [
+          "1/6600",
+          "-1/6600"
+        ],
+        "probability_tangent": [
+          "-1/2",
+          "1/2"
+        ]
+      },
+      "source_dimension": 66,
+      "source_sha256": {
+        "model/record_laws/burn_in.py": "ab570ba3c4da75361231538b2d22ac7e3c6884038778c2510d9aa4af796d47e5",
+        "model/record_laws/burn_in_results.json": "9f34ebcde8e64e51467bab945f234de2254fc4ac77d706089278dda03abf671b"
+      },
+      "tangent_norms": "sum p'=sum d'=0, ||p'||_1<=1, ||d'/66||_1<=1"
+    },
     "one_sided_capacity_transfer": {
       "finite_integer_statement": {
         "budget_checks": [

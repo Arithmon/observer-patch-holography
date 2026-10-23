@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import copy
+from collections import Counter
+from fractions import Fraction
 import json
 import pathlib
 import subprocess
@@ -25,6 +27,8 @@ from derive_screen_shock_spectrum import (  # noqa: E402
     _icosahedron_graphs,
     _laplacian,
     build_receipt,
+    counting_stationarity_bound,
+    finite_native_stationarity_receipt,
     receipt_failures,
     validate_receipt,
 )
@@ -166,6 +170,119 @@ def test_relative_entropy_stationarity_does_not_select_the_counting_entropy_maxi
     entropy = -sum(p*sp.log(p) for p in probability)  # Two sectors of count one.
     assert sp.simplify(sp.diff(relative, t).subs(t, 0)) == 0
     assert sp.simplify(sp.diff(entropy, t).subs(t, 0)) == sp.log(3)
+
+
+def test_finite_joint_bound_has_a_sharp_complete_tangent_witness():
+    # Differentiate the entropy itself, independently of the bound's formula.
+    t = sp.symbols("t", real=True)
+    epsilon = sp.Rational(1, 6600)
+    p = (sp.Rational(1, 66)+epsilon-t/2, sp.Rational(1, 66)-epsilon+t/2)
+    d = (1+33*t, 1-33*t)
+    entropy = -sum(x*sp.log(x/y) for x, y in zip(p, d, strict=True))
+    derivative = sp.expand_log(sp.diff(entropy, t).subs(t, 0), force=True).simplify()
+    expected = sp.log(sp.Rational(101, 99))/2+sp.Rational(1, 100)
+    assert sp.simplify(derivative-expected) == 0
+    bound = counting_stationarity_bound(Fraction(1, 6600), Fraction(1, 66))
+    assert float(derivative) <= float(bound["joint_derivative_upper"])
+    assert bound["relative_population_error"] == Fraction(1, 100)
+    # A coherent two-dimensional block attains the quantum-state bound too.
+    rho = sp.Matrix([[sp.Rational(1, 66), epsilon], [epsilon, sp.Rational(1, 66)]])
+    tangent = sp.Matrix([[0, -sp.Rational(1, 2)], [-sp.Rational(1, 2), 0]])
+    entropy_gradient = -sp.trace(tangent*rho.log()).simplify()
+    assert sp.simplify(entropy_gradient-sp.log(sp.Rational(101, 99))/2) == 0
+
+
+@pytest.mark.parametrize("arguments", [
+    (True, Fraction(1, 66)), (0.001, Fraction(1, 66)),
+    (Fraction(1, 66), Fraction(1, 66)), (0, 0), (-1, 1), (0, 2),
+    (0, Fraction(1, 66), -1), (0, Fraction(1, 66), 1, -1),
+])
+def test_stationarity_bound_rejects_missing_floor_and_ambiguous_units(arguments):
+    with pytest.raises(ValueError):
+        counting_stationarity_bound(*arguments)
+
+
+def test_native_finite_preparation_bounds_all_partition_tangents():
+    from model.observer import native, quantum_mixing
+    from model.record_laws import burn_in
+    from mpmath import MPContext
+
+    states = tuple(state for state in native.states() if max(state) == 1)
+    index = {state: i for i, state in enumerate(states)}
+    # Independently compile integer transition columns from native coin calls.
+    columns = [Counter(index[native.native(state, seam, coin)[0]]
+                       for seam in quantum_mixing.seams() for coin in (0, 1))
+               for state in states]
+    counts, denominator = [1]+[0]*65, 1
+    report = finite_native_stationarity_receipt()
+    row = report["finite_budgets"][-1]
+    for _ in range(row["repair_attempts"]):
+        following = [0]*66
+        for amount, column in zip(counts, columns, strict=True):
+            for output, multiplicity in column.items():
+                following[output] += amount*multiplicity
+        counts, denominator = following, denominator*60
+    p = [Fraction(value, denominator) for value in counts]
+    actual_tv = sum(abs(x-Fraction(1, 66)) for x in p)/2
+    assert actual_tv <= burn_in.binary_bound(row["repair_attempts"])
+    assert Fraction(row["joint_derivative_upper"]) <= Fraction(row["joint_derivative_target"])
+    ctx = MPContext()
+    ctx.dps = 80
+    for partition in ([i for i in range(66)], [sum(s[:4]) for s in states],
+                      [int(s[0]) for s in states]):
+        labels = sorted(set(partition))
+        q = [Fraction(partition.count(label), 66) for label in labels]
+        coarse = [sum((p[i] for i, label in enumerate(partition) if label == wanted), Fraction())
+                  for wanted in labels]
+        ratios = [ctx.mpf(x.numerator)/x.denominator/(ctx.mpf(y.numerator)/y.denominator)
+                  for x, y in zip(coarse, q, strict=True)]
+        logs = list(map(ctx.log, ratios))
+        # Exact dual norms over all zero-sum, unit-L1 state/count tangents.
+        derivative_sup = (max(logs)-min(logs)+max(ratios)-min(ratios))/2
+        bound = counting_stationarity_bound(actual_tv, min(q))
+        rational = bound["joint_derivative_upper"]
+        assert derivative_sup <= ctx.mpf(rational.numerator)/rational.denominator
+        deficit = sum((ctx.mpf(x.numerator)/x.denominator)*log
+                      for x, log in zip(coarse, logs, strict=True))
+        rational = bound["entropy_deficit_upper"]
+        assert 0 <= deficit <= ctx.mpf(rational.numerator)/rational.denominator
+
+
+def test_retained_record_and_full_carrier_expose_stationarity_domain():
+    from model.observer import native, quantum_mixing
+
+    states = native.states()
+    binary = tuple(state for state in states if max(state) == 1)
+    plus = Counter()
+    unread = Counter()
+    for state in binary:
+        for coin in (0, 1):
+            output, (_, current) = native.native(state, (0, 1), coin)
+            unread[output] += 1
+            if current == 1:
+                plus[output] += 1
+    assert set(unread.values()) == {2} and len(unread) == 66
+    assert len(plus) == 10 and set(plus.values()) == {1}
+    assert Fraction(sum(plus.values()), 132) == Fraction(5, 66)
+    assert sp.simplify(sp.log(66)-sp.log(len(plus))-sp.log(sp.Rational(33, 5))) == 0
+    # The full 78-state channel is not unital: from its entropy maximum,
+    # one repair strictly decreases entropy. The binary theorem cannot cover it.
+    full = Counter(native.native(state, seam, coin)[0]
+                   for state in states for seam in quantum_mixing.seams() for coin in (0, 1))
+    assert len(full) == 78 and sum(full.values()) == 78*60
+    assert set(full.values()) != {60}
+
+
+def test_native_stationarity_receipt_rejects_a_promoted_or_mutated_bound():
+    for section, key, value in [
+        ("scope", "physical_fixed_volume_or_area_coefficient_derived", True),
+        ("scope", "full_78_state_entropy_gradient_covered", True),
+        (None, "record_access", "retain the tape"),
+    ]:
+        receipt = build_receipt()
+        row = receipt["entropy_and_capacity"]["finite_native_stationarity"]
+        (row[section] if section else row)[key] = value
+        assert "finite_native_stationarity_mismatch" in receipt_failures(receipt)
 
 
 def _sector_partial_traces(rho, states, region):

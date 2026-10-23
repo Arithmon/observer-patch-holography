@@ -19,10 +19,13 @@ The receipt separates three kinds of statements.
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
+import hashlib
 import itertools
 import json
 import math
 from pathlib import Path
+import sys
 from typing import Any, Iterable
 
 import numpy as np
@@ -30,6 +33,8 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 DEFAULT_OUT = HERE / "runs" / "screen_shock_spectrum.json"
 
 SCHEMA = "oph.finite_screen_shock_receipt.v1"
@@ -288,6 +293,7 @@ def entropy_and_capacity_receipt() -> dict[str, Any]:
         )
 
     return {
+        "finite_native_stationarity": finite_native_stationarity_receipt(),
         "finite_generalized_entropy_maximum": {
             "identity": "S_gen(p,d)=log(M)-D_KL(p || d/M)",
             "M_definition": "M=sum_i d_i",
@@ -344,6 +350,84 @@ def entropy_and_capacity_receipt() -> dict[str, Any]:
                 "f_equals_zero_one_sided_boundary_maximum": True,
             },
         },
+    }
+
+
+def counting_stationarity_bound(
+    distance: Fraction, minimum_reference_probability: Fraction,
+    probability_speed: Fraction = Fraction(1),
+    normalized_capacity_speed: Fraction = Fraction(1),
+) -> dict[str, Fraction]:
+    """Rational bounds for every fixed-total counting-entropy tangent.
+
+    Speeds are ||p'||_1 and ||d'/M||_1. Distance is probability TV,
+    or half trace distance before the complete sector readout. The bound
+    requires a positive floor; it never regularizes a zero population.
+    """
+    values = (distance, minimum_reference_probability, probability_speed,
+              normalized_capacity_speed)
+    if any(type(x) not in (int, Fraction) for x in values):
+        raise ValueError("exact rational distances, floor and speeds required")
+    error, floor, speed, capacity_speed = map(Fraction, values)
+    if not 0 <= error < floor <= 1 or min(speed, capacity_speed) < 0:
+        raise ValueError("require 0 <= distance < positive floor <= 1 and nonnegative speeds")
+    theta = error/floor
+    return {"relative_population_error": theta,
+            "state_derivative_upper": speed*theta/(1-theta),
+            "joint_derivative_upper": speed*theta/(1-theta)+capacity_speed*theta,
+            "entropy_deficit_upper": 2*error*error/floor}
+
+
+def finite_native_stationarity_receipt() -> dict[str, Any]:
+    """Attach the existing same-source warm-up to counting stationarity."""
+    from model.record_laws import burn_in
+
+    def upper(value: Fraction) -> str:
+        scaled = value*10**12
+        return str(Fraction(-(-scaled.numerator//scaled.denominator), 10**12))
+
+    floor = Fraction(1, burn_in.D)
+    rows = []
+    for target in (Fraction(1, 100), Fraction(1, 1000)):
+        # For unit speeds theta/(1-theta)+theta < target at theta=t/(2+t).
+        error_target = floor*target/(2+target)
+        attempts = burn_in.sufficient_attempts(error_target)
+        error = burn_in.binary_bound(attempts)
+        bounds = counting_stationarity_bound(error, floor)
+        if bounds["joint_derivative_upper"] > target:
+            raise ArithmeticError("native finite stationarity budget failed")
+        rows.append({"joint_derivative_target": str(target),
+                     "repair_attempts": attempts,
+                     "half_trace_distance_upper": upper(error),
+                     "joint_derivative_upper": upper(bounds["joint_derivative_upper"]),
+                     "entropy_deficit_upper": upper(bounds["entropy_deficit_upper"])})
+    paths = ("model/record_laws/burn_in.py", "model/record_laws/burn_in_results.json")
+    return {
+        "source_sha256": {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+                          for name in paths},
+        "source_dimension": burn_in.D,
+        "preparation": "arbitrary binary total-two density; exogenous uniform seams; fair native placements",
+        "record_law": "every admitted current-record table, including the law-only feedback of the warm-up theorem",
+        "record_access": "discard the entire warm-up tape and controller; no postselection",
+        "counting_domain": "any complete sector partition; d_i counts all microstates; positive-real d variation at fixed M=66",
+        "tangent_norms": "sum p'=sum d'=0, ||p'||_1<=1, ||d'/66||_1<=1",
+        "bound": "|S_count'| <= (||p'||_1/2)*log((1+theta)/(1-theta))+||d'/M||_1*theta; theta=epsilon/min(d_i/M)<1",
+        "rational_upper": "||p'||_1*theta/(1-theta)+||d'/M||_1*theta",
+        "quantum_state_bound": "|dS_rho[X]| <= (||X||_1/2)*log((1+66*epsilon)/(1-66*epsilon)), Tr X=0",
+        "entropy_deficit_bound": "log(66)-S(rho) <= 132*epsilon^2; counting deficit <= 2*epsilon^2/min(d_i/66)",
+        "finite_budgets": rows,
+        "sharp_control": {"partition": "66 singleton sectors", "epsilon": "1/6600",
+                          "probability_shifts": ["1/6600", "-1/6600"],
+                          "probability_tangent": ["-1/2", "1/2"],
+                          "normalized_capacity_tangent": ["1/2", "-1/2"],
+                          "joint_derivative_exact": "log(101/99)/2+1/100"},
+        "record_control": {"uniform_source_last_current_plus_probability": "5/66",
+                           "conditional_support_size": 10,
+                           "conditional_entropy_deficit_exact": "log(33/5)"},
+        "scope": {"exact_stationary_preparation_required": False,
+                  "finite_error_is_exact_stationarity": False,
+                  "full_78_state_entropy_gradient_covered": False,
+                  "physical_fixed_volume_or_area_coefficient_derived": False},
     }
 
 
@@ -739,6 +823,11 @@ def receipt_failures(receipt: dict[str, Any]) -> list[str]:
         )
 
     capacity = receipt.get("entropy_and_capacity", {})
+    _fail_if(
+        capacity.get("finite_native_stationarity") != finite_native_stationarity_receipt(),
+        failures,
+        "finite_native_stationarity_mismatch",
+    )
     entropy_maximum = capacity.get("finite_generalized_entropy_maximum", {})
     _fail_if(
         entropy_maximum.get("unique_simplex_maximum") is not True,
