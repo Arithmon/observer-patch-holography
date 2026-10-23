@@ -117,6 +117,28 @@ The one-face arms have two versus one **moving** events despite both making
 two attempts; independent idle and move-count dynamical-phase calibration is
 still required before the measured contrast can be called geometric holonomy.
 
+The [complete face reconstruction](holonomy_reconstruction.py) connects that
+conditional readout to the finite `HolonomyInterference` and
+`SeamU1HolonomyClassification` theorems. **Any nineteen of the twenty oriented
+face phases determine all nineteen seam gauge coordinates**; the remaining
+face is fixed by sphere closure. Exact integer inverse identities establish
+this for every `U(1)` connection. All forty oriented route comparisons replay
+the native rule, retaining their 320 route/coin histories. Each has comparison
+mass `1/4` and a separate same-endpoint idle outcome of mass `1/8`.
+These graph coordinates do not count
+protected defects on the filled sphere. Oppositely oriented triangle reads
+have phases `h_f + delta` and `-h_f + delta` if every move has the same dynamic
+phase and every idle has the same phase, with `delta = move - idle`. Their
+difference cancels the dynamics and determines `2 h_f`. All twenty pairs
+leave just two possible connections under this shared-offset contract;
+**one independently calibrated face fixes the whole connection**. The
+forward/reverse sums provide a consistency test of the common offset.
+With arbitrary orientation-even seam dynamics, `2^19` sign choices remain
+indistinguishable even from all directed total phases. The source-executed
+triangle quadratures check the probability-to-phase decoder; a full face
+menu, common dynamics and the independent calibration remain protocol
+requirements, not outputs selected by the committed C/E records.
+
 The [family-port identifiability audit](family_port_identifiability.py) tests
 the fixed two-event current recorder against the exact icosahedral `W5`
 projector in the
