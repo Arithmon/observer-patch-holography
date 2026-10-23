@@ -13,6 +13,55 @@ Here `n` always means **native attempt count**, including the recorded zero
 currents. A physical duration, proper time or relation to an experimental
 clock has not been identified.
 
+## Local field readout without an initial-bit disclosure
+
+[`bit_readout.py`](bit_readout.py) reconstructs a port's binary occupation
+from its **own signed incident currents**, including zero-current ticks.
+Before the first nonzero current its bit is unknown. A local `+1` sets the
+outgoing bit to one; `-1` sets it to zero. Subsequent currents update that
+bit exactly. The initial bit can then be recovered retrospectively. This
+supplies no earlier causal access to it; unsigned movement ticks alone do
+not identify the bit.
+
+The source audit checks the number-projector input/output supports of every
+C and E Kraus branch. Zero-current and remote branches preserve local number;
+a signed branch fixes its incoming and outgoing number. The identities compose
+on arbitrary quantum inputs and untouched references. For coherent inputs,
+the recovered initial label describes the resolved instrument domain, without
+assigning a hidden classical bit before measurement.
+
+An exact twelve-class marked reduction of all 66 source configurations
+preserves every local signed-current word. With `A` the remote kernel and
+`B_j` the incident kernels, `Q_j=(I-A)^-1 B_j` sums all remote waits. The
+unresolved kernel satisfies `Q_0^16 1 <= (3/8)1`, giving
+
+```
+P(unresolved after m local incident ticks) <= (3/8)^floor(m/16).
+```
+
+Thus 128 local ticks give failure at most `6561/16777216 < 1/1000`, uniformly
+over initial states. The exact worst-case expected count is `129960/8261`
+local ticks. All twelve ports obey the same certificate. A union bound gives
+failure below `1/1000` after 160 ticks at each port, without assuming independent
+observers. Joint record access and a common comparison checkpoint are separate
+services; the individual stopping times are not simultaneous measurements.
+
+Every all-zero finite prefix retains an unresolved outcome. Conditioning on
+resolution changes field statistics: among immediate resolutions the initial
+bit probability is `1/2`, although its stationary prior is `1/6`. Keep this
+outcome selection in any subsequent field/tensor comparison. If a complete
+readout window has resolved initial-one mass `r_1` and unknown mass `u`, its
+initial field mean lies in `[r_1,r_1+u]`. This uses all outcomes; finite-sample
+confidence limits require a separate sampling contract. The schedule is
+independent uniform seam selection with fair native placements; feedback or
+coherent interventions require another waiting law. No stationary preparation,
+global attempt counter or physical duration enters this readout certificate.
+
+```sh
+python -m model.native_clock.bit_readout --check
+python -m pytest -q -W error model/native_clock/test_bit_readout.py
+```
+
 The [single-carrier clock comparison](COMPARISON.md) additionally derives
 relative rates and explicit finite uncertainty for all twelve local current
 clocks, without stationary preparation or a federation. Their asymptotic
