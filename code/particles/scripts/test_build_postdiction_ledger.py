@@ -2707,3 +2707,31 @@ def test_retrospective_tilt_likelihood_rejects_changed_custody(tmp_path):
     changed.write_text(json.dumps(parent))
     with pytest.raises(SystemExit, match="custody mismatch"):
         ledger._retrospective_tilt_likelihood_reference(changed)
+
+
+def test_shared_parameter_reference_preserves_interval_and_no_joint_verdict():
+    row = ledger._retrospective_shared_parameter_reference()
+    assert row["tail_weight_interval"] == [3114, 3114]
+    assert row["multiplicity"] == 508985
+    assert row["coverage"]["joint_likelihood"] is None
+    assert row["coverage"]["full_common_physical_construction_established"] is False
+
+
+@pytest.mark.parametrize("mutation", ["claim", "P", "tilt"])
+def test_shared_parameter_ledger_rejects_promotion_or_retuning(monkeypatch, mutation):
+    original = ledger._public_receipt
+
+    def changed(relative, schema):
+        packet, digest = original(relative, schema)
+        if schema == "oph.predictions.shared_forward_parameter.v1":
+            if mutation == "claim":
+                packet["coverage"]["full_common_physical_construction_established"] = True
+            elif mutation == "P":
+                packet["prediction"]["P_interval"] = ["1.6", "1.6"]
+            else:
+                packet["prediction"]["scalar_tilt_interval"] = ["0.974", "0.975"]
+        return packet, digest
+
+    monkeypatch.setattr(ledger, "_public_receipt", changed)
+    with pytest.raises(SystemExit, match="shared-P"):
+        ledger._retrospective_shared_parameter_reference()

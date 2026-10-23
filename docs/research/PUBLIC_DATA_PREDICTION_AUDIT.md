@@ -12,6 +12,21 @@ calibrations across experiments, not a separate fitted law for each case.
 No comparison here establishes agreement with all public observations or
 at every physical scale.
 
+The [same-parameter replay](../../model/predictions/shared_parameter.py)
+uses the inherited structured-running branch's forward numerical enclosure
+`P ≈ 1.630972095858897377` in both its coupling endpoint and the conditional
+map `n_s=1-P/48`, with no recalibration. This gives
+`n_s ≈ 0.9660214146696063`, a shift of `−8.09678112e−8` from the
+alpha-calibrated tilt below. Both enclosure endpoints give exactly the same
+ACT posterior tail weight, `3114/508985`; harmonizing P does not remove that
+tension. The same branch retains the inverse-alpha deficit of `300.388218`
+ppm. The prediction payload is sealed before observations are loaded, and
+the [receipt](../../model/predictions/shared_parameter_results.json) records
+the source and data hashes. This retrospective diagnostic shares a parameter;
+the low-energy transport and primordial/transfer maps remain conditional.
+Its numerical enclosure supplies no physical theory-error budget, and no
+joint likelihood or all-scale agreement verdict is assigned.
+
 The [earlier-state readout test](../../model/interacting_band_extension/README.md#a-held-out-record-law-after-central-weight-calibration)
 fixes one Hamiltonian, temperature and instrument family, infers its remaining
 sector weight from complete records, and predicts a separate model-time

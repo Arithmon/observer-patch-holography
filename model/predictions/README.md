@@ -1207,6 +1207,18 @@ measured ratios.
 
 ## Inherited coupling comparison
 
+[shared_parameter.py](shared_parameter.py) propagates that same inherited
+structured-running branch's forward P enclosure through the conditional
+`n_s=1-P/48` map before reading observations. Its
+[receipt](shared_parameter_results.json) gives `n_s≈0.9660214146696063` and
+replays all 379,175 retained ACT chain rows: both interval endpoints have
+tail weight `3114/508985`, unchanged from the alpha-calibrated branch.
+The coupling endpoint still misses by `300.388218` ppm. This tests one
+shared parameter across those two comparisons without selecting new
+parameters or completing their physical maps. It supplies no joint
+likelihood or physical theory-error bound. Replay with
+`python -m model.predictions.shared_parameter --check`.
+
 [endpoint_audit.py](endpoint_audit.py) compares the pinned
 `thomson_structured_running` output used by the
 [P-dependent observer](../observer/p_response/README.md) with the

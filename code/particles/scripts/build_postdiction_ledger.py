@@ -373,6 +373,7 @@ def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
         "artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit",
         "act_only_conditional_likelihood": _retrospective_tilt_likelihood_reference(),
+        "shared_forward_parameter": _retrospective_shared_parameter_reference(),
         "prediction": receipt["prediction"],
         "analysis": policy,
         "pooled": pooled,
@@ -385,6 +386,40 @@ def _public_receipt(relative: str, schema: str) -> tuple[dict[str, Any], str]:
     if receipt.get("schema") != schema:
         raise SystemExit(f"unexpected public-record receipt: {relative}")
     return receipt, hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _retrospective_shared_parameter_reference() -> dict[str, Any]:
+    relative = "model/predictions/shared_parameter_results.json"
+    receipt, checksum = _public_receipt(relative, "oph.predictions.shared_forward_parameter.v1")
+    coverage = receipt["coverage"]
+    if (coverage["one_forward_P_used_in_both_maps"] is not True
+            or coverage["target_fit_or_recalibration"] is not False
+            or coverage["full_common_physical_construction_established"] is not False
+            or coverage["joint_likelihood"] is not None
+            or coverage["FZ15_verdict"] is not None
+            or coverage["within_stated_uncertainties_across_scales_established"] is not False):
+        raise SystemExit("shared-P diagnostic cannot promote a physical or joint claim")
+    for path, expected in receipt["source_pins"].items():
+        if hashlib.sha256((REPO/path).read_bytes()).hexdigest() != expected:
+            raise SystemExit(f"shared-P source custody mismatch: {path}")
+    cmb = receipt["cosmology"]
+    if hashlib.sha256((REPO/cmb["projection"]).read_bytes()).hexdigest() != cmb["projection_sha256"]:
+        raise SystemExit("shared-P ACT custody mismatch")
+    p_lo, p_hi = map(Fraction, receipt["prediction"]["P_interval"])
+    inherited = json.loads((REPO/"model/observer/p_response/results.json").read_text(encoding="utf-8"))
+    box = inherited["source_branch"]["P_imported_interval"]
+    if (p_lo, p_hi) != (Fraction(box["lo"]), Fraction(box["hi"])):
+        raise SystemExit("shared-P source interval mismatch")
+    ns = list(map(Fraction, receipt["prediction"]["scalar_tilt_interval"]))
+    if ns != [1-p_hi/48, 1-p_lo/48]:
+        raise SystemExit("shared-P affine interval mismatch")
+    return {"artifact_ref": relative, "artifact_sha256": checksum,
+            "projection_scope": "mechanical receipt projection; exact chain replay belongs to model.predictions.shared_parameter",
+            "prediction": receipt["prediction"],
+            "posterior_mass_interval": cmb["forward_posterior_mass_interval"],
+            "tail_weight_interval": cmb["forward_tail_weight_interval"],
+            "multiplicity": cmb["multiplicity"],
+            "coupling": receipt["coupling"], "coverage": coverage}
 
 
 def _retrospective_public_record_references() -> dict[str, Any]:
@@ -7253,6 +7288,17 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "therefore supply no pooled all-scale agreement verdict.")
     add("")
     tilt = ledger["retrospective_tilt_comparison"]
+    shared = tilt["shared_forward_parameter"]
+    add("The [same-P diagnostic](../model/predictions/shared_parameter.py) also uses "
+        "one forward structured-running P enclosure in both the coupling endpoint and "
+        "the conditional scalar-tilt map. It gives n_s "
+        f"`{float(Fraction(shared['prediction']['scalar_tilt_interval'][0])):.12f}`; "
+        "both interval endpoints retain ACT tail weight "
+        f"`{shared['tail_weight_interval'][0]}/{shared['multiplicity']}`. The "
+        "coupling endpoint still misses its declared comparison band. Sharing this "
+        "parameter does not complete either physical map or supply a joint likelihood, "
+        "physical theory-error budget or FZ-15 verdict.")
+    add("")
     pooled = tilt["pooled"]
     add("The [ACT joint-posterior reanalysis](../code/cosmology/tilt_posterior/README.md) "
         "uses the released P-ACT-LB CAMB chains (Planck plus ACT DR6, CMB lensing "
