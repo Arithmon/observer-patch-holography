@@ -12,7 +12,7 @@
     "results.json": "a1ecb5f247dacdf1b5b579bede3a7c9fde84fd54d5775815697bb52563a2ed0c",
     "sweeps.py": "605b36070ba40be1e3dc933361a9065bac83ab2e8bf8978a260fb7e632cced26",
     "test_construction.py": "48fecbfc173c5224debb29780bf9ccb3011796c5c85453191f3de2db58780cea",
-    "test_cut_completion.py": "a779008f363c00159452d033838024912217f75568b7c8d6e01f73b784355222",
+    "test_cut_completion.py": "d581d7d21e96f43dddd22b0450d1b4d508ed758056166f89dcd891934a4302c2",
     "test_entropy_refinement.py": "109b50f695da4e5e3342092bdb02f4d8924643c91346c7355e4af713250c508a",
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb"
   },

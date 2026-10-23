@@ -360,6 +360,9 @@ complement factor. Its modular flow therefore preserves the bare cap
 algebra. In its charge-one block, the native eigenvalue ratio `38/37`
 gives a nonzero modular frequency `log(38/37)` between two cap states.
 The same state has the entropy completion and central split above.
+Transferring probability between these cap states changes the retained
+marginal and has a nonzero entropy derivative `log(38/37)`. The derived
+stationarity therefore applies to its stated constraint fibre.
 Finite herald preparation, finite complement repair and source-compiled
 modular control require their composed error bounds; the ideal equality
 does not identify that modular parameter with laboratory seconds.

@@ -210,6 +210,15 @@ def test_palm_reference_and_conditioned_records_are_different_contracts():
         for row in s.indices:
             assert len({c.completed_palm()[i] for i in row}) == 1
     assert c.completed_palm()[c.cut_sectors()[1].indices[2][0]]/c.completed_palm()[c.cut_sectors()[1].indices[0][0]] == F(38, 37)
+    # Changing the retained cap marginal is outside the maximizing fibre.
+    # It has a nonzero first variation fixed by the same native clock gap.
+    left, right = (c.cut_sectors()[1].indices[k][0] for k in (0, 2))
+    unrestricted_derivative = np.log(float(c.completed_palm()[right]/c.completed_palm()[left]))
+    assert abs(unrestricted_derivative-np.log(38/37)) < 1e-15
+    assert unrestricted_derivative > 0.02
+    variation = np.zeros((66, 66)); variation[left, left] = 1; variation[right, right] = -1
+    assert entropy(completed+1e-5*variation) > entropy(completed)
+    assert np.linalg.norm(apply_with_reference(e/es, variation)) > 0.1
     assert abs(np.abs(np.diag(completed-palm)).sum()/2-8/175) < 1e-15
     # An accepted movement flag from the uniform state breaks conditional
     # expectation completion: records cannot silently be retained/conditioned.
