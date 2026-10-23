@@ -247,10 +247,15 @@ the native constant, slow rank-three and antipodal-even rank-five bands;
 three exact constraints exclude the fast band. Combining opposite directions
 erases the three mixed time/space components. In the `B00=0` representative, the decoder's maximum
 component error is bounded by `(1-sqrt(5)/5)` times the maximum charge error.
-This algebraic certificate replaces an independently supplied spanning frame;
-a common symmetric physical stress/geometry readout, Lorentz lift and
-small-ball attachment remain required. It constructs no such measurements
-from the carrier Gram alone.
+The same decoder accepts native occupation means reconstructed from
+signed local records. Antipodal two-token preparations give compatible means
+at every native-attempt horizon; individual histories need not be compatible.
+For arbitrary initial populations, the fast-band residual is at most
+`(1/4+sqrt(5)/20)*((55-sqrt(5))/60)^n`. Nine means predict the other three
+with this explicit discrepancy budget. Complete resolved/unknown readout
+intervals propagate through the decoder without discarding failures.
+This supplies actual finite source observations. The Lorentz lift, a physical
+stress dictionary and the small-ball attachment remain separate inputs.
 
 The continuing native load process supplies a more restrictive readout.
 For unit port directions `u_p`, continuity makes the decoded sum of currents
@@ -545,7 +550,17 @@ replaces exact stationary preparation by a uniform derivative bound for
 every complete partition of the 66-state binary shell. With unit L1 state
 and normalized-count tangents, 276 or 325 uniform native attempts give joint
 counting-entropy derivatives below `1/100` or `1/1000`, respectively.
-The full quantum bound includes noncommuting trace-zero tangents. The
+The full quantum bound includes noncommuting trace-zero tangents. A
+[uniform screen-family preparation](native_equilibration/entropy_refinement.py)
+also controls the refinement remainder: at `ell=2^-l`, let
+`h>=ceil(log2 d)`, `b=ceil(1/gamma_lower)` and tangent norms be at most `2^a`.
+Then `b*(2h+4+5l+a)` discarded attempts bound the joint counting gradient by
+`(3/32)*ell^5`, the quantum gradient by `ell^5/16`, and either entropy deficit
+by `ell^10/512`. Thus preparation contributes `o(ell^4)` uniformly over all
+complete partitions and those infinitesimal tangents. These conservative
+attempt budgets are certificates, not executed large-screen equilibration
+or rapid mixing. The declared refinement coordinate supplies no physical
+radius or common finite-amplitude variation interval. The
 preparation tape and controller are discarded; the derivative is with respect
 to an admissible variation, not repair count. Record-conditioned branches
 and full 78-state entropy tangents fail the corresponding extension controls.
@@ -584,6 +599,14 @@ any fixed seam weighting, but event recurrence and correlations do not.
 The single-seam control leaves inactive configurations, so an unchanged
 stationary rate cannot alone justify a working clock. Counts, event-conditioned
 intervals and physically calibrated duration remain distinct quantities.
+Its [signed-current readout](native_clock/README.md#local-field-readout-without-an-initial-bit-disclosure)
+also recovers the local bit after the first nonzero incident current and
+retrodicts its earlier value. Before resolution the bit remains unknown.
+For either C or E, unresolved probability after `m` own incident ticks is at
+most `(3/8)^floor(m/16)` for any binary-sector input, including coherent
+inputs with untouched references. Complete resolved/unknown probabilities
+bound occupation means without initial-bit disclosure. Joint access,
+checkpoint coordination and finite-sample confidence remain explicit.
 
 The [first-current coherent readout](native_relational_readout/README.md)
 joins these constructions in the same executed history. The phase observable
@@ -611,7 +634,12 @@ The [native-reference modular readout](native_modular_reference/README.md)
 uses the event-conditioned state `diag(d(x)/600)`, giving frequency `log(5/4)`
 without first choosing a Gibbs reference from a supplied Hamiltonian. Its
 source program implements that modular action on the known orientation
-corner and retains all preparation failures. The experiment defines a
+corner and retains all preparation failures. The full-algebra
+[source word](native_modular_reference/full_flow.py) extends the action to
+all 66 binary states, including the 22 degree-eight configurations omitted
+by that corner, and acts as identity on the 446 padding addresses at completion.
+Its 2042 existing source pulses have a certified full-array error budget;
+padding coherences and untouched references are covered. The experiment defines a
 candidate observer-relative clock through ensemble phase statistics; the
 native waiting process and interacting work evolution are not identified
 with that flow. The [faithful preparation](native_modular_reference/README.md#finite-preparation-of-the-faithful-reference)
@@ -622,8 +650,10 @@ in half-diamond distance for `|s|<=16`. This derives work-state faithfulness
 and the finite modular/KMS hypotheses at `H=-log(sigma_n), beta=1`, with
 failure and reference correlations accounted for. The full-algebra herald differs from
 the fixed-seam probe's rank-20 herald. Exogenous scheduling, discarded
-warm-up records, herald access and coherent controls remain explicit;
-the compiled probe implements only its active-corner flow. These results
+warm-up records, herald access and coherent controls remain explicit.
+Composing the full source word with this preparation controls its difference
+from the actual successful state's modular action, without compiling that
+unknown state's eigenbasis. These results
 select neither the complete repair instrument nor a physical temperature,
 elapsed duration or passive modular dynamics.
 
