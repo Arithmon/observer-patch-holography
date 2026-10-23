@@ -209,7 +209,83 @@
       "native_observer_model_derivation_established": false,
       "physical_primordial_embedding": "additional conditional hypothesis"
     },
-    "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit"
+    "projection_scope": "mechanical receipt projection; independent numerical replay belongs to the linked audit",
+    "shared_forward_parameter": {
+      "artifact_ref": "model/predictions/shared_parameter_results.json",
+      "artifact_sha256": "838db744a5c1f93e70e4183f2cc97ce76825ac75dfe148d3bf3d40b31c21ec9e",
+      "coupling": {
+        "relative_inverse_alpha_deficit_ppm": {
+          "hi": "300.38821794478974925666303086054096843210997209103213999240339190977547171360237",
+          "lo": "300.38821794478974925661084171760405922048537283376347102844688006371889352024759"
+        },
+        "target": {
+          "citation": "https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+          "comparison_half_width_in_standard_uncertainties": "5",
+          "exposure": "retrospective_known_data",
+          "observable": "inverse_fine_structure_constant_thomson_limit",
+          "schema": "oph.predictions.empirical_endpoint.v1",
+          "source": "CODATA 2022 recommended values, NIST wall table",
+          "standard_uncertainty": "0.000000021",
+          "unit": "dimensionless",
+          "value": "137.035999177"
+        },
+        "zero_missing_correction_verdict": "inconsistent_with_declared_comparison_band"
+      },
+      "coverage": {
+        "FZ15_verdict": null,
+        "all_public_datasets_reproduced": false,
+        "full_common_physical_construction_established": false,
+        "interpretation": "The zero-correction coupling endpoint fails its declared band; the CMB result is a conditional posterior position. No joint OPH-wide acceptance or exclusion follows.",
+        "joint_likelihood": null,
+        "observations_used": [
+          "CODATA 2022 inverse fine-structure constant",
+          "ACT DR6 plus Planck, lensing and DESI DR1 conditional scalar-tilt posterior"
+        ],
+        "one_forward_P_used_in_both_maps": true,
+        "target_fit_or_recalibration": false,
+        "unresolved_physical_maps": [
+          "complete low-energy coupling transport",
+          "native curvature perturbation and primordial tilt map",
+          "CMB background and radiation transfer"
+        ],
+        "untested_by_this_comparison": [
+          "particle spectra and holonomy defects",
+          "physical observer clocks",
+          "quantum intervention records",
+          "gravitational wave and local gravity data"
+        ],
+        "within_stated_uncertainties_across_scales_established": false
+      },
+      "multiplicity": 508985,
+      "posterior_mass_interval": [
+        "3114/508985",
+        "3114/508985"
+      ],
+      "prediction": {
+        "P_interval": [
+          "4077430239647243442411284757923099555018653380787989282318372519/2500000000000000000000000000000000000000000000000000000000000000",
+          "16309720958588973769645139038446714349507911573627096569324070023/10000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "coordinate_identification": "conditional identification of the primordial P with the forward coupling P",
+        "inherited_forward_map_scope": "Existence and uniqueness of the closure-map fixed point are certified by interval arithmetic on the stated alpha interval, for the declared numerical map at the stated representation cutoffs (with the edge-sum truncation tails bounded, the certificate also covers the infinite-cutoff edge sums). The declared one-loop RG/matching conventions, the tree-level m_Z closure, the Stage-5 continuation masses, and the exact one-loop kernel are certified as declared, not as physical endpoint theorems. This is not an exact fine-structure derivation; the stage-3 landing verdict of closure row CL-1 is unchanged.",
+        "inverse_alpha_interval": [
+          "6849741758870646864764471294427061429112408129744207991334746023/50000000000000000000000000000000000000000000000000000000000000",
+          "13699483517741293729528943304033257713287424970718681185082633309/100000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "mode": "thomson_structured_running",
+        "numerical_enclosure_is_physical_theory_error": false,
+        "scalar_tilt_interval": [
+          "463690279041411026230354860961553285650492088426372903430675929977/480000000000000000000000000000000000000000000000000000000000000000",
+          "38640856586784252185862905080692300148327115539737336905893875827/40000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "tilt_map": "n_s=1-P/48"
+      },
+      "projection_scope": "mechanical receipt projection; exact chain replay belongs to model.predictions.shared_parameter",
+      "tail_weight_interval": [
+        3114,
+        3114
+      ]
+    }
   },
   "row_class": "compare_only_postdiction_ledger",
   "schema_version": 3,

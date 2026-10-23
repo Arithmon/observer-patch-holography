@@ -83,7 +83,7 @@ calibrated triangular face phases determine all nineteen seam gauge
 coordinates. All forty oriented native route protocols retain their 320
 coin histories. Full forward/reverse phase pairs under one common move/idle
 offset leave two solutions; one independently calibrated face resolves them.
-Using only phase differences, or allowing unknown seam-dependent dynamical
+Using only phase differences, or allowing unknown orientation-even seam dynamical
 phases, leaves `2^19` gauge classes. This replaces a supplied whole connection
 by a precise readout/calibration contract; committed records do not select
 that coherent interface or its phase reference.
