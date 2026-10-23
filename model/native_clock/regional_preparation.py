@@ -42,15 +42,17 @@ from pathlib import Path
 import numpy as np
 from scipy.sparse import coo_matrix, eye
 
-from ..native_equilibration import cut_completion as cut
+from ..native_equilibration import cut_completion as cut, construction as equilibrium
 from ..observer import native, quantum_mixing as mixing
+from ..record_laws import burn_in
 from ..record_laws.burn_in import R_UPPER
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 OUTPUT = HERE / "regional_preparation_results.json"
 CAP = cut.CAP
-SOURCE_PATHS = (
+SOURCE_PATHS = tuple(sorted(set((
+    *cut.SOURCE_PATHS, *equilibrium.SOURCE_PATHS, *burn_in.SOURCE_PATHS,
     "model/native_clock/regional_preparation.py",
     "model/native_equilibration/cut_completion.py",
     "model/native_equilibration/construction.py",
@@ -59,7 +61,7 @@ SOURCE_PATHS = (
     "model/common_source/slow_geometry.py",
     "Lean/Thermodynamics/FiniteConditionalRepair.lean",
     "Lean/Thermodynamics/CapFirstLaw.lean",
-)
+))))
 
 
 def _law(law):
@@ -161,7 +163,8 @@ def preparation(precision_bits=24, cap=CAP):
 def seam_counts(seam, law):
     """Twice the actual unread quantum channel on all 4,356 matrix units."""
     _law(law)
-    if seam not in mixing.seams():
+    if (type(seam) is not tuple or len(seam) != 2
+            or any(type(port) is not int for port in seam) or seam not in mixing.seams()):
         raise ValueError("a native seam is required")
     basis = native.states(binary=True)
     positions = {x: i for i, x in enumerate(basis)}

@@ -1,6 +1,8 @@
 """Local stopping order, quantum contraction, complete herald and clock gaps."""
 from fractions import Fraction as F
+from copy import deepcopy
 import json
+import sys
 
 import numpy as np
 import pytest
@@ -145,3 +147,37 @@ def test_invalid_domains_fail_closed():
 
 def test_retained_receipt_replays_exactly():
     assert json.loads(r.OUTPUT.read_text(encoding="utf-8")) == r.run()
+
+
+@pytest.mark.parametrize("seam", ((False, True), (0., 1.), (F(0), F(1)),
+                                 (np.int64(0), 1), [0, 1], (0,), (0, 1, 2)))
+def test_seam_membership_does_not_admit_noninteger_aliases(seam):
+    with pytest.raises(ValueError, match="native seam"):
+        r.seam_counts(seam, "C")
+
+
+@pytest.mark.parametrize("mutation", ("negative_bound", "wrong_count", "missing_failure", "nonfinite"))
+def test_exact_regional_receipt_cli_rejects_malformed_payloads(tmp_path, monkeypatch, mutation):
+    expected = json.loads(r.OUTPUT.read_text(encoding="utf-8"))
+    wrong = deepcopy(expected)
+    budget = wrong["preparation"]
+    if mutation == "negative_bound":
+        budget["warmup_reference_uniform_halftrace_upper"] = "-1/100"
+    elif mutation == "wrong_count":
+        budget["local_warmup_ticks_including_zeros"] = True
+    elif mutation == "missing_failure":
+        del budget["failure_probability_interval"]
+    else:
+        budget["warmup_reference_uniform_halftrace_upper"] = float("nan")
+    path = tmp_path/"wrong.json"
+    path.write_text(json.dumps(wrong, indent=2, sort_keys=True)+"\n", encoding="utf-8")
+    monkeypatch.setattr(r, "run", lambda: expected)
+    monkeypatch.setattr(sys, "argv", ["regional_preparation", "--check", str(path)])
+    with pytest.raises(SystemExit, match="receipt differs"):
+        r.main()
+
+
+def test_regional_custody_includes_inherited_native_gap_certificate():
+    assert set(r.burn_in.SOURCE_PATHS) <= set(r.SOURCE_PATHS)
+    assert set(r.cut.SOURCE_PATHS) <= set(r.SOURCE_PATHS)
+    assert all((r.ROOT/path).is_file() for path in r.SOURCE_PATHS)

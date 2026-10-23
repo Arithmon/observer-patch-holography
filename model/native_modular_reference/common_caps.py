@@ -57,13 +57,24 @@ OUTPUT = Path(__file__).with_name("common_caps_results.json")
 CAPS = ((0, 1, 5, 7), (0, 1, 2, 8))
 CORE = (0, 1)
 WORD_ERROR_GATE = F(1, 10**9)
+SOURCE_PATHS = tuple(sorted(set((
+    *full.corner.SOURCE_PATHS, *full.corner.report.SOURCE_PATHS,
+    *cut.SOURCE_PATHS, *mixing.SOURCE_PATHS, *preparation.burn_in.SOURCE_PATHS,
+    "model/native_modular_reference/common_caps.py", "model/native_modular_reference/regional.py",
+    "model/native_modular_reference/completed_clock.py", "model/native_modular_reference/preparation.py",
+    "model/native_modular_reference/full_flow.py", "model/common_source/exact_output.py",
+    "model/common_source/output_certificate.py",
+))))
 
 
 def factor_characterization(vertices, weights):
     if type(vertices) is not int or vertices < 3:
         raise ValueError("at least three integer ports required")
     expected = set(combinations(range(vertices), 2))
-    if (type(weights) is not dict or set(weights) != expected
+    if (type(weights) is not dict
+            or any(type(pair) is not tuple or len(pair) != 2
+                   or any(type(port) is not int for port in pair) for pair in weights)
+            or set(weights) != expected
             or any(type(w) not in (int, F) or w <= 0 for w in weights.values())):
         raise ValueError("one exact positive weight per unordered distinct pair required")
     w = lambda i, j: F(weights[tuple(sorted((i, j)))])
@@ -222,19 +233,85 @@ def target_ratios():
     return tuple(values)
 
 
-@lru_cache(maxsize=1)
-def walsh_counts():
-    values = target_ratios()
-    return tuple((v, tuple(sum((-1)**((code & mask).bit_count())
-                              for code, w in enumerate(values) if w == v) for mask in range(512)))
-                 for v in sorted(set(values)) if v != 1)
+def _ratios(values):
+    if (type(values) is not tuple or len(values) != 512
+            or any(type(value) not in (int, F) or value <= 0 for value in values)):
+        raise ValueError("512 original exact positive diagonal ratios in a tuple required")
+    return tuple(map(F, values))
 
 
-def word(s):
+def logarithm_interval(ratio):
+    """Exact power-of-two range reduction, preserving the original local box."""
+    if type(ratio) is not F or ratio <= 0:
+        raise ValueError("an original exact positive Fraction ratio required")
+    return _logarithm_interval(ratio)
+
+
+@lru_cache(maxsize=128)
+def _logarithm_interval(ratio):
+    if F(1, 2) <= ratio <= 2:
+        return previous.logarithm_interval(ratio)
+    exponent = ratio.numerator.bit_length()-ratio.denominator.bit_length()
+    reduced = ratio/F(2)**exponent
+    if reduced < 1:
+        reduced *= 2
+        exponent -= 1
+    lo, hi = previous.logarithm_interval(reduced)
+    log2_lo, log2_hi = previous.logarithm_interval(F(2))
+    shift_lo, shift_hi = sorted((exponent*log2_lo, exponent*log2_hi))
+    return lo+shift_lo, hi+shift_hi
+
+
+def phase_enclosure(s, ratio):
+    """Enclose exp(-i*s*log(ratio)); return exact real, imag and error radius."""
     s = full.parameter(s)
+    lo, hi = logarithm_interval(ratio)
+    if F(1, 2) <= ratio <= 2:
+        return previous.phase_enclosure(s, ratio)
+    theta, halvings = -s*(lo+hi)/2, 0
+    while abs(theta) > 8:
+        theta /= 2
+        halvings += 1
+    real, imag, pr, pi = F(1), F(), F(1), F()
+    for k in range(1, 65):
+        pr, pi = -theta*pi/k, theta*pr/k
+        real += pr
+        imag += pi
+    radius = abs(theta)**65/math.factorial(65)+abs(s)*(hi-lo)/(2*2**halvings)
+    # Dyadic centers keep repeated squaring finite; both component errors
+    # enter the Euclidean error bound by their exact L1 majorant.
+    scale = 1 << 128
+    for step in range(halvings+1):
+        re = F((real*scale).__floor__(), scale)
+        im = F((imag*scale).__floor__(), scale)
+        radius += abs(real-re)+abs(imag-im)
+        real, imag = re, im
+        if step < halvings:
+            real, imag = real*real-imag*imag, 2*real*imag
+            radius *= 2+radius
+    return real, imag, radius
+
+
+@lru_cache(maxsize=8)
+def _walsh_counts(values):
+    groups = {v: tuple(code for code, w in enumerate(values) if w == v)
+              for v in sorted(set(values)) if v != 1}
+    return tuple((v, tuple(sum((-1)**((code & mask).bit_count())
+                              for code in indices) for mask in range(512)))
+                 for v, indices in groups.items())
+
+
+def walsh_counts():
+    return _walsh_counts(target_ratios())
+
+
+def diagonal_word(s, ratios):
+    """Compile the declared positive diagonal reference on every code address."""
+    s = full.parameter(s)
+    ratios = _ratios(ratios)
     angles = [0.]*512
-    for ratio, counts in walsh_counts():
-        lo, hi = previous.logarithm_interval(ratio)
+    for ratio, counts in _walsh_counts(ratios):
+        lo, hi = logarithm_interval(ratio)
         angle = float(-s*(lo+hi)/2)
         angles = [a+angle*n/512 for a, n in zip(angles, counts, strict=True)]
     tape = [full.compiler.pulse("I", angles[0], [0])]
@@ -250,6 +327,10 @@ def word(s):
     return tape
 
 
+def word(s):
+    return diagonal_word(s, target_ratios())
+
+
 @lru_cache(maxsize=4)
 def _executed(s):
     a = full.compiler.execute(word(s), 9)
@@ -261,25 +342,30 @@ def matrix(s):
     return np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512)
 
 
-def certify(s, array=None):
+def certify_diagonal(s, ratios, array):
+    """Bound the original array's operator error, including every padding entry."""
     s = full.parameter(s)
-    if array is None:
-        array = matrix(s)
+    ratios = _ratios(ratios)
     if type(array) is not np.ndarray:
         raise ValueError("an original base array required")
     array = full.exact._array(array, (512, 512))
     scale, phases = 1 << 128, {}
-    for ratio in set(target_ratios()):
-        re, im, error = previous.phase_enclosure(s, ratio)
+    for ratio in set(ratios):
+        re, im, error = phase_enclosure(s, ratio)
         phases[ratio] = (F((re*scale).__floor__(), scale),
                          F((im*scale).__floor__(), scale), error+F(2, scale))
     squared = F()
     for i, row in enumerate(array):
         for j, value in enumerate(row):
             ar, ai = full.exact._component(value)
-            re, im = phases[target_ratios()[i]][:2] if i == j else (F(), F())
+            re, im = phases[ratios[i]][:2] if i == j else (F(), F())
             squared += (ar-re)**2+(ai-im)**2
     return full.exact._sqrt_interval(squared)[1]+full.exact._sqrt_interval(F(512))[1]*max(x[2] for x in phases.values())
+
+
+def certify(s, array=None):
+    s = full.parameter(s)
+    return certify_diagonal(s, target_ratios(), matrix(s) if array is None else array)
 
 
 @lru_cache(maxsize=4)
@@ -295,7 +381,9 @@ def checked_bound(s):
 
 
 def mixer_word(sign, bits, *, compact=False):
-    if type(sign) is not int or sign not in (-1, 1) or bits not in ((0, 8), (0, 3, 6)):
+    if (type(sign) is not int or sign not in (-1, 1)
+            or type(bits) is not tuple or any(type(bit) is not int for bit in bits)
+            or bits not in ((0, 8), (0, 3, 6)) or type(compact) is not bool):
         raise ValueError("declared signed native pair mixer required")
     positions = tuple(range(len(bits))) if compact else bits
     fan = [event for target in positions[1:] for event in full.compiler.cnot(positions[0], target)]
@@ -358,11 +446,8 @@ def run():
     common["complete_flagged_reference_and_source_half_trace_upper"] = (
         common["complete_flagged_reference_half_trace_upper"]
         +preparation.budget(369, F(16))["herald_success_interval"][1]*gate["half_diamond_upper"])
-    paths = ("model/native_modular_reference/common_caps.py", "model/native_modular_reference/regional.py",
-             "model/native_modular_reference/completed_clock.py", "model/native_modular_reference/preparation.py",
-             "model/native_equilibration/cut_completion.py", "model/native_equilibration/construction.py")
     result = {"schema": "oph.native_modular_reference.common_caps.v1", "all_pass": True,
-              "source_sha256": {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},
+              "source_sha256": {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
               "schedule": schedule, "exact_source_audit": exact_audit(),
               "unprotected_connected_control": unprotected_control(),
               "reference_weight_census": {str(w): sigma.count(w) for w in sorted(set(sigma))},
@@ -386,13 +471,46 @@ def run():
     return json.loads(preparation.canonical(result))
 
 
+def _receipt_domains(receipt):
+    """Screen raw numerical diagnostics without changing replay tolerances."""
+    if (type(receipt) is not dict or receipt.get("schema") != "oph.native_modular_reference.common_caps.v1"
+            or type(receipt.get("cap_readouts")) is not list or len(receipt["cap_readouts"]) != 2):
+        raise ValueError("a complete common-cap receipt required")
+    for row in receipt["cap_readouts"]:
+        if type(row) is not dict:
+            raise ValueError("a complete common-cap readout required")
+        probabilities = row.get("complete_bit_probabilities")
+        error = row.get("complete_record_half_l1_diagnostic")
+        raw_bound = row.get("whole_sequence_half_diamond_upper")
+        try:
+            bound = F(raw_bound) if type(raw_bound) is str else None
+        except (ValueError, ZeroDivisionError):
+            bound = None
+        if bound is None or not 0 <= bound < 1 or str(bound) != raw_bound:
+            raise ValueError("a canonical nonnegative complete-word bound required")
+        if (type(probabilities) is not list or len(probabilities) != 2
+                or any(type(p) is not float or not math.isfinite(p)
+                       or not 0 <= p <= 1+2*float(bound) for p in probabilities)
+                or abs(math.fsum(probabilities)-1) > 2*float(bound)):
+            raise ValueError("complete nonnegative bit probabilities within the word mass bound required")
+        if (type(error) is not float or not math.isfinite(error)
+                or not 0 <= error <= float(bound)):
+            raise ValueError("a nonnegative complete-record error within the word bound required")
+
+
+def compare_receipt(expected, actual):
+    full.corner.compare_receipt(expected, actual)
+    _receipt_domains(expected)
+    _receipt_domains(actual)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--write", type=Path); group.add_argument("--check", type=Path)
     args = parser.parse_args(); result = run()
     if args.check:
-        full.corner.compare_receipt(strict_json.load(args.check), result)
+        compare_receipt(strict_json.load(args.check), result)
         print("Common native cap clocks and exact compatibility boundary verified.")
     elif args.write:
         with args.write.open("x", encoding="utf-8", newline="\n") as stream:
