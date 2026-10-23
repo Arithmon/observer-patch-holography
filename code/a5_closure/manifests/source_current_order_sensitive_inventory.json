@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 898,
+    "file_count": 900,
     "files": [
       {
         "byte_count": 42558,
@@ -1983,9 +1983,9 @@
         "sha256": "sha256:01a0e5a867febc03fa3e84ee6831734b13be19596375e8b13d26fcb7cf78889e"
       },
       {
-        "byte_count": 36786,
+        "byte_count": 38325,
         "path": "code/a5_closure/README.md",
-        "sha256": "sha256:675e5f975091c28bf0aea90911076d476a6d5737cf22c9a363bc9e1dea360552"
+        "sha256": "sha256:ace07544fc389dcee41fb1626717029e0dbb119ffc1f2bf28c00413d74cbed88"
       },
       {
         "byte_count": 37263,
@@ -2373,6 +2373,11 @@
         "sha256": "sha256:11ba7d832d9d203f61752fa8f691f56e36c5eb3058f71752a24a24025c532e4f"
       },
       {
+        "byte_count": 15072,
+        "path": "code/a5_closure/native_defect_stability_gate.py",
+        "sha256": "sha256:e153c560aa7026c561e8a76129a309b12758c3683c63d070be3b715afa83ccbe"
+      },
+      {
         "byte_count": 4174,
         "path": "code/a5_closure/negative_controls/coset_carrier_negative_controls.json",
         "sha256": "sha256:e0659b656d80a37dadcf1c0602bf2cbb09ac045726dc122f338018a0bb4e37f6"
@@ -2721,6 +2726,11 @@
         "byte_count": 15289,
         "path": "code/a5_closure/tests/test_multiplicity_window_certificate.py",
         "sha256": "sha256:7130dc8178d2630ba22a11b3e07ce809d008946531508501d907d547595e4df6"
+      },
+      {
+        "byte_count": 5799,
+        "path": "code/a5_closure/tests/test_native_defect_stability_gate.py",
+        "sha256": "sha256:6225a69ec0296798247b7db78cd9589522dd87d4e3370d69c65e5db8c5f8d26b"
       },
       {
         "byte_count": 22573,
@@ -4688,7 +4698,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:7d517d6f56859ab30a77b9be43bcf4d5b947c8a47c81c77f76c630b98a3c052e",
+    "files_sha256": "sha256:24d070ede88d50fd64bf87228cd0293c0adcb7ef9784cafd5d3d8ca944d61cbd",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7597,7 +7607,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:c63918c41d097eee05bf9c5f82d8f8a0ec855342a698d485001c3531a2c06acb",
+  "inventory_sha256": "sha256:b57829e960101fe48c84907c5798d149eee00496899923197e950f7ec41a4b6b",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
