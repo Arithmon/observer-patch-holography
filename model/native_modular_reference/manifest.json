@@ -1,7 +1,7 @@
 {
   "description": "Native Palm reference with finite faithful preparation, modular-channel error bounds, active-corner source-map bounds and retained observer readouts.",
   "files": {
-    "README.md": "8d96eebdea6207d418394c6781aea0495d39bc72f66212663de3c3d5f466913e",
+    "README.md": "aa4bf682142784cd72d45cb58a54fc6f3057add8b0c833b34f5344d82475551c",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",

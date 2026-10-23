@@ -33,7 +33,7 @@ mean response, a spectrum or a clock rate.
 | [Quantum locality and refinement](native_action/README.md) | Compatible local inputs on a fixed bounded-degree graph give a quasilocal process in auxiliary per-edge Poisson parameter. Actual screen pairs have finite comparison bounds. | Establish the relevant extending family and quantitative limit of joint observations, including the claimed relativistic propagation, states and interactions. More carriers alone do not establish this. |
 | [Visible clock reconstruction](relative_observer_geometry/README.md#incident-clocks-on-the-simultaneous-density-continuum-scale) | Pair means and coincidences reconstruct positive IID seam weights. Normalized incident clocks sample the continuum field paths, including [predictable port choices](relative_observer_geometry/README.md#predictable-port-access-on-the-density-continuum-scale) with inverse-degree tick weights. Fixed bounded seam incidences separately give finite-vector Gaussian jitter with covariance `min(t,u)*shared_seams`, asymptotically independent of density vectors. | The IID uniform schedule and read access are explicit. Predictable port choices precede the fresh seam draw; their path theorem assumes no clock–field independence. Jitter independence applies only to the fixed-event-set contract. A local clock grants no remote readback, modular identity or physical duration. |
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock. Public optical data reject direct distinct-region attachments under bounded-error/no-extra-filter hypotheses; a separate test covers a declared compact filter and independent replicas. | The published servo time constant establishes neither compact support nor independent native sources. Allan moment targets give no confidence/resource or refinement bound. Atomic identification is unproved; aliases define one clock. |
-| [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. | Warm-up records and controller memory are inaccessible to the common complete continuation; full-carrier domain failures must be retained. This prepares neither coherent probes nor their apparatus and selects no record law. |
+| [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. Binary warm-up also controls all normalized entropy tangents; a global movement herald prepares a faithful modular reference with a finite flow-error bound. | Warm-up records and controller memory are inaccessible to the continuation; preparation failures remain outputs. Conserved sector, exogenous seam coverage and herald access are explicit. Neither coherent probes, physical entropy/area identification nor passive modular evolution follow from these preparations. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
 | [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | The same certified forward P is propagated into the conditional coupling endpoint and primordial tilt without fitting either target. The endpoint misses its comparison band; the ACT posterior position remains `3114/508985` at both tilt interval endpoints. The separate fixed-background ACT likelihood uses overlapping observations. | Complete coupling transport, primordial identification and CMB transfer remain conditional; the numerical enclosure is not a physical theory-error budget. No current bridge equates primordial tilt with a native finite-carrier readout or establishes agreement across all public datasets. |
 
@@ -238,6 +238,19 @@ extending its observation and repair laws to this continuous action is a
 separate dynamical obligation. A chosen spherical architecture supports
 these geometric constructions without proving Lorentz invariance of its
 native histories, a radial field law or physical spacetime.
+
+The [native null-tensor decoder](common_source/SLOW_GEOMETRY.md#the-native-directions-suffice-for-finite-null-tensor-tomography)
+discharges the finite directional-completeness requirement on a declared
+Lorentz lift of those same twelve ports. Its exact design has rank nine
+and kernel precisely the metric multiple. Compatible tensor charges occupy
+the native constant, slow rank-three and antipodal-even rank-five bands;
+three exact constraints exclude the fast band. Combining opposite directions
+erases the three mixed time/space components. In the `B00=0` representative, the decoder's maximum
+component error is bounded by `(1-sqrt(5)/5)` times the maximum charge error.
+This algebraic certificate replaces an independently supplied spanning frame;
+a common symmetric physical stress/geometry readout, Lorentz lift and
+small-ball attachment remain required. It constructs no such measurements
+from the carrier Gram alone.
 
 The continuing native load process supplies a more restrictive readout.
 For unit port directions `u_p`, continuity makes the decoded sum of currents
@@ -527,14 +540,24 @@ unital repair cannot increase relative entropy to `I/d`, and `I/d` is the
 entropy maximum with zero first variation for trace-zero state changes.
 The [finite counting identity](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#joint-counting-stationarity-and-its-geometric-boundary)
 adds joint stationarity at `p=d/M` for fixed `M=sum d` in its positive-real
-count relaxation. It does not identify this constraint with physical volume
-or the count logarithm with area. The [native return reference](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
+count relaxation. Its [finite native preparation](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#stationarity-after-finite-native-preparation)
+replaces exact stationary preparation by a uniform derivative bound for
+every complete partition of the 66-state binary shell. With unit L1 state
+and normalized-count tangents, 276 or 325 uniform native attempts give joint
+counting-entropy derivatives below `1/100` or `1/1000`, respectively.
+The full quantum bound includes noncommuting trace-zero tangents. The
+preparation tape and controller are discarded; the derivative is with respect
+to an admissible variation, not repair count. Record-conditioned branches
+and full 78-state entropy tangents fail the corresponding extension controls.
+Neither fixed microscopic count nor its analytic variations are identified
+with physical volume, area or stress. The [native return reference](../code/geometry/ENTROPY_FIRST_LAW_AUDIT.md#native-reference-entropy-and-region-boundaries)
 has entropy deficit at most `2025/(64V)` for `V` ports, uniformly in the cap.
 Its regional mutual information grows at most logarithmically in `V`, so
 it cannot scale with crossing seams of a refining base-face patch. This
 concerns a region boundary on the two-dimensional source, not whole-screen
-area. The tracial state has trivial modular flow; preparation selects no
-nontrivial clock reference or geometric boost.
+area. The unread tracial limit has trivial modular flow. Preparing the
+nontrivial Palm reference additionally uses the herald below; neither
+entropy preparation constructs a geometric boost.
 
 ## Observer-relative clocks and effective descriptions
 
@@ -590,9 +613,19 @@ without first choosing a Gibbs reference from a supplied Hamiltonian. Its
 source program implements that modular action on the known orientation
 corner and retains all preparation failures. The experiment defines a
 candidate observer-relative clock through ensemble phase statistics; the
-native waiting process and interacting work evolution have not been shown
-to follow that flow. Neither this reference choice nor the modular
-automorphism theorem alone selects the complete repair instrument.
+native waiting process and interacting work evolution are not identified
+with that flow. The [faithful preparation](native_modular_reference/README.md#finite-preparation-of-the-faithful-reference)
+uses 369 binary warm-up attempts and one global random-seam movement herald.
+Its successful work state has minimum eigenvalue above `0.01333244`; its
+modular channel differs from the ideal Palm flow by less than `0.000971`
+in half-diamond distance for `|s|<=16`. This derives work-state faithfulness
+and the finite modular/KMS hypotheses at `H=-log(sigma_n), beta=1`, with
+failure and reference correlations accounted for. The full-algebra herald differs from
+the fixed-seam probe's rank-20 herald. Exogenous scheduling, discarded
+warm-up records, herald access and coherent controls remain explicit;
+the compiled probe implements only its active-corner flow. These results
+select neither the complete repair instrument nor a physical temperature,
+elapsed duration or passive modular dynamics.
 
 [Event circulation](event_circulation/README.md) expresses one-history cycle
 statistics in recorded movement events. Its Palm reference, exact triangular

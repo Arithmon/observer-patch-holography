@@ -172,7 +172,7 @@ Each such state admits the existing finite inner-flow theorem and
 [`gibbsState_kms`](../../Lean/QFT/StructuralInheritance.lean) at
 `H=-log(sigma_n), beta=1`; its Gibbs Heisenberg parameter is `-s` in the
 modular convention used here. These are finite algebraic conclusions.
-The earlier compiled program still implements the Palm flow only on its
+The compiled program implements the Palm flow only on its
 declared active corner. A controller for the unknown `sigma_n` is not
 derived, passive repair is not identified with modular evolution, and
 neither the attempt count nor `s` is calibrated to physical seconds.

@@ -164,7 +164,7 @@ are analytic variations, not native operations changing integer counts.
 
 For the full quantum source density on this fixed 66-dimensional shell,
 `||rho_n-I/66||_op<=epsilon_n`: a traceless Hermitian difference has positive
-and negative parts each of trace `epsilon_n`. Thus `66*epsilon_n<1` gives
+and negative parts each of trace at most `epsilon_n`. Thus `66*epsilon_n<1` gives
 a faithful state. The same range argument applied to `log(rho_n)` gives
 the complete trace-one tangent bound
 
