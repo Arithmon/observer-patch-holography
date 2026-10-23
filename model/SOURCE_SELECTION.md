@@ -35,7 +35,7 @@ mean response, a spectrum or a clock rate.
 | [Laboratory-clock attachment](laboratory_clock/README.md) | Events define an internal clock. Public optical data reject direct distinct-region attachments under bounded-error/no-extra-filter hypotheses; a separate test covers a declared compact filter and independent replicas. | The published servo time constant establishes neither compact support nor independent native sources. Allan moment targets give no confidence/resource or refinement bound. Atomic identification is unproved; aliases define one clock. |
 | [Native background preparation](record_laws/README.md#preparation-by-finite-native-warm-up) | Every admissible current-record law has a reference-safe warm-up bound: under uniform scheduling, 221 binary or 318 full-carrier attempts suffice for half trace error at most `1e-3`. | Warm-up records and controller memory are inaccessible to the common complete continuation; full-carrier domain failures must be retained. This prepares neither coherent probes nor their apparatus and selects no record law. |
 | [Native attempts and source pulse costs](laboratory_clock/resource_clock.py) | Refining the ideal native history by an admitted attempt counter gives a joint operation-count law; a shared affine timing hypothesis supplies conditional duration bounds. | The counter is additional read access. Raw compiled-array histories and coarse-current calibration bounds are not transferred to this finer output. Physical timestamps and service-duration assumptions need independent evidence. |
-| [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | Actual CMB posterior samples and a fixed-background ACT likelihood slice constrain a separately declared primordial-tilt branch. They use overlapping observations; other comparisons retain their own physical assumptions. | Derive that cosmological observable, or another measurable relation, from the selected observer process with its uncertainty and remaining freedom. No current bridge equates primordial tilt with a native finite-carrier readout. |
+| [Public observations](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) | The same certified forward P is propagated into the conditional coupling endpoint and primordial tilt without fitting either target. The endpoint still misses its comparison band; the ACT posterior position remains `3114/508985` at both tilt interval endpoints. The separate fixed-background ACT likelihood uses overlapping observations. | Complete coupling transport, primordial identification and CMB transfer remain conditional; the numerical enclosure is not a physical theory-error budget. No current bridge equates primordial tilt with a native finite-carrier readout or establishes agreement across all public datasets. |
 
 The [inverse clock test](predictions/README.md) constrains two descriptions
 of the same three-mode transfer: four consecutive nonzero-lag movement-bit
@@ -77,9 +77,16 @@ be annihilated by local link updates when those are allowed. Such updates and
 the punctures are not part of native repair. Trivial first homology does not
 exclude curvature or bundle sectors; a physical defect also needs a sourced
 connection, dynamical core protection and a measurable stable excitation.
-The finite seam-holonomy and interference theorems classify supplied link
-labels and their path ratios; their hypotheses do not choose one of the
-record-equivalent native phase completions.
+The [complete face reconstruction](observer/holonomy_reconstruction.py)
+instantiates the finite seam-holonomy and interference theorems: any nineteen
+calibrated triangular face phases determine all nineteen seam gauge
+coordinates. All forty oriented native route protocols retain their 320
+coin histories. Full forward/reverse phase pairs under one common move/idle
+offset leave two solutions; one independently calibrated face resolves them.
+Using only phase differences, or allowing unknown seam-dependent dynamical
+phases, leaves `2^19` gauge classes. This replaces a supplied whole connection
+by a precise readout/calibration contract; committed records do not select
+that coherent interface or its phase reference.
 
 A [relational charged-coherence test](native_effective_fields/README.md)
 can distinguish the admitted C/E laws
@@ -96,7 +103,15 @@ mass can be tested.
 
 The [repair-response identity](predictions/README.md#native-repair-response-from-passive-clock-and-field-records)
 predicts the complete response to a disclosed-bit-triggered native repair
-from passive records, with no separate response fit. Its discounted field
+from passive records, with no separate response fit. For its complete marked
+binary readout, one unconditional fair repair of the pulsed seam prepares
+the required endpoint-swap symmetry exactly; global stationarity is
+unnecessary. This costs one local incident tick at each endpoint and requires
+discarding the preparation record. For an unbalanced preparation, the exact
+weighted-forecast L1 error is half its total-variation distance from its
+endpoint swap; common stopped continuations contract this error, including
+timeouts. Numerical equilibrium forecasts retain their separate finite
+warm-up budget and access assumptions. Its discounted field
 response uses the same native spatial resolvent. A controlled execution
 bias, with the endpoint rule unchanged, also gives continuum mean derivative
 `2(I-exp(-tau*A))f`. Uniform likelihood and timeout bounds keep a nonzero
