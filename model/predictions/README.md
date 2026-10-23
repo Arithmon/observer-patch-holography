@@ -1213,7 +1213,7 @@ structured-running branch's forward P enclosure through the conditional
 [receipt](shared_parameter_results.json) gives `n_s≈0.9660214146696063` and
 replays all 379,175 retained ACT chain rows: both interval endpoints have
 tail weight `3114/508985`, unchanged from the alpha-calibrated branch.
-The coupling endpoint still misses by `300.388218` ppm. This tests one
+The coupling endpoint misses by `300.388218` ppm. This tests one
 shared parameter across those two comparisons without selecting new
 parameters or completing their physical maps. It supplies no joint
 likelihood or physical theory-error bound. Replay with

@@ -7298,7 +7298,7 @@ def _render_md(ledger: dict[str, Any]) -> str:
         f"`{float(Fraction(shared['prediction']['scalar_tilt_interval'][0])):.12f}`; "
         "the enclosing ACT posterior mass interval is "
         f"`{tail_display}/{shared['multiplicity']}`. The "
-        "coupling endpoint still misses its declared comparison band. Sharing this "
+        "coupling endpoint misses its declared comparison band. Sharing this "
         "parameter does not complete either physical map or supply a joint likelihood, "
         "physical theory-error budget or FZ-15 verdict.")
     add("")
