@@ -291,8 +291,9 @@ The [cut-repair construction](../../model/native_equilibration/cut_completion.py
 derives a direct-sum completion from the native C and E instruments. On the
 binary twelve-port total-two carrier, fix cap `R=(0,1,5,7)` and attempt only
 the fifteen native seams within its connected eight-port complement `B`.
-Attempts use independent uniform seams and fair coins; discard every
-preparation record. This controlled cut and schedule are explicit inputs.
+Attempts use independent uniform seams and fair coins; predictions here use
+the unread source marginal. The complete-tape accounting below shows that
+physical erasure is unnecessary. This controlled cut and schedule are explicit inputs.
 
 Write `j` for the cap occupation. The source basis factorizes as
 `direct_sum_j H_R,j tensor H_B,2-j`, with dimensions `(a_j,b_j)` equal to
@@ -309,7 +310,7 @@ applies inside `B`: zero outside difference mixes each number sector, while
 every nonzero outside difference has a positive killing rate. Constant
 nonzero differences would require a fully occupied complement, which the
 total-two source excludes. The resulting gap is at least `1/240` per
-discarded native attempt. At 4,080 attempts the complete state is within
+unread native attempt. At 4,080 attempts the complete state is within
 `33/131072` in half trace norm of `E_R(rho)`, uniformly over arbitrary
 untouched references. Any common subsequent complete instrument inherits
 this bound. Actual native Kraus enumeration checks all 4,356 matrix units,
@@ -381,6 +382,77 @@ stationarity therefore applies to its stated constraint fibre.
 Finite herald preparation, finite complement repair and source-compiled
 modular control require their composed error bounds; the ideal equality
 does not identify that modular parameter with laboratory seconds.
+
+### Coherent thermodynamics with the complete repair tape
+
+The [complete-record construction](../../model/native_equilibration/record_thermodynamics.py)
+uses the same cut and completed Palm reference. Each C-current or
+E-disagreement branch is `K_a=V_a/sqrt(30)`, where `V_a` is an actual native
+partial permutation. Every adjoint `V_a*` is another branch of the same
+protocol, with equal weight, and every branch commutes with `sigma_bar`.
+Exact enumeration covers all 4,356 matrix units, all 60 C branches and all
+90 E branches, including attempts that do not move the carrier. Consequently
+the unread channel is symmetric in both quantum inner products
+`Tr(sigma_bar X*Y)` and `Tr(sigma_bar^(1/2) X* sigma_bar^(1/2) Y)`:
+**GNS and KMS detailed balance hold for the actual source instrument**.
+Each fixed complementary-seam channel has the same property. Ordered
+products of different channels preserve the reference but need not be
+self-adjoint; iid powers retain detailed balance.
+
+For any input `rho_SR` with an arbitrary untouched reference `R`, put
+`tau=sigma_bar tensor rho_R`, restricted to the support of `rho_R`.
+The channel preserves `tau`, `-log(sigma_bar)`, and the cap's bulk and
+central modular terms separately. Hence all finite unread compositions obey
+
+```text
+Delta S_SR = D(rho_SR || tau)-D(rho_n,SR || tau) >= 0.
+```
+
+This is the coherent zero-modular-heat Clausius identity, including source–
+reference correlations. The inequality uses quantum data processing
+([Watrous, Theorem 5.35](https://cs.uwaterloo.ca/~watrous/TQI/TQI.5.pdf));
+it is not a claim that the population-only
+[`CapFirstLaw`](../../Lean/Thermodynamics/CapFirstLaw.lean) declaration already
+formalizes arbitrary density matrices. The exact population kernel also
+supplies the stationary and detailed-balance hypotheses of
+[`FluctuationTheorems`](../../Lean/Thermodynamics/FluctuationTheorems.lean),
+including its KL-descent and forward/reverse identities.
+
+Keep every seam, coin and record in a classical tape `J`. For each fixed
+choice word `c`, the record words partition the **initial** 66 source states;
+their partial isometries recover each input from its endpoint and complete
+tape. Write `D_c` for pinching into that partition and
+`Q=average_c[S(D_c(rho_SR))-S(rho_SR)]`. Pinching fixes `tau`; it has at most
+66 projectors, so `0 <= Q <= log(66)` for every reference dimension and
+number `n` of attempts. If `Omega_rho` and `Omega_tau` are the complete
+classical–quantum history states, their block spectra give, exactly in nats,
+
+```text
+S(Omega_rho) = n log(30)+S(rho_SR)+Q,
+D(Omega_rho || Omega_tau) = D(rho_SR || tau)-Q,
+0 <= Delta S_SR-Q <= n log(30),
+S(J|SR) = n log(30)+Q-Delta S_SR.
+```
+
+The two relative-entropy losses are `Q` from quantum record dephasing and
+`Delta S_SR-Q` from tracing the classical tape. For source-diagonal input
+`Q=0`: joint distinguishability is conserved, and the classical identity
+is `H(X_n,J)=H(X_0)+n log(30)`. The joint entropy includes the independent
+seam/coin randomness. Exhaustive two-attempt controls cover all 59,400
+input/choice pairs for each law; coherent controls check the full tape,
+correlated references and two different consecutive seams. Every finite
+length follows by composing partial injections and their initial-domain
+partitions. The two-attempt enumeration is a control of that proof.
+
+A physically retained tape therefore gives the same unread marginal and
+finite preparation bound whenever future operations ignore it. There is
+no need to assume a memory-erasure mechanism. Accessing the tape or using
+record-dependent feedback requires its joint state; a selected movement
+record at equilibrium can lower the conditional source entropy. Using the
+uncompleted Palm reference, or repairing across the selected cap boundary,
+can also violate the reference-preserving hypotheses. Actual memory-reset
+energy, nonzero physical heat, temperature, gravitational area and entropy
+stationarity under metric variations are not identified by these identities.
 
 ## A complete generator test and its witness
 
