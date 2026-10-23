@@ -100,7 +100,7 @@
     "oscillator_readouts": {
       "anharmonic_transfer": {
         "artifact_ref": "model/anharmonic_transfer/results.json",
-        "artifact_sha256": "e464f39dcfd9a25fee4f82d821b970689fb32122751486ad25e1302be8c1e36d",
+        "artifact_sha256": "063b4c778b066a361a169a1de888f4588fe9f5b35b5cf677af6e6b1ebedd56c3",
         "observations": 125,
         "position_estimator_rmse": 0.28764278683646793
       },

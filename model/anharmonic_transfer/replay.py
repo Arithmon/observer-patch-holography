@@ -78,7 +78,7 @@ def _validate_derivations(receipt):
     # Both receipts are already scored. Reopening the fixed validation table
     # here cannot feed observations into their sealed prediction producers.
     derived = evaluate(prediction)
-    for key in ('scores', 'numerical_refinements'):
+    for key in ('scores', 'numerical_refinements', 'certified_unrestricted_apparatus_comparison'):
         _exact(derived[key], receipt.get(key), key)
 
 
