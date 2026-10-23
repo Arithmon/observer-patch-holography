@@ -1,6 +1,8 @@
 """Bind the existing exact response carrier to executed native/quantum records."""
 from copy import deepcopy
 from fractions import Fraction as F
+from collections import Counter
+from itertools import product
 import math
 import unittest
 from unittest.mock import patch
@@ -251,6 +253,89 @@ class NativeNullTomographyTests(unittest.TestCase):
         for readings in invalid:
             with self.subTest(readings=readings), self.assertRaises(ValueError):
                 tomography.decode_null_charges(readings)
+
+
+class NativeRecordTensorTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.result = tomography.native_record_tensor_certificate()
+        cls.initial = tuple(int(i in (0, 3)) for i in range(12))
+
+    def test_actual_record_kernel_and_exact_withheld_predictions(self):
+        self.assertEqual(self.result['native_local_record_branches_checked'], 3960)
+        self.assertEqual(self.result['binary_preparations_exactly_compatible'], 6)
+        self.assertEqual(self.result['fast_decay_per_uniform_attempt_Qsqrt5'], ['11/12', '-1/60'])
+        self.assertEqual(self.result['withheld_error_amplification_Qsqrt5'], ['2', '2'])
+        self.assertTrue(self.result['rational_exact_compatibility_requires_antipodal_even_mean'])
+        self.assertFalse(self.result['scope']['physical_stress_tensor_or_lorentz_lift_derived'])
+        for row in self.result['examples']:
+            errors = row['withheld_errors_Qsqrt5']
+            self.assertEqual(all(x == ['0', '0'] for x in errors), row['preparation'] == 'antipodal')
+            self.assertEqual(sum(F(p) for p in row['endpoint_readout_law']), 1)
+            if row['native_attempts'] == 64:
+                bound = tuple(F(v) for v in row['uniform_residual_bound_Qsqrt5'])
+                self.assertLess(g.source().q5_sign(g.source().q5_sub(bound, g.source().q5(F(1, 10000)))), 0)
+
+    def test_complete_two_event_records_reproduce_joint_endpoint_law(self):
+        menu = tuple((seam, coin) for seam in g.source().seams() for coin in (0, 1))
+        counts, histories = Counter(), set()
+        for word in product(menu, repeat=2):
+            record = tomography.execute_record_word(self.initial, word)
+            histories.add(record['events'])
+            # Independent endpoint oracle: no reuse of the signed-current formula.
+            endpoint = list(self.initial)
+            for seam, coin in word:
+                a, b = seam
+                low, high = sum(endpoint[i] for i in seam)//2, (sum(endpoint[i] for i in seam)+1)//2
+                endpoint[a], endpoint[b] = (low, high) if coin == 0 else (high, low)
+            self.assertEqual(record['readings'], tuple(endpoint))
+            for i, tape in enumerate(record['local_records']):
+                self.assertTrue(all(i in seam for seam, _ in tape))
+                self.assertEqual(tomography.local_occupancy(record['initial_bits'][i], i, tape), endpoint[i])
+            counts[record['readings']] += 1
+        self.assertEqual(len(histories), 3600)
+        law, _ = tomography.native_record_law(self.initial, 2)
+        self.assertEqual(law, tuple(F(counts[state], 3600) for state in native.states(binary=True)))
+
+    def test_mean_compatibility_does_not_assert_pathwise_compatibility(self):
+        c = g.source()
+        law, mean = tomography.native_record_law(self.initial, 1)
+        tomography.decode_null_charges([c.q5(x) for x in mean])
+        incompatible_mass = F(0)
+        for state, p in zip(native.states(binary=True), law, strict=True):
+            try:
+                tomography.decode_null_charges([c.q5(x) for x in state])
+            except ValueError:
+                incompatible_mass += p
+        self.assertEqual(incompatible_mass, F(1, 6))
+
+    def test_nine_port_fit_cannot_see_a_changed_withheld_reading(self):
+        c = g.source()
+        _, mean = tomography.native_record_law(self.initial, 16)
+        readings = [c.q5(x) for x in mean]
+        prediction = tomography.withheld_charge_predictions([readings[i] for i in tomography.FIT_PORTS])
+        self.assertEqual(prediction, tuple(readings[i] for i in tomography.WITHHELD_PORTS))
+        readings[3] = c.q5_add(readings[3], c.q5(F(1, 1000)))
+        self.assertEqual(prediction, tomography.withheld_charge_predictions([readings[i] for i in tomography.FIT_PORTS]))
+        self.assertNotEqual(prediction[0], readings[3])
+        with self.assertRaises(ValueError):
+            tomography.decode_null_charges(readings)
+
+    def test_local_readout_contract_rejects_impossible_or_remote_records(self):
+        for initial, port, records in ((None, 0, []), (True, 0, []), (0, True, []),
+                                       (0, 0, [((0, 1), 1)]), (1, 0, [((0, 1), -1)]),
+                                       (0, 0, [((7, 11), 0)]), (0, 0, [((0, 1), False)])):
+            with self.subTest(initial=initial, port=port, records=records), self.assertRaises(ValueError):
+                tomography.local_occupancy(initial, port, records)
+        self.assertEqual(tomography.local_occupancy(1, 0, [((0, 1), 1)]),
+                         tomography.local_occupancy(1, 0, [((1, 0), -1)]))
+
+    def test_sampling_bound_is_for_independent_complete_trials(self):
+        self.assertEqual(tomography.independent_history_sampling_bound(3000000, F(1, 100)), F(1, 100))
+        self.assertEqual(tomography.independent_history_sampling_bound(1, F(1, 100)), 1)
+        for n, error in ((0, 1), (True, 1), (2, F(0)), (2, .01)):
+            with self.assertRaises(ValueError):
+                tomography.independent_history_sampling_bound(n, error)
 
 
 if __name__ == '__main__':

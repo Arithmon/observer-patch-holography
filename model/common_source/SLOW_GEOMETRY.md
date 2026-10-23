@@ -143,6 +143,61 @@ or establish small-ball geometry, entropy stationarity, Ward/Bianchi laws
 or the physical Einstein equation. The clock and charge dictionary remain
 the physical composition requirements.
 
+## Tensor charges from actual local records
+
+`native_record_tensor_certificate()` attaches the same decoder to measured
+occupancy bits. Each port receives its initial bit and retains its own
+incident signed-current records. It reconstructs every later bit by
+`n_i=n_i(0)+sum j*(1_{i=b}-1_{i=a})`; no later hidden load is an input.
+All 3,960 branches of the 66-state binary sector verify this readout against
+the actual primitive. A complete two-event test retains all 3,600
+seam/coin/current histories and reproduces their joint endpoint law.
+Initial-bit disclosure, complete local tapes and collection at the common
+attempt horizon are declared access conditions.
+
+For the uniform all-seam, fair-coin protocol the twelve ensemble means obey
+`m_n=(I-L/60)^n m_0`. This source-derived mean law gives the exact decomposition
+
+\[
+ m_n=D\widehat B_n+r_n,\qquad
+ r_n=\left(\frac{55-\sqrt5}{60}\right)^n P_{\rm fast}m_0,
+ \qquad
+ \|r_n\|_\infty\le
+ \left(\frac14+\frac{\sqrt5}{20}\right)
+ \left(\frac{55-\sqrt5}{60}\right)^n.
+\]
+
+Here `D` is the same null-charge design, `Bhat` its canonical tensor
+estimate and `P_fast` the native fast-band projector. The sharp initial
+bound holds for every binary preparation and every mixture, and is below
+`1e-4` after 64 attempts. Exact decoding continues to reject nonzero
+residuals. The approximation has an explicit source error; it does not
+replace incompatible data by an asserted exact tensor.
+
+A disclosed preparation occupying one antipodal pair gives nonconstant
+compatible means at every horizon. The nine ports `0,1,2,4,5,6,8,9,10`
+then predict the three withheld means `3,7,11` exactly, with an exact inverse
+and no fit to those readings. An adjacent-pair preparation fails this test
+at every finite tested horizon, with the residual decay above. For rational
+preparations, conjugating `sqrt(5)` exchanges the slow and fast projectors;
+zero fast component therefore forces an antipodal-even mean. The six
+antipodal binary preparations are exactly the compatible deterministic
+ones. Selecting such a preparation is an experimental input, not a unique
+state selected by repair. The mean statement is also distinct from a
+history statement: after one antipodal trial, the mean passes but individual
+readings fail exact compatibility with probability `1/6`.
+
+For `N` independent complete trials, binary-readout variance and a union
+bound give probability at most `min(1,3/(N*eta²))` that any sampled mean
+misses by `eta`; correlations between ports are allowed. Serial samples
+from one trajectory do not meet that independence contract. On the
+complementary event, canonical tensor error is at most
+`(1-sqrt(5)/5)*eta`, and compatibility residual is at most the source bound
+above plus `phi*eta`. The withheld-direction errors are bounded by
+`(2+2*sqrt(5))*(source_bound+eta)`. These are finite occupancy statistics on the declared
+Lorentz lift. No stress-energy normalization, Ward identity, physical
+boost, elapsed clock duration or continuum field is inferred.
+
 ## What this establishes about space and momentum
 
 This is a concrete common-carrier attachment of native records to an existing
