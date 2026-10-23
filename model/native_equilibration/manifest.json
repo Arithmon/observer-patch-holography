@@ -5,13 +5,17 @@
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
+    "entropy_refinement.py": "63a1c90da4ca74b8d996baa21bdd03202f8bd01f3aa1e265004b41d512733d8e",
+    "entropy_results.json": "61a941009c1078c07517e2c536857394f39d8048493e791d423df8075cb628bd",
     "results.json": "a1ecb5f247dacdf1b5b579bede3a7c9fde84fd54d5775815697bb52563a2ed0c",
     "sweeps.py": "605b36070ba40be1e3dc933361a9065bac83ab2e8bf8978a260fb7e632cced26",
     "test_construction.py": "48fecbfc173c5224debb29780bf9ccb3011796c5c85453191f3de2db58780cea",
+    "test_entropy_refinement.py": "109b50f695da4e5e3342092bdb02f4d8924643c91346c7355e4af713250c508a",
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb"
   },
   "reproduce": [
     "python -m model.native_equilibration --check model/native_equilibration/results.json",
+    "python -m model.native_equilibration.entropy_refinement --check model/native_equilibration/entropy_results.json",
     "python -m pytest -q -W error model/native_equilibration"
   ],
   "schema": "oph.native_equilibration.manifest.v1"
