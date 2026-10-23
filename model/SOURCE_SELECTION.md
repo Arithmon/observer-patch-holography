@@ -250,9 +250,9 @@ component error is bounded by `(1-sqrt(5)/5)` times the maximum charge error.
 The same decoder accepts native occupation means reconstructed from
 signed local records. Antipodal two-token preparations give compatible means
 at every native-attempt horizon; individual histories need not be compatible.
-For arbitrary initial populations, the fast-band residual is at most
-`(1/4+sqrt(5)/20)*((55-sqrt(5))/60)^n`. Nine means predict the other three
-with this explicit discrepancy budget. Complete resolved/unknown readout
+For arbitrary binary-sector initial populations, the fast-band residual is at
+most `(1/4+sqrt(5)/20)*((55-sqrt(5))/60)^n`. Nine means predict the other three
+with error at most `2+2*sqrt(5)` times that residual bound. Complete resolved/unknown readout
 intervals propagate through the decoder without discarding failures.
 This supplies actual finite source observations. The Lorentz lift, a physical
 stress dictionary and the small-ball attachment remain separate inputs.
