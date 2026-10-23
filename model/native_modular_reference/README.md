@@ -379,6 +379,78 @@ completed reference; actual finite-prepared flows have the stated error
 bound. No boost, area, smooth spacetime or laboratory-clock identification
 is inferred.
 
+## One reference for overlapping caps
+
+[`common_caps.py`](common_caps.py) supplies one native-selected reference
+for a specified family of overlapping bare cap algebras. Fairly select
+`R=(0,1,5,7)` or `S=(0,1,2,8)`, then a uniform complementary native seam
+and a fair placement coin. The 20-seam union is connected on the ten ports
+outside `I=R intersection S=(0,1)`. For both C and E, the exact native
+channel has fixed algebra `A_I` and quantum gap at least `1/600` per
+attempt. Its unread marginal converges to the tracial completion `E_I`.
+Records may remain stored if subsequent work does not access them or use
+them for feedback.
+
+Applied to the same globally heralded Palm reference, this protocol selects
+`sigma_common=E_I(Palm)`. Its per-configuration weights are
+
+| Occupation of the protected core I | Weight | Configurations |
+| --- | --- | --- |
+| 0 | `68/4500` | 45 |
+| 1 | `69/4500` | 20 |
+| 2 | `60/4500` | 1 |
+
+This single density lies in `A_I`, hence its modular group preserves every
+bare `A_R` containing `I`; all 1024 such cap algebras are checked. It is
+central in `A_I`, so **the shared intersection's own modular action is
+the identity**. Nontrivial clocks require larger-cap coherences transferring
+occupation between the protected core and another cap port. The mixed
+preparation preserves the core marginal, not the individual larger-cap
+marginals. The state and clock are common across these caps without
+independently selecting a reference for each observer.
+
+One 2042-pulse source word implements the common modular action. Two
+cap-supported selected-pair Ramsey probes use it unchanged: codes 328/73
+for `R`, and codes 0/73 for `S`. With their preparation/analyzer mixers,
+they cost 2056 and 2068 pulses and both read
+`(1+cos(s log(69/68)))/2` through the complete 512-coordinate bit-0 PVM.
+At the retained `s=16`, the ideal probability is approximately
+`0.986421907373`. The complete binary source arrays and both mixer errors
+are certified; padding is retained without projection or renormalization.
+Configuration preparation, coherent source services and the projective bit
+read remain admitted apparatus. The selected pairs have the same cap
+exterior; this does not assert that each source mixer is a local operation
+on arbitrary exterior inputs.
+
+With 369 Palm warm-up attempts, one global movement herald, and 18,600
+mixed-cap attempts after success, the same relative-sandwich proof bounds
+the source/common-actual-state modular half-diamond discrepancy by
+`0.000989302` at `s=16`. The preparation costs fewer than 21,042.015 expected
+native attempts. The complete flagged single-trial bound retains every
+herald failure. Each other requested rational `|s|<=16` requires its own
+word certificate; a continuous family of floating implementations is not
+certified by the retained word. Regional invariance is exact for the ideal
+common reference; finite-prepared modular actions have the stated error.
+
+The all-region boundary is also exact. On the two-occupation shell over
+`N>=3` ports, a faithful diagonal reference with weights `w_ij` preserves
+**every bare two-port algebra** iff `w_ij=lambda*r_i*r_j` with positive
+factors. Equivalently, every four distinct ports satisfy
+`w_ij*w_kl=w_ik*w_jl=w_il*w_jk`. Local matrix units require their modular
+ratio to be independent of the spectator port; factorization gives the
+converse. The generator is a scalar minus `sum_i log(r_i) N_i`.
+Native Palm, the one-cap completion and this common-core completion fail
+that all-pair condition. A connected symmetric native repair preserves a
+factorized reference only when all factors agree. A concrete unprotected
+two-cap schedule has a connected 28-seam union and uniquely selects
+`I66/66`, whose stationary modular action is trivial.
+
+These are a constructive protected-core family and an exact boundary for
+faithful diagonal references, not a classification of all noncommuting
+states or all observer protocols. The protected core, schedule and global
+Palm herald remain specified choices. No arbitrary spacetime region net,
+physical boost, laboratory time or continuum geometry is inferred.
+
 ## Replay
 
 ```sh
@@ -387,6 +459,7 @@ python -m model.native_modular_reference.preparation --check
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.full_flow --check model/native_modular_reference/full_flow_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.regional --check model/native_modular_reference/regional_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.completed_clock --check model/native_modular_reference/completed_clock_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.common_caps --check model/native_modular_reference/common_caps_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

@@ -1,0 +1,255 @@
+{
+  "all_pair_characterization": {
+    "Palm": {
+      "all_bare_two_port_algebras_invariant": false,
+      "factor_scale": null,
+      "noninvariance_four_port_witness": {
+        "matching_products": [
+          "1/5625",
+          "1/3600",
+          "1/3600"
+        ],
+        "ports": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "relative_factors": null
+    },
+    "common_cap_completion": {
+      "all_bare_two_port_algebras_invariant": false,
+      "factor_scale": null,
+      "noninvariance_four_port_witness": {
+        "matching_products": [
+          "17/84375",
+          "529/2250000",
+          "529/2250000"
+        ],
+        "ports": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "relative_factors": null
+    },
+    "one_cap_completion": {
+      "all_bare_two_port_algebras_invariant": false,
+      "factor_scale": null,
+      "noninvariance_four_port_witness": {
+        "matching_products": [
+          "1/5040",
+          "361/1440000",
+          "361/1440000"
+        ],
+        "ports": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "relative_factors": null
+    },
+    "tracial": {
+      "all_bare_two_port_algebras_invariant": true,
+      "factor_scale": "1/66",
+      "noninvariance_four_port_witness": null,
+      "relative_factors": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    }
+  },
+  "all_pass": true,
+  "cap_readouts": [
+    {
+      "cap": [
+        0,
+        1,
+        5,
+        7
+      ],
+      "coherent_selected_pair_and_complete_bit0_PVM_remain_admitted": true,
+      "complete_bit_probabilities": [
+        0.9864219073729753,
+        0.013578092626933543
+      ],
+      "complete_record_half_l1_diagnostic": 4.5570318352172734e-14,
+      "ideal_match_law": "(1+cos(s log(69/68)))/2",
+      "native_codes": [
+        328,
+        73
+      ],
+      "source_pulses": 2056,
+      "whole_sequence_half_diamond_upper": "1021/1000000000000"
+    },
+    {
+      "cap": [
+        0,
+        1,
+        2,
+        8
+      ],
+      "coherent_selected_pair_and_complete_bit0_PVM_remain_admitted": true,
+      "complete_bit_probabilities": [
+        0.9864219073730116,
+        0.013578092626943997
+      ],
+      "complete_record_half_l1_diagnostic": 3.0211076695874084e-14,
+      "ideal_match_law": "(1+cos(s log(69/68)))/2",
+      "native_codes": [
+        0,
+        73
+      ],
+      "source_pulses": 2068,
+      "whole_sequence_half_diamond_upper": "1021/1000000000000"
+    }
+  ],
+  "common_source_pulses": 2042,
+  "exact_source_audit": {
+    "common_reference_cap_algebras_checked": 1024,
+    "native_laws": {
+      "C": {
+        "matrix_units_checked": 4356,
+        "native_integer_denominator": 240,
+        "shared_completion_fixed_and_preserved": true
+      },
+      "E": {
+        "matrix_units_checked": 4356,
+        "native_integer_denominator": 240,
+        "shared_completion_fixed_and_preserved": true
+      }
+    },
+    "nontrivial_cap_probes_require_transfer_between_core_and_remaining_cap": true,
+    "protected_intersection_modular_action": "identity"
+  },
+  "finite_common_reference_budget": {
+    "actual_common_reference_modular_half_diamond_upper": "989300337/1000000000000",
+    "complete_flagged_reference_and_source_half_trace_upper": "230449/250000000000",
+    "complete_flagged_reference_half_trace_upper": "184329/200000000000",
+    "expected_native_preparation_attempts_upper": "21042014816892311/1000000000000",
+    "global_movement_herald_attempts": 1,
+    "individual_cap_marginals_preserved_by_other_cap_protocol": false,
+    "minimum_work_eigenvalue_lower": "13332428073/1000000000000",
+    "mixed_cap_native_attempts_after_success": 18600,
+    "mixed_cap_trace_error_upper": "15367/1000000000000",
+    "operator_sandwich_radius": "61827449/1000000000000",
+    "source_then_any_core_cap_restrict_vs_actual_cap_modular_half_diamond_upper": "989301337/1000000000000",
+    "source_to_actual_common_modular_half_diamond_upper": "989301337/1000000000000",
+    "warmup_native_attempts": 369
+  },
+  "reference_weight_census": {
+    "1/75": 1,
+    "17/1125": 45,
+    "23/1500": 20
+  },
+  "retained_modular_parameter": "16",
+  "schedule": {
+    "caps": [
+      [
+        0,
+        1,
+        5,
+        7
+      ],
+      [
+        0,
+        1,
+        2,
+        8
+      ]
+    ],
+    "gap_lower_per_attempt": "1/600",
+    "graph": {
+      "diameter_upper_bound": 4,
+      "quantum_gap_lower_per_attempt": "1/400",
+      "root_eccentricity": 2,
+      "seams": 20,
+      "vertices": 10
+    },
+    "native_seam_union": 20,
+    "protected_intersection": [
+      0,
+      1
+    ],
+    "uniform_component_weight": "2/3"
+  },
+  "schema": "oph.native_modular_reference.common_caps.v1",
+  "scope": {
+    "all_port_regions_or_spacetime_net_supplied": false,
+    "arbitrary_nondiagonal_reference_classified_by_factor_test": false,
+    "future_access_or_feedback_from_preparation_tape_covered": false,
+    "individual_cap_marginals_preserved_by_mixed_preparation": false,
+    "one_common_native_prepared_state_for_1024_core_containing_caps": true,
+    "other_modular_parameters_require_fresh_word_certification": true,
+    "physical_time_temperature_or_passive_modular_evolution_identified": false,
+    "preparation_tape_may_be_stored_if_future_protocol_ignores_it": true,
+    "protected_intersection_has_nontrivial_modular_clock": false
+  },
+  "source_operator_error_gate": "1/1000000000",
+  "source_sha256": {
+    "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
+    "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
+    "model/native_modular_reference/common_caps.py": "7f47025c0961c81d9c76791c3c753b9e1236d661e58b9c94f99a9daa23dfb191",
+    "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
+    "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
+    "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91"
+  },
+  "unprotected_connected_control": {
+    "native_laws": {
+      "C": {
+        "fixed_algebra_dimension": 1,
+        "matrix_units_checked": 4356
+      },
+      "E": {
+        "fixed_algebra_dimension": 1,
+        "matrix_units_checked": 4356
+      }
+    },
+    "schedule": {
+      "caps": [
+        [
+          0,
+          1,
+          5,
+          7
+        ],
+        [
+          2,
+          3,
+          4,
+          6
+        ]
+      ],
+      "gap_lower_per_attempt": "1/1080",
+      "graph": {
+        "diameter_upper_bound": 6,
+        "quantum_gap_lower_per_attempt": "1/1008",
+        "root_eccentricity": 3,
+        "seams": 28,
+        "vertices": 12
+      },
+      "native_seam_union": 28,
+      "protected_intersection": [],
+      "uniform_component_weight": "14/15"
+    },
+    "scope": "unread connected native equilibrium; does not exclude heralded or protected references",
+    "stationary_modular_action": "identity",
+    "unique_fixed_binary_sector_state": "I66/66"
+  }
+}
+
