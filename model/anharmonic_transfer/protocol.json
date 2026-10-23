@@ -1,7 +1,7 @@
 {
   "schema": "oph.anharmonic_transfer.protocol.v1",
   "date": "2026-10-15",
-  "selection_order": "Retrospective extension of a known published experiment. Only metadata, times and the five zero-time entries of this CSV were inspected before fixing this protocol. All positive-time values are excluded from preparation, apparatus choices, numerical choices and prediction generation. This is not prospective or blinded evidence.",
+  "selection_order": "The date records the original transferred-apparatus protocol: only metadata, times and the five zero-time entries of this CSV were inspected before its preparation, apparatus and numerical choices were fixed. Positive-time outcomes remain excluded from prediction generation. The certified_comparison attachment was added retrospectively after the published trajectories and existing receipts were known; it retains both existing certificate cutoffs and every endpoint without changing the original apparatus or fitting parameters. Neither the original comparison nor this attachment is prospective or blinded evidence.",
   "paper": "https://arxiv.org/html/2603.04744v1",
   "dataset_doi": "10.5281/zenodo.18752287",
   "cases": [

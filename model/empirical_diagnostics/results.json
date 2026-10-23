@@ -775,7 +775,7 @@
     "model/anharmonic_observations/source.py": "cdd4536a5259e971db0ff118005c89377ed69d50303976fd97085732c69cc12a",
     "model/anharmonic_transfer/calibration.py": "42bd720c4f05e0990688f395d1a29331a40e481f8f74adf00a765fff16ebf476",
     "model/anharmonic_transfer/data/calibration_receipt.json.gz": "270b8cf8dc3446da3e3eacb5e38e8375f645039509a23f7972e288bf463810bd",
-    "model/anharmonic_transfer/protocol.json": "8911701ce03a744a4e93b74091610f3de30d2fa659d10880dc219da1272a41dd",
+    "model/anharmonic_transfer/protocol.json": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
     "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
     "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
     "model/common_source/protocol.py": "4339a070f39f2ddbc958e83041e9b8935dd8efd50acfca80519c4d92ea6cfac2",

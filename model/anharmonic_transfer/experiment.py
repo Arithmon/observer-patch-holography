@@ -19,7 +19,7 @@ ROOT = FOLDER.parents[1]
 RUN_NAMES = ('primary', 'step_refinement', 'occupation_refinement',
              'preparation_adjusted', 'instantaneous_carrier_control',
              'harmonic_control', 'frozen_control')
-SUPPORTED_PROTOCOL_DIGEST = 'e7ad57061f992106c4f56ca736f4863e7366543ffdbfe5394ac2a492f9971ece'
+SUPPORTED_PROTOCOL_DIGEST = 'bc32e46a581c225348f6d48fb0690730c3f7d0d6e8b9c7a7d7a6ae020c30dbc6'
 SOURCE_PATHS = tuple('model/anharmonic_transfer/'+name+'.py' for name in
                     ('source', 'environment', 'bounds', 'calibration', 'data', 'experiment',
                      'certified_comparison')) + tuple(certified_comparison.CERTIFICATE_PINS) + (

@@ -187,7 +187,11 @@ and floating execution and physical errors remain outside the ideal bound.
 
 The receipt now also attaches the independent
 [unrestricted-apparatus certificate](../occupation_control/README.md) before
-opening later observations. It verifies the same binary preparation, pulse,
+opening later observations in each replay. This attachment is a retrospective
+analysis added after the trajectories and earlier receipts were known. The
+protocol's date and original selection order refer to the earlier apparatus
+choices; the attachment changes no apparatus parameter or numerical setting.
+It verifies the same binary preparation, pulse,
 dephasing, detector and time parameters, and binds the certificate's original
 source and result bytes. This evaluator includes occupation removal,
 integration, preparation, detector evaluation and arithmetic error. It does
@@ -290,6 +294,12 @@ metadata must agree exactly with this recomputation before being omitted
 from the cross-receipt numerical comparison. This avoids applying the same
 dimensionless tolerance again after an estimator conversion amplifies its
 checked inputs.
+
+Separate raw-law checks allow at most `64*ulp(1)` boundary roundoff in each
+probability, `1e-12` marginal and conditional-law inconsistency, and the
+existing `2e-10` accumulated-mass error. They include rejected and zero-time
+rows, preserve tiny signed roundoff, and never clip or renormalize the raw
+law. These numerical screening gates do not represent physical uncertainty.
 
 Primitive spin means, probabilities, and other floating diagnostics retain
 the `2e-10` replay tolerance. The separate exact-position diagnostic is

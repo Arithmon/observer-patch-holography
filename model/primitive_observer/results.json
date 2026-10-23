@@ -4321,7 +4321,7 @@
         "alpha_real": -1.0081292326480422,
         "thermal_occupation": 0.13314125172459518
       },
-      "protocol_sha256": "8911701ce03a744a4e93b74091610f3de30d2fa659d10880dc219da1272a41dd",
+      "protocol_sha256": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
       "rejected_spin_pointer_statistics_empirically_validated": false,
       "schema": "oph.primitive_observer.laboratory_prediction.v1",
       "subdivisions": 128,
@@ -4483,7 +4483,7 @@
         }
       ]
     },
-    "prediction_sha256_before_scoring": "fea1d806fb52cd30f41966ca1baff8b42e1ef5dfe65bc54f528e9607eaee344a",
+    "prediction_sha256_before_scoring": "f441a355f7493906510eb15aca243e847e319bb264cb2bdec8551cf676d9b270",
     "provenance": {
       "accepted_counts_included": false,
       "creators": [
@@ -6649,9 +6649,9 @@
     "model/anharmonic_transfer/certified_comparison.py": "875de666d07dbb26cf489612ed3e363691a33f7444ebb4753cd4e86c9a5f4c92",
     "model/anharmonic_transfer/data.py": "c1aa43bf937e90b0caf3b5bae9cc094e39166cfdd1a13682aa8070f5ec514bb4",
     "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
-    "model/anharmonic_transfer/experiment.py": "ee04b3facb29af30de3f6cfa8e13abca2210029a91bbeedf864c394b02addabb",
-    "model/anharmonic_transfer/protocol.json": "8911701ce03a744a4e93b74091610f3de30d2fa659d10880dc219da1272a41dd",
-    "model/anharmonic_transfer/results.json": "063b4c778b066a361a169a1de888f4588fe9f5b35b5cf677af6e6b1ebedd56c3",
+    "model/anharmonic_transfer/experiment.py": "d2ca1b595505d288b043062038230895a36b0392a023110ec3a92de8683e7f66",
+    "model/anharmonic_transfer/protocol.json": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
+    "model/anharmonic_transfer/results.json": "242a719a1b45831b5ff7935f888a9dc6ad81cf24517d6160d29332820b6f752c",
     "model/anharmonic_transfer/source.py": "1e54438f8c1939e53334d4f573ae63004a8cc86d8253618277835a7f5ff052f5",
     "model/common_source/continuation_bounds.py": "138454651b9afca881f9b08f47dd27027bbd26f5410503293f654b35e0bdfd6c",
     "model/common_source/encoded_memory.py": "9833f762df6a62be658db182a9a1b3ec61ed28ae462d6e58da5d972371627060",

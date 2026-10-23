@@ -14717,10 +14717,10 @@
       "schema": "oph.anharmonic_transfer.protocol.v1",
       "scope": "Single-mode conditional apparatus model, executed in the OPH source interface. Hamiltonian, preparation family, environment law, detector, classical stochastic draws and clock calibration remain supplied. Neither OPH-specific action selection, spatial dimension recovery nor a new QFT prediction is established.",
       "score": "Descriptive RMSE in dimensionless two-point position-estimator units, separately per case and combined. No chi-squared, p-value or significance claim. Software all_pass means valid execution and comparison contracts, not empirical success.",
-      "selection_order": "Retrospective extension of a known published experiment. Only metadata, times and the five zero-time entries of this CSV were inspected before fixing this protocol. All positive-time values are excluded from preparation, apparatus choices, numerical choices and prediction generation. This is not prospective or blinded evidence.",
+      "selection_order": "The date records the original transferred-apparatus protocol: only metadata, times and the five zero-time entries of this CSV were inspected before its preparation, apparatus and numerical choices were fixed. Positive-time outcomes remain excluded from prediction generation. The certified_comparison attachment was added retrospectively after the published trajectories and existing receipts were known; it retains both existing certificate cutoffs and every endpoint without changing the original apparatus or fitting parameters. Neither the original comparison nor this attachment is prospective or blinded evidence.",
       "validation": "All 25 positive published times (.4 to 10 ms) for all five cases: 125 derived observations, equal weight, no exclusions."
     },
-    "protocol_sha256": "8911701ce03a744a4e93b74091610f3de30d2fa659d10880dc219da1272a41dd",
+    "protocol_sha256": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
     "provenance": {
       "accepted_counts_included": false,
       "creators": [
@@ -149816,7 +149816,7 @@
       "model/anharmonic_transfer/certified_comparison.py": "875de666d07dbb26cf489612ed3e363691a33f7444ebb4753cd4e86c9a5f4c92",
       "model/anharmonic_transfer/data.py": "c1aa43bf937e90b0caf3b5bae9cc094e39166cfdd1a13682aa8070f5ec514bb4",
       "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
-      "model/anharmonic_transfer/experiment.py": "ee04b3facb29af30de3f6cfa8e13abca2210029a91bbeedf864c394b02addabb",
+      "model/anharmonic_transfer/experiment.py": "d2ca1b595505d288b043062038230895a36b0392a023110ec3a92de8683e7f66",
       "model/anharmonic_transfer/source.py": "1e54438f8c1939e53334d4f573ae63004a8cc86d8253618277835a7f5ff052f5",
       "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
       "model/occupation_control/DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
@@ -149831,7 +149831,7 @@
       "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94"
     }
   },
-  "prediction_payload_sha256_before_scoring": "7ba3f7cd5fff2030398afc5ea7361a688dc90bc1ae740f8f79bd7fc51779a032",
+  "prediction_payload_sha256_before_scoring": "71d8abc2f2a555fc9e315205cc8ceecb9bd60d32f975bd28a2d461a139c2a891",
   "schema": "oph.anharmonic_transfer.results.v1",
   "scores": {
     "frozen_control": {

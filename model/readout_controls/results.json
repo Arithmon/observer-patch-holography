@@ -5088,7 +5088,7 @@
     "model/anharmonic_transfer/calibration.py": "42bd720c4f05e0990688f395d1a29331a40e481f8f74adf00a765fff16ebf476",
     "model/anharmonic_transfer/data/calibration_receipt.json.gz": "270b8cf8dc3446da3e3eacb5e38e8375f645039509a23f7972e288bf463810bd",
     "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
-    "model/anharmonic_transfer/protocol.json": "8911701ce03a744a4e93b74091610f3de30d2fa659d10880dc219da1272a41dd",
+    "model/anharmonic_transfer/protocol.json": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
     "model/calibrated_measurement/bounds.py": "fec098d950cff3ce03a0035ba25d847fd7623d7935f333f261ea796696422580",
     "model/common_source/continuation_bounds.py": "138454651b9afca881f9b08f47dd27027bbd26f5410503293f654b35e0bdfd6c",
     "model/common_source/encoded_memory.py": "9833f762df6a62be658db182a9a1b3ec61ed28ae462d6e58da5d972371627060",
