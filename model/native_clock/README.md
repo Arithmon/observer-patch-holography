@@ -103,6 +103,36 @@ is identified with this local tape.
 python -m model.native_clock.trajectory_readout --check
 ```
 
+### Preparing a regional clock with local incident counts
+
+[`regional_preparation.py`](regional_preparation.py) prepares a faithful
+reference from arbitrary binary total-two inputs using the four-port cap's
+incident ticks, including zeros. If `p` is its incident seam fraction and
+`r=19079/20000` is the native mixing bound, the stopped quantum channel has
+reference-uniform half trace error at most `33*p^(-1/2)*r^n` after `n` local
+ticks. A similarity transform proves this for both C and E; simply assuming
+the stopped channel is self-adjoint would be incorrect.
+
+For the declared cap, 496 local ticks suffice for the precision24 warm-up.
+The **next specified incident tick** retains both movement and failure.
+The uniform-input movement probability is `5/33`; finite preparation gives
+an interval around it. Complement repair then selects a faithful regional
+reference with minimum eigenvalue `1/120` and cap modular gaps `log(23/22)`
+and `log(5/4)`. These differ from the globally heralded reference's gaps.
+The receipt composes conditioning, finite complement repair and modular
+generator errors, including arbitrary initially untouched references.
+
+No global attempt counter enters this protocol. Regional record collection,
+an IID seam schedule, a fixed local horizon and the complement scheduler
+remain declared services. Retained preparation records must be ignored by
+the continuation; the bound does not assert independence from that tape.
+The reference defines a modular clock, whose active implementation and
+physical calibration are separate obligations.
+
+```sh
+python -m model.native_clock.regional_preparation --check
+```
+
 The [single-carrier clock comparison](COMPARISON.md) additionally derives
 relative rates and explicit finite uncertainty for all twelve local current
 clocks, without stationary preparation or a federation. Their asymptotic

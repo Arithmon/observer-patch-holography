@@ -1,0 +1,108 @@
+{
+  "all_pass": true,
+  "audit": {
+    "both_herald_outputs_retained": true,
+    "completion_verified": true,
+    "laws": {
+      "C": {
+        "all_matrix_units_per_seam": 4356,
+        "all_seams": 30,
+        "exact_unital_trace_preserving_positive_self_adjoint": true,
+        "native_seam_channel_sha256": "ed79b8e3ad15925ed3affcb3216a356a416123b7e0f8108364ed498584006e4e"
+      },
+      "E": {
+        "all_matrix_units_per_seam": 4356,
+        "all_seams": 30,
+        "exact_unital_trace_preserving_positive_self_adjoint": true,
+        "native_seam_channel_sha256": "63bfd183cc3bee9d00f72c0f663797997315e5fcf4b987ef77327af83d6931e9"
+      }
+    },
+    "native_incident_herald_verified": true
+  },
+  "completed_reference_weight_multiplicities": {
+    "1/120": 28,
+    "1/30": 1,
+    "11/600": 16,
+    "2/75": 5,
+    "23/1200": 16
+  },
+  "contract": {
+    "architecture": "binary twelve-port total-two source",
+    "finite_bound_includes_untouched_references": true,
+    "laboratory_or_physical_spacetime_identification": false,
+    "laws": "one fixed C or E during local warmup; C/E complement repair",
+    "passive_modular_dynamics_established": false,
+    "records": "region collects incident ticks including zeros; all final herald outcomes retained",
+    "schedule": "IID uniform source seams and fair placements, then uniform complement seams",
+    "tape": "unread source marginal; no conditioning on warmup tape and no adaptive feedback"
+  },
+  "differs_from_global_movement_completed_reference": true,
+  "preparation": {
+    "cap": [
+      0,
+      1,
+      5,
+      7
+    ],
+    "complement_preparation": {
+      "attempts": 7440,
+      "blocks": 31,
+      "dimension": 66,
+      "half_contraction_block": 240,
+      "trace_distance_upper": "33/2147483648"
+    },
+    "completed_reference_minimum_eigenvalue": "1/120",
+    "conditional_output_reference_uniform_halftrace_upper": "4854386750367/11529212707458777088",
+    "expected_underlying_attempts_through_herald": "994",
+    "failure_probability_interval": [
+      "30064769983/35433480192",
+      "30064772161/35433480192"
+    ],
+    "flow_halfdiamond_upper_per_absolute_modular_parameter": "1116155704158/144114629998003793",
+    "global_attempt_counter_required": false,
+    "herald": "movement flag of the NEXT specified incident tick",
+    "incident_seam_fraction": "1/2",
+    "local_warmup_ticks_including_zeros": 496,
+    "prepared_modular_generator_operator_error_upper": "1116155704158/144114629998003793",
+    "relative_pre_normalization_radius": "558077852079/144115188075855872",
+    "remote_wait_tail_per_incident_tick": "(1/2)^h after h native attempts",
+    "success_probability_interval": [
+      "5368708031/35433480192",
+      "5368710209/35433480192"
+    ],
+    "uniform_input_success_probability": "5/33",
+    "warmup_reference_uniform_halftrace_upper": "33/1073741824"
+  },
+  "raw_reference_zero_eigenvalues": 1,
+  "regional_clock_gaps": [
+    {
+      "cap_charge": 0,
+      "positive_modular_gap_log_arguments": []
+    },
+    {
+      "cap_charge": 1,
+      "positive_modular_gap_log_arguments": [
+        "23/22"
+      ]
+    },
+    {
+      "cap_charge": 2,
+      "positive_modular_gap_log_arguments": [
+        "5/4"
+      ]
+    }
+  ],
+  "schema": "oph.native_regional_reference_preparation.v1",
+  "source_sha256": {
+    "Lean/Thermodynamics/CapFirstLaw.lean": "17e8be6e744552b4650efb58932e9a2ed7c7c545a962e17905dbbc70c2de9447",
+    "Lean/Thermodynamics/FiniteConditionalRepair.lean": "6d1c8c2db46bba7bcb685d9f11f682ad4f96d01eff528d6f942e0f6666d87ce2",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/native_clock/regional_preparation.py": "0acf0925611d25bca14086be3c5be836de162c94105df02dc0e3f3085ff17b50",
+    "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
+    "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
+    "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/record_laws/burn_in.py": "ab570ba3c4da75361231538b2d22ac7e3c6884038778c2510d9aa4af796d47e5"
+  }
+}
