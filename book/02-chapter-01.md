@@ -1,12 +1,14 @@
 # 1. Why Is the Universe So Hard to Reverse Engineer?
 
-In the summer of 1687, in the opening pages of the book that founded physics, Isaac Newton declined to define time. He had spent the previous section defining everything else, carefully, in the manner of a man who knows he is being read by people looking for a mistake. Mass, momentum, force, centripetal force, all set out with their units and their edges. Then he stopped and wrote that he would not define time, space, place and motion, on the grounds that these were well known to everybody.
+Two sentences held up the whole of physics for two hundred and eighteen years, and the man who wrote them had announced, a few lines earlier, that he saw no need to write them.
+
+They sit in the opening pages of the *Principia*, the book that founded the subject, which Isaac Newton published in the summer of 1687. He had spent the previous section defining everything else, carefully, in the manner of a man who knows he is being read by people looking for a mistake. Mass, momentum, force, centripetal force, all set out with their units and their edges. Then he stopped and wrote that he would not define time, space, place and motion, on the grounds that these were well known to everybody.
 
 Then he defined them anyway.
 
 Absolute, true and mathematical time, he wrote, of itself and from its own nature, flows equably without regard to anything external. Absolute space, in its own nature and without regard to anything external, remains always similar and immovable. Two sentences, offered as clarifications of the obvious, and neither of them derived from anything. They are the load-bearing assumptions of the *Principia* and they were put in by hand, by a man who had just told you they were too obvious to need stating.
 
-They held for two hundred and eighteen years.
+They held until 1905.
 
 They did not hold unopposed. Within thirty years Gottfried Leibniz was writing furious letters about them to Samuel Clarke, who was answering on Newton's behalf and, most historians think, with Newton reading over his shoulder. Leibniz's objection was not technical. It was that absolute space never does anything you could catch it at. Space, he said, is nothing but the order of things that coexist, and time nothing but the order of things that follow one another. Suppose God had built the entire universe three feet to the left of where it is, everything shifted together. What would be different? Nothing measurable, nothing observable, nothing at all. So the position of the universe in absolute space is a fact about a picture somebody drew around it, and about nothing else.
 

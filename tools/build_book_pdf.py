@@ -113,7 +113,7 @@ ORDER_PREFIX = re.compile(r"^(\d{2})-")
 NON_UNIT_FILENAMES = frozenset({"README.md"})
 
 # Units that take \chapter* rather than a number: the front matter, the prologue, the
-# epilogue and the three appendices.  Appendices carry their own label in their title.
+# epilogue and the four appendices.  Appendices carry their own label in their title.
 UNNUMBERED_STEMS = ("front-matter", "prologue", "epilogue", "appendix-")
 
 
@@ -133,7 +133,7 @@ def source_files() -> list[Path]:
     """Reading order is the filename prefix and nothing else.
 
     Every unit is named ``NN-<unit>.md`` where NN is its position, so sorting on the
-    prefix gives front matter, prologue, forty chapters, epilogue, appendices, with no
+    prefix gives front matter, prologue, forty-one chapters, epilogue, appendices, with no
     per-kind globbing and no hard-coded positions.  Duplicated prefixes are rejected
     rather than silently ordered by name.
     """

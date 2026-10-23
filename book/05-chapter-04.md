@@ -74,7 +74,7 @@ Chaining is where it stops being bookkeeping. Take three firms, each pair of whi
 
 If it is not, somebody can go round the loop repeatedly and end up with more money than they started with, having bought and sold nothing. Currency traders call this triangular arbitrage, they have machines watching for it, and when it opens it closes in milliseconds. The condition that closes it is the requirement that going around a loop of translations brings you back to yourself.
 
-That condition is the whole content of what physicists call gauge structure. Accountants make it obvious and field theory makes it look hard. It is doing the work behind electromagnetism twenty chapters from here. Descriptions related by a permitted relabeling say the same thing. The relabelings can be undone and chained. And every closed loop of them has to come back to the identity, or there is something to be extracted for free. The world does not offer that.
+That condition is the whole content of what physicists call gauge structure. Accountants make it obvious and field theory makes it look hard. It is doing the work behind electromagnetism twenty-two chapters from here. Descriptions related by a permitted relabeling say the same thing. The relabelings can be undone and chained. And every closed loop of them has to come back to the identity, or there is something to be extracted for free. The world does not offer that.
 
 ## Ninety meters
 

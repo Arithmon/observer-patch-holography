@@ -1,8 +1,10 @@
 # 18. Why Does Anything Have Energy?
 
-Willem 's Gravesande, who taught mathematics and astronomy at Leiden, laid a tray of soft clay on the floor in 1722 and dropped brass balls into it from measured heights.
+A ball moving twice as fast carries more of something. It hits harder, and it digs further into whatever stops it. How much more, though: twice as much, or four times? Weight multiplied by speed says twice. Weight multiplied by the square of the speed says four. Each answer is one line of arithmetic, and nothing in either line says which multiplication the world is doing.
 
-He was settling an argument about which multiplication to perform. Both sides agreed that a moving ball carries something, and that the something grows with the weight of the ball and with its speed. Descartes' followers held that the quantity worth tracking is the weight multiplied by the speed. Leibniz's held that it is the weight multiplied by the square of the speed, and called it vis viva, living force. The dispute had run for decades, mostly in Latin, mostly in print, and neither side had proposed anything you could put on a floor.
+For a long stretch of the early eighteenth century each line had a party behind it. Both sides agreed that a moving ball carries something, and that the something grows with the weight of the ball and with its speed. Descartes' followers held that the quantity worth tracking is the weight multiplied by the speed. Leibniz's held that it is the weight multiplied by the square of the speed, and called it vis viva, living force. The dispute had run for decades, mostly in Latin, mostly in print, and neither side had proposed anything you could put on a floor.
+
+Willem 's Gravesande, who taught mathematics and astronomy at Leiden, put a tray of soft clay on one in 1722 and dropped brass balls into it from measured heights.
 
 A ball released from four times the height arrives at twice the speed, so a measured drop hands the clay a chosen speed. A ball arriving at twice the speed sank four times as deep. At three times the speed, nine times as deep. Two balls of the same size and different weights, released from heights in inverse proportion to those weights, left the same dent.
 

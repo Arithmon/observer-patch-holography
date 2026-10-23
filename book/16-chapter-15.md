@@ -1,5 +1,9 @@
 # 15. Why Does Space Have Three Directions?
 
+You can walk forward, walk sideways, and climb a ladder, and any motion you are capable of is some combination of those three. Three numbers pin a body down and two will not: an air traffic controller is given latitude, longitude and altitude, and losing any one of the three leaves a whole line of places the aircraft could be sitting. A fourth independent number has never been available to anybody. General relativity generalizes the shape of space in every respect except the count of directions, which it takes as a starting datum. Nothing in its field equations prefers three to five or to ten. The same equations take it for granted that the three run smooth, with a place between any two places and no smallest step anywhere in them.
+
+It comes out of a bell.
+
 In September 1879 a man left his house in Essex carrying a rack of brass resonators and walked to the parish church to hit a bell.
 
 The house was Terling Place, where John William Strutt, third Baron Rayleigh, had a wing fitted out as a laboratory. The bell was the second of the five in the village tower, counting down from the highest, cast by a founder named Gardiner in 1723. The brass was a set of Helmholtz resonators made in Paris by Rudolph Koenig, who had been apprenticed to the violin maker Vuillaume in 1851, set up on his own account in 1858, and spent the next forty years turning Helmholtz's ideas into apparatus a physicist could order by post. Each resonator is tuned to a single frequency. Hold one to your ear inside a noise and that frequency comes up out of the mess loud enough to name, while everything else drops away. Rayleigh's verdict on them, printed a decade later, was that without the security the resonators afford, deciding which octave a bell is sounding in is very uncertain.
@@ -9,10 +13,6 @@ He published in January 1890, in the *Philosophical Magazine*, under the title "
 One entry is a hemispherical bell of about three hundredweight, a little over 150 kilograms of bronze, lent to him by the London founders Mears and Stainbank. Four tones came out of it plainly and he named all four. Then this: "The gravest tone has a long duration. When the bell is struck by a hard body, the higher tones are at first predominant, but after a time they die away, and leave e-flat in possession of the field."
 
 For a fraction of a second the bell has four voices. The loudest of them are the high ones. After that it has one. Which of those two descriptions is the bell depends on how fast the listener is. Give the job to an instrument that cannot register anything shorter than a few seconds, and the four voices never happen. It reports one note, the lowest, and it reports that note as the whole bell.
-
-You can walk forward, walk sideways, and climb a ladder, and any motion you are capable of is some combination of those three. Three numbers pin a body down and two will not: an air traffic controller is given latitude, longitude and altitude, and losing any one of the three leaves a whole line of places the aircraft could be sitting. A fourth independent number has never been available to anybody. General relativity generalizes the shape of space in every respect except the count of directions, which it takes as a starting datum. Nothing in its field equations prefers three to five or to ten. The same equations take it for granted that the three run smooth, with a place between any two places and no smallest step anywhere in them.
-
-It comes out of a bell.
 
 ## Twelve readings and a grid of weights
 
@@ -138,7 +138,7 @@ Run that operation on the record points inside the three-dimensional band, using
 
 The sixty rotations come along. Each of them permutes the twelve ports, so each leaves every entry of the table of angles precisely where it was, so each preserves every distance in the completed space. A transformation that preserves all distances is a **rigid motion**: what a machinist does picking up a part and setting it down the other way round, with nothing stretched. The group chapter fourteen counted at sixty elements acts on the space it built as the turns of a rigid body.
 
-A carrier is one piece of something larger. Carriers join into a sphere, twenty of them, then eighty, then three hundred and twenty, each level finer than the last, and repair running across the joins has a smooth limit of its own. That limit lives on the sphere the carriers tile. Count its modes below each frequency and the count grows the way it grows on a surface: the limit has dimension two, the dimension of a screen, the surface a hologram is written on. The three slow directions inside each carrier drop out of the screen's low-energy modes at that scale. Three is the number of directions in each carrier's slowest response, the screen the carriers make together is two-dimensional, and chapter twenty-three sets the two side by side.
+A carrier is one piece of something larger. Carriers join into a sphere, twenty of them, then eighty, then three hundred and twenty, each level finer than the last, and repair running across the joins has a smooth limit of its own. That limit lives on the sphere the carriers tile. Count its modes below each frequency and the count grows the way it grows on a surface: the limit has dimension two, the dimension of a screen, the surface a hologram is written on. The three slow directions inside each carrier drop out of the screen's low-energy modes at that scale. Three is the number of directions in each carrier's slowest response, the screen the carriers make together is two-dimensional, and chapter twenty-four sets the two side by side.
 
 ## What holds at a finite resolution
 

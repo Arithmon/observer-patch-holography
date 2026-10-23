@@ -1,18 +1,20 @@
 # 11. What Does Everybody Actually End Up Holding?
 
-Elizabeth Loftus and John Palmer sat forty-five students down at the University of Washington in 1974 and showed them seven short films of traffic accidents. Afterward each student was asked how fast the cars had been going. It was the same question every time except for one word. Some were asked how fast the cars were going when they smashed into each other, and the others got collided, bumped, hit, or contacted.
+What is not in the record is not in the world. Continental procedure keeps the sentence as a maxim, in Latin, quod non est in actis, non est in mundo, and a courtroom is a machine for living by it.
+
+A trial does not ask what is inside a witness's head, partly because there is no instrument for getting at it and partly because the contents turn out to depend on how you ask. What a trial produces instead is a record: the words actually spoken in the room, written down as they are spoken by somebody employed to write down words. Exhibits go into it. Private recollection does not, and neither does anything a juror happens to know from outside.
+
+The record is a physical object made by a person under load. The Registered Professional Reporter certification, from the National Court Reporters Association, requires taking down two speakers at 225 words a minute with 95 percent accuracy, on a keyboard with 22 keys, which is fewer keys than there are letters and is the reason the output is phonetic rather than alphabetical. Everything a court later does with the case runs through what came off those 22 keys.
+
+No authority outside the room supplies the verdict. Twelve people who sat through the trial compute it from the record. When they cannot agree about what a witness said they ask for the transcript and it is read back to them.
+
+How much the contents of a head depend on the asking was measured in 1974, when Elizabeth Loftus and John Palmer sat forty-five students down at the University of Washington and showed them seven short films of traffic accidents. Afterward each student was asked how fast the cars had been going. It was the same question every time except for one word. Some were asked how fast the cars were going when they smashed into each other, and the others got collided, bumped, hit, or contacted.
 
 Everybody saw the same films. The smashed group put the cars at 40.8 miles an hour on average, the hit group at 34.0, and the contacted group at 31.8.
 
 A second experiment used a hundred and fifty students and one film of a multiple-car crash. Fifty of them were asked about smashing, fifty about hitting, and fifty were asked nothing about speed at all. A week later, all of them were asked whether they had seen any broken glass. Sixteen of the fifty in the smashed group said they had, against seven in the hit group and six in the group that had never been asked about speed. There is no broken glass in the film.
 
 Loftus and Palmer called the paper "Reconstruction of Automobile Destruction". Nobody in those rooms was lying, and nobody was playing back a stored recording. Each of them was assembling an account out of the material available, and the material available included the verb.
-
-Courts worked this out considerably earlier and built an institution around it. A trial does not ask what is inside a witness's head, partly because there is no instrument for getting at it and partly because the contents turn out to depend on how you ask. What a trial produces instead is a record: the words actually spoken in the room, written down as they are spoken by somebody employed to write down words. Exhibits go into it. Private recollection does not, and neither does anything a juror happens to know from outside. Continental procedure has a maxim for the arrangement. Quod non est in actis, non est in mundo. What is not in the record is not in the world.
-
-The record is a physical object made by a person under load. The Registered Professional Reporter certification, from the National Court Reporters Association, requires taking down two speakers at 225 words a minute with 95 percent accuracy, on a keyboard with 22 keys, which is fewer keys than there are letters and is the reason the output is phonetic rather than alphabetical. Everything a court later does with the case runs through what came off those 22 keys.
-
-No authority outside the room supplies the verdict. Twelve people who sat through the trial compute it from the record. When they cannot agree about what a witness said they ask for the transcript and it is read back to them.
 
 Chapter ten put eighty-two thousand patches through the repair process and the last of their 102,415 disagreements went at cycle 1, whatever order the repairs ran in. That settles the schedule. It says nothing about what any patch is holding at cycle 2. Each finished the run holding its own state, visible to nobody else, connected to the rest through what crosses its seams. So what do they end up holding in common, and how much of the world does it pin down?
 

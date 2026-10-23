@@ -1,5 +1,9 @@
 # 17. Why Is There a Speed Limit?
 
+Stand in rain that falls straight down and it lands on the top of your head. Start walking and it seems to slant toward you, so that an umbrella held upright keeps your hair dry and leaves your shins wet, and it has to be tipped forward to cover them, further the faster you go. Nothing has happened to the rain. The slant is your speed set against the speed of the drops, and the angle the umbrella needs is set by the ratio of the two.
+
+Starlight does the same, and the astronomer who caught it doing so was looking for something else.
+
 On 3 December 1725, in a house on Kew Green, James Bradley pointed a telescope straight up through a hole in the ceiling and a second hole in the roof.
 
 The instrument belonged to Samuel Molyneux, who had ordered it from the clockmaker George Graham. Twenty-four feet from lens to eyepiece, hung from an iron frame bolted to the chimney stack, because a chimney is the most rigid thing in an English house. Pointing it at the zenith and nowhere else was the design: a star directly overhead is seen through the least air, so any displacement left over belongs to the sky rather than the weather.
@@ -190,7 +194,7 @@ That number is one of the six knobs. Turning it moves the stars around on their 
 
 The six motions shuffle the sky as hard as you like and leave the cone exactly where it was, because the cone is where a determinant vanishes and the six motions preserve determinants. They therefore agree on the cone's three classes: timelike, spacelike and null separation. Wherever records are placed so that order and cone agree pair by pair, as above, the record order carries that classification exactly, and the refining reads close onto the same cone.
 
-The cone speed is one reach per round, and quoted in meters per second it is the speed of light. Local transport can spend many seam operations inside one round, so the speed counts rounds and leaves the relay events out. The angle-preserving sky maps say why one cone gives everybody one invariant speed. The number it takes is a choice of units.
+The cone speed is one reach per round, and quoted in meters per second it is the speed of light. Local transport can spend many seam operations inside one round, so the speed counts rounds and leaves the relay events out. The angle-preserving sky maps say why one cone gives everybody one invariant speed. Chapter twenty-two meets the same cone from the other end, as the first moment a wave run on an observer's own count of repairs can answer a disturbance somewhere else. The number the speed takes is a choice of units.
 
 Metrologists conceded the point in 1983. At the seventeenth General Conference on Weights and Measures the meter was redefined as the distance light covers in one 299,792,458th of a second, which fixes the speed of light at 299,792,458 meters per second exactly. Nobody has measured it since, and nobody can, because measuring it would consist of measuring the meter.
 

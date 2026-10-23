@@ -204,4 +204,4 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Zero-error capacity.** The rate at which messages can be sent with no chance of confusion. On the ring of five symbols the largest one-use code has two messages; used many times over, the ring carries the square root of five messages per use, or log base two of that in bits.
 
-**Zombie.** A philosophical hypothetical: a physical duplicate without experience. The identity account of experience that chapter thirty-nine takes leaves no room for one.
+**Zombie.** A philosophical hypothetical: a physical duplicate without experience. The identity account of experience that chapter forty takes leaves no room for one.

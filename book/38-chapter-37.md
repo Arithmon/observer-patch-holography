@@ -1,109 +1,175 @@
-# 37. Why Does Anything Try to Persist?
+# 37. Why Does the Loop Have No Beginning?
 
-The rabbits came from the market and their urine was wrong.
+The room was emptying. It was the afternoon of 7 September 1930, the last day of a three-day conference on the epistemology of the exact sciences that Kurt Reidemeister had organized at the University of Königsberg, and the closing item was a roundtable on the foundations of mathematics with Hans Hahn, Rudolf Carnap, Arend Heyting, John von Neumann, Arnold Scholz and Reidemeister himself at the table. Everyone had said their piece over the previous two days: Carnap for Russell's programme, Heyting for Brouwer's, von Neumann for Hilbert's. The proceedings went into the journal *Erkenntnis* the following year, volume 2, pages 87 to 190, with the roundtable transcript at pages 135 to 151, so it is possible to read what was said and in what order.
 
-Claude Bernard tells the story in a book he published in 1865, and the detail he leads with is the one that was sitting in front of him: the urine in the tray was clear, and it was acid. Rabbits eat grass. A grass eater's urine is cloudy and alkaline, and it had been cloudy and alkaline in every rabbit that had ever come through the laboratory. These animals were producing the urine of a cat.
+Near the end, a twenty-four-year-old Viennese logician remarked that one can give examples of statements of arithmetic that are true and that no proof inside the system reaches. Kurt Gödel had come to Königsberg to present a completeness theorem, the result he had built his reputation on, and he left having mentioned in passing the result that closed the question the three days had been about.
 
-He guessed they had not been fed for some time. He gave them grass, and within hours the urine went cloudy and alkaline. He took the grass away. It turned clear and acid again. Then he fed rabbits cold boiled beef, which a rabbit will eat if there is nothing else on offer, and for as long as the beef kept arriving the urine stayed clear and acid, exactly as it had while the animals were starving.
+The discussion moved on. Almost nobody in the room reacted. One person did: von Neumann cornered him afterward, wanted the construction, went home and thought about it for two months, and wrote to Gödel on 20 November with a further consequence that Gödel had reached first.
 
-Fasting and a meat diet produce the same rabbit. A rabbit that has stopped eating is a carnivore. The meat it is eating is the rabbit.
+The next morning the city of Königsberg made David Hilbert an honorary citizen. He was sixty-eight, he had been born there, he had retired from Göttingen that year, and he addressed the Society of German Natural Scientists and Physicians on knowledge of nature and logic. He closed with six words that were later cut into his gravestone: we must know, we will know. A recording of the ending survives, 373 words read for local radio and running four minutes. The answer had been supplied the previous afternoon, in a smaller room, at a table of seven, one of whom was listening.
 
-The urine is the smallest part of this. What the fasting animal was defending is the composition of the fluid its cells sit in: the sugar in it, the salt, the water, the acid, the heat. Cut the supply from outside and those quantities hold. They hold because the liver dismantles the animal in order to hold them. Bernard proved that the liver manufactures sugar rather than merely storing it by washing a freshly removed dog's liver until no sugar could be found in it, leaving it overnight, and finding it full of sugar in the morning. That was 1855. He had pure glycogen out of liver tissue by 1857.
+What Gödel had was a construction. Hand it a system that can talk about its own formulas and it hands back a sentence about that system, assembled out of the system's own material and pointing at nothing outside it. A world made of observers comparing records leaves a bill that no amount of further comparing pays. It has to settle that bill the same way, out of its own material. Something has to be doing the comparing. Where did the network come from, what is it running on, and what started it?
 
-Repair happens by itself. Two readings disagree, an observer works out a move and commits it, the disagreement drops, and nothing anywhere wants anything: chapter six ran two thousand and forty-eight universes to a standstill on exactly that, and no observer in any of them was trying to get anywhere. A rabbit interrupts that pattern. It holds a set of numbers fixed at its own expense and goes on holding them until it has nothing left to spend. Why does anything do that, what exactly is it spending, and what does the spending buy that nothing else buys?
+## A program that reads its own text
 
-## The internal environment
+Every programmer has wanted the same tool at some point. Something you can point at a piece of code that tells you whether the code finishes or runs forever, and answers by deciding rather than by waiting, correctly, on any program you hand it.
 
-Bernard had a name for that fluid. He had been using it since 1854 and he set it out in the 1865 book, *Introduction to the Study of Experimental Medicine*: the internal environment, the *milieu intérieur*. His claim about it was blunt. A complex animal does not live in the air or the sea. It lives inside a fluid it manufactures and defends. The liberty of a warm-blooded animal to walk out into weather that would kill a fish is bought entirely by how tightly that fluid is held.
+Suppose you have it. Call it the oracle. It takes a program's text along with an input, answers finishes or runs forever, and is never wrong.
 
-In lectures published in 1878, the year he died, he compressed the program into one line: the constancy of the internal environment is the condition of a free and independent life. A creature whose insides track its outsides is at the mercy of its outsides. Every degree of independence from the weather is paid for by an equal amount of work done indoors. Bernard's rabbits were buying independence from having eaten. The currency was their own tissue.
+Then write the following, which takes about four lines. It reads a piece of program text. It asks the oracle what that program does when it is fed its own text as its input. If the oracle says finishes, it goes into an infinite loop. If the oracle says runs forever, it stops immediately.
 
-The explanation available at the time was a vital principle: living matter has a property, dead matter lacks it, and the property is why the numbers hold. Bernard spent a career refusing that. His position was that the constancy is produced by machinery, that a physiologist's job is to find the machinery, and that the machinery obeys the same determinism as a furnace or a barometer.
+Hand that program its own text.
 
-The word everybody uses arrived sixty-one years after the book. In May 1926 a volume was published in Paris for Charles Richet's jubilee, edited by A. Pettit, in an edition of five hundred copies. Walter Cannon, professor of physiology at Harvard, contributed a paper to it called "Physiological regulation of normal states: some tentative postulates concerning biological homeostatics". In that paper he gave the steady states of the body's fluid matrix the name **homeostasis**.
+If it finishes, the oracle must have answered runs forever, since that is the only answer that makes it stop, and the oracle was wrong. If it runs forever, the oracle must have answered finishes, and the oracle was wrong the other way. There is no third case, so there is no oracle. Alan Turing published that argument in 1936.
 
-Cannon had come to the subject by watching the thing fail. He went to France with Base Hospital No. 5, a unit of Harvard clinicians, moved forward to a casualty clearing station run by the British, and spent the war on wound shock: men whose blood pressure fell and kept falling, whose blood turned acid, and who died with their injuries dressed and their wounds clean. He carried on the work in William Bayliss's laboratory in London and at the American laboratory in Dijon, and published *Traumatic Shock* in 1923. The list of quantities he assembled afterward as the ones a body holds steady, temperature and water and salt and sugar and oxygen and blood calcium, is a list of the readings he had watched go.
+Look at what did the work, because the contradiction is the disposable part. The four-line program is one whose behavior is the opposite of what is predicted about it. Hand somebody the transformation "do the opposite of the prediction" and the construction hands back a program satisfying it. Feeding a description into the thing it describes is a way of solving an equation. The equation is chapter two's: return what you were given.
 
-Cannon explained the choice six years later in *The Wisdom of the Body*. Equilibrium was taken: it had acquired an exact meaning for simple physico-chemical states in closed systems where known forces balance, and the coordinated business of brain and nerves and heart and lungs and kidneys holding a mammal's blood where it belongs is a different kind of thing. "The word does not imply something set and immobile, a stagnation," he wrote. It means a condition that varies and comes out roughly constant anyway.
+The calculator in chapter two hunted for a number the operation left alone and found 1.6180339887. The same demand, made of descriptions instead of numbers, has the same kind of answer: a description the transformation returns unchanged. That is a fixed point, and self-reference is the construction that builds one. Chapter two's warning travels with it, because a fixed point can be a place nothing ever arrives at.
 
-## A symmetry with a payer
+## Four rows and a diagonal
 
-Chapter five settled what a symmetry is: a change that leaves a named invariant alone, which makes it the claim that part of your description was never physical.
+The move underneath the oracle is older than computers and fits on an envelope. Georg Cantor published it in 1891, four pages in the first yearbook of the German mathematical society, of which he was the first president. It runs on a numbered list.
 
-Homeostasis has that exact shape. The shape is easy to fill in. Name the invariant: the concentration of sugar in the rabbit's internal fluid. Name the change: everything that happens to a rabbit across a day, being fed, not being fed, running, sitting in a cold room. The reading comes out the same, and it goes on coming out the same while the animal producing it is being eaten to produce it.
+Write four strings of four bits, one per line.
 
-The symmetries of the earlier chapters arrive free of charge. The laws not caring where you stand costs nobody anything: move the apparatus a meter to the left and the same numbers come out. Move a rabbit from fed to fasting and the same number comes out because a liver was taken apart to produce it.
+row 1:   1 1 0 0 row 2:   0 0 1 0 row 3:   1 1 1 0 row 4:   0 1 0 1
 
-So there are two ways for a reading to be invariant, two different physical situations wearing one word. In the first, the invariance is a property of the world's laws. The observer has nothing to do with it. In the second, the invariance is manufactured by a bounded observer out of its own capacity, continuously, for as long as it can afford the outlay. What the vital principle was tracking is the outlay, which in Bernard's rabbits was paid in liver.
+Walk the diagonal: the first bit of row one, the second bit of row two, the third of row three, the fourth of row four. That reads 1, 0, 1, 1. Flip every bit you landed on and you have built 0, 1, 0, 0.
 
-The outlay has to continue while the surrounding conditions keep changing. Neighbors update shared boundaries, and a maintained pattern has to answer every update, at a rate set by its own clock. Chapters eighteen and twenty-one priced that kind of work: a standing cost is a rate, and a rate is energy. Bernard's rabbits paid it in liver, and a calorimeter around the cage reads it as heat.
+Check it against the list. It differs from row one in the first place, which is where you flipped row one's own bit. It differs from row two in the second place, from row three in the third, from row four in the fourth. Four rows, four disagreements, one per row, each one forced by where the bit was taken from.
 
-## What a living thing is
+Nothing in the walk cared that the list was four long. Run it down a numbered list of strings that never end, one string per whole number, and what you build differs from the seventeenth string in the seventeenth place and from the millionth in the millionth, so it sits on no line of the list. A minute of bit flipping. No table of any size holds every string.
 
-Chapter eleven divided a network's state into what any neighbor can check and what only one observer holds. What an observer publishes is the entries on its seams. The fiber of a reading is the set of consistent worlds that produce exactly those entries. A reading whose fiber is empty describes nothing that could have happened.
+Turing's four lines are that walk with programs on the list and the oracle's prediction as the bit. Gödel's sentence is the identical construction pointed at proof instead of at halting. Number the formulas, so that a statement about numbers is also a statement about formulas, and build the sentence whose content is that it has no proof in the system. If the system proves it, the system proves a falsehood. If the system does not, the sentence says something true that no proof reaches. The lever was never a pun on the word this.
 
-A bounded observer persists when the reading on its seams keeps having a consistent extension. At every point along its own record time there is a world that carries what it publishes. It is spending to keep that true.
+The numbering is the engineering and the self-reference is what falls out of it. Give every symbol a number. A formula is a list of symbols, so code the list by prime powers: symbols numbered three and one give two cubed times three, which is twenty-four, and twenty-four factors into primes one way only, so the code hands back three and one. Proofs are lists of formulas and get their numbers the same way, so the relation between a proof and what it proves is arithmetic, and "no number codes a proof of the formula coded by twenty-four" is a statement about numbers that a system able to do arithmetic can write down.
 
-Bounded homeostatic persistence is the criterion for a living pattern: maintenance under disturbance, paid for out of a finite budget.
+Getting a sentence to carry its own code with no regress is Quine's device, and works in English with no numbers in it at all. Take a phrase, write it once inside quotation marks, then write it again outside them.
 
-Chapter five's invariants survived something done to a system from outside: a rotation, a shift, a relabeling. This one survives the system's own running. A rabbit is whatever a rabbit's metabolism leaves alone while it takes everything else apart.
+"is twenty words long when appended to its own quotation" is twenty words long when appended to its own quotation.
 
-The rabbit makes the point about fibers by itself. Across a week without food almost everything about its interior changes: the liver empties, the fat goes, the mass falls by a fraction anybody can measure on a kitchen scale. What it publishes holds. The animal is traveling an enormous distance inside the set of states that produce one reading. The traveling is what the reading costs.
+Count. The quoted phrase is ten words and the phrase after it is the same ten, so the sentence is twenty words long, which is what it says about itself. It does that without the word this and without a second sentence propping it up.
 
-Stone persists too. Nothing inside a stone is spending to make that happen. Leave a stone alone and its readings sit where they sit. Leave a rabbit alone for a week and its readings walk off, because holding them where Bernard found them was work, and the work stopped. When the entries on an observer's seams stop having any consistent extension, the fiber is empty, and repair does what repair does: the surrounding patches redistribute until the record closes again, with the boundary of the thing that was doing the spending drawn somewhere else. Every atom is where it was a minute earlier. The reading is what stopped.
+Gödel's sentence is built that way. It gets called a paradox. It is not one. The liar sentence, the one saying that it is false, has no consistent reading: true makes it false, false makes it true, and the machinery seizes. Take Gödel's instead and suppose the system proves it. Then a proof of it exists, so what the sentence says is false, and the system can read that proof and derive the opposite of what it just proved. It contradicts itself, which is chapter two's disease, buying everything and ruling nothing out. So a system that contradicts nothing does not prove that sentence, which is what that sentence says about itself. The sentence is true.
 
-## Two budgets, and what a policy is
+That is what the table of seven was handed: a consistent system with a truth inside it that its own proofs do not reach. Hilbert wanted consistent and complete, and complete was the half that went.
 
-Chapter nine found two kinds of repair and separated them by who pays. In the first, an observer rewrites its own patch so that its reading matches what the seam says: the capacity spent is the observer's own, nothing outside the patch changes, and the boundary record comes out of the transaction saying what it said going in. In the second, the boundary record itself is rewritten so that both sides read something new, and the capacity spent sits on the overlap, owned by neither observer alone.
+## Two hands and a sheet of paper
 
-A bounded thing that persists is choosing between those two, at every event, out of a finite budget. The rule it chooses by is its **policy**, and running a policy is the whole of behavior. There is nothing else in the word. An organism, a firm, a thermostat and a bacterium each run one: how much to spend bringing themselves into line with what the world reports, and how much to spend on changing what the world reports.
+In January 1948 M. C. Escher printed a lithograph, 28.2 by 33.2 centimeters, showing a sheet of paper lying on a surface. Two shirt cuffs are drawn on the sheet in flat gray pencil. Out of each cuff a hand rises off the paper in full modeling and shadow, and each hand holds a pencil, and each pencil is drawing the cuff of the other.
 
-In 1972 Howard Berg and Douglas Brown built a microscope that chased bacteria. Rather than hold the field of view fixed and watch a cell swim out of it, the instrument moved to keep one *Escherichia coli* centered and recorded how far it had to move, which gave them the three-dimensional track of a single cell. The results went into *Nature* that year, volume 239, pages 500 to 504.
+Chapter six borrowed the impossible staircase, which this artist put into a lithograph twelve years later. The staircase fails at the closing: every individual step up is unobjectionable and the loop cannot be assembled. *Drawing Hands* fails nowhere. Every line in it is a line an artist could draw. Both hands are drawn and both hands are drawing, and cover any part of it you like and what is left is consistent. What the picture lacks is a ground floor. Neither hand is the real one. There is no corner of the composition to stand in and ask which was drawn first.
 
-A cell swims in nearly straight lines, which they called runs, interrupted by brief episodes of jittering in place, which they called twiddles, after which it sets off in a direction unrelated to the one it came in on. In plain water that is a random walk. Put a gradient of something edible across the chamber and exactly one thing changes: a run that happens to be pointed up the gradient goes on longer. Runs pointed the wrong way come out at ordinary length. The cell has no steering at all. It has a brake. It declines to apply the brake while things are improving.
+Douglas Hofstadter named the arrangement in *Gödel, Escher, Bach* in 1979 and spent seven hundred pages on it. A **strange loop** is a hierarchy that climbs through its levels and arrives back at the level it started from, with no level underneath holding the rest of them up. The staircase is what a strange loop looks like when it fails. The hands are what one looks like when it holds. Everything remaining in this chapter is the second picture with something else in the cuffs.
 
-A bacterium cannot read a gradient across its own body, because the difference in concentration between its two ends is far below the noise of molecules arriving at random. Robert Macnab and Daniel Koshland showed what it does instead, in the *Proceedings of the National Academy of Sciences* in September 1972. They built an apparatus that mixed a cell suspension abruptly out of one uniform concentration into another, so that the population experienced a change in time with no gradient in space anywhere in the vessel. The cells responded anyway. A sudden drop set them tumbling, a sudden rise sent them swimming smoothly, and what the bacterium is reading is therefore its own record: what the seam says against what the seam was saying a moment ago.
+## The description and the thing described
 
-Both budgets are open to that cell, and it uses both. It can retune its own detectors, and it does: after a step up in attractant, the receptors are chemically modified until the same concentration stops counting as news and the tumbling rate comes back to where it started. That is capacity spent inside the boundary. The sugar in the chamber is precisely where it was. Or it can swim, which puts its boundary against a different piece of the world, so that the entry on that boundary comes out different because the boundary is elsewhere.
+Chapter eleven put a name on what a network of observers holds in common. The record map takes the full state and returns the part that survives comparison, which is every seam entry and nothing that only one observer could have known. That list has a fiber, the set of consistent states carrying it, and when the fiber holds exactly one member, that member is the observable normal form. Objective reality is that state, up to changes nothing can see.
 
-Swimming is expensive in the only currency the cell has. The flagellar motor is turned by ions falling across the membrane, and that gradient is the same one the cell draws on to build everything else it builds, so a run is charged to the account that would otherwise have bought the next protein.
+The smallest case runs to the end. Put two observers on one carrier, overlapping on a shared port, and let each prepare its ports, keep its own clock, read its own field and act on what it reads, all on one continuing history of repairs. The two accounts are one law. Every record either of them keeps, every tick and every timeout comes out exactly the same whether the history is computed repair by repair or through the effective description an observer would write down for it. The same holds a level up. On the refining screen, with the radial direction the construction declares, any finite collection of an observer's clock, field and response readings is matched, as closely as anyone asks, by a field moving in one smooth, unchanging spacetime with one time and three space directions. That is the kind of description relativistic field theory writes down, and the observers inside the construction get to use it.
 
-A company faces the identical pair. It can work on the product, which is capacity spent inside the boundary and leaves what the market says untouched on the day. Or it can buy entries in the shared account that customers, competitors and regulators all read from, which is what an advertising campaign is. Both are expensive and both are ordinary, and the two come out of different accounts: a firm that does more of the first does not thereby obtain any of the second.
+Every object in that sentence about objective reality is a description or an operation on one. The record list is a description, and a description can fit no world, one world, or several.
 
-A bacterium declining to tumble and a company buying billboards are the same move at different scales under different budgets.
+So point it at everything. Take the whole structure, records included, as one object, and apply the operation to it. What comes back is what that object's own description specifies. The demand is that the two agree.
 
-## Four states
+**The universe is the observable normal form of its own description.**
 
-Strip the arrangement to the smallest thing on which the two budgets can be told apart at all.
+One line covers the calculator, the four-line program, the sentence carrying its own code and the demand just made of the whole structure, and the same unknown stands on both sides of it.
 
-Take an observer with two registers, each holding one bit. One of them sits on the overlap: it is the shared record, the entry a neighbor can read. The other is private. What it holds is a flag, set when the observer's own state fails to match what the shared record says and clear when it matches. Four states in total, of which two are consistent, being the two values of the shared record with the flag clear.
+$$x = f(x)$$
 
-Two moves exist. The private move clears the flag and touches the shared record not at all, which is self-repair in its smallest possible form: the observer bringing itself into line with what the seam says. The network move writes the shared record, so that what both sides read comes out different.
+Here x is whatever is being solved for and f is the operation applied to it. On the calculator, x was a number and f was divide one by it and add one. Applied to everything, x is the whole structure with its records and f is take the description and return the world it specifies. Self-reference is that equation, and closure is that equation with the universe in it.
 
-A rule for picking moves, step after step, possibly at random, is a scheduler. Constrain it three ways, all of them constraints the repair law carries anyway: it never increases the mismatch, it writes at most one register per step, and it spends at most one unit of capacity per step. Two sub-families inside that class do different things. A self-update-only scheduler never writes the shared register. A network-update-only scheduler never writes the private one.
+Chapter eleven's three verdicts apply here as well. A description can fit no world, one, or several. Closure asks for the case where realizing the structure's own description gives back that same structure, with every observation and intervention inside it preserved.
 
-Start in a consistent state, with the shared record holding one of its two values. Ask for the other one: the state in which the shared record holds the opposite value and the flag is clear.
+A finite log does not pin down the whole network that produced it. In a network of 1,280 twelve-port carriers, the recorded repairs and reads use 86 of its 7,650 connections. Reconnect two unused pairs and every recorded operation survives, although the number of triangles in the complete network changes and the two networks cannot be renamed into one another. Their local states, ports, readback and protected records support the same observed history. A self-reading world reads more than one log, and closure asks that everything the structure records, across the whole of its history, fixes the structure.
 
-Three facts hold about that target, on a system with four states in it.
+The requirement constrains a world and its self-description together. A finite observer inside it keeps a useful partial account without recovering the whole architecture, and every observer does.
 
-A self-update-only scheduler never arrives. The failure has nothing to do with budget or patience. From every consistent start, over any number of steps, for every member of that sub-family, the probability of arrival is zero.
+Nothing outside supplies the description. Asking what switched the universe on assumes an outside to switch it on from. The demand that picks out this object is the demand that there is no outside. Anybody asking has to supply the outside themselves. Every outside anybody has supplied has needed one of its own.
 
-An explicit network-update-only scheduler arrives with probability one.
+There is a dividend in that which nobody went looking for. A description obliged to specify the structure it came out of cannot leave a number loose, because a loose number is a second structure answering to the same description, and the fiber has to hold one member. Chapter twenty-nine is where that gets cashed. The grain and the fine-structure constant are written in terms of each other, and the grain also fixes the record capacity and, through it, the cosmological constant. Each version of that loop admits one solution. A quantity that every other physics has to measure and enter by hand is computed instead. Constants are what a world with no outside is not free to leave open.
 
-The third fact prices the other two. Any scheduler in the class, whatever its rule, that has a positive probability of arriving writes the shared register somewhere along the way. A positive chance of getting there costs at least one shared write. There is no arrangement of the private budget that supplies it.
+## Three orders
 
-The reason for the first of the three is one line. It is chapter five's word doing the work. A private move leaves the shared register alone. Compose any number of moves that each leave a quantity alone and the quantity is left alone, so the value of the shared register is an invariant of the whole self-update-only sub-family, and every state that sub-family can reach carries the value it started with. The size of the budget never appears in that argument, which is why enlarging the budget does nothing to the conclusion. The private register can be cleared, set, cleared again and interrogated for as long as anybody has patience, and the neighbor reading the seam sees the entry it saw at the beginning.
+The word loop invites a picture of something traveling backward into its own past. Three different orderings are in play. Every paradox that gets built out of the loop comes from confusing two of them.
 
-The two budgets do not buy the same things. The demonstration fits on four states, which matters more than a large example would, because a system with four states has nowhere for an inefficiency to hide. The gap between the budgets is not a shortfall in the private one that a larger private budget would cover. There is a class of outcome that self-repair does not reach at any size. The only thing that reaches it is expenditure on the record two observers hold jointly.
+The first is complete-history closure. The equation fixes a whole structure under a reconstruction map and requires no external time in which someone first solves it. That structure contains an internal causal order, changing local states, clocks and computations. The intrinsic interactions that realize these dependencies and the timeless self-consistent history are two descriptions of the same reality.
 
-Every bounded system that persists therefore runs into that class. Bernard's rabbit can convert its own body into blood sugar for days and hold the internal environment at the value he measured, and the entry on the seam between the rabbit and the room, which is that there is nothing in the room to eat, comes through the whole performance unaltered. A bacterium that has finished retuning its receptors reads zero mismatch while sitting in a patch of water with no food in it. Perfect internal adjustment and starvation are compatible states. A policy that spends only on the first arrives reliably at the second.
+The second is an observer's record order, which reads depend on which writes. Actual clocks and acts of construction occur within that history. Each observer's clock ticks on its own events, and the flow its state determines turns one step at each of them. Order, record formation and duration are different parts of the account.
 
-The company gets the same result with the accounts written out. A firm can spend a decade making its product better and arrive at a market that has heard nothing about it, because what the market holds is an entry the firm never wrote to, and that entry carries the value it carried before. Which is why the workshop and the billboard both exist, and why the division between them is fought over every year in every firm that has one.
+The third is a solver's repair sequence, the order in which a computer running the network happens to make its moves. A solver step is not a second. Repairs with no dependency path between them have no order in the causal record, even when an executor lists them one after another.
 
-## The entry is one entry
+Set the three side by side. First they work out the architecture, later they build it, is a statement about the record order inside the history. The closure equation adds no earlier builder outside it. Recovered specification, intrinsic realization and inhabited world are one complete structure, its internal precedence and its responses to interventions included, and replaying one observed trajectory is a smaller thing.
 
-An entry on a seam is one entry. It is read by both patches, owned by neither, and holds a single value at a time.
+## A thousand machines and one machine
 
-Two observers spending on the same entry are spending against each other. Whatever stands written there when the spending stops is what both of them have to live with. Each brings a finite budget to the argument. A bacterium in a gradient is in that position with respect to every other bacterium in the same drop of water, which is why the gradient it is climbing is partly a record of what the others have taken out of it.
+Run the network on one computer. One process, one memory, one loop that picks a seam, checks it, repairs it if the two sides disagree, and goes round again. It ends where chapter ten said it ends. The endpoint does not depend on which seam it picked first.
 
-That is a competition. It is settled by which pattern goes on having a consistent extension afterwards, and was running on the thirty seams of a twelve-patch net long before anything with a flagellum turned up to enter it.
+Then run the same network across a thousand computers, which is what anybody does in practice with eighty-two thousand patches. Cut the patches into a thousand pieces, one per machine. Each machine holds its own patches plus a copy of the seam data along its border, refreshed by messages that arrive late and out of order. Machines take checkpoints. One dies and restarts from its last checkpoint, replaying updates it had applied before it fell over. A supervisor notices another machine falling behind and re-cuts the entire partition to move work off it.
+
+Anybody who has run a large computation knows what the second version looks like from the operator's chair. The logs differ. The timings differ. Two runs of the identical setup interleave their operations differently. Neither interleaving matches anything the single machine does.
+
+Whether the two are the same universe takes one bookkeeping move to settle: say exactly what counts as the state of the world and what is scaffolding around it. Keep the authoritative record each patch holds. Quotient by the changes nothing can see, which chapter eleven's group names. Throw away the message queues, the retry counters, the labels saying which machine owns which patch, and any wall clock the machines happen to be reading. What is left is a state of the plain single-machine network. Every readout an observer inside can perform is computed from that.
+
+Then classify what a distributed run is permitted to do, and it comes to three things.
+
+A commit, which projects onto a legal repair path of the single-machine network. Something disagreed, a patch fixed it, and the fix corresponds to a repair the one machine could have made.
+
+A stutter, which projects onto nothing at all. Delivering a message, refreshing a border copy, taking a checkpoint, preparing a transaction, aborting one, starting a machine, stopping a machine, replaying an update that has been applied once, and every byte of metadata describing how the work was cut up. The projected state before and after is the same state.
+
+A rollback to an earlier committed state, carrying the name of the committed state it returns to.
+
+That exhausts the list. The rest is an induction with three cases. Chapter ten's result is that the endpoint of the repair process is constant across everything reachable: if legal repairs get you from one state to another, both have the same endpoint. A commit moves along legal repairs, so the endpoint is unchanged. A stutter moves nowhere, so the endpoint is unchanged. A rollback lands on a state whose endpoint was the same one. Start the distributed run and the single-machine run from the same initial state, and after every event in the run, including the last, the endpoint is the same.
+
+So when the distributed run finishes, its terminal normal form is the single-machine one. Stutters and rollbacks never finish anything on their own; the commits do the work.
+
+A checkpoint survives the trip as well. Serialize a run halfway through, records and quantum state together, import it on another machine by replaying its prefix, and resume: every final quantum output matches the run that never stopped.
+
+That is a symmetry of the settled result, the endpoint every observer inside ends up reading. Partitions, retries and wall clocks never reach it, because they never touch the projected state. The operator in the chair can tell two runs apart by their logs, and the operator is outside. Chapter five supplied the deflation, and it applies here at full strength: a symmetry is the claim that part of your description was never physical, and how the work was divided was never physical.
+
+Nothing else in the architecture moves as much. Rotating the carrier moves twelve ports. A gauge change moves a convention chosen separately in every place. This one moves the entire execution, and goes uncounted as a symmetry because it looks like a fact about implementation rather than a fact about the world, which is what the labeling of the twelve ports and the choice of gauge in every place both looked like until somebody counted them.
+
+A rendering loop can have a frame number shared by its objects, and a distributed solver can have a global progress counter. Neither number is time inside the world. The endpoint theorem is about what repair schedules produce. Reality does not approach a final instantaneous state: local events go on inside the one complete structure, and their rates belong to its clocks.
+
+A faithful description running inside a world preserves its operational dependencies along with its terminal record. Closure says the inhabited universe is a realization of exactly that kind, of its own description.
+
+## Five cards
+
+Chapter six's local rule needs no synchronized clock and no leader, and any run of it has a schedule all the same. Can a thing built like that do anything besides agree?
+
+Deal five cards face up in a row and number the places one to five. A shuffle is a rule saying where the card in each place goes. Call the plain one C: every card moves one place along, and the card in place five comes round to the front.
+
+Two more shuffles, each of which is C wearing different clothes. Shuffle A sends place one to two, two to four, four to five, five to three, and three back to one. Shuffle B sends one to four, four to three, three to five, five to two, and two back to one. Trace either of them and you visit all five places once and return to where you began, which is exactly what C does. They differ in the route and in nothing else.
+
+Chapter nineteen measured how far two operations are from being swappable by doing them in both orders and subtracting. In a group there is nothing to subtract, so you cancel instead: undo one, undo the other, then do each in turn. If the two get along, every doing cancels its undoing and the deck is as you found it. Try it with these two. Perform, in this order, A backwards, B backwards, A, and B.
+
+Read the row off. Every card has moved one place along and the last has come round to the front. Four shuffles that were supposed to cancel have delivered C.
+
+Five pieces of card on a table are enough to check that identity.
+
+Write a program as a list of instructions, where an instruction reads one input bit and says: if that bit is one, do this shuffle, otherwise do that one. Run the instructions in order on the deck. Say the program computes a function of the input bits when the deck ends up cycled by C exactly on the inputs where the function is true, and untouched on the others.
+
+A single instruction computes a single input bit. Building everything else out of that is the identity above, used once per gate. Given a program for one statement and a program for another, assemble four blocks in the order the identity wants them: the first in A's clothing run backwards, the second in B's clothing run backwards, the first in A's clothing, the second in B's clothing. If either statement is false, its two blocks do nothing and the surviving pair cancels, so the deck is untouched. If both are true, the four blocks are the four shuffles above and the deck comes out cycled, by a route that depends on the clothes and can be steered to any cycle you want by choosing them, which is what lets the step be applied again to its own output. That is the AND gate, and with the complement it is every gate there is. David Barrington published the construction in 1989 in the *Journal of Computer and System Sciences*.
+
+Every function of bits is a tree of gates, so every function of bits is a fixed list of shuffles of five cards. The deck never holds more than five things in a row. The price sits in the length: four blocks per level of the tree, so a formula of depth ten compiles into a word of about a million shuffles, and depth is expensive.
+
+Those five cards are hardware. Chapter fourteen counted the rotations of the twenty-faced carrier, got sixty, and found five families of half turns that those sixty rotations shuffle among themselves. Sixty permutations of five objects is the group that leaves the fifth-degree equation without a solution formula, and the carrier's own group of moves. The deck is the carrier. The shuffles are things the carrier does to itself.
+
+The property making the construction work is the property Galois found. The leftover from those four steps, the thing that came out as C instead of as nothing, is itself a move of the group. Collect every leftover the group produces that way and run the same operation on the collection. In a group with the shape a formula in radicals requires, the leftovers shrink at every round and die out. In this group of sixty they never shrink at all: the leftovers are the whole group again, round after round. The five-card identity is that refusal to shrink, written out on one case. The absence of a formula for the quintic and the presence of universal computation are one property of one group, read from two ends.
+
+Compile a function into a federation of observers instead of into a deck: one patch per gate, each patch holding a few registers, each patch checking the seams it touches and repairing its own registers and nothing else. The input arrives as patches that hold their bits and accept nothing else. Set every other register in the network to anything at all. Let the patches repair in any order that keeps going, with no synchronized clock and no leader. The network settles, and the value of the function is sitting in a designated register of the settled state, from every starting state, and any two settled states of that network agree there whatever order the repairs ran in.
+
+The small cases can be checked on every input rather than on a sample. A full adder's sum bit, the three-input circuit that adds two bits and a carry and sits underneath every binary addition anybody has ever performed, comes out right on all eight inputs from every starting state. So do the two bit-mixing functions called choose and majority, which take three inputs each and sit inside the hash function that Bitcoin's ledger is built on. A two-input NAND, the gate that answers false only when both its inputs are true, runs end to end on both engines, the deck and the federation, and they agree on all four inputs.
+
+Local repair networks compute finite Boolean functions, every one of them. Whoever builds one can describe it globally and count its work, and none of that description enters the gate rule a patch runs.
+
+## The hardware
+
+Set the two results next to each other.
+
+The first says the endpoint does not care how the work was cut up. The second says local repair computes anything a circuit computes. Together they describe a world that computes itself, with no machine underneath it.
+
+Observers inside it can reconstruct and replay the recorded program. The hardware is the carrier: the deck is its five families of half turns, and the shuffles are its own rotations.
+
+Which leaves the observers themselves, who have been doing all the work and getting none of the explanation. A loop that computes has pieces. Some of those pieces spend everything they have on continuing to be pieces: holding a boundary, keeping a record, repairing themselves faster than they come apart. Every rule in the architecture is indifferent to which patterns survive. Some of the patterns are not.

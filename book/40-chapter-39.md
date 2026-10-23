@@ -1,195 +1,101 @@
-# 39. Does It Feel Like Anything, and What Is Left to Decide?
+# 39. Why Is a Bacterium Freer Than an Atom?
 
-The first big interdisciplinary conference on consciousness was organized by an anesthesiologist.
+Every morning somebody in a laboratory lifts twelve glass flasks off a shaker and moves one hundredth of the liquid in each of them into a fresh flask of the same clear solution. The used flasks go into the autoclave. The new ones go back onto the shaker at 37 degrees Celsius for the next twenty-four hours. The job takes a few minutes, and somebody has done it every day since 24 February 1988.
 
-Stuart Hameroff worked in anesthesia at the University of Arizona Medical Center, and in April 1994 he convened a meeting in Tucson called Toward a Scientific Basis for Consciousness, which put philosophers, neuroscientists and psychologists in the same rooms for a week. He spent his working days putting patients under and waking them again. The meeting was about what consciousness is.
+Each flask holds ten milliliters. The entire experiment, all twelve populations of it, comes to a hundred and twenty milliliters, which is less than a glass of wine.
 
-The talk people were repeating in the corridors came from a philosopher a year out of his doctorate, holding a fellowship in a philosophy, neuroscience and psychology program at Washington University in St. Louis. David Chalmers opened by splitting the subject in two. The split was a list.
+What is in the flasks is *Escherichia coli*. On the first day all twelve held the descendants of a single cell. Six of them were founded from that cell's line and six from a variant of it differing by one change that does nothing in this medium except make its colonies come up a different color on one kind of indicator plate, which is how a contaminated flask gets caught before it ruins anything. The solution carries twenty-five milligrams of glucose in every liter and nothing else these cells can eat. It also carries citrate, about twelve times as much of it as glucose by count of molecules, which is in the recipe to keep iron in solution. *E. coli* cannot use citrate as a carbon source when oxygen is present. Handing a bacterium a tube of citrate and watching whether it grows is one of the routine ways of telling *E. coli* apart from the things that look like it under a microscope, so the inability belongs to the species rather than to these twelve flasks. The test is on the identification key, and a strain that passes it gets filed as something other than *E. coli*.
 
-How a system discriminates between things around it, categorizes them and reacts. How it brings information together from separate places. How it reports its own states in words. How it gets access to its own internal states at all. How attention gets focused on one thing rather than another. How behavior gets deliberately controlled. What separates being awake from being asleep.
+The daily transfer carries over one percent. Overnight that one percent eats the glucose and grows back a hundredfold, which is six and two thirds doublings, so a day in the flask is six and two thirds generations and a year is roughly two thousand four hundred.
 
-Seven items, and he called them the easy problems of consciousness, with a warning attached to the adjective: getting the details right, he wrote, will probably take a century or two of difficult empirical work. They count as easy because in every case anybody can say what an answer would look like. It would be a mechanism. Specify the machinery that retrieves information about internal states and makes it available for verbal report, and reportability has been explained.
+Nobody in that laboratory picks which cells get transferred. The pipette takes a hundredth of whatever is in the flask and cannot tell one cell from another, and the person holding it has no way of knowing which lineage is which until long afterward, when somebody sequences something. Yet the flask holds a different population every year. The differences run in a consistent direction. Something settles which lineages are in there. It is not in the room.
 
-Then the other one. When our cognitive systems engage in visual and auditory information-processing, he wrote, we have visual or auditory experience: the quality of deep blue, the sensation of middle C. Thomas Nagel had supplied the standard phrase for it twenty years before, in the October 1974 issue of the *Philosophical Review*: an organism is conscious if there is something it is like to be that organism. Why physical processing should give rise to any of that seems objectively unreasonable, Chalmers wrote, and yet it does. The talk went into the *Journal of Consciousness Studies* the following year, volume 2, pages 200 to 219, under the title "Facing Up to the Problem of Consciousness". The phrase the hard problem became the standard name for that question.
+There is a second question in that flask, about one cell rather than about a population. A bacterium has options. It can put the next minute's energy into dividing or into repairing itself, it can swim toward the sugar or sit, it can carry the machinery for eating something and switch it off. A hydrogen atom in the same flask has nothing of the kind. The atom came first and has fewer moving parts, and less room to be otherwise than the bacterium does, which runs backwards from the way the world is usually described.
 
-Descartes had a physical world made of extended stuff and a thinking thing that occupies no place at all, and his trouble was traffic between the two: how a decision taken in something with no location moves an arm that has one. He put the meeting at the pineal gland, on the grounds that every other part of the brain comes in pairs and that one does not, so it was the only place the signals from two eyes and two ears could be brought together into one impression. Every version since has kept the shape and dropped the gland. There is an account of the world written in the third person, there is what it is like to be one of the things in it, and nobody has a rule that turns either into the other. The name for that is the **mind-body problem**.
+## Three things, and no fourth
 
-Chapter three defined an observer without any mention of consciousness. This chapter takes one further step: certain organized self-reading and repair processes are experiences. A thermostat shares the record-and-feedback interface with a person, and the step is about what is organized behind the interface.
+Something copies itself imperfectly. The imperfection is passed to the copies. Some versions end up with more copies than others.
 
-One of these bounded record-keepers is holding this book. There is something it is like to be it. Where in the architecture does that sit? And if the network settles into the same arrangement whatever order anybody repairs in, what is there for that reader to decide?
+That is the whole mechanism. Each of the three parts is visible in the flask. Copying is imperfect: over thirty thousand generations, each of the twelve populations tested billions of mutations, which is what happens when a population of hundreds of millions divides six and two thirds times a day for decades. The imperfection is heritable: a daughter cell gets its mother's copy of the genome, errors and all. And the versions do not fare alike, because the glucose in a fresh flask is gone within a few hours, and a lineage that got through more divisions before it ran out is a larger fraction of what is sitting there when the pipette arrives in the morning. A larger fraction of the flask is a larger fraction of the hundredth that gets moved.
 
-## A creature molecule for molecule identical to you
+The name for those three conditions running together is **natural selection**. There is no fourth item in which anybody decides anything. Nothing in the flask is aiming at a result, no lineage is trying to win, and the only agency in the building is a plastic tip that samples without discrimination. The sorting has finished before anybody arrives for the morning transfer.
 
-Chalmers put the sharpest form of the first question two years later, in a book called *The Conscious Mind*. Consider, he wrote, his zombie twin: a creature molecule for molecule identical to me, lacking conscious experience entirely. Same cells, same firing, same words coming out of its mouth, and nobody inside.
+"Fitter" is a bookkeeping word here and carries none of its usual freight. A fitter lineage holds a larger share of tomorrow's flask than of today's. That exhausts the meaning. The word predicts nothing about the day after tomorrow, because the flask the lineage will be competing in is the flask it is in the middle of changing.
 
-The argument runs three lines. Such a creature is conceivable, and Chalmers set the standard in those words: it certainly seems that a coherent situation is described, and I can discern no contradiction in the description. Whatever is conceivable in that sense is possible. And if a world physically identical to this one can lack experience, then experience is something over and above the physical facts, and physics by itself does not reach it.
+## The freezer
 
-The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that without flinching, because the twin does everything he does.
+Richard Lenski set the twelve flasks going at the University of California, Irvine, with two thousand generations in mind, which at six and two thirds a day is about ten months of transfers. He moved the populations to Michigan State in 1991 and they carried on there. The organism he picked reproduces without sex, so every lineage is an unmixed line of descent and no gene ever arrives sideways from a neighbor. It also survives being frozen.
 
-The zombie argument keeps the entire physical organization, every register and every causal dependency, and removes experience. An identity theory rejects the separation outright: if experience is a kind of physical organization, a duplicate of the organization is a duplicate of the experience. That is the position this chapter takes.
+Every five hundred generations, which comes to every seventy-five days, the part of each population that does not go into the fresh flask gets a dose of glycerol and goes into a freezer at minus 80 degrees Celsius. The cells come through it alive. Thaw a vial and the population resumes, from that day, with the mutations it had accumulated by then and none of the ones it acquired afterward.
 
-Everything rests on the first step, the step nobody pauses on, because taking a complete physical description sounds like the part you get for free.
+Twelve populations, one ancestor, and a shelf of vials sampled every seventy-five days for decades. It is a fossil record whose fossils are not dead, which makes this the only evolutionary experiment anybody can run twice.
 
-## The mechanical properties of the ether
+The freezer earned its keep early in 2020, when the populations had passed seventy-three thousand generations and the laboratory shut. The flasks went into the freezer. In September the experiment came back out of it and carried on from where it had stopped. The rest of the time the freezer is doing something stranger. Thaw a vial from before an event and run the population forward again, and whether that event had to happen becomes a question somebody can answer by counting.
 
-Chapter one's crash log had an entry for the substance light was supposed to wave in, rigid enough to carry a wave at the speed light travels and insubstantial enough for a planet to cross without losing speed. The nineteenth century held both properties rather than drop the idea that a wave needs something to wave in. The interferometer in the Cleveland basement went looking for the Earth's motion through it in 1887 and found nothing, and forty years of better instruments found nothing again.
+The one quantity this experiment reports comes out of the freezer as well. To find out how much better a population has got, thaw the ancestor, mix the two in equal parts in a fresh flask, and plate a sample at the start and again a day later. The ancestor's colonies come up one color and the competitor's come up the other, so counting red against white on a plate gives the ratio before and the ratio after, and the change in that ratio over one day is what the word fitness denotes here. Every measurement of it is a competition against cells that were frozen in an earlier year and thawed for the purpose.
 
-Nobody ever caught the ether not being there. Einstein took the null result as the law rather than as the disappointment, and after that every question the ether had been introduced to answer had an answer without it. Its stiffness explained nothing, because nothing needed explaining by a stiffness. Its density had no consequence anywhere. The ether was made redundant, which is a more complete failure than going undetected, because a thing nobody detects may have effects that need accounting for.
+Michael Wiser, Noah Ribeck and Richard Lenski ran that measurement across all twelve populations through fifty thousand generations and published the trajectory in *Science* on 13 December 2013. Mean fitness increases without bound, consistent with a power law, with no sign of leveling off after twenty years of it. Chapter thirty-six's argument said that mean fitness never decreases in a population sorted this way, and that the climb stops once the survivors stop disagreeing. A flask never runs out of disagreement, because copying keeps making more of it. Twelve flasks on a shaker in Michigan are where somebody went and measured it.
 
-Take the sentence "what are the mechanical properties of the ether?" It has a subject and a verb and it never got an answer. It stopped being a question, because one of its words stopped naming anything. A question with a term that names nothing does not have a false answer either.
+## Citrate
 
-Two things can happen to a question, then. It gets answered. The question stands with a fact attached to it. Or one of its terms is shown to name nothing. The question goes away and stops consuming effort. The second is called **dissolving** the question. It happens rarely, and from the outside it looks the same as a refusal to answer.
+For more than thirty thousand generations, the citrate sat in all twelve flasks, twelve times more abundant than the food, untouched. Then one of the twelve, the population known as Ara-3, started eating it. By generation 31,500 there were cells in that flask growing on citrate in air, which is the thing the diagnostic test says *E. coli* does not do. The population got larger, because there was suddenly far more carbon available to it, and it got more diverse, because the cells that could not use citrate were doing something else for a living and kept doing it.
 
-The hard problem asks how experience arises from the physical facts, where the physical facts are meant as an inventory belonging to nobody: a list of what there is, compiled from no position. Go looking for that list and it fails to turn up, one entry at a time.
+Zachary Blount, Christina Borland and Richard Lenski published the result on 10 June 2008, in a paper called "Historical contingency and the evolution of a key innovation in an experimental population of *Escherichia coli*". It was Lenski's inaugural article for the National Academy of Sciences, the paper a newly elected member writes on a subject of their own choosing. Most of it is taken up with the experiment Blount ran after the announcement.
 
-Distance counts comparisons. There is no comparison without two parties each holding something. A rate needs a clock, and chapter twenty-one left no clock that is not somebody's. Charge is read off a loop that runs through one observer after another. A record sits in the center of one particular algebra of questions. Even the leftover of exactly one, sitting on a twelve-patch net with one flipped edge, is a quantity that every observer in that net agrees about, which is a different thing from a quantity nobody holds.
+Two explanations were available for why one population out of twelve did this after thirty thousand generations and the other eleven did not. Either the mutation required is astronomically rare, in which case any of the twelve could have got it on any day and this one was lucky, or the mutation is ordinary and works only in a cell that carries some other change first, in which case the population had to build up to it.
 
-Objective, in the sense chapter eleven fixed, means settled between parties who each have a boundary and a budget, with no further list standing behind theirs for it to approximate.
+Those two stories make different predictions about the freezer, and the freezer answers. Blount thawed vials from across that population's history and grew enormous numbers of cells from each of them. From the ancestor, not one citrate-eater among 8.4 trillion cells. From sixty clones sampled across the first fifteen thousand generations, none among nine trillion. From clones taken later, citrate-eating appeared repeatedly and significantly more often than chance allows, which puts the arrival of the enabling change at around generation twenty thousand. That change left the cells no more error-prone in general. It made this one step reachable.
 
-The answer here identifies certain lived processes with their qualitative character. That is a commitment about what the physical organization is. Having records and a bounded point of view makes something an observer, the identity is a further step, and the hard problem meets the account at that step.
+Run the population from the early part of its own past and it cannot get to citrate. Run it from a later part of the same past and it can, over and over. What a lineage is able to become is set by what that lineage has done. The set gets bigger as the history gets longer.
 
-A record map can leave out state that is accessible inside. That makes the omitted state private relative to the map, which is a long way short of making every omitted variable a quale.
+## One budget with two halves
 
-Deleting an interior that does causal work changes boundary behavior, and nobody disputes that. The zombie keeps the interior and asks about its character, and the identity account answers that the interior's organization is its character.
+Chapter thirty-eight left a living thing as a pattern that keeps its public reading extendable at its own expense, and behavior as a policy over the two ways of spending: on itself, or on the record it shares with a neighbor.
 
-## Coordinates an observer reads on itself
+A pattern persists by being re-asserted into the record every cycle, and a record costs capacity, and the capacity is finite and shared. Two patterns whose re-assertions cannot both be extended cannot both persist. Which of them does is settled by which one keeps having an extension. Nothing about food or territory is needed to get this started. The scarcity is in the bookkeeping, and would be there in a universe with unlimited everything else.
 
-Chapter thirty-seven got an observer down to two registers, which is the smallest arrangement in which its two budgets come apart. A neighbor reads the first one. The second holds one bit saying whether the observer matches what the seam says about it.
+Chapter thirty-six ran that argument on laws, and got a filter with no chooser in it: what survives is what closes, and the share held by the descriptions that close does not decrease. This is the same argument one level down, with organisms where the laws were. Selection at the level of physics and selection at the level of bacteria are one filter applied at two grain sizes. The finer one inherits its shape from the coarser.
 
-What that private register holds is the observer's reading of its own relation to the world. The observer's next move is taken on the strength of it. Nothing outside can consult it, and no repair anywhere in the network reaches it.
+A pattern can spend on either side of the split. The two sides buy different things.
 
-A system carrying readings of its own update state is doing something a photographic plate does not do. It divides itself into parts and reads the division. The reading goes to its own repair policy and nowhere else. Give it more registers and the division gets finer. A stable cell of that division is a coordinate the observer can locate itself along and repair itself with.
+Spend everything privately and you get homeostasis: an interior in excellent order, every internal reading consistent, and an overlap you have conceded to whatever else is spending out there. That is a stable arrangement right up until the neighborhood's reading stops extending yours, at which point the beautifully maintained interior is a private fiction with no public correlate, and the pattern is finished, in perfect health.
 
-In an experiencing system, redness, pain and the other lived distinctions are organized self-reading of this kind. Which distinctions occur, and how they depend on neural activity, are questions for psychology and biology.
+Spend everything on the overlap and you get domination: the neighborhood rewritten in your terms, every seam carrying your version, and an interior that has gone unrepaired for as long as the spending has run. The reading you are imposing has less and less behind it. A reading with nothing behind it fails the first check that reaches for the state underneath.
 
-Reading such a coordinate is the whole of having it. There is no second copy of the ache, kept elsewhere, for the reading to be a reading of, and no fact about whether the one you have is the genuine article.
+So fitting in and crowding out are one expenditure seen from the two sides of the split. Nothing that persists optimizes for either alone. The cells in those flasks do both, all night, and the boundary between the two runs through individual molecules. Refolding a protein and proofreading a copy of the genome are interior work. Eating the glucose is overlap work, because what a lineage does to the flask is what every lineage in it, its own descendants included, has to live in tomorrow. Pushing a proton out through the membrane is both at once: the cell has kept its own interior in range and made the flask more acidic for everybody. The citrate-eaters are the cleanest case, because the mutation is in the cell and the consequence is in the flask: they opened a carbon source nobody was using, and the whole population, competitors included, got bigger.
 
-**Consciousness is owned boundary repair, read from the inside.**
+The harder result in chapter thirty-eight was that some outcomes are reachable only by spending shared capacity, and that no amount of private self-repair arrives at them at any budget. The flasks are what that looks like when it runs for decades. A lineage cannot reach citrate by getting better at being itself. It gets there by changing what the flask contains, which is a change to everybody's record, and then living in the flask it changed.
 
-Owned, because the capacity being spent belongs to the observer and comes out of its own budget. Boundary, because what is being held is the interface between it and everything else. Repair, because the holding is a rate rather than an act, since the neighbors keep writing and the entries keep moving. Read from the inside, because the observer's records include readings of its own state, and those readings are the half of the record the map deletes: real by the same standard Alice's coin is real, and unpublishable by construction.
+Different lineages settle on different policies, in flasks prepared from the same recipe on the same bench. Paul Sniegowski, Philip Gerrish and Richard Lenski reported in *Nature* on 12 June 1997 that lineages which copy themselves less accurately had arisen on their own in some of the twelve populations and spread. Sloppier copying is a strange thing to spend an interior budget on, because most mutations are damaging and the lineage pays for every one of them. It spreads anyway, because a sloppier copier reaches the useful change sooner, and in a flask where everything is sampled once a day, sooner is the whole of the argument. Twelve flasks, one ancestor, and the populations do not agree about how carefully to be themselves.
 
-That sentence is a claim about experience, laid on top of the definition of an observer. A thermostat's bounded feedback is a long way from a person's organization, and the distance depends on how the self-reading is organized as well as on how much of it there is.
+## What a hydrogen atom cannot do
 
-Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are questions for people with electrodes and scanners.
+Ask how much room something has to be otherwise, and count it at each level.
 
-A coordinate the public record leaves out cannot be recovered from that record when its fiber holds different values. A different intervention or a richer interface can learn more, and learning about an episode is a different thing from undergoing it.
+Chapter fourteen counted the ports: twelve, with thirty seams between them. Twelve is what the consistency conditions permit rather than a number anybody chose. Chapter fifteen counted the directions: three, the rank of the slowest-fading band, with the other bands dying away faster and taking their dimensions with them. Chapter sixteen found the arrow: one way round, because a commit discards what it resolved. No arrangement of the early universe would have made it run the other way.
 
-## Three cells down the diagonal
+Those three were settled with no history available to settle them. There was no record, nothing had happened, and the conditions had exactly one solution. A universe with eleven ports never lost a competition to a universe with twelve. Eleven ports does not survive the counting, so there was never an eleven-port world for the twelve-port one to beat.
 
-Ask somebody what red is like and everything comes back except the thing you asked for. A wavelength. The name the paint shop prints on the can. Both of those cross the gap between two people intact. Neither answers the question. The word for what failed to cross is a **quale**, plural qualia, meaning how a particular experience is for the thing undergoing it, as against the wavelength, the firing pattern or the word.
+The early universe is therefore the most constrained thing there has ever been. Every question about it that has an answer has a forced answer. The forcing comes from its age rather than from its simplicity. Nothing had been written down.
 
-Represent a three-alternative system by three-by-three matrices. A readout that writes which alternative occurred keeps the diagonal, three independent entries, and the six off-diagonal entries hold the distinctions the diagonal leaves out. The full matrix algebra has only multiples of the identity in its center. Pinch it down to what the readout writes, chapter nineteen's mail room, and the diagonal is what is left: commutative, its own center, the record algebra of that readout.
+Then things start getting written down. Chapter eleven's result was that the normal form is unique given the boundary data, which is to say that different records on the boundary settle into different worlds. Boundary records are made, one commit at a time. A commit is a fact that the closure conditions did not supply and could not have supplied. Every one of them enters as an input to what comes next. So the fraction of what a thing is that traces to its own history rather than to the conditions that permitted anything at all rises with every cycle, and it rises fastest in the patterns that are making the most records.
 
-For N alternatives there are N diagonal entries and N squared minus N off the diagonal. Those are dimensions of a representation, and experiences are counted some other way, if they are counted at all. A two-state classical device gets by with a commutative algebra and no amplitudes.
+Look at a hydrogen atom with that in hand. Its ground state is one state. Two hydrogen atoms in it are the same object in the strong sense chapter twenty-eight needed for the exclusion argument: there is no record anywhere that distinguishes them, and the absence is not a limitation of anybody's instruments. It has no policy over the direction split. Holding that pattern together costs what chapter eighteen said it costs, a standing bill re-asserted every cycle, and the bill has exactly one line on it and no way to move an amount from one line to another. Put the atom in a field and its response is fixed by the same conditions that fixed the number of directions the field can point in. A hydrogen atom has no strategy available to it. There is no record in it that could carry one.
 
-One line covers every size, with N standing for the number of alternatives a readout tells apart.
+Two *E. coli* cells in the same flask at generation 31,500, both of them descended from the cell that went into a flask in February 1988, differ. The difference sits in their records, it is heritable, and one of them can eat something the other cannot. That lineage carries a policy and spends it every cycle: divide or repair, swim or sit, keep an unused piece of machinery running or shut it down and save the cost. Each of those is a choice about which half of the budget to spend on, and each of them is available only because of a long run of commits in that lineage's past that could have gone otherwise.
 
-$$\text{cells on the diagonal} \;=\; N, \qquad \text{cells off it} \;=\; N^2 - N$$
+Freedom, if the word is going to mean anything measurable, means room to be otherwise, and room to be otherwise accumulates. It is the residue of history rather than a late arrival with brains. There is more of it the further down the tree you go.
 
-The diagonal keeps N entries out of N squared. That is what one readout writes, and a different measurement writes a different diagonal.
+## The view from inside
 
-The identity concerns lived content in an experiencing organization, and nothing in the count makes a quale an off-diagonal matrix entry. Which distinctions a record loses is a mathematical question. Which distinctions are lived is the question the identity answers, one experiencing organization at a time.
+Chapter six wired twelve observers into a closed surface and ran every one of their two thousand and forty-eight states through sixteen schedules apiece. Every run ended in the same arrangement. Nothing chose that arrangement and nobody voted on it. It was the one configuration that satisfied every seam at once. The observers arrived at it by repairing whatever was in front of them.
 
-No-cloning rules out copying an unknown quantum state and allows copying records. It forbids nobody from learning about a prepared ensemble or from reconstructing a model out of richer measurements, and it says nothing about whether qualia are quantum states.
+Chapter eleven gave that its general form. A reading has a fiber, which is the set of states consistent with it. A reading whose fiber is empty belongs to no world at all. Nothing rejects such a reading. There is nowhere for it to be. Rejection would need a judge, and having nowhere to be needs nobody.
 
-Experiencing organization belongs within reality, built out of the same observers as everything else, with no observer outside supplying it. Where it occurs, and in what, is the question this chapter has been walking around.
+Seen from outside, the twelve observers are a solve: a system with a unique consistent state settling into it. There is no outside. The only available view is the one from within, held by the patterns that came through, and from there it looks like something else entirely. Some patterns are here and others are not. The ones here are the ones whose readings kept having an extension. The missing ones ran out of world to be consistent with.
 
-## Then nothing you do matters
+That is selection, and needs no agent, because differential persistence is the whole requirement. Lenski's laboratory has a pipette that cannot tell one cell from another. The universe contains no sampling device of any kind.
 
-Somebody is sitting up at night working out whether to say the true thing or the convenient one. Three results say the sitting up changes nothing.
+So the filter and the fixed point are one object seen from two positions. One of the two positions is not available to anybody. Selection is what a fixed point looks like from the inside, when the patterns competing to be in it are the ones doing the looking.
 
-Chapter six started a twelve-patch network in every one of its two thousand and forty-eight distinguishable states, ran sixteen repair schedules on each of them, and ended in the same arrangement every time. Chapter ten ran the same process on eighty-two thousand patches, where 102,415 disagreements came down to none under every order the repairs were run in. Chapter thirty-six showed that a run cut across a thousand machines settles where the single-machine run settles, and that the partition, the worker count, the schedule and the restart history reach no observable anywhere.
-
-The endpoint does not depend on where the system started. It does not depend on the order anybody repaired in. There is no clock outside it, so there is not even a sense in which the endpoint is waiting its turn. So the person sitting up at night is a subsystem executing a delay, everything between here and the endpoint is theater, and the arrangement the whole thing lands in carries the same entries either way.
-
-This is a harder version of fatalism than the one usually argued about. Ordinary determinism concedes that the future depends on the initial condition, which at least leaves the past doing some work. Here the initial condition washes out as well. Two thousand and forty-eight starting states, one endpoint.
-
-## Who writes the boundary
-
-Chapter six gave twelve observers a coin each and thirty seam records saying whether two coins matched. The repairs inside that net move coins and leave the records standing, so where the coins stop is a function of the records handed over before anybody moved, from the first repair to the last.
-
-Chapter eleven's theorem carries a qualifier. The fatalism above works by dropping it. The theorem returns one endpoint given the boundary data, and a region's boundary data is the entries on the seams where it meets what it is not, which the patches inside can read and cannot set. Regions that start anywhere at all with the same edge entries finish in the same place. Regions with different edge entries finish apart, with nothing to choose between the two endpoints, since both satisfy every record inside.
-
-Drop the words "given the boundary data" and out comes the fatalism above. Keep them and boundary records vary, so "the endpoint" does not pick out anything until somebody has said which entries are sitting on the edge.
-
-Chapter six checked that on twelve patches. Thirty entries, all satisfiable, and the twelve coins have exactly one setting up to the flip nothing can see. Change one entry out of the thirty, from same to different, and the number of consistent settings drops to zero and what the machine stops on carries a leftover of exactly one. One record, and the coins stop somewhere else.
-
-So where do entries come from? The patches inside a region read its edge and cannot set it, so the write happens at the seam itself, between the two observers who share it. Chapter thirty-seven named the move. A private self-update spends the observer's own capacity, clears its own mismatch, and leaves the shared entry saying what it said going in. A network update writes the shared entry. Each side then reads a different value. On the four-state system where the two can first be told apart, no self-update-only scheduler ever reaches the state where the shared entry has moved, at any budget, over any number of steps. A network update reaches it with probability one, and any scheme with a positive chance of getting there writes the shared register on the way.
-
-The shared entries are the boundary data. The move that writes them is the move no quantity of private effort substitutes for.
-
-Say what those writes are in a person's vocabulary.
-
-What to admit, which is what you let across your boundary from outside and allow to change your state. What to emit, which is what you write onto the seams you are one side of. What to repair, which is where a finite budget actually goes. What to ignore, which costs nothing to decide and shows up in the record as an entry left standing. What to confess, which is putting onto the shared record something only you were holding. What to protect, which is spending your own capacity so that somebody else's reading keeps having a consistent extension. And what to amplify, which is writing an entry onto seams that had no opinion about it until you arrived.
-
-Those seven are the boundary data. They are the input the theorem takes, and they are the reason it returns a different world on different days.
-
-So free will is self-reading participation in repair. An observer that reads coordinates on itself, acts on the readings, and writes the results onto seams it shares with others is a place where the boundary record gets set. The convergence does not run around such a thing and it does not suspend itself on request. It runs through. The entry it reads on the way past is the entry that observer wrote.
-
-## Pavia, 524
-
-Boethius was consul in 510 and master of the offices under Theodoric, and in 522 his two sons
-held the consulship together, which is the top of a Roman career of that period. He then
-defended the senator Albinus, who was accused of writing to the emperor Justin in
-Constantinople against Theodoric's rule. He was taken to Pavia, held there, and executed in
-524. In the prison he wrote the *Consolation of Philosophy*. Its fifth and last book is about the question above.
-
-He puts it in the vocabulary of divine foreknowledge. If the whole order is possessed at once, entire, by something that does not take it a piece at a time, then it is settled, and a settled order leaves nothing for anybody inside it to decide.
-
-The answer has two parts and both survive translation out of the vocabulary.
-
-The first is a distinction between two necessities. One is simple: men are necessarily mortal. The other is conditional: if you know that someone is walking, he is necessarily walking. The second attaches to the act only while the condition holds, imported by the knowing rather than produced by the walking. Then the test question, which Boethius puts directly: does the act of vision add any necessity to the things you see before your eyes? Watching a man cross a courtyard does not make him cross it.
-
-The second part is his definition of eternity as life possessed whole. A complete-history reading can contain earlier and later events internally while requiring no external time in which the whole is assembled. Timeless closure therefore permits internal causal reasons, local succession and change; it does not remove every ordering from the structure.
-
-Fourteen centuries later the requirement itself was taken apart, in eleven pages. What most people mean by freedom is that you are responsible for what you did only if you could have done otherwise. Harry Frankfurt attacked that sentence in the *Journal of Philosophy* of 4 December 1969, in a paper called "Alternate Possibilities and Moral Responsibility", pages 829 to 839.
-
-His case is a piece of machinery. Somebody, call him Black, wants Jones to do a particular thing, and is prepared to step in and make him do it if Jones shows any sign of deciding otherwise. Jones decides to do it on his own. Black watches and never moves. Jones could not have done otherwise, because Black stood by with the means to prevent it. Jones is responsible anyway, because what he did came out of his own deliberation and Black played no part.
-
-What carries the responsibility is therefore the structure of the will that produced the act and the record of the act itself. Whether some other setting of the boundary was reachable is a question about the space of records. Which entry got written, out of which observer's own repair policy, is a question about this record. This record is what everything downstream is computed from.
-
-## It was going to happen anyway
-
-The fatalism above has a second life as an excuse.
-
-Somebody writes an entry onto a shared seam and leaves the repair bill with whoever is on the other side. Asked about it afterward, the sentence available is that the network converges regardless, that the endpoint was going to be the endpoint, and that nothing turned on the write.
-
-The structure blocks that, and it blocks it with arithmetic rather than with disapproval.
-
-Chapter six's flipped edge is the clean case, because the whole net can be checked. Two of its nineteen independent loops carry a residue, no setting of the twelve coins satisfies all thirty records, and the machine converges anyway, from all two thousand and forty-eight starts and under all sixteen schedules, onto an arrangement carrying a leftover of exactly one. Convergence is guaranteed and so is the size of the leftover.
-
-Where it sits is a different matter. Run the repairs in another order and the leftover ends up on a different part of the net. It survives any amount of working harder, and it can be placed, and which patch is carrying it when the repairs stop is settled by who repaired what, in which order, and which way each one pushed the disagreement it found.
-
-A record can keep part of the trajectory along with its endpoint. The midpoint map loses input distinctions on its two output readings, and the crossing count it writes keeps them, so who absorbed a cost and who exported it survives in the records for as long as the records do.
-
-The leftover comes to one either way. The record that produced it names which patch absorbed the mismatch and which one exported it. The naming is no moral gloss applied afterward by somebody keeping accounts. It is the entries, in order, which is the only material anybody downstream has to compute from.
-
-The excuse also needs the endpoint to be the kind of thing that could have caused something, and chapter thirty-six wrote the endpoint down. Take the whole structure, take the record it holds, look up the world that record names, and demand that what comes back is the structure you started with.
-
-$$\text{world}\big(R(W)\big) \;=\; W$$
-
-W is the whole structure, R is chapter eleven's record map, which returns the part of a state that survives comparison, and world is the lookup running from a record to the consistent state that record names. The unknown sits on both sides, which makes this a fixed point rather than a recipe.
-
-The complete-history closure equation requires no first external solver. Its internal dependencies can nevertheless be realized by local computation. The equation does not cause those events from outside; the proposal identifies the self-consistent structure and its intrinsic operation as one reality.
-
-What an observer writes contributes to the record R returns and to subsequent local dependencies. The closure equation adds no external ordering; its internal history can contain ordered causes and choices. By itself the equation settles neither causal determinism nor responsibility.
-
-## Made and found
-
-Chapter two asked why there is anything rather than nothing and answered with a requirement severe enough to have one solution. Then it turned up a clause nobody had written into it: consistency is a property of descriptions, so the structure has to contain something that holds a description and can get it wrong.
-
-That clause leaves a question about what truth is in a structure of this shape. Two answers have been arguing since before either of them had a name. On the first, a claim is true by corresponding to how things are, and a describer's job is to find out which claims do. On the second, what is true is settled by what describers do: their comparisons, their procedures, their records.
-
-Both are here, at full strength.
-
-Found: the consequences of the rules belong to nobody. Chapter two's rewriter produces strings with as many a's as b's, forever, and neither of its two moves mentions counting. Whether nineteen loops on a twelve-patch net sum to zero is settled by an arithmetic that comes out the same for everybody who performs it. The twelve observers inside get no vote.
-
-Made: which record that arithmetic is applied to is written by observers, one commit at a time, out of their own capacity, onto the seams they share. Nothing else writes it. There is no reading of the world taken from outside. Every entry on every seam got there because two bounded things compared what they held and one of them paid for the entry.
-
-So the world is found from the record and the record is made, and those are the two ends of one operation, which chapter eleven pinned down with four demands: hand it a record and it returns the consistent state that record names.
-
-Finding a relation and recording it are events with an internal order. The complete-history closure condition adds no external ordering in which the world must first exist and then be described. It can include both activities and their causal dependencies, without turning every mathematical discovery into a unique global equilibrium.
-
-The argument is usually had about mathematicians, whether a theorem is invented or discovered, as though some fact settled which. Somebody working on a proof is inside the structure the proof is about. What they reach is a fixed point of that work, the thing the work returns unchanged. It was found, in that nothing along the way was free to go otherwise. It was made, in that the working is what put the entries on the record. Nothing else was writing them.
-
-The decision is local and taken many times a day: which entries to put on the seams you touch. Every one of them enters the boundary data that somebody else's world gets computed from. A mismatch written onto another observer's edge does not stop existing when it leaves yours. It sits in their record. The capacity that clears it comes out of their budget.
+Twelve flasks, a hundred and twenty milliliters, one ancestor, and a freezer full of its own past. Nothing in that arrangement wants anything. The same is true of the arrangement the flasks are sitting in. One of the patterns that came through the filter has hands, and a laboratory, and a habit of writing things down, and is holding this book.

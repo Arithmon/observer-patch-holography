@@ -48,7 +48,7 @@ Two for three. Nothing in the glass consults the column. The mercury stands wher
 
 That is a useful failure, because it shows which of the three is load-bearing. Take away the boundary and you get a duplicate. Take away the writing and nothing is retained. But take away the reading and you are left with something that looks entirely functional, sits on the wall for decades, correlates with the world to a fraction of a degree, and observes nothing whatsoever.
 
-The thermostat passes. So does a person, who has bounded access, retained state and feedback along with a great deal more organization. Passing the same test makes both of them observers and says nothing about whether either one feels anything; chapter thirty-nine takes that question up on its own.
+The thermostat passes. So does a person, who has bounded access, retained state and feedback along with a great deal more organization. Passing the same test makes both of them observers and says nothing about whether either one feels anything; chapter forty takes that question up on its own.
 
 A sensor, a number you set and a switch meet all three in full. That is the whole of what anything needs to be an observer, thermostats and people included.
 

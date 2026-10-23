@@ -1,13 +1,5 @@
 # 6. Why Isn't Agreeing With Your Neighbors Enough?
 
-In 1785 the Marquis de Condorcet published an essay on applying analysis to decisions reached by majority vote, and buried in it is an observation that has been ruining committees ever since.
-
-Take three people and three options. The first person ranks them A, B, C. The second ranks them B, C, A. The third ranks them C, A, B. Ask the committee to choose between A and B, and A wins by two votes to one. Ask it to choose between B and C, and B wins two to one. Ask it to choose between C and A, expecting a formality, and C wins two to one.
-
-Every one of those votes is a real majority. Nobody was manipulated, nobody abstained, and each vote can be repeated as often as you like with the same result. There is no winner, and there is no winner in a way that no amount of further voting will fix, because the information that the three results are jointly impossible is not present in any of them.
-
-Condorcet's committee is the first warning that pairwise agreement is a weaker thing than it sounds. Local data can be flawless, checkable and reproducible, and refuse to be assembled into anything. The voting version has no arithmetic attached to it that helps much. The version that does is simpler, checkable on a table.
-
 Give Alice, Bob and Charlie a coin each and put them in three separate rooms. Each of them looks at their own coin and sees heads or tails. Nobody can see anybody else's.
 
 They are allowed to meet in the corridor two at a time. When a pair meets they compare coins and write down one word: **same**, if the two coins match, or **different**, if they do not. The only restriction is that the pair must not write down which way either coin is facing. What gets recorded is the relation between two coins, which is the only thing either of them could check together.
@@ -30,9 +22,17 @@ Notice what the three of them can do about it, which is nothing. They can meet i
 
 Chapter five put a third person in the room and left the three of them agreeing. This is the bill.
 
+The trap is older than the corridor. In 1785 the Marquis de Condorcet published an essay on applying analysis to decisions reached by majority vote, and buried in it is an observation that has been ruining committees ever since.
+
+Take three people and three options. The first person ranks them A, B, C. The second ranks them B, C, A. The third ranks them C, A, B. Ask the committee to choose between A and B, and A wins by two votes to one. Ask it to choose between B and C, and B wins two to one. Ask it to choose between C and A, expecting a formality, and C wins two to one.
+
+Every one of those votes is a real majority. Nobody was manipulated, nobody abstained, and each vote can be repeated as often as you like with the same result. There is no winner, and there is no winner in a way that no amount of further voting will fix, because the information that the three results are jointly impossible is not present in any of them.
+
+Condorcet's committee was the first warning that pairwise agreement is a weaker thing than it sounds. Local data can be flawless, checkable and reproducible, and refuse to be assembled into anything. The voting version has no arithmetic attached to it that helps much. The version with coins comes with arithmetic.
+
 ## "Same same but different" as arithmetic
 
-The argument above is short enough to check by hand, but doing things by hand doesn't scale very well here. Twelve people generate sixty-six possible pairings. What is needed is a way of computing the answer.
+The coin argument is short enough to check by hand, but doing things by hand doesn't scale very well here. Twelve people generate sixty-six possible pairings. What is needed is a way of computing the answer.
 
 Write **0** for same and **1** for different.
 

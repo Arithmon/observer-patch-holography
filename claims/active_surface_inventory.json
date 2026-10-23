@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 644,
+  "surface_count": 646,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1011,22 +1011,32 @@
       "allowlisted": false
     },
     {
-      "path": "book/42-epilogue.md",
+      "path": "book/42-chapter-41.md",
       "glob": "book/*.md",
       "allowlisted": false
     },
     {
-      "path": "book/43-appendix-a.md",
+      "path": "book/43-epilogue.md",
       "glob": "book/*.md",
       "allowlisted": false
     },
     {
-      "path": "book/44-appendix-b.md",
+      "path": "book/44-appendix-a.md",
       "glob": "book/*.md",
       "allowlisted": false
     },
     {
-      "path": "book/45-appendix-c.md",
+      "path": "book/45-appendix-b.md",
+      "glob": "book/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "book/46-appendix-c.md",
+      "glob": "book/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "book/47-appendix-d.md",
       "glob": "book/*.md",
       "allowlisted": false
     },

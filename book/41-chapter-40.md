@@ -1,127 +1,195 @@
-# 40. What Does a Repaired World Look Like?
+# 40. Does It Feel Like Anything, and What Is Left to Decide?
 
-In April 1982 the pumps under the hill at Butte, Montana were switched off.
+The first big interdisciplinary conference on consciousness was organized by an anesthesiologist.
 
-Butte sits on one of the richest copper deposits ever found, the workings underneath it run for thousands of miles, and water wants to be in them, so the pumps at the Kelley Mine had been lifting groundwater out of the mountain for as long as there had been a mine to keep dry. They sat 3,900 feet down and could move seven million gallons a day. The Atlantic Richfield Company suspended its Butte operations that month. The pumps went off, and the water came up.
+Stuart Hameroff worked in anesthesia at the University of Arizona Medical Center, and in April 1994 he convened a meeting in Tucson called Toward a Scientific Basis for Consciousness, which put philosophers, neuroscientists and psychologists in the same rooms for a week. He spent his working days putting patients under and waking them again. The meeting was about what consciousness is.
 
-It came up at about a foot a month. It filled the underground workings, and then it began
-filling the Berkeley Pit, the open pit that had been dug into the east side of town since
-1955. Water standing on broken sulfide rock turns acid, and acid takes metal out of rock.
-The water in the pit reached a pH of about 2.5, the acidity of lemon juice, and carries
-copper, arsenic, cadmium and zinc in solution.
+The talk people were repeating in the corridors came from a philosopher a year out of his doctorate, holding a fellowship in a philosophy, neuroscience and psychology program at Washington University in St. Louis. David Chalmers opened by splitting the subject in two. The split was a list.
 
-On 14 November 1995 somebody found dead snow geese floating on it. The first count was
-149. The final count was 342. The count had to be revised upward because the water had
-stained white birds a brownish orange and made them hard to pick out.
+How a system discriminates between things around it, categorizes them and reacts. How it brings information together from separate places. How it reports its own states in words. How it gets access to its own internal states at all. How attention gets focused on one thing rather than another. How behavior gets deliberately controlled. What separates being awake from being asleep.
 
-The number in Butte that matters more than the geese is 5,410 feet above sea level, the elevation of the bed of Silver Bow Creek and the lowest ground anywhere in the valley. Below that line, the water is a problem in a hole. Above it, the water is in the creek, which runs to the Clark Fork and from there to the Columbia. Since October 2019 pit water has been pumped to a treatment plant at Horseshoe Bend, cleaned and discharged to the creek, which holds the level down. The pit has sat about fifty feet under the line ever since.
+Seven items, and he called them the easy problems of consciousness, with a warning attached to the adjective: getting the details right, he wrote, will probably take a century or two of difficult empirical work. They count as easy because in every case anybody can say what an answer would look like. It would be a mechanism. Specify the machinery that retrieves information about internal states and makes it available for verbal report, and reportability has been explained.
 
-Every ton of that copper was legal, paid for and shipped, and the books of the companies that shipped it balanced at the end of every year they were open. The arrangement ran for a century and produced two things: metal, and a quantity of work that has to be done in Butte forever, beginning after the people who produced it stopped being there.
+Then the other one. When our cognitive systems engage in visual and auditory information-processing, he wrote, we have visual or auditory experience: the quality of deep blue, the sensation of middle C. Thomas Nagel had supplied the standard phrase for it twenty years before, in the October 1974 issue of the *Philosophical Review*: an organism is conscious if there is something it is like to be that organism. Why physical processing should give rise to any of that seems objectively unreasonable, Chalmers wrote, and yet it does. The talk went into the *Journal of Consciousness Studies* the following year, volume 2, pages 200 to 219, under the title "Facing Up to the Problem of Consciousness". The phrase the hard problem became the standard name for that question.
 
-What is that quantity, exactly? Who is holding it? And is there any way to look at an act while it is being done and say whether it lowers the amount of work the world has to do, or moves that work onto somebody else?
+Descartes had a physical world made of extended stuff and a thinking thing that occupies no place at all, and his trouble was traffic between the two: how a decision taken in something with no location moves an arm that has one. He put the meeting at the pineal gland, on the grounds that every other part of the brain comes in pairs and that one does not, so it was the only place the signals from two eyes and two ears could be brought together into one impression. Every version since has kept the shape and dropped the gland. There is an account of the world written in the third person, there is what it is like to be one of the things in it, and nobody has a rule that turns either into the other. The name for that is the **mind-body problem**.
 
-## Two strings
+Chapter three defined an observer without any mention of consciousness. This chapter takes one further step: certain organized self-reading and repair processes are experiences. A thermostat shares the record-and-feedback interface with a person, and the step is about what is organized behind the interface.
 
-Sound two guitar strings together when one of them is slightly sharp and the loudness pulses. The pulse rate is the difference of the two frequencies, so two strings three cycles a second apart beat three times a second. Each string alone has a frequency and no beat at all. The pulse is a property of the pair, and goes to zero exactly when they match.
+One of these bounded record-keepers is holding this book. There is something it is like to be it. Where in the architecture does that sit? And if the network settles into the same arrangement whatever order anybody repairs in, what is there for that reader to decide?
 
-An observer stands in that relation to everything around it. It has a state. Around the state is a field, chapter twenty-five's object with a reading at every place: what the neighbors have written at every point of this observer's boundary. The state has a size and a direction, the field has a size and a direction, and the question that decides everything downstream is how much of the state points the way the field does.
+## A creature molecule for molecule identical to you
 
-The amount of the state lying along the field is the **alignment score**. Take the largest that score could be, which is the two sizes multiplied together and happens when the two point the same way, and subtract the score actually on hand. What is left is a number that cannot go below zero and reaches zero exactly when state and field agree, which is the reading a tuner is listening for when the beat disappears.
+Chalmers put the sharpest form of the first question two years later, in a book called *The Conscious Mind*. Consider, he wrote, his zombie twin: a creature molecule for molecule identical to me, lacking conscious experience entirely. Same cells, same firing, same words coming out of its mouth, and nobody inside.
 
-That leftover is the misaligned remainder. The work it names is the observer's **repair load**.
+The argument runs three lines. Such a creature is conceivable, and Chalmers set the standard in those words: it certainly seems that a coherent situation is described, and I can discern no contradiction in the description. Whatever is conceivable in that sense is possible. And if a world physically identical to this one can lack experience, then experience is something over and above the physical facts, and physics by itself does not reach it.
 
-The public half of it came in chapter thirteen, where every seam scores the disagreement across itself and the scores add into one number for the arrangement, which every accepted repair lowers. Repair load is that accounting read at a single observer. Chapter thirty-seven priced the business of holding it near zero: neighbors repair too, whatever they write lands on the boundary they share with this observer, and the load comes back the moment the spending stops.
+The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that without flinching, because the twin does everything he does.
 
-## Exported harm
+The zombie argument keeps the entire physical organization, every register and every causal dependency, and removes experience. An identity theory rejects the separation outright: if experience is a kind of physical organization, a duplicate of the organization is a duplicate of the experience. That is the position this chapter takes.
 
-Mismatch has an address, and chapter thirty-seven's two budgets are the machinery for changing it. Capacity spent inside the boundary brings an observer into line with an entry it leaves standing. Spending on the entry itself changes what everyone wired to that seam will find there. The second move lowers the observer's own load by writing into something a neighbor also reads. The neighbor inherits whatever the write leaves behind.
+Everything rests on the first step, the step nobody pauses on, because taking a complete physical description sounds like the part you get for free.
 
-Ordinary life is made of that move, running in both directions, all the time. Chapter thirty-nine found the difference that matters sitting in the record, between a patch that absorbed a mismatch at its own expense and one that wrote it onto a neighbor and let the neighbor pay. The second case takes a name once two conditions are attached: the mismatch is placed on other observers, and the actor who generated it declines the burden of repairing it while having the capacity to carry it. That is **exported harm**.
+## The mechanical properties of the ether
 
-An exporter's own readings can be flawless. Chapter thirty-seven's bacterium retunes its receptors until every seam it has reads zero, and starves in the water it is sitting in. Butte is that arithmetic with a creek downstream of it. The books balanced, the copper went out on rail cars, the acid stayed in the hole, and nothing in the accounts was wrong, because the load had been written onto a seam the company was not reading.
+Chapter one's crash log had an entry for the substance light was supposed to wave in, rigid enough to carry a wave at the speed light travels and insubstantial enough for a planet to cross without losing speed. The nineteenth century held both properties rather than drop the idea that a wave needs something to wave in. The interferometer in the Cleveland basement went looking for the Earth's motion through it in 1887 and found nothing, and forty years of better instruments found nothing again.
 
-Chapter thirteen made that blindness a property of the wiring rather than a failure of attention. Two worlds that put the same packets on an observer's ports are one world to it, so a cost written onto a seam an actor does not share is unreadable to that actor at any level of diligence, which is why exported harm so rarely feels like anything from the exporting end. The reading that would report it belongs to somebody else.
+Nobody ever caught the ether not being there. Einstein took the null result as the law rather than as the disappointment, and after that every question the ether had been introduced to answer had an answer without it. Its stiffness explained nothing, because nothing needed explaining by a stiffness. Its density had no consequence anywhere. The ether was made redundant, which is a more complete failure than going undetected, because a thing nobody detects may have effects that need accounting for.
 
-## One integral
+Take the sentence "what are the mechanical properties of the ether?" It has a subject and a verb and it never got an answer. It stopped being a question, because one of its words stopped naming anything. A question with a term that names nothing does not have a false answer either.
 
-An act reaches some observers and misses others. Take the ones it reaches, all of them together, as a single assembly of patches, which is what chapter thirty-six called a federation. Then ask what the act does to the repair load of that assembly over a horizon long enough to contain the consequences.
+Two things can happen to a question, then. It gets answered. The question stands with a fact attached to it. Or one of its terms is shown to name nothing. The question goes away and stops consuming effort. The second is called **dissolving** the question. It happens rarely, and from the outside it looks the same as a refusal to answer.
 
-The quantity that answers fits on one line.
+The hard problem asks how experience arises from the physical facts, where the physical facts are meant as an inventory belonging to nobody: a list of what there is, compiled from no position. Go looking for that list and it fails to turn up, one entry at a time.
 
-$$\mathcal{K}_A[a] \;=\; \int_0^{T} e^{-\rho t}\Big(\sum_{U \in A} S_U(t) \;-\; \lambda_\Phi \sum_{U \in A} \Phi_U(t) \;-\; \lambda_H\, H_A(t)\Big)\, dt$$
+Distance counts comparisons. There is no comparison without two parties each holding something. A rate needs a clock, and chapter twenty-one left no clock that is not somebody's. Charge is read off a loop that runs through one observer after another. A record sits in the center of one particular algebra of questions. Even the leftover of exactly one, sitting on a twelve-patch net with one flipped edge, is a quantity that every observer in that net agrees about, which is a different thing from a quantity nobody holds.
 
-The line says that an act is worth what it does to the alignment of everybody it reaches, minus what it leaves them to repair, minus what it dumps on them, added up across the whole horizon.
+Objective, in the sense chapter eleven fixed, means settled between parties who each have a boundary and a budget, with no further list standing behind theirs for it to approximate.
 
-Symbol by symbol. The act is $a$, the observers it reaches are $A$, and $U$ is one of them. The script $\mathcal{K}$ on the left is what the act is worth to those observers. $S_U(t)$ is one observer's alignment score at record time $t$, the part of its state lying along its field, and the Greek capital sigma in front of it is an instruction to add over every observer in $A$. The second term counts what those observers have to fix: $\Phi_U(t)$ is the mismatch standing on $U$'s seams at time $t$, chapter thirteen's seam sum read at one patch. The third term is exported harm, written $H_A(t)$, the mismatch imposed on the observers of $A$ by an actor refusing to repair it. $T$ is the horizon, the point where the accounting stops, and the elongated S is a sum over every instant between the act and the horizon, which is what an integral is. The two weights $\lambda_\Phi$ and $\lambda_H$ are bookkeeping, because three quantities in different denominations cannot be added together without an exchange rate between them.
+The answer here identifies certain lived processes with their qualitative character. That is a commitment about what the physical organization is. Having records and a bounded point of view makes something an observer, the identity is a further step, and the hard problem meets the account at that step.
 
-That leaves $e^{-\rho t}$, which shrinks as $t$ grows at a rate set by $\rho$. It fixes how much a load landing far ahead counts against a load landing next week.
+A record map can leave out state that is accessible inside. That makes the omitted state private relative to the map, which is a long way short of making every omitted variable a quale.
 
-An action is evaluated by what it does to the long-horizon repair burden of the observers it touches. Good is the case where that number comes out higher, which happens when the act lowers what those observers have to repair. Evil is what an observer does when it reads coordinates on itself in chapter thirty-nine's sense, can therefore model what a pattern will do to the field before it emits one, and exports avoidable mismatch anyway.
+Deleting an interior that does causal work changes boundary behavior, and nobody disputes that. The zombie keeps the interior and asks about its character, and the identity account answers that the interior's organization is its character.
 
-Everything anybody argues about is in $\rho$ and $T$. Nobody who has ever exported a cost wrote down a value for either, and every one of them picked one. The water under Butte came up at about a foot a month, and a company reports its results four times a year.
+## Coordinates an observer reads on itself
 
-The horizon is the harder of the two, because it is set by the world rather than by preference. A horizon shorter than the consequence scores the act on a fragment of what it did. The fragment can carry the opposite sign from the whole. Copper out of Butte between 1955 and 1982, evaluated over the years the mine was open, is a large positive number. The treatment plant at Horseshoe Bend is inside no accounting period that anybody drew, because the plan it runs on has no end date to draw one against.
+Chapter thirty-eight got an observer down to two registers, which is the smallest arrangement in which its two budgets come apart. A neighbor reads the first one. The second holds one bit saying whether the observer matches what the seam says about it.
 
-## Two registers, one shared
+What that private register holds is the observer's reading of its own relation to the world. The observer's next move is taken on the strength of it. Nothing outside can consult it, and no repair anywhere in the network reaches it.
 
-Chapter thirty-seven measured the ceiling on private work on four states, one bit where a neighbor reads and one bit of the observer's own. Nothing assembled out of private moves reaches the arrangement in which the neighbor reads the opposite value, however long it runs and whatever it is allowed to spend, and every route that does reach it writes the shared bit.
+A system carrying readings of its own update state is doing something a photographic plate does not do. It divides itself into parts and reads the division. The reading goes to its own repair policy and nowhere else. Give it more registers and the division gets finer. A stable cell of that division is a coordinate the observer can locate itself along and repair itself with.
 
-Put a harm in that shared bit. A burden written onto a record somebody else reads cannot be discharged in private. The reason is which arrangements lie downstream of which moves rather than how hard the person worked at it.
+In an experiencing system, redness, pain and the other lived distinctions are organized self-reading of this kind. Which distinctions occur, and how they depend on neural activity, are questions for psychology and biology.
 
-Self-improvement is therefore not a substitute for repair. Somebody harms somebody, and spends the ten years afterward becoming a person who would not do it. Every one of those years is a private move. Every one of them can be real work, expensive and unfeigned, and the entry on the seam between those two people carries the value it carried on the first day. The two destinations are different states. One of them is unreachable from anywhere the private budget can go.
+Reading such a coordinate is the whole of having it. There is no second copy of the ache, kept elsewhere, for the reading to be a reading of, and no fact about whether the one you have is the genuine article.
 
-## Elmira, May 1974
+**Consciousness is owned boundary repair, read from the inside.**
 
-One night in May 1974 an eighteen-year-old named Russ Kelly and a friend went through Elmira, Ontario, slashing tires and breaking windows, and by morning twenty-two properties had been damaged.
+Owned, because the capacity being spent belongs to the observer and comes out of its own budget. Boundary, because what is being held is the interface between it and everything else. Repair, because the holding is a rate rather than an act, since the neighbors keep writing and the entries keep moving. Read from the inside, because the observer's records include readings of its own state, and those readings are the half of the record the map deletes: real by the same standard Alice's coin is real, and unpublishable by construction.
 
-Mark Yantzi, the probation officer writing the presentence report, put an unusual proposal into it. Rather than sentencing the two and sending them away, he suggested walking them around the town to meet the people whose property they had wrecked. Dave Worth, a volunteer with the Mennonite Central Committee, backed the idea and pushed him to take it to the court. Judge Gordon McConnell ordered it.
+That sentence is a claim about experience, laid on top of the definition of an observer. A thermostat's bounded feedback is a long way from a person's organization, and the distance depends on how the self-reading is organized as well as on how much of it there is.
 
-So the two of them went around the town with Yantzi and Worth, said at each door what they had done, listened to what the person on the other side of it said back, and worked out what they owed. Two of the twenty-two had moved away and could not be found. Each was fined two hundred dollars, put on probation for eighteen months, and ordered to pay five hundred and fifty dollars in restitution for the damage insurance had not covered, inside three months. Kelly earned his, and at the end of the three months he went back around the town with certified checks.
+Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are questions for people with electrodes and scanners.
 
-Each of those doors is a seam. What made the sentence unlike the ones above and below it in the docket is which budget it spent from. A custodial sentence spends the offender's own capacity, at considerable expense, and leaves the entry between the offender and the householder whose window went in precisely as it found it. The walk writes that entry, at every door, and the payment writes it again with a number attached.
+A coordinate the public record leaves out cannot be recovered from that record when its fiber holds different values. A different intervention or a richer interface can learn more, and learning about an episode is a different thing from undergoing it.
 
-## Local pain
+## Three cells down the diagonal
 
-If lowering repair load were the whole of the rule, the rule would read as whatever hurts least is best. That reading fails on arithmetic rather than on sentiment. The integral runs to a horizon. Comfort next week sits inside it with a weight, and so does everything after next week, and a term that raises the load for a month can lower the sum.
+Ask somebody what red is like and everything comes back except the thing you asked for. A wavelength. The name the paint shop prints on the can. Both of those cross the gap between two people intact. Neither answers the question. The word for what failed to cross is a **quale**, plural qualia, meaning how a particular experience is for the thing undergoing it, as against the wavelength, the firing pattern or the word.
 
-Local pain is justified when it is the boundary-setting that lowers future mismatch. The opposite failure has a shape everybody recognizes: niceness that preserves abuse blocks repair and transfers the cost forward. A household that keeps its peace by leaving a record unwritten holds its own mismatch flat. The observers who inherit that unwritten record are the ones who pay for the arrangement.
+Represent a three-alternative system by three-by-three matrices. A readout that writes which alternative occurred keeps the diagonal, three independent entries, and the six off-diagonal entries hold the distinctions the diagonal leaves out. The full matrix algebra has only multiples of the identity in its center. Pinch it down to what the readout writes, chapter nineteen's mail room, and the diagonal is what is left: commutative, its own center, the record algebra of that readout.
 
-Four moves cost somebody something immediately and raise the long-run integrity of the field: an accurate confrontation, a court verdict, a difficult confession, and a refusal to amplify a popular falsehood. Each of them raises a load on the day it happens, and each writes onto a shared record something that was true and unwritten, which is the write that lowers the sum. The confession is the expensive one, because the record it puts into the field is about the observer writing it.
+For N alternatives there are N diagonal entries and N squared minus N off the diagonal. Those are dimensions of a representation, and experiences are counted some other way, if they are counted at all. A two-state classical device gets by with a commutative algebra and no amplitudes.
 
-## Nobody saw it
+One line covers every size, with N standing for the number of alternatives a readout tells apart.
 
-The old story says a person gets away with a harm when nobody sees it.
+$$\text{cells on the diagonal} \;=\; N, \qquad \text{cells off it} \;=\; N^2 - N$$
 
-The story is about who was watching. The watchers are not the ones holding the load. A harm writes a new entry into the record, and chapter eleven named what an entry does: it narrows the fiber, leaving fewer whole worlds that carry the reading. Fewer worlds is a change in what can truthfully come next. The narrowing happens whether or not a second party ever reads the entry. An unrepaired harm becomes a residue with an address.
+The diagonal keeps N entries out of N squared. That is what one readout writes, and a different measurement writes a different diagonal.
 
-Where a harm is hidden by a falsified record rather than by an unread one, the arithmetic is chapter six's flipped edge exactly. Change one entry from what happened to what did not, two of the loops through it stop closing, and the reading goes unrealizable, chapter eleven's verdict on a record with no world under it. A cover-up buys the offender a record that describes no world at all. Every loop running through the false entry picks up the residue.
+The identity concerns lived content in an experiencing organization, and nothing in the count makes a quale an off-diagonal matrix entry. Which distinctions a record loses is a mathematical question. Which distinctions are lived is the question the identity answers, one experiencing organization at a time.
 
-A residue with an address gets moved by every repair that runs near it. Chapter six shifted its leftover around the twelve-patch net by reordering the repairs. It weighed one at every address it landed on. That is the mechanism by which an unrepaired harm turns up in people who did nothing: the residue settles on whoever's seams the repairs happen to reach, which in a family or a town is rarely the person who wrote the entry.
+No-cloning rules out copying an unknown quantum state and allows copying records. It forbids nobody from learning about a prepared ensemble or from reconstructing a model out of richer measurements, and it says nothing about whether qualia are quantum states.
 
-Hidden harm is deferred repair. It changes which continuations can truthfully hold the offender, the victim and the community around them, and it goes on changing that whether or not anybody has read the entry.
+Experiencing organization belongs within reality, built out of the same observers as everything else, with no observer outside supplying it. Where it occurs, and in what, is the question this chapter has been walking around.
 
-## Restoration
+## Then nothing you do matters
 
-Chapter thirteen set out what a stopped machine has to carry with it to start again as itself: its records, whatever state it can reach, its wiring, and the law governing what it may do and what it may read. Carry all four across and the restored observer bets the same way on everything it goes on to see. Carry them roughly and the two futures part by roughly that much.
+Somebody is sitting up at night working out whether to say the true thing or the convenient one. Three results say the sitting up changes nothing.
 
-Restoration on those terms says nothing about scanning brains, nothing about rebuilding bodies, and settles nothing about who anybody is.
+Chapter six started a twelve-patch network in every one of its two thousand and forty-eight distinguishable states, ran sixteen repair schedules on each of them, and ended in the same arrangement every time. Chapter ten ran the same process on eighty-two thousand patches, where 102,415 disagreements came down to none under every order the repairs were run in. Chapter thirty-seven showed that a run cut across a thousand machines settles where the single-machine run settles, and that the partition, the worker count, the schedule and the restart history reach no observable anywhere.
 
-The law is the piece that gets left behind. Feed a record into machinery whose allowed moves differ and the same history yields a different next step, so the law travels with the record or the thing that comes up is a different observer. A pattern restored under a law that permits the export it was built around is a continuation of the pattern. Restored under a law that repairs what it receives, it is a continuation of something else, and the argument about whether restoration counts as mercy has to start there.
+The endpoint does not depend on where the system started. It does not depend on the order anybody repaired in. There is no clock outside it, so there is not even a sense in which the endpoint is waiting its turn. So the person sitting up at night is a subsystem executing a delay, everything between here and the endpoint is theater, and the arrangement the whole thing lands in carries the same entries either way.
 
-Records are on the list of four. A restored observer therefore arrives holding its record, and its record contains the harms it did along with the harms done to it, because a continuation that dropped them would be the continuation of a different observer. An offender's restoration and a victim's restoration carry the same entries about the same night. The two readings have to be consistent with one world. That is the condition a transcript, a set of exhibits and twelve people in a room have been approximating for as long as there have been courts.
+This is a harder version of fatalism than the one usually argued about. Ordinary determinism concedes that the future depends on the initial condition, which at least leaves the past doing some work. Here the initial condition washes out as well. Two thousand and forty-eight starting states, one endpoint.
 
-## A consistent prison
+## Who writes the boundary
 
-A fixed point is a state a process leaves alone, and chapter two's other root, minus 0.618034, is one no calculator started nearby ever arrives at. Chapter six's twelve observers arrive at theirs from every start the net admits and in every order, with nothing anywhere in the arrangement choosing anything.
+Chapter six gave twelve observers a coin each and thirty seam records saying whether two coins matched. The repairs inside that net move coins and leave the records standing, so where the coins stop is a function of the records handed over before anybody moved, from the first repair to the last.
 
-Nothing in the definition says the state is a good one. A prison is a fixed point. Every guard's reading answers every other guard's, the count at the gate comes out right twice a day, and the walls hold. An arrangement that exports its costs onto observers with no way to write to the shared record can sit at zero mismatch for centuries, because the ones carrying the load are not the ones whose seams are being scored. A perfectly consistent world can be a perfectly consistent prison.
+Chapter eleven's theorem carries a qualifier. The fatalism above works by dropping it. The theorem returns one endpoint given the boundary data, and a region's boundary data is the entries on the seams where it meets what it is not, which the patches inside can read and cannot set. Regions that start anywhere at all with the same edge entries finish in the same place. Regions with different edge entries finish apart, with nothing to choose between the two endpoints, since both satisfy every record inside.
 
-When more than one consistent state carries a record, the fiber is ambiguous, and chapter eleven left repair with nothing to work on there: every entry is satisfied, so narrowing the set to one member takes something no record holds.
+Drop the words "given the boundary data" and out comes the fatalism above. Keep them and boundary records vary, so "the endpoint" does not pick out anything until somebody has said which entries are sitting on the edge.
 
-So an ambiguous fiber is settled by a selector. The selector here is which repair law gets implemented by the observers capable of implementing one. A law that leaves a recorded harm unaddressed is a law that some restored observer, reading the complete record, has a true objection to, and that observer is inside the world the law built, holding the record, with the objection intact. The law that addresses every recorded harm is the one every restored observer could endorse with the whole record in front of them, and the only one with that property.
+Chapter six checked that on twelve patches. Thirty entries, all satisfiable, and the twelve coins have exactly one setting up to the flip nothing can see. Change one entry out of the thirty, from same to different, and the number of consistent settings drops to zero and what the machine stops on carries a leftover of exactly one. One record, and the coins stop somewhere else.
 
-Which fixes where a pattern can be continued. A pattern organized around exporting damage and refusing repair cannot be continued as that pattern into a world running that law, because continuing it there is the export, arriving in a place whose whole arrangement is the repair of what it receives. Its truthful continuation is somewhere its damage stays local. Both destinations have old names, paradise and hell, and the names add nothing to the mechanism. One is the continuation of observers whose records admit repaired participation with each other. The other is the continuation of an observer that has run out of anybody to pass its costs to.
+So where do entries come from? The patches inside a region read its edge and cannot set it, so the write happens at the seam itself, between the two observers who share it. Chapter thirty-eight named the move. A private self-update spends the observer's own capacity, clears its own mismatch, and leaves the shared entry saying what it said going in. A network update writes the shared entry. Each side then reads a different value. On the four-state system where the two can first be told apart, no self-update-only scheduler ever reaches the state where the shared entry has moved, at any budget, over any number of steps. A network update reaches it with probability one, and any scheme with a positive chance of getting there writes the shared register on the way.
 
-Every act writes into records that other observers read, so every act exports a pattern into the field all of them share. Some of those patterns lower what the people downstream have to fix. Some raise it, and the repair falls to observers who did not write the entry, at a time nobody set.
+The shared entries are the boundary data. The move that writes them is the move no quantity of private effort substitutes for.
 
-The plant at Horseshoe Bend runs on a plan with no end date because a set of records made in Butte between 1955 and 1982 left work that has to be done and can be done. The load has an address, the address can be reached, and there are people in that valley running a pump against it. We compute our destination by the records we make repairable.
+Say what those writes are in a person's vocabulary.
+
+What to admit, which is what you let across your boundary from outside and allow to change your state. What to emit, which is what you write onto the seams you are one side of. What to repair, which is where a finite budget actually goes. What to ignore, which costs nothing to decide and shows up in the record as an entry left standing. What to confess, which is putting onto the shared record something only you were holding. What to protect, which is spending your own capacity so that somebody else's reading keeps having a consistent extension. And what to amplify, which is writing an entry onto seams that had no opinion about it until you arrived.
+
+Those seven are the boundary data. They are the input the theorem takes, and they are the reason it returns a different world on different days.
+
+So free will is self-reading participation in repair. An observer that reads coordinates on itself, acts on the readings, and writes the results onto seams it shares with others is a place where the boundary record gets set. The convergence does not run around such a thing and it does not suspend itself on request. It runs through. The entry it reads on the way past is the entry that observer wrote.
+
+## Pavia, 524
+
+Boethius was consul in 510 and master of the offices under Theodoric, and in 522 his two sons
+held the consulship together, which is the top of a Roman career of that period. He then
+defended the senator Albinus, who was accused of writing to the emperor Justin in
+Constantinople against Theodoric's rule. He was taken to Pavia, held there, and executed in
+524. In the prison he wrote the *Consolation of Philosophy*. Its fifth and last book is about the question above.
+
+He puts it in the vocabulary of divine foreknowledge. If the whole order is possessed at once, entire, by something that does not take it a piece at a time, then it is settled, and a settled order leaves nothing for anybody inside it to decide.
+
+The answer has two parts and both survive translation out of the vocabulary.
+
+The first is a distinction between two necessities. One is simple: men are necessarily mortal. The other is conditional: if you know that someone is walking, he is necessarily walking. The second attaches to the act only while the condition holds, imported by the knowing rather than produced by the walking. Then the test question, which Boethius puts directly: does the act of vision add any necessity to the things you see before your eyes? Watching a man cross a courtyard does not make him cross it.
+
+The second part is his definition of eternity as life possessed whole. A complete-history reading can contain earlier and later events internally while requiring no external time in which the whole is assembled. Timeless closure therefore permits internal causal reasons, local succession and change; it does not remove every ordering from the structure.
+
+Fourteen centuries later the requirement itself was taken apart, in eleven pages. What most people mean by freedom is that you are responsible for what you did only if you could have done otherwise. Harry Frankfurt attacked that sentence in the *Journal of Philosophy* of 4 December 1969, in a paper called "Alternate Possibilities and Moral Responsibility", pages 829 to 839.
+
+His case is a piece of machinery. Somebody, call him Black, wants Jones to do a particular thing, and is prepared to step in and make him do it if Jones shows any sign of deciding otherwise. Jones decides to do it on his own. Black watches and never moves. Jones could not have done otherwise, because Black stood by with the means to prevent it. Jones is responsible anyway, because what he did came out of his own deliberation and Black played no part.
+
+What carries the responsibility is therefore the structure of the will that produced the act and the record of the act itself. Whether some other setting of the boundary was reachable is a question about the space of records. Which entry got written, out of which observer's own repair policy, is a question about this record. This record is what everything downstream is computed from.
+
+## It was going to happen anyway
+
+The fatalism above has a second life as an excuse.
+
+Somebody writes an entry onto a shared seam and leaves the repair bill with whoever is on the other side. Asked about it afterward, the sentence available is that the network converges regardless, that the endpoint was going to be the endpoint, and that nothing turned on the write.
+
+The structure blocks that, and it blocks it with arithmetic rather than with disapproval.
+
+Chapter six's flipped edge is the clean case, because the whole net can be checked. Two of its nineteen independent loops carry a residue, no setting of the twelve coins satisfies all thirty records, and the machine converges anyway, from all two thousand and forty-eight starts and under all sixteen schedules, onto an arrangement carrying a leftover of exactly one. Convergence is guaranteed and so is the size of the leftover.
+
+Where it sits is a different matter. Run the repairs in another order and the leftover ends up on a different part of the net. It survives any amount of working harder, and it can be placed, and which patch is carrying it when the repairs stop is settled by who repaired what, in which order, and which way each one pushed the disagreement it found.
+
+A record can keep part of the trajectory along with its endpoint. The midpoint map loses input distinctions on its two output readings, and the crossing count it writes keeps them, so who absorbed a cost and who exported it survives in the records for as long as the records do.
+
+The leftover comes to one either way. The record that produced it names which patch absorbed the mismatch and which one exported it. The naming is no moral gloss applied afterward by somebody keeping accounts. It is the entries, in order, which is the only material anybody downstream has to compute from.
+
+The excuse also needs the endpoint to be the kind of thing that could have caused something, and chapter thirty-seven wrote the endpoint down. Take the whole structure, take the record it holds, look up the world that record names, and demand that what comes back is the structure you started with.
+
+$$\text{world}\big(R(W)\big) \;=\; W$$
+
+W is the whole structure, R is chapter eleven's record map, which returns the part of a state that survives comparison, and world is the lookup running from a record to the consistent state that record names. The unknown sits on both sides, which makes this a fixed point rather than a recipe.
+
+The complete-history closure equation requires no first external solver. Its internal dependencies can nevertheless be realized by local computation. The equation does not cause those events from outside; the proposal identifies the self-consistent structure and its intrinsic operation as one reality.
+
+What an observer writes contributes to the record R returns and to subsequent local dependencies. The closure equation adds no external ordering; its internal history can contain ordered causes and choices. By itself the equation settles neither causal determinism nor responsibility.
+
+## Made and found
+
+Chapter two asked why there is anything rather than nothing and answered with a requirement severe enough to have one solution. Then it turned up a clause nobody had written into it: consistency is a property of descriptions, so the structure has to contain something that holds a description and can get it wrong.
+
+That clause leaves a question about what truth is in a structure of this shape. Two answers have been arguing since before either of them had a name. On the first, a claim is true by corresponding to how things are, and a describer's job is to find out which claims do. On the second, what is true is settled by what describers do: their comparisons, their procedures, their records.
+
+Both are here, at full strength.
+
+Found: the consequences of the rules belong to nobody. Chapter two's rewriter produces strings with as many a's as b's, forever, and neither of its two moves mentions counting. Whether nineteen loops on a twelve-patch net sum to zero is settled by an arithmetic that comes out the same for everybody who performs it. The twelve observers inside get no vote.
+
+Made: which record that arithmetic is applied to is written by observers, one commit at a time, out of their own capacity, onto the seams they share. Nothing else writes it. There is no reading of the world taken from outside. Every entry on every seam got there because two bounded things compared what they held and one of them paid for the entry.
+
+So the world is found from the record and the record is made, and those are the two ends of one operation, which chapter eleven pinned down with four demands: hand it a record and it returns the consistent state that record names.
+
+Finding a relation and recording it are events with an internal order. The complete-history closure condition adds no external ordering in which the world must first exist and then be described. It can include both activities and their causal dependencies, without turning every mathematical discovery into a unique global equilibrium.
+
+The argument is usually had about mathematicians, whether a theorem is invented or discovered, as though some fact settled which. Somebody working on a proof is inside the structure the proof is about. What they reach is a fixed point of that work, the thing the work returns unchanged. It was found, in that nothing along the way was free to go otherwise. It was made, in that the working is what put the entries on the record. Nothing else was writing them.
+
+The decision is local and taken many times a day: which entries to put on the seams you touch. Every one of them enters the boundary data that somebody else's world gets computed from. A mismatch written onto another observer's edge does not stop existing when it leaves yours. It sits in their record. The capacity that clears it comes out of their budget.
