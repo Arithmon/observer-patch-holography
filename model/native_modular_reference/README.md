@@ -235,12 +235,158 @@ Initialization/readout physical costs are outside the pulse count. This
 closes the full-native-algebra active-control restriction, without identifying
 that control with passive repair, physical seconds or a spacetime clock.
 
+## Regional algebras under one native modular action
+
+[`regional.py`](regional.py) constructs regional algebras directly on the
+native total-two binary shell. For a set of ports `R`, the bare algebra is
+`A_R = direct_sum_q M(local q-configurations) tensor I(outside)`. The local
+occupation records lie in its diagonal part. Every such classical record
+commutes with the Palm reference, so its modular action is trivial. A moving
+modular clock needs a coherent probe and the admitted control services.
+
+The full Palm action does not generally preserve `A_R`: the phase on a local
+matrix unit depends on the outside configuration. For the adjacent ports
+`R=(0,1)`, one coherence has degree ratio `4/5` in one outside context and
+`1` in another. Its reduced faithful state is tracial in each charge block,
+so its own modular flow is identity. Faithful regional restriction alone
+does not establish restriction of the ambient clock.
+
+There is an exact, canonical completion. Group outside configurations when
+their positive degree vectors over local configurations are proportional.
+Each resulting block has `sigma=p mu tensor nu`, with both factors faithful.
+The algebra `C_R = direct_sum_blocks M(local) tensor I(outside context)` is
+modular invariant, and its state-preserving expectation is
+
+```
+E_R(X) = direct_sum_blocks [(id tensor nu)(P_block X P_block) tensor I].
+```
+
+Its Kraus formula gives complete positivity; the displayed factorization
+gives unitality, the bimodule identity, idempotence and preservation of
+`sigma`. It need not preserve the ordinary matrix trace. The Schrödinger
+restriction to all local factors is CPTP and retains every context.
+
+This is the **smallest modular-invariant algebra containing `A_R`**. Spectral
+components of a local matrix unit separate its distinct degree ratios;
+products with the reverse unit give the corresponding outside-context
+projectors. Their joint partition is exactly proportionality of the degree
+columns. Minimality proves `C_R subset C_S` whenever `R subset S`; the one
+ambient modular group agrees on every common observable. For the cap
+`R=(0,1,5,7)`, the algebra dimension grows from 53 to 149. This supplies
+finite regional modular compatibility, with explicit additional context.
+Its implementation by local records and coherent controls remains an access
+obligation. Disjoint completed regions can fail to commute; the receipt
+exhibits a nonzero commutator for `(0,1)` and `(2,8)`.
+
+Nested expectations compose: `E_R E_S=E_S E_R=E_R` for `R subset S`.
+The bimodule identity and state preservation make each expectation the
+orthogonal projection for the faithful inner product `Tr(sigma X*Y)`;
+ordinary nested-projection composition then applies.
+
+These explicit finite maps instantiate the relevant algebraic formulas,
+not the entire [`CPRegionalNet`](../../Lean/QFT/CPRestrictionNet.lean)
+interface: that interface additionally requires trace-preserving expectations,
+locality and its other net laws. There is no claimed spacetime causal net.
+The existing full source word implements the ideal action simultaneously on
+all `C_R`. Regional partial trace preserves the finite-preparation operator
+sandwich, giving the same modular-error bound for the actual regional states;
+exact invariance of the actual finite-prepared ambient state is not assumed.
+
+## One native entropy completion and its regional clock
+
+[`completed_clock.py`](completed_clock.py) joins the
+[native complement-repair entropy completion](../native_equilibration/cut_completion.py)
+to a clock on the **same prepared state and bare cap algebra**. For the cap
+above, run the admitted native C/E repairs on complementary seams. Their
+derived tracial completion `E_R^trace` preserves every cap observable and
+selects `bar_sigma=E_R^trace(sigma)`. The source degree counts give its five
+eigenvalues `5/336, 19/1200, 37/2400, 1/75, 1/60`. It is the unique entropy
+maximum at the retained Palm cap marginal. Its distance from Palm is `8/175`;
+the tracial entropy completion and Palm-preserving expectation are distinct.
+
+Now `bar_sigma` factors with a uniform complement in each charge block, so
+its modular flow **does preserve the original 53-dimensional cap algebra**.
+The same counted state gives its cap modular gaps:
+
+| Cap charge | Nonzero modular frequency magnitude |
+| --- | --- |
+| 0 | None |
+| 1 | `log(38/37)` |
+| 2 | `log(5/4)` |
+
+The dimensionless frequency ratio `log(38/37)/log(5/4)` has no fitted rate.
+It is an internal prediction of this preparation and access protocol.
+No physical temperature, atomic transition or SI time conversion is attached.
+
+Two complete 2042-pulse words use the existing source controls: the direct
+state action `U_bar(s)=bar_sigma^(-is)` up to the common native scalar, and
+the relative action `V_s=bar_sigma^(-is) sigma^(is)`. The exact diagonal
+identity is `U_bar(s)=V_s U_Palm(s)` in the same gauge. The Heisenberg relative
+cocycle is `V_s*`; this relates two reference-dependent clocks without
+identifying their frequencies. Rational logarithm/phase enclosures certify
+every original binary source-array entry against its target. Target centers
+are rounded to dyadic rationals with both component errors charged; the
+executed arrays are unchanged. Each requested rational `|s|<=16` word must
+pass operator error `1e-9`; the retained words use `s=16`.
+
+Finite preparation also joins. Put `t=66 delta`, where `delta` is the Palm
+warm-up error, and `u=75 eta`, where `eta` is the complement-repair error.
+Complete positivity and `bar_sigma>=I/75` give the actual unnormalized
+successful work state a relative sandwich of radius `r=t+u+tu`, up to its
+herald normalization scalar. Logarithm stability gives
+
+```
+half-diamond(source_bar(s), actual_completed_modular(s))
+    <= delta_word + min(1, |s| r/(1-r)).
+```
+
+At **369 warm-up attempts, one global movement herald, then 7440 complement
+attempts on success**, this is below `0.001` for each certified word in the
+window. The cap-only comparison uses `t` instead of `r`: every complement
+attempt already preserves the complete cap marginal. The complete flagged
+single-trial preparation/source error is `delta + (5/33) eta + p_max delta_word`.
+All failed herald outcomes remain records. Repeating failed Palm trials and
+then running one successful complement stage costs fewer than 9882.015
+expected native attempts. Preparation records/controllers are unavailable to
+later work; attempts and `s` retain their different meanings.
+
+The same clock also respects the continuing cut protocol. Every actual C/E
+complement Kraus branch preserves the cap configuration, and therefore
+commutes with `bar_sigma` and its modular unitary. This proves covariance
+of the **complete labelled instrument**, including arbitrary untouched
+references and any finite concatenation of its records. Ideal modular words
+can be moved between complete complement attempts without changing those
+current-record probabilities. Numerical source words carry their certified
+control error; measurements during a partial word are outside this claim.
+
+An executed cap Ramsey probe uses native codes 328 and 73, with the same
+outside configuration and cap charge one. Seven existing source pulses
+prepare their coherence and seven analyze it. The complete work-register
+bit-0 PVM reads `(1+cos(s log(38/37)))/2`; all 512 coordinates contribute to
+its two outcomes. At `s=16` the match probability lies between `0.95` and
+`0.96`. The 2056-pulse experiment retains padding throughout; neither a
+membership projection nor outcome normalization is inserted. Configuration
+preparation and the projective bit read remain admitted apparatus, with
+their physical costs outside this pulse count.
+
+This supplies the finite faithful-state/inner-flow hypotheses used in
+[`PrivateInner`](../../Lean/Dynamics/PrivateInner.lean) and the finite Gibbs/KMS
+identity in [`StructuralInheritance`](../../Lean/QFT/StructuralInheritance.lean)
+for the selected native entropy completion. The cut schedule, discarded
+records, coherent services and cap choice remain explicit. Passive cut repair
+is not the modular unitary. Exact regional invariance belongs to the ideal
+completed reference; actual finite-prepared flows have the stated error
+bound. No boost, area, smooth spacetime or laboratory-clock identification
+is inferred.
+
 ## Replay
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference --check model/native_modular_reference/results.json
 python -m model.native_modular_reference.preparation --check
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.full_flow --check model/native_modular_reference/full_flow_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.regional --check model/native_modular_reference/regional_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.completed_clock --check model/native_modular_reference/completed_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 
