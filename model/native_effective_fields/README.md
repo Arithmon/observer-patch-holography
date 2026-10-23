@@ -367,10 +367,86 @@ impossible words and the unresolved timeout of probability `125/216`.
 Every terminal 66-dimensional density agrees with an independent exact CP
 calculation, and a serialized checkpoint gives the same continuation.
 The infinite first-tick law is analytically summed, not finitely executed.
-The coherent preparation, joint analyzer, global record access, uniform
-scheduler and logical halt controller remain declared. No physical pulse
-implementation, laboratory identification, Lorentzian limit or particle mass
-is supplied by this neutral response experiment.
+This ideal-response experiment declares coherent preparation and a joint
+analyzer. Their encoded realization below uses the existing source services.
+Global record access, the uniform scheduler and logical halt remain explicit;
+no laboratory identification, Lorentzian limit or particle mass follows.
+
+
+## Source-coded preparation and a one-bit-pointer spatial analyzer
+
+The [neutral instrument](neutral_instrument.py) realizes the preparation and
+complete spatial POVM with existing source controls and pointer services.
+Two actual native repairs first prepare the required occupation: record
+current `-1` on seam `(2,3)`, then either nonzero current on `(0,1)`.
+Conservation of total charge two fixes the successful work state to `|0,2>`
+or `|1,2>`. This purity holds for arbitrary input, including entanglement
+with an untouched reference. At the uniform reference, each sign has
+probability `1/264`; the failed preparation has probability `131/132`.
+Every failed trial is retained. The existing 34-pulse balanced mixer turns
+these two successful states into the plus and minus phase preparations.
+No independent pure coherent input is supplied.
+
+After the first global moving current, with a **two-attempt cap**, the same
+34-pulse mixer converts each phase pair to its encoded occupation address.
+Nine source CNOTs copy the nine work bits, one at a time, to the existing
+binary pointer. Each CNOT uses three source pulses. A reset supplies zero
+before each copy: one initial blank and eight subsequent resets; all nine
+readout bits are retained. This executes **512 raw outcomes**, including
+nonbinary and padding addresses. Twenty addresses label the ten spatial
+plus/minus outcomes; every other address belongs to the complement. Full
+code-basis measurement is thus decomposed into explicit source words and
+the existing one-bit reset/read service.
+
+On the native code the POVM is exactly the twenty phase projectors plus
+their complement. Its terminal operation additionally dephases addresses
+inside the complement: it is **not** the earlier Lüders instrument. A
+complement superposition gives trace distance `1/2` between those updates.
+The full finite experiment retains preparation failure, successful movement
+at either attempt, and unresolved timeout. Its exact predictions are
+
+| Complete finite output quantity | Value |
+| --- | --- |
+| Successful preparation followed by timeout, both signs | `25/4752` |
+| C/E total variation, all preparation and timeout outcomes | `29/39600` |
+| Half-L1 difference on completed-movement outcomes alone | `1/23760` |
+
+The third row is an unnormalized subdistribution comparison; it is not a
+success-conditioned probability. The ideal uncapped `4/69` distance belongs
+to the separately specified pure-preparation first-movement law. The first
+moving attempt has the same law under C and E; their different zero-current
+coherence retention produces the second-attempt distinction.
+
+Every successful trial uses at most **95 source pulses**, **190 proper-code
+load/export events**, **nine pointer resets** and **nine pointer reads**.
+Two native herald repairs precede at most two movement attempts. Discarded
+uniform native warm-up removes exact stationary preparation: **369 attempts**
+give a complete-output half-trace bound below `9.19317e-7`, including the
+original binary source-word comparison and its norm amplification. The
+maximum native count is therefore 373. The bound applies before conditioning
+on a rare success and uniformly over untouched references. A finite native
+population execution checks the warm-up attachment independently.
+
+The source certificate encloses the original eight-dimensional mixer and
+four-dimensional copy arrays, lifts them over every spectator, and composes
+the two mixer calls and nine pointer copies. No array is normalized, polar
+corrected or compressed to the native sector. For this comparison the native
+instruments have a stated CPTP extension: dephase native code/complement,
+retain complement as an absorbing failure, and use the actual native maps
+on the code. This extension is a mathematical comparison contract, not a
+newly derived physical code-validity detector. Runtime terminal states and
+checkpoint continuation use the ideal target instrument; separate raw source
+execution retains all 512 pointer probabilities. Floating propagation
+residuals are diagnostics, not rigorous roundoff or physical-fidelity bounds.
+
+The coherent proper-code service, pointer blank/reset/read operations,
+carrier isolation, uniform schedule, global current access and halt control
+remain explicit. Native committed repairs and classical feedback alone
+preserve diagonal states and cannot create this phase preparation. The
+source-word realization removes a separately supplied coherent state and
+arbitrary spatial analyzer within the existing apparatus contract; it does
+not derive those underlying services or identify a particle or laboratory
+clock.
 
 ## Existing theorem attachments and remaining scope
 
@@ -405,6 +481,7 @@ readouts against which such a bridge can be checked.
 ```sh
 python -m model.native_effective_fields --check model/native_effective_fields/results.json
 python -m model.native_effective_fields.neutral_transport --check model/native_effective_fields/neutral_transport_results.json
+python -m model.native_effective_fields.neutral_instrument --check model/native_effective_fields/neutral_instrument_results.json
 python -m pytest -q -W error model/native_effective_fields
 ```
 
