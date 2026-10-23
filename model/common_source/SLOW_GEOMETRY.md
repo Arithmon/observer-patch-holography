@@ -92,6 +92,57 @@ history displacements. This closes the missing finite controlled direction
 with a binary decision. The protocol remains different from the uniform
 30-seam calibration and does not establish isotropic or autonomous motion.
 
+## The native directions suffice for finite null-tensor tomography
+
+The existing [Einstein tensor theorem](../../Lean/ObserverPatchHolography/EinsteinBranch/Tensor.lean)
+uses nine supplied null directions to determine a symmetric four-tensor
+up to a metric multiple. [null_tomography.py](null_tomography.py) gives an exact
+executable replacement for that directional-completeness premise using the
+same twelve source ports. This is an algebraic certificate over `Q(sqrt(5))`,
+separate from the registered Lean proof.
+
+Write the raw port axes as `v_p`, with `r²=phi+2`. On the **declared Lorentz
+lift** `k_p=(1,v_p)`, the metric is `g=diag(-r²,1,1,1)`. The coordinate change
+`t'=rt`, followed by rescaling each null ray by `1/r`, gives `(1,v_p/r)`
+for `diag(-1,1,1,1)`; the corresponding quadratic charges scale by `1/r²`.
+The twelve rows `q_p=B(k_p,k_p)` have rank nine and kernel exactly `span(g)`.
+For the representative with `B00=0`, put `b_i=B0i`, `S_ij=Bij` and let
+angle brackets denote the arithmetic mean over the twelve ports. The inverse is
+
+\[
+ b_i=\frac{3}{2r^2}\langle v_i q\rangle,\qquad
+ S_{ij}=\frac{15}{2r^4}\langle v_i v_j q\rangle
+        -\frac{3\delta_{ij}}{2r^2}\langle q\rangle.
+\]
+
+The exact matrix product of this decoder with the nine-column `B00=0`
+design is the identity. Its product with the full ten-column design gives
+`B+(B00/r²)g`, proving both rank nine and the full metric kernel without
+floating rank thresholds. Equal charges for two symmetric tensors on these
+twelve directions therefore imply metric ambiguity on every direction.
+
+The compatible charge space is exactly the native constant band, the slow
+rank-three band and the antipodal-even rank-five band. Three constraints
+exclude the fast rank-three band with Laplacian eigenvalue `5+sqrt(5)`.
+`decode_null_charges` checks all twelve equations and rejects incompatible
+readings; a single-port reading is an explicit rejection control. Combining
+opposite directions lowers the rank to six and erases all three mixed
+time/space components. Direction labels must retain their orientation.
+
+The exact decoder also bounds measurement error: a charge perturbation of
+maximum magnitude `epsilon` changes every component of its canonical
+tensor estimate by at most `(1-sqrt(5)/5)*epsilon`. Its compatibility
+residual has maximum error at most `phi*epsilon`. These are exact induced
+matrix norms; noisy incompatible readings remain rejected by the exact
+decoder. No observational error distribution is assumed.
+
+This closes the finite spanning requirement **if** a common symmetric
+stress/geometry charge is measured on the declared lifted directions.
+The source Gram does not construct that detector, select the Lorentz lift,
+or establish small-ball geometry, entropy stationarity, Ward/Bianchi laws
+or the physical Einstein equation. The clock and charge dictionary remain
+the physical composition requirements.
+
 ## What this establishes about space and momentum
 
 This is a concrete common-carrier attachment of native records to an existing

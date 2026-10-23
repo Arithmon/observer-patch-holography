@@ -3,12 +3,14 @@ from copy import deepcopy
 from fractions import Fraction as F
 import math
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
 from ..observer import native
 from . import native_join
 from . import slow_geometry as g
+from . import null_tomography as tomography
 from .test_native_join import endpoint
 
 
@@ -136,6 +138,119 @@ class SlowGeometryTests(unittest.TestCase):
         self.assertFalse(self.geometry['scope']['physical_position_identified'])
         self.assertFalse(self.geometry['scope']['physical_momentum_or_ccr_constructed'])
         self.assertFalse(self.geometry['scope']['physical_length_or_time_scale_calibrated'])
+
+
+class NativeNullTomographyTests(unittest.TestCase):
+    """Direct quadratic evaluation and controls for the conditional tensor map."""
+
+    @staticmethod
+    def charges(components):
+        c = g.source()
+        tensor = [[c.q5(0) for _ in range(4)] for _ in range(4)]
+        for (i, j), value in zip(tomography.TENSOR_COMPONENTS, components, strict=True):
+            tensor[i][j] = tensor[j][i] = value
+        result = []
+        for u in g.raw_frame():
+            k, value = (c.q5(1),)+u, c.q5(0)
+            for i in range(4):
+                for j in range(4):
+                    value = c.q5_add(value, c.q5_mul(k[i], c.q5_mul(tensor[i][j], k[j])))
+            result.append(value)
+        return result
+
+    def test_exact_rank_kernel_and_native_band_certificate(self):
+        import json
+        result = tomography.null_tomography_certificate()
+        json.dumps(result, allow_nan=False)
+        self.assertTrue(result['all_pass'])
+        self.assertEqual(result['exact_design_rank'], 9)
+        self.assertEqual(result['exact_kernel_dimension'], 1)
+        self.assertEqual(result['exact_charge_compatibility_constraints'], 3)
+        self.assertEqual(result['antipodal_merged_rank'], 6)
+        self.assertEqual(result['antipodal_merged_kernel_dimension'], 4)
+        self.assertFalse(result['scope']['physical_null_directions_derived'])
+        self.assertFalse(result['scope']['directional_stress_or_geometry_measurements_constructed'])
+
+    def test_all_ten_independent_tensor_components_reconstruct_modulo_metric(self):
+        c = g.source()
+        inverse_r2 = c.q5_inv(c.q5_add(c.GOLDEN, c.q5(2)))
+        for active in range(10):
+            for value in (c.q5(1), c.q5(F(2, 7), F(-3, 5))):
+                tensor = [value if i == active else c.q5(0) for i in range(10)]
+                readings = self.charges(tensor)
+                decoded = tomography.decode_null_charges(readings)
+                expected = list(tensor)
+                expected[0] = c.q5(0)
+                for i in (4, 7, 9):
+                    expected[i] = c.q5_add(expected[i], c.q5_mul(tensor[0], inverse_r2))
+                with self.subTest(active=active, value=value):
+                    self.assertEqual(decoded, tuple(expected))
+                    self.assertEqual(self.charges(decoded), readings)
+
+    def test_arbitrary_port_readings_are_rejected_not_projected_into_a_tensor(self):
+        c = g.source()
+        # A single-port response has a nonzero fast-band contribution.
+        for active in range(12):
+            readings = [c.q5(int(i == active)) for i in range(12)]
+            with self.subTest(active=active), self.assertRaisesRegex(ValueError, 'incompatible'):
+                tomography.decode_null_charges(readings)
+        readings = self.charges([c.q5(i-3, F(i, 11)) for i in range(10)])
+        self.assertEqual(self.charges(tomography.decode_null_charges(readings)), readings)
+        readings[4] = c.q5_add(readings[4], c.q5(F(1, 1000000)))
+        with self.assertRaisesRegex(ValueError, 'incompatible'):
+            tomography.decode_null_charges(readings)
+
+    def test_antipodal_merging_erases_three_nonmetric_tensors(self):
+        c = g.source()
+        frame = g.raw_frame()
+        partner = [next(j for j, v in enumerate(frame) if g._add(u, v) == (c.q5(0),)*3)
+                   for u in frame]
+        for active in (1, 2, 3):
+            tensor = [c.q5(int(i == active)) for i in range(10)]
+            readings = self.charges(tensor)
+            self.assertTrue(any(q != c.q5(0) for q in readings))
+            merged = [c.q5_mul(c.q5(F(1, 2)), c.q5_add(readings[i], readings[partner[i]]))
+                      for i in range(12)]
+            self.assertEqual(merged, [c.q5(0)]*12)
+            self.assertEqual(tomography.decode_null_charges(merged), (c.q5(0),)*10)
+            self.assertEqual(tomography.decode_null_charges(readings), tuple(tensor))
+
+    def test_changed_frame_or_incorrect_decoder_cannot_pass_certificate(self):
+        c = g.source()
+        frame = list(g.raw_frame())
+        frame[0] = (c.q5(0),)*3
+        with patch.object(tomography, 'raw_frame', return_value=tuple(frame)):
+            with self.assertRaisesRegex(AssertionError, 'native response Gram'):
+                tomography.null_tomography_certificate()
+        decoder = tomography._null_tomography_decoder()
+        decoder[0] = [c.q5(0)]*12
+        with patch.object(tomography, '_null_tomography_decoder', return_value=decoder):
+            with self.assertRaisesRegex(AssertionError, 'left inverse'):
+                tomography.null_tomography_certificate()
+
+    def test_stability_bounds_are_exact_and_attainable(self):
+        c = g.source()
+        decoder = tomography._null_tomography_decoder()
+        expected = c.q5(1, F(-1, 5))
+        self.assertEqual(tomography._max_row_sum(decoder), expected)
+        certificate = tomography.null_tomography_certificate()
+        self.assertEqual(certificate['compatibility_residual_max_error_per_charge_max_error_Qsqrt5'],
+                         ['1/2', '1/2'])
+        attained = False
+        for row in decoder:
+            error = [c.q5(c.q5_sign(x)) for x in row]
+            output = g._dot(row, error)
+            self.assertLessEqual(c.q5_sign(c.q5_sub(output, expected)), 0)
+            attained = attained or output == expected
+        self.assertTrue(attained)
+
+    def test_readings_require_exact_finite_field_values(self):
+        c = g.source()
+        invalid = ([c.q5(0)]*11, [c.q5(0)]*13, [0]*12,
+                   [(0.0, 0)]*12, [(False, 0)]*12, [('0', '0')]*12)
+        for readings in invalid:
+            with self.subTest(readings=readings), self.assertRaises(ValueError):
+                tomography.decode_null_charges(readings)
 
 
 if __name__ == '__main__':
