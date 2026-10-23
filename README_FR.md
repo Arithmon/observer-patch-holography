@@ -2,7 +2,7 @@
 
 **La physique à partir des registres que les observateurs peuvent partager.**
 
-[Article principal](https://philpapers.org/rec/MUEFOC) · [Livre](https://oph-book.floatingpragma.io/) · [Bibliothèque Lean](Lean/) · [Reproduire](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
+[Article principal](https://philpapers.org/rec/MUEFOC) · [Livre](https://oph-book.floatingpragma.io/) · [Bibliothèque Lean](Lean/) · [Reproduire](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/) · [English](README.md)
 
 [![Mandatory Suite](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml)
 [![Lean CI](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml)
