@@ -26,9 +26,9 @@ These are errors relative to the declared apparatus law, not experimental
 error bars. They are conservative integrated residual bounds. A large bound
 does not demonstrate a large actual truncation error. The long-window bound
 is dominated by occupation removal; making the time integrator more accurate
-alone will not fix it. The retained run covers case `a`; the other four
-potential phases are supported by the evaluator but have no retained full
-window certificate in this packet.
+alone will not fix it. The sparse-cutoff receipt covers case `a`; the complete changed-potential
+comparison below certifies the same 64-level evaluator across all five cases
+and every deposited endpoint.
 
 For the 64-level run at 2 ms, the selected two-point estimator is
 `-0.1434118369` with certified numerical/occupation radius `0.016264164`.
@@ -126,3 +126,77 @@ Tests include exact rational arithmetic checks,
 independent high-precision generator enclosures, actual occupation escape,
 a deliberately inaccurate integration step, detector phase conventions and
 failure to certify terminal selection.
+
+## Complete changed-potential comparison
+
+The [transfer evaluator](transfer.py) applies the same 64-level apparatus
+certificate to all five cases and all 25 positive-time coordinates in the
+[published deposit](https://zenodo.org/records/18752287). Its compressed
+[receipt](transfer_results.json.gz) retains every full error budget, both
+spin branches, all 125 comparisons and five separate zero-time diagnostics.
+The calibrated preparation, potential phases, noise, probe `h=.4`, pulse
+durations and finite carrier intervals are unchanged. There is no new fit.
+Every case is computed and sealed before the scoring code opens the measured
+values. This is a retrospective test of supplied apparatus, not prospective
+evidence or an OPH-specific prediction. Each coordinate is a terminal read on
+an independently prepared trial; storing several computational endpoints
+does not impose a sequence of physical measurements on one evolving state.
+
+The conditioning bound uses the approximate output's recorded trace defect.
+Write `Delta=rho_exact-rho_approx`, with `||Delta||_1 <= 2 epsilon` and
+`|Tr Delta| <= d`. For the accepted detector effect `0 <= A <= Q <= I`,
+let `p=Tr(A rho_exact)/Tr(Q rho_exact)`. The spectrum of `A-pQ` lies in
+`[-p,1-p]`. Subtracting that interval's midpoint proves
+
+```text
+|Tr[(A-pQ) Delta]| <= epsilon + d/2 = e.
+```
+
+The same bound for `Q` certifies positive physical acceptance when the
+approximate accepted mass `q` exceeds `e`. Then the conditional probability
+error is at most `e/q`, the spin-mean error at most `2e/q`, and the position
+estimator error at most `2e/(q sqrt(2) h)`, plus the separately enclosed
+scalar evaluation errors. This needs Hermiticity, not positivity of the
+approximate path. The exact trace defect is enclosed by widening its single
+binary rounding. The original conservative radii remain alongside these
+tighter radii; neither is inferred from agreement between cutoffs.
+
+For a deposited decimal `y`, certified centre `c` and radius `r`, the
+comparison reports the exact rational floor `max(0, |y-c|-r)` on all
+remaining sampling, calibration or apparatus/model error. A positive floor
+means numerical and occupation error alone cannot cover the discrepancy.
+A zero floor does not establish agreement within experimental uncertainty.
+
+All 125 endpoints have certified conditional intervals; **60 measured central
+values lie outside them**. The largest required remaining allowance in each
+case is shown below, rounded down. No endpoint is excluded.
+
+| Case | Positive discrepancy floors / 25 | Largest floor | Published time |
+| --- | ---: | ---: | ---: |
+| a | 14 | 0.60059383 | 8.4 ms |
+| b | 11 | 0.42598315 | 1.6 ms |
+| c | 14 | 0.46868933 | 1.2 ms |
+| d | 12 | 0.36578125 | 2.8 ms |
+| e | 9 | 0.33039699 | 3.6 ms |
+
+Floors and radii use dimensionless two-point position-estimator units.
+Some late-time intervals remain wide. The numerical enclosures do not
+establish agreement at the points they contain. Independent checks compare
+all 130 endpoint centres, including zero time, with the corresponding
+64-level native execution, and test all asymmetric schedules against a
+separate dense master-equation solver. This is finite implementation
+consistency, not a bound on native compiler or laboratory service error.
+
+The [paper](https://arxiv.org/html/2603.04744v1#S3.SS2) reports 200 nominal
+measurements per point. The deposition supplies neither accepted counts nor
+the raw trials, calibration covariance or a resolution of the documented
+estimator-normalization ambiguity. No experimental confidence interval,
+p-value or inferred detector correction is assigned.
+
+Replay recomputes every path and bound; the compressed format only reduces
+artifact size. The sparse-cutoff receipt remains a separate certificate.
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.occupation_control.transfer --check model/occupation_control/transfer_results.json.gz
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/occupation_control/test_transfer.py
+```

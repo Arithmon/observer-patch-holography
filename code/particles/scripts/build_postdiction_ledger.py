@@ -32,6 +32,7 @@ import argparse
 from decimal import Decimal
 from fractions import Fraction
 import importlib.util
+import gzip
 import hashlib
 import json
 import math
@@ -382,10 +383,61 @@ def _retrospective_tilt_reference(path: Path | None = None) -> dict[str, Any]:
 
 def _public_receipt(relative: str, schema: str) -> tuple[dict[str, Any], str]:
     path = REPO / relative
-    receipt = json.loads(path.read_text(encoding="utf-8"))
+    raw = path.read_bytes()
+    receipt = json.loads((gzip.decompress(raw) if path.suffix == ".gz" else raw).decode("utf-8"))
     if receipt.get("schema") != schema:
         raise SystemExit(f"unexpected public-record receipt: {relative}")
-    return receipt, hashlib.sha256(path.read_bytes()).hexdigest()
+    return receipt, hashlib.sha256(raw).hexdigest()
+
+
+def _occupation_control_reference() -> dict[str, Any]:
+    relative = "model/occupation_control/transfer_results.json.gz"
+    packet, checksum = _public_receipt(relative, "oph.occupation_control.transfer_results.v1")
+    settings = packet["prediction"]["settings"]
+    comparison = packet["comparison"]
+    if (settings["new_parameter_fit"] is not False
+            or settings["physical_uncertainty_included"] is not False
+            or settings["native_compiler_error_included"] is not False
+            or comparison["statistical_rejection_claimed"] is not False
+            or comparison["full_uncertainty_agreement_established"] is not False
+            or comparison["accepted_counts_or_raw_trials_authenticated"] is not False
+            or comparison["experimental_uncertainty_applied"] is not None):
+        raise SystemExit("occupation comparison cannot promote a fit or physical uncertainty claim")
+    for path, expected in packet["prediction"]["source_bindings"].items():
+        if hashlib.sha256((REPO/path).read_bytes()).hexdigest() != expected:
+            raise SystemExit(f"occupation comparison source custody mismatch: {path}")
+    if len(comparison["runs"]) != 1 or comparison["runs"][0]["dimension"] != 64:
+        raise SystemExit("occupation comparison fixed cutoff changed")
+    result = comparison["runs"][0]
+    rows = result["held_out_rows"]
+    expected_keys = {(case, Fraction(step, 5)) for case in "abcde" for step in range(2, 51, 2)}
+    if (len(rows) != 125 or {(row["case"], Fraction(row["time_ms"])) for row in rows} != expected_keys
+            or result["held_out_count"] != 125):
+        raise SystemExit("occupation comparison requires the same complete 125 observations")
+    summaries = []
+    for case in "abcde":
+        available = [row for row in rows if row["case"] == case and row["status"] == "certified_interval"]
+        floors = [Fraction(row["minimum_uncovered_absolute_allowance"]) for row in available]
+        if any(value < 0 for value in floors):
+            raise SystemExit("occupation comparison discrepancy floor must be nonnegative")
+        largest = max(available, key=lambda row: Fraction(row["minimum_uncovered_absolute_allowance"]), default=None)
+        summaries.append({"case": case, "observations": 25, "certified": len(available),
+                          "strictly_positive_discrepancy_floors": sum(value > 0 for value in floors),
+                          "minimum_common_remaining_allowance": str(max(floors, default=Fraction(0))),
+                          "largest_floor_time_ms": None if largest is None else largest["time_ms"]})
+    if summaries != comparison["per_case"]:
+        raise SystemExit("occupation comparison per-case summary differs from retained rows")
+    maximum = max(Fraction(row["minimum_common_remaining_allowance"]) for row in summaries)
+    return {"artifact_ref": relative, "artifact_sha256": checksum,
+            "projection_scope": "mechanical comparison projection; full-path numerical replay belongs to model.occupation_control.transfer",
+            "same_observations_as_anharmonic_transfer": True, "new_independent_data": False,
+            "observations": 125, "certified": sum(row["certified"] for row in summaries),
+            "strictly_positive_discrepancy_floors": sum(row["strictly_positive_discrepancy_floors"] for row in summaries),
+            "minimum_common_remaining_allowance": str(maximum),
+            "minimum_common_remaining_allowance_floor_5": f"{maximum.numerator * 10**5 // maximum.denominator / 10**5:.5f}",
+            "per_case": summaries, "statistical_rejection_claimed": False,
+            "full_uncertainty_agreement_established": False,
+            "units": comparison["units"]}
 
 
 def _retrospective_shared_parameter_reference() -> dict[str, Any]:
@@ -558,6 +610,7 @@ def _retrospective_public_record_references() -> dict[str, Any]:
                 "observations": transfer_cmp["observations"],
                 "position_estimator_rmse": transfer_cmp["position_estimator_rmse"],
             },
+            "occupation_control": _occupation_control_reference(),
         },
     }
 
@@ -7281,6 +7334,20 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "the errors are not compared with one another. All three are retrospective "
         "postdictions of a supplied quantum-mechanical model; their agreement does not "
         "distinguish OPH from ordinary quantum mechanics.")
+    add("")
+    controlled = osc["occupation_control"]
+    add("The [complete occupation-controlled apparatus comparison](../model/occupation_control/README.md#complete-changed-potential-comparison) "
+        f"certifies `{controlled['certified']}` of those same `{controlled['observations']}` "
+        "position-estimator observations using unrestricted-oscillator, integration, "
+        "preparation, detector and arithmetic bounds. "
+        f"`{controlled['strictly_positive_discrepancy_floors']}` central values lie outside "
+        "their certified numerical intervals. A common remaining experimental, "
+        "calibration or apparatus-model allowance must be at least "
+        f"`{controlled['minimum_common_remaining_allowance_floor_5']}` estimator units. "
+        "This is a necessary discrepancy floor, not an experimental error bar or "
+        "statistical rejection. It adds no independent observations and changes no "
+        "apparatus parameter. Agreement within a full physical uncertainty budget "
+        "is unestablished.")
     add("")
     add("These comparisons share an executable source interface, but their supplied "
         "apparatus actions, preparations, noise models and clock maps are not "

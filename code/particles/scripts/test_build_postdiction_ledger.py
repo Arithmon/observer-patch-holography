@@ -19,6 +19,44 @@ def test_retained_public_record_projection_is_current():
     assert retained["retrospective_public_record_comparisons"] == ledger._retrospective_public_record_references()
 
 
+def test_complete_occupation_projection_keeps_same_data_and_scope():
+    summary = ledger._occupation_control_reference()
+    assert summary['observations'] == 125
+    assert summary['same_observations_as_anharmonic_transfer'] is True
+    assert summary['new_independent_data'] is False
+    assert summary['full_uncertainty_agreement_established'] is False
+    assert summary['statistical_rejection_claimed'] is False
+    assert summary['certified'] == sum(row['certified'] for row in summary['per_case'])
+    assert Fraction(summary['minimum_common_remaining_allowance']) >= Fraction(summary['minimum_common_remaining_allowance_floor_5'])
+
+
+@pytest.mark.parametrize('mutation', ['fit', 'agreement', 'significance', 'duplicate', 'summary', 'custody'])
+def test_complete_occupation_projection_rejects_promotion_or_incomplete_coverage(monkeypatch, mutation):
+    original = ledger._public_receipt
+    def changed(relative, schema):
+        packet, checksum = original(relative, schema)
+        if schema == 'oph.occupation_control.transfer_results.v1':
+            packet = deepcopy(packet)
+            if mutation == 'fit':
+                packet['prediction']['settings']['new_parameter_fit'] = True
+            elif mutation == 'agreement':
+                packet['comparison']['full_uncertainty_agreement_established'] = True
+            elif mutation == 'significance':
+                packet['comparison']['statistical_rejection_claimed'] = True
+            elif mutation == 'duplicate':
+                rows = packet['comparison']['runs'][0]['held_out_rows']
+                rows[1] = deepcopy(rows[0])
+            elif mutation == 'summary':
+                packet['comparison']['per_case'][0]['minimum_common_remaining_allowance'] = '0'
+            else:
+                pins = packet['prediction']['source_bindings']
+                pins[next(iter(pins))] = '0'*64
+        return packet, checksum
+    monkeypatch.setattr(ledger, '_public_receipt', changed)
+    with pytest.raises(SystemExit, match='occupation comparison'):
+        ledger._occupation_control_reference()
+
+
 @pytest.fixture(scope="module")
 def result(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("ledger")

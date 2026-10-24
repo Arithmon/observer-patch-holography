@@ -213,7 +213,7 @@ discrepancies under the fixed apparatus. The zero at 10 ms means its wide
 interval gives no positive correction floor. Both existing cutoffs remain
 visible: dimension 32 has two eligible certified observations and dimension
 64 has three. Every other one of the 125 held-out observations remains
-explicitly unavailable; the certificate's 5 ms endpoint has no matching
+explicitly unavailable in this sparse attachment; the certificate's 5 ms endpoint has no matching
 measurement and is not interpolated. The separate zero-time case-a value
 requires at least `0.34054967` beyond its certified numerical interval. It is
 kept outside the held-out comparisons and supplies no independent evidence
@@ -226,6 +226,15 @@ authenticate per-point accepted counts, raw trials, preparation covariance
 or the unresolved estimator conversion. No experimental confidence band is
 inferred from the printed values. Agreement within a complete physical
 uncertainty budget remains unestablished; no parameter or datum is corrected.
+
+The [complete occupation-controlled comparison](../occupation_control/README.md#complete-changed-potential-comparison)
+separately encloses the same unrestricted apparatus at every deposited
+endpoint in all five cases. It retains the fixed preparation and apparatus,
+and improves the conditional error bound using the computed trace defect.
+Its exact remaining-discrepancy floors quantify which residuals numerical
+and occupation error cannot explain. The native execution receipt and its
+scores above are unchanged; physical calibration and experimental
+uncertainties remain separate.
 
 The package tests include independent unsplit master-equation comparisons,
 the finite-occupation boundary counterexample, full spin continuation, native

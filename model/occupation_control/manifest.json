@@ -3,12 +3,13 @@
     "Python 3.11+",
     "model/requirements.txt",
     "model/anharmonic_observations/reference.py (independent tests only)",
-    "tools/strict_json.py"
+    "tools/strict_json.py",
+    "model/anharmonic_transfer (fixed protocol, calibration and existing observations)"
   ],
   "description": "Outward-enclosed full-path occupation and integration control for the supplied spin-oscillator apparatus, including preparation and detector.",
   "files": {
     "DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
-    "README.md": "525be50684bac1b435321aa145db7312d4dbc41b8b0c1738d4f6772e640b2ce7",
+    "README.md": "26a08cdacbe071dc42ada9a9e1fdb80e4789ada270f300bd3effc335033b136f",
     "__init__.py": "fbe5ce9438a35ba51737471026d78abc5fb5b88582607c244a7ce84efa5dc16c",
     "__main__.py": "b442422dbc00e0873a934c8c9348ea26af75e851c36721784744dd9f88887cfc",
     "experiment.py": "4073a2d90e53004a0eb0c0a1fc185e4c94768798b07d3a934b161dd896920285",
@@ -17,11 +18,15 @@
     "solver.py": "00df02931eea0513303b070186c90a746931561326839bee8b23eb650f454c53",
     "test_control.py": "3b6925112f761f024a406b9439d5417b43b7b710c9097ea267220cbaa6c7641f",
     "test_mp_enclosure.py": "05187247f81e377e0721de70b60696a58163b4f5ecdc3d74b1463043385ebf50",
-    "test_replay.py": "d8d694c5ebdaabcb9cb6c552c0aa4c0003cccfb9f1933d19f4a8c3d6b308730f"
+    "test_replay.py": "d8d694c5ebdaabcb9cb6c552c0aa4c0003cccfb9f1933d19f4a8c3d6b308730f",
+    "test_transfer.py": "4b7f0e330a18b02cc5b5cc7f78d4d67d9002ccee0095da51751e256cbff89254",
+    "transfer.py": "97fe0460a114b9cc3a65f798c1dcb8c67d1272d268d58ea050c8a45209b6bd83",
+    "transfer_results.json.gz": "2ce0e18bb4030ef4b67451ce99e28cf53798ceeb4eb22b0a1c7e0bd73898cebe"
   },
   "reproduce": [
     "python -m model.occupation_control --check model/occupation_control/results.json",
-    "python -m pytest -q -W error model/occupation_control"
+    "python -m pytest -q -W error model/occupation_control",
+    "python -m model.occupation_control.transfer --check model/occupation_control/transfer_results.json.gz"
   ],
   "schema": "oph.occupation_control.manifest.v1"
 }
