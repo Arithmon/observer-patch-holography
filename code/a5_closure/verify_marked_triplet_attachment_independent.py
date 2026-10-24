@@ -39,6 +39,23 @@ KEYS = {'schema', 'baseline', 'integration_baseline', 'source_sha256', 'native_t
         'public_data_selection_input'}
 
 
+def unique_pairs(rows):
+    """Reject duplicate keys before any receipt or source interpretation."""
+    result = {}
+    for key, value in rows:
+        if key in result:
+            raise ValueError('duplicate JSON key: '+key)
+        result[key] = value
+    return result
+
+
+def load(path):
+    def reject_constant(value):
+        raise ValueError('nonfinite JSON constant: '+value)
+    return json.loads(Path(path).read_text(), object_pairs_hook=unique_pairs,
+                      parse_constant=reject_constant)
+
+
 def mm(a, b):
     return [[dot(row, col) for col in zip(*b)] for row in a]
 
@@ -157,7 +174,7 @@ def source_marked_action(root, vertices, relabel):
     z, o, no = ZERO, ONE, scalar(-1)
     old_vertices = [[z,o,t],[o,t,z],[t,z,o],[no,t,z],[z,no,t],[t,z,no],
                     [nt,z,o],[z,o,nt],[o,nt,z],[nt,z,no],[no,nt,z],[z,no,nt]]
-    marker = json.loads((root/INPUTS[5]).read_text())
+    marker = load(root/INPUTS[5])
     old_to_response = [vertices.index(v) for v in old_vertices]
     response_to_old = [old_to_response.index(i) for i in range(12)]
     old = marker.get('generator')
@@ -210,7 +227,7 @@ def verify(packet, root=ROOT, response=None):
     norm = dot(frame[0],frame[0])
     need([[div(dot(x,y),mul(scalar(4),norm)) for y in frame] for x in frame] == slow,
          'source frame realizes the native slow eigenspace')
-    response = json.loads((root/RESPONSE).read_text()) if response is None else response
+    response = load(root/RESPONSE) if response is None else response
     rows = response['closed_paths']
     need(type(rows) is list and len(rows) == 60, 'sixty live response paths')
     actions, internal, spatial = [], [], []
@@ -256,6 +273,7 @@ def verify(packet, root=ROOT, response=None):
             for j in range(2)] for i in range(2)]
     need(hom == [[ONE,ZERO],[ZERO,ONE]], 'character inner-product Hom dimensions')
     need(type(packet['fixed_action_hom_dimensions']) is dict and
+         all(type(value) is int for value in packet['fixed_action_hom_dimensions'].values()) and
          set(packet['fixed_action_hom_dimensions']) ==
          {'slow_to_upper','slow_to_lower','fast_to_lower'} and
          packet['fixed_action_hom_dimensions'] ==
@@ -302,4 +320,4 @@ def verify(packet, root=ROOT, response=None):
 
 if __name__ == '__main__':
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else REFERENCE
-    print(json.dumps(verify(json.loads(path.read_text())),indent=2,sort_keys=True))
+    print(json.dumps(verify(load(path)),indent=2,sort_keys=True))

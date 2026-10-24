@@ -19,7 +19,7 @@ REFERENCE = ROOT/'code/a5_closure/manifests/marked_triplet_attachment_reference.
 class MarkedTripletAttachmentTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.packet = json.loads(REFERENCE.read_text())
+        cls.packet = verifier.load(REFERENCE)
 
     def rejected(self, packet):
         with self.assertRaises(ValueError):
@@ -53,6 +53,73 @@ class MarkedTripletAttachmentTests(unittest.TestCase):
         bad = deepcopy(self.packet)
         bad['source_marked_order_five_action'][0] = True
         self.rejected(bad)
+
+    def test_same_character_does_not_allow_substitution_of_the_source_mark(self):
+        bad = deepcopy(self.packet)
+        old = bad['source_marked_order_five_action']
+        inverse = [old.index(i) for i in range(12)]
+        self.assertNotEqual(inverse, old)
+        index = bad['actions'].index(inverse)
+        # The inverse has the same character. A character-only gate would
+        # miss this alteration of the independently committed marker.
+        self.assertEqual(bad['characters'][index], bad['marked_traces'])
+        bad['source_marked_order_five_action'] = inverse
+        bad['marked_action_index'] = index
+        self.rejected(bad)
+
+    def test_incidence_automorphism_is_not_an_outer_twist(self):
+        bad = deepcopy(self.packet)
+        bad['outer_twist_example'] = list(range(12))
+        self.rejected(bad)
+
+    def test_swapping_response_triplets_does_not_relabel_the_live_spatial_band(self):
+        response = verifier.load(ROOT/verifier.RESPONSE)
+        for row in response['closed_paths']:
+            row['observed_response'].reverse()
+        with self.assertRaisesRegex(ValueError, 'upper action'):
+            verifier.verify(self.packet, response=response)
+
+    def test_physical_selection_and_universal_nonselection_promotions_fail(self):
+        for key, value in (
+                ('physical_golden_embedding_selected', True),
+                ('scalar_clock_rescaling_changes_representation', True),
+                ('scope', 'all possible source laws and every physical embedding')):
+            with self.subTest(key=key):
+                bad = deepcopy(self.packet)
+                bad[key] = value
+                self.rejected(bad)
+
+    def test_hom_dimensions_require_original_integers(self):
+        for name, correct in self.packet['fixed_action_hom_dimensions'].items():
+            for invalid in (bool(correct), float(correct)):
+                with self.subTest(name=name, value=invalid):
+                    bad = deepcopy(self.packet)
+                    bad['fixed_action_hom_dimensions'][name] = invalid
+                    self.rejected(bad)
+
+    def test_duplicate_receipt_keys_are_rejected_before_replay(self):
+        text = json.dumps(self.packet)
+        # A permissive parser accepts the final value and conceals the
+        # conflicting earlier physical-promotion claim from the verifier.
+        duplicated = text.replace('"physical_golden_embedding_selected": false',
+                                  '"physical_golden_embedding_selected": true, '
+                                  '"physical_golden_embedding_selected": false')
+        self.assertNotEqual(duplicated, text)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'counterfeit.json'
+            path.write_text(duplicated)
+            with self.assertRaisesRegex(ValueError, 'duplicate JSON key'):
+                verifier.load(path)
+
+    def test_duplicate_nested_source_keys_and_nonfinite_values_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'source.json'
+            for text in ('{"source":{"generator":0,"generator":1}}',
+                         '{"value":NaN}', '{"value":Infinity}', '{"value":-Infinity}'):
+                with self.subTest(text=text):
+                    path.write_text(text)
+                    with self.assertRaises(ValueError):
+                        verifier.load(path)
 
     def test_verifier_reconstructs_refreshed_raw_frame_source(self):
         with tempfile.TemporaryDirectory() as directory:
