@@ -94,7 +94,11 @@ def test_coherent_first_law_and_strict_full_matrix_stationarity(reference):
     x /= np.linalg.norm(x)
     assert abs(np.trace(x)) < 1e-15
     assert abs(q@np.diag(x).real)+abs(pair@np.diag(x).real) < 1e-15
-    assert abs(np.diag(x).real@np.log(w)) < 1e-15
+    # The entropy gradient on normalized tangents is defined modulo identity.
+    # Remove that constant before contraction: otherwise the tiny floating
+    # trace residual above is amplified by log(w[0]), producing a false
+    # stationarity failure on a different BLAS implementation.
+    assert abs(np.diag(x).real@np.log(w/w[0])) < 1e-15
     divided = np.empty((66, 66))
     for i, a in enumerate(w):
         for j, b in enumerate(w):
@@ -108,6 +112,26 @@ def test_coherent_first_law_and_strict_full_matrix_stationarity(reference):
         varied = sigma+signed*min(w)/3*x
         assert abs(entropy(varied)-entropy(sigma)+relative(varied, w)) < 2e-14
         assert entropy(varied) < entropy(sigma)
+
+
+@pytest.mark.parametrize("reference", [common.reference, local.reference])
+def test_stationarity_readout_removes_only_the_identity_component(reference):
+    w = np.array(list(map(float, reference())))
+    q = np.array(v.charges())
+    within = np.flatnonzero(q == 0)
+    other = np.flatnonzero(q == 1)[0]
+    diagonal = np.zeros(66)
+    diagonal[within[0]] = .5
+    diagonal[within[1]] = -.5+2*np.finfo(float).eps
+    # This fixture satisfies the existing trace/moment precision gates, yet
+    # its irrelevant constant contribution exceeds the old slope threshold.
+    assert 0 < abs(diagonal.sum()) < 1e-15
+    assert abs(diagonal@np.log(w)) > 1e-15
+    assert diagonal@np.log(w/w[0]) == 0
+    # A genuine moment-changing direction still has a nonzero slope.
+    diagonal[:] = 0
+    diagonal[within[0]], diagonal[other] = .5, -.5
+    assert abs(diagonal@np.log(w/w[0])) > 1e-3
 
 
 @pytest.mark.parametrize("reference", [common.reference, local.reference])
