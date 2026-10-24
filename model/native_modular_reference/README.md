@@ -667,6 +667,84 @@ The source-array errors bound the departure from the ideal local action.
 Neither a signal cone nor a laboratory-second, temperature or particle
 identification follows from this operational clock calibration.
 
+## Learn the common reference from one native current setting
+
+[`reference_tomography.py`](reference_tomography.py) identifies the common
+reference without coherent tomography. The complete local preparation,
+followed by one unread core repair, supplies the two-moment maximum-entropy
+family proved in [`common_variation.py`](../native_equilibration/common_variation.py).
+Its three per-configuration weights have multiplicities `(45,20,1)`. The
+finite preparation bound controls departures from this family, including
+coherences and initially correlated references. Complement equilibration alone
+would retain extra core information and would not justify this reduction.
+
+Read one actual signed current on seam `(1,7)`. Count every trial, including
+all preparation failures. Let `u,v` be the complete-trial positive/negative
+current frequencies and `t` the complete success frequency. The inverse is
+
+```text
+b0 = (22 v + 2 u - t)/54
+b1 = (t - 10 v - 2 u)/6
+b2 = 5 u + 15 v - 3 t/2.
+```
+
+These are subnormalized weights: `45 b0 + 20 b1 + b2 = t`. Neither the known
+reference weights nor a supplied success probability centers this estimate.
+The scalar `t` cancels from modular ratios. A ternary current is sufficient
+for the normalized two-parameter family; one binary fixed measurement cannot
+identify an open two-parameter family. This does not replace full tomography
+of an arbitrary state: imaginary off-diagonal perturbations can leave every
+native classical record law unchanged while changing the modular action.
+
+Explicit bounded-score martingale Bernstein estimates give simultaneous
+rational weight intervals. The reference-uniform preparation theorem supplies
+their conditional-bias premise after any prior public trial records; no
+independent input copies are assumed. Private preparation tapes and the
+auxiliary state remain inaccessible. Source-derived preparation/error and
+variance certificates still use the known source law. If an interval reaches
+zero, the result is unresolved: no clipping or assumed spectral floor creates
+a clock.
+
+The retained demonstration samples `2^24` trials of the finite preparation
+kernel, core repair and current read on one continuing carrier. A dyadic
+record/state kernel has an exact all-column bias audit; a common/residual
+decomposition accelerates that same kernel and preserves terminal-state
+dependence. The seeded PRNG run is reproducible numerical evidence, not a
+proof of independent randomness or an execution of every microscopic repair
+attempt. The abstract statistical theorem applies to actual native records
+or ideal random draws of the certified dyadic sampler. All terminal counts,
+state counts and a complete stream hash are retained; numerical aborts are
+separate from physical preparation failures. The finite source cost bound
+is over `1.1e16` attempts for this sample, including the auxiliary selectors.
+
+[`learned_clock.py`](learned_clock.py) compiles the inferred ratios on all
+512 source addresses. A rational logarithm enclosure bounds its generator
+modulo identity throughout the confidence box. That error composes with the
+raw source error and preparation error through two continuing cap-local
+current instruments, with record-selected feedback and complete export
+aborts. The future preparation starts from the training carrier's terminal
+state. The protocol fixes `2^24` trials and accepts only a faithful confidence
+box whose history error is at most `9/100`, followed by successful source
+certification. Otherwise it emits a training/compilation stop and preserves
+the carrier. The retained run passes this rule. Its simultaneous statistical
+failure bound is `3/512`; the complete joint protocol bound is
+`9/100 + (3/512)(G+1)/2 < 0.096`, where `G` is the fixed source norm cap.
+Actual and ideal comparison protocols retain the same training transcript
+and halt carrier on rejection. This is not a bound conditioned on acceptance,
+nor is the observed sample's error treated as a uniform expectation bound.
+Source precision and physical service errors retain their separate roles.
+A separate sandwich
+bound compares the learned action with the actual finite-prepared marginal's
+modular action.
+
+The positive inferred state instantiates finite faithful-reference, inner-flow
+and Gibbs/KMS interfaces on the same core-containing cap algebras; its moments
+also define the smooth entropy family. These are analytic finite connections
+with executable certificates, not new Lean formalizations. Reference
+identification needs only native records. Enacting the clock still uses the
+declared coherent source services; neither laboratory seconds nor a physical
+energy, field or particle dictionary follows from this calibration.
+
 ## The boundary includes noncommuting references
 
 [`compatibility.py`](compatibility.py) removes a possible loophole in the
@@ -703,6 +781,8 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_preparation --check model/native_modular_reference/local_preparation_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_history --check model/native_modular_reference/local_history_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json
+python -m model.native_modular_reference.reference_tomography --check model/native_modular_reference/reference_tomography_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.learned_clock --check model/native_modular_reference/learned_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 
