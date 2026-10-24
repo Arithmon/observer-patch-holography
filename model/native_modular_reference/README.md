@@ -707,9 +707,12 @@ a clock.
 
 The retained demonstration samples `2^24` trials of the finite preparation
 kernel, core repair and current read on one continuing carrier. A dyadic
-record/state kernel has an exact all-column bias audit; a common/residual
-decomposition accelerates that same kernel and preserves terminal-state
-dependence. The seeded PRNG run is reproducible numerical evidence, not a
+record/state kernel has an exact all-column bias and second-moment audit.
+Each replay checks these exact values against fixed rational certificate
+bounds; every retained proof field is compared exactly across platforms.
+A common/residual decomposition accelerates that same kernel and preserves
+terminal-state dependence. The seeded PRNG run is reproducible numerical
+evidence, not a
 proof of independent randomness or an execution of every microscopic repair
 attempt. The abstract statistical theorem applies to actual native records
 or ideal random draws of the certified dyadic sampler. All terminal counts,
@@ -733,9 +736,8 @@ Actual and ideal comparison protocols retain the same training transcript
 and halt carrier on rejection. This is not a bound conditioned on acceptance,
 nor is the observed sample's error treated as a uniform expectation bound.
 Source precision and physical service errors retain their separate roles.
-A separate sandwich
-bound compares the learned action with the actual finite-prepared marginal's
-modular action.
+A separate sandwich bound compares the learned action with the actual
+finite-prepared marginal's modular action.
 
 The positive inferred state instantiates finite faithful-reference, inner-flow
 and Gibbs/KMS interfaces on the same core-containing cap algebras; its moments

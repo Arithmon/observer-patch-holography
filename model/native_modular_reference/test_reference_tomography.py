@@ -166,7 +166,9 @@ def test_executed_source_kernel_counts_certify_a_nontrivial_reference(receipt):
     assert not sample["seeded_PRNG_demonstration_proves_independent_uniform_randomness"]
     assert infer["status"] == "faithful"
     assert F(infer["logarithm_operator_error_upper"]) < F(17, 50)
-    assert F(audit["complete_total_variation_upper"]) < r.SAMPLER_GATE
+    assert audit == r._json(r._portable_sampler_certificate())
+    assert sample["common_subkernel_probability_lower"] == str(1-r.SAMPLER_GATE)
+    assert "common_subkernel_probability" not in sample
     assert row["validation_only_known_target_in_confidence_box"]
     assert infer["source_native_attempts_all_trials_upper"] == (1 << 24)*(r._record_contract()[2]+2)
     assert r.compare_receipt(receipt, receipt)
@@ -181,19 +183,64 @@ def test_all_original_population_columns_and_both_laws_are_used():
     audit = r.audit_kernel(c)
     assert audit["exact_dyadic_columns_checked"] == 66
     assert audit["complete_total_variation_upper"] < r.SAMPLER_GATE
+    caps = r._portable_sampler_certificate()
+    for field in ("score_mean_bias_upper", "score_second_moment_upper"):
+        assert all(actual <= bound for actual, bound in zip(audit[field], caps[field], strict=True))
+
+
+@pytest.mark.parametrize("field", ["complete_total_variation_upper", "score_mean_bias_upper",
+                                  "score_second_moment_upper", "common_subkernel_probability"])
+def test_export_requires_exact_sampler_audit_to_pass_every_portable_cap(monkeypatch, field):
+    audit = r._portable_sampler_certificate()
+    sample = {"common_subkernel_probability": F(1)}
+    if field == "common_subkernel_probability":
+        sample[field] = 1-2*r.SAMPLER_GATE
+    elif field == "complete_total_variation_upper":
+        audit[field] *= 2
+    else:
+        audit[field] = (2*audit[field][0], *audit[field][1:])
+    monkeypatch.setattr(r, "quantized_kernel", lambda law: (None, {}))
+    monkeypatch.setattr(r, "audit_kernel", lambda kernel: audit)
+    monkeypatch.setattr(r, "sample_kernel", lambda *args, **kwargs: sample)
+    with pytest.raises(ArithmeticError, match="portable source-comparison gates"):
+        r.execute_trials(1)
 
 
 @pytest.mark.parametrize("field, value", [
+    ("complete_total_variation_upper", "0"),
     ("complete_total_variation_upper", "-1/100000000000000000000"),
     ("complete_total_variation_upper", "1/100"),
+    ("score_mean_bias_upper", ["0", "0", "0"]),
     ("score_mean_bias_upper", ["-1/100000000000000000000", "0", "0"]),
+    ("score_second_moment_upper", ["0", "0", "0"]),
     ("score_second_moment_upper", ["0", "0", "-1/100000000000000000000"]),
 ])
-def test_receipt_never_tolerates_negative_or_unsupported_diagnostics(receipt, field, value):
+def test_receipt_never_tolerates_false_or_changed_sampler_caps(receipt, field, value):
     changed = deepcopy(receipt)
     changed["continuing_execution"]["sampler_certificate"][field] = value
     assert not r.compare_receipt(changed, receipt)
     assert not r.compare_receipt(receipt, changed)
+    assert not r.compare_receipt(changed, changed)
+
+
+def test_receipt_rejects_false_perfect_sampler_and_only_tolerates_float_mass_diagnostic(receipt):
+    changed = deepcopy(receipt)
+    row = changed["continuing_execution"]
+    row["sampler_certificate"]["complete_total_variation_upper"] = "0"
+    row["sampler_certificate"]["score_mean_bias_upper"] = ["0"]*3
+    row["sampler_certificate"]["score_second_moment_upper"] = ["0"]*3
+    row["execution"]["common_subkernel_probability_lower"] = "1"
+    row["numerical_kernel"]["binary_population_mass_residual_diagnostic"] = 0.0
+    assert not r.compare_receipt(changed, receipt)
+    assert not r.compare_receipt(receipt, changed)
+    changed = deepcopy(receipt)
+    changed["continuing_execution"]["execution"]["common_subkernel_probability_lower"] = "1"
+    assert not r.compare_receipt(changed, receipt)
+    assert not r.compare_receipt(changed, changed)
+    changed = deepcopy(receipt)
+    changed["continuing_execution"]["numerical_kernel"]["binary_population_mass_residual_diagnostic"] = 0.0
+    assert r.compare_receipt(changed, receipt)
+    assert r.compare_receipt(receipt, changed)
 
 
 def test_receipt_keeps_counts_and_source_hashes_exact(receipt):

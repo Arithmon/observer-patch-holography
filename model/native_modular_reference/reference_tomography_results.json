@@ -1,7 +1,7 @@
 {
   "continuing_execution": {
     "execution": {
-      "common_subkernel_probability": "9007199254728795/9007199254740992",
+      "common_subkernel_probability_lower": "9999999999/10000000000",
       "counts": {
         "completion_timeout": 0,
         "herald_failure": 14237166,
@@ -694,21 +694,19 @@
       "numerical_abort_is_separate_terminal": true
     },
     "sampler_certificate": {
-      "complete_total_variation_upper": "3043/2251799813685248",
+      "complete_total_variation_upper": "1/10000000000",
       "entire_multitrial_path_distance_claimed": false,
       "exact_dyadic_columns_checked": 66,
       "physical_finite_instrument_bound_is_separate": true,
-      "portable_common_subkernel_probability_lower": "9999999999/10000000000",
-      "portable_total_variation_gate": "1/10000000000",
       "score_mean_bias_upper": [
-        "237313/26751381786580746240",
-        "214883/5350276357316149248",
-        "688313/5350276357316149248"
+        "11/270000000000",
+        "1/6000000000",
+        "3/2000000000"
       ],
       "score_second_moment_upper": [
-        "16861962241073813/13132496513412366336",
-        "3624108791021393/162129586585337856",
-        "36635342423031237/18014398509481984"
+        "250000001617/106920000000000",
+        "50000000297/1320000000000",
+        "1350000008019/440000000000"
       ]
     },
     "validation_only_known_target_in_confidence_box": true
@@ -869,7 +867,7 @@
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
     "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
-    "model/native_modular_reference/reference_tomography.py": "dc850a5131c2c1951eddd49607ec5c228703071ac2eaa941e56e32e27171f099",
+    "model/native_modular_reference/reference_tomography.py": "77a30720a44155d0b11c1801448dd5f5d8b5960230d03079c11d55e0839a0b11",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
     "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",

@@ -369,16 +369,34 @@ def sample_kernel(kernel, trials, *, seed=20261024, initial=0, chunk_size=1 << 1
 
 def execute_trials(trials=1 << 24, *, seed=20261024, law="C"):
     kernel, numerical = quantized_kernel(law)
-    certificate = audit_kernel(kernel)
+    audit = audit_kernel(kernel)
     sample = sample_kernel(kernel, trials, seed=seed)
-    if (certificate["complete_total_variation_upper"] > SAMPLER_GATE
+    certificate = _portable_sampler_certificate()
+    if (audit["complete_total_variation_upper"] > certificate["complete_total_variation_upper"]
+            or any(actual > bound for field in ("score_mean_bias_upper", "score_second_moment_upper")
+                   for actual, bound in zip(audit[field], certificate[field], strict=True))
             or sample["common_subkernel_probability"] < 1-SAMPLER_GATE):
         raise ArithmeticError("actual sampler fails its portable source-comparison gates")
-    certificate["portable_total_variation_gate"] = SAMPLER_GATE
-    certificate["portable_common_subkernel_probability_lower"] = 1-SAMPLER_GATE
+    # Export fixed certified caps, not platform-dependent exact diagnostics.
+    # The latter must pass this run's audit before any portable receipt exists.
+    del sample["common_subkernel_probability"]
+    sample["common_subkernel_probability_lower"] = 1-SAMPLER_GATE
     inferred = infer_counts(sample["counts"], sampling_bias=SAMPLER_GATE)
     return {"law": law, "numerical_kernel": numerical, "sampler_certificate": certificate,
             "execution": sample, "inference": inferred}
+
+
+def _portable_sampler_certificate():
+    """Fixed rational claims independently checked against every exact column."""
+    q = _record_contract()[1]
+    return {"exact_dyadic_columns_checked": 66,
+            "complete_total_variation_upper": SAMPLER_GATE,
+            "score_mean_bias_upper": tuple(width*SAMPLER_GATE for width in WIDTHS),
+            "score_second_moment_upper": tuple(
+                q*vmax+SAMPLER_GATE*max(s*s for s in score)
+                for score, vmax in zip(SCORES, SECTOR_SECOND_MOMENT_MAX, strict=True)),
+            "entire_multitrial_path_distance_claimed": False,
+            "physical_finite_instrument_bound_is_separate": True}
 
 
 def run(trials=1 << 24, *, seed=20261024):
@@ -410,9 +428,9 @@ def _json(value):
 def compare_receipt(supplied, actual):
     """Check exact records and source custody; revalidate binary diagnostics.
 
-    The declared sampling gate, confidence box and all sampled counts/digests
-    stay exact.  Only the explicitly named platform-dependent kernel audits
-    may vary, and only after passing their independently recomputed bounds.
+    All sampler proof fields are fixed portable rational caps, certified by
+    this run's exact all-column audit. Only the raw floating mass residual may
+    vary between platforms, within its declared diagnostic gate.
     """
     cleaned = []
     for original in (supplied, actual):
@@ -420,36 +438,14 @@ def compare_receipt(supplied, actual):
         try:
             row = value["continuing_execution"]
             diagnostic = row["numerical_kernel"]["binary_population_mass_residual_diagnostic"]
-            if type(diagnostic) not in (float, int) or not math.isfinite(diagnostic) or not 0 <= diagnostic <= 5e-10:
+            if type(diagnostic) is not float or not math.isfinite(diagnostic) or not 0 <= diagnostic <= 5e-10:
                 return False
             row["numerical_kernel"]["binary_population_mass_residual_diagnostic"] = "checked"
-            audit = row["sampler_certificate"]
-            def rational(text):
-                if type(text) is not str:
-                    raise ValueError("exact rational diagnostic must be serialized as a string")
-                result = F(text)
-                if str(result) != text:
-                    raise ValueError("exact rational diagnostic must use canonical notation")
-                return result
-            distance = rational(audit["complete_total_variation_upper"])
-            if not 0 <= distance <= SAMPLER_GATE:
+            if json.dumps(row["sampler_certificate"], sort_keys=True, allow_nan=False) != json.dumps(
+                    _json(_portable_sampler_certificate()), sort_keys=True, allow_nan=False):
                 return False
-            if len(audit["score_mean_bias_upper"]) != 3 or len(audit["score_second_moment_upper"]) != 3:
+            if row["execution"]["common_subkernel_probability_lower"] != str(1-SAMPLER_GATE):
                 return False
-            q = _record_contract()[1]
-            for i, score in enumerate(SCORES):
-                mean = rational(audit["score_mean_bias_upper"][i])
-                moment = rational(audit["score_second_moment_upper"][i])
-                if not 0 <= mean <= WIDTHS[i]*distance:
-                    return False
-                if not 0 <= moment <= q*SECTOR_SECOND_MOMENT_MAX[i]+distance*max(s*s for s in score):
-                    return False
-            common_mass = rational(row["execution"]["common_subkernel_probability"])
-            if not 1-SAMPLER_GATE <= common_mass <= 1:
-                return False
-            for field in ("complete_total_variation_upper", "score_mean_bias_upper", "score_second_moment_upper"):
-                audit[field] = "checked"
-            row["execution"]["common_subkernel_probability"] = "checked"
         except (KeyError, TypeError, ValueError, ZeroDivisionError):
             return False
         cleaned.append(value)
