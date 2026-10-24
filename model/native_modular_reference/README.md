@@ -612,6 +612,61 @@ spectators. No projective work-bit read or independently selected pure probe
 is needed. The comparison supplies neither physical service fidelity nor a
 laboratory time, temperature, atom or field dictionary.
 
+## Bare-cap clock operations on arbitrary spectators
+
+[`cap_local_clock.py`](cap_local_clock.py) implements a coherent occupation
+transfer uniformly across all ten spectator configurations of each read seam,
+`(1,7)` and `(1,8)`. The generator
+`J_ab = sum_k (|a,k><b,k| - |b,k><a,k|)` belongs to the bare two-port algebra;
+its `pi/4` rotation therefore requires no selected exterior configuration.
+The same prepared reference has weights `2/225`, `1/36`, `2/45` in the three
+protected-core charge sectors. Its modular action belongs to both cap
+algebras, and each native C/E read instrument belongs to its seam algebra.
+These exact memberships establish locality of the completed ideal operations
+for arbitrary exterior states and untouched references. The unread operation
+preserves the outside marginal. A retained local outcome may conditionally
+steer an initially correlated outside system.
+
+Each isolated read of this common state has the same signed-current law:
+
+```text
+E[j] = (17/200) cos(s log(25/8)) + (1/120) cos(s log(8/5))
+P(j != 0) = 181/900.
+```
+
+The nine spectators outside the protected core supply the first frequency;
+the remaining core spectator supplies the second. No extra frequency or
+initial pure probe is fitted. Including the ideal herald probability `5/33`,
+the complete-trial expected current is strictly decreasing for
+`1/2 <= s <= 1`, with derivative magnitude greater than `1/200`.
+The inverse expected-current calibration is thus 200-Lipschitz on that
+interval. This is a calibration of the mean: individual random records are
+not monotone, opposite modular orientations give the same isolated law, and
+empirical sampling and physical service fidelity are separate requirements.
+The inner action has the finite [`PrivateInner`](../../Lean/Dynamics/PrivateInner.lean)
+contract on the derived cap algebra. The inverse mean-response result does
+not supply the strictly monotone individual-record map required by
+[`ClockReadout`](../../Lean/Time/ClockReadout.lean).
+
+The continuing protocol uses both caps on the same carrier, retains every
+C/E outcome, and uses the first signed current to choose the second analyzer
+rotation; its preparation rotation stays fixed. The second marginal is computed from its disturbed state;
+it is not asserted to obey the isolated-reference formula. All preparation
+failures and both native-export aborts remain in the complete output law.
+At retained modular parameter one, the joint preparation/history bound is
+below `6.32e-8`. A closed-Gray conditional-Y compiler certifies all original
+512-address arrays, including padding, using unmodified full source-factor arrays
+and **45,656 source pulses and 91,312
+proper-code service events**, plus two native current reads and two complete
+exports. Preparation's native calls are counted separately.
+
+Exterior-state selection is removed from the ideal completed instrument.
+Its encoded coherent controls and load/export services remain admitted
+architecture; the intermediate pulses are not proved spatially local.
+The source-array errors bound the departure from the ideal local action.
+Neither a signal cone nor a laboratory-second, temperature or particle
+identification follows from this operational clock calibration.
+
 ## The boundary includes noncommuting references
 
 [`compatibility.py`](compatibility.py) removes a possible loophole in the
@@ -647,6 +702,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.common_caps --check model/native_modular_reference/common_caps_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_preparation --check model/native_modular_reference/local_preparation_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_history --check model/native_modular_reference/local_history_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

@@ -1,9 +1,11 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "7df21b7a0d7977a01069cf1cdd86277d47c7da1ce1691b3d260a5a7184641d63",
+    "README.md": "82f7032c0312f923c88c3c3f1c569425fae6713f2d4d4f3cce649c7f6c99dbd2",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "cap_local_clock.py": "47ca7ba9c4bc4613d4a51ce933f90c87b21b76d6857d36fc44756353f03c8ad4",
+    "cap_local_clock_results.json": "0e3d1f0f4dfc97de4e0680c7f32db33b6ff24604219f13540e740de570c70891",
     "common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
     "common_caps_results.json": "b7153f7eb85ca35b10665d4e4b6d13b9193ccc0305bf61d8aa848de5d18deb06",
     "compatibility.py": "0f51fc085cc8dd7dcf6a85904e82a51dbd875d966e45efc92402f85160f35946",
@@ -21,6 +23,7 @@
     "regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "regional_results.json": "3f08a387955b50f02f49ac52dba06ea3bfdc93d9f47945dd7d71470d3e74ca74",
     "results.json": "8c89d2a64df6e7417df150d2c95c5432489ee24d270d69892639764d1f12fd70",
+    "test_cap_local_clock.py": "a7f2a6b889cc7e8f6edb839f420274079ad994a44063addd55cad8a6ab052dde",
     "test_common_caps.py": "12dac96cc83c3513c178af55f1bd5b2220988d114f3c1d24ecf71facd9e39340",
     "test_compatibility.py": "7e6387947bc322daf33cc7196a5b4954bcff84edf2a07383ff60d6e24698c2fe",
     "test_completed_clock.py": "1460437575f242b205e36238be5d06735ad172ef5a3128ea60654268ea953d4e",
@@ -40,6 +43,7 @@
     "python -m model.native_modular_reference.common_caps --check model/native_modular_reference/common_caps_results.json",
     "python -m model.native_modular_reference.local_preparation --check model/native_modular_reference/local_preparation_results.json",
     "python -m model.native_modular_reference.local_history --check model/native_modular_reference/local_history_results.json",
+    "python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json",
     "python -m pytest -q -W error model/native_modular_reference"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"
