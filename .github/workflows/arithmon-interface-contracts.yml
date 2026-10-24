@@ -5,6 +5,13 @@ on:
     paths:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
+      - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/tests/*c12_current_attachment*'
+      - 'code/a5_closure/receipts/c12_current_attachment_probe.json'
+      - 'model/observer/quantum_mixing.py'
+      - 'model/observer/coherent_continuation.py'
+      - 'model/identifiability_checks/rule_observability.py'
+      - 'model/predictions/observer_instrument.py'
       - 'code/a5_closure/tests/*proper_code_attachment*'
       - 'code/a5_closure/receipts/proper_code_attachment_probe.json'
       - 'code/a5_closure/galois_source_response_control.py'
@@ -45,6 +52,13 @@ on:
     paths:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
+      - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/tests/*c12_current_attachment*'
+      - 'code/a5_closure/receipts/c12_current_attachment_probe.json'
+      - 'model/observer/quantum_mixing.py'
+      - 'model/observer/coherent_continuation.py'
+      - 'model/identifiability_checks/rule_observability.py'
+      - 'model/predictions/observer_instrument.py'
       - 'code/a5_closure/tests/*proper_code_attachment*'
       - 'code/a5_closure/receipts/proper_code_attachment_probe.json'
       - 'code/a5_closure/galois_source_response_control.py'
@@ -106,6 +120,10 @@ jobs:
         run: |
           python3 -B code/a5_closure/proper_code_attachment_probe.py --check
           python3 -B code/a5_closure/verify_proper_code_attachment_independent.py
+      - name: Verify the native-current C12 interface probe
+        run: |
+          python3 -B code/a5_closure/c12_current_attachment_probe.py --check
+          python3 -B code/a5_closure/verify_c12_current_attachment_independent.py
       - name: Verify native scale and conditional RG transport
         run: |
           python3 -B code/angular_sprint/k7_gauge_scale_contract.py --check
@@ -115,6 +133,7 @@ jobs:
           python3 -B -m pytest -q
           code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
           code/a5_closure/tests/test_proper_code_attachment_probe.py
+          code/a5_closure/tests/test_c12_current_attachment_probe.py
           code/angular_sprint/test_k7_gauge_scale_contract.py
       - name: Check synchronized registers
         run: |

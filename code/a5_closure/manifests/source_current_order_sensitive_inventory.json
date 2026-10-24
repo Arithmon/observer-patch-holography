@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 914,
+    "file_count": 919,
     "files": [
       {
         "byte_count": 42558,
@@ -2033,6 +2033,16 @@
         "sha256": "sha256:6f7bdab14f4defe7c590e1d451f5e38bb19af8c4a21ef15733fa844015e84f4c"
       },
       {
+        "byte_count": 11652,
+        "path": "code/a5_closure/c12_current_attachment_probe.md",
+        "sha256": "sha256:fcbf97a5a282295e1485bab933cfa39ee5b9b1b547d6415b91c9a59fd8a0324a"
+      },
+      {
+        "byte_count": 13680,
+        "path": "code/a5_closure/c12_current_attachment_probe.py",
+        "sha256": "sha256:c80505aa52f09f0aca5170d504b44a84ecd75079bc86a99b720c4b6e1a857e58"
+      },
+      {
         "byte_count": 20773,
         "path": "code/a5_closure/check_common_ew_order_unit_carrier.py",
         "sha256": "sha256:6a47a97a529670a2cc9bef9edeacc906e9a8294cb7edfd9d370d8c2ab51bc702"
@@ -2508,6 +2518,11 @@
         "sha256": "sha256:8ccf2d76b55289076d0b930cba3b807c155b2a055ca2de85735bcaea168943a7"
       },
       {
+        "byte_count": 17970,
+        "path": "code/a5_closure/receipts/c12_current_attachment_probe.json",
+        "sha256": "sha256:5352dde6b055ebfe11ccf160ffeb53367984ab8e1eacee4a9155a6a953f787a0"
+      },
+      {
         "byte_count": 1209,
         "path": "code/a5_closure/receipts/common_ew_order_unit_carrier_reference.receipt.json",
         "sha256": "sha256:be3ea36a7e1cf7232c34fa90b0fa8b2757b47f503dcd37c005bfe4c9b1ee639c"
@@ -2693,6 +2708,11 @@
         "sha256": "sha256:c06436e18ec528cc5b0d36e1bf81d43c072de7dbb52e47215cc427eaa509ec83"
       },
       {
+        "byte_count": 7817,
+        "path": "code/a5_closure/tests/test_c12_current_attachment_probe.py",
+        "sha256": "sha256:f8d0abee18e087717e47d5a10017762976b069073d2f745aa01f79a1bd7de212"
+      },
+      {
         "byte_count": 9714,
         "path": "code/a5_closure/tests/test_common_ew_order_unit_carrier_certificate.py",
         "sha256": "sha256:e1ee0465710e7f4f3e5d3feb0939b5283b5c736694b5d369fd231cfca2ef6cf5"
@@ -2856,6 +2876,11 @@
         "byte_count": 17420,
         "path": "code/a5_closure/verify_baryon_dimension_six_census_independent.py",
         "sha256": "sha256:abb83f17ef1f309ffee0599e63108f01dddeb46ac601b4d5798f978940714910"
+      },
+      {
+        "byte_count": 14328,
+        "path": "code/a5_closure/verify_c12_current_attachment_independent.py",
+        "sha256": "sha256:697085ccc8caaa1c5bc8c31bea405456e37d34c73ff02d67507b2aaca2056554"
       },
       {
         "byte_count": 12352,
@@ -4768,7 +4793,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:a92b520a031e22bc46058ee52a4b3a4ba934f426ff38aa782c45b959da7dfe41",
+    "files_sha256": "sha256:a1b1d0328f1528323c66b383e99a5eafd2f6dae12e8f70396d823d805ec5fa4a",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7677,7 +7702,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:b4f225b2e9f11efb50b1e8f9390c0c50ea6c91de752d19869669fbfc77e002de",
+  "inventory_sha256": "sha256:ece9a626793efab9c5a24d1954c19364ebd8c7ed2e5b73e00eddfa28fd003420",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
