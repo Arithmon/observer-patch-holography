@@ -4,6 +4,17 @@ on:
   push:
     paths:
       - 'code/a5_closure/*marked_triplet*'
+      - 'code/a5_closure/*proper_code_attachment*'
+      - 'code/a5_closure/tests/*proper_code_attachment*'
+      - 'code/a5_closure/receipts/proper_code_attachment_probe.json'
+      - 'code/a5_closure/galois_source_response_control.py'
+      - 'model/observer/source_scalar/compiler.py'
+      - 'code/m1_source_realization/receipt.json'
+      - 'model/native_clock/configuration.py'
+      - 'model/native_interface/tomography.py'
+      - 'model/predictions/prepared_clock_source.py'
+      - 'model/predictions/prepared_clock.py'
+      - 'model/predictions/inverse_clock.py'
       - 'code/a5_closure/tests/*marked_triplet*'
       - 'code/a5_closure/manifests/marked_triplet*'
       - 'code/a5_closure/galois_port_frame_certificate.py'
@@ -33,6 +44,17 @@ on:
   pull_request:
     paths:
       - 'code/a5_closure/*marked_triplet*'
+      - 'code/a5_closure/*proper_code_attachment*'
+      - 'code/a5_closure/tests/*proper_code_attachment*'
+      - 'code/a5_closure/receipts/proper_code_attachment_probe.json'
+      - 'code/a5_closure/galois_source_response_control.py'
+      - 'model/observer/source_scalar/compiler.py'
+      - 'code/m1_source_realization/receipt.json'
+      - 'model/native_clock/configuration.py'
+      - 'model/native_interface/tomography.py'
+      - 'model/predictions/prepared_clock_source.py'
+      - 'model/predictions/prepared_clock.py'
+      - 'model/predictions/inverse_clock.py'
       - 'code/a5_closure/galois_port_frame_certificate.py'
       - 'code/a5_closure/tests/*marked_triplet*'
       - 'code/a5_closure/manifests/marked_triplet*'
@@ -70,6 +92,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Offline source custody and historical prose-drift objects.
+          fetch-depth: 0
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
@@ -77,6 +102,10 @@ jobs:
         run: python3 -m pip install -r requirements.txt
       - name: Independently verify the marked-triplet packet
         run: python3 -B code/a5_closure/verify_marked_triplet_attachment_independent.py
+      - name: Verify the finite proper-code attachment probe
+        run: |
+          python3 -B code/a5_closure/proper_code_attachment_probe.py --check
+          python3 -B code/a5_closure/verify_proper_code_attachment_independent.py
       - name: Verify native scale and conditional RG transport
         run: |
           python3 -B code/angular_sprint/k7_gauge_scale_contract.py --check
@@ -85,6 +114,7 @@ jobs:
         run: >-
           python3 -B -m pytest -q
           code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
+          code/a5_closure/tests/test_proper_code_attachment_probe.py
           code/angular_sprint/test_k7_gauge_scale_contract.py
       - name: Check synchronized registers
         run: |
