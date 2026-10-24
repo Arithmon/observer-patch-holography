@@ -94,7 +94,7 @@
       "canonical_claim_id": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
       "secondary_claim_ids": [],
       "owner_issues": [],
-      "where": "Issue #565 closure packet: Aut+ isomorphic to A5 and full Aut isomorphic to A5 x C2. Lean: `Lean/Screen/A5PortAction.lean` (kernel `decide`). Conditional on row 4. OPH-SCREEN-GALOIS-FRAME-BOUNDARY separately certifies an additional unselected ambiguity within a frozen Gram pair.",
+      "where": "Issue #565 closure packet: Aut+ isomorphic to A5 and full Aut isomorphic to A5 x C2. Lean: `Lean/Screen/A5PortAction.lean` (kernel `decide`). Conditional on row 4. OPH-SCREEN-GALOIS-FRAME-BOUNDARY separately certifies an additional unselected ambiguity within a frozen Gram pair. The marked-triplet attachment certificate separately distinguishes the native spatial and internal representation domains under the same action; incidence recharting does not supply their representation attachment or a physical golden-embedding selector.",
       "menu": {
         "size": 2,
         "alternatives": "oriented A5 frame or orientation-forgetting A5 x C2 frame; the orientation receipt fixes the oriented class",
@@ -103,7 +103,9 @@
       "compression_input": true,
       "receipts": [
         "code/a5_closure/echosahedral_selector_certificate.py",
-        "code/a5_closure/a5_selection_certificate.py"
+        "code/a5_closure/a5_selection_certificate.py",
+        "code/a5_closure/marked_triplet_attachment_certificate.py",
+        "code/a5_closure/verify_marked_triplet_attachment_independent.py"
       ],
       "lean": [
         {
@@ -117,7 +119,8 @@
       ],
       "negative_controls": [
         "forgetting orientation restores A5 x C2",
-        "non-incidence or noncocyclic refinement maps break naturality"
+        "non-incidence or noncocyclic refinement maps break naturality",
+        "The Galois-related spatial/internal triplet swap requires an independently justified action attachment; an incidence recharting or positive scalar clock change cannot identify unequal marked characters."
       ],
       "paper_anchors": [
         {

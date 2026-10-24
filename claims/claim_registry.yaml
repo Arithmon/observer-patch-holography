@@ -2033,7 +2033,7 @@
     },
     {
       "claim_id": "OPH-SCREEN-GALOIS-FRAME-BOUNDARY",
-      "statement": "For the explicitly frozen pair of Galois-conjugate rank-three port frames reconstructed from CoreAxioms.orientedFaces, both Gram matrices satisfy G squared equal to 4G and trace twelve. With the marked order-five class and one common convex-positive ambient orientation fixed, their traces are phi and 1-phi, their coordinate Laplacian eigenvalues are 5-sqrt(5) and 5+sqrt(5), abstract edges have first and second chord rank, and radial degrees are one and seven. These diagnostics are equivalent only within this pair, not an exhaustive classification of compatible rank-three realizations. Full Galois conjugation of the audited source_selection_model response law preserves response completeness and same-response proper holonomy, so those clauses do not select the positive member. A source-bound PORT-GRAM-SUPPORT-ATTACHMENT carrying the local fundamental cycle to the nerve cycle and identifying the radial map up to oriented homotopy with the A1 degree-one support bridge would select the positive member within this pair; no such attachment is supplied in the audited corpus.",
+      "statement": "For the explicitly frozen pair of Galois-conjugate rank-three port frames reconstructed from CoreAxioms.orientedFaces, both Gram matrices satisfy G squared equal to 4G and trace twelve. With the marked order-five class and one common convex-positive ambient orientation fixed, their traces are phi and 1-phi, their coordinate Laplacian eigenvalues are 5-sqrt(5) and 5+sqrt(5), abstract edges have first and second chord rank, and radial degrees are one and seven. These diagnostics are equivalent only within this pair, not an exhaustive classification of compatible rank-three realizations. Full Galois conjugation of the audited source_selection_model response law preserves response completeness and same-response proper holonomy, so those clauses do not select the positive member. A source-bound PORT-GRAM-SUPPORT-ATTACHMENT carrying the local fundamental cycle to the nerve cycle and identifying the radial map up to oriented homotopy with the A1 degree-one support bridge would select the positive member within this pair; no such attachment is supplied in the audited corpus. On the native incidence and live response action, the spatial slow triplet and lower internal triplet have zero same-action intertwiner space. All incidence rechartings preserve the spatial band. An edge/distance-two exchange realizes the conjugate action only by changing the incidence attachment; it supplies no physical golden-embedding selector.",
       "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
       "tier": "exact_frozen_pair_certificate_and_bounded_source_attachment_audit",
       "assumptions": [
@@ -2047,7 +2047,7 @@
         "topological_degree_by_signed_regular_value_count",
         "homotopy_invariance_of_degree"
       ],
-      "oph_specific_delta": "Separates the incidence-derived Galois ambiguity from the orientation/action selector. Independent arithmetic bases and linear-system methods certify the frozen pair, while conjugation of the full response law including its quadrupole exposes the bounded nonselection result. PORT-GRAM-SUPPORT-ATTACHMENT remains a missing source interface; PR-53 is neither consumed nor discharged.",
+      "oph_specific_delta": "Separates the incidence-derived Galois ambiguity from the orientation/action selector. Independent arithmetic bases and linear-system methods certify the frozen pair, while conjugation of the full response law including its quadrupole exposes the bounded nonselection result. PORT-GRAM-SUPPORT-ATTACHMENT remains a missing source interface; PR-53 is neither consumed nor discharged. The native marked-triplet certificate separates the fixed-action representation obstruction from the existence of an abstract outer action twist.",
       "novelty_type": "exact_frozen_Galois_pair_and_bounded_support_attachment_boundary",
       "evidence": [
         "code/a5_closure/galois_port_frame_certificate.md",
@@ -2056,9 +2056,13 @@
         "code/a5_closure/manifests/galois_port_frame_reference.json",
         "code/a5_closure/galois_source_response_control.py",
         "code/a5_closure/tests/test_galois_port_frame_certificate.py",
-        "Lean/Screen/PortGramRepairBand.lean"
+        "Lean/Screen/PortGramRepairBand.lean",
+        "code/a5_closure/marked_triplet_attachment_certificate.py",
+        "code/a5_closure/verify_marked_triplet_attachment_independent.py",
+        "code/a5_closure/manifests/marked_triplet_attachment_reference.json",
+        "code/a5_closure/tests/test_marked_triplet_attachment_certificate.py"
       ],
-      "falsifier": "On the frozen pair with its stated conventions, a Gram identity, marked trace, Laplacian mode, chord ranking, radial degree or diagnostic equivalence fails; the conjugated source law fails an audited response-completeness or proper-holonomy clause; or a source-bound theorem in the pinned audit corpus supplies the stated support attachment.",
+      "falsifier": "On the frozen pair with its stated conventions, a Gram identity, marked trace, Laplacian mode, chord ranking, radial degree or diagnostic equivalence fails; the conjugated source law fails an audited response-completeness or proper-holonomy clause; or a source-bound theorem in the pinned audit corpus supplies the stated support attachment. The native fixed-action intertwiner space is nonzero, or an incidence-preserving recharting exchanges the two native spectral bands.",
       "scope_if_false": "The affected frozen-pair diagnostic, bounded source nonselection result or support-attachment audit falls. The unit split, inverse pairing, six axes and proper A5 action in OPH-SCREEN-ECHOSAHEDRAL-SELECTOR remain independently assessed; no universal embedding classification or physical selection is asserted.",
       "status": "frozen_Galois_pair_certified__positive_selection_requires_missing_source_support_attachment",
       "claim_class": "conditional_implication",

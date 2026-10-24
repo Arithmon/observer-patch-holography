@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 900,
+    "file_count": 904,
     "files": [
       {
         "byte_count": 42558,
@@ -2273,6 +2273,11 @@
         "sha256": "sha256:88455c12f6ee5f81704e4c6385253e3df591dbabb6309b1d68855787c9e0c889"
       },
       {
+        "byte_count": 31470,
+        "path": "code/a5_closure/manifests/marked_triplet_attachment_reference.json",
+        "sha256": "sha256:26679f06e09459b3d90a7b33fe2f0b4b21c813be90d610f4bdb528826c1e229f"
+      },
+      {
         "byte_count": 8616,
         "path": "code/a5_closure/manifests/matter_attachment_receipt.json",
         "sha256": "sha256:f58c6c283cfff1d4c2bb10c0db050fce256bcd5ce17bb4d5bc1fda545c2e799e"
@@ -2346,6 +2351,11 @@
         "byte_count": 3597,
         "path": "code/a5_closure/manifests/super_tannakian_matter_reference.json",
         "sha256": "sha256:cb627653c332996adcec8f9d501299e0fcb272958b346316946b613253040c59"
+      },
+      {
+        "byte_count": 11697,
+        "path": "code/a5_closure/marked_triplet_attachment_certificate.py",
+        "sha256": "sha256:977e5c7ce770ee15ad7697234a3f37f4e35fdbbf70cd16848e9f57b0b4bdc253"
       },
       {
         "byte_count": 44292,
@@ -2718,6 +2728,11 @@
         "sha256": "sha256:2487bb59e738866fc38308d5c89dc1408dbe98d77d7593ea4f1d1079f79bab35"
       },
       {
+        "byte_count": 2825,
+        "path": "code/a5_closure/tests/test_marked_triplet_attachment_certificate.py",
+        "sha256": "sha256:005484d6bb3ee1345fbffa7b386e3b3b9e22cdf25b278f36d878193ffcdd4d61"
+      },
+      {
         "byte_count": 15901,
         "path": "code/a5_closure/tests/test_matter_menu_spectral_ledger_certificate.py",
         "sha256": "sha256:6fe1c0de4a31162a35f685f2942e5fd595b8609051d602e21dce2bebeba57dd6"
@@ -2826,6 +2841,11 @@
         "byte_count": 12352,
         "path": "code/a5_closure/verify_galois_port_frame_independent.py",
         "sha256": "sha256:0b805033eb3e7c27c812a2d0919504796f73980d5d6d75f23dd68925045fbbea"
+      },
+      {
+        "byte_count": 17109,
+        "path": "code/a5_closure/verify_marked_triplet_attachment_independent.py",
+        "sha256": "sha256:fc93e515c75fa5b768c84ee009062e3c00ea416aa9e7a9280c1800409581c448"
       },
       {
         "byte_count": 14166,
@@ -4698,7 +4718,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:24d070ede88d50fd64bf87228cd0293c0adcb7ef9784cafd5d3d8ca944d61cbd",
+    "files_sha256": "sha256:0aba55b7449501f4d618acacb47e2faf1ea9168ba126fb4fe6781c099c696138",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7607,7 +7627,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:b57829e960101fe48c84907c5798d149eee00496899923197e950f7ec41a4b6b",
+  "inventory_sha256": "sha256:9d523a3e0ff3ea54b7c1e0bec132dece9fa89fe0e02b9e0dc9b5f5a25184a5e6",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

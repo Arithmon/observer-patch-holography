@@ -913,3 +913,22 @@ law but does not select its action. The published oscillator number-dephasing
 generator also cannot be equated with a positive mixture of fixed
 occupation-diagonal binary recording generators. These restrictions leave
 the physical interpretation premise open.
+
+## Arithmon marked-triplet interface
+
+The comparison keeps the McKay result in its established scope: the
+character field is `Q(sqrt(5))`, and its two real embeddings remain
+unselected by McKay alone. The exact OPH marked-triplet certificate
+transports the source-frozen order-five action through the live response
+chart before evaluating characters. For that action, the spatial slow
+triplet and lower internal triplet have zero intertwiner dimension; the
+upper internal triplet has intertwiner dimension one. All 120 incidence
+rechartings preserve the spatial band. The 120 edge/distance-two exchanges
+exchange bands only by changing incidence attachment.
+
+This fixes the representation mismatch for the marked action without
+selecting a physical golden embedding. The remaining interface datum is a
+source-derived action twist or an explicit representation attachment
+between the spatial and internal domains. The frozen source baseline is
+`879ed37ad2c1933ecb6dd8f54271362ee3f4d41c`; it is replayed on integration
+baseline `7b0997b4a8a425679d9e2946f82c86cd92289059`.
