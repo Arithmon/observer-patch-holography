@@ -33,32 +33,27 @@ and the clocks inside it.
 
 ## Highlights
 
-- **An observer that runs.** The smallest observer has twelve ports and two
-  events. It writes a record at each event, keeps it, and lets only that
-  record choose the next repair, and the record changes what is measured: the
-  final occupation moves from 1/6 to 35/264. One finite quantum process joins
-  electric flux, charged matter and a scalar field on a single register, and
-  an exact calculation certifies that its recorded feedback changes the
-  measured response. Its continued smooth protocol executes four reads on
-  one disturbed state, compiles two quantum record laws of the native repair, and preserves
-  an encoded qubit through record-selected recovery under declared services.
-  Two observers whose regions overlap read their fields and clocks from one
-  continuing history and agree on one complete law. Joined carriers form
-  screens of up to 245,760 ports, and on a refining screen one repair history
-  defines a continuum field with Gaussian fluctuations and waves of finite
-  speed.
+- **An observer that runs.** A twelve-port observer retains its records and
+  uses them to choose the next repair, changing the final occupation from
+  1/6 to 35/264. Native repairs supply bounded state preparation and current
+  readout; compiled controls let overlapping observers read one common
+  reference and its active modular clock, retaining disturbance and failures.
+  Complete state tomography makes that reference identifiable, and a declared
+  repair schedule derives its entropy maximum at two conserved occupation
+  moments. A separate finite quantum process joins electric flux, charged
+  matter and a scalar field with recorded feedback. Refining screens support
+  Gaussian field limits and waves of finite speed.
 - **Relativistic field theory as the observers' effective description.** On
-  a declared radial product over that screen, the native wave action has a
-  Lorentz-signature density, and for every finite set of the observers'
-  clock, field and response readouts one smooth static (1+3)-dimensional
-  Lorentzian field theory reproduces them all to any chosen tolerance. The
+  a declared radial product over a refining screen, one action determines
+  field correlations, response and an active modular clock. For any finite
+  measurement menu and positive tolerance, one smooth static (1+3)-dimensional
+  Lorentzian scalar field theory approximates those joint readouts. A finite
+  interacting projection has source-executed quantum readouts and a controlled
+  occupation limit. The radial design, interaction coupling, preparation and
+  physical units remain inputs; the radius derived from native current
+  records does not select the field's radial direction. The
   [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
-  states the limits: the exact native metric is not smooth in its present
-  atlas, and the radial design is supplied. The carrier's own current
-  records do derive a radius: their three-dimensional counter has the
-  standard radial diffusion law from every initial state. Complete
-  measurement histories cannot tell radial designs apart, so tying that
-  radius to the field's radial direction and to physical distance is open.
+  states the construction's scope.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
@@ -92,64 +87,11 @@ From the repository root, with Python 3.11 or newer:
 python3 -m model.observer run --trials 10000 --seed 42
 ```
 
-The run prints one line: the Brier risk of three forecasts of the next record
-and the hash of the result.
-
-```text
-{"brier": {"action_known_prior": 0.0728, "native_record": 0.0563, "within_action_shuffle": 0.0884}, "reference_matches": 10000, ...}
-```
-
-Lower is better. The forecast that uses the retained record beats the one
-that knows only the chosen action and the one with records shuffled within the
-same action; the exact values are 395/7392, 140/2013 and 12875/150304. The
-[model directory](model/README.md) holds the implementation, its tests and its
-retained results. Its joined experiments include the
-[coherent screen observer](model/coherent_screen_observer/README.md), which
-carries a logical qubit and an untouched reference through native clock ticks
-and record-controlled feedback on screens of 15,360 and 245,760 ports, and the
-[common interacting process](model/common_source/README.md), in which quantum
-electric flux, charged fermions and a scalar field share one finite register
-with complete instruments, retained records and native feedback; the field
-action and the preparation of that process are supplied inputs. The
-[repair-law guide](model/CANDIDATES.md) shows which parts of the repair law
-are forced and which are free: the classical rule follows from four
-requirements, its quantum record laws form one family with five coherence
-multipliers, a single interference experiment reads the coherence that
-separates the executed law C from its comparison law E, and nine compiled
-measurements identify the whole table. The
-[prediction package](model/predictions/README.md) fixes that experiment and its
-count-based rejection rule before any independent counts, and the
-[construction guide](model/CONSTRUCTION.md) states the acceptance criteria and
-the connections that remain to be built.
-
-One twelve-port carrier connects spatial and clock observations: current
-records recover local geometry, and exact temporal correlation laws reconstruct
-a detector's cyclic Hilbert space and its visible transfer modes. Repair fixes a
-current-fluctuation action and a probability law relating incident hits to
-moving ticks. Retained executions test that conversion against a host clock.
-On larger source screens, field and feedback predictions also work at fixed
-conserved occupation, without independently prepared Bernoulli occupations.
-Two observers sharing a port of one carrier read their fields, local clocks
-and feedback from one continuing history, and the direct native execution and
-an effective description assign every joint record the same probability; a
-version built from compiled source pulses reproduces that history on all 512
-code addresses. On the refining spherical screens one repair history gives a
-[continuum field operator](model/physical_space_time/OCCUPATION_FIELD.md)
-whose Gaussian fields, decay and waves live on the two-dimensional screen
-itself. The
-[public-data audit](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md) compares
-the conditional scalar tilt with the ACT DR6 posterior chains and an ACT
-likelihood slice, and tests a
-direct attachment of native clock counts to published optical-clock ratios.
-The [recovery assessment](model/OBSERVER_RELATIVE_RECOVERY.md) separates these
-finite results from extended relativistic spacetime and a calibrated laboratory
-identification. A [public Bell-data replay](model/predictions/BELL_RECORDS.md)
-also tests the limit of interpreting the diagonal branch as a complete local
-response model; it does not test the full quantum construction. The
-[empirical status](docs/EMPIRICAL_STATUS.md) distinguishes those comparisons
-from selection of the native repair law. Local history repair reproduces the
-supplied oscillator readout; the retained data do not determine the native
-record law.
+This runs the minimal record-and-feedback experiment and prints forecast
+scores and a result hash. The [model guide](model/README.md) covers the richer
+observers, clocks, fields and data comparisons; the
+[construction guide](model/CONSTRUCTION.md) states the verified scope and
+remaining inputs.
 
 ## Mathematical results
 
