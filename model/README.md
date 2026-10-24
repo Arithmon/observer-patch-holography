@@ -561,9 +561,14 @@ Additional native predictions include
 [one-history circulation](native_circulation/README.md),
 [event-count circulation](event_circulation/README.md), and
 [native-reference modular probes](native_modular_reference/README.md).
-Their stationary preparations, record access, coherent services and attempt
-or event parameters are stated individually. No public laboratory dataset
-is identified with these native protocols.
+The full Palm modular probe derives its native basis and auxiliary
+preparations from current-only repair and its continuing work-bit readout
+from six source pulses plus one native pointer. Both reset timeouts and all
+work addresses remain, with complete error below `3.4e-8` and costs of
+5357 native attempts and 2050 pulses. Coherent code services and their
+ancillas remain architecture inputs. Other protocols retain their own
+preparation, record-access and clock contracts. No public laboratory
+dataset is identified with these native protocols.
 
 ## Empirical comparisons
 

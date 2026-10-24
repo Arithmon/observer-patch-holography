@@ -79,6 +79,31 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Fine-structure constant | Several declared endpoint maps exist, with incomplete physical transport and map-selection obligations. | Withhold a new prediction claim. The [existing endpoint audit](../../model/predictions/README.md#inherited-coupling-comparison) already finds a 300.388218 ppm gap for its named map, without a justified theory-error distribution. |
 | Higgs mass | The historical near-match used a target-conditioned calibration. The [replacement electroweak producer](../../code/particles/calibration/source_ew_vev_matching.py) uses additional criticality, matching and energy-scale premises; it is not derived from the finite observer. | Withhold a distinctive prediction claim: the physical matching and theory-error budget remain open. The replacement's [retrospective comparison](../../code/particles/runs/calibration/source_ew_vev_matching_comparison.json) should retain those qualifications. |
 
+The [certified transfer comparison](../../model/anharmonic_transfer/certified_comparison.py)
+also joins the unchanged case-a data to the independently enclosed
+**unrestricted supplied apparatus**, at exactly matching published coordinates.
+Both existing occupation cutoffs remain. The tighter `d=64` intervals give:
+
+| Published coordinate | Deposited estimator | Minimum additional absolute allowance |
+| --- | --- | --- |
+| 0.4 ms | −0.959119497 | 0.0469004584 |
+| 2 ms | +0.047169811 | 0.1743174846 |
+| 10 ms | +0.078616352 | 0; the certified interval is too wide to force a positive remainder |
+
+The exact rational calculation is `max(0, abs(observed-centre)-radius)`.
+The remainder must cover experimental, calibration or model discrepancy;
+certified occupation and evaluator error alone cannot explain the first
+two differences. It is **not** a confidence interval or statistical rejection.
+All 125 positive-time rows remain visible: two have matching `d=32`
+certificates and three have `d=64` certificates. There is no deposited 5 ms
+datum to join, and zero-time preparation diagnostics remain separate.
+The paper's nominal 200 measurements per position point does not supply
+authenticated accepted counts, raw trials, calibration covariance or resolve
+the estimator normalization. The intervals exclude finite native-compiler
+and physical-service error. No parameter is refitted, no observation is
+counted twice as independent evidence, and no full-uncertainty agreement
+verdict is assigned.
+
 ## Executed CMB comparison
 
 The [executable reanalysis](../../code/cosmology/tilt_posterior/README.md)

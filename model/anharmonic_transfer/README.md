@@ -185,6 +185,48 @@ finite-quadrature approximation within the declared finite model cannot
 account for those discrepancies. The cutoff comparison remains a diagnostic,
 and floating execution and physical errors remain outside the ideal bound.
 
+The receipt now also attaches the independent
+[unrestricted-apparatus certificate](../occupation_control/README.md) before
+opening later observations in each replay. This attachment is a retrospective
+analysis added after the trajectories and earlier receipts were known. The
+protocol's date and original selection order refer to the earlier apparatus
+choices; the attachment changes no apparatus parameter or numerical setting.
+It verifies the same binary preparation, pulse,
+dephasing, detector and time parameters, and binds the certificate's original
+source and result bytes. This evaluator includes occupation removal,
+integration, preparation, detector evaluation and arithmetic error. It does
+not certify native compilation or physical services.
+
+For a deposited decimal value `y` and a certified apparatus interval
+`[c-r,c+r]`, any remaining combined measurement, calibration or model error
+must be at least `max(0, |y-c|-r)`. The producer calculates this distance with
+exact rationals. The 64-level certificate gives these case-a comparisons:
+
+| Time | Certified centre | Certified radius, rounded up | Deposited value | Remaining allowance, rounded down |
+| --- | ---: | ---: | ---: | ---: |
+| 0.4 ms | -0.9122189395 | 0.00000009905 | -0.959119497 | 0.04690045 |
+| 2 ms | -0.1434118369 | 0.016264164 | 0.047169811 | 0.17431748 |
+| 10 ms | 0.3230507467 | 1.676153790 | 0.078616352 | 0 |
+
+Thus certified occupation and numerical errors cannot cover the early
+discrepancies under the fixed apparatus. The zero at 10 ms means its wide
+interval gives no positive correction floor. Both existing cutoffs remain
+visible: dimension 32 has two eligible certified observations and dimension
+64 has three. Every other one of the 125 held-out observations remains
+explicitly unavailable; the certificate's 5 ms endpoint has no matching
+measurement and is not interpolated. The separate zero-time case-a value
+requires at least `0.34054967` beyond its certified numerical interval. It is
+kept outside the held-out comparisons and supplies no independent evidence
+for the secondary preparation adjustment.
+
+These are necessary discrepancy allowances, not estimated detector biases
+or statistical rejection levels. The paper reports 200 measurements per
+position point, but its two postselections and aggregate deposition do not
+authenticate per-point accepted counts, raw trials, preparation covariance
+or the unresolved estimator conversion. No experimental confidence band is
+inferred from the printed values. Agreement within a complete physical
+uncertainty budget remains unestablished; no parameter or datum is corrected.
+
 The package tests include independent unsplit master-equation comparisons,
 the finite-occupation boundary counterexample, full spin continuation, native
 environment accounting, poisoned-outcome isolation, protocol mutation rejection
@@ -252,6 +294,16 @@ metadata must agree exactly with this recomputation before being omitted
 from the cross-receipt numerical comparison. This avoids applying the same
 dimensionless tolerance again after an estimator conversion amplifies its
 checked inputs.
+
+Separate raw-law checks allow at most `64*ulp(1)` negative roundoff in each
+probability and the same upper-bound roundoff in the conditional detector
+law. Unconditional spin and joint masses retain the existing `2e-10`
+accumulated trace allowance, including when a deterministic branch exceeds
+one by that drift. Complete-law mass checks use `2e-10`; marginal and
+conditional-law consistency checks use `1e-12`. They include rejected and
+zero-time rows, preserve tiny signed roundoff, and never clip or renormalize
+the raw law. These numerical screening gates do not represent physical
+uncertainty.
 
 Primitive spin means, probabilities, and other floating diagnostics retain
 the `2e-10` replay tolerance. The separate exact-position diagnostic is

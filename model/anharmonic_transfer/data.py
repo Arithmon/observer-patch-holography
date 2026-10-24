@@ -50,11 +50,15 @@ def parse_metadata(path):
 
 
 def parse_zero(path):
+    return {case: float(token) for case, token in parse_zero_tokens(path).items()}
+
+
+def parse_zero_tokens(path):
     rows, _ = _rows(path)
-    values = [float(v) for v in rows[1][1:]]
-    if not all(math.isfinite(v) for v in values):
+    tokens = rows[1][1:]
+    if not all(math.isfinite(float(v)) for v in tokens):
         raise ValueError('Finite zero-time observations required')
-    return dict(zip(LABELS, values, strict=True))
+    return dict(zip(LABELS, tokens, strict=True))
 
 
 def parse_validation(path):
@@ -62,10 +66,12 @@ def parse_validation(path):
     result = []
     for time, row in zip(times[1:], rows[2:], strict=True):
         for case, value in zip(LABELS, row[1:], strict=True):
+            token = value
             value = float(value)
             if not math.isfinite(value):
                 raise ValueError('Finite derived observations required')
-            result.append({'case': case, 'time_ms': time, 'observed_position_estimator': value})
+            result.append({'case': case, 'time_ms': time, 'observed_position_estimator': value,
+                           'observed_position_estimator_decimal': token})
     return result
 
 
@@ -77,6 +83,11 @@ def load_metadata():
 def load_zero():
     verify_provenance()
     return parse_zero(FOLDER/'data'/NAME)
+
+
+def load_zero_tokens():
+    verify_provenance()
+    return parse_zero_tokens(FOLDER/'data'/NAME)
 
 
 def load_validation():

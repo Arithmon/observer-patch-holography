@@ -9,10 +9,10 @@
   ],
   "cap_Ramsey_readout": {
     "complete_executed_bit_probabilities": [
-      0.9551699008778092,
-      0.044830099122079956
+      0.9551699008776748,
+      0.044830099122049646
     ],
-    "complete_record_half_l1_error_diagnostic": 5.5424415057458987e-14,
+    "complete_record_half_l1_error_diagnostic": 1.3774745233341434e-13,
     "declared_initial_configuration_and_projective_bit_read_services": true,
     "ideal_bit_zero_probability": "(1+cos(s log(38/37)))/2",
     "ideal_bit_zero_probability_interval": [
@@ -22,7 +22,7 @@
     "initial_native_code": 328,
     "initialization_and_readout_physical_costs_included": false,
     "native_modular_gap": "log(38/37)",
-    "outside_native_probability_diagnostic": 9.11178263449744e-27,
+    "outside_native_probability_diagnostic": 5.364047611423942e-27,
     "padding_projected_or_outcomes_renormalized": false,
     "partner_native_code": 73,
     "same_outside_configuration_and_cap_charge_one": true,
@@ -92,7 +92,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
-    "model/native_modular_reference/full_flow.py": "ee717fc19218e4d444a3f163e0febcbb102ac38ef357f0a650f5b282ff746256",
+    "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91"
   },
@@ -122,4 +122,3 @@
   ],
   "state_cocycle": "V_s=bar_sigma^(-is) sigma^(is); U_bar(s)=V_s U_Palm(s)"
 }
-

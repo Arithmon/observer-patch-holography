@@ -218,22 +218,69 @@ has half-trace error at most `delta_n + p_max delta_word` against its ideal
 Palm experiment. These bounds concern different comparisons; successful
 preparation is never treated as free or certain.
 
-An executed Ramsey witness uses native addresses 16 and 144, outside the
-active-corner experiment, and predicts `(1+cos(s log(5/4)))/2`. Its two
-additional source `Y` pulses prepare and analyze the coherence. The admitted
-projective read of work-register bit 7 retains all 512 coordinates in its
-two outcomes; nonnative weight is a numerical diagnostic, not a measured
-membership flag or postselection. At `s=16`, the match probability is about
-`0.04524740944`. The two mixers and source word have a combined half-diamond
-allowance `1.021e-9`.
+The Ramsey witness uses native addresses 16 and 144, outside the active
+corner, and predicts `(1+cos(s log(5/4)))/2`. Its initialization and readout
+are complete native protocols:
 
-Proper-code load/export, coherent routing, initial configuration and quantum
-bit readout remain specified services. Ideal code-export failure vanishes
-by the existing invariant-code identities; physical service errors and
-floating state propagation are not covered by the raw-map certificate.
-Initialization/readout physical costs are outside the pulse count. This
-closes the full-native-algebra active-control restriction, without identifying
-that control with passive repair, physical seconds or a spacetime clock.
+1. A [current-only controller](../native_clock/configuration.py) resets the
+   work to code 16. A separate native auxiliary is reset to the
+   [pointer's ready configuration](../native_interface/pointer.py).
+   Each reset permits arbitrary total-two inputs, including collisions;
+   both public timeout flags remain. Private reset tapes are discarded.
+2. Two existing source `Y` pulses surround the 2042-pulse modular word.
+3. Six source pulses couple work bit 7 to the auxiliary orientation. One
+   native coin/current repair reads it. The ideal reduced target is the
+   continuing work-bit Lüders instrument on all 512 work coordinates;
+   the literal source word retains its separate numerical error bound.
+
+The maximum cost is **5357 native attempts, 2050 source pulses and 4100
+proper-code service events**. The native work and pointer preparation needs
+no external blank or random-seam service. With four seed scans and 32 retries per
+mixed edge, the two complete reset errors sum to `140/2^32`. The ideal
+coupling/readout theorem covers arbitrary work/reference inputs. Its raw
+six-pulse map has operator error at most `1e-11`, half-diamond error
+`delta_pointer` and norm bound `g_pointer=(1+1e-11)^2`. Thus
+
+```
+complete history error <= 140/2^32 + g_pointer*delta_Ramsey + delta_pointer
+                       < 3.4e-8.
+```
+
+The norm factor accounts for possible amplification by a raw numerical
+map. This compares the complete history with the ideal Palm Ramsey
+experiment, including empty ideal timeout blocks. It is distinct from the
+`0.000971` comparison to an unknown finitely prepared reference above.
+The retained execution averages the exact native reset laws over independent
+`I78/78` inputs; the uniform bound does not require that input or independence.
+On a correlated input, successful reset can steer the reference. The proof
+uses the complete failure branch and never assumes otherwise.
+
+All four public outcomes are retained for both C and E: work-reset timeout,
+auxiliary-reset timeout, bit zero and bit one. At `s=16`, the successful
+match law is about `0.04524740944`. Padding is retained in both bit outcomes;
+nonnative weight is a diagnostic, not a measured membership flag. Raw
+outputs are not renormalized. The independent source-array, rank-one reset
+and complete pointer-instrument checks establish composition on this common
+finite apparatus.
+
+The retained `full_flow_results.json` witness contains the four probability
+marginals and trace/leakage diagnostics for the declared `I78/78` inputs.
+The complete quantum-output and arbitrary-reference bound follows by
+composition of the independently checked reset, source-array and pointer
+instruments. The pointer also has separate reference-entangled executions.
+Failure quantum channels are specified by the finite native controller;
+the full-flow receipt does not enumerate their dense output matrices.
+Replay checks the probability and diagnostic domains and the complete
+record mass as well as the comparison bound. Portable numerical tolerances
+do not permit negative probabilities or relax execution error gates.
+
+Coherent proper-code load/export, their service ancillas and routing remain
+architecture services; the native resets do not construct those service blanks.
+Their physical errors and durations are not authenticated by source-array
+arithmetic. Committed native repair from a joint diagonal accessible input
+with fresh independent diagonal ancillas cannot generate the needed coherent
+controls. No passive-repair/modular-time or
+laboratory-clock identification follows from implementing this experiment.
 
 ## Regional algebras under one native modular action
 

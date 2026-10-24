@@ -620,11 +620,10 @@
   },
   "source_generator_up_to_scalar": "log(5/4) times native adjacency projector",
   "source_sha256": {
-    "model/native_modular_reference/full_flow.py": "ee717fc19218e4d444a3f163e0febcbb102ac38ef357f0a650f5b282ff746256",
+    "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10"
   }
 }
-

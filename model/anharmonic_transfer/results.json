@@ -1,6 +1,1363 @@
 {
   "all_pass": true,
   "all_pass_meaning": "Execution and comparison contracts only, not empirical success.",
+  "certified_unrestricted_apparatus_comparison": {
+    "accepted_counts_or_raw_trials_authenticated": false,
+    "experimental_uncertainty_applied": null,
+    "full_uncertainty_agreement_established": false,
+    "measurement_boundary": "Paper reports 200 measurements per point and h=0.4; the deposit omits accepted counts, raw trials and calibration covariance. The unresolved estimator normalization is not corrected.",
+    "overlap_boundary": "These are existing observations, not additional independent evidence. Zero-time values are separate, and neither missing endpoints nor potential cases are interpolated.",
+    "published_measurements_per_position_point": 200,
+    "relation": "remaining combined experimental/calibration/model discrepancy >= distance(observed, certified interval)",
+    "runs": [
+      {
+        "certificate_endpoints_without_observations": [
+          {
+            "case": "a",
+            "reason": "no observation at this exact published coordinate; no interpolation",
+            "time_ms": "5"
+          }
+        ],
+        "certified_overlap_count": 2,
+        "dimension": 32,
+        "held_out_count": 125,
+        "held_out_rows": [
+          {
+            "case": "a",
+            "certified_interval": [
+              "-71044414910549445/72057594037927936",
+              "-60418885170311371/72057594037927936"
+            ],
+            "minimum_uncovered_absolute_allowance": "0",
+            "observed_decimal": "-0.959119497",
+            "status": "certified_interval",
+            "time_ms": "2/5",
+            "zero_additional_allowance_compatible": true
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "a",
+            "certified_interval": [
+              "-76303155679176329/36028797018963968",
+              "65953624119956263/36028797018963968"
+            ],
+            "minimum_uncovered_absolute_allowance": "0",
+            "observed_decimal": "0.047169811",
+            "status": "certified_interval",
+            "time_ms": "2",
+            "zero_additional_allowance_compatible": true
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "a",
+            "status": "reference_acceptance_not_certified_positive",
+            "time_ms": "10"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          }
+        ],
+        "minimum_common_uncovered_allowance_on_certified_held_out_rows": "0",
+        "unavailable_count": 123,
+        "zero_time_diagnostics_not_held_out": [
+          {
+            "case": "a",
+            "certified_interval": [
+              "-356886048334163630520800663/309485009821345068724781056",
+              "-356886048331210059272153705/309485009821345068724781056"
+            ],
+            "minimum_uncovered_absolute_allowance": "205849648143954118075936729895021/604462909807314587353088000000000",
+            "observed_decimal": "-1.493710692",
+            "time_ms": "0",
+            "zero_additional_allowance_compatible": false
+          }
+        ]
+      },
+      {
+        "certificate_endpoints_without_observations": [
+          {
+            "case": "a",
+            "reason": "no observation at this exact published coordinate; no interpolation",
+            "time_ms": "5"
+          }
+        ],
+        "certified_overlap_count": 3,
+        "dimension": 64,
+        "held_out_count": 125,
+        "held_out_rows": [
+          {
+            "case": "a",
+            "certified_interval": [
+              "-68925321804287327035169/75557863725914323419136",
+              "-68925306836418955878623/75557863725914323419136"
+            ],
+            "minimum_uncovered_absolute_allowance": "6921286029113602944703204091/147573952589676412928000000000",
+            "observed_decimal": "-0.959119497",
+            "status": "certified_interval",
+            "time_ms": "2/5",
+            "zero_additional_allowance_compatible": false
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "a",
+            "certified_interval": [
+              "-23011736798644267/144115188075855872",
+              "-18323910894553125/144115188075855872"
+            ],
+            "minimum_uncovered_absolute_allowance": "49066009918595117471641/281474976710656000000000",
+            "observed_decimal": "0.047169811",
+            "status": "certified_interval",
+            "time_ms": "2",
+            "zero_additional_allowance_compatible": false
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "a",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "a",
+            "certified_interval": [
+              "-24375337436723465/18014398509481984",
+              "36014467216748607/18014398509481984"
+            ],
+            "minimum_uncovered_absolute_allowance": "0",
+            "observed_decimal": "0.078616352",
+            "status": "certified_interval",
+            "time_ms": "10",
+            "zero_additional_allowance_compatible": true
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "b",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "c",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "d",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "2"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "12/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "14/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "16/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "18/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "4"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "22/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "24/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "26/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "28/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "6"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "32/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "34/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "36/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "38/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "8"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "42/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "44/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "46/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "48/5"
+          },
+          {
+            "case": "e",
+            "status": "no_retained_occupation_endpoint",
+            "time_ms": "10"
+          }
+        ],
+        "minimum_common_uncovered_allowance_on_certified_held_out_rows": "49066009918595117471641/281474976710656000000000",
+        "unavailable_count": 122,
+        "zero_time_diagnostics_not_held_out": [
+          {
+            "case": "a",
+            "certified_interval": [
+              "-713772096669533930665471359/618970019642690137449562112",
+              "-713772096661213448920437377/618970019642690137449562112"
+            ],
+            "minimum_uncovered_absolute_allowance": "411699296285551459542752301586917/1208925819614629174706176000000000",
+            "observed_decimal": "-1.493710692",
+            "time_ms": "0",
+            "zero_additional_allowance_compatible": false
+          }
+        ]
+      }
+    ],
+    "source": "https://arxiv.org/html/2603.04744v1#S3.SS2",
+    "statistical_rejection_claimed": false,
+    "units": "dimensionless two-point position estimator"
+  },
   "checks": {
     "all_125_later_observations_retained": true,
     "no_positive_time_fit": true
@@ -26,6 +1383,118 @@
     }
   },
   "prediction": {
+    "certified_unrestricted_apparatus": {
+      "calibration_and_experimental_uncertainty_included": false,
+      "certificate": "model/occupation_control/results.json",
+      "certificate_recomputed_here": false,
+      "native_compiler_or_physical_service_error_included": false,
+      "new_parameter_fit": false,
+      "parameters": {
+        "alpha_real": -1.0081292326480422,
+        "delta": 3141.592653589793,
+        "gamma": 18.0,
+        "gap_duration": 0.0,
+        "omega": 20943.951023931957,
+        "omega_carrier": 89759.79010256553,
+        "phi": 0.0,
+        "probe_h": 0.4,
+        "pulse_duration": 5e-05,
+        "thermal": 0.13314125172459518,
+        "theta": 0.8
+      },
+      "runs": [
+        {
+          "dimension": 32,
+          "records": [
+            {
+              "case": "a",
+              "centre_exact_binary": "-2596687760762047/2251799813685248",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "1476785624323479/309485009821345068724781056",
+              "time_ms": "0"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "-8216456255053801/9007199254740992",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "5312764870119037/72057594037927936",
+              "time_ms": "2/5"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "-5174765779610033/36028797018963968",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "8891048737445787/4503599627370496",
+              "time_ms": "2"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "8836900705345521/18014398509481984",
+              "conditional_certificate_available": false,
+              "radius_exact_binary": null,
+              "time_ms": "5"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "1451269600419195/4503599627370496",
+              "conditional_certificate_available": false,
+              "radius_exact_binary": null,
+              "time_ms": "10"
+            }
+          ]
+        },
+        {
+          "dimension": 64,
+          "records": [
+            {
+              "case": "a",
+              "centre_exact_binary": "-2596687760762047/2251799813685248",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "4160240872516991/618970019642690137449562112",
+              "time_ms": "0"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "-8216537752193587/9007199254740992",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "7483934185578273/75557863725914323419136",
+              "time_ms": "2/5"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "-2583477980824837/18014398509481984",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "2343912952045571/144115188075855872",
+              "time_ms": "2"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "2206869735490345/4503599627370496",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "1894037565369929/9007199254740992",
+              "time_ms": "5"
+            },
+            {
+              "case": "a",
+              "centre_exact_binary": "5819564890012571/18014398509481984",
+              "conditional_certificate_available": true,
+              "radius_exact_binary": "7548725581684009/4503599627370496",
+              "time_ms": "10"
+            }
+          ]
+        }
+      ],
+      "source_and_artifact_hashes_verified": true,
+      "source_pins": {
+        "model/occupation_control/DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
+        "model/occupation_control/__main__.py": "b442422dbc00e0873a934c8c9348ea26af75e851c36721784744dd9f88887cfc",
+        "model/occupation_control/experiment.py": "4073a2d90e53004a0eb0c0a1fc185e4c94768798b07d3a934b161dd896920285",
+        "model/occupation_control/intervals.py": "7c11fbde0360e2153fa8d3c154b128a0f238a85b2da1b345ea769b5df4c66bbc",
+        "model/occupation_control/results.json": "c07df1b9984e2d24a07916712880b09b3e567e60bc6f1f73d52dd07326557316",
+        "model/occupation_control/solver.py": "00df02931eea0513303b070186c90a746931561326839bee8b23eb650f454c53"
+      },
+      "target": "fixed unrestricted spin-oscillator apparatus; independent semantic evaluator"
+    },
     "contracted_words": {
       "01e5cfe6e5016d646a74220777dae8d96353ec59d5e47d51ed4f2d0748b8bc51": {
         "blockwise_contraction": {
@@ -13200,6 +14669,14 @@
           "preparation_sign": -1
         }
       ],
+      "certified_comparison": {
+        "comparison": "For each available interval [centre-radius, centre+radius], report the exact rational distance of the unchanged deposited decimal value from that interval. It is the minimum remaining combined sampling/calibration/apparatus/model discrepancy needed for compatibility, not an estimated detector bias or a statistical rejection.",
+        "selection": "Retain both existing dimensions 32 and 64 and every certificate endpoint at 0, 0.4, 2, 5 and 10 ms. Join only exact case and published-time coordinates; retain unavailable observations and unmatched certificate coordinates. Do not interpolate or choose a cutoff by its score.",
+        "source": "model/occupation_control/results.json",
+        "target": "The same fixed unrestricted spin-oscillator apparatus, evaluated independently with numerical, preparation, detector and occupation errors enclosed. This is not a certificate for native compilation or physical services.",
+        "uncertainty": "The paper reports 200 measurements per position point. Authenticated per-point accepted counts, raw trials, preparation covariance and the estimator-normalization resolution are absent. No experimental confidence band is fabricated; all these physical uncertainty terms remain unbounded here.",
+        "zero_time": "Keep zero-time transfer diagnostics separate from the 125 positive-time held-out observations. They are reused preparation data in the secondary analysis and supply no additional independent confirmation."
+      },
       "dataset_doi": "10.5281/zenodo.18752287",
       "date": "2026-10-15",
       "mapping_evidence": "Paper Fig.5 caption and prose agree. Deposited README swaps d/e; zero-time row independently identifies d as the centred preparation. Executor phi has the opposite sign to the target potential phase, by the selected small-angle generator. No later trajectory selected this mapping.",
@@ -13240,10 +14717,10 @@
       "schema": "oph.anharmonic_transfer.protocol.v1",
       "scope": "Single-mode conditional apparatus model, executed in the OPH source interface. Hamiltonian, preparation family, environment law, detector, classical stochastic draws and clock calibration remain supplied. Neither OPH-specific action selection, spatial dimension recovery nor a new QFT prediction is established.",
       "score": "Descriptive RMSE in dimensionless two-point position-estimator units, separately per case and combined. No chi-squared, p-value or significance claim. Software all_pass means valid execution and comparison contracts, not empirical success.",
-      "selection_order": "Retrospective extension of a known published experiment. Only metadata, times and the five zero-time entries of this CSV were inspected before fixing this protocol. All positive-time values are excluded from preparation, apparatus choices, numerical choices and prediction generation. This is not prospective or blinded evidence.",
+      "selection_order": "The date records the original transferred-apparatus protocol: only metadata, times and the five zero-time entries of this CSV were inspected before its preparation, apparatus and numerical choices were fixed. Positive-time outcomes remain excluded from prediction generation. The certified_comparison attachment was added retrospectively after the published trajectories and existing receipts were known; it retains both existing certificate cutoffs and every endpoint without changing the original apparatus or fitting parameters. Neither the original comparison nor this attachment is prospective or blinded evidence.",
       "validation": "All 25 positive published times (.4 to 10 ms) for all five cases: 125 derived observations, equal weight, no exclusions."
     },
-    "protocol_sha256": "4e9baef6ae1ec1550d39754e0b9627b9cc2da7c6d2500f28de913381e4fa8a4e",
+    "protocol_sha256": "9ec2bf9fded67c279bc903a9db4d7ce0851151307122692b7245f71d85d03400",
     "provenance": {
       "accepted_counts_included": false,
       "creators": [
@@ -148336,18 +149813,25 @@
       "model/anharmonic_observations/source.py": "cdd4536a5259e971db0ff118005c89377ed69d50303976fd97085732c69cc12a",
       "model/anharmonic_transfer/bounds.py": "ba4182947f13b2fd117cd6e2953f5977eb906cc7982337d9b3ee9d91a7e78098",
       "model/anharmonic_transfer/calibration.py": "42bd720c4f05e0990688f395d1a29331a40e481f8f74adf00a765fff16ebf476",
-      "model/anharmonic_transfer/data.py": "e5f3a4f0dfaa5359d176b5c48d47a2a062ce97e15a5ed746287c804c868c674a",
+      "model/anharmonic_transfer/certified_comparison.py": "875de666d07dbb26cf489612ed3e363691a33f7444ebb4753cd4e86c9a5f4c92",
+      "model/anharmonic_transfer/data.py": "c1aa43bf937e90b0caf3b5bae9cc094e39166cfdd1a13682aa8070f5ec514bb4",
       "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
-      "model/anharmonic_transfer/experiment.py": "06003a4038d39d6bf604a116d90b6b154581239f17d99146d186dbbb783df3ac",
+      "model/anharmonic_transfer/experiment.py": "d2ca1b595505d288b043062038230895a36b0392a023110ec3a92de8683e7f66",
       "model/anharmonic_transfer/source.py": "1e54438f8c1939e53334d4f573ae63004a8cc86d8253618277835a7f5ff052f5",
       "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
+      "model/occupation_control/DERIVATION.md": "8e58825368295e9fa815bea4742bf52c4dac33c664961bf9098deed8b59eb5e6",
+      "model/occupation_control/__main__.py": "b442422dbc00e0873a934c8c9348ea26af75e851c36721784744dd9f88887cfc",
+      "model/occupation_control/experiment.py": "4073a2d90e53004a0eb0c0a1fc185e4c94768798b07d3a934b161dd896920285",
+      "model/occupation_control/intervals.py": "7c11fbde0360e2153fa8d3c154b128a0f238a85b2da1b345ea769b5df4c66bbc",
+      "model/occupation_control/results.json": "c07df1b9984e2d24a07916712880b09b3e567e60bc6f1f73d52dd07326557316",
+      "model/occupation_control/solver.py": "00df02931eea0513303b070186c90a746931561326839bee8b23eb650f454c53",
       "model/relativistic_scalar/exact.py": "d0787e21f37f06d1d9e6e13d7ed046c60215b449b3e371b406b87ac8cc6cfd23",
       "model/scalar_observations/experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
       "model/scalar_observations/experimental_readout/executable_source.py": "94d8bfd9858632b9f900d5ede34992e3083e029a9b5622f6f86a75f53ba75a15",
       "model/scalar_observations/source.py": "3c580b2c69970e2f16136eea00e3b9cfa926f75ca265ffdf1a85036089620c94"
     }
   },
-  "prediction_payload_sha256_before_scoring": "4163011bd28f2a63485e82099663a0d1c6003db7164320b0f74312f359cb3bc9",
+  "prediction_payload_sha256_before_scoring": "71d8abc2f2a555fc9e315205cc8ceecb9bd60d32f975bd28a2d461a139c2a891",
   "schema": "oph.anharmonic_transfer.results.v1",
   "scores": {
     "frozen_control": {

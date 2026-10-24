@@ -7,6 +7,12 @@ the shared 2e-10 primitive comparison. Derived fields must reproduce their
 own inputs exactly before the portable comparison. Neither replay tolerance
 nor operation-level correction is a physical or floating-point certificate.
 Structure, counts, hashes and exact certificate strings compare exactly.
+
+The raw finite executor can retain tiny signed boundary roundoff. Its local
+probability and algebraic consistency screens are separate from portable
+replay closeness and the accumulated mass gate. These are numerical checks,
+not physical uncertainty bounds or directed probability certificates; no
+reported value is clipped, normalized or otherwise corrected here.
 """
 from copy import deepcopy
 from fractions import Fraction
@@ -17,6 +23,9 @@ from .bounds import conditional_readout_bound
 from .experiment import digest, evaluate, _configuration
 
 SEAL = 'prediction_payload_sha256_before_scoring'
+PROBABILITY_ROUNDOFF = 64*math.ulp(1.)
+LAW_CONSISTENCY_ROUNDOFF = 1e-12
+ACCUMULATED_MASS_ROUNDOFF = 2e-10
 ACCEPTANCE_DEPENDENT_EXACT_FIELDS = (
     'exact_selected_probability_or_lower_bound',
     'exact_reference_selected_probability_lower',
@@ -26,16 +35,73 @@ ACCEPTANCE_DEPENDENT_EXACT_FIELDS = (
 )
 
 
+def _prediction_rows(receipt):
+    prediction = receipt.get('prediction')
+    if type(prediction) is not dict or type(prediction.get('runs')) is not list:
+        raise ValueError('A complete prediction run list is required')
+    for run in prediction['runs']:
+        if type(run) is not dict:
+            raise ValueError('A complete prediction run is required')
+        for field in ('predictions', 'zero_time_predictions'):
+            rows = run.get(field)
+            if type(rows) is not list or any(type(row) is not dict for row in rows):
+                raise ValueError('Complete prediction rows are required')
+            yield from rows
+
+
+def _validate_probability_law(row):
+    """Screen the entire raw 2x2 law, including rejected and zero-time rows."""
+    selected = row.get('predicted_detector_probabilities')
+    joint = row.get('spin_detector_joint_probabilities')
+    if (type(selected) is not list or len(selected) != 2
+            or type(joint) is not list or len(joint) != 2
+            or any(type(part) is not list or len(part) != 2 for part in joint)):
+        raise ValueError('A complete two-spin by two-detector probability law is required')
+    spin = [row.get('acceptance_probability'), row.get('rejection_probability')]
+    # Unconditional masses retain the executor's accumulated trace drift.
+    # A deterministic spin branch can therefore exceed one by that drift;
+    # its conditional detector law still uses the tighter boundary screen.
+    fields = [('acceptance_probability', spin[0], ACCUMULATED_MASS_ROUNDOFF),
+              ('rejection_probability', spin[1], ACCUMULATED_MASS_ROUNDOFF)]
+    fields += [(f'predicted_detector_probabilities[{index}]', value, PROBABILITY_ROUNDOFF)
+               for index, value in enumerate(selected)]
+    fields += [(f'spin_detector_joint_probabilities[{spin_index}][{detector_index}]',
+                value, ACCUMULATED_MASS_ROUNDOFF)
+               for spin_index, part in enumerate(joint)
+               for detector_index, value in enumerate(part)]
+    for field, value, upper_roundoff in fields:
+        if (type(value) is not float or not math.isfinite(value)
+                or not -PROBABILITY_ROUNDOFF <= value <= 1+upper_roundoff):
+            raise ValueError('Finite original probabilities within raw boundary roundoff '
+                             f'and accumulated mass are required at {field}: {value!r} '
+                             f'(upper {1+upper_roundoff!r})')
+    if spin[0] <= 0:
+        raise ValueError('Positive acceptance is required for a selected detector law')
+    mean = row.get('predicted_spin_mean')
+    if (type(mean) is not float or not math.isfinite(mean)
+            or abs(mean) > 1+PROBABILITY_ROUNDOFF):
+        raise ValueError('A finite original spin mean within raw boundary roundoff is required')
+    if (abs(math.fsum(spin)-1) > ACCUMULATED_MASS_ROUNDOFF
+            or abs(math.fsum(joint[0]+joint[1])-1) > ACCUMULATED_MASS_ROUNDOFF
+            or abs(math.fsum(selected)-1) > LAW_CONSISTENCY_ROUNDOFF
+            or abs(mean-(selected[0]-selected[1])) > LAW_CONSISTENCY_ROUNDOFF
+            or any(abs(math.fsum(joint[index])-spin[index]) > LAW_CONSISTENCY_ROUNDOFF
+                   or abs(joint[0][index]-spin[0]*selected[index]) > LAW_CONSISTENCY_ROUNDOFF
+                   for index in (0, 1))):
+        raise ValueError('Complete probability law violates normalization or marginal consistency')
+
+
 def _selected_budgets(receipt):
-    for run in receipt['prediction']['runs']:
-        for row in run['predictions']+run['zero_time_predictions']:
-            yield row['acceptance_probability'], row['ideal_finite_model_error']
+    for row in _prediction_rows(receipt):
+        yield row['acceptance_probability'], row['ideal_finite_model_error']
 
 
 def validate_prediction_seal(receipt):
-    if (receipt.get('schema') != 'oph.anharmonic_transfer.results.v1'
+    if (type(receipt) is not dict or receipt.get('schema') != 'oph.anharmonic_transfer.results.v1'
             or receipt.get(SEAL) != digest(receipt.get('prediction'))):
         raise ValueError('Pre-scoring prediction seal does not match this receipt')
+    for row in _prediction_rows(receipt):
+        _validate_probability_law(row)
     for acceptance, budget in _selected_budgets(receipt):
         expected = conditional_readout_bound(Fraction(budget['exact_complete_trace_distance_upper']),
                                              min(1., acceptance))
@@ -78,7 +144,7 @@ def _validate_derivations(receipt):
     # Both receipts are already scored. Reopening the fixed validation table
     # here cannot feed observations into their sealed prediction producers.
     derived = evaluate(prediction)
-    for key in ('scores', 'numerical_refinements'):
+    for key in ('scores', 'numerical_refinements', 'certified_unrestricted_apparatus_comparison'):
         _exact(derived[key], receipt.get(key), key)
 
 

@@ -1,7 +1,7 @@
 {
   "schema": "oph.anharmonic_transfer.protocol.v1",
   "date": "2026-10-15",
-  "selection_order": "Retrospective extension of a known published experiment. Only metadata, times and the five zero-time entries of this CSV were inspected before fixing this protocol. All positive-time values are excluded from preparation, apparatus choices, numerical choices and prediction generation. This is not prospective or blinded evidence.",
+  "selection_order": "The date records the original transferred-apparatus protocol: only metadata, times and the five zero-time entries of this CSV were inspected before its preparation, apparatus and numerical choices were fixed. Positive-time outcomes remain excluded from prediction generation. The certified_comparison attachment was added retrospectively after the published trajectories and existing receipts were known; it retains both existing certificate cutoffs and every endpoint without changing the original apparatus or fitting parameters. Neither the original comparison nor this attachment is prospective or blinded evidence.",
   "paper": "https://arxiv.org/html/2603.04744v1",
   "dataset_doi": "10.5281/zenodo.18752287",
   "cases": [
@@ -52,5 +52,13 @@
   "refinement_comparisons": "Step: d32/s256 versus d32/s128. Occupation: d64/s256 versus d32/s256. Secondary and controls: d32/s128. Occupation checks cover the transferred preparation only; they do not certify the secondary preparation-adjusted trajectories.",
   "validation": "All 25 positive published times (.4 to 10 ms) for all five cases: 125 derived observations, equal weight, no exclusions.",
   "score": "Descriptive RMSE in dimensionless two-point position-estimator units, separately per case and combined. No chi-squared, p-value or significance claim. Software all_pass means valid execution and comparison contracts, not empirical success.",
+  "certified_comparison": {
+    "source": "model/occupation_control/results.json",
+    "target": "The same fixed unrestricted spin-oscillator apparatus, evaluated independently with numerical, preparation, detector and occupation errors enclosed. This is not a certificate for native compilation or physical services.",
+    "selection": "Retain both existing dimensions 32 and 64 and every certificate endpoint at 0, 0.4, 2, 5 and 10 ms. Join only exact case and published-time coordinates; retain unavailable observations and unmatched certificate coordinates. Do not interpolate or choose a cutoff by its score.",
+    "comparison": "For each available interval [centre-radius, centre+radius], report the exact rational distance of the unchanged deposited decimal value from that interval. It is the minimum remaining combined sampling/calibration/apparatus/model discrepancy needed for compatibility, not an estimated detector bias or a statistical rejection.",
+    "uncertainty": "The paper reports 200 measurements per position point. Authenticated per-point accepted counts, raw trials, preparation covariance and the estimator-normalization resolution are absent. No experimental confidence band is fabricated; all these physical uncertainty terms remain unbounded here.",
+    "zero_time": "Keep zero-time transfer diagnostics separate from the 125 positive-time held-out observations. They are reused preparation data in the secondary analysis and supply no additional independent confirmation."
+  },
   "scope": "Single-mode conditional apparatus model, executed in the OPH source interface. Hamiltonian, preparation family, environment law, detector, classical stochastic draws and clock calibration remain supplied. Neither OPH-specific action selection, spatial dimension recovery nor a new QFT prediction is established."
 }

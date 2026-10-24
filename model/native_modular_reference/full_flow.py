@@ -49,6 +49,8 @@ import numpy as np
 
 from tools import strict_json
 from . import construction as corner, preparation
+from ..native_clock import configuration
+from ..native_interface import pointer
 
 compiled = corner.compiled
 compiler = compiled.compiler
@@ -240,61 +242,96 @@ def mixer_bound(sign):
 
 
 def witness(s):
-    """Actual source Ramsey execution on an omitted native degree-eight state.
+    """Native preparation, full source clock and native auxiliary readout.
 
-    The initial native configuration is code16. The admitted Y service makes
-    its coherent superposition with code144; both states are outside the old
-    active pair experiment. The final admitted work-register bit measurement
-    retains all 512 coordinates in its two outcomes. Nonnative support is a
-    numerical diagnostic, not a separately measured membership projector.
-    Initialization and projective readout are specified apparatus; their
-    physical costs are not included in the source pulse count.
+    Two complete current-only resets prepare code16 and the auxiliary ready
+    orientation. Their private tapes are discarded and both timeouts remain
+    public. The retained execution averages the exact reset laws over I78/78
+    on each input carrier; the uniform bound covers arbitrary correlated
+    carrier/reference inputs without assuming that initial preparation.
+
+    The six-pulse auxiliary coupling and one native repair implement the
+    continuing bit7 instrument on ALL512 work addresses. The reset errors
+    compare complete instruments, not their conditioned success branches.
+    Numerical source maps are neither projected nor renormalized.
     """
     s = parameter(s)
     codes, mask = support()
     if 16 not in mask or 144 not in codes or 144 in mask:
         raise ArithmeticError("the independent omitted-pair witness changed")
+    targets = (compiled.circuit.decode(16), pointer.ready_state())
+    success, resets = [], []
+    for target in targets:
+        values = configuration.success_probabilities(full=True, mode='reset', target=target)
+        bound = configuration.budget(full=True, mode='reset', target=target)
+        if len(values) != 78 or 1-min(values) > bound['failure_upper']:
+            raise ArithmeticError("native blank preparation lost its complete source bound")
+        success.append(sum(values, F())/len(values))
+        resets.append(bound)
+    work_success, auxiliary_success = success
+    both_success = work_success*auxiliary_success
     initial = np.zeros(DIMENSION, complex); initial[16] = 1
     prepared = compiler.execute(mixer_word(-1), 9, initial)
     phased = matrix(s)@prepared
     analyzed = compiler.execute(mixer_word(1), 9, phased)
-    groups = (tuple(code for code in range(DIMENSION) if not (code >> 7) & 1),
-              tuple(code for code in range(DIMENSION) if (code >> 7) & 1))
-    vectors = []
-    for group in groups:
-        vector = np.zeros(DIMENSION, complex)
-        vector[list(group)] = analyzed[list(group)]
-        vectors.append(vector)
-    probabilities = [float(np.vdot(vector, vector).real) for vector in vectors]
+    density = np.outer(analyzed, analyzed.conj())
+    pointer_bound = pointer.certificate()
+    probabilities, terminal_traces = {}, {}
+    for law in ('C', 'E'):
+        blocks = pointer.read_bit(density, law)
+        terminal_traces[law] = [float(np.trace(block).real) for block in blocks]
+        probabilities[law] = [float(1-work_success),
+                              float(work_success*(1-auxiliary_success)),
+                              *(float(both_success)*value for value in terminal_traces[law])]
     real, _, radius = phase_enclosure(s)
     ideal_interval = ((1+real-radius)/2, (1+real+radius)/2)
-    delta = corner.composite_bound(checked_bound(s), mixer_bound(1))
+    ramsey_delta = corner.composite_bound(checked_bound(s), mixer_bound(1))
     mixer_bound(-1)
+    # The raw pointer map can amplify a preceding numerical error. Its
+    # complete norm factor must be retained in this telescope.
+    word_delta = (pointer_bound['channel_norm_upper']*ramsey_delta
+                  +pointer_bound['half_diamond_upper'])
+    reset_delta = sum((row['failure_upper'] for row in resets), F())
+    delta = reset_delta+word_delta
     target_probability = float((1+real)/2)
-    half_l1 = (abs(probabilities[0]-target_probability)
-               +abs(probabilities[1]-(1-target_probability)))/2
+    ideal_probabilities = (0., 0., target_probability, 1-target_probability)
+    half_l1 = {law: sum(abs(value-target) for value, target
+                       in zip(rows, ideal_probabilities, strict=True))/2
+               for law, rows in probabilities.items()}
     # Raw numerical maps need not preserve trace exactly: half trace norm
     # controls the complete record's half L1, not each individual probability.
-    if half_l1 > float(delta)+float(radius)/2:
+    if any(value > float(delta)+float(radius)/2 for value in half_l1.values()):
         raise ArithmeticError("source Ramsey record exceeds its complete-word comparison")
-    residual = abs(sum(probabilities)-float(np.vdot(analyzed, analyzed).real))
-    if residual > 2e-15:
-        raise ArithmeticError("register-bit pointer discarded terminal probability")
+    if any(abs(sum(rows)-1) > 2e-11 for rows in probabilities.values()):
+        raise ArithmeticError("native auxiliary pointer discarded terminal probability")
     outside = sum(abs(analyzed[code])**2 for code in range(DIMENSION) if code not in set(codes))
     return {"initial_native_code": 16, "coherent_partner_native_code": 144,
-            "pointer_outcomes": ["register_bit7_zero", "register_bit7_one"],
+            "pointer_outcomes": ["work_reset_timeout", "auxiliary_reset_timeout",
+                                 "register_bit7_zero", "register_bit7_one"],
             "ideal_match_probability_interval": [compiled._outward(ideal_interval[0], upper=False),
                                                   compiled._outward(ideal_interval[1])],
-            "executed_complete_probabilities": probabilities,
+            "executed_complete_probabilities_by_law": probabilities,
             "complete_record_half_l1_error_diagnostic": half_l1,
-            "raw_total_probability_diagnostic": sum(probabilities),
+            "raw_total_probability_diagnostic": {law: sum(rows) for law, rows in probabilities.items()},
             "outside_native_support_probability_diagnostic": float(outside),
             "whole_Ramsey_half_diamond_upper": corner.compiled._outward(delta),
+            "source_word_half_diamond_upper": compiled._outward(word_delta),
+            "complete_native_reset_half_diamond_upper": str(reset_delta),
+            "reset_execution_input": "independent I78/78 on work and auxiliary; bound covers arbitrary correlated inputs",
+            "reset_success_probability_intervals": [[compiled._outward(p, upper=False), compiled._outward(p)]
+                                                    for p in success],
+            "native_attempts_max_including_both_resets_and_pointer":
+                sum(row['native_attempts_max'] for row in resets)+1,
             "native_modular_source_pulses": len(word(s)),
             "Ramsey_mixer_source_pulses": 2,
-            "declared_configuration_and_coherent_services": True,
-            "declared_projective_register_bit_readout": True,
-            "initialization_and_readout_physical_costs_included": False,
+            "native_pointer_source_pulses": pointer_bound['source_pulses'],
+            "total_source_pulses": len(word(s))+2+pointer_bound['source_pulses'],
+            "proper_code_service_events": 2*(len(word(s))+2)+pointer_bound['proper_code_service_events'],
+            "private_reset_tapes_discarded": True,
+            "coherent_code_services_remain_declared": True,
+            "declared_projective_register_bit_readout": False,
+            "native_initialization_and_readout_attempts_charged": True,
+            "physical_service_error_authenticated": False,
             "raw_output_renormalized": False}
 
 
@@ -308,11 +345,12 @@ def run():
                      "resources": compiler.resources(word(s)),
                      "finite_error_budget": preparation._compact(bound),
                      "omitted_pair_Ramsey": witness(s)})
-    paths = sorted(set((*corner.SOURCE_PATHS, "model/native_modular_reference/preparation.py",
+    paths = sorted(set((*corner.SOURCE_PATHS, *configuration.SOURCE_PATHS, *pointer.SOURCE_PATHS,
+                        "model/native_modular_reference/preparation.py",
                         "model/native_modular_reference/full_flow.py",
                         "model/record_laws/burn_in.py", "Lean/QFT/StructuralInheritance.lean")))
     hashes = {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in paths}
-    return {"schema": "oph.native_modular_reference.full_flow.v1", "all_pass": True,
+    return {"schema": "oph.native_modular_reference.full_flow.v2", "all_pass": True,
             "source_dependency_count": len(paths),
             "source_dependency_map_sha256": hashlib.sha256(corner.canonical(hashes).encode()).hexdigest(),
             "support": support_row, "executions": rows,
@@ -325,12 +363,36 @@ def run():
                       "all_512_native_and_padding_input_columns_certified": True,
                       "arbitrary_native_input_reference_entanglement_covered": True,
                       "actual_prepared_state_logarithm_controller_needed_for_this_error_bound": False,
-                      "coherent_load_export_and_projective_bit_read_services_admitted": True,
+                      "coherent_load_export_and_routing_services_admitted": True,
+                      "native_configuration_reset_and_auxiliary_readout_executed": True,
+                      "independent_native_blank_and_projective_work_bit_read_services_required": False,
+                      "proper_code_service_auxiliary_blanks_remain_admitted": True,
                       "physical_proper_code_service_errors_bounded": False,
                       "floating_state_propagation_is_a_directed_certificate": False,
                       "intermediate_pulse_readouts_covered_by_terminal_certificate": False,
                       "native_passive_repair_equals_modular_clock": False,
                       "physical_seconds_or_temperature_identified": False}}
+
+
+def compare_receipt(retained, actual):
+    """Check physical diagnostic domains before accepting portable agreement."""
+    corner.compare_receipt(retained, actual)
+    for report in (retained, actual):
+        for execution in report['executions']:
+            row = execution['omitted_pair_Ramsey']
+            delta = float(F(row['whole_Ramsey_half_diamond_upper']))
+            _, _, radius = phase_enclosure(F(execution['modular_parameter']))
+            outside = row['outside_native_support_probability_diagnostic']
+            if not 0 <= outside <= 1+2*delta:
+                raise ValueError('native modular diagnostic violates its probability domain')
+            for law in ('C', 'E'):
+                probabilities = row['executed_complete_probabilities_by_law'][law]
+                total = sum(probabilities)
+                error = row['complete_record_half_l1_error_diagnostic'][law]
+                if (any(value < 0 for value in probabilities) or abs(total-1) > 2e-11
+                        or row['raw_total_probability_diagnostic'][law] != total
+                        or not 0 <= error <= delta+float(radius)/2):
+                    raise ValueError('native modular record violates its execution domain')
 
 
 def main():
@@ -341,7 +403,7 @@ def main():
     args = parser.parse_args()
     result = run()
     if args.check:
-        corner.compare_receipt(strict_json.load(args.check), result)
+        compare_receipt(strict_json.load(args.check), result)
         print("Full native Palm modular flow and finite preparation bound verified.")
     elif args.write:
         with args.write.open("x", encoding="utf-8", newline="\n") as stream:

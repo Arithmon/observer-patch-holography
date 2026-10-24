@@ -10,18 +10,19 @@ from pathlib import Path
 import numpy as np
 
 from ..anharmonic_observations.experiment import _compact_operations, _check_law
-from . import source
+from . import source, certified_comparison
 from .calibration import transferred_parameters, zero_time_displacement
-from .data import load_metadata, load_zero, load_validation
+from .data import load_metadata, load_zero, load_zero_tokens, load_validation
 
 FOLDER = Path(__file__).resolve().parent
 ROOT = FOLDER.parents[1]
 RUN_NAMES = ('primary', 'step_refinement', 'occupation_refinement',
              'preparation_adjusted', 'instantaneous_carrier_control',
              'harmonic_control', 'frozen_control')
-SUPPORTED_PROTOCOL_DIGEST = '264200659b2f0a41d9448e1fe4de1740f9cc234f96f4394e7d7a0adb5035c235'
+SUPPORTED_PROTOCOL_DIGEST = 'bc32e46a581c225348f6d48fb0690730c3f7d0d6e8b9c7a7d7a6ae020c30dbc6'
 SOURCE_PATHS = tuple('model/anharmonic_transfer/'+name+'.py' for name in
-                    ('source', 'environment', 'bounds', 'calibration', 'data', 'experiment')) + (
+                    ('source', 'environment', 'bounds', 'calibration', 'data', 'experiment',
+                     'certified_comparison')) + tuple(certified_comparison.CERTIFICATE_PINS) + (
     'model/anharmonic_observations/source.py',
     'model/anharmonic_observations/experiment.py',
     'model/observer/source_scalar/compiler.py',
@@ -105,6 +106,7 @@ def predict(*, progress=None):
     if steps != list(range(0, 51, 2)):
         raise ValueError('Expected all 26 published coordinates')
     previous = transferred_parameters(protocol)
+    occupation = certified_comparison.certified_inputs(protocol, previous, apparatus)
     h = protocol['readout']['h']
     preparations = {case['label']: {
         'transferred_alpha': case['preparation_sign']*abs(previous['alpha_real']),
@@ -154,6 +156,7 @@ def predict(*, progress=None):
             'source_bindings': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCE_PATHS},
             'provenance': metadata['provenance'], 'prior_parameters': previous,
             'preparations': preparations, 'runs': runs, 'contracted_words': words,
+            'certified_unrestricted_apparatus': occupation,
             'positive_time_outcomes_used': False}
 
 
@@ -183,7 +186,7 @@ def score(rows, observations):
 
 
 def evaluate(prediction):
-    _configuration(prediction['protocol'])
+    apparatus = _configuration(prediction['protocol'])
     raw_protocol = (FOLDER/'protocol.json').read_bytes()
     if (prediction['protocol_sha256'] != hashlib.sha256(raw_protocol).hexdigest()
             or prediction['protocol'] != json.loads(raw_protocol)):
@@ -192,6 +195,9 @@ def evaluate(prediction):
         raise ValueError('Prediction run inventory must match the complete protocol')
     if prediction['positive_time_outcomes_used']:
         raise ValueError('Later observations must not enter predictions')
+    occupation = certified_comparison.certified_inputs(prediction['protocol'], prediction['prior_parameters'], apparatus)
+    if digest(prediction.get('certified_unrestricted_apparatus')) != digest(occupation):
+        raise ValueError('Sealed occupation certificate differs from its authenticated fixed apparatus')
     expected_targets = {(case, step/5) for case in 'abcde' for step in range(2, 51, 2)}
     expected_axes = {'primary': (32, 128), 'step_refinement': (32, 256),
                      'occupation_refinement': (64, 256), 'preparation_adjusted': (32, 128),
@@ -204,6 +210,7 @@ def evaluate(prediction):
             raise ValueError('Refinement and control axes differ from the fixed protocol')
     seal = digest(prediction)
     observations = load_validation()
+    certified_residuals = certified_comparison.compare(occupation, observations, load_zero_tokens())
     scores = {run['name']: score(run['predictions'], observations) for run in prediction['runs']}
     lookup = {r['name']: r for r in prediction['runs']}
     refinements = {}
@@ -221,6 +228,7 @@ def evaluate(prediction):
     result = {'schema': 'oph.anharmonic_transfer.results.v1', 'prediction': deepcopy(prediction),
               'prediction_payload_sha256_before_scoring': seal, 'scores': scores,
               'numerical_refinements': refinements, 'checks': checks,
+              'certified_unrestricted_apparatus_comparison': certified_residuals,
               'all_pass': all(checks.values()),
               'all_pass_meaning': 'Execution and comparison contracts only, not empirical success.'}
     if not result['all_pass']:

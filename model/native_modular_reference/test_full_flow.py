@@ -1,6 +1,8 @@
 """Complete source, omitted-address, phase and reference controls."""
 from fractions import Fraction as F
 from functools import lru_cache
+from copy import deepcopy
+import json
 import math
 
 import numpy as np
@@ -100,17 +102,70 @@ def test_complete_source_execution_matches_independent_geometric_oracle_with_ref
 def test_omitted_native_coherences_are_measurable_in_the_executed_Ramsey_protocol():
     row = f.witness(F(16))
     assert row["initial_native_code"] == 16 and row["coherent_partner_native_code"] == 144
-    assert row["executed_complete_probabilities"][0] < .06
-    assert row["executed_complete_probabilities"][1] > .94
-    assert len(row["executed_complete_probabilities"]) == 2
+    for law in ('C', 'E'):
+        probabilities = row["executed_complete_probabilities_by_law"][law]
+        assert len(probabilities) == 4
+        assert 0 < probabilities[0] < 2e-8 and 0 < probabilities[1] < 2e-8
+        assert probabilities[2] < .06 and probabilities[3] > .94
+        assert abs(sum(probabilities)-1) < 2e-11
+    assert row['native_attempts_max_including_both_resets_and_pointer'] == 5357
+    assert row['total_source_pulses'] == 2050
+    assert row['proper_code_service_events'] == 4100
+    assert F(row['complete_native_reset_half_diamond_upper']) == F(140, 2**32)
+    assert F(row['whole_Ramsey_half_diamond_upper']) < F(34, 10**9)
     assert row["outside_native_support_probability_diagnostic"] >= 0
-    assert row["declared_projective_register_bit_readout"]
-    assert not row["initialization_and_readout_physical_costs_included"]
-    assert abs(row["raw_total_probability_diagnostic"]-1) < 2e-11
+    assert not row["declared_projective_register_bit_readout"]
+    assert row["native_initialization_and_readout_attempts_charged"]
+    assert row["private_reset_tapes_discarded"]
+    assert not row["physical_service_error_authenticated"]
     assert 16 not in f.corner.reference()[3] and 144 not in f.corner.reference()[3]
     # The old twenty-address operation is the identity on both witness codes.
     assert f.corner.ideal_local(1)[16, 16] == 1
     assert f.corner.ideal_local(1)[144 % 128, 144 % 128] == 1
+
+
+def test_complete_history_rejects_a_relabelled_or_suppressed_native_pointer(monkeypatch):
+    original = f.pointer.read_bit
+    def swapped(*args, **kwargs):
+        return tuple(reversed(original(*args, **kwargs)))
+    monkeypatch.setattr(f.pointer, 'read_bit', swapped)
+    with pytest.raises(ArithmeticError, match='complete-word comparison'):
+        f.witness(F(16))
+
+
+@pytest.mark.parametrize('mutation', ['negative_outcome', 'negative_padding',
+                                     'overfull_mass', 'false_total'])
+def test_portable_replay_preserves_complete_record_domains(mutation):
+    actual = json.loads(f.OUTPUT.read_text(encoding='utf-8'))
+    changed = deepcopy(actual)
+    row = changed['executions'][0]['omitted_pair_Ramsey']
+    if mutation == 'negative_outcome':
+        row['executed_complete_probabilities_by_law']['C'][3] = -1e-10
+    elif mutation == 'negative_padding':
+        row['outside_native_support_probability_diagnostic'] = -1e-10
+    elif mutation == 'overfull_mass':
+        row['executed_complete_probabilities_by_law']['C'][3] += 1e-10
+        row['raw_total_probability_diagnostic']['C'] = sum(row['executed_complete_probabilities_by_law']['C'])
+    else:
+        row['raw_total_probability_diagnostic']['C'] += 1e-10
+    # Each mutation is smaller than the shared floating replay tolerance.
+    f.corner.compare_receipt(changed, actual)
+    with pytest.raises(ValueError, match='domain'):
+        f.compare_receipt(changed, actual)
+
+
+def test_native_resets_cover_collision_inputs_and_both_code_targets():
+    for target in (f.compiled.circuit.decode(16), f.pointer.ready_state()):
+        probabilities = f.configuration.success_probabilities(full=True, mode='reset', target=target)
+        bounds = f.configuration.budget(full=True, mode='reset', target=target)
+        assert len(probabilities) == 78
+        assert 0 < 1-min(probabilities) <= bounds['failure_upper']
+        assert bounds['native_attempts_max'] == 2678
+    # The six-pulse pointer has a norm slightly above one in its portable
+    # envelope; dropping this factor is not a valid raw-array telescope.
+    bound = f.pointer.certificate()
+    assert bound['channel_norm_upper'] > 1
+    assert bound['half_diamond_upper'] > 0
 
 
 def test_raw_certificate_rejects_corner_only_padding_inverse_and_amplification():

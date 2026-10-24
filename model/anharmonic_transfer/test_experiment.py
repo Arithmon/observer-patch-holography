@@ -32,7 +32,8 @@ def build_prediction(monkeypatch):
     monkeypatch.setattr(e, 'load_metadata', lambda: {'labels': list('abcde'),
                         'times_ms': [index*2/5 for index in range(26)], 'provenance': {'synthetic': True}})
     monkeypatch.setattr(e, 'load_zero', lambda: dict(zip('abcde', (-1., -.8, .8, 0., -1.1))))
-    monkeypatch.setattr(e, 'transferred_parameters', lambda _: {'alpha_real': -.9, 'thermal_occupation': .1})
+    # Keep the authenticated prior preparation so the independent occupation
+    # certificate describes the same apparatus; only source execution is fake.
     calls = []
     def execute(*args, **kwargs):
         calls.append((args, kwargs))
@@ -43,7 +44,8 @@ def build_prediction(monkeypatch):
 
 
 def synthetic_observations():
-    return [{'case': case, 'time_ms': step/5, 'observed_position_estimator': .25}
+    return [{'case': case, 'time_ms': step/5, 'observed_position_estimator': .25,
+             'observed_position_estimator_decimal': '0.25'}
             for step in range(2, 51, 2) for case in 'abcde']
 
 
@@ -67,8 +69,10 @@ def test_prediction_never_opens_later_values_and_executes_every_predeclared_run(
 
 def test_primary_transfer_changes_only_declared_preparation_sign_and_centre(fixed_prediction):
     prediction, calls = fixed_prediction
-    assert [args[1] for args, _ in calls[:5]] == [-.9, -.9, .9, 0., -.9]
-    assert all(args[2] == .1 for args, _ in calls)
+    alpha = prediction['prior_parameters']['alpha_real']
+    thermal = prediction['prior_parameters']['thermal_occupation']
+    assert [args[1] for args, _ in calls[:5]] == [alpha, alpha, -alpha, 0., alpha]
+    assert all(args[2] == thermal for args, _ in calls)
     assert [kwargs['phi']/math.pi for _, kwargs in calls[:5]] == [0., .05, .05, .05, .1]
     adjusted = [args[1] for args, _ in calls[15:20]]
     assert adjusted == [prediction['preparations'][case]['zero_time_adjusted_alpha'] for case in 'abcde']

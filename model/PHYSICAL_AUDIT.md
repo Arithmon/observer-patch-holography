@@ -74,6 +74,17 @@ are different preparations even when they use the same repair rule.
 
 ## Current source constructions
 
+The [complete modular observation](native_modular_reference/README.md)
+implements its native work and pointer preparations from signed repair
+currents. The auxiliary read supplies the full continuing work-bit instrument,
+including references and padding. Both timeout flags remain; the finite
+complete error is below `3.4e-8`, with 5357 native attempts, 2050 source
+pulses and 4100 proper-code service events charged. This removes the native
+basis-blank and projective work-read services for this apparatus. Coherent
+code routing, its service ancillas and physical control accuracy remain
+explicit. The construction does not identify modular phase with physical
+time or establish that this finite observer describes our Universe.
+
 The [space/time calculation](physical_space_time/README.md) adds an exact
 first-arrival construction using the same native carrier and a declared
 one-particle preparation. It also checks a signal/clock obstruction in the
@@ -126,6 +137,14 @@ A constructed alternative preparation reproduces the old read while
 predicting different additional probes. Those new probes are predictions,
 not collected measurements. This supports experimental design and
 limits the physical claim.
+
+The [exact transfer residuals](anharmonic_transfer/README.md) compare matching
+deposited times with independent occupation/evaluator certificates for that
+same supplied apparatus. At 0.4 ms and 2 ms, additional absolute allowances
+of at least `0.0469004584` and `0.1743174846` remain necessary. This retains
+all data and both refinements, without a new fit. Missing experimental and
+calibration uncertainty prevents converting these floors into a statistical
+rejection or claiming agreement within full uncertainties.
 
 The native [closed prediction protocol](closed_prediction_protocol/README.md)
 offers a more direct C/E discriminator with complete failures,

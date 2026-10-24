@@ -20,6 +20,206 @@ def reseal(receipt):
     receipt[replay.SEAL] = experiment.digest(receipt['prediction'])
 
 
+def _law_row():
+    return {'acceptance_probability': .75, 'rejection_probability': .25,
+            'predicted_detector_probabilities': [.6, .4],
+            'spin_detector_joint_probabilities': [[.45, .3], [.125, .125]],
+            'predicted_spin_mean': .2}
+
+
+@pytest.fixture(scope='module')
+def zero_rejection_receipt(receipt):
+    other = deepcopy(receipt)
+    row = other['prediction']['runs'][0]['zero_time_predictions'][0]
+    row.update(acceptance_probability=1., rejection_probability=0.,
+               predicted_detector_probabilities=[.5, .5],
+               spin_detector_joint_probabilities=[[.5, .5], [0., 0.]],
+               predicted_spin_mean=0., predicted_position_estimator=0.)
+    budget = row['ideal_finite_model_error']
+    budget['selected_readout'] = bounds.conditional_readout_bound(
+        Fraction(budget['exact_complete_trace_distance_upper']), 1.)
+    return experiment.evaluate(other['prediction'])
+
+
+@pytest.mark.parametrize('side', ['expected', 'actual', 'both'])
+def test_resealed_negative_zero_outcome_cannot_hide_in_portable_tolerance(
+        zero_rejection_receipt, side):
+    other = deepcopy(zero_rejection_receipt)
+    row = other['prediction']['runs'][0]['zero_time_predictions'][0]
+    row['spin_detector_joint_probabilities'][1][0] = -1e-10
+    reseal(other)
+    expected = other if side in ('expected', 'both') else zero_rejection_receipt
+    actual = other if side in ('actual', 'both') else zero_rejection_receipt
+    with pytest.raises(ValueError, match='raw boundary roundoff'):
+        replay.compare_receipt(expected, actual)
+
+
+def test_literal_tiny_signed_roundoff_and_upper_boundary_overshoot_are_preserved(
+        zero_rejection_receipt):
+    other = deepcopy(zero_rejection_receipt)
+    row = other['prediction']['runs'][0]['zero_time_predictions'][0]
+    # Magnitudes present in the retained canonical source execution.
+    row['spin_detector_joint_probabilities'][1][0] = -4.216224026370642e-17
+    row['acceptance_probability'] = 1.0000000000000029
+    reseal(other)
+    before = deepcopy(other)
+    replay.compare_receipt(other, zero_rejection_receipt)
+    replay.compare_receipt(zero_rejection_receipt, other)
+    assert other == before
+    assert row['spin_detector_joint_probabilities'][1][0] < 0
+    assert row['acceptance_probability'] > 1
+
+
+@pytest.mark.parametrize('field', ['acceptance_probability', 'rejection_probability',
+                                  'selected', 'joint'])
+@pytest.mark.parametrize('bad', [True, 0, Fraction(1, 2), float('nan'), float('inf'),
+                               -1e-10, 1+3e-10])
+def test_probability_values_require_original_finite_floats_in_the_raw_domain(field, bad):
+    row = _law_row()
+    if field == 'selected':
+        row['predicted_detector_probabilities'][0] = bad
+    elif field == 'joint':
+        row['spin_detector_joint_probabilities'][1][0] = bad
+    else:
+        row[field] = bad
+    with pytest.raises(ValueError, match='Finite original probabilities'):
+        replay._validate_probability_law(row)
+
+
+@pytest.mark.parametrize('mutation', ['selected_tuple', 'missing_selected', 'joint_tuple',
+                                     'missing_spin_row', 'missing_detector', 'extra_detector'])
+def test_probability_law_requires_every_spin_and_detector_outcome(mutation):
+    row = _law_row()
+    if mutation == 'selected_tuple':
+        row['predicted_detector_probabilities'] = (.6, .4)
+    elif mutation == 'missing_selected':
+        del row['predicted_detector_probabilities']
+    elif mutation == 'joint_tuple':
+        row['spin_detector_joint_probabilities'] = ((.45, .3), (.125, .125))
+    elif mutation == 'missing_spin_row':
+        row['spin_detector_joint_probabilities'].pop()
+    elif mutation == 'missing_detector':
+        row['spin_detector_joint_probabilities'][1].pop()
+    else:
+        row['predicted_detector_probabilities'].append(0.)
+    with pytest.raises(ValueError, match='complete two-spin by two-detector'):
+        replay._validate_probability_law(row)
+
+
+@pytest.mark.parametrize('mutation', ['aggregate_mass', 'selected_mass', 'spin_marginal',
+                                     'conditional', 'mean'])
+def test_many_portable_float_changes_cannot_forge_a_complete_distribution(mutation):
+    original = _law_row()
+    changed = deepcopy(original)
+    if mutation == 'aggregate_mass':
+        for row in changed['spin_detector_joint_probabilities']:
+            row[0] += 6e-11
+            row[1] += 6e-11
+    elif mutation == 'selected_mass':
+        changed['predicted_detector_probabilities'][0] += 1e-11
+    elif mutation == 'spin_marginal':
+        changed['rejection_probability'] += 1e-11
+    elif mutation == 'conditional':
+        changed['spin_detector_joint_probabilities'][0][0] += 1e-11
+        changed['spin_detector_joint_probabilities'][0][1] -= 1e-11
+    else:
+        changed['predicted_spin_mean'] += 1e-11
+    # Every individual change is allowed by portable closeness alone.
+    replay._compare(original, changed)
+    with pytest.raises(ValueError, match='normalization or marginal consistency'):
+        replay._validate_probability_law(changed)
+
+
+def test_consistent_accumulated_source_mass_roundoff_is_not_renormalized():
+    row = _law_row()
+    factor = 1+3e-11
+    row['acceptance_probability'] *= factor
+    row['rejection_probability'] *= factor
+    row['spin_detector_joint_probabilities'] = [
+        [value*factor for value in part] for part in row['spin_detector_joint_probabilities']]
+    before = deepcopy(row)
+    replay._validate_probability_law(row)
+    assert row == before
+    assert row['acceptance_probability']+row['rejection_probability'] > 1
+
+
+@pytest.mark.parametrize('selected', [[.6, .4], [1., 0.]])
+@pytest.mark.parametrize('rejected', [0., -4.216224026370642e-17])
+@pytest.mark.parametrize('drift', [-1.9e-10, 3e-11, 1.9e-10])
+def test_deterministic_spin_retains_coherent_accumulated_mass_drift(selected, rejected, drift):
+    mass = 1+drift
+    row = {'acceptance_probability': mass, 'rejection_probability': rejected,
+           'predicted_detector_probabilities': selected,
+           'spin_detector_joint_probabilities': [[mass*value for value in selected],
+                                                  [rejected, 0.]],
+           'predicted_spin_mean': selected[0]-selected[1]}
+    before = deepcopy(row)
+    replay._validate_probability_law(row)
+    assert row == before
+    assert row['acceptance_probability'] != 1.
+    assert row['rejection_probability'] == rejected
+
+
+def test_deterministic_spin_with_mass_drift_replays_without_correcting_raw_values(
+        zero_rejection_receipt):
+    other = deepcopy(zero_rejection_receipt)
+    row = other['prediction']['runs'][0]['zero_time_predictions'][0]
+    row['acceptance_probability'] *= 1+1.9e-10
+    row['spin_detector_joint_probabilities'][0] = [
+        value*(1+1.9e-10) for value in row['spin_detector_joint_probabilities'][0]]
+    reseal(other)
+    before = deepcopy(other)
+    replay.compare_receipt(other, zero_rejection_receipt)
+    replay.compare_receipt(zero_rejection_receipt, other)
+    assert other == before
+    assert row['acceptance_probability'] > 1+replay.PROBABILITY_ROUNDOFF
+
+
+def test_raw_harmonic_control_execution_passes_without_json_scalar_conversion():
+    execution = experiment.source.run(
+        4, -1.0081292326480422, .13314125172459518, [0, 2, 50],
+        [experiment.source.position_setting(.4)], subdivisions=128,
+        phi=math.pi*.1, omega=0., theta=0.)
+    for record in execution['records']:
+        row = experiment._record('e', record, .4)
+        values = ([row['acceptance_probability'], row['rejection_probability']]
+                  + row['predicted_detector_probabilities']
+                  + row['spin_detector_joint_probabilities'][0]
+                  + row['spin_detector_joint_probabilities'][1])
+        assert all(type(value) is float for value in values)
+        before = deepcopy(row)
+        replay._validate_probability_law(row)
+        assert row == before
+
+
+@pytest.mark.parametrize('mutation', ['excess_mass', 'negative_rejected',
+                                     'isolated_over_one', 'selected_over_one'])
+def test_deterministic_spin_mass_gate_does_not_admit_forged_distributions(mutation):
+    row = {'acceptance_probability': 1., 'rejection_probability': 0.,
+           'predicted_detector_probabilities': [1., 0.],
+           'spin_detector_joint_probabilities': [[1., 0.], [0., 0.]],
+           'predicted_spin_mean': 1.}
+    if mutation == 'excess_mass':
+        row['acceptance_probability'] = 1+2.1e-10
+        row['spin_detector_joint_probabilities'][0][0] = 1+2.1e-10
+    elif mutation == 'negative_rejected':
+        row['rejection_probability'] = -1e-10
+        row['spin_detector_joint_probabilities'][1][0] = -1e-10
+    elif mutation == 'isolated_over_one':
+        row['acceptance_probability'] = 1+1e-10
+    else:
+        row['predicted_detector_probabilities'][0] = 1+1e-10
+    with pytest.raises(ValueError, match='Finite original probabilities|marginal consistency'):
+        replay._validate_probability_law(row)
+
+
+def test_probability_domain_failure_names_the_offending_raw_field():
+    row = _law_row()
+    row['spin_detector_joint_probabilities'][1][0] = -1e-10
+    with pytest.raises(ValueError, match=r'spin_detector_joint_probabilities\[1\]\[0\]: -1e-10'):
+        replay._validate_probability_law(row)
+
+
 def test_identical_receipt_replays_without_mutating_inputs(receipt):
     before = deepcopy(receipt)
     replay.compare_receipt(receipt, deepcopy(receipt))
