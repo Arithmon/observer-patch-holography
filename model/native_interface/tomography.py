@@ -22,13 +22,15 @@ from tools import strict_json
 from ..compiled_native_interface import construction as compiled
 from ..common_source import exact_output as exact
 from ..native_clock import configuration
+from ..native_modular_reference import local_preparation
 from ..observer.source_scalar import compiler
 
 ROOT = Path(__file__).resolve().parents[2]
 DIMENSION = 66
 GATE = F(1, 10**11)
 SOURCE_PATHS = tuple(sorted(set((*compiled.SOURCE_PATHS,
-    *configuration.SOURCE_PATHS, 'model/native_interface/tomography.py'))))
+    *configuration.SOURCE_PATHS, *local_preparation.SOURCE_PATHS,
+    'model/native_interface/tomography.py'))))
 
 
 def codes():
@@ -232,15 +234,18 @@ def reconstruct(diagonal, x, y):
 
 
 def sampling_bound(samples, eta, service_error, *, dimension=DIMENSION):
-    """Union Chebyshev bound for independent repetitions of each setting.
+    """Martingale/union Chebyshev bound for complete repeated trials.
 
     Each complete-tape score lies in [-1,1], with aborts scored zero.
+    Given every previous record, its mean must differ by at most 2 delta
+    from the same fixed target mean. Subtracting the conditional means
+    gives martingale differences with conditional variance at most 1.
     Thus K/(N eta^2) bounds any mean's sampling failure. For the one basis
-    setting the sum of all indicator variances is at most1, so its joint
-    contribution is1/(N eta^2), rather than66 separate unit-variance scores.
-    An actual instrument
-    discrepancy delta changes a score mean by at most2delta. A shared fixed
-    preparation is required; arbitrary correlated repetitions are not covered.
+    setting the sum of all indicator variances is at most 1, so its joint
+    contribution is 1/(N eta^2), rather than 66 separate unit-variance scores.
+    A reference-uniform preparation/instrument bound supplies this premise
+    even for a continuing carrier and correlated inputs. Independent copies
+    are sufficient but unnecessary; arbitrary uncontrolled drift is excluded.
     """
     if (type(samples) is not int or samples <= 0 or type(dimension) is not int
             or dimension < 2 or any(type(v) is not F for v in (eta, service_error))
@@ -252,7 +257,37 @@ def sampling_bound(samples, eta, service_error, *, dimension=DIMENSION):
     half_trace = exact._sqrt_interval(F(dimension))[1]*frobenius/2
     return {'simultaneous_failure_upper': min(F(1), F(count, samples)/eta**2),
             'operator_error_upper': frobenius, 'half_trace_error_upper': half_trace,
-            'copies_used': samples*count}
+            'trials_used': samples*count}
+
+
+def prepared_sampling_certificate(proof):
+    """Use the actual bounded local preparation before every readout trial.
+
+    Its complete ideal success block is q*sigma with q=5/33, independent of
+    the incoming source and retaining its reference. All three preparation
+    failures score zero. The target reconstructed matrix is therefore
+    q*sigma, not a success-conditioned sample. Its modular flow is sigma's.
+    Norm amplification by the raw readout blocks is charged before sampling.
+    The preparation theorem is reference-uniform, hence supplies the same
+    conditional-mean bound after arbitrary previously retained trial records.
+    """
+    preparation = local_preparation.budget()
+    q = F(5, 33)
+    gain = (1+F(proof['source_operator_error_upper']))**2
+    error = (gain*preparation['complete_flagged_reference_halftrace_upper']
+             +q*F(proof['complete_record_half_l1_upper']))
+    sample = sampling_bound(10**14, F(1, 10000), error)
+    return {'target': '(5/33)*local_preparation.reference()',
+            'target_trace': str(q),
+            'complete_trial_error_upper': str(error),
+            'reference_uniform_conditioning_on_previous_records': True,
+            'independent_initial_copies_required': False,
+            'preparation_failures_discarded_from_sample_count': False,
+            'modular_action_unchanged_by_target_scalar': True,
+            'native_attempts_per_trial_upper': preparation['total_native_attempts_upper']
+                +proof['native_attempts_per_trial'],
+            'sampling': {k: str(v) if isinstance(v, F) else v for k,v in sample.items()},
+            'physical_preparation_or_control_accuracy_certified': False}
 
 
 def modular_bound(operator_error, estimate_floor, parameter):
@@ -304,6 +339,7 @@ def run():
                 'native_only_diagonal_rank': DIMENSION,
                 'reported_counts_are_laboratory_data': False},
             'conservative_sampling_example': {k: str(v) if isinstance(v, F) else v for k, v in sample.items()},
+            'continuing_native_preparation': prepared_sampling_certificate(proof),
             'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS}}
 
 

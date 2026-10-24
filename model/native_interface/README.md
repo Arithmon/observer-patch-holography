@@ -325,9 +325,10 @@ checked binary block maps. Floating propagation of example states is a
 separate diagnostic; the bound does not certify physical control errors.
 Untouched references are retained and final work is discarded.
 
-For independent repetitions of a fixed preparation, `sampling_bound` combines
-bounded-score sampling error with a declared complete-instrument discrepancy
-`delta`. With `N` copies per setting and sampling tolerance `eta`, simultaneous
+For complete repeated trials, `sampling_bound` combines bounded-score
+martingale sampling error with a declared conditional-mean discrepancy
+at most `2 delta` from one fixed target, after every prior record. Independent
+repetitions of a fixed preparation suffice, but are not required. With `N` copies per setting and sampling tolerance `eta`, simultaneous
 failure is at most `4291/(N eta^2)`. The basis setting contributes one unit
 because its indicator variances sum to at most one. Put `e=eta+2 delta`;
 the linear estimate obeys
@@ -345,9 +346,21 @@ channel half-diamond error at most `min(1, |s| r/(m-r))`, where `s` is the
 modular parameter. An unnormalized positive estimate defines the same modular
 flow as its normalization. A floating eigenvalue is not the required certificate.
 
+The existing bounded native preparation supplies that conditional guarantee
+for the common local reference, even on a continuing carrier with correlated
+inputs. Prepare before every readout; score all preparation failures as zero.
+The reconstructed target is `(5/33) sigma`, with its success weight retained,
+and has the same modular action as `sigma`. Reference-uniform preparation
+error and readout norm amplification bound every trial's conditional bias.
+Thus this reference-identification protocol removes the independent-copy
+premise without discarding failed preparations. The receipt gives a conservative
+sampling budget; the full large-sample campaign is not executed. Actual physical
+preparation and control errors remain additional to these mathematical bounds.
+
 The result removes a supplied informational-completeness assumption for this
-finite architecture. Coherent proper-code routing, repeatable input preparation,
-the declared controller and physical service accuracy remain premises. It does
+finite architecture. Coherent proper-code routing, the declared controller and physical service
+accuracy remain premises. Arbitrary unknown-state tomography needs a fixed
+preparation or an equivalent conditional-mean guarantee. It does
 not identify modular parameter with laboratory seconds or a physical boost,
 and it does not reconstruct an unknown state from one nondestructive trial.
 [`tomography_results.json`](tomography_results.json) retains the exact bounds

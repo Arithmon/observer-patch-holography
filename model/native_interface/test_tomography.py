@@ -113,7 +113,7 @@ def test_inverse_routing_is_charged_and_not_assumed_an_adjoint():
 def test_sampling_budget_charges_bias_and_every_setting():
     result = t.sampling_bound(10**14, F(1, 10000), F(1, 10**8))
     assert result['simultaneous_failure_upper'] == F(4291, 10**6)
-    assert result['copies_used'] == 4291*10**14
+    assert result['trials_used'] == 4291*10**14
     ideal = t.sampling_bound(10**14, F(1, 10000), F())
     assert result['operator_error_upper'] > ideal['operator_error_upper']
     assert t.sampling_bound(1, F(1, 10000), F())['simultaneous_failure_upper'] == 1
@@ -137,3 +137,45 @@ def test_linear_estimate_is_not_silently_projected_to_a_density():
     diagonal = [0.0]*66; diagonal[0] = 1.1
     result = t.reconstruct(diagonal, dict.fromkeys(keys, 0.), dict.fromkeys(keys, 0.))
     assert np.trace(result) == 1.1
+
+
+def test_native_preparation_keeps_failures_and_charges_every_trial():
+    proof = t.certificate()
+    row = t.prepared_sampling_certificate(proof)
+    prep = t.local_preparation.budget()
+    error = F(row['complete_trial_error_upper'])
+    assert error > F(5, 33)*F(proof['complete_record_half_l1_upper'])
+    assert error > prep['complete_flagged_reference_halftrace_upper']
+    assert row['native_attempts_per_trial_upper'] == (
+        prep['total_native_attempts_upper']+2520)
+    assert row['target_trace'] == '5/33'
+    assert row['independent_initial_copies_required'] is False
+    assert row['preparation_failures_discarded_from_sample_count'] is False
+    weights = np.array(list(map(float, t.local_preparation.reference())))
+    keys = tuple(combinations(range(66), 2))
+    target = t.reconstruct(list(map(float, 5/33*weights)),
+                           dict.fromkeys(keys, 0.), dict.fromkeys(keys, 0.))
+    assert abs(np.trace(target)-5/33) < 1e-15
+    # A scalar normalization shifts K by identity and leaves every gap intact.
+    np.testing.assert_allclose(np.log(target.diagonal().real/target[0,0].real),
+                               np.log(weights/weights[0]), atol=1e-15)
+
+
+def test_correlated_trial_martingale_uses_conditional_means():
+    # Exact binary process with memory and nonzero successive covariance.
+    # Conditional score means alternate with the previous random outcome.
+    paths = [(F(1), 0, F(), F(), F())]
+    for index in range(6):
+        following = []
+        for probability, previous, centered, raw, drift in paths:
+            mean = F(previous, 4)
+            for value in (-1, 1):
+                following.append((probability*(1+value*mean)/2, value,
+                                  centered+value-mean, raw+value, drift+mean))
+        paths = following
+    assert sum(p for p, *_ in paths) == 1
+    assert sum(p*m for p, _, m, _, _ in paths) == 0
+    assert sum(p*m*m for p, _, m, _, _ in paths) <= 6
+    assert sum(p*x*x for p, _, _, x, _ in paths) > 6
+    assert all(abs(drift/6) <= F(1, 4) for _, _, _, _, drift in paths)
+    assert all(raw == centered+drift for _, _, centered, raw, drift in paths)

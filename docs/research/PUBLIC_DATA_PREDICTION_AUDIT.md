@@ -85,30 +85,37 @@ dataset, or assign a prospective verdict to already exposed observations.
 | Fine-structure constant | Several declared endpoint maps exist, with incomplete physical transport and map-selection obligations. | Withhold a new prediction claim. The [existing endpoint audit](../../model/predictions/README.md#inherited-coupling-comparison) already finds a 300.388218 ppm gap for its named map, without a justified theory-error distribution. |
 | Higgs mass | The historical near-match used a target-conditioned calibration. The [replacement electroweak producer](../../code/particles/calibration/source_ew_vev_matching.py) uses additional criticality, matching and energy-scale premises; it is not derived from the finite observer. | Withhold a distinctive prediction claim: the physical matching and theory-error budget remain open. The replacement's [retrospective comparison](../../code/particles/runs/calibration/source_ew_vev_matching_comparison.json) should retain those qualifications. |
 
-The [certified transfer comparison](../../model/anharmonic_transfer/certified_comparison.py)
-also joins the unchanged case-a data to the independently enclosed
-**unrestricted supplied apparatus**, at exactly matching published coordinates.
-Both existing occupation cutoffs remain. The tighter `d=64` intervals give:
+The [certified transfer comparison](../../model/occupation_control/README.md#complete-changed-potential-comparison)
+joins the unchanged apparatus to **all 125 deposited positive-duration means**
+across five potential/preparation cases. An independent 64-level evaluator
+bounds the unrestricted apparatus, including occupation truncation, integration,
+roundoff and detector evaluation. A trace-aware conditioning inequality retains
+signed approximate states and tightens the selected-readout bounds without
+changing any apparatus parameter.
 
-| Published coordinate | Deposited estimator | Minimum additional absolute allowance |
-| --- | --- | --- |
-| 0.4 ms | −0.959119497 | 0.0469004584 |
-| 2 ms | +0.047169811 | 0.1743174846 |
-| 10 ms | +0.078616352 | 0; the certified interval is too wide to force a positive remainder |
+| Case | Certified endpoints | Central values outside numerical intervals | Largest required additional allowance |
+| --- | ---: | ---: | ---: |
+| a | 25 | 14 | > 0.60059383 at 8.4 ms |
+| b | 25 | 11 | > 0.42598315 at 1.6 ms |
+| c | 25 | 14 | > 0.46868933 at 1.2 ms |
+| d | 25 | 12 | > 0.36578125 at 2.8 ms |
+| e | 25 | 9 | > 0.33039699 at 3.6 ms |
 
-The exact rational calculation is `max(0, abs(observed-centre)-radius)`.
-The remainder must cover experimental, calibration or model discrepancy;
-certified occupation and evaluator error alone cannot explain the first
-two differences. It is **not** a confidence interval or statistical rejection.
-All 125 positive-time rows remain visible: two have matching `d=32`
-certificates and three have `d=64` certificates. There is no deposited 5 ms
-datum to join, and zero-time preparation diagnostics remain separate.
-The paper's nominal 200 measurements per position point does not supply
-authenticated accepted counts, raw trials, calibration covariance or resolve
-the estimator normalization. The intervals exclude finite native-compiler
-and physical-service error. No parameter is refitted, no observation is
-counted twice as independent evidence, and no full-uncertainty agreement
-verdict is assigned.
+Allowances use the published dimensionless position-estimator units. Each is
+computed exactly as `max(0, abs(observed-centre)-radius)` from that endpoint's
+own binary path and outward bound. Thus numerical and occupation error alone
+cannot cover 60 of the published central values. Experimental, calibration,
+model and physical-service errors remain outside these intervals; this is
+**not a statistical rejection** or a full-uncertainty agreement test.
+
+The same existing observations are used throughout; no new parameter is fitted
+and no datum is counted twice as independent evidence. Five zero-time diagnostics
+remain separate. The paper's nominal 200 measurements per position point does
+not provide accepted counts, raw trials or calibration covariance. The
+[retained receipt](../../model/occupation_control/transfer_results.json.gz)
+binds all endpoints and source/data hashes; automatic replay recomputes the
+complete numerical paths. This tests a supplied quantum apparatus, not a unique
+OPH prediction or a native clock/particle identification.
 
 ## Executed CMB comparison
 

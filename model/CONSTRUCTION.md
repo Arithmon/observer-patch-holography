@@ -574,6 +574,32 @@ record law; the discriminator reads the coherence `g`, which separates C
 from E. No public laboratory dataset is
 identified with these native-law experiments.
 
+The [complete native state readout](native_interface/README.md#complete-state-identification-from-native-records)
+uses those current records and compiled quadratures to identify all 4,356
+Hermitian coordinates of a 66-state preparation. Its 4,291 settings retain
+all timeouts and export aborts. Reconstruction and modular-action error
+bounds make the finite reference operationally identifiable. Bounded native
+preparation before every trial supplies a fixed target on a continuing carrier
+without independent-copy or successful-trial conditioning assumptions. Coherent
+services and physical instrument accuracy remain inputs.
+
+The [common entropy envelope](native_equilibration/common_variation.py)
+follows from the mixed-complement preparation and one additional core repair.
+Two conserved occupation moments determine a unique coherent entropy maximum
+and an explicit smooth family at faithful interior moments. All 1,024 core-containing cap decompositions
+share that envelope; 18,601 native work attempts give a reference-uniform
+finite preparation bound. This is a specified preparation protocol. Counted
+edge multiplicities are not yet identified with gravitational area.
+
+The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
+operate on the same locally prepared mixed reference. Uniform rotations over
+all spectator configurations remove exterior-state selection from completed
+operations. Both isolated current means read the same two modular gaps; their
+ideal complete-trial expectation has a bounded inverse on `s` in `[1/2,1]`.
+The retained compiled continuation is certified at `s=1`.
+Continuing probes retain disturbance and feedback. Intermediate source-pulse
+locality, physical service fidelity and conversion to seconds remain separate.
+
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
 scope of a classical interpretation. The diagonal native branch obeys
 `S<=2` under independent settings and local factorized responses. Replaying

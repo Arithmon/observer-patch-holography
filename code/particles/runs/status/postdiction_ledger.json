@@ -116,6 +116,63 @@
         "coordinate_extent": 4,
         "spin_mean_rmse": 0.06647165859372044,
         "withheld_complex_points": 100
+      },
+      "occupation_control": {
+        "artifact_ref": "model/occupation_control/transfer_results.json.gz",
+        "artifact_sha256": "2ce0e18bb4030ef4b67451ce99e28cf53798ceeb4eb22b0a1c7e0bd73898cebe",
+        "certified": 125,
+        "full_uncertainty_agreement_established": false,
+        "minimum_common_remaining_allowance": "21131517071809456169753/35184372088832000000000",
+        "minimum_common_remaining_allowance_floor_5": "0.60059",
+        "new_independent_data": false,
+        "observations": 125,
+        "per_case": [
+          {
+            "case": "a",
+            "certified": 25,
+            "largest_floor_time_ms": "42/5",
+            "minimum_common_remaining_allowance": "21131517071809456169753/35184372088832000000000",
+            "observations": 25,
+            "strictly_positive_discrepancy_floors": 14
+          },
+          {
+            "case": "b",
+            "certified": 25,
+            "largest_floor_time_ms": "8/5",
+            "minimum_common_remaining_allowance": "959228784026465641905663/2251799813685248000000000",
+            "observations": 25,
+            "strictly_positive_discrepancy_floors": 11
+          },
+          {
+            "case": "c",
+            "certified": 25,
+            "largest_floor_time_ms": "6/5",
+            "minimum_common_remaining_allowance": "527697282946572485591619/1125899906842624000000000",
+            "observations": 25,
+            "strictly_positive_discrepancy_floors": 14
+          },
+          {
+            "case": "d",
+            "certified": 25,
+            "largest_floor_time_ms": "14/5",
+            "minimum_common_remaining_allowance": "51479135145414592075039/140737488355328000000000",
+            "observations": 25,
+            "strictly_positive_discrepancy_floors": 12
+          },
+          {
+            "case": "e",
+            "certified": 25,
+            "largest_floor_time_ms": "18/5",
+            "minimum_common_remaining_allowance": "11624810872433953515721/35184372088832000000000",
+            "observations": 25,
+            "strictly_positive_discrepancy_floors": 9
+          }
+        ],
+        "projection_scope": "mechanical comparison projection; full-path numerical replay belongs to model.occupation_control.transfer",
+        "same_observations_as_anharmonic_transfer": true,
+        "statistical_rejection_claimed": false,
+        "strictly_positive_discrepancy_floors": 60,
+        "units": "dimensionless two-point position estimator"
       }
     },
     "projection_scope": "mechanical receipt projection of retrospective public-record comparisons; independent replay belongs to each linked package"

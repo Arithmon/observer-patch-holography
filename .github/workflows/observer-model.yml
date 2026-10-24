@@ -66,7 +66,7 @@ jobs:
     # stays atomic on shard zero; all-case occupation transfer owns shard one.
     # The other receipts are split across shards two and three.
     # Regression remains complete and independent on each platform.
-    timeout-minutes: ${{ matrix.shard == 1 && 35 || 90 }}
+    timeout-minutes: 90
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
