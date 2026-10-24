@@ -589,7 +589,7 @@ Two conserved occupation moments determine a unique coherent entropy maximum
 and an explicit smooth family at faithful interior moments. All 1,024 core-containing cap decompositions
 share that envelope; 18,601 native work attempts give a reference-uniform
 finite preparation bound. This is a specified preparation protocol. Counted
-edge multiplicities are not yet identified with gravitational area.
+edge multiplicities have no derived gravitational-area identification.
 
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
