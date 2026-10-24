@@ -6,6 +6,20 @@ on:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/*coherent_native_access*'
+      - 'code/a5_closure/tests/*coherent_native_access*'
+      - 'code/a5_closure/receipts/coherent_native_access_probe.json'
+      - 'model/compiled_native_interface/construction.py'
+      - 'model/native_interface/construction.py'
+      - 'model/native_interface/pointer.py'
+      - 'model/native_interface/README.md'
+      - 'model/native_quantum_history/construction.py'
+      - 'model/observer/source_discrimination/circuit.py'
+      - 'model/observer/source_discrimination/experiment.py'
+      - 'model/common_source/quantum_native.py'
+      - 'model/common_source/native_routing.py'
+      - 'model/common_source/exact_output.py'
+      - 'model/common_source/QUANTUM_NATIVE.md'
       - 'code/a5_closure/tests/*c12_current_attachment*'
       - 'code/a5_closure/receipts/c12_current_attachment_probe.json'
       - 'model/observer/quantum_mixing.py'
@@ -53,6 +67,20 @@ on:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/*coherent_native_access*'
+      - 'code/a5_closure/tests/*coherent_native_access*'
+      - 'code/a5_closure/receipts/coherent_native_access_probe.json'
+      - 'model/compiled_native_interface/construction.py'
+      - 'model/native_interface/construction.py'
+      - 'model/native_interface/pointer.py'
+      - 'model/native_interface/README.md'
+      - 'model/native_quantum_history/construction.py'
+      - 'model/observer/source_discrimination/circuit.py'
+      - 'model/observer/source_discrimination/experiment.py'
+      - 'model/common_source/quantum_native.py'
+      - 'model/common_source/native_routing.py'
+      - 'model/common_source/exact_output.py'
+      - 'model/common_source/QUANTUM_NATIVE.md'
       - 'code/a5_closure/tests/*c12_current_attachment*'
       - 'code/a5_closure/receipts/c12_current_attachment_probe.json'
       - 'model/observer/quantum_mixing.py'
@@ -124,6 +152,23 @@ jobs:
         run: |
           python3 -B code/a5_closure/c12_current_attachment_probe.py --check
           python3 -B code/a5_closure/verify_c12_current_attachment_independent.py
+      - name: Verify source coherent native access and its attachment boundary
+        run: |
+          python3 -B code/a5_closure/coherent_native_access_probe.py --check
+          python3 -B code/a5_closure/verify_coherent_native_access_independent.py
+      - name: Replay the admitted native coherent service controls
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+        run: >-
+          python3 -B -m pytest -q -W error
+          model/native_interface/test_tomography.py
+          model/native_interface/test_pointer.py
+          model/compiled_native_interface/test_construction.py
+      - name: Verify the current source inventory
+        run: |
+          python3 -B code/a5_closure/source_current_order_sensitive_inventory.py verify
+          python3 -B code/a5_closure/verify_source_current_order_sensitive_inventory.py --inventory code/a5_closure/manifests/source_current_order_sensitive_inventory.json
       - name: Verify native scale and conditional RG transport
         run: |
           python3 -B code/angular_sprint/k7_gauge_scale_contract.py --check
@@ -134,6 +179,7 @@ jobs:
           code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
           code/a5_closure/tests/test_proper_code_attachment_probe.py
           code/a5_closure/tests/test_c12_current_attachment_probe.py
+          code/a5_closure/tests/test_coherent_native_access_probe.py
           code/angular_sprint/test_k7_gauge_scale_contract.py
       - name: Check synchronized registers
         run: |
