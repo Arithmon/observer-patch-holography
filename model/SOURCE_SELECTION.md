@@ -650,8 +650,14 @@ and `log(8/5)` and preserves every core-containing cap algebra. Requiring
 every bare two-port algebra to be modular invariant is stronger: even among
 noncommuting faithful references it forces diagonal product weights. These
 results discharge finite preparation and instrument connections, while
-coherent code services, exterior-address selection and physical meaning
-remain declared obligations.
+coherent code services and physical meaning remain declared obligations.
+Completed spectator-uniform cap operations remove exterior-state selection;
+intermediate source-pulse locality is separate. One complete native-current
+setting identifies this source-derived entropy family, with all failed trials
+and finite confidence retained. The inferred ratios, rather than supplied
+reference weights, compile a common clock with a complete continuing-history
+error bound. [The readout contract](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
+does not identify arbitrary coherent states or laboratory time.
 
 The intended field action is an **effective description of observer
 statistics**, and time is relative to the observer's algebra, state and
