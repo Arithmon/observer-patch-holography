@@ -125,6 +125,46 @@ decoding. No strictly positive uniform approximation-error lower bound is
 claimed. In particular, field nonmembership by itself cannot exclude
 arbitrarily accurate approximation.
 
+## Next factor test: what the residual would have to carry
+
+For a decoder whose ideal word U has coefficients in K, allow the output to
+be `R tensor chi`, where chi is a common, payload-independent environment
+state. This changes the target projector from the clean `R R*` to
+`R R* tensor T`, with T the support projector of the residual. The source
+field involution sigma fixes every entry of U and sends the slow projector
+to the fast projector. Exact arithmetic independently reconstructs
+`P_slow^2=P_slow`, `P_fast^2=P_fast`, `P_slow P_fast=0`, and
+`sigma(P_slow)=P_fast`, both rank three. Applying sigma to the proposed
+factorization therefore forces
+
+```text
+T sigma(T) = 0.
+```
+
+So an invariant residual support cannot work. In particular, every rational
+support projector, including the existing blank proper-code ancilla and the
+supports of the rational native preparation instruments, is fixed by sigma
+and fails this equation. Acting on such a prepared support by an ideal
+word over K keeps it sigma-invariant. The actual prepared references audited
+in `model/native_modular_reference/preparation.py` and
+`model/predictions/prepared_clock_source.py` are mixed full-support densities;
+their exact constructions use rational native CP maps or rational finite
+polynomials in the integral Laplacian. They do not supply the required
+non-invariant residual support. The coherent pointer reset supplies the
+rational basis blank and its instrument branches, not a fixed golden-field
+factor.
+
+This is a necessary condition, not a construction and not a no-go for every
+residual. For example, the normalized vector
+`chi=(sqrt(5),1,2)/sqrt(10)` and its conjugate are orthogonal, so the rank-one
+projector T=|chi><chi| obeys it. Such a support can fit in the existing 128
+dimensional spectator factor; this calculation does not prove that the
+compiler can create or route one. The next missing datum is now concrete: a
+source-derived preparation and continuation contract for such a residual
+support, or an exact synthesis of the corresponding factor word from
+existing operations. Supplying a hand-chosen sqrt(5) state or target-fitted
+angles would be a declared logical choice, not that derivation.
+
 ## Findings, controls and next step
 
 | Claim | Verdict and remedy |

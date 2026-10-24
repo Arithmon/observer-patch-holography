@@ -2053,9 +2053,9 @@
         "sha256": "sha256:c0ae090aecb638bac1a9c3538a58bd95a8dda32defe7baac8dc73c93d638d53b"
       },
       {
-        "byte_count": 13245,
+        "byte_count": 15446,
         "path": "code/a5_closure/coherent_decoder_probe.md",
-        "sha256": "sha256:211151b0dce8a7e8a1d820bf18861fecf9ef15a485febc7fa22d65f4d478bcf8"
+        "sha256": "sha256:5f385927777aa63ad0f9b464a5dde7ca3754b38ff107eb70dc7fe5279903c332"
       },
       {
         "byte_count": 3866,
@@ -4843,7 +4843,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:61950dcd99da0d7f5e45d52b57f3e022205f0cd756ef38ed64bf957c344ae19f",
+    "files_sha256": "sha256:67b4c2cf31bc95abc0627b8f0e6994bde688c2035ea76c7d761df22fafa9fb9b",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7752,7 +7752,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:ec997bee4ab6d7d09ce156df043608bd15aad3473c22240e16b7eda2e149caee",
+  "inventory_sha256": "sha256:ce597b9e0acb8a3381700ad470c7d0c1f0831f35fd8a184ef3f60fc4094d6949",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
