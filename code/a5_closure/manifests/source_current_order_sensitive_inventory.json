@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 904,
+    "file_count": 909,
     "files": [
       {
         "byte_count": 42558,
@@ -2913,14 +2913,24 @@
         "sha256": "sha256:a725f115690562eba63feefccd9ef612f83b8d2c05c3b1736ebf424df2d1d00d"
       },
       {
-        "byte_count": 6484,
+        "byte_count": 15669,
+        "path": "code/angular_sprint/external/k7_gauge_scale/ERRATUM_v3.5.md",
+        "sha256": "sha256:1c8940ac4b202032e117333f91c0b7041663dd70f35c1f99894f7236e8bd8dc7"
+      },
+      {
+        "byte_count": 9208,
         "path": "code/angular_sprint/k7_gauge_kinetic_cross_control.md",
-        "sha256": "sha256:81f71c13fdbb7d51210d615f999eded4f2e97863b38b3343d346fc9d7e019e33"
+        "sha256": "sha256:94d8005025144a630529b53c712eae3ffaaa092cb8ea1e7aff1a5b70cd879507"
       },
       {
         "byte_count": 17204,
         "path": "code/angular_sprint/k7_gauge_kinetic_cross_control.py",
         "sha256": "sha256:dacdb2307059dad85dfa87d15c34314aa1a4ad5cf293baf7f4ba7f25ea1836df"
+      },
+      {
+        "byte_count": 11687,
+        "path": "code/angular_sprint/k7_gauge_scale_contract.py",
+        "sha256": "sha256:3041a491accbdea23e1e4711c5ce57c38bf49d7dad5c67596026df1dabbede63"
       },
       {
         "byte_count": 32254,
@@ -2958,6 +2968,11 @@
         "sha256": "sha256:07e932a0b954ded06cb1396de3ee7db11dbd4b80da7c205844305d44497e3bdc"
       },
       {
+        "byte_count": 4517,
+        "path": "code/angular_sprint/runtime/k7_gauge_scale_contract.json",
+        "sha256": "sha256:9b74092e62a90f121c3ea0a9e799dfc13129027b499be2d46c217eecf5945e2d"
+      },
+      {
         "byte_count": 8006,
         "path": "code/angular_sprint/runtime/kinetic_form_selection_receipt.json",
         "sha256": "sha256:bb086d9b792d87667904f5ab9c5b948bce3c92163a68780af09f1b7c98cf3a9a"
@@ -2993,6 +3008,11 @@
         "sha256": "sha256:0367897a0dd74d1dae7017d0feaf509b0fb293c615052f6fd5a4a8b4951f22d3"
       },
       {
+        "byte_count": 4023,
+        "path": "code/angular_sprint/test_k7_gauge_scale_contract.py",
+        "sha256": "sha256:fdc57afcec8becaedfb1eac142cc712af8dcda7ea53c1cc10de8941438e270aa"
+      },
+      {
         "byte_count": 8018,
         "path": "code/angular_sprint/test_kinetic_form_selection_certificate.py",
         "sha256": "sha256:50506b3edd9872a093f2da4d2415812d53c4955f3b4cfd35ce743923b27f4ef1"
@@ -3021,6 +3041,11 @@
         "byte_count": 16715,
         "path": "code/angular_sprint/verify_k7_gauge_kinetic_cross_control_independent.py",
         "sha256": "sha256:cdb8ef5dcb480021fdf33c34c943bf82858f46e471ef8e1efba6cd35c7395f62"
+      },
+      {
+        "byte_count": 9074,
+        "path": "code/angular_sprint/verify_k7_gauge_scale_contract_independent.py",
+        "sha256": "sha256:ab5bd197cf093f97b542f4e0c8d2c5d84304db74d8a9039d4fbf1c830ed4c00f"
       },
       {
         "byte_count": 27687,
@@ -4718,7 +4743,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:0aba55b7449501f4d618acacb47e2faf1ea9168ba126fb4fe6781c099c696138",
+    "files_sha256": "sha256:07efcebdec32b771e7229935185e767c41e6074cd5f251520d22e64da780ed0e",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7627,7 +7652,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:9d523a3e0ff3ea54b7c1e0bec132dece9fa89fe0e02b9e0dc9b5f5a25184a5e6",
+  "inventory_sha256": "sha256:13833be3e59dd23b8fd163714b951cfd8391cf7903465be0ef40d3ad34c94995",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

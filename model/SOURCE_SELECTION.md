@@ -932,3 +932,20 @@ source-derived action twist or an explicit representation attachment
 between the spatial and internal domains. The frozen source baseline is
 `879ed37ad2c1933ecb6dd8f54271362ee3f4d41c`; it is replayed on integration
 baseline `7b0997b4a8a425679d9e2946f82c86cd92289059`.
+
+### Gauge scale and conditional transport
+
+The native counter and clock fix record quantities in native units. Positive
+assignments of length and time units change the diffusion coefficient in
+assigned units without changing those records, so the counter radius does
+not determine physical continuum length, laboratory energy, or an RG
+subtraction scale. The frozen matter-trace statistic `det(x,k,b)` is exactly
+invariant under `x -> x-t b`. Therefore an absolute common `mu` is
+unnecessary for its zero-plane test if the same subtraction prescription,
+one-loop branch, field content, normalization and threshold transport are
+established. K7 erratum §8.2 withdraws the `3/13` GUT boundary
+reading and its dependent RGE chain; it supplies no common-scale coupling
+vector. The remaining datum is a source-clean transport of the heterogeneous
+K7 couplings into one compatible RG trajectory. This contract is replayed
+on integration baseline `7b0997b4a8a425679d9e2946f82c86cd92289059`, while
+the frozen OPH, K7 and K7-Lean inputs retain their original pins.
