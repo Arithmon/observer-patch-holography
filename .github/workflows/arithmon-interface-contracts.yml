@@ -6,6 +6,9 @@ on:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/*coherent_decoder*'
+      - 'code/a5_closure/tests/*coherent_decoder*'
+      - 'code/a5_closure/receipts/coherent_decoder_probe.json'
       - 'code/a5_closure/*coherent_native_access*'
       - 'code/a5_closure/tests/*coherent_native_access*'
       - 'code/a5_closure/receipts/coherent_native_access_probe.json'
@@ -67,6 +70,9 @@ on:
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
+      - 'code/a5_closure/*coherent_decoder*'
+      - 'code/a5_closure/tests/*coherent_decoder*'
+      - 'code/a5_closure/receipts/coherent_decoder_probe.json'
       - 'code/a5_closure/*coherent_native_access*'
       - 'code/a5_closure/tests/*coherent_native_access*'
       - 'code/a5_closure/receipts/coherent_native_access_probe.json'
@@ -156,6 +162,10 @@ jobs:
         run: |
           python3 -B code/a5_closure/coherent_native_access_probe.py --check
           python3 -B code/a5_closure/verify_coherent_native_access_independent.py
+      - name: Verify the restricted coherent decoder obstruction
+        run: |
+          python3 -B code/a5_closure/coherent_decoder_probe.py --check
+          python3 -B code/a5_closure/verify_coherent_decoder_independent.py
       - name: Replay the admitted native coherent service controls
         env:
           OPENBLAS_NUM_THREADS: '1'
@@ -180,6 +190,7 @@ jobs:
           code/a5_closure/tests/test_proper_code_attachment_probe.py
           code/a5_closure/tests/test_c12_current_attachment_probe.py
           code/a5_closure/tests/test_coherent_native_access_probe.py
+          code/a5_closure/tests/test_coherent_decoder_probe.py
           code/angular_sprint/test_k7_gauge_scale_contract.py
       - name: Check synchronized registers
         run: |

@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 924,
+    "file_count": 929,
     "files": [
       {
         "byte_count": 42558,
@@ -2053,6 +2053,16 @@
         "sha256": "sha256:c0ae090aecb638bac1a9c3538a58bd95a8dda32defe7baac8dc73c93d638d53b"
       },
       {
+        "byte_count": 13245,
+        "path": "code/a5_closure/coherent_decoder_probe.md",
+        "sha256": "sha256:211151b0dce8a7e8a1d820bf18861fecf9ef15a485febc7fa22d65f4d478bcf8"
+      },
+      {
+        "byte_count": 3866,
+        "path": "code/a5_closure/coherent_decoder_probe.py",
+        "sha256": "sha256:5af2e11e0063ad06afa018a3f41a09edc382fc5f871cb53ab5da0527fd576bc7"
+      },
+      {
         "byte_count": 16335,
         "path": "code/a5_closure/coherent_native_access_probe.md",
         "sha256": "sha256:7b7db3f069e09bb5edeadda25171b6b3fcb187602fe0e60410beeaa636798733"
@@ -2533,6 +2543,11 @@
         "sha256": "sha256:5352dde6b055ebfe11ccf160ffeb53367984ab8e1eacee4a9155a6a953f787a0"
       },
       {
+        "byte_count": 12646,
+        "path": "code/a5_closure/receipts/coherent_decoder_probe.json",
+        "sha256": "sha256:fc99d6d9daa4ca7749bbb6fdc7ddd262a83ea219007b7ddaa23e7b0c95d7368a"
+      },
+      {
         "byte_count": 33186,
         "path": "code/a5_closure/receipts/coherent_native_access_probe.json",
         "sha256": "sha256:6f01bd81b1013be19d0a912d9ec5ef53771b86592bd3488275d5744842d92e64"
@@ -2728,6 +2743,11 @@
         "sha256": "sha256:f8d0abee18e087717e47d5a10017762976b069073d2f745aa01f79a1bd7de212"
       },
       {
+        "byte_count": 3630,
+        "path": "code/a5_closure/tests/test_coherent_decoder_probe.py",
+        "sha256": "sha256:bb121557ff09dcce08f1151578244764bc6dd93f8d19e582102d81d2aee9a13c"
+      },
+      {
         "byte_count": 7260,
         "path": "code/a5_closure/tests/test_coherent_native_access_probe.py",
         "sha256": "sha256:ec73241e5ff96bf669fa1a3f556856a9bf793b0c767be273734ab9a39bbaf7df"
@@ -2901,6 +2921,11 @@
         "byte_count": 14328,
         "path": "code/a5_closure/verify_c12_current_attachment_independent.py",
         "sha256": "sha256:697085ccc8caaa1c5bc8c31bea405456e37d34c73ff02d67507b2aaca2056554"
+      },
+      {
+        "byte_count": 5206,
+        "path": "code/a5_closure/verify_coherent_decoder_independent.py",
+        "sha256": "sha256:aa7b0d5188927a9e8770d6c7e4e5a824bdcaefd5be307d62cf9838054a39c189"
       },
       {
         "byte_count": 20588,
@@ -4818,7 +4843,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:d4dca22e159018ba783a6e28cfb6505e8e7188377d933995c2066d9326a33211",
+    "files_sha256": "sha256:61950dcd99da0d7f5e45d52b57f3e022205f0cd756ef38ed64bf957c344ae19f",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7727,7 +7752,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:d0d505a8bf8cb2c261fcf9745d9a1ac945c4b2e6b9600001b777d08fb866346d",
+  "inventory_sha256": "sha256:ec997bee4ab6d7d09ce156df043608bd15aad3473c22240e16b7eda2e149caee",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
