@@ -454,6 +454,68 @@ can also violate the reference-preserving hypotheses. Actual memory-reset
 energy, nonzero physical heat, temperature, gravitational area and entropy
 stationarity under metric variations are not identified by these identities.
 
+### A source-selected common entropy envelope
+
+The [common variation construction](../../model/native_equilibration/common_variation.py)
+uses the same two-occupation shell and common-cap repair schedule. Its
+protected core is `I=(0,1)`. Complement repair preserves the entire core
+algebra; an actual C or E repair on seam `(0,1)` then removes its remaining
+coherence and population imbalance. Exact checks on all 4,356 matrix units
+give `Q_core E_I = E_I Q_core = Pi`, where
+
+```text
+Pi(rho) = sum_q Tr(P_q rho) P_q/g_q,      g=(45,20,1).
+```
+
+Both steps preserve `m=<q>` and `c=<n0 n1>`. The existing complement gap
+`1/600` therefore selects the unique source entropy maximum at these two
+moments, with **18,600 complement attempts plus one core attempt** giving
+reference-uniform half trace error at most `33/2^31`. The target with an
+untouched reference retains its conditional reference state in each charge
+sector; it is not generally a product. Counts here are native work attempts
+under the declared independent schedule, excluding auxiliary selector cost.
+The retained-record accounting applies when subsequent operations ignore
+the tape, without assuming physical erasure or allowing record feedback.
+
+The MaxEnt family exists explicitly: `p=(1-m+c,m-2c,c)`,
+`sigma=sum_q (p_q/g_q)P_q`, on `0<c`, `2c<m`, `m<1+c`. Write `a_q=p_q/g_q`.
+Then `-log(sigma)=constant+h1 q+h2 n0 n1`, with
+`h1=log(a0/a1)` and `h2=log(a1^2/(a0 a2))`, and every coherent source state
+satisfies
+
+```text
+S(rho)-S(sigma) = h1 delta m+h2 delta c-D(rho||sigma).
+```
+
+The entropy is stationary under all normalized fixed-moment tangents, with
+a strictly negative full-matrix Hessian for every nonzero tangent. Along
+the explicit family, `dS=h1 dm+h2 dc`; its two-dimensional Hessian is
+negative definite with determinant `1/(p0 p1 p2)`. This provides an actual
+smooth finite family and unit-speed tangent for
+[`maxEnt_envelope_identity`](../../Lean/ObserverPatchHolography/EinsteinBranch/Entropy.lean),
+and exact population data for `cap_firstLaw_exact`. The coherent proof and
+source checks do not constitute a new Lean formalization.
+
+The global movement reference has `(m,c)=(1/3,1/75)` and the locally
+heralded reference has `(29/45,2/45)`. Each is selected by its own specified
+source protocol. Mean occupation alone does not suffice: the tracial state
+also has `m=1/3`, but has `c=1/66` and greater entropy. For either selected
+reference, **all 1,024 caps containing the core** share exactly one envelope:
+`S_bulk(R)+sum_j p_R,j log(binomial(12-|R|,2-j))=S(sigma)`.
+Changing the region cancels its bulk and counted-edge entropy changes
+exactly. The complete finite local preparation gives tangent error below
+`8.44e-5 ||X||_1` simultaneously for every such cap; the global protocol
+gives below `1.237e-4 ||X||_1`. These bounds preserve every terminal flag
+and use the actual prepared successful marginal's logarithm.
+
+This removes the fixed-core-matrix premise for the declared protocol and
+derives a shared finite entropy envelope. The two moments remain conserved
+input data; the source preparations supply their distinct values. Crossing
+the core boundary need not conserve them. Region changes here are changes
+of finite readout algebras, with counted complement multiplicities; they do
+not supply a physical fixed-volume variation, stress tensor, area density
+or the Einstein equation's geometric entropy-stationarity premise.
+
 ## A complete generator test and its witness
 
 Supply an independent Hermitian candidate `K`. Let
