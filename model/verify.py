@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import json
 import os
@@ -9,6 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 
+from tools import strict_json
 from .replay_empirical import EMPIRICAL_REPLAYS
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,6 +44,8 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/quantum_observer_correspondence",
            "model/interacting_band_extension", "model/repair_identification", "model/compiled_clock_history",
            "model/repair_scheduler")
+OCCUPATION_TRANSFER_REPLAY = ("model.occupation_control.transfer", None,
+                              "model/occupation_control/transfer_results.json.gz")
 REPLAYS = (
     ("model.repair_scheduler", None, "model/repair_scheduler/results.json"),
     ("model.predictions.prepared_clock", None, "model/predictions/prepared_clock_results.json"),
@@ -81,6 +85,7 @@ REPLAYS = (
     ("model.native_equilibration.entropy_refinement", None, "model/native_equilibration/entropy_results.json"),
     ("model.native_equilibration.cut_completion", None, "model/native_equilibration/cut_results.json"),
     ("model.native_equilibration.record_thermodynamics", None, "model/native_equilibration/record_results.json"),
+    ("model.native_equilibration.common_variation", None, "model/native_equilibration/variation_results.json"),
     ("model.relational_event_clock", None, "model/relational_event_clock/results.json"),
     ("model.federated_quantum_sector", None, "model/federated_quantum_sector/results.json"),
     ("model.coherent_screen_observer", None, "model/coherent_screen_observer/results.json"),
@@ -100,6 +105,7 @@ REPLAYS = (
     ("model.native_modular_reference.common_caps", None, "model/native_modular_reference/common_caps_results.json"),
     ("model.native_modular_reference.local_preparation", None, "model/native_modular_reference/local_preparation_results.json"),
     ("model.native_modular_reference.local_history", None, "model/native_modular_reference/local_history_results.json"),
+    ("model.native_modular_reference.cap_local_clock", None, "model/native_modular_reference/cap_local_clock_results.json"),
     ("model.event_circulation", None, "model/event_circulation/results.json"),
     ("model.compiled_native_interface", None, "model/compiled_native_interface/results.json"),
     ("model.calibrated_measurement", None, "model/calibrated_measurement/results.json"),
@@ -109,6 +115,7 @@ REPLAYS = (
     ("model.native_interface", None, "model/native_interface/results.json"),
     ("model.native_interface.coherence_budget", None, "model/native_interface/coherence_results.json"),
     ("model.native_interface.pointer", None, "model/native_interface/pointer_results.json"),
+    ("model.native_interface.tomography", None, "model/native_interface/tomography_results.json"),
     ("model.measurement_bounds", None, "model/measurement_bounds/results.json"),
     ("model.native_relational_readout", None, "model/native_relational_readout/results.json"),
     ("model.native_quantum_history", None, "model/native_quantum_history/results.json"),
@@ -118,6 +125,7 @@ REPLAYS = (
     ("model.primitive_observer.transfer", None, "model/primitive_observer/transfer_results.json"),
     ("model.common_source.open_observer", None, "model/common_source/open_observer_results.json"),
     ("model.occupation_control", None, "model/occupation_control/results.json"),
+    OCCUPATION_TRANSFER_REPLAY,
     ("model.identification_design", None, "model/identification_design/results.json"),
     ("model.primitive_observer", None, "model/primitive_observer/results.json"),
     ("model.anharmonic_transfer", None, "model/anharmonic_transfer/results.json"),
@@ -228,10 +236,11 @@ def replay_groups(replays=None):
 def selected_replay_groups(shard_index=None, shard_count=None, *, replays=None):
     """Keep the default order; isolate expensive shared-cache work when sharded.
 
-    Shard zero owns the empirical group. Other groups retain declaration order
-    and are distributed round-robin over the remaining shards. This prevents
-    another costly certificate from joining the dominant empirical worker.
-    Every new declared replay is included automatically.
+    Shard zero owns the empirical group. With three or more shards, shard one
+    owns the all-case occupation transfer; remaining groups retain declaration
+    order and are distributed round-robin over shards two onward. Two shards
+    keep every non-empirical group together on shard one. Every new declared
+    replay is included automatically; no replay is silently skipped.
     """
     groups = replay_groups(replays)
     if shard_index is None and shard_count is None:
@@ -242,9 +251,18 @@ def selected_replay_groups(shard_index=None, shard_count=None, *, replays=None):
         raise ValueError(f"Supply both shard arguments: 1 <= count <= {len(groups)}, 0 <= index < count")
     if shard_count == 1:
         return groups
+    transfer = (OCCUPATION_TRANSFER_REPLAY,)
+    if shard_count >= 3 and transfer not in groups:
+        raise ValueError("Dedicated occupation-transfer replay is missing")
     if shard_index == 0:
         return (EMPIRICAL_REPLAYS,)
     remaining = tuple(group for group in groups if group != EMPIRICAL_REPLAYS)
+    if shard_count >= 3:
+        if shard_index == 1:
+            return (transfer,)
+        remaining = tuple(group for group in remaining if group != transfer)
+        return tuple(group for index, group in enumerate(remaining)
+                     if index % (shard_count-2) == shard_index-2)
     return tuple(group for index, group in enumerate(remaining)
                  if index % (shard_count-1) == shard_index-1)
 
@@ -308,7 +326,11 @@ def verify_receipt_source_bindings(digests=None):
                 walk(child, receipt, f"{location}[{index}]")
 
     for _, _, receipt in REPLAYS:
-        walk(json.loads((ROOT/receipt).read_text(encoding="utf-8")), receipt)
+        path = ROOT/receipt
+        raw = path.read_bytes()
+        if path.suffix == ".gz":
+            raw = gzip.decompress(raw)
+        walk(strict_json.loads(raw.decode("utf-8")), receipt)
 
 
 def verify_artifacts():
@@ -331,7 +353,8 @@ def verify_artifacts():
             digests[target] = actual
     for name in PACKETS:
         for target in (ROOT / name).rglob("*"):
-            if (target.is_file() and target.suffix in {".py", ".md", ".json"}
+            if (target.is_file() and (target.suffix in {".py", ".md", ".json"}
+                                      or target.name.endswith(".json.gz"))
                     and target.name != "manifest.json"
                     and target.resolve() not in covered):
                 raise ValueError(f"Unbound artifact: {target.relative_to(ROOT)}")
