@@ -1,11 +1,12 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "eb3f0aa6d0633eea6efdb1c53759e5e1ef70dabd62ce2525a8fef591e9967ebe",
+    "README.md": "7df21b7a0d7977a01069cf1cdd86277d47c7da1ce1691b3d260a5a7184641d63",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
-    "common_caps.py": "7f47025c0961c81d9c76791c3c753b9e1236d661e58b9c94f99a9daa23dfb191",
-    "common_caps_results.json": "27a095521ca0a1b903c117893fef076ddcda84a33fdf10ce2fbd6ff0321791c3",
+    "common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
+    "common_caps_results.json": "b7153f7eb85ca35b10665d4e4b6d13b9193ccc0305bf61d8aa848de5d18deb06",
+    "compatibility.py": "0f51fc085cc8dd7dcf6a85904e82a51dbd875d966e45efc92402f85160f35946",
     "completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
     "completed_clock_results.json": "2678c792dec4bb0af1a9a5c1804bc47b1d94bc64f82e4d9f5622a09f92154b2d",
     "construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
@@ -16,7 +17,8 @@
     "regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "regional_results.json": "3f08a387955b50f02f49ac52dba06ea3bfdc93d9f47945dd7d71470d3e74ca74",
     "results.json": "8c89d2a64df6e7417df150d2c95c5432489ee24d270d69892639764d1f12fd70",
-    "test_common_caps.py": "332d4e2accacb742cae5365db5d0628a5974cb56f1c7d1c6caf3b201d807d5bd",
+    "test_common_caps.py": "12dac96cc83c3513c178af55f1bd5b2220988d114f3c1d24ecf71facd9e39340",
+    "test_compatibility.py": "7e6387947bc322daf33cc7196a5b4954bcff84edf2a07383ff60d6e24698c2fe",
     "test_completed_clock.py": "1460437575f242b205e36238be5d06735ad172ef5a3128ea60654268ea953d4e",
     "test_construction.py": "4fb2e8b1c5b3600946f7dad84f7b206fc3b7884a0ca40b96ddeb29611d45b9ef",
     "test_full_flow.py": "e4f3ee9286efa078250660754263b3e6f417fb5bebeec5d93408829ccee39ee2",
@@ -30,6 +32,8 @@
     "python -m model.native_modular_reference.regional --check model/native_modular_reference/regional_results.json",
     "python -m model.native_modular_reference.completed_clock --check model/native_modular_reference/completed_clock_results.json",
     "python -m model.native_modular_reference.common_caps --check model/native_modular_reference/common_caps_results.json",
+    "python -m model.native_modular_reference.local_preparation --check model/native_modular_reference/local_preparation_results.json",
+    "python -m model.native_modular_reference.local_history --check model/native_modular_reference/local_history_results.json",
     "python -m pytest -q -W error model/native_modular_reference"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"

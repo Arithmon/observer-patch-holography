@@ -479,7 +479,7 @@ word certificate; a continuous family of floating implementations is not
 certified by the retained word. Regional invariance is exact for the ideal
 common reference; finite-prepared modular actions have the stated error.
 
-The all-region boundary is also exact. On the two-occupation shell over
+The all-region boundary is also exact. On the binary two-occupation shell over
 `N>=3` ports, a faithful diagonal reference with weights `w_ij` preserves
 **every bare two-port algebra** iff `w_ij=lambda*r_i*r_j` with positive
 factors. Equivalently, every four distinct ports satisfy
@@ -493,10 +493,148 @@ two-cap schedule has a connected 28-seam union and uniquely selects
 `I66/66`, whose stationary modular action is trivial.
 
 These are a constructive protected-core family and an exact boundary for
-faithful diagonal references, not a classification of all noncommuting
-states or all observer protocols. The protected core, schedule and global
-Palm herald remain specified choices. No arbitrary spacetime region net,
-physical boost, laboratory time or continuum geometry is inferred.
+the indicated regional algebras. The protected core and preparation protocol
+remain specified choices. No arbitrary spacetime region net, physical boost,
+laboratory time or continuum geometry is inferred.
+
+## A common observer from two local stopping clocks
+
+[`local_preparation.py`](local_preparation.py) connects the regional stopping
+theorem to the common-cap completion. On the same binary total-two carrier,
+count incidents at the shared core `I=(0,1)`, including zero currents. After
+the declared warm-up count, retain both outcomes of the **next specified**
+incident movement flag. This is not the first successful movement. On
+success, run the mixed complementary repair of the two caps above, stopping
+after the declared number of incidents at the first cap. The core has no
+incidents during this complementary repair, so it cannot serve as that
+second counter.
+
+The first observer has incident fraction `3/10`; the second has fraction
+`5/24` during mixed completion. The complete ideal herald succeeds with
+probability `5/33`. Its completion selects one common density:
+
+| Core occupation | Per-configuration weight | Multiplicity |
+| --- | --- | --- |
+| 0 | `2/225` | 45 |
+| 1 | `1/36` | 20 |
+| 2 | `2/45` | 1 |
+
+The nonzero elementary modular gaps are `log(25/8)` and `log(8/5)`. These
+follow from this local preparation; the global-Palm gaps are not substituted.
+The density lies in the protected-core algebra and is faithful. Its one
+inner modular action therefore preserves all 1024 core-containing bare cap
+algebras. The common core's own action remains trivial. This instantiates
+the finite faithful-state, inner-action and Gibbs/KMS contracts with
+`H=-log(sigma)` and inverse temperature one in modular units; it does not
+turn the unread repair semigroup into that unitary action.
+
+Both stopping clocks have finite controllers. Every tick has a bounded
+remote-wait deadline. The existing reusable native auxiliary supplies each
+scheduler choice through its coin-only instrument, whose effect is `I/2`
+even when the auxiliary is correlated with the work. No external random
+service, auxiliary reset or independent auxiliary state is assumed. A
+bounded rejection selector retains its failure. The two complementary
+menus have different sizes, so their finite acceptance factors differ.
+They are included in the actual channel rather than canceled by conditioning.
+
+For either phase let `A` be the accepted incident subchannel, `R` the
+accepted remote subchannel, and `t` the state-independent selector failure
+probability. For a per-tick deadline `h`, the executed success and timeout
+maps are
+
+```
+T_h = A (Id + R + ... + R^(h-1)),
+F_h = t (Id + R + ... + R^(h-1)) + R^h.
+```
+
+They form a complete instrument. Repeating `n` ticks gives success `T_h^n`
+and terminal failure `F_h sum_(j=0)^(n-1) T_h^j`, preserving the actual
+disturbed failure state. The code evaluates these maps by binary powering,
+without enumerating exponentially many fine histories. In the uncapped
+comparison, the positive-contraction similarity proof applies on the
+orthogonal complement of the common fixed algebra, replacing the tracial
+projection by `E_I`. Finite selector and waiting losses enter the complete
+error **before** any conditioning or logarithm stability bound.
+
+The retained flags are warm-up timeout, herald failure, completion timeout,
+and success. Preparation seam/coin/current tapes may be stored but are not
+accessible to later feedback in this comparison. The controller needs
+private bounded loop/deadline counters; the public preparation clocks count
+local incidents. This removes the global warm-up timer and separately
+selected cap references, not the need for controller hardware.
+
+The retained precision uses **496 warm-up ticks, one specified herald tick
+and 19,200 completion ticks**, with a 256-slot deadline per tick and 32
+selector rounds. Its complete preparation distance is below `5.682e-8`;
+conditional success distance is below `7.500e-7`. Expected work plus auxiliary
+cost is below **105,445 native calls**. The conservative finite maximum is
+659,460,352 calls. The reusable controller-register subtotal is 51 bits;
+program tables, interpreter storage, private tapes and quantum registers
+are excluded from that subtotal. These are bounds for the stated controller,
+not optimal costs or physical durations.
+
+## Continuing source-clock reads of that prepared state
+
+[`local_history.py`](local_history.py) executes two coherent interventions
+and native current reads on the **same prepared mixed carrier**. It does
+not reset to code 328 or code 0 between probes. Each exact two-address
+rotation fixes every other native and padding address; the cheaper
+unconditional XOR mixers valid for selected pure inputs would not implement
+this mixed-input instrument. Both source words use the same local reference
+and modular parameter. The second rotation's sign depends only on the first
+retained signed current. Both actual C/E coin/current instruments retain
+their zero outcomes and continuing quantum states.
+
+The complete 512-address source arrays are certified entry by entry against
+rational enclosures of their exact targets. Every native export also has
+an explicit complement abort, on which the work is discarded and an
+untouched reference is retained. No escaped probability is renormalized
+away. The receipt joins the finite preparation maps to this history and
+compares the complete quantum outputs, including all three preparation
+failures, both export aborts and every native read label. It reports the
+full source-pulse/service budget separately from preparation's work and
+auxiliary attempts. The all-input/reference guarantee is compositional;
+the retained numerical preparation witness starts from one explicit basis
+state and does not replace that proof.
+
+At retained modular parameter one, the full preparation/history bound is
+below `6.32e-8`. The two-probe source word uses **31,768 pulses and 63,536
+proper-code service events**, plus two native current reads and two complete
+native exports. Its single-clock comparison with the actual finitely prepared
+state's modular action has a separate bound below `8.437e-5`. The source-array
+enclosures and analytic preparation bounds are certificates; intermediate
+floating state propagation and its reported residuals are diagnostics.
+
+Coherent proper-code load/export and source controls remain specified
+architecture. Selecting these two address pairs requires exterior context;
+this is not a derivation of cap-local coherent control on arbitrary
+spectators. No projective work-bit read or independently selected pure probe
+is needed. The comparison supplies neither physical service fidelity nor a
+laboratory time, temperature, atom or field dictionary.
+
+## The boundary includes noncommuting references
+
+[`compatibility.py`](compatibility.py) removes a possible loophole in the
+all-region test. Let a faithful state on the binary two-occupation shell over
+`N>=3` ports preserve every bare two-port algebra under its modular group,
+and put `H=-log(sigma)`. For each port `i`, its occupation `N_i` belongs to
+every `A_{ij}`. Thus `[H,N_i]` lies in the intersection over `j != i` of
+those algebras. Their off-diagonal supports are disjoint, so that intersection
+is diagonal; `[H,N_i]` also has zero diagonal and hence vanishes. All joint
+occupation eigenspaces on this shell are one-dimensional, forcing `H` and
+`sigma` to be diagonal. This includes `N=3`, where the intersection need
+not be only `span(I,N_i)`.
+
+Spectator-independent modular ratios now give exactly the positive product
+weights `w_ij=lambda*r_i*r_j` already characterized above. Consequently
+**every faithful reference**, not only a preselected diagonal one, preserves
+all bare two-port algebras precisely in that product family. The executable
+certificate supplies forbidden-entry witnesses for every native
+off-diagonal Hamiltonian entry and exact independent constraints for the
+remaining diagonal energies. Connected symmetric repair still selects only
+the tracial member at equilibrium. Coherences cannot evade this specified
+all-region boundary; protected regional families and changed observable
+algebras are different contracts.
 
 ## Replay
 
@@ -507,10 +645,14 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.regional --check model/native_modular_reference/regional_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.completed_clock --check model/native_modular_reference/completed_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.common_caps --check model/native_modular_reference/common_caps_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_preparation --check model/native_modular_reference/local_preparation_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.local_history --check model/native_modular_reference/local_history_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 
-Controls cover the faithful reference and 4+6 pair census, omitted native
+Controls cover finite local-selector/wait timeouts, initially entangled
+references, noncommuting compatibility controls, the faithful reference and
+4+6 pair census, omitted native
 coordinates, all padding columns, inverse/common phase, scalar amplification
 that defeats an unweighted telescope, retained preparation failures, uniform
 reference, native waiting, checkpoint continuation and hostile ndarray

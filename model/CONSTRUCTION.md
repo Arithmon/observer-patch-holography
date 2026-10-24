@@ -137,6 +137,22 @@ experimental outcome is a conditional forecast and cannot validate the
 dictionary. The [public-data audit](../docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
 keeps the ACT comparison separate from native-observer derivation.
 
+The [finite common local-clock observer](native_modular_reference/README.md#a-common-observer-from-two-local-stopping-clocks)
+prepares one faithful reference using two incident counters and a reusable
+native coin auxiliary. Its bounded selectors and waiting deadlines retain
+all failures. One source-compiled modular action and two continuing native
+current instruments operate on that prepared mixed carrier, with complete
+quantum/reference error and resource accounting. This derives preparation,
+scheduler randomness and the readout instrument on the declared finite
+domain; coherent proper-code services and exterior-address selection remain
+architecture inputs. The ideal reference's modular action preserves all
+core-containing cap algebras; finite preparation and source words carry the
+stated errors. On the binary total-two shell, requiring every bare two-port
+algebra to be preserved instead forces a product reference even among
+initially noncommuting states, and
+connected symmetric equilibrium selects its tracial member. This exact
+boundary prevents treating unrestricted regional compatibility as automatic.
+
 The native spherical construction supplies one such mathematical connection:
 an ancestral-cell Poincare bound makes the Green subsequence converge in
 operator norm to an injective compact `G`. Its inverse `A` determines the
