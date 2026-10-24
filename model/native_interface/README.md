@@ -291,6 +291,68 @@ The receipt subtracts the existing prepared-clock numerical allowance under
 its existing guards; this module reproduces that arithmetic without reexecuting
 the source words or certifying physical service errors.
 
+## Complete state identification from native records
+
+[`tomography.py`](tomography.py) extends the two-state phase distinction in
+`Lean/QFT/SourcePhaseLiftBridge.lean` to the full 66-state native sector. For
+any pair of native configurations, an explicit reversible source word routes
+its codes to the existing real or imaginary analyzer. The current-only
+configuration detector then reads the output. Every other configuration,
+detector timeout and export abort is retained; scores are never normalized
+by successful detection. The analyzer can move spectator inputs outside the
+native sector, so export abort is necessary even for the ideal operation.
+
+One basis setting and two settings for each of the 2,145 pairs give 4,291
+settings. Their effects span all 4,356 real Hermitian coordinates:
+
+```text
+p_i = rho_ii,   x_ab = 2 Re(rho_ab),   y_ab = -2 Im(rho_ab),
+rho_ab = (x_ab - i y_ab)/2.
+```
+
+The exact effect identities and every 512-address routing permutation are
+checked. This is a constructive instance of
+[informationally complete measurement](https://arxiv.org/abs/quant-ph/0310013).
+Real analyzers alone have rank 2,211 and leave conjugate states indistinguishable;
+native diagonal effects alone have rank 66. Thus the phase service has an
+operational role. The extension is an analytic finite proof with executable
+checks; it is not a new Lean theorem.
+
+Fresh source-block certificates, including inverse routes, compose with the
+2,520-attempt configuration detector into one complete record/reference error
+bound below `1e-7`, for either C or E. This certifies exact products of the
+checked binary block maps. Floating propagation of example states is a
+separate diagnostic; the bound does not certify physical control errors.
+Untouched references are retained and final work is discarded.
+
+For independent repetitions of a fixed preparation, `sampling_bound` combines
+bounded-score sampling error with a declared complete-instrument discrepancy
+`delta`. With `N` copies per setting and sampling tolerance `eta`, simultaneous
+failure is at most `4291/(N eta^2)`. The basis setting contributes one unit
+because its indicator variances sum to at most one. Put `e=eta+2 delta`;
+the linear estimate obeys
+
+```text
+||rho_est-rho||_op <= ||rho_est-rho||_F <= sqrt(66*67/2) e,
+||rho_est-rho||_1/2 <= sqrt(66)/2 * sqrt(66*67/2) e.
+```
+
+This conservative existence bound is not a practical sample-complexity claim.
+No positive projection, clipping or renormalization is used. If an independent
+certificate places the estimator's smallest eigenvalue at least `m`, and the
+operator error is `r<m`, resolvent and unitary perturbation bounds give modular
+channel half-diamond error at most `min(1, |s| r/(m-r))`, where `s` is the
+modular parameter. An unnormalized positive estimate defines the same modular
+flow as its normalization. A floating eigenvalue is not the required certificate.
+
+The result removes a supplied informational-completeness assumption for this
+finite architecture. Coherent proper-code routing, repeatable input preparation,
+the declared controller and physical service accuracy remain premises. It does
+not identify modular parameter with laboratory seconds or a physical boost,
+and it does not reconstruct an unknown state from one nondestructive trial.
+[`tomography_results.json`](tomography_results.json) retains the exact bounds
+and synthetic reference controls; it contains no laboratory observations.
+
 ## Supplied premises and reproduction
 
 The original herald experiment in [`construction.py`](construction.py)
@@ -319,6 +381,7 @@ python -m model.native_interface --write /tmp/native-interface-new.json
 python -m model.native_interface.coherence_budget --check model/native_interface/coherence_results.json
 python -m model.native_interface.coherence_budget --write /tmp/native-coherence-new.json
 python -m model.native_interface.pointer --check model/native_interface/pointer_results.json
+python -m model.native_interface.tomography --check model/native_interface/tomography_results.json
 ```
 
 `--write` refuses to overwrite existing files. `--check` rejects malformed
