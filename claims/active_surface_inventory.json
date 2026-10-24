@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 646,
+  "surface_count": 647,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1172,6 +1172,11 @@
     },
     {
       "path": "docs/research/LEAKAGE_SOURCE_REFINEMENT.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/MARKED_TRIPLET_OPERATIONAL_ATTACHMENT_AUDIT.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
