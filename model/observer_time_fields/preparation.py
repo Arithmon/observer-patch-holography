@@ -41,6 +41,7 @@ import json
 import math
 from pathlib import Path
 import random
+from typing import NamedTuple
 
 import numpy as np
 from tools import strict_json
@@ -105,8 +106,7 @@ def _down(value, bits=80):
     return F(value.numerator*scale//value.denominator, scale)
 
 
-@dataclass(frozen=True)
-class PreparationTable:
+class PreparationTable(NamedTuple):
     targets: tuple
     inputs: tuple
     probabilities: tuple  # rows x, columns t, including target-selector success
@@ -120,7 +120,12 @@ class PreparationTable:
 
 def preparation_table(seed_scans=SEED_SCANS, retries=RETRIES, target_rounds=TARGET_ROUNDS):
     _parameters(seed_scans, retries, target_rounds, 1, 1, (0,), False)
-    return _preparation_table(seed_scans, retries, target_rounds)
+    table = _preparation_table(seed_scans, retries, target_rounds)
+    # Fraction has mutable protected slots. A read-only outer tuple alone
+    # would still expose cache-owned numbers to callers.
+    return PreparationTable(table.targets, table.inputs,
+        tuple(tuple(F(p.numerator, p.denominator) for p in row) for row in table.probabilities),
+        F(table.selector_timeout.numerator, table.selector_timeout.denominator), table.source_digest)
 
 
 @lru_cache(maxsize=12)
@@ -192,8 +197,7 @@ def apply_preparation(density, seed_scans=SEED_SCANS, retries=RETRIES, target_ro
             'reset_timeout': reset_failure, 'reference': marginal}
 
 
-@dataclass(frozen=True)
-class StopKernel:
+class StopKernel(NamedTuple):
     success: tuple
     selector_timeout: tuple
     incident_timeout: tuple
@@ -240,8 +244,7 @@ def _stopped_kernel(cap, selector_rounds):
                       _rational_hash((*succeeded, *rejected, *power)))
 
 
-@dataclass(frozen=True)
-class FiniteFieldLaw:
+class FiniteFieldLaw(NamedTuple):
     records: tuple
     counts: tuple
     denominator: int
@@ -249,8 +252,10 @@ class FiniteFieldLaw:
     feedback: bool
     initial_index: int
     source_digest: str
+    controller_parameters: tuple  # seed scans, retries, target/selector rounds, cap
 
     def probabilities(self):
+        _validate_field_law(self)
         return {key: F(sum(values), self.denominator)
                 for key, values in zip(self.records, self.counts, strict=True)}
 
@@ -325,7 +330,29 @@ def _finite_field_law(initial_index, feedback, seed_scans, retries, target_round
             or any(v < 0 for row in counts for v in row)):
         raise ArithmeticError('complete prepared field histories lost probability mass')
     return FiniteFieldLaw(records, counts, denominator, read_ports, feedback, initial_index,
-                          _rational_hash(counts))
+                          _rational_hash(counts),
+                          (seed_scans, retries, target_rounds, selector_rounds, cap))
+
+
+def _same_exact(left, right):
+    if type(left) is not type(right):
+        return False
+    if isinstance(right, tuple):
+        return len(left) == len(right) and all(_same_exact(a, b) for a, b in zip(left, right, strict=True))
+    return left == right
+
+
+def _validate_field_law(law):
+    """Bind every terminal population to its source, not a supplied digest."""
+    if (type(law) is not FiniteFieldLaw or type(law.controller_parameters) is not tuple
+            or len(law.controller_parameters) != 5):
+        raise ValueError('an exact source-derived finite prepared field law required')
+    scans, retries, targets, selectors, cap = law.controller_parameters
+    canonical = finite_field_law(law.initial_index, feedback=law.feedback, seed_scans=scans,
+        retries=retries, target_rounds=targets, selector_rounds=selectors,
+        cap=cap, read_ports=law.read_ports)
+    if not _same_exact(law, canonical):
+        raise ValueError('finite field law differs from complete source-derived terminal populations')
 
 
 def resources(*, feedback=False, seed_scans=SEED_SCANS, retries=RETRIES,

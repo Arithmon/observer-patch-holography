@@ -6,6 +6,7 @@ from fractions import Fraction as F
 from functools import lru_cache
 from itertools import product, repeat
 import json
+import math
 
 import numpy as np
 import pytest
@@ -40,6 +41,84 @@ def test_all_5148_reset_columns_are_exact_complete_and_label_correlated():
         table.probabilities[0][0] = F(0)
     with pytest.raises(AttributeError):
         table.source_digest = 'fake'
+
+
+def test_public_preparation_rationals_cannot_change_cached_source_bounds():
+    before = p.preparation_certificate(1, 2, 2)
+    table = p.preparation_table(1, 2, 2)
+    pristine = p.preparation_table(1, 2, 2)
+    assert table == pristine and table is not pristine
+    assert table.probabilities[0][0] is not pristine.probabilities[0][0]
+    with pytest.raises(AttributeError):
+        table.__dict__['probabilities'] = ()
+    # A Fraction itself is mutable despite the tuple envelope. Public copies
+    # must not share these numbers with the cache or each other.
+    table.probabilities[0][0]._numerator = -1
+    table.selector_timeout._numerator = 0
+    assert p.preparation_table(1, 2, 2) == pristine
+    assert p.preparation_certificate(1, 2, 2) == before
+
+
+def test_native_reset_probability_alias_cannot_contaminate_preparation():
+    target = p.native.states(binary=True)[0]
+    values = p.reset.success_probabilities(1, 3, full=True, mode='reset', target=target)
+    expected = F(values[0].numerator, values[0].denominator)
+    assert expected < 1
+    values[0]._numerator = values[0]._denominator = 1
+    # Use a cold preparation cache, so this also tests the dependency boundary.
+    p._preparation_table.cache_clear()
+    actual = p.preparation_table(1, 3, 2)
+    per_target = (1-actual.selector_timeout)/66
+    assert actual.probabilities[0][0] == per_target*expected
+
+
+def test_integer_field_and_stopping_caches_have_no_mutable_envelope():
+    for value in (p.stopped_kernel(2, 1), p.finite_field_law(seed_scans=1, retries=2,
+            target_rounds=2, selector_rounds=1, cap=2, read_ports=(0, 1))):
+        with pytest.raises(AttributeError):
+            value.__dict__['denominator'] = 1
+        with pytest.raises(AttributeError):
+            value.denominator = 1
+
+
+def test_source_validation_accepts_equal_values_after_cache_eviction():
+    law = p.finite_field_law(seed_scans=1, retries=2, target_rounds=2,
+        selector_rounds=1, cap=2, read_ports=(0, 1))
+    expected = p.field_certificate(law)
+    p._finite_field_law.cache_clear()
+    assert p.field_certificate(law._replace()) == expected
+
+
+@pytest.mark.parametrize('mutation', ('terminal_population', 'digest', 'missing_failures',
+    'denominator_alias', 'count_alias', 'controller_alias', 'changed_controller'))
+def test_field_consumers_reject_reconstructed_laws_without_source_values(mutation):
+    law = p.finite_field_law(seed_scans=1, retries=2, target_rounds=2,
+        selector_rounds=1, cap=2, read_ports=(0, 1))
+    assert p.field_certificate(law)['mass_exactly_one']
+    if mutation == 'terminal_population':
+        counts = tuple((sum(row),)+(0,)*(len(row)-1) for row in law.counts)
+        assert counts != law.counts and tuple(map(sum, counts)) == tuple(map(sum, law.counts))
+        bad = law._replace(counts=counts, source_digest=p._rational_hash(counts))
+    elif mutation == 'digest':
+        bad = law._replace(source_digest='made-up')
+    elif mutation == 'missing_failures':
+        ideal = p.core.field_law(law.read_ports).probabilities()
+        denominator = math.lcm(*(v.denominator for v in ideal.values()))
+        bad = law._replace(records=tuple(('complete', a, b) for a, b in ideal),
+            counts=tuple((int(v*denominator),) for v in ideal.values()), denominator=denominator)
+    elif mutation == 'denominator_alias':
+        bad = law._replace(denominator=float(law.denominator))
+    elif mutation == 'count_alias':
+        counts = tuple(tuple(False if v == 0 else v for v in row) for row in law.counts)
+        assert counts == law.counts  # Python equality alone is insufficient.
+        bad = law._replace(counts=counts)
+    elif mutation == 'controller_alias':
+        bad = law._replace(controller_parameters=(True, 2, 2, 1, 2))
+    else:
+        bad = law._replace(controller_parameters=(1, 3, 2, 1, 2))
+    for consumer in (p.field_certificate, p.FiniteFieldLaw.probabilities):
+        with pytest.raises(ValueError):
+            consumer(bad)
 
 
 def test_arbitrary_entangled_reference_complete_deficit_not_conditioned_success():

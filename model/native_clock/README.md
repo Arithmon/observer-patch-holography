@@ -461,6 +461,11 @@ five candidate means. Its worst-case budget is 341,049,374 native attempts,
 including endpoint discovery and auxiliary selection. These service costs
 are not the unknown interval length.
 
+Both the public receipt checker and the CLI own a fresh source replay. A
+matching pair of supplied receipts cannot certify its own stream digest,
+terminal carriers or operation counts. Structural checks additionally enforce
+native support, current-prefix continuity and complete resource identities.
+
 This is a destructive ensemble readout of a delimited interval, with a fixed
 unknown length across trials. It does not generate that interval, supply an
 individual monotone clock, or identify physical seconds. The fixed-length

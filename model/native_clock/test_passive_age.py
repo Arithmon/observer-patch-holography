@@ -220,14 +220,42 @@ def receipt():
     return p.strict_json.load(p.OUTPUT)
 
 
-def test_receipt_self_verifies_custody_source_and_public_inference(receipt):
-    p.compare_receipt(receipt, receipt)
+def test_returned_receipt_does_not_expose_the_scope_contract(receipt, monkeypatch):
+    by_law = {r['law']: r['execution'] for r in receipt['alternatives']}
+    def execution(age, *, law):
+        sample = deepcopy(by_law[law])
+        sample['records_and_counts'] = [(tuple(r), n) for r, n in sample['records_and_counts']]
+        return sample
+    monkeypatch.setattr(p, 'execute_trials', execution)
+    expected = dict(p.SCOPE)
+    returned = p.run()
+    returned['scope']['decoder_receives_interval_attempt_count'] = True
+    assert p.SCOPE == expected
+    assert p.run()['scope'] == expected
+
+
+@pytest.fixture
+def replayed_receipt(receipt, monkeypatch):
+    # Isolate receipt comparison from the large source execution. CI separately
+    # replays every default trial through the real CLI, without this fixture.
+    monkeypatch.setattr(p, 'run', lambda: deepcopy(receipt))
+    return receipt
+
+
+def test_receipt_verifies_against_owned_source_replay(replayed_receipt, monkeypatch):
+    calls = []
+    def replay():
+        calls.append(True)
+        return deepcopy(replayed_receipt)
+    monkeypatch.setattr(p, 'run', replay)
+    assert p.compare_receipt(replayed_receipt, replayed_receipt)
+    assert calls == [True]
 
 
 @pytest.mark.parametrize('mutation', ['scope', 'proof', 'hash', 'missing_failure', 'count', 'states',
                                      'prefix', 'native_cost', 'inference', 'auxiliary', 'unknown_field'])
-def test_receipt_rejects_hostile_contracts_even_against_itself(receipt, mutation):
-    bad = deepcopy(receipt)
+def test_receipt_rejects_hostile_contracts_even_against_itself(replayed_receipt, mutation):
+    bad = deepcopy(replayed_receipt)
     row = bad['alternatives'][0]
     sample = row['execution']
     if mutation == 'scope': bad['scope']['decoder_receives_interval_attempt_count'] = True
@@ -248,8 +276,8 @@ def test_receipt_rejects_hostile_contracts_even_against_itself(receipt, mutation
 @pytest.mark.parametrize('mutation', ['impossible_cell', 'auxiliary_identity', 'main_identity',
     'discovery_identity', 'passive_identity', 'prefix_initial', 'prefix_continuation',
     'prefix_endpoint', 'execution_field', 'alternative_field', 'prefix_field'])
-def test_receipt_rejects_fabricated_source_support_and_resource_identities(receipt, mutation):
-    bad = deepcopy(receipt)
+def test_receipt_rejects_fabricated_source_support_and_resource_identities(replayed_receipt, mutation):
+    bad = deepcopy(replayed_receipt)
     row = bad['alternatives'][1 if mutation == 'prefix_endpoint' else 0]
     sample = row['execution']
     if mutation == 'impossible_cell':
@@ -292,3 +320,23 @@ def test_receipt_rejects_fabricated_source_support_and_resource_identities(recei
     else: sample['prefix'][0]['known_age'] = 3
     with pytest.raises(ValueError):
         p.compare_receipt(bad, bad)
+
+
+@pytest.mark.parametrize('mutation', ('stream_hash', 'auxiliary_endpoint', 'discovery_cost'))
+def test_matching_fabrications_are_not_evidence_of_source_execution(replayed_receipt, mutation):
+    bad = deepcopy(replayed_receipt)
+    sample = bad['alternatives'][0]['execution']
+    if mutation == 'stream_hash':
+        sample['source_record_sha256'] = '0'*64
+    elif mutation == 'auxiliary_endpoint':
+        sample['final_auxiliary_state'] = [0]*10+[1, 1]
+    else:
+        sample['discovery_native_attempts'] = sample['discovery_calls']+30
+        sample['main_native_attempts'] = sample['discovery_native_attempts']+sample['passive_main_attempts']
+    # These internally consistent records satisfy the structural checks; only
+    # the module-owned execution distinguishes them from actual observations.
+    p._validate(bad)
+    with pytest.raises(ValueError):
+        p.compare_receipt(bad, bad)
+    with pytest.raises(ValueError):
+        p.compare_receipt(replayed_receipt, bad)

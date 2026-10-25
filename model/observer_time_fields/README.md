@@ -169,6 +169,12 @@ field records. The target, resolved input, preparation currents and auxiliary
 state are outside the observer's comparison interface. A failed preparation
 emits its failure flag and terminates; it is never normalized away.
 
+Public preparation tables detach their rational values from internal caches.
+Field-law readers validate every terminal population and controller parameter
+against the source producer; matching marginals or a supplied digest do not
+certify a law. Tests retain altered populations, omitted failures and mutable
+caller values as rejection controls.
+
 This boundary matters: retaining the full target would disclose more than
 the two-bit field experiment, and conditioning on successful reset can bias
 both the target distribution and the reference. Write `s_t(x)` for the exact

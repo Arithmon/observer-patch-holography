@@ -372,7 +372,7 @@ def run():
             raise ArithmeticError('blind passive-age record inference failed its fixed gate')
         alternatives.append({'law': law, 'validation_only_interval_attempts': age,
                              'execution': execution, 'inference': inferred})
-    return {'schema': SCHEMA, 'scope': SCOPE, 'source_proof': proof,
+    return {'schema': SCHEMA, 'scope': dict(SCOPE), 'source_proof': proof,
             'executed_admission': admission(),
             'larger_window_analytic_admission': admission(1 << 18, 12),
             'random_window_obstruction': random_window_obstruction(),
@@ -557,13 +557,23 @@ def _validate(receipt):
                 raise ValueError('prefix terminal cell absent')
 
 
-def compare_receipt(supplied, actual):
+def _compare_replayed_receipt(supplied, actual):
+    """Internal comparison against a replay owned by this module's caller."""
     try:
         _validate(supplied); _validate(actual)
         if not _same(supplied, actual):
             raise ValueError('fresh passive-age source execution drifted')
     except (KeyError, TypeError, IndexError, OverflowError, ZeroDivisionError) as exc:
         raise ValueError('malformed passive-age receipt') from exc
+
+
+def compare_receipt(supplied, actual=None):
+    """Replay the source; caller-supplied matching receipts are not authority."""
+    canonical = _json(run())
+    _compare_replayed_receipt(supplied, canonical)
+    if actual is not None:
+        _compare_replayed_receipt(actual, canonical)
+    return True
 
 
 def main():
@@ -574,7 +584,7 @@ def main():
     args = parser.parse_args()
     value = _json(run())
     if args.check:
-        compare_receipt(strict_json.load(args.check), value)
+        _compare_replayed_receipt(strict_json.load(args.check), value)
         print('Current-only passive native age inference verified.')
     else:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:
