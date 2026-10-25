@@ -20,6 +20,13 @@ Its eight restricted premise connections are rendered in the postdiction,
 provenance and theorem-gap ledgers. They select no observed masses or physical
 coupling normalization. Existing numerical rows keep their promotion classes.
 
+The retained [icosahedral correspondence review](runs/leptons/charged_icosahedral_completion_v1_review.json)
+is a historical audit of the original submission and diagnostic snapshots.
+Its upstream hashes identify those earlier bytes, including the earlier D10
+gap report; they do not certify the current report or promote a physical
+mass prediction. Replaying that historical audit requires the original
+submitted archive. Current status comes from the ledgers above.
+
 The executable observer supplies a [finite port-information
 boundary](../../model/observer/README.md): its fixed two-event tape does not
 determine the load `W5` projection, while ideal labelled all-seam records do

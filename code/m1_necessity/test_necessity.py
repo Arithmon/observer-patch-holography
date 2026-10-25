@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==143
+    assert actual['downstream_claims']==145
 
 
 def test_dark_source_context_does_not_transfer_dense_m1_or_physical_admission():
@@ -60,6 +60,17 @@ def test_operational_clock_descendants_do_not_inherit_dense_m1_premises():
     assert any(edge['from'] == 'OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT' and
                edge['to'] == 'OPH-M1-MASSIVE-FLIGHT-SPECTRUM'
                for edge in downstream['links'])
+
+
+@pytest.mark.parametrize('name,premise', [
+    ('OPH-OBSERVER-COMMON-FIELD-WITNESS', 'declared_common_field_operator_contract'),
+    ('OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL', 'static_product_metric_and_relative_scalar_probe'),
+])
+def test_matter_field_descendants_retain_their_independent_contracts(name, premise):
+    row = audit.downstream_audit()['claims'][name]
+    assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
+    assert set(row['assumptions']) == {premise}
+    assert not (set(row['assumptions']) & audit.KEYS)
 
 
 def test_common_source_descendant_retains_its_finite_interaction_contract():

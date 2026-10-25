@@ -44,6 +44,12 @@ claim-by-claim requirements retained in the receipt:
 
 ## Material qualifications
 
+The common-field witness and static-product response control are also registered
+descendants. They retain their declared operator contract and fixed-background
+relative scalar probe, respectively. The sparse replacement transfers no
+particle mass, physical field selection, geometry response law or entropy
+stationarity to either claim.
+
 * Exact finite M1 replacement is impossible merely by deleting a direct edge:
   an adjacent-layer pair has no multi-edge path. A retained independent input
   omitted from a lossless read also has an immediate two-preparation witness.

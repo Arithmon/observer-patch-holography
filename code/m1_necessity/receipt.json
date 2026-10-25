@@ -1803,6 +1803,20 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "69b9f2f5c13a915a5377ff70b689188d7cf3237c092dd11b732d5b6347da0ac6"
       },
+      "OPH-OBSERVER-COMMON-FIELD-WITNESS": {
+        "assumptions": [
+          "declared_common_field_operator_contract"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "e04cf6577f9bbcf7bec5e1534226907a13647c3f7bd8af1343149e9844eee253"
+      },
+      "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL": {
+        "assumptions": [
+          "static_product_metric_and_relative_scalar_probe"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "243aa4cade18045399d6bff59e387760a201f16b22e51133dcda1efc31895cd1"
+      },
       "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON": {
         "assumptions": [
           "self_adjoint_energy_window_full_residual",
@@ -2819,6 +2833,11 @@
         "to": "OPH-GEOMETRY-COMMON-WORLD-INSTRUMENT-JOIN"
       },
       {
+        "from": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
+        "role": "Provides the conditional representation or field interface; its unproved physical premises are retained.",
+        "to": "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL"
+      },
+      {
         "from": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
         "role": "Uses the same declared Floquet reference convention and all-species thermal comparison; the tetrahedral polynomial and coercivity are independently derived.",
         "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
@@ -3337,6 +3356,11 @@
         "from": "OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION",
         "role": "supplies the corpus Gibbs state, its affine ledger law, and the additive freedom that the binding defect is computed with",
         "to": "OPH-THERMO-MODULAR-ENERGY-ADDITIVITY"
+      },
+      {
+        "from": "OPH-UNIFIED-TYPED-SPINE",
+        "role": "Provides the conditional representation or field interface; its unproved physical premises are retained.",
+        "to": "OPH-OBSERVER-COMMON-FIELD-WITNESS"
       },
       {
         "from": "OPH-WHITNEY-CHARGED-ENCLOSURE",
@@ -3945,7 +3969,7 @@
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "aba496c973d6d95948cadd5b0d9bde49af43fe80e9426d8c9c7b60b660abfdea",
+    "code/m1_necessity/CONSUMERS.md": "c51f9a42c95907fcae8f137b2b512f419d65da1a44df39c6bd8452a28be8db75",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
     "code/m1_necessity/README.md": "cc5da2fef58408379f56e02337213902c1e28c7d7f57d32fde574e36d8e3ac46",
@@ -3957,9 +3981,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "60742abd926aa4982aba301d6d4373f26ed6f9fbea6c9fbd2774de6de9389e7e",
+    "code/m1_necessity/downstream.json": "18b796d0d90e4eacc37847f1c9de7156580a2fa2ac2e562ccc6bd13bc9ec6fd5",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "02aa3a6ef1095988f26e853f32a070ee93951c5e1b0cd3ea41050fcdd91b2cab",
+    "code/m1_necessity/test_necessity.py": "cf143a791802c7565e110e4324764d386c58ce758740d9f722ab3ecc7ea8af08",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "7407e8a7e107ecbc444f5e1354cd648767213e00cfb9269b9365917a4f2988a0",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
