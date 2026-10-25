@@ -666,7 +666,7 @@ It has explicit unresolved outputs for insufficient records, incompatible
 amplitude, or an uncertified alias window. The source compiler's parameter
 is withheld from this decoder, but remains a programmed intervention in the
 construction. Enacting an autonomous clock and attaching physical units are
-still distinct obligations.
+distinct obligations.
 
 The intended field action is an **effective description of observer
 statistics**, and time is relative to the observer's algebra, state and

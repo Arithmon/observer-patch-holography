@@ -627,7 +627,7 @@ an exact inverse. Both caps use the same inferred generator. The executable
 certificate includes two repair-law alternatives, raw full-source histories,
 an all-column dyadic sampler audit and complete attempt/service budgets.
 The admitted parameter window resolves phase aliases; individual records are
-not monotone. The compiler still enacts a programmed modular parameter, so
+not monotone. The compiler enacts a programmed modular parameter, so
 this closes a readout/calibration interface without deriving autonomous
 repair time or a laboratory duration.
 
