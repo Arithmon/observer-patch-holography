@@ -602,20 +602,25 @@ Continuing probes retain disturbance and feedback. Intermediate source-pulse
 locality, physical service fidelity and conversion to seconds remain separate.
 
 The [native reference readout](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
-reduces identification of this repair-derived entropy family to one signed
-current setting. Complete-trial counts determine all three subnormalized
-charge weights without inserting the known weights or success probability
-into the inverse. Reference-uniform preparation supplies a finite martingale
-confidence contract on continuing inputs; intervals reaching zero remain
-unresolved. The inferred ratios drive a certified common source clock and two
-continuing cap reads, with sampling, preparation and source errors composed.
-The retained accelerated kernel demonstration samples `2^24` trials; its
-fixed-budget protocol accepts only confidence-event errors at most `0.09`
-and halts explicitly otherwise. Its complete joint history bound, including
-the unchanged training transcript and statistical failure, is below `0.096`;
-this is not a bound conditioned on successful admission. Coherent tomography
-is unnecessary for this specified family;
-coherent clock enactment and physical identification remain separate inputs.
+identifies this repair-derived entropy family without supplied reference
+weights or coherent tomography. A finite census derives occupation readout
+from the existing coin/current records: on eleven connected seams, a change
+of coin exposes the original occupation contrasts after accounting for
+recorded transfers. The fixed total then determines the initial configuration.
+Its exact charge effects, state-independent timeout and terminal carrier are
+derived from both C/E instruments; an occupation projector is not a new
+primitive. This readout is destructive and does not identify coherences.
+
+Complete census trials on one continuing carrier supply martingale confidence
+for the three reference weights. Positive intervals admit a source-compiled
+common modular clock and two continuing cap reads. The fixed protocol bounds
+the **successful-preparation** history error, separately from herald failures
+and statistical failure. It halts explicitly when the confidence box or source
+certificate fails. The retained accelerated kernel demonstration uses `2^20`
+preparations; every microscopic preparation attempt is not executed. These
+finite effects and faithful-reference connections instantiate the specified
+observer interfaces. Coherent enactment, physical service accuracy, laboratory
+seconds and a common physical field dictionary remain separate obligations.
 
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
 scope of a classical interpretation. The diagonal native branch obeys

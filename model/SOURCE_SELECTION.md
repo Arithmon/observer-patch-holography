@@ -654,9 +654,13 @@ coherent code services and physical meaning remain declared obligations.
 Completed spectator-uniform cap operations remove exterior-state selection;
 intermediate source-pulse locality is separate. One complete native-current
 setting identifies this source-derived entropy family, with all failed trials
-and finite confidence retained. The inferred ratios, rather than supplied
-reference weights, compile a common clock with a complete continuing-history
-error bound. [The readout contract](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
+and finite confidence retained. A finite spanning-tree census additionally
+derives complete occupation effects from native coin/current records, with
+state-independent timeout and no initial-load disclosure. It improves reference
+learning through direct charge counts, retaining the destructive readout and
+continuing carrier. The inferred ratios compile a common clock with a separate
+successful-preparation history error bound and explicit admission failures.
+[The readout contract](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
 does not identify arbitrary coherent states or laboratory time.
 
 The intended field action is an **effective description of observer

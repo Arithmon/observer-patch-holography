@@ -116,7 +116,13 @@ allowance of **0.4916177969622167** estimator units (rounded). The
 contains a feasible rational point and nonnegative dual witness; verification
 checks every endpoint and both nonnegative boundaries. Allowing independent
 values inside each interval makes the result conservative for the actual
-shared dynamics. The optimizing gain and offset are never adopted. This
+shared dynamics. The same exact minimum holds with separate nonnegative gains
+and unrestricted offsets for each of the five cases: the dual witness lies
+entirely in case a, while the common feasible point remains feasible in the
+enlarged family. Its three weighted endpoint-error allowances, at 1.2, 3.2 and
+8.4 ms, must sum to at least that minimum. Thus requiring one calibration
+across different potentials is not the cause of this obstruction.
+The optimizing gain and offset are never adopted. This
 excludes an exact calibration-only explanation within this affine family;
 changing the physical probe coordinate, preparation, timing or dynamics is
 outside that family. No experimental uncertainty or rejection probability is

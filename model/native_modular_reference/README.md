@@ -669,18 +669,17 @@ identification follows from this operational clock calibration.
 
 ## Learn the common reference from one native current setting
 
-[`reference_tomography.py`](reference_tomography.py) identifies the common
-reference without coherent tomography. The complete local preparation,
-followed by one unread core repair, supplies the two-moment maximum-entropy
-family proved in [`common_variation.py`](../native_equilibration/common_variation.py).
-Its three per-configuration weights have multiplicities `(45,20,1)`. The
-finite preparation bound controls departures from this family, including
-coherences and initially correlated references. Complement equilibration alone
-would retain extra core information and would not justify this reduction.
+The complete local preparation followed by one unread core repair supplies
+three charge weights with multiplicities `(45,20,1)`, in the two-moment
+maximum-entropy family of
+[`common_variation.py`](../native_equilibration/common_variation.py).
+The finite preparation theorem bounds coherences and initially correlated
+references. Complement equilibration alone would leave additional core
+information and would not justify this reduction.
 
-Read one actual signed current on seam `(1,7)`. Count every trial, including
-all preparation failures. Let `u,v` be the complete-trial positive/negative
-current frequencies and `t` the complete success frequency. The inverse is
+[`reference_tomography.py`](reference_tomography.py) identifies this family
+from one signed-current setting on `(1,7)`. For complete-trial frequencies
+`u,v` of positive/negative successful current and success frequency `t`,
 
 ```text
 b0 = (22 v + 2 u - t)/54
@@ -688,64 +687,124 @@ b1 = (t - 10 v - 2 u)/6
 b2 = 5 u + 15 v - 3 t/2.
 ```
 
-These are subnormalized weights: `45 b0 + 20 b1 + b2 = t`. Neither the known
-reference weights nor a supplied success probability centers this estimate.
-The scalar `t` cancels from modular ratios. A ternary current is sufficient
-for the normalized two-parameter family; one binary fixed measurement cannot
-identify an open two-parameter family. This does not replace full tomography
-of an arbitrary state: imaginary off-diagonal perturbations can leave every
-native classical record law unchanged while changing the modular action.
+The scalar success mass cancels from modular ratios. The signed-score inverse
+is statistically expensive: its retained `2^24`-trial clock has a two-read
+inference allowance about `0.589`. Its confidence-inclusive complete bound
+below `0.096` includes preparation failures and is not a successful-clock
+error of that size. These remain reproducible alternate readout contracts.
 
-Explicit bounded-score martingale Bernstein estimates give simultaneous
-rational weight intervals. The reference-uniform preparation theorem supplies
-their conditional-bias premise after any prior public trial records; no
-independent input copies are assumed. Private preparation tapes and the
-auxiliary state remain inaccessible. Source-derived preparation/error and
-variance certificates still use the known source law. If an interval reaches
-zero, the result is unresolved: no clipping or assumed spectral floor creates
-a clock.
+### A finite occupation census from repair records
 
-The retained demonstration samples `2^24` trials of the finite preparation
-kernel, core repair and current read on one continuing carrier. A dyadic
-record/state kernel has an exact all-column bias and second-moment audit.
-Each replay checks these exact values against fixed rational certificate
-bounds; every retained proof field is compared exactly across platforms.
-A common/residual decomposition accelerates that same kernel and preserves
-terminal-state dependence. The seeded PRNG run is reproducible numerical
-evidence, not a
-proof of independent randomness or an execution of every microscopic repair
-attempt. The abstract statistical theorem applies to actual native records
-or ideal random draws of the certified dyadic sampler. All terminal counts,
-state counts and a complete stream hash are retained; numerical aborts are
-separate from physical preparation failures. The finite source cost bound
-is over `1.1e16` attempts for this sample, including the auxiliary selectors.
+[`native_census.py`](native_census.py) derives a more informative readout
+without adding an occupation projector or consulting hidden loads. It uses
+eleven fixed native seams forming a connected tree. On each edge, read the
+existing coin/current record until the coin first changes, with deadline
+`h=32`; a timeout retains the disturbed carrier and its failure flag.
 
-[`learned_clock.py`](learned_clock.py) compiles the inferred ratios on all
-512 source addresses. A rational logarithm enclosure bounds its generator
-modulo identity throughout the confidence box. That error composes with the
-raw source error and preparation error through two continuing cap-local
-current instruments, with record-selected feedback and complete export
-aborts. The future preparation starts from the training carrier's terminal
-state. The protocol fixes `2^24` trials and accepts only a faithful confidence
-box whose history error is at most `9/100`, followed by successful source
-certification. Otherwise it emits a training/compilation stop and preserves
-the carrier. The retained run passes this rule. Its simultaneous statistical
-failure bound is `3/512`; the complete joint protocol bound is
-`9/100 + (3/512)(G+1)/2 < 0.096`, where `G` is the fixed source norm cap.
-Actual and ideal comparison protocols retain the same training transcript
-and halt carrier on rejection. This is not a bound conditioned on acceptance,
-nor is the observed sample's error treated as a uniform expectation bound.
-Source precision and physical service errors retain their separate roles.
-A separate sandwich bound compares the learned action with the actual
-finite-prepared marginal's modular action.
+For binary endpoint loads, repetition of the first coin produces no further
+current. At the first flip, its current reveals whether the endpoints were
+unequal. If the first coin is `k`, first current `j`, and flip current `j'`,
+the pre-edge contrast is `2j+(2k-1)|j'|`. Subtracting the difference of the
+accumulated recorded transfers gives the **original** endpoint contrast.
+The eleven contrasts and conserved total occupation two uniquely recover all
+twelve original occupations. The controller receives only records; the
+simulator's hidden configuration is used to check its answer. This training
+readout spans all twelve ports under the declared seam-access policy; it is
+not a cap-local measurement. The later completed clock reads retain their
+separate bare-cap locality certificate.
 
-The positive inferred state instantiates finite faithful-reference, inner-flow
-and Gibbs/KMS interfaces on the same core-containing cap algebras; its moments
-also define the smooth entropy family. These are analytic finite connections
-with executable certificates, not new Lean formalizations. Reference
-identification needs only native records. Enacting the clock still uses the
-declared coherent source services; neither laboratory seconds nor a physical
-energy, field or particle dictionary follows from this calibration.
+Each coin has effect `I/2` for both C and E, including on a reference-entangled
+input. Thus an edge completes with state-independent probability
+`a=1-2^(1-h)`. Every successful fine record has only one possible initial
+basis state, so its effect is rank one. Summing records decoded to original
+core charge `q` gives exactly
+
+```text
+E_q = a^11 Pi_q,       E_timeout = (1-a^11) I.
+```
+
+These are **effects**, not an assertion that the postmeasurement operation is
+Lueders or nondisturbing. Successful census destroys occupation coherences;
+timeout branches retain their actual native disturbance. The executable
+checks the C/E branch identities on all 4,356 matrix units, all 135,168
+initial-state/compressed-coin paths, complete mass and untouched references.
+The maximum read cost is 352 native attempts; expected cost is at most 33.
+An explicit logical register layout uses 139 bits for the census, 168 for
+eight training counters and 21 for the trial counter. These are subtotals,
+excluding the preparation controller, quantum carriers, program/tree tables,
+interpreter and private tapes; they are not measured Python memory. A fixed
+tree schedule and finite storage are controller architecture inputs.
+
+### Confidence and a successful clock history
+
+Every preparation trial, including failures and census timeouts, contributes
+to the counts. For the three successful charge frequencies `f_q`, the unbiased
+ideal weights are estimated by `b_q=f_q/g_q`, where `g=(45,20,1)`.
+Their common unknown factor is preparation success times `a^11`; neither it
+nor the known reference weights center the estimate. This direct nonnegative
+estimator avoids cancellation of large current counts to estimate a rare
+charge. It identifies the prepared family, not arbitrary coherent states.
+
+The reference-uniform preparation bound supplies a conditional probability
+bias `e` after every prior public trial history. For fixed `N` and confidence
+parameter `k`, bounded Bernoulli martingale Bernstein gives
+
+```text
+|f-p| <= e + 2k/(3N) + sqrt(2k(p+e)/N).
+A = e + 2k/(3N), c = 2k/N,
+r(f) = A + c/2 + sqrt(c(f+e+A) + c^2/4).
+```
+
+Substituting `p<=f+|f-p|` proves `|f-p|<=r(f)`, with a rational upper square
+root in the implementation. A union bound covers all three charges with
+failure probability at most `6*2^-k`. No independent copies, observed-variance
+plug-in assumption or optional stopping is used. Finite-preparation error and the
+separately audited dyadic-kernel bias enter `e`; intervals reaching zero halt.
+
+[`census_clock.py`](census_clock.py) fixes `N=2^20`, `k=10` and a successful
+history error cap `1/10` before reading data. For a faithful confidence box,
+it compiles the inferred ratios with the existing source services. If
+`h_i=log(w_hat_i/w_i)`, the generator error modulo identity is bounded by
+`max_{i!=j}(upper(h_i)-lower(h_j))/2`. One coordinate cannot take its two
+endpoints simultaneously. The resulting channel bound covers arbitrary
+work/reference inputs. It composes through both continuing cap reads,
+record-selected feedback, raw 512-address source arrays and export aborts.
+
+For preparation error `B`, ideal herald probability `q`, raw-source norm cap
+`G` and two-read channel allowance `D`, the distinct budgets are
+
+```text
+successful prepared history: G*2B/(q-B) + D
+complete flagged history:    G*B + q*D.
+```
+
+Admission tests the first quantity, without multiplying by the herald
+probability. Source certification failure and failed admission retain explicit
+stops and the same carrier. The complete joint protocol uses the fixed cap
+`G*B+q*(1/10-G*2B/(q-B))` plus `6*2^-k*(G+1)/2`, below `0.021011`;
+both comparison protocols keep the same training
+transcript. The confidence failure probability is not conditioned on admission
+or successful preparation. Preparation conditioning is already charged by
+`2B/(q-B)`; it does not grant a postselected statistical guarantee.
+
+The retained census run gives a successful two-read history allowance below
+`0.075` using sixteen times fewer preparations than the signed-current run.
+It continues C/E histories from the final training carrier, retaining every
+failure. Its worst native training budget is below `6.915e14` attempts and
+its expected budget below `1.107e11`, including auxiliary selectors. These
+remain large physical costs. The demonstration samples an exactly audited
+53-bit finite record/state kernel; it does not execute every microscopic
+preparation attempt or authenticate the seeded PRNG as physical randomness.
+All terminal counts, terminal-state counts and the stream hash are retained.
+
+The positive inferred state instantiates faithful-reference, inner-flow and
+finite Gibbs/KMS interfaces on the same core-containing cap algebras. The
+source-derived family supplies the state/algebra compatibility premise; its
+inferred moments specify the entropy family. These are analytic finite
+connections with executable certificates, not new Lean formalizations.
+Identification needs native records; clock enactment still uses declared
+coherent services. Physical service fidelity, intermediate-pulse locality,
+laboratory seconds and a field or particle dictionary remain separate.
 
 ## The boundary includes noncommuting references
 
@@ -785,6 +844,8 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json
 python -m model.native_modular_reference.reference_tomography --check model/native_modular_reference/reference_tomography_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.learned_clock --check model/native_modular_reference/learned_clock_results.json
+python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

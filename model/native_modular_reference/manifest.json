@@ -1,11 +1,13 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "ff6e734f0fef6649d2e660ea7fe1bd635824ff3690505d6fb8eff2cbe35f9422",
+    "README.md": "8726b2a182b98eed4b435614fb4fa876e721ceb22d158b00dbcdf80572bea706",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "cap_local_clock.py": "ccc4bf54b67866a59adb7904d1e3c19a4325ce53dc8963ed68848b83065510e8",
     "cap_local_clock_results.json": "111f3b8a688127f093f453a070a32d329bb84ad0cde455491ed2ee96e3d5c8fb",
+    "census_clock.py": "3ab3906b60bc41fcbd7f3edcb95ee9b507dbb324a17a6e3ac3d881db2ba6c49d",
+    "census_clock_results.json": "0ae5853e6c6363d217883957741894fbb47f5db0348c6dabb13f9e72e82ae533",
     "common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
     "common_caps_results.json": "b7153f7eb85ca35b10665d4e4b6d13b9193ccc0305bf61d8aa848de5d18deb06",
     "compatibility.py": "0f51fc085cc8dd7dcf6a85904e82a51dbd875d966e45efc92402f85160f35946",
@@ -20,6 +22,8 @@
     "local_history_results.json": "9961d5d6f2c79f7acc06bbc29acf8bd2b9404e3bdba759bea447d50ec780b2e2",
     "local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
     "local_preparation_results.json": "5f704868c301b0407f4dd97472c1c7fa92dabf4550b9a6e0ccda19cc98274d7d",
+    "native_census.py": "ad3c62de128e075715fee171912ffd89414634c1a601fa676f1db6752ae79662",
+    "native_census_results.json": "f62fcf5da1b776b27c96f74e9b204866854559a99a7043dfdcdf072500a82fdf",
     "preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "preparation_results.json": "dc929687fdcf19431053e9c409bb27d9f65575e367a7a330137c97205b9cc761",
     "reference_tomography.py": "77a30720a44155d0b11c1801448dd5f5d8b5960230d03079c11d55e0839a0b11",
@@ -28,6 +32,7 @@
     "regional_results.json": "3f08a387955b50f02f49ac52dba06ea3bfdc93d9f47945dd7d71470d3e74ca74",
     "results.json": "8c89d2a64df6e7417df150d2c95c5432489ee24d270d69892639764d1f12fd70",
     "test_cap_local_clock.py": "a7f2a6b889cc7e8f6edb839f420274079ad994a44063addd55cad8a6ab052dde",
+    "test_census_clock.py": "29eae8cfca19527182f7c67899cfd0fc0440497f6942cdc46000617c957df3ef",
     "test_common_caps.py": "12dac96cc83c3513c178af55f1bd5b2220988d114f3c1d24ecf71facd9e39340",
     "test_compatibility.py": "7e6387947bc322daf33cc7196a5b4954bcff84edf2a07383ff60d6e24698c2fe",
     "test_completed_clock.py": "1460437575f242b205e36238be5d06735ad172ef5a3128ea60654268ea953d4e",
@@ -36,6 +41,7 @@
     "test_learned_clock.py": "8a02518d8fee16aec1daf90fb5ecd4b90fdfcc241b243626f97ad973f6d5668a",
     "test_local_history.py": "230280730964fcfdef512495029e104c9db44715f2224d5e144f7321847995c3",
     "test_local_preparation.py": "bf33d1f9aedbf09be303e48d4110a6901b905c34f7c98524593d736378bdacc6",
+    "test_native_census.py": "4c6498d2e066e2aaa1e019c3f2cb0fa924c2a5eb03e2ec4f53eda1f39687fb19",
     "test_preparation.py": "d89dad49ec5197ac4e588dcf90f389a2c65ed278566dfbb51f06c4bfc7e73c09",
     "test_reference_tomography.py": "a4e667a0b0857df31ad0fdfee0e48f56b5abb8cb7feff4f0693d717810131e51",
     "test_regional.py": "bfb2222fc3bd79fe7806ee65247917b8e4cb48ed1e95156c9b0d5cffd948951c"
@@ -52,6 +58,8 @@
     "python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json",
     "python -m model.native_modular_reference.reference_tomography --check model/native_modular_reference/reference_tomography_results.json",
     "python -m model.native_modular_reference.learned_clock --check model/native_modular_reference/learned_clock_results.json",
+    "python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json",
+    "python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json",
     "python -m pytest -q -W error model/native_modular_reference"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"
