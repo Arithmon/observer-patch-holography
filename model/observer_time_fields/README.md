@@ -138,7 +138,7 @@ coherent continuation.
 | Interface | Instantiation |
 | --- | --- |
 | State | Binary occupations of the complete source graph at fixed total two. The continuing distribution includes the entire graph, including remote ports. |
-| Preparation | The uniform distribution on that sector, with the two read-port occupations initially disclosed. This preparation is an explicit input. Conditioning on its disclosed labels retains all four outcomes. |
+| Preparation | The ideal comparison starts uniformly on that sector and discloses the two read-port occupations, retaining all four labels. On the twelve-port instance the native preparation below supplies this joint state/record interface with a finite complete error. The federation and refinement preparations retain their own contracts. |
 | Repair | Select a source seam uniformly and apply the existing fair-coin native operation. Its unread diagonal channel is `(I + SWAP_ab)/2`. |
 | Clock | A scheduled repair ticks iff its seam meets the declared observer region, even when its current is zero. Remote repairs evolve the same state between ticks. |
 | Field | Occupation of a read port, reconstructed from its disclosed initial value and every actual signed incident current. Endpoint projectors in the probability calculation represent this record processing. |
@@ -156,6 +156,75 @@ not an invented two-carrier universe. The two instances share the theorem
 and controller, not an asserted equality of their predictions.
 
 ## A complete field-law reconstruction
+
+### Native preparation of the labelled field state
+
+The [preparation controller](preparation.py) supplies the elementary field
+protocol from an arbitrary total-two work state, including collisions and
+correlations with an untouched reference. A reusable auxiliary's native
+coarse coins select one of the 66 binary targets. The existing
+[current-only controller](../native_clock/configuration.py) then resets work
+to that target. Only its occupations at ports zero and one become initial
+field records. The target, resolved input, preparation currents and auxiliary
+state are outside the observer's comparison interface. A failed preparation
+emits its failure flag and terminates; it is never normalized away.
+
+This boundary matters: retaining the full target would disclose more than
+the two-bit field experiment, and conditioning on successful reset can bias
+both the target distribution and the reference. Write `s_t(x)` for the exact
+reset success probability from configuration `x` to target `t`, and `alpha`
+for the bounded target selector's acceptance probability. After discarding
+private records, each successful target block is
+
+```
+(alpha/66) |t><t| tensor sum_x s_t(x) rho_R,xx.
+```
+
+The ideal block is `|t><t| tensor rho_R / 66`. Their difference is positive.
+Together with the retained failure branch this proves the complete
+half-diamond error
+`max_x [1 - (alpha/66) sum_t s_t(x)]`.
+It is bounded by the selector timeout plus the uniform native reset error.
+The bound covers arbitrary references and an arbitrary past transcript;
+independent blank states and independent repeated preparations are unnecessary.
+
+The same auxiliary supplies each subsequent uniform seam choice. Its coarse
+coin effect is exactly `I/2`, even when the auxiliary is correlated with work
+and reference. This identity survives adaptive work operations. It justifies
+the reduced uniform scheduler while charging every auxiliary repair and
+keeping each rejection timeout. It does not assert independence of retained
+auxiliary fine records.
+
+The continuing protocol reconstructs fields from the initial two bits and
+actual signed currents, reads four incident hits, and applies the original
+first-bit-controlled internal repair. Its clock counts the intervention.
+Preparation error passes through this complete controlled continuation once;
+it is not multiplied by the number of field records. Selector and waiting
+caps add their separate failure allowances. Exact native calculations retain
+all initial labels, field words, timeout prefixes and terminal populations.
+The 64-word ideal comparison has feedback-versus-no-feedback total variation
+`5/99`, providing a finite observable consequence of the composed protocol.
+
+There is a sharper complete native-channel bound. Put
+`tau=16^-8`, `r=(7/10)(1-tau)` and
+`z=(3/10)(1-tau)(1-r^64)/(1-r)`.
+One bounded scheduled tick completes with probability `z` independently of
+the work state. If `f` is the worst complete preparation failure, the four-read
+native continuation has exact half-diamond error `1-(1-f)z^4`, below
+`9e-9`, against the ideal prepared native continuation. Positive success
+deficits and explicit aborts prove this bound. Feedback is an additional
+certain native operation and changes no completion probability. The field
+record comparison inherits the bound; equality of native and effective hidden
+states is not needed. The maximum resource count is 13,399 native attempts,
+including preparation, auxiliary selectors, failed paths and feedback.
+
+This construction supplies the elementary stationary state and initial
+disclosure as operations. It does not prepare an entire refined screen,
+select a conserved density, or identify the incident count with laboratory
+time. Joint current access, the finite controller, work/auxiliary separation
+and the declared record-discard boundary belong to the observer architecture.
+
+### Effective transfer of the completed histories
 
 All matrices below act on column distributions on the finite configuration
 space. Write the uniformly scheduled unread native transfer as
