@@ -47,6 +47,8 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
 OCCUPATION_TRANSFER_REPLAY = ("model.occupation_control.transfer", None,
                               "model/occupation_control/transfer_results.json.gz")
 REPLAYS = (
+    ("model.observer_time_fields.preparation", None, "model/observer_time_fields/preparation_results.json"),
+    ("model.native_clock.passive_age", None, "model/native_clock/passive_age_results.json"),
     ("model.repair_scheduler", None, "model/repair_scheduler/results.json"),
     ("model.predictions.prepared_clock", None, "model/predictions/prepared_clock_results.json"),
     ("model.repair_identification", None, "model/repair_identification/results.json"),

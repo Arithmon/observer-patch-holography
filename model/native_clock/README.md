@@ -405,6 +405,76 @@ the stopped transition sequence. Zero records, waiting counts and attempt
 costs still change. The producer checks `q=1/2` on the full 66-state kernel;
 the cancellation establishes the identity for any `0<q<=1`.
 
+## Passive age from two current-derived endpoints
+
+The [passive-age controller](passive_age.py) estimates a fixed unknown number
+of unread native repair attempts. It requires no coherent phase operation,
+reset, stationary preparation or independent copies. The same work and
+auxiliary carriers continue across trials. The observer receives endpoint
+current records and failures; the interval scheduler's records and stopping
+gate are private. Giving those scheduler counts to the decoder would make
+the estimation problem trivial.
+
+First the [configuration controller](configuration.py) discovers a binary
+configuration through actual signed currents. Choose the antipodal pair
+containing its first witnessed occupied port. Its disclosed initial
+occupation `Y0` is either one or two. After the unread interval, a second
+configuration read retrodicts the endpoint occupation `Yn`. The second read
+disturbs work; its final configuration is not substituted for its retrodicted
+input.
+
+For each of the six antipodal pairs the exact native Heisenberg identity is
+
+```
+P*(Y - 1/3) = (9/10)(Y - 1/3).
+```
+
+The integer source audit covers all 66 binary configurations and both C/E
+instruments; partial-injection Kraus supports also establish the off-diagonal
+identity. With ideal complete endpoint reads, the score
+`Z=(Yn-1/3)/(Y0-1/3)` has conditional mean `(9/10)^n` for every initial
+configuration and every past transcript. The
+conclusive initial read supplies that configuration from arbitrary quantum
+input and untouched references. No assumption that successive trials are
+independent is used.
+
+Every failed start read, scheduler selection or endpoint read contributes
+score zero and remains in the denominator. The score lies in `[-1/2,5/2]`.
+If each discovery fails with probability at most `delta`, each bounded
+seam selector fails with probability at most `tau`, and `n<=W`, its complete
+conditional mean differs from `(9/10)^n` by at most
+`(7/2)delta+(5/2)W tau`. A martingale Hoeffding interval for the observed mean,
+enlarged by this bias, gives a finite set of integer ages. The decoder takes
+only complete record counts and the declared window. Empty or multiple
+candidate sets are reported explicitly.
+
+Uniform seams are chosen by actual coarse-coin operations on a reusable
+auxiliary. The selector's exact `I/2` coin effect removes an independent
+random-number service even for initially correlated carriers. Its attempts
+and timeouts are counted separately from work attempts, including the costly
+endpoint reads. The retained run executes 65,536 continuing trials per law
+in the window zero through four; a separate analytic budget covers the
+larger window zero through twelve. The latter is not an executed history.
+For the executed design, the coverage failure is at most `1/4096` per law
+and the mean radius is smaller than half the minimum separation of the
+five candidate means. Its worst-case budget is 341,049,374 native attempts,
+including endpoint discovery and auxiliary selection. These service costs
+are not the unknown interval length.
+
+Both the public receipt checker and the CLI own a fresh source replay. A
+matching pair of supplied receipts cannot certify its own stream digest,
+terminal carriers or operation counts. Structural checks additionally enforce
+native support, current-prefix continuity and complete resource identities.
+
+This is a destructive ensemble readout of a delimited interval, with a fixed
+unknown length across trials. It does not generate that interval, supply an
+individual monotone clock, or identify physical seconds. The fixed-length
+condition cannot be dropped: a mixture of ages zero and two with probabilities
+`9/19` and `10/19` has the same score mean as age one but mean age `20/19`.
+This is a failure of this mean inverse, not an asserted equality of complete
+record distributions. Joint current access, finite memory and the declared
+native instrument remain part of the observer architecture.
+
 ## Existing theorem attachment and limits
 
 The existing

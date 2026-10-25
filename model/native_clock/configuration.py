@@ -470,7 +470,10 @@ def success_probabilities(seed_scans=SEED_SCANS, retries=RETRIES, *, full=False,
                           mode='measure', target=None):
     """Exact conclusive mass for every native.states(binary=not full) column."""
     _parameters(seed_scans, retries, full, mode, target)
-    return _success_probabilities(seed_scans, retries, full, mode, target)
+    # Fraction's protected slots are writable; public values must not expose
+    # the cache used by reset certificates and downstream preparation laws.
+    return tuple(F(v.numerator, v.denominator)
+                 for v in _success_probabilities(seed_scans, retries, full, mode, target))
 
 
 def budget(seed_scans=SEED_SCANS, retries=RETRIES, *, full=False,

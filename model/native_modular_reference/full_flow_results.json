@@ -57,7 +57,7 @@
         "native_initialization_and_readout_attempts_charged": true,
         "native_modular_source_pulses": 2042,
         "native_pointer_source_pulses": 6,
-        "outside_native_support_probability_diagnostic": 2.7582768093345442e-27,
+        "outside_native_support_probability_diagnostic": 2.758276809334544e-27,
         "physical_service_error_authenticated": false,
         "pointer_outcomes": [
           "work_reset_timeout",
@@ -153,7 +153,7 @@
         "native_initialization_and_readout_attempts_charged": true,
         "native_modular_source_pulses": 2042,
         "native_pointer_source_pulses": 6,
-        "outside_native_support_probability_diagnostic": 2.7448186162039165e-27,
+        "outside_native_support_probability_diagnostic": 2.744818616203916e-27,
         "physical_service_error_authenticated": false,
         "pointer_outcomes": [
           "work_reset_timeout",
@@ -315,7 +315,7 @@
     "proper_code_service_auxiliary_blanks_remain_admitted": true
   },
   "source_dependency_count": 85,
-  "source_dependency_map_sha256": "8ef0947145b4bb7a7de2579a48ace7a05c3f667d043942d3f6a037a0c97420ff",
+  "source_dependency_map_sha256": "9dc9f0ed52207811428ccf294b52b8a8f2fd303f50b30884bb233e78d2f79a2f",
   "support": {
     "degree10_addresses": 36,
     "degree8_addresses": [
