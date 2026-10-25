@@ -272,7 +272,8 @@ def test_ci_covers_all_four_shards_both_platforms_and_complete_regression():
     observer, regression = (workflow['jobs'][key] for key in ('observer', 'regression'))
     assert observer['strategy']['matrix']['os'] == ['ubuntu-latest', 'windows-latest']
     assert observer['strategy']['matrix']['shard'] == [0,1,2,3]
-    assert observer['timeout-minutes'] == 90
+    assert observer['timeout-minutes'] == (
+        "${{ matrix.os == 'windows-latest' && matrix.shard == 1 && 120 || 90 }}")
     assert any(step.get('run') == 'python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 4'
                for step in observer['steps'])
     scalar = [step for step in observer['steps'] if 'verify_source_scalar_time_refinement.py' in step.get('run','')]
