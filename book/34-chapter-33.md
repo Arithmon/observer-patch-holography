@@ -4,7 +4,7 @@ A physicist can spend forty years on the measurement problem and never need to o
 
 Lee Smolin put five problems of that standing on a single page of *The Trouble with Physics*, published in September 2006. It is the most useful page in the book, and it sits near the front, before the argument starts. He calls them the five great problems in theoretical physics. Combine general relativity and quantum theory into a single theory of nature. Resolve the trouble in the foundations of quantum mechanics. Find out whether the particles and the forces are aspects of one thing. Explain how the free constants of the Standard Model came to have the values they have. Account for dark matter and dark energy, or work out how gravity is modified at galactic scales instead.
 
-They are one problem in five costumes. The list runs longer than five. Every celebrated open problem in physics is a symptom of the same move: a background written down at the top of the page, followed by a question that the background has made unanswerable.
+The proposal pursued here is that these problems share an origin in how the background is specified. That common reading suggests mechanisms to test; it does not establish that the finite model has closed every physical problem.
 
 A background is a set of places for things to be at, a parameter for them to happen along, and the two of them present before anything happens in them. Chapter one called it the arena. Read Smolin's five with the arena in view and each one is a question about the arena rather than about what moves around inside it: how many dimensions it has, what the constants of the things in it are, why one class of event occurring inside it counts as a measurement while the others do not, and what its empty parts weigh. A description that grants itself the arena in its first line has no route to any of that. Four of the five ask what the arena is or what sits in it, and the fifth asks whether the law running on it needs changing at the radius of a galaxy.
 
@@ -40,9 +40,9 @@ Add up the zero-point energies of the fields of empty space, cut the sum off at 
 
 The assumption is that empty space carries an energy density, that the density sits in a spacetime which was there first, and that gravity weighs it the way a balance weighs a sack of flour.
 
-Gravity's local probes are light rays. The vacuum's stress is the same everywhere and looks identical to every observer however fast they are moving, which forces it to be a number times the metric, and the metric evaluated twice on a light-ray direction is the interval of a light ray with itself, which is zero. A light ray is blind to any vacuum energy density whatever, however enormous, by the definition of the probe rather than through a cancellation. Every local calculation in physics is assembled out of light cones, so the local data deliver Einstein's equation with one term left open: a single cosmological constant that no light ray can see.
+Gravity's local probes are light rays. The vacuum's stress is the same everywhere and looks identical to every observer however fast they are moving, which forces it to be a number times the metric, and the metric evaluated twice on a light-ray direction is the interval of a light ray with itself, which is zero. A light ray is blind to any vacuum energy density whatever, however enormous, by the definition of the probe rather than through a cancellation. Under chapter twenty-five's continuum, conservation and entropy-balance hypotheses, the null data deliver Einstein's equation with one metric-proportional term left open. The finite record constructions do not yet establish all those physical hypotheses.
 
-The horizon supplies the missing term. The correctable public-record capacity of the horizon is its entropy, and the count comes to 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second.
+A specified horizon-capacity condition can supply the missing term. In that trial model the count is 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second. Identifying this capacity with physical generalized entropy and deriving its stationarity from the same repair history remain separate requirements.
 
 ## An ensemble of one
 
@@ -60,9 +60,9 @@ The Higgs boson was measured at 125.20 billion electron-volts, with an uncertain
 
 The assumption is the top of the range. A hierarchy problem is a comparison. A comparison needs two scales, one of which was written into the theory by hand as the place where the description gives out.
 
-Nothing here is written in by hand. Newton's constant is an area, 2.61 times ten to the minus seventy square meters. That area is one cell of a screen, so the scale at the bottom of the world is a count of cells rather than a number entered on line one. The weak scale comes off the same solve. The ratio between the two is the exponential of minus two pi divided by four times the coupling at a cell, and that coupling is 0.0411, one part in 24.32. Work the exponential and out comes two parts in ten to the seventeenth, which is the size of the scalar's vacuum vector, 246.22 billion electron-volts, measured against the scale of a cell.
+A conditional scale comparison relates Newton's constant to a screen area calibrated in laboratory units. A proposed exponential relation uses a cell coupling near 0.0411, about one part in 24.32, and yields a small scale ratio. Its running, matching and scale-identification assumptions must be specified. The Higgs vacuum value of 246.22 billion electron-volts remains a comparison input; the finite interaction identities do not select it.
 
-A gap of seventeen orders of magnitude is what one number near a twenty-fourth does when it lands in an exponent. Arranging a gap that size would have taken some effort. Nobody had to.
+An exponential can explain how a large hierarchy is possible. Deriving the physical coefficient, the matching map and the vacuum would make it a prediction. That remaining selection problem is the one chapter thirty-one keeps explicit.
 
 ## The groups that died in 1894
 
@@ -72,9 +72,9 @@ The assumption is in the choosing. A symmetry group gets picked by the person wr
 
 The clause that removes it arrived with two firms keeping books in different currencies. They need an exchange rate, there is no market outside the room to look one up in, so the rate has to be computed out of what the two of them hold between them. Applied to the twelve ports of a patch, the same clause says that every relabeling of the readings has to be a move the patch can perform on itself, since no venue anywhere holds a preferred labeling of twelve ports. The relabelings with any standing are the ones the dials produce.
 
-That requirement decides the group. A central move commutes with every relabeling, so a relabeling and its undoing slide together and cancel and the move comes back untouched, which puts the center inside the part of the twelve readings that all sixty rotations of the wiring leave alone. Those sixty rotations carry every port to every other port, so the surviving part is one number repeated twelve times: one dial, and at most one. A simple group has a center zero dials wide, by the definition of simple. Twelve dials come apart as one plus eleven, eleven splits as three plus eight and in no other way, and a simple group has nowhere to stand.
+Within the port-current theorem's stated hypotheses, that requirement constrains the group. A central move commutes with every relabeling, so a relabeling and its undoing slide together and cancel and the move comes back untouched, which puts the center inside the part of the twelve readings that all sixty rotations of the wiring leave alone. Those sixty rotations carry every port to every other port, so the surviving part is one number repeated twelve times: one dial, and at most one. A simple group has a center zero dials wide, by the definition of simple. Twelve dials come apart as one plus eleven, eleven splits as three plus eight and in no other way, and a simple group has nowhere to stand.
 
-What survives is the arrangement nobody would have picked for its looks. One dial that no rotation touches, a block of three and a block of eight, which are electromagnetism, the weak force and the strong force, in exactly the proportions the Standard Model was written down with because that is what the detectors had reported. A wiring diagram hands the product over, and it hands it over before anybody asks what the three of them are supposed to be acting on.
+What survives is the arrangement nobody would have picked for its looks. One dial that no rotation touches, a block of three and a block of eight, which match the hypercharge, weak and strong Lie algebras in the conditional construction. Electromagnetism combines hypercharge and a weak generator after a specified symmetry breaking. The local algebra result precedes the matter lift; it does not by itself select the physical global group or couplings.
 
 So the beautiful groups died of a clause about exchange rates. The catalogue of sizes a simple group is permitted to have was finished by Wilhelm Killing in four papers between 1888 and 1890 and made rigorous in Élie Cartan's thesis of 1894, twenty-six years before the proton had a name.
 
@@ -106,7 +106,7 @@ How close are the alpha candidates? The screen-cell trial maps have certified fi
 
 What does the geometry say about Koide's relation? On one face of the icosahedron, equal weight for the two ways the corners can respond gives exactly two thirds. With the electron and muon masses as inputs, it pins the tau inside a window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93.
 
-Why does light have two polarizations? Because the central band carries four components, removing the redundancy takes two of them away, and what is left is transverse and two wide.
+What gives two polarizations in the field construction? A declared massless Abelian vector field in one time and three space dimensions has four components. The gauge constraint and redundancy leave two transverse modes. Its identification with the physical photon needs the current and response matching discussed in chapter twenty-nine.
 
 Why does space have three directions? Because the twelve readings of a patch split into blocks that fade at different rates under repair, and the slowest block, holding 0.9539 of what it carries per pass against nine tenths and 0.8794 for the others, has rank three.
 
