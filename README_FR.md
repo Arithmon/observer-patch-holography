@@ -205,11 +205,22 @@ les données conservées ne déterminent pas la loi d’enregistrement native.
   qui restent distinguables après les opérations permises, bornent ce nombre
   par le support disponible et le suivent lors du raffinement.
   [Capacité des registres](code/capacity_readback/README.md).
+- **Le candidat de couplage par paires intriquées.**
+  [Alex Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf)
+  donne un candidat spectral fini d’inverse `137.035999189566`. La
+  [reconstruction OPH](model/observer_particles/README.md) lui attribue cette
+  construction et conserve les résultats complémentaires de mesure et les
+  contrôles de normalisation. Son identification avec le couplage
+  électromagnétique physique et son rattachement à l’équation du grain d’écran
+  sont conditionnels.
 - **La matière et les champs.** Une action fournie de scalaire chargé et de
   Maxwell, avec sa géométrie et sa quantification, donne un hamiltonien en
   interaction après réduction de jauge, et un raffinement scalaire contrôlé
   relie les lectures classiques d’un détecteur à une équation de champ non
-  linéaire. [Continuum de matière](paper/observers_are_all_you_need.pdf).
+  linéaire. Le dictionnaire métrique commun ne fournit pas le bilan
+  gravitationnel : le produit radial statique testé échoue au contrôle de
+  contrainte relative et nécessite une réponse géométrique.
+  [Continuum de matière](paper/observers_are_all_you_need.pdf).
 
 Ce sont des résultats mathématiques conditionnels. Faire tenir leurs prémisses
 pour les observations d’un même modèle commun est le problème central de la
@@ -217,15 +228,6 @@ construction. La [carte des prémisses](model/PREMISES.md) indique quelles
 prémisses la spécification exécutable fournit et lesquelles elle prend comme
 entrées.
 
-Le candidat spectral fini d’[Alex Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf)
-a pour inverse `137.035999189566`. La
-[reconstruction OPH](model/observer_particles/README.md) lui attribue cette
-construction et conserve les résultats complémentaires de mesure ainsi que les
-contrôles de normalisation. Son identification avec le couplage électromagnétique
-physique et son rattachement à l’équation du grain d’écran sont conditionnels.
-Le dictionnaire métrique commun ne fournit pas le bilan gravitationnel : le
-produit radial statique testé échoue au contrôle de contrainte relative et
-nécessite une réponse géométrique.
 
 ## Articles
 

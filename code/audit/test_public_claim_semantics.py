@@ -139,8 +139,9 @@ def test_readme_case_section_remains_short_and_reader_facing() -> None:
                 "Gauge symmetry.",
                 "Thermodynamics.",
                 "Information capacity.",
+                "Entangled-pair coupling candidate.",
                 "Matter and fields.",
-            ], "English README must retain its seven named mathematical results"
+            ], "English README must retain its eight named mathematical results"
         for number, bullet in enumerate(bullets, start=1):
             assert bullet.startswith("**"), (
                 f"{path.name} case bullet {number} drops its bold lead"
