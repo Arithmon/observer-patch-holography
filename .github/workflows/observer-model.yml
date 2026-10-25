@@ -66,7 +66,9 @@ jobs:
     # stays atomic on shard zero; all-case occupation transfer owns shard one.
     # The other receipts are split across shards two and three.
     # Regression remains complete and independent on each platform.
-    timeout-minutes: 90
+    # The complete Windows occupation-transfer interval replay needs extra
+    # runtime headroom. Every case and numerical acceptance gate is retained.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && matrix.shard == 1 && 120 || 90 }}
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'

@@ -1,7 +1,7 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "d4f084c3cb47a08057033f0a3ff83f8bdcba8a55ebfe0a1dc4a47ea2ac3d286e",
+    "README.md": "969e50d2eb843b01724a10c267e8c441b7a7d4eec5dbfddf35b49174b30b9d83",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "cap_local_clock.py": "ccc4bf54b67866a59adb7904d1e3c19a4325ce53dc8963ed68848b83065510e8",
@@ -45,7 +45,13 @@
     "test_phase_readout.py": "d7d3bfed409619d1ac710870c836937e6185a06cdadc2db64f6edb8998e366a4",
     "test_preparation.py": "d89dad49ec5197ac4e588dcf90f389a2c65ed278566dfbb51f06c4bfc7e73c09",
     "test_reference_tomography.py": "a4e667a0b0857df31ad0fdfee0e48f56b5abb8cb7feff4f0693d717810131e51",
-    "test_regional.py": "bfb2222fc3bd79fe7806ee65247917b8e4cb48ed1e95156c9b0d5cffd948951c"
+    "test_regional.py": "bfb2222fc3bd79fe7806ee65247917b8e4cb48ed1e95156c9b0d5cffd948951c",
+    "census_clock.py": "a864acb8cb1b23a165d2c45bd0bbde00511147b4a9520ea4a79ebee4810a0f20",
+    "census_clock_results.json": "c59f68fdf2b2b070903d3537641dc273b04ea01ec131f1d98a2376cc58dc5b58",
+    "native_census.py": "add4d146e9e938e1ef2d652a6b1111d55a3966dd74f79464b1fad64c0c016534",
+    "native_census_results.json": "6384f4d36f618ec36009fcd32065933bce0a2c7e1aa26c5e3a35cd25ee979b5c",
+    "test_census_clock.py": "d1774f94a790d28ede5713010ea2d1bb4f3d7a2221471ba347d8bee9d235fa2f",
+    "test_native_census.py": "3244254157166fcfaef02bbdf081f6d4abb26095fccf94854772de740dad7957"
   },
   "reproduce": [
     "python -m model.native_modular_reference --check model/native_modular_reference/results.json",
@@ -60,7 +66,9 @@
     "python -m model.native_modular_reference.reference_tomography --check model/native_modular_reference/reference_tomography_results.json",
     "python -m model.native_modular_reference.learned_clock --check model/native_modular_reference/learned_clock_results.json",
     "python -m model.native_modular_reference.phase_clock --check model/native_modular_reference/phase_clock_results.json",
-    "python -m pytest -q -W error model/native_modular_reference"
+    "python -m pytest -q -W error model/native_modular_reference",
+    "python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json",
+    "python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"
 }

@@ -15,9 +15,15 @@ rational primal feasibility and a nonnegative dual witness prove the answer.
 The verifier checks all constraints and strong dual equality without calling
 an optimizer, including the g=0 and e=0 boundaries. This is retrospective
 arithmetic on published central values, not a confidence limit or OPH test.
+
+The same certificate also proves the optimum when each potential has its own
+gain and offset: its dual is supported within one case, while its common
+primal is feasible for every case. The endpoint-only dual additionally gives
+a necessary weighted inequality for heterogeneous remaining allowances.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 import argparse
 from fractions import Fraction as F
 import hashlib
@@ -31,9 +37,13 @@ from . import transfer
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = 'model/occupation_control/transfer_results.json.gz'
 SOURCE_SHA256 = '2ce0e18bb4030ef4b67451ce99e28cf53798ceeb4eb22b0a1c7e0bd73898cebe'
-SCHEMA = 'oph.occupation_control.shared_calibration.v1'
+SCHEMA = 'oph.occupation_control.shared_calibration.v2'
+CASES = tuple('abcde')
 CONTRACT = {
     'model': 'observed in gain*[certified_lower,certified_upper]+offset+[-allowance,allowance]',
+    'calibration_families': ['one common gain and offset', 'independent gain and offset per case'],
+    'uniform_allowance': 'one remaining nonnegative allowance across all 125 endpoints',
+    'heterogeneous_allowances': 'nonnegative endpoint allowances; the retained weighted sum is a necessary lower bound',
     'gain_domain': 'nonnegative; includes zero as a conservative boundary',
     'offset_domain': 'all real numbers',
     'units': 'deposited dimensionless two-point position-estimator units',
@@ -44,7 +54,7 @@ CONTRACT = {
     'statistical_rejection_claimed': False,
     'full_uncertainty_agreement_established': False,
     'OPH_rejection_claimed': False,
-    'boundary': ('Only a common affine output gain and offset are varied. Probe-coordinate, '
+    'boundary': ('Only affine output gains and offsets, common or independent per case, are varied. Probe-coordinate, '
                  'preparation, timing, Hamiltonian and physical-service changes are outside '
                  'this family. Missing experimental and calibration uncertainties remain missing.'),
 }
@@ -157,6 +167,92 @@ def verify_exact(rows, certificate):
     return point[2]
 
 
+def _case_groups(rows):
+    """Bind the stronger claim to every deposited case and exact time label."""
+    constraints(rows)
+    expected = [f'{case}@{F(step, 5)}' for case in CASES for step in range(2, 51, 2)]
+    if [row['id'] for row in rows] != expected:
+        raise ValueError('All five fixed cases and their 25 exact endpoint times are required')
+    return {case: rows[25*index:25*(index+1)] for index, case in enumerate(CASES)}
+
+
+def _case_bindings(groups):
+    return [{'case': case, 'endpoint_count': len(rows), 'endpoints_sha256': _digest(rows)}
+            for case, rows in groups.items()]
+
+
+def _heterogeneous_terms(rows, dual):
+    """Aggregate endpoint coefficients only after exact dual verification.
+
+    Each endpoint inequality has -e_i in place of -e. Cancellation of gain
+    and offset therefore gives sum_i weight_i*e_i >= the same dual bound.
+    Boundary multipliers cannot be silently converted into endpoint errors.
+    """
+    weights = {}
+    endpoints = {row['id'] for row in rows}
+    for term in dual:
+        name, separator, side = term['constraint'].rpartition(':')
+        if not separator or side not in ('lo', 'hi') or name not in endpoints:
+            raise ValueError('Heterogeneous allowance witness must use only selected-case endpoints')
+        weights[name] = weights.get(name, F())+_rational(term['weight'])
+    if sum(weights.values(), F()) != 1:
+        raise ValueError('Endpoint allowance weights must sum exactly to one')
+    return [{'endpoint': row['id'], 'weight': str(weights[row['id']])}
+            for row in rows if row['id'] in weights]
+
+
+def independent_case_certificate(rows, common, *, witness_case='a'):
+    """Reuse the existing exact optimum; do not solve a second optimization."""
+    groups = _case_groups(rows)
+    optimum = verify_exact(rows, common)
+    if type(witness_case) is not str or witness_case not in groups:
+        raise ValueError('A deposited witness case is required')
+    selected = groups[witness_case]
+    restricted = dict(common, input_binding=_binding(selected))
+    if verify_exact(selected, restricted) != optimum:
+        raise ValueError('Selected case does not certify the common optimum')
+    return {
+        'case_bindings': _case_bindings(groups),
+        'witness_case': witness_case,
+        'uniform_allowance': str(optimum),
+        'heterogeneous_allowance': {
+            'terms': _heterogeneous_terms(selected, common['dual']),
+            'lower_bound': str(optimum),
+        },
+    }
+
+
+def verify_independent_cases(rows, common, certificate):
+    """Prove the enlarged-family optimum and endpoint-error inequality.
+
+    The common primal satisfies every case, so assigning that same feasible
+    pair to all five independent pairs is an upper witness. Restricting the
+    exact dual to one complete case gives the matching lower witness even
+    when every other gain/offset is unrestricted. No per-case minimizer is
+    inferred or fitted, and no experimental error values are assumed.
+    """
+    _keys(certificate, ('case_bindings', 'witness_case', 'uniform_allowance',
+                        'heterogeneous_allowance'), 'independent-case certificate')
+    groups = _case_groups(rows)
+    if _digest(certificate['case_bindings']) != _digest(_case_bindings(groups)):
+        raise ValueError('Complete case binding differs')
+    case = certificate['witness_case']
+    if type(case) is not str or case not in groups:
+        raise ValueError('A deposited witness case is required')
+    optimum = verify_exact(rows, common)
+    selected = groups[case]
+    restricted = dict(common, input_binding=_binding(selected))
+    if (verify_exact(selected, restricted) != optimum
+            or _rational(certificate['uniform_allowance']) != optimum):
+        raise ValueError('Independent-case objective equality failed')
+    allowance = certificate['heterogeneous_allowance']
+    _keys(allowance, ('terms', 'lower_bound'), 'heterogeneous allowance')
+    if (_digest(allowance['terms']) != _digest(_heterogeneous_terms(selected, common['dual']))
+            or _rational(allowance['lower_bound']) != optimum):
+        raise ValueError('Heterogeneous allowance inequality differs from exact dual')
+    return optimum
+
+
 def _solve_square(matrix, rhs):
     """Small exact Gaussian elimination, used only by the producer."""
     count = len(rhs)
@@ -209,17 +305,20 @@ def solve_exact(rows):
 
 
 def produce():
+    rows = source_rows()
+    common = solve_exact(rows)
     return {'schema': SCHEMA, 'source': {'path': SOURCE, 'sha256': SOURCE_SHA256},
-            'contract': CONTRACT.copy(), 'certificate': solve_exact(source_rows())}
+            'contract': deepcopy(CONTRACT), 'certificate': common,
+            'independent_cases': independent_case_certificate(rows, common)}
 
 
 def verify(receipt):
-    _keys(receipt, ('schema', 'source', 'contract', 'certificate'), 'receipt')
+    _keys(receipt, ('schema', 'source', 'contract', 'certificate', 'independent_cases'), 'receipt')
     if (receipt['schema'] != SCHEMA
             or _digest(receipt['source']) != _digest({'path': SOURCE, 'sha256': SOURCE_SHA256})
             or _digest(receipt['contract']) != _digest(CONTRACT)):
         raise ValueError('Source or diagnostic claim contract changed')
-    return verify_exact(source_rows(), receipt['certificate'])
+    return verify_independent_cases(source_rows(), receipt['certificate'], receipt['independent_cases'])
 
 
 def main():
@@ -236,7 +335,7 @@ def main():
             stream.write('\n')
     else:
         optimum = verify(strict_json.load(args.check))
-        print(f'Exact all-125 common affine-calibration allowance: {float(optimum):.12f}')
+        print(f'Exact all-125 common or independent-case affine allowance: {float(optimum):.12f}')
         print('Calibration-only diagnostic; no fitted calibration adopted or statistical rejection.')
 
 

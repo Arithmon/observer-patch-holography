@@ -111,6 +111,8 @@ REPLAYS = (
     ("model.native_modular_reference.reference_tomography", None, "model/native_modular_reference/reference_tomography_results.json"),
     ("model.native_modular_reference.learned_clock", None, "model/native_modular_reference/learned_clock_results.json"),
     ("model.native_modular_reference.phase_clock", None, "model/native_modular_reference/phase_clock_results.json"),
+    ("model.native_modular_reference.native_census", None, "model/native_modular_reference/native_census_results.json"),
+    ("model.native_modular_reference.census_clock", None, "model/native_modular_reference/census_clock_results.json"),
     ("model.event_circulation", None, "model/event_circulation/results.json"),
     ("model.compiled_native_interface", None, "model/compiled_native_interface/results.json"),
     ("model.calibrated_measurement", None, "model/calibrated_measurement/results.json"),

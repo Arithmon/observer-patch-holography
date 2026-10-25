@@ -203,6 +203,17 @@ not a domain argument.
   cached function may therefore be skipped for an invalid argument after a
   valid equivalent key was stored. Validate original arguments before entering
   the cache; a passing cold-input refusal does not establish this boundary.
+  Mutate values returned by public producers and confirm that later source
+  results and acceptance bounds stay unchanged. Frozen dataclasses can expose
+  writable instance dictionaries; `deepcopy(Fraction)` aliases the
+  original rational. Detach nested values as well as their containers.
+  A receipt checker must own its source replay or verify a complete independent
+  certificate. Matching supplied receipts or matching hashes do not prove
+  execution. Retain wrong terminal populations with correct record marginals
+  and valid-shaped invented stream hashes as rejection controls.
+  Trace changed shared helpers through aggregate dependency digests as well
+  as explicit source maps. Regenerate every affected consumer from its
+  producer; direct source-map checks do not cover opaque aggregate hashes.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
