@@ -13,6 +13,13 @@ outside the displayed PDG componentwise one-sigma interval under an identity
 pole-mass map; the Higgs/top and quark coordinates do not yet have a common
 physical mass attachment. Each ledger row reads its owning artifact.
 
+The [finite matter and common-field package](../../model/observer_particles/README.md)
+constructs internal multiplets and one-Higgs invariant tensors under a declared
+response and spin lift, with compatible scalar, CAR and vector contracts.
+Its eight restricted premise connections are rendered in the postdiction,
+provenance and theorem-gap ledgers. They select no observed masses or physical
+coupling normalization. Existing numerical rows keep their promotion classes.
+
 The executable observer supplies a [finite port-information
 boundary](../../model/observer/README.md): its fixed two-event tape does not
 determine the load `W5` projection, while ideal labelled all-seam records do

@@ -1,5 +1,13 @@
 # Observer-Patch Holography: Lean 4 Formalisation
 
+`Screen/ObserverFieldInterfaces.lean` formalizes the common incidence-Dirac
+square, Hermiticity, null-potential cancellation, the static-product
+positive-stress obstruction, conditional focusing algebra and finite
+entangled-pair normalization controls. The executable
+[matter package](../../model/observer_particles/README.md) checks the larger
+representation matrices and numerical operator instances. The Lean module
+does not formalize those entire producers or identify physical masses.
+
 Lean 4 / Mathlib formalisation of the OPH theorem library. The
 consensus-layer entries of the [proof index](PROOF_INDEX.md) follow
 Definition 4.1 and Proposition 4.2 of the archived paper *Paradise as

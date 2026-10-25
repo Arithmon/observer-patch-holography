@@ -67,16 +67,26 @@ intemporelle et les horloges qu’elle contient.
   histoires de mesure complètes ne distinguent pas les structures radiales,
   si bien que relier ce rayon à la direction radiale du champ et à la
   distance physique reste ouvert.
+- **Matière interne et interactions permises.** Un relèvement de spin déclaré
+  de la réponse finie donne les charges internes d’une génération du Modèle
+  standard. Un doublet scalaire admet les trois canaux d’interaction des
+  fermions chargés, avec 648 identités exactes de famille, de courant et de
+  composante. Des opérateurs spatiaux communs relient les constructions
+  conditionnelles de champs scalaires et fermioniques. Les matrices de famille,
+  la phase de Higgs, l’échelle de masse et l’identification physique des
+  particules sont des entrées.
+  [Contrats de matière et de champs](model/observer_particles/DERIVATION.md).
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de
   Born, qui fixe les probabilités quantiques, et la borne de Tsirelson sur les
   registres achevés ; un support tridimensionnel dans sa réponse lente ; l’algèbre de
-  Lie de jauge du Modèle standard avec une génération sans anomalies ; un
-  ordre causal de dimension (1+3) dont le temps propre vient de comptages de
-  registres ; et l’équation d’Einstein issue d’un bilan nul réalisé.
+  Lie de jauge du Modèle standard et une représentation de matière sans anomalies
+  sous ses prémisses ; un ordre causal de dimension (1+3) avec une lecture
+  conditionnelle du temps propre par comptage ; et l’équation d’Einstein sous
+  des prémisses indépendantes d’entropie, de bilan nul, de contrainte et de limite continue.
 - **Des mathématiques vérifiables.** La [bibliothèque Lean](Lean/) contient
-  plus de 12600 théorèmes et lemmes publics sans preuve admise, et chaque reçu
+  plus de 12700 théorèmes et lemmes publics sans preuve admise, et chaque reçu
   de calcul conservé est rejoué en intégration continue.
 - **Des tests fixés à l’avance.** Les prédictions et leurs règles de rejet
   entrent dans l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
@@ -206,6 +216,16 @@ pour les observations d’un même modèle commun est le problème central de la
 construction. La [carte des prémisses](model/PREMISES.md) indique quelles
 prémisses la spécification exécutable fournit et lesquelles elle prend comme
 entrées.
+
+Le candidat spectral fini d’[Alex Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf)
+a pour inverse `137.035999189566`. La
+[reconstruction OPH](model/observer_particles/README.md) lui attribue cette
+construction et conserve les résultats complémentaires de mesure ainsi que les
+contrôles de normalisation. Son identification avec le couplage électromagnétique
+physique et son rattachement à l’équation du grain d’écran sont conditionnels.
+Le dictionnaire métrique commun ne fournit pas le bilan gravitationnel : le
+produit radial statique testé échoue au contrôle de contrainte relative et
+nécessite une réponse géométrique.
 
 ## Articles
 

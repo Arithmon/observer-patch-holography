@@ -1,6 +1,6 @@
 # Particle Provenance Ledger
 
-Generated: `2026-08-26T13:17:22Z`
+Generated: `2026-10-25T12:33:45Z`
 
 This ledger records target-use and convention-sensitivity status for the public quantitative particle rows.
 
@@ -58,3 +58,18 @@ These zero hard quadratic parameters are branch-conditional mode statements, not
 - Endpoint contract classification: `source_spectral_reduction_closed_measure_payload_absent`
 - Endpoint package classification: `None`
 - Missing evidence: populated source spectral measure payload and interval-composition certificates
+
+## Restricted finite matter and field contracts
+
+The response-derived internal multiplets, invariant interactions and shared field operators below are finite witnesses under declared contracts. They supply no observed mass value and promote none of the quantitative rows.
+
+| Witness | Premise connections | Finite supply | Receipt |
+|---|---|---|---|
+| matter_decoder | PR-59 | Exact conditional fifteen-state charge/Casimir decoder and all source-current brackets. | `model/observer_particles/results/representation_identification.json` |
+| one_higgs_vertices | PR-50, PR-67 | One-doublet invariant lines and all 648 family/current/component identities; coefficients are unselected. | `model/observer_particles/results/unified_yukawa_action.json` |
+| spin_matter_controls | PR-47 | Independent finite Spin and matter controls with complete readout; physical chirality is unselected. | `model/observer_particles/results/spin_matter_join.json` |
+| shared_spatial_operator | PR-53, PR-71 | Complete conditional CAR field shares the ideal scalar spatial generator and incident coordinate; physical field and refinement are separate. | `model/observer_particles/results/shared_spatial_matter.json` |
+| full_cochain_control | PR-53, PR-71 | Complete cone cochains preserve the scalar block and remove truncated edge cycles; this cone is distinct from the radial cylinder. | `model/observer_particles/results/cochain_completion.json` |
+| metric_and_null_dictionary | PR-25, PR-53 | Common pointwise tetrad, field symbols and rank-nine null dictionary; independent Einstein balances are not supplied. | `model/observer_particles/results/geometric_matter_join.json` |
+| native_entropy_and_area | PR-26, PR-27 | Finite constrained entropy and geometric area/volume identities; physical vacuum fixed-volume stationarity is not supplied. | `model/observer_particles/results/geometric_stationarity.json` |
+| entangled_pair_scalar | PR-17, PR-54 | Wissner-Gross's finite spectral scalar, independently reconstructed with complete outcome controls; physical Thomson and same-cell identifications are separate. | `model/observer_particles/results/entangled_alpha.json` |

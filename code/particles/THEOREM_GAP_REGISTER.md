@@ -43,3 +43,18 @@ Every named open object of the particle program with its class, plus the closure
 | BRST_POLE_KERNEL_PACKET | cross-cutting | research_open | BRST-complete two-point kernels with sheets, residues, and widths; every mass above is a tree/chart or threshold coordinate until this closes |
 | SM_QFT_NATIVE_PRODUCER_STACK | W/Z and quantum-field landing | research_open | construct the source-selected action/normalization, a QFT-Q2-E measure or QFT-Q2-H Hamiltonian, the regulator-specific QFT-Q3 restoration/matching/identity packet with dressed current amplitudes and numerical freeze, and the separate QFT-Q4 observable tower and resonance-sheet continuation packet |
 | NONPERTURBATIVE_HADRON_FACTOR | hadrons | computationally_blocked | the source-only m_hadron/Lambda factor; the conditional route through the published lattice ratio carries the spectrum in the interim |
+
+## Restricted finite model witnesses
+
+These constructions satisfy the named finite contracts under their declared inputs. No full physical premise or numerical mass gap is marked closed by this table.
+
+| Witness | Premise connections | Finite supply | Receipt |
+|---|---|---|---|
+| matter_decoder | PR-59 | Exact conditional fifteen-state charge/Casimir decoder and all source-current brackets. | `model/observer_particles/results/representation_identification.json` |
+| one_higgs_vertices | PR-50, PR-67 | One-doublet invariant lines and all 648 family/current/component identities; coefficients are unselected. | `model/observer_particles/results/unified_yukawa_action.json` |
+| spin_matter_controls | PR-47 | Independent finite Spin and matter controls with complete readout; physical chirality is unselected. | `model/observer_particles/results/spin_matter_join.json` |
+| shared_spatial_operator | PR-53, PR-71 | Complete conditional CAR field shares the ideal scalar spatial generator and incident coordinate; physical field and refinement are separate. | `model/observer_particles/results/shared_spatial_matter.json` |
+| full_cochain_control | PR-53, PR-71 | Complete cone cochains preserve the scalar block and remove truncated edge cycles; this cone is distinct from the radial cylinder. | `model/observer_particles/results/cochain_completion.json` |
+| metric_and_null_dictionary | PR-25, PR-53 | Common pointwise tetrad, field symbols and rank-nine null dictionary; independent Einstein balances are not supplied. | `model/observer_particles/results/geometric_matter_join.json` |
+| native_entropy_and_area | PR-26, PR-27 | Finite constrained entropy and geometric area/volume identities; physical vacuum fixed-volume stationarity is not supplied. | `model/observer_particles/results/geometric_stationarity.json` |
+| entangled_pair_scalar | PR-17, PR-54 | Wissner-Gross's finite spectral scalar, independently reconstructed with complete outcome controls; physical Thomson and same-cell identifications are separate. | `model/observer_particles/results/entangled_alpha.json` |

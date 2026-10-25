@@ -1,7 +1,8 @@
 version: 1
-as_of: "2026-06-17"
+as_of: "2026-10-25"
 goal: "status-tiered particle-spectrum ledger from the candidate P-closure branch plus OPH axioms/theorem chain"
 notes:
+  - "Finite response, matter, interaction and common-field witnesses are recorded separately from numeric mass predictions. Their declared lift, action, state, clock and geometry premises remain explicit."
   - "Candidate branch values: P = 1.63097210492078846050203640439 and alpha_cand^-1 = 136.994020662724205139718642793."
   - "This ledger is conservative: compare-only rows, target-anchored witnesses, and corpus-limited no-go boundaries sit outside live target-free predictions."
   - "The retained source frontier has exact finite representation indices, while its QFT functional, census specialization, thresholds, maps, and remainder enclosures remain unresolved. Historical blocker, no-go, guarded-adoption, and provenance work is recorded in Git history and GitHub rather than mirrored here."
@@ -207,3 +208,65 @@ entries:
     extra_ansatz: "forbidden until no claimed sector remains continuation or open"
     blocked_by:
       ["particles.release.01-full-zoo-ledger-and-blind-validation"]
+  - id: finite.matter.response
+    output_keys: []
+    label: Internal matter representation
+    tier: conditional_finite_witness
+    branch: declared_observer_field_contract
+    oph_derived_piece: declared native response algebra, spin lift, primitive central character and exterior construction
+    borrowed_qft_piece: null
+    extra_ansatz: physical Weyl statistics and current identification; source selection of the lift
+    blocked_by:
+    - physical Weyl statistics and current identification; source selection of the lift
+    artifact: ../../model/observer_particles/results/representation_identification.json
+    physical_mass_prediction_promoted: false
+  - id: finite.matter.one_higgs
+    output_keys: []
+    label: One-Higgs interaction tensors
+    tier: conditional_finite_witness
+    branch: declared_observer_field_contract
+    oph_derived_piece: all twelve current identities and 648 arbitrary-complex family/component equations
+    borrowed_qft_piece: null
+    extra_ansatz: physical Higgs phase; kinetic normalization; all family coefficients and vacuum scale
+    blocked_by:
+    - physical Higgs phase; kinetic normalization; all family coefficients and vacuum scale
+    artifact: ../../model/observer_particles/results/unified_yukawa_action.json
+    physical_mass_prediction_promoted: false
+  - id: finite.matter.common_field
+    output_keys: []
+    label: Shared spatial field operator
+    tier: conditional_finite_witness
+    branch: declared_observer_field_contract
+    oph_derived_piece: complete conditional CAR field shares the ideal scalar spatial operator; complete cochain alternative
+      retained separately
+    borrowed_qft_piece: null
+    extra_ansatz: source selection of continuing action and state; physical field net and continuum matching
+    blocked_by:
+    - source selection of continuing action and state; physical field net and continuum matching
+    artifact: ../../model/observer_particles/results/shared_spatial_matter.json
+    physical_mass_prediction_promoted: false
+  - id: finite.geometry.response_control
+    output_keys: []
+    label: Static product geometry response control
+    tier: conditional_finite_witness
+    branch: declared_observer_field_contract
+    oph_derived_piece: same metric symbols and area/volume dictionary; positive relative null stress excludes the
+      tested fixed static product attachment
+    borrowed_qft_piece: null
+    extra_ansatz: source-selected geometry response and physical generalized-entropy stationarity
+    blocked_by:
+    - source-selected geometry response and physical generalized-entropy stationarity
+    artifact: ../../model/observer_particles/results/geometric_stationarity.json
+    physical_mass_prediction_promoted: false
+  - id: finite.coupling.entangled_pair
+    output_keys: []
+    label: Wissner-Gross entangled-pair spectral coupling candidate
+    tier: conditional_finite_witness
+    branch: declared_observer_field_contract
+    oph_derived_piece: exact gain multiplicities 79,48,42,3 and normalization 31104
+    borrowed_qft_piece: null
+    extra_ansatz: physical photon/Thomson identity; same-cell P bridge; running and scheme matching
+    blocked_by:
+    - physical photon/Thomson identity; same-cell P bridge; running and scheme matching
+    artifact: ../../model/observer_particles/results/entangled_alpha.json
+    physical_mass_prediction_promoted: false

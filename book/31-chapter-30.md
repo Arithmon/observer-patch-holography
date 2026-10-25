@@ -20,6 +20,12 @@ Koide's 1776.97 had not moved. The world average had walked 7.2 million electron
 
 Something holds the three masses at two thirds to three parts in a million. It is a triangle.
 
+## What a mass calculation must fix
+
+An internal charge list is a list of possible transformation laws. It becomes a mass calculation only after the same observer history supplies a kinetic term, a state, the mass-generating interactions and a clock that reads energy. The finite source admits the three charged-fermion interaction channels with one Higgs doublet. It does not select their coefficient matrices or the Higgs vacuum.
+
+The neutrino sector admits an optional effective interaction with two Higgs factors, but its coefficient and scale are additional inputs. None of the observed nonzero masses is derived by those algebraic possibilities alone. The relation below has a different scope: under its balance and mass-ordering assumptions, measured electron and muon masses constrain the tau. That conditional relation is not an absolute prediction of all three masses.
+
 ## Three corners, two numbers
 
 Chapter twenty-seven put the three families of matter on the three corners of an oriented face of the icosahedron, which is where the count of three came from. The electron, the muon and the tau sit one to a corner.
@@ -54,7 +60,7 @@ Add the three eigenvalues. The three copies of a give three a. The cosine terms 
 
 Add their squares. Each square is a squared, plus twice a times twice b times a cosine, plus four b squared times the square of a cosine. The middle terms cancel by the first line. The last terms come to four b squared times three halves, which is six b squared. Total three a squared plus six b squared.
 
-What a corner carries is an amplitude, and chapter nineteen's rule for turning an amplitude into a measurable quantity is to square it. Each eigenvalue is therefore the square root of its corner's mass, up to one overall scale that fixes the units and cancels out of any ratio. The square root of a mass is a positive number, so the only responses describing anything that exists are the ones whose three scale factors all come out positive.
+What a corner carries is an amplitude, and chapter nineteen's rule for turning an amplitude into a measurable quantity is to square it. In the declared mass reading, each eigenvalue is the square root of its corner's mass, up to one overall scale that fixes the units and cancels out of any ratio. The square root of a mass is a positive number, so the only responses describing anything that exists are the ones whose three scale factors all come out positive.
 
 Koide's ratio, written Q, is the sum of the eigenvalues' squares divided by the square of their sum. The two lines above have evaluated both of those.
 

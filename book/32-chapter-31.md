@@ -128,6 +128,12 @@ Dip a bent wire in soap solution and the film stretched across it is the surface
 
 The settling is also invisible, which is most of why the film looks clever. By the time the frame is steady in your hand the film has finished, so nobody has ever watched a soap film choose. What Plateau's family described to him across forty years was the finished surface, every time.
 
+## The interaction coefficients
+
+One common local metric can carry the scalar, spinor and gauge terms. Exact invariant tensors connect the conditional matter list to one Higgs doublet and its conjugate, giving the up, down and charged-lepton interactions. Gauge and Lorentz invariance constrain their form. For three declared families, they permit three complex coefficient matrices before changes of flavor basis.
+
+The line below is a conditional effective action with those coefficients and its vacuum specified. Deriving the coefficients, the chiral field interpretation and the geometric response from repair is distinct from verifying that the line is consistent. The fixed product background illustrates the difference: it can describe waves, while a gravitating excitation requires a geometry that responds to their stress.
+
 ## The line
 
 Physics as it is normally taught reaches a Lagrangian in the first week and spends the rest of the time taking it apart. The spacetime is there before the pen touches the page, the group is written down because the detectors reported it, the fields are listed because they were found, and the numbers are entered because laboratories measured them.

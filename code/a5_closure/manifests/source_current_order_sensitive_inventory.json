@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 909,
+    "file_count": 910,
     "files": [
       {
         "byte_count": 42558,
@@ -1473,6 +1473,11 @@
         "sha256": "sha256:2b92047f83272f1f559b70640260db7e256b8b6095b4aca34c2ef53aa7310607"
       },
       {
+        "byte_count": 4401,
+        "path": "Lean/Screen/ObserverFieldInterfaces.lean",
+        "sha256": "sha256:eda13fa7242a6fccef281616458f7656bcf5b73044934802fbb6ad6802efd1af"
+      },
+      {
         "byte_count": 10866,
         "path": "Lean/Screen/OrientedFaceBracketSelector.lean",
         "sha256": "sha256:19df8f7e546402926b4e3fc3f6528c022247a6628711b41a4c05e3922d35ab33"
@@ -1805,7 +1810,7 @@
       {
         "byte_count": 22150,
         "path": "Lean/Screen/WhitneyGeneratedCertificate.lean",
-        "sha256": "sha256:9bbcac798b48a3786103a1c1a099c1eae9beec6f26e9d2d78124e30554718bec"
+        "sha256": "sha256:b705fc4e5d281443c20f44a0bd9690a7becb6935f97baf90c3e0537de719fc53"
       },
       {
         "byte_count": 2893,
@@ -4743,7 +4748,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:7e2f4883435e3f43b0476501ccdd2b39b6398aa768737004774aacaef71cbb7f",
+    "files_sha256": "sha256:a537c9c481b9902b22889258532de2273b6165281d36e2ec4e78d0f1bbe4442f",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7652,7 +7657,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:23f90aeb8813f592747a07712a35eba491ecda63c1ec4a97a37fbe17741ad091",
+  "inventory_sha256": "sha256:f00d0e658d67ce871ae5c391a978cbe3a354b40aa4701d01bd394185c87d934f",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

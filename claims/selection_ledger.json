@@ -196,10 +196,11 @@
       "conditional_on": [],
       "canonical_claim_id": "OPH-GAUGE-D7-D9",
       "secondary_claim_ids": [
-        "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT"
+        "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+        "OPH-OBSERVER-MATTER-INTERACTION-WITNESS"
       ],
       "owner_issues": [],
-      "where": "The completed matter packet carries separately declared three-generation and one-Higgs completions inside the conditional window 3 <= N_g <= 5 given by the CP-capability and weak-sector clauses. The one-generation chiral witness is realized exactly; the generation count, scalar multiplicity, and extra-sector completeness are open physical attachments, and no minimality argument enters any conclusion. The executed campaigns bound them exactly: the window edges are exact, the in-window count and scalar count are not source-determined, and extra light sectors are excludable only inside the declared algebra (receipts multiplicity_window_reference and matter_menu_spectral_ledger_reference).",
+      "where": "The completed matter packet carries separately declared three-generation and one-Higgs completions inside the conditional window 3 <= N_g <= 5 given by the CP-capability and weak-sector clauses. The one-generation chiral witness is realized exactly; the generation count, scalar multiplicity, and extra-sector completeness are open physical attachments, and no minimality argument enters any conclusion. The executed campaigns bound them exactly: the window edges are exact, the in-window count and scalar count are not source-determined, and extra light sectors are excludable only inside the declared algebra (receipts multiplicity_window_reference and matter_menu_spectral_ledger_reference). The source-linked finite decoder and one-Higgs tensor witness instantiate the stated branch; numerical coefficients and physical field selection are separate.",
       "menu": {
         "size": 3,
         "alternatives": "the conditional window admits N_g in {3, 4, 5}; the declared completion displays three without selecting it",
@@ -207,7 +208,8 @@
       },
       "compression_input": true,
       "receipts": [
-        "code/a5_closure/super_tannakian_matter_lift_certificate.py"
+        "code/a5_closure/super_tannakian_matter_lift_certificate.py",
+        "model/observer_particles/results/unified_yukawa_action.json"
       ],
       "lean": [],
       "negative_controls": [
@@ -444,9 +446,11 @@
         "physical_port_current_realization"
       ],
       "canonical_claim_id": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-      "secondary_claim_ids": [],
+      "secondary_claim_ids": [
+        "OPH-OBSERVER-MATTER-INTERACTION-WITNESS"
+      ],
       "owner_issues": [],
-      "where": "Inside the declared charged-double-triplet and exterior CAR/Fock construction, the exhaustive 1024-subset anomaly scan leaves the unordered conjugate rank-15 pair as the unique nonempty chiral anomaly-free selection and outputs its fermionic-parity grading. The finite non-split transport double cover fixes the Spin/odd-Weyl typing inside that fixture. The upstream current representation, physical matter action, one conjugate representative, continuum Spin attachment, scalar existence, and extra-light-sector completeness are not source-selected. Conditional on rows 4 and 12.",
+      "where": "Inside the declared charged-double-triplet and exterior CAR/Fock construction, the exhaustive 1024-subset anomaly scan leaves the unordered conjugate rank-15 pair as the unique nonempty chiral anomaly-free selection and outputs its fermionic-parity grading. The finite non-split transport double cover fixes the Spin/odd-Weyl typing inside that fixture. The upstream current representation, physical matter action, one conjugate representative, continuum Spin attachment, scalar existence, and extra-light-sector completeness are not source-selected. Conditional on rows 4 and 12. The source-linked finite decoder and one-Higgs tensor witness instantiate the stated branch; numerical coefficients and physical field selection are separate.",
       "menu": {
         "size": 1024,
         "alternatives": "all 1024 subsets of the ten nontrivial isotypic components; exactly two survive chirality and the four anomaly constraints, and they form one unordered conjugate pair equal to the two fermionic-parity sectors",
@@ -456,7 +460,8 @@
       "receipts": [
         "code/a5_closure/super_tannakian_matter_lift_certificate.py",
         "code/a5_closure/receipts/super_tannakian_matter_reference.receipt.json",
-        "code/a5_closure/manifests/spin_statistics_semantic_artifact.json"
+        "code/a5_closure/manifests/spin_statistics_semantic_artifact.json",
+        "model/observer_particles/results/unified_yukawa_action.json"
       ],
       "lean": [
         {

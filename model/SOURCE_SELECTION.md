@@ -1,5 +1,16 @@
 # Selecting one source, interface and repair law
 
+The [finite matter contracts](observer_particles/DERIVATION.md) expose a
+selection boundary inside the particle route. The declared response and spin
+lift determine internal multiplets and invariant interaction lines, while
+three complex family matrices, the Higgs phase and its scale remain free.
+A common unbroken irreducible family action forces degeneracy, so it cannot
+supply the measured hierarchy under those assumptions. The entangled-pair
+spectral scalar is computed independently of empirical coupling values;
+its identification with physical electromagnetic normalization and the
+same-cell capacity equation requires a separate map. None of these finite
+witnesses retires a full physical source-selection premise.
+
 The construction target has three primitive selection obligations: the
 **carrier architecture**, the **observer interface and its implementation**,
 and the **complete repair rule**. Effective fields, transport, clock

@@ -1,5 +1,14 @@
 # The OPH paper set
 
+The [matter and common-field contracts](../model/observer_particles/DERIVATION.md)
+connect the particle and gauge papers to the executable-observer and spacetime
+papers. They derive conditional internal multiplets and interaction lines,
+construct compatible field operators, and test the static geometry against
+relative stress. The fine-structure supplement separately evaluates the
+[entangled-pair spectral candidate of A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf) and its proposed capacity attachment.
+These finite connections do not supply observed masses, physical coupling
+normalization or full generalized-entropy stationarity.
+
 This record states the model milestone around which the papers are organized
 and the role of every paper. The [basis](BASIS.md) states the hypothesis,
 rule, condition and specification that the papers share; the

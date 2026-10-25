@@ -1,5 +1,16 @@
 # Proof-to-Paper Index
 
+The particle/field interface module
+[`Screen/ObserverFieldInterfaces.lean`](../Screen/ObserverFieldInterfaces.lean)
+serves the particle, executable-observer and spacetime papers. It proves the
+incidence block-square and Hermiticity identities, null contraction controls,
+a conditional radial focusing identity and exact candidate-normalization
+arithmetic. The finite matter representation and interaction calculations
+are executable algebra with retained receipts in
+[`model/observer_particles/`](../../model/observer_particles/README.md),
+not a claim that all of those calculations are Lean theorems. Physical
+mass selection and the full Einstein antecedents remain separate.
+
 For the corrected typed Einstein composition theorem (GitHub #578), see the
 current statement-by-statement and premise audit in
 [`EINSTEIN_BRANCH_INDEX.md`](EINSTEIN_BRANCH_INDEX.md). That development is

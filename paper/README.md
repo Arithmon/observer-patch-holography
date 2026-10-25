@@ -35,12 +35,12 @@ architecture.
 | Paper | Role |
 | --- | --- |
 | [Observers Who Read Their Universe into Existence](../flagship/from_observer_consensus_to_standard_physics.pdf) ([source](../flagship/from_observer_consensus_to_standard_physics.tex)) | Flagship synthesis: the account of the theory, selected results, the construction scoreboard and the closure hypothesis; released on [PhilPapers](https://philpapers.org/rec/MUEFOC) |
-| [An Executable Observer for Observer Patch Holography](executable_observer_construction.pdf) ([source](executable_observer_construction.tex)) | Construction paper: specification, acceptance criteria, certified components, premise map and open connections |
+| [An Executable Observer for Observer Patch Holography](executable_observer_construction.pdf) ([source](executable_observer_construction.tex)) | Construction paper: specification, acceptance criteria, certified components, common field operators, premise map and open connections |
 | [Reality as a Consensus Protocol](reality_as_consensus_protocol.pdf) ([source](reality_as_consensus_protocol.tex)) | Theorem library: finite repair, protected records, quotient normal forms and provenance order |
 | [Observers Are All You Need](observers_are_all_you_need.pdf) ([source](observers_are_all_you_need.tex)) | Theorem library: observers, records, quantum identities, thermodynamics, matter continuum and the closure equations |
-| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Theorem library: provenance compiler, source-derived causal order, ambient 1+3 carrier and the conditional continuum, stress, generalized-entropy and Einstein chain |
-| [Deriving Standard Model Gauge Structure](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Theorem library: categorical and finite-carrier gauge routes, conditional matter image and global-form boundary |
-| [Deriving the Particle Zoo](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Theorem library: particle carriers, hierarchy coordinates, declared flavor tests and the executable pipeline |
+| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Theorem library: provenance compiler, source-derived causal order, ambient 1+3 carrier and the conditional continuum and Einstein chain, common metric dictionary and the static-product stress obstruction |
+| [Deriving Standard Model Gauge Structure](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Theorem library: categorical and finite-carrier gauge routes, conditional response-derived matter image, spin-lift premises and global-form boundary |
+| [Deriving the Particle Zoo](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Theorem library: internal matter decoding, one-Higgs interactions, unselected family coefficients, hierarchy coordinates and the executable pipeline |
 | [Federated Echosahedral Screen Microphysics](screen_microphysics_and_observer_synchronization.pdf) ([source](screen_microphysics_and_observer_synchronization.tex)) | Theorem library: twelve-port source selector, central records and observer synchronization |
 
 The flavor theorem is developed in [The Positive-Chamber Koide Identity for
@@ -52,6 +52,13 @@ left the active set keep their sources and last built PDFs in
 [`archive/`](archive/); the [paper set](../docs/PAPER_SET.md) lists them.
 
 Shared TeX lives in [`tex_fragments/`](tex_fragments/). The [BFT/QECC appendix](appendix_B_bft_qecc_extensions.tex) is included by *Reality as a Consensus Protocol*.
+
+The [fine-structure supplement](../extra/fine_structure_constant_derivation.pdf)
+retains the certified trial-map roots and separately reconstructs the
+[entangled-qudit candidate of A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf).
+His exchange construction and exact scalar receive direct attribution.
+The OPH complete-outcome, support-alignment and normalized-readout controls
+retain the independent physical coupling and same-cell premises.
 
 ## Reproducibility
 

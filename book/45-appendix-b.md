@@ -16,7 +16,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Antimatter.** For every list of matter states there is a mirror list with every charge reversed. The two are one object, and a world built on either gets the same physics with the labels swapped.
 
-**Area law.** The surface around a region fixes how much can be known about the inside of it, and the volume does not come into it. A black-hole horizon, whose entropy is fixed by its area, is the best-known case. Twice the radius buys four times the capacity where counting by volume promises eight.
+**Area law.** An entropy or capacity contribution proportional to the area of a region's boundary in a stated regime. A black-hole horizon is the best-known example: twice the radius buys four times the area. Thermal entropy can scale with volume, so the quantity and state being counted matter.
 
 **Bit.** The answer to one well-chosen yes-or-no question, and the unit anything measured in questions is counted in. Erasing one releases heat, and how much depends on nothing about the device, only on the temperature around it.
 
@@ -120,7 +120,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Leaky abstraction.** An account that lets you get on with the work while the machinery stays out of sight, good until the machinery does something the account has no words for. Joel Spolsky wrote the rule down in 2002, and the everyday container picture of space and time leaks in at least six places.
 
-**Mass.** The standing cost of a persistent pattern: the repair it demands at every event to be re-established where it is. Every observer computes the same value for it out of energy and momentum.
+**Mass.** In a relativistic effective description, the invariant read from a particle's energy and momentum. For an isolated stable mode it obeys \(m^2c^4=E^2-c^2p^2\). Unstable particles and confined quarks require their resonance or running-mass conventions. Reading a repair relaxation rate as a mass requires the relevant dynamics, field response and clock calibration.
 
 **Mismatch.** The disagreement on a seam: what is left when one reading, passed through the seam's dictionary, is held against the other. It is zero when the two answer each other and positive when they do not. Every seam can read zero while a loop carries a residue, which is chapter six's leftover of one.
 

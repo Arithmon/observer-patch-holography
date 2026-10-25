@@ -85,3 +85,13 @@ def test_markdown_renders_both_sections():
     text = lane.render_markdown(register)
     assert "## Closed" in text
     assert "## Open" in text
+
+
+def test_finite_witnesses_leave_physical_and_numeric_gaps_open():
+    register = lane.build()
+    witnesses = register["finite_model_witnesses"]
+    assert len(witnesses["rows"]) == 8
+    assert witnesses["physical_premise_removal_claimed"] is False
+    assert all(row["physical_premise_removed"] is False for row in witnesses["rows"])
+    assert "BRST_POLE_KERNEL_PACKET" in {row["id"] for row in register["open_register"]}
+    assert "## Restricted finite model witnesses" in lane.render_markdown(register)

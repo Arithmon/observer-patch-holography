@@ -4,6 +4,21 @@ Generated deterministically by `code/particles/scripts/build_postdiction_ledger.
 
 Numeric values and measured references on this page are read mechanically from the cited parent artifacts. Structural rows are derived from validated Lean declarations, analytic paper proofs, structured parents, or their combination, and direct algebraic corollaries are identified. The ledger promotes nothing and changes no solve path. Interval rows report containment of the compare-only witness; conditional rows carry their declared premises; chart coordinates keep their NOT_EVALUABLE physical-comparison status.
 
+## Restricted finite matter and field contracts
+
+The [matter construction](../model/observer_particles/DERIVATION.md) instantiates the following finite contracts. Its retained computations and source bindings are verified when this ledger is built. These are conditional structural witnesses; no physical premise is retired and no measured mass or coupling is promoted.
+
+| Witness | Premise connections | Finite supply | Receipt |
+|---|---|---|---|
+| matter_decoder | PR-59 | Exact conditional fifteen-state charge/Casimir decoder and all source-current brackets. | `model/observer_particles/results/representation_identification.json` |
+| one_higgs_vertices | PR-50, PR-67 | One-doublet invariant lines and all 648 family/current/component identities; coefficients are unselected. | `model/observer_particles/results/unified_yukawa_action.json` |
+| spin_matter_controls | PR-47 | Independent finite Spin and matter controls with complete readout; physical chirality is unselected. | `model/observer_particles/results/spin_matter_join.json` |
+| shared_spatial_operator | PR-53, PR-71 | Complete conditional CAR field shares the ideal scalar spatial generator and incident coordinate; physical field and refinement are separate. | `model/observer_particles/results/shared_spatial_matter.json` |
+| full_cochain_control | PR-53, PR-71 | Complete cone cochains preserve the scalar block and remove truncated edge cycles; this cone is distinct from the radial cylinder. | `model/observer_particles/results/cochain_completion.json` |
+| metric_and_null_dictionary | PR-25, PR-53 | Common pointwise tetrad, field symbols and rank-nine null dictionary; independent Einstein balances are not supplied. | `model/observer_particles/results/geometric_matter_join.json` |
+| native_entropy_and_area | PR-26, PR-27 | Finite constrained entropy and geometric area/volume identities; physical vacuum fixed-volume stationarity is not supplied. | `model/observer_particles/results/geometric_stationarity.json` |
+| entangled_pair_scalar | PR-17, PR-54 | Wissner-Gross's finite spectral scalar, independently reconstructed with complete outcome controls; physical Thomson and same-cell identifications are separate. | `model/observer_particles/results/entangled_alpha.json` |
+
 ## Theorem, observer execution and physical comparison
 
 An exact finite theorem retains its stated hypotheses and mathematical force. An executed observer receipt additionally instantiates a preparation, instrument, scheduler, accessible records and error contract. A physical comparison requires an explicit correspondence from those same observables to measured quantities. Neither a theorem nor a successful software execution alone establishes that correspondence; an absent physical attachment does not invalidate the finite theorem.

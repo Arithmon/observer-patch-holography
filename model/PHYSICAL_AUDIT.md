@@ -1,5 +1,16 @@
 # Physical interpretation of the executable model
 
+The [matter and geometry witnesses](observer_particles/README.md) give exact
+internal charge decoding and one-Higgs invariant tensors, conditional shared
+spatial operators, a common pointwise metric dictionary and native entropy
+controls. A static screen-dependent radial product has zero radial-null
+Einstein contraction while an admitted scalar excitation has positive
+relative null stress. With the reference and other sources fixed, that
+attachment cannot balance both states. A responsive geometry and physical
+fixed-proper-volume generalized-entropy stationarity remain independent
+requirements. Neither a transfer relaxation gap nor a cavity frequency is
+identified with an observed particle rest mass by these witnesses.
+
 The construction derives a common subsequential continuum operator and a
 conditional product free field with thermal state, active clock and measurable
 Lorentz-signature action. A smooth full action density gives a smooth metric;

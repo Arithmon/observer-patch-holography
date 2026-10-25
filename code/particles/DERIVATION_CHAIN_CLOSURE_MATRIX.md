@@ -1,6 +1,6 @@
 # Particle Derivation Chain Classification Matrix
 
-Generated: `2026-08-26T13:17:22Z`
+Generated: `2026-10-25T12:33:45Z`
 
 Classification: `scientific_chain_boundaries_and_required_receipts`
 Promotable chains: `none`
@@ -24,3 +24,18 @@ promote `electroweak_massive_bosons`.
 | `selected_class_quarks` | `quark_source_nonidentifiability__numeric_rows_withheld` | `False` | `QUARK_SOURCE_SPREAD_PAIR_ACTION_BREAKING_THEOREM`, `QUARK_RG_COVARIANT_TRAJECTORY_OR_INVARIANT`, `QUARK_OPERATIONAL_SCHEME_AND_SCALE_SECTION`, `QUARK_THRESHOLD_AND_TOP_CONVERSION`, `QUARK_COMMON_SCALE_DIMENSIONLESS_YUKAWA_CERTIFICATE` | n/a | `code/particles/runs/flavor/quark_sigma_source_nonidentifiability_obstruction.json`, `code/particles/runs/flavor/quark_running_mass_scheme_convention_obstruction.json`, `code/particles/runs/flavor/quark_class_uniform_public_frame_descent_obstruction.json` |
 | `neutrino_absolute_attachment` | `rejected_target_informed_weighted_cycle_candidate` | `False` | `source_emitted_family_transport_kernel`, `source_derived_weight_exponent_and_cycle_matrix_law`, `source_derived_basis_permutation_and_holonomy_orientation`, `pre_reference_hash_lock` | n/a | none |
 | `hadrons` | `source_backend_absent__empirical_output_class_separate` | `False` | `source_only_hadron_backend` | n/a | `docs/policies/HADRON.md`, `code/particles/hadron/empirical_ee_hadrons_sources.yaml`, `code/particles/hadron/empirical_ee_hadronic_spectral_measure.schema.json` |
+
+## Restricted finite model witnesses
+
+Internal charge decoding, invariant one-Higgs interactions and common field operators are constructed under declared contracts. These entries do not promote the numeric chains above or select physical masses.
+
+| Witness | Premise connections | Finite supply | Receipt |
+|---|---|---|---|
+| matter_decoder | PR-59 | Exact conditional fifteen-state charge/Casimir decoder and all source-current brackets. | `model/observer_particles/results/representation_identification.json` |
+| one_higgs_vertices | PR-50, PR-67 | One-doublet invariant lines and all 648 family/current/component identities; coefficients are unselected. | `model/observer_particles/results/unified_yukawa_action.json` |
+| spin_matter_controls | PR-47 | Independent finite Spin and matter controls with complete readout; physical chirality is unselected. | `model/observer_particles/results/spin_matter_join.json` |
+| shared_spatial_operator | PR-53, PR-71 | Complete conditional CAR field shares the ideal scalar spatial generator and incident coordinate; physical field and refinement are separate. | `model/observer_particles/results/shared_spatial_matter.json` |
+| full_cochain_control | PR-53, PR-71 | Complete cone cochains preserve the scalar block and remove truncated edge cycles; this cone is distinct from the radial cylinder. | `model/observer_particles/results/cochain_completion.json` |
+| metric_and_null_dictionary | PR-25, PR-53 | Common pointwise tetrad, field symbols and rank-nine null dictionary; independent Einstein balances are not supplied. | `model/observer_particles/results/geometric_matter_join.json` |
+| native_entropy_and_area | PR-26, PR-27 | Finite constrained entropy and geometric area/volume identities; physical vacuum fixed-volume stationarity is not supplied. | `model/observer_particles/results/geometric_stationarity.json` |
+| entangled_pair_scalar | PR-17, PR-54 | Wissner-Gross's finite spectral scalar, independently reconstructed with complete outcome controls; physical Thomson and same-cell identifications are separate. | `model/observer_particles/results/entangled_alpha.json` |

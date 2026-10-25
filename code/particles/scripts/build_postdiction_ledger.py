@@ -7122,6 +7122,19 @@ def _whitney_completion_rows() -> list[dict[str, Any]]:
     return rows
 
 
+def _observer_particle_contracts() -> dict[str, Any]:
+    """Verify finite computational custody without promoting physical identities."""
+    directory = REPO / "model/observer_particles"
+    verifier = _fresh_structural_verifier(directory / "run.py")
+    verification = verifier.verify()
+    if verification != json.loads((directory / "results/verification.json").read_text()):
+        raise ValueError("Observer-particle verification view drift")
+    witnesses = verifier.premise_witnesses()
+    if witnesses != json.loads((directory / "results/premise_witnesses.json").read_text()):
+        raise ValueError("Observer-particle premise witness view drift")
+    return witnesses
+
+
 def build(
     out_path: Path = DEFAULT_OUT,
     md_path: Path | None = DEFAULT_MD,
@@ -7226,6 +7239,7 @@ def build(
             "calibrations do not establish joint agreement for one fixed physical "
             "construction or a pooled all-scale verdict"
         ),
+        "finite_model_witnesses": _observer_particle_contracts(),
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
         "retrospective_public_record_comparisons": _retrospective_public_record_references(),
@@ -7266,6 +7280,19 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "report containment of the compare-only witness; conditional rows carry "
         "their declared premises; chart coordinates keep their NOT_EVALUABLE "
         "physical-comparison status.")
+    add("")
+    add("## Restricted finite matter and field contracts")
+    add("")
+    add("The [matter construction](../model/observer_particles/DERIVATION.md) "
+        "instantiates the following finite contracts. Its retained computations and "
+        "source bindings are verified when this ledger is built. These are "
+        "conditional structural witnesses; no physical premise is retired and "
+        "no measured mass or coupling is promoted.")
+    add("")
+    add("| Witness | Premise connections | Finite supply | Receipt |")
+    add("|---|---|---|---|")
+    for row in ledger["finite_model_witnesses"]["rows"]:
+        add(f"| {row['id']} | {', '.join(row['premise_ids'])} | {_cell(row['finite_supply'])} | `{row['receipt']}` |")
     add("")
     add("## Theorem, observer execution and physical comparison")
     add("")

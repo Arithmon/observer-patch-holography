@@ -448,6 +448,7 @@ def build() -> dict[str, Any]:
         "status": "register_current",
         "promotion_allowed": False,
         "closed_this_program": closed,
+        "finite_model_witnesses": json.loads((PARTICLES.parents[1] / "model/observer_particles/results/premise_witnesses.json").read_text()),
         "open_register": open_items,
         "counts": {
             "closed": len(closed),
@@ -501,6 +502,13 @@ def render_markdown(register: dict[str, Any]) -> str:
             f"| {entry['id']} | {entry['family']} | {entry['class']} "
             f"| {entry['statement']} |"
         )
+    lines += ["", "## Restricted finite model witnesses", "",
+        "These constructions satisfy the named finite contracts under their declared inputs. "
+        "No full physical premise or numerical mass gap is marked closed by this table.", "",
+        "| Witness | Premise connections | Finite supply | Receipt |",
+        "|---|---|---|---|"]
+    for row in register["finite_model_witnesses"]["rows"]:
+        lines.append(f"| {row['id']} | {', '.join(row['premise_ids'])} | {row['finite_supply']} | `{row['receipt']}` |")
     lines.append("")
     return "\n".join(lines)
 

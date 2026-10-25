@@ -1,0 +1,158 @@
+{
+  "status": "PASS_FULL_WHITNEY_COCHAIN_COMPLETION_WITH_SHARED_CONE_SCALAR_BLOCK",
+  "producer_sha256": "17bb2cfde098915d91ee56c22ebe3273e690974a8bd6a68b276ed3ef383a5aec",
+  "source_sha256": {
+    "code/electromagnetism/cone_whitney_bridge.py": "638fcd8cc85fc9b6e844c2173f9015fcb2fbed1c47805693cc989daf7d340114",
+    "code/electromagnetism/verify_serial_maxwell_readout.py": "5432264f6d20fafaa186f546376ac9b9347300d8626bcc4a5d246f8fb83b5325",
+    "code/electromagnetism/verify_whitney_maxwell_dynamics.py": "a612f0c65158dc0ed2419916e9c1c5fb42e20f245daa2d8b10b3485e2e19ff43",
+    "code/equation_of_state/maxwell/maxwell_eos.py": "d48dce6793d88a489259ef34526fdb4fff60dee988002170ddffa2c75f847d96",
+    "model/observer_particles/cochain_completion.py": "17bb2cfde098915d91ee56c22ebe3273e690974a8bd6a68b276ed3ef383a5aec",
+    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33",
+    "model/observer_particles/geometric_matter_join.py": "92a699b9dd7619b5f33fe4ee8ccf65465a17bf45407e1c40cb3b5c858ff562a4",
+    "model/observer_particles/results/geometric_matter_join.json": "c2270ff09e1e44c33c23bd6e81723d0a8689162e0c7d5ad6962fc0539750d6d0",
+    "model/observer_particles/results/geometric_matter_join_arrays.npz": "ba5842ab78ecb8ca6b1f0923ba783c2479726b74bf8ecd754d3fbc06654ece37"
+  },
+  "artifacts": {
+    "cochain_completion_arrays.npz": "daa5c800b1e7891bef3f33fe156f0fb20588c720eace7a2f1711670b7ed195e2"
+  },
+  "empirical_inputs": [],
+  "existing_domain": {
+    "name": "existing native-boundary tetrahedral cone",
+    "cochain_dimensions": [
+      13,
+      42,
+      50,
+      20
+    ],
+    "total_one_particle_dimension": 125,
+    "metric_and_lapse_consumed_from": "geometric_matter_join",
+    "boundary": "full finite cochain complex and its metric adjoints; inherited natural variational/absolute cohomology domain",
+    "same_as_240_port_radial_cylinder": false,
+    "new_topology_invented": false
+  },
+  "exact_complex": {
+    "d1_d0_zero": true,
+    "d2_d1_zero": true,
+    "differential_ranks": [
+      12,
+      30,
+      20
+    ],
+    "Betti_numbers": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "truncated_node_edge_zero_modes": 31,
+    "complete_all_degree_zero_modes": 1,
+    "zero_modes_by_degree": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "Euler_characteristic": 1
+  },
+  "same_metric_action": {
+    "Hodge_mass_eigenvalue_ranges": [
+      [
+        0.03740695522162637,
+        0.33834908851872336
+      ],
+      [
+        0.02617188670305555,
+        2.914203736258911
+      ],
+      [
+        0.05738821216122897,
+        5.095279354082048
+      ],
+      [
+        7.388818486093411,
+        7.388818486093411
+      ]
+    ],
+    "top_form_mass_formula": "M3_tt=1/(sqrt(det h)*coordinate_volume_t)",
+    "top_form_independent_pullback_error": 4.440892098500626e-15,
+    "coordinate_generator": "D=N*(d_hat+d_hat^dagger), d_hat_k=M_(k+1)^(1/2)*d_k*M_k^(-1/2)",
+    "nilpotence_residual_after_whitening": 3.091526465597985e-13,
+    "square_degree_offdiagonal_error": 7.443628812053783e-15,
+    "inherited_scalar_action_block_error": 1.021405182655144e-14,
+    "scalar_comparison": "D^2|degree0 equals M_scalar^(-1/2) K_scalar M_scalar^(-1/2) from the independent retained action"
+  },
+  "full_spectrum": {
+    "negative": 62,
+    "zero": 1,
+    "positive": 62,
+    "positive_energy_range": [
+      0.16285009815247858,
+      2.6300758127389505
+    ],
+    "form_parity_even_dimension": 63,
+    "form_parity_odd_dimension": 62,
+    "form_parity_is_physical_Weyl_chirality": false,
+    "finite_CAR_reference_at_beta1_faithful": true,
+    "zero_mode_CAR_entropy": "log(2), not an extensive edge-cycle entropy",
+    "scalar_constant_mode_thermal_caveat": "The natural scalar constant mode still needs an explicit zero-mode treatment for a trace-class scalar Gibbs reference."
+  },
+  "lifted_edge_mode": {
+    "truncated_generator_action_norm": 3.805868892968591e-15,
+    "full_generator_action_norm": 0.8834635379160535,
+    "complete_125_outcome_readouts": [
+      {
+        "comparison_incident_count": 1,
+        "comparison_coordinate_time": 0.03984095364447979,
+        "complete_number_probability_sum": 1.0000000000000002,
+        "probabilities_by_form_degree": [
+          2.3923658823883288e-32,
+          0.9987617731426053,
+          0.001238226857394986,
+          1.6401604444297756e-35
+        ],
+        "state_change_norm": 0.03519563415675087
+      },
+      {
+        "comparison_incident_count": 2,
+        "comparison_coordinate_time": 0.07968190728895957,
+        "complete_number_probability_sum": 1.0,
+        "probabilities_by_form_degree": [
+          9.541211404452064e-32,
+          0.9950551782249455,
+          0.004944821775054904,
+          2.5496943509159994e-34
+        ],
+        "state_change_norm": 0.07037689556651348
+      },
+      {
+        "comparison_incident_count": 25,
+        "comparison_coordinate_time": 0.9960238411119947,
+        "complete_number_probability_sum": 1.0000000000000002,
+        "probabilities_by_form_degree": [
+          5.672830412774526e-30,
+          0.45298423600861815,
+          0.5470157639913823,
+          4.587031115919075e-30
+        ],
+        "state_change_norm": 0.8431142098351997
+      }
+    ],
+    "new_mass_potential_or_fitted_coefficient_inserted": false,
+    "new_native_125_mode_pulse_history_executed": false
+  },
+  "conclusion": {
+    "edge_cycle_obstruction_of_truncated_complex_removed_in_this_alternative": true,
+    "same_scalar_block_preserved_on_this_cone": true,
+    "complete_CAR_extension_available_by_existing_source_theorem": true,
+    "minimal_physical_Weyl_field_or_SM_tastes_selected": false,
+    "entire_existing_cylinder_experiment_replaced_or_reinterpreted": false,
+    "this_cochain_completion_selected_by_native_repair": false,
+    "continuum_chiral_regulator_or_full_physical_fermion_net_proved": false
+  },
+  "evidence_contract": {
+    "domain": "Explicit finite state, representation, action and observation contracts in the named producer.",
+    "numerical_residuals_are_outward_certificates": false,
+    "physical_particle_masses_source_selected": false,
+    "physical_electromagnetic_normalization_established": false
+  }
+}

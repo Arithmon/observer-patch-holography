@@ -1,0 +1,30 @@
+{
+  "status": "PASS_OPTIONAL_SAME_HIGGS_NEUTRINO_OPERATOR_WITH_EXPLICIT_NEW_COEFFICIENTS",
+  "producer_sha256": "a90b3eddf89d3b84db4f1efb513fee6ffa15579aaa779f2ff07a1a0880e8a12a",
+  "source_sha256": {
+    "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
+    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
+    "Lean/Screen/WeylYukawaConventions.lean": "ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7",
+    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"
+  },
+  "artifacts": {
+    "neutrino_action_operators.json": "e439d1f9f4f85293d5742693dcca3a0c68eaab0e3588027060cc4387e5d1be8b"
+  },
+  "empirical_inputs": [],
+  "same_M15_current_count_checked": 12,
+  "same_Higgs_Y": "1/2",
+  "invariant": "(L H)(L H), with the derived weak contraction and two-component Lorentz epsilon",
+  "invariant_LH_tensor_dimension": 1,
+  "neutral_single_family_mass_rank": 1,
+  "three_family_symmetric_complex_coefficients": 6,
+  "mass_formula": "M_nu=kappa*v^2/Lambda in the declared neutral-Higgs-norm convention",
+  "dimension_five_operator_is_in_minimal_renormalizable_SM": false,
+  "scope": "An optional effective interaction on the same internal module and declared Higgs; neither kappa, Lambda, a neutrino mechanism nor the selected physical vacuum is derived. This is not a massive-neutrino prediction.",
+  "source_selected_neutrino_masses": false,
+  "evidence_contract": {
+    "domain": "Explicit finite state, representation, action and observation contracts in the named producer.",
+    "numerical_residuals_are_outward_certificates": false,
+    "physical_particle_masses_source_selected": false,
+    "physical_electromagnetic_normalization_established": false
+  }
+}

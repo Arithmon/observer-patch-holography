@@ -66,6 +66,12 @@ Set the sum of the two to zero, remembering that the area enters the total entro
 
 That gives one of the ten equations, in one observer's rest frame. The other nine come from the overlap rule. Chapter seventeen gave every observer a three-dimensional space of velocities, and observers passing through the same event at every velocity in an open range each hold the same relation in their own frame, which the overlap rule carries from one frame to the next. Written out in terms of the velocity, each relation is a polynomial of degree two. A polynomial that vanishes for every velocity in an open range has every coefficient equal to zero. Ten components, from a ball of observers who have to agree with each other.
 
+## A geometry that can respond
+
+A wave description on a curved space does not by itself make gravity dynamical. The conditional field construction supplies a useful test. Its static product geometry has no radial null curvature response. The scalar field it describes admits a radial wave carrying positive null stress. Keep the reference and other sources fixed, and the same geometry cannot obey Einstein's balance for both the reference and that excitation.
+
+The test identifies a required response. If the area of a spherical slice is four pi times a radius squared, energy passing along an affinely measured light ray must change the second derivative of that radius by minus four pi times Newton's constant, the radius and the null stress. This is the focusing part of Einstein's equation. Deriving that response from the same repair history is a physical obligation. The entropy and tensor theorems state what follows when their premises are met; the finite field description does not meet them simply by possessing a Lorentzian metric.
+
 ## A gas law without molecules
 
 Jacobson ended his abstract with a sentence that has been irritating people for thirty years: it may be no more appropriate to canonically quantize the Einstein equation than it would be to quantize the wave equation for sound in air.
@@ -132,6 +138,6 @@ Curvature in general is more than one growing number, and the counts carry it to
 
 Every ingredient of the derivation is then something the observers count. The light cones, and the horizons made of them, are the order. A volume is a number of records. An area is a number of crossing reads. The temperature is the vacuum's flow from chapter twenty-one, which the state supplies. At the settled state the entropy of every small ball, contents plus boundary, sits at its maximum, and the counts obey Einstein's equation. Order plus number is spacetime with gravity in it, curved by exactly what is there.
 
-So the geometry is complete. Ten numbers at every point, a rule fixing how they answer to what is there, a coupling that fell out of an integral over a small ball, and a constant of proportionality that turned out to be a unit of area. Curvature is what a settled network of observers looks like from a distance, free fall is going straight ahead, and the two walkers on the equator were doing physics the whole way to the pole.
+Under the stated continuum, stress and fixed-volume entropy premises, the geometric equations close. Ten numbers at every point, a rule fixing how they answer to what is there, a coupling that fell out of an integral over a small ball, and a constant of proportionality that turned out to be a unit of area. Curvature is what a settled network of observers looks like from a distance, free fall is going straight ahead, and the two walkers on the equator were doing physics the whole way to the pole.
 
 And nothing is standing in it. A geometry can be told how much energy and momentum is present at a point, which is all the field equation ever asks. It cannot be told why what is present comes in exactly three kinds of interaction, one of them with eight varieties, or why the twelve ports of chapter fourteen have room for those and for nothing else.

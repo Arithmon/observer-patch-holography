@@ -1,5 +1,14 @@
 # Observer-relative time, fields and shared records
 
+The [matter construction](observer_particles/DERIVATION.md) supplies
+restricted finite connections to the particle and geometry theorem stacks:
+internal charge/Casimir decoding, exact interaction identities, conditional
+shared spatial operators, a common metric dictionary and native entropy
+maxima. These are inhabited mathematical instances on declared branches.
+They leave physical chirality, selected family coefficients, observed masses,
+physical electromagnetic normalization and responsive gravitational entropy
+stationarity open.
+
 The executable model connects native repair, field observations, local clock
 records, modular descriptions and controlled interventions within specified
 finite experiments. It derives conditional observation laws and identifies

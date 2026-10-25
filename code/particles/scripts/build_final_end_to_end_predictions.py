@@ -337,6 +337,7 @@ def build_payload() -> dict[str, Any]:
     ]
     return {
         "artifact": "oph_final_current_end_to_end_particle_predictions",
+        "finite_model_witnesses": _load_json(ROOT.parent / "model/observer_particles/results/premise_witnesses.json"),
         "generated_utc": _now_utc(),
         "scope": "nonhadron_particle_pipeline_with_empirical_hadron_closure_policy",
         "claim_status": (
@@ -843,6 +844,14 @@ def render_markdown(payload: dict[str, Any]) -> str:
             f"- Reason: {payload['hadron_policy']['reason']}",
         ]
     )
+    lines += ["", "## Restricted finite matter and field contracts", "",
+        "The response-derived internal multiplets, invariant interactions and shared "
+        "field operators below are finite witnesses under declared contracts. They "
+        "supply no observed mass value and promote none of the quantitative rows.", "",
+        "| Witness | Premise connections | Finite supply | Receipt |",
+        "|---|---|---|---|"]
+    for row in payload["finite_model_witnesses"]["rows"]:
+        lines.append(f"| {row['id']} | {', '.join(row['premise_ids'])} | {row['finite_supply']} | `{row['receipt']}` |")
     return "\n".join(lines)
 
 

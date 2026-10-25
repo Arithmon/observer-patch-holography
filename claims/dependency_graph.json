@@ -339,7 +339,11 @@
     "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
     "OPH-MODEL-COUPLED-INTERACTION-RECOVERY",
     "OPH-MODEL-ANHARMONIC-TRANSFER-COMPARISON",
-    "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+    "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+    "OPH-OBSERVER-MATTER-INTERACTION-WITNESS",
+    "OPH-OBSERVER-COMMON-FIELD-WITNESS",
+    "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL",
+    "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE"
   ],
   "edges": [
     {
@@ -2986,6 +2990,26 @@
       "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
       "to": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
       "role": "supplies the existing native endpoint repair, fair coin and committed current record semantics; the clock and field protocol adds its own declared schedule and observer region."
+    },
+    {
+      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "to": "OPH-OBSERVER-MATTER-INTERACTION-WITNESS",
+      "role": "Provides the conditional representation or field interface; its unproved physical premises are retained."
+    },
+    {
+      "from": "OPH-UNIFIED-TYPED-SPINE",
+      "to": "OPH-OBSERVER-COMMON-FIELD-WITNESS",
+      "role": "Provides the conditional representation or field interface; its unproved physical premises are retained."
+    },
+    {
+      "from": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
+      "to": "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL",
+      "role": "Provides the conditional representation or field interface; its unproved physical premises are retained."
+    },
+    {
+      "from": "OPH-ALPHA-PIXEL",
+      "to": "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE",
+      "role": "Provides the conditional representation or field interface; its unproved physical premises are retained."
     }
   ]
 }

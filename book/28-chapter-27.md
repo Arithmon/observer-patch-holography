@@ -58,6 +58,12 @@ That is the roster. Up and down quarks in three colors, the electron, its neutri
 
 Two further counts fall out of the same table. The quark pair appears once per color and the lepton pair once, so a generation carries four weak pairs. A spin-zero field with hypercharge plus one half ties into the list through three channels. The quark pair couples to the anti-up through that field; the quark pair couples to the anti-down, and the lepton pair to the positron, through its conjugate with hypercharge minus one half. Three channels, the three that give the up-type quarks, the down-type quarks and the charged leptons their masses.
 
+## Reading the list
+
+The conditional fifteen-state module has an exact measurement dictionary. Its charge and color and weak Casimir operators separate six quark-doublet states, three up conjugates, three down conjugates, two lepton-doublet states and one charged-lepton conjugate. A change of basis mixing unlike sectors leaves the decoded list unchanged. That is stronger than putting familiar names on a collection of slots.
+
+The construction nevertheless has declared ingredients: the spin lift, the selected exterior component and the interpretation as same-chirality matter. Auxiliary exterior parity does not establish physical fermion statistics. An independent spin and fermion construction can implement the finite controls, while propagation and physical identification require their own common history.
+
 ## Dirac's holes
 
 Three of the five rows above are antiparticles. In 1928 Paul Dirac wrote an equation for the electron that respected relativity. It came with solutions of negative energy that nobody wanted. He tried for a while to identify the holes in that sea with protons, and in a paper submitted to the Royal Society on 29 May 1931 he gave that up and proposed instead a particle nobody had seen: the mass of an electron, the opposite charge. Carl Anderson photographed one at Caltech on 2 August 1932, a track in a cloud chamber curving the wrong way through a magnetic field, and the name came from an editor at *Physical Review*, who proposed it when Anderson sent the discovery paper in: positron. The pattern turned out to be general. Every species of matter has a partner with the same mass and every charge reversed, and the partner is as ordinary as the original: hospitals make positrons to order out of fluorine-18, and the pair of flashes from each annihilation is what a scanner photographs. Writing a species as its antiparticle is therefore a change of notation rather than a change of content, which is why the roster above lists an anti-up quark where a textbook table lists a right-handed up quark, and the reason for preferring one of those descriptions is cobalt.
@@ -90,7 +96,7 @@ Of 1,024 lists, exactly two survive.
 
 The two survivors are the even picks and the odd picks: the objects built from an even number of slots, and the objects built from an odd number. Charge conjugation, which swaps every particle for its antiparticle, carries each of the two onto the other, so they are one list and its mirror image, and a world taking either one gets the same physics with matter and antimatter labeled the other way round. The even one is the two-slot picks and the four-slot picks: ten plus five, and the roster above.
 
-The search asked each list for two things, that it be chiral and that its four sums vanish, and slot count was not among them. What came back divides by how many slots a pick uses: all even, or all odd. The rule doing the dividing is the sign rule the picks were built with, that swapping two labels flips the sign of the whole object, and that minus sign is the one matter carries when two of its particles change places. The sign came back attached to the answer.
+The search asked each list for chirality and four vanishing sums. What came back divides by the number of slots a pick uses: all even, or all odd. This is parity in the auxiliary exterior construction, a rule organizing the internal representation. The physical minus sign under exchanging fermions requires a separate spin and statistics construction. Auxiliary exterior parity does not supply that identification.
 
 ## Four sums and a count
 
@@ -157,3 +163,10 @@ The three eligible pieces can also be priced. Ask what it costs the screen to ca
 Three families. The count is checkable from outside. Through the 1990s the four detectors at CERN's Large Electron-Positron collider measured how often the Z boson decays into things nobody sees, which is neutrinos, and divided by the rate for a single species. The full data set gives 2.9840 plus or minus 0.0082 light neutrino species, which is three to within a percent and leaves no room for a fourth light one.
 
 Every entry on that roster is a set of charges. A charge is an answer: what the strong force gets back when it asks, what the weak force gets back, what the dial reads. Ask an up quark what it is, as opposed to what it answers to, and five slots and fifteen states say nothing at all.
+
+
+## Three copies and three different masses
+
+A three-dimensional response band does not determine three distinct masses. If both family factors carry the same unbroken irreducible source symmetry and the Higgs does not distinguish families, every invariant mass-generating intertwiner is a scalar times the identity. Its three singular values are equal. The exact source calculation verifies this constraint.
+
+Splitting the masses therefore needs a specified asymmetric background or interaction. Choosing a distinguished port gives a splitting control; averaging it over the whole symmetry removes the splitting. Neither operation selects the observed hierarchy. The family-band result and the physical family identification are separate statements.

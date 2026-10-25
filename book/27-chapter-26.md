@@ -58,6 +58,12 @@ The input to that calculation was a list of thirty pairs saying which port touch
 
 One force, worked to the last digit, out of a wiring diagram with thirty entries in it. The same thirty entries have to say how many forces there can be.
 
+## Following the response into matter
+
+The response matrices can be followed beyond their commutators. A specified spin lift converts their weak rotation block into a doublet, and a specified redistribution of the central trace fixes relative integer charges. Applying the exterior construction then yields the internal matter list in the next chapter. Charge and Casimir measurements recover the list even after the basis has been mixed, so the names of the fields are not an input to that decoder.
+
+The lift is a physical choice requiring its own identification. A full turn acts trivially on the native vector and as minus the identity on the doublet. These are distinct representations, despite sharing an infinitesimal rotation algebra. Establishing one does not silently identify it with the other.
+
 ## Dials
 
 Chapter five's group was eight moves of a paper square, and eight is a menu. You pick one.

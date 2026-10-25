@@ -96,7 +96,7 @@ The question expects an evasion, on the assumption that a structure either expla
 
 The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
-The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999, and the interval enclosure rules out numerical error as the source of the difference. The difference sits in the step from the cell down to a photon at rest, where the quark cloud lives, and computing that step from the cell is work in progress.
+The declared electromagnetic trial map certifies 137.035660 where the quoted measurement reads 137.035999, and the interval enclosure rules out numerical error in that map as the source of the difference. The physical low-energy transport is incomplete. No calculation here proves that the omitted quark contribution removes exactly that mismatch. Wissner-Gross's separate entangled-pair expression has inverse 137.035999189566; identifying it with the physical electromagnetic coupling and the same-cell equation retains the independent premises stated in chapter twenty-nine.
 
 ## You knew the answers before you started
 

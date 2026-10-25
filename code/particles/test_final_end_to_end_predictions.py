@@ -61,7 +61,7 @@ def test_final_end_to_end_predictions_preserve_scientific_boundaries_and_values(
     ]
     assert "HIERARCHY-SCREEN-READOUT" in hierarchy["claim_boundary"]["missing_bridge"]
     assert "Pi_EW=4P" in hierarchy["claim_boundary"]["missing_bridge"]
-    assert hierarchy["factor_origins"]["higgs_naturality_defect"] == "0"
+    assert hierarchy["factor_origins"]["declared_map_higgs_naturality_defect"] == "0"
     assert hierarchy["local_global_bridge"]["bridge_residual"].strip("0.") == ""
     assert "discharge CP-1, CP-2, and CP-3" in hierarchy["claim_boundary"][
         "capacity_conditions"
@@ -80,7 +80,9 @@ def test_final_end_to_end_predictions_preserve_scientific_boundaries_and_values(
         "HIERARCHY-SCREEN-READOUT"
     )
     alignment = pixel_screen["shared_12_24_port_alignment"]
-    assert alignment["repair_register_slots"] == 24
+    assert alignment["screen_oriented_slots"] == 24
+    assert alignment["product_adjoint_rounds_m_rep"] == 24
+    assert alignment["equal_cardinality_status"] == "arithmetic_alignment_without_physical_identification"
     assert alignment["screen_ports"] == 12
     assert alignment["identification_status"] == "work_in_progress"
     predictions = {entry["particle_id"]: entry for entry in payload["predictions"]}

@@ -1,5 +1,13 @@
 # OPH model construction from local repair
 
+The [matter and common-field construction](observer_particles/DERIVATION.md)
+connects the native response matrices to a conditional fifteen-state internal
+matter representation, one-Higgs interaction tensors and compatible scalar,
+CAR and vector field operators. Its complete controls retain unselected
+family coefficients, extra modes and geometry-response requirements. It
+instantiates restricted finite hypotheses of the theorem library; it does
+not derive the measured particle masses.
+
 This is the construction guide for the [model implementation](README.md).
 The [repair-law guide](CANDIDATES.md) explains which parts of the repair law
 are forced and which are free; the generated [premise map](PREMISES.md)

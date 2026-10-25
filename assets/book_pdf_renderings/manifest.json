@@ -3,9 +3,9 @@
   "assets": [
     {
       "source": "assets/book-cover.svg",
-      "source_sha256": "c09bcf9cd69c13c166c9a8977a7baf6967c2a12b1e015e9ea67d78a70f87a6a7",
+      "source_sha256": "8b974633a762cbb1c10d9d975605295043c8b2339fb5412252525a8e33bd622e",
       "rendering": "assets/book_pdf_renderings/book-cover.pdf",
-      "rendering_sha256": "81f3802a0fe7fcffb56e50e78340bd9cdf8b461d9ca0c524c9146738b206d94f"
+      "rendering_sha256": "6888edfea0e823d1310221e6993fcdd4e0bb400e36e5d312b1e78da45cb7640c"
     },
     {
       "source": "assets/pixel-constant.svg",

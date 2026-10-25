@@ -67,7 +67,7 @@ def test_derivation_chain_matrix_contains_scientific_boundaries_only() -> None:
     assert carrier["required_receipts"]
 
     hierarchy = rows["hierarchy_naturality_bridge"]
-    assert hierarchy["outputs"]["epsilon_H"] == "0"
+    assert hierarchy["outputs"]["declared_map_epsilon_H"] == "0"
     assert hierarchy["full_theorem_grade_resonance_promoted"] is False
     assert hierarchy["required_receipts"]
 

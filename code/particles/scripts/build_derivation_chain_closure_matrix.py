@@ -306,6 +306,7 @@ def build_payload() -> dict[str, Any]:
             "artifact": provenance["artifact"],
             "promotion_allowed": provenance["promotion_allowed"],
         },
+        "finite_model_witnesses": _load_json(ROOT.parent / "model/observer_particles/results/premise_witnesses.json"),
         "rows": rows,
     }
 
@@ -337,6 +338,14 @@ def render_markdown(payload: dict[str, Any]) -> str:
         lines.append(
             f"| `{row['chain']}` | `{_display_status(row['status'])}` | `{row['promotable']}` | {receipts} | {outputs} | {evidence} |"
         )
+    lines += ["", "## Restricted finite model witnesses", "",
+        "Internal charge decoding, invariant one-Higgs interactions and common field "
+        "operators are constructed under declared contracts. These entries do not "
+        "promote the numeric chains above or select physical masses.", "",
+        "| Witness | Premise connections | Finite supply | Receipt |",
+        "|---|---|---|---|"]
+    for row in payload["finite_model_witnesses"]["rows"]:
+        lines.append(f"| {row['id']} | {', '.join(row['premise_ids'])} | {row['finite_supply']} | `{row['receipt']}` |")
     return "\n".join(lines)
 
 

@@ -76,6 +76,12 @@ He published the answer in 1950, in the *Bell System Technical Journal*, volume 
 
 What Hamming had beyond his list of checks was seven relays bolted in a row on a frame. A row has positions and the positions can be counted off with a finger. A surface made of patches has no row and no frame. What it has is the number of patches in it. That number arrives without units.
 
+## Counting a cut and measuring an area
+
+The scalar wave description makes one connection precise. The measure multiplying its action is also the area measure of a screen slice in the associated spacetime metric. Proper three-dimensional volume contains an additional clock factor. Holding the count fixed therefore does not automatically hold physical volume fixed.
+
+A second calculation tests a tempting shortcut. Forty-five four-port regions have the same entropy ledger under the chosen native reference, although their numbers of crossing seams run from ten to eighteen. That entropy cannot equal one universal nonzero constant times the crossing count. This does not refute the whole-screen area reading; it distinguishes the boundary of a region on a screen from the area of the screen itself. The entropy theorem needs the geometric quantity actually appearing in its statement.
+
 ## The exchange rate
 
 Bekenstein's proportionality, with Hawking's quarter in it, runs in both directions. Left to right it prices a horizon: hand it an area and it returns an entropy. Right to left it prices the screen. Measure a horizon in Planck squares, meaning squares one Planck length on a side, take a quarter of the count, and what comes back is the horizon's memory in natural units, the number of its patches times what each one holds. So every natural unit of memory is worth four Planck squares of surface. No patch holds more than another, because every patch is the same twelve-port carrier and nothing printed on one makes it larger than the next. There is no such thing as a bigger patch.

@@ -35,7 +35,8 @@
       "status": "undischarged",
       "claim_ids": [
         "OPH-ALPHA-PIXEL",
-        "OPH-MODEL-P-RESPONSE-EXECUTION"
+        "OPH-MODEL-P-RESPONSE-EXECUTION",
+        "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE"
       ],
       "source_anchors": [
         "physical Thomson readback contract"
@@ -173,7 +174,8 @@
       "status": "undischarged",
       "claim_ids": [
         "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-        "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE"
+        "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE",
+        "OPH-OBSERVER-MATTER-INTERACTION-WITNESS"
       ],
       "source_anchors": [
         "code/a5_closure/receipts/super_tannakian_matter_reference.receipt.json"
@@ -376,14 +378,14 @@
       ],
       "source_anchors": [
         "PR-04 declared phase-sensitive effect",
-        "PR-64 public-outcome readback and instrument selection; the CP/TNI outcome maps and trace-preserving summed channel are constructed by a declared L\u00fcders instrument",
+        "PR-64 public-outcome readback and instrument selection; the CP/TNI outcome maps and trace-preserving summed channel are constructed by a declared Lüders instrument",
         "PR-65 common preparation, outcome readback, and run custody"
       ],
       "blocking_issues": [
         {
           "number": 730,
           "scope": "unresolved_attachment",
-          "role": "source-bind the declared L\u00fcders instrument with common preparation, public outcomes, readback, and custody; the exact count table is a semantic conformance fixture"
+          "role": "source-bind the declared Lüders instrument with common preparation, public outcomes, readback, and custody; the exact count table is a semantic conformance fixture"
         }
       ]
     },
@@ -418,7 +420,8 @@
         "OPH-EM-POSITION-SPACE-MAXWELL-COULOMB",
         "OPH-EM-LOCAL-FACE-MAXWELL-STATIC-COMPOSITION",
         "OPH-EM-TEMPORAL-MAXWELL-EVOLUTION-CONTINUITY",
-        "OPH-EM-SCALED-MAXWELL-STABILITY-ACTION"
+        "OPH-EM-SCALED-MAXWELL-STABILITY-ACTION",
+        "OPH-OBSERVER-COMMON-FIELD-WITNESS"
       ],
       "source_anchors": [
         "PR-66 declared discrete kinetic term; the step-scaled update and the Gauss constraint are its Euler-Lagrange equations, and a derivation of the term from the axioms or repair dynamics is open",
@@ -446,7 +449,8 @@
         "OPH-GEOMETRY-KINEMATIC-MASS-SHELL",
         "OPH-GEOMETRY-INTERNAL-CLOCK-REST-FREQUENCY",
         "OPH-GEOMETRY-COMMON-WORLD-TWO-ISLAND-WITNESS",
-        "OPH-GEOMETRY-COMMON-WORLD-ISLAND-BRIDGE"
+        "OPH-GEOMETRY-COMMON-WORLD-ISLAND-BRIDGE",
+        "OPH-OBSERVER-COMMON-FIELD-WITNESS"
       ],
       "source_anchors": [
         "source-selected physical event, signal-link, and source-causal continuum attachment",
@@ -485,7 +489,8 @@
         "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
         "OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY",
         "OPH-SCREEN-CHARGED-CURRENT-DICTIONARY",
-        "OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION"
+        "OPH-SCREEN-ASSEMBLED-STRUCTURAL-ACTION",
+        "OPH-OBSERVER-MATTER-INTERACTION-WITNESS"
       ],
       "source_anchors": [
         "PR-67 finite one-doublet grammar",

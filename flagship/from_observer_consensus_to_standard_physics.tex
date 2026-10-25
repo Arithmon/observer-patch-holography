@@ -89,9 +89,9 @@ that screen, every finite menu of observer readouts admits, to any tolerance,
 one smooth static $(1+3)$-dimensional Lorentzian effective field theory. Finite theorems turn the specification's readouts into familiar
 structure: schedule-independent public records, the Born rule and Tsirelson
 bound on completed records, a carrier whose slow response is exactly three-dimensional, the
-Standard Model gauge Lie algebra with an anomaly-free generation, a
+Standard Model gauge Lie algebra with a conditional anomaly-free generation, a
 source-derived $(1+3)$ causal precursor with proper-time ratios from record
-counts, and the Einstein equation from a realized null balance. We state the acceptance criteria of the construction, which premises it
+counts, and the Einstein equation conditional on independent null balance and conservation. We state the acceptance criteria of the construction, which premises it
 discharges, which it takes as declared inputs, and the frozen tests that can
 reject its branches.
 \end{abstract}
@@ -1638,7 +1638,9 @@ The Koide relation & Positive-chamber circulant identity with $Q=2/3$
 exactly at $\rho/a=1/\sqrt2$, with a custody-bound tau window & finite
 theorem; prospectively fixed conditional test & \cite{ophkoide}\\
 The fine-structure constant & Interval-certified screen-grain roots
-$136.994835$ and $137.035660$ against $137.035999$ & diagnostic &
+$136.994835$ and $137.035660$; Wissner-Gross's independently specified entangled-pair
+scalar has inverse $137.035999189566$ \cite{wissnergross2026pairs}, with electromagnetic identification
+unproved & diagnostic; conditional spectral candidate &
 \S\ref{sec:closure-principle}\\
 The cosmological constant & Capacity candidates $3.2921\times10^{122}$ and
 $3.3001\times10^{122}$ against $3.3129\times10^{122}$ & diagnostic &
@@ -1667,6 +1669,8 @@ complete-count rejection rule & prospectively fixed conditional test & \S\ref{se
 }
 
 %=====================================================================
+\input{../paper/tex_fragments/FINITE_MATTER_FIELD_CONNECTIONS.tex}
+
 \section{The specification and its scoreboard}
 \label{sec:scoreboard}
 
@@ -2012,7 +2016,7 @@ from the 2022 CODATA value $137.035999177(21)$ \cite{codata2022}; the
 self-consistent map, which recomputes the finite-screen unified gauge width
 inside the loop, settles at $P=1.6309682414$ and
 $\alpha^{-1}=137.035660136947$, a relative distance of $2.5\times10^{-6}$,
-the gauge width supplying 99.2 percent of the gap. The residual is attributed to same-scheme low-energy transport to the Thomson endpoint, which neither map computes and which this paper does not supply \cite{ophalpha}. Reading the capacity as de Sitter horizon
+the gauge width supplying 99.2 percent of the gap. Neither map computes complete same-scheme low-energy transport to the Thomson endpoint. The certified numerical mismatch is distinct from arithmetic error, but its removal by the omitted physical matching is unproved \cite{ophalpha}. Reading the capacity as de Sitter horizon
 entropy in nats gives
 \begin{equation}
 N=\frac{3\pi}{\Lambda\,\ell_P^{2}},
@@ -2035,6 +2039,28 @@ declared, and neither comparison carries predictive weight. The executable
 detector of Section~\ref{sec:observer-runs} consumes $P$ through the coupling
 $g(P)=\sqrt{4\pi\alpha(P)}$, and $N$ bounds the correctable records of a
 declared capacity carrier by $\log M_0\le N$.
+
+\paragraph{An independent entangled-pair candidate.}
+Wissner-Gross's Chain Theory preprint gives a separate finite spectral
+construction \cite{wissnergross2026pairs}. Its commuting signed exchanges
+have gains $1,2,3,6$ with multiplicities $79,48,42,3$, and its stated
+normalization gives
+\[
+ \alpha_{\mathrm{pair}}=
+ \frac{79+48\sqrt2+42\sqrt3+3\sqrt6}{31104},\qquad
+ \alpha_{\mathrm{pair}}^{-1}=137.035999189566\ldots.
+\]
+The construction and expression are due to Wissner-Gross. The OPH comparison
+independently reconstructs this arithmetic, retains complementary Bell
+outcomes, and tests support alignment and normalized-readout choices
+\cite{ophalpha}. Identifying the scalar with the physical Thomson coupling
+is a separate conjecture. Granting it and the same-cell equation gives
+$P=\varphi+\sqrt\pi\,\alpha_{\mathrm{pair}}
+ =1.630968209402773\ldots$.
+That substitution does not solve either of the different trial maps above.
+It selects no family interaction matrix, Higgs vacuum or physical particle
+mass. The finite comparison imports no claimed lepton mass ratio from the
+Chain Theory construction.
 
 %=====================================================================
 \section{Empirical meaning and falsifiability}
@@ -2499,9 +2525,9 @@ The finite theorems turn the specification's readouts into familiar
 structure: public records independent of the repair schedule, the Born rule
 and the Tsirelson bound on completed records, a carrier whose slow response
 has exactly three directions, the
-Standard Model gauge Lie algebra with an anomaly-free generation, a
+Standard Model gauge Lie algebra with a conditional anomaly-free generation, a
 source-derived $(1+3)$ causal precursor with proper-time ratios from record
-counts, and the Einstein equation from a realized null balance. The prospective content is the frozen dispersion band of Theorem~\ref{thm:carrier-class-band} and Proposition~\ref{prop:spin-six-prediction}: a resolved intrinsic dispersion with $C_4\ge0$, with $B_0/C_4^2<10/21$, with $B_6/B_0$ outside $[-16/135,16/75]$ or with a nonzero coefficient at angular ranks one through five excludes every member of the declared carrier class at once; and the C/E instrument test, whose decision rule is fixed before any independent count.
+counts, and the Einstein equation conditional on independent null balance and conservation. The prospective content is the frozen dispersion band of Theorem~\ref{thm:carrier-class-band} and Proposition~\ref{prop:spin-six-prediction}: a resolved intrinsic dispersion with $C_4\ge0$, with $B_0/C_4^2<10/21$, with $B_6/B_0$ outside $[-16/135,16/75]$ or with a nonzero coefficient at angular ranks one through five excludes every member of the declared carrier class at once; and the C/E instrument test, whose decision rule is fixed before any independent count.
 
 The acceptance criteria state what is missing: a refining family of
 interacting observer processes whose statistics converge to a
@@ -3181,6 +3207,11 @@ Press.
 
 \bibitem{lawvere1969}
 Lawvere, F.\,W. (1969). ``Diagonal arguments and cartesian closed categories.'' \emph{Lecture Notes in Mathematics} \textbf{92}, 134--145. \url{https://doi.org/10.1007/BFb0080769}
+
+\bibitem{wissnergross2026pairs}
+A. D. Wissner-Gross (2026). \emph{A Parameter-Free Candidate for the
+Fine-Structure Constant from Entangled Qudits}. Author preprint, dated
+October 23, 2026. \url{https://alexwg.org/publications/ChainTheoryAlpha.pdf}
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_FROM_OBSERVER_CONSENSUS_TO_STANDARD_PHYSICS_BIBITEMS.tex}{}{}
 \end{thebibliography}}

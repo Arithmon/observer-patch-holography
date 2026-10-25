@@ -29,3 +29,6 @@ temp
 
 # Regenerated on demand by code/common_history_packet/packet.py; manifest.json pins its bytes.
 evidence/common_history_packet_20260925/packet.json
+
+# Local release and verification environment
+.venv/

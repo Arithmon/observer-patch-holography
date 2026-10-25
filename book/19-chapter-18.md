@@ -30,9 +30,9 @@ The word behaves identically wherever physics uses it. What generates turning ab
 
 A clock of a region's own is the only kind this world has. Chapter ten's network ran with no tick anywhere in the machinery, nothing waiting for the next round and nothing counting rounds; the cycles in its trace belong to whoever reads the trace. What a region has instead is a clock its own state manufactures, out of nothing but what it holds, and the events at its own ports to count against it. Two regions worked through at different rates differ in a fact about themselves, since no clock outside them has a setting they could differ in.
 
-A region whose records agree everywhere generates no flow and reports nothing above the floor. A region holding standing disagreement drives its clock hard. The driving rate is the number a calorimeter or a particle detector hands you.
+A frozen instantaneous state has no changing records. A stationary probability law can contain a continuing flow of events. Modular flow acts on observables according to a specified reference state. Those are three distinct claims about equilibrium, and a calorimeter reading needs a connection from the chosen generator and clock to physical energy.
 
-In ordinary quantum mechanics the energy of a system is the operator somebody writes down for it. You pick an operator called a Hamiltonian to match the system in front of you and fit its constants to measurements. The fitting is done by a person with a pencil. Here the operator is manufactured by the state the region holds: for a region in equilibrium, chapter twenty-one finds minus the logarithm of the state equal to the energy in units of the region's own temperature, plus a constant that moves nothing. The region holds its state whether or not anybody has written anything about it, the pencil never enters, and a thermometer supplies the units.
+For a faithful reference state, minus its logarithm defines the modular generator. In a thermal description, where the state is proportional to the exponential of minus energy divided by temperature, that generator is the Hamiltonian in units of the temperature, plus a constant that changes no observable. The state fixes this modular reading. Identifying it with autonomous physical evolution requires the state, dynamics and calibrated clock to belong to the same description.
 
 ## Positive, and additive
 
@@ -66,7 +66,7 @@ The seam network holds patterns of that kind. A bounded set of records reproduce
 
 Mass is that standing cost: the rate a pattern demands while its records go nowhere. Nothing about a stone on a table is idle. The arrangement that makes it a stone is being re-asserted at every event, at a rate the stone's own clock sets. That rate is what a balance reads off when you put the stone on one.
 
-A pattern of that kind turns its material over, exactly as the heap in the canal did, and the charge falls on the arrangement rather than on whichever records are holding the arrangement at a given event. So the cost is steady while the material under it is not, which is why the proton's mass comes out at 1.0072764665789 atomic mass units, with the uncertainty sitting in the last two of those digits, in every laboratory that has weighed one.
+A pattern of that kind turns its material over, exactly as the heap in the canal did, and the charge falls on the arrangement rather than on whichever records are holding the arrangement at a given event. The proposed cost stays steady while the material under it changes. The quoted laboratory proton mass is 1.0072764665789 atomic mass units. Deriving that number from repair requires the physical quark and strong-interaction dynamics; this account of persistence does not compute it.
 
 ## Four numbers
 

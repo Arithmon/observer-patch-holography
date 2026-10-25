@@ -1,5 +1,13 @@
 # The runnable OPH model
 
+The [particle and common-field package](observer_particles/README.md)
+computes conditional internal matter multiplets and one-Higgs interactions
+from declared response operators, and tests scalar, CAR and vector
+constructions against shared spatial and metric contracts. Its
+[finite premise witnesses](observer_particles/results/premise_witnesses.json)
+state which theorem inputs are constructed and which physical identifications
+remain separate.
+
 This directory contains the executable observer construction: native repair,
 quantum instruments, recorded feedback, observer-accessible algebras and
 checkpoint continuation. Its finite predictions are computed from declared

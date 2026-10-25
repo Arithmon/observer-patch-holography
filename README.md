@@ -54,16 +54,23 @@ and the clocks inside it.
   records does not select the field's radial direction. The
   [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
   states the construction's scope.
+- **Internal matter and allowed interactions.** A declared spin lift of the
+  finite response gives the internal charges of one Standard Model generation.
+  One scalar doublet admits all three charged-fermion interaction channels,
+  with 648 exact family/current/component identities. Shared spatial operators
+  connect conditional scalar and fermion constructions. The family matrices,
+  Higgs phase, mass scale and physical particle identification remain inputs.
+  [Matter and field contracts](model/observer_particles/DERIVATION.md).
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
   and the Tsirelson bound on completed records; a carrier that is
-  three-dimensional in its slow response; the Standard Model gauge Lie algebra with one
-  anomaly-free generation; a (1+3)-dimensional causal order in which proper
-  time comes from record counts; and the Einstein equation from a realized
-  null balance.
+  three-dimensional in its slow response; the Standard Model gauge Lie algebra and a conditional anomaly-free
+  matter representation; a (1+3)-dimensional causal order with conditional
+  count-based proper time; and the Einstein equation under independent
+  entropy, null-balance, stress and continuum premises.
 - **Mathematics you can check.** The [Lean library](Lean/) contains more than
-  12600 public theorems and lemmas with no admitted proofs, and every retained
+  12700 public theorems and lemmas with no admitted proofs, and every retained
   computational receipt is replayed under continuous integration.
 - **Tests fixed in advance.** Predictions and their rejection rules enter the
   [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) before any
@@ -121,10 +128,19 @@ remaining inputs.
   distinguishable after the allowed operations, bound that count by the
   available carrier, and follow it through refinement.
   [Record capacity](code/capacity_readback/README.md).
+- **Entangled-pair coupling candidate.**
+  [Alex Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf)
+  derives a finite spectral expression with inverse `137.035999189566`.
+  The [independent OPH reconstruction](model/observer_particles/README.md)
+  credits that construction and tests its complete-outcome and normalization
+  assumptions. Its identification with the physical electromagnetic coupling
+  and its proposed attachment to the screen-grain equation are conditional.
 - **Matter and fields.** A supplied charged-scalar and Maxwell action with its
   geometry and quantization give an interacting Hamiltonian after gauge
   reduction, and controlled scalar refinement connects classical detector
   readouts to a nonlinear field equation.
+  A common metric dictionary is constructed; the tested static radial product
+  fails its relative-stress gravity test and requires a geometry response.
   [Matter continuum](paper/observers_are_all_you_need.pdf).
 
 These are conditional mathematical results. Making their premises hold for
