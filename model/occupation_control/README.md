@@ -195,7 +195,32 @@ with the gain. The exact optimum is **0.4916177969622167** estimator units
 (rounded here). A feasible rational point and nonnegative dual witness in the
 [receipt](shared_calibration_results.json) prove this value against all 252
 endpoint and boundary constraints. The dual uses case-a 1.2, 3.2 and 8.4 ms;
-every other observation remains checked. Independent interval choices make
+every other observation remains checked. The same exact optimum holds when
+**each of the five cases has its own nonnegative gain and unrestricted
+offset**. The verifier binds all 25 times in each case and checks the same
+dual against case a alone. That gives the lower bound even with independent
+calibrations; the existing common feasible point gives the matching upper
+bound for all five cases. No second optimization or changed prediction is
+needed. Requiring shared calibration across different potentials is therefore
+not the source of this residual floor.
+
+The witness also constrains heterogeneous nonnegative remaining allowances
+`e_1.2`, `e_3.2`, `e_8.4` at those three case-a endpoints. With
+`D=10195098079083289586`, its exact necessary inequality is
+
+```text
+(4428631686509795952*e_1.2 + 668917353031848841*e_3.2
+ + 5097549039541644793*e_8.4)/D
+ >= 5012091657452653873877253447/10195098079083289586000000000.
+```
+
+The weights sum to one and cancel the gain and offset exactly. They are
+approximately `0.4343883357`, `0.0656116643` and `0.5`; the receipt retains
+their exact values and endpoint binding. This is a necessary error-budget
+condition, not an assignment of experimental uncertainties or a sufficient
+test that particular error bars fit the data.
+
+Independent interval choices make
 this a conservative relaxation of the common apparatus dynamics. The
 optimizing gain and offset are diagnostic and are never adopted. This rules
 out a purely affine calibration explanation with zero remaining allowance;

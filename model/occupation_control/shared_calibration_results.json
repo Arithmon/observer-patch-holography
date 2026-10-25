@@ -280,19 +280,73 @@
   },
   "contract": {
     "OPH_rejection_claimed": false,
-    "boundary": "Only a common affine output gain and offset are varied. Probe-coordinate, preparation, timing, Hamiltonian and physical-service changes are outside this family. Missing experimental and calibration uncertainties remain missing.",
+    "boundary": "Only affine output gains and offsets, common or independent per case, are varied. Probe-coordinate, preparation, timing, Hamiltonian and physical-service changes are outside this family. Missing experimental and calibration uncertainties remain missing.",
+    "calibration_families": [
+      "one common gain and offset",
+      "independent gain and offset per case"
+    ],
     "classification": "retrospective calibration-only diagnostic",
     "experimental_uncertainty_applied": null,
     "full_uncertainty_agreement_established": false,
     "gain_domain": "nonnegative; includes zero as a conservative boundary",
+    "heterogeneous_allowances": "nonnegative endpoint allowances; the retained weighted sum is a necessary lower bound",
     "model": "observed in gain*[certified_lower,certified_upper]+offset+[-allowance,allowance]",
     "offset_domain": "all real numbers",
     "optimized_calibration_adopted": false,
     "predictions_changed": false,
     "statistical_rejection_claimed": false,
+    "uniform_allowance": "one remaining nonnegative allowance across all 125 endpoints",
     "units": "deposited dimensionless two-point position-estimator units"
   },
-  "schema": "oph.occupation_control.shared_calibration.v1",
+  "independent_cases": {
+    "case_bindings": [
+      {
+        "case": "a",
+        "endpoint_count": 25,
+        "endpoints_sha256": "3a764c72bc595bdf9383e6142f63321a2caedaa29ffd2e00c6f59a8245e12997"
+      },
+      {
+        "case": "b",
+        "endpoint_count": 25,
+        "endpoints_sha256": "8694eb478809b478ebe56b3b37e9ac7377d005e430d0ce04ad75ab59fed77ad1"
+      },
+      {
+        "case": "c",
+        "endpoint_count": 25,
+        "endpoints_sha256": "01766fa4a5538fcde9e74373fea6f952387f62246ce311567082e89feb2afc25"
+      },
+      {
+        "case": "d",
+        "endpoint_count": 25,
+        "endpoints_sha256": "74f9d673732e76153583e148022e788d9da482dcd83aa5693ea74f1ec730cc16"
+      },
+      {
+        "case": "e",
+        "endpoint_count": 25,
+        "endpoints_sha256": "42b3a07e5a0156c60a63d2007272e30932c359c528d81219e12c0e5b36d3afb2"
+      }
+    ],
+    "heterogeneous_allowance": {
+      "lower_bound": "5012091657452653873877253447/10195098079083289586000000000",
+      "terms": [
+        {
+          "endpoint": "a@6/5",
+          "weight": "2214315843254897976/5097549039541644793"
+        },
+        {
+          "endpoint": "a@16/5",
+          "weight": "668917353031848841/10195098079083289586"
+        },
+        {
+          "endpoint": "a@42/5",
+          "weight": "1/2"
+        }
+      ]
+    },
+    "uniform_allowance": "5012091657452653873877253447/10195098079083289586000000000",
+    "witness_case": "a"
+  },
+  "schema": "oph.occupation_control.shared_calibration.v2",
   "source": {
     "path": "model/occupation_control/transfer_results.json.gz",
     "sha256": "2ce0e18bb4030ef4b67451ce99e28cf53798ceeb4eb22b0a1c7e0bd73898cebe"

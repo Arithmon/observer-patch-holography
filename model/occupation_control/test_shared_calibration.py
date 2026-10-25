@@ -45,6 +45,7 @@ def test_verifier_never_invokes_optimization_or_producer(retained, monkeypatch):
     monkeypatch.setattr(s, 'solve_exact', forbidden)
     monkeypatch.setattr(s, '_solve_square', forbidden)
     monkeypatch.setattr(s, 'produce', forbidden)
+    monkeypatch.setattr(s, 'independent_case_certificate', forbidden)
     assert s.verify(retained) > 0
 
 
@@ -157,3 +158,122 @@ def test_artifact_bytes_are_pinned_before_parsing(monkeypatch):
     monkeypatch.setattr(s.transfer, 'read_receipt', forbidden)
     with pytest.raises(ValueError, match='Pinned transfer'):
         s.source_rows()
+
+
+def test_independent_case_optimum_reuses_both_exact_witnesses(retained, rows, monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError('A second optimization is unnecessary')
+    monkeypatch.setattr(s, 'solve_exact', forbidden)
+    common, extension = retained['certificate'], retained['independent_cases']
+    assert extension == s.independent_case_certificate(rows, common)
+    optimum = s.verify_independent_cases(rows, common, extension)
+    # Independent reconstruction of the restricted dual; every positive term
+    # is an endpoint of case a, so the other four parameter pairs cancel out.
+    selected = [row for row in rows if row['id'].startswith('a@')]
+    certificate = deepcopy(common)
+    certificate['input_binding'] = s._binding(selected)
+    assert len(selected) == 25
+    assert s.verify_exact(selected, certificate) == optimum
+    point = common['primal']
+    gain, offset = F(point['gain']), F(point['offset'])
+    for case in 'abcde':
+        own = [row for row in rows if row['id'].startswith(case+'@')]
+        assert len(own) == 25
+        assert all(gain*F(row['lower'])+offset-optimum <= F(row['observed'])
+                   <= gain*F(row['upper'])+offset+optimum for row in own)
+
+
+@pytest.mark.parametrize('gain,offset', [('0', '0'), ('1', '-1/3'), ('17/5', '2')])
+def test_heterogeneous_allowances_obey_the_exact_weighted_bound(retained, rows, gain, offset):
+    allowance = retained['independent_cases']['heterogeneous_allowance']
+    endpoints = {row['id']: row for row in rows}
+    weights = {term['endpoint']: F(term['weight']) for term in allowance['terms']}
+    assert list(weights) == ['a@6/5', 'a@16/5', 'a@42/5']
+    assert sum(weights.values()) == 1
+    gain, offset = F(gain), F(offset)
+    # Exact heterogeneous allowances sufficient for this chosen calibration.
+    required = {}
+    for name in weights:
+        row = endpoints[name]
+        required[name] = max(F(), gain*F(row['lower'])+offset-F(row['observed']),
+                             F(row['observed'])-gain*F(row['upper'])-offset)
+    assert sum(weights[name]*required[name] for name in weights) >= F(allowance['lower_bound'])
+    # Check cancellation directly without the producer's constraint helpers.
+    first, middle, last = [endpoints[name] for name in weights]
+    w0, w1, w2 = weights.values()
+    assert w0+w1-w2 == 0
+    assert w0*F(first['lower'])+w1*F(middle['lower'])-w2*F(last['upper']) == 0
+    assert w2*F(last['observed'])-w0*F(first['observed'])-w1*F(middle['observed']) == F(allowance['lower_bound'])
+
+
+@pytest.mark.parametrize('mutation', [
+    'case', 'foreign_case', 'bool_case', 'omit_case', 'duplicate_case', 'reorder_case',
+    'case_hash', 'case_count', 'case_extra', 'objective', 'time', 'other_case_time',
+    'weight', 'negative_weight', 'bool_weight', 'noncanonical_weight', 'duplicate_term',
+    'reorder_terms', 'lower_bound', 'extra', 'missing_extension', 'old_schema',
+])
+def test_independent_case_receipt_mutations_fail_closed(retained, rows, monkeypatch, mutation):
+    monkeypatch.setattr(s, 'source_rows', lambda: deepcopy(rows))
+    changed = deepcopy(retained)
+    extension = changed['independent_cases']
+    bindings = extension['case_bindings']
+    allowance = extension['heterogeneous_allowance']
+    if mutation == 'case':
+        extension['witness_case'] = 'b'
+    elif mutation == 'foreign_case':
+        extension['witness_case'] = 'f'
+    elif mutation == 'bool_case':
+        extension['witness_case'] = True
+    elif mutation == 'omit_case':
+        bindings.pop()
+    elif mutation == 'duplicate_case':
+        bindings[-1] = deepcopy(bindings[0])
+    elif mutation == 'reorder_case':
+        bindings.reverse()
+    elif mutation == 'case_hash':
+        bindings[-1]['endpoints_sha256'] = '0'*64
+    elif mutation == 'case_count':
+        bindings[0]['endpoint_count'] = True
+    elif mutation == 'case_extra':
+        bindings[0]['extra'] = 'ignored?'
+    elif mutation == 'objective':
+        extension['uniform_allowance'] = '0'
+    elif mutation == 'time':
+        allowance['terms'][0]['endpoint'] = 'a@7/5'
+    elif mutation == 'other_case_time':
+        allowance['terms'][0]['endpoint'] = 'b@6/5'
+    elif mutation == 'weight':
+        allowance['terms'][0]['weight'] = str(F(allowance['terms'][0]['weight'])+F(1, 10**12))
+    elif mutation == 'negative_weight':
+        allowance['terms'][0]['weight'] = str(-F(allowance['terms'][0]['weight']))
+    elif mutation == 'bool_weight':
+        allowance['terms'][0]['weight'] = True
+    elif mutation == 'noncanonical_weight':
+        allowance['terms'][2]['weight'] = '2/4'
+    elif mutation == 'duplicate_term':
+        allowance['terms'].append(deepcopy(allowance['terms'][0]))
+    elif mutation == 'reorder_terms':
+        allowance['terms'].reverse()
+    elif mutation == 'lower_bound':
+        allowance['lower_bound'] = '0'
+    elif mutation == 'extra':
+        extension['verified'] = True
+    elif mutation == 'missing_extension':
+        del changed['independent_cases']
+    else:
+        changed['schema'] = 'oph.occupation_control.shared_calibration.v1'
+    with pytest.raises(ValueError):
+        s.verify(changed)
+
+
+@pytest.mark.parametrize('new_id', ['a@7/5', 'a@1.2', 'b@6/5', 'f@6/5'])
+def test_rebinding_cannot_relabel_a_witness_endpoint(retained, rows, new_id):
+    changed = deepcopy(rows)
+    changed[2]['id'] = new_id
+    common = deepcopy(retained['certificate'])
+    common['dual'][0]['constraint'] = new_id+':lo'
+    # Rebinding a general LP certificate does not authenticate changed time or
+    # case labels. The fixed independent-case contract must reject it itself.
+    with pytest.raises(ValueError):
+        common['input_binding'] = s._binding(changed)
+        s.verify_independent_cases(changed, common, retained['independent_cases'])
