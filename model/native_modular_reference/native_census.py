@@ -583,8 +583,9 @@ def audit_kernel(kernel):
 
 def _portable_sampler_certificate():
     return {'exact_dyadic_columns_checked': 66,
-            'complete_total_variation_upper': SAMPLER_GATE,
-            'charge_mean_bias_upper': (SAMPLER_GATE,)*3,
+            'complete_total_variation_upper': F(SAMPLER_GATE.numerator, SAMPLER_GATE.denominator),
+            'charge_mean_bias_upper': tuple(F(SAMPLER_GATE.numerator, SAMPLER_GATE.denominator)
+                                            for _ in range(3)),
             'bernoulli_second_moment_equals_mean': True,
             'entire_multitrial_path_distance_claimed': False}
 
@@ -664,7 +665,21 @@ def scope():
             'fixed_seed_PRNG_run': 'reproducible illustration, not an independence certificate'}
 
 
-def compare_receipt(supplied, actual):
+def compare_receipt(supplied, actual=None, *, trials=TRAINING_TRIALS, seed=20261025):
+    """Replay the declared experiment; a caller's second receipt is no oracle.
+
+    Custom runs require explicit trial and seed arguments, independently of
+    the retained receipt. Never infer the experiment from untrusted metadata.
+    """
+    old._integer(trials, 1, 1 << 30, 'sample trial count')
+    old._integer(seed, 0, (1 << 63)-1, 'sample seed')
+    owned = old._json(run(trials=trials, seed=seed))
+    return (_compare_receipt(supplied, owned)
+            and (actual is None or _compare_receipt(actual, owned)))
+
+
+def _compare_receipt(supplied, actual):
+    """Compare with an already source-owned replay (used by the CLI)."""
     def canonical(value):
         return json.dumps(value, sort_keys=True, allow_nan=False, separators=(',', ':'))
     identification = old._json(exact_identification())
@@ -757,7 +772,7 @@ def main():
     args = parser.parse_args()
     payload = old._json(run())
     if args.check:
-        if not compare_receipt(strict_json.load(args.check), payload):
+        if not _compare_receipt(strict_json.load(args.check), payload):
             raise SystemExit('native census receipt drift')
     else:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:

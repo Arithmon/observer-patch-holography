@@ -49,6 +49,17 @@ def test_verifier_never_invokes_optimization_or_producer(retained, monkeypatch):
     assert s.verify(retained) > 0
 
 
+def test_producer_contract_does_not_expose_nested_scope_values():
+    expected = deepcopy(s.CONTRACT)
+    produced = s.produce()
+    assert produced['contract'] == expected
+    produced['contract']['calibration_families'].append('all nonlinear calibrations')
+    assert s.CONTRACT == expected
+    with pytest.raises(ValueError, match='contract changed'):
+        s.verify(produced)
+    assert s.produce()['contract'] == expected
+
+
 @pytest.mark.parametrize('mutation', [
     'omit', 'duplicate', 'reorder', 'interval', 'observation', 'reverse', 'nonfinite', 'extra',
 ])

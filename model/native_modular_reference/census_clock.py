@@ -72,13 +72,20 @@ def inference_bound(weights, intervals, s=F(1)):
     The 446 padding addresses are an implementation extension, not a fourth
     weight of the native reference or part of this native channel comparison.
     """
-    weights = learned._weights(weights)
-    s = full.parameter(s)
+    def source_fraction(value):
+        if (type(value) is not F or type(value.numerator) is not int
+                or type(value.denominator) is not int or value.denominator <= 0):
+            raise ValueError('original Fraction integer slots and a positive denominator required')
+        return F(value.numerator, value.denominator)
+    if type(weights) is not tuple or len(weights) != 3:
+        raise ValueError('three original positive Fraction charge weights required')
+    weights = learned._weights(tuple(source_fraction(w) for w in weights))
+    s = full.parameter(source_fraction(s) if type(s) is F else s)
     if (type(intervals) is not tuple or len(intervals) != 3
-            or any(type(box) is not tuple or len(box) != 2
-                   or any(type(x) is not F for x in box)
-                   or not 0 < box[0] <= w <= box[1]
-                   for w, box in zip(weights, intervals, strict=True))):
+            or any(type(box) is not tuple or len(box) != 2 for box in intervals)):
+        raise ValueError('three faithful exact intervals containing their centers required')
+    intervals = tuple(tuple(source_fraction(x) for x in box) for box in intervals)
+    if any(not 0 < lo <= w <= hi for w, (lo, hi) in zip(weights, intervals, strict=True)):
         raise ValueError('three faithful exact intervals containing their centers required')
     spread = max(common.logarithm_interval(
         weights[i]*intervals[j][1]/(intervals[i][0]*weights[j]))[1]
@@ -127,7 +134,9 @@ def admission(counts, *, sampling_bias=F()):
     """
     inferred = census.infer_counts(counts, sampling_bias=sampling_bias)
     decision = {'status': 'stop', 'reason': 'unresolved_reference',
-                'fixed_successful_error_cap': SUCCESSFUL_ERROR_CAP, 'inference': inferred}
+                'fixed_successful_error_cap': F(SUCCESSFUL_ERROR_CAP.numerator,
+                                                SUCCESSFUL_ERROR_CAP.denominator),
+                'inference': inferred}
     if inferred['trials'] != TRAINING_TRIALS:
         decision['reason'] = 'fixed_trial_budget_required'
     elif inferred['status'] == 'faithful':
@@ -179,7 +188,10 @@ def run():
     inferred = decision['inference']
     weights = inferred['central_subnormalized_weights']
     budget = decision['confidence_event_bounds']
-    source = learned.certificate(weights)
+    # Fraction's private slots remain writable even though normal arithmetic
+    # treats it as immutable. Detach the cached provider's scalar objects.
+    source = {key: F(value.numerator, value.denominator) if type(value) is F else value
+              for key, value in learned.certificate(weights).items()}
     rows = []
     for law in ('C', 'E'):
         checked, actual = prepared_from_records(counts, law, initial=initial,
@@ -214,7 +226,9 @@ def run():
         'confidence_event_bounds': budget,
         'statistical_failure_upper': inferred['confidence_failure_upper'],
         'acceptance_protocol': {
-            'status': decision['status'], 'fixed_successful_error_cap': SUCCESSFUL_ERROR_CAP,
+            'status': decision['status'],
+            'fixed_successful_error_cap': F(SUCCESSFUL_ERROR_CAP.numerator,
+                                            SUCCESSFUL_ERROR_CAP.denominator),
             'fixed_successful_channel_error_cap': decision['fixed_successful_channel_error_cap'],
             'fixed_complete_confidence_event_error_cap': decision['fixed_complete_confidence_event_error_cap'],
             'complete_joint_protocol_halftrace_upper': decision['complete_joint_protocol_halftrace_upper'],
@@ -230,7 +244,15 @@ def run():
         'scope': _scope()}
 
 
-def compare_receipt(supplied, actual):
+def compare_receipt(supplied, actual=None):
+    """Verify against a fresh source replay, never a caller-supplied oracle."""
+    owned = strict_json.loads(full.preparation.canonical(run()))
+    _compare_receipt(supplied, owned)
+    if actual is not None:
+        _compare_receipt(actual, owned)
+
+
+def _compare_receipt(supplied, actual):
     """Exact proof fields; independent consistency checks on float diagnostics."""
     full.corner.compare_receipt(supplied, actual)
     for receipt in (supplied, actual):
@@ -325,7 +347,7 @@ def main():
     args = parser.parse_args()
     payload = strict_json.loads(full.preparation.canonical(run()))
     if args.check:
-        compare_receipt(strict_json.load(args.check), payload)
+        _compare_receipt(strict_json.load(args.check), payload)
         print('Native census common-clock successful and complete histories verified.')
     else:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:

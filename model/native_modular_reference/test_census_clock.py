@@ -11,6 +11,24 @@ from . import census_clock as c
 WEIGHTS = (F(2, 225), F(1, 36), F(2, 45))
 
 
+@pytest.fixture(scope='module')
+def source_output():
+    return c.run()
+
+
+@pytest.fixture(scope='module')
+def generated_receipt(source_output):
+    return c.strict_json.loads(c.full.preparation.canonical(source_output))
+
+
+@pytest.fixture
+def receipt(generated_receipt, monkeypatch):
+    # Generate once from the real producer, then isolate receipt mutations
+    # from its expensive source compilation. The CLI always replays itself.
+    monkeypatch.setattr(c, 'run', lambda: deepcopy(generated_receipt))
+    return generated_receipt
+
+
 def _counts():
     # An exact integer, fixed-budget record fixture near the native law.
     values = {key: 0 for key in c.census.LABELS}
@@ -49,6 +67,36 @@ def test_oscillation_uses_distinct_coordinates_and_covers_every_corner():
 def test_invalid_weight_or_box_does_not_create_a_clock(weights, box):
     with pytest.raises(ValueError):
         c.inference_bound(weights, box)
+
+
+@pytest.mark.parametrize('slot,value', [('_denominator', -1), ('_denominator', 0),
+    ('_denominator', True), ('_denominator', 1.0), ('_numerator', True), ('_numerator', F(2))])
+@pytest.mark.parametrize('position', ['weight', 'lower', 'upper', 'parameter'])
+def test_malformed_fraction_slots_cannot_certify_a_clock(slot, value, position):
+    weights = (F(2), F(1), F(1))
+    intervals = ((F(2), F(2)), (F(1), F(1)), (F(1), F(1)))
+    bad = F(2)
+    setattr(bad, slot, value)
+    parameter = F(1)
+    if position == 'weight':
+        weights = (bad, *weights[1:])
+    elif position == 'parameter':
+        parameter = bad
+    else:
+        intervals = (((bad, F(2)) if position == 'lower' else (F(2), bad)), *intervals[1:])
+    with pytest.raises(ValueError):
+        c.inference_bound(weights, intervals, parameter)
+
+
+def test_exact_positive_fraction_inputs_are_canonicalized_before_comparison():
+    # A valid positive value with unreduced slots has the same source value;
+    # copying its integer pair canonicalizes it before equality/arithmetic.
+    unreduced = F(2)
+    unreduced._denominator = 2
+    weights = (unreduced, F(1), F(1))
+    boxes = tuple((value, value) for value in weights)
+    assert c.inference_bound(weights, boxes, F(-1)) == 0
+    assert c.inference_bound(weights, boxes, F(0)) == 0
 
 
 def test_successful_admission_has_no_target_lookup_or_herald_dilution(monkeypatch):
@@ -121,8 +169,8 @@ def test_successful_channel_bound_on_entangled_input_retains_feedback_and_aborts
 
 
 @pytest.mark.parametrize('mutation', ['boolean', 'count', 'cap', 'source', 'mass', 'negative', 'success_error'])
-def test_retained_receipt_rejects_proof_and_complete_history_mutations(mutation):
-    actual = c.strict_json.load(c.OUTPUT)
+def test_retained_receipt_rejects_proof_and_complete_history_mutations(mutation, receipt):
+    actual = receipt
     changed = deepcopy(actual)
     if mutation == 'boolean':
         changed['training_counts']['warmup_timeout'] = False
@@ -145,14 +193,13 @@ def test_retained_receipt_rejects_proof_and_complete_history_mutations(mutation)
         c.compare_receipt(changed, actual)
 
 
-def test_retained_receipt_passes_its_independent_consistency_checks():
-    receipt = c.strict_json.load(c.OUTPUT)
+def test_retained_receipt_passes_its_independent_consistency_checks(receipt):
     c.compare_receipt(receipt, receipt)
 
 
 @pytest.mark.parametrize('mutation', ['bound', 'count', 'confidence', 'resource', 'conditioning', 'source_bound', 'source_path'])
-def test_verifier_reconstructs_proof_fields_even_against_the_same_forged_receipt(mutation):
-    changed = c.strict_json.load(c.OUTPUT)
+def test_verifier_reconstructs_proof_fields_even_against_the_same_forged_receipt(mutation, receipt):
+    changed = deepcopy(receipt)
     if mutation == 'bound':
         changed['acceptance_protocol']['fixed_complete_confidence_event_error_cap'] = '0'
     elif mutation == 'count':
@@ -174,8 +221,8 @@ def test_verifier_reconstructs_proof_fields_even_against_the_same_forged_receipt
 
 @pytest.mark.parametrize('mutation', ['empty', 'duplicate_law', 'abort', 'extra_branch',
                                     'parameter', 'schema', 'scope', 'initial', 'stream_hash'])
-def test_self_comparison_requires_complete_histories_and_declared_scope(mutation):
-    changed = c.strict_json.load(c.OUTPUT)
+def test_self_comparison_requires_complete_histories_and_declared_scope(mutation, receipt):
+    changed = deepcopy(receipt)
     if mutation == 'empty':
         changed['histories'] = []
     elif mutation == 'duplicate_law':
@@ -196,3 +243,57 @@ def test_self_comparison_requires_complete_histories_and_declared_scope(mutation
         changed['training_record_and_state_sha256'] = 'g'*64
     with pytest.raises(ValueError):
         c.compare_receipt(changed, changed)
+
+
+@pytest.mark.parametrize('mutation', ['stream_hash', 'normalized_records'])
+def test_matching_fabricated_history_requires_source_replay(receipt, mutation):
+    changed = deepcopy(receipt)
+    if mutation == 'stream_hash':
+        changed['training_record_and_state_sha256'] = '0'*64
+    else:
+        probabilities = changed['histories'][0]['record_probabilities']
+        # Preserve success/preparation masses, the complete alphabet, and
+        # positivity while fabricating which successful records occurred.
+        keys = [key for key, mass in probabilities.items() if key.startswith("('read',") and mass > 1e-5]
+        first, second = keys[:2]
+        moved = probabilities[first]/2
+        probabilities[first] -= moved
+        probabilities[second] += moved
+    c._compare_receipt(changed, changed)
+    with pytest.raises(ValueError):
+        c.compare_receipt(changed, changed)
+    with pytest.raises(ValueError):
+        c.compare_receipt(receipt, changed)
+    c.compare_receipt(receipt)
+
+
+def test_public_verifier_owns_replay_for_each_comparison(generated_receipt, monkeypatch):
+    calls = []
+    def replay():
+        calls.append('source replay')
+        return deepcopy(generated_receipt)
+    monkeypatch.setattr(c, 'run', replay)
+    c.compare_receipt(generated_receipt)
+    c.compare_receipt(generated_receipt, deepcopy(generated_receipt))
+    assert calls == ['source replay', 'source replay']
+
+
+def test_public_bounds_do_not_alias_fixed_caps_or_cached_source_certificate(source_output, generated_receipt):
+    decision = c.admission(_counts())
+    source = source_output['source_certificate']
+    weights = source_output['inferred_subnormalized_weights']
+    expected_source = c.full.preparation.canonical(c.learned.certificate(weights))
+    expected_bounds = c.full.preparation.canonical(decision)
+    exposed = [decision['fixed_successful_error_cap'],
+               source_output['acceptance_protocol']['fixed_successful_error_cap'],
+               *(value for value in source.values() if type(value) is F)]
+    original = [(value, value.numerator, value.denominator) for value in exposed]
+    try:
+        for value in exposed:
+            value._numerator = 0
+        assert c.SUCCESSFUL_ERROR_CAP == F(1, 10)
+        assert c.full.preparation.canonical(c.admission(_counts())) == expected_bounds
+        assert c.full.preparation.canonical(c.learned.certificate(weights)) == expected_source
+    finally:
+        for value, numerator, denominator in original:
+            value._numerator, value._denominator = numerator, denominator

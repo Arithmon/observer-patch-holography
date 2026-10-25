@@ -226,8 +226,19 @@ def execution():
 
 
 @pytest.fixture(scope='module')
-def receipt():
+def generated_receipt():
     return c.old._json(c.run())
+
+
+@pytest.fixture
+def receipt(generated_receipt, monkeypatch):
+    # Mutation tests reuse a genuine source execution. The public wrapper
+    # still has to own a replay; it cannot rely on either comparison argument.
+    def replay(trials=c.TRAINING_TRIALS, *, seed=20261025):
+        assert trials == c.TRAINING_TRIALS and seed == 20261025
+        return deepcopy(generated_receipt)
+    monkeypatch.setattr(c, 'run', replay)
+    return generated_receipt
 
 
 def test_executed_continuing_training_has_useful_precision(execution):
@@ -311,3 +322,59 @@ def test_cached_identification_is_not_mutable_by_its_callers():
     fresh = c.exact_identification()
     assert fresh['laws']['C']['matrix_unit_effect_checks'] == 11*4*4356
     assert fresh['charge_effect_factor'] == c.success_probability()
+
+
+@pytest.mark.parametrize('mutation', ['stream_hash', 'terminal_histogram'])
+def test_matching_fabricated_execution_cannot_serve_as_its_own_oracle(receipt, mutation):
+    changed = deepcopy(receipt)
+    sample = changed['continuing_execution']['execution']
+    if mutation == 'stream_hash':
+        sample['record_and_terminal_state_sha256'] = '0'*64
+    else:
+        block = next(block for block in sample['terminal_state_counts'] if sum(block))
+        source = next(i for i, count in enumerate(block) if count)
+        block[source] -= 1
+        block[(source+1) % 66] += 1
+    # The forgery retains every arithmetic consistency invariant; only a
+    # source-owned execution establishes its stream and terminal histogram.
+    assert c._compare_receipt(changed, changed)
+    assert not c.compare_receipt(changed, changed)
+    assert not c.compare_receipt(receipt, changed)
+    assert c.compare_receipt(receipt)
+
+
+def test_public_verifier_replays_explicit_custom_run_and_validates_design(monkeypatch):
+    actual_run = c.run
+    generated = c.old._json(actual_run(trials=23, seed=81))
+    calls = []
+    def replay(trials=c.TRAINING_TRIALS, *, seed=20261025):
+        calls.append((trials, seed))
+        return actual_run(trials=trials, seed=seed)
+    monkeypatch.setattr(c, 'run', replay)
+    assert c.compare_receipt(generated, trials=23, seed=81)
+    assert calls == [(23, 81)]
+    assert not c.compare_receipt(generated, generated, trials=24, seed=81)
+    assert calls == [(23, 81), (24, 81)]
+    for arguments in ({'trials': True}, {'trials': 0}, {'trials': (1 << 30)+1},
+                      {'seed': True}, {'seed': -1}, {'seed': 1 << 63}):
+        with pytest.raises(ValueError):
+            c.compare_receipt(generated, **arguments)
+    assert len(calls) == 2
+
+
+def test_public_sampler_certificate_cannot_mutate_shared_error_gate():
+    row = c.execute_trials(trials=3)
+    certificate = row['sampler_certificate']
+    exposed = [certificate['complete_total_variation_upper'], *certificate['charge_mean_bias_upper']]
+    original = [(value, value.numerator, value.denominator) for value in exposed]
+    expected = F(1, 10**10)
+    try:
+        for value in exposed:
+            value._numerator = 0
+        assert c.SAMPLER_GATE == expected
+        fresh = c.execute_trials(trials=3)['sampler_certificate']
+        assert fresh['complete_total_variation_upper'] == expected
+        assert fresh['charge_mean_bias_upper'] == (expected,)*3
+    finally:
+        for value, numerator, denominator in original:
+            value._numerator, value._denominator = numerator, denominator

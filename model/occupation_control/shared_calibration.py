@@ -23,6 +23,7 @@ a necessary weighted inequality for heterogeneous remaining allowances.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 import argparse
 from fractions import Fraction as F
 import hashlib
@@ -307,7 +308,7 @@ def produce():
     rows = source_rows()
     common = solve_exact(rows)
     return {'schema': SCHEMA, 'source': {'path': SOURCE, 'sha256': SOURCE_SHA256},
-            'contract': CONTRACT.copy(), 'certificate': common,
+            'contract': deepcopy(CONTRACT), 'certificate': common,
             'independent_cases': independent_case_certificate(rows, common)}
 
 
