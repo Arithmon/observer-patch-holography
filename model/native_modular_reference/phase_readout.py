@@ -148,7 +148,10 @@ def _certificate(weights, s, index, quadrature):
 def certificate(weights, s=F(1), *, index=0, quadrature='cos'):
     weights, s = learned._weights(weights), full.parameter(s)
     _setting(index, quadrature)
-    return dict(_certificate(weights, s, index, quadrature))
+    # Fraction's deepcopy returns the same instance, despite its writable slots.
+    # Detach every exact scalar before exposing the cached certificate.
+    return {key: F(value.numerator, value.denominator) if type(value) is F else value
+            for key, value in _certificate(weights, s, index, quadrature)}
 
 
 def complete_trial_budget():
@@ -165,7 +168,7 @@ def complete_trial_budget():
             'score_mean_bias_upper': 4*total,
             'score_second_moment_upper': 9*q/20+8*total,
             'ideal_score_second_moment_upper': 9*q/20,
-            'ideal_preparation_success_probability': q,
+            'ideal_preparation_success_probability': F(q.numerator, q.denominator),
             'source_history_halfdiamond_upper': source_error,
             'source_channel_norm_upper': gain,
             'native_attempts_per_trial_upper': maximum+3,

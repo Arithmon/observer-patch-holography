@@ -226,6 +226,17 @@ def _pretty(value, depth=0):
     return json.dumps(value, ensure_ascii=False, allow_nan=False)
 
 
+def _detach_rationals(value):
+    """Copy returned containers without sharing Fraction's writable slots."""
+    if type(value) is F:
+        return F(value.numerator, value.denominator)
+    if type(value) is dict:
+        return {key: _detach_rationals(item) for key, item in value.items()}
+    if type(value) in (tuple, list):
+        return type(value)(_detach_rationals(item) for item in value)
+    return value
+
+
 def run():
     """Fixed source/training/readout protocol; its target is validation only."""
     proofs = readout.exact_effects()
@@ -288,7 +299,8 @@ def run():
         if not intersection[0] <= target <= intersection[1]:
             raise ArithmeticError('two common-reference caps do not admit their shared parameter')
         alternatives.append({'law': law, 'validation_only_programmed_parameter': target,
-            'training': {'execution': trained['execution'], 'sampler_certificate': trained['sampler_certificate'],
+            'training': {'execution': trained['execution'],
+                         'sampler_certificate': _detach_rationals(trained['sampler_certificate']),
                          'inference': inferred},
             'readouts': rows, 'common_cap_parameter_intersection': intersection,
             'final_carrier_state': state,
@@ -500,8 +512,8 @@ def _validated_copy(original):
     return value
 
 
-def compare_receipt(supplied, actual):
-    """Reconstruct proof contracts; equality alone must not accept garbage."""
+def _compare_receipts(supplied, actual):
+    """Compare with a producer result owned by this module, after validation."""
     try:
         left, right = _validated_copy(supplied), _validated_copy(actual)
         for a, b in zip(supplied['alternatives'], actual['alternatives'], strict=True):
@@ -523,6 +535,18 @@ def compare_receipt(supplied, actual):
         raise ValueError('malformed phase receipt') from exc
 
 
+def compare_receipt(supplied, actual=None):
+    """Verify against an owned canonical replay, never a caller's authority.
+
+    The optional second receipt is retained for callers of the older API;
+    it must also match the fresh replay and cannot replace that replay.
+    """
+    fresh = _json(run())
+    _compare_receipts(supplied, fresh)
+    if actual is not None:
+        _compare_receipts(actual, fresh)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group(required=True)
@@ -531,7 +555,7 @@ def main():
     args = parser.parse_args()
     payload = _json(run())
     if args.check:
-        compare_receipt(strict_json.load(args.check), payload)
+        _compare_receipts(strict_json.load(args.check), payload)
         print('Complete-record native phase inference verified.')
     else:
         with args.write.open('x', encoding='utf-8', newline='\n') as stream:

@@ -41,9 +41,19 @@ SCORE_CENTERED_BOUND = F(4)
 
 
 def _exact(value, *, nonnegative=False):
-    if type(value) not in (int, F) or (nonnegative and value < 0):
+    if type(value) is int:
+        result = F(value)
+    elif type(value) is F:
+        numerator, denominator = value.numerator, value.denominator
+        if (type(numerator) is not int or type(denominator) is not int
+                or denominator <= 0):
+            raise ValueError("an original exact rational with valid integer slots is required")
+        result = F(numerator, denominator)
+    else:
         raise ValueError("an original exact rational is required")
-    return F(value)
+    if nonnegative and result < 0:
+        raise ValueError("an original nonnegative exact rational is required")
+    return result
 
 
 def _outward(interval):
@@ -135,7 +145,7 @@ def score_budget(systematic_halftrace_upper, confidence_bits=12):
         "source_complete_trial_halftrace_upper": source["complete_trial_halftrace_upper"],
         "score_mean_bias_upper": 4*total,
         "score_conditional_second_moment_upper": source["ideal_score_second_moment_upper"]+8*total,
-        "score_centered_absolute_bound": SCORE_CENTERED_BOUND,
+        "score_centered_absolute_bound": F(SCORE_CENTERED_BOUND.numerator, SCORE_CENTERED_BOUND.denominator),
         "confidence_bits": confidence_bits,
         "phase_confidence_failure_upper": F(4, 2**confidence_bits),
         "fixed_lengths_and_analyzers_required": True,

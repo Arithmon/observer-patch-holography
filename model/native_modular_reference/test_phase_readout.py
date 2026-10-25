@@ -207,3 +207,32 @@ def test_exact_effect_theorem_rejects_a_missing_native_record(monkeypatch):
     monkeypatch.setattr(p.interface, 'fixed_maps', lambda law, seam=None: original(law, seam)[:-1])
     with pytest.raises(ArithmeticError, match='complete branch'):
         p.exact_effects()
+
+
+def test_public_certificate_rationals_cannot_mutate_cached_source_bounds():
+    first = p.certificate(WEIGHTS, F(-3, 4), quadrature='sin')
+    expected = {key: str(first[key]) for key in
+                ('source_history_halfdiamond_upper', 'source_channel_norm_upper')}
+    for key in expected:
+        first[key]._numerator = 0
+    second = p.certificate(WEIGHTS, F(-3, 4), quadrature='sin')
+    assert {key: str(second[key]) for key in expected} == expected
+    assert all(second[key] is not first[key] for key in expected)
+    assert second['source_history_halfdiamond_upper'] > 0
+    assert second['source_channel_norm_upper'] > 1
+
+
+def test_public_trial_budget_cannot_mutate_cached_preparation_success_probability():
+    cached = p.tomography._record_contract()[1]
+    expected = (cached.numerator, cached.denominator)
+    before = p.complete_trial_budget()
+    try:
+        before['ideal_preparation_success_probability']._numerator = 0
+        after = p.complete_trial_budget()
+        assert p.tomography._record_contract()[1] == F(*expected) == F(5, 33)
+        assert after['ideal_preparation_success_probability'] == F(5, 33)
+        assert after['ideal_score_second_moment_upper'] == before['ideal_score_second_moment_upper']
+        assert after['complete_trial_halftrace_upper'] == before['complete_trial_halftrace_upper']
+        assert after['ideal_preparation_success_probability'] is not cached
+    finally:
+        cached._numerator, cached._denominator = expected

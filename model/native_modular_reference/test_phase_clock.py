@@ -69,6 +69,15 @@ def receipt():
     return p.strict_json.load(p.OUTPUT)
 
 
+@pytest.fixture(autouse=True)
+def owned_replay(monkeypatch, receipt):
+    # Repeated hostile cases use a genuine producer fixture. The CLI still
+    # runs the real producer, and the tests below enforce the public call.
+    canonical_run = p.run
+    monkeypatch.setattr(p, 'run', lambda: deepcopy(receipt))
+    return canonical_run
+
+
 def test_retained_receipt_self_verifies_contracts(receipt):
     p.compare_receipt(receipt, receipt)
     for alternative in receipt['alternatives']:
@@ -153,3 +162,67 @@ def test_self_comparison_does_not_accept_forged_receipt(receipt, mutation):
         sample['terminal_state_counts'].append([0, 0, 1])
     with pytest.raises(ValueError):
         p.compare_receipt(bad, bad)
+
+
+def test_public_comparator_replays_even_with_caller_supplied_actual(receipt, monkeypatch):
+    calls = []
+    def fresh():
+        calls.append(True)
+        return deepcopy(receipt)
+    monkeypatch.setattr(p, 'run', fresh)
+    p.compare_receipt(receipt, receipt)
+    assert calls == [True]
+    p.compare_receipt(receipt)
+    assert calls == [True, True]
+
+
+@pytest.mark.parametrize('location', ['training', 'phase'])
+def test_matching_fabricated_stream_hashes_cannot_replace_owned_replay(receipt, location):
+    bad = deepcopy(receipt)
+    alternative = bad['alternatives'][0]
+    execution = (alternative['training']['execution'] if location == 'training'
+                 else alternative['readouts'][0]['sampling']['cos'])
+    execution['record_and_terminal_state_sha256'] = '0'*64
+    with pytest.raises(ValueError, match='receipt drift'):
+        p.compare_receipt(bad, bad)
+
+
+def test_raw_run_does_not_expose_the_training_sampler_gate(monkeypatch, owned_replay):
+    # Exercise the real return boundary with fixed inexpensive execution
+    # services; retain the actual inherited sampler certificate provider.
+    source_gate = p.training.SAMPLER_GATE
+    original = (source_gate.numerator, source_gate.denominator)
+    training = {'execution': {'final_state': 0, 'counts': {}},
+                'inference': {'status': 'faithful',
+                              'central_subnormalized_weights': (F(1), F(2), F(3)),
+                              'confidence_failure_upper': F(6, 1024)},
+                'sampler_certificate': p.training._portable_sampler_certificate()}
+    monkeypatch.setattr(p.training, 'execute_trials', lambda **kwargs: training)
+    monkeypatch.setattr(p.readout, 'exact_effects', lambda: {})
+    monkeypatch.setattr(p.readout, 'certificate', lambda *args, **kwargs:
+                        {'source_history_halfdiamond_upper': F(1)})
+    monkeypatch.setattr(p, 'quantized_kernel', lambda *args: ((), None))
+    monkeypatch.setattr(p, 'audit_kernel', lambda *args: {})
+    monkeypatch.setattr(p, 'sample_kernel', lambda *args, **kwargs:
+                        {'final_state': 0, 'records': (), 'counts': ()})
+    monkeypatch.setattr(p.readout, 'prepared', lambda *args, **kwargs: {})
+    monkeypatch.setattr(p.readout.history, 'distance', lambda *args: 0.0)
+    monkeypatch.setattr(p.readout.history, 'probabilities', lambda *args: {('read',): 1.0})
+    def identified(*args, law, **kwargs):
+        target = F(3, 4) if law == 'C' else F(-3, 4)
+        return {'status': 'identified', 'parameter_interval': (target, target),
+                'reference_inference': {}, 'observed_scores': {}}
+    monkeypatch.setattr(p.inverse, 'infer_counts', identified)
+    monkeypatch.setattr(p, 'resources', lambda *args: {})
+    monkeypatch.setattr(p, 'source_paths', lambda: ())
+    result = owned_replay()
+    try:
+        for row in result['alternatives']:
+            row['training']['sampler_certificate']['complete_total_variation_upper']._numerator = 0
+        assert p.training.SAMPLER_GATE == F(*original) == F(1, 10**10)
+        assert p.training._portable_sampler_certificate()['complete_total_variation_upper'] == F(*original)
+        later = owned_replay()
+        assert all(row['training']['sampler_certificate']['complete_total_variation_upper'] == F(*original)
+                   for row in later['alternatives'])
+    finally:
+        source_gate._numerator, source_gate._denominator = original

@@ -283,3 +283,42 @@ def test_native_zero_and_failed_records_remain_zero_score_without_being_discarde
     assert zero_count > N*4//5
     assert row["trials"] == N
     assert row["trials"] != N-zero_count
+
+
+def test_public_score_budget_cannot_mutate_the_centered_bound_or_trial_budget():
+    original = (p.SCORE_CENTERED_BOUND.numerator, p.SCORE_CENTERED_BOUND.denominator)
+    allowance = F(1, 1000)
+    before = p.trial_budget(F(1, 2), systematic_halftrace_upper=allowance)
+    budget = p.score_budget(allowance)
+    try:
+        budget['score_centered_absolute_bound']._numerator = 0
+        after = p.trial_budget(F(1, 2), systematic_halftrace_upper=allowance)
+        assert p.SCORE_CENTERED_BOUND == F(*original) == 4
+        assert after['score_centered_absolute_bound'] == 4
+        assert after['trials_per_quadrature'] == before['trials_per_quadrature']
+        assert after['attained_score_radius_upper'] == before['attained_score_radius_upper']
+    finally:
+        # Keep the defective-implementation control isolated from other tests.
+        p.SCORE_CENTERED_BOUND._numerator, p.SCORE_CENTERED_BOUND._denominator = original
+
+
+
+@pytest.mark.parametrize('slot,value', [
+    ('_denominator', -1), ('_denominator', 0), ('_denominator', True),
+    ('_denominator', 1.0), ('_numerator', True), ('_numerator', 2.0),
+])
+def test_malformed_fraction_slots_are_rejected_before_angle_arithmetic(slot, value):
+    bad = F(2)
+    setattr(bad, slot, value)
+    with pytest.raises(ValueError, match='valid integer slots'):
+        p.atan_interval(bad)
+    with pytest.raises(ValueError, match='valid integer slots'):
+        p.score_budget(bad)
+
+
+def test_canonical_signed_two_keeps_the_correct_arctangent_branch():
+    positive = p.atan_interval(F(2))
+    negative = p.atan_interval(F(-2))
+    assert F(11, 10) < positive[0] <= positive[1] < F(111, 100)
+    assert -F(111, 100) < negative[0] <= negative[1] < -F(11, 10)
+    assert negative == (-positive[1], -positive[0])
