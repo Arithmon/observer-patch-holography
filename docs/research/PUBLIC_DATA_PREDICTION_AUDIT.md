@@ -108,10 +108,26 @@ cannot cover 60 of the published central values. Experimental, calibration,
 model and physical-service errors remain outside these intervals; this is
 **not a statistical rejection** or a full-uncertainty agreement test.
 
-The same existing observations are used throughout; no new parameter is fitted
+The [shared-calibration diagnostic](../../model/occupation_control/shared_calibration.py)
+allows a common nonnegative output gain and unrestricted offset on all 125
+certified intervals. Even this family requires a minimum uniform additional
+allowance of **0.4916177969622167** estimator units (rounded). The
+[exact receipt](../../model/occupation_control/shared_calibration_results.json)
+contains a feasible rational point and nonnegative dual witness; verification
+checks every endpoint and both nonnegative boundaries. Allowing independent
+values inside each interval makes the result conservative for the actual
+shared dynamics. The optimizing gain and offset are never adopted. This
+excludes an exact calibration-only explanation within this affine family;
+changing the physical probe coordinate, preparation, timing or dynamics is
+outside that family. No experimental uncertainty or rejection probability is
+inferred from this deterministic residual.
+
+The same existing observations are used throughout; predictions are unchanged
 and no datum is counted twice as independent evidence. Five zero-time diagnostics
-remain separate. The paper's nominal 200 measurements per position point does
-not provide accepted counts, raw trials or calibration covariance. The
+remain separate. The [paper](https://arxiv.org/html/2603.04744v1#S3.SS2) reports
+200 nominal measurements per point and spin-noise error bars in Figure 5.
+The [deposit](https://zenodo.org/records/18752287) contains no numerical
+per-point uncertainties, accepted counts, raw trials or calibration covariance. The
 [retained receipt](../../model/occupation_control/transfer_results.json.gz)
 binds all endpoints and source/data hashes; automatic replay recomputes the
 complete numerical paths. This tests a supplied quantum apparatus, not a unique

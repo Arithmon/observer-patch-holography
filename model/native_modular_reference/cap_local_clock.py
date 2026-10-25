@@ -267,9 +267,18 @@ def _stage(index, sign, raw, s):
 
 
 def _read(density, index, sign, law, raw, s):
-    ref = density.shape[0]//66
     dtype, data = _stage(index, sign, raw, s)
     stage = np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512)
+    return _read_stage(density, index, law, stage)
+
+
+def _read_stage(density, index, law, stage):
+    """Complete native/export instrument for an already certified source stage.
+
+    Internal composition helper: callers own stage admission and its error
+    certificate. All padding output is retained as a reference-bearing abort.
+    """
+    ref = density.shape[0]//66
     codes = np.array(full.support()[0])
     outside = np.array([i for i in range(512) if i not in set(codes)])
     action = np.kron(stage[np.ix_(codes, codes)], np.eye(ref))
@@ -292,11 +301,19 @@ def execute(density, law, *, raw=True, s=PARAMETER, feedback=True):
     s = full.parameter(s)
     if raw and s != PARAMETER:
         raise ValueError('raw histories are certified at the retained parameter only')
-    first, abort = _read(density, 0, 1, law, raw, s)
+    def stage(index, sign):
+        dtype, data = _stage(index, sign, raw, s)
+        return np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512)
+    return _execute_stages(density, law, stage, feedback=feedback)
+
+
+def _execute_stages(density, law, stage, *, feedback=True):
+    """Compose admitted stages without resetting the carrier between reads."""
+    first, abort = _read_stage(density, 0, law, stage(0, 1))
     result = {('abort', 0): abort}
     for record, rho in first.items():
         sign = -1 if feedback and record[2] < 0 else 1
-        second, abort = _read(rho, 1, sign, law, raw, s)
+        second, abort = _read_stage(rho, 1, law, stage(1, sign))
         result['abort', 1, *record] = abort
         for later, final in second.items():
             result['read', *record, *later] = final

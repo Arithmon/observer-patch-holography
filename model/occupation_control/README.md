@@ -187,11 +187,27 @@ all 130 endpoint centres, including zero time, with the corresponding
 separate dense master-equation solver. This is finite implementation
 consistency, not a bound on native compiler or laboratory service error.
 
+The [shared-calibration diagnostic](shared_calibration.py) permits one common
+nonnegative output gain `g` and unrestricted offset `b` across all 125 rows.
+It minimizes the remaining uniform allowance `e` subject to
+`g*lower+b-e <= observed <= g*upper+b+e`, scaling each numerical interval
+with the gain. The exact optimum is **0.4916177969622167** estimator units
+(rounded here). A feasible rational point and nonnegative dual witness in the
+[receipt](shared_calibration_results.json) prove this value against all 252
+endpoint and boundary constraints. The dual uses case-a 1.2, 3.2 and 8.4 ms;
+every other observation remains checked. Independent interval choices make
+this a conservative relaxation of the common apparatus dynamics. The
+optimizing gain and offset are diagnostic and are never adopted. This rules
+out a purely affine calibration explanation with zero remaining allowance;
+changes to the physical probe coordinate, preparation, timing or dynamics are
+outside this family. It supplies no statistical rejection or OPH verdict.
+
 The [paper](https://arxiv.org/html/2603.04744v1#S3.SS2) reports 200 nominal
-measurements per point. The deposition supplies neither accepted counts nor
-the raw trials, calibration covariance or a resolution of the documented
-estimator-normalization ambiguity. No experimental confidence interval,
-p-value or inferred detector correction is assigned.
+measurements per point and spin-measurement-noise error bars in Figure 5.
+The [deposit](https://zenodo.org/records/18752287) supplies no numerical
+per-point uncertainties, accepted counts, raw trials, calibration covariance
+or resolution of the documented estimator-normalization ambiguity. No
+experimental confidence interval, p-value or detector correction is assigned.
 
 Replay recomputes every path and bound; the compressed format only reduces
 artifact size. The sparse-cutoff receipt remains a separate certificate.
@@ -199,4 +215,8 @@ artifact size. The sparse-cutoff receipt remains a separate certificate.
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.occupation_control.transfer --check model/occupation_control/transfer_results.json.gz
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/occupation_control/test_transfer.py
+python -m model.occupation_control.shared_calibration --check model/occupation_control/shared_calibration_results.json
 ```
+
+The last command checks exact arithmetic on the authenticated retained
+intervals; the transfer command recomputes their numerical trajectories.

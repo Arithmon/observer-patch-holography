@@ -144,8 +144,9 @@ all failures. One source-compiled modular action and two continuing native
 current instruments operate on that prepared mixed carrier, with complete
 quantum/reference error and resource accounting. This derives preparation,
 scheduler randomness and the readout instrument on the declared finite
-domain; coherent proper-code services and exterior-address selection remain
-architecture inputs. The ideal reference's modular action preserves all
+domain. Spectator-uniform completed cap operations remove exterior-state
+selection; coherent proper-code services remain architecture inputs. The ideal
+reference's modular action preserves all
 core-containing cap algebras; finite preparation and source words carry the
 stated errors. On the binary total-two shell, requiring every bare two-port
 algebra to be preserved instead forces a product reference even among
@@ -599,6 +600,22 @@ ideal complete-trial expectation has a bounded inverse on `s` in `[1/2,1]`.
 The retained compiled continuation is certified at `s=1`.
 Continuing probes retain disturbance and feedback. Intermediate source-pulse
 locality, physical service fidelity and conversion to seconds remain separate.
+
+The [native reference readout](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
+reduces identification of this repair-derived entropy family to one signed
+current setting. Complete-trial counts determine all three subnormalized
+charge weights without inserting the known weights or success probability
+into the inverse. Reference-uniform preparation supplies a finite martingale
+confidence contract on continuing inputs; intervals reaching zero remain
+unresolved. The inferred ratios drive a certified common source clock and two
+continuing cap reads, with sampling, preparation and source errors composed.
+The retained accelerated kernel demonstration samples `2^24` trials; its
+fixed-budget protocol accepts only confidence-event errors at most `0.09`
+and halts explicitly otherwise. Its complete joint history bound, including
+the unchanged training transcript and statistical failure, is below `0.096`;
+this is not a bound conditioned on successful admission. Coherent tomography
+is unnecessary for this specified family;
+coherent clock enactment and physical identification remain separate inputs.
 
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
 scope of a classical interpretation. The diagonal native branch obeys
