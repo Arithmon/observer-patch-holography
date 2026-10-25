@@ -62,7 +62,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Eigenvalue.** A grid of weights usually swings a direction round to point somewhere else. Where it merely stretches or shrinks one, that direction is the grid's own, and the factor is its eigenvalue.
 
-**Energy.** What generates a region's advance along its own clock, the reversible flow its state determines. For a region in thermal equilibrium it is minus the logarithm of the state times the temperature, up to a constant that moves nothing.
+**Energy.** The generator of a specified physical time flow. In thermal equilibrium, when that flow is calibrated to the state's modular flow, its Hamiltonian is minus the logarithm of the state times the temperature, up to unit conventions and an additive constant. A modular generator alone does not establish that physical calibration.
 
 **Entanglement.** Content living in the relation between two halves of a thing rather than in either half. Cut a definite whole in two, look at one side alone, and what comes back is vague by exactly the amount the cut severed.
 
@@ -78,7 +78,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Field.** Two objects wear the word. One is a value assigned at every place, like the temperature through a room or the wind over an ocean; the other is a net of algebras, which is the sense the Standard Model is written in.
 
-**Fine-structure constant.** The dimensionless strength of electromagnetic interaction, near 1/137 at low energy. Reading one cell of the screen from outside and from inside and requiring the two readings to agree gives an inverse coupling of 137.035660, against a measured 137.035999.
+**Fine-structure constant.** The dimensionless strength of electromagnetic interaction, near 1/137 at low energy. The shared-width trial map gives inverse coupling 137.035660. Wissner-Gross's separate entangled-pair candidate gives 137.035999189566. Their physical electromagnetic identification is the independent question stated in chapter twenty-nine.
 
 **Fixed point.** An object x left unchanged by a specified map F: F(x)=x. The object may be an instantaneous state, a reduced record, a probability law or a complete history. A fixed complete history can contain changing local states; a stationary law can support changing realizations. Fixedness alone establishes neither attraction nor uniqueness.
 
@@ -116,7 +116,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Invariant.** Whatever a given change of description leaves the same. Naming it comes first and the symmetry second: a rotation preserves length, and without length there is nothing for the rotation to be a symmetry of.
 
-**Lagrangian.** A single function of position and speed from which every equation of motion follows. It is a compression, arrived at last rather than first, and a compression is allowed to be lossy.
+**Lagrangian.** A function of configurations and their rates, or a field density, whose specified action gives equations of motion. It compresses dynamics. A finite history or repair cost does not by itself select a unique physical Lagrangian.
 
 **Leaky abstraction.** An account that lets you get on with the work while the machinery stays out of sight, good until the machinery does something the account has no words for. Joel Spolsky wrote the rule down in 2002, and the everyday container picture of space and time leaks in at least six places.
 

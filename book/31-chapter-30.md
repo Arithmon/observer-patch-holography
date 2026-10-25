@@ -18,7 +18,7 @@ In the spring of 1992 a group running the Beijing Spectrometer, a detector on Ch
 
 Koide's 1776.97 had not moved. The world average had walked 7.2 million electron-volts and arrived on it.
 
-Something holds the three masses at two thirds to three parts in a million. It is a triangle.
+A triangle supplies a conditional description of that near equality. The balance condition and the identification of its response eigenvalues with mass amplitudes still need a physical derivation.
 
 ## What a mass calculation must fix
 
@@ -28,7 +28,7 @@ The neutrino sector admits an optional effective interaction with two Higgs fact
 
 ## Three corners, two numbers
 
-Chapter twenty-seven put the three families of matter on the three corners of an oriented face of the icosahedron, which is where the count of three came from. The electron, the muon and the tau sit one to a corner.
+Chapter twenty-seven described a candidate rank-three family band. The comparison here attaches the electron, the muon and the tau to the three corners of an oriented face of the icosahedron. That attachment is a premise, not a consequence of counting corners.
 
 An oriented face has one rotation left in it. Rotate the corners round the face: one goes to two, two goes to three, three goes to one. Do that three times and everything is back where it started. Of the sixty rotations of the icosahedron, that turn, its repeat and leaving the solid where it stands are the only three that keep both the face and its sense of circulation.
 
@@ -110,6 +110,6 @@ The list has an end, which is what makes an empty search a result: four hundred 
 
 Koide's own model reached past the leptons to the quarks. The quark side did not hold. Two structures built out of entirely different material, a set of subparticles and a twenty-sided solid, keep the charged leptons and stop at the quarks.
 
-The wiring fixes the electric charges to every decimal anyone has measured. It fixes the number of colors at three and the number of families at three. It carries the balance at the corners of one oriented face, equal weight for the two ways they can respond, and that balance is Koide's two thirds; the equal weight is the condition Koide published, and a derivation of it from the wiring alone is work in progress. Handed the electron and the muon and that balance, it pins the tau inside 72 electron-volts and prints the value at which the balance dies. It does not hand over the angle by which the weak interaction turns a down quark into a strange quark: 20.9052 against 13.0029 proves that the angle is no axis angle of this solid. Had 13.0029 turned up anywhere on that list, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
+The declared spin lift and charge normalization give the familiar internal charges and three color slots. A minimum-cost response rule offers a rank-three family band, whose physical identification remains open. On an attached oriented face, equal weight for the two response sectors gives Koide's two thirds; deriving that equal weight and its mass readout from repair remains work in progress. Handed the electron and the muon and that balance, it pins the tau inside 72 electron-volts and prints the value at which the balance dies. It does not hand over the angle by which the weak interaction turns a down quark into a strange quark: 20.9052 against 13.0029 proves that the angle is no axis angle of this solid. Had 13.0029 turned up anywhere on that list, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
 
 The settled entries and the untouched ones end up on the same line. Working physicists carry it in four terms, holding every charge, every family count, every coupling and every mass on the roster, the forced ones and the typed-in ones side by side, with nothing marking which is which. Nobody has ever derived that line.

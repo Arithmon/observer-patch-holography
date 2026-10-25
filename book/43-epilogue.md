@@ -63,22 +63,22 @@ Observers capable of running a repair law act within the history. Working out an
 15. Why does space have three directions? Only the slowest-fading block survives enough rounds to carry a position, and its rank is three.
 16. Why does time run, and only one way? Every commit throws away what it resolved and every quantum repair drains coherence, so the arrow comes from repair and owes nothing to how the universe started.
 17. Why is there a speed limit? The angle-preserving transformations of an observer's sky are the Lorentz transformations, and records reading their neighbors round by round fill out exactly the cone those transformations preserve.
-18. Why does anything have energy? Energy generates a region's advance along the clock that region makes for itself, and a sum of squares puts a floor under it.
+18. Why does anything have energy? A specified coherent generator supplies an energy readout after clock calibration. Repair costs and modular generators provide finite interfaces; their identification with physical energy requires that matching.
 19. Why can't you ask everything at once? Refusing to answer two questions together is what makes an undocumented machine readable from a seat inside it, and the questions that refuse nothing form the center where records sit.
 20. Why does nature cheat, but only by exactly 2√2? The ceiling is a product of commutators, and sits at 2.8284.
 21. Why does time feel like it's moving? The state supplies its own flow, the flow is trivial on records, and an observer's clock steps it once at every event.
-22. Why do all the clocks agree? A tally that counts every touch, the field it reads, the wave it drives, the light cone and a region's own flow are readings of one repair history, and they share one parameter.
+22. Why do all the clocks agree? Within each stated construction, event tallies, field response and clock readings are related by explicit maps. Their parameters and calibrations are named; no universal physical clock is required.
 23. Why does writing something down cost heat? All four laws of thermodynamics come out of one repair rule, and at three hundred kelvin clearing each yes-or-no question a commit settled costs at least 2.87 joules divided by ten to the twenty-first.
 24. Why does a region's memory scale with its surface? Everything a region can show crosses the screen around it, and the screen's memory is a count of patches that each hold the same amount.
-25. Why does gravity look like geometry? Order fixes every angle, counting fixes every size, and curvature is what a settled network of observers looks like from a distance.
-26. Why exactly these forces? One plus three plus eight, and nothing else survives the arithmetic.
-27. Why this exact list of matter, and why three times over? Fifteen states make one generation, and of 1,024 possible matter contents exactly two survive as mirror images of each other.
-28. What is a particle, what is a wave, and why does it look like both? They are one object read at two record depths, and on the twelve-port response the unified route to proton decay is exactly absent.
-29. Why 1/137, and why a capacity limit? Both are consistency conditions: a cell and a horizon, each read from outside and inside, have to agree with themselves. The cell's fixed point gives 137.035660 against a measured 137.035999.
-30. Why do the masses land where they do? The tau is pinned inside a window 72 electron-volts wide, sitting 0.43 sigma from the measurement.
-31. What is a Lagrangian, and why is it the last thing? A running total with one contribution per step and no foresight in it, whose smallest value is the likeliest history.
+25. Why does gravity look like geometry? Record constructions provide geometric readouts. The Einstein-form theorem requires the stated null balances, conservation and entropy hypotheses; a repair-selected responsive geometry remains open.
+26. Why exactly these forces? The constrained finite port-current construction gives one plus three plus eight. Its physical field interpretation and global gauge lift retain their declared premises.
+27. Why this exact list of matter, and why three times over? The declared matter lift gives fifteen internal states and a restricted anomaly-free menu. A rank-three family candidate needs its physical attachment and mass-generating dynamics.
+28. What is a particle, what is a wave, and why does it look like both? Fields, excitations and detector records offer related conditional descriptions. Identifying the observed particle species and masses requires their spectral response in the same history.
+29. Why 1/137, and why a capacity limit? Specified cell and horizon consistency maps have certified roots. The shared-width alpha map gives inverse 137.035660; Wissner-Gross's separate entangled-pair candidate gives 137.035999189566. Physical electromagnetic identification remains open.
+30. Why do the masses land where they do? Measured electron and muon masses, a balanced-face assumption and a mass-ordering choice constrain a tau comparison inside a 72-electron-volt window. The full observed spectrum is not source-selected.
+31. What is a Lagrangian, and why is it the last thing? A specified effective action compresses dynamics. Invariant interaction channels are verified, while physical coefficients, the vacuum scale and the coupled geometric response remain to be selected.
 32. Why does anything move? The inverse-square exponent is a subtraction, three directions less one.
-33. Why was every open problem the same problem? Every one of them was a consequence of starting with a stage.
+33. Why was every open problem the same problem? The proposed mechanisms share an observer-based description. Each finite result and conditional interpretation retains its own hypotheses; this common language does not close every physical problem.
 34. Why was Newton right for two hundred years? Redundancy is what makes anything definite, and the layer he wrote down has no motion of its own.
 35. What is anything made of? Ten entries, each a rate, a count, a rank, a cost or a commitment, and no substances.
 36. Why these laws and not others? The average score climbs at the rate the survivors disagree with each other, and what got selected was a repair rule, chosen from inside, with no ensemble of worlds to compare against.

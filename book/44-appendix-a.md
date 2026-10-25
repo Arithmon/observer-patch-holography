@@ -4,7 +4,7 @@ Between 1982 and 1985 Eugene Miya, of the Computer Systems Division at NASA Ames
 
 A question arrives a thousand times because a thousand people share one assumption, and an answer that leaves the assumption standing produces the same question the following month, from the same people, worded differently.
 
-Eighteen come back about the account in this book.
+Eighteen come back about the account in this book. The answers retain the earlier chapters' finite domains and physical premises. A conditional effective description is not yet a source-selected model of every observed particle.
 
 ## What about the Big Bang?
 
@@ -32,7 +32,7 @@ Anybody who has taken a physics course met the one line in the first week and sp
 
 The assumption is that the most compressed statement of a subject is its foundation, so whatever fits on a coffee mug must be where the world starts.
 
-A Lagrangian is a compression. A compression summarizes something that was there first. Written on line one, the line carries three families because three families were counted, a group because detectors reported one, and a page of numbers because laboratories measured them. Written last, it carries three families because an oriented face has three corners, and one plus three plus eight because that is the only way the eleven dials left over from a center of one come apart.
+A Lagrangian is a compression. A compression summarizes something that was there first. Written on line one, the line carries three families because three families were counted, a group because detectors reported one, and a page of numbers because laboratories measured them. Written last, it records the finite response algebra and the conditional matter lift, while naming the three-family attachment, mass-generating coefficients and scale as remaining inputs. A three-corner face is a candidate family attachment, not a proof of the physical family count.
 
 The compression is also lossy, by an amount somebody can write down. Add a term built to vanish at every configuration the world realizes, and every realized history keeps its score, every stationary history stays stationary, and the same run comes out most probable. The momentum changes, since momentum is read off how the line responds to a rate of change. The added term tilts where nothing is ever realized. Two lines, the same histories, different energies, and nothing in the world's own histories picks one of them over the other. The one on the mug is the best summary anybody has written.
 
@@ -90,11 +90,11 @@ So there is no rate to measure and no threshold to find. What gets fixed instead
 
 ## Where does the explaining stop?
 
-The charges, the family count and the strength of electromagnetism all come off the same carrier, and anybody handed one number after another is entitled to ask where the supply ends.
+Conditional charge representations, candidate family bands and electromagnetic trial maps can all be constructed on the same carrier, and anybody handed one number after another is entitled to ask where the supply ends.
 
 The question expects an evasion, on the assumption that a structure either explains everything or is hiding something.
 
-The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
+The stopping point is printed to the same precision as the results. The declared lift fixes the internal charges, and the stated band-selection rule offers a rank-three family candidate. Neither selects the physical family matrices or mass scale. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
 The declared electromagnetic trial map certifies 137.035660 where the quoted measurement reads 137.035999, and the interval enclosure rules out numerical error in that map as the source of the difference. The physical low-energy transport is incomplete. No calculation here proves that the omitted quark contribution removes exactly that mismatch. Wissner-Gross's separate entangled-pair expression has inverse 137.035999189566; identifying it with the physical electromagnetic coupling and the same-cell equation retains the independent premises stated in chapter twenty-nine.
 
@@ -104,9 +104,9 @@ Every one of these numbers was measured decades before the arithmetic that lands
 
 The complaint assumes flexibility, and flexibility is countable.
 
-A fit is worthless when it has a dial in it, meaning a quantity somebody turns until the output matches. Count the dials between the wiring and the result and there are none. The grain appears on both sides of its own equation, and the family count is the number of corners on an oriented face. A structure with no continuous freedom either lands on the measured value or misses it in public.
+A fixed declared map can be tested without adjusting its output, and the certified maps here have that scope. Choosing which map is physical is a different freedom. The grain equation, the face attachment, the balance condition and the physical field readout each need their own justification. Measured mass inputs and unselected coefficient matrices remain inputs even when an accompanying finite formula is exact.
 
-The horizon's capacity is fixed, so dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. The test is standing: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that decide it, and a measured evolution of $w$ breaks the account.
+Under the fixed-horizon-capacity hypothesis, dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. The test is standing: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that decide it, and a measured evolution of $w$ breaks the account.
 
 ## Isn't this what Leibniz said?
 
@@ -134,7 +134,7 @@ Observer-first sounds like a claim that the universe waits to be noticed. The ve
 
 The assumption is that observing is a mental act, so the word carries a mind wherever it goes.
 
-Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all five. None of the results built on the list would change if every observer in the network were plumbing.
+Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all three. None of the results built on the list would change if every observer in the network were plumbing.
 
 Consciousness is a special case, defined in chapter forty at the size the structure supports: owned boundary repair, read from the inside. An observer that holds coordinates on its own state, and computes its next move off them, is reading the half of the record that the map to the public list deletes. Which organizations of that reading are lived, and how finely a person's runs, are questions that chapter takes up. Nothing in the structure lets a wish move an entry.
 

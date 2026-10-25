@@ -52,7 +52,7 @@ Shift that level by a fraction of a percent and the reaction that builds carbon 
 
 An argument of that shape is a probability claim. A probability claim needs two things: a collection to draw from, and a weight on the collection. The collection turned up afterwards. The extra dimensions of a string theory can be curled up in an enormous number of ways, each giving a different set of particles and constants at ordinary energies. A collection that large makes a hospitable world unsurprising, provided the collection is there and somebody supplies the weight.
 
-The structure reads two quantities twice, once from the outside and once from the inside. Both readings describe the same carrier, so consistency gives an equation with the quantity on both sides. The map is a contraction, so it has exactly one fixed point. Its coupling comes to 137.035660 against the measured 137.035999, with the quark cloud holding the difference. There is no ensemble to be improbable in: one world, and one value it allows.
+The declared self-reference maps compare two readings of the same carrier and give an equation with the trial quantity on both sides. Contraction proves one fixed point for each specified map. The shared-width map returns inverse coupling 137.035660 against the measured 137.035999. No calculation here proves that a quark contribution closes that difference. Uniqueness within a trial map does not yet select that map as the physical electromagnetic response.
 
 ## Two parts in ten to the seventeenth
 
@@ -94,15 +94,15 @@ A region's memory is set by its surface because everything anybody can learn abo
 
 ## Eight short answers
 
-The other famous questions went the same way.
+The following answers summarize the finite constructions and their conditional interpretations. They retain the hypotheses stated in the earlier chapters; they are not a claim that every physical parameter has been source-selected.
 
-Why are there three families of matter rather than one or seven? Because a physical difference between matter and antimatter needs at least three, asymptotic freedom permits at most five and three eighths, and the twenty triangular faces of the wiring carry a threefold turn whose orbit supplies exactly three.
+What suggests three families? Within the stated quark-mixing and asymptotic-freedom assumptions, the usual bounds restrict the possibilities. A minimum-cost irreducible response-band rule chooses a rank-three candidate. Attaching that band to physical families and deriving their nondegenerate masses remain separate problems.
 
-Why do the charges come in sixths? Because six combinations of gauge moves do nothing whatever to any piece of matter, so they get bundled in with the move that does nothing at all, and the bundle holds only if every hypercharge advances in whole multiples of one sixth. That is the lock that leaves hydrogen neutral to better than one part in a billion billion.
+Under the declared matter lift, why do the charges come in sixths? Because six combinations of gauge moves do nothing whatever to any piece of matter, so they get bundled in with the move that does nothing at all, and the bundle holds only if every hypercharge advances in whole multiples of one sixth. That is the lock that leaves hydrogen neutral to better than one part in a billion billion.
 
-Why does the proton refuse to decay the grand-unified way? Because the carrier that route needs, one direction coupling color to weak charge at once, is missing from a twelve-dimensional list that splits into eight, three and one, and a missing direction cannot be made small or slow: that route is closed exactly.
+Why is the usual grand-unified gauge-boson route absent from this carrier? Because the carrier that route needs, one direction coupling color to weak charge at once, is missing from a twelve-dimensional list that splits into eight, three and one, and a missing direction cannot be made small or slow: that carrier route is absent exactly. This does not exclude every effective baryon-number-violating interaction.
 
-Why is the fine-structure constant near one part in 137? One cell of the screen, read from outside and from inside, has to agree with itself, and the equation that says so has one fixed point for each version of the loop, at 137.035660 for the version with the shared gauge width inside it, against the measured 137.035999.
+How close are the alpha candidates? The screen-cell trial maps have certified fixed points. The shared-width map gives inverse coupling 137.035660. [A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf) supplies a separate entangled-pair expression with inverse 137.035999189566. Both arithmetic constructions need the physical electromagnetic identification discussed in chapter twenty-nine.
 
 What does the geometry say about Koide's relation? On one face of the icosahedron, equal weight for the two ways the corners can respond gives exactly two thirds. With the electron and muon masses as inputs, it pins the tau inside a window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93.
 
@@ -112,24 +112,24 @@ Why does space have three directions? Because the twelve readings of a patch spl
 
 Why is there a speed limit at all? Because the four numbers of a two-by-two block carry the interval in their determinant, one sign for time against the opposite sign for the three directions of space, and where the determinant vanishes there is a cone whose directions make up an observer's sky. A separation is a count of seams crossed and a duration is a count of repairs committed, and the speed of light is the conversion between the two counts once each carries physical units, worked out by each observer from its own books and agreed on because every observer's sky is a sphere.
 
-And the missing mass at galactic scales is a repair charge carried on the collars themselves rather than a particle nobody has caught. It stays because no later commit writes what would clear it, and its profile around a galaxy produces an acceleration law fixing the speed of the outermost stars from the visible mass and one acceleration constant.
+A separate conditional dark-matter construction represents missing mass at galactic scales by a repair charge on the collars. It stays because no later commit writes what would clear it, and its profile around a galaxy produces an acceleration law fixing the speed of the outermost stars from the visible mass and one acceleration constant.
 
 ## The empty column
 
-Chapter one read three centuries of physics as a crash log: what was assumed, what broke, and what got fixed. The seven problems above never reached the third column. Here it is.
+Chapter one read three centuries of physics as a crash log: what was assumed, what broke, and what got fixed. The third column records proposed mechanisms under their stated assumptions, rather than a completed derivation of every observed scale.
 
 | The problem | What sits underneath | What comes out when that goes |
 |-|-|-|
 | Measurement | A world stocked with definite values, disturbed by an encounter | A commit into the commuting part of an algebra, with the odds forced by additivity |
 | The arrow of time | Direction-blind dynamics plus a special first arrangement | An irreversible write, forward and reverse weights apart by the exponential of the entropy produced |
-| The cosmological constant | A vacuum energy sitting in a spacetime that was there first | Local null data leave one metric term free, and the horizon's record capacity fixes it |
-| Fine-tuning | An ensemble of worlds for this one to be improbable among | One structure, two quantities read twice, one solution each |
-| The hierarchy | A fundamental scale entered by hand for a measured one to be compared against | A coupling of one part in 24.32 arriving in an exponent |
+| The cosmological constant | A vacuum energy sitting in a spacetime that was there first | Local null data leave one metric term free; a specified horizon-capacity condition fixes it |
+| Fine-tuning | An ensemble of worlds for this one to be improbable among | Specified self-reference maps have unique roots; selecting their physical attachment remains open |
+| The hierarchy | A fundamental scale entered by hand for a measured one to be compared against | A conditional exponential scale relation with matching inputs; the Higgs scale remains unselected |
 | Grand unification | A symmetry imposed on the world from outside it | Every relabeling an inside job, one central dial, and no simple group with room for it |
 | Holographic duality | A boundary at infinity taken as its own summary, so the assumption is the conclusion | A collar with an interior on both sides, and a constraint code carrying no distance |
 
-Seven rows expose one recurring assumption: somebody wrote down the stage before writing down anything that happens on it. The finite wiring removes that assumption by supplying records, seams and repair, and twelve ports and thirty seams are the common structure under every row.
+Seven rows expose one recurring assumption: somebody wrote down the stage before writing down anything that happens on it. The finite wiring supplies records, seams and repair as a common structure. It realizes some finite premises; the continuum, physical-field and geometric-response premises still require their own witnesses.
 
-There is a test that separates the outcomes. Ask what a solution would have to contain. A misplaced mechanism has to go, and a free parameter has to become the solution of an equation the world cannot avoid. For the cosmological constant, the light-ray argument explains why local data leave the metric term undetermined, and the horizon's capacity supplies its value.
+There is a test that separates the outcomes. Ask what a solution would have to contain. A misplaced mechanism has to go, and a free parameter has to become the solution of an equation the world cannot avoid. For the cosmological constant, the light-ray argument explains why local data leave the metric term undetermined, and an additional horizon-capacity condition supplies its value. Deriving that physical condition from the same repair history remains part of the programme.
 
 Which leaves the picture everybody starts with, the one with a container, a clock running at one rate for everybody, and objects sitting at positions inside it. That picture is the same assumption in domestic form, accurate to more decimal places than any instrument in a house can resolve. Somebody assumed a container and a clock and got the tides out of it, and the precession of the equinoxes, and the mass of the Sun worked out from how long a planet takes to go round it. That is two hundred years of correct answers out of a picture whose opening sentence puts the world inside a box that was never there.
