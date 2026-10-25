@@ -658,6 +658,15 @@ and finite confidence retained. The inferred ratios, rather than supplied
 reference weights, compile a common clock with a complete continuing-history
 error bound. [The readout contract](native_modular_reference/README.md#learn-the-common-reference-from-one-native-current-setting)
 does not identify arbitrary coherent states or laboratory time.
+The [two-record quadrature inverse](native_modular_reference/phase_inference.py)
+also removes the need to supply a fitted signal amplitude or a hidden
+occupation readout: two actual native coin/current records select one gap,
+and complete cosine/sine batches give a signed finite-confidence interval.
+It has explicit unresolved outputs for insufficient records, incompatible
+amplitude, or an uncertified alias window. The source compiler's parameter
+is withheld from this decoder, but remains a programmed intervention in the
+construction. Enacting an autonomous clock and attaching physical units are
+distinct obligations.
 
 The intended field action is an **effective description of observer
 statistics**, and time is relative to the observer's algebra, state and

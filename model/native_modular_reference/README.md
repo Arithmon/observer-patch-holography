@@ -747,6 +747,127 @@ identification needs only native records. Enacting the clock still uses the
 declared coherent source services; neither laboratory seconds nor a physical
 energy, field or particle dictionary follows from this calibration.
 
+## Infer an oriented clock parameter from complete native records
+
+[`phase_readout.py`](phase_readout.py) turns the mean calibration above into
+a finite-record inverse with an orientation. After each cap Ramsey stage,
+read seam `(1,b)`, with `b=7` or `8`, recording coin/current `(c,j)`;
+then read the core `(0,1)` on that disturbed carrier, recording `(d,k)`.
+The public score is
+
+```text
+X = 2 j 1[d=c, k=-c],        X in {-2,0,2}.
+```
+
+Both reads execute even when the first current is zero. No selected outcome
+is divided out: every unmatched coin, zero current, preparation failure,
+export abort and numerical abort remains in the trial count, with score
+zero. The two native reads have the exact score effect on their input
+`(1-N0)(N1-Nb)/2`; the effect of its squared score is
+`(1-N0)|N1-Nb|`. The native second read therefore removes the unwanted
+core-spectator frequency from this statistic without a separate occupation
+measurement or a selected exterior configuration.
+
+The two analyzer settings use the existing real seam rotation and its
+quadrature `exp(-i pi X_ab/4)`, compiled from the existing pair-Y and
+pivot-Z source controls. For the same prepared three-sector reference,
+the two complete-trial means obey
+
+```text
+E[X_cos] = A cos(s Delta),    E[X_sin] = A sin(s Delta),
+A = (9/2)(b1-b0),            Delta = log(bhat1/bhat0).
+```
+
+Here `b_q=q a_q` are the unknown ideal subnormalized reference weights,
+while `bhat_q` are inferred from the earlier native training records.
+The source word enacts that learned center ratio. The training confidence
+box certifies `A>0`; the decoder neither receives nor fits the amplitude
+or the programmed parameter `s`. The common amplitude cancels in the
+ratio of the two means, and its positive sign fixes the orientation.
+The exact native effects also give
+`E[X^2]=9q(a0+a1)<=9q/20`, uniformly in the phase and normalized family.
+
+[`phase_inference.py`](phase_inference.py) uses complete, fixed-length
+quadrature batches and exact rational arithmetic. A uniform conditional
+complete-trial half-trace allowance `T` gives mean bias at most `4T`
+and second moment at most `V=9q/20+8T`. The complete source budget is
+`GB+qE`, with preparation error `B`, raw source error `E` and source
+norm cap `G`; numerical sampling requires its separately audited allowance.
+The decoder rejects an allowance smaller than the source budget.
+For `N` trials per quadrature, it constructs an outward rational radius
+`r` satisfying
+
+```text
+N r^2 >= 2 k (V + 4r/3).
+```
+
+Martingale Bernstein then gives simultaneous quadrature coverage failure
+at most `4*2^-k`, plus the training confidence failure. The radius adds
+`4T` once as conditional mean bias; it neither multiplies that bias by
+the trial count nor suppresses it by conditioning on successful heralds.
+The conditional source theorem and exact sampler-column audit apply after
+past public records, so independent input copies are unnecessary.
+Two caps share one training event; their simultaneous failure allowance
+adds the four quadrature tails without counting training twice.
+
+A declared parameter window must lie inside a single right phase
+half-plane, and the observed cosine confidence interval must be strictly
+positive. Rational alternating-series arctangent enclosures give the
+signed phase interval; dividing by the enacted learned gap gives the
+parameter interval. Nonpositive reference orientation, unresolved cosine,
+incompatible amplitude, excessive winding windows and intervals missing
+the declared window produce an explicit unresolved result. The selected
+two means are periodic under a shift `2 pi/Delta`; they cannot determine
+unrestricted winding. This score alias does not claim that the entire
+fine-record instruments have identical laws at that period.
+
+The separate `reference_unit_parameter_interval` divides the same measured
+phase by the confidence box for the unknown reference gap. It measures
+calibration uncertainty in reference units; it does not assert that the
+source word evolved under the unknown exact generator. This local inverse
+does not pay a full-state action error for the rare third sector, because
+its enacted frequency is the recorded learned ratio and its scored response
+isolates that frequency.
+
+[`phase_clock.py`](phase_clock.py) continues from the training carrier
+through both quadratures and both overlapping caps, retaining complete
+records, terminal-state counts, stream hashes and every failure flag.
+The numerical demonstration samples an explicitly quantized ideal-stage
+population kernel with the finite native preparer. Its all-column exact
+score audit supplies the conditional bias and variance contract.
+Separate histories execute and certify the unmodified full 512-address
+source arrays, including padding and all export branches. The population
+stream is not presented as a microscopic raw-source trajectory, and a
+seeded PRNG run does not prove independent physical randomness.
+
+The retained protocol uses `2^24` training trials and `2^22` trials per
+quadrature in each cap, with the fixed window `[-1,1]`. The decoder receives
+neither the programmed parameter nor the analytical reference weights.
+For the C alternative at parameter `3/4`, the two intervals are approximately
+`[0.6771,0.7966]` and `[0.6792,0.8013]`; for E at `-3/4`, they are
+`[-0.7918,-0.6714]` and `[-0.8148,-0.6952]`. These displayed endpoints are
+outward rounded; the receipt retains exact rational bounds. Every interval
+contains its validation target and passes the predeclared width cap `1/5`.
+The shared-training, both-cap statistical failure bound is `1/128` for
+each alternative, without conditioning on favorable records. Confidence
+coverage comes from the theorem; a fixed seeded example does not measure
+its repeated-run coverage. There is no new public-data fit.
+
+Including failed trials, each alternative costs at most
+`22,127,817,621,766,144` native attempts for training and readout,
+`383,158,059,008` coherent source pulses and `766,316,118,016` proper-code
+service events. Those are conservative costs of the represented protocol,
+not counts of pulses physically executed in the accelerated simulation.
+The receipt also bounds retained record/state counters and explicitly
+excludes program storage, private tapes, stream hashes and arithmetic
+workspace from that counter subtotal.
+
+The completed ideal analyzer and native reads belong to the cap algebra;
+locality of each intermediate encoded pulse remains unproved. The result
+is a blind inverse measurement of an actively programmed coherent source
+word. It does not derive autonomous native time, strictly monotone
+individual records, laboratory seconds, or physical source fidelity.
+
 ## The boundary includes noncommuting references
 
 [`compatibility.py`](compatibility.py) removes a possible loophole in the
@@ -785,6 +906,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.cap_local_clock --check model/native_modular_reference/cap_local_clock_results.json
 python -m model.native_modular_reference.reference_tomography --check model/native_modular_reference/reference_tomography_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.learned_clock --check model/native_modular_reference/learned_clock_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.phase_clock --check model/native_modular_reference/phase_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

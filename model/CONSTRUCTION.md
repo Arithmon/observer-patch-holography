@@ -617,6 +617,20 @@ this is not a bound conditioned on successful admission. Coherent tomography
 is unnecessary for this specified family;
 coherent clock enactment and physical identification remain separate inputs.
 
+The [signed phase readout](native_modular_reference/README.md#infer-an-oriented-clock-parameter-from-complete-native-records)
+connects that common clock to finite observer records. A second native core
+read removes the unwanted frequency from a cap current; cosine/sine analyzers
+then give an oriented interval without fitting the unknown reference
+amplitude. Complete fixed-length batches carry the same native state forward,
+retain failures and propagate preparation, source and sampling error through
+an exact inverse. Both caps use the same inferred generator. The executable
+certificate includes two repair-law alternatives, raw full-source histories,
+an all-column dyadic sampler audit and complete attempt/service budgets.
+The admitted parameter window resolves phase aliases; individual records are
+not monotone. The compiler enacts a programmed modular parameter, so
+this closes a readout/calibration interface without deriving autonomous
+repair time or a laboratory duration.
+
 The [public Bell-record comparison](predictions/BELL_RECORDS.md) tests the
 scope of a classical interpretation. The diagonal native branch obeys
 `S<=2` under independent settings and local factorized responses. Replaying
