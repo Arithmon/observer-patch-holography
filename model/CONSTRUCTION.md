@@ -555,6 +555,26 @@ Preparation discards its private tape; retaining that tape would preserve
 conditional reference information and change the comparison instrument.
 This active protocol does not replace the passive IID clock laws above.
 
+The [labelled field preparation](observer_time_fields/README.md#native-preparation-of-the-labelled-field-state)
+composes this reset with the native auxiliary selector. It supplies the
+uniform total-two state together with its two initial public field bits,
+within a complete reference-safe error. The same carriers then execute four
+incident-clock field reads and committed-bit feedback, with all preparation,
+selection and waiting failures included. This implements the initial
+state/record premise of the elementary positive-transfer theorem without a
+stationary-state oracle or independent blank. The screen and continuum
+preparations retain their separate contracts.
+
+The [passive-age readout](native_clock/README.md#passive-age-from-two-current-derived-endpoints)
+uses two current-derived configurations around an unread interval. An exact
+native eigenfield gives score mean `(9/10)^n`, uniformly over the starting
+state. Complete continuing trials invert that mean to a finite set of attempt
+counts, with martingale confidence and both carriers' resource costs.
+This service needs no coherent clock or stationary preparation. It measures
+a fixed unknown interval length across trials; it does not supply its stopping
+gate, an autonomous oscillator or a physical duration. Both services use
+declared joint record access and finite controller memory.
+
 The [native auxiliary pointer](native_interface/pointer.py) uses a prepared
 orientation bit and the existing source controls to measure a work bit.
 Tracing the auxiliary gives the full work-bit Lüders instrument, rather

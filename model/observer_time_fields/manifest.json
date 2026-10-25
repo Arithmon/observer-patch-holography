@@ -27,6 +27,7 @@
     "test_core.py": "8d6d572ef72aceeb6ea24104693f9585a104733d828a093a07fdda2fd1c30837",
     "test_dual.py": "3aad4050be728668865cce56b7685cd196c39fa2de6c645d9cddfac3cc7c7bee",
     "test_federation.py": "3282b9de3c111d1e6f33a43f268df8cf35737aa08b4836cae4eec7492d8873e7",
+    "test_native_service_continuation.py": "ea7001f23fdf35da9f566e4dc4efbdb2702ae21a1f82654b270cc7dddc099a07",
     "test_preparation.py": "a1675b65c6ba68259ed81c60cb42f8ce8b3103e3ab072ae912107db82a0617cd",
     "test_receipt.py": "57c9bbafa9c0b67c91be42d6391e220cdf56b0e38bfbd2196ba6d938587cb4e9",
     "test_refinement.py": "c910378e516369255edc9a0f50358e84ce4d2368e8664839b88727503b5595d9",
