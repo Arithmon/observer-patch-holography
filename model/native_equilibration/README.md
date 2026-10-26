@@ -230,3 +230,63 @@ python -m model.native_equilibration.vacuum_geometry --check model/native_equili
 python -m model.native_equilibration.ball_modular --check model/native_equilibration/ball_modular_results.json
 python -m pytest -q -W error model/native_equilibration
 ```
+
+### Fermion vacuum and regional algebra
+
+[fermion_ball.py](../common_source/fermion_ball.py) uses the same calibrated
+M15 fermion action as the spectrum experiment. A region-local canonical
+particle-hole map gives 21 Dirac species (six quark flavors in three colors and three charged leptons) and three massless Weyl
+species. One antiperiodic Fourier cutoff and one ball define the restricted
+global vacuum projector, its modular kernel and entropy. Independent entropy
+secants and nested relative entropy test the state variation. At the retained
+fine cut, massless and running-top comparisons with the conformal stress
+weight differ by -0.1953% and +22.83%. That weight is not assumed to be the
+massive modular Hamiltonian; the grid errors are not a convergence theorem.
+
+A separate 32-CAR source preparation executes 13,616 native pulses and checks
+its covariance against the all-left BdG vacuum. Larger regional grids are
+covariance calculations. The region contains the full free-matter CAR algebra;
+interacting gauge constraints, dressing and gauge-field edge contributions
+are not supplied. Calibration, spectral cutoff, vacuum selection and joint
+geometric stationarity remain explicit premises.
+
+### Vacuum-compatible active repair and its work cost
+
+[vacuum_repair.py](vacuum_repair.py) specifies compatibility independently of
+the update: a uniform native geometry bit and conditional low excess energy
+above the field Hamiltonian's vacuum. One actual C/E seam event resamples
+that bit. Its committed record selects a source preparation and ordinary
+SWAP reset with fresh blanks, retaining the displaced input in the environment.
+The geometry family has density $1/r$ and angular scale $r^3$, hence fixed
+proper slab volume branch by branch on one fixed Fock algebra.
+
+Eight source preparations cover both geometry branches and all four native
+angular bands, at oscillator cutoff eight. Exact rational Rayleigh enclosures
+and the full oscillator gap bound each branch's 36-oscillator product vacuum
+error by $1/256$ in half trace norm, including the binary norm defect. The
+large product is not materialized. A separate cutoff-two, one-band joint
+reset executes all 16 geometry/field input columns; full-field reset costs
+remain tensor-product interface requirements, with fresh blanks and entropy
+export charged.
+
+The ideal finite-ground-state family's regional entropy and bare two-face
+area have derivatives of the same sign. The existence of this family of joint fixed states
+does not imply bare generalized-entropy stationarity. Source fidelity at
+discrete geometries does not certify an entropy derivative of the source
+word family. A separate exact work test is stronger: for each common normal
+mode, $a_\pm=\mu_\pm\omega_\pm$ gives stationary cycle work
+
+```math
+W=\frac{\omega_++\omega_-}{16}
+  \frac{(a_+-a_-)^2}{a_+a_-}\ge0.
+```
+
+The constant native angular mode makes the total strictly positive for
+distinct geometries. At branches $r=0.9,1.1$, the ideal total is about
+0.163501 in the shared model-coordinate Hamiltonian units. Exact Rayleigh
+intervals separately certify work greater than $1/1000$ for the retained
+source preparations. A static geometry potential has zero mean change in
+this stationary cycle and cannot pay that cost. Reciprocal backreaction or
+an explicit work reservoir is needed. This supplies a finite preparation
+and work ledger; it derives neither autonomous cooling nor a renormalized
+small-ball Einstein balance.

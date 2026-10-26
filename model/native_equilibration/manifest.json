@@ -1,11 +1,11 @@
 {
   "description": "Derived finite preparation error on native fixed-total sectors and actual observer federations.",
   "files": {
-    "README.md": "3cd599cf98a8ded4cf4817aa5896d73dd65c3ed36622ae8aadbc4220f4b9adf6",
+    "README.md": "46cbdd7995be078fd1e6242d34375f6b52c19f18d3462888220a1a39323a23b0",
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "ball_modular.py": "13c3296848a3280bd02b4c3ee5153b2894dfc97457edbbfa913a2bb961f908c8",
-    "ball_modular_results.json": "091af8a5da68423f44fc20e0d460493f6f504d02d1408e68b818791943736674",
+    "ball_modular_results.json": "f9264a05eda3436dfc410c6df32cebb250d2d85fdfdc5a37b7c003266d95819f",
     "common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
     "construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
@@ -25,9 +25,13 @@
     "test_history_entropy.py": "7f445978341db43c208e4d6ead7587ad8744b2463697104da44f8d120d5bcf5d",
     "test_record_thermodynamics.py": "33ff2dbecf4d8992e192914cd96bb0f264efcb406a9731fc6218d18dddb76aff",
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb",
-    "test_vacuum_geometry.py": "a272b36b4ec0ce386c7992d3b5de2082b16bb27644f79dcf6c648c894d8a6962",
-    "vacuum_geometry.py": "d36fd549ba963df8f1f170f61e32bc0869551e805cddc91c155ec20432d872ec",
-    "vacuum_geometry_results.json": "264f09472b4287803254dc0280e15490867d15ddc2c4c2936c0e9bf427617cf3",
+    "test_vacuum_geometry.py": "ab0bc7385ad919337a1949c44aae693b5f25a5700726460fc01c13c1de8072b3",
+    "test_vacuum_repair.py": "705945a0cbce68a01be364ef2dafde69937c5072f29d3433e9ccc4571187d05a",
+    "vacuum_geometry.py": "f05a4bfed5e37170cf71bf42039ad0949eb2347d07459c1824d8cc9072e4af1f",
+    "vacuum_geometry_results.json": "e195a1ba9398a02d5b81ffe91b2ed55f95fe942c5fe6c1bb58ff03142d875684",
+    "vacuum_repair.py": "cfd5072db7e69f42899d3cc428576535a97e76b5b3c8c8f2394edf3ce87fc11f",
+    "vacuum_repair_results.json": "a0b9a0bfba5ce446394aab3c19fe1e572eefe7382a4aaf7df462f730a91ff542",
+    "vacuum_repair_results.npz": "387e915588901763ab2f9f0f960736a5be480ef2dd11186f8613c9883df5c02c",
     "variation_results.json": "d360ba7568b431b853b954e1254db70e2fbe2027b6c580ec6edba59438ec85f9"
   },
   "reproduce": [

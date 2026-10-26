@@ -43,8 +43,18 @@ def test_actual_native_endpoint_mean_supplies_the_entire_angular_operator():
             for coin in (0, 1):
                 total += np.asarray(native.native(state, edge, coin)[0])
         np.testing.assert_array_equal(total, (60*np.eye(12, dtype=int)-lap)@state)
-    expected = [0.]+[5-math.sqrt(5)]*3+[6.]*5+[5+math.sqrt(5)]*3
-    np.testing.assert_allclose(np.linalg.eigvalsh(lap), expected, atol=5e-15, rtol=0)
+    # The spectrum/multiplicities are exact algebraic data. A floating
+    # eigensolver supplies a backward-error diagnostic, not that proof.
+    variable = s.Symbol("lambda")
+    assert s.Matrix(lap).charpoly(variable).as_expr() == s.expand(
+        variable*(variable-6)**5*(variable**2-10*variable+20)**3)
+    exact = {s.S.Zero: 1, 5-s.sqrt(5): 3, s.Integer(6): 5, 5+s.sqrt(5): 3}
+    assert s.Matrix(lap).eigenvals() == exact
+    values, vectors = np.linalg.eigh(lap)
+    scale = max(1., float(np.linalg.norm(lap, np.inf)))
+    error_budget = 64*np.finfo(float).eps*scale
+    assert np.linalg.norm(lap@vectors-vectors*values, 2) <= error_budget
+    assert np.linalg.norm(vectors.T@vectors-np.eye(12), 2) <= 64*np.finfo(float).eps
 
 
 def test_symbolic_monotonicity_and_independent_geometry_determinants(report):
@@ -54,6 +64,20 @@ def test_symbolic_monotonicity_and_independent_geometry_determinants(report):
     assert identities["proper_radial_lattice_spacing_log_rate"] == "2*u/3 + 2*v/3"
     assert identities["proper_tangential_lattice_spacing_log_rate"] == "-u/3 - v/3"
     assert identities["proper_regulator_aspect_ratio_log_rate"] == "u + v"
+
+
+def test_stress_probe_ports_are_selected_from_exact_geometry_not_numeric_ties(report, monkeypatch):
+    assert report["same_local_stress_first_law_control"]["ports"] == [0, 1]
+    q, p = v.regional_modular()
+    lap = np.asarray(v.native_angular())
+    seams = [(a, b) for a in range(12) for b in range(a+1, 12) if lap[a, b] < 0]
+    assert max(p[a, b] for a, b in seams)-min(p[a, b] for a, b in seams) < 2e-14
+    # A rounding-scale perturbation can change an argmax among symmetry
+    # ties; the declared geometric experiment must retain its ports.
+    changed = p.copy()
+    changed[4, 5] += 1e-15; changed[5, 4] += 1e-15
+    monkeypatch.setattr(v, "regional_modular", lambda **kwargs: (q, changed))
+    assert v.run()["same_local_stress_first_law_control"]["ports"] == [0, 1]
     assert report["fixed_slab_proper_volume_derivative_exact"] == "0"
     assert report["regional_vacuum_entropy_derivative"] < 0
     assert report["two_face_area_derivative"] < 0

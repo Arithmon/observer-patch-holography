@@ -78,6 +78,11 @@ and the clocks inside it.
   not a parameter derivation. A separate observer replay recovers all nine
   supplied running gaps from 84 million simulated complete records, with
   explicit intervals and service assumptions; physical mass recovery remains open.
+  The fixed corrected cycle itself generates no static logical mass term.
+  A two-hop correlation survives code compression but has unremoved leakage
+  and no selected physical coupling. The same calibrated fermion action also
+  supplies a finite regional-vacuum entropy calculation and a 32-CAR source
+  preparation; physical vacuum selection and Einstein stationarity remain open.
   Native repair separately transports a collective correlation charge with
   compatible local detector records on overlapping regions. Its physical
   particle interpretation remains open.

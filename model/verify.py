@@ -244,6 +244,14 @@ REPLAYS = (
      "model/common_source/calibrated_spectrum_observer_results.json"),
     ("model.native_equilibration.ball_modular", None,
      "model/native_equilibration/ball_modular_results.json"),
+    ("model.common_source.parameter_selection", None,
+     "model/common_source/parameter_selection_results.json"),
+    ("model.common_source.fermion_ball", None,
+     "model/common_source/fermion_ball_results.json"),
+    ("model.common_source.calibrated_transport", None,
+     "model/common_source/calibrated_transport_results.json"),
+    ("model.native_equilibration.vacuum_repair", None,
+     "model/native_equilibration/vacuum_repair_results.json"),
 )
 
 

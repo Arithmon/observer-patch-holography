@@ -92,7 +92,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 90
+    # The complete Windows pytest pass takes over 80 minutes before the
+    # particle witness commands. Keep headroom for the full research suite.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && 120 || 90 }}
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'

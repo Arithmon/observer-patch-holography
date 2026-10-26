@@ -98,14 +98,15 @@
     "all_port_local_canonical_quadratic_stress_variations_equal": true,
     "all_position_and_mixed_covariance_variations_zero": true,
     "both_coordinate_energy_derivatives": 0.5,
-    "entropy_derivative_difference": 0.0070111555790379615,
+    "entropy_derivative_difference": 0.007011155579037708,
+    "port_selection": "lexicographically first native seam, independent of floating modular entries",
     "ports": [
-      4,
-      5
+      0,
+      1
     ],
     "regional_entropy_derivatives": [
       0.6250863548596025,
-      0.6320975104386405
+      0.6320975104386403
     ],
     "scope": "the supplied finite slab vacuum; no continuum small-ball kernel is excluded",
     "state_variations": "Gaussian momentum noise along (e_a-e_b)/sqrt2 and (e_a+e_b)/sqrt2"
@@ -129,8 +130,8 @@
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/native_equilibration/test_vacuum_geometry.py": "a272b36b4ec0ce386c7992d3b5de2082b16bb27644f79dcf6c648c894d8a6962",
-    "model/native_equilibration/vacuum_geometry.py": "d36fd549ba963df8f1f170f61e32bc0869551e805cddc91c155ec20432d872ec",
+    "model/native_equilibration/test_vacuum_geometry.py": "ab0bc7385ad919337a1949c44aae693b5f25a5700726460fc01c13c1de8072b3",
+    "model/native_equilibration/vacuum_geometry.py": "f05a4bfed5e37170cf71bf42039ad0949eb2347d07459c1824d8cc9072e4af1f",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/physical_space_time/observation_process.py": "a84d701f3224d9b46e93d6f15fb0be2950ce39e7093652f0033f72c312c3b004",
     "model/relative_observer_geometry/intrinsic_geometry.py": "1a13f1004fbe897d368bb8c9ae0c7bec41644b1fd002fc1fcaf3aadd3599df1f"

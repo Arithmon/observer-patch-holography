@@ -67,11 +67,36 @@ supplied running gaps. Its finite sampling and admitted source/service errors
 give intervals wider than the precision of several measured masses. This
 checks a calibrated source and readout, not a derivation of its parameters,
 an interacting physical spectrum or an executed protection campaign.
+The [moving-field control](../model/common_source/calibrated_transport_results.json)
+adds rest and two momentum shells in one 1,170-CAR field and clock, with
+mass-independent probe preparation and three fixed Pauli analyzers.
+Its retained 558 million simulated complete trials give 27 positive
+invariant-mass intervals, one per charged coordinate and momentum setting;
+all contain the supplied running masses. The conditional simultaneous
+sampling failure bound is about $7.49\times10^{-8}$, with physical-service
+and frame errors admitted separately. This is not experimental mass precision.
+Classical phase tracking uses earlier counts. The action and coherent
+evolution retain their calibrated inputs; this removes a probe-control
+dependency, not the mass-parameter premises.
+The [fixed corrected-cycle audit](../model/common_source/parameter_selection_results.json)
+uses no calibrated packet and obtains an identity logical transfer with zero
+static mass seed. Native one-port and edge observables become scalar on the
+code; a two-hop correlation has nonzero differences but unremoved syndrome
+leakage and no selected physical coupling. This narrows the tested mechanism,
+without deriving the measured masses.
 The [proper-ball calculation](../model/native_equilibration/ball_modular.py)
 instead computes a three-dimensional Gaussian vacuum's regional entropy
 response and compares it with an independently fixed conformal stress weight.
 Its finite lattice and box errors remain explicit; common native continuum
 identification, renormalized area density and joint stationarity are unproved.
+The [same-action fermion calculation](../model/common_source/fermion_ball_results.json)
+uses all 90 free matter components and the calibrated mass packet in one
+finite spatial regulator. It computes regional vacuum entropy, checks the
+modular first law, and executes a separate 32-CAR source preparation.
+The large regional grids are not source-prepared histories; the regulator,
+vacuum choice, gauge-region dictionary and physical service accuracy remain
+premises. These are finite mathematical controls, not additional public
+measurement datasets.
 
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**

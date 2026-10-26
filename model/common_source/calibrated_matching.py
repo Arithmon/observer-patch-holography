@@ -73,8 +73,13 @@ def _fraction(value):
     return result
 
 
+def repository_key(path, root):
+    """Repository custody keys use forward slashes on every host."""
+    return path.relative_to(root).as_posix()
+
+
 def source_bindings():
-    return {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+    return {repository_key(p, ROOT): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in (Path(__file__), ADAPTER, PACKET)}
 
 

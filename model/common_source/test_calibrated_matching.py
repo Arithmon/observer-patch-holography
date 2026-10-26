@@ -3,11 +3,19 @@ from copy import deepcopy
 from decimal import Decimal, localcontext
 from fractions import Fraction as F
 import json
+from pathlib import PurePosixPath, PureWindowsPath
 
 import pytest
 
 from tools import strict_json
 from . import calibrated_matching as matching
+
+
+@pytest.mark.parametrize("flavor,root", [(PurePosixPath, "/repo"), (PureWindowsPath, "C:/repo")])
+def test_custody_paths_are_identical_across_host_path_flavors(flavor, root):
+    base = flavor(root)
+    assert matching.repository_key(base/"model"/"common_source"/"calibrated_matching.py", base) == (
+        "model/common_source/calibrated_matching.py")
 
 
 def test_complete_retained_external_comparisons_and_unfitted_miss():

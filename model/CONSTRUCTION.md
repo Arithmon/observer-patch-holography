@@ -679,6 +679,28 @@ coefficient `-4*pi*R^4/15` per `G_tau,tau`. A common native continuum limit,
 renormalized area density and joint state/geometry stationarity are not
 supplied by those finite comparisons.
 
+The [same-action fermion vacuum](common_source/fermion_ball.py) extends the
+regional comparison to the calibrated M15 action: 21 Dirac fields (six quark flavors in three colors and three charged leptons)
+and three massless Weyl fields share one antiperiodic spatial cutoff and
+ball. An exact region-local particle-hole map preserves both CAR relations
+and charge. Regional modular response and nested relative entropy follow
+from the restricted global vacuum projector. A 32-CAR source preparation
+executes 13,616 native pulses; the larger grids are covariance calculations.
+At the retained fine cut, massless and running-top comparisons with the
+conformal stress weight differ by -0.1953% and +22.83%, respectively.
+The massive comparison is not a conformal modular identity. Gauge-region
+constraints, physical vacuum selection and joint stationarity remain open.
+
+The [native geometry/vacuum repair](native_equilibration/vacuum_repair.py)
+combines a uniform native geometry bit with conditional low-energy field
+preparation on a fixed-volume slab family. Exact Rayleigh enclosures certify
+the executed band preparations; a separate small joint reset retains every
+input and native record. Fresh blanks and entropy export are required. The
+stationary switching cycle consumes strictly positive work, including a
+separate bound on the literal source preparations. A common repaired state
+therefore does not supply autonomous cooling, reciprocal geometric response
+or the required renormalized entropy stationarity.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -817,6 +839,15 @@ excludes all eight core-to-outer seams and keeps the tested static Higgs
 family seed rank at most two; active correction and different mass routes
 are outside that result.
 
+The [fixed active-cycle calculation](common_source/parameter_selection.py)
+derives the full logical transfer $I_{36}$ and zero static mass seed for the
+existing recorded code and recovery. All one-port loads and native edge
+costs compress to scalars. The original faithful reference is not stationary
+under this active cycle on the same carrier. A two-hop weighted correlation
+has nonzero occupation differences but leaks out of the code and is not an
+existing coherent term in the fixed repair. Its coefficient, physical field
+dictionary and controlled elimination of the syndrome remain unselected.
+
 The separate [calibrated matter action](common_source/calibrated_matter.py)
 checks a common-scale empirical Standard Model parameter point on the same
 internal tensors and actual current matrices. The complex CKM current and
@@ -828,6 +859,14 @@ and its unfitted W value misses the selected one-standard-uncertainty
 interval. The original native candidate contains none of these empirical
 inputs. Source selection of masses, interacting evolution and a physical
 measurement dictionary remain separate obligations.
+
+The [moving calibrated field](common_source/calibrated_transport.py) uses
+1,170 CAR modes on 13 momenta. Fixed preparation and three fixed Pauli
+analyzers remove mass-dependent probe controls; adaptive interval rotation
+uses earlier records classically. Rest and two momentum shells share the
+same clock and supplied action. Complete simulated records, including
+timeouts, give conditional energy and invariant-mass intervals; source
+frames, spectator costs and physical-service admissions remain explicit.
 
 The [calibrated observer](common_source/calibrated_spectrum_observer.py)
 executes all four input columns of the 42 commuting rest-pair source factors,

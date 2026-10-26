@@ -244,7 +244,12 @@ def run(*, length=F(2), angular_scale=F(1), density=F(1),
     entropy = math.fsum(row["multiplicity"]*row["entropy_nats"] for row in modes)
     slope = math.fsum(row["multiplicity"]*row["entropy_derivative"] for row in modes)
     offdiagonal = pmod-np.diag(np.diag(pmod))
-    first, second = map(int, np.unravel_index(np.argmax(abs(offdiagonal)), offdiagonal.shape))
+    # Icosahedral symmetry makes the thirty seam entries equal. Selecting
+    # their floating maximum depends on the eigensolver's basis/rounding.
+    # Fix the experiment geometrically, before evaluating its response.
+    laplacian = native_angular()
+    first, second = next((a, b) for a in range(12) for b in range(a+1, 12)
+                         if laplacian[a][b] < 0)
     # Independent admissible state directions: add epsilon*u*u^T to the
     # momentum covariance with u=(e_first +/- e_second)/sqrt(2). These
     # classical Gaussian momentum displacements leave all qq/qp moments
@@ -275,6 +280,7 @@ def run(*, length=F(2), angular_scale=F(1), density=F(1),
         "any_port_local_energy_kernel_equals_this_modular_quadratic_form": False,
         "same_local_stress_first_law_control": {
             "ports": [first, second],
+            "port_selection": "lexicographically first native seam, independent of floating modular entries",
             "state_variations": "Gaussian momentum noise along (e_a-e_b)/sqrt2 and (e_a+e_b)/sqrt2",
             "all_port_local_canonical_quadratic_stress_variations_equal": True,
             "all_position_and_mixed_covariance_variations_zero": True,
@@ -303,7 +309,8 @@ def run(*, length=F(2), angular_scale=F(1), density=F(1),
         raise ValueError("vacuum entropy, action and geometry diagnostics must remain finite")
     if ((shape > 0 and not slope < 0) or (shape < 0 and not slope > 0)
             or report["pure_global_covariance_residual"] > 1e-10
-            or report["regional_modular_momentum_offdiagonal_frobenius"] <= 1e-8):
+            or report["regional_modular_momentum_offdiagonal_frobenius"] <= 1e-8
+            or abs(pmod[first, second]) <= 1e-8):
         raise ArithmeticError("actual native vacuum sign, purity or modular locality check failed")
     return report
 

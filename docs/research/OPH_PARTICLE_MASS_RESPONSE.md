@@ -19,6 +19,13 @@ An explicitly [calibrated action control](#56-calibrated-action-and-matching-con
 also realizes the charged-family matrices and measured mixing inputs on this
 representation. Its external Standard Model mass matching is a calibration
 check, not a mass measurement from native observer records or a derivation.
+Separate finite source experiments recover the supplied running gaps from
+complete simulated records. A moving-field experiment uses fixed preparation
+and fixed Pauli readouts; its adaptive phase rotation is classical. The
+[fixed-cycle audit](#58-what-the-fixed-corrected-repair-can-select) tests
+parameter selection without those calibrated inputs. The
+[regional vacuum calculation](#59-regional-vacuum-of-the-same-fermion-action)
+connects the calibrated action to a finite matter entropy calculation.
 The measured Standard Model mass hierarchy has **not** been recovered, and
 these collective operators have not been identified with Standard Model fields
 in the observer's physical Lorentzian description.
@@ -576,6 +583,130 @@ unproved. Replay the retained counts and their source channels with:
 ```sh
 python -W error -m model.common_source.calibrated_spectrum_observer --check model/common_source/calibrated_spectrum_observer_results.json
 ```
+
+The [moving-field producer](../../model/common_source/calibrated_transport.py)
+extends the calibrated control to one 1,170-CAR field on the 13 momenta
+$0,\pm e_i,\pm2e_i$. Source factorization includes the scalar phase and odd
+Fock sectors, with 79 native pulses for the base pair and 83 where the
+Higgs-pair sign requires conjugation. Spin and weak-current
+frames are checked on all three axes, including actual eight-CAR routing.
+The detector samples rest, first-shell and second-shell responses against
+the same clock. Its [receipt](../../model/common_source/calibrated_transport_results.json)
+retains complete joint counts, source arrays, conditional energy and invariant
+mass intervals, and the resources required by the full routed field.
+The 78 neutral modes are massless kinetic spectators; the optional calibrated
+Weinberg extension is not included.
+
+The 31-level campaign retains **558 million simulated complete trials**.
+All 27 invariant-mass intervals, for nine charged coordinates at momenta
+0, 1 and 2 GeV, are positive and contain the supplied running masses.
+The conditional simultaneous sampling failure bound is about $7.49\times10^{-8}$;
+physical-service and frame errors have separate admissions. The electron
+intervals at 1 and 2 GeV momentum are approximately
+$[0.0004750,0.0005048]$ and $[0.0004321,0.0005381]$ GeV. They illustrate
+the loss of mass sensitivity at large momentum and are not experimental
+mass precision. Full campaign costs are about $9.11\times10^{14}$ native
+pulses and $1.82\times10^{15}$ required load/export events, not an executed
+physical protection history.
+
+Every selected even pair starts in the same $+Y$ state and uses fixed
+$X,Y,Z$ analyzers. For $H=eI+mX-eZ$, the three means are
+$Y(t)=\cos(2Et)$, $X(t)=(e/E)\sin(2Et)$ and
+$Z(t)=(m/E)\sin(2Et)$, where $E^2=m^2+e^2$.
+For the selected $e=-p\le0$ and positive mass, the signed norm of $(-X,Z)$
+and $Y$ determine the phase without a supplied
+mass-dependent analyzer frame. Rotation of the interval box is classical
+and uses earlier records; the quantum clock has no adaptive offset. The
+same positive acceptance visibility must apply to all three settings.
+This closes a potential parameter leak in probe preparation and readout.
+The supplied action, spectral cutoff, programmed coordinate time and
+physical-service admissions remain inputs. A moving invariant-mass interval
+is inferred from the energy and declared momentum, not from a second fit;
+intervals containing zero are retained as unresolved.
+
+#### 5.8 What the fixed corrected repair can select
+
+The [parameter-selection calculation](../../model/common_source/parameter_selection.py)
+holds the existing six-dimensional recorded code, C/E instruments, completion
+selector and record-dependent recovery fixed. It introduces no empirical
+parameter packet or logical mass Hamiltonian. Every corrected branch on the
+code is a scalar times the identity, including the terminal timeout. The
+complete logical transfer is exactly $I_{36}$; its static generator vanishes
+and its inverse response is $zI$. Active protection alone therefore supplies
+no nonzero mass term in this fixed cycle.
+
+This obstruction is also visible in the actual native observables.
+$V^\dagger n_aV=I_6/6$ at every port, the three centered slow coordinates
+compress to zero, and every native edge cost
+$(n_a-n_b)^2$ compresses to a scalar. The specified weighted edge sum is
+$9I_6/32$. The original faithful reference is not stationary under the active
+corrected cycle on that same carrier: its code-projector probability changes
+from $41/450$ to $241/1500$ for C and $26627/115200$ for E. These changes give
+exact lower bounds $313/4500$ and $5377/38400$ on half the trace distance.
+Keeping a separate reference clock is an additional tensor-factor contract.
+
+A two-hop correlation tests what survives beyond these scalar observables.
+For the existing accepted seam weights $W$, define
+$H_2=\sum_{a<b}(W^2)_{ab}(n_a-n_b)^2$. Its six-level compression has
+occupation differences $(1/256,-1/1024,-1/3072)$ in the declared
+`logical_label = 2*spectator + occupation` factorization. Their absolute
+ratio is $12:3:1$. This is one CAR mode with three spectator values, not
+three independently occupiable physical species. $H_2$ leaks from the code
+in every logical column; the retained complete-record calculation gives its
+first-order logical response and positive quadratic syndrome leakage.
+Neither a rapid-correction limit nor its physical coherent coupling is derived.
+The uniform graph two-hop cost instead preserves the code and gives differences
+$(4,0,0)$; all invariant diagonal pair costs have difference rank at most one
+for this factorization.
+
+The [receipt](../../model/common_source/parameter_selection_results.json)
+retains exact algebra, every native raw branch and actual 512-dimensional
+source controls. A separate factorization control changes the interpreted
+gaps of the same $H_2$, but does not preserve or replay the M15 current and
+observer apparatus. It diagnoses an unselected observable dictionary, not
+two complete Standard Models with identical physical premises. These results
+exclude the stated selection routes; they exclude neither other codes nor
+coherent interactions and do not derive the measured hierarchy.
+
+#### 5.9 Regional vacuum of the same fermion action
+
+The [fermion-ball calculation](../../model/common_source/fermion_ball.py)
+uses the same calibrated M15 action, mass packet and CKM frame. A local
+canonical particle-hole map sends each charged all-left pair to
+$h_D=\left(\begin{smallmatrix}-\sigma\cdot p&m\\m&\sigma\cdot p\end{smallmatrix}\right)$.
+Both CAR anticommutators and the charge convention hold exactly; all 21
+Dirac blocks, counting quark color, are checked against the actual 180-dimensional BdG
+symbol. The remaining three Weyl species are massless. Optional phenomenological
+Weinberg masses are not included.
+
+One antiperiodic Fourier box and one ball radius $R=0.01\,\mathrm{GeV}^{-1}$
+serve all species. Restricting the global filled negative-energy projector
+to the ball gives $C_A$, its modular kernel
+$K_A=\log[(1-C_A)/C_A]$ and its entropy. A positive-energy orbital with
+occupation $\epsilon$ defines a legitimate variation of the same global
+state. Its regional entropy derivative is $\psi_A^\dagger K_A\psi_A$,
+checked against independent entropy secants and nested-region relative
+entropy. This removes a separate scalar-only matter choice from this finite
+entropy comparison; it does not supply dynamical gauge constraints, dressing
+or gauge-field edge entropy for an interacting region.
+
+At grid $28^3$ in a box of side $6R$, the massless modular response differs
+by about $-0.1953\%$ from the independently fixed conformal stress integral.
+The same comparison for the running top mass differs by $+22.83\%$.
+The massless identity is not assumed for massive fields. Grid and box controls
+retain their nonmonotone errors; no continuum rate or renormalized area
+coefficient is inferred.
+
+A $2^3$-site, 32-CAR source control prepares the filled vacuum with 568
+completed source blocks and 13,616 native pulses, including the local
+particle-hole change. Its covariance is checked against the independent
+all-left BdG projector. Every local four-column Fock gate is executed;
+the Gaussian composition avoids a dense $2^{32}$ Fock vector. The larger
+regional calculations are covariance calculations, not prepared large source
+histories. Passive vacuum selection, physical service accuracy, an interacting
+continuum and joint entropy--geometry stationarity remain separate requirements.
+The [receipt](../../model/common_source/fermion_ball_results.json) retains
+the common cutoff, source costs, spectral admission and all comparison controls.
 
 ### 6. Relation to observers' effective 3+1D spacetime
 
