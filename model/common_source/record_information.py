@@ -40,6 +40,11 @@ def _density(value, dimension):
             or not np.isfinite(raw).all()):
         raise ValueError("a finite density matrix with the declared shape required")
     result = np.array(raw, dtype=complex, copy=True)
+    # PSD requires each original diagonal population to be nonnegative. This
+    # check has no eigensolver roundoff and must not erase a small negative
+    # supplied population under the spectral diagnostic's tolerance.
+    if np.any(np.diag(raw).real < 0):
+        raise ValueError("nonnegative original diagonal populations required")
     if np.linalg.norm(result-result.conj().T, 'fro') > ZERO_TOLERANCE:
         raise ValueError("a Hermitian density matrix required")
     if abs(np.trace(result).real-1) > ZERO_TOLERANCE:
@@ -101,6 +106,16 @@ def native_history_ledger(rho, *, law="E", prefix=3, deadline=3,
         raise ValueError("one through six finite reference levels required")
     if type(success_only) is not bool:
         raise ValueError("success_only must be an explicit Boolean")
+    # Validate before the shared population enumerator's cache: its keys can
+    # identify 3, 3.0 and Fraction(3), and E does not otherwise use deadline.
+    if type(law) is not str or law not in ("C", "E"):
+        raise ValueError("C or E required")
+    if type(prefix) is not int or not 0 <= prefix <= 5:
+        raise ValueError("integer native prefix from zero through five required")
+    if type(deadline) is not int or not 2 <= deadline <= 16:
+        raise ValueError("integer census deadline from two through sixteen required")
+    if type(stop_on_current) is not bool:
+        raise ValueError("stop_on_current must be an explicit Boolean")
     dimension = 66
     rho = _density(rho, dimension*reference_dimension)
     paths = population.histories(law, prefix, deadline, stop_on_current)
@@ -182,7 +197,8 @@ def code_stopped_weights(law="C", maximum=3):
     seam, coin, raw label and terminal stopping decision; no timeout is dropped.
     """
     from . import record_code as code
-    if law not in ("C", "E") or type(maximum) is not int or not 1 <= maximum <= 4:
+    if (type(law) is not str or law not in ("C", "E")
+            or type(maximum) is not int or not 1 <= maximum <= 4):
         raise ValueError("C/E and a one-through-four native-attempt cap required")
     live = [((), F(1))]
     terminal = []
@@ -216,6 +232,9 @@ def protected_code_ledger(rho, *, law="C", maximum=3, reference_dimension=1):
     from . import record_code as code
     if type(reference_dimension) is not int or not 1 <= reference_dimension <= 6:
         raise ValueError("one through six finite reference levels required")
+    if (type(law) is not str or law not in ("C", "E")
+            or type(maximum) is not int or not 1 <= maximum <= 4):
+        raise ValueError("C/E and a one-through-four native-attempt cap required")
     rho = _density(rho, 6*reference_dimension)
     # Derive and check the six-column Gram scalar on every actual source seam.
     for edge in code.SEAMS:
@@ -271,8 +290,11 @@ def passive_code_information(law="C", word=((0, 1), (2, 3))):
     """
     from . import record_code as code
     from ..observer import record_recovery as recovery
-    if (law not in ("C", "E") or type(word) is not tuple or not 1 <= len(word) <= 4
-            or any(edge not in code.SEAMS for edge in word)):
+    if (type(law) is not str or law not in ("C", "E")
+            or type(word) is not tuple or not 1 <= len(word) <= 4
+            or any(type(edge) is not tuple or len(edge) != 2
+                   or any(type(port) is not int for port in edge)
+                   or edge not in code.SEAMS for edge in word)):
         raise ValueError("C/E and a native seam word of one through four events required")
     groups = defaultdict(lambda: [set() for _ in range(6)])
     for logical, support in enumerate(code.SUPPORTS):
@@ -335,7 +357,7 @@ def field_reference_information(law="C"):
     field runtime; they are not coherently averaged or success conditioned.
     """
     from . import record_field as field
-    if law not in ("C", "E"):
+    if type(law) is not str or law not in ("C", "E"):
         raise ValueError("C or E required")
     experiment, arrays = field.detector_experiment()
     initial = arrays["initial"]

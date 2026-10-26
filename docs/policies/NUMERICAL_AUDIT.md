@@ -218,6 +218,14 @@ not a domain argument.
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
   a preferred state family.
+  A compiled permutation implementing its supplied target does not establish
+  the intended logical action. Bind every emitted routing, syndrome and
+  feedback word to independently specified input/output slots and wire order;
+  challenge a wrong but unitary word outside the selected replay examples.
+  For compressed source execution, distinguish exact invariant-subspace
+  identities from floating export-complement amplitudes. A complete numerical
+  instrument budget must include the successful block, retained failure
+  branches and accumulated representation changes.
 - **Sampling design:** fixed-sample confidence bounds require horizons and
   radii chosen independently of the analyzed outcomes. Validate a separately
   declared design against counts; this checks consistency, not precommitment.

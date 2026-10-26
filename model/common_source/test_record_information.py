@@ -9,6 +9,7 @@ import pytest
 from . import record_information as info, record_code as code
 from ..observer import native
 from ..native_modular_reference import local_preparation
+from ..native_equilibration import history_entropy as population
 
 
 def _pair_density(left, right, *, coherent=True, reference=False):
@@ -39,6 +40,25 @@ def test_counting_envelope_extends_to_full_quantum_outputs_with_same_native_refe
     assert complete['quantum_counted_functional'] == pytest.approx(ledger['input_entropy'])
     assert complete['population_counted_functional'] > complete['quantum_counted_functional']
     assert abs(complete['quantum_envelope_residual']) < 2e-12
+
+
+@pytest.mark.parametrize('law', ['C', 'E'])
+def test_original_dyadic_complex_mixture_checks_entropy_components_independently(law):
+    # Two orthonormal complex vectors with original exact dyadic entries.
+    # The mixed input spectrum is exactly (3/4,1/4), independently of the
+    # producer's spectral calculations and its relative-entropy subtraction.
+    first, second = np.zeros(132, complex), np.zeros(132, complex)
+    first[[0, 1, 8, 9]] = [.5, .5j, .5, -.5j]
+    second[[4, 5, 12, 13]] = [.5, -.5j, .5, .5j]
+    rho = .75*np.outer(first, first.conj())+.25*np.outer(second, second.conj())
+    entropy = -.75*math.log(.75)-.25*math.log(.25)
+    sigma = np.repeat(np.array(list(map(float, local_preparation.reference())))/2, 2)
+    cross = -sum(float(rho[i, i].real)*math.log(sigma[i]) for i in range(132))
+    row = info.native_history_ledger(rho, law=law, reference_dimension=2)
+    assert abs(row['input_entropy']-entropy) < 2e-13
+    assert abs(row['input_relative_entropy']-(cross-entropy)) < 2e-13
+    assert abs(row['quantum_counted_functional']-(entropy-math.log(2))
+               -row['information_loss']) < 2e-13
 
 
 def test_same_tape_can_hide_either_surviving_or_irreversibly_lost_coherence():
@@ -153,6 +173,55 @@ def test_small_positive_populations_are_retained_and_bad_original_inputs_rejecte
         expected = -(1-tiny)*math.log(1-tiny)-tiny*math.log(tiny)
         assert actual > 0
         assert actual == pytest.approx(expected, rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize('tiny', [1e-13, 1e-20, np.nextafter(0., 1.)])
+def test_negative_original_populations_are_not_eigensolver_roundoff(tiny):
+    rho = np.diag([1+tiny, -tiny, 0, 0, 0, 0])
+    with pytest.raises(ValueError, match='original diagonal'):
+        info.protected_code_ledger(rho)
+    valid = np.diag([1-tiny, tiny, 0, 0, 0, 0])
+    entropy = info.protected_code_ledger(valid)['input_entropy']
+    assert entropy > 0
+    expected = -(1-tiny)*math.log(1-tiny)-tiny*math.log(tiny)
+    assert entropy == pytest.approx(expected, rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize('option,value', [
+    ('prefix', 3.0), ('prefix', F(3)), ('prefix', True), ('prefix', np.int64(3)),
+    ('deadline', True), ('deadline', 3.0), ('deadline', F(3)), ('deadline', None),
+    ('stop_on_current', 1), ('stop_on_current', 'false'), ('stop_on_current', np.bool_(True)),
+    ('law', np.str_('E')), ('success_only', 0), ('reference_dimension', True),
+])
+def test_public_history_options_refused_with_cold_and_warm_population_cache(option, value):
+    rho = np.eye(66)/66
+    kwargs = {option: value}
+    try:
+        population.histories.cache_clear()
+        with pytest.raises(ValueError):
+            info.native_history_ledger(rho, **kwargs)
+        for prefix in (1, 3):
+            population.histories('E', prefix, 3, True)
+        with pytest.raises(ValueError):
+            info.native_history_ledger(rho, **kwargs)
+    finally:
+        population.histories.cache_clear()
+
+
+@pytest.mark.parametrize('law', [None, True, ['C'], np.str_('C')])
+def test_information_laws_preserve_original_types(law):
+    for call in (lambda: info.code_stopped_weights(law),
+                 lambda: info.protected_code_ledger(np.eye(6)/6, law=law),
+                 lambda: info.passive_code_information(law),
+                 lambda: info.field_reference_information(law)):
+        with pytest.raises(ValueError):
+            call()
+
+
+@pytest.mark.parametrize('word', [((False, True),), ((0., 1.),), ([0, 1],), ((0, F(1)),)])
+def test_passive_information_word_requires_original_native_integer_ports(word):
+    with pytest.raises(ValueError):
+        info.passive_code_information(word=word)
 
 
 @pytest.mark.parametrize('law', ('C', 'E'))
