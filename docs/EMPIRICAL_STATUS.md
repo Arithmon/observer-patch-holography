@@ -54,6 +54,24 @@ does not cover all public observations.
 The native-screen Gaussian slab also excludes one finite bare-entropy plus
 positive-area stationarity rule; it has no renormalized small-ball or physical
 stress identification and does not change the conditional Einstein theorem.
+The separate [calibrated particle action](research/OPH_PARTICLE_MASS_RESPONSE.md#56-calibrated-action-and-matching-control)
+checks that the same internal representation carries supplied mass and mixing
+parameters. Its SMDR inverse/forward calculation reproduces fitted mass
+inputs; its unfitted W value misses the selected one-standard-uncertainty
+interval. These are external Standard Model calculations, not native
+observer records, independent OPH predictions or a recovered physical spectrum.
+The separate [observer replay](../model/common_source/calibrated_spectrum_observer_results.json)
+retains 84 million simulated complete records from the calibrated rest-field
+instrument. A decoder without access to the mass packet encloses all nine
+supplied running gaps. Its finite sampling and admitted source/service errors
+give intervals wider than the precision of several measured masses. This
+checks a calibrated source and readout, not a derivation of its parameters,
+an interacting physical spectrum or an executed protection campaign.
+The [proper-ball calculation](../model/native_equilibration/ball_modular.py)
+instead computes a three-dimensional Gaussian vacuum's regional entropy
+response and compares it with an independently fixed conformal stress weight.
+Its finite lattice and box errors remain explicit; common native continuum
+identification, renormalized area density and joint stationarity are unproved.
 
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**

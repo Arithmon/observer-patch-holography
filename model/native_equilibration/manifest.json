@@ -1,9 +1,11 @@
 {
   "description": "Derived finite preparation error on native fixed-total sectors and actual observer federations.",
   "files": {
-    "README.md": "36ee35bfe57e6cedf2fc586d7f96870f70f31c239e40289b2272fbc321b6fcce",
+    "README.md": "3cd599cf98a8ded4cf4817aa5896d73dd65c3ed36622ae8aadbc4220f4b9adf6",
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
+    "ball_modular.py": "13c3296848a3280bd02b4c3ee5153b2894dfc97457edbbfa913a2bb961f908c8",
+    "ball_modular_results.json": "091af8a5da68423f44fc20e0d460493f6f504d02d1408e68b818791943736674",
     "common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
     "construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
@@ -15,6 +17,7 @@
     "record_thermodynamics.py": "d3054c1f7f5a6d2cd8ad5c06a3f6f63d944d45b4d7c1eb194aca5e5155dce906",
     "results.json": "a1ecb5f247dacdf1b5b579bede3a7c9fde84fd54d5775815697bb52563a2ed0c",
     "sweeps.py": "605b36070ba40be1e3dc933361a9065bac83ab2e8bf8978a260fb7e632cced26",
+    "test_ball_modular.py": "f8d564f15a023f78390ab9c79754d486098d969cf4a3c4b768089eeb2c1853f1",
     "test_common_variation.py": "64892f91bcc251efc03e31ab0c2627cd9246396355e15dc2332a7a38ef400632",
     "test_construction.py": "48fecbfc173c5224debb29780bf9ccb3011796c5c85453191f3de2db58780cea",
     "test_cut_completion.py": "010041d3aa7f7c0933d476b60f2f73551eb786248a40e68c6b9178c6ab28ee44",

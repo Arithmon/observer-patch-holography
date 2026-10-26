@@ -236,6 +236,14 @@ REPLAYS = (
      "model/common_source/chiral_candidate/dispersion_identifiability_results.json"),
     ("model.common_source.overlap_regulator", None,
      "model/common_source/overlap_regulator_results.json"),
+    ("model.common_source.calibrated_matter", None,
+     "model/common_source/calibrated_matter_results.json"),
+    ("model.common_source.calibrated_matching", None,
+     "model/common_source/calibrated_matching_results.json"),
+    ("model.common_source.calibrated_spectrum_observer", None,
+     "model/common_source/calibrated_spectrum_observer_results.json"),
+    ("model.native_equilibration.ball_modular", None,
+     "model/native_equilibration/ball_modular_results.json"),
 )
 
 

@@ -192,8 +192,41 @@ This tests the supplied Gaussian slab, not a renormalized small-ball
 generalized entropy. The native compiler has not selected or prepared its
 vacuum, and the experiment supplies neither physical stress nor curvature.
 
+### Proper-ball modular and geometry comparison
+
+[ball_modular.py](ball_modular.py) restricts the full three-dimensional
+Dirichlet Gaussian vacuum covariance to a proper ball with equal lattice
+spacing in three Cartesian directions. A frozen native chart coefficient
+defines the constant comparison metric and proper-time coordinate; it is not
+identified with the unknown native continuum tensor. The regional modular
+quadratic form is reconstructed from the reduced covariance, with a precision
+refusal for unresolved near-pure modes.
+
+For momentum displacements, the exact entropy derivative of a Gaussian-noise
+mixture equals the coherent relative-entropy charge. Nested regions of the
+same vacuum satisfy the corresponding monotonicity check. The independently
+fixed [conformal-ball stress weight](https://arxiv.org/abs/1102.0440) gives
+`4*pi^2*R^4/15` for a constant momentum profile and `4*pi^2*R^4/105` for a
+linear profile. At `R=1`, box side `16` and spacing `2/7`, all 179 regional
+modes are retained; the calculated charges are `2.687795261` and
+`0.397474951`, respectively 2.124% and 5.716% above those continuum values.
+The [receipt](ball_modular_results.json) retains six lattice cuts, four box
+sizes, an independent sine-spectrum computation and entropy secants. The
+grid errors alternate and the finest cut refuses insufficient precision;
+these controls do not establish a continuum convergence rate. Equal spacing
+still leaves finite cubic rotational anisotropy.
+
+An independent space-form metric calculation gives `G_tau,tau=3*k` and the
+fixed-proper-volume coefficient `dA/dG_tau,tau=-4*pi*R^4/15`. This supplies
+the geometric coefficient without defining curvature from entropy or stress.
+Combining that identity with the ball first law still requires a common
+native small-ball limit, a renormalized area density and selection of joint
+state--geometry stationarity. Neither Newton's constant nor the Einstein
+equation is obtained by fitting these finite comparisons.
+
 ```sh
 python -m model.native_equilibration --check model/native_equilibration/results.json
 python -m model.native_equilibration.vacuum_geometry --check model/native_equilibration/vacuum_geometry_results.json
+python -m model.native_equilibration.ball_modular --check model/native_equilibration/ball_modular_results.json
 python -m pytest -q -W error model/native_equilibration
 ```

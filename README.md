@@ -72,6 +72,12 @@ and the clocks inside it.
   domain. Passive reference-preserving seam schedules leave one charged
   family direction massless in the tested Higgs route. The chiral measure,
   interacting continuum and physical masses remain open.
+  A separate calibrated-action control checks that these internal tensors
+  can carry measured-family parameters. Its external Standard Model matching
+  is labeled calibration, with the unfitted W discrepancy retained; it is
+  not a parameter derivation. A separate observer replay recovers all nine
+  supplied running gaps from 84 million simulated complete records, with
+  explicit intervals and service assumptions; physical mass recovery remains open.
   Native repair separately transports a collective correlation charge with
   compatible local detector records on overlapping regions. Its physical
   particle interpretation remains open.

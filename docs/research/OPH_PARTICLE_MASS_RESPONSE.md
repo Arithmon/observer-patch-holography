@@ -15,6 +15,10 @@ finite construction: the same declared Weyl–Higgs field propagates at zero
 and three opposite momentum pairs, with complete continuing detector and
 clock outputs. Its representation, trial Yukawa law, spectral cutoff and
 coherent services remain supplied.
+An explicitly [calibrated action control](#56-calibrated-action-and-matching-control)
+also realizes the charged-family matrices and measured mixing inputs on this
+representation. Its external Standard Model mass matching is a calibration
+check, not a mass measurement from native observer records or a derivation.
 The measured Standard Model mass hierarchy has **not** been recovered, and
 these collective operators have not been identified with Standard Model fields
 in the observer's physical Lorentzian description.
@@ -479,6 +483,100 @@ physical apparatus guarantees. The full 810-mode native correction/export
 budget and the larger lattice's other modes are not executed. The additional
 momentum read is a concrete discriminator for the proposed field attachment.
 
+#### 5.6 Calibrated action and matching control
+
+The separate [calibrated matter action](../../model/common_source/calibrated_matter.py)
+uses the same internal representation, Higgs tensors and current matrices
+with one explicit empirical parameter packet. All nine charged Yukawa
+coordinates, the Higgs expectation value and the three gauge couplings share
+a specified $\overline{\mathrm{MS}}$ boundary at $91.1876$ GeV. The actual
+complex down-family matrix and its all-left conjugation convention produce
+the supplied unitary CKM matrix in the charged current. Exact tensor, mass
+and Weyl-dispersion checks retain the charged color/spin multiplicities.
+These identities establish that this representation can carry the calibrated
+mass pattern; they do not select its coefficients from the repair rule.
+
+The [matching receipt](../../model/common_source/calibrated_matching_results.json)
+records a separate execution of SMDR 1.3, including its source revision,
+input conventions, inverse calibration and independent forward call.
+The nine charged-fermion masses and the Higgs and Z calibration inputs
+return within their quoted marginal standard uncertainties in that numerical
+run. Those values are **external Standard Model outputs, not native observer
+records**. Running quark masses retain their scale and scheme; unstable
+particle masses retain their pole or Breit--Wigner convention. The unfitted
+W output is $80.3491825273$ GeV, compared with the selected reference
+$80.3692\pm0.0133$ GeV: a $-20.0175$ MeV difference, or $-1.5051$ quoted
+standard uncertainties. It misses a one-standard-uncertainty criterion.
+No combined input/theory covariance or OPH-specific empirical success follows.
+The external matching neglects CKM effects at its declared approximation.
+
+A rounded published parameter table is retained as an input-precision
+control: it misses the electron and muon measurement precision. The fixed
+full-precision packet resolves that calibration issue; it supplies no new
+parameter derivation. The bosonic tree check explicitly chooses
+$m^2_{\mathrm{tree}}=-\lambda_{\mathrm{SM}}v^2$ for its comparison potential;
+this is not SMDR's loop-matched quadratic coefficient or a computation of
+the full quantum effective-potential Hessian. The optional Weinberg sector
+uses NuFIT mixing and mass-squared splittings, normal ordering, zero lightest
+mass and zero Majorana phases. Its unmeasured choices and unexecuted
+low-energy-to-common-scale matching remain explicit. The original native
+candidate imports none of these calibration inputs.
+
+#### 5.7 Calibrated masses read from simulated observer records
+
+The separate [observer producer](../../model/common_source/calibrated_spectrum_observer.py)
+executes the rest-field source factors and retains complete simulated detector
+counts in its [receipt](../../model/common_source/calibrated_spectrum_observer_results.json)
+and compressed array artifact. Its blind inverse reads the counts, clock
+convention and error contract; it cannot read the parameter packet or call the
+source generator. All nine supplied running-action gaps lie in its intervals:
+
+| Field coordinate | Approximate record interval, GeV at the common MZ boundary |
+| --- | --- |
+| up | [0.00123406519, 0.00123679893] |
+| charm | [0.624245749, 0.624253591] |
+| top | [169.888809, 169.890205] |
+| down | [0.00270061637, 0.00270336216] |
+| strange | [0.0537463744, 0.0537495387] |
+| bottom | [2.86239022, 2.86241641] |
+| electron | [0.000486343406, 0.000489071040] |
+| muon | [0.102758037, 0.102761603] |
+| tau | [1.74550466, 1.74552170] |
+
+The receipt contains exact rational endpoints; the displayed decimals are
+rounded summaries. These are running-action coordinates, not the experimental
+pole or low-scale quark masses returned by external matching. Their widths
+range from about 2.73e-6 to 1.40e-3 GeV. In particular, this sampling campaign
+does not recover electron or muon measurement precision.
+
+There are 21 dyadic phase levels, two quadratures and two million complete
+trials per setting: **84 million simulated trials**. Each trial retains the
+selector address, nine field bits and two clock bits, including timeout
+addresses. Adaptive analyzer offsets depend only on earlier records. A shared
+clock gap `log(5)` and the single supplied conversion `1 GeV/log(5)` set the
+units; the programmed modular parameter is not laboratory seconds. Exact
+interval inversion and a simultaneous conditional sampling bound of about
+1.17e-8 cover all 420 real statistics, under independent simulated trials and
+the declared numerical, frame and physical-service bias allowances.
+
+The source execution uses all four Fock input columns of 42 commuting charged
+pair factors and retains six neutral zero modes. Actual CKM source frames and
+a complete 64-column weak down-sector conjugation test the change of basis.
+No dense 2^90-state source output is claimed; the complete weak-frame relation
+uses a separate uniform error admission, not an outward analytic certificate.
+Repeating the declared programs for all sampled trials would charge
+341,796,000,000 native pulses and 683,592,000,000 load/export events. Those are
+required resources, not an executed physical protection history.
+
+This establishes a **calibrated source/readout sanity check**. The measured
+inputs still determine the action. Interacting self-energies, confinement,
+scattering, physical clock calibration and a source-derived mass law remain
+unproved. Replay the retained counts and their source channels with:
+
+```sh
+python -W error -m model.common_source.calibrated_spectrum_observer --check model/common_source/calibrated_spectrum_observer_results.json
+```
+
 ### 6. Relation to observers' effective 3+1D spacetime
 
 There are two distinct levels of attachment.
@@ -615,6 +713,7 @@ not excluded by these tests.
 | Charged rest-gap ratios and propagation | Rest ratios and three-axis moving response read from source records and quantum-clock quadratures; physical identification remains open |
 | Spatial completion from seven momentum modes | Nonunique: a distinct two-hop local symbol agrees on the restricted histories; a second-shell read separates the fixed alternatives |
 | Observed mass hierarchy | Fails for every fixed prescription tested here |
+| Separate calibrated action | Carries supplied charged masses/mixing; external SMDR matching checks calibration, with an unfitted W miss. No source derivation or full physical observer attachment follows. |
 | Quantum gauge/Higgs dynamics | Not executed by this fixed-background quadratic trial |
 | Local chiral kinetic regulator | Finite Euclidean overlap operator, modified projector and uniform ideal locality tail on an admissible link domain; full quantum chiral theory open |
 | Same recovered-spacetime field history | Local principal-symbol compatibility; full domain/history attachment open |

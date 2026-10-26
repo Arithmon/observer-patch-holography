@@ -667,6 +667,18 @@ Port-local canonical stress changes also fail to determine its regional
 entropy slope. This does not test a renormalized geodesic small ball or
 construct physical stress, curvature or one isotropic refinement cutoff.
 
+The [proper-ball modular calculation](native_equilibration/ball_modular.py)
+instead uses the full three-dimensional Gaussian vacuum and an equal-spacing
+Cartesian cutoff in a declared proper frame. It computes regional modular
+charges, entropy first-law secants and nested-region relative-entropy
+monotonicity. The fixed conformal stress comparison has finite discrepancies
+of 2.124% and 5.716% for two momentum profiles at the retained fine cut;
+all grid/box controls and a finer-cut precision refusal remain visible.
+An independent space-form calculation derives the fixed-volume area
+coefficient `-4*pi*R^4/15` per `G_tau,tau`. A common native continuum limit,
+renormalized area density and joint state/geometry stationarity are not
+supplied by those finite comparisons.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -804,6 +816,32 @@ also proves that, at the existing faithful biased reference, stationarity
 excludes all eight core-to-outer seams and keeps the tested static Higgs
 family seed rank at most two; active correction and different mass routes
 are outside that result.
+
+The separate [calibrated matter action](common_source/calibrated_matter.py)
+checks a common-scale empirical Standard Model parameter point on the same
+internal tensors and actual current matrices. The complex CKM current and
+charged mass coordinates pass exact checks. Its optional Weinberg sector
+discloses the supplied neutrino splittings, mixing and unmeasured choices.
+The [external matching replay](common_source/calibrated_matching.py) checks
+calibration with SMDR; its output masses are not native observer records,
+and its unfitted W value misses the selected one-standard-uncertainty
+interval. The original native candidate contains none of these empirical
+inputs. Source selection of masses, interacting evolution and a physical
+measurement dictionary remain separate obligations.
+
+The [calibrated observer](common_source/calibrated_spectrum_observer.py)
+executes all four input columns of the 42 commuting rest-pair source factors,
+with six neutral zero modes retained, and samples complete field/clock records.
+It retains 84 million simulated trials across 42 settings, including selector
+timeouts. The blind decoder reads only counts and declared error/clock contracts;
+all nine supplied running gaps lie inside its intervals. Actual CKM frame words
+and a complete 64-column weak down-sector comparison support the basis mapping;
+the full 90-mode frame error remains an explicit uniform admission. The
+conditional sampling bound is about 1.17e-8, with physical service accuracy
+assumed separately. The large repeated-service budget is charged, not executed.
+This is finite calibrated source/readout evidence; it supplies neither measured
+pole precision nor parameter selection, interacting scattering or physical
+protection.
 
 The [native-clocked common observer](clocked_common_observer/README.md)
 uses an actual current event to trigger that work's read-and-feedback suffix.
