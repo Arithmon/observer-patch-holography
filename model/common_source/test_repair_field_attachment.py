@@ -210,6 +210,53 @@ def test_complete_checker_rejects_phase_zero_missing_arrays_and_budget_forgery(e
         f.compare_execution(forged, arrays, report, arrays)
 
 
+@pytest.mark.parametrize("section,array", (("native_onsite_source", "native_orbit_averaged_outputs"),
+                                          ("native_charge_source", "native_charge_pointer_outputs")))
+def test_portable_replay_binds_each_residual_to_its_own_binary_source_arrays(execution, section, array):
+    report, arrays = execution
+    fresh, fresh_arrays = deepcopy(report), dict(arrays)
+    # An admitted source-rounding phase changes the residual by much more
+    # than the ordinary report2e-12 comparison tolerance. All complete
+    # complex arrays and both unchanged operator gates remain satisfied.
+    fresh_arrays[array] = arrays[array]*np.exp(5e-11j)
+    metrics = f.verify_retained_arrays(fresh_arrays)
+    fresh[section]["operator_error_diagnostic"] = metrics[section]
+    assert abs(metrics[section]-report[section]["operator_error_diagnostic"]) > 2e-12
+    assert metrics[section] < f.SOURCE_GATE
+    original_report, original_fresh = deepcopy(report), deepcopy(fresh)
+    f.compare_execution(report, arrays, fresh, fresh_arrays)
+    assert report == original_report and fresh == original_fresh
+
+
+@pytest.mark.parametrize("origin", ("retained", "fresh"))
+def test_source_residual_metadata_cannot_change_without_its_original_arrays(execution, origin):
+    report, arrays = execution
+    forged = deepcopy(report)
+    forged["native_onsite_source"]["operator_error_diagnostic"] += 2e-12
+    arguments = (forged, arrays, report, arrays) if origin == "retained" else (report, arrays, forged, arrays)
+    with pytest.raises(ValueError, match=origin+" native_onsite_source diagnostic"):
+        f.compare_execution(*arguments)
+
+
+@pytest.mark.parametrize("bad", (-1., float("nan"), float("inf"), 0., True))
+def test_retained_residual_provenance_refuses_negative_nonfinite_or_forged_values(bad):
+    with pytest.raises(ValueError, match="diagnostic differs"):
+        f._validate_source_diagnostics({"native_onsite_source": {"operator_error_diagnostic": bad}},
+                                       {"native_onsite_source": 2e-11}, "retained")
+
+
+def test_portable_residual_handling_does_not_relax_native_gates_or_gap_parameters(execution):
+    report, arrays = execution
+    forged = dict(arrays)
+    forged["native_orbit_averaged_outputs"] = arrays["native_orbit_averaged_outputs"]*np.exp(2e-8j)
+    with pytest.raises(ValueError, match="source operator gate"):
+        f.compare_execution(report, forged, report, arrays)
+    changed = deepcopy(report)
+    changed["field_algebra"]["per_chain"][0]["positive_charge_threshold"] = "1/255"
+    with pytest.raises(ValueError):
+        f.compare_execution(changed, arrays, report, arrays)
+
+
 def test_independent_retained_operator_gate_catches_distributed_small_forgery(execution):
     _, arrays = execution
     forged = dict(arrays)

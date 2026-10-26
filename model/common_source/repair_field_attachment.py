@@ -40,6 +40,9 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE_GATE = 1e-8
 LOCAL_MACRO_GATE = 1e-10
 REPLAY_TOLERANCE = 2e-9
+# Same-array diagnostic provenance only: target construction/SVD can round
+# differently across backends. This is not an operator or physical allowance.
+RETAINED_DIAGNOSTIC_TOLERANCE = 64*np.finfo(np.float64).eps
 CELLS = 3
 PROBE_TIME = F(1)
 STEPS = 128
@@ -904,7 +907,18 @@ def source_bindings():
 
 
 def compare_execution(report, arrays, fresh, fresh_arrays):
-    selection._compare(fresh, report)
+    retained_metrics = verify_retained_arrays(arrays)
+    fresh_metrics = verify_retained_arrays(fresh_arrays)
+    _validate_source_diagnostics(report, retained_metrics, "retained")
+    _validate_source_diagnostics(fresh, fresh_metrics, "fresh")
+    comparison = deepcopy(fresh)
+    # These norms describe their own original binary source arrays. A fresh
+    # platform may produce a different rounding residual while satisfying
+    # exactly the same operator gate. Recompute the archived norms from the
+    # archived arrays; retain strict comparison for every other report field.
+    for section, metric in retained_metrics.items():
+        comparison[section]["operator_error_diagnostic"] = metric
+    selection._compare(comparison, report)
     if set(arrays) != set(fresh_arrays):
         raise ValueError("complete retained field artifact keys differ")
     for name, expected in fresh_arrays.items():
@@ -930,6 +944,7 @@ def verify_retained_arrays(arrays):
         "native_charge_pointer_outputs": np.stack([ideal*np.array([int(n == record) for n in charge])[None, :] for record in (0, 1)]),
         "collective_fredkin_macro": _fredkin_target(),
         "collective_logical_projection": expm(-1j*float(logical_parameters()["exchange_strength"]*PROBE_TIME)*np.asarray(s.eye(4)-carrier_swap(0, 1, 2), complex))}
+    errors = {}
     for name, target in targets.items():
         value = arrays.get(name)
         if (type(value) is not np.ndarray or value.dtype != np.dtype("complex128") or value.shape != target.shape
@@ -940,6 +955,7 @@ def verify_retained_arrays(arrays):
                  if difference.ndim == 3 else float(np.linalg.norm(difference, 2)))
         if error > SOURCE_GATE:
             raise ValueError("retained native amplitudes exceed source operator gate: "+name)
+        errors[name] = error
     encoded = arrays.get("collective_encoded_two_columns")
     labels = logical_parameters()["vacuum_labels"][0], logical_parameters()["occupied_labels"][0]
     if (type(encoded) is not np.ndarray or not np.array_equal(encoded, arrays["native_encoded_six_columns"][:, labels])):
@@ -971,6 +987,17 @@ def verify_retained_arrays(arrays):
                     float(3*p["onsite_baselines"][sector]+p["positive_occupation_gaps"][sector])]))
                 if np.linalg.norm(U@q-q*phases[None, :], 2) > SOURCE_GATE:
                     raise ValueError("retained uniform charged phase does not meet its source gate")
+    return {"native_onsite_source": errors["native_orbit_averaged_outputs"],
+            "native_charge_source": errors["native_charge_pointer_outputs"]}
+
+
+def _validate_source_diagnostics(report, metrics, origin):
+    """Bind each rounding residual to its own arrays, not another backend."""
+    for section, expected in metrics.items():
+        value = report[section]["operator_error_diagnostic"]
+        if (type(value) is not float or not math.isfinite(value) or not 0 <= value <= SOURCE_GATE
+                or abs(value-expected) > RETAINED_DIAGNOSTIC_TOLERANCE):
+            raise ValueError(origin+" "+section+" diagnostic differs from its original source arrays")
 
 
 def _finite_json(value):
