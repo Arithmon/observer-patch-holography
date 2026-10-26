@@ -466,10 +466,20 @@ The source encoder prepares a uniform six-term syndrome using existing real
 state rotations, then routes the six logical columns into their matching
 supports. For a nonzero branch, its inverse branch routing and inverse
 uniform-\(m_h\) syndrome preparation return the logical input; the encoder
-then restores the code. Thus the complete ideal source word obeys
+then restores the code. These exact uniform-support target operations obey
 \[
- R_hK_hV=\sqrt{p_h}\,V.
+R_hK_hV=\sqrt{p_h}\,V.
 \]
+This equality is for the ideal target operations, not the emitted floating-angle
+source words. The requested-angle words approximate the exact uniform states;
+the separate synthesis and source-execution diagnostics retain that difference.
+The literal forward and inverse mixing words are checked on syndrome wires
+3, 4 and 5, including their nominal-angle action on the full eight-column
+active block, before any cached composition bound is returned.
+Every actual emitted integer encoder, native-route and inverse-recovery schedule
+is checked against independently enumerated native images and logical/syndrome
+slots on all thirty seams. Merely implementing a supplied permutation would
+not exclude a wrong but unitary interchange of logical columns.
 All source permutations extend to 512 addresses. Every raw record, numerical
 padding amplitude and zero-probability outcome remains represented. The
 classical archive is neither erased nor rewritten. The exact all-seam
@@ -543,8 +553,11 @@ Creation changes a logical charge, not the native total load.
 A fixed pair of nearest-cell fermionic-swap layers on a three-cell ring
 transports one component right and the other left. The existing Pauli source
 words include the parity signs of all occupied sectors and the ring boundary.
-Their 64 field columns are executed, and the exact tensor identity supplies
-the spectator extension. The same source word determines the charged
+The actual walk and feedback words declare their occupation-bit positions
+\(9j\) in the 54-bit register. After validating that support, their common
+64-column active block is source-executed; exact tensor factorization retains
+every other spectator and syndrome bit. This does not simulate \(512^6\)
+amplitudes. The same source word determines the charged
 anticommutator response, local charge continuity and quasienergies
 \(\epsilon_\pm(k)=\pm k\pmod{2\pi}\) per completed cycle.
 The locality of this declared logical ring is distinct from the compiler's
@@ -585,7 +598,16 @@ seams. For two complete field cycles the replay requires its operator-error
 diagnostic to be below \(10^{-6}\), with a worst scheduled cost of about
 \(3.1\times10^7\) native pulses, including encoding, decoding and recovery.
 The error calculation includes each macro's raw-to-polar stabilization change
-and uses floating residuals; it is neither an outward
+and the floating proper-code export complement of every emitted pulse kind
+and angle. If each successful pulse has norm at most \(1+\alpha\), each
+failure block has norm at most \(L\), and every path has at most \(N\)
+pulses, orthogonal first-failure branches have combined amplitude at most
+\(\sqrt N L(1+\alpha)^{N-1}\). Adding that term to the successful-block
+error bounds the complete flagged output. The retained first-failure program
+position, with zero denoting no failure, requires at most
+\(\lceil\log_2(N+1)\rceil\) extra archive bits and one supplied commit.
+This ordinal is not a physical clock. The error calculation uses floating
+residuals; it is neither an outward
 roundoff certificate nor a physical service bound. The pulse count does not
 calibrate elapsed physical time.
 

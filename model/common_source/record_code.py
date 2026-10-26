@@ -436,6 +436,104 @@ def _full_carrier_support_certificate():
             'laws': laws}
 
 
+def _integer_schedule_action(edges):
+    """Execute emitted Gray-neighbor transpositions on every basis address.
+
+    This is an exact schedule oracle, not a source-execution shortcut.  Its
+    input is the emitted gate list, rather than a claimed target permutation.
+    """
+    images, locations = list(range(SIZE)), list(range(SIZE))
+    for target, pattern in edges:
+        if (type(target) is not int or not 0 <= target < 9
+                or type(pattern) is not int or not 0 <= pattern < SIZE
+                or pattern & (1 << target)):
+            raise ArithmeticError('compiled Gray schedule contains an invalid controlled flip')
+        left, right = pattern, pattern | (1 << target)
+        a, b = locations[left], locations[right]
+        images[a], images[b] = right, left
+        locations[left], locations[right] = b, a
+    return tuple(images)
+
+
+def _compiled_layout_certificate():
+    """Bind all actual emitted schedules to independent native/logical slots.
+
+    A permutation word implementing its own supplied permutation is not
+    enough: a wrong logical-column permutation is still unitary.  Here the
+    encoder, native routes and every used inverse recovery schedule are
+    compared with separately enumerated endpoint images and logical slots.
+    """
+    encoder = _encoder_permutation()
+    forward = _integer_schedule_action(routing.permutation_edges(encoder))
+    inverse = _integer_schedule_action(routing.permutation_edges(encoder, inverse=True))
+    if any(inverse[forward[i]] != i for i in range(SIZE)):
+        raise ArithmeticError('compiled encoder inverse schedule is inconsistent')
+    for logical, matching in enumerate(MATCHINGS):
+        for term, pair in enumerate(matching):
+            state = tuple(int(p in pair) for p in range(12))
+            if forward[logical+8*term] != circuit.encode(state):
+                raise ArithmeticError('compiled encoder schedule changes a declared logical slot')
+    native_states = native.states()
+    source_addresses = {circuit.encode(state) for state in native_states}
+    branches_checked = images_checked = 0
+    for seam in SEAMS:
+        a, b = seam
+        route = _route_permutation(seam)
+        routed = _integer_schedule_action(routing.permutation_edges(route))
+        unrouted = _integer_schedule_action(routing.permutation_edges(route, inverse=True))
+        if (any(unrouted[routed[i]] != i for i in range(SIZE))
+                or any(routed[i] != i for i in range(SIZE) if i not in source_addresses)):
+            raise ArithmeticError('compiled native route loses its inverse or changes padding')
+        for state in native_states:
+            work = circuit.decode(routed[circuit.encode(state)])
+            if (work[0], work[1]) != (state[a], state[b]):
+                raise ArithmeticError('compiled native route changes the selected endpoint law')
+            for coin in (0, 1):
+                total = state[a]+state[b]
+                left, right = (total+coin)//2, (total+1-coin)//2
+                direct, local = list(state), list(work)
+                direct[a], direct[b] = left, right
+                local[0], local[1] = left, right
+                if unrouted[circuit.encode(tuple(local))] != circuit.encode(tuple(direct)):
+                    raise ArithmeticError('compiled native route does not undo the local source repair')
+        for law in ('C', 'E'):
+            for coin in (0, 1):
+                expected = [[[] for _ in range(DIMENSION)]
+                            for _ in range(1 << circuit.RECORD_BITS[law])]
+                for logical, matching in enumerate(MATCHINGS):
+                    for pair in matching:
+                        state = [int(p in pair) for p in range(12)]
+                        total = state[a]+state[b]
+                        left, right = (total+coin)//2, (total+1-coin)//2
+                        current = state[a]-left
+                        raw = 0 if current == 0 else 1 if current == 1 else 2
+                        if law == 'E':
+                            raw += 4*(total % 2)
+                        state[a], state[b] = left, right
+                        expected[raw][logical].append(circuit.encode(tuple(state)))
+                for raw, rows in enumerate(expected):
+                    if not rows[0]:
+                        if any(rows):
+                            raise ArithmeticError('independent native-image dimensions are inconsistent')
+                        continue
+                    permutation = _branch_permutation(law, seam, coin, raw)
+                    decoded = _integer_schedule_action(routing.permutation_edges(permutation, inverse=True))
+                    for logical, row in enumerate(rows):
+                        for term, address in enumerate(row):
+                            if decoded[address] != logical+8*term:
+                                raise ArithmeticError('compiled recovery schedule changes a native image logical slot')
+                            images_checked += 1
+                    branches_checked += 1
+    if branches_checked != 300 or images_checked != 4320:
+        raise ArithmeticError('compiled all-seam recovery certificate omitted an image')
+    return {'encoder_forward_and_inverse_checked_on_all512_addresses': True,
+            'native_routes_checked_on_all78_states_and_padding': len(SEAMS),
+            'inverse_recovery_schedules_checked': branches_checked,
+            'independent_native_image_logical_slots_checked': images_checked,
+            'all_emitted_integer_schedules_match_independent_native_logical_layout': True,
+            'this_integer_certificate_replaces_numerical_source_execution': False}
+
+
 def exact_certificate():
     """Exact combinatorial witness and the arbitrary-code sharp capacity proof.
 
@@ -452,6 +550,7 @@ def exact_certificate():
     recovery with full classical records and unrestricted reference systems.
     """
     full_support = _full_carrier_support_certificate()
+    compiled_layout = _compiled_layout_certificate()
     all_pairs = set(combinations(range(12), 2))
     flattened = tuple(pair for row in MATCHINGS for pair in row)
     nonedges = all_pairs-set(SEAMS)
@@ -498,6 +597,7 @@ def exact_certificate():
     return {'logical_dimension': 6, 'native_total_two_carrier_dimension': 78,
             'native_binary_carrier_dimension': 66,
             'full_carrier_binary_support_derivation': full_support,
+            'compiled_schedule_certificate': compiled_layout,
             'source_execution_register_dimension': SIZE,
             'matchings': [[list(pair) for pair in row] for row in MATCHINGS],
             'seams_checked': 30, 'native_graph_connected': True,
@@ -524,6 +624,7 @@ def execution_report():
     including general port routing, every raw record and all512 output rows.
     It does not call numerical replay a physical accuracy certificate.
     """
+    compiled_layout = _compiled_layout_certificate()
     expected = ideal_code_matrix()
     executed = code_matrix()
     rows = {}
@@ -565,6 +666,7 @@ def execution_report():
             'executed_code_columns': DIMENSION, 'output_rows_retained': SIZE,
             'all_thirty_seam_numerical_source_replay': False,
             'all_thirty_seam_exact_native_certificate': True,
+            'compiled_schedule_certificate': compiled_layout,
             'forward_full512_source_macro_guard': dict(forward),
             'inverse_full512_source_macro_guard': dict(inverse),
             'code_or_padding_projection_applied': False,
@@ -598,7 +700,24 @@ def _word_log_error(word):
     return math.fsum(math.log1p(_primitive_error(e['kind'], e['angle'])) for e in word)
 
 
-def _mixing_synthesis_report(count):
+def _literal_mixing_words():
+    """Validate and freeze the actual emitted words before numerical caches."""
+    rows = []
+    for count in (1, 4, 5, 6):
+        words = []
+        for inverse in (False, True):
+            word = compiler._validate(_mixing_word(count, inverse), 9)
+            if any(target not in (3, 4, 5) for event in word for target in event['targets']):
+                raise ArithmeticError('literal mixing word acts outside the declared syndrome wires')
+            words.append(word)
+        if words[1] != compiler.inverse(words[0]):
+            raise ArithmeticError('literal inverse mixing word is not the reversed negative-angle forward word')
+        rows.extend(tuple((event['kind'], event['angle'], tuple(event['targets']))
+                          for event in word) for word in words)
+    return tuple(rows)
+
+
+def _mixing_synthesis_report(count, forward, inverse):
     """Separate angle synthesis from source realization of requested angles.
 
     An exactly unitary requested word U can be changed to a unitary T with
@@ -608,20 +727,33 @@ def _mixing_synthesis_report(count):
     to the execution path.  Values are numerical diagnostics, not intervals.
     """
     target = np.asarray([1/math.sqrt(count)]*count+[0.]*(8-count), complex)
-    word = compiler.compile_real_state(target.real)
-    requested = np.eye(8, dtype=complex)
-    for event in word:
-        requested = compiler._apply(requested, _ideal_primitive(event['kind'], event['angle']),
-                                    event['targets'], 3)
+    # Reduce the literal, already validated 9-bit targets to their actual
+    # three-bit active block.  Recompiling an unbound reference word would
+    # miss a wrong but unitary move onto the logical wires.
+    matrices = []
+    for word in (forward, inverse):
+        requested = np.eye(8, dtype=complex)
+        for kind, angle, targets in word:
+            requested = compiler._apply(requested, _ideal_primitive(kind, angle),
+                                        [wire-3 for wire in targets], 3)
+        matrices.append(requested)
+    requested, requested_inverse = matrices
     column_error = float(np.linalg.norm(requested[:, 0]-target))
     correction = 2*column_error
     residual = float(np.linalg.norm(requested.conj().T@requested-np.eye(8), 2))
-    if any(not math.isfinite(value) or value > 1e-10 for value in (correction, residual)):
+    inverse_error = float(np.linalg.norm(requested_inverse-requested.conj().T, 2))
+    inverse_column_error = float(np.linalg.norm(requested_inverse@target-np.eye(8)[:, 0]))
+    if any(not math.isfinite(value) or value > 1e-10
+           for value in (correction, residual, inverse_error, inverse_column_error)):
         raise ArithmeticError('uniform-support angle synthesis exceeds its numerical gate')
     return {'support_count': count,
             'requested_word_uniform_column_error': column_error,
             'uniform_target_unitary_completion_error_upper': correction,
             'requested_word_unitarity_residual': residual,
+            'literal_syndrome_wire_support_validated': True,
+            'literal_inverse_word_is_exact_reversed_negative_angle_word': True,
+            'requested_inverse_adjoint_error': inverse_error,
+            'requested_inverse_uniform_to_zero_error': inverse_column_error,
             'forward_and_inverse_use_the_same_target_completion_bound': True}
 
 
@@ -643,7 +775,7 @@ def _native_dilation_error(law, coin):
 
 
 @lru_cache(maxsize=1)
-def _source_composition_report():
+def _source_composition_report(mixing_words):
     """Uniform numerical error budget from every all30 source schedule.
 
     If A_j differs from an exactly unitary U_j by delta_j, telescoping
@@ -674,11 +806,14 @@ def _source_composition_report():
     exact_ix = np.asarray([[0, 1j], [1j, 0]])
     xerror = max(float(np.linalg.norm(compiler.native_pulse('X', sign*math.pi/2)[:2, :2]
                                       -sign*exact_ix, 2)) for sign in (1, -1))
-    synthesis = {count: _mixing_synthesis_report(count) for count in (1, 4, 5, 6)}
+    synthesis = {count: _mixing_synthesis_report(count, *mixing_words[2*i:2*i+2])
+                 for i, count in enumerate((1, 4, 5, 6))}
 
-    mixing_logs = {(count, inverse): (_word_log_error(_mixing_word(count, inverse))
+    mixing_logs = {(count, inverse): (_word_log_error([
+                       {'kind': kind, 'angle': angle, 'targets': list(targets)}
+                       for kind, angle, targets in mixing_words[2*i+int(inverse)]])
                    +math.log1p(synthesis[count]['uniform_target_unitary_completion_error_upper']))
-                   for count in (1, 4, 5, 6) for inverse in (False, True)}
+                   for i, count in enumerate((1, 4, 5, 6)) for inverse in (False, True)}
 
     def mixing_log(count, inverse=False):
         return mixing_logs[count, inverse]
@@ -762,7 +897,15 @@ def _source_composition_report():
 
 def source_composition_report():
     """Return a fresh report; caller mutations cannot poison cached bounds."""
-    return deepcopy(_source_composition_report())
+    compiled_layout = _compiled_layout_certificate()
+    mixing_words = _literal_mixing_words()
+    for i, count in enumerate((1, 4, 5, 6)):
+        _mixing_synthesis_report(count, *mixing_words[2*i:2*i+2])
+    # Word signatures key the numerical cache.  A changed nominal angle or
+    # ordering cannot inherit a previously accepted synthesis diagnostic.
+    report = deepcopy(_source_composition_report(mixing_words))
+    report['compiled_schedule_certificate'] = compiled_layout
+    return report
 
 
 source_execution_report = execution_report

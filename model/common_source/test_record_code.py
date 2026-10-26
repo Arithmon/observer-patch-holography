@@ -208,6 +208,66 @@ def test_every_source_route_and_branch_permutation_has_its_exact_complete_gray_w
                         assert _integer_permutation(routing.permutation_edges(perm)) == perm
 
 
+def test_actual_all_seam_schedules_decode_independent_native_images_to_declared_logical_slots():
+    report = code._compiled_layout_certificate()
+    assert report['inverse_recovery_schedules_checked'] == 300
+    assert report['independent_native_image_logical_slots_checked'] == 4320
+    assert report['native_routes_checked_on_all78_states_and_padding'] == 30
+    assert report['all_emitted_integer_schedules_match_independent_native_logical_layout']
+
+
+def test_unexecuted_seam_wrong_but_unitary_recovery_fails_every_producer_gate(monkeypatch):
+    original = code._branch_permutation
+
+    def swapped_logical_columns(law, seam, coin, raw):
+        images = list(original(law, seam, coin, raw))
+        if (law, seam, coin, raw) == ('C', (0, 5), 0, 1):
+            images[0], images[1] = images[1], images[0]
+        return tuple(images)
+
+    monkeypatch.setattr(code, '_branch_permutation', swapped_logical_columns)
+    wrong = swapped_logical_columns('C', (0, 5), 0, 1)
+    # This old consistency check passes: the wrong schedule is a valid
+    # unitary and implements its own supplied target permutation exactly.
+    assert _integer_permutation(routing.permutation_edges(wrong)) == wrong
+    monkeypatch.setattr(code, 'code_matrix', lambda: pytest.fail('invalid schedule reached source execution'))
+    # Simulate an already cached numerical budget: fresh semantic schedule
+    # checking must still precede returning it to a public caller.
+    monkeypatch.setattr(code, '_source_composition_report', lambda: {'cached': True})
+    for producer in (code.exact_certificate, code.execution_report, code.source_composition_report):
+        with pytest.raises(ArithmeticError, match='compiled recovery schedule'):
+            producer()
+
+
+@pytest.mark.parametrize('part', ('encoder', 'native_route'))
+def test_wrong_but_unitary_compiled_encoder_or_native_route_is_rejected(part, monkeypatch):
+    if part == 'encoder':
+        original = code._encoder_permutation
+
+        def wrong():
+            images = list(original())
+            images[0], images[1] = images[1], images[0]
+            return tuple(images)
+
+        monkeypatch.setattr(code, '_encoder_permutation', wrong)
+    else:
+        original = code._route_permutation
+
+        def wrong(seam):
+            images = list(original(seam))
+            if seam == (0, 5):
+                # Change the selected endpoint law, rather than merely
+                # relabeling spectator coordinates undone by the inverse.
+                first = circuit.encode((2,)+(0,)*11)
+                second = circuit.encode((0,)*5+(2,)+(0,)*6)
+                images[first], images[second] = images[second], images[first]
+            return tuple(images)
+
+        monkeypatch.setattr(code, '_route_permutation', wrong)
+    with pytest.raises(ArithmeticError, match='compiled'):
+        code.exact_certificate()
+
+
 def test_source_encoder_and_decoder_preserve_complex_reference_columns_and_raw_rows():
     actual, expected = code.code_matrix(), code.ideal_code_matrix()
     np.testing.assert_allclose(actual, expected, atol=1e-9, rtol=0)
@@ -344,6 +404,11 @@ def test_every_source_schedule_is_covered_by_the_uniform_composition_budget():
     assert 0 < report['encoder_operator_error_bound'] < 1e-7
     assert 0 < report['decoder_operator_error_bound'] < 1e-7
     assert set(report['mixing_angle_synthesis_diagnostics']) == {'1', '4', '5', '6'}
+    for row in report['mixing_angle_synthesis_diagnostics'].values():
+        assert row['literal_syndrome_wire_support_validated']
+        assert row['literal_inverse_word_is_exact_reversed_negative_angle_word']
+        assert row['requested_inverse_adjoint_error'] < 1e-10
+        assert row['requested_inverse_uniform_to_zero_error'] < 1e-10
     for law in ('C', 'E'):
         row = report['laws'][law]
         assert row['all_thirty_seam_schedules_and_raw_recoveries_counted']
@@ -352,3 +417,33 @@ def test_every_source_schedule_is_covered_by_the_uniform_composition_budget():
         assert counts['proper_code_service_events'] == 2*counts['native_pulses']
     report['laws']['C']['maximum_corrected_attempt_operator_error'] = 100
     assert code.source_composition_report()['laws']['C']['maximum_corrected_attempt_operator_error'] < 1e-6
+
+
+@pytest.mark.parametrize('mutation', ('logical_wires', 'inverse_only', 'nominal_angle'))
+def test_literal_mixing_words_reject_wrong_unitaries_before_cached_composition(mutation, monkeypatch):
+    original = code._mixing_word
+
+    def wrong(count, inverse=False):
+        word = original(count, inverse)
+        if count != 4:
+            return word
+        if mutation == 'logical_wires':
+            return compiler.remap(word, (3, 4, 5, 0, 1, 2, 6, 7, 8))
+        if mutation == 'inverse_only':
+            return original(count, False)
+        forward = original(count, False)
+        forward.append(compiler.pulse('Y', .25, [3]))
+        return compiler.inverse(forward) if inverse else forward
+
+    # Independent full-register action exposes the unitarity-preserving
+    # wire error on the actual uniform four-term syndrome input.
+    if mutation == 'logical_wires':
+        state = np.zeros(512, complex)
+        state[[0, 8, 16, 24]] = .5
+        actual = compiler.execute(wrong(4, True), 9, state)
+        assert np.linalg.norm(actual-np.eye(512)[:, 0]) > 1.
+    monkeypatch.setattr(code, '_mixing_word', wrong)
+    monkeypatch.setattr(code, '_source_composition_report',
+                        lambda *args: pytest.fail('invalid literal word reached cached composition'))
+    with pytest.raises(ArithmeticError, match='mixing word|angle synthesis'):
+        code.source_composition_report()

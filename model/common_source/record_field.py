@@ -21,7 +21,7 @@ import numpy as np
 
 from ..observer.source_scalar import compiler
 from ..observer.source_discrimination import circuit
-from . import record_code
+from . import native_routing, record_code
 
 
 CELLS = 3
@@ -99,6 +99,27 @@ def decoded_register_walk_word():
     return compiler.remap(walk_word(), tuple(9*j for j in range(MODES)))
 
 
+def decoded_register_feedback_word():
+    """The recorded first-read feedback on the same decoded native wires."""
+    return compiler.remap(swap_word(mode(1, 0), mode(1, 1)),
+                          tuple(9*j for j in range(MODES)))
+
+
+def _field_block_word(literal_word):
+    """Reduce the actual 54-bit word, retaining its occupation-wire order.
+
+    Every other bit has exactly identity action, even on arbitrary entangled
+    spectator/syndrome inputs. Merely checking the set of occupied wires would
+    miss a permutation of the six field factors; their actual targets are
+    therefore lowered and executed before the independent all-column check.
+    """
+    word = compiler._validate(literal_word, 9*MODES)
+    if any(target % 9 for event in word for target in event["targets"]):
+        raise ValueError("decoded field word touches a spectator or syndrome wire")
+    return [compiler.pulse(event["kind"], event["angle"],
+                           [target//9 for target in event["targets"]]) for event in word]
+
+
 def permutation():
     return tuple(mode(x+(1 if component == 0 else -1), component)
                  for x in range(CELLS) for component in (0, 1))
@@ -106,11 +127,22 @@ def permutation():
 
 @lru_cache(maxsize=1)
 def source_walk():
-    actual = compiler.execute(walk_word(), MODES)
+    actual = compiler.execute(_field_block_word(decoded_register_walk_word()), MODES)
     target = second_quantization(permutation())
     error = float(np.max(abs(actual-target)))
     if not np.isfinite(actual).all() or not math.isfinite(error) or error > 2e-11:
         raise ArithmeticError("source walk differs from signed exterior transport")
+    return np.frombuffer(actual.tobytes(), dtype=actual.dtype).reshape(actual.shape)
+
+
+@lru_cache(maxsize=1)
+def source_feedback():
+    actual = compiler.execute(_field_block_word(decoded_register_feedback_word()), MODES)
+    targets = list(range(MODES))
+    targets[2], targets[3] = targets[3], targets[2]
+    error = float(np.max(abs(actual-second_quantization(targets))))
+    if not np.isfinite(actual).all() or not math.isfinite(error) or error > 2e-11:
+        raise ArithmeticError("source feedback differs from signed exterior exchange")
     return np.frombuffer(actual.tobytes(), dtype=actual.dtype).reshape(actual.shape)
 
 
@@ -311,15 +343,7 @@ def clock_report():
                      "unconditional_success_mode_response": [float(response.real), float(response.imag)],
                      "same_one_incident_tick_has_different_elapsed_phases": len(success_cycles) > 1})
     joint = joint_clock_histories()
-    groups = {}
-    for history in joint["histories"]:
-        key = history["global_terminal_flag"], history["elapsed_cycles"], tuple(history["first_incident_cycle_by_observer"])
-        count, weight = groups.get(key, (0, F()))
-        groups[key] = count+1, weight+F(history["weight_exact"])
-    aggregate = [{"global_terminal_flag": flag, "elapsed_cycles": cycles,
-                  "first_incident_cycle_by_observer": list(hits), "path_count": count,
-                  "weight_exact": str(weight)}
-                 for (flag, cycles, hits), (count, weight) in sorted(groups.items(), key=lambda item: repr(item[0]))]
+    aggregate = _joint_clock_groups(joint["histories"])
     joint_summary = {**{key: value for key, value in joint.items() if key != "histories"},
                      "complete_selector_history_count": len(joint["histories"]),
                      "terminal_history_groups": aggregate,
@@ -333,13 +357,65 @@ def clock_report():
             "physical_duration_of_a_cycle_derived": False}
 
 
+def _joint_clock_groups(histories):
+    groups = {}
+    for history in histories:
+        key = history["global_terminal_flag"], history["elapsed_cycles"], tuple(history["first_incident_cycle_by_observer"])
+        count, weight = groups.get(key, (0, F()))
+        groups[key] = count+1, weight+F(history["weight_exact"])
+    return [{"global_terminal_flag": flag, "elapsed_cycles": cycles,
+             "first_incident_cycle_by_observer": list(hits), "path_count": count,
+             "weight_exact": str(weight)}
+            for (flag, cycles, hits), (count, weight) in sorted(groups.items(), key=lambda item: repr(item[0]))]
+
+
+def _validated_clock_groups(groups):
+    """Authenticate the compact labels against this protocol's raw tape."""
+    if type(groups) not in (list, tuple) or not groups:
+        raise ValueError("a nonempty sequence of declared clock groups required")
+    expected = _joint_clock_groups(joint_clock_histories()["histories"])
+    keys = set(expected[0])
+    supplied = {}
+    for group in groups:
+        if type(group) is not dict or set(group) != keys:
+            raise ValueError("clock group schema mismatch")
+        elapsed, hits = group["elapsed_cycles"], group["first_incident_cycle_by_observer"]
+        flag, count, raw_weight = group["global_terminal_flag"], group["path_count"], group["weight_exact"]
+        if (type(elapsed) is not int or not 0 <= elapsed <= 2
+                or type(hits) not in (list, tuple) or len(hits) != len(CAPS)
+                or any(hit is not None and (type(hit) is not int or not 1 <= hit <= elapsed) for hit in hits)
+                or type(flag) is not str or flag not in ("deadline", "selector_timeout")
+                or type(count) is not int or count <= 0
+                or type(raw_weight) is not str):
+            raise ValueError("invalid original clock timing, flags, counts or exact weight")
+        try:
+            weight = F(raw_weight)
+        except (ValueError, ZeroDivisionError) as error:
+            raise ValueError("clock probability must be an exact rational string") from error
+        if not 0 < weight <= 1 or str(weight) != raw_weight:
+            raise ValueError("positive canonical exact clock probability required")
+        key = flag, elapsed, tuple(hits)
+        if key in supplied:
+            raise ValueError("duplicate clock terminal group")
+        supplied[key] = count, weight
+    owned = {(row["global_terminal_flag"], row["elapsed_cycles"],
+              tuple(row["first_incident_cycle_by_observer"])): (row["path_count"], F(row["weight_exact"]))
+             for row in expected}
+    if supplied != owned:
+        raise ValueError("clock groups do not describe the complete declared selector tape")
+    return groups
+
+
 def stopped_clock_execution(groups):
     """Source-execute every clock-conditioned work block, including failures.
 
     Grouping is classical: sqrt(group_probability)*U**T is a compressed
     representation of identical conditional work maps. Raw selector and native
-    outcomes remain in their separately enumerated factors.
+    outcomes remain in their separately enumerated factors. Supplied groups
+    must describe this fixed protocol's actual selector tape; a normalized
+    channel alone does not authenticate a first-hit timestamp or path count.
     """
+    groups = _validated_clock_groups(groups)
     unitary = source_walk()
     target = second_quantization(permutation())
     actual_powers = [np.eye(DIMENSION), unitary, unitary@unitary]
@@ -351,8 +427,6 @@ def stopped_clock_execution(groups):
     total = F()
     for group in groups:
         weight, elapsed = F(group["weight_exact"]), group["elapsed_cycles"]
-        if weight < 0 or type(elapsed) is not int or elapsed not in (0, 1, 2):
-            raise ValueError("positive clock probabilities and at most two elapsed cycles required")
         total += weight
         root = math.sqrt(float(weight))
         actual = root*actual_powers[elapsed]
@@ -440,7 +514,7 @@ def detector_experiment():
     nsecond = annihilator(mode(0, 1)).T@annihilator(mode(0, 1))
     identity = np.eye(DIMENSION)
     first_effects, second_effects = (identity-nfirst, nfirst), (identity-nsecond, nsecond)
-    feedback = compiler.execute(swap_word(mode(1, 0), mode(1, 1)), MODES)
+    feedback = source_feedback()
     accepted = F(15, 16)
     branches, arrays = [], {"initial": initial}
     for first in (0, 1):
@@ -520,8 +594,12 @@ def declared_services(law, pulse_resources):
     """
     if type(law) is not str or law not in ("C", "E"):
         raise ValueError("C or E required")
+    pulses = pulse_resources["native_pulses"]
+    if type(pulses) is not int or pulses < 0:
+        raise ValueError("a nonnegative integer source pulse budget required")
     raw_bits = circuit.RECORD_BITS[law]
     archive = 10+12*(1+raw_bits)+2
+    export_bits = pulses.bit_length()  # ceil(log2(N+1)), with0 denoting no failure.
     coefficients = {
         "logical_reference_input_preparation": 1,
         "six_qubit_code_blank_register_preparation": 6,
@@ -537,7 +615,8 @@ def declared_services(law, pulse_resources):
         "first_field_read_feedback_control": 1,
         "clock_cap_incidence_test": 4,
         "clock_counter_or_first_hit_write": 4,
-        "classical_storage_bit_for_whole_window": archive+6,
+        "first_export_failure_position_commit": int(pulses > 0),
+        "classical_storage_bit_for_whole_window": archive+6+export_bits,
         "quantum_work_and_reference_storage_for_whole_window": 1,
         "source_analogue_pulse": pulse_resources["native_pulses"],
         "proper_code_coherent_load": pulse_resources["proper_code_load_events"],
@@ -549,8 +628,13 @@ def declared_services(law, pulse_resources):
             "initial_blank_code_registers": 6, "blank_qubits_per_code_register": 6,
             "field_detector_invocations": 2,
             "maximum_archive_bits": archive,
+            "maximum_archive_bits_scope": "selector, native coin/raw records and field reads",
             "derived_clock_storage_bits": 6,
             "maximum_archive_and_clock_bits": archive+6,
+            "maximum_proper_code_export_history_bits": export_bits,
+            "maximum_archive_clock_and_export_history_bits": archive+6+export_bits,
+            "export_history_encoding": "0 means no export failure; otherwise retain the first failed source pulse ordinal1..N and halt; the Kraus complement index can remain in the traced environment",
+            "export_history_service": "commit the invoking program ordinal once on first failure; this is supplied classical recording, not a calibrated physical clock",
             "native_work_qubits": 54, "untouched_reference_dimension_in_experiment": 2,
             "physical_half_diamond_error_sum_coefficients": coefficients,
             "conditional_physical_budget_formula": "sum_service invocation_count[service]*epsilon[service]; every epsilon is an independently supplied whole-service half-diamond bound",
@@ -558,6 +642,66 @@ def declared_services(law, pulse_resources):
             "calibrated_physical_duration_energy_or_total_error_available": False,
             "cost_scope": "source pulses and proper-code transfers are counted; preparation, recording, control and memory counts are supplied-service obligations, without calibrated time or energy costs",
             "zero_probability_raw_and_service_failure_outcomes_discarded": False}
+
+
+def _proper_code_export_diagnostic():
+    """Audit the full six-level source pulses in every emitted word family.
+
+    The existing word residuals compare successful proper-code contractions.
+    This separate calculation retains their computed complement amplitudes,
+    including numerical leakage although the ideal controls preserve code.
+    Target remapping changes neither the local pulse norms nor this bound.
+    """
+    families = {
+        "routing_macro_forward": native_routing._canonical_word(),
+        "routing_macro_inverse": native_routing._canonical_word(True),
+        "routing_X_conjugations": [compiler.pulse("X", sign*math.pi/2, [0]) for sign in (-1, 1)],
+        "native_coin": [compiler.pulse("Y", -math.pi/4, [0])],
+        "literal_decoded_walk": decoded_register_walk_word(),
+        "literal_decoded_feedback": decoded_register_feedback_word(),
+    }
+    for law in ("C", "E"):
+        for coin in (0, 1):
+            families[f"native_{law}_coin{coin}"] = circuit.repair_word(law, coin)
+    for count in (1, 4, 5, 6):
+        for inverse in (False, True):
+            families[f"mixing_{count}_{'inverse' if inverse else 'forward'}"] = record_code._mixing_word(count, inverse)
+    menu = {(event["kind"], event["angle"])
+            for word in families.values() for event in compiler._validate(word)}
+    leak, excess = 0., 0.
+    for kind, angle in sorted(menu):
+        full = compiler.native_pulse(kind, angle)
+        if full.shape != (6, 6) or not np.isfinite(full).all():
+            raise ArithmeticError("proper-code export needs a finite full six-level source pulse")
+        dimension = 4 if kind == "J" else 2
+        leak = max(leak, float(np.linalg.norm(full[dimension:, :dimension], 2)))
+        excess = max(excess, float(np.linalg.norm(full[:dimension, :dimension], 2))-1)
+    if any(not math.isfinite(value) or not 0 <= value <= 2e-11 for value in (leak, excess)):
+        raise ArithmeticError("proper-code export complement or success norm exceeds its numerical gate")
+    return {"actualpulse_menu_count": len(menu),
+            "pulse_family_counts": {name: len(word) for name, word in families.items()},
+            "maximum_complement_operator_norm": leak,
+            "maximum_success_norm_excess": excess,
+            "first_failure_amplitude_bound": "sqrt(N)*L*exp((N-1)*log1p(e)), with success norm at most 1+e",
+            "complete_failure_argument": "pad each adaptive history to N pulse slots with identity after halt; first-export-failure slots are orthogonal, so their squared norms sum and each prefix norm is at most (1+e)^(N-1)",
+            "numeric_complement_is_set_to_zero": False,
+            "physical_leakage_or_outward_rounding_certificate": False}
+
+
+def _first_export_failure_bound(pulses, diagnostic):
+    if type(pulses) is not int or pulses < 0:
+        raise ValueError("a nonnegative integer source pulse budget required")
+    leak, excess = (diagnostic[key] for key in (
+        "maximum_complement_operator_norm", "maximum_success_norm_excess"))
+    if any(type(value) not in (int, float) or not math.isfinite(value) or value < 0
+           for value in (leak, excess)):
+        raise ValueError("finite nonnegative proper-code pulse diagnostics required")
+    if not pulses:
+        return 0.
+    bound = math.sqrt(pulses)*leak*math.exp((pulses-1)*math.log1p(excess))
+    if not math.isfinite(bound):
+        raise ArithmeticError("proper-code failure bound is nonfinite")
+    return bound
 
 
 def source_composition_report(native_budget=None):
@@ -568,22 +712,25 @@ def source_composition_report(native_budget=None):
     analysis or a physical apparatus error estimate. Projective read/blank/
     selector/archive services use their explicitly declared ideal contracts.
     """
-    native_budget = record_code.source_composition_report() if native_budget is None else native_budget
+    owned_budget = record_code.source_composition_report()
+    if native_budget is not None and (type(native_budget) is not dict or native_budget != owned_budget):
+        raise ValueError("supplied native source budget differs from the owned source calculation")
+    native_budget = owned_budget
     encoder_log, decoder_log = (native_budget[name] for name in ("encoder_log_error", "decoder_log_error"))
     walk_error = float(np.linalg.norm(source_walk()-second_quantization(permutation()), 2))
     fb_permutation = list(range(MODES))
     fb_permutation[2], fb_permutation[3] = fb_permutation[3], fb_permutation[2]
-    feedback_word = swap_word(2, 3)
-    feedback_error = float(np.linalg.norm(compiler.execute(feedback_word, MODES)
-                                         -second_quantization(fb_permutation), 2))
+    feedback_error = float(np.linalg.norm(source_feedback()-second_quantization(fb_permutation), 2))
     numbers = [encoder_log, decoder_log, walk_error, feedback_error]
     numbers += [native_budget["laws"][law]["maximum_corrected_attempt_log_error"] for law in ("C", "E")]
     if any(not math.isfinite(value) or value < 0 for value in numbers):
         raise ArithmeticError("nonfinite or negative source composition input")
     encode_resources, decode_resources = record_code.encoding_resources(), record_code.decoding_resources()
-    walk_resources, feedback_resources = compiler.resources(walk_word()), compiler.resources(feedback_word)
+    walk_resources = compiler.resources(_field_block_word(decoded_register_walk_word()))
+    feedback_resources = compiler.resources(_field_block_word(decoded_register_feedback_word()))
     keys = ("native_pulses", "single_code_pulses", "pair_code_pulses", "identity_phase_pulses",
             "proper_code_load_events", "proper_code_export_events", "proper_code_service_events")
+    export_diagnostic = _proper_code_export_diagnostic()
     rows = {}
     for law in ("C", "E"):
         local = native_budget["laws"][law]
@@ -592,8 +739,12 @@ def source_composition_report(native_budget=None):
         resources = {key: 6*encode_resources[key]
                      +12*(local["maximum_corrected_attempt_resources"][key]+decode_resources[key]+encode_resources[key])
                      +2*walk_resources[key]+feedback_resources[key] for key in keys}
-        epsilon = math.expm1(log_error)
-        rows[law] = {"maximum_complete_two_cycle_operator_error_diagnostic": epsilon,
+        successful_error = math.expm1(log_error)
+        failure_error = _first_export_failure_bound(resources["native_pulses"], export_diagnostic)
+        epsilon = successful_error+failure_error
+        rows[law] = {"maximum_successful_block_two_cycle_operator_error_diagnostic": successful_error,
+                     "maximum_proper_code_failure_amplitude_diagnostic": failure_error,
+                     "maximum_complete_two_cycle_operator_error_diagnostic": epsilon,
                      "maximum_complete_cq_diamond_error_diagnostic": epsilon*(2+epsilon),
                      "maximum_complete_cq_half_trace_error_diagnostic": epsilon*(1+epsilon/2),
                      "maximum_two_cycle_resources": resources,
@@ -601,6 +752,7 @@ def source_composition_report(native_budget=None):
                      "all_native_seams_raw_records_and_timeout_prefixes_covered": True,
                      "reference_extension_changes_bound": False}
     return {"laws": rows, "walk_operator_error": walk_error, "feedback_operator_error": feedback_error,
+            "proper_code_export_diagnostic": export_diagnostic,
             "source_composition": "six initial encoders; each of two cycles has six corrected native attempts, six actual decoders, one walk, optional first-read feedback and six encoders",
             "literal_decoded_field_register_targets": [9*j for j in range(MODES)],
             "total_native_work_qubits": 54,
@@ -610,7 +762,7 @@ def source_composition_report(native_budget=None):
             "selector_service": "five declared fair classical bits per proposal; codes30/31 halt before source advance",
             "failure_control": "raw native abort halts after its complete record batch; a proper-code export failure retains its failure flag and halts; ideal valid-code probability is zero, while numerical or physical error budgets are applied to the complete flagged channel",
             "native_conditional_source_words_selected_by_archived_records": True,
-            "complete_instrument_error_argument": "coin preparation and controlled native dilation precede an exact orthogonal record split; record-controlled recoveries form one direct-sum operator whose error is the maximum block error, including identity on zero/abort blocks; measurement and classical copying contract trace norm",
+            "complete_instrument_error_argument": "coin preparation and controlled native dilation precede an exact orthogonal record split; record-controlled recoveries form one direct-sum operator whose error is the maximum block error, including identity on zero/abort blocks; the retained first-export-failure amplitude bound is added to the complete successful-block error before channel conversion; measurement and classical copying contract trace norm",
             "channel_error_conversion": "||A-B||<=epsilon and ||B||=1 imply ||A(.)A*-B(.)B*||_diamond<=epsilon*(2+epsilon), preserved by final classical dephasing",
             "numerical_bound_is_outward_rounded_or_physical": False,
             "logical_input_preparation_selector_archive_and_detector_physical_costs_included": False}
@@ -623,8 +775,8 @@ def report(*, native_source_budget=None):
             "algebra": algebra_and_continuity(), "dispersion": dispersion(),
             "source": {"all_field_input_columns_executed": DIMENSION,
                        "source_walk_max_entry_residual": float(np.max(abs(source_walk()-target))),
-                       "walk_resources": compiler.resources(walk_word()),
-                       "feedback_resources": compiler.resources(swap_word(mode(1, 0), mode(1, 1))),
+                       "walk_resources": compiler.resources(_field_block_word(decoded_register_walk_word())),
+                       "feedback_resources": compiler.resources(_field_block_word(decoded_register_feedback_word())),
                        "numerical_residuals_are_physical_error_certificates": False},
             "complete_source_composition": source_composition_report(native_source_budget),
             "native_records": {law: record_summary(law) for law in ("C", "E")},
