@@ -6,6 +6,9 @@ import importlib
 import json
 import math
 from pathlib import Path
+import subprocess
+import sys
+import tempfile
 
 import numpy as np
 
@@ -68,11 +71,18 @@ def replay(package, path):
     path = Path(path)
     module.verify(path)
     retained = strict_json.load(path)
-    recomputed = module.run()
     if package == "mass_response":
-        compare_report(retained, recomputed, host_timing=True)
+        # This producer records every loaded repository module. Execute its
+        # original CLI in a fresh interpreter so verifier imports cannot alter
+        # its computational source closure. Scratch outputs live outside the
+        # repository and are removed even if a comparison fails.
+        with tempfile.TemporaryDirectory(prefix="oph-mass-replay-") as scratch:
+            output = Path(scratch) / "results.json"
+            subprocess.run([sys.executable, "-m", "model.common_source.mass_response.run",
+                            "--output", str(output)], cwd=module.ROOT, check=True)
+            compare_report(retained, strict_json.load(output), host_timing=True)
     else:
-        current, arrays = recomputed
+        current, arrays = module.run()
         # verify() checks this adjacent artifact's checksum and custody before
         # the independent execution; compare its contents, not ZIP timestamps.
         current["artifact"] = retained["artifact"]

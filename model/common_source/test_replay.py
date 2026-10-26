@@ -1,5 +1,9 @@
 """Retained scientific outputs cannot pass CI on custody checks alone."""
 import copy
+import json
+from pathlib import Path
+import subprocess
+import sys
 
 import numpy as np
 import pytest
@@ -29,6 +33,17 @@ def test_missing_environment_provenance_cannot_be_ignored():
     bad = {"environment": {"python": "3.12"}, "cases": {}}
     with pytest.raises(ValueError, match="environment metadata"):
         compare_report(bad, bad, host_timing=True)
+
+
+def test_fresh_mass_producer_preserves_its_exact_computational_source_closure():
+    root = Path(__file__).resolve().parents[2]
+    program = ("import json; "
+               "from model.common_source.mass_response.run import source_bindings; "
+               "print(json.dumps(source_bindings()))")
+    child = subprocess.run([sys.executable, "-c", program], cwd=root,
+                           capture_output=True, text=True, check=True)
+    retained = json.loads((root/"model/common_source/mass_response/results.json").read_text())
+    assert json.loads(child.stdout) == retained["source_bindings"]
 
 
 def test_record_labels_and_small_quantum_amplitudes_are_compared():
