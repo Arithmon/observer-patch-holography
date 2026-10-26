@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from tools.closed_lanes import live_owner
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CLAIM_ID = "OPH-FINITE-UNITARY-SCATTERING-LIMIT-NO-GO"
@@ -134,7 +136,8 @@ def test_postdiction_row_matches_theorem_and_boundary() -> None:
     assert "finite-dimensional operator topologies coincide" in boundary
     assert "selected projected scalar or observable limits" in boundary
     assert "infinite-dimensional weak limits" in boundary
-    assert "Scientific owner #743 records" in boundary
+    assert f"Historical lane #743 (closed; live owner #{live_owner(743)}) records" in boundary
+    assert "Scientific owner #743" not in boundary
     assert "no frozen prediction" in boundary
 
 

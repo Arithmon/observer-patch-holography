@@ -77,7 +77,9 @@ def test_frozen_register_distinguishes_pending_and_completed_protocols() -> None
     register = json.loads((ROOT / "claims/frozen_prediction_register.json"
                            ).read_text(encoding="utf-8"))
     rows = {r["id"]: r for r in register["rows"]}
-    for fz, issue in (("FZ-14", 729),):
+    # Pending comparisons follow the live test owner; claim gates retain their
+    # original scientific lane references until an actual contract change.
+    for fz, issue in (("FZ-14", 1025),):
         row = rows[fz]
         assert row["status"] == "registered_pending_freeze", fz
         assert row["owning_issue"] == issue, fz
