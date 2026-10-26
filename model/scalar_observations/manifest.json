@@ -21,7 +21,7 @@
     "experimental_readout/DERIVATION.md": "cfa8d8f6b1917752bc3445c4dd0193a0f8b65719b4a96f9565dd7465f0125791",
     "experimental_readout/EXECUTABLE_DERIVATION.md": "bfee3e5f1ab20a1564adf8b99f6edde9a1c22e51f0d51dd7e5e78034b8e4aea6",
     "experimental_readout/EXECUTABLE_READOUT.md": "fee94c607c63b05cb03eb58ac3a5125758afb07d781d861f901b3129a3965478",
-    "experimental_readout/README.md": "e61109645c43cf8935db67f5c764693508ff1c9a4115f5a3176f1291c8fd31f8",
+    "experimental_readout/README.md": "cc459ddaa741f615e65d5c376119e03fff6f5a49fe4329315f6315d25e4d6c64",
     "experimental_readout/__init__.py": "4fe571d3440bea33028288fa3314a6712962f8c8b1bb629ed828084d8e0460cd",
     "experimental_readout/__main__.py": "b3208545d0ef3dbbdd27bf1d5e9eac065aa4513ec163d8487f271cb2088b1598",
     "experimental_readout/canonical_source.py": "399445016aacf94db537a69427bf6bc9035633ba740fc4005be764b7a03bdc9e",
@@ -42,6 +42,8 @@
     "experimental_readout/protocol.json": "d38350df00d54d7006ef0335de3353f1b380ff42da13175290f343751e3cffd0",
     "experimental_readout/provenance.json": "0569760415ba3a7eb8fc02ccfa6957ad5ffc06886666582e958a6a03558e1c02",
     "experimental_readout/results.json": "cce2573f5b46fd28e4335e2294a2521507a5465766d964f95d7d525ef21f04d8",
+    "experimental_readout/shared_calibration.py": "8d6a9df3d0d2a9ad439be47ff54886598357878960066668f0f1b6a4b1aa689d",
+    "experimental_readout/shared_calibration_results.json": "7786b3e9e1cdfd74dd26dd5b8a03609cf317b6d4b0b01835dabbbb4538e3ae00",
     "experimental_readout/stats.py": "566c75f9dd46df3f94bb80171d77202b16d519963d7c7664c54ac25bb5275648",
     "experimental_readout/test_canonical_source.py": "be0deaf5821f0ed31197e2e13efbaed5991f6a0a64234abacdae59103a87bb43",
     "experimental_readout/test_data.py": "5434d1fe0c08171c3f66f1bfba5386cff3e3959695e6b5b99bf04ddff4f56a69",
@@ -51,6 +53,7 @@
     "experimental_readout/test_executable_source.py": "25f7363fee10d0b69cc02a4856087879d28b0029b62705793a139e145aee7cc8",
     "experimental_readout/test_experiment.py": "fe5ebbbdc16f6e57d5f0e693dc30b6018627a8bc8af3452013d6fad00ad7f6bb",
     "experimental_readout/test_interface.py": "0a75629e407997fab33791ce1bbbfb575052af9d97375fd442038c4e7c0b738e",
+    "experimental_readout/test_shared_calibration.py": "f5500abadcaa7f6d954b6b1429933205663eaefbe9095784c8ac4e81915c216c",
     "experimental_readout/test_stats.py": "e0111f3665d9ae5ec62d835701eee4cfe73fd937ac48de6865d6ed7b83408300",
     "lattice.py": "3f08c67ee7c1be4ac89ba031f021a79ae308aba2dffa9ca6c296deb982ddf074",
     "occupation.py": "97ec3ae5e5a67fcf0abb1f526c1fa6e9521c9570e8c8b99b2fc209c81a659ed7",
@@ -75,6 +78,7 @@
     "python3 -m model.scalar_observations.occupation --check model/scalar_observations/occupation_results.json",
     "python3 -m model.scalar_observations.experimental_readout --check model/scalar_observations/experimental_readout/results.json",
     "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.scalar_observations.experimental_readout.executable --check model/scalar_observations/experimental_readout/executable_results.json",
+    "python3 -m model.scalar_observations.experimental_readout.shared_calibration --check model/scalar_observations/experimental_readout/shared_calibration_results.json",
     "python3 -m pytest -q -W error model/scalar_observations"
   ],
   "schema": "oph.observer.public_manifest.v1"

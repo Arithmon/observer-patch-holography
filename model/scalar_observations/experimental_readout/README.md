@@ -7,6 +7,26 @@ occupation certificate. The original analysis below uses measured-axis
 factorization; its predicted values were not emitted by that execution.
 Its protocol, receipt and data remain unchanged.
 
+[Shared calibration](shared_calibration.py) now propagates the uncertainty of
+one displaced-thermal state to both reserved detector quadratures. Exact
+rational interval cells cover the grid predictions of every state compatible
+with the 42 axis statistics, including all grid-phase aliases; the same cells
+predict all 200 off-axis statistics without another
+fit. A separate state selected from the axes satisfies every calibration and
+validation box for each published coordinate extent, and has the same parameters
+as the corresponding 64-level source preparation. Surviving outer cells alone
+would be inconclusive;
+the common state is checked directly. The combined sampling-failure allowance
+is at most 0.05 **conditional on** 250 independent accepted shots per component
+and zero additional bias. Missing raw counts, physical service errors and the
+coordinate discrepancy remain unresolved. This tests the supplied preparation
+and readout dictionary, with no physical action or clock identification. The
+cover concerns unrestricted semantic states; the existing finite source was
+executed only for the selected state under each coordinate convention. No
+uniform source error over the parameter cells or authenticated 95% experimental
+agreement is asserted. A `10^-12` bound on reported-mean rounding is assumed
+separately from the sampling radius.
+
 This component compares the existing smooth detector's characteristic-function
 description with **published experimental observations**. Twenty-one complex
 axis responses calibrate an aligned Gaussian preparation/readout family;
@@ -112,6 +132,7 @@ From the repository root:
 ```sh
 python3 -m model.scalar_observations.experimental_readout --check model/scalar_observations/experimental_readout/results.json
 python3 -m pytest -q -W error model/scalar_observations/experimental_readout
+python3 -m model.scalar_observations.experimental_readout.shared_calibration --check model/scalar_observations/experimental_readout/shared_calibration_results.json
 python3 -m model.verify --hashes-only
 ```
 

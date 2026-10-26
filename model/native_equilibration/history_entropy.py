@@ -26,14 +26,26 @@ endpoint distribution. Their overlap agreement is a finite consensus result.
 Unmeasured cap occupations in that kernel are predictions, not extra records.
 No area, proper volume, stress tensor, geometric boost or Einstein stationarity
 is identified by this finite population theorem.
+
+The coherent extension below computes the exact recorded-channel response
+G on every source matrix unit. The Petz pullback is G entrywise rho; G=1
+defines the full recoverable algebra, while G=0 defines entropy-flat output
+directions. These are different questions. With the SAME two-moment sigma,
+the cost-corrected quantum output entropy is stationary on all coherent
+fixed-moment tangents and has Hessian -sum G_ij |X_ij|^2 L(sigma_i,sigma_j).
+The all-cap checks intersect this source algebra with the existing E_R
+completions. They discharge finite coherent recorded-entropy stationarity;
+they supply no geometric variation, area coefficient or stress identification.
 """
 from __future__ import annotations
 
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from fractions import Fraction as F
 from functools import lru_cache
 import math
+
+import numpy as np
 
 from . import common_variation as v
 from ..native_modular_reference import local_preparation as local
@@ -275,6 +287,298 @@ def value(form):
     return sum(float(coefficient)*math.log(int(prime)) for prime, coefficient in form.items())
 
 
+@dataclass(frozen=True)
+class QuantumBranch:
+    tape: tuple
+    terminal: str
+    inputs: tuple[int, ...]
+    outputs: tuple[int, ...]
+    weight: F
+
+
+@dataclass(frozen=True)
+class QuantumResponse:
+    """Exact data for the complete tape AND disturbed quantum endpoint."""
+    law: str
+    flag_probability: F
+    branches: tuple[QuantumBranch, ...]
+    overlap: tuple[tuple[F, ...], ...]
+    recovery_classes: tuple[tuple[int, ...], ...]
+
+
+def quantum_response(paths, *, law):
+    """Compute the reference-Petz pullback on all 4,356 native matrix units.
+
+    A validated branch is K_b=sqrt(w_b) U_b P_b, w_b=2**(-T_b)/beta.
+    Its exact endpoint inverse is the Petz map for EVERY faithful diagonal
+    source reference: the reference factors cancel on each image support.
+    An arbitrary trace-preserving replacement completes the decoder outside
+    these supports; no actual native output is projected or postselected.
+    Thus R_sigma Gamma(X)=G*X, G_ij=sum_b w_b 1_{i,j in domain_b}, where
+    * is entrywise multiplication. G is a Gram matrix with diagonal one.
+    Its entries equal one precisely within identical domain signatures;
+    these classes give the full equality/recovery algebra direct_sum M_C.
+    The identity tensors with any untouched reference, without changing G.
+
+    Paths must implement one causal native instrument (possibly a retained
+    state-independent flag). Actual endpoints, primitive labels, coin costs
+    and record-only decisions are checked rather than trusting a branch list.
+    """
+    if type(law) is not str or law not in ("C", "E"):
+        raise ValueError("original C or E record law required")
+    if type(paths) is not tuple or not paths:
+        raise ValueError("a nonempty tuple of actual native paths required")
+    states = native.states(binary=True)
+    positions = {state: i for i, state in enumerate(states)}
+    seams = set(quantum_mixing.seams())
+    decisions, seen = {}, set()
+
+    def decision(prefix, action):
+        if prefix in decisions and decisions[prefix] != action:
+            raise ValueError("native control must depend only on committed records")
+        decisions[prefix] = action
+
+    for path in paths:
+        if (type(path) is not Path or type(path.initial) is not int
+                or not 0 <= path.initial < 66 or type(path.tape) is not tuple
+                or type(path.terminal) is not str or path.terminal not in ("success", "timeout")
+                or type(path.chance) is not F or path.chance != F(1, 2**len(path.tape))):
+            raise ValueError("original native path fields and fair-coin probability required")
+        if any(type(record) is not tuple or len(record) != 4
+               or any(type(x) is not int for x in record)
+               or record[:2] not in seams or record[2] not in (0, 1)
+               for record in path.tape):
+            raise ValueError("a complete original native record required")
+        key = path.initial, path.tape, path.terminal
+        if key in seen:
+            raise ValueError("duplicate native path")
+        seen.add(key)
+        state, prefix = states[path.initial], ()
+        for record in path.tape:
+            a, b, coin, label = record
+            decision(prefix, ("continue", (a, b)))
+            out, (_, transfer) = native.native(state, (a, b), coin)
+            expected = transfer if law == "C" else state[a]-state[b]
+            if label != expected:
+                raise ValueError("record differs from the actual native branch")
+            prefix, state = (*prefix, record), out
+        decision(prefix, ("terminal", path.terminal))
+        if (type(path.endpoint) is not tuple or path.endpoint != state
+                or any(type(x) is not int for x in path.endpoint)):
+            raise ValueError("disturbed endpoint differs from native execution")
+    beta = flag_probability(paths)
+    if beta > 1:
+        raise ValueError("retained flag probability cannot exceed one")
+    rows = fibres(paths)
+    branches, signatures = [], [[] for _ in range(66)]
+    overlap = [[F() for _ in range(66)] for _ in range(66)]
+    for index, row in enumerate(rows.values()):
+        row = sorted(row, key=lambda path: path.initial)
+        inputs = tuple(path.initial for path in row)
+        compatible = []
+        for initial, state in enumerate(states):
+            for a, b, coin, label in row[0].tape:
+                out, (_, transfer) = native.native(state, (a, b), coin)
+                if label != (transfer if law == "C" else state[a]-state[b]):
+                    break
+                state = out
+            else:
+                compatible.append(initial)
+        if inputs != tuple(compatible):
+            raise ValueError("retained tapes must include every compatible initial state")
+        weight = row[0].chance/beta
+        branches.append(QuantumBranch(row[0].tape, row[0].terminal, inputs,
+                                      tuple(positions[path.endpoint] for path in row), weight))
+        for i in inputs:
+            signatures[i].append(index)
+            for j in inputs:
+                overlap[i][j] += weight
+    classes = defaultdict(list)
+    for i, signature in enumerate(signatures):
+        classes[tuple(signature)].append(i)
+    if any(overlap[i][i] != 1 or not 0 <= overlap[i][j] <= 1
+           or (overlap[i][j] == 1) != (signatures[i] == signatures[j])
+           for i in range(66) for j in range(66)):
+        raise ArithmeticError("native quantum response lost its exact sufficiency algebra")
+    return QuantumResponse(law, beta, tuple(branches), tuple(map(tuple, overlap)),
+                           tuple(tuple(row) for row in classes.values()))
+
+
+def quantum_region_response(response, cap):
+    """Exact visible and recoverable dimensions after the existing E_R.
+
+    On a cap containing the protected core, E_R fixes every sigma(m,c).
+    Source relative-entropy equality for Gamma E_R therefore requires BOTH
+    rho=E_R(rho) and rho in the tape's recovery algebra. Cap matrix-unit
+    supports are disjoint, so checking all their complement copies gives
+    the exact intersection and image dimensions, without a floating rank.
+    The full cap is a readout only, not an extra native-mixing claim.
+    """
+    if (type(response) is not QuantumResponse or type(cap) is not tuple
+            or any(type(i) is not int or not 0 <= i < 12 for i in cap)
+            or tuple(sorted(set(cap))) != cap
+            or not set(v.CORE).issubset(cap)):
+        raise ValueError("an exact response and a sorted core-containing cap required")
+    outside = tuple(i for i in range(12) if i not in cap)
+    coordinates = {(tuple(x[i] for i in cap), tuple(x[i] for i in outside)): index
+                   for index, x in enumerate(native.states(binary=True))}
+    retained = visible = recoverable = 0
+    for charge in range(3):
+        left = sorted({a for a, _ in coordinates if sum(a) == charge})
+        right = sorted({b for a, b in coordinates if sum(a) == charge})
+        for a in left:
+            for b in left:
+                entries = [response.overlap[coordinates[a, c]][coordinates[b, c]] for c in right]
+                retained += 1
+                visible += any(x > 0 for x in entries)
+                recoverable += all(x == 1 for x in entries)
+    return {"cap_algebra_dimension": retained, "record_output_image_dimension": visible,
+            "flat_cap_tangent_space_dimension": retained-visible,
+            "relative_entropy_equality_algebra_dimension": recoverable,
+            "common_reference_fixed_by_cap_completion": True}
+
+
+def quantum_stationarity(response, weights, tangent):
+    """Floating evaluation of the analytically exact coherent Hessian.
+
+    For sigma=diag(weights) from the existing faithful two-moment family,
+    F(rho)=S(Gamma rho)-E_rho[T]log2-log(beta) obeys
+    F(rho)=S(sigma)+h1 delta m+h2 delta c-D(Gamma rho||Gamma sigma).
+    Its fixed-moment first derivative vanishes and its Hessian is
+    -sum_ij G_ij |X_ij|^2 L(sigma_i,sigma_j). Flat directions are exactly
+    G_ij=0; lossless directions instead have G_ij=1. Neither condition is
+    a numerical entropy/rank threshold. The parameter is the declared
+    dimensionless variation parameter, not an observer or physical clock.
+    """
+    if type(response) is not QuantumResponse or weights != v.family(*v.moments(weights)):
+        raise ValueError("exact response and faithful two-moment family required")
+
+    def original_numeric(value):
+        if (value is None or isinstance(value, (bool, np.bool_))
+                or np.ma.isMaskedArray(value)):
+            raise ValueError("original unmasked numeric tangent entries required")
+        if isinstance(value, (tuple, list)):
+            for item in value:
+                original_numeric(item)
+        elif isinstance(value, np.ndarray) and value.dtype.kind not in "iufc":
+            raise ValueError("original numeric tangent dtype required")
+
+    original_numeric(tangent)
+    raw = np.asarray(tangent)
+    if (np.ma.isMaskedArray(tangent) or raw.shape != (66, 66)
+            or raw.dtype.kind not in "iufc" or not np.isfinite(raw).all()):
+        raise ValueError("a finite full-matrix tangent on the 66-state carrier required")
+    x = np.array(raw, dtype=complex, copy=True)
+    norm = float(np.linalg.norm(x, "fro"))
+    if (np.linalg.norm(x-x.conj().T, "fro") > 1e-12*max(norm, 1.)
+            or not math.isfinite(norm)):
+        raise ValueError("a Hermitian finite tangent required")
+    diagonal = np.diag(x).real
+    q = np.asarray(v.charges())
+    constraints = (float(diagonal.sum()), float(q@diagonal), float((q*(q-1)/2)@diagonal))
+    if any(abs(value) > 1e-12*max(norm, 1.) for value in constraints):
+        raise ValueError("normalization and both initial moments must be fixed")
+    w = np.asarray(list(map(float, weights)))
+    if (not np.isfinite(w).all() or min(w) <= 0
+            or not math.isfinite(1/float(min(w)))):
+        raise ValueError("reference and entropy curvature must remain faithful and finite in execution precision")
+    source_terms, output_terms, loss_terms, norm_terms = [], [], [], []
+    flat = lossless = True
+    for i, a in enumerate(weights):
+        for j, b in enumerate(weights):
+            magnitude = float(abs(x[i, j])**2)
+            g = response.overlap[i][j]
+            lower = float(min(a, b))
+            try:
+                ratio = float(abs(a-b)/min(a, b))
+            except OverflowError:
+                ratio = math.inf
+            if ratio == 0:
+                divided = 1/lower
+            elif math.isfinite(ratio):
+                # The exact gap may underflow even when a and b round to
+                # different binary values. Scale by their relative gap;
+                # never divide by float(a-b).
+                divided = (math.log1p(ratio)/ratio)/lower
+            else:
+                divided = abs(math.log(float(a))-math.log(float(b)))/float(abs(a-b))
+            source_terms.append(magnitude*divided)
+            output_terms.append(float(g)*magnitude*divided)
+            # Compute loss directly; subtracting two large Hessians can
+            # create cancellation or NaN even on an exactly lossless block.
+            loss_terms.append(float(1-g)*magnitude*divided)
+            norm_terms.append(float(g)*magnitude)
+            if x[i, j] != 0:
+                flat &= g == 0
+                lossless &= g == 1
+    try:
+        source, curvature, loss, weighted_norm = map(math.fsum,
+            (source_terms, output_terms, loss_terms, norm_terms))
+    except OverflowError as error:
+        raise ValueError("entropy curvature diagnostics must remain finite in execution precision") from error
+    report = {"fixed_moment_first_derivative": -float(diagonal@np.log(w/w[0])),
+            "output_entropy_hessian": -curvature, "source_entropy_hessian": -source,
+            "information_loss_hessian": loss,
+            "visible_HS_norm_squared": weighted_norm,
+            "negative_hessian_lower": weighted_norm/float(max(weights)),
+            "negative_hessian_upper": weighted_norm/float(min(weights)),
+            "exact_structural_flat_direction": flat,
+            "exact_structural_lossless_direction": lossless,
+            "floating_diagnostics_are_outward_certificates": False}
+    if any(type(value) is float and not math.isfinite(value) for value in report.values()):
+        raise ValueError("entropy curvature diagnostics must remain finite in execution precision")
+    return report
+
+
+def quantum_response_certificate(paths, *, law):
+    """Compact all-source equality/stationarity certificate, not a new packet."""
+    import hashlib
+    import json
+
+    response = quantum_response(paths, law=law)
+    counts = Counter(value for row in response.overlap for value in row)
+    class_counts = Counter(map(len, response.recovery_classes))
+    region_counts, digest = Counter(), hashlib.sha256()
+    for mask in range(1 << 10):
+        cap = (*v.CORE, *(i+2 for i in range(10) if mask & (1 << i)))
+        region = quantum_region_response(response, cap)
+        region_counts[(region["cap_algebra_dimension"], region["record_output_image_dimension"],
+                       region["relative_entropy_equality_algebra_dimension"])] += 1
+        digest.update(json.dumps([cap, region], sort_keys=True).encode())
+    fixed = sum(len(row)**2 for row in response.recovery_classes)
+    if fixed != counts[F(1)] or sum(counts.values()) != 4356:
+        raise ArithmeticError("native equality algebra omitted a matrix unit")
+    touched = tuple(sorted({port for branch in response.branches for record in branch.tape
+                            for port in record[:2]}))
+    occupation_classes = defaultdict(set)
+    for i, state in enumerate(native.states(binary=True)):
+        occupation_classes[tuple(state[port] for port in touched)].add(i)
+    return {"retained_flag_probability": response.flag_probability,
+            "complete_quantum_record_blocks": len(response.branches),
+            "all_native_matrix_units_checked": 4356,
+            "exact_Petz_overlap_multiplicities": {str(x): n for x, n in sorted(counts.items())},
+            "recovery_class_size_multiplicities": {str(x): n for x, n in sorted(class_counts.items())},
+            "actual_native_ports_used": touched,
+            "recovery_classes_equal_initial_occupation_fibres_on_used_ports":
+                {frozenset(row) for row in response.recovery_classes}
+                == {frozenset(row) for row in occupation_classes.values()},
+            "relative_entropy_equality_algebra_dimension": fixed,
+            "fully_destroyed_matrix_units": counts[F(0)],
+            "strict_coherent_entropy_curvature_dimension": 4356-counts[F(0)],
+            "fixed_moment_Hermitian_tangent_dimension": 4353,
+            "strict_fixed_moment_curvature_dimension": 4353-counts[F(0)],
+            "diagonal_population_recovery_is_exact": True,
+            "same_recovery_for_every_faithful_diagonal_reference": True,
+            "arbitrary_untouched_reference_extension": True,
+            "source_selected_two_moment_family_stationary": True,
+            "core_containing_cap_completions_checked": 1024,
+            "cap_intersection_dimension_multiplicities": [
+                {"cap_algebra": a, "output_image": b, "equality_algebra": c, "caps": count}
+                for (a, b, c), count in sorted(region_counts.items())],
+            "exact_cap_intersections_sha256": digest.hexdigest(),
+            "physical_metric_area_volume_stress_identified": False}
+
+
 def run():
     weights = local.reference()
     target = source_entropy(weights)
@@ -313,7 +617,10 @@ def run():
             "complete_excess_upper_coefficient": 1-beta,
             "complete_excess_upper_log_argument": max(weights)/min(weights),
             "successful_completion_dimensions": sorted({len(row) for row in rows.values()}),
-            "same_history_cap_refinements_checked": len(caps)}
+            "same_history_cap_refinements_checked": len(caps),
+            "complete_coherent_stationarity": quantum_response_certificate(paths, law=law)}
+        if beta < 1:
+            results[law]["flagged_coherent_stationarity"] = quantum_response_certificate(kept, law=law)
     stopped = histories("E", prefix=3, stop_on_current=True)
     for path in stopped:
         count = prefix_length(path.tape, "E", 3, True)
@@ -346,11 +653,15 @@ def run():
             "local_reference_native_attempts_upper": finite["native_total_attempts_upper"],
             "complete_flagged_reference_halftrace_upper": finite["complete_flagged_reference_halftrace_upper"],
             "adaptive_record_channel_preserves_the_reference_sandwich": True,
+            "same_gradient_bound_for_coherent_record_endpoint_tangents": True,
             "input_dependent_stopping_cost_must_be_varied": True},
         "scope": {"readout_uses_only_declared_native_records": True,
             "prefix_has_record_feedback_and_core_crossings": True,
             "all_timeout_disturbed_outputs_retained": True,
             "cap_completions_share_one_conditional_endpoint_measure": True,
             "unmeasured_cap_predictions_are_additional_records": False,
-            "coherent_reference_entropy_theorem": False,
+            "coherent_source_and_untouched_reference_information_identity": True,
+            "coherent_stationarity_here_varies_the_source_state": True,
+            "coherent_source_fixed_moment_stationarity": True,
+            "exact_record_endpoint_quantum_sufficiency_algebra": True,
             "proper_volume_area_stress_dictionary": False}}

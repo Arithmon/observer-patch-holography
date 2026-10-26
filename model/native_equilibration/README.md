@@ -119,10 +119,57 @@ and freezing an input-dependent stopping cost are tested failures.
 
 The current derivation, service costs and physical boundary are in
 [the common-source geometry discussion](../common_source/SLOW_GEOMETRY.md#entropy-stationarity-from-continuing-native-records).
-The result is retained inside `variation_results.json`, not a separate
-report. This is finite population entropy on the declared instrument;
-coherent matter entropy, proper volume, geometric area and stress remain
-distinct interfaces.
+The population formula and the coherent formula below use the same finite
+native instrument and are retained inside `variation_results.json`. Proper
+volume, geometric area and physical stress remain separate interfaces.
+
+### Coherent history stationarity and recovery
+
+`history_entropy.quantum_response` closes the finite **coherent recorded
+entropy-stationarity** interface on this same adaptive instrument. It verifies
+every primitive endpoint, complete tape, fair-coin probability and record-only
+control decision. For a branch `K_b=sqrt(w_b) U_b P_b`, with
+`w_b=2^(-T_b)/beta`, it computes all 4,356 exact rational entries
+`G_ij=sum_b w_b 1{i,j in domain_b}`. The reference-Petz decoder pulls the
+complete quantum output back to `G` entrywise multiplied by the input. The
+reference factors cancel for every faithful diagonal source reference; the
+identity extends to arbitrary untouched references. This applies the
+established [Petz sufficiency theorem](https://arxiv.org/abs/quant-ph/0209053),
+and identifies its equality algebra for the actual native histories.
+
+For the declared two-attempt adaptive prefix and census, both C and E have
+recovery algebra `M_28 + 4 M_8 + 6 C`, of dimension 1,046. These are exactly
+the initial-occupation fibres on the four used ports `0,1,5,8`; every
+diagonal population and arbitrary entanglement inside each block is recovered.
+The complete C instrument destroys 558 matrix units; conditioning on its
+state-independent successful flag destroys 2,814. E destroys 3,278. The C
+timeouts therefore carry genuine coherent output, even where a population
+counting completion is ambiguous. The exact counts include every source
+matrix unit, rather than sampling prepared states or fitting numerical ranks.
+
+For the existing source-selected faithful `sigma(m,c)`, put
+`F(rho)=S(Gamma rho)-E_rho[T] log(2)-log(beta)`. Direct branch calculation gives
+
+```text
+F(rho) = S(sigma)+h1 delta<m>+h2 delta<c>-D(Gamma rho || Gamma sigma),
+dF_sigma[X] = 0                    if Tr X=Tr(q X)=Tr(c X)=0,
+d2F_sigma[X,X] = -sum_ij G_ij |X_ij|^2 L(sigma_i,sigma_j),
+L(a,b)=(log(a)-log(b))/(a-b),       L(a,a)=1/a.
+```
+
+Thus all admitted coherent tangents are stationary. Output-flat directions
+have `G_ij=0`; information-lossless directions instead have `G_ij=1`.
+Invisible coherences can share the maximum output entropy with `sigma`;
+this maximum does not determine a unique source state.
+The strict fixed-moment curvature dimensions are 3,795 for complete C,
+1,539 for successful C, and 1,075 for E. The same reference is stationary
+after each of the 1,024 core-containing cap completions; their visible and
+recoverable algebra intersections are enumerated exactly. The existing finite
+preparation sandwich also gives its same gradient bound for the full quantum
+output, by positivity and operator monotonicity of logarithm. These are
+variations in the declared dimensionless state parameter. The geometric
+metric/volume variation, area coefficient, stress normalization and continuum
+tail required by the Einstein branch remain separate premises.
 
 ```sh
 python -m model.native_equilibration --check model/native_equilibration/results.json

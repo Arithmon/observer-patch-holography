@@ -1,8 +1,8 @@
 # OPH particle mass response and hierarchy audit
 
-**Current research report.** This single report collects the declared chiral
-Weyl–Higgs candidate, the hierarchy diagnosis, and the full repair response
-audit. Its calculations and retained outputs are in the linked model packages.
+This document states the current chiral Weyl–Higgs candidate, hierarchy
+diagnosis and full repair-response result. Its calculations and retained
+outputs are in the linked model packages.
 The native recorded repair supports a propagating **collective core-relative
 charge response**, an exact correlation current, and compatible local detector
 records. Exact signed-current histories also recover nonzero finite-frequency
@@ -10,6 +10,11 @@ occupation readouts. The collective operators are even matrix-unit transfers
 with a diffusive response. A specified 15-dimensional exterior carrier fits
 inside the same native 66-state space, but the complete recorded repair does
 not preserve any noiseless 15-dimensional work subspace.
+Active record correction on multiple native carriers supplies a different
+finite construction: the same declared Weyl–Higgs field propagates at zero
+and three opposite momentum pairs, with complete continuing detector and
+clock outputs. Its representation, trial Yukawa law, spectral cutoff and
+coherent services remain supplied.
 The measured Standard Model mass hierarchy has **not** been recovered, and
 these collective operators have not been identified with Standard Model fields
 in the observer's physical Lorentzian description.
@@ -375,6 +380,59 @@ prepares the physical interacting vacuum. The measured frequencies agree
 with the trial's charged quasiparticle gaps under its stated quadratic and
 particle–hole interpretation.
 
+#### 5.3 Protected nonzero-momentum continuation
+
+The [protected momentum implementation](../../model/common_source/chiral_candidate/protected_momentum.py)
+and its [retained output](../../model/common_source/chiral_candidate/protected_momentum_results.json)
+retain one zero momentum and the three pairs `±(1/3,0,0)`,
+`±(0,1/3,0)`, `±(0,0,1/3)` in one declared periodic coordinate box.
+Each momentum carries all 90 Spin, internal and family modes: **630 CAR
+modes in total**, with the zero mode included once. The fixed quadratic
+background factors into 96 independent Fock blocks of at most eight modes.
+Actual source matrices execute every input column of each block, and an
+independent full 90/180-mode Gaussian calculation checks the factorization.
+The retained complex factors specify every successful field/clock/reference
+output without materializing a vector of dimension `2^630`.
+
+Each occupation is the two-level factor of the exact six-state native
+record-correctable code; its three-level spectator remains untouched.
+Recorded C/E correction acts as identity on the complete encoded field and
+arbitrary references. Source words address the decoded occupation wires,
+with independently checked routing. This uses many carriers and active
+coherent recovery; it does not contradict the single-carrier capacity bound
+or turn the uncorrected dissipative response into a unitary field.
+
+One protocol prepares once, evolves, reads an occupation, applies recorded
+feedback, evolves again and reads again. All selector timeouts and disturbed
+endpoints remain part of its output. One fixed charged-lepton component is
+probed; all other components remain in the continuing field. A second
+protocol repeats the same fixed elementary evolution word twice per interval. Its first-read marginal
+cancels the nonzero-momentum visibility in the ideal response:
+
+```math
+P(t)=A\sin^2(E t),\qquad
+\frac{P(2t)}{4P(t)}=\cos^2(E t).
+```
+
+The decoder uses those two recorded marginals and the final quantum-clock
+quadratures under a declared alias window. It does not read Hamiltonian
+eigenvalues. The three orientations test the same relation
+`(E(p)^2-E(0)^2)/Omega^2=|p|^2/4` of the supplied Weyl–Higgs symbol.
+Pointwise source comparisons are numerical diagnostics; a certified
+frequency-inversion error or a physical particle pole is not established.
+The budget charges all 630 native carriers and source/service calls; the
+six-mode construction's smaller error admission is not transferred.
+Export-failure blocks have their own flagged error bound, rather than
+being discarded or represented as explicitly retained success vectors.
+Floating composition diagnostics are not outward or hardware certificates.
+
+This supplies protected propagation and continuing observation for the
+chosen finite matter field. The coordinate box, cutoff, coherent services,
+apparatus state, programmed modular clock and trial coupling law remain
+construction choices. The measured hierarchy still fails; interacting
+quantum gauge/Higgs dynamics, a local chiral regulator, physical spacetime
+and the joint gravity attachment remain open.
+
 ### 6. Relation to observers' effective 3+1D spacetime
 
 There are two distinct levels of attachment.
@@ -507,14 +565,14 @@ not excluded by these tests.
 | Native family-dependent operator | Exact, covariant, nonscalar, with three distinct eigenvalues |
 | Weyl/Higgs Spin, charge and dispersion | Checked on the same declared action and Nambu conventions |
 | Weak-chirality discriminator | Correct operator vertex weights; no dynamical weak scattering calculation |
-| Continuing source readout | Full 90-mode Gaussian field, literal Fock/clock factor, all outcomes retained |
-| Charged rest-gap ratios | Read from source records and quantum-clock quadratures |
+| Continuing source readout | Full 90-mode rest field and protected 630-mode seven-momentum field; complete factorized complex outputs and flagged failures |
+| Charged rest-gap ratios and propagation | Rest ratios and three-axis moving response read from source records and quantum-clock quadratures; physical identification remains open |
 | Observed mass hierarchy | Fails for every fixed prescription tested here |
 | Quantum gauge/Higgs dynamics | Not executed by this fixed-background quadratic trial |
 | Local nonperturbative chiral regulator | Not constructed here |
 | Same recovered-spacetime field history | Local principal-symbol compatibility; full domain/history attachment open |
 | Physical units and observed particle identification | Not established |
-| GR entropy stationarity and responsive geometry | No new closure claim from this calculation |
+| GR entropy stationarity and responsive geometry | Physical entropy-area/stress dictionary and responsive geometry remain open |
 
 The specific remaining mass problem is to determine and test the
 mass-generating coupling of available native family data to the Higgs
@@ -533,6 +591,7 @@ From the public repository root, using Python 3.12 and the root
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q model/common_source/chiral_candidate
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -u -m model.common_source.chiral_candidate.run --output /tmp/chiral-candidate.json
 .venv/bin/python -m model.common_source.chiral_candidate.run --verify model/common_source/chiral_candidate/results.json
+.venv/bin/python -m model.common_source.chiral_candidate.protected_momentum --check model/common_source/chiral_candidate/protected_momentum_results.json
 ```
 
 The replay requires fresh JSON and companion NPZ paths and refuses to
@@ -544,8 +603,9 @@ consistency; it does not rerun the dynamics.
 The retained calculation binds the source code, native reference, exact
 representation and interaction artifacts, and prior response evidence.
 Exact algebra, rational interval certificates and floating execution checks
-remain distinct forms of support. All existing r2053 source and artifact
-bytes are preserved; the candidate and subsequent audit are additions.
+remain distinct forms of support. The protected propagation receipt has its
+own source bindings and complete complex factor artifact; it preserves the
+distinct rest experiment and passive repair-response contracts.
 
 
 ## Hierarchy diagnosis
@@ -1626,6 +1686,16 @@ exclude the stated action prescriptions and clock/readout assignments. They
 do not prove that every possible OPH construction, interacting effective
 description or collective field fails.
 
+The protected seven-momentum construction implements a finite encoded
+operator map with active record correction. It removes the rest-only
+execution restriction for the supplied trial action. It does not select that
+action from the native records, alter the failed hierarchy, or establish a
+physical spatial/clock dictionary. Its use of many corrected carriers is
+outside the single uncorrected rank-15 obstruction. The coherent native
+entropy theorem separately supplies a constrained endpoint Hessian and
+recovery algebra; no physical area, stress or joint matter/gravity variation
+is inferred by placing these results together.
+
 The next physical construction must supply an operator map from a
 continuing repair history to the charged left/right field response. It
 must preserve charge, CAR or its justified effective limit, propagation,
@@ -1655,7 +1725,7 @@ The following routes remain hypotheses to test, rather than assumed solutions.
 | 2. Determine the continuing coherent implementation | Compare explicit admissible source implementations, including coherent versus committed records and the actual nonzero-frequency current/density readouts. Fix each before examining particle targets, and measure multi-time phase-sensitive responses with its own clock. | The complete source program determines the observable evolution and errors. One incident count cannot replace the waiting record, and committed C/E probabilities alone do not select an unread coherent continuation. |
 | 3. Derive interactions and family structure together | Use the continuing repair context and complementary memory to calculate charged response, kinetic normalization and vertices from one action. Show how the decoded conjugate-five and color currents act on the actual field carrier, and test the three-family symmetry breaker. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests; family coefficients and scale come from that specified construction. The ten-mode direct color action and natural $10+5$ charge action tested here are insufficient. |
 | 4. Test controlled enlargement or refinement | For an operator-response code, active record correction, larger carrier, collective sector or copy limit, state preparation, locality, interactions and observer access. Bound complete-record errors as the construction grows. | A common limiting response is obtained with controlled clock and state errors. It must bypass the fixed-work-carrier rank-15 obstruction by an explicit mechanism. Independent copies alone preserve the existing two-point poles. |
-| 5. Join the matter and entropy readouts | Extend the [native record entropy result](../../model/native_equilibration/README.md) to the actual coherent matter protocol, then derive geometric area/volume and stress readouts independently on that same history. | The joint construction meets the entropy and geometry contracts without defining curvature or an area term solely to enforce Einstein's equation. The population census theorem alone does not close this attachment. |
+| 5. Join the matter and entropy readouts | Extend the [native record entropy result](../../model/native_equilibration/README.md) to the actual coherent matter protocol, then derive geometric area/volume and stress readouts independently on that same history. | The joint construction meets the entropy and geometry contracts without defining curvature or an area term solely to enforce Einstein's equation. The coherent native entropy theorem has a fixed-carrier state-variation domain; it does not close this geometric attachment. |
 
 For any route that passes these checks, freeze its architecture, state,
 controls and physical readout before comparing mass ratios with observations.

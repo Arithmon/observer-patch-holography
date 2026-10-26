@@ -224,6 +224,10 @@ REPLAYS = (
     ("model.common_source.hierarchy_diagnosis.audit", None, "model/common_source/hierarchy_diagnosis/results.json"),
     ("model.common_source.full_repair_response.run", None, "model/common_source/full_repair_response/results.json"),
     ("model.empirical_diagnostics.cross_scale", None, "model/empirical_diagnostics/cross_scale_results.json"),
+    ("model.scalar_observations.experimental_readout.shared_calibration", None,
+     "model/scalar_observations/experimental_readout/shared_calibration_results.json"),
+    ("model.common_source.chiral_candidate.protected_momentum", None,
+     "model/common_source/chiral_candidate/protected_momentum_results.json"),
 )
 
 

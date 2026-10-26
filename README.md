@@ -40,9 +40,9 @@ and the clocks inside it.
   reference and its active modular clock, retaining disturbance and failures.
   Complete state tomography makes that reference identifiable, and a declared
   repair schedule derives its entropy maximum at two conserved occupation
-  moments. Native census records also give a counted entropy-stationarity
-  identity through adaptive repairs, with coin costs and timeout errors kept
-  explicit. A separate finite quantum process joins electric flux, charged
+  moments. Native census histories also give coherent entropy stationarity
+  through adaptive repairs, with exact recovery and information-loss domains,
+  coin costs and timeouts kept explicit. A separate finite quantum process joins electric flux, charged
   matter and a scalar field with recorded feedback. Refining screens support
   Gaussian field limits and waves of finite speed.
 - **A Lorentzian scalar field as the observers' effective description.** On
@@ -64,7 +64,8 @@ and the clocks inside it.
   Higgs phase, mass scale and physical particle identification remain inputs.
   [Matter and field contracts](model/observer_particles/DERIVATION.md).
   The [charged mass-response calculation](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
-  measures a declared Weyl–Higgs candidate with a common field and clock;
+  measures a declared Weyl–Higgs candidate with a common field and clock.
+  Active native correction protects its finite three-axis propagating field;
   its mass ratios fail to reproduce the charged-lepton hierarchy.
   Native repair separately transports a collective correlation charge with
   compatible local detector records on overlapping regions. Its physical

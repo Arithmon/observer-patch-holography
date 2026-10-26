@@ -26,10 +26,263 @@
       "fixed_moment_tangent_error_per_trace_norm_upper": "50994839650062856050/604437412387489555925063",
       "input_dependent_stopping_cost_must_be_varied": true,
       "local_reference_native_attempts_upper": 659460353,
-      "operator_sandwich_radius": "25497419825031428025/604462909807314587353088"
+      "operator_sandwich_radius": "25497419825031428025/604462909807314587353088",
+      "same_gradient_bound_for_coherent_record_endpoint_tangents": true
     },
     "laws": {
       "C": {
+        "complete_coherent_stationarity": {
+          "actual_native_ports_used": [
+            0,
+            1,
+            5,
+            8
+          ],
+          "all_native_matrix_units_checked": 4356,
+          "arbitrary_untouched_reference_extension": true,
+          "cap_intersection_dimension_multiplicities": [
+            {
+              "cap_algebra": 6,
+              "caps": 1,
+              "equality_algebra": 4,
+              "output_image": 4
+            },
+            {
+              "cap_algebra": 19,
+              "caps": 1,
+              "equality_algebra": 7,
+              "output_image": 11
+            },
+            {
+              "cap_algebra": 19,
+              "caps": 9,
+              "equality_algebra": 7,
+              "output_image": 15
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 1,
+              "equality_algebra": 11,
+              "output_image": 33
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 8,
+              "equality_algebra": 11,
+              "output_image": 35
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 8,
+              "equality_algebra": 11,
+              "output_image": 39
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 28,
+              "equality_algebra": 17,
+              "output_image": 43
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 8,
+              "equality_algebra": 16,
+              "output_image": 80
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 90
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 94
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 56,
+              "equality_algebra": 40,
+              "output_image": 106
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 28,
+              "equality_algebra": 32,
+              "output_image": 178
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 200
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 204
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 70,
+              "equality_algebra": 88,
+              "output_image": 228
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 65,
+              "output_image": 357
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 395
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 399
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 179,
+              "output_image": 439
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 70,
+              "equality_algebra": 127,
+              "output_image": 653
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 711
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 715
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 28,
+              "equality_algebra": 337,
+              "output_image": 775
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 56,
+              "equality_algebra": 236,
+              "output_image": 1108
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 1190
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 1194
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 8,
+              "equality_algebra": 592,
+              "output_image": 1278
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 28,
+              "equality_algebra": 416,
+              "output_image": 1770
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 1880
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 1884
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 1,
+              "equality_algebra": 980,
+              "output_image": 1996
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 8,
+              "equality_algebra": 696,
+              "output_image": 2692
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 2834
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 2838
+            },
+            {
+              "cap_algebra": 4356,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 3798
+            }
+          ],
+          "complete_quantum_record_blocks": 824,
+          "core_containing_cap_completions_checked": 1024,
+          "diagonal_population_recovery_is_exact": true,
+          "exact_Petz_overlap_multiplicities": {
+            "0": 558,
+            "1": 1046,
+            "1/16": 1024,
+            "1/2": 464,
+            "1/32": 380,
+            "1/8": 112,
+            "11/128": 244,
+            "11/64": 496,
+            "3/4": 32
+          },
+          "exact_cap_intersections_sha256": "e932147793c3383103dc9076a3e5dc58ff46106035788633b78796502652dfdc",
+          "fixed_moment_Hermitian_tangent_dimension": 4353,
+          "fully_destroyed_matrix_units": 558,
+          "physical_metric_area_volume_stress_identified": false,
+          "recovery_class_size_multiplicities": {
+            "1": 6,
+            "28": 1,
+            "8": 4
+          },
+          "recovery_classes_equal_initial_occupation_fibres_on_used_ports": true,
+          "relative_entropy_equality_algebra_dimension": 1046,
+          "retained_flag_probability": "1",
+          "same_recovery_for_every_faithful_diagonal_reference": true,
+          "source_selected_two_moment_family_stationary": true,
+          "strict_coherent_entropy_curvature_dimension": 3798,
+          "strict_fixed_moment_curvature_dimension": 3795
+        },
         "complete_counting_excess": {
           "11": "-121/3600",
           "163": "-163/4800",
@@ -59,6 +312,241 @@
           "3": "2",
           "5": "38/45"
         },
+        "flagged_coherent_stationarity": {
+          "actual_native_ports_used": [
+            0,
+            1,
+            5,
+            8
+          ],
+          "all_native_matrix_units_checked": 4356,
+          "arbitrary_untouched_reference_extension": true,
+          "cap_intersection_dimension_multiplicities": [
+            {
+              "cap_algebra": 6,
+              "caps": 1,
+              "equality_algebra": 4,
+              "output_image": 4
+            },
+            {
+              "cap_algebra": 19,
+              "caps": 10,
+              "equality_algebra": 7,
+              "output_image": 7
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 9,
+              "equality_algebra": 11,
+              "output_image": 11
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 8,
+              "equality_algebra": 11,
+              "output_image": 17
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 28,
+              "equality_algebra": 17,
+              "output_image": 17
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 8,
+              "equality_algebra": 16,
+              "output_image": 24
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 24
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 40
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 56,
+              "equality_algebra": 40,
+              "output_image": 40
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 28,
+              "equality_algebra": 32,
+              "output_image": 52
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 52
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 88
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 70,
+              "equality_algebra": 88,
+              "output_image": 88
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 65,
+              "output_image": 107
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 107
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 179
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 179,
+              "output_image": 179
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 70,
+              "equality_algebra": 127,
+              "output_image": 207
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 207
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 337
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 28,
+              "equality_algebra": 337,
+              "output_image": 337
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 56,
+              "equality_algebra": 236,
+              "output_image": 376
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 376
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 592
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 8,
+              "equality_algebra": 592,
+              "output_image": 592
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 28,
+              "equality_algebra": 416,
+              "output_image": 644
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 644
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 980
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 1,
+              "equality_algebra": 980,
+              "output_image": 980
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 8,
+              "equality_algebra": 696,
+              "output_image": 1046
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1046
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1542
+            },
+            {
+              "cap_algebra": 4356,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1542
+            }
+          ],
+          "complete_quantum_record_blocks": 544,
+          "core_containing_cap_completions_checked": 1024,
+          "diagonal_population_recovery_is_exact": true,
+          "exact_Petz_overlap_multiplicities": {
+            "0": 2814,
+            "1": 1046,
+            "1/2": 464,
+            "3/4": 32
+          },
+          "exact_cap_intersections_sha256": "6379fbad0ab0c2cd934d20c5781784f23aaa6eebe12f677d9f1f7ae9a52c442b",
+          "fixed_moment_Hermitian_tangent_dimension": 4353,
+          "fully_destroyed_matrix_units": 2814,
+          "physical_metric_area_volume_stress_identified": false,
+          "recovery_class_size_multiplicities": {
+            "1": 6,
+            "28": 1,
+            "8": 4
+          },
+          "recovery_classes_equal_initial_occupation_fibres_on_used_ports": true,
+          "relative_entropy_equality_algebra_dimension": 1046,
+          "retained_flag_probability": "9/16",
+          "same_recovery_for_every_faithful_diagonal_reference": true,
+          "source_selected_two_moment_family_stationary": true,
+          "strict_coherent_entropy_curvature_dimension": 1542,
+          "strict_fixed_moment_curvature_dimension": 1539
+        },
         "mean_complete_attempts": "51/8",
         "mean_success_attempts": "20/3",
         "record_only_success_fibres": 544,
@@ -76,6 +564,240 @@
         "timeout_probability": "7/16"
       },
       "E": {
+        "complete_coherent_stationarity": {
+          "actual_native_ports_used": [
+            0,
+            1,
+            5,
+            8
+          ],
+          "all_native_matrix_units_checked": 4356,
+          "arbitrary_untouched_reference_extension": true,
+          "cap_intersection_dimension_multiplicities": [
+            {
+              "cap_algebra": 6,
+              "caps": 1,
+              "equality_algebra": 4,
+              "output_image": 4
+            },
+            {
+              "cap_algebra": 19,
+              "caps": 10,
+              "equality_algebra": 7,
+              "output_image": 7
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 9,
+              "equality_algebra": 11,
+              "output_image": 11
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 8,
+              "equality_algebra": 11,
+              "output_image": 15
+            },
+            {
+              "cap_algebra": 53,
+              "caps": 28,
+              "equality_algebra": 17,
+              "output_image": 17
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 8,
+              "equality_algebra": 16,
+              "output_image": 20
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 24
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 28,
+              "equality_algebra": 24,
+              "output_image": 32
+            },
+            {
+              "cap_algebra": 126,
+              "caps": 56,
+              "equality_algebra": 40,
+              "output_image": 40
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 28,
+              "equality_algebra": 32,
+              "output_image": 40
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 52
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 56,
+              "equality_algebra": 52,
+              "output_image": 64
+            },
+            {
+              "cap_algebra": 262,
+              "caps": 70,
+              "equality_algebra": 88,
+              "output_image": 88
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 65,
+              "output_image": 77
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 107
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 70,
+              "equality_algebra": 107,
+              "output_image": 123
+            },
+            {
+              "cap_algebra": 491,
+              "caps": 56,
+              "equality_algebra": 179,
+              "output_image": 179
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 70,
+              "equality_algebra": 127,
+              "output_image": 143
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 207
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 56,
+              "equality_algebra": 207,
+              "output_image": 227
+            },
+            {
+              "cap_algebra": 849,
+              "caps": 28,
+              "equality_algebra": 337,
+              "output_image": 337
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 56,
+              "equality_algebra": 236,
+              "output_image": 256
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 376
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 28,
+              "equality_algebra": 376,
+              "output_image": 400
+            },
+            {
+              "cap_algebra": 1378,
+              "caps": 8,
+              "equality_algebra": 592,
+              "output_image": 592
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 28,
+              "equality_algebra": 416,
+              "output_image": 440
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 644
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 8,
+              "equality_algebra": 644,
+              "output_image": 672
+            },
+            {
+              "cap_algebra": 2126,
+              "caps": 1,
+              "equality_algebra": 980,
+              "output_image": 980
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 8,
+              "equality_algebra": 696,
+              "output_image": 724
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1046
+            },
+            {
+              "cap_algebra": 3146,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1078
+            },
+            {
+              "cap_algebra": 4356,
+              "caps": 1,
+              "equality_algebra": 1046,
+              "output_image": 1078
+            }
+          ],
+          "complete_quantum_record_blocks": 160,
+          "core_containing_cap_completions_checked": 1024,
+          "diagonal_population_recovery_is_exact": true,
+          "exact_Petz_overlap_multiplicities": {
+            "0": 3278,
+            "1": 1046,
+            "1/2": 32
+          },
+          "exact_cap_intersections_sha256": "40228b4340f59e7ed4c29ce21316cdc356910ef267bf5fff7bd97922a45faf43",
+          "fixed_moment_Hermitian_tangent_dimension": 4353,
+          "fully_destroyed_matrix_units": 3278,
+          "physical_metric_area_volume_stress_identified": false,
+          "recovery_class_size_multiplicities": {
+            "1": 6,
+            "28": 1,
+            "8": 4
+          },
+          "recovery_classes_equal_initial_occupation_fibres_on_used_ports": true,
+          "relative_entropy_equality_algebra_dimension": 1046,
+          "retained_flag_probability": "1",
+          "same_recovery_for_every_faithful_diagonal_reference": true,
+          "source_selected_two_moment_family_stationary": true,
+          "strict_coherent_entropy_curvature_dimension": 1078,
+          "strict_fixed_moment_curvature_dimension": 1075
+        },
         "complete_counting_excess": {},
         "complete_excess_upper_coefficient": "0",
         "complete_excess_upper_log_argument": "5",
@@ -123,7 +845,10 @@
     "scope": {
       "all_timeout_disturbed_outputs_retained": true,
       "cap_completions_share_one_conditional_endpoint_measure": true,
-      "coherent_reference_entropy_theorem": false,
+      "coherent_source_and_untouched_reference_information_identity": true,
+      "coherent_source_fixed_moment_stationarity": true,
+      "coherent_stationarity_here_varies_the_source_state": true,
+      "exact_record_endpoint_quantum_sufficiency_algebra": true,
       "prefix_has_record_feedback_and_core_crossings": true,
       "proper_volume_area_stress_dictionary": false,
       "readout_uses_only_declared_native_records": true,
@@ -552,7 +1277,7 @@
     "model/native_equilibration/common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
-    "model/native_equilibration/history_entropy.py": "31783105f60a943dd92e25db1b3d2ff1e63ebe02a5385827c2958d66f3037a15",
+    "model/native_equilibration/history_entropy.py": "a92eab1867af2301ae1cd8c17a280c2e44cd86a50068c2f006d522ce95e02f2d",
     "model/native_equilibration/record_thermodynamics.py": "d3054c1f7f5a6d2cd8ad5c06a3f6f63d944d45b4d7c1eb194aca5e5155dce906",
     "model/native_interface/__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "model/native_interface/__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",

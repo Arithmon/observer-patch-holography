@@ -432,9 +432,9 @@ fixed-moment tangent $X$, the entropy derivative error is at most
 $\log(r)\|X\|_1$. With the existing preparation radius $v$,
 $r=(1+v)/(1-v)$ gives the retained bound $2v\|X\|_1/(1-v)$.
 Feedback and the properly varied stopping cost introduce no new factor.
-This is a bound for record entropy; it does not assert exact finite
-preparation or a von Neumann entropy theorem for the coherently continuing
-work and its untouched quantum reference.
+This population argument does not assert exact finite preparation or by
+itself give the coherent endpoint theorem below. Neither argument supplies
+a joint quantum matter-plus-gravity state.
 
 Timeouts show why the charge-resolution condition matters. If a complete C
 timeout fibre mixes initial charges, replacing its conditional reference
@@ -466,8 +466,18 @@ An unmeasured cap occupation is a conditional prediction, not an additional
 observed record. The tests compare overlapping caps directly on every
 successful fibre.
 
+The [coherent extension](../native_equilibration/README.md#coherent-history-stationarity-and-recovery)
+keeps each disturbed quantum endpoint as well as its tape. Its exact Petz
+response has recovery algebra `M28 ⊕ 4M8 ⊕ 6C`; complete C timeouts preserve
+coherences that successful census branches destroy. At fixed trace and both
+initial occupation moments, the cost-corrected quantum entropy has zero
+first derivative and a nonpositive Hessian. Output-flat directions are
+distinct from recoverable directions, so output entropy does not uniquely
+determine the source state. All 1,024 core-containing cap completions share
+this stationarity, with the finite preparation gradient bound retained.
+
 This discharges a finite operational first-law and constrained-stationarity
-interface **with adaptive recorded histories**. The source parameter is
+interface **with adaptive recorded histories and coherent endpoints**. The source parameter is
 the declared initial-state variation; the constraints are its two
 occupation moments. It does not identify them with fixed proper volume,
 $\log d_b$ with $A/(4G)$, the current with physical stress, or the stopping

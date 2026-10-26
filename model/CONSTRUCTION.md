@@ -646,6 +646,18 @@ share that envelope; 18,601 native work attempts give a reference-uniform
 finite preparation bound. This is a specified preparation protocol. Counted
 edge multiplicities have no derived gravitational-area identification.
 
+The [complete native history](native_equilibration/README.md#coherent-history-stationarity-and-recovery)
+also derives stationarity for coherent state variations through adaptive
+records and disturbed endpoints. Its exact Petz response distinguishes
+recoverable coherences from directions erased by the readout. Subtracting
+the actual expected coin cost and state-independent flag normalization gives
+a nonpositive quantum entropy Hessian at fixed trace and both occupation
+moments. For the declared census, the equality algebra is
+`M28 ⊕ 4M8 ⊕ 6C`; complete C timeouts leave 558 matrix units output-flat.
+All 1,024 core-containing cap completions are checked. These are initial-state
+variations on a fixed native carrier; physical geometry and stress remain
+unidentified.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -753,6 +765,17 @@ alone leave the transport undetermined. The result supplies no physical clock
 calibration, four-dimensional spacetime, Standard Model spectrum, gravitational
 entropy identification or independent empirical confirmation; those remain
 the completion criteria above.
+
+The [protected Weyl–Higgs continuation](common_source/chiral_candidate/README.md#protected-propagation-at-nonzero-momentum)
+uses the same code on 630 occupations of one fixed seven-momentum field.
+All internal, Spin and family components remain in 96 independently checked
+Fock factors. Two-duration number-read protocols and quantum-clock records
+diagnose nonzero-momentum propagation along all three coordinate axes, with
+feedback, reference outputs, selector timeouts and a separate full-service
+budget. The spectral box, trial couplings and coherent services are supplied;
+the [measured mass hierarchy fails](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
+Physical frequencies, momentum, interacting gauge/Higgs dynamics and a common
+matter-plus-gravity state remain separate obligations.
 
 The [native-clocked common observer](clocked_common_observer/README.md)
 uses an actual current event to trigger that work's read-and-feedback suffix.
@@ -1000,6 +1023,16 @@ laboratory model; on the same 200 means its primary spin-mean RMSE is
 unfitted nominal coordinate convention. Published coordinate conflicts, postselection and
 normalization limitations remain explicit. This component postdiction
 establishes neither the seven-mode dynamics nor a physical clock.
+The [shared-preparation test](scalar_observations/experimental_readout/shared_calibration.py)
+propagates exact outer calibration intervals to all 200 reserved means and
+separately checks one axis-selected state against every calibration and
+validation box. Both published coordinate conventions admit such a state,
+with the same parameters used by the retained native source execution.
+The conditional simultaneous allowance assumes 250 independent accepted
+shots per component, the declared reported-mean rounding bound and zero
+additional physical bias; the aggregate deposit
+cannot authenticate these assumptions. This is a retrospective component
+comparison, with no resolved coordinate convention or all-scale verdict.
 
 The [occupation-control construction](occupation_control/README.md) bounds
 the continuous polynomial-path defect, occupation boundary, endpoint jumps,

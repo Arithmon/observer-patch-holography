@@ -159,6 +159,52 @@ vacuum/kinetic readout. The exact internal chiral types and an available
 native symmetry breaker are now supplied. These alone do not select the
 successful Yukawa texture, a Higgs scale or a dressed observed particle pole.
 
+## Protected propagation at nonzero momentum
+
+[protected_momentum.py](protected_momentum.py) extends the same trial to a
+fixed seven-momentum field: one self-conjugate zero mode and three opposite
+pairs with coordinate momentum magnitude `1/3` in a periodic box of side
+`6*pi`. All 630 CAR modes remain. Complete complex Fock factors with at most
+eight modes execute the native source words; independent full90/180-mode
+Gaussian products check the factorization. Native occupation wires are
+checked against disjoint decoded code6 registers, preserving their qutrit
+spectators. Every native seam, raw record and zero/abort branch remains in
+the separate exact native tensor instrument.
+
+Eight continuing protocols use this one field, with two number reads,
+record feedback, shared quantum clocks and untouched clock purifiers. Both
+selector timeouts remain. Two fixed durations use the same elementary
+source word, repeated twice for the longer interval. From their first-read
+probabilities `P(t)=A sin²(E t)` and `P(2t)`, the decoder cancels the suppressed
+visibility `A` and reads `E/Omega` from the recorded clock phase. It does not
+consult Hamiltonian coefficients or simulator duration. Later measurement
+backaction is retained in the full outputs.
+
+The resulting three-axis dispersion is a numerical source/continuous-law
+comparison. The inverse is sensitive to small probability errors; its local
+sensitivities are reported, and no outward frequency interval, physical pole
+or finite-shot precision is certified. The complete630-carrier source budget
+includes billions of native pulses and computed export-failure amplitudes;
+its fixed numerical admission is `1e-2`, independently of the earlier
+six-mode experiment's `1e-6`. Physical service errors, the spectral/spatial
+attachment, clock calibration and unsuccessful trial Yukawa law remain
+explicit inputs. Nonzero export-failure vectors are bounded flagged outputs,
+not explicitly stored field vectors. The existing rest protocol is unchanged.
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.common_source.chiral_candidate.protected_momentum --output /tmp/protected_momentum.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.common_source.chiral_candidate.protected_momentum --check model/common_source/chiral_candidate/protected_momentum_results.json
+python -m pytest -q -W error model/common_source/chiral_candidate/test_protected_momentum.py
+```
+
+The retained report contains fixed numerical admissions. Raw backend residuals
+remain available through `execute()` and are not authenticated historical
+values. `--check` validates original JSON/NPZ custody and source bindings,
+reruns the complete producer and compares every complex output using the
+declared tolerance; it never requires fresh floating arrays to have identical
+byte hashes. Repeated identical source steps are contracted by integer matrix
+powers, with every physical pulse and service request still charged.
+
 ## Replay and retained evidence
 
 From the repository root:
