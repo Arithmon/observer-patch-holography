@@ -332,6 +332,12 @@ $\gamma=4\kappa K(\kappa')/c$, $\kappa=(1+\mu^2)^{-1/2}$ and $\mu=Ma/c$.
 Directed rational AGM bounds prove
 $0\le1-\gamma/(2\pi/c)\le\mu^2/4$. This fixed-band continuum normalization
 uses no temperature fit.
+Here $H$, $B$ and $K_{\rm half}$ are one-particle kernels. A finite regional
+density has $-\log\rho_A=d\Gamma(k_A)+\log Z_A\,I$, with its actual kernel
+$k_A=\log[(I-C_A)/C_A]$; the finite kernel is not asserted to equal the
+infinite-wedge weight. The infinite quadratic operator is defined relative
+to the filled sea, equivalently by particle/hole excitation normal ordering.
+Scalar normalization cancels in trace-zero first-law variations.
 
 A Legendre sign-polynomial supplies a local covariance error bound
 $\Lambda r^{k+1}/m$, $r=(\Lambda-m)/(\Lambda+m)$, when degree-$2k+1$ walks

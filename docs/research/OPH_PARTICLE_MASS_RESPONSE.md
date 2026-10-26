@@ -1006,6 +1006,12 @@ K_{\rm half}=\gamma B,\qquad
 Here the elliptic $K$ takes a modulus. Directed rational AGM bounds give
 $0\le1-\gamma/(2\pi/c)\le\mu^2/4$, uniformly tending to zero on a fixed
 low-momentum transverse band. No inverse temperature is supplied or fitted.
+The displayed $H$, $B$ and $K_{\rm half}$ are one-particle kernels. For a
+finite faithful region, $-\log\rho_A=d\Gamma(k_A)+\log Z_A\,I$, with
+$k_A=\log[(I-C_A)/C_A]$; a finite truncation need not have $k_A=\gamma B$.
+The infinite half-chain quadratic operator uses the filled-sea reference,
+or equivalent particle/hole excitation normal ordering. Its scalar
+normalization drops out of trace-zero first-law variations.
 For a common spectral gap $m$ and norm bound $\Lambda$, the Legendre
 sign-polynomial bounds local covariance differences by
 $\Lambda r^{k+1}/m$, $r=(\Lambda-m)/(\Lambda+m)$, whenever all walks of

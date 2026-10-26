@@ -14,7 +14,19 @@ Its Eq72 gives signed levels delta*(2*l-1/2), l in Z, m>0.  The absolute
 levels delta*(j+1/2), j>=0, each occur ONCE; no SSH/Ising degeneracy is
 imported.  The sign-reversed mass has the same entropy.  This theorem,
 not mere commutation or finite numerical agreement, supplies the infinite
-modular identity. Finite interval modular matrices are computed separately.
+modular identity. H, B and K_half here denote ONE-PARTICLE kernels. For a
+finite regional covariance, k_A=log((I-C_A)/C_A) and the full modular
+Hamiltonian is -log(rho_A)=dGamma(k_A)+log(Z_A)*I. The infinite-half-chain
+theorem does not identify a finite interval's k_A with gamma*B_N.
+
+The infinite signed kernel has infinitely many negative levels. Its full
+modular Hamiltonian is represented relative to the filled negative MODULAR
+sea, or equivalently by particle-hole excitation energies |epsilon_l| and
+the finite excitation partition sum. Naive empty-Fock dGamma(K_half) and
+log(Z) are not separately finite. A fixed reference normal-ordering changes
+only the scalar. For trace-zero differentiable state tangents with finite
+modular-energy/entropy derivative, this scalar cancels and the first law is
+delta S=gamma*delta<dGamma(B)>. Finite interval kernels are computed separately.
 
 The source 8-mode preparation is a literal finite Gaussian CAR word, with
 all256 amplitudes retained.  Its GLOBAL fidelity uses an independent exact

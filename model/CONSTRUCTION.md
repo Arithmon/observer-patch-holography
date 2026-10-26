@@ -917,9 +917,9 @@ The [interacting alternating path](common_source/native_charged_spectrum.py)
 retains the exchange density term. Its exact two-cell charged poles are
 $\sqrt{J^2+m^2}-J$, with nonzero CAR residues. Fixed-charge exclusion and a
 path Poisson equation give the finite-volume second-order half-filled gap
-$m^2/[2J(L-1)]$, with an explicit nonuniform remainder domain. These are
-action-derived poles, not fitted mass functions, but their ratios also fail
-the lepton comparison and no relativistic bulk mass is established. This
+$m^2/[2J(L-1)]$, with an explicit nonuniform remainder domain. These poles
+follow from the declared action. Their ratios fail the lepton comparison
+and no relativistic bulk mass is established. This
 action differs from the echoed free cubic field.
 
 The separate [calibrated matter action](common_source/calibrated_matter.py)
