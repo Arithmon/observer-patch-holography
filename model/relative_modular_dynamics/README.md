@@ -51,7 +51,10 @@ on `T0* (I)`; it is not an inference from a selected initial state. The
 infinite limit is analytic. Every executed finite experiment retains its
 timeout outcome.
 
-The source-derived degree census is `{8:30, 10:36}`, with sum 600. Hence
+The source-derived degree census is `{8:30, 10:36}`, with sum 600: an
+occupied pair has 8 moving branches when its ports are adjacent and 10
+otherwise. The frequency `log(5/4)=log(10/8)` is therefore a combinatorial
+identity of the carrier. Hence
 
 ```
 sigma = diag(degree/600),

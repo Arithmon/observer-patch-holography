@@ -11,6 +11,12 @@ all graphs, all OPH data, or all source-gap claims. It also does NOT verify the
 Python extraction that produced the frozen Lean literals; those literals are
 the proof's input.
 
+With every seam sign set to −1, `D x = 0` holds exactly when `x` alternates in
+sign along every edge, so `oph_gram_posDef` is equivalent to the frozen graph being
+connected and containing an odd cycle. The statement is qualitative positive
+definiteness: it gives no lower bound on the least eigenvalue and no statement about
+refinement.
+
 ## Reproduce the check
 
 The project uses the toolchain named in `Lean/lean-toolchain`
@@ -27,10 +33,10 @@ Lean edits do not re-evaluate the frozen certificate.
 
 `OphGap/SignedGap.lean` proves, with zero `sorry`:
 
-1. `signed_kinetic_identity` — x ⬝ (Dᵀ D x) = Σ_e (σ_e x(tgt e) − x(src e))².
-2. `gram_posDef_of_injective` — injective D ⇒ Dᵀ D positive definite.
-3. `triangle_posDef` — the all-negative triangle matrix is positive definite (a CONTROL).
-4. `kernel_trivial_of_negative_cycle` / `gram_posDef_of_negative_cycle` — connected +
+1. `signed_kinetic_identity`: x ⬝ (Dᵀ D x) = Σ_e (σ_e x(tgt e) − x(src e))².
+2. `gram_posDef_of_injective`: injective D ⇒ Dᵀ D positive definite.
+3. `triangle_posDef`: the all-negative triangle matrix is positive definite (a CONTROL).
+4. `kernel_trivial_of_negative_cycle` / `gram_posDef_of_negative_cycle`: connected +
    a negative signed cycle ⇒ ker D = 0 ⇒ Dᵀ D positive definite (signed-balance-to-injectivity).
 
 Negative control: the all-negative square is shown NOT injective, NOT positive definite,
@@ -38,13 +44,13 @@ and to admit NO negative closed walk (`square_no_negative_cycle`).
 
 ## gapwitness (2026-08-20): the rule applied to OPH's actual graph
 
-* `OphGap/Checker.lean` — a certificate checker `check n es cyc : Bool` (spanning tree rooted at
+* `OphGap/Checker.lean`: a certificate checker `check n es cyc : Bool` (spanning tree rooted at
   vertex 0 given by edge order; negative closed walk given by edge indices) and its SOUNDNESS
   `posDef_of_check : check n es cyc = true → (Dᵀ D).PosDef`, zero `sorry`.
-* `OphGap/OphData.lean` — the frozen OPH visible seam complex, 8,662 nodes / 11,816 edges, all
+* `OphGap/OphData.lean`: the frozen OPH visible seam complex, 8,662 nodes / 11,816 edges, all
   signs −1, regenerated from `MAIN_CONFIG` (seed 20260751) and matched byte-for-byte to the
   receipt's `domain_freeze_sha256 = a0be6fc6…`; vertices BFS-relabelled from the witness start.
-* `OphGap/OphWitness.lean` — `check_true` is decided by the Lean KERNEL (`decide +kernel`, no
+* `OphGap/OphWitness.lean`: `check_true` is decided by the Lean KERNEL (`decide +kernel`, no
   `native_decide`), giving `oph_gram_posDef`, `oph_eigenvalues_pos`, `oph_kernel_trivial` for the
   real graph. Negative control `tampered_refused`: flipping ONE sign on a witness edge makes the
   kernel reject the same certificate.
@@ -55,7 +61,7 @@ The gapwitness theorems were about a BFS-relabelled copy of the graph; the relab
 checked only in Python. That step is now proved in Lean (Ending A, a transport theorem), with
 the transport's hypotheses decided by the kernel on the literal data.
 
-* `OphGap/Transport.lean` — `transportCheck n newT oldT nodes origEs es : Bool` (vertex map
+* `OphGap/Transport.lean`: `transportCheck n newT oldT nodes origEs es : Bool` (vertex map
   injective on the carrier list via a kernel-checked left inverse; every edge endpoint a carrier;
   edge permutation + inverse carrying each canonicalised original edge onto the certified list,
   checked in one linear pass with `O(log n)` lookup tries) and its soundness
@@ -64,15 +70,15 @@ the transport's hypotheses decided by the kernel on the literal data.
   `{v // v ∈ nodes}` (OPH's carrier ids) and `Fin origEs.length` (OPH's edges, OPH's order and
   orientation). Vacuity controls on the gapless square: `sqRelabBij_refused`,
   `sqRelabCollapse_refused`, `sqToTri_refused`; positive control `triPerm_accepted`.
-* `OphGap/OphOrigData.lean` — OPH's node list and edge list with ORIGINAL ids (pure input, emitted
+* `OphGap/OphOrigData.lean`: OPH's node list and edge list with ORIGINAL ids (pure input, emitted
   by `tools/gen_orig_data.py` from OPH's own `seam_complex` output), plus two lookup-tree hints.
-* `OphGap/Slices/*.lean` — the certificate evaluated by the kernel in thirteen windows, one per
+* `OphGap/Slices/*.lean`: the certificate evaluated by the kernel in thirteen windows, one per
   module, import-chained so Lake builds them one at a time (a single `lean` process retains the
-  memory of every finished `decide +kernel` and would cross the 16 GB guard); build with
-  `LEANBUILD_JOBS=1 leanbuild build`.
-* `OphGap/OphOrigWitness.lean` — `transport_true` (assembled from the slices by proved `_split`
+  memory of every finished `decide +kernel` and would cross the 16 GB guard); built one slice at a time by the
+  dedicated Lean CI job (`cd Lean && lake build OphGap`).
+* `OphGap/OphOrigWitness.lean`: `transport_true` (assembled from the slices by proved `_split`
   lemmas), `oph_original_gram_posDef`, `oph_original_eigenvalues_pos`, `oph_original_kernel_trivial`.
-* `OphGap/OphOrigControls.lean` — Ending B measured (`endingB_direct_check_false`); negative controls
+* `OphGap/OphOrigControls.lean`: Ending B measured (`endingB_direct_check_false`); negative controls
   `tampered_refused`, `collision_refused`, `edge_collision_refused`, `sign_mismatch_refused`,
   `wrong_vertex_set_refused`. The build covers all five refusal controls: malformed or tampered
   certificates are rejected by the checker rather than silently accepted.

@@ -26,7 +26,8 @@ listed theorem. Existing claim-registry edges and `explicit_non_consumer` declar
 remain authoritative. Physical attachments excluded by a theorem are not hidden premises
 of that theorem. Group statuses describe the remaining connection, not whether a theorem
 is proved; the constructed results are recorded separately below. This schema contains
-no proof-discharge edges.
+no proof-discharge edges; the implementation status of each premise is the separate
+[discharge table](#what-the-current-implementation-does-with-each-premise).
 
 ## Inventory and limits
 
@@ -69,6 +70,57 @@ the ordinary-assumption inventory:
 | `threshold_kinematic_assumptions` | 1 | 6 | 6 | 0 |
 
 Existing claim classifications: `explicit_edges`: 175; `explicit_non_consumer`: 168.
+
+## What the current implementation does with each premise
+
+The executable construction in this directory is the current implementation of the
+specification's dynamical details; the twelve-port carrier is fixed, the details are not.
+For each canonical premise the register records whether this implementation derives it
+from native records, constructs an instance on declared inputs, proves an obstruction,
+takes it as a declared input, or does not address it. The status certifies no physical
+premise, and a theorem-library result holds on its premises whatever the status.
+
+| Status | Premises |
+| --- | ---: |
+| derived from native records | 3 |
+| constructed on declared inputs | 4 |
+| obstructed | 5 |
+| declared input | 17 |
+| not addressed | 55 |
+
+| Premise | Current implementation | Basis | Evidence |
+| --- | --- | --- | --- |
+| PR-01 confluent terminating repair contract | obstructed | The native seam rule waits or swaps at mismatch one, so the binary shell keeps moving and accepted repairs need not lower a measure; the library's own demonstration carrier is not confluent (demoCarrier_not_confluent). The consensus theorems hold for the integer and transactional repair contracts, not for the native law. | [Primitives.lean](../Lean/ObserverPatchHolography/Primitives.lean), [CANDIDATES.md](../model/CANDIDATES.md) |
+| PR-02 algebra-state representation of public records | declared input | The carrier Hilbert space and the quantum instruments of the record laws are declared parts of the specification. | [README.md](../model/record_laws/README.md) |
+| PR-03 operational effect additivity | declared input | Born readout is a declared service; the executed statistics are diagonal and do not test additivity across contexts. | [CONSTRUCTION.md](../model/CONSTRUCTION.md) |
+| PR-04 declared phase-sensitive effect | declared input | The phase-sensitive read used by the interference experiment is a declared coherent service. | [README.md](../model/predictions/README.md) |
+| PR-05 counting path reference | declared input | The uniform independent seam schedule and the fair coin are declared parts of the native law. | [CANDIDATES.md](../model/CANDIDATES.md) |
+| PR-07 declared repair law: common faithful reference and repaired-visible fibre | derived from native records | On the binary shell each native repair resamples the seam within the fibre of its repaired visible datum for the uniform reference, which is the unique stationary state of every admissible record law. | [README.md](../model/record_laws/README.md) |
+| PR-15 clock and energy calibration anchors | declared input | Laboratory clock and energy calibration enter as declared standards; the construction derives no units. | [README.md](../model/laboratory_clock/README.md) |
+| PR-17 proposed fundamental numerical parameters P and N | declared input | The detector consumes the closure coordinate P and the selected closure map as declared inputs. | [README.md](../model/observer/p_response/README.md) |
+| PR-20 equal source-counting measure on the sixty directed source seams | declared input | The uniform independent seam schedule and the fair coin are declared parts of the native law. | [CANDIDATES.md](../model/CANDIDATES.md) |
+| PR-21 auxiliary oscillator lift of the seam-current generator | constructed on declared inputs | The active clock compiles per-mode pulses from the spectrum of the derived screen operator on supplied qubit codes, which realizes the oscillator lift and the frequency identification; passive native repair has no wave sector (OP7). | [REFINEMENT.md](../model/observer_time_fields/REFINEMENT.md) |
+| PR-22 physical-frequency identification for the seam-current symbol | constructed on declared inputs | The active clock compiles per-mode pulses from the spectrum of the derived screen operator on supplied qubit codes, which realizes the oscillator lift and the frequency identification; passive native repair has no wave sector (OP7). | [REFINEMENT.md](../model/observer_time_fields/REFINEMENT.md) |
+| PR-23 typed modular flow supply | constructed on declared inputs | Finite modular flows exist for the actual observation states, and the modular clocks are the finite KMS identity of chosen Gibbs references of compiled Hamiltonians; passive repair does not realize the modular flow of a faithful reference. | [THERMAL_CLOCK.md](../model/common_source/THERMAL_CLOCK.md) |
+| PR-25 null-stress tomography supply | obstructed | The one geometry the construction tests, the static radial product, has zero radial-null Einstein contraction while an admitted scalar excitation has positive relative null stress, so null balance fails for both states at positive coupling. | [PHYSICAL_AUDIT.md](../model/PHYSICAL_AUDIT.md) |
+| PR-37 fine-structure closure map selection | declared input | The detector consumes the closure coordinate P and the selected closure map as declared inputs. | [README.md](../model/observer/p_response/README.md) |
+| PR-43 pointwise-continuous public star-automorphism flow | obstructed | The executed quantum channel strictly attenuates a coherent mode, which rules out a unitary or automorphism flow generated by native repair on this carrier. | [README.md](../model/README.md) |
+| PR-47 spacetime Spin and fermion-chirality attachment | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-48 one-Higgs scalar carrier and kinetic-action attachment | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-49 renormalizable Higgs potential and electroweak-breaking law | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-50 Yukawa interaction-line and coupling-matrix attachment | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-54 source gauge-field, current, and action attachment | obstructed | Every native seam expectation annihilates a nonzero operator, so no composition of fixed native repairs is invertible and native repair supplies no reversible response from which a gauge current could be built; the executed gauge field is declared. | [from_observer_consensus_to_standard_physics.tex](../flagship/from_observer_consensus_to_standard_physics.tex) |
+| PR-59 declared five-mode exterior component and mask-selection grammar | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-64 operational phase-instrument channel realization | constructed on declared inputs | The phase experiment uses complete binary instruments built on declared coherent phase preparation and readout services. | [README.md](../model/predictions/README.md) |
+| PR-65 source-produced phase preparation and readback provenance | obstructed | Committed C/E repair with diagonal accessible inputs and fresh diagonal ancillas cannot prepare the declared coherent reference to arbitrary accuracy (the native coherence floor); coherent preparation stays a declared service. | [README.md](../model/native_interface/README.md) |
+| PR-66 declared discrete kinetic term of the temporal Maxwell action | declared input | The interacting process runs on a supplied Maxwell action. | [CONSTRUCTION.md](../model/CONSTRUCTION.md) |
+| PR-67 declared finite one-doublet electroweak grammar | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-68 declared finite quartic breaking packet | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-69 declared finite Yukawa-line coefficient | declared input | The matter and field contracts declare the spin lift, the exterior grammar, one scalar doublet, its potential and the Yukawa lines; family matrices, Higgs phase and mass scale remain inputs. | [DERIVATION.md](../model/observer_particles/DERIVATION.md) |
+| PR-81 certified causal read support | derived from native records | On the executed native process dependence crosses at most one seam per ordered repair event, and the attempt index ranks every event; the read support and ancestry rank are those of the native history. | [README.md](../model/README.md) |
+| PR-82 abstract semantic ancestry acyclicity rank | derived from native records | On the executed native process dependence crosses at most one seam per ordered repair event, and the attempt index ranks every event; the read support and ancestry rank are those of the native history. | [README.md](../model/README.md) |
+
+Not addressed by the current implementation: PR-06, PR-08, PR-09, PR-10, PR-11, PR-12, PR-13, PR-14, PR-16, PR-18, PR-19, PR-24, PR-26, PR-27, PR-28, PR-29, PR-30, PR-31, PR-32, PR-33, PR-34, PR-35, PR-36, PR-38, PR-39, PR-40, PR-41, PR-42, PR-44, PR-45, PR-46, PR-51, PR-52, PR-53, PR-55, PR-56, PR-57, PR-58, PR-60, PR-61, PR-62, PR-63, PR-70, PR-71, PR-72, PR-73, PR-74, PR-75, PR-76, PR-77, PR-78, PR-79, PR-80, PR-84, PR-85.
 
 ## Remaining-input and dependency rule
 

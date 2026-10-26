@@ -1,11 +1,10 @@
 # Can the fixed edge dispersion support the proposed photon test?
 
-This is a bounded contribution to the decision in [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
-under the owner's physics research plan. Its calculation addresses the
-kinematic uncertainty identified in the [independent feasibility audit](https://github.com/FloatingPragma/observer-patch-holography/issues/1026#issuecomment-5977983054).
+This note contributes to the decision in [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025).
+Its calculation addresses the kinematic uncertainty identified in the
+[independent feasibility audit](https://github.com/FloatingPragma/observer-patch-holography/issues/1026#issuecomment-5977983054).
 The executable check is [dispersion_feasibility](../../code/dispersion_feasibility/README.md).
-One focused session and at most 15 cumulative local CPU minutes are allocated;
-there is no flux run, Lean expansion or held-out-data comparison.
+It runs no flux simulation, Lean expansion or held-out-data comparison.
 
 ## Decision contribution
 
@@ -172,6 +171,19 @@ scenario supplies the quoted coefficient constraint. The direct
 electromagnetic scan states no coefficient confidence level. Its result cannot
 inherit the five-sigma confidence assigned to a separate hadronic fit.
 
+Read physically, the published bound and the fixed-scale branch disagree.
+With `a = sqrt(P) l_P`, the branch has `delta_gamma2 = -a^2/20 =
+-5.47e-58 eV^-2`. The alternative scenario, whose sources include a
+subdominant proton component extending to `1e20 eV`, gives
+`delta_gamma2 > -1e-58 eV^-2` for photon-only Lorentz violation with
+Lorentz-invariant electrons and positrons, ordinary additive conservation,
+Breit-Wheeler opacity through the shifted threshold and the cosmic-background
+rest frame. Under those published premises the photon-only fixed-scale branch
+is excluded by a factor 5.47 in the coefficient; equivalently the bound
+requires `a < 0.546 l_P`, against `a = 1.277 l_P`. The register reading is
+separate: FZ-12 is unarmed and Auger-era data precede its freeze, so the
+[frozen-prediction ladder](../FROZEN_PREDICTION_LADDER.md) records no verdict.
+
 If both source scenarios are admitted, that comparison has no rejection
 uniform over the nuisance set. This is an explicit surviving scenario, not an
 uncertainty invented by the threshold calculation. It does not preclude a
@@ -203,7 +215,7 @@ claims are:
 
 | Claim to correct | Replacement |
 | --- | --- |
-| The pixel-scale coefficient is excluded by a factor 5.5 | Its magnitude is 5.5 times the quoted photon-only, source-dependent coefficient bound; a justified model-level exclusion requires the applicable source, interaction and response assumptions. |
+| The pixel-scale coefficient is excluded by a factor 5.5 | Under the published photon-only premises of the proton-containing scenario, the fixed-scale branch is excluded by a factor 5.47; excluding the shared-shell variant or OPH requires the applicable source, interaction and response assumptions. |
 | Universal propagation cancels the effect or is automatically unconstrained | Shared photon/electron/positron shells have a controlled asymmetric threshold; their flux constraints require their own calculation. |
 | Two extra physical hypotheses arm FZ-12 | This fixed-scale extension is separately hypothesized. The immutable FZ-12 physical-attachment and comparison rules are unchanged. |
 | Fixing the free coefficient fixes the measurable flux | The free shells constrain kinematics. Interaction vertices, source populations and detector response determine rates and recorded flux. |

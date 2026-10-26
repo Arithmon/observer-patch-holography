@@ -122,7 +122,8 @@ with no unit, and the worldline action does not fix it (PR-15 open).  No
 port, seam, or face is mapped to a point, interval, or cone of the Lorentz
 module (PR-53 open).  The direct sum contains no worldline-field coupling
 and produces no Lorentz-force-shaped clause; the source gauge-field,
-current, and action attachment is open (PR-54), and issue #740 stays open.
+current, and action attachment is open (PR-54; historical issue #740,
+closed).
 Named residual categories include a physical common action, the carrier map,
 matter dynamics, and observer readout; further compatibility conditions may
 also be required.

@@ -110,7 +110,10 @@ def test_runtime_surface_preserves_rejected_neutrino_rows_and_canonical_refs(tmp
     assert not (current_dir / "DERIVATION_GAP_LEDGER.md").exists()
     final_predictions = json.loads((current_dir / "runs" / "status" / "final_end_to_end_predictions.json").read_text())
     assert final_predictions["artifact"] == "oph_final_current_end_to_end_particle_predictions"
-    assert {entry["particle_id"] for entry in final_predictions["predictions"]} == {"higgs"}
+    assert final_predictions["predictions"] == []
+    conditional_rows = final_predictions["conditional_nonpromotable_rows"]
+    assert "higgs" in {row["particle_id"] for row in conditional_rows}
+    assert all(row["promotable"] is False for row in conditional_rows)
     assert (current_dir / "runs" / "status" / "carrier_mode_acceptance.json").exists()
     assert (current_dir / "CARRIER_MODE_ACCEPTANCE.md").exists()
     assert (current_dir / "PARTICLE_PIPELINE_STATUS.md").exists()

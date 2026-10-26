@@ -7,7 +7,7 @@ open OPH.Thermodynamics
 /-!
 # Conditional history projection: path Gibbs law and least action
 
-The third axiom may be instantiated on a finite history type. This module
+The theorem-library premise A3 may be instantiated on a finite history type. This module
 records the conditional mathematics of that instantiation: when a normalized
 positive projected path law has the displayed exponential-tilt form relative
 to a positive reference weight and

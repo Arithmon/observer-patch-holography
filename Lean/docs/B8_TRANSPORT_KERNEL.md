@@ -58,7 +58,8 @@ A physical transport claim must additionally bind, on one source-derived
 observer system, the transition generator, equilibrium reference, conserved
 quantity, graph or continuum geometry, distance, clock, constitutive
 coefficient, boundary conditions, and readout. Source-side common-reference and
-collar work remains under #739, while energy/clock calibration is the empirical
-import PR-15; #730 owns the remaining quantum attachment layers and the closed
-#731 milestone supplies only a conditional mechanics interface. B8 supplies no frozen
+collar work and the remaining quantum attachment layers are open (historical
+issues #739 and #730, closed), energy/clock calibration is the empirical
+import PR-15, and the closed #731 milestone supplied only a conditional
+mechanics interface. B8 supplies no frozen
 prediction and changes no prediction-ladder row.

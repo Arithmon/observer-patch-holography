@@ -45,8 +45,11 @@ The construction admits smooth static `1+3` scalar-field effective
 descriptions for any specified finite Weyl/Ramsey measurement menu and
 positive tolerance, under its declared radial-product and active-observer
 protocol. A single smooth geometry approximates the joint clock, field and
-response readouts through the proved common limiting operator. The exact
-native product has a measurable Lorentz-signature action; the effective
+response readouts through the proved common limiting operator. Only the
+screen operator is derived from native repair: the radial interval, the
+qubit codes carrying the field, the compiled per-mode Hamiltonians and the
+temperature are supplied, and the chosen hyperbolic action on the exact
+native product has a measurable Lorentz-signature density; the effective
 statement does not assert that this exact geometry is smooth. A quartic projection on the same product
 has source-executed interacting Gibbs readouts, an active native event clock,
 and convergent unrestricted-occupation histories within its two spatial
@@ -62,7 +65,11 @@ The [physical audit](PHYSICAL_AUDIT.md) reviews the retained results, explains
 which claims need larger observer domains, and connects the single-carrier
 [signal/clock](physical_space_time/README.md),
 [action-family](repair_action_audit/README.md) and
-[laboratory calibration](laboratory_clock/README.md) checks.
+[laboratory calibration](laboratory_clock/README.md) checks. Its one tested
+geometry, the static radial product, has vanishing radial null Einstein
+contractions while an admitted scalar excitation has positive relative null
+stress, so that attachment cannot balance both states; a geometry that
+responds to records is the open input.
 
 The [native occupation field](physical_space_time/OCCUPATION_FIELD.md) derives
 a Gaussian long-average field and its quadratic action from one continuing
@@ -102,9 +109,10 @@ contract. Physical duration and modular-flow identification are unsupplied.
 The [joint continuum dynamics](observer_time_fields/REFINEMENT.md#one-continuum-operator-for-fields-native-decay-and-coherent-waves)
 also uses `A` for coherent cosine amplitudes. An
 [active incident-clock protocol](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
-triggers one walk per tick on a protected register, giving bounded-band
-limit `cos(beta*tau*sqrt(A))`, `beta=2d/sqrt(630)`, with a quantified
-clock and step-error budget. Its complete two-attempt control gives Ramsey
+triggers one compiled walk per tick on a supplied protected register,
+giving bounded-band limit `cos(beta*tau*sqrt(A))`, `beta=2d/sqrt(630)`,
+with a quantified clock and step-error budget. Passive repair has no wave
+sector; the wave step is the compiled apparatus. Its complete two-attempt control gives Ramsey
 plus probability `1297/1320`. The finite eleven-mode density sector has a
 [720-arc source compilation](observer/COHERENT_CONTINUATION.md#source-compilation-of-the-finite-density-walk)
 with 114,910 pulses per walk, clean scratch and retained padding.
@@ -113,8 +121,9 @@ not physical precision certificates. Protection, control and carrier pauses
 are supplied; growing nonconstant-mode compilation is unexecuted.
 The [quantum fluctuation readout](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
 executes ordered Weyl products and kicks. IID copies give thermal CCR fields;
-matched axes and `log((1+r)/(1-r))=b*Omega` give full-algebra modular time
-`s=-(2d/sqrt(630))*tau/b`. Preparation, mode access and common `b` are supplied,
+matched axes and `log((1+r)/(1-r))=b*Omega`, which make the preparation the
+Gibbs state of the compiled mode Hamiltonian, give by the finite KMS identity
+full-algebra modular time `s=-(2d/sqrt(630))*tau/b`. Preparation, mode access and common `b` are supplied,
 without spatial-patch modular identification. On the screen alone,
 unrestricted locality needs a constant mode with no stationary vacuum.
 The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
@@ -140,13 +149,19 @@ excludes a boundedly invertible `L2` energy identification with a smooth compact
 Dirichlet bulk's static boundary action (with smooth boundary). A
 [complete linear readout](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
 also preserves the normalized decay spectrum, excluding a complete compact
-three-dimensional free scalar's Euclidean law under one clock scale.
+three-dimensional free scalar's Euclidean law under one clock scale. Both
+tests show that the native lag law is diffusive and second order; the same
+argument excludes a relativistic free scalar in every dimension two or
+higher.
 Internal rank-three modes vanish from bounded-energy families at this scale.
 A [positive mixture of native lag records](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
-gives `exp(-r*sqrt(A))`. Independent increments of the native long-block
-CLT also supply a [radial product field](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field), with covariance
+gives `exp(-r*sqrt(A))`. A declared spectral filter of `A` applied to
+whitened consecutive long-block records synthesizes a
+[radial product field](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field), with covariance
 `(-d_r^2+Abar)^-1`, consistent slice gluing and spectral dimension three
-on a chosen interval. A separately encoded contrast restores the angular
+on a chosen interval. Its radial slices are consecutive blocks of one
+history and carry no native information beyond the spectrum of `A`; the
+same filter attaches an interval to any two-dimensional generator. A separately encoded contrast restores the angular
 constant mode. Complete native tapes check the decoder; finite blocks are
 correlated, and Gaussian independence requires the count limit. The
 [thermal product join](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
@@ -155,13 +170,14 @@ where `B=-d_r^2+Abar`. A [two-axis source protocol](observer_time_fields/REFINEM
 joins this operator, ordered CCR fields, sine response and modular flow to
 the same incident clock, with bounded-band splitting and precision errors.
 Dirichlet radial boundaries retain the angular constant without a zero
-frequency. The [product wave action](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
-determines a measurable metric of signature `(-,+,+,+)`. Native conditional
+frequency. The [chosen hyperbolic product wave action](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
+has a measurable metric density of signature `(-,+,+,+)`; the signature is
+the choice of action, the angular tensor is derived. Native conditional
 increment records recover its angular energy tensor in ordered spatial,
 short-time and localization limits; finite chart readouts retain their own
 error boundary. The [first possible wave response](relative_observer_geometry/README.md#intrinsic-distance-is-the-product-waves-first-response)
-between regions equals their intrinsic form distance. This is an operator
-statement; individual detectors can remain dark. A source-compiled,
+between regions equals their intrinsic form distance, as for any strongly
+local regular Dirichlet form. This is an operator statement; individual detectors can remain dark. A source-compiled,
 cell-visible nonconstant native packet has an explicit spectral-residual
 budget. Finite-word encoder and precision bounds extend to every declared
 native refinement, although that growing family is unexecuted. The same

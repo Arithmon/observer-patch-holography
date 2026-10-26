@@ -44,7 +44,7 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   instance satisfies the full schedule-independence packet, and `demoLR` is
   nonconfluent, so no source-realized physical world or global uniqueness is
   claimed.
-- Abstract-rewriting skeleton (preliminary): 5 / 5 proofs → 100%
+- Abstract-rewriting skeleton (preliminary): 8 / 8 public theorems → 100%
 - OPH primitive and constructed-repair layer: admission-free. This status does
   not assert universal confluence or completeness.
 - Part-A coupling algebra (`BridgeEquivalence.lean`, `CapacityFixedPoint.lean`,
@@ -478,8 +478,8 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   diagnostic, not a source operation or validation receipt; neither statistic
   nor designation rule was preregistered. Source effect semantics, operational
   additivity, the y-magnitude readout, and the public phase-sensitive
-  instrument/readback attachment with preregistered validation remain open
-  under #730. See `B13_EFFECT_CLOSURE_BOUNDARY.md`.
+  instrument/readback attachment with preregistered validation are open
+  (historical issue #730, closed). See `B13_EFFECT_CLOSURE_BOUNDARY.md`.
 - Source-net causal poset (`Geometry/SourceNetCausalCone.lean`,
   `Geometry/SourceNetLayeredOrder.lean`,
   `Geometry/OrderingFractionFourDimensional.lean`,
@@ -634,8 +634,8 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   This older packet therefore does not close E1. Sorry-free, standard axioms,
   no `native_decide`. The enrichment rule and restriction system are declared
   readings of the custody-pinned payload; CP/CPTP, scheduler, continuum, and
-  source-clock scopes stay with #728, #730, and #739, while empirical clock
-  calibration is PR-15.
+  source-clock scopes are open (historical issues #728, #730 and #739,
+  closed), and empirical clock calibration is PR-15.
   The adapter preflight (`QFT/SourceOperatorGeneration.lean`,
   `QFT/JointSlotFactorisation.lean`) is attained as a bounded post-hoc
   packet over the same retained bundle: each rich observer's counted
@@ -669,10 +669,10 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   coverage does not imply reconstruction of an arbitrary joint matrix from
   those two marginals alone. `QFT/SourceCorrelationCapstone.lean`
   then instantiates the diamond on the fully support-disjoint retained pair
-  86/247 and supplies its exact counted correlated state and marginals. Current
-  lanes #728 and #730 retain source justification of the factor reading, a
-  nonconstant realization, and continuum causal/time-slice structure; closed
-  #712 consumes the older interface.
+  86/247 and supplies its exact counted correlated state and marginals. Source
+  justification of the factor reading, a nonconstant realization, and continuum
+  causal/time-slice structure are open (historical issues #728 and #730,
+  closed); closed #712 consumes the older interface.
   See `E1_FINITE_CAUSAL_OBSERVER_NET.md`.
 - BipoSH inverse and response boundary
   (`Screen/BipoSHInverseBoundary.lean`): sorry-free finite linear algebra and
@@ -870,8 +870,8 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   point a mode or minimizer, leaving genuine saddle and stationary-phase
   routes open. Source selection of the reference principle and real enrichment,
   physical action, clock, amplitudes,
-  fields, continuum, and observable-current attachments remain open under
-  #683. See `B7_HISTORY_BRIDGE.md`.
+  fields, continuum, and observable-current attachments are open (historical
+  issue #683, closed). See `B7_HISTORY_BRIDGE.md`.
 - B8 finite Green--Kubo and graph transport
   (`Thermodynamics/GreenKubo.lean`,
   `Thermodynamics/GraphDiffusion.lean`): admission-free finite Markov and
@@ -1386,8 +1386,8 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   module adds the two invariance clauses and the trichotomy context).
   Provenance: authored in the external cross-audit lane (Aristotle build,
   Lean/Mathlib v4.28.0), rebuilt verbatim under this project's toolchain
-  (v4.29.1); rebuild record in `DULA/VERIFICATION.md` at the meta-repo
-  root. Declared classical inputs stay on paper: compact-simple
+  (v4.29.1); the rebuild record is not part of this repository.
+  Declared classical inputs stay on paper: compact-simple
   classification, reductive decomposition, exponential surjectivity, and
   the torus/cocharacter step. The former paper steps are discharged in
   companion modules: the dimension-six branch module argument (#604,
@@ -1468,8 +1468,9 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   unattained infimum. The norms and minimum-repair rule are basis-dependent
   inputs, and the comparison is only with the compact locus classified under
   the three named compact-Lie inputs. It is neither a source bracket selector
-  nor a classification of the full Jacobi variety. Issues #734 and #736 own
-  source reconstruction and physical current attachment. See
+  nor a classification of the full Jacobi variety. Source reconstruction and
+  physical current attachment are open (historical issues #734 and #736,
+  closed). See
   `B14_ORIENTED_FACE_SELECTOR.md`.
 - #705 carrier-induced invariant-metric phase diagram
   (`Screen/OrientedFaceInvariantMetric.lean` with the independently replayed
@@ -1603,7 +1604,7 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
 - #304 boundary-fiber carrier witness (`Rule90.lean`, PR #385): 5 / 5 theorems, sorry-free → 100%
   (first non-degenerate `Hfib` discharge on a linear information-set carrier +
   `H1`–`H3` local-repair no-go; a carrier-level witness only. It does **not** bear
-  on the Prop 4.2 / Def 4.1 counts above, which remain 0%)
+  on the Prop 4.2 / Def 4.1 rows above)
 - #304 application theorem (`BoundaryFiber.lean`): 8 / 8 audited declarations,
   sorry-free → 100% (the declared boundary map `B_OPH` defined concretely as
   the root-packet readback on the verified rooted-tree packet-net domain, its
@@ -1612,7 +1613,7 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   named premise for nets outside the declared domain. It does **not** bear on
   the Prop 4.2 / Def 4.1 counts)
 - Finite event algebras (eleven-module journal-neutral core):
-  152 / 152 audited declarations across eleven modules, sorry-free → 100%
+  176 / 176 public theorem/lemma declarations across eleven modules, sorry-free → 100%
   (standard axioms only;
   `chsh_mul_self` needs only `propext` + `Quot.sound`). A self-contained
   neutral-vocabulary development : it does **not** bear on the
@@ -1638,13 +1639,17 @@ math-seat audit (2026-05-19): previous "3+2" undercounted by ≈3×.
 > `Confluence` (false in general : `demoCarrier_not_confluent`),
 > `Completeness` for the constructed operator (holds exactly on
 > frustration-free dynamics via the conditional `H1`–`H3` layer), and the
-> `NF`/`World` quotient construction. The tables and counts below predate
-> this discharge and need a math-seat re-audit before renumbering; rows for
-> `OPH.Repair`/`OPH.localRepair`/`OPH.repair_respects_gauge` should read
-> as constructed/proven rather than ⬜-declared.
+> `NF`/`World` quotient construction at the time of this addendum. The
+> Definition 4.1 and Proposition 4.2 tables below were re-audited against
+> the sources on 2026-10-26: the normal form and the public quotient are
+> constructed (`Primitives`, `Tower/PublicWorldQuotient`,
+> `Tower/FixedPointEndpoint`), and confluence and completeness stay
+> premises.
 
 > **Addendum (2026-07-18) : issue #544 collar chain (layer separation +
-> state-side no-gos), 41 / 41 audited declarations, sorry-free.**
+> state-side no-gos), 41 / 41 audited declarations at the time, sorry-free;
+> the six collar modules carry 215 public theorem/lemma declarations as of
+> 2026-10-26.**
 > `CollarClause.lean`/`CollarLayer.lean` prove the layer separation (the
 > overlap-consistency repair layer factors through the realized constraint
 > family; the collar clause is a declared input, not a theorem).
@@ -1702,8 +1707,8 @@ Paper: `paper/archive/paradise_as_fixed_point_consensus.tex` §4, lines 305–31
 | `OPH.gaugeEquiv` (`∼_gauge`) | `Primitives` | ✅ | Kernel of the declared overlap readout. |
 | `OPH.gaugeEquiv_equivalence` | `Primitives` | ✅ | `∼_gauge` is an equivalence relation. |
 | `OPH.repair_respects_gauge` | `Primitives` | ✅ | `∼_gauge` is a `Repair` congruence. |
-| `OPH.NF` | (TODO) | ⬜ | Terminal state of accepted repair (local recovery moves). |
-| `OPH.World` | (TODO) | ⬜ | Quotient `Records / ∼_gauge` restricted to `NF` representatives. |
+| `OPH.NormalForm`, `OPH.Repair_normalForm`, `OPH.Repair_reachable` | `Primitives` | ✅ | Terminal state of accepted repair; the choice-canonical `Repair` reaches it from every record. |
+| `OPH.Tower.PublicWorldPresentation.PublicWorld`, `FixedPointObject`, `publicRepair` | `Tower/PublicWorldQuotient`, `Tower/FixedPointEndpoint` | ✅ | Literal readback-kernel quotient; `FixedPointObject` keeps the public classes with a fixed representative, and the descended `publicRepair` is idempotent. A source-realized instance is open. |
 
 ## Proposition 4.2: Fixed-point reading of reality
 
@@ -1719,8 +1724,8 @@ Paper: `paper/archive/paradise_as_fixed_point_consensus.tex` §4, lines 321–32
 | `OPH.LyapunovDescent`, `OPH.lyapunovDescent_holds` | `Primitives` | ✅ | Every accepted step strictly lowers the exact mismatch potential. |
 | `OPH.Termination`, `OPH.termination_holds` | `Primitives` | ✅ | The accepted-step relation is well founded for the constructed repair. |
 | `OPH.Completeness` | `Primitives` | 🟡 | Typed property equating normal forms with consistent states. No universal proof is asserted. |
-| `OPH.world_is_fixedPt` | (TODO) | ⬜ | `Repair(World) = World` on the physical quotient. |
-| `OPH.schedule_independence` | (TODO) | ⬜ | Under `Confluence ∧ Completeness`, terminal public state is independent of update schedule on the physical quotient. |
+| `OPH.world_is_fixedPt` | `Tower/PublicWorldQuotient`, `Tower/FixedPointEndpoint` | ✅ | The literal public quotient and the descended idempotent public map are constructed in `Tower/PublicWorldQuotient.lean`; a source-realized instance is open. |
+| `OPH.schedule_independence` | `Tower/FixedPointEndpoint` | ✅ | `public_endpoint_exists_unique_on_public_class` under `Terminating`, `Confluent`, `QuotientCompatible` and `CompleteFor`; confluence is a hypothesis, not a theorem (`demoCarrier_not_confluent`). |
 
 ## Abstract-rewriting skeleton (preliminary)
 
@@ -1890,13 +1895,14 @@ Definitions: `IsEvent` (Hermitian idempotent), `IsState` (PSD, trace one),
 | `bornWeight_mono` | `PQ = P → Tr(ρP) ≤ Tr(ρQ)` (monotone under subevents). |
 | `bornWeight_ne_zero_iff_re_pos` | Nonzero weight ↔ strictly positive real part. |
 
-`Lueders.lean` : Lüders conditioning (12 lemmas):
+`Lueders.lean` : Lüders conditioning (13 public declarations):
 
 | Lean name | One-line statement |
 |---|---|
 | `luedersUpdate_posSemidef` | The update is PSD (zero matrix in the degenerate case). |
 | `trace_luedersUpdate` | The update has trace one when the weight is nonzero. |
 | `luedersUpdate_isState` | The update of a state by a nonzero-weight event is a state. |
+| `coe_luedersStateUpdate` | The bundled state update coerces to the matrix update (`simp` lemma). |
 | `bornWeight_luedersUpdate_self` | Repeatability: the conditioned state gives `P` weight `1`. |
 | `luedersUpdate_idem` | Conditioning twice on `P` equals conditioning once. |
 | `luedersUpdate_luedersUpdate_of_commute` | Sequential conditioning on commuting events = conditioning on `PQ`. |
@@ -1989,10 +1995,10 @@ raw trace formula (5 audited declarations):
 
 The second module is a no-go for one totalization architecture, not for
 support-aware Umegaki entropy. Majorization, data processing, Pythagorean
-information projection, MaxEnt, and source/instrument attachment remain open
-under #730 and deferred premise work under #739.
+information projection, MaxEnt, and source/instrument attachment are open
+(historical issues #730 and #739, closed).
 
-`Tsirelson.lean` : the Tsirelson bound, norm form (6 lemmas; abstract
+`Tsirelson.lean` : the Tsirelson bound, norm form (8 public declarations; abstract
 C*-route shipped, matrix corollary included):
 
 | Lean name | One-line statement |
@@ -2003,6 +2009,8 @@ C*-route shipped, matrix corollary included):
 | `tsirelson_bound` | `‖a₀b₀ + a₀b₁ + a₁b₀ − a₁b₁‖ ≤ 2√2` in any nontrivial unital C*-ring. |
 | `tsirelson_bound_of_isCHSHTuple` | The same, consuming Mathlib's `IsCHSHTuple` bundle. |
 | `matrix_tsirelson_bound` | Instantiation at `Matrix (Fin n) (Fin n) ℂ` with the L2 operator norm. |
+| `one_sub_two_smul_commute` | Commuting `P` and `Q` give commuting reflections `1 - 2P` and `1 - 2Q`. |
+| `matrix_tsirelson_bound_of_events` | The matrix bound for reflections built from four events with commuting Alice/Bob pairs. |
 
 No attainment/tightness claim is made anywhere in `Tsirelson.lean`; the
 bound is shipped as an inequality only. Mathlib's

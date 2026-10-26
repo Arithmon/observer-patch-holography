@@ -336,6 +336,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/PREMISE_BASIS.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/PRIMORDIAL_BRIDGE_THEOREMS.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -682,11 +687,6 @@
     },
     {
       "path": "paper/tex_fragments/STRICT_ONE_LOOP_WZ_POLE_MAP_PORT.tex",
-      "glob": "paper/tex_fragments/*.tex",
-      "allowlisted": false
-    },
-    {
-      "path": "paper/tex_fragments/THREE_AXIOM_BASIS.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

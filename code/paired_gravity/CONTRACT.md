@@ -2,7 +2,7 @@
 
 ## Objective
 
-Resolve issue #1013 on a named source class: determine whether the existing
+On a named source class, determine whether the existing
 source response, locality, positive action, shared source calibration and
 universal probe dictionary determine both gravitational clock shift and light
 deflection. A supplied Einstein equation is a comparison branch, not an OPH
@@ -35,9 +35,9 @@ merely attach two metrics to an unspecified source or list missing maps.
 Neither compatibility with a published interval nor choosing the Einstein
 member after seeing data establishes OPH source selection.
 
-The full physical source selection and geometry response remain with #779;
-physical curvature/stress and Einstein composition with #729; calibration with
-#736; common-history and outcome identification with #740/#730. This packet
-must state their retained obligations in its closure handoff. It does not
-close any of those parent issues or assert a countermodel to their additional
+Full physical source selection and geometry response, physical
+curvature/stress and Einstein composition, calibration, and common-history and
+outcome identification are open obligations (historical issues #779, #729,
+#736, #740 and #730). This packet states them as retained obligations. It
+discharges none of them and asserts no countermodel to their additional
 physical Einstein premises.

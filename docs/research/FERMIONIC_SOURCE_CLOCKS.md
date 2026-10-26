@@ -12,7 +12,7 @@ a quartic interaction with a non-Gaussian two-particle output.
 This is a realization theorem for the **same declared coherent source with
 CCG**, not selection of that source or of fermionic statistics by A1--A3.
 CCG, the available drive norms and the specified clock parameters retain
-their existing status. No additional transport axiom is introduced. In
+their existing status. No additional transport premise is introduced. In
 particular, the encoding gates, loop constraints and read instruments below
 are constructed; they are not extra services granted to the source.
 
@@ -208,9 +208,10 @@ mixers; scalar phases are irrelevant. Applying (4) with g=pi to modes 1,3
 changes the last amplitude's sign. Its one-body density is I4/2, so
 Tr(gamma^2)=1 rather than the value 2 for a pure two-particle Slater state.
 With the dual-rail even bilinears X_L,Z_L,X_R,Z_R,
-`<sqrt(2)(Z_L X_R+X_L Z_R)>=2 sqrt(2)`.
-This is a computed non-Gaussian entanglement witness, not a loophole-free
-laboratory Bell experiment. The coupling is declared. The free clock's
+`<sqrt(2)(Z_L X_R+X_L Z_R)>=2 sqrt(2)`, twice the separable bound sqrt(2).
+A local deterministic assignment of +-1 to the four observables also reaches
+2 sqrt(2), so this is a computed non-Gaussian entanglement witness, not a
+Bell-inequality violation or a loophole-free laboratory Bell experiment. The coupling is declared. The free clock's
 dispersion estimates are not asserted for nonzero interaction.
 
 ## 4. Finite reflecting workspace and exact clock compiler
@@ -386,7 +387,7 @@ uses the input time of this explicitly scheduled instrument; it is not
 instantaneous access to a spatially extended mode.
 
 The [resolved-read theorem](MASSIVE_OPERATIONAL_CLOCKS.md)
-now transfers by an exact isometry, not an assumed CAR lift. For its
+transfers by an exact isometry, not an assumed CAR lift. For its
 compact H2 kernels f,g and separated supports it bounds the overlap
 `|<g_a,U^(-n)f_a>| <= Q_a(f)/||S_a f||` and the induced N_f probability
 change under a finite N_g phase. Norms and all ancilla extensions are
@@ -527,7 +528,8 @@ its exact CCG reference is the zero-noise construction. Thus full occupation
 and the encoded vacuum admit a controlled refinement family with that
 drive/noise capability. The q^-7 sufficient accounting scale comes from
 the full spectral range and is **not** a proved necessary threshold.
-Neither it nor a decreasing hardware noise rate is selected by the axioms.
+Neither it nor a decreasing hardware noise rate is selected by the
+theorem-library premises.
 The necessary vacuum obstruction (10) remains q^-3.
 
 ## 8. Finite analytic clock witness and reproducibility
@@ -541,7 +543,7 @@ section 6, starting with the odd code root. Take q=2^41 and
 cube interior: initial coordinate half-extent<=90 plus n*sqrt(3)a<236 is less than 1024, while the
 half-width exceeds 1024. Therefore the finite reflecting boundary cannot
 affect this experiment. It is not necessary to assume Gaussian tails vanish;
-the parent already charges its finite packet cutoff.
+the parent charges its finite packet cutoff.
 
 The conservative charged ledger gives:
 
@@ -586,7 +588,7 @@ receipt binds the parent source, proof, verifier, tests, workflow and the
 three scoped claim rows, and hostile controls test actual mathematical
 rejection as well as custody.
 
-The closed gap is precise: the named coherent source now supplies **one
+The closed gap is precise: the named coherent source supplies **one
 local, timed, all-sector fermionic process with actual reads and an
 interacting extension**. Its statistics, mass parameters, interaction coupling,
 coherence capability and laboratory energy/time identification are not

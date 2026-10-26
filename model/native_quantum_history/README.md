@@ -18,7 +18,7 @@ The difference is `12259/101250 = 0.1210765432`. The readout attains the
 full output-state trace distance for this preparation, and four is the
 best integer attempt count for this experiment. This makes the prior
 [analytic phase-memory witness](../observer/QUANTUM_MIXING.md) executable.
-These are conditional native-model predictions, with no laboratory dataset
+These are exact laws of the declared native model, with no laboratory dataset
 or empirical agreement claimed.
 
 ## What is supplied, derived and executed
@@ -171,7 +171,7 @@ irreversible quadratic attenuation, but no Euler–Lagrange field equation,
 unitary carrier action, or continuum action without an additional
 identification.
 
-## Exact coherent prediction and discrimination
+## Exact coherent law and discrimination
 
 Choose the first native seam `(u,v)`. With `|uw>` denoting the configuration
 occupied at ports `u,w`, define

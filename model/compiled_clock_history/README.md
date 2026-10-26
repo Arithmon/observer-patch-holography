@@ -286,7 +286,7 @@ For the declared radius `r=1/10000`, the complete ideal-law error is
 `357/156250`. The unconditional probability of both waits completing and the
 terminal detector reporting one is `124967/750000` at `gamma=0` and
 `35131/150000` at `gamma=1`. The nominal contrast is `1056/15625`; its
-calibrated interval remains strictly positive. These are conditional source
+calibrated interval is strictly positive at the declared tube radius. These are conditional source
 forecasts with no measured calibration counts. They are not a discrepancy
 with Standard Model or general-relativistic observations. The
 [current receipt](law_calibration_results.json) retains both settings and

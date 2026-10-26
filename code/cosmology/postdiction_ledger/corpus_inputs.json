@@ -97,9 +97,9 @@
     },
     "flat_branch_small_loop_holonomy": {
       "kind": "statement",
-      "statement": "Omega_K = 0: vanishing spatial curvature holonomy identifies a flat FLRW branch",
+      "statement": "Omega_K = 0: vanishing spatial curvature holonomy identifies a flat FLRW branch without selecting it",
       "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
-      "anchor_text": "Vanishing spatial curvature holonomy identifies a flat FLRW branch"
+      "anchor_text": "spatial curvature holonomy identifies a flat FLRW branch without selecting it"
     },
     "fixed_capacity_cpl_point": {
       "kind": "statement",

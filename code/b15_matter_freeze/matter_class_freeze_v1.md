@@ -1,4 +1,6 @@
-# B15 matter class freeze v1 (issue #706)
+# Matter class freeze v1
+
+Historical labels: B15, issue #706 (closed).
 
 Mirror of `matter_class_freeze_v1.json`. The JSON is the binding artifact; on
 any divergence the JSON governs. Validate with

@@ -324,7 +324,7 @@ def _write_claim_fixture(root: Path) -> Path:
                     "scope_if_false": "This fixture only.",
                     "status": "conditional_fixture",
                     "claim_class": "conditional_implication",
-                    "gates": [42],
+                    "gates": [1026],
                     "premise_dependencies": {
                         "classification": "explicit_edges",
                         "consumed": ["PR-01"],
@@ -513,7 +513,7 @@ def test_claim_gate_rejects_physical_promotion_with_open_work(
     _write_json(registry_path, registry)
     mutant = _run(str(CLAIM_CHECKER), str(root))
     assert mutant.returncode != 0
-    assert "asserts physical establishment while gates [42] are open" in _combined(
+    assert "asserts physical establishment while gates [1026] still record open work" in _combined(
         mutant
     )
 
@@ -763,7 +763,7 @@ def _ungoverned_claim(claims: list[dict[str, Any]]) -> dict[str, Any]:
     [
         ("drop_declaration", "must be a list of positive GitHub issue numbers"),
         ("declare_unnamed_row", "policy names no gate for this claim"),
-        ("shrink_declaration", "does not equal the V3 topical-owner policy"),
+        ("shrink_declaration", "does not equal the historical topical-lane policy"),
         ("drop_owner_from_gates", "names gates that are absent from `gates`"),
         (
             "delete_governed_row",

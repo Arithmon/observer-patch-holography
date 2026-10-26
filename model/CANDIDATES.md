@@ -40,8 +40,8 @@ further operations may act on unread records, and response extensions enlarge
 | Layer | What it fixes | Status | Section |
 | --- | --- | --- | --- |
 | Carrier | Twelve ports, thirty seams, the total-two load sector | Declared by the architecture premise | [Carrier](#the-carrier) |
-| Classical seam rule | Where the load goes | Forced by four stated requirements | [Classical rule](#the-classical-seam-rule) |
-| Record law | Which coherences survive an event | A convex family with five coherence multipliers; C and E executed | [Record laws](#record-laws) |
+| Classical seam rule | Where the load goes | Characterized by four declared requirements; on total two they fix only the tie-break coin | [Classical rule](#the-classical-seam-rule) |
+| Record law | Which coherences survive an event | A convex family with five coherence multipliers under declared local number-phase and endpoint-swap covariance; C executed as the convention, E as the comparison | [Record laws](#record-laws) |
 | Continuation and access | What unread records do next | Free beyond the committed instrument; exact countercontrols | [Continuation](#coherent-continuation-and-record-access) |
 | Response | Private factors driven by the current | N2, N3 and N4 compared | [Response](#response-extensions-n2-n3-and-n4) |
 | Field benchmark | A supplied scalar action | Conditional benchmark S1 | [S1](#s1-the-canonical-scalar-benchmark) |
@@ -85,7 +85,7 @@ binary shell keeps moving rather than settling pathwise. Uniform independent
 seam attempts are the baseline schedule; prescribed seams are diagnostic
 controls.
 
-**Proposition 1 (the classical rule is forced).** Let a stochastic seam rule
+**Proposition 1 (the classical rule is characterized).** Let a stochastic seam rule
 (i) conserve the seam total, (ii) end at a configuration minimizing
 `x_a² + x_b²`, (iii) break any remaining tie with a random choice that does
 not depend on the loads, and (iv) be symmetric under exchange of the two
@@ -101,12 +101,16 @@ allowed. Without (iii), the rule "the endpoint that has more keeps the extra
 unit" satisfies the others; it freezes every binary configuration,
 so the shell carries no motion and the records carry no geometry. Requirement
 (iii) is the basis rule applied to the tie: nothing recovered prefers one
-endpoint, so the choice is maximally random.
+endpoint, so the choice is maximally random. The four requirements are
+premises of the construction. On the executed total-two carrier the seam
+difference is at most two, so every move-toward-balance rule coincides with
+floor and ceiling there and the proposition fixes only the tie-break coin.
 
-On classical diagonal states the rule is the lazy symmetric simple exclusion
-process with two particles. Its generator per seam attempt is
+On classical diagonal states of the binary shell the rule is the lazy
+symmetric simple exclusion process with two particles; the twelve collision
+states of the full carrier are transient. Its generator per seam attempt is
 `(1/60) Σ_e(S_e−I)`. The exclusion-process corollary of
-[Caputo, Liggett and Richthammer (2010), section 4.1.1](https://arxiv.org/abs/0906.1238)
+[Caputo, Liggett and Richthammer, J. Amer. Math. Soc. 23 (2010) 831-851, §4.1.1, equation (4.1)](https://arxiv.org/abs/0906.1238)
 gives the exact classical gap `(5−sqrt(5))/60 ≈ 0.046066` on this carrier,
 equal to the one-particle gap. Under uniform binary equilibrium and uniform
 seam attempts the native records recover the carrier Laplacian, its
@@ -129,7 +133,11 @@ Require of a one-seam channel `Φ`: seam locality, the exact classical law,
 local number-phase covariance (`Φ` commutes with `exp(i Σ_p t_p N_p)` for
 every real `t`) and endpoint-swap covariance. Number-phase covariance is an
 additional condition beyond classical conservation. It guarantees an
-unread-channel representation with definite-current Kraus maps. Requiring
+unread-channel representation with definite-current Kraus maps. Both
+covariances are declared premises of the construction: number-phase
+covariance is a local U(1) phase symmetry of the repair channel at every
+port, a local charge-superselection rule, and the classification below, the
+C/E contrasts and every discriminating prediction rest on it. Requiring
 the actually committed records to resolve those currents is a further
 instrument contract, checked by the
 [record-basis control](record_laws/INSTRUMENT_CONTRACT.md). Then
@@ -163,6 +171,9 @@ different currents. The classification retains it as a control.
 | C | coin and current | 6 | 1 | `1/2` | no | The tie-break is itself a recorded event; the coarsest such law |
 | E | coin and pre-repair contrast | 10 | 1 | 0 | yes | One repair completes the seam; the coarsest idempotent law |
 | T | coin and both endpoint loads | 12 | 0 | 0 | yes | The seam occupation is recorded in full |
+
+Each principle in the last column singles out one law; none is derived
+from the basis, and the construction executes C as its convention.
 
 They form a ladder. Each step records one more classical quantity through a
 diagonal readout of the repaired seam:
@@ -198,9 +209,11 @@ the finite-event law.
 
 ### What the executed laws share and where they differ
 
-The model executes C as its native law and E as the comparison law. C0 and T
-are classified with exact one-seam predictions; their network rates are not
-computed.
+The model executes C as its convention among the classified laws and E as the comparison law. Older
+documents and retained receipts call C the N1 current law and E the N1-E
+contrast law. C0 and T are classified with exact one-seam predictions; every
+admissible table has the same network gap `(5−√5)/60`, and C0's slowest
+binary coherence factor is `43/60 + 2√2/15 ≈ 0.905` per attempt.
 
 | Quantity | C | E |
 | --- | --- | --- |
@@ -486,9 +499,11 @@ its forecast also requires the coin. Unread-channel covariance alone does
 not supply either actually committed record.
 
 The [electromagnetic detector protocol](observer/p_response/README.md)
-accepts the closure coordinates P and N and computes the source-only
-structured-running `α(P)`. Its charge assignment is `Q_v=g(P)N_v` with
-`g(P)=sqrt(4π α(P))`. A prepared path qubit and calibrated loop exposure χ
+accepts the closure coordinate P (N enters no formula of the detector) and
+computes the declared map's source-only Thomson-endpoint value `α(P)`. Its
+charge assignment is `Q_v=g(P)N_v` with `g(P)=sqrt(4π α(P))`, and its
+detector law is a supplied Aharonov–Bohm phase. A prepared path qubit and
+calibrated loop exposure χ
 produce a committed bit with `Pr(y|j1,P,χ)=[1+y sin(g(P)j1χ)]/2`; only y
 reaches the next-seam controller. All 528 weighted histories are retained.
 The response `E[g(P)j2]=(5g(P)/264)sin(g(P)χ)` vanishes under disconnected

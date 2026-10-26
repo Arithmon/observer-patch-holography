@@ -3,8 +3,10 @@ import Mathlib
 /-!
 # Yang–Mills finite repair-gap: Proposition 8.1 (commuting-color spectral gap)
 
-Formalisation of the **finite, real** §8 payoff of B. Müller, *Explaining the
-Yang–Mills Mass Gap with Observer-Patch Repair Dynamics* (r1515):
+Formalisation of the finite commuting-projection step of B. Müller, *Explaining
+the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics*, in the numbering
+of release r1515 (the current companion states its finite-stage gap as the
+theorem labelled `prop:finite-gap`):
 
 > **Proposition 8.1.** Let `{Eₐ}_{a∈s}` be a finite family of **mutually
 > commuting** orthogonal (star) projections on a real Hilbert space (the
@@ -37,7 +39,8 @@ genuine open problem and is **untouched, unassumed, unclaimed**.
 
 The core inequality `I − ∏ Eₐ ≤ ∑ (I − Eₐ)` needs **zero** physical input: it is
 a clean finite-dimensional operator fact on any commuting family of orthogonal
-projections. That fact is the real residue; the "mass gap" is rhetoric around it.
+projections. That inequality is the whole content of this module; the physical
+mass gap is outside its scope.
 
 ## Integration
 

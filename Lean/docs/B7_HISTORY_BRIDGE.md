@@ -114,9 +114,9 @@ The package does not:
 - construct physical action, time, fields, complex amplitudes, interference,
   a continuum path space, or a laboratory current.
 
-Closed mechanics milestone #731 supplies the scoped conditional composition;
-the open source-selection and physical obligations are deferred premise work
-under #739. The derived-action
+The closed mechanics milestone #731 supplied the scoped conditional
+composition; the source-selection and physical obligations are open premise
+work (historical issue #739, closed). The derived-action
 and bridge results enter the flagship variational passage; they emit no
 prediction-ladder row.
 

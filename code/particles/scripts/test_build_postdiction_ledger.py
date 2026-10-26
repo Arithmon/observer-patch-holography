@@ -242,7 +242,7 @@ def test_finite_unitary_limit_row_records_missing_scattering_scope(result):
     assert "Full weak-operator convergence" in boundary
     assert "finite-dimensional operator topologies coincide" in boundary
     assert "constructs no wave operator, S-matrix" in boundary
-    assert "Scientific owner #743 records" in boundary
+    assert "Historical lane #743 (closed; live owner #1026) records" in boundary
     assert "no frozen prediction" in boundary
 
 
@@ -278,7 +278,7 @@ def test_modal_maxwell_row_records_missing_physical_em_attachments(result):
         assert excluded in boundary
     assert "PR-20, PR-21, and PR-22 remain declared inputs" in boundary
     assert "PR-53 and PR-54 name missing attachments" in boundary
-    assert "Scientific owner #733" in boundary
+    assert "Historical lane #733 (closed; live owner #1026)" in boundary
     assert "emits no frozen prediction" in boundary
 
 
@@ -299,7 +299,7 @@ def test_adaptive_scheduler_helper_keeps_its_inputs_and_v3_gate_explicit(result)
     ]
     boundary = row["hypothesis_boundary"]
     assert "sigma, R, ConsultsOnly" in boundary
-    assert "Scientific owner #728 records the missing source scheduler/channel" in boundary
+    assert "Historical lane #728 (closed; live owner #1026) records the missing source scheduler/channel" in boundary
     assert "no prediction-ladder entry" in boundary
 
 
@@ -326,7 +326,7 @@ def test_e1_conditional_packet_keeps_source_regional_correlation_gate(result):
     assert "constant-tower transport is on the separate 86/88 carrier" in row[
         "hypothesis_boundary"
     ]
-    assert "Scientific owner #728 records" in row["hypothesis_boundary"]
+    assert "Historical lane #728 (closed; live owner #1026) records" in row["hypothesis_boundary"]
 
 
 def test_b7_reference_and_stationary_controls_do_not_overclose(result):
@@ -361,7 +361,7 @@ def test_b7_reference_and_stationary_controls_do_not_overclose(result):
     assert "modes/minimizers only" in boundary
     assert "saddles, complex or signed stationary phase" in boundary
     assert "Closed #731 records only the attained declared-bundle composition" in boundary
-    assert "Scientific owner #739 records source selection" in boundary
+    assert "Historical lane #739 (closed; live owner #1026) records source selection" in boundary
     assert "superseded historical gate" not in boundary
 
 
@@ -754,7 +754,7 @@ def test_thermodynamic_receipt_owners_are_separate(result):
     assert "mixing-mode-retaining linear intertwiner" in boundary
     assert "deterministic empirical pushforward" in boundary
     assert "does not exclude stochastic, nonlinear, reverse-direction" in boundary
-    assert "Scientific owner #739 records the missing replacement common reference" in boundary
+    assert "Historical lane #739 (closed; live owner #1026) records the missing replacement common reference" in boundary
     assert "empirical energy-clock calibration is PR-15" in boundary
     assert "Closed #732 records only the attained conditional composition milestone" in boundary
     assert "superseded historical owners" not in boundary
@@ -901,7 +901,8 @@ def test_alpha_row_values_match_endpoint(result):
     assert row["audit_verdict"] == verdict["verdict"]
     assert row["cross_class_agreement"]["independently_evaluated_class_count"] == 0
     assert "does not identify the physical source" in row["reading"]
-    assert row["scientific_owner_issues"] == [736]
+    assert row["historical_owner_issues"] == [736]
+    assert row["live_owner_issues"] == [1026]
     assert "historical_context_issues" not in row
 
 
@@ -947,7 +948,8 @@ def test_alpha_closure_rows_match_the_contraction_certificate(result):
             (row["value_central"] - measured) / measured
         )
         assert row["tier"] == "T2_conditional"
-        assert row["scientific_owner_issues"] == [736]
+        assert row["historical_owner_issues"] == [736]
+        assert row["live_owner_issues"] == [1026]
         assert ledger._rel("p_interval_contraction") in row["artifact_refs"]
 
 
@@ -961,7 +963,7 @@ def test_alpha_closure_chain_orders_the_two_maps(result):
     assert "`alpha_inv_closure_root`" in text
     assert "`alpha_inv_closure_gauge_width`" in text
     assert f"{abs(gauge['deviation_inv_alpha']):.6f}" in text
-    assert "is work in progress under the scientific owner #736" in text
+    assert "is open work owned by [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) (historical lane #736, closed)" in text
 
 
 def test_alpha_closure_rows_fail_closed_when_the_certificate_promotes():
@@ -1015,7 +1017,8 @@ def test_lepton_rows_match_parents_and_contain_witness(result):
         "charged_leptons_kappa_rectangle",
         "charged_leptons_kappa_coherent",
     ):
-        assert rows[row_id]["scientific_owner_issues"] == [736]
+        assert rows[row_id]["historical_owner_issues"] == [736]
+        assert rows[row_id]["live_owner_issues"] == [1026]
         assert "historical_context_issues" not in rows[row_id]
 
 
@@ -1045,7 +1048,8 @@ def test_quark_section_is_obstruction_plus_conditional_texture(result):
         "target_informed"
     ] is True
     assert "cabibbo_gst_sqrt_md_over_ms" in texture["values"]
-    assert obstruction["scientific_owner_issues"] == [736]
+    assert obstruction["historical_owner_issues"] == [736]
+    assert obstruction["live_owner_issues"] == [1026]
     assert "historical_context_issues" not in obstruction
     rscc = rows["quark_conditional_rscc_comparison"]
     parent = json.loads(ledger.PARENTS["conditional_quark_comparison"].read_text(encoding="utf-8"))
@@ -1090,7 +1094,7 @@ def test_markdown_rendered(result):
     assert "`code/particles/runs/status/postdiction_ledger.json`" in text
     assert "Each row distinguishes analytic paper proofs, finite Lean results" in text
     assert "Every step is machine checked in the Lean workspace" not in text
-    assert "Scientific owner: #736" in text
+    assert "Live owner: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) (historical lane #736, closed)" in text
     assert "Historical context:" not in text
     assert "not identified as restrictions of one fixed physical construction" in text
     assert "no pooled all-scale agreement verdict" in text

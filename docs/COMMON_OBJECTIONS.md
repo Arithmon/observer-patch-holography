@@ -13,7 +13,10 @@ and machine-certified interval and global-uniqueness fixed points for each
 declared map. Each rebuttal states its conditionals explicitly; the scientific
 claim boundaries live in the papers and the
 [falsification program](OPH_FALSIFICATION_PROGRAM.md), while work ownership
-lives on the [closure issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+label%3Aclosure).
+lives on the open physics issues
+[#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
+[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) and
+[#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
 ## Contents
 
@@ -45,18 +48,26 @@ compare that output with the measured coupling.
 
 The open test is the loop residual after the physical endpoint map is complete. The
 declared source map contracts to `alpha^-1 = 136.994835177413`, while the declared
-gauge-width map contracts to `alpha^-1 = 137.035660136947`. Their numerical offsets
-from CODATA are `3.0e-4` and `2.5e-6` in relative units. The familiar `2e6` and
-`1.6e4` figures divide by experimental uncertainty only; they are diagnostics, not
-physical pulls, because the same-scheme hadronic and finite remainder plus a theory
-uncertainty model are missing. The corresponding source-chain and gauge-width
-maps (documented by historical [#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545),
-with current integration under [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736)) are therefore incomplete
-maps. The missing
-hadronic term is a frontier for every method on Earth: the payload asks for 4×10⁻⁹
-relative precision on the hadronic moment (see "Why The Hadronic Test Is Hard" in
-[HADRON.md](policies/HADRON.md)). A target-blind
-completion under the stated contract is the decisive endpoint test.
+gauge-width map contracts to `alpha^-1 = 137.035660136947`. Both are the
+declared maps' Thomson-endpoint values `alpha(0)^-1`; their offsets from
+CODATA are `3.0e-4` and `2.5e-6` in relative units. The hadronic part of the
+bare map is a declared quark-screening ansatz `S = 1 - N_c alpha_3/pi`
+(about `0.887`), which has no perturbative derivation. The familiar `2e6`
+and `1.6e4` figures divide by experimental uncertainty only; they are
+diagnostics, not physical pulls, because the same-scheme hadronic and finite
+remainder and a theory uncertainty model are missing. Replacing the ansatz
+with the measured KNT19 payload `0.027609 ± 0.000112` gives
+`alpha^-1 = 136.3827548` on the certified interval `[136.3670, 136.3985]`,
+which excludes CODATA. Holding the source anchor and lepton transport fixed,
+closing the gap would need the payload `0.032244`, outside the measured
+interval, or an anchor shift of `0.635`; the bookkeeping attributes the gap to
+the frozen anchor. The lane records this as a diagnostic
+(historical [#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545),
+closed; the physical attachment is part of [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)).
+The hadronic payload itself is measured to `4×10⁻³` relative precision (see
+"Why The Hadronic Test Is Hard" in [HADRON.md](policies/HADRON.md)); the
+decisive endpoint test is a target-blind completion of the same-scheme
+transport under the stated contract, with a stated result that could reject it.
 
 Interval evaluation of the closure map
 `g(P) = phi + sqrt(pi)/A_T(P)` on a certified interval, together with a
@@ -97,10 +108,12 @@ closure program.
 
 Arming the exposure is open work. The historical v2 target is externally timestamped,
 but the V1 execution was not target-blind; its defect inventory is recorded on the
-historical P-closure issue ([#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545));
-the scientific continuation is specified by [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736).
-A corrected contract must be
-activated and executed before this lane can test the "exactly our universe" claim.
+historical P-closure issue ([#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545),
+closed, as is the former continuation [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736)).
+Current tests and their decision rules live in the
+[frozen-prediction ladder](FROZEN_PREDICTION_LADDER.md) and the
+[falsification program](OPH_FALSIFICATION_PROGRAM.md); a target-blind contract must be
+frozen and executed before this lane can test the "exactly our universe" claim.
 
 ---
 
@@ -155,9 +168,9 @@ In OPH:
   remainders can the finite directional identity be read as the **tensor
   Einstein equation**, `G_ab + Lambda g_ab = 8pi G <T_ab>`. Within that
   conditional smooth limit, the Newtonian relation is its weak-field limit.
-  This is the published chain in *Observers Are All You Need*, Part I
-  §4.2-4.3 and Part I §5.1-5.7, with the short-form theorem statements also
-  summarized in Part V §2.1-2.5.
+  This is the published chain in *Recovering Observer Spacetime and Einstein Dynamics*, sections
+  "Modular Flow and Lorentz Kinematics" and "Gravity from Fixed-Cap Generalized-Entropy Stationarity", with the short-form theorem statements
+  summarized in *Observers Are All You Need*, "Main Results".
 
 ---
 
@@ -192,9 +205,9 @@ This distinction matters:
 1. A lattice in **physical spacetime** breaks Lorentz invariance unless a continuum limit restores it.
 2. A finite regulator for an algebraic screen theory does not automatically do so, because the physical symmetry can emerge in the refinement limit of the observable net.
 
-OPH is explicitly of the second kind. The published derivation formulates the relevant step through collar refinement, quasi-locality, and geometric modular action in the continuum/refinement limit. The observable symmetry is a symmetry of the **patch algebra net**, not of an imagined external crystal (*Observers Are All You Need*, Part I §2.3, §4.2-4.3).
+OPH is explicitly of the second kind. The published derivation formulates the relevant step through collar refinement, quasi-locality, and geometric modular action in the continuum/refinement limit. The observable symmetry is a symmetry of the **patch algebra net**, not of an imagined external crystal (*Recovering Observer Spacetime and Einstein Dynamics*, "Collar refinement and sufficient mechanisms" and "Modular Flow and Lorentz Kinematics").
 
-A Lorentz boost relates observer descriptions of the same correlation pattern at the level of the patch net and modular generators. It does not mechanically squeeze substrate pixels (*Observers Are All You Need*, Part I §4.2-4.3; Part V §2.1-2.2).
+A Lorentz boost relates observer descriptions of the same correlation pattern at the level of the patch net and modular generators. It does not mechanically squeeze substrate pixels (*Recovering Observer Spacetime and Einstein Dynamics*, "Modular Flow and Lorentz Kinematics"; *Observers Are All You Need*, "Main Results").
 
 ---
 
@@ -223,7 +236,7 @@ The geometric area scales as `A(C) ≈ N_Sigma a_cell`.
 
 Matching the two gives `G = a_cell / (4 lbar(t))`.
 
-So `a_cell` is the geometric area per UV cut element in the emergent metric. No pre-existing coordinate spacing in a preferred inertial frame is introduced (*Observers Are All You Need*, Part I §5.4).
+So `a_cell` is the geometric area per UV cut element in the emergent metric. No pre-existing coordinate spacing in a preferred inertial frame is introduced (*Recovering Observer Spacetime and Einstein Dynamics*, "Model and Premises").
 
 ### 3.2 What transforms under a boost
 
@@ -258,7 +271,7 @@ That is exactly the structure needed to keep overlap consistency intact.
 
 ## 4. Why Lorentz invariance follows if the BW certificate holds
 
-The criticism says OPH has not proved Lorentz invariance. The published claim of the framework is conditional: Lorentz kinematics are forced by modular structure under a stated set of assumptions (the BW certificate), and exhibiting an explicit UV regulator that satisfies those assumptions with controlled errors is open (*Observers Are All You Need*, Part I §4.2-4.3; Part V §2.1-2.2).
+The criticism says OPH has not proved Lorentz invariance. The published claim of the framework is conditional: Lorentz kinematics are forced by modular structure under a stated set of assumptions (the BW certificate), and exhibiting an explicit UV regulator that satisfies those assumptions with controlled errors is open (*Recovering Observer Spacetime and Einstein Dynamics*, "Modular Flow and Lorentz Kinematics"; *Observers Are All You Need*, "Main Results").
 
 ### 4.1 The theorem-level statement
 
@@ -333,7 +346,7 @@ From the null modular bridge, OPH obtains
 
 `K = 2pi ∫ v T_kk(v,Omega) dv + central term`.
 
-This is the same structural role played by boost generators in the standard Bisognano-Wichmann setting. With this structure, the theory operates in Lorentzian null kinematics, not in Galilean kinematics (*Observers Are All You Need*, Part I §5.2; Part V §2.3-2.4).
+This is the same structural role played by boost generators in the standard Bisognano-Wichmann setting. With this structure, the theory operates in Lorentzian null kinematics, not in Galilean kinematics (*Recovering Observer Spacetime and Einstein Dynamics*, "Null-surface modular bridge").
 
 So the criticism's conclusion, "therefore only Newtonian gravity," does not follow. The framework's actual derivation route goes through a boost algebra, null generators, and Lorentz-covariant stress reconstruction.
 
@@ -365,7 +378,7 @@ Apply a Lorentz transformation `Lambda`. Covariance gives `rho_C -> rho_(Lambda 
 
 Therefore `delta S_bulk(Lambda C) = delta <K_(Lambda C)> = delta Tr(U rho_C U^dagger U K_C U^dagger) = delta Tr(rho_C K_C) = delta S_bulk(C)`.
 
-So the first law is **frame-covariant**, not frame-violating, once boosts are represented as automorphisms of the cap net (*Observers Are All You Need*, Part I §5.1 and Part I §4.2-4.3).
+So the first law is **frame-covariant**, not frame-violating, once boosts are represented as automorphisms of the cap net (*Recovering Observer Spacetime and Einstein Dynamics*, "Cap first law" and "Modular Flow and Lorentz Kinematics").
 
 The criticism effectively assumes the opposite: it assumes the boost acts by physically squeezing a preferred pixel grid while leaving the entropy functional untouched. But that is not how the OPH construction compares observers.
 
@@ -425,8 +438,9 @@ dense and isotropic link-direction coverage, count-to-volume calibration,
 compatible refinement, the small-region and continuum identities, and one
 inhabited common-domain tower carrying the stress, entropy, reference, and
 scale data. The separate gravity composition returns an Einstein-form branch
-under those explicit inputs; it does not construct them (*Observers Are All
-You Need*, Part I §5.2 and §5.6-5.7; Part V §2.4-2.5).
+under those explicit inputs; it does not construct them (*Recovering Observer Spacetime and Einstein Dynamics*,
+"Null-surface modular bridge", "Einstein equation from fixed-cap generalized-entropy
+stationarity" and "Overlaps supply all timelike directions").
 
 ### 6.3 Relation to the Newtonian limit
 
@@ -517,7 +531,9 @@ That second statement confuses the UV regulator with the emergent observable geo
 ## Sources for Objection 3
 
 - [Observers Are All You Need PDF](../paper/observers_are_all_you_need.pdf)
-  Key sections used above: Abstract; Part I §2.3, §4.2-4.3, §5.1-5.7, §6.17; Part III §1A.6 and "Calibration vs. Prediction: Epistemic Classification of Outputs"; Part V §2.1-2.5.
+  Key sections used above: Abstract; "Main Results"; "Observable-identification boundary".
+- [Recovering Observer Spacetime and Einstein Dynamics PDF](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
+  Key sections used above: "Model and Premises"; "Collar refinement and sufficient mechanisms"; "Modular Flow and Lorentz Kinematics"; "Gravity from Fixed-Cap Generalized-Entropy Stationarity"; "Claim Boundaries, Tests, and Scope".
 - [Observers Are All You Need TeX](../paper/observers_are_all_you_need.tex)
 - [Reality as a Consensus Protocol PDF](../paper/reality_as_consensus_protocol.pdf)
   Key section used above: "Connection to Observer-Patch Holography".

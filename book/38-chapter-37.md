@@ -88,7 +88,7 @@ The requirement constrains a world and its self-description together. A finite o
 
 Nothing outside supplies the description. Asking what switched the universe on assumes an outside to switch it on from. The demand that picks out this object is the demand that there is no outside. Anybody asking has to supply the outside themselves. Every outside anybody has supplied has needed one of its own.
 
-There is a dividend in that which nobody went looking for. A description obliged to specify the structure it came out of cannot leave a number loose, because a loose number is a second structure answering to the same description, and the fiber has to hold one member. Chapter twenty-nine is where that gets cashed. The grain and the fine-structure constant are written in terms of each other, and the grain also fixes the record capacity and, through it, the cosmological constant. Each version of that loop admits one solution. A quantity that every other physics has to measure and enter by hand is computed instead. Constants are what a world with no outside is not free to leave open.
+There is a dividend in that which nobody went looking for. A description obliged to specify the structure it came out of cannot leave a number loose, because a loose number is a second structure answering to the same description, and the fiber has to hold one member. Chapter twenty-nine is where that gets cashed. The grain and the fine-structure constant are written in terms of each other, and the grain also fixes the record capacity and, through it, the cosmological constant. Each version of that loop admits one solution, so a quantity that every other physics has to measure and enter by hand becomes, for each declared map, a computed number. Selecting the physical map and closing the gap to the laboratory reading are still open; the working grain used for comparisons is located from the measured coupling. Constants are what a world with no outside is not free to leave open.
 
 ## Three orders
 
@@ -162,7 +162,7 @@ Compile a function into a federation of observers instead of into a deck: one pa
 
 The small cases can be checked on every input rather than on a sample. A full adder's sum bit, the three-input circuit that adds two bits and a carry and sits underneath every binary addition anybody has ever performed, comes out right on all eight inputs from every starting state. So do the two bit-mixing functions called choose and majority, which take three inputs each and sit inside the hash function that Bitcoin's ledger is built on. A two-input NAND, the gate that answers false only when both its inputs are true, runs end to end on both engines, the deck and the federation, and they agree on all four inputs.
 
-Local repair networks compute finite Boolean functions, every one of them. Whoever builds one can describe it globally and count its work, and none of that description enters the gate rule a patch runs.
+Networks of patches repairing locally compute finite Boolean functions, every one of them. Whoever builds one can describe it globally and count its work, and none of that description enters the gate rule a patch runs.
 
 ## The hardware
 

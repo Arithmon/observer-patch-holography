@@ -5,7 +5,10 @@ observer-relative modular readout, including a source-compiled flow on the
 full native `M66` algebra. The faithful Palm reference is
 `sigma = diag(degree/600)`, derived in
 [`event_circulation`](../event_circulation/README.md). Its two eigenvalues have
-ratio `5/4`. The reference therefore supplies a nonzero modular frequency
+ratio `5/4`. The ratio is a degree census of the carrier: an occupied pair
+leaves 8 moving branches when its ports are adjacent, since their shared seam
+cannot move, and 10 otherwise, so `5/4 = 10/8` and the frequency is a
+combinatorial identity of the icosahedral incidence, not a dynamical result. The reference therefore supplies a nonzero modular frequency
 `log(5/4)` without choosing a Gibbs state from an externally supplied
 Hamiltonian. This is a finite reference-state attachment, not a recovery of
 interacting spacetime or a new comparison with experimental data.

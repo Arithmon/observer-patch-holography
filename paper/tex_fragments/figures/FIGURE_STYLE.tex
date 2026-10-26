@@ -1,0 +1,18 @@
+% Shared drawing style for OPH paper figures (TikZ).
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,decorations.pathreplacing}
+\definecolor{ophnative}{RGB}{31,94,163}
+\definecolor{ophdeclared}{RGB}{196,108,18}
+\definecolor{ophchecked}{RGB}{36,128,72}
+\definecolor{ophfail}{RGB}{178,38,38}
+\definecolor{ophgrey}{RGB}{110,110,110}
+\definecolor{ophlight}{RGB}{238,242,248}
+\definecolor{ophwarm}{RGB}{252,243,231}
+\tikzset{
+  oph box/.style={draw=#1, fill=#1!7, rounded corners=2pt, line width=0.6pt,
+    align=flush center, inner sep=4pt, font=\footnotesize},
+  oph box/.default=ophnative,
+  oph arrow/.style={-{Stealth[length=2.2mm]}, line width=0.6pt, draw=#1},
+  oph arrow/.default=ophgrey,
+  oph label/.style={font=\scriptsize, text=ophgrey, align=flush center},
+}

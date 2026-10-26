@@ -170,7 +170,8 @@ scale. A propagation law connecting these readouts remains to be built.
 The [fixed-reference clock bridge](THERMAL_CLOCK.md) distinguishes a
 stationary equilibrium reference from the actual changing observation state.
 Choosing a faithful Gibbs reference for the existing full Hamiltonian makes
-its continuous between-event dynamics modular, with `t=-beta s`.
+its continuous between-event dynamics, by the finite KMS identity, the modular
+flow of that chosen reference, with `t=-beta s`.
 Source-executed clock probes retain the earlier records. The reference is
 constructed from the supplied action; its selection by repair and a physical
 time calibration remain unproved. The local-clock construction and

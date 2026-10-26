@@ -21,6 +21,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from closed_lanes import owner_text  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "claims" / "selection_ledger.json"
 REGISTRY_PATH = ROOT / "claims" / "claim_registry.yaml"
@@ -588,10 +591,11 @@ def render(rows: list[dict]) -> str:
         "[historical issue #554](https://github.com/FloatingPragma/observer-patch-holography/issues/554);"
     )
     lines.append(
-        "the premise register was established under [#727](https://github.com/FloatingPragma/observer-patch-holography/issues/727) and remains a maintained scientific register,"
+        "the premise register was established under the historical issue #727 and remains a maintained scientific register,"
     )
     lines.append(
-        "and source discharge is [#739](https://github.com/FloatingPragma/observer-patch-holography/issues/739)."
+        "and source discharge, scoped under the historical lane #739, is owned by"
+        " [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)."
     )
     lines.append("")
 
@@ -620,12 +624,9 @@ def render(rows: list[dict]) -> str:
     lines.append("| # | Selection | Owner and state | Menu state |")
     lines.append("| --- | --- | --- | --- |")
     for row in by_class["open"]:
-        owners = ", ".join(
-            f"[#{n}](https://github.com/FloatingPragma/observer-patch-holography/issues/{n})"
-            for n in row["owner_issues"]
-        )
+        owners = owner_text(row["owner_issues"])
         lines.append(
-            f"| {row['row']} | {row['label']} | {row['where']} Owner: {owners}. |"
+            f"| {row['row']} | {row['label']} | {row['where']} Live owner: {owners}. |"
             f" {menu_cell(row)} |"
         )
     lines.append("")

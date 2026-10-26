@@ -62,7 +62,8 @@ source CNOTs. Each phase-exact CNOT uses three existing primitive pulses.
 Including the two rotations and two outer CNOTs gives **34 pulses**, comprising
 26 single-code and eight pair-code pulses, with **68 load/export service
 events**. The unchanged generic orthogonal compiler emits 1,046 pulses for
-the same operation and is used as an independent comparison.
+the same operation and is used as an independent comparison; that count is
+asserted in `test_construction.py` and is not retained in a receipt.
 
 Every emitted pulse calls the existing full six-level response evaluator.
 Its retained twelve-port control coefficients are checked in `Q(sqrt(5))`
@@ -101,8 +102,8 @@ its operator norm, so the same bound covers all 512 output coordinates.
 For two uses separated by exact CPTP processing, the complete instrument
 error is at most `delta*(1+g)`, including binary norm amplification. Adaptive
 use on successful branches and identity on failed branches obeys the same
-bound. All three retained operations—balanced mixer, one-pulse phase, and
-35-pulse imaginary-quadrature analyzer—have portable reported single- and
+bound. All three retained operations (balanced mixer, one-pulse phase, and
+35-pulse imaginary-quadrature analyzer) have portable reported single- and
 two-use bounds at most **`1e-12`**. These are numerical implementation bounds,
 not measured physical gate fidelities.
 

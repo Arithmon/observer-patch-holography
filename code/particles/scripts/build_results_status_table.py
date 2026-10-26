@@ -1378,6 +1378,8 @@ def render_markdown(
         "",
         f"Inputs: `P={P}` | `log_dim_H={log_dim_H}` | `loops={loops}` | `with_hadrons={with_hadrons}` | `hadron_profile={hadron_profile_display}`",
         "",
+        "The pixel input `P` is the working value `P_C`, located from the measured fine-structure constant; it is not the forward closure root `P_fwd`.",
+        "",
         f"Public Surface: `{surface_state['public_surface_kind']}`",
         "",
         f"Surface Policy: `{surface_state['surface_policy']}`",

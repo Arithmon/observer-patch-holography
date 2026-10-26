@@ -209,14 +209,15 @@ identity is an exact **stopped occupation measure**, stronger than replacing
 random waiting times by their mean. In particular a local tick takes six
 global movements on average under `nu_v`. This preparation is operational:
 from `I66/66`, perform one native attempt and herald a tick at `v`. Its success
-probability is `5/198`; failure `193/198` remains part of the experiment.
+probability is `5/198` per attempt; failure `193/198` remains part of the experiment.
 The successful preparation has support 51, so it is not a faithful reference
 on the full 66-state algebra. Starting with an arbitrary configuration or
 waiting for the first tick from a uniform state does not supply this Palm law.
 
 **Exact current moments.** For the source incidence matrix `B`, set
 `P=I-B^T(BB^T)^+B`. Each global-movement cycle current `PJ` has zero conditional
-mean. Let `T` be the next local tick, including its current. Direct enumeration
+mean. Let `T` be the number of global movements until the next local tick,
+including its current. Direct enumeration
 gives the uniform bound
 
 ```text

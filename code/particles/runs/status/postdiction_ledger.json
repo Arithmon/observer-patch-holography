@@ -218,7 +218,7 @@
     },
     {
       "id": "lepton_closure_target",
-      "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; scientific owner #736 records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition."
+      "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition."
     }
   ],
   "retrospective_public_record_comparisons": {
@@ -549,22 +549,32 @@
           "code/particles/alpha_hvp_audit/outputs/alpha_hvp_class_verdict.json"
         ],
         "audit_verdict": "MULTI_CLASS_NOT_EVALUABLE__ONE_RECORDED_ACCOUNTING_REPLAY_COMPATIBLE",
+        "codata_inside_endpoint_interval": false,
         "cross_class_agreement": {
           "independently_evaluated_class_count": 0,
           "note": "cross-class agreement requires at least two genuinely independent evaluated classes under one protocol",
           "recorded_accounting_replay_count": 1,
           "verdict": "NOT_EVALUABLE_NO_INDEPENDENT_CLASS"
         },
-        "id": "alpha_inv_thomson_endpoint",
-        "measured": 137.035999177,
-        "measured_source": "CODATA 2022 via the endpoint artifact, compare-only",
-        "payload_release": "knt19_pinned_v1",
-        "reading": "one retrospective KNT19 accounting row is arithmetically compatible with the recorded same-scheme interval. The multi-class HVP test is not evaluable because no independent frozen class is present. Containment does not identify the physical source of the gap, select one closure map, construct the same-quantity bridge, or close source-only transport",
-        "reference_deficit_inside_recorded_accounting_interval": true,
-        "row_class": "oph_plus_empirical_hadron_closure",
-        "scientific_owner_issues": [
+        "endpoint_deficit_central": 0.6532443595053377,
+        "endpoint_deficit_interval": [
+          0.637533983636313,
+          0.6689511167488211
+        ],
+        "historical_owner_issues": [
           736
         ],
+        "id": "alpha_inv_thomson_endpoint",
+        "live_owner_issues": [
+          1026
+        ],
+        "measured": 137.035999177,
+        "measured_source": "CODATA 2022 via the endpoint artifact, compare-only",
+        "onshell_anchor_gap": 0.6308936136469185,
+        "payload_release": "knt19_pinned_v1",
+        "reading": "the retrospective KNT19 endpoint lies below CODATA and its certified interval excludes CODATA. The recorded accounting interval for the anchor shift needed to reach CODATA contains the on-shell anchor gap, which computes the same gap from CODATA with standard running; that containment is bookkeeping consistency, not agreement of the endpoint with CODATA. The multi-class HVP test is not evaluable because no independent frozen class is present. Containment does not identify the physical source of the gap, select one closure map, construct the same-quantity bridge, or close source-only transport",
+        "reference_deficit_inside_recorded_accounting_interval": true,
+        "row_class": "oph_plus_empirical_hadron_closure",
         "tier": "retrospective_empirical_same_scheme_accounting_audit",
         "value_central": 136.38275481749466,
         "value_interval": [
@@ -580,8 +590,14 @@
         "closure_map_description": "root closure map, unified gauge width absent",
         "deviation_inv_alpha": -0.041163999587070066,
         "enclosure_width_decimal": "7.1517913485506260871123026520241314126362022560004430307593246781e-24",
+        "historical_owner_issues": [
+          736
+        ],
         "id": "alpha_inv_closure_root",
         "lipschitz_bound": 0.07240056016743157,
+        "live_owner_issues": [
+          1026
+        ],
         "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P)) with P = phi + alpha*sqrt(pi); Delta_Th is the internal Stage-5 structured Thomson continuation with the exact one-loop fermion kernel and quark screening factor 1 - N_c*alpha_3(m_Z;P)/pi",
         "measured": 137.035999177,
         "measured_source": "CODATA 2022 via NIST; compare-only, outside the solve path",
@@ -589,9 +605,6 @@
         "p_central": 1.6309720958588974,
         "relative_deviation": -0.00030038821794484344,
         "row_class": "certified_interval_fixed_point_of_declared_closure_map",
-        "scientific_owner_issues": [
-          736
-        ],
         "su2_cutoff": 120,
         "su3_cutoff": 90,
         "tier": "T2_conditional",
@@ -613,8 +626,14 @@
         "closure_map_description": "closure map with the finite-screen unified gauge width on the inverse coupling",
         "deviation_inv_alpha": -0.0003390400534328819,
         "enclosure_width_decimal": "7.0872360412571028630801821074690994190426578055519774703247763269e-24",
+        "historical_owner_issues": [
+          736
+        ],
         "id": "alpha_inv_closure_gauge_width",
         "lipschitz_bound": 0.07235443988743846,
+        "live_owner_issues": [
+          1026
+        ],
         "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P) + alpha_U(P)) with P = phi + alpha*sqrt(pi); the closure-ledger CL-2 mixed map that adds the finite-screen unified gauge width alpha_U(P) to the inverse-alpha readout",
         "measured": 137.035999177,
         "measured_source": "CODATA 2022 via NIST; compare-only, outside the solve path",
@@ -622,9 +641,6 @@
         "p_central": 1.6309682414045266,
         "relative_deviation": -2.474094803329504e-06,
         "row_class": "certified_interval_fixed_point_of_declared_closure_map",
-        "scientific_owner_issues": [
-          736
-        ],
         "su2_cutoff": 120,
         "su3_cutoff": 90,
         "tier": "T2_conditional",
@@ -645,11 +661,14 @@
           "code/particles/runs/leptons/charged_kappa_interval_from_alpha_transport.json",
           "code/particles/runs/leptons/charged_kappa_interval_coherent_closure.json"
         ],
-        "id": "charged_leptons_closure_target",
-        "scientific_owner_issues": [
+        "historical_owner_issues": [
           736
         ],
-        "statement": "The certified solve inverts exactly at the measured triple: one anchor-gap value closes the charged-lepton lane on the witness, that value lies inside the retrospective accounting interval, and its distance to the standard on-shell reference deficit is an unfixed scheme term. Scientific owner #736 records that missing source obligation. The lepton scale is localized only under the recorded accounting packet. A source-emitted bridge value is a sharp falsification target: landing on the closure value satisfies the conditional lane on the witness, while landing outside the recorded interval refutes the decomposition.",
+        "id": "charged_leptons_closure_target",
+        "live_owner_issues": [
+          1026
+        ],
+        "statement": "The certified solve inverts exactly at the measured triple: one anchor-gap value closes the charged-lepton lane on the witness, that value lies inside the retrospective accounting interval, and its distance to the standard on-shell reference deficit is an unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that missing source obligation. The lepton scale is localized only under the recorded accounting packet. A source-emitted bridge value is a sharp falsification target: landing on the closure value satisfies the conditional lane on the witness, while landing outside the recorded interval refutes the decomposition.",
         "tier": "T1_empirical_closure",
         "width_floor": "the certified width floor at the current premise set is the anchor scheme-bridge ambiguity (issue 545, source branch); the payload term cancels in this lane and the higher-order band is a level convention pinned by the open bridge",
         "witness_point": {
@@ -722,6 +741,9 @@
           1.76948334905381
         ],
         "epistemic_scope": "target-anchored empirical-closure diagnostic, not a source-only or prospective charged-lepton prediction",
+        "historical_owner_issues": [
+          736
+        ],
         "id": "charged_leptons_kappa_rectangle",
         "intervals_gev": [
           [
@@ -736,6 +758,9 @@
             1.657232801948271,
             1.889337043593336
           ]
+        ],
+        "live_owner_issues": [
+          1026
         ],
         "logarithmic_half_width": 0.0655383861649065,
         "measured_gev": [
@@ -793,9 +818,6 @@
           0.06558531386270956
         ],
         "row_class": "target_shape_plus_empirical_transport",
-        "scientific_owner_issues": [
-          736
-        ],
         "tier": "T1_empirical_closure",
         "witness_inside_all_intervals": true
       },
@@ -807,6 +829,9 @@
           1.7694833490538506
         ],
         "epistemic_scope": "target-anchored empirical-closure diagnostic, not a source-only or prospective charged-lepton prediction",
+        "historical_owner_issues": [
+          736
+        ],
         "id": "charged_leptons_kappa_coherent",
         "intervals_gev": [
           [
@@ -821,6 +846,9 @@
             1.739097825850698,
             1.800399768223073
           ]
+        ],
+        "live_owner_issues": [
+          1026
         ],
         "logarithmic_half_width": 0.0173211229135645,
         "measured_gev": [
@@ -879,9 +907,6 @@
           0.01732198904419006
         ],
         "row_class": "target_shape_plus_empirical_transport_coherent_closure",
-        "scientific_owner_issues": [
-          736
-        ],
         "tier": "T1_empirical_closure",
         "width_reduction_factor": 3.7837261759506795,
         "witness_inside_all_intervals": true
@@ -914,6 +939,7 @@
     ],
     "electroweak": [
       {
+        "anchoring": "target_anchored_backsolve",
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
         "delta": 0.07747557670501237,
         "delta_over_sigma": 0.7043234245910216,
@@ -932,6 +958,7 @@
         ]
       },
       {
+        "anchoring": "target_anchored_backsolve",
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
         "delta": 0.21492450651575723,
         "delta_over_sigma": 0.3582075108595954,
@@ -1417,7 +1444,7 @@
         "survivor_dimension": 15
       },
       {
-        "hypothesis_boundary": "the state, observables, and projective partition are supplied finite inputs. Pinching lands in the generally noncommutative commutant, while averaging lands in the commutative projector span. The adaptor is relative to that supplied partition. The sign average is an exact precursor, not a proof of spectral majorization. The totalized-log countermodel rejects only that naive architecture; a support-aware extended divergence, pinching Pythagoras, constrained maximum entropy, and the publicization information chain are not constructed. Scientific owner #730 records those quantum-composition obligations; #739 records any residual premise-discharge obligation. No source rule selects that partition, a state, an observable, a detector algebra, or a public instrument, and no edge-to-partition identification is constructed",
+        "hypothesis_boundary": "the state, observables, and projective partition are supplied finite inputs. Pinching lands in the generally noncommutative commutant, while averaging lands in the commutative projector span. The adaptor is relative to that supplied partition. The sign average is an exact precursor, not a proof of spectral majorization. The totalized-log countermodel rejects only that naive architecture; a support-aware extended divergence, pinching Pythagoras, constrained maximum entropy, and the publicization information chain are not constructed. Historical lane #730 (closed; live owner #1026) records those quantum-composition obligations; #739 records any residual premise-discharge obligation. No source rule selects that partition, a state, an observable, a detector algebra, or a public instrument, and no edge-to-partition identification is constructed",
         "id": "finite_quantum_limitation_suite",
         "lean_declarations": {
           "B10EdgeCenterAction": [
@@ -1499,7 +1526,7 @@
           "code/qft/test_finite_unitary_scattering_no_go.py",
           "paper/tex_fragments/QFT_STRUCTURAL_INHERITANCE_STATUS.tex"
         ],
-        "hypothesis_boundary": "this is only a no-go for direct ordinary convergence of one fixed-cutoff power sequence U^n. Full weak-operator convergence at that same finite dimension is excluded too, because the standard finite-dimensional operator topologies coincide. It leaves relative or comparison dynamics, selected projected scalar or observable limits, infinite-dimensional weak limits, subsequential or Cesaro limits, continuum or infinite-volume limits, open-system evolution, and finite-time operational protocols unresolved by this result. It constructs no wave operator, S-matrix, cross section, pole, optical theorem, renormalization flow, or continuum QFT. Scientific owner #743 records those interacting-QFT, renormalization, and scattering obligations. This row emits no frozen prediction",
+        "hypothesis_boundary": "this is only a no-go for direct ordinary convergence of one fixed-cutoff power sequence U^n. Full weak-operator convergence at that same finite dimension is excluded too, because the standard finite-dimensional operator topologies coincide. It leaves relative or comparison dynamics, selected projected scalar or observable limits, infinite-dimensional weak limits, subsequential or Cesaro limits, continuum or infinite-volume limits, open-system evolution, and finite-time operational protocols unresolved by this result. It constructs no wave operator, S-matrix, cross section, pole, optical theorem, renormalization flow, or continuum QFT. Historical lane #743 (closed; live owner #1026) records those interacting-QFT, renormalization, and scattering obligations. This row emits no frozen prediction",
         "id": "finite_unitary_scattering_limit_no_go",
         "lean_declarations": {
           "FiniteUnitaryScatteringNoGo": [
@@ -5183,7 +5210,7 @@
         "statement": "Coincidence-invariant Herm2 readback descends uniquely through an actual event setoid. Separately, one supplied time-oriented affine Lorentz overlap cocycle and a chart-coordinate family satisfying its overlap law induce translation-free displacement covariance, invariant intervals, future-null celestial transport, compatible event frames, and isometric transport of their positive rest spaces. The rank-three source FrameQuotient is linearly and isometrically identified with the standard internal rest fiber as a candidate local readback. The formal stack does not identify the quotient-descended readback with the supplied atlas coordinates. Exact controls exhibit a nontrivial translated future-null atlas and show that reflexive symmetric pairwise overlap need not be transitive"
       },
       {
-        "hypothesis_boundary": "ordinary isotony does not supply the star-homomorphic restriction retractions or unique gluing. `FiniteCover` has no joint-coverage axiom and the B4 helper has no regional-factor attachment. The rich-fibre source payload supplies window/class labels only: its block algebra, base-point state, restrictions, and repair are declared postprocessors. Conditional coverage is attained inside that adapter, but its nonunital matrix corners are not tensor factors or a `TensorSplitReceipt`. The later operator-generation theorem transcribes source paths post hoc. The later 86/247 capstone grounds fully disjoint committed supports and an exact counted correlated state with the correct marginals. Its erasure theorem proves that coverage does not imply unique reconstruction. The two-observers-as-factors reading and region map remain declared. The constant-tower transport is on the separate 86/88 carrier. TripleCarrierJoin couples both pair paths, counted states, checkpoints, and adjacent-step marginals on one carrier, but supplies no regional-net or tower morphism; neither packet is a nonconstant source realization. Scientific owner #728 records the missing source-attached or otherwise justified regional construction and a nonconstant source composition; scientific owner #739 records a missing source realization or genuinely scoped no-go. No CP/CPTP channel, scheduler locality, spacetime causality, time-slice property, continuum QFT, observable, decision rule, or prediction is supplied",
+        "hypothesis_boundary": "ordinary isotony does not supply the star-homomorphic restriction retractions or unique gluing. `FiniteCover` has no joint-coverage axiom and the B4 helper has no regional-factor attachment. The rich-fibre source payload supplies window/class labels only: its block algebra, base-point state, restrictions, and repair are declared postprocessors. Conditional coverage is attained inside that adapter, but its nonunital matrix corners are not tensor factors or a `TensorSplitReceipt`. The later operator-generation theorem transcribes source paths post hoc. The later 86/247 capstone grounds fully disjoint committed supports and an exact counted correlated state with the correct marginals. Its erasure theorem proves that coverage does not imply unique reconstruction. The two-observers-as-factors reading and region map remain declared. The constant-tower transport is on the separate 86/88 carrier. TripleCarrierJoin couples both pair paths, counted states, checkpoints, and adjacent-step marginals on one carrier, but supplies no regional-net or tower morphism; neither packet is a nonconstant source realization. Historical lane #728 (closed; live owner #1026) records the missing source-attached or otherwise justified regional construction and a nonconstant source composition; historical lane #739 (closed; live owner #1026) records a missing source realization or genuinely scoped no-go. No CP/CPTP channel, scheduler locality, spacetime causality, time-slice property, continuum QFT, observable, decision rule, or prediction is supplied",
         "id": "finite_causal_observer_net_interface",
         "lean_declarations": {
           "CPRestrictionNet": [
@@ -5414,7 +5441,7 @@
           "code/thermodynamics/repair_current_orientation/verify_repair_current_orientation.py",
           "code/thermodynamics/repair_current_orientation/test_verify_repair_current_orientation.py"
         ],
-        "hypothesis_boundary": "the central atoms and spinor projectors are different objects. The projector family is a declared mathematical adapter obtained by applying a two-dimensional representation to source-realized gauge labels, not a source-produced public quantum instrument. The celestial countermodel proves that continuity and normalized antipodal binary contexts do not derive affinity; the transverse cubic refutes the displayed finite Busch--Gleason interface, and the Pauli-Y pair identifies the missing complex tomography direction. The exact phase lift constructs that direction only inside the complex operator algebra; the source has no phase producer, rotated or phase outcome receipts, common-preparation validation, or operational effect composition. Conjugation identifies one two-candidate orbit but does not prove that this orbit exhausts all hidden phase data. The repair-count bit is a post-hoc diagnostic on a locally hash-pinned B12 run; its statistic and designation rule were not preregistered, and the phase pairing is an arbitrary typed convention. The full-effect theorem applies only after full coexistent-effect additivity is supplied. No physical Born derivation, observable, or prediction is emitted. Scientific owner #730 records the missing source-earned phase instrument, operational additivity, and public readback; scientific owner #739 records the remaining affinity-principle obligation",
+        "hypothesis_boundary": "the central atoms and spinor projectors are different objects. The projector family is a declared mathematical adapter obtained by applying a two-dimensional representation to source-realized gauge labels, not a source-produced public quantum instrument. The celestial countermodel proves that continuity and normalized antipodal binary contexts do not derive affinity; the transverse cubic refutes the displayed finite Busch--Gleason interface, and the Pauli-Y pair identifies the missing complex tomography direction. The exact phase lift constructs that direction only inside the complex operator algebra; the source has no phase producer, rotated or phase outcome receipts, common-preparation validation, or operational effect composition. Conjugation identifies one two-candidate orbit but does not prove that this orbit exhausts all hidden phase data. The repair-count bit is a post-hoc diagnostic on a locally hash-pinned B12 run; its statistic and designation rule were not preregistered, and the phase pairing is an arbitrary typed convention. The full-effect theorem applies only after full coexistent-effect additivity is supplied. No physical Born derivation, observable, or prediction is emitted. Scientific owner #730 records the missing source-earned phase instrument, operational additivity, and public readback; historical lane #739 (closed; live owner #1026) records the remaining affinity-principle obligation",
         "id": "finite_born_frame_rank_gap",
         "lean_declarations": {
           "ConjugationGauge": [
@@ -5482,7 +5509,7 @@
         "statement": "The twelve declared central port atoms form one classical context with an eleven-dimensional normalized weight simplex. The separate declared qubit adapter has six disjoint antipodal binary contexts: additive weights have affine dimension six, while the trace-one Hermitian/Born slice has dimension three and is characterized by three exact golden-ratio relations. Tomography is unique when a representation exists, but exact unit-interval controls show both nonrepresentation and a unique Hermitian representation whose matrix is nonpositive. On the full celestial sphere, the continuous normalized binary weight F(n)=(1+n_z^3)/2 is exactly non-affine; after affinity is supplied, dense probability tests force the coefficient into the closed unit ball. The displayed finite unsharp battery also fails: F_y(n)=(1+n_y^3)/2 is normalized, probability-valued, noncontextual on the whole web, and non-affine. The source-attached real S3 algebraic contexts obtained by applying a declared representation to source-realized gauge labels are not complex tomographically complete: distinct pure Pauli-Y states agree on every declared outcome and a missing complex Y projector separates them. For two source-attached algebraic projector candidates P,Q, the algebraic phase lift I/2-(2sqrt(3)/3)i(QP-PQ) is exactly that Y projector and completes fixed-trace tomography; every effect in a generous real/Kraus closure remains Y-blind and cannot produce it. Entrywise conjugation exchanges the two phase candidates while simultaneous state-effect conjugation preserves the real Born weight. A post-hoc raw-count product-gap diagnostic from retained B12 data supplies an exact reversal-odd bit and normalized cycle products, but neither its statistic nor designation rule was preregistered; its pairing with the phase torsor is declared and emits no source selection or validation"
       },
       {
-        "hypothesis_boundary": "The exact obstruction is only a bounded negative result for two direct mechanisms on the certified artifact: a mixing-mode-retaining linear intertwiner into the idempotent heat bath and a deterministic empirical pushforward. It does not exclude stochastic, nonlinear, reverse-direction, dilated, or enriched-source constructions. Scientific owner #739 records the missing replacement common reference, collar, objective, genuinely varying refinement family, source-clock derivation, and repair-export decision; empirical energy-clock calibration is PR-15. Closed #732 records only the attained conditional composition milestone. The pinned 20-state collar table has an audit of all 15 syntactic coordinate maps obtained from nonempty subsets of the four committed fields, inducing only four distinct partitions: its repair-load count aggregation is an eight-state ergodic nonreversible H-theorem probe, but it fails the exact count-kernel strong-lumpability test, the declared record charge is constant, and the common reference is unidentified; the fine chain's only recurrent restriction is singleton freezeout. The audit does not exclude arbitrary partitions or nonlinear, statistical, stochastic, weakly lumpable, or history-dependent maps. The strict-descent normalizer carries no entropy inequality",
+        "hypothesis_boundary": "The exact obstruction is only a bounded negative result for two direct mechanisms on the certified artifact: a mixing-mode-retaining linear intertwiner into the idempotent heat bath and a deterministic empirical pushforward. It does not exclude stochastic, nonlinear, reverse-direction, dilated, or enriched-source constructions. Historical lane #739 (closed; live owner #1026) records the missing replacement common reference, collar, objective, genuinely varying refinement family, source-clock derivation, and repair-export decision; empirical energy-clock calibration is PR-15. Closed #732 records only the attained conditional composition milestone. The pinned 20-state collar table has an audit of all 15 syntactic coordinate maps obtained from nonempty subsets of the four committed fields, inducing only four distinct partitions: its repair-load count aggregation is an eight-state ergodic nonreversible H-theorem probe, but it fails the exact count-kernel strong-lumpability test, the declared record charge is constant, and the common reference is unidentified; the fine chain's only recurrent restriction is singleton freezeout. The audit does not exclude arbitrary partitions or nonlinear, statistical, stochastic, weakly lumpable, or history-dependent maps. The strict-descent normalizer carries no entropy inequality",
         "id": "thermodynamic_four_law_package",
         "lean_declarations": {
           "CapFirstLaw": [
@@ -5648,7 +5675,7 @@
         "statement": "A finite reversible Markov kernel with a linear Poisson solver has a symmetric positive-semidefinite Green--Kubo matrix and an exact finite correlation sum with propagated remainder. One full-fibre repair projector has constant positive-lag correlation and cannot supply a nonzero decaying memory tail with stabilizing sums. Typed finite-graph Fick and Fourier updates obey exact source balance and source-free conservation. A separate exact eight-state supplied local resampling law preserves a nonconstant record while its fibre-centred currents have decaying memory, a gap of at least 7/192, and a rational Green--Kubo matrix with certified tails"
       },
       {
-        "hypothesis_boundary": "the pointwise update is a declared finite premise; the load, current, update order, and charge have no physical identity. The guarded WardLimitManifest derives zero limiting residual from exact finite-residual vanishing and convergence on a shrinking scale with separating tests. Scientific owner #729 records the obligation to define that residual from finite continuity, identify it with physical distributional divergence, and supply the source, transport, chart, and common-tower evidence before continuum Ward use; scientific owner #737 records the missing instrument attachment, and #739 records deferred premise discharge",
+        "hypothesis_boundary": "the pointwise update is a declared finite premise; the load, current, update order, and charge have no physical identity. The guarded WardLimitManifest derives zero limiting residual from exact finite-residual vanishing and convergence on a shrinking scale with separating tests. Historical lane #729 (closed; live owner #1026) records the obligation to define that residual from finite continuity, identify it with physical distributional divergence, and supply the source, transport, chart, and common-tower evidence before continuum Ward use; historical lane #737 (closed; live owner #1077) records the missing instrument attachment, and #739 records deferred premise discharge",
         "id": "finite_conservation_ward_precursor",
         "lean_declarations": {
           "DiscreteGauss": [
@@ -5685,7 +5712,7 @@
         "statement": "On the exact twelve-port, thirty-seam incidence graph, a declared pointwise continuity update gives regional source minus outward flux, internal cancellation, and closed-graph conservation for zero-total source. Rational Gauss solutions exist exactly for neutral loads and form one translate of a nineteen-dimensional cycle kernel. For finite real linear state maps, all-state charge conservation is equivalent to the dual fixed-observable equation; an exact two-state counterexample shows that channel covariance alone does not imply conservation"
       },
       {
-        "hypothesis_boundary": "the repair word is fixed externally and shared by both inputs; adaptive or globally state-dependent scheduling is not covered. The cone is an upper bound, not a minimal cone or graph-radius speed law. The bipartite split is supplied, the classical theorem permits signed arrays, and no OPH region-factor, spacelike, clock, stochastic-state, CPTP, or laboratory attachment is proved. A declared rich-fibre adapter conditionally attains coverage. The later E1 packet transcribes operators post hoc and consumes this row's partial-trace helper on a declared Cartesian slot. The later 86/247 capstone grounds fully disjoint source supports and the exact counted correlated state with its marginals, while its erasure theorem proves that coverage cannot reconstruct that state. Scientific owner #728 records the missing source-attached or otherwise justified factor reading and nonconstant source composition; #739 owns the residual source realization or no-go. The missing source channel/adaptive-scheduler semantics are recorded by #728, physical clocks by #739, physical spacetime attachment by #729, instrumentation by #737, and continuum causal/time-slice structure by #730. Those scientific owners mark downstream promotions outside this claim's gate. This row emits no prediction-ladder entry",
+        "hypothesis_boundary": "the repair word is fixed externally and shared by both inputs; adaptive or globally state-dependent scheduling is not covered. The cone is an upper bound, not a minimal cone or graph-radius speed law. The bipartite split is supplied, the classical theorem permits signed arrays, and no OPH region-factor, spacelike, clock, stochastic-state, CPTP, or laboratory attachment is proved. A declared rich-fibre adapter conditionally attains coverage. The later E1 packet transcribes operators post hoc and consumes this row's partial-trace helper on a declared Cartesian slot. The later 86/247 capstone grounds fully disjoint source supports and the exact counted correlated state with its marginals, while its erasure theorem proves that coverage cannot reconstruct that state. Historical lane #728 (closed; live owner #1026) records the missing source-attached or otherwise justified factor reading and nonconstant source composition; #739 owns the residual source realization or no-go. The missing source channel/adaptive-scheduler semantics were recorded under the historical lane #728, physical clocks under #739, physical spacetime attachment under #729, instrumentation under #737, and continuum causal/time-slice structure under #730, all closed; their open work is owned by #1026 and #1077. Those historical lanes mark downstream promotions outside this claim's gate. This row emits no prediction-ladder entry",
         "id": "finite_fixed_word_locality_and_marginal_invariance",
         "lean_declarations": {
           "DependencyCone": [
@@ -5709,7 +5736,7 @@
         "statement": "For the concrete single-site OPH localRepair, every fixed exogenous word of n sequential moves has an n-fold closed-neighborhood dependency upper bound. Separately, on a supplied finite bipartite split, row-normalized real maps preserve the remote algebraic marginal and Kraus-complete local matrix families preserve the remote partial trace"
       },
       {
-        "hypothesis_boundary": "sigma, R, ConsultsOnly, and every ConeRefinement map/law are supplied. The helper proves neither their source production nor fairness, liveness, positivity, normalized state/channel, CPTP, distance, clock, spacelike, continuum, or laboratory semantics. Scientific owner #728 records the missing source scheduler/channel attachment; #739 and #730 record the clock and continuum-causality attachments. This row emits no prediction-ladder entry",
+        "hypothesis_boundary": "sigma, R, ConsultsOnly, and every ConeRefinement map/law are supplied. The helper proves neither their source production nor fairness, liveness, positivity, normalized state/channel, CPTP, distance, clock, spacelike, continuum, or laboratory semantics. Historical lane #728 (closed; live owner #1026) records the missing source scheduler/channel attachment; #739 and #730 record the clock and continuum-causality attachments. This row emits no prediction-ladder entry",
         "id": "conditional_adaptive_scheduler_locality_helper",
         "lean_declarations": {
           "AdaptiveScheduler": [
@@ -5730,7 +5757,7 @@
         "statement": "For concrete localRepair, a supplied adaptive scheduler and supplied ConsultsOnly consultation region have the exact n-step cone bound ball(S union R,n); a one-site change outside ball(S,n) union ball(R,n) cannot change the probe readout. A two-cell control proves the consultation term is indispensable. Declared refinement maps and one-step intertwining imply cone-image inclusion and run/readback naturality"
       },
       {
-        "hypothesis_boundary": "the finite source packet and its log-transition corner action are attained, while the complete reference is not source-selected. Conditional repair of supplied trivial data under a supplied counting reference realizes only its uniform transition kernel; constant rescaling leaves that kernel unchanged, and distinct initial laws give distinct complete path references. The matching parameter exists uniquely at the supplied empirical target, but the constraint observable and level remain declared. A typed finite-to-real transfer exists only under an undercut receipt. The complete binary history law does not select the off-alphabet curvature of a regular Legendre system: the displayed family is constructed, not source-produced. The concave control concerns modes/minimizers only: constrained saddles, complex or signed stationary phase, and refinement routes are not excluded. Closed #731 records only the attained declared-bundle composition. Scientific owner #739 records source selection of the reference, real enrichment, stationary-phase mechanism, and source clock; #730 records the amplitude/interference interface, while physical fields and observable currents are not supplied here. This row emits no prediction-ladder entry",
+        "hypothesis_boundary": "the finite source packet and its log-transition corner action are attained, while the complete reference is not source-selected. Conditional repair of supplied trivial data under a supplied counting reference realizes only its uniform transition kernel; constant rescaling leaves that kernel unchanged, and distinct initial laws give distinct complete path references. The matching parameter exists uniquely at the supplied empirical target, but the constraint observable and level remain declared. A typed finite-to-real transfer exists only under an undercut receipt. The complete binary history law does not select the off-alphabet curvature of a regular Legendre system: the displayed family is constructed, not source-produced. The concave control concerns modes/minimizers only: constrained saddles, complex or signed stationary phase, and refinement routes are not excluded. Closed #731 records only the attained declared-bundle composition. Historical lane #739 (closed; live owner #1026) records source selection of the reference, real enrichment, stationary-phase mechanism, and source clock; #730 records the amplitude/interference interface, while physical fields and observable currents are not supplied here. This row emits no prediction-ladder entry",
         "id": "finite_history_variational_helpers_and_bridge_obstruction",
         "lean_declarations": {
           "DiscreteEulerLagrange": [
@@ -6835,7 +6862,7 @@
         "delta_alpha_had_5_MZ": 0.027609,
         "id": "hadronic_correction_engine",
         "pin_factor": 1.0317603861495885,
-        "policy": "The published-compilation payload is the correction engine of the fine-structure lane; source-only hadron rows stay suppressed. The resource-deferred QCD backend supplies no source-only result; scientific owner #736 records the bounded particle-output obligation, and source-only QCD remains outside the available resources.",
+        "policy": "The published-compilation payload is the correction engine of the fine-structure lane; source-only hadron rows stay suppressed. The resource-deferred QCD backend supplies no source-only result; historical lane #736 (closed; live owner #1026) records the bounded particle-output obligation, and source-only QCD remains outside the available resources.",
         "source_compilation": "knt19_pinned_piecewise_v1",
         "uncertainty_total": 0.000112
       },
@@ -6855,15 +6882,18 @@
         ],
         "claim_boundary": "Lambda is the perturbative transmutation scale of the source coupling. Hadron masses additionally require the nonperturbative ratio m_h/Lambda, which this lane does not supply.",
         "declared_external_inputs": "threshold locations are declared external quark scheme masses, and the interval is the swept threshold bracket",
+        "historical_owner_issues": [
+          736
+        ],
         "id": "lambda_qcd_transmutation_scale",
+        "live_owner_issues": [
+          1026
+        ],
         "loop_order": "four_loop_beta_with_three_loop_decoupling",
         "published_central_gev": 0.338,
         "published_source": "published perturbative determinations of the three-flavor scale, compare-only",
         "relative_deviation": -0.009422580801896605,
         "row_class": "conditional_on_P_and_declared_threshold_inputs",
-        "scientific_owner_issues": [
-          736
-        ],
         "tier": "T2_conditional",
         "value_central_gev": 0.33481516768895897,
         "value_interval_gev": [
@@ -6879,15 +6909,18 @@
         "claim_boundary": "This is a conditional hadron mass: source transmutation times a declared external lattice-theory ratio. A source-only hadron mass requires the production hadron backend.",
         "external_theory_factor": 2.775,
         "external_theory_uncertainty": 0.105,
+        "historical_owner_issues": [
+          736
+        ],
         "id": "nucleon_mass_external_ratio",
         "interval_contains_measured": true,
+        "live_owner_issues": [
+          1026
+        ],
         "measured_gev": 0.93827,
         "measured_source": "proton mass, compare-only",
         "relative_deviation": -0.009760420415380278,
         "row_class": "oph_plus_external_qcd_theory",
-        "scientific_owner_issues": [
-          736
-        ],
         "tier": "T2_conditional",
         "value_central_gev": 0.9291120903368612,
         "value_interval_gev": [
@@ -6949,11 +6982,14 @@
         "artifact_ref": "code/particles/runs/flavor/quark_spread_fiber_structure_transport_obstruction.json",
         "fiber_cut_detected": false,
         "fork": "ii_fiber_survives",
-        "id": "quark_absolute_masses_obstruction",
-        "scientific_owner_issues": [
+        "historical_owner_issues": [
           736
         ],
-        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
+        "id": "quark_absolute_masses_obstruction",
+        "live_owner_issues": [
+          1026
+        ],
+        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (historical matter receipt #314, historical port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
         "tier": "source_only_nonidentifiability_obstruction_transport"
       },
       {

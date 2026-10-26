@@ -132,8 +132,8 @@ WHAT IS NOT PROVED.  The step index `n` is a declared evolution parameter,
 not physical time.  The sources `ρ` and `J` are declared inputs, not
 source-produced currents.  No photon, propagation speed, Lorentz
 covariance, continuum limit, or laboratory readout is claimed.  The
-kinetic term is declared, not derived from the three OPH axioms or from
-repair dynamics.  At the threshold `h² (3 + √5) = 4` itself the staggered
+kinetic term is declared, not derived from the theorem-library premises
+A1--A3 or from repair dynamics.  At the threshold `h² (3 + √5) = 4` itself the staggered
 form is nonnegative and conserved, but it is not coercive: the generalized
 double-root mode has unbounded electric energy.  Thus uniform electric-energy
 boundedness fails at exact equality (`instability_at_golden_boundary`,

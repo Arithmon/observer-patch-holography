@@ -107,8 +107,9 @@ is not certified after occupation removal.
 
 The calibration is observably different from isolated probing. As a separate
 test at model interval `1/8`, the complete-field onsite probabilities differ
-from the isolated ones by up to `0.00530`; some nonedge pair phase differences
-reach about `0.000977`. These reflect higher-order coupled effects. Independent
+from the isolated ones by more than `1e-4` (about `0.0053` in the retained
+run); some nonedge pair phase asymmetries exceed `1e-5` (about `0.001`). The
+receipt does not store these two values; the tests assert the thresholds. These reflect higher-order coupled effects. Independent
 full-Hamiltonian comparisons, spectator-trace tests and source-corruption
 tests check that the executable does not substitute isolated laws.
 

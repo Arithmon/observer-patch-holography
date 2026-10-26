@@ -56,7 +56,8 @@ Phi_j(|x><y|) = G_j(key(x),key(y)) |x+jD><y+jD|.
 
 Seam locality, the classical update, number-phase covariance, endpoint-swap
 covariance and the committed definite-current record contract are precisely
-the premises reused here. Their classification supplies the full map once
+the premises reused here; the two covariances are declared premises of the
+construction, not consequences of the classical rule. Their classification supplies the full map once
 the table is known. It does not restrict the comparison to populations.
 
 Choose the existing representative configuration for each seam key below;

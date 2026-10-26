@@ -292,7 +292,8 @@ def render(data: dict, rows: list[dict]) -> str:
     lines.append(
         "Rendered by `tools/build_sm_correspondence.py` from the"
         f" `{SECTION}` section of `tracking/premise_register.json`; edit the"
-        " JSON, then regenerate. Issue #735 owns this section."
+        " JSON, then regenerate. The section was established under the"
+        " historical lane #735 (closed); its open work is owned by #1026."
     )
     lines.append("")
     lines.append(data["policy"])
@@ -342,7 +343,7 @@ def render(data: dict, rows: list[dict]) -> str:
     lines.append("")
     lines.append(
         "Premise ids name rows of the program-wide premise register"
-        " (issue #727). Rows referenced by this table:"
+        " (established under historical issue #727). Rows referenced by this table:"
     )
     lines.append("")
     for entry in referenced_register_rows(rows):

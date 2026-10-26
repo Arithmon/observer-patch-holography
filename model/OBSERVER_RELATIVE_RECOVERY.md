@@ -66,7 +66,7 @@ construction realizes those domains.
 | Passive decay to elapsed attempts | Two current-derived endpoints read an antipodal mode with exact conditional score mean `(9/10)^n`. Complete trial counts give a finite-window inverse without prepared oscillator, stationary state or independent replicas. | Repeated intervals must have one fixed unknown length. The stopping gate and scheduler tape are outside the decoder; a random-length counterexample defeats this score-mean inverse. Attempt counts are not physical durations. |
 | Occupation histories to a spatial action | Complete native records reconstruct long occupation averages with an exact Gaussian-limit covariance and positive quadratic action. The incident-clock correction is derived rather than replaced by a mean wait. | Stationary diagonal preparation and carrier-wide initial/current disclosure are supplied. A port-only tape supplies only its local scalar. The field is a history fluctuation, not an instantaneous Gaussian state. |
 | Continuous field observations and spherical screens | The common native Green limit `G` defines a regular strongly local `H1` generator `A=G^-1` of spectral dimension two. Actual interpolated density paths converge in `C([0,T],H^-3(S2))`, with covariance `exp(-|tau-u|A)` at `tau=attempts/(1260*16^level)`; the declared `A^-1/2` filter gives `H^-2` paths. A positive weighted dual graph has Green error at most `182*2^-level` and the same continuum limits. | Simultaneous scaling retains the spatial subsequence, uniform fixed-number preparation, IID seams and full readback. Normalized incident clocks, including predictable port choices with degree-weighted ticks, sample the same paths. The cumulative-field count-first limit and synthesized cosine waves retain their separate contracts. The static Dirichlet-bulk and complete linear free-scalar dictionaries fail the scoped spectral tests. Whole-sequence uniqueness, other radial observations and physical Lorentzian identification are unproved. |
-| Spatial spectrum to coherent waves | Two-axis source pulses join angular phases and radial modes with a controlled product-formula error. One positive product operator determines thermal CCR covariance, sine response and full-algebra modular flow; its action gives a measurable Lorentz metric, smooth if the full coefficient density is smooth. A finite quartic projection has complete interacting source histories. | Radial design, coupling, preparation and protected controls remain supplied. Finite-word bounds construct growing angular encoders under quantified precision services; their growing execution is unperformed. Smoothness of the native limit, spatial-patch modular flow, interacting continuum QFT and SI units remain open. |
+| Spatial spectrum to coherent waves | Two-axis source pulses join angular phases and radial modes with a controlled product-formula error. One positive product operator fixes the thermal CCR covariance and sine response of a free field assembled on supplied qubit codes; by the finite KMS identity its Gibbs state has the rescaled Hamiltonian flow as full-algebra modular flow. The chosen hyperbolic action has a measurable Lorentz-signature density, smooth if the full coefficient density is smooth. A finite quartic projection has complete interacting source histories. | Radial design, coupling, preparation and protected controls remain supplied. Finite-word bounds construct growing angular encoders under quantified precision services; their growing execution is unperformed. Smoothness of the native limit, spatial-patch modular flow, interacting continuum QFT and SI units remain open. |
 | Controlled repair to continuum response | The executed-clock derivative converges to `2(I-exp(-tau*A))f`, with a nonzero fixed-amplitude bound. A separate fixed-selection-slot calculation gives a nonzero exponentially bounded remote derivative for separated nonnegative profiles. | An exact finite response cone fails if the same support/control/time dictionary is imposed. Its physical locality is unproved; this uses an intervention derivative, not equilibrium correlations. Disclosure, control, timeout fields and coin-service costs retain their contracts. |
 | Endpoint records to causal placement | A declared seam-midpoint readout and canonical dependency height satisfy the registered forward Lorentz-cone placement conditions on every finite complete tape. A four-event native execution with all sixteen coin branches has an authenticated Lean instance. | Exogenous scheduling and complete endpoint records are required. Two four-event native diamonds have exact order-embedding witnesses, but another tape has a null-cone pair without ancestry; causal-order equivalence, physical boosts and proper-time calibration do not follow. |
 | Field records to temporal representation | Exact incident-clock correlations reconstruct a seven-mode cyclic Hilbert space on one carrier; actual source-screen correlations also certify a nontrivial two-vector temporal subspace. | The seven-mode result needs exact laws and is ill-conditioned for sampled data. Screen transfer values are compressions, not a closed two-mode dynamics or physical energy calibration. |
@@ -87,12 +87,15 @@ density vectors. Adaptive choices have no such jitter-independence theorem;
 modular flow, physical movement and SI calibration are unidentified.
 The [joint product construction](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
 uses native angular phases and declared radial pulses to obtain a thermal
-CCR field, sine response and `sigma_s=alpha_(-bs)` on its full Fock algebra.
+CCR field on supplied qubit codes, sine response and, by the finite KMS
+identity of the chosen Gibbs state, `sigma_s=alpha_(-bs)` on its full Fock
+algebra.
 Its [record filters](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
 distinguish classical and quantum covariance, with finite-count, radial-grid
 and full-port/Schur bounds. Dirichlet radial boundaries keep the angular
-constant without a zero frequency. The [wave action fixes a measurable
-Lorentz-signature metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+constant without a zero frequency. The [chosen hyperbolic wave action has a measurable
+Lorentz-signature metric density](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave);
+the signature is the choice of action, the spatial tensor is derived.
 Full-port native conditional increments recover its angular coefficients by
 first refining at fixed density time, then taking short-time and chart limits.
 The disclosed total-one calibration is distinct from fixed-number field
@@ -115,8 +118,9 @@ The [continuing finite experiment](predictions/README.md#prepared-reference-cloc
 a [compiled positive-log clock, pair intervention and X/Y detector](predictions/prepared_clock_source.py)
 to that same register. All 3600 two-attempt native tapes, failed preparations,
 sixteen detector addresses and untouched reference outputs remain included.
-The ideal successful work marginal determines `H=-log(M/m0)` and
-`sigma_s=alpha_(-s)` after request forgetting and reference trace; that
+The ideal successful work marginal determines `H=-log(M/m0)`, and
+`sigma_s=alpha_(-s)` holds by that definition of `H` after request
+forgetting and reference trace; that
 identity does not extend to the complete record/work state or unsupported
 padding; numerical source errors remain separate. The same density fixes all
 eleven fluctuation pairs without separate mode polarizations. Three band
@@ -162,7 +166,9 @@ tolerance, one common smooth static `1+3` metric reproduces all its joint
 probabilities and finite detector/reference outputs within that tolerance.
 Source and incident-clock errors enter the same triangle budget. This is
 an existence result for a fixed sequence of smooth descriptions, with no
-data fitting, computable smoothing rate or exact smooth-native claim.
+data fitting, computable smoothing rate or exact smooth-native claim. Both
+sides are free fields assembled on the same supplied codes, differing in
+the smoothness of the angular coefficients.
 The [proof and readout domain](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
 retain the radial boundary, state and active-control assumptions.
 
@@ -230,7 +236,9 @@ reference entanglement provides a control against a classical replacement.
 
 Its [independent clock/response calculation](quantum_observer_correspondence/CLOCK_RESPONSE.md)
 rebuilds the native branches directly. The coherent probe settings have the
-same clock marginal but different joint clock/detector laws. Even a control
+same clock marginal, by construction of the state-independent scheduler, but
+different joint clock/detector laws, so the comparison tests the correlation
+between seam records and the detector. Even a control
 matching all status-conditioned marginals fails the joint comparison.
 These are event-count clocks. The phase, mixer and terminal detector are
 declared ideal interventions; their physical implementation or duration is
@@ -779,7 +787,9 @@ access supplies the discriminator.
 The [quantum federation experiment](federated_quantum_sector/README.md)
 retains individual local outcomes and full quantum histories across carriers.
 Its four-attempt probe gives `5/8` for C and `1/2` for E; a first-record
-controlled phase changes C to `3/8` while E stays `1/2`. Coherent preparation
+controlled phase changes C to `3/8` while E stays `1/2`. The contrast comes
+from the seams inside each carrier, and the crossing seam acts trivially on the
+probe coherence. Coherent preparation
 and detector operations are specified services. These conditional model
 predictions have no identified laboratory implementation here.
 

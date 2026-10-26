@@ -222,8 +222,8 @@ def verify_interaction(row, cache):
     left_z, right_z = number[0]-number[1], number[2]-number[3]
     left_x = a[0].conj().T@a[1]+a[1].conj().T@a[0]
     right_x = a[2].conj().T@a[3]+a[3].conj().T@a[2]
-    chsh = math.sqrt(2)*(left_z@right_x+left_x@right_z)
-    need(abs(np.vdot(after, chsh@after).real-2*math.sqrt(2)) < 1e-12, 'interacting dual-rail CHSH')
+    witness = math.sqrt(2)*(left_z@right_x+left_x@right_z)
+    need(abs(np.vdot(after, witness@after).real-2*math.sqrt(2)) < 1e-12, 'interacting dual-rail entanglement witness')
     gamma = np.array([[np.vdot(after, a[i].conj().T@a[j]@after) for j in range(4)] for i in range(4)])
     close(gamma, np.eye(4)/2, 'non-Slater one-body density')
 

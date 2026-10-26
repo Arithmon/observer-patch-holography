@@ -45,7 +45,7 @@ and the clocks inside it.
   explicit. A separate finite quantum process joins electric flux, charged
   matter and a scalar field with recorded feedback. Refining screens support
   Gaussian field limits and waves of finite speed.
-- **Relativistic field theory as the observers' effective description.** On
+- **A Lorentzian scalar field as the observers' effective description.** On
   a declared radial product over a refining screen, one action determines
   field correlations, response and an active modular clock. For any finite
   measurement menu and positive tolerance, one smooth static (1+3)-dimensional
@@ -59,7 +59,7 @@ and the clocks inside it.
 - **Internal matter and allowed interactions.** A declared spin lift of the
   finite response gives the internal charges of one Standard Model generation.
   One scalar doublet admits all three charged-fermion interaction channels,
-  with 648 exact family/current/component identities. Shared spatial operators
+  checked exactly for arbitrary family matrices. Shared spatial operators
   connect conditional scalar and fermion constructions. The family matrices,
   Higgs phase, mass scale and physical particle identification remain inputs.
   [Matter and field contracts](model/observer_particles/DERIVATION.md).
@@ -69,20 +69,20 @@ and the clocks inside it.
   Native repair separately transports a collective correlation charge with
   compatible local detector records on overlapping regions. Its physical
   particle interpretation remains open.
-- **Standard physics from finite agreement.** Finite theorems take the
-  observer's readouts to familiar structure: public records that do not depend
-  on the order of repairs; the Born rule, which fixes quantum probabilities,
-  and the Tsirelson bound on completed records; a carrier that is
-  three-dimensional in its slow response; the Standard Model gauge Lie algebra and a conditional anomaly-free
-  matter representation; a (1+3)-dimensional causal order with conditional
-  count-based proper time; and the Einstein equation under independent
-  entropy, null-balance, stress and continuum premises.
+- **Standard physics from finite agreement.** Under stated premises, finite
+  theorems give the specification familiar structure: public records that do
+  not depend on the order of repairs; the Born rule and the Tsirelson bound on
+  completed records; a carrier that is three-dimensional in its slow response;
+  the Standard Model gauge Lie algebra and a conditional anomaly-free matter
+  representation; a (1+3)-dimensional causal order with count-based proper
+  time; and the Einstein equation from null balance.
 - **Mathematics you can check.** The [Lean library](Lean/) contains more than
   12700 public theorems and lemmas with no admitted proofs, and every retained
   computational receipt is replayed under continuous integration.
 - **Tests fixed in advance.** Predictions and their rejection rules enter the
-  [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) before any
-  comparison data, with timestamps attested on the Bitcoin blockchain; the
+  [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) before the
+  eligible comparison data, with OpenTimestamps proofs, most of them anchored in
+  Bitcoin; the
   dispersion prediction for the primitive port orbit is one of them. The
   [postdiction ledger](docs/POSTDICTION_LEDGER.md) and the
   [falsification programme](docs/OPH_FALSIFICATION_PROGRAM.md) keep comparisons
@@ -127,9 +127,9 @@ remaining inputs.
   geometry, which an observer's current records recover.
   [Carrier construction](code/a5_closure/README.md).
 - **Gauge symmetry.** Under stated premises on complete reversible response
-  and observer transport, the construction forces the Standard Model gauge
-  Lie algebra, and a specified matter representation gives an anomaly-free
-  generation.
+  and observer transport, the twelve-port response algebra has the Standard
+  Model gauge Lie type, and a specified matter representation gives an
+  anomaly-free generation.
   [Gauge derivation](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
 - **Thermodynamics.** One finite repair construction gives the four laws,
   fluctuation relations and the Landauer erasure bound under stated reference,

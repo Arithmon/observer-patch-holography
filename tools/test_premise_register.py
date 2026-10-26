@@ -111,7 +111,9 @@ def test_page_renders_the_folded_sections_with_anchors() -> None:
 def test_intro_keeps_register_scientific_and_explains_evidence_roles() -> None:
     register = _register()
     rendered = register_tool.render(register_tool.validate(register), register)
-    assert "Established under [issue #727]" in rendered
+    assert "Established under the historical issue #727 (closed)" in rendered
+    assert "Live owner (historical lanes)" in rendered
+    assert "Current implementation" in rendered
     assert "maintained as a scientific register" in rendered
     assert "implicit reverse-consumer edge" in rendered
     assert "premise-discharge queue" not in rendered
@@ -188,14 +190,14 @@ def test_missing_evidence_path_rejected() -> None:
 def test_lane_out_of_range_rejected() -> None:
     register = _register()
     register["rows"][0]["consuming_lanes"] = [727]
-    with pytest.raises(SystemExit, match="not a current scientific lane"):
+    with pytest.raises(SystemExit, match="not a registered historical lane"):
         register_tool.validate(register)
 
 
 def test_retired_lane_738_rejected() -> None:
     register = _register()
     register["rows"][0]["consuming_lanes"] = [738]
-    with pytest.raises(SystemExit, match="not a current scientific lane"):
+    with pytest.raises(SystemExit, match="not a registered historical lane"):
         register_tool.validate(register)
 
 
@@ -249,3 +251,20 @@ def test_duplicate_json_key_rejected(tmp_path: Path) -> None:
     duplicate.write_text('{"schema":"one","schema":"two"}', encoding="utf-8")
     with pytest.raises(SystemExit, match="duplicate JSON key"):
         register_tool.load_json(duplicate)
+
+
+def test_every_row_carries_a_valid_discharge_record() -> None:
+    register = _register()
+    rows = register_tool.validate(register)
+    statuses = {row["discharge"]["status"] for row in rows}
+    assert statuses <= set(register_tool.DISCHARGE_STATUSES)
+    by_id = {row["id"]: row["discharge"]["status"] for row in rows}
+    assert by_id["PR-01"] == "obstructed"
+    assert by_id["PR-65"] == "obstructed"
+
+
+def test_unknown_discharge_status_rejected() -> None:
+    register = _register()
+    register["rows"][0]["discharge"]["status"] = "proved_physical"
+    with pytest.raises(SystemExit, match="discharge status must be one of"):
+        register_tool.validate(register)

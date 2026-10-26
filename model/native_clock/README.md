@@ -304,7 +304,7 @@ Counts follow from the coefficients of `pi (T0 + z T1)^n 1`. The retained
 It also retains first-current probabilities through 16 attempts and the exact
 remaining no-current tail.
 
-## New measurement predictions
+## Exact model laws for new measurements
 
 | Observable and preparation | Exact prediction |
 | --- | --- |

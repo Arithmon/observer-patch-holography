@@ -134,6 +134,11 @@ on all complex matrix columns and arbitrary reference inputs.
 | `(0,5)`: 93 flips and 592 conjugating X pulses | 1,096,318 | 190,684 |
 | `(2,3)`: 156 flips and 1,076 conjugating X pulses | 1,839,068 | 319,940 |
 
+The previous column records the earlier expanded compilation and is not
+retained in a current receipt. Each current count equals the previous one
+minus 9,738 pulses per flip macro (93 and 156 flips), and the current `(0,5)`
+count is retained in [the receipt](quantum_native_results.json).
+
 The `(2,3)` route serves the [encoded-memory variant](ENCODED_MEMORY.md).
 A path containing `m` such macros saves exactly `9,738 m` pulse requests,
 and twice that many load/export service events. These are source-word counts,

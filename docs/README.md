@@ -64,7 +64,9 @@ when consolidating documents.
   complete-history closure, intrinsic computation, emergent-physics proposals,
   mathematical fixed points and the different uses of time.
 - [Premise Reference](AXIOM_REFERENCE.md) gives the formal statements of the
-  theorem-library premises A1, A2 and A3.
+  theorem-library premises A1, A2 and A3. It is retained byte-identical for
+  pinned receipts; its "three core axioms" wording is superseded by the
+  [basis](BASIS.md).
 - [Source and Repair-Law Selection](../model/SOURCE_SELECTION.md) separates
   the executable candidate inputs, derived consequences and physical identification.
 - [Frozen-Prediction Ladder](FROZEN_PREDICTION_LADDER.md) records tests whose
@@ -146,7 +148,9 @@ and papers ledgers.
 ## Research Notes
 
 Each note states a maintained construction or theorem tied to its verifying
-code package. Source-pinned notes require matching receipt updates when their
+code package. The eight clock and source-realization notes are retained
+conditional theorems of the earlier source lane; the live construction is
+[`model/`](../model/README.md), which cites them only where stated. Source-pinned notes require matching receipt updates when their
 content changes. Consolidate overlapping notes and keep implementation
 contracts beside the code; `extra/` holds TeX papers only.
 
@@ -188,6 +192,16 @@ order:
 
 **Independent comparison.**
 
+- [OPH predictions and public-data comparisons](research/PUBLIC_DATA_PREDICTION_AUDIT.md)
+  places the fixed predictions against public data: the primordial tilt at
+  the lower 0.612 percent tail of ACT DR6 P-ACT-LB, the coupling, tau mass,
+  dispersion, Bell and optical-clock comparisons.
+- [OPH particle mass response and hierarchy audit](research/OPH_PARTICLE_MASS_RESPONSE.md)
+  records that the tested mass prescriptions fail the charged-lepton
+  hierarchy and bounds the whole affine response class.
+- [Observer spacetime and predictions without a laboratory](research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
+  states the internal clock laws and the acceptance contract for a native
+  clock experiment.
 - [Can the fixed edge dispersion support the proposed photon test?](research/DISPERSION_FEASIBILITY.md)
   bounds the exact pair-production thresholds and distinguishes vacuum emission
   in two specified lepton controls, verified by
@@ -195,6 +209,12 @@ order:
 - [Independent alpha/tau reproduction and the first bounded natural comparison](research/INDEPENDENT_POSTDICTION_COMPARISON.md)
   reproduces both certified alpha roots and the conditional tau window, verified by
   [`code/independent_postdictions`](../code/independent_postdictions/).
+
+**Lean companion.**
+
+- [The declared repair law on the Euclidean history register](research/SOURCE_LAW_HISTORY_REGISTER.md)
+  is the companion note of the Lean `SourceLaw` library: inertia, the golden
+  refinement family and the reference state.
 
 **Existing-theory audit and simplification.**
 
@@ -221,6 +241,7 @@ order:
 
 - [INS-03 source-bound phase-sensitive readout](../code/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md)
 - [OL-A1 signature replication](../code/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md)
+  (status `FAILED`; see the [physical audit](../model/PHYSICAL_AUDIT.md))
 - [OL-A1 carrier count by absolute support size](../code/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md)
 
 ## Evidence, Data And Writing Policies

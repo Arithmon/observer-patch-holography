@@ -358,4 +358,5 @@ the released architectural fixtures in `docs/AXIOM_REFERENCE.md`.
 | M1 metric reads | Exact required-direct-read theorem for a specified affine meaning | Metric-radius selection, mandatory publication and individual read-from identification |
 
 These are conditional theorems on source observations. They do not constitute
-a full three-axiom model or a countermodel to entailment of M1 by that basis.
+a full model of the premises A1--A3 or a countermodel to entailment of M1 by
+those premises.

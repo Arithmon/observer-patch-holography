@@ -109,10 +109,10 @@ is a source operation, public effect, instrument, or outcome receipt. The
 package does not derive affinity, a source effect algebra, Gleason/Busch
 hypotheses, noncontextuality across rich coexistent-effect contexts,
 operational coarse graining, a physical quantum instrument, or any
-arrow-of-time claim. Current quantum lane #730 owns a phase-sensitive
-source-produced instrument with common-preparation outcomes (including the
-y-magnitude readout of an unknown state), the operational additivity
-bridge, and a freshly preregistered validation of the oriented readout;
-deferred derivation of the additivity premise is scheduled under #739. Adding only
+arrow-of-time claim. A phase-sensitive source-produced instrument with
+common-preparation outcomes (including the y-magnitude readout of an unknown
+state), the operational additivity bridge, a freshly preregistered validation
+of the oriented readout and a derivation of the additivity premise are open
+(historical issues #730 and #739, closed). Adding only
 more phase-free real contexts or continuity to binary-projector
 normalization cannot work.

@@ -12,7 +12,7 @@
 \usepackage{microtype}
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
-\hypersetup{pdftitle={Explaining the Yang-Mills Mass Gap with Observer-Patch Repair Dynamics: A Support-Visible OPH Route to the Clay Problem: A Conditional Identity},pdfauthor={Bernhard Mueller; Jonathan Hill}}
+\hypersetup{pdftitle={A Conditional Identification of the Yang-Mills Gap with a Finite Repair Gap: Dobrushin Repair Floors and a Z2 Test of the Transfer Receipt},pdfauthor={Bernhard Mueller; Jonathan Hill}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.55em}
 \setlength{\emergencystretch}{3em}
@@ -37,8 +37,8 @@
 \newcommand{\C}{\mathbb C}
 \newcommand{\R}{\mathbb R}
 
-\title{\textbf{Explaining the Yang--Mills Mass Gap with Observer-Patch Repair Dynamics}\\
-\large A Support-Visible OPH Route to the Clay Problem: A Conditional Identity}
+\title{\textbf{A Conditional Identification of the Yang--Mills Gap with a Finite Repair Gap}\\
+\large Dobrushin Repair Floors and a \(\mathbb Z_2\) Test of the Transfer Receipt}
 \author{B.\ M\"uller \and Jonathan Hill}
 \date{\OPHPaperReleaseDate}
 \input{../paper/release_info}
@@ -52,15 +52,24 @@
 \end{center}
 
 \begin{abstract}
-The Clay Yang--Mills problem asks for a nontrivial four-dimensional quantum
-gauge theory with a positive mass gap. Observer-Patch Holography (OPH) supplies a finite repair mechanism
-whose relaxation gap equals the transfer-Hamiltonian gap when both operators
-come from the same ground-state transform. The four-dimensional conclusion also
-requires convergence of the Schwinger functions, reflection positivity,
-Euclidean locality, nontriviality, and convergence of the transfer data. These
-continuum and cross-fiber premises contain the hard physical construction. The
-paper states the resulting gap theorem conditionally and keeps the finite repair
-theorem separate from the Clay claim.
+A finite collar-repair generator built from orthogonal conditional
+expectations has a certified positive relaxation gap on a cofinal tower once
+a Dobrushin influence sum gives a uniform approximate-tensorization bound,
+and when the repair generator and the transfer Hamiltonian come from one
+ground-state transform the two gaps coincide. That transfer receipt is the
+load-bearing physical input, and the paper tests it on \(\mathbb Z_2\)
+lattice gauge theory: it holds exactly in the free limit and fails for the
+Wilson transfer matrix at every tested interacting coupling, with relative
+residuals of the best constant-rate approximant from \(0.038\) to \(0.24\) on
+the \(L=3\) torus, while the Kogut--Susskind Hamiltonian takes an exact
+fiber-dependent-rate form whose rates obey the machine-checked sharp bound
+\(c_l\ge2\lambda\). The four-dimensional conclusion that the Clay
+Yang--Mills problem asks for also requires convergence of the Schwinger
+functions, reflection positivity, Euclidean locality, nontriviality and
+convergence of the transfer data; these continuum and cross-fiber premises
+contain the hard physical construction, so the paper states the resulting
+gap theorem conditionally and keeps the finite repair theorem separate from
+the Clay claim.
 \end{abstract}
 
 \section*{What This Paper Contributes}
@@ -163,7 +172,7 @@ summarized in the flagship synthesis~\cite{oph1}. The executable observer
 construction~\cite{ophmodel} runs native repair, quantum instruments, recorded feedback and
 local event clocks; the compact-gauge collar system of this paper is a separate declared
 construction. The gauge derivation is
-\emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency}~\cite{oph2},
+\emph{Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises}~\cite{oph2},
 which carries the support-visible compact-gauge repair-gap theorem inside the Standard Model gauge paper
 itself. The particle branch is separate~\cite{oph3}. The finite repair and quotient-normal-form
 machinery comes from \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That
@@ -566,8 +575,13 @@ the finite type table prove
 \sup_{r,b,v}\sum_{u\ne v}a_{vu}^{r,b}\le\eta_*<1.
 \tag{3}
 \]
-The Dobrushin Poincar\'e comparison then derives the uniform approximate-tensorization bound
-with \(A_*=(1-\eta_*)^{-1}\) \cite{wu06};
+The Dobrushin Poincar\'e comparison~\cite{wu06} then derives the uniform
+approximate-tensorization bound
+\[
+\|f-\pi_{r,b}(f)\|_2^2\le A_*\sum_{v\in V_r}\|(I-P_{v,r,b})f\|_2^2,
+\qquad A_*=(1-\eta_*)^{-1};
+\tag{AT}
+\]
 \item coarse shadow preserves the listed type transitions and conditional kernels and creates no
 unlisted type.
 \end{enumerate}
@@ -1221,7 +1235,7 @@ Let \(G\) be a compact simple gauge group carried by a support-visible compact-g
 branch satisfying the standing setup above and the continuum certificate of
 Assumption~\ref{ass:ym-continuum-certificate}, the finite transfer receipt of
 Assumption~\ref{ass:finite-transfer-receipt}, and all hypotheses of
-Theorem~\ref{thm:ec-law}, Lemma~\ref{lem:floor}, and
+Theorem~\ref{thm:ec-law}, Proposition~\ref{lem:floor}, and
 Proposition~\ref{prop:finite-gap}. The theory reconstructed in
 Theorem~\ref{thm:os}
 is nontrivial, and its continuum support-visible Hamiltonian \(H\) satisfies
@@ -1360,35 +1374,35 @@ Yang--Mills gap is the repair gap:
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, B.~Cassie, P.~Nguyen, J.~Kim, D.~Matscheko, D.~A.~Friedman, J.~Hill, W.~T.~Glynn, M.~A.~Visser, K.~A.~Anirudha, and B.~de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics},
 2026.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/flagship/from_observer_consensus_to_standard_physics.pdf}.
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{oph2}
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, P.~Nguyen, D.~Matscheko, and D.~A.~Friedman,
-\emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency},
+\emph{Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
 
 \bibitem{oph3}
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, and D.~A.~Friedman,
-\emph{Deriving the Particle Zoo from Observer Consistency},
+\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
 
 \bibitem{oph4}
 B.~M\"uller, K.~Xue, J.~Kim, K.~A.~Anirudha, D.~Matscheko, and J.~Hill,
 \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That Implements Physics},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/reality_as_consensus_protocol.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/reality_as_consensus_protocol.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/reality_as_consensus_protocol.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/reality_as_consensus_protocol.pdf}.
 
 \bibitem{oph5}
 B.~M\"uller, A.~Osika, K.~Xue, B.~Cassie, B.~de La Fourni\`ere, and D.~A.~Friedman,
 \emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and Observer Synchronization in Observer-Patch Holography},
 2026.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/screen_microphysics_and_observer_synchronization.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/screen_microphysics_and_observer_synchronization.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/screen_microphysics_and_observer_synchronization.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/screen_microphysics_and_observer_synchronization.pdf}.
 
 \bibitem{ophfpe}
 B.~M\"uller,
@@ -1400,16 +1414,16 @@ Finite local-domain revision and data:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506},
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506/data/local_domain}.\\
 Canonical evidence archives:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence}, including the exact
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence}, including the exact
 local-domain package and checker at
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/local_domain}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence/local_domain}.
 
 \bibitem{ophstringselector}
 B.~M\"uller,
 \emph{Observer-Patch Holography as a String-Vacuum Selector: Observers, Clocks, Edge Strings, and the Bouchard-Donagi Witness},
 2026. Archived manuscript.\\
-Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/archive/observer_patch_holography_as_string_vacuum_selector.tex}.\\
-PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/archive/observer_patch_holography_as_string_vacuum_selector.pdf}.
+Source: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/archive/observer_patch_holography_as_string_vacuum_selector.tex}.\\
+PDF: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/archive/observer_patch_holography_as_string_vacuum_selector.pdf}.
 
 \bibitem{ophlean}
 B.~M\"uller et al.,
@@ -1418,57 +1432,57 @@ separate modules for the uniform-fiber lemma, commuting-projection inequality,
 finite-gap assembly and stripped witness, conditional continuum chain, and
 cofinal spectral-tail boundary,
 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/Lean}.\\
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/Lean}.\\
 Modules \texttt{KogutSusskindFiberRateComparison} and \texttt{GaugeOrbitQuotientGap}:
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/Lean/Screen/KogutSusskindFiberRateComparison.lean},
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/Lean/Screen/GaugeOrbitQuotientGap.lean}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/Lean/Screen/KogutSusskindFiberRateComparison.lean},
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/Lean/Screen/GaugeOrbitQuotientGap.lean}.
 
 \bibitem{ophz2}
 B.~M\"uller,
 \emph{Finite \(\mathbb Z_2\) lattice-gauge diagnostic for the ground-state-transform receipt},
 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/code/yang_mills}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/code/yang_mills}.
 
 \bibitem{ophmodel}
 FloatingPragma,
 \emph{OPH executable observer construction}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/model}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/model}.
 
 \bibitem{ophfedscaling}
 FloatingPragma,
 \emph{What propagates on a federation of identical elementary carriers}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/federated_observer/SCALING.md};
-receipt: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/federated_observer/results.json}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/federated_observer/SCALING.md};
+receipt: \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/federated_observer/results.json}
 
 \bibitem{ophnativeaction}
 FloatingPragma,
 \emph{A local action for native quantum observations}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/native_action/README.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/native_action/README.md}.
 
 \bibitem{ophmixing}
 FloatingPragma,
 \emph{Quantum mixing of the native C/E repairs}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer/QUANTUM_MIXING.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/observer/QUANTUM_MIXING.md}.
 
 \bibitem{ophrelscalar}
 FloatingPragma,
 \emph{A source-executed canonical scalar field regulator}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/relativistic_scalar/README.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/relativistic_scalar/README.md}.
 
 \bibitem{ophcontinuum}
 FloatingPragma,
 \emph{A spatial fluctuation field from one native history}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/physical_space_time/OCCUPATION_FIELD.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/physical_space_time/OCCUPATION_FIELD.md}.
 
 \bibitem{ophtimefields}
 FloatingPragma,
 \emph{Joint time and field laws on matched source screens}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer_time_fields/REFINEMENT.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/observer_time_fields/REFINEMENT.md}.
 
 \bibitem{ophpremises}
 FloatingPragma,
 \emph{OPH reverse-engineering table: model and theorem premises}, 2026.\\
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/PREMISES.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/PREMISES.md}.
 
 \bibitem{clay}
 Clay Mathematics Institute,

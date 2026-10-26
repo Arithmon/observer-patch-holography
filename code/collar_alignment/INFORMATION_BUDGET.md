@@ -25,8 +25,8 @@ canonical support equality. The branch includes main `7f99c8cc`.
 This is a focused evidence repair under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033),
 built on main `3d848b7f`. It repairs false zero information scores and makes
 the existing alignment criterion more informative. It builds on the
-sector-label and Gibbs audits without depending on the open first-law PR
-#1048. No physical model or new physical hypothesis is selected.
+sector-label and Gibbs audits without depending on the first-law repair
+#1048 (merged). No physical model or new physical hypothesis is selected.
 
 ## Reproduced failures
 

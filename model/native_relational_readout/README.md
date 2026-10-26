@@ -18,11 +18,11 @@ The plus-probability difference is `3644/69069 = 0.0527588354...`.
 Both candidates have **the same current waiting distribution**, with mean
 `33/5` native attempts for this preparation. Their phase measurements still
 distinguish them. An independent clock, a supplied Hamiltonian and a conversion
-to seconds are unnecessary for this conditional relational prediction.
+to seconds are unnecessary for this conditional relational law.
 
 The carrier, uniform seam scheduler, native candidate, coherent preparation,
 phase detector and logical stopping controller remain declared. No laboratory
-measurement has yet been identified with this protocol. These are predictions
+measurement has yet been identified with this protocol. These are exact laws
 of the executable native models, not new empirical agreement claims.
 
 ## What executes
@@ -103,7 +103,7 @@ sum through `N` and the remaining map `T0^N`. Their total trace is one.
 Individual first-event branches use `T1 T0^(n-1)`, which is compared with
 the state actually retained by the latched runtime.
 
-## Why the predictions differ
+## Why the two laws differ
 
 The moving-current CP maps are exactly identical for C and E. On a moving
 branch the current already determines the endpoint imbalance. Their

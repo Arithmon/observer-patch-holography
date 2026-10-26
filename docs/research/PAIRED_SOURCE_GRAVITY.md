@@ -398,8 +398,8 @@ comparison is an empirical selection, not an independent OPH prediction.
 The negative exit is the constructed source nonidentifiability (1)–(18).
 The retained physical obligation is to select and identify the source's
 spatial response, or justify the physical vacuum/null-stress condition above,
-on the same source/clock history. It belongs to #779/#729, with calibration
-under #736 and common-history identification under #740. A larger run of
+on the same source/clock history, together with its calibration and
+common-history identification. These obligations are open. A larger run of
 the same u-only source cannot decide this missing coefficient.
 
 ## Prior results and credit

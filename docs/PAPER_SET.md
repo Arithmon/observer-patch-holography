@@ -4,7 +4,8 @@ The [matter and common-field contracts](../model/observer_particles/DERIVATION.m
 connect the particle and gauge papers to the executable-observer and spacetime
 papers. They derive conditional internal multiplets and interaction lines,
 construct compatible field operators, and test the static geometry against
-relative stress. The fine-structure supplement separately evaluates the
+relative stress; the static radial product fails that test, so a responsive
+geometry is required. The fine-structure supplement separately evaluates the
 [entangled-pair spectral candidate of A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf) and its proposed capacity attachment.
 These finite connections do not supply observed masses, physical coupling
 normalization or full generalized-entropy stationarity.
@@ -88,10 +89,10 @@ lists the connections that remain to be built on the same process.
 | [An Executable Observer for Observer Patch Holography](../paper/executable_observer_construction.tex) | Construction paper: the specification, acceptance criteria, certified components, premise map and open connections. | States the executed-construction rows, which their protocol records in the model directory own. |
 | [Reality as a Consensus Protocol](../paper/reality_as_consensus_protocol.tex) | Theorem library: repair, local diamond, consensus normal forms, provenance order, distributed-systems extensions. | Library rows. |
 | [Observers Are All You Need](../paper/observers_are_all_you_need.tex) | Theorem library: observers, records, quantum identities, thermodynamics, matter continuum, closure equations. | Library rows. |
-| [Deriving Standard Model Gauge Structure](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Theorem library: gauge Lie-type forcing, response algebra, matter image. | Library rows. |
-| [Deriving the Particle Zoo](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Theorem library: matter sector, flavour and mass diagnostics. | Library rows. |
+| [Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Theorem library: the gauge Lie-type theorem under its premises, response algebra, matter image. | Library rows. |
+| [The Particle Zoo under Declared Matter Premises](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Theorem library: matter sector, flavour and mass diagnostics. | Library rows. |
 | [Recovering Observer Spacetime and Einstein Dynamics](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Theorem library: causal precursor, count limits, null tomography, Einstein composition. | Library rows. |
-| [Screen Microphysics and Observer Synchronization](../paper/screen_microphysics_and_observer_synchronization.tex) | Theorem library: carrier hardware, spectra, synchronization, frozen propagation rays. | Library rows. |
+| [Screen Microphysics and Observer Synchronization](../paper/screen_microphysics_and_observer_synchronization.tex) | Theorem library: twelve-port source selector, carrier spectra, central records, observer synchronization and the angular-rank isotropy theorem behind the dispersion freezes. | Library rows. |
 
 The companion papers in [extra/](../extra/README.md) and
 [cosmology/](../cosmology/README.md) carry focused results that the flagship

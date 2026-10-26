@@ -14585,7 +14585,8 @@
         "model/predictions/endpoint_audit.py",
         "model/predictions/test_endpoint_audit.py",
         "model/observer/p_response/README.md",
-        "model/observer/p_response/VALIDATION.md"
+        "model/observer/p_response/VALIDATION.md",
+        "code/P_derivation/runtime/thomson_endpoint_package_current.json"
       ],
       "falsifier": "The pinned source map fails to reproduce the declared branch; detector Kraus completeness, charge conservation or exact feedback coefficients fail; the actuator accesses first-current data beyond its detector bit; any branch is filtered; or canonical replay fails; the pinned target or source provenance changes without rejection; or the exact retrospective residual or comparison classification is incorrect.",
       "scope_if_false": "The designed P-dependent observer adapter or numerical receipt fails. The source P-closure certificate and its physical endpoint boundaries retain their original status; no global OPH or empirical fine-structure verdict follows.",
@@ -18215,7 +18216,7 @@
       "depends_on": [
         {
           "claim_id": "OPH-OBS-PATCH-DEF",
-          "role": "supplies the concrete localRepair read/write semantics used by the fixed-word dependency upper bound; the conditional E1 packet consumes the B4 partial-trace helper and the 86/247 capstone supplies an exact support-disjoint counted correlation datum, while scientific owner #728 carries source selection or justification of the regional carrier/factor reading and a nonconstant source realization, and E2 owns source-produced channel semantics and refinement-natural adaptive scheduling"
+          "role": "supplies the concrete localRepair read/write semantics used by the fixed-word dependency upper bound; the conditional E1 packet consumes the B4 partial-trace helper and the 86/247 capstone supplies an exact support-disjoint counted correlation datum, while source selection or justification of the regional carrier/factor reading and a nonconstant source realization, scoped under the historical lane #728 (closed), are owned by #1026, and source-produced channel semantics and refinement-natural adaptive scheduling by #1076"
         }
       ],
       "matrix_summary": {

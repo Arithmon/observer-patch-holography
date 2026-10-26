@@ -548,6 +548,11 @@ these distinctions in the executable receipt.
 
 ### Product readouts determine a proper noncommutative access algebra
 
+`ProductBand` is defined in
+[`interacting_band_extension/construction.py`](../interacting_band_extension/construction.py),
+and the values below are retained in
+[the interacting-band receipt](../interacting_band_extension/results.json).
+
 The same two-radial-mode `ProductBand` has a sharper access contract than
 declaring its entire sixteen-dimensional matrix algebra observable. Label
 the modes 0 and 1, each with four occupation addresses; mode 0 is the
@@ -621,6 +626,11 @@ algebra or a laboratory clock.
 
 ### A central state weight is identifiable from complete records
 
+`ProductBand` is defined in
+[`interacting_band_extension/construction.py`](../interacting_band_extension/construction.py),
+and the values below are retained in
+[the interacting-band receipt](../interacting_band_extension/results.json).
+
 Fix the same `ProductBand` Hamiltonian `H` at `g=1`, inverse temperature
 `beta=1/4`, four occupation addresses per mode, and the admitted algebra
 `A=B(C8) direct_sum B(C8)`. The faithful beta-KMS states of
@@ -677,7 +687,8 @@ has probability `25/36` for every w and cannot identify it; all timeouts
 (fewer than two incidents) have probability `35/36`. For the calibration event, the
 existing splitting bounds enter with their actual one/two-incidence
 weights. The declared pulse residual allowance is added, giving a
-probability-error bound about `1.352475e-5` at 64 splitting steps. This is
+probability-error bound about `1.352574e-5` at 64 splitting steps
+(retained in [the interacting-band receipt](../interacting_band_extension/results.json)). This is
 conditional on those service accuracies; an unknown preparation error must
 be added separately. It is not a physical hardware accuracy certificate.
 

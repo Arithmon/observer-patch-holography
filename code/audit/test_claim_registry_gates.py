@@ -59,7 +59,7 @@ def write_fixture_repo(root: Path) -> None:
                 "scope_if_false": "Fixture scope.",
                 "status": "declared_basis",
                 "claim_class": "conditional_implication",
-                "gates": [42],
+                "gates": [1026],
                 "premise_dependencies": {
                     "classification": "explicit_edges",
                     "consumed": ["PR-01"],
@@ -355,7 +355,7 @@ def test_release_id_drift_fails_closed(tmp_path):
 
 def test_duplicate_gate_fails_closed(tmp_path):
     write_fixture_repo(tmp_path)
-    edit_registry(tmp_path, lambda r: r["claims"][0]["gates"].append(42))
+    edit_registry(tmp_path, lambda r: r["claims"][0]["gates"].append(1026))
     with pytest.raises(SystemExit, match="must not repeat"):
         checker.main(tmp_path)
 
@@ -369,11 +369,26 @@ def test_gate_must_be_a_positive_integer(tmp_path, gate):
 
 
 @pytest.mark.parametrize("closed_lane", [728, 731, 732, 733, 734, 737])
-def test_gate_on_a_closed_lane_fails_closed(tmp_path, closed_lane):
+def test_gate_on_a_superseded_lane_fails_closed(tmp_path, closed_lane):
     write_fixture_repo(tmp_path)
     edit_registry(tmp_path, lambda r: r["claims"][0].update(gates=[closed_lane]))
-    with pytest.raises(SystemExit, match="gates name closed lanes"):
+    with pytest.raises(SystemExit, match="gates name superseded lanes"):
         checker.main(tmp_path)
+
+
+def test_gate_without_a_live_owner_fails_closed(tmp_path):
+    write_fixture_repo(tmp_path)
+    edit_registry(tmp_path, lambda r: r["claims"][0].update(gates=[99999]))
+    with pytest.raises(SystemExit, match="neither open issues nor historical lanes"):
+        checker.main(tmp_path)
+
+
+def test_every_historical_lane_maps_to_an_open_issue():
+    import closed_lanes
+
+    for lane, owner in closed_lanes.LIVE_OWNERS.items():
+        assert lane not in closed_lanes.OPEN_ISSUES
+        assert owner in closed_lanes.OPEN_ISSUES
 
 
 @pytest.mark.parametrize(
@@ -392,7 +407,7 @@ def test_named_v3_topic_gate_owner_cannot_silently_disappear(
 ):
     with pytest.raises(
         SystemExit,
-        match=rf"{claim_id}: missing required V3 topical gate owners.*{missing_owner}",
+        match=rf"{claim_id}: missing required historical topical lanes.*{missing_owner}",
     ):
         checker.check_required_v3_topic_gates(
             {"claim_id": claim_id, "gates": remaining_gates}
@@ -405,7 +420,7 @@ def test_claim_promoted_while_gate_open_fails_closed(tmp_path):
         tmp_path,
         lambda r: r["claims"][0].update(claim_class="physical_establishment"),
     )
-    with pytest.raises(SystemExit, match="while gates .* are open"):
+    with pytest.raises(SystemExit, match="while gates .* still record open work"):
         checker.main(tmp_path)
 
 

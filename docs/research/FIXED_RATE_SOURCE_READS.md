@@ -28,7 +28,7 @@ transversal Clifford circuit alone would not suffice. We use finite bounded
 ancilla attempts, rather than their optimized numerical threshold estimate.
 Finite universal synthesis is the constructive
 [Solovay--Kitaev algorithm](https://arxiv.org/abs/quant-ph/0505030).
-These are imported mathematical results, not new OPH axioms or discoveries.
+These are imported mathematical results, not new OPH premises or discoveries.
 
 The OPH work is the translation from continuous native interface noise to
 those hypotheses, a checked bounded recovery circuit, the causal source
@@ -281,8 +281,8 @@ constant. A conservative event/identifier ledger is O(q^4 log^7(2q)).
 
 This uses the parent's cofinal availability of small positive service times
 and finite per-owner inventories. It **does** require faster local controls
-than the previous particular choice Omega=pi c/a: a polylogarithmic factor
-is now paid. Neither unbounded fixed-device strength nor a decreasing
+than the particular choice Omega=pi c/a of the parent: a polylogarithmic
+factor is paid. Neither unbounded fixed-device strength nor a decreasing
 physical noise rate is assumed. The fixed classical program is distributed
 in finite charged prehistory, as in the parent; dynamic syndrome processing
 and all quantum waits are charged during the experiment.
@@ -394,7 +394,7 @@ assign the maximal value.
 
 Auxiliary syndrome and verification records remain in the source history.
 They generally distinguish noisy from noiseless hardware. The semantic
-comparison in (9) retains the requested M1/clock records and abort flag,
+comparison in (9) retains the requested source-read/clock records and abort flag,
 while ignoring auxiliary error diagnoses; it is not equality of every
 microscopic transcript. Ignoring a field of an unconditional distribution
 is different from conditioning on its successful value.
@@ -413,7 +413,7 @@ worst-case output error of at least p for this pair, whatever encoder is used.
 
 ## 7. What this closes
 
-Decreasing physical dephasing is no longer necessary for the **constructed
+Decreasing physical dephasing is not necessary for the **constructed
 operational refinement** of the named fermionic source programs. Preparation,
 recovery, non-Clifford computation, geometry, causal transport and physical
 time all have an implementation in the same cofinal source capability.

@@ -120,8 +120,8 @@ hold at every step `h` uniformly, so they select no step and no
 calibration.  No interaction is derived: the interaction candidate is a
 declared coupling whose shape is chosen, whose relative normalization is
 a free constant proved non-forced, and for which no equation of motion,
-no force law, no back-reaction, and no derivation from the three axioms
-is stated; equivariance of the interaction candidate under the
+no force law, no back-reaction, and no derivation from the theorem-library
+premises A1--A3 is stated; equivariance of the interaction candidate under the
 transports is not stated.  No observer readout is constructed: no
 theorem maps a field history or a worldline to an observation.  The
 physical propagation, source-attachment, and calibration premise rows of

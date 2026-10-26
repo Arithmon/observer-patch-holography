@@ -52,7 +52,7 @@ equation:
 
 `P = phi + alpha * sqrt(pi)`
 
-The first-principles chain is:
+The declared-map chain, with no measured endpoint inserted, is:
 
 ```text
 phi from golden-ratio entropy balance
@@ -63,7 +63,12 @@ P = phi + sqrt(pi) / A_T(P)
 alpha(0) = 1 / A_T(P)
 ```
 
-The solver has no default reference constant.
+The solver inserts no measured endpoint. The map carries declared premises:
+the one-loop running from `M_U` to `m_Z` uses the MSSM coefficients
+`(33/5, 1, -3)` (`paper_math.py`), the transmutation uses
+`beta_EW = N_c + 1 = 4`, and the `M_U` and `E_cell` forms above are declared.
+The pure Standard Model coefficients are a separate declared completion
+([source RG frontier](source_rg_frontier/README.md)).
 
 `emit_p_closure_trunk.py` is the compressed five-equation trunk emitter. It
 packages the code path as:
@@ -85,8 +90,11 @@ Canonical naming, used on every surface in this directory: `P` is the
 measured-endpoint working value of the pixel constant, located from the
 measured fine-structure constant; `P_fwd` is the forward-model closure
 point, the pixel value implied by the solver's own contracted output. The gap
-between them is the open hadronic loop residual tracked on the P-closure
-issue ([#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545)).
+between them is the open loop residual recorded on the historical P-closure
+issue ([#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545), closed).
+Inserting the measured hadronic payload does not close it: the
+[empirical endpoint](EMPIRICAL_HADRON_SCHEME_BRIDGE.md) lands 0.48 percent
+below the measured coupling.
 
 `P ratio (pixel size)` means the dimensionless screen-cell area
 
@@ -134,7 +142,7 @@ Two alpha readout modes are supported:
 
 The important claim-boundary caveat is:
 
-- `paper_math.py` is zero-insert with respect to paper-side target values:
+- `paper_math.py` inserts no paper-side target value:
   it contains no hard-coded reference `P`, no hard-coded Thomson endpoint, and
   no imported compare bundle from `code/particles`.
 - `thomson_structured_running` is therefore the cleanest internal closure
@@ -151,8 +159,6 @@ The important claim-boundary caveat is:
   for the implemented map. It is a stricter machine artifact than the witness;
   the formal interval-arithmetic certificate for the full map is
   `interval_contraction_certificate.py` (see "Interval certificates" below).
-- A separate pending hardware note reports an optical-cavity check of the same
-  fixed-point geometry; this is treated as corroborating engineering evidence.
 
 ## Full derivation claim boundary
 
@@ -214,7 +220,7 @@ python3 measured_endpoint_calibration.py
 `interval_contraction_certificate.py` emits
 `runtime/p_interval_contraction_certificate_2026-07-14.json`, the stage-2
 contraction certificate of the basin-then-contract protocol for the P
-coordinate (P-closure issue #545).
+coordinate (historical P-closure issue #545).
 
 What is certified:
 
@@ -253,7 +259,7 @@ What is not certified:
 - No relation to the measured fine-structure constant is certified. The P
   coordinate carries a stage-2 contraction certificate for the declared
   map; the stage-3 landing verdict is unchanged: the source fixed point
-  remains outside the measured basin (P-closure issue #545), pending the hadronic
+  remains outside the measured basin (historical P-closure issue #545), pending the hadronic
   transport term.
 - Global uniqueness of the inner roots (`alpha_U`, `m_Z`) over the solver's
   full scan windows is not claimed; the inner-root certificates hold on the
@@ -372,13 +378,14 @@ P          = 1.63096820940395932487927984778...
 The JSON keeps audit guard fields for theorem tooling and carries row class
 `oph_plus_empirical_hadron_closure`. Consumer-facing prose leads with the
 source-only value and the closure status: the forward map contracts to
-`alpha^-1 = 136.9948...`, the residual to the measured basin is the open hadronic
-term (P-closure issue #545), and the measured endpoint
+`alpha^-1 = 136.9948...`, the residual to the measured basin is open
+(historical P-closure issue #545; the executed empirical hadron closure lands at
+`136.3828`, below the measured value), and the measured endpoint
 `137.035999177(21)` is the measured input. The empirical hadron-closure row is a
 labeled closure-status display:
 
 ```text
-source-only forward value 136.9948...; the gap to the measured input endpoint is the open hadronic closure term (P-closure issue #545); the OPH plus empirical hadron closure row states closure status, never the OPH result
+source-only forward value 136.9948...; the gap to the measured input endpoint is the open hadronic closure term (historical P-closure issue #545); the OPH plus empirical hadron closure row states closure status, never the OPH result
 ```
 
 The source computation is blocked because the required object is a

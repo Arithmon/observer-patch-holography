@@ -42,6 +42,7 @@ for Icosahedral Face Circulants}}
 \and Brieuc de La Fourni\`ere}
 \date{\OPHPaperReleaseDate}
 
+\input{../paper/tex_fragments/figures/FIGURE_STYLE.tex}
 \begin{document}
 \maketitle
 \OPHPaperReleaseBanner
@@ -63,20 +64,21 @@ Q=\frac13+\frac23\left(\frac{|b|}{a}\right)^2.
 Thus \(Q=2/3\) is exactly equivalent to the single balance condition
 \(|b|/a=1/\sqrt2\). The phase of \(b\) drops out of \(Q\) and continues to
 control the two mass ratios jointly. A finite tracial
-Gelfand--Naimark--Segal construction with equal rank-two event blocks gives
-the balanced modulus as a conditional theorem. Under the balance and
+Gelfand--Naimark--Segal construction that pairs the neutral line with a
+two-state orientation record and the charged plane with one oriented event
+gives the balanced modulus as a conditional theorem; the balance premise was
+first abstracted from the measured charged-lepton triple and is
+algebraically the relation Koide published. Under the balance and
 mass-ordering premises the measured electron and muon masses fix the tau
 mass inside a 72-eV enclosure centered at 1776.969027 MeV. The world average
 lies 0.43 and Belle II 2023 lies 0.89 of their standard uncertainties away;
 both comparisons are retrospective, and a registered decision rule with a
 0.045 MeV precision floor governs later measurements. Koide's relation gives
-the same mass for every input, so their likelihood ratio is one. The local face fiber has no constructed physical
-chiral-family attachment, so the result is a representation-theoretic
-identity, a finite conditional implication, and a conditional tau-mass
-window; no source-only mass prediction is claimed. The numerical response model
-associated with this construction uses target-informed inputs. Its
-near-equality with the Particle Data Group central Koide coordinate is a
-comparison-only diagnostic.
+the same mass for every input, so their likelihood ratio is one. The local
+face fiber has no constructed physical chiral-family attachment, so the
+result is a representation-theoretic identity, a finite conditional
+implication and a conditional tau-mass window; no source-only mass
+prediction is claimed.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Koide relation, circulant matrices, cyclic
@@ -163,6 +165,13 @@ Eq.~\eqref{eq:koideformula} equals \(2/3\) exactly at
 \(\rho/a=1/\sqrt2\).
 \end{proof}
 
+
+\begin{figure}[!htb]
+\centering
+\input{../paper/tex_fragments/figures/FIG_KOIDE.tex}
+\caption{(a) The Koide ratio of a nonnegative spectrum of $C=aI+bR+\overline bR^2$, $\rho=|b|$, as a function of $\rho/a$ (Theorem~\ref{thm:koide}); balance $\rho/a=1/\sqrt2$ gives $Q=2/3$. (b) At balance the three eigenvalues are nonnegative exactly in the chamber $|\delta|\le\pi/12$ modulo $2\pi/3$, the chamber outside which the theorem makes no statement.}
+\label{fig:koide}
+\end{figure}
 \begin{remark}[The chamber is part of the theorem]
 The signed trace calculation holds algebraically for every \(\delta\).
 Physical square roots use \(|\lambda_k|\) when an eigenvalue is negative, and
@@ -186,7 +195,11 @@ three-mass spectrum. It does not determine the ratios.
 
 The balance condition in Eq.~\eqref{eq:balance} can arise exactly from a
 finite event packet. This subsection states the packet as an independent
-conditional theorem.
+conditional theorem. Its premise ancestry comes first: the balance premise
+was first abstracted from the measured charged-lepton triple, and it is
+algebraically the relation Koide published for those masses. The packet
+below realizes it through an asymmetric block choice, which is where that
+premise enters.
 
 Let
 \[
@@ -243,7 +256,13 @@ then gives \(Q=2/3\) on the positive chamber.
 \end{proof}
 
 Theorem~\ref{thm:gns} is finite and exact. Its event algebra, block choice,
-conditioned trace, and cyclic response map are premises. A physical
+conditioned trace, and cyclic response map are premises. The block choice is
+asymmetric: the neutral line is paired with the full two-state orientation
+record and the charged plane with one oriented event. Treating the two blocks
+alike, both with \(I_{\mathrm{or}}\) or both with \(q_+\), gives
+\(p_c/p_0=2\), hence \(\rho/a=1\) and \(Q=1\). The normalized trace fixes the
+probabilities only after the asymmetric event has been chosen, so the
+balanced modulus is the content of that choice. A physical
 charged-lepton statement additionally requires a quotient-visible map from
 the local face bundle to one chiral three-family response, preservation of
 the relevant block powers, and a mass readout. Those objects are absent from
@@ -440,7 +459,7 @@ FloatingPragma,
 \emph{Frozen prediction register and precommitted comparison
 certificates},
 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/claims/frozen_prediction_register.json}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/claims/frozen_prediction_register.json}.
 FZ-10 custody packet:
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/925b77c83115a9085c1dd020291bbc6c11e3f45d/evidence/custody/falsification/frozen_targets/fz10_2026-07-28}
 
@@ -453,17 +472,17 @@ arXiv:2305.19116, 2023.
 \bibitem{ophpublicdata}
 FloatingPragma,
 \emph{OPH predictions and public-data comparisons}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{ophtaucomparison}
 FloatingPragma,
 \emph{Independent alpha/tau reproduction and the first bounded natural comparison}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md}
 
 \bibitem{ophmodel}
 FloatingPragma,
 \emph{OPH executable observer construction}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/model}
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/model}
 
 \end{thebibliography}
 

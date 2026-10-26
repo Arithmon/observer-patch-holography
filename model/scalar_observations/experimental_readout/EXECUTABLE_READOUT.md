@@ -21,10 +21,11 @@ retrospective test rather than a prospective or blinded prediction.
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Paper extent 4, primary | 0.96341309 | 0.12777123 | 0.06647166 | 0.03323583 | < 3.82e-7 |
 | Deposit extent 5, alternate | 0.76974579 | 0, boundary optimum | 0.07178838 | 0.03589419 | < 1.59e-7 |
-| Zero-response diagnostic | — | — | 0.12810121 | 0.06405060 | — |
+| Zero-response diagnostic | n/a | n/a | 0.12810121 | 0.06405060 | n/a |
 
 Each score uses all 200 separately reported real/imaginary spin means in the
-reserved quadrant. The probability RMSE is the spin-mean RMSE divided by
+reserved quadrant. On the 21 calibration points the fit itself leaves a
+spin-mean RMSE of 0.07397, larger than the validation score 0.06647. The probability RMSE is the spin-mean RMSE divided by
 two. It is an average discrepancy, not a guarantee for each point. The
 occupation bound is uniform over these settings at the fitted parameter
 point; it does not cover uncertainty in that fit or laboratory errors.

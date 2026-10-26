@@ -21,7 +21,7 @@ Read the [objective, deliverables and exit](CONTRACT.md) and the
 | Deterministic preparation | Every small-graph measurement branch retained; local loop basis and causal prefix decoder checked for all syndromes by an independent GF(2) inverse. Preparation wall time scales with diameter. |
 | Actual native operations | M6 one-code pulses and its native pair-code CZ implement signed Pauli rotations, both QND outcomes and a quartic density phase. Unknown entangled inputs survive the explicit code-growth instrument. |
 | Massive clock | Reflecting two-bank compiler, fermionic flights, exact blank restoration, degree bound, one processor per owner and a conflict-free positive-duration schedule. |
-| Reads and interaction | Tree-compiled complex CAR number reads; bounded Fock click effect; non-Slater two-particle output with CHSH value 2 sqrt(2). |
+| Reads and interaction | Tree-compiled complex CAR number reads; bounded Fock click effect; non-Slater two-particle output with stabilizer entanglement witness 2 sqrt(2) against separable bound sqrt(2). |
 | Valid noise budget | Physical edge dephasing damages even the encoded vacuum; a full-interface bound replaces the invalid occupation-only estimate. A finite analytic clock has positive sufficient noise rate and retained error outcomes. |
 
 ## Reproduce

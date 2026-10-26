@@ -4,9 +4,9 @@
   PROVENANCE.  Contributed by DULA (external cross-audit lane), built with
   Aristotle against Lean/Mathlib v4.28.0, merged 2026-07-23.  Rebuilt
   unchanged under this project's toolchain (v4.29.1) with the same
-  eighteen-line standard-axiom audit; drop artifacts and the rebuild record
-  are in `DULA/` at the meta-repo root (`VERIFICATION.md`).  This header
-  note is the only local edit.
+  eighteen-line standard-axiom audit; the drop artifacts and the rebuild
+  record are not part of this repository.  This header note and the Part IV
+  status line are the only local edits.
 
   Five separately verified Lean developments, merged into one module so that a
   single `lake build` covers all of them.  Every proof body below is the one
@@ -524,8 +524,7 @@ end OPHGap
   the hypothesis SUFFICES.  It says nothing about whether OPH independently
   DERIVES it.  Those are different claims.
 
-  STATUS: written, NOT compiled here.  `-- RISK:` marks names to check.
-  No sorries.
+  STATUS: compiled in the default `OPHScreen` library build.  No sorries.
 -/
 namespace OPHSelection
 

@@ -1,7 +1,7 @@
 # One calibrated source clock does not select light bending
 
-This package completes the **constructive negative exit of issue #1013** on
-an explicit positive local two-field source-action class. It supplies an
+This package gives a **constructive negative result** on an explicit positive
+local two-field source-action class. It supplies an
 analytic classification, actual finite source histories, independent replay
 and a retrospective comparison to published gravitational measurements.
 The [derivation](../../docs/research/PAIRED_SOURCE_GRAVITY.md) states the theorem and
@@ -73,9 +73,9 @@ VLBA error budget. Original resonance counts, visibilities and likelihoods
 are not available in this packet. Its completed exit is the constructive
 nonidentifiability theorem, not a positive end-to-end physical postdiction.
 
-## Issue closure and retained parent obligations
+## Requirements and retained obligations
 
-| #1013 requirement | Artifact and result |
+| Requirement | Artifact and result |
 | --- | --- |
 | Static source, action, boundary, local records | Derivation sections 1-3; both source laws executed on the 64-site parent support |
 | Inputs and common calibration | Same Schur normalization, source, units and probe dictionary throughout; physical maps explicitly supplied |
@@ -86,15 +86,10 @@ nonidentifiability theorem, not a positive end-to-end physical postdiction.
 | Independent verification | Full source/read replay, independent curvature/ray calculations and hostile-input tests |
 | Negative exit | Constructed nonidentifiability, with the exact exterior tensor selector and obligations below |
 
-The scientific parent [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729)
-owns physical curvature/stress matching and the Einstein branch;
-[#779](https://github.com/FloatingPragma/observer-patch-holography/issues/779)
-owns selection of the source's spatial response or a justified exterior
-vacuum/null-stress condition. [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736)
-retains mass/clock/unit calibration; [#740](https://github.com/FloatingPragma/observer-patch-holography/issues/740)
-retains their common physical history and
-[#730](https://github.com/FloatingPragma/observer-patch-holography/issues/730)
-the source/outcome interpretation. Their existing requirements are preserved.
-This result closes none of those parents and does not falsify their additional
-physical Einstein premises. It establishes that more clock-only sampling on
+Physical curvature/stress matching and the Einstein branch, selection of the
+source's spatial response or a justified exterior vacuum/null-stress
+condition, mass/clock/unit calibration, their common physical history and the
+source/outcome interpretation are open obligations (historical issues #729,
+#779, #736, #740 and #730, closed). This result discharges none of them and
+does not falsify their additional physical Einstein premises. It establishes that more clock-only sampling on
 this source cannot resolve the remaining spatial-response coefficient.

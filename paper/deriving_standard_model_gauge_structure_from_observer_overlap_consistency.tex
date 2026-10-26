@@ -1,12 +1,12 @@
 \documentclass[11pt]{article}
 \input{tex_fragments/DERIVATION_PAPER_PREAMBLE.tex}
 
-\title{Deriving Standard Model Gauge Structure\\
-from Observer Overlap Consistency}
+\title{Standard Model Gauge Structure under\\
+Complete-Response and Observer-Transport Premises}
 \author{B.\ M\"uller \and Mario Poneder \and Alexander Osika \and Kai Xue
 \and Peter Nguyen \and David Matscheko \and Daniel Ari Friedman}
 \date{\OPHPaperReleaseDate}
-\hypersetup{pdftitle={Deriving Standard Model Gauge Structure from Observer Overlap Consistency},pdfauthor={Bernhard Mueller; Mario Poneder; Alexander Osika; Kai Xue; Peter Nguyen; David Matscheko; Daniel Ari Friedman}}
+\hypersetup{pdftitle={Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises},pdfauthor={Bernhard Mueller; Mario Poneder; Alexander Osika; Kai Xue; Peter Nguyen; David Matscheko; Daniel Ari Friedman}}
 
 \begin{document}
 \maketitle
@@ -17,44 +17,35 @@ from Observer Overlap Consistency}
 \end{center}
 
 \begin{abstract}
-Observer-Patch Holography models an observer as a finite self-reading patch
-with local state, boundary ports, readback records, and repair moves. This
-paper gives two gauge-reconstruction routes. The categorical route
-reconstructs a compact group from overlap transport on a declared bosonic
-sector category. The finite route starts with twelve ports and their
-icosahedral incidence. Complete reversible port response and endogenous
-observer transport force the compact Lie-algebra type
-\(\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak u(1)\).
-Exact finite calculations derive the carrier module and inverse-port
-response. Compact classification and the fixed-space argument exclude the
-remaining compact alternative. A conditional matrix realization supplies
-the familiar current blocks. An exterior-algebra
-witness contains one fifteen-state generation with exact Standard Model
-charges and anomaly cancellation. Its common central kernel is
+On twelve ports with icosahedral incidence, a faithful compact
+commutator-closed response whose proper rechartings act by inner
+automorphisms of that same response has exactly one compact Lie type,
+\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
+Faithfulness fixes the dimension twelve, the single fixed line of the
+transitive \(A_5\) action bounds the centre by one, the fixed-space count
+excludes \(\mathfrak{su}(2)^4\), and the classification of compact simple
+Lie algebras, a declared input, leaves the split \(11=3+8\); the dimension
+arithmetic and the centre bound are machine checked, while the fixed-space
+exclusion and the classification enter Lean as declared hypotheses. Exact finite
+calculations derive the carrier module and inverse-port response, and a
+separate categorical route reconstructs a compact group from overlap
+transport on a declared bosonic sector category.
+
+A conditional matrix realization supplies the familiar current blocks. Its
+declared spin lift and trace redistribution are the standard
+\(\mathfrak{su}(5)\) embedding, and the declared exterior module is the
+Georgi--Glashow \(\mathbf{10}\oplus\bar{\mathbf 5}\) generation with exact
+Standard Model charges and anomaly cancellation; its common central kernel is
 \(\mathbb Z_6\). Among single complete faithful bands in the conditional
-window \(3\le N_g\le5\), the exact Laplacian costs
-\(5-\sqrt5<6<5+\sqrt5\) select the rank-three band. The physical matrix
-current, matter action, and global
-quotient require same-source response, character-completeness, and
-loop-to-kernel receipts. The compact locus of the equivariant Jacobi
-variety is classified into three certified bracket families with exact
-carrier-integrating admissible global forms. A declared equal-weight oriented-face bracket
-is exactly \(60R_{13}\), has \(240\) nonzero Jacobi coordinates, and has
-family \(G\) uniquely nearest among the classified compact locus under
-each of three added coordinate repair norms
-\(\ell_1,\ell_2,\ell_\infty\) and, in the quadratic case, under every
-invariant carrier metric that is balanced in the two mirror
-three-dimensional sectors or whose \(3^+\) scale stays within the exact
-chirality box \(\beta/\delta\in[1/50,6]\); \(P\) is excluded for the
-complete invariant cone. The rule, the nearest-point law, and the
-carrier-induced metric class are not source-derived.
-Over each supplied bracket, ad-invariance leaves one coefficient per simple
-factor. In particular, the \(F/G\) carrier-form spaces drop exactly from
-dimension three to two, while the \(P\) control remains two-dimensional.
-Constructed two-factor Gibbs kernels bind the complete \(P\) family to one
-color-bearing \(F\) family and make the relative coefficient identifiable
-modulo common scaling. Fixing that coefficient, and attaching the construction
-to laboratory currents, requires further physical input.
+window \(3\le N_g\le5\), whose lower edge is a declared CP-capability clause,
+the declared band-selection rule and the exact Laplacian costs
+\(5-\sqrt5<6<5+\sqrt5\) select the rank-three band. The compact locus of the equivariant Jacobi
+variety is classified into three certified bracket families, and a declared
+equal-weight oriented-face bracket has family \(G\) uniquely nearest under
+each of the coordinate repair norms \(\ell_1,\ell_2,\ell_\infty\). The
+physical matrix current, matter action and global quotient, the bracket
+rule and the nearest-point law are not source-derived, and attaching the
+construction to laboratory currents requires further physical input.
 \end{abstract}
 
 \input{tex_fragments/INTERPRETATION_CONVENTIONS.tex}
@@ -93,9 +84,18 @@ The second route is finite and carrier-specific:
 This arrow combines three restrictions. Incidence supplies the
 twelve-dimensional \(A_5\)-module and its single fixed line. Premise A1 supplies the faithful compact commutator-closed response on that module. Premise A2 makes
 the proper carrier action inner on the same response. Incidence without the
-response clauses leaves many equivariant laws, while response without
-endogenous transport leaves the centreless compact branch available. Their
-intersection removes that branch.
+response clauses leaves many equivariant laws. Response naturality without
+endogeneity leaves the abelian \(\mathfrak u(1)^{12}\) and the mixed
+\(\mathfrak{su}(2)^{2}\oplus\mathfrak u(1)^{6}\) branches available;
+endogeneity bounds the centre by the single fixed line, and the fixed-line
+count then excludes \(\mathfrak{su}(2)^{4}\).
+
+\begin{figure}[!htb]
+\centering
+\input{tex_fragments/figures/FIG_GAUGE_LIE_TYPE.tex}
+\caption{Steps of the gauge Lie-type theorem. Green steps are machine-checked in the Lean library; orange steps use the classification of compact simple Lie algebras and the fixed-space argument against $\mathfrak{su}(2)^4$, which enter Lean as declared hypotheses. The port count fixes the dimension twelve by declaration; the content of the theorem is the exclusion of $\mathfrak{su}(2)^4$ and a one-dimensional centre.}
+\label{fig:gauge-lie-type}
+\end{figure}
 
 The finite argument constructs its compact current inside the premise A1 unitary
 response space; an ambient continuous gauge group is absent from its premises.
@@ -117,12 +117,18 @@ dimension eleven. Compact-simple classification gives the unique split
 The carrier identity \(10J=A^3-4A^2-5A+10I\) and target-blind readback derive
 \(R=-J\). They do not construct the current derivative. The Lie-type theorem
 uses the complete-response clauses of A1 and the endogenous-transport clauses
-of A2. A descent repair law enters only when a branch asks for settled public
+of A2. The port count fixes the dimension twelve by declaration. Both clauses
+were added to the premise set in July 2026 as the hypotheses under which this
+classification holds, and the executable specification does not produce
+them; its native response is the commutative algebra below. The content of
+the theorem is the exclusion of \(\mathfrak{su}(2)^4\) and a one-dimensional
+centre. A descent repair law enters only when a branch asks for settled public
 records. It is not an undeclared premise of the Lie-type theorem. The
-finite dimension arithmetic and fixed-space exclusion used by the Lie-type
-classification are machine checked under explicit compact-Lie and
-classification adapters in the accompanying Lean development~\cite{ophrepo}; no source current
-or full Lie-algebra isomorphism is constructed there. The registered
+dimension arithmetic, the centre bound and the dimension-six exclusion used by
+the Lie-type classification are machine checked in the accompanying Lean
+development~\cite{ophrepo}; the \(\mathfrak{su}(2)^{4}\) fixed-space step and
+the compact-Lie classification enter Lean as declared hypotheses, and no source
+current or full Lie-algebra isomorphism is constructed there. The registered
 recurrence generates the exact commutative
 algebra \(\operatorname{span}\{I,A,A^2,A^3\}\). It contains neither twelve
 independent current generators nor a nonzero bracket, and its only proper
@@ -278,14 +284,14 @@ committed theorem; it is not source selection of the bracket or a physical
 gauge structure. One composed machine-checked surface
 (\texttt{Lean/Screen/SMStructureAdequacySurface.lean}) bundles the
 declared weighting, metric, classification-input, and exterior-selection
-premises and re-exports the forced Lie type, the balanced-point selection,
+premises and re-exports the premise-implied Lie type, the balanced-point selection,
 the one-generation exterior selection with anomaly cancellation, and the
 conditional global-form menu as one package, with the same-source
 loop-to-kernel identity named as the leading undischarged clause of the
 physical quotient. A companion composition
 (\texttt{Lean/Screen/SMStructureComposition.lean}) closes the
 side-by-side gap in that package: one theorem on the one premise bundle
-proves that the forced type admits a unique type-matched nearest family
+proves that the premise-implied type admits a unique type-matched nearest family
 at the bundle's balanced point and that the fifteen-state count, the
 anomaly forms, and the \(\mathbb Z_6\) stabilizer are carried by the
 bundled selection mask itself. Its capstone is a coarse two-mask statement:

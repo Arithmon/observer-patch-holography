@@ -84,7 +84,7 @@ H_xy = sum_{h: x,y in X_h} w_h,           H_xx=1.                  (3)
 
 These identities hold on all matrix units and therefore after tensoring
 with any reference. They apply to the actual two-event observer as well as
-the separate schedules below. For E, the existing E/F selector uses the
+the separate schedules below. For E, the existing `e`/`f` seam selector uses the
 decoded **current** sign, not the contrast sign.
 
 ## Optimal recovery of the complete unknown input
@@ -225,7 +225,7 @@ scope.
 
 This section uses independent seam choices with probabilities `p_e>0` on
 a connected graph and independent fair coins. It does not replace the
-existing E/F controller with that schedule. For any equal-total integer
+existing `e`/`f` seam controller with that schedule. For any equal-total integer
 inputs put `z=x-y`. The ceiling/floor formula gives the same-record
 probability on edge `ab` exactly:
 

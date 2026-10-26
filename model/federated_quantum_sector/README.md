@@ -16,6 +16,10 @@ A complete four-attempt experiment crossing two elementary carriers gives:
 | Phase flip controlled by the first zero-current record | `3/8` | `1/2` |
 | Dephasing controlled by that record | `1/2` | `1/2` |
 
+The contrast is produced by the seams inside the two carriers; the crossing
+seam acts trivially on the probe coherence, so the cross-carrier content of
+the experiment is the support of the superposition, not the joining dynamics.
+
 Both candidates implement the same binary population repair. They differ in
 the native quantum record: C resolves the current, while E resolves the
 input endpoint imbalance. The graph, chosen schedule, coherent preparation,

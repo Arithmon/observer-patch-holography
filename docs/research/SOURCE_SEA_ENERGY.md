@@ -8,7 +8,8 @@ nonzero subthreshold error strength. The positive observable
 An explicitly prepared filled-vacuum experiment instead has a positive
 excitation generator with the same integer-time channels. The empty-vacuum
 experiment remains separate; neither identifies a Floquet branch with
-laboratory energy. The accompanying evidence bundle independently replays
+laboratory energy. The accompanying
+[evidence bundle](../../code/m1_sea_energy/README.md) independently replays
 finite operators, complete instruments and the stated quantitative bounds.
 
 The starting points are the [massive walk](MASSIVE_OPERATIONAL_CLOCKS.md),
@@ -335,7 +336,10 @@ for this resolved-mode read is `(1+cos(Delta m t/gamma+theta))/2`.
 It has unit swing; its detector is different from the parent's pointwise
 weighted detector and we do not reuse that detector's visibility.
 The envelope-only laboratory-anchored probe instead measures `Delta E t`,
-or `gamma Delta m t`. At the finest executed periodic control near t=20,
+or `gamma Delta m t`. At the finest executed periodic control near t=20
+(a one-dimensional periodic chain of 1024 sites and length 64 with masses
+4.0 and 4.2, sigma 3 and velocity 0.6, separate from the finite witness
+parameters below),
 the corrected theta=0 probability is about 0.00615, compared with 0.61674
 for the laboratory-anchored probe. Its proper-time reference is about
 0.00081. Independent replay translates by the Fourier multiplier
@@ -478,7 +482,7 @@ the original clock's local schedule still has the parent's constant wall-time
 dilation; its noisy implementation uses the same paid faster local drives.
 No physical energy is assigned here to those drives or to entropy erasure.
 
-## 8. What energy selection is still impossible to infer
+## 8. What energy selection cannot be inferred
 
 For any integer-valued spectral function J commuting with h,
 `h'=h+(2pi/tau)J` has exactly the same one-step U. Two explicit choices matter.

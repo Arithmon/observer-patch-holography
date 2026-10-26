@@ -54,41 +54,35 @@ and CHSH Interoperability}}
 \end{center}
 
 \begin{abstract}
-Finite quantum measurement looks simple on paper: multiply matrices, take a
-trace, and normalize. In Lean, each step crosses a different interface and
-every side condition must be supplied. This paper presents a Lean~4 library for
-projection events over finite complex matrix algebras. A projective partition
-defines a star-subalgebra of matrices that commute with its projectors and a
-complex-linear pinching map onto that subalgebra. The map is unital, positive,
-trace preserving, and idempotent; its range and fixed points are exactly the
-partition commutant. It also satisfies the bimodule law,
-Hilbert--Schmidt Pythagorean and contraction identities, and a
-trace-duality uniqueness theorem.
-It is also exactly the positive uniform random-unitary average over all
-independently signed block reflections. A global-sign control shows why
-independent signs are necessary.
+This paper presents a Lean~4 library for projection events over finite
+complex matrix algebras, in which every side condition of finite quantum
+measurement is supplied explicitly. A projective partition defines a
+star-subalgebra of matrices that commute with its projectors and a
+complex-linear pinching map onto that subalgebra. The map is unital,
+positive, trace preserving and idempotent; its range and fixed points are
+exactly the partition commutant; it satisfies the bimodule law,
+Hilbert--Schmidt Pythagorean and contraction identities and a trace-duality
+uniqueness theorem; and it is exactly the positive uniform random-unitary
+average over all independently signed block reflections, with a global-sign
+control showing why independent signs are necessary. A second expectation
+averages onto the commutative span of the partition. The two maps satisfy
+tower laws, preserve the partition's Born statistics and commute with
+conditioning on a partition member, and L\"uders conditioning is available
+as a total matrix formula and a typed state update with an exact fixed-state
+characterization.
 
-A second expectation averages onto the commutative span of the partition.
-The two maps satisfy tower laws, preserve the partition's Born statistics,
-and commute with conditioning on a partition member. L\"uders conditioning
-is available as a total matrix formula and a typed state update, with an
-exact fixed-state characterization. An operator-norm estimate lifts the
-Tsirelson theorem to a state-level
-Clauser--Horne--Shimony--Holt bound for projection events, and a declared
+An operator-norm estimate lifts the Tsirelson theorem to a state-level
+Clauser--Horne--Shimony--Holt bound for projection events. A declared
 maximally entangled witness on a checked slot-locality interface attains the
-    bound $2\sqrt2$ exactly, while every fixed record-diagonal state read
-    through four observables diagonal in the same basis and valued in
-    $[-1,1]$ obeys the classical bound $2$. An ideal static phase-POVM/count
-    model preserves the exact tomography and blindness delimitations, and an
-    explicit synthetic inhabitant proves that exact fit alone is not an
-    operational instrument and does not discharge the phase-sensitive-effect
-    premise. The artifact pins
+bound $2\sqrt2$ exactly, while every fixed record-diagonal state read through
+four observables diagonal in the same basis and valued in $[-1,1]$ obeys the
+classical bound $2$. Companion Kraus proofs establish complete positivity
+and trace preservation through a finite-matrix interface with arbitrary
+ancillas, and a support countermodel proves that totalizing the matrix
+logarithm at zero cannot define support-aware relative entropy: the raw
+trace formula vanishes on an orthogonal pure-state pair. The artifact pins
 its Lean and Mathlib revisions and records declaration-level axiom
-dependencies. Companion Kraus proofs establish complete positivity and trace preservation
-through a finite-matrix interface with arbitrary ancillas. A
-separate support countermodel proves that totalizing the matrix logarithm at
-zero cannot define support-aware relative entropy: the raw trace formula
-vanishes on an orthogonal pure-state pair.
+dependencies.
 \end{abstract}
 
 \noindent\textbf{Keywords:} formal verification, Lean~4, projective measurement,

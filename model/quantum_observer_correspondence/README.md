@@ -161,6 +161,8 @@ probe has 243 positive words. The native contraction, transported quantum
 representation and independent endpoint/coin/current oracle agree exactly.
 The [clock-response audit](CLOCK_RESPONSE.md) extracts a joint observable
 from these same outputs and includes matched-marginal and dephasing controls.
+Its clock marginal is invariant by construction, so the joint law tests the
+correlation between seam records and the detector.
 It uses no separately fitted clock or field model.
 
 An additional entangled input is

@@ -119,15 +119,17 @@ are positive. Since `D<=I`, the G-self-adjoint transfer obeys
 1/20 <= F <= 1,       H=-log(F),       exp(-nH)=F^n.
 ```
 
-H is the effective Euclidean generator per completed union incident tick.
+H is defined as the matrix logarithm of the given transfer; it is the
+effective Euclidean generator per completed union incident tick by definition.
 The marked insertions and decoder remain part of the history dictionary.
 The native repairs are not the unitary continuation `exp(-isH)`.
 
 The existing [C history action](../native_action/README.md) also attaches at
 every native event boundary: `A0=pi(I-U)/2` and `exp(-iA0)=U` in its declared
 20-dimensional local dilation. All 3,960 state/seam/coin branches are checked
-against its actual C Kraus numerators. This is a gate-action representation
-of the same source events, not a physical interpolation between them.
+against its actual C Kraus numerators. `A0` is likewise defined from the given dilation `U`. This is a gate-action
+representation of the same source events, not a physical interpolation
+between them.
 
 The source's selected rank-three slow-response Gram is checked and restricted
 to `(0,1,5)`. These three native neighbors have diagonal Gram entries 1 and

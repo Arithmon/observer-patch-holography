@@ -5,8 +5,8 @@ design, not a reverse-engineering-reality result document.
 
 Status: design only. This document does not freeze a campaign, draw a seed,
 authorize a run, or change the `FAILED` verdict of INS-01. Any execution needs
-a new immutable preregistration and a separate freeze event under the owning
-simulation-instrument lane #737.
+a new immutable preregistration and a separate freeze event recorded in the
+instrument register (historical owning issue #737, closed).
 
 ## What the first campaign did and did not show
 

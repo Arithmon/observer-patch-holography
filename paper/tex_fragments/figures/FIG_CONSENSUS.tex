@@ -1,0 +1,34 @@
+% Figure: a patch net with interface projections, and the local diamond with strict descent.
+\begin{tikzpicture}[
+  patch/.style={circle, draw=ophnative, fill=ophnative!8, line width=0.7pt, minimum size=11mm, font=\footnotesize},
+  iface/.style={rectangle, rounded corners=1.5pt, draw=ophgrey, fill=white, font=\scriptsize, inner sep=1.6pt},
+  st/.style={circle, fill=black!75, inner sep=0pt, minimum size=1.6mm},
+  rep/.style={-{Stealth[length=2mm]}, line width=0.65pt, draw=ophnative},
+  more/.style={-{Stealth[length=2mm]}, line width=0.65pt, draw=ophnative, dash pattern=on 2.2pt off 1.6pt}]
+% (a) patch net
+\begin{scope}
+\node[patch] (s1) at (0,1.6) {$s_1$};
+\node[patch] (s2) at (2.2,2.1) {$s_2$};
+\node[patch] (s3) at (2.6,0.2) {$s_3$};
+\node[patch] (s4) at (0.3,-0.4) {$s_4$};
+\foreach \a/\b/\l in {s1/s2/{e_{12}}, s2/s3/{e_{23}}, s3/s4/{e_{34}}, s4/s1/{e_{41}}, s1/s3/{e_{13}}}{
+  \draw[ophgrey, line width=0.6pt] (\a)--(\b) node[iface, pos=0.5] {$\l$};
+}
+\node[oph label, anchor=north, text width=5.2cm] at (1.3,-1.15) {(a) Patches $i$ with local states $s_i$; on each overlap $e=\{i,j\}$ the interface projections must agree, $\pi_{i,e}(s_i)=\pi_{j,e}(s_j)$.};
+\end{scope}
+% (b) local diamond and descent
+\begin{scope}[xshift=7.6cm]
+\node[st, label={[font=\footnotesize]above:$s$}] (s) at (0,2.6) {};
+\node[st, label={[font=\footnotesize]left:$t$}] (t) at (-1.15,1.45) {};
+\node[st, label={[font=\footnotesize]right:$u$}] (u) at (1.15,1.45) {};
+\node[st, label={[font=\footnotesize]left:$w$}] (w) at (0,0.3) {};
+\node[circle, draw=ophchecked, fill=ophchecked!15, line width=0.8pt, inner sep=0pt, minimum size=2.6mm, label={[font=\footnotesize]right:{normal form}}] (n) at (0,-0.75) {};
+\draw[rep] (s)--(t);
+\draw[rep] (s)--(u);
+\draw[more] (t)--(w);
+\draw[more] (u)--(w);
+\draw[more] (w)--(n);
+\draw[-{Stealth[length=2mm]}, line width=0.6pt, ophgrey] (-2.35,2.75)--(-2.35,-0.85) node[midway, sloped, above, font=\scriptsize, text=ophgrey] {$\mu$ strictly decreases};
+\node[oph label, anchor=north, text width=5.6cm] at (0,-1.15) {(b) Every one-step peak $t\leftarrow s\rightarrow u$ closes at a common $w$ (local diamond) and every accepted repair lowers the measure $\mu$; Newman's lemma then gives one normal form, whatever the order of repairs.};
+\end{scope}
+\end{tikzpicture}

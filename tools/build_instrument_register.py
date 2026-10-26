@@ -51,7 +51,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import strict_json
-from closed_lanes import CLOSED_LANE_SUCCESSORS
+from closed_lanes import live_owner, owner_text
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "tracking" / "observation_ledger.json"
@@ -703,13 +703,6 @@ def _issue_link(number: int) -> str:
     return f"[#{number}]({REPO_URL}/issues/{number})"
 
 
-def _closed_note(number: int) -> str:
-    if number not in CLOSED_LANE_SUCCESSORS:
-        return ""
-    owners = ", ".join(_issue_link(n) for n in CLOSED_LANE_SUCCESSORS[number])
-    return f" (closed; open work: {owners})"
-
-
 def _artifact_lines(entries: list[dict], label: str, empty_note: str) -> list[str]:
     if not entries:
         return [f"- {label}: {empty_note}."]
@@ -740,9 +733,8 @@ def render(register: dict, rows: list[dict]) -> str:
     lines.append(
         f"One row per simulation-instrument design or frozen instrument of"
         f" the registered adequacy program. The instruments were registered"
-        f" under lane {_issue_link(737)}, which is closed; the remaining"
-        f" instrument question belongs to"
-        f" {', '.join(_issue_link(n) for n in CLOSED_LANE_SUCCESSORS[737])}."
+        f" under the historical lane #737, which is closed; the remaining"
+        f" instrument question belongs to {_issue_link(live_owner(737))}."
         f" Each instrument binds to exactly one row of the observation ledger"
         f" above. SPECIFIED is mutable design work,"
         f" not a preregistration or verdict. Only a completed decisive"
@@ -851,8 +843,8 @@ def render(register: dict, rows: list[dict]) -> str:
         lines.append(f"#### {row['id']} {row['title']}")
         lines.append("")
         lines.append(
-            f"- Ledger row {row['ledger_row']}; owning lane"
-            f" {_issue_link(row['owning_issue'])}{_closed_note(row['owning_issue'])};"
+            f"- Ledger row {row['ledger_row']}; live owner"
+            f" {owner_text([row['owning_issue']])};"
             f" status `{row['status']}`."
         )
         lines.append(f"- Specification: `{row['spec_pointer']}`.")

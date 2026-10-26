@@ -1,12 +1,13 @@
-# Icosahedral closure certificate (C19)
+# Icosahedral closure certificate
 
 Exact representation-theoretic certificate for the icosahedral closure theorem:
 the twelve-port screen module, the compact-Lie trichotomy, the rank-five
 noncentral corollary, and the oriented face-phase multiplicities.
 
 Referenced as the
-closure certificate in `paper/observers_are_all_you_need.tex` and
-`paper/recovering_relativity_..._compact.tex`.
+closure certificate in `paper/screen_microphysics_and_observer_synchronization.tex`
+and the shared fragments `paper/tex_fragments/PAPER.tex` and
+`paper/tex_fragments/PORT_SUPPORT_ATTACHMENT.tex`.
 
 ## Run
 
@@ -274,13 +275,14 @@ arbitrary OPH carriers must have this type.
   at finite source scope; the remaining receipts are four-dimensional
   instanton sectors with topological action normalization (before any theta
   periodicity statement), monopole dynamics, and laboratory flux
-  measurement (#569 lane).
+  measurement (historical issue #569, closed).
 - **EXTERIOR-PACKAGE-SELECTION**: the exhaustive 1024-subset anomaly scan
   proves the unordered conjugate pair is the unique nonempty chiral
   anomaly-free selection at exterior-module scope
   (`Lean/Screen/ExteriorSelection.lean`). The MGFC-grade exclusion of light
   sectors beyond the exterior module (direct sums, inert doublets,
-  vectorlike matter, neutral singlets) is owned by #609.
+  vectorlike matter, neutral singlets) is open (historical issue #609,
+  closed).
 - **PORT-WEAK-INTERTWINER** and **PORT-LOAD-TRACE**: identify a physical
   four-dimensional screen invariant with the four weak-doublet copies and
   prove that its normalized additive load is the physical `4P` readout.

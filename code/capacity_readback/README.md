@@ -1,7 +1,7 @@
 # Correctable Public-Record Capacity
 
 Exact finite contracts, controls, and archived candidate audits for the OPH
-capacity map. The canonical Pro5 producer is
+capacity map. The canonical producer (historical label Pro5) is
 
 ```text
 N = log M_0(U_N),
@@ -127,7 +127,8 @@ second physical packet or a cosmic selector.
   result in the direct global proposal and records that no numeric cosmic
   value or cosmological comparison is permitted.
 - [`public_record_capacity.py`](public_record_capacity.py) and its tests retain
-  the superseded Pro4 checkpoint-fixed projection branch as a control. A cyclic
+  the superseded checkpoint-fixed projection branch (historical label Pro4)
+  as a control. A cyclic
   permutation proves that it is not the canonical capacity definition.
 
 The `D=24` artifact is a source-derived fixed-cutoff packet in the declared

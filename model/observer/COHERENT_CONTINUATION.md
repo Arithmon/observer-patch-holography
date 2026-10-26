@@ -1,7 +1,7 @@
 # Coherent continuation: native attachment and nonselection
 
 The executable [exact experiment](coherent_continuation.py) attaches a
-reflection walk to the actual N1 repair branches on the 66-state binary
+reflection walk to the actual C repair branches on the 66-state binary
 total-two shell. It derives a wave recurrence for compressed **amplitudes**
 and gives two exact countercontrols against selecting that wave law from
 the repair instrument alone. This is a law-selection experiment, separate

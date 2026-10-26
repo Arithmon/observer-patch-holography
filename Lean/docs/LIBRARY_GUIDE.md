@@ -83,6 +83,19 @@ surface for the OPH consensus layer. Contents:
   alphabet, its orbit classification, source counting, and temporal freedom
   remain explicit conditional inputs rather than conclusions of the current
   basis.
+- Typed premise interfaces in `ObserverPatchHolography/CoreAxioms.lean`: the
+  decided A1 boundary packet (twenty oriented faces, thirty edges, port degree
+  five, connected links) and structure types for the A1 carrier tuple, the A2
+  interpretation data and the A3 information-projection specification. The
+  structures are interfaces, not theorems about a model: their only
+  inhabitants are trivial instances in `EqualSeamSelection.lean` (at `Unit`
+  and `Bool` types), `FederationSupportShadow` has none, and
+  `InfoProjectionSpec` carries existence and uniqueness of the projection as
+  fields. The header's "three-axiom basis" wording, and the matching phrases
+  in `RepairWordSchedule.lean` and `CapacityNonidentifiability.lean`, predate
+  `docs/BASIS.md`, under which A1 to A3 are theorem-library premise labels.
+  Retained receipts pin the three files byte for byte, so the wording is
+  superseded here rather than edited in place.
 - A sorry-free V2 A1 ontology ledger in `Time/TimeOrderLedger.lean`.
   Universe closure, repair execution order, observer record order, modular
   parameter, worldline realization, clock readout, proper-time interval, and
@@ -389,8 +402,8 @@ surface for the OPH consensus layer. Contents:
   three strict orderings in `three_norm_unique_nearest_G`. The `F` total-
   absolute value is an unattained infimum. Every norm and minimum-repair rule
   is a basis-dependent supplied premise, and the comparison covers only the
-  classified compact locus. Issues #734 and #736 track source bracket
-  selection and current realization. See `B14_ORIENTED_FACE_SELECTOR.md`.
+  classified compact locus. Source bracket selection and current realization
+  are open (historical issues #734 and #736, closed). See `B14_ORIENTED_FACE_SELECTOR.md`.
 - A sorry-free **B14 invariant-metric phase diagram** in
   `Screen/OrientedFaceInvariantMetric.lean` over the independently replayed
   `invariant_metric_phase` certificate: the commutant of the port action is
@@ -514,8 +527,8 @@ surface for the OPH consensus layer. Contents:
   General independent-coefficient and full anisotropic optimization are open.
   No interaction, opacity, flux, source, shower, or detector statement follows.
 - A sorry-free **finite event-algebra journal-neutral core** (eleven modules
-  under `EventAlgebra/`, compiled by lake target `EventAlgebra`, 152 audited
-  declarations, standard axioms
+  under `EventAlgebra/`, compiled by lake target `EventAlgebra`, 176 public
+  theorem/lemma declarations, standard axioms
   only): events as Hermitian idempotents, states as positive trace-one
   matrices, Born weights (reality, nonnegativity, normalisation,
   additivity, complement bound, monotonicity), Lüders conditioning
@@ -543,8 +556,8 @@ surface for the OPH consensus layer. Contents:
   `n`-move closed-neighborhood dependency upper bound against the concrete
   `localRepair`; `ObserverPatchHolography/Locality/NoSignalling.lean` proves
   generic finite marginal and partial-trace identities on a supplied
-  bipartite split. The quantum/spacetime lanes #730 and #728 retain exact
-  conditional coverage, generated observer algebras, declared slot factors,
+  bipartite split. The historical quantum/spacetime lanes #730 and #728
+  (closed) recorded exact conditional coverage, generated observer algebras, declared slot factors,
   CP-regional expectations, and constant-tower anchoring.
   `QFT/SourceCorrelationCapstone.lean` further grounds the fully disjoint
   86/247 supports and their exact counted correlated state and marginals.
@@ -555,10 +568,10 @@ surface for the OPH consensus layer. Contents:
   adaptive cone/no-influence/refinement-naturality packet only for supplied
   `ConsultsOnly` scheduler and consultation-region data. It produces no source
   scheduler, state/channel semantics, physical distance, or clock. Scheduler
-  production and physical spacelike attachment are scoped to #728, structural
-  continuum QFT to #730, empirical clock calibration to PR-15, and
-  source-derived clock work to #739; these are downstream rather than B4
-  claim gates.
+  production, physical spacelike attachment, structural continuum QFT and
+  source-derived clock work are open (historical issues #728, #730 and #739,
+  closed), and empirical clock calibration is the import PR-15; these are
+  downstream rather than B4 claim gates.
   See
   `B4_LOCALITY_BOUNDARY.md`.
 - An admission-free **B5 finite conservation package**:
@@ -606,8 +619,8 @@ surface for the OPH consensus layer. Contents:
   mode/minimizer counterexample and leaves stationary-phase routes open. The
   closed mechanics milestone #731 records the scoped conditional composition;
   source selection of the reference and real enrichment, physical action,
-  clock, amplitude, fields, continuum, and observable current remain deferred
-  premise work under #739. See
+  clock, amplitude, fields, continuum, and observable current are open
+  premise work (historical issue #739, closed). See
   `B7_HISTORY_BRIDGE.md`.
 - A sorry-free **E1 rich-fibre regional net** in
   `QFT/RichFibreWitness.lean` and `QFT/RichFibreRegionalNet.lean`: the
@@ -635,8 +648,8 @@ surface for the OPH consensus layer. Contents:
   marginal, and the conditional expectation onto a slot carries Kraus,
   positivity, trace, fixed-slot, scalarisation, and idempotence
   receipts. The extraction is post-hoc and ineligible as validation, and
-  the slot assembly is a declared postprocessor; issue #728 owns
-  its source and same-witness regional attachment.
+  the slot assembly is a declared postprocessor; its source and same-witness
+  regional attachment are open (historical issue #728, closed).
   `QFT/CPRestrictionNet.lean` and `QFT/TwoSlotCPNetWitness.lean` execute
   the authorized restriction redesign: conditional expectations replace
   the star-homomorphic restrictions that a kernel-checked obstruction
@@ -651,8 +664,9 @@ surface for the OPH consensus layer. Contents:
   Coverage therefore does not reconstruct a joint element from these two
   expectations. The later correlation capstone
   supplies the exact support-disjoint counted state that the expectations
-  erase. Issue #728 owns source justification of the factor reading and a
-  nonconstant realization; closed #712 consumes the older interface.
+  erase. Source justification of the factor reading and a nonconstant
+  realization are open (historical issues #728 and #712, both closed; the
+  latter consumes the older interface).
   See `E1_FINITE_CAUSAL_OBSERVER_NET.md`.
 - An admission-free bounded **B13 effect and phase-lift boundary**:
   `EventAlgebra/FiniteEffectClosureBoundary.lean` proves that continuity and
@@ -682,7 +696,7 @@ surface for the OPH consensus layer. Contents:
   represented state by three oriented weights. The transport is a declared
   convention. Neither the statistic nor designation rule was preregistered;
   the y-magnitude readout, operational additivity, and fresh prospective
-  validation stay with issue #730. See
+  validation are open (historical issue #730, closed). See
   `B13_EFFECT_CLOSURE_BOUNDARY.md`.
 - An admission-free **B8 finite transport package**:
   `Thermodynamics/GreenKubo.lean` proves the reversible Dirichlet identity,
@@ -736,8 +750,9 @@ tracker.
     lake exe cache get        # fetch pre-built Mathlib oleans
     lake build                # build the proof libraries and Screen modules
                               # (ObservableNormalForms, ObserverPatchHolography,
-                              #  EventAlgebra, OPHThermodynamics, OPHScreen,
-                              #  OPHConstruction)
+                              #  EventAlgebra, OPHTime, OPHComputation,
+                              #  OPHThermodynamics, OPHScreen, OPHConstruction,
+                              #  SourceLaw; OphGap has its own CI job)
 
 The `Main` console entry point is optional and not part of the proof receipt;
 build it separately with `lake build oph:exe` if needed.

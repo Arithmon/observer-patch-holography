@@ -1,6 +1,6 @@
 # OPH Cosmology And Dark Gravity
 
-This directory contains unpublished research on the cosmological continuation of Observer Patch Holography: modular-charge dark gravity, finite-source primordial structure, observer-screen synchronization, Boltzmann transport, and comparison with public cosmological data.
+This directory contains publicly released research companions, not journal-published, on the cosmological continuation of Observer Patch Holography: modular-charge dark gravity, finite-source primordial structure, observer-screen synchronization, Boltzmann transport, and comparison with public cosmological data.
 
 The main papers provide finite observer and matter structures, controlled real-field continuum trajectories on a supplied domain, an interacting Hilbert space, and an internal action clock. These companions develop the source laws, expanding geometry, transfer maps, calibration, and likelihood contracts needed to turn such objects into cosmological observables.
 
@@ -15,13 +15,13 @@ record precedence and calibrated local duration have distinct roles; see the
 
 | Paper | Main contribution |
 | --- | --- |
-| [Dark Gravity](oph_dark_matter_paper.pdf) ([source](oph_dark_matter_paper.tex)) | Modular collar charge, quantitative recovery saturation, conditional deep-galaxy law, and reproducible galaxy comparisons |
+| [Dark Gravity](oph_dark_matter_paper.pdf) ([source](oph_dark_matter_paper.tex)) | Modular collar charge and quantitative recovery saturation; under two scaling and composition premises, the deep limit of Milgrom's modified dynamics with a fitted `a_0`, whose Tully–Fisher exponent 4 sits 2.66 standard deviations above the seen sample's fit |
 | [Finite-Source CMB Program](oph_cosmology_finite_source_cmb_program.pdf) ([source](oph_cosmology_finite_source_cmb_program.tex)) | Conditional source-screen spectrum, finite receipt contract, transfer requirements, and CMB promotion path |
-| [Inflation Without an Inflaton](oph_inflation_without_inflaton_observer_screen_synchronization.pdf) ([source](oph_inflation_without_inflaton_observer_screen_synchronization.tex)) | Observer-screen synchronization, conditional edge-center tilt, one-shell radial obstruction, physical dilation and tomography routes, flatness, and horizon coherence |
+| [Observer-Screen Synchronization as a Candidate Inflation-Free Branch](oph_inflation_without_inflaton_observer_screen_synchronization.pdf) ([source](oph_inflation_without_inflaton_observer_screen_synchronization.tex)) | Record-density expansion, the premises an inflation-free branch must supply, a conditional edge-center tilt from a declared generator density, the one-shell radial obstruction, and two sufficient routes to a three-dimensional spectrum; flatness is identified, not selected, and horizon coherence is unsupplied |
 | [Cosmological Vacuum And Structure Formation](oph_cosmological_vacuum_and_structure_formation.pdf) ([source](oph_cosmological_vacuum_and_structure_formation.tex)) | Vacuum boundary, fluctuation ensembles, proto-objects, worldlines, and structure seeds |
 | [Cosmology Data And Likelihood Contracts](oph_cosmology_data_likelihood_contracts.pdf) ([source](oph_cosmology_data_likelihood_contracts.tex)) | Boundary between the conditional source theorem, finite source instantiation, transfer, nuisance treatment, and official likelihood comparison |
-| [Boltzmann Transport Derivation](oph_boltzmann_transport_derivation.pdf) ([source](oph_boltzmann_transport_derivation.tex)) | Finite transport interface between OPH sources and observable distribution functions |
-| [Black-Hole Information Ledger](oph_black_hole_information_ledger.pdf) ([source](oph_black_hole_information_ledger.tex)) | Proved finite unitary dynamics and sign-unitary record channels, with a conditional entropy and thermality formulation |
+| [Standard Photon–Baryon Transport as the Transfer Interface for OPH Sources](oph_boltzmann_transport_derivation.pdf) ([source](oph_boltzmann_transport_derivation.tex)) | The Ma–Bertschinger system on a branch that supplies geometry, vertex and collision premises, with the two OPH interfaces (repair-exchange rate and collar stress) that vanish on the standard branch |
+| [Black-Hole Information Ledger](oph_black_hole_information_ledger.pdf) ([source](oph_black_hole_information_ledger.tex)) | Finite unitary dynamics and sign-unitary record channels, which are standard finite-dimensional facts, with a conditional entropy and thermality formulation |
 
 The [formal radial-lift theorem fragment](../paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex)
 contains the one-shell non-identifiability proof, physical source-dilation
@@ -40,7 +40,7 @@ The conditional primordial, background, capacity and dark-sector values are comp
 
 ## Dark-Gravity Structure
 
-Under the collar-stress attachment, recovery defects bound a candidate dark source. Conserved comoving charge gives the familiar inverse-volume dilution. Two explicit scaling and composition premises select a spherical deep-acceleration law with baryonic Tully–Fisher scaling.
+Under the collar-stress attachment, recovery defects bound a candidate dark source. Conserved comoving charge gives the familiar inverse-volume dilution. Two explicit scaling and composition premises select a spherical deep-acceleration law with baryonic Tully–Fisher scaling: the deep limit of Milgrom's modified dynamics, with `a_0` fitted.
 
 The physical interpretation links this source to relativistic stress, abundance, lensing, cosmic expansion, and calibrated readouts on the same branch. The papers state the hypotheses and compare the resulting formulas with galaxy data.
 

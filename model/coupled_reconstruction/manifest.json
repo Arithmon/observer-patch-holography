@@ -12,7 +12,7 @@
   "description": "Interacting action recovery from whole-field product schedules with complete marginal records and disturbed-history predictions.",
   "files": {
     "DERIVATION.md": "78e9ab29be18e320f62b6a748cda012166d56dd9ba85c9fe5949e55334972089",
-    "README.md": "132f71b7549d4b37f39bd62a472e26df32982fb1f8a4ea460cd9dee7949af5e6",
+    "README.md": "ea967b83db6c022878de05c8029468f25acdd292a327d5dbc37aa615516c655c",
     "__init__.py": "76655ff26c8ed0ce3103c46ea2af2979d38eab56a5ed5644edaad5feacf0c05b",
     "__main__.py": "13efe9e466bb59b65416636fc3ee9553f5249058b1d31ed385a644ee79f91c59",
     "bounds.py": "a6b67481dcf5296219e4d9e2e92cea4e555c20ffab521eddbffde2be9eeac2b2",

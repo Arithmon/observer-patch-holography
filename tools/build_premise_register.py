@@ -1,4 +1,4 @@
-"""Build and validate the V3 premise register surface (issue #727).
+"""Build and validate the premise register surface.
 
 The machine-readable register is ``tracking/premise_register.json``. This tool
 validates it fail-closed and renders ``docs/registers/PREMISE_REGISTER_V3.md``;
@@ -16,10 +16,13 @@ validated and rendered to ``model/PREMISES.md`` by
 Fail-closed rules: the row ids, names, types, and dispositions are fixed
 program-wide and must equal the expected inventory exactly, in order; every
 type comes from the six-value enum and every disposition from the three-value
-enum; every consuming lane is a current scientific lane, duplicate-free and
-ascending; every evidence path exists in the repository and has exactly one
-explicit evidence role; statements and notes are nonempty. The rendered page
-is a generated surface; edit the JSON, then regenerate.
+enum; every consuming lane is a registered historical lane, duplicate-free and
+ascending, rendered beside its live owner from ``tools/closed_lanes.py``;
+every evidence path exists in the repository and has exactly one explicit
+evidence role; every row carries a discharge record for the current executable
+implementation, with a status from the five-value enum, existing evidence
+paths and a note; statements and notes are nonempty. The rendered page is a
+generated surface; edit the JSON, then regenerate.
 """
 
 from __future__ import annotations
@@ -30,6 +33,7 @@ import sys
 from pathlib import Path
 
 import strict_json
+from closed_lanes import is_known, owner_text
 
 import build_gravity_ladder as gravity_tool
 import build_model_theorem_map as model_map_tool
@@ -78,7 +82,18 @@ ROW_KEYS = {
     "evidence",
     "evidence_roles",
     "notes",
+    "discharge",
 }
+
+# What the current executable implementation does with each premise.
+DISCHARGE_STATUSES = (
+    "derived_from_native_records",
+    "constructed_on_declared_inputs",
+    "obstructed",
+    "declared",
+    "not_addressed",
+)
+DISCHARGE_KEYS = {"status", "evidence", "note"}
 
 # Fixed program-wide inventory: (id, name, type, disposition), in order.
 EXPECTED_ROWS = (
@@ -544,20 +559,20 @@ RETIRED_ROWS = {
 
 DISPOSITION_MEANING = {
     "remove": (
-        "A remove row is consumed as a declared premise until a derivation "
-        "from A1-A3 is proved. The row leaves the register only"
-        " through a proved source "
-        "derivation; every composition citing it is conditional on it, and "
-        "any bounded no-go attached to the row records exactly what "
-        "A1-A3 fail to supply."
+        "A remove row is consumed as a declared premise until the executable "
+        "specification supplies it and observers recover that supply from "
+        "their records. The row leaves the register only through such a "
+        "supply on the same domain; every composition citing it is "
+        "conditional on it, and any bounded no-go attached to the row records "
+        "exactly what the specification fails to supply."
     ),
     "axiomatize": (
-        "An axiomatize row is a candidate for adoption into the specification. "
-        "Adoption is a recorded register decision with rationale and a "
-        "specification-wide dependency and countermodel review, never "
-        "a silent edit; the row keeps its source-selection no-gos as the "
-        "evidence of what A1-A3 do not supply, and an adopted "
-        "row stays on the register with its decision record."
+        "An axiomatize row is a candidate for adoption into the executable "
+        "specification. Adoption is a recorded register decision with "
+        "rationale and a specification-wide dependency and countermodel "
+        "review, never a silent edit; the row keeps its source-selection "
+        "no-gos as the evidence of what the specification does not supply, "
+        "and an adopted row stays on the register with its decision record."
     ),
     "import": (
         "An import row is a flagged external input that stays on the "
@@ -653,8 +668,8 @@ def validate(register: dict) -> list[dict]:
         for lane in lanes:
             if not isinstance(lane, int) or isinstance(lane, bool):
                 fail(f"{where}: consuming lane {lane!r} must be an integer")
-            if lane not in LANE_ISSUES:
-                fail(f"{where}: consuming lane {lane} is not a current scientific lane")
+            if lane not in LANE_ISSUES or not is_known(lane):
+                fail(f"{where}: consuming lane {lane} is not a registered historical lane")
         if lanes != sorted(set(lanes)):
             fail(f"{where}: consuming_lanes must be strictly ascending")
 
@@ -684,6 +699,18 @@ def validate(register: dict) -> list[dict]:
                     f"{where}: evidence role for {path} must be one of "
                     f"{sorted(EVIDENCE_ROLES)}"
                 )
+        discharge = row["discharge"]
+        if not isinstance(discharge, dict) or set(discharge) != DISCHARGE_KEYS:
+            fail(f"{where}: discharge must have exactly the keys {sorted(DISCHARGE_KEYS)}")
+        if discharge["status"] not in DISCHARGE_STATUSES:
+            fail(f"{where}: discharge status must be one of {DISCHARGE_STATUSES}")
+        if not isinstance(discharge["evidence"], list) or not discharge["evidence"]:
+            fail(f"{where}: discharge evidence must be a nonempty list")
+        for path in discharge["evidence"]:
+            if not isinstance(path, str) or not (ROOT / path).exists():
+                fail(f"{where}: discharge evidence path missing: {path}")
+        if not isinstance(discharge["note"], str) or not discharge["note"].strip():
+            fail(f"{where}: discharge note must be a nonempty string")
     validate_sections(register)
     return rows
 
@@ -701,7 +728,17 @@ def validate_sections(register: dict) -> None:
 
 
 def lane_links(lanes: list[int]) -> str:
-    return ", ".join(f"[#{n}]({ISSUE_URL}/{n})" for n in lanes)
+    """Render the live owner beside the historical consuming lanes."""
+    return owner_text(lanes)
+
+
+DISCHARGE_LABELS = {
+    "derived_from_native_records": "derived from native records",
+    "constructed_on_declared_inputs": "constructed on declared inputs",
+    "obstructed": "obstructed",
+    "declared": "declared input",
+    "not_addressed": "not addressed",
+}
 
 
 def render(rows: list[dict], register: dict) -> str:
@@ -712,13 +749,15 @@ def render(rows: list[dict], register: dict) -> str:
     }
 
     lines: list[str] = []
-    lines.append("# OPH V3 Premise Register")
+    lines.append("# OPH Premise Register")
     lines.append("")
     lines.append(
         "Generated by `tools/build_premise_register.py` from"
         " `tracking/premise_register.json`; edit the JSON, then regenerate."
-        f" Established under [issue #{ISSUE}]({ISSUE_URL}/{ISSUE});"
-        " maintained as a scientific register."
+        f" Established under the historical issue #{ISSUE} (closed);"
+        " maintained as a scientific register. Consuming lanes are the"
+        " historical V3 lanes; each is rendered beside the open issue that"
+        " owns its remaining work."
     )
     lines.append("")
     lines.append(
@@ -777,17 +816,37 @@ def render(rows: list[dict], register: dict) -> str:
         + "."
     )
     lines.append("")
-    lines.append("| Row | Premise | Type | Disposition | Consuming lanes |")
-    lines.append("| --- | --- | --- | --- | --- |")
+    lines.append(
+        "The current-implementation column says what the executable"
+        " construction in `model/` does with each premise: derives it from"
+        " native records, constructs an instance on declared inputs, proves an"
+        " obstruction, takes it as a declared input, or does not address it."
+        " It certifies no physical premise."
+    )
+    lines.append("")
+    lines.append(
+        "| Row | Premise | Type | Disposition | Current implementation |"
+        " Live owner (historical lanes) |"
+    )
+    lines.append("| --- | --- | --- | --- | --- | --- |")
     for row in rows:
         lines.append(
             f"| {row['id']} | {row['name']} | `{row['type']}` |"
-            f" `{row['disposition']}` | {lane_links(row['consuming_lanes'])} |"
+            f" `{row['disposition']}` |"
+            f" {DISCHARGE_LABELS[row['discharge']['status']]} |"
+            f" {lane_links(row['consuming_lanes'])} |"
         )
     lines.append("")
     lines.append(
         f"Totals: {len(rows)} premises. {counts['remove']} remove,"
         f" {counts['axiomatize']} axiomatize, {counts['import']} import."
+        " Current implementation: "
+        + ", ".join(
+            f"{sum(1 for row in rows if row['discharge']['status'] == status)}"
+            f" {DISCHARGE_LABELS[status]}"
+            for status in DISCHARGE_STATUSES
+        )
+        + "."
     )
     lines.append("")
 
@@ -808,6 +867,12 @@ def render(rows: list[dict], register: dict) -> str:
         )
         lines.append(f"- Evidence: {evidence}.")
         lines.append(f"- Disposition note: {row['notes']}")
+        discharge = row["discharge"]
+        discharge_evidence = ", ".join(f"`{path}`" for path in discharge["evidence"])
+        lines.append(
+            f"- Current implementation: {DISCHARGE_LABELS[discharge['status']]}."
+            f" {discharge['note']} Evidence: {discharge_evidence}."
+        )
         lines.append("")
 
     lines.append("## What the dispositions mean")
@@ -820,8 +885,8 @@ def render(rows: list[dict], register: dict) -> str:
 
     lines.append(
         "Register rows keep the source-selection no-gos proved against them"
-        " as permanent evidence of what A1-A3 do not supply."
-        " The register is the anti-cheating surface of the V3 program."
+        " as permanent evidence of what the executable specification does not"
+        " supply."
     )
     sm_data = register["sm_coverage"]
     gravity_data = register["gravity_rungs"]

@@ -725,6 +725,14 @@
             "kind": "registry_claim",
             "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
           }
+        },
+        {
+          "label": "Best unfitted nominal coordinate convention (extent 4, reversed row direction)",
+          "role": "structural_non_discriminating",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
+          }
         }
       ]
     },

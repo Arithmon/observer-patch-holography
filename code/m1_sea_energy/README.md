@@ -60,8 +60,8 @@ corruptions, and accept occupied-orbital gauge changes and isometry phases.
 Every positive scalar parameter uses a relative comparison, including tiny
 boundary errors. Matrix roundoff tolerances are not treated as noise thresholds.
 
-Custody recursively verifies the merged massive-clock and fixed-strength
-archive results. The new receipt stores small matrices and covariance columns;
+Custody recursively verifies the massive-clock and fixed-strength
+archive results. The receipt stores small matrices and covariance columns;
 full finite operators and Fock matrices are recomputed instead of archived.
 
 ## Interpretation

@@ -261,7 +261,7 @@ Thus W<=92160 q^(7/16), and tau sqrt(1+2W)
 The same tick on S2 has mean energy Theta(q^(51/32)), so a stable second-order
 implementation fails decisively. The fourth-order cancellation is substantive.
 
-## 6. Count every operation, and keep the clock honest
+## 6. Count every operation, and keep the clock exact
 
 For J repeated S2 steps, merging adjacent potential kicks leaves J+1 kicks
 and J drifts. For S4, the explicit seven-stage word has coefficients

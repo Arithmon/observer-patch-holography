@@ -1,6 +1,6 @@
 {
   "artifact": "oph_near_hit_attribution_surface",
-  "generated_utc": "2026-07-23T04:03:42Z",
+  "generated_utc": "2026-10-26T06:59:21Z",
   "guards": {
     "changes_any_solve_path": false,
     "compare_only": true,
@@ -86,7 +86,7 @@
       "inside_one_sigma": true,
       "measured": 125.13,
       "measured_sigma": 0.11,
-      "measured_source": "PDG 2025",
+      "measured_source": "PDG 2026",
       "missing_correction_hypothesis": {
         "falsification_test": "derive the selection axioms from source (#521); the envelope width should shrink below the measured sigma",
         "mechanism": "repair-tuple selection underdetermination (issue #521) plus the shared anchor deficit entering through the quartic-coupling transport",
@@ -108,7 +108,7 @@
       "inside_one_sigma": true,
       "measured": 172.1,
       "measured_sigma": 0.6,
-      "measured_source": "PDG 2025 direct-average context row",
+      "measured_source": "PDG 2026 cross-section pole-mass context row",
       "missing_correction_hypothesis": {
         "falsification_test": "source derivation of the selection axioms (#521); residual should track the mH row, not the alpha rows",
         "mechanism": "same repair-tuple underdetermination; the top row inherits the envelope of the d11 calibration surface, not a new physics deficit",
@@ -130,7 +130,7 @@
       "measured_source": "PDG 2024 on-shell decomposition",
       "missing_correction_hypothesis": {
         "falsification_test": "emit the source hadronic spectral measure and the a0 scheme bridge; the corrected anchor must land inside the certified gap",
-        "mechanism": "the anchor is a one-loop unification-run value with no nonperturbative hadronic running; the certified same-scheme gap interval contains the standard reference deficit 0.631 in its interior, confirming a running deficit rather than an anchor error",
+        "mechanism": "the anchor is a one-loop unification-run value that lies 0.631 below the physical on-shell value at m_Z; the certified same-scheme gap interval and that on-shell deficit measure the same anchor gap computed two ways, so their containment checks the bookkeeping and locates the miss at the anchor, without showing agreement with the measured coupling",
         "reduces_to": "source_emitted_ward_projected_hadronic_spectral_measure (#425); same-scheme a0 bridge (#545)"
       },
       "oph_value": 128.30796547328626,
@@ -176,12 +176,12 @@
       "measured_source": "PDG witness triple, compare-only",
       "missing_correction_hypothesis": {
         "falsification_test": "replace the empirical payload with the source hadronic spectral measure; the kappa interval must tighten around the witness triple",
-        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval, so the central offset is a position within the certified band, not a payload deficit",
+        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval because both measure the same anchor gap, so the containment is a bookkeeping consistency check, not agreement with the measured coupling",
         "reduces_to": "source_emitted_ward_projected_hadronic_spectral_measure (#425); same-scheme a0 bridge (#545)"
       },
       "oph_envelope": [
-        0.00047657714307519004,
-        0.0005433242990866062
+        0.000476577143075,
+        0.000543324299087
       ],
       "oph_value": 0.0005088574871435145,
       "quantity": "m_electron_gev",
@@ -195,12 +195,12 @@
       "measured_source": "PDG witness triple, compare-only",
       "missing_correction_hypothesis": {
         "falsification_test": "replace the empirical payload with the source hadronic spectral measure; the kappa interval must tighten around the witness triple",
-        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval, so the central offset is a position within the certified band, not a payload deficit",
+        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval because both measure the same anchor gap, so the containment is a bookkeeping consistency check, not agreement with the measured coupling",
         "reduces_to": "source_emitted_ward_projected_hadronic_spectral_measure (#425); same-scheme a0 bridge (#545)"
       },
       "oph_envelope": [
-        0.09854103745176451,
-        0.11234223227591915
+        0.098541037451766,
+        0.112342232275917
       ],
       "oph_value": 0.1052155887600104,
       "quantity": "m_muon_gev",
@@ -214,12 +214,12 @@
       "measured_source": "PDG witness triple, compare-only",
       "missing_correction_hypothesis": {
         "falsification_test": "replace the empirical payload with the source hadronic spectral measure; the kappa interval must tighten around the witness triple",
-        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval, so the central offset is a position within the certified band, not a payload deficit",
+        "mechanism": "kappa-interval width is carried by the published-compilation payload uncertainty and the independent lepton-transport budgets; the physical on-shell anchor requirement sits inside the certified anchor-gap interval because both measure the same anchor gap, so the containment is a bookkeeping consistency check, not agreement with the measured coupling",
         "reduces_to": "source_emitted_ward_projected_hadronic_spectral_measure (#425); same-scheme a0 bridge (#545)"
       },
       "oph_envelope": [
-        1.657232801948234,
-        1.8893370435933756
+        1.657232801948271,
+        1.889337043593336
       ],
       "oph_value": 1.76948334905381,
       "quantity": "m_tau_gev",
@@ -228,7 +228,7 @@
     }
   ],
   "synthesis": {
-    "coherence_check": "the standard reference deficit 0.631 sits inside the certified anchor-gap interval, and the lepton-lane reference-deficit kappa sits inside the certified kappa interval; both containments are read from the same endpoint artifact and are mutually consistent",
+    "coherence_check": "the on-shell reference deficit 0.631 and the certified anchor-gap interval measure the same anchor gap computed two ways, and the lepton-lane reference-deficit kappa sits inside the certified kappa interval; both containments are read from the same endpoint artifact and check bookkeeping consistency, not agreement with the measured coupling, which the Thomson endpoint misses by 0.48 percent",
     "dominant_reduction": "source_emitted_ward_projected_hadronic_spectral_measure (#425); same-scheme a0 bridge (#545)",
     "secondary_reduction": "selection-axiom source derivation (#521)",
     "statement": "The displayed residuals do not establish one dominant missing physical correction.  W/Z rows are not evaluable until their common-observable scheme map exists.  The alpha and lepton rows retain their declared hadronic/same-scheme hypotheses, while H/top retain their separate selection-axiom dependency.",

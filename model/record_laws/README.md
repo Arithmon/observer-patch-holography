@@ -81,7 +81,10 @@ a function of the seam keys alone. ∎
 In words: a record law is a table that says, for each pair of seam
 configurations that move the same way, how much of their quantum coherence
 survives. Requirement 3 is an additional phase-covariance condition; conservation
-of the classical seam total alone does not imply it. A law that records the pre-repair load at one endpoint,
+of the classical seam total alone does not imply it. It is a declared
+premise, a local U(1) phase symmetry of the repair channel at every port
+(a local charge-superselection rule), and the whole classification rests
+on it. A law that records the pre-repair load at one endpoint,
 `(c, x_a)`, keeps the classical rule exactly and fails it: one of its Kraus
 branches carries two different currents, and the receipt retains an explicit
 matrix unit whose load difference changes.
@@ -251,7 +254,7 @@ q0 = 43/60 + 2 sqrt(2)/15 < 57/60 < r=(55+sqrt(5))/60.
 The bound is attained for the 60 oriented adjacent-site differences. The
 diagonal sector is exactly the existing exclusion chain. Its gap is the
 source graph gap divided by 60, using the weighted exclusion theorem of
-[Caputo, Liggett and Richthammer, §4.1.1, (4.1)](https://arxiv.org/pdf/0906.1238).
+[Caputo, Liggett and Richthammer, J. Amer. Math. Soc. 23 (2010) 831-851, §4.1.1, equation (4.1)](https://arxiv.org/abs/0906.1238).
 Thus every binary channel contracts the nonconstant diagonal sector by `r`
 and every off-diagonal sector by at most `q0`, regardless of its phases.
 Entrywise domination implies the operator 2-norm bound because the dominating

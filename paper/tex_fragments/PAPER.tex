@@ -23,7 +23,8 @@ refinement-limit consensus bridge, collar recovery, and the geometry-readout rou
 frame kinematics and conditional Einstein dynamics.
 \else\ifdefined\OPHStandardModelDerivationPaper
 This recovered-core section develops fixed-cutoff overlap repair, transportable sector
-reconstruction, the axiom-forced local Standard Model gauge Lie algebra, and
+reconstruction, the local Standard Model gauge Lie algebra implied by the adopted
+response and transport premises, and
 the conditional Standard Model matter image.
 \else
 This recovered-core section develops fixed-cutoff overlap repair, the separated cofinal
@@ -33,6 +34,10 @@ finite Standard Model packet.
 \fi\fi
 
 \subsection{Overview}\label{overview}
+
+Theorem, lemma and section numbers inside this recovered core, such as
+Theorem 4.2 or Section 2.3, follow the core's own internal numbering, not the
+section numbering of the surrounding paper.
 
 \ifdefined\OPHEinsteinDerivationPaper
 Overlap consistency first turns local patch states into a constrained gluing problem. The
@@ -76,9 +81,11 @@ zero-obstruction sectors and, on a cofinal tail carrying the compact-gauge refin
 reconstructs a compact internal gauge group in the bosonic branch.
 
 The finite-current route is separate. Complete reversible port response in
-Axiom 1 and endogenous overlap transport in Axiom 2 force the compact Lie
+premise A1 and endogenous overlap transport in premise A2 imply the compact Lie
 type
-\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
+\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\); the port count
+fixes the dimension twelve by declaration, and the executable specification
+does not produce either clause.
 Icosahedral incidence and inverse-port pairing determine \(J\), with
 \(10J=A^3-4A^2-5A+10I\). A target-blind impulse/readback protocol produces
 \(R=-J\) and fixes the relative band signs up to common reversal. It does not
@@ -115,8 +122,8 @@ and tensor-upgrade clauses. Bare finite consensus stops at quotient normal forms
 branch first classifies fixed-stage zero-obstruction transportable sectors and, on a cofinal tail
 carrying the compact-gauge refinement receipt, reconstructs some compact
 internal gauge group in the bosonic branch. On the separate finite-current
-branch, complete reversible port response and endogenous overlap transport
-force the local Standard Model gauge Lie algebra
+branch, the adopted complete-response and endogenous-transport clauses
+imply the local Standard Model gauge Lie algebra
 \(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
 Incidence and inverse-port pairing determine \(J\), with
 \(10J=A^3-4A^2-5A+10I\), while target-blind readback gives \(R=-J\).
@@ -235,7 +242,7 @@ carry their own premises.
 The screen premise A1 below defines the screen-first support branch. The producer branch reaches the
 same premise only after its carrier-to-support receipts establish the global support screen.
 
-\input{tex_fragments/THREE_AXIOM_BASIS.tex}
+\input{tex_fragments/PREMISE_BASIS.tex}
 \input{tex_fragments/CLOSURE_PRINCIPLE.tex}
 
 Collar recoverability, generalized-entropy structure, and quantum focusing lie outside A1--A3:
@@ -416,7 +423,7 @@ decomposition are cited from their preceding theorems. Refinement/fiber descent 
 compact-gauge witness additionally require the compact-gauge refinement receipt.
 \fi\fi
 
-\textbf{Local information projection at the regulator scale.} At the regulator scale \(\ell_{\mathrm{UV}}\), consider the Axiom-3 subbranch carrying a global-extension interface and identity-proportional local references for which the state-determining weighted local objective is represented by one finite density matrix \(\omega\). The selected state maximizes the corresponding weighted local entropy subject to:
+\textbf{Local information projection at the regulator scale.} At the regulator scale \(\ell_{\mathrm{UV}}\), consider the premise-A3 subbranch carrying a global-extension interface and identity-proportional local references for which the state-determining weighted local objective is represented by one finite density matrix \(\omega\). The selected state maximizes the corresponding weighted local entropy subject to:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -429,9 +436,9 @@ compact-gauge witness additionally require the compact-gauge refinement receipt.
   Optionally, a finite number of global constraints (total energy, charge).
 \end{enumerate}
 
-This is the finite-matrix subbranch needed to derive the local Gibbs form of Lemma 2.6 from Axiom 3 with a cutoff-independent multiplier count. The global extension and the objective representation are explicit branch premises.
+This is the finite-matrix subbranch needed to derive the local Gibbs form of Lemma 2.6 from premise A3 with a cutoff-independent multiplier count. The global extension and the objective representation are explicit branch premises.
 
-\textbf{Clarification (conditional maximum randomness and thermal equilibrium).} Axiom 3 is local state selection relative to an exact reference and a complete visible constraint set. It does not state that the universe is in thermal equilibrium. Non-equilibrium physics is modeled in the enlarged \emph{local-multiplier} family obtained by replacing the homogeneous multipliers \(\lambda_a\) with slowly varying fields \(\lambda_a(x)\), equivalently by imposing per-cell constraints \(\langle O_a(x)\rangle = c_a(x)\). That enlarged family has dimension proportional to the number of UV cells, so it is a function-space approximation regime with gradient error terms. The refinement-stable branch and the induced maps \(R_{\ell\to L}\) below concern the homogeneous \(N_{\mathrm{con}}\)-parameter branch under the separate optimizer-pushforward interface. Controlled violations of exact Markov additivity appear under the explicit mixing hypotheses stated later in Section 2.3. Equilibrium is an approximation regime with explicit error terms.
+\textbf{Clarification (conditional maximum randomness and thermal equilibrium).} premise A3 is local state selection relative to an exact reference and a complete visible constraint set. It does not state that the universe is in thermal equilibrium. Non-equilibrium physics is modeled in the enlarged \emph{local-multiplier} family obtained by replacing the homogeneous multipliers \(\lambda_a\) with slowly varying fields \(\lambda_a(x)\), equivalently by imposing per-cell constraints \(\langle O_a(x)\rangle = c_a(x)\). That enlarged family has dimension proportional to the number of UV cells, so it is a function-space approximation regime with gradient error terms. The refinement-stable branch and the induced maps \(R_{\ell\to L}\) below concern the homogeneous \(N_{\mathrm{con}}\)-parameter branch under the separate optimizer-pushforward interface. Controlled violations of exact Markov additivity appear under the explicit mixing hypotheses stated later in Section 2.3. Equilibrium is an approximation regime with explicit error terms.
 
 \textbf{Rotationally invariant constraint branch.} Constraint sets are \(\mathrm{SO}(3)\)-invariant on \(S^2\).
 
@@ -481,7 +488,7 @@ for \(d > v_{\mathrm{LR}}|t|\), where \(\xi = O(\ell_{\mathrm{UV}})\).
 
 This is the branch-internal control statement that turns the quasi-local structure of the
 local-Gibbs branch into explicit support control for time-evolved operators. It is part of the
-third-axiom branch stated at regulator scale.
+premise-A3 branch stated at regulator scale.
 
 \begin{quote}
 \textbf{Approximate modular covariance on the fixed-cutoff realized branch.} Under the fixed-cutoff realized presentation, Lemma 2.6 (local Gibbs), the derived quasi-local propagation bound above, and the collar double-scaling plus mixing hypotheses of Section 2.3, the modular flow \(\sigma_t^{\omega,C}\) maps \(\mathcal{A}(R)\) into a slightly thickened region algebra:
@@ -1002,8 +1009,10 @@ prior gives a conditional continuation. Conventional free-scalar and lattice-gau
 They instantiate neither an OPH-native physical vacuum nor a primordial source without these
 premises.
 
+\ifdefined\OPHEinsteinDerivationPaper\else
 \input{tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex}
 \input{tex_fragments/PRIMORDIAL_BRIDGE_THEOREMS.tex}
+\fi
 
 \textbf{Receipt contract.} Every ensemble run must record its ensemble id, interpretation class,
 regulator, representative schema, gauge action, quotient canonicalizer, base
@@ -1116,7 +1125,7 @@ and the identification of the HJPW factors with the EC factors is a genuine addi
 On the separately declared rate-controlled family obtained by pushing the optimizer forward, Theorem 2.3 supplies the kinematic edge-center decomposition. Exact Markovity is one idealized route. The following lemma and theorem supply the quantitative decay route when the approximation is kept explicit.
 
 \begin{quote}
-\textbf{Lemma 2.6 (interior local information projection implies local Gibbs form).} Under Axiom 3 on the subbranch with identity-proportional local references, state-determining aggregation equivalent to the declared entropy objective, homogeneous global-sum constraints \(\langle\sum_x O_a(x)\rangle = C_a\), and the finite-dimensional regulator realization above, assume also that the constraint vector lies in the relative interior of the attainable moment set, so the selected state is faithful on the retained sector. Then the selected state has the finite-multiplier Gibbs form
+\textbf{Lemma 2.6 (interior local information projection implies local Gibbs form).} Under premise A3 on the subbranch with identity-proportional local references, state-determining aggregation equivalent to the declared entropy objective, homogeneous global-sum constraints \(\langle\sum_x O_a(x)\rangle = C_a\), and the finite-dimensional regulator realization above, assume also that the constraint vector lies in the relative interior of the attainable moment set, so the selected state is faithful on the retained sector. Then the selected state has the finite-multiplier Gibbs form
 
 \[
 \omega = \frac{e^{-H_{\mathrm{eff}}}}{\mathrm{Tr}\,e^{-H_{\mathrm{eff}}}},
@@ -1329,9 +1338,9 @@ Thus area is an operator living in the center of the boundary algebra, because i
 
 \subsubsection{Conformal-modular fixed-point microphysics}\label{27-conformal-modular-fixed-point-microphysics-cmfp}
 
-On the faithful/interior local finite-constraint branch of Axiom 3 with identity-proportional reference, the logarithm of the selected state is a quasi-local UV generator. A separately declared optimizer-pushforward and refinement-tail interface places the branch inside one common finite-dimensional multiplier family. At each regulator stage the patch and cap algebras are type-I matrix algebras. The finite regulator class is not refinement-closed, so the scaling-limit observer algebra may leave that class. The fixed-cutoff analysis proves the local-Gibbs result and propagation. Endpoint-Lipschitz control of \emph{reduced} modular Hamiltonians requires the additional exact-Markov/central-interface and endpoint-control branch stated below; it does not follow from finite-range locality alone. The cross-scale interface supplies refinement stability. The geometric cap pair with geometric modular flow is obtained in the support-visible sense: the target algebra is the extracted geometric subnet, the support-visible modular matrix elements converge under regularization, and weak-\(*\)/GNS extraction plus support-readable modular covariance and ordered cut-pair rigidity gives the geometric cap automorphism.
+On the faithful/interior local finite-constraint branch of premise A3 with identity-proportional reference, the logarithm of the selected state is a quasi-local UV generator. A separately declared optimizer-pushforward and refinement-tail interface places the branch inside one common finite-dimensional multiplier family. At each regulator stage the patch and cap algebras are type-I matrix algebras. The finite regulator class is not refinement-closed, so the scaling-limit observer algebra may leave that class. The fixed-cutoff analysis proves the local-Gibbs result and propagation. Endpoint-Lipschitz control of \emph{reduced} modular Hamiltonians requires the additional exact-Markov/central-interface and endpoint-control branch stated below; it does not follow from finite-range locality alone. The cross-scale interface supplies refinement stability. The geometric cap pair with geometric modular flow is obtained in the support-visible sense: the target algebra is the extracted geometric subnet, the support-visible modular matrix elements converge under regularization, and weak-\(*\)/GNS extraction plus support-readable modular covariance and ordered cut-pair rigidity gives the geometric cap automorphism.
 
-\textbf{Local finite-constraint information-projection branch.} The constraint family \(\mathcal C\) is generated by finitely many gauge-invariant local densities \(\{O_a(x)\}\) of UV range \(O(\ell_{\mathrm{UV}})\), constrained through their homogeneous global sums \(\langle\sum_x O_a(x)\rangle = C_a\). Axiom 3 selects the fixed-stage information projection. Retention of the same finite label set under refinement belongs to the separate optimizer-pushforward and refinement-tail interface.
+\textbf{Local finite-constraint information-projection branch.} The constraint family \(\mathcal C\) is generated by finitely many gauge-invariant local densities \(\{O_a(x)\}\) of UV range \(O(\ell_{\mathrm{UV}})\), constrained through their homogeneous global sums \(\langle\sum_x O_a(x)\rangle = C_a\). premise A3 selects the fixed-stage information projection. Retention of the same finite label set under refinement belongs to the separate optimizer-pushforward and refinement-tail interface.
 
 \textbf{Theorem 2.6 (Interior local constraints imply a local-Gibbs form).} If the MaxEnt constraints are expectations of finitely many quasi-local operators \(\{O_a\}\) with bounded support size at scale \(\ell_{\mathrm{UV}}\), and the prescribed moment vector lies in the relative interior of the attainable moment set so that the optimizer is faithful on the retained sector, then the entropy maximizer is
 \[
@@ -1362,7 +1371,7 @@ C_{\psi,\phi,I_{\max}}\,|I'\Delta I|,
 \]
 used later in the null-modular bridge. Thus quasi-local propagation follows on the faithful local-Gibbs branch, while reduced-modular endpoint control is a separate exact-Markov/central-interface receipt with the stated endpoint geometry and uniformity.
 
-\textbf{Refinement-stable multiplier branch.} The separately declared optimizer-pushforward and refinement-tail interface preserves the same finite constraint family under coarse-graining and places the regulator states in one common finite-dimensional multiplier family. This is a substantive renormalization condition because coarse-graining a finite-range Gibbs family generically generates interactions outside a fixed density list. The ``refinement-stable'' language used later means persistence along the stable or fixed branch of this multiplier family. This state-side notion is enough to compare realized states across cutoffs. FixedCutoffBosonicSectorCategory constructs the fixed-stage tensor-generated category and its forgetful fiber. RefinementFunctorAndFiberDescent constructs the refinement pullbacks and compatible fibers only on a cofinal tail carrying the compact-gauge refinement receipt. The cofinal compact-gauge witness uses the same receipt. The separate finite Standard Model route uses complete reversible response and endogenous overlap transport to force the local Standard Model gauge Lie algebra. Incidence and target-blind readback derive the carrier module and \(R=-J\). The finite conditional fixture supplies the charge-conjugate rank-15 projector pair, hypercharge lattice, common \(\mathbb Z_6\) kernel, and maximal faithful matter image. Source derivation of that current, matter action, and global quotient is not supplied. Under the complete-band and operational-cost premises, the exact screen theorem selects the rank-three response band. Physical family attachment, extra-sector completeness, and the charged-lepton and electroweak quantitative branches carry their own premises. Axiom 3 supplies neither the finite current realization nor the sector-colimit data or laboratory attachment.
+\textbf{Refinement-stable multiplier branch.} The separately declared optimizer-pushforward and refinement-tail interface preserves the same finite constraint family under coarse-graining and places the regulator states in one common finite-dimensional multiplier family. This is a substantive renormalization condition because coarse-graining a finite-range Gibbs family generically generates interactions outside a fixed density list. The ``refinement-stable'' language used later means persistence along the stable or fixed branch of this multiplier family. This state-side notion is enough to compare realized states across cutoffs. FixedCutoffBosonicSectorCategory constructs the fixed-stage tensor-generated category and its forgetful fiber. RefinementFunctorAndFiberDescent constructs the refinement pullbacks and compatible fibers only on a cofinal tail carrying the compact-gauge refinement receipt. The cofinal compact-gauge witness uses the same receipt. The separate finite Standard Model route uses complete reversible response and endogenous overlap transport to force the local Standard Model gauge Lie algebra. Incidence and target-blind readback derive the carrier module and \(R=-J\). The finite conditional fixture supplies the charge-conjugate rank-15 projector pair, hypercharge lattice, common \(\mathbb Z_6\) kernel, and maximal faithful matter image. Source derivation of that current, matter action, and global quotient is not supplied. Under the complete-band and operational-cost premises, the exact screen theorem selects the rank-three response band. Physical family attachment, extra-sector completeness, and the charged-lepton and electroweak quantitative branches carry their own premises. premise A3 supplies neither the finite current realization nor the sector-colimit data or laboratory attachment.
 
 \textbf{Scaling limit and algebraic type.} The regulator presentation gives a family of finite type-I algebras
 \[
@@ -1461,7 +1470,7 @@ The null-stress and Einstein theorem branch supplies the kinematic inputs requir
 \textbf{Summary.} The CMFP package therefore separates the dependency structure into two layers:
 \begin{itemize}
 \item
-\textbf{Fixed-stage and cross-scale consequences:} Axiom 3 with the declared local constraint and reference package gives the local-Gibbs form and quasi-local propagation on the faithful/interior branch. Bounded-interval reduced-modular endpoint-Lipschitz control additionally consumes the exact-Markov/central-interface split and the specified endpoint-to-cell uniform bound. The separate optimizer-pushforward interface supplies the realized state-side refinement branch along which later transport questions are asked.
+\textbf{Fixed-stage and cross-scale consequences:} premise A3 with the declared local constraint and reference package gives the local-Gibbs form and quasi-local propagation on the faithful/interior branch. Bounded-interval reduced-modular endpoint-Lipschitz control additionally consumes the exact-Markov/central-interface split and the specified endpoint-to-cell uniform bound. The separate optimizer-pushforward interface supplies the realized state-side refinement branch along which later transport questions are asked.
 \item
 \textbf{Support-visible scaling statement:} the scaling limit emits the support-visible geometric cap pair and ordered cut-pair rigidity holds on it. On that branch the limit algebra may be non-type-I, the modular action may be outer, and the \(2\pi\) normalization follows.  The later null half-sided-inclusion bridge additionally consumes its registered common-vector and relative-commutant standardness receipts.
 \end{itemize}
@@ -2138,7 +2147,7 @@ For each cap \(C\), let \(\lambda_C(s)\subset \mathrm{Conf}^+(S^2)\) denote the 
 
 \textbf{Theorem 4.2 (Finite \(\mathrm{BW}_{S^2}\) cap-net scaling).} For a nondegenerate BW-framed cap
 \(\widehat C=(C,n_C,p_C^-,p_C^+)\), consider an OPH realization
-on an observer-supporting refinement branch that satisfies Axioms 1--3 and carries the named
+on an observer-supporting refinement branch that satisfies premises A1--A3 and carries the named
 fixed-cutoff regulator, collar, consensus, and optimizer-pushforward interfaces. Assume the finite
 cap-normal BW certificate above and, independently, the complete multiresolution reference tower
 and algebra-state comparison package of Theorems 2.6c--2.6f on the same branch. The support-visible
@@ -2995,7 +3004,7 @@ In the collar double-scaling limit, the edge contribution becomes extensive alon
 \bar{\ell}(t) := \sum_\alpha p_\alpha \log d_\alpha,
 \]
 
-where \(N_\Sigma\) is the number of UV cut elements covering \(\Sigma\) and \(\bar{\ell}(t)\) is the \textbf{single-cell edge entropy} from the heat-kernel distribution (Theorem 6.20). Similarly, the geometric area is extensive:
+where \(N_\Sigma\) is the number of UV cut elements covering \(\Sigma\) and \(\bar{\ell}(t)\) is the \textbf{single-cell edge entropy} from the heat-kernel distribution (the fixed-cutoff edge-sector law, Theorem 6.20 of the Standard Model chain carried by the gauge-structure paper). Similarly, the geometric area is extensive:
 
 \[
 A(C) \approx N_\Sigma \cdot a_{\mathrm{cell}},
@@ -3255,11 +3264,11 @@ G_{ab}+\Lambda g_{ab}=8\pi G\,\langle T_{ab}\rangle.
 \]
 Thus the tensor upgrade does not require a separate EFT handoff once the geometric-cap theorem, the null bridge, and the overlap-complete timelike family are in place.
 
-\subsubsection{Non-tunable numerical constants}\label{58-non-tunable-numerical-constants}
+\subsubsection{Numerical constants of the gravity chain}\label{58-non-tunable-numerical-constants}
 
-The gravity chain yields specific numerical constants as rigid outputs of its declared premises.
+The gravity chain carries specific numerical constants. One is supplied by a certificate clause; the other is an identity.
 
-\textbf{The \(2\pi\) KMS normalization.} From Theorem 4.2, cap modular flow on the support-visible scaling-limit geometric cap pair is fixed by the KMS condition to the standard \(2\pi\) normalization. This is the same rigidity that fixes Unruh/Hawking temperature normalization.
+\textbf{The \(2\pi\) KMS normalization.} In Theorem 4.2 the standard \(2\pi\) normalization of cap modular flow on the support-visible scaling-limit geometric cap pair is fixed by the certificate's geometric \(2\pi\)-KMS comparison clause, a supplied receipt, with the same normalization as the Unruh and Hawking temperatures. In the Bisognano--Wichmann setting Lorentz covariance and the spectrum condition force it; here the certificate checks it.
 
 \textbf{The geometric coefficient \(\Omega_{d-2}/(d^2 - 1)\).} This coefficient appears in both (a) the CFT-ball modular Hamiltonian weight integral and (b) the geometric area-variation identity. It is an exact integral identity:
 
@@ -3281,7 +3290,7 @@ This is the reason prefactors cancel cleanly when going from \(\delta S_{\mathrm
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Non-tunable constants}: \(2\pi\) (KMS period), \(\Omega_{d-2}/(d^2-1)\) (geometric coefficient), the existence of the Einstein form.
+  \textbf{Fixed constants}: \(2\pi\) (KMS period, supplied by the certificate clause), \(\Omega_{d-2}/(d^2-1)\) (geometric coefficient, an identity), the existence of the Einstein form under the stated premises.
 \item
   \textbf{Global closure constants}: \(G\) is the conversion between edge entropy and geometric area on the emitted local gravity branch. \(\Lambda\) is not fixed by the local reference-state variation data alone; stable correctable-record closure plus identification of the record carrier with de Sitter horizon entropy fixes \(\Lambda_\star\ell_\star^2=3\pi/N_\star\), while the SI curvature scale also uses the selected OPH scale certificate.
 \end{itemize}
@@ -3505,7 +3514,7 @@ This is the concrete bridge from ``premises about screens'' to ``precision GR pr
 
 \subsubsection{Focusing/QNEC boundary on the null-modular branch}\label{510-focusingqnec-internalization-via-relative-entropy}
 
-The focusing content does not follow from Axioms 1--3. The two focusing statements on the null-modular branch require the additional hypotheses stated below. Quantum focusing is an optional gravity interface and the Einstein theorem does not consume it.
+The focusing content does not follow from premises A1--A3. The two focusing statements on the null-modular branch require the additional hypotheses stated below. Quantum focusing is an optional gravity interface and the Einstein theorem does not consume it.
 
 \textbf{What the branch supplies.} The fixed-cutoff null bridge of \S{}5.2 supplies transferred cut-center data and exact-or-controlled strip additivity on the inherited strip model.  The geometric scaling limit supplies the half-sided relation; on the separately registered common-vector and relative-commutant standardness receipts, Borchers--Wiesbrock supplies its translation generator and the affine relation \([K,P]=-i2\pi P\). These are kinematic inputs a QNEC statement consumes; they are not a proof of it or an identification of (P) with a local stress charge.
 
@@ -4845,8 +4854,8 @@ the canonical oriented carrier, the complete target-free
 fourteen and an exact rational Reynolds basis. This search-space result does
 not select a Jacobi bracket, compact current, ordered source history, or
 holonomy \cite{ophfpe,ophrepo}. The exact
-charged-double-triplet matrices are a conditional realization of the forced
-Lie type. Conditional on this realization, the finite matter certificate derives
+charged-double-triplet matrices are a conditional realization of the
+premise-implied Lie type. Conditional on this realization, the finite matter certificate derives
 \(P_{\mathrm{even}}-P_{\mathrm{vac}}\) and
 \(P_{\mathrm{odd}}-P_{\mathrm{top}}\) as the unique charge-conjugate pair of rank-15 chiral
 projectors. Determinant balance and tensor descent give the exact hypercharge
@@ -4873,7 +4882,7 @@ farthest-shell filter and produces \(R=-J\). Its restrictions to
 simultaneous reversal an algebraic response convention. The response theorem
 does not identify that sign with physical or matter charge conjugation. These
 facts constrain the response without selecting a Lie bracket. The
-complete-response and endogenous-transport clauses force the local Standard
+complete-response and endogenous-transport clauses imply the local Standard
 Model gauge Lie algebra by the compact fixed-space theorem. The charged-double-triplet
 matrix current is a conditional realization. On that realization, the
 finite matter certificate derives
@@ -4939,7 +4948,7 @@ The conditional matrix and matter realization uses the following standard
 lemmas. None enters the finite-current fixed-space theorem above. In
 particular, their compact connected groups, doublet and triplet
 representations, and connected abelian factor are premises of the conditional
-realization rather than premises of the forced local Lie-algebra result.
+realization rather than premises of the local Lie-algebra result.
 
 \textbf{Lemma 6.2 (Fiber-functor-compatible product factorization).}
 Let each symmetric tensor factor \(\mathsf{Sect}_i\) carry a faithful
@@ -4997,15 +5006,15 @@ or identify \(G_{\mathrm{packet}}\) with the separately reconstructed
 Tannaka group. QED.
 
 \textbf{Proposition 6.6a (finite Standard Model matter-image implication from the named response and matter premises).} Assume the certified
-twelve-port carrier, the complete reversible response clause of Axiom 1, and
-the endogenous transport clause of Axiom 2. The compact fixed-space theorem
+twelve-port carrier, the complete reversible response clause of premise A1, and
+the endogenous transport clause of premise A2. The compact fixed-space theorem
 forces the current Lie algebra
 \[
 \mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak u(1).
 \]
 Incidence and target-blind readback independently produce \(R=-J\) and its
 relative band signs. The declared charged-double-triplet matrix current is an
-exact conditional realization of the forced Lie type. Under that
+exact conditional realization of the premise-implied Lie type. Under that
 realization and the declared matter premises, the finite matter certificate
 derives
 \(P_{\mathrm{even}}-P_{\mathrm{vac}}\) and
@@ -5226,7 +5235,7 @@ After canonical electromagnetic normalization, these are Maxwell's equations. Th
 
 \subsubsection{Refinement stability and relevant transverse perturbations}\label{63-refinement-stability-and-unprotected-relevant-operators}
 
-The state-side refinement stability used later in the gauge branch is a separate optimizer-pushforward and refinement-tail interface. It preserves the same finite local constraint family across cutoffs, so the realized UV states lie in one common finite-dimensional information-projection family. This is a substantive renormalization condition: coarse-graining a finite-range Gibbs family generically generates interactions outside any fixed finite density list. The closure defect, the moment-matching I-projection realizing \(R_{\ell\to L}\), and its trace-norm residual bound are quantified in Definition 2.6a and Lemma 2.6b. Exact vanishing of the defect along the realized branch remains assumed in this interface. Axiom 3 supplies the fixed-stage optimizer and does not supply this cross-scale statement or the compact-gauge refinement receipt.
+The state-side refinement stability used later in the gauge branch is a separate optimizer-pushforward and refinement-tail interface. It preserves the same finite local constraint family across cutoffs, so the realized UV states lie in one common finite-dimensional information-projection family. This is a substantive renormalization condition: coarse-graining a finite-range Gibbs family generically generates interactions outside any fixed finite density list. The closure defect, the moment-matching I-projection realizing \(R_{\ell\to L}\), and its trace-norm residual bound are quantified in Definition 2.6a and Lemma 2.6b. Exact vanishing of the defect along the realized branch remains assumed in this interface. premise A3 supplies the fixed-stage optimizer and does not supply this cross-scale statement or the compact-gauge refinement receipt.
 
 Concretely, if
 \[
@@ -5265,7 +5274,7 @@ of a nonzero transverse component; by itself it neither inserts the operator
 nor proves that its coupling becomes nonzero.
 
 \textbf{Diagnostic 6.7 (conditional growth of a relevant transverse
-component).} Assume the local finite-constraint branch of Axiom 3 and the
+component).} Assume the local finite-constraint branch of premise A3 and the
 separate optimizer-pushforward and refinement-tail interface.  Let
 \(\mathcal O\) be a gauge-invariant Lorentz-scalar deformation, and assume in
 addition that the induced refinement maps admit a differentiable extension to
@@ -5287,7 +5296,7 @@ relevance alone does not generate \(\mathcal O\).
 |\delta g_n|\ge q^m|\delta g_n|\).  Generation from zero is a separate
 statement about the transverse part of the full extended map, which is not a
 coordinate of \(R_{\ell\to L}\) on the retained multiplier family and is not
-supplied by Axiom 3.  Exact tuning, an invariant or stable manifold, vanishing
+supplied by premise A3.  Exact tuning, an invariant or stable manifold, vanishing
 operator mixing, cancellations, an additional symmetry, fixed-point dynamics,
 or another source-selected mechanism can therefore keep the transverse
 component zero.  The diagnostic establishes linear instability only after a
@@ -5375,7 +5384,7 @@ Combining: 3 \ensuremath{\leq} N\_g \ensuremath{\leq} 5.
 
 \textbf{Step 3: the window is the complete conclusion.} The two bounds are the numerical content of clauses (v) and (vi) of Definition 6.1a on the declared one-Higgs branch. They leave the window \(\{3,4,5\}\) and select nothing inside it. Selection of a generation count requires a source-derived family attachment. QED.
 
-\textbf{Why this is convincing.}
+\textbf{Scope.}
 
 \begin{itemize}
 \tightlist
@@ -5621,17 +5630,14 @@ Y_e = 1, \quad
 Y_H = \tfrac{1}{2}.
 \]
 
-\textbf{Why this is convincing.}
-
-\begin{itemize}
-\tightlist
-\item
-  These are \textbf{exact rationals}, not approximate numbers.
-\item
-  Their ratios are fixed by anomaly freedom + Yukawa invariance, and the absolute lattice is fixed by the standard normalization, with no continuous parameters to adjust.
-\item
-  The resulting lattice coincides exactly with the Standard Model assignments on the declared matter packet.
-\end{itemize}
+\textbf{Inputs and scope.} The ratios follow from anomaly freedom and Yukawa
+invariance for the declared gauge group, field content and three Yukawa
+channels, and the absolute lattice from the standard normalization. This is
+the textbook hypercharge-from-anomalies argument applied to the declared
+packet, which is the Georgi--Glashow \(\mathbf{10}\oplus\bar{\mathbf 5}\)
+decomposition of the declared \(\mathfrak{su}(5)\) embedding
+\cite{pwgeorgi1974unity}; the exact rationals reproduce the Standard Model
+assignments because every discrete input is the Standard Model's.
 
 \subsubsection{Witten anomaly on the realized color branch}\label{69-witten-anomaly-and-the-number-of-colors}
 
@@ -5694,7 +5700,7 @@ So the realized triplet-doublet package is globally consistent generation by gen
 \(N_c=3\) and carries it into the anomaly and tensor-descent theorem. Witten's anomaly is a consistency check on that derived
 triplet-doublet package, not a residual selector that upgrades oddness to \(3\).
 
-\textbf{Why this is convincing.}
+\textbf{Scope.}
 
 \begin{itemize}
 \tightlist
@@ -6109,7 +6115,7 @@ Euclidean evolution for "time" A (the area of a cylinder in 2D YM) gives weight(
 t_\mathrm{phys} = \frac{g^2 A}{2} \quad \text{(in 2D YM, no ambiguity).}
 \]
 
-This shows that the Laplacian + MaxEnt \ensuremath{\to} heat-kernel structure is exact in a solvable two-dimensional Yang-Mills case. The coefficient in front of C\textsubscript{2} is fixed. This normalization anchor is a two-dimensional edge-theory check, separate from The Standard Model gauge paper's conditional support-visible compact-gauge repair-gap theorem. In any regime where the edge theory reduces to an effective 2D YM with known "Euclidean thickness" A\_eff:
+This shows that the Laplacian + MaxEnt \ensuremath{\to} heat-kernel structure is exact in a solvable two-dimensional Yang-Mills case. The coefficient in front of C\textsubscript{2} is fixed. This normalization anchor is a two-dimensional edge-theory check, separate from the Yang--Mills note's conditional support-visible compact-gauge repair-gap theorem. In any regime where the edge theory reduces to an effective 2D YM with known "Euclidean thickness" A\_eff:
 
 \[
 g^2(\mu) = \frac{2}{A_\mathrm{eff}(\mu)} \cdot \frac{\Delta_R(\mu)}{C_2(R)},
@@ -6415,13 +6421,13 @@ controls, a replayable receipt, and an independently checked error model.
   \textbf{S\textsubscript{3}}: overconstrained nonabelian Casimir log-ratio test (\ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 2), held-out relative log residual of magnitude approximately 0.0056\% at \(h=100\), with the fit overpredicting the sign sector
 \end{itemize}
 
-The Z\textsubscript{3} equality is forced by symmetry and is retained only as a regression check of the implementation; it is not an independent confirmation of the heat-kernel law. The Z\textsubscript{5} and S\textsubscript{3} calculations are more informative finite diagnostics: each fits t using fewer spectral sectors than it compares, involves two distinct nonzero eigenvalues, and reports a held-out residual. The Z\textsubscript{5} samples supply no limit theorem or monotonicity proof. For the declared S\textsubscript{3} one-plaquette Hamiltonian, the exact scalar identity proves a strict held-out mismatch at every finite coupling and monotone asymptotic agreement on the positive-diffusion branch. Neither result supplies a refinement limit, interval enclosure, controlled truncation error, or continuous-group transfer. These calculations test the finite implementation of the proposed "MaxEnt + Laplacian =\textgreater{} heat-kernel sector weights" mechanism; they do not validate it generally or for physical SU(2)/SU(3). A self-contained held-out refit script for the finite-group models is provided \href{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/code/edge_sectors/heat_kernel_holdout_validation.py}{with the public code bundle}; it fits t on a declared subset of sectors and prints held-out residuals for the remaining sectors.
+The Z\textsubscript{3} equality is forced by symmetry and is retained only as a regression check of the implementation; it is not an independent confirmation of the heat-kernel law. The Z\textsubscript{5} and S\textsubscript{3} calculations are more informative finite diagnostics: each fits t using fewer spectral sectors than it compares, involves two distinct nonzero eigenvalues, and reports a held-out residual. The Z\textsubscript{5} samples supply no limit theorem or monotonicity proof. For the declared S\textsubscript{3} one-plaquette Hamiltonian, the exact scalar identity proves a strict held-out mismatch at every finite coupling and monotone asymptotic agreement on the positive-diffusion branch. Neither result supplies a refinement limit, interval enclosure, controlled truncation error, or continuous-group transfer. These calculations test the finite implementation of the proposed "MaxEnt + Laplacian =\textgreater{} heat-kernel sector weights" mechanism; they do not validate it generally or for physical SU(2)/SU(3). A self-contained held-out refit script for the finite-group models is provided \href{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/code/edge_sectors/heat_kernel_holdout_validation.py}{with the public code bundle}; it fits t on a declared subset of sectors and prints held-out residuals for the remaining sectors.
 
 \subsubsection{IBM Quantum Cloud engineering checks}\label{614a-ibm-quantum-cloud-hardware-benchmarks}
 
 The IBM Quantum Cloud runs form an engineering and reproducibility data set. They test preparation and readout of OPH-motivated reduced-sector structures on superconducting-qubit devices, together with a programmed record-gated controller against restricted controller nulls. Standard quantum mechanics predicts every prepared state and dynamic circuit in the data set. The runs therefore have no power to distinguish OPH from quantum mechanics, regardless of shot count or blinding quality. Evidentiary use requires a source-closed observable for which OPH and quantum mechanics give different numerical predictions with an identifiable effect size.
 
-Detailed circuits, representative derived summaries, the complete blinded-run receipts, and rerun instructions are public in the \href{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/code/ibm_quantum_cloud}{canonical code and data archive}, beside the executable producers and frozen run records.
+Detailed circuits, representative derived summaries, the complete blinded-run receipts, and rerun instructions are public in the \href{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/code/ibm_quantum_cloud}{canonical code and data archive}, beside the executable producers and frozen run records.
 
 \begin{itemize}
 \tightlist
@@ -6544,7 +6550,7 @@ On the declared finite gauge packet, the combined derivation does not leave any 
 \begin{itemize}
 \tightlist
 \item \textbf{Gravity}: The geometric branch recovers Lorentz kinematics and the three-dimensional observer-frame hyperboloid.  The local-stress and Jacobson-type Einstein readings are conditional on the separately declared same-source, effective-locality, Ward, stationarity, small-ball, common-scaling, coupling, vacuum-reference, and scale-readout premises; the capacity branch then closes the metric term under its own premises.  On the additional pure Einstein--Hilbert/Minkowski action branch, Theorem 6.18 gives two classical transverse-traceless modes; a graviton quantum requires the separate particle receipt.
-\item \textbf{Strong interaction}: The complete-response theorem forces the \(\mathrm{SU}(3)\) Lie factor. Under the conditional matrix current and matter typing, the matter theorem gives the color triplet \(N_c=3\), quark triplet/antitriplet assignments, and the eight adjoint generators \((8,1,0)\). Source attachment to the physical color current, confinement, and hadron spectra are separate questions.
+\item \textbf{Strong interaction}: The complete-response theorem gives the \(\mathrm{SU}(3)\) Lie factor under its adopted premises. Under the conditional matrix current and matter typing, the matter theorem gives the color triplet \(N_c=3\), quark triplet/antitriplet assignments, and the eight adjoint generators \((8,1,0)\). Source attachment to the physical color current, confinement, and hadron spectra are separate questions.
 \item \textbf{Weak interaction}: Under the same premises, the matter theorem gives the \(\mathrm{SU}(2)_L\) weak doublet structure. A separately declared one-Higgs scalar attachment supplies the broken-phase \(W^\pm\) carriers. The electroweak quantitative branch supplies declared running and matching chart coordinates for \(v\) and the \(W/Z\) prescription checks.
 \item \textbf{Hypercharge and electromagnetism}: Under the conditional matter theorem and one overall charge convention, the hypercharge theorem and common \(\mathbb Z_6\) kernel fix the \(\mathrm U(1)_Y\) lattice and the congruence needed for integer color-singlet electric charge. On the separately declared one-Higgs and connection branch, Corollary 6.6c fixes the unbroken generator \(Q=T_3+Y\), obtains the integer-charge conclusion, and identifies the electromagnetic connection label \(A_Q\). Corollary 6.6d gives \(F_Q=dA_Q\), \(dF_Q=0\), and \(d*F_Q=g_Q^2*J_Q\) only after the low-energy Maxwell action is supplied. Theorem 6.18 then gives two classical massless transverse modes; a photon particle additionally requires its quantum-pole receipt. The Thomson-limit comparison separates a source/root witness, a mixed-provenance diagnostic, an external-data empirical closure, and the measured endpoint. A physical source-only endpoint requires the missing hadronic transport, target-independent map selection, and the typed same-quantity bridge.
 \end{itemize}

@@ -1,4 +1,6 @@
-# Finite Born frame (B11 / issue #687)
+# Finite Born frame
+
+Historical labels: B11, issue #687 (closed).
 
 This directory gives a bounded exact answer to the finite Born-frame question.
 It does **not** prove Gleason's or Busch's theorem and does not claim that the

@@ -1,4 +1,6 @@
-# B13 algebraic phase-lift audit
+# Algebraic phase-lift audit
+
+Historical label: B13.
 
 `BORN_CONTEXT_WEB_PAYLOAD.v1.json` is a byte-identical, hash-pinned copy of
 the simulator payload used by the exact verifier. The default verification

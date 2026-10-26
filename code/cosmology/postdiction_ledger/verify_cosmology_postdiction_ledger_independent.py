@@ -507,14 +507,15 @@ class Expected:
                     "capacity_coordinate": d["capacity_coordinate_desi_dr2_display"],
                 },
                 "public_input_ids": [],
-                "sigma_distance": sigma,
-                "sigma_distance_kind": "signed_one_dimensional",
-                "verdict": rule(sigma),
+                "sigma_distance": None,
+                "sigma_distance_kind": "none_not_evaluable",
+                "verdict": "not_evaluable",
                 "discriminates_from_baseline": False,
                 "prospective_data": "DESI DR3; Euclid (background posterior displays only)",
                 "extras": {
                     "percent_residual_in_lambda": 100.0 * (lambda_lp2_candidate - mean) / mean,
                     "percent_residual_in_capacity": 100.0 * (n - d["capacity_coordinate_desi_dr2_display"]) / d["capacity_coordinate_desi_dr2_display"],
+                    "standardized_distance_display": sigma,
                 },
             })
 

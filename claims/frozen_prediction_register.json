@@ -226,20 +226,20 @@
    "id": "FZ-03",
    "kill_band": "none frozen; comparison is forbidden until the neutrino stance and its decision rule are registered",
    "milestone": "C4",
-   "owning_issue": 745,
+   "owning_issue": 1025,
    "status": "registered_pending_freeze"
   },
   {
    "attestation": null,
-   "comparison_protocol": "No cosmological comparison is registered. The bounded counterfamily consumes no target and remains outside scoring. A source-positive direct capacity requires the universal complete-source membership and executable-to-Lean bridge owned by #736, the inhabited common Einstein/de Sitter tower and horizon-record attachment owned by #729, and final physical integration owned by #736. Issue #736 must register the exposure-typed scientific comparison contract before any new data are examined. The public cosmological value predates this campaign, so any such comparison is retrospective.",
-   "content": "Direct correctable-public-record N closure is not evaluable on the incomplete source antecedent. The exact all-rung generation-register counterfamily is nonidentifying under its bounded premises, and transported source-contract controls are checked on six finite rungs. Universal membership in the complete A1-A3 source class and the executable-to-Lean membership bridge are unproved. No cosmic N or complete-source nonidentifiability theorem is emitted. The closed historical H0 preflight #708 found no qualifying source-only candidate and opened no comparison; it is not a frozen negative verdict. Issue #736 owns source-only completion, physical integration, and any later preregistered comparison contract. Physical use additionally requires #729 to supply one inhabited common Einstein/de Sitter tower with a horizon-record attachment.",
+   "comparison_protocol": "No cosmological comparison is registered. The bounded counterfamily consumes no target and remains outside scoring. A source-positive direct capacity requires the universal complete-source membership and executable-to-Lean bridge, the inhabited common Einstein/de Sitter tower and horizon-record attachment, and final physical integration, all owned by #1026 (historical lanes #736 and #729, closed). Issue #1025 must register the exposure-typed scientific comparison contract before any new data are examined. The public cosmological value predates this campaign, so any such comparison is retrospective.",
+   "content": "Direct correctable-public-record N closure is not evaluable on the incomplete source antecedent. The exact all-rung generation-register counterfamily is nonidentifying under its bounded premises, and transported source-contract controls are checked on six finite rungs. Universal membership in the complete source class of the executable specification and the executable-to-Lean membership bridge are unproved. No cosmic N or complete-source nonidentifiability theorem is emitted. The closed historical H0 preflight #708 found no qualifying source-only candidate and opened no comparison; it is not a frozen negative verdict. Source-only completion and physical integration were scoped under the historical lane #736 (closed) and are owned by #1026; any later preregistered comparison contract is owned by #1025. Physical use additionally requires one inhabited common Einstein/de Sitter tower with a horizon-record attachment, scoped under the historical lane #729 (closed) and owned by #1026.",
    "content_sha256": null,
    "custody": null,
    "frozen_utc": null,
    "id": "FZ-05",
-   "kill_band": "No kill band is active. The row cannot be frozen or scored until issue #736 supplies a source-complete direct-capacity result, completes physical integration, and preregisters the scientific comparison contract, while #729 supplies the common physical tower and horizon-record attachment. Closed historical preflight #708 supplied no candidate and is not an active owner. Any attached present-day Lambda comparison stays retrospective and forbidden.",
+   "kill_band": "No kill band is active. The row cannot be frozen or scored until #1026 supplies a source-complete direct-capacity result, completes physical integration and supplies the common physical tower and horizon-record attachment (historical lanes #736 and #729, closed), and #1025 preregisters the scientific comparison contract. Closed historical preflight #708 supplied no candidate and is not an active owner. Any attached present-day Lambda comparison stays retrospective and forbidden.",
    "milestone": "C3",
-   "owning_issue": 736,
+   "owning_issue": 1025,
    "status": "registered_pending_freeze"
   },
   {
@@ -356,7 +356,7 @@
    "id": "FZ-14",
    "kill_band": "none frozen; the owner could later freeze k in {2,...,12} only as an explicit normalized finite submodel. Excluding it cannot kill the unrestricted integer-k family, because unbounded log-integer ratios are dense at finite resolution. An unrestricted test requires a normalized prior and declared tail; a future source-derived fixed d would instead restrict support to its divisors. Comparison access is forbidden until the complete contract is anchored, and no event likelihood has been evaluated",
    "milestone": "pre-comparison freeze for post-anchoring gravitational-wave events",
-   "owning_issue": 729,
+   "owning_issue": 1025,
    "status": "registered_pending_freeze"
   },
   {
