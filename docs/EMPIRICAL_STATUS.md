@@ -79,11 +79,26 @@ Classical phase tracking uses earlier counts. The action and coherent
 evolution retain their calibrated inputs; this removes a probe-control
 dependency, not the mass-parameter premises.
 The [fixed corrected-cycle audit](../model/common_source/parameter_selection_results.json)
-uses no calibrated packet and obtains an identity logical transfer with zero
-static mass seed. Native one-port and edge observables become scalar on the
-code; a two-hop correlation has nonzero differences but unremoved syndrome
-leakage and no selected physical coupling. This narrows the tested mechanism,
-without deriving the measured masses.
+uses no calibrated packet and obtains identity transfer and zero discrete
+response seed per complete proposal. This does not determine an unwrapped
+continuous Hamiltonian. Native one-port and edge observables become scalar
+on the code. For an explicitly supplied two-hop phase and continuing
+schedule, the [actual compiled recovery](../model/common_source/repair_continuation.py)
+has a certified contraction of the reachable complementary coherences.
+A finite-proposal bound controls the effective encoded Hamiltonian and an
+arbitrary reference, with per-step service errors accumulated separately.
+A globally terminal timeout is a different, stopped experiment.
+
+The [native correlation/exchange field](../model/common_source/repair_field_attachment.py)
+instead uses a fixed finite orbit average and whole-carrier exchange.
+Its encoded fermion chains have charge continuity and a required density
+interaction. Three positive gaps, fixed without measured masses, have
+ascending ratios $1:3:12$ and fail the charged-lepton target. Twelve million
+simulated records from a reduced encoded processor enclose those gaps under
+the stated phase-range and error contracts. Native local attachment controls
+are executed separately; this is not a complete many-carrier physical
+service campaign. The one-dimensional field, chosen controls and encoded
+occupation do not supply Standard Model charges or a chiral continuum.
 The [proper-ball calculation](../model/native_equilibration/ball_modular.py)
 instead computes a three-dimensional Gaussian vacuum's regional entropy
 response and compares it with an independently fixed conformal stress weight.
@@ -97,6 +112,15 @@ The large regional grids are not source-prepared histories; the regulator,
 vacuum choice, gauge-region dictionary and physical service accuracy remain
 premises. These are finite mathematical controls, not additional public
 measurement datasets.
+
+The [reciprocal thermal control](../model/native_equilibration/reciprocal_vacuum.py)
+derives a joint Gibbs fixed point and nonuniform geometry probabilities from
+energy-balanced bath collisions. It includes the same finite scalar geometry
+pair and a fixed-charge sector of the uncalibrated fermion chain. Temperature,
+geometry coupling, energy readout and fresh thermal inputs are supplied.
+This finite free-energy stationarity is not the geometric entropy--area
+stationarity needed for the Einstein construction, and supplies no public
+measurement comparison.
 
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**

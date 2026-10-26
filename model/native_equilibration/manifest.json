@@ -1,7 +1,7 @@
 {
   "description": "Derived finite preparation error on native fixed-total sectors and actual observer federations.",
   "files": {
-    "README.md": "46cbdd7995be078fd1e6242d34375f6b52c19f18d3462888220a1a39323a23b0",
+    "README.md": "5a827dba8109cc439a7335fa2a0b22df15d8669030929946a1acf46b0ecf348d",
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "ball_modular.py": "13c3296848a3280bd02b4c3ee5153b2894dfc97457edbbfa913a2bb961f908c8",
@@ -13,6 +13,9 @@
     "entropy_refinement.py": "63a1c90da4ca74b8d996baa21bdd03202f8bd01f3aa1e265004b41d512733d8e",
     "entropy_results.json": "61a941009c1078c07517e2c536857394f39d8048493e791d423df8075cb628bd",
     "history_entropy.py": "a92eab1867af2301ae1cd8c17a280c2e44cd86a50068c2f006d522ce95e02f2d",
+    "reciprocal_vacuum.py": "c1b888c78b226289585854273dcd318231dc96722edab72bbae51535250aafbd",
+    "reciprocal_vacuum_results.json": "e7bbb1c11a5ae1875957bb83f893750855aba463266fb3ea7c653e30cf8380d4",
+    "reciprocal_vacuum_results.npz": "9f27338eced7796d10837172077d73fc7c8e51181b5d696e06810a41262815db",
     "record_results.json": "46d0b8e27b13493b5c68fd7e43ec37336b145dac746102a67e50a57a76d4a96c",
     "record_thermodynamics.py": "d3054c1f7f5a6d2cd8ad5c06a3f6f63d944d45b4d7c1eb194aca5e5155dce906",
     "results.json": "a1ecb5f247dacdf1b5b579bede3a7c9fde84fd54d5775815697bb52563a2ed0c",
@@ -23,6 +26,7 @@
     "test_cut_completion.py": "010041d3aa7f7c0933d476b60f2f73551eb786248a40e68c6b9178c6ab28ee44",
     "test_entropy_refinement.py": "109b50f695da4e5e3342092bdb02f4d8924643c91346c7355e4af713250c508a",
     "test_history_entropy.py": "7f445978341db43c208e4d6ead7587ad8744b2463697104da44f8d120d5bcf5d",
+    "test_reciprocal_vacuum.py": "872d9e631770670f47d0d627894a56c3d8cc7c253a5bf6235dd7358db0a52950",
     "test_record_thermodynamics.py": "33ff2dbecf4d8992e192914cd96bb0f264efcb406a9731fc6218d18dddb76aff",
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb",
     "test_vacuum_geometry.py": "ab0bc7385ad919337a1949c44aae693b5f25a5700726460fc01c13c1de8072b3",

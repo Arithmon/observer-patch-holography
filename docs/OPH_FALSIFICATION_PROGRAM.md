@@ -96,16 +96,25 @@ Diagnostic comparisons, simulator outputs, known-data checks, and engineering
 benchmarks carry no falsification verdict.
 
 The [fixed corrected-repair calculation](../model/common_source/parameter_selection_results.json)
-excludes a nonzero static logical mass seed from the specified code and
-recovery cycle; native one-port and edge costs are scalar there. Its two-hop
-correlation candidate has unremoved syndrome leakage and no selected physical
-coupling. The [native vacuum/geometry control](../model/native_equilibration/vacuum_repair_results.json)
+has zero discrete response seed on the specified code and recovery cycle;
+native one-port and edge costs are scalar there. A single endpoint identity
+does not select a continuous Hamiltonian. An explicitly phased continuing
+program has a [controlled effective evolution](../model/common_source/repair_continuation.py),
+and a finite orbit-average/exchange architecture has an
+[uncalibrated interacting chain](../model/common_source/repair_field_attachment.py).
+Its gap ratios $1:3:12$ fail the charged-lepton target. Neither construction
+derives Standard Model charges or a three-dimensional chiral continuum.
+The [native vacuum/geometry control](../model/native_equilibration/vacuum_repair_results.json)
 requires positive stationary cycle work despite conditional vacuum
 compatibility. These results delimit particular mechanisms. They establish
 neither a general OPH obstruction nor failure of the conditional Einstein
 theorem. Calibrated spectrum readouts and same-action regional entropy
 calculations remain implementation controls, with their supplied parameters
 and physical-identification requirements retained.
+The [reciprocal thermal control](../model/native_equilibration/reciprocal_vacuum.py)
+has exact finite energy balance and Gibbs stationarity with supplied thermal
+reservoirs. Its geometric-probability variation does not supply the metric
+entropy--area variation required by the Einstein branch.
 
 The down-type register-Clebsch comparison supplies a recorded negative result
 inside this ineligible class. The declared alphabet and F1/F2 rules produce

@@ -252,6 +252,12 @@ REPLAYS = (
      "model/common_source/calibrated_transport_results.json"),
     ("model.native_equilibration.vacuum_repair", None,
      "model/native_equilibration/vacuum_repair_results.json"),
+    ("model.common_source.repair_continuation", None,
+     "model/common_source/repair_continuation_results.json"),
+    ("model.common_source.repair_field_attachment", None,
+     "model/common_source/repair_field_attachment_results.json"),
+    ("model.native_equilibration.reciprocal_vacuum", None,
+     "model/native_equilibration/reciprocal_vacuum_results.json"),
 )
 
 

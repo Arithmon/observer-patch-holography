@@ -701,6 +701,17 @@ separate bound on the literal source preparations. A common repaired state
 therefore does not supply autonomous cooling, reciprocal geometric response
 or the required renormalized entropy stationarity.
 
+The [reciprocal thermal construction](native_equilibration/reciprocal_vacuum.py)
+replaces uniform geometric resampling with fixed-gap thermal collisions and
+derives a joint Gibbs fixed point. It uses the same small scalar geometry
+pair and a fixed-charge sector of the correlation/exchange field. Matter
+free energy determines nonuniform geometry probabilities. Native proposals,
+energy readout and selected complete collisions are source-executed, with
+rejections and bath records retained. Fresh thermal inputs and the full
+reservoir-bank controller remain supplied services. This finite thermal
+stationarity is a probability variation, not a metric or entropy--area
+variation, and does not certify autonomous controller work.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -840,13 +851,35 @@ family seed rank at most two; active correction and different mass routes
 are outside that result.
 
 The [fixed active-cycle calculation](common_source/parameter_selection.py)
-derives the full logical transfer $I_{36}$ and zero static mass seed for the
+derives the full logical transfer $I_{36}$ and zero discrete response seed for the
 existing recorded code and recovery. All one-port loads and native edge
 costs compress to scalars. The original faithful reference is not stationary
 under this active cycle on the same carrier. A two-hop weighted correlation
 has nonzero occupation differences but leaks out of the code and is not an
-existing coherent term in the fixed repair. Its coefficient, physical field
-dictionary and controlled elimination of the syndrome remain unselected.
+existing coherent term in the fixed repair. This fixed cycle alone supplies
+neither its coherent coupling nor a physical field dictionary. Specified
+phase-control extensions have their own error and scheduling contracts.
+
+The [specified coherent continuation](common_source/repair_continuation.py)
+derives a controlled effective Hamiltonian for a two-hop phase followed by
+the actual compiled correction. Directed rational contraction certificates
+cover its full reachable matching space. The finite-proposal error includes
+arbitrary references; numerical and physical per-step errors accumulate
+separately. Its fixed-length outer schedule continues after a retained idle
+result. A globally terminal timeout has a distinct stopped limit. No one
+endpoint channel is treated as selecting an unwrapped Hamiltonian.
+
+The [correlation/exchange field](common_source/repair_field_attachment.py)
+uses a finite six-cycle average to preserve the code and positive exchange
+between complete carriers to derive hopping with a density interaction.
+Independent occupation modes, charge continuity, source readout and the
+multiple-particle sectors use the same one-dimensional action. Its native
+gaps have ascending ratios $1:3:12$. Twelve million simulated detector
+records from a reduced encoded processor enclose those gaps without a mass
+packet. Local native attachment controls are executed separately; a full
+many-carrier service history is not claimed. The control architecture,
+sector initialization and clock interpretation remain inputs, and the
+field is not a physical Standard Model or a chiral continuum.
 
 The separate [calibrated matter action](common_source/calibrated_matter.py)
 checks a common-scale empirical Standard Model parameter point on the same

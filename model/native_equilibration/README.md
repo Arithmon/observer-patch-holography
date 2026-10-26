@@ -1,6 +1,6 @@
 # Preparing the stationary native sector, with an error bound
 
-The existing [quantum mixing theorem](../observer/QUANTUM_MIXING.md) already
+The [quantum mixing theorem](../observer/QUANTUM_MIXING.md)
 applies to any finite connected weighted graph, not just one elementary
 observer. This packet attaches that result to the actual screen federations.
 It replaces **exact stationary preparation** with **discarded native repair
@@ -14,7 +14,7 @@ fresh fair coin. Forgotten preparation records are not used for conditioning.
 These are the hypotheses of this construction, and must not be silently
 replaced by the production observer's adaptive schedule.
 
-## The existing theorem and its concrete attachment
+## Mixing theorem and its concrete attachment
 
 For `V` ports, `M` seams and fixed total `k`, write `d=binomial(V,k)`.
 The source's matrix-unit difference blocks establish self-adjoint positive
@@ -290,3 +290,31 @@ this stationary cycle and cannot pay that cost. Reciprocal backreaction or
 an explicit work reservoir is needed. This supplies a finite preparation
 and work ledger; it derives neither autonomous cooling nor a renormalized
 small-ball Einstein balance.
+
+### Reciprocal thermal matter and geometry
+
+[reciprocal_vacuum.py](reciprocal_vacuum.py) gives a separate finite thermal
+construction on the same cutoff-two scalar Hamiltonians at $r=9/10,11/10$.
+Compatibility is the joint Gibbs state of those declared Hamiltonians at
+the supplied inverse temperature $1/\sqrt{14}$. Auxiliary native proposals
+select energy-level pairs. A bank of fixed-gap thermal qubits supplies
+energy-conserving exchanges, with exact pairwise detailed balance and
+all rejected proposals and bath outputs retained. The full quantum state
+is stationary even though the conditional scalar Hamiltonians do not commute.
+
+Matter free energy fixes geometry probabilities $p_g=Z_g/(Z_0+Z_1)$,
+approximately $0.57509,0.42491$. A uniform-geometry conditional Gibbs state
+has stationarity defect about $0.05419$ in population L1 distance. The same
+law acts on the first native correlation/exchange fermion chain in its
+fixed-occupation-one sector; charge-sector preparation is explicit.
+Energy readout, native proposals and selected complete source collisions
+are executed. The full reservoir-bank controller and its thermal refresh
+history are not executed. Endpoint energy balance is distinct from
+physical pulse-controller work. Temperature, Hamiltonian and thermal-input
+services remain premises. Free-energy stationarity under changes of the
+geometry probabilities does not supply a metric variation, a vacuum
+selection theorem or the Einstein entropy--area condition.
+
+```sh
+python -m model.native_equilibration.reciprocal_vacuum --check model/native_equilibration/reciprocal_vacuum_results.json
+```

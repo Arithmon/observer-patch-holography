@@ -56,36 +56,18 @@ and the clocks inside it.
   records does not select the field's radial direction. The
   [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
   states the construction's scope.
-- **Internal matter and allowed interactions.** A declared spin lift of the
-  finite response gives the internal charges of one Standard Model generation.
-  One scalar doublet admits all three charged-fermion interaction channels,
-  checked exactly for arbitrary family matrices. Shared spatial operators
-  connect conditional scalar and fermion constructions. The family matrices,
-  Higgs phase, mass scale and physical particle identification remain inputs.
-  [Matter and field contracts](model/observer_particles/DERIVATION.md).
-  The [charged mass-response calculation](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
-  measures a declared Weyl–Higgs candidate with a common field and clock.
-  Active native correction protects its finite three-axis propagating field;
-  its mass ratios fail to reproduce the charged-lepton hierarchy.
-  A finite overlap operator supplies a gauge-covariant Euclidean chiral
-  kinetic projector and controlled local approximation on a small-link
-  domain. Passive reference-preserving seam schedules leave one charged
-  family direction massless in the tested Higgs route. The chiral measure,
-  interacting continuum and physical masses remain open.
-  A separate calibrated-action control checks that these internal tensors
-  can carry measured-family parameters. Its external Standard Model matching
-  is labeled calibration, with the unfitted W discrepancy retained; it is
-  not a parameter derivation. A separate observer replay recovers all nine
-  supplied running gaps from 84 million simulated complete records, with
-  explicit intervals and service assumptions; physical mass recovery remains open.
-  The fixed corrected cycle itself generates no static logical mass term.
-  A two-hop correlation survives code compression but has unremoved leakage
-  and no selected physical coupling. The same calibrated fermion action also
-  supplies a finite regional-vacuum entropy calculation and a 32-CAR source
-  preparation; physical vacuum selection and Einstein stationarity remain open.
-  Native repair separately transports a collective correlation charge with
-  compatible local detector records on overlapping regions. Its physical
-  particle interpretation remains open.
+- **Particle fields and mass measurements.** A declared spin lift supplies
+  the internal charges of one Standard Model generation and its allowed Higgs
+  interactions. Calibrated fields reproduce supplied running masses in
+  simulated observer records. A separate native correlation and exchange
+  construction gives independently occupiable fermion modes, propagation and
+  interactions under specified controls; its gap ratios fail the measured
+  lepton hierarchy. Repeated correction has a controlled coherent limit.
+  Source selection of the physical masses, a chiral interacting continuum
+  and joint gravitational dynamics remain unproved.
+  [Mass-response research](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) and
+  [matter contracts](model/observer_particles/DERIVATION.md) give the evidence
+  and construction assumptions.
 - **Standard physics from finite agreement.** Under stated premises, finite
   theorems give the specification familiar structure: public records that do
   not depend on the order of repairs; the Born rule and the Tsirelson bound on

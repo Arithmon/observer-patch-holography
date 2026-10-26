@@ -65,21 +65,18 @@ intemporelle et les horloges qu’elle contient.
   la direction radiale du champ. Le
   [bilan intégré](model/CONSTRUCTION.md#integrated-effective-description)
   énonce la portée de la construction.
-- **Matière interne et interactions permises.** Un relèvement de spin déclaré
-  de la réponse finie donne les charges internes d’une génération du Modèle
-  standard. Un doublet scalaire admet les trois canaux d’interaction des
-  fermions chargés, vérifiés exactement pour des matrices de famille
-  arbitraires. Des opérateurs spatiaux communs relient les constructions
-  conditionnelles de champs scalaires et fermioniques. Les matrices de famille,
-  la phase de Higgs, l’échelle de masse et l’identification physique des
-  particules sont des entrées.
-  [Contrats de matière et de champs](model/observer_particles/DERIVATION.md).
-  Le [calcul de réponse de masse chargée](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
-  mesure un candidat Weyl–Higgs déclaré avec un champ et une horloge communs ;
-  ses rapports de masse ne reproduisent pas la hiérarchie des leptons chargés.
-  La réparation native transporte séparément une charge collective de
-  corrélation, avec des registres de détection locale compatibles sur des
-  régions qui se recouvrent. Son identification physique reste ouverte.
+- **Champs de particules et mesures de masse.** Un relèvement de spin déclaré
+  fournit les charges internes d’une génération du Modèle standard et ses
+  interactions de Higgs permises. Des champs calibrés reproduisent les masses
+  fournies dans des registres simulés. Une construction distincte par
+  corrélation native et échange produit des modes fermioniques indépendamment
+  occupables, leur propagation et leurs interactions sous des contrôles
+  spécifiés ; ses rapports d’écarts d’énergie échouent au test de la hiérarchie des leptons.
+  La correction répétée admet une limite cohérente contrôlée. La dérivation
+  des masses physiques, du continuum chiral interactif et de la dynamique
+  gravitationnelle conjointe reste ouverte.
+  [Recherche sur les masses](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) et
+  [contrats de matière](model/observer_particles/DERIVATION.md).
 - **La physique standard à partir d’un accord fini.** Sous des prémisses
   énoncées, des théorèmes finis donnent à la spécification des structures
   familières : des registres publics indépendants de l’ordre des réparations ;
