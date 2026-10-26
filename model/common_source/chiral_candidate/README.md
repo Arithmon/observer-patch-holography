@@ -76,7 +76,7 @@ exact native Clifford/chiral basis change, tetrad pullback, common scalar
 characteristic cone and lapse/clock conversion. It also records the
 retained incidence zero modes and radial boundary obstruction. This is a
 local principal-symbol bridge, not a complete common field history.
-The [shareable research note](../../../docs/research/OPH_CHIRAL_WEYL_HIGGS_CANDIDATE_2026-10-26.md)
+The [shareable research report](../../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md#candidate-construction)
 develops the derivation and these limits in one place.
 
 ## One continuing clocked field history

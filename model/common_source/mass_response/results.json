@@ -227,7 +227,7 @@
       "ideal_split_history_error_upper": 0.0008138020833333334,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 48.37918029190041
+      "elapsed_host_seconds": 8.90862441714853
     },
     "interacting_n64": {
       "specification": {
@@ -425,7 +425,7 @@
       "ideal_split_history_error_upper": 0.00020345052083333334,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 46.16448983293958
+      "elapsed_host_seconds": 25.88516275002621
     },
     "free_n64": {
       "specification": {
@@ -623,7 +623,7 @@
       "ideal_split_history_error_upper": 0.00020345052083333334,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 50.33399762492627
+      "elapsed_host_seconds": 36.23230670904741
     },
     "interacting_later_read": {
       "specification": {
@@ -821,7 +821,7 @@
       "ideal_split_history_error_upper": 0.0016276041666666667,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 65.22170274984092
+      "elapsed_host_seconds": 39.694408166920766
     },
     "no_kick": {
       "specification": {
@@ -1019,7 +1019,7 @@
       "ideal_split_history_error_upper": 0.00020345052083333334,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 46.49411604204215
+      "elapsed_host_seconds": 45.12054529204033
     },
     "pinned_work": {
       "specification": {
@@ -1217,7 +1217,7 @@
       "ideal_split_history_error_upper": 4.0690104166666664e-05,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 46.43285945896059
+      "elapsed_host_seconds": 46.39104812499136
     },
     "late_interaction_off": {
       "specification": {
@@ -1415,7 +1415,7 @@
       "ideal_split_history_error_upper": 0.00020345052083333334,
       "bound_includes_floating_execution_error": false,
       "bound_includes_physical_services": false,
-      "elapsed_host_seconds": 42.01035250001587
+      "elapsed_host_seconds": 49.08145058294758
     }
   },
   "matched_intervention_signals": {
@@ -2494,7 +2494,7 @@
     "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
     "model/common_source/infinite_history.py": "b579a3facd773f447796191ec1dc9f9e12b4473d129d4890164ddb8b3dd9becc",
     "model/common_source/mass_response/DERIVATION.md": "ab600dbb797a0aadcb0246e1893301959076674aa9bb13e9f9c48ce1c0d22867",
-    "model/common_source/mass_response/HUBBARD_GAP.md": "d6328a21125da0d571f4ae345235df4cdefa78f4cb56313cd254c5e4ed2896d7",
+    "model/common_source/mass_response/HUBBARD_GAP.md": "03815a1b50ce8723a0ced93f630654098e6507e1209ad1d28e21241433d32dc9",
     "model/common_source/mass_response/README.md": "11065909c01d3bdc680813f0229a533f60988604101f9c2650913f487b0495f4",
     "model/common_source/mass_response/__init__.py": "848f40bd5231002e7ac5e28ac9cab27481d47bab0f363c9f39c31f14b2656a7e",
     "model/common_source/mass_response/dispersion.py": "de471a1ad966bb7f8de4666617350e291fad2eb09ad04d69e5a182077634f53d",
@@ -2504,7 +2504,7 @@
     "model/common_source/mass_response/hubbard.py": "2e39da1dbed7dedc04065d2b2dc63d90ef472449695e286307f6ec6fc6b29ea4",
     "model/common_source/mass_response/model.py": "1ffdf1a680763d52d0841636aee3dc05a51a16487a5770b2e7208dcb3dbdaacf",
     "model/common_source/mass_response/native_attachment.py": "e9a941e74ed90c5536b1094ffdf810cfa101a9a786c212e4906370e2092a1620",
-    "model/common_source/mass_response/run.py": "ae88c1bbd97db28228502ddeacda59f020ae7d3652dd5c8c20b44d35d6028dd8",
+    "model/common_source/mass_response/run.py": "6a8e0d4d8f41ae18e2ac84f0591bdc2e6d8d0168728fb69662f79c71589b5bb9",
     "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
     "model/common_source/native_routing.py": "bece6c1d39a4cf1a444e8bdc2d24dc42abaa4d16ada8d1174b246c9dd6f10f6a",
     "model/common_source/open_bounds.py": "3e3af0e789ae21c5393acf45abe5a83ae6ad11e1755567175e8a1e0f8d187538",

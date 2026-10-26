@@ -2,8 +2,8 @@
 
 This is a new diagnostic layer over the retained
 [Weyl–Higgs candidate](../chiral_candidate/README.md). It does not modify that
-action, its quantum records or the original research note. The
-[research diagnosis](../../../docs/research/OPH_HIERARCHY_DIAGNOSIS_2026-10-26.md)
+action or its quantum records. The
+[research diagnosis](../../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md#hierarchy-diagnosis)
 gives the derivations and the next physical obligations.
 
 The calculation separates exact source algebra, retained observer readout,
@@ -28,3 +28,7 @@ weights. It **does not replay the prior source evolution**; that replay
 remains available through the original candidate's commands. No empirical
 mass is used to change a source coefficient, and no observed hierarchy is
 reported as derived.
+Exact claims, rational strings and source hashes must match exactly. Floating
+diagnostics are compared with a relative tolerance of `2e-9` and absolute
+tolerance of `5e-11` across the pinned local and CI numerical dependencies;
+these are replay tolerances, not physical error bounds.

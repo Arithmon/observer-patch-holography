@@ -7,18 +7,18 @@ for execution of the declared source controls.
 
 The conventions are
 
-\[
+```math
  H=\sum_{ij}h_{ij}c_i^\dagger c_j+
  \frac12\sum_{ij}(\Delta_{ij}c_i^\dagger c_j^\dagger+
  \overline{\Delta}_{ij}c_jc_i),\qquad
  h=h^\dagger,\quad\Delta=-\Delta^T,
-\]
+```
 
-\[
+```math
  w_{2j}=c_j+c_j^\dagger,\quad
  w_{2j+1}=-i(c_j-c_j^\dagger),\quad
  \Gamma_{ab}=\frac i2\langle[w_a,w_b]\rangle.
-\]
+```
 
 Thus an empty mode has the covariance block `[[0,-1],[1,0]]`, and
 `n_j=(1+Gamma[2*j,2*j+1])/2`. The parameter in every exponential is the
@@ -32,11 +32,11 @@ word and executes **all four** local Fock input columns through the existing
 six-level source compiler. It retains the resulting complete 4×4 matrix.
 The kinds `hopping`, `pairing` and `onsite` mean respectively
 
-\[
+```math
  zc_0^\dagger c_1+\bar zc_1^\dagger c_0,\qquad
  dc_0^\dagger c_1^\dagger+\bar d c_1c_0,\qquad
  e n_0.
-\]
+```
 
 For real coefficients, the hopping word uses the commuting `XX+YY`
 combination, and pairing uses `XX-YY`. For a complex coefficient, an actual
@@ -109,11 +109,11 @@ does not renormalize the retained classical branch law. The probabilities
 are `p_n=(1+(2*n-1)*Gamma_ab)/2`. For unmeasured indices i,j the finite Wick
 identity gives
 
-\[
+```math
  \Gamma'_{ij}=\Gamma_{ij}+
  \frac{s}{1+s\Gamma_{ab}}
  (\Gamma_{ia}\Gamma_{bj}-\Gamma_{ib}\Gamma_{aj}),\qquad s=2n-1.
-\]
+```
 
 The measured mode has `Gamma'_ab=s` and zero cross-correlations with the
 remaining modes. All unmeasured and reference entries are updated by this

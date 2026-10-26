@@ -173,11 +173,11 @@ def report():
         raise ArithmeticError("retained incidence-domain dimensions changed")
     boundary=geometry["radial_first_order_boundary_control"]
     bindings={name:_hash(ROOT/name) for name in SOURCE_FILES}
-    bindings[str(Path(__file__).relative_to(ROOT))]=_hash(Path(__file__))
+    bindings[Path(__file__).relative_to(ROOT).as_posix()]=_hash(Path(__file__))
     bindings["model/common_source/chiral_candidate/action.py"]=_hash(Path(action.__file__))
     for packet in (geometry,spatial):
         bindings.update(packet["source_sha256"])
-        bindings.update({str((RESULTS/name).relative_to(ROOT)):digest for name,digest in packet["artifacts"].items()})
+        bindings.update({(RESULTS/name).relative_to(ROOT).as_posix():digest for name,digest in packet["artifacts"].items()})
     return {
         "schema":"oph.chiral_candidate.frozen_spacetime_attachment.v1",
         "status":"EXACT_COMMON_FROZEN_CHART_PRINCIPAL_SYMBOL_AND_CLIFFORD_BRIDGE",

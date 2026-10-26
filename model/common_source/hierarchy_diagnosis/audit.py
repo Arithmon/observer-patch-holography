@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import sympy as s
@@ -20,7 +21,33 @@ from tools import strict_json
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 BASELINE = HERE.parent / "chiral_candidate/results.json"
-NOTE = ROOT / "docs/research/OPH_HIERARCHY_DIAGNOSIS_2026-10-26.md"
+NOTE = ROOT / "docs/research/OPH_PARTICLE_MASS_RESPONSE.md"
+REPLAY_ABSOLUTE_TOLERANCE = 5e-11
+REPLAY_RELATIVE_TOLERANCE = 2e-9
+
+
+def compare_replay(retained, current, path="report"):
+    """Compare discrete and exact claims strictly, floating diagnostics portably."""
+    if type(retained) is not type(current):
+        raise ValueError(f"replay type changed: {path}")
+    if isinstance(retained, dict):
+        if retained.keys() != current.keys():
+            raise ValueError(f"replay keys changed: {path}")
+        for key in retained:
+            compare_replay(retained[key], current[key], f"{path}.{key}")
+    elif isinstance(retained, list):
+        if len(retained) != len(current):
+            raise ValueError(f"replay length changed: {path}")
+        for index, (old, new) in enumerate(zip(retained, current, strict=True)):
+            compare_replay(old, new, f"{path}[{index}]")
+    elif isinstance(retained, float):
+        if not (math.isfinite(retained) and math.isfinite(current)
+                and math.isclose(retained, current,
+                                 rel_tol=REPLAY_RELATIVE_TOLERANCE,
+                                 abs_tol=REPLAY_ABSOLUTE_TOLERANCE)):
+            raise ValueError(f"floating replay diagnostic changed: {path}")
+    elif retained != current:
+        raise ValueError(f"replay claim or exact value changed: {path}")
 
 
 def _zero(matrix):
@@ -189,7 +216,7 @@ def _bindings(retained):
     paths += sorted(HERE.glob("*.py")) + sorted(HERE.glob("*.md"))
     paths += [ROOT/name for name in SOURCE_FILES]
     result = dict(retained["source_bindings"])
-    result.update({str(path.relative_to(ROOT)): _hash(path) for path in paths})
+    result.update({path.relative_to(ROOT).as_posix(): _hash(path) for path in paths})
     return dict(sorted(result.items()))
 
 
@@ -239,8 +266,7 @@ def main():
         parser.error("choose a fresh output; retained reports are not overwritten")
     current = run()
     if args.verify is not None:
-        if strict_json.load(args.verify) != current:
-            raise ValueError("retained diagnosis differs from recomputed audit or source custody")
+        compare_replay(strict_json.load(args.verify), current)
         print("Verified by recomputing the diagnosis; original source dynamics were not replayed")
     else:
         args.output.parent.mkdir(parents=True, exist_ok=True)

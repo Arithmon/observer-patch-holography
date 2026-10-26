@@ -19,9 +19,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 BASELINE = HERE.parent / "hierarchy_diagnosis/results.json"
 NOTES = (
-    ROOT / "research/README.md",
-    ROOT / "research/FULL_REPAIR_MASS_RESPONSE_2026-10-26.md",
-    ROOT / "docs/research/OPH_FULL_REPAIR_RESPONSE_2026-10-26.md",
+    ROOT / "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
 )
 
 REPLAY_ABSOLUTE_TOLERANCE = 5e-11
@@ -72,7 +70,7 @@ def _bindings():
     }
     paths += [ROOT/name for name in names]
     for path in paths:
-        name, digest = str(path.relative_to(ROOT)), _hash(path)
+        name, digest = path.relative_to(ROOT).as_posix(), _hash(path)
         if name in bindings and bindings[name] != digest:
             raise ValueError(f"frozen source changed: {name}")
         bindings[name] = digest

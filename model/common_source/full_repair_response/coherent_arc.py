@@ -256,7 +256,7 @@ def report(*, with_arrays=False):
                                "Lorentzian_3plus1_dispersion_derived": False,
                                "observed_lepton_hierarchy_as_elementary_principal_phases": False,
                                "empirical_inputs_used_to_choose_weights_or_phases": False},
-            "source_bindings": {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+            "source_bindings": {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                                 for path in sorted(set(paths))}}
     if with_arrays:
         final = trajectory[-1]

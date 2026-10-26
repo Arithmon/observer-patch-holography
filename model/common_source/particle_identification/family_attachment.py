@@ -189,7 +189,7 @@ def report():
                            "physical_chirality_selected": False,
                            "absolute_scale_or_measured_masses_derived": False,
                            "Standard_Model_particle_identification_completed": False},
-        "source_bindings": {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+        "source_bindings": {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                             for path in sorted(paths)},
     }
 

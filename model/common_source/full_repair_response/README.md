@@ -3,7 +3,7 @@
 This package follows the retained
 [hierarchy diagnosis](../hierarchy_diagnosis/README.md), keeping the native
 complement, quantum coherence sectors and observer clock distinctions.
-The [research report](../../../research/FULL_REPAIR_MASS_RESPONSE_2026-10-26.md)
+The [research report](../../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md#full-repair-response)
 contains the derivation, working hypothesis, failed attachments and remaining
 physical identification. No measured Standard Model spectrum is claimed.
 

@@ -41,7 +41,7 @@ def source_bindings():
                     and path.relative_to(ROOT).parts[0] in ("model", "code", "tools")):
                 paths.add(path)
     paths.update(HERE/name for name in ("README.md", "DERIVATION.md", "HUBBARD_GAP.md"))
-    bindings = {str(path.relative_to(ROOT)): _hash(path) for path in sorted(paths)}
+    bindings = {path.relative_to(ROOT).as_posix(): _hash(path) for path in sorted(paths)}
     bindings.update(compiler.source_summary()["source_sha256"])
     return dict(sorted(bindings.items()))
 

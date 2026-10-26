@@ -18,7 +18,7 @@ from tools import strict_json
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 BASELINE = HERE.parent/"particle_identification/results.json"
-NOTE = ROOT/"docs/research/OPH_CHIRAL_WEYL_HIGGS_CANDIDATE_2026-10-26.md"
+NOTE = ROOT/"docs/research/OPH_PARTICLE_MASS_RESPONSE.md"
 
 
 def _hash(path):
@@ -42,7 +42,7 @@ def _bindings(action_report,geometry_report):
             result[name] = value
     paths = [p for p in HERE.glob("*.py") if not p.name.startswith("test_")]
     paths += list(HERE.glob("*.md"))+[BASELINE,BASELINE.with_suffix(".npz"),NOTE]
-    result.update({str(path.relative_to(ROOT)):_hash(path) for path in paths})
+    result.update({path.relative_to(ROOT).as_posix():_hash(path) for path in paths})
     return dict(sorted(result.items()))
 
 
@@ -95,10 +95,10 @@ def verify(path):
     document = strict_json.load(path)
     if document.get("schema") != "oph.chiral_candidate.v1":
         raise ValueError("wrong chiral receipt schema")
-    required = {str(p.relative_to(ROOT)) for p in HERE.glob("*.py") if not p.name.startswith("test_")}
-    required.update(str(p.relative_to(ROOT)) for p in HERE.glob("*.md"))
-    required.add(str(BASELINE.relative_to(ROOT)))
-    required.add(str(NOTE.relative_to(ROOT)))
+    required = {p.relative_to(ROOT).as_posix() for p in HERE.glob("*.py") if not p.name.startswith("test_")}
+    required.update(p.relative_to(ROOT).as_posix() for p in HERE.glob("*.md"))
+    required.add(BASELINE.relative_to(ROOT).as_posix())
+    required.add(NOTE.relative_to(ROOT).as_posix())
     if not required <= set(document["source_bindings"]):
         raise ValueError("incomplete chiral source custody")
     _check_bindings(document["source_bindings"])

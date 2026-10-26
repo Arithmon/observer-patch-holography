@@ -310,7 +310,7 @@ def report(v=None):
                      "tree_mass_over_clock_float_diagnostic":[float(x/coefficients["Omega"]) for x in exact],
                      "physical_pole_mass_or_species_assignment":False})
     bindings = dict(family_attachment.report()["source_bindings"])
-    for name in (*SOURCE_FILES,str(Path(__file__).relative_to(ROOT))):
+    for name in (*SOURCE_FILES,Path(__file__).relative_to(ROOT).as_posix()):
         bindings[name] = hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
     return {
         "schema":"oph.chiral_candidate.action.v1",

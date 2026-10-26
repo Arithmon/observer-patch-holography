@@ -36,8 +36,8 @@ def _read_public():
         producer = path.parent.parent/(name+".py")
         if _hash(producer) != packet["producer_sha256"]:
             raise ValueError(f"public producer custody changed: {name}")
-        bindings[str(path.relative_to(ROOT))] = _hash(path)
-        bindings[str(producer.relative_to(ROOT))] = packet["producer_sha256"]
+        bindings[path.relative_to(ROOT).as_posix()] = _hash(path)
+        bindings[producer.relative_to(ROOT).as_posix()] = packet["producer_sha256"]
         for location, expected in packet["source_sha256"].items():
             source = (ROOT/location).resolve()
             if not source.is_relative_to(ROOT) or _hash(source) != expected:
@@ -47,7 +47,7 @@ def _read_public():
             artifact = (path.parent/location).resolve()
             if not artifact.is_relative_to(ROOT) or _hash(artifact) != expected:
                 raise ValueError(f"public artifact custody changed: {location}")
-            bindings[str(artifact.relative_to(ROOT))] = expected
+            bindings[artifact.relative_to(ROOT).as_posix()] = expected
         packets[name] = packet
     return packets, bindings
 
@@ -91,7 +91,7 @@ def _bindings(mass, family, public):
             result[key] = value
     paths = [p for p in HERE.glob("*.py") if not p.name.startswith("test_")]
     paths += list(HERE.glob("*.md"))+[MASS_RECEIPT]
-    result.update({str(path.relative_to(ROOT)): _hash(path) for path in paths})
+    result.update({path.relative_to(ROOT).as_posix(): _hash(path) for path in paths})
     return dict(sorted(result.items()))
 
 
@@ -177,9 +177,9 @@ def verify(path):
     document = strict_json.load(path)
     if document.get("schema") != "oph.particle_identification.v1":
         raise ValueError("wrong particle audit schema")
-    required = {str(p.relative_to(ROOT)) for p in HERE.glob("*.py") if not p.name.startswith("test_")}
-    required.update(str(p.relative_to(ROOT)) for p in HERE.glob("*.md"))
-    required.add(str(MASS_RECEIPT.relative_to(ROOT)))
+    required = {p.relative_to(ROOT).as_posix() for p in HERE.glob("*.py") if not p.name.startswith("test_")}
+    required.update(p.relative_to(ROOT).as_posix() for p in HERE.glob("*.md"))
+    required.add(MASS_RECEIPT.relative_to(ROOT).as_posix())
     if not required <= set(document["source_bindings"]):
         raise ValueError("incomplete particle-audit source custody")
     for key, expected in document["source_bindings"].items():
