@@ -5,7 +5,11 @@ Weyl–Higgs candidate, the hierarchy diagnosis, and the full repair response
 audit. Its calculations and retained outputs are in the linked model packages.
 The native recorded repair supports a propagating **collective core-relative
 charge response**, an exact correlation current, and compatible local detector
-records. Its operators are even matrix-unit transfers with a diffusive response.
+records. Exact signed-current histories also recover nonzero finite-frequency
+occupation readouts. The collective operators are even matrix-unit transfers
+with a diffusive response. A specified 15-dimensional exterior carrier fits
+inside the same native 66-state space, but the complete recorded repair does
+not preserve any noiseless 15-dimensional work subspace.
 The measured Standard Model mass hierarchy has **not** been recovered, and
 these collective operators have not been identified with Standard Model fields
 in the observer's physical Lorentzian description.
@@ -104,7 +108,7 @@ are the following, in **all-left Weyl notation**:
 | $L$ | $(1,2,-1/2)$ | 2 |
 | $e^c$ | $(1,1,1)$ | 1 |
 
-Here $Q_{\rm electric}=T_3+Y$. The superscript $c$ denotes the
+Here $Q_{\mathrm{electric}}=T_3+Y$. The superscript $c$ denotes the
 left-handed charge conjugate of a right-handed singlet. Those signs matter
 when forming both masses and currents. The minimal module contains a left
 neutrino and no independent right-neutrino singlet.
@@ -391,7 +395,7 @@ W\beta W^\dagger=\begin{pmatrix}0&I\\I&0\end{pmatrix}.
 ```
 
 A proper mass carries the coordinate lapse factor
-$K_{\rm coordinate}=N K_{\rm proper}$. Clock regraduation must transform
+$K_{\mathrm{coordinate}}=N K_{\mathrm{proper}}$. Clock regraduation must transform
 the kinetic, mass and clock rates together.
 
 **At the same reconstructed-history level**, the global attachment is not
@@ -424,6 +428,22 @@ recovered spacetime has not been established. The
 [existing geometric construction](../../model/observer_particles/geometric_matter_join.py)
 and [new attachment check](../../model/common_source/chiral_candidate/spacetime_attachment.py)
 state that boundary explicitly.
+
+The attachment check also uses the **same native incident clock** as the
+collective detector. Conditioning on one successful incident event while
+retaining the separate selector and deadline timeout probabilities, the
+ten-mode charged response has exact operator norm and spectral radius
+$7/10$ under C and $2/5$ under E. The complete Ramsey histories reproduce
+those contrast factors. For any linear map $J$ to an unmeasured closed
+quadratic Weyl–Higgs propagator $U$, the measured response $R$ obeys
+$\lVert UJ-JR\rVert_{\mathrm{HS}}\ge(1-\lVert R\rVert_2)\lVert J\rVert_{\mathrm{HS}}$.
+Thus no nonzero exact intertwiner attaches that **record-conditioned response**
+to the declared closed unitary evolution. Even at one incident tick, the
+site-$2$ to site-$7$ conditional response is zero with a one-proposal
+deadline and $1/540$ with a two-proposal deadline: the waiting record matters.
+A field coupled to a measured environment can contract; a complete dephasing
+control verifies that logical possibility without identifying a physical
+detector interaction or a Standard Model field.
 
 A finite spectral menu is also not a completed local chiral gauge
 regulator. The naive lattice control has eight Weyl nodes with balanced
@@ -682,17 +702,17 @@ weights is insufficient. If $w_q$ is the weight per configuration with
 core occupation $q$, direct counting gives
 
 ```math
-\mathbb E[n_{\rm core}]=10w_1+w_2,\qquad
-\mathbb E[n_{\rm outer}]=9w_0+2w_1.
+\mathbb E[n_{\mathrm{core}}]=10w_1+w_2,\qquad
+\mathbb E[n_{\mathrm{outer}}]=9w_0+2w_1.
 ```
 
 For the same core and band, its compressed mean is always
 
 ```math
-(9w_0+2w_1)I+(8w_1+w_2-9w_0)S_{\rm core},
+(9w_0+2w_1)I+(8w_1+w_2-9w_0)S_{\mathrm{core}},
 ```
 
-where $S_{\rm core}$ is the compressed core projector. The present
+where $S_{\mathrm{core}}$ is the compressed core projector. The present
 $F$ is a nonscalar affine function of that same projector, so this whole
 family of mean-based linear prescriptions remains in the excluded class.
 This argument does not cover arbitrary changes to the carrier, core type,
@@ -1020,7 +1040,7 @@ cap. Split each accepted proposal into incident map $J$ and nonincident
 map $R_c$. The next-tick success and failure maps are
 
 ```math
-S=J(I-R_c)^{-1},\qquad F_{\rm timeout}=\tau(I-R_c)^{-1}.
+S=J(I-R_c)^{-1},\qquad F_{\mathrm{timeout}}=\tau(I-R_c)^{-1}.
 ```
 
 Finite waiting cutoffs retain the unfinished $R_c^h$ output as well as
@@ -1188,8 +1208,8 @@ $[Q_l,X_j]=\delta_{lj}X_j$. Every completion seam $(u,v)$ preserves $n_0$
 and satisfies
 
 ```math
-Q'_u-Q_u=-n_0j_{\rm native},\qquad
-Q'_v-Q_v=+n_0j_{\rm native}.
+Q'_u-Q_u=-n_0j_{\mathrm{native}},\qquad
+Q'_v-Q_v=+n_0j_{\mathrm{native}}.
 ```
 
 Thus the collective field has a local charge and conserved correlation
@@ -1203,17 +1223,28 @@ also derives the collective current covariance scale $1/36$, alongside the
 raw current scale $19/150$, with the source instrument's actual first and
 second moments. Its repair-count response and modular response use distinct
 parameters; neither covariance scale is an electromagnetic coupling.
+The complete signed records determine every nonzero temporal Fourier
+coordinate of the occupation field over a finite native-event window,
+including open paths; the zero-frequency occupation remains ambiguous.
+The exact frequency Ward identity relates this reconstructed density to the
+recorded current. In the fixed selector's stationary linear response, all
+nonwhite current poles are positive real density-relaxation poles. The eleven
+cycle-current directions instead have white two-point spectra and zero
+conditional mean; one bounded cycle read has variance $19/1620$. This
+operational current field has no oscillatory photon pole or derived Maxwell
+normalization. These frequencies are in native event index, not calibrated
+physical time.
 
 The signed endpoints $0,5$ remain fixed, while their common occupation $j$
 propagates. For the existing one-round completion selector, its accepted
 ten-mode response is
 
 ```math
-T=(q-k)I-\tfrac12L_{\rm common},\qquad
+T=(q-k)I-\tfrac12L_{\mathrm{common}},\qquad
 q=\frac{27}{32},\qquad k_C=\frac3{64},\quad k_E=\frac3{32}.
 ```
 
-$L_{\rm common}$ is the graph Laplacian formed from the actual seam weights.
+$L_{\mathrm{common}}$ is the graph Laplacian formed from the actual seam weights.
 The generating response is $(I-zT)^{-1}$ on its convergence domain, with
 all ten modes retained. Averaging signed local return measurements over the
 ten separately prepared coordinates gives
@@ -1247,7 +1278,7 @@ The $j=7$ detector needs only ports $\{0,5,7\}$, with effects
 ```math
 E_\pm=\tfrac12(|0,7\rangle\pm|5,7\rangle)
                     (\langle0,7|\pm\langle5,7|),\qquad
-E_{\rm rest}=I-E_+-E_-.
+E_{\mathrm{rest}}=I-E_+-E_-.
 ```
 
 The actual incident cap and a second declared access region $(0,5,7,10)$
@@ -1268,6 +1299,49 @@ $M_2(\mathbb C)$ blocks, without ten independent CAR modes or a derived
 bosonic field algebra. The sum of the $X_j$ realizes one CAR mode on their
 20-dimensional support with coordinate multiplicity. These are even
 occupation-transfer operators.
+
+Their accepted ten-mode transfer has one double eigenvalue and eight simple
+eigenvalues under each C/E law, certified by its exact characteristic
+polynomial. Any unbroken continuous $SU(3)$ action confined to these linear
+response modes and commuting with that transfer must act trivially: every
+invariant eigenspace has dimension at most two, while a nonzero map from the
+simple eight-dimensional $\mathfrak{su}(3)$ into $\mathfrak u(2)$ would have
+to be injective. This excludes a direct color-triplet reading of these ten
+linear modes under the stated symmetry condition, rather than color in an
+enlarged or differently encoded field.
+
+A separate [same-carrier exterior test](../../model/common_source/hierarchy_diagnosis/native_exterior_attachment.py)
+maps binary two-port configurations to a chosen exterior basis. The native
+constant and rank-five bands give a rank-15 subspace split as $10+5$; the
+protected core projects to a rank-two plane in the five-band, with exact
+Gram determinant $1/6$. Under the additive one-body charge $q_{6Y}=-2$
+on its three-dimensional complement and $q_{6Y}=3$ on that plane, the
+ten-component charges match the decoded matter module. The five-component
+charges are three copies of $-2$ and two of $3$, whereas the decoded
+conjugate-five charges are three copies of $2$ and two of $-3$. A single
+charge shift of the constant line would require
+both $4$ and $-6$ and cannot repair the mismatch. Exterior orientation
+signs are an additional representation choice; native unordered-pair repair
+does not supply them.
+
+The actual one-round mixed-cap population transfer fails to preserve this
+particular rank-15 projector: its commutator has rank 30 and squared
+Frobenius norm $961/8192$. That is a population-transfer diagnostic;
+the actual quantum Kraus branches also leak from input $Q_{15}/15$, with
+accepted-branch outside probabilities $379/2560$ (C) and $703/2560$ (E).
+The complete C/E channel yields a stronger
+work-state result. Its positive 20-seam support has the existing
+protected-core fixed algebra
+$\mathbb C I_{45}\oplus(M_2\otimes I_{10})\oplus\mathbb C I_1$;
+the finite selector minorizes the ideal connected schedule by $3/4$ and
+retains its $5/32$ timeout. Exact bistochastic Kraus counts give possible
+fixed-projector ranks $0,1,10,11,20,21,45,46,55,56,65,66$.
+Because an invariant work-subspace projector of a bistochastic channel is
+fixed, **no noiseless rank-15 work-state code exists in this fixed carrier
+under the current repair rule**. This does not exclude an operator-response
+module, a record-corrected code, an ancilla, or another coherent action.
+A declared signed exterior lift of the same port Laplacian preserves the
+$10+5$ carrier exactly; the recorded native rule does not select that lift.
 
 A conditional fluctuation construction gives a precise bosonic route from
 these same operators. For $M$ independently prepared ideal reference copies,
@@ -1498,8 +1572,8 @@ The most useful control compares **different observables of the same
 Hamiltonian and ground state**. For the existing rest pair,
 
 ```math
-C_{\rm charged}^{E}(\tau)=\tfrac12 e^{-m\tau},\qquad
-C_{\rm neutral,connected}^{E}(\tau)=\tfrac14 e^{-2m\tau}.
+C_{\mathrm{charged}}^{E}(\tau)=\tfrac12 e^{-m\tau},\qquad
+C_{\mathrm{neutral,connected}}^{E}(\tau)=\tfrac14 e^{-2m\tau}.
 ```
 
 Its Lorentzian charged response has signed poles at $\pm m$, while the
@@ -1537,6 +1611,14 @@ overlapping observer records through the same native history. Independent
 reference copies admit a thermal bosonic fluctuation limit under their
 declared preparation contract. Their two-point poles retain the native
 frequency and attenuation bounds, which do not recover the lepton hierarchy.
+The signed records determine the nonzero finite-frequency density response,
+while the measured linear current has no photon pole. The same 66-state
+carrier admits a specified $10+5$ exterior subspace, but its natural
+five-component charge is not the decoded conjugate-five and the complete
+native channel has no invariant rank-15 work-state code. The recorded
+incident response cannot be intertwined with the unmeasured closed
+Weyl–Higgs evolution by a nonzero linear map. A detector/environment
+channel or a different encoded history requires its own source derivation.
 The physical field and energy–momentum attachment remains open. The positive
 detector and continuity results resolve specific finite observation questions;
 they do not establish the full physical detector map. The hierarchy failures
@@ -1569,10 +1651,10 @@ The following routes remain hypotheses to test, rather than assumed solutions.
 
 | Priority and route | Concrete calculation | Criterion for progress |
 | --- | --- | --- |
-| 1. Attach the response to spacetime and a clock | Specify a candidate charged field, spatial translations and observer-clock readings from the continuing history. Measure its response at several spatial modes and orientations, including all terminal flags. Test a sharp-pole description where appropriate, or declare an interacting/thermal spectral alternative. | One fixed map preserves the joint detector/intervention law and gives compatible energy–momentum parameters across observers and probes. The failed flat-modular-frequency/free-dispersion map is not reused as a physical identification. |
-| 2. Determine the continuing coherent implementation | Compare explicit admissible source implementations, including their treatment of coherent versus committed records. Fix each implementation before examining particle targets, and measure multi-time phase-sensitive responses with its own clock. | The complete source program determines the observable evolution and its errors. Agreement of committed C/E probabilities alone does not select an unread coherent continuation. |
-| 3. Derive interactions and family structure together | Use the continuing repair context and complementary memory to calculate the full frequency-dependent charged response, kinetic normalization and interaction vertices from one action. Test whether additional source observables distinguish three families and break the retained stationary-reference symmetry. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests; family coefficients and scale come from that specified construction. Rescaling a field or fitting a function of the old feature matrix does not satisfy this criterion. |
-| 4. Test controlled enlargement or refinement | If a larger carrier, collective sector or copy limit is required, state its preparation, locality, interactions and observer access. Bound complete-record errors as the construction grows. | A common limiting response is obtained with controlled clock and state errors. The independent-copy bosonic limit already computed does not change the two-point poles or recover the hierarchy by itself. |
+| 1. Attach the response to spacetime and a clock | Specify a charged field, spatial translations, observer-clock readings and detector/environment channel from one continuing history. Measure several spatial modes and orientations with every terminal flag and waiting record. Test a sharp pole where appropriate, or state an interacting/thermal spectral alternative. | One fixed map preserves the joint detector/intervention law and gives compatible energy–momentum parameters across observers and probes. It must address the exact incident contraction and failed direct free-dispersion map. |
+| 2. Determine the continuing coherent implementation | Compare explicit admissible source implementations, including coherent versus committed records and the actual nonzero-frequency current/density readouts. Fix each before examining particle targets, and measure multi-time phase-sensitive responses with its own clock. | The complete source program determines the observable evolution and errors. One incident count cannot replace the waiting record, and committed C/E probabilities alone do not select an unread coherent continuation. |
+| 3. Derive interactions and family structure together | Use the continuing repair context and complementary memory to calculate charged response, kinetic normalization and vertices from one action. Show how the decoded conjugate-five and color currents act on the actual field carrier, and test the three-family symmetry breaker. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests; family coefficients and scale come from that specified construction. The ten-mode direct color action and natural $10+5$ charge action tested here are insufficient. |
+| 4. Test controlled enlargement or refinement | For an operator-response code, active record correction, larger carrier, collective sector or copy limit, state preparation, locality, interactions and observer access. Bound complete-record errors as the construction grows. | A common limiting response is obtained with controlled clock and state errors. It must bypass the fixed-work-carrier rank-15 obstruction by an explicit mechanism. Independent copies alone preserve the existing two-point poles. |
 | 5. Join the matter and entropy readouts | Extend the [native record entropy result](../../model/native_equilibration/README.md) to the actual coherent matter protocol, then derive geometric area/volume and stress readouts independently on that same history. | The joint construction meets the entropy and geometry contracts without defining curvature or an area term solely to enforce Einstein's equation. The population census theorem alone does not close this attachment. |
 
 For any route that passes these checks, freeze its architecture, state,

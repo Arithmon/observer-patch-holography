@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections import defaultdict
 from fractions import Fraction as F
 from functools import lru_cache
+from itertools import product
 from math import factorial
 
 import sympy as s
@@ -22,7 +23,7 @@ def _matrix_json(matrix):
     return [[str(value) for value in row] for row in matrix.tolist()]
 
 
-@lru_cache(maxsize=4)
+@lru_cache(maxsize=4, typed=True)
 def source(selector_rounds=1):
     """Build every native branch before using the reduced fluctuation law."""
     weights, timeout, survival = quantum_response.selector(selector_rounds)
@@ -162,6 +163,154 @@ def cycle_noise(selector_rounds=1):
             "positive_form_identity": "v^T C v=(C v)^T D^-1(C v), C=D-D B^T L^+ B D"}
 
 
+@lru_cache(maxsize=128, typed=True)
+def _fourier_weights(count, frequency):
+    if (type(count) is not int or not 2 <= count <= 64
+            or type(frequency) is not int or not 1 <= frequency < count):
+        raise ValueError("a finite2..64-event window and nonzero Fourier index required")
+    z = s.expand_complex(s.exp(2*s.pi*s.I*s.Rational(frequency, count)))
+    return z, tuple(s.simplify((1-z**(n+1))/(1-z)) for n in range(count))
+
+
+def density_fourier(records, frequency):
+    """Recover sum z**n*x_n from signed records alone, including open paths.
+
+    The last current cancels exactly. This returns nonzero temporal Fourier
+    coordinates, not the undisclosed initial occupation or its DC component.
+    No reconstruction of an invalid record word as a physical history is made.
+    """
+    if type(records) is not tuple:
+        raise ValueError("an immutable complete native record window required")
+    _, coefficients = _fourier_weights(len(records), frequency)
+    seams = source()["seams"]
+    result = s.zeros(12, 1)
+    for record, coefficient in zip(records, coefficients, strict=True):
+        if (type(record) is not tuple or len(record) != 2
+                or type(record[0]) is not tuple or record[0] not in seams
+                or any(type(port) is not int for port in record[0])
+                or type(record[1]) is not int or record[1] not in (-1, 0, 1)):
+            raise ValueError("source complement seams and signed native currents required")
+        (a, b), current = record
+        result[a] += coefficient*current
+        result[b] -= coefficient*current
+    return result
+
+
+def finite_field_readout():
+    """Independent complete four-event audit using the native endpoint rule."""
+    data = source()
+    seams = data["seams"][:4]
+    histories = open_paths = 0
+    total = s.Rational(0)
+    zero_records = []
+    for initial, probability in zip(data["states"], data["reference"], strict=True):
+        for coins in product((0, 1), repeat=4):
+            states, records, state = [], [], initial
+            for seam, coin in zip(seams, coins, strict=True):
+                states.append(state)
+                state, (_, current) = native.native(state, seam, coin)
+                records.append((seam, current))
+            for frequency in (1, 2, 3):
+                z, _ = _fourier_weights(4, frequency)
+                expected = sum((z**n*s.Matrix(x) for n, x in enumerate(states)), s.zeros(12, 1))
+                if density_fourier(tuple(records), frequency) != expected:
+                    raise ArithmeticError("record-only finite occupation Fourier reconstruction failed")
+            histories += 1
+            open_paths += state != initial
+            total += probability/16
+            if not any(current for _, current in records):
+                zero_records.append((initial, tuple(map(sum, zip(*states, strict=True)))))
+    if total != 1 or not open_paths:
+        raise ArithmeticError("the field readout audit discarded outcomes or open paths")
+    first = zero_records[0]
+    other = next(row for row in zero_records if row[1] != first[1])
+    return {"addressed_seams": [list(e) for e in seams], "native_events_per_history": 4,
+            "complete_native_histories": histories, "open_endpoint_histories": open_paths,
+            "total_probability_exact": str(total), "nonzero_Fourier_indices_checked": [1, 2, 3],
+            "identity": "sum(n=0..N-1) z^n x_n = B[sum J_n-z*sum z^n J_n]/(1-z), z^N=1,z!=1",
+            "boundary_term": "B*sum J_n=x_0-x_N; this recorded endpoint difference is retained",
+            "periodic_endpoint_assumed": False, "last_current_coefficient_exact": "0",
+            "hidden_initial_occupation_used_by_readout": False,
+            "same_zero_current_word_distinct_DC_witness": [list(first[1]), list(other[1])],
+            "DC_occupation_recovered": False,
+            "time_parameter": "finite native event index, not modular parameter or calibrated seconds",
+            "scope": "exact native branch semantics with all coins/current zeros; source pulse execution and shot campaign not added",
+            "selector_timeout_contract": "A stopped window uses its actual length; terminal flags remain separate and are not restarted."}
+
+
+def frequency_spectrum(cosine, selector_rounds=1, *, collective=False):
+    """Exact stationary two-sided current spectrum at rational cos(omega).
+
+    This is the admitted-chain record covariance, not a retarded quantum
+    propagator. The zero-frequency limit explicitly removes conserved modes.
+    """
+    if (not isinstance(cosine, (int, F, s.Rational)) or isinstance(cosine, bool)
+            or type(collective) is not bool):
+        raise ValueError("an exact rational frequency cosine and Boolean scope required")
+    cosine = s.Rational(cosine)
+    if not -1 <= cosine <= 1:
+        raise ValueError("frequency cosine must lie in[-1,1]")
+    data = source(selector_rounds)
+    scale = data[("collective_" if collective else "")+"current_scale"]
+    if cosine == 1:
+        return scale*cycle_noise(selector_rounds)["weighted_projector"]
+    b, d, m = (data[key] for key in ("incidence", "weights", "mean_map"))
+    den = s.eye(12)-2*cosine*m+m*m
+    return scale*(d-d*b.T*(cosine*s.eye(12)-m)*den.inv()*b*d/2)
+
+
+def frequency_dictionary():
+    """Source Hodge splitting, all-frequency Ward identity and actual loop read."""
+    data = source()
+    b, d, m = (data[key] for key in ("incidence", "weights", "mean_map"))
+    cycles = s.Matrix.hstack(*b.nullspace())
+    readouts = d.inv()*cycles
+    if readouts.T*data["current_mean_map"] != s.zeros(cycles.cols, 66):
+        raise ArithmeticError("cycle-current read has a state-dependent nonzero conditional mean")
+    # Gershgorin and the connected graph give0<m<1 on the nine dynamic
+    # density modes; three conserved modes are removed by the incidence.
+    lower = min(2*m[i, i]-1 for i in range(12))
+    if lower <= 0 or b.rank() != 9:
+        raise ArithmeticError("density pole positivity or mode count changed")
+    loop = readouts[:, 0]/max(map(abs, readouts[:, 0]))
+    variance = (loop.T*data["current_covariance0"]*loop)[0]
+    if variance <= 0:
+        raise ArithmeticError("the normalized loop read lost its fluctuation")
+    checks = []
+    for cosine in (-1, s.Rational(0), s.Rational(1, 2), s.Rational(1)):
+        current = frequency_spectrum(cosine)
+        if current*readouts != data["current_scale"]*cycles:
+            raise ArithmeticError("cycle spectral component is not white")
+        if cosine != 1:
+            den = s.eye(12)-2*cosine*m+m*m
+            density = data["current_scale"]*(s.eye(12)-m*m)*den.inv()
+            if b*current*b.T != 2*(1-cosine)*density:
+                raise ArithmeticError("frequency continuity Ward identity failed")
+        elif b*current*b.T != s.zeros(12):
+            raise ArithmeticError("DC current noise has nonzero divergence")
+        checks.append(str(cosine))
+    return {"parameter": "angular Fourier frequency per admitted native proposal",
+            "dynamic_density_mode_count": 9, "cycle_readout_dimension": cycles.cols,
+            "transfer_eigenvalue_lower_bound": str(lower),
+            "nonconstant_transfer_eigenvalue_upper_bound_strict": "1",
+            "matrix_spectrum": "S_J=d[D-(1/2)DB^T(cI-M)(I-2cM+M^2)^-1BD], c=cos(omega), c<1",
+            "mode_spectrum": "on a D-whitened gradient mode: d*(1+m)*(1-c)/[(1-m)^2+2m*(1-c)], 0<m<1",
+            "frequency_Ward_identity": "B S_J B^T=2(1-c) S_x; S_x=d(I-M^2)(I-2cM+M^2)^-1 on dynamic density modes",
+            "exact_frequency_cosines_checked": checks,
+            "cycle_readout": "h=D^-1*c_cycle with B*c_cycle=0; h^T J is an actual scalar record",
+            "every_cycle_conditional_mean_zero_on_all_native_states": True,
+            "cycle_record_is_martingale_difference_for_fixed_IID_selector": True,
+            "cycle_two_point_spectrum_white": True,
+            "white_two_point_law_implies_independent_or_Gaussian_records": False,
+            "bounded_example_readout_weights": list(map(str, loop)),
+            "bounded_example_variance": str(variance),
+            "bounded_example_positive_lag_response": "0 at every positive lag",
+            "all_nonwhite_poles": "real positive density-transfer poles; no oscillatory pole in any instantaneous linear current readout",
+            "collective_current_uses_same_formula_with_scale": str(data["collective_current_scale"]),
+            "physical_photon_pole_or_Maxwell_normalization_derived": False,
+            "scope": "fixed source schedule, admitted-chain two-point records; no restriction on nonlinear fields, extra coherent services or other architectures"}
+
+
 def fixed_seam_protocol(sign=1, *, auxiliary_index=0):
     """Two continuing work events, with two native coin reads between them.
 
@@ -288,6 +437,8 @@ def report():
         },
         "current_covariance_lag_zero": _matrix_json(current_covariance(0)),
         "current_covariance_lag_one": _matrix_json(current_covariance(1)),
+        "record_only_finite_field_readout": finite_field_readout(),
+        "frequency_resolved_current_dictionary": frequency_dictionary(),
         "collective_local_charge_current": {
             "protected_core_port": data["collective_core_port"],
             "density": "Q_j=n_0*n_j for j!=0, Q_0=0; sum_j Q_j=n_0 on the binary N=2 carrier",

@@ -64,6 +64,31 @@ def test_native_record_choice_changes_damping_without_changing_transport_or_freq
     assert c["accepted"]-e["accepted"] == s.eye(10)*s.Rational(3, 64)
 
 
+@pytest.mark.parametrize("law,double", [("C", s.Rational(51, 64)),
+                                          ("E", s.Rational(3, 4))])
+def test_linear_native_response_cannot_hide_an_unbroken_color_triplet(law, double):
+    certificate = collective.linear_color_attachment_test(law)
+    assert certificate["one_double_eigenvalue_exact"] == str(double)
+    assert certificate["maximum_eigenspace_dimension"] == 2
+    assert certificate["other_simple_eigenvalues"] == 8
+    assert not certificate["unbroken_commuting_continuous_SU3_can_act_as_a_triplet"]
+
+
+def test_color_attachment_certificate_rejects_a_triply_degenerate_mutation(monkeypatch):
+    original = collective.transfer
+
+    def mutated(law):
+        data = dict(original(law))
+        # Three equal eigenvalues would admit a triplet; the conclusion must
+        # not survive merely because the formula knows the old uniform mode.
+        data["accepted"] = s.ImmutableMatrix(s.eye(10)*data["survival"])
+        return data
+
+    monkeypatch.setattr(collective, "transfer", mutated)
+    with pytest.raises(ArithmeticError, match="multiplicity"):
+        collective.linear_color_attachment_test("C")
+
+
 @pytest.mark.parametrize("law", ["C", "E"])
 def test_clocked_propagation_requires_the_two_local_repairs(law):
     common = [j for j, _, _ in collective.fields()]

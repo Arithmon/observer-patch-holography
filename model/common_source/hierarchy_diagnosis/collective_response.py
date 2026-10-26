@@ -405,6 +405,38 @@ def spectral_report(law, pair=(0, 5)):
     }
 
 
+def linear_color_attachment_test(law):
+    """Exact degeneracy test for color on the ten native collective modes.
+
+    If an unbroken continuous SU(3) action acts unitarily on this *linear*
+    response space and commutes with its accepted transfer, each eigenspace
+    must carry an SU(3) representation.  No nontrivial such representation
+    fits in dimension one or two: a nonzero Lie-algebra homomorphism from
+    the simple eight-dimensional su(3) into u(2), dimension four, would
+    have to be injective.  This does not test composite or enlarged fields.
+    """
+    data = transfer(law)
+    z = s.Symbol("z")
+    polynomial = s.Poly(data["accepted"].charpoly(z).as_expr(), z)
+    repeated = polynomial.gcd(polynomial.diff()).monic()
+    double = data["survival"] - data["killing"]
+    if (polynomial.degree() != 10 or repeated != s.Poly(z-double, z)
+            or polynomial.eval(double) != 0 or polynomial.diff().eval(double) != 0
+            or polynomial.diff().diff().eval(double) == 0):
+        raise ArithmeticError("collective eigenspace multiplicity certificate changed")
+    if data["accepted"] != data["accepted"].T:
+        raise ArithmeticError("collective transfer is no longer diagonalizable by symmetry")
+    return {
+        "linear_response_dimension": 10,
+        "one_double_eigenvalue_exact": str(double),
+        "characteristic_polynomial_gcd_with_derivative_exact": str(repeated.as_expr()),
+        "other_simple_eigenvalues": 8,
+        "maximum_eigenspace_dimension": 2,
+        "unbroken_commuting_continuous_SU3_can_act_as_a_triplet": False,
+        "scope": "The ten X_j modes with the named accepted C/E transfer, assuming an unbroken unitary SU(3) action that commutes with it; no claim about composite, enlarged, gauge-dressed or alternate coherent fields.",
+    }
+
+
 def conditional_dispersion_test(law):
     """Test a stated sharp-pole dictionary, without assigning physical momentum.
 
@@ -576,6 +608,8 @@ def report():
         "collective_charge_continuity": charge_continuity(),
         "complete_incident_clock_experiments": {law: clock_experiment(law) for law in ("C", "E")},
         "overlapping_observer_detector": detector_consensus(),
+        "conditional_linear_color_attachment": {law: linear_color_attachment_test(law)
+                                                for law in ("C", "E")},
         "conditional_sharp_pole_attachment": {law: conditional_dispersion_test(law) for law in ("C", "E")},
         "conditional_hierarchy_bounds": {law: hierarchy_bounds(law) for law in ("C", "E")},
         "finite_copy_bosonic_fluctuations": fluctuation_certificate(),

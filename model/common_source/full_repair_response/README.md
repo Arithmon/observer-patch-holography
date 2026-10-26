@@ -59,6 +59,58 @@ The infinite sum belongs to the normalized diagnostic chain; it is not an
 infinite surviving history of the terminal-timeout instrument or a physical
 conductivity measurement.
 
+The signed records also recover a finite occupation-field readout without an
+initial occupation measurement. For an actual window of $N$ events, let
+$z^N=1$ and $z\ne1$. Summing the pathwise continuity equation gives
+
+```math
+\sum_{n=0}^{N-1}z^n x_n
+=\frac{B\left(\sum_{n=0}^{N-1}J_n-z\sum_{n=0}^{N-1}z^nJ_n\right)}{1-z}.
+```
+
+This holds on open paths: the first sum retains the endpoint difference
+$B\sum J_n=x_0-x_N$. No periodic endpoint is assumed, and the final current
+cancels from the result. A complete four-event native branch audit checks
+all three nonzero Fourier coordinates on 1,056 histories, including open
+paths and zero-current outcomes. Identical zero-current words with different
+occupation sums demonstrate the remaining DC ambiguity. A terminated window
+uses its actual event count and retains its terminal flag. These frequencies
+refer to the native event index; no physical-time or coherent phase service
+is inferred from performing Fourier arithmetic on records.
+
+Summing the exact covariance series gives the whole stationary current-noise
+spectrum. With $c=\cos\omega<1$,
+
+```math
+S_J(\omega)=d\left[D-\frac12 DB^T(cI-M)
+(I-2cM+M^2)^{-1}BD\right],\qquad
+BS_JB^T=2(1-c)S_x,
+```
+
+where $S_x=d(I-M^2)(I-2cM+M^2)^{-1}$ on the dynamic density modes.
+The frequency Ward identity attaches the current and density measurements
+to the same source. Conserved density components have separate DC weight.
+On a density-gradient direction in the coordinates $D^{-1/2}J$, the
+spectrum is $d(1+m)(1-c)/[(1-m)^2+2m(1-c)]$, with the corresponding
+transfer eigenvalue $19/27\leq m<1$. Thus every nonconstant pole of an
+instantaneous linear current readout is a density relaxation pole.
+
+For any cycle $Bc_{\mathrm{loop}}=0$, the scalar record with weights
+$h=D^{-1}c_{\mathrm{loop}}$ instead has zero conditional mean for every
+native state. Under the fixed independent selector it is a martingale
+difference and has a white two-point spectrum. An explicit bounded readout
+is $J_{23}-J_{24}+J_{34}/2$, taking unselected seam currents as zero; its
+variance is $19/1620$. Its mean response to every earlier record is zero.
+This does not make its outcomes independent or Gaussian. The eleven cycle
+directions therefore supply measured transverse record noise, without an
+oscillatory photon pole or a Maxwell kinetic normalization. This conclusion
+concerns these linear native records; nonlinear fields and additional
+coherent operations have different response contracts. In particular, the
+existing [coherent arc walk](coherent_arc.py) uses an uncommitted event register,
+an explicit reflection, and ideal cap weights different from this finite
+selector's admitted weights. Its eigenphases cannot be substituted into the
+current-noise measurement without deriving a common instrument and clock.
+
 The [collective field's local charges](../hierarchy_diagnosis/collective_response.py)
 also have a current in this same source. For $Q_j=n_0n_j$ when $j\ne0$ and
 $Q_0=0$, the binary total-two sector gives $\sum_jQ_j=n_0$.

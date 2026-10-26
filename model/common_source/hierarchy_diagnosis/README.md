@@ -31,6 +31,12 @@ A complete first-incident-clock experiment has signed Ramsey response
 Two overlapping local observer instruments have the same complete
 postmeasurement record law. The operators have matrix-unit statistics and
 a diffusive transfer response; the tested direct sharp-pole dictionary fails.
+The exact characteristic polynomial of that ten-mode accepted transfer has
+one double root and eight simple roots for both C and E. Hence an unbroken
+continuous color `SU(3)` action confined to these linear modes and commuting
+with their transfer is necessarily trivial: each invariant eigenspace has
+dimension at most two. This is a scoped direct-color-attachment obstruction,
+not a restriction on composite, enlarged or differently encoded responses.
 Physical fermion/boson and Lorentzian mass identifications remain open.
 Preparation and coherent readout are declared apparatus, without another
 pulse-level execution claim.
@@ -43,6 +49,25 @@ poles. The collective field has only two positive modular frequencies;
 exact bounds keep every tested transfer-log hierarchy below 71. These
 conditional rate assignments cannot reproduce the charged-lepton hierarchy,
 and they do not establish that the rates are physical masses.
+
+The [same-carrier exterior test](native_exterior_attachment.py) uses the
+native binary two-load space as the exterior square of twelve port
+coefficients. Its constant and rank-five bands contain a 15-dimensional
+subspace with a `10+5` split under a specified exterior vector-space map.
+Exterior orientation signs are an additional representation choice; the
+native unordered-pair repair does not inherit them. The protected core
+projects to a genuine two-plane in that rank-five band. A natural additive
+charge action reproduces
+the decoded `10` charges but gives `5` rather than the required conjugate
+`bar5`; shifting the constant-line charge cannot fix both parts. The actual
+one-round mixed-cap repair also leaks out of this subspace, with exact
+projector commutator rank 30; retaining selector timeout gives the same
+commutator. Its actual C/E quantum branches give nonzero outside probability
+from the maximally mixed rank-15 input. More broadly, the complete C/E work
+channel has fixed-algebra
+projection ranks `0,1,10,11,20,21,45,46,55,56,65,66`; no 15-dimensional
+work-state code remains invariant without active correction or an enlarged
+carrier. The exterior vector-space map alone supplies no fermion statistics.
 
 From the repository root:
 

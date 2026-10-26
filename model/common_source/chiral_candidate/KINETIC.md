@@ -230,9 +230,104 @@ cutoff, a positive interacting theory or a controlled continuum limit. Those
 regulator and interaction obligations remain before this candidate could serve
 as a complete Standard Model simulation.
 
+## The same clock requires a detector-history map
+
+The frozen-chart Clifford and mass-shell identities in
+[spacetime_attachment.py](spacetime_attachment.py) align principal symbols.
+They do not equate the native instrument's measured response with the
+unmeasured quadratic Weyl–Higgs propagator. The actual incident-clock
+response gives a quantitative test of that proposed identification.
+
+Use the native collective insertions $X_j=|0,j\rangle\langle5,j|$ on the
+binary total-two source. The current/contrast law and mixed-cap selector
+remain the ones executed by
+[collective_response.py](../hierarchy_diagnosis/collective_response.py).
+Let $I$ and $D$ be its unnormalized incident and remote maps on the ten
+collective coherences. These are response maps, not work-state probability
+matrices. Their actual seam probabilities and coherence losses are
+
+```math
+a=\frac5{32},\qquad r=\frac{11}{16},\qquad
+k_C=\frac3{64},\qquad k_E=\frac3{32}.
+```
+
+Every killing seam is incident on the clock cap. Exact native branch
+enumeration gives nonnegative entries and
+
+```math
+I\mathbf1=(a-k)\mathbf1,\quad \mathbf1^T I=(a-k)\mathbf1^T,
+\qquad D\mathbf1=r\mathbf1,\quad \mathbf1^T D=r\mathbf1^T.
+```
+
+For proposal deadline $h$, success means the first cap-incident work event,
+including zero-current incidents. Its probability is
+$\beta_h=a\sum_{n=0}^{h-1}r^n$, independent of the work state. The
+**conditional successful response** is
+
+```math
+R_h=\frac{I\sum_{n=0}^{h-1}D^n}{\beta_h},\qquad
+\lambda=1-\frac{k}{a}
+=\begin{cases}7/10,&C,\\2/5,&E.\end{cases}
+```
+
+Both row and column sums of $R_h$ equal $\lambda$. Positivity gives
+$\|R_h\|_2\le\sqrt{\|R_h\|_1\|R_h\|_\infty}=\lambda$;
+the uniform vector attains equality. Thus its operator norm and spectral
+radius are exactly $\lambda$, for every finite positive deadline. The
+nine outer coordinates form an invariant block with the same uniform
+eigenvector and bound. No floating rank or spectral assignment is used.
+
+The complete Ramsey experiment measures this loss. At $h=2$, success and
+selector-timeout probabilities are each $135/512$, and deadline timeout
+has probability $121/256$. Summing the actual signed Ramsey outputs on
+successful histories gives $\lambda(135/512)$, hence conditional contrast
+$7/10$ or $2/5$ from input contrast one. All 21 detector outcomes and all
+terminal flags are retained; conditioning is an explicitly stated
+diagnostic. Preparation of the coherent probe and the Ramsey apparatus
+remain declared services. This audit executes the native response but
+does not compile another apparatus pulse sequence.
+
+For any unitary $U$ and any linear response map $J$, the reverse triangle
+inequality gives
+
+```math
+\|UJ-JR_h\|_{\rm HS}\ge(1-\lambda)\|J\|_{\rm HS}.
+```
+
+Consequently a nonzero exact intertwiner cannot map this conditioned
+native response to the **unmeasured closed quadratic** Nambu evolution
+$U=e^{-i\mathcal H\Delta t}$. The relative defect is at least $3/10$ for C
+and $3/5$ for E. Changing the tetrad basis or regraduating a constant clock
+step preserves unitarity and does not remove this bound. Tests also apply
+it to the actual 180-dimensional candidate symbol. This rejects a direct
+closed quadratic response identification; it does not reject an effective
+field coupled to detectors, an environment, interactions or a thermal state.
+
+The environment distinction has an explicit control. The complete channel
+with $K_0=\sqrt{1-p}\,1$, $K_1=\sqrt p\,Z$ and
+$p=(1-\lambda)/2$ preserves charge populations and multiplies its charged
+matrix unit by $\lambda$. Its two outcomes are complete. It supplies a
+mathematical dilation of the uniform response, with $p=3/20$ for C or
+$3/10$ for E; it is not an identification of the entire native spatial
+channel or a physical detector. A viable field-history bridge must specify
+and execute the corresponding environment and readout, not compare only
+the unmeasured Hamiltonian's eigenvalues.
+
+Even the finite tick count is not a complete history. With exactly one
+incident tick, the conditional source-site $2$ to detector-site $7$
+response is zero at deadline one and $1/540$ at deadline two. Remote
+repairs and their waiting records affect the propagation before the tick.
+A continuum clock concentration theorem may control this distinction in
+its stated limit; replacing these finite records by the count alone is
+not an exact equality. None of the contraction factors above is identified
+as a physical rest mass, and no Standard Model species assignment follows
+from this test.
+
 Run the independent checks from the repository root:
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest \
   model/common_source/chiral_candidate/test_kinetic.py -q
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest \
+  model/common_source/chiral_candidate/test_spacetime_attachment.py -q
 ```

@@ -232,6 +232,7 @@ def run():
     from .native_family_dynamics import report as dynamics_report
     from .charged_sector import report as charged_report
     from .collective_response import report as collective_report
+    from .native_exterior_attachment import report as exterior_report
     dynamics = dynamics_report()
     if any(initial.get(name) != value for name, value in dynamics["source_bindings"].items()):
         raise RuntimeError("native response input missing from diagnosis custody")
@@ -246,6 +247,7 @@ def run():
         "native_family_dynamics": dynamics,
         "native_charged_sector_extension": charged_report(),
         "native_collective_charged_response": collective_report(),
+        "native_exterior_matter_attachment": exterior_report(),
         "conclusion": {
             "linear_trial_and_entire_complex_affine_feature_class_excluded": True,
             "clock_or_units_explain_current_hierarchy_failure": False,

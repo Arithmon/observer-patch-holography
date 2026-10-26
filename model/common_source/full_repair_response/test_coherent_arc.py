@@ -69,10 +69,31 @@ def test_elementary_phase_bound_accounts_for_all_workspace_modes():
 
 def test_complete_ramsey_outcomes_and_scope():
     report = c.report()
+    preparation, reflection, _ = c.source_coin()
+    coin = c.ideal_coin()
+    ideal_reflection = 2*np.outer(coin, coin.conj())-np.eye(64)
+    preparation_error = float(np.linalg.norm(preparation[:, 0]-coin))
+    step_error = float(np.linalg.norm(reflection-ideal_reflection, 2))
+    assert preparation_error < SOURCE_TOLERANCE
+    assert step_error < SOURCE_TOLERANCE
+    # A source reflection has 75,090 floating pulse requests. Its residual
+    # accumulates on repeated use: e_(n+1) <= (1+d)e_n+d. Account separately
+    # for the 64-term complex products in source and ideal propagation.
+    eps = np.finfo(float).eps
+    dot_guard = (np.linalg.norm(reflection, "fro")+1)*128*eps/(1-128*eps)
+    initial_budget = preparation_error+dot_guard
+    state_budget = initial_budget
+    anchor_norm = report["continuing_arc_diagnostics"][0]["source_norm"]
     for row in report["continuing_arc_diagnostics"]:
-        assert abs(sum(row["Ramsey_complete_outcome_probabilities"])-1) < 2e-11
-        assert row["source_vs_ideal_state_residual"] < 2e-11
+        total = sum(row["Ramsey_complete_outcome_probabilities"])
+        # The exact complete-readout identity uses the actual raw norms;
+        # forcing their sum to one would silently normalize executed data.
+        assert abs(total-(anchor_norm+row["source_norm"])/2) < 2e-12
+        mass_budget = initial_budget+state_budget+(initial_budget**2+state_budget**2)/2
+        assert abs(total-1) <= mass_budget+2e-12
+        assert row["source_vs_ideal_state_residual"] <= state_budget
         assert row["ideal_compression_recurrence_residual"] < 2e-12
+        state_budget = (1+step_error)*state_budget+step_error+4*dot_guard
     assert not report["interpretation"]["Standard_Model_charged_field_identification"]
     assert not report["interpretation"]["continuation_selected_by_committed_native_records"]
     assert not report["source_execution"]["complete_native_record_reversal_pulse_compilation"]

@@ -128,3 +128,80 @@ def test_finite_reference_budget_supports_a_complete_attempted_trial_readout():
     assert not contract["complete_sampled_campaign_executed"]
     assert not report["physical_scope"]["Chain_scalar_identified_with_current_noise_or_photon_residue"]
     assert not report["collective_local_charge_current"]["protected_bit_is_part_of_raw_current_record"]
+
+
+def test_nonzero_field_frequencies_follow_complete_records_without_initial_loads():
+    result = current.finite_field_readout()
+    assert result["complete_native_histories"] == 66*16
+    assert result["open_endpoint_histories"] > 0
+    assert result["total_probability_exact"] == "1"
+    assert not result["periodic_endpoint_assumed"]
+    assert not result["hidden_initial_occupation_used_by_readout"]
+    left, right = result["same_zero_current_word_distinct_DC_witness"]
+    assert left != right
+    assert not result["DC_occupation_recovered"]
+
+
+def test_fourier_boundary_correction_works_on_an_open_native_path():
+    seam = current.source()["seams"][0]
+    # All four admissible records represent different addressed events; the
+    # final event follows x_(N-1), so it cannot affect its Fourier coordinate.
+    records = ((seam, 1), (seam, 0), (seam, 0), (seam, 0))
+    altered_final = records[:-1]+((seam, -1),)
+    b = current.source()["incidence"][:, 0]
+    assert current.density_fourier(records, 1) == b
+    assert current.density_fourier(altered_final, 1) == b
+    # Explicit open path, without relying on the reconstruction formula.
+    initial = s.zeros(12, 1)
+    initial[seam[0]] = 1
+    initial[0] = 1
+    snapshots = [initial, initial-b, initial-b, initial-b]
+    assert sum((s.I**n*x for n, x in enumerate(snapshots)), s.zeros(12, 1)) == current.density_fourier(records, 1)
+
+
+def test_loop_read_is_a_martingale_difference_not_a_photon_mode():
+    data, result = current.source(), current.frequency_dictionary()
+    h = s.Matrix(list(map(s.Rational, result["bounded_example_readout_weights"])))
+    assert max(map(abs, h)) == 1
+    assert h.T*data["current_mean_map"] == s.zeros(1, 66)
+    assert result["bounded_example_variance"] == "19/1620"
+    for lag in (1, 2, 3):
+        assert current.full_state_covariance(lag)*h == s.zeros(20, 1)
+    assert result["cycle_record_is_martingale_difference_for_fixed_IID_selector"]
+    assert not result["white_two_point_law_implies_independent_or_Gaussian_records"]
+
+
+@pytest.mark.parametrize("cosine", [-1, F(0), F(1, 2), 1])
+def test_frequency_Ward_and_collective_normalization(cosine):
+    data = current.source()
+    spectrum = current.frequency_spectrum(cosine)
+    assert spectrum == spectrum.T
+    assert current.frequency_spectrum(cosine, collective=True) == s.Rational(25, 114)*spectrum
+    if cosine == 1:
+        assert spectrum == current.cycle_noise()["matrix"]
+    else:
+        b, m = data["incidence"], data["mean_map"]
+        density = data["current_scale"]*(s.eye(12)-m*m)*(s.eye(12)-2*cosine*m+m*m).inv()
+        assert b*spectrum*b.T == 2*(1-cosine)*density
+
+
+def test_modal_spectrum_identity_has_only_positive_relaxation_poles():
+    m, c = s.symbols("m c", real=True)
+    matrix_factor = 1-(1-m)*(c-m)/(1-2*m*c+m*m)
+    displayed = (1+m)*(1-c)/((1-m)**2+2*m*(1-c))
+    assert s.factor(matrix_factor-displayed) == 0
+    data = current.source()
+    assert min(2*data["mean_map"][i, i]-1 for i in range(12)) == s.Rational(19, 27)
+
+
+def test_invalid_frequency_and_incomplete_record_contracts_fail_closed():
+    seam = current.source()["seams"][0]
+    records = ((seam, 0),)*4
+    for frequency in (0, 4, True, 1.5):
+        with pytest.raises(ValueError):
+            current.density_fourier(records, frequency)
+    for cosine in (True, 0.5, s.nan, 2):
+        with pytest.raises(ValueError):
+            current.frequency_spectrum(cosine)
+    with pytest.raises(ValueError):
+        current.density_fourier((((0, 1), 0),)*4, 1)
