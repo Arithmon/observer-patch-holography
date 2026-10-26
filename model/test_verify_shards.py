@@ -65,6 +65,10 @@ def test_every_new_research_receipt_has_a_canonical_replay():
         ('model.common_source.replay', 'chiral_candidate', 'model/common_source/chiral_candidate/results.json'),
         ('model.common_source.hierarchy_diagnosis.audit', None, 'model/common_source/hierarchy_diagnosis/results.json'),
         ('model.common_source.full_repair_response.run', None, 'model/common_source/full_repair_response/results.json'),
+        ('model.common_source.native_staggered_field', None, 'model/common_source/native_staggered_field_results.json'),
+        ('model.common_source.native_field_history', None, 'model/common_source/native_field_history_results.json'),
+        ('model.common_source.native_charged_spectrum', None, 'model/common_source/native_charged_spectrum_results.json'),
+        ('model.native_equilibration.wedge_modular', None, 'model/native_equilibration/wedge_modular_results.json'),
     }.issubset(verify.REPLAYS)
 
 

@@ -60,9 +60,11 @@ and the clocks inside it.
   the internal charges of one Standard Model generation and its allowed Higgs
   interactions. Calibrated fields reproduce supplied running masses in
   simulated observer records. A separate native correlation and exchange
-  construction gives independently occupiable fermion modes, propagation and
-  interactions under specified controls; its gap ratios fail the measured
-  lepton hierarchy. Repeated correction has a controlled coherent limit.
+  construction gives fermion modes and interactions. Specified phase and
+  exchange controls also derive a free three-dimensional relativistic field,
+  with two Dirac copies per sector, and execute finite detector histories.
+  Both its free gaps and a separate interaction-dressed pole construction
+  fail the measured lepton hierarchy. Repeated correction has a controlled coherent limit.
   Source selection of the physical masses, a chiral interacting continuum
   and joint gravitational dynamics remain unproved.
   [Mass-response research](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) and
@@ -101,6 +103,10 @@ the bare regional entropy and boundary area vary with the same sign at fixed
 slab volume. It excludes a positive bare-area stationarity attachment for
 that slab; the physical small-ball generalized entropy and stress dictionary
 remain separate from this calculation.
+A specified free fermion vacuum supplies a half-space modular/stress relation
+and a bare planar entropy density. These use the same field action and an
+independent spatial cut; they do not establish joint metric stationarity or
+a physical Newton constant.
 
 ## Run the observer
 

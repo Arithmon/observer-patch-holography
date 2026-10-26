@@ -712,6 +712,20 @@ reservoir-bank controller remain supplied services. This finite thermal
 stationarity is a probability variation, not a metric or entropy--area
 variation, and does not certify autonomous controller work.
 
+The [zero-temperature wedge construction](native_equilibration/wedge_modular.py)
+uses the free native-coefficient staggered action and its filled vacuum.
+An explicit transverse reduction preserves the half-space and both Dirac
+tastes. The known exact lattice modular theorem maps to an independently
+defined lapse/boost weight, with a directed continuum-normalization bound.
+A Legendre-polynomial estimate supplies local covariance control as the
+preparation volume grows. An eight-CAR source preparation separately has
+an exact binary energy-gap fidelity certificate and full-Fock entropy
+first-law check. Transverse factorization gives a bare planar entropy
+density on a specified geometric area. Larger grids are ideal vacuum
+calculations; physical service accuracy and vacuum preparation remain
+requirements. The free half-space attachment does not establish a
+renormalized area coefficient or joint small-ball metric stationarity.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -880,6 +894,33 @@ packet. Local native attachment controls are executed separately; a full
 many-carrier service history is not claimed. The control architecture,
 sector initialization and clock interpretation remain inputs, and the
 field is not a physical Standard Model or a chiral continuum.
+
+The [free cubic extension](common_source/native_staggered_field.py) derives
+oriented staggered hopping from an exact inverse-exchange echo and explicit
+parity controls. Its Fourier reduction gives two Dirac copies per native
+sector and a fixed-band continuum response with model-coordinate speed
+$2J$. All 256 Fock columns of a small open cube, its half-filled source
+preparation and a continuing four-outcome instrument are executed.
+The larger periodic Fourier identity and growing service schedule have
+separate algebraic and resource scopes. The free gaps retain ratios $1:3:12$.
+
+A [composed two-carrier history](common_source/native_field_history.py)
+instead keeps the actual nine-bit carriers through two exchange intervals,
+detectors and complete C/E recovery. All four input columns and 319 terminal
+records include raw aborts and padding; explicit tensor-compression errors
+join the input/reference bound. These number reads test exchange and
+backaction, with no sensitivity to a uniform onsite term at fixed charge.
+The twelve-million-record mass readout remains a separate reduced-processor
+experiment; physical proper-code services remain admitted.
+
+The [interacting alternating path](common_source/native_charged_spectrum.py)
+retains the exchange density term. Its exact two-cell charged poles are
+$\sqrt{J^2+m^2}-J$, with nonzero CAR residues. Fixed-charge exclusion and a
+path Poisson equation give the finite-volume second-order half-filled gap
+$m^2/[2J(L-1)]$, with an explicit nonuniform remainder domain. These are
+action-derived poles, not fitted mass functions, but their ratios also fail
+the lepton comparison and no relativistic bulk mass is established. This
+action differs from the echoed free cubic field.
 
 The separate [calibrated matter action](common_source/calibrated_matter.py)
 checks a common-scale empirical Standard Model parameter point on the same

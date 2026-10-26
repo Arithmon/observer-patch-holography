@@ -318,3 +318,42 @@ selection theorem or the Einstein entropy--area condition.
 ```sh
 python -m model.native_equilibration.reciprocal_vacuum --check model/native_equilibration/reciprocal_vacuum_results.json
 ```
+
+### Zero-temperature free-field wedge
+
+[wedge_modular.py](wedge_modular.py) uses the uncalibrated staggered action
+derived in [the common source field](../common_source/native_staggered_field.py).
+The negative-energy sea is the declared vacuum. Transverse Fourier reduction
+preserves the spatial cut and gives four scalar staggered chains per reduced
+transverse momentum, retaining two Dirac tastes. Independently placed sites
+and bonds define the lapse coupling and boost energy before the modular law.
+The exact half-chain theorem gives $K_{\rm half}=\gamma B$, with
+$\gamma=4\kappa K(\kappa')/c$, $\kappa=(1+\mu^2)^{-1/2}$ and $\mu=Ma/c$.
+Directed rational AGM bounds prove
+$0\le1-\gamma/(2\pi/c)\le\mu^2/4$. This fixed-band continuum normalization
+uses no temperature fit.
+
+A Legendre sign-polynomial supplies a local covariance error bound
+$\Lambda r^{k+1}/m$, $r=(\Lambda-m)/(\Lambda+m)$, when degree-$2k+1$ walks
+cannot reach the external boundary. The stated gap, norm and walk hypotheses
+give an explicit volume schedule. This is not a global state-distance bound.
+The separate eight-CAR source preparation retains its raw 256 amplitudes;
+an exact binary Rayleigh quotient and algebraic Fermi gap certify its global
+vacuum fidelity. Full-Fock partial traces and CAR derivatives check the
+entropy first law. Finite-interval disagreement with the infinite-wedge
+weight and unresolved-purity refusals remain explicit.
+
+The staggered entanglement-level series, with its own tail bound, gives
+bare planar entropy after transverse factorization. The independently
+geometric area is $N_yN_za^2$; its coefficient is regulator- and
+species-dependent. Larger grids are ideal vacuum controls. The source
+preparation, coherent/parity services and physical accuracy remain specified
+requirements. The result establishes the free half-space modular/stress
+attachment, not a massive small-ball identity, physical Newton constant or
+joint curved-metric entropy stationarity. See the
+[mass research doc](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md#515-zero-temperature-modular-response-of-the-same-free-field)
+for the common field and the distinct interacting-pole test.
+
+```sh
+python -m model.native_equilibration.wedge_modular --check model/native_equilibration/wedge_modular_results.json
+```

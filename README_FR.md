@@ -69,9 +69,12 @@ intemporelle et les horloges qu’elle contient.
   fournit les charges internes d’une génération du Modèle standard et ses
   interactions de Higgs permises. Des champs calibrés reproduisent les masses
   fournies dans des registres simulés. Une construction distincte par
-  corrélation native et échange produit des modes fermioniques indépendamment
-  occupables, leur propagation et leurs interactions sous des contrôles
-  spécifiés ; ses rapports d’écarts d’énergie échouent au test de la hiérarchie des leptons.
+  corrélation native et échange produit des modes fermioniques et leurs
+  interactions. Des contrôles de phase et d’échange spécifiés dérivent aussi
+  un champ relativiste libre à trois dimensions, avec deux copies de Dirac
+  par secteur, et exécutent des histoires finies de détecteurs. Ses écarts
+  libres et les pôles d’une construction interactive distincte échouent
+  au test de la hiérarchie des leptons.
   La correction répétée admet une limite cohérente contrôlée. La dérivation
   des masses physiques, du continuum chiral interactif et de la dynamique
   gravitationnelle conjointe reste ouverte.

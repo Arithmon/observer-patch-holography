@@ -1,7 +1,7 @@
 {
   "description": "Derived finite preparation error on native fixed-total sectors and actual observer federations.",
   "files": {
-    "README.md": "5a827dba8109cc439a7335fa2a0b22df15d8669030929946a1acf46b0ecf348d",
+    "README.md": "466d38ecf3de9fc22bde43decaeeb90a589c86b8bd177e141bea791a8f0da2b5",
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "ball_modular.py": "13c3296848a3280bd02b4c3ee5153b2894dfc97457edbbfa913a2bb961f908c8",
@@ -31,12 +31,16 @@
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb",
     "test_vacuum_geometry.py": "ab0bc7385ad919337a1949c44aae693b5f25a5700726460fc01c13c1de8072b3",
     "test_vacuum_repair.py": "705945a0cbce68a01be364ef2dafde69937c5072f29d3433e9ccc4571187d05a",
+    "test_wedge_modular.py": "a48d748da64c92a9fca1c0033384b080dc11924991c69342eeec99355e46e11d",
     "vacuum_geometry.py": "f05a4bfed5e37170cf71bf42039ad0949eb2347d07459c1824d8cc9072e4af1f",
     "vacuum_geometry_results.json": "e195a1ba9398a02d5b81ffe91b2ed55f95fe942c5fe6c1bb58ff03142d875684",
     "vacuum_repair.py": "cfd5072db7e69f42899d3cc428576535a97e76b5b3c8c8f2394edf3ce87fc11f",
     "vacuum_repair_results.json": "a0b9a0bfba5ce446394aab3c19fe1e572eefe7382a4aaf7df462f730a91ff542",
     "vacuum_repair_results.npz": "387e915588901763ab2f9f0f960736a5be480ef2dd11186f8613c9883df5c02c",
-    "variation_results.json": "d360ba7568b431b853b954e1254db70e2fbe2027b6c580ec6edba59438ec85f9"
+    "variation_results.json": "d360ba7568b431b853b954e1254db70e2fbe2027b6c580ec6edba59438ec85f9",
+    "wedge_modular.py": "661a77e066cc3128418006260ae3d2f00ab12924a013fef5c1248c54c82c94be",
+    "wedge_modular_results.json": "511a05f03b548f46d328c9c6d6d2288b621a6ee56c70325882287e8e21495f5c",
+    "wedge_modular_results.npz": "00ba1a741489bca05dc814b0e3779c3941c3faaafdaf7dccc55cad7265ea3527"
   },
   "reproduce": [
     "python -m model.native_equilibration --check model/native_equilibration/results.json",

@@ -104,6 +104,17 @@ and a finite orbit-average/exchange architecture has an
 [uncalibrated interacting chain](../model/common_source/repair_field_attachment.py).
 Its gap ratios $1:3:12$ fail the charged-lepton target. Neither construction
 derives Standard Model charges or a three-dimensional chiral continuum.
+The [free cubic extension](../model/common_source/native_staggered_field.py)
+derives relativistic dispersion and a controlled fixed-band limit under
+specified phase, parity and inverse controls. It retains two Dirac copies
+per sector and the same failed ratios. A separate
+[interaction-dressed pole calculation](../model/common_source/native_charged_spectrum.py)
+gives $1:8.999872:143.963411$ on two cells and an explicit finite-volume
+response bound; it also fails the broad lepton target and establishes no
+bulk physical mass. A [complete two-carrier history](../model/common_source/native_field_history.py)
+tests the source composition with every terminal record and arbitrary
+references. Its number readout is insensitive to the uniform onsite gap,
+so it is not an additional mass measurement.
 The [native vacuum/geometry control](../model/native_equilibration/vacuum_repair_results.json)
 requires positive stationary cycle work despite conditional vacuum
 compatibility. These results delimit particular mechanisms. They establish
@@ -115,6 +126,13 @@ The [reciprocal thermal control](../model/native_equilibration/reciprocal_vacuum
 has exact finite energy balance and Gibbs stationarity with supplied thermal
 reservoirs. Its geometric-probability variation does not supply the metric
 entropy--area variation required by the Einstein branch.
+The [zero-temperature free-field wedge](../model/native_equilibration/wedge_modular.py)
+instead attaches modular response to the same vacuum and an independently
+defined spatial boost weight, with controlled continuum normalization and
+local finite-size preparation error. Its planar entropy density is bare and
+regulator-dependent. This half-space theorem supplies neither the common
+small-ball metric variation nor the renormalized area coefficient; no new
+public-data agreement verdict is assigned to these construction tests.
 
 The down-type register-Clebsch comparison supplies a recorded negative result
 inside this ineligible class. The declared alphabet and F1/F2 rules produce

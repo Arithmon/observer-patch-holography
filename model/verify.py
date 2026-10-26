@@ -258,6 +258,14 @@ REPLAYS = (
      "model/common_source/repair_field_attachment_results.json"),
     ("model.native_equilibration.reciprocal_vacuum", None,
      "model/native_equilibration/reciprocal_vacuum_results.json"),
+    ("model.common_source.native_staggered_field", None,
+     "model/common_source/native_staggered_field_results.json"),
+    ("model.common_source.native_field_history", None,
+     "model/common_source/native_field_history_results.json"),
+    ("model.common_source.native_charged_spectrum", None,
+     "model/common_source/native_charged_spectrum_results.json"),
+    ("model.native_equilibration.wedge_modular", None,
+     "model/native_equilibration/wedge_modular_results.json"),
 )
 
 

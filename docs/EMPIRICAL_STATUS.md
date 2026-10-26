@@ -99,6 +99,20 @@ the stated phase-range and error contracts. Native local attachment controls
 are executed separately; this is not a complete many-carrier physical
 service campaign. The one-dimensional field, chosen controls and encoded
 occupation do not supply Standard Model charges or a chiral continuum.
+The [staggered extension](../model/common_source/native_staggered_field.py)
+derives a free three-dimensional Dirac response from specified inverse,
+phase and parity controls, retaining two Dirac copies per native sector.
+Its finite source cube and fixed-band continuum contract use no measured
+masses; common rescaling preserves the failed $1:3:12$ ratios.
+A [two-carrier native history](../model/common_source/native_field_history.py)
+composes exchange, detectors and C/E recovery with all 319 terminal records
+and four input/reference columns. Its number reads test exchange and
+backaction but cannot identify a uniform fixed-charge onsite gap.
+A distinct [interacting path](../model/common_source/native_charged_spectrum.py)
+has exact dimer charged poles $\sqrt{J^2+m^2}-J$, with ratios approximately
+$1:8.999872:143.963411$, also outside both broad lepton comparison windows.
+Its finite-volume perturbation theorem does not establish a bulk mass.
+These are specified construction tests, not additional empirical datasets.
 The [proper-ball calculation](../model/native_equilibration/ball_modular.py)
 instead computes a three-dimensional Gaussian vacuum's regional entropy
 response and compares it with an independently fixed conformal stress weight.
@@ -121,6 +135,15 @@ geometry coupling, energy readout and fresh thermal inputs are supplied.
 This finite free-energy stationarity is not the geometric entropy--area
 stationarity needed for the Einstein construction, and supplies no public
 measurement comparison.
+The [zero-temperature wedge control](../model/native_equilibration/wedge_modular.py)
+uses the uncalibrated free staggered action and its filled vacuum. It maps
+the exact half-chain modular theorem to an independently defined boost
+weight, controls the continuum normalization and local preparation-size
+error, and obtains a bare planar entropy density. A small source preparation
+has an exact binary energy-gap certificate; larger grids remain ideal vacuum
+calculations. This supplies a common free-field vacuum/stress attachment
+without a temperature fit. It supplies neither physical small-ball metric
+stationarity nor an interacting Standard Model or Newton constant.
 
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**

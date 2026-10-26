@@ -26,6 +26,10 @@ and fixed Pauli readouts; its adaptive phase rotation is classical. The
 parameter selection without those calibrated inputs. The
 [regional vacuum calculation](#59-regional-vacuum-of-the-same-fermion-action)
 connects the calibrated action to a finite matter entropy calculation.
+The uncalibrated source constructions in §§5.10–5.15 instead test native
+correlation coefficients, a three-dimensional staggered field, a composed
+two-carrier detector history, interacting charged poles and vacuum modular
+response. Their control choices, states and continuum domains are explicit.
 The calibrated experiments recover supplied running mass parameters from
 simulated observer records. **The measured Standard Model mass hierarchy is
 not derived from the native repair law.** The uncalibrated candidate's mass
@@ -860,6 +864,167 @@ The finite free-energy variation concerns geometry probabilities; it is
 not a metric variation or the entropy--area stationarity required for the
 Einstein construction.
 
+#### 5.12 A three-dimensional relativistic field from specified native controls
+
+The [staggered field](../../model/common_source/native_staggered_field.py)
+uses the same $J$ and $\Delta_s$ without a calibrated mass packet. A local
+phase and inverse-exchange echo cancels the density term exactly on every
+two-mode Fock column. Explicit Jordan–Wigner parity controls and quarter-turn
+phases give hopping $-i\eta_j(x)J/a$, where
+$\eta_j(x)=(-1)^{x_0+\cdots+x_{j-1}}$. Alternating onsite signs give
+$\Delta_s(-1)^{x_0+x_1+x_2}$. The cubic geometry, coherent controls and spacing
+$a$ are specified architecture choices.
+
+Fourier reduction derives the eight-corner matrices
+$\alpha=(ZII,XZI,XXZ)$ and $\beta=XXX$, with exact Clifford relations and
+
+```math
+E_s(p)^2=\Delta_s^2+(2J/a)^2\sum_{j=0}^2\sin^2(ap_j).
+```
+
+The commuting taste algebra gives **two Dirac copies per native sector**;
+both chiralities and all negative-energy modes remain. The continuum speed
+is $c=2J$ in the declared model-coordinate clock. For a fixed compact momentum
+band, $|\sin(ap)/a-p|\le a^2|p|^3/6$ bounds the propagator error. The positive
+native mass floor also controls the negative-energy projector and smeared
+CAR two-point/Wick readouts. This is a free, fixed-band continuum contract,
+not a chiral Standard Model or an interacting ultraviolet limit. A common
+clock, field or coordinate rescaling leaves the rest-gap ratios $1:3:12$.
+
+An open $2^3$ cube executes every one of its 256 Fock input columns through
+source-compiled occupation words. Its operator discrepancy is about
+$5.40\times10^{-6}$, below the exact finite splitting bound
+$5986375/549755813888$ plus the separate source numerical admission.
+A half-filled Slater preparation and a four-outcome read/feedback/read
+instrument retain the common quantum state and arbitrary references.
+The periodic $4^3$ Fourier identity is independently checked; that larger
+source history is not executed. The source words use decoded occupation
+wires with identity spectator factors, rather than executing every native
+carrier's load, export and C/E service history. Refinement requires hopping
+control duration proportional to $1/a$; its physical accuracy and clock
+interpretation remain requirements.
+
+#### 5.13 A composed native two-carrier detector history
+
+The [complete history](../../model/common_source/native_field_history.py)
+executes the original nine-bit source carriers through onsite and collective
+exchange controls at model-coordinate durations 3 and 5, with a detector
+between them, complete C and E repair/recovery, and a final detector.
+All four input columns are carried through 319 terminal records, including
+raw aborts, failed exchange ancillas and padding. The nineteen-bit exchange
+word is evaluated by tensor contractions; each numerical compression has an
+explicit discarded-norm allowance. No ideal code projection or syndrome
+reset replaces a source output.
+
+The independently fixed two-site action matches the complete input/reference
+dilation within its $10^{-7}$ numerical gate. Six compression allowances
+give a conditional complete-history channel allowance
+$3.200000256\times10^{-7}$; source seed preparation and physical service
+errors are separate. These floating admissions are not outward certificates
+or measured hardware errors. The specified $|10\rangle$ seed gives joint
+detector probabilities approximately
+$(0.086100,0.042122,0.286386,0.585393)$. Omitting the first read changes the
+final marginal by about 0.628111 in L1 distance.
+
+This number-read protocol probes exchange and backaction. Its fixed-charge
+onsite contribution is a common phase, so these probabilities do **not**
+identify the native mass gaps. It is a separate two-carrier composition test;
+the twelve-million-record gap campaign remains a reduced-processor result.
+The successful source path costs at most 5,607,475 primitive pulses and
+requires 11,214,950 proper load/export service events. Those physical service
+events and a protection campaign are charged requirements, not executed
+hardware histories.
+
+#### 5.14 Interaction-dressed charged poles and their volume dependence
+
+The [charged-spectrum calculation](../../model/common_source/native_charged_spectrum.py)
+retains the density interaction of ordinary carrier exchange and chooses
+alternating signs for the native onsite phase on an even open path:
+
+```math
+H=J\sum_{x=0}^{L-2}(I-S_{x,x+1})+
+  m\sum_{x=0}^{L-1}(-1)^x(n_x-1/2),\qquad m=\Delta_s.
+```
+
+The sign schedule is a declared inverse-phase control; no measured mass is
+an input. At two sites the unique ground state has one occupied mode and
+energy $J-\sqrt{J^2+m^2}$. Local CAR addition and removal each have nonzero
+spectral residue at the exact positive gap
+$g=\sqrt{J^2+m^2}-J$. Directed rational intervals enclose the gaps and
+residues. A free lift of the one-particle matrix would incorrectly put the
+two-particle energy at $2J$ instead of zero. This is an interaction-derived
+change in charged response, rather than an imposed nonlinear mass function.
+The three ascending gap ratios are approximately $1:8.999872:143.963411$.
+They still fail both broad charged-lepton ratio windows; those windows are
+not quoted experimental standard uncertainties.
+
+The finite-volume response also follows analytically. At fixed occupation
+$N$, the zero-field action is the symmetric-exclusion path Laplacian, whose
+gap is supplied by [Caputo, Liggett and Richthammer, Theorem 1.1 and
+§4.1.1](https://arxiv.org/abs/0906.1238). The path Poisson equation for
+$w_x=(-1)^x$ gives $w\cdot f=L/2$. In the uniform Dicke ground vector this
+yields
+
+```math
+E_N(m)=-\frac{m^2N(L-N)}{2J(L-1)}+O(m^4),\qquad
+g_{L,\,N=L/2}(m)=\frac{m^2}{2J(L-1)}+O(m^4).
+```
+
+Reflection makes each fixed-charge ground energy even in $m$. With
+$g_*=4J/L^2$ and $r=4|m|\min(N,L-N)/g_*<1$, the energy remainder after
+second order is bounded by $(g_*/4)r^4/(1-r^2)$. The
+[receipt](../../model/common_source/native_charged_spectrum_results.json)
+checks every charge sector for $L=2,4,6,8,10$ and refuses the remainder
+certificate outside its domain. The domain shrinks with volume: the
+decreasing quadratic coefficient proves neither a vanishing gap at fixed
+$m$ nor a positive thermodynamic mass. The finite poles have no derived
+relativistic dispersion or physical clock dictionary. This interacting
+path and the echoed free field use different specified actions.
+
+#### 5.15 Zero-temperature modular response of the same free field
+
+The [wedge construction](../../model/native_equilibration/wedge_modular.py)
+uses the filled negative-energy vacuum of the free staggered action in §5.12.
+For a plane cut, a transverse Fourier/unitary transformation acts separately
+on each half-space. Each reduced transverse momentum gives four scalar
+chains with masses $\pm M_\perp$, twice each, where
+$M_\perp^2=m^2+(c/a)^2(\sin^2 ap_y+\sin^2 ap_z)$ and $c=2J$.
+This preserves the two Dirac tastes and the spatial region.
+
+Sites and bonds have independently specified normal positions
+$a(n-1/2)$ and $an$. Lapse coupling $H[N]=\{N,H\}/2$ therefore fixes the
+energy first moment $B=\{X,H\}/2$ before the vacuum modular calculation.
+Mapping [Eisler's staggered half-chain theorem, Eqs. 64–72](https://arxiv.org/abs/2410.16433v1)
+to these units gives
+
+```math
+K_{\rm half}=\gamma B,\qquad
+\gamma=\frac{4\kappa K(\sqrt{1-\kappa^2})}{c},\qquad
+\kappa=(1+\mu^2)^{-1/2},\quad \mu=M_\perp a/c.
+```
+
+Here the elliptic $K$ takes a modulus. Directed rational AGM bounds give
+$0\le1-\gamma/(2\pi/c)\le\mu^2/4$, uniformly tending to zero on a fixed
+low-momentum transverse band. No inverse temperature is supplied or fitted.
+For a common spectral gap $m$ and norm bound $\Lambda$, the Legendre
+sign-polynomial bounds local covariance differences by
+$\Lambda r^{k+1}/m$, $r=(\Lambda-m)/(\Lambda+m)$, whenever all walks of
+length $2k+1$ agree inside the observation window. This gives an explicit
+preparation-size schedule; it does not bound global many-body trace distance.
+
+An eight-CAR source preparation retains all 256 amplitudes and has a separate
+exact binary Rayleigh/ground-gap fidelity certificate. Full-Fock partial
+trace and quadratic CAR first-law derivatives agree for an actual local
+phase-mixture tangent. The infinite-wedge weight differs on this finite
+chain, and numerically unresolved regional logarithms are refused.
+Exact staggered entanglement levels and transverse factorization give a
+bare planar entropy per supplied geometric area. The coefficient depends
+on regulator, mass and tastes; it is not a renormalized Newton constant.
+The large-volume controls are ideal vacuum calculations, not executed
+source histories. This closes the specified free half-space modular/stress
+attachment. It supplies neither a small-ball modular identity for massive
+matter, curved metric stationarity, nor an interacting Standard Model.
+
 ### 6. Relation to observers' effective 3+1D spacetime
 
 There are two distinct levels of attachment.
@@ -998,12 +1163,16 @@ not excluded by these tests.
 | Uncalibrated hierarchy tests | The Weyl–Higgs prescriptions and native exchange-chain gaps fail the measured charged-lepton hierarchy |
 | Coherent correction limit | Actual compiled recovery has a certified reachable-space contraction and finite-proposal reference bound under a supplied phase and continuing schedule |
 | Native correlation/exchange field | Independent encoded fermion modes, conserved occupation currents and interaction terms; 12 million reduced-processor records recover native gaps with ratios 1:3:12 |
+| Native free cubic continuum | Echo/parity controls derive two Dirac tastes per sector and a fixed-band continuum contract; full small-cube Fock source words and filled vacuum are executed, with ratios still 1:3:12 |
+| Complete native composition | Two actual carriers, four input/reference columns and 319 terminal records retain detector backaction, C/E recovery and failures; this number law cannot identify a uniform onsite mass gap |
+| Interaction-dressed charged poles | Exact dimer CAR gaps sqrt(J²+m²)−J and a controlled finite-volume response; ratios 1:8.999872:143.963411 fail both broad lepton windows and do not establish a bulk mass |
 | Separate calibrated action | Carries supplied charged masses/mixing; external SMDR matching checks calibration, with an unfitted W miss. No source derivation or full physical observer attachment follows. |
 | Quantum gauge/Higgs dynamics | Not executed by this fixed-background quadratic trial |
 | Local chiral kinetic regulator | Finite Euclidean overlap operator, modified projector and uniform ideal locality tail on an admissible link domain; full quantum chiral theory open |
 | Same recovered-spacetime field history | Local principal-symbol compatibility; full domain/history attachment open |
 | Physical units and observed particle identification | Not established |
-| GR entropy stationarity and responsive geometry | Finite reciprocal Gibbs response with supplied thermal reservoirs; physical metric, entropy-area and stress identification unproved |
+| Free-vacuum modular/stress attachment | Same-action zero-temperature half-space theorem, directed continuum normalization, local preparation-size schedule and exact small-source fidelity certificate; bare planar entropy is regulator-dependent |
+| GR entropy stationarity and responsive geometry | Finite reciprocal Gibbs response and free half-space modular attachment have distinct domains; renormalized small-ball metric stationarity and Newton coefficient remain unproved |
 
 The specific remaining mass problem is to determine and test the
 mass-generating coupling of available native family data to the Higgs
@@ -1040,6 +1209,10 @@ recompute their producers and independently validate retained source arrays:
 .venv/bin/python -m model.common_source.repair_continuation --check model/common_source/repair_continuation_results.json
 .venv/bin/python -m model.common_source.repair_field_attachment --check model/common_source/repair_field_attachment_results.json
 .venv/bin/python -m model.native_equilibration.reciprocal_vacuum --check model/native_equilibration/reciprocal_vacuum_results.json
+.venv/bin/python -m model.common_source.native_staggered_field --check model/common_source/native_staggered_field_results.json
+.venv/bin/python -m model.common_source.native_field_history --check model/common_source/native_field_history_results.json
+.venv/bin/python -m model.common_source.native_charged_spectrum --check model/common_source/native_charged_spectrum_results.json
+.venv/bin/python -m model.native_equilibration.wedge_modular --check model/native_equilibration/wedge_modular_results.json
 ```
 
 The retained calculation binds the source code, native reference, exact
@@ -2181,9 +2354,9 @@ The following routes remain hypotheses to test, rather than assumed solutions.
 | --- | --- | --- |
 | 1. Attach the response to spacetime and a clock | Specify a charged field, spatial translations, observer-clock readings and detector/environment channel from one continuing history. Measure several spatial modes and orientations with every terminal flag and waiting record. Test a sharp pole where appropriate, or state an interacting/thermal spectral alternative. | One fixed map preserves the joint detector/intervention law and gives compatible energy–momentum parameters across observers and probes. It must address the exact incident contraction and failed direct free-dispersion map. |
 | 2. Determine the continuing coherent implementation | Compare explicit admissible source implementations, including coherent versus committed records and the actual nonzero-frequency current/density readouts. Fix each before examining particle targets, and measure multi-time phase-sensitive responses with its own clock. | The complete source program determines the observable evolution and errors. One incident count cannot replace the waiting record, and committed C/E probabilities alone do not select an unread coherent continuation. |
-| 3. Derive interactions and family structure together | Use the continuing repair context and complementary memory to calculate charged response, kinetic normalization and vertices from one action. Show how the decoded conjugate-five and color currents act on the actual field carrier, and test the three-family symmetry breaker. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests; family coefficients and scale come from that specified construction. The ten-mode direct color action and natural $10+5$ charge action tested here are insufficient. |
+| 3. Derive interactions and family structure together | Calculate charged response, kinetic normalization and vertices from one action. The free staggered field has two Dirac tastes per sector; the distinct interacting path has action-derived charged poles but no controlled physical bulk mass. Attach chiral currents and the family symmetry breaker to the actual carrier. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests. Both the free 1:3:12 ratios and interacting dimer ratios fail; continuum and volume limits must satisfy their own domains. |
 | 4. Test controlled enlargement or refinement | For an operator-response code, active record correction, larger carrier, collective sector or copy limit, state preparation, locality, interactions and observer access. Bound complete-record errors as the construction grows. | A common limiting response is obtained with controlled clock and state errors. It must bypass the fixed-work-carrier rank-15 obstruction by an explicit mechanism. Independent copies alone preserve the existing two-point poles. |
-| 5. Join the matter and entropy readouts | Extend the [native record entropy result](../../model/native_equilibration/README.md) to the actual coherent matter protocol, then derive geometric area/volume and stress readouts independently on that same history. | The joint construction meets the entropy and geometry contracts without defining curvature or an area term solely to enforce Einstein's equation. The coherent native entropy theorem has a fixed-carrier state-variation domain; it does not close this geometric attachment. |
+| 5. Join the matter and entropy readouts | Extend the same-action free half-space modular/stress and bare planar entropy results to a controlled physical small-ball family and its source history. Derive the renormalized area/volume and metric response independently. | The common variation domain satisfies the geometric stationarity contract; a finite first law, a half-space identity or a regulator-dependent area coefficient alone is insufficient. Interacting matter requires its own vacuum and modular control. |
 
 For any route that passes these checks, freeze its architecture, state,
 controls and physical readout before comparing mass ratios with observations.
