@@ -1,0 +1,560 @@
+{
+  "Wilson_gap_admitted_above": 0.1,
+  "architecture": {
+    "Dirac_dimension": 960,
+    "Euclidean_dimensions": 4,
+    "Weyl_components_per_site_with_families": 90,
+    "independent_families": 3,
+    "internal_dimension": 15,
+    "internal_representation": "Lambda2(C5)+Lambda4(C5)",
+    "periodic_side": 2,
+    "sites": 16,
+    "spacing_and_background_are_supplied": true
+  },
+  "finite_operator_admissions": {
+    "Ginsparg_Wilson": 2e-09,
+    "Hermitian_chiral_projector": 2e-09,
+    "Weyl_map": 2e-09,
+    "Wilson_gauge_covariance": 2e-09,
+    "chiral_projector": 2e-09,
+    "chiral_projector_gauge_covariance": 2e-09,
+    "modified_chirality": 2e-09,
+    "overlap_gauge_covariance": 2e-09
+  },
+  "finite_range_approximation": {
+    "Ginsparg_Wilson_defect_bound_exact": "9276941162965023642595836340064436162950824465601344272570759438803408467480714459043625135388116611402514151271394271356393810272824733522891645317219712824558803006881454328525999466375550686624358462757490207293069040520580013139020626697243801418884319681902614716203307768395436055231584133357380503844011677239804286683674655490565148718511296718731807220334608320848838152812169823042432241273346166857225428184052090641031895756896119564771652221679687500000/8980151262258590633878856690699026126730787979013458936598328302075159796423352522564551082503430635984526063273635234871388550827160949932345154653803382192947901345927316973603285504951556924014971010825060817018320388756965775119521555386999207780032761056062591900565258005345315798462689630044737723791713230741354157198397868715403278026409490840953694315931842192179200076330166272183982177369366989588512582662220725720980633856923270236964626270047720761868254075169",
+    "degree": 192,
+    "floating_evaluator_error_included": false,
+    "maximum_range_in_lattice_links": 385,
+    "uniform_operator_tail_exact": "1547864644396090555902831875446773803895383593026027610909876864366253619076442695453900761104749957204122492193141294451525360250719708317356983482542600559211999872166339211240060477411950579096355795627459883689880371093750000/2996690051082792685334009883886087916172731083530378488252130958316060301674983738063445775805058442313490206860459541408921077717857548035361370641674091862880041259996623947555586208191832434246014488638403775669704976594301129359518737"
+  },
+  "free_continuum": {
+    "analytic_operator_error_bound": "a*norm(p)^2",
+    "band": "a*norm(p)<=1/4",
+    "interacting_continuum_limit": false,
+    "parameter": "Euclidean lattice spacing a at fixed model momentum"
+  },
+  "free_corners": [
+    {
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensionless_D_at_corner": 0,
+      "massless_Dirac_species": 1
+    },
+    {
+      "corner": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    },
+    {
+      "corner": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dimensionless_D_at_corner": 2,
+      "massless_Dirac_species": 0
+    }
+  ],
+  "left_projector_rank_per_family": 480,
+  "native_free_kernel_queries": [
+    {
+      "both_quantum_outcomes_and_all_input_columns_checked": true,
+      "complete_success_and_failure_reference_columns": [
+        [
+          [
+            0.0004339650024005101,
+            1.9302287834366373e-13
+          ],
+          [
+            2.8047600541055287e-12,
+            -1.0029272982743067e-12
+          ],
+          [
+            2.7569889595761316e-12,
+            -6.914425976497628e-13
+          ],
+          [
+            0.020827305700387284,
+            -4.669633602395065e-13
+          ]
+        ],
+        [
+          [
+            -2.4823408690978367e-12,
+            3.4747844098887548e-12
+          ],
+          [
+            0.00043396499758148547,
+            4.982578903839552e-12
+          ],
+          [
+            0.02082730570256299,
+            -2.3082053785752286e-12
+          ],
+          [
+            4.595804971032191e-12,
+            8.94490349649098e-13
+          ]
+        ],
+        [
+          [
+            5.427869105547459e-12,
+            1.927820136083238e-12
+          ],
+          [
+            -0.02082730569781498,
+            3.795895397030724e-13
+          ],
+          [
+            0.0004339649917138244,
+            2.150358088179968e-13
+          ],
+          [
+            8.142670309400588e-12,
+            -3.811223250828968e-12
+          ]
+        ],
+        [
+          [
+            -0.020827305703319903,
+            2.560193621126721e-12
+          ],
+          [
+            4.447081474091234e-12,
+            -2.9550517598133447e-12
+          ],
+          [
+            2.8055477802934686e-12,
+            -7.033534811509581e-13
+          ],
+          [
+            0.00043396498110109973,
+            4.500073850744418e-12
+          ]
+        ],
+        [
+          [
+            0.9995660349854203,
+            -2.771824629600618e-13
+          ],
+          [
+            2.7465478054896194e-13,
+            2.9572006539709346e-12
+          ],
+          [
+            7.650343047686255e-12,
+            -4.591090191189718e-12
+          ],
+          [
+            -0.020827305693776867,
+            7.058663434259039e-12
+          ]
+        ],
+        [
+          [
+            -8.928273369528683e-13,
+            -7.869550255027696e-13
+          ],
+          [
+            0.9995660349885627,
+            6.274688461820326e-14
+          ],
+          [
+            -0.020827305691175912,
+            5.6003245470923724e-12
+          ],
+          [
+            8.421845443670006e-12,
+            1.0917848849183572e-12
+          ]
+        ],
+        [
+          [
+            1.8672692073937247e-12,
+            1.2921156089587603e-12
+          ],
+          [
+            0.020827305695356048,
+            -7.612464182779498e-12
+          ],
+          [
+            0.9995660349812898,
+            1.1520057325046083e-13
+          ],
+          [
+            4.996651971446628e-12,
+            -5.334382009443671e-12
+          ]
+        ],
+        [
+          [
+            0.020827305692376015,
+            -4.874024939503498e-12
+          ],
+          [
+            2.6640420781809676e-13,
+            1.4884197372600743e-12
+          ],
+          [
+            3.990173420672591e-12,
+            4.845440854093053e-12
+          ],
+          [
+            0.9995660349656192,
+            -1.5930758047159936e-13
+          ]
+        ]
+      ],
+      "ideal_trotter_operator_bound_exact": "1331/539492352",
+      "kernel_query_is_a_full_chiral_field_simulation": false,
+      "source_native_pulses": 1409028,
+      "source_numerical_operator_admission": 2e-07
+    },
+    {
+      "both_quantum_outcomes_and_all_input_columns_checked": true,
+      "complete_success_and_failure_reference_columns": [
+        [
+          [
+            0.0007024799548526593,
+            8.788130299635446e-13
+          ],
+          [
+            4.766991139172785e-13,
+            -1.0784917038768166e-12
+          ],
+          [
+            0.008928095674271766,
+            0.005681695132085678
+          ],
+          [
+            0.020827302038037496,
+            -0.012498696081233676
+          ]
+        ],
+        [
+          [
+            -9.173627762900853e-14,
+            1.1693594974915117e-12
+          ],
+          [
+            0.0007024799538101664,
+            4.014065421085423e-12
+          ],
+          [
+            0.02082730203976876,
+            0.012498696078760477
+          ],
+          [
+            -0.008928095664628731,
+            0.005681695134215305
+          ]
+        ],
+        [
+          [
+            -0.008928095664502237,
+            0.005681695132562065
+          ],
+          [
+            -0.02082730203848831,
+            0.01249869607912969
+          ],
+          [
+            0.0007024799474178449,
+            3.0900324230173976e-12
+          ],
+          [
+            6.35726747441466e-12,
+            -3.836084390634468e-12
+          ]
+        ],
+        [
+          [
+            -0.020827302039974,
+            -0.012498696078019485
+          ],
+          [
+            0.008928095673868108,
+            0.005681695131742365
+          ],
+          [
+            3.2377700365700913e-12,
+            2.73527923579572e-12
+          ],
+          [
+            0.0007024799412622204,
+            2.208214763249812e-12
+          ]
+        ],
+        [
+          [
+            0.9992975200360416,
+            -6.576006300462363e-13
+          ],
+          [
+            -1.012839697607556e-13,
+            2.337322542253974e-12
+          ],
+          [
+            -0.00892809566058025,
+            -0.00568169512994382
+          ],
+          [
+            -0.020827302030378105,
+            0.012498696079287412
+          ]
+        ],
+        [
+          [
+            3.7221391077784043e-13,
+            -1.4523963792440635e-12
+          ],
+          [
+            0.9992975200363691,
+            -7.960863178969429e-13
+          ],
+          [
+            -0.020827302036093318,
+            -0.012498696072967922
+          ],
+          [
+            0.00892809567529413,
+            -0.005681695134397689
+          ]
+        ],
+        [
+          [
+            0.008928095666439788,
+            -0.005681695130650898
+          ],
+          [
+            0.02082730203256616,
+            -0.012498696080149517
+          ],
+          [
+            0.9992975200293353,
+            3.1565256516491036e-13
+          ],
+          [
+            2.573808020316849e-12,
+            -4.1699592645673745e-12
+          ]
+        ],
+        [
+          [
+            0.020827302035261022,
+            0.012498696072403274
+          ],
+          [
+            -0.008928095666969725,
+            -0.0056816951298766915
+          ],
+          [
+            4.4605513521845093e-13,
+            4.7953956707338066e-12
+          ],
+          [
+            0.9992975200230817,
+            -2.5171797929777236e-15
+          ]
+        ]
+      ],
+      "ideal_trotter_operator_bound_exact": "1331/539492352",
+      "kernel_query_is_a_full_chiral_field_simulation": false,
+      "source_native_pulses": 1409028,
+      "source_numerical_operator_admission": 2e-07
+    }
+  ],
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-lat/9707022",
+    "https://arxiv.org/abs/hep-lat/9802011",
+    "https://arxiv.org/html/hep-lat/9808010v2"
+  ],
+  "representation": {
+    "integer_hypercharges": [
+      -4,
+      -4,
+      1,
+      1,
+      -4,
+      1,
+      1,
+      1,
+      1,
+      6,
+      -3,
+      -3,
+      2,
+      2,
+      2
+    ],
+    "trace_q": 0,
+    "trace_q_cubed": 0
+  },
+  "schema": "oph.overlap_regulator.v1",
+  "scope": {
+    "finite_gauge_covariant_modified_chiral_operator_constructed": true,
+    "full_many_fermion_field_source_executed": false,
+    "global_chiral_measure_phase_or_quantum_gauge_action_constructed": false,
+    "physical_masses_Yukawas_spacetime_or_hardware_accuracy_derived": false,
+    "reflection_positivity_or_Lorentzian_continuation_established": false
+  },
+  "small_link_domain": {
+    "Wilson_H_squared_lower_bound_exact": "1/4",
+    "Wilson_H_squared_upper_bound_exact": "64",
+    "actual_background_plaquette_Frobenius_admission": 0.025,
+    "admissibility_ceiling_exact": "1/40",
+    "domain_does_not_cover_all_gauge_fields": true,
+    "fundamental_generator_norm_bound_exact": "7/5000",
+    "represented_plaquette_norm_bound_exact": "14/625"
+  },
+  "source_sha256": {
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "model/common_source/overlap_regulator.py": "4eaa8ef2ecee5667ab32ae16cbaaa237ffb78b589a0d18239b41bd04aec2fcb4",
+    "model/common_source/test_overlap_regulator.py": "03d8887087ad3450821fcba74adfd5c2682e639c32b7e2847968a689cc7fcf16",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
+    "model/observer_particles/results/representation_identification.json": "e2fe54c96413ddb92d7315e5c3c83ea209434240421862f2f4d3cbb3c9f86bd0",
+    "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122"
+  }
+}

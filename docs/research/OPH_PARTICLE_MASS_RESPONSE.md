@@ -430,8 +430,54 @@ This supplies protected propagation and continuing observation for the
 chosen finite matter field. The coordinate box, cutoff, coherent services,
 apparatus state, programmed modular clock and trial coupling law remain
 construction choices. The measured hierarchy still fails; interacting
-quantum gauge/Higgs dynamics, a local chiral regulator, physical spacetime
+quantum gauge/Higgs dynamics, a complete chiral gauge theory, physical spacetime
 and the joint gravity attachment remain open.
+
+#### 5.4 Finite overlap kinetic regulator
+
+The [overlap operator](../../model/common_source/overlap_regulator.py)
+and [replay receipt](../../model/common_source/overlap_regulator_results.json)
+use the same retained $M_{15}=\Lambda^2\mathbb C^5\oplus
+\Lambda^4\mathbb C^5$ representation on a periodic four-dimensional
+Euclidean lattice. All four Wilson transports and a nonconstant
+$SU(3)\times SU(2)\times U(1)$ link background are implemented. The
+modified left projector obeys the finite Ginsparg--Wilson, Weyl-map and
+gauge-covariance checks. All 16 free corners leave exactly one massless Dirac
+kernel species, from which the modified left projector supplies one Weyl
+kinetic sector. A small-link domain gives a volume-independent ideal local
+approximation tail $16(15/17)^{m+1}$ at range $2m+1$; its free symbol has
+error at most $a|p|^2$ on $a|p|\le1/4$. Two complete native queries retain
+both output branches and all four spinor input columns.
+
+This constructs a finite chiral **kinetic** regulator. The gauge background,
+spacing, three-family replication and source service accuracy are supplied.
+Its global chiral fermion measure, quantum gauge/Higgs dynamics, interacting
+continuum, Lorentzian continuation and link to the protected 630-mode
+many-fermion history are not established. The failed Yukawa hierarchy is
+unchanged.
+
+#### 5.5 Local completion and a second-shell discriminator
+
+The [identifiability check](../../model/common_source/chiral_candidate/dispersion_identifiability.py)
+constructs a local two-hop six-cell-per-axis lattice symbol that equals the
+continuum symbol at every momentum in the protected seven-mode field and has
+the same derivative at zero. With the same internal matrices, trial mass,
+current and clock, every restricted seven-mode quantum history agrees.
+The larger local lattice carries additional modes, states and resource
+requirements, and still has eight free kinetic nodes with balanced
+handedness. The restricted data therefore do not select a unique spatial
+completion or a chiral gauge regulator.
+
+At coordinate momentum $2/3$, the two-hop kinetic coefficient divided by
+the continuum speed is $1-\sqrt3/\pi$, versus $2/3$ for the continuum law.
+The [second-shell receipt](../../model/common_source/chiral_candidate/dispersion_identifiability_results.json)
+retains two number reads, feedback, a quantum clock, a neutral pair
+quadrature and all terminal outcomes. Exact joint-event intervals for the
+two fixed laws separate. The source replay checks that contrast; its source
+arithmetic admission and the stipulated event implementation error are not
+physical apparatus guarantees. The full 810-mode native correction/export
+budget and the larger lattice's other modes are not executed. The additional
+momentum read is a concrete discriminator for the proposed field attachment.
 
 ### 6. Relation to observers' effective 3+1D spacetime
 
@@ -567,9 +613,10 @@ not excluded by these tests.
 | Weak-chirality discriminator | Correct operator vertex weights; no dynamical weak scattering calculation |
 | Continuing source readout | Full 90-mode rest field and protected 630-mode seven-momentum field; complete factorized complex outputs and flagged failures |
 | Charged rest-gap ratios and propagation | Rest ratios and three-axis moving response read from source records and quantum-clock quadratures; physical identification remains open |
+| Spatial completion from seven momentum modes | Nonunique: a distinct two-hop local symbol agrees on the restricted histories; a second-shell read separates the fixed alternatives |
 | Observed mass hierarchy | Fails for every fixed prescription tested here |
 | Quantum gauge/Higgs dynamics | Not executed by this fixed-background quadratic trial |
-| Local nonperturbative chiral regulator | Not constructed here |
+| Local chiral kinetic regulator | Finite Euclidean overlap operator, modified projector and uniform ideal locality tail on an admissible link domain; full quantum chiral theory open |
 | Same recovered-spacetime field history | Local principal-symbol compatibility; full domain/history attachment open |
 | Physical units and observed particle identification | Not established |
 | GR entropy stationarity and responsive geometry | Physical entropy-area/stress dictionary and responsive geometry remain open |
@@ -592,6 +639,8 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q model/com
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -u -m model.common_source.chiral_candidate.run --output /tmp/chiral-candidate.json
 .venv/bin/python -m model.common_source.chiral_candidate.run --verify model/common_source/chiral_candidate/results.json
 .venv/bin/python -m model.common_source.chiral_candidate.protected_momentum --check model/common_source/chiral_candidate/protected_momentum_results.json
+.venv/bin/python -m model.common_source.chiral_candidate.dispersion_identifiability --check model/common_source/chiral_candidate/dispersion_identifiability_results.json
+.venv/bin/python -m model.common_source.overlap_regulator --check model/common_source/overlap_regulator_results.json
 ```
 
 The replay requires fresh JSON and companion NPZ paths and refuses to
@@ -1665,6 +1714,22 @@ operator test expose structural limits that were hidden by assigning a
 single mean matrix to Yukawa couplings. The current tested routes do not
 recover the measured mass ratios.
 
+The [stationary schedule classification](../../model/common_source/full_repair_response/stationary_selection.py)
+tests every nonnegative, state-independent seam weight while preserving the
+same faithful core-biased native reference. Stationarity forces the weights
+of all eight core-to-outer seams to zero; the maximal allowed schedule has
+22 seams, including the core-internal seam. Every
+admitted recorded history conserves core occupation. Its static Schur family
+seed has rank two, and the same declared $M_{15}$ Higgs route then has
+14 massive and seven massless charged Dirac fields, counting color. Positive
+kinetic normalization cannot remove the zero. Giving one crossing seam
+weight $1/64$ restores rank three but changes the reference by the exact
+Dirichlet defect $157/5{,}760{,}000$; uniform positive use of all 30 seams
+instead selects the uniform diagonal reference with scalar family feature
+$I_3/6$. Thus passive schedule changes within this fixed-reference route
+cannot supply three nonzero charged-family masses. The result does not
+exclude active recovery, other references or other mass laws.
+
 The collective correlation field supplies an explicit positive result: local
 charge continuity, transported phase-sensitive response, and compatible
 overlapping observer records through the same native history. Independent
@@ -1752,6 +1817,7 @@ From the repository root, using Python 3.12 and the root `requirements.txt`:
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q model/common_source/mass_response model/common_source/particle_identification model/common_source/chiral_candidate model/common_source/hierarchy_diagnosis model/common_source/full_repair_response
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m model.common_source.full_repair_response.run --verify model/common_source/full_repair_response/results.json
+.venv/bin/python -m model.common_source.full_repair_response.stationary_selection --check model/common_source/full_repair_response/stationary_selection_results.json
 ```
 
 For a new independent output, use `--output` with a fresh JSON pathname;

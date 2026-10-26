@@ -17,6 +17,22 @@ No measured Standard Model spectrum is claimed.
 | `current_response.py` | Exact native current fluctuations, charge continuity, complete record-preparation response and its finite preparation budget |
 | `run.py` | Reproducible report, source custody and retained coherent-work arrays |
 
+## Passive stationary schedule selection
+
+The [stationary selection receipt](stationary_selection_results.json) checks
+all 7,920 native input/coin addresses. For the same faithful core-biased
+reference, any nonnegative state-independent passive seam schedule is
+stationary only if all eight core-to-outer weights vanish. The other
+22 seams, including the core-internal seam, are admitted. Every resulting
+recorded history conserves core occupation. The maximal schedule's
+static Schur family seed has rank two; inserted into the same declared
+matter/Higgs route, it leaves seven charged Dirac fields massless, counting
+color. A crossing edge of weight 1/64 restores seed rank three but causes
+the exact reference defect 157/5760000. All-positive repair instead selects
+the uniform diagonal reference and a scalar one-body family feature.
+This limits passive schedule tuning at this reference. Active correction,
+other reference choices and other charged mass couplings are separate.
+
 ## A measured native current response
 
 The current is the integer actually recorded by the native rule:
@@ -181,6 +197,7 @@ From the repository root:
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q model/common_source/full_repair_response
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m model.common_source.full_repair_response.run --output /tmp/fresh-full-repair-response.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m model.common_source.full_repair_response.run --verify model/common_source/full_repair_response/results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m model.common_source.full_repair_response.stationary_selection --check model/common_source/full_repair_response/stationary_selection_results.json
 ```
 
 The producer refuses to overwrite JSON or its companion NPZ. Verification

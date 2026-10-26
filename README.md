@@ -67,6 +67,11 @@ and the clocks inside it.
   measures a declared Weyl–Higgs candidate with a common field and clock.
   Active native correction protects its finite three-axis propagating field;
   its mass ratios fail to reproduce the charged-lepton hierarchy.
+  A finite overlap operator supplies a gauge-covariant Euclidean chiral
+  kinetic projector and controlled local approximation on a small-link
+  domain. Passive reference-preserving seam schedules leave one charged
+  family direction massless in the tested Higgs route. The chiral measure,
+  interacting continuum and physical masses remain open.
   Native repair separately transports a collective correlation charge with
   compatible local detector records on overlapping regions. Its physical
   particle interpretation remains open.
@@ -97,6 +102,12 @@ been established.** The theorems hold under stated premises, and the
 executable observer is a candidate judged by declared acceptance criteria. The
 sections below say which premises the construction supplies and which remain
 inputs.
+
+A joint finite vacuum/geometry test on the native angular screen finds that
+the bare regional entropy and boundary area vary with the same sign at fixed
+slab volume. It excludes a positive bare-area stationarity attachment for
+that slab; the physical small-ball generalized entropy and stress dictionary
+remain separate from this calculation.
 
 ## Run the observer
 

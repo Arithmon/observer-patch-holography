@@ -658,6 +658,15 @@ All 1,024 core-containing cap completions are checked. These are initial-state
 variations on a fixed native carrier; physical geometry and stress remain
 unidentified.
 
+The [native-screen slab vacuum](native_equilibration/vacuum_geometry.py)
+supplies a same-action joint state/geometry control. At fixed proper slab
+volume, its bare regional entropy and two-face area have derivatives
+-1.1004136186 and -4/3. Their signs agree throughout the nontrivial uniform
+shape family, so no positive bare-area term makes this finite slab stationary.
+Port-local canonical stress changes also fail to determine its regional
+entropy slope. This does not test a renormalized geodesic small ball or
+construct physical stress, curvature or one isotropic refinement cutoff.
+
 The [bare-cap clock probes](native_modular_reference/cap_local_clock.py)
 operate on the same locally prepared mixed reference. Uniform rotations over
 all spectator configurations remove exterior-state selection from completed
@@ -776,6 +785,25 @@ budget. The spectral box, trial couplings and coherent services are supplied;
 the [measured mass hierarchy fails](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 Physical frequencies, momentum, interacting gauge/Higgs dynamics and a common
 matter-plus-gravity state remain separate obligations.
+The [second-shell test](common_source/chiral_candidate/dispersion_identifiability.py)
+exhibits a local two-hop completion with exactly the same restricted
+seven-mode histories and low-momentum derivative, yet a different
+coordinate-momentum 2/3 joint detector law. Its additional lattice modes and
+source resources remain explicit. The existing finite modes therefore do
+not select a unique spatial law.
+
+On the same retained matter representation, the [finite overlap
+operator](common_source/overlap_regulator.py) checks an actual four-direction
+Euclidean Wilson kernel, modified chiral projector and nonabelian gauge
+covariance. A declared admissible-link domain gives a volume-independent
+ideal locality tail, and complete native free-kernel queries retain both
+quantum outcomes. The global fermion measure, interacting continuum and
+Lorentzian many-body attachment are unestablished. The
+[passive schedule classification](common_source/full_repair_response/stationary_selection.py)
+also proves that, at the existing faithful biased reference, stationarity
+excludes all eight core-to-outer seams and keeps the tested static Higgs
+family seed rank at most two; active correction and different mass routes
+are outside that result.
 
 The [native-clocked common observer](clocked_common_observer/README.md)
 uses an actual current event to trigger that work's read-and-feedback suffix.
@@ -1414,6 +1442,8 @@ finite software run.
 | Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |
+| Retained matter representation on a finite Euclidean overlap lattice | Gauge-covariant modified-chiral kinetic projector, one free zero species and volume-independent ideal local approximation on a small-link domain | Global chiral measure, quantum gauge/Higgs action, Lorentzian continuation, full Fock execution and source-selected masses |
+| Native-angular Gaussian slab vacuum with variable spatial metric | Same-action bare regional entropy/area obstruction and a port-local stress degeneracy control | Renormalized small-ball entropy, physical stress/area map, isotropic ultraviolet refinement and responsive Einstein geometry |
 | Coherent overlapping observers on the native total-two carrier | Exact complete-output correspondence for a transported matrix cone, including arbitrary untouched references and number-preserving union-supported quantum interventions | Declared coherent preparation and apparatus; the inverse encoding is not positive on arbitrary effective matrices, and the correspondence supplies no relativistic field dynamics |
 | Interacting scalar projections | A seven-to-nine-mode matching bound; a same-product two-mode Gibbs theory with convergent unrestricted-occupation histories; a cold eight-level source/controller history with a complete occupation budget and a native-incident clock schedule | Fixed spatial band, radial design, coupling/temperature, protected services and physical units; the original hot four-level code retains its substantial thermal allowance, and neither construction supplies an ultraviolet completion |
 | Continuing native preparation and likelihood test | Uniform finite preparation and dependent-transcript decision bounds | Physical apparatus mapping and authenticated conditional service errors; the finite checks are not an executed laboratory campaign |

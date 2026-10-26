@@ -1,8 +1,10 @@
 # Chiral regulator routes and the current construction's domain
 
-The current executable candidate supplies an all-left Weyl symbol and a
-finite spectral menu. It is not a local nonperturbative lattice realization
-of the gauged Standard Model. The naive periodic sine derivative is retained
+The protected Weyl--Higgs candidate supplies an all-left symbol and a finite
+spectral menu. The separate [overlap calculation](../overlap_regulator.py)
+now builds a finite Euclidean, gauge-covariant chiral kinetic operator on the
+same retained matter representation. It is not a quantum gauged Standard Model
+or a continuing Lorentzian field. The naive periodic sine derivative is retained
 as a negative control: it has eight nodes with balanced handedness. A host
 cutoff or a projection that drops these states is not a decoupling theorem.
 
@@ -31,9 +33,31 @@ hat_gamma5 = gamma5 (I-a D),  hat_gamma5^2=I
 hat_P_left=(I-hat_gamma5)/2.
 ```
 
-Gauge-dependent chiral projectors also require consistent measure phases.
-Checking these algebraic identities at one gauge configuration does not
-establish locality, global consistency, or a Lorentzian Hamiltonian.
+The [retained calculation](../overlap_regulator_results.json) assembles all
+four Wilson directions on a periodic $2^4$ lattice, with the actual
+$\Lambda^2\mathbb C^5\oplus\Lambda^4\mathbb C^5$ link matrices. The
+$960$-dimensional one-family Dirac kernel has one free Dirac zero at the
+origin; the other 15 corners have $aD=2$. At a nonconstant nonabelian
+$SU(3)\times SU(2)\times U(1)$ background, the full operator and modified
+left projector obey the Ginsparg--Wilson relation, the Weyl-map identity and
+site-dependent gauge covariance within numerical admission. This implements
+a kinetic projector for three independent copies of the declared generation;
+it does not select their family couplings.
+
+The declared small-link domain has represented plaquette norm below $1/40$.
+The [Hernandez--Jansen--Lüscher overlap gap bound](https://arxiv.org/html/hep-lat/9808010v2)
+then gives $1/4\le H^2\le64$ on that domain.
+Its degree-$m$ Legendre approximation has range at most $2m+1$ lattice links
+and ideal operator tail at most $16(15/17)^{m+1}$, independent of volume;
+floating evaluation error is separate. The free Euclidean symbol satisfies
+$\|D_a(p)-i\gamma\cdot p\|\le a|p|^2$ when $a|p|\le1/4$.
+Two complete native source queries execute the free four-spinor overlap
+kernel with both success and failure amplitudes retained. They are kernel
+queries, not execution of the three-family interacting Fock field. The
+spacing, gauge background, source service accuracy and whole-field state are
+still supplied. Global chiral measure phases, reflection positivity,
+Lorentzian continuation, interacting gauge/Higgs dynamics and physical
+mass/clock identification remain separate tests.
 
 ## A recent measure construction matches the internal module
 

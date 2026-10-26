@@ -195,6 +195,7 @@ not explicitly stored field vectors. The existing rest protocol is unchanged.
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.common_source.chiral_candidate.protected_momentum --output /tmp/protected_momentum.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.common_source.chiral_candidate.protected_momentum --check model/common_source/chiral_candidate/protected_momentum_results.json
 python -m pytest -q -W error model/common_source/chiral_candidate/test_protected_momentum.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.common_source.chiral_candidate.dispersion_identifiability --check model/common_source/chiral_candidate/dispersion_identifiability_results.json
 ```
 
 The retained report contains fixed numerical admissions. Raw backend residuals
@@ -204,6 +205,29 @@ reruns the complete producer and compares every complex output using the
 declared tolerance; it never requires fresh floating arrays to have identical
 byte hashes. Repeated identical source steps are contracted by integer matrix
 powers, with every physical pulse and service request still charged.
+
+## What the seven-momentum readout identifies
+
+The [dispersion identifiability calculation](dispersion_identifiability.py)
+constructs a finite-range two-hop lattice symbol on the same coordinate
+box. Its value at zero and all six retained axis momenta, and its derivative
+at zero, agree exactly with the continuum symbol. The same internal action,
+trial mass, current, clock and complete quantum histories therefore agree
+on the restricted seven-momentum observable algebra for matching retained
+inputs. The larger six-cell-per-axis lattice has additional CAR modes,
+states and source costs; no whole-lattice equivalence is asserted. Its eight
+free kinetic nodes also retain the usual left/right doubling.
+
+At momentum 2/3 the two-hop symbol is instead
+1 - sqrt(3)/pi times the continuum speed, versus continuum value 2/3.
+The [retained second-shell source receipt](dispersion_identifiability_results.json)
+uses the same two number reads, feedback and clock plus a neutral pair
+quadrature. Every terminal and clock outcome remains in its two candidate
+laws. Their exact joint-event intervals separate; the source execution
+reproduces the separation with its stated numerical admission. This is a
+finite discriminator between two declared completions, not a physical
+momentum calibration or a claim that the present seven modes select either
+completion.
 
 ## Replay and retained evidence
 
@@ -225,7 +249,7 @@ output path performs the actual replay.
 
 Floating source-block and covariance residuals are diagnostics, not outward
 physical-service bounds. The hierarchy function uses outward rational
-intervals. Quantum Higgs and gauge fields, nonperturbative chiral-regulator
-construction, physical clock units, observed masses and responsive geometry
-are not established by this trial. All earlier retained packages and r2053
-artifacts remain unchanged; this candidate is unreleased.
+intervals. A separate finite overlap operator supplies a modified-chiral
+kinetic projector on an admissible Euclidean link domain. Quantum Higgs and
+gauge fields, a global chiral measure, physical clock units, observed masses
+and responsive geometry are not established by this trial.

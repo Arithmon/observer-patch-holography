@@ -228,6 +228,14 @@ REPLAYS = (
      "model/scalar_observations/experimental_readout/shared_calibration_results.json"),
     ("model.common_source.chiral_candidate.protected_momentum", None,
      "model/common_source/chiral_candidate/protected_momentum_results.json"),
+    ("model.native_equilibration.vacuum_geometry", None,
+     "model/native_equilibration/vacuum_geometry_results.json"),
+    ("model.common_source.full_repair_response.stationary_selection", None,
+     "model/common_source/full_repair_response/stationary_selection_results.json"),
+    ("model.common_source.chiral_candidate.dispersion_identifiability", None,
+     "model/common_source/chiral_candidate/dispersion_identifiability_results.json"),
+    ("model.common_source.overlap_regulator", None,
+     "model/common_source/overlap_regulator_results.json"),
 )
 
 

@@ -171,7 +171,29 @@ variations in the declared dimensionless state parameter. The geometric
 metric/volume variation, area coefficient, stress normalization and continuum
 tail required by the Einstein branch remain separate premises.
 
+### Joint vacuum and geometry test
+
+The [finite slab calculation](vacuum_geometry.py) uses the actual twelve-port
+angular operator, a three-site Dirichlet radial action and its Gaussian ground
+state. It varies the action-derived spatial metric at fixed proper slab
+volume, then computes the central radial cell's reduced entropy and both
+boundary-face areas from that same vacuum. For its uniform variation,
+the [receipt](vacuum_geometry_results.json) gives entropy derivative
+-1.1004136186 and two-face-area derivative -4/3; these have the
+same sign for every nontrivial uniform shape variation. No positive
+bare-area coefficient makes their sum stationary on this slab.
+
+The finite regional modular kernel is not port-local: two Gaussian momentum
+perturbations with identical canonical stress changes at every port give
+different entropy derivatives. A varying radial coordinate length cannot
+remove the sign obstruction. Fixed native site count also fails to keep one
+isotropic proper ultraviolet spacing through the nontrivial variations.
+This tests the supplied Gaussian slab, not a renormalized small-ball
+generalized entropy. The native compiler has not selected or prepared its
+vacuum, and the experiment supplies neither physical stress nor curvature.
+
 ```sh
 python -m model.native_equilibration --check model/native_equilibration/results.json
+python -m model.native_equilibration.vacuum_geometry --check model/native_equilibration/vacuum_geometry_results.json
 python -m pytest -q -W error model/native_equilibration
 ```

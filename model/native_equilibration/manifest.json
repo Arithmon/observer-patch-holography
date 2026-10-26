@@ -1,7 +1,7 @@
 {
   "description": "Derived finite preparation error on native fixed-total sectors and actual observer federations.",
   "files": {
-    "README.md": "1c7a040df26efcf22121b17bd7db0907c0a8c1e51683d04574f7006eef9caf9d",
+    "README.md": "36ee35bfe57e6cedf2fc586d7f96870f70f31c239e40289b2272fbc321b6fcce",
     "__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
     "__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
     "common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
@@ -22,6 +22,9 @@
     "test_history_entropy.py": "7f445978341db43c208e4d6ead7587ad8744b2463697104da44f8d120d5bcf5d",
     "test_record_thermodynamics.py": "33ff2dbecf4d8992e192914cd96bb0f264efcb406a9731fc6218d18dddb76aff",
     "test_sweeps.py": "7b2250d79f9432cc9072f7950bd3f411b2835e3934189a37862e6d511bab87eb",
+    "test_vacuum_geometry.py": "a272b36b4ec0ce386c7992d3b5de2082b16bb27644f79dcf6c648c894d8a6962",
+    "vacuum_geometry.py": "d36fd549ba963df8f1f170f61e32bc0869551e805cddc91c155ec20432d872ec",
+    "vacuum_geometry_results.json": "264f09472b4287803254dc0280e15490867d15ddc2c4c2936c0e9bf427617cf3",
     "variation_results.json": "d360ba7568b431b853b954e1254db70e2fbe2027b6c580ec6edba59438ec85f9"
   },
   "reproduce": [
@@ -30,6 +33,7 @@
     "python -m model.native_equilibration.cut_completion --check model/native_equilibration/cut_results.json",
     "python -m model.native_equilibration.record_thermodynamics --check model/native_equilibration/record_results.json",
     "python -m model.native_equilibration.common_variation --check model/native_equilibration/variation_results.json",
+    "python -m model.native_equilibration.vacuum_geometry --check model/native_equilibration/vacuum_geometry_results.json",
     "python -m pytest -q -W error model/native_equilibration"
   ],
   "schema": "oph.native_equilibration.manifest.v1"

@@ -27,7 +27,7 @@ binds its inputs and the complete four-chain ACT projection.
 | Spectral inverse coupling | $137.035999189566155\ldots$, above CODATA 2022 by $0.5983883$ reported standard uncertainties | Scalar agreement. Its identification with the Thomson photon residue and Maxwell normalization remains unproved. |
 | Same-cell parameter and conditional primordial tilt (spectral-coupling variant) | $P=1.630968209402773\ldots$, $n_s=0.966021495637442\ldots$; the CODATA-calibrated value used by the frozen tilt is $P=1.6309682094039593\ldots$ | The two connecting maps remain physical premises. |
 | ACT DR6 P-ACT-LB posterior position | Both rational enclosure endpoints give exactly $3114/508985=0.00611805849\ldots$ lower-tail mass | Conditional posterior position, with the existing background, transfer and prior assumptions. No p-value or joint acceptance follows. |
-| Declared Weyl–Higgs particle candidate | All four retained linear/Hubbard prescriptions fail the conservative charged-lepton ratio windows | Matching the coupling scalar does not supply the different family mass dynamics. |
+| Declared Weyl–Higgs particle candidate | All four retained linear/Hubbard prescriptions fail the conservative charged-lepton ratio windows; a local two-hop completion shares the seven tested modes but differs at a second shell | Matching the coupling scalar does not supply family mass dynamics or select the spatial completion. A separate finite chiral kinetic regulator and a passive-schedule rank bound do not provide an observed-particle attachment. |
 | Quantum oscillator comparison | Source preparation and detector execute; its apparatus action, physical clock and complete error model are not derived from this fixed candidate | A shared physical action and readout for the quantum and cosmological consumers are unproved. |
 
 The Chain scalar is credited to [A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf);
@@ -51,6 +51,9 @@ agreement with measurements requires their common consequences to be derived.
 Separate favorable comparisons cannot be multiplied into an empirical verdict
 for one construction. The present retained dataset inventory is finite and
 does not cover all public observations.
+The native-screen Gaussian slab also excludes one finite bare-entropy plus
+positive-area stationarity rule; it has no renormalized small-ball or physical
+stress identification and does not change the conditional Einstein theorem.
 
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**
