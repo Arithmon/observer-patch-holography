@@ -134,7 +134,7 @@ def test_postdiction_row_matches_theorem_and_boundary() -> None:
     assert "finite-dimensional operator topologies coincide" in boundary
     assert "selected projected scalar or observable limits" in boundary
     assert "infinite-dimensional weak limits" in boundary
-    assert "Scientific owner #743 records" in boundary
+    assert "Historical lane #743 (closed; live owner #1026) records" in boundary
     assert "no frozen prediction" in boundary
 
 
