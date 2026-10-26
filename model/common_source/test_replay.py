@@ -12,6 +12,7 @@ from .replay import compare_arrays, compare_report
 
 
 def _mass_report(word_resources):
+    word_resources = {"integrated_processor_norm_upper": 0.0, **word_resources}
     return {"environment": {"python": "3.12.6", "numpy": "2.3.5", "scipy": "1.16.3"},
             "source_bindings": {"producer.py": "same-source-hash"},
             "cases": {"interacting_n32": {
@@ -45,7 +46,7 @@ def test_roundoff_zero_classification_keeps_every_pulse_and_quantum_output():
 
 @pytest.mark.parametrize("field,new_value", [
     ("native_pulses", 3), ("proper_code_service_events", 6),
-    ("integrated_processor_norm_upper", 0.5),
+    ("integrated_processor_norm_upper", 7.0),
     ("service_failure_outcomes_retained", False),
 ])
 def test_zero_diagnostic_exception_preserves_meaningful_resource_checks(field, new_value):
@@ -57,7 +58,27 @@ def test_zero_diagnostic_exception_preserves_meaningful_resource_checks(field, n
     word = current["cases"]["interacting_n32"]["resources_per_realized_nonabort_history"]["preparation_source_word"]
     word["zero_angle_requests"] = 0
     word[field] = new_value
-    with pytest.raises(ValueError, match="replay diagnostic|exact value changed"):
+    with pytest.raises(ValueError, match="replay diagnostic|exact value changed|integrated processor norm"):
+        compare_report(retained, current, host_timing=True)
+
+
+def test_preparation_integrated_norm_is_checked_as_a_host_envelope():
+    cost = {"zero_angle_requests": 1, "native_pulses": 2,
+            "integrated_processor_norm_upper": 0.4,
+            "proper_code_service_events": 4}
+    retained = _mass_report(cost)
+    current = copy.deepcopy(retained)
+    word = current["cases"]["interacting_n32"]["resources_per_realized_nonabort_history"]["preparation_source_word"]
+    word["integrated_processor_norm_upper"] = 5.0
+    compare_report(retained, current, host_timing=True)
+    with pytest.raises(ValueError, match="floating replay diagnostic"):
+        compare_report(retained, current)
+    for bad in (-1.0, 7.0, True, "5"):
+        word["integrated_processor_norm_upper"] = bad
+        with pytest.raises(ValueError, match="integrated processor norm"):
+            compare_report(retained, current, host_timing=True)
+    word["integrated_processor_norm_upper"] = float("nan")
+    with pytest.raises(ValueError, match="not JSON compliant"):
         compare_report(retained, current, host_timing=True)
 
 

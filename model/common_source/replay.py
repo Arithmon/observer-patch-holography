@@ -23,29 +23,35 @@ from .hierarchy_diagnosis.audit import (
 PACKAGES = ("mass_response", "particle_identification", "chiral_candidate")
 
 
-def _validate_preparation_zero_diagnostic(case):
-    """Validate the exact-zero angle tally without treating it as a cost.
+def _validate_preparation_host_diagnostics(case):
+    """Validate host-sensitive preparation angles against their pulse budget.
 
-    LAPACK roundoff can change whether a computed preparation angle is
-    exactly zero. The compiler executes and charges every request, including
-    zeros; native pulse, service and integrated-norm costs remain compared.
-    This exception applies only to the mass preparation's named diagnostic.
+    LAPACK may change an eigenvector phase or a computed zero angle. Both
+    diagnostics depend on those choices, although the compiled quantum output
+    is compared separately. Every request and service is still compared. The
+    compiler's real-state and diagonal Walsh coefficients, basis changes and
+    parity words all have individual angle magnitude at most pi, so the
+    integrated upper bound must lie within the counted pulse envelope.
     """
     if "resources_per_realized_nonabort_history" not in case:
         return
     try:
         word = case["resources_per_realized_nonabort_history"]["preparation_source_word"]
         zero_count = word.pop("zero_angle_requests")
+        integrated = word.pop("integrated_processor_norm_upper")
         pulse_count = word["native_pulses"]
     except (KeyError, TypeError, AttributeError) as error:
         raise ValueError("missing preparation zero-angle diagnostic") from error
     if (type(zero_count) is not int or type(pulse_count) is not int
             or not 0 <= zero_count <= pulse_count):
         raise ValueError("invalid preparation zero-angle diagnostic")
+    if (type(integrated) not in (int, float) or not math.isfinite(integrated)
+            or not 0 <= integrated <= math.pi*pulse_count*(1+1e-12)):
+        raise ValueError("invalid preparation integrated processor norm bound")
 
 
 def compare_report(retained, current, *, host_timing=False):
-    """Compare science and costs; validate host metadata and exact-zero tally."""
+    """Compare science and discrete costs; validate host preparation bounds."""
     current = json.loads(json.dumps(current, allow_nan=False))
     retained = json.loads(json.dumps(retained, allow_nan=False))
     if host_timing:
@@ -64,7 +70,7 @@ def compare_report(retained, current, *, host_timing=False):
                 if (type(duration) not in (int, float)
                         or not math.isfinite(duration) or duration < 0):
                     raise ValueError("invalid host duration")
-                _validate_preparation_zero_diagnostic(document["cases"][name])
+                _validate_preparation_host_diagnostics(document["cases"][name])
     compare_replay(retained, current)
 
 
