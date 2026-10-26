@@ -240,7 +240,7 @@ def test_postdiction_row_matches_theorem_and_boundary() -> None:
     boundary = row["hypothesis_boundary"]
     assert "PR-20, PR-21, and PR-22 remain declared inputs" in boundary
     assert "PR-53 and PR-54 name missing attachments" in boundary
-    assert "Scientific owner #733 records" in boundary
+    assert "Historical lane #733 (closed; live owner #1026) records" in boundary
     assert "emits no frozen prediction" in boundary
 
 

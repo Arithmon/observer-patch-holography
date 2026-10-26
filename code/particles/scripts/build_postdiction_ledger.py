@@ -2969,9 +2969,9 @@ def _forced_structure(
                 "current or source coupling, Lorentz covariance, continuum "
                 "control, or laboratory readout. It removes no registered "
                 "premise: PR-20, PR-21, and PR-22 remain declared inputs, "
-                "while PR-53 and PR-54 name missing attachments. Scientific "
-                "owner #733 records those obligations. This row "
-                "emits no frozen prediction"
+                "while PR-53 and PR-54 name missing attachments. Historical "
+                "lane #733 (closed; live owner #1026) records those obligations. "
+                "This row emits no frozen prediction"
             ),
             "paper_ref": (
                 "screen-microphysics paper, modal Maxwell factorization boundary"
