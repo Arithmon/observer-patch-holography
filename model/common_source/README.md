@@ -81,6 +81,38 @@ physical memory calibration. The [producer](encoded_observer.py) and
 [receipt](encoded_observer_results.json) compare the active and passive
 complete instruments, including their source costs.
 
+The [combined recorded observer](ENCODED_MEMORY.md#optimal-native-carrier-code)
+supplies a sharp capacity result: **the maximum exactly recoverable
+subspace dimension is six** on the full 78-state total-two carrier
+when every native seam can occur and its complete C/E record is retained.
+The upper bound permits arbitrary complex codes and CPTP recovery; singleton
+records force every nontrivial exact code into the binary sector. A matching
+code attains it with the existing source operations. A separate bound excludes
+arbitrarily accurate fifteen-dimensional recovery on that single carrier;
+it does not restrict larger tensor products or other native sectors.
+
+Six corrected carriers support one finite fermion history with a fixed
+three-cell transport word, two local number reads, feedback and an untouched
+reference. Every selector timeout and disturbed quantum output is retained.
+Its information ledger separates reversible native correction from the
+first field read's loss, exactly `(15/16) log(2)`. The unencoded native
+population history also has a quantum entropy identity retaining all C
+timeouts. These use their stated references; the code reference is not the
+native Gibbs population. The [combined producer](record_observer.py) and
+[receipt](record_observer_results.json) retain the complete complex field
+arrays with the capacity, source, clock and information checks. The logical
+transport, coherent services and preparation remain declared inputs. Native
+records do not select that transport, a physical time unit, spacetime or an
+empirical particle model.
+
+The receipt retains fixed numerical admission limits, each checked against
+fresh source execution. Raw backend residuals can be inspected separately
+with `--diagnostics`; they are not stored as reproduced error estimates.
+
+```sh
+python -m model.common_source.record_observer --check model/common_source/record_observer_results.json
+```
+
 The [current source synthesis](QUANTUM_NATIVE.md#exact-gray-parity-synthesis)
 uses the established Walsh/Gray parity method to reduce each recurring
 nine-bit controlled flip from 11,782 to 2,044 native pulses. It preserves

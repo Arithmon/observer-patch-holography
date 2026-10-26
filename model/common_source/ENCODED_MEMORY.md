@@ -13,6 +13,12 @@ arbitrary unencoded native state nor asserts that passive C/E dynamics protect
 this code indefinitely. The earlier inverse repair restored history-projected
 inputs; that operation alone is not the logical recovery constructed here.
 
+The [optimal binary-carrier code](#optimal-native-carrier-code) extends this
+interface to six quantum dimensions and proves that six is the exact maximum
+when every native seam is allowed. Its tensor construction supports an
+executed finite fermionic transport experiment, with complete records,
+reference outputs and a separate account of information lost at field reads.
+
 ## Code, branch probabilities and explicit recovery
 
 Use the existing 78-dimensional total-load-two carrier and its nine-qubit
@@ -413,3 +419,265 @@ matrix-instrument control replaces the work program by a complete
 measure-and-erase channel: work changes, while the logical/reference marginal
 still agrees with the memory theorem. This control is not a claim that work
 reset was added to the canonical source-program grammar.
+
+## Optimal native-carrier code
+
+[record_code.py](record_code.py) fixes the full total-two carrier of dimension
+78, all thirty native seams and the original C/E instruments. The observer
+retains the seam, coin and complete native record, and applies a coherent
+recovery before another repair. The upper bound allows every complex code
+and every record-dependent CPTP recovery, with arbitrary untouched references.
+It is not restricted to the matching construction or to permutation decoders.
+The code is fixed before a state-independent seam selection with positive
+probability on every edge. Re-encoding into a different code after learning
+the next seam is a different contract.
+
+Let \(V:\mathbb C^k\to\mathbb C^{78}\) be a code isometry. The flagged
+Knill--Laflamme condition is
+\(V^\dagger D_hV=p_hI_k\), where \(D_h\) is the input projector of a native
+branch. E's contrasts \(\pm2\) isolate individual double-occupation states.
+C does so too: on seam \((a,b)\), coin zero and current \(-1\) isolate
+\(|2_b\rangle\), while coin one and current \(+1\) isolate \(|2_a\rangle\).
+Every port has an incident seam. Each such rank-one projector must have zero
+compression when \(k>1\), since a nonzero scalar multiple of \(I_k\) has
+rank \(k\). Positivity then forces the code to avoid all twelve doubled
+states. **Binary support is derived, rather than assumed.**
+
+On that derived 66-state subspace, both record laws expose
+\(D_{ab}=n_a(1-n_b)\) and \(D_{ba}\).
+Their difference is \(n_a-n_b\). Connectivity and \(\sum_a n_a=2I\)
+therefore make every \(V^\dagger n_aV\) scalar. It follows that
+\(V^\dagger n_an_bV\) is scalar for each native edge. Its rank is at most
+one, so it vanishes if \(k>1\). Such a code has no support on any native-edge
+pair. On the remaining 36 nonedge pairs, each \(n_a\) has rank six.
+At least one scalar compression is nonzero, again because the total is two.
+Consequently **\(k\leq6\)**.
+
+The bound is attained. Partition the complement graph into the six disjoint
+perfect matchings listed and independently checked in the implementation.
+For matching \(M_l\), set
+\[
+ V|l\rangle=\frac1{\sqrt6}\sum_{\{a,b\}\in M_l}|\{a,b\}\rangle.
+\]
+Each port occurs once in each matching; no matching pair is a native edge.
+The six columns are orthonormal, and every native record has the same number
+of compatible support states in every column. C has counts one and five;
+E has counts one and four. Injective endpoint updates preserve the
+orthogonality of these branch images. Including the fair coin, every branch
+has probability \(p_h=m_h/12\), independent of the logical input.
+
+The source encoder prepares a uniform six-term syndrome using existing real
+state rotations, then routes the six logical columns into their matching
+supports. For a nonzero branch, its inverse branch routing and inverse
+uniform-\(m_h\) syndrome preparation return the logical input; the encoder
+then restores the code. These exact uniform-support target operations obey
+\[
+R_hK_hV=\sqrt{p_h}\,V.
+\]
+This equality is for the ideal target operations, not the emitted floating-angle
+source words. The requested-angle words approximate the exact uniform states;
+the separate synthesis and source-execution diagnostics retain that difference.
+The literal forward and inverse mixing words are checked on syndrome wires
+3, 4 and 5, including their nominal-angle action on the full eight-column
+active block, before any cached composition bound is returned.
+Every actual emitted integer encoder, native-route and inverse-recovery schedule
+is checked against independently enumerated native images and logical/syndrome
+slots on all thirty seams. Merely implementing a supplied permutation would
+not exclude a wrong but unitary interchange of logical columns.
+All source permutations extend to 512 addresses. Every raw record, numerical
+padding amplitude and zero-probability outcome remains represented. The
+classical archive is neither erased nor rewritten. The exact all-seam
+argument is separate from the explicitly listed floating source executions
+and their numerical guards.
+
+An endpoint permutation followed by six matching-block Householder reflections
+also realizes the mathematical recovery within the original 66-state carrier.
+The emitted compiler word instead uses its declared 512-address work register;
+intermediate pulses need not preserve the binary subspace. Recovery adds no
+fresh quantum ancilla, but coherent code preparation and control remain services.
+
+This uses the established theory of
+[quantum error-correcting codes](https://arxiv.org/abs/quant-ph/9604034)
+and [classical-feedback correction](https://arxiv.org/abs/quant-ph/0403092).
+The model-specific contributions are the sharp capacity bound, its matching
+code and the implementation with the existing source operations. The theorem
+does not extend its bound to other load sectors, a restricted seam menu,
+subsystem correction, approximate recovery or enlarged carriers.
+
+### A finite error obstruction for fifteen dimensions
+
+[record_capacity.py](record_capacity.py) also rules out arbitrarily accurate
+fifteen-dimensional subspace recovery on this single binary carrier when the
+next seam is uniformly distributed over all thirty edges. It retains every
+record and allows an optimal CPTP decoder.
+
+For a branch \(\sqrt w\,UP\), write \(M=V^\dagger PV\). Its optimal
+entanglement-fidelity contribution is at most
+\[
+ \frac{w}{k^2}(\operatorname{Tr}\sqrt M)^2
+ \leq\frac{w}{k^2}\min(k,\operatorname{rank}P)\operatorname{Tr}M .
+\]
+The first bound follows by applying Cauchy--Schwarz to the decoder's Kraus
+matrix elements in the singular-vector basis; the polar inverse attains it
+for an individually flagged branch. The second is the scalar
+Cauchy--Schwarz inequality. The implementation sums the exact source
+projectors and uses the average of the \(k\) smallest eigenvalues of the
+resulting diagonal deficit operator. No candidate code is fitted.
+
+C's moving branches have rank ten and total probability at least \(2/15\).
+E's unequal-occupation records have rank ten and total probability at least
+\(4/15\). At \(k=15\) this gives
+\[
+ F_{\rm ent}^{C}\leq43/45,\qquad F_{\rm ent}^{E}\leq41/45 .
+\]
+Testing the recovered maximally entangled state with its target projector
+therefore gives half-trace-distance lower bounds \(2/45\) and \(4/45\).
+This is a quantitative obstruction to that single-carrier attachment,
+not a measured particle discrepancy or an exclusion of enlarged models.
+Allowing approximate codes in the full 78-state carrier changes the C bound:
+its branch ranks are 1, 11 and 66, and the same argument gives
+\(F_{\rm ent}^{C}\leq217/225\), with half-trace error at least \(8/225\).
+E's full-carrier bound remains \(41/45\), with error at least \(4/45\).
+Approximate correction need not exclude doubled states exactly, so the
+stronger binary C bound is not transferred to that larger domain.
+Two separately corrected six-state carriers have a 36-dimensional tensor
+code and can store fifteen labels, but storage does not attach those labels
+to the physical Standard Model representation.
+
+## Charged transport and information in one protected history
+
+[record_field.py](record_field.py) uses six corrected carriers. Write each
+six-state logical label as \(l=2s+n\), with spectator \(s\in\{0,1,2\}\)
+and fermionic occupation \(n\in\{0,1\}\). The full code is
+\((\mathbb C^3\otimes\mathbb C^2)^{\otimes6}\); spectators and their
+entanglement are preserved. Jordan--Wigner operators give the exact
+six-mode CAR algebra on this whole code, with spectator multiplicity \(3^6\).
+Creation changes a logical charge, not the native total load.
+
+A fixed pair of nearest-cell fermionic-swap layers on a three-cell ring
+transports one component right and the other left. The existing Pauli source
+words include the parity signs of all occupied sectors and the ring boundary.
+The actual walk and feedback words declare their occupation-bit positions
+\(9j\) in the 54-bit register. After validating that support, their common
+64-column active block is source-executed; exact tensor factorization retains
+every other spectator and syndrome bit. This does not simulate \(512^6\)
+amplitudes. The same source word determines the charged
+anticommutator response, local charge continuity and quasienergies
+\(\epsilon_\pm(k)=\pm k\pmod{2\pi}\) per completed cycle.
+The locality of this declared logical ring is distinct from the compiler's
+physical addressing and from three-dimensional native geometry.
+
+Each cycle first draws a five-bit address. Thirty addresses select a native
+seam; the other two terminate the history without advancing the field.
+All six carriers undergo that repair and its recorded recovery before the
+field word. The native instrument is retained as an exact product of its
+complete local record factors. This avoids materializing \(512^6\) amplitudes;
+it does not omit branches or coherently add distinct records. A complete
+two-read experiment retains a reference, field-record feedback, every
+selector failure and the disturbed field outputs. Incident-clock histories
+retain their waiting records: one local tick can correspond to different
+numbers of field cycles and therefore different phases.
+
+The composition holds on each complete branch. Put \(J=V^{\otimes6}\),
+and reorder the logical factors as spectators followed by the six field
+modes. Before inserting the field number reads, the operator \(A_h\) for
+a complete native-and-selector transcript \(h\) satisfies
+\[
+ A_hJ=\sqrt{p_h}\,J
+ \bigl(I_{3^6}\otimes\Gamma(S)^{T(h)}\bigr),
+\]
+where \(p_h\) is the product of its actual selector and native record
+weights, \(S\) is the declared single-particle permutation and \(T(h)\)
+counts completed cycles. Tensoring an arbitrary reference with the identity
+preserves this equation. A bounded record-adaptive stop retains its branch;
+a selector failure leaves \(T(h)\) unchanged. With field reads inserted,
+the power is replaced by the actual ordered field Kraus word, including its
+record-selected feedback. The retained complex arrays evaluate precisely
+those disturbed field/reference outputs.
+
+The numerical source replay executes all six code columns for C on `(0,1)`
+and E on `(2,10)`, including every raw outcome and all 512 output rows.
+The separate composition diagnostic counts every schedule across all thirty
+seams. For two complete field cycles the replay requires its operator-error
+diagnostic to be below \(10^{-6}\), with a worst scheduled cost of about
+\(3.1\times10^7\) native pulses, including encoding, decoding and recovery.
+The error calculation includes each macro's raw-to-polar stabilization change
+and the floating proper-code export complement of every emitted pulse kind
+and angle. If each successful pulse has norm at most \(1+\alpha\), each
+failure block has norm at most \(L\), and every path has at most \(N\)
+pulses, orthogonal first-failure branches have combined amplitude at most
+\(\sqrt N L(1+\alpha)^{N-1}\). Adding that term to the successful-block
+error bounds the complete flagged output. The retained first-failure program
+position, with zero denoting no failure, requires at most
+\(\lceil\log_2(N+1)\rceil\) extra archive bits and one supplied commit.
+This ordinal is not a physical clock. The error calculation uses floating
+residuals; it is neither an outward roundoff certificate nor a physical
+service bound. The retained receipt states fixed numerical admission limits;
+its verifier recomputes the full source budget and checks those limits.
+Raw backend-dependent residuals are available as fresh diagnostics, outside
+the retained receipt. Satisfying the limits and the composition formulas does
+not establish reproduction of stored raw residual values. The pulse count does not
+calibrate elapsed physical time.
+
+[record_information.py](record_information.py) accounts separately for native
+record creation and actual measurement disturbance. For any bounded,
+record-adaptive corrected native history and logical/reference state,
+\[
+ S(BL'|R)-H(B)=S(L|R).
+\]
+The complete native tape is independent of the encoded state. All its
+relative-entropy distinguishability remains in the conditional quantum
+outputs; none can be reconstructed from tape probabilities alone.
+For a fixed law and deterministic past-record seam/stopping policy,
+\[
+ H(B)=h_{\rm law}\,\mathbb E T,\qquad
+ h_C=\log12-\tfrac56\log5,\qquad
+ h_E=\log3+\tfrac23\log2 .
+\]
+These values follow from the actual joint coin and branch-record probabilities.
+Additional selector randomness has its own retained entropy.
+Destructive field reads do cause information loss; the continuing field
+calculation evaluates it rather than applying the zero-loss memory theorem
+across those reads.
+
+The same information calculation also extends the existing **unencoded**
+native population history, using its original faithful diagonal reference
+\(\sigma\). For any complete bounded native path instrument, each branch is
+an injective translation times its input projector. Including an untouched
+\(r\)-dimensional reference, define
+\[
+ F_Q=S(BQ'R)-\mathbb E[T]\log2-\log\beta-\log r .
+\]
+Here \(\beta=1\) for the complete instrument, including all C timeouts;
+only a separately specified state-independent success flag permits
+\(\beta<1\). With \(K_\sigma=-\log\sigma\), the exact identities are
+\[
+ F_Q=\langle K_\sigma\rangle_\rho
+       -D(\Gamma(\rho)\Vert\Gamma(\sigma\otimes I_R/r)),
+ \qquad
+ F_Q-(S(\rho)-\log r)=D_{\rm in}-D_{\rm out}\geq0 .
+\]
+They follow by taking the logarithm on each partial-injection image and
+using the complete branch probabilities. They require no charge-resolving
+census: unresolved timeouts keep their actual conditional quantum output.
+At input \(\sigma\otimes I_R/r\), \(F_Q=S(\sigma)\) even for the complete C
+instrument, whereas replacing those output entropies by integer completion
+counts produces the quantified timeout excess. A retained
+coherent input and a fully dephased control show why record probabilities
+and completion counts alone cannot replace this quantum term.
+
+For the protected two-read field experiment, the input entanglement is
+compared with the product of its marginals. Its initial relative entropy is
+\(2\log2\). Native correction loses none; the first field read occurs with
+probability \(15/16\) and loses \((15/16)\log2\); the second read adds no
+loss. Selector failures retain their corresponding quantum states. This
+joins the entropy calculation to the actual charged history rather than
+identifying the code reference with the native population reference.
+
+These results complete a specified active repair-and-transport architecture.
+Native records alone do not select its transport: replacing the field word
+by identity preserves their complete distribution and changes the field
+detectors. The protected-code reference is not the native Gibbs population
+reference. No physical clock unit, electromagnetic current, observed mass
+hierarchy, Lorentzian four-dimensional field or generalized gravitational
+entropy is identified by this construction.

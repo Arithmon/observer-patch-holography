@@ -6,6 +6,8 @@ import csv
 import json
 from pathlib import Path
 
+from tools.closed_lanes import live_owner
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CLAIM_ID = "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY"
@@ -240,7 +242,8 @@ def test_postdiction_row_matches_theorem_and_boundary() -> None:
     boundary = row["hypothesis_boundary"]
     assert "PR-20, PR-21, and PR-22 remain declared inputs" in boundary
     assert "PR-53 and PR-54 name missing attachments" in boundary
-    assert "Scientific owner #733 records" in boundary
+    assert f"Historical lane #733 (closed; live owner #{live_owner(733)}) records" in boundary
+    assert "Scientific owner #733" not in boundary
     assert "emits no frozen prediction" in boundary
 
 
