@@ -1,8 +1,10 @@
 # Particle Results Status
 
-Generated: `2026-09-20T07:47:23Z`
+Generated: `2026-10-26T06:32:37Z`
 
 Inputs: `P=1.630968209403959` | `log_dim_H=1e+122` | `loops=4` | `with_hadrons=False` | `hadron_profile=suppressed`
+
+The pixel input `P` is the working value `P_C`, located from the measured fine-structure constant; it is not the forward closure root `P_fwd`.
 
 Public Surface: `particles_native_candidate_or_gap_surface`
 
@@ -16,7 +18,7 @@ The photon, gluon, and graviton inventory rows report conditional classical/pert
 
 Source-only hadron rows are suppressed by default because promotable rows require a real OPH production backend export bundle plus production systematics. Empirical hadron closure values stay in a separate output class with an e+e- source registry and schema. Re-enable local hadron rows only for explicit backend debugging with `--with-hadrons`.
 
-The `Status` and `Status label` columns are curated in `code/particles/ledger.yaml`, whose review date is `2026-06-17`. Every numeric column on this page comes from the live run artifacts of this build, so a row pairs a curated tier with a current number, and the two carry separate dates.
+The `Status` and `Status label` columns are curated in `code/particles/ledger.yaml`, whose review date is `2026-10-25`. Every numeric column on this page comes from the live run artifacts of this build, so a row pairs a curated tier with a current number, and the two carry separate dates.
 
 Measured/reference values are pinned from the official Particle Data Group 2026 machine-readable surface where available, with explicit manual structural-context entries for non-PDG rows such as gluons, graviton, and flavor neutrinos: https://pdg.lbl.gov/api.
 

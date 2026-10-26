@@ -1,0 +1,35 @@
+% Figure: the Einstein equation as tensor completion of a realized null balance.
+\begin{tikzpicture}[node distance=5mm and 17mm,
+  dec/.style={oph box=ophdeclared, text width=#1},
+  dec/.default=4.6cm,
+  chk/.style={oph box=ophchecked, text width=#1},
+  chk/.default=4.6cm]
+\node[dec=6.5cm, align=flush left] (G) {%
+  \textbf{Realizations on one refinement tower}\\[2pt]
+  {\scriptsize
+  (G1) an effective Lorentzian manifold\\
+  (G2) cap modular flow defining one stress tensor\\
+  (G3) the Ward identity of that stress tensor\\
+  (G4) entropy split, area normalization, first law\\
+  \hphantom{(G4)} and generalized-entropy stationarity\\
+  (G5) small balls with controlled remainders\\
+  (G6) universal coupling, vacuum reference, scale}};
+\node[dec=4.2cm, right=of G] (nb) {\textbf{Null balance}\\[2pt]
+  $G_{ab}k^ak^b=\kappa\,T_{ab}k^ak^b$, $\kappa=8\pi G_N$,\\ on the nine design directions,\\ equivalently on every null $k$};
+\node[chk=4.2cm, below=7mm of nb] (tomo) {\textbf{Null tomography}\\[2pt]
+  {\scriptsize nine null directions decode $\operatorname{Sym}^2/\mathbb R g$, so balance on them gives $G-\kappa T=\phi g$}};
+\node[chk=4.2cm, below=5mm of tomo] (bian) {\textbf{Bianchi identity and Ward conservation}\\[2pt]
+  {\scriptsize $\nabla^aG_{ab}=0$ and $\nabla^aT_{ab}=0$ give $\nabla_b\phi=0$, so $\phi=-\Lambda$ is constant}};
+\node[oph box=ophnative, text width=4.2cm, line width=1.1pt, below=5mm of bian] (ein) {$G_{ab}+\Lambda g_{ab}=8\pi G_N T_{ab}$};
+\draw[oph arrow=ophdeclared] ($(nb.west)+(-1.6,0.25)$)--($(nb.west)+(0,0.25)$) node[pos=0.42, above, font=\scriptsize, text=ophdeclared] {would supply};
+\draw[oph arrow] (nb)--(tomo);
+\draw[oph arrow] (tomo)--(bian);
+\draw[oph arrow=ophnative] (bian)--(ein);
+\node[oph box=ophfail, text width=6.5cm, align=flush left, font=\scriptsize, below=9mm of G] (fail) {The construction's static radial product has zero radial-null Einstein contraction, while its admitted scalar excitation has positive relative null stress, so it cannot satisfy null balance in both states.};
+\draw[ophfail, line width=0.6pt, dash pattern=on 2pt off 1.5pt, -{Stealth[length=2mm]}] (fail.east) -- ++(0.7,0) |- ($(nb.west)+(0,-0.3)$);
+\matrix[anchor=north west, at={($(fail.west |- ein.south)+(0,-0.55)$)}, column sep=2mm, nodes={font=\scriptsize, anchor=west}] {
+  \node[oph box=ophdeclared, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{premise not supplied by the construction}; &
+  \node[oph box=ophchecked, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{machine-checked step}; &
+  \node[oph box=ophfail, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{proved obstruction}; \\
+};
+\end{tikzpicture}

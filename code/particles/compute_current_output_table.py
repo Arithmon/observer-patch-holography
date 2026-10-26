@@ -21,14 +21,19 @@ from typing import Any
 
 CODE_ROOT = Path(__file__).resolve().parent
 RER_ROOT = CODE_ROOT.parents[1]
-WORKSPACE_ROOT = CODE_ROOT.parents[2]
 P_DERIVATION_ROOT = CODE_ROOT.parent / "P_derivation"
-DEFAULT_RUNTIME_ROOT = WORKSPACE_ROOT / "temp" / "particles_runtime"
+DEFAULT_RUNTIME_ROOT = RER_ROOT / "temp" / "particles_runtime"
 NEUTRINO_COMPARE_ONLY_FIT = Path("runs/neutrino/neutrino_compare_only_scale_fit.json")
 NEUTRINO_TWO_PARAMETER_EXACT_ADAPTER = Path("runs/neutrino/neutrino_two_parameter_exact_adapter.json")
 NEUTRINO_EXACT_ADAPTER_BRIDGE_COORDINATE = Path("runs/neutrino/neutrino_exact_adapter_bridge_coordinate.json")
 NEUTRINO_BRIDGE_RIGIDITY_THEOREM = Path("runs/neutrino/neutrino_bridge_rigidity_theorem.json")
 NEUTRINO_ABSOLUTE_ATTACHMENT_THEOREM = Path("runs/neutrino/neutrino_absolute_attachment_theorem.json")
+
+# Repository files outside code/particles that runtime build steps read.
+RUNTIME_REPO_INPUTS = (
+    Path("model/observer_particles/results/premise_witnesses.json"),
+    Path("docs/policies/HADRON.md"),
+)
 
 EXCLUDE_NAMES = {
     "__pycache__",
@@ -227,20 +232,6 @@ def _copy_outputs(work_particles: Path, current_dir: Path) -> None:
         dst = current_dir / rel_dst
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
-
-
-def _mount_ancillary_particle_code(runtime_root: Path) -> None:
-    src = WORKSPACE_ROOT / "arXiv" / "RC1" / "ancillary" / "code" / "particles"
-    dst = runtime_root / "work" / "arXiv" / "RC1" / "ancillary" / "code" / "particles"
-    if not src.exists():
-        raise FileNotFoundError(f"missing ancillary particle code tree: {src}")
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        dst.symlink_to(src, target_is_directory=True)
-    except FileExistsError:
-        return
-    except OSError:
-        shutil.copytree(src, dst, dirs_exist_ok=True)
 
 
 def _seed_canonical_surface_artifacts(work_particles: Path) -> None:
@@ -527,7 +518,17 @@ def build_runtime(runtime_root: Path, *, with_hadrons: bool, verbose: bool) -> P
         shutil.rmtree(work_root)
     work_code.mkdir(parents=True, exist_ok=True)
     shutil.copytree(CODE_ROOT, work_particles, ignore=_ignore, dirs_exist_ok=True)
-    _mount_ancillary_particle_code(runtime_root)
+    # particles/mixing.py imports the sibling quantum_information package.
+    shutil.copytree(
+        CODE_ROOT.parent / "quantum_information",
+        work_code / "quantum_information",
+        ignore=_ignore,
+        dirs_exist_ok=True,
+    )
+    for rel in RUNTIME_REPO_INPUTS:
+        dst = work_root / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(RER_ROOT / rel, dst)
 
     build_steps = [
         ["python3", "particles/calibration/derive_d10_ew_observable_family.py"],

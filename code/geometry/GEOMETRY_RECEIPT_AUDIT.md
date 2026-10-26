@@ -307,5 +307,5 @@ fixtures and surface classification. Existing triangular topology controls
 and the selected cyclic tower remain supported. Historical frozen receipts
 retain their bytes. This audit does not derive spherical support from the
 axioms, certify an infinite refinement limit, or select a physical model for
-issues #1025/#1026. It is independent of the pending entropy and algebra
-audits #1029/#1031 and changes none of their implementation files.
+issues #1025/#1026. It is independent of the entropy and algebra audits
+#1029/#1031 (merged) and changes none of their implementation files.

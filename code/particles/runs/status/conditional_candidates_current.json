@@ -16,7 +16,7 @@
       "value": "2.0199803239725553e-17"
     }
   ],
-  "generated_utc": "2026-07-23T06:40:02Z",
+  "generated_utc": "2026-10-26T06:30:05Z",
   "gev_chart_candidates": [
     {
       "chart": "declared_d10_d11_running_matching_threshold_surface",
@@ -77,6 +77,21 @@
     }
   ],
   "must_not_feed_back": true,
+  "pixel_ancestry": {
+    "P_C": "1.630968209403959",
+    "P_C_located_from": "measured fine-structure constant",
+    "P_fwd": "1.630972095858897",
+    "declared_running_packet": {
+      "b": [
+        6.6,
+        1.0,
+        -3.0
+      ],
+      "beta_EW": 4
+    },
+    "evaluation_pixel": "P_C",
+    "qt1_qt5_certificate_emitted": false
+  },
   "scale_free_chart_ratios": [
     {
       "chart": "archived_d10_value_law_candidate",

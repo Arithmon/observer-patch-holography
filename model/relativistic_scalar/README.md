@@ -83,7 +83,7 @@ larger cutoff. No conditional branch is normalized or postselected.
 The unrestricted certificate uses exact finite-support oscillator
 polynomials, with all Taylor remainder norms calculated by rational
 arithmetic. Its degree-two approximation to the complete history has
-retained-vector error about 2.08e-5. That approximation's raw probabilities
+retained-vector error about 2.07e-5. That approximation's raw probabilities
 are deliberately left unnormalized; exact intervals contain the true law.
 The occupation comparison adds the polynomial-state difference and both
 remainder budgets, rather than treating agreement between finite runs as

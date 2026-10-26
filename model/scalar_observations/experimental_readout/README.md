@@ -26,6 +26,11 @@ It is not an OPH-specific prediction.
 | --- | ---: | ---: |
 | Prediction from the two measured axes | 0.07639048 | 0 |
 | Zero-response diagnostic baseline | 0.12810121 | 8 |
+| Best unfitted nominal coordinate convention (extent 4, reversed row direction) | 0.06440141 | 0 |
+
+The receipt's four unfitted nominal coordinate conventions use no fitted
+parameter. One of them scores 0.06440141 with no box violation, below the
+fitted axis-factorization score; the other three violate 2, 9 and 11 boxes.
 
 There are 200 separately reported real/imaginary means in the validation set.
 For the corresponding binary probability `(1+mean)/2`, the first RMSE is

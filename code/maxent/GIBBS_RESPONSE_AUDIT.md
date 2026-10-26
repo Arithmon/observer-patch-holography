@@ -197,7 +197,7 @@ and deletes the mean-product or interenergy terms from the certificate.
 | Existing nonclosure witness | Generic defects remain about `0.000181893249344` and `0.000250490780185` nats. The transverse product subfamily remains closed within numerical error. |
 | Live numerical receipt | Multipliers/Hessian/closure values change at roundoff scale. Tiny residuals and derived bounds can change relatively more because they are already about machine precision. |
 | Direct-sum collars | Refuses unresolved conditional, sector and joint populations; ordinary partition-weight and interaction controls still pass. |
-| Pending entropy-response #1048 | Its conservative population refusal remains compatible. Its returned-state contract is unchanged here. |
+| Entropy-response repair #1048 (merged) | Its conservative population refusal remains compatible. Its returned-state contract is unchanged here. |
 | Information, geometry, #1049 and #1052 | No information, exact-support, recovery or entropy-balance theorem is changed. Combined integration is checked separately. |
 | Papers, book, registry and public claims | Unchanged: finite response identities retain their stated premises. No physical energy, clock or thermal law is selected. |
 | Frozen registrations and pinned evidence | Unchanged. Only the explicitly live #539 receipt is regenerated. |

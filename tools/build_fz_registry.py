@@ -9,7 +9,7 @@ Fail-closed rules: frozen rows carry a parseable, non-future UTC freeze time,
 custody, a typed attestation state, content hash, kill band, and comparison
 protocol. Historical owner numbers remain unchanged as scientific provenance;
 current execution ownership lives in GitHub and the workspace DAG. Pending rows
-carry a declared positive owning-lane pointer and a milestone; that pointer may
+carry an open owning issue and a milestone; that pointer may
 be updated before a freeze. Retrospective results occupy a separate collection;
 their former reservations cannot also occur as ladder rows. The issue-506
 record is checked against a fresh replay of its canonical producer as well as
@@ -59,6 +59,7 @@ except ModuleNotFoundError:  # Support importlib loading from repository tests.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from verify_bitcoin_upgrade_receipt import RECEIPT as BITCOIN_UPGRADE_RECEIPT
 from verify_bitcoin_upgrade_receipt import verify as verify_bitcoin_upgrade_receipt
+from closed_lanes import is_open
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
@@ -2063,6 +2064,11 @@ def validate(register: dict) -> list[dict]:
         elif row["status"] == "registered_pending_freeze":
             if owning_issue is None:
                 fail(f"{where}: a pending row requires a current owning issue")
+            if not is_open(owning_issue):
+                fail(
+                    f"{where}: a pending row's owning issue #{owning_issue} must be"
+                    " one of the open issues in tools/closed_lanes.py"
+                )
             if not isinstance(row["milestone"], str) or not row["milestone"].strip():
                 fail(f"{where}: a pending row requires a milestone")
         elif row["status"] == "resource_deferred":
@@ -2125,9 +2131,9 @@ def validate(register: dict) -> list[dict]:
     fz03 = rows_by_id.get("FZ-03", {})
     if (
         fz03.get("status") != "registered_pending_freeze"
-        or fz03.get("owning_issue") != 745
+        or fz03.get("owning_issue") != 1025
     ):
-        fail("FZ-03 must remain pending under the neutrino owner issue #745")
+        fail("FZ-03 must remain pending under the open test owner issue #1025")
 
     fz05 = rows_by_id.get("FZ-05", {})
     if (
@@ -2136,9 +2142,10 @@ def validate(register: dict) -> list[dict]:
         or "retrospective" not in fz05.get("comparison_protocol", "").lower()
         or not all(
             issue in fz05.get("kill_band", "")
-            for issue in ("#729", "#736")
+            for issue in ("#729", "#736", "#1026", "#1025")
         )
-        or fz05.get("owning_issue") != 736
+        or "historical lane" not in fz05.get("content", "")
+        or fz05.get("owning_issue") != 1025
     ):
         fail(
             "FZ-05 must keep the capacity, common-tower, comparison, and "
@@ -3090,14 +3097,14 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         "together with a non-affine regrading no-go and "
         "conditional affine clock/proper-time comparison only after supplied "
         "event and calibration data; it has no source physical clock, "
-        "observable, or prospective decision rule. The observer-net lane has declared gate #728: "
+        "observable, or prospective decision rule. The observer-net work (historical lane #728, closed): "
         "its five-module continuation conditionally proves post-hoc source-operator "
         "generation, exact factors on a declared Cartesian carrier, a "
         "conditional-expectation diamond with coverage, and constant-tower "
         "transport. The source does not select that carrier, region map, or slot "
         "split, and the exact off-diagonal control shows the two slot expectations "
         "are not jointly injective; a source correlation/descent receipt and a "
-        "nonconstant realization are not supplied. The mechanics lane has declared gate #731: supplied counting "
+        "nonconstant realization are not supplied. The mechanics work (historical lane #731, closed): supplied counting "
         "and trivial data conditionally realize only the uniform transition "
         "kernel, not those inputs, an initial law, or the complete reference. Its "
         "stationary-maximum control excludes universal Gibbs mode/minimizer "
@@ -3112,13 +3119,15 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         "add no rung: the statistic and its arbitrary completion pairing were not "
         "preregistered and are ineligible as validation. The branch has no "
         "source-produced public quantum instrument or prospective observable; "
-        "issue #730 owns the complex effect, operational-additivity, and "
-        "instrument continuation. The B12 source-realization result likewise emits no row: in "
+        "the complex effect, operational-additivity, and instrument continuation, "
+        "scoped under the historical lane #730, is owned by #1026. The B12 "
+        "source-realization result likewise emits no row: in "
         "addition to its nonreversible H-theorem probe, an exact spectral and "
         "empirical-denominator obstruction rules out the hoped-for common "
         "reference through two exact direct mechanisms on the current artifact. "
-        "The source-side premise program #739 owns stochastic, nonlinear, dilated, "
-        "and enriched replacement source/collar/tail routes; energy-clock calibration "
+        "The stochastic, nonlinear, dilated, and enriched replacement "
+        "source/collar/tail routes, scoped under the historical premise program "
+        "#739, are owned by #1026; energy-clock calibration "
         "is empirical import PR-15. No observable "
         "or prospective decision rule is fixed. B14's "
         "oriented-face nearest-compact comparison is robust in the three added "
@@ -3136,10 +3145,10 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         "Owner numbers and issue references inside immutable frozen content"
         " record the ownership in force when the row was registered and are"
         " explicitly historical; words such as `current` inside those immutable"
-        " bytes also describe the registration-time state. Current execution"
-        " ownership and issue state"
-        " live in GitHub and the workspace DAG; this scientific register does"
-        " not mirror them."
+        " bytes also describe the registration-time state. A pending row's"
+        " owning issue is open; for every historical lane the open issue that"
+        " owns its remaining work is named in `tools/closed_lanes.py`, and"
+        " current issue state lives in GitHub."
     )
     lines.append("")
     lines.append("</details>")
@@ -3466,6 +3475,51 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
     )
     lines.append("")
     lines.append(
+        "Append-only note, 2026-10-26: the five FZ-01 target files under"
+        " `evidence/custody/falsification/frozen_targets/fz01_2026-07-17/` open"
+        " with a drafting-stage header that calls them unregistered drafts."
+        " Those headers are anchored bytes from the drafting stage; the"
+        " registration manifest, this register and that directory's"
+        " `PROVENANCE.md` supersede them. No frozen byte changes."
+    )
+    lines.append("")
+    lines.append(
+        "Append-only exposure note, 2026-10-26, FZ-11 and FZ-12: both rows"
+        " share the quadratic coefficient delta_gamma2 = -a^2/20. With the"
+        " natural scale a = sqrt(P) l_P it is -5.47 x 10^-58 eV^-2, which is"
+        " 5.47 times the photon-only Pierre Auger 2022 bound"
+        " delta_gamma2 > -1 x 10^-58 eV^-2; that bound requires a < 0.546 l_P."
+        " The bound is scenario- and interaction-dependent and predates both"
+        " freezes, so the exposure is retrospective and decides nothing under"
+        " the frozen rules; the rows, decision rules and eligible data are"
+        " unchanged. Sources:"
+        " `code/a5_fingerprint/runtime/fz12_auger_threshold_diagnostic_receipt.json`,"
+        " `docs/research/DISPERSION_FEASIBILITY.md` and"
+        " `docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md`."
+    )
+    lines.append("")
+    lines.append(
+        "Append-only disclosure note, 2026-10-26, FZ-13: the row was"
+        " registered on 2026-10-04, after the DESI DR2 combinations with"
+        " Pantheon+, Union3 and DESY5 supernovae were public; the cosmology"
+        " ledger's seen-data diagnostics for (w_0, w_a) = (-1, 0) are 2.60,"
+        " 3.38 and 3.93 standardized units for those three combinations. The"
+        " registration names Pantheon+ and states no reason for that choice;"
+        " its eligible decision data are the first DESI DR3 release named in"
+        " its protocol."
+    )
+    lines.append("")
+    lines.append(
+        "Status tokens are registration-time states. `frozen_attested`: frozen"
+        " with a Bitcoin attestation at registration. `frozen_stamped_upgrade_pending`:"
+        " frozen with calendar commitments at registration; a later Bitcoin"
+        " upgrade is recorded in the custody tree and shown in the current-custody"
+        " column. `registered_pending_freeze`: registered, not yet frozen."
+        " `resource_deferred`: deferred, with no open owner. `superseded_void`:"
+        " retained only as void history."
+    )
+    lines.append("")
+    lines.append(
         "FZ-10 retains its existing armed physical comparison. The October 4"
         " FZ-13 and FZ-15 registrations add specified conditional branch tests:"
         " their fixed-capacity and reserve-generator premises are hypotheses,"
@@ -3497,13 +3551,15 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         "Pending rows freeze at their milestones, before their comparison data"
     )
     lines.append(
-        "is examined; validation requires each pending row to carry a declared"
-        " positive owning-lane issue number and milestone. Pending ownership"
-        " may be updated before a freeze."
+        "is examined; validation requires each pending row to carry a milestone"
+        " and an owning issue that is open; the open issues are listed in"
+        " `tools/closed_lanes.py`. Pending ownership may be updated before a"
+        " freeze."
     )
     lines.append(
-        "Current issue state and successor ownership are resolved only from"
-        " GitHub and the workspace DAG."
+        "Issue numbers in frozen rows are registration-time history; the open"
+        " issue that owns each historical lane's remaining work is named in"
+        " `tools/closed_lanes.py`."
     )
     lines.append(
         "Retrospective results are validated and rendered in their separate"

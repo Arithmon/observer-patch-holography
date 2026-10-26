@@ -17,6 +17,13 @@ the code and separates it from the mixed run/pole reporting
 surface. If pole/effective reporting is required, the remaining exact missing
 object is then one common `EWTransportKernel_D10`, not more digits of `P`.
 
+Every D10 value in this lane is evaluated at the working pixel `P_C`, which is
+located from the measured fine-structure constant, and runs the gauge couplings
+with the declared one-loop coefficients `(33/5, 1, -3)` and
+`beta_EW = N_c + 1 = 4`. Both are premises of the lane, not outputs; the pure
+Standard Model coefficients are a separate declared completion
+([source RG frontier](../../P_derivation/source_rg_frontier/README.md)).
+
 Three compact boundary modules accompany that larger lane:
 
 - `wz_strict_series.py` implements only the strict finite-order algebra for

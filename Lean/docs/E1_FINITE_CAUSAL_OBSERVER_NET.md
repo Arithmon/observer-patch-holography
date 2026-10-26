@@ -127,9 +127,10 @@ ambient window disjointness is constructional, and the witness receipt proves
 the realized node windows are independently disjoint in the source. The
 matrix-unit corner does not instantiate `TensorSplitReceipt` or identify the
 regional algebra with a tensor factor. E1 and the B4 region-factor gate are
-therefore not attained. Source-attached locality and continuum kinematics are
-scoped to #728, structural continuum QFT to #730, empirical repair/clock
-calibration to PR-15, and source-derived clock work to #739.
+therefore not attained. Source-attached locality, continuum kinematics,
+structural continuum QFT and source-derived clock work are open (historical
+issues #728, #730 and #739, closed); empirical repair/clock calibration is
+the import PR-15.
 
 ## Source-operator adapter preflight
 
@@ -169,8 +170,8 @@ forcing zero drops); the slot assembly and label conventions are declared
 postprocessors; and the packet constructs no region lattice over the
 tower.  The factor-identification corollaries recycle the generation
 theorems through the slot embeddings and are not independent results.
-The remaining source-attached net packet is scoped to spacetime adequacy
-(#728).
+The remaining source-attached net packet is open (historical spacetime
+adequacy issue #728, closed).
 
 ## Conditional-expectation net redesign and the two-slot witness
 
@@ -226,9 +227,9 @@ adaptor with the zero generator.
 
 ## Remaining E1 boundary
 
-The remaining physical-carrier, spacetime, and regional-net attachments are
-scoped to #728, while their structural field-theory continuation is scoped to
-#730. The five-module redesign chain establishes a substantial conditional
+The remaining physical-carrier, spacetime, and regional-net attachments and
+their structural field-theory continuation are open (historical issues #728
+and #730, closed). The five-module redesign chain establishes a substantial conditional
 finite algebraic packet: source-counted operators
 generate each observer's realized matrix algebra, a declared Cartesian slot
 assembly gives exact factor localization and coverage, explicit Kraus maps
@@ -256,9 +257,10 @@ interpretation, and a time-slice generation contract.  The two certified
 marginals do not reconstruct arbitrary joint data, but that scoped result does
 not rule out richer overlap/descent data or a source-selected joint. The existing E6
 packet is built on the earlier `FiniteCausalObserverNet` interface and does
-not by itself consume this `CPRegionalNet` witness. Instrument provenance is
-scoped to #737, continuum structure to #728 and #730, empirical calibration to
-PR-15, and source-derived clock work to #739. The slot
+not by itself consume this `CPRegionalNet` witness. Instrument provenance,
+continuum structure and source-derived clock work are open (historical issues
+#737, #728, #730 and #739, closed); empirical calibration is the import PR-15.
+The slot
 assembly and label conventions remain declared postprocessors over a
 post-hoc extraction, ineligible as validation.
 
@@ -281,7 +283,7 @@ expectation pair is not injective at exactly the source correlation, so
 the counted joint state is the marginal-coherent datum the net must
 carry.  The label conventions and the two-observers-as-factors reading
 stay declared postprocessors; nonconstant source realization or a scoped
-no-go is an explicit boundary of #728.
+no-go is an explicit open boundary (historical issue #728, closed).
 
 ## Verification
 

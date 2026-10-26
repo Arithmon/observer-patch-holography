@@ -6,7 +6,12 @@ matter representation, one-Higgs interaction tensors and compatible scalar,
 CAR and vector field operators. Its complete controls retain unselected
 family coefficients, extra modes and geometry-response requirements. It
 instantiates restricted finite hypotheses of the theorem library; it does
-not derive the measured particle masses.
+not derive the measured particle masses. The tested mass prescriptions fail
+the charged-lepton hierarchy: the declared linear Weyl–Higgs candidate gives
+mass ratios `1:1.1903:1.4982` against the observed `1:206.77:3477.23`, and
+the whole complex affine response class bounds the largest-to-smallest
+mass ratio by `543.55` within the retained comparison windows, against an
+observed lower bound of `3470` ([mass-response report](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)).
 
 This is the construction guide for the [model implementation](README.md).
 The [repair-law guide](CANDIDATES.md) explains which parts of the repair law
@@ -184,15 +189,20 @@ With the constant mode restored, a heat off-diagonal estimate gives finite
 wave propagation in the supplied flat comparison distance. An
 [active incident clock](relative_observer_geometry/README.md#active-coherent-waves-in-a-native-incident-clock)
 drives one coherent step per tick on a protected register and gives
-`cos((2d/sqrt(630))*tau*sqrt(A))` on bounded spectral bands. Its exact
+`cos((2d/sqrt(630))*tau*sqrt(A))` on bounded spectral bands. That step is a
+compiled per-mode unitary on supplied codes, with angles compiled from the
+spectrum of `A` and one step per native incident. Passive repair supplies no
+wave sector: [ballistic rescaling freezes the native density paths](observer_time_fields/REFINEMENT.md#continuous-paths-of-the-actual-native-density-and-green-field)
+and no shared clock conversion turns the density log into a wave dispersion. Its exact
 two-attempt Ramsey probability is `1297/1320`; carrier pauses, coherent
 services and a vanishing accumulated implementation error are explicit.
 The [source-coded quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility)
 retains ordered Weyl phases and kick responses. Faithful mode preparation
 matches the active clock precisely when `log((1+r)/(1-r))=b*Omega` with
-common `b` and matching axis. The native spectral bound gives a normal
-thermal Fock state and modular conversion `s=-(2d/sqrt(630))*tau/b` on
-the encoded mean-zero algebra. It does not supply a spatial-patch boost,
+common `b` and matching axis. The native spectral bound makes the
+thermal Fock state of `N` supplied qubit codes normal; its modular
+conversion `s=-(2d/sqrt(630))*tau/b` on the encoded mean-zero algebra is
+the finite KMS identity of that chosen Gibbs state. It does not supply a spatial-patch boost,
 selected temperature or laboratory scale. Mode encodings, protected controls
 and the separate zero-mode choice retain their contracts.
 Controlled repair gives derivative `2(I-exp(-tau*A))f`;
@@ -205,23 +215,37 @@ Dirichlet bulk's static boundary trace (with smooth boundary). Internal rank-thr
 vanish in bounded-energy families under this scaling. The
 [normalized-lag invariant](physical_space_time/OCCUPATION_FIELD.md#a-complete-linear-readout-preserves-the-decay-spectrum)
 also excludes complete linear identification with a compact three-dimensional
-free scalar's Euclidean law under one clock scale. These restricted tests
-leave independently encoded radial fields outside their scope.
+free scalar's Euclidean law under one clock scale. Both tests detect that the
+native lag law is diffusive and second order: native rates grow like the
+eigenvalues of `A`, Euclidean rates of a relativistic free scalar like their
+square roots, so the same argument excludes such a scalar in every dimension
+two or higher. Neither is a test of three-dimensionality. These restricted
+tests leave independently encoded radial fields outside their scope.
 Positive subordination of native lag records gives `exp(-r*sqrt(A))`.
-[Independent long-record blocks](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field) provide the innovations needed for
-a Dirichlet product Gaussian field with covariance `(-d_r^2+Abar)^-1`.
+A [declared spectral filter of `A` applied to whitened consecutive long-record blocks](physical_space_time/OCCUPATION_FIELD.md#independent-native-records-give-a-radial-product-field)
+synthesizes a Dirichlet product Gaussian field with covariance
+`(-d_r^2+Abar)^-1`. Consecutive blocks of one history feed consecutive
+radial slices; any independent Gaussian blocks of the same covariance give
+the same law, so the radial direction carries no native information beyond
+the spectrum of `A`, and the same filter attaches an interval to any
+two-dimensional generator.
 The [thermal join](physical_space_time/OCCUPATION_FIELD.md#thermal-product-covariance-and-the-shared-wave-operator)
-derives its distinct quantum covariance and controls finite native counts,
+applies a declared thermal filter, distinguishing the quantum covariance
+from the classical inverse, and controls finite native counts,
 radial grids and the full-port/Schur correspondence. The [two-axis clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
 combines native angular phases and declared radial pulses, giving the same
 product generator, thermal CCR state, response and modular conversion with
-bounded-band errors. Its local wave action has a [measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+bounded-band errors. The chosen hyperbolic wave action on this product operator has a
+[measurable Lorentz-signature metric density](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave):
+the signature is the choice of action, and the measurable spatial tensor
+is the derived part.
 Complete native total-one calibration records also determine conditional
 coordinate increments. Spatial refinement at fixed density time, followed by
 short-time polarization and chart localization, recovers the angular tensor.
 The one-attempt-first limit and a finite cell-reset kernel fail explicit controls.
 For the declared product wave, intrinsic energy distance equals the earliest
-possible nonzero operator response between positive-measure regions. This
+possible nonzero operator response between positive-measure regions, as for
+any strongly local regular Dirichlet form. This
 uses integrated short-time heat asymptotics and heat-wave transmutation;
 a chosen detector can remain dark. It requires neither pointwise smooth
 coefficients nor an identification with native repair speed.
@@ -243,7 +267,8 @@ to that actual finite preparation. For its ideal successful polynomial `M`,
 `H=-log(M/m0)` fixes the clock; native incidence and first-current feedback
 drive the complete two-attempt experiment. Sampler and herald failures,
 padding outcomes and quantum references remain retained. The modular identity
-`sigma_s=alpha_(-s)` concerns the ideal successful twelve-dimensional work marginal
+`sigma_s=alpha_(-s)` holds by this definition of `H` from the prepared
+density; it concerns the ideal successful twelve-dimensional work marginal
 after forgetting the request and tracing the reference. The finite clock is
 not `sqrt(L)`; raw source checks are numerical guards, not interval or
 physical apparatus certificates.
@@ -331,8 +356,9 @@ every law that keeps an empty seam coherent with a full seam completes to E
 under repetition. Under the same current-record interface all members share
 every classical observation. One
 coherent interference experiment reads the multiplier `g` directly, with
-predictions `3/8 ± Re(g)/2` at phases `0` and `π`. The model executes C because
-its records are exactly the classical event data. The
+predictions `3/8 ± Re(g)/2` at phases `0` and `π`. The model executes C as
+its convention among the classified laws: its records are the classical
+rule's own random variables, the coin and the current, and nothing more. The
 [record-law classification](record_laws/README.md) proves these statements
 on the 78-state carrier and checks them against the executed C and E
 instruments.
@@ -358,8 +384,8 @@ clocks, interpretation maps and error budgets remain explicit.
 ### Local construction and its extension
 
 The [coherent screen observer](coherent_screen_observer/README.md) executes
-one quantum extension on the actual matched level-three and level-five
-screens. The input is a logical qubit on two root ports, with any untouched
+one quantum extension on the matched level-three and level-five screens,
+evaluating its channel on their common 222-port ball. The input is a logical qubit on two root ports, with any untouched
 reference, and a separate Bernoulli environment. Its two native incident
 ticks, seam-category records, local phase feedback and complete reduced
 quantum output compose without a state reset. A bounded operator dual
@@ -817,9 +843,12 @@ The native angular form, its independent radial-product construction and
 its active observer protocol admit one consistent scalar effective theory.
 With `B=-d_r^2+Abar`, its free thermal covariance is
 `coth(beta sqrt(B)/2)/(2 sqrt(B))`, its retarded response is
-`sin(t sqrt(B))/sqrt(B)`, and the same state has modular parameter
-`s=-t/beta`. The product wave action determines a Lorentz-signature
-coefficient density on one time and three spatial coordinates. On a smooth
+`sin(t sqrt(B))/sqrt(B)`, and by the finite KMS identity the same Gibbs
+state has modular parameter `s=-t/beta`. Only `Abar` is derived from native
+repair; the radial interval, the qubit codes carrying the field, the compiled
+per-mode Hamiltonians and the temperature are supplied. The chosen
+hyperbolic product wave action has a Lorentz-signature coefficient density
+on one time and three spatial coordinates. On a smooth
 representative of the complete density this is the ordinary static scalar
 field theory with the declared radial boundary condition. The full
 coefficient density, including the measure, must be checked. The actual
@@ -842,7 +871,9 @@ tolerance, one common smooth static `1+3` metric reproduces all its joint
 probabilities and finite detector/reference outputs within that tolerance.
 Source and incident-clock errors enter the same triangle budget. This is
 an existence result for a fixed sequence of smooth descriptions, with no
-data fitting, computable smoothing rate or exact smooth-native claim.
+data fitting, computable smoothing rate or exact smooth-native claim. Both
+sides of the approximation are free fields assembled on the same supplied
+codes; they differ in the smoothness of the angular coefficients.
 The [proof and readout domain](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
 retain the radial boundary, state and active-control assumptions.
 
@@ -876,8 +907,8 @@ generate `B(C8) direct_sum B(C8)`, with first-mode parity coherence
 inaccessible. This derives algebraic work access and its effect-to-record
 map; stable tomography and the reusable service menu remain separate.
 The [complete recorded histories](interacting_band_extension/README.md#one-reference-clock-for-complete-intervened-histories)
-use the fixed Gibbs modular parameter `s=-t/beta`, with compiled errors
-retained. The same state fixes detector/Q-kick cross-noise and response;
+use the fixed Gibbs modular parameter `s=-t/beta` of the compiled
+Hamiltonian, by the finite KMS identity, with compiled errors retained. The same state fixes detector/Q-kick cross-noise and response;
 the finite-kick check uses the existing fixed-interval source histories.
 Central parity weights can change observations without changing this
 restricted modular flow. With the Hamiltonian and inverse temperature fixed,
@@ -919,7 +950,9 @@ The [relativistic scalar regulator](relativistic_scalar/README.md) executes
 an eight-site three-dimensional quartic action with an unrestricted-
 oscillator comparison. Its ideal record TV error is below 0.000928 at the
 stated finite parameters. The supplied positive mass gives a finite-box
-gap bound, and the free spatial family has a controlled Klein--Gordon limit.
+gap bound, and the free single-particle lattice dispersion converges to the
+relativistic dispersion on a fixed momentum band (analytic, infinite lattice,
+no interaction; not a refinement of the executed eight-site cell).
 An interacting relativistic limit requires additional spatial/energy control
 and parameter matching. The [spatial interaction model](spatial_interaction/README.md)
 has controlled growing-volume observation laws and a nonzero interaction
@@ -941,7 +974,8 @@ means, test that axis-factorization relation with spin-mean RMSE 0.07639. The
 [executable detector](scalar_observations/experimental_readout/EXECUTABLE_READOUT.md)
 contracts source preparation, rotation and detector words under the declared
 laboratory model; on the same 200 means its primary spin-mean RMSE is
-0.06647. Published coordinate conflicts, postselection and
+0.06647, against a calibration residual of 0.07397 and 0.06440 for the best
+unfitted nominal coordinate convention. Published coordinate conflicts, postselection and
 normalization limitations remain explicit. This component postdiction
 establishes neither the seven-mode dynamics nor a physical clock.
 
@@ -1017,7 +1051,9 @@ on the terminal sector, not a claim of unlimited continuing memory.
 
 Exact controls separate record information from knowledge of the chosen
 action. Native-record prediction improves on the action-known prior and a
-within-action shuffled record. Native feedback gives final port-0 occupation
+within-action shuffled record. The forecast is the enumerated law's own
+conditional probability and the controller a design choice, so both
+comparisons are consistency checks of the construction. Native feedback gives final port-0 occupation
 `35/264`, versus `1/6` when the selector is disconnected or independently
 shuffled with the same action frequencies. Occupation here is an external
 audit; the native current remains the implemented observation.
@@ -1054,9 +1090,14 @@ design, not a report of fabricated electromagnetic hardware. The inherited
 source-only α branch retains its documented physical endpoint status;
 executing the adapter does not turn its output into an independent precision
 measurement. The [endpoint check](predictions/endpoint_audit.py) retains
-the approximately 300 ppm inverse-alpha deficit of that incomplete output;
-a zero-correction precision endpoint is therefore unsupported. It does not
-reject other OPH constructions or fit P to the target. P does not alone
+the approximately 300 ppm inverse-alpha deficit of that incomplete
+Thomson-endpoint output, whose hadronic part is the declared quark-screening
+ansatz `S = 1 - N_c alpha_3/pi`; a zero-correction precision endpoint is
+therefore unsupported. Replacing the ansatz with the measured hadronic
+payload gives inverse alpha `136.3828` on `[136.3670, 136.3985]`, outside
+the measured value; with source anchor and lepton transport fixed, the
+bookkeeping attributes the remaining gap to the frozen anchor. Neither result
+rejects other OPH constructions or fits P to the target. P does not alone
 determine a whole observer's Hilbert dimension,
 local exposure, temperature or event rate.
 
@@ -1147,7 +1188,7 @@ C and E share c1 and these bounds; the local-tick result also gives
 `c2_C≥c2_E`, without asserting strictness.
 
 Preparation, occupation readout, incident-event recognition and calibration
-remain specified services. The N1 current detector does not implement this
+remain specified services. The current-law detector does not implement this
 N4 occupation apparatus. Local attempt count, model time, host runtime,
 modular parameter and calibrated observer duration are distinct. The
 [working terms](../docs/INTERPRETATION_AND_TERMS.md) impose no preferred
@@ -1309,12 +1350,12 @@ finite software run.
 | Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, finite temporal and occupation bounds, exact sharp-readout contrasts, state-specific complete-output cutoff enclosures and unavoidable occupation-code output errors | Spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process; post-sharp clock continuation needs its own error analysis |
 | Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
 | Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound, finite-energy backreaction and a separate prepared four-read history certificate | Different instrument and bit dictionary; the uniform moment bound is vacuous at small executed cutoffs, and the sharp-history clock does not transfer |
-| N1 source, phase and finite record tape | All-input CPTP law, exact forecast and feedback controls; every finite `OperationalObserver` clause on the actual postcommit carrier, with classical access and declared blank-buffer refinement | Record creation is outside the persistence generator. Typed prediction retains the same evidence; next-current forecasting is separate. A compiled Lean inhabitant, cross-observer overlaps and physical identification are not supplied |
+| C source, phase and finite record tape | All-input CPTP law, exact forecast and feedback controls; every finite `OperationalObserver` clause on the actual postcommit carrier, with classical access and declared blank-buffer refinement | Record creation is outside the persistence generator. Typed prediction retains the same evidence; next-current forecasting is separate. A compiled Lean inhabitant, cross-observer overlaps and physical identification are not supplied |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
 | Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
 | Twelve central addresses with binary native/N4 quantum blocks | Full-channel decoding, complete abstract scalar-seam grammar, shared full reference and normalized geometry with distinct finite kinetics | Physical realization, retained-record delivery and compatible apparatus; the address is not an occupation measurement |
-| N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |
+| N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the current-law detector does not measure this occupation |
 | Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
 | Native C/E endpoint maps and their federation extensions | Local Liouville action, exact instrument blocks and complete quantum observation locality | Compatible screen refinement, physical clock/field correspondence and controlled relativistic scaling |
 | Joint local clock and field instruments | Exact record-conditioned quantum memory; completed-event work/reference measure-and-prepare closure | Declared support, schedule, preparation and joint apparatus; unresolved waits must remain in the quantum history |

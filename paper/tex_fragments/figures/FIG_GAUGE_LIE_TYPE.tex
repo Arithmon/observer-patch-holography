@@ -1,0 +1,38 @@
+% Figure: the steps of the gauge Lie-type theorem, coloured by their machine-checking status.
+\begin{tikzpicture}[node distance=5mm and 6mm,
+  step/.style={oph box=ophnative, text width=#1},
+  step/.default=5.8cm,
+  chk/.style={oph box=ophchecked, text width=#1},
+  chk/.default=5.8cm,
+  dec/.style={oph box=ophdeclared, text width=#1},
+  dec/.default=5.8cm]
+\node[step=8.6cm] (resp) {Complete reversible response: $\mathfrak g=D(P_{12})\subset\mathfrak u(H)$,
+  $\dim\mathfrak g=12$, commutator closed with a positive trace pairing, hence compact:
+  $\mathfrak g=\mathfrak z\oplus[\mathfrak g,\mathfrak g]$};
+\node[chk=8.6cm, below=of resp] (fix) {$A_5$ acts on $\mathfrak g\cong P_{12}=\mathbf1\oplus\mathbf3\oplus\mathbf3'\oplus\mathbf5$;
+  only the uniform push is fixed: $\dim\mathfrak g^{A_5}=1$};
+\node[chk=8.6cm, below=of fix] (centre) {Endogeneity: every recharting acts by an inner automorphism, which fixes
+  $\mathfrak z$ pointwise, so $\dim\mathfrak z\le\dim\mathfrak g^{A_5}=1$};
+\node[dec, below left=7mm and -24mm of centre] (z0) {$\mathfrak z=0$: compact semisimple of dimension $12$,
+  so $\mathfrak g\cong\mathfrak{su}(2)^4$ by classification};
+\node[dec, below right=7mm and -24mm of centre] (z1) {$\dim\mathfrak z=1$: semisimple part of dimension
+  $11=8+3$, so $\mathfrak{su}(3)\oplus\mathfrak{su}(2)$ by classification};
+\node[dec, below=of z0] (excl) {Each $\mathfrak{su}(2)$ ideal has fixed space of dimension $0$ or $3$,
+  so $\dim\mathfrak g^{A_5}\in3\mathbb Z$, contradicting $\dim\mathfrak g^{A_5}=1$};
+\node[oph box=ophfail, text width=5.8cm, below=of excl] (no) {$\mathfrak{su}(2)^4$ excluded};
+\node[oph box=ophnative, text width=5.8cm, below=of z1, minimum height=14mm, line width=1pt] (yes) {$\mathfrak g\cong\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)$;\\
+  $\mathfrak{su}(2)$ carries $\mathbf3$, $\mathfrak{su}(3)$ carries $\mathbf3'\oplus\mathbf5$};
+\draw[oph arrow] (resp)--(fix);
+\draw[oph arrow] (fix)--(centre);
+\draw[oph arrow] (centre.south) -- ++(0,-2.5mm) -| (z0.north);
+\draw[oph arrow] (centre.south) -- ++(0,-2.5mm) -| (z1.north);
+\draw[oph arrow] (z0)--(excl);
+\draw[oph arrow] (excl)--(no);
+\draw[oph arrow] (z1)--(yes);
+\node[oph label, align=flush center, text width=5.8cm, below=3mm of yes] (side) {Without endogeneity the centre bound fails, and $\mathfrak u(1)^{12}$ and $\mathfrak{su}(2)^2\oplus\mathfrak u(1)^6$ also survive.};
+\matrix[below=9mm of no.south west, anchor=north west, column sep=2.5mm, row sep=1mm, nodes={font=\scriptsize, anchor=west}] (leg) {
+  \node[oph box=ophnative, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{premise or conclusion}; &
+  \node[oph box=ophchecked, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{step machine-checked in Lean}; &
+  \node[oph box=ophdeclared, minimum width=4mm, minimum height=2.5mm, inner sep=0pt] {}; & \node{classification input declared to Lean}; \\
+};
+\end{tikzpicture}

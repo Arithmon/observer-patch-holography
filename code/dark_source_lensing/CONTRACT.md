@@ -2,8 +2,8 @@
 
 ## Objective
 
-Complete issue #751's bounded dynamics/lensing decision on the released
-macroscopic anomalous-density interface. Determine which source information
+Decide the bounded dynamics/lensing question on the released macroscopic
+anomalous-density interface (historical issue #751). Determine which source information
 is missing, including exact Einstein stress and observable effects. A new
 arbitrary source fit, independent lensing amplitude or inherited scalar
 charge relabelled as a complete stress tensor does not meet this objective.
@@ -34,6 +34,6 @@ charge relabelled as a complete stress tensor does not meet this objective.
 
 Either a source-selected joint prediction or an explicit underdetermination
 witness with a quantitative same-source observable interface. This package
-implements the latter fully. The full #751 issue remains open: microscopic
-collar-to-stress attachment, magnitude, localization, transition, abundance
-and a calibrated natural-data likelihood are not certified by this result.
+implements the latter fully. Microscopic collar-to-stress attachment,
+magnitude, localization, transition, abundance and a calibrated natural-data
+likelihood are open and are not certified by this result.

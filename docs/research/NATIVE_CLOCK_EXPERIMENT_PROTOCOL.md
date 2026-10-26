@@ -19,7 +19,7 @@ would not establish it. The
 already concerns effective observations, not a fundamental manifold or
 fundamental fields.
 
-### What can be attached to the simulated output now
+### What can be attached to the simulated output
 
 Use the model's accessible records, rather than host execution time:
 
@@ -213,7 +213,7 @@ observed values or evidence that the apparatus assumptions hold.
 The useful working hypothesis is: an identified apparatus realizes a specified
 native instrument, preparation, scheduler and record interface within a
 declared error; an independent clock supplies its duration correspondence.
-We can derive consequences and rejection tests under that hypothesis now.
+Consequences and rejection tests can be derived under that hypothesis.
 Assuming the expected observations does not supply independent confirmation
 of the hypothesis or close the physical spacetime and action obligations.
 
@@ -468,7 +468,7 @@ rule out an attempted identification. A similar waiting-time histogram
 alone does not identify the native instrument. Existing ordinary quantum
 models remain essential comparators.
 
-## Work that can proceed now
+## Work that can proceed
 
 Use the conditional native predictions above to develop the model, preserve
 the alternative actions, and test which combinations of assumptions are

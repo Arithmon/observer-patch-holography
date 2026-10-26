@@ -1,6 +1,6 @@
 # Noisy control and live public histories
 
-This extends the merged fixed-rate source result by removing reliable runtime
+This extends the fixed-rate source result by removing reliable runtime
 classical control. The [proof](../../docs/research/NOISY_SOURCE_RECORDS.md) constructs
 protected causal decisions, disjoint export islands and actual noisy classical
 archive maintenance. The [contract](CONTRACT.md) fixes the scope and exit.

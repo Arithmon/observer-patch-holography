@@ -472,5 +472,5 @@ outputs under a different terminal schedule.
 The operational gain for OPH is therefore precise: the exhibited microscopic
 process can supply the same causal reads, fermionic dynamics and clock outputs
 with noisy decisions **and live noisy public records**, without adding a new
-reliable-control axiom. Its existing source/CCG and clock-capability assumptions
+reliable-control premise. Its existing source/CCG and clock-capability assumptions
 remain visible rather than being relabeled as conclusions of A1--A3.

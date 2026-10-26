@@ -30,6 +30,7 @@ The Fixed-Point Computation That Implements Physics}
 
 \usepackage{microtype}
 \setlength{\emergencystretch}{3em}
+\input{tex_fragments/figures/FIGURE_STYLE.tex}
 \begin{document}
 \maketitle
 \OPHPaperReleaseBanner
@@ -40,28 +41,32 @@ Jinwook Kim, Oraclizer Labs.
 \end{center}
 
 \begin{abstract}
-The consensus layer of Observer-Patch Holography (OPH) models a universe as a finite network of observer patches. Patches can disagree on their overlaps. Repair moves reduce those disagreements until the public state settles. The computation selects a public normal form, while authenticated read-from provenance generates a finite informational poset. Identifying that order with physical causality, cosmic history, or a clock requires additional bridge data.
+In Observer Patch Holography (OPH) a universe is a finite network of observer
+patches that repair disagreements on their overlaps. A repair law whose
+accepted moves satisfy a transactional local diamond, strictly decrease a
+declared descent measure and are complete reaches one public normal form
+whatever the order of accepted repairs. This is Newman's lemma applied to a
+precisely stated acceptance filter, and explicit countermodels show that
+atomic commits, disjoint write sets or termination alone do not suffice.
+Repair attempts obey a sharp capacity law: canonical adaptive repair is
+eventually constant, pathwise weak fairness makes its stable state a normal
+form, a bounded stutter allowance \(q\) gives a normal horizon of \((q+1)\)
+times the initial mismatch count with a sharp coefficient, and no function of
+the initial mismatch alone bounds the horizon over all normalizing
+schedulers. On the input-independent compiler, emission-order round robin
+reaches the exact output in a linear node-count horizon, every accepted path
+is quadratically bounded, and a same-metric worst-case family makes that
+bound order-sharp.
 
-The paper proves the finite mechanics used by the companion results:
-validated repair, exact descent, eventual constancy of canonical adaptive
-repair attempts, normality under pathwise weak fairness, schedule-independent
-public endpoints under the remaining completeness and confluence hypotheses,
-a cumulative attempt-capacity classification with a bounded-waste upper
-horizon and an exact work-conserving threshold,
-an input-independent compiler execution classification in which emission-order
-round robin reaches the exact output in a linear node-count horizon while every
-accepted path is quadratically bounded, a same-metric worst-case family makes
-that bound order-sharp, and weak fairness alone has no uniform attempt horizon,
-an informational event precedence generated from certified read-from provenance with
-exact adapters reduced to verifiers,
-loop obstructions, stable records, refinement control, and a fair-block theorem
-for noisy consensus.
-
-The paper's no-go result sets the scope of the title: the bare consensus
-reduct does not determine a Lorentzian metric or the
-Einstein equation, so ``implements physics'' names the substrate role of the
-fixed-point computation, and all geometric and dynamical content enters through
-the separately declared branch structure of the companion papers.
+Authenticated read-from provenance generates a finite informational order;
+identifying that order with physical causality, cosmic history or a clock
+requires additional bridge data. A fair-block theorem controls noisy
+consensus, and a stopping-time example marks its boundary. A no-go result
+sets the scope of the title: the bare consensus reduct does not determine a
+Lorentzian metric or the Einstein equation, so ``implements physics'' names
+the substrate role of the fixed-point computation, and all geometric and
+dynamical content enters through the separately declared branch structure of
+the companion papers.
 \end{abstract}
 
 \input{tex_fragments/INTERPRETATION_CONVENTIONS.tex}
@@ -157,8 +162,10 @@ nontrivial quotient-readable records, overlap repair with schedule-independent n
 elimination of a proper candidate basin in the selected boundary/sector fiber,
 and implementation-projection identities separating quotient-record order
 from any physical clock.
-Theorem~\ref{thm:oph-simulation} proves those clauses on the
-named finite branch and supplies a generic fixed-point and variational counterexample.
+Theorem~\ref{thm:oph-simulation} shows that a packet satisfying those clauses as
+hypotheses, including the selected-fiber clause, has the certificate, and
+supplies a generic fixed-point and variational counterexample; its content is
+the definition and the counterexample, since the hypotheses carry the clauses.
 
 The resulting theorem package has two layers, bounded by the constraint-code
 firewall stated once in the summary list below. The first
@@ -284,6 +291,13 @@ For exposition we use a finite pairwise-overlap graph. The hypergraph version is
 
 The picture: each observer holds a local state, and neighboring observers share an interface through which they can compare notes. A universe-state is physically admissible exactly when all neighbors agree on their shared data. This is a constraint satisfaction problem (CSP), and the consistent states are the codewords.
 
+\begin{figure}[!htb]
+\centering
+\input{tex_fragments/figures/FIG_CONSENSUS.tex}
+\caption{(a) A patch net: a global state is consistent when the interface projections agree on every overlap (Definition~\ref{def:patchnet}). (b) The finite consensus mechanism: accepted repairs strictly decrease the exact measure, every one-step peak closes in a local diamond, and Newman's lemma gives one normal form whatever the order of repairs (Theorem~\ref{thm:quotient-repair-normal-form}).}
+\label{fig:consensus}
+\end{figure}
+
 \begin{definition}[Inconsistency potential]\label{def:potential}
 For each edge $e$, choose a weight $w_e>0$ and a function $d_e:I_e\times I_e\to\mathbb{R}_{\ge 0}$ with $d_e(a,b)=0 \iff a=b$. On the declared fixed-cutoff branch, \(d_e\) is the overlap score used by the local acceptance contract on that interface. Define
 \[
@@ -398,7 +412,7 @@ spine:
 \[
 \boxed{
 \begin{gathered}
-\mathsf{RecoveredCore}_{5\mathrm{ax}}+\mathsf{GeomRead}
+\mathsf{RecoveredCore}+\mathsf{GeomRead}
 +\mathrm{BW}^{\mathrm{sv}}_{S^2}
 +\mathsf{NullStress}\\
 +\mathsf{BoundedInterval}
@@ -1055,7 +1069,13 @@ $20{,}971{,}520$ twelve-port carriers and settles in $84$ to $100$ sweeps.
 This is a sampled statement about the specified law and gluing; the fitted
 logarithmic sweep count across tested rungs is not a consequence of the
 finite strict-descent bound. Energy-preserving swaps are excluded from the
-strict-descent counter and continue within the balanced class.
+strict-descent counter and continue within the balanced class. The balanced
+component multiset is fixed by the conserved component totals, so the check
+tests termination of the integer law at the balanced class; it is not
+evidence for the local diamond on the physical state, which
+Proposition~\ref{prop:local-confluence} supplies under its read-set and
+aggregate premises. Descent itself is a commit condition of the transactional
+law, and the consensus theorem is Newman's lemma for that law.
 
 The quotient multiset fixes no spatial texture. Readbacks at the end of
 each first settling sweep retain a scale-dependent part of the common
@@ -2197,7 +2217,7 @@ Theorem~\ref{thm:finite-packet-closure} is an exact finite-branch result. It pro
 only on the finite packet simplex built from one fixed quotient carrier whose repair law is
 terminating, confluent, and quotient-descended. It does not prove a habitat-level closure
 map for arbitrary OPH state-and-law data, does not identify a nonempty observer-supporting
-invariant sector inside the Appendix-B habitat, and does not supply uniqueness or stability
+invariant sector inside the habitat appendix of the observers paper, and does not supply uniqueness or stability
 estimates beyond this finite packet branch.
 \end{remark}
 
@@ -4513,9 +4533,9 @@ Equality iff all $f_i$ on the support of $x$ are equal.
 This theorem records the monotonicity property of the meta-selection model.
 
 
-\section{Connection to Observer-Patch Holography}
+\section{Connection to Observer Patch Holography}
 
-The formalism above is the computational skeleton of Observer-Patch Holography (OPH). The
+The formalism above is the computational skeleton of Observer Patch Holography (OPH). The
 observer patches carry von Neumann algebras on support-visible holographic cuts. In symmetric
 regulator charts those cuts may be represented by patches on a screen \(S^2\). The fixed-cutoff
 microphysics carrier is a federated patch system with echosahedral local interfaces. The \(S^2\)
@@ -4574,10 +4594,10 @@ and conditional gap inheritance without source-selecting the matter action or
 transporting the twelve-port Spin packet to that domain. It supplies no
 physical matter-pole identification, continuum Spin/locality limit, physical
 seam selection, refinement persistence, or laboratory attachment.
-\item On the declared support-visible compact-gauge branch, the Standard Model gauge paper obtains
+\item On the declared support-visible compact-gauge branch, the Yang--Mills note obtains
 the four-dimensional Euclidean Yang--Mills form from compact-gauge holonomy data and the local
 MaxEnt/Gibbs continuum limit only with the branch's renormalized four-dimensional identification
-receipt. The Standard Model gauge paper separately proves projective weak-* / GNS extraction from its finite
+receipt. The Yang--Mills note separately proves projective weak-* / GNS extraction from its finite
 cylinder system. On a finite support quotient, weighted resampling inside observation fibers is the
 orthogonal conditional-expectation projector. A concrete active repair kernel qualifies only
 when its independently extracted transition matrix satisfies the support, equal-fiber-row, and
@@ -4838,7 +4858,7 @@ can realize distance \(1\) or distance \(|V|\) under different interface maps
 (Theorem~\ref{thm:no-free-mincut}). Distance/min-cut statements require the topological-code
 certificate of Definition~\ref{def:tcert} and Theorem~\ref{thm:tcert-distance}; resilience
 requires the Knill--Laflamme certificate of Theorem~\ref{thm:qecc}. All of these extensions are
-assumption-dependent or conjectural and are not part of the core theorem package of Paper~4.
+assumption-dependent or conjectural and are not part of the core theorem package of this paper.
 
 \begin{center}
 \small
@@ -5115,14 +5135,14 @@ B.~M\"uller, J.~Kim, D.~Matscheko, and J.~Hill,
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and Refinement in Constraint
 and Rewrite Systems},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/observable_normal_forms.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/extra/observable_normal_forms.pdf}.
 
 \bibitem{eventalgebraLean}
 B.~M\"uller,
 \emph{Verified Projection-Event Calculus in Lean~4: Bundled Arbitrary-Partition Pinching,
 L\"uders Retractions, and CHSH Interoperability},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/machine_checked_finite_event_algebras.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/extra/machine_checked_finite_event_algebras.pdf}.
 
 \bibitem{ophrepo}
 Pragma Research,
@@ -5143,20 +5163,20 @@ Finite provenance and operator producers, independent verifiers, and receipts:
 FloatingPragma,
 \emph{The runnable OPH model},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/README.md}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/README.md}.
 
 \bibitem{ophsynthesis}
 B.~M\"uller, M.~Poneder, A.~Osika, K.~Xue, B.~Cassie, P.~Nguyen, J.~Kim, D.~Matscheko, D.~A.~Friedman, J.~Hill, W.~T.~Glynn, M.~A.~Visser, K.~A.~Anirudha, and B.~de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/flagship/from_observer_consensus_to_standard_physics.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{ophObservers}
 B.~M\"uller et al.,
 \emph{Observers Are All You Need},
 2026.\\
 Source and compiled paper:
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/observers_are_all_you_need.pdf}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/observers_are_all_you_need.pdf}.
 
 \bibitem{dijkstra1974}
 E.~W.~Dijkstra,
@@ -5244,7 +5264,7 @@ arXiv:1410.0664.
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
 
 \InputIfFileExists{tex_fragments/PRIOR_WORK_REALITY_AS_CONSENSUS_PROTOCOL_BIBITEMS.tex}{}{}
 \end{thebibliography}

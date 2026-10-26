@@ -1,9 +1,9 @@
 # Independent alpha/tau reproduction and the first bounded natural comparison
 
-Issue #1011 is resolved at its explicitly permitted **positive reproduction /
-precise NOT_READY** exit. Both certified alpha roots and the conditional tau
+The result is a **positive reproduction with a precise NOT_READY** verdict for
+the first natural comparison. Both certified alpha roots and the conditional tau
 window are independently reproduced. The selected prospective route is the
-existing FZ-10 target, owned by #546. No new natural outcome has been evaluated,
+existing FZ-10 target. No new natural outcome has been evaluated,
 no new prediction registry is created, and no source-selection parent is closed.
 
 The executable evidence is [the independent packet](../../code/independent_postdictions/README.md).
@@ -17,7 +17,8 @@ not a claim of institutional independence or blindness to historical results.
 
 Primary mathematical sources are `code/P_derivation/paper_math.py`, its retained
 July 2026 interval certificate and approximate trunk, and the positive-circulant
-identity and tau artifact in `code/particles/leptons/` and `runs/leptons/`.
+identity and tau artifact in `code/particles/leptons/` and
+`code/particles/runs/leptons/koide_balance_comparison.json`.
 The fresh producer imports none of their code or output numbers. The verifier
 uses different numerical formulations and reads the old certified enclosures
 only to compare the newly reconstructed roots. Source hashes and narrow
@@ -119,8 +120,12 @@ and is neither the forward gauge-width fixed point nor an independent alpha
 prediction. It is retained because confusing these quantities would overstate
 the agreement.
 
-The nearest forward result is still about **16,145 reference standard
-uncertainties** from CODATA. That number is not a theory significance: no
+Among the maps reproduced here, the nearest forward result is about
+**16,145 reference standard uncertainties** from CODATA. The separately
+evaluated spectral inverse coupling of A. D. Wissner-Gross,
+`137.035999189566`, lies `+0.60` reference standard uncertainties from
+CODATA ([empirical status](../EMPIRICAL_STATUS.md)); it is a different
+construction and is not reproduced by this packet. That number is not a theory significance: no
 physical truncation/hadronic/readout error law is supplied. If a symmetric
 additive theory remainder `[-R,R]` were proposed, mere overlap with the reference
 two-standard-uncertainty interval would require
@@ -130,7 +135,8 @@ invent that remainder. The certified arithmetic error is a different quantity.
 
 Known trials include the seven electron exponents, the two certified map
 variants, and the approximate/asymptotic continuation. The existing
-`selection_accounting.json` and `tracking/null_model_scorecard.md` retain an
+`code/P_derivation/runtime/selection_accounting.json` and
+`tracking/null_model_scorecard.md` retain an
 audit grid of 48 constant-pair labels, 42 distinct pairs, and 41 alternatives;
 zero alternatives meet its after-the-fact `2.5e-6` threshold. That grid is
 neither exhaustive nor a precomparison probability measure. This task does
@@ -222,8 +228,8 @@ output -> a dedicated mass estimator with its experimental calibration and
 uncertainty. This states the physical consumer and its missing source premise;
 it does not identify an abstract GNS coordinate as a particle pole by fiat.
 No apparatus or self-reading patch simulation is consumed. Source/outcome
-admission remains with #730, calibration with #736, common model integration
-with #740, and the selected target with #546.
+admission, calibration and common model integration are open; the selected
+target is FZ-10.
 
 The [Belle II 2023 measurement](https://arxiv.org/abs/2305.19116), already exposed
 in the PDG table, quotes `0.08 MeV` statistical and `0.11 MeV` systematic errors.
@@ -298,8 +304,8 @@ Current blockers are specific: no eligible untouched dataset identified; no
 dataset-specific overlap, exposure and uncertainty dossier; and no external
 registration evidence yet for this new dataset-selection contract. The old
 prediction freeze alone does not supply the new registration. No physical
-comparison has occurred. Publishing this PR does not silently assert that
-those admission obligations have been met.
+comparison has occurred. This note does not assert that those admission
+obligations have been met.
 
 ## 6. Verification and exit coverage
 
@@ -312,50 +318,50 @@ components, mode changes, target leakage, omitted rows, policies, JSON duplicate
 nonfinite/oversized inputs, outcome-dependent selection and optimized-Python
 execution. Synthetic controls are tests of code, never observations of nature.
 
-| #1011 obligation | Delivered evidence / exit |
+| Obligation | Delivered evidence / exit |
 |---|---|
 | Independent initial alpha and tau replay | Fresh simultaneous roots / direct Q solve, independent direct-sum and integral / quadratic checker; declared unit and selector ledger |
 | Same-data reference comparison | Exact OPH/Koide equivalence; free-mass likelihood illustration; alpha residual and required-remainder diagnostic, with unknown search scope retained |
 | At most three candidates after replay | Ranked table and prior contract; FZ-10 selected with concrete precision obstacle |
 | Pre-outcome contract and exposure | Frozen target reused; protocol fixes future selection, errors, exclusions, multiplicity, stopping and outcomes; no claimed dataset freeze |
 | Independent replay and hostile controls | Offline verifier, test suite, Windows/Linux CI; no synthetic physical evidence |
-| Honest natural comparison or blocker | NOT_READY with a specific future-release acquisition and admission contract; no hardware or cloud expenditure |
+| Natural comparison or blocker | NOT_READY with a specific future-release acquisition and admission contract; no hardware or cloud expenditure |
 
 This closes the finite reproduction/readiness task, not the experimental test,
-physical mass-selection theorem, alpha endpoint attachment, or M1 source law.
+physical mass-selection theorem, alpha endpoint attachment, or source law.
 
-## 7. Maintainer-style audit
+## 7. Implementation checks
 
-The audit rechecked the dimensionless running and kernel normalization against
-the primary producer, the two tau roots and monotonic derivatives, the scope of
-the covariance inequalities, the same-law likelihood argument, every #1011 exit
-criterion, and the canonical FZ-10 rule. No central value or scientific conclusion
-changed. The mathematical evidence is a fresh numerical reconstruction plus
-analytic arguments; it does not replace the inherited interval proof or certify
-physical input ancestry by numerical agreement.
+The dimensionless running and kernel normalization are checked against the
+primary producer, together with the two tau roots and monotonic derivatives,
+the scope of the covariance inequalities, the same-law likelihood argument,
+every exit criterion and the canonical FZ-10 rule. The mathematical evidence
+is a fresh numerical reconstruction plus analytic arguments; it does not
+replace the inherited interval proof or certify physical input ancestry by
+numerical agreement.
 
-Two implementation weaknesses were reproduced and corrected. Setting a caller's
-Decimal `Inexact` trap made a valid historical comparison raise, and a low caller
-precision could make the standalone decimal parser round an out-of-range value
-onto the accepted limit. A complete local arithmetic context and exact `copy_abs`
-bound check now isolate both behaviors. The test suite checks the correction
-under hostile caller precision, rounding, exponent limits and traps. A separate
-exact-rational interval oracle checks 297 scheduled threshold and window cases,
-including equality, tiny displacements on both sides, very small uncertainties
-and coarse measurements; these controls assert no physical outcome.
+Decimal comparisons run in a complete local arithmetic context with an exact
+`copy_abs` bound check, so a caller's `Inexact` trap or low precision cannot
+make a valid historical comparison raise or round an out-of-range value onto
+the accepted limit. The test suite checks this under hostile caller precision,
+rounding, exponent limits and traps. A separate exact-rational interval oracle
+checks 297 scheduled threshold and window cases, including equality, tiny
+displacements on both sides, very small uncertainties and coarse measurements;
+these controls assert no physical outcome.
 
 Scientific mutation coverage includes all three alpha maps, all tau enclosure
 corners and derivatives, and a cold-cache rebuild after independently changing
-the synthetic measured-alpha and measured-tau inputs. The forward alpha roots
-and electron/muon-derived tau output remain unchanged, while the historical
-comparison fields and explicitly target-consuming mixed diagnostic change.
+the synthetic measured-alpha and measured-tau inputs. These mutations leave the
+forward alpha roots and electron/muon-derived tau output unchanged, while the
+historical comparison fields and the explicitly target-consuming mixed
+diagnostic change.
 
-The reviewed discovery classification is now bound to its exact metadata
-snapshot, rather than relying on the presence of a keyword such as Koide.
-Substituting a measurement-like title while keeping that keyword is rejected.
-The inherited interval certificate's digest is checked separately from
-rebuildable custody: widening its bounds and rebuilding the packet still fails.
-Neither hash check establishes catalogue completeness or authenticates a new
-experimental dataset. If metadata itself exposes a result, the protocol records
-that exposure and retains the first candidate with blocked admission. All
-historical frozen artifacts and canonical prediction rows remain unchanged.
+The reviewed discovery classification is bound to its exact metadata snapshot
+rather than to the presence of a keyword such as Koide; substituting a
+measurement-like title while keeping that keyword is rejected. The inherited
+interval certificate's digest is checked separately from rebuildable custody:
+widening its bounds and rebuilding the packet fails. Neither hash check
+establishes catalogue completeness or authenticates a new experimental
+dataset. If metadata itself exposes a result, the protocol records that
+exposure and retains the first candidate with blocked admission. Historical
+frozen artifacts and canonical prediction rows are unchanged.

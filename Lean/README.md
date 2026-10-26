@@ -9,7 +9,13 @@ of the declared analytic Hessian action, and the pure-de-Sitter shock
 normalization. The source contains no admitted proofs. Thirteen finite
 proofs use `native_decide`, whose generated native-code evaluation axioms are
 tracked by `tools/check_lean_native_decide_inventory.py`; the other audited
-proofs state their axiom dependencies in their module reports. Continuum
+proofs state their axiom dependencies in their module reports. The thirteen
+sit in `Screen/PortGramRepairCovariance.lean` and
+`Screen/PortGramA5Isometry.lean`. The rank-three repair limit
+`normalizedKernel_tendsto_portGram` and the seam-current modules that import
+`PortGramA5Isometry` (from `SeamCurrentHomogeneousAction` on) inherit them,
+so those results rely on the compiler as well as the kernel. The
+source-derived (1+3) carrier does not import them. Continuum
 geometry, asymptotic tails, physical identification, and existence of an
 Einstein-admissible source tower are explicit premises rather than proved
 facts.
@@ -62,7 +68,7 @@ not supply a native vacuum, Born readout or physical clock.
 
 ## Layout
 
-One Lake workspace, nine Lean libraries across their source directories:
+One Lake workspace, ten Lean libraries across their source directories; nine are default build targets, and the frozen `OphGap` certificate is opt-in and built by its own CI job:
 
 ```text
 Lean/
@@ -72,7 +78,8 @@ Lean/
 │   └── EinsteinBranch/                 chain, Einstein-branch kernel
 ├── EventAlgebra.lean
 ├── EventAlgebra/                       neutral finite event algebras
-│                                       (journal artifact, Mathlib-only)
+│                                       (journal artifact; its eleven-module
+│                                       neutral core is Mathlib-only)
 ├── Thermodynamics/                     finite repair thermodynamics,
 │                                       stationary/nonreversible H-theorem
 │                                       interfaces, reversible transport, graph diffusion,

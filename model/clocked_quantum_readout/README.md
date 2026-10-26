@@ -174,9 +174,11 @@ At cap 64, the complete ideal-service output error is at most `0.000003`.
 The failed-herald probability is still `28/33`, and the unresolved mass is
 approximately `0.00000716142`. The full source-mixer comparison has the same
 displayed finite error bound; its two-call contribution is below `1e-12`.
-The C-minus-E probability difference for **phase match and final gauge one**
+The C-minus-E record-weight difference for **phase match and final gauge one**
 is in **`[0.005151, 0.005175]`**; for phase match and unequal smooth bits it
-is in **`[0.002564, 0.002587]`**. Both compare the complete finite record laws.
+is in **`[0.002564, 0.002587]`**. Both compare the complete finite record laws;
+these are weights of unnormalized binary record maps, not normalized
+probabilities.
 The covariance numerator is in `[-0.000035,-0.000030]` for C and
 `[-0.000031,-0.000026]` for E, establishing phase/work correlation after
 conditioning on a successful stop, with that conditioning's mass explicit.

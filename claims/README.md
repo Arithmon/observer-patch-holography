@@ -25,7 +25,7 @@ its source.
 
 | Ledger | Machine source | Views and sub-registers |
 | --- | --- | --- |
-| Claims | `claims/claim_registry.yaml`: the claim rows and a `claim_context` section with each claim's prior work and citations, owner section, falsifiers and dependencies; `claims/prior_work.json`, the verified bibliography of that prior work; `claims/assumption_dictionary.md`, the assumption names | `claims/novelty_matrix.csv`, `claims/falsification_matrix.csv` and `claims/dependency_graph.json` (rendered by `tools/build_claim_views.py`); the credited-prior-work section of each paper (`tools/build_prior_work.py`); the selection and physical-identification registers `claims/selection_ledger.json` and `claims/physical_identification_registry.json` (validated and rendered to `docs/registers/SELECTION_LEDGER.md` by `tools/build_selection_ledger.py`); the public quantitative-display policy `claims/public_surface_quantitative_claims.json` |
+| Claims | `claims/claim_registry.yaml`: the claim rows and a `claim_context` section with each claim's prior work and citations, owner section, falsifiers and dependencies; `claims/prior_work.json`, the verified bibliography of that prior work; `claims/assumption_dictionary.md`, the assumption names | `claims/novelty_matrix.csv`, `claims/falsification_matrix.csv` and `claims/dependency_graph.json` (rendered by `tools/build_claim_views.py`); the credited-prior-work section of each paper (`tools/build_prior_work.py`); the selection and physical-identification registers `claims/selection_ledger.json` and `claims/physical_identification_registry.json` (the selection ledger is rendered to `docs/registers/SELECTION_LEDGER.md` by `tools/build_selection_ledger.py`, which validates the physical-identification registry without rendering it); the public quantitative-display policy `claims/public_surface_quantitative_claims.json` |
 | Premises | `tracking/premise_register.json`: the premise rows, with the model-supply crosswalk, the Standard Model coverage and the gravity rungs as its `model_supply`, `sm_coverage` and `gravity_rungs` sections; the theorem-library premises A1-A3 in `claims/axiom_registry.yaml`, stated in `docs/AXIOM_REFERENCE.md` | `docs/registers/PREMISE_REGISTER_V3.md`, whose closing sections show the Standard Model coverage and the gravity rungs; `model/PREMISES.md`, the model view of the crosswalk |
 | Predictions and tests | `claims/frozen_prediction_register.json`, the custody record of frozen predictions, and `tracking/observation_ledger.json`, whose `instruments` and `constants` sections hold the emergent-instrument register and the constants ancestry | `docs/FROZEN_PREDICTION_LADDER.md`, `docs/registers/OBSERVATION_LEDGER_V3.md`, `docs/POSTDICTION_LEDGER.md`, `tracking/null_model_scorecard.md`; `docs/OPH_FALSIFICATION_PROGRAM.md` summarizes the falsification rules for readers |
 | Evidence | the per-package manifests and verifiers under `evidence/`, `code/` and `model/`, the receipt-promotion and external-data registries under `code/audit/`, and `Lean/docs/PROOF_INDEX.md` | `evidence/README.md` |
@@ -75,14 +75,18 @@ Three row-level contracts carry their own machine-checked declaration:
   list is prose declares `proof_medium: paper_prose`; the validator rejects that field on every
   other row, so a Lean-backed or run-backed row cannot acquire the prose label. An empty
   evidence list fails.
-- Topical gate owners. Each row that the V3 topical-owner policy in
+- Historical lanes and live owners. `gates` records the lane issues under which a claim's open
+  work was scoped. The V3 and V4 lanes are closed; every gate is either an open issue or a
+  historical lane that `tools/closed_lanes.py` maps to the open issue owning its remaining work,
+  and generated pages render each historical number as labelled history beside that live owner.
+  A gate never names a superseded lane. Each row that the historical topical-lane policy in
   `tools/check_claim_registry.py` names declares `required_topical_gate_owners`, a sorted subset
   of that row's own `gates`. The validator compares the declaration against the policy in both
   directions and rejects a policy key that names no registered claim, so a one-sided edit to
   either surface fails. This field is the one gate-named key admitted outside `gates`; every
   other gate-named key is rejected as a side channel.
-- Owner medium. An owner file under `paper/`, `extra/`, `cosmology/`, or `flagship/` is a paper
-  source and declares no medium. An owner outside those roots declares
+- Owner medium. An owner file under `paper/`, `extra/`, `cosmology/`, `flagship/` or
+  `docs/research/` is a paper source and declares no medium. An owner outside those roots declares
   `owner_medium: protocol_record`, which is admissible only for
   `claim_class: emitted_artifact`.
 

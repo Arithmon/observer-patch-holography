@@ -1,7 +1,7 @@
 {
   "description": "Emitted coherent source apparatus joined to exact continuing incident-clock histories, with complete padding/reference outputs and certified error/resource budgets.",
   "files": {
-    "README.md": "fd9a26a0d927825e340006fb08b0f22381ebadf084d631f1d81e53acd992a502",
+    "README.md": "6b0ef0655e9093427ad952bc93ae661c7ac557586f75b26c427c95dfe9ca9b0c",
     "__init__.py": "f1f8a3faf1ecc7c9a251be4dc66139facd05db3ed4b6edcebdacb096e359e5ce",
     "__main__.py": "40021dc47e7b8c420e6d27f5a98e2d17a493f9c96d29908eee0ebcbfe8b2b6e9",
     "history.py": "65c1b85cee06af276151ac1fd15005264bc5b7aea06a3f94de1ff0a396925c27",

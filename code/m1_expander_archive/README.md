@@ -15,8 +15,7 @@ degree 8^12 and other fixed constants are deliberately conservative and very
 large. This is a constructive positive-threshold result, not a measured
 native-machine threshold or a practical hardware proposal. Source/CCG,
 static scheduling, control resources and logical accounting retain their
-declared status. The branch builds on merged main; it does not need an
-unmerged PR's files to verify its evidence.
+declared status. Its evidence verifies from files in this repository alone.
 
 ## Evidence
 
@@ -72,6 +71,6 @@ python -m pytest -q code/m1_expander_archive
 ```
 
 The dedicated workflow performs the same replay and hostile controls on
-Linux and Windows. The receipt also recursively verifies the merged noisy
-records, fixed-noise and source evidence. The compact receipt stores no raw
+Linux and Windows. The receipt also recursively verifies the noisy-records,
+fixed-noise and source evidence. The compact receipt stores no raw
 fault tapes; every experiment is regenerated from these scripts.

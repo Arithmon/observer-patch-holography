@@ -7,9 +7,9 @@
   "description": "Exact native current counter, marked three-state reduction, waiting/count laws and complete CQ execution.",
   "files": {
     "CLOCK_BRIDGE.md": "e6ae33ad21a06e586a9d09926cfd8a2a242c0d3a73ee9b3b41a6e8433ab164d8",
-    "COMPARISON.md": "8bc7777aa58ec6813b8957d393456a82a1f69095fb790b9f49e5d114150ad447",
+    "COMPARISON.md": "86380f5399594a9b6cc4313c91c8b9d1abb593ccde818381387e28d0a394c4f0",
     "HOST_CLOCK.md": "56a4982a33ae28cb604e955c154838b30b5a25ba0884cd065e3d459cd95c98f9",
-    "README.md": "8a607b9b44105bcc9daf761f373d4c9534eb18f70a4abd17b8de854b05b92817",
+    "README.md": "b575cfc73fa6c18d5af62b31d834b2ed9e0e46f8b09b9435dd7a9a965f7aaa1b",
     "__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
     "__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
     "bit_readout.py": "cffb23e3e7d6661d3be878e9db16e2f6640ae3ac3618275c7746ac555c9526f1",

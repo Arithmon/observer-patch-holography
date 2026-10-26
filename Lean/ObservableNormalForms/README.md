@@ -202,6 +202,5 @@ theorems are outside this Lean package. They have manuscript proofs and finite P
 reference receipts under `code/consensus/`; neither general theorem is claimed
 as Lean, TLA+, or protocol-model-checker verified.
 
-The exact product-calculus theorem in this package uses a nonempty finite
-index family. The manuscript permits an infinite family only under pairwise
-weighted-\(\ell^p\) summability; that generalization is outside this package.
+The manuscript's exact product-calculus theorem (`thm:product-calculus`) is
+not encoded in this package; see the proof index.

@@ -524,9 +524,12 @@ def test_fz05_assigns_attachment_and_comparison_to_physics_lanes():
     register = live_register()
     fz05 = next(row for row in register["rows"] if row["id"] == "FZ-05")
     assert all(issue in fz05["content"] for issue in ("#729", "#736"))
-    assert fz05["owning_issue"] == 736
+    assert "historical lane" in fz05["content"]
+    assert fz05["owning_issue"] == 1025
     assert "retrospective" in fz05["comparison_protocol"].lower()
-    assert all(issue in fz05["kill_band"] for issue in ("#729", "#736"))
+    assert all(
+        issue in fz05["kill_band"] for issue in ("#729", "#736", "#1026", "#1025")
+    )
 
     fz05["content"] = "A positive finite N is a cosmological prediction."
     with pytest.raises(SystemExit, match="FZ-05 must keep"):
@@ -597,20 +600,19 @@ def test_pending_owners_are_current_and_frozen_owners_are_historical():
         for row in rows
         if row["owning_issue"] is not None
     } == {
-        "FZ-03": 745,
-        "FZ-05": 736,
+        "FZ-03": 1025,
+        "FZ-05": 1025,
         "FZ-10": 546,
         "FZ-11": 655,
         "FZ-12": 666,
         "FZ-13": 1025,
-        "FZ-14": 729,
+        "FZ-14": 1025,
         "FZ-15": 1025,
     }
     rendered = fz_tool.render(register, fz_tool.validate(register))
-    assert "[#745](https://github.com" in rendered
-    assert "[#736](https://github.com" in rendered
+    assert "[#1025](https://github.com" in rendered
     assert "historical [#546]" in rendered
-    assert "Current execution ownership and issue state live in GitHub" in rendered
+    assert "A pending row's owning issue is open" in rendered
     assert "current V3" not in rendered
 
 
@@ -1400,3 +1402,11 @@ def test_fz10_custody_provenance_is_pinned():
     assert "FZ-01's kill band names per-target decision policies" in rendered
     assert "FZ-10 retains its existing armed physical comparison." in rendered
     assert "FZ-13 and FZ-15 registrations add specified conditional branch tests" in rendered
+
+
+def test_pending_owner_must_be_an_open_issue():
+    register = live_register()
+    fz14 = next(row for row in register["rows"] if row["id"] == "FZ-14")
+    fz14["owning_issue"] = 729
+    with pytest.raises(SystemExit, match="must be one of the open issues"):
+        fz_tool.validate(register)

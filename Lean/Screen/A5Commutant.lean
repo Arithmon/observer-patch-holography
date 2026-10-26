@@ -14,8 +14,8 @@ Issue #568.  The listed icosahedral action partitions ordered port pairs
 into four orbits: diagonal, adjacent, distance-two, and antipodal
 (`pair_transport`, kernel-checked).  Consequently the algebra of
 `ℚ`-linear endomorphisms commuting with every listed rotation is exactly
-the four-dimensional span of the four orbital matrices — identity,
-adjacency, distance-two, antipode (`commutant_decomposition`,
+the four-dimensional span of the four orbital matrices (identity,
+adjacency, distance-two, antipode; `commutant_decomposition`,
 `orbitals_independent`, `orbitals_equivariant`).  The matrix-entry
 invariance used throughout is proven equivalent to commutation with the
 linear action (`equivariant_iff_commutes`), so no postulate hides in the
@@ -86,7 +86,7 @@ theorem pair_transport_bool :
   decide
 
 /-- Pair transport: every ordered pair is carried by a listed rotation to
-its canonical representative — the four orbit classes, kernel-checked. -/
+its canonical representative, giving the four orbit classes, kernel-checked. -/
 theorem pair_transport :
     ∀ i j : Fin 12, ∃ g ∈ P60, g i = 0 ∧ g j = rep i j := by
   intro i j

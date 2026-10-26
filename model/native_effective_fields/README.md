@@ -421,7 +421,7 @@ Every successful trial uses at most **95 source pulses**, **190 proper-code
 load/export events**, **nine pointer resets** and **nine pointer reads**.
 Two native herald repairs precede at most two movement attempts. Discarded
 uniform native warm-up removes exact stationary preparation: **369 attempts**
-give a complete-output half-trace bound below `9.19317e-7`, including the
+give a complete-output half-trace bound of at most `9.19317e-7`, including the
 original binary source-word comparison and its norm amplification. The
 maximum native count is therefore 373. The bound applies before conditioning
 on a rare success and uniformly over untouched references. A finite native

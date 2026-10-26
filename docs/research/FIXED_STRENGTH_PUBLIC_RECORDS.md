@@ -358,7 +358,7 @@ eta <= min(1/(2A), 1/(1024 e C_A), 1/(256 e C_E)).           (15)
 ```
 
 All constants are finite native-library constants, independent of q. This
-is a nonempty interval, not an assumed successful M1 output or a fitted
+is a nonempty interval, not an assumed successful source-read output or a fitted
 threshold. It covers fixed nonzero full-interface Markov errors and fixed
 nonzero local classical faults with sufficiently small corresponding
 strengths. The source and its available controls are the same declared
@@ -463,10 +463,10 @@ series, and the complete export instrument includes all wrong labels rather
 than renormalizing on majority success. No proof here grants a perfect naked
 final bit after an additional noisy observation interval.
 
-The substantive change is that vanishing elementary errors and reliable
-runtime records are no longer required together: one specified apparatus
+The result is that vanishing elementary errors and reliable runtime
+records are not required together: one specified apparatus
 family supplies protected quantum behaviour, faulty decisions and a live
 public archive at fixed subthreshold error strength. The additional expander
-theorem is mathematical input, not a new OPH axiom. Source/CCG capability,
+theorem is mathematical input, not a new OPH premise. Source/CCG capability,
 external scheduling and physical energy calibration retain the boundaries
 stated in the [contract](../../code/m1_expander_archive/CONTRACT.md).

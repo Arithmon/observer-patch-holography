@@ -46,8 +46,8 @@ supplied public receipt. No module constructs a source history, refinement
 transport, physical instrument, SI unit, preferred foliation, global time
 function, modular-time identity, common-atlas physical clock pair, or
 predesignation protocol. Empirical calibration is the imported PR-15 receipt;
-derivation of source-realized clocks and their network coherence is scoped to
-the premise-discharge lane (#739).
+derivation of source-realized clocks and their network coherence is open
+(historical premise-discharge issue #739, closed).
 
 ## Verification
 

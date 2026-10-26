@@ -1,0 +1,85 @@
+% Figure: the twelve-port carrier and the native seam rule.
+% Geometry: exact icosahedron vertices (0,+-1,+-phi) and cyclic permutations, orthographic view.
+\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{scope}
+\coordinate (p0) at (-0.549,0.479);
+\coordinate (p1) at (1.173,1.483);
+\coordinate (p2) at (1.308,-0.683);
+\coordinate (p3) at (0.704,1.609);
+\coordinate (p4) at (0.923,-1.895);
+\coordinate (p5) at (-2.083,-0.016);
+\coordinate (p6) at (-0.704,-1.609);
+\coordinate (p7) at (-0.923,1.895);
+\coordinate (p8) at (2.083,0.016);
+\coordinate (p9) at (0.549,-0.479);
+\coordinate (p10) at (-1.173,-1.483);
+\coordinate (p11) at (-1.308,0.683);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p3)--(p8);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p3)--(p9);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p3)--(p11);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p4)--(p9);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p4)--(p10);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p5)--(p11);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p7)--(p11);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p8)--(p9);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p9)--(p10);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p9)--(p11);
+\draw[ophgrey!40, line width=0.45pt, dash pattern=on 1.5pt off 1.5pt] (p10)--(p11);
+\fill[ophnative!14, opacity=0.55] (p0)--(p1)--(p2)--cycle;
+\fill[ophnative!16, opacity=0.55] (p0)--(p1)--(p7)--cycle;
+\fill[ophnative!12, opacity=0.55] (p0)--(p2)--(p6)--cycle;
+\fill[ophnative!13, opacity=0.55] (p0)--(p5)--(p6)--cycle;
+\fill[ophnative!16, opacity=0.55] (p0)--(p5)--(p7)--cycle;
+\fill[ophnative!5, opacity=0.55] (p1)--(p2)--(p8)--cycle;
+\fill[ophnative!10, opacity=0.55] (p1)--(p3)--(p7)--cycle;
+\fill[ophnative!4, opacity=0.55] (p2)--(p4)--(p6)--cycle;
+\fill[ophnative!4, opacity=0.55] (p2)--(p4)--(p8)--cycle;
+\fill[ophnative!4, opacity=0.55] (p5)--(p6)--(p10)--cycle;
+\draw[black!70, line width=0.65pt, line join=round] (p0)--(p1);
+\draw[black!70, line width=0.65pt, line join=round] (p0)--(p5);
+\draw[black!70, line width=0.65pt, line join=round] (p0)--(p6);
+\draw[black!70, line width=0.65pt, line join=round] (p0)--(p7);
+\draw[black!70, line width=0.65pt, line join=round] (p1)--(p2);
+\draw[black!70, line width=0.65pt, line join=round] (p1)--(p3);
+\draw[black!70, line width=0.65pt, line join=round] (p1)--(p7);
+\draw[black!70, line width=0.65pt, line join=round] (p1)--(p8);
+\draw[black!70, line width=0.65pt, line join=round] (p2)--(p4);
+\draw[black!70, line width=0.65pt, line join=round] (p2)--(p6);
+\draw[black!70, line width=0.65pt, line join=round] (p2)--(p8);
+\draw[black!70, line width=0.65pt, line join=round] (p3)--(p7);
+\draw[black!70, line width=0.65pt, line join=round] (p4)--(p6);
+\draw[black!70, line width=0.65pt, line join=round] (p4)--(p8);
+\draw[black!70, line width=0.65pt, line join=round] (p5)--(p6);
+\draw[black!70, line width=0.65pt, line join=round] (p5)--(p7);
+\draw[black!70, line width=0.65pt, line join=round] (p5)--(p10);
+\draw[black!70, line width=0.65pt, line join=round] (p6)--(p10);
+\draw[ophnative, line width=2.3pt, line cap=round] (p0)--(p2);
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p3) {};
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p4) {};
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p8) {};
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p9) {};
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p10) {};
+\node[circle, draw=ophgrey!50, fill=white, line width=0.4pt, inner sep=0pt, minimum size=2.4mm] at (p11) {};
+\node[circle, draw=ophnative, fill=ophnative, text=white, inner sep=0pt, minimum size=4.3mm, font=\scriptsize\bfseries] (n0) at (p0) {1};
+\node[circle, draw=black!65, fill=white, line width=0.6pt, inner sep=0pt, minimum size=4.3mm, font=\scriptsize] (n1) at (p1) {0};
+\node[circle, draw=black!65, fill=white, line width=0.6pt, inner sep=0pt, minimum size=4.3mm, font=\scriptsize] (n2) at (p2) {0};
+\node[circle, draw=black!65, fill=white, line width=0.6pt, inner sep=0pt, minimum size=4.3mm, font=\scriptsize] (n5) at (p5) {0};
+\node[circle, draw=black!65, fill=white, line width=0.6pt, inner sep=0pt, minimum size=4.3mm, font=\scriptsize] (n6) at (p6) {0};
+\node[circle, draw=ophnative, fill=ophnative, text=white, inner sep=0pt, minimum size=4.3mm, font=\scriptsize\bfseries] (n7) at (p7) {1};
+\node[font=\footnotesize\itshape, text=ophnative, anchor=north east] at ($(n0.south west)+(0.04,0.02)$) {a};
+\node[font=\footnotesize\itshape, text=ophnative, anchor=west] at ($(n2.east)+(0.03,0)$) {b};
+\end{scope}
+\node[oph label, anchor=north] at (0,-2.35) {twelve ports, thirty seams, twenty faces;\\a binary load of total two (filled ports)};
+\node[anchor=west, font=\footnotesize] (rule) at (2.75,1.75) {$d=x_a-x_b,\qquad j=\tfrac12\bigl[d-(2c-1)(|d|\bmod 2)\bigr]$};
+\node[anchor=north west, font=\footnotesize, inner sep=0pt] (tab) at ($(rule.south west)+(0.1,-0.22)$) {%
+\renewcommand{\arraystretch}{1.12}%
+\begin{tabular}{@{}r@{\qquad}r@{\qquad}r@{\qquad}l@{}}
+$d$ & $c=0$ & $c=1$ & effect of the attempt\\\hline
+$2$ & $1$ & $1$ & balance\\
+$1$ & $1$ & $0$ & swap or wait\\
+$0$ & $0$ & $0$ & no move\\
+$-1$ & $0$ & $-1$ & wait or swap\\
+$-2$ & $-1$ & $-1$ & balance
+\end{tabular}};
+\node[anchor=north west, font=\scriptsize, text=ophgrey, align=flush left, text width=6.3cm, inner sep=0pt] at ($(tab.south west)+(0,-0.25)$) {The move $j$ carries $j$ units from $a$ to $b$, and the fair coin $c$ reads no load. At $|d|=2$ the attempt lowers $V=\sum_i x_i^2$; at $|d|=1$ it keeps $V$ fixed, so the native process keeps moving. The seam drawn has $d=1$.};
+\end{tikzpicture}

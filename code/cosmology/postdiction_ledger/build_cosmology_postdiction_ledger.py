@@ -79,6 +79,9 @@ VERDICT_RULE = {
     ),
     "rows_without_comparison_contract": "not_evaluable",
 }
+# The frozen FZ-01 capacity band (claims/frozen_prediction_register.json, FZ-01
+# decision policy); a registered target, rendered beside the display candidates.
+FZ01_CAPACITY_BAND = (3.30836e122, 3.31137e122)
 SIGMA_SIGN_CONVENTION = (
     "theory minus measurement, divided by the quoted one-sigma uncertainty"
 )
@@ -870,15 +873,18 @@ def capacity_rows(
                 citation=DESI_CITATION,
                 public_input_ids=[],
                 corpus_source_ids=[candidate_id, "capacity_lambda_dictionary", "official_desi_dr2_fz13_retrospective"],
-                sigma_distance=sigma,
-                sigma_distance_kind="signed_one_dimensional",
-                verdict=verdict_from_sigma(sigma),
+                sigma_distance=None,
+                sigma_distance_kind="none_not_evaluable",
+                verdict="not_evaluable",
                 discriminates_from_baseline=False,
                 prospective_data="DESI DR3; Euclid (background posterior displays only)",
-                epistemic_note=note,
+                epistemic_note=note
+                + " A target-informed display carries no verdict; the standardized"
+                " distance is display information only.",
                 extras={
                     "percent_residual_in_lambda": 100.0 * (lambda_lp2_candidate - desi_mean) / desi_mean,
                     "percent_residual_in_capacity": 100.0 * (n_candidate - n_desi) / n_desi,
+                    "standardized_distance_display": sigma,
                 },
             )
         )
@@ -1463,11 +1469,27 @@ def section_notes(section: dict[str, Any]) -> list[str]:
         notes.append("")
         for row in section["rows"]:
             extras = row["extras"]
-            notes.append(
+            line = (
                 f"- {row['quantity']} against {row['dataset']}: "
                 f"{extras['percent_residual_in_lambda']:+.2f} percent in the constant, "
-                f"{extras['percent_residual_in_capacity']:+.2f} percent in the capacity coordinate."
+                f"{extras['percent_residual_in_capacity']:+.2f} percent in the capacity coordinate"
             )
+            if "standardized_distance_display" in extras:
+                line += (
+                    f"; standardized display distance {extras['standardized_distance_display']:+.2f}"
+                    " (no verdict)"
+                )
+            notes.append(line + ".")
+        low, high = FZ01_CAPACITY_BAND
+        notes.append("")
+        notes.append(
+            f"The frozen FZ-01 capacity band is N in [{low:.5e}, {high:.5e}], the"
+            " registered target; the display candidates above are not that target."
+            " Its registered policy scores ln N against the band edges on the frozen"
+            " Planck 2018 posterior and issues no verdict until sigma_lnN <= 0.01, so"
+            " no FZ-01 verdict exists at today's precision"
+            " ([ladder](../../../docs/FROZEN_PREDICTION_LADDER.md#fz-01))."
+        )
     elif section["id"] == "dark_sector":
         notes.append(
             "Dimensionless ratios with a_dS = c^2 sqrt(Lambda/3) at the Planck-central "

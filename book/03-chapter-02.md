@@ -4,7 +4,7 @@ Alfred North Whitehead and Bertrand Russell spent ten years trying to build arit
 
 The result, *Principia Mathematica*, ran to three volumes. The proposition that one plus one equals two turns up in volume two, at proposition 110.643, after several hundred pages of preparation. Underneath it the authors added a line of commentary, which reads in full: "The above proposition is occasionally useful."
 
-Russell wrote later that his intellect never quite recovered from the effort, and that he had been definitely less capable of difficult abstraction ever since. He was thirty-eight when they started. Cambridge University Press estimated the work would lose money and asked the authors to contribute fifty pounds each toward publishing it, which they did. The book brought them no income.
+Russell wrote later that his intellect never quite recovered from the effort, and that he had been definitely less capable of difficult abstraction ever since. He was twenty-eight when they started. Cambridge University Press estimated the work would lose money and asked the authors to contribute fifty pounds each toward publishing it, which they did. The book brought them no income.
 
 It is easy to read that as an anecdote about eccentric mathematicians and miss what the project was. Whitehead and Russell were not being pedantic about two. They were testing whether a body of knowledge could stand on itself: whether you could put down marks and rules with no borrowed meaning, turn the handle, and have arithmetic come out. If it worked, then nothing about numbers had to be assumed, because everything about numbers would be a consequence. Ten years, three volumes, and fifty pounds each was what it cost to find out for arithmetic alone.
 
@@ -140,7 +140,7 @@ This cuts both ways and the second way is the uncomfortable one. If adding a req
 
 ## Three requirements
 
-Everything here comes out of three requirements, taken one at a time over the next three chapters.
+Everything here comes out of three requirements, taken up in the chapters that follow. In the theorem library they are the premises the theorems carry; the loop that holds the whole account together comes in chapter thirty-seven.
 
 The first says that whatever the world is made of, each piece of it sees only a part and keeps a record of what it saw. The second says that where two pieces overlap, their records have to agree, and that any relabeling of a piece has to be a move the system can carry out on itself, with no hand reaching in. The third says that beyond what those two force, nothing is assumed: whatever is not pinned down stays as unconstrained as it is possible to be.
 

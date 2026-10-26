@@ -108,7 +108,7 @@ The executable checks every port pair against its native shortest-path distance:
 
 | Native hop distance | Unordered pairs | `Sigma_vw` | `lim Var(K_v-K_w)/n` |
 | --- | ---: | ---: | ---: |
-| 0, same port | — | `357011/1309500` | `0` |
+| 0, same port | n/a | `357011/1309500` | `0` |
 | 1, a repair seam | 30 | `11281/261900` | `50101/109125` |
 | 2 | 30 | `-98989/1309500` | `608/873` |
 | 3, antipodal | 6 | `-144091/1309500` | `287/375` |

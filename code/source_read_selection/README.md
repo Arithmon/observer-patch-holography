@@ -187,7 +187,8 @@ clauses from supplied candidate and interface inputs.
 
 `CoreAxioms.lean` supplies typed shadows; inhabiting them would not discharge
 the full response, accepted-domain and constraint-completeness clauses. A
-two-word scalar schedule example is likewise not a full-axiom countermodel.
+two-word scalar schedule example is likewise not a countermodel satisfying
+all of A1--A3.
 The support theorem does not derive complete primitive or temporal grammars
 from A1--A3 or insert the desired metric read menu as an A3 constraint.
 

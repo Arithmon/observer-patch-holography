@@ -19,7 +19,7 @@ replaced by the production observer's adaptive schedule.
 For `V` ports, `M` seams and fixed total `k`, write `d=binomial(V,k)`.
 The source's matrix-unit difference blocks establish self-adjoint positive
 channels. Their diagonal block is symmetric exclusion. The theorem of
-[Caputo, Liggett and Richthammer, §4.1.1, equation (4.1)](https://www.stat.berkeley.edu/~aldous/206-RWG/RWGpapers/caputo.pdf)
+[Caputo, Liggett and Richthammer, J. Amer. Math. Soc. 23 (2010) 831-851, §4.1.1, equation (4.1)](https://arxiv.org/abs/0906.1238)
 identifies its gap with the underlying graph's random-walk gap. The existing
 OPH quantum proof bounds every coherence block by the same gap. Consequently,
 

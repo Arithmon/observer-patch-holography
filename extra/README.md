@@ -10,8 +10,8 @@ local operational time. Mathematical, physical and psychophysical conclusions
 retain their separate premises. An operational observer need not be conscious.
 
 - [Observation-Determined Normal Forms](observable_normal_forms.pdf) ([source](observable_normal_forms.tex), [bibliography](observable_normal_forms.bib)) develops stability, obstructions, and refinement for constraint and rewrite systems.
-- [Finite Quantum Event Algebras](machine_checked_finite_event_algebras.pdf) ([source](machine_checked_finite_event_algebras.tex), [bibliography](machine_checked_finite_event_algebras.bib)) develops the finite event surface.
-- [Explaining the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics](yang_mills_gap_clay_problem.pdf) ([source](yang_mills_gap_clay_problem.tex)) develops the fixed-cutoff gap and continuum-transfer program.
+- [Verified Projection-Event Calculus in Lean 4](machine_checked_finite_event_algebras.pdf) ([source](machine_checked_finite_event_algebras.tex), [bibliography](machine_checked_finite_event_algebras.bib)) develops the finite event surface.
+- [A Conditional Identification of the Yang–Mills Gap with a Finite Repair Gap](yang_mills_gap_clay_problem.pdf) ([source](yang_mills_gap_clay_problem.tex)) proves a certified relaxation gap for a finite collar-repair generator under a Dobrushin influence bound and tests the transfer receipt that would identify it with the Yang–Mills gap: on \(\mathbb Z_2\) lattice gauge theory the receipt holds in the free limit and fails at every tested interacting coupling. The continuum premises the Clay problem requires stay conditional.
 
 ## Quantitative And Physical Branches
 

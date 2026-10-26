@@ -47,4 +47,4 @@ A simplification must prove the resulting operational limit and exhibit
 the removed requirements, rather than rename the full conclusion as one
 axiom. Resource conclusions count native work separately from distinguished
 record volume. Motivation from information processing is not a derivation
-from the three core axioms or experimental confirmation.
+from the theorem-library premises A1--A3 or experimental confirmation.

@@ -37,44 +37,39 @@ intemporelle et les horloges qu’elle contient.
 
 ## Points forts
 
-- **Un observateur qui fonctionne.** Le plus petit observateur a douze ports
-  et deux événements. Il écrit un registre à chaque événement, le conserve et
-  ne laisse que ce registre choisir la réparation suivante, et le registre
-  change ce qui est mesuré : l’occupation finale passe de 1/6 à 35/264. Un
-  seul processus quantique fini réunit le flux électrique, la matière chargée
-  et un champ scalaire sur un même registre, et un calcul exact certifie que
-  sa rétroaction enregistrée modifie la réponse mesurée. Son protocole
-  continu à mesure lisse exécute quatre lectures du même état perturbé,
-  compile deux lois d’enregistrement quantiques de la réparation native et protège un qubit codé
-  par une récupération commandée par les registres, sous des services déclarés.
-  Deux observateurs dont les régions se recouvrent lisent leurs champs et
-  leurs horloges dans une même histoire continue et s’accordent sur une même
-  loi complète. Des supports joints forment des écrans allant jusqu’à
-  245 760 ports, et sur un écran qui se raffine une seule histoire de
-  réparation définit un champ continu aux fluctuations gaussiennes, dont les
-  ondes se propagent à vitesse finie. Un recensement par les registres natifs
-  donne aussi une identité de stationnarité de l’entropie comptée pendant
-  des réparations adaptatives, avec le coût entropique des tirages et les
-  erreurs d’expiration explicités.
-- **La théorie relativiste des champs comme description effective des
-  observateurs.** Sur un produit radial déclaré au-dessus de cet écran,
-  l’action d’onde native a une densité de signature lorentzienne, et pour tout
-  ensemble fini de lectures d’horloge, de champ et de réponse des
-  observateurs, une seule théorie des champs lorentzienne lisse et statique en
-  dimension 1+3 les reproduit toutes, à toute tolérance choisie. Le
+- **Un observateur qui fonctionne.** Un observateur à douze ports conserve
+  ses registres et s’en sert pour choisir la réparation suivante, ce qui fait
+  passer l’occupation finale de 1/6 à 35/264. Les réparations natives
+  fournissent une préparation d’état bornée et la lecture du courant ; des
+  contrôles compilés permettent à des observateurs qui se recouvrent de lire
+  une même référence et son horloge modulaire active, en conservant les
+  perturbations et les échecs. Une tomographie d’état complète rend cette
+  référence identifiable, et un calendrier de réparation déclaré dérive son
+  maximum d’entropie à deux moments d’occupation conservés. Les registres de
+  recensement natifs donnent aussi une identité de stationnarité de l’entropie
+  comptée au fil de réparations adaptatives, avec le coût des tirages et les
+  erreurs d’expiration explicités. Un processus quantique fini distinct réunit
+  le flux électrique, la matière chargée et un champ scalaire avec une
+  rétroaction enregistrée. Les écrans qui se raffinent admettent des limites
+  de champ gaussiennes et des ondes de vitesse finie.
+- **Un champ scalaire lorentzien comme description effective des
+  observateurs.** Sur un produit radial déclaré au-dessus d’un écran qui se
+  raffine, une seule action détermine les corrélations du champ, sa réponse et
+  une horloge modulaire active. Pour tout menu fini de mesures et toute
+  tolérance positive, une seule théorie lisse et statique d’un champ scalaire
+  lorentzien en dimension (1+3) approche ces lectures conjointes. Une
+  projection finie en interaction a des lectures quantiques exécutées à la
+  source et une limite d’occupation contrôlée. La structure radiale, le
+  couplage d’interaction, la préparation et les unités physiques restent des
+  entrées ; le rayon dérivé des registres de courant natifs ne sélectionne pas
+  la direction radiale du champ. Le
   [bilan intégré](model/CONSTRUCTION.md#integrated-effective-description)
-  en énonce les limites : la métrique native exacte n’est pas lisse dans son
-  atlas actuel, et la structure radiale est fournie. Les registres de courant
-  du support dérivent pourtant un rayon : leur compteur tridimensionnel suit
-  la loi de diffusion radiale standard depuis tout état initial. Les
-  histoires de mesure complètes ne distinguent pas les structures radiales,
-  si bien que relier ce rayon à la direction radiale du champ et à la
-  distance physique reste ouvert.
+  énonce la portée de la construction.
 - **Matière interne et interactions permises.** Un relèvement de spin déclaré
   de la réponse finie donne les charges internes d’une génération du Modèle
   standard. Un doublet scalaire admet les trois canaux d’interaction des
-  fermions chargés, avec 648 identités exactes de famille, de courant et de
-  composante. Des opérateurs spatiaux communs relient les constructions
+  fermions chargés, vérifiés exactement pour des matrices de famille
+  arbitraires. Des opérateurs spatiaux communs relient les constructions
   conditionnelles de champs scalaires et fermioniques. Les matrices de famille,
   la phase de Higgs, l’échelle de masse et l’identification physique des
   particules sont des entrées.
@@ -85,25 +80,28 @@ intemporelle et les horloges qu’elle contient.
   La réparation native transporte séparément une charge collective de
   corrélation, avec des registres de détection locale compatibles sur des
   régions qui se recouvrent. Son identification physique reste ouverte.
-- **La physique standard à partir d’un accord fini.** Des théorèmes finis
-  mènent des lectures de l’observateur à des structures familières : des
-  registres publics indépendants de l’ordre des réparations ; la règle de
-  Born, qui fixe les probabilités quantiques, et la borne de Tsirelson sur les
-  registres achevés ; un support tridimensionnel dans sa réponse lente ; l’algèbre de
-  Lie de jauge du Modèle standard et une représentation de matière sans anomalies
-  sous ses prémisses ; un ordre causal de dimension (1+3) avec une lecture
-  conditionnelle du temps propre par comptage ; et l’équation d’Einstein sous
-  des prémisses indépendantes d’entropie, de bilan nul, de contrainte et de limite continue.
+- **La physique standard à partir d’un accord fini.** Sous des prémisses
+  énoncées, des théorèmes finis donnent à la spécification des structures
+  familières : des registres publics indépendants de l’ordre des réparations ;
+  la règle de Born et la borne de Tsirelson sur les registres achevés ; un
+  support tridimensionnel dans sa réponse lente ; l’algèbre de Lie de jauge du
+  Modèle standard et une représentation de matière sans anomalies
+  conditionnelle ; un ordre causal de dimension (1+3) avec un temps propre lu
+  dans les comptages ; et l’équation d’Einstein à partir d’un bilan nul.
 - **Des mathématiques vérifiables.** La [bibliothèque Lean](Lean/) contient
   plus de 12700 théorèmes et lemmes publics sans preuve admise, et chaque reçu
   de calcul conservé est rejoué en intégration continue.
 - **Des tests fixés à l’avance.** Les prédictions et leurs règles de rejet
   entrent dans l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
-  avant toute donnée de comparaison, avec des horodatages attestés sur la
-  chaîne de blocs Bitcoin ; la prédiction de dispersion pour l’orbite des ports
+  avant les données de comparaison admissibles, avec des preuves OpenTimestamps,
+  pour la plupart ancrées dans Bitcoin ; la prédiction de dispersion pour l’orbite des ports
   primitifs en fait partie. Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
   et le [programme de falsification](docs/OPH_FALSIFICATION_PROGRAM.md)
   séparent les comparaisons avec des mesures des tests des mathématiques.
+  L’[audit inter-échelles](docs/EMPIRICAL_STATUS.md) teste des
+  correspondances numériques partagées et consigne les identifications
+  physiques nécessaires avant que des comparaisons séparées puissent compter
+  comme éléments de preuve pour une même construction.
 
 **L’accord avec l’ensemble des statistiques de mesure observées n’est pas
 établi.** Les théorèmes valent sous des prémisses énoncées, et l’observateur
@@ -119,70 +117,12 @@ Depuis la racine du dépôt, avec Python 3.11 ou plus récent :
 python3 -m model.observer run --trials 10000 --seed 42
 ```
 
-L’exécution affiche une ligne : le risque de Brier de trois prévisions du
-registre suivant et l’empreinte du résultat.
-
-```text
-{"brier": {"action_known_prior": 0.0728, "native_record": 0.0563, "within_action_shuffle": 0.0884}, "reference_matches": 10000, ...}
-```
-
-Plus la valeur est basse, mieux c’est. La prévision qui utilise le registre
-conservé bat celle qui ne connaît que l’action choisie et celle dont les
-registres sont mélangés au sein d’une même action ; les valeurs exactes sont
-395/7392, 140/2013 et 12875/150304. Le [répertoire du modèle](model/README.md)
-contient l’implémentation, ses tests et ses résultats conservés. Ses
-expériences conjointes comprennent l’[observateur cohérent sur écran](model/coherent_screen_observer/README.md),
-qui fait traverser à un qubit logique et à une référence intacte des tics
-d’horloge natifs et une rétroaction commandée par les registres sur des
-écrans de 15 360 et 245 760 ports, et le
-[processus commun en interaction](model/common_source/README.md), dans lequel
-le flux électrique quantique, des fermions chargés et un champ scalaire
-partagent un même registre fini avec des instruments complets, des registres
-conservés et une rétroaction native ; l’action du champ et la préparation de
-ce processus sont des entrées fournies. Le
-[guide des lois de réparation](model/CANDIDATES.md) montre quelles parties de
-la loi de réparation sont imposées et lesquelles restent libres : la règle
-classique découle de quatre exigences, ses lois d’enregistrement quantiques
-forment une seule famille à cinq multiplicateurs de cohérence, une seule
-expérience d’interférence lit la cohérence qui sépare la loi exécutée C de la
-loi de comparaison E, et neuf mesures compilées identifient la table entière. Le
-[paquet de prédictions](model/predictions/README.md) fixe cette expérience et
-sa règle de rejet par comptage avant tout comptage indépendant, et le
-[guide de construction](model/CONSTRUCTION.md) énonce les critères
-d’acceptation et les connexions qui restent à construire.
-
-Un seul support à douze ports relie les observations spatiales et
-d’horloge : les registres de courant retrouvent la géométrie locale, et des
-lois exactes de corrélation temporelle reconstruisent l’espace de Hilbert
-cyclique d’un détecteur et ses modes de transfert visibles. La réparation fixe
-une action de fluctuation du courant et une loi de probabilité reliant les
-passages incidents aux tics de mouvement. Des exécutions conservées testent
-cette conversion contre une horloge hôte. Sur des écrans sources plus grands,
-les prédictions de champ et de rétroaction valent aussi à occupation
-conservée fixe, sans occupations de Bernoulli préparées indépendamment. Deux
-observateurs qui partagent un port d’un même support lisent leurs champs,
-leurs horloges locales et leur rétroaction dans une même histoire continue,
-et l’exécution native directe comme une description effective donnent la
-même probabilité à chaque registre conjoint ; une version construite à partir
-d’impulsions sources compilées reproduit cette histoire sur les 512 adresses
-de code. Sur les écrans sphériques qui se raffinent, une seule histoire de
-réparation donne un [opérateur de champ continu](model/physical_space_time/OCCUPATION_FIELD.md)
-dont les champs gaussiens, la décroissance et les ondes vivent sur l’écran
-bidimensionnel lui-même. Le [bilan de récupération](model/OBSERVER_RELATIVE_RECOVERY.md)
-sépare ces résultats finis d’un espace-temps relativiste étendu et d’une
-identification de laboratoire calibrée. Une
-[relecture de données publiques de Bell](model/predictions/BELL_RECORDS.md)
-teste la limite de l’interprétation de la branche diagonale comme modèle
-complet de réponse locale ; elle ne teste pas la construction quantique
-complète. L’[audit des données publiques](docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md)
-compare l’inclinaison scalaire conditionnelle aux chaînes postérieures d’ACT DR6
-et à une tranche de vraisemblance ACT, et teste un rattachement direct des comptages d’horloge natifs aux rapports
-publiés d’horloges optiques.
-
-Le [bilan empirique](docs/EMPIRICAL_STATUS.md) distingue les comparaisons
-avec les mesures de la sélection de la règle de réparation native. La réparation
-locale de l’histoire reproduit les lectures de l’appareil oscillateur fourni ;
-les données conservées ne déterminent pas la loi d’enregistrement native.
+Cette commande exécute l’expérience minimale d’enregistrement et de
+rétroaction et affiche les scores des prévisions et l’empreinte du résultat.
+Le [guide du modèle](model/README.md) couvre les observateurs plus riches, les
+horloges, les champs et les comparaisons aux données ; le
+[guide de construction](model/CONSTRUCTION.md) énonce la portée vérifiée et
+les entrées restantes.
 
 ## Fondements mathématiques
 
@@ -201,8 +141,8 @@ les données conservées ne déterminent pas la loi d’enregistrement native.
   géométrie euclidienne, que retrouvent les registres de courant d’un observateur.
   [Construction du support](code/a5_closure/README.md).
 - **La symétrie de jauge.** Sous des prémisses énoncées de réponse réversible
-  complète et de transport entre observateurs, la construction impose
-  l’algèbre de Lie de jauge du Modèle standard, et une représentation de
+  complète et de transport entre observateurs, l’algèbre de réponse à douze
+  ports a le type de Lie de jauge du Modèle standard, et une représentation de
   matière spécifiée donne une génération sans anomalies.
   [Dérivation de jauge](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
 - **La thermodynamique.** Une seule construction finie de réparation donne les
@@ -216,19 +156,19 @@ les données conservées ne déterminent pas la loi d’enregistrement native.
   [Capacité des registres](code/capacity_readback/README.md).
 - **Le candidat de couplage par paires intriquées.**
   [Alex Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf)
-  donne un candidat spectral fini d’inverse `137.035999189566`. La
-  [reconstruction OPH](model/observer_particles/README.md) lui attribue cette
-  construction et conserve les résultats complémentaires de mesure et les
-  contrôles de normalisation. Son identification avec le couplage
+  dérive une expression spectrale finie d’inverse `137.035999189566`. La
+  [reconstruction OPH indépendante](model/observer_particles/README.md) lui
+  attribue cette construction et teste ses hypothèses de résultats complets et
+  de normalisation. Son identification avec le couplage
   électromagnétique physique et son rattachement à l’équation du grain d’écran
   sont conditionnels.
 - **La matière et les champs.** Une action fournie de scalaire chargé et de
   Maxwell, avec sa géométrie et sa quantification, donne un hamiltonien en
   interaction après réduction de jauge, et un raffinement scalaire contrôlé
   relie les lectures classiques d’un détecteur à une équation de champ non
-  linéaire. Le dictionnaire métrique commun ne fournit pas le bilan
-  gravitationnel : le produit radial statique testé échoue au contrôle de
-  contrainte relative et nécessite une réponse géométrique.
+  linéaire. Un dictionnaire métrique commun est construit ; le produit radial
+  statique testé échoue à son test gravitationnel de contrainte relative et
+  nécessite une réponse géométrique.
   [Continuum de matière](paper/observers_are_all_you_need.pdf).
 
 Ce sont des résultats mathématiques conditionnels. Faire tenir leurs prémisses
@@ -236,7 +176,6 @@ pour les observations d’un même modèle commun est le problème central de la
 construction. La [carte des prémisses](model/PREMISES.md) indique quelles
 prémisses la spécification exécutable fournit et lesquelles elle prend comme
 entrées.
-
 
 ## Articles
 

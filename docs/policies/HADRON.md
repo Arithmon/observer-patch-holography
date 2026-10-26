@@ -9,10 +9,12 @@ The source chain fixes everything on its side of the frontier: each declared
 P map has an interval-certified unique fixed point on its stated domain, the
 charged-lepton transport term is a closed one-loop kernel, and the gauge-width
 map lands 2.5×10⁻⁶ relative from the measured α⁻¹ with the hadronic transport
-term open. That open term is a frontier of the entire field, a property of
-the observable: closing the pixel maps documented by historical issue #545
-and owned by #736 asks for 4×10⁻⁹ relative precision on the
-hadronic moment, beyond every method on Earth. The best data-driven
+term open. Closing the pixel maps documented by historical issue #545
+(closed) at the precision of the measured coupling would ask for 4×10⁻⁹
+relative precision on the hadronic moment, beyond every method on Earth.
+That precision is not the present bottleneck: inserting the measured
+hadronic payload misses the measured coupling by 0.48 percent
+(see Current Fine-Structure Values). The best data-driven
 dispersive determinations carry relative uncertainties near 4×10⁻³, the
 leading lattice programs reach a comparable order after campaigns at the 10⁷
 core-hour scale, the region below 2 GeV is nonperturbative, and a source-only
@@ -21,12 +23,15 @@ Existing grid work is exploratory.
 
 ## Closure-Program Note
 
-The hadronic lane is a primary input to the closure program. Historical
+The hadronic lane was a primary input to the retired P-closure program.
+Historical
 [#545](https://github.com/FloatingPragma/observer-patch-holography/issues/545)
-records the pixel contract; current quantitative integration is owned by
-[#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736),
-and source-side nonperturbative production by
-[#744](https://github.com/FloatingPragma/observer-patch-holography/issues/744). A
+records the pixel contract; quantitative integration
+([#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736))
+and source-side nonperturbative production
+([#744](https://github.com/FloatingPragma/observer-patch-holography/issues/744))
+are historical issues, both closed; the physical attachment is part of
+[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026). A
 genuinely target-blind Ward-projected transport computation under a valid
 detached contract is the object that could close or move the source-chain
 and gauge-width pixel maps. The
@@ -114,7 +119,7 @@ alpha(0)    = 0.007297352564331425030245795264691683...
 P           = 1.630968209403959324879279847782648941...
 ```
 
-At the public endpoint pixel, the source audit records
+At the CODATA-calibrated public endpoint pixel `P_C`, the source audit records
 
 ```text
 a0(P_C)               = 128.307965473286248209961108741756716187...
@@ -123,9 +128,25 @@ Delta_required(P_C)   = 8.728033703713751790038891258243283813...
 Delta_source_residual = 0.041465861005223389053448715357314044...
 ```
 
-The empirical $e^+e^-\to\mathrm{hadrons}$ closure should compute that
-transport gap as a dispersion integral, with the uncertainty and compilation
-choice shown in the final row.
+This residual is 302.6 ppm of the measured inverse coupling at `P_C`; the
+source fixed point itself lies at `136.994835177`, 300.4 ppm low. The two
+figures describe the same gap at two evaluation points.
+
+The empirical $e^+e^-\to\mathrm{hadrons}$ closure has been executed with the
+pinned KNT19 payload `Delta_alpha_had^(5)(M_Z) = 0.027609 ± 0.000112`
+([endpoint artifact](../../code/P_derivation/runtime/empirical_thomson_endpoint_current.json)).
+It gives
+
+```text
+alpha^-1(0) = 136.3827548   on [136.3670, 136.3985]
+```
+
+0.48 percent below the measured value, whose interval it excludes. The
+payload that would reach the measured value is `0.032244`, outside the
+measured interval. With the payload fixed, the source anchor `a0` would have
+to rise by `0.635` inverse-alpha units; the
+[scheme bridge note](../../code/P_derivation/EMPIRICAL_HADRON_SCHEME_BRIDGE.md)
+records this as the open same-scheme electroweak bridge.
 
 ## Data Sources
 
@@ -256,8 +277,9 @@ The public claim is not:
 OPH derives the full hadronic spectral measure without QCD computation.
 ```
 
-The empirical closure can produce final display values. It does not establish
-an arbitrary-precision source-only derivation.
+The executed empirical closure is the endpoint row above; it misses the
+measured value. It does not establish an arbitrary-precision source-only
+derivation.
 
 ## Learning-Material Summary
 

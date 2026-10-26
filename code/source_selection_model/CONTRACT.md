@@ -52,7 +52,7 @@ For the negative construction, the theorem must identify the absent
 record-to-seam channel and demand-selection requirement. It must not claim
 that M1 is impossible on every allowed source or that a positive physical
 M1 derivation from A1--A3 has been completed. RG is proposed, not added to the
-three core axioms, not proved minimal or uniquely necessary, and not verified
+theorem-library premises A1--A3, not proved minimal or uniquely necessary, and not verified
 for the registered simulator. Its primitive reference execution is labelled
 as such. It is not acceptable to present native realization as already
 established or to hide another operational premise outside RG. The previous

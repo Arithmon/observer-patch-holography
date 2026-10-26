@@ -288,7 +288,7 @@ all successful-event branches; these are not postselected success scores.
 Both candidates have the same completed clock law, so the field measurement
 adds information absent from the clocks alone.
 
-These are conditional model predictions. The declared support, preparation,
+These are exact laws of the declared model. The declared support, preparation,
 schedule, coherent apparatus and detector need an experimental correspondence
 before comparing them with laboratory data. No public dataset is identified
 with this protocol, and no empirical confirmation is asserted. Floating runtime

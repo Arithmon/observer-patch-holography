@@ -208,8 +208,8 @@ def test_receipt_contract_and_expected_verdicts() -> None:
         "w0wa_fixed_capacity_desi_dr2_bao_cmb_union3": "exceeds_three_sigma_diagnostic",
         "w0wa_fixed_capacity_desi_dr2_bao_cmb_desy5": "exceeds_three_sigma_diagnostic",
         "lambda_capacity_candidate_a_planck2018_central": "not_evaluable",
-        "lambda_lp2_capacity_candidate_a_desi_dr2_display": "tension",
-        "lambda_lp2_capacity_candidate_b_desi_dr2_display": "tension",
+        "lambda_lp2_capacity_candidate_a_desi_dr2_display": "not_evaluable",
+        "lambda_lp2_capacity_candidate_b_desi_dr2_display": "not_evaluable",
         "a0_sparc_full_rar_upsilon_disk_0p5": "not_evaluable",
         "btfr_exponent_four_sparc_ols": "tension",
         "ringdown_integer_k_comb_fz14": "not_evaluable",
@@ -217,6 +217,10 @@ def test_receipt_contract_and_expected_verdicts() -> None:
     }
     for row_id, verdict in expected.items():
         assert table[row_id]["verdict"] == verdict, row_id
+    displays = [row for row in table.values() if row["class"] == "closure_candidate_display"]
+    assert displays and all(
+        row["verdict"] == "not_evaluable" and row["sigma_distance"] is None for row in displays
+    )
     discriminating = {row_id for row_id, row in table.items() if row["discriminates_from_baseline"]}
     assert all(
         row_id.startswith(("ns_", "running_zero_", "tensor_zero_", "w0wa_")) for row_id in discriminating

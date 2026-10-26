@@ -9,7 +9,8 @@ The [five-ledger map](../claims/README.md#the-five-ledgers) shows which of
 these files are ledger sources and which are rendered views.
 
 - [`premise_register.json`](premise_register.json) is the premises ledger
-  source. Its rows are the V3 premises; its `model_supply` section connects the
+  source. Its rows are the canonical premises, each with a discharge record for the
+  current executable implementation; its `model_supply` section connects the
   common repair candidate to theorem premises and bounded completion
   conditions, its `sm_coverage` section classifies each Standard Model term by
   what OPH supplies, and its `gravity_rungs` section types each gravity
@@ -25,8 +26,8 @@ these files are ledger sources and which are rendered views.
   programme is in
   [Model construction](../model/CONSTRUCTION.md#work-ownership-and-claim-accounting).
 - [`observation_ledger.json`](observation_ledger.json) is the observation
-  ledger source of the predictions-and-tests ledger. Its rows are the V3
-  observation targets; its `instruments` section is the emergent-instrument
+  ledger source of the predictions-and-tests ledger. Its rows are the
+  observation targets, grouped by historical V3 lane; its `instruments` section is the emergent-instrument
   register and its `constants` section classifies the source and comparison
   ancestry of the constants. `python3 tools/build_observation_ledger.py`
   renders `docs/registers/OBSERVATION_LEDGER_V3.md` with both as closing

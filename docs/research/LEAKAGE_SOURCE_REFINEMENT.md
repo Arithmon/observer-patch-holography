@@ -300,7 +300,7 @@ k(q)=max(1,ceil(log2(16 log(2q)/log(1/theta)))).             (11)
 Then theta^(2^k)<=(2q)^-16. Equations (9)--(10) follow again. No elementary
 fault strength tends to zero in this regime: the growing redundancy supplies
 the improvement. The threshold is an explicit hypothesis on a given noisy
-device family, not a fitted value or a new axiom of OPH. Fixed bounded physical
+device family, not a fitted value or a new premise of OPH. Fixed bounded physical
 rates automatically enter the first regime on a cofinal tail.
 
 This result also permits a fixed small calibration contribution together

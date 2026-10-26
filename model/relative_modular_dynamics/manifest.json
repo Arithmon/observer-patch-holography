@@ -1,7 +1,7 @@
 {
   "description": "Native continuing event records, Palm modular reference, invariant protocol algebra and operational covariance tests.",
   "files": {
-    "README.md": "2276e1ae20cbe9fe817c10e032638367ed31c2ca4948f6128ba80943c6a60a5b",
+    "README.md": "70c161623d0d3e91fde29be57a32f8a737154b1c3ecf2190cfbb6f2a308fd16b",
     "__init__.py": "f201a67b9b7787025793d212236054dca7c9b963153073afedc3b8f53c056673",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "construction.py": "edf902afe4a3e06db6210e066b6e143980a4303b9fdb9607973b35db336967fc",

@@ -436,8 +436,53 @@ def inventory(data: dict, premise_register: dict, claim_registry: dict,
         "mapped_claims": len({c for g in groups for c in g.get("claims", [])}),
         "scope_counts": dict(sorted(Counter(g["scope"] for g in groups).items())),
         "contract_rows": claims,
+        "premise_rows": premise_register["rows"],
         "lean_inventory": lean_inventory(ROOT if root is None else root),
     }
+
+
+DISCHARGE_ORDER = (
+    ("derived_from_native_records", "derived from native records"),
+    ("constructed_on_declared_inputs", "constructed on declared inputs"),
+    ("obstructed", "obstructed"),
+    ("declared", "declared input"),
+    ("not_addressed", "not addressed"),
+)
+
+
+def render_discharge(counts: dict) -> list[str]:
+    """Render what the current executable implementation does with each premise."""
+    # The premise-register builder requires a discharge record on every live row;
+    # a fixture row without one renders as not addressed.
+    default = {"status": "not_addressed", "evidence": [], "note": ""}
+    rows = [dict(row, discharge=row.get("discharge", default)) for row in counts["premise_rows"]]
+    labels = dict(DISCHARGE_ORDER)
+    lines = [
+        "## What the current implementation does with each premise", "",
+        "The executable construction in this directory is the current implementation of the",
+        "specification's dynamical details; the twelve-port carrier is fixed, the details are not.",
+        "For each canonical premise the register records whether this implementation derives it",
+        "from native records, constructs an instance on declared inputs, proves an obstruction,",
+        "takes it as a declared input, or does not address it. The status certifies no physical",
+        "premise, and a theorem-library result holds on its premises whatever the status.", "",
+        "| Status | Premises |", "| --- | ---: |",
+    ]
+    for status, label in DISCHARGE_ORDER:
+        lines.append(f"| {label} | {sum(1 for r in rows if r['discharge']['status'] == status)} |")
+    lines += ["", "| Premise | Current implementation | Basis | Evidence |", "| --- | --- | --- | --- |"]
+    for row in rows:
+        if row["discharge"]["status"] == "not_addressed":
+            continue
+        evidence = ", ".join(
+            f"[{Path(path).name}](../{quote(path, safe='/#')})" for path in row["discharge"]["evidence"]
+        )
+        lines.append(
+            f"| {row['id']} {_cell(row['name'])} | {labels[row['discharge']['status']]} |"
+            f" {_cell(row['discharge']['note'])} | {evidence} |"
+        )
+    not_addressed = [row["id"] for row in rows if row["discharge"]["status"] == "not_addressed"]
+    lines += ["", "Not addressed by the current implementation: " + ", ".join(not_addressed) + ".", ""]
+    return lines
 
 
 def render_contracts(data: dict, counts: dict) -> list[str]:
@@ -528,7 +573,8 @@ def render(data: dict, counts: dict) -> str:
         "remain authoritative. Physical attachments excluded by a theorem are not hidden premises",
         "of that theorem. Group statuses describe the remaining connection, not whether a theorem",
         "is proved; the constructed results are recorded separately below. This schema contains",
-        "no proof-discharge edges.", "",
+        "no proof-discharge edges; the implementation status of each premise is the separate",
+        "[discharge table](#what-the-current-implementation-does-with-each-premise).", "",
         "## Inventory and limits", "",
         "Counts below come from the [canonical premise register](../tracking/premise_register.json)",
         "and [claim registry](../claims/claim_registry.yaml). Ordinary assumption names are",
@@ -563,6 +609,7 @@ def render(data: dict, counts: dict) -> str:
         lines.append("| None present | 0 | 0 | 0 | 0 |")
     lines += ["", "Existing claim classifications: " + "; ".join(
         f"`{key}`: {value}" for key, value in counts["classifications"].items()) + ".", "",
+        *render_discharge(counts),
         "## Remaining-input and dependency rule", "",
         "For a selected scope G, let I(g) denote each group's required inputs on its",
         "declared family, state, observable algebra, clock, regime and quantitative error domain.",

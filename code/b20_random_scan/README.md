@@ -1,4 +1,6 @@
-# B20 random-scan common-reference preflight (issue #725)
+# Random-scan common-reference preflight
+
+Historical labels: B20, issue #725 (closed).
 
 Exact algebraic feasibility preflight mandated as the issue's first
 step: before any fresh simulation, decide on retained source data

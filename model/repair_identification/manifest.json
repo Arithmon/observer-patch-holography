@@ -1,7 +1,7 @@
 {
   "description": "Complete current-instrument tomography, source execution, canonical continuation and reference-uniform evidence budgets.",
   "files": {
-    "README.md": "5f03dd135219756ca6376fac567f0417eb2a26d72b0bbe68e9599cd1e1b256fe",
+    "README.md": "707868bb5ab0054671ee679ab8bf0c3c0f93469213c813b3d93ae0cc432fe3cd",
     "__init__.py": "8f437d05b775590a935367956f706e4e1d9bdcdcc224f8790a2a7ff6db1fafa8",
     "__main__.py": "fc9c7ef9688588ca326d80a61df1fad96626d4e1b3cb0a5666474878f981c5e9",
     "bridge.py": "bd6af1fd2039c29209d600e6154ebfae102ae6bf269194a64c8b5a99e44f7afc",

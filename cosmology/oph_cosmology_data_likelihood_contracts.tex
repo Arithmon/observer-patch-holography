@@ -38,26 +38,23 @@
 We specify data and likelihood contracts for conditional Observer-Patch
 Holography (OPH) cosmology. Each comparison binds a finite source, compatible
 transfer equations, declared datasets and covariance, nuisance parameters,
-and a common observable projection. The contracts distinguish source-derived
+and a common observable projection; the contracts distinguish source-derived
 quantities, imported inputs and fitted parameters, and account for sample
-overlap and shared calibration. They give a reproducible interface from
-screen and dark-sector models to cosmological data. A retrospective
-comparison ledger with an independent verifier and machine-checked brackets
-records where the receipt-conditional values land on Planck, ACT, SPT,
-BICEP/Keck, DESI and SPARC data. The running, tensor, isocurvature and
-non-Gaussianity rows are consistent. The registered conditional tilt
-branch \(n_s=1-P/48=0.96602\), at the calibrated grain \(P\), lies at the
-lower \(0.612\) percent position of the official joint posterior chains of
-ACT DR6 with Planck, CMB lensing and DESI 2024 (DR1) BAO, whose mean is
-\(0.9743\pm0.0034\); those data precede the registration, so this is a
-retrospective tension under baseline \(\Lambda\)CDM, not a likelihood
-ratio, and the tilt is consistent with the other combinations; the curvature value
-is in tension at \(-2.09\sigma\) against DESI DR2 with CMB; the
-fixed-capacity equation of state is in tension with DESI DR2; and the
-capacity display is in tension at \(-2.64\) and \(-2.81\sigma\) against
-the DESI DR2 \(\Lambda\) coordinate while sitting at \(+0.62\) and
-\(+0.38\) percent against the Planck central value. Every row is on seen
-data.
+overlap and shared calibration. A retrospective comparison ledger with an
+independent verifier and machine-checked brackets records where the
+receipt-conditional values land on Planck, ACT, SPT, BICEP/Keck, DESI and
+SPARC data. The running, tensor, isocurvature and non-Gaussianity rows are
+consistent. The registered conditional tilt branch \(n_s=1-P/48=0.96602\),
+a declared generator density evaluated at the calibrated grain \(P\), lies at the lower \(0.612\) percent position
+of the official joint posterior chains of ACT DR6 with Planck, CMB lensing
+and DESI 2024 (DR1) BAO, whose mean is \(0.9743\pm0.0034\), and is
+consistent with the other combinations; the curvature value is in tension at
+\(-2.09\sigma\) against DESI DR2 with CMB; the fixed-capacity equation of
+state is in tension with DESI DR2; and the capacity display is in tension at
+\(-2.64\) and \(-2.81\sigma\) against the DESI DR2 \(\Lambda\) coordinate
+while sitting at \(+0.62\) and \(+0.38\) percent against the Planck central
+value. Every row is on seen data, so each tension is retrospective under
+baseline \(\Lambda\)CDM and none is a likelihood ratio.
 \end{abstract}
 
 \section{Comparison Classes}
@@ -215,7 +212,7 @@ Planck 2018 \(0.9649\pm0.0042\) (\(+0.27\sigma\)); SPT-3G with Planck
 \(0.9709\pm0.0038\) (\(-1.28\sigma\)); with lensing and DESI 2024 (DR1)
 BAO \(0.9743\pm0.0034\): lower \(0.612\) percent posterior position in the
 official chains (Gaussian summary \(-2.43\sigma\)) &
-conditional branch at the calibrated grain; discriminates \\
+declared-density value at the calibrated grain, like the capacity display \\
 \(\mathrm dn_s/\mathrm d\ln k\) & \(0\) &
 Planck 2018 \(-0.0045\pm0.0067\) (\(+0.67\sigma\)); ACT DR6 with Planck,
 lensing and BAO \(0.0062\pm0.0052\) (\(-1.19\sigma\)) &
@@ -270,7 +267,12 @@ velocity as well as no forcing and whose null test excludes only specified
 models above the achieved bound, the exact zero
 running, which discriminates only against running of order \(10^{-2}\), and
 the specific tilt value, which the seen combinations place between
-\(+0.7\sigma\) and \(-2.4\sigma\) under the ledger's Gaussian rule. In the
+\(+0.7\sigma\) and \(-2.4\sigma\) under the ledger's Gaussian rule. Its only
+numerical premise is the declared full-collar generator density
+\(P_\star/24\), which no finite source emits, so the tilt has the epistemic
+status of the capacity display: a declared one-parameter map evaluated at a
+pixel located from the measured fine-structure constant. Its distance from
+the data discriminates that declared map, not a source derivation. In the
 official ordered ACT DR6, Planck and DESI joint chains, \(0.612\) percent of
 the posterior mass lies at or below the branch, against about \(0.74\)
 percent for the Gaussian summary; the historical clock alternative
@@ -334,7 +336,7 @@ falsification verdict.
 \bibitem{ophEinstein}
 B.~M\"uller et al., \emph{Recovering Observer Spacetime and Einstein
 Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
 
 \bibitem{act2025}
 T.~Louis et al. (2025). The Atacama Cosmology Telescope: DR6 power spectra,
@@ -345,28 +347,28 @@ likelihoods and \(\Lambda\)CDM parameters. arXiv:2503.14452.
 FloatingPragma (2026). A spatial fluctuation field from one native history:
 the common spatial generator, its locality and spectral dimension, and the
 boundary-trace test.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/physical_space_time/OCCUPATION_FIELD.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/physical_space_time/OCCUPATION_FIELD.md}.
 
 \bibitem{ophtimefields}
 FloatingPragma (2026). Joint time and field laws on matched source screens.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer_time_fields/REFINEMENT.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/observer_time_fields/REFINEMENT.md}.
 
 \bibitem{ophcausality}
 FloatingPragma (2026). Exact native causal cones.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/common_source/CAUSALITY.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/common_source/CAUSALITY.md}.
 
 \bibitem{ophpublicdata}
 FloatingPragma (2026). OPH predictions and public-data comparisons.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}.
 
 \bibitem{ophladder}
 FloatingPragma (2026). Frozen prediction ladder.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/docs/FROZEN_PREDICTION_LADDER.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/docs/FROZEN_PREDICTION_LADDER.md}.
 
 \bibitem{ophobsdyn}
 FloatingPragma (2026). Observer-dynamics analysis archive: native-repair
 receipts and conditional observer comparisons.
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/observer_dynamics_20260925/sim-analysis/codex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence/observer_dynamics_20260925/sim-analysis/codex}.
 
 \end{thebibliography}
 

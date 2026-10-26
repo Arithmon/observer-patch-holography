@@ -111,7 +111,27 @@ STALE_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
         "MAR as core principle",
         re.compile(r"Minimal Admissible Realization economy rule as an axiom"),
     ),
+    (
+        "three-axiom basis",
+        re.compile(r"\bthree-axiom\s+basis\b|\bthree\s+core\s+axioms\b", re.IGNORECASE),
+    ),
+    (
+        "five-axiom label",
+        # RecoveredCore_{5\mathrm{ax}}, RecoveredCore_5ax; not bibliography
+        # keys such as osterwalder1975axioms.
+        re.compile(r"(?<![0-9A-Za-z])5\s*(?:\\mathrm\{ax\}|ax(?![A-Za-z]))"),
+    ),
 ]
+
+# Pattern-specific path exclusions for occurrences whose rename is scheduled in
+# a separate source batch. Each entry names one file and one pattern label.
+PATTERN_PATH_EXCLUDE: dict[str, tuple[str, ...]] = {
+    # Reworded with the Lean docstring batch (premise-label wording).
+    "three-axiom basis": (
+        "Lean/ObserverPatchHolography/CoreAxioms.lean",
+        "Lean/ObserverPatchHolography/RepairWordSchedule.lean",
+    ),
+}
 
 # Line-level allowances: a stale token on a line matching one of these is not
 # a violation (bibliography keys, group names, kernel-axiom audits, quoted
@@ -165,8 +185,9 @@ def _strip_comments(text: str) -> str:
 
 def registry_checks(errors: list[str]) -> dict:
     registry = json.loads(_strip_comments(REGISTRY.read_text(encoding="utf-8")))
+    # core_axiom_count counts the theorem-library premise labels A1-A3.
     if registry.get("core_axiom_count") != 3:
-        errors.append("registry: core_axiom_count must be exactly 3")
+        errors.append("registry: core_axiom_count (premise labels A1-A3) must be exactly 3")
     axioms = registry.get("axioms", [])
     if [a.get("id") for a in axioms] != ["A1", "A2", "A3"]:
         errors.append("registry: axioms must be exactly A1, A2, A3 in order")
@@ -238,14 +259,20 @@ def _sort_key(path: Path) -> tuple[str, ...]:
     return path.relative_to(ROOT).parts
 
 
+def _pattern_applies(rel: str, label: str) -> bool:
+    return rel not in PATTERN_PATH_EXCLUDE.get(label, ())
+
+
 def scan_text(rel: str, text: str, errors: list[str]) -> None:
     for number, line in enumerate(text.splitlines(), start=1):
         if any(pattern.search(line) for pattern in LINE_ALLOW):
             continue
         for label, pattern in STALE_PATTERNS:
-            if pattern.search(line):
+            if _pattern_applies(rel, label) and pattern.search(line):
                 errors.append(f"{rel}:{number}: stale token ({label}): {line.strip()[:120]}")
     for label, pattern in STALE_PATTERNS:
+        if not _pattern_applies(rel, label):
+            continue
         for match in pattern.finditer(text):
             if "\n" in match.group(0):
                 errors.append(

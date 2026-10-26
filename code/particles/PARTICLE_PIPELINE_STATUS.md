@@ -9,6 +9,12 @@ Claim label: `no_promotable_numerical_particle_predictions__conditional_candidat
 
 - Candidate `P`: `1.63097210492078846050203640439`
 - Candidate `alpha^-1`: `136.994020662724205139718642793`
+- Map: the default compressed trunk with the asymptotic structured-running
+  profile, fast and unconverged. The certified bare-map root is
+  `136.994835177412937` and the converged asymptotic-profile value is
+  `136.99402589611851`. None of the three uses the measured hadronic
+  payload; with it the endpoint is `136.3827548`
+  (`code/P_derivation/README.md`).
 - Claim label: `compressed_candidate_trunk_not_final_particle_root`
 - May feed promoted particle predictions: `False`
 

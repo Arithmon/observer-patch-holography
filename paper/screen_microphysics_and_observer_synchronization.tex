@@ -33,6 +33,7 @@ Patch Hardware, Records, and Observer Synchronization in Observer-Patch Holograp
 
 \usepackage{microtype}
 \setlength{\emergencystretch}{3em}
+\input{tex_fragments/figures/FIGURE_STYLE.tex}
 \begin{document}
 \maketitle
 \OPHPaperReleaseBanner
@@ -42,54 +43,36 @@ Patch Hardware, Records, and Observer Synchronization in Observer-Patch Holograp
 \end{center}
 
 \begin{abstract}
-Observer-Patch Holography (OPH) needs a finite carrier for screen cuts. This
-paper turns those cuts into self-reading patch bodies with ports, local state,
-records, repair channels, synchronization, and checkpoint restoration.
-Given a declared finite algebra-state, L\"uders instrument, and two-wing
-representation, its public record projectors support the corresponding
-Born--L\"uders identities and the Tsirelson bound. The effect table does not
-select that instrument, and the carrier does not derive the quantum
-representation. A reversible
-proposal layer reconstructs a finite
-Gibbs potential when cycle affinities vanish and gives an exact
-\(1,3,3,5\) degeneracy theorem for the source-derived twenty-four-channel
-embedding.
+Observer Patch Holography (OPH) needs a finite carrier for screen cuts, and
+this paper turns those cuts into self-reading patch bodies with ports, local
+state, records, repair channels, synchronization and checkpoint restoration.
+Any finite-range cosine kinetics invariant under the sixty proper
+icosahedral rotations is exactly isotropic through angular rank five at
+every order in the cell size: the twelve-port orbit annihilates every
+multipole of rank one through five and carries a unique rank-six invariant
+with an exact sixty-two-point Morse census, rank six is the least
+symmetry-allowed nonzero anisotropic rank, and whenever the weighted
+sixth-moment coefficient is nonzero the first directional artifact appears
+at order \(a^4k^6\). On the declared echosahedral carrier lineage, an integer
+atom-counting grammar and normalized central-readback cost give twelve unit
+lines and an exact gap; oriented incidence and refinement maps derive
+inverse pairing, the proper action of \(A_5\) and a rank-three frame, and
+target-blind impulse and port readback derive the inverse-port response.
 
-On the declared echosahedral carrier lineage, an integer atom-counting grammar
-and normalized central-readback cost give twelve unit lines and an exact gap.
-Oriented incidence and refinement maps derive inverse pairing, the proper
-action of the alternating group \(A_5\) on five letters, and a rank-three
-frame. Target-blind
-impulse and port readback derive the inverse-port response. Complete
-reversible response and endogenous overlap transport force the abstract
-compact Lie-algebra type
-\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
-The twelve-port orbit annihilates every multipole of rank one through five
-and carries a unique rank-six invariant with an exact sixty-two-point Morse
-census; any icosahedrally invariant finite-range cosine kinetics is isotropic
-through angular rank five, with rank six the least symmetry-allowed nonzero
-anisotropic rank.
-Under the declared fifteen-state matter contract, anomaly balance and tensor
-descent give the Standard Model charge lattice and maximal faithful matter image
-\((\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1))/\mathbb Z_6\)
-on the declared tensors. Source reconstruction of the matrix current and
-matter action, physical global-form selection, laboratory current
-identification, physical seam and family attachment, scalar multiplicity,
-and continuum quantum-field realization enter only as named premises; this
-paper constructs none of them.
-Stationary continuation of the fair conservative repair law gives an exact
-density covariance and a fixed-graph Gaussian occupation-history limit,
-with explicit finite-window normalization and local event-record corrections.
-Large settled configurations retain measured coarse input information;
-the actual port transport requires internal-response reduction and retains
-detectable metric anisotropy. These records are not identified with
-primordial curvature.
-Declared conservative-record populations have a controlled flat causal
-limit, with interval counts recovering proper-time ratios under the stated
-count and clock hypotheses. Finite
-signed-seam operators admit exact kinetic and kernel checks.
-Hardware evidence enters only with public device, calibration, circuit, data,
-and independent checks.
+Given a declared finite algebra-state, L\"uders instrument and two-wing
+representation, the public record projectors carry the Born--L\"uders
+identities and the Tsirelson bound; the carrier does not derive the quantum
+representation. A reversible proposal layer reconstructs a finite Gibbs
+potential when cycle affinities vanish. Complete reversible response and
+endogenous overlap transport force the abstract compact Lie-algebra type
+\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\), and under the
+declared fifteen-state matter contract anomaly balance and tensor descent
+give the Standard Model charge lattice and maximal faithful matter image
+\((\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1))/\mathbb Z_6\).
+Source reconstruction of the matrix current and matter action, physical seam
+and family attachment, scalar multiplicity and continuum quantum-field
+realization enter only as named premises, and hardware evidence enters only
+with public device, calibration, circuit, data and independent checks.
 \end{abstract}
 
 \input{tex_fragments/INTERPRETATION_CONVENTIONS.tex}
@@ -2578,6 +2561,14 @@ The embedded map \(E_{sr}=\iota_{rs}Q_{sr}\) is the canonical state-preserving c
 expectation.
 \end{definition}
 
+\begin{figure}[!htb]
+\centering
+\input{tex_fragments/figures/FIG_SCREEN_LEVELS.tex}
+\caption{Nested geodesic icosahedral subdivisions of $S^2$ at depths $m=0,1,2$, with $20\cdot4^m$ triangular cells: the reference multiresolution carrier of Definition~\ref{def:microphysics-multiresolution-carrier}. The executable construction's observer federations use screen levels with $20$, $80$ and $320$ elementary carriers.}
+\label{fig:screen-levels}
+\end{figure}
+
+
 \begin{theorem}[Fixed-cutoff regulator certificate]\label{thm:microphysics-regulator-certificate}
 The maps in Definition~\ref{def:microphysics-multiresolution-carrier} are unital, completely
 positive, composition-compatible, and preserve the faithful reference states. The refinement
@@ -4871,39 +4862,39 @@ B.\ M\"uller, J.\ Kim, D.\ Matscheko, and J.\ Hill,
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and Refinement in Constraint
 and Rewrite Systems},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/observable_normal_forms.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/extra/observable_normal_forms.pdf}.
 
 \bibitem{eventalgebraLean}
 B.\ M\"uller,
 \emph{Verified Projection-Event Calculus in Lean~4: Bundled Arbitrary-Partition Pinching,
 L\"uders Retractions, and CHSH Interoperability},
 2026.\\
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/machine_checked_finite_event_algebras.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/extra/machine_checked_finite_event_algebras.pdf}.
 
 \bibitem{ophobservers}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, B.\ Cassie, P.\ Nguyen, and D.\ A.\ Friedman,
 \emph{Observers Are All You Need}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/observers_are_all_you_need.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/observers_are_all_you_need.pdf}.
 
 \bibitem{ophconsensus}
 B.\ M\"uller, K.\ Xue, J.\ Kim, K.\ A.\ Anirudha, D.\ Matscheko, and J.\ Hill,
 \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That Implements Physics}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/reality_as_consensus_protocol.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/reality_as_consensus_protocol.pdf}.
 
 \bibitem{ophGauge}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, P.\ Nguyen, D.\ Matscheko, and D.\ A.\ Friedman,
-\emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
+\emph{Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
 
 \bibitem{ophsynthesis}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, B.\ Cassie, P.\ Nguyen, J.\ Kim, D.\ Matscheko, D.\ A.\ Friedman, J.\ Hill, W.\ T.\ Glynn, M.\ A.\ Visser, K.\ A.\ Anirudha, and B.\ de La Fourni\`ere,
 \emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/flagship/from_observer_consensus_to_standard_physics.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{ophparticles}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, and D.\ A.\ Friedman,
-\emph{Deriving the Particle Zoo from Observer Consistency}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
+\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}.
 
 \bibitem{ophfpe}
 B.\ M\"uller,
@@ -4916,13 +4907,13 @@ Finite provenance and operator producers, independent verifiers, and receipts:
 Large-run source revision:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/ce17921eb7504106fef1ba445e1349b5367aa676}.
 Exact-federation archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/exact_federation_L6_canonical_20260909}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence/exact_federation_L6_canonical_20260909}.
 Closure-loop archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/closure_loop}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence/closure_loop}.
 Causal-poset archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence/source_net_causal_poset}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence/source_net_causal_poset}.
 Evidence index:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2052/evidence}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2053/evidence}.
 
 \bibitem{ophrepo}
 FloatingPragma (2026). Observer Patch Holography: Lean library, exact code
@@ -4931,13 +4922,13 @@ Available at \url{https://github.com/FloatingPragma/observer-patch-holography}.
 
 \bibitem{ophym}
 B.\ M\"uller and J.\ Hill,
-\emph{Explaining the Yang--Mills Mass Gap with Observer-Patch Repair Dynamics: A Support-Visible OPH Route to the Clay Problem: A Conditional Identity}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/extra/yang_mills_gap_clay_problem.pdf}.
+\emph{A Conditional Identification of the Yang--Mills Gap with a Finite Repair Gap: Dobrushin Repair Floors and a \(\mathbb Z_2\) Test of the Transfer Receipt}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/extra/yang_mills_gap_clay_problem.pdf}.
 
 \bibitem{ophEinstein}
 B.~M\"uller et al.,
 \emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency}.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}.
 
 \bibitem{KipnisVaradhanNative}
 C. Kipnis and S. R. S. Varadhan,
@@ -4949,19 +4940,19 @@ processes and applications to simple exclusions,''
 \bibitem{ophmodel}
 B.~M\"uller, M.~Poneder, J.~Kim, and D.~A.~Friedman,
 \emph{An Executable Observer for Observer Patch Holography: Specification, Certified Components and Acceptance Criteria}.
-Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/paper/executable_observer_construction.pdf}.
+Available at \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/paper/executable_observer_construction.pdf}.
 
 \bibitem{ophcontinuum}
 FloatingPragma,
 \emph{A spatial fluctuation field from one native history},
 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/physical_space_time/OCCUPATION_FIELD.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/physical_space_time/OCCUPATION_FIELD.md}.
 
 \bibitem{ophtimefields}
 FloatingPragma,
 \emph{Joint time and field laws on matched source screens},
 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2052/model/observer_time_fields/REFINEMENT.md}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2053/model/observer_time_fields/REFINEMENT.md}.
 
 \InputIfFileExists{tex_fragments/PRIOR_WORK_SCREEN_MICROPHYSICS_AND_OBSERVER_SYNCHRONIZATION_BIBITEMS.tex}{}{}
 \end{thebibliography}

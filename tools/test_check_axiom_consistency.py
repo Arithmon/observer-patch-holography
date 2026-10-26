@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused tests for the three-axiom drift guard."""
+"""Focused tests for the basis and library-premise drift guard."""
 
 from __future__ import annotations
 
@@ -65,6 +65,27 @@ class AxiomConsistencyGuardTests(unittest.TestCase):
         )
         self.assertEqual(len(errors), 1)
         self.assertIn("cross-line stale token (retired selector name)", errors[0])
+
+    def test_retired_five_axiom_label_fails_but_bib_keys_pass(self) -> None:
+        errors: list[str] = []
+        guard.scan_text(
+            "injected.tex",
+            "\\mathsf{RecoveredCore}_{5\\mathrm{ax}}\nRecoveredCore_5ax\n"
+            "\\cite{osterwalder1975axioms}\n",
+            errors,
+        )
+        self.assertEqual(len(errors), 2, "\n".join(errors))
+        self.assertTrue(all("five-axiom label" in error for error in errors))
+
+    def test_three_axiom_basis_wording_fails(self) -> None:
+        errors: list[str] = []
+        guard.scan_text(
+            "injected.md",
+            "OPH rests on exactly three core axioms.\nThe three-axiom basis is retained.\n",
+            errors,
+        )
+        self.assertEqual(len(errors), 2, "\n".join(errors))
+        self.assertTrue(all("three-axiom basis" in error for error in errors))
 
     def test_injected_oph5_and_range_fail(self) -> None:
         errors: list[str] = []

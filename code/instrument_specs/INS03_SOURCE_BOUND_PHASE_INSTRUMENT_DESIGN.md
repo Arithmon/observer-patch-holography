@@ -21,12 +21,12 @@ the source revision against which this design was specified.
 
 ## A. Identity and scope
 
-- Instrument id: INS-03. Owning lane: issue #737, which owns the instrument
-  surface and the register, the `instruments` section of
+- Instrument id: INS-03. Owning surface: the `instruments` section of
   `tracking/observation_ledger.json`, with its generated view, the
-  Emergent-Instrument Register section of `docs/registers/OBSERVATION_LEDGER_V3.md`.
+  Emergent-Instrument Register section of `docs/registers/OBSERVATION_LEDGER_V3.md`
+  (historical owning issue #737, closed).
 - Bound ledger row: OL-C5, "Phase completion and full operator tomography",
-  lane issue 730, status `partial`, premises PR-02 and PR-04, open premises
+  historical lane issue 730 (closed), status `partial`, premises PR-02 and PR-04, open premises
   PR-03, PR-64, PR-65 (`tracking/observation_ledger.json`, generated view
   `docs/registers/OBSERVATION_LEDGER_V3.md`). The register binds one instrument to
   exactly one ledger row; INS-03 binds OL-C5 and does not enter the

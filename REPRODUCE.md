@@ -200,7 +200,7 @@ lake build Geometry.NativeGeometricSourceIdentification CommonHistoryFeedback Ge
 The general spectral error estimate and oscillator pulse argument are
 analytical; these finite Lean modules do not formalize those entire proofs.
 
-## Passive-memory requirements toward M1
+## Passive-memory requirements of the earlier source lane
 
 The exact nonlinear-record classification, finite native-zero reset bound,
 fresh-zero approximate construction and ancillary quadratic budget have a
@@ -215,13 +215,14 @@ lake build Geometry.SourcePassiveMemoryAxiomAudit
 
 The [contract and scope](code/source_passive_memory/README.md) distinguish
 native pair-mean executions from equal-image proof witnesses and supplied
-preparations. These controls do not derive M1 or a physical energy/clock.
+preparations. These controls do not derive that lane's first milestone
+(labelled M1 in its package) or a physical energy or clock.
 The dedicated workflow runs on Windows and Linux; the frozen mandatory
 runner is unchanged.
 
-## M1 routing and live storage
+## Source-lane routing and live storage
 
-The conditional M1 routing and live-storage refinement has a complete small
+The conditional routing and live-storage refinement of the same lane has a complete small
 replay and an explicit kernel audit:
 
 ```bash
@@ -240,8 +241,12 @@ and does not derive the supplied feedback law from canonical dynamics.
 
 ## Environment
 
-- CPython 3.12 or newer (verified on 3.12 and 3.13).
-- A clean virtual environment.
+- CPython 3.12 or newer for the full suite (continuous integration runs 3.12;
+  the observer model alone runs on 3.11 or newer).
+- A clean virtual environment for each pin set: the mandatory suite installs
+  `requirements.txt` and the observer model installs `model/requirements.txt`.
+  Their numpy and SciPy pins differ, and receipt checks are version
+  sensitive, so the two gates run in separate environments.
 - Tectonic 0.15.0 and Pandoc 3.8.3 for the publication artifacts.
 - Ghostscript, `rsvg-convert`, and `pdftotext` on `PATH` for the book and
   publication validation. On Ubuntu these are supplied by `ghostscript`,
@@ -294,13 +299,13 @@ register validation, external-data provenance/hash/license-boundary validation,
 release-manifest validation and its regression tests, a clean `--collect-only`
 pass over `code/`, the scientific validation fixtures in
 `code/audit/` (which includes the scope guard proving no cloud or hardware
-lane is silently collected), the A5 closure ledger checks, and the Phase-0
-proof/non-identifiability receipts. One fixture is excluded from that step:
+lane is silently collected), the A5 closure ledger checks, and the earliest proof and
+non-identifiability receipts (the suite's step titles call them Phase-0). One fixture is excluded from that step:
 `code/audit/test_e4_absence_guards.py` needs the pinned Mathlib sources and
 runs in the Lean CI workflow instead, where the toolchain is provisioned.
 
-The exact certificate suites (#566 port-current, #314 matter-lift, ~26
-minutes) run through the same runner in their own CI workflow
+The exact certificate suites (port-current, matter-lift, axis-center-descent
+and matter-menu spectral-ledger, ~26 minutes) run through the same runner in their own CI workflow
 (`.github/workflows/certificate-suites.yml`) whenever `code/a5_closure/`
 changes and nightly on both platforms:
 
@@ -328,8 +333,8 @@ The mandatory suite is **collectable and executable** from a clean clone. The
 acceptance bar for this path is a green `python tools/run_mandatory_suite.py`:
 claim registry, release manifest, scientific-register sync, a clean `--collect-only`
 run with zero import errors, and the executed validation fixtures. The generated
-registers live in `docs/registers/`; the first line of each page names its JSON
-source and the `tools/build_*.py` generator, and the suite fails when a committed
+registers live in `docs/registers/`; the generation line under each page title
+names its JSON source and the `tools/build_*.py` generator, and the suite fails when a committed
 page differs from its regeneration. Each research note in `docs/research/` is
 pinned by path and SHA-256 in the receipt of the code lane that verifies it, so a
 change to a note rebuilds that receipt in the same commit.
@@ -382,7 +387,7 @@ physical $N$ packet, or the continuum Einstein tower.
 
 ## Lean proofs
 
-The Lean 4 / Mathlib workspace under `Lean/` holds nine libraries (`ObserverPatchHolography`, `EventAlgebra`, `OPHScreen` in `Screen/`, `OPHTime`, `OPHComputation`, `OPHThermodynamics`, `OPHConstruction`, `OphGap`, and the standalone `ObservableNormalForms` package), each sorry-free with standard axioms only. Rebuild everything with:
+The Lean 4 / Mathlib workspace under `Lean/` holds ten libraries (`ObserverPatchHolography`, `EventAlgebra`, `OPHScreen` in `Screen/`, `OPHTime`, `OPHComputation`, `OPHThermodynamics`, `OPHConstruction`, `SourceLaw`, the opt-in `OphGap` certificate, and the standalone `ObservableNormalForms` package), each sorry-free. Thirteen finite proofs use `native_decide`; their native-evaluation axioms are tracked by `tools/check_lean_native_decide_inventory.py`. Rebuild everything with:
 
 ```bash
 cd Lean
@@ -432,6 +437,15 @@ python3 tools/bump_paper_release.py
 python3 tools/refresh_paper_release.py --publication
 ```
 
+`tools/bump_paper_release.py` also rewrites repository URLs pinned to the
+current release tag (`blob/<id>/`, `tree/<id>/`) in the `paper/`, `flagship/`,
+`extra/`, `cosmology/` and `book/` TeX sources to the new tag; deposited essays
+keep their bytes
+(disable with `--keep-release-urls`). Sources that cite an earlier tag
+are caught up without a bump by
+`python3 tools/bump_paper_release.py --retag-urls-only --from-release-id <old tag>`
+(`--dry-run` lists the files).
+
 The publication mode fails when the selected identifier exists as a local or
 remote Git tag. It also rebuilds the canonical book and stamps its hash, size,
 path, and selected release ID into the shared manifest before final
@@ -469,13 +483,13 @@ A clean clone must also retain no tracked publication drift after the first
 rebuild:
 
 ```bash
-git diff --exit-code -- paper flagship extra cosmology book/reverse-engineering-reality-book.pdf
+git diff --exit-code -- paper flagship extra cosmology essays book/reverse-engineering-reality-book.pdf
 ```
 
 The `Paper Preview Build` workflow enforces this check, compares the committed
 book with a scratch rebuild, and rejects generated paper PDFs missing from
-Git, including ignored files. Cosmology remains unpublished research while
-its tracked artifacts obey the same reproducibility checks. A committed PDF and
+Git, including ignored files. The cosmology companions obey the same
+reproducibility checks. A committed PDF and
 manifest pair therefore cannot substitute another paper's bytes at the
 expected path; the source rebuild restores the correct artifact and makes the
 job fail.

@@ -55,7 +55,7 @@ counterexample on the full 78-state carrier. These statements concern the
 channel obtained by discarding the records, not the retained observer tape.
 
 The [coherent continuation experiment](COHERENT_CONTINUATION.md) attaches a
-reflection walk to the actual binary N1 branches. It obtains an exact
+reflection walk to the actual binary C branches. It obtains an exact
 amplitude recurrence and shows that the committed instrument does not select
 its coherent continuation. Uncommitted record access and the reflection are
 additional premises; this is separate from the classical-tape observer.
@@ -78,7 +78,7 @@ is pure gauge and has unit loop holonomy; a single modified chord is detected
 as a nonnative flux control. The separate uniform-seam binary transfer is
 reversible on all 66 states, so its transition-probability cycle affinities
 also vanish. Neither result excludes a future coherent repair transport with
-a measurable path phase. The fixed two-event E/F recorder encloses no carrier
+a measurable path phase. The fixed two-event `e`/`f` seam recorder encloses no carrier
 face. Two different retained tape words can return the same source load, but
 their record labels remain orthogonal in the committed observer. A declared
 2,707-pulse source tape eraser compares those paths **if the tape is kept
@@ -249,8 +249,9 @@ Compatibility on a seam is specified independently: its endpoint loads differ
 by at most one. The update averages them by floor and ceiling, preserving
 total load and all spectator ports. Applying another seam may disturb an
 earlier seam's balance; this two-event observer is not a global convergence
-claim. At event 1 the seam is `E=(0,1)`. At event 2 it is `F=(0,5)` exactly when
-the retained first current is positive; otherwise it is E. The program then
+claim. At event 1 the seam is `e=(0,1)`. At event 2 it is `f=(0,5)` exactly when
+the retained first current is positive; otherwise it is `e`. (`native.py`
+names these seams `E` and `F`; they are unrelated to the record law E.) The program then
 halts. The supplied scheduler, preparation, tape, policy and forecast table
 are explicit parts of the construction.
 
@@ -292,7 +293,11 @@ the forecast interface abstains on those letters.
 
 The donor selector has the same seam frequencies as the actual selector, so
 the difference `-3/88` detects the record's causal effect beyond a changed
-action distribution. Final source loads are external verification outputs;
+action distribution. Both results are consistency checks of the construction.
+The controller rule is a design choice, and any record-dependent policy
+changes this statistic, so the audit confirms the feedback wiring. The
+forecast table is the enumerated law's own conditional probability, so the
+Brier ordering is the model's own information bookkeeping. Final source loads are external verification outputs;
 the observer's policy and forecast do not read them.
 
 The [capacity calculation](CAPACITY.md) applies the existing OPH checkpoint

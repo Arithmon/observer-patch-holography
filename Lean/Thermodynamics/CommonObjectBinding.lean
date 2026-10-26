@@ -97,7 +97,8 @@ identity conditional-resampling kernel forced by the singleton fibres, and
 the `UniformGapRefinement` inhabitant below is a constant family rather than
 a nontrivially varying regulator tower.  A common source-reference theorem,
 an actual source-collar/resampling identification, and nondegenerate
-refinement control therefore remain source-side obligations under #739.  The
+refinement control therefore are open source-side obligations (historical
+issue #739, closed).  The
 physical inverse-temperature reading and energy-clock calibration are the
 separate empirical import PR-15.
 -/

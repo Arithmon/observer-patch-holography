@@ -107,7 +107,7 @@
     "code/source_record_gluing/process.py": "4e39712fe28dda32cd7da37bdf0e50d9d8bd435f1f828d411dc950f20336342f",
     "code/source_record_gluing/test_process.py": "f0a4c748e6c7650874d76a7a571f665f0d1b0a322fe673016d0093d9449d9112",
     "code/source_record_gluing/verify.py": "6b32a1791389bf8f3febc79c9af5bab0695eaf9c861b16fe48685edf47d9b40a",
-    "code/source_selection_model/CONTRACT.md": "0eef7e5f703be35bf3fc9fad95e914ac1cdbf5e6ffcdc1505cfb77c089accf0f",
+    "code/source_selection_model/CONTRACT.md": "9c7506b7c136fdbb1cac1138ca68ce57c75d2cfcccbb45bc149c5a41da65cbcc",
     "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "89447e65e21d886c2bfc3840ea7582ead77910a6b10d193761bd27782795e878"

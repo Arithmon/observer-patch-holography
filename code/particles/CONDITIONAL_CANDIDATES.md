@@ -1,6 +1,6 @@
 # Conditional Candidate Outputs
 
-Generated: `2026-07-23T06:40:02Z`
+Generated: `2026-10-26T06:30:05Z`
 
 This surface renders the numeric conditional candidates that the strict
 source-only promotion policy withholds from the public OPH-value columns.
@@ -9,11 +9,17 @@ promotable, and this surface must not feed back into promotion decisions.
 The public claim boundary stays in `RESULTS_STATUS.md`; target-anchored
 exact fits stay in `EXACT_FITS_ONLY.md`.
 
-The electroweak row is the target-free D10 value law. It is the OPH
-derivation for the pair: no measured mass enters, and the value follows as
-an exact implication of the five quotient-transport premises. The
-diagnostic base-running chart and the measured-reference inverse adapter
-stay in the technical audit README and off this surface.
+The electroweak rows are the conditional D10 value law. No measured mass
+enters, but every chart value is evaluated at the working pixel
+`P_C = 1.630968209403959`, which is located from the measured
+fine-structure constant; the forward closure root
+`P_fwd = 1.630972095858897` is a different number. The chain runs the
+gauge couplings with the declared one-loop coefficients `(33/5, 1, -3)`
+and `beta_EW = 4`. The QT1-QT5 quotient-path source-entailment
+certificate is not emitted, so the value follows from those premises
+only conditionally. The diagnostic base-running chart and the
+measured-reference inverse adapter stay in the technical audit README
+and off this surface.
 
 ## Conditional GeV Chart Candidates
 

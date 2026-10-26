@@ -25,9 +25,11 @@ alpha^-1(0) = 137.035 999 177(21)
 Reference for the empirical endpoint value:
 https://physics.nist.gov/cuu/pdf/wall_2022.pdf
 
-## First-Principles Computation
+## Declared-Map Computation
 
-The computation has one local unknown, the pixel ratio `P`. The source chain is:
+The computation has one local unknown, the pixel ratio `P`. The declared source
+chain, with MSSM one-loop coefficients `(33/5, 1, -3)` from `M_U` to `m_Z` and
+`beta_EW = 4` as stated premises, is:
 
 ```text
 phi = (1 + sqrt(5)) / 2

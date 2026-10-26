@@ -24,7 +24,7 @@ The eligible sources are:
   [Standard Model gauge paper](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf);
 - the exact gauge, charge, color, generation, and declared-action carrier
   claims in
-  [*Deriving the Particle Zoo from Observer Consistency*](../paper/deriving_the_particle_zoo_from_observer_consistency.pdf);
+  [*The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics*](../paper/deriving_the_particle_zoo_from_observer_consistency.pdf);
 - the finite carrier and screen-sieve theorems in
   [*Federated Echosahedral Screen Microphysics*](../paper/screen_microphysics_and_observer_synchronization.pdf);
 - the substrate-neutral
@@ -142,7 +142,10 @@ receipt set used to establish its premises. The machine-readable row mapping is
 [`claims/falsification_matrix.csv`](../claims/falsification_matrix.csv), and
 the current claim status is in
 [`claims/claim_registry.yaml`](../claims/claim_registry.yaml). Open physical
-maps are tracked as [closure issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+label%3Aclosure). A result on an
+maps are tracked on the open physics issues
+[#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
+[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) and
+[#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078). A result on an
 ineligible surface is evidence for or against that continuation only; it is not
 silently promoted into this program.
 
@@ -153,7 +156,9 @@ and the result addresses the same mathematical or physical observable in the
 same convention. Missing hypotheses yield no verdict. Counterexamples remain
 scoped to the stated claim and do not transfer to independent theorem rows.
 
-Current work ownership and unclosed maps are recorded on the
-[closure issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+label%3Aclosure).
+Current work ownership and unclosed maps are recorded on the open physics
+issues [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
+[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)
+and [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 Scientific claim boundaries are recorded in the owner papers and the
 machine-readable claim registry.

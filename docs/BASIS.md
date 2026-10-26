@@ -3,8 +3,9 @@
 Observer Patch Holography has one hypothesis, one rule that follows from it,
 one condition that defines what is shared, and one executable specification.
 The conditional theorems of the [theorem library](../paper/README.md) keep
-their displayed premises; the [premise map](../model/PREMISES.md) records
-which of those premises the executable specification supplies.
+their displayed premises; the [premise map](../model/PREMISES.md) records the
+connections between those premises and the executable specification and
+which premises remain declared inputs.
 
 ## The closure hypothesis
 
@@ -90,10 +91,13 @@ name parts of the basis above.
 | A3 | `conditional_maximum_randomness` | The state-selection application of the rule |
 
 The [premise reference](AXIOM_REFERENCE.md) gives the formal statements of
-A1, A2 and A3, and the machine-readable source is
+A1, A2 and A3; it is retained byte-identical for pinned receipts, and its
+"three core axioms" wording is superseded by this basis. The machine-readable
+source is
 [the premise registry](../claims/axiom_registry.yaml). A theorem that uses them
-states an implication; the [premise map](../model/PREMISES.md) says whether
-the executable specification supplies its antecedents.
+states an implication; the [premise map](../model/PREMISES.md) records the
+connections to the executable specification and which antecedents remain
+declared inputs.
 
 ## The paper set
 

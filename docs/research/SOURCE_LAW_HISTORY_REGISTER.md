@@ -30,7 +30,8 @@ what determines the inertia), and a paragraph or table entry labelled *[Lean, op
 restates results of those sixteen modules under the same rule as *[Lean]*. A paragraph labelled
 *[Std]* cites a standard result whose hypotheses we check against the Lean statements, and *[Cite]*
 restates a result of OPH's documents unchanged. Statements about OPH refer to this repository at
-revision `33a2eb0d`. Each connection follows OPH's result format: a conditional candidate under
+revision `33a2eb0d`; every cited OPH sentence was rechecked to be present at revision `e49a9a414`
+(2026-10-26). Each connection follows OPH's result format: a conditional candidate under
 named premises, with every input labelled derived (computed here), candidate hypothesis, calibration
 or target-exposed choice (a choice the calculation leaves to the target), inputs that OPH itself
 declares labelled supplied, and the physical choices the calculation does not determine stated as

@@ -10,8 +10,8 @@ constructed operational refinement. Four levels of error correction, finite
 universal synthesis and a paid local control schedule give vanishing errors
 in the named reads, clock and positive accounting at fixed finite rate.
 
-OPH retains its three-axiom basis. This result uses the already proposed CCG
-source and its declared cofinal control capability; it does not promote CCG,
+The theorem-library premises A1--A3 are unchanged. This result uses the
+proposed CCG source and its declared cofinal control capability; it does not promote CCG,
 a microscopic source or a noise model into a consequence of A1--A3.
 Read the [contract](CONTRACT.md) and the [proof](../../docs/research/FIXED_RATE_SOURCE_READS.md).
 

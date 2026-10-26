@@ -915,8 +915,8 @@
     ".github/workflows/dark-source-lensing.yml": "90d7ecf4d1caeb06add68928fa21ace4c76efc8e4699bae81dd134bd0012855b",
     "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean": "c906ec23c74f4734d9897ace5db103066460a043cffecea59d4139db52657c38",
     "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean": "eee963c058398a79741b07670e5ec7d4676118ac2aa72030eca54ce87ea64cfa",
-    "code/dark_source_lensing/CONTRACT.md": "e97942be6ba44e01e7458f308133950dd3064f1134451016c54ea1063f39b91c",
-    "code/dark_source_lensing/README.md": "9ceaa7a3d20d3f2d2dbb6624222c368a3802d679794a4d991bba5cc4461a8d16",
+    "code/dark_source_lensing/CONTRACT.md": "285cf313d864f3657623e0f3a3cc1d9e9f2d18625a92db38bfc40794c6c6ab5c",
+    "code/dark_source_lensing/README.md": "4f5a0c073e42037ccea4e1917f3acfe77a9f889730901e87b85428cf28cb171a",
     "code/dark_source_lensing/__init__.py": "62dba0a56d72ba6862637dd4fb527e9bffcda59272d1cfe6e423c91237c0f7bf",
     "code/dark_source_lensing/build.py": "efd525341d1cd2d414ee617dc8d7227cc09667b1c4fe3a5eab49ffc68881a38c",
     "code/dark_source_lensing/check.py": "8e8626be297514b7369f99a32882d03c32fcf3cc7e67a49264dd62f192a620f2",
@@ -925,7 +925,7 @@
     "code/dark_source_lensing/model.py": "b35b9dd611f1b1ccd3d208961a2ab4dda5deb5751808a0f7a200e63bfe7a766c",
     "code/dark_source_lensing/test_lensing.py": "a98a8630a8d63b8124d41144e928acd3101871bc47fba136e46d10b42936f922",
     "code/dark_source_lensing/verify.py": "b08b8acf1e2d8d776b7ff587bac906e1bb67a33196589f529322d33b8c34d978",
-    "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md": "07e40553ff6cec55d3929749daecf1bfde72317a7f33159fbf1db24b429cd2df",
+    "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md": "260c245f72322bc46581b6ed0eb873aeb166b5ea2a2024bd580bf53ed94594b1",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   }
 }

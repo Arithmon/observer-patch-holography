@@ -16,7 +16,7 @@ Status legend:
 | Paper result | Lean declaration | Status | Scope |
 |---|---|---:|---|
 | Universal property, (a) ↔ (b), `thm:universal` | `observableDetermined_iff_unique_partialNormalizer` | ✅ | Unique proof-carrying `Option` normalizer, including obstruction, fixed-point, soundness, and boundary-extensionality clauses. |
-| Universal property, (a) ↔ (c) | — | ⬜ | Image-subtype bijection is standard but not encoded. |
+| Universal property, (a) ↔ (c) | none | ⬜ | Image-subtype bijection is standard but not encoded. |
 | Reachable normal forms live in the observable fiber, `prop:reachable-fiber` | `reachable_normalForm_mem_fiber` | ✅ | Reflexive-transitive closure, one-step observation preservation, and exact normal-form completeness. |
 | Empty/singleton alternative, `cor:empty-singleton` | `empty_fiber_no_reachable_normalForm`; `singleton_fiber_forces_normalForm`; `singleton_fiber_weakNormalization_confluent` | ✅ | All three clauses; weak normalization is assumed only on the singleton fiber. |
 | Audited terminal alternative, `thm:audited-terminal` | `existsUnique_auditedTerminal` | ✅ | Unique terminal, preserved observation, and consistency iff the input fiber is realizable, under exactly the current theorem hypotheses. |
@@ -40,11 +40,11 @@ Status legend:
 | Rate transfer, `cor:rate-transfer` | `rate_transfer` | ✅ | Power-rate substitution (real exponents via `rpow`) into the intrinsic master estimate. |
 | Sharpness, `thm:sharpness` | `settledModulus_zero_residual`; `settledModulus_le_symmetric_bound`; `SharpnessWitness.symmetric_bound_attained`; `SharpnessWitness.coefficient_two_sharp`; `NegativeControl.bound_not_attained` | ✅ | Exact zero-residual equality `Θ(0,r) = ωB(r)`; three-point witness with computed values `ηΦ(1)=1`, `ωB(0)=0`, `Θ(1,0)=2` defeating every coefficient `a < 2`; two-point negative control where the bound is strictly slack. |
 | Approximate schedule independence, `cor:schedule` | `approximate_schedule_independence` | ✅ | Endpoint theorem; makes no confluence or common-path assumption. |
-| High-probability schedules, `cor:probabilistic` | — | ⬜ | Union-bound and diameter-expectation wrapper not encoded. |
+| High-probability schedules, `cor:probabilistic` | none | ⬜ | Union-bound and diameter-expectation wrapper not encoded. |
 | Finite Markov drift receipt, `prop:markov-receipt` | `FiniteMarkovKernel.finite_markov_endpoint_receipt`; `FiniteMarkovKernel.endpointDistribution_tail_bound`; `FiniteMarkovKernel.finiteExpectation_endpointDistribution`; `FiniteMarkovKernel.endpointDistribution_eq_pathWeight_sum`; `FiniteMarkovKernel.observation_eq_of_endpointDistribution_pos` | ✅ | Complete package: explicit finite path law (product weights on `Fin n → S`), endpoint distribution proved as its endpoint marginal, expectation identity to the drift iterate, one-time tail and settling bounds, and positive-support (rewrite-or-stutter) observation preservation along supported paths. One-time endpoint bound only, matching the proposition's limitation clause; support-checker rejection tests in `SupportAudit`. |
 | Stationary and occupation receipts, `cor:markov-occupation` | `FiniteMarkovKernel.stationary_expectation_bound`; `FiniteMarkovKernel.stationary_tail_bound`; `FiniteMarkovKernel.occupation_tail_bound`; `FiniteMarkovKernel.occupation_tail_bound_average`; `PersistentNoiseControl.noisy_confinement_vanishes` | ✅ | Stationary expectation/tail bounds and summed/averaged occupation bounds. No infinite-horizon confinement claim: the persistent-noise control proves a drift kernel with `ξ > 0` whose one-time excursion probability stays `1/2` at every time while window confinement `(1/2)^N → 0` (`confinedMass_eq_pathWeight_sum` grounds the window event in the same path law). |
-| Compact-space extension / uniform family, `prop:compact-extension`, `thm:uniform-family` | — | ⬜ | Not encoded. |
-| Exact product calculus, `thm:product-calculus` | — | ⬜ | Current manuscript correctly requires a nonempty finite index family. |
+| Compact-space extension / uniform family, `prop:compact-extension`, `thm:uniform-family` | none | ⬜ | Not encoded. |
+| Exact product calculus, `thm:product-calculus` | none | ⬜ | Current manuscript correctly requires a nonempty finite index family. |
 | Sensor enrichment, `cor:sensor-enrichment` | `inverse_bound_of_sensor_enrichment` | 🟡 | Certificate-level monotonicity proved; equality of intrinsic finite maxima is not encoded. |
 
 ## Naturality and refinement towers
@@ -53,17 +53,17 @@ Status legend:
 |---|---|---:|---|
 | One-step approximate naturality, `thm:one-step-naturality` | `one_step_approximate_naturality` | ✅ | Full semantic-defect proof with normalizer consistency and observation contracts. |
 | Exact naturality, `cor:exact-naturality` | `exact_naturality_from_uniqueness` | ✅ | No metric assumptions needed. |
-| Consistency-model perturbation, `cor:model-perturbation` | — | ⬜ | Hausdorff perturbation wrapper not encoded. |
+| Consistency-model perturbation, `cor:model-perturbation` | none | ⬜ | Hausdorff perturbation wrapper not encoded. |
 | Telescoping refinement bound, `thm:tower` | `telescoping_refinement_bound` | 🟡 | Arbitrary-depth metric telescope. A dependent family of stage types and restriction compositions is not packaged. |
-| Summable/modulus tower corollaries, `cor:summable`, `cor:modulus-tower` | — | ⬜ | Not encoded. |
+| Summable/modulus tower corollaries, `cor:summable`, `cor:modulus-tower` | none | ⬜ | Not encoded. |
 | Receipt-to-exact comparison, `lem:receipt-to-exact` | `heterogeneous_two_output_estimate` | 🟡 | Follows by the manuscript specialization; a dedicated receipt structure/wrapper is not encoded. |
 | Same-level implementation agreement, `prop:same-level-implementations` | `same_level_implementation_agreement` | ✅ | Full metric/Lipschitz core with no refinement-tail term. |
 | Pathwise telescope to an anchor, `lem:pathwise-anchor` | `telescoping_refinement_bound` | 🟡 | The arbitrary chain sum is proved; path-dependent `α_j` and dependent restrictions are not packaged. |
 | Fine-to-coarse certificate, `cor:fine-to-coarse-solver` | `projective_implementation_bound_from_tower_receipt` | 🟡 | Solver receipt plus an exact-tower receipt under a Lipschitz restriction. |
 | Anchored cross-level comparison, `thm:anchored-cross-level` | `anchored_cross_level_metric_core` | 🟡 | Complete five-segment metric core. The stage-indexed restriction, modulus, and pathwise-`A` wrapper remains outside Lean. |
 | Nested compatible levels, `cor:nested-cross-level` | `nested_compatible_levels_metric_core` | 🟡 | Complete three-segment metric core after compatibility removes the first path and anchor-mismatch terms. |
-| Cofinal common limit, `cor:cofinal-projective` | — | ⬜ | Cauchy/completeness, cofinal-subsequence, and inverse-system compatibility proof not encoded. |
-| Inverse-limit normalizer, `thm:inverse-limit` | — | ⬜ | Dependent inverse-limit construction not encoded. |
+| Cofinal common limit, `cor:cofinal-projective` | none | ⬜ | Cauchy/completeness, cofinal-subsequence, and inverse-system compatibility proof not encoded. |
+| Inverse-limit normalizer, `thm:inverse-limit` | none | ⬜ | Dependent inverse-limit construction not encoded. |
 | Earlier-draft two-tail comparison | `two_implementations_bound_from_tower_receipts` | 🟡 | Supporting precursor only; it is not identified as a current paper theorem. |
 
 ## Repair and selection
@@ -74,7 +74,7 @@ Status legend:
 | No-repair certificate | `no_strongRepair_of_missing_collar` | ✅ | Nonempty write space. |
 | Robust no-repair margin, `prop:robust-no-repair` | `robust_no_repair_margin`; `repairMargin_pos_of_compact` | ✅ | Uses the current nonempty-relation hypothesis; abstract collar map and dominating metric. |
 | Empty-domain/empty-relation audits | `empty_write_space_counterexample`; `empty_relation_repairMargin_zero` | ✅ | Machine-checks why the nonemptiness qualifications are load-bearing. |
-| Equivariant section / stabilizer obstruction, `thm:equivariant-section`, `thm:stabilizer` | — | ⬜ | Not encoded. |
+| Equivariant section / stabilizer obstruction, `thm:equivariant-section`, `thm:stabilizer` | none | ⬜ | Not encoded. |
 
 ## Conditional mechanism-variant comparison
 

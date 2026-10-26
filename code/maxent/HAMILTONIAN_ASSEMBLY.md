@@ -170,8 +170,8 @@ The replayed generic closure defects are `0.00018189324934382215` and
 than `7e-16` nats. The product control remains closed to numerical precision
 (`6.4e-16` nats). All recorded acceptance decisions are retained.
 
-The sector Gibbs constructor and the three open audits #1048/#1049/#1050
-are separate consumers/results; this branch starts directly from main.
+The sector Gibbs constructor and the audits #1048/#1049/#1050 (merged)
+are separate consumers/results.
 The common finite algebra, first-law, conditional-information and protected
 record conclusions are not changed. No source model, clock, simulator law,
 particle parameter or physical identification is supplied. The model-choice

@@ -11,8 +11,8 @@ and coin `c`, the native endpoint repair is `F_e,c`, with current
 Each fixed-current map is an injective translation: its inverse adds `j` at
 `a` and subtracts `j` at `b`. Each source basis vector has one branch for
 each coin. Consequently `sum_r L_r† L_r = I`, and
-`W_e=sum_r |r> tensor L^e_r` is an isometry. This is N1 current C.
-The **contrast** instrument N1-E groups branches by pre-event contrast
+`W_e=sum_r |r> tensor L^e_r` is an isometry. This is the current law C
+(legacy label N1). The **contrast** instrument E (legacy N1-E) groups branches by pre-event contrast
 instead. Its classical endpoint probabilities agree with C, but its coherent
 sums differ. Classical grouping of E records is not an implementation of C.
 
@@ -107,7 +107,7 @@ physical no-go and not an obstruction to observers with classical records.
 
 The [postcommit observer realization](../common_source/DERIVATION.md#a-native-postcommit-operational-observer)
 checks every `ConsensusTower` and `OperationalObserver` field on this K,
-with its actual first-event state, E/F controls and declared blank-buffer
+with its actual first-event state, `e`/`f` seam controls and declared blank-buffer
 refinements. Its accessible algebra is the classical first-letter algebra;
 its typed prediction advances issuance to retention of the same evidence.
 This is an exact mathematical realization, without a compiled Lean
@@ -130,7 +130,10 @@ of R given S, using q(R') against the actual Y adds twice that variance
 above the true record forecast. Thus the within-action shuffle preserves
 action information while testing the additional native-record information.
 All fractions are also verified directly by independent branch enumeration;
-no conditional branch or timeout is discarded. There is no delivery service
+no conditional branch or timeout is discarded. Because the forecast is the
+model's own conditional law and the controller is a design choice, these
+are consistency checks of the declared construction, not evidence of
+learning. There is no delivery service
 in this two-event local protocol.
 
 For the feedback audit, a positive first current occurs on ten binary inputs
@@ -154,4 +157,4 @@ apparatus. It does not claim to manufacture the tape using unrestricted
 bare C updates on the original working loads. The global all-seam stationary state
 is not the halted recorder state, and the local event count is not calibrated
 physical duration. No N4 geometry, clock, gauge or field result is silently
-transferred onto this N1 observer construction.
+transferred onto this C observer construction.

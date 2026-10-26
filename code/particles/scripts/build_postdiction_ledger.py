@@ -43,6 +43,8 @@ from pathlib import Path
 from typing import Any
 
 SCRIPTS = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPTS.parents[2] / "tools"))
+from closed_lanes import live_owners, owner_text  # noqa: E402
 PARTICLES = SCRIPTS.parent
 CODE = PARTICLES.parent
 REPO = CODE.parent
@@ -2891,7 +2893,7 @@ def _forced_structure(
                 "only that naive architecture; a support-aware extended "
                 "divergence, pinching Pythagoras, constrained maximum entropy, "
                 "and the publicization information chain are not constructed. "
-                "Scientific owner #730 records those quantum-composition "
+                "Historical lane #730 (closed; live owner #1026) records those quantum-composition "
                 "obligations; #739 records any residual premise-discharge "
                 "obligation. "
                 "No source rule selects that partition, a state, an observable, "
@@ -3035,7 +3037,7 @@ def _forced_structure(
                 "system evolution, and finite-time operational protocols "
                 "unresolved by this result. It constructs no wave operator, S-matrix, cross "
                 "section, pole, optical theorem, renormalization flow, or "
-                "continuum QFT. Scientific owner #743 records those interacting-QFT, "
+                "continuum QFT. Historical lane #743 (closed; live owner #1026) records those interacting-QFT, "
                 "renormalization, and scattering obligations. This row emits "
                 "no frozen prediction"
             ),
@@ -4473,10 +4475,10 @@ def _forced_structure(
                 "couples both pair paths, counted states, checkpoints, and "
                 "adjacent-step marginals on one carrier, but supplies no "
                 "regional-net or tower morphism; neither packet is a "
-                "nonconstant source realization. Scientific owner #728 "
+                "nonconstant source realization. Historical lane #728 (closed; live owner #1026) "
                 "records the missing source-attached or otherwise justified "
                 "regional construction and a nonconstant source composition; "
-                "scientific owner #739 records a "
+                "historical lane #739 (closed; live owner #1026) records a "
                 "missing source realization or genuinely scoped no-go. "
                 "No CP/CPTP channel, scheduler locality, spacetime causality, "
                 "time-slice property, continuum QFT, observable, decision rule, "
@@ -4954,7 +4956,7 @@ def _forced_structure(
                 "after full coexistent-effect additivity is supplied. No physical "
                 "Born derivation, observable, or prediction is emitted. Scientific "
                 "owner #730 records the missing source-earned phase instrument, operational "
-                "additivity, and public readback; scientific owner #739 records the "
+                "additivity, and public readback; historical lane #739 (closed; live owner #1026) records the "
                 "remaining affinity-principle obligation"
             ),
             "paper_ref": "observers paper, finite Born-frame rank audit",
@@ -5138,8 +5140,8 @@ def _forced_structure(
                 "artifact: a mixing-mode-retaining linear intertwiner into the "
                 "idempotent heat bath and a deterministic empirical pushforward. "
                 "It does not exclude stochastic, nonlinear, reverse-direction, "
-                "dilated, or enriched-source constructions. Scientific owner "
-                "#739 records the missing replacement common reference, collar, "
+                "dilated, or enriched-source constructions. Historical lane #739 "
+                "(closed; live owner #1026) records the missing replacement common reference, collar, "
                 "objective, genuinely varying refinement family, source-clock "
                 "derivation, and repair-export decision; empirical energy-clock "
                 "calibration is PR-15. Closed #732 records only the attained "
@@ -5343,12 +5345,12 @@ def _forced_structure(
                 "current, update order, and charge have no physical identity. "
                 "The guarded WardLimitManifest derives zero limiting residual "
                 "from exact finite-residual vanishing and convergence on a "
-                "shrinking scale with separating tests. Scientific owner #729 "
+                "shrinking scale with separating tests. Historical lane #729 (closed; live owner #1026) "
                 "records the obligation to define "
                 "that residual from finite continuity, identify it with physical "
                 "distributional divergence, and supply the source, transport, "
                 "chart, and common-tower evidence before continuum Ward use; "
-                "scientific owner #737 records the missing instrument attachment, "
+                "historical lane #737 (closed; live owner #1077) records the missing instrument attachment, "
                 "and #739 records deferred premise discharge"
             ),
             "paper_ref": "screen-microphysics paper, finite conservation bridge",
@@ -5412,13 +5414,14 @@ def _forced_structure(
                 "on a declared Cartesian slot. The later 86/247 capstone grounds "
                 "fully disjoint source supports and the exact counted correlated "
                 "state with its marginals, while its erasure theorem proves that "
-                "coverage cannot reconstruct that state. Scientific owner #728 "
+                "coverage cannot reconstruct that state. Historical lane #728 (closed; live owner #1026) "
                 "records the missing source-attached or otherwise justified "
                 "factor reading and nonconstant source composition; #739 owns the residual source "
                 "realization or no-go. The missing source channel/adaptive-scheduler semantics "
-                "are recorded by #728, physical clocks by #739, physical spacetime "
-                "attachment by #729, instrumentation by #737, and continuum "
-                "causal/time-slice structure by #730. Those scientific owners mark "
+                "were recorded under the historical lane #728, physical clocks under #739, "
+                "physical spacetime attachment under #729, instrumentation under #737, and "
+                "continuum causal/time-slice structure under #730, all closed; their open "
+                "work is owned by #1026 and #1077. Those historical lanes mark "
                 "downstream promotions outside this claim's gate. This row "
                 "emits no prediction-ladder entry"
             ),
@@ -5472,7 +5475,7 @@ def _forced_structure(
                 "supplied. The helper proves neither their source production nor "
                 "fairness, liveness, positivity, normalized state/channel, CPTP, "
                 "distance, clock, spacelike, continuum, or laboratory semantics. "
-                "Scientific owner #728 records the missing source scheduler/channel "
+                "Historical lane #728 (closed; live owner #1026) records the missing source scheduler/channel "
                 "attachment; #739 and #730 record the clock and continuum-causality "
                 "attachments. This row emits no prediction-ladder entry"
             ),
@@ -5639,7 +5642,7 @@ def _forced_structure(
                 "concave control concerns modes/minimizers only: constrained "
                 "saddles, complex or signed stationary phase, and refinement "
                 "routes are not excluded. Closed #731 records only the attained "
-                "declared-bundle composition. Scientific owner #739 records source "
+                "declared-bundle composition. Historical lane #739 (closed; live owner #1026) records source "
                 "selection of the reference, real enrichment, stationary-phase "
                 "mechanism, and source clock; #730 records the amplitude/interference "
                 "interface, while physical fields and observable currents are not "
@@ -5879,6 +5882,12 @@ def _alpha_rows(
     ):
         raise SystemExit("alpha/HVP verdict has left its retrospective audit boundary")
     containment = bridge_verdict["reference_deficit_inside_certified_gap"]
+    onshell_anchor_gap = float(
+        bridge["reference_decomposition_compare_only"]["gap_phys_minus_oph"]
+    )
+    codata_inside = co["codata_inside_endpoint_interval"]
+    if not isinstance(codata_inside, bool):
+        raise SystemExit("endpoint artifact lacks a boolean CODATA containment flag")
     return [
         {
             "id": "alpha_inv_thomson_endpoint",
@@ -5890,12 +5899,22 @@ def _alpha_rows(
             "row_class": endpoint["row_class"],
             "tier": alpha_hvp_verdict["row_class"],
             "anchor_gap_interval": [float(v) for v in co["same_scheme_anchor_gap_interval_inv_alpha"]],
+            "endpoint_deficit_central": -float(co["gap_central_inv_alpha"]),
+            "endpoint_deficit_interval": sorted(
+                -float(v) for v in co["gap_interval_inv_alpha"]
+            ),
+            "codata_inside_endpoint_interval": codata_inside,
+            "onshell_anchor_gap": onshell_anchor_gap,
             "reference_deficit_inside_recorded_accounting_interval": containment,
             "audit_verdict": alpha_hvp_verdict["verdict"],
             "cross_class_agreement": cross_class,
             "reading": (
-                "one retrospective KNT19 accounting row is arithmetically "
-                "compatible with the recorded same-scheme interval. The "
+                "the retrospective KNT19 endpoint lies below CODATA and its "
+                "certified interval excludes CODATA. The recorded accounting "
+                "interval for the anchor shift needed to reach CODATA contains "
+                "the on-shell anchor gap, which computes the same gap from "
+                "CODATA with standard running; that containment is bookkeeping "
+                "consistency, not agreement of the endpoint with CODATA. The "
                 "multi-class HVP test is not evaluable because no independent "
                 "frozen class is present. Containment does not identify the "
                 "physical source of the gap, select one closure map, construct "
@@ -5906,7 +5925,8 @@ def _alpha_rows(
                 _rel("anchor_bridge"),
                 _rel("alpha_hvp_verdict"),
             ],
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         }
     ]
 
@@ -5999,7 +6019,8 @@ def _alpha_closure_rows(
                     _rel("p_interval_contraction"),
                     _rel("endpoint"),
                 ],
-                "scientific_owner_issues": [736],
+                "historical_owner_issues": [736],
+                "live_owner_issues": [1026],
             }
         )
     return rows
@@ -6047,7 +6068,7 @@ def _lepton_rows(
                 "witness, that value lies inside the retrospective accounting "
                 "interval, and its "
                 "distance to the standard on-shell reference deficit is an "
-                "unfixed scheme term. Scientific owner #736 records that "
+                "unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that "
                 "missing source obligation. The lepton "
                 "scale is localized only under the recorded accounting "
                 "packet. A "
@@ -6061,7 +6082,8 @@ def _lepton_rows(
             "width_floor": width_floor["floor_attribution"],
             "tier": "T1_empirical_closure",
             "artifact_refs": [_rel("kappa_rectangle"), _rel("kappa_coherent")],
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         }
     )
     mcpr_masses = [float(m) / 1000.0 for m in mcpr["masses_MeV_display"]]
@@ -6138,7 +6160,8 @@ def _lepton_rows(
             "epistemic_scope": lane["numerical_certificate"]["epistemic_scope"],
             "numerical_certificate": lane["numerical_certificate"],
             "artifact_ref": _rel(artifact),
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         }
         if key.endswith("coherent"):
             entry["width_reduction_factor"] = lane["kappa_interval"]["width_reduction_factor"]
@@ -6186,6 +6209,10 @@ def _ew_rows(conditional: dict[str, Any]) -> list[dict[str, Any]]:
             "row_class": conditional["row_class"],
             "artifact_ref": _rel("conditional_ew"),
         }
+        if key in ("mH_gev", "mt_pole_gev"):
+            if conditional["inputs"]["surface_source"] != "d11_declared_calibration_surface.json":
+                raise SystemExit("Higgs/top rows left the declared calibration surface")
+            row["anchoring"] = "target_anchored_backsolve"
         if block["physical_comparison_status"] == "COMPARE_ONLY":
             row.update(
                 {
@@ -6242,7 +6269,7 @@ def _quark_rows(
                 "No absolute quark mass is emitted. The two-modulus spread "
                 "fiber (R>0)^2, obtained by granting a candidate-only ordered "
                 "shape law, survives the 2026-07 certified structure set "
-                "(matter receipt #314, port receipt #566, twelve frozen "
+                "(historical matter receipt #314, historical port receipt #566, twelve frozen "
                 "selector candidates, with input hashes pinned at emission), so the "
                 "six source-only absolute masses are non-identifiable from that "
                 "set, by an explicit rescaling symmetry of the registered data. "
@@ -6255,7 +6282,8 @@ def _quark_rows(
             "fiber_cut_detected": obstruction["fiber_cut_detected"],
             "tier": obstruction["claim_tier"],
             "artifact_ref": _rel("fiber_obstruction"),
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         },
         {
             "id": "quark_down_type_clebsch_route_rejected",
@@ -6353,7 +6381,7 @@ def _hadron_rows(
                 "the fine-structure lane; source-only hadron rows stay "
                 "suppressed. The resource-deferred QCD backend supplies no "
                 "source-only result; "
-                "scientific owner #736 records the bounded particle-output obligation, "
+                "historical lane #736 (closed; live owner #1026) records the bounded particle-output obligation, "
                 "and source-only QCD remains outside the available resources."
             ),
             "artifact_ref": _rel("hadron_payload"),
@@ -6384,7 +6412,8 @@ def _hadron_rows(
             ),
             "claim_boundary": lambda_scale["claim_boundary"],
             "artifact_refs": [_rel("lambda_transmutation")],
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         },
         {
             "id": "nucleon_mass_external_ratio",
@@ -6411,7 +6440,8 @@ def _hadron_rows(
                 _rel("nucleon_external_ratio"),
                 _rel("lambda_transmutation"),
             ],
-            "scientific_owner_issues": [736],
+            "historical_owner_issues": [736],
+            "live_owner_issues": [1026],
         },
     ]
 
@@ -6487,7 +6517,7 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"distance {wp['scheme_term_difference_inv_alpha']:+.4f} to "
                 "the standard on-shell reference deficit "
                 f"{wp['reference_deficit_inv_alpha']:.4f} is the scheme "
-                "unfixed scheme term; scientific owner #736 records that missing source "
+                "unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source "
                 "requirement. The lepton "
                 "scale is localized only under that recorded accounting "
                 "packet. A "
@@ -7281,6 +7311,13 @@ def build(
     return result
 
 
+def _current_map_name(text: str) -> str:
+    """Drop the retired closure-ledger label from certificate map descriptions."""
+    return text.replace("the closure-ledger CL-2 mixed map", "the mixed map").replace(
+        "closure-ledger CL-2 ", ""
+    )
+
+
 def _fmt(x: float, digits: int = 6) -> str:
     return f"{x:.{digits}g}"
 
@@ -7305,6 +7342,34 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "report containment of the compare-only witness; conditional rows carry "
         "their declared premises; chart coordinates keep their NOT_EVALUABLE "
         "physical-comparison status.")
+    add("")
+    add("## How to read the tiers and classes")
+    add("")
+    add("| Tier | Meaning |")
+    add("| --- | --- |")
+    add("| `T0_retrospective_conditional_comparison` | a conditional value compared "
+        "with a measurement published before it was fixed; never a prediction |")
+    add("| `T1_empirical_closure` | an OPH map completed with a measured external "
+        "input, such as the hadronic payload; a consistency check, not a source "
+        "value |")
+    add("| `T2_conditional` | a value that follows from declared premises; "
+        "compare-only |")
+    add("| `T2_conditional_rejected_candidate` | a conditional candidate that its "
+        "own comparison rejects |")
+    add("")
+    add("Row classes name what a row consumes. `conditional_on_...` classes list "
+        "their declared premises. Classes containing `empirical`, `target_shape` "
+        "or `measured_premise_ancestry` consume a measured value or the target's "
+        "shape and cannot be predictions; target-anchored rows are back-solved "
+        "calibrations. `certified_interval_fixed_point_of_declared_closure_map` "
+        "is an interval-certified fixed point of a declared map, and "
+        "`oph_plus_external_qcd_theory` consumes an external QCD calculation. "
+        "The [cosmology ledger](../code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md) "
+        "uses its own classes: `conditional_theorem_postdiction` corresponds to "
+        "`T2_conditional` exposed after the data, `shared_baseline` marks a value "
+        "identical to the standard expectation, `closure_candidate_display` and "
+        "`fitted_comparison_value` are displays that carry no verdict, and "
+        "`not_evaluable` has no comparison contract.")
     add("")
     add("## Restricted finite matter and field contracts")
     add("")
@@ -7559,25 +7624,36 @@ def _render_md(ledger: dict[str, Any]) -> str:
             continue
         lo, hi = row["value_interval"]
         glo, ghi = row["anchor_gap_interval"]
+        dlo, dhi = row["endpoint_deficit_interval"]
+        codata_side = (
+            "inside" if row["codata_inside_endpoint_interval"] else "outside"
+        )
         add(f"- `alpha_em^-1` Thomson endpoint: `{_fmt(row['value_central'], 10)}` "
             f"in `[{_fmt(lo, 10)}, {_fmt(hi, 10)}]` against CODATA "
             f"`{_fmt(row['measured'], 10)}` (compare-only). Payload release "
-            f"`{row['payload_release']}`.")
+            f"`{row['payload_release']}`. Endpoint deficit "
+            f"`{_fmt(row['endpoint_deficit_central'], 4)}` on "
+            f"`[{_fmt(dlo, 4)}, {_fmt(dhi, 4)}]` inverse-alpha units; CODATA "
+            f"lies {codata_side} the endpoint interval.")
         inside = (
             "inside"
             if row["reference_deficit_inside_recorded_accounting_interval"]
             else "outside"
         )
         add(f"- Recorded retrospective same-scheme accounting interval "
-            f"`[{_fmt(glo, 4)}, {_fmt(ghi, 4)}]` inverse-alpha units; the "
-            f"standard reference deficit sits {inside} that interval.")
+            f"`[{_fmt(glo, 4)}, {_fmt(ghi, 4)}]` inverse-alpha units for the "
+            f"anchor shift that would reach CODATA; the on-shell anchor gap "
+            f"`{_fmt(row['onshell_anchor_gap'], 4)}` (CODATA run to `M_Z` with "
+            f"standard running, minus the source anchor) sits {inside} that "
+            f"interval. Both numbers measure the same anchor gap; containment "
+            f"checks the bookkeeping, not agreement with CODATA.")
         add(f"- Independent-class verdict: `{row['audit_verdict']}`; evaluated "
             f"independent classes: "
             f"`{row['cross_class_agreement']['independently_evaluated_class_count']}`.")
         add(f"- Reading: {row['reading']}")
         add(
-            "- Scientific owner: "
-            + ", ".join(f"#{i}" for i in row["scientific_owner_issues"])
+            "- Live owner: "
+            + owner_text(row["historical_owner_issues"])
         )
     closure_rows = [
         row for row in s["alpha"] if row["id"] != "alpha_inv_thomson_endpoint"
@@ -7602,7 +7678,7 @@ def _render_md(ledger: dict[str, Any]) -> str:
         for row in closure_rows:
             width = float(row["enclosure_width_decimal"])
             add(
-                f"| {row['closure_map_description']} | "
+                f"| {_current_map_name(row['closure_map_description'])} | "
                 f"`{_fmt(row['value_central'], 12)}` | "
                 f"`{_fmt(width, 2)}` | "
                 f"`{_fmt(row['p_central'], 12)}` | "
@@ -7611,7 +7687,7 @@ def _render_md(ledger: dict[str, Any]) -> str:
             )
         add("")
         for row in closure_rows:
-            definition = row["map_definition"].rstrip(". ")
+            definition = _current_map_name(row["map_definition"]).rstrip(". ")
             add(
                 f"- `{row['id']}`: {definition}. Existence and "
                 "uniqueness of the fixed point are certified by interval "
@@ -7626,9 +7702,9 @@ def _render_md(ledger: dict[str, Any]) -> str:
             f"reference, `{abs(gauge['deviation_inv_alpha']):.6f}` inverse-alpha "
             "units, is the open term of this lane. It carries the hadronic "
             "content that the Thomson-endpoint row above accounts for "
-            "retrospectively, and closing it from the source side is work in "
-            "progress under the scientific owner "
-            + ", ".join(f"#{i}" for i in gauge["scientific_owner_issues"])
+            "retrospectively, and closing it from the source side is open work "
+            "owned by "
+            + owner_text(gauge["historical_owner_issues"])
             + "."
         )
         add(
@@ -7708,7 +7784,10 @@ def _render_md(ledger: dict[str, Any]) -> str:
         if row["physical_comparison_status"] == "COMPARE_ONLY":
             add(f"| `{row['id'][3:]}` | `{_fmt(row['value_central'], 8)}` | `{env}` | "
                 f"`{row['measured']} +- {row['measured_sigma']}` ({row['measured_source']}) | "
-                f"`{_fmt(row['delta_over_sigma'], 3)}` | compare-only |")
+                f"`{_fmt(row['delta_over_sigma'], 3)}` | "
+                + ("compare-only, target-anchored |"
+                   if row.get("anchoring") == "target_anchored_backsolve"
+                   else "compare-only |"))
         else:
             add(f"| `{row['id'][3:]}` | `{_fmt(row['value_central'], 8)}` | `{env}` | "
                 "chart coordinate | n/a | NOT_EVALUABLE |")
@@ -7723,14 +7802,17 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "residue, physical-current amplitude, or independent numerical replay. "
         "The fixture is not composed with the OPH chart, so no physical W/Z pole "
         "or mass comparison is defined. The Higgs and top rows are conditional "
-        "on the declared selection axioms.")
+        "on the declared selection axioms and are target-anchored: the declared "
+        "calibration surface back-solves them from the measured Higgs/top pair "
+        "through the synchronization-scale scan, so their agreement is built in "
+        "and is not a prediction.")
     add("")
     add("## Quarks")
     add("")
     for row in s["quarks"]:
         if row["id"].endswith("obstruction"):
             add(f"- Absolute masses ({row['tier']}): {row['statement']} "
-                f"(scientific owner {', '.join(f'#{i}' for i in row['scientific_owner_issues'])}).")
+                f"(live owner {owner_text(row['historical_owner_issues'])}).")
         elif row["id"] == "quark_conditional_rscc_comparison":
             flag = row["flag_derived_ms_over_md"]
             pdg = row["pdg_2026_ms_over_mud"]
@@ -7808,6 +7890,17 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("")
     for row in s["neutrinos"]:
         add(f"- {row['statement']} (`{row['artifact_ref']}`).")
+    add("")
+    add("## Dispersion coefficients")
+    add("")
+    add("- The frozen dispersion rows FZ-11 and FZ-12 share the quadratic "
+        "coefficient delta_gamma2 = -a^2/20. With the natural scale "
+        "a = sqrt(P) l_P it is -5.47 x 10^-58 eV^-2, 5.47 times the photon-only "
+        "Pierre Auger 2022 bound delta_gamma2 > -1 x 10^-58 eV^-2. The bound is "
+        "scenario- and interaction-dependent and predates both freezes, so this "
+        "retrospective exposure decides nothing under the frozen rules "
+        "(`code/a5_fingerprint/runtime/fz12_auger_threshold_diagnostic_receipt.json`; "
+        "[frozen-prediction ladder](FROZEN_PREDICTION_LADDER.md)).")
     add("")
     return "\n".join(lines)
 

@@ -268,10 +268,12 @@ def _alpha_rows(
             "row_class": bridge["row_class"],
             "missing_correction_hypothesis": {
                 "mechanism": (
-                    "the anchor is a one-loop unification-run value with no "
-                    "nonperturbative hadronic running; the certified same-scheme gap "
-                    "interval contains the standard reference deficit 0.631 in its "
-                    "interior, confirming a running deficit rather than an anchor error"
+                    "the anchor is a one-loop unification-run value that lies 0.631 "
+                    "below the physical on-shell value at m_Z; the certified same-scheme "
+                    "gap interval and that on-shell deficit measure the same anchor gap "
+                    "computed two ways, so their containment checks the bookkeeping and "
+                    "locates the miss at the anchor, without showing agreement with the "
+                    "measured coupling"
                 ),
                 "falsification_test": (
                     "emit the source hadronic spectral measure and the a0 scheme "
@@ -355,8 +357,9 @@ def _lepton_rows(kappa_lane: dict[str, Any]) -> list[dict[str, Any]]:
                         "kappa-interval width is carried by the published-compilation "
                         "payload uncertainty and the independent lepton-transport "
                         "budgets; the physical on-shell anchor requirement sits inside "
-                        "the certified anchor-gap interval, so the central offset is a "
-                        "position within the certified band, not a payload deficit"
+                        "the certified anchor-gap interval because both measure the same "
+                        "anchor gap, so the containment is a bookkeeping consistency "
+                        "check, not agreement with the measured coupling"
                     ),
                     "falsification_test": (
                         "replace the empirical payload with the source hadronic "
@@ -407,10 +410,12 @@ def build(out_path: Path = DEFAULT_OUT) -> dict[str, Any]:
             "secondary_reduction": "selection-axiom source derivation (#521)",
             "wz_reduction": "complete W/Z common-observable scheme map",
             "coherence_check": (
-                "the standard reference deficit 0.631 sits inside the certified "
-                "anchor-gap interval, and the lepton-lane reference-deficit kappa "
-                "sits inside the certified kappa interval; both containments are "
-                "read from the same endpoint artifact and are mutually consistent"
+                "the on-shell reference deficit 0.631 and the certified anchor-gap "
+                "interval measure the same anchor gap computed two ways, and the "
+                "lepton-lane reference-deficit kappa sits inside the certified kappa "
+                "interval; both containments are read from the same endpoint artifact "
+                "and check bookkeeping consistency, not agreement with the measured "
+                "coupling, which the Thomson endpoint misses by 0.48 percent"
             ),
         },
     }

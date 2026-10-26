@@ -203,11 +203,11 @@
   },
   "pins": {
     "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
-    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "75d18ac80770a6695d0afc4d06e56e6530caccfbce09f9a95b7e4b479425eed8",
-    "code/cosmology/postdiction_ledger/corpus_inputs.json": "22105f1a4b4854b34e8a176d8854d8651d524405e57add3303ee6860131eb62d",
+    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "589686bdf739d7713e217f38d74c33a23f90c826d611ac0e4a870f6435855eaf",
+    "code/cosmology/postdiction_ledger/corpus_inputs.json": "9eaa1279110b433be65ace4cb7702ccf1ad3cda1c307e8e99b8b6ca8ac29cbbe",
     "code/cosmology/postdiction_ledger/public_inputs.json": "ce7d58fa6c35bad5d14262a6ad1c0b1e4371010fc2254134e91193dcd9a7a436",
-    "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "acb586a524004e0620506b430349199eb8c4be9de6e3846c0d02ecc32b1a8dc8",
-    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "47fa4fc2e125794a1c0de3df73a58970a095e2376320be4b8b940c24ebdda39e",
+    "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "8871e6b6826f0f6db5475c422773fad7f49e6f2a69d9b6a3373c0246ee7466ad",
+    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "fbd4e5a6c89bb8ac1cc1b7eb8e56a268c6918e07f72f81367b7f26c30f15ae98",
     "code/cosmology/rar_deep_regime/receipts/sparc_deep_regime_diagnostic.json": "b52c06698523ada1b8fe6337f61d81b5a0c57421c03453679dccf1872f56f2e9",
     "code/cosmology/rar_deep_regime/receipts/sparc_full_rar_calibration.json": "204ec809099937ffdb95ba77ae26f1343b49e9378a6c030c6b3494d29f28525f",
     "code/cosmology/tilt_posterior/likelihood_slice.json": "c8d8481e3807f407217e52aad7aa21f5d1993877e5deeb826d4956443fe6680d"
@@ -215,7 +215,7 @@
   "promotes_nothing": true,
   "public_inputs_schema": "oph.cosmology.postdiction_ledger.public_inputs.v1",
   "row_count": 53,
-  "rows_sha256": "efe91527d3eade781f66b9e19ed22c04a78379375c2a3aba36f6ba97ee4079c9",
+  "rows_sha256": "b55024f0b856357f72dd92debe322ffd50ea6816a3e9d22b41018c56b0b7b2c1",
   "schema": "oph.cosmology.postdiction_ledger.v1",
   "sections": [
     {
@@ -1741,10 +1741,11 @@
           ],
           "dataset": "DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display",
           "discriminates_from_baseline": false,
-          "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data.",
+          "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data. A target-informed display carries no verdict; the standardized distance is display information only.",
           "extras": {
             "percent_residual_in_capacity": 3.662675870812432,
-            "percent_residual_in_lambda": -3.5332638676788273
+            "percent_residual_in_lambda": -3.5332638676788273,
+            "standardized_distance_display": -2.6361438828693995
           },
           "measurement": {
             "capacity_coordinate": 3.1757814202121453e+122,
@@ -1774,9 +1775,9 @@
           "quantity": "Lambda l_P^2 = 3 pi/N, N = 3.2921e+122 (candidate a)",
           "row_id": "lambda_lp2_capacity_candidate_a_desi_dr2_display",
           "section": "capacity_lambda",
-          "sigma_distance": -2.6361438828693995,
-          "sigma_distance_kind": "signed_one_dimensional",
-          "verdict": "tension"
+          "sigma_distance": null,
+          "sigma_distance_kind": "none_not_evaluable",
+          "verdict": "not_evaluable"
         },
         {
           "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209, Table 2",
@@ -1840,10 +1841,11 @@
           ],
           "dataset": "DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display",
           "discriminates_from_baseline": false,
-          "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data.",
+          "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data. A target-informed display carries no verdict; the standardized distance is display information only.",
           "extras": {
             "percent_residual_in_capacity": 3.9145823763762087,
-            "percent_residual_in_lambda": -3.7671155355248267
+            "percent_residual_in_lambda": -3.7671155355248267,
+            "standardized_distance_display": -2.8106190046768247
           },
           "measurement": {
             "capacity_coordinate": 3.1757814202121453e+122,
@@ -1873,9 +1875,9 @@
           "quantity": "Lambda l_P^2 = 3 pi/N, N = 3.3001e+122 (candidate b)",
           "row_id": "lambda_lp2_capacity_candidate_b_desi_dr2_display",
           "section": "capacity_lambda",
-          "sigma_distance": -2.8106190046768247,
-          "sigma_distance_kind": "signed_one_dimensional",
-          "verdict": "tension"
+          "sigma_distance": null,
+          "sigma_distance_kind": "none_not_evaluable",
+          "verdict": "not_evaluable"
         }
       ],
       "title": "Capacity and the cosmological constant"

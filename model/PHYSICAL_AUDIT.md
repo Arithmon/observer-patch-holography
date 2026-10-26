@@ -9,11 +9,19 @@ relative null stress. With the reference and other sources fixed, that
 attachment cannot balance both states. A responsive geometry and physical
 fixed-proper-volume generalized-entropy stationarity remain independent
 requirements. Neither a transfer relaxation gap nor a cavity frequency is
-identified with an observed particle rest mass by these witnesses.
+identified with an observed particle rest mass by these witnesses. The
+tested mass prescriptions fail the charged-lepton hierarchy: the declared
+linear Weyl–Higgs candidate gives ratios `1:1.1903:1.4982` against the
+observed `1:206.77:3477.23`, and the whole complex affine class bounds the
+largest-to-smallest mass ratio by `543.55` against an observed lower bound
+of `3470` ([mass-response report](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)).
 
-The construction derives a common subsequential continuum operator and a
-conditional product free field with thermal state, active clock and measurable
-Lorentz-signature action. A smooth full action density gives a smooth metric;
+The construction derives a common subsequential continuum operator `A` on
+the two-dimensional screen. On top of its spectrum it assembles a
+conditional product free field: a declared radial filter, a thermal state
+on supplied qubit codes, an active clock whose per-mode Hamiltonians are
+compiled from the spectrum of `A`, and a chosen hyperbolic action with a
+measurable Lorentz-signature density. A smooth full action density gives a smooth metric;
 a finite interacting projection on that product has complete source readouts.
 Its radial domain, interaction and observer services are supplied.
 Observed spacetime, interacting continuum QFT, Einstein dynamics and laboratory clock
@@ -72,8 +80,8 @@ overturned by successful finite native-carrier calculations or by this audit.
 
 | Requested bridge | Achieved mathematical content | Additional physical obligation |
 | --- | --- | --- |
-| Space and fields | Native Green fields and independent long-block innovations give a declared radial product of spectral dimension three. Its thermal covariance and local wave action share one operator; the action determines a measurable Lorentz-signature metric and admits smooth 1+3 effective descriptions of finite admissible measurement menus to arbitrary tolerance. A projected quartic example has interacting source readouts on that product. | Radial topology, boundary conditions, interaction, filters and access remain supplied. Distinct radial graphs share the complete radial-average angular law. Smoothness of the source limit, physical transport and length calibration are unproved. |
-| Time | Complete stopped instruments compare native clocks. Incident-triggered angular/radial pulses give a joint product clock with controlled splitting error; matched faithful states identify its full-algebra modular flow. Finite-word and precision bounds provide a constructive growing angular clock family. | Preparation, protected controls and carrier pauses are declared. Growing execution and arbitrarily accurate source services remain obligations. Passive repair, spatial-patch modular flow and laboratory duration are not identified with this active clock; the interacting projection has its own complete native-incident attachment and declared model-time conversion. |
+| Space and fields | A declared spectral filter of the native Green operator applied to whitened consecutive long-record blocks synthesizes a radial product of spectral dimension three; the radial slices are consecutive blocks of one history and carry no native information beyond the spectrum of `A`. Its thermal covariance and local wave action share one operator; the chosen hyperbolic action has a measurable Lorentz-signature metric density and admits smooth 1+3 effective descriptions of finite admissible measurement menus to arbitrary tolerance. A projected quartic example has interacting source readouts on that product. | Radial topology, boundary conditions, interaction, filters and access remain supplied. Distinct radial graphs share the complete radial-average angular law. Smoothness of the source limit, physical transport and length calibration are unproved. |
+| Time | Complete stopped instruments compare native clocks. Incident-triggered angular/radial pulses give a joint product clock with controlled splitting error; when the preparation is the Gibbs state of the compiled Hamiltonian, the finite KMS identity makes its modular flow the rescaled Hamiltonian flow. Finite-word and precision bounds provide a constructive growing angular clock family. | Preparation, protected controls and carrier pauses are declared. Growing execution and arbitrarily accurate source services remain obligations. Passive repair, spatial-patch modular flow and laboratory duration are not identified with this active clock; the interacting projection has its own complete native-incident attachment and declared model-time conversion. |
 | Action from repair | C/E give a local positive Liouville form. A positive classical transfer gives a Euclidean logarithm. A dilation gives a dimensionless Hermitian history action. | These are distinct constructions. None alone selects a physical Lorentzian action, its units or its observable field interpretation. |
 | Laboratory clock | Exact calibration regions constrain separate native-attempt and source-pulse durations. Complete counted histories predict joint timing/detector events; held-out endpoints test the same calibration. | Identification of the timing law and detector operations with measured processes, independently justified uncertainty and calibration provenance. The retained timing example is synthetic. |
 
@@ -289,7 +297,8 @@ growing nonconstant-mode compilation is unexecuted. The
 [faithful quantum fluctuation protocol](observer_time_fields/REFINEMENT.md#faithful-state-clock-compatibility) executes purifying source
 pulses, ordered pointer outputs and signed kicks. The common condition
 `log((1+r)/(1-r))=b*Omega` is necessary and sufficient for modular flow
-to match the active mode clock, including the state's axis. The IID limit
+to match the active mode clock, including the state's axis; it states that
+the preparation is the qubit Gibbs state of the compiled mode Hamiltonian. The IID limit
 gives thermal CCR noise, sine response and a faithful mean-zero Fock state.
 Preparation and controls are supplied; geometric patch modular flow and
 passive temperature selection are unproved.
@@ -311,6 +320,9 @@ The [complete-readout invariant](physical_space_time/OCCUPATION_FIELD.md#a-compl
 also preserves normalized decay rates under the stated dense-range linear
 dictionary: native rates grow as `n`, while a compact three-dimensional free
 scalar's Euclidean rates grow as `n^(1/3)`. No common clock scale equates them.
+Both tests detect that the native lag law is diffusive and second order; the
+decay-spectrum argument excludes a relativistic free scalar in every
+dimension two or higher, so neither test measures dimension.
 Restricted boundary, interacting and nonlinear dictionaries are outside that
 test. Internal rank-three modes vanish from bounded-energy full-port families
 at this scale; they supply no radius. A [positive native lag mixture](physical_space_time/OCCUPATION_FIELD.md#the-poisson-extension-as-a-native-lag-record-readout)
@@ -323,8 +335,9 @@ separates sampled bridges, the classical inverse and quantum thermal state,
 with finite-count and grid budgets. The [two-axis active clock](observer_time_fields/REFINEMENT.md#one-product-field-state-and-active-clock)
 uses native angular phases and radial pulses to implement the product
 dispersion with controlled splitting error. It supplies one conditional
-thermal CCR field, sine response and modular conversion. Its
-[local action determines a measurable Lorentz metric](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave).
+thermal CCR field on supplied qubit codes, sine response and modular
+conversion. The [chosen hyperbolic action has a measurable Lorentz-signature density](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave);
+the signature is the choice, the spatial tensor is derived.
 Finite tapes check all readouts, not Gaussian independence. Smoothness of the
 complete coefficient density suffices for a smooth comparison metric.
 The native radial-projection measure is continuous but not C1 across
@@ -340,7 +353,8 @@ Restoring the constant mode gives the full-space generator `Abar`.
 Its [heat and wave support bounds](observer_time_fields/REFINEMENT.md#finite-propagation-on-the-source-comparison-space)
 are `||1_F exp(-tau*Abar)1_E||<=exp(-d(E,F)^2/(2*tau))` and zero cosine
 propagation when `|t|<sqrt(2)*d(E,F)`. The distance is intrinsic to the
-supplied flat comparison polyhedron. Finite matrices do not have this
+supplied flat comparison polyhedron. These are non-sharp comparison bounds
+from the cross-seam penalty, not a propagation speed of the native form. Finite matrices do not have this
 exact support property. The [controlled heat response](observer_time_fields/REFINEMENT.md#heat-response-and-the-boundary-of-a-finite-signal-cone)
 instead has strictly negative response between separated nonzero nonnegative profiles
 at every positive scaled selection-slot time, bounded in magnitude by
@@ -491,7 +505,10 @@ interaction, temperature or laboratory unit from native repair.
 
 The [actual-measure smoothing proof](relative_observer_geometry/README.md#lorentzian-density-of-the-product-wave)
 gives one smooth static `1+3` free-scalar effective description for each
-fixed finite admissible measurement menu and tolerance. It preserves the
+fixed finite admissible measurement menu and tolerance. Both sides of the
+approximation are free fields assembled on the same supplied codes and
+differ in the smoothness of the angular coefficients; native repair itself
+has no wave sector. It preserves the
 local readout normalization, radial boundary and common operator through
 norm-resolvent and covariance convergence. Fixed covariant coupling also
 gives convergent two-mode quartic projections on those same smooth metrics;

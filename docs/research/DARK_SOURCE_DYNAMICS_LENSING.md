@@ -2,7 +2,7 @@
 
 ## Result and relation to the OPH source
 
-Issue #751 asks whether one collar-source model fixes dynamics and lensing
+The question is whether one collar-source model fixes dynamics and lensing
 without separately fitting their gravitational responses. The answer for the
 released density interface is **no**. The obstruction survives the Einstein
 equation, covariant stress conservation, positive density, the dominant energy
@@ -23,9 +23,9 @@ and `DarkSector.lean` supply a scalar modular-charge interface and a
 conditional linear enclosed-mass law. They do not select the relativistic
 stress law or its normalization. We do not claim the alternatives below are
 microscopic OPH realizations. Their purpose is to test exactly the proposed
-macroscopic inference. Parent #751 remains open for physical attachment,
-magnitude, localization and abundance; its bounded dynamics/lensing
-underdetermination exit is answered here.
+macroscopic inference. Physical attachment, magnitude, localization and
+abundance are open; the bounded dynamics/lensing underdetermination question
+is answered here.
 
 The distinction between density, pressure, rotation and lensing is established
 GR, including [Faber and Visser (2006)](https://arxiv.org/abs/astro-ph/0512213)
@@ -421,29 +421,29 @@ disabled and producer imports blocked. Historical receipts and physical
 premise classifications are not rewritten to turn this result into source
 selection.
 
-## 8. Maintainer-style audit findings
+## 8. Scope of the inverse and its checks
 
-The inverse was audited against the entire stated parameter domain, not only
-the weak-field numerical controls. This exposed an omitted qualification:
-angles modulo a full turn do not determine the unwrapped ray sweep. Equation
-(7a) now gives exact, dominant-energy counterexamples, and the theorem,
-registry and receipt specify known winding. The retained weak-field catalogue
-has no full winding by a separate bound. The degenerate endpoint r0=R is
-excluded explicitly, and source/receiver angle orientations are fixed.
+The inverse holds on the entire stated parameter domain, not only in the
+weak-field numerical controls, with one qualification: angles modulo a full
+turn do not determine the unwrapped ray sweep. Equation (7a) gives exact,
+dominant-energy counterexamples, and the theorem, registry and receipt
+specify known winding. The retained weak-field catalogue has no full winding
+by a separate bound. The degenerate endpoint r0=R is excluded explicitly,
+and source/receiver angle orientations are fixed.
 
-The global result was also checked directly at the metric level. The verifier
+The global result is also checked directly at the metric level. The verifier
 integrates the common lapse from the actual mass function and rationalizes
 the difference between the two radial metrics. Both source strengths agree
 with the exact enclosures, and independent precision refinement tests the
 numerical control. A deliberately incompatible enclosure fails that control
 even when the analytic-certificate checker is bypassed. Exact global energy
-and bending inequalities remain the proof; the new quadrature supplies a
-distinct implementation check.
+and bending inequalities are the proof; the quadrature supplies a distinct
+implementation check.
 
-The closure audit retains the source-identification boundary: dominant energy
-is not a microscopic OPH admission theorem, a kinetic moment inequality is
-not a distribution-function existence proof, and complete unwrapped data is
-stronger than measured finite images. The issue's explicit bounded
-underdetermination exit is satisfied; its full physical-source and likelihood
-requirements remain open. The new claim's contextual M1 ancestry carries its
-own assumptions without transferring dense-radius premises.
+The source-identification boundary is unchanged: dominant energy is not a
+microscopic OPH admission theorem, a kinetic moment inequality is not a
+distribution-function existence proof, and complete unwrapped data is
+stronger than measured finite images. The bounded dynamics/lensing
+underdetermination question is answered; the full physical-source and
+likelihood requirements are open. The claim's ancestry carries its own
+assumptions without transferring dense-radius premises.

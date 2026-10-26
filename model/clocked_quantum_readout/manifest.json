@@ -6,7 +6,7 @@
   ],
   "description": "Complete heralded native phase reads on the same stopped interacting work history, with finite source-mixer transfer and all failure/timeout outcomes.",
   "files": {
-    "README.md": "a6a4c944feff7927bbdf0880573cbff84e0f7a7a8f81c35951cc777a64323090",
+    "README.md": "f6ca7d3a77803445bcc2f6e7c98089587261820aeec8d37951c0bd9cbbfa5eca",
     "__init__.py": "603fe319ffb33cc662740554256525024f8bb77e1672bc5c2171b4724a08382f",
     "__main__.py": "b7ddceb079d4f5ecbe90fb2cda3eeed11a1a98eed0f164d1767f7c94395fe503",
     "construction.py": "67bb290df90818bf002c1838cdae5428602712a4db3d5d8566975c2485dc995d",

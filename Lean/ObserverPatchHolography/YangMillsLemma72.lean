@@ -3,8 +3,10 @@ import Mathlib
 /-!
 # Yang–Mills finite repair-gap: Lemma 7.2 (keystone: uniform hidden fiber)
 
-Formalisation of the **finite, real** §7.2 keystone of B. Müller, *Explaining
-the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics* (r1515):
+Formalisation of the finite uniform-fiber step of B. Müller, *Explaining the
+Yang–Mills Mass Gap with Observer-Patch Repair Dynamics*, in the numbering of
+release r1515 (the current companion states it as the lemma labelled
+`lem:scalar-relaxation`):
 
 > **Lemma 7.2.** A positive-semidefinite relaxation `D` on `L²(F)` over a
 > uniform hidden fiber `F` (`|F| ≥ 2`) that commutes with the **full** symmetric

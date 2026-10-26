@@ -361,6 +361,10 @@ replacement preserves its full endpoint operator and retains all records.
 | Protected C history, `d=2`, 512 temporal steps | 4,936,767 | 1,158,423 |
 | Protected C history, `d=4`, 512 temporal steps | 8,342,311 | 4,563,967 |
 
+The previous column is the earlier expanded compilation and is not retained
+in a current receipt; the current column is retained in
+[the encoded-observer receipt](encoded_observer_results.json).
+
 The encoder pays for fourteen macros, eighteen conjugating X pulses and
 one mixing pulse: `14*2044+18+1=28635`. The full protected-path maxima
 include source preparation, both repairs and recoveries, the continuing

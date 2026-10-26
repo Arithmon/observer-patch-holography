@@ -2,8 +2,10 @@
 
 This index covers GitHub issue #578. The Lean modules mechanize exact finite
 algebra and the composition *conditional on* the listed continuum,
-asymptotic, and physical inputs. They do not construct an inhabited
-Einstein-admissible source tower. A separate finite source-order path now
+asymptotic, and physical inputs. A synthetic inhabitant of the
+Einstein-admissible tower exists (`Geometry/EinsteinBranchInhabitant.lean`,
+`demoAdmissibleTower`), which proves the premise clauses jointly satisfiable;
+a source-derived inhabited tower is not constructed. A separate finite source-order path now
 constructs an exact `1+3` algebraic carrier and an explicit order-faithful non-chain
 control; it does not construct the tensor fields or continuum tower consumed
 by the Einstein branch.
@@ -21,7 +23,7 @@ most Lean's standard extensionality/choice/quotient axioms (`propext`,
 | `BareConsensusTower` | `def:bare-finite-consensus-reduct` (`paper/reality_as_consensus_protocol.tex`) | exact finite structure | Finite states/quotients, mismatch, repair, normal forms, boundary data, and typed coarse maps. |
 | `bare_consensus_not_einstein_complete` | `thm:bare-consensus-not-einstein-complete` (`paper/reality_as_consensus_protocol.tex`); Theorem 4.3h in `paper/tex_fragments/PAPER.tex` | model-theoretic exact | Two free geometric decorations of the constant demo tower share one reduct and disagree on the integer Einstein identity. The quantifier ranges over free decorations; extensions whose geometry is read from `Quot` are the object of the readout and composition rows below. |
 | `TypedArrowCommutation`, `ReadoutNaturality` | `def:einstein-admissible-realized-tower`, EB2 | explicit receipt predicates | Common-domain typed arrows and refinement diagrams are failable premises, not constructor truths. |
-| `EinsteinAdmissibleTower` | `def:einstein-admissible-realized-tower` | bundled conditional structure | Packages one bare source tower, its typed readouts, boundary fibre, arrow commutation, and refinement naturality; no inhabitant is constructed. |
+| `EinsteinAdmissibleTower` | `def:einstein-admissible-realized-tower` | bundled conditional structure | Packages one bare source tower, its typed readouts, boundary fibre, arrow commutation, and refinement naturality; a synthetic inhabitant exists (`demoAdmissibleTower`), no source-derived inhabitant is constructed. |
 | `boundary_fiber_readout_composition` | EB1; D1 composition | exact finite composition | Same protected boundary plus consistent fibre uniqueness gives identical geometry/modular/event/stress/entropy/scale readouts. |
 | `tomographyDirections_null` | `thm:null-tomography` | exact algebra | Each of the displayed nine directions is Minkowski-null. |
 | `tomographyDecoder_design`, `tomographyDecoder_charge`, `tomographyCharge_injective` | `thm:null-tomography` | exact algebra | An explicit left inverse for the nine-direction design map, hence exact rank-nine reconstruction of the trace-free symmetric tensor. |
@@ -79,7 +81,7 @@ manifest. They are not Lean axioms: they are ordinary theorem arguments.
 | Generic spatial event placement and edge-speed certificate | `RankSpatialCausalPlacement.spatial`, `edge_speed_sq` | The finite forward order-to-cone theorem does not select spatial coordinates or prove the speed bound. |
 | Generic cone-support converse | `FaithfulRankSpatialCausalPlacement.cone_supported`, `ofIncomparableSpacelike` | Required for two-way order/cone agreement. It follows from supplied within-height spatial separation and strict spacelikeness of every increasing-height nonancestor, but neither condition is derived for a refinement family or physical event set. |
 | Order-to-tensor identification | no constructor or theorem | The exact `1+3` source carrier is not yet identified with the supplied `Mat 3`, `eta 3`, and `Fin 4` tensor/step data. |
-| Inhabited Einstein-admissible tower | no constructor or theorem | Open source-construction/certification problem. |
+| Inhabited Einstein-admissible tower | `demoAdmissibleTower` (synthetic, `Geometry/EinsteinBranchInhabitant.lean`) | The synthetic inhabitant proves joint satisfiability of the premise clauses; a source-derived inhabitant remains the open source-construction/certification problem. |
 
 ## Receipt non-vacuity and deletion boundary
 

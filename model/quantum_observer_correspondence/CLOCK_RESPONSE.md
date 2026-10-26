@@ -107,6 +107,11 @@ For example, completion with clock pair `(1,3)` has probability `16/625` at
 both settings. Its conditional detector-one probability changes from `23/50`
 to `7/10`. Clock statistics and coherent response are thus checked on the same
 recorded histories, with no independent time calibration for the detector.
+The identical clock marginal holds by construction: both clocks tick on
+scheduler-selected seam incidences under a state-independent scheduler, so
+the status/clock marginal is a function of the seam sequence alone. The joint
+law therefore tests the correlation between seam records and the detector,
+not an independent clock discriminator.
 
 Construct a control separately at each setting by imposing conditional
 independence within each terminal status:
