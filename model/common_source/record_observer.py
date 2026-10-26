@@ -8,6 +8,7 @@ execution diagnostics are numerical guards, not outward or hardware bounds.
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
 import hashlib
 import json
 import math
@@ -89,7 +90,12 @@ def _field_blocks():
                    'imaginary': value.imag.tolist()} for name, value in sorted(arrays.items())}
 
 
-def run():
+def execution_diagnostics():
+    """Fresh local observations, including backend-dependent numerical norms.
+
+    These observations are not portable historical values authenticated by
+    receipt replay. The canonical run retains their fixed admission intervals.
+    """
     # Cheap exact/oracle checks precede the full native source execution.
     capacity = record_capacity.certificate()
     code = record_code.exact_certificate()
@@ -117,6 +123,7 @@ def run():
     }
     # No NaN/Infinity can become a retained diagnostic or pass comparison.
     json.dumps(result, allow_nan=False)
+    _compare_diagnostics(result, result)
     return result
 
 
@@ -149,9 +156,9 @@ def _numeric_interval(path):
                 'root.protected_field.complete_source_composition.proper_code_export_diagnostic.maximum_success_norm_excess'):
             return 0., 2e-11
         if path.endswith('.maximum_complete_cq_diamond_error_diagnostic'):
-            return 0., 1e-6*(2+1e-6)
+            return 0., float(Fraction(1, 10**6)*(2+Fraction(1, 10**6)))
         if path.endswith('.maximum_complete_cq_half_trace_error_diagnostic'):
-            return 0., 1e-6*(1+1e-6/2)
+            return 0., float(Fraction(1, 10**6)*(1+Fraction(1, 2*10**6)))
         if path.endswith(('.walk_operator_error', '.feedback_operator_error')):
             # Both source words gate max entry error; ||M||_2 <= 64 max_ij |M_ij|.
             return 0., record_field.DIMENSION*2e-11
@@ -261,23 +268,27 @@ def _check_relations(row, path):
             _derived_equal(local['maximum_proper_code_failure_amplitude_diagnostic'], failure, path)
 
 
-def _compare(retained, replayed, path='root'):
-    """Exact schema/types/discrete facts; finite numerical diagnostics only."""
+def _compare(retained, replayed, path='root', *, _diagnostics=False):
+    """Compare canonical evidence; historical backend observations are absent."""
     if type(retained) is not type(replayed):
         raise ArithmeticError(f'receipt type mismatch at {path}')
     if type(replayed) is dict:
         if retained.keys() != replayed.keys():
             raise ArithmeticError(f'receipt fields mismatch at {path}')
         for key in replayed:
-            _compare(retained[key], replayed[key], f'{path}.{key}')
-        _check_relations(retained, path)
-        _check_relations(replayed, path)
+            _compare(retained[key], replayed[key], f'{path}.{key}', _diagnostics=_diagnostics)
+        if (_diagnostics or path == 'root.complete_field_reference_arrays'
+                or path.startswith('root.protected_field.two_read_experiment.complete_detector_outputs[')):
+            _check_relations(retained, path)
+            _check_relations(replayed, path)
     elif type(replayed) is list:
         if len(retained) != len(replayed):
             raise ArithmeticError(f'receipt length mismatch at {path}')
         for index, (left, right) in enumerate(zip(retained, replayed, strict=True)):
-            _compare(left, right, f'{path}[{index}]')
+            _compare(left, right, f'{path}[{index}]', _diagnostics=_diagnostics)
     elif type(replayed) is float:
+        if not _diagnostics and path in OBSERVATION_PATHS:
+            raise ArithmeticError(f'backend observation is not canonical evidence at {path}')
         gate = _acceptance_gate(path)
         if gate is not None:
             if retained != gate or replayed != gate:
@@ -287,10 +298,9 @@ def _compare(retained, replayed, path='root'):
         if interval is not None and any(not math.isfinite(value) or not interval[0] <= value <= interval[1]
                                         for value in (retained, replayed)):
             raise ArithmeticError(f'source diagnostic exceeds gate at {path}')
-        # These two subtrees contain backend-dependent source residuals, not
-        # analytic promises. Both receipts must satisfy their independent gates;
-        # no agreement of two unverified residuals substitutes for owned replay.
-        if (path.startswith('root.all_seam_source_composition.')
+        # This branch is used only to validate fresh local observations before
+        # omission. It never authenticates historical numerical measurements.
+        if _diagnostics and (path.startswith('root.all_seam_source_composition.')
                 or path.startswith('root.protected_field.complete_source_composition.')):
             return
         elif (not math.isfinite(retained) or not math.isfinite(replayed)
@@ -299,6 +309,123 @@ def _compare(retained, replayed, path='root'):
             raise ArithmeticError(f'numerical replay mismatch at {path}')
     elif retained != replayed:
         raise ArithmeticError(f'exact replay mismatch at {path}')
+
+
+def _compare_diagnostics(left, right, path='root'):
+    """Internal gate/formula checks, not a historical-observation verifier."""
+    _compare(left, right, path, _diagnostics=True)
+
+
+def _observation_paths():
+    """Explicit inventory: new or missing numerical diagnostics fail closed."""
+    paths = {'root.native_source_execution.encoder_operator_error'}
+    for direction in ('forward', 'inverse'):
+        paths.update(f'root.native_source_execution.{direction}_full512_source_macro_guard.{name}'
+                     for name in (*MACRO_GATES, 'exact_polar_distance_formula_evaluated'))
+    for law, branches in (('C', 8), ('E', 16)):
+        paths.update(f'root.native_source_execution.laws.{law}.{name}' for name in (
+            'reference_gram_error', 'maximum_branch_operator_error', 'complete_retained_output_operator_error'))
+        paths.update(f'root.native_source_execution.laws.{law}.branches[{i}].operator_error'
+                     for i in range(branches))
+        paths.update(f'root.all_seam_source_composition.laws.{law}.{name}' for name in (
+            'maximum_corrected_attempt_log_error', 'maximum_corrected_attempt_operator_error',
+            'maximum_encoded_corrected_attempt_operator_error'))
+        paths.update(f'root.all_seam_source_composition.laws.{law}.complete_local_native_dilation_operator_errors_by_coin[{i}]'
+                     for i in (0, 1))
+        paths.update(f'root.protected_field.complete_source_composition.laws.{law}.{name}' for name in (
+            'maximum_successful_block_two_cycle_operator_error_diagnostic',
+            'maximum_proper_code_failure_amplitude_diagnostic',
+            'maximum_complete_two_cycle_operator_error_diagnostic',
+            'maximum_complete_cq_diamond_error_diagnostic',
+            'maximum_complete_cq_half_trace_error_diagnostic'))
+    paths.update('root.all_seam_source_composition.'+name for name in (
+        'encoder_log_error', 'encoder_operator_error_bound', 'decoder_log_error',
+        'decoder_operator_error_bound', 'fair_coin_preparation_operator_error',
+        'source_X_conjugation_operator_error',
+        *(f'{direction}_full512_{name}' for direction in ('forward', 'inverse') for name in (
+            'macro_operator_error', 'macro_polar_change', 'stabilized_macro_operator_error'))))
+    paths.update(f'root.all_seam_source_composition.mixing_angle_synthesis_diagnostics.{count}.{name}'
+                 for count in (1, 4, 5, 6) for name in (
+                     'requested_inverse_adjoint_error', 'requested_inverse_uniform_to_zero_error',
+                     'requested_word_uniform_column_error', 'requested_word_unitarity_residual',
+                     'uniform_target_unitary_completion_error_upper'))
+    paths.update('root.protected_field.complete_source_composition.'+name for name in (
+        'walk_operator_error', 'feedback_operator_error',
+        'proper_code_export_diagnostic.maximum_complement_operator_norm',
+        'proper_code_export_diagnostic.maximum_success_norm_excess'))
+    paths.update(f'root.protected_field.dispersion.modes[{i}].source_residual' for i in range(6))
+    paths.update(('root.protected_field.dispersion.charged_retarded_anticommutator_response_residual',
+        'root.protected_field.source.source_walk_max_entry_residual',
+        'root.protected_field.source.walk_resources.maximum_numerical_valid_code_leakage',
+        'root.protected_field.source.feedback_resources.maximum_numerical_valid_code_leakage',
+        'root.protected_field.clocks.joint_clock_histories.source_executed_stopped_channel.complete_retained_stopped_operator_error',
+        'root.protected_field.clocks.joint_clock_histories.source_executed_stopped_channel.complete_stopped_gram_error'))
+    paths.update(f'root.information.same_field_experiment_reference.{law}.complete_reference_marginal_error'
+                 for law in ('C', 'E'))
+    paths.update(f'root.information.same_native_population_reference.{sample}.{name}'
+                 for sample in ('complete_C_with_timeouts', 'complete_E',
+                                'destroyed_core_coherence', 'surviving_spectator_coherence')
+                 for name in ('reference_marginal_error', 'quantum_envelope_residual'))
+    return frozenset(paths)
+
+
+OBSERVATION_PATHS = _observation_paths()
+DIAGNOSTIC_SUBTREES = ('root.native_source_execution.', 'root.all_seam_source_composition.',
+                      'root.protected_field.complete_source_composition.')
+
+
+def _canonical_receipt(diagnostics):
+    # Validate before omitting anything. This private transformer does not
+    # establish provenance; run()/verify() obtain their own fresh execution.
+    _compare_diagnostics(diagnostics, diagnostics)
+    omitted, skip = set(), object()
+
+    def retain(value, path):
+        if path in OBSERVATION_PATHS:
+            if type(value) is not float:
+                raise ArithmeticError(f'original floating diagnostic required at {path}')
+            omitted.add(path)
+            return skip
+        if type(value) is dict:
+            result = {key: retain(item, f'{path}.{key}') for key, item in value.items()}
+            return {key: item for key, item in result.items() if item is not skip}
+        if type(value) is list:
+            result = [retain(item, f'{path}[{i}]') for i, item in enumerate(value)]
+            if result and all(item is skip for item in result):
+                return skip
+            if any(item is skip for item in result):
+                raise ArithmeticError(f'partially registered observation list at {path}')
+            return result
+        if type(value) is float and path.startswith(DIAGNOSTIC_SUBTREES) and _acceptance_gate(path) is None:
+            raise ArithmeticError(f'unregistered numerical diagnostic at {path}')
+        return value
+
+    result = retain(diagnostics, 'root')
+    if omitted != OBSERVATION_PATHS:
+        raise ArithmeticError('registered numerical diagnostics are missing from fresh execution')
+    intervals = {}
+    for path in sorted(OBSERVATION_PATHS):
+        interval = _numeric_interval(path)
+        if interval is None or any(not math.isfinite(value) for value in interval):
+            raise ArithmeticError(f'a fixed finite diagnostic admission interval required at {path}')
+        intervals[path] = [str(Fraction(str(value))) for value in interval]
+    result['schema'] = 'oph.common_source.record_observer.v2'
+    result['numerical_admission'] = {
+        'intervals_exact': intervals,
+        'complete_two_cycle_operator_ceiling_exact': '1/1000000',
+        'complete_cq_diamond_ceiling_exact': '2000001/1000000000000',
+        'complete_cq_half_trace_ceiling_exact': '2000001/2000000000000',
+        'every_interval_checked_on_owned_fresh_execution': True,
+        'backend_observations_retained': False,
+        'outward_rounding_or_physical_error_certificate': False,
+        'fresh_observation_interface': 'execution_diagnostics() or --diagnostics',
+    }
+    return result
+
+
+def run():
+    """Portable evidence with fixed admission ceilings and owned fresh replay."""
+    return _canonical_receipt(execution_diagnostics())
 
 
 def verify(retained):
@@ -311,7 +438,11 @@ def main():
     files = parser.add_mutually_exclusive_group()
     files.add_argument('--write', type=Path)
     files.add_argument('--check', type=Path)
+    files.add_argument('--diagnostics', action='store_true', help='print fresh local numerical observations')
     args = parser.parse_args()
+    if args.diagnostics:
+        print(json.dumps(execution_diagnostics(), sort_keys=True, allow_nan=False))
+        return
     if args.check:
         verify(strict_json.loads(args.check.read_text(encoding='utf-8')))
     else:
@@ -321,6 +452,7 @@ def main():
                 # Machine evidence is compact; the proof remains in ENCODED_MEMORY.
                 stream.write(json.dumps(result, sort_keys=True, separators=(',', ':'), allow_nan=False)+'\n')
     print(json.dumps({'optimal_native_code': 6, 'protected_CAR_modes': 6,
+                      'numerical_operator_admission_ceiling_exact': '1/1000000',
                       'complete_field_reference_outputs_verified': True}))
 
 

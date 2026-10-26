@@ -105,6 +105,10 @@ transport, coherent services and preparation remain declared inputs. Native
 records do not select that transport, a physical time unit, spacetime or an
 empirical particle model.
 
+The receipt retains fixed numerical admission limits, each checked against
+fresh source execution. Raw backend residuals can be inspected separately
+with `--diagnostics`; they are not stored as reproduced error estimates.
+
 ```sh
 python -m model.common_source.record_observer --check model/common_source/record_observer_results.json
 ```

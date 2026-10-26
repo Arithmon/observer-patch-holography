@@ -189,6 +189,13 @@ not a domain argument.
   Apply the producer's acceptance thresholds to retained numerical diagnostics
   before any tolerant replay comparison. A comparison tolerance must not accept
   a stored residual that would fail the execution's own scientific gate.
+  Challenge a complete budget with coordinated zeroing or rescaling of its
+  primitive residuals and every derived term. Internal algebra and admission
+  gates alone do not authenticate reported values. When backend variation
+  prevents reproducing raw residuals, retain a fixed, explicit acceptance
+  ceiling and check it against fresh owned execution. Expose raw observations
+  separately; do not present them as verified historical bounds. The ceiling
+  remains a numerical acceptance criterion, not an outward error certificate.
   Round-trip actual producer outputs through the strict JSON comparator;
   a CLI test returning a serialized fixture misses runtime type
   mismatches such as tuples becoming lists.

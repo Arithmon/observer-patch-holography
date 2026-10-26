@@ -1,6 +1,9 @@
 """Adversarial complete-output and receipt checks for the composed observer."""
 from copy import deepcopy
+from fractions import Fraction
 import json
+import re
+import sys
 
 import numpy as np
 import pytest
@@ -11,6 +14,11 @@ from . import record_field as field, record_observer as observer
 @pytest.fixture(scope='module')
 def replayed():
     return observer.run()
+
+
+@pytest.fixture(scope='module')
+def diagnostics():
+    return observer.execution_diagnostics()
 
 
 def test_retained_evidence_replays(replayed):
@@ -98,13 +106,15 @@ def test_source_custody_is_explicit_not_import_order():
         assert f'model/common_source/{module}.py' in before
 
 
-def test_backend_residuals_use_explicit_gates_not_bit_identity():
+def test_fresh_backend_diagnostics_use_explicit_gates_not_bit_identity():
     path = ('root.protected_field.complete_source_composition.laws.C.'
             'maximum_complete_two_cycle_operator_error_diagnostic')
-    observer._compare(7e-9, 2e-8, path)
+    observer._compare_diagnostics(7e-9, 2e-8, path)
+    with pytest.raises(ArithmeticError, match='not canonical evidence'):
+        observer._compare(7e-9, 2e-8, path)
     for bad in (1e-3, -1e-12, float('nan'), float('inf')):
         with pytest.raises(ArithmeticError, match='gate'):
-            observer._compare(bad, 2e-8, path)
+            observer._compare_diagnostics(bad, 2e-8, path)
     with pytest.raises(ArithmeticError, match='gate changed'):
         observer._compare(1.1e-8, 1e-8,
                           'root.native_source_execution.maximum_allowed_numerical_execution_error')
@@ -135,11 +145,11 @@ def test_backend_residuals_use_explicit_gates_not_bit_identity():
     ('root.protected_field.clocks.joint_clock_histories.source_executed_stopped_channel.complete_retained_stopped_operator_error', 5e-11),
     ('root.protected_field.clocks.joint_clock_histories.source_executed_stopped_channel.complete_stopped_gram_error', 1e-10),
 ])
-def test_retained_residuals_obey_the_producer_gate_before_comparison(path, gate):
-    observer._compare(gate, gate, path)
+def test_fresh_residuals_obey_the_producer_gate_before_omission(path, gate):
+    observer._compare_diagnostics(gate, gate, path)
     for invalid in (1.01*gate, -gate/100, float('nan'), float('inf')):
         with pytest.raises(ArithmeticError, match='gate'):
-            observer._compare(invalid, .99*gate, path)
+            observer._compare_diagnostics(invalid, .99*gate, path)
 
 
 @pytest.mark.parametrize('name,gate', [
@@ -154,13 +164,9 @@ def test_retained_polar_acceptance_thresholds_are_fixed(name, gate):
         observer._compare(gate+1e-15, gate, path)
 
 
-def _retained():
-    return json.loads((observer.ROOT/'model/common_source/record_observer_results.json').read_text())
-
-
 @pytest.mark.parametrize('mutation', ['one_entry', 'distributed_entries'])
-def test_retained_field_arrays_obey_whole_operator_oracle(mutation):
-    good = _retained()['complete_field_reference_arrays']
+def test_retained_field_arrays_obey_whole_operator_oracle(replayed, mutation):
+    good = replayed['complete_field_reference_arrays']
     bad = deepcopy(good)
     if mutation == 'one_entry':
         bad['initial']['real'][0][0] = 1.5e-9
@@ -177,8 +183,8 @@ def test_retained_field_arrays_obey_whole_operator_oracle(mutation):
                                     'native_exponential', 'completion_factor', 'diamond_conversion',
                                     'field_native_join', 'export_failure_join',
                                     'detector_probability', 'total_probability'])
-def test_stored_diagnostic_formulas_use_their_own_scale(mutation):
-    good = _retained()
+def test_fresh_diagnostic_formulas_use_their_own_scale(diagnostics, mutation):
+    good = diagnostics
     bad = deepcopy(good)
     if mutation == 'polar_formula':
         bad['native_source_execution']['forward_full512_source_macro_guard']['exact_polar_distance_formula_evaluated'] = 0.
@@ -210,7 +216,116 @@ def test_stored_diagnostic_formulas_use_their_own_scale(mutation):
     else:
         bad['protected_field']['two_read_experiment']['weighted_terminal_source_probability_sum'] += 1e-9
     with pytest.raises(ArithmeticError, match='diagnostic|gate'):
-        observer._compare(bad, good)
+        observer._compare_diagnostics(bad, good)
+
+
+def _leaves(value, path='root'):
+    if type(value) is dict:
+        for key, item in value.items():
+            yield from _leaves(item, f'{path}.{key}')
+    elif type(value) is list:
+        for index, item in enumerate(value):
+            yield from _leaves(item, f'{path}[{index}]')
+    else:
+        yield path, value
+
+
+def _assign(report, path, value):
+    keys = re.findall(r'[^.\[\]]+', path)[1:]
+    row = report
+    for key in keys[:-1]:
+        row = row[int(key)] if type(row) is list else row[key]
+    key = int(keys[-1]) if type(row) is list else keys[-1]
+    row[key] = value
+
+
+def test_canonical_receipt_preserves_science_with_exact_registered_admissions(replayed, diagnostics):
+    observer._compare(json.loads(json.dumps(replayed, allow_nan=False)), replayed)
+    observer._compare_diagnostics(json.loads(json.dumps(diagnostics, allow_nan=False)), diagnostics)
+    leaves = dict(_leaves(replayed))
+    assert not observer.OBSERVATION_PATHS.intersection(leaves)
+    assert {path for path, value in leaves.items() if type(value) is float and
+            any(word in path for word in ('error', 'residual', 'diagnostic'))} == {
+                'root.native_source_execution.maximum_allowed_numerical_execution_error'}
+    admission = replayed['numerical_admission']
+    assert admission['backend_observations_retained'] is False
+    assert set(admission['intervals_exact']) == observer.OBSERVATION_PATHS
+    for path, interval in admission['intervals_exact'].items():
+        assert [float(Fraction(value)) for value in interval] == list(observer._numeric_interval(path))
+    assert replayed['complete_field_reference_arrays'] == diagnostics['complete_field_reference_arrays']
+    physical = 'root.information.same_native_population_reference.complete_E.information_loss'
+    assert leaves[physical] == dict(_leaves(diagnostics))[physical]
+
+
+@pytest.mark.parametrize('scale', [Fraction(0), Fraction(1, 10**6)])
+def test_public_verifier_rejects_coordinated_zero_or_scaled_advertised_bounds(
+        replayed, diagnostics, monkeypatch, scale):
+    bad = deepcopy(replayed)
+    admission = bad['numerical_admission']
+    for key in ('complete_two_cycle_operator_ceiling_exact', 'complete_cq_diamond_ceiling_exact',
+                'complete_cq_half_trace_ceiling_exact'):
+        admission[key] = str(Fraction(admission[key])*scale)
+    for path, interval in admission['intervals_exact'].items():
+        admission['intervals_exact'][path] = [str(Fraction(value)*scale) for value in interval]
+    calls = []
+
+    def owned_execution():
+        calls.append(True)
+        return deepcopy(diagnostics)
+
+    monkeypatch.setattr(observer, 'execution_diagnostics', owned_execution)
+    with pytest.raises(ArithmeticError, match='exact replay mismatch'):
+        observer.verify(bad)
+    assert calls == [True]
+
+
+@pytest.mark.parametrize('mutation', ['new_diagnostic', 'missing_diagnostic'])
+def test_diagnostic_inventory_fails_closed_before_projection(diagnostics, mutation):
+    bad = deepcopy(diagnostics)
+    row = bad['native_source_execution']
+    if mutation == 'new_diagnostic':
+        row['unregistered_source_residual'] = 0.
+    else:
+        del row['encoder_operator_error']
+    with pytest.raises(ArithmeticError, match='unregistered|missing'):
+        observer._canonical_receipt(bad)
+
+
+@pytest.mark.parametrize('path', [
+    'root.native_source_execution.forward_full512_source_macro_guard.restored_unitarity_defect',
+    'root.protected_field.complete_source_composition.laws.C.maximum_complete_two_cycle_operator_error_diagnostic',
+    'root.information.same_field_experiment_reference.C.complete_reference_marginal_error',
+])
+def test_owned_fresh_out_of_gate_diagnostic_cannot_be_omitted(diagnostics, monkeypatch, path):
+    bad = deepcopy(diagnostics)
+    _assign(bad, path, observer._numeric_interval(path)[1]*1.01)
+    monkeypatch.setattr(observer, 'execution_diagnostics', lambda: bad)
+    with pytest.raises(ArithmeticError, match='gate'):
+        observer.run()
+
+
+@pytest.mark.parametrize('delta', [-1e-9, 1e-9])
+def test_canonical_detector_probabilities_keep_independent_source_gate(replayed, delta):
+    bad = deepcopy(replayed)
+    # The change fits ordinary replay tolerance; the producer's gate is tighter.
+    bad['protected_field']['two_read_experiment']['complete_detector_outputs'][0][
+        'source_probability_before_selector_weights'] += delta
+    with pytest.raises(ArithmeticError, match='detector probability exceeds producer gate'):
+        observer._compare(bad, replayed)
+
+
+def test_canonical_receipt_rejects_reintroduced_backend_measurements(replayed):
+    bad = deepcopy(replayed)
+    bad['all_seam_source_composition']['encoder_operator_error_bound'] = 0.
+    with pytest.raises(ArithmeticError, match='fields mismatch'):
+        observer._compare(bad, replayed)
+
+
+def test_diagnostics_cli_emits_only_complete_fresh_observations(diagnostics, monkeypatch, capsys):
+    monkeypatch.setattr(observer, 'execution_diagnostics', lambda: deepcopy(diagnostics))
+    monkeypatch.setattr(sys, 'argv', ['record_observer', '--diagnostics'])
+    observer.main()
+    assert json.loads(capsys.readouterr().out) == diagnostics
 
 
 def test_source_walk_and_returned_field_arrays_cannot_poison_later_outputs():

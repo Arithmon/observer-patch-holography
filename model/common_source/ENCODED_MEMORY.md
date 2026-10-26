@@ -607,8 +607,12 @@ error bounds the complete flagged output. The retained first-failure program
 position, with zero denoting no failure, requires at most
 \(\lceil\log_2(N+1)\rceil\) extra archive bits and one supplied commit.
 This ordinal is not a physical clock. The error calculation uses floating
-residuals; it is neither an outward
-roundoff certificate nor a physical service bound. The pulse count does not
+residuals; it is neither an outward roundoff certificate nor a physical
+service bound. The retained receipt states fixed numerical admission limits;
+its verifier recomputes the full source budget and checks those limits.
+Raw backend-dependent residuals are available as fresh diagnostics, outside
+the retained receipt. Satisfying the limits and the composition formulas does
+not establish reproduction of stored raw residual values. The pulse count does not
 calibrate elapsed physical time.
 
 [record_information.py](record_information.py) accounts separately for native
