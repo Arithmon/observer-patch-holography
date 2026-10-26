@@ -50,10 +50,27 @@ def _validate_preparation_host_diagnostics(case):
         raise ValueError("invalid preparation integrated processor norm bound")
 
 
+def _normalize_preparation_diagnostics(value):
+    """Find the same named compiler word in mass and continuing-field reports."""
+    if isinstance(value, dict):
+        resources = value.get("resources_per_realized_nonabort_history")
+        if isinstance(resources, dict) and "preparation_source_word" in resources:
+            _validate_preparation_host_diagnostics(value)
+        for child in value.values():
+            _normalize_preparation_diagnostics(child)
+    elif isinstance(value, list):
+        for child in value:
+            _normalize_preparation_diagnostics(child)
+
+
 def compare_report(retained, current, *, host_timing=False):
     """Compare science and discrete costs; validate host preparation bounds."""
     current = json.loads(json.dumps(current, allow_nan=False))
     retained = json.loads(json.dumps(retained, allow_nan=False))
+    # The continuing-field audit uses the same compiler word inside a nested
+    # report, with no host-timing metadata. Normalize only that named word.
+    for document in (retained, current):
+        _normalize_preparation_diagnostics(document)
     if host_timing:
         for document in (retained, current):
             environment = document.pop("environment")
@@ -70,7 +87,6 @@ def compare_report(retained, current, *, host_timing=False):
                 if (type(duration) not in (int, float)
                         or not math.isfinite(duration) or duration < 0):
                     raise ValueError("invalid host duration")
-                _validate_preparation_host_diagnostics(document["cases"][name])
     compare_replay(retained, current)
 
 

@@ -40,8 +40,7 @@ def test_roundoff_zero_classification_keeps_every_pulse_and_quantum_output():
     # comparison copies are normalized.
     assert retained_cost["zero_angle_requests"] == 1
     assert current_cost["zero_angle_requests"] == 0
-    with pytest.raises(ValueError, match="exact value changed"):
-        compare_report(retained, current)
+    compare_report(retained, current)
 
 
 @pytest.mark.parametrize("field,new_value", [
@@ -71,8 +70,7 @@ def test_preparation_integrated_norm_is_checked_as_a_host_envelope():
     word = current["cases"]["interacting_n32"]["resources_per_realized_nonabort_history"]["preparation_source_word"]
     word["integrated_processor_norm_upper"] = 5.0
     compare_report(retained, current, host_timing=True)
-    with pytest.raises(ValueError, match="floating replay diagnostic"):
-        compare_report(retained, current)
+    compare_report(retained, current)
     for bad in (-1.0, 7.0, True, "5"):
         word["integrated_processor_norm_upper"] = bad
         with pytest.raises(ValueError, match="integrated processor norm"):
@@ -80,6 +78,27 @@ def test_preparation_integrated_norm_is_checked_as_a_host_envelope():
     word["integrated_processor_norm_upper"] = float("nan")
     with pytest.raises(ValueError, match="not JSON compliant"):
         compare_report(retained, current, host_timing=True)
+
+
+def test_nested_continuing_field_preparation_uses_same_validated_diagnostics():
+    word = {"native_pulses": 2, "zero_angle_requests": 1,
+            "integrated_processor_norm_upper": 0.4,
+            "proper_code_service_events": 4}
+    retained = {"continuing_field_read": {
+        "resources_per_realized_nonabort_history": {
+            "preparation_source_word": word}, "physical_response": 0.25}}
+    current = copy.deepcopy(retained)
+    actual = current["continuing_field_read"]["resources_per_realized_nonabort_history"]["preparation_source_word"]
+    actual["zero_angle_requests"] = 0
+    actual["integrated_processor_norm_upper"] = 5.0
+    compare_report(retained, current)
+    actual["proper_code_service_events"] = 6
+    with pytest.raises(ValueError, match="exact value changed"):
+        compare_report(retained, current)
+    actual["proper_code_service_events"] = 4
+    current["continuing_field_read"]["physical_response"] = 0.5
+    with pytest.raises(ValueError, match="floating replay diagnostic"):
+        compare_report(retained, current)
 
 
 @pytest.mark.parametrize("count", [-1, 3, True, 0.5, "0", None])
