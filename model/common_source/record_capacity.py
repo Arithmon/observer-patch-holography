@@ -1,7 +1,8 @@
 """Recovery bounds for the complete, uniformly addressed native instrument.
 
-The bound concerns an arbitrary k-dimensional subspace of the binary total-two
-carrier and arbitrary record-conditioned CPTP recovery. It uses entanglement
+The bound concerns an arbitrary k-dimensional subspace of either the binary
+66-state or full 78-state total-two carrier, and arbitrary record-conditioned
+CPTP recovery. It uses entanglement
 fidelity on the maximally mixed logical input, not a selected successful branch.
 The exact source branch ranks and their complete probabilities supply the bound.
 """
@@ -18,34 +19,49 @@ def _law(value):
     return value
 
 
-def branch_partition(law):
-    """Return effective binary branches as (edge, coin, label, input indices).
+def _binary(value):
+    if type(value) is not bool:
+        raise ValueError("binary must be an original bool")
+    return value
+
+
+def branch_partition(law, *, binary=True):
+    """Return effective branches as (edge, coin, label, input indices).
 
     Probability 1/(2*number of edges) multiplies each input projector. Empty
-    binary labels remain included; raw padding/abort labels have zero binary
-    projector and do not change this bound. This independent endpoint enumeration
-    does not use the protected code or a target recovery map.
+    binary labels remain included; raw padding/abort labels have zero projector
+    on both declared carriers and do not change this bound. The full carrier
+    includes contrast labels -2 and 2 and has no empty effective branches.
+    This independent endpoint enumeration does not use the protected code or a
+    target recovery map. Each nonempty branch is checked to be a partial injection.
     """
     law = _law(law)
-    states = native.states(binary=True)
+    binary = _binary(binary)
+    states = native.states(binary=binary)
+    carrier = set(states)
+    labels = (-2, -1, 0, 1, 2) if law == "E" and not binary else (-1, 0, 1)
     rows = []
     for edge in record_recovery.seams():
         a, b = edge
         for coin in (0, 1):
-            groups = {label: [] for label in (-1, 0, 1)}
+            groups = {label: [] for label in labels}
+            images = {label: set() for label in labels}
             for index, state in enumerate(states):
                 end, (_, current) = native.native(state, edge, coin)
-                if (sum(end) != 2 or any(value not in (0, 1) for value in end)
+                if (end not in carrier
                         or end[a] != (state[a]+state[b]+coin)//2):
-                    raise ArithmeticError("native binary endpoint rule changed")
+                    raise ArithmeticError("native total-two endpoint rule changed")
                 label = current if law == "C" else state[a]-state[b]
+                if label not in groups or end in images[label]:
+                    raise ArithmeticError("native record branch is not a partial injection")
                 groups[label].append(index)
+                images[label].add(end)
             rows.extend((edge, coin, label, tuple(indices))
                         for label, indices in groups.items())
     return tuple(rows)
 
 
-def recovery_bound(law, dimension):
+def recovery_bound(law, dimension, *, binary=True):
     """Exact all-code entanglement-fidelity ceiling on this fixed instrument.
 
     For a branch K=sqrt(w)UP and code isometry V, set M=V*PV. Even the
@@ -58,10 +74,11 @@ def recovery_bound(law, dimension):
     It is a lower bound on error, not an attainable-error claim.
     """
     law = _law(law)
-    states = native.states(binary=True)
+    binary = _binary(binary)
+    states = native.states(binary=binary)
     if type(dimension) is not int or not 1 <= dimension <= len(states):
-        raise ValueError("integer logical dimension from 1 through 66 required")
-    rows = branch_partition(law)
+        raise ValueError(f"integer logical dimension from 1 through {len(states)} required")
+    rows = branch_partition(law, binary=binary)
     edge_count = len(record_recovery.seams())
     weight = F(1, 2*edge_count)
     total = [F(0) for _ in states]
@@ -91,4 +108,8 @@ def recovery_bound(law, dimension):
 
 
 def certificate():
-    return {law: recovery_bound(law, 15) for law in ("C", "E")}
+    result = {law: recovery_bound(law, 15) for law in ("C", "E")}
+    result["full_total_two"] = {
+        law: recovery_bound(law, 15, binary=False) for law in ("C", "E")
+    }
+    return result

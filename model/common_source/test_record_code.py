@@ -34,6 +34,8 @@ def _integer_permutation(edges):
 def test_six_matchings_partition_nonedge_graph_and_attain_sharp_arbitrary_code_bound():
     certificate = code.exact_certificate()
     assert certificate['maximum_exact_record_correctable_code_dimension'] == 6
+    assert certificate['upper_bound_native_carrier_dimension'] == 78
+    assert certificate['full_carrier_binary_support_derivation']['binary_support_derived_not_assumed']
     assert certificate['arbitrary_complex_codes_and_references_in_upper_bound']
     pairs = tuple(pair for row in code.MATCHINGS for pair in row)
     assert len(set(pairs)) == 36
@@ -42,6 +44,85 @@ def test_six_matchings_partition_nonedge_graph_and_attain_sharp_arbitrary_code_b
     assert Counter(p for pair in pairs for p in pair) == Counter({p: 6 for p in range(12)})
     for row in code.MATCHINGS:
         assert Counter(p for pair in row for p in pair) == Counter(range(12))
+
+
+@pytest.mark.parametrize('law', ('C', 'E'))
+def test_full78_singleton_effects_follow_independent_floor_arithmetic_on_every_raw_record(law):
+    states = native.states()
+    index = {state: i for i, state in enumerate(states)}
+    assert len(states) == 78
+    doubles = {port: index[tuple(2*int(i == port) for i in range(12))] for port in range(12)}
+    witnessed = Counter()
+    ranks = Counter()
+    for seam in code.SEAMS:
+        a, b = seam
+        expected = {(coin, raw): [] for coin in (0, 1)
+                    for raw in range(1 << circuit.RECORD_BITS[law])}
+        # Independent arithmetic: floor quotients, no implementation's
+        # divmod, native endpoint call, support certificate or branch images.
+        for coin in (0, 1):
+            for i, state in enumerate(states):
+                total = state[a]+state[b]
+                left, right = (total+coin)//2, (total+1-coin)//2
+                final = list(state)
+                final[a], final[b] = left, right
+                current = state[a]-left
+                raw = 0 if current == 0 else 1 if current == 1 else 2
+                if law == 'E':
+                    raw += 4*(total-2*(total//2))
+                expected[coin, raw].append((i, index[tuple(final)]))
+        actual = {key: [] for key in expected}
+        for coin, label, mapping in coins.coin_maps(law, seam, binary=False):
+            raw = {value: raw for raw, value in circuit.record_values(law, coin).items()}[label]
+            actual[coin, raw] = list(mapping)
+            ranks[len(mapping)] += 1
+        assert actual == expected
+        singleton_records = ((0, 2, b), (1, 1, a)) if law == 'C' else tuple(
+            (coin, raw, port) for coin in (0, 1) for raw, port in ((1, a), (2, b)))
+        for coin, raw, port in singleton_records:
+            assert [i for i, _ in actual[coin, raw]] == [doubles[port]]
+            witnessed[port] += 1
+        if law == 'C':
+            # Dropping or reversing the recorded coin destroys the claimed
+            # rank-one effect: the opposite coin has eleven inputs.
+            assert len(actual[0, 1]) == len(actual[1, 2]) == 11
+        else:
+            assert len(actual[0, 0]) == len(actual[1, 0]) == 56
+    expected_count = 5 if law == 'C' else 10
+    assert witnessed == Counter({port: expected_count for port in range(12)})
+    assert ranks == (Counter({1: 60, 11: 60, 66: 60}) if law == 'C'
+                     else Counter({1: 120, 10: 120, 56: 60}))
+
+
+def test_double_occupation_is_detected_in_a_two_dimensional_code_not_assumed_away():
+    states = native.states()
+    double = states.index((2,)+(0,)*11)
+    other = next(i for i, state in enumerate(states) if state[0] == 0 and max(state) == 1)
+    columns = np.zeros((78, 2), dtype=int)
+    columns[double, 0], columns[other, 1] = 1, 1
+    # On edge(0,1), C coin1/current+1 (raw1) isolates exactly double0.
+    mapping = next(mapping for coin, label, mapping in coins.coin_maps('C', (0, 1), binary=False)
+                   if coin == 1 and label == 1)
+    effect = np.zeros(78, dtype=int)
+    effect[[i for i, _ in mapping]] = 1
+    gram = columns.T@(effect[:, None]*columns)
+    np.testing.assert_array_equal(gram, np.diag([1, 0]))
+    assert not np.array_equal(2*gram, np.trace(gram)*np.eye(2, dtype=int))
+
+
+def test_full78_certificate_rejects_silently_omitted_double_occupation_effect(monkeypatch):
+    original = coins.coin_maps
+
+    def missing_singleton(law, seam, binary=True):
+        rows = original(law, seam, binary=binary)
+        if not binary and law == 'C' and seam == (0, 1):
+            return tuple((coin, label, () if coin == 1 and label == 1 else mapping)
+                         for coin, label, mapping in rows)
+        return rows
+
+    monkeypatch.setattr(coins, 'coin_maps', missing_singleton)
+    with pytest.raises(ArithmeticError, match='full78 source effects'):
+        code.exact_certificate()
 
 
 @pytest.mark.parametrize('law', ('C', 'E'))

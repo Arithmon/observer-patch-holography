@@ -357,11 +357,92 @@ def repair_resources(law, seam):
             'recovery_cost_is_record_dependent': True}
 
 
+def _full_carrier_support_certificate():
+    """Derive binary support from rank-one effects on the complete78 carrier.
+
+    A rank-one positive effect compressed to k>1 logical dimensions can be
+    scalar only if it is zero.  Each double occupation is isolated by a
+    retained C coin/current outcome, or an E contrast outcome.  Consequently
+    every exact k>1 code is orthogonal to all twelve double occupations.
+    The binary carrier used in the next proof is therefore derived.
+    """
+    states = native.states()
+    index = {state: i for i, state in enumerate(states)}
+    doubles = {p: tuple(2*int(q == p) for q in range(12)) for p in range(12)}
+    binary = set(native.states(binary=True))
+    if (len(states) != 78 or len(binary) != 66
+            or set(states) != binary | set(doubles.values())):
+        raise ArithmeticError('complete total-two source carrier changed')
+    laws = {}
+    for law in ('C', 'E'):
+        witnesses = Counter()
+        effect_ranks = Counter()
+        raw_outcomes = 0
+        for seam in SEAMS:
+            a, b = seam
+            expected = {(coin, raw): [] for coin in (0, 1)
+                        for raw in range(1 << circuit.RECORD_BITS[law])}
+            # This endpoint oracle does not call native.native or coin_maps.
+            for coin in (0, 1):
+                for i, state in enumerate(states):
+                    low, parity = divmod(state[a]+state[b], 2)
+                    final = list(state)
+                    final[a], final[b] = low+coin*parity, low+(1-coin)*parity
+                    current = state[a]-final[a]
+                    raw = {0: 0, 1: 1, -1: 2}[current]
+                    if law == 'E':
+                        raw += 4*parity
+                    expected[coin, raw].append((i, index[tuple(final)]))
+            actual = {key: [] for key in expected}
+            seen = set()
+            for coin, label, mapping in coins.coin_maps(law, seam, binary=False):
+                current = label if law == 'C' else (label-(2*coin-1)*(abs(label) % 2))//2
+                raw = {0: 0, 1: 1, -1: 2}[current]
+                if law == 'E':
+                    raw += 4*(abs(label) % 2)
+                key = coin, raw
+                if key in seen or circuit.record_values(law, coin).get(raw) != label:
+                    raise ArithmeticError('full78 source raw record label is inconsistent')
+                seen.add(key)
+                actual[key] = list(mapping)
+                effect_ranks[len(mapping)] += 1
+            if any(len(actual[key]) != len(expected[key])
+                   or set(actual[key]) != set(expected[key]) for key in expected):
+                raise ArithmeticError('full78 source effects differ from the endpoint oracle')
+            raw_outcomes += len(expected)
+            selected = ((0, 2, b), (1, 1, a)) if law == 'C' else tuple(
+                (coin, raw, port) for coin in (0, 1) for raw, port in ((1, a), (2, b)))
+            for coin, raw, port in selected:
+                inputs = tuple(i for i, _ in actual[coin, raw])
+                if inputs != (index[doubles[port]],):
+                    raise ArithmeticError('a double-occupation singleton effect is missing')
+                witnesses[port] += 1
+        expected_count = 5 if law == 'C' else 10
+        if witnesses != Counter({port: expected_count for port in range(12)}):
+            raise ArithmeticError('singleton records do not exclude every double occupation')
+        laws[law] = {
+            'complete_raw_outcomes_checked': raw_outcomes,
+            'nonzero_effect_rank_counts': {str(k): v for k, v in sorted(effect_ranks.items())},
+            'double_occupation_singleton_effects': sum(witnesses.values()),
+            'singleton_witness_count_per_port': [witnesses[port] for port in range(12)],
+            'singleton_raw_records': 'coin0/raw2 isolates double_b; coin1/raw1 isolates double_a'
+            if law == 'C' else 'either coin: raw1/contrast+2 isolates double_a; raw2/contrast-2 isolates double_b',
+        }
+    return {'initial_total_two_carrier_dimension': 78,
+            'double_occupation_basis_states_excluded_for_dimension_greater_than_one': 12,
+            'remaining_binary_carrier_dimension': 66,
+            'binary_support_derived_not_assumed': True,
+            'reason': 'Each retained singleton effect has positive coefficient and rank1. For k>1 its scalar KL compression must vanish, which excludes its double-occupation basis vector.',
+            'laws': laws}
+
+
 def exact_certificate():
     """Exact combinatorial witness and the arbitrary-code sharp capacity proof.
 
     With the record retained the KL conditions are V*D_r V=p_r I, since
-    different output labels are orthogonal.  For each edge ab, C and E both
+    different output labels are orthogonal.  On the full78 carrier, singleton
+    C/E effects first exclude all twelve double occupations whenever k>1.
+    On the resulting binary66 carrier, for each edge ab C and E both
     contain D_ab=n_a(1-n_b) and D_ba.  Thus compressed n_a-n_b is scalar.
     Connectivity and sum_a n_a=2I force every compressed n_a scalar.  Then
     compressed n_a n_b is scalar and rank at most one, hence zero if k>1.
@@ -370,6 +451,7 @@ def exact_certificate():
     This argument concerns arbitrary complex subspaces and arbitrary CPTP
     recovery with full classical records and unrestricted reference systems.
     """
+    full_support = _full_carrier_support_certificate()
     all_pairs = set(combinations(range(12), 2))
     flattened = tuple(pair for row in MATCHINGS for pair in row)
     nonedges = all_pairs-set(SEAMS)
@@ -413,20 +495,23 @@ def exact_certificate():
                 raise ArithmeticError('source branches do not preserve complete probability')
         law_reports[law] = {'nonzero_record_branches': sum(counts.values()),
                             'probability_counts_across_thirty_seams': dict(sorted(counts.items()))}
-    return {'logical_dimension': 6, 'native_binary_carrier_dimension': 66,
+    return {'logical_dimension': 6, 'native_total_two_carrier_dimension': 78,
+            'native_binary_carrier_dimension': 66,
+            'full_carrier_binary_support_derivation': full_support,
             'source_execution_register_dimension': SIZE,
             'matchings': [[list(pair) for pair in row] for row in MATCHINGS],
             'seams_checked': 30, 'native_graph_connected': True,
             'native_graph_degree': 5, 'nonedge_graph_degree': 6,
             'all_exact_branch_gram_identities': True,
             'maximum_exact_record_correctable_code_dimension': 6,
+            'upper_bound_native_carrier_dimension': 78,
             'rank_fifteen_exact_record_correctable': False,
             'arbitrary_complex_codes_and_references_in_upper_bound': True,
             'record_conditioned_arbitrary_CPTP_recovery_in_upper_bound': True,
             'complete_unitary_recovery_exists_on_binary66_itself': True,
             'same66_recovery': 'Inverse endpoint swap followed by six disjoint matching-block Householder reflections; no additional quantum carrier in this algebraic extension.',
             'source_compilation_extension': 'The independently compiled permutation/preparation recovery uses the existing full512 source register and may use padding during intermediate controls; no fresh quantum ancilla is added per recovery.',
-            'upper_bound_scope': 'One fixed input code precedes state-independent selection with positive probability for every native seam; the seam, coin and C/E value are retained. Each branch is corrected before the next attempt. Seam-dependent re-encoding before the native measurement is a different contract.',
+            'upper_bound_scope': 'An arbitrary fixed code on the full78 total-two carrier precedes state-independent selection with positive probability for every native seam; the seam, coin and C/E value are retained. For dimension greater than one, binary66 support is forced by the singleton effects. Each branch is corrected before the next attempt. Seam-dependent re-encoding before the native measurement is a different contract.',
             'lower_bound_scope': 'Six explicit matching superpositions with full source-word active recovery; coherent controls, code load/export and initialization remain specified services.',
             'laws': law_reports}
 

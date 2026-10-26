@@ -706,8 +706,8 @@ resetting the work register.
 [encoded recovery](common_source/ENCODED_MEMORY.md) attach full native
 instruments and active logical memory under explicit code-service contracts.
 
-The [combined recorded observer](common_source/ENCODED_MEMORY.md#optimal-binary-carrier-code)
-sharpens that memory interface: the binary 66-state carrier has maximum exact
+The [combined recorded observer](common_source/ENCODED_MEMORY.md#optimal-native-carrier-code)
+sharpens that memory interface: the full 78-state total-two carrier has maximum exact
 record-correctable subspace dimension six across all thirty native seams.
 The bound covers arbitrary complex codes and record-dependent CPTP recovery;
 a six-matching source code attains it. Six corrected carriers then support a

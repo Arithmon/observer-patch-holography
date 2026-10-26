@@ -21,7 +21,7 @@ def test_retained_evidence_replays(replayed):
 
 
 @pytest.mark.parametrize('mutation', ('nan', 'missing_timeout', 'wrong_shape', 'bool_count',
-                                    'false_scope', 'false_bound', 'source_digest'))
+                                    'false_scope', 'false_bound', 'false_full_carrier_bound', 'source_digest'))
 def test_receipt_cannot_relabel_or_drop_evidence(replayed, mutation):
     bad = deepcopy(replayed)
     if mutation == 'nan':
@@ -36,6 +36,8 @@ def test_receipt_cannot_relabel_or_drop_evidence(replayed, mutation):
         bad['scope']['physical_theory_completed'] = True
     elif mutation == 'false_bound':
         bad['rank15_recovery_obstruction']['E']['entanglement_fidelity_upper'] = '1'
+    elif mutation == 'false_full_carrier_bound':
+        bad['rank15_recovery_obstruction']['full_total_two']['C']['entanglement_fidelity_upper'] = '43/45'
     else:
         key = next(iter(bad['source_sha256']))
         bad['source_sha256'][key] = '0'*64

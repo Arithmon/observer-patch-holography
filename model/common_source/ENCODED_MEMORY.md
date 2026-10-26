@@ -13,7 +13,7 @@ arbitrary unencoded native state nor asserts that passive C/E dynamics protect
 this code indefinitely. The earlier inverse repair restored history-projected
 inputs; that operation alone is not the logical recovery constructed here.
 
-The [optimal binary-carrier code](#optimal-binary-carrier-code) extends this
+The [optimal binary-carrier code](#optimal-native-carrier-code) extends this
 interface to six quantum dimensions and proves that six is the exact maximum
 when every native seam is allowed. Its tensor construction supports an
 executed finite fermionic transport experiment, with complete records,
@@ -416,10 +416,10 @@ measure-and-erase channel: work changes, while the logical/reference marginal
 still agrees with the memory theorem. This control is not a claim that work
 reset was added to the canonical source-program grammar.
 
-## Optimal binary-carrier code
+## Optimal native-carrier code
 
-[record_code.py](record_code.py) fixes the binary total-two carrier of dimension
-66, all thirty native seams and the original C/E instruments. The observer
+[record_code.py](record_code.py) fixes the full total-two carrier of dimension
+78, all thirty native seams and the original C/E instruments. The observer
 retains the seam, coin and complete native record, and applies a coherent
 recovery before another repair. The upper bound allows every complex code
 and every record-dependent CPTP recovery, with arbitrary untouched references.
@@ -428,10 +428,19 @@ The code is fixed before a state-independent seam selection with positive
 probability on every edge. Re-encoding into a different code after learning
 the next seam is a different contract.
 
-Let \(V:\mathbb C^k\to\mathbb C^{66}\) be a code isometry. The flagged
+Let \(V:\mathbb C^k\to\mathbb C^{78}\) be a code isometry. The flagged
 Knill--Laflamme condition is
 \(V^\dagger D_hV=p_hI_k\), where \(D_h\) is the input projector of a native
-branch. Both record laws expose \(D_{ab}=n_a(1-n_b)\) and \(D_{ba}\).
+branch. E's contrasts \(\pm2\) isolate individual double-occupation states.
+C does so too: on seam \((a,b)\), coin zero and current \(-1\) isolate
+\(|2_b\rangle\), while coin one and current \(+1\) isolate \(|2_a\rangle\).
+Every port has an incident seam. Each such rank-one projector must have zero
+compression when \(k>1\), since a nonzero scalar multiple of \(I_k\) has
+rank \(k\). Positivity then forces the code to avoid all twelve doubled
+states. **Binary support is derived, rather than assumed.**
+
+On that derived 66-state subspace, both record laws expose
+\(D_{ab}=n_a(1-n_b)\) and \(D_{ba}\).
 Their difference is \(n_a-n_b\). Connectivity and \(\sum_a n_a=2I\)
 therefore make every \(V^\dagger n_aV\) scalar. It follows that
 \(V^\dagger n_an_bV\) is scalar for each native edge. Its rank is at most
@@ -511,6 +520,12 @@ Testing the recovered maximally entangled state with its target projector
 therefore gives half-trace-distance lower bounds \(2/45\) and \(4/45\).
 This is a quantitative obstruction to that single-carrier attachment,
 not a measured particle discrepancy or an exclusion of enlarged models.
+Allowing approximate codes in the full 78-state carrier changes the C bound:
+its branch ranks are 1, 11 and 66, and the same argument gives
+\(F_{\rm ent}^{C}\leq217/225\), with half-trace error at least \(8/225\).
+E's full-carrier bound remains \(41/45\), with error at least \(4/45\).
+Approximate correction need not exclude doubled states exactly, so the
+stronger binary C bound is not transferred to that larger domain.
 Two separately corrected six-state carriers have a 36-dimensional tensor
 code and can store fifteen labels, but storage does not attach those labels
 to the physical Standard Model representation.
@@ -589,8 +604,8 @@ For a fixed law and deterministic past-record seam/stopping policy,
  h_C=\log12-\tfrac56\log5,\qquad
  h_E=\log3+\tfrac23\log2 .
 \]
-These values follow from the actual branch probabilities, not just the fair
-coin. Additional selector randomness has its own retained entropy.
+These values follow from the actual joint coin and branch-record probabilities.
+Additional selector randomness has its own retained entropy.
 Destructive field reads do cause information loss; the continuing field
 calculation evaluates it rather than applying the zero-loss memory theorem
 across those reads.
@@ -617,7 +632,7 @@ using the complete branch probabilities. They require no charge-resolving
 census: unresolved timeouts keep their actual conditional quantum output.
 At input \(\sigma\otimes I_R/r\), \(F_Q=S(\sigma)\) even for the complete C
 instrument, whereas replacing those output entropies by integer completion
-counts produces the previously quantified timeout excess. A retained
+counts produces the quantified timeout excess. A retained
 coherent input and a fully dephased control show why record probabilities
 and completion counts alone cannot replace this quantum term.
 

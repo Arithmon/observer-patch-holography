@@ -81,11 +81,12 @@ physical memory calibration. The [producer](encoded_observer.py) and
 [receipt](encoded_observer_results.json) compare the active and passive
 complete instruments, including their source costs.
 
-The [combined recorded observer](ENCODED_MEMORY.md#optimal-binary-carrier-code)
-now supplies a sharp capacity result: **the maximum exactly recoverable
-subspace dimension is six** on the binary 66-state carrier
+The [combined recorded observer](ENCODED_MEMORY.md#optimal-native-carrier-code)
+supplies a sharp capacity result: **the maximum exactly recoverable
+subspace dimension is six** on the full 78-state total-two carrier
 when every native seam can occur and its complete C/E record is retained.
-The upper bound permits arbitrary complex codes and CPTP recovery. A matching
+The upper bound permits arbitrary complex codes and CPTP recovery; singleton
+records force every nontrivial exact code into the binary sector. A matching
 code attains it with the existing source operations. A separate bound excludes
 arbitrarily accurate fifteen-dimensional recovery on that single carrier;
 it does not restrict larger tensor products or other native sectors.
