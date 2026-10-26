@@ -2,48 +2,48 @@
   "actual_source_first_order_mixture": {
     "all_outcomes_retained": true,
     "analytic_first_order_energy_derivative": 1.171572875253868,
-    "analytic_first_order_entropy_derivative": 1.1715728752539738,
+    "analytic_first_order_entropy_derivative": 1.1715728752539742,
     "complete_coin_work_CQ_entropy_derivative": 0,
     "domain": "actual public two-copy constant-angular/radial-mode code, plus two purification references and retained classical displacement sign",
     "finite_source_checks": [
       {
         "all_coin_probabilities": [
-          0.5,
+          0.4999999999999999,
           0.5
         ],
-        "energy_secant": 1.1715496775430199,
+        "energy_secant": 1.1715496775447194,
         "epsilon": 0.0001,
-        "first_order_entropy_prediction": 1.1715728752539738,
-        "full_coin_plus_work_CQ_entropy_change": -3.3306690738754696e-16,
-        "secant_derivative_error": -0.00019375192143500364,
-        "unread_work_entropy_secant": 1.1713791233325388,
-        "word_normalization_error": 4.440892098500626e-16
+        "first_order_entropy_prediction": 1.1715728752539742,
+        "full_coin_plus_work_CQ_entropy_change": -1.1102230246251565e-16,
+        "secant_derivative_error": -0.00019375191921500168,
+        "unread_work_entropy_secant": 1.1713791233347592,
+        "word_normalization_error": 0.0
       },
       {
         "all_coin_probabilities": [
           0.5,
-          0.5
+          0.49999999999999994
         ],
-        "energy_secant": 1.1715705554836637,
+        "energy_secant": 1.1715705554921612,
         "epsilon": 1e-05,
-        "first_order_entropy_prediction": 1.1715728752539738,
-        "full_coin_plus_work_CQ_entropy_change": 1.1102230246251565e-16,
-        "secant_derivative_error": -1.937789510564336e-05,
-        "unread_work_entropy_secant": 1.1715534973588682,
-        "word_normalization_error": 4.440892098500626e-16
+        "first_order_entropy_prediction": 1.1715728752539742,
+        "full_coin_plus_work_CQ_entropy_change": 3.3306690738754696e-16,
+        "secant_derivative_error": -1.9377861799396712e-05,
+        "unread_work_entropy_secant": 1.1715534973921748,
+        "word_normalization_error": 0.0
       },
       {
         "all_coin_probabilities": [
           0.4999999999999998,
-          0.49999999999999983
+          0.4999999999999998
         ],
-        "energy_secant": 1.171572643218417,
+        "energy_secant": 1.171572643090958,
         "epsilon": 1e-06,
-        "first_order_entropy_prediction": 1.1715728752539738,
+        "first_order_entropy_prediction": 1.1715728752539742,
         "full_coin_plus_work_CQ_entropy_change": -3.3306690738754696e-16,
-        "secant_derivative_error": -1.937879007707366e-06,
-        "unread_work_entropy_secant": 1.171570937374966,
-        "word_normalization_error": 2.220446049250313e-16
+        "secant_derivative_error": -1.93765696354653e-06,
+        "unread_work_entropy_secant": 1.1715709375970107,
+        "word_normalization_error": 4.440892098500626e-16
       }
     ],
     "fixed_ideal_H_and_reference_beta": 1,
@@ -62,7 +62,7 @@
     "crossing_read_area_law": "Positive actual golden-source continuum crossing-area result under its population/read-radius/layer inputs; one nat/read and Planck calibration are declared. Not the240-port product-field source."
   },
   "artifacts": {
-    "geometric_stationarity_arrays.npz": "16c1e228d32848aaf877b39d0ff141fb0ec2163d3953523e3ac7e6241f12e52a"
+    "geometric_stationarity_arrays.npz": "5ee1442800d3067b1913d20e008e24fab2844523e275b1ae20eac89304dee05b"
   },
   "closure_assessment": {
     "all_OPH_dynamic_geometries_excluded": false,
@@ -221,6 +221,132 @@
         "schedule_randomness_and_fine_records_in_distance": false,
         "source_entropy_deficit_upper_nats": "7953/21474836480",
         "target": "Pi tensor identity applied to the original input"
+      },
+      "continuing_record_entropy": {
+        "bounded_C_readout_service": {
+          "deadline": 24,
+          "mean_attempts_upper": 8,
+          "native_attempts_upper": 50,
+          "timeout_counting_excess_upper_coefficient": "16777215/70368744177664",
+          "timeout_counting_excess_upper_log_argument": "5",
+          "timeout_probability": "16777215/70368744177664"
+        },
+        "census_deadline_tested": 3,
+        "finite_preparation_stationarity": {
+          "adaptive_record_channel_preserves_the_reference_sandwich": true,
+          "complete_flagged_reference_halftrace_upper": "566609329445142845/9973638011820690691325952",
+          "fixed_moment_tangent_error_per_trace_norm_upper": "50994839650062856050/604437412387489555925063",
+          "input_dependent_stopping_cost_must_be_varied": true,
+          "local_reference_native_attempts_upper": 659460353,
+          "operator_sandwich_radius": "25497419825031428025/604462909807314587353088"
+        },
+        "laws": {
+          "C": {
+            "complete_counting_excess": {
+              "11": "-121/3600",
+              "163": "-163/4800",
+              "19": "163/4800",
+              "2": "4499/14400",
+              "23": "923/14400",
+              "269": "-269/7200",
+              "29": "11/1600",
+              "3": "-379/14400",
+              "313": "-313/14400",
+              "37": "313/14400",
+              "5": "2327/28800",
+              "53": "-53/5760",
+              "7": "-77/2880",
+              "89": "-89/28800",
+              "97": "-97/28800"
+            },
+            "complete_excess_upper_coefficient": "7/16",
+            "complete_excess_upper_log_argument": "5",
+            "exact_source_entropy": {
+              "2": "2/3",
+              "3": "2",
+              "5": "38/45"
+            },
+            "exact_success_functional": {
+              "2": "2/3",
+              "3": "2",
+              "5": "38/45"
+            },
+            "mean_complete_attempts": "51/8",
+            "mean_success_attempts": "20/3",
+            "record_only_success_fibres": 544,
+            "same_history_cap_refinements_checked": 6,
+            "success_probability": "9/16",
+            "successful_completion_dimensions": [
+              1,
+              8,
+              9,
+              28,
+              36
+            ],
+            "successful_paths": 4224,
+            "terminal_paths": 6864,
+            "timeout_probability": "7/16"
+          },
+          "E": {
+            "complete_counting_excess": {},
+            "complete_excess_upper_coefficient": "0",
+            "complete_excess_upper_log_argument": "5",
+            "exact_source_entropy": {
+              "2": "2/3",
+              "3": "2",
+              "5": "38/45"
+            },
+            "exact_success_functional": {
+              "2": "2/3",
+              "3": "2",
+              "5": "38/45"
+            },
+            "mean_complete_attempts": "4",
+            "mean_success_attempts": "4",
+            "record_only_success_fibres": 160,
+            "same_history_cap_refinements_checked": 6,
+            "success_probability": "1",
+            "successful_completion_dimensions": [
+              1,
+              8,
+              9,
+              28
+            ],
+            "successful_paths": 1056,
+            "terminal_paths": 1056,
+            "timeout_probability": "0"
+          }
+        },
+        "prefix_attempts": 2,
+        "record_stopped_E_service": {
+          "conditional_input_mean_attempts_range": [
+            "15/4",
+            "5"
+          ],
+          "exact_cost_corrected_functional": {
+            "2": "2/3",
+            "3": "2",
+            "5": "38/45"
+          },
+          "mean_native_attempts": "7963/1800",
+          "prefix_attempts_upper": 3,
+          "total_attempts_upper": 5
+        },
+        "scope": {
+          "all_timeout_disturbed_outputs_retained": true,
+          "cap_completions_share_one_conditional_endpoint_measure": true,
+          "coherent_reference_entropy_theorem": false,
+          "prefix_has_record_feedback_and_core_crossings": true,
+          "proper_volume_area_stress_dictionary": false,
+          "readout_uses_only_declared_native_records": true,
+          "unmeasured_cap_predictions_are_additional_records": false
+        },
+        "unconditional_E_readout_service": {
+          "core_census_attempts": 2,
+          "native_attempts": 4,
+          "prefix_attempts": 2,
+          "timeout_probability": 0
+        }
       },
       "contracts": {
         "arbitrary_reference_decoupled": false,
@@ -541,7 +667,7 @@
         "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
         "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
         "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-        "docs/INTERPRETATION_AND_TERMS.md": "a30aacc757e53ba0dd742cfabd2eeed8c74099f927cae1404f328058271b5515",
+        "docs/INTERPRETATION_AND_TERMS.md": "e7ba36f17bfaa0c6ab56d49a1746de2b1ab9e588e8389ea823c97e55139837d3",
         "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
         "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
         "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",
@@ -635,9 +761,10 @@
         "model/native_clock/regional_preparation.py": "46a137e362c57f01c367e027edb11094e644dcc8b76bcd3c9398baa8f6d4c855",
         "model/native_equilibration/__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
         "model/native_equilibration/__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
-        "model/native_equilibration/common_variation.py": "f33755b6c0cbef75b7d0478e659c3d58cb8e7d9559a505ade30f6abec46df40f",
+        "model/native_equilibration/common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
         "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
         "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
+        "model/native_equilibration/history_entropy.py": "31783105f60a943dd92e25db1b3d2ff1e63ebe02a5385827c2958d66f3037a15",
         "model/native_equilibration/record_thermodynamics.py": "d3054c1f7f5a6d2cd8ad5c06a3f6f63d944d45b4d7c1eb194aca5e5155dce906",
         "model/native_interface/__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
         "model/native_interface/__main__.py": "545d8153b7fa2af349b01b8c1b8f488e957ed2d8ec5d1638bff3f44727d3dcb0",
@@ -774,9 +901,10 @@
     "model/native_clock/configuration.py": "f5d5b7ac614a5a1080015a1b1fa16e4d450fbb95a1ee4a2633f844823cdeeae9",
     "model/native_clock/regional_preparation.py": "46a137e362c57f01c367e027edb11094e644dcc8b76bcd3c9398baa8f6d4c855",
     "model/native_equilibration/__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
-    "model/native_equilibration/common_variation.py": "f33755b6c0cbef75b7d0478e659c3d58cb8e7d9559a505ade30f6abec46df40f",
+    "model/native_equilibration/common_variation.py": "22f132ba44430c63a3c35935b6fa0040e3579dfa80579e78d25dd62087500894",
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
+    "model/native_equilibration/history_entropy.py": "31783105f60a943dd92e25db1b3d2ff1e63ebe02a5385827c2958d66f3037a15",
     "model/native_interface/__init__.py": "01a785b3666e979ff77d44b3eabf4f59573238a470f23bca172ed01032ec1205",
     "model/native_interface/construction.py": "9406eba34986f27d47f7be10d3a155d6e37e5123854ff3db40c305cf4bc391fb",
     "model/native_interface/pointer.py": "30485fdee1d221460c67b9791a34b7fa24b4dece718ab91bdfc3cbb24ca591ac",

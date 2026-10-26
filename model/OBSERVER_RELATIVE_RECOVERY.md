@@ -19,6 +19,17 @@ including the boundary term introduced by a compressed readout. The
 consequences under a shared P map and checks whether the retained empirical
 rows identify one common physical construction.
 
+The native law also transports a collective correlation charge, with
+compatible local detector effects on overlapping regions and exact
+[current fluctuation and response laws](common_source/full_repair_response/README.md#a-measured-native-current-response).
+These records distinguish spatial transport, modular frequency and repair
+decay. The [continuing-record entropy construction](native_equilibration/README.md)
+derives a population entropy envelope after adaptive repairs using an actual
+native core census and the expected fair-coin cost. Its cap predictions share
+one conditional endpoint distribution. This finite record stationarity does
+not supply the entropy of the coherent particle experiment or identify
+counted completions with physical area and stress.
+
 The executable model connects native repair, field observations, local clock
 records, modular descriptions and controlled interventions within specified
 finite experiments. It derives conditional observation laws and identifies

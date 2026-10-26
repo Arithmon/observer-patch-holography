@@ -3,13 +3,27 @@
 **Current research report.** This single report collects the declared chiral
 Weyl–Higgs candidate, the hierarchy diagnosis, and the full repair response
 audit. Its calculations and retained outputs are in the linked model packages.
-The measured Standard Model mass hierarchy has **not** been recovered. The
-physical charged field and its dynamics have not yet been derived from a
-native continuing repair history.
+The native recorded repair supports a propagating **collective core-relative
+charge response**, an exact correlation current, and compatible local detector
+records. Its operators are even matrix-unit transfers with a diffusive response.
+The measured Standard Model mass hierarchy has **not** been recovered, and
+these collective operators have not been identified with Standard Model fields
+in the observer's physical Lorentzian description.
+
+**Operational particle mass.** A mass is inferred from jointly accessible
+detector records and interventions in a stated observer clock and spacetime
+description. Observers must agree on the same response law and on the
+energy–momentum quantity extracted from it. A sharp stable rest mass requires
+the corresponding physical pole and dispersion; thresholds and unstable or
+confined species require their stated alternatives. Agreement on a detector
+outcome after its state update is an essential observation contract. It does
+not by itself identify a repair decay rate, modular frequency or graph
+eigenvalue with that mass observable.
 
 - [Candidate construction](#candidate-construction)
 - [Hierarchy diagnosis](#hierarchy-diagnosis)
 - [Full repair response](#full-repair-response)
+- [Current conclusions and open tests](#8-current-conclusions)
 
 ## Candidate construction
 
@@ -35,23 +49,22 @@ The equations below explain their construction independently of the code.
 
 ### 1. The question being tested
 
-An earlier [continuing response experiment](../../model/common_source/mass_response/README.md)
+The [continuing response experiment](../../model/common_source/mass_response/README.md)
 joined a finite charged gap, interactions, neighboring-site response and
-quantum-clock measurements in one history. A subsequent
+quantum-clock measurements in one history. Its
 [operator-response audit](../../model/common_source/particle_identification/README.md)
 showed that this gap has nonzero CAR spectral residue and can be read by an
 even, charge-conserving transfer instrument. It also classified the separate
 eight-component free continuum extension as two degenerate Dirac copies.
 
-That establishes a charged fermionic response in the tested model. It does
-not give the Standard Model's chiral charge assignments. The next question
-was whether the existing OPH matter and Higgs results could supply those
-assignments to an explicit propagating field, with masses measured against
-the same clock convention.
+That establishes a charged fermionic response in the tested model. The
+chiral candidate combines the existing OPH matter and Higgs representations
+with an explicit propagating field, whose gaps are measured against the same
+clock convention. The representation attachment and its family mass law are
+declared construction choices.
 
-This candidate answers the representation and finite execution parts of
-that question. It also supplies a direct mass test that rejects the simplest
-trial coupling map.
+The candidate supplies a finite execution of that representation and a direct
+mass test that rejects its simplest trial coupling map.
 
 ### 2. Source inputs and construction choices
 
@@ -164,7 +177,7 @@ Let $B$ span the actual selected rank-three native slow band and
 $G=B^T B$. Compressing the occupation matrix gives
 
 ```math
-F=G^{-1}B^T\operatorname{diag}(\mathbb E[n_i])B.
+F=G^{-1}B^T\mathrm{diag}(\mathbb E[n_i])B.
 ```
 
 The [exact producer](../../model/common_source/particle_identification/family_attachment.py)
@@ -318,7 +331,7 @@ P_i(\text{empty at }\tau)-P_i(\text{occupied at }\tau)
 The final clock quadratures recover
 
 ```math
-\theta=\operatorname{atan2}\!\left(
+\theta=\mathrm{atan2}\!\left(
 \frac{\langle Y\rangle}{r},\frac{\langle X\rangle}{r}\right)
 =2\Omega\tau.
 ```
@@ -373,7 +386,7 @@ Clifford matrices can be put into chiral form by
 
 ```math
 W=\frac1{\sqrt2}\begin{pmatrix}I&-I\\I&I\end{pmatrix},\qquad
-W\alpha_jW^\dagger=\operatorname{diag}(-\sigma_j,+\sigma_j),\qquad
+W\alpha_jW^\dagger=\mathrm{diag}(-\sigma_j,+\sigma_j),\qquad
 W\beta W^\dagger=\begin{pmatrix}0&I\\I&0\end{pmatrix}.
 ```
 
@@ -785,7 +798,7 @@ two matrices.
 
 There is a further symmetry restriction on using only this stationary
 reference. Its native stabilizer contains a half-turn represented on the
-family band by $R=\operatorname{diag}(-1,+1,-1)$. Any covariant
+family band by $R=\mathrm{diag}(-1,+1,-1)$. Any covariant
 endomorphism built solely from that reference and rotation-invariant
 carrier data must commute with $R$. For the same family action on both
 fermion factors and a family-neutral Higgs, the allowed matrices have a
@@ -1048,7 +1061,7 @@ $G=10+2\sqrt5$, the harmonic extension $U_h$ satisfies
 $B^TU_h=GI$, and
 
 ```math
-\mathcal S(0)=\operatorname{diag}(0,0,\lambda),\quad
+\mathcal S(0)=\mathrm{diag}(0,0,\lambda),\quad
 \lambda\simeq0.03717449835,
 ```
 
@@ -1157,6 +1170,167 @@ Thus the next field construction must change a substantive ingredient:
 coherently recombine different current records, or derive a collective or
 encoded charged field with its own propagation map. The result does not
 exclude those alternatives or propagation of neutral occupation densities.
+
+#### A collective charged response with local observation records
+
+The [collective response calculation](../../model/common_source/hierarchy_diagnosis/collective_response.py)
+constructs an observable directly on the existing 66-state carrier. Write
+$|a,j\rangle$ for the binary configuration occupied at ports $a,j$. With
+protected port $a=0$ and reference port $b=5$, set
+
+```math
+X_j=|0,j\rangle\langle5,j|,\qquad j\notin\{0,5\},
+\qquad Q_l=n_0n_l\quad(l\ne0).
+```
+
+The same source gives $\sum_{l\ne0}Q_l=n_0$ and
+$[Q_l,X_j]=\delta_{lj}X_j$. Every completion seam $(u,v)$ preserves $n_0$
+and satisfies
+
+```math
+Q'_u-Q_u=-n_0j_{\rm native},\qquad
+Q'_v-Q_v=+n_0j_{\rm native}.
+```
+
+Thus the collective field has a local charge and conserved correlation
+current. All 2,640 source/coin/seam input addresses are checked exactly.
+This is a core-relative charge whose electric identification remains open.
+Reading its current additionally requires access to the protected occupation;
+that occupation is not inferred from the native current record alone.
+Density and Ramsey quadrature readouts are alternative interventions.
+The [native current experiment](../../model/common_source/full_repair_response/README.md#a-measured-native-current-response)
+also derives the collective current covariance scale $1/36$, alongside the
+raw current scale $19/150$, with the source instrument's actual first and
+second moments. Its repair-count response and modular response use distinct
+parameters; neither covariance scale is an electromagnetic coupling.
+
+The signed endpoints $0,5$ remain fixed, while their common occupation $j$
+propagates. For the existing one-round completion selector, its accepted
+ten-mode response is
+
+```math
+T=(q-k)I-\tfrac12L_{\rm common},\qquad
+q=\frac{27}{32},\qquad k_C=\frac3{64},\quad k_E=\frac3{32}.
+```
+
+$L_{\rm common}$ is the graph Laplacian formed from the actual seam weights.
+The generating response is $(I-zT)^{-1}$ on its convergence domain, with
+all ten modes retained. Averaging signed local return measurements over the
+ten separately prepared coordinates gives
+$\mathrm{Tr}(I-zT)^{-1}/10=\sum_r[10(1-z\lambda_r)]^{-1}$.
+Every transfer eigenvalue therefore has a nonzero residue in this declared
+local measurement family, with multiplicities included. These positive real transfer modes describe decay
+and diffusion in proposal count. The ideal reference's modular frequency is
+$\log(25/8)$ for the nine outer common-occupation coordinates and
+$\log(8/5)$ for the isolated $j=1$ coordinate. A modular advance remains a
+separately implemented control with its own parameter.
+
+The actual first incident event on cap $(0,1,5,7)$ supplies a stopping clock.
+With two work proposals allowed, the complete recorded histories transport
+the prepared relative phase from $j=2$ to $j=7$ along $2\to6\to7$ and
+$2\to10\to7$. A local Ramsey detector has exact **unconditional signed
+success response $1/2048$**, for both C and E. Success has probability
+$135/512$, selector timeout $135/512$, and deadline timeout $121/256$.
+No timeout is continued or success probability divided away. All 4,881 C
+paths and 10,921 E paths retain their native work records, zero probabilities,
+twenty Ramsey/location outputs and complementary detector output.
+The selector's auxiliary transcripts are marginalized to the accepted seam
+or timeout at this interface; these counts are complete work-path counts,
+not an enumeration of every auxiliary selector transcript.
+Reversing the input phase reverses the transported signal; the incoherent
+mixture has zero signal. One allowed work proposal cannot reach that detector.
+Preparation and coherent readout are declared apparatus, executed here as
+exact CP semantics without a new pulse-level implementation claim.
+
+The $j=7$ detector needs only ports $\{0,5,7\}$, with effects
+
+```math
+E_\pm=\tfrac12(|0,7\rangle\pm|5,7\rangle)
+                    (\langle0,7|\pm\langle5,7|),\qquad
+E_{\rm rest}=I-E_+-E_-.
+```
+
+The actual incident cap and a second declared access region $(0,5,7,10)$
+overlap on those ports. Their local effects embed identically on the source,
+preserve total occupation, and satisfy $E_vE_u=\delta_{uv}E_u$. Conditional
+on a nonzero-probability outcome, the work state becomes
+$E_u\rho E_u/\mathrm{Tr}(E_u\rho)$. Two same-event reads therefore have
+joint record law $p(u,v)=\delta_{uv}p(u)$, including the rest and timeout
+outputs. These are compatible observations after a concrete local state
+update. The work state can continue repairing while the classical record
+remains protected; a fresh measurement after intervening repair need not
+return the same outcome.
+
+The field statistics are also explicit: $X_j^2=0$ and
+$\{X_j,X_j^\dagger\}=P_j$, a rank-two projector. Different $j$ act on
+disjoint supports and commute. Their algebra is a direct sum of ten
+$M_2(\mathbb C)$ blocks, without ten independent CAR modes or a derived
+bosonic field algebra. The sum of the $X_j$ realizes one CAR mode on their
+20-dimensional support with coordinate multiplicity. These are even
+occupation-transfer operators.
+
+A conditional fluctuation construction gives a precise bosonic route from
+these same operators. For $M$ independently prepared ideal reference copies,
+set $F_j=(M\delta)^{-1/2}\sum_r X_j^{(r)}$ on the nine outer coordinates,
+where $\delta=1/36-2/225=17/900$. Direct tensor calculations give
+
+```math
+\langle[F_j,F_k^\dagger]\rangle=\delta_{jk},\qquad
+n_B=\langle F_j^\dagger F_j\rangle=\frac8{17},\qquad
+\left\langle([F_j,F_j^\dagger]-I)^2\right\rangle
+=\frac{29411}{289M},\qquad
+\langle(F_j^\dagger)^2F_j^2\rangle
+=2\left(1-\frac1M\right)\left(\frac8{17}\right)^2.
+```
+
+The [bounded IID ordered-Weyl argument](../../model/observer_time_fields/REFINEMENT.md#source-coded-quantum-fluctuations-and-an-ordered-detector-law)
+applies to the actual nonuniform source weights: the ordered characteristic
+functions converge to the thermal CCR state with occupation $8/17$ and
+$e^\Omega=25/8$. Direct finite tensor exponentials and reversed ordering
+check the noncommuting phase. This is convergence of the specified state
+and observables, without a finite operator-norm CCR claim. Independent
+reference copies, joint control and their preparation/error costs are
+additional services; a growing-copy detector is not executed here.
+With identical separate-copy evolution in the same declared parameter,
+this normalization leaves every two-point transfer pole unchanged.
+
+The hierarchy conclusion is consequently explicit. This linear collective
+response contains only two positive modular frequencies,
+$\log(8/5)$ and $\log(25/8)$, whose ratio is less than three. It cannot
+supply three distinct charged-lepton masses under one common modular-clock
+calibration. Even the additional assignment of attenuation rates to masses
+fails the hierarchy test for each of these named conventions:
+
+| Transfer whose positive eigenvalues are logged | C: certified rate-spread upper bound | E: certified rate-spread upper bound |
+| --- | ---: | ---: |
+| Accepted proposal, including survival loss | $1856/455$ | $4$ |
+| Proposal conditioned on selector survival | $342/35$ | $99/16$ |
+| Two-proposal first-incident success map | $3072/167$ | $16128/229$ |
+| Same success map conditioned on its flag | $515/48$ | $635/24$ |
+
+These exact bounds follow from $0<l\le\lambda\le u<1$ and
+$1-u\le-\log\lambda\le(1-l)/l$. For the incident map
+$J(I+R)$, positivity follows by similarity to
+$(I+R)^{1/2}J(I+R)^{1/2}$. Every bound is below 71, whereas the measured
+muon/electron ratio exceeds 206. A common scale, field normalization or
+choice among these response modes cannot close that difference. The
+conditional success map is a diagnostic of the same finite experiment;
+it does not continue failed clocks. These are bounded exclusions of the
+listed linear response and clock assignments, not of composite fields or
+other continuing constructions.
+
+An exact attachment test locates the spacetime gap. The connected outer
+graph has one zero Laplacian mode and eight positive modes, while all nine
+have the same modular frequency. If that frequency is identified with one
+field's energy and a positive multiple of the Laplacian eigenvalue with its
+momentum squared, the sharp free relation $E^2=m^2+c^2p^2$ fails for every
+nonzero $c$. The actual native transfer also has no oscillation phases.
+This rejects that specific free-pole dictionary. It does not identify graph
+eigenvalues with measured continuum momenta, turn proposal count into proper
+or Euclidean time, or exclude interacting, thermal or other continuum field
+descriptions. The positive result is native collective charge transport and
+an agreed local readout; the physical energy–momentum map, field statistics
+and Standard Model mass spectrum remain unresolved.
 
 #### A modular clock within one shell does not select charged thresholds
 
@@ -1357,6 +1531,19 @@ operator test expose structural limits that were hidden by assigning a
 single mean matrix to Yukawa couplings. The current tested routes do not
 recover the measured mass ratios.
 
+The collective correlation field supplies an explicit positive result: local
+charge continuity, transported phase-sensitive response, and compatible
+overlapping observer records through the same native history. Independent
+reference copies admit a thermal bosonic fluctuation limit under their
+declared preparation contract. Their two-point poles retain the native
+frequency and attenuation bounds, which do not recover the lepton hierarchy.
+The physical field and energy–momentum attachment remains open. The positive
+detector and continuity results resolve specific finite observation questions;
+they do not establish the full physical detector map. The hierarchy failures
+exclude the stated action prescriptions and clock/readout assignments. They
+do not prove that every possible OPH construction, interacting effective
+description or collective field fails.
+
 The next physical construction must supply an operator map from a
 continuing repair history to the charged left/right field response. It
 must preserve charge, CAR or its justified effective limit, propagation,
@@ -1371,6 +1558,31 @@ It is not a reason to tune the successful-decoder branch, count a timeout
 hazard as a light particle, or fit an arbitrary function of the family
 matrices and call its coefficients derived. A successful construction
 would have to pass the joint measured ratios after those choices are fixed.
+
+#### Prioritized open tests
+
+The immediate research target is an effective particle description of the
+**same jointly recorded observations**. Settled records need not imply a
+static source. Different observers must recover compatible response functions
+after the measurement update, including their future conditional predictions.
+The following routes remain hypotheses to test, rather than assumed solutions.
+
+| Priority and route | Concrete calculation | Criterion for progress |
+| --- | --- | --- |
+| 1. Attach the response to spacetime and a clock | Specify a candidate charged field, spatial translations and observer-clock readings from the continuing history. Measure its response at several spatial modes and orientations, including all terminal flags. Test a sharp-pole description where appropriate, or declare an interacting/thermal spectral alternative. | One fixed map preserves the joint detector/intervention law and gives compatible energy–momentum parameters across observers and probes. The failed flat-modular-frequency/free-dispersion map is not reused as a physical identification. |
+| 2. Determine the continuing coherent implementation | Compare explicit admissible source implementations, including their treatment of coherent versus committed records. Fix each implementation before examining particle targets, and measure multi-time phase-sensitive responses with its own clock. | The complete source program determines the observable evolution and its errors. Agreement of committed C/E probabilities alone does not select an unread coherent continuation. |
+| 3. Derive interactions and family structure together | Use the continuing repair context and complementary memory to calculate the full frequency-dependent charged response, kinetic normalization and interaction vertices from one action. Test whether additional source observables distinguish three families and break the retained stationary-reference symmetry. | Distinct physical gaps and residues survive the same charge/statistics and spacetime tests; family coefficients and scale come from that specified construction. Rescaling a field or fitting a function of the old feature matrix does not satisfy this criterion. |
+| 4. Test controlled enlargement or refinement | If a larger carrier, collective sector or copy limit is required, state its preparation, locality, interactions and observer access. Bound complete-record errors as the construction grows. | A common limiting response is obtained with controlled clock and state errors. The independent-copy bosonic limit already computed does not change the two-point poles or recover the hierarchy by itself. |
+| 5. Join the matter and entropy readouts | Extend the [native record entropy result](../../model/native_equilibration/README.md) to the actual coherent matter protocol, then derive geometric area/volume and stress readouts independently on that same history. | The joint construction meets the entropy and geometry contracts without defining curvature or an area term solely to enforce Einstein's equation. The population census theorem alone does not close this attachment. |
+
+For any route that passes these checks, freeze its architecture, state,
+controls and physical readout before comparing mass ratios with observations.
+Use a common clock and justified uncertainties; specify the renormalization
+scheme and scale where the physical mass definition requires them. The
+comparison must include the simultaneous hierarchy and relevant interaction
+tests. Numerical replay tolerances are not physical theory-error budgets.
+An inconclusive attachment or a failed specified construction should remain
+explicit, with the other admissible routes open.
 
 ### 9. Reproduction
 

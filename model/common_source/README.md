@@ -11,8 +11,13 @@ That target remains open.
 
 The [particle mass-response audit](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
 joins the finite charged-gap, CAR-readout, Weyl–Higgs, hierarchy and full-response
-calculations. Each uses its stated action and clock contract. Native-port
-charge propagation and the measured Standard Model hierarchy are not derived.
+calculations. Each uses its stated action and clock contract. The native
+recorded law transports a collective core-charge response, with a local
+conserved correlation density and shared detector effects on overlapping
+observer regions. Its matrix-unit algebra, incident-clock transfer and
+modular frequencies are computed separately. Identifying that response
+with a physical relativistic particle, and recovering the measured Standard
+Model hierarchy, remain open.
 The canonical `python -m model.verify` replays all five retained reports;
 for the charged experiments it recomputes the complete quantum outputs and
 compares the stored arrays as well as their hashes. The

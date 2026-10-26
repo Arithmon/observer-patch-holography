@@ -438,6 +438,69 @@ flux with gravity, or source with mass density.
 \input{tex_fragments/SOURCE_REPAIR_INSTRUMENT.tex}
 \input{tex_fragments/SOURCE_RECORD_GLUING.tex}
 \input{tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex}
+\subsection{Entropy stationarity from a continuing native record}
+\label{sec:continuing-record-entropy}
+
+The native population interface admits an entropy calculation after
+record-adaptive repairs, without assuming an unread stationary continuation.
+Fix the binary total-two carrier and a faithful reference with weight $w_q$
+per configuration of initial core charge $q=n_0+n_1$. The core pair
+observable is $c=n_0n_1$. Let $b$ be a complete native tape with bounded
+stopping length $T_b$, and let $d_b$ count its compatible endpoints.
+Native branch inversion identifies each endpoint with an initial state.
+Assume the tape resolves $q$, and that any retained flag has probability
+$\beta>0$ independent of the initial state.
+
+\begin{proposition}[Counted native-record entropy envelope]
+For an initial population $p$, let $p_B$ be its tape law conditional on that
+flag. Define
+\[
+ F(p)=H(p_B)+\mathbb E_p\log d_B
+       -\mathbb E_p T_B\log2-\log\beta.
+\]
+Writing $\sigma$ for the reference population, one has
+\[
+ F(p)-S(\sigma)
+ =h_1\bigl(\langle q\rangle_p-\langle q\rangle_\sigma\bigr)
+  +h_2\bigl(\langle c\rangle_p-\langle c\rangle_\sigma\bigr)
+  -D(p_B\Vert\sigma_B),
+\]
+where $h_1=\log(w_0/w_1)$ and $h_2=\log(w_1^2/(w_0w_2))$.
+Hence the fixed-moment first variation vanishes at $\sigma$, and its
+Hessian is the negative semidefinite Fisher form of the tape response.
+\end{proposition}
+\begin{proof}
+Injectivity and the retained fair coins give
+$\sigma_B(b)=d_b w_{q(b)}2^{-T_b}/\beta$.
+Substituting this law in $D(p_B\Vert\sigma_B)$ leaves
+$-\sum_b p_B(b)\log w_{q(b)}$.
+State-independent flag probability makes its initial-state marginal $p$.
+Finally $-\log w_q=-\log w_0+h_1q+h_2c$.
+The second variation of relative entropy is the Fisher form; directions
+invisible to this record map can remain flat.
+\end{proof}
+
+The charge-resolution hypothesis has an actual native readout.
+For E, the contrasts on seams $(0,1)$ and $(0,5)$ determine the three
+binary occupations at the start of that census: a common all-one offset
+is impossible at total load two. Retained prefix currents then recover
+the initial core, including after crossing repairs. No success conditioning
+is needed. For C, waiting for both coin values on each census seam gives a
+bounded service with state-independent success; all timeouts remain in the
+complete instrument. Unresolved timeout fibres have counted-entropy excess
+bounded by $(1-\beta)\log(w_{\max}/w_{\min})$.
+The expected coin cost must vary with $p$ when stopping depends on records.
+Cap completions are marginals of the same conditional endpoint measure,
+so their shared predictions agree without independently resetting the source.
+The exact implementation and controls are in
+\path{model/native_equilibration/history_entropy.py}.
+
+This is a population-record entropy theorem. It identifies neither the
+completion count nor the coin-cost subtraction with gravitational area,
+nor the core moments with physical volume or stress. The entropy of the
+coherent particle history and the Einstein geometric variation therefore
+require additional attachments.
+
 \subsection{Finite modular covariance and compressed responses}
 \label{sec:finite-modular-covariance}
 

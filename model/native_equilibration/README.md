@@ -98,6 +98,32 @@ all-empty and all-full configurations that the native difference records
 cannot distinguish. The fixed-sector hypothesis is therefore essential;
 there is no claim of a unique state on that larger algebra.
 
+## Continuing records and constrained entropy
+
+[history_entropy.py](history_entropy.py) extends the two-moment reference
+envelope to actual recorded population histories, including adaptive seams
+crossing the core and bounded record-dependent stopping. Two native E
+contrast records recover the protected core from a connected three-port
+census; the C-current implementation uses a bounded waiting service with
+state-independent success and every timeout retained. Neither readout
+receives hidden occupation bits. The instrument counts compatible endpoints
+and accounts explicitly for the entropy of its retained fair coins.
+
+At fixed initial occupation moments, its cost-corrected record entropy has
+an exact relative-entropy deficit and nonpositive Fisher curvature. The
+finite reference-preparation sandwich transfers to the same adaptive
+record readout. Cap predictions are compatible marginals of one conditional
+endpoint distribution, not separately prepared states. Unresolved C
+timeouts have a quantified counting excess; forgetting informative records
+and freezing an input-dependent stopping cost are tested failures.
+
+The current derivation, service costs and physical boundary are in
+[the common-source geometry discussion](../common_source/SLOW_GEOMETRY.md#entropy-stationarity-from-continuing-native-records).
+The result is retained inside `variation_results.json`, not a separate
+report. This is finite population entropy on the declared instrument;
+coherent matter entropy, proper volume, geometric area and stress remain
+distinct interfaces.
+
 ```sh
 python -m model.native_equilibration --check model/native_equilibration/results.json
 python -m pytest -q -W error model/native_equilibration

@@ -19,7 +19,7 @@
     "cochain_completion": "PASS_FULL_WHITNEY_COCHAIN_COMPLETION_WITH_SHARED_CONE_SCALAR_BLOCK",
     "geometric_stationarity": "PASS_SCOPED_GEOMETRIC_ENTROPY_AND_BACKREACTION_TESTS"
   },
-  "computational_source_bindings": 466,
+  "computational_source_bindings": 467,
   "artifact_bindings": 13,
   "physical_mass_predictions_promoted": false,
   "physical_electromagnetic_identity_established": false,

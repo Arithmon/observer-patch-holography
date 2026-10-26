@@ -43,7 +43,10 @@ mixed complement protocol, not every possible cap complement.
 With an untouched reference B, Pi tensor id retains the conditional
 reference states Tr_source(P_q rho_SB). It need not equal sigma tensor
 rho_B. The entropy-maximization claim above concerns the source marginal.
-No adaptive feedback or conditioning on fine repair records is included.
+The coherent unread theorem in this module includes no adaptive feedback or
+conditioning on fine repair records. The attached history_entropy theorem
+instead supplies a population envelope on complete native records, including
+adaptive crossings, bounded stopping costs and an operational core census.
 The unread marginal needs no physical tape erasure; the complete-record
 accounting in record_thermodynamics applies with the entropy of the declared
 independent choice word replacing n log(m) for a uniform choice alphabet.
@@ -79,6 +82,7 @@ DIMENSIONS = (45, 20, 1)
 SOURCE_PATHS = tuple(sorted(set((*local.SOURCE_PATHS, *common.SOURCE_PATHS,
     "model/native_equilibration/common_variation.py",
     "model/native_equilibration/record_thermodynamics.py",
+    "model/native_equilibration/history_entropy.py",
     "Lean/ObserverPatchHolography/EinsteinBranch/Entropy.lean"))))
 
 
@@ -285,6 +289,8 @@ def all_regions(weights):
 
 
 def run():
+    from . import history_entropy
+
     references = {}
     for kind, weights in (("global", common.reference()), ("local", local.reference())):
         m, c = moments(weights)
@@ -299,6 +305,7 @@ def run():
         "source_sha256": {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCE_PATHS},
         "native_source": source_audit(), "arbitrary_input_preparation": preparation_budget(),
         "selected_references": references,
+        "continuing_record_entropy": history_entropy.run(),
         "countercontrols": {"global_and_tracial_mean_charge": F(1, 3),
             "global_pair_moment": F(1, 75), "tracial_pair_moment": F(1, 66),
             "missing_pair_constraint_allows_positive_entropy_derivative": True,

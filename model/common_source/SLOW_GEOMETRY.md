@@ -243,7 +243,7 @@ nonzero real $\kappa$. No physical null-translation generator is assigned
 to the native code by this test.
 
 For every finite Hermitian $G,P$, cyclicity of the trace gives
-$\operatorname{Tr}(P\,i[G,P])=0$. Consequently
+$\mathrm{Tr}(P\,i[G,P])=0$. Consequently
 
 ```math
 \|i[G,P]-\kappa P\|_{\rm HS}^2
@@ -335,3 +335,152 @@ restricted continuum covariance comparison remain required on one family.
 Run `python -m model.common_source.modular_covariance` for the native
 diagnostic and `python -m pytest -q model/common_source/test_modular_covariance.py`
 for the sharp, spectral-compression and finite-parameter controls.
+
+## Entropy stationarity from continuing native records
+
+[history_entropy.py](../native_equilibration/history_entropy.py) extends the
+finite entropy envelope to a continuing native population history with
+record-dependent seam choices, core-crossing currents and bounded stopping.
+The experiment starts from the same faithful 66-state reference
+$\sigma(x)=w_{q(x)}$, with $q=x_0+x_1$ and $c=q(q-1)/2$.
+More generally, the proof holds for every faithful two-moment family in
+[common_variation.py](../native_equilibration/common_variation.py).
+The reference is prepared before the experiment; the continuing history
+does not reset or re-equilibrate between its measurements.
+
+The declared controller chooses seams from prior committed records. Every
+fair coin and current (C law), or pre-update contrast (E law), remains in
+the tape. If $j$ is the signed transfer on $(a,b)$, the actual native rule
+gives, for every cap $R$,
+
+```math
+N_R(x')-N_R(x)=j\bigl(1_{b\in R}-1_{a\in R}\bigr).
+```
+
+For E records, the transfer itself is decoded as
+$j=[d-(2u-1)(|d|\bmod2)]/2$, where $u$ is the recorded fair coin.
+Thus endpoint plus complete tape reconstructs the initial configuration
+by reversing these translations. This is an exact finite continuity law,
+not an identification with a physical stress tensor.
+
+The core readout uses native records only. After the prefix, a census on
+the source seams $(0,1),(0,5)$ determines occupation differences on three
+connected ports. At total binary load two, these three ports cannot all
+be occupied, so their minimum occupation is zero; this fixes the common
+offset. Reversing the prefix currents then determines the initial core
+charge. Under E, the two contrasts are recorded in **two native attempts**,
+with no failure or postselection. Under C, each edge waits for the first
+coin change, with deadline $h$. Its first and final currents determine the
+pre-edge contrast. The complete success probability is
+$\beta=\alpha^2$, $\alpha=1-2^{1-h}$, independent of the input state.
+All timeouts retain their disturbed endpoints and complete tapes.
+For a two-attempt prefix and $h=24$, the C service uses at most 50 native
+attempts and has timeout probability $1-(1-2^{-23})^2$; its mean is at
+most eight attempts. These are native attempt counts, not observer proper
+times. The two-attempt E prefix plus census uses four attempts exactly.
+The already declared preparation and controller services remain additional
+resources; no free occupation measurement is assumed.
+
+For a complete successful tape $b$, let $d_b$ be the **integer number of
+compatible native endpoints**, counted before evaluating any entropy.
+All members of this fibre have the same reconstructed initial charge and
+the same coin word of length $T_b$. Consequently
+
+```math
+\pi_\sigma(b)=\frac{d_b w_{q(b)}2^{-T_b}}{\beta}.
+```
+
+For E, $\beta=1$ and every terminal tape is included. For C, the displayed
+law is the explicitly flagged successful subensemble; its timeout mass is
+kept separately. For another initial population $p$, using the same
+controller and readout, define
+
+```math
+\mathcal F(p)=H(\pi_p)+\sum_b\pi_p(b)\log d_b
+-\mathbb E_p[T]\log2-\log\beta.
+```
+
+The counted completion and the coin costs are independently defined by
+the executed instrument. They are not chosen to satisfy a gravitational
+equation. Substituting the reference law gives the exact identity
+
+```math
+\mathcal F(p)-S(\sigma)
+=h_1\Delta\langle q\rangle+h_2\Delta\langle c\rangle
+-D(\pi_p\Vert\pi_\sigma),
+\qquad
+h_1=\log(w_0/w_1),\quad h_2=\log\frac{w_1^2}{w_0w_2}.
+```
+
+At fixed initial moments, this is a maximum and its first variation
+vanishes. Its Hessian is $-\sum_b(\delta\pi_b)^2/\pi_\sigma(b)$.
+It is semidefinite: an unobserved spectator perturbation is a tested flat
+direction, so the record functional does not uniquely determine the full
+source state. A record-dependent stopping rule changes the expected coin
+cost under a perturbation. The executable checks this explicitly by ending
+the prefix at its first nonzero current or its third attempt. Keeping the
+old mean cost instead of varying $\mathbb E_p[T]$ breaks the identity.
+Subtracting this known coin entropy does not entail physically erasing a
+tape, and it does not identify the uncorrected entropy with geometric
+generalized entropy.
+
+The finite preparation error also transfers to this instrument. If the
+prepared density lies between $r^{-1}\sigma$ and $r\sigma$, the actual
+record probabilities obey the same sandwich, including normalized C
+success because its probability is state-independent. On every normalized
+fixed-moment tangent $X$, the entropy derivative error is at most
+$\log(r)\|X\|_1$. With the existing preparation radius $v$,
+$r=(1+v)/(1-v)$ gives the retained bound $2v\|X\|_1/(1-v)$.
+Feedback and the properly varied stopping cost introduce no new factor.
+This is a bound for record entropy; it does not assert exact finite
+preparation or a von Neumann entropy theorem for the coherently continuing
+work and its untouched quantum reference.
+
+Timeouts show why the charge-resolution condition matters. If a complete C
+timeout fibre mixes initial charges, replacing its conditional reference
+law by uniform counting gives a positive excess. For the whole terminal
+instrument, this excess is
+
+```math
+\sum_b\pi_\sigma(b)
+D\bigl(\sigma(\cdot\mid b)\Vert\mathrm{Unif}(d_b)\bigr)
+\le (1-\beta)\log(w_{\max}/w_{\min}).
+```
+
+The local reference has $w_{\max}/w_{\min}=5$. The exact C audit at $h=3$
+finds an excess of approximately $0.0149548033$ nats. E's unconditioned
+record readout has zero excess. Dropping the informative current/contrast
+labels destroys charge resolution, even when the fair-coin word is kept.
+These controls rule out treating a coarse or incomplete tape as the same
+entropy observable.
+
+Cap agreement uses a single history measure. In a charge-resolved fibre,
+the common reference assigns the uniform conditional distribution to its
+$d_b$ compatible endpoints. Every cap completion is a marginal of that
+same distribution. Nested restrictions and the intersection of overlapping
+caps therefore agree exactly, conditioned on the same committed record;
+there is no independent state resampling for each observer. Refining a
+record by a predicted cap occupation reallocates its bulk and counted
+completion entropies while preserving $\mathcal F(\sigma)=S(\sigma)$.
+An unmeasured cap occupation is a conditional prediction, not an additional
+observed record. The tests compare overlapping caps directly on every
+successful fibre.
+
+This discharges a finite operational first-law and constrained-stationarity
+interface **with adaptive recorded histories**. The source parameter is
+the declared initial-state variation; the constraints are its two
+occupation moments. It does not identify them with fixed proper volume,
+$\log d_b$ with $A/(4G)$, the current with physical stress, or the stopping
+cost subtraction with a gravitational counterterm. In particular, the
+Einstein theorem still needs its independent small-ball bulk kernel,
+fixed-volume area expansion and common continuum error control. The
+destructive census is also a different protocol from the coherent Ramsey
+particle experiment: a single quantum matter-plus-gravity history has not
+been certified by combining their separate finite results.
+The finite proof is analytic with exact rational source checks; it is not
+a new Lean formalization of the Einstein stationarity premise.
+
+The exact source audit is retained in
+[variation_results.json](../native_equilibration/variation_results.json),
+under `continuing_record_entropy`. Run
+`python -m pytest -q model/native_equilibration/test_history_entropy.py`.

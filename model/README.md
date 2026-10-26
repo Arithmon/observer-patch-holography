@@ -11,6 +11,11 @@ remain separate.
 The [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
 tests a declared Weyl–Higgs action through its charged field and observer
 clock. Its measured finite gaps do not reproduce the charged-lepton hierarchy.
+The same audit derives a collective charged response from the native
+recorded repair itself and tests its local detector records on overlapping
+observer regions. A physical mass must follow from those shared records and
+their clock and spacetime interpretation; the native transfer alone does
+not establish a Lorentzian particle pole.
 The [cross-scale comparison](empirical_diagnostics/README.md) carries one
 entangled-pair spectral scalar through the declared P and primordial-tilt
 maps, while checking which laboratory and cosmological comparisons can share

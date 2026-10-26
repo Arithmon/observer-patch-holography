@@ -19,7 +19,7 @@
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 4033.8049672092943,
-        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
         "maximum_work_qubits": 7,
         "native_pulses": 2054,
         "pair_code_pulses": 642,
@@ -45,7 +45,7 @@
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 4036.946559862884,
-        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
         "maximum_work_qubits": 7,
         "native_pulses": 2054,
         "pair_code_pulses": 642,
@@ -71,7 +71,7 @@
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 4040.088152516474,
-        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
         "maximum_work_qubits": 7,
         "native_pulses": 2054,
         "pair_code_pulses": 642,
@@ -97,7 +97,7 @@
         "identity_phase_pulses": 1,
         "initialization_storage_readout_physical_costs_included": false,
         "integrated_processor_norm_upper": 4046.3713378236534,
-        "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
         "maximum_work_qubits": 7,
         "native_pulses": 2054,
         "pair_code_pulses": 642,
@@ -115,7 +115,7 @@
   "complete_executions": [
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 2.4369395390522186e-14,
+      "complete_probability_residual_diagnostic": 9.645062526431047e-15,
       "exact_conditional_match_probability": "1",
       "exact_joint_probabilities": [
         "28/33",
@@ -128,13 +128,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.07575757575755139,
-        2.4488871749037643e-30,
-        0.07575757575755149,
-        1.3370442784430501e-30
+        0.07575757575756611,
+        2.524446269861376e-29,
+        0.07575757575756611,
+        2.420442472319041e-29
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 5.448098309197626e-15,
+      "full_512_terminal_density_residual_diagnostic": 2.2779656474702274e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "C",
       "quarter_turns": 0,
@@ -212,7 +212,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": 0.0,
-      "complete_probability_residual_diagnostic": 2.042810365310288e-14,
+      "complete_probability_residual_diagnostic": 7.230327447871332e-15,
       "exact_conditional_match_probability": "4/5",
       "exact_joint_probabilities": [
         "28/33",
@@ -225,13 +225,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.06060606060604018,
-        0.015151515151510114,
-        0.06060606060604024,
-        0.015151515151510106
+        0.060606060606053384,
+        0.015151515151513348,
+        0.06060606060605338,
+        0.015151515151513362
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 4.778179619417647e-15,
+      "full_512_terminal_density_residual_diagnostic": 1.833845207466114e-15,
       "generic_runtime_factor_distance_diagnostic": 1.238840354700144e-17,
       "law": "C",
       "quarter_turns": 1,
@@ -309,7 +309,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 1.561945017769517e-14,
+      "complete_probability_residual_diagnostic": 5.648259637780484e-15,
       "exact_conditional_match_probability": "3/5",
       "exact_joint_probabilities": [
         "28/33",
@@ -322,13 +322,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.045454545454529836,
-        0.03030303030302006,
-        0.0454545454545299,
-        0.03030303030302004
+        0.04545454545453981,
+        0.03030303030302672,
+        0.04545454545453981,
+        0.030303030303026748
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 4.509431410275493e-15,
+      "full_512_terminal_density_residual_diagnostic": 1.699287360887961e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "C",
       "quarter_turns": 2,
@@ -406,7 +406,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 2.640943019827091e-14,
+      "complete_probability_residual_diagnostic": 9.076073226310655e-15,
       "exact_conditional_match_probability": "1",
       "exact_joint_probabilities": [
         "28/33",
@@ -419,13 +419,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.07575757575754935,
-        3.534818253889614e-30,
-        0.07575757575754945,
-        2.3663454929249432e-30
+        0.07575757575756668,
+        1.6136276099730174e-29,
+        0.07575757575756668,
+        1.5158543179531933e-29
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 5.9056880100487685e-15,
+      "full_512_terminal_density_residual_diagnostic": 2.0782500721890793e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "C",
       "quarter_turns": 4,
@@ -503,7 +503,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 2.4369395390522186e-14,
+      "complete_probability_residual_diagnostic": 9.645062526431047e-15,
       "exact_conditional_match_probability": "1",
       "exact_joint_probabilities": [
         "28/33",
@@ -516,13 +516,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.07575757575755139,
-        2.4488871749037643e-30,
-        0.07575757575755149,
-        1.3370442784430501e-30
+        0.07575757575756611,
+        2.524446269861376e-29,
+        0.07575757575756611,
+        2.420442472319041e-29
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 5.447592474839396e-15,
+      "full_512_terminal_density_residual_diagnostic": 2.2775536544798916e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "E",
       "quarter_turns": 0,
@@ -600,7 +600,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 2.042810365310288e-14,
+      "complete_probability_residual_diagnostic": 7.230327447871332e-15,
       "exact_conditional_match_probability": "4/5",
       "exact_joint_probabilities": [
         "28/33",
@@ -613,13 +613,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.06060606060604018,
-        0.015151515151510114,
-        0.06060606060604024,
-        0.015151515151510106
+        0.060606060606053384,
+        0.015151515151513348,
+        0.06060606060605338,
+        0.015151515151513362
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 4.777782939216875e-15,
+      "full_512_terminal_density_residual_diagnostic": 1.8331438679163522e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "E",
       "quarter_turns": 1,
@@ -697,7 +697,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 1.561945017769517e-14,
+      "complete_probability_residual_diagnostic": 5.648259637780484e-15,
       "exact_conditional_match_probability": "3/5",
       "exact_joint_probabilities": [
         "28/33",
@@ -710,13 +710,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.045454545454529836,
-        0.03030303030302006,
-        0.0454545454545299,
-        0.03030303030302004
+        0.04545454545453981,
+        0.03030303030302672,
+        0.04545454545453981,
+        0.030303030303026748
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 4.509164703612741e-15,
+      "full_512_terminal_density_residual_diagnostic": 1.6986232257358682e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "E",
       "quarter_turns": 2,
@@ -794,7 +794,7 @@
     },
     {
       "checkpoint_complete_distance_diagnostic": null,
-      "complete_probability_residual_diagnostic": 2.640943019827091e-14,
+      "complete_probability_residual_diagnostic": 9.076073226310655e-15,
       "exact_conditional_match_probability": "1",
       "exact_joint_probabilities": [
         "28/33",
@@ -807,13 +807,13 @@
       "executed_joint_probabilities": [
         0.8484848484848484,
         0.0,
-        0.07575757575754935,
-        3.534818253889614e-30,
-        0.07575757575754945,
-        2.3663454929249432e-30
+        0.07575757575756668,
+        1.6136276099730174e-29,
+        0.07575757575756668,
+        1.5158543179531933e-29
       ],
       "execution_backend": "complete Kraus-factor propagation through the declared Program",
-      "full_512_terminal_density_residual_diagnostic": 5.905205148415603e-15,
+      "full_512_terminal_density_residual_diagnostic": 2.0773306501999617e-15,
       "generic_runtime_factor_distance_diagnostic": null,
       "law": "E",
       "quarter_turns": 4,
@@ -1026,7 +1026,7 @@
     "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-    "docs/INTERPRETATION_AND_TERMS.md": "a30aacc757e53ba0dd742cfabd2eeed8c74099f927cae1404f328058271b5515",
+    "docs/INTERPRETATION_AND_TERMS.md": "e7ba36f17bfaa0c6ab56d49a1746de2b1ab9e588e8389ea823c97e55139837d3",
     "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
@@ -1094,7 +1094,7 @@
   },
   "uniform_reference_control": {
     "checkpoint_complete_distance_diagnostic": null,
-    "complete_probability_residual_diagnostic": 2.4369395390522186e-14,
+    "complete_probability_residual_diagnostic": 9.645062526431047e-15,
     "exact_conditional_match_probability": "1",
     "exact_joint_probabilities": [
       "28/33",
@@ -1107,13 +1107,13 @@
     "executed_joint_probabilities": [
       0.8484848484848484,
       0.0,
-      0.07575757575755139,
-      2.4488871749037643e-30,
-      0.07575757575755149,
-      1.3370442784430501e-30
+      0.07575757575756611,
+      2.524446269861376e-29,
+      0.07575757575756611,
+      2.420442472319041e-29
     ],
     "execution_backend": "complete Kraus-factor propagation through the declared Program",
-    "full_512_terminal_density_residual_diagnostic": 5.448098309197626e-15,
+    "full_512_terminal_density_residual_diagnostic": 2.2779656474702274e-15,
     "generic_runtime_factor_distance_diagnostic": null,
     "law": "C",
     "quarter_turns": 2,

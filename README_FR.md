@@ -52,7 +52,10 @@ intemporelle et les horloges qu’elle contient.
   loi complète. Des supports joints forment des écrans allant jusqu’à
   245 760 ports, et sur un écran qui se raffine une seule histoire de
   réparation définit un champ continu aux fluctuations gaussiennes, dont les
-  ondes se propagent à vitesse finie.
+  ondes se propagent à vitesse finie. Un recensement par les registres natifs
+  donne aussi une identité de stationnarité de l’entropie comptée pendant
+  des réparations adaptatives, avec le coût entropique des tirages et les
+  erreurs d’expiration explicités.
 - **La théorie relativiste des champs comme description effective des
   observateurs.** Sur un produit radial déclaré au-dessus de cet écran,
   l’action d’onde native a une densité de signature lorentzienne, et pour tout
@@ -79,6 +82,9 @@ intemporelle et les horloges qu’elle contient.
   Le [calcul de réponse de masse chargée](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
   mesure un candidat Weyl–Higgs déclaré avec un champ et une horloge communs ;
   ses rapports de masse ne reproduisent pas la hiérarchie des leptons chargés.
+  La réparation native transporte séparément une charge collective de
+  corrélation, avec des registres de détection locale compatibles sur des
+  régions qui se recouvrent. Son identification physique reste ouverte.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de

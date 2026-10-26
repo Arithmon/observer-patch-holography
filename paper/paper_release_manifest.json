@@ -15,8 +15,8 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "7a1b7183f4ea53ea2df4ac9debfaeb947fbe3bb8d89c8b49198adb73879fae18",
-      "size_bytes": 799050
+      "sha256": "486151fc5c9924f847168f73ff3b4a2862554d80e3cd8e04160bb289f6e389b7",
+      "size_bytes": 802308
     },
     "executable_observer_construction": {
       "pdf_path": "paper/executable_observer_construction.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "51a9d9888cbbe9b312661c913ce99fd43b99fb7fbae50dbe2ba3e983f233d16a",
-      "size_bytes": 1324526
+      "sha256": "a3c90ed37c44b7d2bfa6f48ae07148c4c392b6e7c3855f904803d49ffefb25b5",
+      "size_bytes": 1328917
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",

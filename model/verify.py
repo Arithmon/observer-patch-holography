@@ -396,6 +396,8 @@ def main():
     environment = dict(os.environ)
     environment.setdefault("OPENBLAS_NUM_THREADS", "1")
     environment.setdefault("OMP_NUM_THREADS", "1")
+    environment.setdefault("MKL_NUM_THREADS", "1")
+    environment.setdefault("VECLIB_MAXIMUM_THREADS", "1")
     selected_count = sum(map(len, groups))
     if args.shard_count is not None:
         print(f"Replaying shard {args.shard_index+1}/{args.shard_count}: "

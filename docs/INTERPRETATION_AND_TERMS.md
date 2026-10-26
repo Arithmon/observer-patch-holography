@@ -143,6 +143,18 @@ This states OPH's operational interpretation of objectivity; it does not
 establish a metaphysical claim that agreement alone creates or determines
 the physical world.
 
+A settled measurement record can coexist with continuing propagation and
+further measurements. In a declared quantum instrument, conditioning on a
+retained outcome supplies the corresponding state update; agreement concerns
+that event and its conditional predictions. It does not require the entire
+instantaneous source to stop evolving. Particle identification therefore
+uses correlations among accessible detector records at specified observer
+clock readings, together with their charges, statistics and response to
+interventions. Agreement on a detector outcome alone establishes neither
+a particle species nor its mass. Any conversion of a repair contraction
+rate into a physical mass requires the same record law to justify the
+conversion and its clock convention.
+
 “Exactly the measurements of nature” names the ideal limiting target:
 matching the observable probability laws and their conditional responses,
 with controlled finite approximations. Experimental support is necessarily

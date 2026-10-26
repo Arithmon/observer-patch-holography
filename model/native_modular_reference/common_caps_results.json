@@ -85,10 +85,10 @@
       ],
       "coherent_selected_pair_and_complete_bit0_PVM_remain_admitted": true,
       "complete_bit_probabilities": [
-        0.9864219073728209,
-        0.01357809262691626
+        0.9864219073729753,
+        0.013578092626933543
       ],
-      "complete_record_half_l1_diagnostic": 1.3142785471043084e-13,
+      "complete_record_half_l1_diagnostic": 4.5570318352172734e-14,
       "ideal_match_law": "(1+cos(s log(69/68)))/2",
       "native_codes": [
         328,
@@ -106,10 +106,10 @@
       ],
       "coherent_selected_pair_and_complete_bit0_PVM_remain_admitted": true,
       "complete_bit_probabilities": [
-        0.9864219073728642,
-        0.013578092626931866
+        0.9864219073730116,
+        0.013578092626943997
       ],
-      "complete_record_half_l1_diagnostic": 1.019757195352966e-13,
+      "complete_record_half_l1_diagnostic": 3.0211076695874084e-14,
       "ideal_match_law": "(1+cos(s log(69/68)))/2",
       "native_codes": [
         0,
@@ -219,7 +219,7 @@
     "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
     "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-    "docs/INTERPRETATION_AND_TERMS.md": "a30aacc757e53ba0dd742cfabd2eeed8c74099f927cae1404f328058271b5515",
+    "docs/INTERPRETATION_AND_TERMS.md": "e7ba36f17bfaa0c6ab56d49a1746de2b1ab9e588e8389ea823c97e55139837d3",
     "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",

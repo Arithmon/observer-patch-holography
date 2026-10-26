@@ -215,6 +215,7 @@ def _bindings(retained):
     paths = [BASELINE, BASELINE.with_suffix(".npz"), NOTE]
     paths += sorted(HERE.glob("*.py")) + sorted(HERE.glob("*.md"))
     paths += [ROOT/name for name in SOURCE_FILES]
+    paths += [ROOT/"model/observer_time_fields/REFINEMENT.md"]
     result = dict(retained["source_bindings"])
     result.update({path.relative_to(ROOT).as_posix(): _hash(path) for path in paths})
     return dict(sorted(result.items()))
@@ -230,6 +231,7 @@ def run():
     from .quadratic_response import report as quadratic_report
     from .native_family_dynamics import report as dynamics_report
     from .charged_sector import report as charged_report
+    from .collective_response import report as collective_report
     dynamics = dynamics_report()
     if any(initial.get(name) != value for name, value in dynamics["source_bindings"].items()):
         raise RuntimeError("native response input missing from diagnosis custody")
@@ -243,6 +245,7 @@ def run():
         "quadratic_poles_and_state_independence": quadratic_report(),
         "native_family_dynamics": dynamics,
         "native_charged_sector_extension": charged_report(),
+        "native_collective_charged_response": collective_report(),
         "conclusion": {
             "linear_trial_and_entire_complex_affine_feature_class_excluded": True,
             "clock_or_units_explain_current_hierarchy_failure": False,

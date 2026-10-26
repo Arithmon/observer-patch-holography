@@ -5359,8 +5359,8 @@
         "premises": [
           "PR-26"
         ],
-        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities hold under their declared variations. The exact identity S_count(p,d)=log(M)-D(p||d/M) bounds all integer sector partitions at fixed M=sum(d). In the positive-real relaxation, saturation p=d/M gives joint state-capacity first variation zero and second variation -sum((p_prime-d_prime/M)^2/p). Uniform sampling on the actual 66-state native sector supplies dimension-weighted observed probabilities; arbitrary stationary reset does not. With nontrivial bulk blocks, total sector counts are b_i*d_i and saturation also requires maximally mixed bulk states. The same full native-return references have cap-uniform absolute entropy deficit at most 2025/(64V); fixed-charge block entropies bound regional mutual information by log J plus the deficit. Equal-size native regions with different boundary-seam counts have identical counting entropies. A complete base-face region has volume-order reduced entropy and sub-boundary-order mutual information on the two-dimensional source. The source-prepared edge approximants satisfy a bounded Gibbs free-entropy deficit, with stationary trace-one first variation at the limiting Gibbs state. This varies the state at fixed L; it does not establish joint state/geometry or entropy-area stationarity. Discarded uniform native warm-up gives a finite stationarity error for every complete partition of the binary 66-state sector. For TV error epsilon, minimum sector weight eta and theta=epsilon/eta<1, the joint counting derivative is bounded by ||p_prime||_1*theta/(1-theta)+||d_prime/66||_1*theta. For both tangent norms at most one, 276 attempts give error below 0.009755 and 325 below 0.000967. The same trace-distance bound controls all traceless quantum state tangents at fixed trace one, including noncommuting ones, and gives entropy deficit at most 132*epsilon^2. Fixed-seam postselection and the full 78-state uniform input violate the required preparation or unital-sector domain. On the actual growing native screen family, an explicit dimension/gap-sensitive integer schedule bounds every complete-partition joint entropy gradient by 3*ell^5/32, every normalized traceless quantum gradient by ell^5/16, and the entropy deficit by ell^10/512, with ell=2^-l. Tangent norms may grow within a declared 2^a_l budget. This derives an o(ell^4) preparation contribution after discarding all warm-up records; no physical radius or finite-amplitude geometric variation is identified. Complement-only C/E repair on the four-port cap selects an actual maximum-entropy completion at fixed cap marginal. The source factors have dimensions (1,28),(4,8),(6,1), giving central weights log(28), log(8),0 and the exact relative-entropy deficit. A 4080-attempt budget gives reference-uniform half-trace error 33/131072. A cap-changing tangent has derivative log(38/37), so the constrained stationarity is not unrestricted state/geometry stationarity. The same completed Palm reference also makes each actual complement seam an exact finite heat-bath update. Native bulk modular energy and central charge are separately conserved, so the existing cap Clausius theorem gives entropy increase at zero heat. This supplies finite population hypotheses without identifying those energies with physical boost or stress. The unread coherent C/E cut channel has GNS/KMS detailed balance and zero-modular-heat entropy production. Its exact complete-tape ledger accounts for quantum pinching and source-record correlations, removing physical tape erasure from unread marginal predictions while retaining the no-feedback restriction.\n\nA specified mixed-complement preparation plus one native core repair derives the full coherent MaxEnt family from two conserved occupation moments. Its strict entropy Hessian and all 1,024 core-containing cap decompositions give one common finite entropy envelope. The existing global/local heralds select explicit family points, with finite tangent-stationarity bounds. Physical area, stress and fixed-volume metric variations are not identified. The stronger native common entropy envelope, action area/volume identity, retained-sign entropy control and specified fixed-volume cavity comparison are executed. Their variation domains are not physical vacuum small-ball stationarity.",
-        "remaining": "The physical bridge must identify fixed total count with fixed small-ball proper volume, edge log-count variation with delta A/(4G), and the remaining block entropy with the same continuum field state. Native entropy stationarity on a fixed sector does not establish these identifications or a geometric modular boost. The uniform screen-family schedule controls preparation error only; a physical refinement coordinate, common finite-amplitude variation interval and all remaining continuum errors are separate.",
+        "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities hold under their declared variations. The exact identity S_count(p,d)=log(M)-D(p||d/M) bounds all integer sector partitions at fixed M=sum(d). In the positive-real relaxation, saturation p=d/M gives joint state-capacity first variation zero and second variation -sum((p_prime-d_prime/M)^2/p). Uniform sampling on the actual 66-state native sector supplies dimension-weighted observed probabilities; arbitrary stationary reset does not. With nontrivial bulk blocks, total sector counts are b_i*d_i and saturation also requires maximally mixed bulk states. The same full native-return references have cap-uniform absolute entropy deficit at most 2025/(64V); fixed-charge block entropies bound regional mutual information by log J plus the deficit. Equal-size native regions with different boundary-seam counts have identical counting entropies. A complete base-face region has volume-order reduced entropy and sub-boundary-order mutual information on the two-dimensional source. The source-prepared edge approximants satisfy a bounded Gibbs free-entropy deficit, with stationary trace-one first variation at the limiting Gibbs state. This varies the state at fixed L; it does not establish joint state/geometry or entropy-area stationarity. Discarded uniform native warm-up gives a finite stationarity error for every complete partition of the binary 66-state sector. For TV error epsilon, minimum sector weight eta and theta=epsilon/eta<1, the joint counting derivative is bounded by ||p_prime||_1*theta/(1-theta)+||d_prime/66||_1*theta. For both tangent norms at most one, 276 attempts give error below 0.009755 and 325 below 0.000967. The same trace-distance bound controls all traceless quantum state tangents at fixed trace one, including noncommuting ones, and gives entropy deficit at most 132*epsilon^2. Fixed-seam postselection and the full 78-state uniform input violate the required preparation or unital-sector domain. On the actual growing native screen family, an explicit dimension/gap-sensitive integer schedule bounds every complete-partition joint entropy gradient by 3*ell^5/32, every normalized traceless quantum gradient by ell^5/16, and the entropy deficit by ell^10/512, with ell=2^-l. Tangent norms may grow within a declared 2^a_l budget. This derives an o(ell^4) preparation contribution after discarding all warm-up records; no physical radius or finite-amplitude geometric variation is identified. Complement-only C/E repair on the four-port cap selects an actual maximum-entropy completion at fixed cap marginal. The source factors have dimensions (1,28),(4,8),(6,1), giving central weights log(28), log(8),0 and the exact relative-entropy deficit. A 4080-attempt budget gives reference-uniform half-trace error 33/131072. A cap-changing tangent has derivative log(38/37), so the constrained stationarity is not unrestricted state/geometry stationarity. The same completed Palm reference also makes each actual complement seam an exact finite heat-bath update. Native bulk modular energy and central charge are separately conserved, so the existing cap Clausius theorem gives entropy increase at zero heat. This supplies finite population hypotheses without identifying those energies with physical boost or stress. The unread coherent C/E cut channel has GNS/KMS detailed balance and zero-modular-heat entropy production. Its exact complete-tape ledger accounts for quantum pinching and source-record correlations, removing physical tape erasure from unread marginal predictions while retaining the no-feedback restriction.\n\nA specified mixed-complement preparation plus one native core repair derives the full coherent MaxEnt family from two conserved occupation moments. Its strict entropy Hessian and all 1,024 core-containing cap decompositions give one common finite entropy envelope. The existing global/local heralds select explicit family points, with finite tangent-stationarity bounds. Physical area, stress and fixed-volume metric variations are not identified. The stronger native common entropy envelope, action area/volume identity, retained-sign entropy control and specified fixed-volume cavity comparison are executed. Their variation domains are not physical vacuum small-ball stationarity.\n\nA continuing native population protocol derives a counted entropy envelope with adaptive core-crossing seams and bounded record-dependent stopping. Two actual E contrast records resolve the protected core without conditioning; the C-current census has state-independent success and retained disturbed timeout branches. Compatible endpoints are counted independently. Subtracting the retained fair-coin entropy and explicit flag normalization gives an exact two-moment relative-entropy deficit and semidefinite Fisher curvature. The finite preparation sandwich transfers to all fixed-moment record tangents; the input-dependent stopping cost must vary with the input. Conditional cap predictions are overlapping marginals of one native history measure. Timeout charge ambiguity, lost records and frozen stopping costs have explicit countercontrols. This population record theorem is distinct from coherent work/reference entropy and from the Ramsey particle protocol.",
+        "remaining": "The physical bridge must identify fixed total count with fixed small-ball proper volume, edge log-count variation with delta A/(4G), and the remaining block entropy with the same continuum field state. Native entropy stationarity on a fixed sector does not establish these identifications or a geometric modular boost. The uniform screen-family schedule controls preparation error only; a physical refinement coordinate, common finite-amplitude variation interval and all remaining continuum errors are separate. The cost-corrected record envelope does not identify coin entropy subtraction with a gravitational counterterm, and no single coherent matter-plus-gravity history follows from combining separately prepared protocols.",
         "closure": "Map the proved counting variation family to controlled joint state-geometry variations at fixed physical volume, with the area coefficient and continuum error established independently.",
         "sources": [
           {
@@ -5466,6 +5466,16 @@
           {
             "path": "model/observer_particles/geometric_stationarity.py",
             "label": "Finite observer-particle witness"
+          },
+          {
+            "path": "model/native_equilibration/history_entropy.py",
+            "anchor": "def run(",
+            "label": "Native record-only census, stopped entropy envelope and common cap completions"
+          },
+          {
+            "path": "model/common_source/SLOW_GEOMETRY.md",
+            "anchor": "## Entropy stationarity from continuing native records",
+            "label": "Operational first-law domain and remaining geometric dictionary"
           }
         ],
         "assumptions": [
@@ -13043,7 +13053,8 @@
           "domain": "native_common_entropy_envelope",
           "claims": [
             "OPH-THERMO-FOUR-LAW-PACKAGE",
-            "OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION"
+            "OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION",
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
           ],
           "establishes": [
             "native_two_moment_maxent_envelope"
@@ -13052,8 +13063,8 @@
             "native_coherent_record_entropy_balance",
             "native_common_cap_modular_reference"
           ],
-          "scope": "Exact 4,356-matrix-unit identities show that one native core repair completes the complement expectation into the three-charge-sector expectation. The two conserved occupation moments determine a unique full coherent entropy maximum; its faithful smooth family has domain 0<c, 2c<m, m<1+c. All 1,024 core-containing cap decompositions share its envelope. 18,601 work attempts give reference-uniform halftrace error at most 33/2^31; both existing selected references have finite tangent-stationarity bounds.",
-          "limitations": "The additional core step is part of a specified preparation schedule, not unrestricted passive dynamics. Moment values are not uniquely selected by equilibration. Counted complement multiplicities and discrete cap changes are not physical area or fixed-volume metric variations; stress energy and an Einstein normalization remain unidentified.",
+          "scope": "Exact 4,356-matrix-unit identities show that one native core repair completes the complement expectation into the three-charge-sector expectation. The two conserved occupation moments determine a unique full coherent entropy maximum; its faithful smooth family has domain 0<c, 2c<m, m<1+c. All 1,024 core-containing cap decompositions share its envelope. 18,601 work attempts give reference-uniform halftrace error at most 33/2^31; both existing selected references have finite tangent-stationarity bounds. A continuing native population protocol derives a counted entropy envelope with adaptive core-crossing seams and bounded record-dependent stopping. Two actual E contrast records resolve the protected core without conditioning; the C-current census has state-independent success and retained disturbed timeout branches. Compatible endpoints are counted independently. Subtracting the retained fair-coin entropy and explicit flag normalization gives an exact two-moment relative-entropy deficit and semidefinite Fisher curvature. The finite preparation sandwich transfers to all fixed-moment record tangents; the input-dependent stopping cost must vary with the input. Conditional cap predictions are overlapping marginals of one native history measure. Timeout charge ambiguity, lost records and frozen stopping costs have explicit countercontrols. This population record theorem is distinct from coherent work/reference entropy and from the Ramsey particle protocol.",
+          "limitations": "The additional core step is part of a specified preparation schedule, not unrestricted passive dynamics. Moment values are not uniquely selected by equilibration. Counted complement multiplicities and discrete cap changes are not physical area or fixed-volume metric variations; stress energy and an Einstein normalization remain unidentified. The adaptive extension concerns a cost-corrected population record functional. It neither identifies that subtraction with a gravitational area term nor attaches a coherent Ramsey history to the same entropy theorem. Unmeasured cap occupations are conditional predictions.",
           "sources": [
             {
               "path": "model/native_equilibration/common_variation.py",
@@ -13066,11 +13077,22 @@
             {
               "path": "model/native_equilibration/common_variation.py",
               "anchor": "def stationarity_budget("
+            },
+            {
+              "path": "model/native_equilibration/history_entropy.py",
+              "anchor": "def run("
             }
           ],
           "assumptions": [
             "complete_repaired_visible_datum_fibre",
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
             "declared_gibbs_calibration_row_and_temperature",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation",
             "declared_tick_duration_import",
             "faithful_common_reference_law",
             "finite_regulator_stage",
@@ -13081,12 +13103,41 @@
             "uniform_low_temperature_spectral_tail_control_deferred"
           ],
           "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
+            "Doob_L2_martingale_maximal_inequality",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Hajek_finite_population_central_limit_theorem",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
+            "conditional_law_sequential_coupling",
             "data_processing_inequality",
+            "densitized_scalar_wave_metric_identity",
+            "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
+            "finite_Kraus_Stinespring_construction",
             "finite_gibbs_state_positivity_and_normalization",
             "finite_information_projection",
             "finite_markov_kernel_theory",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
             "finite_matrix_trace_algebra",
-            "modular_energy_split_over_a_pointwise_affine_hamiltonian"
+            "finite_state_martingale_functional_central_limit_theorem",
+            "integrated_short_time_local_Dirichlet_heat_asymptotics",
+            "irreducible_positive_self_adjoint_semigroup",
+            "modular_energy_split_over_a_pointwise_affine_hamiltonian",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_semigroup_fractional_extension",
+            "positive_transfer_spectral_logarithm",
+            "quantum_IID_fluctuation_Weyl_limit",
+            "quantum_relative_entropy_data_processing",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spectral_theorem_for_self_adjoint_operators",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "strongly_local_Sobolev_form_tensor_representation",
+            "trace_distance_contraction_and_unitary_channel_composition"
           ],
           "additional_assumptions": {}
         },
@@ -15711,6 +15762,15 @@
             "kind": "lean",
             "module": "Lean/ObserverPatchHolography/EinsteinBranch/Entropy.lean",
             "declaration": "failingMaxEntTangent_fails"
+          },
+          {
+            "kind": "code",
+            "path": "model/native_equilibration/history_entropy.py",
+            "symbol": "run"
+          },
+          {
+            "kind": "receipt",
+            "path": "model/native_equilibration/variation_results.json"
           }
         ],
         "mutation_tests": [
@@ -15725,10 +15785,28 @@
           {
             "path": "code/geometry/test_screen_shock_spectrum.py",
             "name": "test_joint_relaxed_state_capacity_derivatives_equal_the_constrained_score_square"
+          },
+          {
+            "path": "model/native_equilibration/test_history_entropy.py",
+            "name": "test_actual_record_first_law_exact_and_negative_fisher_curvature"
+          },
+          {
+            "path": "model/native_equilibration/test_history_entropy.py",
+            "name": "test_native_timeouts_are_retained_and_have_nonzero_unresolved_charge_excess"
+          },
+          {
+            "path": "model/native_equilibration/test_history_entropy.py",
+            "name": "test_record_dependent_stopping_uses_the_perturbed_inputs_own_cost"
+          },
+          {
+            "path": "model/native_equilibration/test_history_entropy.py",
+            "name": "test_same_history_cap_predictions_agree_on_nested_and_overlapping_regions"
           }
         ],
         "paper_anchors": [],
-        "claim_ids": [],
+        "claim_ids": [
+          "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+        ],
         "owner_issues": []
       },
       {

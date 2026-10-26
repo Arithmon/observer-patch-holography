@@ -39,8 +39,11 @@ The [particle response](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md),
 [finite modular-covariance check](common_source/SLOW_GEOMETRY.md) and
 [cross-scale comparison](empirical_diagnostics/README.md) constrain three
 parts of that common dictionary. The native current-record law preserves
-signed occupation-difference sectors, whereas a physical charged field must
-have the required propagating response. Finite modular clocks must be related
+signed occupation-difference sectors while transporting a common occupation
+within a collective charge block. Local conserved correlation densities and
+overlapping detector effects give this response an operational meaning;
+physical particle statistics, spacetime dispersion and mass require their
+own attachment to the same record law. Finite modular clocks must be related
 to geometric covariance on a stated limiting observable domain, including
 compression errors. Shared numerical constants must pass through the same
 action, state and physical readout before results from separate constructions

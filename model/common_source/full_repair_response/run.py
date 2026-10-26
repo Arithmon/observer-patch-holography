@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from . import coherent_arc, coupling, memory, quantum_response, mass_observable
+from . import coherent_arc, coupling, memory, quantum_response, mass_observable, current_response
 from ..chiral_candidate import run as candidate_run
 from ...native_modular_reference import common_caps, local_preparation
 from tools import strict_json
@@ -90,7 +90,9 @@ def run():
     coherent, arrays = coherent_arc.report(with_arrays=True)
     print("Calibrating charged poles, dispersion and Euclidean decay", flush=True)
     observable = mass_observable.report()
-    for packet in (population, harmonic, quantum, coherent, observable):
+    print("Computing exact native current fluctuations and record-preparation response", flush=True)
+    current = current_response.report()
+    for packet in (population, harmonic, quantum, coherent, observable, current):
         if any(before.get(name) != digest for name, digest in packet.get("source_bindings", {}).items()):
             raise ValueError("a response dependency is absent from source custody")
     result = {
@@ -100,6 +102,7 @@ def run():
         "native_quantum_response": quantum,
         "specified_coherent_continuation": coherent,
         "mass_observable_calibration": observable,
+        "native_current_response": current,
         "verdict": {
             "full_complement_and_termination_outcomes_accounted_for": True,
             "neutral_population_response_identified_as_physical_charged_propagator": False,

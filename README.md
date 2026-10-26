@@ -40,7 +40,9 @@ and the clocks inside it.
   reference and its active modular clock, retaining disturbance and failures.
   Complete state tomography makes that reference identifiable, and a declared
   repair schedule derives its entropy maximum at two conserved occupation
-  moments. A separate finite quantum process joins electric flux, charged
+  moments. Native census records also give a counted entropy-stationarity
+  identity through adaptive repairs, with coin costs and timeout errors kept
+  explicit. A separate finite quantum process joins electric flux, charged
   matter and a scalar field with recorded feedback. Refining screens support
   Gaussian field limits and waves of finite speed.
 - **Relativistic field theory as the observers' effective description.** On
@@ -64,6 +66,9 @@ and the clocks inside it.
   The [charged mass-response calculation](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
   measures a declared Weyl–Higgs candidate with a common field and clock;
   its mass ratios fail to reproduce the charged-lepton hierarchy.
+  Native repair separately transports a collective correlation charge with
+  compatible local detector records on overlapping regions. Its physical
+  particle interpretation remains open.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,

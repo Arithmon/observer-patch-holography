@@ -23,6 +23,27 @@ modular thresholds. The chosen reference, coherent continuation and physical
 field map therefore have distinct selection obligations. These are finite
 operator and source-domain results; no Standard Model mass is inferred.
 
+The collective calculation constructs `X_j=|0,j><5,j|` on the original
+total-two carrier. Its density `Q_j=n_0 n_j` obeys exact native continuity,
+and the common occupation transports a core-relative charged response.
+A complete first-incident-clock experiment has signed Ramsey response
+`1/2048` at a local detector, retaining every timeout and detector output.
+Two overlapping local observer instruments have the same complete
+postmeasurement record law. The operators have matrix-unit statistics and
+a diffusive transfer response; the tested direct sharp-pole dictionary fails.
+Physical fermion/boson and Lorentzian mass identifications remain open.
+Preparation and coherent readout are declared apparatus, without another
+pulse-level execution claim.
+Independent ideal-reference copies give an ordered-Weyl thermal bosonic
+fluctuation limit with occupation `8/17`, under an explicit independence
+and control contract. Exact finite-copy moments and direct tensor controls
+certify that statement without claiming finite operator-norm CCR or an
+executed growing-copy experiment. Copy normalization preserves the two-point
+poles. The collective field has only two positive modular frequencies;
+exact bounds keep every tested transfer-log hierarchy below 71. These
+conditional rate assignments cannot reproduce the charged-lepton hierarchy,
+and they do not establish that the rates are physical masses.
+
 From the repository root:
 
 ```sh
