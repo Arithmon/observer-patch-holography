@@ -179,10 +179,32 @@ pointer blanks and committed read remain supplied services.
 
 ## Reproduction
 
+The separate [fixed spectral cross-scale calculation](cross_scale.py) tests
+Wissner-Gross's exact entangled-pair scalar through the declared common
+$P=\varphi+\sqrt{\pi}\,\alpha$ and $n_s=1-P/48$ maps. Exact rational
+square-root and Machin-series bounds are computed before opening the
+CODATA reference and the retained ACT DR6 joint chains. The inverse coupling
+is $0.5983883$ reported standard uncertainties above CODATA 2022; both tilt
+enclosure endpoints retain exactly $3114/508985$ ACT lower-tail mass.
+The tilt changes by only $2.4709142\times10^{-14}$ from the inherited
+CODATA-calibrated branch. This scalar substitution does not remove the
+conditional cosmological tension.
+
+Its [receipt](cross_scale_results.json) also checks the actual scope of the
+chiral and oscillator consumers: none of the four retained mass prescriptions
+passes both conservative lepton-ratio windows, and those consumers do not
+establish one common physical action, clock, readout or complete uncertainty
+contract. Arithmetic enclosures are not physical model-error bounds; posterior
+positions are not p-values. The [empirical status](../../docs/EMPIRICAL_STATUS.md#one-fixed-spectral-candidate-across-scales)
+records the dataset and physical-map boundaries. This calculation replays
+the scalar and the ACT weighted projection, while reading the retained
+upstream particle/oscillator scope rather than reexecuting their histories.
+
 From the repository root:
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.empirical_diagnostics --check model/empirical_diagnostics/results.json
+python -m model.empirical_diagnostics.cross_scale --check model/empirical_diagnostics/cross_scale_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/empirical_diagnostics
 ```
 

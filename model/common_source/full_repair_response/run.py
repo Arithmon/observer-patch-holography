@@ -156,7 +156,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--output", type=Path)
-    mode.add_argument("--verify", type=Path)
+    mode.add_argument("--verify", "--check", dest="verify", type=Path)
     args = parser.parse_args()
     if args.verify is not None:
         verify(args.verify)

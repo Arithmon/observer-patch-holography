@@ -94,6 +94,103 @@
     ],
     "schema": "oph.observer_particles.finite_premise_witnesses.v1"
   },
+  "fixed_spectral_cross_scale_comparison": {
+    "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
+    "artifact_sha256": "77e0eb5b8a91399cf6e76142cb1c8ff94d49a658c3e6e3bcfd9b17d212815e60",
+    "attribution": {
+      "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
+      "author": "A. D. Wissner-Gross",
+      "borrowed_construction": "Entangled-pair exchange operators, spectral weights and normalization giving the exact scalar.",
+      "title": "A Parameter-Free Candidate for the Fine-Structure Constant from Entangled Qudits",
+      "year": 2026
+    },
+    "coupling": {
+      "interpretation": "Retrospective scalar agreement; reported standard uncertainty is not a model-error bound or model probability.",
+      "inverse_alpha_decimal_enclosure": {
+        "hi": "137.03599918956615502918374402086679956640868467385426554124952443939012544588656",
+        "lo": "137.03599918956615502918374402086679956640868467385426554124946829116314913743238"
+      },
+      "signed_difference_over_reported_standard_uncertainty": {
+        "hi": "0.59838833472303542956508569363850879399306026386902497330429168789935981693336434",
+        "lo": "0.59838833472303542956508569363850879399306026386902229957919757797297075900149921"
+      },
+      "target": {
+        "citation": "https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+        "comparison_half_width_in_standard_uncertainties": "5",
+        "exposure": "retrospective_known_data",
+        "observable": "inverse_fine_structure_constant_thomson_limit",
+        "schema": "oph.predictions.empirical_endpoint.v1",
+        "source": "CODATA 2022 recommended values, NIST wall table",
+        "standard_uncertainty": "0.000000021",
+        "unit": "dimensionless",
+        "value": "137.035999177"
+      },
+      "within_one_reported_standard_uncertainty": true
+    },
+    "joint_status": {
+      "all_public_datasets_reproduced": false,
+      "declared_chiral_prescriptions": [
+        "linear_F",
+        "a_Hubbard_function",
+        "b_Hubbard_function",
+        "J_Hubbard_function"
+      ],
+      "declared_chiral_prescriptions_failing_both_ratio_requirement": [
+        "linear_F",
+        "a_Hubbard_function",
+        "b_Hubbard_function",
+        "J_Hubbard_function"
+      ],
+      "declared_chiral_prescriptions_passing_both_lepton_ratios": [],
+      "joint_likelihood_or_significance": null,
+      "missing_contracts": [
+        "spectral_scalar_to_Thomson_photon_residue",
+        "same_cell_P_alpha_identification",
+        "same_reconstructed_native_spacetime_field_history_proved",
+        "quantum_gauge_and_Higgs_dynamics_executed",
+        "observed_standard_model_mass_spectrum_derived",
+        "oscillator_apparatus_action_and_preparation_from_fixed_repair",
+        "physical_clock_for_quantum_comparison",
+        "native_curvature_to_CMB_transfer_and_background",
+        "common_physical_action_and_complete_comparison_error_contract"
+      ],
+      "source_only_measured_universe_established": false,
+      "status": "not_evaluable_as_one_complete_physical_construction"
+    },
+    "multiplicity": 508985,
+    "prediction": {
+      "P_interval": [
+        "1268240879631596487906123465724774258785716647263103457448131888130765296054883869584068056345869945308059914722742187190841/777600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "3170602199078991219765308664311935646964291618157758643620330716815354632284955517957372220874445073208400570524449667977519/1944000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "alpha_interval": [
+        "5674421353503773574130641433235745533970997828002487606903063/777600000000000000000000000000000000000000000000000000000000000",
+        "226976854140150942965225657329429821358839913120099504276122613/31104000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "arithmetic_error_is_physical_theory_error": false,
+      "declared_maps": [
+        "P=(1+sqrt(5))/2+sqrt(pi)*alpha",
+        "n_s=1-P/48"
+      ],
+      "inverse_alpha_interval": [
+        "31104000000000000000000000000000000000000000000000000000000000000/226976854140150942965225657329429821358839913120099504276122613",
+        "777600000000000000000000000000000000000000000000000000000000000/5674421353503773574130641433235745533970997828002487606903063"
+      ],
+      "method": "Exact rational square-root bounds and alternating Machin-series bounds",
+      "observation_inputs": [],
+      "scalar_tilt_interval": [
+        "90141397800921008780234691335688064353035708381842241356379669283184645367715044482042627779125554926791599429475550332022481/93312000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "36056559120368403512093876534275225741214283352736896542551868111869234703945116130415931943654130054691940085277257812809159/37324800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "spectral_expression": "(79+48 sqrt(2)+42 sqrt(3)+3 sqrt(6))/31104"
+    },
+    "same_tail_as_calibrated_branch": true,
+    "scope": "Mechanical projection of a separately replayed rational calculation and actual ACT projection; upstream particle histories are not rerun here.",
+    "tail_weight_interval": [
+      3114,
+      3114
+    ]
+  },
   "generator": "code/particles/scripts/build_postdiction_ledger.py",
   "guards": {
     "changes_any_solve_path": false,

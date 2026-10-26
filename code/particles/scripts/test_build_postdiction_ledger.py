@@ -19,6 +19,32 @@ def test_retained_public_record_projection_is_current():
     assert retained["retrospective_public_record_comparisons"] == ledger._retrospective_public_record_references()
 
 
+def test_spectral_cross_scale_projection_keeps_actual_join_boundary():
+    summary = ledger._spectral_cross_scale_reference()
+    assert summary["coupling"]["within_one_reported_standard_uncertainty"] is True
+    assert summary["tail_weight_interval"] == [3114, 3114]
+    assert summary["joint_status"]["declared_chiral_prescriptions_passing_both_lepton_ratios"] == []
+    assert summary["joint_status"]["joint_likelihood_or_significance"] is None
+
+
+@pytest.mark.parametrize("mutation", ["promotion", "custody"])
+def test_spectral_cross_scale_projection_rejects_false_join(monkeypatch, mutation):
+    original = ledger._public_receipt
+    def changed(relative, schema):
+        packet, checksum = original(relative, schema)
+        if schema == "oph.empirical_diagnostics.fixed_spectral_cross_scale.v1":
+            packet = deepcopy(packet)
+            if mutation == "promotion":
+                packet["joint_status"]["all_public_datasets_reproduced"] = True
+            else:
+                pins = packet["custody"]["input_sha256"]
+                pins[next(iter(pins))] = "0"*64
+        return packet, checksum
+    monkeypatch.setattr(ledger, "_public_receipt", changed)
+    with pytest.raises(SystemExit, match="[Ss]pectral cross-scale"):
+        ledger._spectral_cross_scale_reference()
+
+
 def test_complete_occupation_projection_keeps_same_data_and_scope():
     summary = ledger._occupation_control_reference()
     assert summary['observations'] == 125

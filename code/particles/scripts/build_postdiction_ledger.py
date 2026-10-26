@@ -390,6 +390,30 @@ def _public_receipt(relative: str, schema: str) -> tuple[dict[str, Any], str]:
     return receipt, hashlib.sha256(raw).hexdigest()
 
 
+def _spectral_cross_scale_reference() -> dict[str, Any]:
+    relative = "model/empirical_diagnostics/cross_scale_results.json"
+    packet, checksum = _public_receipt(relative, "oph.empirical_diagnostics.fixed_spectral_cross_scale.v1")
+    for path, expected in packet["custody"]["input_sha256"].items():
+        if hashlib.sha256((REPO/path).read_bytes()).hexdigest() != expected:
+            raise SystemExit(f"Spectral cross-scale custody mismatch: {path}")
+    status = packet["joint_status"]
+    if (status["all_public_datasets_reproduced"] is not False
+            or status["source_only_measured_universe_established"] is not False
+            or status["joint_likelihood_or_significance"] is not None
+            or packet["cosmology"]["posterior_mass_is_p_value"] is not False):
+        raise SystemExit("Spectral cross-scale comparison cannot promote a physical joint verdict")
+    return {
+        "artifact_ref": relative, "artifact_sha256": checksum,
+        "attribution": packet["attribution"],
+        "prediction": packet["prediction"], "coupling": packet["coupling"],
+        "tail_weight_interval": packet["cosmology"]["forward_tail_weight_interval"],
+        "multiplicity": packet["cosmology"]["multiplicity"],
+        "same_tail_as_calibrated_branch": packet["cosmology"]["forward_and_inherited_have_same_tail_weight"],
+        "joint_status": status,
+        "scope": "Mechanical projection of a separately replayed rational calculation and actual ACT projection; upstream particle histories are not rerun here.",
+    }
+
+
 def _occupation_control_reference() -> dict[str, Any]:
     relative = "model/occupation_control/transfer_results.json.gz"
     packet, checksum = _public_receipt(relative, "oph.occupation_control.transfer_results.v1")
@@ -7243,6 +7267,7 @@ def build(
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
         "retrospective_public_record_comparisons": _retrospective_public_record_references(),
+        "fixed_spectral_cross_scale_comparison": _spectral_cross_scale_reference(),
         "sections": sections,
     }
     if write:
@@ -7380,6 +7405,27 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "apparatus actions, preparations, noise models and clock maps are not "
         "identified as restrictions of one fixed physical construction. They "
         "therefore supply no pooled all-scale agreement verdict.")
+    add("")
+    spectral = ledger["fixed_spectral_cross_scale_comparison"]
+    standard = spectral["coupling"]["signed_difference_over_reported_standard_uncertainty"]
+    add("The [fixed spectral cross-scale calculation](../model/empirical_diagnostics/cross_scale.py) "
+        "independently encloses Wissner-Gross's exact entangled-pair scalar and "
+        "propagates it through the declared same-cell P and primordial-tilt maps. "
+        "Its inverse coupling is "
+        f"`{float(Fraction(spectral['prediction']['inverse_alpha_interval'][0])):.12f}`, "
+        f"or `{float(standard['lo']):.7f}` reported CODATA standard uncertainties above the reference. "
+        "Its conditional tilt is "
+        f"`{float(Fraction(spectral['prediction']['scalar_tilt_interval'][0])):.15f}`. "
+        "Both enclosing endpoints have ACT lower-tail count "
+        f"`{spectral['tail_weight_interval'][0]}/{spectral['multiplicity']}`. "
+        "The scalar agreement therefore leaves the conditional cosmological tension. "
+        "The same audit consumes the declared chiral and quantum-apparatus receipts: "
+        f"`{len(spectral['joint_status']['declared_chiral_prescriptions_passing_both_lepton_ratios'])}` "
+        "of the retained mass prescriptions passes both conservative lepton-ratio windows. "
+        "The Thomson identification, shared physical action/readout, primordial map "
+        "and complete error contract remain open. This is a retrospective conditional "
+        "comparison, without a pooled all-scale likelihood or a claim that all public "
+        "datasets are reproduced; see [empirical status](EMPIRICAL_STATUS.md#one-fixed-spectral-candidate-across-scales).")
     add("")
     tilt = ledger["retrospective_tilt_comparison"]
     shared = tilt["shared_forward_parameter"]

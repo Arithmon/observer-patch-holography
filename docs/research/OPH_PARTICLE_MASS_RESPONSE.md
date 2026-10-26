@@ -1122,6 +1122,78 @@ construction. It does show why the separately constructed 90-mode chiral
 CAR field must have an explicit physical realization map. It is not
 already identified by the native occupation band.
 
+#### Adjacent charge sectors and the actual repair rule
+
+The [adjacent-sector calculation](../../model/common_source/hierarchy_diagnosis/charged_sector.py)
+extends the existing endpoint primitive unchanged to binary loads zero
+through three, with dimensions $1,12,66,220$. It checks all 7,920 retained
+total-two C/E input addresses against the existing instrument. The adjacent
+sectors suffice to verify
+$P_2\{c_i,c_j^\dagger\}P_2=\delta_{ij}P_2$ and to evaluate the two-insertion
+charged response about the actual total-two reference. The chosen ordering
+in this CAR completion is explicit; this is a test of a possible native
+field representation.
+
+This enlargement does **not** restore charged propagation on native ports.
+For the same placement coin, equal C records have the same current $j$.
+Equal E records have the same initial endpoint contrast and therefore the
+same current. Hence every surviving matrix unit obeys
+
+```math
+x'=x-j(e_a-e_b),\qquad y'=y-j(e_a-e_b),\qquad x'-y'=x-y.
+```
+
+The identity holds for arbitrary nonnegative integer loads, independently
+of the total-two restriction. It composes along every finite recorded seam
+history, including record-dependent seam choices. An operator carrying one
+native-port charge remains in its original signed-difference block. Against
+the diagonal source reference, the two-point charged response between
+distinct ports is exactly zero. The executable one-proposal calculation
+retains both accepted responses and the terminal timeout separately and
+verifies every off-port entry as a rational zero. No finite timeout is
+restarted or divided away.
+
+Thus the next field construction must change a substantive ingredient:
+coherently recombine different current records, or derive a collective or
+encoded charged field with its own propagation map. The result does not
+exclude those alternatives or propagation of neutral occupation densities.
+
+#### A modular clock within one shell does not select charged thresholds
+
+There is an independent ambiguity even if coherent dynamics is admitted.
+On the full 4,096-state binary carrier, consider the faithful references
+
+```math
+\sigma_\eta(x)=\frac{w_{q(x)}\eta^{(N(x)-2)^2}}{Z_\eta},
+\qquad \eta>0.
+```
+
+Here $q$ is the protected-core occupation and $N$ the total load. Every
+$\sigma_\eta$, conditioned on $N=2$, is exactly the existing source
+reference. Each completion seam preserves $q$ and $N$ and connects equal
+diagonal weights, so the same completion repair preserves all these
+references. Their modular generators differ, up to a scalar, by
+
+```math
+K_\eta-K_1=-\log\eta\,(N-2)^2.
+```
+
+All total-two histories and their within-shell modular clock frequencies
+are identical. Yet adjacent-sector addition and removal frequencies each
+shift by $-\log\eta$. A charge-conserving two-copy transition
+$(2,2)\leftrightarrow(3,1)$ shifts by $-2\log\eta$; a common chemical
+potential cancels from this comparison. Exact binomial sums verify two
+distinct examples, $\eta=1$ and $\eta=1/2$, without empirical inputs.
+
+These are explicit reference extensions, not selected physical vacua or a
+proof that either extension has a local Lorentzian realization. They show
+precisely what the existing clock data leave undetermined: the relative
+coherent dynamics of sectors visited by a charged field. Selecting the
+full reference and continuing action, or deriving an internal
+charge-transfer experiment that fixes their relative response, is an
+additional obligation. The remaining uncertainty cannot be resolved by
+relabeling the already measured within-shell clock frequencies as masses.
+
 The quantum calculation resolves all 4,356 matrix units into exact
 signed-difference blocks. Six operator directions are fixed by completion.
 The unmodified C/E maps have real positive spectra, without intrinsic
@@ -1277,9 +1349,9 @@ see the [PDG quark-mass review](https://pdg.lbl.gov/2025/reviews/rpp2025-rev-qua
 Those qualifications are not mechanisms for changing the failed trial's
 coefficients without deriving additional dynamics.
 
-### 8. What has changed, and what must be solved next
+### 8. Current conclusions
 
-The complement is now part of the calculation. The incident-clock
+The calculation retains the complete complementary response. The incident-clock
 transformation is explicit. Both the static mass-seed test and the charged
 operator test expose structural limits that were hidden by assigning a
 single mean matrix to Yukawa couplings. The current tested routes do not
@@ -1300,14 +1372,14 @@ hazard as a light particle, or fit an arbitrary function of the family
 matrices and call its coefficients derived. A successful construction
 would have to pass the joint measured ratios after those choices are fixed.
 
-### 9. Reproduce and resume
+### 9. Reproduction
 
 The retained machine-readable report and complete coherent-work arrays are
 [results.json](../../model/common_source/full_repair_response/results.json) and
 [results.npz](../../model/common_source/full_repair_response/results.npz).
 The receipt binds the implementation, tests, these notes, pinned dependency
-file and prior evidence by SHA-256. Its verification command recomputes the
-new report and arrays; an artifact digest alone is not the replay check.
+file and supporting evidence by SHA-256. Its verification command recomputes the
+report and arrays; an artifact digest alone is not the replay check.
 Exact identities and discrete claims are checked exactly. Floating diagnostics
 use the stated replay tolerances, which are not physical error certificates.
 
@@ -1321,7 +1393,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m model.common_source
 For a new independent output, use `--output` with a fresh JSON pathname;
 the producer also writes its adjacent NPZ and refuses to replace either.
 The [package README](../../model/common_source/full_repair_response/README.md)
-links the earlier packages' separate replay commands. Their source-binding
+links the supporting packages' separate replay commands. Their source-binding
 receipts point to this unified report; the calculated trial predictions are
 unchanged. The present research does not promote conditional
 field constructions into a released proof of the Standard Model spectrum.
@@ -1334,6 +1406,5 @@ introducing a new family mass matrix. If an enlarged carrier or coherent
 record protocol is needed, declare that change and reproduce both its
 observable response and the existing successful construction checks.
 Only then compare rest-energy ratios and interaction currents with the
-physical species. This records the unresolved task precisely: **the missing
-native-to-physical charged-field map, not an unexplained numerical adjustment
-to an already established Standard Model mass prediction.**
+physical species. The unresolved task is **the native-to-physical charged-field
+map and the coherent dynamics of the sectors it connects.**

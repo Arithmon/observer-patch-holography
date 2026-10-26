@@ -104,21 +104,21 @@
   "retained_observer_readout": {
     "record_count": 64,
     "decoded_gaps_over_clock_ascending": [
-      0.09074504420127733,
-      0.10801414519982087,
-      0.13595613757063213
+      0.0907450442012792,
+      0.10801414519982244,
+      0.1359561375706321
     ],
     "decoded_ascending_ratios": [
       1.0,
-      1.1903035163026618,
-      1.4982210738591322
+      1.1903035163026545,
+      1.4982210738591009
     ],
     "independent_action_gaps_over_clock": [
       0.09074504420111197,
       0.10801414519968133,
       0.13595613757052133
     ],
-    "maximum_absolute_record_action_residual": 1.6535384173010925e-13,
+    "maximum_absolute_record_action_residual": 1.672273430841642e-13,
     "common_clock_lapse_units_or_Higgs_scaling_change_family_ratios": false,
     "phase_window_is_admitted_prior_contract": true,
     "finite_shot_or_physical_preparation_error_bound": false,
@@ -1187,7 +1187,7 @@
             ],
             "illustrative_pair_ground": [
               0.49927015260827895,
-              -0.027005827417535756
+              -0.02700582741753576
             ],
             "maximally_mixed": [
               0.49927015260827906,
@@ -1817,6 +1817,158 @@
       "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
     }
   },
+  "native_charged_sector_extension": {
+    "schema": "oph.hierarchy_diagnosis.charged_sector.v1",
+    "native_rule": "model.observer.native.native, unchanged on binary loads zero through three",
+    "sector_dimensions": [
+      1,
+      12,
+      66,
+      220
+    ],
+    "retained_total_two_branch_addresses_checked": 7920,
+    "field_representation": "ordered twelve-mode CAR restricted to insertions about total-two; no physical identification",
+    "one_proposal": {
+      "selector_rounds": 1,
+      "outcomes": {
+        "C": {
+          "accepted_response_diagonal_exact": [
+            "27/32",
+            "27/32",
+            "49/64",
+            "1649/2400",
+            "1573/2400",
+            "1123/1600",
+            "3107/4800",
+            "421/600",
+            "3331/4800",
+            "103/150",
+            "431/600",
+            "3/4"
+          ],
+          "terminal_response_diagonal_exact": [
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32"
+          ],
+          "off_port_entries_zero_exact": true
+        },
+        "E": {
+          "accepted_response_diagonal_exact": [
+            "27/32",
+            "27/32",
+            "11/16",
+            "1349/2400",
+            "1273/2400",
+            "131/200",
+            "1291/2400",
+            "1609/2400",
+            "1553/2400",
+            "1423/2400",
+            "1499/2400",
+            "21/32"
+          ],
+          "terminal_response_diagonal_exact": [
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32",
+            "5/32"
+          ],
+          "off_port_entries_zero_exact": true
+        }
+      },
+      "terminal_timeout_restarted": false,
+      "accepted_outcomes_conditioned_on_success": false
+    },
+    "exact_support_theorem": {
+      "identity": "x'=x-j(e_a-e_b), y'=y-j(e_a-e_b) implies x'-y'=x-y",
+      "domain": "all nonnegative integer loads for C/E records with the same placement coin",
+      "composition": "every finite recorded seam history and record-controlled schedule",
+      "diagonal_reference_cross_port_charged_two_point_response_zero": true,
+      "coherent_recombination_of_distinct_current_records_covered": false,
+      "arbitrary_encoded_collective_fields_excluded": false
+    },
+    "sector_phase_ambiguity": {
+      "conditional_witness": "H_kappa=H_0+kappa(N-2)^2 with [H_0,N]=0",
+      "faithful_reference_witnesses": [
+        {
+          "eta_exact": "1",
+          "full_binary_dimension": 4096,
+          "partition_function_exact": "25088/225",
+          "number_sector_probabilities_exact": [
+            "1/12544",
+            "65/50176",
+            "225/25088",
+            "1805/50176",
+            "1185/12544",
+            "4329/25088",
+            "405/1792",
+            "5385/25088",
+            "1845/12544",
+            "3565/50176",
+            "577/25088",
+            "225/50176",
+            "5/12544"
+          ],
+          "conditional_total_two_reference_identical_exact": true,
+          "per_configuration_weight": "w_q eta^((N-2)^2), q=protected-core occupation",
+          "modular_generator_difference_up_to_scalar": "-log(eta)*(N-2)^2",
+          "two_copy_pair_frequency_shift": "-2*log(eta)"
+        },
+        {
+          "eta_exact": "1/2",
+          "full_binary_dimension": 4096,
+          "partition_function_exact": "59811400236666261800904573568797/15845632502852867518708790067200",
+          "number_sector_probabilities_exact": [
+            "79228162514264337593543950336/538302602129996356208141162119173",
+            "10299661126854363887160713543680/538302602129996356208141162119173",
+            "15845632502852867518708790067200/59811400236666261800904573568797",
+            "286013666676494258712693660712960/538302602129996356208141162119173",
+            "31295124193134413349449860382720/179434200709998785402713720706391",
+            "595449158896267912226478751744/59811400236666261800904573568797",
+            "676998458984192337835458560/6645711137407362422322730396533",
+            "33906591347004052634337280/179434200709998785402713720706391",
+            "3781582535110458081280/59811400236666261800904573568797",
+            "2006916583946977280/538302602129996356208141162119173",
+            "19825569038336/538302602129996356208141162119173",
+            "3276800/59811400236666261800904573568797",
+            "5/538302602129996356208141162119173"
+          ],
+          "conditional_total_two_reference_identical_exact": true,
+          "per_configuration_weight": "w_q eta^((N-2)^2), q=protected-core occupation",
+          "modular_generator_difference_up_to_scalar": "-log(eta)*(N-2)^2",
+          "two_copy_pair_frequency_shift": "-2*log(eta)"
+        }
+      ],
+      "stationarity": "completion seams preserve N and protected-core q; each local population swap joins equal weights",
+      "all_total_two_histories_and_clocks_unchanged": true,
+      "addition_and_removal_energy_shift": "kappa each",
+      "two_copy_charge_conserving_pair_frequency_shift": "2*kappa",
+      "common_chemical_potential_contribution_to_pair_frequency": "0",
+      "admissibility_as_local_Lorentzian_OPH_dynamics_proved": false,
+      "purpose": "same-shell data cannot select an unmeasured coherent sector extension"
+    },
+    "native_port_charged_propagation_derived": false,
+    "Standard_Model_mass_prediction": false,
+    "empirical_inputs": []
+  },
   "conclusion": {
     "linear_trial_and_entire_complex_affine_feature_class_excluded": true,
     "clock_or_units_explain_current_hierarchy_failure": false,
@@ -1880,7 +2032,7 @@
     "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "code/yang_mills/manifests/physical_compact_gauge_uninstantiated.json": "e512c4a67dc627789bd0450fedabfdc1dc81765021bc0b3eaab12763c7df979a",
-    "docs/research/OPH_PARTICLE_MASS_RESPONSE.md": "5217aa282d9768c8fb71b850eb59939e86bc7e16c0e466a22dc14aac3847fd3f",
+    "docs/research/OPH_PARTICLE_MASS_RESPONSE.md": "c94d48a0143212f377f66dcf5ba7272583cb8b40de88e32afa6d1a9cd6925977",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
@@ -1946,7 +2098,7 @@
     "model/common_source/chiral_candidate/hierarchy_controls.py": "2aa685485264a6aa0cf2dac66499ce2f99d58b040d5ef02cb055a2e3120849c7",
     "model/common_source/chiral_candidate/history.py": "265e73ac87321ebd514b97af2c7c4c0bb376144f60e53d10bfd46662ce2d8db4",
     "model/common_source/chiral_candidate/kinetic.py": "e458cee9e4529722d7500c8eee9dacfed4b35658329c053b7b198f8433c63f3e",
-    "model/common_source/chiral_candidate/results.json": "6e68374540a5d8d86b45caea03899838b4adfe6a017f53180bd7f51f7fba6172",
+    "model/common_source/chiral_candidate/results.json": "6551dee6099b4b4eaea96ca03d9b3749e035e42d76a81766d55f6de62636664c",
     "model/common_source/chiral_candidate/results.npz": "6ac5a7640b422b0959921cf26ee8d154524580241febca409f93acde236eace6",
     "model/common_source/chiral_candidate/run.py": "389cb42f7b9ab01d2450021a985751780ce80c1c424511c96942347a8e5bc393",
     "model/common_source/chiral_candidate/spacetime_attachment.py": "9b9752ded5ada2634a2dabd7a7278e6f05e32a74f7be4c00d41bb30f48829fc3",
@@ -1957,14 +2109,16 @@
     "model/common_source/exact_output.py": "996e4eb3023e5fc56044f20f381931594e9f2aed31bba071a83f32ded7cdbb39",
     "model/common_source/experiment.py": "10b9040d1d2f870f6d4a5e72df2848bbc0f55c136be0be3bacd2fbda28ff4ab8",
     "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
-    "model/common_source/hierarchy_diagnosis/README.md": "838e1f9edea641f809437f3f5eb414bd3317cdefe9a4fcb60838b6d5d4a12443",
+    "model/common_source/hierarchy_diagnosis/README.md": "d362e34aca726bf9bee771a06a5d984ea14d0974e9766cf21bb2ec17f7e9a36c",
     "model/common_source/hierarchy_diagnosis/__init__.py": "405c9e9abaf890b8ec76716bf8a8fa777d8012ba0fa1e9adb0aabef5bfb91f57",
-    "model/common_source/hierarchy_diagnosis/audit.py": "55d7d1309cf4ab853c30830f83d1e568c65a0f601ef0adf1e26bae4c2a3a6b70",
+    "model/common_source/hierarchy_diagnosis/audit.py": "0ab3c0be0851fe12a72184fbb3daa28076e1c27830731ccd783480e52266c591",
+    "model/common_source/hierarchy_diagnosis/charged_sector.py": "bfa4c722d01ff06f3ab68addfc2a9c004687bb116d83e2bc437c080e48175491",
     "model/common_source/hierarchy_diagnosis/native_covariance.py": "a4b90a2e65f242a716fb203cf8d4b7579d00201a3b0e347c256d3e377905ff7f",
     "model/common_source/hierarchy_diagnosis/native_family_dynamics.py": "4b518574d7c4371a05dc174047aa852b2dfc245b90a1801974ffc25e5d9202d9",
     "model/common_source/hierarchy_diagnosis/nonlinear_shapes.py": "2a8821536f6bc71995391e60e244780dd0c2dec64fa450ce5ea2ed43fb922f18",
     "model/common_source/hierarchy_diagnosis/quadratic_response.py": "fc171dd30460bb23d74a74306a86a73c0d956aae671783651575e60dc2799713",
     "model/common_source/hierarchy_diagnosis/test_audit.py": "dfbb5dc58bc24250a0cc242e670a3efbec23230f654bd41d1d94195e5882804c",
+    "model/common_source/hierarchy_diagnosis/test_charged_sector.py": "ee7f50a883b07d4ee6eecc3af6cf20ed4ee78a6c556f1c3a5aaaa8debef2fc79",
     "model/common_source/hierarchy_diagnosis/test_native_covariance.py": "ed2e78db3574df57399ca0704602c427d132c2ce24efdb026c9142811a68e6c5",
     "model/common_source/hierarchy_diagnosis/test_native_family_dynamics.py": "fdd07c9979cf95654f5123a62565240d97a19d8c553086d1eb22ea3dd8ce254b",
     "model/common_source/hierarchy_diagnosis/test_nonlinear_shapes.py": "f955bc299785705ed7cc9e4472907d8454a964235ed803b834cd452ffda59fe3",

@@ -229,6 +229,7 @@ def run():
     from .native_covariance import report as covariance_report
     from .quadratic_response import report as quadratic_report
     from .native_family_dynamics import report as dynamics_report
+    from .charged_sector import report as charged_report
     dynamics = dynamics_report()
     if any(initial.get(name) != value for name, value in dynamics["source_bindings"].items()):
         raise RuntimeError("native response input missing from diagnosis custody")
@@ -241,6 +242,7 @@ def run():
         "native_connected_covariance": covariance_report(),
         "quadratic_poles_and_state_independence": quadratic_report(),
         "native_family_dynamics": dynamics,
+        "native_charged_sector_extension": charged_report(),
         "conclusion": {
             "linear_trial_and_entire_complex_affine_feature_class_excluded": True,
             "clock_or_units_explain_current_hierarchy_failure": False,
@@ -260,7 +262,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_mutually_exclusive_group(required=True)
     modes.add_argument("--output", type=Path)
-    modes.add_argument("--verify", type=Path)
+    modes.add_argument("--verify", "--check", dest="verify", type=Path)
     args = parser.parse_args()
     if args.output is not None and args.output.exists():
         parser.error("choose a fresh output; retained reports are not overwritten")

@@ -9,6 +9,16 @@ They leave physical chirality, selected family coefficients, observed masses,
 physical electromagnetic normalization and responsive gravitational entropy
 stationarity open.
 
+The [current particle audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+measures the charged response of a declared Weyl–Higgs construction and
+locates the failure of its mass hierarchy. The
+[finite modular Ward calculation](common_source/SLOW_GEOMETRY.md)
+distinguishes a faithful source clock from geometric null-translation dilation,
+including the boundary term introduced by a compressed readout. The
+[cross-scale audit](empirical_diagnostics/README.md) tests numerical
+consequences under a shared P map and checks whether the retained empirical
+rows identify one common physical construction.
+
 The executable model connects native repair, field observations, local clock
 records, modular descriptions and controlled interventions within specified
 finite experiments. It derives conditional observation laws and identifies

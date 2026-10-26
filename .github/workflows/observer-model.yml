@@ -74,6 +74,8 @@ jobs:
       OMP_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Fetch the model's recorded base release
+        run: git fetch --no-tags --depth=1 origin refs/tags/r2053:refs/tags/r2053
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'

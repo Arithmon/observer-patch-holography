@@ -35,6 +35,18 @@ or the spacetime of our Universe. The next attachment must preserve the
 same joint observations and interventions, rather than only matching a
 mean response, a spectrum or a clock rate.
 
+The [particle response](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md),
+[finite modular-covariance check](common_source/SLOW_GEOMETRY.md) and
+[cross-scale comparison](empirical_diagnostics/README.md) constrain three
+parts of that common dictionary. The native current-record law preserves
+signed occupation-difference sectors, whereas a physical charged field must
+have the required propagating response. Finite modular clocks must be related
+to geometric covariance on a stated limiting observable domain, including
+compression errors. Shared numerical constants must pass through the same
+action, state and physical readout before results from separate constructions
+can be combined. Choosing an architecture and observer implementation is
+legitimate; their measured consequences require these derivations.
+
 | Established connection | Exact domain | Remaining physical identification |
 | --- | --- | --- |
 | [Native action and field statistics](native_action/README.md) | A specified C/E instrument and scheduler determine exchange, coherence loss and complete finite histories. | Derive the effective observable dynamics in an identified physical regime. A transfer logarithm, Liouville generator and chosen-reference modular flow have different meanings. |

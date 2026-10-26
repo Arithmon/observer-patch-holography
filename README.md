@@ -61,6 +61,9 @@ and the clocks inside it.
   connect conditional scalar and fermion constructions. The family matrices,
   Higgs phase, mass scale and physical particle identification remain inputs.
   [Matter and field contracts](model/observer_particles/DERIVATION.md).
+  The [charged mass-response calculation](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+  measures a declared Weyl–Higgs candidate with a common field and clock;
+  its mass ratios fail to reproduce the charged-lepton hierarchy.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
@@ -79,6 +82,9 @@ and the clocks inside it.
   [postdiction ledger](docs/POSTDICTION_LEDGER.md) and the
   [falsification programme](docs/OPH_FALSIFICATION_PROGRAM.md) keep comparisons
   with measurements apart from tests of the mathematics.
+  The [cross-scale audit](docs/EMPIRICAL_STATUS.md) tests shared numerical
+  maps and records the physical identifications needed before separate
+  comparisons can count as evidence for one construction.
 
 **Agreement with the full range of observed measurement statistics has not
 been established.** The theorems hold under stated premises, and the

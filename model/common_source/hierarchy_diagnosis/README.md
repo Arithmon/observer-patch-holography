@@ -1,6 +1,6 @@
 # Why the current chiral candidate misses the mass hierarchy
 
-This is a new diagnostic layer over the retained
+This diagnostic audits the retained
 [Weyl–Higgs candidate](../chiral_candidate/README.md). It does not modify that
 action or its quantum records. The
 [research diagnosis](../../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md#hierarchy-diagnosis)
@@ -13,6 +13,15 @@ canonical kinetic normalization and a common Higgs factor. It does not
 exclude arbitrary OPH dynamics. Arbitrary functions of a single feature can
 change its eigenvalues but retain its family axes; that freedom is not a
 mass prediction.
+
+The adjacent-sector calculation applies the existing native endpoint rule
+to binary loads zero through three. It restores the two CAR contractions
+about the total-two reference but proves that the recorded C/E dynamics
+still has no cross-port charged response. An exact family of faithful
+references agrees on all total-two data while changing adjacent-sector
+modular thresholds. The chosen reference, coherent continuation and physical
+field map therefore have distinct selection obligations. These are finite
+operator and source-domain results; no Standard Model mass is inferred.
 
 From the repository root:
 

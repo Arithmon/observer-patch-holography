@@ -60,6 +60,11 @@ def test_every_new_research_receipt_has_a_canonical_replay():
         ('model.native_interface.tomography', None, 'model/native_interface/tomography_results.json'),
         ('model.native_modular_reference.cap_local_clock', None, 'model/native_modular_reference/cap_local_clock_results.json'),
         ('model.occupation_control.transfer', None, 'model/occupation_control/transfer_results.json.gz'),
+        ('model.common_source.replay', 'mass_response', 'model/common_source/mass_response/results.json'),
+        ('model.common_source.replay', 'particle_identification', 'model/common_source/particle_identification/results.json'),
+        ('model.common_source.replay', 'chiral_candidate', 'model/common_source/chiral_candidate/results.json'),
+        ('model.common_source.hierarchy_diagnosis.audit', None, 'model/common_source/hierarchy_diagnosis/results.json'),
+        ('model.common_source.full_repair_response.run', None, 'model/common_source/full_repair_response/results.json'),
     }.issubset(verify.REPLAYS)
 
 

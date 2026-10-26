@@ -9,6 +9,16 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The [particle mass-response audit](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+joins the finite charged-gap, CAR-readout, Weyl–Higgs, hierarchy and full-response
+calculations. Each uses its stated action and clock contract. Native-port
+charge propagation and the measured Standard Model hierarchy are not derived.
+The canonical `python -m model.verify` replays all five retained reports;
+for the charged experiments it recomputes the complete quantum outputs and
+compares the stored arrays as well as their hashes. The
+[finite modular-covariance calculation](SLOW_GEOMETRY.md) supplies a separate
+test of the geometric interpretation of source modular flow.
+
 The [numerical output certificate](OUTPUT_CERTIFICATE.md) bounds the actual
 computed work outputs against the exact finite continuous and infinite
 histories, including preparation, source evaluation and time discretization.

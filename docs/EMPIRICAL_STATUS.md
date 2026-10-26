@@ -12,6 +12,46 @@ effective interpretations. It does not require a fundamental spacetime object.
 It does require identifying the same preparation, intervention and readout in
 the model and the experiment before comparing their probabilities.
 
+## One fixed spectral candidate across scales
+
+The [cross-scale calculation](../model/empirical_diagnostics/cross_scale.py)
+computes Wissner-Gross's exact spectral scalar, propagates it through the
+declared maps $P=\varphi+\sqrt{\pi}\,\alpha$ and $n_s=1-P/48$, and then opens
+the retained measurement references. It uses exact rational enclosures for
+square roots and Machin's series for $\pi$; no measured value enters that
+forward calculation. The [receipt](../model/empirical_diagnostics/cross_scale_results.json)
+binds its inputs and the complete four-chain ACT projection.
+
+| Quantity or interface | Result for the fixed calculation | Physical status |
+| --- | --- | --- |
+| Spectral inverse coupling | $137.035999189566155\ldots$, above CODATA 2022 by $0.5983883$ reported standard uncertainties | Scalar agreement. Its identification with the Thomson photon residue and Maxwell normalization remains unproved. |
+| Same-cell parameter and conditional primordial tilt | $P=1.630968209402773\ldots$, $n_s=0.966021495637442\ldots$ | The two connecting maps remain physical premises. |
+| ACT DR6 P-ACT-LB posterior position | Both rational enclosure endpoints give exactly $3114/508985=0.00611805849\ldots$ lower-tail mass | Conditional posterior position, with the existing background, transfer and prior assumptions. No p-value or joint acceptance follows. |
+| Declared Weyl–Higgs particle candidate | All four retained linear/Hubbard prescriptions fail the conservative charged-lepton ratio windows | Matching the coupling scalar does not supply the different family mass dynamics. |
+| Quantum oscillator comparison | Source preparation and detector execute; its apparatus action, physical clock and complete error model are not derived from this fixed candidate | A shared physical action and readout for the quantum and cosmological consumers are unproved. |
+
+The Chain scalar is credited to [A. D. Wissner-Gross](https://alexwg.org/publications/ChainTheoryAlpha.pdf);
+OPH's [finite reconstruction](../model/observer_particles/results/entangled_alpha.json)
+supplies its separate operator checks. The numerical reference is the
+[NIST CODATA table](https://physics.nist.gov/cuu/Constants/Table/allascii.txt).
+The cosmological observations are the
+[official ACT DR6 joint chains](https://lambda.gsfc.nasa.gov/product/act/act_dr6.02/act_dr6.02_chains_lcdm_get.html).
+This use of the accurate spectral scalar changes the tilt by only
+$2.4709142\times10^{-14}$ relative to the retained CODATA-calibrated branch;
+it leaves every retained ACT tail count unchanged. Therefore that substitution
+does not remove the conditional cosmological tension. It does not establish
+which physical map should replace either missing attachment.
+
+The executable composition check reports
+`not_evaluable_as_one_complete_physical_construction`. Its missing contracts
+come from the actual particle and oscillator receipts, with the common
+physical action, primordial transfer and complete uncertainty contract
+absent. Architecture and repair choices may be declared and implemented;
+agreement with measurements requires their common consequences to be derived.
+Separate favorable comparisons cannot be multiplied into an empirical verdict
+for one construction. The present retained dataset inventory is finite and
+does not cover all public observations.
+
 The strongest integrated result is conditional: **local history repair
 computes the same complete detector laws as the supplied oscillator apparatus**
 and reproduces its existing comparison with measurements. This checks the
@@ -272,6 +312,7 @@ From the repository root:
 python -m model.predictions --check model/predictions/results.json
 python -m model.predictions.bell_records --check model/predictions/bell_results.json
 python -m model.closed_prediction_protocol --check model/closed_prediction_protocol/results.json
+python -m model.empirical_diagnostics.cross_scale --check model/empirical_diagnostics/cross_scale_results.json
 python -m model.replay_empirical
 ```
 

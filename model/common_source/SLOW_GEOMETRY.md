@@ -229,3 +229,109 @@ identifications are already supplied.
 
 Run `python -m pytest -q model/common_source/test_slow_geometry.py`. The common
 source receipt retains `report()` together with the rest of the experiment.
+
+<a id="modular-boosts-require-a-controlled-continuum-comparison"></a>
+## Modular boosts require a controlled continuum comparison
+
+[modular_covariance.py](modular_covariance.py) supplies a finite test of the
+geometric modular-flow premise. Let $G=\log\sigma$ on a faithful finite
+observer algebra, so the Heisenberg modular flow is
+$U(s)=\sigma^{is}=e^{isG}$, with dimensionless modular parameter $s$.
+A boost acting on a null-translation generator would require, after choosing
+its orientation and normalization, $U(s)PU(s)^*=e^{\kappa s}P$ for some
+nonzero real $\kappa$. No physical null-translation generator is assigned
+to the native code by this test.
+
+For every finite Hermitian $G,P$, cyclicity of the trace gives
+$\operatorname{Tr}(P\,i[G,P])=0$. Consequently
+
+```math
+\|i[G,P]-\kappa P\|_{\rm HS}^2
+=\|[G,P]\|_{\rm HS}^2+\kappa^2\|P\|_{\rm HS}^2.
+```
+
+The full-algebra relative Ward defect is at least one whenever
+$\kappa P\ne0$. This is an exact identity; the executable checks its
+attachment to the native reference without using a numerical rank decision.
+There is also a finite-parameter operator bound,
+
+```math
+\|U(s)PU(s)^*-e^{\kappa s}P\|
+\ge |e^{\kappa s}-1|\,\|P\|,
+```
+
+from unitary invariance of the operator norm and the reverse triangle
+inequality. Positivity of $P$ is unnecessary. The operator bound applies
+to bounded operators more generally; unbounded continuum translation
+generators require their own domain and convergence arguments. Thus it
+does not exclude a physical continuum limit of finite observers.
+Finite Lorentz matrices acting on Weyl field indices are a different
+representation; this bound concerns unitary modular conjugation on the
+observer's full finite Hilbert algebra.
+
+Compression changes the comparison, but its boundary term must be included.
+For an orthogonal projection $Q$, put $G_Q=QGQ$, $P_Q=QPQ$ and
+
+```math
+B_Q=i\bigl(QG(1-Q)PQ-QP(1-Q)GQ\bigr).
+```
+
+Direct multiplication gives
+
+```math
+Q\,i[G,P]Q=i[G_Q,P_Q]+B_Q,
+\qquad
+\|Q(i[G,P]-\kappa P)Q\|_{\rm HS}+\|B_Q\|_{\rm HS}
+\ge |\kappa|\,\|P_Q\|_{\rm HS}.
+```
+
+A subspace invariant under $G$ or $P$ has $B_Q=0$ and inherits the same
+finite-dimensional obstruction. In particular, selecting a spectral band
+of the modular generator alone cannot close the geometric Ward premise.
+For a useful refinement, the permitted states, observable domain and
+finite modular-parameter window must be specified, and their actual
+compressed response must converge with the boundary contribution retained.
+Requiring both a vanishing compressed defect and a vanishing boundary term
+while keeping a nonzero normalized $P_Q$ contradicts the displayed bound.
+
+The source example uses the same faithful 66-state reference as the particle
+response. Choose native configurations $a,b$ with protected-core occupations
+zero and two. Their weight ratio is five. On their two-state corner choose
+$P=\begin{pmatrix}1&i/2\\-i/2&1\end{pmatrix}$, zero outside, and let
+$Q$ project onto $(|a\rangle+|b\rangle)/\sqrt2$.
+These are declared diagnostic probe choices. $P$ is positive, with nonzero
+eigenvalues $1/2,3/2$. For $\kappa=\log(5)/2$, its compressed derivative
+satisfies $Q\,i[G,P]Q=\kappa P_Q$ exactly. The internal compressed
+commutator is zero; the whole derivative comes from $B_Q$.
+Yet its finite-parameter probe response is
+
+```math
+\langle U(s)PU(s)^*\rangle_Q
+=1+\tfrac12\sin(s\log 5),
+```
+
+which differs from the dilation target $e^{s\log(5)/2}$. At
+$s=1/\log5$ the values are approximately $1.420735$ and $1.648721$.
+A matched derivative at one parameter value therefore does not establish
+geometric modular covariance. The computation is a matrix diagnostic on
+the ideal reference, not a newly executed clock or momentum instrument.
+
+The entropy premise has a different status. The existing
+[native entropy refinement](../native_equilibration/entropy_refinement.py)
+derives all-partition counting-gradient error at most $3\ell^5/32$,
+quantum-gradient error at most $\ell^5/16$, and entropy deficit at most
+$\ell^{10}/512$, after its dimension-dependent discarded warm-up schedule.
+Here $\ell=2^{-l}$ is a declared refinement coordinate, and the permitted
+tangent norms and source sector are specified. The
+[common variation theorem](../native_equilibration/common_variation.py)
+also supplies constrained MaxEnt stationarity for the nonuniform protected
+core reference. These results remove exact entropy preparation as a finite
+premise. They do not identify $\ell$ with a proper small-ball radius,
+fixed native capacity with proper volume, entropy variation with
+$\delta A/(4G)$, or the modular generator with the same physical stress
+that occurs in the Einstein theorem. Those identifications and the
+restricted continuum covariance comparison remain required on one family.
+
+Run `python -m model.common_source.modular_covariance` for the native
+diagnostic and `python -m pytest -q model/common_source/test_modular_covariance.py`
+for the sharp, spectral-compression and finite-parameter controls.

@@ -438,6 +438,74 @@ flux with gravity, or source with mass density.
 \input{tex_fragments/SOURCE_REPAIR_INSTRUMENT.tex}
 \input{tex_fragments/SOURCE_RECORD_GLUING.tex}
 \input{tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex}
+\subsection{Finite modular covariance and compressed responses}
+\label{sec:finite-modular-covariance}
+
+Geometric modular covariance requires a comparison beyond the existence
+of a finite modular clock. The following finite identity states a necessary
+boundary of that comparison, independently of the repair scheduler.
+
+\begin{proposition}[Finite modular dilation and its compression boundary]
+\label{prop:finite-modular-dilation}
+Let $G,P$ be Hermitian matrices on a finite Hilbert space, let
+$U(s)=e^{isG}$, and let $\kappa\in\mathbb R$. Then
+\[
+ \|i[G,P]-\kappa P\|_{\mathrm{HS}}^2
+ =\|[G,P]\|_{\mathrm{HS}}^2+\kappa^2\|P\|_{\mathrm{HS}}^2,
+ \qquad
+ \|U(s)PU(s)^*-e^{\kappa s}P\|
+ \geq |e^{\kappa s}-1|\,\|P\|.
+\]
+For an orthogonal projection $Q$, write $G_Q=QGQ$, $P_Q=QPQ$ and
+$B_Q=i(QG(1-Q)PQ-QP(1-Q)GQ)$. Then
+\[
+ Q\,i[G,P]Q=i[G_Q,P_Q]+B_Q,
+ \qquad
+ \|Q(i[G,P]-\kappa P)Q\|_{\mathrm{HS}}+\|B_Q\|_{\mathrm{HS}}
+ \geq |\kappa|\,\|P_Q\|_{\mathrm{HS}}.
+\]
+\end{proposition}
+\begin{proof}
+Cyclicity gives $\operatorname{Tr}(P\,i[G,P])=0$, so the cross term
+in the squared Hilbert--Schmidt norm vanishes. Unitary invariance of
+the operator norm and the reverse triangle inequality give the
+finite-parameter bound. Inserting $Q+(1-Q)$ into each product gives
+the compressed identity. Apply the first identity to the compressed
+matrices, then the triangle inequality, for the last bound.
+\end{proof}
+
+For the native faithful reference with per-configuration core weights
+$(2/225,1/36,2/45)$, take $G=\log\sigma$; thus $s$ is the dimensionless
+modular parameter. Choose configurations $a,b$ with core occupation zero
+and two, respectively. On their two-state corner declare
+\[
+ P=\begin{pmatrix}1&i/2\\-i/2&1\end{pmatrix},\qquad
+ Q=|\psi\rangle\langle\psi|,\qquad
+ |\psi\rangle=(|a\rangle+|b\rangle)/\sqrt2,
+\]
+and extend $P$ by zero. It is positive, with nonzero eigenvalues
+$1/2,3/2$. For $\kappa=\log(5)/2$, the projected first derivative
+is exactly $\kappa P_Q$, supplied entirely by $B_Q$; the internal
+compressed commutator is zero. Nevertheless
+\[
+ \langle\psi|U(s)PU(s)^*|\psi\rangle
+ =1+\tfrac12\sin(s\log5)\ne e^{s\log(5)/2}
+\]
+in general. At $s=1/\log5$ the two values are approximately $1.420735$
+and $1.648721$. The source attachment and controls are executable in
+\path{model/common_source/modular_covariance.py}. The declared probe is
+not identified with physical null momentum, and this matrix diagnostic
+is not a new executed momentum instrument.
+
+Consequently a fixed finite Hilbert algebra cannot supply nonzero
+global modular dilation. A spectral projection of $G$ has $B_Q=0$ and
+retains the same obstruction. Restricted continuum comparisons must
+specify states, observable domains and finite parameter windows, retain
+the compression boundary, and control the actual responses on one
+refining family. Unbounded continuum generators are not excluded by
+these bounded-operator statements. Finite nonunitary Lorentz matrices
+on Weyl field indices are also a different representation.
+
 \input{tex_fragments/SOURCE_COUNT_CLOCK.tex}
 \input{tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex}
 \input{tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex}

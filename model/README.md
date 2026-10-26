@@ -8,6 +8,15 @@ constructions against shared spatial and metric contracts. Its
 state which theorem inputs are constructed and which physical identifications
 remain separate.
 
+The [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+tests a declared Weyl–Higgs action through its charged field and observer
+clock. Its measured finite gaps do not reproduce the charged-lepton hierarchy.
+The [cross-scale comparison](empirical_diagnostics/README.md) carries one
+entangled-pair spectral scalar through the declared P and primordial-tilt
+maps, while checking which laboratory and cosmological comparisons can share
+a physical construction. Numerical agreement for one scalar does not supply
+the missing particle, spacetime and detector maps.
+
 This directory contains the executable observer construction: native repair,
 quantum instruments, recorded feedback, observer-accessible algebras and
 checkpoint continuation. Its finite predictions are computed from declared

@@ -76,6 +76,9 @@ intemporelle et les horloges qu’elle contient.
   la phase de Higgs, l’échelle de masse et l’identification physique des
   particules sont des entrées.
   [Contrats de matière et de champs](model/observer_particles/DERIVATION.md).
+  Le [calcul de réponse de masse chargée](docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+  mesure un candidat Weyl–Higgs déclaré avec un champ et une horloge communs ;
+  ses rapports de masse ne reproduisent pas la hiérarchie des leptons chargés.
 - **La physique standard à partir d’un accord fini.** Des théorèmes finis
   mènent des lectures de l’observateur à des structures familières : des
   registres publics indépendants de l’ordre des réparations ; la règle de

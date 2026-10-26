@@ -6,6 +6,15 @@ retains its classical record, uses that record to choose the next interaction,
 and halts when its two event slots are full. The software runs both exact
 finite calculations and sampled sequential trials.
 
+The [adjacent-charge diagnostic](../common_source/hierarchy_diagnosis/charged_sector.py)
+extends this unchanged endpoint rule to the sectors needed for a declared CAR
+field around the two-load state. Equal recorded currents preserve signed load
+difference, so these native-port charged responses cannot propagate between
+ports under record-only continuation. Faithful reference completions also
+show that the two-load clock does not fix the relative charged thresholds.
+The [particle audit](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+states the exact domain, controls and surviving coherent-field possibilities.
+
 The [P-dependent binary detector](p_response/README.md) adds a concrete
 electromagnetic response under accepted P/N closure inputs. Its actuator reads
 one detector bit. The native current recorder described here retains a richer

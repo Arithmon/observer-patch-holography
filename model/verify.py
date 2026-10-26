@@ -217,6 +217,12 @@ REPLAYS = (
     ("model.observer_time_fields.continuum_dynamics", None,
      "model/observer_time_fields/continuum_dynamics_results.json"),
     ("model.predictions.repair_response", None, "model/predictions/repair_response_results.json"),
+    ("model.common_source.replay", "mass_response", "model/common_source/mass_response/results.json"),
+    ("model.common_source.replay", "particle_identification", "model/common_source/particle_identification/results.json"),
+    ("model.common_source.replay", "chiral_candidate", "model/common_source/chiral_candidate/results.json"),
+    ("model.common_source.hierarchy_diagnosis.audit", None, "model/common_source/hierarchy_diagnosis/results.json"),
+    ("model.common_source.full_repair_response.run", None, "model/common_source/full_repair_response/results.json"),
+    ("model.empirical_diagnostics.cross_scale", None, "model/empirical_diagnostics/cross_scale_results.json"),
 )
 
 
