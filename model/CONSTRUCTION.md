@@ -706,6 +706,28 @@ resetting the work register.
 [encoded recovery](common_source/ENCODED_MEMORY.md) attach full native
 instruments and active logical memory under explicit code-service contracts.
 
+The [combined recorded observer](common_source/ENCODED_MEMORY.md#optimal-binary-carrier-code)
+sharpens that memory interface: the binary 66-state carrier has maximum exact
+record-correctable subspace dimension six across all thirty native seams.
+The bound covers arbitrary complex codes and record-dependent CPTP recovery;
+a six-matching source code attains it. Six corrected carriers then support a
+finite fermion history with a declared three-cell transport word, two number
+reads, record feedback, reference entanglement and all selector timeouts.
+The same history supplies charged response, local continuity, cycle phases
+and an information ledger: native correction preserves quantum information,
+while the first field read loses exactly `(15/16) log(2)`. The separate
+unencoded entropy identity extends the original native population reference
+to coherent endpoint/reference outputs, including unresolved C timeouts.
+The [combined receipt](common_source/record_observer_results.json) retains
+these domains and complete complex field outputs together.
+
+This completes the specified finite repair-and-transport construction, with
+its code services, chosen logical ring and preparation exposed. Native records
+alone leave the transport undetermined. The result supplies no physical clock
+calibration, four-dimensional spacetime, Standard Model spectrum, gravitational
+entropy identification or independent empirical confirmation; those remain
+the completion criteria above.
+
 The [native-clocked common observer](clocked_common_observer/README.md)
 uses an actual current event to trigger that work's read-and-feedback suffix.
 Work evolves during the wait. Its 128-slot execution retains 4,097 stopped
