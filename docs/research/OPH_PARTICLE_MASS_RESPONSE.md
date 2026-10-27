@@ -49,6 +49,12 @@ not derived from the native repair law.** The uncalibrated candidate's mass
 prescription fails the hierarchy comparison, and the collective operators
 are not identified with Standard Model fields in the observer's physical
 Lorentzian description.
+The [record-driven family feedback](#520-family-couplings-from-a-specified-record-feedback-law)
+removes measured mass inputs from one explicitly specified extension of the
+repair law. It produces three unequal Higgs couplings, with ratios about
+`1 : 30.84 : 452.62`, without fitting them. This fixed candidate fails the
+charged-lepton hierarchy comparison; it does not replace the calibrated
+control with a successful physical mass derivation.
 
 **Operational particle mass.** A mass is inferred from jointly accessible
 detector records and interventions in a stated observer clock and spacetime
@@ -1200,6 +1206,37 @@ degrees two and four differently. The source current and matter-pointer
 experiments therefore keep their execution domains explicit; the ideal
 lift is not a literal complete matter-register C/E history.
 
+The [actual-current theorem bridge](../../model/common_source/native_matter_theorems.py)
+also checks every component of the full 32-state exterior action against
+the finite theorem tables. All twelve currents preserve each of the ten
+non-vacuum, non-top components. Their computed charges, dimensions,
+conjugation and auxiliary parity match `ExteriorComponentBridge` and
+`ExteriorSelection`. Exhausting all 1,024 component subsets gives exactly
+the two conjugate fifteen-state sectors under the nonempty, chiral,
+anomaly-free conditions. The chosen even sector is one of these two.
+The vacuum and top singlets remain in the full register; their exclusion
+from the candidate menu is not forced by anomaly cancellation.
+
+| Finite result reused | What it restricts here | Input still required |
+| --- | --- | --- |
+| Complete twelve-current classification | Internal Lie-algebra type of the specified response | Completeness of the physically accessible response, beyond the declared menu |
+| Exterior component and selection theorems | Two conjugate chiral anomaly-free matter sectors in the actual five-mode lift | That lift and component menu; chirality and anomaly cancellation as selection conditions |
+| Family-band theorem | Unique lowest-cost faithful complete native band has rank three | Realization of the family factor in that band and the operational selection rule |
+| Same-current Higgs invariant equations | Three allowed coupling channels and their exact field intertwiner | Their family matrices and physical Higgs dynamics |
+| Central-character descent | The common $\mathbb Z_6$ kernel of this representation | Physical global gauge-group and line-operator identification |
+
+Anomaly forms add across identical copies. Since they vanish for one
+generation, they also vanish for two, three or more; anomaly cancellation
+alone cannot select three families. The family-band theorem addresses a
+different question under its explicit selection premises.
+The executable family attachment verifies an exact native-to-Lean incidence
+chart, $V^TV=I_3$, $AV=\sqrt5V$ and $VV^T=P_3$, together with all sixty
+rotation intertwiners. It retains the full coefficient-band dimensions
+`1 + 3 + 3 + 5`. Selecting the complete rank-three band gives
+$3\times15=45$ internal family/matter dimensions; the unfiltered coefficient
+space would give $12\times15=180$. The isometry is a coefficient-space
+map, not an executed native filter that removes the other bands.
+
 #### 5.17 Native virtual interactions and controlled response
 
 The [virtual-exchange construction](../../model/common_source/native_virtual_exchange.py)
@@ -1283,6 +1320,113 @@ The construction checks that charge identification and calibrated mass
 readout can coexist on one coherent register. It does not remove the mass
 calibration, execute a full matter-register C/E history, or derive the
 interacting Standard Model.
+
+#### 5.20 Family couplings from a specified record-feedback law
+
+The [repair-mass experiment](../../model/common_source/native_repair_mass.py)
+uses the existing twelve-port geometry and C/E instruments. Corrected C/E
+branches are scalar on the protected work code. The current controls also
+act as the identity on the declared family factor. Consequently, passive
+records and compositions of those controls do not select family couplings.
+The experiment adds an explicit coherent feedback rule and neutral memory;
+these are construction choices, not consequences of gauge covariance alone.
+An independent [local-cost check](../../model/common_source/native_repair_mass_h2.py)
+also tests transferring the existing two-hop cost onto the new geometric
+object. Both signs of the two-carrier sum leak on all six input directions
+when the full native complement is retained. Even support averaging leaves
+no nonzero preserving combination of the two local coefficients. Its
+compressed eigenvalues therefore cannot be used as a closed mass action
+on this object.
+
+A designated C outcome, `(coin=0, J=+1)`, has probability $p=1/12$ on
+every protected input. It advances a five-state classical memory cyclically;
+every other outcome resets that memory to zero. All records are retained.
+With columns denoting the previous memory state, the transition is
+
+```math
+T=pS+(1-p)e_0\mathbf1^T,\qquad
+\pi_k=\frac{(1-p)p^k}{1-p^5},\quad k=0,\ldots,4.
+```
+
+Here $S$ is the cyclic shift. Coupling two initial memory states to the
+same records synchronizes them at the first reset, giving a total-variation
+distance at most $p^n$ after $n$ cycles. The memory distribution therefore
+does not introduce fitted weights.
+
+Fix an order-five native rotation $U$ and a nonfixed native port vector $v$
+by the executable geometry ordering. Set $P=vv^T/(v^Tv)$ and
+$P_k=U^kPU^{-k}$. The family coordinates are a gauge-neutral copy of this
+geometric triplet, not the colored triplet of the gauge representation.
+After each memory update, the specified feedback applies the allowed Higgs
+tensor with family matrix $P_k$. Its averaged coupling is
+
+```math
+Y=\sum_{k=0}^4\pi_kP_k.
+```
+
+The rotation, port, trigger and feedback are fixed before the empirical
+comparison. No measured mass, fitted sector coefficient or target-dependent
+spectral function enters $Y$. The same matrix is attached to all three
+same-current Higgs lines. This choice preserves the verified internal
+representation, but also gives equal family spectra across the three
+charged sectors and no relative family mixing.
+
+The complete finite-step process is a correlated memory-controlled quantum
+channel, rather than unitary evolution under $Y$ at finite step size. In a
+charged Nambu block it applies $\exp(-ih\sigma_x\otimes P_k)$, with
+$t=Nh$ a model coordinate. For arbitrary initial classical memory and an
+external quantum reference, its diamond-norm distance from the averaged unitary channel
+is bounded by
+
+```math
+\frac{4pt+4(1+p)t^2}{N(1-p)}.
+```
+
+A stationary product of memory and quantum input removes the term linear
+in $t$; a stationary memory marginal alone is insufficient. The bound uses
+the exact contraction $T\eta=pS\eta$ on memory deviations with zero sum;
+it does not replace correlated records by independent draws. This is a
+controlled averaging limit for the specified coherent service, not a
+physical clock calibration or a full native matter-register execution.
+
+The resulting positive eigenvalues are approximately
+`(0.00206415, 0.06365983, 0.93427602)`. Their ratios are
+`1 : 30.84064479 : 452.61944633`. Both charged-lepton ratio tests fail
+against the retained broad comparison windows `[206, 207]` and
+`[3470, 3485]`. A common Higgs scale or clock rescaling cannot repair these
+dimensionless discrepancies. The result establishes a particular repair-
+record mechanism for unequal family couplings; it does not establish the
+measured spectrum, sector splittings, mixing or interacting pole masses.
+
+The exclusion extends to the stationary averaged kernels at other event
+probabilities. For either fivefold rotation class and every $0<p\le1$, the five distinct
+port rays have squared overlap $1/5$. With
+$e_2(Y)=\tfrac12((\operatorname{tr}Y)^2-\operatorname{tr}(Y^2))$, their
+geometrically weighted kernel obeys
+
+```math
+\frac{\det Y\,(\operatorname{tr}Y)^3}{e_2(Y)^3}
+\ge\frac{25-5\sqrt5}{32}>0.43.
+```
+
+Every positive spectrum within both retained charged-lepton ratio windows
+has this scale-invariant quantity below $0.098$. Thus changing the event
+frequency, clock or common mass scale cannot rescue this averaged mass
+family. This does not classify arbitrary finite-step noisy-channel resonances.
+The $p=0$ endpoint has rank one and also fails; $p=1$ gives a uniform kernel
+but has no memory-mixing guarantee.
+
+A fixed-basis readout checks the kernel without supplying its eigenvectors
+or eigenvalues to the probes. Three computational inputs and nine Pauli-Y
+settings are applied to the complete finite correlated channel at
+$t=2^{-14}$ and $N=64$. Every memory output and the two pointer outcomes
+plus their complement are retained. The inverse reconstructs the family
+matrix from contrasts, with averaging, finite-time and numerical allowances.
+Its eigenvalue intervals are approximately
+`[0.00205736, 0.00207095]`, `[0.06365303, 0.06366662]` and
+`[0.93426923, 0.93428282]`; the ratio intervals are `[30.7362, 30.9458]`
+and `[451.1312, 454.1175]`. These are inferred couplings of the specified
+effective feedback action, not physical pole-mass or experimental intervals.
 
 ### 6. Relation to observers' effective 3+1D spacetime
 
@@ -1490,6 +1634,7 @@ recompute their producers and independently validate retained source arrays:
 .venv/bin/python -m model.common_source.native_sm_current --check model/common_source/native_sm_current_results.json
 .venv/bin/python -m model.common_source.native_matter_attachment --check model/common_source/native_matter_attachment_results.json
 .venv/bin/python -m model.common_source.native_particle_records --check model/common_source/native_particle_records_results.json
+.venv/bin/python -m model.common_source.native_repair_mass --check model/common_source/native_repair_mass_results.json
 ```
 
 The retained calculation binds the source code, native reference, exact

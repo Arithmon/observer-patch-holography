@@ -127,6 +127,12 @@ matches the declared matter representation and Higgs tensors through an
 exact intertwiner. The law, lift and response-menu boundary are supplied;
 these construction checks do not select the physical gauge action or fit
 an additional public dataset.
+The [record-driven repair-mass candidate](../model/common_source/native_repair_mass.py)
+adds a fixed coherent feedback rule without measured mass inputs. Its
+stationary family coupling has ratios `1 : 30.84 : 452.62`, which fail
+both retained charged-lepton comparison windows. The common coupling also
+leaves charged sectors degenerate. This is a failed uncalibrated candidate,
+not a replacement for the calibrated spectrum control or another dataset.
 Separate [native spectroscopy](../model/common_source/native_charged_spectroscopy.py)
 infers both specified dimer frequencies from complete fixed-probe contrasts,
 with held-out readouts and a zero-gap control. Its inverse receives no target

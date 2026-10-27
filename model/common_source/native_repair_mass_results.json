@@ -1,0 +1,2009 @@
+{
+  "actual_source_finite_matter_theorems": {
+    "admissible_sectors": [
+      {
+        "component_mask": 227,
+        "dimension": 15,
+        "four_anomaly_forms": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occupation_masks": [
+          1,
+          2,
+          4,
+          7,
+          8,
+          11,
+          13,
+          14,
+          16,
+          19,
+          21,
+          22,
+          25,
+          26,
+          28
+        ],
+        "odd_auxiliary_degree": true,
+        "pure_color_cubic": 0,
+        "weak_doublet_count": 4
+      },
+      {
+        "component_mask": 796,
+        "dimension": 15,
+        "four_anomaly_forms": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occupation_masks": [
+          3,
+          5,
+          6,
+          9,
+          10,
+          12,
+          15,
+          17,
+          18,
+          20,
+          23,
+          24,
+          27,
+          29,
+          30
+        ],
+        "odd_auxiliary_degree": false,
+        "pure_color_cubic": 0,
+        "weak_doublet_count": 4
+      }
+    ],
+    "classification": "conditional actual-current instance of the finite exterior selection",
+    "components": [
+      {
+        "charge": -2,
+        "color_dimension": 3,
+        "conjugate": 8,
+        "degree": [
+          1,
+          0
+        ],
+        "dimension": 3,
+        "four_anomaly_forms": [
+          -6,
+          -2,
+          0,
+          -24
+        ],
+        "index": 0,
+        "is_colored": true,
+        "is_doublet": false,
+        "occupation_masks": [
+          1,
+          2,
+          4
+        ],
+        "odd": true,
+        "pure_color_cubic": 1,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": 3,
+        "color_dimension": 1,
+        "conjugate": 9,
+        "degree": [
+          0,
+          1
+        ],
+        "dimension": 2,
+        "four_anomaly_forms": [
+          6,
+          0,
+          3,
+          54
+        ],
+        "index": 1,
+        "is_colored": false,
+        "is_doublet": true,
+        "occupation_masks": [
+          8,
+          16
+        ],
+        "odd": true,
+        "pure_color_cubic": 0,
+        "weak_dimension": 2,
+        "weak_doublet_count": 1
+      },
+      {
+        "charge": -4,
+        "color_dimension": 3,
+        "conjugate": 5,
+        "degree": [
+          2,
+          0
+        ],
+        "dimension": 3,
+        "four_anomaly_forms": [
+          -12,
+          -4,
+          0,
+          -192
+        ],
+        "index": 2,
+        "is_colored": true,
+        "is_doublet": false,
+        "occupation_masks": [
+          3,
+          5,
+          6
+        ],
+        "odd": false,
+        "pure_color_cubic": -1,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": 1,
+        "color_dimension": 3,
+        "conjugate": 6,
+        "degree": [
+          1,
+          1
+        ],
+        "dimension": 6,
+        "four_anomaly_forms": [
+          6,
+          2,
+          3,
+          6
+        ],
+        "index": 3,
+        "is_colored": true,
+        "is_doublet": true,
+        "occupation_masks": [
+          9,
+          10,
+          12,
+          17,
+          18,
+          20
+        ],
+        "odd": false,
+        "pure_color_cubic": 2,
+        "weak_dimension": 2,
+        "weak_doublet_count": 3
+      },
+      {
+        "charge": 6,
+        "color_dimension": 1,
+        "conjugate": 7,
+        "degree": [
+          0,
+          2
+        ],
+        "dimension": 1,
+        "four_anomaly_forms": [
+          6,
+          0,
+          0,
+          216
+        ],
+        "index": 4,
+        "is_colored": false,
+        "is_doublet": false,
+        "occupation_masks": [
+          24
+        ],
+        "odd": false,
+        "pure_color_cubic": 0,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": 4,
+        "color_dimension": 3,
+        "conjugate": 2,
+        "degree": [
+          1,
+          2
+        ],
+        "dimension": 3,
+        "four_anomaly_forms": [
+          12,
+          4,
+          0,
+          192
+        ],
+        "index": 5,
+        "is_colored": true,
+        "is_doublet": false,
+        "occupation_masks": [
+          25,
+          26,
+          28
+        ],
+        "odd": true,
+        "pure_color_cubic": 1,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": -1,
+        "color_dimension": 3,
+        "conjugate": 3,
+        "degree": [
+          2,
+          1
+        ],
+        "dimension": 6,
+        "four_anomaly_forms": [
+          -6,
+          -2,
+          -3,
+          -6
+        ],
+        "index": 6,
+        "is_colored": true,
+        "is_doublet": true,
+        "occupation_masks": [
+          11,
+          13,
+          14,
+          19,
+          21,
+          22
+        ],
+        "odd": true,
+        "pure_color_cubic": -2,
+        "weak_dimension": 2,
+        "weak_doublet_count": 3
+      },
+      {
+        "charge": -6,
+        "color_dimension": 1,
+        "conjugate": 4,
+        "degree": [
+          3,
+          0
+        ],
+        "dimension": 1,
+        "four_anomaly_forms": [
+          -6,
+          0,
+          0,
+          -216
+        ],
+        "index": 7,
+        "is_colored": false,
+        "is_doublet": false,
+        "occupation_masks": [
+          7
+        ],
+        "odd": true,
+        "pure_color_cubic": 0,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": 2,
+        "color_dimension": 3,
+        "conjugate": 0,
+        "degree": [
+          2,
+          2
+        ],
+        "dimension": 3,
+        "four_anomaly_forms": [
+          6,
+          2,
+          0,
+          24
+        ],
+        "index": 8,
+        "is_colored": true,
+        "is_doublet": false,
+        "occupation_masks": [
+          27,
+          29,
+          30
+        ],
+        "odd": false,
+        "pure_color_cubic": -1,
+        "weak_dimension": 1,
+        "weak_doublet_count": 0
+      },
+      {
+        "charge": -3,
+        "color_dimension": 1,
+        "conjugate": 1,
+        "degree": [
+          3,
+          1
+        ],
+        "dimension": 2,
+        "four_anomaly_forms": [
+          -6,
+          0,
+          -3,
+          -54
+        ],
+        "index": 9,
+        "is_colored": false,
+        "is_doublet": true,
+        "occupation_masks": [
+          15,
+          23
+        ],
+        "odd": false,
+        "pure_color_cubic": 0,
+        "weak_dimension": 2,
+        "weak_doublet_count": 1
+      }
+    ],
+    "copy_count_constraint_from_anomalies": "none: A(N copies)=N A(one copy)=0",
+    "empirical_mass_inputs": [],
+    "excluded_menu_singlet_masks_retained": [
+      0,
+      31
+    ],
+    "exhaustive_component_subsets": 1024,
+    "finite_theorems": [
+      "Lean/Screen/ExteriorComponentBridge.lean",
+      "Lean/Screen/ExteriorSelection.lean",
+      "Lean/Screen/QuantumMatterIntegration.lean"
+    ],
+    "physical_statistics_or_continuum_anomaly_derivation": false,
+    "singlets_removed_by_anomaly_or_chirality_test": false,
+    "source_current_component_invariance_checks": 120,
+    "supplied_representation": "same-current five-mode spin lift and non-vacuum/non-top exterior component menu",
+    "supplied_selection_criteria": [
+      "nonempty",
+      "chiral",
+      "four finite anomaly forms vanish"
+    ],
+    "three_families_derived": false
+  },
+  "architecture": {
+    "C_seam": [
+      2,
+      3
+    ],
+    "E_seam": [
+      2,
+      10
+    ],
+    "advance_event": "C coin0, raw1, signed current+1",
+    "all_other_raw_records": "reset memory to0; identicallyzero labels retained",
+    "family_action": "gauge identity on an ancillary copy of the native geometric triplet",
+    "memory_states": 5,
+    "new_coherent_Higgs_feedback_is_declared_architecture": true,
+    "old_memory_retained_as_reset_record": true,
+    "ordering": "correct native C/E, update classical memory, apply exp(-i step sigma_x tensor P_memory)",
+    "port_carrier": "unchanged12-port incidence and proper rotations",
+    "rotation": [
+      0,
+      5,
+      6,
+      3,
+      2,
+      11,
+      8,
+      1,
+      9,
+      4,
+      7,
+      10
+    ],
+    "rotation_selection": "lexicographically first order5 native proper rotation with geometric trace(1+sqrt5)/2",
+    "same_kernel_for_all_three_Higgs_channels": true,
+    "seed_port": 1,
+    "seed_selection": "first port moved by the selected rotation",
+    "unchanged_C_E_alone_selects_the_feedback": false
+  },
+  "artifact": {
+    "name": "native_repair_mass_results.npz",
+    "sha256": "a8987bf9c5220175d08d7f1fe8366b9eb5fafc3d334702497ac8d45c27b6636f"
+  },
+  "averaging": {
+    "all_initial_classical_memory_reference_states": true,
+    "centered_memory_contraction": "T eta=p S eta, norm<=p norm(eta)",
+    "correlation_bound": "norm(eta_n)<=p^n norm(eta0)+4 step/(1-p)",
+    "diamond_bound": "[4 p t+4(1+p)t^2]/[N(1-p)]",
+    "independent_records_or_iid_memory_assumed": false,
+    "stationary_product_t1_bound": "52/(11*N)",
+    "t1_bound": "56/(11*N)",
+    "time": "dimensionless coherent model parameter t=N*step"
+  },
+  "empirical_mass_or_coupling_inputs": [],
+  "exact_kernel": {
+    "Y": [
+      [
+        "10446/22621 - 2058*sqrt(5)/22621",
+        "20736*sqrt(5)/113105",
+        "-132*sqrt(5)/113105"
+      ],
+      [
+        "20736*sqrt(5)/113105",
+        "19007*sqrt(5)/226210 + 22465/45242",
+        "1727*sqrt(5)/113105"
+      ],
+      [
+        "-132*sqrt(5)/113105",
+        "1727*sqrt(5)/113105",
+        "1573*sqrt(5)/226210 + 1885/45242"
+      ]
+    ],
+    "determinant": "100224/511709641 - 418176*sqrt(5)/12792741025",
+    "eigenvalues_diagnostic": [
+      0.002064153515042291,
+      0.063659825356949,
+      0.9342760211280086
+    ],
+    "formula": "(1-p)/(1-p^5) sum_k=0..4 p^k U^k P U^(-k)",
+    "native_U": [
+      [
+        "1/2",
+        "1/4 - sqrt(5)/4",
+        "-sqrt(5)/4 - 1/4"
+      ],
+      [
+        "1/4 - sqrt(5)/4",
+        "1/4 + sqrt(5)/4",
+        "-1/2"
+      ],
+      [
+        "1/4 + sqrt(5)/4",
+        "1/2",
+        "-1/4 + sqrt(5)/4"
+      ]
+    ],
+    "native_seed_projector": [
+      [
+        "1/2 - sqrt(5)/10",
+        "sqrt(5)/5",
+        "0"
+      ],
+      [
+        "sqrt(5)/5",
+        "sqrt(5)/10 + 1/2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "ordered_ratios_diagnostic": [
+      1.0,
+      30.840644793633345,
+      452.619446334575
+    ],
+    "p": "1/12",
+    "positive_definite_reason": "positive stationary weights and span(v,Uv,U^2v)=C3",
+    "second_elementary_symmetric": "1392/22621",
+    "stationary_weights": [
+      "20736/22621",
+      "1728/22621",
+      "144/22621",
+      "12/22621",
+      "1/22621"
+    ],
+    "trace": "1",
+    "transition": [
+      [
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "1"
+      ],
+      [
+        "1/12",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1/12",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1/12",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1/12",
+        "0"
+      ]
+    ]
+  },
+  "execution": {
+    "all5_initial_classical_memories_checked": true,
+    "coherent_model_time": 1,
+    "complete_quantum_reference_domain_dimension": 6,
+    "finite_steps": [
+      {
+        "analytic_diamond_bound_all_initial_classical_memories": 0.6363636363636364,
+        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.4454213814451079,
+        "minimum_complete_Choi_eigenvalue_diagnostic": -1.3651417062627951e-15,
+        "step": 0.125,
+        "steps": 8,
+        "superoperator_spectral_difference_diagnostic": 0.02340242694378097,
+        "trace_preservation_defect_diagnostic": 3.1890379126902116e-15
+      },
+      {
+        "analytic_diamond_bound_all_initial_classical_memories": 0.1590909090909091,
+        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.11231727515147497,
+        "minimum_complete_Choi_eigenvalue_diagnostic": -1.908588213913599e-15,
+        "step": 0.03125,
+        "steps": 32,
+        "superoperator_spectral_difference_diagnostic": 0.005901033894397211,
+        "trace_preservation_defect_diagnostic": 5.890821707667675e-15
+      },
+      {
+        "analytic_diamond_bound_all_initial_classical_memories": 0.03977272727272727,
+        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.028139687273037915,
+        "minimum_complete_Choi_eigenvalue_diagnostic": -7.076258585387071e-15,
+        "step": 0.0078125,
+        "steps": 128,
+        "superoperator_spectral_difference_diagnostic": 0.0014784089606410858,
+        "trace_preservation_defect_diagnostic": 4.1893347222292624e-14
+      },
+      {
+        "analytic_diamond_bound_all_initial_classical_memories": 0.009943181818181818,
+        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.007038701153363365,
+        "minimum_complete_Choi_eigenvalue_diagnostic": -4.3174047739375135e-15,
+        "step": 0.001953125,
+        "steps": 512,
+        "superoperator_spectral_difference_diagnostic": 0.0003697993000426108,
+        "trace_preservation_defect_diagnostic": 7.762879192711461e-14
+      }
+    ],
+    "independent_record_sampling_assumed": false
+  },
+  "fixed_basis_readout": {
+    "detector_settings": 9,
+    "error_budget": {
+      "entry_error_upper": 2.264814820189505e-06,
+      "finite_channel_diamond_bound": 2.751634879545732e-10,
+      "finite_channel_entry_allowance": 2.2541392933238638e-06,
+      "finite_time_entry_remainder": 2.483526865641276e-09,
+      "kernel_operator_norm_upper": 1.0,
+      "numerical_allowance_is_outward_or_physical_certificate": false,
+      "numerical_contrast_allowance": 1e-12,
+      "numerical_entry_allowance": 8.192e-09,
+      "stationary_product_initialization_required": true,
+      "steps": 64,
+      "time": 6.103515625e-05
+    },
+    "finite_feedback_steps_per_setting": 64,
+    "fixed_computational_preparations": 3,
+    "inferred_kernel": {
+      "eigenvalue_intervals": [
+        [
+          0.002057359069776191,
+          0.002070947958697328
+        ],
+        [
+          0.06365303090676132,
+          0.06366661979568246
+        ],
+        [
+          0.9342692252521694,
+          0.9342828141410906
+        ]
+      ],
+      "entry_error_upper": 2.264814820189505e-06,
+      "kernel_operator_error_upper": 6.7944444605685146e-06,
+      "ordered_ratio_intervals": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          30.73618081006752,
+          30.945798782031964
+        ],
+        [
+          451.1311939677351,
+          454.11752759460035
+        ]
+      ],
+      "particle_names_or_calibrated_mass_inputs": null,
+      "strictly_positive_kernel_resolved": true,
+      "symmetric_estimator_disagreement_diagnostic": 3.078639565501362e-10
+    },
+    "initial_memory": "exact stationary product pi tensor|0,f><0,f|",
+    "memory_outputs_per_setting": 5,
+    "one_execution_each_setting_feedback_steps": 576,
+    "pointer_order": [
+      "plus",
+      "minus",
+      "orthogonal_complement"
+    ],
+    "pointer_outcomes_per_memory": 3,
+    "scope": {
+      "all_final_memory_and_pointer_outcomes_retained": true,
+      "analytic_record_laws_not_a_physical_shot_campaign": true,
+      "effective_kernel_eigenvalues_are_physical_pole_masses": false,
+      "forward_evolution_uses_averaged_kernel_exponential": false,
+      "ideal_Pauli_detector_and_stationary_preparation_supplied": true,
+      "source_kernel_or_poles_in_preparation_or_detector": false
+    },
+    "settings_order": "3*f+g; input|0,f>, PauliY on|0,f> and|1,g>"
+  },
+  "native_H2_domain_control": {
+    "averaged_H2_coefficient_constraint_rank": 2,
+    "classification": "exact full-complement correlation-cost attachment control",
+    "complete_binary_native_total_load_four_rows": 10626,
+    "compression_evolution_second_derivative_defect": "-G^-1 L, L=F^*H^2F-(F^*HF)G^-1(F^*HF)",
+    "costs": [
+      {
+        "local_costs": [
+          {
+            "compressed_diagonal_exact": [
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32"
+            ],
+            "matching_choice": 0,
+            "raw_syndrome_variances_exact": [
+              "5/1536",
+              "17/3072",
+              "19/1536",
+              "17/1536",
+              "31/3072",
+              "7/768"
+            ]
+          },
+          {
+            "compressed_diagonal_exact": [
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32",
+              "9/32"
+            ],
+            "matching_choice": 1,
+            "raw_syndrome_variances_exact": [
+              "13/1536",
+              "19/3072",
+              "7/1536",
+              "7/768",
+              "25/3072",
+              "23/1536"
+            ]
+          }
+        ],
+        "opposite_matching_pair": [
+          {
+            "complete_native_leakage_rank": 6,
+            "complete_native_leakage_squared_frobenius": "79/768",
+            "first_native_moment_exact": [
+              [
+                "9/80",
+                "-9/320",
+                "-9/320",
+                "-9/320",
+                "9/320",
+                "9/320"
+              ],
+              [
+                "-9/320",
+                "9/80",
+                "-9/320",
+                "-9/320",
+                "-9/320",
+                "9/160"
+              ],
+              [
+                "-9/320",
+                "-9/320",
+                "9/80",
+                "-9/320",
+                "-9/160",
+                "0"
+              ],
+              [
+                "-9/320",
+                "-9/320",
+                "-9/320",
+                "9/80",
+                "0",
+                "-9/320"
+              ],
+              [
+                "9/320",
+                "-9/320",
+                "-9/160",
+                "0",
+                "9/80",
+                "-9/320"
+              ],
+              [
+                "9/320",
+                "9/160",
+                "0",
+                "-9/320",
+                "-9/320",
+                "9/80"
+              ]
+            ],
+            "matching_syndrome_leakage_squared_frobenius": "79/768",
+            "remaining_color_leakage_rank": 0,
+            "remaining_color_leakage_squared_frobenius": "0",
+            "right_cost_sign": 1,
+            "second_native_moment_exact": [
+              [
+                "2041/30720",
+                "-341/20480",
+                "-169/10240",
+                "-17/1024",
+                "169/10240",
+                "205/12288"
+              ],
+              [
+                "-341/20480",
+                "409/6144",
+                "-1033/61440",
+                "-169/10240",
+                "-17/1024",
+                "339/10240"
+              ],
+              [
+                "-169/10240",
+                "-1033/61440",
+                "273/4096",
+                "-205/12288",
+                "-679/20480",
+                "0"
+              ],
+              [
+                "-17/1024",
+                "-169/10240",
+                "-205/12288",
+                "341/5120",
+                "0",
+                "-169/10240"
+              ],
+              [
+                "169/10240",
+                "-17/1024",
+                "-679/20480",
+                "0",
+                "409/6144",
+                "-17/1024"
+              ],
+              [
+                "205/12288",
+                "339/10240",
+                "0",
+                "-169/10240",
+                "-17/1024",
+                "341/5120"
+              ]
+            ]
+          },
+          {
+            "complete_native_leakage_rank": 6,
+            "complete_native_leakage_squared_frobenius": "79/768",
+            "first_native_moment_exact": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ],
+            "matching_syndrome_leakage_squared_frobenius": "79/768",
+            "remaining_color_leakage_rank": 0,
+            "remaining_color_leakage_squared_frobenius": "0",
+            "right_cost_sign": -1,
+            "second_native_moment_exact": [
+              [
+                "97/30720",
+                "-17/20480",
+                "-7/10240",
+                "-1/1280",
+                "7/10240",
+                "53/61440"
+              ],
+              [
+                "-17/20480",
+                "101/30720",
+                "-61/61440",
+                "-7/10240",
+                "-1/1280",
+                "3/2048"
+              ],
+              [
+                "-7/10240",
+                "-61/61440",
+                "69/20480",
+                "-53/61440",
+                "-31/20480",
+                "0"
+              ],
+              [
+                "-1/1280",
+                "-7/10240",
+                "-53/61440",
+                "17/5120",
+                "0",
+                "-7/10240"
+              ],
+              [
+                "7/10240",
+                "-1/1280",
+                "-31/20480",
+                "0",
+                "101/30720",
+                "-1/1280"
+              ],
+              [
+                "53/61440",
+                "3/2048",
+                "0",
+                "-7/10240",
+                "-1/1280",
+                "17/5120"
+              ]
+            ]
+          }
+        ],
+        "seam_weight_power": 1
+      },
+      {
+        "local_costs": [
+          {
+            "compressed_diagonal_exact": [
+              "29/768",
+              "7/192",
+              "19/512",
+              "19/512",
+              "19/512",
+              "59/1536"
+            ],
+            "matching_choice": 0,
+            "raw_syndrome_variances_exact": [
+              "13/1179648",
+              "425/9437184",
+              "113/1572864",
+              "115/1048576",
+              "145/1572864",
+              "941/9437184"
+            ]
+          },
+          {
+            "compressed_diagonal_exact": [
+              "7/192",
+              "7/192",
+              "29/768",
+              "29/768",
+              "29/768",
+              "29/768"
+            ],
+            "matching_choice": 1,
+            "raw_syndrome_variances_exact": [
+              "199/4718592",
+              "151/4718592",
+              "323/9437184",
+              "833/9437184",
+              "803/9437184",
+              "697/4718592"
+            ]
+          }
+        ],
+        "opposite_matching_pair": [
+          {
+            "complete_native_leakage_rank": 6,
+            "complete_native_leakage_squared_frobenius": "20353/23592960",
+            "first_native_moment_exact": [
+              [
+                "457/30720",
+                "-229/61440",
+                "-227/61440",
+                "-229/61440",
+                "227/61440",
+                "229/61440"
+              ],
+              [
+                "-229/61440",
+                "917/61440",
+                "-29/7680",
+                "-227/61440",
+                "-229/61440",
+                "19/2560"
+              ],
+              [
+                "-227/61440",
+                "-29/7680",
+                "917/61440",
+                "-229/61440",
+                "-19/2560",
+                "0"
+              ],
+              [
+                "-229/61440",
+                "-227/61440",
+                "-229/61440",
+                "917/61440",
+                "0",
+                "-227/61440"
+              ],
+              [
+                "227/61440",
+                "-229/61440",
+                "-19/2560",
+                "0",
+                "61/4096",
+                "-229/61440"
+              ],
+              [
+                "229/61440",
+                "19/2560",
+                "0",
+                "-227/61440",
+                "-229/61440",
+                "61/4096"
+              ]
+            ],
+            "matching_syndrome_leakage_squared_frobenius": "1351/1572864",
+            "remaining_color_leakage_rank": 6,
+            "remaining_color_leakage_squared_frobenius": "11/2949120",
+            "right_cost_sign": 1,
+            "second_native_moment_exact": [
+              [
+                "711841/629145600",
+                "-67057/235929600",
+                "-261949/943718400",
+                "-178483/629145600",
+                "261949/943718400",
+                "7497/26214400"
+              ],
+              [
+                "-67057/235929600",
+                "2150609/1887436800",
+                "-30827/104857600",
+                "-87311/314572800",
+                "-535433/1887436800",
+                "1059283/1887436800"
+              ],
+              [
+                "-261949/943718400",
+                "-30827/104857600",
+                "3367/2949120",
+                "-67469/235929600",
+                "-530113/943718400",
+                "0"
+              ],
+              [
+                "-178483/629145600",
+                "-87311/314572800",
+                "-67469/235929600",
+                "430781/377487360",
+                "0",
+                "-87319/314572800"
+              ],
+              [
+                "261949/943718400",
+                "-535433/1887436800",
+                "-530113/943718400",
+                "0",
+                "214247/188743680",
+                "-535417/1887436800"
+              ],
+              [
+                "7497/26214400",
+                "1059283/1887436800",
+                "0",
+                "-87319/314572800",
+                "-535417/1887436800",
+                "214583/188743680"
+              ]
+            ]
+          },
+          {
+            "complete_native_leakage_rank": 6,
+            "complete_native_leakage_squared_frobenius": "20369/23592960",
+            "first_native_moment_exact": [
+              [
+                "1/30720",
+                "-1/61440",
+                "1/61440",
+                "-1/61440",
+                "-1/61440",
+                "1/61440"
+              ],
+              [
+                "-1/61440",
+                "1/61440",
+                "0",
+                "1/61440",
+                "-1/61440",
+                "0"
+              ],
+              [
+                "1/61440",
+                "0",
+                "1/61440",
+                "-1/61440",
+                "0",
+                "0"
+              ],
+              [
+                "-1/61440",
+                "1/61440",
+                "-1/61440",
+                "1/61440",
+                "0",
+                "1/61440"
+              ],
+              [
+                "-1/61440",
+                "-1/61440",
+                "0",
+                "0",
+                "-1/61440",
+                "-1/61440"
+              ],
+              [
+                "1/61440",
+                "0",
+                "0",
+                "1/61440",
+                "-1/61440",
+                "-1/61440"
+              ]
+            ],
+            "matching_syndrome_leakage_squared_frobenius": "1351/1572864",
+            "remaining_color_leakage_rank": 6,
+            "remaining_color_leakage_squared_frobenius": "13/2949120",
+            "right_cost_sign": -1,
+            "second_native_moment_exact": [
+              [
+                "15649/629145600",
+                "-1493/235929600",
+                "-4301/943718400",
+                "-3667/629145600",
+                "4301/943718400",
+                "213/26214400"
+              ],
+              [
+                "-1493/235929600",
+                "48241/1887436800",
+                "-923/104857600",
+                "-1439/314572800",
+                "-11017/1887436800",
+                "19667/1887436800"
+              ],
+              [
+                "-4301/943718400",
+                "-923/104857600",
+                "329/11796480",
+                "-1921/235929600",
+                "-10337/943718400",
+                "0"
+              ],
+              [
+                "-3667/629145600",
+                "-1439/314572800",
+                "-1921/235929600",
+                "10333/377487360",
+                "0",
+                "-477/104857600"
+              ],
+              [
+                "4301/943718400",
+                "-11017/1887436800",
+                "-10337/943718400",
+                "0",
+                "4951/188743680",
+                "-11033/1887436800"
+              ],
+              [
+                "213/26214400",
+                "19667/1887436800",
+                "0",
+                "-477/104857600",
+                "-11033/1887436800",
+                "5287/188743680"
+              ]
+            ]
+          }
+        ],
+        "seam_weight_power": 2
+      }
+    ],
+    "diagonal_invariant_binary_load_two_two_rows": 4356,
+    "domain": "binary 24-port total-load-four configurations; diagonal local cost preserves binary load-(2,2)",
+    "input_frame_exact": [
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "1/5",
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/20",
+        "1/20"
+      ],
+      [
+        "-1/20",
+        "1/5",
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/10"
+      ],
+      [
+        "-1/20",
+        "-1/20",
+        "1/5",
+        "-1/20",
+        "-1/10",
+        "0"
+      ],
+      [
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/5",
+        "0",
+        "-1/20"
+      ],
+      [
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/10",
+        "-1/10"
+      ],
+      [
+        "-1/5",
+        "1/20",
+        "1/20",
+        "1/20",
+        "-1/20",
+        "-1/20"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "1/20",
+        "-1/20",
+        "-1/10",
+        "0",
+        "1/5",
+        "-1/20"
+      ],
+      [
+        "1/20",
+        "-1/10",
+        "-1/20",
+        "1/10",
+        "-1/20",
+        "-1/20"
+      ],
+      [
+        "1/20",
+        "1/10",
+        "0",
+        "-1/20",
+        "-1/20",
+        "1/5"
+      ],
+      [
+        "1/20",
+        "0",
+        "1/10",
+        "-1/10",
+        "-1/20",
+        "-1/20"
+      ],
+      [
+        "1/20",
+        "-1/5",
+        "1/20",
+        "1/20",
+        "1/20",
+        "-1/10"
+      ],
+      [
+        "-1/20",
+        "1/20",
+        "1/10",
+        "0",
+        "-1/5",
+        "1/20"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1/20",
+        "-1/20",
+        "-1/10",
+        "1/20",
+        "1/10"
+      ],
+      [
+        "1/10",
+        "1/20",
+        "-1/10",
+        "-1/20",
+        "1/20",
+        "-1/20"
+      ],
+      [
+        "-1/10",
+        "1/20",
+        "0",
+        "1/10",
+        "1/20",
+        "0"
+      ],
+      [
+        "1/20",
+        "1/20",
+        "-1/5",
+        "1/20",
+        "1/10",
+        "0"
+      ],
+      [
+        "-1/20",
+        "1/10",
+        "1/20",
+        "-1/10",
+        "1/20",
+        "1/20"
+      ],
+      [
+        "0",
+        "-1/20",
+        "1/20",
+        "1/10",
+        "-1/20",
+        "-1/10"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "-1/10",
+        "0",
+        "1/20",
+        "-1/20",
+        "-1/10",
+        "-1/20"
+      ],
+      [
+        "1/10",
+        "-1/10",
+        "1/20",
+        "0",
+        "0",
+        "1/10"
+      ],
+      [
+        "1/20",
+        "1/20",
+        "1/20",
+        "-1/5",
+        "0",
+        "1/20"
+      ],
+      [
+        "-1/20",
+        "-1/10",
+        "0",
+        "1/20",
+        "1/20",
+        "-1/5"
+      ],
+      [
+        "-1/10",
+        "-1/20",
+        "1/10",
+        "1/20",
+        "-1/20",
+        "1/20"
+      ],
+      [
+        "1/10",
+        "0",
+        "-1/20",
+        "1/20",
+        "1/10",
+        "1/20"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1/10",
+        "-1/10",
+        "1/20",
+        "-1/10",
+        "1/20"
+      ],
+      [
+        "1/20",
+        "1/20",
+        "1/20",
+        "1/20",
+        "-1/10",
+        "1/10"
+      ],
+      [
+        "-1/20",
+        "0",
+        "-1/10",
+        "1/10",
+        "1/20",
+        "1/20"
+      ],
+      [
+        "1/10",
+        "-1/20",
+        "0",
+        "-1/10",
+        "-1/20",
+        "0"
+      ],
+      [
+        "-1/10",
+        "1/10",
+        "-1/20",
+        "0",
+        "0",
+        "-1/10"
+      ],
+      [
+        "0",
+        "-1/10",
+        "1/10",
+        "-1/20",
+        "1/10",
+        "-1/20"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "input_metric_exact": [
+      [
+        "1/5",
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/20",
+        "1/20"
+      ],
+      [
+        "-1/20",
+        "1/5",
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/10"
+      ],
+      [
+        "-1/20",
+        "-1/20",
+        "1/5",
+        "-1/20",
+        "-1/10",
+        "0"
+      ],
+      [
+        "-1/20",
+        "-1/20",
+        "-1/20",
+        "1/5",
+        "0",
+        "-1/20"
+      ],
+      [
+        "1/20",
+        "-1/20",
+        "-1/10",
+        "0",
+        "1/5",
+        "-1/20"
+      ],
+      [
+        "1/20",
+        "1/10",
+        "0",
+        "-1/20",
+        "-1/20",
+        "1/5"
+      ]
+    ],
+    "native_input_columns": 6,
+    "nonzero_averaged_H2_combination_preserves_M6": false,
+    "raw_color_complement_dimension": 30,
+    "retained_zero_binary_rows_in_other_load_sectors": 6270,
+    "scope": {
+      "Higgs_family_coupling_or_physical_particle_mass_derived": false,
+      "coherent_cost_is_an_additional_architecture_input": true,
+      "compiled_source_history_executed_here": false,
+      "geometric_current_triplets_identified_as_families": false,
+      "measured_mass_or_programmed_pole_input": false,
+      "raw_complement_removed_or_postselected": false
+    }
+  },
+  "record_channel": {
+    "complete_instrument_branches": 640,
+    "finite_step_is_unitary_on_marginal_quantum_system": false,
+    "joint_memory_Nambu_family_dimension": 30,
+    "old_memory_labels": 5,
+    "postselection": false,
+    "raw_C_E_labels": 128,
+    "stationary_memory_product_required_for_zero_transient_bound": true,
+    "unread_memory_dephased_by_explicit_old_memory_record": true
+  },
+  "same_current_Higgs_and_heldout_test": {
+    "native_family_band_theorem_connection": {
+      "V_Vtranspose_equals_Lean_P3_exact": true,
+      "V_transpose_V_identity_exact": true,
+      "actual_family_rotation_kernel_order": 1,
+      "actual_rotation_intertwining_count": 60,
+      "adjacency_V_equals_sqrt5_V_exact": true,
+      "coefficient_isometry_is_a_native_load_two_state_embedding": false,
+      "faithful_in_window_cost_order_exact": [
+        "5-sqrt(5)",
+        "6",
+        "5+sqrt(5)"
+      ],
+      "finite_native_filter_history_for_all12_coefficient_inputs_executed_here": false,
+      "frame_metric_exact": "2*sqrt(5) + 10",
+      "full_coefficient_adjacency_eigenvalues_exact": [
+        "5",
+        "sqrt(5)",
+        "-sqrt(5)",
+        "-1"
+      ],
+      "full_coefficient_band_dimensions_retained": [
+        1,
+        3,
+        3,
+        5
+      ],
+      "native_to_Lean_chart": [
+        0,
+        6,
+        5,
+        11,
+        8,
+        4,
+        7,
+        3,
+        9,
+        10,
+        1,
+        2
+      ],
+      "native_to_family_manifest_chart": [
+        0,
+        2,
+        1,
+        3,
+        11,
+        10,
+        9,
+        8,
+        5,
+        7,
+        4,
+        6
+      ],
+      "normalized_coefficient_isometry12_by3_exact": [
+        [
+          "-1/sqrt(2*sqrt(5) + 10)",
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)",
+          "0"
+        ],
+        [
+          "1/sqrt(2*sqrt(5) + 10)",
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)",
+          "0"
+        ],
+        [
+          "-1/sqrt(2*sqrt(5) + 10)",
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)",
+          "0"
+        ],
+        [
+          "1/sqrt(2*sqrt(5) + 10)",
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)",
+          "0"
+        ],
+        [
+          "0",
+          "-1/sqrt(2*sqrt(5) + 10)",
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "0",
+          "1/sqrt(2*sqrt(5) + 10)",
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "0",
+          "-1/sqrt(2*sqrt(5) + 10)",
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "0",
+          "1/sqrt(2*sqrt(5) + 10)",
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)",
+          "0",
+          "-1/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "(1/2 + sqrt(5)/2)/sqrt(2*sqrt(5) + 10)",
+          "0",
+          "1/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)",
+          "0",
+          "-1/sqrt(2*sqrt(5) + 10)"
+        ],
+        [
+          "(-sqrt(5)/2 - 1/2)/sqrt(2*sqrt(5) + 10)",
+          "0",
+          "1/sqrt(2*sqrt(5) + 10)"
+        ]
+      ],
+      "physical_family_number_forced_by_gauge_current_alone": false,
+      "selected_band_tensor_M15_dimension": 45,
+      "separate_neutral_family_copy_is_the_colored_current_triplet": false,
+      "single_band_physical_realization_and_operational_selection_rule_are_architecture": true,
+      "theorem_connections": [
+        "OPH.A5FamilyBand.band3_eigen",
+        "OPH.A5FamilyBand.band_equivariant",
+        "OPH.A5FamilyBand.resolution_complete",
+        "OPH.A5FamilyBand.family_band_selected",
+        "SMThreeFamilyPremiseData.band_realized",
+        "SMThreeFamilyPremiseData.band_faithful",
+        "SMThreeFamilyPremiseData.band_window",
+        "SMThreeFamilyPremiseData.band_minimal"
+      ],
+      "unfiltered_coefficient_tensor_M15_dimension": 180
+    },
+    "same_current_Higgs_attachment": {
+      "all_three_channel_coefficients_are_the_identical_source_Y": true,
+      "canonical_family_kinetic_matrix": "I3 on every internal and physical spin component",
+      "channels": [
+        {
+          "K45_singular_multiplicity_per_family": 6,
+          "channel": "up",
+          "same_Y": true
+        },
+        {
+          "K45_singular_multiplicity_per_family": 2,
+          "channel": "charged_lepton",
+          "same_Y": true
+        },
+        {
+          "K45_singular_multiplicity_per_family": 6,
+          "channel": "down",
+          "same_Y": true
+        }
+      ],
+      "complete_Higgs_component_identities_exact": 72,
+      "current_count": 12,
+      "equal_mass_degeneracy_across_up_down_and_charged_lepton_channels": true,
+      "every_positive_family_mass_has_K45_singular_multiplicity": 14,
+      "family_gauge_action": "identity on a separately encoded neutral family factor",
+      "independent_species_strengths_or_empirical_yukawas_inserted": false,
+      "laboratory_particle_poles_identified": false,
+      "neutral_Higgs_component_norm_in_model_units": "1",
+      "neutral_K45_rank": 42,
+      "neutral_K45_sparse_sha256": "78737e05225c998092ee5503d8c4c733536e30a91727e4b79ddb4113513f46c4",
+      "neutral_K45_squared_identity": "diag(14 unit entries, one zero) tensor Y^2, in the actual internal ordering",
+      "neutral_K45_zero_dimension": 3,
+      "physical_Delta90_antisymmetric_exact": true,
+      "physical_Higgs_scale_or_clock_calibration_derived": false,
+      "physical_family_dimension_three_is_architecture": true,
+      "quantum_gauge_Higgs_loops_or_confinement_computed": false,
+      "quark_charged_current_family_mixing": "I3; identical left singular frames",
+      "same_internal_frame_preserves_all_three_Weyl_kinetic_axes": true,
+      "three_minimal_left_Weyl_neutrinos_remain_massless": true,
+      "weak_CP_commutator_invariant_zero_exact": true
+    },
+    "separate_heldout_comparison": {
+      "all_probabilities_and_both_fivefold_classes_excluded_for_joint_windows": true,
+      "benchmark_determinant_over_e2_cubed_upper_exact": "36333819205752015/370913861752487936",
+      "benchmark_shape_for_unnormalized_ratios": "r*k*(1+r+k)^3/(r+k+r*k)^3",
+      "benchmark_upper_less_than_one_eighth_exact": true,
+      "changing_common_Higgs_scale_or_clock_changes_ratios": false,
+      "comparison_only_source": "https://pdg.lbl.gov/2025/download/db2024.pdf",
+      "fixed_source_passes_both_windows": false,
+      "fixed_source_ratio_intersects_each_window": [
+        false,
+        false
+      ],
+      "measured_values_used_to_generate_family_operator": false,
+      "other_interacting_repair_laws_excluded": false,
+      "retained_broad_charged_lepton_ratio_windows": [
+        [
+          "206",
+          "207"
+        ],
+        [
+          "3470",
+          "3485"
+        ]
+      ],
+      "windows_are_experimental_standard_uncertainties": false
+    },
+    "source_spectrum": {
+      "ascending_ratios_after_one_diagnostic": [
+        [
+          30.8406447788644,
+          30.840644794289926
+        ],
+        [
+          452.6194461245682,
+          452.6194463443287
+        ]
+      ],
+      "ascending_ratios_after_one_exact": [
+        [
+          "15914956339/516038379",
+          "63659825357/2064153515"
+        ],
+        [
+          "77856335094/172012793",
+          "934276021129/2064153515"
+        ]
+      ],
+      "characteristic_polynomial": "x^3-x^2+e2*x-determinant",
+      "determinant_exact": "100224/511709641 - 418176*sqrt(5)/12792741025",
+      "e2_exact": "1392/22621",
+      "empirical_inputs": [],
+      "positive_eigenvalue_intervals_exact": [
+        [
+          "412830703/200000000000",
+          "516038379/250000000000"
+        ],
+        [
+          "15914956339/250000000000",
+          "63659825357/1000000000000"
+        ],
+        [
+          "116784502641/125000000000",
+          "934276021129/1000000000000"
+        ]
+      ],
+      "sqrt5_rational_interval": [
+        "2236067977499789696409173668731/1000000000000000000000000000000",
+        "559016994374947424102293417183/250000000000000000000000000000"
+      ],
+      "three_sign_changes_exhaust_the_degree_three_polynomial": true,
+      "trace_exact": "1"
+    },
+    "whole_probability_shape": {
+      "Cauchy_Binet_lower_bound": "det(Y)>=((10-2*sqrt(5))/25)*p^3*T/S^3",
+      "T_polynomial": "p**6 + p**5 + 2*p**4 + 2*p**3 + 2*p**2 + p + 1",
+      "actual_source_pair_overlap_squared_exact": "1/5",
+      "actual_source_triple_Gram_determinant_values_exact": [
+        "2/5 - 2*sqrt(5)/25",
+        "2*sqrt(5)/25 + 2/5"
+      ],
+      "arbitrary_finite_step_CQ_channel_resonances_excluded": false,
+      "determinant_over_e2_cubed_lower_exact": "25/32 - 5*sqrt(5)/32",
+      "exclusion_subject": "positive eigenvalue ratios of stationary averaged Yp with the declared canonical kinetic and Higgs attachment",
+      "fivefold_classes_covered": [
+        "72 degrees",
+        "144 degrees"
+      ],
+      "lower_bound_exceeds_one_eighth_exact": true,
+      "nonnegative_remainder_identity": "T-(1+p^2)^3=p*(1-p)+p^3*(2-p+p^2)>=0",
+      "normalized_weights": "p^k/S, k=0..4, S=1+p+p^2+p^3+p^4",
+      "p_equals_one_is_a_uniform_kernel_endpoint_not_a_reset_mixing_claim": true,
+      "probability_domain": "0<p<=1; p=0 has rank one and two exact zero masses",
+      "scale_invariant_shape": "det(Y)*tr(Y)^3/e2(Y)^3; source tr(Y)=1",
+      "second_symmetric_polynomial": "e2=4*p*(1+p^2)/(5*S)",
+      "source_Y_trace_exact": "1",
+      "source_inputs_or_probability_selected_by_empirical_comparison": false
+    }
+  },
+  "schema": "oph.native_repair_mass.v1",
+  "scope": {
+    "absolute_mass_scale_derived": false,
+    "all_three_species_coefficients_separately_fitted": false,
+    "complete_effective_CQ_instrument_executed": true,
+    "finite_native512_row_feedback_history_compiled_here": false,
+    "fixed_repair_law_determines_its_dimensionless_family_kernel": true,
+    "measured_mass_spectrum_claimed": false,
+    "physical_fermion_statistics_or_spin_derived_by_memory": false,
+    "simulated_record_laws_are_finite_shot_experimental_data": false
+  },
+  "source_bindings": {
+    "Lean/QFT/SourceRecurrenceClock.lean": "0670b5a254adde9cb3cb2bdadaf13149b462323a9c753bcaf45757c26cf50c33",
+    "Lean/Screen/A5FamilyBand.lean": "63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6",
+    "Lean/Screen/A5PortAction.lean": "5efd9ea0ca2d12f8beb3f20111e80d748984ec0cbef484dd3d7cbb766954f9cc",
+    "Lean/Screen/A5PortModule.lean": "6bd28a569e34b9214085ed9fe8d0cbfb4cbaebf6e0d73c9626e03a28af768f17",
+    "Lean/Screen/A5ResponseWordAlgebra.lean": "5575c8e696c6d0b672daa349c650f4d028194b025f1318a6b27b7526286fb0df",
+    "Lean/Screen/ExteriorComponentBridge.lean": "f33a18a2ab340e4d9862758937c4db8c6abe689fb37a4aa97c4b47e7c624726e",
+    "Lean/Screen/ExteriorSelection.lean": "464f9606ef77cf911e1ea86544e4cca98056b4f67ebc7eba9aff8b03dab8c531",
+    "Lean/Screen/FermionSectorAssembly.lean": "b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4",
+    "Lean/Screen/PortFrameGram.lean": "d1cebe56450e7586eed730b52068753ebca3a6563da1453679e87fa7c7b653e3",
+    "Lean/Screen/PrimitivePortFrameQuotient.lean": "1edb876e3ccfe61dd2e98473e0398391aa28166b2e330742ae3f034db05e3cfd",
+    "Lean/Screen/QuantumMatterIntegration.lean": "9d2c3ab2519e62b7e7867872ebebfd879e198c30b141c59eb93982c7c4b217c1",
+    "Lean/Screen/SMStructureAdequacySurface.lean": "6e4907aa2c1fcb6c3a92604f172e4deb7be15e6d75c511c5d3810e824f589bde",
+    "Lean/Screen/WeylYukawaConventions.lean": "ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7",
+    "Lean/SourceLaw/ReflectionPositivity.lean": "e7fc6361cfbc57fb53fdfe24b188bda4615896a234cb4f0e849b222204a4e11e",
+    "Lean/Thermodynamics/CapFirstLaw.lean": "17e8be6e744552b4650efb58932e9a2ed7c7c545a962e17905dbbc70c2de9447",
+    "Lean/Thermodynamics/FiniteConditionalRepair.lean": "6d1c8c2db46bba7bcb685d9f11f682ad4f96d01eff528d6f942e0f6666d87ce2",
+    "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
+    "Lean/Thermodynamics/GreenKubo.lean": "9fa2770f728c0525a9bbc62675b67984403eb9b7407307d4d40995ba181cc2ca",
+    "Lean/Thermodynamics/NativeRepairFourCycle.lean": "61aa35e58e1409e1c5c37e0d7a91091709cb691dca3e00f3ac2dfc84f606be8d",
+    "Lean/Time/SourceCountClockEnclosure.lean": "61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c",
+    "code/a5_closure/manifests/echosahedral_federation_reference.json": "12ec97358ade25f919f9981f1cd7c99c2b27aaaaa9ce14bd2320d73a9c1bfc14",
+    "code/m1_source_realization/model.py": "c0089ba890db76ca9dc055c29800a328a3b6800dbb000247f38621288c5c03b2",
+    "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
+    "code/source_selection_model/DERIVATION.md": "e53df3ae59398a6abe2ad3b85f7871ff7ea728e72bd9de073af8bf398a86dcbe",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/federation.py": "29b0bb7a1e4d8a2077f16dbb508b7e08e794a7191a4a9f51e6c1b471e726ca1d",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/__init__.py": "7f72d89ca6a367344b39089fbf24163e3eb6c742476ee5db3c813b12ff73617e",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/claims.py": "962a829a454f8909773d818b96b656fc971aa9d1579cc4c53bbe6cde3cabfe14",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/constants/__init__.py": "bc732866538c149253d0e72723ef8891e5ed68fd676b46dfaec237875540f6aa",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/constants/oph_pixel.py": "9ab43098d6648010b6bd17cbfa7382d4355619a92fe2d32d3339d79af615ec9f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/__init__.py": "56d3d5e684d53b61f38b24f32111728866fc5dc0151495dece8702d3c591d161",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/array_geometry.py": "e9b0d0c20c8598cb6e49a4965d892c8323b513b36a47dbb53b0cd49a6f873cb8",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/echosahedral_dynamics.py": "a20b928552bb51257bcc7b976f513fe227f5f36158b6e3b4786c315477c862da",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/echosahedral_federation.py": "ead1a96812ac1b243bbe2c1d175a368cd23d5c7b29a179e8718a82baf2edeec1",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/graph.py": "533bb11fc2f53600d4f3bfec25c5781ddd2d1b31f41e3fbadbb73a6a219f8667",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/icosahedral.py": "89fac4f2d24bb4d85c4a84624b3c826e99cb717df68060dd23a4b26c6cfe9adc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/patch_state.py": "85b7c4b9fe8b983571ca1944b5871c959e198ac4970c2412e85b195d4f34221f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/patchnet.py": "4664fe5717aac6e1433ab8ec618786cf7fbbd381b421632153ebf9ae78918dc7",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/pixel_scale.py": "0c6ce1b055df4334abba2a8b150905b4bb551e8b7f18fb2674cb6bcbb06963e5",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/screen_microphysics.py": "8fe76b1b9bde24060afa6adcbb51e925865799866d1884490c26e4b172d59cf9",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/core/screen_ports.py": "37b79a8a949fad2d18f17e850533c6ef33581f64c8f1a72dd94e45da93cef68e",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/__init__.py": "0f8ea883cedb9b67cb2c6af038ebdcb9fc332b0a0d62a5ea1c5cc87d0b22794c",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/anneal.py": "ff008ea37005cf667825a8cd8c7b2c5c6a2110523722da5ab089f8422dd366eb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/consensus_certificate.py": "e6d282be435e41269ac8d581997508e5559d558ab8ffdc9e5756e3030cd7fc0f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/kernel_dispatcher.py": "5ecb419adbdd7a341359a8aab13bef3c2feb4490130c20defadc7a196f01e500",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/modular.py": "8978134a5846ad215c7a69205401c479a02019b7902e31bef283f18a6290ef9e",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/positive_geometry.py": "b87cfb52bdc1e1d5762fa65259a026b50072d54d4e1c68bdbcac0159b05bf435",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/repair.py": "fdc6326cdbac39c86e00e9ad314a2d9fd6cf06714a2e06f0470b298177d80949",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/__init__.py": "1875a81eb0bbac4cedfd2c3df77cabe06270b2ce8313e781b1af43174cdc04f3",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/bundle.py": "b84548c3f62187ecc19b64fa11a5dc24915bc1b9a05066b3a6496524c5f61a71",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/cross_repo_artifacts.py": "f026e8653752e5bcb1c703ed253861d3444d7beff2fe572863b09508d7efbff6",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/hashes.py": "e4a7ada049fa1137e2d53c8eadd36a574f03fca25793322906e854d8ef04773f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/particle_input_policy.py": "8d3683c8a3b6d249c484d253e08fd8425899c71a8d69ab5c78ee34780a7e06d3",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/production_envelope.py": "f34f03314efae563a3b42cae6646164354c74e7bf062f5091790a584d08c6d1e",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/evidence/verifier.py": "4997bb27fe34846b9c2a4fff14f8a8b9a6b238f4029e2ec0273f8e1f7de60f45",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/finite_groups.py": "1329f07ef90beb9d4be1efa5cd0cb76e323014670d8e90c8f7945eba54e401f6",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/__init__.py": "ede5295ec9dac5c42571287b5971c61a24647c3c9dee0b8b7187b7f195c9bb54",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/a5_sm_certificate.py": "8d7a99cc1ae093bc570bbb3b1677a028d23b82be23e90de4635a76380bde92f1",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/covariant_overlap.py": "f03127e7314b0be60ba18b0a0b4cc934aa8d314785636258796c68baae374aa9",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/higgs_carrier.py": "c150b9850364a4948995eca273e3571a9808960e840ad9fa361801c2beec5958",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/mar_sieve.py": "0043cc7d784f1be263dca5e3882b3d1698b8b91d75a8f2ba28beee516086a366",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/physical_a5_sm_requirements.py": "6e4b35bdf56d025793973d6dcc15cb34d0e60b5e7e5796926fdf96fa2cd03015",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/repair_projection.py": "e2fdd6165ae39006e3b83c0376137162d423adeabec293ab5c06c6fe0b2b0cec",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/source_to_eft.py": "6414f00bda171fad6e8e6c77295cab106fb163eae9f00a6656e0e89db4f87562",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/gauge/yang_mills_gap.py": "29d4bb3ba2ee6e25365196c48c6e6f96a61aee00325de0acde470a577098bc4c",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/__init__.py": "8e99c23175f57934eecaf9103dabd7b3d20d56ed55fe38174571290b3ef2b815",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/base.py": "8c3e34417a51c60fc2b3a6c7b9611a9ea476d90fd1e7c5e7816604855a90d2b2",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/clock.py": "15434d1fc409eb29d585bc4d5feefd8819279276e082d9ed711de3b598de19bc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/registry.py": "7876a6087be4ca9ef4314625799a165e396f269fffbf51b7f6984805057f434f",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/s3.py": "65d34b9ec87c46a1befeb4a1945e1827fb1987a61493e890bb4b3c9ba384a675",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/groups/z2.py": "a32eb994598592ba9f9b763eee455a1e13720b0a8311a4d46c299794466a3624",
+    "model/__init__.py": "eff7e4cc748c51d89ef0dd1626dbe42a9bd453a2d6933eb26eb96cbc36113078",
+    "model/common_source/__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
+    "model/common_source/chiral_candidate/action.py": "a9872ed067c39981c0b06e7af42cd200e0b700a4b0292ca923e09e504437b933",
+    "model/common_source/chiral_candidate/gaussian_source.py": "d60733661c22d649741b3433db9330e3520d2b7c5d15fb6db79a07e82e49eade",
+    "model/common_source/chiral_candidate/results.json": "f87f5b5b33d7c2aef8c974607f6769b38ec53abe01446db6c44c5cb7eeaaafc5",
+    "model/common_source/experiment.py": "10b9040d1d2f870f6d4a5e72df2848bbc0f55c136be0be3bacd2fbda28ff4ab8",
+    "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
+    "model/common_source/halfline.py": "c53d49de709edeebdbf81781bc1454e2c45ea6715b1d0fcc341fadb313aff126",
+    "model/common_source/mass_response/history.py": "1046f4be64b2ad6498df83b1949ec316449d0ce0d9b57ce4763d96a0ed3a2abb",
+    "model/common_source/mass_response/model.py": "1ffdf1a680763d52d0841636aee3dc05a51a16487a5770b2e7208dcb3dbdaacf",
+    "model/common_source/native_code_transport.py": "c068671558195838c5c93271dd47756630feb36a9c203cc9015bf3c4b066938a",
+    "model/common_source/native_gauge_object.py": "ddbd9ced23e85e9755396dcc917eb744d62e98f64b89535dfff0066e53782733",
+    "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
+    "model/common_source/native_matter_attachment.py": "e09be6c457cd29aaa31e03f6109b52ccd93b592833daab8ec0b3bb9648163339",
+    "model/common_source/native_matter_theorems.py": "ce7c9181b303565b9997e767a37d85981f299a9d5db2b2ad6ed8d840d16b48bd",
+    "model/common_source/native_repair_mass.py": "9caa515abcdc636ab41c0caa088808f5813b55644916f534e5ff81c351a91031",
+    "model/common_source/native_repair_mass_attachment.py": "9fa28ff50463cdc613dfd28e38a70c2743cd6965f66a875bbd228c177c8d12ce",
+    "model/common_source/native_repair_mass_h2.py": "b1daa48d072d7fcd3bab9315c79f99091795917f1c84cff90e52b5032e1313be",
+    "model/common_source/native_repair_mass_readout.py": "86766746f62e57a4483b40f87e684281a194c83b2701537c24524a707ade26db",
+    "model/common_source/native_routing.py": "bece6c1d39a4cf1a444e8bdc2d24dc42abaa4d16ada8d1174b246c9dd6f10f6a",
+    "model/common_source/native_sm_current.py": "8ed16b421726dd460800d86846e5684163716cadc61c7cc2e8c21151d49593f1",
+    "model/common_source/open_environment.py": "ba8c33750ed256b457927ca3e8903a7fcb01de9629a99db3682c6d657ff80963",
+    "model/common_source/open_protocol.py": "936120dedfa4624ac0aa3117e3f1f2db2864ff229e53352c635e5a180fcbd852",
+    "model/common_source/parameter_selection.py": "a9698bb9166d1eb5b8df44fdc6c7718899c781541cf98eecd40d153b873f68aa",
+    "model/common_source/particle_identification/family_attachment.py": "ce52592e0fc50d1d24e903e34e7baeb450089d4ef4f3146088b10fe1dd9b1ef0",
+    "model/common_source/protocol.py": "4339a070f39f2ddbc958e83041e9b8935dd8efd50acfca80519c4d92ea6cfac2",
+    "model/common_source/record_code.py": "0359a77057cd38329bc696a1cc0566a1a8863f7cbf0a697312e4581cc5c10f7a",
+    "model/common_source/records.py": "7ff9a1a68b4b94c018364b73e0b9c651c9154f7e9b2ede21c51f17be79c1dafa",
+    "model/common_source/repair_field_attachment.py": "a6b04bbf4ce4aba3843e9fdbf0329db7e79ddd5152b0fab12fabb1c307c8d02c",
+    "model/common_source/scalar_coupling.py": "90e4000b0e48e4429e69891c0274966701cd59951f79d151dbe98a66e61ba0cf",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/common_source/test_native_code_transport.py": "e58f3f955caa2acf4ae75d97fceeb3803f9f2b9b1493492100456f0d5c1cae21",
+    "model/common_source/test_native_gauge_object.py": "de2ec904d687e1bdbcb28878c484b7ad6459a0e9490198a197cd0005759564e6",
+    "model/common_source/test_native_matter_attachment.py": "a02503c7d80e71cbcb2cfb22eb3241fc24caedf6898cd2f1a39d2a92e1601ef7",
+    "model/common_source/test_native_matter_theorems.py": "3ee47ef85330989308e263d6cce7b2e03b33a897160d82b551275c523bfe94e6",
+    "model/common_source/test_native_repair_mass.py": "76dc9e9c8006b384e9dad8ab90be071fc0e679df9b9e7ac4e702aa6b00297b75",
+    "model/common_source/test_native_repair_mass_attachment.py": "38ca90f81fb84e4786ea1a46778293caf0122d9d8695fa08f22bc692483195ff",
+    "model/common_source/test_native_repair_mass_h2.py": "06c3b3c0c819e0ad636917b84addc22eeb47696c10d04f12d8283acaa2475bd8",
+    "model/common_source/test_native_repair_mass_readout.py": "4e72f0b76da44c08914ec037187c5557611dad175ad8ef342ff8ce8b4c4328d7",
+    "model/common_source/test_native_sm_current.py": "fbee360cfc2d87c63e958997202d5981d252c3136f930a28732ffe64abca33d4",
+    "model/common_source/test_parameter_selection.py": "2504efad12f780a58772a31f8a56268160dbb3eeae82b986116143aa6d44ff3f",
+    "model/common_source/test_repair_field_attachment.py": "c3cb9e50f7be810f5573cfcfd0e89d3ef7a0567e81c3e4cd1f295dedbeeab28b",
+    "model/event_circulation/__init__.py": "d65a8cf85671e0bebddd416d7efc65fca572c81f8b79f7a503ab32e963bb795c",
+    "model/event_circulation/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
+    "model/event_circulation/construction.py": "b3a53c02034fab7a24e77a35313257bc321dda1c4a52ef2a25f9b70616edf2ba",
+    "model/federated_observer/source.py": "4a91b7f254fcee89c93b1ce3e9972ec0c809290ec987dbc87fcb0392319e549d",
+    "model/native_circulation/__init__.py": "f202d73c2d0428ff7e8d18c2957999d3de107e0c6fea9157b28ad335177a26e1",
+    "model/native_circulation/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "model/native_circulation/construction.py": "8588e337a2f45090b7dee53388593c1aea01d0ce4f6c5fe330bbc388c6a1e2bb",
+    "model/native_clock/__init__.py": "36ba1715e850fb28de6d8a8467d9c925abed2de1782514e3ff4b283640b19319",
+    "model/native_clock/__main__.py": "fd617457b5aa34100620a8cdde5bb841cf7cf4bbd95d92716e6d8412095b112a",
+    "model/native_clock/clock.py": "0a05dcd38f748fff119229f40672ff03540ed5e8c5a829fc3430bc66ed2338a4",
+    "model/native_clock/regional_preparation.py": "46a137e362c57f01c367e027edb11094e644dcc8b76bcd3c9398baa8f6d4c855",
+    "model/native_equilibration/__init__.py": "4a2543e0f885af867373d718184c433c1a5c3d5006f12dda5eb01cbb08ab0ad5",
+    "model/native_equilibration/__main__.py": "22d1dd37b519734f9c4f7527a0c9598e173a00e658ba4602ceb908877fd3038f",
+    "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
+    "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
+    "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
+    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
+    "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
+    "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
+    "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
+    "model/native_quantum_history/__main__.py": "d815f6536d1d7be6d3ee50205f31a6328b95ba055070c1dc88e10f9d9521a54a",
+    "model/native_quantum_history/construction.py": "99f6d67f9bef1e72222a425b4d70c80c679b1bfbaabbb68128f43fbdbe829f09",
+    "model/native_relational_readout/__init__.py": "baf460e26918fea66b2b254d60e00b102e7e98577f2f97bdd760e4d946476e70",
+    "model/native_relational_readout/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
+    "model/native_relational_readout/construction.py": "3f01d15a3b199ea80957f4894c506f9dfb6cf5520bbe300fdff07c949c0089b8",
+    "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
+    "model/observer/p_response/experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
+    "model/observer/quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "model/observer/scalar_response/__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
+    "model/observer/scalar_response/experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
+    "model/observer/source_discrimination/certificate.py": "fd2c4ab1ac3499652b1a5d6ab5fefb44414b848a75e23df5b255d038323d4f05",
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
+    "model/observer/source_discrimination/experiment.py": "3f7bacf7f99b93b7d7a72b3d3e97c9a7fb9de1b37311c48366e1be07a0d4095c",
+    "model/observer/source_scalar/__init__.py": "d3dcf546c13e23ceb9a58c19481e2e3f04134013d8047d83b020ec836d8e1e86",
+    "model/observer/source_scalar/bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
+    "model/observer/source_scalar/compiler.py": "b9b45904f2c400ee0f4515663409166e1798bc3112af24dcdbe1ebda644218f8",
+    "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
+    "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
+    "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
+    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
+    "model/observer_particles/results/representation_identification.json": "e2fe54c96413ddb92d7315e5c3c83ea209434240421862f2f4d3cbb3c9f86bd0",
+    "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
+    "model/observer_particles/results/unified_yukawa_action.json": "b3b765b373d34d96dbff5d23868f5f89353eb8f80672c462a46e18d9ccd3cd8b",
+    "model/observer_particles/results/unified_yukawa_operators.json": "972ae764bf1b466b5506442969d35b262c15ba1b5207def1e8e3bd51e792e428",
+    "model/observer_particles/unified_yukawa_action.py": "ce0fa43f480505792ca8d57b9ea6731ffeff6ea9c1cc5dcad78c0e9c7c742b83",
+    "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
+    "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
+    "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
+    "model/primitive_observer/transfer.py": "b1a9fb58ab81b5edc6b372a3ff39aed3e0c19529774acf04fd42ad7c05708d10",
+    "model/record_laws/__init__.py": "1b66289fa4160260460fa4e947b1f7339fe0e8d7382fe6848c0029896c02bd19",
+    "model/record_laws/burn_in.py": "ab570ba3c4da75361231538b2d22ac7e3c6884038778c2510d9aa4af796d47e5",
+    "model/record_laws/family.py": "ac615e49101faa9a7b0b42d07f01ff44f342c20195ea5f6e5f88743bd11b4919",
+    "model/repair_scheduler/coins.py": "c6f76f1dacf05b030479911cd07147ebcaa7e555c2223a3661f94e98657c98cb",
+    "model/requirements.txt": "2c585acfcb6e6b57cf3e822eba9e7822b877ce373eaf598be3045669588447cd",
+    "model/scalar_observations/experimental_readout/stats.py": "566c75f9dd46df3f94bb80171d77202b16d519963d7c7664c54ac25bb5275648",
+    "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09",
+    "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"
+  }
+}

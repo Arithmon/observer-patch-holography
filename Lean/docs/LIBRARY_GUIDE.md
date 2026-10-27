@@ -8,6 +8,17 @@ entangled-pair normalization controls. The executable
 representation matrices and numerical operator instances. The Lean module
 does not formalize those entire producers or identify physical masses.
 
+The [native matter bridge](../../model/common_source/native_matter_theorems.py)
+maps the actual current's complete exterior components to
+`Screen/ExteriorComponentBridge.lean` and `Screen/ExteriorSelection.lean`;
+the two-sector selection assumes the stated chirality/anomaly menu.
+The [family attachment](../../model/common_source/native_repair_mass_attachment.py)
+checks the exact native-to-`Screen/A5FamilyBand.lean` incidence chart,
+rank-three projector and all sixty rotations. The single-band realization
+and operational cost-selection clauses of `SMThreeFamilyPremiseData`
+remain inputs. These executable bindings reuse the finite results without
+claiming physical family selection or measured masses from them.
+
 Lean 4 / Mathlib formalisation of the OPH theorem library. The
 consensus-layer entries of the [proof index](PROOF_INDEX.md) follow
 Definition 4.1 and Proposition 4.2 of the archived paper *Paradise as

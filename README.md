@@ -71,6 +71,9 @@ and the clocks inside it.
   with two Dirac copies per sector, and execute finite detector histories.
   Both its free gaps and a separate interaction-dressed pole construction
   fail the measured lepton hierarchy. Repeated correction has a controlled coherent limit.
+  Fixed record-driven Higgs feedback also produces unequal couplings without
+  mass inputs, but an analytic bound excludes its charged-lepton hierarchy
+  for every trigger frequency in its stationary averaged mass family.
   Source selection of the physical masses, a chiral interacting continuum
   and joint gravitational dynamics remain unproved.
   [Mass-response research](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) and

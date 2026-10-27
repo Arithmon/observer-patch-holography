@@ -59,6 +59,14 @@ mass selection. The [joint-record sanity check](native_particle_records.py)
 recovers supplied running gaps together with unbroken charge and color
 Casimir on one coherent 256-address register. Its inverse receives no
 mass table or species label; the evolution retains calibrated parameters.
+The [record-driven repair-mass candidate](native_repair_mass.py) instead
+uses a fixed five-state memory and native port projectors to compute its
+family coupling without measured masses. Its complete correlated channel
+has a controlled averaging limit and attaches one common coupling to the
+three Higgs lines. The resulting ratios `1 : 30.84 : 452.62` fail the
+charged-lepton comparison. Neutral memory and coherent Higgs feedback are
+explicit additions to the repair rule; the calibrated control remains a
+separate experiment.
 A separate [charged spectroscopy experiment](native_charged_spectroscopy.py)
 infers both dimer frequencies from fixed transfer records and predicts
 held-out readouts without supplying either pole to its inverse. It uses the
