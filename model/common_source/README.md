@@ -67,6 +67,49 @@ three Higgs lines. The resulting ratios `1 : 30.84 : 452.62` fail the
 charged-lepton comparison. Neutral memory and coherent Higgs feedback are
 explicit additions to the repair rule; the calibrated control remains a
 separate experiment.
+The [native family selector](native_family_selection.py) computes a rank-three
+protected band from the carrier's rotation and incidence response, without
+supplying a three-dimensional frame. Its compiled cooling service retains all
+605 classical labels and both native quantum syndrome outputs, and its exact
+coefficient map agrees with the finite family-band theorem. The cooling rule
+is chosen; identifying these levels with physical families remains separate.
+The [loop-phase calculation](native_mass_holonomy.py) excludes the original
+carrier's closed edge phases under the declared finite mass relation.
+The [current-mediated auxiliary response](native_mass_dressing.py) gives
+different charged-sector spectra, retaining all 2,250 states. Its two smallest
+subthreshold lepton responses have ratio below 32 for every nonnegative
+dressing strength in the stated class. These helpers share the existing
+[mass receipt](native_repair_mass_results.json); neither is a successful
+physical mass derivation.
+The [native feedback implementation](native_repair_mass_feedback.py) executes
+the five-memory law using complete source words and retained native outputs,
+with separate source, iteration and averaging bounds. Its
+[fixed-basis native readout](native_repair_mass_native_readout.py) recovers
+the implemented coefficient from complete pointer records after finite
+record-driven memory preparation. Stationary weights and mass eigenvectors
+are not apparatus inputs; source and finite-step errors have their own bound.
+The conditional operator-error radius is about `3.6062e-4` for this
+dimensionless coefficient; no physical mass interval follows.
+The [two-rotation memory](native_mass_record_cycles.py) gives uncalibrated
+ratios `1 : 382.23 : 5909.43`, also failing the lepton test. The
+[full selector bath](native_mass_bath.py) is a chosen Hermitian lift of the
+actual selector response; its 23,130-state operator gives five low charged
+responses per channel, retaining every additional mode. The
+[family potential](native_family_potential.py) computes the first scalar
+anisotropy at degree six and its complete stationary directions. Its selected
+real curvature coupling retains a doublet; general complex Yukawas lie
+outside that restriction. These results share the same central mass receipt.
+The [same-current gauge-linked field](native_gauge_matter_transport.py)
+connects the full auxiliary current action, physical CAR rotations and native
+exchange-echo hopping. All local Fock columns and routing signs are retained.
+Its [continuum comparison](native_gauge_continuum.py) uses those source links
+and keeps both Dirac tastes in a constant non-Abelian background. Spatial
+geometry, background paths and improving source accuracy remain premises;
+dynamical chiral gauge theory and physical spectrum recovery are unestablished.
+The transport and continuum checks share one
+[retained receipt](native_gauge_matter_transport_results.json) and complete
+array artifact. Replay them with
+`python -m model.common_source.native_gauge_matter_transport --check model/common_source/native_gauge_matter_transport_results.json`.
 A separate [charged spectroscopy experiment](native_charged_spectroscopy.py)
 infers both dimer frequencies from fixed transfer records and predicts
 held-out readouts without supplying either pole to its inverse. It uses the

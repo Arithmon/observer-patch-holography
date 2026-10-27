@@ -379,7 +379,7 @@
     ],
     "advance_event": "C coin0, raw1, signed current+1",
     "all_other_raw_records": "reset memory to0; identicallyzero labels retained",
-    "family_action": "gauge identity on an ancillary copy of the native geometric triplet",
+    "family_action": "gauge identity on the separately protected native geometric family band",
     "memory_states": 5,
     "new_coherent_Higgs_feedback_is_declared_architecture": true,
     "old_memory_retained_as_reset_record": true,
@@ -407,7 +407,7 @@
   },
   "artifact": {
     "name": "native_repair_mass_results.npz",
-    "sha256": "a8987bf9c5220175d08d7f1fe8366b9eb5fafc3d334702497ac8d45c27b6636f"
+    "sha256": "0d6675430897fa46a8636c2b6291c3f2e179de0532e55945fc16e38f948873c6"
   },
   "averaging": {
     "all_initial_classical_memory_reference_states": true,
@@ -544,7 +544,7 @@
         "minimum_complete_Choi_eigenvalue_diagnostic": -1.3651417062627951e-15,
         "step": 0.125,
         "steps": 8,
-        "superoperator_spectral_difference_diagnostic": 0.02340242694378097,
+        "superoperator_spectral_difference_diagnostic": 0.023402426943780974,
         "trace_preservation_defect_diagnostic": 3.1890379126902116e-15
       },
       {
@@ -553,7 +553,7 @@
         "minimum_complete_Choi_eigenvalue_diagnostic": -1.908588213913599e-15,
         "step": 0.03125,
         "steps": 32,
-        "superoperator_spectral_difference_diagnostic": 0.005901033894397211,
+        "superoperator_spectral_difference_diagnostic": 0.005901033894397218,
         "trace_preservation_defect_diagnostic": 5.890821707667675e-15
       },
       {
@@ -562,20 +562,266 @@
         "minimum_complete_Choi_eigenvalue_diagnostic": -7.076258585387071e-15,
         "step": 0.0078125,
         "steps": 128,
-        "superoperator_spectral_difference_diagnostic": 0.0014784089606410858,
+        "superoperator_spectral_difference_diagnostic": 0.0014784089606410921,
         "trace_preservation_defect_diagnostic": 4.1893347222292624e-14
       },
       {
         "analytic_diamond_bound_all_initial_classical_memories": 0.009943181818181818,
-        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.007038701153363365,
+        "complete_Choi_Frobenius_diamond_upper_diagnostic": 0.00703870115336336,
         "minimum_complete_Choi_eigenvalue_diagnostic": -4.3174047739375135e-15,
         "step": 0.001953125,
         "steps": 512,
-        "superoperator_spectral_difference_diagnostic": 0.0003697993000426108,
+        "superoperator_spectral_difference_diagnostic": 0.0003697993000426175,
         "trace_preservation_defect_diagnostic": 7.762879192711461e-14
       }
     ],
     "independent_record_sampling_assumed": false
+  },
+  "finite_current_auxiliary_response": {
+    "Casimir_exact": "2*color_C2+weak_C2/2+q^2/12",
+    "charged_channels": [
+      {
+        "Higgs_channel": "up",
+        "complete_Nambu_color_multiplicity": 6,
+        "dark_poles_plus_minus_one_each_multiplicity": 2,
+        "four_additional_positive_bright_auxiliary_poles_retained": true,
+        "left_Casimir_exact": "25/8",
+        "light_poles": [
+          0.00045451469210338084,
+          0.014026343343700532,
+          0.9333673679930943
+        ],
+        "light_ratio_numerical_intervals": [
+          [
+            30.86002986346638,
+            30.860057902202584
+          ],
+          [
+            2053.5462842013917,
+            2053.5480923252867
+          ]
+        ],
+        "light_window_declared_before_comparison": "0<E<auxiliary_hopping=1",
+        "positive_pole_light_residue_traces": [
+          0.22121352646457063,
+          0.22127515228107708,
+          0.9995326844340898,
+          2.688949205743417e-32,
+          4.745141403162975e-31,
+          0.3769542044190843,
+          0.3787874690425569,
+          0.40000331973042147,
+          0.4022336436281983
+        ],
+        "positive_poles": [
+          0.00045451469210338084,
+          0.014026343343700532,
+          0.9333673679930943,
+          0.9999999999999997,
+          1.0,
+          2.0284471487006246,
+          2.0310086112298817,
+          2.236073020320153,
+          2.2396295593374638
+        ],
+        "right_Casimir_exact": "4"
+      },
+      {
+        "Higgs_channel": "down",
+        "complete_Nambu_color_multiplicity": 6,
+        "dark_poles_plus_minus_one_each_multiplicity": 2,
+        "four_additional_positive_bright_auxiliary_poles_retained": true,
+        "left_Casimir_exact": "25/8",
+        "light_poles": [
+          0.0005081627452041428,
+          0.01568104782705801,
+          0.93337175810443
+        ],
+        "light_ratio_numerical_intervals": [
+          [
+            30.8583059332642,
+            30.858331010520466
+          ],
+          [
+            1836.7568251743924,
+            1836.7582717641437
+          ]
+        ],
+        "light_window_declared_before_comparison": "0<E<auxiliary_hopping=1",
+        "positive_pole_light_residue_traces": [
+          0.24621361054965288,
+          0.2462536578880311,
+          0.9994689838233801,
+          3.333304116147814e-30,
+          2.727483041135174e-31,
+          0.3671708190776046,
+          0.37498710713925754,
+          0.3788040967907679,
+          0.38710172473130966
+        ],
+        "positive_poles": [
+          0.0005081627452041428,
+          0.01568104782705801,
+          0.93337175810443,
+          1.0,
+          1.0000000000000007,
+          1.9870956376470805,
+          1.9999824373703885,
+          2.031031382115945,
+          2.0449773170736756
+        ],
+        "right_Casimir_exact": "3"
+      },
+      {
+        "Higgs_channel": "charged_lepton",
+        "complete_Nambu_color_multiplicity": 2,
+        "dark_poles_plus_minus_one_each_multiplicity": 2,
+        "four_additional_positive_bright_auxiliary_poles_retained": true,
+        "left_Casimir_exact": "9/8",
+        "light_poles": [
+          0.0007080025812931919,
+          0.02184277671728029,
+          0.93339955517681
+        ],
+        "light_ratio_numerical_intervals": [
+          [
+            30.851258066223547,
+            30.85127606122407
+          ],
+          [
+            1318.3557743543365,
+            1318.356519750572
+          ]
+        ],
+        "light_window_declared_before_comparison": "0<E<auxiliary_hopping=1",
+        "positive_pole_light_residue_traces": [
+          0.36029569922060606,
+          0.3601828429372502,
+          0.9990957623698066,
+          1.0228952337210898e-30,
+          1.6074067126100723e-32,
+          0.26457421163561123,
+          0.26471851461013707,
+          0.3750023442831508,
+          0.37613062494349725
+        ],
+        "positive_poles": [
+          0.0007080025812931919,
+          0.02184277671728029,
+          0.93339955517681,
+          1.0000000000000004,
+          1.0000000000000004,
+          1.4575224061844632,
+          1.4577423251130073,
+          2.0000028253803657,
+          2.001454627888749
+        ],
+        "right_Casimir_exact": "3"
+      }
+    ],
+    "classification": "fixed finite charged auxiliary response with complete poles",
+    "common_auxiliary_hopping_exact": "1",
+    "common_coupling_exact": "1",
+    "complete_domain": {
+      "all2250_input_output_columns_specified_by_retained_factors": true,
+      "all_dark_poles": [
+        {
+          "energy_exact": "-1",
+          "multiplicity": 1020
+        },
+        {
+          "energy_exact": "1",
+          "multiplicity": 1020
+        }
+      ],
+      "auxiliary_adjoint_indices": 12,
+      "auxiliary_representation": "two copies of adjoint12 tensor Nambu(M15) tensor neutral family3",
+      "auxiliary_signs": 2,
+      "bright_dimension": 210,
+      "current_image_reduction_dimension": 270,
+      "current_orthogonal_auxiliary_dimension": 1980,
+      "dark_states_absent_from_the_complete_operator": false,
+      "family_dark_dimension_inside_reduction": 60,
+      "full_operator_zero_multiplicity": 6,
+      "internal_domain": "selected exterior M15; the other17 source states remain outside this declared response domain",
+      "light_Nambu_matter_family": 90,
+      "total_dimension": 2250
+    },
+    "exact_no_tuning_shape_bound": {
+      "Schur_trace_exact": "455928*sqrt(5)/11939929325 + 31379160/477597173",
+      "Schur_trace_rational_upper_exact": "24546827687526422628647013804138676353/373122791406250000000000000000000000000",
+      "above_threshold_reassignment_excluded": false,
+      "above_threshold_reassignment_removes_lower_charged_states": false,
+      "allowed_dressing_constants": "arbitrary c_left>=0,c_right>=0,Delta>0 multiplying the same fixed Qf",
+      "existence_premise": "at least two positive exact poles satisfy0<E1<=E2<Delta",
+      "fixed_bare_source_Y": true,
+      "middle_over_smallest_ratio_strictly_below_32": true,
+      "middle_over_smallest_ratio_upper_exact": "24546827687526422628647013804138676353/770182721407822730468750000000000000",
+      "other_family_projectors_or_interactions_excluded": false,
+      "parameter_scan_or_low_energy_kinetic_approximation_used": false,
+      "proof": [
+        "Y=YPY/Tr(PY)+S; S>=0, SP=0, rank(Y-S)=1",
+        "D(E)=A_left(E)Y A_right(E); sigma2/sigma1<=Tr(S)/lambda_min(Y)",
+        "A_r(E)=P+sqrt((Delta^2-E^2)/(Delta^2+c_r-E^2))*Q contracts monotonically",
+        "E_j=sigma_j(D(E_j)); E2<=sigma2(D(E1))<32E1"
+      ],
+      "source_smallest_eigenvalue_lower_exact": "412830703/200000000000",
+      "subject": "two smallest positive exact finite-response poles below a common auxiliary threshold Delta",
+      "subthreshold_poles_have_nonzero_light_component": true,
+      "three_poles_below_threshold_asserted_for_every_Delta": false
+    },
+    "exact_reduction": {
+      "auxiliary_current": "Ad(E) on the current index tensor rho(E) on matter",
+      "current_image_isometry": "J=K C_R^(-1/2); J*J=I on all15 selected internal states",
+      "current_map": "K psi=(rho(E_a) psi)_a; K* K=C_R",
+      "family_complement_retained": "Qf rank2, I-Qf rank1; both auxiliary signs retained",
+      "kinetic_approximation_used_as_reported_poles": false,
+      "light_self_energy": "Sigma_R(E)=C_R Qf E/(E^2-1)",
+      "low_energy_kinetic_matrix": "Z_R=I+C_R Qf",
+      "self_energy_remainder_upper": "C_R*e^3/(1-e^2) for |E|<=e<1"
+    },
+    "family_coupling": "Qf=I-P0 from the fixed native port seed",
+    "finite_actual_port_current_actions_checked": 12,
+    "native_current_auxiliary_intertwining_identities": 144,
+    "neutral_channel": {
+      "Casimir_exact": "9/8",
+      "all9_poles": [
+        -1.4577379737113254,
+        -1.4577379737113252,
+        -0.9999999999999999,
+        -5.330912065872576e-16,
+        -5.915107926767485e-17,
+        4.441063877755257e-16,
+        1.0,
+        1.457737973711325,
+        1.4577379737113252
+      ],
+      "full_Nambu_multiplicity": 2,
+      "grouped_pole_multiplicities": [
+        2,
+        1,
+        3,
+        1,
+        2
+      ],
+      "light_zero_modes_per_Nambu_copy": 3
+    },
+    "numerical_operator_admission": 2e-10,
+    "scope": {
+      "additional_auxiliary_particles_removed": false,
+      "auxiliary_Weyl_kinetics_and_physical_spin_attached": false,
+      "auxiliary_rule_trace_form_and_common_unit_supplied": true,
+      "bare_Y_uses_stationary_averaging_limit": true,
+      "complete2250_operator_compiled_into_native_source_words": false,
+      "finite_bipartite_sign_symmetry_is_physical_particle_hole_theorem": false,
+      "full_physical_spin_particle_hole_history_derived": false,
+      "measured_mass_or_pole_values_used_as_couplings": false,
+      "numerical_intervals_are_outward_physical_certificates": false,
+      "physical_interacting_particle_spectrum_derived": false,
+      "poles_inferred_from_detector_records_here": false,
+      "simultaneous_finite_memory_feedback_and_dressing_executed": false
+    },
+    "trace_metric": "-Tr_M6(D_a D_b); an explicitly chosen invariant form"
   },
   "fixed_basis_readout": {
     "detector_settings": 9,
@@ -647,6 +893,488 @@
       "source_kernel_or_poles_in_preparation_or_detector": false
     },
     "settings_order": "3*f+g; input|0,f>, PauliY on|0,f> and|1,g>"
+  },
+  "full_selector_incidence_bath": {
+    "charged_channels": [
+      {
+        "Higgs_channel": "up",
+        "all_positive_light_residue_traces": [
+          0.008754808659415348,
+          0.005190267574617563,
+          0.005168406015970288,
+          0.0040939760059842305,
+          0.00375476926915551,
+          0.0015981025749424486,
+          0.0014369585583768262,
+          0.0008317308587108574,
+          0.0007671478686040495,
+          0.0001965716710252629,
+          0.00017565018361536135,
+          0.00046829380888985695,
+          0.0003766952142126646,
+          0.000204712805949576,
+          0.00016548254831975302,
+          5.2418122961767584e-05,
+          4.330179936439525e-05,
+          0.3759460644546764,
+          0.4913944795618961,
+          0.4936716057072208,
+          0.49524737622029624,
+          0.49706953926038233,
+          0.6133916412554117
+        ],
+        "all_positive_poles": [
+          0.0004971798611144985,
+          0.07525663828840251,
+          0.07773060386709603,
+          0.1452845840023417,
+          0.15153451097364987,
+          0.24364261727052444,
+          0.2438801074816709,
+          0.2940249055958944,
+          0.2943042303934306,
+          0.3133037742199741,
+          0.313404379806475,
+          0.35316998536933275,
+          0.3537872735632532,
+          0.39779495022911876,
+          0.3980180396354717,
+          0.41357610463846417,
+          0.41358333751986476,
+          1.475405343507428,
+          1.7753405688887884,
+          1.778771450210294,
+          2.00960640923282,
+          2.014773011456475,
+          2.4282101961055926
+        ],
+        "complete_Nambu_color_multiplicity": 6,
+        "exact_zero_multiplicity": 88,
+        "frozen_window_light_residue_traces": [
+          0.008754808659415348,
+          0.005190267574617563,
+          0.005168406015970288,
+          0.0040939760059842305,
+          0.00375476926915551
+        ],
+        "frozen_window_pole_count": 5,
+        "frozen_window_positive_poles": [
+          0.0004971798611144985,
+          0.07525663828840251,
+          0.07773060386709603,
+          0.1452845840023417,
+          0.15153451097364987
+        ],
+        "grouped_zero_light_residue_diagnostic": 1.426374413155855e-27,
+        "left_Casimir_exact": "25/8",
+        "right_Casimir_exact": "4"
+      },
+      {
+        "Higgs_channel": "down",
+        "all_positive_light_residue_traces": [
+          0.010023067151381486,
+          0.0059111009949837775,
+          0.005947193510914838,
+          0.0047066698015150584,
+          0.004288407946763391,
+          0.001757120817122733,
+          0.001728687220138158,
+          0.0009361788479484193,
+          0.0009037394252207837,
+          0.00022404556100961282,
+          0.00020458351610919872,
+          0.0005461342822377813,
+          0.00043155682637400236,
+          0.00023864442796511686,
+          0.0001907775263431561,
+          5.6155906374863476e-05,
+          5.458333597535029e-05,
+          0.36271835199886104,
+          0.48521813354404053,
+          0.493537718788985,
+          0.49386773311800114,
+          0.5014535097893879,
+          0.6250559056623451
+        ],
+        "all_positive_poles": [
+          0.0005733561902192978,
+          0.07499341682391256,
+          0.07784593656031402,
+          0.14470756106566304,
+          0.15192224984631966,
+          0.24357933137493049,
+          0.2438339963981399,
+          0.2939701951333199,
+          0.2942872371318521,
+          0.31328684591678535,
+          0.31340271952047877,
+          0.35309129573068737,
+          0.3538088966308682,
+          0.39776319892692386,
+          0.3980228313455095,
+          0.4135736592246631,
+          0.4135799822877,
+          1.3612427293758438,
+          1.7258371692558834,
+          1.7431840160671186,
+          1.7787086733670083,
+          1.7980021365740444,
+          2.2847665768385816
+        ],
+        "complete_Nambu_color_multiplicity": 6,
+        "exact_zero_multiplicity": 88,
+        "frozen_window_light_residue_traces": [
+          0.010023067151381486,
+          0.0059111009949837775,
+          0.005947193510914838,
+          0.0047066698015150584,
+          0.004288407946763391
+        ],
+        "frozen_window_pole_count": 5,
+        "frozen_window_positive_poles": [
+          0.0005733561902192978,
+          0.07499341682391256,
+          0.07784593656031402,
+          0.14470756106566304,
+          0.15192224984631966
+        ],
+        "grouped_zero_light_residue_diagnostic": 7.927411725483359e-28,
+        "left_Casimir_exact": "25/8",
+        "right_Casimir_exact": "3"
+      },
+      {
+        "Higgs_channel": "charged_lepton",
+        "all_positive_light_residue_traces": [
+          0.018516799085947222,
+          0.011662515171957415,
+          0.01024910457989166,
+          0.009408279019832643,
+          0.007438325865938018,
+          0.004688632453596636,
+          0.0019756715572743317,
+          0.0023960989389321804,
+          0.00119774913645773,
+          0.0005493176814303655,
+          0.000292907417865533,
+          0.0013096039847409907,
+          0.0006997840627501233,
+          0.0006060913566996917,
+          0.00030332853398917873,
+          0.0001727935320884773,
+          5.8052210884193726e-05,
+          0.3530682793750645,
+          0.4826298118358296,
+          0.481009983993047,
+          0.49373395430042977,
+          0.49411784698787026,
+          0.6239150689174853
+        ],
+        "all_positive_poles": [
+          0.0009473205853844415,
+          0.07352214267188711,
+          0.07831312499656082,
+          0.14163743686862612,
+          0.15370727952814206,
+          0.24290263782948254,
+          0.243752400784026,
+          0.2935157618327355,
+          0.294235816190149,
+          0.31316131043723977,
+          0.31339620590321415,
+          0.35258772210196443,
+          0.3538939044967959,
+          0.3975454884155276,
+          0.39803871871559404,
+          0.4135336681894771,
+          0.41357705185107974,
+          0.923632931369836,
+          1.078092406284991,
+          1.0798926242443085,
+          1.743086505165798,
+          1.7458331848914836,
+          2.0544698241373127
+        ],
+        "complete_Nambu_color_multiplicity": 2,
+        "exact_zero_multiplicity": 88,
+        "frozen_window_light_residue_traces": [
+          0.018516799085947222,
+          0.011662515171957415,
+          0.01024910457989166,
+          0.009408279019832643,
+          0.007438325865938018
+        ],
+        "frozen_window_pole_count": 5,
+        "frozen_window_positive_poles": [
+          0.0009473205853844415,
+          0.07352214267188711,
+          0.07831312499656082,
+          0.14163743686862612,
+          0.15370727952814206
+        ],
+        "grouped_zero_light_residue_diagnostic": 6.673458687676448e-28,
+        "left_Casimir_exact": "9/8",
+        "right_Casimir_exact": "3"
+      }
+    ],
+    "classification": "fixed coherent incidence bath with complete finite charged response",
+    "comparison_window": {
+      "extra_charged_modes_discarded": false,
+      "measured_mass_values_used": false,
+      "rule_fixed_before_computation": "0<E<sqrt(lambda_min_positive(D12))",
+      "three_charged_modes_selected_by_this_window": false,
+      "upper_endpoint": 0.1553010867254786
+    },
+    "complete_domain": {
+      "Nambu_matter_dimension": 30,
+      "adjoint_current_indices": 12,
+      "all_bath_poles": [
+        -0.41413697046927855,
+        -0.40014392796037074,
+        -0.3594186307970576,
+        -0.3177687199580175,
+        -0.30749628108079646,
+        -0.2743394901581124,
+        -0.2240303734253893,
+        -0.1945315927175271,
+        -0.15530108672547854,
+        -2.4439567738204767e-16,
+        -1.7312887893818237e-16,
+        -9.045717853917446e-17,
+        -7.944898208072259e-17,
+        -4.5176649698449526e-17,
+        -1.4675376974566984e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5724364423442338e-17,
+        2.7755575615628914e-17,
+        8.612615445754763e-17,
+        1.0277987590922761e-16,
+        1.6062802233448835e-16,
+        3.8279703363940857e-16,
+        0.1553010867254786,
+        0.1945315927175269,
+        0.2240303734253895,
+        0.27433949015811204,
+        0.3074962810807966,
+        0.3177687199580175,
+        0.35941863079705755,
+        0.40014392796037085,
+        0.4141369704692785
+      ],
+      "all_full_operator_columns_determined_by_retained_factors": true,
+      "bath_dimension": 64,
+      "current_dark_copy_rule": "330 complete copies of the64-state bath",
+      "current_dark_each_nonzero_bath_pole_multiplicity": 330,
+      "current_dark_zero_multiplicity": 15180,
+      "current_image_reduction_dimension": 2010,
+      "current_orthogonal_dimension": 21120,
+      "full_negative_pole_multiplicity": 3314,
+      "full_positive_pole_multiplicity": 3314,
+      "full_zero_multiplicity": 16502,
+      "internal_domain": "selected M15; other17 exterior states outside this declared response domain",
+      "light_Nambu_matter_family": 90,
+      "port_rows": 12,
+      "seam_rows": 20,
+      "timeout_row": 1,
+      "total_dimension": 23130,
+      "unpadded_bath_dimension": 33,
+      "zero_padding_rows": 31
+    },
+    "exact_reduction": {
+      "Schur_domain": "z outside bath spectrum; complete operator defines every bath pole too",
+      "auxiliary_modes_eliminated_from_retained_spectrum": false,
+      "charged_zero_count_reason": "rank(F)=9; rank(V^T PkerD V)=2; remaining scalar v^T Y v>0",
+      "current_intertwiner": "(Ad(g) tensor rho(g))K_current=K_current rho(g)",
+      "neutral_zero_count_reason": "rank([V,F^T])=11, so rank(H_neutral)=22",
+      "same_actual_current_identities_reused": 144,
+      "self_energy": "C_R V^T z*(z^2 I12-D12)^(-1) V"
+    },
+    "fixed_rule": {
+      "Hamiltonian": "[[H_Higgs(Y),K*],[K,I_adjoint tensor I_NambuMatter tensor H_b]]",
+      "bath": "H_b=[[0,F^T],[F,0]] plus31 zero padding rows",
+      "coherent_Hermitian_lift_is_an_added_repair_service_choice": true,
+      "common_coherent_model_unit_is_physical_observer_clock": false,
+      "coupling": "K_a=rho(E_a) tensor W; W=(V_native,0); g=1",
+      "family_domain_compression_used_as_closed_bath": false
+    },
+    "neutral_channel": {
+      "full_Nambu_multiplicity": 2,
+      "positive_poles": [
+        0.0757116017913401,
+        0.14720007158100845,
+        0.24296823949422322,
+        0.293656173898687,
+        0.31322933670670955,
+        0.3531688485321183,
+        0.39774893551958884,
+        0.4135344675403283,
+        1.077753030643557,
+        1.0791981558212944,
+        1.0806508683758533
+      ],
+      "zero_light_residue_trace": 0.02681258383524976,
+      "zero_multiplicity_per_copy": 45
+    },
+    "numerical_operator_admission": 2e-10,
+    "scope": {
+      "auxiliary_Weyl_kinetics_physical_spin_and_particle_hole_history_attached": false,
+      "coherent_bath_words_or_detector_records_executed": false,
+      "numerical_intervals_are_outward_physical_certificates": false,
+      "physical_interacting_particle_spectrum_derived": false,
+      "rule_or_window_tuned_after_spectrum": false,
+      "simultaneous_finite_feedback_and_bath_executed": false,
+      "stationary_averaged_Y_is_the_bare_Higgs_input": true
+    },
+    "source": {
+      "D12": "I-T12=F^T F; real symmetric positive semidefinite",
+      "F_seam_row": "sqrt(w_e/2)*(e_a-e_b)^T",
+      "F_timeout_row": "zero; retained",
+      "accepted_seams": [
+        [
+          2,
+          3,
+          "1/32"
+        ],
+        [
+          2,
+          4,
+          "1/32"
+        ],
+        [
+          2,
+          6,
+          "1/32"
+        ],
+        [
+          2,
+          10,
+          "1/32"
+        ],
+        [
+          2,
+          11,
+          "1/32"
+        ],
+        [
+          3,
+          4,
+          "1/16"
+        ],
+        [
+          3,
+          6,
+          "1/16"
+        ],
+        [
+          3,
+          8,
+          "1/32"
+        ],
+        [
+          3,
+          9,
+          "1/16"
+        ],
+        [
+          4,
+          5,
+          "1/32"
+        ],
+        [
+          4,
+          9,
+          "1/16"
+        ],
+        [
+          4,
+          11,
+          "1/16"
+        ],
+        [
+          5,
+          9,
+          "1/32"
+        ],
+        [
+          5,
+          11,
+          "1/32"
+        ],
+        [
+          6,
+          7,
+          "1/32"
+        ],
+        [
+          6,
+          8,
+          "1/32"
+        ],
+        [
+          6,
+          10,
+          "1/16"
+        ],
+        [
+          7,
+          10,
+          "1/32"
+        ],
+        [
+          8,
+          9,
+          "1/32"
+        ],
+        [
+          10,
+          11,
+          "1/16"
+        ]
+      ],
+      "all_native_binary_load_two_inputs": 66,
+      "complete_reduced_one_attempt_records": 2706,
+      "family_compressed_D_commutator_with_Y_squared_exact": "4065763817/52399067238400 - 1618423471*sqrt(5)/52399067238400",
+      "fine_selector_cap_address_histories_reduced_by_existing_contract": true,
+      "rank_D12": 9,
+      "reduced_record_labels": "input,seam,repair_coin,output or terminal timeout",
+      "selector_rounds": 1,
+      "timeout_is_terminal_in_original_native_history": true,
+      "timeout_outcomes_conditioned_away": false,
+      "timeout_probability_exact": "5/32",
+      "zero_port_dimension": 3
+    }
   },
   "native_H2_domain_control": {
     "averaged_H2_coefficient_constraint_rank": 2,
@@ -1532,6 +2260,2431 @@
       "raw_complement_removed_or_postselected": false
     }
   },
+  "native_family_scalar_potential": {
+    "actual_rotation_trace_counts": [
+      [
+        "-1",
+        15
+      ],
+      [
+        "1/2 - sqrt(5)/2",
+        12
+      ],
+      [
+        "0",
+        20
+      ],
+      [
+        "1/2 + sqrt(5)/2",
+        12
+      ],
+      [
+        "3",
+        1
+      ]
+    ],
+    "complete_scalar_potential_through_degree_four": "c0+c2*|phi|^2+c4*|phi|^4",
+    "complete_sphere_stationary_certificate": {
+      "boundary_roots": [
+        "1/2 - sqrt(5)/10",
+        "sqrt(5)/6 + 1/2"
+      ],
+      "boundary_stationary_polynomial_monic": "u**2 + u*(-1 - sqrt(5)/15) + sqrt(5)/30 + 1/6",
+      "coordinate_axis_endpoints_included": true,
+      "each_interior_resultant_root_has_one_positive_lift": true,
+      "interior_resultant_monic": "u**4 - 4*u**3/3 + 7*u**2/12 - 19*u/192 + 1/192",
+      "interior_squared_coordinates": [
+        [
+          "1/3",
+          "1/3",
+          "1/3"
+        ],
+        [
+          "1/4",
+          "3/8 - sqrt(5)/8",
+          "sqrt(5)/8 + 3/8"
+        ],
+        [
+          "sqrt(5)/8 + 3/8",
+          "1/4",
+          "3/8 - sqrt(5)/8"
+        ],
+        [
+          "3/8 - sqrt(5)/8",
+          "sqrt(5)/8 + 3/8",
+          "1/4"
+        ]
+      ],
+      "orbits": [
+        {
+          "I6_value_exact": "52/25",
+          "native_orbit": "vertex",
+          "point_count": 12,
+          "source_Gram_eigenvalues_exact": [
+            "4/25",
+            "4/25",
+            "52/25"
+          ],
+          "tangent_curvatures_exact": [
+            "-192/25",
+            "-192/25"
+          ]
+        },
+        {
+          "I6_value_exact": "68/45",
+          "native_orbit": "face",
+          "point_count": 20,
+          "source_Gram_eigenvalues_exact": [
+            "4/9",
+            "4/9",
+            "68/45"
+          ],
+          "tangent_curvatures_exact": [
+            "64/15",
+            "64/15"
+          ]
+        },
+        {
+          "I6_value_exact": "8/5",
+          "native_orbit": "edge",
+          "point_count": 30,
+          "source_Gram_eigenvalues_exact": [
+            "2/5 - 2*sqrt(5)/25",
+            "2*sqrt(5)/25 + 2/5",
+            "8/5"
+          ],
+          "tangent_curvatures_exact": [
+            "12/5 - 12*sqrt(5)/5",
+            "12/5 + 12*sqrt(5)/5"
+          ]
+        }
+      ],
+      "total_stationary_points": 62,
+      "variables": "u=x^2,v=y^2,w=z^2; u+v+w=1"
+    },
+    "coupling_boundary": {
+      "C3_or_C5_alone_forces_general_complex_Yukawa_degeneracy": false,
+      "general_complex_Hermitian_counterexample": "3*I+2*u*u^T+i*[u]_cross has eigenvalues2,4,5 for unit u",
+      "nonstationary_probe_1_2_3_has_three_distinct_Gram_eigenvalues": true,
+      "nonstationary_probe_is_a_selected_state_or_mass_candidate": false,
+      "physical_kinetic_normalization_or_mass_map_derived": false,
+      "positive_native_family_Gram": "K6(phi)=sum_i(n_i.dot(phi))^4*n_i*n_i^T=Hess(I6)/30",
+      "real_symmetric_Gram_at_both_selected_orbits_has_a_doublet": true,
+      "real_symmetric_axis_stabilizer_commutant": "a*I+b*u*u^T; transverse pair degenerate",
+      "tangent_scalar_curvature_is_fermion_Yukawa_spectrum": false
+    },
+    "empirical_inputs": [],
+    "first_anisotropic_degree": 6,
+    "fixed_radius_selection": {
+      "negative_I6_coefficient": "twelve vertex directions; C5 stabilizer",
+      "positive_I6_coefficient": "twenty face directions; C3 stabilizer",
+      "radial_stability_or_nonzero_vacuum_selected": false
+    },
+    "homogeneous_invariant_dimensions_degrees_zero_through_six": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+    ],
+    "hypotheses": [
+      "real polynomial or Taylor potential invariant under all60 native proper rotations",
+      "no additional spurion, oriented history or matrix-valued order parameter",
+      "uniform twelve-port moment defines the tested degree-six anisotropy"
+    ],
+    "native_port_fourth_moment": "(12/5)*|phi|^4",
+    "native_port_second_moment": "4*|phi|^2",
+    "potential_evolution_or_vacuum_preparation_executed": false,
+    "same_selected_native_family_object_isometry_exact": true,
+    "single_vector_order_parameter_is_a_selected_physical_field": false,
+    "sixth_moment_exact": "8*x**6/5 + x**4*y**2*(6 - 6*sqrt(5)/5) + x**4*z**2*(6*sqrt(5)/5 + 6) + x**2*y**4*(6*sqrt(5)/5 + 6) + x**2*z**4*(6 - 6*sqrt(5)/5) + 8*y**6/5 + y**4*z**2*(6 - 6*sqrt(5)/5) + y**2*z**4*(6*sqrt(5)/5 + 6) + 8*z**6/5",
+    "subject": "one real vector in the selected neutral native family triplet"
+  },
+  "native_feedback_source": {
+    "classification": "literal fixed five-memory feedback composed with complete native repair",
+    "complete_domains": {
+      "Nambu_dimension": 2,
+      "all_feedback_word_input_columns": 128,
+      "all_padding_inputs_and_abort_branches_retained": true,
+      "fresh_blank_syndrome_service_for_reencoding": true,
+      "joint_classical_labels": 640,
+      "native_family_pair_low_register": 64,
+      "native_raw_labels": 128,
+      "new_encoder_input_columns_per_carrier": 8,
+      "new_native_output_rows_per_carrier": 512,
+      "old_decoder_syndrome_quantum_dimension": 4096,
+      "old_decoder_syndromes_erased_or_conditioned_away": false,
+      "old_memory_states": 5,
+      "selected_input_reference_columns": 6
+    },
+    "composition": {
+      "additional_final_reencoder_executed_once": true,
+      "all_joint_branch_maps_defined_by_executed_source_factors": true,
+      "all_joint_output_amplitudes_materialized": false,
+      "complete_Gram_contracts_every_raw_label_and_syndrome": true,
+      "exact_word_CPTP_and_floating_Gram_admission_are_distinct": true,
+      "ideal_comparison_maps_are_used_only_for_error_certificates": true,
+      "iterable_interface": "decoded low128 after feedback and before reencoding; that encoder is reused as the next native input encoder",
+      "retained_matrix_telescope_includes_CP_norm_amplification": true,
+      "target_projectors_are_applied_instead_of_source_words": false
+    },
+    "dimensionless_coherent_step": 0.015625,
+    "empirical_inputs": [],
+    "execution": {
+      "complete128_native_feedback_Gram_defect_diagnostic": 3.863027561998125e-12,
+      "component_dilation_allowance": 2e-08,
+      "cycle_channel_allowance": 2.0000001560000065e-07,
+      "cycle_dilation_allowance": 1.0000000280000004e-07,
+      "effective_correlated_averaging_bound_at_t1_N64": 0.07954545454545454,
+      "factor_proved_cycle_dilation_error_diagnostic": 1.8245541131971082e-10,
+      "factor_proved_prepared_dilation_error_diagnostic": 1.835683053194784e-10,
+      "fixed_budget_arithmetic": "exact rational arithmetic on the admitted binary float; one upward-rounded float export",
+      "full128_completeness_implies_identity_closeness_on_padding": false,
+      "full128_feedback_word_error_diagnostic": 1.417350562084363e-12,
+      "full128_source_unitarity_defect_diagnostic": 4.2561960704542764e-13,
+      "input_domain_for_closeness": "selected native family3 tensor Nambu2 with arbitrary untouched quantum reference",
+      "local_native_dilation_errors_diagnostic": [
+        3.7609065550530124e-11,
+        5.195397158263091e-11
+      ],
+      "local_reencoder_errors_diagnostic": [
+        4.457131846764827e-11,
+        4.690370515273554e-11
+      ],
+      "low_register_cycle_channel_allowance": 1.2000000480000012e-07,
+      "numerical_allowances_are_outward_hardware_certificates": false,
+      "prepared_six_input_dilation_allowance": 1.2000000400000008e-07,
+      "prepared_sixty_four_cycle_final_native_output_channel_allowance": 7.800020176434682e-06,
+      "retained_low_cycle_CP_norm_upper": 1.0000000800000026,
+      "six_input_preparation_error_diagnostic": 1.1128939997653543e-12,
+      "six_unknown_input_feedback_error_diagnostic": 1.3834134374046802e-12,
+      "sixty_four_cycle_geometric_amplification_sum": 64.0001612802715,
+      "sixty_four_low_cycle_telescope_channel_allowance": 7.68001966083336e-06
+    },
+    "fixed_native_ports": [
+      1,
+      5,
+      11,
+      10,
+      7
+    ],
+    "ordering": "native encoders; all C/E branches and recovery; full decoders; record memory update; controlled feedback word; fresh-syndrome native reencoders",
+    "resources_for_all_five_words": [
+      {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 7497.93216908899,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 3982,
+        "pair_code_pulses": 1158,
+        "proper_code_export_events": 3982,
+        "proper_code_load_events": 3982,
+        "proper_code_service_events": 7964,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2824,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 68
+      },
+      {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 7495.09667768618,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 3982,
+        "pair_code_pulses": 1158,
+        "proper_code_export_events": 3982,
+        "proper_code_load_events": 3982,
+        "proper_code_service_events": 7964,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2824,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 84
+      },
+      {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 7495.892137486778,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 3982,
+        "pair_code_pulses": 1158,
+        "proper_code_export_events": 3982,
+        "proper_code_load_events": 3982,
+        "proper_code_service_events": 7964,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2824,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 82
+      },
+      {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 7496.123961291278,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 3982,
+        "pair_code_pulses": 1158,
+        "proper_code_export_events": 3982,
+        "proper_code_load_events": 3982,
+        "proper_code_service_events": 7964,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2824,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 76
+      },
+      {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 7496.078425390427,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 3982,
+        "pair_code_pulses": 1158,
+        "proper_code_export_events": 3982,
+        "proper_code_load_events": 3982,
+        "proper_code_service_events": 7964,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2824,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 90
+      }
+    ],
+    "scope": {
+      "coherent_compiler_memory_controller_and_blank_services_are_declared": true,
+      "effective_tiny_time_readout_intervals_transferred_to_this_source_history": false,
+      "family_pair_is_separate_and_neutral_under_internal_gauge_currents": true,
+      "finite_cycle_source_error_is_effective_averaging_error": false,
+      "full_physical_matter_or_spacetime_field_history_executed": false,
+      "implements_the_existing_fixed_failing_kernel": true,
+      "physical_mass_scale_or_measured_hierarchy_derived": false,
+      "primitive_C_E_alone_produces_the_feedback": false
+    },
+    "source_word": "S diag(exp(-ih) at0, exp(ih) at64,1 elsewhere) S_inverse; S prepares the native ray and the Nambu X eigenbasis"
+  },
+  "native_fixed_basis_readout": {
+    "burnin_steps": 8,
+    "burnin_uses_fresh_known_native_work_before_each_science_probe": true,
+    "classification": "fixed-basis native-record recovery of a specified feedback coefficient",
+    "complete_domains": {
+      "all_native_quantum_rows_defined_by_retained_factors": true,
+      "final_decoder_syndrome_dimension": 4096,
+      "fixed_probe_settings": 9,
+      "joint_records_per_probe": 81920,
+      "local_pointer_quantum_output_dimension": 2,
+      "native_memory_labels": 640,
+      "old_decoder_syndrome_dimension": 4096,
+      "pointer_quantum_output_dimension": 128,
+      "raw_pointer_labels": 128,
+      "syndromes_are_classical_measured_labels": false
+    },
+    "dimensionless_model_step_exact": "1/64",
+    "execution": {
+      "all128_pointer_labels_and_native_syndrome_outputs_retained": true,
+      "burnin_probability_normalization_defect_diagnostic": 2.5213164889237305e-12,
+      "complete_record_l1_reconstruction_error_diagnostic": 0.0,
+      "inferred_kernel": {
+        "antisymmetric_inversion_diagnostic": 2.245712523518844e-05,
+        "eigenvalue_intervals": [
+          [
+            0.0017032305940808596,
+            0.0024244633690960987
+          ],
+          [
+            0.06329428150410879,
+            0.06401551427912403
+          ],
+          [
+            0.9338473980693759,
+            0.9345686308443911
+          ]
+        ],
+        "matrix_eigenvectors_enter_probes_or_inverse": false,
+        "normalization_defect_diagnostic": 2.2342350192161575e-11,
+        "ordered_ratio_intervals": [
+          [
+            26.10651177943204,
+            37.584760690415905
+          ],
+          [
+            385.17694677215843,
+            548.7035249908288
+          ]
+        ]
+      },
+      "local_pointer_dilation_error_diagnostic": 1.0911735564818151e-15,
+      "maximum_full128_detector_error_diagnostic": 6.016265252339864e-12,
+      "native_roundtrip_errors_diagnostic": [
+        1.0337861928254314e-12,
+        1.0914546075633677e-12
+      ]
+    },
+    "finite_step_identity": "-contrast/(2*sin(h))=Y+(cos(h)-1)*Z; Z=sum pi*v*(v^3)^T, norm(sym Z)<=1",
+    "initial_memory": 0,
+    "inverse_certificate": [
+      "real rank-one P=v*v^T gives contrast_fg=-2*sin(h)*sum pi*P_gf*(1+(cos(h)-1)*P_ff)",
+      "norm(v*(v^3)^T)<=1, so norm(sym Z)<=1 for every probability mixture",
+      "sin(h)<=s0=h-h^3/6+h^5/120 and s0-sin(h)<=h^7/5040",
+      "norm(recovered symmetric kernel-Y)<=h^2/2+h^7/(5040*s0)+3*contrast_error/(2*s0)",
+      "fresh probe preparation after burn-in makes memory and probe a product without assuming stationary memory",
+      "all old/final native syndromes and all pointer outcomes enter the source factors and probability contractions"
+    ],
+    "probe_pairs": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "rational_contrast_normalizer_exact": "2013184001/128849018880",
+    "scope": {
+      "Nambu_control_and_pointer_are_declared_register_operations": true,
+      "charge_conserving_physical_CAR_detector_derived": false,
+      "complete_detector_record_laws_are_experimental_finite_shot_samples": false,
+      "empirical_packet_enters_apparatus_or_inverse": false,
+      "fresh_blank_and_coherent_control_services_are_declared": true,
+      "mass_eigenvectors_or_pole_values_enter_probes": false,
+      "numerical_admissions_are_outward_hardware_certificates": false,
+      "physical_interacting_particle_poles_or_absolute_mass_scale_recovered": false,
+      "target": "real symmetric averaged coefficient of the existing five-memory rank-one law"
+    },
+    "source_and_inversion_budget": {
+      "burnin_ideal_mixing_l1_bound": 4.651360787227558e-09,
+      "burnin_source_channel_error": 1.920001254400529e-06,
+      "complete_contrast_error_allowance": 2.4846538401935288e-06,
+      "finite_step_symmetric_operator_bias_upper": 0.00012207031250288742,
+      "readout_source_channel_allowance": 5.600001472000243e-07,
+      "recovered_kernel_operator_error_upper": 0.00036061638750761954
+    },
+    "source_resources": {
+      "all_interferometer_input_columns": 128,
+      "controlled_X_interferometer": {
+        "identity_phase_pulses": 0,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 2514.059521035232,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 1344,
+        "pair_code_pulses": 384,
+        "proper_code_export_events": 1344,
+        "proper_code_load_events": 1344,
+        "proper_code_service_events": 2688,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 960,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "geometric_inverse": {
+        "identity_phase_pulses": 6,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 30509.57692713481,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 6,
+        "native_pulses": 16584,
+        "pair_code_pulses": 4644,
+        "proper_code_export_events": 16584,
+        "proper_code_load_events": 16584,
+        "proper_code_service_events": 33168,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 11940,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "local_binary_pointer": {
+        "committed_classical_bits": 1,
+        "fresh_pointer_blanks": 1,
+        "identity_phase_pulses": 4,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 21.991148575128552,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 2,
+        "native_pulses": 16,
+        "pair_code_pulses": 2,
+        "physical_service_error_certified": false,
+        "proper_code_export_events": 16,
+        "proper_code_load_events": 16,
+        "proper_code_service_events": 32,
+        "reference_columns": 2,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 14,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "work_preparations": 0,
+        "work_qubits": 1,
+        "zero_angle_requests": 2
+      },
+      "pointer_repetitions": 7,
+      "routing_words": [
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 0.0,
+          "maximum_numerical_valid_code_leakage": 0.0,
+          "maximum_work_qubits": 0,
+          "native_pulses": 0,
+          "pair_code_pulses": 0,
+          "proper_code_export_events": 0,
+          "proper_code_load_events": 0,
+          "proper_code_service_events": 0,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 0,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 6.283185307179586,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 3,
+          "pair_code_pulses": 1,
+          "proper_code_export_events": 3,
+          "proper_code_load_events": 3,
+          "proper_code_service_events": 6,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 2,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 6.283185307179586,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 3,
+          "pair_code_pulses": 1,
+          "proper_code_export_events": 3,
+          "proper_code_load_events": 3,
+          "proper_code_service_events": 6,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 2,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 9.42477796076938,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 5,
+          "pair_code_pulses": 1,
+          "proper_code_export_events": 5,
+          "proper_code_load_events": 5,
+          "proper_code_service_events": 10,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 4,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 3.141592653589793,
+          "maximum_numerical_valid_code_leakage": 4.5137645435599554e-17,
+          "maximum_work_qubits": 4,
+          "native_pulses": 2,
+          "pair_code_pulses": 0,
+          "proper_code_export_events": 2,
+          "proper_code_load_events": 2,
+          "proper_code_service_events": 4,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 2,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 15.707963267948966,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 8,
+          "pair_code_pulses": 2,
+          "proper_code_export_events": 8,
+          "proper_code_load_events": 8,
+          "proper_code_service_events": 16,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 6,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 9.42477796076938,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 5,
+          "pair_code_pulses": 1,
+          "proper_code_export_events": 5,
+          "proper_code_load_events": 5,
+          "proper_code_service_events": 10,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 4,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 15.707963267948966,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 7,
+          "native_pulses": 8,
+          "pair_code_pulses": 2,
+          "proper_code_export_events": 8,
+          "proper_code_load_events": 8,
+          "proper_code_service_events": 16,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 6,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        },
+        {
+          "identity_phase_pulses": 1,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 3.141592653589793,
+          "maximum_numerical_valid_code_leakage": 4.5137645435599554e-17,
+          "maximum_work_qubits": 5,
+          "native_pulses": 2,
+          "pair_code_pulses": 0,
+          "proper_code_export_events": 2,
+          "proper_code_load_events": 2,
+          "proper_code_service_events": 4,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 2,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 0
+        }
+      ]
+    },
+    "stationary_weights_inserted_as_preparation_inputs": false
+  },
+  "native_loop_holonomy": {
+    "actual_family_C3_attachment": {
+      "full_A5_geometric3_plus3prime_equals_family3_tensor_trivial_orientation2": false,
+      "native_face_rotation": [
+        1,
+        7,
+        4,
+        2,
+        3,
+        8,
+        11,
+        0,
+        10,
+        6,
+        5,
+        9
+      ],
+      "order_three_orthogonal_family_action_exact": [
+        [
+          "-1/2",
+          "-1/4 + sqrt(5)/4",
+          "1/4 + sqrt(5)/4"
+        ],
+        [
+          "1/4 - sqrt(5)/4",
+          "1/4 + sqrt(5)/4",
+          "-1/2"
+        ],
+        [
+          "-sqrt(5)/4 - 1/4",
+          "-1/2",
+          "1/4 - sqrt(5)/4"
+        ]
+      ],
+      "physical_family_copy_is_neutral_under_internal_gauge_currents": true,
+      "restriction_is_regular_C3": true,
+      "same_current_Higgs_family_substitution": "Y=C^2 in the already verified generic complex-family identity",
+      "trace": "0"
+    },
+    "conditional_mass_contract": {
+      "actual_native_GNS_orientation_attachment_executed_here": false,
+      "circulant": "C=a*I+b*R+conjugate(b)*R^2, a>0",
+      "complete_native_connection_transport_words_executed": false,
+      "equal_link_connection_gauge": "delta=loop_phase/3 modulo2pi/3",
+      "fixed_single_face_rules": {
+        "spin_half": "pi/30",
+        "spin_one": "pi/15"
+      },
+      "interacting_poles_or_physical_clock_derived": false,
+      "positive_chamber": "|delta|<=pi/12 modulo2pi/3",
+      "positive_chamber_reason": "For 0<=delta<=pi/3 the smallest root is 1+sqrt(2)*cos(delta+2pi/3); this root decreases to zero at delta=pi/12. Orientation reversal preserves the unordered spectrum.",
+      "positive_spin_half_lattice_residues_mod20": [
+        0,
+        1,
+        2,
+        18,
+        19
+      ],
+      "positivity_and_balance_select_a_unique_continuous_phase": false,
+      "source_selected_physical_square_root_mass_map": false,
+      "supplied_balance": "|b/a|=1/sqrt(2)",
+      "supplied_mass_map": "Y=C^2 with canonical family kinetics; a common Higgs/clock scale is separate",
+      "unordered_positive_phase_classes": [
+        "0",
+        "pi/30",
+        "pi/15"
+      ]
+    },
+    "conditional_spectra": [
+      {
+        "conditional_mass_ratio_diagnostics": [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            67.94112549695429,
+            67.94112549695429
+          ]
+        ],
+        "conditional_mass_ratios_after_one_exact": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2276729345603980506876319315788826623882420588177436997184766415053352396399236/33510327198009746561840342105586688058730147044359249296191603763338099099809",
+            "259041205544275115449038997707528718095087979930965036969011660456952181084344804/3812730561195775608813834479568974285791994982741259242252915114238045271086201"
+          ]
+        ],
+        "conditional_root_cubic": "x^3-3*x^2+(3/2)*x-(-1/2+cos(3*delta)/sqrt(2))",
+        "equal_link_phase": "0",
+        "positive_root_intervals_exact": [
+          [
+            "5857864376269049511983112757903019214303/20000000000000000000000000000000000000000",
+            "183058261758407797249472273684469350447/625000000000000000000000000000000000000"
+          ],
+          [
+            "5857864376269049511983112757903019214303/20000000000000000000000000000000000000000",
+            "183058261758407797249472273684469350447/625000000000000000000000000000000000000"
+          ],
+          [
+            "754441738241592202750527726315530649553/312500000000000000000000000000000000000",
+            "24142135623730950488016887242096980785697/10000000000000000000000000000000000000000"
+          ]
+        ],
+        "signed_Koide_identity_is_physical_within_this_positive_mass_map": true
+      },
+      {
+        "conditional_mass_ratio_diagnostics": [
+          [
+            6.336885931612975,
+            6.336885931648142
+          ],
+          [
+            203.3723808378798,
+            203.3723808385816
+          ]
+        ],
+        "conditional_mass_ratios_after_one_exact": [
+          [
+            "31412727677399413018018816/4957123738126637848019769",
+            "96952863202126815776656/15299764623806416939969"
+          ],
+          [
+            "112015784081198334401449984/550791526458515316446641",
+            "28003946020320751102253956/137697881614257752459721"
+          ]
+        ],
+        "conditional_root_cubic": "x^3-3*x^2+(3/2)*x-(-1/2+cos(3*delta)/sqrt(2))",
+        "equal_link_phase": "pi/30",
+        "positive_root_intervals_exact": [
+          [
+            "371076651939/2199023255552",
+            "742153303879/4398046511104"
+          ],
+          [
+            "175147057847/412316860416",
+            "233529410463/549755813888"
+          ],
+          [
+            "165371108527/68719476736",
+            "2645937736433/1099511627776"
+          ]
+        ],
+        "signed_Koide_identity_is_physical_within_this_positive_mass_map": true
+      },
+      {
+        "conditional_mass_ratio_diagnostics": [
+          [
+            109.88530938847663,
+            109.88530938964375
+          ],
+          [
+            1969.2846422610198,
+            1969.2846422791972
+          ]
+        ],
+        "conditional_mass_ratios_after_one_exact": [
+          [
+            "6130723122227613201870400/55792017662285668801801",
+            "13794127025041842060722176/125532039739079839775625"
+          ],
+          [
+            "109870363543094728590272400/55792017662285668801801",
+            "27467590885794645960536464/13948004415453315530625"
+          ]
+        ],
+        "conditional_root_cubic": "x^3-3*x^2+(3/2)*x-(-1/2+cos(3*delta)/sqrt(2))",
+        "equal_link_phase": "pi/15",
+        "positive_root_intervals_exact": [
+          [
+            "118101669825/2199023255552",
+            "236203339651/4398046511104"
+          ],
+          [
+            "309503713685/549755813888",
+            "14507986579/25769803776"
+          ],
+          [
+            "2620476621045/1099511627776",
+            "1310238310523/549755813888"
+          ]
+        ],
+        "signed_Koide_identity_is_physical_within_this_positive_mass_map": true
+      }
+    ],
+    "finite_theorem": "Lean/ObserverPatchHolography/KoideCirculant.lean",
+    "integral_closed_walk_certificate": {
+      "all_integer_closed_edge_chains_covered": true,
+      "connected_spanning_tree_edges": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        12,
+        9,
+        10,
+        11
+      ],
+      "face_basis_omits_last_face": true,
+      "face_decomposition_ambiguity": "adding every oriented face changes total coefficient by20 and phase by2pi",
+      "integer_cycle_coefficients_from_integer_inverse": true,
+      "native_edges": 30,
+      "non_tree_edge_indices": [
+        5,
+        6,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "reduced_face_boundary_determinant_exact": -1,
+      "spin_half_closed_walk_phase_lattice": "integer multiples of pi/10 modulo2pi",
+      "spin_one_closed_walk_phase_lattice": "integer multiples of pi/5 modulo2pi"
+    },
+    "primary_geometric_phase_sources": [
+      "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.41.42",
+      "https://arxiv.org/abs/quant-ph/9907080"
+    ],
+    "separate_heldout_comparison": {
+      "broad_lepton_ratio_windows": [
+        [
+          "206",
+          "207"
+        ],
+        [
+          "3470",
+          "3485"
+        ]
+      ],
+      "comparison_only_source": "https://pdg.lbl.gov/2025/download/db2024.pdf",
+      "complete_balanced_geometric_loop_class_excluded": true,
+      "conditional_phase_classes": [
+        {
+          "joint_pass": false,
+          "phase": "0",
+          "window_intersections": [
+            false,
+            false
+          ]
+        },
+        {
+          "joint_pass": false,
+          "phase": "pi/30",
+          "window_intersections": [
+            false,
+            false
+          ]
+        },
+        {
+          "joint_pass": false,
+          "phase": "pi/15",
+          "window_intersections": [
+            false,
+            false
+          ]
+        }
+      ],
+      "continuously_chosen_or_refined_connection_phases_excluded": false,
+      "phase_or_balance_adjusted_after_comparison": false,
+      "windows_are_experimental_standard_uncertainties": false
+    },
+    "source_connection": {
+      "actual_oriented_faces_checked": 20,
+      "faces": [
+        [
+          0,
+          1,
+          7
+        ],
+        [
+          0,
+          5,
+          1
+        ],
+        [
+          0,
+          7,
+          10
+        ],
+        [
+          0,
+          10,
+          11
+        ],
+        [
+          0,
+          11,
+          5
+        ],
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          1,
+          8,
+          7
+        ],
+        [
+          1,
+          9,
+          8
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          4,
+          11
+        ],
+        [
+          2,
+          6,
+          3
+        ],
+        [
+          2,
+          10,
+          6
+        ],
+        [
+          2,
+          11,
+          10
+        ],
+        [
+          3,
+          6,
+          8
+        ],
+        [
+          3,
+          8,
+          9
+        ],
+        [
+          3,
+          9,
+          4
+        ],
+        [
+          4,
+          5,
+          11
+        ],
+        [
+          4,
+          9,
+          5
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          6,
+          10,
+          7
+        ]
+      ],
+      "native_adjacent_dot_exact": "1/sqrt(5)",
+      "native_oriented_triple_squared_exact": "(10+2*sqrt(5))/25",
+      "native_port_directions": 12,
+      "normalized_face_phase_exact": "sqrt(2*sqrt(5) + 10)/4 + I*(-1/4 + sqrt(5)/4)",
+      "phase_argument_strictly_between_zero_and_pi_over4": true,
+      "phase_fifth_power_exact": "I",
+      "phase_order": 20,
+      "source_phase_depends_on_measured_masses": false,
+      "spin_half_oriented_face_phase": "pi/10",
+      "spin_half_projector": "(I+n_i dot sigma)/2",
+      "spin_one_oriented_face_phase": "pi/5",
+      "spin_one_rule": "symmetric square of the spin-half coherent line; Bargmann phase doubles",
+      "triangle_Bargmann_identity": "Tr(F_i F_j F_k)=(1+n_i.n_j+n_j.n_k+n_k.n_i+i*n_i.(n_j cross n_k))/4"
+    }
+  },
+  "noncommuting_record_memory": {
+    "averaging": {
+      "all_initial_classical_memory_reference_bound": "[4pt+4(1+p)t^2]/[N(1-p)]",
+      "stationary_product_removes_linear_term": true,
+      "zero_sum_memory_contraction": "T eta=p S eta; S is a convex sum of two permutations, ||T eta||1<=p||eta||1"
+    },
+    "execution": {
+      "averaged_channel_diamond_upper_diagnostic": 0.027219775734338664,
+      "complete_stationary_product_finite_CQ_evolution": true,
+      "dimensionless_model_time": 1,
+      "iid_replacement_of_correlated_memory": false,
+      "pulse_unitarity_defect_diagnostic": 2.257121151444911e-16,
+      "stationary_product_averaging_bound": 0.07386363636363637,
+      "steps": 64
+    },
+    "kernel": {
+      "Y_exact": [
+        [
+          "1/2 - 432*sqrt(5)/4325",
+          "1463*sqrt(5)/8650",
+          "sqrt(5)/8650"
+        ],
+        [
+          "1463*sqrt(5)/8650",
+          "1729*sqrt(5)/17300 + 1729/3460",
+          "0"
+        ],
+        [
+          "sqrt(5)/8650",
+          "0",
+          "1/3460 - sqrt(5)/17300"
+        ]
+      ],
+      "characteristic_polynomial": "x**3 - x**2 + 213997*x/3741125 - 53067/3236073125 + 53067*sqrt(5)/16180365625",
+      "proof": "deterministic rational Sturm bisection in Q(sqrt5); three positive sign-changing intervals exhaust the cubic",
+      "rank": 3,
+      "ratios_after_one_exact": [
+        [
+          "2226200992/5824313",
+          "66786029761/174729389"
+        ],
+        [
+          "516275434313/87364695",
+          "1032550868627/174729389"
+        ]
+      ],
+      "ratios_diagnostic": [
+        [
+          382.22550745469897,
+          382.2255096479505
+        ],
+        [
+          5909.428680693042,
+          5909.4287145192275
+        ]
+      ],
+      "root_intervals_exact": [
+        [
+          "174729389/1099511627776",
+          "87364695/549755813888"
+        ],
+        [
+          "1043531715/17179869184",
+          "66786029761/1099511627776"
+        ],
+        [
+          "516275434313/549755813888",
+          "1032550868627/1099511627776"
+        ]
+      ],
+      "three_positive_couplings": true
+    },
+    "rule": {
+      "C_edge_rotation": [
+        1,
+        0,
+        3,
+        2,
+        6,
+        7,
+        4,
+        5,
+        11,
+        10,
+        9,
+        8
+      ],
+      "C_event": [
+        0,
+        1
+      ],
+      "C_probability_exact": "1/12",
+      "E_edge_rotation": [
+        3,
+        9,
+        10,
+        0,
+        7,
+        8,
+        11,
+        4,
+        5,
+        1,
+        2,
+        6
+      ],
+      "E_event": [
+        0,
+        5
+      ],
+      "E_probability_exact": "1/12",
+      "E_selection": "first positive coin0 branch moving a primitive matching state; otherwise first positive coin0 branch",
+      "all12_memory_inputs_retained": true,
+      "coincidence_exact": "1/144",
+      "complete_record_memory_labels": 1536,
+      "moving_E_raw_labels": [
+        5
+      ],
+      "raw_record_labels": 128,
+      "reset_port": 2,
+      "stationary_exact": [
+        "39/6055",
+        "3/6055",
+        "5583/6055",
+        "853/12110",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1/12110",
+        "3/6055",
+        "0"
+      ],
+      "supported_E_raw_labels": [
+        0,
+        4,
+        5
+      ],
+      "transition_exact": [
+        [
+          "0",
+          "11/144",
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "11/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "0"
+        ],
+        [
+          "11/12",
+          "11/12",
+          "11/12",
+          "143/144",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "133/144",
+          "11/12",
+          "11/12"
+        ],
+        [
+          "0",
+          "1/144",
+          "11/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "11/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "0",
+          "0",
+          "0",
+          "1/144"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "11/144"
+        ],
+        [
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/144",
+          "0",
+          "0",
+          "0",
+          "11/144",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "unreachable_stationary_ports_retained": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "unsupported_E_0_1_negative_control_weight": "0",
+      "update": "C failure resets2; C success applies gC, then gE only on selected E event"
+    },
+    "scope": {
+      "empirical_mass_inputs_to_source": false,
+      "fixed_rule_is_unchanged_C_E_alone": false,
+      "measured_spectrum_claimed": false,
+      "physical_fermion_mass_map_derived": false,
+      "sector_dependent_Higgs_couplings_derived": false,
+      "source_native_pulse_history_executed": false
+    },
+    "separate_comparison": {
+      "joint_pass": false,
+      "ratio_window_intersections": [
+        false,
+        false
+      ],
+      "source": "https://pdg.lbl.gov/2025/download/db2024.pdf",
+      "windows_are_experimental_standard_uncertainties": false
+    }
+  },
+  "operational_family_band": {
+    "actual_native_composition": {
+      "all_inputs_and_all_raw_records_in_composition": true,
+      "ancillary_quantum_reference_dimension_sufficient": 36,
+      "classical_label_count_definition": "128 raw native C/E labels times605 cooling labels; both64-valued decoder syndromes remain quantum outputs",
+      "coherent_cooling_factors_are_actual_compiled_source_outputs": true,
+      "complete_native_joint_raw_records": 128,
+      "complete_native_plus_cooling_Gram_defect_diagnostic": 2.018739795164533e-12,
+      "cooling_source_words_executed": true,
+      "decoder_syndromes_are_measured_classical_record_labels": false,
+      "finite_cooling_dilation_error_propagated_with_arbitrary_reference": true,
+      "fixed_native_composition_dilation_allowance": 6.000000120000001e-08,
+      "fixed_native_plus_cooling_channel_allowance": 1.200000060000002e-07,
+      "full64_input_Gram_defect_diagnostic": 3.1953545951618282e-12,
+      "full64_native_Gram_check_proves_identity_extension_closeness": false,
+      "full_encoded_register_inputs": 64,
+      "full_logical_native_plus_cooling_records": 73856,
+      "full_register_native_plus_cooling_records": 77440,
+      "joint_decoder_syndrome_quantum_output_dimension": 4096,
+      "joint_output_definition": "decoded local512-row factors tensor; cooling acts on both low3-bit registers, identity on every retained high-syndrome row",
+      "local_decoded_input_columns_retained": 8,
+      "local_high_syndrome_values_retained": 64,
+      "local_native_rows_retained": 512,
+      "logical36_input_Gram_defect_diagnostic": 3.1746317359658077e-12,
+      "matter_field_history_executed": false,
+      "native_C_E_and_decoder_words_executed": true,
+      "native_C_dilation_error_diagnostic": 3.7609065550530124e-11,
+      "native_E_dilation_error_diagnostic": 5.195397158263091e-11,
+      "native_joint_weights_exact": [
+        "5/36",
+        "0",
+        "0",
+        "0",
+        "5/144",
+        "5/144",
+        "0",
+        "0",
+        "5/36",
+        "0",
+        "0",
+        "0",
+        "5/144",
+        "0",
+        "5/144",
+        "0",
+        "1/36",
+        "0",
+        "0",
+        "0",
+        "1/144",
+        "1/144",
+        "0",
+        "0",
+        "1/36",
+        "0",
+        "0",
+        "0",
+        "1/144",
+        "0",
+        "1/144",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "5/36",
+        "0",
+        "0",
+        "0",
+        "5/144",
+        "5/144",
+        "0",
+        "0",
+        "5/36",
+        "0",
+        "0",
+        "0",
+        "5/144",
+        "0",
+        "5/144",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1/36",
+        "0",
+        "0",
+        "0",
+        "1/144",
+        "1/144",
+        "0",
+        "0",
+        "1/36",
+        "0",
+        "0",
+        "0",
+        "1/144",
+        "0",
+        "1/144",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "native_plus_cooling_error_bound_input_domain": "all36 protected logical pair inputs with an arbitrary untouched quantum reference",
+      "numerical_allowances_are_outward_or_physical_hardware_bounds": false,
+      "source_cooling": {
+        "all16_selector_outputs_and_quantum_rows_retained": true,
+        "all605_raw_cooling_records_retained": true,
+        "all64_unknown_input_and_reference_columns_executed": true,
+        "cooling_channel_allowance": 4.00000004e-08,
+        "cooling_dilation_allowance": 2e-08,
+        "full64_ray_preparation_unitarity_defect_diagnostic": 9.845900784985881e-14,
+        "full64_source_cooling_Gram_defect_diagnostic": 3.499119933828064e-12,
+        "nonzero_source_coordinate_read_leakage_is_propagated": true,
+        "selector_abort_full_input_Frobenius_probability_diagnostic": 1.2919026274779016e-28,
+        "source_cooling_dilation_error_diagnostic": 8.589759518963034e-12,
+        "target_rays_inserted_in_place_of_source_preparations": false
+      },
+      "tensor_dilation_error_diagnostic": 8.956303713511498e-11,
+      "unknown_native_logical_inputs": 36
+    },
+    "architecture": {
+      "cooling_service_is_an_added_coherent_repair_choice": true,
+      "family_pair_is_separate_from_gauge_current_pair": true,
+      "gauge_action_on_family_pair": "identity; neutral ancillary family object",
+      "native_twelve_port_incidence_unchanged": true,
+      "near_class_rule": "order5 rotations carrying ten ports to adjacent ports",
+      "physical_family_role_requires_the_declared_matter_tensor_attachment": true,
+      "preserved_band_rule": "largest class-sum eigenvalue outside the invariant sector",
+      "unchanged_C_E_selects_the_band": false
+    },
+    "classification": "specified recorded cooling selects a computed persistent family band",
+    "coefficient_realization": {
+      "all_twelve_coefficient_inputs_realized": true,
+      "coefficient_band_dimensions": [
+        1,
+        3,
+        3,
+        5
+      ],
+      "family_dimension_inserted_into_Reynolds_producer": false,
+      "isometry36_by12_exact": [
+        [
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40"
+        ],
+        [
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40"
+        ],
+        [
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20"
+        ],
+        [
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0"
+        ],
+        [
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40"
+        ],
+        [
+          "0",
+          "sqrt(2)/2",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20"
+        ],
+        [
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40"
+        ],
+        [
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0"
+        ],
+        [
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20"
+        ],
+        [
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40"
+        ],
+        [
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20"
+        ],
+        [
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0"
+        ],
+        [
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40"
+        ],
+        [
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20"
+        ],
+        [
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40"
+        ],
+        [
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0"
+        ],
+        [
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40"
+        ],
+        [
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0"
+        ],
+        [
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0"
+        ],
+        [
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0"
+        ],
+        [
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "0",
+          "0",
+          "sqrt(2)/2"
+        ],
+        [
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20"
+        ],
+        [
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "0",
+          "0",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20"
+        ],
+        [
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40"
+        ],
+        [
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "0",
+          "0",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "0",
+          "0",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40"
+        ],
+        [
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "sqrt(5 - sqrt(5))/20 + sqrt(sqrt(5) + 5)/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(sqrt(5) + 5)/20 - sqrt(5 - sqrt(5))/20",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "-sqrt(5)*sqrt(sqrt(5) + 5)/40 + sqrt(5 - sqrt(5))/40 + sqrt(sqrt(5) + 5)/40 + sqrt(5)*sqrt(5 - sqrt(5))/40",
+          "-sqrt(5)*sqrt(5 - sqrt(5))/40 - sqrt(sqrt(5) + 5)/40 - sqrt(5 - sqrt(5))/40 + sqrt(5)*sqrt(sqrt(5) + 5)/40",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "sqrt(2)/2",
+          "sqrt(2)/2",
+          "0"
+        ]
+      ],
+      "native_class_operator_equals_two_adjacency_plus_two_identity": true,
+      "native_coefficient_projector_equals_tested_finite_family_band": true,
+      "remaining_native_dimensions_retained": 24,
+      "reynolds_normalization_squared": "sqrt(5) + 5",
+      "reynolds_seed_color_pair_index": 8,
+      "reynolds_seed_port": 0
+    },
+    "complete_native_spectrum": {
+      "characteristic_polynomial": "x**20*(x - 12)**2*(x + 3)**8*(x**2 - 4*x - 16)**3",
+      "computed_persistent_dimension": 3,
+      "dimension": 36,
+      "eigenvalues_and_dimensions": [
+        [
+          "-3",
+          8
+        ],
+        [
+          "2 - 2*sqrt(5)",
+          3
+        ],
+        [
+          "0",
+          20
+        ],
+        [
+          "2 + 2*sqrt(5)",
+          3
+        ],
+        [
+          "12",
+          2
+        ]
+      ],
+      "invariant_sector_dimension": 2,
+      "near_class_size": 12,
+      "retained_complement_dimension": 33,
+      "selected_eigenvalue": "2 + 2*sqrt(5)"
+    },
+    "complete_recorded_cooling": {
+      "all60_classical_record_covariance_actions_exact": true,
+      "all_register_outcomes": 605,
+      "complete_register_dimension": 64,
+      "complete_source_logical_outcomes": 577,
+      "full36_completeness_exact": true,
+      "ideal_logical_outcomes": 433,
+      "postselection_or_hidden_complement_removal": false,
+      "preserve_map": "P",
+      "record_action": "port->g(port), color_pair->axis(g) tensor axis(g)",
+      "reset_maps": "|a_port><color|Q/sqrt(tr(P)); all12ports and36colors",
+      "reset_records_retain_the_removed_input_color_label": true,
+      "selector_abort_outcomes_zero_in_ideal_limit": 144,
+      "terminal_padding_outcomes": 28,
+      "unread_map": "P rho P+Tr(Q rho)P/tr(P)"
+    },
+    "cooling_source_resources": {
+      "band_pointer": {
+        "committed_classical_bits": 1,
+        "fresh_pointer_blanks": 1,
+        "identity_phase_pulses": 16,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 65064.592531774244,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 7,
+        "native_pulses": 35228,
+        "pair_code_pulses": 9930,
+        "physical_service_error_certified": false,
+        "proper_code_export_events": 35228,
+        "proper_code_load_events": 35228,
+        "proper_code_service_events": 70456,
+        "reference_columns": 64,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 25298,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "work_preparations": 0,
+        "work_qubits": 6,
+        "zero_angle_requests": 64
+      },
+      "coordinate_pointer_repetitions_per_Q_branch": 6,
+      "each_full64_ray_preparation": [
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1731.5826517195499,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 9
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1731.2703902764504,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 2
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1731.8771760308239,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 2
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1731.7612641285737,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 5
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.1649060181446,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 17
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1729.8526445750451,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 10
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.4594303294186,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 10
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.3435184271684,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 13
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.0717620663202,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 13
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1729.7595006232207,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 6
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.3662863775944,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 6
+        },
+        {
+          "identity_phase_pulses": 0,
+          "initialization_storage_readout_physical_costs_included": false,
+          "integrated_processor_norm_upper": 1730.2503744753442,
+          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_work_qubits": 6,
+          "native_pulses": 963,
+          "pair_code_pulses": 258,
+          "proper_code_export_events": 963,
+          "proper_code_load_events": 963,
+          "proper_code_service_events": 1926,
+          "service_failure_outcomes_retained": true,
+          "single_code_pulses": 705,
+          "valid_code_failure_probability_in_exact_arithmetic": 0,
+          "zero_angle_requests": 9
+        }
+      ],
+      "no_target_vector_replaces_the_finite_source_postmeasurement_state": true,
+      "one_bit_coordinate_pointer": {
+        "committed_classical_bits": 1,
+        "fresh_pointer_blanks": 1,
+        "identity_phase_pulses": 4,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 21.991148575128552,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 2,
+        "native_pulses": 16,
+        "pair_code_pulses": 2,
+        "physical_service_error_certified": false,
+        "proper_code_export_events": 16,
+        "proper_code_load_events": 16,
+        "proper_code_service_events": 32,
+        "reference_columns": 2,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 14,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "work_preparations": 0,
+        "work_qubits": 1,
+        "zero_angle_requests": 2
+      },
+      "one_bit_reset_flip": {
+        "identity_phase_pulses": 1,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 3.141592653589793,
+        "maximum_numerical_valid_code_leakage": 4.5137645435599554e-17,
+        "maximum_work_qubits": 1,
+        "native_pulses": 2,
+        "pair_code_pulses": 0,
+        "proper_code_export_events": 2,
+        "proper_code_load_events": 2,
+        "proper_code_service_events": 4,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 2,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 0
+      },
+      "selector_pointer_repetitions_per_valid_coordinate_branch": 4,
+      "selector_preparation": {
+        "identity_phase_pulses": 0,
+        "initialization_storage_readout_physical_costs_included": false,
+        "integrated_processor_norm_upper": 240.94731770828957,
+        "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+        "maximum_work_qubits": 4,
+        "native_pulses": 147,
+        "pair_code_pulses": 34,
+        "proper_code_export_events": 147,
+        "proper_code_load_events": 147,
+        "proper_code_service_events": 294,
+        "service_failure_outcomes_retained": true,
+        "single_code_pulses": 113,
+        "valid_code_failure_probability_in_exact_arithmetic": 0,
+        "zero_angle_requests": 4
+      },
+      "source_basis_columns_for_band_read_and_each_ray_unitary": 64
+    },
+    "empirical_inputs": [],
+    "persistence": {
+      "Heisenberg_fixed_operator_system": "B_P+(Tr(B_P)/tr(P))*Q",
+      "Schrodinger_fixed_states": "all density matrices supported on P",
+      "coherent_superpositions_and_external_references_within_P_preserved": true,
+      "complement_removed_from_full_record_accounting": false,
+      "decay_eigenvalues_identified_as_particle_masses": false,
+      "effective_protected_output_algebra": "End(range(P))",
+      "full_Heisenberg_fixed_system_closed_under_ordinary_product": false,
+      "protected_output_complex_operator_dimension": 9,
+      "terminal_padding_flags_are_continuing_family_states": false,
+      "terminal_selector_abort_flags_are_continuing_family_states": false
+    },
+    "scope": {
+      "coherent_compiler_pointer_and_blank_services_are_declared": true,
+      "operational_coefficient_band_on_actual_correctable_pair": true,
+      "particle_mass_spectrum_or_fermion_statistics_derived": false,
+      "physical_family_count_forced_by_incidence_without_this_repair_choice": false,
+      "source_pulses_for_cooling_instrument_executed_on_unknown64_inputs": true
+    }
+  },
   "record_channel": {
     "complete_instrument_branches": 640,
     "finite_step_is_unitary_on_marginal_quantum_system": false,
@@ -1819,13 +4972,14 @@
     "absolute_mass_scale_derived": false,
     "all_three_species_coefficients_separately_fitted": false,
     "complete_effective_CQ_instrument_executed": true,
-    "finite_native512_row_feedback_history_compiled_here": false,
+    "finite_native512_row_feedback_history_compiled_here": true,
     "fixed_repair_law_determines_its_dimensionless_family_kernel": true,
     "measured_mass_spectrum_claimed": false,
     "physical_fermion_statistics_or_spin_derived_by_memory": false,
     "simulated_record_laws_are_finite_shot_experimental_data": false
   },
   "source_bindings": {
+    "Lean/ObserverPatchHolography/KoideCirculant.lean": "e2afb770c07dae918a4dd77e00c5e2aee9f2e108cf0da4706406b537678dc577",
     "Lean/QFT/SourceRecurrenceClock.lean": "0670b5a254adde9cb3cb2bdadaf13149b462323a9c753bcaf45757c26cf50c33",
     "Lean/Screen/A5FamilyBand.lean": "63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6",
     "Lean/Screen/A5PortAction.lean": "5efd9ea0ca2d12f8beb3f20111e80d748984ec0cbef484dd3d7cbb766954f9cc",
@@ -1906,20 +5060,28 @@
     "model/common_source/__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
     "model/common_source/chiral_candidate/action.py": "a9872ed067c39981c0b06e7af42cd200e0b700a4b0292ca923e09e504437b933",
     "model/common_source/chiral_candidate/gaussian_source.py": "d60733661c22d649741b3433db9330e3520d2b7c5d15fb6db79a07e82e49eade",
-    "model/common_source/chiral_candidate/results.json": "f87f5b5b33d7c2aef8c974607f6769b38ec53abe01446db6c44c5cb7eeaaafc5",
+    "model/common_source/chiral_candidate/results.json": "054484c651aae6798f936caa098959e199d6c0e7e5a63af556efae0c2ac49607",
     "model/common_source/experiment.py": "10b9040d1d2f870f6d4a5e72df2848bbc0f55c136be0be3bacd2fbda28ff4ab8",
     "model/common_source/gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
     "model/common_source/halfline.py": "c53d49de709edeebdbf81781bc1454e2c45ea6715b1d0fcc341fadb313aff126",
     "model/common_source/mass_response/history.py": "1046f4be64b2ad6498df83b1949ec316449d0ce0d9b57ce4763d96a0ed3a2abb",
     "model/common_source/mass_response/model.py": "1ffdf1a680763d52d0841636aee3dc05a51a16487a5770b2e7208dcb3dbdaacf",
     "model/common_source/native_code_transport.py": "c068671558195838c5c93271dd47756630feb36a9c203cc9015bf3c4b066938a",
+    "model/common_source/native_family_potential.py": "250d14c7de7ff2012acbd8d40314505fe36b41eaaef07e56e71f5649040343ae",
+    "model/common_source/native_family_selection.py": "c061cd6b2eed26219ce53e36f123a9429379bc7bb93f62b5b2bfc5c5f8efbb8b",
     "model/common_source/native_gauge_object.py": "ddbd9ced23e85e9755396dcc917eb744d62e98f64b89535dfff0066e53782733",
     "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
+    "model/common_source/native_mass_bath.py": "d8110ea4aa1d0906aef35be2ad96cca9627d85a584b615589ee27e4db58e2c97",
+    "model/common_source/native_mass_dressing.py": "e0bcf5f37bf2d19a50b79a87bc3c5eb7410c872e52a61d023c8d1ce4a5a824ee",
+    "model/common_source/native_mass_holonomy.py": "d5fb514c888f7ddf07b23928e6b732f717e8bb148b736fc420314788e8638c2f",
+    "model/common_source/native_mass_record_cycles.py": "a887a9321c271b9b124c14bbde8b24542c464a1cce2778838c3ebfbbcb96c023",
     "model/common_source/native_matter_attachment.py": "e09be6c457cd29aaa31e03f6109b52ccd93b592833daab8ec0b3bb9648163339",
     "model/common_source/native_matter_theorems.py": "6014920ee21439990aa9bdcdc8e448b6c802024f6bf1aa35925518a3f74947c0",
-    "model/common_source/native_repair_mass.py": "9caa515abcdc636ab41c0caa088808f5813b55644916f534e5ff81c351a91031",
+    "model/common_source/native_repair_mass.py": "59e70327e4071e98fe3e005af8b3a94e62f0b17cf20cfcf2db22b637df80e87e",
     "model/common_source/native_repair_mass_attachment.py": "5d4cdd9a56c23a7a77f34252c7265efe97464db441e567d17b89501ba6cb5403",
+    "model/common_source/native_repair_mass_feedback.py": "0cda4b1a16d45fcb63dfd917ce8e45b739ee0b646db4e8f10fa1b36b82ef9467",
     "model/common_source/native_repair_mass_h2.py": "b1daa48d072d7fcd3bab9315c79f99091795917f1c84cff90e52b5032e1313be",
+    "model/common_source/native_repair_mass_native_readout.py": "249bb2dc3c16a344fcc9a9d212f00fc89fc7abb77a91353b28c9995dd6b273c1",
     "model/common_source/native_repair_mass_readout.py": "86766746f62e57a4483b40f87e684281a194c83b2701537c24524a707ade26db",
     "model/common_source/native_routing.py": "bece6c1d39a4cf1a444e8bdc2d24dc42abaa4d16ada8d1174b246c9dd6f10f6a",
     "model/common_source/native_sm_current.py": "8ed16b421726dd460800d86846e5684163716cadc61c7cc2e8c21151d49593f1",
@@ -1934,12 +5096,20 @@
     "model/common_source/scalar_coupling.py": "90e4000b0e48e4429e69891c0274966701cd59951f79d151dbe98a66e61ba0cf",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/common_source/test_native_code_transport.py": "e58f3f955caa2acf4ae75d97fceeb3803f9f2b9b1493492100456f0d5c1cae21",
+    "model/common_source/test_native_family_potential.py": "5c1778382d172d7765cde906be72faaf2f1c55cecca7b9e828a6ea1093cc87d3",
+    "model/common_source/test_native_family_selection.py": "8021640e9a755399ce10175f50bcdf1ef5440cb6d4fe67293db48eb1ac2fbc05",
     "model/common_source/test_native_gauge_object.py": "de2ec904d687e1bdbcb28878c484b7ad6459a0e9490198a197cd0005759564e6",
+    "model/common_source/test_native_mass_bath.py": "4e5c8a4d491d343dcbbd4703912a54630b60aa3f54572cd6229fed7d9ed8fb0c",
+    "model/common_source/test_native_mass_dressing.py": "eae6d010a474677d6b67c326b9ed5409d8be21c534bb7d10ef477e32230abd15",
+    "model/common_source/test_native_mass_holonomy.py": "43e5bf6f7d3c067993a42f1dff4f9a067646451511084f8053ecc9065f97c47a",
+    "model/common_source/test_native_mass_record_cycles.py": "ca781a8831e1cad545960ac04ceaf11487b884bd2cfedf23b6e3e631833586b8",
     "model/common_source/test_native_matter_attachment.py": "a02503c7d80e71cbcb2cfb22eb3241fc24caedf6898cd2f1a39d2a92e1601ef7",
     "model/common_source/test_native_matter_theorems.py": "3ee47ef85330989308e263d6cce7b2e03b33a897160d82b551275c523bfe94e6",
-    "model/common_source/test_native_repair_mass.py": "76dc9e9c8006b384e9dad8ab90be071fc0e679df9b9e7ac4e702aa6b00297b75",
+    "model/common_source/test_native_repair_mass.py": "e7ded9f10d272f8313cee5e69eedc69d76a4aa820665b57e88af797932484c8f",
     "model/common_source/test_native_repair_mass_attachment.py": "38ca90f81fb84e4786ea1a46778293caf0122d9d8695fa08f22bc692483195ff",
+    "model/common_source/test_native_repair_mass_feedback.py": "362a6a7a8f487626230a7c1666742516753419f50fa48b737148edc0de6012d4",
     "model/common_source/test_native_repair_mass_h2.py": "06c3b3c0c819e0ad636917b84addc22eeb47696c10d04f12d8283acaa2475bd8",
+    "model/common_source/test_native_repair_mass_native_readout.py": "b589977ed2b770fd640601bdd13f9382597291e4e2ecd3833a2f7c48ed9c441d",
     "model/common_source/test_native_repair_mass_readout.py": "4e72f0b76da44c08914ec037187c5557611dad175ad8ef342ff8ce8b4c4328d7",
     "model/common_source/test_native_sm_current.py": "fbee360cfc2d87c63e958997202d5981d252c3136f930a28732ffe64abca33d4",
     "model/common_source/test_parameter_selection.py": "2504efad12f780a58772a31f8a56268160dbb3eeae82b986116143aa6d44ff3f",
@@ -1970,6 +5140,7 @@
     "model/native_relational_readout/__init__.py": "baf460e26918fea66b2b254d60e00b102e7e98577f2f97bdd760e4d946476e70",
     "model/native_relational_readout/__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "model/native_relational_readout/construction.py": "3f01d15a3b199ea80957f4894c506f9dfb6cf5520bbe300fdff07c949c0089b8",
+    "model/observer/QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "model/observer/__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/p_response/__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",

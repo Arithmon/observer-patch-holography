@@ -16,6 +16,13 @@ recorded repair itself and tests its local detector records on overlapping
 observer regions. A physical mass must follow from those shared records and
 their clock and spacetime interpretation; the native transfer alone does
 not establish a Lorentzian particle pole.
+Calibrated charged-matter controls recover their supplied running mass
+parameters from simulated observer records. A separate native fixed-basis
+readout recovers the uncalibrated feedback coefficient, retaining its failed
+hierarchy. The same native currents support locally covariant matter
+transport and a conditional background-field continuum comparison; both
+Dirac tastes remain, and no interacting chiral physical continuum or
+source-derived measured spectrum is established.
 The [cross-scale comparison](empirical_diagnostics/README.md) carries one
 entangled-pair spectral scalar through the declared P and primordial-tilt
 maps, while checking which laboratory and cosmological comparisons can share

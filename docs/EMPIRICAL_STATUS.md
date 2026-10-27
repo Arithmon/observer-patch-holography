@@ -133,6 +133,32 @@ stationary family coupling has ratios `1 : 30.84 : 452.62`, which fail
 both retained charged-lepton comparison windows. The common coupling also
 leaves charged sectors degenerate. This is a failed uncalibrated candidate,
 not a replacement for the calibrated spectrum control or another dataset.
+An [incidence-defined family repair](../model/common_source/native_family_selection.py)
+source-executes three protected levels and checks their exact finite-theorem
+band map. This supplies an operational selector under the chosen rule, not
+an experimental family identification. The original-carrier loop phases
+fail the lepton hierarchy under the supplied finite mass relation. A separate
+[current-mediated auxiliary response](../model/common_source/native_mass_dressing.py)
+produces distinct sector spectra, but its two smallest subthreshold lepton
+responses have ratio below 32 for all nonnegative strengths in the tested
+class. These construction results use no additional physical dataset and
+do not remove the physical field or mass-matching obligations.
+The original five-memory feedback also has a complete native source
+implementation. Its fixed-basis native readout recovers the specified
+coefficient after eight record-driven memory updates, retaining every pointer
+outcome and the defining syndrome factors. The reconstruction has separate
+source, mixing and finite-step allowances; it leaves the failed hierarchy
+unchanged and adds no physical dataset.
+A fixed two-rotation memory instead gives ratios `1 : 382.23 : 5909.43`,
+outside both broad lepton windows. A full selector-derived bath gives five
+low charged responses in each channel and retains all extra modes. Neither
+result constitutes physical particle-spectrum recovery.
+The same-current gauge-linked field supplies a further finite construction:
+source rotations and exchange echoes realize locally covariant matter
+transport, with a conditional background-field continuum comparison.
+Both Dirac tastes and chiralities remain present. Dynamical gauge fields,
+the interacting physical continuum and source-derived measured masses are
+not established by that comparison.
 Separate [native spectroscopy](../model/common_source/native_charged_spectroscopy.py)
 infers both specified dimer frequencies from complete fixed-probe contrasts,
 with held-out readouts and a zero-gap control. Its inverse receives no target

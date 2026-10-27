@@ -47,16 +47,18 @@ def test_two_shard_fallback_keeps_transfer_and_all_other_nonempirical_work():
     assert second == tuple(replay for replay in verify.REPLAYS if replay not in verify.EMPIRICAL_REPLAYS)
 
 
-def test_four_shards_keep_both_expensive_workers_isolated_and_order_remaining_work():
+@pytest.mark.parametrize('count', (4, 6))
+def test_shards_keep_both_expensive_workers_isolated_and_order_remaining_work(count):
     remaining = tuple(group for group in verify.replay_groups()
                       if group not in (verify.EMPIRICAL_REPLAYS, (verify.OCCUPATION_TRANSFER_REPLAY,)))
-    assert verify.selected_replay_groups(2, 4) == remaining[::2]
-    assert verify.selected_replay_groups(3, 4) == remaining[1::2]
+    for index in range(2, count):
+        assert verify.selected_replay_groups(index, count) == remaining[index-2::count-2]
 
 
 def test_every_new_research_receipt_has_a_canonical_replay():
     assert {
         ('model.common_source.native_repair_mass', None, 'model/common_source/native_repair_mass_results.json'),
+        ('model.common_source.native_gauge_matter_transport', None, 'model/common_source/native_gauge_matter_transport_results.json'),
         ('model.common_source.native_sm_current', None, 'model/common_source/native_sm_current_results.json'),
         ('model.common_source.native_matter_attachment', None, 'model/common_source/native_matter_attachment_results.json'),
         ('model.common_source.native_particle_records', None, 'model/common_source/native_particle_records_results.json'),
@@ -81,11 +83,11 @@ def test_every_new_research_receipt_has_a_canonical_replay():
     }.issubset(verify.REPLAYS)
 
 
-@pytest.mark.parametrize('index', range(4))
+@pytest.mark.parametrize('index', range(6))
 def test_missing_dedicated_transfer_fails_on_every_ci_shard(index):
     declaration = tuple(replay for replay in verify.REPLAYS if replay != verify.OCCUPATION_TRANSFER_REPLAY)
     with pytest.raises(ValueError, match='occupation-transfer'):
-        verify.selected_replay_groups(index, 4, replays=declaration)
+        verify.selected_replay_groups(index, 6, replays=declaration)
 
 
 @pytest.mark.parametrize('index,count', [(None,3),(0,None),(-1,3),(3,3),(0,0),
@@ -108,7 +110,8 @@ def test_malformed_empirical_group_cannot_silently_run_split():
 
 
 @pytest.mark.parametrize('index,count', [(None,None),(0,1),(0,2),(1,2),
-                                       (0,4),(1,4),(2,4),(3,4)])
+                                       (0,4),(1,4),(2,4),(3,4),
+                                       (0,6),(1,6),(2,6),(3,6),(4,6),(5,6)])
 def test_default_and_every_shard_hashes_all_artifacts_and_executes_complete_groups(monkeypatch, index, count):
     argv = ['verify'] if count is None else ['verify', '--shard-index', str(index), '--shard-count', str(count)]
     monkeypatch.setattr(sys, 'argv', argv)
@@ -285,16 +288,25 @@ def test_compressed_receipt_requires_outer_manifest_coverage(monkeypatch, tmp_pa
     assert verify.verify_artifacts() == 2
 
 
-def test_ci_covers_all_four_shards_both_platforms_and_complete_regression():
+def test_ci_covers_all_six_shards_both_platforms_and_complete_regression():
     workflow = yaml.safe_load((verify.ROOT/'.github/workflows/observer-model.yml').read_text())
     observer, regression = (workflow['jobs'][key] for key in ('observer', 'regression'))
     assert observer['strategy']['matrix']['os'] == ['ubuntu-latest', 'windows-latest']
-    assert observer['strategy']['matrix']['shard'] == [0,1,2,3]
+    assert observer['strategy']['matrix']['shard'] == [0,1,2,3,4,5]
     assert observer['timeout-minutes'] == (
         "${{ matrix.os == 'windows-latest' && matrix.shard == 1 && 120 || 90 }}")
-    assert any(step.get('run') == 'python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 4'
+    assert any(step.get('run') == 'python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 6'
                for step in observer['steps'])
     scalar = [step for step in observer['steps'] if 'verify_source_scalar_time_refinement.py' in step.get('run','')]
     assert len(scalar) == 1 and scalar[0]['if'] == 'matrix.shard == 2'
     assert regression['strategy']['matrix']['os'] == ['ubuntu-latest', 'windows-latest']
-    assert any(step.get('run') == 'python -m pytest -q -W error model' for step in regression['steps'])
+    assert regression['strategy']['matrix']['shard'] == [0,1,2]
+    commands = [step for step in regression['steps'] if 'run' in step]
+    pytest_steps = [step for step in commands if 'python -m pytest' in step['run']]
+    assert len(pytest_steps) == 1 and 'if' not in pytest_steps[0]
+    assert pytest_steps[0]['run'] == ('python -m pytest -q -W error -p model.pytest_shards '
+        '--model-shard-index ${{ matrix.shard }} --model-shard-count 3 model')
+    extra = [step for step in commands if 'model.common_source.repair_field_attachment' in step['run']
+             or 'native_staggered_field' in step['run'] or 'observer_particles/run.py' in step['run']]
+    assert len(extra) == 4
+    assert all(step.get('if') == 'matrix.shard == 0' for step in extra)

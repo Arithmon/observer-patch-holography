@@ -48,6 +48,7 @@ OCCUPATION_TRANSFER_REPLAY = ("model.occupation_control.transfer", None,
                               "model/occupation_control/transfer_results.json.gz")
 REPLAYS = (
     ("model.common_source.native_repair_mass", None, "model/common_source/native_repair_mass_results.json"),
+    ("model.common_source.native_gauge_matter_transport", None, "model/common_source/native_gauge_matter_transport_results.json"),
     ("model.common_source.native_sm_current", None, "model/common_source/native_sm_current_results.json"),
     ("model.common_source.native_matter_attachment", None, "model/common_source/native_matter_attachment_results.json"),
     ("model.common_source.native_particle_records", None, "model/common_source/native_particle_records_results.json"),

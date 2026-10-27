@@ -74,6 +74,18 @@ and the clocks inside it.
   Fixed record-driven Higgs feedback also produces unequal couplings without
   mass inputs, but an analytic bound excludes its charged-lepton hierarchy
   for every trigger frequency in its stationary averaged mass family.
+  Its native implementation recovers the specified coefficient from complete
+  fixed-basis detector records with separate source and inversion errors.
+  Two-rotation feedback also fails the hierarchy; a full selector
+  bath retains additional low charged responses.
+  An incidence-defined repair source-executes a protected three-level
+  family band and matches the finite theorem's projector. Original-carrier
+  loop phases and a current-mediated auxiliary response also fail the
+  lepton hierarchy; changing the latter's positive strengths cannot fix its
+  identification with the lowest subthreshold poles.
+  The same currents also support source-compiled local matter transport and
+  a conditional continuum comparison in a chosen gauge background, retaining
+  both Dirac copies and both chiralities.
   Source selection of the physical masses, a chiral interacting continuum
   and joint gravitational dynamics remain unproved.
   [Mass-response research](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) and

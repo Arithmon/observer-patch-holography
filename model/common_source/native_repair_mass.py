@@ -222,7 +222,15 @@ def _schema(arrays):
                 'raw_labels': ((128, 4), 'int64'), 'raw_weights': ((128, 2), 'int64'),
                 'raw_unitaries': ((5, 6, 6), 'complex128')}
     from . import native_repair_mass_readout as readout
-    if set(arrays) & set(readout.ARRAY_SCHEMA): expected.update(readout.ARRAY_SCHEMA)
+    from . import native_family_selection as family
+    from . import native_mass_dressing as dressing
+    from . import native_repair_mass_feedback as source_feedback
+    from . import native_mass_record_cycles as cycles
+    from . import native_mass_bath as bath
+    from . import native_repair_mass_native_readout as native_readout
+    for schema in (readout.ARRAY_SCHEMA, family.ARRAY_SCHEMA, dressing.SCHEMA,
+                   source_feedback.ARRAY_SCHEMA, cycles.SCHEMA, bath.SCHEMA, native_readout.SCHEMA):
+        if set(arrays) & set(schema): expected.update(schema)
     if set(arrays) != set(expected): raise ValueError('complete source array menu required')
     for key, (shape, dtype) in expected.items():
         value = arrays[key]
@@ -263,15 +271,33 @@ def build():
     from . import native_repair_mass_readout as readout
     from . import native_repair_mass_attachment as attachment
     from . import native_matter_theorems as matter_theorems
+    from . import native_family_selection as family
+    from . import native_mass_holonomy as holonomy
+    from . import native_mass_dressing as dressing
+    from . import native_repair_mass_feedback as source_feedback
+    from . import native_family_potential as potential
+    from . import native_mass_record_cycles as cycles
+    from . import native_mass_bath as bath
+    from . import native_repair_mass_native_readout as native_readout
     readout_report, readout_arrays = readout.execute()
     arrays.update(readout_arrays)
+    family_report, family_arrays = family.execute()
+    feedback_report, feedback_arrays = source_feedback.execute(family_arrays)
+    native_readout_report, native_readout_arrays = native_readout.execute(feedback_arrays)
+    dressing_report, dressing_arrays = dressing.execute()
+    bath_report, bath_arrays = bath.execute()
+    cycles_report, cycles_arrays = cycles.execute()
+    arrays.update(family_arrays); arrays.update(feedback_arrays); arrays.update(dressing_arrays)
+    arrays.update(bath_arrays); arrays.update(cycles_arrays)
+    arrays.update(native_readout_arrays)
+    _schema(arrays)
     spectrum = np.linalg.eigvalsh(arrays['kernel'])
     report = {'schema': 'oph.native_repair_mass.v1',
         'architecture': {'port_carrier': 'unchanged12-port incidence and proper rotations',
             'C_seam': [2, 3], 'E_seam': [2, 10],
             'rotation_selection': 'lexicographically first order5 native proper rotation with geometric trace(1+sqrt5)/2',
             'rotation': list(data['rotation']), 'seed_selection': 'first port moved by the selected rotation',
-            'seed_port': data['seed'], 'family_action': 'gauge identity on an ancillary copy of the native geometric triplet',
+            'seed_port': data['seed'], 'family_action': 'gauge identity on the separately protected native geometric family band',
             'memory_states': 5, 'advance_event': 'C coin0, raw1, signed current+1',
             'all_other_raw_records': 'reset memory to0; identicallyzero labels retained',
             'ordering': 'correct native C/E, update classical memory, apply exp(-i step sigma_x tensor P_memory)',
@@ -304,11 +330,19 @@ def build():
         'native_H2_domain_control': h2_control.report(),
         'same_current_Higgs_and_heldout_test': attachment.report(data['Y'], projectors=data['projectors']),
         'actual_source_finite_matter_theorems': matter_theorems.run(),
+        'operational_family_band': family_report,
+        'native_loop_holonomy': holonomy.report(),
+        'finite_current_auxiliary_response': dressing_report,
+        'native_feedback_source': feedback_report,
+        'native_fixed_basis_readout': native_readout_report,
+        'native_family_scalar_potential': potential.report(),
+        'noncommuting_record_memory': cycles_report,
+        'full_selector_incidence_bath': bath_report,
         'empirical_mass_or_coupling_inputs': [],
         'scope': {'fixed_repair_law_determines_its_dimensionless_family_kernel': True,
             'all_three_species_coefficients_separately_fitted': False,
             'absolute_mass_scale_derived': False, 'measured_mass_spectrum_claimed': False,
-            'finite_native512_row_feedback_history_compiled_here': False,
+            'finite_native512_row_feedback_history_compiled_here': True,
             'complete_effective_CQ_instrument_executed': True,
             'physical_fermion_statistics_or_spin_derived_by_memory': False,
             'simulated_record_laws_are_finite_shot_experimental_data': False}}
@@ -319,9 +353,21 @@ def source_bindings():
     from . import native_repair_mass_readout as readout
     from . import native_repair_mass_attachment as attachment
     from . import native_matter_theorems as matter_theorems
+    from . import native_family_selection as family
+    from . import native_mass_holonomy as holonomy
+    from . import native_mass_dressing as dressing
+    from . import native_repair_mass_feedback as source_feedback
+    from . import native_family_potential as potential
+    from . import native_mass_record_cycles as cycles
+    from . import native_mass_bath as bath
+    from . import native_repair_mass_native_readout as native_readout
     paths = (set(transport.source_bindings()) | set(h2_control.source_bindings())
              | set(readout.source_bindings()) | set(attachment.source_bindings())
-             | set(matter_theorems.source_bindings()))
+             | set(matter_theorems.source_bindings()) | set(family.source_bindings())
+             | set(holonomy.source_bindings()) | set(dressing.source_bindings())
+             | set(source_feedback.source_bindings()) | set(potential.source_bindings())
+             | set(cycles.source_bindings()) | set(bath.source_bindings())
+             | set(native_readout.source_bindings()))
     paths.update(('model/common_source/native_repair_mass.py',
                   'model/common_source/test_native_repair_mass.py'))
     return {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(paths)}
@@ -337,7 +383,9 @@ def _compare(a, b, path='receipt'):
         for i, (x, y) in enumerate(zip(a, b, strict=True)): _compare(x, y, path+f'[{i}]')
     elif isinstance(a, float):
         derived_interval = any(name in path for name in ('eigenvalue_intervals', 'ordered_ratio_intervals'))
-        tolerance = DIAGNOSTIC_ADMISSION if 'diagnostic' in path or derived_interval else 0
+        resource_diagnostic = path.endswith(('.integrated_processor_norm_upper',
+                                              '.maximum_numerical_valid_code_leakage'))
+        tolerance = DIAGNOSTIC_ADMISSION if 'diagnostic' in path or derived_interval or resource_diagnostic else 0
         if not math.isfinite(b) or abs(a-b) > tolerance: raise ValueError(path+' numerical value differs')
     elif a != b: raise ValueError(path+' exact value differs')
 
@@ -352,13 +400,35 @@ def check(path):
         if len(archive.files) != len(set(archive.files)): raise ValueError('duplicate array key')
         arrays = {key: archive[key] for key in archive.files}
     from . import native_repair_mass_readout as readout
-    if not set(readout.ARRAY_SCHEMA) <= set(arrays): raise ValueError('fixed-basis readout arrays missing')
+    from . import native_family_selection as family
+    from . import native_mass_dressing as dressing
+    from . import native_repair_mass_feedback as source_feedback
+    from . import native_mass_record_cycles as cycles
+    from . import native_mass_bath as bath
+    from . import native_repair_mass_native_readout as native_readout
+    _schema(arrays)
+    for name, schema in (('readout', readout.ARRAY_SCHEMA), ('family', family.ARRAY_SCHEMA),
+                         ('dressing', dressing.SCHEMA), ('feedback', source_feedback.ARRAY_SCHEMA),
+                         ('cycles', cycles.SCHEMA), ('bath', bath.SCHEMA),
+                         ('native_readout', native_readout.SCHEMA)):
+        if not set(schema) <= set(arrays): raise ValueError('complete '+name+' arrays missing')
     readout_arrays = {key: arrays[key] for key in readout.ARRAY_SCHEMA}
     readout.validate_arrays(readout_arrays)
     inferred = readout.decode_records(arrays['readout_probabilities'], time=readout.TIME,
         entry_error_upper=readout.error_budget()['entry_error_upper'])
     inferred.pop('estimate')
     _compare(inferred, report['fixed_basis_readout']['inferred_kernel'], 'receipt.fixed_basis_readout.inferred_kernel')
+    family_arrays = {key: arrays[key] for key in family.ARRAY_SCHEMA}
+    _compare(family.native_metrics(family_arrays), report['operational_family_band']['actual_native_composition'],
+             'receipt.operational_family_band.actual_native_composition')
+    own_dressing = _bind_dressing(arrays, report['finite_current_auxiliary_response'])
+    own_bath = _bind_bath(arrays, report['full_selector_incidence_bath'])
+    own_native_inference = _bind_native_readout(arrays, report['native_fixed_basis_readout']['execution'])
+    feedback_keys = set(source_feedback.ARRAY_SCHEMA) | set(source_feedback.NATIVE_SCHEMA)
+    _compare(source_feedback.metrics({key: arrays[key] for key in feedback_keys}),
+             report['native_feedback_source']['execution'], 'receipt.native_feedback_source.execution')
+    _compare(cycles.metrics({key: arrays[key] for key in cycles.SCHEMA}),
+             report['noncommuting_record_memory']['execution'], 'receipt.noncommuting_record_memory.execution')
     _compare(report['execution'], metrics(arrays))
     fresh, fresh_arrays = build(); _schema(fresh_arrays)
     # Derived readout intervals are verified above against their own retained
@@ -366,6 +436,16 @@ def check(path):
     # below at the stated numerical gate, avoiding an ulp/time amplification
     # in printed ratio endpoints becoming a platform-specific source change.
     fresh['fixed_basis_readout']['inferred_kernel'] = inferred
+    # Native inference is bound to its complete retained pointer record laws,
+    # including their total-variation reconstruction gate. Only the derived
+    # intervals share that custody; fixed source/inversion budgets stay exact.
+    fresh['native_fixed_basis_readout']['execution']['inferred_kernel'] = own_native_inference
+    # The complete pole and residue summaries are reconstructed above from
+    # their own retained factors. All law, domain and analytic-bound fields
+    # are checked too. Fresh factors, poles and residues must pass the same
+    # full-array gate below before these summaries can share that custody.
+    fresh['finite_current_auxiliary_response'] = own_dressing
+    fresh['full_selector_incidence_bath'] = own_bath
     _compare(fresh, {k: v for k, v in report.items() if k not in ('source_bindings', 'artifact')})
     if set(arrays) != set(fresh_arrays): raise ValueError('source array menu differs')
     for key in arrays:
@@ -374,6 +454,28 @@ def check(path):
         elif np.max(abs(arrays[key]-fresh_arrays[key])) > ARRAY_ADMISSION:
             raise ValueError('source numerical array differs: '+key)
     if source_bindings() != before: raise ValueError('source changed during replay')
+
+
+def _bind_dressing(arrays, retained_report):
+    from . import native_mass_dressing as dressing
+    own = dressing.report_from_arrays({key: arrays[key] for key in dressing.SCHEMA})
+    _compare(own, retained_report, 'receipt.finite_current_auxiliary_response')
+    return own
+
+
+def _bind_bath(arrays, retained_report):
+    from . import native_mass_bath as bath
+    own = bath.report_from_arrays({key: arrays[key] for key in bath.SCHEMA})
+    _compare(own, retained_report, 'receipt.full_selector_incidence_bath')
+    return own
+
+
+def _bind_native_readout(arrays, retained_execution):
+    from . import native_repair_mass_native_readout as native_readout
+    keys = set(native_readout.BASE_SCHEMA) | set(native_readout.SCHEMA)
+    own = native_readout.metrics({key: arrays[key] for key in keys})
+    _compare(own, retained_execution, 'receipt.native_fixed_basis_readout.execution')
+    return own['inferred_kernel']
 
 
 def main():
@@ -388,7 +490,7 @@ def main():
     artifact = args.output.with_suffix('.npz'); np.savez_compressed(artifact, **arrays)
     report['source_bindings'] = before
     report['artifact'] = {'name': artifact.name, 'sha256': hashlib.sha256(artifact.read_bytes()).hexdigest()}
-    args.output.write_text(json.dumps(report, indent=2, sort_keys=True, allow_nan=False)+'\n')
+    args.output.write_text(json.dumps(report, indent=2, sort_keys=True, allow_nan=False)+'\n', encoding='utf-8')
 
 
 if __name__ == '__main__': main()

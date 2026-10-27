@@ -111,6 +111,14 @@ The response-menu restriction is an architecture premise; it does not show
 that every physically accessible intervention belongs to those twelve
 directions. Its existence does not reverse the exclusion of the exchange
 law or establish measured-mass predictions.
+The [native mass-response audit](research/OPH_PARTICLE_MASS_RESPONSE.md)
+also source-executes a chosen three-level selector and recovers a specified
+uncalibrated feedback coefficient from complete fixed-basis records. The
+tested feedback, geometric-loop and auxiliary-response prescriptions fail
+the charged-lepton hierarchy; these are mechanism-specific exclusions.
+Same-current local transport supplies a conditional background-field
+continuum comparison with both Dirac tastes retained. None of these results
+is a physical measured-spectrum recovery or an additional confirmation event.
 
 The [fixed corrected-repair calculation](../model/common_source/parameter_selection_results.json)
 has zero discrete response seed on the specified code and recovery cycle;

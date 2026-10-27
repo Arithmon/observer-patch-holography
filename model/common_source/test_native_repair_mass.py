@@ -145,7 +145,90 @@ def test_report_types_and_fixed_bounds_are_exact():
 
 
 def test_no_empirical_target_import_in_source():
-    source = (model.ROOT/'model/common_source/native_repair_mass.py').read_text()
+    source = (model.ROOT/'model/common_source/native_repair_mass.py').read_text(encoding='utf-8')
     assert 'sm_calibration' not in source
     assert 'parameter_packet' not in source
     assert 'default_rng' not in source
+
+
+@pytest.mark.parametrize('helper', ['family', 'dressing', 'feedback', 'cycles', 'bath', 'native_readout'])
+@pytest.mark.parametrize('change', ['missing', 'shape', 'dtype', 'nonfinite'])
+def test_integrated_helper_array_menu_is_not_optional_when_present(arrays, helper, change):
+    from . import native_family_selection as family
+    from . import native_mass_dressing as dressing
+    from . import native_repair_mass_feedback as source_feedback
+    from . import native_mass_record_cycles as cycles
+    from . import native_mass_bath as bath
+    from . import native_repair_mass_native_readout as native_readout
+    schema = {'family': family.ARRAY_SCHEMA, 'dressing': dressing.SCHEMA,
+              'feedback': source_feedback.ARRAY_SCHEMA, 'cycles': cycles.SCHEMA,
+              'bath': bath.SCHEMA, 'native_readout': native_readout.SCHEMA}[helper]
+    values = dict(arrays)
+    values.update({key: np.zeros(shape, dtype=dtype) for key, (shape, dtype) in schema.items()})
+    model._schema(values)
+    key = next(key for key, (_, dtype) in schema.items() if dtype != 'int64')
+    if change == 'missing': del values[key]
+    if change == 'shape': values[key] = values[key].reshape(-1)
+    if change == 'dtype': values[key] = values[key].astype(np.complex64)
+    if change == 'nonfinite': values[key].flat[0] = np.nan
+    with pytest.raises(ValueError): model._schema(values)
+
+
+@pytest.mark.parametrize('helper', ['dressing', 'bath'])
+def test_retained_pole_summary_and_analytic_bounds_both_bind(monkeypatch, helper):
+    from . import native_mass_dressing as dressing
+    from . import native_mass_bath as bath
+    module = dressing if helper == 'dressing' else bath
+    bind = model._bind_dressing if helper == 'dressing' else model._bind_bath
+    source = {'charged_channels': [{'light_poles': [.002, .06, .9]}],
+              'numerical_operator_admission': 2e-10,
+              'scope': {'complete2250_operator_compiled_into_native_source_words': False},
+              'exact_no_tuning_shape_bound': {'middle_over_smallest_ratio_strictly_below_32': True}}
+    arrays = {key: object() for key in module.SCHEMA}
+    seen = []
+    def from_arrays(values):
+        assert set(values) == set(module.SCHEMA)
+        assert all(values[key] is arrays[key] for key in values)
+        seen.append(True)
+        return deepcopy(source)
+    monkeypatch.setattr(module, 'report_from_arrays', from_arrays)
+    assert bind(arrays, source) == source and seen
+    for field in ('pole', 'bound', 'scope', 'theorem'):
+        bad = deepcopy(source)
+        if field == 'pole': bad['charged_channels'][0]['light_poles'][0] += 1e-12
+        if field == 'bound': bad['numerical_operator_admission'] += 1e-12
+        if field == 'scope': bad['scope']['complete2250_operator_compiled_into_native_source_words'] = True
+        if field == 'theorem': bad['exact_no_tuning_shape_bound']['middle_over_smallest_ratio_strictly_below_32'] = False
+        with pytest.raises(ValueError): bind(arrays, bad)
+
+
+def test_only_computed_compiler_resource_floats_receive_diagnostic_tolerance():
+    for name in ('integrated_processor_norm_upper', 'maximum_numerical_valid_code_leakage'):
+        model._compare({'resources': {name: 1.}}, {'resources': {name: 1.+1e-12}})
+    with pytest.raises(ValueError):
+        model._compare({'resources': {'fixed_channel_allowance': 1.}},
+                       {'resources': {'fixed_channel_allowance': 1.+1e-12}})
+
+
+def test_native_inference_is_bound_to_all_own_source_factors_and_records(monkeypatch):
+    from . import native_repair_mass_native_readout as native_readout
+    keys = set(native_readout.BASE_SCHEMA) | set(native_readout.SCHEMA)
+    arrays = {key: object() for key in keys}
+    own = {'all128_pointer_labels_and_native_syndrome_outputs_retained': True,
+           'complete_record_l1_reconstruction_error_diagnostic': 0.,
+           'inferred_kernel': {'eigenvalue_intervals': [[.001, .003], [.06, .07], [.93, .94]],
+                               'matrix_eigenvectors_enter_probes_or_inverse': False}}
+    seen = []
+    def metrics(values):
+        assert set(values) == keys
+        assert all(values[key] is arrays[key] for key in keys)
+        seen.append(True)
+        return deepcopy(own)
+    monkeypatch.setattr(native_readout, 'metrics', metrics)
+    assert model._bind_native_readout(arrays, own) == own['inferred_kernel'] and seen
+    for change in ('interval', 'pointer', 'eigenbasis'):
+        bad = deepcopy(own)
+        if change == 'interval': bad['inferred_kernel']['eigenvalue_intervals'][0][0] += 1e-6
+        if change == 'pointer': bad['all128_pointer_labels_and_native_syndrome_outputs_retained'] = False
+        if change == 'eigenbasis': bad['inferred_kernel']['matrix_eigenvectors_enter_probes_or_inverse'] = True
+        with pytest.raises(ValueError): model._bind_native_readout(arrays, bad)

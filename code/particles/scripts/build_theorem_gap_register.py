@@ -134,6 +134,22 @@ def closed_entries() -> list[dict[str, Any]]:
             "artifact": "runs/flavor/entropy_w5_shape_certificate.json",
         },
         {
+            "id": "ENTROPIC_FULL_FIXED_NORM_W5_HIERARCHY_EXCLUSION",
+            "family": "charged leptons",
+            "class": "closed",
+            "statement": (
+                "full relative entropy to the uniform reference, at fixed "
+                "quadratic norm on six antipodal-pair probabilities, selects "
+                "one high and five equal low coordinates for every "
+                "0 < r <= sqrt(60). The source quadrupole has a double "
+                "eigenvalue, excluding three unequal masses from this "
+                "single-quadrupole spectral readout for any scalar r(P). "
+                "Other source constraints, coupled records and physical "
+                "readouts are not excluded"
+            ),
+            "artifact": "runs/flavor/full_entropy_w5_selector.json",
+        },
+        {
             "id": "KOIDE_CIRCULANT_IDENTITY",
             "family": "charged leptons",
             "class": "closed",
@@ -337,12 +353,13 @@ def open_entries() -> list[dict[str, Any]]:
             "family": "charged leptons",
             "class": "research_open",
             "statement": (
-                "derive the source amplitude and physical W5-to-log-mass "
-                "attachment, control regularization and the entropy remainder "
-                "near zero weights, and extend the exact quartic minimizer "
-                "classification to the operative higher-order/full-entropy "
-                "selector. The support-two boundary branch keeps this route "
-                "viable; stabilizer symmetry alone remains insufficient"
+                "derive operative family dynamics, source amplitude and the "
+                "physical W5-to-mass attachment with kinetic normalization. "
+                "The uniform-reference full-entropy selector at fixed norm "
+                "is excluded for a single-quadrupole spectral mass readout; "
+                "different source constraints, coupled records and physical "
+                "readouts remain open. Stabilizer symmetry alone remains "
+                "insufficient"
             ),
         },
         {

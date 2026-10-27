@@ -60,11 +60,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        shard: [0, 1, 2, 3]
+        shard: [0, 1, 2, 3, 4, 5]
     runs-on: ${{ matrix.os }}
     # All shards check every artifact hash. The empirical shared-cache worker
     # stays atomic on shard zero; all-case occupation transfer owns shard one.
-    # The other receipts are split across shards two and three.
+    # The other receipts are split across shards two through five.
     # Regression remains complete and independent on each platform.
     # The complete Windows occupation-transfer interval replay needs extra
     # runtime headroom. Every case and numerical acceptance gate is retained.
@@ -82,18 +82,20 @@ jobs:
           cache: pip
           cache-dependency-path: model/requirements.txt
       - run: python -m pip install -r model/requirements.txt
-      - run: python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 4
+      - run: python -m model.verify --shard-index ${{ matrix.shard }} --shard-count 6
       - if: matrix.shard == 2
         run: python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
   regression:
-    name: Observer regression (${{ matrix.os }})
+    name: Observer regression (${{ matrix.os }}, shard ${{ matrix.shard }})
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
+        shard: [0, 1, 2]
     runs-on: ${{ matrix.os }}
-    # The complete Windows pytest pass takes over 80 minutes before the
-    # particle witness commands. Keep headroom for the full research suite.
+    # Every job collects the full suite, then executes a disjoint set of whole
+    # test modules. Collection failures remain fatal on every shard. Extra
+    # portability and particle-witness commands execute once per platform.
     timeout-minutes: ${{ matrix.os == 'windows-latest' && 120 || 90 }}
     env:
       OPENBLAS_NUM_THREADS: '1'
@@ -107,8 +109,10 @@ jobs:
           cache-dependency-path: model/requirements.txt
       - run: python -m pip install -r model/requirements.txt
       - name: Check native field receipt portability
+        if: matrix.shard == 0
         run: python -m model.common_source.repair_field_attachment --check model/common_source/repair_field_attachment_results.json
       - name: Check source field, object, spectroscopy and vacuum receipts
+        if: matrix.shard == 0
         shell: python
         run: |
           import subprocess
@@ -123,6 +127,8 @@ jobs:
           ):
               subprocess.run([sys.executable, "-m", f"model.{package}.{name}",
                               "--check", f"model/{package}/{name}_results.json"], check=True)
-      - run: python -m pytest -q -W error model
-      - run: python -B model/observer_particles/run.py --verify-only
-      - run: python -B model/observer_particles/run.py
+      - run: python -m pytest -q -W error -p model.pytest_shards --model-shard-index ${{ matrix.shard }} --model-shard-count 3 model
+      - if: matrix.shard == 0
+        run: python -B model/observer_particles/run.py --verify-only
+      - if: matrix.shard == 0
+        run: python -B model/observer_particles/run.py

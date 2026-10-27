@@ -14,10 +14,13 @@ maps the actual current's complete exterior components to
 the two-sector selection assumes the stated chirality/anomaly menu.
 The [family attachment](../../model/common_source/native_repair_mass_attachment.py)
 checks the exact native-to-`Screen/A5FamilyBand.lean` incidence chart,
-rank-three projector and all sixty rotations. The single-band realization
-and operational cost-selection clauses of `SMThreeFamilyPremiseData`
-remain inputs. These executable bindings reuse the finite results without
-claiming physical family selection or measured masses from them.
+rank-three projector and all sixty rotations. The
+[native selector](../../model/common_source/native_family_selection.py)
+computes and source-executes this protected band using a chosen
+incidence-defined cooling rule. The rule and its physical family
+interpretation remain explicit; this does not retire the canonical
+single-band and cost-selection premises of `SMThreeFamilyPremiseData`
+or identify measured masses.
 
 Lean 4 / Mathlib formalisation of the OPH theorem library. The
 consensus-layer entries of the [proof index](PROOF_INDEX.md) follow
@@ -454,6 +457,12 @@ surface for the OPH consensus layer. Contents:
   `native_matter_attachment.py` checks the chosen spin/exterior lift and
   field intertwiner. These are exact executable checks, not additional
   kernel-checked physical-realization theorems.
+  `native_gauge_matter_transport.py` supplies source-compiled CAR hopping
+  with the same current action and checks finite local gauge covariance;
+  `Screen/LocalGaugeJetAction.lean` supplies the separate infinitesimal jet
+  identities. `native_gauge_continuum.py` checks a conditional background-field
+  refinement with both Dirac tastes retained. This executable compatibility
+  does not constitute a formalized interacting chiral continuum theorem.
 - A sorry-free inverse-continuum boundary in
   `Screen/BipoSHInverseBoundary.lean`. Uniform finite repair obeys the exact
   operational identity $L=2|E|(I-R)$. Explicit two-coordinate and copy-space

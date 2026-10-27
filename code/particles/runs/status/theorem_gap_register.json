@@ -51,6 +51,13 @@
       "statement": "the six-pair reduction, exact three-root saddle factors, five two-value multiplicity formulas, and closed-simplex face factorizations classify every global minimizer of the quartic-truncated entropy packet. Strict full support selects m=1 below r_c, ties m=1/m=2 at r_c, selects m=2 up to sqrt(24), and has only an unattained boundary infimum above; the closed simplex instead selects a support-two boundary branch. This closes the minimizer theorem, not the physical attachment or the full entropy mechanism"
     },
     {
+      "artifact": "runs/flavor/full_entropy_w5_selector.json",
+      "class": "closed",
+      "family": "charged leptons",
+      "id": "ENTROPIC_FULL_FIXED_NORM_W5_HIERARCHY_EXCLUSION",
+      "statement": "full relative entropy to the uniform reference, at fixed quadratic norm on six antipodal-pair probabilities, selects one high and five equal low coordinates for every 0 < r <= sqrt(60). The source quadrupole has a double eigenvalue, excluding three unequal masses from this single-quadrupole spectral readout for any scalar r(P). Other source constraints, coupled records and physical readouts are not excluded"
+    },
+    {
       "artifact": "runs/leptons/koide_circulant_identity.json",
       "class": "closed",
       "family": "charged leptons",
@@ -131,7 +138,7 @@
   "counts": {
     "awaiting_discriminating_test": 1,
     "closable_by_standard_computation": 1,
-    "closed": 18,
+    "closed": 19,
     "computationally_blocked": 2,
     "research_open": 9
   },
@@ -228,7 +235,7 @@
     ],
     "schema": "oph.observer_particles.finite_premise_witnesses.v1"
   },
-  "generated_utc": "2026-10-25T12:33:45Z",
+  "generated_utc": "2026-10-27T07:37:55Z",
   "open_register": [
     {
       "class": "research_open",
@@ -265,7 +272,7 @@
       "class": "research_open",
       "family": "charged leptons",
       "id": "W5_ORBIT_EFFECTIVE_ACTION",
-      "statement": "derive the source amplitude and physical W5-to-log-mass attachment, control regularization and the entropy remainder near zero weights, and extend the exact quartic minimizer classification to the operative higher-order/full-entropy selector. The support-two boundary branch keeps this route viable; stabilizer symmetry alone remains insufficient"
+      "statement": "derive operative family dynamics, source amplitude and the physical W5-to-mass attachment with kinetic normalization. The uniform-reference full-entropy selector at fixed norm is excluded for a single-quadrupole spectral mass readout; different source constraints, coupled records and physical readouts remain open. Stabilizer symmetry alone remains insufficient"
     },
     {
       "class": "research_open",

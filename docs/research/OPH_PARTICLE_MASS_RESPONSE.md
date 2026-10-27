@@ -3,6 +3,11 @@
 This document states the current chiral Weyl–Higgs candidate, hierarchy
 diagnosis and full repair-response result. Its calculations and retained
 outputs are in the linked model packages.
+**Status.** The executable construction realizes calibrated Standard Model
+charged-matter structure and permits observer-record recovery of its mass
+parameters. The physical continuum limit and source derivation of those
+parameters remain unestablished. Conditional finite-field convergence results
+below do not establish the complete interacting chiral Standard Model.
 The source-identity test in [§5.16](#516-persistent-native-objects-and-the-finite-gauge-theorem)
 starts with persistent native objects and their actual port action.
 Two record-correctable carriers contain the geometric $3\oplus3'$ required
@@ -55,6 +60,14 @@ repair law. It produces three unequal Higgs couplings, with ratios about
 `1 : 30.84 : 452.62`, without fitting them. This fixed candidate fails the
 charged-lepton hierarchy comparison; it does not replace the calibrated
 control with a successful physical mass derivation.
+An incidence-defined, source-executed repair selects three persistent family
+levels on a separate protected carrier pair. The geometric-loop mass
+comparison and a current-mediated auxiliary response constrain two further
+routes; neither reproduces the charged-lepton hierarchy.
+A second record law uses two noncommuting native rotations and gives ratios
+about `1 : 382.23 : 5909.43`, also outside the comparison windows. A complete
+selector-derived bath instead gives five low charged responses; none are
+discarded to manufacture a three-family spectrum.
 
 **Operational particle mass.** A mass is inferred from jointly accessible
 detector records and interventions in a stated observer clock and spacetime
@@ -1221,7 +1234,7 @@ from the candidate menu is not forced by anomaly cancellation.
 | --- | --- | --- |
 | Complete twelve-current classification | Internal Lie-algebra type of the specified response | Completeness of the physically accessible response, beyond the declared menu |
 | Exterior component and selection theorems | Two conjugate chiral anomaly-free matter sectors in the actual five-mode lift | That lift and component menu; chirality and anomaly cancellation as selection conditions |
-| Family-band theorem | Unique lowest-cost faithful complete native band has rank three | Realization of the family factor in that band and the operational selection rule |
+| Family-band theorem | Unique lowest-cost faithful complete native band has rank three | The specified incidence-based cooling rule and identification of its output with physical families |
 | Same-current Higgs invariant equations | Three allowed coupling channels and their exact field intertwiner | Their family matrices and physical Higgs dynamics |
 | Central-character descent | The common $\mathbb Z_6$ kernel of this representation | Physical global gauge-group and line-operator identification |
 
@@ -1235,7 +1248,50 @@ rotation intertwiners. It retains the full coefficient-band dimensions
 `1 + 3 + 3 + 5`. Selecting the complete rank-three band gives
 $3\times15=45$ internal family/matter dimensions; the unfiltered coefficient
 space would give $12\times15=180$. The isometry is a coefficient-space
-map, not an executed native filter that removes the other bands.
+map. The [operational family selector](../../model/common_source/native_family_selection.py)
+supplies a separate executed repair on the full protected 36-color pair.
+This neutral family pair is distinct from the pair carrying gauge currents.
+
+The rule selects the twelve order-five rotations that move ten ports along
+incidence edges. On the color-pair representation their class sum has the
+complete spectrum
+
+```math
+12^{[2]},\quad (2+2\sqrt5)^{[3]},\quad
+(2-2\sqrt5)^{[3]},\quad (-3)^{[8]},\quad 0^{[20]}.
+```
+
+The declared repair preserves the highest non-invariant response band and
+returns its complement to a uniform state on that band. Its dimension is
+computed as three; neither a three-level input register nor a dimension
+window is used to select it. With $P$ its projector, $Q=I-P$ and a native
+twelve-port tight frame $\sum_i a_i a_i^\dagger=P$, the complete logical
+instrument is
+
+```math
+L_0=P,\qquad L_{ij}=\frac{|a_i\rangle\langle e_j|Q}{\sqrt{\operatorname{tr}P}},
+\qquad
+\mathcal R(\rho)=P\rho P+\operatorname{tr}(Q\rho)\frac P3.
+```
+
+All 433 logical outcomes are covariant under the sixty proper rotations,
+including their record labels. Fixed density matrices have support in $P$;
+the effective protected output algebra is $M_3$. The full Heisenberg fixed
+operator system is $B_P+(\operatorname{tr}B_P/3)Q$, which is generally not
+closed under ordinary ambient matrix multiplication.
+
+The compiled implementation executes the full 64-address P/Q pointer,
+coordinate readout, uniform twelve-way selector, port-state preparations
+and resets. Its 605 classical outcomes include 144 selector-abort and 28
+padding flags; none are postselected away. Together with the 128 native
+C/E labels this gives 77,440 classical label combinations. The two
+64-valued decoder syndromes remain quantum outputs, of joint dimension
+4,096. The source factors retain them explicitly. The approximation bound
+for the composed repair applies to all 36 logical inputs and arbitrary
+quantum references; full 64-input completeness is checked separately.
+This realizes three persistent levels under a specified repair law. Physical
+family identification, Lorentzian fermion statistics and successful mass
+dynamics are separate requirements.
 
 #### 5.17 Native virtual interactions and controlled response
 
@@ -1389,7 +1445,38 @@ it does not replace correlated records by independent draws. This is a
 controlled averaging limit for the specified coherent service, not a
 physical clock calibration or a full native matter-register execution.
 
-The resulting positive eigenvalues are approximately
+The [native feedback implementation](../../model/common_source/native_repair_mass_feedback.py)
+compiles this same fixed rule at coherent model step $h=1/64$. It executes
+five full 128-column source words, the actual six-input geometric preparation,
+all C/E factors and the native reencoders. All 640 raw-record/old-memory
+labels, both old quantum syndrome outputs and register padding are retained.
+The complete output is specified by executed factors rather than an enormous
+materialized tensor. Closeness is certified on the selected family triplet
+times the two Nambu levels, with arbitrary references; full 128-input
+probability completeness is a separate check. A 64-cycle bound uses the
+decoded low-register interface, includes the admitted channel-norm
+amplification, and counts preparation and the final encoder separately.
+It implements the chosen feedback service without deriving physical spin,
+spacetime or masses. The smaller-time effective readout intervals below
+and the native fixed-step reconstruction have separate error budgets.
+
+The [native fixed-basis readout](../../model/common_source/native_repair_mass_native_readout.py)
+starts its memory at zero and executes eight complete record updates with
+fresh known work before each science probe. Its apparatus supplies no
+stationary probabilities or mass eigenvectors. A single feedback step at
+$h=1/64$, the actual decoders, the geometric preparation inverse and nine
+fixed Pauli-Y interferometers produce all $9\times640\times128$ classical
+record probabilities; both old and final quantum syndrome domains remain
+in the defining source factors. The inverse uses only those records and
+the apparatus/error contract. Its exact finite-step identity bounds the
+reconstructed symmetric kernel's operator error, including source error,
+finite burn-in and the finite-step bias. These are simulated complete record
+laws, not finite-shot experimental data. The recovered object is the
+specified family coefficient; its failed mass hierarchy is unchanged.
+The Nambu control and pointer are declared register services; this does not
+derive a charge-conserving physical CAR detector.
+
+The underlying stationary kernel has positive eigenvalues approximately
 `(0.00206415, 0.06365983, 0.93427602)`. Their ratios are
 `1 : 30.84064479 : 452.61944633`. Both charged-lepton ratio tests fail
 against the retained broad comparison windows `[206, 207]` and
@@ -1427,6 +1514,232 @@ Its eigenvalue intervals are approximately
 `[0.93426923, 0.93428282]`; the ratio intervals are `[30.7362, 30.9458]`
 and `[451.1312, 454.1175]`. These are inferred couplings of the specified
 effective feedback action, not physical pole-mass or experimental intervals.
+
+#### 5.21 Geometric loop phases and the finite mass relation
+
+The [native loop calculation](../../model/common_source/native_mass_holonomy.py)
+tests whether the existing finite circulant mass relation can acquire its
+missing phase from the carrier. Spin-coherent projectors
+$F_i=(I+n_i\cdot\sigma)/2$ use the actual native port directions. Their
+Bargmann products on all twenty oriented faces have phase $\pi/10$;
+the symmetric-square spin-one connection has phase $\pi/5$. An exact
+unimodular face-boundary matrix proves that every closed integer edge chain
+on this original triangulation has phase in the corresponding lattice.
+This is an actual connection calculation; finite group characters alone
+do not select a continuous phase. The general geometric-phase connection
+is described by [Layton, Huang and Chu](https://doi.org/10.1103/PhysRevA.41.42)
+and [Rabei et al.](https://arxiv.org/abs/quant-ph/9907080).
+
+For the finite relation, write $C=aI+bR+\bar bR^2$ with $R^3=I$.
+The balance $|b/a|=1/\sqrt2$, positive $C$, canonical kinetics and the
+mass prescription $Y=C^2$ are supplied for this comparison. They are not
+derived by the geometric connection. Equal-link loop transport and
+positivity leave only the unordered phases $0,\pi/30,\pi/15$. Their
+dimensionless squared-eigenvalue ratios are respectively
+`1 : 1 : 67.9411`, `1 : 6.33689 : 203.3724`, and
+`1 : 109.8853 : 1969.2846`. All fail both retained lepton windows.
+Changing a loop within this original edge graph cannot select an
+intermediate phase. Refined or different connections are outside this result.
+The target-informed phase values are not inputs to this test.
+
+The orientation construction also has a representation boundary: the
+actual gauge object is $3\oplus3'$, whereas a neutral family triplet with
+two trivial orientation labels is $3\oplus3$. Their $A_5$ characters differ.
+They restrict to equivalent $C_3$ representations on a chosen face, but
+that does not supply a global $A_5$ identification or a physical mass map.
+
+#### 5.22 Current-mediated auxiliary response
+
+The [auxiliary response](../../model/common_source/native_mass_dressing.py)
+uses the actual current trace metric $-\operatorname{Tr}_{M_6}(D_aD_b)$.
+Its derived quadratic operator on every exterior state is
+
+```math
+C_R=2C_2^{\rm color}+\tfrac12 C_2^{\rm weak}+\tfrac1{12}q^2.
+```
+
+The five selected multiplets have values $25/8,4,3,9/8,3$ for
+$Q,u^c,d^c,L,e^c$. The trace metric is a chosen invariant form; the finite
+gauge theorems do not select its physical factor strengths. A fixed rule
+couples these currents to two auxiliary bands through the family projector
+$Q_f=I-P_0$, with common coupling and auxiliary threshold both equal to
+one. Neither is fitted. The complete 2,250-state operator retains its
+210-dimensional bright sector and all 2,040 dark states at frequencies
+$\pm1$. The current-to-auxiliary map is checked against all twelve current
+actions; the exact full resolvent agrees with its reduced blocks.
+
+Its positive subthreshold response ratios are approximately
+`1 : 30.8513 : 1318.3561` for charged leptons,
+`1 : 30.8600 : 2053.5472` for up-type charges and
+`1 : 30.8583 : 1836.7575` for down-type charges. Thus one rule produces
+sector-dependent responses, but the lepton hierarchy fails. Every extra
+bright auxiliary pole and its residue is retained. The frequency-dependent
+self-energy is used; a low-energy kinetic approximation is not substituted
+for the full poles.
+
+An exact bound excludes tuning the positive dressing strengths while
+keeping this $Y$ and $Q_f$. Put
+$S=Y-YP_0Y/\operatorname{tr}(P_0Y)$; then $S\ge0$ and $S=Q_fSQ_f$.
+For the two smallest positive poles below a common auxiliary threshold,
+
+```math
+\frac{E_2}{E_1}\le\frac{\operatorname{tr}S}{\lambda_{\min}(Y)}
+<31.871433888646<32.
+```
+
+This follows from a rank-one singular-value bound and monotone exact
+self-energy crossing equations, without assuming $[Y,P_0]=0$. It applies
+when those subthreshold poles exist; all three exist for the fixed unit
+threshold. Assigning observed states above threshold would leave the
+lower charged responses to explain. Other family couplings are not excluded.
+The calculation is a finite charged auxiliary response, not a Lorentzian
+mass derivation: auxiliary Weyl kinetics, full physical spin/statistics,
+native source-word execution and detector-based pole inference are not
+supplied by this control. It does not execute simultaneous finite-memory
+feedback with the auxiliary interaction.
+
+#### 5.23 Source anisotropy and noncommuting family dynamics
+
+The [native potential calculation](../../model/common_source/native_family_potential.py)
+determines how the source geometry can select a direction for a single real
+family vector $\phi$. Averaging the actual sixty rotations gives invariant
+dimensions `1,0,1,0,1,0,2` in degrees zero through six. The port moments obey
+$\sum_i(n_i\cdot\phi)^2=4|\phi|^2$ and
+$\sum_i(n_i\cdot\phi)^4=(12/5)|\phi|^4$, so every invariant scalar potential
+through degree four is radial. The first anisotropic moment is
+$I_6=\sum_i(n_i\cdot\phi)^6$. On the unit sphere its complete stationary
+set consists of twelve vertex maxima, twenty face minima and thirty edge
+saddles. Thus either sign selects a face or vertex axis under this
+fixed-radius rule. The positive Gram operator
+$K_6=\operatorname{Hess}(I_6)/30$ has spectra
+$(4/9,4/9,68/45)$ and $(4/25,4/25,52/25)$ respectively.
+This particular real symmetric curvature coupling retains a doublet.
+It is not a theorem about general complex Yukawa matrices: a commuting
+complex Hermitian coupling can have three different eigenvalues. Neither
+the scalar potential nor its Hessian alone supplies a fermion mass map.
+
+The [two-rotation record law](../../model/common_source/native_mass_record_cycles.py)
+uses the unique proper edge half-turns $g_C,g_E$ for the existing C and E
+seams. A C event advances the memory by $g_C$; coincidence with an E event
+then applies $g_E$; C failure resets it to port two. The E event is selected
+as the first supported coin-zero record that moves primitive source work,
+before calculating the spectrum. This gives events `(0,1)` and `(0,5)`,
+each with probability $1/12$. The complete twelve-port transition is
+
+```math
+T=(1-p)e_2\mathbf1^T+p[(1-q)G_C+qG_EG_C],\qquad p=q=1/12.
+```
+
+All twelve memory inputs and 1,536 raw-record/memory labels remain, including
+transients outside the stationary support. Its stationary port-projector
+kernel has exact rationally isolated ratios `1 : 382.2255 : 5909.4287`;
+both lepton windows fail. The full correlated effective channel is executed,
+and the reset contraction controls its averaging limit with arbitrary
+references. This changes the coupling mechanism without supplying measured
+masses. The new twelve-state controller's native pulse history and a
+physical Higgs/kinetic attachment are separate obligations.
+
+The [complete incidence bath](../../model/common_source/native_mass_bath.py)
+uses one existing selector attempt with its timeout probability $5/32$.
+All 66 native load-two inputs give the exact first-moment operator
+$D_{12}=I-T_{12}=F^TF$, with rank nine. Its twenty accepted seam rows,
+timeout row and all port zero directions are retained. The fixed coherent
+lift $H_b=\left(\begin{smallmatrix}0&F^T\\F&0\end{smallmatrix}\right)$
+is an additional repair-service choice; dissipation is not identified with
+energy. Coupling its full port space through the actual family isometry
+and the same current intertwiners gives the noncommuting self-energy
+$C_R V^T z(z^2I-D_{12})^{-1}V$, with unit coupling and no adjustable gap.
+All 23,130 states, including 16,502 zero modes, are specified by complete
+factors. A literal sparse resolvent checks the reduction.
+
+The source-defined window $0<E<\sqrt{\lambda_{\min}^+(D_{12})}$ has upper
+endpoint about `0.15530109`. Each charged channel has **five** positive
+responses in that window. The lepton responses are approximately
+`0.00094732, 0.07352214, 0.07831312, 0.14163744, 0.15370728`, all with
+nonzero light-sector residues. This is not a recovered three-family
+spectrum; the extra modes are retained. Native coherent bath execution,
+detector inference and physical auxiliary kinetics are not established.
+
+#### 5.24 Same-current local field transport and continuum comparison
+
+The [gauge-linked field](../../model/common_source/native_gauge_matter_transport.py)
+uses the actual twelve currents and their complete 32-level exterior action.
+Their invariant fifteen-component sector acts on separate physical CAR
+modes. Native exchange echoes, current rotations and fermionic swaps compile
+the nearest-neighbor kinetic block
+
+```math
+h_{xy}=-\frac{iJ}{a}\eta_j(x)\rho(U_{xy}),\qquad
+h_{yx}=h_{xy}^\dagger.
+```
+
+All four columns of every local Fock operation, routing signs and auxiliary
+complements are retained. A product norm bound extends the local numerical
+admissions to the factorized 90-CAR-mode linked-bond word; no one-particle
+cutoff is used for that claim. The larger periodic lattice is an operator
+and factor comparison, not an executed global C/E field history.
+Independent site transformations obey
+$U_{xy}\mapsto G_xU_{xy}G_y^\dagger$, and a nontrivial plaquette checks that
+the retained background is not merely a change of basis of the zero field.
+The link paths, cubic geometry and coherent controls are specified choices.
+Quantum gauge-field dynamics and a physical Gauss sector are not supplied
+by this background-field construction.
+
+The [continuum comparison](../../model/common_source/native_gauge_continuum.py)
+uses the same currents and source links. For constant anti-Hermitian
+$A_j$, put $U_j(a)=e^{aA_j}$ and $K_j=p_jI-iA_j$. The complete eight-corner
+symbol and its comparison operator are
+
+```math
+h_a=m\beta+c\sum_j\alpha_j\frac{\sin(aK_j)}a,\qquad
+h_D=m\beta+c\sum_j\alpha_jK_j,\qquad
+\|h_a-h_D\|\le\frac{ca^2}{6}\sum_j\|K_j\|^3.
+```
+
+The bound does not require commuting $K_j$. Their commutators contribute to
+the squared operator, so free-particle dispersion is not assumed in the
+non-Abelian background. Duhamel's estimate gives a finite-coordinate-time
+comparison at fixed particle number on a compact momentum band in the declared
+constant-background gauge. Independent site transformations need not preserve
+that band or background subclass. Product-formula and source-operation errors
+are counted separately. Refinement also requires the
+total source error to vanish as the operation count grows; fixed numerical
+admissions alone do not provide that physical accuracy limit.
+
+The same source-computed family kernel $Y$ can act as a common gauge-singlet
+family mass block: it commutes with every internal current. This explicitly
+joins the coefficient and field descriptions without empirical mass inputs,
+while retaining the failed common hierarchy. It is a chosen vectorlike mass
+attachment, not the chiral Higgs pairing or an executed simultaneous field
+and finite-memory feedback history.
+
+The free field retains two Dirac tastes, both chiralities and every internal
+component. It does not identify these copies with the observed three chiral
+families. This connects finite native gauge transport to a conditional
+background-field continuum description. It does not derive a dynamical
+chiral gauge theory, its interacting vacuum or the measured particle masses.
+
+A direct finite dynamical-link trial illustrates a further requirement within
+the [quantum-link framework](https://arxiv.org/abs/hep-lat/9609042), also used
+in [non-Abelian lattice simulators](https://arxiv.org/html/1211.2242v2). Let
+$V$ be the actual fifteen-component matter representation and take the link
+space $V_L^*\oplus V_R^*$, with $U_{ij}=|L_i\rangle\langle R_j|$.
+For each anti-Hermitian current $T$, the endpoint generators are
+$L(T)=(-T^T)\oplus0$ and $R(T)=0\oplus(-T^T)$. For real hopping strength
+$\kappa$, their commutators with
+$U_{ij}$ cancel the variations of
+$\kappa\sum_{ij}a_{xi}^\dagger U_{ij}a_{yj}+\mathrm{h.c.}$ under the
+two endpoint CAR charges, so this defines a finite gauge-invariant hopping
+law. It does not yet define a Standard Model connection: unrestricted
+$U_{ij}$ can change between inequivalent matter multiplets, whereas
+$\rho(g)$ is block diagonal on them. All matter hypercharges are nonzero,
+so this link has no zero-matter Gauss-singlet state. In the one-matter-particle
+sector, the singlets have dimension ten. The hopping block is
+$\kappa vv^T$ between the two endpoints, with
+$v=(\sqrt6,\sqrt3,\sqrt3,\sqrt2,1)$, giving eigenvalues
+$\pm15\kappa$ and eight zeros. A different link representation, vacuum and
+continuum construction would need their own checks. This is an algebraic
+trial, not an executed source-field or measured-spectrum result.
 
 ### 6. Relation to observers' effective 3+1D spacetime
 
@@ -1562,6 +1875,12 @@ not excluded by these tests.
 | Joint charged-species and calibrated mass readout | One coherent 256-address register supplies charge, color and running-gap records with a blind inverse and held-out read; the source action retains measured running parameters |
 | Internal chiral matter types and Higgs channels | The specified native 12-current law has an exact spin/exterior lift, fifteen-dimensional matter intertwiner and three invariant Higgs lines; lift and physical field attachment remain explicit architecture choices |
 | Native family-dependent operator | Exact, covariant, nonscalar, with three distinct eigenvalues |
+| Source-executed family-band selection | Incidence-defined repair selects a protected rank-three band with an exact map to the finite theorem; all cooling and native repair records are retained. Its role as physical family multiplicity remains an attachment |
+| Record-driven family coupling | Complete correlated feedback and fixed-probe inverse without measured masses; an exact invariant excludes the whole stationary trigger-probability family |
+| Original-carrier loop phases | Exact phase lattice and three positive finite-relation candidates; all fail the lepton hierarchy, with balance and the squared-eigenvalue mass map supplied |
+| Current-mediated auxiliary response | Distinct charged-sector responses with all auxiliary modes retained; the two smallest subthreshold lepton poles have ratio below 32 at every nonnegative dressing strength in the stated class |
+| Native feedback implementation | Literal source words, complete C/E factors and retained syndromes implement one fixed failing family law, with separate source and averaging bounds |
+| Noncommuting source alternatives | Two-rotation record feedback fails both lepton ratios; the complete selector bath has five low charged responses. The simplest selected real curvature coupling retains a doublet |
 | Weyl/Higgs Spin, charge and dispersion | Checked on the same declared action and Nambu conventions |
 | Weak-chirality discriminator | Correct operator vertex weights; no dynamical weak scattering calculation |
 | Continuing source readout | Full 90-mode rest field and protected 630-mode seven-momentum field; complete factorized complex outputs and flagged failures |
