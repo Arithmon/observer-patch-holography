@@ -983,7 +983,7 @@ quotient is the twelve-current law. This filters Hamiltonian coefficients;
 it is not the prohibited quantum channel fixing rotations while erasing
 their quadrupoles. The result requires bounded drives mediated by the
 declared controller, not arbitrary rescaling or bypass of its attenuation.
-With unrestricted input amplitudes the finite filter still reaches all
+With unrestricted input amplitudes the finite filter reaches all
 eighteen currents. The class-sum phase is also an added work actuator;
 using it only as a reference bias leaves eleven observable directions in
 the filtered limit of the original seventeen-current algebra.

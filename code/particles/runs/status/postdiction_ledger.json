@@ -96,7 +96,7 @@
   },
   "fixed_spectral_cross_scale_comparison": {
     "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
-    "artifact_sha256": "7b3cab4fafeec3a4bc618b783bc55121e27c65479fe55858da115c7e86ab2cb8",
+    "artifact_sha256": "7dac663d608c31ea57c5408e1271e425de6ce42aa7c580a356917c3b401f10a8",
     "attribution": {
       "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
       "author": "A. D. Wissner-Gross",
