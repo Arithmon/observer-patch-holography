@@ -276,6 +276,8 @@ REPLAYS = (
      "model/common_source/native_charged_spectrum_results.json"),
     ("model.native_equilibration.wedge_modular", None,
      "model/native_equilibration/wedge_modular_results.json"),
+    ("model.common_source.native_response_compatibility", None,
+     "model/common_source/native_response_compatibility_results.json"),
 )
 
 

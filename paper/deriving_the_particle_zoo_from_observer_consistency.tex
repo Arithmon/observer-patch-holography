@@ -499,6 +499,21 @@ does not implement the chiral Higgs pairing or a simultaneous field and
 finite-memory feedback history.
 See \path{model/common_source/native_gauge_continuum.py}.
 
+A separate repair-clocked controller updates all eighteen ambient response
+coefficients using a disturbance quadratic form computed from the native
+interaction and a biased reference. Its update does not insert a target
+twelve-current list. Every finite filter remains invertible; unrestricted
+amplification accesses eighteen directions. Under bounded actuation,
+a controlled joint reference/feedback limit instead retains twelve observable
+currents, including the relative phase. Fixed-bias long feedback retains
+only six. The positive bias, work-phase actuator, fresh baths, coefficient
+metric and feedback law are explicit architecture choices. A complete native
+C-record history connects the bath preparation, feedback count and data
+drive, with separate timeout and numerical source bounds. This supplies a
+conditional current-selection mechanism; exact finite physical completeness,
+Higgs and Yukawa parameter selection, and measured masses remain open.
+See \path{model/common_source/native_response_compatibility.py}.
+
 An exact local particle-hole map also attaches the calibrated action to a
 finite regional vacuum calculation: 21 Dirac fields (six quark flavors in three colors and three charged leptons) and three
 massless Weyl fields share one antiperiodic spatial regulator. Regional

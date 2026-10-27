@@ -64,7 +64,12 @@ and the clocks inside it.
   theorem's complete 12-current premise. A specified coherent control law
   realizes twelve closed currents on that same carrier, with an explicit
   spin/exterior lift and Higgs channels. The control-menu boundary and lift
-  remain inputs. Calibrated fields reproduce supplied running masses in
+  remain inputs. A separate native-record controller acts on all eighteen
+  exchange-plus-phase currents. Every finite filter stays invertible; only
+  a joint limit of increasing bias and update count approaches twelve
+  observable currents under bounded drives. Its baths, feedback rule and
+  actuators are supplied, and physical current completeness remains open.
+  Calibrated fields reproduce supplied running masses in
   simulated observer records. A separate native correlation and exchange
   construction gives fermion modes and interactions. Specified phase and
   exchange controls also derive a free three-dimensional relativistic field,

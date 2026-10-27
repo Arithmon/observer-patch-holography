@@ -67,7 +67,14 @@ intemporelle et les horloges qu’elle contient.
   énonce la portée de la construction.
 - **Champs de particules et mesures de masse.** Un relèvement de spin déclaré
   fournit les charges internes d’une génération du Modèle standard et ses
-  interactions de Higgs permises. Des champs calibrés reproduisent les masses
+  interactions de Higgs permises. Une loi de contrôle spécifiée réalise douze
+  courants fermés sur les mêmes triplets géométriques ; son menu de contrôle
+  reste une hypothèse. Un contrôleur distinct agit sur les dix-huit courants
+  d’échange et de phase. Chaque filtre fini reste inversible ; une limite
+  conjointe du biais et du nombre de mises à jour approche douze courants
+  observables sous des commandes bornées. Les bains et la rétroaction sont
+  fournis ; la complétude physique des courants reste ouverte.
+  Des champs calibrés reproduisent les masses
   fournies dans des registres simulés. Une construction distincte par
   corrélation native et échange produit des modes fermioniques et leurs
   interactions. Des contrôles de phase et d’échange spécifiés dérivent aussi
