@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 from functools import lru_cache
+from fractions import Fraction
 import hashlib
 import itertools
 import json
@@ -31,6 +32,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ADMISSION = 2e-8
 TRIALS = 262144
 SEED = 20261027
+SAMPLER_BOUNDARY_GUARD = 2**-32
 
 
 def clean(matrix):
@@ -604,6 +606,60 @@ def decode_record_counts(counts):
     return decoded
 
 
+def sample_complete_pointer_law(probabilities):
+    """Fixed raw draws against exact cumulative source probabilities.
+
+    Probability-dependent binomial sampling can change its random-number
+    consumption under last-bit probability changes. Here the raw PCG64 stream
+    is independent of the law. Rational cumulative thresholds avoid rounding
+    their summation, and a fixed draw-to-boundary guard rejects fragile replay.
+    This is a synthetic record sampler, not a hardware error certificate.
+    """
+    if (type(probabilities) is not np.ndarray or probabilities.dtype != np.dtype('float64')
+            or probabilities.shape != (32,) or not np.isfinite(probabilities).all()
+            or np.any(probabilities < 0)):
+        raise ValueError('all32 finite nonnegative float64 source probabilities are required')
+    weights = [Fraction(float(p)) for p in probabilities]
+    total = sum(weights)
+    if abs(total-1) > Fraction(ADMISSION):
+        raise ArithmeticError('complete source record mass differs from one')
+    grid = 1 << 64
+    raw = np.random.PCG64(SEED).random_raw(TRIALS)
+    draws = np.sort(raw)
+    cumulative = Fraction(0); previous = 0; counts = []
+    margin = Fraction(1)
+    for weight in weights:
+        cumulative += weight/total
+        scaled = grid*cumulative
+        threshold = (scaled.numerator+scaled.denominator-1)//scaled.denominator
+        number = (0 if threshold <= 0 else TRIALS if threshold >= grid else
+                  int(np.searchsorted(draws, np.uint64(threshold), side='left')))
+        counts.append(number-previous); previous = number
+        if 0 < cumulative < 1:
+            for index in (number-1, number):
+                if 0 <= index < TRIALS:
+                    margin = min(margin, abs(Fraction(int(draws[index]), grid)-cumulative))
+    if margin <= Fraction(SAMPLER_BOUNDARY_GUARD):
+        raise ArithmeticError('source CDF lies too close to a fixed sampler draw')
+    # Each CDF grid error is <1/grid, hence total variation is <32/grid.
+    # It fits the second ADMISSION allowance already used by the inverse;
+    # the first covers normalization. Neither statistical allowance changes.
+    grid_error = Fraction(32, grid)
+    if grid_error >= Fraction(ADMISSION):
+        raise ArithmeticError('sampler grid exceeds the existing numerical allowance')
+    return np.asarray(counts, dtype=np.int64), {
+        'method': 'fixed_PCG64_uint64_draws_exact_rational_source_CDF',
+        'raw_draw_sha256_little_endian': hashlib.sha256(raw.astype('<u8').tobytes()).hexdigest(),
+        'minimum_draw_to_source_CDF_distance': float(margin),
+        'fixed_boundary_distance_guard': SAMPLER_BOUNDARY_GUARD,
+        'grid_total_variation_upper': float(grid_error),
+        'fixed_seed_or_draws_selected_by_acceptance': False,
+        'boundary_guard_failure_action': 'abort_without_resampling',
+        'statistical_coverage_conditioned_on_boundary_guard_pass': False,
+        'source_probabilities_replaced_by_ideal_multiplicities': False,
+        'hardware_or_outward_rounding_error_certificate': False}
+
+
 def record_identification():
     r = representation(); kraus, pointer_word = occupation_instrument()
     initial = np.asarray(r['encoder'], complex)/math.sqrt(15)
@@ -611,12 +667,12 @@ def record_identification():
     probabilities = np.sum(abs(outputs)**2, axis=(1, 2))
     total = float(probabilities.sum())
     if abs(total-1) > ADMISSION: raise ArithmeticError('complete source record mass differs from one')
-    law = probabilities/total
-    counts = np.random.default_rng(SEED).multinomial(TRIALS, law).astype(np.int64)
+    counts, sampling = sample_complete_pointer_law(probabilities)
     decoded = decode_record_counts(counts)
     selected = set(r['selected'])
     excluded = [mask for mask in range(32) if mask not in selected]
     return {'trials': TRIALS, 'sampler_seed': SEED, 'simultaneous_failure_probability_upper': 1e-9,
+            'synthetic_record_sampler': sampling,
             'full_outcome_count': 32, 'pointer_sourceword_local': pointer_word,
             'selected_uniform_register_is_architecture': True,
             'excluded_outcomes_retained': excluded, 'excluded_outcome_count': int(counts[excluded].sum()),

@@ -1,6 +1,7 @@
 """Joint source charge/gap readout, complements and blind inverse contracts."""
 from copy import deepcopy
 import math
+from pathlib import PureWindowsPath
 from unittest.mock import patch
 
 import numpy as np
@@ -120,3 +121,35 @@ def test_resource_accounting_uses_the_same_actual_current_backend(execution):
     with patch.object(h.compiler, '_native', side_effect=AssertionError('old fixture backend')):
         resources = h._source_resources()
     assert resources['one_protocol_native_pulses_upper'] == execution[0]['resources']['one_protocol_native_pulses_upper']
+
+
+def test_repo_relative_calibration_path_is_platform_independent():
+    packet = PureWindowsPath('C:/checkout/model/common_source/calibrated_matter_parameters.json')
+    root = PureWindowsPath('C:/checkout')
+    with patch.object(h.calibration, 'PACKET', packet), patch.object(h, 'ROOT', root):
+        assert h._calibration_packet_name() == 'model/common_source/calibrated_matter_parameters.json'
+
+
+def test_fresh_source_diagnostic_is_not_the_retained_matrix_diagnostic(execution):
+    report, arrays = execution
+    fresh = deepcopy(report)
+    fresh['execution']['complete_protocol_operator_error_diagnostic'] += 1e-9
+    h.compare_execution(report, arrays, fresh, arrays)
+
+
+def test_retained_diagnostic_cannot_be_normalized_away(execution):
+    report, arrays = execution
+    changed = deepcopy(report)
+    changed['execution']['complete_protocol_operator_error_diagnostic'] = 0.
+    with pytest.raises(ValueError, match='own binary'):
+        h.compare_execution(changed, arrays, report, arrays)
+
+
+@pytest.mark.parametrize('kind', ['replay_distance', 'nonfinite', 'extra'])
+def test_fresh_outputs_still_obey_complete_replay_admission(execution, kind):
+    report, arrays = execution
+    changed = deepcopy(arrays)
+    if kind == 'replay_distance': changed['frame'][0, 0] += 2*h.REPLAY_ADMISSION
+    elif kind == 'nonfinite': changed['frame'][0, 0] = np.nan
+    else: changed['extra'] = np.zeros(1)
+    with pytest.raises(ValueError): h.compare_execution(report, arrays, report, changed)

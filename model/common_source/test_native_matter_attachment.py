@@ -171,6 +171,47 @@ def test_count_inverse_does_not_read_source_amplitudes_or_mass_parameters(built,
     with pytest.raises(ValueError): m.decode_record_counts(built[1]['occupation_counts'][:15])
 
 
+def test_fixed_draw_sampler_is_stable_under_source_probability_roundoff():
+    with np.load(m.ROOT/'model/common_source/native_matter_attachment_results.npz', allow_pickle=False) as stored:
+        probabilities = stored['occupation_complete_probabilities']
+    counts, diagnostics = m.sample_complete_pointer_law(probabilities)
+    assert counts.tolist() == [0, 0, 0, 17297, 0, 17313, 17587, 0, 0, 17530, 17493, 0,
+                               17471, 0, 0, 17610, 0, 17388, 17604, 0, 17373, 0, 0,
+                               17477, 17560, 0, 0, 17403, 0, 17607, 17431, 0]
+    selected = np.flatnonzero(probabilities > 0.01)
+    for sign in (-1, 1):
+        for affected in (selected[:1], selected[::2]):
+            perturbed = probabilities.copy()
+            perturbed[affected] += sign*16*np.spacing(perturbed[affected])
+            fresh, _ = m.sample_complete_pointer_law(perturbed)
+            assert np.array_equal(fresh, counts)
+    assert diagnostics['minimum_draw_to_source_CDF_distance'] > m.SAMPLER_BOUNDARY_GUARD
+    assert diagnostics['grid_total_variation_upper'] < m.ADMISSION
+    assert diagnostics['boundary_guard_failure_action'] == 'abort_without_resampling'
+    assert not diagnostics['statistical_coverage_conditioned_on_boundary_guard_pass']
+    assert np.random.PCG64(m.SEED).random_raw(4).tolist() == [18208654110976716130,
+        17750534445809024300, 624749274061255245, 8174374305464244112]
+
+
+def test_fixed_draw_sampler_rejects_a_numerically_fragile_boundary():
+    boundary = int(np.random.PCG64(m.SEED).random_raw(1)[0])/2**64
+    probabilities = np.zeros(32); probabilities[:2] = (boundary, 1-boundary)
+    with pytest.raises(ArithmeticError, match='too close'):
+        m.sample_complete_pointer_law(probabilities)
+
+
+def test_fixed_draw_sampler_keeps_zero_outcomes_and_rejects_incomplete_laws():
+    probabilities = np.zeros(32); probabilities[17] = 1
+    counts, _ = m.sample_complete_pointer_law(probabilities)
+    assert counts.dtype == np.dtype('int64') and counts.shape == (32,)
+    assert counts[17] == counts.sum() == m.TRIALS
+    for invalid in (probabilities[:15], probabilities.astype(np.float32),
+                    np.full(32, np.nan), -probabilities):
+        with pytest.raises(ValueError): m.sample_complete_pointer_law(invalid)
+    with pytest.raises(ArithmeticError, match='mass differs'):
+        m.sample_complete_pointer_law(2*probabilities)
+
+
 def test_global_center_quotient_matches_the_same_lift(built):
     report = built[0]['global_cover_contract']
     assert report['compatible_group_quotient'] == '(SU3 x SU2 x U1_q)/Z6'
