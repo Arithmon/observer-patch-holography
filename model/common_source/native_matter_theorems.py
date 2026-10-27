@@ -47,7 +47,7 @@ def component_map():
     for mask in range(32):
         degree = ((mask & 7).bit_count(), (mask >> 3).bit_count())
         groups.setdefault(degree, []).append(mask)
-    bridge = (ROOT/'Lean/Screen/ExteriorComponentBridge.lean').read_text()
+    bridge = (ROOT/'Lean/Screen/ExteriorComponentBridge.lean').read_text(encoding='utf-8')
     match = re.search(r'def componentDegree.*?:=\s*!\[([^]]+)\]', bridge, re.S)
     if match is None: raise ValueError('finite component-degree table missing')
     degrees = tuple(tuple(map(int, pair)) for pair in re.findall(r'\((\d+),\s*(\d+)\)', match.group(1)))
@@ -85,7 +85,7 @@ def component_map():
                      'four_anomaly_forms': list(map(int, anomalies)),
                      'pure_color_cubic': int(-s.trace((E.T*color_cartan*E)**3)/6),
                      'weak_doublet_count': int(color_dim if weak_dim == 2 else 0)})
-    source = (ROOT/'Lean/Screen/ExteriorSelection.lean').read_text()
+    source = (ROOT/'Lean/Screen/ExteriorSelection.lean').read_text(encoding='utf-8')
     for name, key, kind in [('colorDim', 'color_dimension', int), ('weakDim', 'weak_dimension', int),
                             ('charge', 'charge', int), ('odd', 'odd', bool), ('conj', 'conjugate', int),
                             ('isColored', 'is_colored', bool), ('isDoublet', 'is_doublet', bool)]:

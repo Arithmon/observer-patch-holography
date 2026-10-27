@@ -48,7 +48,7 @@ def _family(value):
 
 def _lean_list(path, name):
     """Read only a literal integer-list definition from the pinned theorem."""
-    text = (ROOT/path).read_text()
+    text = (ROOT/path).read_text(encoding='utf-8')
     start = text.index('[', text.index(':=', text.index('def '+name+' '))+2)
     depth = 0
     for end in range(start, len(text)):
