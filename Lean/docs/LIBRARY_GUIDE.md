@@ -22,6 +22,13 @@ interpretation remain explicit; this does not retire the canonical
 single-band and cost-selection premises of `SMThreeFamilyPremiseData`
 or identify measured masses.
 
+The [repair-clocked current controller](../../model/common_source/native_response_compatibility.py)
+adds a source-executed mechanism approaching twelve observable currents
+under a bounded joint limit. Its finite filters retain eighteen directions;
+it does not discharge the finite gauge theorem's physical completeness
+premise or select Higgs and Yukawa parameters. These executable response
+bounds are separate from the kernel-checked classification theorems.
+
 Lean 4 / Mathlib formalisation of the OPH theorem library. The
 consensus-layer entries of the [proof index](PROOF_INDEX.md) follow
 Definition 4.1 and Proposition 4.2 of the archived paper *Paradise as

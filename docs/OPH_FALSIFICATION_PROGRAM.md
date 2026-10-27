@@ -111,6 +111,13 @@ The response-menu restriction is an architecture premise; it does not show
 that every physically accessible intervention belongs to those twelve
 directions. Its existence does not reverse the exclusion of the exchange
 law or establish measured-mass predictions.
+The [full-current controller](../model/common_source/native_response_controller.py)
+adds supplied bias, fresh baths and feedback on all eighteen exchange-plus-phase
+currents. Its finite filters remain invertible. Twelve observable currents
+arise only in a joint bias/update limit with bounded input and drive-time
+budgets; fixed-bias unlimited feedback leaves six. This controlled limit does
+not discharge the exact finite twelve-current premise or add a physical
+comparison.
 The [native mass-response audit](research/OPH_PARTICLE_MASS_RESPONSE.md)
 also source-executes a chosen three-level selector and recovers a specified
 uncalibrated feedback coefficient from complete fixed-basis records. The

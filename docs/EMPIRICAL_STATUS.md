@@ -127,6 +127,14 @@ matches the declared matter representation and Higgs tensors through an
 exact intertwiner. The law, lift and response-menu boundary are supplied;
 these construction checks do not select the physical gauge action or fit
 an additional public dataset.
+The [native-record current controller](../model/common_source/native_response_controller.py)
+uses a biased reference, fresh baths and a declared feedback rule on all
+eighteen exchange-plus-phase currents. Each finite filter is invertible;
+its twelve-observable-current response is a joint bias/update limit under
+bounded drives. Fixed-bias unlimited feedback instead leaves six observable
+currents. Complete native-clock, bath and timeout outputs bound this
+construction, without establishing physical current completeness or adding
+an empirical comparison.
 The [record-driven repair-mass candidate](../model/common_source/native_repair_mass.py)
 adds a fixed coherent feedback rule without measured mass inputs. Its
 stationary family coupling has ratios `1 : 30.84 : 452.62`, which fail
