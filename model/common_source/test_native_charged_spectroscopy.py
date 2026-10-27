@@ -1,5 +1,6 @@
 """Unknown-input custody, charge, inference and held-out source-record tests."""
 from copy import deepcopy
+from decimal import Decimal, localcontext
 from fractions import Fraction as F
 import hashlib
 import inspect
@@ -287,3 +288,44 @@ def test_publication_replay_requires_unchanged_source_pins(execution, tmp_path):
     with patch.object(h, 'execute', return_value=execution), patch.object(h, 'source_bindings', side_effect=[pins, changed]):
         with pytest.raises(ValueError, match='changed during replay'):
             h.check(path)
+
+
+def test_complex_product_rounding_does_not_depend_on_fused_multiply_add():
+    left = complex(-0.9860717332387403, 0.406368366253808)
+    right = complex(0.27908498320449926, 0.18472483368951598)
+    with localcontext() as context:
+        context.prec = 100
+        ar, ai, br, bi = map(Decimal.from_float, (left.real, left.imag, right.real, right.imag))
+        rr, ii, ri, ir = (float(x) for x in (ar*br, ai*bi, ar*bi, ai*br))
+        expected = complex(float(Decimal.from_float(rr)-Decimal.from_float(ii)),
+                           float(Decimal.from_float(ri)+Decimal.from_float(ir)))
+        fused = complex(float(ar*br-Decimal.from_float(ii)),
+                        float(ar*bi+Decimal.from_float(ir)))
+    assert fused != expected  # The platform-independent counterexample.
+    assert h._rounded_complex_product(left, right) == expected
+
+
+def test_cycle_power_matches_independent_separately_rounded_decimal_reference():
+    matrix = np.array([[.999-.001j, .0004+.001j], [-.0004+.001j, .999+.001j]])
+    def product(left, right):
+        output = np.zeros((2, 2), complex)
+        with localcontext() as context:
+            context.prec = 100
+            for i in range(2):
+                for j in range(2):
+                    real, imag = [], []
+                    for k in range(2):
+                        ar, ai, br, bi = map(Decimal.from_float,
+                            (float(left[i, k].real), float(left[i, k].imag),
+                             float(right[k, j].real), float(right[k, j].imag)))
+                        rr, ii, ri, ir = map(lambda x: Decimal.from_float(float(x)), (ar*br, ai*bi, ar*bi, ai*br))
+                        real.append(Decimal.from_float(float(rr-ii)))
+                        imag.append(Decimal.from_float(float(ri+ir)))
+                    output[i, j] = complex(float(sum(real)), float(sum(imag)))
+        return output
+    exponent, value, expected = 4099, matrix.copy(), np.eye(2, dtype=complex)
+    while exponent:
+        if exponent & 1: expected = product(expected, value)
+        exponent //= 2
+        if exponent: value = product(value, value)
+    np.testing.assert_array_equal(h._compensated_power(matrix, 4099), expected)

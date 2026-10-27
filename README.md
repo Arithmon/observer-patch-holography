@@ -60,8 +60,11 @@ and the clocks inside it.
   the internal charges of one Standard Model generation and its allowed Higgs
   interactions. Native incidence also supplies record-correctable objects
   carrying the actual geometric triplets on two carriers. Their tested
-  exchange responses have a 17-dimensional algebra; they do not satisfy the
-  finite gauge theorem's complete 12-current premise. Calibrated fields reproduce supplied running masses in
+  exchange responses have a 17-dimensional algebra and fail the gauge
+  theorem's complete 12-current premise. A specified coherent control law
+  realizes twelve closed currents on that same carrier, with an explicit
+  spin/exterior lift and Higgs channels. The control-menu boundary and lift
+  remain inputs. Calibrated fields reproduce supplied running masses in
   simulated observer records. A separate native correlation and exchange
   construction gives fermion modes and interactions. Specified phase and
   exchange controls also derive a free three-dimensional relativistic field,

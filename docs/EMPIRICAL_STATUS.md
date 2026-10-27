@@ -119,6 +119,14 @@ the same opposite code choices as the exchange-response calculation.
 Its ideal preserving response algebra has dimension 17, so it does not
 satisfy the finite Standard Model theorem's complete 12-current hypothesis.
 Neither physical particles nor measured masses are identified by this test.
+A [specified coherent law](../model/common_source/native_sm_current.py)
+on the same geometric object gives twelve closed currents and a relative
+central phase visible in cross-triplet records. Its
+[spin/exterior attachment](../model/common_source/native_matter_attachment.py)
+matches the declared matter representation and Higgs tensors through an
+exact intertwiner. The law, lift and response-menu boundary are supplied;
+these construction checks do not select the physical gauge action or fit
+an additional public dataset.
 Separate [native spectroscopy](../model/common_source/native_charged_spectroscopy.py)
 infers both specified dimer frequencies from complete fixed-probe contrasts,
 with held-out readouts and a zero-gap control. Its inverse receives no target

@@ -177,6 +177,9 @@ selected to define that construction:
 | Schedule-independent completed history | Fixed event graph, boundary, source maps and fair constraint-repair schedule |
 | Observer Hilbert representations and modular flow | Specified observer algebra and its state restriction |
 | Alignment of Hamiltonian and modular flow | Chosen full-work Gibbs reference |
+| Twelve closed native currents, proper-rotation covariance and relative-phase readout | Specified complex-triplet/real-triplet coherent law on the protected geometric object; its current menu excludes declared apparatus services and does not establish full physical A1 closure |
+| Fifteen internal matter weights, three Higgs lines and an exact field intertwiner | Chosen weak spin cover, exterior sector, physical CAR field and three-family register; the remaining 27 complex coupling entries do not follow from the current algebra |
+| Joint charge, color-Casimir and running-gap records on one coherent register | Calibrated charged-fermion parameters, fixed probe and pointer, ideal continuous-current service and common clock; no pole-mass prediction or complete matter-register C/E execution |
 | Incident-clock transfer and complete local field words | Fixed graph, uniform all-seam schedule, observer region, stationary fixed-particle preparation, field dictionary and local record access; incident-attempt units are dimensionless and are not modular time |
 | Cross-screen incident-clock agreement | The actual level-3/5 source pair, matched initial local/reference restrictions, source port maps and local event/controller support; this is one finite comparison, not an all-level limit |
 

@@ -47,6 +47,9 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
 OCCUPATION_TRANSFER_REPLAY = ("model.occupation_control.transfer", None,
                               "model/occupation_control/transfer_results.json.gz")
 REPLAYS = (
+    ("model.common_source.native_sm_current", None, "model/common_source/native_sm_current_results.json"),
+    ("model.common_source.native_matter_attachment", None, "model/common_source/native_matter_attachment_results.json"),
+    ("model.common_source.native_particle_records", None, "model/common_source/native_particle_records_results.json"),
     ("model.common_source.native_gauge_object", None, "model/common_source/native_gauge_object_results.json"),
     ("model.common_source.native_persistent_response", None, "model/common_source/native_persistent_response_results.json"),
     ("model.common_source.native_virtual_exchange", None, "model/common_source/native_virtual_exchange_results.json"),

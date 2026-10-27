@@ -917,6 +917,22 @@ gauge-current selection have distinct contracts. The tested four-carrier
 interaction has a singlet block mixing both triplet references and leaks
 from the geometric product before additional protection.
 
+The [specified current law](common_source/native_sm_current.py) chooses a
+different coherent interaction on the same persistent object. Native port
+coordinates generate a closed `u(3) + so(3)` law with all sixty proper
+actions implemented internally. Its center is a relative phase between
+the triplets, observable in the retained cross-triplet pointer records.
+The source execution keeps the same C/E instruments and all raw outputs.
+It establishes completeness over its declared current-control menu; the
+universal compiler and detector services remain apparatus, so completeness
+over all physical interventions and gauge redundancy do not follow.
+The [matter construction](common_source/native_matter_attachment.py)
+applies a specified weak spin lift and exterior-sector selection to these
+same currents. It computes the fifteen internal matter weights and three
+Higgs lines and intertwines them with the declared Weyl–Higgs field.
+Physical spin/statistics, the family register and numerical Yukawa values
+are distinct inputs.
+
 The [free cubic extension](common_source/native_staggered_field.py) derives
 oriented staggered hopping from an exact inverse-exchange echo and explicit
 parity controls. Its Fourier reduction gives two Dirac copies per native

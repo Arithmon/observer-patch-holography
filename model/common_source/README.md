@@ -36,10 +36,29 @@ separate requirements.
 The [actual exchange-response calculation](native_persistent_response.py)
 solves leakage constraints before identifying currents. Opposite matching
 choices give `su(3) + su(3) + u(1)` of dimension 17; equal choices give only
-a scalar in the tested response family. The required complete 12-current
-Standard Model response is unselected. The
+a scalar in the tested response family. A separate
+[specified current law](native_sm_current.py) keeps the carrier and C/E
+instruments and chooses complex controls on one geometric triplet and real
+rotations on the other. Its twelve native port generators close, implement
+the proper rotations internally, and expose the relative central phase in
+complete records. Completeness applies to its stated current menu; the
+universal apparatus controls are explicit and are not proved physically
+inaccessible. The [matter attachment](native_matter_attachment.py) lifts
+these same generators to the fifteen-dimensional exterior representation,
+computes its charges and three Higgs lines, and checks an exact field
+intertwiner. The spin lift, exterior selection and physical CAR field are
+declared choices. The
 [virtual-exchange control](native_virtual_exchange.py) retains native
 intermediate states and explicit perturbation/source-word error bounds.
+For three declared families, the same-current Higgs equations leave three
+complex 3-by-3 coupling matrices before changes of family basis. The matter
+receipt proves the field intertwiner for all 27 complex entries and checks
+two positive mass actions with different relative spectra but the same
+currents and Higgs channels. This separates representation attachment from
+mass selection. The [joint-record sanity check](native_particle_records.py)
+recovers supplied running gaps together with unbroken charge and color
+Casimir on one coherent 256-address register. Its inverse receives no
+mass table or species label; the evolution retains calibrated parameters.
 A separate [charged spectroscopy experiment](native_charged_spectroscopy.py)
 infers both dimer frequencies from fixed transfer records and predicts
 held-out readouts without supplying either pole to its inverse. It uses the

@@ -435,6 +435,14 @@ surface for the OPH consensus layer. Contents:
   projective unitary group and response flow, source extraction, the two
   Lie-theory adapters, reductive decomposition, and compact-simple
   classification remain explicit inputs.
+  The executable comparisons in `model/common_source/native_persistent_response.py`
+  and `native_sm_current.py` distinguish a seventeen-current exchange law
+  from a specified twelve-current law on the same native geometric object.
+  The latter's completeness applies to its declared control menu; it does
+  not discharge physical completeness for all apparatus interventions.
+  `native_matter_attachment.py` checks the chosen spin/exterior lift and
+  field intertwiner. These are exact executable checks, not additional
+  kernel-checked physical-realization theorems.
 - A sorry-free inverse-continuum boundary in
   `Screen/BipoSHInverseBoundary.lean`. Uniform finite repair obeys the exact
   operational identity $L=2|E|(I-R)$. Explicit two-coordinate and copy-space

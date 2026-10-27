@@ -104,6 +104,13 @@ This excludes the tested response grammar as that theorem's realization.
 It does not change the conditional theorem or establish a physical particle
 spectrum. Separate record-only charged spectroscopy identifies the specified
 dimer poles, with no new measured-mass agreement claim.
+A [specified twelve-current law](../model/common_source/native_sm_current.py)
+and [matter lift](../model/common_source/native_matter_attachment.py) instead
+construct the conditional gauge/matter interface on that same carrier.
+The response-menu restriction is an architecture premise; it does not show
+that every physically accessible intervention belongs to those twelve
+directions. Its existence does not reverse the exclusion of the exchange
+law or establish measured-mass predictions.
 
 The [fixed corrected-repair calculation](../model/common_source/parameter_selection_results.json)
 has zero discrete response seed on the specified code and recovery cycle;

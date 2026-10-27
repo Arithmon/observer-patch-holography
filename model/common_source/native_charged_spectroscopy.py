@@ -375,6 +375,19 @@ def _ideal_map(mass, exchange, step, number, axis, outcome):
     return (frame.T@ideal_detectors(axis)[outcome]@dynamic@frame)[:6, :6]
 
 
+def _rounded_complex_product(left, right):
+    """Round four real products before addition, forbidding fused multiply-add.
+
+    CPython complex multiplication may contract a multiply/subtract on ARM
+    while x86 performs two rounded operations. Boxing each intermediate as a
+    Python float fixes that distinction before long cycle powers amplify it.
+    """
+    ar, ai, br, bi = float(left.real), float(left.imag), float(right.real), float(right.imag)
+    rr, ii = ar*br, ai*bi
+    ri, ir = ar*bi, ai*br
+    return complex(rr-ii, ri+ir)
+
+
 def _compensated_power(matrix, exponent):
     """Fixed small-matrix products for backend-independent repeated cycles.
 
@@ -391,7 +404,7 @@ def _compensated_power(matrix, exponent):
         result = np.empty_like(left)
         for i, row in enumerate(rows):
             for j, column in enumerate(columns):
-                terms = [a*b for a, b in zip(row, column, strict=True)]
+                terms = [_rounded_complex_product(a, b) for a, b in zip(row, column, strict=True)]
                 result[i, j] = complex(math.fsum(z.real for z in terms),
                                        math.fsum(z.imag for z in terms))
         return result
@@ -412,11 +425,13 @@ def _compensated_gram(columns):
     BLAS reduction order at the scale of its near-zero norm defect.
     """
     columns = np.asarray(columns)
+    vectors = columns.T.tolist()
     result = np.empty((columns.shape[1], columns.shape[1]), complex)
     for i in range(columns.shape[1]):
         for j in range(i, columns.shape[1]):
-            terms = columns[:, i].conj()*columns[:, j]
-            value = complex(math.fsum(terms.real), math.fsum(terms.imag))
+            terms = [_rounded_complex_product(a.conjugate(), b)
+                     for a, b in zip(vectors[i], vectors[j], strict=True)]
+            value = complex(math.fsum(z.real for z in terms), math.fsum(z.imag for z in terms))
             result[i, j], result[j, i] = value, value.conjugate()
     return result
 
@@ -648,7 +663,9 @@ def compare_execution(report, arrays, fresh, outputs):
         old = report['execution'].get(key)
         tolerance = 128*np.finfo(float).eps
         if type(old) is not float or not math.isclose(value, old, abs_tol=tolerance, rel_tol=2e-10):
-            raise ValueError('retained diagnostic differs from its own binary arrays: '+key)
+            raise ValueError('retained diagnostic differs from its own binary arrays: '
+                +key+f'; actual={value!r}; expected={old!r}; '
+                +f'delta={abs(value-old) if type(old) is float else None!r}; atol={tolerance!r}')
     # Factor bases can differ by a unitary gauge. Compare their represented maps.
     for key in arrays:
         if key in ('prefix_basis', 'prefix_coefficients', 'compression_residual'):

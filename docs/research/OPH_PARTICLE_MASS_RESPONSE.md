@@ -7,10 +7,15 @@ The source-identity test in [§5.16](#516-persistent-native-objects-and-the-fini
 starts with persistent native objects and their actual port action.
 Two record-correctable carriers contain the geometric $3\oplus3'$ required
 for comparison with the finite gauge construction. Their tested reversible
-response algebra has dimension 17. The finite Standard Model theorem's
-complete 12-current premise, spin lift and physical particle identification
-are not supplied by this result. Gauge representation alone also leaves
-the invariant mass-generating couplings undetermined.
+exchange-response algebra has dimension 17 and fails the finite Standard
+Model theorem's complete 12-current premise. Twelve ports alone do not
+impose that premise. A separately specified coherent control law on the
+same geometric object realizes a closed 12-current algebra, with native
+rotation covariance and an observable relative central phase. Its control
+menu and spin/exterior lift are architecture choices; completeness with
+respect to every physically accessible intervention is not established.
+Gauge representation alone also leaves the invariant mass-generating
+couplings undetermined.
 The native recorded repair supports a propagating **collective core-relative
 charge response**, an exact correlation current, and compatible local detector
 records. Exact signed-current histories also recover nonzero finite-frequency
@@ -1099,7 +1104,13 @@ interface also fails the complete 12-current condition. No relative phase
 between the two geometric triplets is selected here.
 
 The finite gauge theorem assumes a faithful, complete, commutator-closed
-12-dimensional response, with endogenous proper-carrier transport. Its
+response $D(\mathbb R^{12})$, with endogenous proper-carrier transport.
+Injectivity makes this image twelve-dimensional; closure requires every
+commutator to remain in that image. Neither condition follows from the
+number of ports alone. The 17-dimensional exchange algebra fails this
+model-to-theorem interface and is not a counterexample to the conditional
+classification. Other finite theorems retain their own model-mapping
+obligations. The required
 12-port module is $1\oplus3\oplus3'\oplus5$; the tested response instead
 contains a second $5$. Removing that component by decree would add a response
 selection premise. These are ideal controlled response-algebra calculations;
@@ -1120,9 +1131,74 @@ its compressed response is
 Both eigenvectors mix the triplet singlets, excluding a pure triplet
 eigenstate for this interaction. The full interaction leaks outside
 the geometric product, so even this reference calculation needs its stated
-effective-protection hypothesis. The native object supplies an explicit
-theorem-interface test; the Standard Model current, spin lift, matter module
-and measured masses remain separate unclosed steps.
+effective-protection hypothesis.
+
+The [specified current law](../../model/common_source/native_sm_current.py)
+keeps the twelve ports, incidence, proper rotations and C/E instruments.
+It changes the coherent controls acting on the protected geometric sector.
+Let $v_p$ be its actual native port coordinates, $\sigma$ the conjugation
+$\sqrt5\mapsto-\sqrt5$, and $\widehat v\,x=v\times x$. The chosen generators are
+
+```math
+D_p=\operatorname{diag}\!\left(
+\widehat{v_p/2}+iQ_p,\ \widehat{\sigma(v_p)/2}\right),
+\qquad
+Q_p=\tfrac12v_pv_p^T-\tfrac16\lVert v_p\rVert^2I_3+\tfrac1{12}I_3.
+```
+
+The native near-fivefold class sum distinguishes the two geometric
+triplets before the complex-versus-real control choice is applied. Exact
+checks give rank twelve, all 66 bracket closures and 720 port-covariance
+identities. All sixty proper actions factor through this same connected
+current group. The resulting algebra is $\mathfrak u(3)\oplus\mathfrak{so}(3)$,
+with the Standard Model Lie-algebra type, and
+$\sum_pD_p=\operatorname{diag}(iI_3,0)$. This central phase is relative:
+complete matrix readout sees all twelve currents; block-diagonal readout
+sees eleven.
+
+This replaces the tested exchange law; it does not extract twelve currents
+by discarding part of its seventeen-dimensional closure. Its operational
+completeness is over the stated current-control menu. The coherent compiler,
+encoders and detector operations remain declared apparatus. Their exclusion
+from that menu does not prove they are physically inaccessible, nor does
+it establish gauge redundancy or discharge A1 for the full physical model.
+The retained source experiment checks all twelve primitive current words,
+and composes selected currents with the same geometric preparation, opposite
+native encoders, complete C/E recovery and a cross-triplet pointer. Raw
+records and decoder syndromes are retained without postselection. The
+current pulse occurs before the recorded native repair in this schedule;
+the corresponding action on a preencoded object is a compositional
+intertwining statement.
+
+The [matter attachment](../../model/common_source/native_matter_attachment.py)
+uses these actual generators. For a block current $(A,\widehat w)$ its
+chosen weak spin lift is
+
+```math
+L(A,\widehat w)=\operatorname{diag}
+\left(A,-\tfrac i2w\cdot\boldsymbol\sigma-\tfrac12\operatorname{tr}(A)I_2\right).
+```
+
+Exterior differentiation on five auxiliary modes gives an invariant
+$\Lambda^2\oplus\Lambda^4$ sector of dimension fifteen. Its primitive
+integer charge convention is $q=6Y$, with fundamental weights
+$(-2,-2,-2,3,3)$. Charges and color/weak Casimirs classify its multiplets;
+the invariant-tensor equations give the three Higgs coupling lines. An
+explicit intertwiner matches these operators to the declared Weyl–Higgs
+field used elsewhere in this document. Internal weak spin, physical
+spacetime spin and auxiliary exterior parity are distinct. The spin cover,
+exterior-sector choice, physical CAR field and family multiplicity remain
+declared. These choices produce a consistent representation attachment;
+they do not determine Yukawa values or measured particle masses.
+At the ideal instrument level each recorded branch must lift as
+$\sqrt{w_r}\,\rho(\widetilde g_r)$, preserving its scalar branch amplitude
+and the chosen cover/path data. A $2\pi$ weak rotation is the identity on
+the geometric triplet but changes the sign of a weak spinor, so its
+six-dimensional endpoint matrix alone does not determine the lift.
+Applying the exterior functor directly to $\sqrt{w_r}U_r$ would weight
+degrees two and four differently. The source current and matter-pointer
+experiments therefore keep their execution domains explicit; the ideal
+lift is not a literal complete matter-register C/E history.
 
 #### 5.17 Native virtual interactions and controlled response
 
@@ -1168,6 +1244,45 @@ claim. The action supplies $J,m$, and the old matching code is distinct
 from the geometric-object code. The experiment establishes record
 identifiability for that specified dimer; its failed lepton ratios and
 physical particle-identification obligations are unchanged.
+
+#### 5.19 Joint charge and calibrated gap records
+
+The [joint record experiment](../../model/common_source/native_particle_records.py)
+uses the specified current's matter representation and the calibrated
+Weyl–Higgs action. Its coherent 256-address register contains four family
+addresses, a Nambu particle/hole bit and five auxiliary exterior bits.
+Three families carry the calibrated action; the fourth family, exterior
+complements and all output columns remain in the verification domain.
+One fixed neutral-Higgs pairing frame supplies fourteen charged Nambu pairs
+per physical family. The particle and hole members of each pair have the
+same unbroken electric charge. The frame and probe choices contain no
+mass values; the evolution word contains the calibrated running masses.
+
+All 256 pointer outcomes are retained at each of four common clock settings.
+Three settings resolve successive phase windings inside the declared
+initial window; the fourth tests the inferred frequency. The inverse
+consumes complete record laws, the clock settings, an error allowance and
+the charge/Casimir dictionary. It receives no action coefficients, target
+mass, species name or family label. Charge and color distinguish the
+following effective particle classes before a mass ordering is assigned:
+
+| Record charge $Q$ | Color Casimir | Effective charged class |
+| --- | --- | --- |
+| $-1$ | $0$ | Charged leptons |
+| $2/3$ | $4/3$ | Up-type quarks |
+| $-1/3$ | $4/3$ | Down-type quarks |
+
+Opposite charges give their conjugate sectors. An exact field intertwiner
+checks the calibrated action's mass-frame convention, including its
+supplied CKM change of basis. These are analytic simulated record laws,
+not a finite-shot experimental campaign. The underlying current service,
+physical Weyl-spin block and common GeV clock reference are supplied.
+The recovered gaps are the supplied $\overline{\mathrm{MS}}$ parameters
+at $M_Z$, not physical pole masses or predictions of their measured values.
+The construction checks that charge identification and calibrated mass
+readout can coexist on one coherent register. It does not remove the mass
+calibration, execute a full matter-register C/E history, or derive the
+interacting Standard Model.
 
 ### 6. Relation to observers' effective 3+1D spacetime
 
@@ -1298,9 +1413,10 @@ not excluded by these tests.
 | Item | Result in this candidate |
 | --- | --- |
 | Persistent native geometric object | Two equivariant record-correctable codes supply actual geometric 3 + 3′ on a source-prepared two-carrier sector; active correction and code-domain selection are explicit |
-| Same-object finite gauge interface | Opposite matching choices give an ideal 17-dimensional exchange-response algebra; the complete 12-current premise and spin/statistics are unclosed |
+| Same-object finite gauge interface | Exchange gives 17 currents and fails A1. A specified coherent law gives a closed 12-current algebra on the same geometric sector; its control-menu completeness does not establish completeness over all physical interventions |
 | Native charged-pole identification | Fixed preparation and transfer records identify both specified dimer frequencies with held-out tests; no empirical mass input enters the inverse |
-| Internal chiral matter types and Higgs channels | Explicit operators inherited and rechecked under their stated lift |
+| Joint charged-species and calibrated mass readout | One coherent 256-address register supplies charge, color and running-gap records with a blind inverse and held-out read; the source action retains measured running parameters |
+| Internal chiral matter types and Higgs channels | The specified native 12-current law has an exact spin/exterior lift, fifteen-dimensional matter intertwiner and three invariant Higgs lines; lift and physical field attachment remain explicit architecture choices |
 | Native family-dependent operator | Exact, covariant, nonscalar, with three distinct eigenvalues |
 | Weyl/Higgs Spin, charge and dispersion | Checked on the same declared action and Nambu conventions |
 | Weak-chirality discriminator | Correct operator vertex weights; no dynamical weak scattering calculation |
@@ -1324,9 +1440,11 @@ not excluded by these tests.
 The source-identity problem comes before a new mass prescription: select
 the persistent physical degrees of freedom, their accessible complete
 current algebra, spin/statistics and propagation from one repair law.
-The geometric triplets give an explicit native carrier for this test, but
-their tested 17-dimensional response does not meet the 12-current theorem
-interface. The subsequent mass problem is to determine and test the
+The geometric triplets give an explicit native carrier for this test.
+Their exchange interaction fails the 12-current theorem interface. The
+specified complex-triplet/real-triplet control law realizes that algebra
+on the same carrier, conditional on its response-menu boundary and chosen
+lift. The subsequent mass problem is to determine and test the
 coupling to the Higgs channels, kinetic forms and physical vacuum. The current example
 shows that getting the chiral representation right and computing every
 number from a chosen source prescription does not guarantee the measured
@@ -1369,6 +1487,9 @@ recompute their producers and independently validate retained source arrays:
 .venv/bin/python -m model.common_source.native_virtual_exchange --check model/common_source/native_virtual_exchange_results.json
 .venv/bin/python -m model.common_source.native_code_transport --check model/common_source/native_code_transport_results.json
 .venv/bin/python -m model.common_source.native_charged_spectroscopy --check model/common_source/native_charged_spectroscopy_results.json
+.venv/bin/python -m model.common_source.native_sm_current --check model/common_source/native_sm_current_results.json
+.venv/bin/python -m model.common_source.native_matter_attachment --check model/common_source/native_matter_attachment_results.json
+.venv/bin/python -m model.common_source.native_particle_records --check model/common_source/native_particle_records_results.json
 ```
 
 The retained calculation binds the source code, native reference, exact
