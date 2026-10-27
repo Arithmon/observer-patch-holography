@@ -40,10 +40,27 @@ def _entries(matrix):
     return [[str(x) for x in matrix.row(i)] for i in range(matrix.rows)]
 
 
+def _rational(value, name):
+    """Detach and normalize original exact integers before any comparison.
+
+    Fraction slots are writable. Its comparison and copying methods assume
+    a positive integer denominator, so neither is a validation boundary.
+    """
+    if type(value) is int:
+        return F(value)
+    if type(value) is not F:
+        raise ValueError('an original exact rational '+name+' is required')
+    numerator, denominator = value.numerator, value.denominator
+    if type(numerator) is not int or type(denominator) is not int or denominator <= 0:
+        raise ValueError('valid integer Fraction slots and a positive denominator are required')
+    return F(numerator, denominator)
+
+
 def _bias(value):
-    if type(value) not in (int, F) or value < 1:
+    value = _rational(value, 'native bias')
+    if value < 1:
         raise ValueError('an original exact rational native bias at least one is required')
-    return F(value)
+    return value
 
 
 @lru_cache(maxsize=1)
@@ -168,13 +185,20 @@ def _exact_data(bias):
 
 def exact_data(bias=F(1)):
     """Detached mapping of immutable exact matrices on stated native charts."""
-    return dict(_exact_data(_bias(bias)))
+    result = dict(_exact_data(_bias(bias)))
+    # Do not expose the mutable Fraction stored in the cached record/key.
+    value = result['bias']
+    result['bias'] = F(value.numerator, value.denominator)
+    return result
 
 
 def ground64(bias=F(1)):
-    values = np.asarray(exact_data(bias)['ground_padded'].evalf(32), float).reshape(64)
+    exact = exact_data(bias)['ground_padded']
+    values = np.asarray(exact.evalf(32), float).reshape(64)
     if not np.isfinite(values).all() or abs(np.linalg.norm(values)-1) > 2e-14:
         raise ArithmeticError('finite source-derived padded ground vector required')
+    if any(value == 0 and source != 0 for source, value in zip(exact, values, strict=True)):
+        raise ArithmeticError('binary64 export cannot retain a nonzero exact ground component')
     return np.frombuffer(values.tobytes(), dtype=np.float64)
 
 
@@ -187,11 +211,17 @@ def protection_bound(bias=F(1), penalty=2**30):
     eps=beta_full^2/(U-2h), h=beta_full+24*bias. The full ground has outside
     component <=beta_full/(U-2h); its normalized inside component differs
     from the projected ground by at most eps/gamma in sine distance.
+
+    The damage-Gram comparison requires Hermitian collective extensions
+    L_X J = J L_X_geom for the geometric isometric embedding J, with
+    ||L_X||<=2 for every unit Hilbert--Schmidt current. This intertwining
+    preserves the geometric subspace and its variance; equality of the
+    compression J^* L_X J alone does not preserve the second moment.
     """
     bias = _bias(bias)
-    if type(penalty) not in (int, F) or penalty <= 0:
+    U = _rational(penalty, 'protection penalty')
+    if U <= 0:
         raise ValueError('an original positive exact rational protection penalty required')
-    U = F(penalty)
     beta, gamma = F(260, 9), F(8, 75)
     h = beta+24*bias
     admitted = U > 2*h
@@ -217,7 +247,7 @@ def protection_bound(bias=F(1), penalty=2**30):
         'uniform_time_damage_Gram_operator_error_upper': str(48*distance) if distance is not None else None,
         'stability_argument': 'The full ground is stationary. Unitary invariance and the triangle inequality give D(exp(-itH_U)psi,psi)<=2d for all realt when D(psi,ground)<=d; no phase comparison or postselection is used.',
         'damage_Gram_argument': 'For HS-normalized currentX and a stated full-space collective extension with norm<=2, |Var_rho(L_X)-Var_sigma(L_X)|<=6 D(rho,sigma)||L_X||^2<=24 D(rho,sigma); taking the quadratic-form supremum bounds the Gram operator.',
-        'damage_Gram_extension_scope': 'bounded collective current extensions on the full color space; this bound does not itself execute an extension or a protective Hamiltonian',
+        'damage_Gram_extension_scope': 'Hermitian collective extensions satisfy L_X J=J L_X_geom for the geometric isometric embedding J, with norm<=2 per unit Hilbert--Schmidt current; compression equality alone is insufficient. This bound does not itself execute an extension or a protective Hamiltonian.',
         'projection_or_postselection_applied': False,
         'geometric_penalty_is_an_added_service': True,
         'domain': 'specified full1296 corrected-color Hamiltonian; each pair Gram used full10626 native virtual outputs',

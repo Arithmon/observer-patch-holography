@@ -252,7 +252,11 @@ def _export_diagnostic(words, pulses):
     # replay tolerance from silently zeroing these tiny diagnostic quantities.
     ceiling = 2e-11
     failure = math.sqrt(pulses)*ceiling*math.exp((pulses-1)*math.log1p(ceiling))
-    return {'pulse_kind_angle_pairs': len(menu), 'complement_operator_norm_admission': ceiling,
+    # A valid eigenbasis choice within a repeated eigenspace can change the
+    # emitted angles without changing the requested operator or pulse budget.
+    # Inspect every fresh angle above, but do not retain its backend-dependent
+    # distinct-angle count as an exact cross-platform budget claim.
+    return {'complement_operator_norm_admission': ceiling,
         'success_norm_excess_admission': ceiling, 'maximum_history_pulses': pulses,
         'first_failure_amplitude_bound': failure,
         'argument': 'orthogonal retained first-export-failure position; sqrt(N)*L*(1+e)^(N-1), with complete prefixes and no postselection',

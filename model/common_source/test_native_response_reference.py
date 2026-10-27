@@ -201,3 +201,35 @@ def test_proper_code_export_failure_is_charged_and_large_leak_rejected(monkeypat
     monkeypatch.setattr(m.compiler, 'native_pulse', leaky)
     with pytest.raises(ArithmeticError, match='complement'):
         m._export_diagnostic([[m.compiler.pulse('X', .125, [0])]], 2)
+
+
+def test_valid_degenerate_eigenframe_keeps_the_same_fixed_export_budget(monkeypatch):
+    from fractions import Fraction
+    matrix = np.diag([2+2*math.sqrt(5)]*3+[2-2*math.sqrt(5)]*3)
+    ordinary = m._phase_word(matrix, Fraction(1, 16))
+    original = np.linalg.eigh
+
+    def rotated_frame(value):
+        eigenvalues, vectors = original(value)
+        j = next(i for i in range(len(eigenvalues)-1)
+                 if eigenvalues[i] == eigenvalues[i+1])
+        angle = .123
+        rotation = np.array([[math.cos(angle), -math.sin(angle)],
+                             [math.sin(angle), math.cos(angle)]])
+        vectors[:, j:j+2] = vectors[:, j:j+2]@rotation
+        assert np.linalg.norm(vectors.T@vectors-np.eye(8)) < 1e-14
+        assert np.linalg.norm(value@vectors-vectors*eigenvalues) < 1e-13
+        return eigenvalues, vectors
+
+    with monkeypatch.context() as context:
+        context.setattr(np.linalg, 'eigh', rotated_frame)
+        alternative = m._phase_word(matrix, Fraction(1, 16))
+    assert len(ordinary) == len(alternative)
+    assert len({(e['kind'], e['angle']) for e in ordinary}) != len({
+        (e['kind'], e['angle']) for e in alternative})
+    assert np.linalg.norm(m.compiler.execute(ordinary, 3)
+                          -m.compiler.execute(alternative, 3), 2) < 1e-12
+    baseline = m._export_diagnostic([ordinary], len(ordinary))
+    replay = m._export_diagnostic([alternative], len(alternative))
+    assert baseline == replay
+    m._fixed_compare(baseline, replay)

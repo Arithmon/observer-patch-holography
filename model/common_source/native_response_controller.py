@@ -15,6 +15,7 @@ import math
 from pathlib import Path
 
 import numpy as np
+import mpmath as mp
 from scipy.linalg import expm
 
 from . import native_response_biased as biased, native_response_cooling as cooling
@@ -167,9 +168,24 @@ def work_output(arrays, reference_arrays, count, primitive, records, syndromes, 
     return state[:, 0] if incoming.ndim == 1 else state
 
 
+def _binary_scale(value):
+    """Exact power-of-two scale with an explicit lost-component refusal."""
+    if not np.isfinite(value).all():
+        raise ArithmeticError('history contraction exceeds finite arithmetic')
+    peak = max(float(np.max(abs(value.real), initial=0.)),
+               float(np.max(abs(value.imag), initial=0.)))
+    if peak == 0:
+        return value, 0
+    exponent = math.frexp(peak)[1]
+    scaled = np.ldexp(value.real, -exponent)+1j*np.ldexp(value.imag, -exponent)
+    if np.any((value.real != 0) & (scaled.real == 0)) or np.any((value.imag != 0) & (scaled.imag == 0)):
+        raise ArithmeticError('history components exceed the supported relative dynamic range')
+    return scaled, exponent
+
+
 def history_output_block(arrays, reference_arrays, cooling_arrays, *, clock_records,
                          counter_rows, bath_rows, primitive, work_records,
-                         work_syndromes, incoming):
+                         work_syndromes, incoming, scaled=False):
     """Sequential complete-history tensor slice, with the actual clock count.
 
     Incoming axes are reference64, work8, untouched-reference columns. Each
@@ -178,8 +194,14 @@ def history_output_block(arrays, reference_arrays, cooling_arrays, *, clock_reco
     propagates through successive baths; it is never reinitialized in place.
     Short prefixes support direct independent contraction tests. The complete
     run uses512 stages, represented by these reusable factors without an
-    exponentially large output array.
+    exponentially large output array. With scaled=True the result is
+    (mantissa, exponent) and the physical amplitude is mantissa*2**exponent.
+    The exponent is retained, not a conditioning or probability normalization.
+    The ordinary array export refuses overflow or a vanished nonzero component;
+    use the scaled result for exponentially small complete-history slices.
     """
+    if type(scaled) is not bool:
+        raise ValueError('scaled must be an original Boolean')
     count = terminal_count(clock_records)
     length = len(clock_records)
     if length > HORIZON or type(counter_rows) is not tuple or type(bath_rows) is not tuple or len(counter_rows) != length or len(bath_rows) != length:
@@ -187,17 +209,28 @@ def history_output_block(arrays, reference_arrays, cooling_arrays, *, clock_reco
     if (type(incoming) is not np.ndarray or incoming.ndim != 3 or incoming.shape[:2] != (64, 8)
             or incoming.dtype.kind not in 'fc' or not np.isfinite(incoming).all()):
         raise ValueError('finite reference64/work8/ancilla-column input required')
-    state = incoming.astype(complex, copy=True)
+    state, exponent = _binary_scale(incoming.astype(complex, copy=True))
     for record, counter_row, bath_row in zip(clock_records, counter_rows, bath_rows, strict=True):
         counter_row = _count(counter_row, 'coherent counter output', 511)
         bath_row = _count(bath_row, 'coherent bath output', 63)
         factor = cooling_arrays['replaced'] if record == cooling.TRIGGER else cooling_arrays['unchanged']
         block = factor.reshape(64, 64, 64)[bath_row]
-        amplitude = cooling_arrays['counter'][4*record[0]+record[1], counter_row]
-        state = amplitude*np.einsum('ab,bir->air', block, state, optimize=True)
+        amplitude, amplitude_exponent = _binary_scale(np.asarray(
+            cooling_arrays['counter'][4*record[0]+record[1], counter_row]))
+        state, step_exponent = _binary_scale(amplitude*np.einsum('ab,bir->air', block, state, optimize=True))
+        exponent += amplitude_exponent+step_exponent
     columns = state.transpose(1, 0, 2).reshape(8, -1)
     output = work_output(arrays, reference_arrays, count, primitive, work_records, work_syndromes, columns)
-    return output.reshape(64, 64, incoming.shape[2]).transpose(1, 0, 2)
+    output, final_exponent = _binary_scale(output.reshape(64, 64, incoming.shape[2]).transpose(1, 0, 2))
+    exponent += final_exponent
+    if scaled:
+        return output, exponent
+    with np.errstate(over='ignore', under='ignore', invalid='ignore'):
+        ordinary = np.ldexp(output.real, exponent)+1j*np.ldexp(output.imag, exponent)
+    if (not np.isfinite(ordinary).all() or np.any((output.real != 0) & (ordinary.real == 0))
+            or np.any((output.imag != 0) & (ordinary.imag == 0))):
+        raise ArithmeticError('history amplitude cannot be exported in binary64; request scaled=True')
+    return ordinary
 
 
 def metrics(arrays, reference_arrays, cooling_arrays):
@@ -240,12 +273,48 @@ def metrics(arrays, reference_arrays, cooling_arrays):
             amplitude_errors.append(float(np.linalg.norm(actual-target, 2)))
     if max(amplitude_errors) > 6*SOURCE_ADMISSION:
         raise ValueError('actual controller/native work output amplitudes disagree')
+    # Exercise the full clock horizon through the history API. Independent
+    # high-precision scalar powers check the retained scale without forming
+    # exponentially small binary64 amplitudes. This supplements, rather than
+    # replaces, the complete-factor operator bounds above.
+    ground = cooling_arrays['bath_preparation'][:, 0]
+    bath_row = int(np.argmax(abs(ground)))
+    drive = np.zeros(8, complex); drive[[3, 5]] = 1/math.sqrt(2)
+    initial = np.outer(ground, drive)[:, :, None]
+    long_errors, long_exponents = [], []
+    for triggers in (0, CAP):
+        clock_records = (cooling.TRIGGER,)*triggers+((0, 0),)*(HORIZON-triggers)
+        counter_rows = tuple(int(np.argmax(abs(cooling_arrays['counter'][4*c+r]))) for c, r in clock_records)
+        block, exponent = history_output_block(arrays, reference_arrays, cooling_arrays,
+            clock_records=clock_records, counter_rows=counter_rows, bath_rows=(bath_row,)*HORIZON,
+            primitive=12, work_records=tuple(records), work_syndromes=(0, 0), incoming=initial, scaled=True)
+        data = work_output(arrays, reference_arrays, triggers, 12, tuple(records), (0, 0), drive)
+        base = np.outer(ground, data)
+        if np.linalg.norm(base) < .01:
+            raise ValueError('the long-history positive control has no resolved output')
+        with mp.workdps(90):
+            expected = mp.mpc(1)
+            for c, r in ((0, 0), cooling.TRIGGER):
+                row = int(np.argmax(abs(cooling_arrays['counter'][4*c+r])))
+                scalar = mp.mpc(complex(cooling_arrays['counter'][4*c+r, row]))*mp.mpc(complex(ground[bath_row]))
+                expected *= scalar**(triggers if (c, r) == cooling.TRIGGER else HORIZON-triggers)
+            # Compare the complete retained block at its own scale, including
+            # relative phases. A single unaffected matrix entry could hide a
+            # disconnected clock controlling a different work unitary.
+            expected_block = complex(expected*mp.power(2, -exponent))*base
+            error = float(np.linalg.norm(block[:, :, 0]-expected_block)/np.linalg.norm(expected_block))
+        if not math.isfinite(error) or error > SOURCE_ADMISSION:
+            raise ValueError('complete scaled history loses its amplitude, scale or shared clock')
+        long_errors.append(error); long_exponents.append(exponent)
     return {'coefficient_operator_errors': coefficient_errors.tolist(),
         'complete_control_operator_errors': errors.tolist(),
         'native_clock_terminal_probabilities': observed.tolist(),
         'native_clock_total_probability': float(sum(observed)),
         'source_timeout_probability': float(sum(observed[:-1])),
         'selected_complete_work_amplitude_errors': amplitude_errors,
+        'long_history_scaled_probe_relative_errors': long_errors,
+        'long_history_scaled_probe_binary_exponents': long_exponents,
+        'long_history_scaled_probe_terminal_counts': [0, CAP],
         'retained_primitive_controls': 18, 'retained_terminal_counts': CAP+1,
         'all_clock_records_and_timeouts_retained': True,
         'work_controls_act_on_data_not_only_reference': True}
@@ -269,6 +338,7 @@ def exact_certificate():
         'same_trigger_resets_reference_and_updates_controller': True,
         'completed_clock_implies_reference_reset_in_ideal_protocol': True,
         'whole_output': 'history_output_block sequentially contracts every retained cooling stage on the SAME reference leg, derives terminal_count from those same raw records, and applies work_output to the data; arbitrary shared quantum-reference columns remain',
+        'long_history_amplitude_export': 'scaled=True retains a mantissa and integer binary exponent; unscaled export refuses vanished nonzero components rather than reporting a zero branch',
         'ideal_complete_history_bound': '2 epsilon |t| +2 Pr(timeout), with identical clock/bath outputs on both comparison sides',
         'comparison_domain': 'one unit-HS full-frame primitive at t=1/8, arbitrary work quantum reference; products use the sum of uniform per-stage drive bounds',
         'finite_exact_current_dimension_is_twelve': False,
@@ -327,7 +397,10 @@ def execute(reference_arrays, cooling_arrays, *, reference_report, cooling_repor
             'complete_native_record_bits': 3*HORIZON+7,
             'first_export_failure_archive_bits': (HORIZON*cooling_report['resources']['maximum_native_pulses_per_cycle']+pulses).bit_length()+1,
             'retained_bath_and_counter_qubits': 15*HORIZON,
+            'initial_unknown_reference_qubits': 6, 'initial_unknown_data_qubits': 3,
+            'data_geometric_blank_qubits': 3, 'data_native_encoding_blank_qubits': 12,
             'data_coherent_high_syndrome_qubits': 12, 'data_blank_return_qubits': 3,
+            'decoded_history_quantum_output_qubits': 15*HORIZON+24,
             'maximum_work_native_pulses': pulses,
             'maximum_history_native_pulses': HORIZON*cooling_report['resources']['maximum_native_pulses_per_cycle']+pulses,
             'classical_arithmetic': 'binary64 replay checked against exact matrix powers; bit-cost and physical precision are additional services',

@@ -107,7 +107,7 @@
           "base_Hamiltonian_operator_norm_upper": "476/9",
           "bias": "1",
           "damage_Gram_argument": "For HS-normalized currentX and a stated full-space collective extension with norm<=2, |Var_rho(L_X)-Var_sigma(L_X)|<=6 D(rho,sigma)||L_X||^2<=24 D(rho,sigma); taking the quadratic-form supremum bounds the Gram operator.",
-          "damage_Gram_extension_scope": "bounded collective current extensions on the full color space; this bound does not itself execute an extension or a protective Hamiltonian",
+          "damage_Gram_extension_scope": "Hermitian collective extensions satisfy L_X J=J L_X_geom for the geometric isometric embedding J, with norm<=2 per unit Hilbert--Schmidt current; compression equality alone is insufficient. This bound does not itself execute an extension or a protective Hamiltonian.",
           "domain": "specified full1296 corrected-color Hamiltonian; each pair Gram used full10626 native virtual outputs",
           "full48_port_finite_source_pulse_error_certified": false,
           "full_color_dimension": 1296,
@@ -177,7 +177,7 @@
           "base_Hamiltonian_operator_norm_upper": "3716/9",
           "bias": "16",
           "damage_Gram_argument": "For HS-normalized currentX and a stated full-space collective extension with norm<=2, |Var_rho(L_X)-Var_sigma(L_X)|<=6 D(rho,sigma)||L_X||^2<=24 D(rho,sigma); taking the quadratic-form supremum bounds the Gram operator.",
-          "damage_Gram_extension_scope": "bounded collective current extensions on the full color space; this bound does not itself execute an extension or a protective Hamiltonian",
+          "damage_Gram_extension_scope": "Hermitian collective extensions satisfy L_X J=J L_X_geom for the geometric isometric embedding J, with norm<=2 per unit Hilbert--Schmidt current; compression equality alone is insufficient. This bound does not itself execute an extension or a protective Hamiltonian.",
           "domain": "specified full1296 corrected-color Hamiltonian; each pair Gram used full10626 native virtual outputs",
           "full48_port_finite_source_pulse_error_certified": false,
           "full_color_dimension": 1296,
@@ -7030,7 +7030,6 @@
         "first_failure_amplitude_bound": 4.385036864596261e-08,
         "maximum_history_pulses": 4806213,
         "physical_or_outward_rounded_certificate": false,
-        "pulse_kind_angle_pairs": 747,
         "success_norm_excess_admission": 2e-11
       },
       "reference_and_bath_outputs_matched_not_discarded_in_this_bound": true,
@@ -7050,6 +7049,7 @@
       "finite_feedback_remains_full_rank": true,
       "horizon": 512,
       "ideal_complete_history_bound": "2 epsilon |t| +2 Pr(timeout), with identical clock/bath outputs on both comparison sides",
+      "long_history_amplitude_export": "scaled=True retains a mantissa and integer binary exponent; unscaled export refuses vanished nonzero components rather than reporting a zero branch",
       "new_architecture": [
         "full eighteen-coefficient classical disturbance-gradient controller",
         "native class-sum work phase",
@@ -7454,6 +7454,18 @@
           1.6960275170304515e-13
         ]
       ],
+      "long_history_scaled_probe_binary_exponents": [
+        -1393,
+        -1412
+      ],
+      "long_history_scaled_probe_relative_errors": [
+        1.1661914195441444e-15,
+        9.686545549018286e-14
+      ],
+      "long_history_scaled_probe_terminal_counts": [
+        0,
+        16
+      ],
       "native_clock_terminal_probabilities": [
         4.4901083865791426e-20,
         2.089941358117188e-18,
@@ -7542,9 +7554,14 @@
       "count_bits": 5,
       "data_blank_return_qubits": 3,
       "data_coherent_high_syndrome_qubits": 12,
+      "data_geometric_blank_qubits": 3,
+      "data_native_encoding_blank_qubits": 12,
+      "decoded_history_quantum_output_qubits": 7704,
       "dense_update_additions": 306,
       "dense_update_multiplications": 324,
       "first_export_failure_archive_bits": 31,
+      "initial_unknown_data_qubits": 3,
+      "initial_unknown_reference_qubits": 6,
       "maximum_controller_updates": 16,
       "maximum_history_native_pulses": 1013594181,
       "maximum_work_native_pulses": 4806213,
@@ -7571,7 +7588,6 @@
         "first_failure_amplitude_bound": 2.807450293479885e-08,
         "maximum_history_pulses": 1970289,
         "physical_or_outward_rounded_certificate": false,
-        "pulse_kind_angle_pairs": 43,
         "success_norm_excess_admission": 2e-11
       },
       "raw_macro_adjustment": 4.804389432262067e-08,
@@ -7741,6 +7757,10 @@
         "valid_code_failure_probability_in_exact_arithmetic": 0
       },
       "committed_native_bits_per_cycle": 3,
+      "first_export_failure_archive_bits": 22,
+      "first_export_failure_flag_bits": 1,
+      "first_export_failure_position_bits": 21,
+      "first_export_failure_position_commit": 1,
       "fresh_bath_qubits_per_cycle": 6,
       "fresh_coin_record_qubits_per_cycle": 3,
       "fresh_counter_work_qubits_per_cycle": 9,
@@ -7758,6 +7778,7 @@
         "single_code_pulses": 26208,
         "valid_code_failure_probability_in_exact_arithmetic": 0
       },
+      "maximum_archive_bits_including_export_failure": 25,
       "maximum_native_pulses_per_cycle": 1970289,
       "native_counter": {
         "encoding": {
@@ -7785,7 +7806,8 @@
       },
       "native_macro_invocations": 942,
       "old_reference_information_destroyed_or_reset_in_place": false,
-      "retained_quantum_bath_and_counter_qubits_per_cycle": 15
+      "retained_quantum_bath_and_counter_qubits_per_cycle": 15,
+      "supplied_unknown_reference_qubits": 6
     }
   },
   "dynamics": {
@@ -7815,13 +7837,14 @@
       "finite_interior_kernel_observable_dimension": 6,
       "finite_interior_kernel_raw_dimension": 7,
       "finite_reachable_algebra_with_unbounded_input_coefficients": "full18; no algebra reduction",
+      "fixed_p_long_time_domain": "0<p<1; endpoint kernels instead have13 raw and12 observable directions",
       "fixed_p_long_time_observable_dimension": 6,
       "joint_limit": "p->0, m->infinity, mp->0 at fixed positive eta",
       "limit_observable_dimension": 12,
       "limit_range_bracket_closed": true,
       "limit_raw_dimension": 13,
       "limiting_projection_definition": "P=I-(3/4)G_0; validation only, never used in the feedback recurrence",
-      "low_group_reference_failure_bound": "4p(1-p), uniformly for every finite product in the limiting current group",
+      "low_group_reference_failure_bound": "4p(1-p) for0<=p<=1/2; 1 for1/2<=p<=1, sharply and uniformly for every finite product in the limiting current group",
       "low_high_and_high_high_bracket_inclusions_checked": true,
       "ordinary_reference_cooling_alone_implements_feedback": false,
       "original17_controls_limit_without_work_class_sum_phase": {
@@ -9089,7 +9112,6 @@
         "first_failure_amplitude_bound": 6.239540051201066e-08,
         "maximum_history_pulses": 9729178,
         "physical_or_outward_rounded_certificate": false,
-        "pulse_kind_angle_pairs": 699,
         "success_norm_excess_admission": 2e-11
       },
       "raw_macro_adjustment": 2.3719617810060897e-07,
@@ -12333,14 +12355,14 @@
     "model/common_source/native_gauge_object.py": "ddbd9ced23e85e9755396dcc917eb744d62e98f64b89535dfff0066e53782733",
     "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
     "model/common_source/native_persistent_response.py": "0f64a7ac6604115f0b5875d73aa03b861c2325df1c25fb8c5cd66f3df288058f",
-    "model/common_source/native_response_biased.py": "a96bb1b30cade8fb86e4fde8f8c516713c7bbd9f0ae0b371b06d3effaecbd43c",
+    "model/common_source/native_response_biased.py": "7a382acb88873860c6774d25553ed7c06ca10e80c881e805fc96939abf5412bf",
     "model/common_source/native_response_comparison.py": "a3a83d62f6b2bd9e1b23d09b052de7624fd4bb7a36bca79b74410e0ed6ab4723",
     "model/common_source/native_response_compatibility.py": "c318dfc93512c689591954c9d3bbc52027ac4f55735444a8e80ca1f65ca6b16e",
-    "model/common_source/native_response_controller.py": "13bafa8ee48cdb8ee1a2500f5d75dd7c8e70ae37a9949a288f8b28a03ba3a8b0",
-    "model/common_source/native_response_cooling.py": "da6ca0c924e3724257f39f275450c2e397ccfc44c77a7cffed8143e32f0960c9",
-    "model/common_source/native_response_dynamics.py": "c9ba67dd86253793deef12ede6d43239420b4f73b63d26b3993440a6651f453f",
+    "model/common_source/native_response_controller.py": "6c10fefb77defc32b1a430b3f5a1aee87e3caa7ac0e24ee624bff1f0fa833234",
+    "model/common_source/native_response_cooling.py": "88896a392b3633e4f8a7b8fcf8e96af61d2518f044cc60111b61ee5755f553c5",
+    "model/common_source/native_response_dynamics.py": "f69c6ba6eb23b8e40cfd6922b19b3b179ce514b51cab7f6e0084bdcc8ee6ef02",
     "model/common_source/native_response_reduction.py": "2e460c0982b0e302d09eab88515198a3eb8703eaf1b1eb8facdb3f34b3899a73",
-    "model/common_source/native_response_reference.py": "705b5b087154f4b938e5c624ff8b9ba5ff96a72965eb11756be78f61145462c4",
+    "model/common_source/native_response_reference.py": "049d20eaf7f2e47b39feb8f7d1a4427c31220a16a85292e7669323cff3d2a349",
     "model/common_source/native_routing.py": "bece6c1d39a4cf1a444e8bdc2d24dc42abaa4d16ada8d1174b246c9dd6f10f6a",
     "model/common_source/native_sm_current.py": "8ed16b421726dd460800d86846e5684163716cadc61c7cc2e8c21151d49593f1",
     "model/common_source/native_virtual_exchange.py": "40a71b674f3f4a19ba3e279ee0a0201ce34bc2f56548550187127530cefcd728",
@@ -12356,14 +12378,14 @@
     "model/common_source/test_native_code_transport.py": "e58f3f955caa2acf4ae75d97fceeb3803f9f2b9b1493492100456f0d5c1cae21",
     "model/common_source/test_native_gauge_object.py": "de2ec904d687e1bdbcb28878c484b7ad6459a0e9490198a197cd0005759564e6",
     "model/common_source/test_native_persistent_response.py": "044176b56dbe77ee8c073af2836c81dcb8bbcd22a00c84a19fa67ad2f09f60cd",
-    "model/common_source/test_native_response_biased.py": "bdb6ef9d21b5d4f1aed487b8ceded633f75e645a0d4750a32cf7519acae622f0",
+    "model/common_source/test_native_response_biased.py": "369377f0aa5d5e44fcdd5ba34c9cff1f63b33054cad07ed0209af7d79ecc57ab",
     "model/common_source/test_native_response_comparison.py": "841a14d9c51836afb3db96a84e9f16201433a1bf50277069b1c8b52c854ccbce",
     "model/common_source/test_native_response_compatibility.py": "f9f15bd31d56480e2bf8836fbdbd6c0c66f9a1eadb86cd983ae192e0703f6655",
-    "model/common_source/test_native_response_controller.py": "f15cc6dd161ff74731854699e496c20dbf8f37856a227f9976274acc53e30ce4",
-    "model/common_source/test_native_response_cooling.py": "58ad97070eb6424c3682d45902b6925d4dd758fad65b0aefdc8f423632eee71f",
-    "model/common_source/test_native_response_dynamics.py": "ae892228cafdb639c057047d8e7d670f167618c3cf900c2bfc8514eb78db2d5e",
+    "model/common_source/test_native_response_controller.py": "b88654d809f8d735973bb7801c46392e3f1ac3bf2a72ae3f06fd70db3f4eea9f",
+    "model/common_source/test_native_response_cooling.py": "5a4a80c5ca2b474cf3d0caf094be23af2c47551af4fe76f2159a74072242c591",
+    "model/common_source/test_native_response_dynamics.py": "a6a90605192ed70f0adaf2223d5441e5bba7ad20cedb61d1a7837e294e64102e",
     "model/common_source/test_native_response_reduction.py": "08e5f4a7315a766e9f5bba0b843350cf266921baef28b371ff1bc0d41c92779f",
-    "model/common_source/test_native_response_reference.py": "5e8bfe787d619552864e85f9e78d8e41d57c9e6c558dc4aebdd75bfea38a0996",
+    "model/common_source/test_native_response_reference.py": "033da2674fa5df2e3220cbf15bba4d839360992baeae23bb0ea8a0d3e06a92d5",
     "model/common_source/test_native_sm_current.py": "fbee360cfc2d87c63e958997202d5981d252c3136f930a28732ffe64abca33d4",
     "model/common_source/test_native_virtual_exchange.py": "131e8bde8c9ae7c255b2ac040ec914e843b06866347f12a1b12d812afae16945",
     "model/common_source/test_parameter_selection.py": "2504efad12f780a58772a31f8a56268160dbb3eeae82b986116143aa6d44ff3f",

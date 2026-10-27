@@ -244,6 +244,11 @@ not a domain argument.
   parent resource/error budgets. Near-normalized floating CP maps require
   multiplicative norm-growth accounting; linear channel-error accumulation
   needs actual trace-preserving realizations.
+  Long factorized histories can underflow even when each local factor is
+  well resolved. Retain an amplitude mantissa and its scale, compare with an
+  independent high-precision product, and reject an ordinary export that
+  silently erases a nonzero branch. Rescaling without retaining its weight
+  would change the instrument.
 - **Sampling design:** fixed-sample confidence bounds require horizons and
   radii chosen independently of the analyzed outcomes. Validate a separately
   declared design against counts; this checks consistency, not precommitment.

@@ -97,6 +97,39 @@ def test_entire_limiting_group_has_uniform_reference_cost_and_relative_center_at
     assert 1-abs(np.vdot(ray, np.kron(U, U)@ray))**2 <= 4*float(p)*(1-float(p))+1e-14
 
 
+@pytest.mark.parametrize('p,expected', [(0, 0), (F(1, 4), F(3, 4)),
+    (F(1, 2), 1), (F(3, 4), 1), (1, 1)])
+def test_global_limiting_group_bound_keeps_both_weight_halves(p, expected):
+    assert m.limiting_group_failure_bound(p) == s.Rational(expected)
+
+
+def test_upper_half_reference_can_fail_completely_under_a_limiting_group_control():
+    # Construct the full reference independently of the producer's Bell helper.
+    columns = s.eye(6)
+    A = sum((s.kronecker_product(columns[:, j], columns[:, j])
+             for j in range(3)), s.zeros(36, 1))/s.sqrt(3)
+    B = sum((s.kronecker_product(columns[:, j], columns[:, j])
+             for j in range(3, 6)), s.zeros(36, 1))/s.sqrt(3)
+    p = s.Rational(3, 4)
+    ray = s.sqrt(p)*A+s.sqrt(1-p)*B
+    U = s.diag(s.I, s.I, 1, 1, 1, 1)
+    overlap = s.simplify((ray.conjugate().T*s.kronecker_product(U, U)*ray)[0])
+    failure = 1-overlap*s.conjugate(overlap)
+    assert failure == m.limiting_group_failure_bound(p) == 1
+    assert failure > 4*p*(1-p)  # The old unqualified certificate claimed 3/4.
+    # At p=1 the global bound remains one, rather than the false zero.
+    z = (1+s.I*s.sqrt(3))/2
+    U = s.diag(1, z, s.conjugate(z), 1, 1, 1)
+    assert s.simplify((A.conjugate().T*s.kronecker_product(U, U)*A)[0]) == 0
+
+
+def test_maximum_step_is_invertible_only_at_interior_weights():
+    assert m.feedback_matrix(F(1, 4), 1, F(3, 4)).rank() == 18
+    for p in (0, 1):
+        assert m.feedback_matrix(p, 0, F(3, 4)).rank() == 18
+        assert m.feedback_matrix(p, 1, F(3, 4)).rank() == 13
+
+
 def test_actual_finite_reference_failure_probability_has_the_computed_hessian():
     p = F(1, 25)
     rng = np.random.default_rng(6501)

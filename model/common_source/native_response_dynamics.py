@@ -4,7 +4,7 @@ The controller acts on eighteen real Hamiltonian coefficients, not on unknown
 quantum states. Its declared update is x -> (I-eta G_p)x, where G_p is the
 failure-probability quadratic form of the collective action on the biased Bell
 reference. Neither a desired rank nor a twelve-generator list enters that
-update. At fixed nonzero p its limiting observable range has dimension six.
+update. At fixed interior weight 0<p<1 its limiting observable range has dimension six.
 The controlled joint limit p -> 0, m -> infinity, mp -> 0 instead retains
 twelve observable currents. Reference cooling or unchanged C/E repair alone
 does not implement this additional classical feedback law.
@@ -192,6 +192,21 @@ def continuous_bound(p, time):
             'high_current_gain_upper_bound': s.exp(-2*time/3)}
 
 
+def limiting_group_failure_bound(p):
+    """Sharp survival-failure bound for the entire limiting current group.
+
+    The collective overlap is p*a+(1-p)*z, where |a|<=1 is the first
+    triplet Bell overlap and |z|=1 is the second triplet's phase. For
+    p<=1/2 its modulus is at least 1-2p, attained by a=-z. For p>=1/2,
+    take U_A U_A^T=z*diag(-1,exp(i theta),exp(-i theta)), with
+    cos(theta)=(1-3(1-p)/p)/2 in [-1,1/2]. This gives
+    a=-(1-p)*z/p and cancels the overlap.
+    The bound therefore cannot remain 4p(1-p) on the upper half interval.
+    """
+    p = _weight(p)
+    return s.simplify(4*p*(1-p)) if bool(p <= s.Rational(1, 2)) else s.Integer(1)
+
+
 def _coordinates(matrix):
     return _clean(s.Matrix([s.re(s.trace(x.conjugate().T*matrix)) for x in full_basis()]))
 
@@ -260,10 +275,11 @@ def canonical_certificate():
         'low_high_and_high_high_bracket_inclusions_checked': True,
         'projection_is_a_Lie_homomorphism': False,
         'fixed_p_long_time_observable_dimension': 6,
+        'fixed_p_long_time_domain': '0<p<1; endpoint kernels instead have13 raw and12 observable directions',
         'finite_bracket_leakage_bound': '||(I-P)[F_m X,F_m Y]||_HS <=2 high_current_gain ||X||_HS ||Y||_HS',
         'complete_channel_bound': 'diamond distance <=min(2,2 epsilon B), B=sum_j sup_h |t_j(h)| ||x_j(h)||_2, for matched adaptive schedules with uniform per-stage bounds and all records retained',
         'arbitrary_untouched_reference_domain': True,
-        'low_group_reference_failure_bound': '4p(1-p), uniformly for every finite product in the limiting current group',
+        'low_group_reference_failure_bound': '4p(1-p) for0<=p<=1/2; 1 for1/2<=p<=1, sharply and uniformly for every finite product in the limiting current group',
         'relative_center_reference_failure': '4p(1-p) sin(t)^2 for X=i P_first',
         'finite_cost_is_energy_loss': False,
         'unchanged_native_C_E_repairs_implement_feedback': False,

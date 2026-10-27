@@ -6,7 +6,7 @@ import math
 
 import numpy as np
 import pytest
-from scipy.linalg import expm
+import mpmath as mp
 
 from . import native_response_controller as m
 
@@ -73,6 +73,7 @@ def test_complete_source_controls_and_whole_history_budget(executed):
     assert report['error_budget']['complete_source_history_vs_limiting_control_channel_error'] < .01
     assert report['resources']['raw_clock_record_bits'] == 1536
     assert report['resources']['retained_bath_and_counter_qubits'] == 7680
+    assert report['resources']['decoded_history_quantum_output_qubits'] == 7704
     assert np.linalg.norm(arrays['controls'][0, 12]-np.eye(8)) > .1
     assert np.linalg.norm(arrays['controls'][16, 12]-np.eye(8)) < 4e-9
     assert np.linalg.norm(arrays['controls'][16, 3]-np.eye(8)) > .1
@@ -176,3 +177,62 @@ def test_bad_claim_and_deleted_tiny_budget_rejected(executed):
         with pytest.raises(ValueError):
             m.compare_execution(bad, arrays, report, arrays, reference_arrays=ra,
                 cooling_arrays=ca, fresh_reference_arrays=ra, fresh_cooling_arrays=ca)
+
+
+def test_full_512_stage_amplitude_does_not_silently_disappear(executed):
+    _, arrays, ra, ca = executed
+    clock_row = int(np.argmax(abs(ca['counter'][0])))
+    bath_row = int(np.argmax(abs(ca['bath_preparation'][:, 0])))
+    records = tuple(next((c, r) for c in (0, 1) for r in range(4 if law == 'C' else 8)
+        if m.transport.PAIR_CODES[law].branch_weight(law, m.transport.SEAMS[law], c, r)) for law in ('C', 'E'))
+    incoming = np.zeros((64, 8, 1), complex)
+    incoming[:, 0, 0] = ca['bath_preparation'][:, 0]
+    options = dict(clock_records=((0, 0),)*m.HORIZON, counter_rows=(clock_row,)*m.HORIZON,
+        bath_rows=(bath_row,)*m.HORIZON, primitive=0, work_records=records,
+        work_syndromes=(0, 0), incoming=incoming)
+    # The defective implementation returns an all-zero complete output here.
+    with pytest.raises(ArithmeticError, match='scaled=True'):
+        m.history_output_block(arrays, ra, ca, **options)
+    mantissa, exponent = m.history_output_block(arrays, ra, ca, **options, scaled=True)
+    assert np.isfinite(mantissa).all() and np.max(abs(mantissa)) > .4
+    assert exponent < -1300
+    # Nontrigger cooling is exactly a tensor of the executed bath column and
+    # identity. Independently evaluate that complex scalar power in mp arithmetic.
+    data = m.work_output(arrays, ra, 0, 0, records, (0, 0), np.eye(8, 1, dtype=complex))[:, 0]
+    original = np.outer(ca['bath_preparation'][:, 0], data)
+    entry = np.unravel_index(np.argmax(abs(original)), original.shape)
+    with mp.workdps(90):
+        scalar = mp.mpc(complex(ca['counter'][0, clock_row]))*mp.mpc(complex(ca['bath_preparation'][bath_row, 0]))
+        exact = scalar**m.HORIZON*mp.mpc(complex(original[entry]))
+        reconstructed = mp.mpc(complex(mantissa[entry[0], entry[1], 0]))*mp.power(2, exponent)
+        assert abs((reconstructed-exact)/exact) < mp.mpf('2e-12')
+
+
+def test_short_history_scaled_and_ordinary_exports_agree(executed):
+    _, arrays, ra, ca = executed
+    incoming = np.ones((64, 8, 1), complex)/math.sqrt(512)
+    options = dict(clock_records=(), counter_rows=(), bath_rows=(), primitive=3,
+        work_records=((0, 1), (1, 2)), work_syndromes=(0, 0), incoming=incoming)
+    ordinary = m.history_output_block(arrays, ra, ca, **options)
+    mantissa, exponent = m.history_output_block(arrays, ra, ca, **options, scaled=True)
+    assert np.array_equal(ordinary, np.ldexp(mantissa.real, exponent)+1j*np.ldexp(mantissa.imag, exponent))
+    with pytest.raises(ValueError, match='Boolean'):
+        m.history_output_block(arrays, ra, ca, **options, scaled=1)
+
+
+@pytest.mark.parametrize('defect', ['erased_amplitude', 'wrong_scale', 'disconnected_count'])
+def test_producer_challenges_complete_long_history_contract(executed, monkeypatch, defect):
+    _, arrays, ra, ca = executed
+    original = m.history_output_block
+    def damaged(*args, **kwargs):
+        if defect == 'disconnected_count':
+            kwargs['clock_records'] = ((0, 0),)*len(kwargs['clock_records'])
+        block, exponent = original(*args, **kwargs)
+        if defect == 'erased_amplitude':
+            block = np.zeros_like(block)
+        elif defect == 'wrong_scale':
+            exponent += 1
+        return block, exponent
+    monkeypatch.setattr(m, 'history_output_block', damaged)
+    with pytest.raises(ValueError, match='scaled history'):
+        m.metrics(arrays, ra, ca)

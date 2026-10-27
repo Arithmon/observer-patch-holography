@@ -32,6 +32,14 @@ def test_executed_swap_keeps_all_unknown_reference_columns_and_old_information(e
     assert len(c.swap_word()) == 54
     assert report['resources']['SWAP']['native_pulses'] == 54
     assert report['resources']['retained_quantum_bath_and_counter_qubits_per_cycle'] == 15
+    resources = report['resources']
+    assert resources['supplied_unknown_reference_qubits'] == 6
+    position_bits = resources['maximum_native_pulses_per_cycle'].bit_length()
+    assert resources['first_export_failure_position_bits'] == position_bits
+    assert resources['first_export_failure_flag_bits'] == 1
+    assert resources['first_export_failure_archive_bits'] == position_bits+1
+    assert resources['first_export_failure_position_commit'] == 1
+    assert resources['maximum_archive_bits_including_export_failure'] == position_bits+4
     assert not report['resources']['old_reference_information_destroyed_or_reset_in_place']
 
 
