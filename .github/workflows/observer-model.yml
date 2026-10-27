@@ -108,7 +108,7 @@ jobs:
       - run: python -m pip install -r model/requirements.txt
       - name: Check native field receipt portability
         run: python -m model.common_source.repair_field_attachment --check model/common_source/repair_field_attachment_results.json
-      - name: Check source field, history and vacuum receipts
+      - name: Check source field, object, spectroscopy and vacuum receipts
         shell: python
         run: |
           import subprocess
@@ -117,6 +117,8 @@ jobs:
               ("common_source", "native_staggered_field"),
               ("common_source", "native_field_history"),
               ("common_source", "native_charged_spectrum"),
+              ("common_source", "native_code_transport"),
+              ("common_source", "native_charged_spectroscopy"),
               ("native_equilibration", "wedge_modular"),
           ):
               subprocess.run([sys.executable, "-m", f"model.{package}.{name}",

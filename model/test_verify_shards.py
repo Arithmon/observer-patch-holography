@@ -56,6 +56,11 @@ def test_four_shards_keep_both_expensive_workers_isolated_and_order_remaining_wo
 
 def test_every_new_research_receipt_has_a_canonical_replay():
     assert {
+        ('model.common_source.native_gauge_object', None, 'model/common_source/native_gauge_object_results.json'),
+        ('model.common_source.native_persistent_response', None, 'model/common_source/native_persistent_response_results.json'),
+        ('model.common_source.native_virtual_exchange', None, 'model/common_source/native_virtual_exchange_results.json'),
+        ('model.common_source.native_code_transport', None, 'model/common_source/native_code_transport_results.json'),
+        ('model.common_source.native_charged_spectroscopy', None, 'model/common_source/native_charged_spectroscopy_results.json'),
         ('model.native_equilibration.common_variation', None, 'model/native_equilibration/variation_results.json'),
         ('model.native_interface.tomography', None, 'model/native_interface/tomography_results.json'),
         ('model.native_modular_reference.cap_local_clock', None, 'model/native_modular_reference/cap_local_clock_results.json'),

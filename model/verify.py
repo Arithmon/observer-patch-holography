@@ -47,6 +47,11 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
 OCCUPATION_TRANSFER_REPLAY = ("model.occupation_control.transfer", None,
                               "model/occupation_control/transfer_results.json.gz")
 REPLAYS = (
+    ("model.common_source.native_gauge_object", None, "model/common_source/native_gauge_object_results.json"),
+    ("model.common_source.native_persistent_response", None, "model/common_source/native_persistent_response_results.json"),
+    ("model.common_source.native_virtual_exchange", None, "model/common_source/native_virtual_exchange_results.json"),
+    ("model.common_source.native_code_transport", None, "model/common_source/native_code_transport_results.json"),
+    ("model.common_source.native_charged_spectroscopy", None, "model/common_source/native_charged_spectroscopy_results.json"),
     ("model.observer_time_fields.preparation", None, "model/observer_time_fields/preparation_results.json"),
     ("model.native_clock.passive_age", None, "model/native_clock/passive_age_results.json"),
     ("model.repair_scheduler", None, "model/repair_scheduler/results.json"),

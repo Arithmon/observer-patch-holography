@@ -95,6 +95,16 @@ physical map, source derivation, comparison object, or paper-level closure is no
 Diagnostic comparisons, simulator outputs, known-data checks, and engineering
 benchmarks carry no falsification verdict.
 
+The [persistent native-object construction](../model/common_source/native_gauge_object.py)
+gives record-correctable geometric triplets from actual port permutations.
+The same opposite-code pair is source-prepared and tested for leakage under
+native port exchange. Its preserving effective response algebra has dimension
+17; the finite gauge theorem's complete 12-current condition is unmet.
+This excludes the tested response grammar as that theorem's realization.
+It does not change the conditional theorem or establish a physical particle
+spectrum. Separate record-only charged spectroscopy identifies the specified
+dimer poles, with no new measured-mass agreement claim.
+
 The [fixed corrected-repair calculation](../model/common_source/parameter_selection_results.json)
 has zero discrete response seed on the specified code and recovery cycle;
 native one-port and edge costs are scalar there. A single endpoint identity

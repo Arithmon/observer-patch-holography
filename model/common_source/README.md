@@ -18,11 +18,33 @@ observer regions. Its matrix-unit algebra, incident-clock transfer and
 modular frequencies are computed separately. Identifying that response
 with a physical relativistic particle, and recovering the measured Standard
 Model hierarchy, remain open.
-The canonical `python -m model.verify` replays all five retained reports;
+The canonical `python -m model.verify` replays the retained receipts;
 for the charged experiments it recomputes the complete quantum outputs and
 compares the stored arrays as well as their hashes. The
 [finite modular-covariance calculation](SLOW_GEOMETRY.md) supplies a separate
 test of the geometric interpretation of source modular flow.
+
+The [native geometric object](native_gauge_object.py) supplies two
+incidence-defined six-dimensional matching codes, each covariant under all
+60 proper port rotations and correctable from every retained C/E record.
+Two protected quintets contain the actual geometric `3 + 3′`. The
+[source preparation and transport](native_code_transport.py) use opposite
+matching choices and retain the padded registers and complete repair outputs.
+These are actively corrected objects with supplied coherent services;
+topological charge, fermionic statistics and physical particle identity are
+separate requirements.
+The [actual exchange-response calculation](native_persistent_response.py)
+solves leakage constraints before identifying currents. Opposite matching
+choices give `su(3) + su(3) + u(1)` of dimension 17; equal choices give only
+a scalar in the tested response family. The required complete 12-current
+Standard Model response is unselected. The
+[virtual-exchange control](native_virtual_exchange.py) retains native
+intermediate states and explicit perturbation/source-word error bounds.
+A separate [charged spectroscopy experiment](native_charged_spectroscopy.py)
+infers both dimer frequencies from fixed transfer records and predicts
+held-out readouts without supplying either pole to its inverse. It uses the
+specified dimer action and the original matching code; it does not attach
+that action or its masses to the geometric object.
 
 The [numerical output certificate](OUTPUT_CERTIFICATE.md) bounds the actual
 computed work outputs against the exact finite continuous and infinite

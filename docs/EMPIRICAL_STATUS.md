@@ -112,7 +112,18 @@ A distinct [interacting path](../model/common_source/native_charged_spectrum.py)
 has exact dimer charged poles $\sqrt{J^2+m^2}-J$, with ratios approximately
 $1:8.999872:143.963411$, also outside both broad lepton comparison windows.
 Its finite-volume perturbation theorem does not establish a bulk mass.
-These are specified construction tests, not additional empirical datasets.
+The [native geometric-object test](../model/common_source/native_gauge_object.py)
+constructs two record-correctable matching codes and the actual geometric
+triplets on their product. Source preparation and complete C/E outputs use
+the same opposite code choices as the exchange-response calculation.
+Its ideal preserving response algebra has dimension 17, so it does not
+satisfy the finite Standard Model theorem's complete 12-current hypothesis.
+Neither physical particles nor measured masses are identified by this test.
+Separate [native spectroscopy](../model/common_source/native_charged_spectroscopy.py)
+infers both specified dimer frequencies from complete fixed-probe contrasts,
+with held-out readouts and a zero-gap control. Its inverse receives no target
+pole; its source action retains the specified coefficients. These are
+construction tests without an additional empirical dataset.
 The [proper-ball calculation](../model/native_equilibration/ball_modular.py)
 instead computes a three-dimensional Gaussian vacuum's regional entropy
 response and compares it with an independently fixed conformal stress weight.

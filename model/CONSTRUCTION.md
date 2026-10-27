@@ -895,6 +895,28 @@ many-carrier service history is not claimed. The control architecture,
 sector initialization and clock interpretation remain inputs, and the
 field is not a physical Standard Model or a chiral continuum.
 
+The [persistent geometric object](common_source/native_gauge_object.py)
+starts with two incidence-defined, A5-covariant matching codes. Each carries
+`1 + 5` and corrects every recorded native C/E branch. Two protected quintets
+contain unique geometric `3 + 3′` with exact native intertwiners.
+[Source preparation and transport](common_source/native_code_transport.py)
+execute the opposite-code pair with padded registers and complete outputs.
+Active recovery, coherent services and selection of that geometric input
+domain remain explicit. No topological charge or fermion statistics follows
+from the code or its antisymmetric color tensor.
+
+The [same-object response](common_source/native_persistent_response.py)
+derives port-exchange interactions on all 10,626 native load-four states and
+solves leakage constraints before computing the current algebra. The tested
+opposite-code response gives `su(3) + su(3) + u(1)` of dimension 17; the
+complete 12-current premise of the finite Standard Model theorem is unmet.
+The common phase is silent on the geometric sector's matrix algebra, while
+coherent references in the retained complement require a larger interface.
+Finite pulse approximation, continuous response accessibility and physical
+gauge-current selection have distinct contracts. The tested four-carrier
+interaction has a singlet block mixing both triplet references and leaks
+from the geometric product before additional protection.
+
 The [free cubic extension](common_source/native_staggered_field.py) derives
 oriented staggered hopping from an exact inverse-exchange echo and explicit
 parity controls. Its Fourier reduction gives two Dirac copies per native

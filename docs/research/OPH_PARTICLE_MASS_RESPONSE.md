@@ -3,6 +3,14 @@
 This document states the current chiral Weyl–Higgs candidate, hierarchy
 diagnosis and full repair-response result. Its calculations and retained
 outputs are in the linked model packages.
+The source-identity test in [§5.16](#516-persistent-native-objects-and-the-finite-gauge-theorem)
+starts with persistent native objects and their actual port action.
+Two record-correctable carriers contain the geometric $3\oplus3'$ required
+for comparison with the finite gauge construction. Their tested reversible
+response algebra has dimension 17. The finite Standard Model theorem's
+complete 12-current premise, spin lift and physical particle identification
+are not supplied by this result. Gauge representation alone also leaves
+the invariant mass-generating couplings undetermined.
 The native recorded repair supports a propagating **collective core-relative
 charge response**, an exact correlation current, and compatible local detector
 records. Exact signed-current histories also recover nonzero finite-frequency
@@ -1031,6 +1039,136 @@ source histories. This closes the specified free half-space modular/stress
 attachment. It supplies neither a small-ball modular identity for massive
 matter, curved metric stationarity, nor an interacting Standard Model.
 
+#### 5.16 Persistent native objects and the finite gauge theorem
+
+The [native object construction](../../model/common_source/native_gauge_object.py)
+starts with the binary load-two configurations, native seams and actual
+proper port permutations. Two equivariant assignments of the 36 nonedge
+pairs to six antipodal-axis labels each partition them into six perfect
+matchings. For either integer encoder $W$,
+
+```math
+W^T W=6I_6,\qquad W^T n_p W=I_6,\qquad V=W/\sqrt6.
+```
+
+Every proper rotation preserves the code and acts by the actual permutation
+of axis labels. All 720 raw C/E branches, including aborts, have scalar
+code Grams and admit record-assisted correction. The code carries
+$1\oplus5$; removing its uniform label vector leaves a protected quintet.
+The two choices have $V_0^T V_1=\mathbf1\mathbf1^T/6$, so their quintets
+are orthogonal. Native inversion exchanges the choices. This operation has
+no established physical parity or Weyl-chirality interpretation.
+
+On two carriers the product of protected quintets contains unique geometric
+$3$ and $3'$ sectors. Character projectors from the actual native rotations
+give exact intertwiners to both triplets. The six-dimensional sector lies
+inside the antisymmetric color-product space; this tensor antisymmetry does
+not establish physical fermion statistics. The full 36-dimensional code
+product and the 30-dimensional complement of its geometric sector remain explicit.
+The [source execution](../../model/common_source/native_code_transport.py)
+prepares the geometric frame using a full six-qubit unitary extension and
+the two opposite matching encoders. All 64 preparation output rows and all
+eight local decoded input columns, including padding, are retained. The
+preparation executes six unknown input columns with an arbitrary reference.
+A separate continuing read/rotate/repair/read history
+checks transport of a marker through record-controlled native rotations.
+Persistence uses active correction and supplied coherent services. Autonomous
+object creation, topological charge and a local particle field are unproved.
+
+The [response calculation](../../model/common_source/native_persistent_response.py)
+then applies corresponding-port exchanges on all 10,626 load-four native
+states. It derives all 78 symmetric second port-weight responses and solves
+their leakage constraints before restricting to the geometric sector.
+Equal matching choices leave only a scalar preserving response. Opposite
+choices give six independent Hermitian responses with real Lie closure
+
+```math
+\mathfrak{su}(3)\oplus\mathfrak{su}(3)\oplus\mathfrak u(1),
+\qquad \dim_{\mathbb R}=17.
+```
+
+Both the flat joint-code response and the correctly weighted additive local
+protection resolvent give this response span. Their coefficients differ.
+On the geometric six-dimensional space the central direction is a common
+phase; it is silent under conjugation on that space's full matrix algebra.
+Relative phases involving retained complementary states can be observable.
+The full product has nine independent Hermitian responses with a
+three-dimensional restriction kernel, giving full Lie dimension at least
+20 and at least 19 directions visible on its matrix algebra. Enlarging this
+interface also fails the complete 12-current condition. No relative phase
+between the two geometric triplets is selected here.
+
+The finite gauge theorem assumes a faithful, complete, commutator-closed
+12-dimensional response, with endogenous proper-carrier transport. Its
+12-port module is $1\oplus3\oplus3'\oplus5$; the tested response instead
+contains a second $5$. Removing that component by decree would add a response
+selection premise. These are ideal controlled response-algebra calculations;
+exact preservation by each finite pulse word and autonomous selection of
+that response grammar do not follow from the Lie closure.
+
+A four-carrier interaction with code choices $(0,1,0,1)$ also tests a
+possible reference-state selection. On the two geometric singlet lines
+its compressed response is
+
+```math
+\begin{pmatrix}
+92/5&-2/45\\
+-2/45&92/5
+\end{pmatrix}.
+```
+
+Both eigenvectors mix the triplet singlets, excluding a pure triplet
+eigenstate for this interaction. The full interaction leaks outside
+the geometric product, so even this reference calculation needs its stated
+effective-protection hypothesis. The native object supplies an explicit
+theorem-interface test; the Standard Model current, spin lift, matter module
+and measured masses remain separate unclosed steps.
+
+#### 5.17 Native virtual interactions and controlled response
+
+The [virtual-exchange construction](../../model/common_source/native_virtual_exchange.py)
+tests two original matching-code carriers on the complete native load-four
+space. With $P$ their 36-dimensional code product, $Q=I-P$ and
+$V=\sum_{p=1}^{12}(I-\mathrm{SWAP}_p)$, it obtains
+$PVP=(10/3)P$ and a nonscalar $B=PVQVP$. Uniform exchange enters both local
+code complements, so additive protection $H_0=U(Q_A+Q_B)$ gives denominator
+$2U$ and effective response
+
+```math
+H_{\mathrm{eff}}=(10/3)tI-\frac{t^2}{2U}B.
+```
+
+An explicit isolation domain bounds the omitted terms. Individual weighted
+port exchanges can enter a single complement; applying the same $2U$
+denominator to them would be incorrect. The geometric-object calculation
+uses their correct resolvent weights. A finite native port-rotation and
+joint-code-phase commutator word separately approximates the $B$ response,
+retaining every native output and an analytic error bound. Joint code phases,
+protection, reversible controls and their clock remain supplied. This
+24-port calculation does not execute a complete load/export and C/E service
+history or derive a physical mass spectrum.
+
+#### 5.18 Charged poles inferred from complete native records
+
+The [spectroscopy experiment](../../model/common_source/native_charged_spectroscopy.py)
+uses the interacting dimer of §5.14 and a charge-conserving reference mode.
+Its fixed occupation preparation and transfer quadratures contain neither
+the ground-state vector nor either target pole. Complete source propagation,
+detectors and C/E recovery retain 158 terminal records, including 38 halt
+records, on all six input columns of the original matching code.
+
+Four equally spaced model-coordinate samples determine a two-frequency
+recurrence; two further samples test its prediction. The inverse consumes
+only recorded quadratures, sampling interval and error allowance. It
+resolves a positive charged gap about $4.34\times10^{-7}$ with numerical
+allowance $7.90\times10^{-8}$; a refitted zero-gap control misses the
+held-out contrasts. These are simulated complete-record contrasts with
+floating numerical admissions, without a finite-shot or hardware precision
+claim. The action supplies $J,m$, and the old matching code is distinct
+from the geometric-object code. The experiment establishes record
+identifiability for that specified dimer; its failed lepton ratios and
+physical particle-identification obligations are unchanged.
+
 ### 6. Relation to observers' effective 3+1D spacetime
 
 There are two distinct levels of attachment.
@@ -1159,6 +1297,9 @@ not excluded by these tests.
 
 | Item | Result in this candidate |
 | --- | --- |
+| Persistent native geometric object | Two equivariant record-correctable codes supply actual geometric 3 + 3′ on a source-prepared two-carrier sector; active correction and code-domain selection are explicit |
+| Same-object finite gauge interface | Opposite matching choices give an ideal 17-dimensional exchange-response algebra; the complete 12-current premise and spin/statistics are unclosed |
+| Native charged-pole identification | Fixed preparation and transfer records identify both specified dimer frequencies with held-out tests; no empirical mass input enters the inverse |
 | Internal chiral matter types and Higgs channels | Explicit operators inherited and rechecked under their stated lift |
 | Native family-dependent operator | Exact, covariant, nonscalar, with three distinct eigenvalues |
 | Weyl/Higgs Spin, charge and dispersion | Checked on the same declared action and Nambu conventions |
@@ -1180,9 +1321,13 @@ not excluded by these tests.
 | Free-vacuum modular/stress attachment | Same-action zero-temperature half-space theorem, directed continuum normalization, local preparation-size schedule and exact small-source fidelity certificate; bare planar entropy is regulator-dependent |
 | GR entropy stationarity and responsive geometry | Finite reciprocal Gibbs response and free half-space modular attachment have distinct domains; renormalized small-ball metric stationarity and Newton coefficient remain unproved |
 
-The specific remaining mass problem is to determine and test the
-mass-generating coupling of available native family data to the Higgs
-channels, their kinetic forms and the physical vacuum. The current example
+The source-identity problem comes before a new mass prescription: select
+the persistent physical degrees of freedom, their accessible complete
+current algebra, spin/statistics and propagation from one repair law.
+The geometric triplets give an explicit native carrier for this test, but
+their tested 17-dimensional response does not meet the 12-current theorem
+interface. The subsequent mass problem is to determine and test the
+coupling to the Higgs channels, kinetic forms and physical vacuum. The current example
 shows that getting the chiral representation right and computing every
 number from a chosen source prescription does not guarantee the measured
 hierarchy. A new prescription must earn that agreement through its actual
@@ -1219,6 +1364,11 @@ recompute their producers and independently validate retained source arrays:
 .venv/bin/python -m model.common_source.native_field_history --check model/common_source/native_field_history_results.json
 .venv/bin/python -m model.common_source.native_charged_spectrum --check model/common_source/native_charged_spectrum_results.json
 .venv/bin/python -m model.native_equilibration.wedge_modular --check model/native_equilibration/wedge_modular_results.json
+.venv/bin/python -m model.common_source.native_gauge_object --check model/common_source/native_gauge_object_results.json
+.venv/bin/python -m model.common_source.native_persistent_response --check model/common_source/native_persistent_response_results.json
+.venv/bin/python -m model.common_source.native_virtual_exchange --check model/common_source/native_virtual_exchange_results.json
+.venv/bin/python -m model.common_source.native_code_transport --check model/common_source/native_code_transport_results.json
+.venv/bin/python -m model.common_source.native_charged_spectroscopy --check model/common_source/native_charged_spectroscopy_results.json
 ```
 
 The retained calculation binds the source code, native reference, exact
