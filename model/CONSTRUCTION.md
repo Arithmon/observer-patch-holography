@@ -917,6 +917,95 @@ gauge-current selection have distinct contracts. The tested four-carrier
 interaction has a singlet block mixing both triplet references and leaks
 from the geometric product before additional protection.
 
+The [response comparison](common_source/native_response_comparison.py)
+sharpens this mismatch on the same geometric frame: the exchange and
+twelve-current laws intersect in eleven dimensions; their union generates
+eighteen. Five exchange directions are observable quadrupoles on `3′`,
+while the required relative central phase is absent. The common exchange
+center cannot replace it. An exact Lie quotient cannot turn a simple
+`su(3)` factor into `so(3)`. The
+[quantum-channel reduction](common_source/native_response_reduction.py)
+also shows that a unital completely positive map on the right qutrit
+fixing all three spin-one rotation generators must fix its entire matrix
+algebra. On the full six-state space this also requires preservation of the
+right block projector. In the covariant
+multipole family, erasing the quintet requires reducing the rotation
+multiplier to at most `2/3`; this bound is attainable. These are precise
+reduction obstructions, not a no-go for approximate emergent dynamics.
+
+A [shared-reference construction](common_source/native_response_reference.py)
+supplies a different operational contract. Add the native class-sum
+relative-phase control and prepare a maximally entangled `3′` reference
+on two geometric objects. The maximal collective current algebra preserving
+that reference ray has dimension thirteen; quotienting its common phase
+leaves exactly the existing twelve-current law. Without the relative-phase
+control it leaves only eleven observable currents. The reference and its
+preservation rule are supplied apparatus choices: the tested four-carrier
+interaction selects neither this pure reference nor that restriction.
+This constructs a measurable compatibility condition, not physical
+inaccessibility of the excluded controls or a derivation of the whole
+Standard Model.
+
+The [biased-reference construction](common_source/native_response_biased.py)
+then uses the actual four-carrier interaction and native class sum to form
+`H_lambda = -B + lambda(C tensor I + I tensor C)`. For every rational
+`lambda >= 1`, its complete 36-state geometric compression has a unique
+mixed Bell ground with gap at least `8/75`. At `lambda = 16` the first
+triplet weight is about `2.4113e-8`; it is positive at every finite bias.
+An optional geometric penalty on the full 1,296-state color space has
+explicit energy, leakage, ground-distance and uniform-time stability
+bounds. At penalty `2^44` the ground-distance bound is below `4.47e-10`.
+This is a separate exact Hamiltonian bound: that protective service and
+the full Hamiltonian's finite pulse implementation are not executed.
+
+The [source cooling stage](common_source/native_response_cooling.py)
+prepares the projected ground on a fresh bath and uses an actual native
+C record of probability `1/12` to trigger a SWAP. It retains all counter
+records and reference/bath outputs; the old quantum information remains
+in the bath. The unconditional reference marginal approaches the prepared
+state with remaining weight `(11/12)^n`, also for entangled inputs.
+The fresh baths and feedback coupling are supplied architecture, and
+cooling prepares the projected reference rather than the exact protected
+full-color ground. Reference monitoring or cooling alone leaves every
+data current available.
+
+The [disturbance controller](common_source/native_response_dynamics.py)
+adds the missing coupling to those data currents. It computes the actual
+reference-test Gram `G_p` in the complete eighteen-current frame and
+applies `x <- (I - eta G_p)x` to every coefficient. No twelve-current menu
+or rank cutoff enters this law. The full Gram spectrum is
+`0` (seven), `4p/3` (five), `4(1-p)/3` (five), and `8p(1-p)/3` (one).
+At fixed finite bias the exact zero-cost algebra has six observable
+currents, and the finite implemented filter remains invertible. The
+controlled joint limit `p -> 0`, `m -> infinity`, `mp -> 0` instead
+converges to a bracket-closed thirteen-dimensional range, whose common-phase
+quotient is the twelve-current law. This filters Hamiltonian coefficients;
+it is not the prohibited quantum channel fixing rotations while erasing
+their quadrupoles. The result requires bounded drives mediated by the
+declared controller, not arbitrary rescaling or bypass of its attenuation.
+With unrestricted input amplitudes the finite filter still reaches all
+eighteen currents. The class-sum phase is also an added work actuator;
+using it only as a reference bias leaves eleven observable directions in
+the filtered limit of the original seventeen-current algebra.
+
+The [finite source history](common_source/native_response_controller.py)
+uses the same native C trigger for bath replacement and controller updates.
+It retains all 512 attempts, caps the update count at sixteen, and executes
+all eighteen primitive data controls for every possible terminal count,
+with subsequent geometric encoding and complete native C/E repair.
+At bias sixteen and step `1/2`, the count timeout has exact binomial-tail
+probability about `4.28715e-7`; it is retained rather than postselected.
+For a unit-norm primitive at drive parameter `1/8`, the complete ideal
+history is within `9.87e-7` in channel norm of the limiting control, with
+matching bath/clock outputs and arbitrary work references. Numerical
+source errors accumulate separately through all 512 cycles; physical
+controller, storage and actuator errors remain additional services.
+The Gram is computed from the source model, not estimated from detector
+samples, and the native-event clock is not calibrated laboratory time.
+This is an implemented finite architecture approaching the twelve-current
+band, not autonomous selection by unchanged C/E repair or a proof of the
+exact finite Standard Model theorem's complete-response premise.
+
 The [specified current law](common_source/native_sm_current.py) chooses a
 different coherent interaction on the same persistent object. Native port
 coordinates generate a closed `u(3) + so(3)` law with all sixty proper

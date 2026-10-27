@@ -14,6 +14,13 @@ same geometric object realizes a closed 12-current algebra, with native
 rotation covariance and an observable relative central phase. Its control
 menu and spin/exterior lift are architecture choices; completeness with
 respect to every physically accessible intervention is not established.
+A further finite construction starts from the exchange plus the native
+class-sum phase, prepares its biased mixed reference, and uses the full
+reference-disturbance matrix to control all eighteen input currents.
+It approaches a twelve-current band with explicit native-clock, timeout
+and source errors. At finite bias its exact zero-cost algebra instead has
+six observable currents; the twelve-current result is a controlled joint
+limit with supplied baths and feedback, not autonomous selection by C/E.
 Gauge representation alone also leaves the invariant mass-generating
 couplings undetermined.
 The native recorded repair supports a propagating **collective core-relative
@@ -1123,6 +1130,47 @@ selection premise. These are ideal controlled response-algebra calculations;
 exact preservation by each finite pulse word and autonomous selection of
 that response grammar do not follow from the Lie closure.
 
+The [exact same-frame comparison](../../model/common_source/native_response_comparison.py)
+identifies a stronger distinction than a dimension excess. Write $P_A,P_B$
+for the native geometric triplet projectors. The exchange law is
+$\mathfrak g_{17}=\mathfrak{su}(3)_A\oplus\mathfrak{su}(3)_B\oplus i\mathbb RI_6$,
+whereas the specified law below is
+$\mathfrak h_{12}=\mathfrak u(3)_A\oplus\mathfrak{so}(3)_B$.
+Their intersection has dimension eleven and their generated union has
+dimension eighteen. Full matrix readout sees sixteen exchange directions
+and all twelve specified directions. The five extra directions are the
+imaginary symmetric traceless matrices on $B$. The missing direction is
+$iP_A$, an observable relative phase, rather than the silent $iI_6$.
+Fixed preparations and effects distinguish the five quadrupoles; the
+central comparison uses the complete tangent response, since one isolated
+phase marker can also respond to a noncentral control.
+
+The [reduction certificate](../../model/common_source/native_response_reduction.py)
+excludes two exact shortcuts. A unitary change of encoding preserves the
+algebra and center action. A Lie quotient cannot map either simple
+$\mathfrak{su}(3)$ ideal onto $\mathfrak{so}(3)$: its restriction is either
+injective or zero, and neither can supply that three-dimensional factor.
+There is also a quantum-information obstruction. Let $J_i$ be the three
+Hermitian spin-one generators, with $\sum_iJ_i^2=2I_3$. For a unital
+completely positive map $\Phi$ fixing each $J_i$, Schwarz gives
+$\Phi(J_i^2)-J_i^2\succeq0$. These three positive differences sum to zero,
+so all vanish. Each $J_i$ lies in the multiplicative domain, and their
+products generate $M_3(\mathbb C)$. Thus $\Phi$ fixes the quadrupoles too.
+This statement concerns exact fixed observables on that full quantum
+algebra; it does not exclude other effective interfaces or approximate
+dynamics.
+
+The tradeoff is sharp in the native-rotation-covariant family. On
+$M_3=1\oplus3'\oplus5$, let $(1,a,b)$ be the scalar, vector and quintet
+multipliers. The unnormalized Choi eigenvalues are
+$(1+3a+5b)/3$, $(2-3a+b)/6$, and $(2+3a-5b)/6$, with multiplicities
+$1,5,3$. Complete positivity therefore requires $b\ge3a-2$. Setting
+$b=0$ forces $a\le2/3$, and the bound is attained by the channel with
+Kraus operators $I_3/\sqrt3,J_1/\sqrt3,J_2/\sqrt3,J_3/\sqrt3$.
+In contrast, the linear projection with $(a,b)=(1,0)$ has a negative
+Choi eigenvalue $-1/6$. Discarding five coordinates is not a physical
+quantum channel preserving the other observables.
+
 A four-carrier interaction with code choices $(0,1,0,1)$ also tests a
 possible reference-state selection. On the two geometric singlet lines
 its compressed response is
@@ -1175,6 +1223,224 @@ records and decoder syndromes are retained without postselection. The
 current pulse occurs before the recorded native repair in this schedule;
 the corresponding action on a preencoded object is a compositional
 intertwining statement.
+
+The [reference compatibility construction](../../model/common_source/native_response_reference.py)
+replaces the per-generator complex/real restriction with one operational
+condition. Include the actual native near-fivefold class-sum phase; together
+with the exchange algebra it supplies
+$\mathfrak g_{18}=\mathfrak u(3)_A\oplus\mathfrak u(3)_B$. Prepare
+$\Omega_B=\sum_{j=1}^3|B_jB_j\rangle/\sqrt3$ on two geometric objects and
+require a collective control to preserve its ray. For $X=A\oplus B$,
+
+```math
+(X\otimes I+I\otimes X)\Omega_B\in i\mathbb R\Omega_B
+\quad\Longleftrightarrow\quad
+B+B^T\in i\mathbb RI_3
+\quad\Longleftrightarrow\quad
+B=R+i\beta I_3,\ R\in\mathfrak{so}(3).
+```
+
+This proves maximality: the full ray stabilizer has dimension thirteen,
+not merely twelve displayed examples. Its common $iI_6$ is unobservable
+on the complete six-state matrix algebra. Subtracting that scalar leaves
+the unique representative $(A-i\beta I_3)\oplus R$ in the existing
+$\mathfrak h_{12}$. Applying the same reference condition to
+$\mathfrak g_{17}$ gives only eleven observable directions: the class-sum
+relative phase is necessary for this construction. This is a Lie-algebra
+result; it does not select a physical weak double cover or matter lift.
+
+The reference condition is experimentally discriminating. For the excluded
+current $i\operatorname{diag}(1,-1,0)$ on $B$, collective evolution for
+parameter $t$ has reference survival $(1+2\cos(2t))^2/9$, whereas every
+compatible collective current preserves survival one. It is a preservation
+contract imposed on supplied controls and a prepared reference, not a
+postselection of successful runs. In particular, the mixed singlet selected
+by the tested four-carrier interaction above is not this pure reference.
+Native C/E recovery does not by itself select the reference contract or
+make incompatible apparatus controls inaccessible. The exact algebra,
+compiled reference protocol and physical selection therefore retain
+separate scopes.
+
+The [biased native reference](../../model/common_source/native_response_biased.py)
+connects this limiting pure reference to the actual four-carrier
+interaction. Let $B$ be its complete 36-dimensional geometric compression,
+and let $C$ be the sum of the twelve actual native near-fivefold rotations
+on one object. Its two triplet eigenvalues are $2\pm2\sqrt5$. For a
+declared rational bias $\lambda\ge1$, set
+
+```math
+H_\lambda=-B+\lambda(C\otimes I+I\otimes C),\qquad
+b=\frac2{45},\quad \delta=4\sqrt5\lambda,\quad r=\sqrt{\delta^2+b^2}.
+```
+
+The unique ground state and energy are
+
+```math
+\psi_\lambda=-\sqrt p\,\Omega_A+\sqrt{1-p}\,\Omega_B,\qquad
+p=\frac{b^2}{2r(r+\delta)},\qquad
+E_0=4\lambda-\frac{92}{5}-r.
+```
+
+This is a full 36-state ground-state result. Exact native spectral and
+Schur-complement certificates give a gap of at least $\gamma=8/75$ for
+every such bias; the proof does not assume that the two singlets exhaust
+the state space. At $\lambda=16$, $p\simeq2.4112653\times10^{-8}$.
+Every finite bias has $p>0$, so this state is never exactly $\Omega_B$.
+The class-sum direction and ground vector come from the source matrices;
+the bias strength and the choice to use this Hamiltonian remain supplied.
+
+The geometric product also has a controlled, separate protection option.
+On the full 1,296-state corrected color space, write
+$H_U=U(I-P)+H_{\rm base}$, where $P$ projects onto the geometric product.
+The actual exchange has norm at most $\beta=260/9$, and the class-sum bias
+commutes with $P$. With $h=\beta+24\lambda$, $U>2h$, and
+
+```math
+\epsilon_U=\frac{\beta^2}{U-2h}<\gamma,\qquad
+d_U=\frac{\beta}{U-2h}+\frac{\epsilon_U}{\gamma},
+```
+
+the low-band energy error is at most $\epsilon_U$, the full ground gap is
+at least $\gamma-\epsilon_U$, and its trace distance from the prepared
+projected ground is at most $d_U$. The prepared state then changes in
+trace distance by at most $2d_U$ under $H_U$ for any time. For collective
+extensions with operator norm at most two per unit Hilbert--Schmidt
+current, the disturbance-Gram errors are at most $24d_U$ for the full
+ground and $48d_U$ during that evolution. For example, $\lambda=16$ and
+$U=2^{44}$ give $d_U<4.47\times10^{-10}$. These are exact-model
+protection bounds, without geometric postselection. The penalty is an
+additional service; the full 1,296-state Hamiltonian and its finite native
+pulse implementation are not executed by the source preparation below.
+
+The [unconditional cooling protocol](../../model/common_source/native_response_cooling.py)
+prepares the projected $\psi_{16}$ by an emitted word on a fresh six-bit
+bath. A separate fresh native C counter triggers a reference--bath SWAP
+on its actual $(\mathrm{coin},\mathrm{raw})=(0,1)$ record, of probability
+$1/12$. All eight raw labels, all 512 counter output rows and all 4,096
+reference--bath output rows remain available. The SWAP is checked on all
+64 unknown reference inputs, including arbitrary untouched references;
+the old quantum information stays in the bath. The ideal marginal is
+
+```math
+\mathcal C^n(\rho_{WR})=
+q_n\rho_{WR}+(1-q_n)|\psi_{16}\rangle\langle\psi_{16}|
+\otimes\operatorname{Tr}_W\rho_{WR},\qquad q_n=(11/12)^n.
+```
+
+This is unconditional replacement cooling using supplied fresh baths and
+feedback coupling, not an energy-conserving bath derivation or passive C/E
+relaxation. Cooling targets the projected ground, not the exact full-color
+ground. Reference cooling or monitoring alone also cannot select the work
+currents: projecting the reference part of
+$X_W\otimes I+I\otimes L_X$ leaves $X_W$ plus a scalar for every $X$.
+An additional coupling from the compatibility cost to the data controls
+is necessary for this route.
+
+The [full-current feedback law](../../model/common_source/native_response_dynamics.py)
+makes that extra architecture explicit. It starts with the complete
+18-dimensional exchange-plus-class-sum frame, orthonormal in the
+Hilbert--Schmidt metric. The reference survival test, with both outcomes
+retained, defines its unweighted disturbance Gram $G_p$ by
+$1-\Pr(\text{survival at }t)=t^2x^TG_px+O(t^4)$.
+The actual 36-state ground gives the complete spectrum
+
+```math
+\operatorname{spec}G_p=
+\left\{0^{[7]},\ (4p/3)^{[5]},\ (4(1-p)/3)^{[5]},
+(8p(1-p)/3)^{[1]}\right\}.
+```
+
+The declared classical controller applies
+$x_{m+1}=(I-\eta G_p)x_m$, $0<\eta\le3/4$, to all eighteen current
+coefficients. The implemented controller computes $G_p$ from the source
+matrices; it does not estimate it from finite detector samples. Neither a
+twelve-current menu nor a rank cutoff enters the recurrence. At fixed
+$0<p<1$, its exact zero-cost space has seven raw and six observable
+directions. At the executed finite bias and finite count the filter is
+invertible: the attenuated currents have not disappeared. Instead, for
+$0\le p\le1/2$ its coefficient-operator distance to the limiting projection
+$P_0=I-3G_0/4$ is exactly
+
+```math
+\varepsilon_m=
+\max\left\{1-\left(1-\frac{8\eta p(1-p)}3\right)^m,
+\left(1-\frac{4\eta(1-p)}3\right)^m\right\}
+\le\max\left\{\frac{8\eta mp}{3},\left(1-\frac{2\eta}{3}\right)^m\right\}.
+```
+
+Thus the joint limit $p\to0$, $m\to\infty$, $mp\to0$ retains thirteen
+raw and twelve observable currents. Taking long time first at fixed bias
+instead leaves six observable currents. The limiting range is proved
+bracket-closed and its common-phase quotient is compared with the earlier
+twelve-current law only after deriving the filter. The projection itself
+is not a Lie homomorphism or a quantum channel erasing the five observables;
+the preceding quotient and complete-positivity obstructions still apply.
+This is a bounded-drive response limit. Rescaling suppressed controls or
+bypassing the controller does not establish the same restricted response:
+at every executed finite count, unrestricted input amplitudes recover the
+full eighteen-current algebra. For $\lambda=16$, $m=16$ and $\eta=1/2$,
+an input amplification of about $4.3047\times10^7$ restores a suppressed
+$B$ quadrupole. The native class-sum phase must also be available as a
+work actuator. Using it only to bias the reference leaves the original
+seventeen-current input algebra and only eleven observable directions in
+this limit.
+
+The [source controller](../../model/common_source/native_response_controller.py)
+uses the same C record to reset the reference and increment its capped
+update count. It runs 512 complete attempts, with cap 16,
+$\lambda=16$ and $\eta=1/2$. Every terminal count from zero through
+sixteen executes its own filtered data-current word, followed by the same
+geometric preparation, native C/E recovery and inverse preparation.
+The source checks all eighteen primitive drives at every terminal count;
+complete raw records, baths, syndromes and timeout outputs reconstruct
+the whole history. The ideal probability of failing to reach the cap is
+
+```math
+\Pr(K<16)=\sum_{k=0}^{15}\binom{512}{k}
+\left(\frac1{12}\right)^k\left(\frac{11}{12}\right)^{512-k}
+\simeq4.2871487\times10^{-7}.
+```
+
+Here $\varepsilon_{16}\simeq5.1440312\times10^{-7}$. For one unit-norm
+primitive drive with parameter $t=1/8$, the complete ideal channel differs
+from the limiting control by at most
+$2|t|\varepsilon_{16}+2\Pr(K<16)<9.87\times10^{-7}$, with matching
+clock and bath outputs on both sides and arbitrary work references.
+Source pulse, export-failure and native-repair errors accumulate separately over
+all 512 attempts; a physical service bound is still required for the
+controller arithmetic, preparations, records and actuator. The clock is
+an actual retained C-event count, not calibrated laboratory time. This
+provides a finite source implementation of a declared bath-and-controller
+architecture approaching the twelve-current band. It does not make the
+unchanged C/E law select that architecture, discharge the exact finite
+twelve-current premise, or derive physical gauge redundancy.
+
+The [combined receipt](../../model/common_source/native_response_compatibility_results.json)
+also retains the pure-reference limiting control with twenty coherent
+controls: the twelve specified port currents,
+identity, the native class-sum phase, common phase, and five excluded
+quadrupoles. A compiled Bell preparation and detector compose with two
+geometric embeddings and four native carriers in order C/E/C/E. The
+retained tensor factors reconstruct every one of the 16,384 raw repair
+labels, all coherent decoder-syndrome amplitudes, and four terminal
+geometric-return/Bell outcomes. A geometric-return failure remains an
+output; survival is never conditioned on discarding it. Independent
+matrix and tensor checks cover non-scalar local factors and untouched
+reference columns, so ideal scalar recovery cannot hide a wire-order error.
+
+The pure-reference component charges emitted pulses, raw macro corrections
+and retained first-export failures. Its fixed numerical admission requires
+complete flagged operator error below $10^{-5}$ on the stated
+reference/input domain. For floating completely positive implementations,
+the controller history uses the product-growth bound
+$(1+\delta_{\rm work})(1+\delta_{\rm cool})^{512}-1$ for its work and
+cooling-cycle channel errors. Linear accumulation requires actual
+trace-preserving channels. These are binary64 admissions, not outward
+arithmetic or physical-device certificates.
+Physical service errors remain an explicit additional sum.
+The parameter is a declared coherent control angle, not calibrated time.
+Reproduce the complete source replay with
+`python -m model.common_source.native_response_compatibility --check model/common_source/native_response_compatibility_results.json`.
 
 The [matter attachment](../../model/common_source/native_matter_attachment.py)
 uses these actual generators. For a block current $(A,\widehat w)$ its
@@ -1558,6 +1824,7 @@ not excluded by these tests.
 | --- | --- |
 | Persistent native geometric object | Two equivariant record-correctable codes supply actual geometric 3 + 3′ on a source-prepared two-carrier sector; active correction and code-domain selection are explicit |
 | Same-object finite gauge interface | Exchange gives 17 currents and fails A1. A specified coherent law gives a closed 12-current algebra on the same geometric sector; its control-menu completeness does not establish completeness over all physical interventions |
+| Biased-reference current dynamics | Actual exchange and class sum determine a mixed reference and full 18-current disturbance Gram. A supplied bath/controller approaches twelve observable currents in a bounded-drive joint limit, with complete native-clock timeouts; fixed-bias long-time response has six |
 | Native charged-pole identification | Fixed preparation and transfer records identify both specified dimer frequencies with held-out tests; no empirical mass input enters the inverse |
 | Joint charged-species and calibrated mass readout | One coherent 256-address register supplies charge, color and running-gap records with a blind inverse and held-out read; the source action retains measured running parameters |
 | Internal chiral matter types and Higgs channels | The specified native 12-current law has an exact spin/exterior lift, fifteen-dimensional matter intertwiner and three invariant Higgs lines; lift and physical field attachment remain explicit architecture choices |
@@ -1588,7 +1855,12 @@ The geometric triplets give an explicit native carrier for this test.
 Their exchange interaction fails the 12-current theorem interface. The
 specified complex-triplet/real-triplet control law realizes that algebra
 on the same carrier, conditional on its response-menu boundary and chosen
-lift. The subsequent mass problem is to determine and test the
+lift. The biased-reference controller adds a constructive bounded-drive
+limit from all eighteen exchange-plus-class-sum currents, with finite
+source errors and retained clock timeouts. Its bath, bias and data-feedback
+architecture remain supplied; neither its finite filter nor unchanged C/E
+repair establishes the exact complete-response premise. The subsequent
+mass problem is to determine and test the
 coupling to the Higgs channels, kinetic forms and physical vacuum. The current example
 shows that getting the chiral representation right and computing every
 number from a chosen source prescription does not guarantee the measured

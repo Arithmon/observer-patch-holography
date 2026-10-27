@@ -36,7 +36,26 @@ separate requirements.
 The [actual exchange-response calculation](native_persistent_response.py)
 solves leakage constraints before identifying currents. Opposite matching
 choices give `su(3) + su(3) + u(1)` of dimension 17; equal choices give only
-a scalar in the tested response family. A separate
+a scalar in the tested response family. The
+[comparison and reduction audit](native_response_comparison.py) finds an
+eleven-dimensional intersection with the twelve-current law: five extra
+observable quadrupoles coexist with a missing relative phase. A unital
+quantum channel on the right triplet cannot erase those quadrupoles while
+fixing all three spin-one rotation generators. The
+[shared-reference construction](native_response_reference.py) derives the
+maximal compatible twelve-current law after adding the native relative
+phase and requiring preservation of one prepared triplet Bell ray. The
+excluded controls have explicit measurable effects. The
+[biased native interaction](native_response_biased.py) supplies a unique
+mixed-triplet reference ground. A [complete bath coupling](native_response_cooling.py)
+prepares it on actual C records; the same records drive a
+[data-current controller](native_response_controller.py) derived from the
+full eighteen-current disturbance Gram. Its bounded-drive joint limit has
+twelve observable currents, with complete finite clock, bath, timeout and
+data-repair outputs and numerical budgets. Every finite filter remains full
+rank; unlimited input amplification restores the attenuated currents.
+The positive bias, fresh baths, phase actuator and feedback rule are explicit
+architecture choices, and passive C/E repair does not select them. A separate
 [specified current law](native_sm_current.py) keeps the carrier and C/E
 instruments and chooses complex controls on one geometric triplet and real
 rotations on the other. Its twelve native port generators close, implement

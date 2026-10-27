@@ -233,6 +233,17 @@ not a domain argument.
   identities from floating export-complement amplitudes. A complete numerical
   instrument budget must include the successful block, retained failure
   branches and accumulated representation changes.
+  Test factorized instruments with independent non-scalar local matrices.
+  Ideal scalar recovery factors can conceal reversed bit significance or
+  tensor-factor order even when every outcome probability agrees. Compare
+  reconstructed amplitudes against an independently indexed tensor oracle.
+  Require nonzero witness outputs before using an amplitude comparison as a
+  positive control. Derive feedback state from the same retained records used
+  by the quantum history; test sequential baths with entangled inputs.
+  A composed verifier must validate every parent factor and the authority of
+  parent resource/error budgets. Near-normalized floating CP maps require
+  multiplicative norm-growth accounting; linear channel-error accumulation
+  needs actual trace-preserving realizations.
 - **Sampling design:** fixed-sample confidence bounds require horizons and
   radii chosen independently of the analyzed outcomes. Validate a separately
   declared design against counts; this checks consistency, not precommitment.

@@ -104,21 +104,21 @@
   "retained_observer_readout": {
     "record_count": 64,
     "decoded_gaps_over_clock_ascending": [
-      0.0907450442012792,
-      0.10801414519982244,
-      0.1359561375706321
+      0.09074504420161027,
+      0.10801414520009915,
+      0.1359561375708522
     ],
     "decoded_ascending_ratios": [
       1.0,
-      1.1903035163026545,
-      1.4982210738591009
+      1.1903035163013613,
+      1.4982210738560604
     ],
     "independent_action_gaps_over_clock": [
       0.09074504420111197,
       0.10801414519968133,
       0.13595613757052133
     ],
-    "maximum_absolute_record_action_residual": 1.672273430841642e-13,
+    "maximum_absolute_record_action_residual": 4.982958490273859e-13,
     "common_clock_lapse_units_or_Higgs_scaling_change_family_ratios": false,
     "phase_window_is_admitted_prior_contract": true,
     "finite_shot_or_physical_preparation_error_bound": false,
@@ -1023,12 +1023,12 @@
         "Nambu_squared_gap_residual": 0.0,
         "reference_independence": {
           "model_parameter": 0.37,
-          "operator_anticommutator_residual": 0.0,
+          "operator_anticommutator_residual": 1.3877787807814457e-17,
           "reference_expectation_residuals": {
-            "encoded_blank": 0.0,
-            "illustrative_pair_ground": 2.220446049250313e-16,
-            "maximally_mixed": 0.0,
-            "nonGaussian_even_pair_mixture": 0.0
+            "encoded_blank": 1.3877787807814457e-17,
+            "illustrative_pair_ground": 2.2215299868541707e-16,
+            "maximally_mixed": 1.3877787807814457e-17,
+            "nonGaussian_even_pair_mixture": 1.3877787807814457e-17
           },
           "reference_stationarity_residuals": {
             "encoded_blank": 0.17384206036352895,
@@ -1095,12 +1095,12 @@
         "Nambu_squared_gap_residual": 0.0,
         "reference_independence": {
           "model_parameter": 0.37,
-          "operator_anticommutator_residual": 0.0,
+          "operator_anticommutator_residual": 1.3877787807814457e-17,
           "reference_expectation_residuals": {
-            "encoded_blank": 0.0,
-            "illustrative_pair_ground": 2.220446049250313e-16,
-            "maximally_mixed": 0.0,
-            "nonGaussian_even_pair_mixture": 0.0
+            "encoded_blank": 1.3877787807814457e-17,
+            "illustrative_pair_ground": 2.2215299868541707e-16,
+            "maximally_mixed": 1.3877787807814457e-17,
+            "nonGaussian_even_pair_mixture": 1.3877787807814457e-17
           },
           "reference_stationarity_residuals": {
             "encoded_blank": 0.2188129622341032,
@@ -1187,7 +1187,7 @@
             ],
             "illustrative_pair_ground": [
               0.49927015260827895,
-              -0.02700582741753576
+              -0.027005827417535752
             ],
             "maximally_mixed": [
               0.49927015260827906,
@@ -2376,27 +2376,27 @@
         "graph_formula": "T_accepted=(q-killing)I-L_common/2",
         "accepted_transfer_positive_floor_exact": "19/32",
         "conditional_transfer_eigenvalues_diagnostic": [
-          0.7967295640776625,
-          0.8102338807898607,
-          0.846895701138925,
-          0.880323603693325,
-          0.8879360439958275,
-          0.9108004078693769,
+          0.7967295640776634,
+          0.8102338807898608,
+          0.8468957011389253,
+          0.8803236036933253,
+          0.8879360439958277,
+          0.9108004078693774,
           0.9405160198908212,
-          0.9551495815523342,
-          0.9714151969918637,
-          0.9999999999999999
+          0.9551495815523344,
+          0.9714151969918647,
+          1.0
         ],
         "conditional_log_decay_rates_diagnostic": [
-          0.2272399751160355,
-          0.21043233127764188,
-          0.16617773106354056,
-          0.12746570763684323,
-          0.11885556111093504,
-          0.09343149697822932,
+          0.2272399751160344,
+          0.21043233127764174,
+          0.16617773106354017,
+          0.12746570763684287,
+          0.11885556111093479,
+          0.09343149697822871,
           0.0613265970093812,
-          0.04588732086885637,
-          0.029001304770522564
+          0.04588732086885614,
+          0.029001304770521534
         ],
         "generating_resolvent": "sum_n z^n T_accepted^n=(I-z T_accepted)^(-1), |z| ||T_accepted||<1",
         "local_return_measurement": "average the signed Ramsey return over ten separate coordinate preparations and local detectors, retaining every timeout",
@@ -2805,27 +2805,27 @@
         "graph_formula": "T_accepted=(q-killing)I-L_common/2",
         "accepted_transfer_positive_floor_exact": "19/32",
         "conditional_transfer_eigenvalues_diagnostic": [
-          0.7967295640776625,
-          0.8102338807898607,
-          0.846895701138925,
-          0.880323603693325,
-          0.8879360439958275,
-          0.9108004078693769,
+          0.7967295640776634,
+          0.8102338807898608,
+          0.8468957011389253,
+          0.8803236036933253,
+          0.8879360439958277,
+          0.9108004078693774,
           0.9405160198908212,
-          0.9551495815523342,
-          0.9714151969918637,
-          0.9999999999999999
+          0.9551495815523344,
+          0.9714151969918647,
+          1.0
         ],
         "conditional_log_decay_rates_diagnostic": [
-          0.2272399751160355,
-          0.21043233127764188,
-          0.16617773106354056,
-          0.12746570763684323,
-          0.11885556111093504,
-          0.09343149697822932,
+          0.2272399751160344,
+          0.21043233127764174,
+          0.16617773106354017,
+          0.12746570763684287,
+          0.11885556111093479,
+          0.09343149697822871,
           0.0613265970093812,
-          0.04588732086885637,
-          0.029001304770522564
+          0.04588732086885614,
+          0.029001304770521534
         ],
         "generating_resolvent": "sum_n z^n T_accepted^n=(I-z T_accepted)^(-1), |z| ||T_accepted||<1",
         "local_return_measurement": "average the signed Ramsey return over ten separate coordinate preparations and local detectors, retaining every timeout",
@@ -3265,27 +3265,27 @@
         "graph_formula": "T_accepted=(q-killing)I-L_common/2",
         "accepted_transfer_positive_floor_exact": "35/64",
         "conditional_transfer_eigenvalues_diagnostic": [
-          0.7460992215120663,
-          0.7668577983637703,
-          0.7994215982346856,
-          0.8266375230046883,
+          0.7460992215120672,
+          0.7668577983637708,
+          0.799421598234686,
+          0.8266375230046886,
           0.8461577663082535,
-          0.8698503529639886,
-          0.897257878116462,
-          0.9143845281627491,
-          0.9444444444444442,
+          0.8698503529639892,
+          0.8972578781164622,
+          0.9143845281627492,
+          0.9444444444444441,
           0.9444444444444444
         ],
         "conditional_log_decay_rates_diagnostic": [
-          0.29289668291485443,
-          0.2654538945900252,
-          0.22386681501299532,
-          0.19038898354248346,
+          0.29289668291485327,
+          0.2654538945900246,
+          0.2238668150129949,
+          0.19038898354248304,
           0.167049451764144,
-          0.13943409021596473,
-          0.10841196870156325,
-          0.0895040868516518,
-          0.05715841383994887,
+          0.1394340902159641,
+          0.108411968701563,
+          0.08950408685165169,
+          0.05715841383994899,
           0.05715841383994864
         ],
         "generating_resolvent": "sum_n z^n T_accepted^n=(I-z T_accepted)^(-1), |z| ||T_accepted||<1",
@@ -3695,28 +3695,28 @@
         "graph_formula": "T_accepted=(q-killing)I-L_common/2",
         "accepted_transfer_positive_floor_exact": "1/2",
         "conditional_transfer_eigenvalues_diagnostic": [
-          0.690543665956512,
-          0.711302242808215,
-          0.7438660426791306,
+          0.6905436659565118,
+          0.7113022428082151,
+          0.7438660426791305,
           0.7710819674491332,
-          0.790602210752698,
-          0.8142947974084335,
-          0.8417023225609066,
-          0.8588289726071946,
+          0.7906022107526982,
+          0.8142947974084329,
+          0.8417023225609065,
+          0.8588289726071936,
           0.8888888888888888,
-          0.8888888888888888
+          0.8888888888888891
         ],
         "conditional_log_decay_rates_diagnostic": [
-          0.3702760699620552,
-          0.34065784413613154,
-          0.29589431052248044,
+          0.3702760699620553,
+          0.34065784413613137,
+          0.2958943105224806,
           0.25996059790605464,
-          0.23496033182609502,
-          0.2054328195649109,
-          0.17232886339939077,
-          0.15218547739472876,
+          0.23496033182609471,
+          0.20543281956491158,
+          0.17232886339939088,
+          0.15218547739472993,
           0.11778303565638351,
-          0.11778303565638351
+          0.11778303565638326
         ],
         "generating_resolvent": "sum_n z^n T_accepted^n=(I-z T_accepted)^(-1), |z| ||T_accepted||<1",
         "local_return_measurement": "average the signed Ramsey return over ten separate coordinate preparations and local detectors, retaining every timeout",
@@ -4281,7 +4281,7 @@
     "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "code/yang_mills/manifests/physical_compact_gauge_uninstantiated.json": "e512c4a67dc627789bd0450fedabfdc1dc81765021bc0b3eaab12763c7df979a",
-    "docs/research/OPH_PARTICLE_MASS_RESPONSE.md": "1d018a8599695fba51ca9d0e4273f841f34a074f3ae8951dae01b79e4abd23a6",
+    "docs/research/OPH_PARTICLE_MASS_RESPONSE.md": "bbe9e8e05c9bfbd5c062b7e13a642e35cbea830b49dfd61abb2c480ff9f32e0b",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
@@ -4349,8 +4349,8 @@
     "model/common_source/chiral_candidate/history.py": "265e73ac87321ebd514b97af2c7c4c0bb376144f60e53d10bfd46662ce2d8db4",
     "model/common_source/chiral_candidate/kinetic.py": "e458cee9e4529722d7500c8eee9dacfed4b35658329c053b7b198f8433c63f3e",
     "model/common_source/chiral_candidate/protected_momentum.py": "2f1cd04f7c1d504b2ba6d9c4f1e32c4a825016e92b928af774edfbba6bd3aece",
-    "model/common_source/chiral_candidate/results.json": "f87f5b5b33d7c2aef8c974607f6769b38ec53abe01446db6c44c5cb7eeaaafc5",
-    "model/common_source/chiral_candidate/results.npz": "6ac5a7640b422b0959921cf26ee8d154524580241febca409f93acde236eace6",
+    "model/common_source/chiral_candidate/results.json": "10b2c3779dfe6dd44f0dde65907583db90ce9b8d0cd74d08f46bf16e4964d3fd",
+    "model/common_source/chiral_candidate/results.npz": "315f09342c6ef17d0f2fa7d1e5f5530c4a63d022aa934a04bbc81b100261b8c9",
     "model/common_source/chiral_candidate/run.py": "389cb42f7b9ab01d2450021a985751780ce80c1c424511c96942347a8e5bc393",
     "model/common_source/chiral_candidate/spacetime_attachment.py": "fa1a55c076de8f4a79e96fb14f3a98644f62e712a43b4f78a3169d3d0c5495e4",
     "model/common_source/composition.py": "0da19f182d52049e1521ff4f6ae85184af8f993a66373fbf228716149472d6cc",
