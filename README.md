@@ -64,7 +64,9 @@ and the clocks inside it.
   theorem's complete 12-current premise. A specified coherent control law
   realizes twelve closed currents on that same carrier, with an explicit
   spin/exterior lift and Higgs channels. The control-menu boundary and lift
-  remain inputs. A separate native-record controller acts on all eighteen
+  remain inputs. Exact coherent filtering gives an invertible control map
+  into this same algebra; ordinary state cooling does not implement that
+  Hamiltonian filter. A separate native-record controller acts on all eighteen
   exchange-plus-phase currents. Every finite filter stays invertible; only
   a joint limit of increasing bias and update count approaches twelve
   observable currents under bounded drives. Its baths, feedback rule and
@@ -83,6 +85,12 @@ and the clocks inside it.
   fixed-basis detector records with separate source and inversion errors.
   Two-rotation feedback also fails the hierarchy; a full selector
   bath retains additional low charged responses.
+  A complete twelve-state record memory resolves three unequal coefficients
+  with a finite-angle inverse. A common gauge-covariant interaction makes its
+  rates sector dependent using the actual Higgs supports. All three tested
+  geometric interaction angles fail the charged hierarchies. The coefficients
+  attach to the same finite Weyl/Higgs action, with a separate fixed-detector
+  inverse; this supplies no physical mass prediction.
   An incidence-defined repair source-executes a protected three-level
   family band and matches the finite theorem's projector. Original-carrier
   loop phases and a current-mediated auxiliary response also fail the

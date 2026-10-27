@@ -39,8 +39,8 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | --- | ---: |
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
-| Registered claims | 343 |
-| Unique ordinary `assumptions` names | 827 |
+| Registered claims | 344 |
+| Unique ordinary `assumptions` names | 828 |
 | Unique `imported_results` names | 921 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 33 |
@@ -69,7 +69,7 @@ the ordinary-assumption inventory:
 | `null_decision_assumptions` | 1 | 2 | 2 | 0 |
 | `threshold_kinematic_assumptions` | 1 | 6 | 6 | 0 |
 
-Existing claim classifications: `explicit_edges`: 175; `explicit_non_consumer`: 168.
+Existing claim classifications: `explicit_edges`: 176; `explicit_non_consumer`: 168.
 
 ## What the current implementation does with each premise
 
@@ -1643,13 +1643,13 @@ anchors are not proofs. No entry silently discharges a canonical premise.
 
 | Coverage | Count |
 | --- | ---: |
-| Canonical claims retained | 343 |
-| Claims with restricted bindings | 16 |
+| Canonical claims retained | 344 |
+| Claims with restricted bindings | 17 |
 | Claims with open common-model mapping | 327 |
 | Tracked Lean source modules retained | 661 |
 | Lean modules referenced by canonical evidence | 464 |
 | Public theorem/lemma declarations | 12704 |
-| Restricted bindings / sourced connections | 73 / 63 |
+| Restricted bindings / sourced connections | 74 / 65 |
 
 ### Restricted model bindings
 
@@ -1733,6 +1733,7 @@ duplicated here.
 | shared-observer-field-witness (`shared_observer_field_witness`) | The declared scalar product field and a complete CAR construction share an ideal joint spatial operator and incident-count coordinate. A common tetrad gives scalar, Dirac/Weyl and Maxwell principal symbols, a metric Whitney action and a rank-nine null-frame map. A separate full cone cochain control preserves its scalar block and removes the truncated edge cycles. Global domains, spin boundaries, extra modes, vacuum and finite split-word errors are explicit. No physical chiral field net or selected masses are asserted. | The named finite construction or attachment fails; this does not negate unrelated conditional theorems. Physical selection and observable interpretation retain the named open premises. | [shared_spatial_matter.py](../model/observer_particles/shared_spatial_matter.py) |
 | static-product-response-control (`static_product_response_control`) | For the stated smooth static radial-product metric class, both radial null Einstein contractions vanish. A scalar excitation in its restored angular-constant Dirichlet sector has positive coherent relative null stress, so the same background cannot satisfy the reference and excited Einstein balances at positive coupling with other sources fixed. Independent area/volume identities, finite constrained entropy tests and the necessary spherical focusing equation are constructed. A thermal-cavity comparison is not a vacuum small-ball entropy identification, and no dynamic OPH geometry is excluded. | The named finite construction or attachment fails; this does not negate unrelated conditional theorems. Physical selection and observable interpretation retain the named open premises. | [geometric_stationarity.py](../model/observer_particles/geometric_stationarity.py) |
 | entangled-pair-scalar-candidate (`entangled_pair_scalar_candidate`) | An independent finite reconstruction of Wissner-Gross's declared entangled-pair exchange operators gives gains 1,2,3,6 with ranks 79,48,42,3, and normalization 31104. The resulting scalar is (79+48sqrt(2)+42sqrt(3)+3sqrt(6))/31104. Complete Bell outcomes, support-alignment and normalized-readout controls are retained. Physical Thomson/photon and same-cell P identifications are not proved, and this scalar does not replace the existing certified trial-map roots. Exact rational enclosures propagate the same scalar through the declared P=phi+sqrt(pi)*alpha and n_s=1-P/48 maps. Its inverse coupling is approximately 0.5984 CODATA 2022 reported standard uncertainties above the reference, while both tilt enclosure endpoints retain weighted lower-tail count 3114/508985 in the specified Planck+ACT DR6+lensing+DESI BAO posterior. This is a retrospective conditional comparison, not a p-value or joint physical identification; arithmetic enclosure is not a theory-error law. The actual chiral mass and oscillator receipts retain their separate physical-map obligations. | The named finite construction or attachment fails; this does not negate unrelated conditional theorems. Physical selection and observable interpretation retain the named open premises. | [entangled_alpha.py](../model/observer_particles/entangled_alpha.py); [cross_scale.py](../model/empirical_diagnostics/cross_scale.py) |
+| native-family-record-protocol (`native_family_record_protocol`) | The actual native control map and conditional matter/Higgs tensors are reused. Complete record laws determine the specified logical feedback coefficients; the same tensors attach arbitrary complex matrices to the finite all-left Weyl action. Every geometry catalog and pulse-duty case is retained, with normalized-sector bounds and zero directions. New logical services are not a compiled combined source history or physical mass derivation. | Physical generations, source-selected measured strengths, Higgs scale, clock calibration, interacting poles and chiral continuum remain outside this finite artifact. Static mean-feedback records are not identified with the correlated finite-memory process. | [native_family_protocol.py](../model/common_source/native_family_protocol.py); [native_matter_attachment.py](../model/common_source/native_matter_attachment.py) |
 
 ### Sourced domain connections
 
@@ -1804,3 +1805,5 @@ in the machine inventory. Omitted coordinates must agree exactly.
 | native-complete-record-thermodynamics → native-common-entropy-envelope | native_coherent_record_entropy_balance | carrier, law, preparation, records, controls, clock, regime |
 | native-common-cap-modular-clock → native-common-entropy-envelope | native_common_cap_modular_reference | carrier, law, preparation, records, controls, clock, regime |
 | shared-observer-field-witness → static-product-response-control | product_metric_density_dictionary | carrier, law, preparation, records, controls, clock, regime |
+| source-matter-interaction-witness → native-family-record-protocol | conditional_M15_charge_decoder | carrier, law, preparation, records, controls, clock, regime |
+| source-matter-interaction-witness → native-family-record-protocol | one_Higgs_current_tensors | carrier, law, preparation, records, controls, clock, regime |

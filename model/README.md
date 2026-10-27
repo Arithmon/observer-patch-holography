@@ -23,6 +23,13 @@ hierarchy. The same native currents support locally covariant matter
 transport and a conditional background-field continuum comparison; both
 Dirac tastes remain, and no interacting chiral physical continuum or
 source-derived measured spectrum is established.
+The separate [complete family-record memory](common_source/native_family_record_memory.py)
+retains all native C/E labels and twelve memory inputs, with an explicit
+reset rule and declared projector feedback. Its uncalibrated coefficient
+ratios are `1 : 195.11704 : 3579.82625`; a fixed-basis two-clock inverse
+recovers this coefficient from complete simulated records. This is a new
+finite candidate, with its own supplied control services, rather than a
+physical pole-mass inference or a replacement of earlier retained evidence.
 The [cross-scale comparison](empirical_diagnostics/README.md) carries one
 entangled-pair spectral scalar through the declared P and primordial-tilt
 maps, while checking which laboratory and cosmological comparisons can share

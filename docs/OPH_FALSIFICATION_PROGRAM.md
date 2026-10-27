@@ -123,6 +123,13 @@ also source-executes a chosen three-level selector and recovers a specified
 uncalibrated feedback coefficient from complete fixed-basis records. The
 tested feedback, geometric-loop and auxiliary-response prescriptions fail
 the charged-lepton hierarchy; these are mechanism-specific exclusions.
+The complete twelve-state memory also has a two-clock record inverse with
+exact cancellation of finite-pulse bias. A declared gauge-covariant gate
+uses the actual invariant Higgs supports to produce sector-dependent rates.
+All three native rotation half-angle protocols are retained, including the
+rank-two case; none reproduces the charged hierarchies. Their static
+coefficient readout and finite Weyl action are conditional effective services,
+separate from a compiled combined source history or physical mass comparison.
 Same-current local transport supplies a conditional background-field
 continuum comparison with both Dirac tastes retained. None of these results
 is a physical measured-spectrum recovery or an additional confirmation event.

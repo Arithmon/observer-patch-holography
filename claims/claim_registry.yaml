@@ -15973,6 +15973,50 @@
           "PR-17"
         ]
       }
+    },
+    {
+      "claim_id": "OPH-NATIVE-FAMILY-RECORD-PROTOCOL",
+      "statement": "A specified coherent filter on the existing twelve-port carrier has an exact invertible control map into the declared u3 plus so3 response and conditional spin/exterior/Higgs interface. State cooling is a different channel and loses the relative triplet phase even with its classical outcomes retained. A twelve-state memory driven by all 128 native C/E labels has three unequal dimensionless coefficients with ratios 1:195.11703757:3579.82624571. Complete two-clock detector laws recover this coefficient with exact finite-pulse-bias cancellation and separate mixing/numerical allowances. A complete thirteen-outcome current instrument derives sector-dependent record rates from both components of the actual invariant Higgs tensors. All three native rotation half-angle protocols are retained, including a rank-two case; none recovers all charged hierarchies. Their coefficient matrices attach to the same finite Weyl/Higgs action and a separate complete static-service detector inverse. The feedback, interaction and mean-service choices are declared architecture; no combined native source compilation, physical mass prediction or interacting continuum theorem is asserted.",
+      "owner_paper": "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
+      "tier": "finite_declared_protocol_and_complete_record_inverse",
+      "assumptions": [
+        "declared_filtered_current_family_feedback"
+      ],
+      "imported_results": [
+        "finite_Kraus_Stinespring_construction",
+        "classical_controlled_quantum_channels"
+      ],
+      "oph_specific_delta": "Exact native control remapping and conditional matter joins, complete record-bound family memory, finite-angle inverse, all-outcome current-mediated sector gates, and a generic complex all-left field handoff; all failed geometric protocols and zero directions remain visible.",
+      "novelty_type": "finite_model_mapping_and_record_inverse_with_retained_countercontrols",
+      "evidence": [
+        "model/common_source/native_filtered_current_control.py",
+        "model/common_source/test_native_filtered_current_control.py",
+        "model/common_source/native_family_record_memory.py",
+        "model/common_source/test_native_family_record_memory.py",
+        "model/common_source/native_gauge_family_records.py",
+        "model/common_source/test_native_gauge_family_records.py",
+        "model/common_source/native_record_yukawa_field.py",
+        "model/common_source/test_native_record_yukawa_field.py",
+        "model/common_source/native_family_protocol.py",
+        "model/common_source/test_native_family_protocol.py",
+        "model/common_source/native_family_protocol_results.json",
+        "model/common_source/native_family_protocol_results.npz",
+        "paper/tex_fragments/REPAIR_MATTER_AND_INTERACTION_READOUT.tex"
+      ],
+      "falsifier": "The exact control map, bracket or Higgs substitutions fail; the cooling dual is replaced by a Hamiltonian filter; a raw, complement, zero or reset record is omitted; a normalized replacement law passes source replay; finite-pulse bias survives the two-clock inverse; current Kraus completeness or coarse covariance fails; the complex all-left field handoff loses conjugation, transpose or a Nambu component; or any failed catalog entry is suppressed.",
+      "scope_if_false": "The named finite control, memory, interaction or record interface fails. This does not invalidate the conditional finite gauge theorem or exclude other repair and memory laws.",
+      "status": "executed_finite_protocol__charged_spectrum_not_recovered",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-50",
+          "PR-54"
+        ]
+      }
     }
   ],
   "claim_context": {
@@ -28678,6 +28722,41 @@
         {
           "claim_id": "OPH-ALPHA-PIXEL",
           "role": "Provides the conditional representation or field interface; its unproved physical premises are retained."
+        }
+      ]
+    },
+    "OPH-NATIVE-FAMILY-RECORD-PROTOCOL": {
+      "prior_work": {
+        "summary": "finite_Kraus_Stinespring_construction; classical_controlled_quantum_channels",
+        "overlap": "Standard completely positive instruments and classical feedback are reused; the existing native geometry, conditional spin/exterior representation, invariant Higgs tensors and Weyl conventions are project results.",
+        "imported_step": "finite_Kraus_Stinespring_construction; classical_controlled_quantum_channels",
+        "citations": [
+          {
+            "work": "finite_Kraus_Stinespring_construction",
+            "keys": [
+              "stinespring1955positive",
+              "kraus1971general",
+              "choi1975completely"
+            ]
+          },
+          {
+            "work": "classical_controlled_quantum_channels",
+            "keys": [
+              "watrous2018theory"
+            ]
+          }
+        ]
+      },
+      "owner_section": "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
+      "falsifiers": {
+        "mathematical": "The exact control map, bracket or Higgs substitutions fail; the cooling dual is replaced by a Hamiltonian filter; a raw, complement, zero or reset record is omitted; a normalized replacement law passes source replay; finite-pulse bias survives the two-clock inverse; current Kraus completeness or coarse covariance fails; the complex all-left field handoff loses conjugation, transpose or a Nambu component; or any failed catalog entry is suppressed.",
+        "physical_identification": "Reject a physical promotion without a compiled combined native interaction/detector history and the additional generation, Higgs normalization, laboratory-pole and interacting-continuum attachments; none is asserted by this finite artifact.",
+        "phenomenological": "No measured-spectrum agreement is claimed. The complete geometric catalog fails the charged hierarchies; source-derived coefficients must not be relabelled as observed mass predictions."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "Reuses the existing native source, geometry and coherent-control interfaces. New feedback and interaction services remain explicitly declared; no earlier source compilation or continuum claim is inherited."
         }
       ]
     }

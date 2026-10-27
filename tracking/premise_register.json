@@ -8534,7 +8534,8 @@
         "OPH-OBSERVER-MATTER-INTERACTION-WITNESS",
         "OPH-OBSERVER-COMMON-FIELD-WITNESS",
         "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL",
-        "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE"
+        "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE",
+        "OPH-NATIVE-FAMILY-RECORD-PROTOCOL"
       ],
       "lean_files": [
         "Lean/Computation/FixedFederationComplexity.lean",
@@ -9856,6 +9857,15 @@
           "controls": "Fixed slot, gain, readout and contraction normalization; no photon identification.",
           "clock": "No dynamical physical clock or photon momentum variable.",
           "regime": "Exact finite spectral scalar and numerical contraction controls."
+        },
+        "native_family_record_protocol": {
+          "carrier": "The existing twelve-port carrier, declared six-state current processor, selected fifteen-state exterior matter, twelve-state classical memory and fixed six-state probe.",
+          "law": "Exact coherent filtered-current remapping; all128 raw C/E events; reset2 projector feedback; declared two-leg thirteen-outcome current instrument and unconditional pulse-duty policies.",
+          "preparation": "Finite record-driven classical burn-in from reset2; fixed coordinate probe preparations; invariant left/right Higgs supports for the two interaction legs.",
+          "records": "All1536 final memory/raw branches with three pointer outcomes at two steps; all512 binary-gate records; complete static-service detectors and all geometric catalog entries including zeros.",
+          "controls": "Declared logical coherent filter, spin/exterior lift, projector pulses, global geometric interaction angle and static mean-feedback service; no compiled combined native history.",
+          "clock": "Dimensionless apparatus steps1/8,1/4 and interaction angles pi/5,pi/3,pi/2; no laboratory clock or Higgs scale.",
+          "regime": "Exact finite identities plus conditional numerical coefficient recovery and finite free Weyl action; no interacting continuum or measured pole spectrum."
         }
       },
       "bindings": [
@@ -14849,6 +14859,43 @@
               "anchor": "def build"
             }
           ]
+        },
+        {
+          "id": "native-family-record-protocol",
+          "domain": "native_family_record_protocol",
+          "claims": [
+            "OPH-NATIVE-FAMILY-RECORD-PROTOCOL"
+          ],
+          "establishes": [
+            "exact_filtered_current_remap",
+            "complete_memory_coefficient_inverse",
+            "all_outcome_gated_sector_coefficients",
+            "finite_complex_Weyl_action_handoff"
+          ],
+          "requires": [
+            "conditional_M15_charge_decoder",
+            "one_Higgs_current_tensors"
+          ],
+          "assumptions": [
+            "declared_filtered_current_family_feedback"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "classical_controlled_quantum_channels",
+            "finite_Kraus_Stinespring_construction"
+          ],
+          "scope": "The actual native control map and conditional matter/Higgs tensors are reused. Complete record laws determine the specified logical feedback coefficients; the same tensors attach arbitrary complex matrices to the finite all-left Weyl action. Every geometry catalog and pulse-duty case is retained, with normalized-sector bounds and zero directions. New logical services are not a compiled combined source history or physical mass derivation.",
+          "limitations": "Physical generations, source-selected measured strengths, Higgs scale, clock calibration, interacting poles and chiral continuum remain outside this finite artifact. Static mean-feedback records are not identified with the correlated finite-memory process.",
+          "sources": [
+            {
+              "path": "model/common_source/native_family_protocol.py",
+              "anchor": "def build("
+            },
+            {
+              "path": "model/common_source/native_matter_attachment.py",
+              "anchor": "def kinetic_attachment("
+            }
+          ]
         }
       ],
       "connections": [
@@ -16374,6 +16421,62 @@
             {
               "path": "model/observer_particles/geometric_stationarity.py",
               "anchor": "def metric_area_volume"
+            }
+          ]
+        },
+        {
+          "from": "source-matter-interaction-witness",
+          "to": "native-family-record-protocol",
+          "fact": "conditional_M15_charge_decoder",
+          "coordinate_maps": {
+            "carrier": "Use the explicit native-to-existing fifteen-state permutation and separate physical CAR ordering; the family factor is declared three-dimensional.",
+            "law": "Apply the exact twelve-control change of basis and source-computed invariant Higgs tensor/sign intertwiners; no mass-parameter selection follows from these identities.",
+            "preparation": "Keep the representation identity independent of state; supply the declared memory burn-in, two invariant interaction legs and fixed coordinate probe inputs separately.",
+            "records": "Use complete raw memory, binary-current and fixed-coordinate detector laws; preserve complementary, zero and reset outcomes.",
+            "controls": "Transport the exact current/Higgs action only; add coherent filter, memory feedback and gate services explicitly rather than inheriting their native compilation.",
+            "clock": "Retain dimensionless pulse/interaction angles and declared model-coordinate Weyl evolution; make no identification with physical duration or mass units.",
+            "regime": "Finite exact same-current identities and complete numerical coefficient records only; retain all failed catalogs and no physical pole or interacting-continuum promotion."
+          },
+          "sources": [
+            {
+              "path": "model/common_source/native_matter_attachment.py",
+              "anchor": "def action_intertwiner("
+            },
+            {
+              "path": "model/common_source/native_matter_attachment.py",
+              "anchor": "def kinetic_attachment("
+            },
+            {
+              "path": "model/common_source/native_filtered_current_control.py",
+              "anchor": "def theorem_interfaces("
+            }
+          ]
+        },
+        {
+          "from": "source-matter-interaction-witness",
+          "to": "native-family-record-protocol",
+          "fact": "one_Higgs_current_tensors",
+          "coordinate_maps": {
+            "carrier": "Use the explicit native-to-existing fifteen-state permutation and separate physical CAR ordering; the family factor is declared three-dimensional.",
+            "law": "Apply the exact twelve-control change of basis and source-computed invariant Higgs tensor/sign intertwiners; no mass-parameter selection follows from these identities.",
+            "preparation": "Keep the representation identity independent of state; supply the declared memory burn-in, two invariant interaction legs and fixed coordinate probe inputs separately.",
+            "records": "Use complete raw memory, binary-current and fixed-coordinate detector laws; preserve complementary, zero and reset outcomes.",
+            "controls": "Transport the exact current/Higgs action only; add coherent filter, memory feedback and gate services explicitly rather than inheriting their native compilation.",
+            "clock": "Retain dimensionless pulse/interaction angles and declared model-coordinate Weyl evolution; make no identification with physical duration or mass units.",
+            "regime": "Finite exact same-current identities and complete numerical coefficient records only; retain all failed catalogs and no physical pole or interacting-continuum promotion."
+          },
+          "sources": [
+            {
+              "path": "model/common_source/native_matter_attachment.py",
+              "anchor": "def action_intertwiner("
+            },
+            {
+              "path": "model/common_source/native_matter_attachment.py",
+              "anchor": "def kinetic_attachment("
+            },
+            {
+              "path": "model/common_source/native_filtered_current_control.py",
+              "anchor": "def theorem_interfaces("
             }
           ]
         }

@@ -19,6 +19,12 @@ same geometric object realizes a closed 12-current algebra, with native
 rotation covariance and an observable relative central phase. Its control
 menu and spin/exterior lift are architecture choices; completeness with
 respect to every physically accessible intervention is not established.
+An [operator-filtered current candidate](#516-persistent-native-objects-and-the-finite-gauge-theorem)
+constructs another basis of that same logical tangent from native exchange
+derivatives and order-five Cayley rotations. Its exact control remapping
+does not identify individual port drives. The Hamiltonian filter is an
+added coherent control, distinct from family state-reset cooling, and has
+no literal native pulse-history certificate.
 A further finite construction starts from the exchange plus the native
 class-sum phase, prepares its biased mixed reference, and uses the full
 reference-disturbance matrix to control all eighteen input currents.
@@ -75,6 +81,13 @@ A second record law uses two noncommuting native rotations and gives ratios
 about `1 : 382.23 : 5909.43`, also outside the comparison windows. A complete
 selector-derived bath instead gives five low charged responses; none are
 discarded to manufacture a three-family spectrum.
+A complete [raw-record memory](#523-source-anisotropy-and-noncommuting-family-dynamics)
+with both coin-zero E events and forbidden-core resets gives dimensionless
+coupling ratios `1 : 195.117 : 3579.826`. Its current-gated extension retains
+all three source-defined interaction-angle choices; none reproduces the
+charged hierarchies. A fixed-probe inverse and all-left field handoff check
+the specified effective coefficients. Their feedback, Higgs background and
+spatial Weyl action remain declared; these are not physical pole masses.
 
 **Operational particle mass.** A mass is inferred from jointly accessible
 detector records and interventions in a stated observer clock and spacetime
@@ -90,6 +103,11 @@ eigenvalue with that mass observable.
 - [Hierarchy diagnosis](#hierarchy-diagnosis)
 - [Full repair response](#full-repair-response)
 - [Current conclusions and open tests](#8-current-conclusions)
+
+The [internal theorem comparison map](../../model/common_source/particle_identification/SM_MATCH.md)
+and [particle provenance ledger](../../code/particles/PARTICLE_PROVENANCE_LEDGER.md)
+retain the distinction between finite representation witnesses, supplied
+field attachments and promotable quantitative particle claims.
 
 ## Candidate construction
 
@@ -1237,6 +1255,40 @@ current pulse occurs before the recorded native repair in this schedule;
 the corresponding action on a preencoded object is a compositional
 intertwining statement.
 
+The [operator-filtered candidate](../../model/common_source/native_filtered_current_control.py)
+instead starts with all 78 exact native mixed responses. Let $d_p$ be their
+per-port derivative, $P$ the positive near-fivefold class projector, and
+$K_p=(R_p-I)(R_p+I)^{-1}$ for the native order-five rotation oriented along
+port $p$. It declares the coherent controls
+
+```math
+H_p=P d_p P,\qquad F_p=K_p+iH_p,
+\qquad F_p=\sum_q D_q C_{qp}.
+```
+
+The computed real algebraic matrix $C$ is invertible. Exact checks admit
+all twelve $F_p$ through the existing current interface, reconstruct both
+bases, verify all 66 commutators and all 720 native covariance identities,
+and retain the observable relative center. This is equality of logical
+current tangents: $F_p\ne D_p$. The remap applies to simultaneous control
+amplitudes, not arbitrary products of finite noncommuting pulses. Some
+coefficients are irrational and lie outside the earlier rational-only
+source-request API; they are not rounded into that API. Source compilation
+of this candidate is unexecuted. Its invertible remap transports the supplied
+spin/exterior representation and the three Higgs invariant lines exactly,
+with 72 Higgs-tensor substitutions checked. It does not select the lift,
+physical chirality, family count or Yukawa coefficients.
+
+This Hamiltonian filter is not the family state-reset channel
+$\mathcal R(\rho)=P\rho P+\operatorname{tr}(Q\rho)P/3$ below. That channel's
+adjoint is $PBP+\operatorname{tr}(PB)Q/3$, rather than $PBP$. Applied to the
+gauge pair, it leaves only the $P$ work triplet: the continuing work-state
+current response has rank eight. Each of its 605 classical source-register
+branches also erases the relative $P/Q$ phase. Keeping its reset records
+therefore does not recover the twelve-current interface. The coherent
+relative-center actuator supplied by the operator filter is an additional
+control choice, not a consequence of reset cooling or unchanged C/E repair.
+
 The [reference compatibility construction](../../model/common_source/native_response_reference.py)
 replaces the per-generator complex/real restriction with one operational
 condition. Include the actual native near-fivefold class-sum phase; together
@@ -1501,10 +1553,10 @@ from the candidate menu is not forced by anomaly cancellation.
 
 | Finite result reused | What it restricts here | Input still required |
 | --- | --- | --- |
-| Complete twelve-current classification | Internal Lie-algebra type of the specified response | Completeness of the physically accessible response, beyond the declared menu |
+| Complete twelve-current classification; `Compact12.finrank_compact` | Explicit logical $\mathfrak u(3)\oplus\mathfrak{so}(3)$ witness, including the exactly remapped filtered basis | Completeness of the physically accessible response, beyond the declared menu; compact-Lie classification inputs remain those of the theorem |
 | Exterior component and selection theorems | Two conjugate chiral anomaly-free matter sectors in the actual five-mode lift | That lift and component menu; chirality and anomaly cancellation as selection conditions |
 | Family-band theorem | Unique lowest-cost faithful complete native band has rank three | The specified incidence-based cooling rule and identification of its output with physical families |
-| Same-current Higgs invariant equations | Three allowed coupling channels and their exact field intertwiner | Their family matrices and physical Higgs dynamics |
+| Same-current Higgs invariant equations; `WeylYukawaConventions` | Three allowed coupling channels and their exact field intertwiner, preserved by the invertible current remap | Their family matrices and physical Higgs dynamics |
 | Central-character descent | The common $\mathbb Z_6$ kernel of this representation | Physical global gauge-group and line-operator identification |
 
 Anomaly forms add across identical copies. Since they vanish for one
@@ -1817,6 +1869,24 @@ two trivial orientation labels is $3\oplus3$. Their $A_5$ characters differ.
 They restrict to equivalent $C_3$ representations on a chosen face, but
 that does not supply a global $A_5$ identification or a physical mass map.
 
+Reversing the chosen face sends $R$ to $R^{-1}$ and conjugates the circulant
+phase. This orientation change is not a construction of physical time
+reversal. A physical antiunitary $T=U\mathcal K$ needs its action on states,
+spin, momenta, controls and complete histories; those data are not selected
+by a face relabeling. For a memory transition kernel $M$, a stationary
+classical current $M_{ij}\pi_j-M_{ji}\pi_i$, or a cycle affinity
+$\log\prod M_{i_{k+1}i_k}/M_{i_ki_{k+1}}$, is not a coherent U(1) angle.
+Finite affinities require positive weights in both cycle directions. They test
+detailed balance of the specified open memory law, not physical $T$ symmetry
+of the full source and environment. The finite
+[`RepairCurrentOrientation`](../../Lean/Thermodynamics/RepairCurrentOrientation.lean)
+and [`SourceOrientedCompletion`](../../Lean/QFT/SourceOrientedCompletion.lean)
+results concern ordered-count reversal and an explicit phase-pairing
+convention. [`KoideCirculant`](../../Lean/ObserverPatchHolography/KoideCirculant.lean)
+proves the phase-independent signed-root algebra. Its physical mass reading
+additionally needs the balance, nonnegative roots and squared-eigenvalue
+mass map; it supplies no phase-selection law.
+
 #### 5.22 Current-mediated auxiliary response
 
 The [auxiliary response](../../model/common_source/native_mass_dressing.py)
@@ -1907,6 +1977,73 @@ and the reset contraction controls its averaging limit with arbitrary
 references. This changes the coupling mechanism without supplying measured
 masses. The new twelve-state controller's native pulse history and a
 physical Higgs/kinetic attachment are separate obligations.
+
+The [complete raw-record memory](../../model/common_source/native_family_record_memory.py)
+uses the symmetric events $C=(0,1)$ and $E=(0,4)$ or $(0,5)$, with native
+probabilities $p=1/12$, $q=1/6$ and coincidence $1/72$. It also resets proposed
+core destinations. All 128 raw C/E labels and all twelve old-memory inputs
+remain, giving 1,536 instrument branches. The stationary average of port
+projectors is assigned as a positive, trace-one family coupling. Its ratios
+are `1 : 195.11703757 : 3579.82624571`. These are dimensionless coefficients,
+not masses or calibrated persistence times. A fixed-Pauli readout at two
+declared coherent steps cancels the rank-one finite-angle bias exactly;
+finite burn-in and numerical allowances are separate. The blind inverse
+uses complete records and detector settings, without source eigenvectors.
+The new feedback pulses are declared logical services, not compiled native
+source histories; its numerical allowance is not a finite-shot or outward
+physical error certificate.
+
+The [current-mediated record instrument](../../model/common_source/native_gauge_family_records.py)
+adds a complete thirteen-outcome interaction on the same supplied
+fifteen-state matter representation. Higgs-tensor supports determine its
+two legs. Coarse jump/no-jump effects are scalar on each leg and justify
+independent gate factors there, including entangled inputs; individual
+adjoint-basis jump labels are not gauge-invariant species records. The
+interaction and its feedback into memory are declared. All global protocol
+angles $\pi/5,\pi/3,\pi/2$ are retained. None passes the charged-hierarchy
+comparison. At the fixed default $\pi/5$, the coefficient ratios are about
+`1 : 271.446 : 6071.036` for up, `1 : 311.762 : 6822.880` for down, and
+`1 : 675.782 : 30775.333` for the charged-lepton channel. No angle is selected
+by ranking those comparisons.
+
+The coefficient normalization itself restricts sector scales. Each normalized
+projector average satisfies $Y_s\succeq0$, $\operatorname{tr}Y_s=1$ and
+$1/3\le\lambda_{\max}(Y_s)\le1$. The same native Higgs tensors have unit
+nonzero directed singular values, with multiplicities three, three and one
+for up, down and charged leptons. Their symmetric neutral ranks are six,
+six and two; the action dictionary contributes only signs $-1,+1,+1$.
+Consequently, with a common canonical kinetic form and one supplied neutral
+Higgs norm $v$, the three family action singular values sum to $v$ in every
+sector, counting each family once. The ratio between sector maxima is at
+most three. This bound concerns that normalized feedback prescription and
+its stated tensor and kinetic attachments.
+
+The unconditional duty alternatives keep disabled pulses as identity and
+retain all 512 records and twelve old-memory inputs per Higgs line. Their
+stationary first-order coefficients are
+$Z_D=\sum_{m,r}\pi_m w_r\chi_D(r)P_{\mathrm{new}(m,r)}$, with traces
+$r_s=1,p_s,q_s,p_sq_s$ for every-proposal, C, E and CE pulse policies, where
+$p_s,q_s$ are the sector's gated event probabilities. No pulsed-branch
+normalization is performed. The corresponding bound is
+$r_s/3\le\lambda_{\max}(Z_s)\le r_s$, giving a largest sector-maxima ratio
+at most $3\max_s r_s/\min_s r_s$ for positive duty traces. At the fixed
+$\pi/5$ protocol the actual maxima spans are approximately
+`1.0233, 2.0572, 1.1528, 2.3695` in that policy order; E and CE have exact
+rank two and retain the zero direction. These are coefficient and
+first-order-generator results, not an exact finite-step unitary replacement
+of the correlated memory process or physical pole-mass predictions.
+
+The [record-to-field handoff](../../model/common_source/native_record_yukawa_field.py)
+couples these source-candidate matrices to the existing invariant Higgs
+tensors. It retains the all-left 45-component complex symmetric kernel and
+all 180 Nambu branches. Fixed coordinate preparations, X/Y contrasts and
+survival records recover each matrix by an exact finite-angle inverse on
+its stated branch. This readout uses a declared static mean-feedback
+service, distinct from the correlated finite-memory execution above. The
+spatial Weyl symbol and unit Higgs norm are supplied; their dispersion check
+does not establish a continuing native source field, physical poles or an
+interacting continuum theory. Binary64 diagnostics supply no finite-shot or
+outward error certificate.
 
 The [complete incidence bath](../../model/common_source/native_mass_bath.py)
 uses one existing selector attempt with its timeout probability $5/32$.
@@ -2139,7 +2276,7 @@ not excluded by these tests.
 | Item | Result in this candidate |
 | --- | --- |
 | Persistent native geometric object | Two equivariant record-correctable codes supply actual geometric 3 + 3′ on a source-prepared two-carrier sector; active correction and code-domain selection are explicit |
-| Same-object finite gauge interface | Exchange gives 17 currents and fails A1. A specified coherent law gives a closed 12-current algebra on the same geometric sector; its control-menu completeness does not establish completeness over all physical interventions |
+| Same-object finite gauge interface | Exchange gives 17 currents and fails A1. The specified law and the native operator-filtered candidate have exactly remapped 12-current tangents, with distinct port drives. The filter is an added Hamiltonian control; state-reset cooling loses the relative center. Full physical-intervention completeness is open |
 | Biased-reference current dynamics | Actual exchange and class sum determine a mixed reference and full 18-current disturbance Gram. A supplied bath/controller approaches twelve observable currents in a bounded-drive joint limit, with complete native-clock timeouts; fixed-bias long-time response has six |
 | Native charged-pole identification | Fixed preparation and transfer records identify both specified dimer frequencies with held-out tests; no empirical mass input enters the inverse |
 | Joint charged-species and calibrated mass readout | One coherent 256-address register supplies charge, color and running-gap records with a blind inverse and held-out read; the source action retains measured running parameters |
@@ -2151,6 +2288,8 @@ not excluded by these tests.
 | Current-mediated auxiliary response | Distinct charged-sector responses with all auxiliary modes retained; the two smallest subthreshold lepton poles have ratio below 32 at every nonnegative dressing strength in the stated class |
 | Native feedback implementation | Literal source words, complete C/E factors and retained syndromes implement one fixed failing family law, with separate source and averaging bounds |
 | Noncommuting source alternatives | Two-rotation record feedback fails both lepton ratios; the complete selector bath has five low charged responses. The simplest selected real curvature coupling retains a doublet |
+| Complete source-record family memory and gate | Ungated dimensionless ratios `1:195.117:3579.826`; all 1,536 raw-memory branches retained. All three current-gate angle choices fail the charged-hierarchy comparison. Feedback and interaction services are declared; native pulse compilation and physical pole identification are open |
+| Record-to-field coefficient handoff | Fixed-probe finite-angle inversion and the 45-component/180-Nambu all-left field checks hold for the declared static service, unit Higgs norm and spatial Weyl action; no correlated source-field or continuum claim follows |
 | Weyl/Higgs Spin, charge and dispersion | Checked on the same declared action and Nambu conventions |
 | Weak-chirality discriminator | Correct operator vertex weights; no dynamical weak scattering calculation |
 | Continuing source readout | Full 90-mode rest field and protected 630-mode seven-momentum field; complete factorized complex outputs and flagged failures |
@@ -2177,7 +2316,11 @@ The geometric triplets give an explicit native carrier for this test.
 Their exchange interaction fails the 12-current theorem interface. The
 specified complex-triplet/real-triplet control law realizes that algebra
 on the same carrier, conditional on its response-menu boundary and chosen
-lift. The biased-reference controller adds a constructive bounded-drive
+lift. An exact native-derivative Hamiltonian filter gives another basis of
+the same logical tangent, with a checked control remap and conditional
+matter/Higgs joins. It is an added coherent actuator, not family state-reset
+cooling, and has no compiled native pulse history. The biased-reference
+controller adds a constructive bounded-drive
 limit from all eighteen exchange-plus-class-sum currents, with finite
 source errors and retained clock timeouts. Its bath, bias and data-feedback
 architecture remain supplied; neither its finite filter nor unchanged C/E
@@ -2229,6 +2372,18 @@ recompute their producers and independently validate retained source arrays:
 .venv/bin/python -m model.common_source.native_matter_attachment --check model/common_source/native_matter_attachment_results.json
 .venv/bin/python -m model.common_source.native_particle_records --check model/common_source/native_particle_records_results.json
 .venv/bin/python -m model.common_source.native_repair_mass --check model/common_source/native_repair_mass_results.json
+```
+
+The operator-filtered and source-record candidates have separate logical
+checks; these commands do not imply literal native compilation of the new
+services:
+
+```sh
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+.venv/bin/python -m pytest -q model/common_source/test_native_filtered_current_control.py model/common_source/test_native_family_record_memory.py model/common_source/test_native_gauge_family_records.py model/common_source/test_native_record_yukawa_field.py
+.venv/bin/python -m model.common_source.native_filtered_current_control
+.venv/bin/python -m model.common_source.native_gauge_family_records
+.venv/bin/python -m model.common_source.native_record_yukawa_field
 ```
 
 The retained calculation binds the source code, native reference, exact

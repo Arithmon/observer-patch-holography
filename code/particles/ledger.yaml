@@ -1,5 +1,5 @@
 version: 1
-as_of: "2026-10-25"
+as_of: "2026-10-27"
 goal: "status-tiered particle-spectrum ledger from the candidate P-closure branch plus OPH axioms/theorem chain"
 notes:
   - "Finite response, matter, interaction and common-field witnesses are recorded separately from numeric mass predictions. Their declared lift, action, state, clock and geometry premises remain explicit."
@@ -8,6 +8,16 @@ notes:
   - "The retained source frontier has exact finite representation indices, while its QFT functional, census specialization, thresholds, maps, and remainder enclosures remain unresolved. Historical blocker, no-go, guarded-adoption, and provenance work is recorded in Git history and GitHub rather than mirrored here."
   - "The conditional selected-branch RG/Higgs square, resonance composition, and projection-map residual equivalence are separate scientific artifacts. The local screen/electroweak carrier attachment and the N-dependent balance law remain distinct obligations."
 entries:
+  - id: construction.native_record_family
+    output_keys: []
+    label: "Finite record-memory coefficients and same-current field handoff"
+    tier: finite_construction_no_physical_mass_prediction
+    branch: native_record_protocol
+    oph_derived_piece: "Exact twelve-control remap into the existing finite gauge/matter interface; complete 128-label, twelve-state family memory and two-clock inverse; actual current-Casimir and invariant Higgs-support rates; complete finite Weyl-action handoff."
+    borrowed_qft_piece: "Declared Weyl principal symbol and canonical CAR convention; no interacting continuum or pole conversion."
+    extra_ansatz: "Coherent filtered-control menu, spin/exterior lift, reset2 memory, projector feedback, two-leg current instrument and global interaction angle, static mean-feedback readout, and unit Higgs background are specified architecture."
+    status_summary: "Baseline coefficient ratios 1:195.11703757:3579.82624571. All three common geometric gate protocols pi/5, pi/3 and pi/2 are retained; none reproduces all charged hierarchies. A rank-two coefficient remains explicit. No empirical masses enter the producer."
+    blocked_by: ["combined native-word interaction and detector history", "source-selected sector strengths and measured hierarchies", "physical clock and Higgs scale", "chiral interacting continuum and physical mass map"]
   - id: conditional.carrier_mode.photon
     output_keys: []
     label: "Conditional Maxwell carrier mode"

@@ -118,6 +118,38 @@ responses per channel, retaining every additional mode. The
 anisotropy at degree six and its complete stationary directions. Its selected
 real curvature coupling retains a doublet; general complex Yukawas lie
 outside that restriction. These results share the same central mass receipt.
+The separate [complete family-record memory](native_family_record_memory.py)
+uses both nonidentity coin-zero E labels, so its actual C/E event rates are
+`p=1/12` and `q=1/6`. Its declared update resets proposed core destinations
+while retaining all twelve old-memory inputs, all 128 raw source labels and
+all 1,536 instrument branches. Its exact stationary projector average has
+dimensionless coefficient ratios `1 : 195.11704 : 3579.82625`. Fixed-basis
+records at two supplied coherent steps, `1/8` and `1/4`, recover that
+coefficient without a mass table or eigenbasis; the two-clock inverse cancels
+the rank-one pulse bias exactly. Eight record-driven preparation updates
+give a conditional operator-error radius about `4.06e-10`, including a
+separate stated numerical contrast allowance. The projector feedback and
+Pauli detectors are declared logical services, not compiled native source
+histories, and the inferred coefficients are not physical pole masses.
+The rare light-axis history begins with C then EC: two memory updates and
+three rare C/E events. Its weight scales as `p^3` only when `q` scales with
+`p`; a power is not a conserved defect charge or a count of repair ticks.
+The classical reset memory has stationary currents, which alone select no
+coherent phase. These coefficient records do not establish the measured
+particle spectrum.
+The [filtered current controls](native_filtered_current_control.py) give an
+exact map into the conditional twelve-current matter/Higgs interface;
+Hamiltonian filtering and state cooling have different observable effects.
+The [current-mediated records](native_gauge_family_records.py) supply a
+complete covariant binary gate from the invariant Higgs supports. All three
+geometric angle protocols and all four unconditional pulse-duty policies are
+retained. None yields the charged spectrum; trace-one sector matrices have
+sector-max ratio at most three, and two duty policies have an exact zero
+direction. The [Weyl-action handoff](native_record_yukawa_field.py) checks the
+complex all-left convention and a distinct finite-angle static-service
+record inverse. Replay the [complete receipt](native_family_protocol_results.json)
+and arrays with
+`python -m model.common_source.native_family_protocol --check model/common_source/native_family_protocol_results.json`.
 The [same-current gauge-linked field](native_gauge_matter_transport.py)
 connects the full auxiliary current action, physical CAR rotations and native
 exchange-echo hopping. All local Fock columns and routing signs are retained.
