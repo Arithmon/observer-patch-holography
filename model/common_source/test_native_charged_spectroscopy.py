@@ -60,6 +60,28 @@ def test_strang_remainder_contains_independent_matrix_exponential():
             assert discrepancy <= float(F(proof['single_cycle_operator_error_bound']))+3e-15
 
 
+def test_analytic_cycle_matches_independent_onsite_exchange_exponentials():
+    j, masses = h.spectrum.native_parameters()
+    for m in masses:
+        for dt in h.STEPS:
+            onsite = h.hamiltonian(m, F(0))
+            half = expm(-.5j*float(dt)*onsite)
+            expected = half@expm(-1j*float(dt)*h.hamiltonian(F(0), j))@half
+            np.testing.assert_allclose(h.ideal_cycle(m, j, dt), expected, atol=3e-16, rtol=0)
+
+
+def test_compensated_cycle_power_preserves_accumulated_nonunitary_error(monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError('a backend-dependent matrix power reached replay')
+    monkeypatch.setattr(np.linalg, 'matrix_power', forbidden)
+    # This exact dyadic shear has a large, known nonunitary power. A polar
+    # projection or normalization would destroy the measured source error.
+    shear = np.array([[1, 1j/8], [0, 1]], complex)
+    expected = np.array([[1, 100003j/8], [0, 1]], complex)
+    np.testing.assert_array_equal(h._compensated_power(shear, 100003), expected)
+    np.testing.assert_array_equal(h._compensated_power(shear, 0), np.eye(2))
+
+
 def test_complete_native_records_inputs_and_numerical_source_limits(execution):
     report, arrays = execution
     r = report['execution']

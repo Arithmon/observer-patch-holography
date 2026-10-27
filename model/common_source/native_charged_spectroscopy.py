@@ -106,11 +106,23 @@ def hamiltonian(mass, exchange):
     return result
 
 
+@lru_cache(maxsize=9)
 def ideal_cycle(mass, exchange, step):
-    a = np.diag([float(mass)*((x & 1)-((x >> 1) & 1)) for x in range(8)])
-    b = hamiltonian(F(0), exchange)
-    half = expm(-.5j*float(step)*a)
-    return half@expm(-1j*float(step)*b)@half
+    # The exact two-state exchange block is exp(-i J dt)(cos(J dt) I
+    # + i sin(J dt) X). Round the analytic entries once, independently of
+    # the platform's matrix-exponential implementation. Powers amplify a
+    # one-ulp difference enough to change a near-zero norm diagnostic.
+    jt, mt = map(s.Rational, (exchange*step, mass*step))
+    phase = s.exp(-s.I*jt)
+    diagonal = {sign: complex((phase*s.cos(jt)*s.exp(-s.I*mt*sign)).evalf(60))
+                for sign in (-1, 1)}
+    off = complex((s.I*phase*s.sin(jt)).evalf(60))
+    result = np.eye(8, dtype=complex)
+    for x in range(8):
+        sign = (x & 1)-((x >> 1) & 1)
+        if sign:
+            result[x, x], result[x ^ 3, x] = diagonal[sign], off
+    return _freeze(result)
 
 
 def transfer_operator(axis):
@@ -352,15 +364,45 @@ def _schema(arrays):
 
 def _actual_output_basis(arrays, family, refinement, number, axis, outcome):
     exponent = int(SPACING*number/STEPS[refinement])
-    dynamic = np.linalg.matrix_power(arrays['cycles'][family, refinement], exponent)
+    dynamic = _compensated_power(arrays['cycles'][family, refinement], exponent)
     local = arrays['inverse_frame']@arrays['detectors'][axis, outcome]@dynamic@arrays['frame']
     return arrays['encoder']@_local(local, arrays['prefix_basis'])
 
 
 def _ideal_map(mass, exchange, step, number, axis, outcome):
-    dynamic = np.linalg.matrix_power(ideal_cycle(mass, exchange, step), int(SPACING*number/step))
+    dynamic = _compensated_power(ideal_cycle(mass, exchange, step), int(SPACING*number/step))
     frame = frame_target()
     return (frame.T@ideal_detectors(axis)[outcome]@dynamic@frame)[:6, :6]
+
+
+def _compensated_power(matrix, exponent):
+    """Fixed small-matrix products for backend-independent repeated cycles.
+
+    The retained cycle itself is unchanged. In particular, this does not
+    project it to a unitary or remove its accumulated source error.
+    """
+    if type(exponent) is not int or exponent < 0:
+        raise ValueError('a nonnegative integer cycle count is required')
+    value = np.asarray(matrix, dtype=complex)
+    if value.ndim != 2 or value.shape[0] != value.shape[1] or not np.isfinite(value).all():
+        raise ValueError('a finite square cycle matrix is required')
+    def product(left, right):
+        rows, columns = left.tolist(), right.T.tolist()
+        result = np.empty_like(left)
+        for i, row in enumerate(rows):
+            for j, column in enumerate(columns):
+                terms = [a*b for a, b in zip(row, column, strict=True)]
+                result[i, j] = complex(math.fsum(z.real for z in terms),
+                                       math.fsum(z.imag for z in terms))
+        return result
+    result = np.eye(len(value), dtype=complex)
+    while exponent:
+        if exponent & 1:
+            result = product(result, value)
+        exponent //= 2
+        if exponent:
+            value = product(value, value)
+    return result
 
 
 def _compensated_gram(columns):
