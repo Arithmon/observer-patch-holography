@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==145
+    assert actual['downstream_claims']==146
 
 
 def test_dark_source_context_does_not_transfer_dense_m1_or_physical_admission():
@@ -101,6 +101,19 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
         'OPH-SOURCE-COHERENT-CODE-COMPLETION']
     assert 'spatial continuum bounds are not inherited' in links[
         'OPH-MODEL-SCALAR-RESPONSE-EXECUTION']
+
+
+def test_native_family_descendant_retains_its_declared_feedback_contract():
+    downstream = audit.downstream_audit()
+    name = 'OPH-NATIVE-FAMILY-RECORD-PROTOCOL'
+    row = downstream['claims'][name]
+    assert row['assumptions'] == ['declared_filtered_current_family_feedback']
+    assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
+    assert not (set(row['assumptions']) & audit.KEYS)
+    links = [edge for edge in downstream['links'] if edge['to'] == name]
+    assert len(links) == 1 and links[0]['from'] == 'OPH-MODEL-COMMON-SOURCE-EXECUTION'
+    assert 'New feedback and interaction services remain explicitly declared' in links[0]['role']
+    assert 'no earlier source compilation or continuum claim is inherited' in links[0]['role']
 
 
 @pytest.mark.parametrize('name,protocol', [
