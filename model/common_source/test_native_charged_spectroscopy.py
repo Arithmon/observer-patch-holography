@@ -4,6 +4,7 @@ from fractions import Fraction as F
 import hashlib
 import inspect
 import json
+import math
 from unittest.mock import patch
 
 import numpy as np
@@ -182,6 +183,27 @@ def test_reported_diagnostics_are_bound_to_original_arrays(execution):
     altered['execution']['maximum_complete_dilation_error_diagnostic'] = 0.
     with pytest.raises(ValueError, match='own binary'):
         h.compare_execution(altered, arrays, report, arrays)
+
+
+def test_gram_diagnostic_preserves_small_terms_under_row_reordering():
+    columns = np.asarray([[1., 1.], [1e-8, 1e-8], [1e-8, -1e-8],
+                          [1e-8, 1e-8], [1e-8, -1e-8]], complex)
+    expected = np.asarray([[math.fsum([1., 1e-16, 1e-16, 1e-16, 1e-16]), 1.],
+                           [1., math.fsum([1., 1e-16, 1e-16, 1e-16, 1e-16])]], complex)
+    assert np.array_equal(h._compensated_gram(columns), expected)
+    assert np.array_equal(h._compensated_gram(columns[::-1]), expected)
+
+
+def test_factored_gram_matches_complete_complex_record_instrument():
+    rng = np.random.default_rng(414)
+    basis = rng.normal(size=(73, 6))+1j*rng.normal(size=(73, 6))
+    basis = np.linalg.qr(basis)[0]
+    coefficients = (rng.normal(size=(11, 6, 7))+1j*rng.normal(size=(11, 6, 7)))/20
+    complete = np.einsum('ar,nrc->nac', basis, coefficients, optimize=False)
+    expected = h._compensated_gram(complete.reshape(-1, 7))
+    gram = h._compensated_gram(coefficients.reshape(11, 42)).reshape(6, 7, 6, 7)
+    actual = np.einsum('rs,rcsd->cd', h._compensated_gram(basis), gram, optimize=False)
+    np.testing.assert_allclose(actual, expected, atol=8*np.finfo(float).eps, rtol=0)
 
 
 def test_service_counts_include_every_reused_source_cycle(execution):

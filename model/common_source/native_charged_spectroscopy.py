@@ -363,6 +363,22 @@ def _ideal_map(mass, exchange, step, number, axis, outcome):
     return (frame.T@ideal_detectors(axis)[outcome]@dynamic@frame)[:6, :6]
 
 
+def _compensated_gram(columns):
+    """Small column Gram with backend-independent compensated row sums.
+
+    Long sparse native records otherwise make the diagnostic depend on the
+    BLAS reduction order at the scale of its near-zero norm defect.
+    """
+    columns = np.asarray(columns)
+    result = np.empty((columns.shape[1], columns.shape[1]), complex)
+    for i in range(columns.shape[1]):
+        for j in range(i, columns.shape[1]):
+            terms = columns[:, i].conj()*columns[:, j]
+            value = complex(math.fsum(terms.real), math.fsum(terms.imag))
+            result[i, j], result[j, i] = value, value.conjugate()
+    return result
+
+
 def metrics(arrays):
     _schema(arrays)
     j, masses = spectrum.native_parameters()
@@ -372,7 +388,8 @@ def metrics(arrays):
                                *code.branch_weight('E', SEAMS['E'], ec, er)))
                for cc, cr, ec, er in arrays['success_labels'].tolist()]
     halt = arrays['prefix_halts']
-    halt_gram = np.einsum('nac,nad->cd', halt.conj(), halt, optimize=True)
+    halt_gram = _compensated_gram(halt.reshape(-1, 7))
+    coefficient_gram = _compensated_gram(coefficients.reshape(len(coefficients), -1)).reshape(6, 7, 6, 7)
     halt_norm = float(np.linalg.norm(halt[:, :, :6]))**2
     errors, seed_errors, defects, seed_defects, records, contrasts = [], [], [], [], [], []
     for family, mass in enumerate(masses):
@@ -392,7 +409,10 @@ def metrics(arrays):
                         outputs = np.einsum('ar,nrc->nac', out, coefficients, optimize=True)
                         error += float(np.linalg.norm(outputs[:, :, :6]-np.asarray(weights)[:, None, None]*target))**2
                         seed_error += float(np.linalg.norm(outputs[:, :, 6]-np.asarray(weights)[:, None]*(target@preparation_target()[:6])))**2
-                        gram += np.einsum('nac,nad->cd', outputs.conj(), outputs, optimize=True)
+                        # Contract the exact retained factors before summing
+                        # native records, avoiding a 61,440-row BLAS reduction.
+                        gram += np.einsum('rs,rcsd->cd', _compensated_gram(out),
+                                          coefficient_gram, optimize=False)
                         probabilities.append(np.sum(np.abs(outputs[:, :, 6])**2, axis=1))
                     errors.append(math.sqrt(error))
                     seed_errors.append(math.sqrt(seed_error))
