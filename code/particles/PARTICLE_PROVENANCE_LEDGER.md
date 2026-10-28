@@ -1,6 +1,6 @@
 # Particle Provenance Ledger
 
-Generated: `2026-10-25T12:33:45Z`
+Generated: `2026-10-28T00:56:45Z`
 
 This ledger records target-use and convention-sensitivity status for the public quantitative particle rows.
 
@@ -9,13 +9,13 @@ This ledger records target-use and convention-sensitivity status for the public 
 - Promotion allowed: `False`
 - Public rows classified: `True`
 - Numeric sensitivity intervals supplied: `False`
-- Boundary: The ledger classifies target ancestry, blindness, and declared convention sensitivity. It does not supply the source spectral measure or interval-composition certificates required for a numerical sensitivity sweep.
+- Boundary: The ledger classifies target ancestry, blindness, and declared convention sensitivity. It does not supply the source spectral measure or interval-composition certificates required for a numerical sensitivity sweep. The Higgs value below is the target-anchored calibration surface, distinct from the post-exposure criticality candidate. MCPR's roughly 84 ppm display is a historically target-informed three-coordinate architecture, not a blind mass prediction. The current Mass Candidate Status records its ratio residuals and the legacy electroweak pixel and external Planck normalization.
 
 ## Rows
 
 | Particle | Value | Class | Blind status | Target use | Promotable | Convention sensitivity |
 | --- | ---: | --- | --- | --- | --- | --- |
-| `higgs` | `125.1995304097179 GeV` | `conditional_declared_surface_candidate` | `conditionally_blind_on_declared_surface` | candidate_upstream_d10_repair_not_source_promoted | `False` | depends_on_declared_D10_D11_running_matching_threshold_surface |
+| `higgs` | `125.1995304097179 GeV` | `target_anchored_declared_surface_comparison` | `not_blind` | measured_higgs_top_used_in_declared_calibration_surface | `False` | depends_on_declared_D10_D11_running_matching_threshold_surface |
 
 ## Withheld Non-Prediction Rows
 
@@ -48,7 +48,7 @@ These zero hard quadratic parameters are branch-conditional mode statements, not
 
 ## Prospective Comparison Workflows
 
-- `new_quantity_pre_reference_provenance`: `protocol_defined__not_exercised`. For any quantitative row outside construction inputs, timestamp and hash the source artifacts, record allowed conventions, then fetch or reveal the external reference. Required evidence: `source_artifact_hashes`, `forbidden_target_inputs`, `convention_set`, `pre_reference_runtime_output`, `post_reference_comparison_only_delta`.
+- `new_quantity_pre_reference_provenance`: `protocol_defined__not_exercised`. For any quantitative row outside construction inputs, timestamp and hash the source artifacts, record allowed conventions and all prior target exposure, then fetch or reveal the external reference. Freezing after target exposure prevents further tuning but does not restore historical blindness. Record all attempted candidates and distinguish calibration from held-out tests. Required evidence: `source_artifact_hashes`, `forbidden_target_inputs`, `convention_set`, `historical_target_exposure`, `candidate_search_history`, `theory_and_matching_uncertainty_model`, `pre_reference_runtime_output`, `post_reference_comparison_only_delta`.
 - `convention_sensitivity_sweep`: `taxonomy_declared__certified_intervals_required`. Vary only declared scheme, matching, and threshold choices inside certified intervals; report induced intervals for every public quantitative row. Required evidence: `scheme_record`, `threshold_map`, `matching_interval_composition_certificate`, `rowwise_sensitivity_intervals`.
 
 ## Convention Sensitivity

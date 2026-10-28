@@ -62,6 +62,54 @@ dimensionless coefficient controls give different spectra without changing
 the current identities. They change the action/reference and are not
 alternatives at fixed complete modular flow or full OPH countermodels.
 
+## Spectral visibility and particle identification
+
+The supplied finite action can now be interrogated with fixed interpolators,
+using [spectral_response.py](spectral_response.py). For a finite Hermitian
+generator $H$, a conserved Hermitian charge $Q$ and interpolator columns $B$
+in canonical field coordinates, the diagnostic evaluates
+
+$$
+G(z)=B^\dagger(zI-H)^{-1}B,\qquad
+R_{E,q}=B^\dagger P_{E,q}B,\qquad
+\sum_{E,q}R_{E,q}=B^\dagger B.
+$$
+
+For exact joint projectors the residues are positive semidefinite. The
+computed projectors treat energy and charge together, so arbitrary
+eigenvectors inside a degenerate energy subspace do not assign its charge.
+The implementation retains every signed frequency and every dark subspace.
+It neither normalizes after restriction to a detector menu nor identifies
+zero residue with absence or dynamical decoupling.
+
+Finite numerical resolution can group nearby frequencies. Each reported
+cluster includes its full frequency list and interval; its dimension counts
+retained numerical eigenvalues, not an established exact pole multiplicity.
+Residue ranks and darkness use a declared numerical threshold, without an
+outward error certificate. Hermitian-part, charge-commutator and charge-block
+projection errors remain visible. Non-Hermitian response generators and
+resonance analytic continuation are outside this helper's domain.
+
+This is a diagnostic of an existing supplied action, not a new particle
+candidate, defect or mass ansatz. It is supplied-action spectroscopy.
+It does not reconstruct the generator
+or its interpolators from detector records, implement a charged phase
+reference, or establish an observer clock, vacuum or physical field. In the
+quadratic canonical CAR case this resolvent is the retarded anticommutator
+response; other kinetic metrics, interactions and reference states require
+their corresponding response law. A bosonic CCR oscillator response with the
+same eigenvalue is not a Weyl CAR field identification.
+
+A physical particle claim must identify the response accessible to the
+observers in its stated regime, and match its charge/current action,
+propagation, spin/statistics and normalization. Internal carrier dimension,
+Nambu redundancy, regulator tastes and physical species are different
+counts. Stable isolated excitations, resonances, confined parameters and
+infrared charged sectors need different matching contracts; there is no
+universal isolated-real-pole test for all of them. The
+[field-reconstruction guide](../../docs/research/OPH_FIELD_RECONSTRUCTION.md)
+states these domains and the remaining record-to-field obligations.
+
 ## Shared fields and gravity
 
 For `D=[[0,C†],[C,0]]`, the node square is `C†C=B` and the edge square

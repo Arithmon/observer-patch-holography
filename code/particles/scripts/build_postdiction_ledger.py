@@ -6073,12 +6073,12 @@ def _lepton_rows(
                 "unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that "
                 "missing source obligation. The lepton "
                 "scale is localized only under the recorded accounting "
-                "packet. A "
-                "source-emitted bridge value is a sharp falsification "
-                "target: landing on the closure value satisfies the "
-                "conditional lane on the witness, while landing outside the "
-                "recorded interval refutes "
-                "the decomposition."
+                "packet, including measured-lepton information in the higher-order "
+                "remainder. This is empirical calibration, not an independently "
+                "predicted mass interval or sharp falsification target. Testing "
+                "an independent bridge would require separately frozen inputs, "
+                "matching and uncertainty; it would test that declared "
+                "decomposition rather than every possible source mechanism."
             ),
             "witness_point": witness_point,
             "width_floor": width_floor["floor_attribution"],
@@ -6100,6 +6100,10 @@ def _lepton_rows(
             "tier": mcpr["tier"],
             "row_class": mcpr["row_class"],
             "explanation": mcpr["explanation"],
+            "historical_target_informed_architecture": mcpr["historical_target_informed_architecture"],
+            "P": mcpr["P"],
+            "scale_and_running_boundary": surface["display_note"],
+            "provenance_review": mcpr["provenance_review"],
             "artifact_ref": mcpr["artifact"],
             "blocking_objects": mcpr["blocking_objects"],
             "dimensionless_ratio_comparison": {
@@ -6197,7 +6201,7 @@ def _lepton_rows(
     return rows
 
 
-def _ew_rows(conditional: dict[str, Any]) -> list[dict[str, Any]]:
+def _ew_rows(conditional: dict[str, Any], surface: dict[str, Any]) -> list[dict[str, Any]]:
     cc = conditional["comparison_compare_only"]
     rows = []
     for key in ("mH_gev", "mt_pole_gev", "MW_chart_gev", "MZ_chart_gev"):
@@ -6210,6 +6214,11 @@ def _ew_rows(conditional: dict[str, Any]) -> list[dict[str, Any]]:
             "tier": "T2_conditional",
             "row_class": conditional["row_class"],
             "artifact_ref": _rel("conditional_ew"),
+            "P_basis": conditional["inputs"]["P_calibration"],
+            "basis_pixel_source": conditional["inputs"]["basis_pixel_source"],
+            "historical_incorrect_P_label": conditional["inputs"]["historical_incorrect_P_label"],
+            "sensitivity_scope": conditional["inputs"]["sensitivity_scope"],
+            "scale_and_running_boundary": surface["display_note"],
         }
         if key in ("mH_gev", "mt_pole_gev"):
             if conditional["inputs"]["surface_source"] != "d11_declared_calibration_surface.json":
@@ -6469,11 +6478,16 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
         {
             "id": "forced_gauge_structure",
             "statement": (
-                "Complete compact port response from A1 and endogenous overlap "
-                "transport from A2 force the abstract Lie type "
-                "su(3)+su(2)+u(1) on the twelve-port carrier. Target-blind "
-                "readback independently derives R=-J. Inside the declared "
-                "exterior-response algebra, an exhaustive scan selects the "
+                "Conditional on a faithful twelve-dimensional compact, "
+                "commutator-closed response, an inner carrier action fixing its "
+                "centre, the nonzero-centre and fixed-space exclusions, and "
+                "compact-simple classification inputs, the finite theorem selects "
+                "the abstract Lie type su(3)+su(2)+u(1). The registered recurrence "
+                "does not supply these response and centre hypotheses. Target-blind "
+                "readback independently derives R=-J, without constructing that "
+                "current. Matter selection additionally declares the spin lift, "
+                "central trace redistribution, nonvacuum even exterior sector and "
+                "anomaly/minimality constraints. Inside that grammar, an exhaustive scan selects the "
                 "charge-conjugate rank-15 chiral anomaly-free pair and its "
                 "one-generation hypercharge multiset; its common central "
                 "kernel is Z6. Source reconstruction of the matrix current and "
@@ -6518,14 +6532,14 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"[{glo:.4f}, {ghi:.4f}]; the "
                 f"distance {wp['scheme_term_difference_inv_alpha']:+.4f} to "
                 "the standard on-shell reference deficit "
-                f"{wp['reference_deficit_inv_alpha']:.4f} is the scheme "
-                "unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source "
-                "requirement. The lepton "
-                "scale is localized only under that recorded accounting "
-                "packet. A "
-                "source-emitted bridge value is a falsification target: the "
-                "closure value would satisfy the conditional lane, while a "
-                "value outside the interval refutes the declared decomposition."
+                f"{wp['reference_deficit_inv_alpha']:.4f} is an unfixed scheme "
+                "term; historical lane #736 (closed; live owner #1026) records "
+                "that missing source requirement. The accounting packet includes "
+                "measured-lepton information in its higher-order remainder. This "
+                "is empirical calibration, not an independently predicted mass "
+                "interval. An independent bridge comparison requires separately "
+                "frozen inputs, matching and uncertainty; it would test that "
+                "declared decomposition, not every possible source mechanism."
             ),
         },
     ]
@@ -7191,6 +7205,79 @@ def _observer_particle_contracts() -> dict[str, Any]:
     return witnesses
 
 
+def _particle_reconstruction_decisions(*, repo: Path = REPO) -> dict[str, Any]:
+    """Custody/readout projection only; canonical model.verify owns replay."""
+    repo = repo.resolve()
+    paths = {
+        "native": ("native_defect_decision_results.json", "oph.native_defect_decision.v1"),
+        "particle": ("particle_identification/results.json", "oph.particle_identification.v1"),
+        "record": ("chiral_candidate/record_two_point_results.json", "oph.record_two_point_joint_response.v1"),
+        "chiral": ("chiral_candidate/results.json", "oph.chiral_candidate.v1"),
+    }
+    def check_pins(pins):
+        if not isinstance(pins, dict) or not pins:
+            raise ValueError("missing particle reconstruction source custody")
+        for name, expected in pins.items():
+            path = (repo/name).resolve()
+            if (not path.is_relative_to(repo) or not path.is_file()
+                    or hashlib.sha256(path.read_bytes()).hexdigest() != expected):
+                raise ValueError(f"particle reconstruction source custody changed: {name}")
+    packets, parents = {}, {}
+    for key, (name, schema) in paths.items():
+        path = repo/"model/common_source"/name
+        payload = path.read_bytes()
+        packet = json.loads(payload)
+        if packet.get("schema") != schema:
+            raise ValueError(f"wrong particle reconstruction schema: {name}")
+        check_pins(packet.get("source_bindings", packet.get("source_sha256")))
+        if key != "native":
+            artifact = packet["artifact"]
+            adjacent = path.with_name(artifact["filename"])
+            if (Path(artifact["filename"]).name != artifact["filename"]
+                    or hashlib.sha256(adjacent.read_bytes()).hexdigest() != artifact["sha256"]):
+                raise ValueError(f"particle reconstruction artifact changed: {name}")
+        packets[key] = packet
+        parents[key] = {"path": path.relative_to(repo).as_posix(),
+                        "sha256": hashlib.sha256(payload).hexdigest()}
+    native, particle, record, chiral = (packets[key] for key in paths)
+    kinetic = particle["finite_inverse_response_kinetics"]
+    spectral = chiral["kinematics"]["charge_resolved_spectral_response"]
+    check_pins(kinetic["source_sha256"])
+    scopes = [(native["scope"], ("all_quantum_or_record_encoded_sectors_excluded", "physical_energy_or_mass_derived")),
+              (particle["verdict"], ("physical_particle_identification_complete", "observed_mass_spectrum_source_derived")),
+              (kinetic, ("response_inferred_from_observer_records", "positive_physical_kinetic_metric_established", "physical_mass_or_species_identification")),
+              (record["scope"], ("dynamical_Higgs_or_current_vertex_reconstructed", "new_particle_candidate_introduced", "empirical_mass_fit", "physical_chiral_interacting_continuum_established")),
+              (chiral["verdict"], ("physical_particle_identification_complete", "observed_standard_model_mass_spectrum_derived")),
+              (spectral["scope"], ("native_detector_record_reconstruction_performed", "physical_particle_species_or_mass_identified"))]
+    if (particle["verdict"]["observed_standard_model_species_identified"]
+            or any(scope.get(flag) is not False for scope, flags in scopes for flag in flags)):
+        raise ValueError("unsupported particle reconstruction promotion")
+    rows = [
+        {"object_id": "native_total_two_load_collision", "parent": "native",
+         "result": native["decision"], "evidence": {"closed_component_sizes": native["sectors"]["closed_component_sizes"],
+          "mean_attempts_to_split": native["collision_candidate"]["mean_attempts_to_split"],
+          "quantum_survival_identity": native["quantum_collision_survival"]["uniform_one_attempt_Heisenberg_identity"],
+          "stationary_current_probability": native["transport_cost"]["stationary_nonzero_current_probability"]}},
+        {"object_id": "native_active_matching_memory", "parent": "native",
+         "result": native["corrected_memory_control"]["cost_scope"], "evidence": {
+          "passive_code_escape_probability": native["corrected_memory_control"]["unrecovered_uniform_C_E_code_escape_probability_from_Pcode_over_6"]}},
+        {"object_id": "supplied_four_mode_CAR_benchmark", "parent": "particle",
+         "result": "Inverse-response coordinate covariance from the supplied full finite response; no detector reconstruction or physical kinetic metric.",
+         "evidence": {"diagnostics": kinetic["rows"]}},
+        {"object_id": "supplied_chiral_charge_block", "parent": "record",
+         "result": "Source-record reconstruction of one supplied finite charge block and joint derivatives; its mass coefficient, clock and apparatus remain supplied.",
+         "evidence": {"joint_response_scope": record["joint_response"]["scope"],
+          "held_out_operator_residuals": [row["operator_residual"] for row in record["held_out_validation"]]}},
+        {"object_id": "supplied_chiral_finite_spectral_projection", "parent": "chiral",
+         "result": "Fixed-interpolator charge-resolved response of the supplied chiral generator; finite clusters are not a particle census.",
+         "evidence": {"dimension": spectral["dimension"], "clusters": len(spectral["clusters"]),
+          "residue_sum_error_Frobenius": spectral["residue_sum_error_Frobenius"]}},
+    ]
+    return {"verification": "source custody and retained artifact hashes checked; retained readout summary, not a fresh scientific replay",
+            "replay_owner": "python -m model.verify", "scope": "separate object contracts; no composite spectrum or physical identification",
+            "parents": parents, "rows": rows}
+
+
 def build(
     out_path: Path = DEFAULT_OUT,
     md_path: Path | None = DEFAULT_MD,
@@ -7246,7 +7333,7 @@ def build(
         "alpha": _alpha_rows(endpoint, bridge, alpha_hvp_verdict)
         + _alpha_closure_rows(endpoint, contraction),
         "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide, koide_identity),
-        "electroweak": _ew_rows(conditional),
+        "electroweak": _ew_rows(conditional, surface),
         "quarks": _quark_rows(obstruction, clebsch, selection, conditional_quark_comparison),
         "hadrons": _hadron_rows(
             payload, standby, lambda_scale, nucleon_ratio
@@ -7296,6 +7383,7 @@ def build(
             "construction or a pooled all-scale verdict"
         ),
         "finite_model_witnesses": _observer_particle_contracts(),
+        "particle_reconstruction_decisions": _particle_reconstruction_decisions(),
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
         "retrospective_public_record_comparisons": _retrospective_public_record_references(),
@@ -7345,6 +7433,17 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "their declared premises; chart coordinates keep their NOT_EVALUABLE "
         "physical-comparison status.")
     add("")
+    add("Retained alternatives, calibrations and rejected candidates have separate "
+        "domains. Selecting a favorable mass row for each family does not produce "
+        "one particle spectrum. Identification must follow the same source object "
+        "or excitation through its state, charge and symmetry action, repair "
+        "dynamics, propagation, detector records, clock and jointly normalized "
+        "kinetic and energy response. Repair counts, disagreement and path "
+        "surprisal alone do not supply mass units; a topological invariant must "
+        "be demonstrated if invoked. The "
+        "[field-reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md) "
+        "states this common-object contract and the current gaps.")
+    add("")
     add("## How to read the tiers and classes")
     add("")
     add("| Tier | Meaning |")
@@ -7373,6 +7472,21 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "`fitted_comparison_value` are displays that carry no verdict, and "
         "`not_evaluable` has no comparison contract.")
     add("")
+    reconstruction = ledger.get("particle_reconstruction_decisions")
+    if reconstruction is not None:
+        add("## Native defect and finite field reconstruction decisions")
+        add("")
+        add(reconstruction["verification"] + ". Canonical scientific replay belongs to "
+            "`python -m model.verify`. These rows retain separate object contracts; "
+            "they do not assemble a particle spectrum. See the "
+            "[field-reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md).")
+        add("")
+        add("| Source object | Retained result | Receipt |")
+        add("|---|---|---|")
+        for row in reconstruction["rows"]:
+            path = reconstruction["parents"][row["parent"]]["path"]
+            add(f"| `{row['object_id']}` | {_cell(row['result'])} | [receipt](../{path}) |")
+        add("")
     add("## Restricted finite matter and field contracts")
     add("")
     add("The [matter construction](../model/observer_particles/DERIVATION.md) "
@@ -7720,14 +7834,15 @@ def _render_md(ledger: dict[str, Any]) -> str:
     for row in s["charged_leptons"]:
         if row["id"].endswith("closure_target"):
             wp = row["witness_point"]
-            add(f"- Closure target ({row['tier']}): the anchor-gap value "
+            add(f"- Empirical closure value ({row['tier']}): the anchor-gap value "
                 f"`{wp['required_anchor_gap_at_witness_inv_alpha']:.4f}` closes the "
                 "lane exactly on the measured triple (inversion machine-checked); "
                 f"the distance `{wp['scheme_term_difference_inv_alpha']:+.4f}` to the "
                 f"on-shell reference deficit `{wp['reference_deficit_inv_alpha']:.4f}` "
                 "is the unfixed scheme term of the bridge. The certified width floor "
                 "is the scheme-band ambiguity; no budget is shrunk without the "
-                "source bridge.")
+                "source bridge. Measured-lepton information enters the remainder; "
+                "this is calibration, not an independent mass prediction.")
             continue
         if row["id"].endswith("koide_conditional_tau"):
             lo, hi = row["tau_enclosure_mev_outward"]
@@ -7750,8 +7865,11 @@ def _render_md(ledger: dict[str, Any]) -> str:
             mu_e = ratios["m_mu_over_m_e"]
             common_scale = "passes" if ratios["common_scale_under_identity_mass_scheme_necessary_condition_passed"] else "fails"
             add(f"- MCPR conditional triple ({row['tier']}): {deltas} against the "
-                "PDG witness triple; the eight-register architecture is a "
-                "declared model input.")
+                "PDG witness triple; its three spectral coordinates and "
+                "eight-register architecture are historically target-informed. "
+                f"The display uses `P = {row['P']}` and the externally normalized "
+                "Planck-energy decimal; a runtime-blind decoder does not remove "
+                "that ancestry.")
             add(f"  - Scale-free PDG 2026 comparison: `m_mu/m_e = "
                 f"{_fmt(float(mu_e['candidate']), 12)}` versus "
                 f"`{_fmt(float(mu_e['reference_central']), 12)}` "
@@ -7779,6 +7897,18 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("")
     add("## Electroweak sector")
     add("")
+    if s["electroweak"]:
+        ew_origin = s["electroweak"][0]
+        add(f"The inherited tuple uses `P = {ew_origin['P_basis']}`; its former "
+            f"nominal label `{ew_origin['historical_incorrect_P_label']}` did not "
+            "generate that tuple. Envelopes vary only the declared eta channel, "
+            "with running couplings and the vev held at the legacy tuple. "
+            "They are not full same-branch P predictions. GeV displays inherit "
+            "external Planck normalization and the MSSM-like running recipe. "
+            "A conditional SM rerun requires consistent normalization "
+            "(`41/10` for GUT g1 or `41/6` for gY), particle content, thresholds "
+            "and matching; no such rerun is claimed here.")
+        add("")
     add("| Quantity | Conditional central | Envelope | Measured | Delta/sigma | Status |")
     add("| --- | ---: | --- | --- | ---: | --- |")
     for row in s["electroweak"]:

@@ -72,9 +72,9 @@ def test_derivation_chain_matrix_contains_scientific_boundaries_only() -> None:
     assert hierarchy["required_receipts"]
 
     higgs = rows["higgs_top_declared_surface"]
-    assert higgs["status"] == "conditional_declared_surface_higgs_top_candidate"
+    assert higgs["status"] == "target_anchored_declared_surface_comparison"
     assert higgs["outputs"]["higgs"] == 125.1995304097179
-    assert higgs["required_receipts"] == ["EWTargetFreeRepairValueLaw_D10"]
+    assert higgs["required_receipts"] == ["EWTargetFreeRepairValueLaw_D10", "independent_higgs_top_boundary_and_matching_inputs"]
 
     charged = rows["charged_leptons"]
     assert charged["status"] == "corpus_limited_charged_end_to_end_no_go"

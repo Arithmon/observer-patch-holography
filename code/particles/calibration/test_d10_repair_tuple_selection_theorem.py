@@ -20,6 +20,7 @@ from derive_d10_repair_tuple_selection_theorem import (  # noqa: E402
     load_basis,
 )
 from emit_conditional_ew_predictions import build as build_predictions  # noqa: E402
+import emit_conditional_ew_predictions as predictions  # noqa: E402
 
 
 def test_candidate_a_reproduces_value_law_artifact() -> None:
@@ -87,3 +88,24 @@ def test_conditional_predictions_guards_and_envelope() -> None:
         assert cmp_rows[obs]["physical_delta"] is None
         assert cmp_rows[obs]["physical_pull"] is None
         assert "delta_over_sigma" not in cmp_rows[obs]
+
+
+def test_conditional_pixel_is_bound_to_the_inherited_tuple() -> None:
+    report = build_predictions()
+    parent = json.loads((RUNS / "d10_ew_observable_family.json").read_text())
+    assert report["inputs"]["P_calibration"] == parent["core_source"]["p"] == 1.63094
+    assert report["inputs"]["historical_incorrect_P_label"] != report["inputs"]["P_calibration"]
+    # The baseline values are retained, rather than silently recomputed under a new label.
+    law = json.loads((RUNS / "d10_ew_target_free_repair_value_law.json").read_text())
+    row = report["rows_at_calibration_P"]["running_tree_value_law"]
+    assert row["MW_chart_gev"] == law["coherent_emitted_quintet"]["MW_pole"]
+    assert row["MZ_chart_gev"] == law["coherent_emitted_quintet"]["MZ_pole"]
+
+
+def test_changed_tuple_requires_new_pixel_ancestry(monkeypatch) -> None:
+    import pytest
+    basis = load_basis()
+    basis["v_report_gev"] *= 1.001
+    monkeypatch.setattr(predictions, "load_basis", lambda: basis)
+    with pytest.raises(ValueError, match="does not match its pixel parent"):
+        predictions.load_basis_with_pixel()

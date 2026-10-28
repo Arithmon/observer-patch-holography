@@ -16,7 +16,7 @@ def test_retained_particle_audit_and_quantum_outputs_verify():
     run.verify(HERE/"results.json")
 
 
-@pytest.mark.parametrize("damage", ["state_bytes", "probability", "nonfinite", "missing_source", "physical_promotion"])
+@pytest.mark.parametrize("damage", ["state_bytes", "probability", "nonfinite", "missing_source", "physical_promotion", "kinetic_promotion"])
 def test_damaged_particle_output_is_rejected(tmp_path, damage):
     document = deepcopy(json.loads((HERE/"results.json").read_text()))
     artifact = tmp_path/document["artifact"]["filename"]
@@ -31,6 +31,8 @@ def test_damaged_particle_output_is_rejected(tmp_path, damage):
         del document["source_bindings"]["model/common_source/particle_identification/response.py"]
     elif damage == "physical_promotion":
         document["verdict"]["observed_standard_model_species_identified"] = ["electron"]
+    elif damage == "kinetic_promotion":
+        document["finite_inverse_response_kinetics"]["response_inferred_from_observer_records"] = True
     path = tmp_path/"receipt.json"
     path.write_text(json.dumps(document))
     with pytest.raises(ValueError):

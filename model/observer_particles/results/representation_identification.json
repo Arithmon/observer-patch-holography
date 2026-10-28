@@ -9,7 +9,7 @@
     "code/a5_closure/manifests/super_tannakian_matter_reference.json": "cb627653c332996adcec8f9d501299e0fcb272958b346316946b613253040c59",
     "Lean/Screen/ExteriorSelection.lean": "464f9606ef77cf911e1ea86544e4cca98056b4f67ebc7eba9aff8b03dab8c531",
     "Lean/Screen/MatterGrammarIndexBridge.lean": "1f66250458e837de3f45f29a370ed4a4960ea55a4e3d9bdb8be2d1d7f74a4851",
-    "Lean/Screen/A5FamilyBand.lean": "63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6",
+    "Lean/Screen/A5FamilyBand.lean": "da86f97b63a871bedc4a5418c4b7b154ab3d354b7fdb41e9184f4c3b343e1521",
     "Lean/Screen/FermionSectorAssembly.lean": "b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4",
     "model/observer_particles/gauge_particle_identification.py": "cee248be8893026a50229dd87c831c05538eec48ef9b180ab96fbbe2ebac34cb",
     "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"

@@ -73,8 +73,15 @@ def test_mz_legacy_coordinate_diagnostic_has_no_physical_verdict(result):
     assert all(delta < -50.0 for delta in naive["delta_mz_mev_over_gap_interval"])
     p_channel = executed["p_channel"]
     assert p_channel["verdict"] == "LEGACY_DIAGNOSTIC_ONLY"
-    assert abs(p_channel["p_residual_after_correction"]) < 1e-6
-    assert abs(p_channel["mz_residual_after_correction_mev"]) < 1.0
+    assert p_channel["p_calibration"] == 1.63094
+    assert p_channel["p_residual_after_correction"] == pytest.approx(
+        p_channel["p_corrected_endpoint_to_measured"] - p_channel["p_calibration"]
+    )
+    # The former near-zero residual compared to a label that did not generate the tuple.
+    assert abs(p_channel["p_residual_after_correction"]) > 1e-5
+    assert p_channel["mz_residual_after_correction_mev"] == pytest.approx(
+        p_channel["p_residual_after_correction"] * p_channel["dmz_dp_gev_per_unit_p"] * 1e3
+    )
 
 
 def test_synthesis_names_single_dominant_reduction(result):

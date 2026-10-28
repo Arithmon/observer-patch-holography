@@ -8,7 +8,7 @@
     "model/observer_particles/results/scalar_bilinear_operators.json": "9767c463c8eb923e1de3fa10aba6523b8fa9f14615a5daf0b6ec357760787ce4",
     "Lean/Screen/WeylYukawaConventions.lean": "ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7",
     "Lean/Screen/FermionSectorAssembly.lean": "b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4",
-    "model/observer_particles/results/family_naturality.json": "b331766c7ef04fd3b970f04bdc6b97e15be19f845beaca1f13ce358720738249",
+    "model/observer_particles/results/family_naturality.json": "549944b7e4825fd94e7ef6765c5fab9c9fc788452fe4fd79b46a51e4b600f4c7",
     "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"
   },
   "artifacts": {

@@ -3,7 +3,7 @@
   "producer_sha256": "77121bd821a4da8c99c9e174da511ccd58918da74f224f3182c47c051b17f54f",
   "source_sha256": {
     "code/a5_closure/family_band_attachment_certificate.py": "327a8913f2c725e123c98238c7a8a113f3913d89453d8d3e0e8c0162d733ce2e",
-    "Lean/Screen/A5FamilyBand.lean": "63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6",
+    "Lean/Screen/A5FamilyBand.lean": "da86f97b63a871bedc4a5418c4b7b154ab3d354b7fdb41e9184f4c3b343e1521",
     "code/a5_closure/manifests/echosahedral_federation_reference.json": "12ec97358ade25f919f9981f1cd7c99c2b27aaaaa9ce14bd2320d73a9c1bfc14",
     "code/a5_closure/manifests/family_band_attachment_reference.json": "3a02d02fd3bcd318535348186aad7008c861c7ff3b8c9558f64d36b7ee0eb64b",
     "Lean/Screen/WeylYukawaConventions.lean": "ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7",

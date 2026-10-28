@@ -1470,8 +1470,9 @@ Take $A=\mathbb{Z}_2$ on the triangle $A$-$B$-$C$-$A$ with edge labels $b_{AB}=0
 This example shows that pairwise consistency does not imply a global solution. The obstruction is
 carried by the cycle.
 
-\begin{corollary}[Stable defects as frustrated holonomy]\label{cor:defects}
-Define the defect energy
+\begin{corollary}[Persistent frustration at fixed holonomy]\label{cor:defects}
+On a finite connected graph with fixed edge labels \(b_e\) and strictly
+positive weights \(w_e>0\), define the mismatch cost
 \[
 \Phi_b(x) := \sum_{e:u\to v\in E} w_e\,\mathbf{1}\!\left[x_v - x_u \neq b_e\right].
 \]
@@ -1479,11 +1480,23 @@ If the cycle-holonomy condition fails, then $\min_{x:V\to A}\Phi_b(x)>0$. Every 
 \end{corollary}
 
 \begin{proof}
-If $\min_x\Phi_b(x)=0$, some assignment satisfies all edge equations, contradicting Theorem~\ref{thm:holonomy}.
+The cost takes values in the finite set of subset sums of the positive
+weights, so its minimum is attained. If that minimum were zero, an
+assignment would satisfy every edge equation, contradicting
+Theorem~\ref{thm:holonomy}.
 \end{proof}
 
-Residual inconsistencies of this type cannot be removed by local repair moves. In the OPH
-interpretation they are stable topological defects of the reconciliation dynamics.
+No sequence of local changes of \(x\), holding \(b\) fixed, can remove all
+these inconsistencies. The same obstruction persists under changes of \(b\)
+that preserve its nontrivial cycle class. Gauge invariance by itself does
+not prove that a physical update preserves that class: changing the
+compatibility data outside it can remove the obstruction. The result proves
+persistent frustration, without selecting a localized excitation or proving
+its dynamical stability. Moreover, \(\min_x\Phi_b(x)>0\) is a residual cost
+of this whole compatibility problem, not an excitation energy above its
+own minimum. Identifying such defects with particles is a research
+hypothesis requiring a native invariant, localized propagation, and a
+common repair-cost, physical-energy and observer-clock map.
 
 \begin{theorem}[Higher-gauge defect hierarchy]\label{thm:higherdefects}
 Let a finite overlap nerve carry crossed-module defect data \((g_{ij},h_{ijk})\) for a compact crossed module
@@ -4608,7 +4621,12 @@ gap require their separately named finite and continuum receipts. On that certif
 Yang--Mills gap equals the repair gap; coherent
 cylinder extraction alone does not make that identification or supply a Clay-admissible theory.
 \item The coarse-graining compatibility theorem (Theorem~\ref{thm:coarse-grain-consensus}) is the link between the finite reconciliation protocol and the refinement/RG language used by the OPH branches: the macroscopic law space is stable when the selected coarse-graining channel shadows the normal-form and obstruction maps with controlled defects.
-\item Stable defects (Corollary~\ref{cor:defects}) become the topologically protected excitations identified with particles on the declared branch.
+\item Persistent frustration at fixed holonomy
+(Corollary~\ref{cor:defects}) motivates the hypothesis that particles are
+protected defects. The corollary establishes no native defect sector,
+localized particle propagation or repair-cost-to-mass identification;
+these require an invariant of the actual source dynamics and a common
+physical energy and clock map.
 \item The record-algebra theorem (Theorem~\ref{thm:crdt}) provides the formal basis for the fixed-cutoff observation layer, where records are carried by central or quantitatively stable approximately commuting projectors in overlap centers.
 \end{itemize}
 

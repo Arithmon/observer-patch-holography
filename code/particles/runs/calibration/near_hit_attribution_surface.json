@@ -1,6 +1,6 @@
 {
   "artifact": "oph_near_hit_attribution_surface",
-  "generated_utc": "2026-10-26T06:59:21Z",
+  "generated_utc": "2026-10-28T00:57:50Z",
   "guards": {
     "changes_any_solve_path": false,
     "compare_only": true,
@@ -11,33 +11,34 @@
   "rows": [
     {
       "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-      "legacy_experimental_error_only_delta": 0.005523692791854273,
-      "legacy_experimental_error_only_standardized_difference": 2.6303299008829875,
+      "legacy_experimental_error_only_delta": 0.00726041435127911,
+      "legacy_experimental_error_only_standardized_difference": 3.457340167275767,
       "legacy_reference_coordinate": 91.1876,
       "legacy_reference_experimental_sigma": 0.0021,
       "missing_correction_hypothesis": {
         "falsification_test": "derive and freeze a common-observable map with vev and tadpole scheme, thresholds, finite-order completion, complex-pole conversion, and theory uncertainty before evaluating a mass residual",
         "legacy_coordinate_diagnostic": {
-          "executed_utc": "2026-07-12",
+          "executed_utc": "2026-10-28T00:57:50Z",
+          "historical_protocol_date": "2026-07-12",
           "naive_coupling_injection": {
             "delta_mz_mev_over_gap_interval": [
               -63.441784234811394,
               -66.56404595162257
             ],
             "proportional_scheme_delta_mz_mev": "approximately -230 to -302, and moves MW by a comparable amount",
-            "reading": "the one-loop couplings at calibration P already give MZ to +0.4 MeV; injecting on-shell hadronic running into them is scheme-inconsistent and moves the chart coordinate by the displayed amount; this does not establish a physical excess or exclusion",
+            "reading": "the archived one-loop tuple at legacy P = 1.63094 gives a nearby MZ chart coordinate under its supplied conventions; injecting on-shell hadronic running into them is scheme-inconsistent and moves the chart coordinate by the displayed amount; this does not establish a physical excess or exclusion",
             "scheme": "anchor gap added to alphaY^-1 (hypercharge line)",
             "verdict": "LEGACY_DIAGNOSTIC_ONLY"
           },
           "p_channel": {
-            "dmz_dp_gev_per_unit_p": 123.04683336044852,
+            "dmz_dp_gev_per_unit_p": 123.0556780675805,
             "dp_d_alpha_inv_thomson": -9.529190721125918e-05,
-            "mz_residual_after_correction_mev": -0.03651263087709494,
-            "p_calibration": 1.630968209403959,
+            "mz_residual_after_correction_mev": 3.4348120766195076,
+            "p_calibration": 1.63094,
             "p_corrected_endpoint_to_measured": 1.630967912666287,
             "p_empirical_central": 1.6310301615671794,
-            "p_residual_after_correction": -2.967376719897885e-07,
-            "reading": "moving the Thomson endpoint to the measured alpha_inv(0) shifts the empirical pixel onto the calibration pixel to within 4.2e-07, i.e. -0.05 MeV in the internal MZ chart.  Without the missing physical readout map, this does not identify the cause of a measured mass residual",
+            "p_residual_after_correction": 2.7912666286988852e-05,
+            "reading": "The endpoint correction is compared with the actual legacy tuple pixel, not the former nominal endpoint label. The resulting pixel and partial eta-channel chart differences are reported above; this is not full same-branch running or a physical mass-residual attribution.",
             "verdict": "LEGACY_DIAGNOSTIC_ONLY"
           },
           "physical_comparison_status": "NOT_EVALUABLE",
@@ -48,9 +49,9 @@
       },
       "oph_envelope": [
         91.18797807794321,
-        91.19826930764052
+        91.20174275075935
       ],
-      "oph_value": 91.19312369279186,
+      "oph_value": 91.19486041435128,
       "physical_comparison_status": "NOT_EVALUABLE",
       "physical_delta": null,
       "physical_pull": null,
@@ -59,8 +60,8 @@
     },
     {
       "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-      "legacy_experimental_error_only_delta": 0.004114642816091418,
-      "legacy_experimental_error_only_standardized_difference": 0.30937164030762543,
+      "legacy_experimental_error_only_delta": 0.004183354570486131,
+      "legacy_experimental_error_only_standardized_difference": 0.31453793763053617,
       "legacy_reference_coordinate": 80.3692,
       "legacy_reference_experimental_sigma": 0.0133,
       "missing_correction_hypothesis": {
@@ -70,9 +71,9 @@
       },
       "oph_envelope": [
         80.36921677537332,
-        80.37741251025889
+        80.37754993376767
       ],
-      "oph_value": 80.3733146428161,
+      "oph_value": 80.37338335457049,
       "physical_comparison_status": "NOT_EVALUABLE",
       "physical_delta": null,
       "physical_pull": null,
@@ -81,9 +82,9 @@
     },
     {
       "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-      "delta": 0.07747557670501237,
-      "delta_over_sigma": 0.7043234245910216,
-      "inside_one_sigma": true,
+      "delta": 0.08291016674985485,
+      "delta_over_sigma": 0.7537287886350441,
+      "inside_one_sigma": false,
       "measured": 125.13,
       "measured_sigma": 0.11,
       "measured_source": "PDG 2026",
@@ -94,17 +95,17 @@
       },
       "oph_envelope": [
         125.18328541107648,
-        125.23166574233353
+        125.24253492242322
       ],
-      "oph_value": 125.20747557670501,
+      "oph_value": 125.21291016674985,
       "physical_comparison_status": "COMPARE_ONLY",
       "quantity": "mH_gev",
       "row_class": "conditional_on_P_and_repair_selection"
     },
     {
       "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-      "delta": 0.21492450651575723,
-      "delta_over_sigma": 0.3582075108595954,
+      "delta": 0.20739508632848924,
+      "delta_over_sigma": 0.3456584772141488,
       "inside_one_sigma": true,
       "measured": 172.1,
       "measured_sigma": 0.6,
@@ -115,10 +116,10 @@
         "reduces_to": "selection-axiom source derivation (#521)"
       },
       "oph_envelope": [
-        172.27749368420027,
+        172.2624348438258,
         172.3523553288312
       ],
-      "oph_value": 172.31492450651575,
+      "oph_value": 172.30739508632848,
       "physical_comparison_status": "COMPARE_ONLY",
       "quantity": "mt_pole_gev",
       "row_class": "conditional_on_P_and_repair_selection"

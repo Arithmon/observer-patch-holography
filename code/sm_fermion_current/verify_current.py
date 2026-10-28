@@ -213,7 +213,7 @@ PARENT_HASHES = {
     'code/sm_local_action/jet_action.py': 'bb9fdb42ca749b8752971b373ef3401eaeced44c7f4e1b91f53942d84ee84309',
     'code/sm_abelian_reduction/pilot.py': 'babf18861777c821f684c6e9d6c91af72b2c31779a06dc169fccda7e5e30a9c9',
     'Lean/Screen/WeylYukawaConventions.lean': 'ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7',
-    'Lean/Screen/A5FamilyBand.lean': '63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6',
+    'Lean/Screen/A5FamilyBand.lean': 'da86f97b63a871bedc4a5418c4b7b154ab3d354b7fdb41e9184f4c3b343e1521',
 }
 
 

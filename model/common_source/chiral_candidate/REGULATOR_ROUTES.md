@@ -18,6 +18,18 @@ project, independent of any particular regulator update.
 
 ## Ginsparg–Wilson and overlap
 
+A regulator comparison must keep the complete signed spectrum and response
+weights of the same fields, including mirror, bulk, zero and dark modes.
+Nambu redundancy is distinguished from extra regulator species. A finite
+coordinate probe with zero overlap on an unwanted branch cannot establish
+that branch's decoupling. Check charge/current covariance, kinetic
+normalization and Higgs insertions on the same response, then control how
+these quantities and the accessible detector operations change with volume
+and spacing. Postselection must retain its probability and complementary
+records. The [spectral diagnostic](KINETIC.md#visible-spectral-weights-without-discarding-modes)
+checks only the supplied finite Hermitian action; it neither constructs a
+chiral measure nor performs these limits or a record inverse.
+
 [Lüscher (1998)](https://arxiv.org/abs/hep-lat/9802011) establishes an exact
 lattice chiral symmetry from the Ginsparg–Wilson relation. Its chiral
 transformation differs from the naive anticommuting one; the usual doubling

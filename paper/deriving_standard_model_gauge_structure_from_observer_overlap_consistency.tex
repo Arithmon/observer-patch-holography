@@ -130,7 +130,18 @@ the Lie-type classification are machine checked in the accompanying Lean
 development~\cite{ophrepo}; the \(\mathfrak{su}(2)^{4}\) fixed-space step and
 the compact-Lie classification enter Lean as declared hypotheses, and no source
 current or full Lie-algebra isomorphism is constructed there. The registered
-recurrence generates the exact commutative
+formal interface keeps these inputs separate: an injective port-response map
+supplies dimension twelve; an inner carrier action fixes the centre, placing
+it inside the one-dimensional fixed space; the fixed-space exclusion supplies
+nonzero centre; and compact-simple classification supplies the allowed simple
+dimensions \(3,8,10\). The final Lean selection theorem takes the last three
+dimension constraints as hypotheses and proves the split. An observable
+relative phase alone establishes neither centrality nor trivial carrier
+action on the entire centre, and cannot replace those hypotheses. The
+formal source records that centre-triviality was found by working backwards
+from the desired Lie type; the proof establishes sufficiency, not an
+independent physical origin for that condition.
+The registered recurrence generates the exact commutative
 algebra \(\operatorname{span}\{I,A,A^2,A^3\}\). It contains neither twelve
 independent current generators nor a nonzero bracket, and its only proper
 recharting is the identity. This result is bounded to the registered
@@ -230,6 +241,42 @@ redundancy. Its weak double cover and exterior matter sector are separate
 chosen attachments.\footnote{\raggedright
 \texttt{model/common\_source/native\_sm\_current.py} and
 \texttt{model/common\_source/native\_matter\_attachment.py}.}
+
+\paragraph{Carrier rechartings and physical rotations.}
+The port action above is a finite carrier symmetry. Its inclusion in the
+current group is established for the stated interface; its identification
+with spatial rotations of a recovered interacting field is not. The local
+rank-three Gram band and the refining global low band are distinct: the
+former has a fixed nonzero carrier energy, whereas the latter concentrates
+on cell averages. Equivalent \(A_5\) triplets can also occur on different
+tensor factors. In particular, the specified family-feedback construction
+uses a gauge-trivial ancillary triplet rather than the coloured current
+triplet. Representation equivalence alone therefore proves neither an
+identification nor independence of physical colour, family and spatial
+actions.
+
+The conditional Spin--matter join constructs commuting actions on
+\(\mathbb C^2\otimes\mathbb C^{15}\), with physical-spin central element
+\(-I\) on all thirty states. The diagonal locked action instead has fourteen
+minus and sixteen plus central eigenvalues and fails that fermionic test.
+An explicitly chosen compensating internal transport realizes the independent
+Spin action. These are finite existence and obstruction results under a
+chosen tensor attachment, not a source-selected spacetime connection or a
+joint charged propagator.\footnote{Public implementations:
+\path{model/common_source/slow_geometry.py},
+\path{model/common_source/native_repair_mass.py},
+\path{model/physical_space_time/OCCUPATION_FIELD.md}, and
+\path{model/observer_particles/spin_matter_join.py}.}
+The remaining test must identify rotations operationally on the same
+clocked field response, establish their independence from internal currents
+up to the declared gauge equivalence, and check that the dynamics preserves
+that identification. Coleman--Mandula separation is a constraint on a
+physical scattering theory under its Poincar\'e, spectrum, analyticity and
+nontrivial-scattering hypotheses; those hypotheses have not been established
+for this finite interface, so no violation of that theorem follows here.\footnote{
+S.~Coleman and J.~Mandula, ``All Possible Symmetries of the \(S\) Matrix,''
+\emph{Physical Review} \textbf{159}, 1251--1256 (1967),
+\url{https://doi.org/10.1103/PhysRev.159.1251}.}
 
 As a counterfactual, identify the twelve ports in antipodal pairs. The
 inherited quotient triangulates the real projective plane, with six
@@ -404,6 +451,29 @@ theorem, and a kernel-checked dictionary identifies the dimension-six
 baryon census table with the selected generation column by column.
 The construction supplies no physical-family or Spin/chirality attachment
 and no source action.
+
+For the actual four-entry band table, faithfulness already excludes the
+dimension-one trivial band; the remaining dimensions are \(3,3,5\).
+Removing the stated window while retaining that table and faithfulness
+therefore changes no admissible candidate. The conditional physical window
+does not itself explain triplication. The load-bearing identification is
+that the family object is a single complete faithful adjacency band, compared
+by the declared cost rule and realized in the proposed matter response.
+
+Generation names require no extra universally conserved generation charge.
+Within a sector whose physical charges and statistics are established,
+ordering nondegenerate masses is a naming convention. A physical comparison
+must additionally retain the eigenvectors, residues and charged-current
+matrix of the same response, with common permutations and phase conventions.
+The mismatch of the two left quark diagonalizers determines CKM mixing;
+requiring a generation label conserved by every charged weak transition
+would exclude that mixing.\footnote{A.~Ceccucci, Z.~Ligeti and Y.~Sakai,
+``CKM Quark-Mixing Matrix,'' in the Particle Data Group review (2024),
+Section 12.1,
+\url{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf}.}
+A decoder returning declared charge labels is consequently an intermediate
+representation check, not a derivation of the particle content of arbitrary
+ordered spectral gaps.
 
 Over the supplied certified brackets, ad-invariance fixes the kinetic shape
 block-diagonally with exactly zero cross terms. On carrier-projector forms the

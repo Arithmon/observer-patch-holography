@@ -105,7 +105,8 @@ def _mz_legacy_coordinate_diagnostic(
     p_corrected = p_empirical + dp_da * (codata - a_th)
 
     return {
-        "executed_utc": "2026-07-12",
+        "historical_protocol_date": "2026-07-12",
+        "executed_utc": _timestamp(),
         "physical_comparison_status": "NOT_EVALUABLE",
         "reason": (
             "the computation propagates internal chart coordinates; no complete "
@@ -117,7 +118,8 @@ def _mz_legacy_coordinate_diagnostic(
             "proportional_scheme_delta_mz_mev": "approximately -230 to -302, and moves MW by a comparable amount",
             "verdict": "LEGACY_DIAGNOSTIC_ONLY",
             "reading": (
-                "the one-loop couplings at calibration P already give MZ to +0.4 MeV; "
+                "the archived one-loop tuple at legacy P = 1.63094 gives a "
+                "nearby MZ chart coordinate under its supplied conventions; "
                 "injecting on-shell hadronic running into them is scheme-inconsistent "
                 "and moves the chart coordinate by the displayed amount; this does "
                 "not establish a physical excess or exclusion"
@@ -133,11 +135,11 @@ def _mz_legacy_coordinate_diagnostic(
             "mz_residual_after_correction_mev": (p_corrected - p_calibration) * dmz_dp * 1e3,
             "verdict": "LEGACY_DIAGNOSTIC_ONLY",
             "reading": (
-                "moving the Thomson endpoint to the measured alpha_inv(0) shifts the "
-                "empirical pixel onto the calibration pixel to within 4.2e-07, i.e. "
-                "-0.05 MeV in the internal MZ chart.  Without the missing physical "
-                "readout map, this does not identify the cause of a measured mass "
-                "residual"
+                "The endpoint correction is compared with the actual legacy "
+                "tuple pixel, not the former nominal endpoint label. The "
+                "resulting pixel and partial eta-channel chart differences "
+                "are reported above; this is not full same-branch running "
+                "or a physical mass-residual attribution."
             ),
         },
     }

@@ -4,6 +4,8 @@ Generated deterministically by `code/particles/scripts/build_postdiction_ledger.
 
 Numeric values and measured references on this page are read mechanically from the cited parent artifacts. Structural rows are derived from validated Lean declarations, analytic paper proofs, structured parents, or their combination, and direct algebraic corollaries are identified. The ledger promotes nothing and changes no solve path. Interval rows report containment of the compare-only witness; conditional rows carry their declared premises; chart coordinates keep their NOT_EVALUABLE physical-comparison status.
 
+Retained alternatives, calibrations and rejected candidates have separate domains. Selecting a favorable mass row for each family does not produce one particle spectrum. Identification must follow the same source object or excitation through its state, charge and symmetry action, repair dynamics, propagation, detector records, clock and jointly normalized kinetic and energy response. Repair counts, disagreement and path surprisal alone do not supply mass units; a topological invariant must be demonstrated if invoked. The [field-reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md) states this common-object contract and the current gaps.
+
 ## How to read the tiers and classes
 
 | Tier | Meaning |
@@ -14,6 +16,18 @@ Numeric values and measured references on this page are read mechanically from t
 | `T2_conditional_rejected_candidate` | a conditional candidate that its own comparison rejects |
 
 Row classes name what a row consumes. `conditional_on_...` classes list their declared premises. Classes containing `empirical`, `target_shape` or `measured_premise_ancestry` consume a measured value or the target's shape and cannot be predictions; target-anchored rows are back-solved calibrations. `certified_interval_fixed_point_of_declared_closure_map` is an interval-certified fixed point of a declared map, and `oph_plus_external_qcd_theory` consumes an external QCD calculation. The [cosmology ledger](../code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md) uses its own classes: `conditional_theorem_postdiction` corresponds to `T2_conditional` exposed after the data, `shared_baseline` marks a value identical to the standard expectation, `closure_candidate_display` and `fitted_comparison_value` are displays that carry no verdict, and `not_evaluable` has no comparison contract.
+
+## Native defect and finite field reconstruction decisions
+
+source custody and retained artifact hashes checked; retained readout summary, not a fresh scientific replay. Canonical scientific replay belongs to `python -m model.verify`. These rows retain separate object contracts; they do not assemble a particle spectrum. See the [field-reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md).
+
+| Source object | Retained result | Receipt |
+|---|---|---|
+| `native_total_two_load_collision` | native double-load defect decays; no nonconstant configuration invariant or maintenance-energy selection | [receipt](../model/common_source/native_defect_decision_results.json) |
+| `native_active_matching_memory` | these scalar record/diagonal costs cannot split logical-state masses; a common energy or mass is not excluded and no physical offset is derived | [receipt](../model/common_source/native_defect_decision_results.json) |
+| `supplied_four_mode_CAR_benchmark` | Inverse-response coordinate covariance from the supplied full finite response; no detector reconstruction or physical kinetic metric. | [receipt](../model/common_source/particle_identification/results.json) |
+| `supplied_chiral_charge_block` | Source-record reconstruction of one supplied finite charge block and joint derivatives; its mass coefficient, clock and apparatus remain supplied. | [receipt](../model/common_source/chiral_candidate/record_two_point_results.json) |
+| `supplied_chiral_finite_spectral_projection` | Fixed-interpolator charge-resolved response of the supplied chiral generator; finite clusters are not a particle census. | [receipt](../model/common_source/chiral_candidate/results.json) |
 
 ## Restricted finite matter and field contracts
 
@@ -64,10 +78,10 @@ The attached [ACT-only conditional likelihood slice](../code/cosmology/tilt_post
 ## Principal results
 
 - The declared twelve-port repair mean selects an intrinsic rank-three Gram quotient as its normalized infinite-response limit. The antipodal-odd integer load quotient is Z^6, the thirty-seam boundary image is the even-sum D6 sublattice, and both signed modules embed densely into the same abstract three-dimensional Euclidean completion. The sixty proper carrier maps act faithfully and isometrically on that completion. This is an exact intrinsic metric completion; physical position, scale, refinement, and gluing are not constructed.
-- Complete compact port response from A1 and endogenous overlap transport from A2 force the abstract Lie type su(3)+su(2)+u(1) on the twelve-port carrier. Target-blind readback independently derives R=-J. Inside the declared exterior-response algebra, an exhaustive scan selects the charge-conjugate rank-15 chiral anomaly-free pair and its one-generation hypercharge multiset; its common central kernel is Z6. Source reconstruction of the matrix current and matter action, physical global-form selection, laboratory attachment, and continuum quantum field theory remain separate.
+- Conditional on a faithful twelve-dimensional compact, commutator-closed response, an inner carrier action fixing its centre, the nonzero-centre and fixed-space exclusions, and compact-simple classification inputs, the finite theorem selects the abstract Lie type su(3)+su(2)+u(1). The registered recurrence does not supply these response and centre hypotheses. Target-blind readback independently derives R=-J, without constructing that current. Matter selection additionally declares the spin lift, central trace redistribution, nonvacuum even exterior sector and anomaly/minimality constraints. Inside that grammar, an exhaustive scan selects the charge-conjugate rank-15 chiral anomaly-free pair and its one-generation hypercharge multiset; its common central kernel is Z6. Source reconstruction of the matrix current and matter action, physical global-form selection, laboratory attachment, and continuum quantum field theory remain separate.
 - Every member of the declared positive-weight scalar cosine class, whose full spatial symbol is the orbit sum, has C4 < 0 and B0/C4^2 at least 10/21, with equality exactly on one-radius support. Its anisotropic ranks one through five vanish and B6/B0 lies in [-16/135, 16/75] on the unique rotated I6 line. At eighth order no new angular shape appears, and every one-radius member obeys 5 D6 B0 = 12 B6 D0, equivalently D6/D0 = (12/5)(B6/B0). The polynomial form includes the exact zero-anisotropy mixture; multi-radius members retain radial-moment dependence. The class theorem is exact; physical field attachment, finite scale, coherent frame, readout, and comparison are not constructed.
 - Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from the PDG charged-lepton reference 1776.93 +- 0.09 MeV used by the FZ-10 comparison. The balance premise is Koide's published relation, which the face circulant of the carrier holds as a finite structure, so this is a retrospective conditional postdiction with a frozen rejection rule and a declared premise ancestry. The public-data audit compares the same output separately with the Belle II 2023 measurement alone.
-- The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition.
+- The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is an unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source requirement. The accounting packet includes measured-lepton information in its higher-order remainder. This is empirical calibration, not an independently predicted mass interval. An independent bridge comparison requires separately frozen inputs, matching and uncertainty; it would test that declared decomposition, not every possible source mechanism.
 
 ## Forced structure
 
@@ -280,8 +294,8 @@ The closure map of the pixel lane has a certified fixed point in each declared m
 
 ## Charged leptons
 
-- Closure target (T1_empirical_closure): the anchor-gap value `0.6379` closes the lane exactly on the measured triple (inversion machine-checked); the distance `+0.0070` to the on-shell reference deficit `0.6309` is the unfixed scheme term of the bridge. The certified width floor is the scheme-band ambiguity; no budget is shrunk without the source bridge.
-- MCPR conditional triple (T2): electron `-84.1 ppm`, muon `-84 ppm`, tau `-84 ppm` against the PDG witness triple; the eight-register architecture is a declared model input.
+- Empirical closure value (T1_empirical_closure): the anchor-gap value `0.6379` closes the lane exactly on the measured triple (inversion machine-checked); the distance `+0.0070` to the on-shell reference deficit `0.6309` is the unfixed scheme term of the bridge. The certified width floor is the scheme-band ambiguity; no budget is shrunk without the source bridge. Measured-lepton information enters the remainder; this is calibration, not an independent mass prediction.
+- MCPR conditional triple (T2): electron `-84.1 ppm`, muon `-84 ppm`, tau `-84 ppm` against the PDG witness triple; its three spectral coordinates and eight-register architecture are historically target-informed. The display uses `P = 1.63097209585889737696451390350695562847912625` and the externally normalized Planck-energy decimal; a runtime-blind decoder does not remove that ancestry.
   - Scale-free PDG 2026 comparison: `m_mu/m_e = 206.768300595` versus `206.768282708` (`0.086506 ppm`); the candidate is outside the product of the displayed one-standard-uncertainty mass intervals, while `m_tau/m_e` is inside its wider interval. The necessary single-common-scale condition under an identity pole-mass map fails. This target-informed conditional comparison has no model-error or physical pole-map bound; it is not a physical exclusion.
 - Kappa interval, rectangle (T1_empirical_closure): outward-rounded target-anchored diagnostic intervals with logarithmic half-width `6.554%` and one-sided multiplicative widths `-6.34%` / `+6.77%`; the witness triple lies inside every interval.
 - Kappa interval, coherent closure (T1_empirical_closure): outward-rounded target-anchored diagnostic intervals with logarithmic half-width `1.732%` and one-sided multiplicative widths `-1.72%` / `+1.75%`; the witness triple lies inside every interval.
@@ -290,12 +304,14 @@ The closure map of the pixel lane has a certified fixed point in each declared m
 
 ## Electroweak sector
 
+The inherited tuple uses `P = 1.63094`; its former nominal label `1.630968209403959` did not generate that tuple. Envelopes vary only the declared eta channel, with running couplings and the vev held at the legacy tuple. They are not full same-branch P predictions. GeV displays inherit external Planck normalization and the MSSM-like running recipe. A conditional SM rerun requires consistent normalization (`41/10` for GUT g1 or `41/6` for gY), particle content, thresholds and matching; no such rerun is claimed here.
+
 | Quantity | Conditional central | Envelope | Measured | Delta/sigma | Status |
 | --- | ---: | --- | --- | ---: | --- |
-| `mH_gev` | `125.20748` | `[125.18329, 125.23167]` | `125.13 +- 0.11` (PDG 2026) | `0.704` | compare-only, target-anchored |
-| `mt_pole_gev` | `172.31492` | `[172.27749, 172.35236]` | `172.1 +- 0.6` (PDG 2026 cross-section pole-mass context row) | `0.358` | compare-only, target-anchored |
-| `MW_chart_gev` | `80.373315` | `[80.369217, 80.377413]` | chart coordinate | n/a | NOT_EVALUABLE |
-| `MZ_chart_gev` | `91.193124` | `[91.187978, 91.198269]` | chart coordinate | n/a | NOT_EVALUABLE |
+| `mH_gev` | `125.21291` | `[125.18329, 125.24253]` | `125.13 +- 0.11` (PDG 2026) | `0.754` | compare-only, target-anchored |
+| `mt_pole_gev` | `172.3074` | `[172.26243, 172.35236]` | `172.1 +- 0.6` (PDG 2026 cross-section pole-mass context row) | `0.346` | compare-only, target-anchored |
+| `MW_chart_gev` | `80.373383` | `[80.369217, 80.37755]` | chart coordinate | n/a | NOT_EVALUABLE |
+| `MZ_chart_gev` | `91.19486` | `[91.187978, 91.201743]` | chart coordinate | n/a | NOT_EVALUABLE |
 
 W/Z rows are running/tree chart coordinates. The strict one-loop consumer has a separate external fixture: interval receipts exclude scalar zeros in the declared principal-sheet boxes and isolate, for each of W and Z, one simple scalar zero with derivative and scalar-residue balls in its declared lower-half pole box on a channel-specific algebraic chart. They identify neither chart with the physical resonance sheet and prove no unique continuation, sign bridge, full-matrix Laurent residue, physical-current amplitude, or independent numerical replay. The fixture is not composed with the OPH chart, so no physical W/Z pole or mass comparison is defined. The Higgs and top rows are conditional on the declared selection axioms and are target-anchored: the declared calibration surface back-solves them from the measured Higgs/top pair through the synchronization-scale scan, so their agreement is built in and is not a prediction.
 

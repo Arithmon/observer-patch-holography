@@ -26,6 +26,13 @@ for the mathematical argument. The [model construction criteria](../../model/CON
 [particle provenance ledger](../../code/particles/PARTICLE_PROVENANCE_LEDGER.md)
 record the broader acceptance conditions. This page gives the working equations,
 decisive exclusions, code entry points and tests needed to continue the research.
+The [field-response guide](OPH_FIELD_RECONSTRUCTION.md) specifies what a particle
+identification requires from the same records, propagators, residues and
+currents, and distinguishes supplied-action checks from record reconstruction.
+The numerical lane status below records the current interpretation of retained
+results; historical receipts keep their original values and design ancestry.
+An unsuccessful prescription is evidence about its stated class, rather than
+an exclusion of all mechanisms on this carrier.
 
 ## Candidate construction
 
@@ -73,6 +80,53 @@ stated selection rules; it does not select the observed masses. An unbroken
 irreducible family action with a family-neutral Higgs instead gives scalar
 intertwiners and degenerate families.
 
+### Carrier transformations and physical symmetry
+
+The specified current uses port vectors in its generators, and proper carrier
+rotations act by inner automorphisms of that response. This is a finite
+covariance statement. It does not identify those rechartings with spatial
+rotations measured by physical observers. The local geometric band, the
+refining federation's long-wavelength modes, the colored current triplet and
+the ancillary family copy need explicit maps between their different roles.
+In particular, [the family feedback source](../../model/common_source/native_repair_mass.py)
+declares a gauge-trivial ancillary copy, not the colored current triplet.
+Equivalent carrier representations on separate factors do not identify their
+physical actions.
+
+The [spin/matter join](../../model/observer_particles/spin_matter_join.py)
+constructs independent commuting spin and internal factors conditionally;
+its compensating internal transport is chosen. The
+[occupation-field construction](../../model/physical_space_time/OCCUPATION_FIELD.md)
+distinguishes local carrier modes from global low modes and does not establish
+physical spatial dimension. The remaining test is to recover spatial and
+internal transformations of the same clocked detector and interaction laws,
+including any allowed compensators, and check independence in that regime.
+A physical lock, or its observable exclusion, cannot be inferred from matching
+carrier characters alone. The scattering hypotheses of the
+[Coleman–Mandula theorem](https://doi.org/10.1103/PhysRev.159.1251)
+have not been established for this finite construction.
+
+### What the finite theorems supply
+
+The following map distinguishes exact finite implications from the inputs
+needed to apply them. A checked theorem is not a proof that the native process
+realizes its hypotheses.
+
+| Interface | Checked finite content | Inputs not selected by that implication |
+| --- | --- | --- |
+| [Port dimension and Lie selection](../../Lean/Screen/A5OPH.lean), [dimension cases](../../Lean/Screen/TrichotomyCases.lean) | An injective twelve-port response has dimension twelve; supplied center and compact-simple dimension conditions select the stated Lie type | A complete physical twelve-current response, the action on its center, a nonzero center, and the classification/exclusion inputs; the native preserving response has dimension 17 |
+| [Concrete compact algebra](../../Lean/Screen/Compact12.lean) | The displayed compact product has dimension twelve | This dimension lemma does not classify every compact algebra or supply a carrier action |
+| [Family band](../../Lean/Screen/A5FamilyBand.lean), [adequacy surface](../../Lean/Screen/SMStructureAdequacySurface.lean) | Faithfulness and the declared cost distinguish the rank-three band in the supplied finite table | Physical generations as one complete faithful band, its realization and cost principle, and the stated dimension window; in this table the singlet already fails faithfulness, so removing the window alone does not change the selected candidate |
+| [Exterior components](../../Lean/Screen/ExteriorComponentBridge.lean) | Component/charge and finite mask identities on supplied five-mode weights | The spin lift, central trace redistribution, exterior grammar and removal of neutral singlets; anomaly identities do not independently select all these inputs |
+| [Weyl conventions](../../Lean/Screen/WeylYukawaConventions.lean) | Charge identities for the declared chiral table | The actual Higgs intertwiners are checked by the executable matter/Yukawa producers, not by these charge identities alone |
+| [Global form](../../model/observer_particles/DERIVATION.md) | The declared matter kernel is compatible with the usual central quotient | Compatibility does not select a unique global form from all admissible alternatives |
+
+The source comment about working backwards concerns trivial carrier action
+on the center, not the separate nonzero-center hypothesis. An observable
+relative phase is not by itself a proof of centrality, invariance or the full
+center's dimension. Any replacement premise needs a map of the actual response
+algebra and action into these theorem interfaces.
+
 ### The mass observable and the field convention
 
 For a neutral Higgs component of norm $v$, canonical kinetics give tree-level
@@ -111,6 +165,24 @@ confined, thermal or threshold alternative. Masses, kinetic residues and
 vertices must come from the same process. Dimensionless coherent steps,
 modular parameters, repair-attempt counts and laboratory seconds are distinct.
 
+Species must be identified through the declared charge/Higgs embedding and
+the response to currents, including conjugate and chiral conventions, before
+assigning masses. The representation's charge and Casimir labels are useful
+internal identifiers; arbitrary relaxation gaps do not acquire those meanings
+by sorting them. Within an established charge sector, increasing masses may
+legitimately name the families. Retain eigenvectors and consistent phase and
+permutation choices across up/down masses and charged currents. A separately
+conserved generation quantum number is not required; the same-process weak
+current must instead determine the mixing matrix.
+
+For canonical fields, the relevant mixing is the mismatch of the up/down
+left singular bases, with any native current matrix transformed in those
+same bases. Complex entries or a face-orientation phase alone do not establish
+physical CP violation. Use a rephasing-invariant test such as the Jarlskog
+invariant after checking masses and mixing. Common-basis circulants can carry
+complex phases while sharing the same diagonalization and giving trivial
+CKM mixing. See the [CKM conventions](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf).
+
 <a id="56-calibrated-action-and-matching-control"></a>
 ### Calibrated control
 
@@ -128,6 +200,67 @@ inverse. The Hamiltonian retains the empirical inputs. Decoder blindness does
 not remove that ancestry. A running action parameter is not automatically a
 laboratory pole mass, and the selected marginal input uncertainties do not
 constitute a joint theory-error model.
+
+### Numerical lane status and comparison contract
+
+The [mass status surface](../../code/particles/MASS_CANDIDATE_STATUS.md),
+[theorem gaps](../../code/particles/THEOREM_GAP_REGISTER.md) and
+[provenance ledger](../../code/particles/PARTICLE_PROVENANCE_LEDGER.md)
+retain the conditional and rejected lanes. None supplies an independently
+derived physical spectrum. The following distinctions must travel with any
+quoted number.
+
+| Lane and primary retained evidence | Current result | Remaining issue or next test |
+| --- | --- | --- |
+| [Charged circulant completion](../../code/particles/runs/leptons/charged_icosahedral_completion_v1_review.json) | Target-informed architecture with three independently inferred spectral coordinates; no charged target is loaded at runtime | Runtime separation does not remove historical formula selection. The muon/electron ratio residual is about +0.087 ppm, compared with the adopted componentwise one-standard-uncertainty interval halfwidth of about 0.022 ppm; the tau ratio residual is about +0.079 ppm. These are retrospective diagnostics, not a joint significance or theory-error estimate; correlations and matching are not supplied |
+| [MCPR scale display](../../code/particles/runs/leptons/charged_mcpr_completion_conditional.json) | The approximately 84 ppm absolute display is conditional on its response architecture, P branch and external energy normalization | Keep ratio residuals separate from overall scale. The forward branch P = 1.6309721 and comparison branch P = 1.6309682 change the transmutation scale at roughly the same 84 ppm level; do not combine their receipts as one branch |
+| [Positive-chamber Koide identity](../../extra/koide_identity_from_positive_c3_face_circulants.tex) | Exact phase-independent identity under its positive-chamber hypotheses; Q = 2/3 follows from the supplied amplitude balance | The balance has measured-triple ancestry and is implemented by an asymmetric block choice. Neither the identity nor that construction selects the physical phase or the two mass ratios |
+| [Kappa coherent closure](../../code/particles/runs/leptons/charged_kappa_interval_coherent_closure.json) | Empirical closure using target-anchored shape and measured-lepton information in the higher-order remainder | An interval obtained by inverting those endpoints is calibration; cancellation of a shared payload does not create an independent falsification interval |
+| [Electroweak branch provenance](../../code/particles/runs/calibration/boson_source_prediction_closure_audit.json) | The legacy tuple at P = 1.63094 gives the archived near-measurement chart; strict source-branch coordinates differ | Every row must name the evaluated tuple as well as any nominal P label. The approximately (80.330, 91.119) and (80.321, 91.124) GeV rows are conditional running/tree coordinates, not physical pole predictions |
+| [Criticality boundary](../../code/particles/runs/calibration/d11_boundary_scale_selection_audit.json) and [current comparison](../../code/particles/runs/calibration/d11_criticality_comparison.json) | The adopted E_star exp(-pi) P^(-1/6) scale was identified after exposure. At the retained 172.1 GeV top reference, the two-loop curve gives a tree Higgs coordinate about 124.7256 GeV and an implied scale about 2.95e17 GeV | The older 125.72 GeV comparison belongs to another reference. One-loop top ranges do not bracket that measured top. Measured boundary couplings, criticality conditions, truncation and mass matching remain premises; no pole-mass significance follows without a joint uncertainty model |
+| [Quark template comparison](../../code/particles/runs/flavor/quark_s3_d12_template_postdiction_audit.json) | The six-coordinate chart came from a target-informed grammar of 219,615 candidates; mixed reference scales do not validate a common-scale mass law | The reciprocal-ray restriction fails at a common scale, including rho_u rho_d about 0.835. Keep template trial count, reference convention and the rejected restriction visible |
+| [Down-type Clebsch lane](../../code/particles/runs/flavor/down_type_register_clebsch_lane.json) | The (1/3, 1, 3) assignments reproduce the familiar Georgi–Jarlskog texture as a conditional comparison; generation ordering is target-informed | Distinguish the finite alphabet theorem from empirical assignment/ranking. All six tested assignments fail the retained FLAG gate |
+| Neutral lane in the [status surface](../../code/particles/MASS_CANDIDATE_STATUS.md) | No candidate survives the correlated oscillation test | Dirac versus Majorana mechanism, absolute scale, physical eigenstate/current identification and family shape remain open; sorted neutrino eigenvalues are a naming convention, not flavor labels |
+
+The retained broad lepton windows [206, 207] and [3470, 3485] are pole-ratio
+diagnostics. They are not acceptance intervals for scheme-free tree or texture
+coefficients. The supplied calibration packet instead has approximate
+MS-bar(M_Z) ratios 210.7 and 3578; these are packet-specific reference values,
+not universal conversion factors or a joint confidence interval. A new
+physical comparison needs a derived matching map, a common scale and scheme,
+threshold/width/confinement treatment, and correlated calibration, truncation
+and measurement uncertainties. Within-sector ratios cancel a common scale
+but need not be independent of renormalization scale or scheme.
+
+### Running, closure branches and absolute units
+
+The legacy transmutation recipe uses the MSSM one-loop packet (33/5, 1, -3)
+with GUT-normalized hypercharge, although the declared low-energy matter
+content does not supply superpartners. Under the usual three-generation,
+one-Higgs Standard Model field assumptions the corresponding packet is
+(41/10, -19/6, -7); it is (41/6, -19/6, -7) for ordinary g_Y. The relation is
+g_1 = sqrt(5/3) g_Y. These conventions are explicit in the
+[legacy implementation](../../code/particles/calibration/legacy_d10/particle_masses_paper_d10_d11.py)
+and [two-loop engine](../../code/particles/calibration/sm_two_loop_rge_engine.py).
+Changing beta coefficients also requires consistent coupling normalization,
+boundary data, thresholds and the Yukawa truncation. The present two-loop
+engine retains the top Yukawa only; it is not a full flavor-running result.
+
+A separate conditional SM-content recalculation must retain the legacy recipe
+as a control, state which P root and matching data are recomputed, and propagate
+the change through alpha_U(P), transmutation, the W/Z chart and criticality.
+An absent closure solution or lost numerical agreement is an admissible
+result. Substituting the familiar SM coefficients does not itself recover an
+interacting SM from the repair law. No source-only promotion follows from
+such a benchmark recalculation.
+
+The displayed E_star = 1.22089e19 GeV is the externally normalized Planck
+energy derived from measured G, rather than a closed observer-clock result;
+the [clock/energy provenance check](../../code/particles/runs/clock/clock_source_energy_closure_audit.json)
+identifies the calibration ancestry. A cesium-clock or gravitational-coupling
+checksum does not independently determine it. Keep dimensionless predictions
+separate from GeV displays until the physical clock/energy map closes. No
+unsubstantiated precision claim for such a checksum is used as evidence.
 
 ### Uncalibrated record-memory protocol
 
@@ -220,6 +353,13 @@ most a factor three. Changing the event rates alone cannot remove this
 restriction. The bound is for this mass map, not for arbitrary interacting
 poles or different kinetic laws.
 
+This restriction does not imply zero mixing or CP violation for all positive
+trace-one matrices: different complex positive matrices can have different
+eigenbases. The vanishing mixing and CP in the static real shared-feature
+candidate follow from that candidate's common left diagonalization. The
+matched calibration packet's heavy-sector span of about 97 is incompatible
+with the factor-three bound under the stated direct mass identification.
+
 Unconditional pulse duties retain the identity on pulse-off branches. For
 $D\in\{1,C,E,CE\}$ their first-order coefficients are
 
@@ -255,9 +395,15 @@ of the largest modulus, gives
 m_{\max}\le\phi^2m_{\rm middle}+\phi m_{\min}.
 ```
 
-The broad charged-lepton comparison windows require the left ratio to be at
-least 3470, while this bound gives at most $207\phi^2+\phi<544$.
-Thus the entire complex affine class is excluded under that identification.
+Under a direct pole-ratio identification, the broad charged-lepton windows
+would require the left ratio to be at least 3470, while this bound gives at
+most $207\phi^2+\phi<544$. Under an identification with the supplied
+MS-bar(M_Z) packet, the approximate middle/light ratio 210.7 instead gives
+an upper bound about 553.3, still far below the packet's heavy/light ratio
+about 3578. These are two conditional comparisons; the native coefficients
+have no derived pole or running matching map. The affine obstruction concerns
+the two ratios together. It is not a universal heavy/light bound below 544:
+approaching a zero light eigenvalue can make that ratio arbitrarily large.
 The [hierarchy diagnosis](../../model/common_source/hierarchy_diagnosis/README.md)
 retains the proof, nonlinear controls and normalization perturbation bounds.
 
@@ -303,6 +449,13 @@ closed Weyl evolution in the tested class. Active correction, collective
 operator sectors and other states have different domains; the obstruction
 must not be extended to them without proof.
 
+The conditioned contrasts are 7/10 for C and 2/5 for E. The exact gap bound
+excludes a nonzero direct linear intertwiner into the unmeasured closed
+quadratic unitary evolution. The [open-environment control](../../model/common_source/chiral_candidate/KINETIC.md)
+exhibits a complete dephasing channel with those contrasts; detector-coupled,
+environmental or interacting effective descriptions need their own executed
+history and response comparison, rather than being ruled out by this bound.
+
 The [protected field source](../../model/common_source/chiral_candidate/SOURCE.md)
 executes the declared CAR action at rest and at three opposite momentum pairs.
 A different two-hop local completion agrees on that restricted set and differs
@@ -311,6 +464,19 @@ field law. The [same-current transport](../../model/common_source/native_gauge_m
 and [continuum comparison](../../model/common_source/native_gauge_continuum.py)
 retain both tastes on a chosen background; they do not derive dynamical chiral
 gauge fields.
+
+An [abelian quantum-link construction](../../model/common_source/DERIVATION.md)
+does supply a finite electric/matter Gauss sector. Most transport comparisons
+use background links, and no common dynamical nonabelian chiral gauge field
+has been established. The [regulator routes](../../model/common_source/chiral_candidate/REGULATOR_ROUTES.md)
+retain the naive lattice's eight balanced Weyl nodes and the staggered field's
+two Dirac tastes. The Euclidean overlap calculation also tests nonconstant
+nonabelian backgrounds and a locality domain; it is not merely a free symbol.
+Its interacting chiral measure, physical continuation and same-process field
+identification remain open. Dropping unwanted modes is not a decoupling proof,
+and a failed regulator trial does not exclude every regulator on this matter
+representation. The scalar construction's Weyl displacement operators obey
+bosonic CCR; their name does not supply chiral fermions.
 
 <a id="515-zero-temperature-modular-response-of-the-same-free-field"></a>
 The [free half-space modular calculation](../../model/native_equilibration/wedge_modular.py)
@@ -338,6 +504,10 @@ law. A proposed fix must identify the violated equation or hypothesis.
 | Calibration hidden by a blind inverse | Audit the producer and its design ancestry. Empirical Yukawas, Higgs scales, units, target-selected resets and fitted transport maps remain inputs even when the decoder sees records only |
 | Incompatible physical comparisons | State mass definition, common scheme/scale, matching, thresholds, confinement/width treatment and joint uncertainty. Replay tolerances are not theory errors; a running chart cannot be assigned a pole-mass pull |
 | Independent pieces promoted to one theory | Require one preparation, dynamics, clock and observation regime to satisfy the combined contract. A field symbol, an entropy identity and a gauge table do not prove their physical composition |
+| Carrier rotations promoted to physical rotations | Identify the transformations of the same detector/current laws and distinguish local carrier, global low-mode, spin, color and family factors; matching characters alone is insufficient |
+| Named theorem used for a stronger statement | Check the exact hypotheses and conclusion: a compact-product dimension lemma is not classification, a charge identity is not a Higgs-intertwiner proof, and relative-phase observability is not a theorem about the entire center |
+| Selection after target exposure called prospective | Retain target history, candidate count and empirical parents; a new hash freezes future changes but does not erase earlier formula selection |
+| Reference or branch drift | Carry P, evaluated tuple, rho convention, loop order, top definition and matching reference on each row; never merge distinct receipts because their outputs are close |
 
 ## Open challenges and research tasks
 
@@ -346,6 +516,29 @@ chiral inverse propagator**. It must determine the kinetic derivatives/residues,
 Higgs response and mass terms together. Selecting a different Gram matrix or
 fitting a function of a family feature does not supply that process.
 
+The source object is chosen before the spectrum: one localized excitation or
+protected sector, with the same reference, admissible repairs, charges,
+propagation and detector/clock interpretation throughout. The
+[native defect decision](../../model/common_source/native_defect_decision.py)
+has now tested the natural double-load candidate on the actual 78-state C/E
+domain. It is transient, and the binary 66-state class has no nonconstant
+classical configuration invariant under all admitted branches. Uniform-seam
+transport persists at zero quadratic-potential drop. This rejects that
+candidate and automatic cost-to-mass identification, not all quantum/history
+defects or OPH. The actively recovered code is a different object; its record
+costs are logical-state blind and recovery is needed for persistence. The
+[field guide](OPH_FIELD_RECONSTRUCTION.md) records the exact results and limits.
+
+Finite response improvements now operate on the existing supplied-action
+benchmark rather than adding more mass candidates: complete residue/charge
+diagnostics, a CAR-validated inverse-response derivative, and charge-compatible
+record tomography of one existing charged pair. The last reconstructs its
+canonical transfer and joint momentum/background response with complete
+continuation and withheld controls. Its coefficient, apparatus and bounded
+logarithm class remain premises; it is not a repair-maintenance mass law or
+physical interacting chiral field. A successful physical defect route must
+derive its maintenance action/energy and mass response on the same object.
+
 | Priority | Concrete calculation | Acceptance condition |
 | --- | --- | --- |
 | 1. Select the physical response domain | Specify carrier/code, actual C/E/coherent implementation, state, scheduler, observer access and complete current family. Test the 17/18-direction and rank-fifteen obstructions in that exact domain | A same-object finite theorem map with every additional control and source service accounted for |
@@ -353,6 +546,28 @@ fitting a function of a family feature does not supply that process.
 | 3. Resolve sector strength and family hierarchy | Test an explicitly derived mechanism outside the excluded affine/trace-one classes, or supply the physical reason their hypotheses fail | One fixed source program determines the full matrices without empirical mass inputs; all extra modes and zero directions retained |
 | 4. Establish field and vacuum limits | Supply chiral measure/anomaly control, locality, state/vacuum and controlled spatial/volume/occupation limits on the same regime | A common interacting chiral field, rather than only a finite symbol, a taste-doubled free limit or a selected background |
 | 5. Perform a physical comparison | Freeze the construction and measurement map; propagate physical calibration, matching and model uncertainties before comparing | Joint charged masses/mixing, relevant neutrino and interaction tests in compatible conventions; no per-channel target adjustment |
+
+Priority 1 includes a transformation test for physical spatial versus internal
+actions and an actual-algebra map for the center and twelve-current premise.
+Priority 2 can begin as a finite component calculation before the full
+interacting continuum is established. For each proposed hierarchy mechanism,
+declare its source operations, normalization, state, kinetic terms, allowed
+parameters, retention of extra/zero modes, acceptance criterion and exact
+failure domain before comparison. Persistence, localization, loop suppression
+and coherent orientation are candidate ideas, not selected mechanisms. A
+real hierarchy component need not itself generate CP; the combined quark
+response must supply nontrivial relative eigenbases and a physical CP test.
+Failure of a finite list of implementations does not exhaust these classes.
+
+Every new comparison record should bind the full source and decoder, parameter
+and target-exposure history, predicted values, common scheme/scale, empirical
+parents, matching, tolerances and correlated uncertainties, together with the
+number of candidates compared. Exploratory fits remain calibrated results.
+A frozen construction that passes nine charged Yukawas and CKM is a bounded
+charged-spectrum validation; physical completion additionally requires the
+joint and conditional detector/intervention law, interactions, state/vacuum,
+locality/covariance and controlled refinement. A failed candidate retains its
+valid finite component results and its precisely scoped rejection.
 
 A useful negative result states its exact excluded class. A useful positive
 result preserves the full detector/intervention law, including the state after

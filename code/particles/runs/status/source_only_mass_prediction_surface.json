@@ -1,11 +1,12 @@
 {
   "artifact": "oph_source_only_mass_prediction_surface",
-  "display_note": "GeV/MeV displays use the unclosed clock candidate; the clock audit classifies that decimal as a calibration checksum.",
+  "display_note": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
   "families": [
     {
       "family": "charged leptons",
       "rows": [
         {
+          "P": "1.63097209585889737696451390350695562847912625",
           "artifact": "runs/leptons/charged_mcpr_completion_conditional.json",
           "blocking_objects": [
             "A5_FAM",
@@ -15,7 +16,39 @@
             "SCALE",
             "W5_ORB"
           ],
-          "explanation": "The eight-register architecture reproduces the charged triple at 84 ppm with zero runtime charged reference, and the architecture itself is a declared model input. The source-only completion is the A5/W5 orbit program; the homogeneous branch is proven shape-silent.",
+          "compare_only_ratio_envelope": {
+            "common_scale_under_identity_mass_scheme_necessary_condition_passed": false,
+            "independent_ratios": {
+              "m_mu_over_m_e": {
+                "candidate": "206.768300595180971740336250438069337267297486181700623840391",
+                "componentwise_one_sigma_interval": [
+                  "206.7682781427377954077456987013694570288959723409185547450131325450646",
+                  "206.7682872741965668318414736060103821912246540597606577241046217535761"
+                ],
+                "conservative_component_interval_halfwidth_ppm": "0.022081381763851474800434487427614876221058272324559463866031678000000",
+                "inside_componentwise_one_sigma_interval": false,
+                "reference_central": "206.7682827084671796902080640552322774868514476087915663034803090115911",
+                "relative_central_residual_ppm": "0.086506080902502294928068645955786559745951458372196515543051481000000"
+              },
+              "m_tau_over_m_e": {
+                "candidate": "3477.36553659602259125062917777770871085134755874859290220748",
+                "componentwise_one_sigma_interval": [
+                  "3477.189135211313516535373528546257288269733832076810026194205443543329",
+                  "3477.541388601489423884746936057469636463129900119249076611210237117040"
+                ],
+                "conservative_component_interval_halfwidth_ppm": "50.64946644303499644797927974625323968594251551877902848162406948700000",
+                "inside_componentwise_one_sigma_interval": true,
+                "reference_central": "3477.365261906346322795029299515057287954526073510282182141284819318148",
+                "relative_central_residual_ppm": "0.078993621773821482154416159678387731210060623717615215042049581000000"
+              }
+            },
+            "interval_basis": "Cartesian product of the three separately displayed PDG 2026 mass +/- one-standard-uncertainty intervals; no covariance or joint confidence level is assigned.",
+            "physical_verdict": "No physical exclusion or significance follows: the response architecture was historically target-informed, its mass scheme has no validated pole bridge, and no model uncertainty bound is supplied.",
+            "source": "https://pdg.lbl.gov/2026/tables/rpp2026-sum-leptons.pdf",
+            "status": "COMPARE_ONLY_RETROSPECTIVE_MODEL_COORDINATE"
+          },
+          "explanation": "Historically target-informed architecture with three circulant coordinates (shape phase, modulus and scale). Its approximately 84 ppm absolute display is branch- and scale-dependent; absence of charged references at runtime does not make its design blind. The muon/electron ratio residual is about +0.087 ppm, outside the retained componentwise one-standard-uncertainty envelope; this is not a physical significance test without a mass-scheme bridge and theory uncertainty. A5/W5 source selection remains open.",
+          "historical_target_informed_architecture": true,
           "lane": "MCPR completed-response candidate",
           "masses_MeV_display": [
             "0.510955973930992429677202687890766774071029599541393032595821",
@@ -27,6 +60,7 @@
             "8.65348216536026137309689977791070308972247404090020057513152e-21",
             "0.000000000000000000145531595349743942602015519049418174583149214180317805795398"
           ],
+          "provenance_review": "runs/leptons/charged_icosahedral_completion_v1_review.json",
           "ratios": {
             "m_mu_over_m_e": "206.768300595180971740336250438069337267297486181700623840391",
             "m_tau_over_m_e": "3477.36553659602259125062917777770871085134755874859290220748",
@@ -42,7 +76,7 @@
             "source-selected phase law",
             "running and pole-mass bridge"
           ],
-          "explanation": "The exact identity Q = 1/3 + (2/3)(|b|/a)^2 is phase-independent only inside the positive-eigenvalue chamber, and Q = 2/3 iff |b|/a = 1/sqrt(2). The finite tracial-GNS lane supplies that balance under explicit premises; the physical attachment, phase, and two mass ratios remain open. The MCPR/PDG proximity is retrospective and is not promoted.",
+          "explanation": "The exact identity Q = 1/3 + (2/3)(|b|/a)^2 is phase-independent only inside the positive-eigenvalue chamber, and Q = 2/3 iff |b|/a = 1/sqrt(2). The finite tracial-GNS lane supplies that balance under explicit premises abstracted from the measured triple and realized by an asymmetric block choice; the physical attachment, phase, and two mass ratios remain open. The MCPR/PDG proximity is retrospective and is not promoted.",
           "lane": "positive-chamber C3-circulant Koide identity",
           "source_only_physical_prediction": false,
           "status": "CLOSED_CIRCULANT_IDENTITY__FINITE_GNS_BALANCE_CONDITIONAL__PHYSICAL_ATTACHMENT_OPEN",
@@ -183,14 +217,15 @@
         {
           "MW_chart_GeV": 80.37700001539531,
           "MZ_chart_GeV": 91.18797807794321,
+          "P_basis": 1.63094,
           "artifact": "runs/calibration/conditional_ew_predictions_current.json",
           "blocking_objects": [
             "same gates as the strict branch plus the declared surface"
           ],
-          "explanation": "Target-free continuation on the calibration pixel; the pixel itself sits on the endpoint branch, so this row carries endpoint ancestry and validates the formula stack rather than adding an independent prediction.",
-          "lane": "declared benchmark surface (public endpoint branch continuation)",
+          "explanation": "The inherited coupling/vev tuple was evaluated at legacy P = 1.63094. The earlier emitter labelled it with endpoint P = 1.630968209403959 without recomputing that tuple. The current emitter binds its baseline and partial eta shift to the actual tuple pixel; a full same-branch running and matching evaluation remains open. This is a historical chart comparison, not an independent mass prediction.",
+          "lane": "archived legacy D10 benchmark surface (P = 1.63094)",
           "row_class": "conditional_on_P_and_repair_selection",
-          "tier": "T2; the public branch P consumes the measured Thomson endpoint"
+          "tier": "T2; archived calibration tuple, not strict-branch output"
         }
       ]
     },
@@ -202,7 +237,7 @@
           "blocking_objects": [
             "CRITICALITY_BOUNDARY_SCALE_SELECTION_THEOREM (candidate set archived; three-loop packet discriminates)"
           ],
-          "explanation": "Two-loop values of the adopted branch; the candidate was identified after the implied scale was computed and is retained as a historical coordinate for the three-loop discriminating test. The flow-internal selection route is closed by a no-go.",
+          "explanation": "Conditional SM two-loop coordinates with supplied gauge couplings, matching and scale; the candidate was identified after the implied scale was computed and is retained as a historical coordinate for the three-loop discriminating test. The flow-internal selection route is closed by a no-go.",
           "lane": "adopted conditional branch: criticality at the log-midpoint anchor E_star exp(-pi) P^(-1/6)",
           "mH_tree_GeV_display": 125.77115226639518,
           "mt_pole_GeV_display": 172.62935892273643,
@@ -215,8 +250,8 @@
             "prospective three-loop RG and matching packet",
             "BRST-complete pole kernels"
           ],
-          "explanation": "Both Yukawa-sector boundaries derive from the gauge sector through the criticality law. The family over named source scales brackets the measured pair; the archived mu_U branch is the low edge and its deficit decomposes into the boundary-scale choice plus loop truncation, both named and quantified.",
-          "lane": "double-criticality boundary family (lambda = 0 and beta_lambda = 0 at one source scale; zero continuous parameters)",
+          "explanation": "The supplied SM gauge/matching packet and criticality conditions determine conditional top-Yukawa and Higgs-quartic boundaries at each chosen scale. This is not an OPH mass selection theorem. The one-loop family does not bracket the measured top reference. The retained scan quantifies changes of boundary scale and loop truncation within this declared calculation.",
+          "lane": "double-criticality boundary family (lambda = 0 and beta_lambda = 0 at a supplied boundary scale)",
           "one_loop": {
             "E_cell_pixel_energy": {
               "mH_tree_GeV_display": 127.83227871460655,
@@ -235,7 +270,7 @@
               "mt_pole_GeV_display": 164.13059283309306
             }
           },
-          "tier": "T2, conditional on the boundary-scale selection theorem",
+          "tier": "T2, conditional SM criticality; boundary selection open",
           "two_loop": {
             "E_cell_pixel_energy": {
               "mH_tree_GeV_display": 131.80938727093422,
@@ -277,7 +312,7 @@
           "lane": "archived literal one-loop core at the mu_U boundary",
           "mH_tree_GeV_display": 115.10128015046507,
           "mt_QCD_converted_GeV_display": 164.13059244609826,
-          "tier": "T2 (target-free tree coordinates; low edge of the family)"
+          "tier": "T2 (conditional SM tree coordinates; archived boundary)"
         },
         {
           "artifact": "runs/calibration/conditional_ew_predictions_current.json",
@@ -504,7 +539,7 @@
       ]
     }
   ],
-  "generated_utc": "2026-10-22T03:11:06Z",
+  "generated_utc": "2026-10-28T01:17:00Z",
   "global_blocking_objects": {
     "X1_strict_no_target_P_alpha_root": "source-audit branch witness; full endpoint proof requires the hadronic spectral transport, the scheme bridge, and the interval fixed-point proof",
     "X2_operational_clock_chain": [
@@ -525,6 +560,7 @@
     "X4_provenance_record": "canonical taint classes, transitive hashes, timestamped source record",
     "X5_interacting_pole_packet": "BRST-complete two-point kernels, sheets, residues, widths"
   },
+  "identification_scope": "The rows retain alternative domains, calibrations and rejected candidates. Combining favorable rows does not produce one particle spectrum. A physical identification must follow the same source object or excitation through its state, charge and symmetry action, repair dynamics, propagation, detector records, clock and jointly normalized kinetic and energy response. A topological invariant must be demonstrated if invoked; repair counts, quadratic disagreement and path surprisal are not mass units. See the [field-reconstruction guide](../../docs/research/OPH_FIELD_RECONSTRUCTION.md).",
   "inputs": {
     "clebsch": {
       "exists": true,

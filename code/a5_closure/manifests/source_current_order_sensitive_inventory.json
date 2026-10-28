@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 911,
+    "file_count": 912,
     "files": [
       {
         "byte_count": 42558,
@@ -1128,9 +1128,9 @@
         "sha256": "sha256:2920baacbb8e098155e9ad373925ad415f85698344d224d813282eb5af0350f0"
       },
       {
-        "byte_count": 16892,
+        "byte_count": 17110,
         "path": "Lean/Screen/A5FamilyBand.lean",
-        "sha256": "sha256:63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6"
+        "sha256": "sha256:da86f97b63a871bedc4a5418c4b7b154ab3d354b7fdb41e9184f4c3b343e1521"
       },
       {
         "byte_count": 3113,
@@ -1598,9 +1598,9 @@
         "sha256": "sha256:3bf6a7f5f233ea6effda62f14a700eb49dcd54e40bf207e0693b7f11240641a3"
       },
       {
-        "byte_count": 41757,
+        "byte_count": 41855,
         "path": "Lean/Screen/SMStructureAdequacySurface.lean",
-        "sha256": "sha256:6e4907aa2c1fcb6c3a92604f172e4deb7be15e6d75c511c5d3810e824f589bde"
+        "sha256": "sha256:8770dea6ff61fc042cadac60faae13c46a4c9518802abe428b1290102bad0d53"
       },
       {
         "byte_count": 15894,
@@ -3280,7 +3280,7 @@
       {
         "byte_count": 11161830,
         "path": "code/sm_fermion_current/coupled_receipt.json",
-        "sha256": "sha256:90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+        "sha256": "sha256:811303aa9079d3919931cd1b64e5456e1b87be795238c8b83060eb201356d54b"
       },
       {
         "byte_count": 17000,
@@ -3290,7 +3290,7 @@
       {
         "byte_count": 3706044,
         "path": "code/sm_fermion_current/current_receipt.json",
-        "sha256": "sha256:d4a780d4849d9b5dea1618705b87279597d6aca345a160a20990435929cff8a7"
+        "sha256": "sha256:077bb29b94d9597daf4f1b30ae80ec80910a7aea52c7859ba51c523e5e70e997"
       },
       {
         "byte_count": 13410,
@@ -3300,7 +3300,12 @@
       {
         "byte_count": 54500,
         "path": "code/sm_fermion_current/quantum_link_receipt.json",
-        "sha256": "sha256:0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
+        "sha256": "sha256:4c8b29aba09768264d10c47e19ddce0d9727b8d3b9cc3afcd79bac673cb70286"
+      },
+      {
+        "byte_count": 5581,
+        "path": "code/sm_fermion_current/source_pin_refresh_20261028.json",
+        "sha256": "sha256:d8612704c83d5172d294c77fddfb50ab1f8e6fdba899d32d7d7c116d2d1903d6"
       },
       {
         "byte_count": 8395,
@@ -3325,12 +3330,12 @@
       {
         "byte_count": 23299,
         "path": "code/sm_fermion_current/verify_coupled.py",
-        "sha256": "sha256:6c0ef1b56ce5134de4f90cc261f6ab0d5eb00a7e52ed75c3a819dc1dd4af2a8d"
+        "sha256": "sha256:7734f17d56d8f6bf10e7881a1f7df2c20de16504c464c96972d412a161a87b4a"
       },
       {
         "byte_count": 22086,
         "path": "code/sm_fermion_current/verify_current.py",
-        "sha256": "sha256:0abbd53a20f8b323c7ebf2671ae0e552364386c4408367f4205eda441431b2a3"
+        "sha256": "sha256:4e533b7dba330a69f3b1623546b096f9530d4f885bf60022ca09e3fb98ef3872"
       },
       {
         "byte_count": 23431,
@@ -4753,7 +4758,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:89936c19f5456bb1103d37df77e4055893e9148dbbd7c9e2b5eaaebe99aa5f34",
+    "files_sha256": "sha256:330e7dcc6b422518eee60297f74d2326e73d291a49ae3aa32610e8a24b31cbcf",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7662,7 +7667,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:7cb3fdaeb80736d1de6237bfb4fb756ef5f4a55c6825172fd3fcd8f93bf1b7b0",
+  "inventory_sha256": "sha256:0d2e9961d5b394fd603b11bd781a2d88b153536ccd2bc546fc1ff00d3e3327fb",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -8529,17 +8534,17 @@
     {
       "bytes": 3706044,
       "path": "code/sm_fermion_current/current_receipt.json",
-      "sha256": "sha256:d4a780d4849d9b5dea1618705b87279597d6aca345a160a20990435929cff8a7"
+      "sha256": "sha256:077bb29b94d9597daf4f1b30ae80ec80910a7aea52c7859ba51c523e5e70e997"
     },
     {
       "bytes": 11161830,
       "path": "code/sm_fermion_current/coupled_receipt.json",
-      "sha256": "sha256:90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+      "sha256": "sha256:811303aa9079d3919931cd1b64e5456e1b87be795238c8b83060eb201356d54b"
     },
     {
       "bytes": 54500,
       "path": "code/sm_fermion_current/quantum_link_receipt.json",
-      "sha256": "sha256:0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
+      "sha256": "sha256:4c8b29aba09768264d10c47e19ddce0d9727b8d3b9cc3afcd79bac673cb70286"
     },
     {
       "bytes": 13779,

@@ -21,10 +21,20 @@ action, conditional numerical coordinate and physical observation are retained.
 
 Complete twelve-port compact response with endogenous inner transport has
 local Lie type `u(1) + su(2) + su(3)` under the gauge paper's A1/A2 response
-clauses. This is stronger than a dimension coincidence. The inverse-port
+clauses, together with the compact-simple classification, nonzero-centre and
+semisimple-exclusion inputs stated there. The dimension twelve is a premise;
+native exchange closure has seventeen directions (eighteen with the relative
+class-sum phase). A controller can realize a restricted twelve-current limit
+under supplied bias, baths and feedback. The inverse-port
 recurrence by itself does not construct that nonabelian current: the paper
 also records exact abelian and oversized-current controls. The finite
 six-level geometric response is an explicit conditional current realization.
+The geometric colour triplet carries the carrier point-group action. Reuse
+of that representation for another factor does not by itself identify the
+two physical symmetry actions. Separating recovered spatial transformations
+from internal gauge response requires their action on the same observables
+and dynamics; no continuum symmetry-separation theorem follows from the
+finite representation match alone.
 
 The [representation decoder](../../observer_particles/representation_identification.py)
 and its [exact receipt](../../observer_particles/results/representation_identification.json)
@@ -73,7 +83,7 @@ source calculation.
 | [One-Higgs action](../../observer_particles/results/unified_yukawa_action.json) | One declared `H=(1,2,1/2)` admits `Q u^c H`, `Q d^c H*`, `L e^c H*`; all twelve internal current identities and 648 three-family/component checks hold | Physical scalar/vacuum selection, kinetic normalization and Yukawa coefficients; three declared families have 27 complex charged-fermion coefficients before further constraints |
 | [Spin/matter join](../../observer_particles/results/spin_matter_join.json) | A source-executed 30-dimensional `C²_Spin tensor M15` representation, commuting factor actions and uniform Spin central sign `−I` | The source rotation data allow both Weyl boost extensions; the physical chirality, connection, CAR attachment and charged propagator remain separate |
 | [Shared spatial CAR field](../../observer_particles/results/shared_spatial_matter.json) and [metric join](../../observer_particles/results/geometric_matter_join.json) | Actual shared spatial operators and conditional scalar/Dirac/Maxwell principal cone; extra modes retained | A common charged pole carrying the decoded internal representation; Dirac/cochain identities alone do not remove unwanted species or identify physical chirality |
-| [Rank-three band theorem](../../../code/a5_closure/family_band_attachment_certificate.py) | Under single-complete-band and cost-order premises, `5−sqrt(5)<6<5+sqrt(5)` selects the faithful rank-three response band; tensoring `M15` gives rank 45 | Physical family interpretation and a shared matter action remain open (OL-G4, PR-36/PR-47/PR-54) |
+| [Rank-three band theorem](../../../code/a5_closure/family_band_attachment_certificate.py) | Under single-complete-band, faithfulness, cost-order and the declared rank window `3 <= N_g <= 5`, `5−sqrt(5)<6<5+sqrt(5)` selects the rank-three response band; tensoring `M15` gives rank 45. Faithfulness or the lower window edge independently excludes the sole trivial singlet; removing both admits its lower cost | Physical family interpretation and a shared matter action remain open (OL-G4, PR-36/PR-47/PR-54); the lower window edge is a supplied CP-capability requirement |
 | [Family naturality](../../observer_particles/results/family_naturality.json) | On that actual band, the full unbroken `A5` commutant has complex dimension one; identical invariant left/right family attachments give `Y=yI` and `1:1:1` singular values | A covariant noninvariant background can evade these hypotheses; a concrete native one is computed below |
 | [Optional neutrino action](../../observer_particles/results/neutrino_action_extension.json) | Same-module dimension-five `LH LH` channel, with six complex three-family coefficients and a scale | Neither coefficient matrix, scale, physical mechanism nor neutrino masses are selected |
 
@@ -84,10 +94,26 @@ boundary. The [numeric status](../../../code/particles/RESULTS_STATUS.md),
 and [postdiction ledger](../../../docs/POSTDICTION_LEDGER.md) retain separate
 conditional coordinates and empirical comparisons: running-chart `W/Z`
 coordinates about `(80.330,91.119)` GeV, a conditional Higgs/top criticality
-coordinate about `(125.77,172.63)` GeV, target-anchored charged-lepton
+coordinate about `(125.77,172.63)` GeV at a post-exposure boundary-scale
+candidate with supplied SM running/matching, target-anchored charged-lepton
 comparisons, and withheld source-only quark masses. These are not masses
 measured by the new interferometer. Their chart, selection, scale, scheme,
 transport and physical pole premises cannot be removed by matching a number.
+The approximately 84 ppm charged display is a historically target-informed
+three-coordinate architecture. Its separate ratio residuals and pixel ancestry
+are retained in [Mass Candidate Status](../../../code/particles/MASS_CANDIDATE_STATUS.md).
+GeV displays inherit an external Planck normalization; a checksum does not
+derive that absolute scale. The legacy MSSM-like running packet must not be
+identified with pure-SM running. A consistent replacement needs a particle
+census, thresholds and matching, with `41/10` for GUT-normalized hypercharge
+or `41/6` for ordinary `gY`.
+
+Sorting a sector's mass eigenvalues is a naming convention, not a derivation
+of its species or mixing. Species require the charge/representation response;
+mixing requires relative left-handed eigenbases in the same charged-current
+interaction. No exact conserved generation number is required. A complex
+matrix entry is not evidence for physical CP violation; a basis-invariant
+quantity such as the Jarlskog invariant must be tested after kinetic normalization.
 The [conditional electroweak mass-form receipt](../../observer_particles/results/electroweak_mass_form.json)
 likewise leaves its vacuum scale and physical pole identification open.
 

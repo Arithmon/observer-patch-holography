@@ -17,6 +17,7 @@ import sympy as s
 from sympy.polys.matrices import DomainMatrix
 
 from . import action
+from ...observer_particles.spectral_response import charge_resolved_spectrum, spectrum_summary
 
 
 def _numeric(matrix):
@@ -319,11 +320,21 @@ def report():
         stabilizer_columns.append(np.r_[derivative.real.ravel(), derivative.imag.ravel()])
     stabilizer_rank = int(np.linalg.matrix_rank(np.array(stabilizer_columns).T, tol=1e-10))
     charge = nambu_charge()
-    q_diagonal = charge.diagonal().real
+    # Fixed coordinate interpolators, not selected energy eigenvectors. Their
+    # dark sectors remain in the full spectral census and are not normalized
+    # away. This is a supplied-action diagnostic, not detector tomography.
+    interpolator_indices = [0, n, d, d+n]
+    spectrum = charge_resolved_spectrum(h, charge, np.eye(2*d)[:, interpolator_indices])
     counts = {}
-    for value in sorted(set(np.round(q_diagonal, 12))):
-        indices = np.flatnonzero(np.isclose(q_diagonal, value, atol=1e-12))
-        counts[str(round(float(value), 12))] = _signature(h[np.ix_(indices, indices)])["positive"]
+    for row in spectrum["clusters"]:
+        key = str(round(sum(row["charge_interval"])/2, 12))
+        counts[key] = counts.get(key, 0)+int(np.count_nonzero(row["frequencies"] > 1e-10))
+    spectral_report = spectrum_summary(spectrum)
+    spectral_report["fixed_interpolator_indices"] = interpolator_indices
+    spectral_report["interpolator_design"] = (
+        "first internal coordinate, both spin components and both Nambu blocks; "
+        "canonical field coefficients with no energy-eigenvector selection; "
+        "charged preparation/readout and a phase-reference apparatus are not supplied here")
     spin = nambu_spin()
     nodes = naive_weyl_nodes()
     return {
@@ -336,6 +347,7 @@ def report():
         "spectrum_at_nonzero_momentum": _signature(h),
         "spectrum_at_zero_momentum": _signature(h0),
         "positive_energy_electric_charge_multiplicities": counts,
+        "charge_resolved_spectral_response": spectral_report,
         "massless_neutrino_internal_indices": action.ordering()["massless_neutrino_internal_family_indices"],
         "zero_momentum_caveat": "12 Nambu zeros encode six complex CAR zero modes of three left Weyl neutrinos; helicity at p=0 is undefined",
         "redundancy": "negative Nambu energies are conjugate partners at opposite momentum, not extra physical species or sterile nuR",

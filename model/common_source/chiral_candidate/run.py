@@ -19,6 +19,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 BASELINE = HERE.parent/"particle_identification/results.json"
 NOTE = ROOT/"docs/research/OPH_PARTICLE_MASS_RESPONSE.md"
+SPECTRAL_RESPONSE = ROOT/"model/observer_particles/spectral_response.py"
 
 
 def _hash(path):
@@ -41,7 +42,7 @@ def _bindings(action_report,geometry_report):
                 raise ValueError(f"inconsistent source custody: {name}")
             result[name] = value
     paths = [p for p in HERE.glob("*.py") if not p.name.startswith("test_")]
-    paths += list(HERE.glob("*.md"))+[BASELINE,BASELINE.with_suffix(".npz"),NOTE]
+    paths += list(HERE.glob("*.md"))+[BASELINE,BASELINE.with_suffix(".npz"),NOTE,SPECTRAL_RESPONSE]
     result.update({path.relative_to(ROOT).as_posix():_hash(path) for path in paths})
     return dict(sorted(result.items()))
 
@@ -99,6 +100,7 @@ def verify(path):
     required.update(p.relative_to(ROOT).as_posix() for p in HERE.glob("*.md"))
     required.add(BASELINE.relative_to(ROOT).as_posix())
     required.add(NOTE.relative_to(ROOT).as_posix())
+    required.add(SPECTRAL_RESPONSE.relative_to(ROOT).as_posix())
     if not required <= set(document["source_bindings"]):
         raise ValueError("incomplete chiral source custody")
     _check_bindings(document["source_bindings"])

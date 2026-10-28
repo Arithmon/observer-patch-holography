@@ -9,6 +9,16 @@
   "chiral_mass_comparison": {
     "an_overall_mass_scale_can_change_these_ratios": false,
     "benchmark": "charged lepton hierarchy, ascending e/mu/tau masses",
+    "comparison_contract": {
+      "passing_windows_would_establish_physical_mass_agreement": false,
+      "physical_comparison_admissible": false,
+      "prediction_quantity": "dimensionless_source_coefficients_or_declared_Hubbard_texture_threshold_ratios",
+      "prediction_renormalization_scheme_and_scale": null,
+      "reference_quantity": "charged_lepton_pole_mass_ratios",
+      "required_for_physical_comparison": "derive_mass_and_kinetic_response_together_then_supply_scheme_scale_and_pole_matching",
+      "source_to_pole_matching_supplied": false,
+      "status": "unmatched_hierarchy_diagnostic_only"
+    },
     "comparisons": [
       {
         "both_ratios_pass": false,
@@ -181,7 +191,7 @@
     "input_sha256": {
       "code/cosmology/tilt_posterior/README.md": "9d27696b3460f2aab794b8c94a53f66520af1c63474239f67fabb972efa26955",
       "code/cosmology/tilt_posterior/act_dr6_ns_weight.json.gz": "13dab540b652300bd000cf1ac3b197af55c7c411de215682482ea55993f40485",
-      "model/common_source/chiral_candidate/results.json": "975ebff49a0d6f4592b33049a361264bc6915f921930c8141557cb6630212d01",
+      "model/common_source/chiral_candidate/results.json": "d0782adcf5a00c3583e6df4deb0385e8471d8a78a3394f597d3fde7040138c08",
       "model/empirical_diagnostics/cross_scale.py": "899a07e79a6943eaa801d42face356c0800a84d878e556e436e3c92d90bb68f3",
       "model/observer_particles/results/entangled_alpha.json": "5f8175f5863636f615a32726419f6bc6bee05f7d464921574b08ff75f3e3fb54",
       "model/predictions/endpoint_audit.py": "f362374fe6156ea9ceb4cd17d694fd1091bdb34c2085ef4080ee5dcdfbee90cb",

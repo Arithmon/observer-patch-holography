@@ -229,6 +229,72 @@ finite discriminator between two declared completions, not a physical
 momentum calibration or a claim that the present seven modes select either
 completion.
 
+## A joint response inverse for the same charged component
+
+[record_two_point.py](record_two_point.py) adds a phase-sensitive detector
+inverse for one existing paired charged factor of this action. It introduces
+no new particle object or mass prescription. The paired coefficient is still
+the supplied `J F` coefficient above; its response is measured, not selected
+by a repair-maintenance principle. The full action remains responsible for
+the other modes, chirality and species count.
+
+The work modes have charges `(-1,+1)`. A reference fermion has charge `-1`;
+neutral compiled pair pulses prepare it together with the positive work
+mode from a supplied blank state. The canonical coordinates
+`d=(c_minus,c_plus_dagger,c_ref)` have one commutator charge. Their one-particle
+code has fixed physical total charge zero. Actual source hopping/pairing
+words prepare and read relative phases inside this code, and commute with
+physical charge. A charge-breaking external phase reference is unnecessary
+for this finite protocol. Initialization, the reference mode, calibrated
+clock and neutral relative-phase controls remain supplied apparatus.
+
+For each input/output coordinate pair, four reference phases give
+`P_s=(1+|U_ij|^2+2 Re(conj(s) U_ij))/4`, with `s=+1,-1,+i,-i`.
+Differences recover both parts of the charged transfer matrix `U`. Each
+context prepares once, reads the reference number after a neutral basis
+rotation, retains both outcomes, restores the basis, continues the same
+conditional work state, and reads a work occupation and two clock
+quadratures. All 16 terminal outcomes and their unnormalized complex work
+vectors and clock-purifier columns remain. Equal-time records calibrate the
+identity CAR response. The decoder reads those probabilities and the clock
+contrast, without consulting action coefficients or simulator duration.
+
+On the declared closed quadratic, simple-pole class and bounded principal
+phase branch, `B/Omega = i log(U)/(Omega tau)` determines the finite canonical
+response `G(z)=(z I-B/Omega)^(-1)`. Its positive projector residues sum to the
+calibrated identity. A supplied logarithm branch is essential: an explicit
+unbounded alternative generator has the same transfer at both retained
+commensurate times. Unresolved poles are refused by this inverse, rather
+than assigned arbitrary rank-one labels. These canonical residues are not
+interacting wavefunction renormalization, and a neutral background
+derivative is not a measured dynamical Higgs or current vertex.
+
+Five fixed momentum/background settings determine the constant, z-momentum
+and neutral-Higgs-multiplier matrices jointly. Three withheld settings test
+both the recovered generator and complete continued quantum output. A
+second duration uses 96 repeats of the same elementary word used 64 times
+at the first duration; the producer also checks three short words against
+two long words. The affine matrix law has a small retained finite-product
+residual, rather than an asserted exact continuum identity. Controls retain
+an opposite pairing sign with identical empty-pair occupation oscillations,
+and the existing two-hop kinetics that agree at every training setting but
+separate at withheld momentum. Tests also detect changed conditional states
+when all detector probabilities remain equal.
+
+The [receipt](record_two_point_results.json) and
+[quantum outputs](record_two_point_results.npz) contain the actual record
+protocols, controls and replay inputs. Their domain is the completed compiled
+coherent service with its complete detector instrument. Native attempt,
+abort and export-failure trees are not included in this component; the
+protected and full-repair experiments retain those distinct obligations.
+Pulse counts here describe apparatus components, not total repair
+maintenance or a derived physical energy. Finite-shot uncertainty, physical
+clock/momentum calibration, preparation errors and an interacting continuum
+are not certified. General quantum process tomography is established
+methodology ([Chuang and Nielsen](https://arxiv.org/abs/quant-ph/9610001));
+this calculation supplies a charge-compatible source realization and
+continued-record controls for the existing candidate.
+
 ## Replay and retained evidence
 
 From the repository root:
@@ -237,6 +303,7 @@ From the repository root:
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q model/common_source/chiral_candidate
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -u -m model.common_source.chiral_candidate.run --output /tmp/chiral-candidate.json
 .venv/bin/python -m model.common_source.chiral_candidate.run --verify model/common_source/chiral_candidate/results.json
+.venv/bin/python -m model.common_source.chiral_candidate.record_two_point --check model/common_source/chiral_candidate/record_two_point_results.json
 ```
 
 The [receipt](results.json) binds the source and comparison inputs. Its

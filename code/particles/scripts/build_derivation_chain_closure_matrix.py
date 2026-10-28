@@ -61,6 +61,7 @@ def build_payload() -> dict[str, Any]:
     higgs_output = predictions.get("higgs") or conditional_candidates.get("higgs")
     if higgs_output is None:
         raise ValueError("missing Higgs prediction or conditional candidate row")
+    higgs_provenance = next(row for row in provenance["rows"] if row["particle_id"] == "higgs")
     hierarchy_capacity_root = hierarchy_capacity["exact_capacity_fixed_point"]
     withheld_by_id = {
         entry["particle_id"]: entry for entry in final_predictions.get("withheld_non_prediction_rows", [])
@@ -165,16 +166,17 @@ def build_payload() -> dict[str, Any]:
             "status": (
                 "declared_d10_d11_surface__direct_top_no_go"
                 if higgs_output["promotable"]
-                else "conditional_declared_surface_higgs_top_candidate"
+                else higgs_provenance["row_class"]
             ),
-            "claim_level": higgs_output["exact_kind"],
+            "claim_level": higgs_provenance["row_class"],
+            "target_use": higgs_provenance["target_use"],
             "outputs": {
                 "higgs": higgs_output["value"],
             },
             "promotable": higgs_output["promotable"],
             "required_receipts": []
             if higgs_output["promotable"]
-            else ["EWTargetFreeRepairValueLaw_D10"],
+            else ["EWTargetFreeRepairValueLaw_D10", "independent_higgs_top_boundary_and_matching_inputs"],
             "evidence_artifacts": [
                 "code/particles/runs/calibration/direct_top_bridge_contract.json"
             ],

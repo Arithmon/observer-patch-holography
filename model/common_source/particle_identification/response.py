@@ -292,6 +292,10 @@ def transfer_visibility(response, *, site_a=0, site_b=0):
     t = np.kron(ladders[site_b], ladders[site_a].conj().T @ parity)
     direct = np.vdot(charged, t @ reference)
     pair = float(e1+e3-2*response.ground_energy)
+    addition_cost = float(e3-response.ground_energy)
+    removal_cost = float(e1-response.ground_energy)
+    symmetric_gap = (response.chemical_potential == 0.0
+                     and math.isclose(addition_cost, removal_cost, rel_tol=0., abs_tol=1e-12))
     return {"reference_arm": "N_A=2,N_B=2", "charged_arm": "N_A=3,N_B=1",
             "total_charge": 4, "selected_sites": [site_a, site_b],
             "transfer_direction": "T=C_A* C_B raises A and lowers B",
@@ -304,9 +308,11 @@ def transfer_visibility(response, *, site_a=0, site_b=0):
             "factorization_residual": float(abs(direct-element)),
             "all_site_pair_weights": (abs(addition[:, None]*removal[None, :])**2).tolist(),
             "pair_frequency": pair, "pair_frequency_over_clock": pair/model.parameters().clock,
-            "single_gap_over_clock_under_particle_hole_symmetry": pair/(2*model.parameters().clock),
-            "addition_ground_cost": float(e3-response.ground_energy),
-            "removal_ground_cost": float(e1-response.ground_energy),
+            "particle_hole_gap_identification_admitted": symmetric_gap,
+            "single_gap_over_clock_under_particle_hole_symmetry": (
+                pair/(2*model.parameters().clock) if symmetric_gap else None),
+            "addition_ground_cost": addition_cost,
+            "removal_ground_cost": removal_cost,
             "X_expectation_on_unread_two_arm_state": "Re(m*exp(+i*pair_frequency*s))",
             "Y_expectation_on_unread_two_arm_state": "Im(m*exp(+i*pair_frequency*s))",
             "m_definition": "<g3_A,g1_B|T|g2_A,g2_B>",

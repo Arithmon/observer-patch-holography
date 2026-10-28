@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build the per-family source-only mass prediction surface.
 
-This status surface collects, for every particle family, the strongest
-numerical mass coordinate the corpus emits, its claim tier, and the named
-objects that block the next tier.  It reads generated lane artifacts and
+This status surface collects retained alternatives, calibrations and rejected
+mass candidates on their separate domains, their claim tiers, and the named
+objects that block the next tier. It does not assemble a particle spectrum
+by choosing a favorable row for each family. It reads generated lane artifacts and
 writes one JSON artifact plus the repository document
 ``MASS_CANDIDATE_STATUS.md``.
 
@@ -61,8 +62,27 @@ DEFAULT_JSON_OUT = RUNS / "status" / "source_only_mass_prediction_surface.json"
 DEFAULT_MD_OUT = PARTICLES / "MASS_CANDIDATE_STATUS.md"
 
 DISPLAY_NOTE = (
-    "GeV/MeV displays use the unclosed clock candidate; the clock audit "
-    "classifies that decimal as a calibration checksum."
+    "GeV/MeV displays inherit the externally normalized Planck-energy decimal "
+    "E_star = 1.220890e19 GeV; the clock audit classifies its clock readback "
+    "as a calibration checksum. No operational absolute scale is closed. "
+    "Archived electroweak coordinates retain the MSSM-like running packet. "
+    "A consistent SM rerun must first fix the active particle content, thresholds, "
+    "matching and hypercharge normalization: b1 = 41/10 for "
+    "g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine "
+    "uses g1 and retains only the top Yukawa. These historical values are not "
+    "outputs of that future rerun. See the "
+    "[mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)."
+)
+
+IDENTIFICATION_SCOPE = (
+    "The rows retain alternative domains, calibrations and rejected candidates. "
+    "Combining favorable rows does not produce one particle spectrum. A physical "
+    "identification must follow the same source object or excitation through its "
+    "state, charge and symmetry action, repair dynamics, propagation, detector "
+    "records, clock and jointly normalized kinetic and energy response. A "
+    "topological invariant must be demonstrated if invoked; repair counts, "
+    "quadratic disagreement and path surprisal are not mass units. See the "
+    "[field-reconstruction guide](../../docs/research/OPH_FIELD_RECONSTRUCTION.md)."
 )
 
 
@@ -84,12 +104,19 @@ def _lepton_rows(
                 "lane": "MCPR completed-response candidate",
                 "tier": "T2",
                 "explanation": (
-                    "The eight-register architecture reproduces the charged "
-                    "triple at 84 ppm with zero runtime charged reference, "
-                    "and the architecture itself is a declared model input. "
-                    "The source-only completion is the A5/W5 orbit program; "
-                    "the homogeneous branch is proven shape-silent."
+                    "Historically target-informed architecture with three circulant "
+                    "coordinates (shape phase, modulus and scale). Its approximately "
+                    "84 ppm absolute display is branch- and scale-dependent; absence "
+                    "of charged references at runtime does not make its design blind. "
+                    "The muon/electron ratio residual is about +0.087 ppm, outside "
+                    "the retained componentwise one-standard-uncertainty envelope; "
+                    "this is not a physical significance test without a mass-scheme "
+                    "bridge and theory uncertainty. A5/W5 source selection remains open."
                 ),
+                "P": mcpr["source_input"]["P"],
+                "historical_target_informed_architecture": mcpr["claim_class"]["historical_target_informed_architecture"],
+                "provenance_review": "runs/leptons/charged_icosahedral_completion_v1_review.json",
+                "compare_only_ratio_envelope": koide["compare_only_PDG_2026_ratio_envelope"],
                 "row_class": mcpr["row_class"],
                 "masses_over_E_star": pred["masses_over_E_star"],
                 "masses_MeV_display": display["masses_MeV"],
@@ -107,7 +134,8 @@ def _lepton_rows(
                     "phase-independent only inside the positive-eigenvalue "
                     "chamber, and Q = 2/3 iff |b|/a = 1/sqrt(2). The finite "
                     "tracial-GNS lane supplies that balance under explicit "
-                    "premises; the physical attachment, phase, and two mass "
+                    "premises abstracted from the measured triple and realized "
+                    "by an asymmetric block choice; the physical attachment, phase, and two mass "
                     "ratios remain open. The MCPR/PDG proximity is "
                     "retrospective and is not promoted."
                 ),
@@ -243,14 +271,18 @@ def _boson_rows(wzh: dict, ew: dict) -> dict[str, Any]:
                 ],
             },
             {
-                "lane": "declared benchmark surface (public endpoint branch continuation)",
-                "tier": "T2; the public branch P consumes the measured Thomson endpoint",
+                "lane": "archived legacy D10 benchmark surface (P = 1.63094)",
+                "tier": "T2; archived calibration tuple, not strict-branch output",
                 "explanation": (
-                    "Target-free continuation on the calibration pixel; the "
-                    "pixel itself sits on the endpoint branch, so this row "
-                    "carries endpoint ancestry and validates the formula "
-                    "stack rather than adding an independent prediction."
+                    "The inherited coupling/vev tuple was evaluated at legacy "
+                    "P = 1.63094. The earlier emitter labelled it with endpoint "
+                    "P = 1.630968209403959 without recomputing that tuple. "
+                    "The current emitter binds its baseline and partial eta shift "
+                    "to the actual tuple pixel; a full same-branch running and "
+                    "matching evaluation remains open. This is a historical "
+                    "chart comparison, not an independent mass prediction."
                 ),
+                "P_basis": ew["inputs"]["P_calibration"],
                 "row_class": ew["row_class"],
                 # CL-5 demotion (commit 138c9204): the conditional EW artifact
                 # carries mass-dependent-width Breit-Wigner chart coordinates,
@@ -300,7 +332,8 @@ def _higgs_top_rows(
                     "boundary-scale candidate"
                 ),
                 "explanation": (
-                    "Two-loop values of the adopted branch; the candidate "
+                    "Conditional SM two-loop coordinates with supplied gauge "
+                    "couplings, matching and scale; the candidate "
                     "was identified after the implied scale was computed "
                     "and is retained as a historical coordinate for the three-loop "
                     "discriminating test. The flow-internal selection "
@@ -319,17 +352,16 @@ def _higgs_top_rows(
             {
                 "lane": (
                     "double-criticality boundary family (lambda = 0 and "
-                    "beta_lambda = 0 at one source scale; zero continuous "
-                    "parameters)"
+                    "beta_lambda = 0 at a supplied boundary scale)"
                 ),
-                "tier": "T2, conditional on the boundary-scale selection theorem",
+                "tier": "T2, conditional SM criticality; boundary selection open",
                 "explanation": (
-                    "Both Yukawa-sector boundaries derive from the gauge "
-                    "sector through the criticality law. The family over "
-                    "named source scales brackets the measured pair; the "
-                    "archived mu_U branch is the low edge and its deficit "
-                    "decomposes into the boundary-scale choice plus loop "
-                    "truncation, both named and quantified."
+                    "The supplied SM gauge/matching packet and criticality conditions "
+                    "determine conditional top-Yukawa and Higgs-quartic boundaries "
+                    "at each chosen scale. This is not an OPH mass selection theorem. "
+                    "The one-loop family does not bracket the measured top reference. "
+                    "The retained scan quantifies changes of boundary scale and "
+                    "loop truncation within this declared calculation."
                 ),
                 "one_loop": {
                     name: pair(row) for name, row in named_1l.items()
@@ -369,7 +401,7 @@ def _higgs_top_rows(
             },
             {
                 "lane": "archived literal one-loop core at the mu_U boundary",
-                "tier": "T2 (target-free tree coordinates; low edge of the family)",
+                "tier": "T2 (conditional SM tree coordinates; archived boundary)",
                 "explanation": (
                     "The 115.1 GeV Higgs coordinate is the archived branch "
                     "of the same family: criticality imposed at the gauge "
@@ -684,6 +716,7 @@ def build() -> dict[str, Any]:
         "status": "per_family_claim_tier_surface_no_public_promotion",
         "promotion_allowed": False,
         "display_note": DISPLAY_NOTE,
+        "identification_scope": IDENTIFICATION_SCOPE,
         "tier_ladder": {
             "T0": "comparison-only; never an ancestor of a prediction",
             "T1": "empirical closure; certified intervals",
@@ -725,12 +758,14 @@ def render_markdown(surface: dict[str, Any]) -> str:
     add("# Mass Candidate Status")
     add("")
     add(
-        "Per-family best numerical mass coordinates with claim tiers and the "
-        "named objects blocking the next tier. Generated by "
+        "Retained alternative mass candidates, calibrations and rejections, "
+        "grouped by comparison family with their separate domains and claim tiers. Generated by "
         "`scripts/build_source_only_mass_prediction_surface.py`; the JSON "
         "artifact is `runs/status/source_only_mass_prediction_surface.json`. "
         "No row is a public promotion."
     )
+    add("")
+    add(surface["identification_scope"])
     add("")
     add("| Tier | Meaning |")
     add("|---|---|")
@@ -748,6 +783,23 @@ def render_markdown(surface: dict[str, Any]) -> str:
             add(f"  - Tier: {row['tier']}")
             for key, value in row.items():
                 if key in {"lane", "tier", "blocking_objects", "artifact"}:
+                    continue
+                if key == "compare_only_ratio_envelope":
+                    ratios = []
+                    for name, ratio in value["independent_ratios"].items():
+                        residual = float(ratio["relative_central_residual_ppm"])
+                        inside = ratio["inside_componentwise_one_sigma_interval"]
+                        ratios.append(
+                            f"{name.replace('_over_', '/')} {residual:+.6f} ppm "
+                            f"({'inside' if inside else 'outside'} the retained componentwise interval)"
+                        )
+                    add("  - Compare-only ratios: " + "; ".join(ratios) + ".")
+                    add(
+                        "  - Ratio intervals: separate one-standard-uncertainty mass "
+                        "intervals; no covariance, joint confidence level or physical "
+                        "significance is assigned. Full comparison: "
+                        "[Koide receipt](runs/leptons/koide_circulant_identity.json)."
+                    )
                     continue
                 if isinstance(value, (dict, list)):
                     add(f"  - {key}: `{json.dumps(value)}`")

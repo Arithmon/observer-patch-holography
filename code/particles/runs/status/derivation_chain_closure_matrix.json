@@ -115,7 +115,7 @@
     ],
     "schema": "oph.observer_particles.finite_premise_witnesses.v1"
   },
-  "generated_utc": "2026-10-25T12:33:45Z",
+  "generated_utc": "2026-10-28T00:57:55Z",
   "provenance": {
     "artifact": "oph_blind_prediction_provenance_ledger",
     "promotion_allowed": false
@@ -220,7 +220,7 @@
     },
     {
       "chain": "higgs_top_declared_surface",
-      "claim_level": "conditional_declared_surface_higgs_top_candidate",
+      "claim_level": "target_anchored_declared_surface_comparison",
       "codomain_obstruction": "hard_no_go_current_corpus_compare_only_direct_top_codomain",
       "evidence_artifacts": [
         "code/particles/runs/calibration/direct_top_bridge_contract.json"
@@ -230,9 +230,11 @@
       },
       "promotable": false,
       "required_receipts": [
-        "EWTargetFreeRepairValueLaw_D10"
+        "EWTargetFreeRepairValueLaw_D10",
+        "independent_higgs_top_boundary_and_matching_inputs"
       ],
-      "status": "conditional_declared_surface_higgs_top_candidate"
+      "status": "target_anchored_declared_surface_comparison",
+      "target_use": "measured_higgs_top_used_in_declared_calibration_surface"
     },
     {
       "chain": "charged_leptons",

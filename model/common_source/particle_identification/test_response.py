@@ -67,6 +67,9 @@ def test_common_chemical_potential_moves_odd_costs_and_cancels_from_transfer():
         np.testing.assert_allclose(right.residue, left.residue, atol=3e-15)
     assert r.transfer_visibility(base)["pair_frequency"] == pytest.approx(
         r.transfer_visibility(shifted)["pair_frequency"], abs=2e-14)
+    assert r.transfer_visibility(base)["particle_hole_gap_identification_admitted"]
+    assert not r.transfer_visibility(shifted)["particle_hole_gap_identification_admitted"]
+    assert r.transfer_visibility(shifted)["single_gap_over_clock_under_particle_hole_symmetry"] is None
 
 
 def test_retarded_resolvent_has_positive_spectral_measure_and_CAR_normalization():

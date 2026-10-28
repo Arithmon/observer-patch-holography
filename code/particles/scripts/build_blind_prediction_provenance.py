@@ -47,9 +47,9 @@ def _classify_entry(entry: dict[str, Any]) -> dict[str, Any]:
         blind_status = "not_blind"
         convention_sensitivity = "inherits_declared_electroweak_surface"
     elif exact_kind == "conditional_declared_surface_higgs_top_candidate":
-        row_class = "conditional_declared_surface_candidate"
-        target_use = "candidate_upstream_d10_repair_not_source_promoted"
-        blind_status = "conditionally_blind_on_declared_surface"
+        row_class = "target_anchored_declared_surface_comparison"
+        target_use = "measured_higgs_top_used_in_declared_calibration_surface"
+        blind_status = "not_blind"
         convention_sensitivity = "depends_on_declared_D10_D11_running_matching_threshold_surface"
     elif exact_kind == "selected_class_target_anchored_exact_witness":
         row_class = "selected_class_target_anchored_witness"
@@ -170,7 +170,13 @@ def build_payload() -> dict[str, Any]:
                 "The ledger classifies target ancestry, blindness, and declared "
                 "convention sensitivity. It does not supply the source spectral "
                 "measure or interval-composition certificates required for a "
-                "numerical sensitivity sweep."
+                "numerical sensitivity sweep. The Higgs value below is the "
+                "target-anchored calibration surface, distinct from the "
+                "post-exposure criticality candidate. MCPR's roughly 84 ppm "
+                "display is a historically target-informed three-coordinate "
+                "architecture, not a blind mass prediction. The current "
+                "Mass Candidate Status records its ratio residuals and the "
+                "legacy electroweak pixel and external Planck normalization."
             ),
         },
         "source_surfaces": {
@@ -216,12 +222,17 @@ def build_payload() -> dict[str, Any]:
                 "classification": "protocol_defined__not_exercised",
                 "rule": (
                     "For any quantitative row outside construction inputs, timestamp and hash the source artifacts, "
-                    "record allowed conventions, then fetch or reveal the external reference."
+                    "record allowed conventions and all prior target exposure, then fetch or reveal the external reference. "
+                    "Freezing after target exposure prevents further tuning but does not restore historical blindness. "
+                    "Record all attempted candidates and distinguish calibration from held-out tests."
                 ),
                 "required_evidence": [
                     "source_artifact_hashes",
                     "forbidden_target_inputs",
                     "convention_set",
+                    "historical_target_exposure",
+                    "candidate_search_history",
+                    "theory_and_matching_uncertainty_model",
                     "pre_reference_runtime_output",
                     "post_reference_comparison_only_delta",
                 ],

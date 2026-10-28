@@ -178,12 +178,14 @@ def build_artifact(scan: dict[str, Any], references: dict[str, Any]) -> dict[str
                 "mh_relative": single_anchor["mh_relative"],
             },
             "statement": (
-                "The boundary-scale family brackets the measured pair. The "
-                "single-anchor E_cell branch reduces the archived deficits "
-                "by an order of magnitude in the Higgs channel; the residual "
-                "sits inside the declared loop-truncation and matching "
-                "bands. The open object is the boundary-scale selection "
-                "theorem, never a numerical fit."
+                "The one-loop curve does not reach the measured top reference. "
+                "The two-loop relation uses that top datum as an input and "
+                "returns a tree Higgs coordinate under supplied SM running "
+                "and matching assumptions. Declared truncation/matching bands "
+                "are not statistical uncertainties. The adopted boundary-scale "
+                "formula was selected after exposure to the implied scale; "
+                "source selection, physical pole matching and theory uncertainty "
+                "remain open."
             ),
         },
         "checks": {

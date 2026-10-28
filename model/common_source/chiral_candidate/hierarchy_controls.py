@@ -46,10 +46,13 @@ def predictions():
 
 
 def lepton_comparison(prediction):
-    """Compare AFTER prediction, using deliberately broad PDG-derived windows.
+    """Diagnose hierarchy AFTER prediction against broad pole-ratio windows.
 
-    These dimensionless acceptance windows are empirical benchmark inputs.
+    These dimensionless windows are empirical pole-mass benchmark inputs.
     Neither selects a source prescription or changes a predicted value.
+    No matching map identifies a source coefficient or declared Hubbard
+    texture threshold with a physical lepton pole mass. Window overlap is
+    therefore a diagnostic only, not an admissible physical mass comparison.
     """
     windows = ((F(206), F(207)), (F(3470), F(3485)))
     comparisons = []
@@ -64,6 +67,16 @@ def lepton_comparison(prediction):
     return {"benchmark": "charged lepton hierarchy, ascending e/mu/tau masses",
             "source": "https://pdg.lbl.gov/2025/download/db2024.pdf",
             "conservative_ratio_windows": [[str(low), str(high)] for low, high in windows],
+            "comparison_contract": {
+                "reference_quantity": "charged_lepton_pole_mass_ratios",
+                "prediction_quantity": "dimensionless_source_coefficients_or_declared_Hubbard_texture_threshold_ratios",
+                "prediction_renormalization_scheme_and_scale": None,
+                "source_to_pole_matching_supplied": False,
+                "physical_comparison_admissible": False,
+                "status": "unmatched_hierarchy_diagnostic_only",
+                "required_for_physical_comparison": "derive_mass_and_kinetic_response_together_then_supply_scheme_scale_and_pole_matching",
+                "passing_windows_would_establish_physical_mass_agreement": False,
+            },
             "empirical_data_used_only_for_comparison": True, "comparisons": comparisons,
             "an_overall_mass_scale_can_change_these_ratios": False,
             "other_nonlinear_or_interacting_actions_excluded": False}

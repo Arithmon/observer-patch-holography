@@ -125,6 +125,40 @@ energy subspaces are not reliable charge labels. This internal normalization
 does not determine the electromagnetic coupling. Gauge currents alone do not
 provide dynamical gauge fields or establish massless gauge-boson poles.
 
+### Visible spectral weights without discarding modes
+
+The kinetic report uses the
+[finite spectral diagnostic](../../observer_particles/spectral_response.py)
+on the same 180-dimensional $\mathcal H$ and $Q_N$. It fixes four canonical
+coordinate interpolators before diagonalization: the first internal
+coordinate in each spin and Nambu block, at indices $0,45,90,135$. These
+are a small coordinate probe, not a selected set of energy eigenvectors or
+an implemented charged detector apparatus.
+
+For exact joint energy/charge projectors the matrix residue is
+$B^\dagger P_{E,q}B$. Summing over the entire retained domain gives
+$B^\dagger B=I_4$ for this probe. Every signed frequency, zero mode and
+invisible subspace remains in the output. No projected weight is
+renormalized. A mode dark to these four columns can be visible to another
+interpolator; darkness is not a decoupling argument. The original
+positive-energy charge census still counts the complete symbol, including
+all modes invisible to this probe.
+
+Numerically unresolved frequencies are reported together with their full
+frequency lists and intervals. A cluster dimension is not an assertion of
+exact degeneracy or a physical particle multiplicity. Residue ranks and
+darkness are numerical diagnostics at the reported threshold, with input
+Hermitian-part, commutator and block-projection errors exposed. No exact
+rank or outward spectral-error certificate is claimed.
+
+This calculation extends the supplied-action check by its interpolator
+weights. It does not obtain $\mathcal H$ or $B$ from observer records.
+Charged preparation, readout and any required phase-reference service,
+as well as the physical state and clock, must be accounted for by a
+record reconstruction. The
+[field-reconstruction guide](../../../docs/research/OPH_FIELD_RECONSTRUCTION.md)
+keeps that inverse separate from finite action spectroscopy.
+
 ### A direct weak-chirality discriminator
 
 `weak_chirality_report()` reconstructs the normalized fundamental weak raising
@@ -328,6 +362,8 @@ Run the independent checks from the repository root:
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest \
   model/common_source/chiral_candidate/test_kinetic.py -q
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest \
+  model/observer_particles/test_spectral_response.py -q
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest \
   model/common_source/chiral_candidate/test_spacetime_attachment.py -q
 ```

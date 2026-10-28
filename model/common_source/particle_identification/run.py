@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from . import clifford, family_attachment, response
+from . import clifford, family_attachment, kinetic_response, response
 from ..mass_response import experiment as e, model
 from ..mass_response import run as mass_run
 from tools import strict_json
@@ -146,6 +146,7 @@ def run():
         },
         "finite_interacting_CAR_response": response.report(),
         "finite_free_control_CAR_response": response.report(interaction=False),
+        "finite_inverse_response_kinetics": kinetic_response.report(),
         "separate_free_continuum_spinor": clifford.report(),
         "native_family_feature": family,
         "existing_conditional_standard_model_module": {
@@ -213,6 +214,13 @@ def verify(path):
             or document["verdict"]["observed_standard_model_species_identified"]
             or document["verdict"]["observed_mass_spectrum_source_derived"]):
         raise ValueError("unsupported physical identification")
+    kinetic = document["finite_inverse_response_kinetics"]
+    if (kinetic.get("schema") != "oph.finite_car_inverse_kinetic.v1"
+            or any(kinetic.get(flag) is not False for flag in (
+                "response_inferred_from_observer_records", "spatial_momentum_derivatives_supplied",
+                "positive_physical_kinetic_metric_established", "physical_mass_or_species_identification",
+                "finite_shot_or_outward_numerical_certificate"))):
+        raise ValueError("unsupported finite inverse-response identification")
     print("Verified particle-audit custody and all retained quantum output weights; no dynamics replay performed")
 
 

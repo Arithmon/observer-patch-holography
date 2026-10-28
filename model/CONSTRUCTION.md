@@ -8,10 +8,16 @@ family coefficients, extra modes and geometry-response requirements. It
 instantiates restricted finite hypotheses of the theorem library; it does
 not derive the measured particle masses. The tested mass prescriptions fail
 the charged-lepton hierarchy: the declared linear Weyl–Higgs candidate gives
-mass ratios `1:1.1903:1.4982` against the observed `1:206.77:3477.23`, and
-the whole complex affine response class bounds the largest-to-smallest
-mass ratio by `543.55` within the retained comparison windows, against an
-observed lower bound of `3470` ([mass-response report](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)).
+coefficient ratios `1:1.1903:1.4982`. Under a direct pole-ratio identification,
+the broad reference windows require middle/light in `[206,207]` and
+heavy/light in `[3470,3485]`; the complex affine class then bounds heavy/light
+by `543.55`. These are conditional diagnostics of unmatched coefficients;
+a physical comparison requires joint kinetic/mass extraction and matching
+([mass-response report](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)).
+The [field-response guide](../docs/research/OPH_FIELD_RECONSTRUCTION.md)
+distinguishes record reconstruction, supplied-action spectroscopy and the
+physical identification of particles, including residues, currents and
+regulator multiplicities.
 
 This is the construction guide for the [model implementation](README.md).
 The [repair-law guide](CANDIDATES.md) explains which parts of the repair law

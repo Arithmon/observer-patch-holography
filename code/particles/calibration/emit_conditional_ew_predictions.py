@@ -9,10 +9,12 @@ tree and color-balanced descent, see the selection-theorem artifact), and
 P interval from the Thomson endpoint artifact. Nothing here is promoted;
 the promotion gates of the D10/D11 lane are unchanged.
 
-P sensitivity is the eta-channel partial derivative: eta_source = alpha_U
+The inherited tuple is bound to its actual legacy pixel P = 1.63094 by
+checking its coupling and vev ancestor. Its former endpoint-P label did not
+generate that tuple. P sensitivity is the eta-channel partial derivative: eta_source = alpha_U
 times beta_EW with d alpha_U / dP taken from the hierarchy certificate's
 derivative interval; the running couplings, v, and the Jacobian cores are
-held at their repo-P values. The full-surface dP row requires re-deriving
+held at their legacy-tuple values. The full-surface dP row requires re-deriving
 the running package at shifted P and is recorded as the open instruction.
 
 Run:
@@ -23,6 +25,7 @@ writes code/particles/runs/calibration/conditional_ew_predictions_current.json.
 from __future__ import annotations
 
 import json
+import math
 import pathlib
 from datetime import datetime, timezone
 
@@ -41,7 +44,7 @@ from derive_d10_repair_tuple_selection_theorem import (  # noqa: E402
 )
 
 # pixel inputs
-P_CALIBRATION = 1.630968209403959          # public endpoint (hierarchy lane)
+HISTORICAL_P_LABEL = 1.630968209403959     # former label, not the tuple's pixel
 P_EMPIRICAL_INTERVAL = (1.631031463127, 1.631051577591)  # Thomson endpoint artifact
 D_ALPHA_U_D_P = -10.9905                   # hierarchy certificate derivative (midpoint)
 
@@ -68,6 +71,23 @@ def eta_shift(basis: dict, delta_p: float) -> float:
     return basis["beta_EW"] * D_ALPHA_U_D_P * delta_p
 
 
+def load_basis_with_pixel() -> tuple[dict, float]:
+    """Bind the inherited tuple to its evaluated pixel, rejecting stale ancestry."""
+    basis = load_basis()
+    parent = json.loads((RUNS / "d10_ew_observable_family.json").read_text())
+    core = parent["core_source"]
+    expected = {
+        "alpha2_mz": core["alpha2_mz"],
+        "alphaY_mz": 3.0 * core["alpha1_mz"] / 5.0,
+        "alpha_u_seed": core["alpha_u"],
+        "v_report_gev": core["v"],
+    }
+    for key, value in expected.items():
+        if not math.isclose(basis[key], value, rel_tol=1e-13, abs_tol=0.0):
+            raise ValueError(f"D10 basis {key} does not match its pixel parent")
+    return basis, float(core["p"])
+
+
 def rows_for_basis(basis: dict, surface: dict) -> dict:
     out = {}
     for cand in (candidate_a_tuple(basis), candidate_b_tuple(basis)):
@@ -84,7 +104,7 @@ def rows_for_basis(basis: dict, surface: dict) -> dict:
 
 
 def build() -> dict:
-    basis = load_basis()
+    basis, p_basis = load_basis_with_pixel()
     with open(RUNS / "d11_declared_calibration_surface.json", encoding="utf-8") as f:
         surface = json.load(f)
 
@@ -98,7 +118,7 @@ def build() -> dict:
     ):
         shifted = dict(basis)
         shifted["eta_source"] = basis["eta_source"] + eta_shift(
-            basis, p_val - P_CALIBRATION)
+            basis, p_val - p_basis)
         shifted["lambda_EW"] = shifted["eta_source"] ** 2 / (4.0 * shifted["beta_EW"])
         p_rows[label] = rows_for_basis(shifted, surface)
 
@@ -171,17 +191,23 @@ def build() -> dict:
                 "d10.same-scheme-anchor-bridge (issue #545)",
                 "source derivation of the selection axioms (issue #521)",
                 "complete W/Z common-observable scheme map and theory uncertainty",
+                "SM-content running with consistent hypercharge normalization and thresholds",
             ],
         },
         "inputs": {
             "basis_source": "d10_ew_target_free_repair_value_law.json",
             "surface_source": "d11_declared_calibration_surface.json",
-            "P_calibration": P_CALIBRATION,
+            "basis_pixel_source": "d10_ew_observable_family.json:core_source.p",
+            "P_calibration": p_basis,
+            "historical_incorrect_P_label": HISTORICAL_P_LABEL,
+            "baseline_kind": "archived_legacy_D10_tuple",
             "P_empirical_interval": list(P_EMPIRICAL_INTERVAL),
             "d_alpha_U_d_P": D_ALPHA_U_D_P,
             "sensitivity_scope": "eta-channel partial only; running couplings, "
-                                 "v, and Jacobian cores held at repo P; the "
-                                 "full-surface dP row is the open instruction",
+                                 "v, and Jacobian cores held at the legacy tuple pixel. "
+                                 "The derivative is a separately supplied hierarchy "
+                                 "diagnostic, not a full same-branch P evaluation. "
+                                 "Full running, thresholds and matching remain open.",
         },
         "rows_at_calibration_P": base_rows,
         "rows_at_empirical_P": p_rows,
@@ -196,7 +222,7 @@ def main() -> int:
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=1)
         f.write("\n")
-    print("conditional envelope (selection x P):")
+    print("conditional diagnostic envelope (selection x partial eta shift):")
     for obs, row in report["comparison_compare_only"].items():
         lo, hi = row["conditional_envelope"]
         if row["physical_comparison_status"] == "NOT_EVALUABLE":

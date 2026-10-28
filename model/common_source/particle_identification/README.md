@@ -46,6 +46,22 @@ this finite candidate, not to all OPH constructions.
 Read the [response derivation](RESPONSE.md) for spectral and source-word
 conventions.
 
+The [inverse-response diagnostic](kinetic_response.py) computes the inverse
+finite CAR matrix and its frequency derivative from those same complete
+Lehmann residues. Independent tests compare the free inverse with the actual
+one-particle action, differentiate the interacting response numerically, and
+change operator coordinates nonunitarily. Generalized free poles remain
+fixed only when the kinetic and constant terms transform together; ordinary
+eigenvalues of the transformed constant matrix do not. The interacting
+frequency dependence is retained. This is a check using a supplied full
+response, not a reconstruction of that matrix from observer records, a
+spatial-momentum derivative or a physical positive kinetic metric.
+
+The transfer half-gap is now admitted only at the source's symmetric
+chemical-potential convention. A nonzero common chemical potential leaves
+the neutral pair frequency unchanged while splitting addition/removal costs;
+the interface then reports those costs and withholds the single-gap readout.
+
 ## The free continuum candidate contains two Dirac copies
 
 [clifford.py](clifford.py) constructs the actual continuum spin generators

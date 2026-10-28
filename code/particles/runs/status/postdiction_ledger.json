@@ -96,7 +96,7 @@
   },
   "fixed_spectral_cross_scale_comparison": {
     "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
-    "artifact_sha256": "ff44474d52ac62b16227eb44793d14c10d89b0134ad751f29033764e61bfdaa2",
+    "artifact_sha256": "65394c10642f7a9e2dc177fa6960d9477bba142e20846ffd648aae3eaff4d1c3",
     "attribution": {
       "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
       "author": "A. D. Wissner-Gross",
@@ -199,6 +199,105 @@
     "new_axiom_introduced": false,
     "public_promotion_allowed": false
   },
+  "particle_reconstruction_decisions": {
+    "parents": {
+      "chiral": {
+        "path": "model/common_source/chiral_candidate/results.json",
+        "sha256": "d0782adcf5a00c3583e6df4deb0385e8471d8a78a3394f597d3fde7040138c08"
+      },
+      "native": {
+        "path": "model/common_source/native_defect_decision_results.json",
+        "sha256": "c655eeda8409328c2be4cfcbf12413ad7e2a923f3d700b0c308926a457b7fe62"
+      },
+      "particle": {
+        "path": "model/common_source/particle_identification/results.json",
+        "sha256": "7c30d76bd50f65d97b632d91477ee2591aaea55a12089bcb33f4e1b875dbab6f"
+      },
+      "record": {
+        "path": "model/common_source/chiral_candidate/record_two_point_results.json",
+        "sha256": "9299b762c9f563de54bce7fc829233c6661a423aeef38991657a202e2b682f92"
+      }
+    },
+    "replay_owner": "python -m model.verify",
+    "rows": [
+      {
+        "evidence": {
+          "closed_component_sizes": [
+            66
+          ],
+          "mean_attempts_to_split": "6",
+          "quantum_survival_identity": "sum_h K_h^dagger P_collision K_h=(5/6)P_collision",
+          "stationary_current_probability": "5/33"
+        },
+        "object_id": "native_total_two_load_collision",
+        "parent": "native",
+        "result": "native double-load defect decays; no nonconstant configuration invariant or maintenance-energy selection"
+      },
+      {
+        "evidence": {
+          "passive_code_escape_probability": {
+            "C": "31/108",
+            "E": "55/108"
+          }
+        },
+        "object_id": "native_active_matching_memory",
+        "parent": "native",
+        "result": "these scalar record/diagonal costs cannot split logical-state masses; a common energy or mass is not excluded and no physical offset is derived"
+      },
+      {
+        "evidence": {
+          "diagnostics": [
+            {
+              "canonical_CAR_sum_rule_residual": 3.8857805861880415e-16,
+              "derivative_centered_difference_residual": 3.3443320438917246e-11,
+              "derivative_congruence_residual": 7.533586752656565e-16,
+              "derivative_variation_between_two_frequencies": 9.322940436911305e-16,
+              "interaction_enabled": false,
+              "inverse_congruence_residual": 3.3824883703976606e-16,
+              "inverse_identity_residual": 2.2591401799415137e-16
+            },
+            {
+              "canonical_CAR_sum_rule_residual": 4.440892098500626e-16,
+              "derivative_centered_difference_residual": 3.003034709049609e-11,
+              "derivative_congruence_residual": 2.6679961608089897e-15,
+              "derivative_variation_between_two_frequencies": 0.0030751220492841614,
+              "interaction_enabled": true,
+              "inverse_congruence_residual": 6.674335893081556e-16,
+              "inverse_identity_residual": 1.1188630228279524e-16
+            }
+          ]
+        },
+        "object_id": "supplied_four_mode_CAR_benchmark",
+        "parent": "particle",
+        "result": "Inverse-response coordinate covariance from the supplied full finite response; no detector reconstruction or physical kinetic metric."
+      },
+      {
+        "evidence": {
+          "held_out_operator_residuals": [
+            6.399275538203443e-08,
+            4.179869849207811e-08,
+            1.2336679731464857e-08
+          ],
+          "joint_response_scope": "z-axis kinetic and neutral-Higgs-multiplier derivatives of one canonical finite charge block"
+        },
+        "object_id": "supplied_chiral_charge_block",
+        "parent": "record",
+        "result": "Source-record reconstruction of one supplied finite charge block and joint derivatives; its mass coefficient, clock and apparatus remain supplied."
+      },
+      {
+        "evidence": {
+          "clusters": 38,
+          "dimension": 180,
+          "residue_sum_error_Frobenius": 7.671793734223671e-16
+        },
+        "object_id": "supplied_chiral_finite_spectral_projection",
+        "parent": "chiral",
+        "result": "Fixed-interpolator charge-resolved response of the supplied chiral generator; finite clusters are not a particle census."
+      }
+    ],
+    "scope": "separate object contracts; no composite spectrum or physical identification",
+    "verification": "source custody and retained artifact hashes checked; retained readout summary, not a fresh scientific replay"
+  },
   "principal_results": [
     {
       "id": "intrinsic_rank_three_response_completion",
@@ -206,7 +305,7 @@
     },
     {
       "id": "forced_gauge_structure",
-      "statement": "Complete compact port response from A1 and endogenous overlap transport from A2 force the abstract Lie type su(3)+su(2)+u(1) on the twelve-port carrier. Target-blind readback independently derives R=-J. Inside the declared exterior-response algebra, an exhaustive scan selects the charge-conjugate rank-15 chiral anomaly-free pair and its one-generation hypercharge multiset; its common central kernel is Z6. Source reconstruction of the matrix current and matter action, physical global-form selection, laboratory attachment, and continuum quantum field theory remain separate."
+      "statement": "Conditional on a faithful twelve-dimensional compact, commutator-closed response, an inner carrier action fixing its centre, the nonzero-centre and fixed-space exclusions, and compact-simple classification inputs, the finite theorem selects the abstract Lie type su(3)+su(2)+u(1). The registered recurrence does not supply these response and centre hypotheses. Target-blind readback independently derives R=-J, without constructing that current. Matter selection additionally declares the spin lift, central trace redistribution, nonvacuum even exterior sector and anomaly/minimality constraints. Inside that grammar, an exhaustive scan selects the charge-conjugate rank-15 chiral anomaly-free pair and its one-generation hypercharge multiset; its common central kernel is Z6. Source reconstruction of the matrix current and matter action, physical global-form selection, laboratory attachment, and continuum quantum field theory remain separate."
     },
     {
       "id": "carrier_class_dispersion_surface",
@@ -218,7 +317,7 @@
     },
     {
       "id": "lepton_closure_target",
-      "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is the scheme unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source requirement. The lepton scale is localized only under that recorded accounting packet. A source-emitted bridge value is a falsification target: the closure value would satisfy the conditional lane, while a value outside the interval refutes the declared decomposition."
+      "statement": "The anchor-gap value 0.6379 closes the charged-lepton lane exactly on the measured triple, inside the retrospective accounting interval [0.6199, 0.6506]; the distance +0.0070 to the standard on-shell reference deficit 0.6309 is an unfixed scheme term; historical lane #736 (closed; live owner #1026) records that missing source requirement. The accounting packet includes measured-lepton information in its higher-order remainder. This is empirical calibration, not an independently predicted mass interval. An independent bridge comparison requires separately frozen inputs, matching and uncertainty; it would test that declared decomposition, not every possible source mechanism."
     }
   ],
   "retrospective_public_record_comparisons": {
@@ -668,7 +767,7 @@
         "live_owner_issues": [
           1026
         ],
-        "statement": "The certified solve inverts exactly at the measured triple: one anchor-gap value closes the charged-lepton lane on the witness, that value lies inside the retrospective accounting interval, and its distance to the standard on-shell reference deficit is an unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that missing source obligation. The lepton scale is localized only under the recorded accounting packet. A source-emitted bridge value is a sharp falsification target: landing on the closure value satisfies the conditional lane on the witness, while landing outside the recorded interval refutes the decomposition.",
+        "statement": "The certified solve inverts exactly at the measured triple: one anchor-gap value closes the charged-lepton lane on the witness, that value lies inside the retrospective accounting interval, and its distance to the standard on-shell reference deficit is an unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that missing source obligation. The lepton scale is localized only under the recorded accounting packet, including measured-lepton information in the higher-order remainder. This is empirical calibration, not an independently predicted mass interval or sharp falsification target. Testing an independent bridge would require separately frozen inputs, matching and uncertainty; it would test that declared decomposition rather than every possible source mechanism.",
         "tier": "T1_empirical_closure",
         "width_floor": "the certified width floor at the current premise set is the anchor scheme-bridge ambiguity (issue 545, source branch); the payload term cancels in this lane and the higher-order band is a level convention pinned by the open bridge",
         "witness_point": {
@@ -680,6 +779,7 @@
         }
       },
       {
+        "P": "1.63097209585889737696451390350695562847912625",
         "artifact_ref": "runs/leptons/charged_mcpr_completion_conditional.json",
         "blocking_objects": [
           "A5_FAM",
@@ -707,7 +807,8 @@
           "m_tau_over_m_e_inside_componentwise_one_sigma_interval": true,
           "physical_verdict": "No physical exclusion or significance follows: the response architecture was historically target-informed, its mass scheme has no validated pole bridge, and no model uncertainty bound is supplied."
         },
-        "explanation": "The eight-register architecture reproduces the charged triple at 84 ppm with zero runtime charged reference, and the architecture itself is a declared model input. The source-only completion is the A5/W5 orbit program; the homogeneous branch is proven shape-silent.",
+        "explanation": "Historically target-informed architecture with three circulant coordinates (shape phase, modulus and scale). Its approximately 84 ppm absolute display is branch- and scale-dependent; absence of charged references at runtime does not make its design blind. The muon/electron ratio residual is about +0.087 ppm, outside the retained componentwise one-standard-uncertainty envelope; this is not a physical significance test without a mass-scheme bridge and theory uncertainty. A5/W5 source selection remains open.",
+        "historical_target_informed_architecture": true,
         "id": "charged_leptons_mcpr_conditional",
         "measured_gev": [
           0.0005109989506900001,
@@ -720,12 +821,14 @@
           "muon",
           "tau"
         ],
+        "provenance_review": "runs/leptons/charged_icosahedral_completion_v1_review.json",
         "relative_deltas": [
           -8.410341929177001e-05,
           -8.401692048642939e-05,
           -8.402443231347867e-05
         ],
         "row_class": "conditional_on_declared_mcpr_response_architecture",
+        "scale_and_running_boundary": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
         "tier": "T2",
         "values_gev": [
           0.0005109559739309925,
@@ -939,67 +1042,87 @@
     ],
     "electroweak": [
       {
+        "P_basis": 1.63094,
         "anchoring": "target_anchored_backsolve",
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-        "delta": 0.07747557670501237,
-        "delta_over_sigma": 0.7043234245910216,
+        "basis_pixel_source": "d10_ew_observable_family.json:core_source.p",
+        "delta": 0.08291016674985485,
+        "delta_over_sigma": 0.7537287886350441,
         "envelope_overlaps_one_sigma_band": true,
+        "historical_incorrect_P_label": 1.630968209403959,
         "id": "ew_mH_gev",
         "measured": 125.13,
         "measured_sigma": 0.11,
         "measured_source": "PDG 2026",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
+        "scale_and_running_boundary": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
+        "sensitivity_scope": "eta-channel partial only; running couplings, v, and Jacobian cores held at the legacy tuple pixel. The derivative is a separately supplied hierarchy diagnostic, not a full same-branch P evaluation. Full running, thresholds and matching remain open.",
         "tier": "T2_conditional",
-        "value_central": 125.20747557670501,
+        "value_central": 125.21291016674985,
         "value_envelope": [
           125.18328541107648,
-          125.23166574233353
+          125.24253492242322
         ]
       },
       {
+        "P_basis": 1.63094,
         "anchoring": "target_anchored_backsolve",
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
-        "delta": 0.21492450651575723,
-        "delta_over_sigma": 0.3582075108595954,
+        "basis_pixel_source": "d10_ew_observable_family.json:core_source.p",
+        "delta": 0.20739508632848924,
+        "delta_over_sigma": 0.3456584772141488,
         "envelope_overlaps_one_sigma_band": true,
+        "historical_incorrect_P_label": 1.630968209403959,
         "id": "ew_mt_pole_gev",
         "measured": 172.1,
         "measured_sigma": 0.6,
         "measured_source": "PDG 2026 cross-section pole-mass context row",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
+        "scale_and_running_boundary": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
+        "sensitivity_scope": "eta-channel partial only; running couplings, v, and Jacobian cores held at the legacy tuple pixel. The derivative is a separately supplied hierarchy diagnostic, not a full same-branch P evaluation. Full running, thresholds and matching remain open.",
         "tier": "T2_conditional",
-        "value_central": 172.31492450651575,
+        "value_central": 172.30739508632848,
         "value_envelope": [
-          172.27749368420027,
+          172.2624348438258,
           172.3523553288312
         ]
       },
       {
+        "P_basis": 1.63094,
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
+        "basis_pixel_source": "d10_ew_observable_family.json:core_source.p",
+        "historical_incorrect_P_label": 1.630968209403959,
         "id": "ew_MW_chart_gev",
         "physical_comparison_status": "NOT_EVALUABLE",
         "reason": "the emitted value is a running/tree chart coordinate; no complete renormalized-vev, tadpole, threshold, finite-order, uncertainty, and complex-pole map places it in the reference coordinate",
         "row_class": "conditional_on_P_and_repair_selection",
+        "scale_and_running_boundary": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
+        "sensitivity_scope": "eta-channel partial only; running couplings, v, and Jacobian cores held at the legacy tuple pixel. The derivative is a separately supplied hierarchy diagnostic, not a full same-branch P evaluation. Full running, thresholds and matching remain open.",
         "tier": "T2_conditional",
-        "value_central": 80.3733146428161,
+        "value_central": 80.37338335457049,
         "value_envelope": [
           80.36921677537332,
-          80.37741251025889
+          80.37754993376767
         ]
       },
       {
+        "P_basis": 1.63094,
         "artifact_ref": "code/particles/runs/calibration/conditional_ew_predictions_current.json",
+        "basis_pixel_source": "d10_ew_observable_family.json:core_source.p",
+        "historical_incorrect_P_label": 1.630968209403959,
         "id": "ew_MZ_chart_gev",
         "physical_comparison_status": "NOT_EVALUABLE",
         "reason": "the emitted value is a running/tree chart coordinate; no complete renormalized-vev, tadpole, threshold, finite-order, uncertainty, and complex-pole map places it in the reference coordinate",
         "row_class": "conditional_on_P_and_repair_selection",
+        "scale_and_running_boundary": "GeV/MeV displays inherit the externally normalized Planck-energy decimal E_star = 1.220890e19 GeV; the clock audit classifies its clock readback as a calibration checksum. No operational absolute scale is closed. Archived electroweak coordinates retain the MSSM-like running packet. A consistent SM rerun must first fix the active particle content, thresholds, matching and hypercharge normalization: b1 = 41/10 for g1 = sqrt(5/3) gY, or bY = 41/6 for gY. The existing two-loop engine uses g1 and retains only the top Yukawa. These historical values are not outputs of that future rerun. See the [mass-response research guide](../../docs/research/OPH_PARTICLE_MASS_RESPONSE.md).",
+        "sensitivity_scope": "eta-channel partial only; running couplings, v, and Jacobian cores held at the legacy tuple pixel. The derivative is a separately supplied hierarchy diagnostic, not a full same-branch P evaluation. Full running, thresholds and matching remain open.",
         "tier": "T2_conditional",
-        "value_central": 91.19312369279186,
+        "value_central": 91.19486041435128,
         "value_envelope": [
           91.18797807794321,
-          91.19826930764052
+          91.20174275075935
         ]
       }
     ],
@@ -1340,7 +1463,7 @@
               "receipt": "code/sm_fermion_current/coupled_receipt.json",
               "receipt_pin": {
                 "bytes": 11161830,
-                "sha256": "90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+                "sha256": "811303aa9079d3919931cd1b64e5456e1b87be795238c8b83060eb201356d54b"
               }
             },
             "mean_field": {
@@ -1364,7 +1487,7 @@
               "receipt": "code/sm_fermion_current/current_receipt.json",
               "receipt_pin": {
                 "bytes": 3706044,
-                "sha256": "d4a780d4849d9b5dea1618705b87279597d6aca345a160a20990435929cff8a7"
+                "sha256": "077bb29b94d9597daf4f1b30ae80ec80910a7aea52c7859ba51c523e5e70e997"
               }
             },
             "quantum_link": {
@@ -1395,7 +1518,7 @@
               "receipt": "code/sm_fermion_current/quantum_link_receipt.json",
               "receipt_pin": {
                 "bytes": 54500,
-                "sha256": "0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
+                "sha256": "4c8b29aba09768264d10c47e19ddce0d9727b8d3b9cc3afcd79bac673cb70286"
               }
             }
           },
@@ -6790,7 +6913,7 @@
         "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
         "receipt_pin": {
           "bytes": 9510,
-          "sha256": "863a85e8d434db48dae49db32be14890457764d47e7d964908e4971f6cec165c"
+          "sha256": "0c0ced9333593d4679dbc1d5016fe71a9729a8e674da4867cd80a79d981d6505"
         },
         "source_selected_statistics": false,
         "statement": "A supplied spin lift and conserved single-occupation current histories do not select exchange statistics. A separate same-channel two-particle comparison has exact coincidence probabilities 1, 49/625 and 337/625 for the declared fermionic, bosonic and distinguishable preparations."
@@ -6821,7 +6944,7 @@
         "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
         "receipt_pin": {
           "bytes": 10405,
-          "sha256": "60468156a30639b267424084943fa6d0b223f2ae6364799aa1447eb7fc3b33a6"
+          "sha256": "904b1e9d6a31592da166e1ed28f1f9e42a7dee677b0acc592df4380accb633ed"
         },
         "source_selected_statistics": false,
         "statement": "A common real scalar-q creation law and exact quadratic occupation/phase law force q in {1,-1}. Finite full representation dimension, or a stable fixed negative-energy ladder, excludes q=1 and yields Pauli exclusion and full canonical anticommutation by polarization."
@@ -6850,7 +6973,7 @@
         "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
         "receipt_pin": {
           "bytes": 126386,
-          "sha256": "cb42b27d7a5e92f26c249f35000c95bf9f49be24b22a801f46fe9dea0c228835"
+          "sha256": "a690ae5c0a1b6442d35f4a608a20d65c48e071618dc183e572fd8ba1526dec5e"
         },
         "source_selected_statistics": false,
         "statement": "On a finite positive Hilbert space, an unscaled contraction creation field with its exact quadratic unit-phase law squares to zero. Linearity gives creation anticommutation without a scalar-q premise. An exhaustive adjoint add/remove instrument additionally yields full CAR. A covariant symmetric Fock space capped at total occupation two preserves the supplied one-particle source dynamics and exact phase law but permits double occupation. Making its fields into Kraus contractions rescales the quadratic phase law."

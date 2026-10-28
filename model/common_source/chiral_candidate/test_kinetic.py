@@ -208,6 +208,14 @@ def test_report_scopes_physical_and_regulator_identification():
     assert packet["dimensions"]["independent_right_neutrinos"] == 0
     assert packet["fixed_neutral_Higgs_current_span"]["unbroken_dimension_numeric"] == 9
     assert sum(packet["positive_energy_electric_charge_multiplicities"].values()) == 90
+    spectral = packet["charge_resolved_spectral_response"]
+    assert spectral["fixed_interpolator_indices"] == [0, 45, 90, 135]
+    assert sum(row["cluster_dimension"] for row in spectral["clusters"]) == 180
+    assert sum(row["dark_at_numerical_admission"] for row in spectral["clusters"]) > 0
+    np.testing.assert_allclose(spectral["residue_sum"]["real"], np.eye(4), atol=1e-13)
+    np.testing.assert_allclose(spectral["residue_sum"]["imag"], 0, atol=1e-13)
+    assert not any(row["exact_energy_degeneracy_asserted"] for row in spectral["clusters"])
+    assert not spectral["scope"]["exact_residue_ranks_certified"]
     assert not packet["local_gauge_covariant_chiral_regulator_established"]
     assert not packet["measured_Standard_Model_particles_identified"]
     assert not packet["native_trial_masses_match_observed_hierarchy"]

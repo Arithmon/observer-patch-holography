@@ -509,10 +509,11 @@ theorem smStructure_family_band_selected :
             c.1 == "3" || OPH.A5FamilyBand.z5lt (5, -1) c.2.2.1) = true :=
   OPH.A5FamilyBand.family_band_selected
 
-/-- The exact seam-cost order is strict, and without the faithfulness
-clause the cost minimizer over all four bands is the trivial band at
-cost zero: the clause is load-bearing, and cost minimization alone
-selects nothing physical.  Re-export of
+/-- The exact seam-cost order is strict, and over all four bands the
+cost minimizer is the trivial band at zero. This control omits both
+faithfulness and the dimension window; either exclusion alone removes
+the trivial entry on the committed table. It does not show that either
+is separately necessary while the other is retained. Re-export of
 `OPH.A5FamilyBand.cost_order_strict` and
 `OPH.A5FamilyBand.trivial_band_without_faithfulness`. -/
 theorem smStructure_family_band_cost_receipts :

@@ -39,7 +39,8 @@ def test_blind_prediction_provenance_records_target_use_and_declared_sensitivity
     assert "electron" not in row_map
     assert withheld_map["electron"]["target_use"] == "target_values_or_target_derived_datum_used"
     assert withheld_map["electron"]["blind_status"] == "withheld_not_blind"
-    assert row_map["higgs"]["blind_status"] == "conditionally_blind_on_declared_surface"
+    assert row_map["higgs"]["blind_status"] == "not_blind"
+    assert row_map["higgs"]["target_use"] == "measured_higgs_top_used_in_declared_calibration_surface"
     assert "top_quark" not in row_map
     assert withheld_map["top_quark"]["target_use"] == "target_values_or_target_derived_datum_used"
     assert "electron_neutrino" not in row_map

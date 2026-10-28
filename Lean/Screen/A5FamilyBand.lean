@@ -381,9 +381,12 @@ theorem family_band_selected :
         c.1 == "3" || z5lt (5, -1) c.2.2.1) = true := by
   constructor <;> decide
 
-/-- Without the faithfulness clause the cost minimizer over all four
-bands is the trivial band at cost zero: the clause is load-bearing and
-cost minimization alone selects nothing physical. -/
+/-- Over all four bands, with both faithfulness and the dimension window
+omitted, the cost minimizer is the trivial band at cost zero. On this
+candidate table either exclusion alone removes that entry; the all-band
+control does not prove that faithfulness is separately necessary while
+the dimension window is retained. Cost minimization on the unrestricted
+table does not select the physical family object. -/
 theorem trivial_band_without_faithfulness :
     (candidates.all fun c => c.1 == "1" || z5lt (0, 0) c.2.2.1) = true := by
   decide

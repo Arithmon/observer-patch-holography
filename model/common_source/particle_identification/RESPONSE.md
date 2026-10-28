@@ -85,6 +85,46 @@ potential in the convention $H(\mu)=H(0)+\mu N$ moves the addition cost by
 $+\mu$ and the removal cost by $-\mu$, while this pair frequency remains
 unchanged. Reading a single charged cost therefore also requires a chemical
 potential convention; the symmetric half-gap uses particle-hole symmetry.
+`transfer_visibility` admits that half-gap only when the supplied chemical
+potential is zero and the two ground costs agree within its numerical check.
+At nonzero chemical potential the pair frequency is retained and the
+single-gap field is null. Pair interference alone cannot infer both costs.
+
+## Inverse response and coordinate covariance
+
+[kinetic_response.py](kinetic_response.py) forms the inverse and its analytic
+frequency derivative from the complete same-law spectral matrix:
+
+```math
+ K(z)=G(z)^{-1},\qquad
+ \partial_zG(z)=-\sum_r\frac{R_r}{(z-\omega_r)^2},\qquad
+ \partial_zK(z)=-K(z)(\partial_zG(z))K(z).
+```
+
+The probe frequency remains strictly in the upper half-plane. For an
+admitted packet the supplied residues are finite Hermitian positive matrices
+whose actual sum agrees with the canonical CAR identity within the declared
+numerical tolerance. The interface rejects missing/doubled nonzero residues
+and inconsistent signed frequencies; it returns the actual transformed sum
+and the expected coordinate Gram separately. This consistency validation
+alone does not prove a supplied packet's Hamiltonian provenance. For an
+invertible operator-coordinate change $c'=Ac$, $G'=AGA^\dagger$ and
+$K'=A^{-\dagger}KA^{-1}$; the derivative transforms by the same congruence.
+The free response has the pencil $K=zZ-M$. Its roots are the generalized
+eigenvalues of $(M,Z)$, invariant under that simultaneous change. Ordinary
+eigenvalues of $M$ alone can change and are not a repaired spectrum.
+
+These identities use the full finite Hamiltonian response. The derivative
+at a complex probe frequency is not asserted to be a positive physical
+kinetic metric. In the interacting ring it depends on frequency, so a
+static whitening alone does not remove the self-energy. Independent
+finite-difference and free-action tests check the implementation. No detector
+tomography, spatial derivative, physical chiral field, observer-clock matching
+or measured mass follows from this finite calculation. The current
+[particle receipt](results.json) includes this diagnostic separately from
+the actually executed continuing record experiment.
+
+## Local charge and apparatus scope
 
 The invariant symmetry here is **global occupation U(1)**. This transfer is
 not an established locally electromagnetic-gauge-invariant field. Gauging

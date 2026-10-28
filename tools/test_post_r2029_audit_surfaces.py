@@ -278,7 +278,8 @@ def test_thermodynamic_scope_separates_stationary_kernels_from_normalizers() -> 
 
 def test_wz_and_quark_surfaces_do_not_promote_declared_maps_or_close_future_routes() -> None:
     particle = _text("paper/deriving_the_particle_zoo_from_observer_consistency.tex")
-    assert "target-free running-chart coordinates" in particle
+    assert "They are conditional constructions: their discrete choices and some attachments have target ancestry." in particle
+    assert "Freezing them does not erase that ancestry." in particle
     assert "Conditional on the registered source signature" in particle
     assert "does not define a unique quark mass spectrum" in particle
     quark = _claims()["OPH-QUARK-YUKAWA-TWO-MODULUS-NONIDENTIFIABILITY"]
