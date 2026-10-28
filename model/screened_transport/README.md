@@ -9,6 +9,9 @@ applies each record-selected recovery and resets the classical core. Its
 [campaign](campaign.json), [exact receipt](transport_results.json),
 [source](transport.py), and [independent tests](test_transport.py) bind the
 complete C/E branch menu. The time parameter below is a native attempt count.
+The campaign's predecessor commit records the baseline provenance; its
+`source_sha256` map binds the current verification inputs, including the
+recovery receipt and its producer.
 
 ## A positive same-code native current form
 
@@ -71,8 +74,9 @@ positive E complete raw flags. Its ideal branch relation is
 Summing all flags gives the identity channel on every logical density matrix
 and any untouched reference. Its four logical-superoperator eigenvalues are
 `(1,1,1,1)`; the per-attempt generator `Phi-I` has four zeros. The completed
-source pulse execution has retained numerical error diagnostics, not an
-exact hardware fidelity certificate. A common global phase is invisible to
+source pulse execution is checked by fresh numerical diagnostics against
+fixed admission ceilings, without an exact hardware fidelity certificate.
+A common global phase is invisible to
 this channel and cannot be called zero rest energy.
 
 Before the explicit core-label reset, one uniform-seam attempt from core

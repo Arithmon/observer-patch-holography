@@ -51,8 +51,8 @@ all 78 native states and the source padding. Actual floating source words
 then execute all 208 positive recovery branches on both logical columns,
 retaining every source row. A two-attempt C/E path additionally executes the
 native source instrument with all raw slots before selecting and recovering
-the branch. The largest observed source replay operator discrepancy is below
-`4e-12`; this is a numerical diagnostic.
+the branch. Fresh source replay operator discrepancies must pass the fixed
+`1e-8` numerical admission ceiling; backend-specific values are diagnostics.
 
 For any arbitrary entangled reference and any finite number `t` of attempts,
 induction on the branch identity preserves the joint logical/reference state
@@ -87,12 +87,15 @@ core label uses seven bits. Source proper-code load/export and classical
 control are apparatus services already declared by the compiler; the core
 reset has no assigned source pulse or physical work cost here.
 
-The floating source composition diagnostic bounds the emitted-versus-ideal
-operator difference by `2.3e-8` through 100 corrected attempts for either
-law, including the initial encoder, under its numerical gate. Its product
+The retained source composition admission ceiling is `1e-6` through 100
+corrected attempts for either law, including the initial encoder. Every
+replay recomputes the floating product diagnostic and checks this ceiling;
+the receipt does not retain a historical backend norm as a portable fact. Its product
 bound counts every emitted full-register macro and source primitive and takes
 the maximum over orthogonal retained classical control blocks. This is not a
-directed-rounding or hardware fault certificate. Exact finite composition
+directed-rounding or hardware fault certificate. It concerns successful
+processor blocks and the complete native raw control menu; it does not add
+processor-failure density or classical-reset fault certification. Exact finite composition
 holds for all finite attempt counts only under ideal supplied services.
 
 ## Particle gate
@@ -109,10 +112,15 @@ future candidate particle dynamics and cost/energy hypotheses.
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q model/screened_recovery/test_protocol.py
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.screened_recovery.experiment --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.screened_recovery.experiment --diagnostics
 ```
 
 The [campaign](campaign.json) pins its predecessor commit, input hashes and
 exact science result. The [receipt](screened_recovery_results.json) binds
 the imported source closure, this packet's code, tests and documentation,
-and separately compares numerical diagnostics within tolerance. No physical
-data comparison is added.
+and retains fixed rational numerical admission intervals. The verifier owns
+fresh execution and compares the canonical receipt exactly. These intervals
+summarize freshly passed numerical gates, not rigorous interval arithmetic.
+The optional diagnostics command prints current backend observations without
+claiming that historical residuals were reproduced. No physical data comparison
+is added.
