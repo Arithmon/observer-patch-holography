@@ -89,6 +89,7 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         'active_code_energy': ('energy_bridge', 'energy_bridge_results.json', 'campaign.json'),
         'clock_defect_energy': ('clock_count_inference', 'clock_count_inference_results.json',
                                 'clock_count_inference_campaign.json'),
+        'local_repair_family': ('observer', 'observer_results.json', 'observer_campaign.json'),
     }
     for packet, (module, receipt_name, campaign_name) in packets.items():
         prefix = f'model/{packet}/'
@@ -105,11 +106,13 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         assert 'model/particle_screening/**' in paths
         assert 'model/active_code_energy/**' in paths
         assert 'model/clock_defect_energy/**' in paths
+        assert 'model/local_repair_family/**' in paths
     commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
     pytest_command, = (command for command in commands if 'python -m pytest' in command)
     assert 'model/particle_screening' in pytest_command
     assert 'model/active_code_energy' in pytest_command
     assert 'model/clock_defect_energy' in pytest_command
+    assert 'model/local_repair_family' in pytest_command
 
 
 @pytest.mark.parametrize('index', range(6))

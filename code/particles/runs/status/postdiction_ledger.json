@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "3ec5ab77705fb3107df2d77a7942b7cac59673aa9e94ddb7fdd6cb870026ef4d",
-      "claims/completion_program.json": "3bb06e2d8bea2a5abbe2529f20cf6ce5fb3a9a6de0aa2ea2e191b85533858cc5",
+      "claims/completion_program.json": "c7525b01fa20ae2307b2ad0dad65199a15a27c0edce0e528d4b40022a9217daf",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -197,6 +197,24 @@
           "id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
           "scope": "FINITE_COMPONENT_DIAGNOSTICS",
           "supports": [
+            "CP-01",
+            "CP-02",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+            "independent_check": "model/local_repair_family/test_observer.py",
+            "path": "model/local_repair_family/observer_campaign.json",
+            "scope": "Versioned finite continuation and coherent-service composition on the bounded endpoint-biased family.",
+            "sha256": "85d58c58b3b8981f97c3101033ca4aeb83cd9cf5ce9807d0596f6b73bcfb79d7"
+          },
+          "id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-00",
             "CP-01",
             "CP-02",
             "CP-13"
@@ -504,7 +522,7 @@
             "independent_check": "model/local_repair_family/test_local_bias.py",
             "path": "model/local_repair_family/results.json",
             "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-            "sha256": "f3d928e341fdc0b4eaeb61a62b91eb3b2b07d04a60a36b5736fa884c747b9bf2"
+            "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
           },
           {
             "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -601,6 +619,14 @@
             "path": "model/clock_defect_energy/clock_count_inference_results.json",
             "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
             "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
+          },
+          {
+            "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+            "id": "local_continuing_clock",
+            "independent_check": "model/local_repair_family/test_observer.py",
+            "path": "model/local_repair_family/observer_results.json",
+            "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
+            "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v5",
@@ -612,14 +638,15 @@
               "ramsey_service",
               "clock_services",
               "reference_balance",
-              "local_family"
+              "local_family",
+              "local_continuing_clock"
             ],
             "gate": "CP-02",
             "issue": 1138,
-            "join_condition": "A stochastic count estimator is not by itself a monotone clock reading or a physical duration; keep the different modular and wave references explicit.",
-            "may_start_now": "Reuse the source-pulse Ramsey and exact count-inference packets. Construct the shared events needed by ClockComparison and identify the readable clock interface on the actual instrument.",
+            "join_condition": "Neither branch derives physical seconds, common energy normalization or the choice of reference/access and coherent services. Source-only modular stability, supported FIFO flows and the correlated exported archive retain distinct domains. A shared physical clock/field realization must instantiate one compatible contract.",
+            "may_start_now": "Reuse the source-pulse Ramsey and count-inference packets for the unchanged-law branch; reuse the exact mixing, FIFO and modular-service composition for the declared biased-law branch. Test any common-field attachment on its actual chosen law and reference.",
             "title": "Extend the joint event-count readout to a continuing calibrated clock",
-            "why_now": "The complete source readout gives a strict uncertainty reduction about a shared incident count, while the finite clock interfaces identify the missing monotone reading and shared-event calibration premises."
+            "why_now": "The unchanged-law joint clock/field readout reduces uncertainty in shared incident count. The separate bounded biased-law observer prepares its unique quantum reference, carries a stationary record buffer and implements a compatible modular clock with a full-scheduler signal. These distinct laws and references must not be silently combined."
           },
           {
             "deliverable": "A source-executed encoder, complete flagged recovery and continuing transport for the canonical screened code, or a declared refined candidate with a reference-like exterior and protecting invariant.",
@@ -742,7 +769,14 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "f3d928e341fdc0b4eaeb61a62b91eb3b2b07d04a60a36b5736fa884c747b9bf2"
+              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
+            },
+            {
+              "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+              "independent_check": "model/local_repair_family/test_observer.py",
+              "path": "model/local_repair_family/observer_campaign.json",
+              "scope": "Versioned finite continuation and coherent-service composition on the bounded endpoint-biased family.",
+              "sha256": "85d58c58b3b8981f97c3101033ca4aeb83cd9cf5ce9807d0596f6b73bcfb79d7"
             }
           ],
           "requires": [],
@@ -767,7 +801,8 @@
             "model/clock_defect_energy/continuation_results.json",
             "model/clock_defect_energy/clock_services_results.json",
             "model/clock_defect_energy/RAMSEY_SERVICE.md",
-            "model/clock_defect_energy/clock_count_inference_results.json"
+            "model/clock_defect_energy/clock_count_inference_results.json",
+            "model/local_repair_family/README.md"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -816,6 +851,13 @@
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
               "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
+            },
+            {
+              "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+              "independent_check": "model/local_repair_family/test_observer.py",
+              "path": "model/local_repair_family/observer_results.json",
+              "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
+              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
             }
           ],
           "requires": [
@@ -902,7 +944,7 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "f3d928e341fdc0b4eaeb61a62b91eb3b2b07d04a60a36b5736fa884c747b9bf2"
+              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
             },
             {
               "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -945,6 +987,13 @@
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
               "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
+            },
+            {
+              "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+              "independent_check": "model/local_repair_family/test_observer.py",
+              "path": "model/local_repair_family/observer_results.json",
+              "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
+              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
             }
           ],
           "requires": [
@@ -1034,7 +1083,7 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "f3d928e341fdc0b4eaeb61a62b91eb3b2b07d04a60a36b5736fa884c747b9bf2"
+              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
             },
             {
               "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -1056,6 +1105,13 @@
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
               "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
+            },
+            {
+              "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
+              "independent_check": "model/local_repair_family/test_observer.py",
+              "path": "model/local_repair_family/observer_results.json",
+              "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
+              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
             }
           ],
           "requires": [
