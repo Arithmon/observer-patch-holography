@@ -294,6 +294,78 @@ has a positive-weight fiber containing distinct spectator configurations.
 Consequently neither retained C nor retained E is entanglement breaking
 at any finite iid horizon, on either carrier, despite (11).
 
+## Persistent exploration with adaptive classical control
+
+[adaptive_record_recovery.py](adaptive_record_recovery.py) removes the iid
+assumption from the decay bound. Fix `0<eta<=1`. Before each fresh independent
+fair coin, a controller chooses a law in `{C,E}` and a native seam using the
+complete committed past and classical randomness. At every such past require
+`Pr(seam=e | past)>=eta/30` for each of the thirty seams, summing over both
+law choices. The law may depend on the selected seam. Archive law, seam, coin
+and the complete raw current/contrast outcome, including zero/abort addresses.
+No quantum operation intervenes between native events, and the initial
+classical controller memory is independent of the unknown input. Here `t`
+means `t` actual events on every branch; halted paths cannot earn decay by
+padding their tapes. Both the full total-two carrier `D=78` and its invariant
+binary carrier `D=66` are covered.
+
+On any common history, the two current configurations still differ by the
+original `z=x-y`. Split the seam distribution into `eta` times the uniform
+distribution and a nonnegative remainder. Equation (9) and the uniform
+maxima above bound the next common-record probability by
+
+```text
+r_C = 1-eta/6                  (C only or arbitrary C/E switching),
+r_E = 1-3 eta/10               (E only).
+```
+
+For switching, the pointwise inequality `s_E(e,z)<=s_C(e,z)` applies even
+when the law depends on the seam. Summing surviving common-history weights
+and inducting gives `H_xy(t)<=r^t` for `x!=y`; no independence of successive
+controller decisions is needed. These scalar rates are sharp: a maximizing
+pair and the selector's remaining weight on a seam invisible to that pair
+attain them. This does not assert that the following dimension-dependent
+channel bounds are sharp. Equations (4) and (11) now give
+
+```text
+F_opt(t) <= 1/D + (D-1) r^t/D,
+delta_t = min{1, (D-1) r^t/2},
+dist((Gamma_t tensor id)(rho), (Gamma_t Delta tensor id)(rho)) <= delta_t.
+```
+
+The last inequality holds for every input and arbitrary untouched reference,
+with the entire growing tape in the output. It follows from the same
+off-diagonal trace-norm proof as (11), without a diagonal-input assumption.
+Since `Gamma_t Delta` is entanglement breaking, encode one half of a
+`d`-dimensional Bell state by any isometry into the carrier, `2<=d<=D`.
+Every final CPTP decoder using the work system and complete tape then has
+trace-distance error at least `max{0,1-1/d-delta_t}` from that Bell state:
+separable states have Bell overlap at most `1/d`, and trace distance contracts
+under the decoder. This includes arbitrary final recovery, but excludes
+intermediate quantum correction and separately protected quantum memory.
+
+The executable certificate enumerates all `78^2` input pairs, both laws,
+thirty seams and all 720 raw coin/outcome branches. Its finite-memory
+controller DP uses exact rational selector tables and complete raw-outcome
+memory updates. It sums weights only at equal controller memory and current
+input pairs, retaining `H_xy` exactly with `O(M D^2)` integer storage for
+`M` controller states. This is a contraction of classical history weights,
+not a coherent sum or a normalized selected branch. The broader theorem
+also covers history-dependent controllers without a fixed finite memory.
+The module reuses the native instrument grammar; it executes no new source
+pulses and derives neither an exploration mechanism nor its physical cost.
+
+This is a long-event-count limit under persistent exploration, not exact
+finite-time entanglement breaking or loss of recoverable classical input.
+It is compatible with the finite fixed-law transported modular phases in
+[history_transport.py](../native_modular_reference/history_transport.py)
+and their compiled witness in
+[history_clock.py](../native_modular_reference/history_clock.py): a surviving
+branch can retain and transport a phase before later records suppress its
+unconditioned weight. The passive theorem does not cover that witness's
+intervening coherent controls. Neither the event count nor its transported
+modular parameter is thereby identified with autonomous physical time.
+
 ## Finite schedules and the classical-control boundary
 
 For a fixed E seam word, matching histories are equivalent to `z` being

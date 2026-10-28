@@ -12,9 +12,10 @@
     "DERIVATION.md": "460785a15740a3f39ee156efdc84cecb4d922debfcbe3becaf2069fa714e6822",
     "QUANTUM_MIXING.md": "853e2a6352615a3a63e3a84efdb67b784b8dcbaabcad0a8cc7cb3ab286d303e1",
     "README.md": "d6d040f3d22a481d72d7cfba41ae9ce9470cbc08c0abc8933870c97806f1b26f",
-    "RECORD_RECOVERY.md": "368c997cdb5b6d08b67e3c19778d4402eca0d8328b15fba5afd0b1e5e1f5e13e",
+    "RECORD_RECOVERY.md": "7859694ff6cb342e43980d06f7706f1ae9e95043faf94a2cfbc5d175abfd15c0",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
+    "adaptive_record_recovery.py": "40a2bb9b242eda70680ed75704a302c6d201fa6e3346f566e834dc4c8dc927c5",
     "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
     "coherent_continuation.py": "75c9442fb9a54c78af1e932b3b27011c539a9843cc2fcf33076a594a5e619091",
     "family_port_identifiability.py": "7d53ebb68ba57766daa8d9eb648e48099989e91661af79697d5232921c9564b7",
@@ -42,6 +43,7 @@
     "results/source_selection.json": "37f97b2be53cafa54f87c07e7c99ddb7e0866a475c9ce4664f0e965061024fe2",
     "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
     "source_selection.py": "70cd5fa0aa3613e42016172ca130d6a4275aaa7f71019bdaba11e5fcfd43b7b7",
+    "test_adaptive_record_recovery.py": "c1423eef9d3efa9eef3d07218b5a55b87be6705491998bb4045e1380854d6874",
     "test_coherent_continuation.py": "2946524ee379b46f03c50f6a75f02d8b04904462488c5f1c8b6935b45340c1d5",
     "test_family_port_identifiability.py": "a0c9e320fa89afa310e737f4d89eb396443635a6802fbd6c3aaf6afa626eb248",
     "test_holonomy_reconstruction.py": "09cb32f3c2ee5e87532f295aeb90102087ffe286c2fb506ae9790efc6b441ed8",
@@ -76,7 +78,8 @@
     "python3 -m model.observer.native_link_selection --check model/observer/results/native_link_selection.json",
     "python3 -m unittest model.observer.test_native_link_selection -v",
     "python3 -m model.observer.holonomy_reconstruction --check model/observer/results/holonomy_reconstruction.json",
-    "python3 -m unittest model.observer.test_holonomy_reconstruction -v"
+    "python3 -m unittest model.observer.test_holonomy_reconstruction -v",
+    "python -m pytest -q -W error model/observer/test_adaptive_record_recovery.py"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }
