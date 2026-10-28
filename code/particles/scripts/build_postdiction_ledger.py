@@ -5929,7 +5929,7 @@ def _alpha_rows(
                 _rel("alpha_hvp_verdict"),
             ],
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         }
     ]
 
@@ -6023,7 +6023,7 @@ def _alpha_closure_rows(
                     _rel("endpoint"),
                 ],
                 "historical_owner_issues": [736],
-                "live_owner_issues": [1026],
+                "live_owner_issues": list(live_owners([1026])),
             }
         )
     return rows
@@ -6086,7 +6086,7 @@ def _lepton_rows(
             "tier": "T1_empirical_closure",
             "artifact_refs": [_rel("kappa_rectangle"), _rel("kappa_coherent")],
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         }
     )
     mcpr_masses = [float(m) / 1000.0 for m in mcpr["masses_MeV_display"]]
@@ -6168,7 +6168,7 @@ def _lepton_rows(
             "numerical_certificate": lane["numerical_certificate"],
             "artifact_ref": _rel(artifact),
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         }
         if key.endswith("coherent"):
             entry["width_reduction_factor"] = lane["kappa_interval"]["width_reduction_factor"]
@@ -6295,7 +6295,7 @@ def _quark_rows(
             "tier": obstruction["claim_tier"],
             "artifact_ref": _rel("fiber_obstruction"),
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         },
         {
             "id": "quark_down_type_clebsch_route_rejected",
@@ -6425,7 +6425,7 @@ def _hadron_rows(
             "claim_boundary": lambda_scale["claim_boundary"],
             "artifact_refs": [_rel("lambda_transmutation")],
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         },
         {
             "id": "nucleon_mass_external_ratio",
@@ -6453,7 +6453,7 @@ def _hadron_rows(
                 _rel("lambda_transmutation"),
             ],
             "historical_owner_issues": [736],
-            "live_owner_issues": [1026],
+            "live_owner_issues": list(live_owners([1026])),
         },
     ]
 

@@ -1663,7 +1663,7 @@
         ],
         "id": "alpha_inv_thomson_endpoint",
         "live_owner_issues": [
-          1026
+          1134
         ],
         "measured": 137.035999177,
         "measured_source": "CODATA 2022 via the endpoint artifact, compare-only",
@@ -1693,7 +1693,7 @@
         "id": "alpha_inv_closure_root",
         "lipschitz_bound": 0.07240056016743157,
         "live_owner_issues": [
-          1026
+          1134
         ],
         "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P)) with P = phi + alpha*sqrt(pi); Delta_Th is the internal Stage-5 structured Thomson continuation with the exact one-loop fermion kernel and quark screening factor 1 - N_c*alpha_3(m_Z;P)/pi",
         "measured": 137.035999177,
@@ -1729,7 +1729,7 @@
         "id": "alpha_inv_closure_gauge_width",
         "lipschitz_bound": 0.07235443988743846,
         "live_owner_issues": [
-          1026
+          1134
         ],
         "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P) + alpha_U(P)) with P = phi + alpha*sqrt(pi); the closure-ledger CL-2 mixed map that adds the finite-screen unified gauge width alpha_U(P) to the inverse-alpha readout",
         "measured": 137.035999177,
@@ -1763,7 +1763,7 @@
         ],
         "id": "charged_leptons_closure_target",
         "live_owner_issues": [
-          1026
+          1134
         ],
         "statement": "The certified solve inverts exactly at the measured triple: one anchor-gap value closes the charged-lepton lane on the witness, that value lies inside the retrospective accounting interval, and its distance to the standard on-shell reference deficit is an unfixed scheme term. Historical lane #736 (closed; live owner #1134) records that missing source obligation. The lepton scale is localized only under the recorded accounting packet, including measured-lepton information in the higher-order remainder. This is empirical calibration, not an independently predicted mass interval or sharp falsification target. Testing an independent bridge would require separately frozen inputs, matching and uncertainty; it would test that declared decomposition rather than every possible source mechanism.",
         "tier": "T1_empirical_closure",
@@ -1861,7 +1861,7 @@
           ]
         ],
         "live_owner_issues": [
-          1026
+          1134
         ],
         "logarithmic_half_width": 0.0655383861649065,
         "measured_gev": [
@@ -1949,7 +1949,7 @@
           ]
         ],
         "live_owner_issues": [
-          1026
+          1134
         ],
         "logarithmic_half_width": 0.0173211229135645,
         "measured_gev": [
@@ -8008,7 +8008,7 @@
         ],
         "id": "lambda_qcd_transmutation_scale",
         "live_owner_issues": [
-          1026
+          1134
         ],
         "loop_order": "four_loop_beta_with_three_loop_decoupling",
         "published_central_gev": 0.338,
@@ -8036,7 +8036,7 @@
         "id": "nucleon_mass_external_ratio",
         "interval_contains_measured": true,
         "live_owner_issues": [
-          1026
+          1134
         ],
         "measured_gev": 0.93827,
         "measured_source": "proton mass, compare-only",
@@ -8108,7 +8108,7 @@
         ],
         "id": "quark_absolute_masses_obstruction",
         "live_owner_issues": [
-          1026
+          1134
         ],
         "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (historical matter receipt #314, historical port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
         "tier": "source_only_nonidentifiability_obstruction_transport"
