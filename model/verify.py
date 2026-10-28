@@ -292,6 +292,14 @@ REPLAYS = (
      "model/clock_defect_energy/clock_count_inference_results.json"),
     ("model.local_repair_family.observer", None,
      "model/local_repair_family/observer_results.json"),
+    ("model.screened_recovery.experiment", None,
+     "model/screened_recovery/screened_recovery_results.json"),
+    ("model.conserved_sector_action.sector_action", None,
+     "model/conserved_sector_action/sector_action_results.json"),
+    ("model.clock_defect_energy.shared_event_clock.run", None,
+     "model/clock_defect_energy/shared_event_clock/results.json"),
+    ("model.screened_transport.transport", None,
+     "model/screened_transport/transport_results.json"),
 )
 
 

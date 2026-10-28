@@ -86,6 +86,31 @@ def test_general_geometry_and_canonical_exact_finite_threshold():
     assert m.mixing_bound(m.canonical_parameters(), 0) == 1
 
 
+def test_canonical_fixed_tagged_mixtures_share_kernel_and_obey_convex_coherence_bound():
+    base = m.canonical_parameters()
+    kernel = m.probability_kernel(base)
+    for weight in (F(), F(1, 256), F(1, 3), F(1, 2), F(255, 256), F(1)):
+        mixture = replace(base, c_weight=weight)
+        assert m.probability_kernel(mixture) == kernel
+        assert m.coherence_rate(mixture) <= weight*F(893, 990)+(1-weight)*F(7, 10)
+
+
+def test_canonical_certificate_refuses_a_different_but_stochastic_E_kernel(monkeypatch):
+    original = m.probability_kernel
+
+    def wrong_endpoint(parameters):
+        rows = original(parameters)
+        if parameters.c_weight == 0:
+            changed = tuple((row[1], row[0], *row[2:]) for row in rows)
+            assert changed != rows and all(sum(row) == 1 for row in changed)
+            return changed
+        return rows
+
+    monkeypatch.setattr(m, 'probability_kernel', wrong_endpoint)
+    with pytest.raises(ArithmeticError, match='endpoint population kernels disagree'):
+        m.canonical_certificate()
+
+
 def test_extremal_family_member_contains_the_complete_fair_uniform_instrument():
     parameters = local.Parameters(port_weights=(4, 4)+(1,)*10,
         seam_weights=(1,)+(16,)*29, c_weight=F(1, 256), repair_probability=F(1, 16))

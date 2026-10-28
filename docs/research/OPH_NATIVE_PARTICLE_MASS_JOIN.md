@@ -28,7 +28,10 @@ constraint, the sharp-sector optimum is `8/225`; exact hypergeometric
 averaging gives the corresponding bounds for every exterior cap size.
 
 The new code is algebraically correctable under all complete C/E branches,
-but its source pulse recovery has not been executed. Its native core changes
+and its [successor recovery service](../../model/screened_recovery/README.md)
+source-executes all 208 positive C/E recovery branches. Exact composition
+preserves arbitrary logical/reference states when immediate correction and
+explicit core-label reset follow each native attempt. Its native core changes
 with probability `1/15` per uniform-seam attempt and leaves the edge set
 with probability `1/30`. Separately, a sharp `q=2` pair initially on an edge
 has first-exit survival `(14/15)^t` and mean first exit 15 attempts under
@@ -77,3 +80,27 @@ excitation to supply a reference-subtracted rest action, moving kinetic
 response with a common signal speed and calibrated clock, and conserved
 stress. Defining `m=E/c²` before those independent checks would rename an
 assumed energy. No particle species or mass in SI units is identified.
+
+## Completed recovery, transport and unit attachment
+
+The screened code's own uniform-seam service costs `37499681/60` C or
+`36870437/60` E source pulses per attempt on average, plus initial encoding
+and declared apparatus services. Its [transport calculation](../../model/screened_transport/README.md)
+has rank-eleven transient current covariance with trace `1/3`, but corrected
+logical transfer is identity and the core returns to `(0,1)`. The earlier
+mode profile gives current/variance ratios `13/60` and `13/300` on the two
+logical basis states. It therefore does not select one wave rate for this
+code. A globally invisible phase is not a measured zero rest energy.
+
+The [quantified sector theorem](../../model/conserved_sector_action/README.md)
+proves the stationary-reference freedom for every positive sector factor,
+with exact native support checks. The [four shared-event experiment](../../model/clock_defect_energy/shared_event_clock/README.md)
+executes ordered conditional ensemble clock and field readouts through
+three FIFO exports. Raw probabilities fail a two-anchor affine comparison
+at a reserved event; model-conditioned count inversion is a separate step.
+
+The [SI utility](../../model/clock_defect_energy/SI_UNITS.md) takes explicit
+seconds per model clock unit and a model signal speed. Under a declared
+energy-frequency identification it converts a supplied coherent rest gap
+to joules and kilograms. This candidate supplies no such gap or independent
+massive dispersion, so no particle mass or GeV prediction is reported.

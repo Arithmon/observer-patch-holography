@@ -6,6 +6,7 @@ import json
 
 import numpy as np
 import pytest
+from scipy.sparse import coo_matrix
 
 from . import observer as o
 
@@ -36,6 +37,70 @@ def test_full_channel_preserves_trace_and_untouched_quantum_reference():
             for k, l in branch.pairs:
                 expected[j, l] += float(branch.weight)*rho[i, k]
     assert np.allclose(output, expected, atol=1e-14, rtol=0)
+
+
+def test_all_matrix_units_against_endpoint_oracle_and_wrong_cptp_control():
+    p = replace(o.mixing.canonical_parameters(), c_weight=F(3, 7),
+                repair_probability=F(1, 16), seam_weights=(1, 16)*15)
+    states = o.local.basis(); index = {state: i for i, state in enumerate(states)}
+    rows = list(range(66**2)); columns = rows.copy()
+    values = [float(1-p.repair_probability)]*66**2
+    # Independent floor/ceiling endpoint rule and original C-current/E-contrast
+    # partition: no continuing branches, raw_maps or producer channel kernel.
+    for name, mixture in (('C', p.c_weight), ('E', 1-p.c_weight)):
+        for (a, b), selection in zip(o.local.SEAMS, p.seam_weights, strict=True):
+            for coin in (0, 1):
+                groups = {}
+                for i, state in enumerate(states):
+                    target = list(state); total = state[a]+state[b]
+                    target[a], target[b] = (total+coin)//2, (total+1-coin)//2
+                    label = state[a]-target[a] if name == 'C' else state[a]-state[b]
+                    groups.setdefault(label, []).append((i, index[tuple(target)]))
+                weight = (p.repair_probability*mixture*F(selection, sum(p.seam_weights))
+                          *F(p.port_weights[a if coin else b],
+                             p.port_weights[a]+p.port_weights[b]))
+                for pairs in groups.values():
+                    for i, j in pairs:
+                        for k, l in pairs:
+                            rows.append(66*j+l); columns.append(66*i+k)
+                            values.append(float(weight))
+    expected = coo_matrix((values, (rows, columns)), shape=(66**2, 66**2)).tocsr()
+    actual = o.source_channel(p)
+    difference = actual-expected
+    assert max(abs(difference.data), default=0.) < 3e-15
+    # Pre-dephasing is CPTP and has exactly the same population transition,
+    # stationary reference and eventual replacement target. It still loses
+    # native finite coherences and must fail the complete operator comparison.
+    population_columns = np.eye(66).reshape(-1)
+    wrong = actual.multiply(population_columns[None, :])
+    assert np.count_nonzero((wrong-actual).multiply(population_columns[None, :]).data) == 0
+    assert max(abs((wrong-expected).data)) > .9
+
+
+def test_noncommuting_prepared_reference_log_and_unitary_bounds():
+    budget = o.composition_budget({'complete_instrument_halfdiamond_upper': '0',
+                                   'channel_norm_upper': '1'})
+    p = o.mixing.canonical_parameters()
+    pi = o.local.reference(p)
+    # Unequal eigenvalues are essential: an off-diagonal perturbation within
+    # one degenerate population sector would not challenge noncommutativity.
+    high, low = float(max(pi)), float(min(pi))
+    delta = float(F(budget['preparation_half_trace_upper']))
+    target = np.diag([high, low]).astype(complex)
+    actual = target+np.array([[0., 1j*delta], [-1j*delta, 0.]])
+    assert np.linalg.norm(actual@target-target@actual, 2) > 1e-8
+    assert abs(np.linalg.norm(actual-target, 'nuc')/2-delta) < 1e-20
+    epsilon = float(F(budget['relative_operator_sandwich_epsilon']))
+    assert np.linalg.eigvalsh(actual-(1-epsilon)*target).min() >= -1e-17
+    assert np.linalg.eigvalsh((1+epsilon)*target-actual).min() >= -1e-17
+    eigenvalues, frame = np.linalg.eigh(actual)
+    actual_log = (frame*np.log(eigenvalues))@frame.conj().T
+    log_bound = float(F(budget['modular_unitary_error_per_abs_parameter_upper']))
+    assert 1e-6 < np.linalg.norm(actual_log-np.diag(np.log([high, low])), 2) <= log_bound
+    for parameter in (-1., -.5, .5, 1.):
+        actual_unitary = (frame*eigenvalues.astype(complex)**(-1j*parameter))@frame.conj().T
+        target_unitary = np.diag(np.array([high, low], complex)**(-1j*parameter))
+        assert 1e-6 < np.linalg.norm(actual_unitary-target_unitary, 2) <= abs(parameter)*log_bound
 
 
 def test_actual_long_preparation_and_resource_accounting(replay):

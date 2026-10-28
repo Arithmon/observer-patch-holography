@@ -178,6 +178,9 @@ the same preparation bound with n replaced by n-m, including any preexisting
 untouched R. In particular1601 attempts prepare the depth-one observer to
 the stated10^-6 accuracy. This is an unread accessible-state bound: the
 complete execution still carries its exported tape and its resource cost.
+The sparse history API preserves rational coefficients exactly; finite float
+or complex coefficients are refused if a positive branch would underflow.
+Stored records are detached from mutable caller input.
 
 There is no stationary growing tape and no assertion that the preparation
 archive is independent of R or the source. An exact tagged-input control
@@ -196,8 +199,11 @@ physical access to arbitrary support-corner operators.
 ## One reference through source-executed clock histories
 
 The [clock implementation](modular_clock.py) compiles
-`U_s=pi^(-is)` on all512 source addresses, including padding, using the
-existing coherent phase grammar. Two half-parameter words, a bare-region
+a representative of `U_s=pi^(-is)` on H66, up to a common phase, using
+the existing coherent phase grammar. The chosen extension is the identity
+on padding; certification covers all 512 source addresses. The same literal
+pulse words supply execution, pulse costs and processor-failure bounds.
+Two half-parameter words, a bare-region
 probe and its analyzer cost24876 source pulses with49752 load/export calls.
 These coherent controls are declared services; passive repair does not
 generate them. The two native continuation events and final biased native

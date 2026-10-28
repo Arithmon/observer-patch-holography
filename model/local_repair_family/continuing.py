@@ -5,6 +5,9 @@ FIFO; an overwritten record is exported, never erased. The stationary object
 is the source and a full FIFO after earlier exports are traced out. The growing
 archive is neither stationary nor independent of an arbitrary input reference.
 Sparse zero blocks are specified by the complete 721-slot branch alphabet.
+Integer and Fraction operator coefficients retain exact branch weights.
+Float/complex coefficients are numerical exports: a history is refused if
+positive branch weighting erases a nonzero real or imaginary component.
 """
 from __future__ import annotations
 
@@ -69,7 +72,7 @@ def _record(value):
     if value.kind == 'hold':
         if value != Record('hold'):
             raise ValueError('hold has no hidden native fields')
-        return value
+        return Record('hold')
     if (value.kind != 'repair' or type(value.seam) is not tuple
             or value.seam not in local.SEAMS or any(type(i) is not int for i in value.seam)
             or type(value.law) is not str or value.law not in ('C', 'E')
@@ -82,7 +85,8 @@ def _record(value):
     if (value.label != label or value.current != current
             or (label is not None and (type(value.label) is not int or type(value.current) is not int))):
         raise ValueError('raw label and decoded current disagree')
-    return value
+    return Record(value.kind, value.seam, value.law, value.coin, value.raw,
+                  value.label, value.current)
 
 
 def _fifo(value, capacity):
@@ -140,8 +144,19 @@ def _apply(density, branch):
     if not branch.weight or not branch.pairs:
         return {}
     mapping = dict(branch.pairs)
-    return {(mapping[i], a, mapping[j], b): branch.weight*v
-            for (i, a, j, b), v in density.items() if v and i in mapping and j in mapping}
+    result = {}
+    for (i, a, j, b), value in density.items():
+        if not value or i not in mapping or j not in mapping:
+            continue
+        weighted = branch.weight*value
+        if type(value) in (float, complex):
+            if not (math.isfinite(weighted.real) and math.isfinite(weighted.imag)):
+                raise ArithmeticError('nonfinite floating branch coefficient')
+            if ((value.real != 0 and weighted.real == 0)
+                    or (value.imag != 0 and weighted.imag == 0)):
+                raise ArithmeticError('floating branch coefficient underflow; exact rational real coefficients remain available')
+        result[mapping[i], a, mapping[j], b] = weighted
+    return result
 
 
 def apply_branch(density, parameters, record):
@@ -151,13 +166,23 @@ def apply_branch(density, parameters, record):
 
 
 def step_blocks(density, fifo, parameters, *, capacity=1):
-    """Yield all raw slots: (new FIFO, exported record or None, output operator)."""
+    """Snapshot inputs, then yield all raw slots with detached output records.
+
+    Each slot is (new FIFO, exported record or None, output operator). Mutating
+    caller inputs or a previously yielded envelope cannot alter later slots.
+    """
     capacity = _capacity(capacity)
     fifo, density = _fifo(fifo, capacity), _density(density)
-    for branch in branches(parameters):
-        exported = fifo[0] if len(fifo) == capacity else None
-        after = (*fifo[1:], branch.record) if exported is not None else (*fifo, branch.record)
-        yield after, exported, _apply(density, branch)
+    catalogue = branches(parameters)
+
+    def slots():
+        for branch in catalogue:
+            exported = _record(fifo[0]) if len(fifo) == capacity else None
+            suffix = fifo[1:] if exported is not None else fifo
+            after = (*(_record(r) for r in suffix), _record(branch.record))
+            yield after, exported, _apply(density, branch)
+
+    return slots()
 
 
 def history(density, tape, parameters, *, capacity=1):
@@ -165,10 +190,10 @@ def history(density, tape, parameters, *, capacity=1):
     capacity, p = _capacity(capacity), _parameters(parameters)
     if type(tape) is not tuple:
         raise ValueError('an original complete tape tuple required')
+    tape = tuple(_record(record) for record in tape)
     catalogue = {b.record: b for b in branches(p)}
     current, fifo, exported = _density(density), (), []
     for record in tape:
-        record = _record(record)
         current = _apply(current, catalogue[record])
         if len(fifo) == capacity:
             exported.append(fifo[0]); fifo = fifo[1:]

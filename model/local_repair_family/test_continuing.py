@@ -278,3 +278,69 @@ def test_fraction_and_public_result_mutations_do_not_change_later_instruments():
     p.c_weight._numerator = 2; p.c_weight._denominator = 4
     with pytest.raises(ValueError, match='canonical Fraction'):
         c.branches(p)
+
+
+def test_long_positive_history_refuses_float_underflow_and_keeps_exact_mass():
+    p = params(F(1), F(1)); x = index((2, 3))
+    record = c.Record('repair', (0, 1), 'C', 0, 0, 0, 0)
+    tape = (record,)*256
+    expected = F(1, 60)**256
+    for scalar in (1, F(1)):
+        actual = c.history({(x, 0, x, 0): scalar}, tape, p)
+        assert actual['density'] == {(x, 0, x, 0): expected}
+        assert len(actual['exported']) == 255
+    with pytest.raises(ArithmeticError, match='underflow'):
+        c.history({(x, 0, x, 0): 1.0}, tape, p)
+    entangled_phase = {(x, 0, x, 0): .5, (x, 1, x, 1): .5,
+                       (x, 0, x, 1): -.5j, (x, 1, x, 0): .5j}
+    with pytest.raises(ArithmeticError, match='underflow'):
+        c.history(entangled_phase, tape, p)
+
+
+def test_numeric_component_precision_boundary_keeps_valid_neighbor_and_exact_tiny_mass():
+    p = params(F(1), F(1)); x = index((2, 3)); key = x, 0, x, 0
+    record = c.Record('repair', (0, 1), 'C', 0, 0, 0, 0)
+    tiny = F(1, 10**400)
+    assert c.apply_branch({key: tiny}, p, record) == {key: tiny/60}
+    adjacent = c.apply_branch({key: 1e-321}, p, record)[key]
+    assert adjacent > 0 and adjacent == F(1, 60)*1e-321
+    for bad in (1e-323, complex(1e-323, .5), complex(.5, 1e-323)):
+        with pytest.raises(ArithmeticError, match='underflow'):
+            c.apply_branch({key: bad}, p, record)
+    # A structurally absent outcome remains an exact zero, not an underflow.
+    zero = c.Record('repair', (0, 1), 'C', 0, 3)
+    assert c.apply_branch({key: 1e-323}, p, zero) == {}
+
+
+def test_committed_history_snapshots_caller_records_and_repeated_occurrences():
+    p = params(F(1), F(1)); x = index((2, 3))
+    record = c.Record('repair', (0, 1), 'C', 0, 0, 0, 0)
+    result = c.history({(x, 0, x, 0): F(1)}, (record, record), p)
+    for name in ('raw', 'label', 'current'):
+        object.__setattr__(record, name, 1)
+    assert result['fifo'][0].raw == result['exported'][0].raw == 0
+    assert result['fifo'][0] is not result['exported'][0]
+    assert c.history({(x, 0, x, 0): F(1)},
+                     result['exported']+result['fifo'], p)['density'] == result['density']
+    object.__setattr__(result['exported'][0], 'raw', 1)
+    assert result['fifo'][0].raw == 0
+
+
+def test_step_generator_snapshots_inputs_and_detaches_each_yield():
+    p = params(F(1), F(1)); x = index((2, 3)); key = x, 0, x, 0
+    old = tuple(c.Record('repair', (0, 1), 'C', 0, 0, 0, 0) for _ in range(2))
+    density = {key: F(1)}
+    stream = c.step_blocks(density, old, p, capacity=2)
+    p.c_weight._numerator = 0
+    density[key]._numerator = 2
+    for record in old:
+        for name in ('raw', 'label', 'current'):
+            object.__setattr__(record, name, 1)
+    first, exported, _ = next(stream)
+    assert first[0].raw == exported.raw == 0
+    for record in (first[0], exported):
+        for name in ('raw', 'label', 'current'):
+            object.__setattr__(record, name, 1)
+    second, exported_again, output = next(stream)
+    assert second[0].raw == exported_again.raw == 0
+    assert output == {key: F(1, 60)}

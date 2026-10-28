@@ -1,0 +1,96 @@
+{
+  "affine_anchor_events": [
+    1,
+    2
+  ],
+  "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
+  "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+  "clock_and_field_readouts": "conditional ensemble probabilities of terminal first-clock-code and Ramsey-minus outcomes at same retained native prefix",
+  "clock_count_result_sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd",
+  "clock_parameter_per_selected_event": "1",
+  "clock_reference": "faithful transported three-charge target by selected core; pure source probe is not a prepared reference state",
+  "clock_service_result_sha256": "e79c07379ab8f5254f5deafd5437444b03cf48cf7427b6cd3bd4c513f6035da4",
+  "clock_source_services": [
+    "new parameter-one diagonal word at each selected core",
+    "source pair preparation rotation",
+    "source pair analyzer rotation at terminal checkpoint"
+  ],
+  "continuation_result_sha256": "41214266e32182287a39d340013da0c02277b6e934a3cf0f61023e73847423b7",
+  "extra_unfitted_event_check": 3,
+  "family_parameters": {
+    "c_weight_by_law": {
+      "C": "1",
+      "E": "0"
+    },
+    "exploration_probability": "1/2",
+    "memory_capacity": 1,
+    "overflow": "export_oldest",
+    "repair_probability": "1"
+  },
+  "field_source_service": "existing protected 720-arc controlled Ramsey density walk; one step after each successful selected clock export",
+  "frozen_before_execution": true,
+  "full_instrument_rule": "all native hold/exploration/feedback coin and raw-record outcomes retained; any departure from selected feedback record terminates with unmeasured field; selected clock/export aborts and both terminal clock/field outputs retained",
+  "individual_shot_clock_readout_claimed": false,
+  "integrated_gate_accepted": false,
+  "native_family_changed": false,
+  "native_laws": [
+    "C",
+    "E"
+  ],
+  "new_empirical_comparisons": 0,
+  "physical_comparison_count_added": 0,
+  "physical_seconds_calibrated": false,
+  "predecessor_git_commit": "7cef80f58f51f06e70ccda3d4373344ca3993dc6",
+  "preferred_seam_intervention_by_attempt": [
+    [
+      0,
+      7
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "ramsey_result_sha256": "27c74ebdd88d7e88301e8f52a341de5834326a55e4df844a12a57dc98f7322d7",
+  "schema": "oph.clock_defect_energy.shared_event_clock_campaign.v1",
+  "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+  "selected_feedback_coin_label_by_attempt": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      -1
+    ],
+    [
+      1,
+      -1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "selected_initial_binary_indices": [
+    55,
+    65
+  ],
+  "source_selected_geometry_claimed": false,
+  "terminal_horizons": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "third_event_check": 4,
+  "whole_program_frozen": false
+}

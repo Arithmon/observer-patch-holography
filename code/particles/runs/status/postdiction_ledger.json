@@ -45,8 +45,8 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "3ec5ab77705fb3107df2d77a7942b7cac59673aa9e94ddb7fdd6cb870026ef4d",
-      "claims/completion_program.json": "c7525b01fa20ae2307b2ad0dad65199a15a27c0edce0e528d4b40022a9217daf",
+      "claims/claim_registry.yaml": "9e32422b915cc9061f259532586d48d7793e0d201a601dcb281ac53e5b14c666",
+      "claims/completion_program.json": "37a71a8d48889d419a676e3626f3648aec40c210fe71abb50bbc3df822d58fd3",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -205,6 +205,70 @@
         },
         {
           "contract": {
+            "independent_check": "model/screened_recovery/test_protocol.py",
+            "path": "model/screened_recovery/campaign.json",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "sha256": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610"
+          },
+          "id": "screened-recovery-20261028-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-01",
+            "CP-03",
+            "CP-04",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+            "path": "model/clock_defect_energy/shared_event_clock/campaign.json",
+            "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+            "sha256": "df088346a97c9fa3d0800787f4eec7f151461958bf2a4e2976463341d57d7cd6"
+          },
+          "id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-01",
+            "CP-02",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "independent_check": "model/screened_transport/test_transport.py",
+            "path": "model/screened_transport/campaign.json",
+            "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+            "sha256": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201"
+          },
+          "id": "screened-transport-20261028-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-03",
+            "CP-04",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "independent_check": "model/conserved_sector_action/test_sector_action.py",
+            "path": "model/conserved_sector_action/campaign.json",
+            "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
+            "sha256": "98fec914ec33f356be8b3ccaf8b84ff579c56f25d0a6f973508a4405286f3ea9"
+          },
+          "id": "conserved-sector-action-20261028-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-04",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
             "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
             "independent_check": "model/local_repair_family/test_observer.py",
             "path": "model/local_repair_family/observer_campaign.json",
@@ -357,14 +421,15 @@
           },
           {
             "evidence": [
-              "clock_count_inference",
-              "particle_screening",
-              "active_code_energy",
+              "conserved_sector_action",
+              "screened_recovery",
+              "shared_event_clock",
+              "screened_transport",
               "theorem_map"
             ],
             "gate": "CP-13",
             "issue": 1137,
-            "role": "Check actual finite theorem premises in all three joins: complete instruments and clock interfaces, flagged-code support and cap bounds, sectorwise action-measure uniqueness and the missing proper-time/stress maps."
+            "role": "Maintain the explicit model-premise bindings for corrected code composition, ensemble shared-event clocks, current continuity and arbitrary conserved-sector reweighting. Distinguish Python model enumeration from Lean implication proofs."
           },
           {
             "evidence": [
@@ -522,7 +587,7 @@
             "independent_check": "model/local_repair_family/test_local_bias.py",
             "path": "model/local_repair_family/results.json",
             "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-            "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
+            "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23"
           },
           {
             "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -621,68 +686,129 @@
             "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
           },
           {
+            "campaign_id": "screened-recovery-20261028-v1",
+            "id": "screened_recovery_campaign",
+            "independent_check": "model/screened_recovery/test_protocol.py",
+            "path": "model/screened_recovery/campaign.json",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "sha256": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610"
+          },
+          {
+            "campaign_id": "screened-recovery-20261028-v1",
+            "id": "screened_recovery",
+            "independent_check": "model/screened_recovery/test_protocol.py",
+            "path": "model/screened_recovery/screened_recovery_results.json",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "sha256": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257"
+          },
+          {
+            "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+            "id": "shared_event_clock_campaign",
+            "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+            "path": "model/clock_defect_energy/shared_event_clock/campaign.json",
+            "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+            "sha256": "df088346a97c9fa3d0800787f4eec7f151461958bf2a4e2976463341d57d7cd6"
+          },
+          {
+            "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+            "id": "shared_event_clock",
+            "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+            "path": "model/clock_defect_energy/shared_event_clock/results.json",
+            "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+            "sha256": "cd236a6641cf0ebf35aa5d12217bd94fc73009399670b2b77b6062bb7b74739f"
+          },
+          {
+            "campaign_id": "screened-transport-20261028-v1",
+            "id": "screened_transport_campaign",
+            "independent_check": "model/screened_transport/test_transport.py",
+            "path": "model/screened_transport/campaign.json",
+            "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+            "sha256": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201"
+          },
+          {
+            "campaign_id": "screened-transport-20261028-v1",
+            "id": "screened_transport",
+            "independent_check": "model/screened_transport/test_transport.py",
+            "path": "model/screened_transport/transport_results.json",
+            "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+            "sha256": "62e6a3a723ae2d9d6f9272cc06978cbb8c1128d65148b837f8eda603f3849f7a"
+          },
+          {
+            "campaign_id": "conserved-sector-action-20261028-v1",
+            "id": "conserved_sector_action_campaign",
+            "independent_check": "model/conserved_sector_action/test_sector_action.py",
+            "path": "model/conserved_sector_action/campaign.json",
+            "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
+            "sha256": "98fec914ec33f356be8b3ccaf8b84ff579c56f25d0a6f973508a4405286f3ea9"
+          },
+          {
+            "campaign_id": "conserved-sector-action-20261028-v1",
+            "id": "conserved_sector_action",
+            "independent_check": "model/conserved_sector_action/test_sector_action.py",
+            "path": "model/conserved_sector_action/sector_action_results.json",
+            "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
+            "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
+          },
+          {
             "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
             "id": "local_continuing_clock",
             "independent_check": "model/local_repair_family/test_observer.py",
             "path": "model/local_repair_family/observer_results.json",
             "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
-            "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
+            "sha256": "b2fb50bc6a7689df3c643320b415ce923126e35d6ab1f240bf6b4867f1d30461"
           }
         ],
-        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v5",
+        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v6",
         "owners": [
           {
-            "deliverable": "One continuing accessible clock/field protocol with a tested shared-event parameter comparison, regional reference compatibility and complete preparation, storage, export and error accounting.",
+            "deliverable": "A continuing clock protocol with finite-sample inference, operational shared events, compatible regional reference and a justified time/action calibration.",
             "evidence": [
+              "shared_event_clock",
               "clock_count_inference",
-              "ramsey_service",
-              "clock_services",
               "reference_balance",
-              "local_family",
               "local_continuing_clock"
             ],
             "gate": "CP-02",
             "issue": 1138,
-            "join_condition": "Neither branch derives physical seconds, common energy normalization or the choice of reference/access and coherent services. Source-only modular stability, supported FIFO flows and the correlated exported archive retain distinct domains. A shared physical clock/field realization must instantiate one compatible contract.",
-            "may_start_now": "Reuse the source-pulse Ramsey and count-inference packets for the unchanged-law branch; reuse the exact mixing, FIFO and modular-service composition for the declared biased-law branch. Test any common-field attachment on its actual chosen law and reference.",
-            "title": "Extend the joint event-count readout to a continuing calibrated clock",
-            "why_now": "The unchanged-law joint clock/field readout reduces uncertainty in shared incident count. The separate bounded biased-law observer prepares its unique quantum reference, carries a stationary record buffer and implements a compatible modular clock with a full-scheduler signal. These distinct laws and references must not be silently combined."
+            "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; physical calibration and source selection remain open in both branches.",
+            "may_start_now": "Reuse the compiled parameter-one words, complete stopping instruments and shared-event cross-product test. The biased-law branch supplies exact preparation, stationary FIFO and modular-service composition under its own fixed contract.",
+            "title": "Calibrate accessible continuing clock readouts",
+            "why_now": "Four shared source checkpoints have ordered ensemble means; their raw probability readouts fail an affine comparison, while model inversion recovers their shared count. The separate endpoint-biased family prepares a unique quantum reference and implements its compatible full-scheduler modular readout."
           },
           {
-            "deliverable": "A source-executed encoder, complete flagged recovery and continuing transport for the canonical screened code, or a declared refined candidate with a reference-like exterior and protecting invariant.",
+            "deliverable": "A declared moving-code or refined native candidate with reference-like exterior, protected transport and complete recovery/resource accounting.",
             "evidence": [
+              "screened_recovery",
+              "screened_transport",
               "particle_screening",
-              "exchange_sector",
-              "active_code_energy",
-              "defect_history",
-              "defect_algebra"
+              "defect_history"
             ],
             "gate": "CP-03",
             "issue": 1139,
-            "join_condition": "The old two-port code's executed recovery counts cannot be transferred to the new code; active correction and a small-cap bound do not establish autonomous localized matter.",
-            "may_start_now": "Reuse the finite all-seam code theorem, the exact cap minimax and the canonical screened code. Compile its own recovery and count core reset, records, failures and source services.",
-            "title": "Execute screened-code recovery and test a localized native excitation",
-            "why_now": "The new qubit attains the optimal one-port screening bound for exact all-seam q=1 codes, while full-exterior screening and invariant edge binding fail in the tested sharp sectors."
+            "join_condition": "Preserving the logical qubit at a reset core is a memory result; a moving physical excitation requires a different tested transport map.",
+            "may_start_now": "Reuse the compiled canonical encoder and recovery menu as controls. Specify the protecting state and boundary before selecting its dynamics.",
+            "title": "Construct transport for a localized candidate beyond fixed-code reset",
+            "why_now": "The screened code has an executed all-seam recovery service, but its exterior deficit and explicit core reset prevent interpreting the current cycle as a moving particle."
           },
           {
-            "deliverable": "For one localized candidate, derive a reference-subtracted rest action, independent moving response in the same clock and a conserved stress map with the finite action and Ward premises verified.",
+            "deliverable": "One physical candidate with a selected action, coherent rest gap, independent dispersion and conserved stress in a common calibrated observer clock.",
             "evidence": [
-              "active_code_energy",
-              "particle_screening",
-              "clock_count_inference",
-              "mode_energy",
-              "reference_balance"
+              "screened_transport",
+              "conserved_sector_action",
+              "screened_recovery",
+              "shared_event_clock",
+              "mode_energy"
             ],
             "gate": "CP-04",
             "issue": 1140,
-            "join_condition": "Uniform-seam activity, prior-code fixed-seam recovery work and a Gibbs assignment are distinct inputs. A common action, kinetic response and clock must precede a physical E=mc^2 identification.",
-            "may_start_now": "Use the same-code current and sector-action ambiguity to identify what extra physical selection is required. Keep the separately declared product-field inertia check as a control.",
-            "title": "Select a same-candidate action and independently test kinetics and stress",
-            "why_now": "The canonical screened code has an exact current rate, but arbitrary positive conserved-sector weights preserve native stationarity and change a declared Gibbs contrast."
+            "join_condition": "Compiler work, transient current covariance and a flat logical channel do not determine rest energy. The SI utility attaches units only to a separately supplied clock and coherent frequency.",
+            "may_start_now": "Reuse the same-code current covariance, corrected-cycle countercontrol and quantified conserved-sector action theorem.",
+            "title": "Derive a same-candidate rest gap and independent kinetic response",
+            "why_now": "The exact screened-code current covariance is nonzero, but the corrected logical generator is zero and native stationarity leaves two independent sector weights."
           }
         ],
         "physical_comparison_count_added": 0,
-        "rationale": "Three finite joins connect executed clock/field readouts, an improved all-seam corrected q=1 code, and that same code's native current. Exact cap screening and conserved-sector reweighting expose the remaining localization and energy choices. The next work must execute the new recovery, extend the operational clock comparison, and supply one action, kinetic response and stress on the same candidate.",
+        "rationale": "The screened recovery service, four shared-event readouts, same-code transport calculation and quantified sector-action theorem complete four finite component advances. The fixed-code corrected cycle preserves memory but has no continuing coherent dispersion. Further physical progress requires a moving localized candidate, compatible observer clocks and an independently selected common action.",
         "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
         "shared_interface": {
           "baseline_campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
@@ -769,7 +895,7 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
+              "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23"
             },
             {
               "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
@@ -802,6 +928,8 @@
             "model/clock_defect_energy/clock_services_results.json",
             "model/clock_defect_energy/RAMSEY_SERVICE.md",
             "model/clock_defect_energy/clock_count_inference_results.json",
+            "model/screened_recovery/screened_recovery_results.json",
+            "model/clock_defect_energy/shared_event_clock/results.json",
             "model/local_repair_family/README.md"
           ],
           "id": "CP-01",
@@ -853,11 +981,25 @@
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
+              "campaign_id": "screened-recovery-20261028-v1",
+              "independent_check": "model/screened_recovery/test_protocol.py",
+              "path": "model/screened_recovery/screened_recovery_results.json",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "sha256": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257"
+            },
+            {
+              "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+              "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+              "path": "model/clock_defect_energy/shared_event_clock/results.json",
+              "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+              "sha256": "cd236a6641cf0ebf35aa5d12217bd94fc73009399670b2b77b6062bb7b74739f"
+            },
+            {
               "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
               "independent_check": "model/local_repair_family/test_observer.py",
               "path": "model/local_repair_family/observer_results.json",
               "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
-              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
+              "sha256": "b2fb50bc6a7689df3c643320b415ce923126e35d6ab1f240bf6b4867f1d30461"
             }
           ],
           "requires": [
@@ -887,7 +1029,11 @@
             "model/clock_defect_energy/REFERENCE_BALANCE.md",
             "model/particle_screening/screening_results.json",
             "model/active_code_energy/energy_bridge_results.json",
-            "model/clock_defect_energy/clock_count_inference_results.json"
+            "model/clock_defect_energy/clock_count_inference_results.json",
+            "model/screened_recovery/screened_recovery_results.json",
+            "model/clock_defect_energy/shared_event_clock/results.json",
+            "model/screened_transport/transport_results.json",
+            "model/conserved_sector_action/sector_action_results.json"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -944,7 +1090,7 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
+              "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23"
             },
             {
               "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -989,11 +1135,39 @@
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
+              "campaign_id": "screened-recovery-20261028-v1",
+              "independent_check": "model/screened_recovery/test_protocol.py",
+              "path": "model/screened_recovery/screened_recovery_results.json",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "sha256": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257"
+            },
+            {
+              "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+              "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+              "path": "model/clock_defect_energy/shared_event_clock/results.json",
+              "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+              "sha256": "cd236a6641cf0ebf35aa5d12217bd94fc73009399670b2b77b6062bb7b74739f"
+            },
+            {
+              "campaign_id": "screened-transport-20261028-v1",
+              "independent_check": "model/screened_transport/test_transport.py",
+              "path": "model/screened_transport/transport_results.json",
+              "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+              "sha256": "62e6a3a723ae2d9d6f9272cc06978cbb8c1128d65148b837f8eda603f3849f7a"
+            },
+            {
+              "campaign_id": "conserved-sector-action-20261028-v1",
+              "independent_check": "model/conserved_sector_action/test_sector_action.py",
+              "path": "model/conserved_sector_action/sector_action_results.json",
+              "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
+              "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
+            },
+            {
               "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
               "independent_check": "model/local_repair_family/test_observer.py",
               "path": "model/local_repair_family/observer_results.json",
               "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
-              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
+              "sha256": "b2fb50bc6a7689df3c643320b415ce923126e35d6ab1f240bf6b4867f1d30461"
             }
           ],
           "requires": [
@@ -1023,7 +1197,8 @@
             "model/local_repair_family/README.md",
             "model/clock_defect_energy/RAMSEY_SERVICE.md",
             "model/clock_defect_energy/REFERENCE_BALANCE.md",
-            "model/clock_defect_energy/clock_count_inference_results.json"
+            "model/clock_defect_energy/clock_count_inference_results.json",
+            "model/clock_defect_energy/shared_event_clock/results.json"
           ],
           "id": "CP-02",
           "issue": 1138,
@@ -1083,7 +1258,7 @@
               "independent_check": "model/local_repair_family/test_local_bias.py",
               "path": "model/local_repair_family/results.json",
               "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
-              "sha256": "6fe188989960276617539957a1ff955f0351cee38a4fb6156a285a243aa0b115"
+              "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23"
             },
             {
               "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -1107,11 +1282,18 @@
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
+              "campaign_id": "OPH-SHARED-EVENT-CLOCK-2026-10-28-v1",
+              "independent_check": "model/clock_defect_energy/shared_event_clock/test_shared_event_clock.py",
+              "path": "model/clock_defect_energy/shared_event_clock/results.json",
+              "scope": "Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.",
+              "sha256": "cd236a6641cf0ebf35aa5d12217bd94fc73009399670b2b77b6062bb7b74739f"
+            },
+            {
               "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
               "independent_check": "model/local_repair_family/test_observer.py",
               "path": "model/local_repair_family/observer_results.json",
               "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
-              "sha256": "e9fb282a87b92a6646e17f7e8ec4f7876e9f818cd2062fe97bc29985e8e11e83"
+              "sha256": "b2fb50bc6a7689df3c643320b415ce923126e35d6ab1f240bf6b4867f1d30461"
             }
           ],
           "requires": [
@@ -1137,7 +1319,9 @@
             "model/clock_defect_energy/localized_results.json",
             "model/clock_defect_energy/defect_history_results.json",
             "model/exchange_sector/README.md",
-            "model/particle_screening/screening_results.json"
+            "model/particle_screening/screening_results.json",
+            "model/screened_recovery/screened_recovery_results.json",
+            "model/screened_transport/transport_results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1191,6 +1375,20 @@
               "path": "model/particle_screening/screening_results.json",
               "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
               "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8"
+            },
+            {
+              "campaign_id": "screened-recovery-20261028-v1",
+              "independent_check": "model/screened_recovery/test_protocol.py",
+              "path": "model/screened_recovery/screened_recovery_results.json",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "sha256": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257"
+            },
+            {
+              "campaign_id": "screened-transport-20261028-v1",
+              "independent_check": "model/screened_transport/test_transport.py",
+              "path": "model/screened_transport/transport_results.json",
+              "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+              "sha256": "62e6a3a723ae2d9d6f9272cc06978cbb8c1128d65148b837f8eda603f3849f7a"
             }
           ],
           "requires": [
@@ -1218,7 +1416,10 @@
             "model/exchange_sector/README.md",
             "model/clock_defect_energy/REFERENCE_BALANCE.md",
             "model/particle_screening/screening_results.json",
-            "model/active_code_energy/energy_bridge_results.json"
+            "model/active_code_energy/energy_bridge_results.json",
+            "model/screened_recovery/screened_recovery_results.json",
+            "model/screened_transport/transport_results.json",
+            "model/conserved_sector_action/sector_action_results.json"
           ],
           "id": "CP-04",
           "issue": 1140,
@@ -1274,6 +1475,27 @@
               "path": "model/active_code_energy/energy_bridge_results.json",
               "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
               "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd"
+            },
+            {
+              "campaign_id": "screened-recovery-20261028-v1",
+              "independent_check": "model/screened_recovery/test_protocol.py",
+              "path": "model/screened_recovery/screened_recovery_results.json",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "sha256": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257"
+            },
+            {
+              "campaign_id": "screened-transport-20261028-v1",
+              "independent_check": "model/screened_transport/test_transport.py",
+              "path": "model/screened_transport/transport_results.json",
+              "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
+              "sha256": "62e6a3a723ae2d9d6f9272cc06978cbb8c1128d65148b837f8eda603f3849f7a"
+            },
+            {
+              "campaign_id": "conserved-sector-action-20261028-v1",
+              "independent_check": "model/conserved_sector_action/test_sector_action.py",
+              "path": "model/conserved_sector_action/sector_action_results.json",
+              "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
+              "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
             }
           ],
           "requires": [

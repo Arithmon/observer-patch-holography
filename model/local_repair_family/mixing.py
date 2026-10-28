@@ -266,6 +266,8 @@ def canonical_certificate():
                                   c_weight=F(0), repair_probability=F(1))
     e_rate = coherence_rate(endpoint_e)
     pi, kernel = local.reference(parameters), probability_kernel(parameters)
+    if probability_kernel(endpoint_e) != kernel:
+        raise ArithmeticError('C/E endpoint population kernels disagree')
     if (sum(pi) != 1 or min(pi) <= 0
             or tuple(sum(pi[i]*kernel[i][j] for i in range(DIMENSION))
                      for j in range(DIMENSION)) != pi):

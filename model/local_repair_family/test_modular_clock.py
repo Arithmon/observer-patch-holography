@@ -224,12 +224,128 @@ def test_physical_allowance_is_conditional_exact_operator_composition():
         m.physical_allowance(damaged)
 
 
-def test_first_failure_gain_bound_requires_its_denominator_domain(monkeypatch):
-    class OversizedWord:
-        def __len__(self):
-            return 10**11
-    monkeypatch.setattr(m, '_source_data', lambda: None)
-    monkeypatch.setattr(m, 'source_program', lambda: dict.fromkeys(
-        ('probe', 'analyzer', 'half_clock', 'clock'), OversizedWord()))
+def test_first_failure_gain_bound_requires_its_denominator_domain():
     with pytest.raises(ArithmeticError, match='first-failure gain domain'):
+        m._processor_failure_bound(10**11)
+
+
+def test_exported_literal_program_controls_cached_execution_and_budget(source_report, monkeypatch):
+    original = m.source_program
+    before = original()
+    expected_menu = {(p['kind'], p['angle'], len(p['targets']))
+                     for word in before.values() for p in word}
+    assert source_report['source_budget']['actual_unique_processor_pulses_checked'] == len(expected_menu)
+    # Mutating a returned object cannot poison any future program or array.
+    damaged = original()
+    damaged['clock'][0]['targets'][0] = (damaged['clock'][0]['targets'][0]+1) % 9
+    assert original() == before
+
+    def wrong_program():
+        result = original()
+        for pulse in result['clock']:
+            pulse['targets'] = [(bit+1) % 9 for bit in pulse['targets']]
+        return result
+
+    wrong = wrong_program()
+    assert {name: len(word) for name, word in wrong.items()} == {name: len(word) for name, word in before.items()}
+    assert {(p['kind'], p['angle'], len(p['targets']))
+            for word in wrong.values() for p in word} == expected_menu
+    monkeypatch.setattr(m, 'source_program', wrong_program)
+    # Old arrays are already cached. Same counts and pulse menu must not reuse
+    # them: the actual wrong word has to execute and fail its target check.
+    with pytest.raises(ArithmeticError, match='literal full source phase'):
         m.source_budget()
+    monkeypatch.setattr(m, 'source_program', original)
+    assert m.source_budget() == source_report['source_budget']
+
+
+@pytest.mark.parametrize('damage', ('boolean_target', 'nonfinite_angle', 'integer_angle', 'pulse_subclass', 'word_subclass'))
+def test_literal_program_rejects_noncanonical_objects_before_cache_lookup(monkeypatch, damage):
+    program = m.source_program()
+    class Pulse(dict):
+        pass
+    class Word(list):
+        pass
+    if damage == 'boolean_target': program['clock'][0]['targets'][0] = False
+    elif damage == 'nonfinite_angle': program['clock'][0]['angle'] = float('nan')
+    elif damage == 'integer_angle': program['clock'][0]['angle'] = 0
+    elif damage == 'pulse_subclass': program['clock'][0] = Pulse(program['clock'][0])
+    elif damage == 'word_subclass': program['clock'] = Word(program['clock'])
+    monkeypatch.setattr(m, 'source_program', lambda: program)
+    with pytest.raises(ValueError):
+        m.source_arrays()
+
+
+@pytest.mark.parametrize('name', ('C', 'E'))
+@pytest.mark.parametrize('slots', (((0, 3), ('bad',), (False, 0)), ((0, 0), (0, 3), ('bad',))))
+def test_zero_raw_prefix_never_hides_malformed_later_slots(name, slots):
+    with pytest.raises(ValueError, match='integer coin/raw'):
+        m.raw_output({('abort', 'probe'): np.zeros((1, 1))}, name, slots)
+
+
+def test_clock_order_requires_original_string_before_source_execution():
+    class Order:
+        def __eq__(self, other):
+            return other == 'zero'
+    for order in (Order(), np.str_('zero')):
+        with pytest.raises(ValueError, match='clock order'):
+            m.execute(_density(), 'C', raw=False, order=order)
+        with pytest.raises(ValueError, match='clock order'):
+            m.scheduler_execute(raw=False, order=order)
+
+
+def test_processor_bounds_resolve_tiny_original_components_before_norms():
+    array = np.eye(6, dtype=complex)
+    array[2, 0] = 1j*2.**-540
+    array[0, 1] = 2.**-540
+    leakage, gain = m._processor_bounds(array, 2)
+    # Squaring either original component in binary64 erases it. Its exact
+    # dyadic square, and the off-diagonal Gram defect, remain nonzero here.
+    assert float(abs(array[2, 0]))**2 == 0
+    assert leakage == F(1, 2**540)
+    assert gain > F(1, 2**540)
+    assert m._processor_bounds(np.eye(6, dtype=complex), 4) == (F(), F())
+
+
+@pytest.mark.parametrize('damage', ('complement', 'gain'))
+def test_complete_budget_rejects_small_processor_failures_or_gain(source_report, monkeypatch, damage):
+    original = m.common.full.compiler.native_pulse
+    def wrong_pulse(kind, angle):
+        array = original(kind, angle)
+        if kind == 'I':
+            if damage == 'complement': array[5, 0] += 2.**-34
+            else: array[:2, :2] *= 1+2.**-34
+        return array
+    monkeypatch.setattr(m.common.full.compiler, 'native_pulse', wrong_pulse)
+    # Warm word caches must not bypass the fresh literal pulse-menu check.
+    with pytest.raises(ArithmeticError, match='processor complement or gain'):
+        m.source_budget()
+
+
+def test_processor_certificate_rejects_array_subclass_before_overridden_copy():
+    class Hidden(np.ndarray):
+        def copy(self):
+            return np.eye(6, dtype=complex)
+    array = np.eye(6, dtype=complex).view(Hidden)
+    array[5, 0] = 1
+    with pytest.raises(ValueError, match='original six-level pulse'):
+        m._processor_bounds(array, 2)
+
+
+@pytest.mark.parametrize('method', (m.scheduler_frame_error, m.detector_frame_error))
+def test_public_frame_error_cannot_poison_cached_outward_root(method):
+    result = method(m.parameters())
+    expected = F(result.numerator, result.denominator)
+    assert expected > 0
+    object.__setattr__(result, '_numerator', -1)
+    repeated = method(m.parameters())
+    assert repeated == expected and repeated is not result
+
+
+def test_processor_bounds_detach_even_exact_zero_root_cache_entries():
+    array = np.eye(6, dtype=complex)
+    result = m._processor_bounds(array, 2)
+    assert result == (F(), F())
+    object.__setattr__(result[0], '_numerator', -1)
+    object.__setattr__(result[1], '_denominator', -1)
+    assert m._processor_bounds(array, 2) == (F(), F())

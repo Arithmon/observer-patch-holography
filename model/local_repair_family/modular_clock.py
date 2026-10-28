@@ -105,23 +105,68 @@ def source_program():
             'clock': common.diagonal_word(F(1), _ratios())}
 
 
+def _program_snapshot():
+    """Detach and validate the literal exported words before execution or cost."""
+    program = source_program()
+    names = ('probe', 'analyzer', 'half_clock', 'clock')
+    if type(program) is not dict or set(program) != set(names):
+        raise ValueError('the four original source program words required')
+    result = []
+    for name in names:
+        word = program[name]
+        if type(word) is not list:
+            raise ValueError('an original chronological source pulse list required')
+        detached = []
+        for pulse in word:
+            if type(pulse) is not dict or set(pulse) != {'kind', 'angle', 'targets'}:
+                raise ValueError('the original source pulse schema required')
+            kind, angle, targets = pulse['kind'], pulse['angle'], pulse['targets']
+            if (type(kind) is not str or kind not in common.full.compiler.KINDS
+                    or type(angle) is not float or not math.isfinite(angle)
+                    or type(targets) is not list or len(targets) != (2 if kind == 'J' else 1)
+                    or any(type(bit) is not int or not 0 <= bit < 9 for bit in targets)
+                    or len(set(targets)) != len(targets)):
+                raise ValueError('finite original source pulses on distinct nine-bit targets required')
+            detached.append((kind, angle, tuple(targets)))
+        result.append((name, tuple(detached)))
+    return tuple(result)
+
+
+def _program(snapshot):
+    return {name: [{'kind': kind, 'angle': angle, 'targets': list(targets)}
+                   for kind, angle, targets in word] for name, word in snapshot}
+
+
+@lru_cache(maxsize=8)
+def _executed_word(name, word):
+    """Execute exactly these literal pulses on every original address column.
+
+    Bounded chunks avoid long propagation of floating subnormals. The chunks
+    are slices of the exported word, not independently regenerated factors;
+    their unmodified arrays are multiplied in chronological order.
+    """
+    tape = _program(((name, word),))[name]
+    array = np.eye(512, dtype=complex)
+    for start in range(0, len(tape), 2048):
+        array = common.full.compiler.execute(tape[start:start+2048], 9)@array
+    if name in ('half_clock', 'clock'):
+        parameter = F(1, 2) if name == 'half_clock' else F(1)
+        if common.certify_diagonal(parameter, _ratios(), array) > WORD_GATE:
+            raise ArithmeticError('literal full source phase array exceeds its rational certificate')
+    elif cap.certify_rotation(0, 1 if name == 'probe' else -1, array) > ROTATION_GATE:
+        raise ArithmeticError('literal full bare-region mixer exceeds its rational certificate')
+    return name, array.dtype.str, array.tobytes()
+
+
 @lru_cache(maxsize=1)
-def _source_data():
-    arrays = {'probe': cap.rotation(0, 1), 'analyzer': cap.rotation(0, -1)}
-    for name, s in (('half_clock', F(1, 2)), ('clock', F(1))):
-        arrays[name] = common.full.compiler.execute(common.diagonal_word(s, _ratios()), 9)
-        if common.certify_diagonal(s, _ratios(), arrays[name]) > WORD_GATE:
-            raise ArithmeticError('original full source phase array exceeds its rational certificate')
-    for name, sign in (('probe', 1), ('analyzer', -1)):
-        if cap.certify_rotation(0, sign, arrays[name]) > ROTATION_GATE:
-            raise ArithmeticError('original full bare-region mixer exceeds its rational certificate')
-    return tuple((name, x.dtype.str, x.tobytes()) for name, x in arrays.items())
+def _source_data(snapshot):
+    return tuple(_executed_word(name, word) for name, word in snapshot)
 
 
 def source_arrays():
     """Fresh copies of original executed 512-square arrays, including padding."""
     return {name: np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512).copy()
-            for name, dtype, data in _source_data()}
+            for name, dtype, data in _source_data(_program_snapshot())}
 
 
 def _ideal_arrays():
@@ -199,7 +244,7 @@ def execute(density, name, *, order='interleaved', raw=True, seams=REQUESTED_SEA
     This declared schedule is not the full positive-seam scheduler.
     """
     density = _validate_input(density); name = law.records.candidate(name)
-    if type(raw) is not bool or order not in ('interleaved', 'endpoint', 'zero'):
+    if type(raw) is not bool or type(order) is not str or order not in ('interleaved', 'endpoint', 'zero'):
         raise ValueError('declared clock order and original Boolean source selector required')
     if type(seams) is not tuple or len(seams) != 2:
         raise ValueError('exactly two requested native seams required')
@@ -237,16 +282,17 @@ def raw_output(outputs, name, slots):
     name = law.records.candidate(name)
     if type(slots) is not tuple or len(slots) != 3:
         raise ValueError('three raw (coin, register) slots required')
-    labels = []
+    labels, zero = [], False
     for slot, edge in zip(slots, (*REQUESTED_SEAMS, PROBE), strict=True):
         if (type(slot) is not tuple or len(slot) != 2 or any(type(i) is not int for i in slot)
                 or slot[0] not in (0, 1) or not 0 <= slot[1] < 1 << circuit.RECORD_BITS[name]):
             raise ValueError('original integer coin/raw slots required')
         found = next((row for row in native_branches(name, edge) if row[0][:2] == slot), None)
-        if not found[1]:
-            r = len(outputs['abort', 'probe'])
-            return np.zeros((66*r, 66*r), complex)
+        zero |= not found[1]
         labels.append(found[0])
+    if zero:
+        r = len(outputs['abort', 'probe'])
+        return np.zeros((66*r, 66*r), complex)
     return outputs['read', tuple(labels[:2]), labels[2]].copy()
 
 
@@ -333,7 +379,7 @@ def scheduler_frame_error(value):
     result = common.full.exact._sqrt_interval(squared)[1]
     if result > NATIVE_GATE:
         raise ArithmeticError('complete biased scheduler frame exceeds its declared gate')
-    return result
+    return F(result.numerator, result.denominator)
 
 
 def detector_frame_error(value):
@@ -350,7 +396,7 @@ def detector_frame_error(value):
     result = common.full.exact._sqrt_interval(squared)[1]
     if result > NATIVE_GATE:
         raise ArithmeticError('complete biased terminal detector frame exceeds its gate')
-    return result
+    return F(result.numerator, result.denominator)
 
 
 def scheduler_execute(value=None, *, raw=True, order='interleaved'):
@@ -360,7 +406,8 @@ def scheduler_execute(value=None, *, raw=True, order='interleaved'):
     certificate bounds the complete taped instrument on arbitrary references.
     """
     p = _parameters(parameters() if value is None else value)
-    if p.port_weights != parameters().port_weights or type(raw) is not bool or order not in ('interleaved', 'endpoint', 'zero'):
+    if (p.port_weights != parameters().port_weights or type(raw) is not bool
+            or type(order) is not str or order not in ('interleaved', 'endpoint', 'zero')):
         raise ValueError('canonical source reference, Boolean source flag, and clock order required')
     scheduler_frame_error(p)
     detector_frame_error(p)
@@ -383,31 +430,62 @@ def scheduler_execute(value=None, *, raw=True, order='interleaved'):
     return {'mean_current': expectation, 'complete_mass': mass+abort_mass, 'export_abort_mass': abort_mass}
 
 
+def _processor_failure_bound(pulses):
+    pulse_gate = F(2, 10**11)
+    if type(pulses) is not int or pulses < 0 or pulses*pulse_gate >= 1:
+        raise ArithmeticError('processor pulse count exceeds the first-failure gain domain')
+    return pulse_gate, pulses*pulse_gate**2*(1+NATIVE_GATE)**6/(1-pulses*pulse_gate)**2
+
+
+def _processor_bounds(array, dimension):
+    """Outward dyadic bounds for the original six-level pulse's two blocks.
+
+    Frobenius norms bound the complement and A* A-I. The latter bounds
+    max(0, ||A||-1) without rounding a singular value near one. Every stored
+    real/imaginary component enters exact rational arithmetic first.
+    """
+    if type(array) is not np.ndarray or type(dimension) is not int or dimension not in (2, 4):
+        raise ValueError('an original six-level pulse and proper code dimension required')
+    array = common.full.exact._array(array, (6, 6))
+    components = tuple(tuple(common.full.exact._component(value) for value in row[:dimension])
+                       for row in array)
+    complement_squared = sum((re*re+im*im for row in components[dimension:] for re, im in row), F())
+    gram_squared = F()
+    for i in range(dimension):
+        for j in range(dimension):
+            real, imag = -F(int(i == j)), F()
+            for row in components[:dimension]:
+                ar, ai = row[i]; br, bi = row[j]
+                real += ar*br+ai*bi
+                imag += ar*bi-ai*br
+            gram_squared += real*real+imag*imag
+    bounds = tuple(common.full.exact._sqrt_interval(value)[1]
+                   for value in (complement_squared, gram_squared))
+    return tuple(F(bound.numerator, bound.denominator) for bound in bounds)
+
+
 def source_budget():
-    _source_data()
+    snapshot = _program_snapshot()
+    _source_data(snapshot)
     error, gain = F(), F(1)
     for eps in (ROTATION_GATE, NATIVE_GATE, WORD_GATE, NATIVE_GATE, WORD_GATE, ROTATION_GATE, NATIVE_GATE):
         error = (1+eps)**2*error+eps*(2+eps)/2
         gain *= (1+eps)**2
-    program = source_program()
-    pulses = len(program['probe'])+2*len(program['half_clock'])+len(program['analyzer'])
+    program = _program(snapshot)
+    pulses = len(program['probe'])+max(2*len(program['half_clock']), len(program['clock']))+len(program['analyzer'])
     # The complete processor exporter has exactly zero complement on the
     # invariant source code. Keep the floating implementation's nonzero
     # complement separately, with first-failure labels, rather than silently
     # interpreting its compressed success product as a complete channel.
-    pulse_gate = F(2, 10**11)
-    if pulses*pulse_gate >= 1:
-        raise ArithmeticError('processor pulse count exceeds the first-failure gain domain')
+    pulse_gate, failure_mass = _processor_failure_bound(pulses)
     menu = {(e['kind'], e['angle'], len(e['targets'])) for word in program.values() for e in word}
     for kind, angle, bits in menu:
         actual = common.full.compiler.native_pulse(kind, angle); d = 1 << bits
-        leakage = float(np.linalg.norm(actual[d:, :d], 2))
-        excess = max(0., float(np.linalg.norm(actual[:d, :d], 2))-1)
-        if not math.isfinite(leakage+excess) or max(leakage, excess) > float(pulse_gate):
+        leakage, excess = _processor_bounds(actual, d)
+        if max(leakage, excess) > pulse_gate:
             raise ArithmeticError('proper-code processor complement or gain exceeds its fixed gate')
     # Sum of P first-failure CP masses. Their source-code prefixes have norm
     # <=(1+g)^P<=1/(1-Pg); the three native frames add their independent gain.
-    failure_mass = pulses*pulse_gate**2*(1+NATIVE_GATE)**6/(1-pulses*pulse_gate)**2
     return {'complete_instrument_halfdiamond_upper': str(error+failure_mass/2),
             'successful_processor_path_halfdiamond_upper': str(error),
             'proper_code_first_failure_mass_upper': str(failure_mass),
@@ -445,8 +523,10 @@ def physical_allowance(pulse_error=F(), transfer_error=F(), native_attempt_error
                 or x.denominator <= 0 or math.gcd(x.numerator, x.denominator) != 1 or x.numerator < 0):
             raise ValueError('canonical nonnegative original rational error required')
         values.append(F(x.numerator, x.denominator))
-    program = source_program()
-    pulses = len(program['probe'])+2*len(program['half_clock'])+len(program['analyzer'])
+    snapshot = _program_snapshot()
+    _source_data(snapshot)
+    program = _program(snapshot)
+    pulses = len(program['probe'])+max(2*len(program['half_clock']), len(program['clock']))+len(program['analyzer'])
     total = pulses*values[0]+2*pulses*values[1]+3*values[2]
     if total >= 1:
         raise ValueError('sum of supplied operator error allowances must be below one')

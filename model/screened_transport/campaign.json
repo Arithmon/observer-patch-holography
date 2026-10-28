@@ -1,0 +1,30 @@
+{
+  "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
+  "campaign_id": "screened-transport-20261028-v1",
+  "integrated_gate_accepted": false,
+  "native_family_changed": false,
+  "physical_comparison_count_added": 0,
+  "predecessor_git_commit": "1cfa6106e23d8d1279083de4ac38eec77f16a1d4",
+  "schema": "oph.screened_transport.campaign.v1",
+  "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+  "source_sha256": {
+    "Lean/Dynamics/WardLimitManifest.lean": "6bae06ce219aa104014a3094298c3f376586cc54d03223b534b94a95565a6b0d",
+    "Lean/Geometry/InternalEnergyInertia.lean": "48a468bbb8e397abdf512005a87b923f393bf96cc8535b18b03ed42e98d0eb04",
+    "Lean/Geometry/ProperTimeInternalAction.lean": "8933451e0b96b0f1a339ca7912dd7e1c26cde321b5144440ee7127fd95a76307",
+    "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
+    "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
+    "model/clock_defect_energy/mode_energy_results.json": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
+    "model/clock_defect_energy/reference_balance_results.json": "5d32d1949061d6af1a421d94d4c9db075387bb2e14f7f63f35b5ff38656b15e1",
+    "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
+    "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
+    "model/particle_screening/screening_results.json": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+    "model/screened_recovery/README.md": "bf60d95b1717eca6fc68484c30cefbeee01c2bf219d29a91af4522039be1593c",
+    "model/screened_recovery/campaign.json": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610",
+    "model/screened_recovery/experiment.py": "63cff737f99a8bedac41dece3f34a5d10936ac8710c0039febb2f324aadd1767",
+    "model/screened_recovery/protocol.py": "97e701fc92052c7fd82eaca22e1c119ed4a005450bf78456219b5d32ce38e43c",
+    "model/screened_recovery/screened_recovery_results.json": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257",
+    "model/screened_recovery/test_protocol.py": "8514eb76426a5dc22cfeb163471db1b737b491618b949583d1e87ed70d0be8c1"
+  },
+  "whole_program_frozen": false
+}
