@@ -88,7 +88,7 @@ massive-sector thresholds and pure Yang--Mills gap statements have their
 own domains. Modular parameters require reference states and physical clock
 calibration. Coarse-scale gravity requires the same construction to realize
 G1--G6, including geometric generalized-entropy stationarity and conserved
-matter stress. These are acceptance obligations, not premises already
+matter stress. These are acceptance obligations, not premises
 discharged by running the current C/E code. See the
 [common hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md).
 
@@ -1881,7 +1881,7 @@ owns established claim scope; [PREMISES.md](PREMISES.md) is generated
 navigation, not a proof that every theorem antecedent has been discharged.
 
 The [completion program #1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134)
-and its [dependency DAG](../docs/COMPLETION_PROGRAM.md) now own the linked
+and its [dependency DAG](../docs/COMPLETION_PROGRAM.md) own the linked
 construction gates, including theorem/model integration and active-library
 triage. Earlier coordination issues #1025, #1026, #1076 and #1077 are
 superseded; their evidence and unfinished benchmark contracts are retained.

@@ -108,6 +108,9 @@ ALLOWLIST_PATHS = [
     "docs/policies/STYLE_GUIDE.md",
     "docs/FROZEN_PREDICTION_LADDER.md",
     "docs/research/",
+    # Hash-bound by the executed model receipts in model/ (source_sha256), so its
+    # prose changes together with a regeneration of those receipts.
+    "docs/INTERPRETATION_AND_TERMS.md",
     # Rendered by tools/build_prior_work.py from claims/prior_work.json: external
     # titles such as "Recent Developments in Gauge Theories" are quoted verbatim.
     "_BIBITEMS.tex",

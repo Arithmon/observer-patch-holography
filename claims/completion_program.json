@@ -18,7 +18,7 @@
       "title": "Native rank-three slow response and intrinsic carrier geometry",
       "claim_id": "OPH-GR-PORT-RESPONSE-COMPLETION",
       "achieved": "The uniform native repair mean selects a normalized rank-three Gram band; exact quotient, proper-action and completion results connect it to the carrier response and signed records.",
-      "boundary": "This is a response/metric result, not yet physical position or a complete 3+1 field theory. Finite nonconstant modes remain; the limiting normalization and calibration schedule matter.",
+      "boundary": "This is a response/metric result, not a physical position or a complete 3+1 field theory. Finite nonconstant modes remain; the limiting normalization and calibration schedule matter.",
       "supports": [
         "CP-03",
         "CP-08",
@@ -414,7 +414,7 @@
         "Retain the static radial-product null-balance failure and distinguish finite rank-three carrier geometry from physical 3+1 event geometry.",
         "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
       ],
-      "obstruction": "A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is already a scoped control, not a universal gravity no-go.",
+      "obstruction": "A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is a scoped control, not a universal gravity no-go.",
       "evidence": [
         "model/PHYSICAL_AUDIT.md",
         "model/physical_space_time/README.md",
@@ -442,7 +442,7 @@
       "acceptance": [
         "Bind G1--G6 to the actual common state, law, algebras, geometry, matter stress, observer clocks and refinement maps.",
         "Derive the edge-center entropy split, modular first law, positive Newton normalization and geometric/state variation with controlled small-ball remainders and enough directions.",
-        "Show the relevant joint stationarity, not merely a stationary Markov law, Gibbs reference or conditional Shannon entropy; retain native entropy and bare-area negative controls.",
+        "Show the relevant joint stationarity, beyond a stationary Markov law, Gibbs reference or conditional Shannon entropy; retain native entropy and bare-area negative controls.",
         "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
       ],
       "obstruction": "Prove that a necessary entropy sign, modular/stress normalization or stationarity variation is incompatible across all allowed same-process realizations before promoting a no-go. An unmet theorem premise is an open gate, not a theorem failure.",

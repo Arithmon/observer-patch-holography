@@ -1,7 +1,7 @@
 # OPH Falsification Program
 
 The [executable completion program](COMPLETION_PROGRAM.md) and
-[hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) now define the new construction
+[hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) define the new construction
 target and its dependency gates. CP-12 applies scoped stopping rules to that
 program; the broad obstruction search #1078 and ongoing audit #1033 remain
 open. A whole-program exclusion requires a fixed quantified class and

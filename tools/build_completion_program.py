@@ -211,7 +211,7 @@ def render(program: dict, hypothesis: dict) -> str:
               "| Whole-program falsification | Verified contradiction in indispensable premises, exclusion of every frozen realization of a required join, or an unavoidable independently excluded prediction | Stop the frozen program; any premise/class change starts a new version |",
               "| Inconclusive | Open maps, incomplete coverage or an unsuccessful finite search | No confirmation and no impossibility claim |",
               "| Resource/value stop | A declared budget or return threshold is reached | A research stop, not scientific falsification |", "",
-              "The boundary is currently **not frozen**, so no whole-program exclusion "
+              "The boundary is **not frozen**, so no whole-program exclusion "
               "is claimed. Broad closure alone does not guarantee this specific C/E "
               "candidate, and an indefinitely enlarged escape class cannot be declared "
               "exhausted. Freezing CP-00 makes the tested formulation and its possible "

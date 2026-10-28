@@ -14,7 +14,7 @@ The integrated gates remain open, but the program starts from retained positive 
 
 | Foundation | Achieved component | Remaining join | Builds into |
 | --- | --- | --- | --- |
-| Native rank-three slow response and intrinsic carrier geometry | The uniform native repair mean selects a normalized rank-three Gram band; exact quotient, proper-action and completion results connect it to the carrier response and signed records. | This is a response/metric result, not yet physical position or a complete 3+1 field theory. Finite nonconstant modes remain; the limiting normalization and calibration schedule matter. | CP-03, CP-08, CP-13 |
+| Native rank-three slow response and intrinsic carrier geometry | The uniform native repair mean selects a normalized rank-three Gram band; exact quotient, proper-action and completion results connect it to the carrier response and signed records. | This is a response/metric result, not a physical position or a complete 3+1 field theory. Finite nonconstant modes remain; the limiting normalization and calibration schedule matter. | CP-03, CP-08, CP-13 |
 | Candidate observer clocks with an implemented modular-flow relation | Finite faithful-reference preparation and active modular histories provide continuing clock/readout constructions. On the declared Gibbs product branch, modular flow equals the rescaled Hamiltonian flow and clocked field measurements share that reference. | Reference/access choice, compiled controls and branch-specific clock conversion remain explicit. Passive repair, every regional modular flow and a physical laboratory duration are not thereby identified. | CP-02, CP-04, CP-09 |
 | Common native field generator and conditional 3+1 Lorentzian field readout | The refining native screen has a common positive continuum operator. A declared radial product builds on that response structure and supports one smooth static 1+3 scalar description of finite admissible joint clock, field and response menus at any positive tolerance. | The native screen has spectral dimension two. Rank three of the local slow band alone does not derive three spatial field dimensions; radial interval/filter, encoded fields, action, active controls and units retain their stated inputs. The claim is conditional and does not supply the Standard Model continuum. | CP-06, CP-08, CP-13 |
 | Interacting field projections and same-reference modular measurement histories | A finite coupled matter/link/scalar source and a separate same-product quartic projection execute complete quantum records and feedback, with occupation bounds and declared Gibbs/modular readout histories. | The supplied actions, projected spatial modes, coupling, temperature and access services keep their own contracts. These constructions are reusable interaction and observation machinery, not a single source-derived chiral Standard Model. | CP-01, CP-04, CP-06 |
@@ -110,7 +110,7 @@ The arrows are research acceptance dependencies, not a new theorem entailment gr
 | Inconclusive | Open maps, incomplete coverage or an unsuccessful finite search | No confirmation and no impossibility claim |
 | Resource/value stop | A declared budget or return threshold is reached | A research stop, not scientific falsification |
 
-The boundary is currently **not frozen**, so no whole-program exclusion is claimed. Broad closure alone does not guarantee this specific C/E candidate, and an indefinitely enlarged escape class cannot be declared exhausted. Freezing CP-00 makes the tested formulation and its possible rejection explicit. Changing it never erases an earlier verdict.
+The boundary is **not frozen**, so no whole-program exclusion is claimed. Broad closure alone does not guarantee this specific C/E candidate, and an indefinitely enlarged escape class cannot be declared exhausted. Freezing CP-00 makes the tested formulation and its possible rejection explicit. Changing it never erases an earlier verdict.
 
 Every obstruction records target revision, mandatory premises, quantified class, evidence and independent check, coverage, surviving escape routes and the exact consequence. Issue closure alone is not scientific acceptance. The registry validator checks structure and artifact custody, not the truth of a mathematical proof or a physical interpretation.
 
@@ -340,7 +340,7 @@ Acceptance:
 - Retain the static radial-product null-balance failure and distinguish finite rank-three carrier geometry from physical 3+1 event geometry.
 - Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion.
 
-Obstruction/stopping test: A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is already a scoped control, not a universal gravity no-go.
+Obstruction/stopping test: A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is a scoped control, not a universal gravity no-go.
 
 Retained starting evidence:
 
@@ -360,7 +360,7 @@ Acceptance:
 
 - Bind G1--G6 to the actual common state, law, algebras, geometry, matter stress, observer clocks and refinement maps.
 - Derive the edge-center entropy split, modular first law, positive Newton normalization and geometric/state variation with controlled small-ball remainders and enough directions.
-- Show the relevant joint stationarity, not merely a stationary Markov law, Gibbs reference or conditional Shannon entropy; retain native entropy and bare-area negative controls.
+- Show the relevant joint stationarity, beyond a stationary Markov law, Gibbs reference or conditional Shannon entropy; retain native entropy and bare-area negative controls.
 - Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion.
 
 Obstruction/stopping test: Prove that a necessary entropy sign, modular/stress normalization or stationarity variation is incompatible across all allowed same-process realizations before promoting a no-go. An unmet theorem premise is an open gate, not a theorem failure.
