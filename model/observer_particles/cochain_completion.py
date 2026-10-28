@@ -165,7 +165,7 @@ def main():
             'entire_existing_cylinder_experiment_replaced_or_reinterpreted':False,
             'this_cochain_completion_selected_by_native_repair':False,
             'continuum_chiral_regulator_or_full_physical_fermion_net_proved':False}}
-    (HERE/'results/cochain_completion.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/cochain_completion.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'ranks':ranks,'Betti':betti,
         'scalar_block_error':scalar_error,'former_edge_mode_full_speed':full_speed},indent=2))
 

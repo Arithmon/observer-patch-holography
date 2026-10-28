@@ -3,6 +3,7 @@ from copy import deepcopy
 import hashlib
 import json
 import math
+from pathlib import Path, PureWindowsPath
 import sys
 
 import numpy as np
@@ -10,6 +11,21 @@ import pytest
 from scipy.linalg import expm
 
 from . import record_two_point as r
+
+
+def test_source_binding_keys_are_portable_under_windows_paths(monkeypatch):
+    inherited = "model/common_source/chiral_candidate/protected_momentum.py"
+    monkeypatch.setattr(r.protected, "source_bindings", lambda: {inherited: "unused"})
+    relative_to = Path.relative_to
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, "relative_to", lambda self, *args, **kwargs:
+                      PureWindowsPath(relative_to(self, *args, **kwargs)))
+        actual = r.source_bindings()
+    names = (inherited, "model/common_source/chiral_candidate/record_two_point.py",
+             "model/common_source/chiral_candidate/test_record_two_point.py",
+             "model/common_source/hierarchy_diagnosis/audit.py",
+             "model/common_source/replay.py", "tools/strict_json.py")
+    assert actual == {name: hashlib.sha256((r.ROOT/name).read_bytes()).hexdigest() for name in names}
 
 
 @pytest.fixture(scope="module")

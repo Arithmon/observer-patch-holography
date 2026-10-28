@@ -217,7 +217,7 @@ def main():
             'code/a5_closure/manifests/spin_statistics_semantic_artifact.json']]
     result['source_sha256']={str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}
     target=HERE/'results/spin_matter_join.json'
-    target.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n')
+    target.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'output':str(target),
                       'execution_errors':result['native_execution']['full32_column_matrix_errors_operator_norm'],
                       'phase_error':result['native_execution']['loop_pointer_state_error_operator_norm']}))

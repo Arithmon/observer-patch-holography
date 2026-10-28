@@ -58,7 +58,7 @@ def main():
             'absolute_mass_scale_selected':False,'quantum_pole_masses_computed':False,
             'charged_neutral_mass_ratio_is_observed_W_Z_prediction':False},
     }
-    (HERE/'results/electroweak_mass_form.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/electroweak_mass_form.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'mass_form_ratio':ratio,
         'conditional_square_root_ratio':math.sqrt(ratio)},indent=2))
 

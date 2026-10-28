@@ -249,7 +249,7 @@ def source_hashes():
   if path:
    p=Path(path).resolve()
    if p.is_relative_to(PUBLIC) and p.is_file():paths.add(p)
- return {str(p.relative_to(ROOT)):sha(p) for p in sorted(paths)}
+ return {p.relative_to(ROOT).as_posix():sha(p) for p in sorted(paths)}
 
 def run():
  native=native_envelope();print('Native common envelope and boundary control: PASS',flush=True)
@@ -272,5 +272,5 @@ def run():
     'all_OPH_dynamic_geometries_excluded':False}}
 
 if __name__=='__main__':
- result=clean(run());OUT.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n')
+ result=clean(run());OUT.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n', encoding='utf-8', newline='\n')
  print(result['status'])

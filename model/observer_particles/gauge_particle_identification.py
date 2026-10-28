@@ -234,7 +234,7 @@ def main():
             'existing_3plus1_field_description_discarded':False,
             'same_source_physical_current_Ward_and_pole_map_completed':False,
             'reason':'Internal adjoint response directions are candidate gauge-current quantum numbers, not spacetime vector polarizations. The source carrier response alone supplies neither the physical propagating gauge field nor its same-current spectral kernel. The declared exterior Higgs module is a separate attachment.'}}
-    path=out/'gauge_particle_identification.json';path.write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    path=out/'gauge_particle_identification.json';path.write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'multiplets':rows,'native_invariance_error':max(errors)},indent=2))
 
 

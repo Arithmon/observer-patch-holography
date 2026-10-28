@@ -57,7 +57,7 @@ def main():
     assert physical.T==-physical
     artifact=HERE/'results/neutrino_action_operators.json'
     artifact.write_text(json.dumps({'LH_invariant':rep.sparse(coupling),
-        'neutral_mass_kernel':rep.sparse(neutral)},indent=2)+'\n')
+        'neutral_mass_kernel':rep.sparse(neutral)},indent=2)+'\n', encoding='utf-8', newline='\n')
     paths=[source,PRIOR/'representation_identification.py',
         ROOT/'Lean/Screen/WeylYukawaConventions.lean']
     result={'status':'PASS_OPTIONAL_SAME_HIGGS_NEUTRINO_OPERATOR_WITH_EXPLICIT_NEW_COEFFICIENTS',
@@ -71,7 +71,7 @@ def main():
         'dimension_five_operator_is_in_minimal_renormalizable_SM':False,
         'scope':'An optional effective interaction on the same internal module and declared Higgs; neither kappa, Lambda, a neutrino mechanism nor the selected physical vacuum is derived. This is not a massive-neutrino prediction.',
         'source_selected_neutrino_masses':False}
-    (HERE/'results/neutrino_action_extension.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/neutrino_action_extension.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(result['status'])
 
 

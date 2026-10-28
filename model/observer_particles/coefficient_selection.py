@@ -288,7 +288,7 @@ def main():
     output=HERE/'results';output.mkdir(exist_ok=True)
     artifact=output/'coefficient_selection_operators.json'
     artifact.write_text(json.dumps({'normalized_pair_commutant_basis':[sparse(x) for x in normalized],
-        'two_positive_doublet_isometry':sparse(v),'kernel_control_A':sparse(k0),'kernel_control_B':sparse(k1)},indent=2)+'\n')
+        'two_positive_doublet_isometry':sparse(v),'kernel_control_A':sparse(k0),'kernel_control_B':sparse(k1)},indent=2)+'\n', encoding='utf-8', newline='\n')
     sources=[PREVIOUS/'representation_identification.py',PREVIOUS/'scalar_bilinear_route.py',
         PREVIOUS/'results/representation_identification_operators.json',PREVIOUS/'results/scalar_bilinear_operators.json',
         ROOT/'claims/axiom_registry.yaml',
@@ -330,7 +330,7 @@ def main():
         'one_loop_family_cancellation':{'determinant':str(determinant),'ng_derivative_exact_zero':True},
         'conditional_matter_trace_Chain_P_entropy_gauge_join':gauge_ray(),
         'source_selection_boundary':'The combined executed gauge/matter consequences constrain representation and conditional gauge parameters. No inspected map from their A3 optimizer/P constraints to one point of the scalar/Yukawa coefficient space is supplied.'}
-    (output/'coefficient_selection.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (output/'coefficient_selection.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'pair_commutant':prank,'gauge_join':result['conditional_matter_trace_Chain_P_entropy_gauge_join']},indent=2))
 
 if __name__=='__main__':main()

@@ -189,7 +189,7 @@ def main():
         'constituent_q6Y':list(map(str,v['origin'])),
         'uses_conjugate_of_same_Higgs_doublet':v['conjugate_higgs'],
         'coefficient_matrices':[rep.sparse(c) for c in v['matrices']]} for v in vertices],
-        'three_family_control_kernels':[rep.sparse(family_kernel(vertices,ys)) for ys in (a,b)]},indent=2)+'\n')
+        'three_family_control_kernels':[rep.sparse(family_kernel(vertices,ys)) for ys in (a,b)]},indent=2)+'\n', encoding='utf-8', newline='\n')
     source_paths = [PRIOR/'representation_identification.py',PRIOR/'scalar_bilinear_route.py',
                    PRIOR/'results/representation_identification_operators.json',
                    PRIOR/'results/scalar_bilinear_operators.json',
@@ -218,7 +218,7 @@ def main():
         'physical_Standard_Model_masses_derived':False,
         'neutrino_masses_derived':False,
         'physical_source_selected_interacting_action':False}
-    (HERE/'results/unified_yukawa_action.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/unified_yukawa_action.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'vertices':result['invariant_vertices'],
                       'source_bindings':len(source_paths)},indent=2))
 

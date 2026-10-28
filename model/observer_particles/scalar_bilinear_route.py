@@ -177,7 +177,7 @@ def main():
         'color_C2':rep.sparse(cc),'weak_C2':rep.sparse(weakc),
         'color_singlet_projector':rep.sparse(projector),
         'Higgs_charge_doublet_projector':rep.sparse(doublet_projector),
-        'color_singlet_bases_by_q':{k:rep.sparse(v) for k,v in vectors_by_q.items()}},indent=2)+'\n')
+        'color_singlet_bases_by_q':{k:rep.sparse(v) for k,v in vectors_by_q.items()}},indent=2)+'\n', encoding='utf-8', newline='\n')
     paths=[HERE/'representation_identification.py',HERE/'results/representation_identification_operators.json',
            HERE/'results/representation_identification.json',HERE/'spin_matter_join.py',
            ROOT/'Lean/Screen/FermionSectorAssembly.lean',
@@ -216,7 +216,7 @@ def main():
             'source_Yukawa_binding_kernel_or_scalar_potential_supplied':False,
             'mass_or_width_emitted':False,'new_elementary_Higgs_representation_inserted':False,
             'native_End_C6_obstruction_applied_to_this_larger_pair_domain':False}}
-    target=HERE/'results/scalar_bilinear_route.json';target.write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    target=HERE/'results/scalar_bilinear_route.json';target.write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'color_singlet_rows':singlets,'origins':origin},indent=2))
 
 if __name__=='__main__':main()

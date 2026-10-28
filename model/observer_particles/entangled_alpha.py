@@ -102,5 +102,5 @@ def run():
 
 if __name__=='__main__':
     result=run()
-    (HERE/'results/entangled_alpha.json').write_text(json.dumps(result,indent=2)+'\n')
+    (HERE/'results/entangled_alpha.json').write_text(json.dumps(result,indent=2)+'\n', encoding='utf-8', newline='\n')
     print(result['status'])

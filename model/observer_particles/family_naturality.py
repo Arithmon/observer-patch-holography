@@ -121,7 +121,7 @@ def main():
     artifact.write_text(json.dumps({'source_band_projector':serialize(p),'basis':serialize(basis),
         'kinetic_metric':serialize(gram),'source_rotations':list(map(serialize,representations)),
         'commutant_constraint_witness_indices':witness_rotations,
-        'commutant_constraint_matrix':serialize(constraints),'chosen_port_form':serialize(perturbation)},indent=2)+'\n')
+        'commutant_constraint_matrix':serialize(constraints),'chosen_port_form':serialize(perturbation)},indent=2)+'\n', encoding='utf-8', newline='\n')
     paths = [Path(bands.__file__),PUBLIC/'Lean/Screen/A5FamilyBand.lean',
         PUBLIC/'code/a5_closure/manifests/echosahedral_federation_reference.json',
         PUBLIC/'code/a5_closure/manifests/family_band_attachment_reference.json',
@@ -153,7 +153,7 @@ def main():
         'scope':{'actual_source_family_band_used':True,'new_abstract_Schur_theorem_claimed':False,
             'family_attachment_unconditional':False,'excludes_symmetry_breaking_routes':False,
             'all_OPH_mass_realizations_excluded':False,'physical_SM_masses_derived':False}}
-    (HERE/'results/family_naturality.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/family_naturality.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'commutant_dimension':len(kernel),
         'conditional_family_mass_ratios':'1:1:1','symmetry_breaking_control_stabilizer':stabilizer},indent=2))
 

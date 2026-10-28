@@ -104,8 +104,8 @@ def main():
             print(name+': PASS',flush=True)
     result=verify()
     if not args.verify_only:
-        (HERE/'results/verification.json').write_text(json.dumps(result,indent=2)+'\n')
-        (HERE/'results/premise_witnesses.json').write_text(json.dumps(premise_witnesses(),indent=2)+'\n')
+        (HERE/'results/verification.json').write_text(json.dumps(result,indent=2)+'\n', encoding='utf-8', newline='\n')
+        (HERE/'results/premise_witnesses.json').write_text(json.dumps(premise_witnesses(),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps(result,indent=2))
 
 

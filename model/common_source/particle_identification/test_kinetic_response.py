@@ -1,5 +1,7 @@
 """Independent free-action, finite-difference and generalized-eigenvalue checks."""
 from dataclasses import replace
+import hashlib
+from pathlib import Path, PureWindowsPath
 
 import numpy as np
 import pytest
@@ -7,6 +9,19 @@ from scipy.linalg import eigvalsh
 
 from ..mass_response import model
 from . import kinetic_response as k, response
+
+
+def test_report_source_keys_are_portable_under_windows_paths(monkeypatch):
+    relative_to = Path.relative_to
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, "relative_to", lambda self, *args, **kwargs:
+                      PureWindowsPath(relative_to(self, *args, **kwargs)))
+        actual = k.report()["source_sha256"]
+    root = Path(k.__file__).resolve().parents[3]
+    names = ("model/common_source/particle_identification/kinetic_response.py",
+             "model/common_source/particle_identification/response.py",
+             "model/common_source/mass_response/model.py")
+    assert actual == {name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names}
 
 
 def test_free_inverse_matches_one_particle_action_and_not_neutral_density():

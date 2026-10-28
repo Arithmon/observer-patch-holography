@@ -9,9 +9,11 @@ def public_receipt(result):
     """Bind computational inputs without depending on prose renderings."""
     kept = {}
     for relative, expected in result.get('source_sha256', {}).items():
-        path = ROOT / relative
-        if not path.resolve().is_relative_to(ROOT):
+        relative = relative.replace('\\', '/')
+        path = (ROOT / relative).resolve()
+        if not path.is_relative_to(ROOT):
             raise ValueError('Evidence input escapes the repository')
+        relative = path.relative_to(ROOT).as_posix()
         if path.suffix.lower() in {'.md', '.tex', '.pdf'}:
             continue
         if relative.startswith(('model/', 'code/', 'Lean/')):
@@ -20,7 +22,7 @@ def public_receipt(result):
                 raise ValueError(f'Changed computational input: {relative}')
             kept[relative] = actual
     helper = Path(__file__).resolve()
-    kept[str(helper.relative_to(ROOT))] = hashlib.sha256(helper.read_bytes()).hexdigest()
+    kept[helper.relative_to(ROOT).as_posix()] = hashlib.sha256(helper.read_bytes()).hexdigest()
     result['source_sha256'] = kept
     result['evidence_contract'] = {
         'domain': 'Explicit finite state, representation, action and observation contracts in the named producer.',

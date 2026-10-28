@@ -293,7 +293,7 @@ def main():
             'taste_and_chirality':'The executed4-component symbol is one declared Dirac module, containing both Weyl principal symbols. It neither selects chirality nor removes tastes of a finite walk or Hodge discretization.',
             'common_source_history_intertwiner_completed':False,'source_selected_mass_or_backreaction_claimed':False},
         'primary_background_sources':['https://arxiv.org/abs/1308.4552','https://arxiv.org/abs/0911.1304']}
-    (HERE/'results/geometric_matter_join.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/geometric_matter_join.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'native_basis_error':max(symbols['native_basis_word_errors']),
         'null_frame_rank':nulls['design_rank'],'Whitney_Hodge_error':max(whitney['coframe_pullback_vs_direct_Hodge_errors'])},indent=2))
 

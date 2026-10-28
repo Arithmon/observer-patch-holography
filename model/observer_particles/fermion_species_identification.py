@@ -301,7 +301,7 @@ def main():
     result['source_sha256'] = {str(p.relative_to(ROOT)):sha(p) for p in sorted(dependencies)}
     result['producer_sha256']=sha(__file__)
     target=HERE/'results/fermion_species_identification.json'
-    target.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n')
+    target.write_text(json.dumps(public_receipt(result),indent=2,sort_keys=True)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'output':str(target),
                       'binary_icosahedral_order':result['source_spin_lift']['group_order'],
                       'native_state_error':result['native_exchange_control']['maximum_state_error_L2'],

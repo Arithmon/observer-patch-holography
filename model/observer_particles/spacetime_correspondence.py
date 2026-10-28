@@ -319,7 +319,7 @@ def main():
         'integrated_physical_claim':{'conditional_free_product_field_with_Lorentz_signature_supported':True,
             'all_same_history_measurements_already_identified_as_SM_fields_and_GR':False,
             'particle_or_Einstein_dynamics_selected':False,'fundamental_spacetime_required':False}}
-    (HERE/'results/spacetime_correspondence.json').write_text(json.dumps(serial(public_receipt(result)),indent=2)+'\n')
+    (HERE/'results/spacetime_correspondence.json').write_text(json.dumps(serial(public_receipt(result)),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'fine_native_histories':joint['all_fine_native_histories'],
         'field_clock_joint_rows':len(joint['joint_record_rows']),'mean_clock_substitution_error':joint['replace_actual_incident_count_by_mean_pointer_error'],
         'source_law_crosscheck_error':apparatus['crosscheck_error']},indent=2))

@@ -318,7 +318,7 @@ def main():
             'CAR_not_just_one_particle_occupation_swap':True,
             'physical_Weyl_spin_connection_chirality_identified':False,
             'SM_generations_masses_Yukawas_selected':False,'stable_continuum_Fock_limit_proved':False}}
-    (HERE/'results/shared_spatial_matter.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+    (HERE/'results/shared_spatial_matter.json').write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps({'status':result['status'],'one_particle_dimension':3570,
         'exact_shared_B_response_error':max(x['scalar_to_fermion_propagator_identity_error'] for x in exact_rows),
         'source_local_gate_error':implementation['local_hopping_source_check']['whole_local_unitary_error'],

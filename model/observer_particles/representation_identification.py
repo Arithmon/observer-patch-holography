@@ -215,7 +215,7 @@ def main():
   'native_pulse_generators':[sparse(d) for d in ds],
   'spin_lifted_one_body_generators':[sparse(d) for d in lifted],
   'even_identification_operators':{k:sparse(v) for k,v in evenops.items()},
-  'basis_change':sparse(z)},indent=2)+'\n')
+  'basis_change':sparse(z)},indent=2)+'\n', encoding='utf-8', newline='\n')
  paths=['code/source_selection_model/response.json','code/source_selection_model/response.py',
  'code/source_selection_model/DERIVATION.md','code/m1_source_realization/model.py',
  'docs/research/COHERENT_SOURCE_CLOCKS.md','code/a5_closure/super_tannakian_matter_lift_certificate.py',
@@ -263,7 +263,7 @@ def main():
   'propagating_particle_poles_computed':False,'generation_count_selected':False,
   'laboratory_species_identified':False,'new_native_detector_execution_claimed':False,
   'positive_result':'Five internal gauge multiplets recovered from exact source-linked conditional representation operators without a field-name table.'}}
- out=HERE/'results/representation_identification.json';out.write_text(json.dumps(public_receipt(result),indent=2)+'\n')
+ out=HERE/'results/representation_identification.json';out.write_text(json.dumps(public_receipt(result),indent=2)+'\n', encoding='utf-8', newline='\n')
  print(json.dumps({'status':result['status'],'decoded_even_internal_multiplets':decoded},indent=2))
 
 if __name__=='__main__':main()

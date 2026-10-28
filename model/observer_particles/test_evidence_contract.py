@@ -2,11 +2,110 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
+import ast
+import copy
+from pathlib import Path, PureWindowsPath
 
 import pytest
 
 from model.observer_particles import run
+
+
+@pytest.mark.parametrize('producer', (*run.PRODUCERS, 'run'))
+def test_receipt_and_operator_writes_are_canonical_lf(producer, tmp_path, monkeypatch):
+    """Exercise the actual write calls with a Windows-like default translation."""
+    original = Path.open
+
+    def windows_open(self, *args, **kwargs):
+        if kwargs.get('mode', args[0] if args else 'r') == 'w':
+            if kwargs.get('newline') is None:
+                kwargs['newline'] = '\r\n'
+        return original(self, *args, **kwargs)
+
+    monkeypatch.setattr(Path, 'open', windows_open)
+    control = tmp_path / 'default.txt'
+    control.write_text('first\nsecond\n')
+    assert control.read_bytes() == b'first\r\nsecond\r\n'
+    tree = ast.parse((run.HERE / (producer + '.py')).read_text(encoding='utf-8'))
+    writes = [node for node in ast.walk(tree) if isinstance(node, ast.Call)
+              and isinstance(node.func, ast.Attribute) and node.func.attr == 'write_text']
+    assert writes
+    for index, node in enumerate(writes):
+        call = copy.deepcopy(node)
+        call.func.value = ast.Name(id='target', ctx=ast.Load())
+        call.args = [ast.Constant('first\nsecond\n')]
+        expression = ast.fix_missing_locations(ast.Expression(call))
+        target = tmp_path / f'{index}.json'
+        eval(compile(expression, str(run.HERE / (producer + '.py')), 'eval'),
+             {'target': target})
+        assert target.read_bytes() == b'first\nsecond\n'
+
+
+def test_windows_paths_preserve_complete_public_source_closure(monkeypatch):
+    from model.observer_particles import evidence_contract as contract
+
+    sources = ('model/native_modular_reference/local_preparation.py',
+               'model/observer_particles/geometric_stationarity.py')
+    bindings = {str(PureWindowsPath(path)): run.sha(run.ROOT / path)
+                for path in sources}
+    original = Path.relative_to
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, 'relative_to',
+                      lambda self, *args, **kwargs: PureWindowsPath(
+                          original(self, *args, **kwargs)))
+        result = contract.public_receipt({'source_sha256': bindings})
+    expected = {path: run.sha(run.ROOT / path) for path in sources}
+    helper = 'model/observer_particles/evidence_contract.py'
+    expected[helper] = run.sha(run.ROOT / helper)
+    assert result['source_sha256'] == expected
+
+
+def test_windows_source_path_still_checks_computational_hash():
+    from model.observer_particles import evidence_contract as contract
+
+    path = str(PureWindowsPath('model/native_modular_reference/local_preparation.py'))
+    with pytest.raises(ValueError, match='Changed computational input'):
+        contract.public_receipt({'source_sha256': {path: '0' * 64}})
+
+
+def test_dot_source_alias_is_canonicalized_and_hash_checked():
+    from model.observer_particles import evidence_contract as contract
+
+    path = 'model/native_modular_reference/local_preparation.py'
+    expected = run.sha(run.ROOT / path)
+    result = contract.public_receipt({'source_sha256': {'./' + path: expected}})
+    assert result['source_sha256'][path] == expected
+    assert './' + path not in result['source_sha256']
+    with pytest.raises(ValueError, match='Changed computational input'):
+        contract.public_receipt({'source_sha256': {'./' + path: '0' * 64}})
+
+
+@pytest.mark.parametrize('bad_alias_first', [False, True])
+def test_every_duplicate_source_alias_hash_is_checked(bad_alias_first):
+    from model.observer_particles import evidence_contract as contract
+
+    path = 'model/native_modular_reference/local_preparation.py'
+    entries = [(path, run.sha(run.ROOT / path)), ('./' + path, '0' * 64)]
+    if bad_alias_first:
+        entries.reverse()
+    with pytest.raises(ValueError, match='Changed computational input'):
+        contract.public_receipt({'source_sha256': dict(entries)})
+
+
+def test_geometric_source_collection_uses_portable_windows_paths(monkeypatch):
+    monkeypatch.syspath_prepend(str(run.HERE))
+    from model.observer_particles import geometric_stationarity as producer
+
+    original = Path.relative_to
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, 'relative_to',
+                      lambda self, *args, **kwargs: PureWindowsPath(
+                          original(self, *args, **kwargs)))
+        result = producer.source_hashes()
+    assert all('\\' not in key for key in result)
+    for path in ('model/observer_particles/geometric_stationarity.py',
+                 'model/native_modular_reference/local_preparation.py'):
+        assert result[path] == run.sha(run.ROOT / path)
 
 
 def test_retained_computations_and_premise_views_agree():
