@@ -36,8 +36,8 @@ self-reference and a world that computes itself through its internal local
 dependencies. States, records, read/write relations and responses to admissible
 interventions constitute its operation. The complete history can contain
 change without an external host or a further time in which the whole history
-is played. This is the closure and intrinsic-realization hypothesis in
-[Essay B, §§6–7 and 9](../essays/B-why-does-anything-exist.tex).
+is played. This is the closure and intrinsic-realization hypothesis of the
+[basis](BASIS.md#the-closure-hypothesis).
 
 An application must construct the correspondence between those descriptions,
 preserving the observer's accessible records and interventions. A fixed-point

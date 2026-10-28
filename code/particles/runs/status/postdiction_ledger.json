@@ -921,7 +921,7 @@
         ],
         "id": "F-02",
         "source_sha256": {
-          "model/native_modular_reference/results.json": "178022353a178b797bc9df0df35bd108e4969d77e3aac268462761281c34b500",
+          "model/native_modular_reference/results.json": "5bfbd8a3e7814a0c1acd8dac307cbcfbc64e6aa20ff21253005cb15153739b50",
           "model/observer_time_fields/README.md": "9432005414761254054463ca4e52a83e946b3a02621758fd918c5589c64f842b",
           "model/observer_time_fields/continuum_dynamics.py": "667c79896bd1748b492b9fce3dadbdb4e10f62d130359e5cf45ace70de4214c5"
         },
@@ -1218,7 +1218,7 @@
       },
       "record": {
         "path": "model/common_source/chiral_candidate/record_two_point_results.json",
-        "sha256": "d090f987c87a02c28ac5c5f8928706b5990b9f90cbe6cef7ee83ecb0dbffd4ec"
+        "sha256": "0ec780328a262d3d9971c5431180827243b2cd0082945dccaeee4577dc13df05"
       }
     },
     "replay_owner": "python -m model.verify",

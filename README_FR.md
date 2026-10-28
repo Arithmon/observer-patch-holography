@@ -208,7 +208,7 @@ entrées.
 | [claims/](claims/README.md) | Les énoncés établis et leurs dépendances |
 | [tracking/](tracking/) | Les registres des prémisses, observations, prédictions et instruments |
 | [docs/](docs/README.md) | La base, le guide des termes, les politiques et les registres |
-| [book/](book/), [essays/](essays/) | Le livre et les essais |
+| [book/](book/) | Le livre |
 
 ## Reproduire et vérifier
 
