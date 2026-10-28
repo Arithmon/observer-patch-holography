@@ -20,8 +20,8 @@
     },
     "executable_observer_construction": {
       "pdf_path": "paper/executable_observer_construction.pdf",
-      "sha256": "52e1b91083224e900de5a6f49d469567e85848a4e175d03cb72d05150899fe15",
-      "size_bytes": 554764
+      "sha256": "a6eb7480bcb6eb839f45244e37dc662675cd3095108311583cef235c8bebe8a2",
+      "size_bytes": 562457
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",

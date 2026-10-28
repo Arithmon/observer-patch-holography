@@ -79,7 +79,10 @@ proof shows that the whole class of laws cannot work.
   reaches the optimal one-port exterior distance among the tested exact
   qubits, while a [same-code energy test](model/active_code_energy/README.md)
   shows why stationary sector weights and repair counts leave its
-  rest energy undetermined. Finding a stable defect is the work
+  rest energy undetermined. Its [compiled recovery and transport](model/screened_transport/README.md)
+  preserve the logical state at a reset core; a coherent rest gap is not
+  identified. An [SI conversion](model/clock_defect_energy/SI_UNITS.md) keeps
+  the supplied clock calibration explicit. Finding a stable defect is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [current particle/mass join](docs/research/OPH_NATIVE_PARTICLE_MASS_JOIN.md).
 - **Standard physics from finite agreement.** Under stated premises, finite

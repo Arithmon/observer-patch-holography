@@ -332,3 +332,10 @@ own tests. Both pinned guides retain their original evidence bytes; the
 - [Common Objections](COMMON_OBJECTIONS.md) answers recurring technical and conceptual criticisms.
 - [Contributed background notes](../contributions/README.md) record standard mathematics that OPH
   work can reference; they make no OPH claim.
+
+The [screened recovery service](../model/screened_recovery/README.md),
+[same-code transport](../model/screened_transport/README.md),
+[four shared clock events](../model/clock_defect_energy/shared_event_clock/README.md)
+and [conserved-sector action theorem](../model/conserved_sector_action/README.md)
+record the finite frontier results. The [SI dictionary](../model/clock_defect_energy/SI_UNITS.md)
+provides conditional unit conversion without a particle-mass prediction.

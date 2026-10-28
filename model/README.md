@@ -43,9 +43,9 @@ recorded-history transport and finite theorem maps as pinned dependencies:
 
 | Owner | Retained result and next requirement |
 | --- | --- |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | The [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes complete C/E clock/field records. A [joint readout inference](clock_defect_energy/CLOCK_COUNT_INFERENCE.md) reduces uncertainty about the shared native incident count, with preparation and abort errors retained. A calibrated physical clock remains open. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [screening packet](particle_screening/README.md) gives exact exterior-cap limits and an improved all-seam correctable q=1 qubit. Its worst one-port distance is the optimal `61/450` for an edge core, while its full exterior remains at least `4/9` away. Source recovery for this new code and a localized particle remain open. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [same-code calculation](active_code_energy/README.md) gives current rate `1/6` per uniform-seam attempt. Positive sector reweightings preserve native stationary dynamics and leave the rest-gap assignment free. Prior-code pulse recovery is counted under its separate fixed-seam protocol; one defect action, kinetics and stress remain open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | The [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes complete C/E clock/field records. A [joint readout inference](clock_defect_energy/CLOCK_COUNT_INFERENCE.md) reduces uncertainty about the shared native incident count, with preparation and abort errors retained. The [four-event comparison](clock_defect_energy/shared_event_clock/README.md) has ordered ensemble means and rejects a raw affine readout relation. A calibrated physical clock remains open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [screening packet](particle_screening/README.md) gives exact exterior-cap limits and an improved all-seam correctable q=1 qubit. Its worst one-port distance is the optimal `61/450` for an edge core, while its full exterior remains at least `4/9` away. Its [compiled recovery](screened_recovery/README.md) executes all 208 positive branches with explicit core reset; a localized particle remains open. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [same-code calculation](active_code_energy/README.md) gives current rate `1/6` per uniform-seam attempt. Positive sector reweightings preserve native stationary dynamics and leave the rest-gap assignment free. The [same-code transport](screened_transport/README.md) has positive transient current covariance but identity corrected logical transfer. [Conserved-sector theorems](conserved_sector_action/README.md) quantify the remaining reference freedom. A rest gap, kinetics and stress remain open. |
 
 The bounded-law owner #1135 retains the [endpoint-biased family](local_repair_family/README.md)
 and the open carrier/refinement and decision contract. The continuing-observer
@@ -54,6 +54,8 @@ The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
 review accompany all three lanes. No integrated completion gate, physical clock,
 mass spectrum or gravitational realization is accepted by these finite results.
+The [SI dictionary](clock_defect_energy/SI_UNITS.md) attaches metres, seconds,
+joules and kilograms only under its explicit clock and energy-frequency inputs.
 
 The [particle and common-field package](observer_particles/README.md)
 computes conditional internal matter multiplets and one-Higgs interactions

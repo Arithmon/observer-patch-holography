@@ -3565,7 +3565,7 @@ have two, and opposite cores have none. A crossed four-port qubit attains
 worst one-port distance $61/450$, optimal among exact all-seam sharp-$q=1$
 qubits on an edge core and improved from the earlier code's $82/225$.
 All complete raw $\Cn/\En$ branches satisfy its correction conditions;
-source pulse recovery for this new code remains uncompiled. Its full
+the compiled recovery described below supplies its source pulse service. Its full
 exterior differs by at least $4/9$. Separately, a sharp-$q=2$ pair
 starting on any native edge exits that edge set with hazard $1/15$ per
 uniform-seam attempt, excluding an invariant edge bond in this finite
@@ -3589,6 +3589,59 @@ uniform-seam energy. The finite action-measure uniqueness theorem applies
 within each connected sector, and the proper-time/inertia and Ward theorems
 require the same candidate's action, kinetic and stress maps
 \cite{activeCodeEnergy}.
+
+\paragraph{Compiled screened recovery and the same-code transport test.}
+The screened encoder and all 208 positive complete $\Cn/\En$ recovery
+branches have a source execution on the 512-row work register. Their ideal
+identity $R_hK_hV=\sqrt{p_h}V$ preserves arbitrary logical/reference states
+through any finite corrected history, with immediate supplied recovery and
+an explicit archived core-label reset. Initial encoding uses 65,484 source
+pulses. Uniform-seam mean native-plus-recovery costs are $37499681/60$ for
+$\Cn$ and $36870437/60$ for $\En$ per attempt; retained records use 23 or
+24 classical bits. Numerical source composition has a stated 100-attempt
+bound under its routine guards, separate from exact ideal composition and
+physical apparatus error \cite{screenedRecovery}.
+
+On this same code, the native current second moment is a rank-eleven
+weighted port Laplacian with trace $1/3$. For the earlier source eigenprofile,
+its quadratic form is $13/120$, while the two logical basis states have
+variances $1/2$ and $5/2$. The ratios $13/60$ and $13/300$ therefore do not
+supply one wave rate for this code. Summing every corrected branch gives
+identity logical transfer, with four unit superoperator eigenvalues, and
+the core resets to $(0,1)$ at each attempt boundary. Transient native
+current is present, but continuing coherent dispersion and a rest gap are
+not identified. A common global phase is invisible to the channel and is
+not a measured zero rest energy \cite{screenedTransport}. The finite
+conserved-sector theorem additionally proves stationary reweighting,
+conditional cancellation and zero sector-potential gradient for every
+positive sector factor. Exact enumeration binds its premises to the 4,356
+native source/core states; the general implication is checked in Lean,
+while the actual finite kernel is checked in Python \cite{conservedSectorAction}.
+
+\paragraph{Four shared clock events.}
+A continuation compiles four transported-core modular words at parameter
+one and source pair preparation/analyzers. Four terminal horizons on copies
+of the same C/E protocol retain all stopping outcomes and source aborts,
+with up to three FIFO exports. Conditional clock and Ramsey ensemble means
+are strictly increasing at the four shared checkpoint types. A raw affine
+fit on events one and two fails the reserved fourth event by approximately
+$0.0105927$ in field probability; the source-error allowance leaves a
+positive cross-product margin. These are ensemble readings with nonlinear
+detector response. Model-conditioned response inversion recovers a common
+count but does not establish a physical clock rate, individual-shot monotone
+reading or timelike atlas \cite{sharedEventClock}.
+
+\paragraph{Conditional SI attachment.}
+The unit utility takes an explicit $T$ seconds per model-clock unit and
+signal speed $v$ in model lengths per clock unit. Identifying that signal
+with $c$ fixes $L=cT/v$. If the same candidate supplies a coherent rest
+angular frequency $\omega_0$ and the physical identification
+$E=\hbar\omega$, its conditional rest mass is
+$m=\hbar\omega_0/(Tc^2)$. The SI defining values of $c$ and $h$ do not
+supply $T$ or $\omega_0$ \cite{siConstants}. The independent small-momentum
+check is $\omega_0\omega''(0)/v^2=1$ for a massive relativistic dispersion.
+The corrected screened code supplies no such dispersion or rest gap, so
+no particle-mass or GeV prediction is assigned by this conversion.
 
 \subsection{The joins in dependency order}
 \label{sec:join-order}
@@ -4076,6 +4129,30 @@ Exact cap minimax, all-seam code geometry and native first-exit bounds.
 FloatingPragma (2026). \emph{Same-code current and sector-action ambiguity}.
 Common candidate definition, counted correction work and sectorwise action limits.
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/active_code_energy}
+
+\bibitem{screenedRecovery}
+FloatingPragma (2026). \emph{Compiled continuing recovery of the screened qubit}.
+Complete C/E source recovery, finite composition and retained service costs.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/screened_recovery}
+
+\bibitem{screenedTransport}
+FloatingPragma (2026). \emph{Transient current and corrected transport of the screened code}.
+Same-code current form, logical transfer and core-reset countercontrols.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/screened_transport}
+
+\bibitem{conservedSectorAction}
+FloatingPragma (2026). \emph{Conserved-sector action theorem on the native kernel}.
+Quantified finite reference freedom and explicit model-premise bindings.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/conserved_sector_action}
+
+\bibitem{sharedEventClock}
+FloatingPragma (2026). \emph{Four shared source events for a clock comparison}.
+Source-executed conditional ensemble readouts and an affine consistency test.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/clock_defect_energy/shared_event_clock}
+
+\bibitem{siConstants}
+BIPM. \emph{SI defining constants}.
+\url{https://www.bipm.org/en/measurement-units/si-defining-constants}
 
 \bibitem{nativeDefect}
 FloatingPragma (2026). \emph{Native defect decision}. Exact sector,

@@ -127,6 +127,18 @@ retaining only the separate readout marginals loses that improvement.
 This is an operational join under the specified finite preparation and
 abort contract, with physical clock calibration open.
 
+The [compiled screened recovery](../model/screened_recovery/README.md)
+retains all positive raw branches and explicit core reset. Its
+[same-code transport test](../model/screened_transport/README.md) gives
+identity corrected logical transfer despite positive transient current
+covariance; the earlier wave-rate ratio depends on the logical input.
+This excludes that direct frequency assignment for this fixed-code cycle.
+The [conserved-sector action theorem](../model/conserved_sector_action/README.md)
+proves reference freedom for all positive sector weights under checked support
+premises. A [four-event clock comparison](../model/clock_defect_energy/shared_event_clock/README.md)
+rejects an affine relation between raw conditional readout probabilities;
+nonlinear detector response leaves a shared event parameter possible.
+
 These are finite conclusions with source-bound replay and countercontrols,
 not empirical exclusions or accepted integrated gates. Changing the reference,
 deformation relations, service menu or energy functional changes the tested
