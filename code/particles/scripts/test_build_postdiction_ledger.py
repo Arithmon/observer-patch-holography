@@ -963,7 +963,7 @@ def test_alpha_closure_chain_orders_the_two_maps(result):
     assert "`alpha_inv_closure_root`" in text
     assert "`alpha_inv_closure_gauge_width`" in text
     assert f"{abs(gauge['deviation_inv_alpha']):.6f}" in text
-    assert "is open work owned by [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) (historical lane #736, closed)" in text
+    assert "is open work owned by [#1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134) (historical lane #736, closed)" in text
 
 
 def test_alpha_closure_rows_fail_closed_when_the_certificate_promotes():
@@ -1094,7 +1094,7 @@ def test_markdown_rendered(result):
     assert "`code/particles/runs/status/postdiction_ledger.json`" in text
     assert "Each row distinguishes analytic paper proofs, finite Lean results" in text
     assert "Every step is machine checked in the Lean workspace" not in text
-    assert "Live owner: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) (historical lane #736, closed)" in text
+    assert "Live owner: [#1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134) (historical lane #736, closed)" in text
     assert "Historical context:" not in text
     assert "not identified as restrictions of one fixed physical construction" in text
     assert "no pooled all-scale agreement verdict" in text

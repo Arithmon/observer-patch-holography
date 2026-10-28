@@ -79,7 +79,7 @@ def test_frozen_register_distinguishes_pending_and_completed_protocols() -> None
     rows = {r["id"]: r for r in register["rows"]}
     # Pending comparisons follow the live test owner; claim gates retain their
     # original scientific lane references until an actual contract change.
-    for fz, issue in (("FZ-14", 1025),):
+    for fz, issue in (("FZ-14", 1147),):
         row = rows[fz]
         assert row["status"] == "registered_pending_freeze", fz
         assert row["owning_issue"] == issue, fz
