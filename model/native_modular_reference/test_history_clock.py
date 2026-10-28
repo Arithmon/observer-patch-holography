@@ -3,8 +3,10 @@ from copy import deepcopy
 from dataclasses import replace
 from fractions import Fraction as F
 from itertools import product
+import gzip
 import json
 import math
+import sys
 
 import numpy as np
 import pytest
@@ -357,6 +359,43 @@ def test_clock_and_rotation_domain_and_immutable_cached_source_outputs():
     rotation = clock.rotation(pair, 1, True)
     with pytest.raises(ValueError):
         rotation.flags.writeable = True
+
+
+def test_cli_gzip_is_deterministic_roundtrips_and_rejects_corruption(monkeypatch, tmp_path, capsys):
+    # A small representative of the real receipt schema isolates serialization;
+    # the separate packet fixture executes and checks the complete source model.
+    representative = {
+        'schema': 'oph.native_modular_reference.history_clock.v1', 'parameter': '4',
+        'source_sha256': {'model/native_modular_reference/history_clock.py': 'a'*64},
+        'source_budget': {'complete_history_halfdiamond_upper': '1/1000000'},
+        'complete_preparation_history_halftrace_upper': '1/1000000',
+        'histories': [{'law': 'C', 'complete_prepared_mass_diagnostic': 1.,
+            'records': [{'record': ['preparation', 'herald_failure'], 'probability': 1.}],
+            'wrong_fixed_reference_record_variation_diagnostic': 0.001,
+            'nonzero_clock_record_variation_diagnostic': 0.002,
+            **{key: 0. for key in ('source_complete_halftrace_error_diagnostic',
+                'untouched_reference_source_error_diagnostic', 'before_after_covariance_error_diagnostic',
+                'untouched_reference_covariance_error_diagnostic', 'complete_preparation_history_error_diagnostic')}}]}
+    monkeypatch.setattr(clock, 'run', lambda: deepcopy(representative))
+    first, second = tmp_path/'first.json.gz', tmp_path/'different-name.json.gz'
+    for target in (first, second):
+        monkeypatch.setattr(sys, 'argv', ['history_clock', '--write', str(target)])
+        clock.main()
+    encoded = first.read_bytes()
+    assert encoded == second.read_bytes()
+    assert encoded[:2] == b'\x1f\x8b'
+    assert encoded[3] & 8 == 0  # No embedded output filename.
+    assert encoded[4:8] == bytes(4)  # Fixed mtime.
+    assert gzip.decompress(encoded).decode('utf-8') == clock.full.corner.canonical(representative)
+    monkeypatch.setattr(sys, 'argv', ['history_clock', '--check', str(first)])
+    clock.main()
+    assert 'verified' in capsys.readouterr().out
+    first.write_bytes(b'not a gzip archive')
+    with pytest.raises(OSError):
+        clock.main()
+    first.write_bytes(gzip.compress(b'{"schema":"first","schema":"duplicate"}', mtime=0))
+    with pytest.raises(ValueError, match='duplicate'):
+        clock.main()
 
 
 @pytest.fixture(scope='module')

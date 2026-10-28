@@ -1,7 +1,7 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "0825cc3b15422c8f248f40f97a7447aff4c88612dc49c78f6119a3e402c5bf8c",
+    "README.md": "b1d6b9d8c349322b0e9a8507f37abdc18245e0407b472af240055d436303dcc5",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "cap_local_clock.py": "ccc4bf54b67866a59adb7904d1e3c19a4325ce53dc8963ed68848b83065510e8",
@@ -16,8 +16,8 @@
     "construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
     "full_flow_results.json": "5baf9707881985fb44f72403678c20975fb62f27abf43dc9b7ddec9f9d27a7f1",
-    "history_clock.py": "9ffc0ac1d7c4e61d71f56432f59f0eb3f92d342870e21a5c972ecafedf23d56b",
-    "history_clock_results.json": "7ac800305bbb33f0de0c3a4155d8502732babd5021ce22f3a63e5af39b17f1e7",
+    "history_clock.py": "cd2788ce95041d168e1343a00964db3921e347ec72a6e557cead6358a883ace4",
+    "history_clock_results.json.gz": "cc53b6f59e06b2f5c7435772daaa07cef26987ad1e454b45ecbf98b27f5a0146",
     "history_transport.py": "b08eaf256d6d7a078c44f9e762594581daa1c8bc529bf8bf0b6a47223689c8bf",
     "learned_clock.py": "000a33a6e87100bb510b41c3c374bb801b70bb5ab5b5b2780e381806eebe4d03",
     "learned_clock_results.json": "f0f0b5898f774b683e380878ded8329ee1826171ee227687b4806bea40ac2dd8",
@@ -45,7 +45,7 @@
     "test_completed_clock.py": "1460437575f242b205e36238be5d06735ad172ef5a3128ea60654268ea953d4e",
     "test_construction.py": "4fb2e8b1c5b3600946f7dad84f7b206fc3b7884a0ca40b96ddeb29611d45b9ef",
     "test_full_flow.py": "e4f3ee9286efa078250660754263b3e6f417fb5bebeec5d93408829ccee39ee2",
-    "test_history_clock.py": "f99ff1b869597b14a64b60fafa26b52b9dbd3c8fee6fcef13d86c522d9693658",
+    "test_history_clock.py": "827fc61e4dc5c62be12647400032c6307da55b7504a632bcb51b64e6cb5a49aa",
     "test_history_transport.py": "2887d79a3243865025baa771d8a33a694195fdd3c767dcf7c7e4dfe726e37417",
     "test_learned_clock.py": "8a02518d8fee16aec1daf90fb5ecd4b90fdfcc241b243626f97ad973f6d5668a",
     "test_local_history.py": "230280730964fcfdef512495029e104c9db44715f2224d5e144f7321847995c3",
@@ -74,7 +74,7 @@
     "python -m pytest -q -W error model/native_modular_reference",
     "python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json",
     "python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json",
-    "python -m model.native_modular_reference.history_clock --check model/native_modular_reference/history_clock_results.json"
+    "python -m model.native_modular_reference.history_clock --check model/native_modular_reference/history_clock_results.json.gz"
   ],
   "schema": "oph.native_modular_reference.manifest.v1"
 }

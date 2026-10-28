@@ -157,7 +157,8 @@
       "evidence": [
         "model/observer/README.md",
         "model/common_source/DERIVATION.md",
-        "model/native_interface/README.md"
+        "model/native_interface/README.md",
+        "model/native_modular_reference/history_clock_results.json.gz"
       ],
       "legacy_issues": [
         1077,
@@ -226,7 +227,9 @@
       "evidence": [
         "model/native_modular_reference/README.md",
         "model/common_source/THERMAL_CLOCK.md",
-        "model/common_source/modular_covariance.py"
+        "model/common_source/modular_covariance.py",
+        "model/native_modular_reference/history_transport.py",
+        "model/native_modular_reference/history_clock_results.json.gz"
       ],
       "legacy_issues": [
         1077,
@@ -543,7 +546,9 @@
       "evidence": [
         "docs/OPH_FALSIFICATION_PROGRAM.md",
         "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
-        "model/common_source/native_defect_decision_results.json"
+        "model/common_source/native_defect_decision_results.json",
+        "model/observer/adaptive_record_recovery.py",
+        "model/observer/RECORD_RECOVERY.md"
       ],
       "legacy_issues": [
         1078,

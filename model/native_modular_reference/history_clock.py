@@ -11,6 +11,7 @@ an actual observed branch. Coherent source apparatus remains declared.
 from __future__ import annotations
 
 import argparse
+import gzip
 from fractions import Fraction as F
 from functools import lru_cache
 from itertools import product
@@ -30,7 +31,7 @@ from ..observer import adaptive_record_recovery as adaptive
 from ..observer.source_discrimination import circuit
 
 ROOT = Path(__file__).resolve().parents[2]
-OUTPUT = Path(__file__).with_name('history_clock_results.json')
+OUTPUT = Path(__file__).with_name('history_clock_results.json.gz')
 PARAMETER = F(4)
 FIRST_EDGE = (0, 5)
 READ_EDGE = (1, 5)
@@ -507,11 +508,19 @@ def main():
     args = parser.parse_args()
     result = strict_json.loads(full.corner.canonical(run()))
     if args.check:
-        compare_receipt(strict_json.load(args.check), result)
+        raw = args.check.read_bytes()
+        if args.check.suffix == '.gz':
+            raw = gzip.decompress(raw)
+        compare_receipt(strict_json.loads(raw.decode('utf-8')), result)
         print('Complete transported native modular history and observability limits verified.')
     elif args.write:
-        with args.write.open('x', encoding='utf-8', newline='\n') as stream:
-            stream.write(full.corner.canonical(result)+'\n')
+        if args.write.suffix == '.gz':
+            with args.write.open('xb') as stream:
+                with gzip.GzipFile(filename='', mode='wb', fileobj=stream, mtime=0) as archive:
+                    archive.write(full.corner.canonical(result).encode('utf-8'))
+        else:
+            with args.write.open('x', encoding='utf-8', newline='\n') as stream:
+                stream.write(full.corner.canonical(result))
     else:
         print(full.corner.canonical(result))
 

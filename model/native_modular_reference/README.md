@@ -1055,7 +1055,10 @@ gain `g=(1+e)^2` and half-diamond allowance `d=e(2+e)/2`; composition updates
 `B <- g B+d`. With preparation error `B_p` and complete history error `B_h`,
 the end-to-end bound is `G_h B_p+(5/33)B_h`. The receipt includes separate
 attempt, source-pulse, service, tape, code and program-storage costs. The
-source bound certifies terminal logical words and native exports. Exact
+joined instrument bound compares against the ideal reference-defined
+protocol. Comparing its action with the unknown finite-preparation
+reference's own modular flow additionally uses the sandwich bound above.
+The source bound certifies terminal logical words and native exports. Exact
 proper-code intermediate exports have zero failure; floating per-pulse
 apparatus errors and host workspace are not certified by this bound.
 
@@ -1085,7 +1088,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.phase_clock --check model/native_modular_reference/phase_clock_results.json
 python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.history_clock --check model/native_modular_reference/history_clock_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.history_clock --check model/native_modular_reference/history_clock_results.json.gz
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

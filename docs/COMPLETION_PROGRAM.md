@@ -160,6 +160,7 @@ Retained starting evidence:
 - [README.md](../model/observer/README.md)
 - [DERIVATION.md](../model/common_source/DERIVATION.md)
 - [README.md](../model/native_interface/README.md)
+- [history_clock_results.json.gz](../model/native_modular_reference/history_clock_results.json.gz)
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -208,6 +209,8 @@ Retained starting evidence:
 - [README.md](../model/native_modular_reference/README.md)
 - [THERMAL_CLOCK.md](../model/common_source/THERMAL_CLOCK.md)
 - [modular_covariance.py](../model/common_source/modular_covariance.py)
+- [history_transport.py](../model/native_modular_reference/history_transport.py)
+- [history_clock_results.json.gz](../model/native_modular_reference/history_clock_results.json.gz)
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -438,6 +441,8 @@ Retained starting evidence:
 - [OPH_FALSIFICATION_PROGRAM.md](../docs/OPH_FALSIFICATION_PROGRAM.md)
 - [OPH_EXECUTABLE_HYPOTHESIS.md](../docs/OPH_EXECUTABLE_HYPOTHESIS.md)
 - [native_defect_decision_results.json](../model/common_source/native_defect_decision_results.json)
+- [adaptive_record_recovery.py](../model/observer/adaptive_record_recovery.py)
+- [RECORD_RECOVERY.md](../model/observer/RECORD_RECOVERY.md)
 
 Earlier related work: [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078), [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).
 
