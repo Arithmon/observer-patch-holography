@@ -1,5 +1,13 @@
 # Field response and particle identification from observer records
 
+The [common executable hypothesis](../OPH_EXECUTABLE_HYPOTHESIS.md) and
+[completion DAG](../COMPLETION_PROGRAM.md) place this work inside one target:
+the same source must supply observer clocks, defect identity and energy,
+an interacting chiral field description and the realized Einstein premises.
+In particular, the photon-containing full theory is gapless, and stationary
+repair or record entropy is not the geometric entropy variation needed for
+gravity. The distinctions below are acceptance tests for that common target.
+
 28 October 2026. This is the continuation guide for identifying effective
 particles in the executable observer construction. The
 [particle/mass handoff](OPH_PARTICLE_MASS_RESPONSE.md) records the numerical

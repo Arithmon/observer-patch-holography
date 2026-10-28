@@ -242,7 +242,7 @@ def test_finite_unitary_limit_row_records_missing_scattering_scope(result):
     assert "Full weak-operator convergence" in boundary
     assert "finite-dimensional operator topologies coincide" in boundary
     assert "constructs no wave operator, S-matrix" in boundary
-    assert "Historical lane #743 (closed; live owner #1026) records" in boundary
+    assert "Historical lane #743 (closed; live owner #1134) records" in boundary
     assert "no frozen prediction" in boundary
 
 
@@ -278,7 +278,7 @@ def test_modal_maxwell_row_records_missing_physical_em_attachments(result):
         assert excluded in boundary
     assert "PR-20, PR-21, and PR-22 remain declared inputs" in boundary
     assert "PR-53 and PR-54 name missing attachments" in boundary
-    assert "Historical lane #733 (closed; live owner #1026)" in boundary
+    assert "Historical lane #733 (closed; live owner #1134)" in boundary
     assert "emits no frozen prediction" in boundary
 
 
@@ -299,7 +299,7 @@ def test_adaptive_scheduler_helper_keeps_its_inputs_and_v3_gate_explicit(result)
     ]
     boundary = row["hypothesis_boundary"]
     assert "sigma, R, ConsultsOnly" in boundary
-    assert "Historical lane #728 (closed; live owner #1026) records the missing source scheduler/channel" in boundary
+    assert "Historical lane #728 (closed; live owner #1134) records the missing source scheduler/channel" in boundary
     assert "no prediction-ladder entry" in boundary
 
 
@@ -326,7 +326,7 @@ def test_e1_conditional_packet_keeps_source_regional_correlation_gate(result):
     assert "constant-tower transport is on the separate 86/88 carrier" in row[
         "hypothesis_boundary"
     ]
-    assert "Historical lane #728 (closed; live owner #1026) records" in row["hypothesis_boundary"]
+    assert "Historical lane #728 (closed; live owner #1134) records" in row["hypothesis_boundary"]
 
 
 def test_b7_reference_and_stationary_controls_do_not_overclose(result):
@@ -361,7 +361,7 @@ def test_b7_reference_and_stationary_controls_do_not_overclose(result):
     assert "modes/minimizers only" in boundary
     assert "saddles, complex or signed stationary phase" in boundary
     assert "Closed #731 records only the attained declared-bundle composition" in boundary
-    assert "Historical lane #739 (closed; live owner #1026) records source selection" in boundary
+    assert "Historical lane #739 (closed; live owner #1134) records source selection" in boundary
     assert "superseded historical gate" not in boundary
 
 
@@ -754,7 +754,7 @@ def test_thermodynamic_receipt_owners_are_separate(result):
     assert "mixing-mode-retaining linear intertwiner" in boundary
     assert "deterministic empirical pushforward" in boundary
     assert "does not exclude stochastic, nonlinear, reverse-direction" in boundary
-    assert "Historical lane #739 (closed; live owner #1026) records the missing replacement common reference" in boundary
+    assert "Historical lane #739 (closed; live owner #1134) records the missing replacement common reference" in boundary
     assert "empirical energy-clock calibration is PR-15" in boundary
     assert "Closed #732 records only the attained conditional composition milestone" in boundary
     assert "superseded historical owners" not in boundary

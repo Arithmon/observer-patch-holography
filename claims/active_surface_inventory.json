@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 669,
+  "surface_count": 674,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -152,6 +152,11 @@
     },
     {
       "path": "paper/tex_fragments/ENTANGLED_PAIR_ALPHA_CANDIDATE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1086,6 +1091,11 @@
       "allowlisted": false
     },
     {
+      "path": "docs/COMPLETION_PROGRAM.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "docs/EMPIRICAL_STATUS.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
@@ -1097,6 +1107,11 @@
     },
     {
       "path": "docs/INTERPRETATION_AND_TERMS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
@@ -2041,7 +2056,17 @@
       "allowlisted": false
     },
     {
+      "path": "claims/completion_program.json",
+      "glob": "claims/*.json",
+      "allowlisted": false
+    },
+    {
       "path": "claims/dependency_graph.json",
+      "glob": "claims/*.json",
+      "allowlisted": false
+    },
+    {
+      "path": "claims/executable_model_hypothesis.json",
       "glob": "claims/*.json",
       "allowlisted": false
     },

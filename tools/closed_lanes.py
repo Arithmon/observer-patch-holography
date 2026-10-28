@@ -16,17 +16,27 @@ it closes, and update ``OPEN_ISSUES`` when the open physics issues change.
 from __future__ import annotations
 
 # The open physics issues, by number, with their titles.
-OPEN_ISSUES: dict[int, str] = {
-    1025: "Define and test a discriminating consequence of the repair model",
-    1026: "Construct one common microscopic repair model",
-    1033: "Ongoing audit and repair of existing evidence",
-    1076: "Specify the minimal repair law and test dynamical alternatives",
-    1077: "Complete one source-coded preparation and retained-record history",
-    1078: "Search for programme-wide OPH obstructions and stopping criteria",
-}
+OPEN_ISSUES: dict[int, str] = {1033: 'Ongoing audit and repair of existing evidence',
+ 1078: 'Search for programme-wide OPH obstructions and stopping criteria',
+ 1134: 'One native process for observer clocks, particles and gravity',
+ 1135: 'Freeze the executable program class and decision contract',
+ 1136: 'Execute one continuing native observer with accounted resources',
+ 1137: 'Integrate finite theorems and curate the active proof chain',
+ 1138: 'Construct the continuing regime, faithful reference and local modular clocks',
+ 1139: 'Exhibit a localized native defect and its protecting invariant',
+ 1140: 'Derive common defect maintenance energy, kinetics and conserved stress',
+ 1141: 'Transport the same defects and derive particle identity and currents',
+ 1142: 'Obtain one interacting chiral 3+1 field description from native records',
+ 1143: 'Freeze the physical dictionary and derive the matched particle spectrum',
+ 1144: 'Construct responsive geometry and causal clocks on the same source',
+ 1145: 'Realize the joint modular, stress and entropy premises G1--G6',
+ 1146: 'Compose the realized Einstein response with matter and clock readouts',
+ 1147: 'Run joint independent physical tests and decide the completion milestone',
+ 1148: 'Audit obstructions and apply candidate, class and program stopping rules'}
+
 
 # The document that states the open construction work in prose.
-LIVE_OWNER_DOCUMENT = "model/CONSTRUCTION.md#remaining-construction-work"
+LIVE_OWNER_DOCUMENT = "docs/COMPLETION_PROGRAM.md#next-work-and-dependencies"
 
 # Lanes replaced by later lanes while the programme ran (historical record).
 SUPERSEDED_LANE_SUCCESSORS: dict[int, tuple[int, ...]] = {
@@ -50,60 +60,64 @@ CLOSED_LANE_SUCCESSORS = SUPERSEDED_LANE_SUCCESSORS
 
 # Every closed lane or issue that a register cites, mapped to the open issue
 # that owns its remaining work. Physical attachments, sector completions and
-# the constants belong to the common model (#1026); discriminating tests and
-# freezes to #1025; repair-law, scheduler and provenance derivations to #1076;
-# source-coded histories and their readouts to #1077.
+# the constants belong to the completion program (#1134); discriminating tests and
+# freezes to #1147; repair-law, scheduler and provenance derivations to #1135;
+# source-coded histories and their readouts to #1136.
 LIVE_OWNERS: dict[int, int] = {
-    314: 1026,  # physical matter and Spin action proof packet
-    425: 1026,  # hadron backend
-    506: 1025,  # independent same-scheme alpha/HVP falsification
-    545: 1026,  # fine-structure endpoint reduction
-    546: 1026,  # charged-lepton Yukawa landing
-    554: 1026,  # discrete structural selectors
-    565: 1026,  # twelve-port unit splitting and pairing
-    566: 1026,  # twelve-port current from source tomography
-    607: 1025,  # frozen-prediction register establishment
-    618: 1026,  # gravity premise-elimination ladder
-    625: 1026,  # integer load fibre and quadratic readback
-    628: 1026,  # operational integer-counting readback
-    643: 1025,  # A5 angular test
-    649: 1026,  # N reserve attachment
-    655: 1025,  # FZ-11 physical bridge
-    664: 1025,  # carrier scale and positive lower bound
-    666: 1025,  # seam-current discriminator
-    667: 1025,  # FZ-12 comparison
-    688: 1026,  # thermodynamic physical receipts
-    692: 1026,  # finite causal observer net
-    708: 1025,  # H0 preflight
-    712: 1026,  # source-linked observer quantum-event tower
-    726: 1026,  # observation ledger establishment
-    727: 1026,  # premise register establishment
-    728: 1026,  # spacetime adequacy
-    729: 1026,  # gravitation
-    730: 1026,  # quantum law and physical readout
-    731: 1026,  # mechanics
-    732: 1026,  # thermodynamics
-    733: 1026,  # electromagnetism
-    734: 1026,  # Standard Model structure
-    735: 1026,  # matter-action coefficients
-    736: 1026,  # masses and constants: P, N and the particle spectrum
-    737: 1077,  # simulation instruments
-    739: 1026,  # premise discharge and axiomatization queue
-    740: 1026,  # one fixed model and cross-observable comparisons
-    742: 1026,  # cosmology and astrophysics adequacy
-    743: 1026,  # interactions, running and scattering
-    744: 1026,  # QCD, hadrons, nuclear and atomic physics
-    745: 1026,  # EWSB, weak interactions, flavour and neutrinos
-    750: 1076,  # scheduler and source hypotheses from the repair process
-    751: 1026,  # dark sector
-    754: 1077,  # finite observer Maxwell episode on one history
-    763: 1076,  # event precedence from source provenance
-    776: 1077,  # support-wiring provenance readout
-    777: 1077,  # the read law as a production
-    778: 1077,  # population selection of committed record states
-    779: 1076,  # one source law and its geometry response
-    780: 1026,  # current readout on the sourced causal poset
-    782: 1026,  # count-volume and ordering-fraction limits
+    1025: 1147,  # superseded physical-test coordination
+    1026: 1134,  # superseded common-model coordination
+    1076: 1135,  # superseded repair-law coordination
+    1077: 1136,  # original scalar-history benchmark retained, not marked executed
+    314: 1134,  # physical matter and Spin action proof packet
+    425: 1134,  # hadron backend
+    506: 1147,  # independent same-scheme alpha/HVP falsification
+    545: 1134,  # fine-structure endpoint reduction
+    546: 1134,  # charged-lepton Yukawa landing
+    554: 1134,  # discrete structural selectors
+    565: 1134,  # twelve-port unit splitting and pairing
+    566: 1134,  # twelve-port current from source tomography
+    607: 1147,  # frozen-prediction register establishment
+    618: 1134,  # gravity premise-elimination ladder
+    625: 1134,  # integer load fibre and quadratic readback
+    628: 1134,  # operational integer-counting readback
+    643: 1147,  # A5 angular test
+    649: 1134,  # N reserve attachment
+    655: 1147,  # FZ-11 physical bridge
+    664: 1147,  # carrier scale and positive lower bound
+    666: 1147,  # seam-current discriminator
+    667: 1147,  # FZ-12 comparison
+    688: 1134,  # thermodynamic physical receipts
+    692: 1134,  # finite causal observer net
+    708: 1147,  # H0 preflight
+    712: 1134,  # source-linked observer quantum-event tower
+    726: 1134,  # observation ledger establishment
+    727: 1134,  # premise register establishment
+    728: 1134,  # spacetime adequacy
+    729: 1134,  # gravitation
+    730: 1134,  # quantum law and physical readout
+    731: 1134,  # mechanics
+    732: 1134,  # thermodynamics
+    733: 1134,  # electromagnetism
+    734: 1134,  # Standard Model structure
+    735: 1134,  # matter-action coefficients
+    736: 1134,  # masses and constants: P, N and the particle spectrum
+    737: 1136,  # simulation instruments
+    739: 1134,  # premise discharge and axiomatization queue
+    740: 1134,  # one fixed model and cross-observable comparisons
+    742: 1134,  # cosmology and astrophysics adequacy
+    743: 1134,  # interactions, running and scattering
+    744: 1134,  # QCD, hadrons, nuclear and atomic physics
+    745: 1134,  # EWSB, weak interactions, flavour and neutrinos
+    750: 1135,  # scheduler and source hypotheses from the repair process
+    751: 1134,  # dark sector
+    754: 1136,  # finite observer Maxwell episode on one history
+    763: 1135,  # event precedence from source provenance
+    776: 1136,  # support-wiring provenance readout
+    777: 1136,  # the read law as a production
+    778: 1136,  # population selection of committed record states
+    779: 1135,  # one source law and its geometry response
+    780: 1134,  # current readout on the sourced causal poset
+    782: 1134,  # count-volume and ordering-fraction limits
     1087: 1078,  # audit sub-issues of the obstruction search
     1088: 1078,
     1089: 1078,

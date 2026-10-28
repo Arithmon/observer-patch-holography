@@ -95,6 +95,14 @@ physical interpretation are supplied.
 
 ## Observer measurements and operational objectivity
 
+The [executable-model hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) is the concrete
+candidate target within the overall closure proposal. It joins modular
+observer clocks, one interacting field/particle description, the preferred
+native-defect maintenance mechanism and realized Einstein premises on one
+process. The [completion program](COMPLETION_PROGRAM.md) states its dependency
+gates and stopping rules. Neither closure nor a finite observer interface
+implies that the current repair law already realizes those physical targets.
+
 **The construction target is an executable realization of OPH's observer
 algebra whose shared measurement statistics reproduce the observable
 physics of our Universe.** Those statistics must admit the appropriate

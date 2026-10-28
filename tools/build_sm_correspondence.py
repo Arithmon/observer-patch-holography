@@ -293,7 +293,7 @@ def render(data: dict, rows: list[dict]) -> str:
         "Rendered by `tools/build_sm_correspondence.py` from the"
         f" `{SECTION}` section of `tracking/premise_register.json`; edit the"
         " JSON, then regenerate. The section was established under the"
-        " historical lane #735 (closed); its open work is owned by #1026."
+        " historical lane #735 (closed); its open work is owned by #1134."
     )
     lines.append("")
     lines.append(data["policy"])

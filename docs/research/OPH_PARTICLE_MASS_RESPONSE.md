@@ -1,5 +1,11 @@
 # Particle construction: results, assumptions and research tasks
 
+The [common executable hypothesis](../OPH_EXECUTABLE_HYPOTHESIS.md) fixes the
+particle/maintenance-energy target within the same clocked process that must
+realize gravity. The [completion DAG](../COMPLETION_PROGRAM.md) orders the
+construction and validation gates; the evidence below supplies components
+and exclusions, without declaring those gates complete.
+
 The executable construction realizes calibrated Standard Model charged-matter
 structure and permits observer-record recovery of its supplied mass parameters.
 **No measured particle spectrum is derived from the repair law.** The uncalibrated

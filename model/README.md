@@ -1,5 +1,12 @@
 # The runnable OPH model
 
+Start with the [common executable hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md)
+and [completion DAG](../docs/COMPLETION_PROGRAM.md). They specify the shared
+clock, defect/energy, interacting-field and Einstein-premise targets, and the
+evidence needed to accept or stop each stage. The packages below are retained
+components and controls; they do not constitute separate particle definitions
+or a completed physical realization.
+
 The [particle and common-field package](observer_particles/README.md)
 computes conditional internal matter multiplets and one-Higgs interactions
 from declared response operators, and tests scalar, CAR and vector

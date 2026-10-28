@@ -545,11 +545,14 @@ schedule class, nearest primary theorem, checked premise mapping and remaining
 physical discriminator. The [bounded work products](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md#7-work-products-and-scientific-contribution)
 fit the owners below.
 
-[#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076)
-owns shared-law selection;
-[#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077)
-owns execution of the original q=3 scalar preparation and five retained-pointer
-histories. Its large common-code word remains unexecuted. Later complete
+[CP-00 #1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135)
+owns the declared law/program boundary, and
+[CP-01 #1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136)
+owns complete source execution. They replace the coordination in #1076 and
+#1077. The original q=3 scalar preparation and five retained-pointer
+histories remain an unexecuted benchmark. CP-00/CP-13 must explicitly decide
+whether to complete or retire it from the active path without relabeling
+its status. Its large common-code word remains unexecuted. Later complete
 native and two-site programs establish their own finite milestones and do
 not silently replace that deliverable. No entry closes a physical premise by
 renaming it. Completion requires the simplest shared rule to satisfy the

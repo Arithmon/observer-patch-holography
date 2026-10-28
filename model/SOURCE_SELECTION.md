@@ -215,9 +215,12 @@ inhabitant is a useful existence witness for a synthetic branch, with source
 selection separate from its unconditional branch theorem.
 
 The [current scalar milestone](CANDIDATES.md#s1-the-canonical-scalar-benchmark)
-also retains its exact ownership: issue
+also retains its exact contract: former issue
 [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077)
-asks for the original q=3 preparation and five retained-pointer histories.
+asked for the original q=3 preparation and five retained-pointer histories.
+[CP-01 #1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136)
+inherits that unresolved benchmark; CP-00/CP-13 may explicitly retire its
+active-program role without claiming it executed or proved impossible.
 Its d=8192 full source word has not been emitted or executed. Later native,
 two-site and common-source histories are substantive completed finite
 protocols; they neither execute that original word nor establish physical
