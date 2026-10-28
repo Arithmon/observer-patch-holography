@@ -7,7 +7,7 @@
   },
   "artifact": {
     "filename": "native_field_history_results.npz",
-    "sha256": "8ed6817e1014dee13179a89bc4d94ef0d4d136d17d3b82dd9bf1f62de062c344"
+    "sha256": "0fb10e79c9bd3a30e5bd1682a8f7e791c21f9034c61834b99dac1fc9896e9019"
   },
   "carrier": {
     "actual512_row_factor_composition": true,
@@ -36,34 +36,34 @@
     "theorem": "||(V tensor I)rho(V* tensor I)-(W tensor I)rho(W* tensor I)||1 <= (||V||+||W||)||V-W||"
   },
   "execution": {
-    "all512_row_padding_probability_diagnostic": 2.652954655561882e-22,
-    "all_record_dilation_Frobenius_error_upper_diagnostic": 1.3822407655619388e-10,
-    "complete_input_Gram_defect_diagnostic": 5.243189763364767e-13,
+    "all512_row_padding_probability_diagnostic": 4.0523275109762063e-22,
+    "all_record_dilation_Frobenius_error_upper_diagnostic": 3.2705461462294456e-10,
+    "complete_input_Gram_defect_diagnostic": 1.3828515779993348e-11,
     "complete_input_columns": 4,
-    "compression_residual_sum_diagnostic": 3.04046821544241e-12,
+    "compression_residual_sum_diagnostic": 2.909345744598148e-12,
     "detector_joint_probabilities": [
       [
-        0.08609975026674026,
-        0.04212167792062262
+        0.08609975026553171,
+        0.04212167792003178
       ],
       [
-        0.28638564348495976,
-        0.5853929283277963
+        0.28638564348100015,
+        0.5853929283197511
       ]
     ],
-    "first_read_backaction_final_marginal_L1_control": 0.6281112307103326,
+    "first_read_backaction_final_marginal_L1_control": 0.6281112307103324,
     "independent_target_detector_joint": [
       [
-        0.08609975026673028,
-        0.04212167792061745
+        0.08609975026673024,
+        0.042121677920617426
       ],
       [
         0.28638564348491485,
-        0.5853929283277373
+        0.5853929283277374
       ]
     ],
-    "retained_halt_probability_diagnostic": 1.6031858672998032e-26,
-    "source_record_probability_mass": 1.0000000000001188,
+    "retained_halt_probability_diagnostic": 9.601053124556e-27,
+    "source_record_probability_mass": 0.9999999999863146,
     "terminal_records": 319
   },
   "number_history_identifiability_control": {
@@ -243,7 +243,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",

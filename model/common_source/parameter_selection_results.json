@@ -1,7 +1,7 @@
 {
   "artifact": {
     "filename": "parameter_selection_results.npz",
-    "sha256": "eef4e93e42b98adfe4401c171c204f79426684d129c0255ca9331629a55e8ea0"
+    "sha256": "114616b4bc7e6464b0f701a3c1e8ee7616a736cde10690af3eb1157a9e0261eb"
   },
   "classification": "fixed corrected-native response obstruction and an unselected correlation-coupling candidate",
   "first_surviving_correlation": {
@@ -146,7 +146,7 @@
         ],
         "exact_branch_and_support_sha256": "3ca2edc1e5b1aa8faa3399a35b5520f0624e946876d1922b0c4cea2e5f4719c1",
         "full_logical_transfer_dimension": 36,
-        "logical_transfer_identity_error": 6.661338147750939e-16,
+        "logical_transfer_identity_error": 1.1102230246251565e-15,
         "maximum_branch_gram_error": 2.220446049250313e-16,
         "maximum_full66_recovery_operator_error": 5.23691153334427e-16,
         "native_raw_records_checked": 240,
@@ -277,7 +277,7 @@
         ],
         "exact_branch_and_support_sha256": "ca372a11fb36516a500447fe4404c612b8519b08859c7338e3348f7df5eeec05",
         "full_logical_transfer_dimension": 36,
-        "logical_transfer_identity_error": 5.551115123125783e-16,
+        "logical_transfer_identity_error": 6.661338147750939e-16,
         "maximum_branch_gram_error": 1.6653345369377348e-16,
         "maximum_full66_recovery_operator_error": 3.212940164695817e-16,
         "native_raw_records_checked": 480,
@@ -781,7 +781,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
@@ -838,9 +838,9 @@
     "exact_all30_ideal_certificate_is_separate_from_two_seam_floating_execution": true,
     "executed_source_native_seams": {
       "C": {
-        "aggregate_gram_error": 7.805922106697094e-13,
+        "aggregate_gram_error": 5.821488547243631e-13,
         "all512_rows_and_six_reference_columns_retained": true,
-        "maximum_branch_operator_error": 1.520808970277494e-11,
+        "maximum_branch_operator_error": 3.638896296668281e-11,
         "maximum_record_recovery_native_pulses": 845648,
         "raw_branch_count": 8,
         "source_repair_resources": {
@@ -861,9 +861,9 @@
         ]
       },
       "E": {
-        "aggregate_gram_error": 1.2007561155041328e-12,
+        "aggregate_gram_error": 4.328570517223065e-13,
         "all512_rows_and_six_reference_columns_retained": true,
-        "maximum_branch_operator_error": 1.803983642646132e-11,
+        "maximum_branch_operator_error": 3.9463708338473744e-11,
         "maximum_record_recovery_native_pulses": 745400,
         "raw_branch_count": 16,
         "source_repair_resources": {
@@ -894,7 +894,7 @@
       "identity_phase_pulses": 1,
       "initialization_storage_readout_physical_costs_included": false,
       "integrated_processor_norm_upper": 22531.506253764015,
-      "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+      "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
       "maximum_work_qubits": 9,
       "native_pulses": 11270,
       "pair_code_pulses": 3586,
@@ -906,7 +906,7 @@
       "valid_code_failure_probability_in_exact_arithmetic": 0,
       "zero_angle_requests": 0
     },
-    "two_hop_source_operator_error": 2.0384728003594562e-11
+    "two_hop_source_operator_error": 4.948510129393414e-11
   },
   "symmetric_graph_control": {
     "actual_incidence_automorphisms": 120,

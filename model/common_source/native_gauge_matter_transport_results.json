@@ -1,7 +1,7 @@
 {
   "artifact": {
     "path": "native_gauge_matter_transport_results.npz",
-    "sha256": "f773e15d6b04a3bb1203c743a8c1d6c0597dbe4a23c355e1169383a47f200264"
+    "sha256": "d0d167c06e393215e514055e06af2400c993e398218030a37194dbd843d1addc"
   },
   "complete_species": {
     "Dirac_fields_counting_internal_and_family": 90,
@@ -52,9 +52,9 @@
       "same_mass_block_for_all_internal_components": true,
       "scalar_native_gap_control_retained": true
     },
-    "complete_Fourier_factor_error_diagnostic": 1.5502606302226382e-15,
+    "complete_Fourier_factor_error_diagnostic": 1.5741653849893874e-15,
     "complete_finite_lattice_dimension_with_families": 6144,
-    "complete_source_site_gauge_error_diagnostic": 1.1561755726161026e-15,
+    "complete_source_site_gauge_error_diagnostic": 9.112501377929503e-16,
     "continuum_bound": "||h_a(p)-h_D(p)|| <= c*a^2*sum_j ||p_j I-i A_j||^3/6; propagation <= |T| times this bound",
     "coordinate_speed_from_native_exchange": "125/512",
     "corner_dimension": 8,
@@ -68,13 +68,13 @@
     "executed_source_scope": "complete32-column links and site gauge from the same native backend; local physical-CAR transport factors are retained by the canonical transport receipt",
     "field_strength_square_identity_error_diagnostic": 2.7755575615628914e-17,
     "finite_lattice_operator_retained_as_complete_factors": true,
-    "fixed_chirality_site_gauge_leakage_Frobenius_diagnostic": 0.6635845307736601,
+    "fixed_chirality_site_gauge_leakage_Frobenius_diagnostic": 0.6635845307736599,
     "full_auxiliary_internal_dimension": 32,
     "global_periodic_lattice_Fock_source_word_executed": false,
     "local_covariance_domain": "all192 oriented links, all64 onsite blocks and all32 internal columns; transformed links need not be constant",
-    "maximum_unscaled_real_space_gauge_block_error_diagnostic": 2.362571314781454e-15,
+    "maximum_unscaled_real_space_gauge_block_error_diagnostic": 1.8897079228428793e-15,
     "noncommuting_backgrounds_or_source_leakage_dropped": false,
-    "omitted_field_strength_operator_norm_diagnostic": 0.1928846822678918,
+    "omitted_field_strength_operator_norm_diagnostic": 0.19288468226789185,
     "physical_chiral_SM_or_dynamical_gauge_continuum_claimed": false,
     "references": [
       "https://doi.org/10.1103/PhysRevD.16.3031",
@@ -176,39 +176,39 @@
     ],
     "source_link_refinements": [
       {
-        "complete_link_error_diagnostic": 2.847536410520505e-15,
+        "complete_link_error_diagnostic": 1.518578815114341e-15,
         "fixed_source_link_error_upper_conditional": 2.9296875e-08,
         "sine_bound_diagnostic": 0.01336669921875,
         "spacing": "1/4",
-        "symbol_discretization_error_diagnostic": 0.007969031935397717
+        "symbol_discretization_error_diagnostic": 0.007969031935397266
       },
       {
-        "complete_link_error_diagnostic": 2.7290755845573226e-15,
+        "complete_link_error_diagnostic": 1.5712099373948152e-15,
         "fixed_source_link_error_upper_conditional": 5.859375e-08,
         "sine_bound_diagnostic": 0.0033416748046875,
         "spacing": "1/8",
-        "symbol_discretization_error_diagnostic": 0.001999171522662466
+        "symbol_discretization_error_diagnostic": 0.0019991715226619954
       },
       {
-        "complete_link_error_diagnostic": 2.490694427488035e-15,
+        "complete_link_error_diagnostic": 1.3416599316946576e-15,
         "fixed_source_link_error_upper_conditional": 1.171875e-07,
         "sine_bound_diagnostic": 0.000835418701171875,
         "spacing": "1/16",
-        "symbol_discretization_error_diagnostic": 0.0005002259235122162
+        "symbol_discretization_error_diagnostic": 0.0005002259235113109
       }
     ]
   },
   "local_covariance": {
     "independent_site_transformations": 8,
     "link_transformation": "U_xy -> G_x U_xy G_y^dagger",
-    "nonflat_plaquette_operator_defect": 0.06006274599407273,
-    "operator_error_diagnostic": 5.117154768436915e-17,
+    "nonflat_plaquette_operator_defect": 0.060062745994072735,
+    "operator_error_diagnostic": 4.7041580398897804e-17,
     "oriented_bond_law": "h_xy=-i*J*eta(x,axis)*rho(U_xy)/a; h_yx=h_xy^dagger",
     "site_count": 8,
     "spatial_dimension": 3,
     "time_dependent_frames_or_temporal_connection_constructed": false
   },
-  "native_bond_one_body_identity_error_diagnostic": 1.1506590123219116e-16,
+  "native_bond_one_body_identity_error_diagnostic": 1.155499138911756e-16,
   "native_bond_word": {
     "all_occupation_sectors_and_JW_routing_retained": true,
     "complete_Fock_dimension": "1237940039285380274899124224",
@@ -35748,7 +35748,7 @@
     "canonical_current_requests": [
       {
         "array": "current_0_full32",
-        "operator_error_diagnostic": 1.2707047667132377e-15,
+        "operator_error_diagnostic": 9.017657976269991e-16,
         "path": [
           [
             0,
@@ -35771,7 +35771,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.777794077924059e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 3.952924080933277e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -35963,7 +35963,7 @@
       },
       {
         "array": "current_1_full32",
-        "operator_error_diagnostic": 1.2278660831031535e-15,
+        "operator_error_diagnostic": 1.031218101737078e-15,
         "path": [
           [
             1,
@@ -35986,7 +35986,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.927026782531051e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 4.3776028640890906e-16,
         "word": [
           {
             "angle": -1.5707963267948966,
@@ -36178,7 +36178,7 @@
       },
       {
         "array": "current_2_full32",
-        "operator_error_diagnostic": 2.7290755845573226e-15,
+        "operator_error_diagnostic": 1.5712099373948152e-15,
         "path": [
           [
             2,
@@ -36201,7 +36201,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 9.831606883293642e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 1.1695796428754471e-15,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -36765,7 +36765,7 @@
       },
       {
         "array": "current_3_full32",
-        "operator_error_diagnostic": 2.672820637206824e-15,
+        "operator_error_diagnostic": 1.712690517801304e-15,
         "path": [
           [
             3,
@@ -36788,7 +36788,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.0008212365708587e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 1.1862177069870751e-15,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -37352,7 +37352,7 @@
       },
       {
         "array": "current_4_full32",
-        "operator_error_diagnostic": 1.2707047667132377e-15,
+        "operator_error_diagnostic": 9.017657976269993e-16,
         "path": [
           [
             4,
@@ -37375,7 +37375,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.777794077924059e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 3.952924080933278e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -37567,7 +37567,7 @@
       },
       {
         "array": "current_5_full32",
-        "operator_error_diagnostic": 1.2278660831031535e-15,
+        "operator_error_diagnostic": 1.0312181017370778e-15,
         "path": [
           [
             5,
@@ -37590,7 +37590,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.927026782531051e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 4.377602864089091e-16,
         "word": [
           {
             "angle": -1.5707963267948966,
@@ -37896,7 +37896,7 @@
       },
       {
         "array": "current_8_full32",
-        "operator_error_diagnostic": 1.2094539203988828e-15,
+        "operator_error_diagnostic": 9.899029570085166e-16,
         "path": [
           [
             8,
@@ -37919,7 +37919,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 4
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.462042665121522e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 4.280373696760162e-16,
         "word": [
           {
             "angle": -0.0,
@@ -38111,7 +38111,7 @@
       },
       {
         "array": "current_9_full32",
-        "operator_error_diagnostic": 1.2356416602139268e-15,
+        "operator_error_diagnostic": 6.297639985555134e-16,
         "path": [
           [
             9,
@@ -38134,7 +38134,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.752688932780066e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 4.613371981375033e-16,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -38482,7 +38482,7 @@
       },
       {
         "array": "current_12_full32",
-        "operator_error_diagnostic": 2.4224633139105414e-15,
+        "operator_error_diagnostic": 1.590645985414724e-15,
         "path": [
           [
             0,
@@ -38509,7 +38509,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 4
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 9.191491918737274e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 7.334757399595972e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -38887,7 +38887,7 @@
       },
       {
         "array": "current_13_full32",
-        "operator_error_diagnostic": 2.2750142703905854e-15,
+        "operator_error_diagnostic": 1.87556623436395e-15,
         "path": [
           [
             1,
@@ -38914,7 +38914,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.072626541902876e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 6.697794862099715e-16,
         "word": [
           {
             "angle": -1.5707963267948966,
@@ -39423,7 +39423,7 @@
       },
       {
         "array": "current_15_full32",
-        "operator_error_diagnostic": 2.236127117140072e-15,
+        "operator_error_diagnostic": 1.9669102658857636e-15,
         "path": [
           [
             0,
@@ -39454,7 +39454,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 4
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 9.357126416652095e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 6.399711019157385e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -39902,7 +39902,7 @@
       },
       {
         "array": "current_16_full32",
-        "operator_error_diagnostic": 3.9035290081666036e-15,
+        "operator_error_diagnostic": 2.216776329024957e-15,
         "path": [
           [
             2,
@@ -39933,7 +39933,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.3685469293638625e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 9.637498681909362e-16,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -40753,7 +40753,7 @@
       },
       {
         "array": "current_17_full32",
-        "operator_error_diagnostic": 1.916301467560334e-15,
+        "operator_error_diagnostic": 1.4974128306492452e-15,
         "path": [
           [
             4,
@@ -40784,7 +40784,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.144042633825437e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 4.136484891950967e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -41074,7 +41074,7 @@
       },
       {
         "array": "current_18_full32",
-        "operator_error_diagnostic": 2.2994025362535526e-15,
+        "operator_error_diagnostic": 1.7183592786818431e-15,
         "path": [
           [
             0,
@@ -41105,7 +41105,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 4
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.0628079355945362e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 6.440145446233319e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -41553,7 +41553,7 @@
       },
       {
         "array": "current_19_full32",
-        "operator_error_diagnostic": 2.953666725768712e-15,
+        "operator_error_diagnostic": 1.7801212617108334e-15,
         "path": [
           [
             2,
@@ -41584,7 +41584,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.3718078364130975e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 9.793146135515162e-16,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -42404,7 +42404,7 @@
       },
       {
         "array": "current_20_full32",
-        "operator_error_diagnostic": 1.0083146732385674e-15,
+        "operator_error_diagnostic": 6.757510760201848e-16,
         "path": [
           [
             4,
@@ -42435,7 +42435,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 5.790009915760272e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 3.335637270695715e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -42725,7 +42725,7 @@
       },
       {
         "array": "current_21_full32",
-        "operator_error_diagnostic": 2.18381523013122e-15,
+        "operator_error_diagnostic": 1.4990674360398729e-15,
         "path": [
           [
             0,
@@ -42756,7 +42756,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 4
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 8.487843887878402e-16,
+        "selected_to_auxiliary_complement_error_diagnostic": 6.564249429034146e-16,
         "word": [
           {
             "angle": -0.7853981633974483,
@@ -43204,7 +43204,7 @@
       },
       {
         "array": "current_22_full32",
-        "operator_error_diagnostic": 3.631654128032805e-15,
+        "operator_error_diagnostic": 2.152224261792102e-15,
         "path": [
           [
             2,
@@ -43235,7 +43235,7 @@
           "valid_code_failure_probability_in_exact_arithmetic": 0,
           "zero_angle_requests": 0
         },
-        "selected_to_auxiliary_complement_error_diagnostic": 1.4380528551656729e-15,
+        "selected_to_auxiliary_complement_error_diagnostic": 9.542571844898687e-16,
         "word": [
           {
             "angle": 0.7853981633974483,
@@ -44197,7 +44197,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
@@ -44224,12 +44224,12 @@
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
-    "model/observer_particles/results/representation_identification.json": "dc4271fb837f0df288cc5960fd3e2ed3cad719213994b72a30c297a4c8ab319a",
+    "model/observer_particles/representation_identification.py": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
+    "model/observer_particles/results/representation_identification.json": "3a3d05fd1b946ff96752ddd3fbc2b8939a595f16397023fe96d992f3c519094b",
     "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
-    "model/observer_particles/results/unified_yukawa_action.json": "6de34ed8d5edc57c298b63b58234ed3afb267f8d22ee53a7eeae3f6e73ecd571",
+    "model/observer_particles/results/unified_yukawa_action.json": "6f5fa5cb70be906442256ed09370365980341ed0562102087ba0b953bfb9006d",
     "model/observer_particles/results/unified_yukawa_operators.json": "972ae764bf1b466b5506442969d35b262c15ba1b5207def1e8e3bd51e792e428",
-    "model/observer_particles/unified_yukawa_action.py": "ce0fa43f480505792ca8d57b9ea6731ffeff6ea9c1cc5dcad78c0e9c7c742b83",
+    "model/observer_particles/unified_yukawa_action.py": "7e18b5b60f250657f23042a605e347ab0a870d53e7cfce961e33b0c0f9def0b9",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

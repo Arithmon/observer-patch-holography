@@ -47,42 +47,42 @@
   },
   "histories": [
     {
-      "complete_prepared_history_halftrace_diagnostic": 8.067394373084757e-13,
-      "complete_prepared_history_mass_diagnostic": 0.9999999999983886,
+      "complete_prepared_history_halftrace_diagnostic": 1.0740503384875713e-12,
+      "complete_prepared_history_mass_diagnostic": 0.9999999999978534,
       "isolated_cap_current_laws": [
         {
           "-1": 0.07907108471658827,
           "0": 0.7988888888888888,
-          "1": 0.12204002639452272
+          "1": 0.1220400263945227
         },
         {
-          "-1": 0.07907108471658827,
+          "-1": 0.07907108471658829,
           "0": 0.7988888888888888,
-          "1": 0.12204002639452269
+          "1": 0.1220400263945227
         }
       ],
       "law": "C",
       "retained_current_feedback_total_variation_diagnostic": 0.03684286194373297,
-      "zero_clock_quantum_distance_diagnostic": 0.08703269663235436
+      "zero_clock_quantum_distance_diagnostic": 0.08703269663235438
     },
     {
-      "complete_prepared_history_halftrace_diagnostic": 8.063007693851114e-13,
-      "complete_prepared_history_mass_diagnostic": 0.9999999999983886,
+      "complete_prepared_history_halftrace_diagnostic": 1.0738351783185774e-12,
+      "complete_prepared_history_mass_diagnostic": 0.9999999999978534,
       "isolated_cap_current_laws": [
         {
           "-1": 0.07907108471658827,
           "0": 0.7988888888888888,
-          "1": 0.12204002639452272
+          "1": 0.1220400263945227
         },
         {
-          "-1": 0.07907108471658827,
+          "-1": 0.07907108471658829,
           "0": 0.7988888888888888,
-          "1": 0.12204002639452269
+          "1": 0.1220400263945227
         }
       ],
       "law": "E",
       "retained_current_feedback_total_variation_diagnostic": 0.03684286194373297,
-      "zero_clock_quantum_distance_diagnostic": 0.11132075143297612
+      "zero_clock_quantum_distance_diagnostic": 0.11132075143297615
     }
   ],
   "ideal_mean_current": "17/200*cos(s*log(25/8))+1/120*cos(s*log(8/5))",
@@ -314,7 +314,7 @@
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
     "model/native_modular_reference/local_history.py": "2bbaadda64786f29e299782df1a2414f382e82b4d28e1701f6ac06ac65554f1e",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",

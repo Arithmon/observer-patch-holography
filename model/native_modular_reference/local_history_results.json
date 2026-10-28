@@ -110,14 +110,14 @@
           ]
         },
         {
-          "probability": 9.566811830643866e-27,
+          "probability": 3.33327799852753e-27,
           "record": [
             "abort",
             0
           ]
         },
         {
-          "probability": 3.304059121791902e-27,
+          "probability": 1.0961828135078183e-27,
           "record": [
             "abort",
             1,
@@ -127,7 +127,7 @@
           ]
         },
         {
-          "probability": 0.025783607403011624,
+          "probability": 0.02578360740292008,
           "record": [
             "read",
             0,
@@ -139,7 +139,7 @@
           ]
         },
         {
-          "probability": 0.0011501500898269494,
+          "probability": 0.001150150089822774,
           "record": [
             "read",
             0,
@@ -151,7 +151,7 @@
           ]
         },
         {
-          "probability": 0.004082491582454606,
+          "probability": 0.004082491582439938,
           "record": [
             "read",
             0,
@@ -163,7 +163,7 @@
           ]
         },
         {
-          "probability": 0.022851265910383965,
+          "probability": 0.02285126591030292,
           "record": [
             "read",
             0,
@@ -175,7 +175,7 @@
           ]
         },
         {
-          "probability": 9.16077225677691e-28,
+          "probability": 3.4022407110529564e-28,
           "record": [
             "abort",
             1,
@@ -185,7 +185,7 @@
           ]
         },
         {
-          "probability": 0.010945030385551436,
+          "probability": 0.010945030385512032,
           "record": [
             "read",
             0,
@@ -197,7 +197,7 @@
           ]
         },
         {
-          "probability": 2.7879726008383223e-29,
+          "probability": 1.9004508055320236e-29,
           "record": [
             "read",
             0,
@@ -209,7 +209,7 @@
           ]
         },
         {
-          "probability": 0.0010521885521767777,
+          "probability": 0.0010521885521729438,
           "record": [
             "read",
             0,
@@ -221,7 +221,7 @@
           ]
         },
         {
-          "probability": 0.009892841833374659,
+          "probability": 0.009892841833339088,
           "record": [
             "read",
             0,
@@ -233,7 +233,7 @@
           ]
         },
         {
-          "probability": 6.799281593268401e-28,
+          "probability": 1.983409923923207e-28,
           "record": [
             "abort",
             1,
@@ -243,7 +243,7 @@
           ]
         },
         {
-          "probability": 0.0004952275505654562,
+          "probability": 0.0004952275505636701,
           "record": [
             "read",
             1,
@@ -255,7 +255,7 @@
           ]
         },
         {
-          "probability": 0.0037954322993949356,
+          "probability": 0.003795432299381291,
           "record": [
             "read",
             1,
@@ -267,7 +267,7 @@
           ]
         },
         {
-          "probability": 3.95659001350545e-29,
+          "probability": 2.2295078175357148e-29,
           "record": [
             "read",
             1,
@@ -279,7 +279,7 @@
           ]
         },
         {
-          "probability": 0.004290659849960392,
+          "probability": 0.004290659849944961,
           "record": [
             "read",
             1,
@@ -291,7 +291,7 @@
           ]
         },
         {
-          "probability": 4.615739041048351e-27,
+          "probability": 1.4324362909418066e-27,
           "record": [
             "abort",
             1,
@@ -301,7 +301,7 @@
           ]
         },
         {
-          "probability": 0.022790700234166676,
+          "probability": 0.022790700234085613,
           "record": [
             "read",
             1,
@@ -313,7 +313,7 @@
           ]
         },
         {
-          "probability": 0.010797427794263839,
+          "probability": 0.010797427794224644,
           "record": [
             "read",
             1,
@@ -325,7 +325,7 @@
           ]
         },
         {
-          "probability": 0.0037457912457570866,
+          "probability": 0.0037457912457436,
           "record": [
             "read",
             1,
@@ -337,7 +337,7 @@
           ]
         },
         {
-          "probability": 0.02984233678267343,
+          "probability": 0.029842336782566654,
           "record": [
             "read",
             1,
@@ -349,12 +349,12 @@
           ]
         }
       ],
-      "complete_preparation_and_history_halftrace_diagnostic": 8.048049109011489e-13,
-      "complete_preparation_and_history_mass_diagnostic": 0.9999999999983913,
-      "complete_quantum_halftrace_error_diagnostic": 8.63870288375683e-13,
+      "complete_preparation_and_history_halftrace_diagnostic": 1.0755077183606853e-12,
+      "complete_preparation_and_history_mass_diagnostic": 0.9999999999978497,
+      "complete_quantum_halftrace_error_diagnostic": 2.6459359351128444e-12,
       "law": "C",
-      "raw_total_mass_diagnostic": 0.9999999999982839,
-      "zero_clock_complete_quantum_distance_diagnostic": 0.010865675392480017
+      "raw_total_mass_diagnostic": 0.9999999999947092,
+      "zero_clock_complete_quantum_distance_diagnostic": 0.010865675392480036
     },
     {
       "complete_output": [
@@ -380,14 +380,14 @@
           ]
         },
         {
-          "probability": 9.566811830643866e-27,
+          "probability": 3.33327799852753e-27,
           "record": [
             "abort",
             0
           ]
         },
         {
-          "probability": 3.98579123073306e-28,
+          "probability": 1.39994923724169e-28,
           "record": [
             "abort",
             1,
@@ -397,7 +397,7 @@
           ]
         },
         {
-          "probability": 0.00033670033669751974,
+          "probability": 0.0003367003366963383,
           "record": [
             "read",
             0,
@@ -409,7 +409,7 @@
           ]
         },
         {
-          "probability": 0.003953959513262763,
+          "probability": 0.003953959513248702,
           "record": [
             "read",
             0,
@@ -421,7 +421,7 @@
           ]
         },
         {
-          "probability": 8.924158298865138e-30,
+          "probability": 6.1415408300491465e-30,
           "record": [
             "read",
             0,
@@ -433,7 +433,7 @@
           ]
         },
         {
-          "probability": 0.00033670033669751974,
+          "probability": 0.0003367003366963383,
           "record": [
             "read",
             0,
@@ -445,7 +445,7 @@
           ]
         },
         {
-          "probability": 0.003953959513262763,
+          "probability": 0.003953959513248702,
           "record": [
             "read",
             0,
@@ -457,7 +457,7 @@
           ]
         },
         {
-          "probability": 8.924158298865138e-30,
+          "probability": 6.1415408300491465e-30,
           "record": [
             "read",
             0,
@@ -469,7 +469,7 @@
           ]
         },
         {
-          "probability": 2.9054799987185937e-27,
+          "probability": 9.561878897836517e-28,
           "record": [
             "abort",
             1,
@@ -479,7 +479,7 @@
           ]
         },
         {
-          "probability": 0.0037457912457570857,
+          "probability": 0.0037457912457436,
           "record": [
             "read",
             0,
@@ -491,7 +491,7 @@
           ]
         },
         {
-          "probability": 0.017747156307294253,
+          "probability": 0.01774715630723144,
           "record": [
             "read",
             0,
@@ -503,7 +503,7 @@
           ]
         },
         {
-          "probability": 0.0011501500898269494,
+          "probability": 0.001150150089822774,
           "record": [
             "read",
             0,
@@ -515,7 +515,7 @@
           ]
         },
         {
-          "probability": 0.0037457912457570866,
+          "probability": 0.0037457912457436,
           "record": [
             "read",
             0,
@@ -527,7 +527,7 @@
           ]
         },
         {
-          "probability": 0.017747156307294253,
+          "probability": 0.01774715630723144,
           "record": [
             "read",
             0,
@@ -539,7 +539,7 @@
           ]
         },
         {
-          "probability": 0.0011501500898269494,
+          "probability": 0.001150150089822774,
           "record": [
             "read",
             0,
@@ -551,7 +551,7 @@
           ]
         },
         {
-          "probability": 9.16077225677691e-28,
+          "probability": 3.4022407110529564e-28,
           "record": [
             "abort",
             1,
@@ -561,7 +561,7 @@
           ]
         },
         {
-          "probability": 0.0010521885521767777,
+          "probability": 0.0010521885521729438,
           "record": [
             "read",
             0,
@@ -573,7 +573,7 @@
           ]
         },
         {
-          "probability": 0.009892841833374659,
+          "probability": 0.009892841833339088,
           "record": [
             "read",
             0,
@@ -585,7 +585,7 @@
           ]
         },
         {
-          "probability": 2.7879726008383223e-29,
+          "probability": 1.9004508055320236e-29,
           "record": [
             "read",
             0,
@@ -597,7 +597,7 @@
           ]
         },
         {
-          "probability": 0.0010521885521767777,
+          "probability": 0.0010521885521729438,
           "record": [
             "read",
             0,
@@ -609,7 +609,7 @@
           ]
         },
         {
-          "probability": 0.009892841833374659,
+          "probability": 0.009892841833339088,
           "record": [
             "read",
             0,
@@ -621,7 +621,7 @@
           ]
         },
         {
-          "probability": 2.7879726008383223e-29,
+          "probability": 1.9004508055320234e-29,
           "record": [
             "read",
             0,
@@ -633,7 +633,7 @@
           ]
         },
         {
-          "probability": 6.799281593268401e-28,
+          "probability": 1.983409923923207e-28,
           "record": [
             "abort",
             1,
@@ -643,7 +643,7 @@
           ]
         },
         {
-          "probability": 3.95659001350545e-29,
+          "probability": 2.229507817535715e-29,
           "record": [
             "read",
             1,
@@ -655,7 +655,7 @@
           ]
         },
         {
-          "probability": 0.0004952275505654562,
+          "probability": 0.0004952275505636701,
           "record": [
             "read",
             1,
@@ -667,7 +667,7 @@
           ]
         },
         {
-          "probability": 0.0037954322993949356,
+          "probability": 0.003795432299381291,
           "record": [
             "read",
             1,
@@ -679,7 +679,7 @@
           ]
         },
         {
-          "probability": 3.95659001350545e-29,
+          "probability": 2.2295078175357148e-29,
           "record": [
             "read",
             1,
@@ -691,7 +691,7 @@
           ]
         },
         {
-          "probability": 0.0004952275505654562,
+          "probability": 0.0004952275505636701,
           "record": [
             "read",
             1,
@@ -703,7 +703,7 @@
           ]
         },
         {
-          "probability": 0.0037954322993949356,
+          "probability": 0.003795432299381291,
           "record": [
             "read",
             1,
@@ -715,7 +715,7 @@
           ]
         },
         {
-          "probability": 2.9054799987185937e-27,
+          "probability": 9.561878897836517e-28,
           "record": [
             "abort",
             1,
@@ -725,7 +725,7 @@
           ]
         },
         {
-          "probability": 0.0037457912457570857,
+          "probability": 0.0037457912457436,
           "record": [
             "read",
             1,
@@ -737,7 +737,7 @@
           ]
         },
         {
-          "probability": 0.017747156307294253,
+          "probability": 0.01774715630723144,
           "record": [
             "read",
             1,
@@ -749,7 +749,7 @@
           ]
         },
         {
-          "probability": 0.0011501500898269494,
+          "probability": 0.001150150089822774,
           "record": [
             "read",
             1,
@@ -761,7 +761,7 @@
           ]
         },
         {
-          "probability": 0.0037457912457570866,
+          "probability": 0.0037457912457436,
           "record": [
             "read",
             1,
@@ -773,7 +773,7 @@
           ]
         },
         {
-          "probability": 0.017747156307294253,
+          "probability": 0.01774715630723144,
           "record": [
             "read",
             1,
@@ -785,7 +785,7 @@
           ]
         },
         {
-          "probability": 0.0011501500898269494,
+          "probability": 0.001150150089822774,
           "record": [
             "read",
             1,
@@ -797,7 +797,7 @@
           ]
         },
         {
-          "probability": 1.7102590423297596e-27,
+          "probability": 4.762484011581638e-28,
           "record": [
             "abort",
             1,
@@ -807,7 +807,7 @@
           ]
         },
         {
-          "probability": 6.064289511354044e-29,
+          "probability": 5.038339090658709e-29,
           "record": [
             "read",
             1,
@@ -819,7 +819,7 @@
           ]
         },
         {
-          "probability": 0.0012977526811153372,
+          "probability": 0.001297752681110572,
           "record": [
             "read",
             1,
@@ -831,7 +831,7 @@
           ]
         },
         {
-          "probability": 0.00964727770443689,
+          "probability": 0.00964727770440187,
           "record": [
             "read",
             1,
@@ -843,7 +843,7 @@
           ]
         },
         {
-          "probability": 6.064289511354044e-29,
+          "probability": 5.03833909065871e-29,
           "record": [
             "read",
             1,
@@ -855,7 +855,7 @@
           ]
         },
         {
-          "probability": 0.0012977526811153372,
+          "probability": 0.001297752681110572,
           "record": [
             "read",
             1,
@@ -867,7 +867,7 @@
           ]
         },
         {
-          "probability": 0.00964727770443689,
+          "probability": 0.009647277704401871,
           "record": [
             "read",
             1,
@@ -879,12 +879,12 @@
           ]
         }
       ],
-      "complete_preparation_and_history_halftrace_diagnostic": 8.048347248675866e-13,
-      "complete_preparation_and_history_mass_diagnostic": 0.9999999999983913,
-      "complete_quantum_halftrace_error_diagnostic": 8.646988949143151e-13,
+      "complete_preparation_and_history_halftrace_diagnostic": 1.0755123682019445e-12,
+      "complete_preparation_and_history_mass_diagnostic": 0.9999999999978497,
+      "complete_quantum_halftrace_error_diagnostic": 2.6459850307151896e-12,
       "law": "E",
-      "raw_total_mass_diagnostic": 0.999999999998284,
-      "zero_clock_complete_quantum_distance_diagnostic": 0.011323273358231734
+      "raw_total_mass_diagnostic": 0.9999999999947092,
+      "zero_clock_complete_quantum_distance_diagnostic": 0.011323273358231755
     }
   ],
   "parameter": "1",
@@ -1106,7 +1106,7 @@
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
     "model/native_modular_reference/local_history.py": "2bbaadda64786f29e299782df1a2414f382e82b4d28e1701f6ac06ac65554f1e",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",

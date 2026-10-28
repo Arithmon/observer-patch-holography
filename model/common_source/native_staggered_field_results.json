@@ -1,16 +1,16 @@
 {
   "artifact": {
     "filename": "native_staggered_field_results.npz",
-    "sha256": "ff5fbd963723b29ae44cc84c1db034a6f2542f6a8f6ff69a00adffbee4df912d"
+    "sha256": "eb8095ef9b0fd8a47e7ac5fed6b2811eb2983ea985792de5a15e8c487349a5ef"
   },
   "backend_diagnostics": {
-    "cube_Fock_target_residual": 5.396239821895534e-06,
-    "exchange_echo_operator_residual": 2.6161414677041147e-15,
-    "history_Gram_residual": 9.955935522905625e-12,
-    "history_pointer_operator_residual": 2.49363717597097e-15,
-    "maximum_macro_operator_residual": 1.8796996977398317e-15,
-    "vacuum_ground_residual": 2.1787469136995264e-15,
-    "vacuum_preparation_operator_residual": 3.582728295857032e-14
+    "cube_Fock_target_residual": 5.396238936151562e-06,
+    "exchange_echo_operator_residual": 3.5051751942540527e-15,
+    "history_Gram_residual": 1.5634683542310328e-11,
+    "history_pointer_operator_residual": 3.337088097577448e-15,
+    "maximum_macro_operator_residual": 2.8298522769695936e-15,
+    "vacuum_ground_residual": 1.2204646661085577e-15,
+    "vacuum_preparation_operator_residual": 4.1108862080536297e-14
   },
   "continuing_observer": {
     "all_unknown_Fock_input_columns": 256,
@@ -37,10 +37,10 @@
     "physical_clock_or_native_service_flags_authenticated": false,
     "pointer_native_pulses_per_complete_schedule": 48,
     "record_probabilities": [
-      0.2499147101531172,
-      0.2593213081352986,
-      0.2416477692212029,
-      0.24911621248334687
+      0.24991471015132283,
+      0.25932130813310983,
+      0.24164776921913506,
+      0.24911621248141544
     ],
     "shared_observers_are_marginals_of_one_retained_instrument": true
   },
@@ -195,7 +195,7 @@
       "identity_phase_pulses": 4,
       "initialization_storage_readout_physical_costs_included": false,
       "integrated_processor_norm_upper": 94.39426398269379,
-      "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+      "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
       "maximum_work_qubits": 2,
       "native_pulses": 64,
       "pair_code_pulses": 12,
@@ -744,7 +744,7 @@
   "periodic_operator_and_corner_check": {
     "corner_blocks": [
       {
-        "operator_error_diagnostic": 5.169578620089136e-17,
+        "operator_error_diagnostic": 5.168081937289164e-17,
         "reduced_momentum_pi_over2_units": [
           0,
           0,
@@ -752,7 +752,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 2.1571946796100918e-16,
+        "operator_error_diagnostic": 2.1547501274632425e-16,
         "reduced_momentum_pi_over2_units": [
           0,
           0,
@@ -760,7 +760,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 1.927224946739074e-16,
+        "operator_error_diagnostic": 1.9267336959039193e-16,
         "reduced_momentum_pi_over2_units": [
           0,
           -1,
@@ -768,7 +768,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 1.96160209161646e-16,
+        "operator_error_diagnostic": 1.961354662314907e-16,
         "reduced_momentum_pi_over2_units": [
           0,
           -1,
@@ -776,7 +776,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 2.3591269201141863e-16,
+        "operator_error_diagnostic": 2.346658426421215e-16,
         "reduced_momentum_pi_over2_units": [
           -1,
           0,
@@ -784,7 +784,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 1.876472289210974e-16,
+        "operator_error_diagnostic": 1.8760141351372738e-16,
         "reduced_momentum_pi_over2_units": [
           -1,
           0,
@@ -792,7 +792,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 1.6879665329247052e-16,
+        "operator_error_diagnostic": 1.6872000494820254e-16,
         "reduced_momentum_pi_over2_units": [
           -1,
           -1,
@@ -800,7 +800,7 @@
         ]
       },
       {
-        "operator_error_diagnostic": 1.3568941790191058e-16,
+        "operator_error_diagnostic": 1.3568941790191068e-16,
         "reduced_momentum_pi_over2_units": [
           -1,
           -1,
@@ -934,7 +934,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
@@ -995,7 +995,7 @@
           "identity_phase_pulses": 1,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 6.103515625e-05,
-          "maximum_numerical_valid_code_leakage": 0.0,
+          "maximum_numerical_valid_code_leakage": 2.9288347499048894e-21,
           "maximum_work_qubits": 1,
           "native_pulses": 2,
           "pair_code_pulses": 0,
@@ -1030,7 +1030,7 @@
           "identity_phase_pulses": 1,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 6.103515625e-05,
-          "maximum_numerical_valid_code_leakage": 0.0,
+          "maximum_numerical_valid_code_leakage": 2.9288347499048887e-21,
           "maximum_work_qubits": 1,
           "native_pulses": 2,
           "pair_code_pulses": 0,
@@ -1065,7 +1065,7 @@
           "identity_phase_pulses": 1,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 6.283185307179586,
-          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_numerical_valid_code_leakage": 1.454205784240811e-16,
           "maximum_work_qubits": 2,
           "native_pulses": 2,
           "pair_code_pulses": 1,
@@ -1101,7 +1101,7 @@
           "identity_phase_pulses": 1,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 1.5707963267948966,
-          "maximum_numerical_valid_code_leakage": 0.0,
+          "maximum_numerical_valid_code_leakage": 5.565004608784408e-17,
           "maximum_work_qubits": 1,
           "native_pulses": 2,
           "pair_code_pulses": 0,
@@ -1136,7 +1136,7 @@
           "identity_phase_pulses": 4,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 94.25159430495941,
-          "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+          "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
           "maximum_work_qubits": 2,
           "native_pulses": 64,
           "pair_code_pulses": 12,
@@ -1617,7 +1617,7 @@
           "identity_phase_pulses": 1,
           "initialization_storage_readout_physical_costs_included": false,
           "integrated_processor_norm_upper": 1.5707963267948966,
-          "maximum_numerical_valid_code_leakage": 0.0,
+          "maximum_numerical_valid_code_leakage": 5.565004608784408e-17,
           "maximum_work_qubits": 1,
           "native_pulses": 2,
           "pair_code_pulses": 0,
@@ -33678,7 +33678,7 @@
     "energy_difference_diagnostic": 8.809145765870108e-05,
     "local_CAR_comparison_uses_separate_projector_and_two_point_bounds": true,
     "matching": "R_a\u2020h_aR_a=E_a beta and R_0\u2020h_0R_0=E_0 beta; identify those spectral coordinates",
-    "transported_generator_norm_diagnostic": 8.809145765874855e-05,
+    "transported_generator_norm_diagnostic": 8.809145765875995e-05,
     "unchanged_local_detectors_covered_by_excitation_bound": false
   },
   "spin_and_taste": {

@@ -1,7 +1,7 @@
 {
   "artifact": {
     "filename": "dispersion_identifiability_results.npz",
-    "sha256": "7a4feef1e039b8b7c5c60b3a947da9925fa024b2f192a2cf0b5a5551605f6bc9"
+    "sha256": "1ec04540f9d2573fe51393910bc9b80a7707daa4d95a0e583c94edeaad906d75"
   },
   "backend_contract": {
     "admissions_are_outward_or_physical_certificates": false,
@@ -197,7 +197,7 @@
       "identity_phase_pulses": 0,
       "initialization_storage_readout_physical_costs_included": false,
       "integrated_processor_norm_upper": 6.283185307179586,
-      "maximum_numerical_valid_code_leakage": 2.220446049250313e-16,
+      "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
       "maximum_work_qubits": 2,
       "native_pulses": 3,
       "pair_code_pulses": 1,
@@ -236,7 +236,7 @@
       "CAR_modes_in_executed_momentum_pair": 180,
       "all_internal_family_spin_and_opposite_momenta_retained": true,
       "complete_law": {
-        "scored_joint_event_probability": 0.3359030575567023,
+        "scored_joint_event_probability": 0.3359030575441643,
         "terminal": [
           {
             "clock_X": 0,
@@ -245,7 +245,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333098,
+            "probability": 0.001302083333333296,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -257,7 +257,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333057,
+            "probability": 0.0013020833333332949,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -269,7 +269,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333107,
+            "probability": 0.0013020833333332942,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -281,7 +281,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333066,
+            "probability": 0.0013020833333332931,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -293,7 +293,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0065104166666665395,
+            "probability": 0.006510416666666475,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -305,7 +305,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0065104166666665195,
+            "probability": 0.006510416666666469,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -317,7 +317,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.006510416666666544,
+            "probability": 0.0065104166666664675,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -329,7 +329,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.006510416666666524,
+            "probability": 0.006510416666666461,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -341,7 +341,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333098,
+            "probability": 0.001302083333333296,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -353,7 +353,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333057,
+            "probability": 0.0013020833333332949,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -365,7 +365,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333107,
+            "probability": 0.0013020833333332942,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -377,7 +377,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333066,
+            "probability": 0.0013020833333332931,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -389,7 +389,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0065104166666665395,
+            "probability": 0.006510416666666475,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -401,7 +401,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0065104166666665195,
+            "probability": 0.006510416666666469,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -413,7 +413,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.006510416666666544,
+            "probability": 0.0065104166666664675,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -425,7 +425,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.006510416666666524,
+            "probability": 0.006510416666666461,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -437,7 +437,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0010562274306076596,
+            "probability": 0.0010562274305878198,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -449,7 +449,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.001032043365993274,
+            "probability": 0.0010320433659738502,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -461,7 +461,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.001802537523521933,
+            "probability": 0.0018025375234880727,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -473,7 +473,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0017612654615819872,
+            "probability": 0.0017612654615488366,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -485,7 +485,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.004408333228978694,
+            "probability": 0.004408333228895904,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -497,7 +497,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.004307397187590307,
+            "probability": 0.004307397187509253,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -509,7 +509,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.007523177140789811,
+            "probability": 0.007523177140648515,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -521,7 +521,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.007350921623837693,
+            "probability": 0.007350921623699359,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -533,7 +533,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0010562274306076596,
+            "probability": 0.0010562274305878198,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -545,7 +545,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.001032043365993274,
+            "probability": 0.0010320433659738502,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -557,7 +557,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.001802537523521933,
+            "probability": 0.0018025375234880727,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -569,7 +569,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0017612654615819872,
+            "probability": 0.0017612654615488366,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -581,7 +581,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.004408333228978694,
+            "probability": 0.004408333228895904,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -593,7 +593,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.004307397187590307,
+            "probability": 0.004307397187509253,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -605,7 +605,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.007523177140789811,
+            "probability": 0.007523177140648515,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -617,7 +617,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.007350921623837693,
+            "probability": 0.007350921623699359,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -629,7 +629,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.031972013995066446,
+            "probability": 0.0319720139938729,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -641,7 +641,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.029194507545590904,
+            "probability": 0.02919450754449611,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -653,7 +653,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.09109759125244628,
+            "probability": 0.09109759124904541,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -665,7 +665,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.08318366542736688,
+            "probability": 0.0831836654242474,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -677,7 +677,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.08692929001553437,
+            "probability": 0.08692929001228948,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -689,7 +689,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.07937747724253441,
+            "probability": 0.07937747723955799,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -701,7 +701,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.24768689676297795,
+            "probability": 0.24768689675373207,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -713,7 +713,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.2261695799834998,
+            "probability": 0.2261695799750189,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -725,7 +725,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 6.010438898506114e-05,
+            "probability": 6.0104388982850026e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -737,7 +737,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 5.488293724687684e-05,
+            "probability": 5.488293724484843e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -749,7 +749,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00017125493129973074,
+            "probability": 0.00017125493129343045,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -761,7 +761,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00015637749266659092,
+            "probability": 0.00015637749266081123,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -773,7 +773,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00016341891574597414,
+            "probability": 0.00016341891573996278,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -785,7 +785,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00014922221570321865,
+            "probability": 0.00014922221569770402,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -797,7 +797,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.0004656281456601986,
+            "probability": 0.0004656281456430701,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -809,7 +809,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.0004251776073291416,
+            "probability": 0.0004251776073134284,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -821,7 +821,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 2.131241998632422e-06,
+            "probability": 2.1312419985935445e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -833,7 +833,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.7945113268982741e-06,
+            "probability": 1.7945113268654709e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -845,7 +845,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 3.637136816292188e-06,
+            "probability": 3.637136816225836e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -857,7 +857,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 3.0624786948189067e-06,
+            "probability": 3.0624786947629216e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -869,7 +869,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 8.895077565028861e-06,
+            "probability": 8.89507756486663e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -881,7 +881,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 7.489678532201284e-06,
+            "probability": 7.489678532064399e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -893,7 +893,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 1.5180169176612135e-05,
+            "probability": 1.5180169176335257e-05,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -905,7 +905,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.2781742077691107e-05,
+            "probability": 1.2781742077457488e-05,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -917,7 +917,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 2.131241998632422e-06,
+            "probability": 2.1312419985935445e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -929,7 +929,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.7945113268982741e-06,
+            "probability": 1.7945113268654709e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -941,7 +941,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 3.637136816292188e-06,
+            "probability": 3.637136816225836e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -953,7 +953,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 3.0624786948189067e-06,
+            "probability": 3.0624786947629216e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -965,7 +965,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 8.895077565028861e-06,
+            "probability": 8.89507756486663e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -977,7 +977,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 7.489678532201284e-06,
+            "probability": 7.489678532064399e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -989,7 +989,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 1.5180169176612135e-05,
+            "probability": 1.5180169176335257e-05,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1001,7 +1001,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.2781742077691107e-05,
+            "probability": 1.2781742077457488e-05,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1013,7 +1013,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 1.1793782152943575e-07,
+            "probability": 1.179378215250516e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1025,7 +1025,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 9.82275719070864e-08,
+            "probability": 9.822757190343097e-08,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1037,7 +1037,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 3.3603924546481065e-07,
+            "probability": 3.3603924545231866e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1049,7 +1049,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 2.7987899657159006e-07,
+            "probability": 2.798789965611744e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1061,7 +1061,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 3.206632867455476e-07,
+            "probability": 3.206632867336285e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1073,7 +1073,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 2.6707273076855553e-07,
+            "probability": 2.670727307586175e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1085,7 +1085,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 9.136632127747559e-07,
+            "probability": 9.136632127407939e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1097,7 +1097,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 7.609680912182378e-07,
+            "probability": 7.609680911899209e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1109,7 +1109,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 6.273601219739406e-05,
+            "probability": 6.273601219508991e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1121,7 +1121,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 5.225131403453399e-05,
+            "probability": 5.225131403261284e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1133,7 +1133,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.0001787531932410819,
+            "probability": 0.00017875319323451652,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1145,7 +1145,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00014887923072521146,
+            "probability": 0.00014887923071973738,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1157,7 +1157,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00017057408393374613,
+            "probability": 0.00017057408392748185,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1169,7 +1169,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00014206704751541967,
+            "probability": 0.0001420670475101966,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1181,7 +1181,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00048601530635056803,
+            "probability": 0.0004860153063327188,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1193,13 +1193,13 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00040479044663869525,
+            "probability": 0.0004047904466238129,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
           }
         ],
-        "total_probability": 0.9999999999434253
+        "total_probability": 0.9999999999094451
       },
       "complete_probe_output_max_entry_difference_admission": 0.01,
       "ideal_joint_event_interval_exact": [
@@ -1245,7 +1245,7 @@
       "CAR_modes_in_executed_momentum_pair": 180,
       "all_internal_family_spin_and_opposite_momenta_retained": true,
       "complete_law": {
-        "scored_joint_event_probability": 0.3312715173538318,
+        "scored_joint_event_probability": 0.3312715173414798,
         "terminal": [
           {
             "clock_X": 0,
@@ -1254,7 +1254,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333098,
+            "probability": 0.001302083333333296,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1266,7 +1266,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333057,
+            "probability": 0.0013020833333332949,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1278,7 +1278,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333107,
+            "probability": 0.0013020833333332942,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1290,7 +1290,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333066,
+            "probability": 0.0013020833333332931,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1302,7 +1302,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0065104166666665395,
+            "probability": 0.006510416666666475,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1314,7 +1314,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0065104166666665195,
+            "probability": 0.006510416666666469,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1326,7 +1326,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.006510416666666544,
+            "probability": 0.0065104166666664675,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1338,7 +1338,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.006510416666666524,
+            "probability": 0.006510416666666461,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "1/32"
@@ -1350,7 +1350,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333098,
+            "probability": 0.001302083333333296,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1362,7 +1362,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333057,
+            "probability": 0.0013020833333332949,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1374,7 +1374,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0013020833333333107,
+            "probability": 0.0013020833333332942,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1386,7 +1386,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0013020833333333066,
+            "probability": 0.0013020833333332931,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1398,7 +1398,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0065104166666665395,
+            "probability": 0.006510416666666475,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1410,7 +1410,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0065104166666665195,
+            "probability": 0.006510416666666469,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1422,7 +1422,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 0,
-            "probability": 0.006510416666666544,
+            "probability": 0.0065104166666664675,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1434,7 +1434,7 @@
             "first": null,
             "flag": "first_selector_timeout",
             "pair_X": 1,
-            "probability": 0.006510416666666524,
+            "probability": 0.006510416666666461,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "1/32"
@@ -1446,7 +1446,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0010522936484253951,
+            "probability": 0.0010522936484056453,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1458,7 +1458,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.001035964287345263,
+            "probability": 0.0010359642873257824,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1470,7 +1470,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0017958242061175416,
+            "probability": 0.001795824206083835,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1482,7 +1482,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0017679568309395051,
+            "probability": 0.001767956830906258,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1494,7 +1494,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.004391914963170482,
+            "probability": 0.004391914963088068,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1506,7 +1506,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.004323761776677187,
+            "probability": 0.004323761776595896,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1518,7 +1518,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.007495158042503912,
+            "probability": 0.007495158042363257,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1530,7 +1530,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.007378849118458001,
+            "probability": 0.007378849118319264,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1542,7 +1542,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0010522936484253951,
+            "probability": 0.0010522936484056453,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1554,7 +1554,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.001035964287345263,
+            "probability": 0.0010359642873257824,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1566,7 +1566,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.0017958242061175416,
+            "probability": 0.001795824206083835,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1578,7 +1578,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.0017679568309395051,
+            "probability": 0.001767956830906258,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1590,7 +1590,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.004391914963170482,
+            "probability": 0.004391914963088068,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1602,7 +1602,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.004323761776677187,
+            "probability": 0.004323761776595896,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1614,7 +1614,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 0.007495158042503912,
+            "probability": 0.007495158042363257,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1626,7 +1626,7 @@
             "first": 0,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 0.007378849118458001,
+            "probability": 0.007378849118319264,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1638,7 +1638,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.03152990038527439,
+            "probability": 0.0315299003840986,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1650,7 +1650,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.02963586775708729,
+            "probability": 0.029635867755977215,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1662,7 +1662,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.08983788065310164,
+            "probability": 0.08983788064975139,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1674,7 +1674,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.08444122937526816,
+            "probability": 0.08444122937210514,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1686,7 +1686,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.08572721928544653,
+            "probability": 0.08572721928224991,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1698,7 +1698,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.08057749954430142,
+            "probability": 0.08057749954128346,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1710,7 +1710,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.2442618467163037,
+            "probability": 0.2442618467071954,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1722,7 +1722,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.22958879346054442,
+            "probability": 0.22958879345194516,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1734,7 +1734,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 5.9467803215418546e-05,
+            "probability": 5.9467803213233655e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1746,7 +1746,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 5.589551284214435e-05,
+            "probability": 5.5895512840081314e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1758,7 +1758,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00016944111280681458,
+            "probability": 0.00016944111280058904,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1770,7 +1770,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00015926261581535834,
+            "probability": 0.00015926261580947998,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1782,7 +1782,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00016168809112549317,
+            "probability": 0.00016168809111955312,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1794,7 +1794,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.0001519753258950647,
+            "probability": 0.00015197532588945593,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1806,7 +1806,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00046069652158951677,
+            "probability": 0.0004606965215725914,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1818,7 +1818,7 @@
             "first": 0,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00043302202110202543,
+            "probability": 0.000433022021086044,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -1830,7 +1830,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 2.139339172473388e-06,
+            "probability": 2.1393391724344155e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1842,7 +1842,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.7992749832961706e-06,
+            "probability": 1.7992749832633187e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1854,7 +1854,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 3.6509552982401746e-06,
+            "probability": 3.6509552981736614e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1866,7 +1866,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 3.07060825968112e-06,
+            "probability": 3.0706082596250517e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1878,7 +1878,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 8.928872408326397e-06,
+            "probability": 8.928872408163771e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1890,7 +1890,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 7.509560410082644e-06,
+            "probability": 7.509560409945556e-06,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1902,7 +1902,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 1.523784280956286e-05,
+            "probability": 1.5237842809285308e-05,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1914,7 +1914,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.281567211006928e-05,
+            "probability": 1.2815672109835315e-05,
             "second": null,
             "selector_raw": 30,
             "selector_weight_exact": "15/512"
@@ -1926,7 +1926,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 2.139339172473388e-06,
+            "probability": 2.1393391724344155e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1938,7 +1938,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.7992749832961706e-06,
+            "probability": 1.7992749832633187e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1950,7 +1950,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 3.6509552982401746e-06,
+            "probability": 3.6509552981736614e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1962,7 +1962,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 3.07060825968112e-06,
+            "probability": 3.0706082596250517e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1974,7 +1974,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 8.928872408326397e-06,
+            "probability": 8.928872408163771e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1986,7 +1986,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 7.509560410082644e-06,
+            "probability": 7.509560409945556e-06,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -1998,7 +1998,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 0,
-            "probability": 1.523784280956286e-05,
+            "probability": 1.5237842809285308e-05,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -2010,7 +2010,7 @@
             "first": 1,
             "flag": "second_selector_timeout",
             "pair_X": 1,
-            "probability": 1.281567211006928e-05,
+            "probability": 1.2815672109835315e-05,
             "second": null,
             "selector_raw": 31,
             "selector_weight_exact": "15/512"
@@ -2022,7 +2022,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 1.187276450733006e-07,
+            "probability": 1.1872764506890983e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2034,7 +2034,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 9.885639083433633e-08,
+            "probability": 9.88563908306748e-08,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2046,7 +2046,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 3.3828968306225645e-07,
+            "probability": 3.382896830497455e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2058,7 +2058,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 2.8167068506563537e-07,
+            "probability": 2.816706850552023e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2070,7 +2070,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 3.2281075233580795e-07,
+            "probability": 3.2281075232387077e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2082,7 +2082,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 2.68782437980075e-07,
+            "probability": 2.6878243797012044e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2094,7 +2094,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 9.197819684652924e-07,
+            "probability": 9.197819684312791e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2106,7 +2106,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 7.658395456327265e-07,
+            "probability": 7.658395456043624e-07,
             "second": 0,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2118,7 +2118,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 6.294953941002616e-05,
+            "probability": 6.294953940771779e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2130,7 +2130,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 5.241377664752837e-05,
+            "probability": 5.241377664560344e-05,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2142,7 +2142,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00017936159453668486,
+            "probability": 0.00017936159453010742,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2154,7 +2154,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00014934213408546426,
+            "probability": 0.0001493421340799794,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2166,7 +2166,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.00017115464695351617,
+            "probability": 0.00017115464694724038,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2178,7 +2178,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00014250877006701895,
+            "probability": 0.00014250877006178567,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2190,7 +2190,7 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 0,
-            "probability": 0.0004876694996922654,
+            "probability": 0.00048766949967438345,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
@@ -2202,13 +2202,13 @@
             "first": 1,
             "flag": "completed",
             "pair_X": 1,
-            "probability": 0.00040604904299921195,
+            "probability": 0.00040604904298430043,
             "second": 1,
             "selector_raw": null,
             "selector_weight_exact": "225/256"
           }
         ],
-        "total_probability": 0.9999999999433963
+        "total_probability": 0.9999999999094523
       },
       "complete_probe_output_max_entry_difference_admission": 0.01,
       "ideal_joint_event_interval_exact": [
@@ -2410,7 +2410,7 @@
     "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
@@ -2438,14 +2438,14 @@
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
-    "model/observer_particles/results/family_naturality.json": "549944b7e4825fd94e7ef6765c5fab9c9fc788452fe4fd79b46a51e4b600f4c7",
+    "model/observer_particles/representation_identification.py": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
+    "model/observer_particles/results/family_naturality.json": "d3c6222739cd3f92652684b592533f48dcfa14a39181cf0e3784a2faca8183e5",
     "model/observer_particles/results/family_naturality_operators.json": "6bd5f046c5fb16d9951a208810309da397736c2a98fe6df2d7dda2bcbfbc88ed",
-    "model/observer_particles/results/representation_identification.json": "dc4271fb837f0df288cc5960fd3e2ed3cad719213994b72a30c297a4c8ab319a",
+    "model/observer_particles/results/representation_identification.json": "3a3d05fd1b946ff96752ddd3fbc2b8939a595f16397023fe96d992f3c519094b",
     "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
-    "model/observer_particles/results/unified_yukawa_action.json": "6de34ed8d5edc57c298b63b58234ed3afb267f8d22ee53a7eeae3f6e73ecd571",
+    "model/observer_particles/results/unified_yukawa_action.json": "6f5fa5cb70be906442256ed09370365980341ed0562102087ba0b953bfb9006d",
     "model/observer_particles/results/unified_yukawa_operators.json": "972ae764bf1b466b5506442969d35b262c15ba1b5207def1e8e3bd51e792e428",
-    "model/observer_particles/unified_yukawa_action.py": "ce0fa43f480505792ca8d57b9ea6731ffeff6ea9c1cc5dcad78c0e9c7c742b83",
+    "model/observer_particles/unified_yukawa_action.py": "7e18b5b60f250657f23042a605e347ab0a870d53e7cfce961e33b0c0f9def0b9",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

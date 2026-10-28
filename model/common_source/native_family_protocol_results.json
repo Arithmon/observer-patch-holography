@@ -24,7 +24,7 @@
   },
   "artifact": {
     "path": "native_family_protocol_results.npz",
-    "sha256": "435394c4f259804513532292c53c49db2ac147829257859f6a30b4b8e39646dd"
+    "sha256": "7a353ebfb3aba0f33f518adb0223546ee1364e4116e2fe1b97289312d03b8aa3"
   },
   "baseline_memory": {
     "complete_instrument_branches": 1536,
@@ -96,13 +96,13 @@
       "eigenvalues_are_dimensionless_coupling_coefficients": true,
       "eigenvalues_diagnostic": [
         0.000264834486372571,
-        0.051673720427135375,
+        0.05167372042713537,
         0.9480614450864917
       ],
       "physical_pole_masses_inferred": false,
       "ratios_diagnostic": [
         1.0,
-        195.11703756904387,
+        195.11703756904384,
         3579.826245713152
       ],
       "second_elementary_symmetric_exact": "328367/6666724",
@@ -160,7 +160,7 @@
         ],
         "complete_detector_probability_count": 60,
         "record_scope": "declared static mean-feedback service, not correlated finite memory execution",
-        "static_record_inverse_entry_error": 5.551115123125783e-16
+        "static_record_inverse_entry_error": 6.661338147750939e-16
       },
       {
         "action_channel": "down",
@@ -180,7 +180,7 @@
         ],
         "complete_detector_probability_count": 60,
         "record_scope": "declared static mean-feedback service, not correlated finite memory execution",
-        "static_record_inverse_entry_error": 4.996003610813204e-16
+        "static_record_inverse_entry_error": 4.440892098500626e-16
       },
       {
         "action_channel": "up",
@@ -190,17 +190,17 @@
         ],
         "coefficient_eigenvalues": [
           0.00015764214567151887,
-          0.042791271223448044,
+          0.04279127122344804,
           0.9570510866308806
         ],
         "coefficient_ratios": [
           1.0,
-          271.44562795163176,
+          271.4456279516317,
           6071.035652008323
         ],
         "complete_detector_probability_count": 60,
         "record_scope": "declared static mean-feedback service, not correlated finite memory execution",
-        "static_record_inverse_entry_error": 5.551115123125783e-16
+        "static_record_inverse_entry_error": 1.2212453270876722e-15
       }
     ],
     "free_field_diagnostic": {
@@ -208,7 +208,7 @@
       "Hermiticity_error": 0.0,
       "complete_Nambu_dimension": 180,
       "coordinate_speed": 1.0,
-      "dispersion_spectral_error": 3.3306690738754696e-15,
+      "dispersion_spectral_error": 3.552713678800501e-15,
       "momentum": [
         0.23,
         -0.31,
@@ -219,48 +219,48 @@
         0.0,
         0.0,
         0.0,
-        3.17943644475e-05,
-        3.1794364447544166e-05,
-        0.00014014155505322673,
-        0.00014014155505323868,
-        0.0001401415550532401,
-        0.00014014155505324047,
-        0.00014014155505324204,
-        0.00014014155505326148,
-        0.00015764214567150464,
-        0.0001576421456715115,
-        0.0001576421456715189,
-        0.00015764214567152166,
-        0.00015764214567153342,
-        0.00015764214567153814,
-        0.02148604675347892,
-        0.021486046753479003,
-        0.042791271223447905,
-        0.04279127122344795,
-        0.042791271223448,
-        0.042791271223448044,
-        0.04279127122344806,
-        0.04279127122344807,
-        0.04369077654448795,
-        0.04369077654448797,
-        0.04369077654448798,
+        3.179436444751319e-05,
+        3.1794364447528594e-05,
+        0.00014014155505323242,
+        0.0001401415550532404,
+        0.00014014155505324044,
+        0.00014014155505324055,
+        0.00014014155505324188,
+        0.00014014155505327053,
+        0.00015764214567149084,
+        0.000157642145671506,
+        0.00015764214567151616,
+        0.00015764214567151884,
+        0.00015764214567151887,
+        0.00015764214567157316,
+        0.021486046753478795,
+        0.021486046753479,
+        0.042791271223447946,
+        0.042791271223447946,
+        0.04279127122344796,
+        0.042791271223447974,
+        0.04279127122344799,
+        0.04279127122344799,
+        0.04369077654448799,
         0.043690776544488004,
-        0.04369077654448803,
-        0.04369077654448813,
+        0.043690776544488004,
+        0.04369077654448802,
+        0.043690776544488025,
+        0.043690776544488046,
         0.9561690819004585,
         0.9561690819004586,
         0.9561690819004587,
         0.9561690819004588,
         0.9561690819004589,
-        0.9561690819004589,
-        0.9570510866308801,
-        0.9570510866308802,
+        0.9561690819004591,
+        0.9570510866308803,
         0.9570510866308803,
         0.9570510866308805,
+        0.9570510866308805,
         0.9570510866308807,
-        0.9570510866308807,
-        0.9784821588820737,
-        0.9784821588820739
+        0.9570510866308808,
+        0.9784821588820731,
+        0.9784821588820733
       ],
       "zero_action_components": 3
     },
@@ -933,12 +933,12 @@
         ],
         "family_eigenvalue_ratios": [
           1.0,
-          271.44562795163176,
+          271.4456279516317,
           6071.035652008323
         ],
         "family_eigenvalues": [
           0.00015764214567151887,
-          0.042791271223448044,
+          0.04279127122344804,
           0.9570510866308806
         ],
         "family_rank_exact": 3,
@@ -1021,12 +1021,12 @@
             ],
             "family_eigenvalue_ratios": [
               1.0,
-              271.44562795163176,
+              271.4456279516317,
               6071.035652008323
             ],
             "family_eigenvalues": [
               0.00015764214567151887,
-              0.042791271223448044,
+              0.04279127122344804,
               0.9570510866308806
             ],
             "family_rank_exact": 3,
@@ -1087,12 +1087,12 @@
             ],
             "family_eigenvalue_ratios": [
               1.0,
-              280.6955538172579,
+              280.69555381725803,
               5323.14809927015
             ],
             "family_eigenvalues": [
               0.00017841710882499884,
-              0.05008088917210702,
+              0.05008088917210704,
               0.949740693719068
             ],
             "family_rank_exact": 3,
@@ -1107,12 +1107,12 @@
             ],
             "family_eigenvalue_ratios": [
               1.0,
-              260.9091884891878,
+              260.9091884891877,
               5875.964434478658
             ],
             "family_eigenvalues": [
               0.0001629228722236986,
-              0.04250807437821283,
+              0.04250807437821282,
               0.9573290027495638
             ],
             "family_rank_exact": 3,
@@ -1128,12 +1128,12 @@
             "family_eigenvalue_ratios": [
               1.0,
               224.97349450901052,
-              4415.961273205654
+              4415.961273205656
             ],
             "family_eigenvalues": [
               0.00021542741336115842,
               0.048465457996896916,
-              0.9513191145897419
+              0.9513191145897422
             ],
             "family_rank_exact": 3,
             "hierarchy_ratio_status": "defined",
@@ -1169,12 +1169,12 @@
             ],
             "family_eigenvalue_ratios": [
               1.0,
-              1143.1195539516339,
+              1143.1195539516336,
               18382.73013576679
             ],
             "family_eigenvalues": [
               5.121153774879189e-05,
-              0.05854091018857624,
+              0.05854091018857623,
               0.9414078782736752
             ],
             "family_rank_exact": 3,
@@ -1189,12 +1189,12 @@
             ],
             "family_eigenvalue_ratios": [
               1.0,
-              9691.235091193292,
+              9691.23509119329,
               1179523.1448702035
             ],
             "family_eigenvalues": [
               8.408905710860057e-07,
-              0.008149268210362265,
+              0.008149268210362264,
               0.9918498908990667
             ],
             "family_rank_exact": 3,
@@ -1223,7 +1223,7 @@
             "action_channel": "up",
             "family_eigenvalues": [
               0.00015764214567151887,
-              0.042791271223448044,
+              0.04279127122344804,
               0.9570510866308806
             ],
             "family_rank_exact": 3,
@@ -1285,7 +1285,7 @@
             "family_eigenvalues": [
               0.0001530816670346381,
               0.009877422387994004,
-              0.05687365707325527
+              0.05687365707325528
             ],
             "family_rank_exact": 3,
             "supported_memory_directions": [
@@ -1301,7 +1301,7 @@
             "action_channel": "charged_lepton",
             "family_eigenvalues": [
               3.130096155963196e-05,
-              0.0037530034686159325,
+              0.003753003468615932,
               0.028061826669073406
             ],
             "family_rank_exact": 3,
@@ -1345,7 +1345,7 @@
             "action_channel": "up",
             "family_eigenvalues": [
               0.0,
-              0.00043323983741066287,
+              0.00043323983741066385,
               0.15031817636050154
             ],
             "family_rank_exact": 2,
@@ -1360,7 +1360,7 @@
             "action_channel": "charged_lepton",
             "family_eigenvalues": [
               0.0,
-              8.9721839659614e-05,
+              8.972183965961394e-05,
               0.130692728659492
             ],
             "family_rank_exact": 2,
@@ -1375,7 +1375,7 @@
             "action_channel": "down",
             "family_eigenvalues": [
               0.0,
-              0.0003842220768164922,
+              0.00038422207681649233,
               0.1303982284223351
             ],
             "family_rank_exact": 2,
@@ -1400,7 +1400,7 @@
             "action_channel": "up",
             "family_eigenvalues": [
               0.0,
-              0.00042845874590747733,
+              0.0004284587459074774,
               0.009657438293714633
             ],
             "family_rank_exact": 2,
@@ -1415,7 +1415,7 @@
             "action_channel": "charged_lepton",
             "family_eigenvalues": [
               0.0,
-              8.92321812197177e-05,
+              8.923218121971771e-05,
               0.004075682882857305
             ],
             "family_rank_exact": 2,
@@ -1430,7 +1430,7 @@
             "action_channel": "down",
             "family_eigenvalues": [
               0.0,
-              0.00037987781784263176,
+              0.0003798778178426317,
               0.008370012323104421
             ],
             "family_rank_exact": 2,
@@ -1450,18 +1450,18 @@
       }
     ],
     "finite_dilation_covariance_errors": [
-      3.5530171862455106e-16,
-      3.570708795050627e-16,
-      3.570708795050627e-16,
-      3.5530171862455106e-16,
-      3.28052289609371e-16,
-      3.28052289609371e-16,
-      2.9663872560447947e-16,
-      2.9663872560447947e-16,
-      3.342397353460462e-16,
-      3.9699364536533174e-16,
-      3.342397353460462e-16,
-      3.9699364536533174e-16
+      3.859470091503607e-16,
+      4.1126019026505915e-16,
+      4.1126019026505915e-16,
+      3.859470091503607e-16,
+      3.2004689827598044e-16,
+      3.2004689827598044e-16,
+      3.280555165260604e-16,
+      3.280555165260604e-16,
+      2.9766726357044566e-16,
+      3.8220701164310985e-16,
+      2.9766726357044566e-16,
+      3.8220701164310985e-16
     ],
     "kraus_count": 13,
     "matter_dimension": 15,
@@ -1718,7 +1718,7 @@
     "model/native_equilibration/construction.py": "381dc258389bcb930b9e075d66d5a7c167eb2ced01176cf7a209eb7dd9c5aca2",
     "model/native_equilibration/cut_completion.py": "283b764685f21cc19f5ad9c1ff82371256c55f463fafe99ab3ea460458ead8ad",
     "model/native_modular_reference/common_caps.py": "a2807d204ac094690d743cca187e31f9a4ca3568a7725040921087089367ea20",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
@@ -1745,13 +1745,13 @@
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "model/observer_particles/gauge_particle_identification.py": "cee248be8893026a50229dd87c831c05538eec48ef9b180ab96fbbe2ebac34cb",
-    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
-    "model/observer_particles/results/representation_identification.json": "dc4271fb837f0df288cc5960fd3e2ed3cad719213994b72a30c297a4c8ab319a",
+    "model/observer_particles/gauge_particle_identification.py": "a335cddbc8a4f402c83b4d2412f0bda03eb37172dc81b6d5a255cadc37aca42c",
+    "model/observer_particles/representation_identification.py": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
+    "model/observer_particles/results/representation_identification.json": "3a3d05fd1b946ff96752ddd3fbc2b8939a595f16397023fe96d992f3c519094b",
     "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
-    "model/observer_particles/results/unified_yukawa_action.json": "6de34ed8d5edc57c298b63b58234ed3afb267f8d22ee53a7eeae3f6e73ecd571",
+    "model/observer_particles/results/unified_yukawa_action.json": "6f5fa5cb70be906442256ed09370365980341ed0562102087ba0b953bfb9006d",
     "model/observer_particles/results/unified_yukawa_operators.json": "972ae764bf1b466b5506442969d35b262c15ba1b5207def1e8e3bd51e792e428",
-    "model/observer_particles/unified_yukawa_action.py": "ce0fa43f480505792ca8d57b9ea6731ffeff6ea9c1cc5dcad78c0e9c7c742b83",
+    "model/observer_particles/unified_yukawa_action.py": "7e18b5b60f250657f23042a605e347ab0a870d53e7cfce961e33b0c0f9def0b9",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",
