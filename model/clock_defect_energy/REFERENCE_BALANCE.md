@@ -44,9 +44,9 @@ stress follows from either measure alone.
 There is a positive joint result under **uniform seam selection**. Include the
 already counted classical two-port core label `c` and update it by the same
 recorded seam transposition as the source pair `x` whenever current is nonzero.
-The stationary ensemble additionally requires a uniform initial core and the
-conditional source reference `sigma_c`; that preparation is supplied, not
-executed by the existing fixed-core continuation.
+Starting exactly in the stationary ensemble would require a uniform initial
+core and the conditional source reference `sigma_c`; that preparation is
+supplied, not executed by the existing fixed-core continuation.
 On the `66 × 66 = 4,356` source/core states, set
 
 ```text
@@ -62,6 +62,19 @@ Each raw record block preserves the three `q` projectors on this enlarged
 source-plus-controller domain. Their stationary weights are exactly `2/5`,
 `5/9` and `2/45`. For a source-only current observable, the joint source
 marginal recovers the uniform form `D(v)=2/33` for the chosen mode.
+
+The joint stationary law can also be **approached from one fixed core** if
+that core's diagonal source reference has been prepared. Exact breadth-first
+search checks that the `q=0,1,2` transition sectors are connected, with
+`2970`, `1320` and `66` states. Every state has a native hold probability at
+least `5/6`, so each finite sector is aperiodic. The fixed-core preparation
+has exactly the same three sector masses as `pi`; the standard finite-chain
+mixing theorem therefore gives convergence of the reduced diagonal
+source/core distribution to `pi` under repeated uniform-seam repairs. This
+is an asymptotic stationary distribution, not an instantaneous fixed state
+or a certified finite mixing-time bound. The preparation service is still
+supplied, and no stationarity is asserted for adaptive feedback or the
+growing full record archive.
 
 This gives an exact finite way for the transported clock reference and native
 current action **measure** to coexist on one recorded source/core process.

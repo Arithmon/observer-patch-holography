@@ -7,7 +7,7 @@ identity, which uses an updated reference and retains each exported record.
 from __future__ import annotations
 
 import argparse
-from collections import Counter
+from collections import Counter, deque
 from fractions import Fraction as F
 import json
 from pathlib import Path
@@ -49,10 +49,14 @@ def co_moving() -> dict:
     if sector != {0: F(2, 5), 1: F(5, 9), 2: F(2, 45)}:
         raise ArithmeticError("co-moving reference charge sectors changed")
     edge_checks = 0
+    core_index = {core: i for i, core in enumerate(cores)}
+    adjacency = [[] for _ in basis]
     for i, j in edges:
         source, target = basis[i], basis[j]
         removed, added = set(source)-set(target), set(target)-set(source)
         seam = tuple(sorted((next(iter(removed)), next(iter(added)))))
+        adjacency[i].append((j, seam))
+        adjacency[j].append((i, seam))
         for core in cores:
             moved = _swap(core, seam)
             if weights[i, core] != weights[j, moved]:
@@ -60,6 +64,34 @@ def co_moving() -> dict:
             if len(set(source) & set(core)) != len(set(target) & set(moved)):
                 raise ArithmeticError("joint charge not conserved on a native edge")
             edge_checks += 1
+    sector_sizes = {}
+    for q in (0, 1, 2):
+        initial = next((i, core_index[core]) for i, pair in enumerate(basis)
+                       for core in cores if len(set(pair) & set(core)) == q)
+        reached, queue = {initial}, deque((initial,))
+        while queue:
+            x, c = queue.popleft()
+            for y, seam in adjacency[x]:
+                target = (y, core_index[_swap(cores[c], seam)])
+                if target not in reached:
+                    reached.add(target)
+                    queue.append(target)
+        expected = sum(len(set(pair) & set(core)) == q
+                       for pair in basis for core in cores)
+        if len(reached) != expected:
+            raise ArithmeticError("co-moving charge sector is not connected")
+        sector_sizes[str(q)] = expected
+    initial_core = continuation.INITIAL_CORE
+    initial_sector = {str(q): sum((weight for x, weight in
+                                   enumerate(continuation.reference(initial_core))
+                                   if len(set(basis[x]) & set(initial_core)) == q), F())
+                      for q in (0, 1, 2)}
+    if initial_sector != {str(q): value for q, value in sector.items()}:
+        raise ArithmeticError("fixed-core source reference has wrong sector weights")
+    c_kernel = kernel("C")
+    smallest_hold = min(c_kernel[i][i] for i in range(66))
+    if smallest_hold <= 0:
+        raise ArithmeticError("joint charge sector lacks an aperiodic hold")
     # A complete raw C/E Kraus block has one recorded current. Check every
     # partial-injection pair, including zero-current blocks, on every core.
     kraus_pair_checks = {}
@@ -97,6 +129,12 @@ def co_moving() -> dict:
         "stationary_for_uniform_seam_selection": True,
         "uniform_core_and_conditional_source_preparation_supplied": True,
         "existing_fixed_core_continuation_stationary_claimed": False,
+        "fixed_core_initial_reference_has_stationary_sector_masses": True,
+        "connected_charge_sector_sizes": sector_sizes,
+        "minimum_native_self_loop_probability": str(smallest_hold),
+        "fixed_core_diagonal_source_converges_to_joint_stationary_law_under_uniform_seams": True,
+        "quantitative_mixing_time_bound_claimed": False,
+        "adaptive_feedback_or_full_record_archive_stationarity_claimed": False,
         "joint_reversible_movement_edges_checked": edge_checks,
         "co_moving_charge_sector_probabilities": {str(q): str(value) for q, value in sector.items()},
         "raw_kraus_source_core_pair_checks": kraus_pair_checks,

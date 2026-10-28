@@ -47,6 +47,12 @@ def test_co_moving_joint_reference_has_complete_record_charge_protection():
     assert value["stationary_for_uniform_seam_selection"]
     assert value["uniform_core_and_conditional_source_preparation_supplied"]
     assert not value["existing_fixed_core_continuation_stationary_claimed"]
+    assert value["fixed_core_initial_reference_has_stationary_sector_masses"]
+    assert value["connected_charge_sector_sizes"] == {"0": 2970, "1": 1320, "2": 66}
+    assert F(value["minimum_native_self_loop_probability"]) == F(5, 6)
+    assert value["fixed_core_diagonal_source_converges_to_joint_stationary_law_under_uniform_seams"]
+    assert not value["quantitative_mixing_time_bound_claimed"]
+    assert not value["adaptive_feedback_or_full_record_archive_stationarity_claimed"]
     assert value["co_moving_charge_sector_probabilities"] == {
         "0": "2/5", "1": "5/9", "2": "2/45"}
     assert value["raw_kraus_source_core_pair_checks"] == {"C": 66*66*60, "E": 66*66*60}

@@ -6,6 +6,7 @@
     "predecessor_campaign": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
   },
   "co_moving_source_and_recorded_core": {
+    "adaptive_feedback_or_full_record_archive_stationarity_claimed": false,
     "adaptive_feedback_stationarity_claimed": false,
     "charge_projectors_preserved_by_each_complete_record_block": true,
     "classical_core_metadata_states": 66,
@@ -14,11 +15,20 @@
       "1": "5/9",
       "2": "2/45"
     },
+    "connected_charge_sector_sizes": {
+      "0": 2970,
+      "1": 1320,
+      "2": 66
+    },
     "core_metadata_is_an_intrinsic_source_charge": false,
     "existing_fixed_core_continuation_stationary_claimed": false,
+    "fixed_core_diagonal_source_converges_to_joint_stationary_law_under_uniform_seams": true,
+    "fixed_core_initial_reference_has_stationary_sector_masses": true,
     "joint_reversible_movement_edges_checked": 19800,
     "joint_source_core_states": 4356,
     "localized_particle_or_fermionic_phase_identified": false,
+    "minimum_native_self_loop_probability": "5/6",
+    "quantitative_mixing_time_bound_claimed": false,
     "raw_kraus_source_core_pair_checks": {
       "C": 261360,
       "E": 261360
@@ -83,11 +93,11 @@
   },
   "source_sha256": {
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
-    "model/clock_defect_energy/REFERENCE_BALANCE.md": "722702dd637a87d60ccdf0a42679492167a235608e0dd3bdc3bfc9e47ecf7e6a",
+    "model/clock_defect_energy/REFERENCE_BALANCE.md": "7ab01c9525ef35d58700f73dadf94a2eafe9b8c6988a2cf781267992736ae8a7",
     "model/clock_defect_energy/continuation.py": "2b2d16fa74aae0552fcb28f91bc6d3a4adc849a6d75df21a48015d202afc5293",
     "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
-    "model/clock_defect_energy/reference_balance.py": "1fe4efc30c32ce9754174dfbd04287b94f4a5ae6ee846f0e1a4de2581508c93b",
-    "model/clock_defect_energy/test_reference_balance.py": "64f815d5e95760d27fad82b12f8507acf6c749a20f903cef509b0c2322d0445e",
+    "model/clock_defect_energy/reference_balance.py": "afc23b35226d2a95fec44c603b369d68f3a7bea55cf4ea7809258e1c7d1e272e",
+    "model/clock_defect_energy/test_reference_balance.py": "f3cfb7c2cf098b053e3285fb44b51115e61080e639bb6d6cfcf3bcc258c3ee99",
     "model/completion/observer.py": "ad0ccc68f93a02c2d624af66bae90eed1777d9e975875c92f87d6e1f2177aae2",
     "model/native_modular_reference/history_transport.py": "b08eaf256d6d7a078c44f9e762594581daa1c8bc529bf8bf0b6a47223689c8bf",
     "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193"
