@@ -122,8 +122,13 @@ def _compare(expected, actual, path="root"):
         for i, (left, right) in enumerate(zip(expected, actual, strict=True)):
             _compare(left, right, f"{path}[{i}]")
     elif isinstance(expected, float):
-        if not math.isclose(expected, actual, rel_tol=1e-6, abs_tol=1e-12):
-            raise ValueError(f"receipt numerical diagnostic mismatch at {path}")
+        # Full-register polar/SVD diagnostics vary across BLAS backends near
+        # machine precision. The separate source-composition gate remains
+        # below 1e-6; this tolerance only compares retained float diagnostics.
+        if not math.isclose(expected, actual, rel_tol=1e-6, abs_tol=1e-9):
+            raise ValueError(
+                f"receipt numerical diagnostic mismatch at {path}: "
+                f"retained={expected!r}, replayed={actual!r}")
     elif expected != actual:
         raise ValueError(f"receipt mismatch at {path}")
 

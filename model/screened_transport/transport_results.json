@@ -1,6 +1,6 @@
 {
   "campaign_id": "screened-transport-20261028-v1",
-  "contract_sha256": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201",
+  "contract_sha256": "09719e8d1e028022aca3ed3c84f6bcdfce6c8b988f59f95a3d5b33d3c072be2b",
   "corrected_cycle": {
     "common_logical_phase_or_rest_gap_fixed_by_channel": false,
     "continuous_momentum_or_coherent_dispersion_constructed": false,
@@ -381,13 +381,13 @@
     "model/particle_screening/screening_results.json": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
     "model/screened_recovery/README.md": "bf60d95b1717eca6fc68484c30cefbeee01c2bf219d29a91af4522039be1593c",
     "model/screened_recovery/campaign.json": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610",
-    "model/screened_recovery/experiment.py": "63cff737f99a8bedac41dece3f34a5d10936ac8710c0039febb2f324aadd1767",
+    "model/screened_recovery/experiment.py": "200a1f90da0ad1547dfab71274b0276b1d0f0e20adbb79f97928e7a8d3d6dc17",
     "model/screened_recovery/protocol.py": "97e701fc92052c7fd82eaca22e1c119ed4a005450bf78456219b5d32ce38e43c",
-    "model/screened_recovery/screened_recovery_results.json": "699b1f90f98e0e5233989ebf993c0a04c27e98956cc2e58d0beee7a7c8630257",
+    "model/screened_recovery/screened_recovery_results.json": "36912c78eee457947a479a2b1dfd4571cda1f26fba059d0c0b4e6772701622f6",
     "model/screened_recovery/test_protocol.py": "8514eb76426a5dc22cfeb163471db1b737b491618b949583d1e87ed70d0be8c1",
     "model/screened_transport/README.md": "78fbae8b41c6c48f39b285ddb1ebc0452e646cfaff20e16f4430e3c38eb98b69",
     "model/screened_transport/__init__.py": "ed06f7ce24037ac2e4cbc00e7ed65f7216ded0a839eca299f41f10deb0768bce",
-    "model/screened_transport/campaign.json": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201",
+    "model/screened_transport/campaign.json": "09719e8d1e028022aca3ed3c84f6bcdfce6c8b988f59f95a3d5b33d3c072be2b",
     "model/screened_transport/test_transport.py": "5a148bbeaeb28010401553536bc4c2257bb5f6319a0aa0ee3a0614d77465986b",
     "model/screened_transport/transport.py": "6d6b09109c54a8635cdcc81d7607923036cf70d32639d9371ba8be1f201e7852"
   }
