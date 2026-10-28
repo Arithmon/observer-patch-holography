@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 912,
+    "file_count": 913,
     "files": [
       {
         "byte_count": 42558,
@@ -311,6 +311,11 @@
         "byte_count": 29257,
         "path": "Lean/Geometry/CompositeMomentumCovariance.lean",
         "sha256": "sha256:d68bd3aec47347c7b76a10338172fe1ab0b0e771e95f8761d577d6b8f73513ac"
+      },
+      {
+        "byte_count": 5456,
+        "path": "Lean/Geometry/ConservedSectorAction.lean",
+        "sha256": "sha256:7a451093ac638e581fb3ab9b2c262b15ffc1b22179bf93fd96c657dc6f1607df"
       },
       {
         "byte_count": 7147,
@@ -4758,7 +4763,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:7c51d075a14ef4f5f4c81c916892bb30e9b89b1d9318dcde6fa62a2d7c76728d",
+    "files_sha256": "sha256:9650a4c1ae845634a20ffcd140eb10bf3692a00d3fb9fcee51d4b9676ee367bb",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7667,7 +7672,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:2473de6efc36a94d4713b49b7be2c645e1df93281dca4f1b5eb2e4c297c522a7",
+  "inventory_sha256": "sha256:0cb6813c3c13ddfe30f2c2c887934237b4f095c16eb7edae9b0a1309ac6126be",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
