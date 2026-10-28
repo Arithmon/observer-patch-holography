@@ -577,7 +577,7 @@
     "model/screened_recovery/README.md": "bf60d95b1717eca6fc68484c30cefbeee01c2bf219d29a91af4522039be1593c",
     "model/screened_recovery/__init__.py": "2b51117c0cb33ff70c3f2e472162f97cb7209f4bcd72070524dff14f2a2c1337",
     "model/screened_recovery/campaign.json": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610",
-    "model/screened_recovery/experiment.py": "200a1f90da0ad1547dfab71274b0276b1d0f0e20adbb79f97928e7a8d3d6dc17",
+    "model/screened_recovery/experiment.py": "fa01d7dff08e5efc2775f799c4f57e64f81653b0f2ba22133f858396ff962ba0",
     "model/screened_recovery/protocol.py": "97e701fc92052c7fd82eaca22e1c119ed4a005450bf78456219b5d32ce38e43c",
     "model/screened_recovery/test_protocol.py": "8514eb76426a5dc22cfeb163471db1b737b491618b949583d1e87ed70d0be8c1",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89"

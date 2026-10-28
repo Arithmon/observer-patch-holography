@@ -122,10 +122,17 @@ def _compare(expected, actual, path="root"):
         for i, (left, right) in enumerate(zip(expected, actual, strict=True)):
             _compare(left, right, f"{path}[{i}]")
     elif isinstance(expected, float):
-        # Full-register polar/SVD diagnostics vary across BLAS backends near
-        # machine precision. The separate source-composition gate remains
-        # below 1e-6; this tolerance only compares retained float diagnostics.
-        if not math.isclose(expected, actual, rel_tol=1e-6, abs_tol=1e-9):
+        # Full-register polar/SVD errors accumulate across 100 attempts and
+        # vary by several 1e-9 across BLAS backends. Keep that allowance on
+        # the accumulated diagnostic; the source-composition gate is below
+        # 1e-6 and exact fields still match.
+        if path.endswith(".encoded_t_attempt_operator_error_upper.100"):
+            abs_tol = 1e-8
+        elif path.startswith("root.source_composition."):
+            abs_tol = 1e-9
+        else:
+            abs_tol = 1e-12
+        if not math.isclose(expected, actual, rel_tol=1e-6, abs_tol=abs_tol):
             raise ValueError(
                 f"receipt numerical diagnostic mismatch at {path}: "
                 f"retained={expected!r}, replayed={actual!r}")
