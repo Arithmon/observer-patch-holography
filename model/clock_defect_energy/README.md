@@ -15,7 +15,7 @@ repair law and accept no integrated physical gate.
 | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136), [clock services](CLOCK_SERVICES.md) | All 66 transported-core words execute and certify at parameter 4. Reference metadata survives FIFO export, with policy states, interpreter storage and source pulses counted. | Realize the supplied preparation, memory, coherent-control and delivery services, including physical error budgets. |
 | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138), [joint clock and field](JOINT_CLOCK.md) | One native incident count advances the transported clock and protected field; the complete joint law distinguishes a control with identical separate marginals. | Compile the whole coherent wave service and establish the physical clock/field dictionary. |
 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139), [exchange history](DEFECT_HISTORY.md) | The native configuration complex has exact integral first homology `Z/2`; complete C/E records realize its exchange class under the declared local deformations. | Obtain a live localized sector, coherent exchange response and protection; history parity alone supplies none of these. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140), [mode energy](MODE_ENERGY.md) | Native current records give a positive Dirichlet form. Independent rest and kinetic responses of the existing product mode satisfy the ideal mass shell with a bounded finite-word correction. | Attach the same action, inertia and conserved stress to a localized excitation and its physical clock. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140), [mode energy](MODE_ENERGY.md) | Native current records give a positive Dirichlet form. Independent rest and kinetic responses of the existing product mode satisfy the ideal mass shell with a bounded finite-word correction. The [fixed-reference balance test](REFERENCE_BALANCE.md) finds exact drift of the transported clock reference under bare C/E repair. | Attach the same action, inertia and conserved stress to a localized excitation and its physical clock, with a justified reference measure. |
 
 The [completion plan](../../docs/COMPLETION_PROGRAM.md) keeps #1135 as the
 shared domain/primitive review and #1137 as the theorem-interface review.
@@ -54,10 +54,12 @@ transporting it does not implement port routing or establish a physical
 source charge. Attempt count, actual repair count, modular parameter, wave
 parameter and any calibrated physical clock remain named separately.
 
-The eight receipts bind their implementations, independent checks and their
+The nine receipts bind their implementations, independent checks and their
 named contracts. No empirical comparison is added. Preparation and coherent
 services retain their predecessor domains and failure budgets. The expanded
 clock inventory counts every added word and its source execution.
+The fixed-reference balance packet distinguishes the unconditioned stationary
+source measure from branchwise transported clock covariance.
 The finite first-exit calculation is an offline path diagnostic, not an added
 measurement of the source.
 
@@ -75,6 +77,7 @@ python -m model.clock_defect_energy.clock_services --check
 python -m model.clock_defect_energy.joint_clock --check
 python -m model.clock_defect_energy.defect_history --check
 python -m model.clock_defect_energy.mode_energy --check
+python -m model.clock_defect_energy.reference_balance --check
 ```
 
 `--write` regenerates the named packet's receipt after a reviewed source
