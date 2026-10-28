@@ -5,7 +5,7 @@ carrier. It supplies exact limits for every size of exterior cap, an improved
 actively correctable sharp-`q=1` code, and a finite bond-exit calculation for
 the sharp-`q=2` pair. Neither construction yet meets the localized physical
 particle gate: the protected qubit still occupies an exterior shell, and the
-two-port pair has no native binding. No species, fermionic exchange phase,
+two-port pair has no invariant native-edge bond. No species, fermionic exchange phase,
 rest energy or calibrated lifetime is inferred.
 
 The [source/core sector packet](../exchange_sector/README.md) defines the
@@ -150,7 +150,7 @@ changes that grammar and must carry its controller, record and recovery costs.
 ## Status and reproduction
 
 CP-03 remains open. The new result rules out exact transported-reference
-screening and passive edge binding for the tested sharp sectors, while giving
+screening and an invariant edge bond for the tested sharp sectors, while giving
 an optimal small-cap active-memory control. A particle claim still needs a
 localized *state and observable* that remain protected under the full record
 process, with an autonomous or explicitly controlled lifetime, independently
