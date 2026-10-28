@@ -1,6 +1,6 @@
 {
   "status": "EXACT_CONDITIONAL_SOURCE_SPIN_LIFT_AND_MATTER_IDENTIFICATION_PASS",
-  "producer_sha256": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
+  "producer_sha256": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
   "source_sha256": {
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
@@ -11,8 +11,8 @@
     "Lean/Screen/MatterGrammarIndexBridge.lean": "1f66250458e837de3f45f29a370ed4a4960ea55a4e3d9bdb8be2d1d7f74a4851",
     "Lean/Screen/A5FamilyBand.lean": "da86f97b63a871bedc4a5418c4b7b154ab3d354b7fdb41e9184f4c3b343e1521",
     "Lean/Screen/FermionSectorAssembly.lean": "b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4",
-    "model/observer_particles/gauge_particle_identification.py": "cee248be8893026a50229dd87c831c05538eec48ef9b180ab96fbbe2ebac34cb",
-    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"
+    "model/observer_particles/gauge_particle_identification.py": "a335cddbc8a4f402c83b4d2412f0bda03eb37172dc81b6d5a255cadc37aca42c",
+    "model/observer_particles/evidence_contract.py": "2925e22820e59c8610610ae430a42fb46460341dcb6153447d287c025b69ec4f"
   },
   "artifacts": {
     "representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122"

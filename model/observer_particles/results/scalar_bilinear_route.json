@@ -1,14 +1,14 @@
 {
   "status": "EXACT_CONDITIONAL_LORENTZ_SCALAR_BILINEAR_DOUBLETS_CONSTRUCTED_PASS",
-  "producer_sha256": "b257add5e590537df4e65e3bd693d2915dd71b616b0ebbfeafd740b4d3b9bebb",
+  "producer_sha256": "23d449d9dd9f337d3749f0750963b36ad1f3e4b04cfa0bc323eef23baeab5ea3",
   "source_sha256": {
-    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
+    "model/observer_particles/representation_identification.py": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
     "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
-    "model/observer_particles/results/representation_identification.json": "dc4271fb837f0df288cc5960fd3e2ed3cad719213994b72a30c297a4c8ab319a",
-    "model/observer_particles/spin_matter_join.py": "05153de25672e369153c98f7d18616cd965ed50e160cf6248d883d7e83fefc9d",
+    "model/observer_particles/results/representation_identification.json": "3a3d05fd1b946ff96752ddd3fbc2b8939a595f16397023fe96d992f3c519094b",
+    "model/observer_particles/spin_matter_join.py": "e532cab53c049ad3f97ef89844318c88f886e4bfa5391e605e8ad8eda7fe00df",
     "Lean/Screen/FermionSectorAssembly.lean": "b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4",
     "code/a5_closure/super_tannakian_matter_lift_certificate.py": "f6f3ed3f6d9b9bcfe3fd3c23663e97cb17db512d54c06c008a41e7ef2cc6b1fa",
-    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"
+    "model/observer_particles/evidence_contract.py": "2925e22820e59c8610610ae430a42fb46460341dcb6153447d287c025b69ec4f"
   },
   "artifacts": {
     "scalar_bilinear_operators.json": "9767c463c8eb923e1de3fa10aba6523b8fa9f14615a5daf0b6ec357760787ce4"

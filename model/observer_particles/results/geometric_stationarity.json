@@ -1,48 +1,48 @@
 {
   "actual_source_first_order_mixture": {
     "all_outcomes_retained": true,
-    "analytic_first_order_energy_derivative": 1.171572875253868,
-    "analytic_first_order_entropy_derivative": 1.1715728752539742,
+    "analytic_first_order_energy_derivative": 1.1715728752538683,
+    "analytic_first_order_entropy_derivative": 1.1715728752539736,
     "complete_coin_work_CQ_entropy_derivative": 0,
     "domain": "actual public two-copy constant-angular/radial-mode code, plus two purification references and retained classical displacement sign",
     "finite_source_checks": [
       {
         "all_coin_probabilities": [
-          0.4999999999999999,
-          0.5
+          0.5,
+          0.49999999999999994
         ],
-        "energy_secant": 1.1715496775447194,
+        "energy_secant": 1.1715496775404708,
         "epsilon": 0.0001,
-        "first_order_entropy_prediction": 1.1715728752539742,
-        "full_coin_plus_work_CQ_entropy_change": -1.1102230246251565e-16,
-        "secant_derivative_error": -0.00019375191921500168,
-        "unread_work_entropy_secant": 1.1713791233347592,
+        "first_order_entropy_prediction": 1.1715728752539736,
+        "full_coin_plus_work_CQ_entropy_change": 2.220446049250313e-16,
+        "secant_derivative_error": -0.00019375192032455857,
+        "unread_work_entropy_secant": 1.171379123333649,
         "word_normalization_error": 0.0
       },
       {
         "all_coin_probabilities": [
           0.5,
-          0.49999999999999994
+          0.4999999999999999
         ],
-        "energy_secant": 1.1715705554921612,
+        "energy_secant": 1.171570555466669,
         "epsilon": 1e-05,
-        "first_order_entropy_prediction": 1.1715728752539742,
-        "full_coin_plus_work_CQ_entropy_change": 3.3306690738754696e-16,
-        "secant_derivative_error": -1.9377861799396712e-05,
-        "unread_work_entropy_secant": 1.1715534973921748,
+        "first_order_entropy_prediction": 1.1715728752539736,
+        "full_coin_plus_work_CQ_entropy_change": 2.220446049250313e-16,
+        "secant_derivative_error": -1.9377872900960824e-05,
+        "unread_work_entropy_secant": 1.1715534973810726,
         "word_normalization_error": 0.0
       },
       {
         "all_coin_probabilities": [
-          0.4999999999999998,
+          0.49999999999999967,
           0.4999999999999998
         ],
         "energy_secant": 1.171572643090958,
         "epsilon": 1e-06,
-        "first_order_entropy_prediction": 1.1715728752539742,
-        "full_coin_plus_work_CQ_entropy_change": -3.3306690738754696e-16,
-        "secant_derivative_error": -1.93765696354653e-06,
-        "unread_work_entropy_secant": 1.1715709375970107,
+        "first_order_entropy_prediction": 1.1715728752539736,
+        "full_coin_plus_work_CQ_entropy_change": 2.220446049250313e-16,
+        "secant_derivative_error": -1.937990029787784e-06,
+        "unread_work_entropy_secant": 1.1715709372639438,
         "word_normalization_error": 4.440892098500626e-16
       }
     ],
@@ -62,7 +62,7 @@
     "crossing_read_area_law": "Positive actual golden-source continuum crossing-area result under its population/read-radius/layer inputs; one nat/read and Planck calibration are declared. Not the240-port product-field source."
   },
   "artifacts": {
-    "geometric_stationarity_arrays.npz": "5ee1442800d3067b1913d20e008e24fab2844523e275b1ae20eac89304dee05b"
+    "geometric_stationarity_arrays.npz": "6bac890bed19ead79a154c0001b84e5a15892e314e971c76c09ca6f7d899b8ae"
   },
   "closure_assessment": {
     "all_OPH_dynamic_geometries_excluded": false,
@@ -1500,7 +1500,7 @@
         "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
         "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
         "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
-        "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+        "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
         "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
         "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
         "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
@@ -1553,7 +1553,7 @@
     "necessary_null_Einstein_response": "d^2R/du^2=-4 pi Newton R T_uu",
     "scope": "Necessary backreaction target obtained from an independently specified metric and matter tensor. It supplies a local response equation, not an OPH derivation of its selection or of a full solution."
   },
-  "producer_sha256": "66de93337bf4d04dba899bfa90e8c70dffa6d7dde831b9f9aacb73ab44d59b1a",
+  "producer_sha256": "34cee67ad33af3ef5bebc46707ff68047bc3fa9f103b3440f7cad4d497059246",
   "source_sha256": {
     "Lean/Geometry/CrossingReadAreaLaw.lean": "3365d62a09a25ed019ecfc2bf86e5466cd2e9ddc5891663f95204f3edbd2562a",
     "Lean/Geometry/EinsteinBranchInhabitant.lean": "43baee4e02792e7bfc6bbdb7c23553d1d7b931831b838f30eb59b136d147f569",
@@ -1638,7 +1638,7 @@
     "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/regional.py": "8a824526c3af4bddb7af151d78852eb74cbdd02ee237d56b91f209caa96a4f91",
     "model/native_quantum_history/__init__.py": "53ea847e697c4a3d1a3acc0a3baf7059b9572ce6a7f2386827ff51a263bd31ad",
@@ -1663,8 +1663,8 @@
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33",
-    "model/observer_particles/geometric_stationarity.py": "66de93337bf4d04dba899bfa90e8c70dffa6d7dde831b9f9aacb73ab44d59b1a",
+    "model/observer_particles/evidence_contract.py": "2925e22820e59c8610610ae430a42fb46460341dcb6153447d287c025b69ec4f",
+    "model/observer_particles/geometric_stationarity.py": "34cee67ad33af3ef5bebc46707ff68047bc3fa9f103b3440f7cad4d497059246",
     "model/observer_reconstruction/__init__.py": "56826b3217ce1e18df3c5dbdbcb8ba7c2482be087a68de6f14e5440bce090a0f",
     "model/observer_reconstruction/native_geometry.py": "42c8d5cb0c02789ec4ba46d79a23dd4c76bf72fd3b11c28003abc75c136b9854",
     "model/observer_time_fields/__init__.py": "4c77f1b647adcecebc812334af52150b908d09454b6056c814665647af5cafd6",

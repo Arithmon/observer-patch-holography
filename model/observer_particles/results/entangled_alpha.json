@@ -1,11 +1,11 @@
 {
   "status": "PASS_EXACT_ENTANGLED_PAIR_SPECTRAL_CANDIDATE_AND_SCOPED_NORMALIZATION_CONTROLS",
-  "producer_sha256": "64be166867a2a7e23314c0a6dfddb985db0f7a5ae207a61d3a8945b42d801f61",
+  "producer_sha256": "dcb13d0820ef14d7e68850a896a08e0648cfd9c1b9881f5da4dc90f09305a1a4",
   "source_sha256": {
-    "model/observer_particles/evidence_contract.py": "1b8b2fbb62d13e3417fb60511c4b3696a67ec6d74b673573c590b166a1449c33"
+    "model/observer_particles/evidence_contract.py": "2925e22820e59c8610610ae430a42fb46460341dcb6153447d287c025b69ec4f"
   },
   "artifacts": {
-    "entangled_alpha_operators.npz": "1ea3ba55fa166272c0e866586024ff72ba9d23c85c9d0098b7c0b2fffd50b224"
+    "entangled_alpha_operators.npz": "b0957a80d9787e9563a192eb15363e182e77543ba2e776b73b0c07c5f1253c0b"
   },
   "primary_reference": "https://alexwg.org/publications/ChainTheoryAlpha.pdf",
   "attribution": {
