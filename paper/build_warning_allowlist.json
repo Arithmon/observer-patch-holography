@@ -57,72 +57,6 @@
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
     {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L1645--1649",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "1645--1649",
-      "badness_min": 10000,
-      "badness_max": 10000,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L1649--1653",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "1649--1653",
-      "badness_min": 10000,
-      "badness_max": 10000,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L1653--1655",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "1653--1655",
-      "badness_min": 10000,
-      "badness_max": 10000,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L1655--1676",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "1655--1676",
-      "badness_min": 10000,
-      "badness_max": 10000,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L752--786",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "752--786",
-      "badness_min": 2065,
-      "badness_max": 2065,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
-      "id": "underfull::deriving_the_particle_zoo_from_observer_consistency::deriving_the_particle_zoo_from_observer_consistency.tex::L787--812",
-      "log": "deriving_the_particle_zoo_from_observer_consistency.log",
-      "source_file": "deriving_the_particle_zoo_from_observer_consistency.tex",
-      "kind": "underfull_hbox",
-      "lines": "787--812",
-      "badness_min": 1460,
-      "badness_max": 1460,
-      "max_count": 1,
-      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
-    },
-    {
       "id": "underfull::machine_checked_finite_event_algebras::machine_checked_finite_event_algebras.tex::L1066--1096",
       "log": "machine_checked_finite_event_algebras.log",
       "source_file": "machine_checked_finite_event_algebras.tex",
@@ -222,11 +156,11 @@
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
     {
-      "id": "underfull::observers_are_all_you_need::observers_are_all_you_need.tex::L4441--4442",
+      "id": "underfull::observers_are_all_you_need::observers_are_all_you_need.tex::L4442--4443",
       "log": "observers_are_all_you_need.log",
       "source_file": "observers_are_all_you_need.tex",
       "kind": "underfull_hbox",
-      "lines": "4441--4442",
+      "lines": "4442--4443",
       "badness_min": 6445,
       "badness_max": 6445,
       "max_count": 1,

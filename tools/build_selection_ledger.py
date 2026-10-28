@@ -595,7 +595,7 @@ def render(rows: list[dict]) -> str:
     )
     lines.append(
         "and source discharge, scoped under the historical lane #739, is owned by"
-        " [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)."
+        " [#1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134)."
     )
     lines.append("")
 

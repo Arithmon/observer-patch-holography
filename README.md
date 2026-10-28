@@ -31,6 +31,39 @@ rule, the agreement condition and the executable specification; the
 [working terms](docs/INTERPRETATION_AND_TERMS.md) explain the timeless view
 and the clocks inside it.
 
+## The executable completion program
+
+The concrete hypothesis is that one simple local repair and memory law on
+the proposed carrier architecture supports continuing observers whose
+records have the observed interacting 3+1-dimensional field description,
+and whose common matter, clocks and geometry realize the Einstein premises.
+The preferred matter mechanism is localized topological defects, with excess
+maintenance dynamics determining the same rest energy measured in propagation
+and gravitational stress. Stable matter, unstable excitations and massless
+modes need their own explicit identification in this same process.
+
+The [hypothesis and physical qualifications](docs/OPH_EXECUTABLE_HYPOTHESIS.md)
+state the target: a massless photon makes the full theory gapless; modular
+flow needs a physical clock map; and a conditional Einstein theorem needs
+its premises realized. These are proposed outcomes, not results of the
+current implementation. Closure alone does not guarantee this particular law.
+
+The [completion program and dependency DAG](docs/COMPLETION_PROGRAM.md)
+organize the next work into gates with acceptance evidence, obstruction
+scope and stopping rules. The first gate freezes the allowed program class;
+a universal obstruction or an exclusive empirical contradiction can stop
+that entire class. A candidate failure cannot be promoted to that verdict
+without the coverage proof. The generated
+[postdiction ledger](docs/POSTDICTION_LEDGER.md) tracks this target alongside
+the separate retained results.
+
+This program builds on the existing modular-clock candidate, native
+rank-three response geometry and conditional 3+1 field construction. Their
+[retained foundations and remaining joins](docs/COMPLETION_PROGRAM.md#existing-foundations-to-extend)
+are tracked explicitly. A theorem-integration gate maps the finite results
+to the actual model, assigns proofs of their premises and curates unneeded
+branches out of the active path.
+
 ## Highlights
 
 - **An observer that runs.** A twelve-port observer retains its records and

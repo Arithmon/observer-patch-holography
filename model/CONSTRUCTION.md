@@ -1,5 +1,12 @@
 # OPH model construction from local repair
 
+The [executable-model hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md) is the
+common physical target. The [completion DAG](../docs/COMPLETION_PROGRAM.md)
+orders its construction gates, acceptance evidence and scoped stopping rules.
+One declared repair/memory process must supply the clocks, particle/energy
+interpretation and gravitational premises together; separate successful
+benchmarks do not discharge that joint requirement.
+
 The [matter and common-field construction](observer_particles/DERIVATION.md)
 connects the native response matrices to a conditional fifteen-state internal
 matter representation, one-Higgs interaction tensors and compatible scalar,
@@ -72,6 +79,18 @@ constructing it. A complete physical model additionally needs compatible
 physical identifications and tests on the same process.
 
 ## Completion target and acceptance criteria
+
+The concrete hypothesis prioritizes localized native defects for stable
+massive matter and a derived maintenance-to-rest-energy map. Unstable and
+massless excitations need their own same-process dynamics. The full theory
+with a massless photon has no strictly positive global vacuum mass gap;
+massive-sector thresholds and pure Yang--Mills gap statements have their
+own domains. Modular parameters require reference states and physical clock
+calibration. Coarse-scale gravity requires the same construction to realize
+G1--G6, including geometric generalized-entropy stationarity and conserved
+matter stress. These are acceptance obligations, not premises
+discharged by running the current C/E code. See the
+[common hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md).
 
 **Build an executable realization of the OPH observer algebra whose
 compatible inter-observer measurements reproduce the observed Universe.**
@@ -1861,13 +1880,15 @@ GitHub issues own tasks; the [claim registry](../claims/claim_registry.yaml)
 owns established claim scope; [PREMISES.md](PREMISES.md) is generated
 navigation, not a proof that every theorem antecedent has been discharged.
 
-The connected responsibilities are [common construction #1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026),
-[shared repair law #1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076),
-[complete source history #1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077),
-[physical tests #1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
-[correctness #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
-and [obstructions #1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
-They are parallel responsibilities, not twelve sequential completion hurdles.
+The [completion program #1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134)
+and its [dependency DAG](../docs/COMPLETION_PROGRAM.md) own the linked
+construction gates, including theorem/model integration and active-library
+triage. Earlier coordination issues #1025, #1026, #1076 and #1077 are
+superseded; their evidence and unfinished benchmark contracts are retained.
+[Correctness #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
+and the [broad obstruction search #1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+remain ongoing. Some research branches can proceed in parallel; acceptance
+of a joined result requires its mapped predecessors.
 Finite results retain their stated validity unless evidence invalidates
 them; larger claims add declared requirements. A negative result rejects its stated family.
 

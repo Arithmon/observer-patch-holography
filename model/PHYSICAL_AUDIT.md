@@ -1,5 +1,12 @@
 # Physical interpretation of the executable model
 
+The [executable hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md) states the
+common target; the [completion program](../docs/COMPLETION_PROGRAM.md) turns
+the missing joins into ordered gates. Assessment must preserve the same
+law, state/reference, observer access, clock, energy and refinement domain
+across matter and gravity. A rejection applies to the tested candidate or
+proved program class, with the scope and coverage recorded explicitly.
+
 The [matter and geometry witnesses](observer_particles/README.md) give exact
 internal charge decoding and one-Higgs invariant tensors, conditional shared
 spatial operators, a common pointwise metric dictionary and native entropy

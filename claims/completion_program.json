@@ -1,0 +1,577 @@
+{
+  "schema": "oph.completion_program.v1",
+  "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-28",
+  "status": "PLANNED_NOT_COMPLETED",
+  "boundary_status": "NOT_FROZEN",
+  "hypothesis": "claims/executable_model_hypothesis.json",
+  "umbrella_issue": 1134,
+  "scope": "One native repair/memory construction realizing the requested field, particle and coarse-scale gravity target; full-Universe/internal-closure claims require their additional explicit obligations.",
+  "decision": "NOT_DECIDED",
+  "whole_program_falsified": false,
+  "decision_evidence": [],
+  "state_policy": "Issue closure alone is not scientific acceptance. A gate requires source-bound acceptance evidence and accepted predecessors. Existing component successes do not mark these integrated gates complete.",
+  "stop_policy": "Freeze the allowed program class in CP-00; CP-12 owns coverage and stopping decisions. Logical inconsistency, universal joint-realization exclusion or an unavoidable empirical contradiction can reject that entire class. Scope changes create a new program version; budget/value stops are not falsification.",
+  "legacy_issue_policy": "Issues #1025, #1026, #1076 and #1077 are superseded by the new completion owners and closed as not planned, not as scientifically completed. Their evidence and unfinished contracts remain linked. The ongoing audit #1033 and broad obstruction search #1078 stay open.",
+  "foundations": [
+    {
+      "id": "F-01",
+      "title": "Native rank-three slow response and intrinsic carrier geometry",
+      "claim_id": "OPH-GR-PORT-RESPONSE-COMPLETION",
+      "achieved": "The uniform native repair mean selects a normalized rank-three Gram band; exact quotient, proper-action and completion results connect it to the carrier response and signed records.",
+      "boundary": "This is a response/metric result, not a physical position or a complete 3+1 field theory. Finite nonconstant modes remain; the limiting normalization and calibration schedule matter.",
+      "supports": [
+        "CP-03",
+        "CP-08",
+        "CP-13"
+      ],
+      "evidence": [
+        "model/common_source/SLOW_GEOMETRY.md",
+        "model/common_source/native_fields_results.json",
+        "Lean/Screen/PortGramRepairBand.lean"
+      ]
+    },
+    {
+      "id": "F-02",
+      "title": "Candidate observer clocks with an implemented modular-flow relation",
+      "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+      "achieved": "Finite faithful-reference preparation and active modular histories provide continuing clock/readout constructions. On the declared Gibbs product branch, modular flow equals the rescaled Hamiltonian flow and clocked field measurements share that reference.",
+      "boundary": "Reference/access choice, compiled controls and branch-specific clock conversion remain explicit. Passive repair, every regional modular flow and a physical laboratory duration are not thereby identified.",
+      "supports": [
+        "CP-02",
+        "CP-04",
+        "CP-09"
+      ],
+      "evidence": [
+        "model/native_modular_reference/results.json",
+        "model/observer_time_fields/README.md",
+        "model/observer_time_fields/continuum_dynamics.py"
+      ]
+    },
+    {
+      "id": "F-03",
+      "title": "Common native field generator and conditional 3+1 Lorentzian field readout",
+      "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
+      "achieved": "The refining native screen has a common positive continuum operator. A declared radial product builds on that response structure and supports one smooth static 1+3 scalar description of finite admissible joint clock, field and response menus at any positive tolerance.",
+      "boundary": "The native screen has spectral dimension two. Rank three of the local slow band alone does not derive three spatial field dimensions; radial interval/filter, encoded fields, action, active controls and units retain their stated inputs. The claim is conditional and does not supply the Standard Model continuum.",
+      "supports": [
+        "CP-06",
+        "CP-08",
+        "CP-13"
+      ],
+      "evidence": [
+        "model/CONSTRUCTION.md",
+        "model/relative_observer_geometry/README.md",
+        "model/observer_time_fields/continuum_dynamics.py"
+      ]
+    },
+    {
+      "id": "F-04",
+      "title": "Interacting field projections and same-reference modular measurement histories",
+      "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "achieved": "A finite coupled matter/link/scalar source and a separate same-product quartic projection execute complete quantum records and feedback, with occupation bounds and declared Gibbs/modular readout histories.",
+      "boundary": "The supplied actions, projected spatial modes, coupling, temperature and access services keep their own contracts. These constructions are reusable interaction and observation machinery, not a single source-derived chiral Standard Model.",
+      "supports": [
+        "CP-01",
+        "CP-04",
+        "CP-06"
+      ],
+      "evidence": [
+        "model/common_source/results.json",
+        "model/common_source/thermal_results.json",
+        "model/interacting_band_extension/results.json"
+      ]
+    },
+    {
+      "id": "F-05",
+      "title": "Finite conditional Einstein tensor-completion kernel",
+      "claim_id": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
+      "achieved": "The finite theorem chain composes the stated null-balance and conservation premises into the Einstein tensor relation up to the metric term; source-direction tomography supplies a finite completeness witness on its stated carrier.",
+      "boundary": "One source tower realizing the geometric modular/stress/entropy and scale hypotheses remains required. Proving this implication does not establish physical gravity or a quantum graviton.",
+      "supports": [
+        "CP-09",
+        "CP-10",
+        "CP-13"
+      ],
+      "evidence": [
+        "Lean/Geometry/EinsteinTensorBridge.lean",
+        "model/common_source/null_tomography.py",
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "CP-00",
+      "title": "Freeze the executable program class and decision contract",
+      "requires": [],
+      "obligations": [
+        "EMH-1",
+        "EMH-2",
+        "EMH-3",
+        "EMH-4",
+        "EMH-5"
+      ],
+      "status": "OPEN",
+      "issue": 1135,
+      "deliverable": "A versioned, content-bound class of admissible carrier/refinement, repair and memory laws, record instruments, resources, preparations, clocks and interpretation maps; one target and exposure record fixed before validation.",
+      "acceptance": [
+        "Distinguish fixed C/E law, permitted quantum record implementations and any explicitly bounded alternative-law family; enumerate what may vary and why.",
+        "Declare observable domains, Standard Model/neutrino and gravity targets, allowed calibrations, P/N ancestry, uncertainty, prediction rules, computational budgets and success/stop thresholds.",
+        "Provide the actual source interface and resource boundary; separate the first field/particle/gravity milestone from unfulfilled full-Universe and internal-closure obligations.",
+        "Bind all retained failures and prior empirical exposure. Record a new program version for any later change of mandatory premises or admissible class."
+      ],
+      "obstruction": "If the declared class is empty or jointly inconsistent, prove that exclusion. An unbounded unspecified escape class makes a whole-program no-go unarmed; an unfinished freeze is not confirmation or falsification.",
+      "evidence": [
+        "model/CANDIDATES.md",
+        "model/CONSTRUCTION.md",
+        "docs/INTERPRETATION_AND_TERMS.md"
+      ],
+      "legacy_issues": [
+        1076,
+        1078,
+        1026
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-01",
+      "title": "Execute one continuing native observer with accounted resources",
+      "requires": [
+        "CP-00"
+      ],
+      "obligations": [
+        "EMH-1",
+        "EMH-2"
+      ],
+      "status": "OPEN",
+      "issue": 1136,
+      "deliverable": "One replayable native repair/memory process that prepares, acts, reads, retains records and continues on overlapping accessible regions, with every service and failure branch accounted.",
+      "acceptance": [
+        "Use the frozen carrier, complete record instruments and law; specify state, controls, scheduler and memory update before testing.",
+        "Construct or explicitly count coherent resources, ancillas, initialization, read/write, retention, feedback, timeout and recovery services; do not hide supplied fields or clocks.",
+        "Verify complete classical/quantum outputs including untouched references, interventions, failures and continuation; give the declared growth/refinement and resource bounds.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion.",
+        "Retain the original #1077 q=3 common-code scalar preparation/history as unexecuted, with its mathematical/resource bounds. Complete it if adopted, or explicitly retire it from the active program through CP-00/CP-13 without relabeling it executed or obstructed."
+      ],
+      "obstruction": "A source-access, coherence, retention or resource impossibility rejects the tested implementation class. Escalate to the whole frozen program only if CP-12 proves that every admitted implementation is covered.",
+      "evidence": [
+        "model/observer/README.md",
+        "model/common_source/DERIVATION.md",
+        "model/native_interface/README.md"
+      ],
+      "legacy_issues": [
+        1077,
+        1076,
+        1026
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-13",
+      "title": "Integrate finite theorems and curate the active proof chain",
+      "requires": [
+        "CP-00",
+        "CP-01"
+      ],
+      "obligations": [
+        "EMH-1",
+        "EMH-2",
+        "EMH-3",
+        "EMH-4"
+      ],
+      "status": "OPEN",
+      "issue": 1137,
+      "deliverable": "A theorem-to-model integration and relevance review in the existing premise map: each result needed by the completion chain has an owning gate and an explicit model-premise proof obligation; irrelevant branches leave the active path.",
+      "acceptance": [
+        "Start from the existing theorem guides, claim registry and model premise map; inspect actual statements, domains, quantifiers and proof dependencies rather than matching names or abstract dimensions.",
+        "For each required theorem specify its native state/algebra/operation/clock/refinement interface and which gate must prove every premise on the same process. Compatibility must be specified independently of the update; distinguish runtime/source checks from mathematical entailment.",
+        "Classify results as realized on the claimed domain, required but conditional, alternative-branch, redundant, irrelevant to this completion target, or needing correction. Preserve a model counterexample or verified witness for exclusions and claimed instantiations.",
+        "Remove redundant/irrelevant results from active derivation and headline routes. Archive/deprecate with provenance when appropriate; delete only after caller/import, claim, receipt and publication checks. Correct false statements openly and preserve frozen evidence.",
+        "Gate acceptance here establishes the reviewed map and cleanup, not discharge of future physical premises. The owning construction gates must later prove and bind their assigned premises before invoking each theorem."
+      ],
+      "obstruction": "A required premise combination with no admissible common realization routes to CP-12. An unused theorem is not a no-go; a false theorem refutes its statement, and becomes a whole-program obstruction only if indispensable premises or every allowed realization are thereby excluded.",
+      "evidence": [
+        "model/PREMISES.md",
+        "tracking/premise_register.json",
+        "claims/claim_registry.yaml",
+        "Lean/README.md"
+      ],
+      "legacy_issues": [
+        1033,
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-02",
+      "title": "Construct the continuing regime, faithful reference and local modular clocks",
+      "requires": [
+        "CP-01",
+        "CP-13"
+      ],
+      "obligations": [
+        "EMH-1"
+      ],
+      "status": "OPEN",
+      "issue": 1138,
+      "deliverable": "A same-process reference/state regime, observer algebras and implemented modular histories with compatible local clock and energy normalization maps.",
+      "acceptance": [
+        "Exhibit reference preparation, support/faithfulness, continuing regime, accessible algebras and regional compatibility.",
+        "Distinguish passive repair, dimensionless modular flow, event counts and physical duration; retain tracial-reference and compressed-algebra controls.",
+        "Derive local clock comparisons and the common normalization used by energy and propagation; preserve full records, disturbance and resource errors.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "Prove whether the frozen preparation/access grammar forces trivial modular action, incompatible regional flows or no admissible physical clock map. A failed chosen reference alone is a candidate obstruction.",
+      "evidence": [
+        "model/native_modular_reference/README.md",
+        "model/common_source/THERMAL_CLOCK.md",
+        "model/common_source/modular_covariance.py"
+      ],
+      "legacy_issues": [
+        1077,
+        1026
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-03",
+      "title": "Exhibit a localized native defect and its protecting invariant",
+      "requires": [
+        "CP-01",
+        "CP-13"
+      ],
+      "obligations": [
+        "EMH-3"
+      ],
+      "status": "OPEN",
+      "issue": 1139,
+      "deliverable": "An actual native state/observable sector with a localized core, reference-like exterior and a boundary charge invariant under the full admitted repair law.",
+      "acceptance": [
+        "Define the configuration or quantum/history sector, boundary transport, deformation class and invariant independently of a target mass.",
+        "Prove autonomous protection or a controlled lifetime with all seams and branches retained; disclose active recovery and finite-size assumptions.",
+        "Retain the exact transient-collision and irreducible classical-shell controls. Check quantum and record sectors separately before making a universal exclusion.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "An exhaustive invariant/localization no-go over every sector and allowed refinement in the frozen defect class stops that mechanism. The existing classical and collision-subspace exclusions do not exhaust arbitrary quantum/history sectors.",
+      "evidence": [
+        "model/common_source/native_defect_decision.py",
+        "model/common_source/native_defect_decision_results.json",
+        "docs/research/OPH_FIELD_RECONSTRUCTION.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-04",
+      "title": "Derive common defect maintenance energy, kinetics and conserved stress",
+      "requires": [
+        "CP-02",
+        "CP-03"
+      ],
+      "obligations": [
+        "EMH-1",
+        "EMH-3",
+        "EMH-4"
+      ],
+      "status": "OPEN",
+      "issue": 1140,
+      "deliverable": "One intrinsic action/energy and kinetic response for the same defect, with reference subtraction, clock normalization and an independently justified stress/Ward identity.",
+      "acceptance": [
+        "Derive rather than fit how defect maintenance changes rest energy; distinguish action, energy, entropy production, event counts and host work.",
+        "Extract energy and kinetic terms from one process; test moving/rest responses with a common signal speed and no species-dependent conversion.",
+        "Supply interaction energy accounting, reference/cutoff dependence and the stress/conservation map that gravity will consume.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "A proved inability to define a common positive physical energy/kinetic/stress dictionary in the frozen class, or a mandatory incompatibility between maintenance and propagation, is an obstruction; a scalar code cost or failed ansatz is narrower.",
+      "evidence": [
+        "model/common_source/particle_identification/kinetic_response.py",
+        "model/common_source/native_defect_decision.py",
+        "docs/research/OPH_FIELD_RECONSTRUCTION.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-05",
+      "title": "Transport the same defects and derive particle identity and currents",
+      "requires": [
+        "CP-03",
+        "CP-04"
+      ],
+      "obligations": [
+        "EMH-3",
+        "EMH-2"
+      ],
+      "status": "OPEN",
+      "issue": 1141,
+      "deliverable": "The same native excitations carry charges, spin/statistics, family structure, gauge-current couplings and allowed creation, fusion, annihilation and decay.",
+      "acceptance": [
+        "Construct actual transport and charge conservation on the native state/process, with leakage and recovery bounds.",
+        "Show the physical accessible current content and matter lift, including extra modes and chirality; do not identify equivalent internal and spatial representations by name alone.",
+        "Distinguish stable defects, metastable/internal excitations and massless collective/transport modes; derive their observable and interaction maps on one law.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "Incompatible required charge/spin/statistics/current/transport structures exclude the covered defect realization. A 17-versus-12 response mismatch excludes its grammar, not every admissible current law.",
+      "evidence": [
+        "model/common_source/native_gauge_object.py",
+        "model/common_source/native_sm_current.py",
+        "model/common_source/native_matter_attachment.py",
+        "model/observer_particles/DERIVATION.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-06",
+      "title": "Obtain one interacting chiral 3+1 field description from native records",
+      "requires": [
+        "CP-02",
+        "CP-04",
+        "CP-05"
+      ],
+      "obligations": [
+        "EMH-2",
+        "EMH-3"
+      ],
+      "status": "OPEN",
+      "issue": 1142,
+      "deliverable": "A refining same-process observation law with a nontrivial interacting chiral 3+1-dimensional effective field description and controlled detector/intervention correspondence.",
+      "acceptance": [
+        "Prove the declared continuum or effective-domain comparison for complete observable laws, with locality, quantum correlations, positivity/unitarity and controlled errors.",
+        "Retain every taste, chirality, dark mode and residue until a derived decoupling/removal map is supplied; obtain kinetic, Higgs and current responses jointly.",
+        "Keep the full photon-containing theory gapless; state separate massive thresholds, confinement observables, infrared and resonance conventions, and any pure Yang--Mills gap domain.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "A covered chirality, locality, positivity, continuum or interaction no-go stops the frozen realization class. A supplied scalar product, finite free symbol or pole list alone does not pass this gate.",
+      "evidence": [
+        "model/common_source/chiral_candidate/record_two_point.py",
+        "model/observer_particles/spectral_response.py",
+        "model/CONSTRUCTION.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-07",
+      "title": "Freeze the physical dictionary and derive the matched particle spectrum",
+      "requires": [
+        "CP-06"
+      ],
+      "obligations": [
+        "EMH-3",
+        "EMH-5"
+      ],
+      "status": "OPEN",
+      "issue": 1143,
+      "deliverable": "A source-selected spectrum, mixing and interaction packet in compatible physical conventions, using the same defects, energy, kinetics and observer clocks.",
+      "acceptance": [
+        "Bind source/law/decoder revisions, empirical ancestry, matching scheme and scale, all inputs, covariance, theory uncertainty and trial count before the eligible comparison.",
+        "Derive the charged benchmark of nine running Yukawas and four CKM parameters together; specify neutrino and unstable/confined-sector obligations without calling charged-sector closure complete.",
+        "Test reference, regulator and volume dependence and common physical units; retain calibration controls and all failed mechanisms without assembling a spectrum from separate benchmarks.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "A wrong unavoidable matched spectrum with an independently justified error budget rejects the fixed candidate, and the whole class only if all permitted nuisance/source choices are excluded. Known-data calibration alone is not independent validation.",
+      "evidence": [
+        "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
+        "code/particles/ledger.yaml",
+        "docs/POSTDICTION_LEDGER.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1025
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-08",
+      "title": "Construct responsive geometry and causal clocks on the same source",
+      "requires": [
+        "CP-02",
+        "CP-04"
+      ],
+      "obligations": [
+        "EMH-4"
+      ],
+      "status": "OPEN",
+      "issue": 1144,
+      "deliverable": "A common source-derived effective event, causal and geometry dictionary that responds to the same matter/energy perturbations and admits the required refinement.",
+      "acceptance": [
+        "Construct the effective Lorentzian domain, compatible observer directions, local clock comparisons and count/volume/length maps with controlled errors.",
+        "Derive geometry response to admitted matter changes rather than supplying a static metric or an independent fitted gravitational source.",
+        "Retain the static radial-product null-balance failure and distinguish finite rank-three carrier geometry from physical 3+1 event geometry.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is a scoped control, not a universal gravity no-go.",
+      "evidence": [
+        "model/PHYSICAL_AUDIT.md",
+        "model/physical_space_time/README.md",
+        "paper/tex_fragments/COMMON_MATTER_METRIC_AND_RESPONSE.tex"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-09",
+      "title": "Realize the joint modular, stress and entropy premises G1--G6",
+      "requires": [
+        "CP-06",
+        "CP-08"
+      ],
+      "obligations": [
+        "EMH-4"
+      ],
+      "status": "OPEN",
+      "issue": 1145,
+      "deliverable": "A premise-by-premise same-tower witness for geometric modular flow, common conserved stress, entropy/area normalization and fixed-proper-volume generalized-entropy stationarity.",
+      "acceptance": [
+        "Bind G1--G6 to the actual common state, law, algebras, geometry, matter stress, observer clocks and refinement maps.",
+        "Derive the edge-center entropy split, modular first law, positive Newton normalization and geometric/state variation with controlled small-ball remainders and enough directions.",
+        "Show the relevant joint stationarity, beyond a stationary Markov law, Gibbs reference or conditional Shannon entropy; retain native entropy and bare-area negative controls.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "Prove that a necessary entropy sign, modular/stress normalization or stationarity variation is incompatible across all allowed same-process realizations before promoting a no-go. An unmet theorem premise is an open gate, not a theorem failure.",
+      "evidence": [
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+        "flagship/from_observer_consensus_to_standard_physics.tex",
+        "model/PHYSICAL_AUDIT.md"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-10",
+      "title": "Compose the realized Einstein response with matter and clock readouts",
+      "requires": [
+        "CP-09"
+      ],
+      "obligations": [
+        "EMH-4"
+      ],
+      "status": "OPEN",
+      "issue": 1146,
+      "deliverable": "A common matter/geometry model that actually instantiates null balance and tensor completion and predicts its coupled coarse-scale gravitational response.",
+      "acceptance": [
+        "Apply the existing conditional Einstein theorem with a checked map for every premise; do not replace the missing realization by reproving the tensor identity.",
+        "Obtain the Einstein equation up to its cosmological term, one positive Newton constant and universal coupling of the same defect maintenance energy/stress.",
+        "Propagate finite/refinement errors into gravitational observations. Keep a possible quantum spin-two graviton separate from the classical theorem and Standard Model content.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "A genuine counterexample satisfying every theorem premise refutes the affected implication. A necessary failure of joint gravitational response can exclude the frozen program only with CP-12 coverage of the admissible class.",
+      "evidence": [
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+        "flagship/from_observer_consensus_to_standard_physics.tex"
+      ],
+      "legacy_issues": [
+        1026,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-11",
+      "title": "Run joint independent physical tests and decide the completion milestone",
+      "requires": [
+        "CP-07",
+        "CP-10"
+      ],
+      "obligations": [
+        "EMH-5"
+      ],
+      "status": "OPEN",
+      "issue": 1147,
+      "deliverable": "One frozen physical dictionary survives independent field, particle and gravity observations over its declared regime, or receives a scoped rejection.",
+      "acceptance": [
+        "Compare complete joint/conditional laws and intervention responses, not an aggregate of separate fitted observables; preserve all calibration and exposure ancestry.",
+        "Use predeclared rejection rules, eligible data, nuisance ranges, covariance and physical theory errors; report discrepancies and distinguishing alternatives.",
+        "State exactly which completion obligations are met and which broader cosmological, quantum-gravity or internal-closure obligations remain. No simulated output counts as a new physical confirmation.",
+        "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion."
+      ],
+      "obstruction": "Reject the fixed formulation when its unavoidable prediction fails a valid frozen comparison. A whole-class empirical exclusion requires every admitted realization/nuisance choice to fail; a resource stop is a separate research decision.",
+      "evidence": [
+        "docs/OPH_FALSIFICATION_PROGRAM.md",
+        "docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md",
+        "docs/FROZEN_PREDICTION_LADDER.md"
+      ],
+      "legacy_issues": [
+        1025,
+        1078
+      ],
+      "accepted_evidence": []
+    },
+    {
+      "id": "CP-12",
+      "title": "Audit obstructions and apply candidate, class and program stopping rules",
+      "requires": [
+        "CP-00"
+      ],
+      "obligations": [
+        "EMH-1",
+        "EMH-2",
+        "EMH-3",
+        "EMH-4",
+        "EMH-5"
+      ],
+      "status": "OPEN",
+      "issue": 1148,
+      "deliverable": "A continuing obstruction review across every gate, with exact scope, class coverage, independent checks and an explicit stop/continue verdict. The broad obstruction search #1078 remains open and owns that continuing research; this gate applies its scoped evidence to the new program decisions.",
+      "acceptance": [
+        "For every exclusion record target version, mandatory premises, quantified class, evidence, independently checked coverage, surviving escape routes and consequence.",
+        "Promote to whole-program falsification only for a verified contradiction in indispensable premises, a proof excluding every frozen realization of a required join, or an unavoidable independently excluded prediction.",
+        "Keep mathematical theorem error, candidate failure, class no-go, empirical rejection, inconclusive search and budget/value stop distinct. Changing the class starts a new program version and retains the original verdict.",
+        "Run in parallel once CP-00 is fixed; reject circular mappings, hidden supplied services and combinations of incompatible benchmark branches throughout the DAG."
+      ],
+      "obstruction": "The current program has no universal falsification verdict. No-go coverage must quantify over the frozen class; a finite unsuccessful search, open map or exhausted budget supplies no impossibility proof.",
+      "evidence": [
+        "docs/OPH_FALSIFICATION_PROGRAM.md",
+        "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
+        "model/common_source/native_defect_decision_results.json"
+      ],
+      "legacy_issues": [
+        1078,
+        1033
+      ],
+      "accepted_evidence": []
+    }
+  ],
+  "continuing_issues": {
+    "audit": 1033,
+    "broad_obstruction_search": 1078
+  },
+  "superseded_issues": [
+    {
+      "issue": 1026,
+      "owner": 1134
+    },
+    {
+      "issue": 1076,
+      "owner": 1135
+    },
+    {
+      "issue": 1077,
+      "owner": 1136
+    },
+    {
+      "issue": 1025,
+      "owner": 1147
+    }
+  ]
+}

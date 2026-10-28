@@ -1,5 +1,13 @@
 # OPH Falsification Program
 
+The [executable completion program](COMPLETION_PROGRAM.md) and
+[hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) define the new construction
+target and its dependency gates. CP-12 applies scoped stopping rules to that
+program; the broad obstruction search #1078 and ongoing audit #1033 remain
+open. A whole-program exclusion requires a fixed quantified class and
+coverage of every admitted realization. The mature claim/branch falsifiers
+below keep their existing scope and custody.
+
 ## Scope
 
 This program covers completed, non-cosmological OPH claim surfaces with stable
@@ -221,8 +229,8 @@ receipt set used to establish its premises. The machine-readable row mapping is
 the current claim status is in
 [`claims/claim_registry.yaml`](../claims/claim_registry.yaml). Open physical
 maps are tracked on the open physics issues
-[#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
-[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) and
+[#1147](https://github.com/FloatingPragma/observer-patch-holography/issues/1147),
+[#1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134) and
 [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078). A result on an
 ineligible surface is evidence for or against that continuation only; it is not
 silently promoted into this program.
@@ -235,8 +243,8 @@ same convention. Missing hypotheses yield no verdict. Counterexamples remain
 scoped to the stated claim and do not transfer to independent theorem rows.
 
 Current work ownership and unclosed maps are recorded on the open physics
-issues [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
-[#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)
+issues [#1147](https://github.com/FloatingPragma/observer-patch-holography/issues/1147),
+[#1134](https://github.com/FloatingPragma/observer-patch-holography/issues/1134)
 and [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 Scientific claim boundaries are recorded in the owner papers and the
 machine-readable claim registry.

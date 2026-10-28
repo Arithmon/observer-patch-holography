@@ -45,6 +45,7 @@ from typing import Any
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS.parents[2] / "tools"))
 from closed_lanes import live_owners, owner_text  # noqa: E402
+from build_completion_program import ledger_view as completion_program_view  # noqa: E402
 PARTICLES = SCRIPTS.parent
 CODE = PARTICLES.parent
 REPO = CODE.parent
@@ -2893,7 +2894,7 @@ def _forced_structure(
                 "only that naive architecture; a support-aware extended "
                 "divergence, pinching Pythagoras, constrained maximum entropy, "
                 "and the publicization information chain are not constructed. "
-                "Historical lane #730 (closed; live owner #1026) records those quantum-composition "
+                "Historical lane #730 (closed; live owner #1134) records those quantum-composition "
                 "obligations; #739 records any residual premise-discharge "
                 "obligation. "
                 "No source rule selects that partition, a state, an observable, "
@@ -2970,7 +2971,7 @@ def _forced_structure(
                 "control, or laboratory readout. It removes no registered "
                 "premise: PR-20, PR-21, and PR-22 remain declared inputs, "
                 "while PR-53 and PR-54 name missing attachments. "
-                "Historical lane #733 (closed; live owner #1026) records those obligations. This row "
+                "Historical lane #733 (closed; live owner #1134) records those obligations. This row "
                 "emits no frozen prediction"
             ),
             "paper_ref": (
@@ -3037,7 +3038,7 @@ def _forced_structure(
                 "system evolution, and finite-time operational protocols "
                 "unresolved by this result. It constructs no wave operator, S-matrix, cross "
                 "section, pole, optical theorem, renormalization flow, or "
-                "continuum QFT. Historical lane #743 (closed; live owner #1026) records those interacting-QFT, "
+                "continuum QFT. Historical lane #743 (closed; live owner #1134) records those interacting-QFT, "
                 "renormalization, and scattering obligations. This row emits "
                 "no frozen prediction"
             ),
@@ -4475,10 +4476,10 @@ def _forced_structure(
                 "couples both pair paths, counted states, checkpoints, and "
                 "adjacent-step marginals on one carrier, but supplies no "
                 "regional-net or tower morphism; neither packet is a "
-                "nonconstant source realization. Historical lane #728 (closed; live owner #1026) "
+                "nonconstant source realization. Historical lane #728 (closed; live owner #1134) "
                 "records the missing source-attached or otherwise justified "
                 "regional construction and a nonconstant source composition; "
-                "historical lane #739 (closed; live owner #1026) records a "
+                "historical lane #739 (closed; live owner #1134) records a "
                 "missing source realization or genuinely scoped no-go. "
                 "No CP/CPTP channel, scheduler locality, spacetime causality, "
                 "time-slice property, continuum QFT, observable, decision rule, "
@@ -4955,8 +4956,8 @@ def _forced_structure(
                 "typed convention. The full-effect theorem applies only "
                 "after full coexistent-effect additivity is supplied. No physical "
                 "Born derivation, observable, or prediction is emitted. "
-                "Historical lane #730 (closed; live owner #1026) records the missing source-earned phase instrument, operational "
-                "additivity, and public readback; historical lane #739 (closed; live owner #1026) records the "
+                "Historical lane #730 (closed; live owner #1134) records the missing source-earned phase instrument, operational "
+                "additivity, and public readback; historical lane #739 (closed; live owner #1134) records the "
                 "remaining affinity-principle obligation"
             ),
             "paper_ref": "observers paper, finite Born-frame rank audit",
@@ -5141,7 +5142,7 @@ def _forced_structure(
                 "idempotent heat bath and a deterministic empirical pushforward. "
                 "It does not exclude stochastic, nonlinear, reverse-direction, "
                 "dilated, or enriched-source constructions. Historical lane #739 "
-                "(closed; live owner #1026) records the missing replacement common reference, collar, "
+                "(closed; live owner #1134) records the missing replacement common reference, collar, "
                 "objective, genuinely varying refinement family, source-clock "
                 "derivation, and repair-export decision; empirical energy-clock "
                 "calibration is PR-15. Closed #732 records only the attained "
@@ -5259,7 +5260,7 @@ def _forced_structure(
                 "record has persistent correlation. This is no native "
                 "source attachment and does not overturn the historical "
                 "idempotent-projector obstruction. Historical lanes #728, #729, "
-                "and #739 (closed; live owner #1026), and #737 (closed; live owner #1077) "
+                "and #739 (closed; live owner #1134), and #737 (closed; live owner #1136) "
                 "record the missing source "
                 "evolution, physical equilibrium reference and conserved quantity, "
                 "source-realized geometry, instrumentation, and source clock; "
@@ -5346,12 +5347,12 @@ def _forced_structure(
                 "current, update order, and charge have no physical identity. "
                 "The guarded WardLimitManifest derives zero limiting residual "
                 "from exact finite-residual vanishing and convergence on a "
-                "shrinking scale with separating tests. Historical lane #729 (closed; live owner #1026) "
+                "shrinking scale with separating tests. Historical lane #729 (closed; live owner #1134) "
                 "records the obligation to define "
                 "that residual from finite continuity, identify it with physical "
                 "distributional divergence, and supply the source, transport, "
                 "chart, and common-tower evidence before continuum Ward use; "
-                "historical lane #737 (closed; live owner #1077) records the missing instrument attachment, "
+                "historical lane #737 (closed; live owner #1136) records the missing instrument attachment, "
                 "and #739 records deferred premise discharge"
             ),
             "paper_ref": "screen-microphysics paper, finite conservation bridge",
@@ -5415,15 +5416,15 @@ def _forced_structure(
                 "on a declared Cartesian slot. The later 86/247 capstone grounds "
                 "fully disjoint source supports and the exact counted correlated "
                 "state with its marginals, while its erasure theorem proves that "
-                "coverage cannot reconstruct that state. Historical lane #728 (closed; live owner #1026) "
+                "coverage cannot reconstruct that state. Historical lane #728 (closed; live owner #1134) "
                 "records the missing source-attached or otherwise justified "
                 "factor reading and nonconstant source composition; historical lane #739 "
-                "(closed; live owner #1026) records the residual source "
+                "(closed; live owner #1134) records the residual source "
                 "realization or no-go. The missing source channel/adaptive-scheduler semantics "
                 "were recorded under the historical lane #728, physical clocks under #739, "
                 "physical spacetime attachment under #729, instrumentation under #737, and "
                 "continuum causal/time-slice structure under #730, all closed; their open "
-                "work is owned by #1026 and #1077. Those historical lanes mark "
+                "work is owned by #1134 and #1136. Those historical lanes mark "
                 "downstream promotions outside this claim's gate. This row "
                 "emits no prediction-ladder entry"
             ),
@@ -5477,7 +5478,7 @@ def _forced_structure(
                 "supplied. The helper proves neither their source production nor "
                 "fairness, liveness, positivity, normalized state/channel, CPTP, "
                 "distance, clock, spacelike, continuum, or laboratory semantics. "
-                "Historical lane #728 (closed; live owner #1026) records the missing source scheduler/channel "
+                "Historical lane #728 (closed; live owner #1134) records the missing source scheduler/channel "
                 "attachment; #739 and #730 record the clock and continuum-causality "
                 "attachments. This row emits no prediction-ladder entry"
             ),
@@ -5644,7 +5645,7 @@ def _forced_structure(
                 "concave control concerns modes/minimizers only: constrained "
                 "saddles, complex or signed stationary phase, and refinement "
                 "routes are not excluded. Closed #731 records only the attained "
-                "declared-bundle composition. Historical lane #739 (closed; live owner #1026) records source "
+                "declared-bundle composition. Historical lane #739 (closed; live owner #1134) records source "
                 "selection of the reference, real enrichment, stationary-phase "
                 "mechanism, and source clock; #730 records the amplitude/interference "
                 "interface, while physical fields and observable currents are not "
@@ -6070,7 +6071,7 @@ def _lepton_rows(
                 "witness, that value lies inside the retrospective accounting "
                 "interval, and its "
                 "distance to the standard on-shell reference deficit is an "
-                "unfixed scheme term. Historical lane #736 (closed; live owner #1026) records that "
+                "unfixed scheme term. Historical lane #736 (closed; live owner #1134) records that "
                 "missing source obligation. The lepton "
                 "scale is localized only under the recorded accounting "
                 "packet, including measured-lepton information in the higher-order "
@@ -6392,7 +6393,7 @@ def _hadron_rows(
                 "the fine-structure lane; source-only hadron rows stay "
                 "suppressed. The resource-deferred QCD backend supplies no "
                 "source-only result; "
-                "historical lane #736 (closed; live owner #1026) records the bounded particle-output obligation, "
+                "historical lane #736 (closed; live owner #1134) records the bounded particle-output obligation, "
                 "and source-only QCD remains outside the available resources."
             ),
             "artifact_ref": _rel("hadron_payload"),
@@ -6533,7 +6534,7 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"distance {wp['scheme_term_difference_inv_alpha']:+.4f} to "
                 "the standard on-shell reference deficit "
                 f"{wp['reference_deficit_inv_alpha']:.4f} is an unfixed scheme "
-                "term; historical lane #736 (closed; live owner #1026) records "
+                "term; historical lane #736 (closed; live owner #1134) records "
                 "that missing source requirement. The accounting packet includes "
                 "measured-lepton information in its higher-order remainder. This "
                 "is empirical calibration, not an independently predicted mass "
@@ -7384,6 +7385,7 @@ def build(
         ),
         "finite_model_witnesses": _observer_particle_contracts(),
         "particle_reconstruction_decisions": _particle_reconstruction_decisions(),
+        "executable_completion_program": completion_program_view(REPO),
         "principal_results": _principal_results(sections),
         "retrospective_tilt_comparison": _retrospective_tilt_reference(),
         "retrospective_public_record_comparisons": _retrospective_public_record_references(),
@@ -7444,6 +7446,46 @@ def _render_md(ledger: dict[str, Any]) -> str:
         "[field-reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md) "
         "states this common-object contract and the current gaps.")
     add("")
+    completion = ledger.get("executable_completion_program")
+    if completion is not None:
+        program = completion["program"]
+        add("## Completion target and retained foundations")
+        add("")
+        add("The [executable hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) asks one native "
+            "process to supply observer clocks, defect/maintenance energy, interacting "
+            "field/particle observations and realized Einstein premises. The "
+            "[completion DAG and issue owners](COMPLETION_PROGRAM.md) order the "
+            "missing joins. Program `" + program["program_id"] + "` has boundary `" +
+            program["boundary_status"] + "` and decision `" + program["decision"] + "`.")
+        add("")
+        add("The existing modular-clock candidate, rank-three response geometry and "
+            "conditional 3+1 field construction are retained foundations, together "
+            "with finite interaction histories and the conditional Einstein kernel. "
+            "They are components to extend, not work to restart. The local band's "
+            "rank three does not alone derive three field-space dimensions: the "
+            "native screen is two-dimensional and the radial extension retains its "
+            "declared inputs. Physical clock calibration and the common interacting "
+            "defect/energy/gravity joins remain open.")
+        add("")
+        add("| Foundation | Achieved component | Remaining join | Canonical claim |")
+        add("| --- | --- | --- | --- |")
+        for row in completion["retained_foundations"]:
+            add("| " + " | ".join(_cell(row[key]) for key in
+                ("title", "achieved", "boundary", "claim_id")) + " |")
+        add("")
+        add("| Gate | Task | Status | Issue |")
+        add("| --- | --- | --- | --- |")
+        for row in program["stages"]:
+            add(f"| {row['id']} | {_cell(row['title'])} | {row['status']} | "
+                f"[#{row['issue']}](https://github.com/FloatingPragma/observer-patch-holography/issues/{row['issue']}) |")
+        add("")
+        add("CP-13 maps the finite theorems to the actual model and assigns premise "
+            "proofs to the owning gates; irrelevant/redundant branches leave the "
+            "active chain with provenance preserved. CP-12 owns scoped obstruction "
+            "and stopping decisions. A whole-program no-go requires coverage of "
+            "every frozen admissible realization; a failed candidate or exhausted "
+            "budget is not that verdict. " + completion["verification"] + ".")
+        add("")
     add("## How to read the tiers and classes")
     add("")
     add("| Tier | Meaning |")
