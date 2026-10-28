@@ -22,6 +22,12 @@ The integrated gates remain open, but the program starts from retained positive 
 
 In particular, retain the modular-clock candidate and the conditional 3+1 field construction based on the native response structure. The slow band's rank three and the native screen's spectral dimension two are distinct facts; the supplied radial extension remains part of that field construction's contract.
 
+## Current bounded investigations
+
+These source-bound component campaigns record actual progress without accepting dependent gates or freezing the larger program. Their exact exclusions do not cover untested histories or refinements.
+
+- [OPH-CE-FINITE-MEMORY-2026-10-28-v1](../model/completion/campaign.json): Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open. Owning gates: CP-00, CP-01, CP-13, CP-02, CP-03.
+
 ## Next work and dependencies
 
 Start with CP-00. It must identify the law/resource/interpretation class whose complete exclusion would stop this program. Component investigations can continue provisionally; their results cannot discharge a dependent gate without the predecessor mappings. CP-12 audits every stage in parallel once the program boundary is fixed.
@@ -118,7 +124,7 @@ Every obstruction records target revision, mandatory premises, quantified class,
 
 ### CP-00: Freeze the executable program class and decision contract
 
-Owner: [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135). Status: `OPEN`. Requires: none. Hypothesis obligations: EMH-1, EMH-2, EMH-3, EMH-4, EMH-5.
+Owner: [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135). Status: `IN_PROGRESS`. Requires: none. Hypothesis obligations: EMH-1, EMH-2, EMH-3, EMH-4, EMH-5.
 
 A versioned, content-bound class of admissible carrier/refinement, repair and memory laws, record instruments, resources, preparations, clocks and interpretation maps; one target and exposure record fixed before validation.
 
@@ -137,11 +143,15 @@ Retained starting evidence:
 - [CONSTRUCTION.md](../model/CONSTRUCTION.md)
 - [INTERPRETATION_AND_TERMS.md](../docs/INTERPRETATION_AND_TERMS.md)
 
+Current component progress (not gate acceptance):
+
+- [campaign.json](../model/completion/campaign.json): Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.
+
 Earlier related work: [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
 ### CP-01: Execute one continuing native observer with accounted resources
 
-Owner: [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136). Status: `OPEN`. Requires: CP-00. Hypothesis obligations: EMH-1, EMH-2.
+Owner: [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136). Status: `IN_PROGRESS`. Requires: CP-00. Hypothesis obligations: EMH-1, EMH-2.
 
 One replayable native repair/memory process that prepares, acts, reads, retains records and continues on overlapping accessible regions, with every service and failure branch accounted.
 
@@ -161,11 +171,15 @@ Retained starting evidence:
 - [DERIVATION.md](../model/common_source/DERIVATION.md)
 - [README.md](../model/native_interface/README.md)
 
+Current component progress (not gate acceptance):
+
+- [observer_results.json](../model/completion/observer_results.json): Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.
+
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
 ### CP-13: Integrate finite theorems and curate the active proof chain
 
-Owner: [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137). Status: `OPEN`. Requires: CP-00, CP-01. Hypothesis obligations: EMH-1, EMH-2, EMH-3, EMH-4.
+Owner: [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137). Status: `IN_PROGRESS`. Requires: CP-00, CP-01. Hypothesis obligations: EMH-1, EMH-2, EMH-3, EMH-4.
 
 A theorem-to-model integration and relevance review in the existing premise map: each result needed by the completion chain has an owning gate and an explicit model-premise proof obligation; irrelevant branches leave the active path.
 
@@ -186,11 +200,15 @@ Retained starting evidence:
 - [claim_registry.yaml](../claims/claim_registry.yaml)
 - [README.md](../Lean/README.md)
 
+Current component progress (not gate acceptance):
+
+- [theorem_map.json](../model/completion/theorem_map.json): Eleven actual theorem/model mappings with twelve source bindings; fixed-mixture stationarity is distinguished from correlated adaptive scheduling, and all downstream physical premises remain explicit.
+
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
 ### CP-02: Construct the continuing regime, faithful reference and local modular clocks
 
-Owner: [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138). Status: `OPEN`. Requires: CP-01, CP-13. Hypothesis obligations: EMH-1.
+Owner: [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138). Status: `IN_PROGRESS`. Requires: CP-01, CP-13. Hypothesis obligations: EMH-1.
 
 A same-process reference/state regime, observer algebras and implemented modular histories with compatible local clock and energy normalization maps.
 
@@ -209,11 +227,17 @@ Retained starting evidence:
 - [THERMAL_CLOCK.md](../model/common_source/THERMAL_CLOCK.md)
 - [modular_covariance.py](../model/common_source/modular_covariance.py)
 
+Current component progress (not gate acceptance):
+
+- [adaptive_reference_results.json](../model/completion/adaptive_reference_results.json): Exact two-attempt counterexample to importing the uniform source reference under current-record feedback: 30 changed entries, maximum deviation 1/960.
+- [stationary_reference_results.json](../model/completion/stationary_reference_results.json): Exact unique classical stationary law on the 129-state recurrent support of the 132-state source/current-bit kernel; its 66-state source marginal is positive and nonuniform. No quantum uniqueness or implemented clock is inferred.
+- [observer_reference_results.json](../model/completion/observer_reference_results.json): Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.
+
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
 ### CP-03: Exhibit a localized native defect and its protecting invariant
 
-Owner: [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139). Status: `OPEN`. Requires: CP-01, CP-13. Hypothesis obligations: EMH-3.
+Owner: [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139). Status: `IN_PROGRESS`. Requires: CP-01, CP-13. Hypothesis obligations: EMH-3.
 
 An actual native state/observable sector with a localized core, reference-like exterior and a boundary charge invariant under the full admitted repair law.
 
@@ -231,6 +255,10 @@ Retained starting evidence:
 - [native_defect_decision.py](../model/common_source/native_defect_decision.py)
 - [native_defect_decision_results.json](../model/common_source/native_defect_decision_results.json)
 - [OPH_FIELD_RECONSTRUCTION.md](../docs/research/OPH_FIELD_RECONSTRUCTION.md)
+
+Current component progress (not gate acceptance):
+
+- [defect_algebra_results.json](../model/completion/defect_algebra_results.json): Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

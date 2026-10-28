@@ -11,6 +11,7 @@ on:
       - 'docs/OPH_EXECUTABLE_HYPOTHESIS.md'
       - 'tools/build_completion_program.py'
       - 'tools/test_completion_program.py'
+      - 'model/completion/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -21,6 +22,7 @@ on:
       - 'docs/OPH_EXECUTABLE_HYPOTHESIS.md'
       - 'tools/build_completion_program.py'
       - 'tools/test_completion_program.py'
+      - 'model/completion/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -38,4 +40,4 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python tools/build_completion_program.py --check
-      - run: python -m pytest -q tools/test_completion_program.py
+      - run: python -m pytest -q -W error tools/test_completion_program.py model/completion
