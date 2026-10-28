@@ -72,7 +72,10 @@ proof shows that the whole class of laws cannot work.
   repair. An exact [exchange-history class](model/clock_defect_energy/DEFECT_HISTORY.md)
   supplies a topological candidate under declared local deformations; its
   [particle interpretation](model/clock_defect_energy/THEOREM_JOINS.md#from-exchange-history-to-a-particle)
-  remains open. Finding a stable defect is the work
+  remains open. A [sharp-sector test](model/exchange_sector/README.md) finds
+  an actively corrected qubit but also a full-exterior mismatch and a
+  rank-one limit on uninterrupted odd exchange records. Its repair activity
+  has no assigned rest-energy unit. Finding a stable defect is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [mass-response notes](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 - **Standard physics from finite agreement.** Under stated premises, finite

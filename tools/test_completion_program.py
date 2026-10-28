@@ -139,12 +139,21 @@ def test_component_progress_cannot_change_scope_or_lose_custody(fixture_root, da
         program.load_program(fixture_root)
 
 
+def test_component_progress_must_belong_to_campaign_supported_gate(fixture_root):
+    def mutate(data):
+        campaign = data["component_campaigns"][0]
+        campaign["supports"].remove("CP-00")
+    change(fixture_root, program.PROGRAM, mutate)
+    with pytest.raises(ValueError, match="campaign for this gate"):
+        program.load_program(fixture_root)
+
+
 def test_next_wave_uses_four_existing_owners_without_acceptance_promotion(fixture_root):
     data, hypothesis = program.load_program(fixture_root)
     wave = data["next_wave"]
     assert {(row["gate"], row["issue"]) for row in wave["owners"]} == {
-        ("CP-01", 1136), ("CP-02", 1138), ("CP-03", 1139), ("CP-04", 1140)}
-    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-00", "CP-13", "CP-12"}
+        ("CP-00", 1135), ("CP-02", 1138), ("CP-03", 1139), ("CP-04", 1140)}
+    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-01", "CP-13", "CP-12"}
     assert not wave["changes_frozen_campaign"]
     assert not wave["successor_class_frozen"]
     assert wave["physical_comparison_count_added"] == 0
@@ -210,15 +219,17 @@ def test_finite_diagnostics_register_progress_without_integrated_acceptance(fixt
     data, _ = program.load_program(fixture_root)
     diagnostics = [row for row in data["component_campaigns"]
                    if row["scope"] == "FINITE_COMPONENT_DIAGNOSTICS"]
-    assert len(diagnostics) == 2
+    assert len(diagnostics) >= 2
     by_id = {stage["id"]: stage for stage in data["stages"]}
     for diagnostic in diagnostics:
-        assert {"CP-00", "CP-01", "CP-02", "CP-03", "CP-04"} <= set(diagnostic["supports"])
-        for gate in ("CP-01", "CP-02", "CP-03", "CP-04"):
-            stage = by_id[gate]
-            assert stage["status"] == "IN_PROGRESS" and not stage["accepted_evidence"]
-            assert any(row["campaign_id"] == diagnostic["id"] for row in stage["progress_evidence"])
-    theorem_join = next(row for row in diagnostics if "CP-13" in row["supports"])
+        linked = [by_id[gate] for gate in diagnostic["supports"] if any(
+            row["campaign_id"] == diagnostic["id"]
+            for row in by_id[gate].get("progress_evidence", []))]
+        assert linked
+        assert all(stage["status"] != "ACCEPTED" and not stage["accepted_evidence"]
+                   for stage in linked)
+    theorem_join = next(row for row in diagnostics
+                        if row["id"] == "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1")
     review = by_id["CP-13"]
     assert review["status"] == "IN_PROGRESS" and not review["accepted_evidence"]
     paths = {row["path"] for row in review["progress_evidence"]

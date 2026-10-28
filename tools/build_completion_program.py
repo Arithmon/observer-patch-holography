@@ -156,6 +156,7 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
                     and contract.get("integrated_gate_accepted") is False
                     and contract.get("native_family_changed") is False,
                     "component diagnostics cannot accept gates or change the native family")
+    campaign_by_id = {campaign["id"]: campaign for campaign in campaigns}
     claims = json.loads(local_file(root, "claims/claim_registry.yaml").read_text())["claims"]
     claim_ids = {row["claim_id"] for row in claims}
     foundations = program.get("foundations", [])
@@ -186,8 +187,9 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
         if stage.get("progress_evidence"):
             bound_evidence(root, stage["progress_evidence"])
             require(all(row.get("campaign_id") in campaign_ids
+                        and stage["id"] in campaign_by_id[row["campaign_id"]]["supports"]
                         for row in stage["progress_evidence"]),
-                    "component progress lacks a registered campaign")
+                    "component progress lacks a registered campaign for this gate")
         if stage["status"] == "ACCEPTED":
             bound_evidence(root, stage.get("accepted_evidence"))
             require(all(by_id[dep]["status"] == "ACCEPTED" for dep in deps),

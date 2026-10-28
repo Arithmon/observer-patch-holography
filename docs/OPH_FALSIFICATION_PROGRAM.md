@@ -74,6 +74,36 @@ adds decisions on specific candidate joins under a separate versioned contract:
 | [Localized pair](../model/clock_defect_energy/LOCALIZED.md) | Uniform mean first exit is 15 attempts; positive exploration bounds continuing lifetime under record feedback. The tested exterior differs from the reference. | This excludes this candidate's claimed persistent localization. The [native configuration complex](../model/clock_defect_energy/DEFECT_HISTORY.md) has integral first homology Z/2 and actual positive-probability exchange histories, but supplies no protected live particle or native fermionic phase. |
 | [Unsigned maintenance cost](../model/clock_defect_energy/ENERGY.md) | Adjacent-pair movement excess is negative against the tested references; source-cycle and equal-cost controls reject the stated stored-energy assignments. | A [positive current quadratic form](../model/clock_defect_energy/MODE_ENERGY.md) and independent rest/kinetic comparison apply to the declared product-field symbol. Finite pulse splitting has a bounded discrepancy; defect action, physical momentum and stress remain open. |
 | [Finite clock menu](../model/clock_defect_energy/CONTINUATION.md) | The original four words do not cover every reached transported core. | The separately declared [66-word service inventory](../model/clock_defect_energy/CLOCK_SERVICES.md) closes that finite coverage gap with explicit complex controls, storage, errors and failures. It does not derive those services from passive repair. |
+| [Fixed clock reference under bare repair](../model/clock_defect_energy/REFERENCE_BALANCE.md) | The complete uniform-seam C/E population kernel has the unique uniform reversible measure; a held three-charge clock reference drifts by total variation `17/750` or `17/600` for the two tested cores. | The recorded co-moving source/core process has a stationary joint measure and a conserved relational charge. Its charge gradient cost is zero; neither the charge nor sector probabilities fix a rest energy. Adaptive feedback and full archived-history stationarity remain open. |
+
+A separate [bounded local placement family](../model/local_repair_family/README.md)
+preserves a nonuniform faithful product reference under endpoint-biased C/E
+coins. The earlier three-charge target violates the required
+spectator-independent reversible rate ratio for this family on all 66 cores.
+Positive branch weights leave the source branch algebra and its reducing-charge
+exclusion intact. This is a finite class decision under #1135, not a freeze
+or rejection of the whole physical program.
+
+The [sharp exchange-sector test](../model/exchange_sector/README.md) tightens
+the particle boundary on binary H66. Relative to the declared transported
+reference, every sharp `q=0,1,2` sector has minimum trace distance `3/5`,
+`4/9`, `43/45` on the full ten-port exterior, respectively. Any closed odd
+exchange flag of an uninterrupted complete native C/E history has rank-one
+source input domain and cannot occur with positive probability in an exactly
+recovered unknown qubit under that grammar. An existing actively corrected
+`q=1` code attains the all-seam dimension bound two, with core reset and
+archive costs explicit. These results do not exclude screened smaller-cap
+constructions, intermediate recovery or coherent extra registers, and the
+active code is not a localized reference-preserving particle. Its native
+movement excess `1/66` per uniform-seam attempt excludes recovery work and
+does not fix energy.
+
+The [source-pulse Ramsey packet](../model/clock_defect_energy/RAMSEY_SERVICE.md)
+executes the controlled finite density-sector service and retains complete
+C/E joint clock/field outcomes, source-export aborts and a selected longer
+continuation. Its 720-arc density isometry does not compile the full
+3,960-arc binary-source unitary. Checked floating routine guards do not
+certify physical pulse accuracy or a duration in seconds.
 
 These are finite conclusions with source-bound replay and countercontrols,
 not empirical exclusions or accepted integrated gates. Changing the reference,

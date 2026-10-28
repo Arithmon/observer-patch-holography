@@ -15,6 +15,15 @@ FIFO. The stationary object is that finite marginal, with exported history
 traced out; its support restriction, preparation and observer access are
 explicit. The delayed mixed member requires a separate stationary solve.
 
+The separate [bounded local placement family](local_repair_family/README.md)
+uses endpoint-weighted C/E coins with a fixed source-independent seam
+selector to preserve a nonuniform faithful product reference and its
+recordwise modular covariance. The supplied weights and
+changed coin law are explicit. This finite family does not reproduce the
+earlier transported three-charge reference with endpoint-only reversible
+rates, create a bare-source protecting charge, or freeze the full physical
+program class.
+
 Two exact obstructions constrain the next construction. The
 [branch-algebra certificate](completion/defect_algebra.md) excludes a fixed
 nontrivial Hermitian source charge commuting with every active native branch
@@ -34,13 +43,13 @@ recorded-history transport as a pinned dependency:
 
 | Owner | Retained result and next requirement |
 | --- | --- |
-| [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) | All 66 reached reference cores have executed parameter-4 clock words. The 132-state policy, separate source interpreter, pulses and exports are counted; physical service realization remains open. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | A complete joint clock/field protocol shares native incident ticks and passes a matched-marginal correlation test. Whole-wave compilation and physical calibration remain open. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | An exact `Z/2` exchange-history class survives the declared local deformations. Turning it into a live localized excitation with coherent exchange response remains open. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | Native current records supply a positive form; independent rest/inertial mode responses have a bounded finite split correction. The localized particle action and stress remain open. |
+| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) | A bounded endpoint-biased C/E family preserves a faithful nonuniform product reference. Carrier/refinement, physical targets and program-wide decision rules remain open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | A [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes the controlled 720-arc density representation and complete C/E joint clock/field outputs, with counted aborts and a selected continuation. Full 3,960-arc compilation and physical calibration remain open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [sharp-sector test](exchange_sector/README.md) bounds the exterior mismatch and proves that uninterrupted odd closed native exchange resolves one source input. An actively corrected q=1 qubit attains the all-seam code bound, with explicit core reset. A localized particle remains open. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | Native current records supply a positive form; the active code's movement excess is `1/66` per uniform-seam attempt. The co-moving charge has zero native gradient cost, and the independent product-mode inertia calculation uses another source. One defect action and stress remain open. |
 
-The shared boundary owner #1135 reviews any changed mechanism against the
-same versioned contract. The [theorem map](completion/THEOREM_MAP.md),
+The continuing-observer owner #1136 reviews the compiled services and memory
+requirements across the four workstreams. The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
 review accompany all four lanes. No integrated completion gate, physical clock,
 mass spectrum or gravitational realization is accepted by these finite results.

@@ -143,6 +143,18 @@ an [integral exchange-history class](../model/clock_defect_energy/DEFECT_HISTORY
 and a [native current form with independent mode inertia](../model/clock_defect_energy/MODE_ENERGY.md).
 The history class supplies neither a protected particle nor a fermionic phase;
 the mode response supplies no defect mass or gravitational stress. The
+[source-pulse Ramsey service](../model/clock_defect_energy/RAMSEY_SERVICE.md)
+executes a controlled density-sector readout with complete joint C/E records
+and selected continuation; the full binary-source wave and physical clock
+remain open. The
+[bounded local repair family](../model/local_repair_family/README.md)
+preserves a faithful nonuniform reference under a changed endpoint coin, while
+the [reference-balance test](../model/clock_defect_energy/REFERENCE_BALANCE.md)
+constructs a stationary co-moving source/core measure under the unchanged law.
+Their state spaces and scheduling premises differ. The
+[sharp exchange-sector packet](../model/exchange_sector/README.md) tests the
+full exterior, odd closed histories and an actively corrected code, with
+recovery costs retained. The
 [completion plan](COMPLETION_PROGRAM.md) tracks the shared remaining joins.
 These finite results add no physical comparison or integrated gate acceptance.
 

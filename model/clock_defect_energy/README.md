@@ -1,7 +1,7 @@
 # Continuing clocks, localized excitations and repair energy
 
-This source-bound diagnostic campaign advances four completion owners on the
-existing native C/E carrier. It builds on the recorded-history transport in
+These source-bound diagnostics advance clock, defect and energy joins on the
+existing native C/E carrier. They build on the recorded-history transport in
 [PR #1149](https://github.com/FloatingPragma/observer-patch-holography/pull/1149),
 pinned at `3d282b3d59763fa1a5171ad9a4fbc09fc0abf35a`. The contracts record
 its pending status at the campaign boundary; that status is historical after
@@ -13,12 +13,13 @@ repair law and accept no integrated physical gate.
 | Owner | Retained result | Next missing join |
 | --- | --- | --- |
 | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136), [clock services](CLOCK_SERVICES.md) | All 66 transported-core words execute and certify at parameter 4. Reference metadata survives FIFO export, with policy states, interpreter storage and source pulses counted. | Realize the supplied preparation, memory, coherent-control and delivery services, including physical error budgets. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138), [joint clock and field](JOINT_CLOCK.md) | One native incident count advances the transported clock and protected field; the complete joint law distinguishes a control with identical separate marginals. | Compile the whole coherent wave service and establish the physical clock/field dictionary. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139), [exchange history](DEFECT_HISTORY.md) | The native configuration complex has exact integral first homology `Z/2`; complete C/E records realize its exchange class under the declared local deformations. | Obtain a live localized sector, coherent exchange response and protection; history parity alone supplies none of these. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140), [mode energy](MODE_ENERGY.md) | Native current records give a positive Dirichlet form. Independent rest and kinetic responses of the existing product mode satisfy the ideal mass shell with a bounded finite-word correction. The [reference-balance test](REFERENCE_BALANCE.md) finds exact drift for a fixed clock reference and an exact stationary source-plus-moving-core measure. | Attach the same action, inertia and conserved stress to a localized excitation and its physical clock, with a justified reference measure. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138), [joint clock and field](JOINT_CLOCK.md) | One native incident count advances the transported clock and protected field; the complete joint law distinguishes a control with identical separate marginals. The [source-pulse Ramsey service](RAMSEY_SERVICE.md) executes the controlled density-sector readout and retains complete outputs and continuation. | Establish the regional physical clock/field dictionary and whole-wave service boundary. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139), [exchange history](DEFECT_HISTORY.md) | The native configuration complex has exact integral first homology `Z/2`; complete C/E records realize its exchange class. The [sharp-sector packet](../exchange_sector/README.md) tests live relational charges, exterior distance and active recovery. | Obtain an autonomously protected localized sector and coherent exchange response. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140), [mode energy](MODE_ENERGY.md) | Native current records give a positive Dirichlet form. The product mode has a separate rest/kinetic comparison. The [reference-balance test](REFERENCE_BALANCE.md) finds fixed-clock drift, a stationary source/core measure and zero gradient cost for its relational charge. | Attach one rest action, moving response and conserved stress to a localized excitation with a calibrated clock. |
 
-The [completion plan](../../docs/COMPLETION_PROGRAM.md) keeps #1135 as the
-shared domain/primitive review and #1137 as the theorem-interface review.
+The [completion plan](../../docs/COMPLETION_PROGRAM.md) advances #1135 as
+the shared domain/primitive owner, with #1136 reviewing continuing services
+and #1137 reviewing theorem interfaces.
 The [theorem application map](THEOREM_JOINS.md) states which premises are
 checked on the model and which remain conditional. The original
 [continuation](CONTINUATION.md), [localization](LOCALIZED.md) and
@@ -54,7 +55,7 @@ transporting it does not implement port routing or establish a physical
 source charge. Attempt count, actual repair count, modular parameter, wave
 parameter and any calibrated physical clock remain named separately.
 
-The nine receipts bind their implementations, independent checks and their
+The ten receipts bind their implementations, independent checks and their
 named contracts. No empirical comparison is added. Preparation and coherent
 services retain their predecessor domains and failure budgets. The expanded
 clock inventory counts every added word and its source execution.
@@ -78,6 +79,7 @@ python -m model.clock_defect_energy.joint_clock --check
 python -m model.clock_defect_energy.defect_history --check
 python -m model.clock_defect_energy.mode_energy --check
 python -m model.clock_defect_energy.reference_balance --check
+python -m model.clock_defect_energy.ramsey_service --check
 ```
 
 `--write` regenerates the named packet's receipt after a reviewed source
