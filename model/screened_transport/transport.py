@@ -63,7 +63,7 @@ def campaign_binding() -> dict:
     expected = {
         "schema": "oph.screened_transport.campaign.v1",
         "campaign_id": "screened-transport-20261028-v1",
-        "predecessor_git_commit": "1cfa6106e",
+        "predecessor_git_commit": "1cfa6106e23d8d1279083de4ac38eec77f16a1d4",
         "scope": "FINITE_COMPONENT_DIAGNOSTICS",
         "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
         "whole_program_frozen": False,

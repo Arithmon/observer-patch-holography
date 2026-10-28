@@ -4,7 +4,7 @@
   "integrated_gate_accepted": false,
   "native_family_changed": false,
   "physical_comparison_count_added": 0,
-  "predecessor_git_commit": "1cfa6106e",
+  "predecessor_git_commit": "1cfa6106e23d8d1279083de4ac38eec77f16a1d4",
   "schema": "oph.screened_transport.campaign.v1",
   "scope": "FINITE_COMPONENT_DIAGNOSTICS",
   "source_sha256": {

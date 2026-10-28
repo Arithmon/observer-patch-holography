@@ -1,6 +1,6 @@
 {
   "campaign_id": "screened-transport-20261028-v1",
-  "contract_sha256": "58abe28877a13918bb75ed239c2a5ac42998ef950711abae0319c46a00047751",
+  "contract_sha256": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201",
   "corrected_cycle": {
     "common_logical_phase_or_rest_gap_fixed_by_channel": false,
     "continuous_momentum_or_coherent_dispersion_constructed": false,
@@ -387,8 +387,8 @@
     "model/screened_recovery/test_protocol.py": "8514eb76426a5dc22cfeb163471db1b737b491618b949583d1e87ed70d0be8c1",
     "model/screened_transport/README.md": "78fbae8b41c6c48f39b285ddb1ebc0452e646cfaff20e16f4430e3c38eb98b69",
     "model/screened_transport/__init__.py": "ed06f7ce24037ac2e4cbc00e7ed65f7216ded0a839eca299f41f10deb0768bce",
-    "model/screened_transport/campaign.json": "58abe28877a13918bb75ed239c2a5ac42998ef950711abae0319c46a00047751",
+    "model/screened_transport/campaign.json": "0111c3fef1f633ed485191a650721e4f82a8c3b165e44ae46cc1bc1d6651d201",
     "model/screened_transport/test_transport.py": "5a148bbeaeb28010401553536bc4c2257bb5f6319a0aa0ee3a0614d77465986b",
-    "model/screened_transport/transport.py": "a38efeef6e4ffcf613744313d11900cfe4f04e9844ca6c18757385f028622eac"
+    "model/screened_transport/transport.py": "6d6b09109c54a8635cdcc81d7607923036cf70d32639d9371ba8be1f201e7852"
   }
 }
