@@ -36,10 +36,17 @@ code** has rate `10/60 = 1/6` per attempted uniform-seam repair for C and E.
 This supplies the same candidate's native activity for the new screened
 particle lane. It does not transfer the old source recovery implementation
 to the new code; that recovery has only an algebraic existence proof so far.
+The screened code's transported core changes value on `1/15` of uniformly
+selected seam/coin attempts and leaves the native seam set on `1/30`, for
+either law and either logical input. These are native metadata probabilities,
+not an executed screened-code reset or its energy cost.
 
-The matching stationary co-moving `q=1` reference has uniform source
+The charge-matched stationary co-moving `q=1` reference has uniform source
 marginal, so its current rate is `5/33`; the code excess is exactly `1/66`
-per attempt. Two other references make the comparison choice visible:
+per attempt. That stationary benchmark averages over all core labels,
+whereas both codes start at fixed core `{0,1}`. The excess is therefore a
+diagnostic comparison, not an established defect maintenance cost. Two
+other references make the comparison choice visible:
 
 | Comparison ensemble | Current per attempt | Code excess |
 | --- | ---: | ---: |

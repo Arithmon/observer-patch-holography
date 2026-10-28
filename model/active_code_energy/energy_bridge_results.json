@@ -143,6 +143,28 @@
           ]
         }
       ],
+      "native_core_motion_by_law_and_logical_column": {
+        "C": [
+          {
+            "core_value_change_per_uniform_seam_attempt": "1/15",
+            "transported_core_exits_native_seam_set_per_attempt": "1/30"
+          },
+          {
+            "core_value_change_per_uniform_seam_attempt": "1/15",
+            "transported_core_exits_native_seam_set_per_attempt": "1/30"
+          }
+        ],
+        "E": [
+          {
+            "core_value_change_per_uniform_seam_attempt": "1/15",
+            "transported_core_exits_native_seam_set_per_attempt": "1/30"
+          },
+          {
+            "core_value_change_per_uniform_seam_attempt": "1/15",
+            "transported_core_exits_native_seam_set_per_attempt": "1/30"
+          }
+        ]
+      },
       "source_pulse_recovery_executed": false
     },
     "source_executed_repair_seam": [
@@ -211,11 +233,11 @@
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
     "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
     "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
-    "model/active_code_energy/README.md": "26adc39d82d41a3814f36e6f486e2e1f5d0c7e2241e3d2c3539a7eb2c147cef2",
+    "model/active_code_energy/README.md": "04341ca719703dcd9b1d7292bd94a6eba09cc28318d6e2f51523b3ec124aafbd",
     "model/active_code_energy/__init__.py": "78d9126fe87e2cd176cfcd5b2fa37aceda69f10b3b5b848110b590b1ce703c93",
     "model/active_code_energy/campaign.json": "01ff6387efd499d674ee0e81b021868dc1ead6f614c264f83b295d3227ade2db",
-    "model/active_code_energy/energy_bridge.py": "046e3aee008b62a3cec85bf7416bd0a6d3155b6985dacda657fa76bdf7155454",
-    "model/active_code_energy/test_energy_bridge.py": "ad274d6f091ad82b45555971524626b004bd0690515b9c7319bf329cce7e6d5b",
+    "model/active_code_energy/energy_bridge.py": "e2fde2c0d438792da4631550b181c83a82a57c4f7b62460f30bb5997ca843bff",
+    "model/active_code_energy/test_energy_bridge.py": "f3771acb206e9f6740837bf7afea207782d56958c13e37e73898d3e70d9dd0c3",
     "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
     "model/clock_defect_energy/mode_energy_results.json": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
     "model/clock_defect_energy/reference_balance.py": "6695eddff9a93667193c307d80d349c36d685b4dfd717f9191035c989b73940d",

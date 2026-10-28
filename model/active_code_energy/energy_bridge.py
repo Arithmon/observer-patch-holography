@@ -208,6 +208,27 @@ def active_code_work() -> dict:
         screened_rows.append({"pair_supports": [list(pair) for pair in logical],
                               "basis_current_rates": [str(rate) for rate in rates],
                               "logical_current_rate": str(sum(rates, F()) / 4)})
+    screened_core_motion = {}
+    native_seams = set(records.seams())
+    for law in ("C", "E"):
+        columns = []
+        for logical in SCREENED_SUPPORTS:
+            changes = exits = 0
+            for pair in logical:
+                state = tuple(int(port in pair) for port in range(12))
+                for seam in records.seams():
+                    for coin in (0, 1):
+                        _, record = records.recorded_step(law, state, seam, coin)
+                        moved = sector.moved_core(sector.CORE, law, record)
+                        changes += moved != sector.CORE
+                        exits += moved not in native_seams
+            denominator = len(logical) * len(native_seams) * 2
+            columns.append({"core_value_change_per_uniform_seam_attempt": str(F(changes, denominator)),
+                            "transported_core_exits_native_seam_set_per_attempt": str(F(exits, denominator))})
+        if columns != [{"core_value_change_per_uniform_seam_attempt": "1/15",
+                        "transported_core_exits_native_seam_set_per_attempt": "1/30"}] * 2:
+            raise ArithmeticError("screened successor native core motion changed")
+        screened_core_motion[law] = columns
 
     laws = {}
     for law in ("C", "E"):
@@ -256,6 +277,7 @@ def active_code_work() -> dict:
             "logical_columns": screened_rows,
             "any_logical_input_nonzero_current_per_uniform_seam_attempt": "1/6",
             "basis_supports_all_have_same_degree": 10,
+            "native_core_motion_by_law_and_logical_column": screened_core_motion,
             "all_seam_recovery_exists_algebraically_in_particle_packet": True,
             "source_pulse_recovery_executed": False,
         },

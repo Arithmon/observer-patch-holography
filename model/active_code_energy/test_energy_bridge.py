@@ -42,6 +42,9 @@ def test_native_activity_from_incidence_independent_of_bridge_kernel():
     assert work["prior_source_executed_code_nonzero_current_per_uniform_seam_attempt"] == "1/6"
     assert work["screened_successor_code"]["any_logical_input_nonzero_current_per_uniform_seam_attempt"] == "1/6"
     assert work["screened_successor_code"]["source_pulse_recovery_executed"] is False
+    for columns in work["screened_successor_code"]["native_core_motion_by_law_and_logical_column"].values():
+        assert columns == [{"core_value_change_per_uniform_seam_attempt": "1/15",
+                            "transported_core_exits_native_seam_set_per_attempt": "1/30"}] * 2
     assert work["excess_over_stationary_q1_background_per_attempt"] == "1/66"
     assert work["excess_over_fixed_core_q1_conditional_background_per_attempt"] == "1/75"
 
