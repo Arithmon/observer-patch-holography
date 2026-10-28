@@ -1055,7 +1055,12 @@ gain `g=(1+e)^2` and half-diamond allowance `d=e(2+e)/2`; composition updates
 `B <- g B+d`. With preparation error `B_p` and complete history error `B_h`,
 the end-to-end bound is `G_h B_p+(5/33)B_h`. The receipt includes separate
 attempt, source-pulse, service, tape, code and program-storage costs. The
-joined instrument bound compares against the ideal reference-defined
+five numerical error observations are freshly checked against their scientific
+bounds and a fixed `2e-10` ceiling, then retained as exact `[0,2e-10]`
+admission intervals. These summarize computed residuals; they are not rigorous
+interval-arithmetic or implementation-error bounds. Replay also limits the
+total variation of each complete retained probability distribution to `2e-10`.
+The joined instrument bound compares against the ideal reference-defined
 protocol. Comparing its action with the unknown finite-preparation
 reference's own modular flow additionally uses the sandwich bound above.
 The source bound certifies terminal logical words and native exports. Exact

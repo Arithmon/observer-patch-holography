@@ -361,11 +361,10 @@ def test_clock_and_rotation_domain_and_immutable_cached_source_outputs():
         rotation.flags.writeable = True
 
 
-def test_cli_gzip_is_deterministic_roundtrips_and_rejects_corruption(monkeypatch, tmp_path, capsys):
-    # A small representative of the real receipt schema isolates serialization;
-    # the separate packet fixture executes and checks the complete source model.
-    representative = {
-        'schema': 'oph.native_modular_reference.history_clock.v1', 'parameter': '4',
+def receipt_structure():
+    """Small custody fixture; the packet fixture separately executes the source."""
+    return {
+        'schema': clock.SCHEMA, 'parameter': '4',
         'source_sha256': {'model/native_modular_reference/history_clock.py': 'a'*64},
         'source_budget': {'complete_history_halfdiamond_upper': '1/1000000'},
         'complete_preparation_history_halftrace_upper': '1/1000000',
@@ -373,9 +372,12 @@ def test_cli_gzip_is_deterministic_roundtrips_and_rejects_corruption(monkeypatch
             'records': [{'record': ['preparation', 'herald_failure'], 'probability': 1.}],
             'wrong_fixed_reference_record_variation_diagnostic': 0.001,
             'nonzero_clock_record_variation_diagnostic': 0.002,
-            **{key: 0. for key in ('source_complete_halftrace_error_diagnostic',
-                'untouched_reference_source_error_diagnostic', 'before_after_covariance_error_diagnostic',
-                'untouched_reference_covariance_error_diagnostic', 'complete_preparation_history_error_diagnostic')}}]}
+            **{key: {'lower': '0', 'upper': clock.NUMERICAL_RESIDUAL_CEILING}
+               for key in clock.RESIDUAL_INTERVAL_FIELDS}}]}
+
+
+def test_cli_gzip_is_deterministic_roundtrips_and_rejects_corruption(monkeypatch, tmp_path, capsys):
+    representative = receipt_structure()
     monkeypatch.setattr(clock, 'run', lambda: deepcopy(representative))
     first, second = tmp_path/'first.json.gz', tmp_path/'different-name.json.gz'
     for target in (first, second):
@@ -398,6 +400,22 @@ def test_cli_gzip_is_deterministic_roundtrips_and_rejects_corruption(monkeypatch
         clock.main()
 
 
+@pytest.mark.parametrize('key', ['source', 'preparation'])
+@pytest.mark.parametrize('bound', ['0', '-1', '1/10000000000', '1/0', 'not-a-bound', 1e-6, True])
+def test_identical_receipts_reject_budgets_incompatible_with_retained_intervals(key, bound):
+    bad = receipt_structure()
+    if key == 'source':
+        bad['source_budget']['complete_history_halfdiamond_upper'] = bound
+    else:
+        bad['complete_preparation_history_halftrace_upper'] = bound
+    with pytest.raises(ValueError, match='scientific bound'):
+        clock.compare_receipt(bad, deepcopy(bad))
+    valid = receipt_structure()
+    valid['source_budget']['complete_history_halfdiamond_upper'] = clock.NUMERICAL_RESIDUAL_CEILING
+    valid['complete_preparation_history_halftrace_upper'] = clock.NUMERICAL_RESIDUAL_CEILING
+    clock.compare_receipt(valid, deepcopy(valid))
+
+
 @pytest.fixture(scope='module')
 def packet():
     # One complete actual source replay; no monkeypatched shortcuts or reused
@@ -414,8 +432,8 @@ def test_complete_source_producer_and_receipt_roundtrip(packet, tmp_path):
         assert row['wrong_fixed_reference_record_variation_diagnostic'] > 1e-5
         assert row['nonzero_clock_record_variation_diagnostic'] > 1e-5
         assert abs(sum(record['probability'] for record in row['records'])-1) < 2e-10
-        assert row['source_complete_halftrace_error_diagnostic'] <= float(F(
-            packet['source_budget']['complete_history_halfdiamond_upper']))
+        for field in clock.RESIDUAL_INTERVAL_FIELDS:
+            assert row[field] == {'lower': '0', 'upper': '1/5000000000'}
     budget = packet['source_budget']
     assert budget['distinct_clock_words_verified'] == 4
     assert budget['reference_core_location_bits_upper'] == 8
@@ -442,25 +460,74 @@ def test_receipt_rejects_forged_bounds_custody_and_complete_outputs(packet, dama
     elif damage == 'zero_signal':
         bad['histories'][0]['nonzero_clock_record_variation_diagnostic'] = 0.
     elif damage == 'nan':
-        bad['histories'][0]['before_after_covariance_error_diagnostic'] = float('nan')
+        bad['histories'][0]['nonzero_clock_record_variation_diagnostic'] = float('nan')
     else:
         bad['histories'][0]['records'][0]['probability'] = -1e-100
     with pytest.raises(ValueError):
         clock.compare_receipt(bad, packet)
 
 
-@pytest.mark.parametrize('field', ['source_complete_halftrace_error_diagnostic',
-    'untouched_reference_source_error_diagnostic', 'before_after_covariance_error_diagnostic',
-    'untouched_reference_covariance_error_diagnostic', 'complete_preparation_history_error_diagnostic'])
-def test_each_diagnostic_is_checked_against_its_own_retained_gate(packet, field):
+@pytest.mark.parametrize('field', clock.RESIDUAL_INTERVAL_FIELDS)
+@pytest.mark.parametrize('replacement', [0., {'lower': '0', 'upper': '0'},
+    {'lower': '0', 'upper': '1/10000000000'}, {'lower': '0', 'upper': '1/1000000000'},
+    {'lower': '0', 'upper': 2e-10}])
+def test_residual_intervals_cannot_claim_false_zero_or_changed_ceiling(packet, field, replacement):
     bad = deepcopy(packet)
-    if 'covariance' in field:
-        gate = clock.NUMERICAL_DIAGNOSTIC_GATE
-    elif 'preparation' in field:
-        gate = float(F(packet['complete_preparation_history_halftrace_upper']))
-    else:
-        gate = float(F(packet['source_budget']['complete_history_halfdiamond_upper']))
-    bad['histories'][0][field] = math.nextafter(gate, math.inf)
-    # Equality of two reports cannot excuse an internally inadmissible value.
+    bad['histories'][0][field] = deepcopy(replacement)
+    with pytest.raises(ValueError):
+        clock.compare_receipt(bad, packet)
+    # Even coordinated equal reports cannot change the canonical admission.
     with pytest.raises(ValueError):
         clock.compare_receipt(bad, deepcopy(bad))
+
+
+@pytest.mark.parametrize('residual_index', range(5))
+@pytest.mark.parametrize('value', [math.nextafter(2e-10, math.inf), -1e-30, float('nan')])
+def test_producer_checks_each_original_residual_before_interval_projection(monkeypatch, residual_index, value):
+    # Isolate the admission path: source execution itself has the separate
+    # real packet replay above. No fabricated fixture is retained as evidence.
+    monkeypatch.setattr(clock, 'source_budget', lambda: {
+        'complete_history_halfdiamond_upper': '1/1000000', 'channel_norm_upper': '1'})
+    monkeypatch.setattr(clock, '_joined_budget', lambda budget: ({}, F(1, 10**6)))
+    monkeypatch.setattr(clock, 'execute', lambda density, *a, **k: {('terminal',): density})
+    monkeypatch.setattr(clock, 'raw_alphabet_certificate', lambda *a: {})
+    monkeypatch.setattr(clock, '_variation', lambda *a: 0.001)
+    monkeypatch.setattr(clock.preparation, 'population_maps', lambda **k: {'success': np.eye(66)})
+    monkeypatch.setattr(clock, 'prepared_target', lambda *a: {})
+    values = [0.]*5
+    values[residual_index] = value
+    observations = iter(values)
+    monkeypatch.setattr(clock.previous, 'distance', lambda *a: next(observations))
+    with pytest.raises(ArithmeticError, match='fresh clock residual'):
+        clock.run()
+
+
+def test_residual_projection_checks_the_separate_scientific_bound_and_detaches():
+    with pytest.raises(ArithmeticError, match='scientific bound'):
+        clock._residual_interval(1e-12, F(1, 10**13))
+    retained = clock._residual_interval(1e-12, F(1, 10**8))
+    retained['upper'] = '0'
+    assert clock._residual_interval(0., F(1, 10**8)) == {
+        'lower': '0', 'upper': '1/5000000000'}
+
+
+def test_probability_replay_limits_total_variation_not_only_each_slot(packet):
+    bad = deepcopy(packet)
+    rows = bad['histories'][0]['records']
+    positive = [i for i, row in enumerate(rows) if row['probability'] > 1e-8][:8]
+    assert len(positive) == 8
+    for k, i in enumerate(positive):
+        rows[i]['probability'] += 1e-10 if k % 2 else -1e-10
+    # The old componentwise comparator accepts this mass-preserving mutation.
+    clock.full.corner.compare_receipt(bad, packet)
+    expected = packet['histories'][0]['records']
+    assert math.fsum(abs(a['probability']-b['probability'])
+                     for a, b in zip(rows, expected, strict=True))/2 > 3.9e-10
+    with pytest.raises(ValueError, match='total-variation'):
+        clock.compare_receipt(bad, packet)
+    # A small portable probability difference remains admitted.
+    near = deepcopy(packet)
+    near_rows = near['histories'][0]['records']
+    near_rows[positive[0]]['probability'] += 1e-11
+    near_rows[positive[1]]['probability'] -= 1e-11
+    clock.compare_receipt(near, packet)

@@ -32,6 +32,7 @@ from ..observer.source_discrimination import circuit
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).with_name('history_clock_results.json.gz')
+SCHEMA = 'oph.native_modular_reference.history_clock.v2'
 PARAMETER = F(4)
 FIRST_EDGE = (0, 5)
 READ_EDGE = (1, 5)
@@ -39,6 +40,14 @@ WORD_GATE = F(1, 10**9)
 ROTATION_GATE = F(1, 10**8)
 NATIVE_GATE = F(1, 10**12)
 NUMERICAL_DIAGNOSTIC_GATE = 2e-10
+NUMERICAL_RESIDUAL_CEILING = '1/5000000000'
+RESIDUAL_INTERVAL_FIELDS = (
+    'source_complete_halftrace_error_interval',
+    'before_after_covariance_error_interval',
+    'untouched_reference_covariance_error_interval',
+    'untouched_reference_source_error_interval',
+    'complete_preparation_history_error_interval',
+)
 
 
 def probe_pair():
@@ -399,6 +408,18 @@ def _joined_budget(source):
     return prep, complete
 
 
+def _residual_interval(value, scientific_bound):
+    """Admit a fresh numerical residual, retaining only its fixed ceiling.
+
+    This interval summarizes the computed observation. It is not an interval
+    arithmetic certificate or a replacement for the separate source bound.
+    """
+    if (type(value) not in (int, float) or not math.isfinite(value)
+            or not 0 <= F(value) <= min(F(NUMERICAL_RESIDUAL_CEILING), scientific_bound)):
+        raise ArithmeticError('fresh clock residual exceeds its numerical ceiling or scientific bound')
+    return {'lower': '0', 'upper': NUMERICAL_RESIDUAL_CEILING}
+
+
 def run():
     budget = source_budget()
     prep_budget, joined_bound = _joined_budget(budget)
@@ -411,10 +432,11 @@ def run():
         alphabet = raw_alphabet_certificate(law, raw)
         error = previous.distance(raw, outputs['transported'])
         covariance = previous.distance(outputs['before'], outputs['transported'])
+        source_interval = _residual_interval(error, F(budget['complete_history_halfdiamond_upper']))
+        covariance_interval = _residual_interval(covariance, F(NUMERICAL_RESIDUAL_CEILING))
         wrong = _variation(_probabilities(outputs['fixed']), _probabilities(outputs['transported']))
         signal = _variation(_probabilities(outputs['zero']), _probabilities(outputs['transported']))
-        if (error > float(F(budget['complete_history_halfdiamond_upper']))
-                or covariance > NUMERICAL_DIAGNOSTIC_GATE or min(wrong, signal) <= 1e-5):
+        if not all(math.isfinite(v) and v > 1e-5 for v in (wrong, signal)):
             raise ArithmeticError('transported source clock lacks its positive or negative control')
         # Existing preparation executes its bounded population process, with
         # all four original terminal flags, from basis input0.
@@ -423,29 +445,30 @@ def run():
                     for flag, m in prep.items() if flag != 'success'}
         prepared.update(execute(np.diag(prep['success'][:, 0]).astype(complex), law))
         prepared_error = previous.distance(prepared, prepared_target(law))
+        prepared_interval = _residual_interval(prepared_error, joined_bound)
         reference_probe = _entangled_probe()
         reference_before = execute(reference_probe, law, mode='before', raw=False)
         reference_after = execute(reference_probe, law, raw=False)
         reference_raw = execute(reference_probe, law)
         reference_covariance = previous.distance(reference_before, reference_after)
         reference_error = previous.distance(reference_raw, reference_after)
+        reference_covariance_interval = _residual_interval(reference_covariance, F(NUMERICAL_RESIDUAL_CEILING))
+        reference_source_interval = _residual_interval(reference_error, F(budget['complete_history_halfdiamond_upper']))
         prepared_mass = sum(_probabilities(prepared).values())
-        if (prepared_error > float(joined_bound) or reference_covariance > NUMERICAL_DIAGNOSTIC_GATE
-                or reference_error > float(F(budget['complete_history_halfdiamond_upper']))
-                or abs(prepared_mass-1) > NUMERICAL_DIAGNOSTIC_GATE):
+        if not math.isfinite(prepared_mass) or abs(prepared_mass-1) > NUMERICAL_DIAGNOSTIC_GATE:
             raise ArithmeticError('complete preparation/reference clock history exceeds its bound')
         histories.append({'law': law,
             'complete_raw_record_alphabet': alphabet,
             'exact_support_transport': transport.phase_ratio_certificate(law, branches(law), transport.reference()),
             'reference_extension_cores': sorted({tuple(sorted(transport.port_permutation(law, b)[i]
                                                for i in common.CORE)) for b in branches(law)}),
-            'source_complete_halftrace_error_diagnostic': error,
-            'before_after_covariance_error_diagnostic': covariance,
+            'source_complete_halftrace_error_interval': source_interval,
+            'before_after_covariance_error_interval': covariance_interval,
             'wrong_fixed_reference_record_variation_diagnostic': wrong,
             'nonzero_clock_record_variation_diagnostic': signal,
-            'untouched_reference_covariance_error_diagnostic': reference_covariance,
-            'untouched_reference_source_error_diagnostic': reference_error,
-            'complete_preparation_history_error_diagnostic': prepared_error,
+            'untouched_reference_covariance_error_interval': reference_covariance_interval,
+            'untouched_reference_source_error_interval': reference_source_interval,
+            'complete_preparation_history_error_interval': prepared_interval,
             'complete_prepared_mass_diagnostic': prepared_mass,
             'records': [{'record': list(k), 'probability': v} for k, v in _probabilities(prepared).items()]})
     paths = set(transport.source_bindings()) | set(adaptive.source_bindings()) | set(interface.SOURCE_PATHS)
@@ -453,7 +476,7 @@ def run():
                   'model/native_modular_reference/test_history_clock.py',
                   'model/native_modular_reference/cap_local_clock.py',
                   'model/native_modular_reference/local_history.py'))
-    return {'schema': 'oph.native_modular_reference.history_clock.v1',
+    return {'schema': SCHEMA,
             'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sorted(paths)},
             'parameter': str(PARAMETER), 'source_budget': budget,
             'finite_preparation': transport.preparation_certificate(PARAMETER),
@@ -480,8 +503,27 @@ def run():
 
 def compare_receipt(supplied, actual):
     full.corner.compare_receipt(supplied, actual)
+    for supplied_row, actual_row in zip(supplied['histories'], actual['histories'], strict=True):
+        variation = math.fsum(abs(a['probability']-b['probability'])
+                              for a, b in zip(supplied_row['records'], actual_row['records'], strict=True))/2
+        if variation > NUMERICAL_DIAGNOSTIC_GATE:
+            raise ValueError('complete clock probability replay exceeds its total-variation allowance')
     for value in (supplied, actual):
+        if value['schema'] != SCHEMA:
+            raise ValueError('canonical clock residual-interval schema required')
+        for bound in (value['source_budget']['complete_history_halfdiamond_upper'],
+                      value['complete_preparation_history_halftrace_upper']):
+            try:
+                compatible = type(bound) is str and F(bound) >= F(NUMERICAL_RESIDUAL_CEILING)
+            except (ValueError, ZeroDivisionError):
+                compatible = False
+            if not compatible:
+                raise ValueError('scientific bound must contain the retained numerical residual interval')
         for row in value['histories']:
+            for key in RESIDUAL_INTERVAL_FIELDS:
+                if (type(row[key]) is not dict
+                        or row[key] != {'lower': '0', 'upper': NUMERICAL_RESIDUAL_CEILING}):
+                    raise ValueError('canonical numerical residual interval required')
             p = [r['probability'] for r in row['records']]
             if (any(type(v) not in (int, float) or not math.isfinite(v) or v < 0 for v in p)
                     or abs(sum(p)-1) > NUMERICAL_DIAGNOSTIC_GATE
@@ -489,15 +531,6 @@ def compare_receipt(supplied, actual):
                     or min(row['wrong_fixed_reference_record_variation_diagnostic'],
                            row['nonzero_clock_record_variation_diagnostic']) <= 1e-5):
                 raise ValueError('complete clock probabilities or distinguishing controls changed')
-            for key in ('source_complete_halftrace_error_diagnostic', 'untouched_reference_source_error_diagnostic'):
-                if not 0 <= row[key] <= float(F(value['source_budget']['complete_history_halfdiamond_upper'])):
-                    raise ValueError('source history diagnostic violates its own budget')
-            for key in ('before_after_covariance_error_diagnostic', 'untouched_reference_covariance_error_diagnostic'):
-                if not 0 <= row[key] <= NUMERICAL_DIAGNOSTIC_GATE:
-                    raise ValueError('modular covariance diagnostic fails its own gate')
-            if not 0 <= row['complete_preparation_history_error_diagnostic'] <= float(
-                    F(value['complete_preparation_history_halftrace_upper'])):
-                raise ValueError('complete preparation diagnostic fails its own gate')
 
 
 def main():

@@ -125,6 +125,49 @@ def test_exact_budget_includes_outward_deadlines_selector_loss_and_normalization
     assert b["controller_register_bits_subtotal"] == sum(b["controller_register_bits"].values()) == 51
 
 
+def test_public_reference_mutation_cannot_strengthen_the_preparation_certificate():
+    from . import history_transport
+    expected = history_transport.preparation_certificate()
+    # Fraction deepcopy aliases its input; mutate the actual returned slots.
+    for weight in p.reference():
+        weight._numerator, weight._denominator = 1, 1
+    assert history_transport.preparation_certificate() == expected
+    assert sum(p.reference()) == 1
+    assert min(p.reference()) == F(2, 225)
+
+
+def test_public_budget_and_schedule_mutation_cannot_change_subsequent_history_bounds():
+    from . import history_transport
+    expected_budget = p._json(p.budget())
+    expected_certificate = history_transport.exact_certificate()
+    returned = p.budget()
+    returned["completion_incident_fraction"]._numerator = 1
+    returned["completion_incident_fraction"]._denominator = 1
+    weights, fraction, gap = p._schedule()
+    weights.clear()
+    fraction._numerator, fraction._denominator = 1, 1
+    gap._numerator, gap._denominator = 1, 1
+    assert p._json(p.budget()) == expected_budget
+    assert history_transport.exact_certificate() == expected_certificate
+    assert p.budget()["total_native_attempts_upper"] == 659460352
+
+
+def test_schedule_rechecks_actual_native_menu_not_only_fraction_and_gap(monkeypatch):
+    encoded, fraction, gap = p._schedule_payload()
+    weights = {edge: F(n, d) for edge, n, d in encoded}
+    remote = [edge for edge in weights if not set(edge).intersection(p.CAPS[0])]
+    a, b = remote[:2]
+    delta = min(weights[a], weights[b])/2
+    weights[a] += delta
+    weights[b] -= delta
+    forged = tuple((edge, w.numerator, w.denominator) for edge, w in sorted(weights.items()))
+    # The wrong law keeps unit mass, the incident fraction and the claimed gap.
+    assert sum(weights.values()) == 1
+    monkeypatch.setattr(p, "_schedule_payload", lambda: (forged, fraction, gap))
+    with pytest.raises(ArithmeticError, match="schedule premises"):
+        p.budget()
+
+
 @pytest.mark.parametrize("law", ("C", "E"))
 def test_literal_complete_reference_history_includes_coherent_failure_channels(law):
     rho = _entangled_input()

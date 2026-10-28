@@ -72,8 +72,8 @@ def _dyadic_upper(value, bits=80):
 
 
 @lru_cache(maxsize=1)
-def reference():
-    """The exact E_CORE of the incident-movement Palm reference."""
+def _reference_payload():
+    """Own immutable scalars after the source derivation has been checked."""
     raw, completed, q = incident.reference(CORE)
     expected = (F(2, 225), F(1, 36), F(2, 45))
     basis = native.states(binary=True)
@@ -81,18 +81,43 @@ def reference():
             or any(w != expected[sum(x[p] for p in CORE)]
                    for x, w in zip(basis, completed, strict=True))):
         raise ArithmeticError("source-derived common local reference changed")
-    return completed
+    return tuple((w.numerator, w.denominator) for w in completed)
+
+
+def reference():
+    """The exact E_CORE reference, with no mutable cached Fraction aliases."""
+    return tuple(F(n, d) for n, d in _reference_payload())
 
 
 @lru_cache(maxsize=1)
-def _schedule():
+def _schedule_payload():
     core, weights, cert = common_caps.cap_schedule()
     if core != CORE:
         raise ArithmeticError("mixed cap schedule lost its protected core")
     p = sum((w for e, w in weights.items() if set(e).intersection(CAPS[0])), F())
     if p != F(5, 24) or F(cert["gap_lower_per_attempt"]) != F(1, 600):
         raise ArithmeticError("source-derived mixed incident fraction or gap changed")
-    return weights, p, F(cert["gap_lower_per_attempt"])
+    gamma = F(cert["gap_lower_per_attempt"])
+    return (tuple((edge, w.numerator, w.denominator) for edge, w in sorted(weights.items())),
+            (p.numerator, p.denominator), (gamma.numerator, gamma.denominator))
+
+
+def _schedule():
+    """Detach cached values and check the actual declared native seam menu."""
+    encoded, fraction, gap = _schedule_payload()
+    weights = {edge: F(n, d) for edge, n, d in encoded}
+    p, gamma = F(*fraction), F(*gap)
+    expected = {}
+    seams = quantum_mixing.seams()
+    for cap in CAPS:
+        available = tuple(edge for edge in seams if not set(edge).intersection(cap))
+        for edge in available:
+            expected[edge] = expected.get(edge, F())+F(1, len(CAPS)*len(available))
+    incident_fraction = sum((w for edge, w in weights.items() if set(edge).intersection(CAPS[0])), F())
+    if (weights != expected or p != incident_fraction or p != F(5, 24)
+            or gamma != F(1, 600)):
+        raise ArithmeticError("source-derived mixed schedule premises changed")
+    return weights, p, gamma
 
 
 def selectors(rounds=32):
