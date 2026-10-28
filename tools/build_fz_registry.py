@@ -59,7 +59,7 @@ except ModuleNotFoundError:  # Support importlib loading from repository tests.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from verify_bitcoin_upgrade_receipt import RECEIPT as BITCOIN_UPGRADE_RECEIPT
 from verify_bitcoin_upgrade_receipt import verify as verify_bitcoin_upgrade_receipt
-from closed_lanes import is_open
+from closed_lanes import is_open, live_owner
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
@@ -2131,9 +2131,9 @@ def validate(register: dict) -> list[dict]:
     fz03 = rows_by_id.get("FZ-03", {})
     if (
         fz03.get("status") != "registered_pending_freeze"
-        or fz03.get("owning_issue") != 1025
+        or fz03.get("owning_issue") != live_owner(1025)
     ):
-        fail("FZ-03 must remain pending under the open test owner issue #1025")
+        fail(f"FZ-03 must remain pending under the open test owner issue #{live_owner(1025)}")
 
     fz05 = rows_by_id.get("FZ-05", {})
     if (
@@ -2142,10 +2142,10 @@ def validate(register: dict) -> list[dict]:
         or "retrospective" not in fz05.get("comparison_protocol", "").lower()
         or not all(
             issue in fz05.get("kill_band", "")
-            for issue in ("#729", "#736", "#1026", "#1025")
+            for issue in ("#729", "#736", f"#{live_owner(1026)}", f"#{live_owner(1025)}")
         )
         or "historical lane" not in fz05.get("content", "")
-        or fz05.get("owning_issue") != 1025
+        or fz05.get("owning_issue") != live_owner(1025)
     ):
         fail(
             "FZ-05 must keep the capacity, common-tower, comparison, and "
@@ -3120,14 +3120,14 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
         "preregistered and are ineligible as validation. The branch has no "
         "source-produced public quantum instrument or prospective observable; "
         "the complex effect, operational-additivity, and instrument continuation, "
-        "scoped under the historical lane #730, is owned by #1026. The B12 "
+        f"scoped under the historical lane #730, is owned by #{live_owner(730)}. The B12 "
         "source-realization result likewise emits no row: in "
         "addition to its nonreversible H-theorem probe, an exact spectral and "
         "empirical-denominator obstruction rules out the hoped-for common "
         "reference through two exact direct mechanisms on the current artifact. "
         "The stochastic, nonlinear, dilated, and enriched replacement "
         "source/collar/tail routes, scoped under the historical premise program "
-        "#739, are owned by #1026; energy-clock calibration "
+        f"#739, are owned by #{live_owner(739)}; energy-clock calibration "
         "is empirical import PR-15. No observable "
         "or prospective decision rule is fixed. B14's "
         "oriented-face nearest-compact comparison is robust in the three added "
