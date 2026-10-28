@@ -476,7 +476,7 @@ def source_bindings():
     paths.add(Path(__file__))
     paths.update(ROOT/name for name in ("model/common_source/chiral_candidate/test_record_two_point.py",
         "model/common_source/hierarchy_diagnosis/audit.py", "model/common_source/replay.py", "tools/strict_json.py"))
-    return {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(paths)}
+    return {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(paths)}
 
 
 def main():

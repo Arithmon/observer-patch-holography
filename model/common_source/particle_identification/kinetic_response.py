@@ -127,7 +127,7 @@ def report():
     root = source.parents[3]
     sources = [source, source.with_name("response.py"), source.parent.parent/"mass_response/model.py"]
     return {"schema": "oph.finite_car_inverse_kinetic.v1",
-            "source_sha256": {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
+            "source_sha256": {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
             "rows": rows,
             "frequency_parameter": "complex frequency conjugate to programmed ring model parameter",
             "all_spectral_residues_retained": True,

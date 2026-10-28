@@ -113,7 +113,7 @@ def report():
              HERE/"adaptive_reference.py", HERE/"family.py"]
     return {"schema": "oph.completion.observer_reference.v1", "gate": "CP-02",
             "status": "EXACT_FINITE_REFERENCE_JOIN_GATE_OPEN", "campaign": binding(),
-            "source_sha256": {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+            "source_sha256": {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                               for path in files},
             "quotient_reference": "stationary_reference.run(): exact129-support source/bit stationary law",
             "observer_parameters": {"repair_probability": "1", "exploration_probability": "1/2",

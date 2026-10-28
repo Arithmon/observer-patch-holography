@@ -39547,7 +39547,7 @@
     "model/common_source/chiral_candidate/history.py": "265e73ac87321ebd514b97af2c7c4c0bb376144f60e53d10bfd46662ce2d8db4",
     "model/common_source/chiral_candidate/kinetic.py": "ef6e5199ded96f6249076732603749809c9e623b1249f80efc97bc6b7d9fccb5",
     "model/common_source/chiral_candidate/protected_momentum.py": "2f1cd04f7c1d504b2ba6d9c4f1e32c4a825016e92b928af774edfbba6bd3aece",
-    "model/common_source/chiral_candidate/record_two_point.py": "6f38967b428fca9b8b4b0f5bce2d4a52975a00505121237463c42194b4af0359",
+    "model/common_source/chiral_candidate/record_two_point.py": "4d36032bd94f4e66690cc1c2e45b17a21e80713f29401db9a94f415f758f4826",
     "model/common_source/chiral_candidate/test_protected_momentum.py": "40316d2e9f5cdd9ce3522752c3044ddb4df85d0180579a57721bff7c027f253b",
     "model/common_source/chiral_candidate/test_record_two_point.py": "433b1eaf419f5b9fcdc41b661a5cc7fd2fedae6e17671ada149dbc714fc5615e",
     "model/common_source/continuation_bounds.py": "138454651b9afca881f9b08f47dd27027bbd26f5410503293f654b35e0bdfd6c",

@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "b4f2927ca6ae047553c1d0b0897c34143bfa7bbb0409284f89e2d23b0e8d9446",
-      "claims/completion_program.json": "d19b245627e8aae06889164f3b6bd8ea074919b261f2df4025696b7c7290c2eb",
+      "claims/completion_program.json": "f95692d5129d27e3a9cbd079d1bcdaa48699d432ed56cf0df473b5bff7b5fff8",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -215,7 +215,7 @@
             "independent_check": "model/completion/test_observer.py",
             "path": "model/completion/observer_results.json",
             "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
-            "sha256": "f7d4623dfed41cb40ec254cf43c3542faa4227b6690f8552bb055f94f9ec7c98"
+            "sha256": "d8f70c94e6e7ee4e55480e719cd18bc663cca02a17f575a0e1fa1e298e054bbd"
           },
           {
             "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
@@ -239,7 +239,7 @@
             "independent_check": "model/completion/test_observer_reference.py",
             "path": "model/completion/observer_reference_results.json",
             "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
-            "sha256": "93cf85341543063cefe57a274e8b89bc3ce5f17bd7018f8f23787507f2d1fa50"
+            "sha256": "209a86b71a9fda5c34070f3ec13ecf1d15d78b831b3bcff3990c1f1bd8d249e5"
           },
           {
             "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
@@ -247,7 +247,7 @@
             "independent_check": "model/completion/test_modular_access.py",
             "path": "model/completion/modular_access_results.json",
             "scope": "Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.",
-            "sha256": "1a89d224e31fd2815e132465de5a45eda866ad0ece5c14a38e969f4c05beaced"
+            "sha256": "25d878e8c66dbc0c34ac8d0fee4f0cce7fd8ab1f2e32475c8af75f88e34f22ce"
           },
           {
             "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
@@ -413,7 +413,7 @@
               "independent_check": "model/completion/test_observer.py",
               "path": "model/completion/observer_results.json",
               "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
-              "sha256": "f7d4623dfed41cb40ec254cf43c3542faa4227b6690f8552bb055f94f9ec7c98"
+              "sha256": "d8f70c94e6e7ee4e55480e719cd18bc663cca02a17f575a0e1fa1e298e054bbd"
             }
           ],
           "requires": [
@@ -512,14 +512,14 @@
               "independent_check": "model/completion/test_observer_reference.py",
               "path": "model/completion/observer_reference_results.json",
               "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
-              "sha256": "93cf85341543063cefe57a274e8b89bc3ce5f17bd7018f8f23787507f2d1fa50"
+              "sha256": "209a86b71a9fda5c34070f3ec13ecf1d15d78b831b3bcff3990c1f1bd8d249e5"
             },
             {
               "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
               "independent_check": "model/completion/test_modular_access.py",
               "path": "model/completion/modular_access_results.json",
               "scope": "Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.",
-              "sha256": "1a89d224e31fd2815e132465de5a45eda866ad0ece5c14a38e969f4c05beaced"
+              "sha256": "25d878e8c66dbc0c34ac8d0fee4f0cce7fd8ab1f2e32475c8af75f88e34f22ce"
             }
           ],
           "requires": [
@@ -1094,7 +1094,7 @@
   },
   "fixed_spectral_cross_scale_comparison": {
     "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
-    "artifact_sha256": "571093dc5b04652ea14d4ab3d07099ea30b5643f186469653721d0453bcf6323",
+    "artifact_sha256": "3038cbfc3e78e86a7f06c7ed3ae22c78fd7a93252e1cf550d23178d0836013e6",
     "attribution": {
       "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
       "author": "A. D. Wissner-Gross",
@@ -1201,7 +1201,7 @@
     "parents": {
       "chiral": {
         "path": "model/common_source/chiral_candidate/results.json",
-        "sha256": "5735ae90b004c13a06c297dde35fe1e11da9e5a348b6d85abd2be0707ed6c95a"
+        "sha256": "942d4c65c0ccf19269d16d7b7cf6a6b81a356b629f4c7c26431b65816973e28b"
       },
       "native": {
         "path": "model/common_source/native_defect_decision_results.json",
@@ -1209,11 +1209,11 @@
       },
       "particle": {
         "path": "model/common_source/particle_identification/results.json",
-        "sha256": "7c30d76bd50f65d97b632d91477ee2591aaea55a12089bcb33f4e1b875dbab6f"
+        "sha256": "65ba6e5a40a612bf2d7596b8e030f0a41895e20113d75d8275070115584b9e1b"
       },
       "record": {
         "path": "model/common_source/chiral_candidate/record_two_point_results.json",
-        "sha256": "bbcfc0b28a14dd96a0cbb79919e40c24989f4b9937e2796c3cd833f07bf46628"
+        "sha256": "0d40f404a98162ef0393b64147ee7cf5480f270ed7432d4303c1e06c70dd82e5"
       }
     },
     "replay_owner": "python -m model.verify",
