@@ -1,5 +1,5 @@
 ## Lake dependency checkouts and compiled build products are reproducible local state.
 ## Never commit them: individual proof packages may also contain their own `.lake`.
-/.lake/
-**/.lake/
+/.lake
+**/.lake
 /lake-build.log
