@@ -284,6 +284,12 @@ REPLAYS = (
      "model/native_equilibration/wedge_modular_results.json"),
     ("model.common_source.native_response_compatibility", None,
      "model/common_source/native_response_compatibility_results.json"),
+    ("model.particle_screening.screening", None,
+     "model/particle_screening/screening_results.json"),
+    ("model.active_code_energy.energy_bridge", None,
+     "model/active_code_energy/energy_bridge_results.json"),
+    ("model.clock_defect_energy.clock_count_inference", None,
+     "model/clock_defect_energy/clock_count_inference_results.json"),
 )
 
 
