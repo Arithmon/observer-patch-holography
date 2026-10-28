@@ -80,6 +80,10 @@ def test_every_new_research_receipt_has_a_canonical_replay():
         ('model.common_source.native_field_history', None, 'model/common_source/native_field_history_results.json'),
         ('model.common_source.native_charged_spectrum', None, 'model/common_source/native_charged_spectrum_results.json'),
         ('model.native_equilibration.wedge_modular', None, 'model/native_equilibration/wedge_modular_results.json'),
+        ('model.screened_recovery.experiment', None, 'model/screened_recovery/screened_recovery_results.json'),
+        ('model.conserved_sector_action.sector_action', None, 'model/conserved_sector_action/sector_action_results.json'),
+        ('model.clock_defect_energy.shared_event_clock.run', None, 'model/clock_defect_energy/shared_event_clock/results.json'),
+        ('model.screened_transport.transport', None, 'model/screened_transport/transport_results.json'),
     }.issubset(verify.REPLAYS)
 
 
@@ -98,17 +102,42 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         sources = receipt['source_sha256']
         assert prefix + module + '.py' in sources
         assert prefix + campaign_name in sources
+    successors = {
+        'screened_recovery': ('experiment', 'screened_recovery_results.json'),
+        'conserved_sector_action': ('sector_action', 'sector_action_results.json'),
+        'screened_transport': ('transport', 'transport_results.json'),
+    }
+    for packet, (module, receipt_name) in successors.items():
+        prefix = f'model/{packet}/'
+        receipt_path = prefix + receipt_name
+        assert (f'model.{packet}.{module}', None, receipt_path) in verify.REPLAYS
+        receipt = json.loads((verify.ROOT/receipt_path).read_text())
+        sources = receipt['source_sha256']
+        assert prefix + module + '.py' in sources
+        assert prefix + 'campaign.json' in sources
+    clock_prefix = 'model/clock_defect_energy/shared_event_clock/'
+    clock_receipt = clock_prefix + 'results.json'
+    assert ('model.clock_defect_energy.shared_event_clock.run', None, clock_receipt) in verify.REPLAYS
+    clock_sources = json.loads((verify.ROOT/clock_receipt).read_text())['source_sha256']
+    assert clock_prefix + 'run.py' in clock_sources
+    assert clock_prefix + 'campaign.json' in clock_sources
     workflow = yaml.safe_load((verify.ROOT/'.github/workflows/completion-program.yml').read_text())
     events = workflow.get('on', workflow.get(True))
     for event in ('push', 'pull_request'):
         paths = events[event]['paths']
         assert 'model/particle_screening/**' in paths
         assert 'model/active_code_energy/**' in paths
+        assert 'model/screened_recovery/**' in paths
+        assert 'model/conserved_sector_action/**' in paths
+        assert 'model/screened_transport/**' in paths
         assert 'model/clock_defect_energy/**' in paths
     commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
     pytest_command, = (command for command in commands if 'python -m pytest' in command)
     assert 'model/particle_screening' in pytest_command
     assert 'model/active_code_energy' in pytest_command
+    assert 'model/screened_recovery' in pytest_command
+    assert 'model/conserved_sector_action' in pytest_command
+    assert 'model/screened_transport' in pytest_command
     assert 'model/clock_defect_energy' in pytest_command
 
 
