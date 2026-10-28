@@ -6727,7 +6727,7 @@
     "source_bindings": {
       "code/m1_source_realization/receipt.json": "a9c93af99d861cd045614311b0f41ee0012a7c9f36dcbb815f6ab61d30e6d4ff",
       "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
-      "docs/INTERPRETATION_AND_TERMS.md": "4ee0cb28b82118a60ea94eb834cc2f1da1b19c9bfe00feeeea675242321fa780",
+      "docs/INTERPRETATION_AND_TERMS.md": "d7ced4cd1b1480b228037e960250c87f47bf57bc59232207b1050806aaa1f19f",
       "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
       "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
       "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/__init__.py": "3ceeb20c7231ce9f8d3002529c5416523986dd9c79ea963b2e314bd13364726e",
@@ -11278,7 +11278,7 @@
     "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "code/yang_mills/manifests/physical_compact_gauge_uninstantiated.json": "e512c4a67dc627789bd0450fedabfdc1dc81765021bc0b3eaab12763c7df979a",
-    "docs/INTERPRETATION_AND_TERMS.md": "4ee0cb28b82118a60ea94eb834cc2f1da1b19c9bfe00feeeea675242321fa780",
+    "docs/INTERPRETATION_AND_TERMS.md": "d7ced4cd1b1480b228037e960250c87f47bf57bc59232207b1050806aaa1f19f",
     "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
     "docs/research/OPH_PARTICLE_MASS_RESPONSE.md": "3837d50595bc66801658a1caca430af74201a284dd7f4bfb5405ae075577a4bf",
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",

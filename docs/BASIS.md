@@ -27,9 +27,7 @@ The equation is schematic until a candidate specifies the history domain and
 the action of `T`. Existence, uniqueness and the identification of our
 Universe with such a fixed point are open questions of the programme. The
 [working terms](INTERPRETATION_AND_TERMS.md) distinguish complete history,
-instantaneous fixed state, stationary distribution and continuing regime, and
-[Essay B](../essays/B-why-does-anything-exist.tex) develops the hypothesis
-philosophically.
+instantaneous fixed state, stationary distribution and continuing regime.
 
 ## The no-outside rule
 
