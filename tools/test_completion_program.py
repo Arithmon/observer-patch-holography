@@ -143,8 +143,8 @@ def test_next_wave_uses_four_existing_owners_without_acceptance_promotion(fixtur
     data, hypothesis = program.load_program(fixture_root)
     wave = data["next_wave"]
     assert {(row["gate"], row["issue"]) for row in wave["owners"]} == {
-        ("CP-00", 1135), ("CP-01", 1136), ("CP-02", 1138), ("CP-03", 1139)}
-    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-13", "CP-12"}
+        ("CP-01", 1136), ("CP-02", 1138), ("CP-03", 1139), ("CP-04", 1140)}
+    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-00", "CP-13", "CP-12"}
     assert not wave["changes_frozen_campaign"]
     assert not wave["successor_class_frozen"]
     assert wave["physical_comparison_count_added"] == 0
@@ -203,4 +203,59 @@ def test_readiness_distinguishes_work_underway_from_acceptance_dependencies(fixt
     not_started = deepcopy(by_id["CP-00"])
     not_started["status"] = "OPEN"
     assert program.readiness(not_started, data) == "Ready to start"
-    assert program.readiness(by_id["CP-04"], data) == "Awaiting CP-02, CP-03"
+    assert program.readiness(by_id["CP-04"], data) == "In progress; acceptance awaiting CP-02, CP-03"
+
+
+def test_finite_diagnostics_register_progress_without_integrated_acceptance(fixture_root):
+    data, _ = program.load_program(fixture_root)
+    diagnostics = [row for row in data["component_campaigns"]
+                   if row["scope"] == "FINITE_COMPONENT_DIAGNOSTICS"]
+    assert len(diagnostics) == 2
+    by_id = {stage["id"]: stage for stage in data["stages"]}
+    for diagnostic in diagnostics:
+        assert {"CP-00", "CP-01", "CP-02", "CP-03", "CP-04"} <= set(diagnostic["supports"])
+        for gate in ("CP-01", "CP-02", "CP-03", "CP-04"):
+            stage = by_id[gate]
+            assert stage["status"] == "IN_PROGRESS" and not stage["accepted_evidence"]
+            assert any(row["campaign_id"] == diagnostic["id"] for row in stage["progress_evidence"])
+    theorem_join = next(row for row in diagnostics if "CP-13" in row["supports"])
+    review = by_id["CP-13"]
+    assert review["status"] == "IN_PROGRESS" and not review["accepted_evidence"]
+    paths = {row["path"] for row in review["progress_evidence"]
+             if row["campaign_id"] == theorem_join["id"]}
+    assert {"model/clock_defect_energy/defect_history_results.json",
+            "model/clock_defect_energy/mode_energy_results.json"} <= paths
+
+
+@pytest.mark.parametrize("damage", ["unknown_scope", "contract_scope", "gate_promotion",
+                                  "changed_family", "unfrozen_boundary"])
+def test_diagnostic_contract_cannot_change_scope_even_with_updated_hash(fixture_root, damage):
+    data = json.loads((fixture_root / program.PROGRAM).read_text())
+    diagnostic = next(row for row in data["component_campaigns"]
+                      if row["scope"] == "FINITE_COMPONENT_DIAGNOSTICS")
+    path = fixture_root / diagnostic["contract"]["path"]
+    contract = json.loads(path.read_text())
+    if damage == "unknown_scope":
+        diagnostic["scope"] = contract["scope"] = "PHYSICAL_PROGRAM"
+    elif damage == "contract_scope":
+        contract["scope"] = "FINITE_COMPONENT_FAMILY"
+    elif damage == "gate_promotion":
+        contract["integrated_gate_accepted"] = True
+    elif damage == "changed_family":
+        contract["native_family_changed"] = True
+    else:
+        contract["boundary_status"] = "OPEN"
+    path.write_text(json.dumps(contract))
+    # Refresh every occurrence so this tests semantic scope, not stale custody.
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    diagnostic["contract"]["sha256"] = digest
+    for stage in data["stages"]:
+        for row in stage.get("progress_evidence", []):
+            if row["path"] == diagnostic["contract"]["path"]:
+                row["sha256"] = digest
+    for row in data["next_wave"]["evidence"]:
+        if row["path"] == diagnostic["contract"]["path"]:
+            row["sha256"] = digest
+    (fixture_root / program.PROGRAM).write_text(json.dumps(data))
+    with pytest.raises(ValueError):
+        program.load_program(fixture_root)

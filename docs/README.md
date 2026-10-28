@@ -127,9 +127,24 @@ admitted real operations cannot implement the tested nontrivial modular
 action on the fixed full support algebra. The
 [branch proof](../model/completion/defect_algebra.md) and
 [clock-access proof](../model/completion/MODULAR_ACCESS.md) state the domains
-and controls. The [four next construction tasks](../model/README.md)
-cover the successor contract, observer resources, accessible clock algebra
-and a localized matter sector; they add no physical confirmation.
+and controls. The [finite clock, defect and energy campaigns](../model/clock_defect_energy/README.md)
+extend this work under separate source-bound contracts. Their
+[continuation](../model/clock_defect_energy/CONTINUATION.md),
+[clock-reference](../model/clock_defect_energy/CLOCK_WAVE.md),
+[localization](../model/clock_defect_energy/LOCALIZED.md) and
+[activity/energy](../model/clock_defect_energy/ENERGY.md) tests delimit specific
+candidate joins. Existing native-return clocks and operational field bridges
+retain their positive results.
+
+Four constructive applications build on those tests:
+[all-core clock services](../model/clock_defect_energy/CLOCK_SERVICES.md),
+a [complete joint clock/field experiment](../model/clock_defect_energy/JOINT_CLOCK.md),
+an [integral exchange-history class](../model/clock_defect_energy/DEFECT_HISTORY.md),
+and a [native current form with independent mode inertia](../model/clock_defect_energy/MODE_ENERGY.md).
+The history class supplies neither a protected particle nor a fermionic phase;
+the mode response supplies no defect mass or gravitational stress. The
+[completion plan](COMPLETION_PROGRAM.md) tracks the shared remaining joins.
+These finite results add no physical comparison or integrated gate acceptance.
 
 The [model–theorem premise map](../model/PREMISES.md) connects the candidate
 to existing theorem premises and their closure conditions. It is generated

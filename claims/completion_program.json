@@ -34,8 +34,8 @@
       "id": "F-02",
       "title": "Candidate observer clocks with an implemented modular-flow relation",
       "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY",
-      "achieved": "Finite faithful-reference preparation and active modular histories provide continuing clock/readout constructions. On the declared Gibbs product branch, modular flow equals the rescaled Hamiltonian flow and clocked field measurements share that reference.",
-      "boundary": "Reference/access choice, compiled controls and branch-specific clock conversion remain explicit. Passive repair, every regional modular flow and a physical laboratory duration are not thereby identified.",
+      "achieved": "Finite faithful-reference preparation and active modular histories provide continuing clock/readout constructions. Native-return histories reconstruct a reference proportional to exp(-arccos K), with finite-cap errors; complete native quadrature records support operational parameter inference. On the declared Gibbs product branch, modular flow equals the rescaled Hamiltonian flow and clocked field measurements share that reference.",
+      "boundary": "Reference/access choice, compiled controls and branch-specific clock conversion remain explicit. The native-return reconstructed reference is not its coherent preparation, and matching phase magnitudes does not execute every modular intervention. Passive repair, every regional modular flow and physical laboratory duration are not thereby identified.",
       "supports": [
         "CP-02",
         "CP-04",
@@ -44,7 +44,10 @@
       "evidence": [
         "model/native_modular_reference/results.json",
         "model/observer_time_fields/README.md",
-        "model/observer_time_fields/continuum_dynamics.py"
+        "model/observer_time_fields/continuum_dynamics.py",
+        "model/observer_time_fields/wave_reference.py",
+        "model/observer_time_fields/wave_reference_results.json",
+        "model/native_modular_reference/phase_inference.py"
       ]
     },
     {
@@ -139,6 +142,20 @@
           "independent_check": "model/completion/test_family.py",
           "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/campaign.json",
+          "sha256": "4bd2fe9e3905f66170587af34bffbd5328f98d6cd7f26392eb541aaeb9ed9910",
+          "independent_check": "model/clock_defect_energy/test_contract.py",
+          "scope": "Frozen finite component diagnostics on the unchanged C/E family and the pinned pending PR1149 input. Reference transport, clock/wave comparison, adjacent-pair localization and maintenance-energy tests retain separate premises; no integrated gate or physical comparison is accepted.",
+          "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/joins_campaign.json",
+          "sha256": "74f90725265ede3c439ac43ea2bed9987ef97824da242ceb90fce1a3ac5b8113",
+          "independent_check": "model/clock_defect_energy/test_joins_contract.py",
+          "scope": "Frozen finite theorem applications and explicit service extension on the unchanged native C/E law: all-core compiled clock coverage, joint event-clock/field records, native history exchange topology and current/action-mode comparisons. Prior diagnostics and their limited service menu remain retained.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         }
       ]
     },
@@ -167,7 +184,9 @@
         "model/observer/README.md",
         "model/common_source/DERIVATION.md",
         "model/native_interface/README.md",
-        "model/native_modular_reference/history_clock_results.json.gz"
+        "model/native_modular_reference/history_clock_results.json.gz",
+        "model/clock_defect_energy/continuation_results.json",
+        "model/clock_defect_energy/clock_services_results.json"
       ],
       "legacy_issues": [
         1077,
@@ -182,6 +201,20 @@
           "independent_check": "model/completion/test_observer.py",
           "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/continuation_results.json",
+          "sha256": "41214266e32182287a39d340013da0c02277b6e934a3cf0f61023e73847423b7",
+          "independent_check": "model/clock_defect_energy/test_continuation.py",
+          "scope": "Exact binary66 transported-core metadata through 24-attempt C/E and delayed-mixture FIFO continuation, with arbitrary-reference branch identities, 23 exports, last-record ambiguity controls and explicit unavailable clock-service outcomes. No new clock word or memory hardware is executed.",
+          "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_services_results.json",
+          "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+          "independent_check": "model/clock_defect_energy/test_clock_services.py",
+          "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         }
       ]
     },
@@ -228,6 +261,34 @@
           "independent_check": "model/completion/test_theorem_map.py",
           "scope": "Eleven actual theorem/model mappings with twelve source bindings; fixed-mixture stationarity is distinguished from correlated adaptive scheduling, and all downstream physical premises remain explicit.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_services_results.json",
+          "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+          "independent_check": "model/clock_defect_energy/test_clock_services.py",
+          "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/joint_clock_results.json",
+          "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+          "independent_check": "model/clock_defect_energy/test_joint_clock.py",
+          "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/defect_history_results.json",
+          "sha256": "0ced18cac6d71e15d4231d071f2816b428268944122052aa3ee70975682b0fc3",
+          "independent_check": "model/clock_defect_energy/test_defect_history.py",
+          "scope": "Exact Z2 first-homology/exchange class on the native two-particle configuration graph under the declared elementary history deformations, with positive complete C/E path witnesses. This is a history invariant, not a source-only protecting charge, fermionic phase or autonomously stable localized particle.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/mode_energy_results.json",
+          "sha256": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
+          "independent_check": "model/clock_defect_energy/test_mode_energy.py",
+          "scope": "Derives a positive native-current quadratic form and verifies its port/incidence theorem map. In the separately declared product-field source, independent rest-gap and moving-symbol curvature tests give a finite pulse correction approaching the mass-shell ratio one under subdivision. This does not assign that action, physical mass or gravitational stress to the history excitation.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         }
       ]
     },
@@ -256,7 +317,9 @@
         "model/common_source/THERMAL_CLOCK.md",
         "model/common_source/modular_covariance.py",
         "model/native_modular_reference/history_transport.py",
-        "model/native_modular_reference/history_clock_results.json.gz"
+        "model/native_modular_reference/history_clock_results.json.gz",
+        "model/clock_defect_energy/clock_wave_results.json",
+        "model/clock_defect_energy/joint_clock_results.json"
       ],
       "legacy_issues": [
         1077,
@@ -291,6 +354,20 @@
           "independent_check": "model/completion/test_modular_access.py",
           "scope": "Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_wave_results.json",
+          "sha256": "bd24d505b15b2b041b9a8e3bf7b12a0623d603b12a5350d42f93902e490dcdc2",
+          "independent_check": "model/clock_defect_energy/test_clock_wave.py",
+          "scope": "Replays the existing native-return reconstruction sigma_wave proportional to exp(-arccos K), finite-cap bounds and complete quadrature-record clock inference, with a conditional clock-to-wave uncertainty map. The negative checks reject substituting PR1149's different three-charge reference into that dictionary; they imply neither a general clock/wave obstruction nor a executed joint instrument or physical calibration.",
+          "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/joint_clock_results.json",
+          "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+          "independent_check": "model/clock_defect_energy/test_joint_clock.py",
+          "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         }
       ]
     },
@@ -317,7 +394,9 @@
       "evidence": [
         "model/common_source/native_defect_decision.py",
         "model/common_source/native_defect_decision_results.json",
-        "docs/research/OPH_FIELD_RECONSTRUCTION.md"
+        "docs/research/OPH_FIELD_RECONSTRUCTION.md",
+        "model/clock_defect_energy/localized_results.json",
+        "model/clock_defect_energy/defect_history_results.json"
       ],
       "legacy_issues": [
         1026,
@@ -331,6 +410,20 @@
           "independent_check": "model/completion/test_defect_algebra.py",
           "scope": "Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/localized_results.json",
+          "sha256": "0ee75bed020eb2e6f35cdf79699906331251df1e2ca7c7084dcd8e60c38a8fc5",
+          "independent_check": "model/clock_defect_energy/test_localized.py",
+          "scope": "Complete C/E adjacent-pair population diagnostic: uniform mean first exit 15 repairs, mean return 18 repairs, positive-exploration lifetime bound, accounted returns and failed reference-exterior matching. The multi-step first-exit flag is offline population bookkeeping, not added quantum monitoring or a protected topological defect.",
+          "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/defect_history_results.json",
+          "sha256": "0ced18cac6d71e15d4231d071f2816b428268944122052aa3ee70975682b0fc3",
+          "independent_check": "model/clock_defect_energy/test_defect_history.py",
+          "scope": "Exact Z2 first-homology/exchange class on the native two-particle configuration graph under the declared elementary history deformations, with positive complete C/E path witnesses. This is a history invariant, not a source-only protecting charge, fermionic phase or autonomously stable localized particle.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         }
       ]
     },
@@ -346,7 +439,7 @@
         "EMH-3",
         "EMH-4"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1140,
       "deliverable": "One intrinsic action/energy and kinetic response for the same defect, with reference subtraction, clock normalization and an independently justified stress/Ward identity.",
       "acceptance": [
@@ -359,13 +452,31 @@
       "evidence": [
         "model/common_source/particle_identification/kinetic_response.py",
         "model/common_source/native_defect_decision.py",
-        "docs/research/OPH_FIELD_RECONSTRUCTION.md"
+        "docs/research/OPH_FIELD_RECONSTRUCTION.md",
+        "model/clock_defect_energy/energy_results.json",
+        "model/clock_defect_energy/mode_energy_results.json"
       ],
       "legacy_issues": [
         1026,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/clock_defect_energy/energy_results.json",
+          "sha256": "4081d117b8b11d48429349f9de3a343b5a048ae90b6fa3ddc617789fceb515aa",
+          "independent_check": "model/clock_defect_energy/test_energy.py",
+          "scope": "Uniform-seam maintenance-cost ansatz against the uniform background and all four transported preparation-target references, plus native cycle/modular-cost countercontrols and independent relativistic kinetic-action checks. Adjacent-pair excess movement is negative for these declared backgrounds; no arbitrary maintenance action, physical mass or stress law is excluded or derived.",
+          "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/mode_energy_results.json",
+          "sha256": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
+          "independent_check": "model/clock_defect_energy/test_mode_energy.py",
+          "scope": "Derives a positive native-current quadratic form and verifies its port/incidence theorem map. In the separately declared product-field source, independent rest-gap and moving-symbol curvature tests give a finite pulse correction approaching the mass-shell ratio one under subdivision. This does not assign that action, physical mass or gravitational stress to the history excitation.",
+          "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-05",
@@ -663,107 +774,169 @@
         "independent_check": "model/completion/test_family.py",
         "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open."
       }
+    },
+    {
+      "id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+      "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-00",
+        "CP-01",
+        "CP-02",
+        "CP-03",
+        "CP-04"
+      ],
+      "contract": {
+        "path": "model/clock_defect_energy/campaign.json",
+        "sha256": "4bd2fe9e3905f66170587af34bffbd5328f98d6cd7f26392eb541aaeb9ed9910",
+        "independent_check": "model/clock_defect_energy/test_contract.py",
+        "scope": "Frozen finite component diagnostics on the unchanged C/E family and the pinned pending PR1149 input. Reference transport, clock/wave comparison, adjacent-pair localization and maintenance-energy tests retain separate premises; no integrated gate or physical comparison is accepted."
+      }
+    },
+    {
+      "id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+      "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-00",
+        "CP-01",
+        "CP-02",
+        "CP-03",
+        "CP-04",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/clock_defect_energy/joins_campaign.json",
+        "sha256": "74f90725265ede3c439ac43ea2bed9987ef97824da242ceb90fce1a3ac5b8113",
+        "independent_check": "model/clock_defect_energy/test_joins_contract.py",
+        "scope": "Frozen finite theorem applications and explicit service extension on the unchanged native C/E law: all-core compiled clock coverage, joint event-clock/field records, native history exchange topology and current/action-mode comparisons. Prior diagnostics and their limited service menu remain retained."
+      }
     }
   ],
   "next_wave": {
-    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v1",
+    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v3",
     "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
     "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
     "changes_frozen_campaign": false,
     "successor_class_frozen": false,
     "physical_comparison_count_added": 0,
-    "rationale": "The first finite campaign supplies a continuing recorded observer and an actual joint stationary reference. It also excludes nontrivial bare-source reducing charges and the chosen nontrivial modular action under the admitted real operations. The next work must resolve services, operational access and the matter target on one explicitly shared candidate interface. Candidate choices must address those missing joins with explicit maps to the retained evidence.",
+    "rationale": "The successor campaign compiles all 66 transported-core clock services, executes joint native-event clock/field records, identifies a native history exchange class, and derives a positive native-current form with an independent finite field-mode inertia comparison. Each result keeps its finite theorem premises and supplied services. The remaining work connects these components to one localized excitation with the same clock, action, stable records and stress, while preserving the earlier candidate failures and their scope.",
     "shared_interface": {
-      "baseline_campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
-      "baseline_contract": "model/completion/campaign.json",
+      "baseline_campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+      "baseline_contract": "model/clock_defect_energy/joins_campaign.json",
       "same_process_required": true,
       "unilateral_primitive_changes_allowed": false,
       "requirements": [
-        "Use the retained C/E source, complete record instruments, finite controller/FIFO and resource accounting as the common comparison interface; preserve every v1 control and its source binding.",
-        "Declare the same state/reference, accessible algebra, preparations, operations, memory/export services, scheduler, time parameter and composition/refinement domain in all four workstreams.",
-        "A complex phase service, coherent decoder, new defect register or changed branch support is a proposed change of contract. No lane may insert it independently or count it as derived by unchanged C/E repair.",
-        "Prepare analyses and tests on the frozen v1 family in parallel. Any experiment relying on wider primitives or a changed domain waits for the common versioned successor specification; the present plan selects no new law or service.",
-        "Keep the original q=3 scalar history unexecuted and its bounds intact. Preserve the positive modular-clock, conditional 3+1-field, active-memory and Einstein-kernel constructions on their own stated domains."
+        "Use the unchanged C/E source law and the separate finite-theorem-joins contract. Its admitted extension adds 62 parameter-four clock words with counted resources; the earlier four-word unavailable-service receipt remains valid for its original menu.",
+        "Keep pending PR1149 commit 3d282b3d59763fa1a5171ad9a4fbc09fc0abf35a explicit as the predecessor at the campaign boundary. Retain every source hash and the original complete-record and finite-preparation interfaces.",
+        "Specify the actual source/reference, accessible algebra, controls, protected field register, memory/export resources and parameter dictionary at each join. A transported full-shell extension, history posterior corner, stationary source/FIFO state and reconstructed wave reference are distinct objects.",
+        "Reuse finite theorem conclusions only after checking their actual model hypotheses. Native history exchange parity supplies no fermionic phase; a positive record quadratic form supplies no physical action unit; the product-field mode has a separate source and interpretation from the localized history target.",
+        "Count all preparation failures, source exports, field outcomes, core metadata, program ROM/counters and growing archived records. Keep physical apparatus errors separate from exact algebra and certified numerical-word error.",
+        "Preserve existing native-return reconstruction, operational clock/readout, conditional 3+1 fields and Einstein-kernel positives on their own contracts. A shared recorded clock can drive different generators; laboratory duration needs its declared comparison.",
+        "Any further source primitive, monitoring rule, reference preparation, protecting register or changed carrier needs shared CP-00 boundary review before dependent tests. The original q=3 scalar history remains unexecuted and no integrated gate is accepted."
       ]
     },
     "owners": [
       {
-        "gate": "CP-00",
-        "issue": 1135,
-        "title": "Specify one bounded successor contract",
-        "why_now": "The frozen v1 family is narrower than the parent program and has exact access and bare-source charge obstructions.",
-        "deliverable": "A versioned candidate contract or explicit decision to continue v1, naming the admitted service/domain changes, retained C/E controls, observer/clock/defect interfaces, resource and error budgets, and rejection rules before any wider test.",
-        "may_start_now": "Compare the remaining choices against the retained obstructions and obtain the service and matter requirements from the other three owners.",
-        "join_condition": "A successor experiment consumes the same agreed specification. A bounded successor contract does not by itself freeze the entire physical program or accept CP-00.",
-        "evidence": [
-          "family",
-          "modular_access",
-          "defect_algebra"
-        ]
-      },
-      {
         "gate": "CP-01",
         "issue": 1136,
-        "title": "Realize the observer services and accounted continuation",
-        "why_now": "The exact continuing instrument and full-record reference exist, while preparation, access, retention/export and delivery services remain supplied.",
-        "deliverable": "One complete-record/reference continuation demonstrating the chosen preparation, randomization, permitted access, storage/export and observer-to-observer delivery services, with explicit finite budgets, failure outputs and recovery/continuation tests.",
-        "may_start_now": "Inventory each supplied service and derive its smallest executable test and resource contract from the existing observer, without inventing a new field action or clock.",
-        "join_condition": "Implement only the services admitted by the shared contract. Integrated acceptance requires accepted CP-00 and the complete observer/resource domain; a growing exported tape remains counted.",
+        "title": "Extend compiled services through observer continuation",
+        "why_now": "All 66 core-clock words are certified under the explicit successor service contract, and the finite FIFO carries their reference metadata. Memory/export hardware and delivery have separate service premises.",
+        "deliverable": "A longer complete observer protocol joining compiled clocks, preparation, record retention/export and observer-to-observer delivery, with bounded errors, explicit failures and a retained arbitrary-reference comparison.",
+        "may_start_now": "Reuse the all-core source-word certificates and finite CP/covariance results to compose the next complete service test, preserving the source instead of resetting it between records.",
+        "join_condition": "Account for program ROM, source interpreter and environmental archive separately from the repair-policy controller. Physical service implementation and accepted CP-00 remain prerequisites for integrated CP-01.",
         "evidence": [
-          "observer",
-          "record_reference"
+          "joins_contract",
+          "clock_services",
+          "continuation",
+          "joint_clock"
         ]
       },
       {
         "gate": "CP-02",
         "issue": 1138,
-        "title": "Specify accessible algebras and an operational clock",
-        "why_now": "A same-process stationary reference is constructed, but its nontrivial modular action on the fixed full support algebra is obstructed by the frozen real-operation grammar.",
-        "deliverable": "An explicit actual accessible algebra, reference preparation and clock/readout contract, followed by an eligible action/readout witness or a scoped impossibility proof on the agreed interface; state the route to local clock comparison and common energy normalization.",
-        "may_start_now": "Determine which effects and interventions the existing observer can implement, compare the full-support obstruction with that operational domain, and specify any missing service as a CP-00 proposal.",
-        "join_condition": "No unlisted complex phase gate, encoding or decoder supplies the result. A stationary density, trivial commutative modular action or abstract Pauli-Y separator alone is not an operational physical clock.",
+        "title": "Extend the joint operational clock and field history",
+        "why_now": "A complete finite protocol correlates transported clock readouts and protected-field Ramsey records through one native incident count; its matched-marginal control verifies the join.",
+        "deliverable": "A continuing clock/field observation history with explicit parameter/readout uncertainty and shared accessible operations, followed by a justified comparison to moving matter and the energy dictionary.",
+        "may_start_now": "Extend the retained joint instrument using its full record/abort maps, the compatible native-return constructions and the all-core clock services; test correlations as well as separate marginals.",
+        "join_condition": "The field register, coherent walk and event/parameter conversion remain declared services until constructed otherwise. Distinguish finite phase discrimination from a global or laboratory clock calibration.",
         "evidence": [
-          "joint_reference",
-          "record_reference",
-          "modular_access"
+          "joins_contract",
+          "joint_clock",
+          "clock_services",
+          "clock_wave"
         ]
       },
       {
         "gate": "CP-03",
         "issue": 1139,
-        "title": "Test a localized history or metastable matter target",
-        "why_now": "The exact native branch algebra excludes fixed nontrivial bare-source reducing charges; history dependence, controlled lifetimes and refining carriers remain untested.",
-        "deliverable": "One precisely defined localized history-dependent or metastable sector, or a fully specified refinement proposal, with an independently defined boundary observable and tests of lifetime, transport and loss under every admitted repair branch.",
-        "may_start_now": "Define the smallest target and a matching negative control using existing source and records; separate a source charge, a stored label, an expectation-fixed observable and a physical localized excitation.",
-        "join_condition": "Retain all repair branches and the collision/commutant controls. A new register or changed domain requires the shared successor version; no defect mass or protection is inferred from bookkeeping memory.",
+        "title": "Connect the history exchange class to localized matter",
+        "why_now": "The native configuration graph has an exact Z2 exchange history class under declared deformations, while the adjacent-pair population target has finite residence and a mismatched exterior.",
+        "deliverable": "One localized history-sector realization with an operational boundary/readout, reference-like exterior and measured transport, loss and quantum-memory behavior under complete admitted native histories.",
+        "may_start_now": "Use the exact path-lifting and deformation certificates to identify the smallest physical state/observable realization, and test it against the adjacent-pair lifetime and source-charge controls.",
+        "join_condition": "An offline exchange label is not an implemented fermionic phase or autonomous protection. New measurements, registers or refinement premises require CP-00 review and complete failure/resource accounting.",
         "evidence": [
-          "defect_algebra",
-          "family"
+          "joins_contract",
+          "defect_history",
+          "localized",
+          "defect_algebra"
+        ]
+      },
+      {
+        "gate": "CP-04",
+        "issue": 1140,
+        "title": "Join native record action to the same excitation kinetics",
+        "why_now": "The native-current Dirichlet form is positive and mapped to actual incidence data. The existing product mode passes an independent rest/curvature comparison with a quantified finite pulse correction, but it is a separate field-mode fixture.",
+        "deliverable": "A same-process action and energy assignment for the localized history target, tested against independent rest and moving response and connected to a conserved stress law in the shared clock/propagation dictionary.",
+        "may_start_now": "Reuse the positive native record form and finite mass-shell/action theorems, checking their physical premises against the candidate rather than replacing its action by the conditional product-field benchmark.",
+        "join_condition": "Keep the H66 form, full-port field fixture, compiler subdivision and carrier/continuum limits distinct. Integrated acceptance requires CP-02/CP-03 and a source-derived action/stress map.",
+        "evidence": [
+          "joins_contract",
+          "mode_energy",
+          "defect_history",
+          "joint_clock",
+          "energy"
         ]
       }
     ],
     "embedded_reviews": [
       {
+        "gate": "CP-00",
+        "issue": 1135,
+        "role": "Review the admitted service extension and every further interface change across the four tasks, with source-bound error/resource budgets. The finite successor contract does not freeze the entire physical program.",
+        "evidence": [
+          "joins_contract",
+          "diagnostic_contract",
+          "family"
+        ]
+      },
+      {
         "gate": "CP-13",
         "issue": 1137,
-        "role": "Review the actual theorem-to-model maps within each workstream; update missing premises when an interface changes. The existing focused review is not integrated gate acceptance.",
+        "role": "Check the actual finite theorem premises and source-to-model maps in every join; retain positive constructions and separate history topology, quantum phase, action units and physical stress.",
         "evidence": [
-          "theorem_map"
+          "theorem_map",
+          "clock_services",
+          "joint_clock",
+          "defect_history",
+          "mode_energy"
         ]
       },
       {
         "gate": "CP-12",
         "issue": 1148,
-        "role": "Check the scope of every obstruction, surviving alternatives and stop/continue decision. Review component exclusions within their quantified domains; a whole-program verdict requires the complete frozen class.",
+        "role": "Review coverage, alternatives and stopping claims within each diagnostic. Candidate failures do not become whole-program exclusions without the complete frozen class.",
         "evidence": [
+          "joins_contract",
+          "localized",
+          "energy",
           "modular_access",
           "defect_algebra"
         ]
       }
     ],
-    "acceptance_policy": "These are parallel work assignments, not four independent acceptance paths. The existing DAG remains authoritative: CP-01 requires CP-00, and CP-02/CP-03 require CP-01 plus CP-13. Provisional component results cannot discharge those joins.",
+    "acceptance_policy": "These four assignments are provisional component work, not independent acceptance paths. CP-01 requires CP-00; CP-02 and CP-03 require CP-01 plus CP-13; CP-04 requires CP-02 and CP-03. Shared boundary review stays with #1135 and theorem review with #1137. No diagnostic accepts these integrated gates.",
     "deferred_gates": [
-      "CP-04",
       "CP-05",
       "CP-06",
       "CP-07",
@@ -772,7 +945,7 @@
       "CP-10",
       "CP-11"
     ],
-    "deferred_reason": "Maintenance energy, particle identities, interacting fields and Einstein realization consume the unresolved observer/clock/matter joins. Preserve their existing benchmarks, but do not treat them as independent next primary workstreams.",
+    "deferred_reason": "Particle identities, interacting fields and Einstein realization consume the observer/clock/matter/energy joins. Their retained benchmarks remain available, while this wave tests the shared services and the energy dictionary needed to connect them.",
     "evidence": [
       {
         "path": "model/completion/campaign.json",
@@ -829,6 +1002,86 @@
         "scope": "Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.",
         "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
         "id": "defect_algebra"
+      },
+      {
+        "path": "model/clock_defect_energy/campaign.json",
+        "sha256": "4bd2fe9e3905f66170587af34bffbd5328f98d6cd7f26392eb541aaeb9ed9910",
+        "independent_check": "model/clock_defect_energy/test_contract.py",
+        "scope": "Frozen finite component diagnostics on the unchanged C/E family and the pinned pending PR1149 input. Reference transport, clock/wave comparison, adjacent-pair localization and maintenance-energy tests retain separate premises; no integrated gate or physical comparison is accepted.",
+        "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+        "id": "diagnostic_contract"
+      },
+      {
+        "path": "model/clock_defect_energy/continuation_results.json",
+        "sha256": "41214266e32182287a39d340013da0c02277b6e934a3cf0f61023e73847423b7",
+        "independent_check": "model/clock_defect_energy/test_continuation.py",
+        "scope": "Exact binary66 transported-core metadata through 24-attempt C/E and delayed-mixture FIFO continuation, with arbitrary-reference branch identities, 23 exports, last-record ambiguity controls and explicit unavailable clock-service outcomes. No new clock word or memory hardware is executed.",
+        "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+        "id": "continuation"
+      },
+      {
+        "path": "model/clock_defect_energy/clock_wave_results.json",
+        "sha256": "bd24d505b15b2b041b9a8e3bf7b12a0623d603b12a5350d42f93902e490dcdc2",
+        "independent_check": "model/clock_defect_energy/test_clock_wave.py",
+        "scope": "Replays the existing native-return reconstruction sigma_wave proportional to exp(-arccos K), finite-cap bounds and complete quadrature-record clock inference, with a conditional clock-to-wave uncertainty map. The negative checks reject substituting PR1149's different three-charge reference into that dictionary; they imply neither a general clock/wave obstruction nor a executed joint instrument or physical calibration.",
+        "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+        "id": "clock_wave"
+      },
+      {
+        "path": "model/clock_defect_energy/localized_results.json",
+        "sha256": "0ee75bed020eb2e6f35cdf79699906331251df1e2ca7c7084dcd8e60c38a8fc5",
+        "independent_check": "model/clock_defect_energy/test_localized.py",
+        "scope": "Complete C/E adjacent-pair population diagnostic: uniform mean first exit 15 repairs, mean return 18 repairs, positive-exploration lifetime bound, accounted returns and failed reference-exterior matching. The multi-step first-exit flag is offline population bookkeeping, not added quantum monitoring or a protected topological defect.",
+        "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+        "id": "localized"
+      },
+      {
+        "path": "model/clock_defect_energy/energy_results.json",
+        "sha256": "4081d117b8b11d48429349f9de3a343b5a048ae90b6fa3ddc617789fceb515aa",
+        "independent_check": "model/clock_defect_energy/test_energy.py",
+        "scope": "Uniform-seam maintenance-cost ansatz against the uniform background and all four transported preparation-target references, plus native cycle/modular-cost countercontrols and independent relativistic kinetic-action checks. Adjacent-pair excess movement is negative for these declared backgrounds; no arbitrary maintenance action, physical mass or stress law is excluded or derived.",
+        "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
+        "id": "energy"
+      },
+      {
+        "path": "model/clock_defect_energy/joins_campaign.json",
+        "sha256": "74f90725265ede3c439ac43ea2bed9987ef97824da242ceb90fce1a3ac5b8113",
+        "independent_check": "model/clock_defect_energy/test_joins_contract.py",
+        "scope": "Frozen finite theorem applications and explicit service extension on the unchanged native C/E law: all-core compiled clock coverage, joint event-clock/field records, native history exchange topology and current/action-mode comparisons. Prior diagnostics and their limited service menu remain retained.",
+        "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+        "id": "joins_contract"
+      },
+      {
+        "path": "model/clock_defect_energy/clock_services_results.json",
+        "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+        "independent_check": "model/clock_defect_energy/test_clock_services.py",
+        "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
+        "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+        "id": "clock_services"
+      },
+      {
+        "path": "model/clock_defect_energy/joint_clock_results.json",
+        "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+        "independent_check": "model/clock_defect_energy/test_joint_clock.py",
+        "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
+        "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+        "id": "joint_clock"
+      },
+      {
+        "path": "model/clock_defect_energy/defect_history_results.json",
+        "sha256": "0ced18cac6d71e15d4231d071f2816b428268944122052aa3ee70975682b0fc3",
+        "independent_check": "model/clock_defect_energy/test_defect_history.py",
+        "scope": "Exact Z2 first-homology/exchange class on the native two-particle configuration graph under the declared elementary history deformations, with positive complete C/E path witnesses. This is a history invariant, not a source-only protecting charge, fermionic phase or autonomously stable localized particle.",
+        "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+        "id": "defect_history"
+      },
+      {
+        "path": "model/clock_defect_energy/mode_energy_results.json",
+        "sha256": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
+        "independent_check": "model/clock_defect_energy/test_mode_energy.py",
+        "scope": "Derives a positive native-current quadratic form and verifies its port/incidence theorem map. In the separately declared product-field source, independent rest-gap and moving-symbol curvature tests give a finite pulse correction approaching the mass-shell ratio one under subdivision. This does not assign that action, physical mass or gravitational stress to the history excitation.",
+        "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
+        "id": "mode_energy"
       }
     ]
   }

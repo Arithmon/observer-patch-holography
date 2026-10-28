@@ -12,6 +12,7 @@ on:
       - 'tools/build_completion_program.py'
       - 'tools/test_completion_program.py'
       - 'model/completion/**'
+      - 'model/clock_defect_energy/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -23,6 +24,7 @@ on:
       - 'tools/build_completion_program.py'
       - 'tools/test_completion_program.py'
       - 'model/completion/**'
+      - 'model/clock_defect_energy/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -32,7 +34,10 @@ permissions:
 jobs:
   program:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
@@ -40,4 +45,4 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python tools/build_completion_program.py --check
-      - run: python -m pytest -q -W error tools/test_completion_program.py model/completion
+      - run: python -m pytest -q --durations=10 -W error tools/test_completion_program.py model/completion model/clock_defect_energy

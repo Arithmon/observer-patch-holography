@@ -139,7 +139,7 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
         require(isinstance(identifier, str) and identifier and identifier not in campaign_ids,
                 "missing or duplicate component campaign")
         campaign_ids.add(identifier)
-        require(campaign.get("scope") == "FINITE_COMPONENT_FAMILY"
+        require(campaign.get("scope") in {"FINITE_COMPONENT_FAMILY", "FINITE_COMPONENT_DIAGNOSTICS"}
                 and campaign.get("whole_program_frozen") is False,
                 "component campaign cannot freeze the whole program")
         require(bool(campaign.get("supports")) and set(campaign["supports"]) <= set(ids),
@@ -151,6 +151,11 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
                 and contract.get("whole_program_frozen") is False
                 and contract.get("physical_comparison_count_added") == 0,
                 "component campaign contract scope changed")
+        if campaign["scope"] == "FINITE_COMPONENT_DIAGNOSTICS":
+            require(contract.get("boundary_status") == "FROZEN_DIAGNOSTIC_CONTRACT"
+                    and contract.get("integrated_gate_accepted") is False
+                    and contract.get("native_family_changed") is False,
+                    "component diagnostics cannot accept gates or change the native family")
     claims = json.loads(local_file(root, "claims/claim_registry.yaml").read_text())["claims"]
     claim_ids = {row["claim_id"] for row in claims}
     foundations = program.get("foundations", [])

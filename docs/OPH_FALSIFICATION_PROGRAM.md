@@ -65,10 +65,22 @@ covers every possible realization of the executable hypothesis. The full
 program's refinement and interpretation class has not been frozen, and these
 results cannot support a whole-program falsification verdict.
 
-The [next work](COMPLETION_PROGRAM.md) consequently separates a successor
-contract (#1135), realization of observer services (#1136), an actual clock
-algebra and operation contract (#1138), and a specified localized sector
-(#1139). The theorem-map and obstruction audits accompany those tasks.
+The [finite clock, defect and energy campaign](../model/clock_defect_energy/README.md)
+adds decisions on specific candidate joins under a separate versioned contract:
+
+| Decision | Checked object and consequence | Boundary and constructive continuation |
+| --- | --- | --- |
+| [Reference substitution](../model/clock_defect_energy/CLOCK_WAVE.md) | The tested transported three-charge references cannot directly replace the native-return wave reference in the stated affine generator comparison. | The positive native-return reference and operational clock bridges remain. A [joint event-clock/field instrument](../model/clock_defect_energy/JOINT_CLOCK.md) executes different generators in the same history and rejects a control preserving their separate marginals. |
+| [Localized pair](../model/clock_defect_energy/LOCALIZED.md) | Uniform mean first exit is 15 attempts; positive exploration bounds continuing lifetime under record feedback. The tested exterior differs from the reference. | This excludes this candidate's claimed persistent localization. The [native configuration complex](../model/clock_defect_energy/DEFECT_HISTORY.md) has integral first homology Z/2 and actual positive-probability exchange histories, but supplies no protected live particle or native fermionic phase. |
+| [Unsigned maintenance cost](../model/clock_defect_energy/ENERGY.md) | Adjacent-pair movement excess is negative against the tested references; source-cycle and equal-cost controls reject the stated stored-energy assignments. | A [positive current quadratic form](../model/clock_defect_energy/MODE_ENERGY.md) and independent rest/kinetic comparison apply to the declared product-field symbol. Finite pulse splitting has a bounded discrepancy; defect action, physical momentum and stress remain open. |
+| [Finite clock menu](../model/clock_defect_energy/CONTINUATION.md) | The original four words do not cover every reached transported core. | The separately declared [66-word service inventory](../model/clock_defect_energy/CLOCK_SERVICES.md) closes that finite coverage gap with explicit complex controls, storage, errors and failures. It does not derive those services from passive repair. |
+
+These are finite conclusions with source-bound replay and countercontrols,
+not empirical exclusions or accepted integrated gates. Changing the reference,
+deformation relations, service menu or energy functional changes the tested
+contract. The [next work](COMPLETION_PROGRAM.md) keeps observer services,
+operational clocks, localized matter and common energy/stress joins coordinated
+with the shared candidate contract. The theorem-map and obstruction audits accompany those tasks.
 Independent component investigations cannot discharge a shared physical join
 by combining incompatible candidate versions.
 

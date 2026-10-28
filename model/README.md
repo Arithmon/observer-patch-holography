@@ -28,19 +28,20 @@ at least `1/2` from the selected modular action on the fixed full support
 algebra. Real joint ancillary inputs and the fixed encoding are premises;
 the separating observable is a mathematical witness, not a native detector.
 
-The [next parallel work](../docs/COMPLETION_PROGRAM.md) therefore has four
-owners:
+The [clock, defect and energy diagnostics](clock_defect_energy/README.md)
+advance four [parallel owners](../docs/COMPLETION_PROGRAM.md), using the
+recorded-history transport as a pinned dependency:
 
-| Owner | Required next result |
+| Owner | Retained result and next requirement |
 | --- | --- |
-| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) | Specify one bounded successor class, including permitted changes of services and domain, while preserving the first campaign's controls. A plan does not itself freeze that successor. |
-| [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) | Realize and account preparation, randomization, record storage/export, observer delivery and any admitted noncommuting access in one continuing demonstration. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | Choose an actual accessible algebra and clock contract, then construct its action/readout or prove an obstruction on that interface. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | Test a specified localized history-dependent or metastable sector, or a declared refinement, including boundary observable, transport and loss under the complete repair law. |
+| [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) | All 66 reached reference cores have executed parameter-4 clock words. The 132-state policy, separate source interpreter, pulses and exports are counted; physical service realization remains open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | A complete joint clock/field protocol shares native incident ticks and passes a matched-marginal correlation test. Whole-wave compilation and physical calibration remain open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | An exact `Z/2` exchange-history class survives the declared local deformations. Turning it into a live localized excitation with coherent exchange response remains open. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | Native current records supply a positive form; independent rest/inertial mode responses have a bounded finite split correction. The localized particle action and stress remain open. |
 
-Design and diagnostics on the frozen first family can proceed in parallel;
-dependent experiments on a changed mechanism must share the same versioned
-contract. The [theorem map](completion/THEOREM_MAP.md) and scoped obstruction
+The shared boundary owner #1135 reviews any changed mechanism against the
+same versioned contract. The [theorem map](completion/THEOREM_MAP.md),
+[finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
 review accompany all four lanes. No integrated completion gate, physical clock,
 mass spectrum or gravitational realization is accepted by these finite results.
 

@@ -63,10 +63,16 @@ proof shows that the whole class of laws cannot work.
 - **Particles are the big open piece.** The finite theory gives the charges
   of one Standard Model generation and its Higgs couplings, but no masses.
   Every mass law tested on the running model misses the measured lepton
-  hierarchy, and the obvious defect candidate on the native carrier falls
-  apart after a few repairs. A finite campaign also rules out the simplest
+  hierarchy. The adjacent-pair candidate on the native carrier has mean
+  first exit after 15 uniform repair attempts in the
+  [localized-pair diagnostic](model/clock_defect_energy/LOCALIZED.md).
+  Its [excess movement](model/clock_defect_energy/ENERGY.md) also fails the
+  tested positive repair-energy ansatz. A finite campaign rules out the simplest
   kind of protected charge: no hidden carrier quantity commutes with every
-  repair. Finding a genuinely stable defect is the work
+  repair. An exact [exchange-history class](model/clock_defect_energy/DEFECT_HISTORY.md)
+  supplies a topological candidate under declared local deformations; its
+  [particle interpretation](model/clock_defect_energy/THEOREM_JOINS.md#from-exchange-history-to-a-particle)
+  remains open. Finding a stable defect is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [mass-response notes](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
