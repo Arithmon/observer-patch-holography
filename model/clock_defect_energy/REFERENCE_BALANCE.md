@@ -62,6 +62,10 @@ Each raw record block preserves the three `q` projectors on this enlarged
 source-plus-controller domain. Their stationary weights are exactly `2/5`,
 `5/9` and `2/45`. For a source-only current observable, the joint source
 marginal recovers the uniform form `D(v)=2/33` for the chosen mode.
+The native gradient form of the conserved `q` itself is exactly zero. Thus
+this reversible transition form cannot determine an energy splitting between
+the three sectors; their stationary weights are probabilities, not measured
+rest energies.
 
 The joint stationary law can also be **approached from one fixed core** if
 that core's diagonal source reference has been prepared. Exact breadth-first

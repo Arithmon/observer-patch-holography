@@ -43,6 +43,7 @@ def test_co_moving_joint_reference_has_complete_record_charge_protection():
     assert value["joint_source_core_states"] == 66**2
     assert value["classical_core_metadata_states"] == 66
     assert value["joint_reversible_movement_edges_checked"] == 300*66
+    assert F(value["joint_charge_native_gradient_form"]) == 0
     assert value["source_and_core_marginals_uniform"]
     assert value["stationary_for_uniform_seam_selection"]
     assert value["uniform_core_and_conditional_source_preparation_supplied"]

@@ -49,6 +49,7 @@ def co_moving() -> dict:
     if sector != {0: F(2, 5), 1: F(5, 9), 2: F(2, 45)}:
         raise ArithmeticError("co-moving reference charge sectors changed")
     edge_checks = 0
+    charge_form = F()
     core_index = {core: i for i, core in enumerate(cores)}
     adjacency = [[] for _ in basis]
     for i, j in edges:
@@ -61,9 +62,14 @@ def co_moving() -> dict:
             moved = _swap(core, seam)
             if weights[i, core] != weights[j, moved]:
                 raise ArithmeticError("joint reference lost detailed balance")
-            if len(set(source) & set(core)) != len(set(target) & set(moved)):
+            before = len(set(source) & set(core))
+            after = len(set(target) & set(moved))
+            charge_form += weights[i, core] * F(1, 60) * (after-before)**2
+            if before != after:
                 raise ArithmeticError("joint charge not conserved on a native edge")
             edge_checks += 1
+    if charge_form != 0:
+        raise ArithmeticError("conserved joint charge acquired a native gradient cost")
     sector_sizes = {}
     for q in (0, 1, 2):
         initial = next((i, core_index[core]) for i, pair in enumerate(basis)
@@ -136,6 +142,7 @@ def co_moving() -> dict:
         "quantitative_mixing_time_bound_claimed": False,
         "adaptive_feedback_or_full_record_archive_stationarity_claimed": False,
         "joint_reversible_movement_edges_checked": edge_checks,
+        "joint_charge_native_gradient_form": str(charge_form),
         "co_moving_charge_sector_probabilities": {str(q): str(value) for q, value in sector.items()},
         "raw_kraus_source_core_pair_checks": kraus_pair_checks,
         "charge_projectors_preserved_by_each_complete_record_block": True,

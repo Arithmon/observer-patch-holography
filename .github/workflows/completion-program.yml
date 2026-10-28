@@ -13,6 +13,8 @@ on:
       - 'tools/test_completion_program.py'
       - 'model/completion/**'
       - 'model/clock_defect_energy/**'
+      - 'model/local_repair_family/**'
+      - 'model/exchange_sector/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -25,6 +27,8 @@ on:
       - 'tools/test_completion_program.py'
       - 'model/completion/**'
       - 'model/clock_defect_energy/**'
+      - 'model/local_repair_family/**'
+      - 'model/exchange_sector/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -45,4 +49,4 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python tools/build_completion_program.py --check
-      - run: python -m pytest -q --durations=10 -W error tools/test_completion_program.py model/completion model/clock_defect_energy
+      - run: python -m pytest -q --durations=10 -W error tools/test_completion_program.py model/completion model/clock_defect_energy model/local_repair_family model/exchange_sector
