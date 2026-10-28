@@ -185,13 +185,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument('--write', action='store_true')
-    modes.add_argument('--check', action='store_true')
+    modes.add_argument('--check', nargs='?', const=OUTPUT, type=Path)
     args = parser.parse_args()
     value = report()
     if args.write:
         OUTPUT.write_text(json.dumps(value, sort_keys=True, indent=2, allow_nan=False)+'\n', encoding='utf-8', newline='\n')
     if args.check:
-        _compare(OUTPUT, value)
+        _compare(args.check, value)
     print('Prepared continuing observer: exact mixing, complete FIFO and source modular clock verified.')
 
 

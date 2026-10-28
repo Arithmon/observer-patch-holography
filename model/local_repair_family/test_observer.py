@@ -3,6 +3,7 @@ from copy import deepcopy
 from dataclasses import replace
 from fractions import Fraction as F
 import json
+import sys
 
 import numpy as np
 import pytest
@@ -173,3 +174,30 @@ def test_composition_refuses_invalid_scientific_bounds(error, gain):
     with pytest.raises(ValueError):
         o.composition_budget({'complete_instrument_halfdiamond_upper': error,
                               'channel_norm_upper': gain})
+
+
+@pytest.mark.parametrize('explicit_path', [False, True])
+def test_cli_check_accepts_default_and_explicit_receipt_paths(monkeypatch, tmp_path, explicit_path):
+    default = tmp_path/'default.json'
+    selected = tmp_path/'explicit.json' if explicit_path else default
+    selected.write_text('{"owned_replay": true}', encoding='utf-8')
+    calls = []
+    monkeypatch.setattr(o, 'OUTPUT', default)
+    monkeypatch.setattr(o, 'report', lambda: calls.append(True) or {'owned_replay': True})
+    monkeypatch.setattr(sys, 'argv', ['observer', '--check']+([str(selected)] if explicit_path else []))
+    o.main()
+    assert calls == [True]
+    if explicit_path:
+        assert not default.exists()
+
+
+@pytest.mark.parametrize('contents', ['{"owned_replay": false}',
+                                     '{"owned_replay": true, "owned_replay": true}'])
+def test_cli_explicit_check_rejects_wrong_or_malformed_receipt(monkeypatch, tmp_path, contents):
+    selected = tmp_path/'untrusted.json'
+    selected.write_text(contents, encoding='utf-8')
+    monkeypatch.setattr(o, 'OUTPUT', tmp_path/'unused-default.json')
+    monkeypatch.setattr(o, 'report', lambda: {'owned_replay': True})
+    monkeypatch.setattr(sys, 'argv', ['observer', '--check', str(selected)])
+    with pytest.raises(ValueError):
+        o.main()
