@@ -2,6 +2,7 @@
 from collections import defaultdict
 from fractions import Fraction as F
 import json
+from pathlib import PureWindowsPath
 
 import pytest
 
@@ -168,6 +169,15 @@ def test_invalid_memory_and_intervention_fail_closed():
         o.branches((), p, preferred=(0, 0))
 
 
-def test_retained_report_replays_exactly():
+def test_retained_report_replays_exactly(monkeypatch):
     from tools import strict_json
-    assert o.report() == strict_json.load(o.HERE/"observer_results.json")
+    # Exercise Windows relative-path formatting even on a POSIX test runner.
+    path_type = type(o.HERE)
+    relative_to = path_type.relative_to
+    monkeypatch.setattr(path_type, "relative_to", lambda self, *args, **kwargs:
+                        PureWindowsPath(*relative_to(self, *args, **kwargs).parts))
+    actual = o.report()
+    assert set(actual["source_sha256"]) == {
+        "model/completion/observer.py", "model/completion/family.py",
+        "model/observer/native.py", "model/repair_scheduler/coins.py"}
+    assert actual == strict_json.load(o.HERE/"observer_results.json")

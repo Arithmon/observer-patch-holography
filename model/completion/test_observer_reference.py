@@ -1,5 +1,6 @@
 """Exact join of source/bit stationarity to the actual C/E FIFO process."""
 from fractions import Fraction as F
+from pathlib import PureWindowsPath
 
 import pytest
 
@@ -43,5 +44,15 @@ def test_certificate_rejects_nonstationary_and_unnormalized_inputs(stationary_jo
         ref.certify(doubled, F(1))
 
 
-def test_full_record_reference_receipt_replays():
-    assert ref.report() == strict_json.load(ref.HERE/"observer_reference_results.json")
+def test_full_record_reference_receipt_replays(monkeypatch):
+    # Exercise Windows relative-path formatting even on a POSIX test runner.
+    path_type = type(ref.HERE)
+    relative_to = path_type.relative_to
+    monkeypatch.setattr(path_type, "relative_to", lambda self, *args, **kwargs:
+                        PureWindowsPath(*relative_to(self, *args, **kwargs).parts))
+    actual = ref.report()
+    assert set(actual["source_sha256"]) == {
+        "model/completion/observer_reference.py", "model/completion/observer.py",
+        "model/completion/stationary_reference.py", "model/completion/adaptive_reference.py",
+        "model/completion/family.py"}
+    assert actual == strict_json.load(ref.HERE/"observer_reference_results.json")

@@ -178,7 +178,7 @@
       "progress_evidence": [
         {
           "path": "model/completion/observer_results.json",
-          "sha256": "f7d4623dfed41cb40ec254cf43c3542faa4227b6690f8552bb055f94f9ec7c98",
+          "sha256": "d8f70c94e6e7ee4e55480e719cd18bc663cca02a17f575a0e1fa1e298e054bbd",
           "independent_check": "model/completion/test_observer.py",
           "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
@@ -280,7 +280,7 @@
         },
         {
           "path": "model/completion/observer_reference_results.json",
-          "sha256": "93cf85341543063cefe57a274e8b89bc3ce5f17bd7018f8f23787507f2d1fa50",
+          "sha256": "209a86b71a9fda5c34070f3ec13ecf1d15d78b831b3bcff3990c1f1bd8d249e5",
           "independent_check": "model/completion/test_observer_reference.py",
           "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
           "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"

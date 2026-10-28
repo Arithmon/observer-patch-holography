@@ -342,7 +342,7 @@ def report():
                     HERE.parent/"observer/native.py", HERE.parent/"repair_scheduler/coins.py"]
     return {"schema": "oph.completion.observer.v1", "gate": "CP-01", "campaign_binding": binding(),
             "status": "BOUNDED_COMPONENT_EXECUTED_GATE_OPEN", "parameters": params.as_dict(),
-            "source_sha256": {str(path.relative_to(HERE.parents[1])):
+            "source_sha256": {path.relative_to(HERE.parents[1]).as_posix():
                               hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths},
             "instrument_certificates": certificates, "six_attempt_history": summaries,
             "C_E_six_attempt_histories": endpoint_runs,
