@@ -70,6 +70,7 @@ jobs:
     # runtime headroom. Every case and numerical acceptance gate is retained.
     timeout-minutes: ${{ matrix.os == 'windows-latest' && matrix.shard == 1 && 120 || 90 }}
     env:
+      PYTHONUTF8: '1'
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
     steps:
@@ -98,6 +99,7 @@ jobs:
     # portability and particle-witness commands execute once per platform.
     timeout-minutes: ${{ matrix.os == 'windows-latest' && 120 || 90 }}
     env:
+      PYTHONUTF8: '1'
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
     steps:
