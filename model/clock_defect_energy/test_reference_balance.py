@@ -38,5 +38,22 @@ def test_fixed_clock_reference_drift_and_positive_form():
     assert not report["scope"]["integrated_gate_accepted"]
 
 
+def test_co_moving_joint_reference_has_complete_record_charge_protection():
+    value = candidate.co_moving()
+    assert value["joint_source_core_states"] == 66**2
+    assert value["classical_core_metadata_states"] == 66
+    assert value["joint_reversible_movement_edges_checked"] == 300*66
+    assert value["source_and_core_marginals_uniform"]
+    assert value["stationary_for_uniform_seam_selection"]
+    assert value["co_moving_charge_sector_probabilities"] == {
+        "0": "2/5", "1": "5/9", "2": "2/45"}
+    assert value["raw_kraus_source_core_pair_checks"] == {"C": 66*66*60, "E": 66*66*60}
+    assert value["charge_projectors_preserved_by_each_complete_record_block"]
+    assert F(value["source_observable_quadratic_form"]) == F(2, 33)
+    assert not value["core_metadata_is_an_intrinsic_source_charge"]
+    assert not value["localized_particle_or_fermionic_phase_identified"]
+    assert not value["adaptive_feedback_stationarity_claimed"]
+
+
 def test_stored_exact_report_replays():
     check_receipt(candidate.OUTPUT, candidate.report())

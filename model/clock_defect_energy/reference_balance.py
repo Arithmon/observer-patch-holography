@@ -15,11 +15,95 @@ from pathlib import Path
 from . import continuation, defect_history
 from .joins_contract import binding, check_receipt, source_bindings
 from ..observer import record_recovery as records
+from ..completion import observer
 
 HERE = Path(__file__).resolve().parent
 OUTPUT = HERE / "reference_balance_results.json"
 CORES = ((0, 5), (0, 8))
 PROFILE = (1, -1, -1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+
+def _swap(pair: tuple[int, int], seam: tuple[int, int]) -> tuple[int, int]:
+    a, b = seam
+    return tuple(sorted(b if p == a else a if p == b else p for p in pair))
+
+
+def co_moving() -> dict:
+    """Exact source/core measure under uniform seams and record-driven metadata."""
+    basis, edges, *_ = defect_history.geometry()
+    cores = continuation.CORES
+    binary_states = set(continuation.BASIS)
+    weights = {(x, core): continuation.reference(core)[x] / 66
+               for x in range(66) for core in cores}
+    if sum(weights.values(), F()) != 1:
+        raise ArithmeticError("joint reference is not normalized")
+    if any(sum((weights[x, core] for core in cores), F()) != F(1, 66)
+           for x in range(66)):
+        raise ArithmeticError("joint source marginal is not uniform")
+    if any(sum((weights[x, core] for x in range(66)), F()) != F(1, 66)
+           for core in cores):
+        raise ArithmeticError("joint core marginal is not uniform")
+    sector = {q: sum((value for (x, core), value in weights.items()
+                      if len(set(basis[x]) & set(core)) == q), F())
+              for q in (0, 1, 2)}
+    if sector != {0: F(2, 5), 1: F(5, 9), 2: F(2, 45)}:
+        raise ArithmeticError("co-moving reference charge sectors changed")
+    edge_checks = 0
+    for i, j in edges:
+        source, target = basis[i], basis[j]
+        removed, added = set(source)-set(target), set(target)-set(source)
+        seam = tuple(sorted((next(iter(removed)), next(iter(added)))))
+        for core in cores:
+            moved = _swap(core, seam)
+            if weights[i, core] != weights[j, moved]:
+                raise ArithmeticError("joint reference lost detailed balance")
+            if len(set(source) & set(core)) != len(set(target) & set(moved)):
+                raise ArithmeticError("joint charge not conserved on a native edge")
+            edge_checks += 1
+    # A complete raw C/E Kraus block has one recorded current. Check every
+    # partial-injection pair, including zero-current blocks, on every core.
+    kraus_pair_checks = {}
+    for law in ("C", "E"):
+        checked = 0
+        for seam in observer.SEAMS:
+            for _, _, current, pairs in observer._raw_maps(law, seam):
+                for original, terminal in pairs:
+                    if observer.STATES[original] not in binary_states:
+                        continue
+                    x = observer.STATES[original]
+                    y = observer.STATES[terminal]
+                    if y not in binary_states:
+                        raise ArithmeticError("binary Kraus block escaped H66")
+                    swapped = list(x)
+                    swapped[seam[0]], swapped[seam[1]] = swapped[seam[1]], swapped[seam[0]]
+                    if y != (tuple(swapped) if current else x):
+                        raise ArithmeticError("raw quantum block differs from recorded current")
+                    for core in cores:
+                        moved = _swap(core, seam) if current else core
+                        q_before = sum(x[p] for p in core)
+                        q_after = sum(y[p] for p in moved)
+                        if q_before != q_after:
+                            raise ArithmeticError("raw C/E Kraus block changes joint charge")
+                        checked += 1
+        kraus_pair_checks[law] = checked
+    mode = tuple(sum(PROFILE[p] for p in pair) for pair in basis)
+    form = sum((F(1, 66*60)*(mode[j]-mode[i])**2 for i, j in edges), F())
+    if form != F(2, 33):
+        raise ArithmeticError("joint stationary source action form changed")
+    return {
+        "joint_source_core_states": len(basis)*len(cores),
+        "classical_core_metadata_states": len(cores),
+        "source_and_core_marginals_uniform": True,
+        "stationary_for_uniform_seam_selection": True,
+        "joint_reversible_movement_edges_checked": edge_checks,
+        "co_moving_charge_sector_probabilities": {str(q): str(value) for q, value in sector.items()},
+        "raw_kraus_source_core_pair_checks": kraus_pair_checks,
+        "charge_projectors_preserved_by_each_complete_record_block": True,
+        "source_observable_quadratic_form": str(form),
+        "core_metadata_is_an_intrinsic_source_charge": False,
+        "localized_particle_or_fermionic_phase_identified": False,
+        "adaptive_feedback_stationarity_claimed": False,
+    }
 
 
 def kernel(law: str) -> tuple[tuple[F, ...], ...]:
@@ -103,6 +187,7 @@ def report() -> dict:
         "model/clock_defect_energy/continuation.py",
         "model/clock_defect_energy/defect_history.py",
         "model/observer/record_recovery.py",
+        "model/completion/observer.py",
         "model/native_modular_reference/history_transport.py",
         "Lean/Geometry/SourceActionMeasure.lean",
     )
@@ -116,6 +201,7 @@ def report() -> dict:
         "native_uniform_reference_is_stationary": True,
         "native_uniform_reference_unique_by_connected_reciprocity": True,
         "results": rows,
+        "co_moving_source_and_recorded_core": co_moving(),
         "theorem_application": {
             "source": "Lean/Geometry/SourceActionMeasure.lean",
             "result": "normalized_symmetrizer_unique",
