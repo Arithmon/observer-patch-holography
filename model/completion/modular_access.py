@@ -173,9 +173,11 @@ def report():
             "This excludes implementing the stated nontrivial modular action on the fixed source-basis full support algebra of these two references using the frozen operational grammar.",
             "The real pair probe tests an all-input map on that algebra; it is not claimed to be preparable by the admitted diagonal-input native grammar.",
             "PauliY is a mathematical trace-distance witness, not an executed or admitted native detector.",
+            "The 1/2 bound compares normalized outputs; an unnormalized success branch of probability p contributes a p/2 bound when its success flag is retained.",
             "On the accessible commutative record algebra the modular automorphism flow is trivial; the result does not rule out its identity implementation.",
             "A new complex phase resource, a different quantum encoding, additional coherent registers, different reference/algebra, or carrier refinement changes the tested contract and is not excluded here.",
             "Supplied joint ancillary states must be real; individually real marginals would not suffice if they conceal complex joint correlations.",
+            "A supplied non-real encoder or decoder is also outside the declared native implementation grammar.",
             "This is not a no-go for every modular-clock construction, a physical clock calibration, or the broader executable hypothesis.",
         ],
     }

@@ -62,14 +62,15 @@ invariant is
 Q=\frac13+\frac23\left(\frac{|b|}{a}\right)^2.
 \]
 Thus \(Q=2/3\) is exactly equivalent to the single balance condition
-\(|b|/a=1/\sqrt2\). The phase of \(b\) drops out of \(Q\) and continues to
-control the two mass ratios jointly. A finite tracial
+\(|b|/a=1/\sqrt2\). This identity is a mathematical result about positive
+\(C_3\) face circulants. The phase of \(b\) drops out of \(Q\) and controls
+the two mass ratios jointly; it is supplied, not derived. A finite tracial
 Gelfand--Naimark--Segal construction that pairs the neutral line with a
 two-state orientation record and the charged plane with one oriented event
-gives the balanced modulus as a conditional theorem; the balance premise was
-first abstracted from the measured charged-lepton triple and is
-algebraically the relation Koide published. Under the balance and
-mass-ordering premises the measured electron and muon masses fix the tau
+gives the balanced modulus as a conditional theorem. The balance itself is a
+target-informed premise: it is chosen from the measured charged-lepton
+triple and is algebraically the relation Koide published. Under the balance
+and mass-ordering premises the measured electron and muon masses fix the tau
 mass inside a 72-eV enclosure centered at 1776.969027 MeV. The world average
 lies 0.43 and Belle II 2023 lies 0.89 of their standard uncertainties away;
 both comparisons are retrospective, and a registered decision rule with a
@@ -83,6 +84,31 @@ prediction is claimed.
 
 \noindent\textbf{Keywords:} Koide relation, circulant matrices, cyclic
 symmetry, icosahedral symmetry, finite event algebra, GNS representation
+
+\input{../paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex}
+
+\section*{This paper's hypothesis and place in the tower}
+
+This paper is a layer-seven supplement to the matter layer. It proves an
+unconditional finite identity: for a positive Hermitian \(C_3\) face
+circulant, the Koide invariant depends only on the modulus ratio
+\(|b|/a\), and \(Q=2/3\) is exactly \(|b|/a=1/\sqrt2\). Its physical
+hypothesis is narrower and stated as a premise: the charged-lepton
+square-root masses are the positive eigenvalues of one balanced face
+circulant. The balance is target-informed, since it is read off the measured
+charged-lepton triple, and the phase that fixes the two mass ratios is
+supplied. The finite tracial theorem shows one event packet that realizes
+the balance; its asymmetric block choice carries that premise.
+
+For any physical reading the executable model must realize what the theorems
+take as input: a native localized defect sector carrying three chiral
+charged families, a quotient-visible map from the local face fiber to that
+family response, preservation of the block powers, a derived phase, and a
+rest-energy readout in the common clock and energy dictionary. None of these
+is constructed. A tau-mass measurement that meets the registered precision
+floor and lies more than three standard uncertainties from the window
+center refutes the balanced-circulant premise; it leaves the identity
+untouched.
 
 \section{The face-corner carrier}
 
@@ -194,12 +220,10 @@ three-mass spectrum. It does not determine the ratios.
 \section{Conditional finite tracial balance}
 
 The balance condition in Eq.~\eqref{eq:balance} can arise exactly from a
-finite event packet. This subsection states the packet as an independent
-conditional theorem. Its premise ancestry comes first: the balance premise
-was first abstracted from the measured charged-lepton triple, and it is
-algebraically the relation Koide published for those masses. The packet
-below realizes it through an asymmetric block choice, which is where that
-premise enters.
+finite event packet. This section states the packet as an independent
+conditional theorem. The packet realizes the target-informed balance
+premise through an asymmetric block choice, which is where that premise
+enters.
 
 Let
 \[
@@ -271,6 +295,39 @@ tau window consumes no native observer run, and its identification of
 balanced square-root masses with charged-lepton pole masses is a
 premise~\cite{ophmodel,ophtaucomparison}.
 
+\begin{remark}[What a physical attachment would add]
+\label{rem:attachment}
+The connected register fixes the normalization left free by a direct-sum
+maximum-entropy model; minimality of this response-local register is a
+declared hypothesis. A physical charged-lepton conclusion requires a chiral
+regular-\(C_3\) carrier and faithful trace-preserving unital completely
+positive maps \(\Phi,\Psi\) between the source and physical response
+algebras, with \(\Psi\Phi=\mathrm{id}\). If they intertwine the block
+records and identify the physical GNS vector with
+\(C=(Y_e^\dagger Y_e)^{1/4}\), Kadison--Schwarz makes \(\Phi\) a
+\(*\)-monomorphism and an exact \(L^2\) isometry, so it carries the equal
+source block powers to the physical response. For an accepted finite chiral
+checkpoint with three left and three right family modes, positive kinetic
+metrics, and a committed neutral Higgs direction of electroweak scale \(v\),
+\(\Phi=\operatorname{Ad}_{J_L\oplus J_E}\). With \(M_F=X_F^2\), this gives
+\[
+\widehat Y_e=\frac{\sqrt2}{v}J_LM_FJ_E^\dagger,
+\qquad
+\mathcal M_L=J_LM_FJ_L^\dagger.
+\]
+An extended branch that adds graded physical completion and quotient
+source-law selection selects one dressed mass readout, given an exhaustive
+declared carrier class with a positive winner gap, a source-closed BV/BRST
+continuum, and an interval or contraction certificate for the charged QFT
+self-map. A balanced \(C_3\) fixed point then gives \(Q=2/3\); a
+\(C_3\)-symmetric fixed point with charged attenuation \(\chi_\star\) gives
+\[
+Q=\frac{1+e^{-2\chi_\star}}{3}.
+\]
+An off-plane response requires the full response operator. None of these
+maps, checkpoints or certificates is constructed.
+\end{remark}
+
 \section{The conditional tau-mass window}
 \label{sec:tauwindow}
 
@@ -302,12 +359,10 @@ definition and decision rule were fixed in a frozen prediction record
 more than three standard uncertainties from \(1776.969027\)~MeV refutes
 the balanced-circulant premise; compatibility requires agreement within
 two standard uncertainties at a measurement uncertainty of at most
-\(0.045\)~MeV; every other outcome carries no verdict. The premise
-ancestry is declared: the balance premise, the equal-weight condition on the
-two response sectors of one icosahedral face circulant, was first abstracted
-from the measured charged-lepton triple, and it is algebraically the relation
-Koide published for those masses. The window is therefore a conditional
-postdiction whose evidential weight lies in the kill
+\(0.045\)~MeV; every other outcome carries no verdict. The balance
+premise, the equal-weight condition on the two response sectors of one
+icosahedral face circulant, is target-informed, so the window is a
+conditional postdiction whose evidential weight lies in the kill
 direction~\cite{ophregister,ophtaucomparison}. Improving tau-mass
 measurements test the balanced-circulant premise and Koide's relation
 together. Both send every allowed \((m_e,m_\mu)\) to the same \(m_\tau\), so
@@ -459,7 +514,7 @@ FloatingPragma,
 \emph{Frozen prediction register and precommitted comparison
 certificates},
 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/claims/frozen_prediction_register.json}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2055/claims/frozen_prediction_register.json}.
 FZ-10 custody packet:
 \url{https://github.com/FloatingPragma/observer-patch-holography/tree/925b77c83115a9085c1dd020291bbc6c11e3f45d/evidence/custody/falsification/frozen_targets/fz10_2026-07-28}
 
@@ -472,17 +527,17 @@ arXiv:2305.19116, 2023.
 \bibitem{ophpublicdata}
 FloatingPragma,
 \emph{OPH predictions and public-data comparisons}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2055/docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md}
 
 \bibitem{ophtaucomparison}
 FloatingPragma,
 \emph{Independent alpha/tau reproduction and the first bounded natural comparison}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2055/docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md}
 
 \bibitem{ophmodel}
 FloatingPragma,
 \emph{OPH executable observer construction}, 2026.
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2054/model}
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/r2055/model}
 
 \end{thebibliography}
 

@@ -10,38 +10,42 @@ The [working terms](../docs/INTERPRETATION_AND_TERMS.md) summarize these
 definitions. Mathematical background supplied by a benchmark remains an
 explicit premise even when the programme aims to reconstruct its physical role.
 
-The [paper set](../docs/PAPER_SET.md) records the model milestone around which
-these papers are organized and the role of each. A new paper release follows
-the owner's approval under the
-[release policy](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold);
-audits, correctness fixes, dated errata and review builds continue between
-releases, and preview CI does not authorize publication. The
-[basis](../docs/BASIS.md) states the closure hypothesis, the no-outside rule,
-the agreement condition and the executable specification that the papers share.
+The papers form one tower over the executable model, and the
+[paper set](../docs/PAPER_SET.md) maps each paper to its layer. Every paper
+opens with the same statement of the
+[executable-model hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md) and then
+its own hypothesis, what it proves, the open join it needs from the model and
+what would refute it. The [basis](../docs/BASIS.md) states the closure
+hypothesis behind the whole set.
 
 For a first reading, begin with the flagship synthesis,
-[*Observers Who Read Their Universe into Existence*](../flagship/from_observer_consensus_to_standard_physics.pdf).
-It gives the account, develops selected results and states the closure
-hypothesis. The construction paper,
+[*Observers Who Read Their Universe into Existence*](../flagship/from_observer_consensus_to_standard_physics.pdf),
+which walks through the tower layer by layer. The construction paper,
 [*An Executable Observer for Observer Patch Holography*](executable_observer_construction.pdf),
-states the specification, its acceptance criteria, its certified components
-and the premise map. The remaining papers form the theorem library: *Observers
-Are All You Need* for observers, records and the closure equations, the two
-derivation papers for spacetime and gravity on one side and Standard Model
-gauge structure on the other, and the consensus, particle and screen papers
-for the finite repair theorems, the matter sector and the carrier
-architecture.
+states the specification, the executed components and the ordered joins.
+
+The current-source previews also include the
+[28 October finite C/E campaign](../model/completion/README.md): continuing
+record-buffer operation with accounted exports, an exact stationary reference
+lifted to the actual complete records, and scoped branch-charge and modular-
+access obstructions. These results leave all integrated completion gates open.
+The construction paper gives the detailed observer/reference join; the shared
+summary in every primary paper preserves the same scope. The next parallel
+tasks are [the class contract (#1135)](https://github.com/FloatingPragma/observer-patch-holography/issues/1135),
+[observer services (#1136)](https://github.com/FloatingPragma/observer-patch-holography/issues/1136),
+[accessible clocks (#1138)](https://github.com/FloatingPragma/observer-patch-holography/issues/1138),
+and [the defect sector (#1139)](https://github.com/FloatingPragma/observer-patch-holography/issues/1139).
 
 | Paper | Role |
 | --- | --- |
-| [Observers Who Read Their Universe into Existence](../flagship/from_observer_consensus_to_standard_physics.pdf) ([source](../flagship/from_observer_consensus_to_standard_physics.tex)) | Flagship synthesis: the account of the theory, selected results, the construction scoreboard and the closure hypothesis; released on [PhilPapers](https://philpapers.org/rec/MUEFOC) |
-| [An Executable Observer for Observer Patch Holography](executable_observer_construction.pdf) ([source](executable_observer_construction.tex)) | Construction paper: specification, acceptance criteria, certified components, common field operators, premise map and open connections |
-| [Reality as a Consensus Protocol](reality_as_consensus_protocol.pdf) ([source](reality_as_consensus_protocol.tex)) | Theorem library: finite repair, protected records, quotient normal forms and provenance order |
-| [Observers Are All You Need](observers_are_all_you_need.pdf) ([source](observers_are_all_you_need.tex)) | Theorem library: observers, records, quantum identities, thermodynamics, matter continuum and the closure equations |
-| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Theorem library: provenance compiler, source-derived causal order, ambient 1+3 carrier and the conditional continuum and Einstein chain, common metric dictionary and the static-product stress obstruction |
-| [Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Theorem library: categorical and finite-carrier gauge routes, conditional response-derived matter image, spin-lift premises and global-form boundary |
-| [The Particle Zoo under Declared Matter Premises](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Theorem library: internal matter decoding, one-Higgs interactions, unselected family coefficients, hierarchy coordinates and the executable pipeline |
-| [Federated Echosahedral Screen Microphysics](screen_microphysics_and_observer_synchronization.pdf) ([source](screen_microphysics_and_observer_synchronization.tex)) | Theorem library: twelve-port source selector, central records and observer synchronization |
+| [Observers Who Read Their Universe into Existence](../flagship/from_observer_consensus_to_standard_physics.pdf) ([source](../flagship/from_observer_consensus_to_standard_physics.tex)) | Flagship synthesis: the account of the theory, selected results, the construction scoreboard and the closure hypothesis; released on [PhilPapers](https://philpapers.org/rec/MUEFOC) | Flagship synthesis: the closure hypothesis, the executable-model hypothesis and the tower layer by layer, with the status of each layer; released on [PhilPapers](https://philpapers.org/rec/MUEFOC) |
+| [An Executable Observer for Observer Patch Holography](executable_observer_construction.pdf) ([source](executable_observer_construction.tex)) | Layers 2–4 as executed: the specification, executed components, premise map, and the ordered joins with their stopping tests |
+| [Reality as a Consensus Protocol](reality_as_consensus_protocol.pdf) ([source](reality_as_consensus_protocol.tex)) | Layer 1: local agreement repair, quotient normal forms, provenance order, and cycle holonomy as the residue repair cannot remove |
+| [Observers Are All You Need](observers_are_all_you_need.pdf) ([source](observers_are_all_you_need.tex)) | Layer 3: observers, records, quantum and thermodynamic identities, and the closure equations |
+| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Layers 4 and 6: clocks, causal order and geometry from the same process, and the conditional Einstein implication with its realization premises |
+| [Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Layer 5, gauge half: gauge structure as overlap transport and the compact Lie type under complete-response premises |
+| [Particles as Localized Topological Defects of Native Overlap Transport](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Layer 5, matter half: the localized-defect hypothesis, the native decision test and the mass obstructions |
+| [Twelve-Port Icosahedral Carriers and Native Seam Repair](screen_microphysics_and_observer_synchronization.pdf) ([source](screen_microphysics_and_observer_synchronization.tex)) | Layer 2: the twelve-port carrier, seam rule, record laws and federation |
 
 The flavor theorem is developed in [The Positive-Chamber Koide Identity for
 Icosahedral Face Circulants](../extra/koide_identity_from_positive_c3_face_circulants.pdf),

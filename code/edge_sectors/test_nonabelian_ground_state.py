@@ -167,7 +167,8 @@ def _printed_number(cell):
 
 
 def test_paper_s3_table_replays_from_original_character_hamiltonian():
-    paper = Path(__file__).resolve().parents[2]/"paper"/"tex_fragments"/"PAPER.tex"
+    paper = (Path(__file__).resolve().parents[2]/"paper"/
+             "deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex")
     table = paper.read_text(encoding="utf-8").split(
         r"h & p\_triv & p\_sign & p\_std & t (sign)", 1)[1].split(r"\end{longtable}", 1)[0]
     rows = [line.strip().removesuffix(r"\\").strip().split("&")

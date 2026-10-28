@@ -15,7 +15,7 @@ satisfies $d(s,t)\le j'-j$. This relation is a partial order, it equals the
 reflexive transitive closure of the one-round reads, every round is an
 antichain, the width equals $|S_q|=q^3$, and every event at round $j$ has
 height $j$
-(\path{Lean/Geometry/SourceNetLayeredOrder.lean}, theorems
+(\texttt{SourceNetLayeredOrder}, theorems
 \texttt{layerPrec\_isPartialOrder}, \texttt{layerPrec\_iff\_reflTransGen},
 \texttt{walk\_iff\_walkDist\_le}, \texttt{width\_eq\_card\_sites},
 \texttt{height\_eq\_layer}; the concrete read law of the family is the
@@ -24,15 +24,15 @@ the ordering fraction are exact: the radial-time double integral of
 Proposition~\ref{cor:source-record-ordering-fraction} equals $T^8/1920$, so
 the fraction equals $1/10$, and the Myrheim--Meyer values in dimensions
 $2$, $3$ and $4$ are $1/2$, $8/35$ and $1/10$~\cite{myrheim1978,meyer1988}
-(\path{Lean/Geometry/OrderingFractionFourDimensional.lean}). The finite
+(\texttt{OrderingFractionFourDimensional}). The finite
 clock enclosure of Proposition~\ref{prop:source-count-clock-error} is
-formalized in \path{Lean/Time/SourceCountClockEnclosure.lean}.
+formalized in \texttt{SourceCountClockEnclosure}.
 The family limit, beyond these finite constants, is proved in
-\path{Lean/Geometry/FlatDiamondNormalization.lean}: actual generated strict
+\texttt{FlatDiamondNormalization}: actual generated strict
 pair counts have ordering fraction tending to $1/10$ for an interior
 timelike limiting diamond, with the supplied clock, population and read
 law kept explicit. The weighted count-volume limit and its finite error
-are proved in \path{Lean/Geometry/GoldenSourceVolumeLimit.lean}.
+are proved in \texttt{GoldenSourceVolumeLimit}.
 
 \paragraph{What the observer reads.}
 On the central vertical diamond of $K_q$ rounds the inverted Myrheim--Meyer
@@ -154,8 +154,7 @@ whose source sampling uses half as many draws. The original large-run
 draws and the chunk-parallel $q=144$ driver are not retained. Its neighbour
 digest agrees with the archived family receipt, with recorded sequential
 versus chunked identities at $q=21,34$; these ties do not reproduce the
-missing computation. The independently checked arithmetic comparison in
-\path{evidence/source_net_causal_poset/manifold_refinement/} exposes
+missing computation. The independently checked arithmetic comparison exposes
 signed deviations, available marginal errors and missing uncertainty.
 A statistical decision
 requires a declared bounded control, retained joint sufficient statistics,
@@ -177,7 +176,7 @@ $2\sum_{j=1}^{m}j^3=m^2(m+1)^2/2$. The sum-of-cubes identity gives the
 displayed formulas. For $J\ge2$, dividing the raw nested count-clock ratio
 by $(B_K/B_J)^{1/4}$ isolates this temporal discretization effect.
 The exact finite sums and both parity factors are proved in
-\path{Lean/Geometry/FiniteLayerQuadrature.lean}.
+\texttt{FiniteLayerQuadrature}.
 \begin{center}
 \begin{tabular}{r rr}
 $q$ & Raw relative error & Layer-corrected relative error\\\hline
@@ -220,7 +219,5 @@ The comparison tests read laws under supplied geometry. Its moving-diamond
 correction uses continuum intersections of spatial balls, so it is a
 calibration control rather than an intrinsic order-only clock. These
 deterministic errors are not confidence intervals. The specifications,
-witness histories, receipts and independent verifier are retained under
-\path{evidence/observer_dynamics_20260925/sim-analysis/codex/causal/};
-the count and quadrature controls are reproduced by
-\path{code/observer_dynamics/verify.py}.
+witness histories, receipts and an independent verifier of the count and
+quadrature controls are retained~\cite{ophrepo}.

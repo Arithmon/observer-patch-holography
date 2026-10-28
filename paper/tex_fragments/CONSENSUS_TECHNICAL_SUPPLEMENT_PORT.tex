@@ -1,14 +1,13 @@
 \section{Fixed-Cutoff Realization, Quotient Repair, and Edge Centers}
 \label{app:consensus-fixed-cutoff-port}
 
-This appendix carries the fixed-cutoff realization and edge-center items for the consensus paper.
-They sharpen the
-quotient-first repair interpretation used throughout the consensus paper and make the collar
-boundary data explicit at the same finite patch-net level. On the declared fixed-cutoff collar
-branch, the local repair step is read from exact Markov splice or a declared Petz/Fawzi--Renner
-recovery move on that same collar data; the recovery move gives a recovered comparison state, while
-exact splice requires exact Markovity or a controlled fixed-collar replacement modulus. Representative
-repair maps are only lifts of the resulting quotient-local update.
+This appendix makes the fixed-cutoff realization and the collar boundary
+data explicit at the finite patch-net level. On the collar branch the local
+repair step is read from exact Markov splice or a declared
+Petz/Fawzi--Renner recovery move; the recovery move gives a recovered
+comparison state, while exact splice requires exact Markovity or a
+controlled fixed-collar replacement modulus. Representative repair maps are
+lifts of the resulting quotient-local update.
 
 \subsection{Quotient Repair and UV Underdetermination}
 
@@ -21,18 +20,11 @@ representative-level map \(T_i\) is only required to be a lift satisfying
 \[
 q\circ T_i=\overline T_i\circ q.
 \]
-Hence
-\[
-q(T_i(\gamma\cdot s))=q(T_i(s))
-\]
-for gauge-equivalent inputs. Quotient descent is therefore structural, while strict
-representative-level covariance is only implementation bookkeeping. The burden is to prove that
-the accepted recovery-derived local moves satisfy the stated repair-completeness, support-local
-disjoint-commutation, nested-collar
-restriction-compatibility, and Petz-domain control clauses on the declared branch. The
-touched-overlap acceptance contract yields finite Lyapunov descent and derived
-termination for accepted moves, while the fixed-cutoff gluing package carries the
-parenthesization-invariant union-collar state used for the local diamond.
+Hence \(q(T_i(\gamma\cdot s))=q(T_i(s))\) for gauge-equivalent inputs:
+quotient descent is structural, and representative-level covariance is
+bookkeeping. The accepted recovery-derived moves must satisfy the
+repair-completeness, support-local disjoint-commutation, nested-collar
+restriction-compatibility and Petz-domain clauses on the declared branch.
 
 \begin{proposition}[Ancilla-stable UV underdetermination]
 Let a fixed-cutoff OPH realization be stabilized by finite ancillary factors \(K_P\) in a fixed
@@ -84,11 +76,9 @@ The right half-collar carries the contragredient representation because it sees 
 across the same cut.
 \end{theorem}
 
-\begin{remark}
-This is the finite-patch-net origin of the collar center used by the later Markov, record, and
-observer packages. Exact Markovity is an additional state hypothesis; EC provides the
-kinematic block structure.
-\end{remark}
+This is the finite patch-net origin of the collar center used by the Markov,
+record and observer constructions. EC provides the kinematic block
+structure; exact Markovity is an additional state hypothesis.
 
 \subsection{Higher-Gauge Replacement on the Genuinely Noncentral Branch}
 
@@ -173,10 +163,7 @@ On the ordinary or central-defect branch, assume in addition that changes of rep
 through the declared boundary-redundancy action. On the genuinely noncentral branch, assume the
 corresponding coherence identities hold in the crossed-module change system
 \(\mathcal T_\Sigma\). Then the physical quotient-local glued state on \(U\) is independent of
-parenthesization. The finite export
-\(\mathsf{GLUE\text{-}COHERENCE\text{-}1}\) contains the constituent and union collars,
-recovery maps or primitive aggregate state, all restriction hashes, commuting squares, pentagon
-checks, quotient action, and refinement-compatibility fields.
+parenthesization.
 \end{proposition}
 
 \begin{proof}

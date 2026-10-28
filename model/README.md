@@ -8,11 +8,41 @@ components and controls; they do not constitute separate particle definitions
 or a completed physical realization.
 
 The [first bounded completion campaign](completion/README.md) executes a
-continuing C/E observer with explicit memory export, constructs its stationary
-source/record reference, and certifies an obstruction to nontrivial source
-charges commuting with every active native branch. It tests a declared family
-of mixtures, repair delays and classical memory policies. The field, physical
-clock, defect and gravity joins remain open.
+continuing C/E observer with explicit memory export and a delayed-mixture
+control. For the repair-only endpoints, an exact stationary source/current-sign
+reference lifts through the actual instrument to the complete last-record
+FIFO. The stationary object is that finite marginal, with exported history
+traced out; its support restriction, preparation and observer access are
+explicit. The delayed mixed member requires a separate stationary solve.
+
+Two exact obstructions constrain the next construction. The
+[branch-algebra certificate](completion/defect_algebra.md) excludes a fixed
+nontrivial Hermitian source charge commuting with every active native branch
+on H78 or H66, including all positive C/E mixtures and declared classical
+feedback. This concerns reducing sectors, not every forward-invariant
+subspace, expectation-fixed observable or history-dependent charge. The
+[modular-access test](completion/MODULAR_ACCESS.md) uses unequal weights in
+the actual stationary record blocks: at a specified dimensionless modular
+parameter, every admitted real operation has normalized trace-distance error
+at least `1/2` from the selected modular action on the fixed full support
+algebra. Real joint ancillary inputs and the fixed encoding are premises;
+the separating observable is a mathematical witness, not a native detector.
+
+The [next parallel work](../docs/COMPLETION_PROGRAM.md) therefore has four
+owners:
+
+| Owner | Required next result |
+| --- | --- |
+| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) | Specify one bounded successor class, including permitted changes of services and domain, while preserving the first campaign's controls. A plan does not itself freeze that successor. |
+| [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) | Realize and account preparation, randomization, record storage/export, observer delivery and any admitted noncommuting access in one continuing demonstration. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | Choose an actual accessible algebra and clock contract, then construct its action/readout or prove an obstruction on that interface. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | Test a specified localized history-dependent or metastable sector, or a declared refinement, including boundary observable, transport and loss under the complete repair law. |
+
+Design and diagnostics on the frozen first family can proceed in parallel;
+dependent experiments on a changed mechanism must share the same versioned
+contract. The [theorem map](completion/THEOREM_MAP.md) and scoped obstruction
+review accompany all four lanes. No integrated completion gate, physical clock,
+mass spectrum or gravitational realization is accepted by these finite results.
 
 The [particle and common-field package](observer_particles/README.md)
 computes conditional internal matter multiplets and one-Higgs interactions
@@ -22,7 +52,7 @@ constructions against shared spatial and metric contracts. Its
 state which theorem inputs are constructed and which physical identifications
 remain separate.
 
-The [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
+The source-pinned [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
 tests a declared Weyl–Higgs action through its charged field and observer
 clock. Its measured finite gaps do not reproduce the charged-lepton hierarchy.
 The same audit derives a collective charged response from the native
@@ -30,6 +60,9 @@ recorded repair itself and tests its local detector records on overlapping
 observer regions. A physical mass must follow from those shared records and
 their clock and spacetime interpretation; the native transfer alone does
 not establish a Lorentzian particle pole.
+Its retained field and mass diagnostics keep their receipt-bound text; the
+[completion campaign](completion/README.md) supplies the source-charge and
+clock-access decisions used to select further work.
 Calibrated charged-matter controls recover their supplied running mass
 parameters from simulated observer records. A separate native fixed-basis
 readout recovers the uncalibrated feedback coefficient, retaining its failed

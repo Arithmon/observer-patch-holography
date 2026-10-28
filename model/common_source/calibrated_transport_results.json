@@ -1,7 +1,7 @@
 {
   "artifact": {
     "filename": "calibrated_transport_results.npz",
-    "sha256": "408159b3833949356bbdd12a5d07b66385dc62ba24e1e6da1914698b8c61c567"
+    "sha256": "abda1e9763c1d067e5aeb87d03b6068813d925d16a4ace780895f6aaee9294ff"
   },
   "common_clock": {
     "global_energy_dictionary": "1GeV/log(5)",
@@ -14,43 +14,43 @@
       "axis": "x",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "1",
-      "source_frame_electric_charge_difference_diagnostic": 4.47057885508691e-15,
-      "source_frame_symbol_difference_diagnostic": 2.919335295063699e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.104375573512137e-15,
+      "source_frame_symbol_difference_diagnostic": 4.853211284746541e-13
     },
     {
       "axis": "y",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "1",
-      "source_frame_electric_charge_difference_diagnostic": 4.326675621903787e-15,
-      "source_frame_symbol_difference_diagnostic": 2.3390919331127797e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.049615391635128e-15,
+      "source_frame_symbol_difference_diagnostic": 4.563674395505026e-13
     },
     {
       "axis": "z",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "1",
-      "source_frame_electric_charge_difference_diagnostic": 4.341221349323248e-15,
-      "source_frame_symbol_difference_diagnostic": 2.5747047404162885e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.0684727055015705e-15,
+      "source_frame_symbol_difference_diagnostic": 4.556344027221067e-13
     },
     {
       "axis": "x",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "2",
-      "source_frame_electric_charge_difference_diagnostic": 4.47057885508691e-15,
-      "source_frame_symbol_difference_diagnostic": 2.9204361768977665e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.104375573512137e-15,
+      "source_frame_symbol_difference_diagnostic": 4.85367918861391e-13
     },
     {
       "axis": "y",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "2",
-      "source_frame_electric_charge_difference_diagnostic": 4.326675621903787e-15,
-      "source_frame_symbol_difference_diagnostic": 2.3392844315874217e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.049615391635128e-15,
+      "source_frame_symbol_difference_diagnostic": 4.564049852094131e-13
     },
     {
       "axis": "z",
       "complete_Nambu_columns": 180,
       "momentum_GeV": "2",
-      "source_frame_electric_charge_difference_diagnostic": 4.341221349323248e-15,
-      "source_frame_symbol_difference_diagnostic": 2.575940513527697e-13
+      "source_frame_electric_charge_difference_diagnostic": 6.0684727055015705e-15,
+      "source_frame_symbol_difference_diagnostic": 4.556577810027858e-13
     }
   ],
   "dispersion_from_records": [
@@ -624,7 +624,7 @@
   ],
   "dyadic_levels": 31,
   "error_contract": {
-    "backend_complete_score_bias_diagnostic": "1/274877906944",
+    "backend_complete_score_bias_diagnostic": "7/1099511627776",
     "backend_diagnostics_authenticated_by_replay": false,
     "backend_pair_error_diagnostic": "1/1099511627776",
     "binary_all_column_pair_error_admission": "1/10000000000",
@@ -2323,7 +2323,7 @@
   "frame_source_word_grammar": {
     "FSWAP_calls_per_frame": 14142,
     "all_field_frame_arrays_materialized": false,
-    "backend_FSWAP_error_diagnostic": "3189/1000000000000000000",
+    "backend_FSWAP_error_diagnostic": "3013/1000000000000000000",
     "exact_binary_FSWAP_operator_error_upper": "1/10000000000000",
     "factor_count": 897,
     "factor_plan": [
@@ -18257,7 +18257,7 @@
     "model/native_modular_reference/completed_clock.py": "0a681d1957a28b3de755be7c0b1cb68812925b495f144bd414116479101cee16",
     "model/native_modular_reference/construction.py": "4c3ce7e8cfe111b8f4d6fc260976416b14118d62bcea6fc9cf276055ef208a1f",
     "model/native_modular_reference/full_flow.py": "1ce0c90ce278a518886a7c8a1e1e1c34efd9e760ad6ca1ff1b2da51318671ed6",
-    "model/native_modular_reference/local_preparation.py": "7a6f6cc70039c4b09a9c8f5e511721fe24e1ca5266c64bf2dff1cc0edbe81b74",
+    "model/native_modular_reference/local_preparation.py": "9346f5a018dc7bb50a899c25b64d00c3a08ffa788ecc500608dcd21b2271360d",
     "model/native_modular_reference/phase_inference.py": "908555cfc79c735d30d2fdda940c326d01e285f160858387b58957224156ac53",
     "model/native_modular_reference/preparation.py": "2a68a6b98068232787468842b16572a4cd3bba82233440b187e5e9bb596b7db8",
     "model/native_modular_reference/reference_tomography.py": "77a30720a44155d0b11c1801448dd5f5d8b5960230d03079c11d55e0839a0b11",
@@ -18287,17 +18287,17 @@
     "model/observer/source_scalar/cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
     "model/observer/source_scalar/experiment.py": "7e7db71b4621bb64378f454f128e7f7cc3c080e3ab7ca7666e2c1b35539d2a3a",
     "model/observer/source_scalar/field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "model/observer_particles/neutrino_action_extension.py": "a90b3eddf89d3b84db4f1efb513fee6ffa15579aaa779f2ff07a1a0880e8a12a",
-    "model/observer_particles/representation_identification.py": "8c60d7b38b3fcb70420b6ee7425e5884e0911837989804614907e4a4997bbdeb",
-    "model/observer_particles/results/family_naturality.json": "549944b7e4825fd94e7ef6765c5fab9c9fc788452fe4fd79b46a51e4b600f4c7",
+    "model/observer_particles/neutrino_action_extension.py": "22bdb38199f8b90cad5414578202fa19b9c7f976ce09d4e645b032e8816f4f37",
+    "model/observer_particles/representation_identification.py": "e8ca7ac11775548094ff9f32dec6ac39dd44f4edc4031b4d1c71f1fdcdcab833",
+    "model/observer_particles/results/family_naturality.json": "d3c6222739cd3f92652684b592533f48dcfa14a39181cf0e3784a2faca8183e5",
     "model/observer_particles/results/family_naturality_operators.json": "6bd5f046c5fb16d9951a208810309da397736c2a98fe6df2d7dda2bcbfbc88ed",
-    "model/observer_particles/results/neutrino_action_extension.json": "1255516f8ff3249434b65667da04aca9bb80ba6b427432ab28d1f1a4d011e3b8",
+    "model/observer_particles/results/neutrino_action_extension.json": "1daaef2048182d9e37f2449d6515487f2f4102872b79c8deaa2971b476b5a6ac",
     "model/observer_particles/results/neutrino_action_operators.json": "e439d1f9f4f85293d5742693dcca3a0c68eaab0e3588027060cc4387e5d1be8b",
-    "model/observer_particles/results/representation_identification.json": "dc4271fb837f0df288cc5960fd3e2ed3cad719213994b72a30c297a4c8ab319a",
+    "model/observer_particles/results/representation_identification.json": "3a3d05fd1b946ff96752ddd3fbc2b8939a595f16397023fe96d992f3c519094b",
     "model/observer_particles/results/representation_identification_operators.json": "8cd9d4537d73539205420fb5de0321ec70ea72f66c5475978df92b6b35072122",
-    "model/observer_particles/results/unified_yukawa_action.json": "6de34ed8d5edc57c298b63b58234ed3afb267f8d22ee53a7eeae3f6e73ecd571",
+    "model/observer_particles/results/unified_yukawa_action.json": "6f5fa5cb70be906442256ed09370365980341ed0562102087ba0b953bfb9006d",
     "model/observer_particles/results/unified_yukawa_operators.json": "972ae764bf1b466b5506442969d35b262c15ba1b5207def1e8e3bd51e792e428",
-    "model/observer_particles/unified_yukawa_action.py": "ce0fa43f480505792ca8d57b9ea6731ffeff6ea9c1cc5dcad78c0e9c7c742b83",
+    "model/observer_particles/unified_yukawa_action.py": "7e18b5b60f250657f23042a605e347ab0a870d53e7cfce961e33b0c0f9def0b9",
     "model/predictions/__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
     "model/predictions/observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
     "model/primitive_observer/runtime.py": "affc6bfe38da057489582304060d1f21ab4c61783a85a0b4e652078d880aa142",

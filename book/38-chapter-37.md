@@ -52,7 +52,7 @@ Count. The quoted phrase is ten words and the phrase after it is the same ten, s
 
 Gödel's sentence is built that way. It gets called a paradox. It is not one. The liar sentence, the one saying that it is false, has no consistent reading: true makes it false, false makes it true, and the machinery seizes. Take Gödel's instead and suppose the system proves it. Then a proof of it exists, so what the sentence says is false, and the system can read that proof and derive the opposite of what it just proved. It contradicts itself, which is chapter two's disease, buying everything and ruling nothing out. So a system that contradicts nothing does not prove that sentence, which is what that sentence says about itself. The sentence is true.
 
-That is what the table of seven was handed: a consistent system with a truth inside it that its own proofs do not reach. Hilbert wanted consistent and complete, and complete was the half that went.
+That is what the table of seven was handed: a consistent system with a truth inside it that its own proofs do not reach. Hilbert wanted consistent and complete, and completeness is the half that failed.
 
 ## Two hands and a sheet of paper
 
@@ -172,4 +172,4 @@ The first says the endpoint does not care how the work was cut up. The second sa
 
 Observers inside it can reconstruct and replay the recorded program. The hardware is the carrier: the deck is its five families of half turns, and the shuffles are its own rotations.
 
-Which leaves the observers themselves, who have been doing all the work and getting none of the explanation. A loop that computes has pieces. Some of those pieces spend everything they have on continuing to be pieces: holding a boundary, keeping a record, repairing themselves faster than they come apart. Every rule in the architecture is indifferent to which patterns survive. Some of the patterns are not.
+Which leaves the observers themselves, who have done all the work in this account without being explained by it. A loop that computes has pieces. Some of those pieces spend everything they have on continuing to be pieces: holding a boundary, keeping a record, repairing themselves faster than they come apart. Every rule in the architecture is indifferent to which patterns survive. Some of the patterns are not.

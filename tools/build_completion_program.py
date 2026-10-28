@@ -38,6 +38,72 @@ def bound_evidence(root: Path, rows: list) -> None:
         require(bool(row.get("scope")), "missing evidence scope")
 
 
+def validate_next_wave(root: Path, wave: dict, by_id: dict, campaigns: list) -> None:
+    """A work assignment may reuse evidence, but cannot widen its contract."""
+    require(isinstance(wave, dict) and bool(wave.get("id")), "missing next-wave assignment")
+    require(wave.get("status") == "PLANNED_PROVISIONAL_PARALLEL_WORK"
+            and wave.get("scope") == "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
+            "next wave cannot silently become accepted evidence")
+    require(wave.get("changes_frozen_campaign") is False
+            and wave.get("successor_class_frozen") is False
+            and wave.get("physical_comparison_count_added") == 0,
+            "next wave cannot change a frozen class or add a physical comparison")
+    campaign_by_id = {row["id"]: row for row in campaigns}
+    interface = wave.get("shared_interface", {})
+    require(isinstance(interface, dict), "untyped next-wave shared interface")
+    baseline = campaign_by_id.get(interface.get("baseline_campaign_id"))
+    require(baseline is not None
+            and interface.get("baseline_contract") == baseline["contract"]["path"],
+            "next wave lacks the registered common baseline")
+    require(interface.get("same_process_required") is True
+            and interface.get("unilateral_primitive_changes_allowed") is False
+            and isinstance(interface.get("requirements"), list)
+            and bool(interface["requirements"])
+            and all(isinstance(row, str) and row.strip() for row in interface["requirements"]),
+            "next wave lacks a common interface and revision boundary")
+    evidence = wave.get("evidence")
+    bound_evidence(root, evidence)
+    evidence_ids = [row.get("id") for row in evidence]
+    require(all(isinstance(identifier, str) and identifier for identifier in evidence_ids)
+            and len(evidence_ids) == len(set(evidence_ids)),
+            "missing or duplicate next-wave evidence identifier")
+    require(all(row.get("campaign_id") in campaign_by_id for row in evidence),
+            "next-wave evidence lacks a registered campaign")
+    owners = wave.get("owners", [])
+    require(isinstance(owners, list) and len(owners) == 4
+            and all(isinstance(row, dict) for row in owners)
+            and len({row.get("gate") for row in owners}) == 4,
+            "next wave requires four distinct issue owners")
+    reviews = wave.get("embedded_reviews", [])
+    require(isinstance(reviews, list) and bool(reviews)
+            and all(isinstance(row, dict) for row in reviews)
+            and len({row.get("gate") for row in reviews}) == len(reviews),
+            "missing or duplicate embedded review owner")
+    require(not ({row.get("gate") for row in owners} & {row.get("gate") for row in reviews}),
+            "embedded review cannot be another primary work assignment")
+    for row in owners + reviews:
+        gate = row.get("gate")
+        require(gate in by_id and row.get("issue") == by_id[gate]["issue"],
+                "next-wave issue differs from its canonical gate owner")
+        refs = row.get("evidence", [])
+        require(isinstance(refs, list) and bool(refs) and set(refs) <= set(evidence_ids),
+                "next-wave work lacks bound starting evidence")
+    for row in owners:
+        require(all(isinstance(row.get(field), str) and row[field].strip()
+                    for field in ("title", "why_now", "deliverable", "may_start_now", "join_condition")),
+                "next-wave owner lacks a concrete deliverable or parallel boundary")
+    require(all(isinstance(row.get("role"), str) and row["role"].strip() for row in reviews),
+            "embedded review lacks its scope")
+    require(all(isinstance(wave.get(field), str) and wave[field].strip()
+                for field in ("rationale", "acceptance_policy", "deferred_reason")),
+            "next-wave rationale or acceptance policy missing")
+    deferred = wave.get("deferred_gates", [])
+    require(isinstance(deferred, list) and len(deferred) == len(set(deferred))
+            and set(deferred) <= set(by_id)
+            and not (set(deferred) & {row["gate"] for row in owners + reviews}),
+            "invalid deferred next-wave gate")
+
+
 def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[dict, dict]:
     root = root.resolve()
     program = json.loads(local_file(root, PROGRAM).read_text())
@@ -128,6 +194,8 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
         else:
             require(allow_unlinked, f"unlinked completion issue: {stage['id']}")
     require(len(issues) == len(set(issues)), "duplicate completion issue ownership")
+    if "next_wave" in program:
+        validate_next_wave(root, program["next_wave"], by_id, campaigns)
     visiting, visited = set(), set()
 
     def visit(id):
@@ -176,7 +244,39 @@ def readiness(stage: dict, program: dict) -> str:
     if stage["status"] in {"ACCEPTED", "OBSTRUCTED"}:
         return stage["status"]
     missing = [dep for dep in stage["requires"] if by_id[dep]["status"] != "ACCEPTED"]
+    if stage["status"] == "IN_PROGRESS":
+        return ("In progress; acceptance awaiting " + ", ".join(missing)
+                if missing else "In progress")
     return "Awaiting " + ", ".join(missing) if missing else "Ready to start"
+
+
+def render_next_wave(program: dict) -> list[str]:
+    wave = program.get("next_wave")
+    if not wave:
+        return []
+    evidence = {row["id"]: row for row in wave["evidence"]}
+    lines = ["## Next four parallel workstreams", "",
+             f"Assignment: `{wave['id']}`. This plans provisional work; it does not "
+             "select or freeze a successor law, change the retained campaign or accept a gate.", "",
+             wave["rationale"], "",
+             "| Owner | Next concrete result | Why this comes next |",
+             "| --- | --- | --- |"]
+    for owner in wave["owners"]:
+        lines.append(f"| {issue_link(owner['issue'])} / {owner['gate']}: {owner['title']} "
+                     f"| {owner['deliverable']} | {owner['why_now']} |")
+    lines += ["", "Parallel starting work and the required joins:", ""]
+    for owner in wave["owners"]:
+        refs = ", ".join(f"[{identifier.replace('_', ' ')}](../{evidence[identifier]['path']})"
+                         for identifier in owner["evidence"])
+        lines.append(f"- **{owner['gate']} / {issue_link(owner['issue'])}:** "
+                     f"{owner['may_start_now']} {owner['join_condition']} Starting evidence: {refs}.")
+    lines += ["", "Shared source interface:", ""]
+    lines += [f"- {requirement}" for requirement in wave["shared_interface"]["requirements"]]
+    lines += ["", wave["acceptance_policy"], "", "Review stays inside these workstreams:", ""]
+    lines += [f"- {review['gate']} / {issue_link(review['issue'])}: {review['role']}"
+              for review in wave["embedded_reviews"]]
+    lines += ["", wave["deferred_reason"], ""]
+    return lines
 
 
 def mermaid(program: dict) -> str:
@@ -228,13 +328,16 @@ def render(program: dict, hypothesis: dict) -> str:
             lines += [f"- [{campaign['id']}](../{contract['path']}): {contract['scope']} "
                       f"Owning gates: {', '.join(campaign['supports'])}."]
         lines += [""]
+    lines += render_next_wave(program)
     lines += ["## Next work and dependencies", "",
-             "Start with CP-00. It must identify the law/resource/interpretation class "
-             "whose complete exclusion would stop this program. Component investigations "
+             "CP-00 must identify the complete law/resource/interpretation class "
+             "whose exclusion would stop this program. The frozen finite campaign "
+             "does not supply that larger boundary. Component investigations "
              "can continue provisionally; their results cannot discharge a dependent gate "
              "without the predecessor mappings. CP-12 audits every stage in parallel "
-             "once the program boundary is fixed.", "", mermaid(program), "",
-             "| Gate | Research task | Dependency readiness | Issue |", "| --- | --- | --- | --- |"]
+             "within each declared scope; a whole-program decision requires its frozen class.", "",
+             mermaid(program), "",
+             "| Gate | Research task | Work status / acceptance prerequisites | Issue |", "| --- | --- | --- | --- |"]
     for stage in program["stages"]:
         lines.append(f"| {stage['id']} | {stage['title']} | {readiness(stage, program)} | {issue_link(stage['issue'])} |")
     lines += ["", "The arrows are research acceptance dependencies, not a new theorem "
@@ -303,8 +406,14 @@ def render_issue(stage: dict, program: dict) -> str:
     lines += ["", "Existing component work can proceed provisionally; integrated gate "
               "acceptance requires the actual maps to accepted predecessors. The same "
               "law, state/reference, observer access, clocks, energy and refinement "
-              "domain must compose. A similarly named benchmark is not that map.", "",
-              "## Acceptance", ""]
+              "domain must compose. A similarly named benchmark is not that map.", ""]
+    for owner in program.get("next_wave", {}).get("owners", []):
+        if owner["gate"] == stage["id"]:
+            lines += ["## Next planned work", "", owner["deliverable"], "",
+                      owner["may_start_now"], "", owner["join_condition"], "",
+                      "This assignment does not change the frozen component campaign or "
+                      "accept this gate. Wider primitives require the shared versioned contract.", ""]
+    lines += ["## Acceptance", ""]
     lines += [f"- [ ] {row}" for row in stage["acceptance"]]
     lines += ["", "## Obstruction and stopping", "", stage["obstruction"], "",
               "Route every exclusion to CP-12 with target version, mandatory premises, "

@@ -1,8 +1,7 @@
 # Particle-simulation receipts
 
 This directory publishes the two machine-readable receipts used for the
-finite simulator statements in *The Particle Zoo under Declared Matter
-Premises*.
+finite simulator statements in *Particles as Localized Topological Defects of Native Overlap Transport*.
 
 - `k1_64k_completion_audit.json` records the two completed 65,536-patch
   calibration-null runs and binds their configurations and principal arrays

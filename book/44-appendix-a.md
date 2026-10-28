@@ -10,7 +10,7 @@ Eighteen come back about the account in this book. The answers retain the earlie
 
 Everything came out of something hot and dense about fourteen billion years ago, so what was there before that, and how does an account built on observers get started in a universe that contained none?
 
-That is two questions welded together, and both halves lean on a first instant seen from outside: a moment when the arrangement switched on, watched by nobody in particular, with observers turning up later as furniture.
+That is two questions welded together, and both halves lean on a first instant seen from outside: a moment when the arrangement switched on, watched by nobody in particular, with observers appearing later inside it.
 
 The hot dense era is the far end of a reconstruction built from records held inside finite patches. The microwave glow left over from when the plasma stopped being opaque is a record. So are the ratios of the light elements, the spectra of galaxies and the catalogs of supernovae. The Big Bang names the place where the record side of that reconstruction goes dark. As for before, the only ordering there is runs on committed repairs, and where none have committed the word has nothing to be a relation on.
 
@@ -44,7 +44,7 @@ The suspicion assumes the number could have been otherwise, which is what a para
 
 Count it instead. Every port meets five triangles, every edge belongs to two faces, and counting the same thing two ways forces the Euler relation, after which a spherical carrier has twelve ports, thirty seams and twenty faces. The count runs backwards as well, since twelve ports of that kind force the sphere.
 
-Change the degree and the arrangement fails. Drop the spherical closure and it fails. Try the cube, a perfectly good solid anybody can hold, and it admits no such structure at all. Then the wiring: of the 10,395 ways to pair the ports up, incidence at distance three selects one. Each of the nineteen numbers typed into the one line can be dialed to a different value and the equations survive. Twelve has nothing to turn. Move it to thirteen and the alignment that lets two patches compare readings stops existing. There is no thirteen-port world sitting elsewhere with slightly different physics in it.
+Change the degree and the arrangement fails. Drop the spherical closure and it fails. Try the cube and it admits no such structure at all. Then the wiring: of the 10,395 ways to pair the ports up, incidence at distance three selects one. Each of the nineteen numbers typed into the one line can be dialed to a different value and the equations survive. Twelve has nothing to turn. Move it to thirteen and the alignment that lets two patches compare readings stops existing. There is no thirteen-port world sitting elsewhere with slightly different physics in it.
 
 ## If space is not a container, where is any of this happening?
 
@@ -64,7 +64,7 @@ The world is made of records held by observers. Turn the observers away and noth
 
 Two things ride along inside it: that an observer is a person, and that looking is something a mind does.
 
-An observer here is anything bounded that keeps records. Sunlight leaving the moon is a comparison, the tide in the Bay of Fundy is a record of where the moon was, and the rock holds its own state against everything it touches, with nobody on a hillside required.
+An observer here is anything bounded that keeps records. Sunlight leaving the moon is a comparison, the tide in the Bay of Fundy is a record of where the moon was, and the rock holds its own state against everything it touches, with no person watching.
 
 Definiteness is a count of copies. Sixteen copies of a sixteen-bit fact drive the odds on a forgery below one part in ten to the seventy-seventh without adding a single bit of content, and an object that size is copied into its surroundings far more often than sixteen times. The answerable question is how many records carry the moon's position. It is written into every square meter of sunlight it turns back, which is why its place is as definite as anything in the sky. Ask about a single atom nothing has interacted with and the odds stop being one and zero, which is the same arithmetic read at the other end.
 
@@ -100,7 +100,7 @@ The declared electromagnetic trial map certifies 137.035660 where the quoted mea
 
 ## You knew the answers before you started
 
-Every one of these numbers was measured decades before the arithmetic that lands on it was written down. Sommerfeld put the fine-structure constant into physics in 1916, the tau mass has been known since the 1970s, and matching a number in a table is what any sufficiently flexible scheme does on a good afternoon.
+Every one of these numbers was measured decades before the arithmetic that lands on it was written down. Sommerfeld put the fine-structure constant into physics in 1916, the tau mass has been known since the 1970s, and matching a number in a table is what any sufficiently flexible scheme can do.
 
 The complaint assumes flexibility, and flexibility is countable.
 
@@ -134,7 +134,7 @@ Observer-first sounds like a claim that the universe waits to be noticed. The ve
 
 The assumption is that observing is a mental act, so the word carries a mind wherever it goes.
 
-Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all three. None of the results built on the list would change if every observer in the network were plumbing.
+Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all three. None of the results built on the list requires an observer to have a mind.
 
 Consciousness is a special case, defined in chapter forty at the size the structure supports: owned boundary repair, read from the inside. An observer that holds coordinates on its own state, and computes its next move off them, is reading the half of the record that the map to the public list deletes. Which organizations of that reading are lived, and how finely a person's runs, are questions that chapter takes up. Nothing in the structure lets a wish move an entry.
 
@@ -146,7 +146,7 @@ The objection assumes the loop is an argument, whose starting points would have 
 
 The fixed point is a complete history under its self-reference map. It needs no first solver outside it, and it contains internal causal order, local changes and the computations through which the structure realizes its dependencies. A terminating repair solver, a stationary state and an observer's calibrated clock are three different objects, and calling each of them a fixed point does not make them one.
 
-A loop of this kind is a condition. It constrains a description and its realization together, the way an equation constrains its unknown, and the history either satisfies it or does not. Nothing in it needs to come first. Part of the demand can be checked on hardware: cut the run across a thousand machines and it finishes in the state the single machine finishes in, with the worker count, the restart history and the schedule appearing in none of the settled readings anybody inside can take. Circular reasoning does not usually come with a theorem about worker counts.
+A loop of this kind is a condition. It constrains a description and its realization together, the way an equation constrains its unknown, and the history either satisfies it or does not. Nothing in it needs to come first. Part of the demand can be checked on hardware: cut the run across a thousand machines and it finishes in the state the single machine finishes in, with the worker count, the restart history and the schedule appearing in none of the settled readings anybody inside can take.
 
 ## Does this mean my choices are already made?
 

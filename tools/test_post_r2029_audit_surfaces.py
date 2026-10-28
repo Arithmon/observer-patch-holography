@@ -296,7 +296,9 @@ def test_wz_and_quark_surfaces_do_not_promote_declared_maps_or_close_future_rout
 
 
 def test_heat_kernel_formula_and_finite_diagnostics_keep_their_conditions() -> None:
-    paper = _text("paper/tex_fragments/PAPER.tex")
+    paper = _text(
+        "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex"
+    )
     assert "log(p_0/d_0)-\\log(p_j/d_j)" in paper
     assert "H = -\\frac{g^2}{2} \\Delta_G" in paper
     assert "H_{\\mathrm{edge}} = \\Delta_G" in paper
@@ -317,7 +319,6 @@ def test_heat_kernel_formula_and_finite_diagnostics_keep_their_conditions() -> N
     assert "no_frozen_receipt_or_continuous_group_transfer" in claim["status"]
     assert "code/edge_sectors/test_heat_kernel_regressions.py" in claim["evidence"]
     assert "At \\(h=h_*\\), the relative log residual and log-ratio divide by zero" in paper
-    assert "the earlier table did not reproduce the declared Hamiltonian" in paper
     assert "strict held-out mismatch at every finite coupling" in paper
     # The S3 identity is a proved finite counterexample to exact heat-kernel
     # weights, so no surface may state those weights as a law of the model.
@@ -392,15 +393,15 @@ def test_field_subset_search_records_nonlumpability_and_keeps_other_maps_open() 
 
 
 def test_particle_exact_formulae_preserve_degeneracy_and_domain_boundaries() -> None:
+    # The neutrino deformation, Ward/Thomson and RG-transport charts left the
+    # particle paper with its electroweak and neutrino chart sections; the
+    # exact obstructions it keeps must retain their scope clauses.
     particle = _text("paper/deriving_the_particle_zoo_from_observer_consistency.tex")
     assert "distinguished calibrated positive gap vector" in particle
-    assert "simple and strictly positive" in particle
-    assert "contains one zero singular value, its zero column retains" in particle
-    assert "If \\(P=0\\), all three off-diagonal entries vanish" in particle
-    assert "strictly positive Thomson limit" in particle
-    assert "local existence and uniqueness" in particle
-    assert "full-interval non-blowup and domain hypotheses" in particle
-    assert "matching output lies in the domain of the next beta system" in particle
+    assert "It does not bound a smallest eigenvalue away from zero" in particle
+    assert "The bound is not a universal heavy-to-light bound" in particle
+    assert "a light eigenvalue near zero can make that single ratio arbitrarily large" in particle
+    assert "Neither becomes a rest mass by taking a logarithm" in particle
 
 
 def test_yang_mills_legacy_gap_does_not_fake_the_missing_bridge() -> None:
@@ -432,11 +433,19 @@ def test_screen_variational_and_finite_descent_theorems_have_complete_hypotheses
     assert "every accepted settling path" in screen
 
 
-def test_stitch_symmetry_no_go_requires_no_fixed_admissible_stitch() -> None:
+def test_particle_paper_states_the_defect_hypothesis_and_decision_scope() -> None:
+    # The affine event-record stitching section left the particle paper; the
+    # paper now leads with the defect hypothesis and the native decision test.
     particle = _text("paper/deriving_the_particle_zoo_from_observer_consistency.tex")
-    assert "its induced action fixes no admissible stitch" in particle
-    assert "Without the fixed-point-free clause" in particle
-    assert "a unique natural stitch need only be invariant" in particle
+    assert "Stable massive matter is a localized defect of the native overlap and transport structure" in particle
+    assert "admitted local repairs cannot erase" in particle
+    assert "with one common signal speed" in particle
+    assert "No conversion factor is fitted per species" in particle
+    assert "survival is \\((5/6)^n\\)" in particle
+    assert "\\sum_hK_h^\\dagger P_{\\rm coll}K_h=\\frac56P_{\\rm coll}" in particle
+    assert "\\(31/108\\) or \\(55/108\\)" in particle
+    assert "They do not exclude other quantum, complete-history or federated defects" in particle
+    assert "1:195.11703757:3579.82624571" in particle
 
 
 def test_consensus_confluence_is_quotient_not_representative_uniqueness() -> None:

@@ -160,6 +160,14 @@ are standard.  Their use as an \emph{observation-determined normal-form
 certificate} for constraint and rewrite systems yields the uniform and
 multi-stage refinement calculus developed here.
 
+Within the OPH theory these results are tools of the repair-mathematics
+layer, in which local agreement repair is required to reach a globally
+consistent state. They state when such a settled state is fixed by protected
+observations, how stably that holds under refinement, which schedulers and
+attempt budgets reach it, and when no local repair can construct it. They
+are mathematics on their stated domains and assume no physical
+interpretation of the quotient, the observation map or the scheduler.
+
 \subsection{Main contributions}
 
 The manuscript has six technical contributions.
@@ -299,7 +307,7 @@ intertwining provide neighboring language for law pushforward
 \citep{RogersPitman1981}.  We use these facts without a novelty claim.  Their
 role here is architectural: declared active sources and a protected
 observation index four separate failure modes; those modes recover the
-pre-existing OPH behavior cuts through explicit supported traces; and exact
+OPH behavior cuts through explicit supported traces; and exact
 transport retains the active-source, target, observation, and silent-quotient
 data in addition to the kernel law.
 
@@ -2395,8 +2403,8 @@ Boolean formula \(\varphi\) on \(k\) inputs, the generated node list
 \(\operatorname{go}(\varphi,k)\) is independent of the input.  Its registers
 start at \(k\); the initial state supplies the lower input ports.  A canonical
 accepted step chooses a failing node and performs exactly that node's declared
-write.  The historical patch-frame relation is unchanged and is not used
-as the accepted relation.
+write.  The broader patch-frame relation is not used as the accepted
+relation.
 
 Read the node defects in increasing register order, with every earlier bit
 more significant than all later bits together.  This superincreasing natural
@@ -2418,7 +2426,7 @@ observation agree on the output register.
 
 The fairness premise removes attempt stutter; it does not prove accepted-step
 termination.  Its positive singleton instance and a root-only starvation
-schedule inhabit the two sides.  The broader historical relation admits a
+schedule inhabit the two sides.  The broader patch-frame relation admits a
 sharper one-member control: the only member and site are selected at every
 attempt and remain continuously enabled, yet the run stutters forever outside
 consensus because the relation does not require the declared repair to execute.
@@ -2430,7 +2438,7 @@ For a well-formed generated-node federation and a fixed attempt run, pathwise
 weak fairness holds if and only if the run eventually reaches a stable
 consensus.  The reverse implication is vacuous after consensus: no node can
 remain failing on that stable tail, so it does not imply recurrent selection.
-At the compiler's present node granularity, member recurrence and register-site
+At the compiler's node granularity, member recurrence and register-site
 recurrence coincide because generated output registers are unique; recurrence
 is nevertheless strictly stronger than tail fairness.  A state-blind
 round-robin scheduler is member- and site-recurrent and reaches the stable
@@ -2516,35 +2524,10 @@ native attempt count is \((5/33)(120L^{+}-P_0)\) with
 The finite rational four-port, six-state instance of the Lean development
 \citep{ophfourcycle} certifies generator,
 stationary, drift, Poisson and covariance identities, including the
-load/drive distinction. The general fixed-graph Gaussian occupation-history
-limit is an analytical theorem of the screen-microphysics library paper
-\citep{ophMicrophysics} and of the executable construction
-\citep{ophcontinuum}, not a consequence of a normal-form theorem alone.
-Along a common subsequence of refining spherical source screens, the native
-Green operators converge in operator norm to a compact injective limit whose
-inverse \(A\) defines a conservative, regular, strongly local Dirichlet form
-of heat-trace spectral dimension two, and actual density snapshots have
-joint Gaussian finite-dimensional limits with covariance
-\(e^{-|\tau-u|A}\) in rescaled native attempt count
-\citep{ophcontinuum,ophtimefields}. This is a readout on the two-dimensional
-source screen; it identifies no physical continuum, radial bulk or
-spacetime.
-
-The large retained configurations give a simulation counterpart of the
-same distinction. There are sixteen schedules at each of levels eight through
-ten, with one common initial load field per level. Consistently centered
-ancestral-group readbacks split terminal power exactly into unbiased
-conditional schedule variance and cross-schedule common power. At level
-ten the initial-to-terminal linear response is \(0.05643\) for individual
-carrier groups and \(0.98983\) for 65,536-carrier groups. The latter
-schedule-noise fraction is \(0.143\%\); its terminal variance is
-\(11.048\) times the stationary balanced null. Coarse spatial information
-therefore survives in these end-of-settling-sweep configurations even when
-their public multisets agree. The observations are conditional on the
-fixed initial fields and stopping rule. They do not make the public
-multiset spatially complete or establish an asymptotic transport law.
-The estimator, receipt pins and independent controls are preserved in the
-observer-dynamics evidence archive \citep{ophdynamicsarchive}.
+load/drive distinction. Continuum limits of the occupation history are
+theorems of the screen-microphysics library paper \citep{ophMicrophysics}
+and of the executable construction \citep{ophcontinuum}, not consequences of
+a normal-form theorem.
 
 These examples concern observer-like bounded patches with local state,
 ports, record readback and repair. Their lesson for observation design is

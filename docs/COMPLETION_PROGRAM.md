@@ -28,9 +28,46 @@ These source-bound component campaigns record actual progress without accepting 
 
 - [OPH-CE-FINITE-MEMORY-2026-10-28-v1](../model/completion/campaign.json): Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open. Owning gates: CP-00, CP-01, CP-13, CP-02, CP-03.
 
+## Next four parallel workstreams
+
+Assignment: `OPH-COMPLETION-NEXT-WAVE-2026-10-28-v1`. This plans provisional work; it does not select or freeze a successor law, change the retained campaign or accept a gate.
+
+The first finite campaign supplies a continuing recorded observer and an actual joint stationary reference. It also excludes nontrivial bare-source reducing charges and the chosen nontrivial modular action under the admitted real operations. The next work must resolve services, operational access and the matter target on one explicitly shared candidate interface. Candidate choices must address those missing joins with explicit maps to the retained evidence.
+
+| Owner | Next concrete result | Why this comes next |
+| --- | --- | --- |
+| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) / CP-00: Specify one bounded successor contract | A versioned candidate contract or explicit decision to continue v1, naming the admitted service/domain changes, retained C/E controls, observer/clock/defect interfaces, resource and error budgets, and rejection rules before any wider test. | The frozen v1 family is narrower than the parent program and has exact access and bare-source charge obstructions. |
+| [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) / CP-01: Realize the observer services and accounted continuation | One complete-record/reference continuation demonstrating the chosen preparation, randomization, permitted access, storage/export and observer-to-observer delivery services, with explicit finite budgets, failure outputs and recovery/continuation tests. | The exact continuing instrument and full-record reference exist, while preparation, access, retention/export and delivery services remain supplied. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) / CP-02: Specify accessible algebras and an operational clock | An explicit actual accessible algebra, reference preparation and clock/readout contract, followed by an eligible action/readout witness or a scoped impossibility proof on the agreed interface; state the route to local clock comparison and common energy normalization. | A same-process stationary reference is constructed, but its nontrivial modular action on the fixed full support algebra is obstructed by the frozen real-operation grammar. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) / CP-03: Test a localized history or metastable matter target | One precisely defined localized history-dependent or metastable sector, or a fully specified refinement proposal, with an independently defined boundary observable and tests of lifetime, transport and loss under every admitted repair branch. | The exact native branch algebra excludes fixed nontrivial bare-source reducing charges; history dependence, controlled lifetimes and refining carriers remain untested. |
+
+Parallel starting work and the required joins:
+
+- **CP-00 / [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135):** Compare the remaining choices against the retained obstructions and obtain the service and matter requirements from the other three owners. A successor experiment consumes the same agreed specification. A bounded successor contract does not by itself freeze the entire physical program or accept CP-00. Starting evidence: [family](../model/completion/campaign.json), [modular access](../model/completion/modular_access_results.json), [defect algebra](../model/completion/defect_algebra_results.json).
+- **CP-01 / [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136):** Inventory each supplied service and derive its smallest executable test and resource contract from the existing observer, without inventing a new field action or clock. Implement only the services admitted by the shared contract. Integrated acceptance requires accepted CP-00 and the complete observer/resource domain; a growing exported tape remains counted. Starting evidence: [observer](../model/completion/observer_results.json), [record reference](../model/completion/observer_reference_results.json).
+- **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Determine which effects and interventions the existing observer can implement, compare the full-support obstruction with that operational domain, and specify any missing service as a CP-00 proposal. No unlisted complex phase gate, encoding or decoder supplies the result. A stationary density, trivial commutative modular action or abstract Pauli-Y separator alone is not an operational physical clock. Starting evidence: [joint reference](../model/completion/stationary_reference_results.json), [record reference](../model/completion/observer_reference_results.json), [modular access](../model/completion/modular_access_results.json).
+- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Define the smallest target and a matching negative control using existing source and records; separate a source charge, a stored label, an expectation-fixed observable and a physical localized excitation. Retain all repair branches and the collision/commutant controls. A new register or changed domain requires the shared successor version; no defect mass or protection is inferred from bookkeeping memory. Starting evidence: [defect algebra](../model/completion/defect_algebra_results.json), [family](../model/completion/campaign.json).
+
+Shared source interface:
+
+- Use the retained C/E source, complete record instruments, finite controller/FIFO and resource accounting as the common comparison interface; preserve every v1 control and its source binding.
+- Declare the same state/reference, accessible algebra, preparations, operations, memory/export services, scheduler, time parameter and composition/refinement domain in all four workstreams.
+- A complex phase service, coherent decoder, new defect register or changed branch support is a proposed change of contract. No lane may insert it independently or count it as derived by unchanged C/E repair.
+- Prepare analyses and tests on the frozen v1 family in parallel. Any experiment relying on wider primitives or a changed domain waits for the common versioned successor specification; the present plan selects no new law or service.
+- Keep the original q=3 scalar history unexecuted and its bounds intact. Preserve the positive modular-clock, conditional 3+1-field, active-memory and Einstein-kernel constructions on their own stated domains.
+
+These are parallel work assignments, not four independent acceptance paths. The existing DAG remains authoritative: CP-01 requires CP-00, and CP-02/CP-03 require CP-01 plus CP-13. Provisional component results cannot discharge those joins.
+
+Review stays inside these workstreams:
+
+- CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137): Review the actual theorem-to-model maps within each workstream; update missing premises when an interface changes. The existing focused review is not integrated gate acceptance.
+- CP-12 / [#1148](https://github.com/FloatingPragma/observer-patch-holography/issues/1148): Check the scope of every obstruction, surviving alternatives and stop/continue decision. Review component exclusions within their quantified domains; a whole-program verdict requires the complete frozen class.
+
+Maintenance energy, particle identities, interacting fields and Einstein realization consume the unresolved observer/clock/matter joins. Preserve their existing benchmarks, but do not treat them as independent next primary workstreams.
+
 ## Next work and dependencies
 
-Start with CP-00. It must identify the law/resource/interpretation class whose complete exclusion would stop this program. Component investigations can continue provisionally; their results cannot discharge a dependent gate without the predecessor mappings. CP-12 audits every stage in parallel once the program boundary is fixed.
+CP-00 must identify the complete law/resource/interpretation class whose exclusion would stop this program. The frozen finite campaign does not supply that larger boundary. Component investigations can continue provisionally; their results cannot discharge a dependent gate without the predecessor mappings. CP-12 audits every stage in parallel within each declared scope; a whole-program decision requires its frozen class.
 
 ```mermaid
 flowchart TD
@@ -87,13 +124,13 @@ flowchart TD
     click CP12 "https://github.com/FloatingPragma/observer-patch-holography/issues/1148"
 ```
 
-| Gate | Research task | Dependency readiness | Issue |
+| Gate | Research task | Work status / acceptance prerequisites | Issue |
 | --- | --- | --- | --- |
-| CP-00 | Freeze the executable program class and decision contract | Ready to start | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
-| CP-01 | Execute one continuing native observer with accounted resources | Awaiting CP-00 | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
-| CP-13 | Integrate finite theorems and curate the active proof chain | Awaiting CP-00, CP-01 | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
-| CP-02 | Construct the continuing regime, faithful reference and local modular clocks | Awaiting CP-01, CP-13 | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
-| CP-03 | Exhibit a localized native defect and its protecting invariant | Awaiting CP-01, CP-13 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
+| CP-00 | Freeze the executable program class and decision contract | In progress | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
+| CP-01 | Execute one continuing native observer with accounted resources | In progress; acceptance awaiting CP-00 | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
+| CP-13 | Integrate finite theorems and curate the active proof chain | In progress; acceptance awaiting CP-00, CP-01 | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
+| CP-02 | Construct the continuing regime, faithful reference and local modular clocks | In progress; acceptance awaiting CP-01, CP-13 | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
+| CP-03 | Exhibit a localized native defect and its protecting invariant | In progress; acceptance awaiting CP-01, CP-13 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | Awaiting CP-02, CP-03 | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |
 | CP-05 | Transport the same defects and derive particle identity and currents | Awaiting CP-03, CP-04 | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
 | CP-06 | Obtain one interacting chiral 3+1 field description from native records | Awaiting CP-02, CP-04, CP-05 | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
@@ -235,6 +272,7 @@ Current component progress (not gate acceptance):
 - [adaptive_reference_results.json](../model/completion/adaptive_reference_results.json): Exact two-attempt counterexample to importing the uniform source reference under current-record feedback: 30 changed entries, maximum deviation 1/960.
 - [stationary_reference_results.json](../model/completion/stationary_reference_results.json): Exact unique classical stationary law on the 129-state recurrent support of the 132-state source/current-bit kernel; its 66-state source marginal is positive and nonuniform. No quantum uniqueness or implemented clock is inferred.
 - [observer_reference_results.json](../model/completion/observer_reference_results.json): Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.
+- [modular_access_results.json](../model/completion/modular_access_results.json): Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 

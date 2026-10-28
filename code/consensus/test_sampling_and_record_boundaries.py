@@ -104,5 +104,4 @@ def test_paper_retains_the_counterexample_premise_boundaries():
              / "paper/reality_as_consensus_protocol.tex").read_text()
     assert r"If the block endpoints \(\tau_m\) are deterministic" in paper
     assert "certified conditional law" in paper
-    assert r"\Pr\!\bigl[Y_U(t+h)\ne Y_U(t)\bigr]\le \eta" in paper
     assert r"\emph{partition-averaged} conditional state" in paper

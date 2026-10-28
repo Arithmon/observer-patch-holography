@@ -10,7 +10,7 @@ That experiment is harder than it looks, and different in kind from what everybo
 
 Negative results of that kind are the most informative things in physics. He has not found that the measurement is delicate. He has found that there is nothing to measure: the information does not exist inside the cabin, no quantity of butterflies will bring it into existence, and the four centuries since have consisted largely of people discovering that the same is true of the cabin they are actually in.
 
-The book was on the Index of forbidden works within a year and its author spent the rest of his life under house arrest, which is a fair measure of how seriously the argument was taken.
+The book was on the Index of forbidden works within a year and its author spent the rest of his life under house arrest.
 
 Everything that follows is that experiment, run for longer with better equipment.
 
@@ -18,13 +18,13 @@ Everything that follows is that experiment, run for longer with better equipment
 
 What follows is six behaviors of the machine, for now without explanations which take the rest of the book.
 
-**Galileo's cabin has never been beaten.** Four hundred years of trying, with instruments he could not have imagined. No experiment performed inside a smoothly moving laboratory has ever revealed that it was moving. The nineteenth century made a particular effort, looking for the laboratory's motion through the medium that light was supposed to be waving in, and came up empty to a precision that embarrassed everyone involved. The information is missing with a thoroughness that looks less like a limitation of instruments and more like a decision somebody made.
+**Galileo's cabin has never been beaten.** Four hundred years of trying, with instruments he could not have imagined. No experiment performed inside a smoothly moving laboratory has ever revealed that it was moving. The nineteenth century made a particular effort, looking for the laboratory's motion through the medium that light was supposed to be waving in, and came up empty to high precision. The information is missing so thoroughly that better instruments are unlikely to supply it.
 
 **Clocks disagree. The disagreement is engineered around.** The satellites your phone uses to find itself carry atomic clocks, wrong in two directions at once. They move quickly, which makes them tick slow by about seven microseconds a day. They sit high up where gravity is weaker, which makes them tick fast by about forty-five. The two effects do not cancel. Without a correction the position your phone reports would drift off by something like ten kilometers a day.
 
 When the first atomic clock of this kind went into orbit in 1977, the correction was built with a switch on it, because not everyone involved was convinced the physicists were right. It launched switched off. They watched the clock run fast by very close to the predicted amount for about three weeks, and then turned it on.
 
-**Asking a question changes the answer.** In 1909 a twenty-three-year-old at Cambridge named Geoffrey Taylor set a needle in front of a gas flame and photographed the pattern of light and dark bands around its shadow. Then he began dimming the flame with sheets of smoked glass. He dimmed it until the light crossing his apparatus was so feeble that particles arrived essentially one at a time, with nothing else present for them to interfere with. To collect enough of them he had to leave the plate in place for three months, which is a long time to wait to find out that nothing has changed. The bands came out looking exactly as they had at full brightness. Whatever each particle was interfering with, it was not the others, because there were no others.
+**Asking a question changes the answer.** In 1909 a twenty-three-year-old at Cambridge named Geoffrey Taylor set a needle in front of a gas flame and photographed the pattern of light and dark bands around its shadow. Then he began dimming the flame with sheets of smoked glass. He dimmed it until the light crossing his apparatus was so feeble that particles arrived essentially one at a time, with nothing else present for them to interfere with. To collect enough of them he had to leave the plate in place for three months. The bands came out looking exactly as they had at full brightness. Whatever each particle was interfering with, it was not the others, because there were no others.
 
 The second half of that result is even stranger. Put a detector in the apparatus that can tell you which side of the needle each particle went, and the bands disappear. Delicacy does not rescue them. Any detector that succeeds in telling you the route destroys the pattern. Any detector that fails to tell you leaves the pattern intact, and how gently it fails makes no difference at all.
 
@@ -32,7 +32,7 @@ The second half of that result is even stranger. Put a detector in the apparatus
 
 **Falling into a black hole appears to destroy the record of what fell.** On 6 February 1997 Stephen Hawking and Kip Thorne signed a wager with John Preskill. Hawking and Thorne held that information swallowed by a black hole is erased from the world. Preskill held that it survives. The stake was an encyclopedia of the winner's choice, from which, as the bet specifies, information can be recovered at will. In July 2004, at a conference in Dublin, Hawking conceded and handed Preskill a baseball encyclopedia. Thorne did not concede. Hawking remarked afterwards that burning the encyclopedia and handing over the ashes would have made the losing case rather better than the book did.
 
-The bet was worth making because both positions are unacceptable. If the record is erased, quantum mechanics breaks. If it survives, it has to escape from the one place in the universe that nothing escapes from. Three of the most capable physicists alive spent seven years on which of two impossibilities to prefer. At the end of it one of them changed his mind and one of them did not.
+The bet was worth making because both positions are unacceptable. If the record is erased, quantum mechanics breaks. If it survives, it has to escape from the one place in the universe that nothing escapes from. Three of the most capable physicists alive spent seven years choosing between two impossibilities. At the end of it Hawking changed his mind and Thorne did not.
 
 **Gravity puts an area ceiling on what a region can hold.** This last one is arithmetic rather than anecdote. Ask how much information you can pack into a region of space. Storage scales with volume, obviously: a warehouse twice as wide in every direction holds eight times as much. A black-hole horizon behaves differently. Double its radius and its entropy grows by four. Nobody put this in. It falls out of the thermodynamics of black holes. That the same ceiling holds over regions of empty space that contain no black hole at all is the holographic bound, a conjecture in the literature that this theory takes as its own ceiling; no counterexample to it is known.
 
@@ -44,7 +44,7 @@ Feed it inputs and record what comes out. Change one thing at a time. Watch the 
 
 And a third habit. Never assume a component you have not found on the board. If you have not located the clock, you do not get to reason about what the clock does. If you have not located the memory, you do not get to assume there is a place where the state is being kept.
 
-This book runs that discipline under one aggravating condition, which Galileo's cabin introduced and which never goes away: the engineer is a part. There is no bench to put the machine on.
+This book runs that discipline under one condition, which Galileo's cabin introduced and which never goes away: the engineer is a part. There is no bench to put the machine on.
 
 Every theory anyone has written down begins by assuming a great deal: a space for things to be in, a time for them to happen along, a list of fields, a symmetry group, and a page of numbers measured in laboratories and entered by hand. Those assumptions are not idle. They are what makes the equations work. But a component you assumed is a component you will never find. The six symptoms above are all complaints about the arena rather than about the things moving around in it.
 
@@ -68,11 +68,11 @@ What is being held fixed? An equation states that certain things change together
 
 What is allowed to vary, and what happens at the edges? Set a term to zero and see what the equation collapses into. The collapsed version is generally a law you learned at school. Watching your old law fall out of the new one is how you check that you have understood either of them.
 
-What do the units say? If one side of the equals sign is a length and the other is a time, then a speed is hiding inside the equals sign, or somebody has made a mistake. In 1999 NASA lost the Mars Climate Orbiter because one team's software reported thrust in pounds and the other team's software read it as newtons. The spacecraft went into the Martian atmosphere instead of around it. Units are the cheapest error detection ever invented.
+What do the units say? If one side of the equals sign is a length and the other is a time, then a speed is hiding inside the equals sign, or somebody has made a mistake. In 1999 NASA lost the Mars Climate Orbiter because one team's software reported thrust in pounds and the other team's software read it as newtons. The spacecraft went into the Martian atmosphere instead of around it. Checking units is the cheapest way to catch an error of that kind.
 
 ## One line
 
-There is a single line that working physicists write down when somebody asks what the world is made of. It is short enough to fit on a coffee mug, which is where most of the people who have seen it encountered it. Four or five terms, depending on how you group them. Each term is a compression: unfold one and out comes a force, or a family of particles, or the reason anything has mass.
+There is a single line that working physicists write down when somebody asks what the world is made of. It is short enough to fit on a coffee mug, and it is often printed on one. Four or five terms, depending on how you group them. Each term is a compression: unfold one and out comes a force, or a family of particles, or the reason anything has mass.
 
 Nobody derives that line. It is written down and then adjusted until it matches experiment. The symmetry group inside it was selected because it matched what the detectors reported. The number of particle families in it is three because experiments have found three. Somewhere between nineteen and twenty-six of the numbers in it were measured in laboratories and typed in. The line is a transcription of those results, and the most successful description of anything human beings have ever produced.
 

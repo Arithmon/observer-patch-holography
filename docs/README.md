@@ -45,6 +45,7 @@ when consolidating documents.
   the [falsification program](OPH_FALSIFICATION_PROGRAM.md), and the [paper index](../paper/).
 - **Build and test:** begin with the repository [reproduction
   guide](../REPRODUCE.md), the [runnable observer model](../model/README.md),
+  the [bounded completion campaign](../model/completion/README.md),
   [executable evidence](../code/), and [Lean
   formalization](../Lean/). Follow the [numerical audit
   procedure](policies/NUMERICAL_AUDIT.md) when changing finite numerical
@@ -57,6 +58,10 @@ when consolidating documents.
   theorem-library premises A1, A2 and A3 relate to them.
 - [The Paper Set](PAPER_SET.md) records the model milestone, the role of each
   paper and the archived papers.
+- [Executable Hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) states the common
+  clock, defect/energy, interacting-field and Einstein-premise target.
+  [Completion Program](COMPLETION_PROGRAM.md) assigns its construction gates,
+  retained results, dependencies and next work.
 
 ## Canonical References
 
@@ -113,6 +118,18 @@ parallel construction, physical tests and audits; its [release policy](../model/
 ties paper releases to an approved model milestone, which the
 [paper set](PAPER_SET.md) records. Tested model code, correctness fixes and
 reproducibility checks are published between releases.
+
+The [finite completion campaign](../model/completion/README.md) joins a
+continuing C/E observer to exact stationary references of its finite
+source/record marginal. Its two scoped obstructions constrain the candidate:
+no nontrivial source charge commutes with every active branch, and the
+admitted real operations cannot implement the tested nontrivial modular
+action on the fixed full support algebra. The
+[branch proof](../model/completion/defect_algebra.md) and
+[clock-access proof](../model/completion/MODULAR_ACCESS.md) state the domains
+and controls. The [four next construction tasks](../model/README.md)
+cover the successor contract, observer resources, accessible clock algebra
+and a localized matter sector; they add no physical confirmation.
 
 The [model–theorem premise map](../model/PREMISES.md) connects the candidate
 to existing theorem premises and their closure conditions. It is generated
@@ -198,7 +215,9 @@ order:
   dispersion, Bell and optical-clock comparisons.
 - [OPH particle mass response and hierarchy audit](research/OPH_PARTICLE_MASS_RESPONSE.md)
   records that the tested mass prescriptions fail the charged-lepton
-  hierarchy and bounds the whole affine response class.
+  hierarchy and bounds the whole affine response class. Its text is pinned
+  by retained receipts. The [finite campaign](../model/completion/README.md)
+  carries the subsequent source-charge and clock-access decisions.
 - [Observer spacetime and predictions without a laboratory](research/NATIVE_CLOCK_EXPERIMENT_PROTOCOL.md)
   states the internal clock laws and the acceptance contract for a native
   clock experiment.
@@ -209,6 +228,17 @@ order:
 - [Independent alpha/tau reproduction and the first bounded natural comparison](research/INDEPENDENT_POSTDICTION_COMPARISON.md)
   reproduces both certified alpha roots and the conditional tau window, verified by
   [`code/independent_postdictions`](../code/independent_postdictions/).
+
+**Field and particle construction.** The source-pinned
+[field reconstruction guide](research/OPH_FIELD_RECONSTRUCTION.md) records
+the transient-collision test, conditional response constructions and their
+physical identification requirements. Its statement that other quantum or
+history sectors are untested belongs to that receipt's domain. The
+[branch-algebra result](../model/completion/defect_algebra.md) additionally
+excludes commuting bare-source charges in every quantum basis; localized
+history-dependent sectors, controlled lifetimes and refinements require their
+own tests. Both pinned guides retain their original evidence bytes; the
+[completion program](COMPLETION_PROGRAM.md) owns the work ordering.
 
 **Lean companion.**
 

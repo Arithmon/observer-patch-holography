@@ -9,6 +9,7 @@ import yaml
 WORKFLOW = Path(__file__).resolve().parents[2] / ".github/workflows/finite-gauge-transfer.yml"
 INPUTS = {
     "code/edge_sectors/**", "paper/tex_fragments/PAPER.tex",
+    "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
     "claims/claim_registry.yaml", "claims/falsification_matrix.csv",
     "claims/novelty_matrix.csv", "tools/test_post_r2029_audit_surfaces.py",
     "requirements.txt", "pytest.ini", ".github/workflows/finite-gauge-transfer.yml",

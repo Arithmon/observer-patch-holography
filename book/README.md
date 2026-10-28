@@ -43,3 +43,5 @@ and is not used for emphasis. There are no em-dashes anywhere, by rule.
 ## Interpretation and source scope
 
 The front matter and glossary distinguish complete-history closure, intrinsic local computation, model-specific repair, observer interfaces and calibrated clock readings. Read the maintained [OPH interpretation and working terms](../docs/INTERPRETATION_AND_TERMS.md) alongside the numerical examples. The book writes from inside the theory; the papers and the model documents state which graphs, equations and calibrations are supplied, and the book does not establish a common physically correct microscopic law. Statements about experience and ethics rest on further hypotheses that the papers state.
+
+[Appendix D](47-appendix-d.md#the-continuing-ce-campaign) includes the focused C/E campaign replay and navigation to the current [completion plan](../docs/COMPLETION_PROGRAM.md).

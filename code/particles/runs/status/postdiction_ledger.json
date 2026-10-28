@@ -45,8 +45,8 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "04f813369fb364de9355c569ac27c72872908cc11b093284f4cf1b05a79fad88",
-      "claims/completion_program.json": "1458710b86cf8f3ca7807dc60b30930c7fe8f6179bc2aa855f6993c1191dfd15",
+      "claims/claim_registry.yaml": "b4f2927ca6ae047553c1d0b0897c34143bfa7bbb0409284f89e2d23b0e8d9446",
+      "claims/completion_program.json": "6a8cd2293439ebde21a1340e06fc36b27d0c6125f88e392cbcc6b7e324878617",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -167,6 +167,173 @@
       ],
       "hypothesis": "claims/executable_model_hypothesis.json",
       "legacy_issue_policy": "Issues #1025, #1026, #1076 and #1077 are superseded by the new completion owners and closed as not planned, not as scientifically completed. Their evidence and unfinished contracts remain linked. The ongoing audit #1033 and broad obstruction search #1078 stay open.",
+      "next_wave": {
+        "acceptance_policy": "These are parallel work assignments, not four independent acceptance paths. The existing DAG remains authoritative: CP-01 requires CP-00, and CP-02/CP-03 require CP-01 plus CP-13. Provisional component results cannot discharge those joins.",
+        "changes_frozen_campaign": false,
+        "deferred_gates": [
+          "CP-04",
+          "CP-05",
+          "CP-06",
+          "CP-07",
+          "CP-08",
+          "CP-09",
+          "CP-10",
+          "CP-11"
+        ],
+        "deferred_reason": "Maintenance energy, particle identities, interacting fields and Einstein realization consume the unresolved observer/clock/matter joins. Preserve their existing benchmarks, but do not treat them as independent next primary workstreams.",
+        "embedded_reviews": [
+          {
+            "evidence": [
+              "theorem_map"
+            ],
+            "gate": "CP-13",
+            "issue": 1137,
+            "role": "Review the actual theorem-to-model maps within each workstream; update missing premises when an interface changes. The existing focused review is not integrated gate acceptance."
+          },
+          {
+            "evidence": [
+              "modular_access",
+              "defect_algebra"
+            ],
+            "gate": "CP-12",
+            "issue": 1148,
+            "role": "Check the scope of every obstruction, surviving alternatives and stop/continue decision. Review component exclusions within their quantified domains; a whole-program verdict requires the complete frozen class."
+          }
+        ],
+        "evidence": [
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "family",
+            "independent_check": "model/completion/test_family.py",
+            "path": "model/completion/campaign.json",
+            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+            "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "observer",
+            "independent_check": "model/completion/test_observer.py",
+            "path": "model/completion/observer_results.json",
+            "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
+            "sha256": "d8f70c94e6e7ee4e55480e719cd18bc663cca02a17f575a0e1fa1e298e054bbd"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "theorem_map",
+            "independent_check": "model/completion/test_theorem_map.py",
+            "path": "model/completion/theorem_map.json",
+            "scope": "Eleven actual theorem/model mappings with twelve source bindings; fixed-mixture stationarity is distinguished from correlated adaptive scheduling, and all downstream physical premises remain explicit.",
+            "sha256": "8bc72b378e50255d0823cd384b2b02618bc1e16ca6ad6e282ab84c2bd1fe3e00"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "joint_reference",
+            "independent_check": "model/completion/test_stationary_reference.py",
+            "path": "model/completion/stationary_reference_results.json",
+            "scope": "Exact unique classical stationary law on the 129-state recurrent support of the 132-state source/current-bit kernel; its 66-state source marginal is positive and nonuniform. No quantum uniqueness or implemented clock is inferred.",
+            "sha256": "a00cbe1b42cdd16b62f5477a38ac69d43630127d9f1245270a86088093d2e2c2"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "record_reference",
+            "independent_check": "model/completion/test_observer_reference.py",
+            "path": "model/completion/observer_reference_results.json",
+            "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
+            "sha256": "209a86b71a9fda5c34070f3ec13ecf1d15d78b831b3bcff3990c1f1bd8d249e5"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "modular_access",
+            "independent_check": "model/completion/test_modular_access.py",
+            "path": "model/completion/modular_access_results.json",
+            "scope": "Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.",
+            "sha256": "25d878e8c66dbc0c34ac8d0fee4f0cce7fd8ab1f2e32475c8af75f88e34f22ce"
+          },
+          {
+            "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+            "id": "defect_algebra",
+            "independent_check": "model/completion/test_defect_algebra.py",
+            "path": "model/completion/defect_algebra_results.json",
+            "scope": "Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.",
+            "sha256": "fea796822e7aefa433a79e28368b71f2a13d59ec75df43e94d39685127840add"
+          }
+        ],
+        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v1",
+        "owners": [
+          {
+            "deliverable": "A versioned candidate contract or explicit decision to continue v1, naming the admitted service/domain changes, retained C/E controls, observer/clock/defect interfaces, resource and error budgets, and rejection rules before any wider test.",
+            "evidence": [
+              "family",
+              "modular_access",
+              "defect_algebra"
+            ],
+            "gate": "CP-00",
+            "issue": 1135,
+            "join_condition": "A successor experiment consumes the same agreed specification. A bounded successor contract does not by itself freeze the entire physical program or accept CP-00.",
+            "may_start_now": "Compare the remaining choices against the retained obstructions and obtain the service and matter requirements from the other three owners.",
+            "title": "Specify one bounded successor contract",
+            "why_now": "The frozen v1 family is narrower than the parent program and has exact access and bare-source charge obstructions."
+          },
+          {
+            "deliverable": "One complete-record/reference continuation demonstrating the chosen preparation, randomization, permitted access, storage/export and observer-to-observer delivery services, with explicit finite budgets, failure outputs and recovery/continuation tests.",
+            "evidence": [
+              "observer",
+              "record_reference"
+            ],
+            "gate": "CP-01",
+            "issue": 1136,
+            "join_condition": "Implement only the services admitted by the shared contract. Integrated acceptance requires accepted CP-00 and the complete observer/resource domain; a growing exported tape remains counted.",
+            "may_start_now": "Inventory each supplied service and derive its smallest executable test and resource contract from the existing observer, without inventing a new field action or clock.",
+            "title": "Realize the observer services and accounted continuation",
+            "why_now": "The exact continuing instrument and full-record reference exist, while preparation, access, retention/export and delivery services remain supplied."
+          },
+          {
+            "deliverable": "An explicit actual accessible algebra, reference preparation and clock/readout contract, followed by an eligible action/readout witness or a scoped impossibility proof on the agreed interface; state the route to local clock comparison and common energy normalization.",
+            "evidence": [
+              "joint_reference",
+              "record_reference",
+              "modular_access"
+            ],
+            "gate": "CP-02",
+            "issue": 1138,
+            "join_condition": "No unlisted complex phase gate, encoding or decoder supplies the result. A stationary density, trivial commutative modular action or abstract Pauli-Y separator alone is not an operational physical clock.",
+            "may_start_now": "Determine which effects and interventions the existing observer can implement, compare the full-support obstruction with that operational domain, and specify any missing service as a CP-00 proposal.",
+            "title": "Specify accessible algebras and an operational clock",
+            "why_now": "A same-process stationary reference is constructed, but its nontrivial modular action on the fixed full support algebra is obstructed by the frozen real-operation grammar."
+          },
+          {
+            "deliverable": "One precisely defined localized history-dependent or metastable sector, or a fully specified refinement proposal, with an independently defined boundary observable and tests of lifetime, transport and loss under every admitted repair branch.",
+            "evidence": [
+              "defect_algebra",
+              "family"
+            ],
+            "gate": "CP-03",
+            "issue": 1139,
+            "join_condition": "Retain all repair branches and the collision/commutant controls. A new register or changed domain requires the shared successor version; no defect mass or protection is inferred from bookkeeping memory.",
+            "may_start_now": "Define the smallest target and a matching negative control using existing source and records; separate a source charge, a stored label, an expectation-fixed observable and a physical localized excitation.",
+            "title": "Test a localized history or metastable matter target",
+            "why_now": "The exact native branch algebra excludes fixed nontrivial bare-source reducing charges; history dependence, controlled lifetimes and refining carriers remain untested."
+          }
+        ],
+        "physical_comparison_count_added": 0,
+        "rationale": "The first finite campaign supplies a continuing recorded observer and an actual joint stationary reference. It also excludes nontrivial bare-source reducing charges and the chosen nontrivial modular action under the admitted real operations. The next work must resolve services, operational access and the matter target on one explicitly shared candidate interface. Candidate choices must address those missing joins with explicit maps to the retained evidence.",
+        "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
+        "shared_interface": {
+          "baseline_campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+          "baseline_contract": "model/completion/campaign.json",
+          "requirements": [
+            "Use the retained C/E source, complete record instruments, finite controller/FIFO and resource accounting as the common comparison interface; preserve every v1 control and its source binding.",
+            "Declare the same state/reference, accessible algebra, preparations, operations, memory/export services, scheduler, time parameter and composition/refinement domain in all four workstreams.",
+            "A complex phase service, coherent decoder, new defect register or changed branch support is a proposed change of contract. No lane may insert it independently or count it as derived by unchanged C/E repair.",
+            "Prepare analyses and tests on the frozen v1 family in parallel. Any experiment relying on wider primitives or a changed domain waits for the common versioned successor specification; the present plan selects no new law or service.",
+            "Keep the original q=3 scalar history unexecuted and its bounds intact. Preserve the positive modular-clock, conditional 3+1-field, active-memory and Einstein-kernel constructions on their own stated domains."
+          ],
+          "same_process_required": true,
+          "unilateral_primitive_changes_allowed": false
+        },
+        "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
+        "successor_class_frozen": false
+      },
       "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-28",
       "schema": "oph.completion_program.v1",
       "scope": "One native repair/memory construction realizing the requested field, particle and coarse-scale gravity target; full-Universe/internal-closure claims require their additional explicit obligations.",
@@ -349,6 +516,13 @@
               "path": "model/completion/observer_reference_results.json",
               "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
               "sha256": "209a86b71a9fda5c34070f3ec13ecf1d15d78b831b3bcff3990c1f1bd8d249e5"
+            },
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_modular_access.py",
+              "path": "model/completion/modular_access_results.json",
+              "scope": "Actual nontracial stationary C/E record blocks have a modular action that the admitted real native-history operations cannot implement on their fixed full support algebra: exact normalized trace-distance error at least 1/2. This conditional algebra/access obstruction excludes neither other clock encodings nor the broader program.",
+              "sha256": "25d878e8c66dbc0c34ac8d0fee4f0cce7fd8ab1f2e32475c8af75f88e34f22ce"
             }
           ],
           "requires": [
@@ -818,7 +992,7 @@
         "source_sha256": {
           "Lean/Geometry/EinsteinTensorBridge.lean": "4127d2123853830f060e94b0afedcf3f9ed85fa40b734f2100ef3acc2bb6b57f",
           "model/common_source/null_tomography.py": "7120491eb4d9ca841a5b519a61aa97c747ae68c0151d4b365e3ca3221ad1e5d1",
-          "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex": "0bc1d7a39272d741f6e2f32c41e9e423a9a38b4878ed7d2ad6ce799930e2dc38"
+          "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex": "cdc8d042be6db7f28049eec872b11bd3f5c1bf4ced52180f17420c5fda880dab"
         },
         "supports": [
           "CP-09",
@@ -925,7 +1099,7 @@
   },
   "fixed_spectral_cross_scale_comparison": {
     "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
-    "artifact_sha256": "571093dc5b04652ea14d4ab3d07099ea30b5643f186469653721d0453bcf6323",
+    "artifact_sha256": "adbe0ba92ab9cbcd1f6d6508618a7c494d7edadd3d2e8d875e4035c403f25b9c",
     "attribution": {
       "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
       "author": "A. D. Wissner-Gross",
@@ -1032,7 +1206,7 @@
     "parents": {
       "chiral": {
         "path": "model/common_source/chiral_candidate/results.json",
-        "sha256": "5735ae90b004c13a06c297dde35fe1e11da9e5a348b6d85abd2be0707ed6c95a"
+        "sha256": "15f34779cc8e18d9c41fe7ce8984dbd5a56681fea7aedad0678900ad6e39771b"
       },
       "native": {
         "path": "model/common_source/native_defect_decision_results.json",
@@ -1040,11 +1214,11 @@
       },
       "particle": {
         "path": "model/common_source/particle_identification/results.json",
-        "sha256": "7c30d76bd50f65d97b632d91477ee2591aaea55a12089bcb33f4e1b875dbab6f"
+        "sha256": "759b3cbef0bd933d61a851e0834509489b450f7a5ce63a87fa20b8ea7d43581c"
       },
       "record": {
         "path": "model/common_source/chiral_candidate/record_two_point_results.json",
-        "sha256": "bbcfc0b28a14dd96a0cbb79919e40c24989f4b9937e2796c3cd833f07bf46628"
+        "sha256": "d090f987c87a02c28ac5c5f8928706b5990b9f90cbe6cef7ee83ecb0dbffd4ec"
       }
     },
     "replay_owner": "python -m model.verify",
@@ -1077,22 +1251,22 @@
         "evidence": {
           "diagnostics": [
             {
-              "canonical_CAR_sum_rule_residual": 3.8857805861880415e-16,
-              "derivative_centered_difference_residual": 3.3443320438917246e-11,
-              "derivative_congruence_residual": 7.533586752656565e-16,
-              "derivative_variation_between_two_frequencies": 9.322940436911305e-16,
+              "canonical_CAR_sum_rule_residual": 1.6653345369377388e-16,
+              "derivative_centered_difference_residual": 2.2204529882066665e-11,
+              "derivative_congruence_residual": 9.807082928052494e-16,
+              "derivative_variation_between_two_frequencies": 7.37483976975063e-16,
               "interaction_enabled": false,
-              "inverse_congruence_residual": 3.3824883703976606e-16,
-              "inverse_identity_residual": 2.2591401799415137e-16
+              "inverse_congruence_residual": 3.474344089608974e-16,
+              "inverse_identity_residual": 2.618455766672135e-16
             },
             {
-              "canonical_CAR_sum_rule_residual": 4.440892098500626e-16,
-              "derivative_centered_difference_residual": 3.003034709049609e-11,
-              "derivative_congruence_residual": 2.6679961608089897e-15,
-              "derivative_variation_between_two_frequencies": 0.0030751220492841614,
+              "canonical_CAR_sum_rule_residual": 2.220446049250313e-16,
+              "derivative_centered_difference_residual": 2.140996034980407e-11,
+              "derivative_congruence_residual": 4.483238911086136e-16,
+              "derivative_variation_between_two_frequencies": 0.0030751220492843115,
               "interaction_enabled": true,
-              "inverse_congruence_residual": 6.674335893081556e-16,
-              "inverse_identity_residual": 1.1188630228279524e-16
+              "inverse_congruence_residual": 4.594889227755668e-16,
+              "inverse_identity_residual": 2.2301825219878386e-16
             }
           ]
         },
@@ -1103,9 +1277,9 @@
       {
         "evidence": {
           "held_out_operator_residuals": [
-            6.399275538203443e-08,
-            4.179869849207811e-08,
-            1.2336679731464857e-08
+            6.399271652877289e-08,
+            4.179865111596051e-08,
+            1.2336648083520248e-08
           ],
           "joint_response_scope": "z-axis kinetic and neutral-Higgs-multiplier derivatives of one canonical finite charge block"
         },
@@ -1117,7 +1291,7 @@
         "evidence": {
           "clusters": 38,
           "dimension": 180,
-          "residue_sum_error_Frobenius": 7.671793734223671e-16
+          "residue_sum_error_Frobenius": 1.0190492755571752e-15
         },
         "object_id": "supplied_chiral_finite_spectral_projection",
         "parent": "chiral",

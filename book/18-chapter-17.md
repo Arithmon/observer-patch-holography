@@ -6,7 +6,7 @@ Starlight does the same, and the astronomer who caught it doing so was looking f
 
 On 3 December 1725, in a house on Kew Green, James Bradley pointed a telescope straight up through a hole in the ceiling and a second hole in the roof.
 
-The instrument belonged to Samuel Molyneux, who had ordered it from the clockmaker George Graham. Twenty-four feet from lens to eyepiece, hung from an iron frame bolted to the chimney stack, because a chimney is the most rigid thing in an English house. Pointing it at the zenith and nowhere else was the design: a star directly overhead is seen through the least air, so any displacement left over belongs to the sky rather than the weather.
+The instrument belonged to Samuel Molyneux, who had ordered it from the clockmaker George Graham. Twenty-four feet from lens to eyepiece, hung from an iron frame bolted to the chimney stack, because the chimney was the most rigid part of the house. Pointing it at the zenith and nowhere else was the design: a star directly overhead is seen through the least air, so any displacement left over belongs to the sky rather than the weather.
 
 The star was gamma Draconis, which passes almost exactly overhead at London. What the two of them wanted from it was parallax. If the Earth goes around the Sun, a nearby star should shift against the distant ones, one way in June and the other in December, and nobody had ever caught it happening.
 
@@ -14,11 +14,11 @@ The star moved. It moved the wrong way, it moved too far, and it moved at the wr
 
 Parallax keeps a schedule set by where the Earth is. Gamma Draconis kept one set by which way the Earth is going, and those two run three months apart. By March 1726 the star sat about twenty seconds of arc south of its December position, by June it had come back, and by September it was twenty seconds north.
 
-Every star Bradley checked answered to the same number, which settled it. Parallax has to shrink with distance, being a triangle with the Earth's orbit for a base and the star at the far vertex, and this displacement took no interest in distance whatever.
+Every star Bradley checked answered to the same number, which settled it. Parallax has to shrink with distance, being a triangle with the Earth's orbit for a base and the star at the far vertex, and this displacement did not depend on distance.
 
 The displacement is a ratio instead. Divide the speed of the Earth along its orbit by the speed of light, thirty kilometers a second against three hundred thousand, and you get one part in ten thousand, which as an angle is twenty and a half seconds of arc.
 
-The effect is called **aberration**, what motion does to a direction. The number Bradley divided by has to be a speed light has, the same in June as in December, when he and his ceiling were moving in opposite directions at sixty kilometers a second. Why is there a top speed at all, and why does everybody who measures it come back with the same figure?
+The effect is called **aberration**, what motion does to a direction. The number Bradley divided by has to be a speed light has, the same in June as in December, when he and his telescope were moving in opposite directions at sixty kilometers a second. Why is there a top speed at all, and why does everybody who measures it come back with the same figure?
 
 ## Two mirrors
 
@@ -76,7 +76,7 @@ What does survive is the angle at a crossing. Two families of directions that cu
 
 Name the invariant and the group follows.
 
-The maps of a sphere onto itself that preserve every crossing angle have a picture. The picture is a map projection. Set the sphere on a flat table so it touches at the south pole. From the north pole run a straight line through any other point of the sphere and carry it on until it hits the table. Every point except the north pole lands somewhere. The entire infinite table gets used. Navigators have bought angle-preserving charts for centuries and they all buy them for the same property: two roads crossing at forty degrees on the globe cross at forty degrees on the chart. What a chart like that destroys is size, which is why Greenland is a catastrophe on a sea chart and why no navigator has ever complained, because nobody steers by area.
+The maps of a sphere onto itself that preserve every crossing angle have a picture. The picture is a map projection. Set the sphere on a flat table so it touches at the south pole. From the north pole run a straight line through any other point of the sphere and carry it on until it hits the table. Every point except the north pole lands somewhere. The entire infinite table gets used. Navigators have bought angle-preserving charts for centuries and they all buy them for the same property: two roads crossing at forty degrees on the globe cross at forty degrees on the chart. What a chart like that destroys is size, which is why Greenland looks enormous on a sea chart. Navigators accept that, because nobody steers by area.
 
 It does one further thing. Every circle on the sphere arrives on the table as a circle, except for circles through the north pole, which arrive as straight lines, a straight line being what a circle of unlimited size looks like.
 
@@ -96,7 +96,7 @@ Textbooks from 1905 onward drew a fast-moving sphere as an ellipsoid squashed al
 
 ## Four numbers in a square
 
-The sky has six knobs on it and the interval has four signs in it, and one square of four numbers carries both. Chapter fifteen laid the repair weights out in a twelve-by-twelve grid and took its eigenvalues. Take the smallest block worth anything at all: two by two, four entries in a square. Every such block carries a single number of its own: multiply the top left by the bottom right, multiply the top right by the bottom left, and subtract the second product from the first. What is left over is the block's **determinant**.
+The sky has six knobs on it and the interval has four signs in it, and one square of four numbers carries both. Chapter fifteen laid the repair weights out in a twelve-by-twelve grid and took its eigenvalues. Take the smallest block that has any structure: two by two, four entries in a square. Every such block carries a single number of its own: multiply the top left by the bottom right, multiply the top right by the bottom left, and subtract the second product from the first. What is left over is the block's **determinant**.
 
 Fill the square with a particular pattern. Real numbers down the diagonal, a complex number in one off-diagonal corner, and in the other corner its **conjugate**, meaning the same number with the sign of its $i$ part flipped, so that the conjugate of $x + iy$ is $x - iy$. A square filled that way is called Hermitian, after Charles Hermite, and the pattern means it takes four real numbers to write one down rather than eight. Call the four $t$, $x$, $y$ and $z$, measuring time in the distance light covers in it, and lay them out.
 
@@ -196,6 +196,6 @@ The six motions shuffle the sky as hard as you like and leave the cone exactly w
 
 The cone speed is one reach per round, and quoted in meters per second it is the speed of light. Local transport can spend many seam operations inside one round, so the speed counts rounds and leaves the relay events out. The angle-preserving sky maps say why one cone gives everybody one invariant speed. Chapter twenty-two meets the same cone from the other end, as the first moment a wave run on an observer's own count of repairs can answer a disturbance somewhere else. The number the speed takes is a choice of units.
 
-Metrologists conceded the point in 1983. At the seventeenth General Conference on Weights and Measures the meter was redefined as the distance light covers in one 299,792,458th of a second, which fixes the speed of light at 299,792,458 meters per second exactly. Nobody has measured it since, and nobody can, because measuring it would consist of measuring the meter.
+Metrology adopted this in 1983. At the seventeenth General Conference on Weights and Measures the meter was redefined as the distance light covers in one 299,792,458th of a second, which fixes the speed of light at 299,792,458 meters per second exactly. Nobody has measured it since, and nobody can, because measuring it would consist of measuring the meter.
 
-A separation that light can cover is rank one: one independent row, nothing held behind it. Everything that travels slower is rank two. The second row is the reason it travels slower. That row has to be re-asserted every round or the thing it belongs to stops being there, which means something is being spent to hold it, at a rate, against a clock, and it is being spent right through the chair you are sitting in.
+A separation that light can cover is rank one: one independent row, nothing held behind it. Everything that travels slower is rank two. The second row is the reason it travels slower. That row has to be re-asserted every round or the thing it belongs to stops being there, which means something is being spent to hold it, at a rate, against a clock, and it is being spent in every piece of ordinary matter.

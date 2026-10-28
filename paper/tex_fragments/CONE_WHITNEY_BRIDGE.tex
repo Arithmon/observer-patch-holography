@@ -84,7 +84,7 @@ The radial reconstruction is global on the boundary graph: its
 rule, not a derivation of local radial transport. Its cone coefficients are
 determined by the boundary data and introduce no independent radial degrees
 of freedom. The finite cochain and zero-flux statements are formalized in
-\path{Lean/Screen/ConeCochainBridge.lean}. That implementation uses a
+\texttt{ConeCochainBridge}. That implementation uses a
 dual-tree section followed by the cycle projector for the radial two-form;
 uniqueness among co-closed radial solutions proves agreement with
 \(C^{\mathsf T}H\) on the zero-flux domain. The Whitney field and
@@ -158,7 +158,7 @@ The second line differs from the metric right-endpoint derivative by
 \widetilde B_{m-1}-\widetilde B_{m+1})/6\).
 This temporal correction does not remove the spatial metric/source defect.
 The coefficient identities and telescoping are formalized in
-\path{Lean/Screen/WhitneyTimeBridge.lean}; analytic integration and
+\texttt{WhitneyTimeBridge}; analytic integration and
 distributional source interpretation are stated here separately.
 
 The authenticated serial history gives the following dimensionless values

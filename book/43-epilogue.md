@@ -34,7 +34,7 @@ Two checkpoints matching on all four put identical odds on everything the observ
 
 Chapter thirteen made that claim about a machine on a rack. Chapter forty-one turned it on an offender and a victim holding the same entries about the same night. Turned on the reader, it reads the same way: restore a checkpoint with the same readable records, the same accessible state, the same interfaces and the same future law, and its future statistics match the original within a stated error.
 
-It says nothing about scanning a brain. No instrument in any laboratory reads those four objects off a living one. It says nothing about rebuilding a body, which is a biomedical problem with its own century of work in front of it. It does not settle whether the restored observer is the person who was checkpointed, which is a question about identity that the arithmetic leaves exactly where it found it. And it promises nobody anything, because nothing in the structure performs the restoration.
+It says nothing about scanning a brain. No instrument in any laboratory reads those four objects off a living one. It says nothing about rebuilding a body, which is a separate biomedical problem. It does not settle whether the restored observer is the person who was checkpointed, which is a question about identity that the arithmetic does not address. And it promises nobody anything, because nothing in the structure performs the restoration.
 
 ## The selector
 

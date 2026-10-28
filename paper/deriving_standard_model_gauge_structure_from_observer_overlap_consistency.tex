@@ -17,79 +17,120 @@ Complete-Response and Observer-Transport Premises}
 \end{center}
 
 \begin{abstract}
-On twelve ports with icosahedral incidence, a faithful compact
-commutator-closed response whose proper rechartings act by inner
+Gauge structure is proposed to be the transport of overlap data between
+observer patches. On twelve ports with icosahedral incidence, a faithful
+compact commutator-closed response whose proper rechartings act by inner
 automorphisms of that same response has exactly one compact Lie type,
 \(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
 Faithfulness fixes the dimension twelve, the single fixed line of the
 transitive \(A_5\) action bounds the centre by one, the fixed-space count
 excludes \(\mathfrak{su}(2)^4\), and the classification of compact simple
-Lie algebras, a declared input, leaves the split \(11=3+8\); the dimension
-arithmetic and the centre bound are machine checked, while the fixed-space
-exclusion and the classification enter Lean as declared hypotheses. Exact finite
-calculations derive the carrier module and inverse-port response, and a
+Lie algebras, a declared input, leaves the split \(11=3+8\). The dimension
+arithmetic and the centre bound are machine checked; the fixed-space
+exclusion and the classification enter Lean as declared hypotheses. A
 separate categorical route reconstructs a compact group from overlap
 transport on a declared bosonic sector category.
 
-A conditional matrix realization supplies the familiar current blocks. Its
-declared spin lift and trace redistribution are the standard
-\(\mathfrak{su}(5)\) embedding, and the declared exterior module is the
-Georgi--Glashow \(\mathbf{10}\oplus\bar{\mathbf 5}\) generation with exact
-Standard Model charges and anomaly cancellation; its common central kernel is
-\(\mathbb Z_6\). Among single complete faithful bands in the conditional
-window \(3\le N_g\le5\), whose lower edge is a declared CP-capability clause,
-the declared band-selection rule and the exact Laplacian costs
-\(5-\sqrt5<6<5+\sqrt5\) select the rank-three band. The compact locus of the equivariant Jacobi
-variety is classified into three certified bracket families, and a declared
-equal-weight oriented-face bracket has family \(G\) uniquely nearest under
-each of the coordinate repair norms \(\ell_1,\ell_2,\ell_\infty\). The
-physical matrix current, matter action and global quotient, the bracket
-rule and the nearest-point law are not source-derived, and attaching the
-construction to laboratory currents requires further physical input.
+A conditional matrix realization supplies the current blocks. Its declared
+spin lift and trace redistribution are the standard \(\mathfrak{su}(5)\)
+embedding, and its declared exterior module is the Georgi--Glashow
+\(\mathbf{10}\oplus\bar{\mathbf 5}\) generation with exact Standard Model
+charges, anomaly cancellation and common central kernel \(\mathbb Z_6\).
+In the conditional window \(3\le N_g\le5\), whose lower edge is a declared
+CP-capability clause, a declared band-selection rule and the exact Laplacian
+costs \(5-\sqrt5<6<5+\sqrt5\) select the rank-three band. On the executable
+carrier the twelve-current law is a specification: the tested native
+exchange response closes to seventeen dimensions, and no result derives the
+twelve-dimensional current from unchanged repair. The physical current, matter
+action, global quotient and couplings are not source-derived.
 \end{abstract}
 
 \input{tex_fragments/INTERPRETATION_CONVENTIONS.tex}
 \input{tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex}
+\input{tex_fragments/FINITE_COMPLETION_CAMPAIGN.tex}
 
+\section*{This paper's hypothesis and place in the tower}
+\label{sec:gauge-hypothesis}
 
-\section*{Two reconstruction routes}
-\label{thm:echosahedral-source-selector}
-\label{ass:matter-typing}
-\label{thm:global-form-boundary}
+This paper is the gauge half of layer~5. Its hypothesis is that gauge
+structure is the transport of overlap data between observer patches: on the
+twelve-port icosahedral carrier, a complete faithful commutator-closed port
+response on which every proper carrier recharting acts endogenously, by an
+inner automorphism of the same response, is the local gauge current, and
+its compact Lie type is \(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus
+\mathfrak{su}(3)\).
+
+\emph{What is proved.} The Lie-type theorem
+(Theorem~\ref{thm:current-algebra}) is a finite implication from the
+response clauses of premise A1, the endogenous-transport clause of premise
+A2 and the classification of compact simple Lie algebras. The categorical
+route proves a fixed-cutoff bosonic sector category unconditionally and a
+compact Tannaka group on any refinement tail that carries the stated
+receipt; a Doplicher--Roberts field net requires further declared
+hypotheses. The matrix current, spin lift, trace redistribution, exterior
+matter module, band selection, bracket discriminator and local action are
+conditional realizations under displayed declarations.
+
+\emph{Open joins.} The executable model must realize the complete response
+of A1 and the endogenous transport of A2 from its own repair and memory law,
+with the port generators, commutators and implementers reconstructed from
+ordered source histories. The tested native exchange response gives
+seventeen currents and fails A1; a specified coherent control law gives the
+twelve closed currents on a declared control menu
+(Section~\ref{sec:executable-current}). Physical spin and statistics, a
+physical Weyl field, the global quotient, the family attachment and all
+couplings are further joins. The matter hypothesis, that stable massive
+matter is a localized topological defect of native overlap transport whose
+boundary holonomy takes values in this gauge structure, is developed in the
+particle paper~\cite{ophparticles}.
+
+\emph{Refutation.} The complete accessible current of a specified executable
+law, if it is not a faithful closed twelve-dimensional response with inner
+carrier action, excludes that law's realization of the branch. A proof that
+no admissible local repair and memory law on the carrier supplies the A1 and
+A2 response clauses would remove this gauge branch. The finite failure
+conditions are listed in Section~\ref{sec:gauge-failure-conditions}.
+
+\tableofcontents
+
+\section{Two reconstruction routes}
+\label{sec:two-routes}
 
 The first route is structural:
 \[
-\begin{split}
-\text{overlap gluing and transport receipts}
-&\Longrightarrow
-\text{rigid symmetric sector category}\\
-&\Longrightarrow
+\text{overlap gluing and transport}
+\Longrightarrow
+\text{rigid symmetric sector category}
+\Longrightarrow
 \operatorname{Aut}_{\otimes}(\mathcal F).
-\end{split}
 \]
-It reconstructs a compact group on the declared bosonic branch. It does not
-select the Standard Model without a realized sector witness.
+It reconstructs a compact group on the declared bosonic branch
+(Section~\ref{sec:categorical-route}). It does not select the Standard Model
+without a realized sector witness.
 
 The second route is finite and carrier-specific:
-\label{thm:current-algebra}
 \[
 \begin{split}
 &\text{twelve-port incidence and complete reversible response}\\
-&\Longrightarrow\text{internal proper-carrier holonomy}\\
-&\Longrightarrow
+&\Longrightarrow\text{internal proper-carrier holonomy}
+\Longrightarrow
 \mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak u(1)\\
 &\Longrightarrow
 \text{conditional Standard Model matter image}.
 \end{split}
 \]
-This arrow combines three restrictions. Incidence supplies the
-twelve-dimensional \(A_5\)-module and its single fixed line. Premise A1 supplies the faithful compact commutator-closed response on that module. Premise A2 makes
-the proper carrier action inner on the same response. Incidence without the
-response clauses leaves many equivariant laws. Response naturality without
-endogeneity leaves the abelian \(\mathfrak u(1)^{12}\) and the mixed
+Incidence supplies the twelve-dimensional \(A_5\)-module and its single
+fixed line. Premise A1 supplies the faithful compact commutator-closed
+response on that module. Premise A2 makes the proper carrier action inner on
+the same response. Incidence without the response clauses leaves many
+equivariant laws. Response naturality without endogeneity leaves the abelian
+\(\mathfrak u(1)^{12}\) and the mixed
 \(\mathfrak{su}(2)^{2}\oplus\mathfrak u(1)^{6}\) branches available;
 endogeneity bounds the centre by the single fixed line, and the fixed-line
-count then excludes \(\mathfrak{su}(2)^{4}\).
+count then excludes \(\mathfrak{su}(2)^{4}\). The two routes have separate
+premise sets. No theorem identifies the finite current with the Tannaka
+group; that equality requires a same-source current construction and a
+commuting-square identification.
 
 \begin{figure}[!htb]
 \centering
@@ -98,61 +139,93 @@ count then excludes \(\mathfrak{su}(2)^{4}\).
 \label{fig:gauge-lie-type}
 \end{figure}
 
-The finite argument constructs its compact current inside the premise A1 unitary
-response space; an ambient continuous gauge group is absent from its premises.
-Write \(\mathfrak g=D(\mathbb R^{12})\subset\mathfrak u(H)\). Faithfulness gives
-\(\dim\mathfrak g=12\), and commutator closure makes \(\mathfrak g\) compact
-reductive. The transitive action of the alternating group on five letters,
-\(A_5\), gives \(\dim\mathfrak g^{A_5}=1\). Premise A2 implements that action
-internally on the same response, so it fixes the centre pointwise and
-\(\dim Z(\mathfrak g)\leq1\). A centreless compact algebra of dimension twelve
-would be \(\mathfrak{su}(2)^4\). Its factorwise inner \(A_5\) action has fixed
-dimension zero or three on each factor and cannot have a one-dimensional fixed
-space. The centre therefore has dimension one, while the semisimple part has
-dimension eleven. Compact-simple classification gives the unique split
-\(11=3+8\), which proves
+\section{Premises}
+\label{sec:gauge-premises}
+
+The premises A1--A3 are shared with the other layers. The Lie-type theorem
+uses only the response clauses of A1 and the endogenous-transport clause of
+A2. A3 enters only the edge-sector weighting of
+Section~\ref{sec:heat-kernel}. Branch-local hypotheses are stated at the
+results that consume them.
+
+\input{tex_fragments/PREMISE_BASIS.tex}
+
+\section{The finite-current Lie-type theorem}
+\label{sec:lie-type}
+
+\begin{theorem}[Finite-current fixed-space theorem]
+\label{thm:current-algebra}\label{thm:finite-current-fixed-space}
+Let \(\mathfrak g=D(\mathbb R^{12})\subset\mathfrak u(H)\) be the image of
+the complete reversible twelve-port response of premise A1, and let the
+proper carrier rotations act on it by inner automorphisms of the same
+response, as premise A2 requires. Then
 \[
 \mathfrak g\cong
 \mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3).
 \]
-The carrier identity \(10J=A^3-4A^2-5A+10I\) and target-blind readback derive
-\(R=-J\). They do not construct the current derivative. The Lie-type theorem
-uses the complete-response clauses of A1 and the endogenous-transport clauses
-of A2. The port count fixes the dimension twelve by declaration. Both clauses
-are hypotheses of this classification. The registered single-recurrence
-interface does not produce them; its response is the commutative algebra
-below. The protected native-object response considered separately below
-uses a different, explicitly declared coherent-control interface. The content of
-the theorem is the exclusion of \(\mathfrak{su}(2)^4\) and a one-dimensional
-centre. A descent repair law enters only when a branch asks for settled public
-records. It is not an undeclared premise of the Lie-type theorem. The
-dimension arithmetic, the centre bound and the dimension-six exclusion used by
-the Lie-type classification are machine checked in the accompanying Lean
-development~\cite{ophrepo}; the \(\mathfrak{su}(2)^{4}\) fixed-space step and
-the compact-Lie classification enter Lean as declared hypotheses, and no source
-current or full Lie-algebra isomorphism is constructed there. The registered
-formal interface keeps these inputs separate: an injective port-response map
-supplies dimension twelve; an inner carrier action fixes the centre, placing
-it inside the one-dimensional fixed space; the fixed-space exclusion supplies
-nonzero centre; and compact-simple classification supplies the allowed simple
+The implication assumes no ambient continuous gauge group and is
+independent of the categorical refinement receipt.
+\end{theorem}
+
+\begin{proof}
+Faithfulness gives \(\dim\mathfrak g=12\). Commutator closure inside
+\(\mathfrak u(H)\) makes \(\mathfrak g\) compact reductive, so
+\(\mathfrak g=Z(\mathfrak g)\oplus[\mathfrak g,\mathfrak g]\). The
+transitive action of the alternating group \(A_5\) on the twelve ports gives
+\(\dim\mathfrak g^{A_5}=1\). Inner automorphisms fix the centre pointwise,
+so \(Z(\mathfrak g)\subset\mathfrak g^{A_5}\) and
+\(\dim Z(\mathfrak g)\le1\). If the centre vanished, \(\mathfrak g\) would be
+semisimple of dimension twelve; the compact simple algebras of dimension at
+most twelve have dimensions \(3\), \(8\) and \(10\)~\cite{knapp2002}, so
+\(\mathfrak g\cong\mathfrak{su}(2)^4\). The inner action preserves each
+simple factor of \(\mathfrak{su}(2)^4\); simplicity of \(A_5\) makes each
+restricted action trivial or faithful, with fixed dimension three or zero.
+No sum of such terms equals one, so this branch is excluded. Hence
+\(\dim Z(\mathfrak g)=1\), the semisimple part has dimension eleven, and
+compact-simple classification gives the unique split \(11=3+8\).
+\end{proof}
+
+The port count fixes the dimension twelve by declaration; the content of the
+theorem is the exclusion of \(\mathfrak{su}(2)^4\) and a one-dimensional
+centre. The dimension arithmetic, the centre bound and the dimension-six
+exclusion below are machine checked in the accompanying Lean
+development~\cite{ophrepo}. The \(\mathfrak{su}(2)^{4}\) fixed-space step and
+the compact-Lie classification enter Lean as declared hypotheses, and no
+source current or full Lie-algebra isomorphism is constructed there. The
+formal interface keeps the inputs separate: an injective port-response map
+supplies dimension twelve; an inner carrier action places the centre inside
+the one-dimensional fixed space; the fixed-space exclusion supplies a nonzero
+centre; and compact-simple classification supplies the allowed simple
 dimensions \(3,8,10\). The final Lean selection theorem takes the last three
-dimension constraints as hypotheses and proves the split. An observable
-relative phase alone establishes neither centrality nor trivial carrier
-action on the entire centre, and cannot replace those hypotheses. The
-formal source records that centre-triviality was found by working backwards
-from the desired Lie type; the proof establishes sufficiency, not an
-independent physical origin for that condition.
-The registered recurrence generates the exact commutative
-algebra \(\operatorname{span}\{I,A,A^2,A^3\}\). It contains neither twelve
+constraints as hypotheses and proves the split. An observable relative phase
+alone establishes neither centrality nor trivial carrier action on the whole
+centre. The trivial carrier action on the centre is a sufficient premise for
+this Lie type; the proof supplies no independent physical origin for it.
+
+\paragraph{What incidence alone supplies.}
+\label{thm:echosahedral-source-selector}
+The certified incidence and inverse-port pairing determine \(J\), with
+\[
+10J=A^3-4A^2-5A+10I,
+\]
+where \(A\) is the port adjacency. The equivariant linear-response commutant
+is four-dimensional, and a target-blind impulse and readback protocol
+produces \(R=-J\). Its restrictions to
+\(\mathbf1\oplus\mathbf3\oplus\mathbf3'\oplus\mathbf5\) have fixed relative
+signs; simultaneous reversal is an algebraic response convention and is not
+identified with matter charge conjugation. These facts constrain the
+response without constructing the current derivative.
+
+\paragraph{Exact negative controls.}
+The registered single-recurrence interface generates the commutative algebra
+\(\operatorname{span}\{I,A,A^2,A^3\}\). It contains neither twelve
 independent current generators nor a nonzero bracket, and its only proper
-recharting is the identity. This result is bounded to the registered
-single-recurrence packet. The declared matrix current is an exact conditional
-witness. The target-free diagonal phase lift has twelve independent first
-derivatives and an abelian bracket. Adding the registered connected adjacency
-tangent generates \(\mathfrak u(12)\), with derived rank \(143\). This exact
-control rejects that direct lift and leaves non-diagonal source responses in
-play. The canonical scalar seam equalizers do not fill that gap. On the
-eleven-dimensional zero-sum port space, exact closure gives
+recharting is the identity; this bound applies to that registered packet. The
+target-free diagonal phase lift has twelve independent first derivatives and
+an abelian bracket. Adding the connected adjacency tangent generates
+\(\mathfrak u(12)\), with derived rank \(143\). The canonical scalar seam
+equalizers do not supply the current either. On the eleven-dimensional
+zero-sum port space,
 \[
  \operatorname{rank}\langle [G_e,G_f]\rangle=49,
  \qquad
@@ -160,209 +233,801 @@ eleven-dimensional zero-sum port space, exact closure gives
  \qquad
  \operatorname{Alg}\langle G_e\rangle=\operatorname{End}(\mathbb R^{11}),
 \]
-of dimensions (49), (55), and (121), respectively. Thus the scalar
-strict-descent repair maps cannot be relabelled as the desired
-twelve-dimensional compact reversible current. This exact negative control
-leaves a separately derived reversible response in play and prevents the
-repair law from acquiring gauge content by definition.
+of dimensions \(49\), \(55\) and \(121\). The strict-descent repair maps
+therefore cannot be relabelled as the twelve-dimensional compact reversible
+current, and the repair law acquires no gauge content by definition.
 
-The native binary load-two carrier supplies a more direct persistent-object
-bridge. Its thirty-six nonedge pairs admit two source-derived equivariant
-perfect-matching colorings by the six antipodal axes. Each normalized matching
-code has dimension six, carries the actual port-permutation representation
-\(1\oplus5\), and corrects every complete recorded C/E branch on all thirty
-native seams with the declared coherent encoder and record-dependent recovery.
-Its sum-zero quintet is protected. Two such corrected objects contain a unique
-geometric \(3\oplus3'\) sector under simultaneous actual port rotations, with
-an exact intertwiner inside the full thirty-six-dimensional product code.
-This identifies a persistent geometric carrier; it does not supply a
-spin-half lift, an exterior matter module, or autonomous selection of that
-sector.
+\paragraph{Carrier specificity.}
+Identify the twelve ports in antipodal pairs. The quotient triangulates the
+real projective plane with six vertices, fifteen edges and ten triangular
+faces; its edge graph \(K_6\) has twenty \(3\)-cycles. Its transitive
+\(A_5\) action retains one fixed line. If a six-dimensional compact current
+carries that action internally, a one-dimensional centre leaves the
+impossible semisimple dimension five, whereas a zero-dimensional centre gives
+\(\mathfrak{su}(2)^2\) with fixed dimension zero, three or six. No current
+satisfies all those premises. The adjacency spectrum \(5,-1\), with
+multiplicities one and five, is the antipode-even part of the icosahedral
+spectrum; the two \(\pm\sqrt5\) triplets are antipode-odd. Antipodal
+identification changes topology and port count; forgetting a chosen
+orientation alone leaves the twelve-port sphere.
 
-On opposite coloring choices, the twelve corresponding-port exchanges on
-all \(10626\) native load-four configurations yield six independent Hermitian
-mixed responses that preserve this geometric sector. They are derived using
-the declared joint-code phase control; they are not copied from the
-conditional gauge-current matrices. Their exact real Lie closure is
+\section{The current on the executable carrier}
+\label{sec:executable-current}
+
+The Lie-type theorem consumes a complete response; it does not produce one.
+On the executable carrier the twelve-current law is a specification; no
+result derives it from the unchanged native repair. Fixed unrecorded native seam
+channels annihilate nonzero operators and cannot supply invertible currents.
+Active correction has a different domain, examined here on one protected
+native object~\cite{ophmodel,ophrepo}.
+
+\paragraph{A persistent geometric object.}
+The thirty-six nonedge pairs of the native binary load-two carrier admit two
+source-derived equivariant perfect-matching colourings by the six antipodal
+axes. Each normalized matching code has dimension six, carries the actual
+port-permutation representation \(1\oplus5\), and corrects every complete
+recorded C/E branch on all thirty native seams with the declared coherent
+encoder and record-dependent recovery. Its sum-zero quintet is protected. Two
+such corrected objects contain a unique geometric \(3\oplus3'\) sector under
+simultaneous port rotations, with an exact intertwiner inside the full
+thirty-six-dimensional product code. This is a persistent geometric carrier;
+it supplies no spin-half lift, exterior matter module or autonomous selection
+of that sector.
+
+\paragraph{The native exchange response fails the complete-response clause.}
+On opposite colouring choices, the twelve corresponding-port exchanges on all
+\(10626\) native load-four configurations yield six independent Hermitian
+mixed responses that preserve the geometric sector. They use the declared
+joint-code phase control and are not copied from any target current. Their
+exact real Lie closure is
 \[
  \mathfrak g_{\mathrm{native}}
- =\mathfrak{su}(3)\oplus\mathfrak{su}(3)
-   \oplus\mathbb R\,iI_6,
+ =\mathfrak{su}(3)\oplus\mathfrak{su}(3)\oplus\mathbb R\,iI_6,
  \qquad \dim\mathfrak g_{\mathrm{native}}=17.
 \]
-The actual proper port rotations belong to this connected response group at
-the effective-algebra level. Finite native response words, their errors and
-current readout remain separate operational obligations. This establishes a
-same-object endogeneity bridge, while leaving A1's complete faithful
-twelve-port response uninstantiated. In particular, conjugation on
-\(\operatorname{End}(\mathbb C^6)\) sees sixteen directions: its common
-scalar phase is silent on that algebra. Coherence with the retained product
-complement can expose a relative phase on a larger accessible algebra.
-The same preserving response menu has nine independent Hermitian operators
-on the full product code, with a three-dimensional restriction kernel;
-its full Lie closure therefore has dimension at least twenty and its
-conjugation-visible response on \(\operatorname{End}(\mathbb C^{36})\)
-has dimension at least nineteen. This enlarged interface also fails the
-complete twelve-direction requirement. The present current lacks the
-conditional fixture's relative phase between \(3\) and \(3'\), and it allows
-five traceless phase directions on each triplet. Restricting one triplet's
-phase directions does not by itself supply that missing relative current.
-The native-object and response producers retain these distinctions rather
-than identifying the seventeen-dimensional response as the Standard Model
-gauge law.\footnote{\raggedright Exact constructions and retained checks:
-\texttt{model/common\_source/native\_gauge\_object.py} and
-\texttt{model/common\_source/native\_persistent\_response.py}.}
+The proper port rotations belong to this connected response group at the
+effective-algebra level, so the response realizes an endogeneity bridge on
+one object. It does not instantiate A1. Conjugation on
+\(\operatorname{End}(\mathbb C^6)\) sees sixteen directions, since the common
+scalar phase is silent there. On the full product code the same preserving
+menu has nine independent Hermitian operators with a three-dimensional
+restriction kernel, so its Lie closure has dimension at least twenty and its
+conjugation-visible response on \(\operatorname{End}(\mathbb C^{36})\) has
+dimension at least nineteen. The response lacks the relative phase between
+\(3\) and \(3'\) and allows five traceless phase directions on each triplet.
+The exchange law and the specified law below intersect in eleven dimensions,
+and exact quotients and rotation-fixing channels cannot delete the unwanted
+quintet while supplying the missing centre. This seventeen-versus-twelve
+mismatch excludes the exchange grammar; it does not exclude other admissible
+current laws.
 
-A distinct specified coherent law realizes the conditional current interface
-on this same protected object without changing its ports or C/E instruments.
-For the actual native port vectors \(v_p\), Galois conjugation \(\sigma\), and
-cross-product matrix \(\widehat v\), choose
+\paragraph{A specified twelve-current law.}
+A distinct specified coherent law realizes the current interface on the same
+protected object without changing its ports or C/E instruments. For the
+native port vectors \(v_p\), Galois conjugation \(\sigma\) and cross-product
+matrix \(\widehat v\), set
 \[
  D_p=\operatorname{diag}\left(
- \widehat{v_p/2}+iQ_p,\widehat{\sigma(v_p)/2}\right),
+ \widehat{v_p/2}+iQ_p,\ \widehat{\sigma(v_p)/2}\right),
  \qquad Q_p=\tfrac12v_pv_p^T-\tfrac16\lVert v_p\rVert^2I_3+
  \tfrac1{12}I_3.
 \]
-The native near-fivefold class sum distinguishes the two triplets before
-the complex-versus-real control choice is applied. Exact checks give rank
+The native near-fivefold class sum distinguishes the two triplets before the
+complex-versus-real control choice is applied. Exact checks give rank
 twelve, all sixty-six bracket closures and all seven hundred twenty port
 covariance identities. Proper carrier rotations belong to the same connected
-current group. The sum of the currents is
-\(\operatorname{diag}(iI_3,0)\), whose relative phase is observable by
-cross-triplet readout. The resulting law has algebra
-\(\mathfrak u(3)\oplus\mathfrak{so}(3)\). Source words execute its primitive
-currents, and selected currents are composed with the geometric preparation,
-native repair, record-assisted recovery and pointer outputs.
-This construction changes the coherent law; it does not truncate the
-seventeen-current exchange closure. Completeness is over the specified
-current-control menu. The universal compiler and detector services remain
-declared apparatus, and excluding their operations from that menu does not
-establish their physical inaccessibility, full physical A1 closure or gauge
-redundancy. Its weak double cover and exterior matter sector are separate
-chosen attachments.\footnote{\raggedright
-\texttt{model/common\_source/native\_sm\_current.py} and
-\texttt{model/common\_source/native\_matter\_attachment.py}.}
+current group. The sum of the currents is \(\operatorname{diag}(iI_3,0)\),
+whose relative phase is observable by cross-triplet readout. The algebra is
+\(\mathfrak u(3)\oplus\mathfrak{so}(3)\cong\mathfrak u(1)\oplus
+\mathfrak{su}(2)\oplus\mathfrak{su}(3)\). Source words execute its primitive
+currents, composed with the geometric preparation, native repair,
+record-assisted recovery and pointer outputs. Completeness holds over the
+specified current-control menu. The coherent compiler and detector services
+are declared apparatus, and excluding them from the menu does not establish
+their physical inaccessibility, full physical A1 closure or gauge
+redundancy.
 
-\paragraph{Carrier rechartings and physical rotations.}
-The port action above is a finite carrier symmetry. Its inclusion in the
-current group is established for the stated interface; its identification
-with spatial rotations of a recovered interacting field is not. The local
-rank-three Gram band and the refining global low band are distinct: the
-former has a fixed nonzero carrier energy, whereas the latter concentrates
-on cell averages. Equivalent \(A_5\) triplets can also occur on different
-tensor factors. In particular, the specified family-feedback construction
-uses a gauge-trivial ancillary triplet rather than the coloured current
-triplet. Representation equivalence alone therefore proves neither an
-identification nor independence of physical colour, family and spatial
-actions.
+\paragraph{Controlled limits.}
+A positive native class-sum bias, fresh-bath coupling and a complete
+eighteen-coefficient disturbance-gradient controller give a source-executed
+bounded-drive joint limit that approaches twelve observable currents. Every
+finite filter is invertible on all eighteen input currents; fixed-bias long
+feedback instead leaves six observable currents. Reference cooling alone
+leaves every work current available. The bias, baths, actuator and feedback
+rule are architecture choices that unchanged C/E repair does not select.
 
-The conditional Spin--matter join constructs commuting actions on
+\subsection{Carrier rechartings, the shared triplet and physical rotations}
+\label{sec:carrier-rotations}
+
+One three-dimensional \(A_5\) representation on the port vectors appears in
+three roles. The vectors \(v_p\) span the adjacency eigenspace with
+eigenvalue \(\sqrt5\), the Laplacian band \(L=5I-A\) of cost \(5-\sqrt5\).
+This band is the rank-three Gram frame and slow repair band that supplies the
+spatial frame triplet~\cite{ophmicrophysics,ophEinstein}; it is the band selected as the
+family candidate in Section~\ref{sec:families}; and the colour block of the
+specified current acts on it, each generator containing the frame rotation
+\(\widehat{v_p/2}\). Its Galois conjugate \(\sigma(v_p)\) spans the
+\(-\sqrt5\) band \(3'\) on which the weak \(\mathfrak{so}(3)\) block acts.
+
+The paper keeps these roles distinct. Premise A2 places the finite carrier
+rechartings inside the connected internal current group, up to centralizer
+elements and phases; this is a finite covariance statement and it is a
+premise. No result here identifies those
+rechartings with spatial rotations of a recovered interacting field, and
+representation equivalence alone proves neither an identification nor an
+independence of physical colour, family and spatial actions. Equivalent
+triplets can occur on different tensor factors: the specified family-feedback
+construction uses a gauge-trivial ancillary triplet rather than the coloured
+current triplet. The local rank-three Gram band and the refining global low
+band are also distinct: the former has a fixed nonzero carrier energy,
+whereas the latter concentrates on cell averages.
+
+The conditional spin and matter join constructs commuting actions on
 \(\mathbb C^2\otimes\mathbb C^{15}\), with physical-spin central element
 \(-I\) on all thirty states. The diagonal locked action instead has fourteen
-minus and sixteen plus central eigenvalues and fails that fermionic test.
-An explicitly chosen compensating internal transport realizes the independent
-Spin action. These are finite existence and obstruction results under a
+minus and sixteen plus central eigenvalues and fails that fermionic test. An
+explicitly chosen compensating internal transport realizes the independent
+spin action. These are finite existence and obstruction results under a
 chosen tensor attachment, not a source-selected spacetime connection or a
-joint charged propagator.\footnote{Public implementations:
-\path{model/common_source/slow_geometry.py},
-\path{model/common_source/native_repair_mass.py},
-\path{model/physical_space_time/OCCUPATION_FIELD.md}, and
-\path{model/observer_particles/spin_matter_join.py}.}
-The remaining test must identify rotations operationally on the same
-clocked field response, establish their independence from internal currents
-up to the declared gauge equivalence, and check that the dynamics preserves
-that identification. Coleman--Mandula separation is a constraint on a
-physical scattering theory under its Poincar\'e, spectrum, analyticity and
-nontrivial-scattering hypotheses; those hypotheses have not been established
-for this finite interface, so no violation of that theorem follows here.\footnote{
-S.~Coleman and J.~Mandula, ``All Possible Symmetries of the \(S\) Matrix,''
-\emph{Physical Review} \textbf{159}, 1251--1256 (1967),
-\url{https://doi.org/10.1103/PhysRev.159.1251}.}
+joint charged propagator.
 
-As a counterfactual, identify the twelve ports in antipodal pairs. The
-inherited quotient triangulates the real projective plane, with six
-vertices, fifteen edges and ten triangular surface faces; its edge graph \(K_6\) has twenty
-3-cycles. Its transitive \(A_5\) action retains one fixed line. If a
-six-dimensional compact current is required to carry that action internally,
-a one-dimensional centre leaves the impossible semisimple dimension five,
-whereas a zero-dimensional centre gives \(\mathfrak{su}(2)^2\) and fixed
-dimension zero, three or six. Thus no current satisfies all those premises.
-The adjacency spectrum \(5,-1\), with multiplicities one and five, is
-exactly the antipode-even part of the icosahedral spectrum; the two
-\(\pm\sqrt5\) triplets are antipode-odd. The executable named-menu table
-at \path{code/discriminator_strata/carrier_specificity.py} checks these
-finite facts. Antipodal identification changes topology and port count;
-forgetting a chosen orientation alone leaves the twelve-port sphere.
-This comparison supplies neither a calibrated specificity score nor a
-physical current attachment.
+Identifying carrier rechartings with physical rotations while A2 keeps them
+internal would combine spacetime and internal symmetry. In a relativistic
+interacting scattering theory that combination is constrained by the
+Coleman--Mandula theorem under its Poincar\'e, spectrum, analyticity and
+nontrivial-scattering hypotheses.\footnote{S.~Coleman and J.~Mandula,
+``All Possible Symmetries of the \(S\) Matrix,'' \emph{Physical Review}
+\textbf{159}, 1251--1256 (1967),
+\url{https://doi.org/10.1103/PhysRev.159.1251}.} The paper makes no such
+identification, and those hypotheses are not established for the finite
+interface. The required test identifies rotations operationally on the same
+clocked field response, establishes their independence from internal
+currents up to the declared gauge equivalence, including any allowed
+compensators, and checks that the dynamics preserves that identification.
 
+\section{The categorical route}
+\label{sec:categorical-route}
 
-Conditional on the canonical oriented carrier, the complete target-free
-space \(\operatorname{Hom}_{A_5}(\Lambda^2\mathbb Q^{12},\mathbb Q^{12})\)
-has dimension fourteen and an exact rational Reynolds basis. It is a search
-space only; no bracket is selected. Substitution of the general bracket into
-Jacobi gives 2,640 coordinate equations in 44 target orbits and an exact
-coefficient-row rank of 38. A channel change over \(\mathbb Q(\sqrt5)\)
-splits that rowspace into eleven fixed-line derivation-weight products and a
-rank-27 residual system. The residual equations apply on every weight flat.
-A three-parameter derivation-only Jacobi family is exact and supplies no
-compactness or source selection. The compact real locus of that
-fourteen-parameter equivariant variety is classified, conditional on
-three named textbook lemmas and exactly over \(\mathbb Q(\sqrt5)\), into
-three certified bracket families, and for each family the coroot lattices,
-integral carrier weights, and carrier-admitted mathematical global form are computed
-exactly; the selected forms are adjoint with zero abelian charge lattice, so
-the abelian sector is undetermined at carrier level and stands exposed
-rather than repaired.
+\subsection{Transport from overlap gluing}
 
-The source incidence admits a particularly sharp finite discriminator.
-Applying the declared equal-weight cyclic rule to its twenty oriented faces
-gives
+At a fixed regulator the overlap rechartings of a connected cut \(\Sigma\)
+form a compact unitary transition system, and transport of a collar charge
+along an overlap path \(p=(i_0\to\cdots\to i_m)\) is the composite
+\(U_p=U_{i_{m-1}i_m}\cdots U_{i_0i_1}\). Gauge-as-gluing, the tree and loop
+lemmas and the transportability theorem are proved in the spacetime
+paper~\cite{ophEinstein}. The gauge route consumes the following exact
+criterion.
+
+On the central-defect branch, identify the overlap centres with one fixed
+abelian unitary coefficient group \(Z_\Sigma\) on which overlap transport acts
+trivially. With \(U_{ji}=U_{ij}^{-1}\), define the implementer-level
+multiplier
 \[
- B_{\rm face}=60R_{13}.
+\Omega_{ijk}=U_{ij}U_{jk}U_{ki}=z_{ijk}\in Z_\Sigma,
 \]
-This bracket is \(A_5\)-equivariant but fails Jacobi in exactly \(240\) of
-the \(2640\) independent coordinates, split \(120\) at \(+1\) and \(120\)
-at \(-1\). Under the explicitly added Euclidean metric on upper-triangular
-structure constants, orthogonal projection onto the complete compact locus
-has the unique nearest family \(G\):
+equivalently \(U_{ij}U_{jk}=z_{ijk}U_{ik}\). The multiplier is defined at the
+implementer level: \(\mathrm{Ad}(z_{ijk})\) is the identity and does not
+record the defect.
+
+\begin{theorem}[Central defect strictification and residual holonomy]
+\label{thm:central-defect-strictification}
+The family \(\{z_{ijk}\}\) is an untwisted \v{C}ech 2-cocycle with
+coefficients in \(Z_\Sigma\), and its class
+\([z]\in\check H^2(N_\Sigma,Z_\Sigma)\) is gauge invariant. A central edge
+rephasing by a cochain in \(C^1(N_\Sigma,Z_\Sigma)\) removes every triangle
+defect if and only if \([z]=0\). After such a rephasing, let
+\(U^{\mathrm{str}}\) be the resulting edge \(1\)-cocycle and
+\(\mathcal C_\alpha\) the full transported charge block, including carrier
+and multiplicity data. Loop-coherent endpoint-only transport exists on that
+block if and only if, in addition,
+\[
+\operatorname{Hol}_{\alpha,U^{\mathrm{str}}}([\gamma])
+=U^{\mathrm{str}}_\gamma\big|_{\mathcal C_\alpha}
+=\mathbf 1_{\mathcal C_\alpha}
+\qquad
+\text{for every }[\gamma]\in\pi_1(|N_\Sigma|,i_*).
+\]
+\end{theorem}
+
+\begin{proof}
+Conjugation by \(\Omega_{ijk}\) fixes every triple-overlap observable, so the
+multiplier is central there; the fixed-coefficient and trivial-action
+hypotheses place it in \(Z_\Sigma\). Comparing \((U_{ij}U_{jk})U_{kl}\) with
+\(U_{ij}(U_{jk}U_{kl})\) on a quadruple overlap gives
+\(z_{jkl}z_{ikl}^{-1}z_{ijl}z_{ijk}^{-1}=1\). A vertex-frame change
+\(U_{ij}\mapsto V_iU_{ij}V_j^\dagger\) conjugates \(z_{ijk}\) and leaves a
+central multiplier unchanged. A central edge rephasing
+\(U_{ij}\mapsto a_{ij}^{-1}U_{ij}\) replaces \(z\) by the corresponding
+coboundary, so \([z]=0\) is equivalent to removing all triangle multipliers.
+For two paths \(p,p'\) with common endpoints, the residual discrepancy is the
+holonomy of the closed loop \(p'^{-1}p\); it vanishes for every pair exactly
+when the displayed holonomy representation is trivial. Conversely, strict
+path independence makes every triangle comparison and every represented loop
+action trivial.
+\end{proof}
+
+If overlap transport acts nontrivially on a local system of centres, the
+comparison carries the transported factor and requires the twisted \v{C}ech
+differential. On the genuinely noncentral branch the coefficient data is a
+crossed module \(H_\Sigma\to G_\Sigma\). The vanishing \(o^{(2)}_\Sigma=0\)
+strictifies the higher associator, after which at least one allowed strict
+\(G_\Sigma\)-valued representative must have trivial represented holonomy. The
+full orbit \(q_\Sigma\) need not determine a unique ordinary \(H^1\) class
+and is not itself the strictification test. A nonzero \(o^{(2)}_\Sigma\)
+remains a higher-gauge sector, and an orbit whose every strict representative
+has residual loop action lies outside the ordinary path-independent sector.
+The class \([z]\) is structurally analogous to an effective 't~Hooft anomaly
+class; a map between them requires a separate anomaly-descent construction,
+so \([z]=0\) is used here only as the internal strictifiability condition.
+The overlap obstruction calculus classifies and routes sectors; it does not
+select the Standard Model.
+
+\subsection{The fixed-cutoff sector category}
+
+At cutoff \(r\), choose one common stagewise strict edge cocycle
+\(U^{\mathrm{str}}_r\) from the allowed representatives, and retain only seeds
+on which this representative acts trivially around every closed overlap loop.
+Sectors requiring incompatible strictifications define alternative
+fixed-stage categories; they are not unioned before tensor closure.
+
+\begin{definition}[Fixed-cutoff tensor-generated sector category]
+Let \(S_r\) be the set of visible collar carriers \(W_{\alpha,r}\) with trivial
+holonomy under the common \(U^{\mathrm{str}}_r\). Define
+\[
+\mathsf{Sect}^{\mathrm{bos}}_r
+=\bigl\langle\mathbf 1,S_r,S_r^*\bigr\rangle_{
+\oplus,\otimes,\mathrm{subobjects},\mathrm{isomorphism}}
+\subset\operatorname{Rep}_{\mathrm{fd}}(\widehat K_{\Sigma,r}),
+\]
+the replete full additive Karoubi rigid tensor subcategory generated by the
+finitely many visible carriers. Its simple objects are the irreducible
+summands of finite tensor words in seeds and conjugates; there may be
+infinitely many of them although every object and Hom space is
+finite-dimensional.
+\end{definition}
+
+\begin{theorem}[Fixed-cutoff bosonic sector category]
+At every fixed regulator cutoff, on the ordinary or central-defect
+zero-obstruction branch and in the bosonic internal-gauge sector of the
+\(3+1\)-dimensional effective regime, \(\mathsf{Sect}^{\mathrm{bos}}_r\) is a
+semisimple rigid symmetric \(C^*\)-tensor category with one monoidally
+coherent path-independent transport. The carrier-forgetful functor
+\(F_r:\mathsf{Sect}^{\mathrm{bos}}_r\to\mathsf{Hilb}_{\mathrm{fd}}\) is
+faithful, \(^*\)-preserving and symmetric strong monoidal.
+\end{theorem}
+
+\begin{proof}
+Complete reducibility of finite-dimensional representations of the compact
+group gives semisimplicity and subobjects; the operator adjoint and norm give
+the \(C^*\)-structure; conjugate representations give duals; the flip gives
+the bosonic symmetry. Around a closed loop \(U^{\mathrm{str}}_r\) acts as the
+identity on every retained seed, hence on direct sums, tensor products,
+conjugates and invariant subobjects. Collar concatenation realizes tensor
+words whenever the finite tensor-realization receipt is supplied.
+\end{proof}
+
+Fermionic signs, spinorial matter and chirality are not part of this bosonic
+category; they belong to the matter lift of Section~\ref{sec:matter}.
+
+\subsection{Refinement and compact-group reconstruction}
+
+\begin{definition}[Compact-gauge refinement receipt]
+On a cofinal tail, the receipt supplies: a surjectivity certificate for each
+finite-state restriction \(\rho_{sr}:Q_s\to Q_r\); multiplicities
+\(m_{\beta\alpha}^{rs}\) and unitaries \(V_\beta^{rs}\) with
+\(d_{\beta,s}=\sum_\alpha m_{\beta\alpha}^{rs}d_{\alpha,r}\), defining the
+injective block embedding
+\[
+\bigl(\jmath_{rs}(a)\bigr)_\beta
+=V_\beta^{rs}\left[\bigoplus_\alpha
+\bigl(a_\alpha\otimes\mathbf 1_{m_{\beta\alpha}^{rs}}\bigr)\right](V_\beta^{rs})^*
+\]
+of the collar algebras, coherent under composition; continuous surjections
+\(\pi_{sr}^{\Sigma}:\widehat K_{\Sigma,s}\twoheadrightarrow\widehat K_{\Sigma,r}\)
+with \(\pi_{tr}^{\Sigma}=\pi_{sr}^{\Sigma}\circ\pi_{ts}^{\Sigma}\); one common
+strict representative at each stage, intertwined by the pullbacks; and
+compatible finite concatenated-collar realizations of every tensor word and
+invariant subobject projector. The finite-state consensus maps alone imply
+none of these data.
+\end{definition}
+
+\begin{theorem}[Refinement functor and fibre descent]
+On a tail carrying the receipt, \(U_{rs}:=(\pi_{sr}^{\Sigma})^*:
+\mathsf{Sect}^{\mathrm{bos}}_r\to\mathsf{Sect}^{\mathrm{bos}}_s\) is fully
+faithful, symmetric strong monoidal and \(^*\)-preserving; it preserves the
+unit, duals, irreducibles and the full zero-obstruction criterion, with
+\(U_{st}U_{rs}=U_{rt}\) and \(F_sU_{rs}=F_r\) on carrier spaces.
+\end{theorem}
+
+\begin{proof}
+Set \(U_{rs}(H_X,\varrho_X)=(H_X,\varrho_X\circ\pi_{sr}^{\Sigma})\) and
+\(U_{rs}(f)=f\). Surjectivity gives
+\[
+\operatorname{Hom}_{\widehat K_{\Sigma,s}}(U_{rs}X,U_{rs}Y)
+=\operatorname{Hom}_{\widehat K_{\Sigma,r}}(X,Y),
+\]
+so pullback is fully
+faithful and a coarse simple cannot split. Pullback commutes with tensor
+products, unit, conjugates, duality maps and the flip. The receipt intertwines
+the stagewise strict representatives, so zero holonomy persists for the whole
+category. Pullback changes only the action, so the fibre comparison is the
+identity.
+\end{proof}
+
+On such a tail, the directed colimit
+\(\mathsf{Sect}_\infty:=\varinjlim_r\mathsf{Sect}^{\mathrm{bos}}_r\) retains
+the sectors and intertwiners that persist, and the stagewise carriers descend
+to a faithful bosonic fibre functor
+\(\mathcal F:\mathsf{Sect}_\infty\to\mathsf{Hilb}_{\mathrm{fd}}\). A realized
+zero-obstruction class with representatives satisfying
+\(U_{st}\alpha_s\simeq\alpha_t\) determines a unique object of the colimit.
+Without the receipt only the fixed-stage categories are constructed.
+
+\begin{theorem}[Receipt-conditional Tannaka reconstruction]
+\label{thm:tannaka-reconstruction}
+On the ordinary or central zero-obstruction bosonic branch with a cofinal
+tail carrying the receipt, \(\mathsf{Sect}_\infty\) is a rigid symmetric
+\(C^*\)-tensor category with faithful bosonic fibre functor \(\mathcal F\),
+\(G:=\mathrm{Aut}_\otimes(\mathcal F)\) is a compact group, and
+\(\mathsf{Sect}_\infty\simeq\mathrm{Rep}(G)\), with \(G\) unique up to
+isomorphism. If the category is trivial, \(G\) is trivial.
+\end{theorem}
+
+\begin{proof}
+The refinement functors preserve tensor products, unit, duals and
+\(^*\)-structure, so the colimit inherits a rigid symmetric \(C^*\)-tensor
+structure and the carriers descend to \(\mathcal F\). A unitary symmetric
+monoidal natural automorphism \(\eta\) embeds as \((\eta_X)_X\) in
+\(\prod_XU(\mathcal F(X))\). Naturality,
+\(\mathcal F(f)\eta_X=\eta_Y\mathcal F(f)\), and monoidality,
+\(\eta_{X\otimes Y}=J_{X,Y}(\eta_X\otimes\eta_Y)J_{X,Y}^{-1}\) with
+\(\eta_{\mathbf 1}=\mathrm{id}\), are closed relations, so \(G\) is a closed
+subgroup of a compact product. Doplicher--Roberts and Tannaka reconstruction
+give \(\mathsf{Sect}_\infty\simeq\mathrm{Rep}(G)\)~\cite{dr89,dr90}, and two
+groups reconstructing the same category with compatible fibre functors are
+both the automorphism group of that functor.
+\end{proof}
+
+The local-Gibbs and collar-mixing package is not used to prove nontriviality
+or to supply the receipt. The theorem is neutral on whether
+\(\mathsf{Sect}_\infty\) is trivial: it returns whatever compact group the
+tensor-fibre data reconstructs and does not select
+\((\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm U(1))/\mathbb Z_6\).
+
+\begin{definition}[Field-net realization hypotheses]
+(R1) An isotonous net \(O\mapsto\mathcal A(O)\) of \(C^*\)-algebras over the
+small-region collar localizations, with a faithful vacuum representation.
+(R2) Spacelike commutativity, Haag duality or its declared essential variant,
+and Property~B. (R3) Each persistent class \([\alpha]\) is realized by a
+localized endomorphism \(\rho^\alpha_O\). (R4) Transportability by unitary
+intertwiners in \(\mathcal A\); vanishing collar holonomy is a necessary input
+to (R4) and is not equivalent to it. (R5) Finite permutation-symmetric
+statistics and conjugates matching \(\mathsf{Sect}_\infty\). (R6) The
+assignment \([\alpha]\mapsto[\rho^\alpha]\) is an equivalence onto the
+localized transportable finite-statistics endomorphisms.
+\end{definition}
+
+\begin{corollary}[Two-level reconstruction]
+Level (i), proved: on the receipt-certified branch,
+\(\mathsf{Sect}_\infty\simeq\mathrm{Rep}(G)\) with no observable net
+involved. Level (ii), conditional: under (R1)--(R6) the
+Doplicher--Roberts theorem~\cite{dr89,dr90} supplies a bosonic field net
+\(\mathcal F_{\mathrm{net}}\) carrying a \(G\)-action whose field operators
+implement every persistent sector, with
+\(\mathcal A=\mathcal F_{\mathrm{net}}^{\,G}\).
+\end{corollary}
+
+\begin{proof}
+Level (i) is Theorem~\ref{thm:tannaka-reconstruction}. Under (R1)--(R6) the
+localized transportable endomorphisms form a category equivalent to
+\(\mathsf{Sect}_\infty\) by (R6), hence to \(\mathrm{Rep}(G)\); the
+Doplicher--Roberts inputs are exactly (R2)--(R6) on the net (R1).
+\end{proof}
+
+This paper constructs the categorical side only; no observable net is
+specified on which the persistent sectors act, so every fixed-point identity
+\(\mathcal A=\mathcal F_{\mathrm{net}}^{\,G}\) is conditional on (R1)--(R6).
+
+\begin{lemma}[Product factorization]
+\label{lem:product-factorization}
+If \(\mathsf{Sect}\simeq\mathsf{Sect}_1\boxtimes\mathsf{Sect}_2\) identifies
+the reconstructed fibre functor with \(\mathcal F_1\boxtimes\mathcal F_2\),
+where each \(\mathcal F_i\) is a faithful symmetric tensor fibre functor, then
+\(\operatorname{Aut}^{\otimes}(\mathcal F)\cong G_1\times G_2\) with
+\(G_i=\operatorname{Aut}^{\otimes}(\mathcal F_i)\) and
+\(\mathsf{Sect}_i\simeq\mathrm{Rep}(G_i)\).
+\end{lemma}
+
+\begin{proof}
+A tensor-natural automorphism of the external-product functor restricts to
+each factor by evaluation on \((X,\mathbf 1)\) and \((\mathbf 1,Y)\), and the
+two restrictions determine it on every \((X,Y)\) by tensor naturality.
+Reconstruction on each factor gives the representation equivalences.
+\end{proof}
+
+A bare categorical factorization without compatible fibre functors does not
+establish the product statement, and factorized heat-kernel weights on one
+state do not reconstruct a product group. If, independently, the finite
+Lie-type theorem certifies the two nonabelian factors and the charge theorem
+certifies one connected \(\mathrm U(1)\), the connected realization is
+\(\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm U(1)\) up to the separately
+computed finite kernel.
+
+\section{Conditional matter realization}
+\label{sec:matter}
+\label{ass:matter-typing}
+
+\subsection{The matrix current, spin lift and exterior module}
+
+The charged-double-triplet matrices are an exact conditional realization of
+the premise-implied Lie type. A separate geometric-response construction
+probes all matrix units of \(M_6(\mathbb C)\) and resolves twelve current
+generators. The declared spin lift sends a six-state generator
+\(D=\operatorname{diag}(A,\widehat w)\) to
+\[
+L(D)=\operatorname{diag}\left(A,-\frac{i}{2}w\cdot\sigma-
+\frac{\operatorname{tr}A}{2}I_2\right).
+\]
+Together with the declared central trace redistribution this is the standard
+embedding \(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)
+\subset\mathfrak{su}(5)\). The nonvacuum even exterior module
+\(M=\Lambda^2\mathbb C^5\oplus\Lambda^4\mathbb C^5\) has dimension fifteen and
+is the Georgi--Glashow \(\mathbf{10}\oplus\bar{\mathbf 5}\)
+generation~\cite{pwgeorgi1974unity}. Inside the declared ten-component
+exterior menu, the exhaustive \(1024\)-subset anomaly scan selects
+\(P_{\mathrm{even}}-P_{\mathrm{vac}}\) and
+\(P_{\mathrm{odd}}-P_{\mathrm{top}}\) as the unique charge-conjugate pair of
+rank-\(15\) chiral projectors. Source-computed charges and Casimirs identify
+\(Q,u^c,d^c,L,e^c\). One declared Higgs doublet gives three invariant
+interaction lines \(Qu^cH\), \(Qd^cH^*\) and \(Le^cH^*\), and with three
+family copies these admit three arbitrary complex \(3\times3\) Yukawa
+matrices. The spin cover, exterior-sector choice and physical fermion field
+are separate attachments; even auxiliary exterior parity does not establish
+physical fermion statistics, and the decoder of these labels is a
+representation check rather than a particle identification~\cite{ophparticles}.
+
+\begin{lemma}[Factor identification]
+\label{lem:factor-identification}
+Let \(H\) be a positive-dimensional compact connected Lie group.
+(a) If \(H\) has a faithful irreducible two-dimensional pseudoreal unitary
+representation, the connected derived subgroup of the image is
+\(\mathrm{SU}(2)\) acting as the doublet. (b) If \(H\) has a faithful
+irreducible three-dimensional representation whose nonabelian factor acts
+irreducibly and inequivalently to its conjugate, the connected derived
+subgroup of the image is conjugate to \(\mathrm{SU}(3)\) on the fundamental,
+up to finite central kernel. (c) A connected abelian charge factor acting
+nontrivially on the coupled carrier gives a one-torus in the abelianized
+group.
+\end{lemma}
+
+\begin{proof}
+By Schur the centre acts by scalars, so the derived subgroup acts
+irreducibly. On \(\mathbb C^2\) the only connected compact groups acting
+irreducibly have derived subgroup \(\mathrm{SU}(2)\). On \(\mathbb C^3\), two
+nontrivial simple factors would force a tensor decomposition of dimension at
+least four; among compact simple algebras only \(\mathfrak{su}(2)\) and
+\(\mathfrak{su}(3)\) have nontrivial irreducibles of dimension at most three,
+and the three-dimensional representation of \(\mathfrak{su}(2)\) is real.
+Part (c) is immediate.
+\end{proof}
+
+Irreducibility in (a) is load-bearing: \(\mathrm U(1)\) acting by
+\(\operatorname{diag}(z,z^{-1})\) is faithful, pseudoreal and reducible. The
+intrinsically complex hypothesis in (b) is load-bearing:
+\(\mathrm U(1)\times\mathrm{SO}(3)\) acting by \(zR\) satisfies every other
+hypothesis. None of these lemmas enters Theorem~\ref{thm:current-algebra}.
+
+\begin{proposition}[Conditional matter image]
+\label{prop:conditional-matter-image}
+Assume the certified twelve-port carrier, the response and endogenous
+transport clauses, the declared matrix current, the declared fermionic spin
+category and the resulting conjugate projector pair. Anomaly-forced
+determinant balance and tensor descent on every realized matter tensor give:
+either projector supplies the one-generation chiral module with weak-doublet
+and colour-triplet roles on a common carrier \(\mathbb C^3\otimes\mathbb C^2\);
+the exact Standard Model hypercharge lattice up to simultaneous charge
+reversal; \(N_c=3\); the conjugation-insensitive kernel \(\mathbb Z_6\); and
+compatible scalar charges and Yukawa channels. The maximal faithful matter
+image is
+\[
+G_{\mathrm{packet}}=
+\frac{\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm U(1)}{\mathbb Z_6}.
+\]
+\end{proposition}
+
+The Lie type uses the carrier, the response clauses and classification; the
+other conclusions use the declared matrix and matter premises. The
+response-sign convention and the choice between conjugate projectors are
+separate, and no theorem identifies them. The cover and its
+\(\mathbb Z_2\) and \(\mathbb Z_3\) quotients carry the same local tensors, so
+local data do not select the physical global form
+(Section~\ref{sec:global-form}). The proposition attaches no laboratory
+current and does not identify \(G_{\mathrm{packet}}\) with the Tannaka group.
+
+\begin{theorem}[Hypercharge from anomaly freedom and Yukawas]
+\label{thm:hypercharge}
+Assume \(\mathrm{SU}(N_c)\times\mathrm{SU}(2)\times\mathrm U(1)_Y\), one
+generation of left-handed Weyl fermions \((Q,u^c,d^c,L,e^c)\), and the Yukawa
+channels \(QHu^c\), \(QH^\dagger d^c\), \(LH^\dagger e^c\). Then anomaly
+freedom and Yukawa invariance fix the hypercharges up to normalization; with
+\(Q=T_3+Y\) and \(Q(\nu_L)=0\),
+\[
+Y_Q=\tfrac1{2N_c},\qquad
+Y_L=-\tfrac12,\quad Y_e=1,\quad
+Y_u=-\tfrac{N_c+1}{2N_c},\quad Y_d=\tfrac{N_c-1}{2N_c},\quad Y_H=\tfrac12.
+\]
+For \(N_c=3\): \(Y_Q=\tfrac16\), \(Y_u=-\tfrac23\), \(Y_d=\tfrac13\).
+\end{theorem}
+
+\begin{proof}
+Yukawa invariance gives \(Y_u=-(Y_Q+Y_H)\), \(Y_d=-Y_Q+Y_H\),
+\(Y_e=-Y_L+Y_H\). The \(\mathrm{SU}(2)^2\mathrm U(1)\) condition
+\(N_cY_Q+Y_L=0\) and the mixed gravitational condition
+\(2N_cY_Q+N_cY_u+N_cY_d+2Y_L+Y_e=0\) give \(Y_L=-N_cY_Q\), \(Y_H=N_cY_Q\),
+\(Y_u=-(N_c+1)Y_Q\), \(Y_d=(N_c-1)Y_Q\), \(Y_e=2N_cY_Q\); the
+\(\mathrm{SU}(N_c)^2\mathrm U(1)\) and cubic anomalies then vanish. The
+normalization gives \(Y_Q=1/(2N_c)\). Without the Yukawa channels the cubic
+anomaly leaves two branches exchanging \(Y_u\) and \(Y_d\).
+\end{proof}
+
+This is the textbook argument applied to the declared packet; the exact
+rationals reproduce the Standard Model because every discrete input is the
+Standard Model's. The channel scan selects the compatible scalar charge
+branch, not scalar attachment, multiplicity or a one-Higgs completion. Per
+generation there are \(N_c+1=4\) weak doublets, so the global
+\(\mathrm{SU}(2)\) anomaly~\cite{witten82} is absent on the realized branch;
+this is a consistency check on \(N_c=3\), not a selector.
+
+\begin{theorem}[Conditional charge quantization]
+If the maximal faithful image is \(G_{\mathrm{packet}}\) and \(Q=T_3+Y\) on a
+separately assumed electroweak branch, every colour-singlet representation
+of the packet has integer charge.
+\end{theorem}
+
+\begin{proof}
+The \(\mathbb Z_6\) quotient identifies
+\((e^{2\pi i/3},-1,e^{i\pi/3})\) with the identity. On a colour singlet with
+weak spin \(j\) and \(n=6Y\), this requires \((-1)^{2j}e^{i\pi n/3}=1\), so
+\(Y\) is an integer for integer \(j\) and a half-integer for half-integer
+\(j\). In both cases \(T_3+Y\in\mathbb Z\).
+\end{proof}
+
+The statement concerns packet representations, not a quantum field
+realization. It is consistent with the bound \(|q_p+q_e|/e<1\times10^{-21}\)
+on matter neutrality, with bulk fractional-charge abundance limits near
+\(10^{-22}\) per nucleon, and with collider exclusions of stable particles
+with \(q\in[e/3,0.9e]\) up to masses of about \(640\)~GeV at \(95\%\)~CL; these
+searches do not discharge its premises.
+
+\begin{corollary}[No simple-GUT \(X/Y\) gauge channel]
+On the connected \(\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm U(1)\)
+realization and the twelve-dimensional current algebra, the adjoint is
+\((8,1,0)\oplus(1,3,0)\oplus(1,1,0)\). There are no gauge generators in
+\((3,2,\pm5/6)\), so no ordinary \(X,Y\) exchange inside the current algebra.
+\end{corollary}
+
+Heavier modes outside the algebra, scalar mediators and other ultraviolet
+mechanisms are not excluded. Conditional on the one-generation table, its
+accidental baryon and lepton labels and the declared local dimension-six
+grammar, an exhaustive census of the \(715\) four-field multisets admits four
+Hermitian-conjugacy classes, \(QQQL\), \(QQu_Re_R\), \(QLu_Rd_R\) and
+\(u_Ru_Rd_Re_R\), whose exact exterior contractions remain nonzero after the
+Schouten, Fierz and identical-field Pauli relations. The diagonal
+\(\mathbb Z_6\) generator fixes every field, so the gauge structure and the
+quotient do not prove proton stability; the census supplies no coefficient
+or lifetime. In the same way the mixed hypercharge anomaly gives
+\(k_R^{YWW}=N_g(3Y_Q+Y_L)=0\), so the \(\mathbb Z_6\) deck phase supplies no
+direct \(\Theta_RW\widetilde W\) baryogenesis coupling; a global \(B+L\)
+attachment would give \(k_R=2N_g\).
+
+\subsection{Global form}
+\label{sec:global-form}\label{thm:global-form-boundary}
+
+Four central global forms act consistently on the same local tensors: the
+cover and its \(\mathbb Z_2\), \(\mathbb Z_3\) and \(\mathbb Z_6\) quotients. The
+kernel theorem identifies the maximal faithful local matter image. On the
+finite weight lattice of hypercharge, triality and duality labels in the
+\(q=6Y\) normalization, a label is fixed by every element of the diagonal
+\(\mathbb Z_6\) kernel exactly when
+\[
+2t+3d+q\equiv0\pmod 6 ,
+\]
+and the kernel acts on any label by multiples of this centre character. Every
+row of the matter table satisfies the congruence, including both carrier
+blocks and the scalar; a fractionally charged singlet is blocked by the
+generator; and exactly one sixth of the thirty-six lattice labels descend,
+each character value being carried by six labels. A machine-checked receipt
+composes this onto the selected matter mask, so every selected component
+descends through the full kernel. The six-axis artifact computes an order-six
+flux menu after its coefficient relations are declared; the menu matches the
+\(\mathbb Z_6\) quotient and carries the declared matter single-valuedly.
+
+The order-six seam classification keeps two actions separate. Every
+pure-hypercharge character is enumerated: the fixed-space dimension menus are
+\(\{15,7\}\) at order two, \(\{15,3\}\) at order three and \(\{15,7,3,1\}\) at
+order six, while the canonical diagonal \(\mathbb Z_6\) kernel acts trivially
+on all fifteen matter states. These are different representations of the
+same abstract cyclic order, and refinement preserves the classified actions.
+The calculation selects no physical seam character, flux action or
+2-representation and does not exhaust every seam grammar. Selection of one
+physical quotient among the four requires a source-derived complete character
+category, a same-source loop-to-kernel identity, four-dimensional instanton
+normalization and theta periodicity, monopole dynamics and a laboratory flux
+attachment; the congruence derives no physical global form.
+
+\begin{corollary}[Structural electroweak package]
+On a separately declared one-Higgs branch, the electroweak factor has Lie
+algebra \(\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y\). A nonzero neutral vacuum
+vector \(\phi_0=\frac{v}{\sqrt2}\binom01\) of \(H=(1,2)_{1/2}\) has
+\(Q\phi_0=(T_3+Y)\phi_0=0\) and stabilizer \(\mathrm U(1)_Q\); the package
+contains \(W^\pm=(W^1\mp iW^2)/\sqrt2\), \(Z\), \(A\) and the exact charge
+operator \(Q=T_3+Y\).
+\end{corollary}
+
+Since \(e^{i\alpha T_3}e^{i\beta Y}\phi_0=e^{i(\beta-\alpha)/2}\phi_0\), vector
+invariance ties \(\beta=\alpha\), while the projective ray \([\phi_0]\) has the
+two-torus stabilizer \(\mathrm U(1)_{T_3}\times\mathrm U(1)_Y\); projectivization
+alone does not select the electromagnetic diagonal. A machine-checked
+composition on the committed doublet carrier proves, for declared
+\(\lambda,v,g,g'>0\) and Yukawa coefficient \(y\), the minimizer shell
+\(|h|^2=v^2\), one unbroken line with three Goldstone directions, broken
+mass values \(g^2v^2/4\) and \((g^2+g'^2)v^2/4\), and a Yukawa bilinear of
+coefficient \(yv\). The mixing angle, \(v\) and the \(W/Z\) masses belong to
+the running and matching surface. On the unbroken factor, a supplied
+Lorentzian Maxwell action
+\(-\frac{1}{2g_Q^2}\int F_Q\wedge*F_Q+\int A_Q\wedge*J_Q\) with
+\(F_Q=dA_Q\) gives \(dF_Q=0\) and \(d*F_Q=g_Q^2*J_Q\); the reconstruction does
+not supply that action or its coefficient. In a tensor-network realization a
+faithful representation of \(\mathrm{SU}(3)\times\mathrm{SU}(2)\) needs edge
+dimension \(\chi\ge5\), and \(\chi\ge6\) only under the additional declared
+requirement of a single irreducible tensor-product carrier.
+
+\section{Families and the generation window}
+\label{sec:families}
+
+Anomaly cancellation is generation by generation and does not fix the number
+of generations.
+
+\begin{proposition}[Conditional generation window]
+\label{prop:generation-window}
+On a separately declared one-Higgs quark branch over the matter image of
+Proposition~\ref{prop:conditional-matter-image}, with \(N_c=3\) and the
+declared clauses of intrinsic CKM CP capability and weak-sector ultraviolet
+completability, the admissible window is \(3\le N_g\le5\). No count inside
+the window is selected.
+\end{proposition}
+
+\begin{proof}
+An \(N_g\times N_g\) CKM matrix has \((N_g-1)(N_g-2)/2\) physical CP phases,
+which vanish for \(N_g\le2\); the declared CP-capability clause therefore gives
+\(N_g\ge3\). The one-loop coefficient
+\(b_{\mathrm{SU}(2)}=\tfrac{22}{3}-\tfrac13N_g(N_c+1)-\tfrac16\), with the last
+term from one complex Higgs doublet, is positive exactly when
+\(N_g(N_c+1)<43/2\); with \(N_c=3\) this gives \(N_g\le5\).
+\end{proof}
+
+The lower edge is the declared CP-capability clause; the window is the
+complete numerical content of the two clauses and is not forced by anomaly
+cancellation, the \(A_5\) graph or the target-free source reduct.
+
+\begin{proposition}[Conditional screen-band selection]
+\label{prop:band-selection}
+The twelve-port coefficient module decomposes into bands of ranks
+\(1,3,3',5\), with exact operational costs of the nontrivial bands
+\[
+5-\sqrt5<6<5+\sqrt5.
+\]
+Assume that one complete faithful band in the declared rank window
+\(3\le r\le5\) realizes the family carrier and that the lower cost selects
+between admissible complete bands. Then the rank-three band of cost
+\(5-\sqrt5\) is unique. Tensoring it with the rank-\(15\) generation gives a
+conditional rank-\(45\) candidate whose chirality and diagonal \(\mathbb Z_6\)
+action come from the generation table.
+\end{proposition}
+
+These implications are kernel-decided in the Lean screen certificate. A
+response receipt using the graph Laplacian as a unitary generator recovers
+the same cost bands and places the rank-three residue at the lowest positive
+generator frequency; the channel conserves mode norms, so this is a
+frequency statement rather than a relaxation statement. For the four-entry
+band table, faithfulness excludes the dimension-one band and leaves
+dimensions \(3,3,5\); removing the window while keeping faithfulness changes no
+admissible candidate, so the window does not itself explain triplication. The
+load-bearing identification is that the family object is a single complete
+faithful band, compared by the declared cost rule and realized in the matter
+response. A specified source-executed cooling law computes this rank-three
+band on the native carrier; selecting that rule and identifying its levels
+with physical families are inputs.
+
+Generation names require no universally conserved generation charge. Within
+a sector whose charges and statistics are established, ordering nondegenerate
+masses is a naming convention, and a physical comparison must retain the
+eigenvectors, residues and charged-current matrix of the same response. The
+mismatch of the two left quark diagonalizers determines CKM mixing; a
+generation label conserved by every charged weak transition would exclude
+that mixing.\footnote{A.~Ceccucci, Z.~Ligeti and Y.~Sakai, ``CKM
+Quark-Mixing Matrix,'' in the Particle Data Group review (2024), Section
+12.1, \url{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf}.}
+
+\begin{corollary}[Declared minimal completion]
+\label{cor:declared-completion}
+Assume Proposition~\ref{prop:conditional-matter-image}, the receipt-certified
+bosonic branch, a one-Higgs scalar attachment, the CP and weak-sector clauses,
+and a declared physical attachment of the rank-three band to the matter
+packet. Then the completed packet has maximal faithful image data
+\((G_{\mathrm{packet}},\mathcal R_{\mathrm{SM}},H,\mathcal Y_{\mathrm{SM}})\)
+with \(N_c=3\), \(N_g=3\) and
+\[
+Q_i=(3,2)_{1/6},\quad
+u_i^c=(\bar 3,1)_{-2/3},\quad
+d_i^c=(\bar 3,1)_{1/3},\quad
+L_i=(1,2)_{-1/2},\quad
+e_i^c=(1,1)_1,\quad
+H=(1,2)_{1/2},
+\]
+\(i=1,2,3\).
+\end{corollary}
+
+The Lie type uses no clause of the completion; the matter type, charges and
+\(N_c=3\) are exact inside the declared fixture; \(N_g=3\) and the one-Higgs
+scalar enter through the completion declaration. Under the fixed-cutoff
+heat-kernel law of Section~\ref{sec:heat-kernel} every finite-dimensional
+witness label has positive weight; that positivity concerns bosonic sector
+labels and supplies no light chiral multiplet. Physical identification of the
+rank-\(45\) candidate requires a source-derived matter-pole map, continuum
+spin and locality, physical seam selection, residues, excluded-band and
+refinement receipts; the absence of other light sectors is unproved.
+
+\section{The equivariant bracket variety and a face discriminator}
+\label{sec:brackets}
+
+Conditional on the canonical oriented carrier, the target-free space
+\(\operatorname{Hom}_{A_5}(\Lambda^2\mathbb Q^{12},\mathbb Q^{12})\) has
+dimension fourteen and an exact rational Reynolds basis. It is a search space;
+no bracket is selected. Substitution of the general bracket into Jacobi gives
+\(2{,}640\) coordinate equations in \(44\) target orbits with coefficient-row
+rank \(38\). Over \(\mathbb Q(\sqrt5)\) that rowspace splits into eleven
+fixed-line derivation-weight products and a rank-\(27\) residual system that
+applies on every weight flat. A three-parameter derivation-only Jacobi family
+supplies no compactness or source selection. Conditional on three named
+textbook lemmas, the compact real locus of the fourteen-parameter equivariant
+variety is classified exactly over \(\mathbb Q(\sqrt5)\) into three certified
+bracket families \(F\), \(G\), \(P\). For each family the coroot lattices,
+integral carrier weights and carrier-admitted global forms are computed; the
+selected forms are adjoint with zero abelian charge lattice, so the abelian
+sector is undetermined at carrier level. Noncompact and residual components
+outside the compact locus are unclassified.
+
+Applying the declared equal-weight cyclic rule to the twenty oriented faces
+gives \(B_{\rm face}=60R_{13}\). This bracket is \(A_5\)-equivariant and
+fails Jacobi in exactly \(240\) of the \(2640\) coordinates, \(120\) at \(+1\)
+and \(120\) at \(-1\). Under the added Euclidean metric on upper-triangular
+structure constants, orthogonal projection onto the compact locus has the
+unique nearest family \(G\):
 \[
  d_G^2=\frac{615-123\sqrt5}{22},\qquad
  d_F^2=\frac{615+123\sqrt5}{22},\qquad d_P^2=45 .
 \]
-Both \(F/G\) projections lie in their certified open compact strata. The
-same conclusion is exact for two endpoint edit norms on the identical
-792-coordinate convention. Exact primal--dual certificates give
+Both \(F\) and \(G\) projections lie in their open compact strata. On the same
+\(792\)-coordinate convention, exact primal--dual certificates give
 \[
-\begin{aligned}
- d_1(G)&=30(\sqrt5-1)
-   < \inf d_1(F)=d_1(P)=60,\\
- d_\infty(G)&=\frac{5-\sqrt5}{10}
+ d_1(G)=30(\sqrt5-1)<\inf d_1(F)=d_1(P)=60,
+\]
+\[
+ d_\infty(G)=\frac{5-\sqrt5}{10}
    <d_\infty(F)=\frac{\sqrt5}{5}
    <d_\infty(P)=\frac12.
-\end{aligned}
 \]
-The \(G\) optimizers lie in its open compact stratum. The displayed
-\(\ell_1\) value for \(F\) is an infimum, not an attained minimum: the zero
-point minimizes the ambient linear family and compact \(F\) points approach
-it under scaling. The exact Python replay proves the 792-coordinate
-primal--dual optimization; the Lean theorem checks the serialized radical
-values and their strict order. Thus the family verdict is robust across
-total, quadratic, and worst-coordinate edit scores, but only on the
-classified compact locus and only after the coordinate norm is supplied.
-The equal-weight rule and the coordinate norms are declared inputs rather than
-consequences of A1--A3, so the verdict is a conditional discriminator
-obtained without reference to the measured value.
+The \(\ell_1\) value for \(F\) is an infimum approached under scaling, not an
+attained minimum. The Python replay proves the primal--dual optimization and
+the Lean theorem checks the radical values and their order. The family
+verdict holds across the \(\ell_1\), \(\ell_2\) and \(\ell_\infty\) scores on the
+classified compact locus once the coordinate norm is supplied.
 
-The quadratic verdict is additionally metric-robust over the complete
-invariant class. The carrier splits multiplicity-free as \(1+3+3'+5\), and
-the commutant of the port action is exactly four-dimensional, spanned by the
-four symmetric spectral projectors; hence every invariant carrier inner
-product is a positive sector-scale metric
-\(\alpha P_1+\beta P_3+\gamma P_{3'}+\delta P_5\), and every induced
-Hilbert--Schmidt metric on structure constants is diagonal across the
-fourteen equivariant channels. The squared distances from \(B_{\rm face}\)
-to the classified compact families are the exact closed forms
+The quadratic verdict is robust over the invariant class. The carrier splits
+multiplicity-free as \(1+3+3'+5\), the commutant of the port action is spanned
+by the four spectral projectors, and every invariant carrier inner product is
+\(\alpha P_1+\beta P_3+\gamma P_{3'}+\delta P_5\). The induced distances are
 \[
 \begin{aligned}
  d_P^2&=\frac{15-3\sqrt5}{\beta}+\frac{15+3\sqrt5}{\gamma}
@@ -374,239 +1039,329 @@ to the classified compact families are the exact closed forms
    +\frac{15-3\sqrt5}{\beta}+\frac{60-12\sqrt5}{11\gamma},
 \end{aligned}
 \]
-with \(\alpha\) absent. Both gaps \(d_P^2-d_G^2\) and \(d_P^2-d_F^2\)
-are coefficient-positive Laurent polynomials, so \(P\) is strictly
-excluded for every invariant carrier metric. At \(\gamma=\beta\) the gap
-is \(d_F^2-d_G^2=3\sqrt5\,\beta/\delta^2+(90\sqrt5/11)/\beta>0\), so
-every sector-balanced metric selects \(G\); and for every metric with
-\(\beta/\delta\in[1/50,6]\) the family \(G\) stays uniquely nearest for
-all \(\gamma\) and \(\delta\). The mirror family \(F\) genuinely takes
-over on the \(d_F^2<d_G^2\) side of the exact three-scale tie surface, with witness
-\((\beta,\gamma,\delta)=(8,1,1)\). Conjugating \(\sqrt5\) and swapping
-\(\beta\leftrightarrow\gamma\) maps \(d_G\) to \(d_F\) exactly: the
-\(F/G\) asymmetry is the Galois image of the sector swap. Reversing every face
-orientation negates \(B_{\rm face}\) but leaves these distances unchanged,
-because the compared compact families are centrally symmetric; orientation
-therefore does not select the branch. A channel-diagonal invariant metric on the bracket space that is not
-carrier-induced reverses the balanced-point selection, so the
-carrier-induced restriction is load-bearing. The exact replay derives the
-closed forms from the pinned tensors and replays six sample metrics through
-raw normal equations; the Lean companion proves the exclusion, balanced,
-box, and witness statements as quantified real theorems over the closed
-forms. The nearest-point law and the carrier-induced class are declared
-discriminator choices. The committed dual-measure layer adds a
-measure-conditional point: on the pinned incidence table, equal normalized
+with \(\alpha\) absent. Both gaps \(d_P^2-d_G^2\) and \(d_P^2-d_F^2\) are
+coefficient-positive Laurent polynomials, so \(P\) is excluded for every
+invariant metric. At \(\gamma=\beta\) the gap
+\(d_F^2-d_G^2=3\sqrt5\,\beta/\delta^2+(90\sqrt5/11)/\beta\) is positive, and
+for \(\beta/\delta\in[1/50,6]\) the family \(G\) is uniquely nearest for all
+\(\gamma,\delta\). The mirror family \(F\) is nearer on the other side of the
+exact three-scale tie surface, with witness \((\beta,\gamma,\delta)=(8,1,1)\).
+Conjugating \(\sqrt5\) and swapping \(\beta\leftrightarrow\gamma\) maps \(d_G\)
+to \(d_F\). Reversing every face orientation negates \(B_{\rm face}\) and leaves
+the distances unchanged. A channel-diagonal invariant metric that is not
+carrier-induced reverses the balanced-point selection, so the carrier-induced
+restriction is load-bearing. On the pinned incidence table, equal normalized
 face weights and the declared barycentric one-third share give port-dual
-weight exactly \(1/12\) at every port, and under the declared diagonal
-measure-to-metric rule that uniform measure induces the scalar carrier
-inner product at the balanced cone point \((1/12,1/12,1/12,1/12)\), where
-\(G\) is uniquely nearest with \(d_G^2=(3690-738\sqrt5)/11\),
-\(d_F^2=(3690+738\sqrt5)/11\), and \(d_P^2=540\), twelve times the
-reference distances by the exact scaling identity
-\(c\,d^2(c,c,c)=d^2(1,1,1)\). The weighting rules and the measure-to-metric
-identification are declared, so this upgrades the metric-conditional
-selection to a measure-conditional selection whose measure is pinned by a
-committed theorem; it is not source selection of the bracket or a physical
-gauge structure. One composed machine-checked surface
-(\texttt{Lean/Screen/SMStructureAdequacySurface.lean}) bundles the
-declared weighting, metric, classification-input, and exterior-selection
-premises and re-exports the premise-implied Lie type, the balanced-point selection,
-the one-generation exterior selection with anomaly cancellation, and the
-conditional global-form menu as one package, with the same-source
-loop-to-kernel identity named as the leading undischarged clause of the
-physical quotient. A companion composition
-(\texttt{Lean/Screen/SMStructureComposition.lean}) closes the
-side-by-side gap in that package: one theorem on the one premise bundle
-proves that the premise-implied type admits a unique type-matched nearest family
-at the bundle's balanced point and that the fifteen-state count, the
-anomaly forms, and the \(\mathbb Z_6\) stabilizer are carried by the
-bundled selection mask itself. Its capstone is a coarse two-mask statement:
-among the three classified family labels and the declared \(2^{10}\)
-exterior table, the admissible pairs are the \(G\) label with either of two
-conjugate masks. Conjugation is proved on the masks only. This does not count
-points in the continuous \(G\)-bracket family and does not classify complete
-physical Standard Model structures.
+weight \(1/12\) at every port; under the declared diagonal measure-to-metric
+rule this uniform measure induces the scalar carrier inner product at
+\((1/12,1/12,1/12,1/12)\), where \(G\) is uniquely nearest with
+\(d_G^2=(3690-738\sqrt5)/11\), \(d_F^2=(3690+738\sqrt5)/11\) and \(d_P^2=540\).
 
-The descent bookkeeping itself is exact. On the finite weight lattice of
-hypercharge, triality, and duality labels in the \(q=6Y\) normalization, a
-label is fixed by every element of the diagonal \(\mathbb Z_6\) kernel
-exactly when \(2t+3d+q\equiv 0 \pmod 6\); the kernel acts on any label by
-multiples of this center character. Every row of the matter table satisfies
-the congruence, including both carrier blocks and the scalar, a fractionally
-charged singlet is blocked by the generator, and exactly one sixth of the
-thirty-six lattice labels descend, with every character value carried by
-exactly six labels. The machine-checked receipt composes onto the selected
-matter mask: every selected component descends through the full kernel
-(\texttt{Lean/Screen/GlobalFormCharacterDescent.lean}). This is the
-character-lattice half of the global-form question only. The complete
-character category, the instanton normalization, the laboratory flux
-attachment, and the selection of one physical quotient among the four
-admissible ones are additional assumptions, and no physical global form is
-derived from the congruence.
+The equal-weight rule, the coordinate norms, the nearest-point law and the
+measure-to-metric rule are declared inputs, not consequences of A1--A3, so
+the verdict is a conditional discriminator obtained without reference to a
+measured value. A composed machine-checked surface bundles these premises
+with the classification inputs and the exterior selection, and proves that
+the premise-implied type has a unique type-matched nearest family at the
+balanced point and that the fifteen-state count, the anomaly forms and the
+\(\mathbb Z_6\) stabilizer are carried by the bundled selection mask. Among the
+three family labels and the declared \(2^{10}\) exterior table, the admissible
+pairs are \(G\) with either of two conjugate masks. This does not count points
+of the continuous \(G\)-family or classify physical Standard Model structures.
 
-A three-family
-bundle types the band-selection rules of the family row as antecedent
-fields whose triplication arithmetic threads the same selection mask,
-the chirality row carries one threaded grading-plus-obstruction
-theorem, and a kernel-checked dictionary identifies the dimension-six
-baryon census table with the selected generation column by column.
-The construction supplies no physical-family or Spin/chirality attachment
-and no source action.
+Over the certified brackets, ad-invariance fixes the kinetic shape
+block-diagonally with zero cross terms. On carrier-projector forms, families
+\(F\) and \(G\) reduce the three-dimensional invariant space to two
+dimensions, \(F:\ w_{3+}=\sqrt5\,w_5\) and \(G:\ w_{3-}=\sqrt5\,w_5\), with
+\(P\) the two-to-two control; simultaneous invariance for \(F\) and \(G\) leaves
+the ray \((w_{3+},w_{3-},w_5)=t(\sqrt5,\sqrt5,1)\), an extra premise. The
+two-factor history theorem constructs a Gibbs kernel from \(aq_1+bq_2\) with
+exact factorization; equality of two such kernels identifies \(\lambda a\) and
+\(\lambda b\), so only common scaling survives and \(a/b\) is not multiplier
+gauge. No theorem supplies relative factor coefficients or coupling
+scales~\cite{ophfpe,ophrepo}.
 
-For the actual four-entry band table, faithfulness excludes the
-dimension-one trivial band; the remaining dimensions are \(3,3,5\).
-Removing the stated window while retaining that table and faithfulness
-therefore changes no admissible candidate. The conditional physical window
-does not itself explain triplication. The load-bearing identification is
-that the family object is a single complete faithful adjacency band, compared
-by the declared cost rule and realized in the proposed matter response.
+\subsection{An assembled structural action}
 
-Generation names require no extra universally conserved generation charge.
-Within a sector whose physical charges and statistics are established,
-ordering nondegenerate masses is a naming convention. A physical comparison
-must additionally retain the eigenvectors, residues and charged-current
-matrix of the same response, with common permutations and phase conventions.
-The mismatch of the two left quark diagonalizers determines CKM mixing;
-requiring a generation label conserved by every charged weak transition
-would exclude that mixing.\footnote{A.~Ceccucci, Z.~Ligeti and Y.~Sakai,
-``CKM Quark-Mixing Matrix,'' in the Particle Data Group review (2024),
-Section 12.1,
-\url{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf}.}
-A decoder returning declared charge labels is consequently an intermediate
-representation check, not a derivation of the particle content of arbitrary
-ordered spectral gaps.
+On one typed premise bundle, the gauge kinetic term (one declared magnitude
+per invariant carrier sector \(3^++3^-+5\), weighted in the two-parameter
+\(G\)-invariant normal form), the quartic potential \(\lambda(|h|^2-v^2)^2\),
+the gauge mass form at the chosen minimum and the realified Yukawa line with
+coefficient \(y\) sum to one real function of one field tuple. Exact
+restriction theorems recover each sector on its slice; the gauge coefficients
+satisfy the \(G\) ad-invariance row and collapse to the mirror ray under the
+extra \(F\) row; the cross-sector generators realizing those rows have
+coefficient ratio \((1,-\sqrt5)\), and the control weight \((1,1,1)\) breaks
+invariance with exact value \(1-\sqrt5\). A fourth summand carries one complex
+amplitude per row of the ten-component table; its bilinear
+\(\overline{\psi_i}\psi_j\) is phase-invariant on the selected rows exactly
+when the charges \(q=6Y\) balance, and the charge column forces the pairing
+to be diagonal. On the shared doublet and singlet rows the extended action
+evaluates to the mass bilinear with coefficient \(yv\). Every coefficient is
+a declared parameter; the construction supplies no source-produced spacetime
+action, measured coupling, family attachment, global-form selection, chirality
+or spin attachment. The local covariant action, its Cartan reduction and the
+fermion current are given in the appendices.
 
-Over the supplied certified brackets, ad-invariance fixes the kinetic shape
-block-diagonally with exactly zero cross terms. On carrier-projector forms the
-restriction is stronger and exact: families \(F\) and \(G\) reduce the
-three-dimensional carrier-invariant space to two dimensions,
+\section{Refinement stability and relevant transverse perturbations}
+\label{sec:refinement-stability}
+
+The state-side refinement stability used by the gauge branch is a separate
+optimizer-pushforward and refinement-tail interface: it keeps the finite
+local constraint family across cutoffs, so that a refinement channel acts on
+the realized Gibbs family
+\(\omega_\ell(\lambda)\propto\exp(-\sum_{x,a}\lambda_aO_a(x)-\sum_b\mu_bQ_b)\)
+by an induced map \(\omega_L(R_{\ell\to L}(\lambda))\). Coarse-graining a
+finite-range Gibbs family generically leaves any fixed finite list, so this is
+a substantive premise; premise A3 supplies the fixed-stage optimizer and not
+this cross-scale statement or the refinement receipt. The square defects that
+control reconciliation under coarse-graining are treated in the consensus
+paper~\cite{ophconsensus}.
+
+\begin{proposition}[Conditional growth of a relevant transverse component]
+Assume the local finite-constraint branch of A3, the refinement-tail
+interface, and a differentiable extension of the refinement maps to an
+enlarged coupling space with transverse coordinate \(g_{\mathcal O}\) for a
+gauge-invariant Lorentz-scalar deformation \(\mathcal O\). If
+\(\delta g_{n+1}=\Lambda_n\delta g_n\) with \(|\Lambda_n|\ge q>1\), every nonzero
+infinitesimal transverse component grows by at least \(q^m\) after \(m\)
+steps. If the zero-coupling surface is invariant and the trajectory starts on
+it, relevance alone does not generate \(\mathcal O\).
+\end{proposition}
+
+\begin{proof}
+Iteration gives
+\(|\delta g_{n+m}|=\prod_{j}|\Lambda_{n+j}||\delta g_n|\ge q^m|\delta g_n|\).
+Generation from zero concerns the transverse part of the full extended map,
+which is not a coordinate of \(R_{\ell\to L}\) and is not supplied by A3. Exact
+tuning, an invariant manifold, vanishing operator mixing, cancellations, an
+additional symmetry or fixed-point dynamics can keep the component zero, so
+the statement is not an exhaustive protection theorem.
+\end{proof}
+
+A gauge-invariant Dirac mass is a relevant scalar when the representations
+allow it. With nonzero mixing into that coordinate, a nonzero mass
+perturbation is linearly amplified unless a protecting mechanism intervenes.
+Chiral matter forbids the Dirac mass by symmetry; vector-like branches with
+vanishing mixing, tuning or fixed-point protection are not excluded, so the
+diagnostic does not select chirality by itself.
+
+\section{Edge-sector weights and coupling extraction}
+\label{sec:heat-kernel}
+
+The edge-centre completion yields sector probabilities \(p_R\) on collar
+boundaries. A conditional heat-kernel weighting relates them to a gauge
+coupling.
+
+\begin{theorem}[Fixed-cutoff edge-sector law]
+\label{thm:edge-sector-law}
+Under premises A1--A3, the fixed-cutoff overlap-gauge realization, a
+quasi-local local-Gibbs generator on the faithful interior branch, and
+hypotheses (EH-1) and (EH-2), the regulated same-overlap sector distribution
+is
 \[
- F:\ w_{3+}=\sqrt5\,w_5,\qquad
- G:\ w_{3-}=\sqrt5\,w_5,
+p_R=\frac{d_Re^{-t\lambda_R}}{\sum_{R'}d_{R'}e^{-t\lambda_{R'}}},
 \]
-with \(w_{3-}\) free for \(F\) and \(w_{3+}\) free for \(G\); family \(P\) is the exact
-two-to-two control. Requiring one form to be invariant for both \(F\) and
-\(G\) leaves the ray
-\((w_{3+},w_{3-},w_5)=t(\sqrt5,\sqrt5,1)\), but simultaneous mirror
-invariance is an extra premise, not source selection. The stored
-minus-one-quarter Killing matrices are exact representatives, not selected
-couplings. The two-factor history theorem constructs a Gibbs kernel from
-\(a q_1+b q_2\), proves exact normalizer and kernel factorization, and recovers
-the additive factor action. If both costs vary, equality of two constructed
-kernels identifies \(\lambda a\) and \(\lambda b\); with nonzero multipliers
-only common scaling survives, so \(a/b\) is not multiplier gauge. Exact
-instances cover both \(P\) factors on \(3^6\) steps and the full
-color-bearing \(F\) family on \(3^{11}\) steps. These are symbolic finite
-theorems, not large enumerations. They neither identify an independent source
-kernel nor select \(a\), \(b\), or their ratio.
-No theorem supplies an enumeration of noncompact components, a source
-repair/selection law, action selection, same-current holonomy, relative factor
-coefficients, or coupling scales \cite{ophfpe,ophrepo}.
-Generation, scalar, global-form, and extra-sector statements carry their own
-premises.
+with \(\lambda_R\) the Laplacian eigenvalue on the \(R\)-isotypic component
+and \(t\) the collar Gibbs parameter.
+\end{theorem}
 
-\subsection*{An assembled structural action}
+(EH-1) The edge generator is the factorwise group Laplacian,
+\(H_{\mathrm{edge}} = \Delta_G\), or a positive combination
+\(\sum_ic_i\Delta_{G_i}\) for a product group; the separate Gibbs parameter is
+\(t\). For finite groups the declared Cayley generating multiset is
+conjugacy-invariant and inverse-symmetric, so
+\(\lambda_R=|S|-d_R^{-1}\sum_{s\in S}\chi_R(s)\). Without centrality the
+Fourier transform is a matrix on each irreducible block and the character
+average is only its normalized trace, not a sector eigenvalue. This is a
+declared input: gauge invariance and the Gibbs form force only
+\(H_{\mathrm{edge}}=\sum_Rh_RP_R\), and any function of the sector label is
+gauge invariant and realizable by a local Hamiltonian at fixed cutoff. Within
+second-order bi-invariant operators the Laplacian is unique up to scale, and
+one declared Markov chain with a Casimir acceptance rule derives (EH-1); its
+universality is unproved. (EH-2) The probability space is the one-sided
+electric-centre edge algebra \(\bigoplus_RB(V_R)\), on which the sector
+projector has rank \(d_R\). On the two-sided space \(L^2(G)\) the projector has
+rank \(d_R^2\), and a two-sided Gibbs trace gives weights
+\(d_R^2e^{-t\lambda_R}\); the \(d_R\) law is a statement about the one-sided
+algebra.
 
-The three committed sector functionals sum as one real function of one field
-tuple on one typed premise bundle
-(\texttt{Lean/Screen/AssembledActionComposition.lean}). The bundle extends
-the electroweak-breaking premise data by two declared positive gauge weight
-parameters in the committed two-parameter \(G\)-invariant normal form, and
-the assembled action is the explicit sum of a gauge kinetic term (one
-declared magnitude per invariant carrier sector, squared against its weight
-under a declared diagonal pairing on the committed weight space), the
-committed quartic potential \(\lambda(|h|^2-v^2)^2\), the committed gauge
-mass form at the chosen minimum, and the realified committed Yukawa line
-with coefficient \(y\). Three exact restriction theorems recover each
-committed sector functional on its field slice over the common base tuple.
-The assembled gauge coefficients satisfy the committed \(G\) ad-invariance
-constraint row and collapse to the committed one-ray mirror form under the
-extra declared \(F\) row. The whole sum is exactly invariant under the
-global abelian phase action at unit scalars with product one, in particular
-at the committed integer charge balance of the bundled selection mask, with
-the scalar slot at plus or minus the committed scalar row charge. The
-imaginary part of the committed complex Yukawa line is recovered as an
-assembled evaluation, the base tuple evaluates to zero, and the bundle is
-inhabited with every declared parameter equal to one. This is a finite
-structural action on the committed coarse grammar: every coefficient is a
-declared bundle parameter, the covariant kinetic content enters only through
-the committed constant-direction coefficient at the minimum, and the
-construction supplies no source-produced spacetime action, measured
-coefficients, three-physical-family attachment, global-form selection,
-physical-chirality attachment, or Spin attachment.
+\begin{proof}
+The edge degrees of freedom at \(\Sigma\) carry a \(G\)-action, modelled for the
+refinement lift by \(L^2(G)\) with its Peter--Weyl
+decomposition~\cite{peterWeyl27}. By (EH-2) the physical one-sided observables
+are \(\bigoplus_RB(V_R)\); by (EH-1) the generator is
+\(\sum_R\lambda_RP_R\). Maximum entropy selects
+\(\rho=Z^{-1}\sum_Re^{-t\lambda_R}P_R\), and \(\operatorname{Tr}P_R=d_R\) gives
+the stated law.
+\end{proof}
 
-\subsection*{The gauge sector at the committed invariant-form level}
+For \(\mathbb Z_n\) the Laplacian eigenvalues are \(\lambda_q=4\sin^2(\pi q/n)\).
+The heat-kernel ansatz assigns the sector probabilities
+\(p_q\propto e^{-t\lambda_q}\), so
+\(t=-\log(p_q/p_0)/\lambda_q\). For \(\mathrm{SU}(N)\) the conditional ansatz
+assigns the probabilities \(p_j\propto d_je^{-tC_2(j)}\), so
+\(t=(\log(p_0/d_0)-\log(p_j/d_j))/C_2(j)\) and
+\(g_{\mathrm{ent}}^2=t/(2\pi)\). In two-dimensional Yang--Mills the
+Hamiltonian is the group Laplacian, \(H = -\frac{g^2}{2} \Delta_G\) with
+\(E_R=\frac{g^2}{2}C_2(R)\), and a cylinder of area \(A\) gives
+\(t=g^2A/2\) exactly; gluing the open-edge weights gives the closed partition
+sum \(\sum_Rd_R^2e^{-tC_2(R)}=K_t(1)\). The Casimir log-gaps
+\(\Delta_R=\ln(p_0/d_0)-\ln(p_R/d_R)=tC_2(R)\) have parameter-free ratios: for
+\(\mathrm{SU}(2)\), \(\Delta_1/\Delta_{1/2}=8/3\), \(\Delta_{3/2}/\Delta_{1/2}=5\);
+for \(\mathrm{SU}(3)\), \(\Delta_8/\Delta_3=9/4\), \(\Delta_6/\Delta_3=5/2\),
+\(\Delta_{10}/\Delta_3=9/2\), \(\Delta_{15}/\Delta_3=4\), \(\Delta_{27}/\Delta_3=6\).
+These are algebraic consequences of the weighting, not source-selected
+coupling predictions. The repair-gap identification on the compact-gauge
+branch is the subject of the Yang--Mills supplement~\cite{ophyangmills}.
 
-The gauge kinetic sector of the assembled action extends from the declared
-diagonal pairing to the committed invariant-form level
-(\texttt{Lean/Screen/GaugeSectorBracketCompletion.lean}). The typed
-gauge-field slot carries one real coordinate vector per weighted invariant
-carrier sector of the committed multiplicity-free split \(3^+ + 3^- + 5\),
-and the kinetic functional is the committed weight vector against the
-sector coordinate squared norms. The declared diagonal pairing is exactly
-the axis restriction of this functional under the committed basis, the
-functional factors exactly through the committed pairing at the sector
-magnitudes, and agreement on the axis slice pins the weights, so the
-assembled action embeds exactly in the completed one and the completed
-action factors exactly through it. The invariance is carried at the exact
-infinitesimal grade: every sector-internal skew-adjoint generator leaves
-every weight vector invariant, the committed \(G\) and \(F\) ad-invariance
-constraint rows are the infinitesimal-invariance rows of two exhibited
-cross-sector generators at declared coefficient ratio \((1, -\sqrt{5})\),
-and simultaneous invariance under both leaves exactly the committed
-one-ray mirror family. The restriction, abelian-invariance,
-committed-charge, and base receipts persist, the parameter census is
-unchanged at exactly the two declared normal-form parameters, one
-exhibited off-axis carrier point evaluates outside the axis slice, and the
-control weight vector \((1,1,1)\) breaks the invariance at an exhibited
-carrier pair with exact value \(1 - \sqrt{5}\). No gauge group action on
-the carrier is committed or claimed; the generator ratio realizes the
-committed constraint rows, its derivation from the pinned bracket tensors
-is certificate content, and no source-produced spacetime action is supplied.
+\paragraph{Finite diagnostics.}
+In two-dimensional \(\mathbb Z_n\) lattice gauge models on a \(2\times2\)
+torus with
+\(H=-K\sum_p\mathrm{Re}B_p-h\sum_\ell\mathrm{Re}X_\ell-\Gamma\sum_v\mathrm{Re}A_v\),
+\(K=1\), \(\Gamma=5\), the electric-centre edge charge at a boundary vertex is
+the restricted star. For \(\mathbb Z_2\) one eigenvalue allows an exact fit,
+and for \(\mathbb Z_3\) the two extractions agree by charge conjugation and
+eigenvalue degeneracy; these are implementation checks. \(\mathbb Z_5\) has
+two distinct nonzero eigenvalues with \(\lambda_2/\lambda_1=\phi^2\approx2.618\).
+Fitting \(t\) on \(q=1\) and holding out \(q=2\), direct diagonalization gives
+the following.
 
-\subsection*{A fermion sector on the assembled action}
+{\def\LTcaptype{none}
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+h & ln(p\textsubscript{2}/p\textsubscript{0})/ln(p\textsubscript{1}/p\textsubscript{0}) & deviation from \(\phi^2\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.50 & 2.876 & 9.9\% \\
+0.20 & 2.750 & 5.1\% \\
+0.10 & 2.671 & 2.0\% \\
+0.05 & 2.643 & 1.0\% \\
+\end{longtable}
+}
 
-The assembled action carries one typed fermion sector as a fourth summand,
-with the committed sum unchanged
-(\texttt{Lean/Screen/FermionSectorAssembly.lean}). The fermion carrier is
-one complex amplitude per row of the committed ten-component table, and the
-bilinear row-pair form \(\overline{\psi_i}\,\psi_j\) transforms under the
-abelian phase action through the committed integer charge column
-\(q = 6Y\). On the rows of the bundled selection mask the form is invariant
-at every unit phase exactly when the committed row charges balance, and the
-committed charge column separates those rows, so the invariant pairs are
-exactly the diagonal ones: the charge column forces the kinetic-shaped
-pairing to be diagonal. The extended action is the committed assembled sum
-plus the masked diagonal fermion sector with one declared coefficient per
-row. It restricts exactly to the committed assembled action on the zero
-fermion slot and at zero fermion coefficients, exactly to the fermion
-sector on the fermion slice, and the three committed sector restrictions
-persist. A typed embedding of the fermion amplitudes at the shared doublet
-and singlet rows into the committed matter slots evaluates the extended
-action to the committed mass bilinear with coefficient \(y\,v\), and the
-embedding intertwines the fermion phase action with the committed
-matter-slot phase action at the committed row charges. The extended sum is
-exactly invariant under the committed-charge abelian action extended by the
-fermion charge phase, the parameter census is the committed list plus the
-fermion coefficients, the bundle is inhabited over the committed
-inhabitant, and an exhibited charge-imbalanced pair of mask rows breaks the
-invariance receipt at an exhibited unit phase. The fermion coefficients are
-declared stand-in weights: the covariant kinetic term, the source-produced
-spacetime action, and the Spin and physical-chirality attachments are not
-supplied, and no measured coupling, three-family structure, or Yukawa
-matrix appears.
+The deviation decreases monotonically across these samples; no limit proof
+or interval enclosure is supplied. A symmetry-reduced electric calculation
+with \(n^3\) states reproduces the link-basis values.
 
-\tableofcontents
-\clearpage
+For the one-plaquette \(S_3\) model with transposition Cayley eigenvalues
+\(\lambda_{\mathrm{triv}}=0\), \(\lambda_{\mathrm{sign}}=6\),
+\(\lambda_{\mathrm{std}}=3\), Gauss' law leaves the three character states, and
+\(p_R=|c_R|^2\) exactly. With \(K=1\) and four electric links the reduced
+Hamiltonian is
+\[
+H(h)=\begin{pmatrix}
+0&0&-1\\
+0&24h&-1\\
+-1&-1&12h-1
+\end{pmatrix},\qquad h\geq0,
+\]
+and the Gauss penalty is a common shift. Fitting \(t\) on the standard sector
+and holding out the sign sector gives the following values.
 
-\def\OPHSkipEinsteinChain{1}
-\def\OPHStandardModelDerivationPaper{1}
-\def\OPHSkipEmbeddedReferences{1}
-\input{tex_fragments/REPAIR_MATTER_AND_INTERACTION_READOUT.tex}
+{\def\LTcaptype{none}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}[]{@{}rrrrrrrr@{}}
+\toprule\noalign{}
+h & p\_triv & p\_sign & p\_std & t (sign) & t (std) & \ensuremath{\Delta}t/t & log-ratio \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.5 & 0.962927 & \(2.476\!\times\!10^{-4}\) & 0.036825 & 1.37766 & 1.31898 & 4.3518\% & 2.088972 \\
+1.0 & 0.991861 & \(1.400\!\times\!10^{-5}\) & 0.008125 & 1.86139 & 1.83261 & 1.5580\% & 2.031406 \\
+2.0 & 0.998116 & \(8.158\!\times\!10^{-7}\) & 0.001883 & 2.33619 & 2.32203 & 0.6080\% & 2.012197 \\
+5.0 & 0.999713 & \(1.993\!\times\!10^{-8}\) & \(2.871\!\times\!10^{-4}\) & 2.95511 & 2.94950 & 0.1897\% & 2.003798 \\
+12 & 0.999951 & \(5.895\!\times\!10^{-10}\) & \(4.890\!\times\!10^{-5}\) & 3.54195 & 3.53963 & 0.0656\% & 2.001312 \\
+100 & 0.999999 & \(1.208\!\times\!10^{-13}\) & \(6.956\!\times\!10^{-7}\) & 4.95749 & 4.95721 & 0.0056\% & 2.000112 \\
+\end{longtable}
+}
 
-\input{tex_fragments/PAPER.tex}
+Here \(\Delta t/\bar t=(t_{\rm sign}-t_{\rm std})/\bar t\) and the log-ratio is
+\(\log(p_{\rm sign}/p_0)/\log(p_{\rm std}/(2p_0))\), which equals \(2\) under exact
+heat-kernel weights. Writing the ground energy as \(-x<0\), the secular
+equation is \(x+12h-1-1/x-1/(24h+x)=0\), with a unique positive root
+decreasing from \(x(0)=2\). With \(z=x+12h\) and
+\(p^{\rm pred}_{\rm sign}=p_{\rm std}^2/(4p_{\rm triv})\),
+\[
+\frac{p_{\rm sign}}{p_{\rm sign}^{\rm pred}}=\left(\frac{z-1}{z}\right)^2<1 ,
+\]
+so the standard-sector fit overpredicts the sign sector at every finite \(h\),
+and the ratio increases strictly from \(1/4\) toward one as \(h\to\infty\). The
+fitted time \(t_{\rm std}=\log(2/x^2)/3\) is positive exactly for
+\(h>h_*=(1+\sqrt3-\sqrt2)/24\simeq0.0549098852\). At \(h=h_*\), the relative
+log residual and log-ratio divide by zero; below it the fitted time is
+negative and outside the positive-diffusion ansatz. On \(h>h_*\) the relative
+residual and log-ratio minus two decrease strictly to zero; at \(h=100\) the
+held-out relative log residual has magnitude about \(0.0056\%\), with the fit
+overpredicting the sign sector. The identity proves a strict held-out
+mismatch at every finite coupling inside one three-dimensional model and
+transfers nothing to either continuous group. Neither diagnostic validates
+the law generally. A held-out refit script is part of the public
+code~\cite{ophrepo}.
+
+\section{Classical carrier modes and the quantum-particle criterion}
+\label{sec:particle-criterion}
+
+A compact group identifies a symmetry type and a classical field equation a
+classical branch; neither constructs a propagating quantum particle.
+
+\begin{definition}[Carrier-mode and quantum-particle receipts]
+Fix the invariant conversion speed \(c_\star\); its value
+\(299\,792\,458\ \mathrm{m\,s^{-1}}\) is exact by the SI definition of the metre.
+A classical massless carrier-mode receipt for \(q_X\) consists of (C1) a stated
+background and phase, (C2) a quadratic action with positive kinetic
+coefficient, (C3) a gauge fixing or constraint reduction with physical
+projector \(\Pi_X\), and (C4) a positive reduced Hamiltonian, with physical
+Hessian \(K_X=Z_X(\omega^2-c_\star^2|\mathbf k|^2)\Pi_X\), \(Z_X>0\). A
+quantum-particle receipt additionally requires (Q1) a positive-energy
+quantization with physical Hilbert space, (Q2) a two-point function whose
+K\"all\'en--Lehmann measure contains \(Z^{\rm pole}_X\delta(\mu^2)\) with
+\(Z^{\rm pole}_X>0\), and (Q3) the asymptotic-state or LSZ hypotheses of the
+phase, including a deconfined sector for a coloured carrier.
+\end{definition}
+
+\begin{theorem}[Action-level modes]
+(i) An unbroken \(\mathrm U(1)_Q\) connection with the Lorentzian Maxwell action
+\(S_Q=-\frac1{4g_Q^2}\int F_{Q,\mu\nu}F_Q^{\mu\nu}\), \(0<g_Q^2<\infty\), and no mass
+operator, has in radiation gauge
+\(K_{Q,T}=g_Q^{-2}(\omega^2-c_\star^2|\mathbf k|^2)\Pi_T\) with
+\(\operatorname{rank}\Pi_T=2\). (ii) A compact \(G\) with the two-derivative pure
+Yang--Mills action about the trivial background in a perturbative or
+deconfined phase has \(2\dim G\) transverse modes with
+\(K^{ab}_{\mathrm{YM},T}=\delta^{ab}g^{-2}(\omega^2-c_\star^2|\mathbf k|^2)\Pi_T\)
+and no hard mass at quadratic order.
+\end{theorem}
+
+\begin{proof}
+Gauss' law removes the longitudinal pair, leaving two transverse polarizations
+with positive Hamiltonian and dispersion \(\omega^2=c_\star^2|\mathbf k|^2\). The
+Yang--Mills Hessian is one Maxwell Hessian per generator; interactions begin
+at cubic order. These calculations establish (C1)--(C4) and none of
+(Q1)--(Q3).
+\end{proof}
+
+Calling these modes photons or gluons requires the quantum-particle receipt.
+The perturbative mode does not produce a gauge-invariant asymptotic gluon, and
+in a confining phase the coloured free pole need not occur in the physical
+spectrum. The analogous transverse-traceless calculation for a supplied
+Einstein--Hilbert action gives two classical spin-two modes and no graviton
+state. Vanishing quadratic mass parameters are action-level statements; Higgs
+or Stueckelberg completions, medium self-energies, confinement and additional
+massive fields require their own field-content and phase hypotheses.
+
+\input{tex_fragments/STANDARD_MODEL_DERIVATION_SCOPE.tex}
+
 \appendix
-\input{tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex}
+\section{Local action, Cartan reduction and fermion current}
+\label{app:local-action}
+
+The appendices carry the local covariant action on the declared matter
+grammar and the finite current constructions built on it.
+
 \input{tex_fragments/LOCAL_SM_JET_ACTION.tex}
 The local action admits a consistent classical charged-scalar slice, with
 both Cartan gauge equations and their variational current retained. Its
@@ -621,6 +1376,7 @@ action and model clock, as follows.
 \input{tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex}
 \def\OPHPriorWorkBibitems{tex_fragments/PRIOR_WORK_DERIVING_STANDARD_MODEL_GAUGE_STRUCTURE_FROM_OBSERVER_OVERLAP_CONSISTENCY_BIBITEMS.tex}
 \InputIfFileExists{tex_fragments/PRIOR_WORK_DERIVING_STANDARD_MODEL_GAUGE_STRUCTURE_FROM_OBSERVER_OVERLAP_CONSISTENCY.tex}{}{}
+\def\OPHStandardModelDerivationPaper{1}
 \input{tex_fragments/OBSERVERS_REFERENCES.tex}
 
 \section*{AI Assistance Disclosure}

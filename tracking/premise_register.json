@@ -817,9 +817,10 @@
           "model/common_source/THERMAL_CLOCK.md",
           "model/completion/stationary_reference_results.json",
           "model/completion/observer_reference_results.json",
-          "model/completion/THEOREM_MAP.md"
+          "model/completion/THEOREM_MAP.md",
+          "model/completion/modular_access_results.json"
         ],
-        "note": "Finite modular flows exist for the actual observation states, and the modular clocks are the finite KMS identity of chosen Gibbs references of compiled Hamiltonians; passive repair does not realize the modular flow of a faithful reference. The finite completion campaign also constructs an invariant diagonal source/controller reference on its 129-state recurrent support and lifts it to the actual full-record observer. Support-compressed faithfulness is explicit; no physical access to the full support algebra, implemented modular action, physical clock or typed modular/stress/entropy package is thereby supplied."
+        "note": "Finite modular flows exist for the actual observation states, and the modular clocks are the finite KMS identity of chosen Gibbs references of compiled Hamiltonians; passive repair does not realize the modular flow of a faithful reference. The finite completion campaign also constructs an invariant diagonal source/controller reference on its 129-state recurrent support and lifts it to the actual full-record observer. Support-compressed faithfulness is explicit; no physical access to the full support algebra, implemented modular action, physical clock or typed modular/stress/entropy package is thereby supplied. On the fixed full support algebra of actual nontracial C/E stationary record blocks, the admitted real native operations cannot implement a stated nontrivial modular action: an exact real probe has normalized trace-distance error at least 1/2. This is a conditional implementation obstruction, not an exclusion of other encodings, algebras or observer clocks."
       }
     },
     {
@@ -5603,6 +5604,10 @@
             "path": "model/native_modular_reference/history_clock.py",
             "anchor": "def run(",
             "label": "Finite prepared source-clock continuation with complete error and resource budgets"
+          },
+          {
+            "path": "model/completion/MODULAR_ACCESS.md",
+            "label": "Actual-reference modular implementation obstruction for the real native grammar"
           }
         ],
         "claims": [
@@ -9928,6 +9933,15 @@
           "controls": "Declared logical coherent filter, spin/exterior lift, projector pulses, global geometric interaction angle and static mean-feedback service; no compiled combined native history.",
           "clock": "Dimensionless apparatus steps1/8,1/4 and interaction angles pi/5,pi/3,pi/2; no laboratory clock or Higgs scale.",
           "regime": "Exact finite identities plus conditional numerical coefficient recovery and finite free Weyl action; no interacting continuum or measured pole spectrum."
+        },
+        "finite_ce_memory": {
+          "carrier": "78 total-two source states, with explicitly restricted 66-state binary shell and arbitrary untouched finite references",
+          "law": "Frozen OPH-CE-FINITE-MEMORY-2026-10-28-v1: complete tagged C/E mixtures, repair and exploration floors, identity holds and record-only finite classical feedback",
+          "preparation": "Declared source/reference input; exact invariant reference for repair-only C/E feedback constructed mathematically, with preparation service and finite-cost accuracy open",
+          "records": "Complete coin/current or coin/contrast outcomes, law/seam/selector tags, holds, FIFO exports and halt outcomes; finite stationary source/FIFO marginal distinct from growing archive",
+          "controls": "One-to-eight record FIFO and at most 256 classical controller states; no hidden load read, complex phase, coherent recovery or unlisted source operation",
+          "clock": "Counted attempts for continuation; dimensionless modular parameter only in the fixed-algebra implementation obstruction; no calibrated observer duration",
+          "regime": "Finite component family, six-attempt retained executions and exact structural certificates; no physical gate acceptance, carrier refinement or laboratory identification"
         }
       },
       "bindings": [
@@ -14956,6 +14970,98 @@
             {
               "path": "model/common_source/native_matter_attachment.py",
               "anchor": "def kinetic_attachment("
+            }
+          ]
+        },
+        {
+          "id": "finite-ce-memory-campaign",
+          "domain": "finite_ce_memory",
+          "claims": [
+            "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+            "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          ],
+          "establishes": [
+            "complete_finite_ce_memory_instrument",
+            "repair_only_adaptive_stationary_reference",
+            "scalar_source_branch_commutant",
+            "fixed_support_modular_access_obstruction"
+          ],
+          "requires": [],
+          "assumptions": [
+            "declared_C_E_coherent_discrimination_protocol",
+            "declared_adjacent_charge_CAR_and_reference_completion_diagnostic",
+            "declared_classical_record_and_forecast_access",
+            "declared_coherent_native_continuation_and_interferometric_controls",
+            "declared_coherent_proper_code_services_and_analogue_source_controls",
+            "declared_incident_clock_field_protocol",
+            "declared_incident_screen_refinement_protocol",
+            "declared_native_binary_federation_instruments",
+            "declared_native_classical_history_and_final_recovery",
+            "declared_native_clock_field_and_initial_state_contract",
+            "declared_native_coherent_record_phase_interface",
+            "declared_native_current_two_event_observer",
+            "declared_native_local_access_and_scheduler",
+            "declared_smooth_product_coefficient_density_for_smooth_interpretation",
+            "declared_uniform_independent_seam_schedule_and_forgotten_records",
+            "uniform_binary_total_two_preparation"
+          ],
+          "additional_assumptions": {},
+          "imports": [
+            "Caputo_Liggett_Richthammer_exclusion_spectral_gap",
+            "Choi_separability_entanglement_breaking_equivalence",
+            "Davies_Gaffney_finite_wave_propagation_equivalence",
+            "Doob_L2_martingale_maximal_inequality",
+            "Gaussian_Green_covariance_and_generalized_free_field_construction",
+            "Gurvits_Barnum_bipartite_separable_ball",
+            "Hajek_finite_population_central_limit_theorem",
+            "Hoeffding_finite_sample_concentration_and_union_bound",
+            "Knill_Laflamme_exact_quantum_error_correction",
+            "Poisson_factorial_moments_and_finite_dependency_cones",
+            "Steklov_boundary_Weyl_law",
+            "classical_CHSH_local_response_bound_and_published_Bell_null_contract",
+            "classical_Weyl_eigenvalue_counting_law",
+            "classical_controlled_quantum_channels",
+            "coisometry_involution_quantum_walk_spectral_mapping",
+            "conditional_law_sequential_coupling",
+            "conditional_probability_and_Brier_decomposition",
+            "densitized_scalar_wave_metric_identity",
+            "directed_integer_probability_enclosure",
+            "elliptic_coefficient_Mosco_convergence",
+            "finite_Kraus_Stinespring_construction",
+            "finite_matrix_block_elimination_and_stopped_instrument_resolvents",
+            "finite_state_martingale_functional_central_limit_theorem",
+            "integrated_short_time_local_Dirichlet_heat_asymptotics",
+            "irreducible_positive_self_adjoint_semigroup",
+            "ordered_subsequence_count_at_incident_stopping_time",
+            "positive_semigroup_fractional_extension",
+            "positive_transfer_spectral_logarithm",
+            "quantum_IID_fluctuation_Weyl_limit",
+            "quantum_relative_entropy_data_processing",
+            "round_sphere_finite_perimeter_isoperimetric_inequality",
+            "spectral_theorem_for_self_adjoint_operators",
+            "spherical_harmonic_orthogonality_and_Laplacian_spectrum",
+            "stationary_local_cylinder_similarity_under_commuting_interventions",
+            "strongly_local_Sobolev_form_tensor_representation",
+            "trace_distance_contraction_and_unitary_channel_composition"
+          ],
+          "scope": "Binds the finite adaptive observer, actual full-record stationary lift, constructive source branch-algebra certificate and real-operation modular restriction to one versioned family. Reference results cover repair-only endpoints; the source-commutant argument covers the declared complete branch supports.",
+          "limitations": "All canonical inputs remain; this restricted binding discharges no physical premise. Initial preparation, randomization, local access, delivery and export hardware remain supplied. The algebraic probe is not an admitted native detector. No conclusion about all history charges, metastability, coherent extensions or refinements follows.",
+          "sources": [
+            {
+              "path": "model/completion/observer.py",
+              "anchor": "def branches("
+            },
+            {
+              "path": "model/completion/observer_reference.py",
+              "anchor": "def certify("
+            },
+            {
+              "path": "model/completion/defect_algebra.py",
+              "anchor": "def certify_maps("
+            },
+            {
+              "path": "model/completion/modular_access.py",
+              "anchor": "def real_primitive_certificate("
             }
           ]
         }

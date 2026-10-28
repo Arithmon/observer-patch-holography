@@ -8,7 +8,7 @@ Three meetings happen. Alice and Bob meet, and record different. Bob and Charlie
 
 Set the coins.
 
-Suppose Alice's is heads. Bob's has to be tails, because they recorded different. Charlie's has to be heads, because Bob and Charlie recorded different. And Charlie and Alice recorded different, so Charlie's has to be tails. It was heads two sentences ago.
+Suppose Alice's is heads. Bob's has to be tails, because they recorded different. Charlie's has to be heads, because Bob and Charlie recorded different. And Charlie and Alice recorded different, so Charlie's has to be tails. That contradicts the step before.
 
 Try the other branch. Suppose Alice's is tails. Bob's is heads, Charlie's is tails, and Charlie and Alice are both tails, having recorded that they differ.
 
@@ -18,13 +18,13 @@ The obvious response is that somebody is wrong. Three coins have three faces. Re
 
 Nobody lied. No coin was misread. Each of the three meetings produced a record that is perfectly satisfiable on its own. Any two of the three can be satisfied together without the slightest difficulty. It is the third one that has nowhere to go. Which of the three you call the third one is your choice, because they are symmetric and none of them is the culprit.
 
-Notice what the three of them can do about it, which is nothing. They can meet in pairs for the rest of their lives. Every meeting will confirm what the previous meeting found. No pairwise comparison anywhere in the arrangement contains the information that the three records are jointly impossible, because that information is not held by any pair. The three of them can go on being individually correct indefinitely.
+There is nothing the three of them can do about it. They can meet in pairs for the rest of their lives. Every meeting will confirm what the previous meeting found. No pairwise comparison anywhere in the arrangement contains the information that the three records are jointly impossible, because that information is not held by any pair. The three of them can go on being individually correct indefinitely.
 
 Chapter five put a third person in the room and left the three of them agreeing. This is the bill.
 
-The trap is older than the corridor. In 1785 the Marquis de Condorcet published an essay on applying analysis to decisions reached by majority vote, and buried in it is an observation that has been ruining committees ever since.
+The trap is older than the corridor. In 1785 the Marquis de Condorcet published an essay on applying analysis to decisions reached by majority vote, and buried in it is an observation about committees.
 
-Take three people and three options. The first person ranks them A, B, C. The second ranks them B, C, A. The third ranks them C, A, B. Ask the committee to choose between A and B, and A wins by two votes to one. Ask it to choose between B and C, and B wins two to one. Ask it to choose between C and A, expecting a formality, and C wins two to one.
+Take three people and three options. The first person ranks them A, B, C. The second ranks them B, C, A. The third ranks them C, A, B. Ask the committee to choose between A and B, and A wins by two votes to one. Ask it to choose between B and C, and B wins two to one. Ask it to choose between C and A, and C wins two to one.
 
 Every one of those votes is a real majority. Nobody was manipulated, nobody abstained, and each vote can be repeated as often as you like with the same result. There is no winner, and there is no winner in a way that no amount of further voting will fix, because the information that the three results are jointly impossible is not present in any of them.
 
@@ -88,9 +88,9 @@ Physics met this in the 1950s and gave it a name.
 
 A magnet is many small magnetic moments, each able to point one of two ways, each pushing its neighbors around. In an antiferromagnet, every pair wants to be opposite: if this one points up, the one beside it should point down. On a square grid that is easy to arrange: the result is the tidy alternating pattern of a chessboard.
 
-Put the same rule on a triangular grid and it comes apart at the first triangle. Set the first moment up and the second down, which satisfies that pair. The third has to be opposite to both. There is no third direction. Whatever it does, one of its two bonds is unhappy, with no principle available to say which one to disappoint.
+Put the same rule on a triangular grid and it comes apart at the first triangle. Set the first moment up and the second down, which satisfies that pair. The third has to be opposite to both. There is no third direction. Whatever it does, one of its two bonds is unhappy, with no principle available to say which one.
 
-Gregory Wannier worked out the consequences for a whole triangular lattice in 1950 and found something that had no business being there: the system keeps a finite amount of disorder as the temperature goes to absolute zero. Ordinarily, cooling something to zero freezes it into its one best arrangement. Here there is no one best arrangement, only an enormous number of equally disappointing ones. The system goes on having a choice after the energy has been taken away.
+Gregory Wannier worked out the consequences for a whole triangular lattice in 1950 and found something unexpected: the system keeps a finite amount of disorder as the temperature goes to absolute zero. Ordinarily, cooling something to zero freezes it into its one best arrangement. Here there is no one best arrangement, only an enormous number of equally good ones. The system goes on having a choice after the energy has been taken away.
 
 Gerard Toulouse gave the phenomenon its name in 1977, while working on spin glasses, and gave it the same test the coins gave it. Go around a closed loop of bonds and multiply out what each one demands. If the loop comes back consistent, the region can settle. If it does not, the loop is **frustrated**. No arrangement of the moments inside it satisfies every bond, however long you wait.
 
@@ -122,7 +122,7 @@ Two results come out. The first is the boring one that has to be true before the
 
 Exactly one of the two thousand and forty-eight states is globally consistent. That one is arithmetic. The spanning tree argument already settled it: the nineteen loop sums are zero, so fix one observer's bit and every other bit is forced, which leaves one free choice, two assignments, and one distinct state once the all-over flip is divided out.
 
-The second result is the machine's. Every single run lands on that state. Every starting point, every schedule, every order of repair. The answer does not depend on who went first. This machine's indifference is bought by the score, which falls whichever order you work in. Whether a repair rule has to behave that way in general is chapter ten's subject. The leftover at the end is zero, which is to say the observers end up in complete agreement and the agreement was never a matter of who spoke loudest.
+The second result is the machine's. Every single run lands on that state. Every starting point, every schedule, every order of repair. The answer does not depend on who went first. This machine's indifference is bought by the score, which falls whichever order you work in. Whether a repair rule has to behave that way in general is chapter ten's subject. The leftover at the end is zero, which is to say the observers end up in complete agreement and no observer's position decided it.
 
 ## One edge
 
