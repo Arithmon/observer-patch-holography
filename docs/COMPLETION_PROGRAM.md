@@ -32,26 +32,27 @@ These source-bound component campaigns record actual progress without accepting 
 - [OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1](../model/local_repair_family/campaign.json): Bounded endpoint-biased C/E family and conditional product-pair reference. The carrier, physical target and program-wide decision contract remain open. Owning gates: CP-00, CP-02, CP-13.
 - [OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1](../model/clock_defect_energy/ramsey_campaign.json): Source-pulse controlled Ramsey service on the finite density sector, complete C/E joint outputs and counted continuation. Physical duration and full-wave realization remain open. Owning gates: CP-01, CP-02, CP-13.
 - [exchange-sector-20261028-v1](../model/exchange_sector/campaign.json): Sharp relational-sector boundaries, odd closed-history rank-one limit and source-executed active code with counted recovery. No localized physical particle or mass is accepted. Owning gates: CP-03, CP-04, CP-13.
+- [particle-screening-20261028-v1](../model/particle_screening/campaign.json): Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open. Owning gates: CP-03, CP-04, CP-13.
+- [active-code-energy-20261028-v1](../model/active_code_energy/campaign.json): The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol. Owning gates: CP-04, CP-13.
+- [OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1](../model/clock_defect_energy/clock_count_inference_campaign.json): A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open. Owning gates: CP-01, CP-02, CP-13.
 
-## Next four parallel workstreams
+## Next three parallel workstreams
 
-Assignment: `OPH-COMPLETION-NEXT-WAVE-2026-10-28-v4`. This plans provisional work; it does not select or freeze a successor law, change the retained campaign or accept a gate.
+Assignment: `OPH-COMPLETION-NEXT-WAVE-2026-10-28-v5`. This plans provisional work; it does not select or freeze a successor law, change the retained campaign or accept a gate.
 
-Four concurrent finite investigations have bounded one alternative local law, executed a controlled density-sector Ramsey service, tested sharp exchange sectors and active recovery, and found a stationary co-moving native source/core measure. Their theorem premises are checked on stated domains. The next joins seek one source-selected law, localized physical excitation, shared clock/action and stress without treating activity counts or controller charge as measured particle mass.
+Three finite joins connect executed clock/field readouts, an improved all-seam corrected q=1 code, and that same code's native current. Exact cap screening and conserved-sector reweighting expose the remaining localization and energy choices. The next work must execute the new recovery, extend the operational clock comparison, and supply one action, kinetic response and stress on the same candidate.
 
 | Owner | Next concrete result | Why this comes next |
 | --- | --- | --- |
-| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) / CP-00: Complete the bounded physical program class | A versioned carrier/refinement, service, interpretation, calibration, target and decision contract that admits the unchanged C/E family and any justified bounded adjustment, with retained exposure and budgets. | A concrete endpoint-biased local family preserves a faithful nonuniform reference and exposes an exact limit on the older target; the remaining physical and refinement boundary can be specified against actual examples. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) / CP-02: Join source-executed Ramsey readout to a continuing calibrated clock | A continuing accessible clock/field service with regional reference compatibility and a measured parameter comparison that accounts for preparation, storage, exports, numerical and physical error. | The controlled density-sector Ramsey program shares complete C/E histories with the 66-core modular menu; the fixed-reference drift and co-moving alternative delimit stationary claims. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) / CP-03: Test autonomous localization beyond active relational memory | A candidate whose live state has a reference-like exterior and protected transport under every admitted native branch, with recovery and boundary services explicitly costed. | Sharp q sectors have exact exterior deficits; uninterrupted odd exchange flags resolve one input, while a q=1 actively corrected qubit reaches the all-seam code-dimension bound. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) / CP-04: Derive one defect action, kinetic response and stress | For one CP-03 candidate, derive a reference-subtracted rest action and moving response in the same clock and prove a conserved stress map usable by the Einstein join. | The q=1 code has a measured native activity excess while the co-moving charge has zero gradient cost; neither count selects energy, and the existing product mode has an independent rest/inertia comparison on a different source. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) / CP-02: Extend the joint event-count readout to a continuing calibrated clock | One continuing accessible clock/field protocol with a tested shared-event parameter comparison, regional reference compatibility and complete preparation, storage, export and error accounting. | The complete source readout gives a strict uncertainty reduction about a shared incident count, while the finite clock interfaces identify the missing monotone reading and shared-event calibration premises. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) / CP-03: Execute screened-code recovery and test a localized native excitation | A source-executed encoder, complete flagged recovery and continuing transport for the canonical screened code, or a declared refined candidate with a reference-like exterior and protecting invariant. | The new qubit attains the optimal one-port screening bound for exact all-seam q=1 codes, while full-exterior screening and invariant edge binding fail in the tested sharp sectors. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) / CP-04: Select a same-candidate action and independently test kinetics and stress | For one localized candidate, derive a reference-subtracted rest action, independent moving response in the same clock and a conserved stress map with the finite action and Ward premises verified. | The canonical screened code has an exact current rate, but arbitrary positive conserved-sector weights preserve native stationarity and change a declared Gibbs contrast. |
 
 Parallel starting work and the required joins:
 
-- **CP-00 / [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135):** Reuse the local-family campaign, its all-core counterexample and the existing C/E record-law classification to enumerate permitted primitive, memory and preparation changes. Freeze observable targets and resource/error budgets before validation; no finite product-reference certificate alone accepts CP-00. Starting evidence: [local campaign](../model/local_repair_family/campaign.json), [local family](../model/local_repair_family/results.json), [joins contract](../model/clock_defect_energy/joins_campaign.json).
-- **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Reuse the source-pulse Ramsey packet, all-core clock compiler, native-return wave reference and both exact reference-balance controls. The density intertwiner and counted source pulses do not establish the full wave unitary, apparatus precision, common energy normalization or laboratory duration. Starting evidence: [ramsey campaign](../model/clock_defect_energy/ramsey_campaign.json), [ramsey service](../model/clock_defect_energy/ramsey_service_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json), [local family](../model/local_repair_family/results.json), [joint clock](../model/clock_defect_energy/joint_clock_results.json).
-- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Use the sector packet, native homology, co-moving charge certificate and inherited bare-source commutant theorem to test screened or refined mechanisms. Active recovery and a controller charge are not autonomous localized matter; coherent exchange statistics need a separate phase/intervention map. Starting evidence: [exchange campaign](../model/exchange_sector/campaign.json), [exchange sector](../model/exchange_sector/sector_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json), [defect history](../model/clock_defect_energy/defect_history_results.json), [defect algebra](../model/completion/defect_algebra_results.json).
-- **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Test candidate maintenance and recovery work against the native current form and finite proper-time/inertia theorems, with the product-mode result retained as a separate control. A common physical unit, source-derived action, localization and Ward/stress identity must be supplied before assigning m or E=mc^2. Starting evidence: [exchange sector](../model/exchange_sector/sector_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json), [mode energy](../model/clock_defect_energy/mode_energy_results.json), [energy](../model/clock_defect_energy/energy_results.json).
+- **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Reuse the source-pulse Ramsey and exact count-inference packets. Construct the shared events needed by ClockComparison and identify the readable clock interface on the actual instrument. A stochastic count estimator is not by itself a monotone clock reading or a physical duration; keep the different modular and wave references explicit. Starting evidence: [clock count inference](../model/clock_defect_energy/clock_count_inference_results.json), [ramsey service](../model/clock_defect_energy/ramsey_service_results.json), [clock services](../model/clock_defect_energy/clock_services_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json), [local family](../model/local_repair_family/results.json).
+- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Reuse the finite all-seam code theorem, the exact cap minimax and the canonical screened code. Compile its own recovery and count core reset, records, failures and source services. The old two-port code's executed recovery counts cannot be transferred to the new code; active correction and a small-cap bound do not establish autonomous localized matter. Starting evidence: [particle screening](../model/particle_screening/screening_results.json), [exchange sector](../model/exchange_sector/sector_results.json), [active code energy](../model/active_code_energy/energy_bridge_results.json), [defect history](../model/clock_defect_energy/defect_history_results.json), [defect algebra](../model/completion/defect_algebra_results.json).
+- **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Use the same-code current and sector-action ambiguity to identify what extra physical selection is required. Keep the separately declared product-field inertia check as a control. Uniform-seam activity, prior-code fixed-seam recovery work and a Gibbs assignment are distinct inputs. A common action, kinetic response and clock must precede a physical E=mc^2 identification. Starting evidence: [active code energy](../model/active_code_energy/energy_bridge_results.json), [particle screening](../model/particle_screening/screening_results.json), [clock count inference](../model/clock_defect_energy/clock_count_inference_results.json), [mode energy](../model/clock_defect_energy/mode_energy_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json).
 
 Shared source interface:
 
@@ -62,12 +63,13 @@ Shared source interface:
 - A sharp relational sector, active quantum memory, exchange-history parity and positive current form are separate observations. Identify one localized matter state, rest action, kinetic response, common clock and conserved stress before a particle or mass claim.
 - Keep prior failures, empirical exposure, computational budgets and full-program acceptance gates unchanged until a versioned CP-00/CP-12 decision contract is accepted.
 
-These are four parallel component assignments under CP-00, CP-02, CP-03 and CP-04. CP-01, CP-13 and CP-12 review the common interfaces. Every integrated gate keeps its original acceptance dependencies and remains open; these four finite packets add no physical comparison or whole-program verdict.
+These are three parallel component assignments under CP-02, CP-03 and CP-04. CP-00, CP-01, CP-13 and CP-12 review their shared contract and interfaces. Every integrated gate retains its acceptance dependencies and remains open; the finite packets add no physical comparison or whole-program verdict.
 
 Review stays inside these workstreams:
 
+- CP-00 / [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135): Maintain the bounded law/refinement and decision contract, with the unchanged C/E and endpoint-biased alternatives distinguished. These finite joins do not freeze the full physical program.
 - CP-01 / [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136): Review complete continuing observer service and resource accounting for the compiled Ramsey and active-recovery protocols; predecessor acceptance remains open.
-- CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137): Check the actual finite theorem premises and source/model maps in all four packets, including conditional repair, modular covariance, native history rank, code correction and action balance.
+- CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137): Check actual finite theorem premises in all three joins: complete instruments and clock interfaces, flagged-code support and cap bounds, sectorwise action-measure uniqueness and the missing proper-time/stress maps.
 - CP-12 / [#1148](https://github.com/FloatingPragma/observer-patch-holography/issues/1148): Audit candidate versus class exclusions, retained empirical exposure and stopping coverage; no finite packet falsifies or completes the unfrozen whole program.
 
 Particle species, chiral interacting fields and Einstein realization require a localized excitation with one action, clock, current and stress dictionary. Existing conditional field and gravity results retain their own premises.
@@ -223,6 +225,7 @@ Retained starting evidence:
 - [continuation_results.json](../model/clock_defect_energy/continuation_results.json)
 - [clock_services_results.json](../model/clock_defect_energy/clock_services_results.json)
 - [RAMSEY_SERVICE.md](../model/clock_defect_energy/RAMSEY_SERVICE.md)
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -230,6 +233,7 @@ Current component progress (not gate acceptance):
 - [continuation_results.json](../model/clock_defect_energy/continuation_results.json): Exact binary66 transported-core metadata through 24-attempt C/E and delayed-mixture FIFO continuation, with arbitrary-reference branch identities, 23 exports, last-record ambiguity controls and explicit unavailable clock-service outcomes. No new clock word or memory hardware is executed.
 - [clock_services_results.json](../model/clock_defect_energy/clock_services_results.json): Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.
 - [ramsey_service_results.json](../model/clock_defect_energy/ramsey_service_results.json): Source-executed controlled Ramsey density walk and complete C/E joint clock/field records, with aborts, references, continuation and counted supplied services; no physical time calibration.
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json): A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -259,6 +263,9 @@ Retained starting evidence:
 - [RAMSEY_SERVICE.md](../model/clock_defect_energy/RAMSEY_SERVICE.md)
 - [README.md](../model/exchange_sector/README.md)
 - [REFERENCE_BALANCE.md](../model/clock_defect_energy/REFERENCE_BALANCE.md)
+- [screening_results.json](../model/particle_screening/screening_results.json)
+- [energy_bridge_results.json](../model/active_code_energy/energy_bridge_results.json)
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -271,6 +278,9 @@ Current component progress (not gate acceptance):
 - [ramsey_service_results.json](../model/clock_defect_energy/ramsey_service_results.json): Source-executed controlled Ramsey density walk and complete C/E joint clock/field records, with aborts, references, continuation and counted supplied services; no physical time calibration.
 - [sector_results.json](../model/exchange_sector/sector_results.json): Exact sharp-sector exterior distances, uninterrupted odd closed-history rank-one theorem and source-executed active q=1 code; native activity excess is not physical rest energy.
 - [reference_balance_results.json](../model/clock_defect_energy/reference_balance_results.json): Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.
+- [screening_results.json](../model/particle_screening/screening_results.json): Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.
+- [energy_bridge_results.json](../model/active_code_energy/energy_bridge_results.json): The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json): A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.
 
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -301,6 +311,7 @@ Retained starting evidence:
 - [README.md](../model/local_repair_family/README.md)
 - [RAMSEY_SERVICE.md](../model/clock_defect_energy/RAMSEY_SERVICE.md)
 - [REFERENCE_BALANCE.md](../model/clock_defect_energy/REFERENCE_BALANCE.md)
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -313,6 +324,7 @@ Current component progress (not gate acceptance):
 - [results.json](../model/local_repair_family/results.json): Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.
 - [ramsey_service_results.json](../model/clock_defect_energy/ramsey_service_results.json): Source-executed controlled Ramsey density walk and complete C/E joint clock/field records, with aborts, references, continuation and counted supplied services; no physical time calibration.
 - [reference_balance_results.json](../model/clock_defect_energy/reference_balance_results.json): Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.
+- [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json): A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -339,6 +351,7 @@ Retained starting evidence:
 - [localized_results.json](../model/clock_defect_energy/localized_results.json)
 - [defect_history_results.json](../model/clock_defect_energy/defect_history_results.json)
 - [README.md](../model/exchange_sector/README.md)
+- [screening_results.json](../model/particle_screening/screening_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -347,6 +360,7 @@ Current component progress (not gate acceptance):
 - [defect_history_results.json](../model/clock_defect_energy/defect_history_results.json): Exact Z2 first-homology/exchange class on the native two-particle configuration graph under the declared elementary history deformations, with positive complete C/E path witnesses. This is a history invariant, not a source-only protecting charge, fermionic phase or autonomously stable localized particle.
 - [sector_results.json](../model/exchange_sector/sector_results.json): Exact sharp-sector exterior distances, uninterrupted odd closed-history rank-one theorem and source-executed active q=1 code; native activity excess is not physical rest energy.
 - [reference_balance_results.json](../model/clock_defect_energy/reference_balance_results.json): Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.
+- [screening_results.json](../model/particle_screening/screening_results.json): Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -374,6 +388,8 @@ Retained starting evidence:
 - [mode_energy_results.json](../model/clock_defect_energy/mode_energy_results.json)
 - [README.md](../model/exchange_sector/README.md)
 - [REFERENCE_BALANCE.md](../model/clock_defect_energy/REFERENCE_BALANCE.md)
+- [screening_results.json](../model/particle_screening/screening_results.json)
+- [energy_bridge_results.json](../model/active_code_energy/energy_bridge_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -381,6 +397,8 @@ Current component progress (not gate acceptance):
 - [mode_energy_results.json](../model/clock_defect_energy/mode_energy_results.json): Derives a positive native-current quadratic form and verifies its port/incidence theorem map. In the separately declared product-field source, independent rest-gap and moving-symbol curvature tests give a finite pulse correction approaching the mass-shell ratio one under subdivision. This does not assign that action, physical mass or gravitational stress to the history excitation.
 - [sector_results.json](../model/exchange_sector/sector_results.json): Exact sharp-sector exterior distances, uninterrupted odd closed-history rank-one theorem and source-executed active q=1 code; native activity excess is not physical rest energy.
 - [reference_balance_results.json](../model/clock_defect_energy/reference_balance_results.json): Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.
+- [screening_results.json](../model/particle_screening/screening_results.json): Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.
+- [energy_bridge_results.json](../model/active_code_energy/energy_bridge_results.json): The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

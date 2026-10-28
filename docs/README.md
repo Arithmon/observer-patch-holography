@@ -161,6 +161,15 @@ source-bound mass audit. The
 [completion plan](COMPLETION_PROGRAM.md) tracks the shared remaining joins.
 These finite results add no physical comparison or integrated gate acceptance.
 
+The follow-up [clock-count inference](../model/clock_defect_energy/CLOCK_COUNT_INFERENCE.md),
+[cap-screening construction](../model/particle_screening/README.md) and
+[same-code energy audit](../model/active_code_energy/README.md) advance three
+parallel joins. The joint detector improves inference of a shared native
+incident count, an improved corrected qubit attains its exact one-port
+screening bound, and sector reweighting exposes the missing energy selection.
+Each packet maps the relevant finite theorem to its actual state, record
+menu and schedule.
+
 The [model–theorem premise map](../model/PREMISES.md) connects the candidate
 to existing theorem premises and their closure conditions. It is generated
 from the model map in `tracking/` and checks references and coverage, without

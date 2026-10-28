@@ -38,20 +38,21 @@ algebra. Real joint ancillary inputs and the fixed encoding are premises;
 the separating observable is a mathematical witness, not a native detector.
 
 The [clock, defect and energy diagnostics](clock_defect_energy/README.md)
-advance four [parallel owners](../docs/COMPLETION_PROGRAM.md), using the
-recorded-history transport as a pinned dependency:
+advance three [parallel owners](../docs/COMPLETION_PROGRAM.md), using the
+recorded-history transport and finite theorem maps as pinned dependencies:
 
 | Owner | Retained result and next requirement |
 | --- | --- |
-| [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) | A bounded endpoint-biased C/E family preserves a faithful nonuniform product reference. Carrier/refinement, physical targets and program-wide decision rules remain open. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | A [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes the controlled 720-arc density representation and complete C/E joint clock/field outputs, with counted aborts and a selected continuation. Full 3,960-arc compilation and physical calibration remain open. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [sharp-sector test](exchange_sector/README.md) bounds the exterior mismatch and proves that uninterrupted odd closed native exchange resolves one source input. An actively corrected q=1 qubit attains the all-seam code bound, with explicit core reset. A localized particle remains open. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | Native current records supply a positive form; the active code's movement excess is `1/66` per uniform-seam attempt. The co-moving charge has zero native gradient cost, and the independent product-mode inertia calculation uses another source. One defect action and stress remain open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | The [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes complete C/E clock/field records. A [joint readout inference](clock_defect_energy/CLOCK_COUNT_INFERENCE.md) reduces uncertainty about the shared native incident count, with preparation and abort errors retained. A calibrated physical clock remains open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [screening packet](particle_screening/README.md) gives exact exterior-cap limits and an improved all-seam correctable q=1 qubit. Its worst one-port distance is the optimal `61/450` for an edge core, while its full exterior remains at least `4/9` away. Source recovery for this new code and a localized particle remain open. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [same-code calculation](active_code_energy/README.md) gives current rate `1/6` per uniform-seam attempt. Positive sector reweightings preserve native stationary dynamics and leave the rest-gap assignment free. Prior-code pulse recovery is counted under its separate fixed-seam protocol; one defect action, kinetics and stress remain open. |
 
-The continuing-observer owner #1136 reviews the compiled services and memory
-requirements across the four workstreams. The [theorem map](completion/THEOREM_MAP.md),
+The bounded-law owner #1135 retains the [endpoint-biased family](local_repair_family/README.md)
+and the open carrier/refinement and decision contract. The continuing-observer
+owner #1136 reviews compiled services and memory across the three workstreams.
+The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
-review accompany all four lanes. No integrated completion gate, physical clock,
+review accompany all three lanes. No integrated completion gate, physical clock,
 mass spectrum or gravitational realization is accepted by these finite results.
 
 The [particle and common-field package](observer_particles/README.md)

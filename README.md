@@ -75,9 +75,13 @@ proof shows that the whole class of laws cannot work.
   remains open. A [sharp-sector test](model/exchange_sector/README.md) finds
   an actively corrected qubit but also a full-exterior mismatch and a
   rank-one limit on uninterrupted odd exchange records. Its repair activity
-  has no assigned rest-energy unit. Finding a stable defect is the work
+  has no assigned rest-energy unit. An [improved screened code](model/particle_screening/README.md)
+  reaches the optimal one-port exterior distance among the tested exact
+  qubits, while a [same-code energy test](model/active_code_energy/README.md)
+  shows why stationary sector weights and repair counts leave its
+  rest energy undetermined. Finding a stable defect is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
-  and the [mass-response notes](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
+  and the [current particle/mass join](docs/research/OPH_NATIVE_PARTICLE_MASS_JOIN.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
   theorems give public records that do not depend on the order of repairs,
   the Born rule and the Tsirelson bound, a carrier that is three-dimensional

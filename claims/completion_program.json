@@ -202,7 +202,8 @@
         "model/native_modular_reference/history_clock_results.json.gz",
         "model/clock_defect_energy/continuation_results.json",
         "model/clock_defect_energy/clock_services_results.json",
-        "model/clock_defect_energy/RAMSEY_SERVICE.md"
+        "model/clock_defect_energy/RAMSEY_SERVICE.md",
+        "model/clock_defect_energy/clock_count_inference_results.json"
       ],
       "legacy_issues": [
         1077,
@@ -238,6 +239,13 @@
           "independent_check": "model/clock_defect_energy/test_ramsey_service.py",
           "scope": "Source-executed controlled Ramsey density walk and complete C/E joint clock/field records, with aborts, references, continuation and counted supplied services; no physical time calibration.",
           "campaign_id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_count_inference_results.json",
+          "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd",
+          "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+          "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+          "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1"
         }
       ]
     },
@@ -273,7 +281,10 @@
         "model/local_repair_family/README.md",
         "model/clock_defect_energy/RAMSEY_SERVICE.md",
         "model/exchange_sector/README.md",
-        "model/clock_defect_energy/REFERENCE_BALANCE.md"
+        "model/clock_defect_energy/REFERENCE_BALANCE.md",
+        "model/particle_screening/screening_results.json",
+        "model/active_code_energy/energy_bridge_results.json",
+        "model/clock_defect_energy/clock_count_inference_results.json"
       ],
       "legacy_issues": [
         1033,
@@ -344,6 +355,27 @@
           "independent_check": "model/clock_defect_energy/test_reference_balance.py",
           "scope": "Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/particle_screening/screening_results.json",
+          "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+          "independent_check": "model/particle_screening/test_screening.py",
+          "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+          "campaign_id": "particle-screening-20261028-v1"
+        },
+        {
+          "path": "model/active_code_energy/energy_bridge_results.json",
+          "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd",
+          "independent_check": "model/active_code_energy/test_energy_bridge.py",
+          "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
+          "campaign_id": "active-code-energy-20261028-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_count_inference_results.json",
+          "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd",
+          "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+          "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+          "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1"
         }
       ]
     },
@@ -377,7 +409,8 @@
         "model/clock_defect_energy/joint_clock_results.json",
         "model/local_repair_family/README.md",
         "model/clock_defect_energy/RAMSEY_SERVICE.md",
-        "model/clock_defect_energy/REFERENCE_BALANCE.md"
+        "model/clock_defect_energy/REFERENCE_BALANCE.md",
+        "model/clock_defect_energy/clock_count_inference_results.json"
       ],
       "legacy_issues": [
         1077,
@@ -447,6 +480,13 @@
           "independent_check": "model/clock_defect_energy/test_reference_balance.py",
           "scope": "Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/clock_defect_energy/clock_count_inference_results.json",
+          "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd",
+          "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+          "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+          "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1"
         }
       ]
     },
@@ -476,7 +516,8 @@
         "docs/research/OPH_FIELD_RECONSTRUCTION.md",
         "model/clock_defect_energy/localized_results.json",
         "model/clock_defect_energy/defect_history_results.json",
-        "model/exchange_sector/README.md"
+        "model/exchange_sector/README.md",
+        "model/particle_screening/screening_results.json"
       ],
       "legacy_issues": [
         1026,
@@ -518,6 +559,13 @@
           "independent_check": "model/clock_defect_energy/test_reference_balance.py",
           "scope": "Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/particle_screening/screening_results.json",
+          "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+          "independent_check": "model/particle_screening/test_screening.py",
+          "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+          "campaign_id": "particle-screening-20261028-v1"
         }
       ]
     },
@@ -550,7 +598,9 @@
         "model/clock_defect_energy/energy_results.json",
         "model/clock_defect_energy/mode_energy_results.json",
         "model/exchange_sector/README.md",
-        "model/clock_defect_energy/REFERENCE_BALANCE.md"
+        "model/clock_defect_energy/REFERENCE_BALANCE.md",
+        "model/particle_screening/screening_results.json",
+        "model/active_code_energy/energy_bridge_results.json"
       ],
       "legacy_issues": [
         1026,
@@ -585,6 +635,20 @@
           "independent_check": "model/clock_defect_energy/test_reference_balance.py",
           "scope": "Exact fixed-reference drift under bare C/E and stationary co-moving source/core measure with conserved relational charge and zero charge gradient form; no adaptive-feedback stationarity or rest-energy assignment.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
+        },
+        {
+          "path": "model/particle_screening/screening_results.json",
+          "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+          "independent_check": "model/particle_screening/test_screening.py",
+          "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+          "campaign_id": "particle-screening-20261028-v1"
+        },
+        {
+          "path": "model/active_code_energy/energy_bridge_results.json",
+          "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd",
+          "independent_check": "model/active_code_energy/test_energy_bridge.py",
+          "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
+          "campaign_id": "active-code-energy-20261028-v1"
         }
       ]
     },
@@ -969,16 +1033,63 @@
         "independent_check": "model/exchange_sector/test_sector.py",
         "scope": "Sharp relational-sector boundaries, odd closed-history rank-one limit and source-executed active code with counted recovery. No localized physical particle or mass is accepted."
       }
+    },
+    {
+      "id": "particle-screening-20261028-v1",
+      "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-03",
+        "CP-04",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/particle_screening/campaign.json",
+        "sha256": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
+        "independent_check": "model/particle_screening/test_screening.py",
+        "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open."
+      }
+    },
+    {
+      "id": "active-code-energy-20261028-v1",
+      "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-04",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/active_code_energy/campaign.json",
+        "sha256": "aad4536c5289381ca61e0aad60699f1f420cf5aa6c8006f51601f7dae3cd22dd",
+        "independent_check": "model/active_code_energy/test_energy_bridge.py",
+        "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol."
+      }
+    },
+    {
+      "id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
+      "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-02",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/clock_defect_energy/clock_count_inference_campaign.json",
+        "sha256": "16b4fb47f2a2eca7a646ac70a6972d412a5d184893115fbabe456174f2037585",
+        "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+        "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open."
+      }
     }
   ],
   "next_wave": {
-    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v4",
+    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v5",
     "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
     "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
     "changes_frozen_campaign": false,
     "successor_class_frozen": false,
     "physical_comparison_count_added": 0,
-    "rationale": "Four concurrent finite investigations have bounded one alternative local law, executed a controlled density-sector Ramsey service, tested sharp exchange sectors and active recovery, and found a stationary co-moving native source/core measure. Their theorem premises are checked on stated domains. The next joins seek one source-selected law, localized physical excitation, shared clock/action and stress without treating activity counts or controller charge as measured particle mass.",
+    "rationale": "Three finite joins connect executed clock/field readouts, an improved all-seam corrected q=1 code, and that same code's native current. Exact cap screening and conserved-sector reweighting expose the remaining localization and energy choices. The next work must execute the new recovery, extend the operational clock comparison, and supply one action, kinetic response and stress on the same candidate.",
     "shared_interface": {
       "baseline_campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
       "baseline_contract": "model/clock_defect_energy/joins_campaign.json",
@@ -995,47 +1106,33 @@
     },
     "owners": [
       {
-        "gate": "CP-00",
-        "issue": 1135,
-        "title": "Complete the bounded physical program class",
-        "why_now": "A concrete endpoint-biased local family preserves a faithful nonuniform reference and exposes an exact limit on the older target; the remaining physical and refinement boundary can be specified against actual examples.",
-        "deliverable": "A versioned carrier/refinement, service, interpretation, calibration, target and decision contract that admits the unchanged C/E family and any justified bounded adjustment, with retained exposure and budgets.",
-        "may_start_now": "Reuse the local-family campaign, its all-core counterexample and the existing C/E record-law classification to enumerate permitted primitive, memory and preparation changes.",
-        "join_condition": "Freeze observable targets and resource/error budgets before validation; no finite product-reference certificate alone accepts CP-00.",
-        "evidence": [
-          "local_campaign",
-          "local_family",
-          "joins_contract"
-        ]
-      },
-      {
         "gate": "CP-02",
         "issue": 1138,
-        "title": "Join source-executed Ramsey readout to a continuing calibrated clock",
-        "why_now": "The controlled density-sector Ramsey program shares complete C/E histories with the 66-core modular menu; the fixed-reference drift and co-moving alternative delimit stationary claims.",
-        "deliverable": "A continuing accessible clock/field service with regional reference compatibility and a measured parameter comparison that accounts for preparation, storage, exports, numerical and physical error.",
-        "may_start_now": "Reuse the source-pulse Ramsey packet, all-core clock compiler, native-return wave reference and both exact reference-balance controls.",
-        "join_condition": "The density intertwiner and counted source pulses do not establish the full wave unitary, apparatus precision, common energy normalization or laboratory duration.",
+        "title": "Extend the joint event-count readout to a continuing calibrated clock",
+        "why_now": "The complete source readout gives a strict uncertainty reduction about a shared incident count, while the finite clock interfaces identify the missing monotone reading and shared-event calibration premises.",
+        "deliverable": "One continuing accessible clock/field protocol with a tested shared-event parameter comparison, regional reference compatibility and complete preparation, storage, export and error accounting.",
+        "may_start_now": "Reuse the source-pulse Ramsey and exact count-inference packets. Construct the shared events needed by ClockComparison and identify the readable clock interface on the actual instrument.",
+        "join_condition": "A stochastic count estimator is not by itself a monotone clock reading or a physical duration; keep the different modular and wave references explicit.",
         "evidence": [
-          "ramsey_campaign",
+          "clock_count_inference",
           "ramsey_service",
+          "clock_services",
           "reference_balance",
-          "local_family",
-          "joint_clock"
+          "local_family"
         ]
       },
       {
         "gate": "CP-03",
         "issue": 1139,
-        "title": "Test autonomous localization beyond active relational memory",
-        "why_now": "Sharp q sectors have exact exterior deficits; uninterrupted odd exchange flags resolve one input, while a q=1 actively corrected qubit reaches the all-seam code-dimension bound.",
-        "deliverable": "A candidate whose live state has a reference-like exterior and protected transport under every admitted native branch, with recovery and boundary services explicitly costed.",
-        "may_start_now": "Use the sector packet, native homology, co-moving charge certificate and inherited bare-source commutant theorem to test screened or refined mechanisms.",
-        "join_condition": "Active recovery and a controller charge are not autonomous localized matter; coherent exchange statistics need a separate phase/intervention map.",
+        "title": "Execute screened-code recovery and test a localized native excitation",
+        "why_now": "The new qubit attains the optimal one-port screening bound for exact all-seam q=1 codes, while full-exterior screening and invariant edge binding fail in the tested sharp sectors.",
+        "deliverable": "A source-executed encoder, complete flagged recovery and continuing transport for the canonical screened code, or a declared refined candidate with a reference-like exterior and protecting invariant.",
+        "may_start_now": "Reuse the finite all-seam code theorem, the exact cap minimax and the canonical screened code. Compile its own recovery and count core reset, records, failures and source services.",
+        "join_condition": "The old two-port code's executed recovery counts cannot be transferred to the new code; active correction and a small-cap bound do not establish autonomous localized matter.",
         "evidence": [
-          "exchange_campaign",
+          "particle_screening",
           "exchange_sector",
-          "reference_balance",
+          "active_code_energy",
           "defect_history",
           "defect_algebra"
         ]
@@ -1043,20 +1140,31 @@
       {
         "gate": "CP-04",
         "issue": 1140,
-        "title": "Derive one defect action, kinetic response and stress",
-        "why_now": "The q=1 code has a measured native activity excess while the co-moving charge has zero gradient cost; neither count selects energy, and the existing product mode has an independent rest/inertia comparison on a different source.",
-        "deliverable": "For one CP-03 candidate, derive a reference-subtracted rest action and moving response in the same clock and prove a conserved stress map usable by the Einstein join.",
-        "may_start_now": "Test candidate maintenance and recovery work against the native current form and finite proper-time/inertia theorems, with the product-mode result retained as a separate control.",
-        "join_condition": "A common physical unit, source-derived action, localization and Ward/stress identity must be supplied before assigning m or E=mc^2.",
+        "title": "Select a same-candidate action and independently test kinetics and stress",
+        "why_now": "The canonical screened code has an exact current rate, but arbitrary positive conserved-sector weights preserve native stationarity and change a declared Gibbs contrast.",
+        "deliverable": "For one localized candidate, derive a reference-subtracted rest action, independent moving response in the same clock and a conserved stress map with the finite action and Ward premises verified.",
+        "may_start_now": "Use the same-code current and sector-action ambiguity to identify what extra physical selection is required. Keep the separately declared product-field inertia check as a control.",
+        "join_condition": "Uniform-seam activity, prior-code fixed-seam recovery work and a Gibbs assignment are distinct inputs. A common action, kinetic response and clock must precede a physical E=mc^2 identification.",
         "evidence": [
-          "exchange_sector",
-          "reference_balance",
+          "active_code_energy",
+          "particle_screening",
+          "clock_count_inference",
           "mode_energy",
-          "energy"
+          "reference_balance"
         ]
       }
     ],
     "embedded_reviews": [
+      {
+        "gate": "CP-00",
+        "issue": 1135,
+        "role": "Maintain the bounded law/refinement and decision contract, with the unchanged C/E and endpoint-biased alternatives distinguished. These finite joins do not freeze the full physical program.",
+        "evidence": [
+          "local_campaign",
+          "local_family",
+          "joins_contract"
+        ]
+      },
       {
         "gate": "CP-01",
         "issue": 1136,
@@ -1071,12 +1179,11 @@
       {
         "gate": "CP-13",
         "issue": 1137,
-        "role": "Check the actual finite theorem premises and source/model maps in all four packets, including conditional repair, modular covariance, native history rank, code correction and action balance.",
+        "role": "Check actual finite theorem premises in all three joins: complete instruments and clock interfaces, flagged-code support and cap bounds, sectorwise action-measure uniqueness and the missing proper-time/stress maps.",
         "evidence": [
-          "local_family",
-          "ramsey_service",
-          "exchange_sector",
-          "reference_balance",
+          "clock_count_inference",
+          "particle_screening",
+          "active_code_energy",
           "theorem_map"
         ]
       },
@@ -1093,7 +1200,7 @@
         ]
       }
     ],
-    "acceptance_policy": "These are four parallel component assignments under CP-00, CP-02, CP-03 and CP-04. CP-01, CP-13 and CP-12 review the common interfaces. Every integrated gate keeps its original acceptance dependencies and remains open; these four finite packets add no physical comparison or whole-program verdict.",
+    "acceptance_policy": "These are three parallel component assignments under CP-02, CP-03 and CP-04. CP-00, CP-01, CP-13 and CP-12 review their shared contract and interfaces. Every integrated gate retains its acceptance dependencies and remains open; the finite packets add no physical comparison or whole-program verdict.",
     "deferred_gates": [
       "CP-05",
       "CP-06",
@@ -1296,6 +1403,54 @@
         "scope": "Frozen finite sharp-sector and active-memory diagnostic contract.",
         "campaign_id": "exchange-sector-20261028-v1",
         "id": "exchange_campaign"
+      },
+      {
+        "id": "particle_screening_campaign",
+        "path": "model/particle_screening/campaign.json",
+        "sha256": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
+        "independent_check": "model/particle_screening/test_screening.py",
+        "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+        "campaign_id": "particle-screening-20261028-v1"
+      },
+      {
+        "id": "particle_screening",
+        "path": "model/particle_screening/screening_results.json",
+        "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+        "independent_check": "model/particle_screening/test_screening.py",
+        "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+        "campaign_id": "particle-screening-20261028-v1"
+      },
+      {
+        "id": "active_code_energy_campaign",
+        "path": "model/active_code_energy/campaign.json",
+        "sha256": "aad4536c5289381ca61e0aad60699f1f420cf5aa6c8006f51601f7dae3cd22dd",
+        "independent_check": "model/active_code_energy/test_energy_bridge.py",
+        "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
+        "campaign_id": "active-code-energy-20261028-v1"
+      },
+      {
+        "id": "active_code_energy",
+        "path": "model/active_code_energy/energy_bridge_results.json",
+        "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd",
+        "independent_check": "model/active_code_energy/test_energy_bridge.py",
+        "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
+        "campaign_id": "active-code-energy-20261028-v1"
+      },
+      {
+        "id": "clock_count_inference_campaign",
+        "path": "model/clock_defect_energy/clock_count_inference_campaign.json",
+        "sha256": "16b4fb47f2a2eca7a646ac70a6972d412a5d184893115fbabe456174f2037585",
+        "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+        "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+        "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1"
+      },
+      {
+        "id": "clock_count_inference",
+        "path": "model/clock_defect_energy/clock_count_inference_results.json",
+        "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd",
+        "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
+        "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+        "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1"
       }
     ]
   }

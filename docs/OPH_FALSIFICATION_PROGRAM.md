@@ -98,12 +98,34 @@ active code is not a localized reference-preserving particle. Its native
 movement excess `1/66` per uniform-seam attempt excludes recovery work and
 does not fix energy.
 
+The [smaller-cap screening result](../model/particle_screening/README.md)
+supplies the exact minimax over all caps of each size. Its improved all-seam
+`q=1` qubit attains worst one-port distance `61/450`, the optimum for an
+edge core under exact correction, and has a full-exterior deficit.
+The sharp `q=2` pair exits the edge set with hazard `1/15` per uniform
+attempt. These results constrain exact screening and invariant edge bonds;
+they do not exclude every approximate, actively controlled or refined
+particle mechanism.
+
+The [same-code energy control](../model/active_code_energy/README.md)
+shows that positive reweightings of the three conserved sectors remain
+stationary for the same reduced native source/core law. Their Gibbs
+contrasts differ if energy is subsequently declared from a reference.
+Native stationarity and the code's current records therefore do not select
+a rest gap. Prior-code recovery pulse counts use a separate fixed-seam
+protocol, and do not establish uniform-seam maintenance energy.
+
 The [source-pulse Ramsey packet](../model/clock_defect_energy/RAMSEY_SERVICE.md)
 executes the controlled finite density-sector service and retains complete
 C/E joint clock/field outcomes, source-export aborts and a selected longer
 continuation. Its 720-arc density isometry does not compile the full
 3,960-arc binary-source unitary. Checked floating routine guards do not
 certify physical pulse accuracy or a duration in seconds.
+The [joint count inference](../model/clock_defect_energy/CLOCK_COUNT_INFERENCE.md)
+uses those services to reduce uncertainty about the shared incident count;
+retaining only the separate readout marginals loses that improvement.
+This is an operational join under the specified finite preparation and
+abort contract, with physical clock calibration open.
 
 These are finite conclusions with source-bound replay and countercontrols,
 not empirical exclusions or accepted integrated gates. Changing the reference,
