@@ -954,6 +954,120 @@ the tracial member at equilibrium. Coherences cannot evade this specified
 all-region boundary; protected regional families and changed observable
 algebras are different contracts.
 
+## Continuing the reference through recorded repair
+
+[`history_transport.py`](history_transport.py) supplies the reference update
+when a repair crosses the protected core. For either fixed C or fixed E,
+a bounded controller chooses each native seam from its complete earlier
+seam/coin/current-or-contrast tape. On binary66 every admitted history has
+`K_h = sqrt(w_h) U_h P_h`, where `w_h=2^(-length(h))`, `P_h` is a diagonal
+domain projector and `U_h` is injective on that domain. All terminal histories
+are retained. The executable policy grammar admits at most 12 attempts and
+65,536 reachable decision nodes; the proof applies to every finite bound.
+
+For any faithful diagonal reference `sigma`, define the **actual** output
+reference `tau_h=K_h sigma K_h*`. It is faithful on `range(K_h)`, although
+that range can shrink. If `q_h=Tr(P_h sigma)`, then on this corner
+
+```text
+tau_h^(is) K_h = w_h^(is) K_h sigma^(is),
+(tau_h/(w_h q_h))^(is) K_h = q_h^(-is) K_h sigma^(is).
+```
+
+Indeed `[P_h,sigma]=0` and the eigenvalue at `U_h e_i` is `w_h sigma_i`.
+The branch scalar cancels in conjugation. Thus the complete recorded repair
+channel intertwines the input modular flow and the direct sum of the output
+corner flows, also with any untouched reference. Sequential updates compose
+by restricting the injection and multiplying the coin weights; no fresh
+reference preparation is necessary. Relative modular cocycles for two
+diagonal references transport in the same way. Zero corners have no
+logarithm or normalized state. The direct sum describes committed classical
+records: this argument does not cancel relative phases between coherent
+record blocks, nor identify a correlated probe's joint modular flow.
+
+The binary carrier gives a canonical full-shell extension. A zero current
+fixes the configuration; a nonzero current swaps the two seam bits.
+Their recorded transpositions compose to a port permutation `pi_h`, and
+`K_h=sqrt(w_h) U_pi_h P_h`. The faithful extension
+`sigma_h=U_pi_h sigma U_pi_h*` obeys
+`sigma_h^(is) K_h=K_h sigma^(is)` on the entire branch domain. Its compression
+is `tau_h/w_h`. This does not fill zero posterior directions with a fictitious
+prepared state: the extension specifies a source word whose restriction is
+the proved corner action. It updates recursively from each current record,
+without another preparation or an executed permutation service.
+
+For the three-sector local reference only its two-port core moves. The
+executed policy needs precisely four reference words, with cores `(0,1)`,
+`(0,8)`, `(1,5)` and `(5,8)`. These transpositions are not graph symmetries,
+and two reached cores are nonedges; adjacency and cap locality do not follow.
+The extension fails for general full78 loads: repair sends `(2,0)` to
+`(1,1)`, whereas a swap gives `(0,2)`. The adaptive full78 theorem below
+uses partial injections, not this binary permutation shortcut.
+
+The existing finite preparation supplies an operator sandwich
+`(1-epsilon)sigma <= rho <= (1+epsilon)sigma`, `epsilon<1`. Every unnormalized
+branch preserves it on the same support, even when `rho` is non-diagonal.
+Operator monotonicity of the logarithm bounds its log error by
+`epsilon/(1-epsilon)`. Duhamel's identity bounds the corresponding modular
+channel half-diamond error by `min(1, |s|epsilon/(1-epsilon))`. Applying this
+on both sides gives approximate intertwining error
+`min(1, 2|s|epsilon/(1-epsilon))`, uniformly over rare records; there is no
+division by their probability. This comparison is between reference-defined
+linear channels, not a claim that posterior normalization is linear. The
+sandwich concerns the native work support; compiled leakage into padding is
+charged separately.
+
+[`history_clock.py`](history_clock.py) executes the connection. The finite
+local preparer retains its original success, herald-failure and two timeout
+flags. On success a compiled balanced probe, two record-adaptive native
+repairs crossing the core, the transported clock, a conditioned analyzer and
+a native current read act on the same carrier. All 512 source coordinates
+and native-export aborts are retained. C has 512 and E has 4,096 three-attempt
+coin/raw-register words. A checked lazy zero extension represents impossible
+slots without allocating thousands of empty quantum matrices; missing
+attained records are errors. The preparer's fine auxiliary tapes remain
+coarse-grained under its existing herald contract. Repairs execute through
+the declared native Kraus interface; the coherent clock/analyzer source words
+are replayed here, not the separately constructed native-repair pulse words.
+
+At parameter `s=4`, the ideal clock can be moved across both repairs without
+changing any terminal quantum block. Reusing the unchanged endpoint
+reference instead changes the complete record law by more than `0.0003`
+for C and `0.0006` for E. Removing the clock changes it by more than `0.004`
+and `0.005`, respectively. These are conditional-on-success reference inputs;
+the executed complete preparation keeps failures and charges its original
+success weight `5/33`. Separate entangled-input controls check the full
+quantum outputs, not only these classical marginals. Exact counterexamples
+show why erasing the coin, reusing a fixed reference, or substituting a
+general noncommuting reference cannot be silently admitted.
+
+The reference is transported by the native repair channel. The probe rotation
+disturbs the tested input, so its posterior is generally different from that
+transported reference. An unperturbed reference is invariant under its own
+modular flow; it cannot exhibit the nonzero phase signal. The continuing
+reference theorem applies across the native repairs, not across arbitrary
+coherent interventions as if they left the reference unchanged.
+
+Every original compiled clock/analyzer array is checked against a rational
+enclosure of its target, including off-code directions. The native Kraus
+frame is checked against exact endpoint maps. For operator error `e`, use
+gain `g=(1+e)^2` and half-diamond allowance `d=e(2+e)/2`; composition updates
+`B <- g B+d`. With preparation error `B_p` and complete history error `B_h`,
+the end-to-end bound is `G_h B_p+(5/33)B_h`. The receipt includes separate
+attempt, source-pulse, service, tape, code and program-storage costs. The
+source bound certifies terminal logical words and native exports. Exact
+proper-code intermediate exports have zero failure; floating per-pulse
+apparatus errors and host workspace are not certified by this bound.
+
+This closes finite record-conditioned clock continuation, not autonomous
+physical time, universal bare-cap locality or protected defect dynamics.
+The [adaptive coherence bound](../observer/RECORD_RECOVERY.md#persistent-exploration-with-adaptive-classical-control)
+also prevents interpreting formal corner clocks as indefinitely recoverable
+quantum memory under exploring record-only control. Active recovery,
+restricted exploration and refinement require their own compatible joins.
+Completion-program gate acceptance still requires its declared predecessor
+contracts; this component does not discharge CP01, CP02 or CP13 as a whole.
+
 ## Replay
 
 ```sh
@@ -971,6 +1085,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_referenc
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.phase_clock --check model/native_modular_reference/phase_clock_results.json
 python -m model.native_modular_reference.native_census --check model/native_modular_reference/native_census_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.census_clock --check model/native_modular_reference/census_clock_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.native_modular_reference.history_clock --check model/native_modular_reference/history_clock_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/native_modular_reference
 ```
 

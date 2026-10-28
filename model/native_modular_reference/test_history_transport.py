@@ -301,3 +301,108 @@ def test_compact_certificate_is_source_bound_and_not_a_waiting_or_locality_claim
     assert report['domain']['fixed_bare_cap_locality_claimed'] is False
     assert report['domain']['autonomous_modular_waiting_claimed'] is False
     assert 'model/observer/record_recovery.py' in h.source_bindings()
+
+
+@pytest.mark.parametrize('law', ['C', 'E'])
+def test_port_extension_all_seams_full_reference_and_actual_compression(law):
+    basis = native.states(binary=True)
+    index = {state: i for i, state in enumerate(basis)}
+    # Distinct weights expose a wrong extension even outside the branch domain.
+    sigma = tuple(F(i+1, 2211) for i in range(66))
+    for edge in rr.seams():
+        for oriented in (edge, edge[::-1]):
+            for branch in h.word_instrument(law, (oriented,)):
+                permutation = h.port_permutation(law, branch)
+                assert sorted(permutation) == list(range(12))
+                a, b, coin, label = branch.history[0]
+                current = label if law == 'C' else (label-(2*coin-1)*(abs(label) % 2))//2
+                expected = []
+                for state in basis:
+                    output = list(state)
+                    if current:
+                        output[a], output[b] = output[b], output[a]
+                    expected.append(index[tuple(output)])
+                    assert tuple(output[permutation[p]] for p in range(12)) == state
+                assert tuple(zip(branch.inputs, branch.outputs)) == independent_pairs(law, branch.history)
+                assert tuple(expected[i] for i in branch.inputs) == branch.outputs
+                extended = h.extended_reference(law, branch, sigma)
+                assert min(extended) > 0 and sum(extended) == 1
+                assert sorted(extended) == sorted(sigma)
+                assert tuple(extended[j] for j in expected) == sigma
+                block = h.branch_reference(law, branch, sigma)
+                assert tuple(branch.weight*extended[j] for j in branch.outputs) == block.unnormalized
+
+
+@pytest.mark.parametrize('law', ['C', 'E'])
+def test_actual_clock_history_four_moved_cores_composition_and_reference_covariance(law):
+    from . import history_clock as clock
+    sigma, basis = h.reference(), native.states(binary=True)
+    core_weights = (F(2, 225), F(1, 36), F(2, 45))
+    rng = np.random.default_rng(437)
+    probe = rng.normal(size=(66, 3))+1j*rng.normal(size=(66, 3))
+    probe /= np.linalg.norm(probe)
+    phase = np.exp(.83j*np.log(np.array(sigma, float)))
+    cores, references = set(), set()
+    for branch in clock.branches(law):
+        permutation = h.port_permutation(law, branch)
+        core = tuple(sorted(permutation[i] for i in (0, 1)))
+        extended = h.extended_reference(law, branch, sigma)
+        cores.add(core); references.add(extended)
+        assert extended == tuple(core_weights[sum(state[p] for p in core)] for state in basis)
+        # Compose full reference extensions without conditioning or resetting.
+        sequential = sigma
+        for record in branch.history:
+            one = next(b for b in h.word_instrument(law, (record[:2],)) if b.history == (record,))
+            sequential = h.extended_reference(law, one, sequential)
+        assert extended == sequential
+        actual = np.zeros_like(probe)
+        expected = np.zeros_like(probe)
+        output_phase = np.exp(.83j*np.log(np.array(extended, float)))
+        for i, j in zip(branch.inputs, branch.outputs, strict=True):
+            actual[j] = output_phase[j]*np.sqrt(float(branch.weight))*probe[i]
+            expected[j] = np.sqrt(float(branch.weight))*phase[i]*probe[i]
+        assert np.linalg.norm(actual-expected) < 2e-16
+    assert cores == {(0, 1), (0, 8), (1, 5), (5, 8)}
+    assert len(references) == 4
+    assert cores-set(rr.seams()) == {(0, 8), (5, 8)}
+
+
+def test_extended_reference_returns_are_detached_and_forged_branches_rejected():
+    sigma = h.reference()
+    branch = h.word_instrument('C', ((0, 5),))[0]
+    expected = h.extended_reference('C', branch, sigma)
+    returned = h.extended_reference('C', branch, sigma)
+    returned[0]._numerator = -1
+    assert h.extended_reference('C', branch, sigma) == expected
+    assert min(sigma) > 0
+    sigma[0]._numerator = -1
+    assert min(expected) > 0
+    permutation = h.port_permutation('C', branch)
+    with pytest.raises(TypeError):
+        permutation[0] = 0
+    for forged in (replace(branch, outputs=branch.outputs[::-1]),
+                   replace(branch, inputs=branch.inputs[:-1], outputs=branch.outputs[:-1]),
+                   replace(branch, weight=F(1))):
+        with pytest.raises(ValueError):
+            h.port_permutation('C', forged)
+        with pytest.raises(ValueError):
+            h.extended_reference('C', forged, h.reference())
+
+
+@pytest.mark.parametrize('law', ['C', 'E'])
+def test_port_extension_is_not_a_full78_rule_or_a_graph_symmetry(law):
+    double = (2,)+(0,)*11
+    for coin in (0, 1):
+        output, record = rr.recorded_step(law, double, (0, 5), coin)
+        swapped = list(double); swapped[0], swapped[5] = swapped[5], swapped[0]
+        assert output[0] == output[5] == 1
+        assert rr.record_current(law, record) == 1
+        assert output != tuple(swapped)
+    branch = next(b for b in h.word_instrument(law, ((0, 5),))
+                  if rr.record_current(law, b.history[0]) == 1)
+    permutation = h.port_permutation(law, branch)
+    assert (0, 7) in rr.seams()
+    assert tuple(sorted(permutation[p] for p in (0, 7))) == (5, 7)
+    assert (5, 7) not in rr.seams()
+    with pytest.raises(ValueError):
+        h.extended_reference(law, branch, (F(1, 78),)*78)

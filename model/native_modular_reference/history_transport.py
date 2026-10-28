@@ -20,6 +20,17 @@ modular groups. Entrywise proof on matrix units tensors with any untouched
 reference. It does not require [K_h,sigma]=0. Zero corners have no normalized
 state or logarithm and are refused rather than padded with a fictitious state.
 
+Binary occupancy gives a canonical faithful full-shell extension. A zero
+current leaves both endpoint bits fixed; a nonzero current exchanges them.
+Compose these recorded port transpositions to obtain pi_h. Then
+K_h=sqrt(w_h) U_pi_h P_h, and sigma_h=U_pi_h sigma U_pi_h* satisfies
+sigma_h**(it) K_h=K_h sigma**(it). Its compression to the actual range is
+tau_h/w_h. The full reference remains faithful with unit mass, while its
+weighted compression retains the actual branch mass. This extension composes by
+recorded swaps; it is not the full-shell posterior or an executed routing.
+Port transpositions need not preserve native graph edges or cap locality.
+The extension fails for double occupations and is restricted to binary66.
+
 For two diagonal references sigma,omega the transported raw relative cocycle
 has ratio omega_i/sigma_i on U_h e_i. Normalization only multiplies that ratio
 by q_sigma/q_omega, a scalar that again cancels in conjugation. Successive
@@ -260,6 +271,47 @@ def _reference_block(branch, sigma):
 def branch_reference(law, branch, weights):
     """One actual nonzero branch, with raw and normalized support-corner state."""
     return _reference_block(_branch(records.candidate(law), branch), _reference(weights))
+
+
+def port_permutation(law, branch):
+    """A record-derived unitary extension, not a symmetry of the native graph.
+
+    On binary loads a nonzero current swaps the two endpoint bits, while a
+    zero current fixes every bit. Their chronological port transpositions
+    extend the actual partial injection to all 66 binary configurations.
+    The extension is only a clock compiler choice: its off-domain action is
+    not a repair branch, an executed routing service or a prepared posterior.
+    """
+    law = records.candidate(law)
+    branch = _branch(law, branch)
+    permutation = tuple(range(12))
+    for record in branch.history:
+        a, b = record[:2]
+        if records.record_current(law, record):
+            permutation = tuple(b if p == a else a if p == b else p for p in permutation)
+    basis = native.states(binary=True)
+    for i, j in zip(branch.inputs, branch.outputs, strict=True):
+        output = [0]*12
+        for source, target in enumerate(permutation):
+            output[target] = basis[i][source]
+        if tuple(output) != basis[j]:
+            raise ArithmeticError('record permutation fails the actual native branch')
+    return permutation
+
+
+def extended_reference(law, branch, weights):
+    """Faithful full-shell extension whose compression is tau_h / w_h."""
+    sigma = _reference(weights)
+    permutation = port_permutation(law, branch)
+    basis = native.states(binary=True)
+    index = {state: i for i, state in enumerate(basis)}
+    result = [F()]*DIMENSION
+    for state, weight in zip(basis, sigma, strict=True):
+        output = [0]*12
+        for source, target in enumerate(permutation):
+            output[target] = state[source]
+        result[index[tuple(output)]] = weight
+    return tuple(result)
 
 
 def transport(law, branches, weights):
