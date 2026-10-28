@@ -13,7 +13,7 @@ repair law and accept no integrated physical gate.
 | Owner | Retained result | Next missing join |
 | --- | --- | --- |
 | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136), [clock services](CLOCK_SERVICES.md) | All 66 transported-core words execute and certify at parameter 4. Reference metadata survives FIFO export, with policy states, interpreter storage and source pulses counted. | Realize the supplied preparation, memory, coherent-control and delivery services, including physical error budgets. |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138), [joint clock and field](JOINT_CLOCK.md) | One native incident count advances the transported clock and protected field; the complete joint law distinguishes a control with identical separate marginals. The [source-pulse Ramsey service](RAMSEY_SERVICE.md) executes the controlled density-sector readout and retains complete outputs and continuation. | Establish the regional physical clock/field dictionary and whole-wave service boundary. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138), [joint clock and field](JOINT_CLOCK.md) | One native incident count advances the transported clock and protected field; the complete joint law distinguishes a control with identical separate marginals. The [source-pulse Ramsey service](RAMSEY_SERVICE.md) executes the controlled density-sector readout and retains complete outputs and continuation. The [clock-count inference](CLOCK_COUNT_INFERENCE.md) combines the source detector and field bit to reduce uncertainty about their shared incident count on C and E, with a matched-marginal control. | Establish the regional physical clock/field dictionary and whole-wave service boundary. |
 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139), [exchange history](DEFECT_HISTORY.md) | The native configuration complex has exact integral first homology `Z/2`; complete C/E records realize its exchange class. The [sharp-sector packet](../exchange_sector/README.md) tests live relational charges, exterior distance and active recovery. | Obtain an autonomously protected localized sector and coherent exchange response. |
 | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140), [mode energy](MODE_ENERGY.md) | Native current records give a positive Dirichlet form. The product mode has a separate rest/kinetic comparison. The [reference-balance test](REFERENCE_BALANCE.md) finds fixed-clock drift, a stationary source/core measure and zero gradient cost for its relational charge. | Attach one rest action, moving response and conserved stress to a localized excitation with a calibrated clock. |
 
@@ -55,7 +55,7 @@ transporting it does not implement port routing or establish a physical
 source charge. Attempt count, actual repair count, modular parameter, wave
 parameter and any calibrated physical clock remain named separately.
 
-The ten receipts bind their implementations, independent checks and their
+The retained receipts bind their implementations, independent checks and their
 named contracts. No empirical comparison is added. Preparation and coherent
 services retain their predecessor domains and failure budgets. The expanded
 clock inventory counts every added word and its source execution.
@@ -80,6 +80,7 @@ python -m model.clock_defect_energy.defect_history --check
 python -m model.clock_defect_energy.mode_energy --check
 python -m model.clock_defect_energy.reference_balance --check
 python -m model.clock_defect_energy.ramsey_service --check
+python -m model.clock_defect_energy.clock_count_inference --check
 ```
 
 `--write` regenerates the named packet's receipt after a reviewed source
