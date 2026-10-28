@@ -7,7 +7,7 @@ called out in the style guide for this release, no banned h-word, and no interna
 implementation identifiers in paper abstracts.
 
 Banned vocabulary is scanned across the reader surfaces, the papers and the
-essays, and the register pages under ``docs/``. The register pages are held to
+register pages under ``docs/``. The register pages are held to
 the vocabulary rules alone, so an internal row id inside a register row stays
 legal. ``ALLOWLIST_PATHS`` holds out the pages whose subject matter is the
 banned vocabulary itself, and the generated prior-work bibliography fragments,
@@ -96,7 +96,6 @@ PAPER_GLOBS = [
     "paper/**/*.tex",
     "extra/**/*.tex",
     "cosmology/**/*.tex",
-    "essays/**/*.tex",
 ]
 
 # Path substrings held out of every scan.  The style guide defines the banned

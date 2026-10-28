@@ -36,8 +36,7 @@ does not mean a noncontextual table of counterfactual classical outcomes.
 Existence, uniqueness and physical realization of such a universe remain
 hypotheses to investigate. The equation alone proves neither a final
 instantaneous cosmic state nor that every mathematical fixed point is a world.
-See [Essay B, §§6–7 and 9](../essays/B-why-does-anything-exist.tex) and the
-[flagship's closure hypothesis](../flagship/from_observer_consensus_to_standard_physics.tex).
+See the [flagship's closure hypothesis](../flagship/from_observer_consensus_to_standard_physics.tex).
 
 ## Internal construction and execution
 

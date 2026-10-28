@@ -82,7 +82,7 @@ def test_paper_style_gate_allows_scientific_open_and_identifier_lookalikes() -> 
         ), sample
 
 
-def test_prose_gate_scans_register_docs_and_essays_and_holds_out_allowlist() -> None:
+def test_prose_gate_scans_register_docs_and_holds_out_allowlist() -> None:
     scanned = {
         path.relative_to(ROOT).as_posix()
         for path in check_reader_style.iter_paths(
@@ -97,8 +97,6 @@ def test_prose_gate_scans_register_docs_and_essays_and_holds_out_allowlist() -> 
         "docs/registers/PREMISE_REGISTER_V3.md",
         "docs/EMPIRICAL_STATUS.md",
         "code/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md",
-        "essays/A-the-universe-is-thinking-itself.tex",
-        "essays/D-methodology-report.tex",
     ):
         assert (ROOT / required).is_file(), required
         assert required in scanned, required

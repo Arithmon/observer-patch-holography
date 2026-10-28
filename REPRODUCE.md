@@ -439,8 +439,7 @@ python3 tools/refresh_paper_release.py --publication
 
 `tools/bump_paper_release.py` also rewrites repository URLs pinned to the
 current release tag (`blob/<id>/`, `tree/<id>/`) in the `paper/`, `flagship/`,
-`extra/`, `cosmology/` and `book/` TeX sources to the new tag; deposited essays
-keep their bytes
+`extra/`, `cosmology/` and `book/` TeX sources to the new tag
 (disable with `--keep-release-urls`). Sources that cite an earlier tag
 are caught up without a bump by
 `python3 tools/bump_paper_release.py --retag-urls-only --from-release-id <old tag>`
@@ -483,7 +482,7 @@ A clean clone must also retain no tracked publication drift after the first
 rebuild:
 
 ```bash
-git diff --exit-code -- paper flagship extra cosmology essays book/reverse-engineering-reality-book.pdf
+git diff --exit-code -- paper flagship extra cosmology book/reverse-engineering-reality-book.pdf
 ```
 
 The `Paper Preview Build` workflow enforces this check, compares the committed

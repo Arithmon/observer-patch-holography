@@ -192,7 +192,7 @@ specification supplies and which it takes as inputs.
 | [claims/](claims/README.md) | Established claims and their dependency views |
 | [tracking/](tracking/) | Premise, observation, prediction and instrument registers |
 | [docs/](docs/README.md) | The basis, the working terms, policies and registers |
-| [book/](book/), [essays/](essays/) | The book and the essays |
+| [book/](book/) | The book |
 
 ## Reproduce and verify
 
