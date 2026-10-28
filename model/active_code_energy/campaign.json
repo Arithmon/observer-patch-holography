@@ -1,0 +1,27 @@
+{
+  "campaign_id": "active-code-energy-20261028-v1",
+  "integrated_gate_accepted": false,
+  "native_family_changed": false,
+  "physical_comparison_count_added": 0,
+  "predecessor_git_commit": "7ab50c9fa326b86344ba0dda6ca56804eb094fb7",
+  "schema": "oph.active_code_energy.campaign.v1",
+  "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+  "source_sha256": {
+    "Lean/Dynamics/WardLimitManifest.lean": "6bae06ce219aa104014a3094298c3f376586cc54d03223b534b94a95565a6b0d",
+    "Lean/Geometry/InternalEnergyInertia.lean": "48a468bbb8e397abdf512005a87b923f393bf96cc8535b18b03ed42e98d0eb04",
+    "Lean/Geometry/ProperTimeInternalAction.lean": "8933451e0b96b0f1a339ca7912dd7e1c26cde321b5144440ee7127fd95a76307",
+    "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
+    "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
+    "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
+    "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
+    "model/clock_defect_energy/mode_energy_results.json": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
+    "model/clock_defect_energy/reference_balance.py": "6695eddff9a93667193c307d80d349c36d685b4dfd717f9191035c989b73940d",
+    "model/clock_defect_energy/reference_balance_results.json": "5d32d1949061d6af1a421d94d4c9db075387bb2e14f7f63f35b5ff38656b15e1",
+    "model/common_source/encoded_memory.py": "9833f762df6a62be658db182a9a1b3ec61ed28ae462d6e58da5d972371627060",
+    "model/common_source/native_routing.py": "bece6c1d39a4cf1a444e8bdc2d24dc42abaa4d16ada8d1174b246c9dd6f10f6a",
+    "model/exchange_sector/sector.py": "5f6b51ce146cdb78c61f7836239a36c1de03a486593a24f2d40f8c3bb06898c0",
+    "model/exchange_sector/sector_results.json": "e9a6213d7c30a07e9402cd4a5f31cb92e5ac1a92b14dceb7e2151d30e4f296f7",
+    "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e"
+  }
+}
